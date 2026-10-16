@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-10-01
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -42,7 +42,7 @@ format:
 
 [← Capítulo 10](monotonia-extremos-convexidad-y-forma-de-las-graficas.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 12 →](aproximacion-metodo-de-newton-y-problemas-de-optimizacion.md)
 
-En el capítulo 6 aprendimos que la derivada no es solamente una pendiente. Si $f$ es diferenciable en $a$, la caracterización por linealización local ([Teorema 6.2](la-derivada-y-la-aproximacion-lineal-local.md#thm-t1-0025)) permite escribir
+La caracterización por linealización local ([Teorema 6.2](la-derivada-y-la-aproximacion-lineal-local.md#thm-t1-0025)) expresa la variación de una función diferenciable como un término lineal más un residuo de orden menor. Si $f$ es diferenciable en $a$, tenemos
 
 $$
 f(a+h)=f(a)+f'(a)h+o(h).
@@ -52,7 +52,7 @@ La recta tangente aparece así como un modelo de primer orden: después de retir
 
 Pero la propia fórmula deja una pregunta abierta. Si $f'$ también puede derivarse, y después podemos derivar de nuevo, ¿podemos utilizar esa información adicional para construir modelos locales mejores que una recta? ¿Existe un procedimiento que produzca un polinomio de grado $2$, $3$ o $n$ a partir de las derivadas de $f$ en un solo punto? Y, sobre todo, ¿cómo sabremos cuánto nos estamos equivocando al reemplazar la función por ese polinomio?
 
-Ese será el problema central del capítulo. Las derivadas superiores proporcionarán los datos; el polinomio de Taylor organizará esos datos; y el **resto** medirá exactamente lo que el polinomio todavía no captura. La fórmula de Taylor no será presentada como una receta para «expandir» funciones, sino como un teorema finito con hipótesis y error controlado.
+Las derivadas sucesivas permitirán elegir los coeficientes de un polinomio que comparta con la función sus datos diferenciales en el centro. El **resto** será la diferencia exacta entre ambos. Para controlar el error necesitaremos precisar qué hipótesis garantizan una estimación de ese resto.
 
 Hay una frontera que conviene fijar desde el comienzo. Para un entero $n$ concreto estudiaremos una suma finita
 
@@ -66,7 +66,7 @@ $$
 f(x)=P(x)+R_n(x).
 $$
 
-No afirmaremos todavía que una función sea igual a una suma infinita de potencias. Pasar de polinomios de grado finito a **series de Taylor** exige estudiar convergencia y analiticidad; ese problema pertenece al Tomo II. Aquí cada aproximación tendrá un grado fijado y cada afirmación deberá conservar su término de error.
+El grado permanecerá fijado en cada aproximación y el término de error formará parte de la afirmación. La igualdad con una serie infinita exigiría estudiar además convergencia y analiticidad; esa cuestión corresponde al Tomo II.
 
 ## De la aproximación lineal a la aproximación polinómica {#sec-t1-c12-01}
 
@@ -203,7 +203,7 @@ $$
 c_k=\frac{f^{(k)}(a)}{k!}.
 $$
 
-Todavía no hemos definido formalmente toda la notación de derivadas de orden arbitrario ni hemos demostrado la existencia o unicidad de ese polinomio para una función dada. Eso será trabajo de §§11.2–11.4. Por ahora interesa reconocer **de dónde surge la forma de los coeficientes**: no procede de memorizar una fórmula de Taylor, sino de preguntar qué polinomio puede compartir con $f$ un número prescrito de derivadas en el punto central.
+Los coeficientes surgen de exigir que el polinomio comparta un número prescrito de derivadas con $f$ en el centro. Para justificar la construcción tendremos que definir las derivadas de orden arbitrario y demostrar la existencia y unicidad del polinomio correspondiente.
 
 ### Coincidir en el centro no controla todavía el error
 
@@ -325,7 +325,7 @@ Por eso el siguiente paso no será memorizar el polinomio de Taylor. En §11.2 d
 
 ## Derivadas de orden superior: iteración, dominios y notación {#sec-t1-c12-02}
 
-La segunda derivada apareció en el capítulo anterior porque queríamos estudiar cómo cambia la primera. Ahora necesitamos convertir esa idea en una construcción que pueda repetirse cualquier número finito de veces. El punto delicado no es la notación, sino el **dominio**: para derivar de nuevo, la derivada anterior debe existir como función en puntos próximos.
+Para repetir la derivación, la derivada anterior debe estar definida como función en los puntos próximos que requiere el nuevo límite. Al introducir cada orden registraremos el dominio en el que puede efectuarse la siguiente derivación.
 
 ### Derivar una función y derivar un número no son la misma operación
 
@@ -859,7 +859,7 @@ El teorema de unicidad responde: **¿qué polinomio de grado $\le n$ comparte es
 
 ## Un lema de Rolle iterado {#sec-t1-c12-05}
 
-El teorema de Rolle transforma dos ceros de una función en un cero de su derivada situado entre ellos. Si además una de las derivadas se anula en uno de los extremos, podemos repetir el proceso. Esa iteración será el motor del resto de Lagrange.
+Rolle produce un cero de la derivada entre dos ceros de una función. Si además una derivada se anula en un extremo, podemos aplicar de nuevo el mismo argumento. La iteración permitirá obtener la forma de Lagrange del resto.
 
 ### Del primer cero a una cadena de ceros
 
@@ -1741,7 +1741,7 @@ Esta ruta impide tres atajos comunes: introducir una serie infinita, evaluar la 
 El laboratorio termina en aproximaciones polinómicas **finitas** y certificados del error. El uso sistemático de esas aproximaciones para construir algoritmos iterativos, incluido Newton, queda para `T1-C13`. La pregunta de convergencia cuando el grado tiende a infinito queda para el Tomo II.
 :::
 
-**Antes del banco.** ¿Puedes distinguir en una solución qué parte construye $T_{n,a}f$, qué parte demuestra la fórmula exacta del resto y qué parte produce una desigualdad numérica? Si una de esas tres piezas falta, ¿qué afirmaciones siguen justificadas y cuáles no?
+Al utilizar Taylor conviene distinguir la construcción del polinomio, la identidad exacta que define el resto y la estimación que garantiza una precisión. Conocer los coeficientes resuelve la primera tarea; la cota del error requiere las hipótesis y el control adicional de derivadas que especifica el teorema.
 
 ## Ejercicios y soluciones {#sec-t1-c12-11}
 
@@ -3165,10 +3165,6 @@ $$
 $$
 
 La parte algebraica es la anulación del polinomio a partir de datos puntuales en $a$. La parte analítica es la cota de $f^{(n+1)}$ en todo el segmento, necesaria porque el punto $c$ no está localizado de antemano.
-:::
-
-::: {.callout-important title="Cierre local del capítulo"}
-Los cuarenta pares anteriores forman parte del manuscrito canónico y deben superar auditoría matemática y estructural local. Conforme a la política editorial vigente desde el 23 de septiembre de 2026, la compilación Quarto integral, la QA MathJax/visual de producción y la publicación **no** son puertas de cierre individual de este capítulo: quedan diferidas al cierre del Tomo I. El estado `COMPLETE` del contenido no equivaldrá a `PUBLISHED`.
 :::
 
 ---

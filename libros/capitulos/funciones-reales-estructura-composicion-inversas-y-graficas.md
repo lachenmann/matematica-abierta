@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-09
-date-modified: 2026-10-06
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
 number-sections: true
@@ -40,20 +40,18 @@ f(x)=x^2,
 \qquad
 f(x)=\frac{1}{x},
 \qquad
-f(x)=\sigma x.
+f(x)=\sigma(x).
 $$
 
-Es natural que acabemos asociando las dos ideas: **función** y **fórmula**. Para calcular valores concretos, esa identificación suele resultar inofensiva. Para hacer análisis, deja de serlo.
+Estas expresiones permiten calcular valores, pero dejan sin responder preguntas que el cálculo necesita formular con precisión: qué entradas están admitidas, en qué conjunto deben quedar las salidas y qué regla asigna una salida a cada entrada. Con la misma fórmula podemos definir funciones que tienen propiedades distintas, porque el dominio y el codominio forman parte del objeto que estudiamos.
 
-Una función no es solamente una expresión en la que sustituimos una variable. Necesitamos saber **qué objetos podemos introducir**, **qué objetos admitimos como salidas** y **qué regla asigna una salida a cada entrada**. Cambiar cualquiera de esos datos puede cambiar la función y, sobre todo, puede cambiar sus propiedades matemáticas aun cuando la fórmula escrita permanezca intacta.
-
-Este capítulo está dedicado a aprender a pensar funcionalmente antes de estudiar límites. Su pregunta central será
+Para decidir qué podemos afirmar sobre una función necesitamos responder
 
 $$
 \boxed{\text{¿qué información necesitamos para saber realmente qué función tenemos delante?}}
 $$
 
-El recorrido irá desde la definición completa de función hasta imágenes, preimágenes, composición, inversas, gráficas y monotonía. La idea será siempre la misma: no manipular una fórmula antes de haber identificado el objeto matemático al que esa fórmula pertenece.
+Un cambio en las entradas admitidas puede eliminar repeticiones de valores; un cambio en el conjunto de llegada puede dejar salidas sin alcanzar. Esas diferencias determinarán cuándo podemos recuperar la entrada a partir de la salida y cuándo tiene sentido encadenar dos funciones.
 
 ### Un modelo periódico que podemos definir sin trigonometría
 
@@ -120,9 +118,7 @@ k\colon[0,\infty)\to\mathbb R,
 k(x)=x^2.
 $$
 
-A primera vista parece que hemos escrito cuatro nombres para «la misma función». Después de todo, cada vez que introducimos un número permitido, la operación que realizamos es exactamente la misma: elevarlo al cuadrado.
-
-Pero comparemos con más cuidado.
+Las cuatro reglas elevan al cuadrado cada entrada admitida. Para compararlas debemos mirar también qué números podemos introducir y qué conjunto hemos declarado como destino de sus valores.
 
 En $f$ podemos introducir números negativos y positivos, mientras que en $g$ y $k$ solo podemos introducir números no negativos. Por tanto, $f(-2)$ tiene sentido, pero $g(-2)$ y $k(-2)$ no están definidos.
 
@@ -143,9 +139,7 @@ Con la terminología que formalizaremos en §2.3, el contraste completo será es
 - $h$ es sobreyectiva pero no inyectiva: alcanza todo su codominio $[0,\infty)$, pero, por ejemplo, $h(2)=h(-2)$;
 - $k$ es inyectiva pero no sobreyectiva: al restringir las entradas a $[0,\infty)$ desaparece la duplicación producida por $x$ y $-x$, pero siguen sin alcanzarse los números negativos de su codominio $\mathbb R$.
 
-No necesitamos todavía memorizar esas palabras ni sus definiciones. El cuadro sirve para revelar el problema que las hará necesarias: **la fórmula no basta para decidir las propiedades de una función; dominio y codominio importan**.
-
-Todavía no daremos definiciones formales de estas propiedades. Lo haremos en §2.3. Lo importante por ahora es advertir el fenómeno:
+Las definiciones de §2.3 precisarán estas propiedades. Los ejemplos permiten reconocer desde ahora lo que deberán distinguir: una misma fórmula puede admitir entradas diferentes o dejar sin alcanzar parte del conjunto de llegada.
 
 $$
 \boxed{\text{la misma fórmula puede determinar funciones estructuralmente distintas}.}
@@ -188,7 +182,7 @@ La fórmula ayuda a determinar qué entradas **son posibles**, pero el dominio m
 
 ### Qué significa realmente $f\colon A\to B$
 
-Las convenciones conjuntistas recién introducidas y los cuantificadores permiten ahora formalizar la idea.
+La notación de conjuntos y los cuantificadores permiten reunir esas exigencias en una definición.
 
 ::: {#def-t1-0019}
 **Función, dominio, codominio e imagen.** Sean $A$ y $B$ conjuntos. Una **función**
@@ -216,13 +210,7 @@ $$
 $$
 :::
 
-Hay dos palabras pequeñas en esta definición que contienen casi todo el concepto:
-
-> **cada** entrada tiene **exactamente una** salida.
-
-La palabra **cada** expresa existencia. Para todo $x\in A$ debe existir una salida permitida $f(x)\in B$.
-
-La expresión **exactamente una** añade unicidad. Una misma entrada no puede recibir dos salidas diferentes.
+La definición exige existencia y unicidad: para todo $x\in A$ debe haber una salida $f(x)\in B$, y una misma entrada no puede recibir dos salidas diferentes. La expresión «cada entrada tiene exactamente una salida» reúne ambas condiciones.
 
 Expresada mediante cuantificadores, la condición puede leerse esquemáticamente como
 
@@ -296,15 +284,11 @@ $$
 \exists!y.
 $$
 
-No estamos aprendiendo una noción lógica nueva: estamos viendo por qué la lógica de existencia y unicidad era necesaria para definir uno de los objetos centrales del cálculo.
+La elección de la raíz no negativa resuelve así la exigencia de unicidad que faltaba en la primera instrucción.
 
 ### Lo que **no** exige la definición
 
-Existe un error casi simétrico al anterior. Un principiante puede pensar que, para ser función, entradas diferentes deben producir salidas diferentes.
-
-Eso es falso.
-
-La regla
+La unicidad se refiere a la salida de una entrada fijada. Permite que entradas diferentes compartan un mismo valor, como ocurre con la regla
 
 $$
 f\colon\mathbb R\to\mathbb R,
@@ -366,7 +350,7 @@ $$
 \operatorname{Im}(f)=[0,\infty)\subsetneq\mathbb R.
 $$
 
-Esta diferencia es decisiva. El **codominio** pertenece a la declaración de la función. La **imagen** se determina preguntando qué valores del codominio se alcanzan realmente.
+El **codominio** forma parte de la declaración; la **imagen** recoge los valores que la regla alcanza al recorrer el dominio. Por eso calcular la imagen exige examinar la asignación, aunque el codominio ya esté fijado.
 
 En cambio, para
 
@@ -384,7 +368,7 @@ $$
 
 de modo que imagen y codominio coinciden.
 
-Por eso no podemos tratar el codominio como una ornamentación tipográfica. Cambiarlo puede cambiar afirmaciones matemáticas acerca de la función aunque la regla punto a punto permanezca intacta.
+Al cambiar el codominio cambia el conjunto de valores que preguntamos si la función alcanza. La asignación punto a punto puede permanecer intacta y, aun así, cambiar la respuesta a esa pregunta.
 
 ::: {.callout-warning title="Error frecuente"}
 No leas automáticamente
@@ -491,7 +475,7 @@ Así, **restricción** es el nombre preciso para lo que hemos hecho: conservar l
 
 ### Restricción: perder entradas puede ganar estructura
 
-Restringir una función no es simplemente «recortar un dibujo». Puede cambiar profundamente sus propiedades.
+Al restringir una función conservamos sus valores en las entradas admitidas, pero podemos eliminar pares de entradas que compartían una salida.
 
 La función
 
@@ -563,9 +547,7 @@ Esta observación será importante mucho más adelante, pero aquí solo necesita
 
 ### Una función no necesita una fórmula cerrada
 
-Hasta ahora casi todos nuestros ejemplos han utilizado expresiones algebraicas. Eso puede reforzar accidentalmente la asociación que intentábamos romper.
-
-Una función es una regla de asignación con existencia y unicidad. **La manera de comunicar esa regla puede variar.**
+Las expresiones algebraicas son una manera de comunicar una asignación. También una tabla, una descripción verbal o un algoritmo pueden determinar una salida única para cada entrada del dominio.
 
 Podemos describir una función mediante una tabla. Por ejemplo, si
 
@@ -700,17 +682,9 @@ $$
 ¿Por qué la imagen no es simplemente $\mathbb R$? Porque el codominio declara **salidas permitidas**, mientras que la imagen registra **salidas realmente alcanzadas**. En este caso $p(x)$ nunca es negativo ni puede superar $4$ cuando $|x|\le2$.
 :::
 
-### Qué nos falta todavía
+### De valores individuales a conjuntos de valores
 
-Ya sabemos qué datos constituyen una función y podemos distinguir dominio, codominio e imagen. Pero todavía no disponemos del lenguaje adecuado para responder de manera sistemática preguntas como estas:
-
-- ¿qué conjunto de salidas produce un subconjunto dado del dominio?;
-- ¿qué entradas terminan dentro de un subconjunto dado del codominio?;
-- ¿cómo se comportan estas operaciones respecto de uniones e intersecciones?
-
-Estas preguntas exigen pasar de la imagen de **un punto** a la imagen y la preimagen de **conjuntos completos**.
-
-Ese será el objeto de §2.2.
+Una función también permite estudiar regiones enteras de su dominio y su codominio. Podemos reunir las salidas producidas por un subconjunto de entradas o buscar todas las entradas que llegan a una región fijada del conjunto de llegada. La imagen y la preimagen de conjuntos darán una forma precisa a esas dos operaciones.
 
 ## Imágenes y preimágenes {#sec-t1-c03-02}
 
@@ -722,17 +696,7 @@ $$
 
 el dominio $A$, el codominio $B$ y la imagen total $\operatorname{Im}(f)$. Ahora vamos a refinar esa mirada.
 
-Una función no solo envía **puntos** del dominio a puntos del codominio. También nos permite seguir lo que ocurre con **subconjuntos completos**.
-
-Si elegimos una región $E\subseteq A$, podemos preguntar:
-
-> ¿qué valores produce la función cuando solo dejamos entrar elementos de $E$?
-
-Y si elegimos una región $F\subseteq B$, podemos plantear la pregunta inversa:
-
-> ¿qué entradas del dominio terminan dentro de $F$?
-
-Estas dos preguntas conducen a dos operaciones fundamentales: **imagen** y **preimagen**.
+Al elegir una región $E\subseteq A$, la **imagen** reúne los valores producidos por sus elementos. Al fijar una región $F\subseteq B$, la **preimagen** reúne las entradas que terminan dentro de ella. La diferencia entre ambas operaciones está en qué conjunto fijamos y en qué dirección seguimos la asignación.
 
 La diferencia de dirección conviene verla desde el principio:
 
@@ -866,7 +830,7 @@ $$
 f(\{x\})=\{f(x)\}.
 $$
 
-Esta diferencia tipológica parece pequeña, pero evitará muchos errores cuando empecemos a combinar funciones y operaciones con conjuntos.
+Mantener esta diferencia de tipos permite combinar las notaciones sin confundir un valor con el conjunto que lo contiene.
 
 ### El recorrido es una imagen particular
 
@@ -918,7 +882,7 @@ $$
 
 Queremos calcular $f(E)$.
 
-No basta con sustituir los extremos y escribir apresuradamente
+Evaluar únicamente los extremos sugeriría
 
 $$
 [f(-1),f(2)]=[1,4].
@@ -932,12 +896,7 @@ $$
 
 El conjunto imagen contiene, por tanto, valores menores que $1$.
 
-Para calcularlo correctamente necesitamos resolver dos tareas:
-
-1. demostrar que toda salida producida desde $E$ pertenece a cierto conjunto candidato;
-2. demostrar que todo elemento de ese conjunto candidato es realmente producido por alguna entrada de $E$.
-
-Es el mismo patrón de doble inclusión que aprendimos para demostrar igualdad de conjuntos.
+Para determinar la imagen mediante un conjunto candidato necesitamos las dos inclusiones: toda salida producida desde $E$ debe pertenecer al candidato, y cada valor del candidato debe proceder de alguna entrada de $E$. La segunda inclusión es la que impide añadir valores que la función nunca alcanza.
 
 Primero, si $x\in[-1,2]$, entonces $|x|\le2$, de modo que
 
@@ -999,9 +958,7 @@ $$
 F=[1,4].
 $$
 
-La pregunta ya no es «¿qué valores produce cierto conjunto de entradas?», sino
-
-> ¿qué números reales tienen su cuadrado entre $1$ y $4$?
+Buscamos ahora los números reales cuyo cuadrado queda entre $1$ y $4$; el conjunto de salidas está fijado y debemos recuperar las entradas que llegan a él.
 
 Por definición,
 
@@ -1242,7 +1199,7 @@ Los dos cálculos pueden parecer similares porque la función es algebraicamente
 
 ### La preimagen no exige una función inversa
 
-Aquí aparece una de las advertencias notacionales más importantes del capítulo.
+La notación de preimagen requiere distinguir la operación sobre conjuntos de una posible función inversa.
 
 Para
 
@@ -1264,9 +1221,7 @@ $$
 f^{-1}\colon\mathbb R\to\mathbb R.
 $$
 
-No hay contradicción.
-
-La expresión
+El significado depende de qué objeto se está construyendo. La expresión
 
 $$
 f^{-1}(F)
@@ -1519,7 +1474,7 @@ $$
 
 Nótese que no hemos «invertido la fórmula $x^2$». Hemos traducido una condición de pertenencia y la hemos resuelto.
 
-### Mirar hacia §2.3 sin adelantarla
+### Cuántos antecedentes tiene una salida
 
 La imagen y la preimagen ya nos permiten formular con precisión las dos preguntas que motivaron la apertura del capítulo.
 
@@ -1550,11 +1505,11 @@ $$
 
 Y queda pendiente una cuestión más sutil. Si combinamos subconjuntos mediante uniones, intersecciones o complementos, ¿cómo se comportan sus imágenes y preimágenes? Algunas igualdades funcionan siempre; otras requieren hipótesis adicionales.
 
-No responderemos todavía esa pregunta. La reservamos para §2.6, donde servirá como laboratorio de demostración, contraejemplo y diagnóstico de hipótesis.
+En §2.6, la comparación entre las dos inclusiones de cada igualdad permitirá reconocer qué leyes valen para toda función y cuáles necesitan hipótesis adicionales.
 
 ## Inyectividad, sobreyectividad y biyectividad {#sec-t1-c03-03}
 
-La sección anterior terminó con dos preguntas sobre una función
+La cantidad de antecedentes de cada salida permite distinguir dos propiedades de una función
 
 $$
 f\colon A\to B.
@@ -1568,7 +1523,7 @@ La segunda miraba hacia las fibras de un valor:
 
 > si dos entradas producen la misma salida, ¿tienen necesariamente que ser la misma entrada?
 
-Estas preguntas describen dos propiedades diferentes. Una controla **cuántas salidas del codominio se alcanzan**; la otra controla **cuántas entradas pueden compartir una salida**. Conviene aprenderlas por separado antes de combinarlas.
+Alcanzar todo el codominio exige un antecedente para cada salida; impedir que dos entradas compartan una salida exige que ese antecedente, cuando exista, sea único. Podemos estudiar ambas condiciones por separado.
 
 ### Tres propiedades y tres preguntas distintas
 
@@ -1860,7 +1815,7 @@ Entonces:
 4. $k$ es inyectiva pero no sobreyectiva.
 :::
 
-Demostremos cada afirmación, porque las razones son más importantes que la tabla final.
+La raíz no negativa proporciona antecedentes, y la factorización de una diferencia de cuadrados permite comprobar cuándo son únicos.
 
 **1. La función $f$ no es inyectiva.** Ya vimos que
 
@@ -1949,7 +1904,7 @@ $$
 
 La primera no es inyectiva y la segunda sí.
 
-¿Qué cambió? No la fórmula. Cambió el conjunto de entradas permitidas. Al eliminar los números negativos, dejamos de tener simultáneamente los pares $x$ y $-x$ que producían la misma salida.
+Al eliminar los números negativos desaparecen los pares de entradas distintas $x$ y $-x$ que producían la misma salida. La fórmula conserva sus valores en las entradas que siguen admitidas.
 
 Esto sugiere una operación frecuente:
 
@@ -2013,7 +1968,7 @@ $$
 
 así que $\widetilde u$ es sobreyectiva.
 
-No hemos demostrado una propiedad nueva de la antigua función $u$. Hemos definido una función distinta porque, según la convención de §2.1, el codominio forma parte de los datos de una función.
+Según la convención de §2.1, este cambio de codominio define una función distinta de $u$. La asignación de valores permanece igual; lo que cambia es el conjunto de llegada que forma parte de sus datos.
 
 Esta observación evita una frase imprecisa que aparece a veces en cálculos informales: «toda función es sobreyectiva sobre su imagen». La idea es correcta si se entiende que estamos **cambiando el codominio y, por tanto, formando una nueva función**.
 
@@ -2172,7 +2127,7 @@ Y cuando leas
 
 recuerda que basta con que falle **una** de las dos propiedades. No necesitas demostrar que fallan ambas.
 
-Esta separación será fundamental en §2.4. Allí estudiaremos qué sucede con estas propiedades cuando dos funciones se encadenan mediante composición. Por ahora, el mapa conceptual del capítulo ha avanzado un paso:
+Las dos obligaciones se conservan al estudiar una cadena de funciones: habrá que seguir qué ocurre con una igualdad de salidas y cómo se construyen antecedentes de un valor final. Las nociones disponibles se relacionan así:
 
 $$
 \boxed{
@@ -2186,7 +2141,7 @@ $$
 
 ## Composición e identidad {#sec-t1-c03-04}
 
-Hasta ahora hemos estudiado una función mirando lo que hace por sí sola. Pero gran parte del cálculo se construye encadenando operaciones: primero transformamos una entrada de una manera y luego aplicamos otra transformación al resultado.
+Muchas expresiones del cálculo encadenan operaciones: el resultado de una transformación pasa a ser la entrada de otra. Para describir la cadena debemos precisar tanto las reglas que se aplican como los valores que cada etapa admite.
 
 Por ejemplo, para calcular
 
@@ -2206,7 +2161,7 @@ La primera etapa produce un valor intermedio; la segunda toma precisamente ese v
 
 Pero hay una cuestión que debemos resolver antes de escribir fórmulas: **¿puede la segunda función aceptar todas las salidas que realmente produce la primera?**
 
-### Antes de componer, audita los tipos
+### Compatibilidad entre las dos etapas
 
 Sean
 
@@ -2567,7 +2522,7 @@ $$
 \operatorname{id}_A(x)=x,
 $$
 
-parece demasiado simple para merecer un nombre. Su función estructural, sin embargo, es importante: actúa como una operación neutra para la composición.
+conserva cada entrada. Por eso, al incorporarla en el lugar compatible de una composición, obtendremos los mismos valores que antes: será el elemento neutro de esa operación.
 
 Si
 
@@ -2765,9 +2720,7 @@ f(x_1)=f(x_2)
 x_1=x_2.
 $$
 
-Esta doble lectura —hacia delante para evaluar, hacia atrás para recuperar información— prepara una pregunta inevitable. Si una función es biyectiva, cada salida corresponde a exactamente una entrada. ¿Podemos convertir sistemáticamente esa correspondencia en una nueva función que deshaga la original?
-
-Esa será la cuestión de §2.5. Por ahora, el mapa conceptual queda ampliado a
+En una biyección, cada salida tiene exactamente un antecedente. Podemos entonces intentar usar ese antecedente como el valor de una nueva función que recorra la asignación en sentido contrario. La composición y la identidad permitirán comprobar que deshace la función original:
 
 $$
 \boxed{
@@ -2783,13 +2736,13 @@ $$
 
 ## Funciones inversas: cuándo se puede deshacer una función {#sec-t1-c03-05}
 
-La sección anterior terminó con una pregunta natural. Si una función
+Para invertir una función
 
 $$
 f\colon A\to B
 $$
 
-es biyectiva, cada elemento de $B$ procede de **exactamente un** elemento de $A$. ¿Podemos utilizar esa correspondencia para construir una nueva función que recorra el proceso en sentido contrario?
+debemos asignar a cada elemento de $B$ un único antecedente en $A$. La biyectividad garantiza las dos condiciones que requiere esa asignación: cada salida tiene antecedente y ese antecedente es único.
 
 La idea de «deshacer» una función es familiar en ejemplos elementales. Si una regla suma $5$, esperamos deshacerla restando $5$; si multiplica por $3$, esperamos deshacerla dividiendo por $3$. Pero una función general no tiene por qué admitir una operación inversa. Antes de buscar fórmulas necesitamos identificar la condición estructural que hace posible la recuperación de la entrada.
 
@@ -2887,7 +2840,7 @@ $$
 f(f^{-1}(y))=y.
 $$
 
-Así, una inversa no es simplemente una fórmula que «parece deshacer» otra. Es una función tipada en la dirección contraria y debe deshacer a $f$ **en ambos sentidos**.
+Una inversa debe, por tanto, estar definida en la dirección contraria y deshacer a $f$ **en ambos sentidos**. Cada identidad comprueba la recuperación de un punto de partida distinto.
 
 ::: {.callout-warning title="No confundir tres notaciones"}
 Las expresiones siguientes son conceptualmente distintas:
@@ -2910,7 +2863,7 @@ La preimagen existe como operación sobre subconjuntos aunque $f$ no sea biyecti
 
 ### La condición exacta: biyectividad
 
-Ahora podemos demostrar el resultado central. No se trata de una regla mnemotécnica: la prueba muestra por qué las dos mitades de la biyectividad son precisamente las dos mitades de existencia y unicidad.
+La sobreyectividad dará un antecedente para cada entrada de la inversa, y la inyectividad asegurará que su valor quede determinado. En la dirección recíproca, las dos identidades de composición permitirán recuperar esas propiedades.
 
 ::: {#thm-t1-0007}
 **Existencia de la función inversa.** Sea
@@ -3221,7 +3174,7 @@ $$
 
 $\square$
 
-El orden invertido no es una convención arbitraria. Si una cadena hace
+El orden se invierte porque debemos deshacer primero la última operación aplicada. Si la cadena hace
 
 $$
 A\xrightarrow{f}B\xrightarrow{g}C,
@@ -3406,7 +3359,7 @@ En §2.6 volveremos a imágenes y preimágenes, ahora con una pregunta distinta:
 
 ## El álgebra de imágenes y preimágenes {#sec-t1-c03-06}
 
-En §2.2 aprendimos a calcular imágenes y preimágenes de conjuntos concretos. Ahora cambia la pregunta. Ya no queremos saber solamente **qué conjunto resulta**, sino **cómo interactúan estas operaciones con las operaciones de conjuntos** fijadas en nuestras convenciones iniciales.
+Al combinar conjuntos mediante uniones, intersecciones o diferencias podemos comparar dos procedimientos: combinarlos antes de tomar imágenes o preimágenes, o efectuar esas operaciones primero y combinar los resultados. La igualdad entre ambos procedimientos deberá demostrarse en cada caso.
 
 Sea
 
@@ -3432,7 +3385,7 @@ $$
 
 Las tres fórmulas parecen naturales. Dos de ellas son siempre correctas. La restante puede fallar.
 
-Lo importante de esta sección no será memorizar una tabla de identidades. Queremos aprender algo más útil: **cómo auditar una igualdad de conjuntos hasta descubrir exactamente qué hipótesis le falta**.
+Demostrar ambas inclusiones permitirá decidir cuáles de estas identidades valen siempre. Si una inclusión falla, el punto donde se detenga el argumento puede revelar qué hipótesis hace falta o cómo construir un contraejemplo.
 
 ### Una primera ley: la inclusión se conserva hacia delante y hacia atrás
 
@@ -3526,7 +3479,7 @@ $$
 \boxed{f(E\cap F)\subseteq f(E)\cap f(F).}
 $$
 
-Hasta aquí la conjetura sigue viva.
+La primera inclusión vale para cualquier función; queda examinar la recíproca.
 
 #### Intentemos ahora la inclusión inversa
 
@@ -3568,7 +3521,7 @@ $$
 f(u)=f(v).
 $$
 
-Y aquí la demostración se atasca.
+La igualdad de las dos imágenes todavía no identifica sus antecedentes.
 
 Para concluir que $y\in f(E\cap F)$ necesitaríamos encontrar **una sola entrada** que perteneciera simultáneamente a $E$ y a $F$. Pero lo único que hemos obtenido son dos posibles testigos:
 
@@ -3769,7 +3722,7 @@ $\square$
 
 ### Qué cambió lógicamente entre unión e intersección
 
-Vale la pena detenerse aquí porque la diferencia es más profunda que una colección de símbolos.
+La diferencia entre las dos leyes aparece en los testigos que exige cada pertenencia.
 
 Para la unión,
 
@@ -4074,7 +4027,7 @@ f^{-1}(B\setminus S) &=& A\setminus f^{-1}(S).
 }
 $$
 
-No hay que memorizar este cuadro como una colección arbitraria. La asimetría procede de los cuantificadores: **la imagen introduce existencia de antecedentes; la preimagen no**.
+El cuadro reúne una misma diferencia lógica: **la imagen introduce existencia de antecedentes; la preimagen no**. En la primera debemos controlar los testigos; en la segunda comprobamos una condición sobre la imagen de una entrada ya fijada.
 
 Y, sobre todo, la sección nos deja una técnica reutilizable de investigación matemática:
 
@@ -4098,7 +4051,7 @@ En §2.7 cambiaremos de representación: estudiaremos la **gráfica** de una fun
 
 ## Gráficas: una representación, no la definición completa {#sec-t1-c03-07}
 
-Hasta ahora hemos hablado de funciones sin necesitar dibujarlas. Esa elección fue deliberada. Antes de usar una gráfica como herramienta, conviene saber **qué representa exactamente** y qué información puede —o no puede— contener.
+Una gráfica reúne entradas y salidas en pares ordenados. Esa representación permite leer propiedades de la asignación, aunque necesitaremos distinguir el conjunto exacto de pares de un dibujo aproximado y de los datos que acompañan a la función.
 
 Cuando una función real se dibuja en el plano, cada punto de la curva registra una entrada y su salida correspondiente. Si
 
@@ -4139,7 +4092,7 @@ x\in A\text{ y }y=f(x).
 $$
 :::
 
-Esta definición contiene una idea importante: una gráfica no es, en primer lugar, un dibujo. Es un **conjunto de pares ordenados**.
+La gráfica queda definida como un **conjunto de pares ordenados**; un dibujo en el plano será una representación de ese conjunto.
 
 Si $A,B\subseteq\mathbb R$, podemos representar esos pares como puntos del plano cartesiano. Entonces el conjunto $\Gamma_f$ adquiere una apariencia geométrica: puede ser una curva, varios arcos separados, un conjunto discreto de puntos o una figura mucho menos regular. Pero el objeto matemático sigue siendo el conjunto de pares.
 
@@ -4391,7 +4344,7 @@ $$
 
 Por tanto, el círculo completo no es la gráfica de una función de $x$ en $[-1,1]$.
 
-El problema no es que la figura sea «demasiado complicada». El problema es exactamente la falta de unicidad de la segunda coordenada.
+Para esa primera coordenada faltaría unicidad de la segunda: una misma entrada recibiría dos salidas.
 
 En cambio, si conservamos solo la semicircunferencia superior, obtenemos
 
@@ -4608,7 +4561,7 @@ porque todo $y\ge0$ posee una raíz cuadrada real y, por tanto, aparece en la gr
 La curva dibujada no cambió. Cambió la pregunta matemática porque cambió el codominio.
 :::
 
-Este ejemplo muestra por qué no debemos identificar sin matices una función con «su curva».
+Las dos funciones comparten el conjunto de pares de la gráfica, pero tienen codominios diferentes.
 
 El conjunto de puntos permite recuperar la regla punto a punto y el dominio mediante las primeras coordenadas. También permite recuperar la imagen mediante las segundas coordenadas. Pero si el codominio contiene elementos que la función no alcanza, esos elementos **no aparecen como puntos adicionales en la gráfica**.
 
@@ -4692,7 +4645,7 @@ $$
 \boxed{\text{la sobreyectividad depende de la gráfica y del codominio}.}
 $$
 
-Con esto se completa la distinción que abrió el capítulo:
+Las diferencias entre objeto, descripción y representación quedan reunidas en
 
 $$
 \boxed{
@@ -4707,7 +4660,7 @@ En §2.8 utilizaremos ya esta lectura estructural para trabajar con **funciones 
 
 ## Funciones por tramos y transformaciones de gráficas {#sec-t1-c03-08}
 
-En §2.7 aprendimos a leer una gráfica como un conjunto de pares ordenados. Esa perspectiva permite ahora hacer algo más activo: **construir funciones a partir de varias reglas** y **predecir cómo cambia su gráfica cuando modificamos algebraicamente la función**.
+Una función puede utilizar reglas diferentes en distintas partes del dominio. También podemos construir una nueva función modificando las entradas o las salidas de otra. Al seguir los pares ordenados de sus gráficas podremos justificar qué efecto geométrico produce cada modificación.
 
 En ambos casos mantendremos la misma disciplina que ha guiado todo el capítulo:
 
@@ -4715,7 +4668,7 @@ $$
 \boxed{\text{primero identificamos la función; después interpretamos su gráfica}.}
 $$
 
-No comenzaremos memorizando frases como «sumar afuera desplaza hacia arriba» o «restar adentro desplaza hacia la derecha». Esas reglas son correctas cuando se formulan con sus hipótesis, pero resultan mucho más seguras si podemos reconstruirlas a partir de la igualdad que define cada punto de la gráfica.
+Las reglas de desplazamiento se obtendrán siguiendo un punto de la gráfica original y calculando sus nuevas coordenadas. Ese cálculo permitirá reconstruir tanto el movimiento como sus condiciones de dominio, incluso al combinar varias transformaciones.
 
 ### Una función puede usar reglas diferentes en partes diferentes del dominio
 
@@ -4902,13 +4855,13 @@ $$
 [-2,2].
 $$
 
-Entre las funciones periódicas construidas aquí, $\sigma x$ y $\kappa x$ están definidas para todo real, mientras que una expresión como
+Entre las funciones periódicas construidas aquí, $\sigma(x)$ y $\kappa(x)$ están definidas para todo real, mientras que una expresión como
 
 $$
-q(x)=\frac{\sigma x}{\kappa x}
+q(x)=\frac{\sigma(x)}{\kappa(x)}
 $$
 
-solo está definida donde $\kappa x\ne0$.
+solo está definida donde $\kappa(x)\ne0$.
 
 Estas observaciones conducen a una convención útil, pero debemos formularla con cuidado:
 
@@ -4949,7 +4902,7 @@ $$
 
 Para entender una transformación, seguiremos ese punto. Preguntaremos qué punto de la nueva gráfica contiene **el mismo valor**, una versión modificada de ese valor o una entrada modificada.
 
-Este método evita casi todas las reglas mnemotécnicas problemáticas.
+Seguir las coordenadas permitirá comprobar el dominio y el sentido de la transformación a partir de su definición.
 
 ### Desplazamiento vertical: $f(x)+c$
 
@@ -5249,7 +5202,7 @@ Los casos $a=0$ o $b=0$ son degenerados y deben analizarse por la definición, n
 
 ### La composición unifica las transformaciones
 
-La notación de composición de §2.4 permite ver que no estamos acumulando cinco trucos aislados.
+La composición de §2.4 reúne estas transformaciones según actúen antes o después de la función.
 
 Definamos, para $c,a\in\mathbb R$,
 
@@ -5486,7 +5439,7 @@ En §2.9 añadiremos una propiedad cualitativa nueva que depende del orden del d
 
 ## Monotonía e inversas sobre intervalos {#sec-t1-c03-09}
 
-Hasta ahora hemos estudiado funciones atendiendo a cómo asignan valores, cómo se componen, cuándo son inyectivas o sobreyectivas, cómo pueden invertirse y cómo se representan mediante gráficas. Falta incorporar una estructura que todavía no hemos utilizado de manera sistemática: **el orden de las entradas y de las salidas**.
+La recta real permite ordenar tanto las entradas como las salidas de una función. Podemos estudiar si la asignación conserva ese orden o lo invierte, y utilizar esa información para decidir cuándo dos entradas distintas tienen que producir valores distintos.
 
 Si el dominio es un subconjunto ordenado de $\mathbb R$, podemos comparar dos entradas $x_1<x_2$ y preguntar qué relación existe entre $f(x_1)$ y $f(x_2)$. Una función puede conservar el orden, invertirlo, conservarlo solo débilmente o no obedecer ningún patrón global de este tipo.
 
@@ -5610,11 +5563,7 @@ f(x_1)=f(x_2)
 x_1=x_2.
 $$
 
-Ahora disponemos de una condición diferente, expresada mediante desigualdades. La pregunta natural es:
-
-> si la función separa estrictamente las salidas cada vez que ordenamos dos entradas distintas, ¿pueden dos entradas distintas producir la misma salida?
-
-La respuesta es negativa.
+La monotonía estricta da una manera de obtener esa conclusión: al ordenar dos entradas distintas, sus salidas quedan separadas por una desigualdad estricta y, por tanto, no pueden coincidir.
 
 ::: {#thm-t1-0008}
 **Toda función estrictamente monótona es inyectiva.** Sea $D\subseteq\mathbb R$ y sea
@@ -6144,17 +6093,11 @@ La importancia de esta cadena es metodológica. Para construir una inversa no si
 
 Si las respuestas encajan, la existencia de la inversa queda resuelta antes de calcular su fórmula.
 
-En §2.10 reuniremos todas las estructuras del capítulo en un laboratorio integrado: dominio y codominio, imágenes y preimágenes, composición, inyectividad, inversas, gráficas y monotonía deberán aparecer ya no como temas aislados, sino como herramientas entre las que habrá que elegir según el problema.
+En un problema concreto, identificar una región de monotonía puede facilitar la elección de una rama, mientras que calcular su imagen permite fijar el dominio de la inversa. Las herramientas se combinan según las condiciones que falten por demostrar.
 
 ## Laboratorio de estructura funcional {#sec-t1-c03-10}
 
-Hasta aquí hemos construido las piezas del lenguaje funcional una por una. Sabemos distinguir una fórmula de una función completamente especificada; calcular imágenes y preimágenes; decidir inyectividad y sobreyectividad; componer funciones con control de tipos; construir inversas; leer gráficas; trabajar con definiciones por tramos y reconocer la fuerza de la monotonía estricta.
-
-Ahora cambia la tarea.
-
-En los problemas que siguen **no se anunciará de antemano qué herramienta debe utilizarse**. La primera parte de cada solución será diagnosticar qué información importa y qué estructura del capítulo permite avanzar.
-
-Conviene adoptar este protocolo general:
+Una fórmula puede imponer restricciones sin fijar todos los datos de una función; una composición puede fallar antes de que empiece el cálculo; una elección de rama puede hacer posible una inversa. Los problemas siguientes combinan esas situaciones. Para abordarlos conviene identificar primero los datos y la condición que debemos demostrar:
 
 $$
 \boxed{
@@ -6170,7 +6113,7 @@ $$
 }
 $$
 
-El objetivo no es repetir mecánicamente definiciones. Es empezar a ver dominio, codominio, imagen, composición, inyectividad, inversa, gráfica y monotonía como partes de un mismo sistema.
+En cada solución, los datos de la función determinarán qué operaciones están permitidas y qué resultado puede aplicarse. El cálculo deberá responder después a la condición planteada en el problema.
 
 ### Laboratorio 1 — Qué sabemos y qué todavía falta
 
@@ -6998,7 +6941,7 @@ $$
 
 #### Lectura de la solución
 
-No existe contradicción entre las dos fórmulas de inversa. No estamos afirmando que una misma función tenga dos inversas. Hemos construido **dos funciones distintas** mediante restricciones distintas del dominio:
+Las dos fórmulas son inversas de **dos funciones distintas**, obtenidas mediante restricciones diferentes del dominio:
 
 $$
 q_+
@@ -7227,7 +7170,7 @@ Todavía no hemos preguntado si los valores «se acercan» a algún número ni h
 
 ### Qué estructuras se combinaron
 
-Las seis estaciones permiten revisar el capítulo como una red y no como una lista lineal.
+En las seis estaciones, las mismas definiciones intervienen en combinaciones diferentes:
 
 - El Laboratorio 1 separó **restricciones de una expresión** de **datos de una función**.
 - El Laboratorio 2 mostró simultáneamente la sensibilidad de inyectividad al dominio y de sobreyectividad al codominio.
@@ -7282,7 +7225,7 @@ $$
 \end{array}}
 $$
 
-El diagrama no es un algoritmo rígido. Algunas preguntas pueden no ser relevantes en un problema concreto. Su función es impedir que empecemos manipulando una fórmula antes de haber identificado la estructura matemática.
+Cada problema selecciona las preguntas pertinentes del diagrama. Especificar primero la función permite decidir si necesitamos calcular una imagen, comprobar una composición o demostrar que un antecedente existe y es único.
 
 A ese eje principal podemos añadir dos preguntas transversales:
 
@@ -7324,32 +7267,6 @@ $$
 
 **Respuesta.** Porque $a$ solo toma valores correspondientes a entradas naturales. Aunque todos sus valores pertenecen a $[0,1)$, la mayoría de los números de ese intervalo no son alcanzados. Por ejemplo, no existe $n\in\mathbb N$ con $n/(n+1)=1/3$.
 :::
-
-### Lo que queda antes de cerrar el capítulo
-
-La arquitectura conceptual de `T1-C03` está ya completa. La última sección será el banco final de ejercicios y soluciones.
-
-Allí desaparecerá gran parte del andamiaje del laboratorio. El lector deberá decidir de manera autónoma qué herramientas utilizar entre
-
-$$
-\boxed{
-\text{dominio/codominio}
-+
-\text{imagen/preimagen}
-+
-\text{clasificación}
-+
-\text{composición}
-+
-\text{inversa}
-+
-\text{gráfica}
-+
-\text{monotonía}.
-}
-$$
-
-Además, algunas consignas exigirán construir contraejemplos, reparar afirmaciones falsas o diseñar restricciones que hagan posible una inversa. La cuestión central seguirá siendo la misma con la que comenzó el capítulo: antes de calcular, debemos saber **qué función tenemos delante**.
 
 ## Ejercicios y soluciones {#sec-t1-c03-11}
 
@@ -9959,15 +9876,15 @@ $$
 
 ### Cierre del capítulo
 
-El recorrido de `T1-C03` comenzó con una advertencia sencilla:
+Los ejemplos de este capítulo muestran una limitación de las expresiones aisladas:
 
 $$
 \boxed{\text{una fórmula no es todavía una función}.}
 $$
 
-El banco final muestra hasta dónde llega esa advertencia. Para decidir si una función puede invertirse, si una composición tiene sentido, si una igualdad entre imágenes es correcta o si una gráfica representa realmente una función, la manipulación algebraica por sí sola no basta. Hay que controlar dominio, codominio, asignación y las propiedades estructurales que se han demostrado.
+El dominio decide qué entradas podemos comparar; el codominio fija el conjunto de llegada respecto del cual preguntamos por la sobreyectividad. La asignación permite estudiar imágenes, componer etapas y, cuando cada salida tiene un único antecedente, construir una inversa. Las propiedades de una función dependen de cómo se reúnen esos datos.
 
-Con este lenguaje ya podemos dar el siguiente paso. Una sucesión será, antes que nada, una función cuyo dominio es $\mathbb N$. Esa perspectiva permitirá que las herramientas de este capítulo entren directamente en `T1-C04`, sin introducir todavía ninguna teoría nueva en estas páginas.
+La función del último laboratorio, cuyo dominio es $\mathbb N$, conserva esta misma estructura aunque su gráfica sea un conjunto de puntos separados. Estudiar su imagen o demostrar que es estrictamente creciente exige las definiciones ya construidas; describir qué ocurre con sus valores cuando el índice crece requerirá además una noción de aproximación.
 
 ---
 

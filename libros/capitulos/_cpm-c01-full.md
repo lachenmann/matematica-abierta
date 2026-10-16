@@ -12,7 +12,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-09
-date-modified: 2026-10-01
+date-modified: 2026-10-16
 prerequisites:
   []
 number-sections: true
@@ -32,27 +32,25 @@ format:
 
 [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 2 →](funciones-reales-estructura-composicion-inversas-y-graficas.md)
 
-En los cálculos elementales solemos utilizar los números reales como si fueran un escenario ya terminado. Sumamos, multiplicamos, comparamos, trazamos puntos sobre una recta y escribimos expresiones con raíces sin detenernos a preguntar qué propiedad del sistema numérico hace posibles esas operaciones y esas existencias.
+En los cálculos elementales usamos los números reales con la familiaridad de quien conoce el terreno: sumamos, comparamos y escribimos raíces confiando en que cada operación permitida dará un número y en que los números que necesitamos estarán disponibles. El cálculo nos obligará a examinar esa confianza. Afirmar que una sucesión tiene un límite o que una función continua alcanza cierto valor exige una razón para asegurar la existencia de ese número.
 
-En cálculo esa pregunta deja de ser opcional.
+La imagen de una recta sin agujeros sugiere lo que buscamos, pero todavía debemos darle un significado que pueda utilizarse en una demostración. Los racionales servirán para reconocer la dificultad: permiten las operaciones aritméticas habituales y admiten un orden compatible con ellas, aunque dejan sin solución algunas ecuaciones muy sencillas.
 
-Cuando más adelante afirmemos que una sucesión tiene un límite, que una función continua alcanza determinados valores o que un procedimiento de aproximación determina un número, necesitaremos saber algo preciso acerca de la recta real. No bastará imaginarla como una línea sin agujeros. Tendremos que convertir esa intuición en una propiedad matemática que pueda entrar en una demostración.
-
-La pregunta que gobernará este capítulo es, por tanto,
+La comparación entre ambos sistemas nos lleva a preguntar
 
 $$
 \boxed{\text{¿qué posee }\mathbb R\text{ que no posee }\mathbb Q\text{ y que hace posible el cálculo?}}
 $$
 
-No construiremos aquí los números reales desde cero. Ese es un problema fundacional legítimo, pero pertenece a otra capa del estudio. Nuestro camino será axiomático: identificaremos las propiedades algebraicas y de orden que esperamos de los números y añadiremos una propiedad decisiva, la **completitud**, que permitirá expresar rigurosamente que en la recta real no faltan ciertos puntos frontera.
+Tomaremos las propiedades de los números reales como punto de partida axiomático. Las operaciones y el orden describirán primero una estructura que también poseen los racionales; la **completitud** añadirá la condición de existencia que esa estructura deja abierta. Construir los reales a partir de objetos más elementales es otra manera de justificar estas propiedades, propia del estudio de sus fundamentos.
 
-Comenzaremos por las operaciones sobre los números reales y por los axiomas de cuerpo: qué aceptamos como punto de partida y qué reglas tendremos que demostrar. Añadiremos después el orden, el valor absoluto y las nociones de cota y supremo. Solo entonces examinaremos una ecuación conocida desde la aritmética escolar,
+La ecuación que pondrá a prueba esa estructura es conocida desde la aritmética escolar,
 
 $$
 x^2=2,
 $$
 
-para mostrar por qué un cuerpo ordenado puede resultar insuficiente. Su análisis completo aparecerá después de los axiomas, y la existencia de una raíz real solo quedará establecida cuando dispongamos de la completitud.
+y, sin embargo, su resolución exige distinguir dos cuestiones: qué operaciones podemos hacer con un número y qué garantiza que exista un número con la propiedad buscada. Para formular la segunda cuestión necesitaremos las nociones de cota y supremo; la completitud permitirá después demostrar la existencia de la raíz real.
 
 Como este es el primer capítulo, fijamos una convención mínima de lectura. La escritura $x\in A$ significa que $x$ pertenece al conjunto $A$; $A\subseteq B$ indica que todo elemento de $A$ pertenece a $B$. Las expresiones $\forall x\in A$ y $\exists x\in A$ se leen, respectivamente, «para todo elemento de $A$» y «existe al menos uno». El símbolo $\exists!$ exigirá, cuando aparezca, existencia **y** unicidad. Estas convenciones sirven para leer los axiomas y las pruebas; las operaciones con conjuntos necesarias para estudiar funciones se presentarán en el capítulo siguiente.
 
@@ -70,26 +68,13 @@ $$
 
 puede leerse como una sucesión de extensiones. Cada sistema incorpora al anterior y permite resolver problemas que antes no tenían solución. Pasar de $\mathbb N$ a $\mathbb Z$ permite restar sin abandonar el sistema; pasar de $\mathbb Z$ a $\mathbb Q$ permite dividir por enteros no nulos; pasar de $\mathbb Q$ a $\mathbb R$ deberá resolver un problema diferente, relacionado con ciertos puntos frontera.
 
-Pero antes de identificar esa propiedad adicional necesitamos separar con cuidado dos capas que en el cálculo escolar suelen mezclarse:
+Las reglas **algebraicas** permiten operar y despejar incógnitas; las reglas de **orden** permiten comparar los resultados y trabajar con desigualdades. Al reunir ambas obtendremos la estructura de **cuerpo ordenado**, que comparten racionales y reales.
 
-1. las reglas **algebraicas**, que permiten operar;
-2. las reglas de **orden**, que permiten comparar y trabajar con desigualdades.
-
-Juntas forman la estructura de **cuerpo ordenado**.
-
-::: {.callout-note title="Axioma no significa fórmula arbitraria"}
-En un desarrollo axiomático no intentamos construir aquí cada número real a partir de objetos más elementales. Elegimos ciertas propiedades básicas como punto de partida y deducimos de ellas el resto.
-
-Esto no convierte a las matemáticas en una colección de reglas caprichosas. Las propiedades adoptadas condensan la estructura que queremos estudiar. Existen construcciones explícitas de $\mathbb R$ —por ejemplo, a partir de cortes de Dedekind o de sucesiones de Cauchy de racionales— en las que estas propiedades pueden demostrarse. Nuestro objetivo en este libro es otro: utilizar la estructura real para desarrollar rigurosamente el cálculo sin convertir este capítulo en un libro de fundamentos.
-:::
+La elección de axiomas recoge las propiedades de la estructura que queremos estudiar. Existen construcciones explícitas de $\mathbb R$, mediante cortes de Dedekind o sucesiones de Cauchy de racionales, en las que esas propiedades se demuestran a partir de la construcción. Al tomarlas como punto de partida podremos concentrarnos en las consecuencias que necesita el cálculo.
 
 ### La parte algebraica: qué significa ser un cuerpo
 
-Pensemos primero únicamente en las operaciones $+$ y $\cdot$. Cuando reordenamos una suma, sacamos factor común, cancelamos un término o despejamos una incógnita, solemos hacerlo con tanta familiaridad que parece que todas esas reglas vinieran incluidas en el significado mismo de «número».
-
-No es así.
-
-Una de las habilidades que queremos adquirir en este capítulo consiste precisamente en separar tres niveles:
+Consideremos las operaciones $+$ y $\cdot$. Reordenar una suma, sacar factor común o cancelar un término son movimientos familiares, pero cada uno utiliza propiedades determinadas. Si escogemos unas pocas como axiomas y demostramos las demás a partir de ellas, podremos reconocer qué autoriza cada cálculo:
 
 $$
 \boxed{
@@ -101,7 +86,7 @@ $$
 }
 $$
 
-Esta distinción no pretende volver laborioso cada cálculo posterior. Al contrario: una vez que hayamos demostrado una regla a partir de los axiomas, podremos reutilizarla libremente. Pero habremos aprendido de dónde procede y qué hipótesis hacen posible su uso.
+Una regla demostrada quedará disponible para los cálculos posteriores. Conocer su procedencia nos permitirá reconocer cuándo podemos usarla y cuándo falta alguna de sus hipótesis.
 
 #### Dos operaciones antes que una lista de reglas
 
@@ -115,10 +100,7 @@ a+b\in F,
 ab\in F.
 $$
 
-Esta formulación contiene dos ideas que en álgebra elemental suelen permanecer implícitas:
-
-1. **existencia y unicidad del resultado:** para cada par de entradas hay un único resultado;
-2. **clausura:** ese resultado sigue perteneciendo a $F$.
+Al hablar de operaciones exigimos que cada par de entradas tenga un único resultado y que ese resultado siga perteneciendo a $F$. La segunda exigencia recibe el nombre de **clausura**.
 
 Por ejemplo, si $F=\mathbb Z$, la suma y el producto son operaciones internas, pero la división no lo es: $1/2\notin\mathbb Z$. La estructura que vamos a introducir se formula, por tanto, en términos de dos operaciones primitivas; la resta y la división aparecerán después como operaciones **derivadas**.
 
@@ -249,9 +231,7 @@ Lo mismo vale para encadenar igualdades por transitividad: también es una regla
 
 #### Existencia no significa todavía unicidad
 
-Los axiomas (C2), (C3), (C6) y (C7) afirman que **existen** ciertos elementos. La existencia de esos elementos está postulada; su unicidad es una afirmación adicional que debemos demostrar.
-
-¿Podría haber dos ceros distintos que se comportaran ambos como neutro aditivo? ¿Podría un mismo número tener dos inversos aditivos distintos? Los axiomas no necesitan prohibirlo por separado: la unicidad se puede demostrar.
+Los axiomas (C2), (C3), (C6) y (C7) garantizan la **existencia** de neutros e inversos. Para hablar de cada uno de ellos sin ambigüedad necesitamos saber también que es único. Bastará comparar dos candidatos y utilizar las propiedades que ambos deben satisfacer para demostrar que coinciden.
 
 ::: {#prp-t1-0025}
 **Unicidad de neutros e inversos.** En todo cuerpo $F$ se cumplen las afirmaciones siguientes.
@@ -262,15 +242,7 @@ Los axiomas (C2), (C3), (C6) y (C7) afirman que **existen** ciertos elementos. L
 4. Para cada $a\in F$ con $a\ne0$, el inverso multiplicativo de $a$ es único.
 :::
 
-::: {.callout-note title="Idea de la prueba"}
-Para demostrar unicidad no necesitamos «fabricar» un nuevo objeto. Seguimos el patrón general de una demostración de unicidad:
-
-1. suponemos que hay dos candidatos;
-2. utilizamos las propiedades que ambos deben satisfacer;
-3. demostramos que necesariamente coinciden.
-
-Es la misma arquitectura de existencia y unicidad aplicada ahora a los objetos internos de una estructura algebraica.
-:::
+En el caso de los neutros, la operación entre los dos candidatos permitirá usar la propiedad de cada uno. Para los inversos, introduciremos el elemento del que ambos son inversos y reagruparemos hasta pasar de un candidato al otro. Las igualdades siguientes muestran cómo funciona esa comparación.
 
 **Demostración.**
 
@@ -380,9 +352,9 @@ está mejor justificada.
 Los axiomas garantizan **existencia** y la proposición garantiza **unicidad**. Por eso tiene sentido hablar de *el* inverso aditivo de $a$ y, cuando $a\ne0$, de *el* inverso multiplicativo de $a$.
 :::
 
-#### Una regla escolar como prueba auditada
+#### Por qué multiplicar por cero da cero
 
-Antes de acumular consecuencias, detengámonos en una sola y examinemos cada autorización lógica. Queremos probar
+La distributividad permite obtener una regla que usamos desde la aritmética elemental:
 
 $$
 a0=0.
@@ -1040,17 +1012,13 @@ $$
 Así como la resta no introduce una nueva operación primitiva, la división tampoco: ambas se construyen a partir de las operaciones del cuerpo y de sus respectivos inversos.
 :::
 
-La resta, por tanto, no es una tercera operación primitiva: es suma con un inverso aditivo.
-
-Del mismo modo, la división no es una cuarta operación primitiva: es multiplicación por un inverso multiplicativo.
-
-Esta última definición explica inmediatamente una restricción que debe acompañarnos siempre:
+La resta y la división se apoyan así en las dos operaciones iniciales del cuerpo: sumar un inverso aditivo y multiplicar por un inverso multiplicativo. La segunda construcción sólo está disponible cuando existe ese inverso, de donde procede la restricción
 
 $$
 \boxed{\text{no se divide por }0.}
 $$
 
-La razón no es una convención tipográfica. El número $0$ no posee inverso multiplicativo. En efecto, si existiera $c$ tal que
+El número $0$ carece de inverso multiplicativo: si existiera $c$ tal que
 
 $$
 0c=1,
@@ -1458,11 +1426,9 @@ Podemos resumir la auditoría así:
 
 La última fila es importante. Encontrar un valor que satisface una ecuación prueba **existencia**; demostrar que ningún otro valor puede satisfacerla prueba **unicidad**.
 
-#### El árbol algebraico que acabamos de construir
+#### De las operaciones al orden
 
-La cantidad de fórmulas obtenidas puede dar la impresión de que hemos reemplazado nueve axiomas por una lista todavía más larga. Esa no es la lectura correcta.
-
-Lo que importa es la dependencia:
+Las reglas obtenidas dependen unas de otras: la unicidad de los inversos sostiene las reglas de signos y éstas permiten justificar las manipulaciones con cocientes. El esquema recoge esas dependencias:
 
 $$
 \boxed{
@@ -1484,15 +1450,9 @@ $$
 }
 $$
 
-El árbol importa más que la lista de hojas.
+Estas consecuencias quedarán disponibles sin necesidad de reconstruirlas en cada cálculo. Una división o una cancelación exigirá, en cambio, comprobar las condiciones bajo las que fue demostrada.
 
-A partir de ahora podremos usar estas consecuencias sin reconstruir cada vez toda su genealogía. Pero cuando una manipulación sea delicada —especialmente si aparece una división, una cancelación o una hipótesis de no nulidad— tendremos un criterio para auditarla.
-
-Hay, además, una conclusión conceptual decisiva. **Nada de lo demostrado hasta aquí utiliza orden.** Todos estos resultados son afirmaciones acerca de cuerpos. Por eso siguen siendo válidos en otros cuerpos que no se comportan como la recta real.
-
-Para desarrollar cálculo necesitamos ahora una segunda capa: el **orden**. Hasta aquí solo hemos utilizado las operaciones del cuerpo. Todavía no hemos explicado qué significa que un elemento esté a la derecha de otro, por qué sumar la misma cantidad conserva una desigualdad ni por qué multiplicar por un número negativo invierte su sentido.
-
-Todas esas afirmaciones pertenecen a la **estructura de orden**.
+Las pruebas anteriores utilizan únicamente los axiomas de cuerpo, por lo que sus conclusiones valen también en cuerpos distintos del real. Comparar números exige una estructura adicional. Las operaciones del cuerpo, por sí solas, no determinan qué elemento es mayor ni cómo se comporta una desigualdad al sumar o multiplicar sus miembros; esas propiedades corresponden al **orden**.
 
 En lugar de postular de una vez una larga lista de reglas para el símbolo $<$, seguiremos una estrategia más económica: distinguiremos primero qué elementos llamaremos **positivos** y exigiremos tres propiedades básicas. A partir de ellas construiremos el orden y demostraremos sus reglas de manipulación.
 
@@ -3940,7 +3900,7 @@ $$
 }
 $$
 
-Esta observación determina la arquitectura de lo que viene. En §1.2 utilizaremos el orden para construir el lenguaje de **valor absoluto y distancia**. En §1.3 aprenderemos a hablar de **cotas, máximos, mínimos, supremos e ínfimos**. En §1.4 estudiaremos el ejemplo que muestra la insuficiencia de los racionales y en §1.5 formularemos la propiedad adicional que distingue a los reales dentro de nuestro desarrollo:
+Para describir esa insuficiencia necesitaremos medir distancias y distinguir entre una cota de un conjunto y su menor cota superior. Ese lenguaje permitirá formular la propiedad adicional de los reales:
 
 $$
 \boxed{\text{la completitud}.}
@@ -3962,16 +3922,7 @@ El rigor no disminuye. Lo que disminuye es el andamiaje visible: el objetivo es 
 
 ### Del orden a la distancia
 
-En §1.1 aprendimos a comparar números: sabemos qué significa que uno esté a la izquierda de otro y qué operaciones preservan o invierten una desigualdad. Pero el cálculo necesitará algo más fino que decidir cuál de dos números es mayor.
-
-Necesitaremos responder preguntas como estas:
-
-- ¿qué tan lejos está $x$ de $0$?;
-- ¿qué tan lejos está $x$ de un número fijo $a$?;
-- ¿qué significa que $x$ esté «muy cerca» de $a$?;
-- ¿cómo podemos convertir una afirmación geométrica de cercanía en desigualdades manipulables algebraicamente?
-
-La herramienta elemental que responde todas estas preguntas es el **valor absoluto**.
+El orden permite decidir cuál de dos números es mayor. Para describir aproximaciones necesitamos además medir cuánto los separa: la distancia de $x$ a $0$ y, más generalmente, la distancia de $x$ a un número fijo $a$. El **valor absoluto** convertirá esa idea de cercanía en desigualdades con las que podamos calcular.
 
 ::: {#def-t1-0014}
 **Valor absoluto.** Para $x\in\mathbb R$, definimos
@@ -4724,10 +4675,9 @@ $$
 
 su significado geométrico ya no deberá aprenderse de nuevo: serán afirmaciones acerca de **distancias**.
 
-### Antes de seguir
+### Acumular errores y separar regiones
 
-::: {.callout-tip title="Antes de seguir"}
-**1.** Si
+Si
 
 $$
 |x-a|<r,
@@ -4735,35 +4685,33 @@ $$
 |y-b|<s,
 $$
 
-con $r,s>0$, demuestra que
+con $r,s>0$, la suma de los errores queda controlada por
 
 $$
 |(x+y)-(a+b)|<r+s.
 $$
 
-**Respuesta.** Como
+Para obtener la estimación, escribimos
 
 $$
 (x+y)-(a+b)=(x-a)+(y-b),
 $$
 
-la desigualdad triangular da
+y aplicamos la desigualdad triangular:
 
 $$
 |(x+y)-(a+b)|
 \le |x-a|+|y-b|
 <r+s.
 $$
-:::
 
-::: {.callout-tip title="Antes de seguir"}
-**2.** Resuelve
+La misma definición por casos permite resolver la inequación
 
 $$
 |x-1|+|x+1|\le4.
 $$
 
-**Respuesta.** Los puntos $-1$ y $1$ son los lugares donde cambian los signos de los argumentos de los valores absolutos, así que separamos tres regiones.
+Los puntos $-1$ y $1$ son los lugares donde cambian los signos de los argumentos de los valores absolutos, así que separamos tres regiones.
 
 Si $x\le-1$, entonces
 
@@ -4818,7 +4766,6 @@ Por tanto,
 $$
 \boxed{x\in[-2,2]}.
 $$
-:::
 
 ### Qué hemos ganado
 
@@ -4864,9 +4811,7 @@ $$
 
 La desigualdad triangular controla cómo se acumulan tamaños o errores; la desigualdad triangular inversa controla cuánto puede cambiar una magnitud —o una distancia a un punto fijo— cuando cambia el punto.
 
-Estas herramientas permiten hablar con precisión de tamaño y cercanía. Pero todavía no permiten hablar de «puntos frontera» de conjuntos que quizá no contengan sus extremos.
-
-Ese será el problema de §1.3. Allí distinguiremos por primera vez entre **máximo** y **supremo**, y prepararemos el lenguaje con el que examinaremos, en §1.4, la frontera que sugiere la ecuación $x^2=2$.
+Las distancias comparan puntos; una frontera de un conjunto exige comparar un mismo candidato con todos sus elementos. Esa exigencia distinguirá al **máximo**, que pertenece al conjunto, del **supremo**, que puede quedar fuera de él. La ecuación $x^2=2$ hará necesario examinar esta segunda posibilidad.
 
 ## Cotas, máximos, mínimos, supremos e ínfimos {#sec-t1-c02-04}
 
@@ -4880,15 +4825,7 @@ $$
 
 El cambio de pregunta es también un cambio de escala. La condición anterior compara un punto con otro; hablar de una frontera para un conjunto exigirá comparar un mismo candidato con **todos** los elementos del conjunto a la vez.
 
-Pero la pregunta planteada en la introducción es diferente: ¿qué significaría que el conjunto de números cuyo cuadrado es menor que $2$ tuviera una frontera? Antes de examinar ese conjunto necesitamos distinguir preguntas que en el lenguaje informal suelen mezclarse:
-
-- ¿hay algún número que quede por encima de todos los elementos del conjunto?;
-- ¿hay un elemento del propio conjunto que sea el mayor de todos?;
-- si existen números que quedan por encima, ¿cuál es el menor de ellos?
-
-Las tres preguntas son distintas.
-
-La diferencia entre ellas será una de las ideas estructurales más importantes del capítulo.
+En el conjunto de números cuyo cuadrado es menor que $2$, por ejemplo, podemos buscar un número que domine a todos sus elementos. Tal número sería una cota superior, aunque quizá otra cota más pequeña cumpliera la misma función. Preguntar por la menor de ellas es distinto de buscar el mayor elemento del conjunto: esa cota mínima puede existir sin pertenecer al conjunto que acota.
 
 ### Cotas: barreras que no tienen por qué pertenecer al conjunto
 
@@ -6091,7 +6028,7 @@ Como $t<s$ fue arbitrario, esto vale para todo real situado estrictamente por de
 
 ### El punto al que hemos llegado
 
-La pregunta introductoria acerca de $x^2=2$ nos llevó a pensar en una frontera. Ahora disponemos del lenguaje necesario para distinguir tres situaciones que al comienzo podían confundirse.
+La frontera sugerida por $x^2=2$ puede describirse ya mediante condiciones precisas. Cada una impone una exigencia distinta al candidato.
 
 Una **cota superior** $M$ satisface
 
@@ -6148,7 +6085,7 @@ $$
 
 Así, el supremo puede no pertenecer al conjunto, pero ningún descenso positivo desde $s$ sigue quedando por encima de todos sus elementos.
 
-Hay, sin embargo, una cuestión que §1.3 **no** ha resuelto. Todas estas afirmaciones nos permiten reconocer, comparar y caracterizar un supremo **si existe**; no garantizan todavía su existencia.
+Estas caracterizaciones permiten comprobar que un candidato es el supremo y demuestran que, si existe, es único. Su existencia requiere todavía una justificación: la definición, por sí sola, puede describir un objeto que falte en el sistema numérico considerado.
 
 La pregunta decisiva queda entonces formulada con precisión:
 
@@ -7759,11 +7696,9 @@ El verdadero tema que ha aparecido no es, por tanto, la raíz cuadrada de $2$ co
 
 Ya disponemos del vocabulario necesario para formular la respuesta. La propiedad adicional será la **completitud**.
 
-### Qué nos llevamos a la sección siguiente
+### La frontera que falta en los racionales
 
-Este estudio del hueco racional ha producido cuatro hechos conceptuales.
-
-Primero, los racionales son algebraicamente ricos pero no bastan para resolver todas las ecuaciones geométricamente naturales: hemos demostrado que
+Las operaciones racionales permiten mejorar las aproximaciones sin alcanzar una solución racional de la ecuación. La prueba aritmética establece que
 
 $$
 q^2\ne2
@@ -7771,9 +7706,9 @@ q^2\ne2
 \text{para todo }q\in\mathbb Q.
 $$
 
-Segundo, el problema no desaparece por la densidad elemental de los racionales. Poder insertar siempre otro racional entre dos racionales no garantiza que todo conjunto racional posea el punto frontera que su orden sugiere.
+Poder insertar otro racional entre dos racionales tampoco resuelve el problema. Esa posibilidad da nuevas aproximaciones, pero deja abierta la existencia de la frontera que todas ellas sugieren.
 
-Tercero, el ejemplo de Rudin nos ha enseñado una técnica de construcción que vale por sí misma:
+La transformación del ejemplo organiza las aproximaciones mediante un defecto cuyo signo podemos controlar:
 
 $$
 \boxed{
@@ -7787,7 +7722,7 @@ $$
 }
 $$
 
-Cuarto, todavía no tenemos derecho a afirmar que una solución real de $x^2=2$ exista. Ya conocemos la estructura de cuerpo ordenado; falta incorporar y utilizar una propiedad adicional que garantice determinados supremos reales.
+La transformación tampoco prueba por sí sola que exista una solución real de $x^2=2$. Para pasar de las aproximaciones a una frontera real necesitamos una propiedad que asegure la existencia de los supremos pertinentes.
 
 En §1.5 formularemos el **axioma de completitud**, demostraremos que $\mathbb Q$ falla en la propiedad del supremo y obtendremos una frontera real. En §1.6 probaremos que esa frontera da efectivamente un número cuyo cuadrado es $2$, sin invocar continuidad ni límites.
 
@@ -7795,9 +7730,7 @@ En §1.5 formularemos el **axioma de completitud**, demostraremos que $\mathbb Q
 
 ### Una definición no garantiza una existencia
 
-En §1.3 aprendimos a reconocer un supremo cuando tenemos un candidato. Para demostrar que $s=\sup A$ verificamos dos hechos: que $s$ es una cota superior y que ninguna cota superior puede ser menor que $s$.
-
-Pero esa definición deja abierta una cuestión diferente:
+Para demostrar que $s=\sup A$ debemos comprobar que $s$ es cota superior y que ninguna cota superior queda por debajo de $s$. Ambas comprobaciones parten de un candidato; cuando aún no disponemos de él, aparece otra pregunta:
 
 > ¿qué ocurre si $A$ es no vacío y está acotado superiormente, pero no sabemos de antemano cuál debería ser su menor cota superior?
 
@@ -9561,11 +9494,7 @@ $$
 }
 $$
 
-La completitud, por sí sola, no calcula el supremo ni afirma qué ecuación satisface. Su intervención terminó al asegurar que $\alpha$ existe. La identificación posterior dependerá de las herramientas que ya hemos desarrollado:
-
-- el álgebra del cuerpo;
-- las propiedades del orden;
-- las dos cláusulas que caracterizan al supremo: ser cota superior y ser la menor de las cotas superiores.
+La completitud garantiza que $\alpha$ existe, y deja por determinar qué ecuación satisface. Para identificarlo usaremos el álgebra y el orden junto con las dos condiciones del supremo: es cota superior y ninguna cota superior puede ser menor.
 
 No utilizaremos continuidad de $x\mapsto x^2$, ni límites, ni sucesiones convergentes. Esos conceptos todavía no forman parte de nuestra teoría.
 
@@ -10269,7 +10198,7 @@ En §1.7 aplicaremos la completitud de otra manera. Ya no construiremos la soluc
 
 ### ¿Pueden los naturales quedar atrapados bajo un número real?
 
-En §1.6 utilizamos la completitud de manera constructiva: una vez verificadas las hipótesis del supremo, el axioma produjo una frontera real que después identificamos mediante álgebra y orden. Ahora la emplearemos de otra manera: supondremos que cierto conjunto está acotado y mostraremos que el supremo cuya existencia impondría la completitud conduce a una contradicción.
+El conjunto de los naturales ofrece otra ocasión de usar la completitud. Si tuviera una cota superior real, tendría también un supremo; veremos que la posibilidad de pasar de cada natural a su sucesor impide que ese supremo sea una cota. La contradicción probará que ninguna cota real puede dominar a todos los naturales.
 
 La afirmación que queremos obtener es familiar desde la aritmética:
 
@@ -10854,13 +10783,13 @@ $$
 
 y por tanto un racional $m/n$ dentro de $(a,b)$. Una vez establecida la densidad racional, la existencia del irracional $\sqrt2$ permitirá obtener también densidad irracional mediante traslación.
 
-Así, por estrecho que sea un intervalo abierto no vacío, la maquinaria construida hasta aquí permitirá encontrar en él números racionales e irracionales.
+La elección del denominador controla la anchura de la escala; la elección del entero sitúa el punto en el intervalo. Éstas serán las dos decisiones que sostengan la prueba de densidad.
 
 ## Entre dos reales siempre hay más números {#sec-t1-c02-08}
 
 ### Qué significa que un conjunto sea denso
 
-En §1.7 obtuvimos las herramientas necesarias para fabricar números entre dos reales cualesquiera. Antes de utilizarlas conviene precisar la propiedad que queremos demostrar.
+Un intervalo puede ser muy estrecho y seguir conteniendo puntos de un conjunto dado. La propiedad de densidad exige que esto ocurra en todo intervalo abierto no vacío, cualquiera que sea su posición o su anchura.
 
 ::: {#def-t1-0018}
 **Densidad en la recta real.** Sea $D\subseteq\mathbb R$. Diremos que $D$ es **denso en $\mathbb R$** si, para cualesquiera $a,b\in\mathbb R$ con $a<b$, existe $d\in D$ tal que
@@ -11404,9 +11333,7 @@ La respuesta será el **principio de intervalos encajados**, y su prueba volver�
 
 ### Una pregunta distinta sobre los «huecos» de la recta
 
-En las secciones anteriores utilizamos la completitud para producir fronteras, raíces y escalas cada vez más finas. Ahora la usaremos de otra manera.
-
-Imaginemos una familia de intervalos cerrados
+Las aproximaciones por intervalos permiten conservar información de una etapa a la siguiente. Consideremos una familia de intervalos cerrados
 
 $$
 I_0\supseteq I_1\supseteq I_2\supseteq\cdots
@@ -11414,11 +11341,7 @@ $$
 
 en la que cada intervalo queda contenido en el anterior. Podemos pensar que cada etapa conserva solamente una región más pequeña de la recta.
 
-La pregunta es:
-
-> si continuamos encajando intervalos cerrados indefinidamente, ¿queda necesariamente algún número real que pertenezca a todos ellos?
-
-La intuición geométrica sugiere que sí, pero la afirmación no es una consecuencia puramente visual. Para demostrarla necesitaremos volver al axioma de completitud.
+Cada intervalo puede ser no vacío sin que ello resuelva todavía la existencia de un punto común a todos. Al exigir además que sean cerrados, acotados y estén encajados, la completitud permitirá construir ese punto.
 
 ### Qué significa que los intervalos estén encajados
 
@@ -12012,17 +11935,7 @@ No estamos diciendo todavía que la sucesión de extremos o la sucesión de punt
 
 ### Existencia, unicidad y algoritmo
 
-Conviene separar tres afirmaciones que suelen mezclarse cuando se habla de bisección.
-
-**1. Existencia.** Los intervalos cerrados encajados tienen algún punto común. Esto proviene de completitud.
-
-**2. Unicidad.** Si además las longitudes pueden hacerse arbitrariamente pequeñas, no caben dos puntos distintos en todos ellos.
-
-**3. Procedimiento.** La bisección ofrece una regla concreta para construir intervalos cada vez más estrechos.
-
-La tercera afirmación es algorítmica; las dos primeras son teoremas matemáticos que justifican qué puede concluirse del procedimiento.
-
-Esta separación será importante más adelante. En análisis numérico es fácil producir una lista de aproximaciones; en cálculo debemos justificar **qué objeto determina esa lista y por qué**.
+La bisección proporciona una regla para construir intervalos cada vez más estrechos. Los teoremas anteriores justifican qué determina ese procedimiento: la completitud garantiza un punto común a los intervalos cerrados, no vacíos, acotados y encajados, y la reducción arbitraria de sus longitudes garantiza que ese punto es único. Al separar la regla de construcción de estos dos argumentos podemos saber qué parte del procedimiento asegura la existencia y cuál descarta otras posibilidades.
 
 ### Antes de seguir
 
@@ -12086,17 +11999,11 @@ $$
 }
 $$
 
-El capítulo dispone ya de casi toda su maquinaria estructural. En §1.10 la utilizaremos en un **laboratorio de completitud**: en lugar de aprender una nueva definición, tendremos que reconocer qué combinación de supremo, arquimedianidad, densidad, valor absoluto o intervalos encajados resuelve cada problema y, sobre todo, localizar exactamente dónde interviene la completitud.
+El supremo, la propiedad arquimediana, la densidad y los intervalos encajados resuelven problemas de existencia de formas diferentes. Al combinarlos habrá que reconocer cuál corresponde a la situación y qué hipótesis permiten utilizarlo.
 
 ## Laboratorio de completitud {#sec-t1-c02-10}
 
-Hasta aquí hemos estudiado las herramientas del capítulo una por una. Sabemos trabajar con valor absoluto, cotas, supremos e ínfimos; conocemos el axioma de completitud y varias de sus consecuencias; podemos producir escalas pequeñas mediante la propiedad arquimediana, insertar racionales e irracionales por densidad y justificar la existencia de puntos comunes mediante intervalos encajados.
-
-Ahora cambia la tarea.
-
-En los problemas que siguen **no se anunciará de antemano qué herramienta debe utilizarse**. La primera parte de cada solución será, precisamente, diagnosticar la estructura del problema.
-
-Conviene adoptar este protocolo:
+Buscar la frontera de un conjunto, insertar un número en un intervalo y controlar una aproximación exigen elecciones diferentes. Los problemas siguientes combinan esas tareas: antes de calcular habrá que reconocer qué se busca y comprobar qué resultado permite construirlo. Una forma de organizar esa decisión es
 
 $$
 \boxed{
@@ -12735,37 +12642,7 @@ Cuando aparezca un problema de este capítulo, estas preguntas ayudan a elegir e
 - ¿Aparece $|x-a|$? Traduzcamos entre distancia, intervalo y desigualdad antes de manipular símbolos.
 - ¿Se elimina una hipótesis de un teorema? Antes de intentar demostrar la nueva afirmación, busquemos un contraejemplo.
 
-No se trata de convertir estas preguntas en una tabla mecánica. Su función es ayudar a reconocer la **forma matemática** de un problema.
-
-### Lo que queda antes de cerrar el capítulo
-
-Ya no falta teoría conceptual nueva en este capítulo. La última sección será el banco completo de ejercicios y soluciones.
-
-Allí tendremos que utilizar de manera autónoma todo el repertorio:
-
-$$
-\boxed{
-\text{axiomas de cuerpo y álgebra derivada}
-+
-\text{orden}
-+
-|\cdot|
-+
-\sup/\inf
-+
-\text{completitud}
-+
-\text{arquimedianidad}
-+
-\text{densidad}
-+
-\text{bisección}
-}
-$$
-
-Además, el banco contendrá las inecuaciones racionales con valor absoluto de alta complejidad ya comprometidas, con control explícito de dominio, puntos críticos, signos, extremos y recomposición final de soluciones.
-
-En §1.11 desaparecerá buena parte del andamiaje guiado: el lector deberá decidir por sí mismo qué herramientas utilizar y justificar cada paso.
+La elección de herramienta nace de la condición que debemos satisfacer. Identificar esa condición permite comprobar al terminar si el argumento obtuvo la frontera, el punto o la cota que se pedía.
 
 ## Ejercicios y soluciones {#sec-t1-c02-11}
 
@@ -15089,25 +14966,6 @@ $$
 }
 $$
 :::
-
-### Auditoría del banco
-
-Antes de cerrar el capítulo, conviene verificar el contrato de esta sección.
-
-- Ejercicios publicados: **40**.
-- Soluciones publicadas: **40**.
-- Correspondencia `EXR-0036--0075` / `SOL-0036--0075`: **completa**.
-- Distribución A–G: $7+7+7+6+5+5+3=40$.
-- Tipologías `CONCEPTUAL`, `PROOF`, `COUNTEREXAMPLE`, `DISCOVERY`, `SYNTHESIS` y `GEOMETRY`: presentes.
-- Inecuaciones racionales con valor absoluto de alta complejidad: **3**, en B7, C6 y D5.
-- Reproducciones literales de demostraciones ya resueltas en el desarrollo: **eliminadas del banco**. Cuando una idea reaparece, exige transferencia, generalización, diagnóstico o combinación de herramientas.
-- Capa axiomática: clasificación axioma/definición/resultado (A4), identidad y orden de recíprocos (B3), signo de cocientes (B6), ecuación afín con existencia y unicidad (C4), cancelación con solución perdida (D2), división por cero (E3) y reconstrucción estructural de $(-1)a=-a$ (F5).
-- Transferencias de completitud: supremos bajo unión y traslación, eliminación finita de puntos, transporte del hueco racional, intervalos racionales encajados y propiedad de corte.
-- Problemas F: traslación del supremo, elección arquimediana simultánea, densidad con control de denominador, presupuesto de bisección y reconstrucción axiomática: **5/5**.
-- Problemas G de síntesis: suma de conjuntos, propiedad de corte y construcción de una raíz cúbica mediante supremo: **3/3**.
-- Dependencias de `T1-C03` o posteriores: **ninguna**.
-
-La política pedagógica del banco queda así alineada con la progresión del capítulo: **primero modelar la justificación, después retirar el andamiaje y exigir transferencia**.
 
 ---
 

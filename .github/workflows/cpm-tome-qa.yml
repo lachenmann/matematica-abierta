@@ -1,5 +1,16 @@
 name: CPM Tomo I · navegador
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'libros/capitulos/**'
+      - 'libros/para-matematicos/calculo-para-matematicos.md'
+      - 'assets/books/cpm-tomo-i/**'
+      - 'data/cpm-tome-i-*'
+      - 'tools/*cpm*'
+      - 'tests/cpm_tome*'
+      - '_quarto-cpm-qa.yml'
+      - '.github/workflows/cpm-tome-qa.yml'
   pull_request:
     branches: [main]
     paths:
@@ -13,7 +24,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: cpm-tome-qa-${{ github.event.pull_request.number }}
+  group: cpm-tome-qa-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 jobs:
   browser:

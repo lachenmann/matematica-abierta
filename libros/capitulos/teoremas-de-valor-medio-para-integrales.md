@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-09-30
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -56,7 +56,7 @@ $$
 
 no hemos identificado todavía una altura particular de la gráfica que pueda representar por sí sola ese valor.
 
-Hay, sin embargo, una normalización elemental que transforma la integral en una cantidad con la misma escala vertical que los valores de $f$. La longitud del intervalo es $b-a$; por tanto, cuando $a<b$, podemos repartir el valor integral uniformemente sobre esa longitud.
+Si $a<b$, dividir la integral por la longitud $b-a$ produce un número con la escala vertical de los valores de $f$. Podemos interpretarlo como la altura que, distribuida uniformemente sobre el intervalo, reproduce el valor integral.
 
 ::: {#def-t1-0068}
 **Definición (promedio integral).** Sea $f\in\mathcal R[a,b]$, con $a<b$. El **promedio integral** de $f$ sobre $[a,b]$ es
@@ -70,7 +70,7 @@ $$
 $$
 :::
 
-La definición exige integrabilidad de Riemann, pero **no continuidad**. La continuidad aparecerá más adelante, cuando preguntemos si este número promedio es efectivamente uno de los valores tomados por la función.
+Para definir el promedio basta la integrabilidad de Riemann. Para asegurar que alguna imagen de la función coincide con ese número necesitaremos una hipótesis adicional; la continuidad permitirá obtenerla mediante el valor intermedio.
 
 La identidad que define el promedio puede escribirse también como
 
@@ -84,7 +84,7 @@ Esta forma explica la expresión *altura media*: el factor $b-a$ aporta la longi
 
 ![El promedio integral actúa como una altura media: para una función no negativa, el rectángulo de base $[a,b]$ y altura $\operatorname{Avg}_{[a,b]}(f)$ representa el mismo contenido integral.](<../../assets/books/cpm-tomo-i/t1-c16-fig-01.png>){#fig-t1-c16-01 width=92% fig-alt="El área bajo una función se compara con un rectángulo cuya altura es el promedio."}
 
-La lectura geométrica de [Figura 15.1](#fig-t1-c16-01) interpreta el promedio como una **altura numérica**; todavía no afirma que exista un punto de la gráfica que la realice.
+La figura [Figura 15.1](#fig-t1-c16-01) representa el promedio como una **altura numérica**. La existencia de un punto de la gráfica a esa altura requiere una demostración aparte.
 
 ::: {#exm-t1-0198}
 **Dos calibraciones básicas del promedio.**
@@ -139,7 +139,7 @@ $$
 
 La primera pregunta tiene respuesta tan pronto como $f$ es Riemann integrable. La segunda requiere hipótesis adicionales: la integrabilidad, por sí sola, no autoriza a afirmar que el promedio pertenece a la imagen de $f$.
 
-Esta distinción será el eje del capítulo. Antes de buscar un punto que realice el promedio, necesitamos saber **dónde puede quedar situado ese número respecto de las cotas de la función**. Esa es exactamente la tarea de §15.2.
+Empezaremos por localizar el promedio respecto de las cotas de la función. Esa comparación permitirá distinguir la estimación numérica de la afirmación de que el promedio se alcanza en algún punto.
 
 ## El promedio queda entre las cotas de la función {#sec-t1-c16-02}
 
@@ -485,11 +485,11 @@ El argumento muestra con precisión dónde entra la continuidad: una desigualdad
 
 La diferencia con §15.2 es decisiva. Allí bastaba integrabilidad para encerrar el promedio entre cotas no estrictas. Aquí la continuidad permite convertir una desigualdad puntual estricta en una desigualdad **integral** estricta.
 
-Para una función continua no constante, el promedio ya no está solo en el intervalo $[m,M]$: está en su interior $(m,M)$. El siguiente paso será usar continuidad una segunda vez, ahora mediante el teorema del valor intermedio, para demostrar que alguna altura de la gráfica realiza exactamente ese promedio. Esa será la tarea exclusiva de §15.4.
+Para una función continua no constante, el promedio queda en $(m,M)$. El valor intermedio convertirá esa localización estricta en la existencia de un punto cuya imagen sea exactamente el promedio.
 
 ## Teorema del valor medio para integrales {#sec-t1-c16-04}
 
-Las tres secciones anteriores separaron cuidadosamente las piezas que ahora pueden ensamblarse. El promedio integral es un número bien definido para toda función integrable; para una función continua no constante ese número queda estrictamente entre el mínimo y el máximo de la función. Falta convertir esa localización numérica en una afirmación de existencia.
+El promedio está definido para toda función integrable. Si la función es continua y no constante, ya sabemos que queda estrictamente entre su mínimo y su máximo; podemos aplicar el teorema del valor intermedio para demostrar que se alcanza.
 
 ::: {#thm-t1-0053}
 **Teorema (valor medio para integrales).** Sea $f:[a,b]\to\mathbb R$ continua, con $a<b$. Entonces existe un punto
@@ -1467,9 +1467,9 @@ f(c_{u,v})(v-u).
 }
 $$
 
-Este es el puente conceptual que sí podemos usar ahora: **cada subintervalo fijo tiene una altura media realizada por la función**.
+Para cada subintervalo fijo, la continuidad permite que alguna imagen de la función realice su promedio integral.
 
-Pero conviene detenerse exactamente aquí. El punto $c_{u,v}$ depende, en general, del subintervalo y el teorema no proporciona una elección única ni una regla para seguirlo cuando cambian $u$ o $v$. En particular, todavía no tomamos límites de expresiones como
+El punto $c_{u,v}$ puede depender del subintervalo y no está determinado de manera única por el teorema. Si queremos estudiar un límite cuando cambian $u$ y $v$, necesitaremos justificarlo sin presuponer una elección regular de esos puntos. Esto afecta, en particular, a expresiones como
 
 $$
 \frac{1}{h}\int_x^{x+h}f(t)\,dt,
@@ -1485,7 +1485,7 @@ Ambos pasos pertenecen a C17.
 
 ![El teorema del valor medio puede aplicarse a cada subintervalo fijo $[u,v]$, pero no proporciona una elección canónica de $c_{u,v}$ ni autoriza todavía a convertir un extremo de integración en variable.](<../../assets/books/cpm-tomo-i/t1-c16-fig-08.png>){#fig-t1-c16-08 width=94% fig-alt="Varios intervalos fijos tienen puntos realizadores distintos; esto no define una función de extremo variable."}
 
-La frontera exacta entre el resultado disponible en C16 y el paso reservado a C17 se resume en [Figura 15.8](#fig-t1-c16-08).
+La figura [Figura 15.8](#fig-t1-c16-08) distingue lo que permite afirmar el valor medio de la cuestión adicional sobre derivar una acumulación con extremo variable.
 
 ### Mapa de decisión antes de usar un resultado
 
@@ -1497,7 +1497,7 @@ Ante una integral y una afirmación sobre “promedios”, conviene preguntar en
 4. **¿Quiero realizar un promedio ponderado como $f(c)$?** Verifique continuidad de $f$, signo fijo de $w$ y, para escribir el cociente, $\int w\ne0$; entonces use [Teorema 15.2](#thm-t1-0054).
 5. **¿Aparece un extremo variable o un límite de cocientes integrales?** El problema ya apunta a C17 y no debe resolverse adelantando el FTC.
 
-Con este mapa queda cerrada la parte expositiva del capítulo. §15.11 se dedicará exclusivamente al banco de ejercicios y soluciones.
+En los ejercicios se distinguirán las cotas del promedio, la existencia de un punto que lo realiza y las condiciones sobre los pesos. El resultado elegido deberá corresponder tanto a la pregunta como a las hipótesis disponibles.
 
 ## Ejercicios y soluciones {#sec-t1-c16-11}
 

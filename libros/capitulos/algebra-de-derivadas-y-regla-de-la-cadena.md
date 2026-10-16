@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-20
-date-modified: 2026-10-06
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -42,7 +42,7 @@ En el capítulo anterior aprendimos a determinar la derivada de una función *en
 
 Hasta aquí, las derivadas se han obtenido principalmente desde su definición. Pero las funciones que queremos estudiar rara vez llegan aisladas: se suman, se multiplican, se dividen y se componen. Por ejemplo, incluso cuando conocemos las derivadas de $f$ y de $g$, todavía debemos justificar qué podemos afirmar sobre $f+g$, $fg$, $f/g$ o $g\circ f$.
 
-Este capítulo convierte la información diferencial puntual en un conjunto de procedimientos demostrados. Su propósito no será presentar una tabla para memorizar, sino descubrir **por qué funcionan las reglas, cuándo se pueden aplicar y qué afirmaciones no permiten hacer**. La regla de la cadena constituirá el punto culminante: componer funciones exige seguir el paso de los incrementos por dos escalas y no dividir por una cantidad que podría anularse.
+Para derivar una combinación de funciones necesitaremos relacionar su incremento con los incrementos de las componentes. En la composición habrá que seguir dos escalas: el cambio del argumento y el cambio que este produce en la función interior. La prueba de la regla de la cadena deberá admitir que ese segundo cambio pueda anularse.
 
 La ruta de construcción será
 
@@ -57,7 +57,7 @@ $$
 }
 $$
 
-Comenzaremos, sin embargo, con una dificultad previa. Conocer las derivadas de dos funciones no nos autoriza a trasladar mecánicamente a sus derivadas la operación con la que formamos una función nueva.
+El producto permite ver la dificultad inicial: conocer dos pendientes no determina la pendiente del producto mediante una multiplicación de esos números.
 
 ## Por qué las reglas de derivación necesitan demostración {#sec-t1-c08-01}
 
@@ -181,7 +181,7 @@ f(1+h)=1+h,
 g(1+h)=1+h.
 $$
 
-El producto muestra inmediatamente por qué no basta multiplicar los coeficientes $1$ y $1$: también intervienen los valores centrales de los factores. En capítulos posteriores veremos que la perspectiva de los residuos permite seguir composiciones enteras de aproximaciones; por ahora solo necesitamos advertir que **operar con funciones no equivale a operar sin más con sus pendientes**.
+El incremento del producto depende también de los valores centrales de los factores, además de sus pendientes. Las aproximaciones con residuo permitirán identificar esos términos y separar los que contribuyen al primer orden de los que desaparecen al dividir por el incremento.
 
 ### Antes de aplicar una regla: cuatro preguntas
 
@@ -368,9 +368,9 @@ La diferenciabilidad de **ambas** funciones sobre el mismo dominio en $a$ es una
 
 ### Reconstruir la estrategia
 
-Antes de pasar a la siguiente regla, intenta explicar qué diferencia hay entre la identidad algebraica de incrementos y el teorema analítico de existencia del límite. ¿Qué hipótesis asegura cada límite por separado? ¿Por qué el caso de un coeficiente cero no exige una prueba nueva? ¿Dónde interviene la inducción para pasar de dos funciones a un número finito de funciones? Si puedes responder sin recurrir a una tabla de fórmulas, has reconstruido la arquitectura de la prueba.
+La identidad de incrementos es algebraica; el paso a la derivada utiliza los límites de los cocientes de cada función. Un coeficiente cero elimina el término correspondiente, y la inducción extiende la regla de dos sumandos a cualquier número finito. Son estas justificaciones las que permiten reutilizar la fórmula.
 
-La próxima sección estudiará un producto. Su incremento ya no se separa por simple distributividad en dos diferencias independientes: tendremos que **inventar un término intermedio** para encontrar una identidad útil, y justificar un límite adicional mediante continuidad.
+En un producto, el incremento no se separa inmediatamente en dos diferencias independientes. Introduciremos un término intermedio para obtener una identidad útil y utilizaremos continuidad para controlar el factor que conserva un argumento variable.
 
 ## La regla del producto: separar una variación en dos {#sec-t1-c08-03}
 
@@ -542,7 +542,7 @@ $$
 
 ### Dominios distintos, extremos y límites de la inferencia
 
-La hipótesis de **dominio común** no es decorativa. Si inicialmente $f:A\to\mathbb R$ y $g:B\to\mathbb R$, definimos $fg$ sobre $C=A\cap B$. Para aplicar la regla en $a\in C$ debemos verificar que $a$ sea punto de acumulación de $C$ y que las **restricciones** $f|_C$ y $g|_C$ sean diferenciables en $a$ relativamente a $C$. La diferenciabilidad de las funciones originales, por sí sola, no asegura que el producto tenga derivada si la intersección carece de puntos próximos distintos de $a$, tal como comprobamos para sumas en §7.2.
+Para aplicar la regla sobre un **dominio común** debe haber incrementos admisibles arbitrariamente pequeños en ese dominio. Si $f:A\to\mathbb R$ y $g:B\to\mathbb R$, el producto tiene dominio $C=A\cap B$; en $a\in C$ verificaremos que $a$ es punto de acumulación de $C$ y que las restricciones $f|_C$ y $g|_C$ son diferenciables relativamente a $C$. La diferenciabilidad en los dominios originales no garantiza por sí sola la acumulación en su intersección.
 
 En un extremo, por ejemplo $a=0$ para $A=[0,\infty)$, la prueba permanece válida con incrementos admisibles $h>0$. No hemos supuesto derivadas bilaterales ni prolongaciones fuera de $A$.
 
@@ -558,7 +558,7 @@ Reconstruye la prueba sin mirar la fórmula: ¿qué valor agregamos y sustraemos
 
 ### Antes de derivar, determinar dónde existe la función
 
-En §7.3 no exigimos que ninguno de los factores de un producto fuera distinto de cero. Para formar un recíproco la situación cambia: la expresión $1/g(x)$ solo define un valor real cuando $g(x)\ne0$. La primera pregunta no es, por tanto, «¿qué fórmula de derivación usamos?», sino **«¿en qué conjunto está definida la función que pretendemos derivar?»**.
+Para formar el recíproco tenemos que excluir los ceros de $g$: la expresión $1/g(x)$ solo define un número real cuando $g(x)\ne0$. La primera comprobación consiste en identificar el dominio de la función que queremos derivar.
 
 Sean $g:A\to\mathbb R$ y $a\in A$, donde $A\subseteq\mathbb R$ y $a$ es punto de acumulación de $A$. Definamos el dominio natural del recíproco:
 
@@ -890,7 +890,7 @@ Para una función diferenciable arbitraria $f$, la regla de productos finitos de
 Explica por qué el caso inicial de la inducción debe demostrar *existencia* y *valor* de la derivada. En el paso $x^{n+1}=x^nx$, indica qué resultado permite afirmar que el nuevo producto es diferenciable. Después, localiza el único lugar de la prueba del corolario donde se utiliza que un polinomio tiene un número **finito** de términos. Finalmente, explica por qué $x^0$ se trata como función constante y por qué el corolario no autoriza aún la derivación de $x^{-3}$ en $0$.
 :::
 
-La transición a §7.6 exige ahora responder dos preguntas distintas: ¿qué cambia cuando una potencia necesita dividir por $x$, y qué dominio debemos conservar cuando una función es el cociente de dos polinomios?
+Las potencias negativas requieren dividir por $x$, y un cociente de polinomios exige excluir los ceros de su denominador. Esas restricciones determinarán el dominio sobre el que podrán aplicarse las reglas.
 
 ## Potencias enteras negativas y funciones racionales {#sec-t1-c08-06}
 
@@ -1256,13 +1256,13 @@ La fórmula final multiplica dos derivadas, pero no se obtiene cancelando formal
 
 Intenta demostrar el teorema partiendo solo de su conclusión: ¿qué cociente incremental debe converger?, ¿cuál es la división que no está permitida en general?, ¿cómo se define $K$ en el punto omitido y qué propiedad justifica ese valor?, ¿qué teorema garantiza $f(a+h)\to f(a)$?, ¿en qué punto se evalúa finalmente $g'$? Repite después la prueba sobre el ejemplo por tramos, donde todos los incrementos negativos anulan la variación interior. Si la demostración sigue siendo válida, has identificado el mecanismo esencial.
 
-En §7.8 aplicaremos esta regla a composiciones sucesivas. El nuevo problema ya no será justificar una división, sino **conservar correctamente cada punto intermedio de evaluación** cuando la cadena tenga más de dos eslabones.
+Al derivar composiciones sucesivas habrá que conservar cada punto intermedio: la derivada exterior se evalúa en la imagen de la etapa anterior, y cada factor corresponde a una de esas entradas.
 
 ## Composiciones repetidas sin perder los puntos de evaluación {#sec-t1-c08-08}
 
 ### Una cadena tiene más de un punto de referencia
 
-La regla demostrada en §7.7 deriva una composición de dos funciones. Ante una expresión con tres, cuatro o más operaciones anidadas, el peligro ya no es solamente omitir un factor: es **evaluar una derivada en la entrada equivocada**. Una composición transporta el punto inicial a través de varias funciones; cada derivada corresponde al punto al que llega la etapa anterior.
+En una composición de varias funciones, cada etapa transporta la entrada a un punto nuevo. La fórmula debe incluir tanto el factor de cada derivada como su argumento correcto; calcular todos los factores en el punto inicial daría, en general, otro número.
 
 Supongamos, por ejemplo, que tenemos funciones correctamente encadenadas
 
@@ -1821,7 +1821,7 @@ La ruta común a las ocho estaciones puede reconstruirse en el siguiente orden, 
 Ante una composición con un cociente en su interior, ¿puedes señalar el dominio antes de derivar, nombrar los puntos de evaluación, identificar la única división peligrosa de la prueba de la cadena y sustituirla por una identidad válida? ¿Puedes además explicar por qué una regla que no se aplica no demuestra que la derivada buscada no exista? Si las respuestas contienen una hipótesis y un argumento, no solo una fórmula, has recuperado el método del capítulo.
 :::
 
-Hemos pasado de construir reglas aisladas a **elegir y justificar una ruta de derivación**. La sección siguiente reúne cuarenta ejercicios originales con sus cuarenta soluciones desarrolladas: allí estas decisiones se practicarán sin el andamiaje completo de las estaciones y se auditará cada correspondencia entre problema y solución antes del cierre del capítulo.
+Elegir una ruta de derivación exige reconocer la operación exterior y comprobar las hipótesis en cada punto intermedio. Los cuarenta ejercicios con sus soluciones desarrolladas permiten practicar esas decisiones con un apoyo menor que el de las estaciones.
 
 ## Ejercicios y soluciones {#sec-t1-c08-11}
 
@@ -2831,12 +2831,6 @@ $$
 
 La no anulación local fue necesaria para escribir la fracción inicial y pasar al límite. No se dividió por incrementos de $f$ o $g$, que podrían ser cero, ni se usaron las reglas del recíproco o del cociente como premisas.
 :::
-
-### Auditoría del banco
-
-El inventario de esta sección comprende cuarenta enunciados y cuarenta soluciones homólogas con identificadores continuos `CPM-T1-EXR-0276--0315` y `CPM-T1-SOL-0276--0315`, distribuidos como $7A+7B+7C+6D+5E+5F+3G$. Las soluciones se han redactado para este libro conforme al diseño del capítulo; la indicación editorial `ORIGINAL` no equivale a una certificación de similitud externa.
-
-La comprobación de correspondencias, sintaxis, referencias internas y dependencias se documenta en la auditoría técnica independiente. Completar el manuscrito no reemplaza su revisión matemática final, la compilación efectiva con Quarto ni la aprobación visual; esas condiciones siguen siendo necesarias antes de declarar el capítulo cerrado y publicable.
 
 ---
 

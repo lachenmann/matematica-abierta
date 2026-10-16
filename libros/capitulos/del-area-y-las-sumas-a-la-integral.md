@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-10-01
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -46,14 +46,14 @@ format:
 
 La Parte III comienza con una pregunta más antigua que el propio cálculo: **¿cómo asignar un número a una región de borde curvo de manera que ese número pueda calcularse y justificarse?** Para rectángulos y triángulos disponemos de fórmulas geométricas exactas. Pero una región limitada por la gráfica de una función ya no se descompone, en general, en un número finito de figuras elementales cuya suma conozcamos de antemano.
 
-La respuesta del cálculo integral no consistirá en declarar que cierta expresión «es el área» y manipular después el símbolo. El camino será el inverso. Empezaremos por objetos que sí sabemos medir exactamente —rectángulos y sumas finitas—, construiremos aproximaciones por abajo y por arriba, estudiaremos qué ocurre cuando la descomposición se refina y solo entonces preguntaremos cuándo todas esas aproximaciones determinan un único número.
+Empezaremos con rectángulos y sumas finitas, cuyas áreas podemos calcular exactamente. Las aproximaciones inferiores y superiores encerrarán la cantidad buscada; al refinar las descomposiciones podremos estudiar cuándo la incertidumbre se reduce hasta determinar un único número.
 
 Este orden separa dos niveles que conviene no confundir:
 
 1. la **motivación geométrica**, que explica por qué aparecen rectángulos y áreas;
 2. la **construcción analítica**, que debe formularse con números, desigualdades y límites sin depender de un dibujo.
 
-En particular, todavía no definiremos la integral de Riemann de una función general. Este capítulo construirá el lenguaje de particiones, funciones escalonadas y sumas que hará posible esa definición en el capítulo siguiente.
+Las particiones, las funciones escalonadas y sus sumas proporcionarán los objetos con los que podremos formular después la integral de Riemann de una función general.
 
 ## Del área geométrica al problema analítico {#sec-t1-c14-01}
 
@@ -75,7 +75,7 @@ $$
 
 puede hacerse tan pequeño como queramos, entonces queda abierta la posibilidad de que el área esté determinada por esas cotas.
 
-Esta es la idea de **exhaución**: no adivinar el valor, sino reducir la región de incertidumbre que lo contiene. El capítulo anterior utilizó una disciplina semejante para las raíces: una aproximación tenía valor matemático cuando venía acompañada por un certificado. Aquí el certificado inicial será un par de sumas que encierran la cantidad buscada.
+La **exhaución** consiste en reducir la diferencia entre las aproximaciones que encierran la cantidad buscada. Como en el aislamiento de raíces, la aproximación debe venir acompañada de una justificación: aquí la proporcionan dos sumas y una cota para su separación.
 
 ### Los rectángulos convierten geometría en sumas
 
@@ -229,7 +229,7 @@ Responder esa pregunta es anterior a definir la integral. Si las cotas dependier
 
 En el cálculo diferencial partíamos de una función y examinábamos su comportamiento alrededor de un punto. La integración invierte parcialmente la escala de observación: dividiremos un intervalo completo en piezas, obtendremos información local en cada una y **sumaremos** esas contribuciones.
 
-La palabra «local» tendrá ahora un significado diferente. No se trata todavía de tomar una derivada en un punto, sino de controlar una función en cada subintervalo de una descomposición finita. El paso al límite aparecerá después, al estudiar familias cada vez más finas de esas descomposiciones.
+El control se refiere aquí a cada subintervalo de una descomposición finita. Al considerar familias de descomposiciones más finas podremos estudiar un límite, conservando las estimaciones que relacionan sus piezas.
 
 El principio rector de este primer capítulo de integración será, por tanto:
 
@@ -247,7 +247,7 @@ En §13.2 formalizaremos el primer objeto de esa construcción: particiones, lon
 
 ## Particiones, subintervalos y refinamientos {#sec-t1-c14-02}
 
-En §13.1 dividimos $[0,1]$ en intervalos de igual longitud porque esa elección hacía transparente el cálculo. Pero una teoría de integración no puede depender de que la función se comporte de manera uniforme en todo el dominio ni de que todas las franjas tengan el mismo ancho. Necesitamos describir una descomposición finita de $[a,b]$ sin imponer todavía cómo se usarán los valores de la función dentro de cada pieza.
+La descomposición uniforme de $[0,1]$ facilitó el primer cálculo, pero una función puede variar de maneras muy distintas en zonas diferentes. Para admitir anchos desiguales necesitamos describir una descomposición finita de $[a,b]$ sin fijar todavía qué valores de la función usaremos dentro de cada pieza.
 
 El objeto básico será una **partición**. La palabra no designará una figura ni una suma: designará únicamente los puntos de corte del intervalo. Mantener separados estos papeles será importante. Primero decidimos dónde cortar; después construiremos funciones escalonadas, cotas o sumas sobre los subintervalos producidos por esos cortes.
 
@@ -998,7 +998,7 @@ $$
 =\sum_{k=1}^n c_k\Delta x_k.
 $$
 
-Pero hacerlo ahora escondería exactamente la cuestión que debemos resolver. La función $s$ puede admitir otra partición representante
+El número asignado debe depender de $s$, con independencia de la partición utilizada para representarla. Supongamos que la misma función admite otra partición representante
 
 $$
 Q=\{y_0,\ldots,y_m\}
@@ -1814,7 +1814,7 @@ $$
 
 Todo esto se ha obtenido sin definir la integral de Riemann de una función general y sin recurrir a un proceso límite en las propiedades demostradas.
 
-El paso siguiente cambia de objeto. En §13.6 ya no partiremos de una función escalonada, sino de una función **acotada** $f:[a,b]\to\mathbb R$. Sobre cada subintervalo de una partición preguntaremos por sus cotas inferior y superior. De ahí surgirán las sumas que aproximan a $f$ desde abajo y desde arriba.
+Para una función **acotada** $f:[a,b]\to\mathbb R$ podemos buscar cotas inferiores y superiores en cada pieza, aunque no sea escalonada. Esas cotas proporcionarán las sumas que la aproximan por abajo y por arriba.
 
 **Antes de seguir.** ¿Por qué la prueba de linealidad necesita una partición común? ¿Cómo se deduce monotonía de linealidad y positividad? ¿Por qué $\int s=0$ no implica que $s$ sea la función nula? ¿Qué papel cumple insertar el punto $c$ en la prueba de aditividad por intervalos? ¿Por qué el valor puntual $s(c)$ no aporta un término separado a ninguna de las dos integrales?
 
@@ -2757,7 +2757,7 @@ Hemos probado que toda suma inferior queda por debajo de toda suma superior. Tod
 Esas operaciones pertenecen a C15, donde se definirá la integrabilidad de Riemann. En este capítulo seguimos trabajando únicamente con sumas finitas asociadas a particiones concretas.
 :::
 
-La próxima sección cambiará nuevamente el tipo de dato asociado a cada pieza. En lugar de tomar obligatoriamente el ínfimo o el supremo, elegiremos un punto dentro de cada subintervalo y evaluaremos allí la función. Surgirán así las **particiones etiquetadas** y las sumas de Riemann, que quedarán encerradas entre las cotas que acabamos de ordenar.
+Al elegir un punto de cada subintervalo y evaluar allí la función obtenemos una **partición etiquetada** y su suma de Riemann. La comparación con ínfimos y supremos encerrará esa suma entre las cotas correspondientes a la misma partición.
 
 **Antes de seguir.** ¿Por qué $J\subseteq I$ hace subir el ínfimo y bajar el supremo? ¿Dónde se usa la positividad de las anchuras en la demostración de [Proposición 13.6](#prp-t1-0069)? ¿Por qué el refinamiento común permite comparar sumas construidas con particiones no comparables? ¿Qué demuestra [Ejemplo 13.11](#exm-t1-0184) sobre la diferencia entre malla pequeña y refinamiento? ¿Qué paso sigue faltando antes de poder definir una integral para una función acotada general?
 
@@ -3195,7 +3195,7 @@ U(f,P).
 }
 $$
 
-La pregunta siguiente ya no será dónde puede caer una suma etiquetada, sino **cuánto espacio queda entre las dos barreras extremas**. En §13.9 expresaremos exactamente la diferencia $U(f,P)-L(f,P)$ mediante las oscilaciones de $f$ en los subintervalos de $P$.
+La diferencia $U(f,P)-L(f,P)$ mide la incertidumbre que deja el encierro de una partición. Podemos expresarla mediante las oscilaciones de $f$ en sus subintervalos.
 
 **Antes de seguir.** ¿Qué información adicional aporta una etiqueta respecto de una partición sin etiquetas? ¿Por qué la malla no cambia al modificar $\xi$? ¿Dónde se usa que $\xi_k\in[x_{k-1},x_k]$ en la prueba de [Proposición 13.7](#prp-t1-0070)? ¿Por qué una suma superior puede no ser una suma de Riemann efectivamente alcanzable? ¿Qué demuestra [Ejemplo 13.13](#exm-t1-0186) acerca de dos elecciones de etiquetas con la misma malla? ¿Qué condición falta todavía para pasar de sumas finitas a una integral de una función general?
 
@@ -3239,7 +3239,7 @@ $$
 \omega(f;I)\ge0.
 $$
 
-La oscilación no mide la altura absoluta de la función, sino la amplitud vertical de sus valores sobre el conjunto considerado. Una función constante puede tener altura enorme y oscilación cero; una función que toma valores positivos y negativos puede tener una oscilación grande aunque su suma o su promedio presenten cancelaciones.
+La oscilación mide la amplitud vertical de los valores sobre el conjunto considerado. Una función constante tiene oscilación cero cualquiera que sea su altura; una función con valores positivos y negativos puede tener oscilación grande aunque sus sumas presenten cancelaciones.
 
 Para una partición
 
@@ -4304,7 +4304,7 @@ Por tanto, la pregunta pendiente ya puede formularse con precisión conceptual, 
 
 > ¿Cuándo esta familia compatible de encierros finitos obliga a que todas las aproximaciones admisibles señalen un mismo número real, independientemente de cómo se elijan los cortes y las etiquetas?
 
-C15 transformará esta pregunta en una definición y en criterios equivalentes. C14 debe detenerse justo antes de ese paso.
+Para responder necesitaremos una definición que reúna todas las aproximaciones compatibles y un criterio que garantice que determinan un solo valor.
 
 No basta con afirmar que «los rectángulos se hacen pequeños». Tampoco basta con observar una secuencia convergente. Lo que falta es un mecanismo que convierta la **compatibilidad de todas las aproximaciones** en la existencia de un valor único.
 
@@ -4352,9 +4352,9 @@ No trasladamos esa definición hacia atrás.
 
 ### Antes del banco de ejercicios
 
-El capítulo dispone ya de toda su teoría expositiva. §13.11 no añadirá resultados nuevos: servirá para obligar al lector a reconstruir las diferencias entre objetos, verificar hipótesis, calcular sumas y brechas, refinar particiones, detectar razonamientos circulares y explicar por qué ciertos ejemplos sí reducen la incertidumbre mientras otros no.
+Los ejercicios ponen en relación los objetos construidos: sumas, particiones, refinamientos y brechas. Habrá que calcular y comparar encierros, reconocer qué información reduce la incertidumbre y detectar los argumentos que presuponen el valor integral que aún se busca definir.
 
-**Antes de seguir.** ¿Por qué la integral elemental de una escalonada puede estar ya definida aunque $L(s,P)<U(s,P)$ para una partición concreta? ¿Qué demuestra la inclusión $J(f,P\vee Q)\subseteq J(f,P)\cap J(f,Q)$? ¿Por qué la convergencia de una sola familia de sumas etiquetadas no basta todavía? ¿Qué error lógico hay en reemplazar refinamiento por malla menor? ¿Qué información contiene la brecha que la malla por sí sola no contiene? ¿Cuál es exactamente la pregunta que queda reservada a C15?
+La integral elemental de una escalonada y las sumas de Darboux asociadas a una partición concreta son objetos distintos. Refinar coordina los encierros, mientras que reducir la malla exige otro tipo de control. La convergencia de una sola familia etiquetada deja abierta la compatibilidad con todas las demás; esa será la dificultad que deberá resolver la definición de integrabilidad.
 
 ## Ejercicios y soluciones {#sec-t1-c14-11}
 

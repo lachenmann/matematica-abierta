@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-10-06
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -87,7 +87,7 @@ f
 }
 $$
 
-Ese problema es más sutil. Las reglas de derivación nos dicen cómo **destruir una estructura conocida** para producir una derivada; integrar exige muchas veces **reconstruir la estructura que pudo haberla producido**.
+La derivación parte de una expresión conocida y aplica reglas a su estructura. La búsqueda de una primitiva exige reconocer qué estructura puede haber producido el integrando y comprobar la propuesta mediante derivación.
 
 ### Tres preguntas que no deben confundirse
 
@@ -253,7 +253,7 @@ $$
 
 La idea no consistió en adivinar la respuesta. Partimos de una regla de derivación ya conocida, reconocimos que el integrando aparecía como **una parte** de esa regla y reorganizamos la identidad hasta aislarlo.
 
-Más adelante convertiremos este procedimiento en una fórmula general. Por ahora importa el mecanismo conceptual:
+La fórmula general se apoyará en el mecanismo que acabamos de utilizar:
 
 $$
 \boxed{
@@ -503,9 +503,9 @@ F(g(x))+C.
 }
 $$
 
-La sustitución consiste en reconocer esta arquitectura incluso cuando la función interior $g(x)$ está parcialmente oculta por la notación o por manipulaciones algebraicas.
+Para aplicar sustitución debemos reconocer una composición y el factor diferencial de su función interior, aunque una transformación algebraica sea necesaria para hacerlos visibles.
 
-Conviene formalizar también la versión para integrales definidas, porque allí el cambio de variable transforma no solo el integrando, sino también los extremos.
+En una integral definida, el cambio de variable debe transformar también los extremos. La fórmula correspondiente precisará cómo se relacionan el intervalo original y los valores de la función de sustitución.
 
 ::: {#thm-t1-0066}
 **Teorema (cambio de variable en una dimensión).** Sean $I,J\subseteq\mathbb R$ intervalos.
@@ -959,7 +959,7 @@ El fracaso es diagnosticable: falta la derivada de la función interior.
 
 ### Cómo elegir la función interior
 
-En ejemplos sencillos la elección de $g$ parece evidente, pero conviene convertir la intuición en un protocolo.
+La elección de $g$ puede guiarse examinando si la derivada de una expresión interior aparece como factor en el integrando.
 
 Ante un integrando, busquemos una subexpresión $g(x)$ que satisfaga dos condiciones:
 
@@ -978,7 +978,7 @@ $$
 
 es la firma más clara de una sustitución directa.
 
-La elección no debe juzgarse por lo «bonita» que se vea $u=g(x)$, sino por una pregunta verificable:
+Para evaluar la elección $u=g(x)$ debemos comprobar qué expresión queda después del cambio y si facilita el problema:
 
 > después de efectuar el cambio, ¿todo el integrando puede escribirse únicamente con la nueva variable y su diferencial?
 
@@ -1054,7 +1054,7 @@ El cambio de variable queda así fundamentado como una inversión controlada de 
 
 ## Integración por partes: invertir la regla del producto {#sec-t1-c19-03}
 
-La sección anterior nació de una lectura inversa de la regla de la cadena. La integración por partes surge del mismo principio, pero ahora el punto de partida es la regla del producto.
+La integración por partes se obtiene leyendo la regla del producto como una relación entre primitivas, del mismo modo que la sustitución procede de la regla de la cadena.
 
 Si $u$ y $v$ son funciones diferenciables, [Teorema 7.2](algebra-de-derivadas-y-regla-de-la-cadena.md#thm-t1-0028) afirma que
 
@@ -1082,7 +1082,7 @@ u(x)v(x)-\int u'(x)v(x)\,dx.
 }
 $$
 
-La dificultad no estará en justificar la fórmula, sino en **elegir la descomposición** de modo que la nueva integral sea más sencilla que la original.
+Una vez justificada la fórmula, tendremos que elegir una descomposición que simplifique la integral restante. La identidad conserva su validez con elecciones diferentes, pero esas elecciones pueden facilitar o dificultar el cálculo.
 
 ### La fórmula y su demostración
 
@@ -1374,7 +1374,7 @@ $$
 \ln x.
 $$
 
-Este ejemplo muestra una habilidad que conviene incorporar desde ahora: **un producto útil puede estar presente aunque uno de sus factores sea simplemente $1$**.
+El ejemplo utiliza un producto en el que uno de los factores es $1$. Reconocer ese factor permite aplicar partes incluso cuando el integrando no se presenta inicialmente como un producto explícito.
 
 ### Elegir $u$ y $dv$ es parte del problema
 
@@ -1599,7 +1599,7 @@ $$
 $$
 :::
 
-La integración por partes queda así fundamentada como una reorganización de la regla del producto. La fórmula es universal bajo sus hipótesis; **la elección de los papeles es la parte estratégica**.
+La regla del producto justifica la identidad de integración por partes bajo sus hipótesis. Elegir los factores requiere además examinar la integral resultante y comprobar si el cambio facilita su cálculo.
 
 ## Repetir con propósito: partes iteradas y fórmulas de reducción {#sec-t1-c19-04}
 
@@ -1868,7 +1868,7 @@ Si no podemos señalarlo, todavía no hemos justificado que la iteración consti
 
 ### Cuando la integral original reaparece
 
-Hay otro comportamiento importante. A veces repetir integración por partes no hace desaparecer progresivamente una familia, sino que después de algunos pasos **reproduce la integral original**.
+Al repetir integración por partes puede reaparecer la integral original. En ese caso, en lugar de continuar indefinidamente, podemos reunir los términos y resolver la relación algebraica obtenida cuando el coeficiente correspondiente lo permite.
 
 Eso no tiene por qué ser un fracaso.
 
@@ -2350,7 +2350,7 @@ $$
 }
 $$
 
-La elección de la sustitución no fue adivinatoria. El exponente impar permitió **reservar** precisamente el factor $\sin x\,dx$ que exige la derivada de $\cos x$.
+El exponente impar permitió separar el factor $\sin x\,dx$, que corresponde a la derivada de $\cos x$ con el signo adecuado. La identidad del cuadrado transforma los factores restantes en una expresión de la nueva variable.
 
 ### Si ambos exponentes son impares, hay más de una ruta
 
@@ -5438,13 +5438,13 @@ $$
 La derivación de la expresión final devuelve $1/(x^2+1)^3$.
 :::
 
-Los factores cuadráticos irreducibles repetidos completan así el mecanismo analítico de los bloques de fracciones parciales considerados. La última sección del capítulo podrá abandonar ya las familias particulares y reunir las técnicas en un **protocolo de decisión**: reconocer estructura, elegir representación, medir progreso y verificar la primitiva obtenida.
+Los factores cuadráticos irreducibles repetidos completan los bloques de fracciones parciales estudiados. Para combinar las técnicas tendremos que reconocer la estructura del integrando, elegir una representación que facilite el cálculo y verificar la primitiva obtenida.
 
 ## Estrategia global: reconocer estructura, elegir representación y verificar {#sec-t1-c19-11}
 
 Las secciones anteriores desarrollaron técnicas diferentes, pero todas respondieron a una misma dificultad: el integrando rara vez anuncia por sí solo qué primitiva lo produjo. Integrar exige **leer estructura**, y esa lectura depende con frecuencia de la representación elegida.
 
-Por eso el cierre del capítulo no será una nueva fórmula. Reuniremos las decisiones que ya aparecieron en un protocolo de trabajo.
+La elección del método reúne las decisiones anteriores:
 
 ### La primera pregunta ocurre antes de integrar
 
@@ -5680,7 +5680,7 @@ Para cada integrando siguiente, **no calcules todavía la primitiva completa**. 
 4. La fracción es impropia. El primer paso es la división polinómica; solo después debe decidirse si queda algún bloque racional que requiera otra técnica.
 :::
 
-El aprendizaje central del capítulo puede expresarse ahora con más precisión que al comienzo. Integrar no consiste en recorrer una lista de fórmulas hasta encontrar una coincidencia visual. Consiste en **elegir una representación, reconocer en ella una estructura de derivación, efectuar una transformación cuyo progreso podamos justificar y comprobar finalmente el resultado volviendo a derivar**.
+La elección de una representación debe hacer visible una estructura de derivación. Después de transformar la integral comprobaremos si el problema se ha simplificado y, al obtener una primitiva, la verificaremos derivándola en su dominio.
 
 La pregunta rectora, por tanto, no es
 

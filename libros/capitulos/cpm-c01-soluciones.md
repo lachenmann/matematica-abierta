@@ -12,7 +12,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-09
-date-modified: 2026-10-06
+date-modified: 2026-10-16
 prerequisites:
   []
 number-sections: true
@@ -1752,25 +1752,6 @@ $$
 }
 $$
 :::
-
-### Auditoría del banco
-
-Antes de cerrar el capítulo, conviene verificar el contrato de esta sección.
-
-- Ejercicios publicados: **40**.
-- Soluciones publicadas: **40**.
-- Correspondencia `EXR-0036--0075` / `SOL-0036--0075`: **completa**.
-- Distribución A–G: $7+7+7+6+5+5+3=40$.
-- Tipologías `CONCEPTUAL`, `PROOF`, `COUNTEREXAMPLE`, `DISCOVERY`, `SYNTHESIS` y `GEOMETRY`: presentes.
-- Inecuaciones racionales con valor absoluto de alta complejidad: **3**, en B7, C6 y D5.
-- Reproducciones literales de demostraciones ya resueltas en el desarrollo: **eliminadas del banco**. Cuando una idea reaparece, exige transferencia, generalización, diagnóstico o combinación de herramientas.
-- Capa axiomática: clasificación axioma/definición/resultado (A4), identidad y orden de recíprocos (B3), signo de cocientes (B6), ecuación afín con existencia y unicidad (C4), cancelación con solución perdida (D2), división por cero (E3) y reconstrucción estructural de $(-1)a=-a$ (F5).
-- Transferencias de completitud: supremos bajo unión y traslación, eliminación finita de puntos, transporte del hueco racional, intervalos racionales encajados y propiedad de corte.
-- Problemas F: traslación del supremo, elección arquimediana simultánea, densidad con control de denominador, presupuesto de bisección y reconstrucción axiomática: **5/5**.
-- Problemas G de síntesis: suma de conjuntos, propiedad de corte y construcción de una raíz cúbica mediante supremo: **3/3**.
-- Dependencias de `T1-C03` o posteriores: **ninguna**.
-
-La política pedagógica del banco queda así alineada con la progresión del capítulo: **primero modelar la justificación, después retirar el andamiaje y exigir transferencia**.
 
 ---
 

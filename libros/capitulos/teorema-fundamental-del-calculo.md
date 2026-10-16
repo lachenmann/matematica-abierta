@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-10-06
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -57,13 +57,13 @@ $$
 
 produce un único valor real.
 
-El teorema fundamental del cálculo comienza cuando dejamos fijo el extremo izquierdo y permitimos que el extremo derecho se mueva. Ya no obtenemos un solo número, sino una familia de números indexada por $x$:
+Al fijar el extremo izquierdo y variar el derecho, cada $x$ determina un valor integral. Esa asignación define una función, cuyo incremento podremos estudiar mediante la aditividad:
 
 $$
 x\longmapsto \int_a^x f(t)\,dt.
 $$
 
-Ese cambio de punto de vista —de una integral sobre un intervalo fijo a una **función del extremo**— será el hilo conductor del capítulo.
+La función del extremo convierte las estimaciones integrales en información sobre continuidad y derivabilidad. Para aplicarlas será necesario distinguir la variable de entrada de la variable de integración.
 
 ### Cuatro papeles que conviene separar
 
@@ -88,7 +88,7 @@ $$
 \int_a^x f(u)\,du.
 $$
 
-Los dos miembros representan el mismo número para el mismo valor de $x$. La variable de integración es **muda**; el extremo $x$ no lo es.
+Cambiar el nombre de la variable de integración conserva el número obtenido para cada $x$. El extremo variable sigue siendo el argumento libre que determina la función de acumulación.
 
 ::: {.callout-important title="La misma letra no debe cumplir dos papeles"}
 Cuando estudiamos la dependencia respecto de $x$, escribiremos
@@ -166,7 +166,7 @@ $$
 
 Esta identidad no afirma todavía que $A_f$ sea continua ni diferenciable. Solo dice, exactamente, cuánto cambia la acumulación cuando el extremo se desplaza de $x$ a $y$: el incremento de $A_f$ es la integral de $f$ sobre el tramo añadido —con el signo correspondiente si se invierte la orientación—.
 
-La fórmula será el puente hacia las próximas secciones. Primero preguntaremos qué tan grande puede ser ese incremento; solo después investigaremos si, al dividirlo por $y-x$ y hacer que ambos extremos se acerquen, aparece una derivada.
+La identidad expresa el incremento de la acumulación como una integral sobre el tramo añadido o retirado. Una estimación de esa integral dará continuidad; el cociente por $y-x$ permitirá investigar la derivada cuando el tramo se contraiga.
 
 ### Dos funciones pueden tener la misma integral total y acumular de manera distinta
 
@@ -972,7 +972,7 @@ con la interpretación relativa correspondiente en $a$ y $b$.
 
 ### El punto base cambia la acumulación solo en una constante
 
-La elección del punto base $a$ interviene en el valor de la función de acumulación, pero no en la función que recuperamos al derivar.
+El punto base $a$ determina el valor inicial de la acumulación. Al derivarla en los puntos donde se cumplen las hipótesis del teorema recuperamos $f$, con independencia de ese punto base.
 
 Sean $p,q\in[a,b]$ y definamos
 
@@ -1070,7 +1070,7 @@ $$
 (A_f)'_{[a,b]}(x)=f(x).
 $$
 
-Esta igualdad cambia la pregunta. Ya no preguntamos solamente qué ocurre al derivar una acumulación; preguntamos ahora por **todas** las funciones cuya derivada es una función dada.
+La identidad permite investigar el conjunto de todas las funciones cuya derivada es $f$. Además de construir una primitiva, tendremos que describir en qué pueden diferir dos de ellas.
 
 ### Una función prescrita como derivada
 
@@ -1289,7 +1289,7 @@ Ya podemos separar tres niveles que a menudo se mezclan.
 - Exhibir una función $F$ y verificar $F'=f$ proporciona una primitiva concreta.
 - Relacionar una integral definida con los valores de una primitiva en los extremos es una afirmación adicional que todavía debemos demostrar.
 
-Para funciones continuas, [Corolario 16.1](#cor-t1-0028) resuelve la existencia mediante la acumulación. [Proposición 16.2](#prp-t1-0078) describe toda la libertad de elección. Pero aún no hemos establecido, en la generalidad que busca este capítulo, la fórmula que convierte una derivada conocida en el valor de una integral definida.
+La acumulación proporciona una primitiva para funciones continuas ([Corolario 16.1](#cor-t1-0028)), y [Proposición 16.2](#prp-t1-0078) determina la libertad de elección. Para evaluar una integral a partir de una primitiva conocida necesitaremos justificar además la fórmula con las hipótesis de integrabilidad indicadas a continuación.
 
 Ésa será la tarea exclusiva de §16.6. Allí estudiaremos la dirección complementaria del teorema fundamental —**derivar y luego integrar**— y demostraremos la forma fuerte de Newton–Leibniz para una derivada Riemann-integrable, sin reducirla de antemano al caso continuo.
 
@@ -2300,7 +2300,7 @@ $$
 \alpha(A)\cup\beta(A)\subseteq[a,b].
 $$
 
-Esta condición no es decorativa. Sin ella, la expresión integral puede dejar de estar definida antes de que tenga sentido preguntar por su derivada.
+Los extremos móviles deben permanecer en el intervalo donde el integrando está definido e integrable. De lo contrario la expresión integral puede carecer de valor y no habrá una función a la que aplicar la regla de la cadena.
 
 La cadena lógica correcta es
 
@@ -2711,7 +2711,7 @@ sino
 
 En [Ejemplo 16.8](#exm-t1-0209), la acumulación sigue siendo continua y derivable, pero no recupera el valor puntual alterado. En [Ejemplo 16.9](#exm-t1-0210), la acumulación sigue siendo continua, pero pierde derivabilidad en el salto. En [Ejemplo 16.10](#exm-t1-0211), la discontinuidad global de $f$ no impide aplicar Newton--Leibniz porque sus hipótesis concretas siguen satisfechas.
 
-Ésta es la función de las hipótesis: no decorar un enunciado, sino indicar exactamente qué mecanismo de prueba está disponible.
+Cada hipótesis permite un paso de la prueba. Comprobarla identifica el resultado que podemos aplicar y evita atribuir a la fórmula una conclusión más amplia que la demostrada.
 
 La sección siguiente convertirá esta auditoría en un laboratorio de decisión: habrá que identificar qué dirección del FTC corresponde, detectar argumentos inválidos y reparar cada uno con el resultado correcto.
 
@@ -2719,7 +2719,7 @@ La sección siguiente convertirá esta auditoría en un laboratorio de decisión
 
 ## Laboratorio: escoger la dirección correcta y reparar argumentos {#sec-t1-c17-10}
 
-Las secciones anteriores ya contienen las piezas teóricas principales del capítulo. El objetivo de este laboratorio no es añadir otra capa de teoremas, sino aprender a **reconocer qué problema tenemos delante**.
+En el laboratorio tendremos que distinguir qué objeto representa cada integral y cómo interviene la variable exterior. Esa identificación determinará cuál de los resultados anteriores puede utilizarse.
 
 En cada estación aparecerá una inferencia tentadora. La tarea será separar tres preguntas:
 
@@ -3170,7 +3170,7 @@ Las siete estaciones pueden condensarse en una tabla operativa.
 | Integrando fijo y extremos $\alpha(x),\beta(x)$ | ¿Cómo derivar la integral? | [Proposición 16.3](#prp-t1-0079) |
 | Integrando $F(x,t)$ dependiente de parámetro | ¿Cómo intercambiar derivación e integración? | **No resuelto en C17** |
 
-La tabla debe usarse de izquierda a derecha: primero se leen los datos; después se identifica la pregunta; solo al final se selecciona el teorema.
+Para usar la tabla, identificamos primero los datos y la pregunta. Solo entonces podemos comprobar si las hipótesis del teorema correspondiente están satisfechas.
 
 ::: {.callout-important title="El nombre «teorema fundamental» no autoriza una regla única"}
 C17 no ha producido una fórmula universal que pueda aplicarse mecánicamente a cualquier expresión con un signo integral. Ha construido varios resultados con hipótesis diferentes. La habilidad matemática consiste en distinguir cuál de ellos corresponde al problema presente.
@@ -3187,9 +3187,7 @@ Ante una expresión que combine derivadas e integrales, conviene preguntar, en e
 
 Solo después de responder esas cuatro preguntas tiene sentido manipular fórmulas.
 
-La próxima sección ya no añadirá exposición teórica: materializará el banco completo de ejercicios y soluciones del capítulo, donde estas decisiones deberán aparecer mezcladas con las técnicas de C15 y C16.
-
-**Antes de seguir.** ¿Por qué $\int_a^b f$ no puede derivarse como si su extremo superior fuera $x$? ¿Qué diferencia de hipótesis separa [Teorema 16.2](#thm-t1-0056) de [Teorema 16.3](#thm-t1-0057)? ¿Por qué [Teorema 16.4](#thm-t1-0058) no justifica por sí solo derivar $J(x)=\int_0^1(x+t)\,dt$ bajo el signo integral? ¿Qué parte del patrón $\int_1^x dt/t$ ya está justificada en C17 y qué teoría queda reservada a C18?
+Una integral con extremos fijos representa un número; con extremo variable puede definir una acumulación. Si la variable exterior entra en el integrando, los teoremas de derivación por extremos no justifican por sí solos intercambiar derivada e integral. Mantener esas distinciones permite separar los resultados demostrados de las cuestiones que requieren hipótesis nuevas. El teorema [Teorema 16.2](#thm-t1-0056) construye una primitiva para una función continua; [Teorema 16.3](#thm-t1-0057) evalúa la integral bajo sus hipótesis de integrabilidad y primitiva existente. La derivación por extremos de [Teorema 16.4](#thm-t1-0058) no es un teorema de derivación de integrandos que dependan de un parámetro.
 
 ## Ejercicios y soluciones {#sec-t1-c17-11}
 

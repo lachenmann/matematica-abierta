@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-21
-date-modified: 2026-10-06
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -60,7 +60,7 @@ $$
 }
 $$
 
-Nuestro objetivo será entender por qué funciona esa cadena, dónde se utiliza cada hipótesis y qué conclusiones **no** se desprenden de ella. Las aplicaciones sistemáticas a monotonía, extremos y forma de las gráficas se estudiarán en el capítulo siguiente.
+La existencia de extremos permitirá construir la cadena de argumentos. Seguiremos el uso de la continuidad en el intervalo cerrado y de la diferenciabilidad en su interior para precisar las conclusiones de Fermat, Rolle y el teorema del valor medio.
 
 ## De una pendiente local a una afirmación global {#sec-t1-c10-01}
 
@@ -171,7 +171,7 @@ f'\!\left(\frac{a+b}{2}\right)
 $$
 :::
 
-El cálculo muestra algo más que la coincidencia numérica. Para la función cuadrática pudimos localizar el punto buscado porque conocemos una fórmula explícita para su derivada y porque la ecuación resultante se resuelve de inmediato. Si la función no dispone de una expresión manejable, ese procedimiento puede dejar de ser útil. La pregunta general no es cómo despejar $c$ en una ecuación particular, sino **por qué debe existir al menos un punto apropiado**, incluso cuando no sabemos localizarlo mediante una fórmula.
+En el caso cuadrático, la fórmula explícita de la derivada permite despejar el punto buscado. Para una función sin una expresión manejable necesitamos otro argumento: demostrar que existe algún punto apropiado aunque no podamos calcularlo explícitamente.
 
 ::: {.callout-warning title="Una verificación particular no es un teorema universal"}
 El ejemplo demuestra la existencia del punto para $f(x)=x^2$ y para los intervalos no degenerados considerados. No demuestra que el punto buscado sea siempre el punto medio ni que cualquier función definida en $[a,b]$ satisfaga la misma conclusión. Esas afirmaciones requerirían argumentos independientes; no pueden deducirse de un caso favorable.
@@ -191,7 +191,7 @@ $$
 
 y la pregunta se reduce a saber si debe existir algún punto interior con derivada nula. La igualdad de los valores extremos no basta por sí sola: todavía debemos investigar qué ocurre con la continuidad en el intervalo cerrado y con la diferenciabilidad en su interior.
 
-Para abordar esa situación recuperaremos un resultado ya demostrado en el capítulo 5: una función continua sobre un intervalo cerrado y acotado alcanza sus valores máximo y mínimo ([Teorema 5.5](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0021)). A continuación estudiaremos qué impone la diferenciabilidad cuando uno de esos extremos se alcanza **en un punto interior**. Este será el contenido del teorema de Fermat, que construiremos sin recurrir a criterios posteriores de monotonía.
+Una función continua en un intervalo cerrado y acotado alcanza máximo y mínimo ([Teorema 5.5](continuidad-en-la-recta-intervalos-compacidad-y-teoremas-fundamentales.md#thm-t1-0021)). Si uno de esos extremos se alcanza en el interior, la diferenciabilidad impone una condición a los cocientes incrementales de ambos lados. Esa condición dará el teorema de Fermat sin recurrir a criterios de monotonía.
 
 Con ese resultado podremos investigar la situación de los extremos iguales y demostrar el teorema de Rolle. Solo después transformaremos el problema de una secante de pendiente arbitraria en otro de pendiente cero mediante una función auxiliar. Esa transformación será la clave del teorema del valor medio.
 
@@ -199,7 +199,7 @@ Con ese resultado podremos investigar la situación de los extremos iguales y de
 En el ejemplo de la parábola, distingue los datos que proceden únicamente de los extremos de los datos que proceden de la derivada. Identifica después las dos afirmaciones diferentes que hemos probado: que la ecuación de pendientes tiene una solución y que esa solución pertenece al intervalo abierto. Finalmente, explica por qué el cálculo particular no autoriza una conclusión sobre todas las funciones.
 :::
 
-La próxima sección precisará una diferencia que será decisiva en las pruebas: **alcanzar un extremo dentro del intervalo no es lo mismo que alcanzarlo en uno de sus bordes**.
+La posición del extremo determina qué incrementos están disponibles: en el interior podremos comparar ambos signos, mientras que en el borde solo se dispone de los incrementos admitidos por el intervalo.
 
 ## Extremos y puntos interiores {#sec-t1-c10-02}
 
@@ -225,7 +225,7 @@ La palabra *extremo* puede referirse a objetos distintos. Los números $a$ y $b$
 En el primer caso, el número $f(c)$ es el valor máximo de $f$ en $A$; en el segundo, es su valor mínimo. Un mismo valor extremo puede alcanzarse en varios puntos distintos.
 :::
 
-La condición $c\in A$ no es decorativa. En el capítulo 5 ya vimos que la función identidad restringida a $(0,1)$ tiene supremo $1$ e ínfimo $0$, pero no alcanza ninguno de esos valores. No es correcto llamar «punto de máximo» al extremo $1$, porque $1$ ni siquiera pertenece a aquel dominio. Aquí *alcanzar* significa que existe un argumento admisible cuya imagen es el valor en cuestión.
+El punto donde se alcanza el extremo debe pertenecer al dominio. La identidad en $(0,1)$ tiene supremo $1$ e ínfimo $0$, pero ninguno se alcanza: no existe un argumento admisible cuya imagen sea uno de esos valores. Esta diferencia será necesaria al elegir el punto al que aplicamos el resultado diferencial.
 
 La definición tampoco exige continuidad ni diferenciabilidad. Estas propiedades serán hipótesis de ciertos **teoremas de existencia**, no ingredientes de la noción de máximo o mínimo.
 
@@ -392,7 +392,7 @@ El siguiente paso consistirá en estudiar un **extremo local alcanzado en un pun
 
 ## Fermat: condición necesaria de extremo interior {#sec-t1-c10-03}
 
-En §9.2 aprendimos a reconocer un extremo sin calcular derivadas: lo certifica una desigualdad entre valores de la función. La diferenciabilidad plantea ahora una pregunta distinta. **Si ese extremo se alcanza en un punto interior, ¿qué puede decirse del límite de los cocientes incrementales?** La respuesta no exige localizar un máximo absoluto ni examinar la función en todo el intervalo. Basta con lo que ocurre cerca del punto.
+Un extremo local se reconoce comparando el valor central con los de puntos próximos del dominio. Si además el centro es interior y la función es diferenciable allí, los cocientes incrementales de ambos signos deben ser compatibles con esa comparación. Esa compatibilidad determinará el valor de la derivada.
 
 ### Enunciado: una condición necesaria, no un criterio de búsqueda
 
@@ -757,7 +757,7 @@ Si falta una hipótesis, Rolle deja de ser aplicable. De ahí solo se deduce que
 
 Considera las siguientes frases incompletas y repara cada una aportando la condición ausente, no simplemente una gráfica: «si $f(a)=f(b)$ y $f$ es diferenciable en $(a,b)$, existe un cero de $f'$»; «si $f$ es continua en $[a,b]$ y $f(a)=f(b)$, existe un cero de $f'$»; «si $f$ es continua en $[a,b]$ y diferenciable en $(a,b)$, existe un cero de $f'$». Para cada reparación, identifica primero cuál de los tres ejemplos la refuta y explica después en qué línea de la demostración original se necesita la hipótesis incorporada. Finalmente, contrasta «no puedo aplicar Rolle» con «sé que no hay derivada nula»: son afirmaciones lógicamente diferentes.
 
-La auditoría deja preparado el siguiente movimiento: para una función cuyos valores de borde **no** tienen por qué coincidir, construiremos una nueva función restándole la recta secante. Sus valores de borde sí serán iguales, y podremos aplicar Rolle sin alterar las condiciones de continuidad y diferenciabilidad pertinentes. Ese será el teorema del valor medio.
+Para tratar valores de borde diferentes, restaremos a la función la recta secante. La nueva función tendrá valores iguales en ambos extremos y conservará las condiciones de continuidad y diferenciabilidad necesarias para aplicar Rolle.
 
 ## El teorema del valor medio {#sec-t1-c10-06}
 
@@ -1007,7 +1007,7 @@ La existencia de $c$ con $f'(c)=m$ no implica que $c$ sea el punto medio, que se
 
 Repite el ejemplo de la cúbica sin consultar los cálculos anteriores: (i) verifica primero las hipótesis de Lagrange; (ii) halla la secante a partir de los datos de borde; (iii) resuelve la ecuación $f'(c)=m$ y descarta cualquier solución exterior al abierto; (iv) construye la tangente en cada solución y contrástala con la secante; (v) determina si el punto medio satisface la ecuación. Después examina la función afín de la tabla y explica por qué **todos** sus puntos interiores cumplen el teorema. En cada paso separa lo que garantiza el resultado general de lo que procede de los cálculos particulares.
 
-La fórmula está ahora interpretada sin atribuirle más de lo que demuestra. En §9.8 someteremos a prueba sus dos hipótesis analíticas —continuidad en el intervalo cerrado y diferenciabilidad en el abierto— mediante contraejemplos en los que la conclusión efectivamente falla.
+La continuidad en el intervalo cerrado y la diferenciabilidad en el abierto cumplen funciones distintas. Los contraejemplos siguientes mostrarán cómo puede fallar la conclusión al retirar cada una de ellas.
 
 ## Auditoría de las hipótesis del valor medio {#sec-t1-c10-08}
 
@@ -1454,7 +1454,7 @@ Trabaja con un intervalo $[a,b]$ no degenerado antes de generalizar. **Estación
 
 **Estación E:** intenta aplicar la primera proposición a $h=f-\mathrm{id}$ construida desde [Ejemplo 9.13](#exm-t1-0104); señala la hipótesis exacta que falta y verifica que la conclusión es falsa. **Estación F:** intenta comparar $-1$ y $1$ en [Ejemplo 9.18](#exm-t1-0109) y escribe la inclusión de conjuntos que necesitarías para usar Lagrange; comprueba que esa inclusión es falsa. **Estación G:** formula con cuantificadores las dos proposiciones y señala el cambio ilícito cuando se reemplaza «para todo $t$ interior» por «existe $t$ interior». **Estación H:** reconstruye la extensión a un intervalo general y explica por qué la continuidad relativa en los extremos de cada subintervalo cerrado se conserva.
 
-Con esto terminan las consecuencias teóricas previstas para el capítulo: desde la existencia de valores extremos construimos Fermat, Rolle y Lagrange, controlamos sus hipótesis y dedujimos estimaciones y criterios de constancia. La sección final presentará un banco original de cuarenta ejercicios y cuarenta soluciones razonadas, organizados para obligar a verificar hipótesis, no solamente a efectuar cálculos.
+Los ejercicios reúnen la existencia de extremos, los argumentos de Fermat, Rolle y Lagrange, y sus consecuencias para estimaciones y constancia. Para aplicar cada resultado habrá que verificar las hipótesis en el intervalo concreto de comparación.
 
 ## Ejercicios y soluciones {#sec-t1-c10-11}
 
@@ -2063,7 +2063,7 @@ Recíprocamente, si $f'$ está acotada en $(a,b)$, el número $S=\sup_{t\in(a,b)
 No se ha supuesto que $f'$ sea continua ni que alcance su supremo; bastan sus cotas puntuales y el teorema de Lagrange. La equivalencia requiere la **diferenciabilidad interior que figura en el enunciado**: $x\mapsto|x|$ es $1$-Lipschitz en $[-1,1]$ por desigualdad triangular, pero carece de derivada en el origen. No constituye contraejemplo a la equivalencia condicionada, sino a una generalización que suprimiera la diferenciabilidad.
 :::
 
-El banco vuelve sobre una misma disciplina de lectura: primero deben existir la función, el dominio y sus propiedades; después se aplican los teoremas con cuantificadores y bordes correctos; por último se comprueba si una conclusión de existencia puede precisarse a partir de la función particular. Los cuarenta problemas y sus cuarenta soluciones forman parte de este único manuscrito; su redacción no equivale al cierre editorial ni a la publicación, que requieren todavía auditorías independientes.
+El banco vuelve sobre una misma disciplina de lectura: primero deben existir la función, el dominio y sus propiedades; después se aplican los teoremas con cuantificadores y bordes correctos; por último se comprueba si una conclusión de existencia puede precisarse a partir de la función particular.
 
 ---
 

@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-10-06
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -43,9 +43,9 @@ format:
 
 El teorema del valor medio nos permitió pasar de un intervalo a un punto: si una función es continua entre dos extremos y diferenciable en su interior, existe un punto donde su derivada coincide con la pendiente de la secante. Pero el resultado también se puede leer en sentido contrario. Si sabemos algo acerca de la derivada **en todos los puntos** de un intervalo, ¿qué podremos afirmar sobre los valores de la función al recorrerlo?
 
-Esta inversión de la pregunta será el hilo conductor del capítulo. Aprenderemos a demostrar cuándo una función crece o decrece, a reconocer las condiciones que permiten localizar sus extremos y a estudiar la manera en que se inclina su gráfica. La noción de convexidad dará a esas observaciones geométricas una formulación precisa: no dependeremos de que una curva «parezca doblarse hacia arriba» o «hacia abajo», sino de desigualdades que podremos verificar y demostrar.
+El signo de la derivada permitirá comparar valores de la función, localizar ciertos extremos y estudiar la inclinación de la gráfica. Para precisar la convexidad utilizaremos desigualdades entre valores de la función, de manera que la conclusión pueda justificarse sin depender de la apariencia del dibujo.
 
-El objetivo no será acumular recetas para dibujar curvas. Una tabla de signos resulta útil solamente cuando sabemos por qué cada signo autoriza una conclusión y cuándo deja de hacerlo.
+Una tabla de signos resume información útil cuando cada signo está vinculado al resultado que autoriza la conclusión. El dominio y las hipótesis de ese resultado deben conservarse al interpretar la tabla.
 
 ## Del incremento medio al sentido del cambio {#sec-t1-c11-01}
 
@@ -65,9 +65,9 @@ $$
 f(y)-f(x)=f'(c)(y-x).
 $$
 
-En el capítulo anterior nos interesaba principalmente la **existencia** del punto $c$. Ahora observaremos otra cosa: puesto que $y-x>0$, el signo del incremento $f(y)-f(x)$ coincide con el signo de la derivada en ese punto intermedio. Si pudiéramos garantizar que $f'$ es positiva en todo el intervalo, entonces no importaría cuál fuera el punto que nos entrega el teorema: la diferencia $f(y)-f(x)$ tendría que ser positiva.
+Como $y-x>0$, la identidad del valor medio hace coincidir el signo de $f(y)-f(x)$ con el de la derivada en el punto intermedio. Si $f'$ es positiva en todo el intervalo, cualquiera de los puntos que entregue el teorema producirá una diferencia positiva.
 
-Esta es la idea que vamos a formalizar. Importa que la información acerca de la derivada valga *en todo el intervalo*, no simplemente en uno o en unos cuantos puntos escogidos. Tampoco necesitamos suponer que $f'$ sea continua: la aplicación del teorema del valor medio solo utiliza la continuidad de $f$ en el segmento y su diferenciabilidad en el interior.
+La condición sobre la derivada debe valer en todo el intervalo para que el razonamiento funcione con cualquier par de puntos. La continuidad de $f'$ no interviene: el teorema del valor medio se aplica a $f$, continua en el segmento y diferenciable en su interior.
 
 ### Una primera consecuencia, con demostración
 
@@ -246,7 +246,7 @@ La diferencia entre prueba y exploración puede expresarse como un procedimiento
 Considera $f\colon[-2,2]\to\mathbb R$, $f(x)=|x|$. Decide primero, comparando valores, en cuál de los intervalos $[-2,0]$ y $[0,2]$ es estrictamente creciente o decreciente. Para negar la monotonía en todo $[-2,2]$, proporciona **dos pares diferentes**: uno que refute «no decreciente» y otro que refute «no creciente». Finalmente, explica por qué esos dos testigos no dicen nada, por sí solos, sobre la existencia de derivadas.
 :::
 
-Hemos definido la propiedad que deseamos demostrar, distinguido sus cuatro versiones y delimitado cuidadosamente el conjunto de comparación. Ahora sí podemos formular criterios: ¿cuándo un signo conocido de $f'$ para todos los puntos interiores garantiza una de estas desigualdades para todos los pares del intervalo? Esa será la cuestión de §10.3.
+Fijado un intervalo en el que queremos comparar valores, podemos usar el signo de $f'$ en cada punto interior para obtener una desigualdad entre las imágenes de cualquier par ordenado. Los criterios siguientes expresan ese paso del control puntual a la comparación sobre el intervalo.
 
 ## Criterios de monotonía a partir de la derivada {#sec-t1-c11-03}
 
@@ -271,7 +271,7 @@ $$
 El factor $y-x$ es estrictamente positivo. Si $f'\geq0$ en el interior, el miembro derecho es no negativo y $f(x)\leq f(y)$: queda probado el primer caso. Si $f'>0$, el producto es positivo y $f(x)<f(y)$, lo que demuestra el segundo. Para $f'\leq0$ obtenemos $f(y)-f(x)\leq0$ y, para $f'<0$, obtenemos $f(y)-f(x)<0$: son los casos tercero y cuarto. Como $x<y$ fue arbitrario, las conclusiones valen para todos los pares exigidos por la definición. $\square$
 :::
 
-El teorema no pide que $f'$ sea continua. No hemos aplicado el teorema del valor medio **a la derivada**, sino a $f$; únicamente necesitamos que la derivada exista en cada punto interior y satisfaga allí la desigualdad apropiada. Tampoco exigimos derivadas bilaterales en los extremos de un intervalo cerrado. Lo decisivo es que $f$ sea continua *hasta* esos extremos: así podemos elegir uno de ellos como $x$ o $y$ sin perder las hipótesis del teorema.
+Aplicamos el teorema del valor medio a $f$, por lo que basta que su derivada exista en cada punto interior y tenga allí el signo requerido. En los extremos de un intervalo cerrado se necesita continuidad relativa de $f$ para admitirlos como puntos de comparación; no se exigen derivadas bilaterales en ellos.
 
 ::: {.callout-note title="Auditoría de la demostración"}
 La cadena lógica es: $x<y$ arbitrarios $\longrightarrow$ segmento $[x,y]$ contenido en $I$ $\longrightarrow$ hipótesis de Lagrange para la restricción $\longrightarrow$ un punto $c$ interior $\longrightarrow$ signo de $f'(c)(y-x)$ $\longrightarrow$ desigualdad entre los valores. La condición «para todo $t$» nos permite utilizar el signo de la derivada **en cualquier punto $c$ que proporcione el teorema**.
@@ -373,7 +373,7 @@ Primero se fija un intervalo $I$ donde $f$ esté definida y sea continua, y se v
 
 Considera la siguiente argumentación: «$f'(a)>0$; por tanto, $f$ es estrictamente creciente en todo su dominio». El dato se refiere a un solo punto, mientras que el teorema exige un signo en todo el interior de un intervalo y continuidad hasta los extremos incluidos. Para reparar la prueba habría que formular esas hipótesis y precisar *en qué intervalo* se obtiene la conclusión. Ni siquiera conocer el signo de la derivada en muchos puntos de una tabla equivale a demostrarlo universalmente.
 
-Una segunda argumentación dice: «$f'(c)=0$; por tanto, $f$ deja de crecer estrictamente». El ejemplo $x^3$ muestra que no es válida. La estrategia correcta consiste en examinar el signo de $f'$ en un intervalo y, si solo conocemos $f'\geq0$, determinar si puede existir algún intervalo abierto donde $f'$ se anule idénticamente. No hemos clasificado todavía máximos y mínimos: ese será el asunto de §10.4.
+La igualdad $f'(c)=0$ es compatible con crecimiento estricto, como muestra $x^3$. Para obtener monotonía a partir de $f'\geq0$ en un intervalo, y decidir si es estricta, tendremos que examinar además si la función puede permanecer constante en algún subintervalo; el criterio correspondiente se expresa mediante la anulación de la derivada en él.
 
 **Antes de seguir.** ¿Por qué el límite de los cocientes incrementales puede ser cero aunque cada cociente sea positivo? ¿Qué parte del argumento de [Teorema 10.1](#thm-t1-0036) se rompe si $[x,y]$ sale del dominio? ¿Por qué la continuidad en $0$ habría impedido el contraejemplo de [Ejemplo 10.2](#exm-t1-0111)?
 
@@ -693,7 +693,7 @@ Este caso enseña qué hacer cuando la ecuación de puntos críticos produce una
 
 ### Un protocolo completo para un intervalo cerrado
 
-Dada una función concreta $f\colon[a,b]\to\mathbb R$, el procedimiento no consiste en aplicar mecánicamente una tabla, sino en justificar una cadena de afirmaciones:
+Para una función $f\colon[a,b]\to\mathbb R$, la búsqueda de extremos absolutos requiere justificar la siguiente cadena de afirmaciones:
 
 1. **Dominio y existencia.** Comprobar $a<b$, que la función está definida en todo $[a,b]$ y es continua allí. Si esto falla, investigar existencia o no existencia por otros argumentos, sin atribuir a Weierstrass una conclusión que no garantiza.
 2. **Candidatos.** Incluir $a$ y $b$; determinar los ceros de $f'$ y los puntos interiores donde la derivada no existe. En particular, no perder esquinas ni puntos excepcionales de una definición por tramos.
@@ -1519,11 +1519,11 @@ La igualdad $f''(c)=0$, si puede calcularse, es una consecuencia necesaria de un
 
 Considera estas frases y determina, para cada una, qué hipótesis falta o qué implicación se invirtió: «$f''(0)=0$, luego hay inflexión»; «$f''$ es negativa en ciertos puntos a la izquierda y positiva en ciertos puntos a la derecha, luego hay inflexión»; «una inflexión tiene tangente horizontal»; «no existe $f''(0)$, luego no puede haber inflexión»; y «las restricciones de $x^3$ son cóncava y convexa a ambos lados del hueco, luego $0$ es una inflexión del dominio perforado». Repara las afirmaciones verdaderamente reparables utilizando [Teorema 10.6](#thm-t1-0041) y los ejemplos [Ejemplo 10.21](#exm-t1-0130), [Ejemplo 10.22](#exm-t1-0131), [Ejemplo 10.23](#exm-t1-0132), [Ejemplo 10.24](#exm-t1-0133) y [Ejemplo 10.25](#exm-t1-0134); para las demás, exhibe un contraejemplo y di cuál es su función lógica.
 
-**Antes de seguir.** ¿Por qué es decisiva la distinción entre un signo en un punto y un signo en un intervalo? ¿Cómo registrarías un punto de inflexión en un estudio de gráfica sin clasificarlo erróneamente como extremo? ¿Qué información podemos reunir —dominio, límites, monotonía, candidatos a extremos y convexidad— antes de dibujar una curva? Esa síntesis será el objeto de §10.10.
+Un signo aislado, un signo válido en todo un intervalo y un cambio de convexidad proporcionan conclusiones diferentes. Al reunir dominio, límites, monotonía, extremos e inflexiones registraremos esas conclusiones con sus ámbitos antes de representar la gráfica.
 
 ## Reconstrucción de gráficas y laboratorio de pruebas {#sec-t1-c11-10}
 
-Conocemos ahora criterios para pasar del signo de una derivada a la monotonía, distinguir extremos locales y absolutos, probar convexidad mediante cuerdas o derivadas y reconocer inflexiones con una definición precisa. ¿Cómo reunir resultados de naturaleza tan distinta para estudiar una función concreta? No empezaremos trazando una curva y buscando argumentos que se ajusten a ella. Construiremos primero un registro de afirmaciones demostradas; el bosquejo será una forma de representar ese registro.
+Para estudiar una función concreta reuniremos afirmaciones justificadas sobre su dominio, límites, monotonía, extremos y convexidad. El bosquejo representará ese conjunto de resultados; las relaciones entre ellos deberán respetar los intervalos y las condiciones en que cada prueba es válida.
 
 ### Un estudio comienza por el dominio, no por una tabla de signos
 
@@ -1713,7 +1713,7 @@ Una reconstrucción rigurosa puede utilizar el siguiente control. Cada diagnóst
 Un estudio se considera justificado cuando especifica el dominio y las continuidades utilizadas, identifica exactamente los intervalos sobre los que se afirman signos y monotonía, clasifica los extremos con el alcance local o absoluto correcto, certifica convexidad e inflexiones con sus hipótesis y consigna límites probados. Si algún paso no puede demostrarse con las herramientas disponibles, debe permanecer como conjetura de bosquejo, no convertirse silenciosamente en afirmación matemática.
 :::
 
-**Antes de seguir.** ¿Qué datos de [Ejemplo 10.26](#exm-t1-0135) permiten determinar el mínimo absoluto sin inspeccionar una tabla de signos? ¿Por qué la derivada negativa de [Ejemplo 10.27](#exm-t1-0136) no obliga a comparar imágenes de puntos separados por $-1$? ¿En qué sentido la definición de inflexión y el estudio de extremos generan certificados distintos? En §10.11 emplearemos estas preguntas para organizar cuarenta ejercicios originales con sus soluciones razonadas, sin importar métodos de capítulos posteriores.
+Para determinar un extremo absoluto tendremos que comparar todos los candidatos admisibles; para deducir monotonía mediante el signo de la derivada necesitaremos un intervalo de comparación; para afirmar inflexión habrá que comprobar el cambio de convexidad. Los ejercicios reúnen estas decisiones y sus contraejemplos. El estudio de [Ejemplo 10.26](#exm-t1-0135) permite comparar los candidatos a extremo absoluto; [Ejemplo 10.27](#exm-t1-0136) muestra por qué un hueco del dominio impide comparar mediante el teorema valores situados en componentes distintas.
 
 ## Ejercicios y soluciones {#sec-t1-c11-11}
 
@@ -2230,10 +2230,6 @@ f\left(\frac{u+v}{2}\right)<\frac{f(u)+f(v)}2=m,
 $$
 
 contradiciendo que $m$ sea el valor mínimo; el minimizador, si existe, es único. La función $x^3$ tiene derivada cero en $0$ y no tiene allí un mínimo, porque no es convexa en toda la recta: muestra por qué no se elimina la hipótesis de convexidad. La función afín $f(x)=x$ es convexa y diferenciable, pero no alcanza mínimo absoluto en $\mathbb R$; la equivalencia establece una caracterización de los **puntos que existen**, no garantiza su existencia previa.
-:::
-
-::: {.callout-important title="Cierre del banco: ninguna etiqueta sustituye una prueba"}
-La correspondencia entre los cuarenta enunciados y sus cuarenta soluciones no convierte automáticamente el capítulo en una edición cerrada. Antes de publicarlo deben revisarse las hipótesis matemáticas de cada respuesta, comprobarse las referencias y los identificadores contra el resto del tomo, y efectuarse una compilación Quarto con inspección visual de fórmulas, tablas y pantallas pequeñas. Las soluciones muestran el método de razonamiento; la auditoría editorial determinará la versión definitiva.
 :::
 
 ---

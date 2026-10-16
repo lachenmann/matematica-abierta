@@ -6,7 +6,7 @@ content-type: book
 collection: PM-CAL
 status: published
 date-created: 2026-09-07
-date-modified: 2026-09-30
+date-modified: 2026-10-16
 areas:
   - fundamentos
   - calculo
@@ -89,3 +89,12 @@ Los tomos siguientes continúan en preparación. Sus capítulos no forman parte 
 ## Conexiones con Matemática Abierta
 
 El libro ofrece el recorrido pedagógico. [Conceptos](../../conceptos/index.qmd), [Resultados y teoremas](../../teoria/resultados/index.qmd), [Métodos y técnicas](../../teoria/metodos/index.qmd) y [Problemas](../../problemas/index.qmd) permiten explorar unidades y técnicas del mismo sistema matemático.
+
+
+## PDF y fuentes de la edición
+
+Edición revisada del **16 de octubre de 2026**, firmada por **A. Peña**. Ambos PDF contienen los veinte capítulos y los ochocientos ejercicios con sus soluciones.
+
+- [PDF A4 para lectura digital](../../assets/books/cpm-tomo-i/downloads/Calculo_para_matematicos_Tomo_I_amsbook.pdf).
+- [PDF carta para impresión](../../assets/books/cpm-tomo-i/downloads/Calculo_para_matematicos_Tomo_I_carta_amsbook.pdf).
+- [Proyecto LaTeX completo para Overleaf](../../assets/books/cpm-tomo-i/downloads/Calculo_para_matematicos_Tomo_I_Overleaf_amsbook.zip).

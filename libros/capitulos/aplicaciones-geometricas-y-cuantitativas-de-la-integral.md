@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-10-06
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -52,7 +52,7 @@ format:
 
 ## De una cantidad local a una integral: aditividad y densidad {#sec-t1-c20-01}
 
-Las aplicaciones que estudiaremos en este capítulo parecen, a primera vista, problemas de naturaleza distinta. Calcular un área, un volumen, la masa de una varilla o el trabajo realizado por una fuerza exige interpretar objetos diferentes y elegir modelos diferentes. Sin embargo, todos ellos comparten una misma pregunta matemática:
+El área, el volumen, la masa de una varilla y el trabajo de una fuerza requieren modelos diferentes. Para obtener la cantidad total a partir de contribuciones locales, en cada caso tendremos que responder una misma pregunta:
 
 > **¿cómo reconstruimos una cantidad global cuando conocemos la manera en que esa cantidad se distribuye localmente?**
 
@@ -82,7 +82,7 @@ $$
 \sum_{k=1}^n q(\xi_k)\,\Delta x_k.
 $$
 
-Esta expresión no aparece por una regla de cálculo aprendida de memoria. Nace de una decisión de modelización: **identificar qué cantidad se aporta localmente y qué variable mide el ancho de cada pieza**. Solo después de esa elección aparece una suma de Riemann y, si el modelo satisface las hipótesis adecuadas, su límite conduce a una integral.
+La expresión depende de una elección de modelo: hay que identificar la contribución local y la variable que mide el ancho de cada pieza. La suma de esas contribuciones conducirá a una integral cuando las estimaciones y las hipótesis permitan justificar el paso al límite.
 
 La arquitectura que gobernará todo el capítulo será, por tanto,
 
@@ -98,7 +98,7 @@ $$
 }
 $$
 
-El paso siguiente consiste en volver rigurosa esta idea. En lugar de justificar por separado la misma construcción para cada aplicación, estableceremos un criterio general: si una cantidad es aditiva sobre subintervalos y su contribución local queda controlada por una densidad integrable, entonces la cantidad global está determinada por la integral de esa densidad.
+Para reunir esa justificación estableceremos un criterio: si una cantidad es aditiva sobre subintervalos y sus contribuciones admiten el control local indicado mediante una densidad integrable, la integral determina la cantidad global.
 
 ::: {#thm-t1-0068}
 **Teorema (cantidad aditiva determinada por una densidad).** Sea $q\in\mathcal R[a,b]$. Supongamos que a cada subintervalo cerrado $[\alpha,\beta]\subseteq[a,b]$, con $\alpha\le\beta$, se le asigna un número real $Q(\alpha,\beta)$ con las siguientes propiedades.
@@ -352,7 +352,7 @@ A=\int_a^b\bigl(f(x)-g(x)\bigr)\,dx.
 }
 $$
 
-La fórmula no se introduce aquí como una regla independiente: es una consecuencia del principio general de cantidad aditiva determinada por una densidad. La elección esencial fue reconocer que, cuando $f\ge g$, la densidad de área respecto de $x$ es la altura vertical $f-g$.
+Cuando $f\ge g$, la altura vertical $f-g$ es la densidad de área respecto de $x$. El principio de aditividad y control por esa densidad justifica la fórmula para la región entre ambas gráficas.
 
 Si la desigualdad se invierte en todo el intervalo, el mismo razonamiento da
 
@@ -539,7 +539,7 @@ $$
 \sum_{k=1}^{n}A(\xi_k)\,\Delta x_k.
 $$
 
-La expresión vuelve a tener exactamente la arquitectura de §19.1. La cantidad local ya no es una altura, como ocurría con el área entre gráficas, sino un **área transversal**; al multiplicarla por un espesor obtenemos una contribución de volumen.
+La contribución de volumen se obtiene de un **área transversal** multiplicada por un espesor. Para aplicar el principio de §19.1 debemos justificar que esas secciones describen el sólido y que la función de áreas satisface las hipótesis del modelo.
 
 Por eso, antes de escribir ninguna integral, debemos identificar tres elementos:
 
@@ -779,7 +779,7 @@ La integral aparece al final. La decisión geométrica esencial sigue siendo ide
 
 ### Arandelas: un disco menos un disco interior
 
-Supongamos ahora que la región que gira alrededor del eje $x$ no llega hasta el propio eje. Para cada $x$, la sección perpendicular al eje de rotación ya no es un disco macizo, sino una **arandela**.
+Si la región que gira alrededor del eje $x$ deja un hueco entre ella y el eje, cada sección perpendicular tendrá la forma de una **arandela**. Su área se obtiene restando el disco interior al exterior.
 
 Sean
 
@@ -868,7 +868,7 @@ $$
 0\le r(x)\le R(x)
 $$
 
-no es decorativa. Garantiza que ambos radios sean geométricamente admisibles y que el área de la sección sea no negativa.
+garantiza que los radios sean distancias admisibles, que el interior no exceda al exterior y que la diferencia de áreas sea no negativa.
 
 También conviene observar que los radios son **distancias al eje de rotación**, no necesariamente valores de las funciones que delimitan la región. Cuando el eje de rotación no es el eje $x$, identificar correctamente esas distancias forma parte del modelo.
 
@@ -1041,7 +1041,7 @@ $$
 
 Obsérvese la diferencia con discos y arandelas. Allí el corte perpendicular al eje producía directamente un **área transversal**. Aquí una tira paralela al eje genera una superficie cilíndrica delgada, y el volumen local se construye a partir de su circunferencia, su altura y su espesor.
 
-Todavía no hemos elegido entre ambos métodos ni hemos escrito una fórmula global de cascarones. Por ahora solo hemos identificado qué cantidad aporta una tira vertical al girar.
+Hemos identificado la contribución de una tira vertical al girar. Para obtener una fórmula global por cascarones tendremos que justificar la acumulación de esas contribuciones y sus límites de integración.
 
 ### De los cascarones delgados a la integral
 
@@ -1555,7 +1555,7 @@ La fórmula de longitud surge así de tres ingredientes que ya pertenecían al l
 
 ## Densidad lineal y cantidad total {#sec-t1-c20-07}
 
-Hasta ahora las cantidades locales surgían de construcciones geométricas. En una varilla, un cable o cualquier objeto distribuido a lo largo de un intervalo aparece otra situación natural: la cantidad total puede variar de un punto a otro porque cambia su **densidad lineal**.
+En una varilla o un cable, la masa puede distribuirse de manera desigual a lo largo de su longitud. La **densidad lineal** describe la contribución local que debemos acumular para obtener la masa total.
 
 Sea una varilla situada sobre el intervalo $[a,b]$. Una función
 
@@ -2426,7 +2426,7 @@ El ejemplo ilustra una regla de modelización esencial: antes de escribir la int
 
 **Antes de seguir.** ¿Qué debe identificarse antes de integrar una fuerza variable: la magnitud de la fuerza, su componente en la dirección del movimiento o ambas? ¿Cómo cambia el signo del trabajo si se invierte la orientación del desplazamiento? ¿Por qué el trabajo del resorte y el de la fuerza externa pueden tener igual magnitud y signos opuestos sobre la misma trayectoria?
 
-La sección siguiente mantendrá la misma arquitectura de acumulación, pero cambiará el significado de la cantidad local. En lugar de multiplicar una fuerza por un pequeño desplazamiento, acumularemos una **tasa conocida** sobre pequeños incrementos de su variable para reconstruir un cambio neto.
+Una tasa conocida aporta otra contribución local: multiplicada por un pequeño incremento de su variable, permite aproximar un cambio. Su acumulación reconstruirá el cambio neto bajo las hipótesis correspondientes.
 
 ## Cambio neto desde una tasa conocida {#sec-t1-c20-10}
 
@@ -2792,7 +2792,7 @@ Las aplicaciones anteriores comparten una misma decisión de modelización: iden
 
 ## Laboratorio de modelización: elegir cortes, densidades y controles {#sec-t1-c20-11}
 
-Las aplicaciones de este capítulo cambian de contexto, pero comparten una misma arquitectura. Antes de calcular conviene responder una pregunta:
+Para justificar la integral en cada contexto necesitamos precisar qué contribución estamos acumulando:
 
 > **¿Qué cantidad local se está sumando y por qué su suma finita conduce precisamente a esta integral?**
 
@@ -3144,9 +3144,9 @@ Cada etapa controla a la siguiente. La elección de cortes determina la forma de
 
 Solo después de construir el modelo entra la etapa de cálculo. En ese punto pueden aplicarse las técnicas desarrolladas en C19, pero la integral que se evalúa ya debe haber quedado justificada por la situación.
 
-**Antes de seguir.** Frente a un problema nuevo, ¿qué cantidad local se está acumulando? ¿Qué variable produce los elementos adecuados? ¿El signo conserva información relevante? ¿Las unidades del integrando y del diferencial producen las unidades de la respuesta? ¿Los datos determinan realmente el modelo?
+Para construir un modelo nuevo debemos identificar la cantidad local y la variable de acumulación, decidir qué información conserva el signo y verificar las unidades. También habrá que comprobar que los datos determinan esa contribución; una integral correctamente evaluada no compensa una densidad que el problema no permite establecer.
 
-Con esto se completa la parte expositiva del capítulo. A continuación se abre el banco no numerado de ejercicios y soluciones, destinado a practicar construcción, comparación y auditoría de modelos integrales.
+
 
 ## Ejercicios y soluciones {#sec-t1-c20-bank .unnumbered}
 

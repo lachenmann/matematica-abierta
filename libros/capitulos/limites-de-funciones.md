@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-19
-date-modified: 2026-10-06
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -37,7 +37,7 @@ format:
 
 En los ejemplos periódicos usaremos las funciones triangulares $\sigma$ y $\kappa$ definidas en C03, con $\omega=2$. Sus cotas $|\sigma|,|\kappa|\le1$ y los valores $\sigma(\omega/2+n\omega)=(-1)^n$ proceden directamente de aquella definición por tramos; no se presupone trigonometría.
 
-En el capítulo anterior aprendimos a describir con precisión qué significa que una sucesión se aproxime a un número. La idea decisiva no consistía en mirar una cantidad muy grande de términos, sino en controlar **todos los términos suficientemente tardíos**. Por eso la noción de cola ocupó un lugar central:
+En una sucesión, afirmar que los términos se aproximan a un número exige controlar **todos los términos suficientemente tardíos**. Una muestra finita, por extensa que sea, deja sin examinar los términos posteriores; por eso la definición de límite se formula sobre una cola completa:
 
 $$
 \exists N\;\forall n\ge N.
@@ -64,7 +64,7 @@ $$
 }
 $$
 
-La respuesta exigirá muy poca teoría nueva, pero esa teoría será indispensable. Recuperaremos el valor absoluto como distancia, definiremos entornos y entornos perforados, y distinguiremos entre puntos de acumulación y puntos aislados. Solo después de disponer de ese lenguaje tendrá sentido formular la definición rigurosa de límite funcional.
+Para expresar esa aproximación utilizaremos el valor absoluto como distancia. Un entorno describirá los puntos próximos a $a$; al retirar el centro obtendremos un entorno perforado. Necesitaremos además que el dominio tenga puntos distintos de $a$ arbitrariamente próximos a él, condición que precisaremos mediante la noción de punto de acumulación.
 
 Hay un principio que conviene conservar desde el comienzo:
 
@@ -560,7 +560,7 @@ La noción de punto de acumulación responde a esta segunda pregunta.
 
 ### Por qué los puntos aislados crean un problema lógico
 
-Llegamos ahora a la razón principal por la que hemos introducido esta terminología antes de definir el límite funcional.
+La condición de acumulación impide que la definición de límite quede satisfecha por falta de puntos del dominio en los que comprobarla.
 
 Consideremos
 
@@ -590,7 +590,7 @@ No existen puntos del dominio distintos de $0$ suficientemente próximos a $0$.
 
 ¿Por qué debería preocuparnos esto?
 
-En la próxima sección querremos expresar una idea del siguiente tipo: si $x$ pertenece al dominio y está suficientemente cerca de $a$ sin ser igual a $a$, entonces $f(x)$ debe estar cerca de cierto número $L$.
+Queremos que, cuando $x$ pertenezca al dominio y esté suficientemente cerca de $a$ sin coincidir con él, $f(x)$ quede cerca de un número $L$. Para que esa exigencia describa el comportamiento de la función, debe haber argumentos admisibles en cada entorno perforado.
 
 La estructura lógica básica será una implicación:
 
@@ -677,7 +677,7 @@ $$
 }
 $$
 
-La exigencia no es decorativa. Garantiza que, por pequeño que sea el entorno perforado que elijamos, siempre haya al menos un punto del dominio sobre el cual la futura condición pueda ejercer control.
+La condición garantiza que cada entorno perforado contiene algún punto del dominio. Por pequeño que elijamos el radio, la condición sobre las imágenes tendrá argumentos en los que ejercer su control.
 
 También prepara un resultado esencial: la unicidad del límite. Si alrededor de $a$ no hubiera puntos disponibles, ninguna comparación entre dos supuestos valores límite podría tener contenido.
 
@@ -838,7 +838,7 @@ Hasta aquí hemos hablado únicamente de **dónde puede estar $x$**. Todavía no
 
 Ese será el paso siguiente.
 
-En `T1-C04`, una tolerancia $\varepsilon$ alrededor del candidato $L$ obligaba a buscar un índice $N$ a partir del cual todos los términos quedaran controlados. Ahora una tolerancia $\varepsilon$ alrededor de $L$ nos obligará a buscar un radio $\delta$ alrededor de $a$ que controle todos los valores de la función correspondientes a puntos suficientemente próximos del dominio.
+Para una sucesión, una tolerancia $\varepsilon$ alrededor de $L$ exigía encontrar un umbral $N$ que controlase todos los términos posteriores. En una función real buscaremos un radio $\delta$ alrededor de $a$ que garantice la precisión de salida para todos los puntos del dominio situados dentro del entorno perforado correspondiente.
 
 La próxima sección convertirá esa idea en una definición cuantificada completa:
 
@@ -1017,7 +1017,7 @@ $$
 $$
 :::
 
-La hipótesis de que $a$ sea punto de acumulación de $A$ no es un adorno añadido a la definición. §4.1 mostró por qué la necesitamos: garantiza que siempre existen puntos del dominio distintos de $a$ arbitrariamente próximos a él. Sin esa condición, una implicación local podría quedar satisfecha simplemente porque no hubiera puntos sobre los cuales ponerla a prueba.
+La hipótesis de acumulación asegura que existen argumentos del dominio distintos de $a$ arbitrariamente próximos a él. Sin ella, la implicación local podría ser verdadera porque no hubiese puntos que cumplieran su antecedente; esa verdad por vacuidad no describiría una aproximación de los valores de la función.
 
 ### Leer los cuantificadores en el orden correcto
 
@@ -1556,7 +1556,7 @@ $$
 
 habría puntos disponibles a ambos lados de $0$.
 
-Todavía no introduciremos límites laterales: esa teoría pertenece a §4.7. Lo importante ahora es comprender que el dominio forma parte de la afirmación desde el comienzo.
+El dominio determina qué argumentos pueden aproximarse al centro. La definición debe conservar esa información incluso cuando los puntos admisibles se encuentran solo a un lado.
 
 La notación abreviada
 
@@ -4386,7 +4386,7 @@ $$
 
 no contiene información suficiente para determinar un único valor límite, porque las paredes exteriores no se aproximan entre sí.
 
-Lo que hace funcionar el sándwich no es simplemente estar acotado entre dos funciones, sino que ambas cotas converjan **al mismo número**.
+Las cotas deben converger **al mismo número**: esa coincidencia hace que el intervalo entre ellas termine contenido en cualquier entorno del candidato. Dos cotas con límites distintos solo encerrarían los valores en una franja de anchura positiva.
 
 Geométricamente,
 
@@ -5040,7 +5040,7 @@ No hemos creado una segunda teoría de límites. Hemos aprendido a **restringir 
 
 ### Cuando hay puntos por ambos lados
 
-Supongamos ahora que $a$ es punto de acumulación de $A$ tanto por la izquierda como por la derecha. Entonces cualquier entorno perforado suficientemente pequeño contiene potencialmente puntos de ambos lados.
+Si $a$ es punto de acumulación de $A$ tanto por la izquierda como por la derecha, cada entorno perforado contiene puntos admisibles de ambos lados. Tendremos que controlar las dos formas de aproximación.
 
 En esa situación sí aparece el criterio clásico que conecta los tres límites.
 
@@ -7656,7 +7656,7 @@ hasta descubrir qué condición sobre $|x-a|$ basta para hacerlo menor que $\var
 
 ### Qué debe poder hacer ahora el lector
 
-Al terminar este laboratorio, una solución completa ya no debería consistir únicamente en una cadena de transformaciones simbólicas. Antes de calcular debemos poder decir:
+Para justificar un límite hay que identificar qué puntos admite el dominio y qué condición debe mantenerse en todos los argumentos suficientemente próximos. Esa decisión determina la definición o el teorema que podemos utilizar:
 
 - cuál es el dominio efectivo y qué puntos de aproximación están disponibles;
 - si el problema exige $\varepsilon$–$\delta$, barreras, umbrales en infinito o información lateral;
@@ -7683,7 +7683,7 @@ $$
 }
 $$
 
-En §4.11 ese repertorio dejará de estar organizado por estaciones. El banco final mezclará reconocimiento, prueba directa, diagnóstico, contraejemplos, descubrimiento guiado y desafíos de síntesis. La tarea será elegir la herramienta adecuada sin que el enunciado anuncie de antemano cuál es.
+Los ejercicios combinan estas decisiones. La información del enunciado tendrá que orientar la elección de una prueba directa, una comparación, un argumento secuencial o un análisis de los límites laterales, con las hipótesis que corresponden a cada caso.
 
 ## Ejercicios y soluciones {#sec-t1-c05-11}
 
@@ -10616,8 +10616,6 @@ $$
 $$
 
 En particular, una solución rigurosa ya debe distinguir entre el valor puntual y el comportamiento perforado, saber cuándo una sucesión refuta un candidato, reconocer cuándo un producto necesita acotación local, cuándo un cociente necesita separación respecto de cero, cuándo dos laterales controlan el bilateral y cuándo una composición requiere evitar el punto ignorado por el límite exterior.
-
-Con este banco queda completado el desarrollo sustantivo de `T1-C05`. El paso siguiente es la auditoría integral del capítulo: correspondencia 40/40, IDs, referencias cruzadas, sintaxis de publicación, no circularidad y compilación.
 
 ---
 

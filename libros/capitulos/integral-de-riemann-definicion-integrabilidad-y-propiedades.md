@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-10-06
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -45,15 +45,15 @@ format:
 
 [← Capítulo 13](del-area-y-las-sumas-a-la-integral.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 15 →](teoremas-de-valor-medio-para-integrales.md)
 
-El capítulo anterior terminó en un umbral deliberado. Para una función acotada $f:[a,b]\to\mathbb R$ ya sabemos construir, sobre cada partición $P$, una suma inferior $L(f,P)$ y una suma superior $U(f,P)$; también sabemos insertar entre ambas cualquier suma etiquetada $R(f;P,\xi)$ y sabemos que el refinamiento estrecha el encierro.
+Para una función acotada $f:[a,b]\to\mathbb R$, cada partición $P$ proporciona una suma inferior $L(f,P)$, una superior $U(f,P)$ y sumas etiquetadas $R(f;P,\xi)$ comprendidas entre ambas. El refinamiento estrecha ese encierro, pero todavía debemos relacionar los resultados de todas las particiones.
 
 Pero ninguno de esos números pertenece todavía a la función **sin referencia a una partición**.
 
 Ese es el problema de este capítulo.
 
-La pregunta ya no será cómo construir una aproximación finita, sino cómo pasar de **todas** esas aproximaciones a una cantidad que dependa únicamente de $f$ y del intervalo. El paso es pequeño en notación y profundo en lógica: tendremos que abandonar una partición concreta y considerar simultáneamente la familia completa de particiones posibles.
+Buscamos una cantidad que dependa únicamente de $f$ y del intervalo. Para eliminar la elección auxiliar de una partición consideraremos las familias completas de sumas inferiores y superiores y preguntaremos si sus extremos coinciden.
 
-La herramienta que permite efectuar ese cambio ya fue construida mucho antes de llegar a la integración. En el primer capítulo vimos que la completitud de $\mathbb R$ garantiza la existencia de supremos para conjuntos no vacíos acotados superiormente y, como consecuencia, de ínfimos para conjuntos no vacíos acotados inferiormente. Ahora esa propiedad dejará de ser una pieza fundacional aislada y entrará directamente en la definición de la integral.
+La completitud de $\mathbb R$ permite tomar el supremo de un conjunto no vacío acotado superiormente y el ínfimo de uno no vacío acotado inferiormente. Aplicaremos esa propiedad a las familias de sumas; primero tendremos que demostrar que satisfacen las condiciones necesarias.
 
 La arquitectura será
 
@@ -69,7 +69,7 @@ $$
 }
 $$
 
-Todavía no relacionaremos la integral con primitivas ni con derivadas. Los teoremas de valor medio para integrales pertenecen al capítulo siguiente, y el teorema fundamental del cálculo al posterior. Antes de conectar integración y diferenciación debemos decidir rigurosamente **qué significa que una función sea integrable**.
+La definición de integrabilidad debe establecerse antes de relacionar la integral con las derivadas o las primitivas. Por eso partiremos de las sumas y de sus extremos globales; los teoremas de valor medio y el teorema fundamental se apoyarán después en esta construcción.
 
 ## De todas las particiones a dos extremos globales {#sec-t1-c15-01}
 
@@ -207,7 +207,7 @@ La definición de supremo e ínfimo ya fue fijada en [Definición 1.7](los-numer
 
 Por el axioma de completitud formulado en [Sección 1.5.2](los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md#sec-t1-c02-completeness-axiom), el conjunto no vacío y acotado superiormente $\mathcal L(f)$ posee un supremo real. Por [Proposición 1.10](los-numeros-reales-orden-valor-absoluto-desigualdades-y-completitud.md#prp-t1-0011), el conjunto no vacío y acotado inferiormente $\mathcal U(f)$ posee un ínfimo real.
 
-Este uso de la completitud no es decorativo. Sin él podríamos escribir formalmente los símbolos «sup» e «inf», pero no tendríamos derecho a afirmar que designan números del sistema en el que estamos trabajando.
+La completitud asegura que esos supremos e ínfimos son números reales. Escribir los símbolos no bastaría para justificar su existencia sin las cotas y la no vacuidad de las familias a las que los aplicamos.
 
 Ya podemos dar nombre a esos dos extremos.
 
@@ -500,7 +500,7 @@ En esta sección, toda función acotada posee una integral inferior global y una
 No hemos dicho todavía que toda función acotada sea integrable, ni hemos definido la integral de Riemann general. La función de [Ejemplo 14.1](#exm-t1-0189) muestra exactamente por qué esas afirmaciones serían distintas.
 :::
 
-**Antes de seguir.** ¿Por qué la colección $\mathcal L(f)$ es no vacía? ¿Qué resultado de C14 permite usar una suma superior construida sobre una partición como cota superior de **todas** las sumas inferiores, incluso de las construidas sobre particiones no comparables? ¿En qué paso exacto entra la completitud de $\mathbb R$? ¿Por qué no necesitamos que exista una partición que alcance el supremo de $\mathcal L(f)$? ¿Qué información nueva expresa la desigualdad entre los dos extremos globales y qué información falta todavía para disponer de una integral de Riemann?
+La colección $\mathcal L(f)$ es no vacía porque existen particiones de $[a,b]$. La comparación mediante refinamiento común permite acotar todas sus sumas inferiores por cualquier suma superior. La completitud produce entonces el supremo, aunque ninguna partición lo alcance. Quedará por decidir si ese extremo coincide con el ínfimo de las sumas superiores.
 
 
 ## Definición de integrabilidad de Riemann {#sec-t1-c15-02}
@@ -834,7 +834,7 @@ $$
 aún **no** ha sido declarada equivalente. Esa equivalencia será el teorema de §14.3.
 :::
 
-**Antes de seguir.** ¿Por qué la definición exige acotación antes de hablar de integrabilidad? ¿Qué diferencia lógica hay entre «la función es integrable» y «hemos calculado su integral»? ¿Por qué [Proposición 14.1](#prp-t1-0072) implica que toda partición encierra el valor integral cuando este existe? ¿Por qué la convergencia de una familia particular de sumas no puede sustituir por sí sola la definición global? En [Ejemplo 14.2](#exm-t1-0190), ¿qué paso adicional convierte a las particiones uniformes en un certificado de integrabilidad y no solo en una colección de aproximaciones plausibles?
+La integrabilidad afirma la existencia de un valor común a los extremos globales; calcularlo es una tarea adicional. Una familia particular de sumas puede sugerir el número buscado, pero para certificarlo debemos enlazarla con la definición, por ejemplo demostrando que las brechas de Darboux se hacen arbitrariamente pequeñas. La proposición [Proposición 14.1](#prp-t1-0072) garantiza el encierro por cualquier partición cuando el valor integral existe; en [Ejemplo 14.2](#exm-t1-0190) se justifica su existencia mediante el control de la brecha.
 
 ## El criterio de Darboux: brechas arbitrariamente pequeñas {#sec-t1-c15-03}
 
@@ -1618,7 +1618,7 @@ Solo la tercera es la condición equivalente del teorema. Las dos primeras puede
 
 La conversa del teorema también explica por qué C14 insistió en distinguir supremum de máximo. Para reconstruir una brecha de Darboux desde sumas etiquetadas no necesitamos que exista una etiqueta donde $f$ alcance exactamente $M_k$ o $m_k$.
 
-Basta la propiedad característica de supremo e ínfimo: podemos escoger valores de la función tan próximos como queramos a esos extremos. Como la partición tiene finitísimas piezas, hacemos esa elección en cada una y los errores se suman de manera controlada.
+La propiedad del supremo y del ínfimo permite elegir valores de la función arbitrariamente próximos a esos extremos. Como la partición tiene un número finito de piezas, podemos repartir un error total entre ellas y controlar la suma de los errores.
 
 Por eso las desigualdades
 
@@ -2490,7 +2490,7 @@ Tampoco hemos calculado las integrales de todas las funciones continuas. El teor
 
 Finalmente, no hemos utilizado el teorema de valor medio integral ni el teorema fundamental del cálculo. Ambos siguen fuera de este capítulo en las fronteras ya fijadas.
 
-La próxima clase estructural será distinta. Una función monótona puede tener discontinuidades y no necesitamos continuidad uniforme para integrarla. En §14.7 construiremos directamente una cota para su brecha a partir de la variación entre los extremos.
+Para una función monótona construiremos la cota de la brecha a partir de la variación entre sus valores extremos. Esa estimación dará integrabilidad incluso cuando haya discontinuidades, sin exigir continuidad uniforme.
 
 **Antes de seguir.** ¿Qué dos consecuencias de la compactitud se usan en [Teorema 14.4](#thm-t1-0049) y para qué sirve cada una? ¿Por qué una colección de radios $\delta_x$ dependientes del punto no proporciona automáticamente una malla global positiva? ¿Cómo convierte [Proposición 13.8](del-area-y-las-sumas-a-la-integral.md#prp-t1-0071) el control uniforme de las oscilaciones en una brecha global? En [Ejemplo 14.6](#exm-t1-0194), ¿por qué la no diferenciabilidad en $0$ no interviene en absoluto? ¿Qué diferencia hay entre demostrar que una función continua es integrable y calcular el valor de su integral?
 
@@ -4190,7 +4190,7 @@ Por debajo de estos niveles quedan datos que pueden ser útiles pero que necesit
 
 **Razonamiento 1.** «$f$ es continua, luego tiene una primitiva, y por el teorema fundamental del cálculo es integrable.»
 
-La conclusión es verdadera, pero esa ruta no pertenece a C15 y sería circular respecto de la arquitectura del libro. Aquí la integrabilidad de las continuas se obtuvo directamente en [Teorema 14.4](#thm-t1-0049) mediante continuidad uniforme y Darboux. El FTC se demostrará después, en C17.
+Utilizar el teorema fundamental aquí introduciría una dependencia circular. La integrabilidad de las funciones continuas ya se obtuvo en [Teorema 14.4](#thm-t1-0049) mediante continuidad uniforme y el criterio de Darboux; esa es la justificación disponible antes de relacionar integración y derivación.
 
 **Razonamiento 2.** «$f$ es monótona, así que el área bajo su gráfica existe.»
 
@@ -4271,7 +4271,7 @@ $$
 
 Sobre esa base se apoyan después las clases suficientes —escalonadas, continuas y monótonas—, la invariancia ante cambios finitos, el álgebra de funciones integrables y la aditividad respecto del intervalo.
 
-Lo importante es que ninguna de esas propiedades ha requerido todavía conectar integración con derivación.
+La construcción y las propiedades anteriores proceden de las sumas y sus estimaciones. La relación con la derivación exigirá teoremas adicionales sobre las funciones de acumulación.
 
 ::: {.callout-important title="Frontera del capítulo"}
 En este laboratorio no se usa el teorema de valor medio integral, no se usa ninguna primitiva y no se usa el teorema fundamental del cálculo. Tampoco se invoca el criterio de Lebesgue.
@@ -4279,7 +4279,7 @@ En este laboratorio no se usa el teorema de valor medio integral, no se usa ning
 C15 sigue respondiendo una pregunta previa: **qué significa ser Riemann integrable y cómo puede certificarse esa propiedad desde la definición.**
 :::
 
-**Antes de seguir.** ¿Por qué la acotación es necesaria en la arquitectura de Darboux pero no suficiente para integrabilidad? ¿Qué diferencia lógica hay entre «existe una partición con brecha pequeña» y «para todo $\varepsilon>0$ existe una partición con brecha menor que $\varepsilon$»? ¿Cómo puede la función racional/irracional producir una familia de sumas etiquetadas que converge a $0$ y otra que converge a $1$ usando las mismas particiones? ¿Qué ingrediente falta cuando solo sabemos que $\|P_n\|\to0$? ¿Por qué una partición con brecha exactamente cero sí certifica integrabilidad? ¿Cuál de las tres formulaciones —extremos globales, criterio de Darboux, criterio uniforme por sumas etiquetadas— es la definición primaria de CPM y cuáles son teoremas equivalentes?
+Una brecha pequeña en una partición solo garantiza el encierro correspondiente a esa precisión. La integrabilidad requiere obtener brechas arbitrariamente pequeñas. De manera equivalente, el criterio uniforme controla todas las etiquetas cuando la malla es suficientemente fina; controlar una familia elegida de etiquetas no basta para esa conclusión.
 
 ## Ejercicios y soluciones {#sec-t1-c15-11}
 

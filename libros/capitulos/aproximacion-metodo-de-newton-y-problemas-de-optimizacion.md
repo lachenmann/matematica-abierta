@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-10-01
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -45,13 +45,13 @@ format:
 
 En los capítulos anteriores el cálculo diferencial fue adquiriendo dos capacidades distintas. Por una parte, aprendimos a describir con rigor el comportamiento de una función: continuidad, monotonía, extremos, convexidad y derivadas sucesivas. Por otra, la linealización y la fórmula de Taylor nos permitieron reemplazar localmente una función por objetos más sencillos sin perder de vista el error.
 
-Ha llegado el momento de convertir esas capacidades en procedimientos. Queremos responder preguntas como estas:
+La aproximación y la optimización exigen convertir esa información en decisiones verificables. Consideremos tres problemas:
 
 - una ecuación $f(x)=0$ tiene una raíz que no conocemos exactamente: ¿cómo construir aproximaciones y saber si son buenas?;
 - un cálculo produce varios decimales aparentemente estables: ¿qué demuestra que alguno de ellos es correcto?;
 - un problema geométrico o cuantitativo pide maximizar o minimizar una magnitud: ¿cómo pasar de la descripción verbal a una función y cómo probar que el candidato obtenido es realmente óptimo?
 
-La palabra **aproximación** será usada aquí en un sentido exigente. No bastará con obtener un número cercano según una calculadora, un dibujo o varias iteraciones. Siempre intentaremos separar tres objetos:
+Para evaluar una aproximación necesitamos relacionar el número calculado con el valor buscado mediante una cota de error. Una calculadora o varias iteraciones pueden sugerir cercanía; la justificación debe separar estos tres objetos:
 
 $$
 \boxed{\text{valor buscado}},\qquad
@@ -99,7 +99,7 @@ $$
 Llamaremos **certificado de error** a una demostración que establece una desigualdad de este tipo a partir de datos conocidos, sin necesitar conocer de antemano el valor exacto de $\alpha$.
 :::
 
-La definición parece elemental, pero fija el criterio que utilizaremos durante todo el capítulo. Una aproximación no se evalúa por la cantidad de cifras que muestra, sino por la información que poseemos sobre su distancia al valor buscado.
+La definición permite evaluar una aproximación por la información disponible sobre su distancia al valor buscado. La cantidad de decimales escritos solo será útil si podemos justificar su precisión.
 
 ### Un intervalo ya es un certificado
 
@@ -163,7 +163,7 @@ $$
 El número $1.4145$ no se convierte en una buena aproximación porque «parece» cercano a $\sqrt2$ ni porque una calculadora muestre dígitos compatibles. La desigualdad anterior es el certificado.
 :::
 
-Este ejemplo utiliza un intervalo construido por comparación exacta. Más adelante Newton producirá aproximaciones de manera mucho más rápida, pero el problema lógico será el mismo: ¿qué argumento permite traducir lo que calculamos en una cota para $|x-\alpha|$?
+El intervalo anterior se construyó mediante comparación exacta. Aunque Newton permita obtener aproximaciones con mayor rapidez, tendremos que justificar igualmente la traducción del cálculo a una cota para $|x-\alpha|$.
 
 ### El residuo de una ecuación no es el error en la variable
 
@@ -556,7 +556,7 @@ En §12.3 construiremos el paso de Newton directamente desde la recta tangente y
 
 ## El paso de Newton desde la recta tangente {#sec-t1-c13-03}
 
-En §12.2 aislamos una raíz antes de intentar aproximarla. Ahora cambiaremos la pregunta: dado un punto $x$ donde podemos calcular $f(x)$ y $f'(x)$, ¿qué nuevo punto sugiere la información diferencial disponible?
+Una vez aislada la raíz, podemos usar el valor $f(x)$ y la pendiente $f'(x)$ en un punto de trabajo para proponer una aproximación nueva. La recta tangente indica cómo hacerlo.
 
 El método de Newton no comenzará como una fórmula que deba memorizarse. Lo construiremos resolviendo exactamente un problema más sencillo: encontrar el cero de la recta tangente en el punto actual. La dificultad consiste en recordar, durante toda la construcción, que el cero de esa recta no tiene por qué ser un cero de la función.
 
@@ -858,7 +858,7 @@ $$
 La división en $x=9$ es legítima. El problema aparece después: $-3\notin(0,\infty)$, por lo que $g(-3)$ no está definido y no podemos calcular $N_g(-3)$. La fórmula define una aplicación hacia $\mathbb R$, pero no necesariamente hacia su propio dominio.
 :::
 
-Este ejemplo solo audita la posibilidad de repetir la operación. Los ciclos, las elecciones iniciales desfavorables y el comportamiento en raíces múltiples se estudiarán sistemáticamente en §12.7. No necesitamos resolverlos ahora para reconocer qué promesas no están incluidas en la definición.
+El ejemplo comprueba si la operación puede repetirse, pero deja abiertas la convergencia y la calidad de la elección inicial. Los ciclos y las raíces múltiples permitirán examinar esas dificultades por separado.
 
 ### Laboratorio de reconstrucción
 
@@ -874,7 +874,7 @@ Este ejemplo solo audita la posibilidad de repetir la operación. Los ciclos, la
 
 Ya conocemos el origen de la fórmula, su dominio y el significado de sus iteraciones. La cuestión siguiente será comparar el cero de la tangente con una raíz verdadera $\alpha$.
 
-En §12.4 aplicaremos Taylor de grado uno centrado en el punto actual $x$ y evaluado en $\alpha$. Como $f(\alpha)=0$, podremos relacionar exactamente $N_f(x)-\alpha$ con el resto de Taylor. Ese será el puente entre el procedimiento que acabamos de construir y las estimaciones que más adelante justificarán su convergencia.
+Taylor de grado uno, centrado en el punto actual $x$ y evaluado en la raíz $\alpha$, relacionará exactamente $N_f(x)-\alpha$ con el resto, porque $f(\alpha)=0$. Para convertir esa identidad en una estimación de convergencia necesitaremos controlar las derivadas que aparecen en ella.
 
 **Antes de seguir.** ¿En qué línea se utiliza $f'(x)\ne0$? ¿Qué ecuación resuelve exactamente $N_f(x)$? ¿Por qué el codominio de $N_f$ se ha escrito como $\mathbb R$? ¿Qué diferencia hay entre una raíz donde la derivada es cero y un punto donde la derivada es cero pero la función no se anula? ¿Por qué dos iteraciones calculadas correctamente no son todavía una prueba de convergencia?
 
@@ -1676,7 +1676,7 @@ Dentro de la región que sí hemos certificado, los errores absolutos disminuyen
 
 **No trasladar una garantía al pasado.** Si una iteración inicial entra en un intervalo certificado, el criterio controla la cola a partir de esa entrada. Hay que verificar separadamente que todos los pasos del prefijo estén definidos. El ejemplo del cúbico muestra exactamente esta división del trabajo.
 
-**Identificar el dato que aún no tenemos.** Saber que $x_n\to\alpha$ y que el régimen es cuadrático no convierte automáticamente un residuo calculado en una tolerancia. La próxima sección construirá el certificado a posteriori que falta. En esta sección transportamos una cota inicial por una recurrencia cuya validez ya está asegurada.
+Conocer la convergencia y su régimen cuadrático permite transportar una cota inicial mediante la recurrencia demostrada. Para convertir el residuo de una aproximación ya calculada en una tolerancia necesitaremos además una estimación a posteriori que relacione ese residuo con la distancia a la raíz.
 
 ### Lo que ahora podemos afirmar
 
@@ -2033,7 +2033,7 @@ $$
 \frac{1/8}{1-1/8}\frac1{408}=\frac1{2856}.
 $$
 
-Es una cota correcta, pero menos ajustada que $1/332928$, obtenida por el residuo del mismo punto en [Ejemplo 12.10](#exm-t1-0157). La utilidad de un certificado no se decide por su nombre, sino por sus hipótesis, su costo de comprobación y su valor concreto.
+La cota es válida, aunque resulta menos ajustada que $1/332928$, obtenida mediante el residuo del mismo punto en [Ejemplo 12.10](#exm-t1-0157). Para elegir entre certificados podemos comparar las hipótesis que exigen, su costo de comprobación y la precisión concreta que proporcionan.
 
 ### El valor evaluado también puede tener incertidumbre
 
@@ -3655,7 +3655,7 @@ Ninguna de las tres afirmaciones sustituye automáticamente a las otras dos.
 
 ### Laboratorio integrador: auditar una solución de optimización con Newton
 
-Podemos cerrar la parte expositiva del capítulo con un protocolo que obliga a identificar qué resultado respalda cada línea de una solución.
+Para reunir las técnicas anteriores identificaremos qué resultado justifica cada paso de una solución:
 
 **1. Construir el problema antes del algoritmo.** Especifica conjunto factible, función objetivo, unidades y sentido de la optimización. Si el problema verbal fue reducido a una variable, conserva la justificación de esa reducción.
 
@@ -3721,9 +3721,9 @@ $$
 }
 $$
 
-En §12.11 convertiremos esta arquitectura en práctica sistemática mediante cuarenta ejercicios originales con soluciones razonadas. El banco deberá obligar a distinguir cálculo, hipótesis y certificado, no solo a ejecutar fórmulas.
+Los cuarenta ejercicios con soluciones razonadas combinan la construcción del procedimiento, la comprobación de sus hipótesis y la justificación del error o del carácter óptimo del resultado.
 
-**Antes de seguir.** ¿Qué función recibe realmente Newton cuando buscamos un estacionario de $F$? ¿Dónde se exige $F''(x)\ne0$? ¿Por qué nuestro teorema de convergencia introduce $F'''$? ¿Qué demuestra el cubo sobre la clasificación? ¿Qué candidatos no puede hallar el cociente $F'/F''$? ¿Qué diferencia hay entre certificar la posición de un crítico y demostrar que su valor es óptimo globalmente?
+Al aplicar Newton a la búsqueda de estacionarios de $F$, la función que recibe el método es $F'$. La no anulación de $F''$ permite formar el paso, y el teorema de convergencia exige además el control correspondiente de $F'''$. Localizar y clasificar un estacionario deja todavía pendiente la comparación global y la revisión de los candidatos que ese cociente no alcanza.
 
 ## Ejercicios y soluciones {#sec-t1-c13-11}
 

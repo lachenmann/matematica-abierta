@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-21
-date-modified: 2026-10-01
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -39,11 +39,11 @@ format:
 
 [← Capítulo 7](algebra-de-derivadas-y-regla-de-la-cadena.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md) · [Capítulo 9 →](teoremas-de-rolle-y-del-valor-medio.md)
 
-En el capítulo anterior demostramos cómo derivar combinaciones lineales, productos, cocientes y composiciones. También obtuvimos las derivadas de potencias enteras, polinomios y funciones racionales. Esas reglas permiten calcular mucho, pero no resuelven por sí solas una pregunta anterior a cualquier cálculo: **¿existe, y cuál es exactamente, la función cuya derivada queremos encontrar?**
+Las reglas de derivación permiten operar con funciones cuya diferenciabilidad está establecida. Al estudiar inversas, raíces o ecuaciones entre variables aparece una cuestión previa: debemos identificar la función que existe con los dominios y las propiedades necesarios para aplicar esas reglas.
 
 Algunos símbolos esconden decisiones. La escritura $f^{-1}$ exige que $f$ sea invertible con dominio y codominio fijados; una raíz requiere demostrar la existencia del valor elegido y señalar su dominio; una ecuación como $F(x,y)=0$ describe inicialmente un conjunto de pares, no una función $y$ de $x$. Además, incluso cuando una función existe y es continua, su diferenciabilidad puede fallar en determinados puntos. No confundir estos problemas será el hilo conductor del capítulo.
 
-Aquí *funciones elementales* designará, por ahora, las funciones **algebraicas accesibles con las herramientas que ya poseemos**: las polinómicas y racionales, las raíces que construiremos, las potencias racionales en dominios admisibles y ciertas funciones definidas mediante ramas de ecuaciones polinómicas. No adelantaremos las derivadas de logaritmos y exponenciales: su construcción rigurosa está reservada al capítulo visible 17, después de la teoría de la integral y del teorema fundamental del cálculo. Tampoco presentaremos una tabla de derivadas trigonométricas o trigonométricas inversas sin haber establecido previamente sus definiciones analíticas y los límites que las justifican. Esta delimitación no reduce el rigor del capítulo: identifica con precisión qué podemos demostrar ahora.
+Aquí estudiaremos las funciones **algebraicas accesibles con las herramientas disponibles**: polinomios, funciones racionales, raíces, potencias racionales en dominios admisibles y ciertas ramas de ecuaciones polinómicas. Logaritmos y exponenciales se construirán a partir de la integral en el capítulo visible 17. Las funciones trigonométricas y sus inversas requerirán sus propias definiciones y los límites que justifiquen sus derivadas.
 
 Nuestra ruta será
 
@@ -57,7 +57,7 @@ $$
 }
 $$
 
-La última etapa tendrá un alcance expresamente limitado: para una relación polinómica demostraremos la diferenciabilidad de una **rama continua previamente establecida**, bajo una condición algebraica precisa. La existencia general de una rama a partir de una ecuación pertenece al futuro teorema de la función implícita en varias variables y no será supuesta ni anunciada como un resultado ya demostrado.
+Para una relación polinómica probaremos la diferenciabilidad de una **rama continua previamente establecida**, bajo la condición algebraica indicada en el teorema. La prueba no proporcionará una construcción general de ramas a partir de cualquier ecuación; esa cuestión requiere el teorema de la función implícita en varias variables.
 
 ## La fórmula no crea su función {#sec-t1-c09-01}
 
@@ -65,7 +65,7 @@ La última etapa tendrá un alcance expresamente limitado: para una relación po
 
 La familiaridad con una expresión puede hacernos pasar directamente a su derivada. En el cálculo riguroso el orden debe ser otro. Primero preguntamos **qué objeto define la expresión**: una función completa, con dominio y codominio, o solamente una relación entre variables. Después comprobamos **que ese objeto existe con las propiedades necesarias**: por ejemplo, que una función posee inversa o que una ecuación tiene la rama elegida. Solo al final investigamos **si es diferenciable en el punto considerado** y qué fórmula permite hallar su derivada.
 
-Estas preguntas no son tres maneras de formular el mismo problema. Una expresión puede estar bien definida sin ser invertible; una inversa puede existir y ser continua sin tener derivada finita en cierto punto; una ecuación puede admitir varias funciones distintas que la satisfagan. La regla de la cadena, ya demostrada, no subsana ninguna de esas ausencias: permite derivar una composición cuando se conocen las derivadas pertinentes, pero no fabrica funciones inversas ni ramas implícitas.
+Estas comprobaciones responden a problemas distintos. Una función bien definida puede carecer de inversa; una inversa continua puede no tener derivada finita en cierto punto; una ecuación puede admitir varias ramas. La regla de la cadena se aplica cuando las funciones y sus derivadas pertinentes ya están disponibles.
 
 ### Una misma expresión no determina una misma función inversa
 
@@ -174,7 +174,7 @@ La respuesta tiene tres etapas, que conviene mantener separadas:
 2. **Continuidad.** La existencia de $g$ no afirma nada, por sí sola, sobre el comportamiento de sus valores ante entradas próximas. Necesitamos un resultado analítico adicional.
 3. **Diferenciabilidad.** Incluso después de demostrar que $g$ es continua, queda pendiente investigar si su cociente incremental converge a un número real. Esta será la tarea de §8.3.
 
-Obsérvese el papel de $J=f(A)$. Si el codominio declarado de la función original contiene valores que nunca se alcanzan, no hay un antecedente que la inversa pueda asignarles. Para invertir sin ambigüedades no basta escribir $f^{-1}$: debemos identificar primero una biyección entre el dominio y la **imagen**, o verificar sobreyectividad respecto del codominio que se haya elegido.
+La imagen $J=f(A)$ contiene exactamente los valores que poseen algún antecedente. Si el codominio original incluye otros valores, la función no puede asignarles antecedentes mediante una inversa. Debemos, por tanto, identificar una biyección entre el dominio y la imagen efectiva, o verificar la sobreyectividad respecto del codominio declarado.
 
 ### Recuperación de un teorema ya demostrado
 
@@ -582,7 +582,7 @@ En §8.4 emplearemos este resultado para estudiar las raíces de cualquier índi
 
 ### ¿Qué asegura el símbolo de una raíz?
 
-La raíz cuadrada no negativa ya fue construida al estudiar los números reales. Ahora queremos extender esa existencia a cualquier índice natural. La pregunta no es todavía cómo derivar $t\mapsto\sqrt[n]{t}$: **antes debemos probar que la expresión determina un único número y precisar para cuáles valores de $t$ lo hace**. El teorema de la derivada inversa de §8.3 se aplicará después, nunca como prueba de que la raíz existe.
+La construcción de la raíz cuadrada no negativa sugiere extender la pregunta a otros índices naturales. Para cada índice habrá que demostrar existencia y unicidad de la raíz en los valores admisibles de $t$. Una vez construida la función y fijado su dominio, podremos investigar su derivada mediante el teorema de la inversa.
 
 Fijemos un entero $n\ge1$. Consideraremos inicialmente la función polinómica
 
@@ -863,7 +863,7 @@ Si $m>n$, ese cociente tiende a $0$; si $m=n$, vale $1$; y si $0<m<n$, crece sin
 Las expresiones $x^{2/3}$ y $x^{1/2}$ están definidas en $0$, pero ninguna posee allí derivada finita; $x^{3/2}$ sí posee derivada **relativa derecha** igual a $0$ en ese extremo; $x^{-1/3}$ ni siquiera está definida en cero. Es necesario distinguir punto excluido, extremo incluido y punto interior antes de calcular.
 :::
 
-En §8.6 retomaremos sistemáticamente estos puntos excepcionales junto con el valor absoluto y las funciones por tramos. Por ahora, la prueba por cocientes ya muestra por qué no podemos sustituir $x=0$ en una fórmula válida únicamente para $x\ne0$.
+Los cocientes muestran ya que una fórmula válida para $x\ne0$ no determina la derivada en cero. El valor absoluto y las funciones por tramos exigirán examinar esos puntos directamente desde la definición.
 
 ### Componer exige transportar el dominio
 
@@ -939,7 +939,7 @@ Hemos ampliado el repertorio sin ampliar arbitrariamente los dominios: las raíc
 
 La fórmula obtenida en §8.5 para una potencia racional compuesta requiere que el argumento no se anule en el punto de aplicación. Al encontrar una raíz en cero, un cambio de signo o el punto donde se unen dos tramos, debemos recuperar la definición de derivada. No basta con que cada fórmula sea diferenciable **fuera** del punto excepcional: la derivabilidad se decide comparando los valores de la función original en ese punto y en los puntos que se le aproximan **dentro de su dominio**.
 
-El caso más sencillo ya contiene toda la dificultad. Para $f(x)=|x|$, las expresiones $-x$ si $x<0$ y $x$ si $x>0$ tienen derivadas $-1$ y $1$, respectivamente. Sin embargo, escribir esas dos derivadas no es todavía una prueba sobre $x=0$; la prueba aparece al calcular allí el cociente incremental. En cambio, $x\mapsto |x^3|$ también cambia de expresión en cero y sí resulta diferenciable. La cuestión no es, pues, «¿hay dos tramos?», sino «¿qué límite tienen sus cocientes respecto del valor común?».
+En $f(x)=|x|$, los tramos $-x$ y $x$ tienen derivadas $-1$ y $1$, pero la derivada en el punto de unión exige calcular allí el cociente incremental respecto del valor central. Para $|x^3|$ también cambia la expresión en cero y, sin embargo, los cocientes sí tienen un límite común. La existencia de dos reglas laterales obliga a comprobar ese límite, sin anticipar su resultado.
 
 ### Empalmes: primero el valor, después las pendientes
 
@@ -1054,7 +1054,7 @@ Para una expresión con raíces, signos o tramos, seguiremos este orden: **(i)**
 Sin consultar el ejemplo, estudia $A(x)=\sqrt{x^4}$ y $B(x)=\sqrt{x^2}$ en cero: demuestra sus identidades con potencias enteras y calcula ambos cocientes incrementales. Después define una función por tramos que valga $x^2$ para $x<0$, $7$ en $x=0$ y $x^2$ para $x>0$. ¿Coinciden los límites laterales? ¿Es continua? ¿Tiene derivada? Finalmente, explica por qué la función $\sqrt{x}$ definida solo en $[0,\infty)$ no necesita un cociente desde la izquierda en cero, aunque tampoco posea allí derivada relativa finita.
 :::
 
-Una vez controlados estos puntos excepcionales, aún queda una precaución anterior a toda derivación inversa: que una derivada no nula en un único punto no construye por sí sola una inversa local. La §8.7 examinará esa diferencia y preparará la elección rigurosa de ramas.
+Antes de derivar una inversa local debemos justificar que existe. Una derivada no nula en un único punto controla la comparación con el valor central, pero no compara automáticamente las imágenes de cualquier par de puntos próximos.
 
 ## Una inversa no se deduce de una derivada no nula aislada {#sec-t1-c09-07}
 
@@ -1793,7 +1793,7 @@ En una gráfica funcional derivable en un punto interior, el número $\varphi'(a
 Ante una relación, identifica primero el conjunto de ceros; demuestra después que la rama o la inversa elegida **existe** con dominio explícito; establece su continuidad cuando el resultado la exige; verifica el punto de acumulación y el tipo de incremento; comprueba $B(a,b)\ne0$ antes de usar el teorema implícito; si falla esa hipótesis, vuelve al cociente propio de la rama. Solo entonces interpreta geométricamente la derivada obtenida. La falta de alguno de estos pasos nunca se repara escribiendo una fórmula familiar.
 :::
 
-Este recorrido completa la síntesis conceptual del capítulo. La §8.11 desarrolla esas distinciones en cuarenta ejercicios originales organizados por familias A–G, cada uno acompañado por su solución razonada en la misma fuente canónica. La incorporación del banco no sustituye la auditoría integral ni la revisión visual: el capítulo permanece abierto y fuera de publicación hasta superar ambas puertas.
+Los cuarenta ejercicios y sus soluciones razonadas combinan estas distinciones: construir una función, justificar una rama, probar diferenciabilidad y calcular la derivada bajo las hipótesis correspondientes. La comparación entre métodos deberá referirse siempre al mismo objeto y al mismo dominio.
 
 ## Ejercicios y soluciones {#sec-t1-c09-11}
 
@@ -2534,7 +2534,7 @@ por lo que $\varphi_+'(0)=1$ y $\varphi_-'(0)=-1$. Se puede comprobar directamen
 En el telescopado respecto de $(0,0)$ podemos tomar $A_{0,0}(x,y)=-x(1+x)$ y $B_{0,0}(x,y)=y$, pues $F(x,y)=-x\,[x(1+x)]+y\,y$. Ambos valores en $(0,0)$ son $0$. El criterio suficiente de [Teorema 8.2](#thm-t1-0032) no se aplica ($B=0$), pero **no contradice** que cada rama construida posea su propia derivada. Las dos rectas de pendiente $1$ y $-1$ son tangentes a dos gráficas distintas, no una pendiente escogida por la ecuación completa.
 :::
 
-El banco cierra la progresión del capítulo: una función debe existir antes de que podamos derivarla; la diferenciabilidad requiere límites con el dominio correcto; una condición suficiente nunca puede invertirse sin argumento adicional. Los cuarenta enunciados y sus cuarenta soluciones permanecen unidos en este manuscrito. El cierre editorial y la publicación quedan supeditados a las auditorías matemática, estructural y visual del capítulo completo.
+El banco cierra la progresión del capítulo: una función debe existir antes de que podamos derivarla; la diferenciabilidad requiere límites con el dominio correcto; una condición suficiente nunca puede invertirse sin argumento adicional.
 
 ---
 

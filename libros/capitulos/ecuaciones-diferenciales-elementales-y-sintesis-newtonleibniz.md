@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-09-30
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -51,9 +51,9 @@ format:
 
 [← Capítulo 19](aplicaciones-geometricas-y-cuantitativas-de-la-integral.md) · [Índice del Tomo I](../para-matematicos/calculo-para-matematicos.md)
 
-El cálculo diferencial permite obtener una tasa de cambio cuando conocemos la función que describe un estado. El cálculo integral recorre la dirección inversa: desde una tasa conocida y un valor de referencia reconstruye ese estado. El teorema fundamental del cálculo ha dado una forma precisa a esta relación. Ahora aparece una dificultad adicional: la tasa puede depender del propio estado que buscamos. Una ley como $y'=y$ no entrega de antemano una función conocida que podamos integrar; relaciona la incógnita con su derivada.
+El cálculo diferencial obtiene una tasa a partir de un estado conocido, y el teorema fundamental permite reconstruir el estado desde una tasa continua y un valor de referencia. Si la tasa depende del propio estado buscado, como ocurre en $y'=y$, debemos encontrar una función que satisfaga la relación con su derivada.
 
-En este capítulo resolveremos algunas clases de ecuaciones de este tipo con las herramientas ya construidas. En cada caso distinguiremos la obtención de una fórmula, la comprobación de que define una solución y la demostración de que no quedan otras soluciones bajo las hipótesis declaradas. Esa distinción nos permitirá reconocer tanto la eficacia del cálculo como sus fronteras: un procedimiento que resuelve una clase concreta no constituye por sí solo una teoría general de existencia y unicidad.
+Las herramientas construidas permiten resolver algunas clases de estas ecuaciones. En cada caso comprobaremos que la fórmula define una solución en el intervalo indicado y, cuando el argumento lo permita, que el dato inicial determina la única solución. La conclusión de cada prueba quedará limitada a las hipótesis de la clase estudiada.
 
 ## Solución sobre un intervalo y dato inicial {#sec-t1-c21-01}
 
@@ -63,7 +63,7 @@ Consideremos primero la relación $y'=2x$. Si sustituimos $y(x)=x^2$, la derivad
 
 La notación $y'$ abrevia la derivada de una función que debe buscarse. En una **ecuación diferencial ordinaria**, la incógnita depende de una sola variable y la ecuación relaciona sus valores con alguna de sus derivadas. El orden es el de la derivada más alta que aparece; aquí estudiaremos principalmente ecuaciones de primer orden escritas como $y'=F(x,y)$. Aunque la expresión $F$ reciba dos argumentos, la función incógnita $y$ sigue dependiendo únicamente de $x$: al sustituirla obtenemos $F(x,y(x))$.
 
-Una fórmula candidata no puede verificarse sin precisar dónde está definida. La ecuación $y'=1/y$, por ejemplo, exige $y(x)\ne0$ en todos los puntos del intervalo de solución. No tendría sentido sustituir una función que se anula allí y conservar como si nada una expresión cuyo denominador es cero. El dominio es parte del problema, no una restricción que se añade después de calcular.
+La verificación debe incluir el dominio. En $y'=1/y$, por ejemplo, los valores de una solución tienen que ser distintos de cero en todos los puntos de su intervalo; de lo contrario el miembro derecho no está definido y la sustitución no permite comprobar la ecuación.
 
 ::: {#def-t1-0084}
 **Definición (solución de una ecuación diferencial de primer orden).** Sean $D\subseteq\mathbb R^2$ y $F\colon D\to\mathbb R$. Una **solución de la ecuación**
@@ -105,7 +105,7 @@ consiste en encontrar una solución de la ecuación sobre un intervalo abierto $
 
 Cuando se fija de antemano el intervalo $I$, la búsqueda se realiza sobre ese intervalo. Si no se fija, también debemos indicar en qué intervalo hemos construido la solución. La palabra «inicial» procede de problemas donde la variable representa el tiempo, pero matemáticamente $x_0$ es un punto de referencia y no tiene que ser un extremo izquierdo. Una solución puede estudiarse a ambos lados de él.
 
-La condición $(x_0,y_0)\in D$ es necesaria para que el dato sea admisible. No garantiza, por sí sola, que exista una solución que pase por ese punto ni que sea única. Por ahora separamos tres preguntas: si hay alguna solución, cuántas cumplen el dato y sobre qué intervalos pueden definirse. El siguiente ejemplo permite responderlas directamente en un caso elemental.
+El dato debe pertenecer a $D$ para que sea admisible. Una vez comprobada esa condición, quedan por resolver la existencia de una solución, su posible unicidad y los intervalos en que puede definirse. El ejemplo siguiente permite estudiar cada cuestión directamente.
 
 ::: {#exm-t1-0245}
 **Ejemplo (una familia completa y el dato que elige su constante).** Sea $I$ un intervalo abierto no vacío y consideremos
@@ -386,7 +386,7 @@ La verificación independiente confirma el resultado: $y(1)=-3$ y $y'(x)=-6x e^{
 La tasa proporcional variable puede cambiar de signo sin que la solución cambie de signo. En este ejemplo, $a(0)=0$ hace que la tasa instantánea se anule en $0$, pero no convierte a la solución en constante ni obliga a que su valor sea cero.
 :::
 
-La transformación decisiva fue producir una derivada nula multiplicando por $e^{-A}$. En la siguiente sección utilizaremos el mismo mecanismo cuando aparezca un término conocido adicional: en lugar de obtener un producto constante, obtendremos un producto cuya derivada pueda acumularse mediante la sección anterior.
+Multiplicar por $e^{-A}$ produjo una función de derivada nula. Con un término conocido adicional buscaremos que la derivada del producto sea una función que podamos acumular; así podremos aplicar la reconstrucción de una tasa conocida.
 
 
 ## Ecuaciones lineales y factor integrante {#sec-t1-c21-04}
@@ -485,7 +485,7 @@ $$
 El dato inicial fija $C=2/3$. El término homogéneo decrece cuando $x$ aumenta, pero la entrada produce un término creciente: el signo del coeficiente $p$ por sí solo no determina la evolución de una solución no homogénea.
 :::
 
-El factor integrante convierte la ecuación en una reconstrucción de tasa conocida. La separación de variables seguirá una idea próxima, aunque cambiará la función del estado antes de reconstruirla. Ese cambio exige controlar dónde existe su inversa.
+El factor integrante transforma la ecuación en una tasa conocida. Al separar variables utilizaremos una función del estado para obtener una transformación semejante; su inversión exigirá controlar el dominio y la imagen.
 
 ## Separación de variables y rama inversa {#sec-t1-c21-05}
 
@@ -921,7 +921,7 @@ La figura [Figura 21.5](#fig-t1-c21-05) reúne el signo de la tasa y las trayect
 
 El signo de la tasa permite anticipar la dirección de las trayectorias, pero un límite cuando el tiempo tiende a infinito requiere que la solución exista durante todo ese recorrido. Aquí la fórmula comprobada establece esa existencia para los datos no negativos; después podemos interpretar su comportamiento. La monotonía de una solución definida solo en un intervalo corto no justificaría por sí sola un límite futuro infinito.
 
-Los tres modelos trabajados combinan balance, construcción explícita, unicidad específica y control de intervalos. En la siguiente sección reuniremos el lenguaje diferencial y el integral: describen el mismo problema bajo hipótesis precisas, aunque esa equivalencia no constituye por sí sola una construcción general de soluciones.
+Los tres modelos combinaron el balance con construcciones explícitas, pruebas de unicidad específicas y control de los intervalos. La formulación integral permite expresar el mismo problema bajo las hipótesis que estableceremos; la equivalencia, por sí sola, no construye una solución para una ecuación general.
 
 
 ## Síntesis Newton–Leibniz: del dato a la identidad integral {#sec-t1-c21-10}
@@ -1096,9 +1096,9 @@ El tomo comenzó con la estructura de los números reales y las funciones, y con
 
 Las ecuaciones diferenciales elementales reúnen ese recorrido. La incógnita es ahora una función cuya tasa depende de ella misma, pero las pruebas siguen descansando en resultados construidos: continuidad sobre intervalos, regla de la cadena, derivación de la inversa, teorema del valor medio, acumulación y Newton–Leibniz. En algunas clases pudimos construir una solución y demostrar que el dato inicial la determina. En otras comprobamos directamente que el mismo dato admite varias trayectorias.
 
-No hemos establecido una teoría general de existencia y unicidad para $y'=F(x,y)$, ni una teoría de sistemas, ni métodos de aproximación con garantías generales de error. Esas preguntas requieren herramientas y argumentos adicionales. El cierre del tomo fija una base para abordarlas: distinguir una condición de una construcción, una comprobación de una prueba de exhaustividad y un dominio escrito de un intervalo realmente justificado.
+Una teoría general de existencia y unicidad, los sistemas y los métodos de aproximación con garantías de error requieren herramientas adicionales. Para abordarlos conservamos las distinciones utilizadas aquí: obtener una candidata, verificarla, demostrar exhaustividad y justificar su intervalo de solución.
 
-El banco siguiente permite practicar esas distinciones. Su propósito es que cada resultado incluya no solo un cálculo, sino también la razón por la que la función obtenida responde al problema formulado.
+El banco siguiente reúne esas distinciones. Cada solución debe precisar el intervalo y justificar que la función obtenida satisface la ecuación y el dato, además de establecer unicidad cuando esa sea la conclusión solicitada.
 
 
 ## Ejercicios y soluciones {#sec-t1-c21-bank .unnumbered}

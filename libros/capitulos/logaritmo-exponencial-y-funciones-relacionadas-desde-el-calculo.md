@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-30
-date-modified: 2026-10-06
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -50,7 +50,7 @@ format:
 
 ## Por qué construir una función nueva {#sec-t1-c18-01}
 
-El capítulo anterior cambió de manera decisiva la forma de pensar las primitivas. Antes del teorema fundamental del cálculo, encontrar una función $F$ tal que $F'=f$ podía parecer un problema de reconocimiento: había que adivinar una fórmula conocida cuya derivada produjera el integrando. C17 mostró que, para una función continua, existe una construcción canónica que evita esa adivinación. Si fijamos un punto base $a$, entonces
+El teorema fundamental del cálculo permite construir una primitiva de una función continua mediante acumulación. Para encontrarla ya no dependemos de reconocer la derivada de una fórmula conocida: fijado un punto base $a$, tenemos
 
 $$
 A_f(x)=\int_a^x f(t)\,dt
@@ -58,7 +58,7 @@ $$
 
 es una primitiva de $f$ en el sentido preciso de [Corolario 16.1](teorema-fundamental-del-calculo.md#cor-t1-0028), y [Teorema 16.2](teorema-fundamental-del-calculo.md#thm-t1-0056) explica por qué su derivada recupera al integrando.
 
-Ese principio permite ahora hacer algo que no sería legítimo si dependiéramos únicamente de un repertorio previo de fórmulas: **construir una función nueva cuando la función que necesitamos todavía no tiene nombre dentro de nuestra teoría**.
+La construcción permite introducir una función nueva a partir de la tasa que queremos recuperar. Podremos estudiar sus propiedades desde la definición integral, aunque no dispongamos de una fórmula previa para ella.
 
 ### El hueco de la regla de la potencia
 
@@ -122,7 +122,7 @@ L(x):=\int_1^x\frac{dt}{t}.
 }
 $$
 
-Por ahora la letra $L$ es solamente una **etiqueta provisional** para el objeto que queremos estudiar. La definición canónica del logaritmo natural y la notación $\ln x$ se introducirán recién en §17.2, después de verificar con cuidado que esta construcción funciona en todo su dominio.
+Usaremos provisionalmente la letra $L$ mientras comprobamos que la integral define una función en todo el dominio positivo. Esa verificación permitirá introducir la definición de logaritmo natural y la notación $\ln x$.
 
 La expresión anterior está bien definida para cada $x>0$. Si $x\ge1$, integramos sobre el intervalo compacto $[1,x]$. Si $0<x<1$, la convención de integral orientada de [Definición 14.3](integral-de-riemann-definicion-integrabilidad-y-propiedades.md#def-t1-0067) da
 
@@ -161,7 +161,7 @@ $$
 }
 $$
 
-Lo importante aquí no es clasificar todavía esta función, sino reconocer que su fórmula no ha sido importada desde un repertorio externo: su teoría se desarrollará a partir de la integral, no al revés.
+La función se construye a partir de la integral. Sus propiedades deberán deducirse de esa definición y de los resultados ya disponibles, sin presuponer las leyes logarítmicas que queremos demostrar.
 
 ### Por qué el punto base $1$ es especial
 
@@ -214,7 +214,7 @@ resuelve únicamente el primer problema: proporciona el candidato natural a prim
 
 El resto de C18 responderá estas preguntas sin usar sustitución integral, series de potencias ni ecuaciones diferenciales como fundamento. La cadena será deliberadamente autorreferencial: cada paso utilizará únicamente resultados ya construidos en el libro.
 
-La próxima sección comienza por el primer eslabón. Formalizaremos la función integral anterior como el **logaritmo natural**, estableceremos su dominio, su normalización y su derivada mediante el teorema fundamental del cálculo.
+La definición de **logaritmo natural** recogerá esta construcción. Su dominio, su normalización y su derivada se justificarán mediante las propiedades de la integral y el teorema fundamental.
 
 **Antes de seguir.** ¿Por qué el fallo de la fórmula $x^{n+1}/(n+1)$ en $n=-1$ no demuestra inexistencia de una primitiva de $1/x$? ¿Qué resultado de C17 garantiza que podemos construir una? ¿Por qué la orientación de la integral permite usar el mismo punto base $1$ tanto para $x>1$ como para $0<x<1$? ¿Qué propiedades familiares del logaritmo hemos evitado suponer y por qué sería circular usarlas ya?
 
@@ -227,7 +227,7 @@ L(x)=\int_1^x\frac{dt}{t},
 \qquad x>0,
 $$
 
-como la construcción natural de una primitiva de $1/x$ en los reales positivos. Hasta allí, $L$ era solo una notación provisional. Ahora podemos convertir esa construcción en una definición matemática y empezar a derivar sus propiedades sin importar nada de la teoría escolar de logaritmos.
+como una primitiva de $1/x$ en los reales positivos. Al comprobar que la integral está definida para cada entrada positiva podremos adoptar la notación del logaritmo y deducir sus propiedades desde esa construcción.
 
 ### Definición y dominio
 
@@ -426,7 +426,7 @@ ni las fórmulas para cocientes o potencias, ni la monotonía global, ni la conc
 De $(\ln x)'=1/x>0$ podremos deducir crecimiento estricto usando la teoría ya establecida de monotonía. Pero esa deducción y sus consecuencias globales se organizarán en §17.4. Antes debemos resolver en §17.3 una propiedad algebraica fundamental: cómo responde $\ln$ a la multiplicación de números positivos.
 :::
 
-La próxima sección demostrará la ecuación funcional del logaritmo **sin** usar sustitución en integrales. Compararemos funciones de una variable, calcularemos sus derivadas mediante la regla de la cadena y usaremos la unicidad de primitivas hasta una constante. De ese modo, la ley del producto surgirá de resultados ya disponibles y no de una técnica de integración reservada a C19.
+Para demostrar la ley del producto compararemos dos funciones de una variable, calcularemos sus derivadas por la regla de la cadena y utilizaremos la unicidad de primitivas hasta una constante. Así podremos obtener la ecuación funcional con los resultados disponibles, antes de introducir sustituciones integrales.
 
 **Antes de seguir.** ¿Por qué la definición de $\ln x$ obliga a trabajar con $x>0$? ¿Por qué en la prueba de [Teorema 17.1](#thm-t1-0059) encerramos primero $1$ y $c$ en un intervalo compacto? ¿Qué papel cumple [Proposición 14.3](integral-de-riemann-definicion-integrabilidad-y-propiedades.md#prp-t1-0074) al cambiar el punto base? ¿Por qué escribir $\ln:(0,\infty)\to\mathbb R$ no demuestra que $\ln$ sea sobreyectiva? ¿Qué propiedades del logaritmo continúan todavía pendientes de demostración?
 
@@ -984,7 +984,7 @@ $$
 
 Como $n\ln2$ puede ser arbitrariamente grande, los valores $-n\ln2$ pueden ser arbitrariamente negativos. Así, $\ln$ tampoco está acotada inferiormente.
 
-Sin embargo, la arquitectura del capítulo exige algo más preciso que dos afirmaciones de no acotación: queremos registrar el comportamiento límite completo.
+La no acotación garantiza valores arbitrariamente grandes en magnitud. Para describir el límite completo debemos asegurar que toda una región suficientemente próxima al extremo del dominio satisface la barrera exigida.
 
 ### Cuando $x$ se hace arbitrariamente grande
 
@@ -1325,7 +1325,7 @@ asocia a cada positivo un real distinto y alcanza todos los reales exactamente u
 
 Eso **justifica** que pueda construirse una función inversa global. Pero todavía no la hemos definido, no le hemos asignado la notación $\exp$, no hemos introducido el número $e$ y no hemos demostrado ninguna ley exponencial.
 
-La próxima sección realizará exclusivamente ese paso: invertir la biyección ya establecida y deducir las primeras propiedades de la nueva función a partir de la teoría de funciones inversas construida en C09.
+Podemos invertir la biyección establecida. La teoría de funciones inversas de C09 proporcionará las primeras propiedades de la nueva función a partir de las del logaritmo.
 
 **Antes de seguir.** ¿Por qué $(\ln x)'>0$ basta para obtener inyectividad pero no sobreyectividad? ¿Dónde se usa que $\ln2>0$? ¿Qué aporta exactamente la propiedad arquimediana a la prueba de los límites? ¿Por qué la no acotación superior no es, por sí sola, la definición de límite $+\infty$? ¿En qué paso interviene la continuidad para probar que todo $y\in\mathbb R$ es alcanzado? ¿Por qué todavía no hemos definido la exponencial, aunque la existencia de una inversa ya esté garantizada?
 
@@ -1841,7 +1841,7 @@ $$
 
 Todavía no hemos demostrado la ley de suma de la exponencial, ni hemos identificado $\exp(x)$ con una potencia $e^x$ para exponentes reales, ni hemos definido $a^x$ para una base positiva arbitraria y exponente real.
 
-La próxima sección comenzará precisamente por la primera de esas tareas. Usará la ecuación funcional de $\ln$ y la inyectividad de esa función para demostrar
+Para obtener la ley exponencial utilizaremos la ecuación funcional de $\ln$ y su inyectividad:
 
 $$
 \exp(x+y)=\exp x\,\exp y
@@ -1969,7 +1969,7 @@ $$
 }
 $$
 
-La dirección lógica es completamente regresiva: primero se construyó $\ln$, luego se demostró su ley de producto, después se invirtió globalmente y solo ahora aparece la ley exponencial.
+La ley exponencial se deduce de la construcción de $\ln$, de su ley del producto y de la existencia de su inversa global. Esas dependencias permiten justificar la nueva identidad sin presuponerla.
 
 ### Consecuencias antes de introducir la nueva notación
 
@@ -3861,7 +3861,7 @@ $$
 
 No se ha necesitado recurrir a series de potencias, ecuaciones diferenciales como fundamento ni técnicas de integración.
 
-La próxima sección utilizará exclusivamente funciones ya construidas para introducir las funciones hiperbólicas, derivar sus identidades elementales y describir sus inversas cuando puedan expresarse mediante $\ln$.
+Las funciones exponenciales ya construidas permiten definir las hiperbólicas. Derivaremos sus identidades y, en las ramas invertibles correspondientes, expresaremos sus inversas mediante $\ln$.
 
 **Antes de seguir.** ¿Por qué la fórmula para $x^\alpha$ con $\alpha\in\mathbb R$ se formula canónicamente en $x>0$? ¿Qué resultado permite derivar $\ln u$? ¿Por qué $\ln|x|$ tiene derivada $1/x$ en ambos componentes de su dominio? ¿Qué diferencia lógica hay entre $a^{u(x)}$, $(u(x))^\alpha$ y $u(x)^{v(x)}$? ¿Dónde entra la regla del producto en la diferenciación logarítmica? ¿Por qué la positividad de la base debe verificarse antes de escribir $u^v=\exp(v\ln u)$?
 
@@ -5453,7 +5453,7 @@ $$
 
 [Figura 17.10](#fig-t1-c18-10) resume la disciplina de dominio que gobierna todo el capítulo y mantiene explícita la frontera entre las potencias racionales anteriores y la teoría real de base positiva de C18.
 
-Cambiar este orden es una de las principales fuentes de argumentos formalmente atractivos pero matemáticamente inválidos.
+Una fórmula puede conservar su apariencia tras una simplificación y perder las condiciones de dominio que la justificaban. Esas condiciones deben acompañar cada operación, incluidas las que introducen exponentes o inversas.
 
 ### Cierre de la exposición
 
@@ -5483,15 +5483,7 @@ $$
 }
 $$
 
-El capítulo todavía no está cerrado: falta someter esta estructura a práctica sistemática. La próxima sección materializará el banco reservado
-
-$$
-0676\text{--}0715
-$$
-
-con cuarenta ejercicios y cuarenta soluciones razonadas, manteniendo las fronteras que acabamos de auditar.
-
-**Antes de seguir.** ¿Qué diferencia hay entre codominio e imagen en la construcción de $\ln$? ¿Por qué $(-8)^{1/3}$ puede existir aunque C18 exija bases positivas para potencias reales arbitrarias? ¿Cuál es la forma correcta de $\ln(x^2)$ cuando $x\ne0$? ¿Por qué una simplificación algebraica no puede añadir puntos al dominio de una función sin una definición explícita? ¿Qué dato debe verificarse antes de aplicar diferenciación logarítmica? ¿Por qué $\exp'=\exp$ no convierte todavía a C18 en un capítulo de ecuaciones diferenciales? ¿Qué resultado de C18 prepara directamente la futura primitiva de $1/x$ en C19?
+En los ejercicios tendremos que distinguir codominio e imagen al invertir $\ln$, conservar las bases positivas para exponentes reales arbitrarios y verificar el signo antes de aplicar diferenciación logarítmica. Las potencias racionales previamente construidas conservan sus dominios propios; una simplificación no incorpora por sí sola entradas nuevas.
 
 ## Ejercicios y soluciones {#sec-t1-c18-11}
 

@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-10
-date-modified: 2026-10-06
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -36,11 +36,9 @@ format:
 
 En los ejemplos periódicos usaremos las funciones triangulares $\sigma$ y $\kappa$ definidas en C03, con $\omega=2$. Sus cotas $|\sigma|,|\kappa|\le1$ y los valores $\sigma(\omega/2+n\omega)=(-1)^n$ proceden directamente de aquella definición por tramos; no se presupone trigonometría.
 
-Los dos capítulos precedentes proporcionaron la estructura ordenada y completa de $\mathbb R$ y la definición precisa de función. En ambos aprendimos también a separar hipótesis, existencia y unicidad y a justificar los pasos de una demostración.
+Una sucesión es una función con índices naturales y valores reales. Podemos calcular tantos términos como permita su regla, pero ninguna lista finita nos dice por sí sola qué ocurrirá con todos los términos posteriores. La estructura ordenada y completa de $\mathbb R$ permitirá responder algunas de esas preguntas sin tener que recorrer la lista entera.
 
-Ahora esos tres hilos empiezan a encontrarse.
-
-La idea de **límite** intenta describir un tipo de comportamiento que no puede decidirse mirando únicamente una cantidad fija de datos. Cuando escribimos una sucesión
+La noción de **límite** describe cómo se aproximan los términos a un número cuando el índice crece. Al escribir una sucesión
 
 $$
 a_0,a_1,a_2,a_3,\dots,
@@ -54,9 +52,7 @@ $$
 }
 $$
 
-Las sucesiones serán nuestro primer laboratorio para esa pregunta. Son funciones, pero tienen un dominio especialmente simple: los números naturales. Esa discreción nos permitirá concentrarnos en la estructura lógica del límite antes de afrontar, en el capítulo siguiente, la dificultad adicional de acercar una variable real a un punto.
-
-Este capítulo no comenzará definiendo el límite. Antes necesitamos aprender a mirar una sucesión de la manera adecuada. La noción decisiva será la de **cola**: para estudiar el comportamiento final, los primeros términos pueden dejar de importar.
+Como los índices son naturales, podemos separar con facilidad un tramo inicial y conservar todos los términos que lo siguen. Esa parte de la sucesión recibe el nombre de **cola**. Para expresar que los términos se aproximan a un número necesitaremos controlar una cola completa, cualquiera que sea la precisión exigida; empezar por las colas nos permitirá entender qué debe decir la definición de límite.
 
 ## Una sucesión es una función, pero el límite vive en la cola {#sec-t1-c04-01}
 
@@ -129,15 +125,7 @@ $$
 }
 $$
 
-Por eso, cuando más adelante hablemos de límite, la pregunta relevante no será
-
-> ¿qué ocurre en los primeros términos?,
-
-sino
-
-> ¿qué ocurre con **todos los términos suficientemente tardíos**?
-
-Antes de formalizar esa idea necesitamos precisar qué es exactamente una sucesión.
+El ejemplo obliga a dirigir la atención hacia **todos los términos suficientemente tardíos**. Para precisar esa exigencia empezaremos por la función que asigna un término a cada índice.
 
 ### La variable ya no recorre un intervalo real
 
@@ -182,7 +170,7 @@ $$
 
 El subíndice no crea un nuevo tipo de objeto: simplemente indica que estamos evaluando una función en el índice $n$.
 
-Esta observación conecta directamente este capítulo con el anterior:
+La notación conserva, por tanto, la estructura de una función:
 
 $$
 \boxed{a_n=a(n).}
@@ -217,7 +205,7 @@ habla simultáneamente de
 - **índices** $n$ que deben ser suficientemente grandes;
 - **términos** $a_n$ que deben satisfacer una cierta desigualdad.
 
-Confundir esos dos niveles hace casi imposible leer correctamente las definiciones de límite.
+Al leer una definición de límite tendremos que distinguir el umbral impuesto a los índices de la condición que deben satisfacer los valores correspondientes.
 
 ### Las sucesiones pueden comenzar después de cero
 
@@ -245,7 +233,7 @@ $$
 
 es una cola de $\mathbb N$: contiene $n_0$ y todos los naturales posteriores.
 
-Esto no es un detalle puramente tipográfico. Muchas veces la expresión que define una sucesión solo tiene sentido a partir de cierto índice. La teoría del comportamiento final debe poder trabajar naturalmente con ese tipo de dominio.
+Permitir este dominio nos deja estudiar el comportamiento final de expresiones que solo están definidas a partir de cierto índice, sin asignarles valores artificiales en los índices anteriores.
 
 ::: {#def-t1-0027}
 **Sucesión real, término, cola y propiedad eventual.** Sea $n_0\in\mathbb N$.
@@ -473,7 +461,7 @@ $$
 
 La cola a partir de $N=100$ comienza en $a_{100}$ y descarta todos los términos anteriores.
 
-En lenguaje de funciones, no hemos creado un objeto misterioso: simplemente hemos restringido el dominio de $a$ a
+En lenguaje de funciones, tomar esta cola consiste en restringir el dominio de $a$ a
 
 $$
 \{n\in\mathbb N:n\ge N\}.
@@ -582,7 +570,7 @@ $$
 }
 $$
 
-Esta arquitectura aparecerá una y otra vez en cálculo. En la sección siguiente añadiremos un cuantificador nuevo delante de ella: alguien fijará una tolerancia y nosotros tendremos que responder con un umbral que controle toda la cola.
+Para expresar convergencia añadiremos una exigencia a esta estructura: dada una tolerancia, tendremos que encontrar un umbral a partir del cual todos los términos la satisfagan. El umbral podrá cambiar con la tolerancia; una vez elegido, deberá servir para toda la cola.
 
 ### Un prefijo enorme sigue siendo un prefijo finito
 
@@ -646,7 +634,7 @@ Las dos sucesiones comparten un prefijo extraordinariamente largo, pero sus cola
 
 Podríamos reemplazar $10^6$ por cualquier número natural $M$. La conclusión sería la misma. No existe una longitud finita privilegiada a partir de la cual una inspección por sí sola garantice el comportamiento futuro.
 
-Esta es una razón profunda para que las definiciones de análisis utilicen cuantificadores en lugar de expresiones como
+La dificultad explica por qué una afirmación cuantificada debe sustituir impresiones como
 
 > «miramos muchos términos y parece que...».
 
@@ -690,7 +678,7 @@ $$
 }
 $$
 
-No estamos diciendo que cambiar los primeros términos sea irrelevante para **todas** las preguntas sobre una sucesión. Puede cambiar, por ejemplo, su primer término, su valor máximo o una identidad que se exija para cada índice. La afirmación es más precisa: las propiedades formuladas como
+Modificar el prefijo puede cambiar el primer término, el valor máximo o la validez de una identidad exigida en cada índice. La estabilidad que acabamos de demostrar corresponde a las propiedades formuladas como
 
 $$
 \exists N\;\forall n\ge N
@@ -736,7 +724,7 @@ Por tanto, «eventualmente» siempre debe leerse en relación con **una propieda
 
 Esta dependencia será el centro lógico de la definición de límite: cuanto menor sea la tolerancia que exijamos, más lejos podría ser necesario avanzar en la sucesión.
 
-Todavía no escribiremos esa definición. Antes conviene fijar una última distinción.
+La elección de un umbral tampoco exige que los términos avancen siempre en una misma dirección.
 
 ### Lo eventual no exige monotonía
 
@@ -763,13 +751,11 @@ Esto muestra que una propiedad de cola puede estabilizarse aunque los términos 
 - estar acotada;
 - oscilar.
 
-Son propiedades diferentes y ninguna debe confundirse prematuramente con las demás.
+Por ejemplo, la alternancia de signos puede continuar mientras el valor absoluto de los términos se hace cada vez menor. Una descripción de la oscilación y una afirmación de aproximación pueden ser verdaderas a la vez.
 
-### Qué hemos ganado antes de definir un límite
+### La condición que debe cumplir una cola
 
-Ya podemos describir con precisión el tipo de pregunta que nos interesa.
-
-Una sucesión es una función
+Para formular la aproximación conservamos la estructura de una sucesión como función
 
 $$
 a\colon\{n\in\mathbb N:n\ge n_0\}\to\mathbb R.
@@ -791,7 +777,7 @@ La pregunta siguiente será cuál debe ser esa condición.
 
 Si queremos expresar que los términos se acercan a un número $L$, decir simplemente «$a_n$ está cerca de $L$» no basta. Necesitamos medir la cercanía y exigir que podamos hacerla tan estricta como queramos.
 
-Ese será el paso de §3.2: transformar la intuición
+La distancia entre números reales permitirá transformar la intuición
 
 $$
 \text{«$a_n$ se acerca a $L$»}
@@ -801,7 +787,7 @@ en una afirmación cuantificada que pueda demostrarse línea por línea.
 
 ## Tan cerca como queramos, desde algún momento: la definición $\varepsilon$–$N$ {#sec-t1-c04-02}
 
-En §3.1 aprendimos a reconocer la parte temporal de una afirmación sobre el comportamiento final de una sucesión:
+La eventualidad expresa que una propiedad se mantiene en toda una cola:
 
 $$
 \exists N\;\forall n\ge N.
@@ -851,13 +837,7 @@ Si $\varepsilon=1$, permitimos una franja bastante amplia alrededor de $L$. Si $
 
 Pero ninguna tolerancia positiva particular puede definir por sí sola el límite. Una sucesión podría terminar entrando en el intervalo de radio $1$ alrededor de $L$ y, sin embargo, permanecer siempre a distancia mayor que $10^{-3}$ de $L$.
 
-Por eso la idea de límite no es
-
-> los términos terminan estando cerca de $L$ con alguna precisión fija,
-
-sino
-
-> **cualquiera que sea la precisión positiva que exijamos**, llega un momento a partir del cual todos los términos satisfacen esa precisión.
+La exigencia debe valer para **cualquier precisión positiva**: una vez fijada, tiene que existir un umbral a partir del cual todos los términos estén a distancia de $L$ menor que esa tolerancia.
 
 La expresión «tan cerca como queramos» se convierte así en
 
@@ -942,7 +922,7 @@ $$
 
 Su orden es parte esencial del significado.
 
-Podemos leerla como un juego de responsabilidades.
+Cada cuantificador determina qué podemos elegir y qué debemos verificar:
 
 1. **La exigencia:** se nos entrega una tolerancia arbitraria $\varepsilon>0$.
 2. **Nuestra respuesta:** debemos encontrar un umbral $N$ que funcione para esa tolerancia.
@@ -1140,7 +1120,7 @@ Vale la pena leer la prueba señalando dónde aparece cada cuantificador:
 - **existe** $N$: la propiedad arquimediana nos permite construir una respuesta;
 - **para todo** $n\ge N$: la última cadena de desigualdades funciona para cualquier término de la cola.
 
-El argumento no demuestra que algunos términos estén cerca de cero. Demuestra que, dada cualquier precisión positiva, existe una cola completa dentro de esa precisión.
+La última desigualdad vale para cualquier índice posterior al umbral elegido. Así queda controlada una cola completa dentro de la precisión que se había fijado arbitrariamente.
 
 ### Un mismo umbral no tiene que ser óptimo
 
@@ -1152,15 +1132,7 @@ $$
 
 Esta elección es deliberadamente cómoda y puede estar lejos de ser mínima.
 
-La definición de convergencia no pregunta
-
-> ¿cuál es el primer índice exacto a partir del cual funciona la desigualdad?,
-
-sino
-
-> ¿existe algún índice a partir del cual funciona para todos los términos posteriores?
-
-Esta diferencia libera muchas pruebas de cálculos innecesarios. Un $N$ más grande de lo imprescindible sigue siendo perfectamente válido.
+La definición exige encontrar algún índice a partir del cual la desigualdad funcione para todos los términos posteriores. Un umbral mayor también sirve, porque su cola está contenida en la anterior; por ello podemos elegir una cota cómoda sin calcular el primer índice exacto.
 
 ![En $a_n=1/n$, la banda $|a_n|<1/5$ contiene todos los términos con $n>5$. El término $a_5=1/5$ queda en el borde y no satisface la desigualdad estricta.](<../../assets/books/cpm-tomo-i/t1-c04-fig-01.png>){#fig-t1-c04-01 width=94% fig-alt="Sucesión uno sobre n y banda de tolerancia un quinto; los términos posteriores al quinto están dentro."}
 
@@ -1335,11 +1307,11 @@ $$
 $$
 :::
 
-Observe qué hizo posible la prueba: no necesitamos adivinar cuál sería el «verdadero» candidato. Elegimos un $L$ completamente arbitrario y demostramos que la oscilación entre $1$ y $-1$ impide que toda una cola quede dentro de una tolerancia suficientemente estrecha alrededor de ese $L$.
+La prueba toma un $L$ arbitrario y muestra que la oscilación entre $1$ y $-1$ impide encerrar toda una cola en una tolerancia suficientemente estrecha alrededor de él. Al valer para cualquier $L$ real, el argumento excluye todos los posibles límites.
 
 ### Una definición que ya contiene un método de trabajo
 
-La definición $\varepsilon$–$N$ no es solamente una frase que debamos memorizar. También prescribe la arquitectura de las primeras demostraciones.
+El orden de los cuantificadores organiza tanto la prueba de convergencia como su refutación.
 
 Para **probar convergencia hacia un candidato $L$**:
 
@@ -1377,7 +1349,7 @@ En esta sección hemos definido qué significa converger, pero todavía no hemos
 - ¿puede una sucesión convergente escapar arbitrariamente lejos de todos los números?;
 - ¿qué ocurre si modificamos una cantidad finita de términos de una sucesión convergente?
 
-Las respuestas pertenecen a §3.3. Allí comenzaremos a demostrar los primeros teoremas generales que se desprenden únicamente de la definición que acabamos de construir.
+Estas preguntas se resuelven haciendo que una o varias condiciones de proximidad valgan en una misma cola. La elección de los umbrales será la pieza común de las pruebas.
 
 ## Qué fuerza tiene converger: unicidad, colas y acotación {#sec-t1-c04-03}
 
@@ -1399,7 +1371,7 @@ $$
 }
 $$
 
-Lo importante no será solo conocer estas conclusiones. Cada prueba revelará un patrón de razonamiento que reutilizaremos durante todo el cálculo.
+Para obtenerlas tendremos que combinar umbrales, separar dos supuestos límites mediante su distancia y extender al prefijo finito una cota conocida en la cola.
 
 ### Una sucesión no puede acercarse indefinidamente a dos números distintos
 
@@ -1502,13 +1474,7 @@ L=M.
 $$
 :::
 
-La prueba merece ser leída por su arquitectura, no solo por su resultado.
-
-**Objetivo.** Queríamos demostrar que dos supuestos límites debían coincidir.
-
-**Estrategia.** Supusimos que eran distintos y convertimos su distancia positiva en una tolerancia.
-
-**Paso decisivo.** La convergencia a $L$ y a $M$ produce dos umbrales distintos. El máximo
+Si los supuestos límites fueran distintos, su distancia positiva permitiría elegir una tolerancia que los separase. La convergencia a $L$ y a $M$ produce entonces dos umbrales; tomar su máximo
 
 $$
 N=\max\{N_L,N_M\}
@@ -1516,7 +1482,7 @@ $$
 
 permite entrar simultáneamente en ambas colas.
 
-**Contradicción.** Un mismo término $a_n$ no puede estar a menos de $d/3$ de ambos extremos de un segmento cuya longitud es $d$.
+En esa cola, un mismo término $a_n$ tendría que estar a menos de $d/3$ de ambos extremos de un segmento de longitud $d$, lo que contradice la desigualdad triangular.
 
 Podríamos haber usado, por ejemplo, $\varepsilon=d/4$. Lo esencial es elegir una tolerancia tal que dos errores sumados sigan siendo estrictamente menores que $d$.
 
@@ -2218,7 +2184,7 @@ $$
 
 Las respuestas serán las que sugiere el álgebra ordinaria, pero no las aceptaremos por analogía. Las deduciremos de la definición $\varepsilon$–$N$.
 
-El premio por hacer ese trabajo una vez será considerable: después podremos calcular muchos límites sin reconstruir desde cero una prueba con tolerancias.
+Una vez demostradas estas leyes, podremos aplicarlas a expresiones nuevas comprobando sus hipótesis, sin reconstruir una prueba con tolerancias para cada expresión completa.
 
 ### Las reglas algebraicas son teoremas, no convenciones
 
@@ -2292,7 +2258,7 @@ La acotación permitirá reemplazar el factor variable $|b_n|$ por una constante
 
 El cociente contiene una dificultad diferente: aunque $B\ne0$, necesitamos asegurar que los términos $b_n$ tampoco se acerquen peligrosamente a cero cuando $n$ sea grande.
 
-Estas tres ideas —**repartir el error**, **acotar factores variables** y **separar denominadores de cero**— constituyen la ingeniería de las leyes algebraicas del límite.
+Repartir el error, acotar los factores variables y separar los denominadores de cero nos permitirá transformar la convergencia de las piezas en una estimación para la expresión completa.
 
 ::: {#prp-t1-0021}
 **Álgebra de límites secuenciales.** Sean $(a_n)$ y $(b_n)$ sucesiones reales tales que
@@ -2596,7 +2562,7 @@ $$
 }
 $$
 
-Esto explica por qué [Proposición 3.2](#prp-t1-0020) no era una propiedad decorativa. El teorema de acotación se convierte inmediatamente en una herramienta para demostrar otro teorema.
+La cota proporcionada por [Proposición 3.2](#prp-t1-0020) es la que permite elegir una tolerancia para cada error sin que esta elección dependa del índice $n$.
 
 ### Una observación sobre las cotas usadas en una prueba
 
@@ -2743,7 +2709,7 @@ $$
 $$
 :::
 
-La demostración merece atención por su economía. No hemos utilizado ninguna afirmación sobre la continuidad de la función $x\mapsto|x|$. Esa teoría todavía no existe en nuestro desarrollo. Todo proviene de una desigualdad ya demostrada en `T1-C02`.
+La desigualdad triangular inversa, demostrada en `T1-C02`, controla el nuevo error mediante el que ya sabemos hacer pequeño. El argumento establece la propiedad para el valor absoluto con las herramientas disponibles, sin requerir todavía una teoría de continuidad.
 
 ### De la prueba a la herramienta de cálculo
 
@@ -3778,7 +3744,7 @@ Las secciones anteriores construyeron herramientas generales. Ya sabemos trabaja
 
 Ahora conviene transformar esas herramientas en un pequeño repertorio de resultados que podamos reutilizar sin reconstruir cada prueba desde cero.
 
-La palabra **repertorio** debe interpretarse con cuidado. No queremos una tabla de límites que se memoriza y se aplica mecánicamente. Queremos unas pocas piezas cuya demostración entendamos y que después puedan convertirse en componentes de argumentos más grandes.
+Conocer la demostración de cada resultado permitirá reconocer cuándo una expresión nueva se reduce a estas piezas y qué hipótesis deben verificarse para combinarlas.
 
 El criterio será siempre el mismo:
 
@@ -3973,7 +3939,7 @@ $$
 
 La inducción queda cerrada.
 
-La importancia de esta desigualdad en nuestro problema no consiste en que describa con gran precisión $(1+h)^n$. De hecho, la cota lineal
+Para controlar el recíproco de $(1+h)^n$ basta una estimación inferior que crezca con $n$. La cota lineal
 
 $$
 1+nh
@@ -4578,7 +4544,7 @@ En §3.7 preguntaremos algo más profundo:
 
 La respuesta será afirmativa para sucesiones monótonas y acotadas. Allí aparecerá por primera vez en este capítulo la completitud de $\mathbb R$ como mecanismo directo de existencia de límites.
 
-## Monotonía + completitud = convergencia {#sec-t1-c04-07}
+## Convergencia de sucesiones monótonas y acotadas {#sec-t1-c04-07}
 
 Hasta ahora, para demostrar que una sucesión converge, hemos seguido casi siempre este esquema:
 
@@ -4726,7 +4692,7 @@ $$
 
 no garantizan convergencia.
 
-Lo notable es que, en $\mathbb R$, su combinación sí lo hace.
+Cuando los términos avanzan en una sola dirección y una cota les impide seguir creciendo en ella, la completitud de $\mathbb R$ proporciona un límite.
 
 ### ¿De dónde saldrá el candidato a límite?
 
@@ -4948,7 +4914,7 @@ Quedan demostradas ambas afirmaciones.
 
 ### Dónde se usa exactamente cada hipótesis
 
-El teorema es suficientemente importante como para auditar su demostración línea por línea.
+Las hipótesis cumplen funciones diferentes en la prueba: una permite definir el supremo y otra extiende a toda una cola la aproximación obtenida en un término.
 
 En el caso creciente:
 
@@ -5094,7 +5060,7 @@ $$
 }
 $$
 
-No estamos corrigiendo las implicaciones falsas anteriores; estamos añadiendo exactamente la hipótesis que faltaba para convertirlas en un teorema verdadero.
+Los dos contraejemplos muestran qué aporta cada hipótesis: la monotonía controla la dirección y la cota impide que el avance en esa dirección supere cualquier número real.
 
 ### Una cota en la dirección correcta es suficiente
 
@@ -5241,7 +5207,7 @@ y pasa a ser
 
 > **¿qué propiedades conserva el procedimiento que transforma $a_n$ en $a_{n+1}$?**
 
-Ese cambio de mirada será el centro de esta sección.
+La información sobre términos consecutivos permitirá buscar cotas, probar monotonía y decidir si se cumplen las hipótesis del teorema de convergencia monótona.
 
 ### Una regla recursiva no garantiza por sí sola una sucesión real infinita
 
@@ -5281,7 +5247,7 @@ $$
 
 En una recurrencia esa comprobación suele hacerse encontrando una **región invariante**: un conjunto de valores del cual la regla no consigue sacar a la sucesión.
 
-No introduciremos una teoría abstracta de sistemas dinámicos. Nos basta la idea operativa:
+Podemos justificar la invariancia mediante inducción:
 
 > si demostramos que $a_n$ pertenece a cierto intervalo y que esa pertenencia obliga a que $a_{n+1}$ permanezca en el mismo intervalo, la inducción controla todos los términos.
 
@@ -5679,7 +5645,7 @@ $$
 $$
 :::
 
-La demostración anterior es importante porque ninguna de sus piezas puede intercambiarse libremente de posición.
+La demostración obtiene primero un límite mediante monotonía y acotación; después utiliza la recurrencia para determinar su valor.
 
 La ecuación
 
@@ -5727,7 +5693,7 @@ a_n<2
 a_{n+1}<2.
 $$
 
-La cota no fue entonces una adivinanza gratuita. La propia recurrencia nos permite comprobar si una barrera propuesta se reproduce de un paso al siguiente.
+La propia recurrencia permite comprobar la barrera sugerida por los primeros términos: si la desigualdad vale en un paso, vuelve a valer en el siguiente.
 
 La búsqueda de regiones invariantes suele funcionar así:
 
@@ -5931,7 +5897,7 @@ $$
 
 preserva límites.
 
-En este libro esa propiedad pertenecerá a la teoría de continuidad posterior. No la necesitamos aquí.
+Para justificar ese paso haría falta demostrar que la raíz preserva límites. Podemos resolver el problema con una identidad que solo involucre operaciones algebraicas ya estudiadas.
 
 En lugar de ello utilizamos la identidad algebraica
 
@@ -6066,7 +6032,7 @@ Hasta ahora, sin embargo, todas las sucesiones convergentes del capítulo tenía
 
 La siguiente pregunta será qué lenguaje utilizar cuando los términos crecen más allá de toda cota real o disminuyen por debajo de toda cota real.
 
-Ese será el objeto de §3.9: los **límites infinitos** y la diferencia entre escapar sistemáticamente hacia $+\infty$ o $-\infty$ y ser simplemente no acotada.
+Para describir ese comportamiento habrá que exigir que una cola completa supere cualquier barrera fijada. La exigencia distinguirá los **límites infinitos** de la mera ausencia de una cota.
 
 ## Cuando no hay límite real: límites infinitos y divergencia {#sec-t1-c04-09}
 
@@ -6086,13 +6052,7 @@ $$
 
 no se aproximan a un real fijo. Al contrario: sobrepasan cualquier barrera real que fijemos, siempre que avancemos lo suficiente.
 
-La frase importante no es
-
-> «los términos se hacen muy grandes»,
-
-sino una afirmación cuantificada:
-
-> **dada cualquier cota real que queramos superar, toda la cola termina quedando por encima de ella.**
+Podemos precisar ese crecimiento mediante una afirmación cuantificada: **dada cualquier barrera real, existe una cola completa cuyos términos quedan por encima de ella**.
 
 Este patrón es análogo a la definición $\varepsilon$–$N$, pero cambia el tipo de desafío. Allí alguien fijaba una tolerancia alrededor de un candidato $L$; aquí alguien fija una barrera real $M$ que debemos superar de manera permanente.
 
@@ -6453,7 +6413,7 @@ $$
 
 $\blacksquare$
 
-La hipótesis de positividad eventual no es decorativa. Sin ella, la condición
+La positividad eventual determina la dirección del crecimiento. Al retirar esa hipótesis, la condición
 
 $$
 \frac1{a_n}\to0
@@ -6581,15 +6541,13 @@ Para $+\infty$, dada una barrera $M$, toda la cola debe quedar por encima de ell
 
 Para $-\infty$, dada una barrera $M$, toda la cola debe quedar por debajo.
 
-Con esto hemos completado el repertorio conceptual principal del capítulo. En §3.10 dejaremos de introducir teoría nueva y recorreremos un laboratorio de diagnóstico: reconocer qué herramienta conviene usar, reconstruir pruebas y detectar errores lógicos antes de afrontar el banco final de ejercicios.
+Al resolver un problema tendremos que reconocer cuál de estas exigencias corresponde al comportamiento que buscamos demostrar y qué información permite controlar la cola. Los ejemplos siguientes reúnen esas decisiones con las herramientas algebraicas y de orden.
 
 ## Laboratorio de límites secuenciales {#sec-t1-c04-10}
 
 Hasta aquí hemos construido las herramientas del capítulo una por una. Sabemos traducir «acercarse» a una afirmación $\varepsilon$–$N$; negar correctamente una convergencia; usar unicidad, acotación, álgebra y orden; reconocer cuándo conviene aplicar el teorema del sándwich; obtener convergencia a partir de monotonía y completitud; analizar recurrencias; y distinguir un límite real de un escape hacia $+\infty$ o $-\infty$.
 
-Ahora cambia la tarea.
-
-En las seis estaciones que siguen **no introduciremos teoría nueva**. El problema será decidir qué herramienta conviene usar, justificar por qué puede usarse y detectar los pasos que una solución demasiado rápida podría ocultar.
+Las seis estaciones reúnen problemas en los que debemos elegir una herramienta, comprobar sus hipótesis y justificar los pasos que una solución demasiado rápida podría ocultar.
 
 Conviene adoptar este protocolo general:
 
@@ -6955,7 +6913,7 @@ $$
 \end{aligned}
 $$
 
-Así reaparece, desde dentro de la prueba, la razón estructural por la que la convergencia implica acotación: **un factor que tiende a cero solo puede controlar un producto si el otro factor no se escapa**.
+La convergencia de $(x_n)$ proporciona aquí una cota para $|x_n|$. Con esa cota fija podemos elegir la precisión exigida a $|y_n+1|$ y controlar el producto en toda una cola.
 
 #### Segunda reparación: controlar el cociente
 
@@ -7133,7 +7091,7 @@ $$
 
 #### Lectura de la solución
 
-La oscilación no fue eliminada: fue **dominada**.
+La estimación controla la magnitud de la oscilación en todos los índices de la cola:
 
 $$
 \boxed{
@@ -7307,7 +7265,7 @@ $$
 }
 $$
 
-No hemos pasado una raíz cuadrada a través del símbolo de límite. Primero obtuvimos **existencia** mediante el orden completo de $\mathbb R$ y solo después utilizamos una identidad algebraica para averiguar quién era el límite.
+La completitud asegura primero que existe un límite real. La identidad algebraica y la información de signo permiten después identificarlo, utilizando únicamente resultados ya demostrados.
 
 ### Estación 6 — Auditar una recurrencia antes de resolver su ecuación de punto fijo
 
@@ -7473,7 +7431,7 @@ $$
 
 #### Lectura de la solución
 
-La ecuación de punto fijo era correcta; lo incorrecto era su **posición lógica** dentro del argumento.
+La ecuación de punto fijo identifica el único candidato posible. Para que ese candidato sea el límite de la sucesión, la prueba tuvo que establecer antes la convergencia.
 
 $$
 \boxed{
@@ -7580,7 +7538,7 @@ M\text{–}N\text{ para límites infinitos}.
 }
 $$
 
-En §3.11 ese repertorio dejará de estar organizado por estaciones. El banco final mezclará reconocimiento, prueba directa, diagnóstico, contraejemplos, descubrimiento guiado y desafíos de síntesis. La tarea será elegir la herramienta adecuada sin que el enunciado anuncie de antemano cuál es.
+En los ejercicios se combinan estas dificultades. Para elegir una herramienta habrá que reconocer la información del enunciado, formular la afirmación que se quiere demostrar y comprobar cómo esa información permite controlar todos los términos de una cola.
 
 ## Ejercicios y soluciones {#sec-t1-c04-11}
 
@@ -10374,41 +10332,6 @@ $$
 
 Que los pasos consecutivos se hagan arbitrariamente pequeños solo controla la distancia **local** entre términos vecinos. No impide que la sucesión continúe avanzando indefinidamente en una misma dirección. Aquí los incrementos tienden a cero mientras la sucesión completa escapa hacia $+\infty$.
 :::
-
-### Auditoría del banco
-
-El banco contiene exactamente cuarenta ejercicios y cuarenta soluciones:
-
-$$
-\boxed{
-\text{EXR }0116\text{--}0155
-\qquad\leftrightarrow\qquad
-\text{SOL }0116\text{--}0155.
-}
-$$
-
-La distribución por niveles es
-
-$$
-\boxed{
-7A+7B+7C+6D+5E+5F+3G=40.
-}
-$$
-
-Las seis afirmaciones de diagnóstico del nivel D quedan cubiertas explícitamente:
-
-- acotada $\Rightarrow$ convergente;
-- convergente $\Rightarrow$ monótona;
-- no acotada $\Rightarrow$ límite infinito unilateral;
-- $a_n^2$ convergente $\Rightarrow a_n$ convergente;
-- $a_{n+1}-a_n\to0\Rightarrow a_n$ convergente;
-- ecuación de punto fijo $\Rightarrow$ convergencia de la recurrencia.
-
-Los niveles E–G añaden construcción de contraejemplos, reconstrucción de pruebas fundamentales y síntesis entre completitud, orden, sándwich, recurrencias y límites infinitos.
-
-Ninguna solución utiliza límites funcionales, continuidad, IVT/EVT, derivadas, regla de l'Hôpital, subsucesiones, Bolzano–Weierstrass, criterio de Cauchy ni $\limsup/\liminf$.
-
-Con este banco queda cerrado el primer capítulo del libro dedicado a una noción rigurosa de límite. El paso siguiente ya no será una nueva técnica de sucesiones: en `T1-C05` la misma arquitectura de tolerancias y cuantificadores se trasladará al estudio del límite de una función real.
 
 ---
 

@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-19
-date-modified: 2026-10-06
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -40,7 +40,7 @@ En los ejemplos periódicos usaremos las funciones triangulares $\sigma$ y $\kap
 
 Las funciones $\sigma$ y $\kappa$ son continuas: en cada tramo son afines y en los puntos de unión coinciden ambos valores laterales con el valor de la función. Cada punto tiene un entorno que corta solo finitos tramos, así que el criterio de empalme se aplica también a su prolongación periódica.
 
-En el capítulo anterior aprendimos a estudiar el comportamiento de una función **alrededor** de un punto sin mirar necesariamente lo que ocurre exactamente en él. La definición de límite funcional estaba construida sobre un entorno perforado:
+El límite funcional describe lo que ocurre con las imágenes de puntos próximos a un centro, sin imponer una condición al valor tomado en ese centro. Su definición utiliza un entorno perforado:
 
 $$
 0<|x-a|<\delta.
@@ -56,7 +56,7 @@ tuviera sentido aunque $f(a)$ no estuviera definida, y permitía también que el
 
 Ahora cambia la pregunta.
 
-Ya no queremos saber solamente qué hace la función **cerca** de $a$. Queremos saber si el comportamiento de los puntos próximos es compatible con el valor que la propia función toma **en** $a$.
+La continuidad exige relacionar ese comportamiento próximo con el propio valor $f(a)$. Para formularla tendremos que incluir el centro en el control y comprobar primero que pertenece al dominio.
 
 Ese cambio parece pequeño, pero abre una teoría nueva.
 
@@ -387,7 +387,7 @@ $$
 x\in A.
 $$
 
-Esta condición no es decorativa. Toda continuidad es relativa al dominio de la función que estamos estudiando.
+Toda continuidad es relativa al dominio de la función. Los puntos que intervienen en la estimación deben pertenecer a él, aunque un entorno real del centro contenga también puntos ajenos al dominio.
 
 Supongamos que
 
@@ -454,7 +454,7 @@ cuando $a$ no es punto de acumulación del dominio. La razón era que un entorno
 
 La continuidad no tiene ese problema.
 
-Si $a$ es aislado, podemos escoger un entorno tan pequeño que el único punto del dominio que quede dentro sea precisamente $a$. Pero ahora $a$ **no está perforado**. Para ese único punto,
+Si $a$ es aislado, existe un entorno cuyo único punto del dominio es $a$. Como la definición de continuidad incluye el centro, para ese único argumento tenemos
 
 $$
 |f(a)-f(a)|=0.
@@ -763,7 +763,7 @@ $$
 
 y por tanto $\widetilde g$ sí es continua en $1$.
 
-Más adelante llamaremos la atención sobre este tipo de defecto y su reparación. Por ahora basta reconocer el mecanismo:
+La discontinuidad procede aquí de la incompatibilidad entre el valor central y el comportamiento de los puntos próximos:
 
 $$
 \boxed{
@@ -1651,7 +1651,7 @@ $$
 
 Por tanto, el denominador no se anula y [Corolario 5.1](#cor-t1-0010) autoriza la continuidad.
 
-La teoría no ha sustituido a las pruebas anteriores; las ha **encapsulado**. Las estimaciones de `T1-C05` justificaron las leyes de límite. El criterio secuencial y [Proposición 5.2](#prp-t1-0034) convierten ahora esas leyes en un repertorio estable de construcción de funciones continuas.
+Las estimaciones de `T1-C05` justificaron las leyes de límite. El criterio secuencial y [Proposición 5.2](#prp-t1-0034) permiten aplicarlas a la continuidad: una vez verificadas sus hipótesis, podemos construir funciones continuas a partir de otras sin repetir las estimaciones de cada operación.
 
 ### La continuidad se puede demostrar por construcción
 
@@ -1735,7 +1735,7 @@ En §5.3 estudiaremos discontinuidades removibles, saltos y oscilaciones persist
 
 ## Cómo falla la continuidad: reparación, salto y oscilación {#sec-t1-c06-03}
 
-Hasta ahora hemos construido herramientas para **demostrar** continuidad. Conviene detenernos antes de pasar a los grandes teoremas sobre intervalos y aprender a hacer el diagnóstico inverso: cuando una función no es continua, ¿qué parte del mecanismo ha fallado?
+Para diagnosticar una discontinuidad podemos volver a la misma exigencia que usamos al demostrar continuidad: las entradas suficientemente próximas deben producir salidas próximas al valor central. Los ejemplos siguientes permitirán identificar de qué manera puede fallar ese control.
 
 La definición de continuidad en un punto $a\in A$ exige que, al imponer entradas del dominio suficientemente próximas a $a$, todas las salidas queden próximas a $f(a)$. Por tanto, hay tres preguntas que conviene separar:
 
@@ -2152,7 +2152,7 @@ Las dos sucesiones construidas lo contradicen. Por tanto, $O$ no es continua en 
 
 Más aún, cambiar $O(0)$ por cualquier número $c$ tampoco ayudaría. Las sucesiones $x_n$ e $y_n$ evitan el centro y seguirían produciendo respectivamente los valores constantes $1$ y $-1$. No existe un único número que pueda ser límite de ambas imágenes.
 
-Aquí el fallo no consiste en dos laterales finitos diferentes, sino en la ausencia de estabilización del comportamiento perforado.
+El comportamiento perforado no se estabiliza en un valor. Por ello el defecto no puede describirse mediante dos límites laterales finitos diferentes.
 
 ### Tres diagnósticos, tres estructuras distintas
 
@@ -2392,7 +2392,7 @@ $$
 f(c)=y.
 $$
 
-La arquitectura de la demostración ya está, por tanto, casi completa antes de ejecutar sus desigualdades:
+Para completar la prueba basta coordinar esos controles en las desigualdades siguientes:
 
 $$
 \boxed{
@@ -5076,7 +5076,7 @@ En ambos casos, una propiedad local impide que la frontera obtenida por completi
 - En IVT, la continuidad impide que $f(c)$ quede estrictamente por encima o por debajo del nivel buscado.
 - En compactitud, la apertura impide que la cobertura finita se detenga en un punto interior.
 
-Esta semejanza no es accidental: estamos reutilizando una misma arquitectura de completitud para resolver dos problemas globales diferentes.
+En ambos argumentos, la completitud proporciona un supremo y el control local permite avanzar hasta él o más allá. La misma combinación resuelve dos preguntas globales diferentes.
 
 ### Compactitud no significa «pequeño»
 
@@ -6203,7 +6203,7 @@ $$
 
 sobre $(-1,1)$ alcanza un máximo en $x=0$.
 
-Lo que falla sin compactitud no es la posibilidad de alcanzar extremos, sino la **garantía general**.
+Fuera de un dominio compacto, una función continua puede alcanzar sus extremos, pero la continuidad por sí sola ya no lo garantiza. Habrá que justificar su existencia en cada caso.
 
 Esto es una distinción lógica importante:
 
@@ -9135,7 +9135,7 @@ $$
 }
 $$
 
-Estas cadenas no son listas independientes. Son distintas manifestaciones de la misma idea central del capítulo: **una condición local puede producir consecuencias globales cuando el dominio aporta suficiente estructura**.
+En estas consecuencias intervienen dos datos diferentes: la continuidad controla las imágenes cerca de cada punto y la estructura del dominio permite extender o coordinar esos controles. Conviene conservar ambas condiciones al aplicar los resultados.
 
 ### Antes de pasar a los ejercicios
 
@@ -9152,7 +9152,7 @@ El lector debería poder ahora distinguir con precisión las siguientes afirmaci
 
 Con esto termina la parte expositiva del capítulo.
 
-La sección siguiente contiene el banco completo de ejercicios y soluciones. Allí estas ideas dejarán de aparecer separadas por subtítulos: será necesario reconocerlas, combinarlas, diagnosticar hipótesis ausentes, construir contraejemplos y reconstruir las demostraciones centrales del capítulo.
+En los ejercicios habrá que reconocer qué estructura del dominio utiliza cada teorema, combinar los controles disponibles y construir contraejemplos cuando falte una hipótesis. Las diferencias entre existencia, unicidad y regularidad seguirán determinando qué conclusión está justificada.
 
 ## Ejercicios y soluciones {#sec-t1-c06-11}
 
@@ -11456,30 +11456,6 @@ $$
 
 Entonces $c>d$, contradicción. Por tanto, el punto fijo es único.
 :::
-
-### Auditoría del banco
-
-El banco materializado contiene exactamente
-
-$$
-40\text{ ejercicios}+40\text{ soluciones}
-$$
-
-con correspondencia ordinal
-
-$$
-\texttt{0196--0235}.
-$$
-
-La distribución es
-
-$$
-7A+7B+7C+6D+5E+5F+3G.
-$$
-
-La frontera demostrativa se mantiene dentro de los capítulos publicados desde los números reales hasta el presente: no se usa derivación, teorema del valor medio diferencial, integración, series, Bolzano--Weierstrass, compactitud secuencial general ni teoría de espacios métricos.
-
-Con este banco queda completo el desarrollo matemático de `T1-C06` y se cierra la Parte I del Tomo I. La trayectoria construida —lenguaje, números reales, funciones, sucesiones, límites y continuidad— deja ahora disponible la base rigurosa para iniciar el cálculo diferencial con la derivada como aproximación lineal local.
 
 ---
 

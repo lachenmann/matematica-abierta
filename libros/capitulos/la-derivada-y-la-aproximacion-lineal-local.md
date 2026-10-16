@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-19
-date-modified: 2026-10-01
+date-modified: 2026-10-16
 prerequisites:
   - MA-BCH-0003
   - MA-BCH-0004
@@ -39,7 +39,7 @@ format:
 
 En los ejemplos periódicos usaremos las funciones triangulares $\sigma$ y $\kappa$ definidas en C03, con $\omega=2$. Sus cotas $|\sigma|,|\kappa|\le1$ y los valores $\sigma(\omega/2+n\omega)=(-1)^n$ proceden directamente de aquella definición por tramos; no se presupone trigonometría.
 
-En los capítulos anteriores hemos aprendido a describir cada vez con mayor precisión el comportamiento de una función cerca de un punto. Primero construimos el lenguaje del límite; después exigimos que ese comportamiento alrededor del punto fuese compatible con el valor tomado en el centro y obtuvimos la continuidad.
+Los límites describen cómo se aproximan los valores de una función a un número; la continuidad exige que esa aproximación concuerde con el valor tomado en el centro. Queda por comparar la escala de la variación de la función con la del incremento de su argumento.
 
 Si $a$ es un punto de acumulación del dominio y $f$ es continua en $a$, sabemos que
 
@@ -79,7 +79,7 @@ $$
 }
 $$
 
-La respuesta conducirá a la derivada, pero conviene no apresurarse a introducir el símbolo $f'(a)$. Antes necesitamos descubrir qué cantidad debe aproximarse, por qué aparece un cociente y qué problema resuelve tomar un límite.
+Para hacer esa comparación necesitamos una cantidad que relacione el cambio de salida con el de entrada. El cociente incremental permitirá estudiar esa relación en puntos próximos, y su límite, cuando exista como número real, definirá la derivada.
 
 El recorrido de este capítulo será
 
@@ -101,7 +101,7 @@ $$
 }
 $$
 
-La derivada aparecerá así con dos lecturas inseparables. Por un lado, medirá una **tasa instantánea de cambio**. Por otro, identificará la **parte lineal de primer orden** que modela localmente a una función. La primera lectura nos llevará desde velocidades medias y pendientes de secantes; la segunda será desarrollada más adelante en el capítulo.
+Ese límite medirá una **tasa instantánea de cambio** y proporcionará el coeficiente de la **aproximación lineal de primer orden**. Las pendientes de las secantes y las velocidades medias permitirán construir el cociente; el control del residuo precisará después en qué sentido la aproximación es local.
 
 Comenzaremos por la pregunta más elemental: ¿cómo puede una razón de cambio calculada entre **dos** puntos contener información acerca del comportamiento de una función en **un solo** punto?
 
@@ -541,7 +541,7 @@ $$
 
 La palabra «media» no implica aquí que estemos calculando una media aritmética de muchos valores. Significa que estamos condensando todo el cambio ocurrido entre dos entradas en una única razón global para ese intervalo.
 
-La tasa **instantánea**, en cambio, no puede calcularse directamente entre dos instantes distintos, porque pretende estar asociada a un solo punto. La idea del cálculo consiste en no abandonar las tasas medias, sino hacerlas cada vez más locales:
+Para asociar una tasa a un solo instante, consideramos tasas medias en intervalos cada vez más pequeños. El límite, cuando existe, permite obtener un número independiente del incremento concreto con el que se aproxima el segundo instante:
 
 $$
 \text{tasa media en un intervalo}
@@ -687,7 +687,7 @@ $$
 
 y preguntar si esos valores se aproximan a un único número cuando $h\to0$.
 
-Ahora convertiremos esa idea en una definición. El paso parece breve, pero exige cuidar tres aspectos que serán importantes durante todo el cálculo diferencial:
+La definición debe conservar las condiciones que hacen posible formar el cociente y tomar su límite. Tendremos que atender a tres aspectos:
 
 1. **el dominio desde el que nos acercamos a $a$**;
 2. **la existencia de un límite real finito**;
@@ -705,7 +705,7 @@ $$
 
 y sea $a\in A$.
 
-Para comparar $f(a)$ con valores $f(x)$ próximos necesitamos puntos del dominio distintos de $a$ que puedan acercarse a $a$. Por eso la hipótesis natural no es simplemente $a\in A$, sino que $a$ sea un **punto de acumulación de $A$**.
+El cociente compara $f(a)$ con valores tomados en argumentos distintos de $a$. Necesitamos, por tanto, que $a$ pertenezca a $A$ y sea un **punto de acumulación de $A$**, para disponer de incrementos admisibles arbitrariamente pequeños.
 
 Esta condición garantiza que existen puntos de $A\setminus\{a\}$ arbitrariamente próximos a $a$ y, por tanto, que el cociente
 
@@ -1149,7 +1149,7 @@ $$
 f'_A(a)\in\mathbb R.
 $$
 
-Si el cociente incremental tiende a $+\infty$ o $-\infty$, el límite no existe **como número real finito**. Más adelante distinguiremos ese comportamiento de una esquina y de una oscilación, pero desde ahora debe quedar claro que escribir informalmente “$f'(a)=\infty$” no concuerda con la definición adoptada aquí.
+Un cociente incremental que tiende a $+\infty$ o $-\infty$ no tiene límite **real finito**. Ese comportamiento puede recibir una descripción geométrica propia, pero no proporciona una derivada de acuerdo con la definición adoptada.
 
 ### Derivada en un punto y función derivada no son lo mismo
 
@@ -1181,7 +1181,7 @@ $$
 
 es una familia de afirmaciones puntuales, una por cada $a\in E$.
 
-Todavía no estudiaremos propiedades globales de $f'$, ni preguntaremos si $f'$ es continua. Eso pertenece a etapas posteriores. Por ahora la prioridad es comprender con precisión qué significa que **un solo** número $f'(a)$ exista.
+Por el momento estudiamos la existencia de la derivada en un punto. La continuidad de la función derivada constituye otra propiedad y requerirá un análisis adicional; la existencia del número $f'(a)$ no permite darla por supuesta.
 
 ### Lo que la definición todavía no nos regala
 
@@ -1410,7 +1410,7 @@ $$
 
 ### La definición también debe saber decir «no»
 
-Hasta ahora todos los ejemplos han sido favorables. Podría parecer que, una vez construido el cociente incremental, siempre será posible simplificarlo y obtener algún número.
+Los ejemplos anteriores admitieron simplificaciones que produjeron un límite real. Para decidir si ese procedimiento funciona en otros casos debemos examinar también cocientes cuyos límites laterales discrepan o cuyos valores no se estabilizan.
 
 Eso es falso.
 
@@ -1618,7 +1618,7 @@ Comparemos los dos ejemplos centrales:
 
 La diferencia entre ambas funciones es pequeña en apariencia, pero decisiva a escala diferencial. Multiplicar $|x|$ por $x$ añade precisamente un factor que hace desaparecer la incompatibilidad de primer orden.
 
-No necesitamos todavía formular esta observación mediante órdenes asintóticos. Ese lenguaje llegará en §6.7. Por ahora basta leer directamente los cocientes.
+La comparación puede hacerse directamente en los cocientes: el denominador fija la escala respecto de la cual se mide la variación de la función.
 
 ### Dos funciones por tramos pueden comportarse de maneras opuestas
 
@@ -2432,7 +2432,7 @@ $$
 \frac{f(x)-f(a)}{x-a}.
 $$
 
-Así, la arquitectura de la prueba no surge de un truco aislado. Surge de alinear exactamente la **hipótesis disponible** con el **objetivo deseado**.
+La hipótesis controla el cociente incremental y el objetivo concierne al incremento de la función. Escribir este último como producto permite aplicar exactamente la información disponible.
 
 ::: {.callout-important title="El factor que hace el trabajo"}
 La diferenciabilidad controla el cociente incremental:
@@ -2869,7 +2869,7 @@ $$
 
 cuando $h\to0$ dentro del dominio admisible.
 
-Esta observación da sentido preciso, al nivel que necesitamos ahora, a la frase informal «la tangente es el límite de las secantes». No estamos construyendo todavía una teoría abstracta de límites de rectas: controlamos la pendiente y, con ello, el valor de cada secante en todo punto $x$ fijo.
+En este sentido preciso, las secantes aproximan a la tangente: sus pendientes convergen y, en cada $x$ fijo, también lo hacen sus valores. La afirmación se refiere a esos controles concretos y no requiere una teoría abstracta de convergencia de rectas.
 
 ::: {.callout-note title="Qué significa aquí «límite de secantes»"}
 Todas las secantes $S_h$ pasan por el mismo punto $(a,f(a))$. Lo que varía es su pendiente.
@@ -4317,7 +4317,7 @@ $$
 }
 $$
 
-En §6.9 volveremos a mirar $f'$ ya no solo como un valor asociado a un punto, sino como una nueva función definida sobre el conjunto de puntos donde $f$ es diferenciable. Allí formalizaremos además una propiedad que hemos usado intuitivamente desde el comienzo: **la derivada es un concepto local**.
+Podemos reunir los valores de las derivadas en una función definida sobre los puntos donde existen. La dependencia del comportamiento próximo a cada centro permite además precisar en qué sentido la derivada es local.
 
 
 ## La derivada como función y la localidad del concepto {#sec-t1-c07-09}
@@ -5590,9 +5590,9 @@ $$
 }
 $$
 
-Ese mapa es más importante que memorizar una colección de frases aisladas. La autonomía matemática comienza cuando podemos recuperar un resultado desde sus definiciones, detectar qué hipótesis hacen el trabajo y reconocer con precisión qué **no** se sigue todavía.
+Reconstruir estas respuestas exige volver a las definiciones y a las hipótesis de cada resultado. Así podremos distinguir el cálculo de una derivada de las afirmaciones adicionales sobre continuidad, aproximación o monotonía que se quieren deducir de ella.
 
-Con esta reconstrucción termina la parte conceptual de `T1-C07`. La sección siguiente reunirá el banco completo de ejercicios y soluciones para poner a prueba, en niveles progresivos, todas las ideas desarrolladas en el capítulo.
+El banco de ejercicios reúne esas dificultades en problemas de reconocimiento, demostración y construcción de contraejemplos. Cada solución deberá justificar la conclusión con la información que realmente proporciona el enunciado.
 
 ## Ejercicios y soluciones {#sec-t1-c07-11}
 
@@ -8309,32 +8309,6 @@ $$
 
 El ejemplo muestra que la diferenciabilidad en un solo punto no impone regularidad diferencial en un entorno completo.
 :::
-
-### Auditoría del banco
-
-El banco materializado contiene exactamente
-
-$$
-40\text{ ejercicios}+40\text{ soluciones}
-$$
-
-con correspondencia ordinal
-
-$$
-\texttt{0236--0275}.
-$$
-
-La distribución es
-
-$$
-7A+7B+7C+6D+5E+5F+3G.
-$$
-
-Todos los ejercicios son `ORIGINAL`. La frontera demostrativa permanece dentro de los capítulos publicados desde los números reales hasta el presente: los cálculos de derivadas sencillas se hacen desde la definición; no se emplean reglas sistemáticas de suma, producto, cociente o cadena, derivación organizada de funciones elementales, Rolle, teoremas del valor medio, Taylor ni Newton.
-
-Las pruebas de estrés del capítulo quedan cubiertas explícitamente: continuidad sin diferenciabilidad; tangentes que cruzan o vuelven a intersectar la gráfica; cociente simétrico insuficiente; pendiente no acotada sin derivada real finita; dependencia respecto del dominio; irregularidad racional/irracional; y distinción entre información puntual de $f'(a)>0$ y monotonía en un entorno.
-
-Con este banco queda materialmente completa la redacción de §§6.1–6.11 en la numeración visible proyectada. La auditoría histórica del manuscrito original consta en `00 - Administración/T1_C07_FINAL_AUDIT_v01.md`: **PASS / COMPLETE**; la numeración de esta maqueta aún requiere validación editorial y de Quarto. Se precisó el dominio común en la comparación de primer orden y el desafío G2 (`0274`), sin alterar resultados, IDs ni secuencia de ejercicios.
 
 ---
 

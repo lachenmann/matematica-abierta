@@ -13,7 +13,7 @@ provenance:
   sources: []
 license: GFDL-1.3-or-later
 date-created: 2026-09-09
-date-modified: 2026-10-06
+date-modified: 2026-10-16
 prerequisites:
   []
 number-sections: true
@@ -31,27 +31,25 @@ format:
 
 # Los números reales: axiomas de cuerpo, orden y completitud {#sec-t1-c02}
 
-En los cálculos elementales solemos utilizar los números reales como si fueran un escenario ya terminado. Sumamos, multiplicamos, comparamos, trazamos puntos sobre una recta y escribimos expresiones con raíces sin detenernos a preguntar qué propiedad del sistema numérico hace posibles esas operaciones y esas existencias.
+En los cálculos elementales usamos los números reales con la familiaridad de quien conoce el terreno: sumamos, comparamos y escribimos raíces confiando en que cada operación permitida dará un número y en que los números que necesitamos estarán disponibles. El cálculo nos obligará a examinar esa confianza. Afirmar que una sucesión tiene un límite o que una función continua alcanza cierto valor exige una razón para asegurar la existencia de ese número.
 
-En cálculo esa pregunta deja de ser opcional.
+La imagen de una recta sin agujeros sugiere lo que buscamos, pero todavía debemos darle un significado que pueda utilizarse en una demostración. Los racionales servirán para reconocer la dificultad: permiten las operaciones aritméticas habituales y admiten un orden compatible con ellas, aunque dejan sin solución algunas ecuaciones muy sencillas.
 
-Cuando más adelante afirmemos que una sucesión tiene un límite, que una función continua alcanza determinados valores o que un procedimiento de aproximación determina un número, necesitaremos saber algo preciso acerca de la recta real. No bastará imaginarla como una línea sin agujeros. Tendremos que convertir esa intuición en una propiedad matemática que pueda entrar en una demostración.
-
-La pregunta que gobernará este capítulo es, por tanto,
+La comparación entre ambos sistemas nos lleva a preguntar
 
 $$
 \boxed{\text{¿qué posee }\mathbb R\text{ que no posee }\mathbb Q\text{ y que hace posible el cálculo?}}
 $$
 
-No construiremos aquí los números reales desde cero. Ese es un problema fundacional legítimo, pero pertenece a otra capa del estudio. Nuestro camino será axiomático: identificaremos las propiedades algebraicas y de orden que esperamos de los números y añadiremos una propiedad decisiva, la **completitud**, que permitirá expresar rigurosamente que en la recta real no faltan ciertos puntos frontera.
+Tomaremos las propiedades de los números reales como punto de partida axiomático. Las operaciones y el orden describirán primero una estructura que también poseen los racionales; la **completitud** añadirá la condición de existencia que esa estructura deja abierta. Construir los reales a partir de objetos más elementales es otra manera de justificar estas propiedades, propia del estudio de sus fundamentos.
 
-Comenzaremos por las operaciones sobre los números reales y por los axiomas de cuerpo: qué aceptamos como punto de partida y qué reglas tendremos que demostrar. Añadiremos después el orden, el valor absoluto y las nociones de cota y supremo. Solo entonces examinaremos una ecuación conocida desde la aritmética escolar,
+La ecuación que pondrá a prueba esa estructura es conocida desde la aritmética escolar,
 
 $$
 x^2=2,
 $$
 
-para mostrar por qué un cuerpo ordenado puede resultar insuficiente. Su análisis completo aparecerá después de los axiomas, y la existencia de una raíz real solo quedará establecida cuando dispongamos de la completitud.
+y, sin embargo, su resolución exige distinguir dos cuestiones: qué operaciones podemos hacer con un número y qué garantiza que exista un número con la propiedad buscada. Para formular la segunda cuestión necesitaremos las nociones de cota y supremo; la completitud permitirá después demostrar la existencia de la raíz real.
 
 Como este es el primer capítulo, fijamos una convención mínima de lectura. La escritura $x\in A$ significa que $x$ pertenece al conjunto $A$; $A\subseteq B$ indica que todo elemento de $A$ pertenece a $B$. Las expresiones $\forall x\in A$ y $\exists x\in A$ se leen, respectivamente, «para todo elemento de $A$» y «existe al menos uno». El símbolo $\exists!$ exigirá, cuando aparezca, existencia **y** unicidad. Estas convenciones sirven para leer los axiomas y las pruebas; las operaciones con conjuntos necesarias para estudiar funciones se presentarán en el capítulo siguiente.
 
