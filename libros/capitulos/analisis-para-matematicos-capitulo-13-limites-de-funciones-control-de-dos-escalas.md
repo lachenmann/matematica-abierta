@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: 'Capítulo 13 — Límites de funciones: control de dos escalas'
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,23 +28,21 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-13)
 
-¿Qué significa que unas entradas próximas a un punto produzcan salidas próximas a un destino? En cálculo aprendimos a reconocer y calcular límites; aquí reconstruiremos el contrato que autoriza esas operaciones. No basta ensayar unas pocas entradas ni encontrar una ruta favorable: queremos controlar toda una ventana del dominio y responder a cualquier precisión de salida.
+La identidad $x^2-1=(x-1)(x+1)$ permite relacionar la proximidad de $x$ a $1$ con la de $x^2$ a $1$. Para convertir esa relación en una prueba hay que dominar el segundo factor y obtener una estimación que sirva para todas las entradas suficientemente próximas. El límite expresa esa posibilidad de responder a cualquier precisión de salida mediante una misma restricción sobre las entradas de una ventana.
 
-Usaremos las bolas y la acumulación de C04, las sucesiones de C06 y el transporte de conjuntos de C12. Primero entregaremos radios explícitos desde la definición; después construiremos unicidad, negación, criterios secuenciales y reglas. Mantendremos visible qué escala depende de cuál y dónde una hipótesis permite dar el siguiente paso.
+Las bolas y la acumulación de C04 dan los conjuntos en que se formula ese control; las imágenes y preimágenes de C12 permiten escribirlo como una inclusión. Al pasar a las sucesiones de C06 aparecerá una diferencia adicional: controlar una ruta ya dada y construir una ruta que detecte un fallo son tareas con obligaciones distintas.
 
 ## 13.1. Aproximarse sin tocar el centro
 
 []{#MA-SEC-ANM-01-013-001}
 
-En C12 aprendimos a transportar una ventana de entradas dentro de una ventana de salidas. Ahora queremos hacerlo para cualquier precisión de salida que se nos proponga. El tamaño de la ventana de entrada se adaptará al desafío. Ésta es la diferencia entre haber comprobado una inclusión concreta y disponer de un límite.
+En C12 encerramos las salidas de una ventana dentro de otra. Para estudiar la aproximación necesitamos poder repetir ese control ante cualquier precisión solicitada: una banda de salidas más estrecha podrá exigir una ventana de entradas más pequeña. El destino que buscamos tampoco tiene por qué coincidir con la evaluación en el centro.
 
-Empecemos con $q(x)=x^2$ cerca de $1$. La identidad $x^2-1=(x-1)(x+1)$ sugiere que las salidas se aproximan a $1$ cuando las entradas se aproximan a $1$. Pero podemos cambiar la función sólo en el centro: $h(1)=4$, $h(x)=x^2$ si $x\ne1$. Las salidas de las entradas próximas y distintas de $1$ siguen siendo las mismas. El límite que queremos estudiar no puede depender del valor aislado $h(1)$.
+Consideremos $q(x)=x^2$ cerca de $1$ y cambiemos únicamente su valor allí: sea $h(1)=4$ y $h(x)=x^2$ para $x\ne1$. Todas las entradas próximas y distintas de $1$ siguen produciendo las mismas salidas que antes del cambio. La aproximación de esas salidas a $1$ debe poder estudiarse sin imponer ninguna condición a $h(1)$; de ahí que la definición excluya el centro de las entradas que somete a control.
 
-### El conjunto por el que nos aproximamos
+Sean $D\subseteq\mathbb R$ y $a\in\mathbb R$. La condición de acumulación de C04, que escribimos $a\in D'$, exige que para cada $r>0$ exista $x\in D$ con $0<|x-a|<r$. La entrada puede variar con el radio. Así cero acumula entradas de $(0,\infty)$: para cualquier $r>0$, el punto $r/2$ pertenece al dominio y está a distancia positiva menor que $r$ de cero, aunque el propio cero no pertenezca al dominio.
 
-Sean $D\subseteq\mathbb R$ y $a\in\mathbb R$. Recordemos de C04 que $a$ es punto de acumulación de $D$ si para cada $r>0$ existe $x\in D$ con $0<|x-a|<r$. Escribiremos $a\in D'$. No se requiere $a\in D$: cero es punto de acumulación de $(0,\infty)$ sin pertenecer a ese dominio.
-
-Llamemos $U_D(a,r)=\{x\in D:0<|x-a|<r\}$ a la ventana perforada de entrada. La intersección con $D$ conserva el tipo; la perforación elimina el centro. Por acumulación, $U_D(a,r)$ es no vacía para todo radio positivo. No hemos elegido una sucesión de puntos: sólo afirmamos existencia para cada radio.
+Reunimos esas entradas en $U_D(a,r)=\{x\in D:0<|x-a|<r\}$, la ventana perforada de radio $r$. La pertenencia a $D$ autoriza cada evaluación y la desigualdad positiva excluye exactamente $x=a$. Decir que $a\in D'$ equivale a afirmar que todas estas ventanas son no vacías. Por el momento sólo necesitamos un testigo para cada radio que se considere, sin reunirlos en una sucesión.
 
 **Definición.** Para $f:D\to\mathbb R$, $a\in D'$ y $L\in\mathbb R$, decimos que $f$ tiene límite $L$ en $a$ a través de $D$ si
 
@@ -55,17 +53,13 @@ $$
 
 Escribimos $\lim_{x\to a,\ x\in D}f(x)=L$, abreviando el dominio cuando sea inequívoco. En este capítulo todos los límites funcionales son reales finitos en puntos reales finitos.
 
-La condición equivale a $f[U_D(a,\delta)]\subseteq B(L,\varepsilon)$ para cada desafío $\varepsilon$ y alguna respuesta $\delta$. En efecto, un valor de la imagen tiene un testigo $x$ en la ventana perforada y la desigualdad lo coloca en la bola de salida. A la inversa, si cada imagen está en la bola, evaluar en cualquier $x$ de esa ventana da la desigualdad exigida. Por C12 también equivale a $U_D(a,\delta)\subseteq f^{-1}[B(L,\varepsilon)]$.
+Para cada $\varepsilon>0$, la misma condición pide un $\delta>0$ con $f[U_D(a,\delta)]\subseteq B(L,\varepsilon)$. Toda salida de la imagen tiene una entrada testigo en la ventana y, por la definición, dista menos que $\varepsilon$ de $L$. Recíprocamente, aplicar la inclusión a la salida de cualquier entrada de la ventana recupera la desigualdad. La equivalencia de C12 permite escribir también $U_D(a,\delta)\subseteq f^{-1}[B(L,\varepsilon)]$: estamos seleccionando entradas por sus salidas, sin suponer que $f$ tenga inversa.
 
-![C13-F01. La perforación omite el valor h(1)=4. Las entradas no centrales siguen la regla x² y se aproximan al destino 1. El círculo vacío distingue el hueco del valor asignado; la banda es un desafío, no una prueba.](../../assets/books/anm/C13/C13-F01.svg){#fig-anm-c13-f01 fig-alt="C13-F01. La perforación omite el valor h(1)=4. Las entradas no centrales siguen la regla x² y se aproximan al destino 1. El círculo vacío distingue el hueco del valor asignado; la banda es un desafío, no una prueba."}
+![C13-F01. La perforación omite el valor h(1)=4. Las entradas no centrales siguen la regla x² y se aproximan al destino 1. El círculo vacío distingue el hueco del valor asignado; la banda es un desafío, no una prueba.](../../assets/books/anm/C13/C13-F01.svg){#fig-anm-c13-f01 fig-alt="Curva cuadrática con círculo vacío en uno uno, cuadrado lleno en uno cuatro y banda de salida alrededor de uno."}
 
-### Por qué exigimos acumulación
+La acumulación evita que este control quede vacío. Si $D=\{a\}$, ninguna entrada cumple $0<|x-a|<\delta$ y la implicación de la fórmula es verdadera para todos los candidatos $L$. Bajo nuestra convención no se declara un límite en ese caso. Exigir entradas en todas las ventanas permitirá, además, confrontar dos supuestos destinos mediante una misma evaluación.
 
-Si $D=\{a\}$, ninguna entrada cumple $0<|x-a|<\delta$. La implicación sería verdadera para cualquier candidato $L$, por vacuidad. La fórmula lógica sigue teniendo sentido, pero no distingue un destino. Nuestra convención reserva la palabra límite para $a\in D'$.
-
-Tampoco importa cambiar valores lejos del centro. Si $f,g:D\to\mathbb R$ coinciden en $U_D(a,r)$ para algún $r>0$ y $f\to L$, dado $\varepsilon$ tomamos un radio válido $\delta_f$ y usamos $\delta=\min(r,\delta_f)$. Toda entrada pertinente ve $g(x)=f(x)$ y el mismo control. Intercambiar las funciones prueba la equivalencia. Cambiar sólo $f(a)$, si existe, es un caso particular.
-
-La ventana se encoge alrededor de $a$; la ventana de salida alrededor de $L$. Esos centros cumplen papeles distintos y aún no hemos relacionado $L$ con $f(a)$.
+El control sólo depende de los valores en alguna ventana perforada. Si $f,g:D\to\mathbb R$ coinciden en $U_D(a,r)$, con $r>0$, y $f\to L$, fijamos $\varepsilon>0$ y tomamos $\delta=\min(r,\delta_f)$, donde $\delta_f>0$ es válido para $f$. Cada entrada de la nueva ventana satisface la coincidencia y la estimación, de modo que $|g(x)-L|=|f(x)-L|<\varepsilon$. Intercambiar $f$ y $g$ prueba la equivalencia. Esto permite cambiar valores lejanos o sólo el valor central; añadir o retirar el propio centro tampoco cambia las ventanas perforadas ni su acumulación.
 
 ### Antes de seguir
 
@@ -295,35 +289,30 @@ Sea $f(x)=0$ para todo real, y sea $g(x)=0$ si $|x|<1$, $g(x)=x^2$ si $|x|\ge1$.
 Cada entero positivo produce salida cero en $f$ y salida $n^2$ en $g$, de modo que existen infinitas discrepancias. Para refutar cualquier barrera global propuesta a $g$, basta escoger un entero cuyo cuadrado la supere. Cerca de cero, en cambio, ambas funciones valen exactamente cero. El mismo radio uno responde a todas las tolerancias. La cantidad de discrepancias no decide el límite; importa su ubicación respecto de las ventanas locales.
 
 </details>
+
 ## 13.2. Diseñar una respuesta para toda la ventana
 
 []{#MA-SEC-ANM-01-013-002}
 
-La definición propone un juego con orden fijo: se declaran $f,D,a,L$; se recibe $\varepsilon$; se produce $\delta$; después se verifica toda entrada admisible. Elegir $\delta$ después de ver $x$ cambia el problema. Una respuesta puede depender de los datos fijos y de $\varepsilon$, pero no de la entrada universal.
+El orden de los cuantificadores fija cómo se elige el radio. Después de declarar $f,D,a,L$ y recibir $\varepsilon>0$, debemos producir un $\delta>0$ que funcione para toda entrada de su ventana. Si lo eligiéramos después de ver $x\ne a$, podríamos tomar $\delta<|x-a|$ y excluir precisamente esa entrada: la implicación no habría controlado su salida. La dependencia permitida es de la tolerancia y de los datos fijados.
 
-### Trabajar hacia atrás y escribir hacia delante
+Para $f(x)=3x-2$ en $a=1$, la diferencia respecto del candidato $L=1$ se reduce a $|(3x-2)-1|=3|x-1|$. El cálculo indica cuánto hay que reducir la distancia de entrada: para que el resultado sea menor que $\varepsilon$, basta pedir $|x-1|<\varepsilon/3$.
 
-Para $f(x)=3x-2$ y $a=1$, el candidato es $L=1$. Queremos $|(3x-2)-1|<\varepsilon$. Simplificar revela $3|x-1|<\varepsilon$, lo que sugiere $\delta=\varepsilon/3$.
+Recibida cualquier $\varepsilon>0$, elegimos por tanto $\delta=\varepsilon/3>0$. Para una entrada arbitraria con $0<|x-1|<\delta$ obtenemos $|f(x)-1|=3|x-1|<3\delta=\varepsilon$. La elección se hizo antes de esa entrada y la estimación se verifica en toda la ventana.
 
-La prueba final comienza con el desafío: fijado $\varepsilon>0$, sea $\delta=\varepsilon/3>0$. Si $0<|x-1|<\delta$, entonces $|f(x)-1|=3|x-1|<3\delta=\varepsilon$. No se calcula primero una entrada favorable: el argumento sirve para todas las que satisfacen la hipótesis.
+![C13-F02. Para 3x−2 en a=1, el error de salida es tres veces el de entrada. Cada desafío ε tiene respuesta δ=ε/3; los bordes se excluyen. Dos instancias ilustran la fórmula que la prueba verifica para todo ε.](../../assets/books/anm/C13/C13-F02.svg){#fig-anm-c13-f02 fig-alt="Dos paneles de la misma recta con bandas abiertas de salida y ventanas de entrada, primero epsilon cero coma seis y delta cero coma dos, después la mitad de ambos."}
 
-![C13-F02. Para 3x−2 en a=1, el error de salida es tres veces el de entrada. Cada desafío ε tiene respuesta δ=ε/3; los bordes se excluyen. Dos instancias ilustran la fórmula que la prueba verifica para todo ε.](../../assets/books/anm/C13/C13-F02.svg){#fig-anm-c13-f02 fig-alt="C13-F02. Para 3x−2 en a=1, el error de salida es tres veces el de entrada. Cada desafío ε tiene respuesta δ=ε/3; los bordes se excluyen. Dos instancias ilustran la fórmula que la prueba verifica para todo ε."}
+La misma identidad para $f(x)=mx+c$ es $|f(x)-(ma+c)|=|m||x-a|$. Si $m\ne0$, sirve $\delta=\varepsilon/|m|$; si $m=0$, el error es cero y podemos usar cualquier radio positivo. En cambio, para una afín no constante en la recta, un solo radio no responde a todas las tolerancias: fijado $\delta>0$, la entrada $a+\delta/2$ tiene error $|m|\delta/2>0$, que incumple una tolerancia menor. El radio puede adaptarse a la precisión sin depender de la entrada.
 
-Para una función afín $mx+c$ cerca de cualquier $a$, la identidad de errores es $|f(x)-(ma+c)|=|m||x-a|$. Si $m\ne0$, funciona $\delta=\varepsilon/|m|$. Si $m=0$, el error es cero y cualquier radio positivo sirve. Reducir un radio válido conserva su validez; no hay razón para exigir un único radio.
+En el cuadrado, $|x^2-a^2|=|x-a||x+a|$ deja un factor variable que debemos acotar antes de diseñar la precisión. La restricción auxiliar $|x-a|<1$ da $|x+a|\le|x-a|+2|a|<1+2|a|=:C$. Esta constante depende del centro y es positiva incluso si $a=0$. El error queda así dominado por una constante fija multiplicada por la distancia que podemos reducir.
 
-### Un factor variable necesita primero una barrera
+Dado $\varepsilon>0$, tomamos $\delta=\min(1,\varepsilon/C)>0$. Si $0<|x-a|<\delta$, la primera restricción acota $|x+a|$ y la segunda ajusta el error: $|x^2-a^2|<C|x-a|<C\delta\le\varepsilon$. La primera desigualdad es estricta porque $|x-a|>0$. El mínimo conserva simultáneamente las dos condiciones necesarias.
 
-Volvamos a $q(x)=x^2$ en $a$. La identidad $|x^2-a^2|=|x-a||x+a|$ contiene un factor no controlado. Introducimos una condición auxiliar: $|x-a|<1$. Entonces $|x+a|\le |x-a|+2|a|<1+2|a|=:C$, con $C>0$. Ahora podemos controlar el otro factor.
+![C13-F03. En x² alrededor de 1 y con ε=1/2, el certificado de la prueba usa δ=1/6. El mayor radio simétrico es √(3/2)−1. El certificado conservador basta para demostrar el límite; la optimización exige el argumento adicional del ejercicio 13.8.](../../assets/books/anm/C13/C13-F03.svg){#fig-anm-c13-f03 fig-alt="Curva cuadrática sobre bandas de salida y dos ventanas simétricas anidadas, la certificada dentro de la óptima."}
 
-Fijado $\varepsilon>0$, elijamos $\delta=\min(1,\varepsilon/C)$. Para toda entrada con $0<|x-a|<\delta$ obtenemos $|x^2-a^2|<C|x-a|<C\delta\le\varepsilon$. Las dos tareas son distintas: el radio $1$ congela el factor variable; el radio $\varepsilon/C$ ajusta la precisión. El mínimo hace que se cumplan simultáneamente.
+Cualquier reducción positiva de un radio válido vuelve a ser válida, pues sólo retira entradas ya controladas. En $a=1$ la elección $\min(1,\varepsilon/3)$ puede ser menor que el mayor radio posible, como muestra la figura. La existencia del límite sólo requiere la elección que acabamos de verificar; afirmar optimalidad exige además descartar todos los radios mayores, tarea que se desarrolla en el ejercicio 13.8.
 
-![C13-F03. En x² alrededor de 1 y con ε=1/2, el certificado de la prueba usa δ=1/6. El mayor radio simétrico es √(3/2)−1. El certificado conservador basta para demostrar el límite; la optimización exige el argumento adicional del ejercicio 13.8.](../../assets/books/anm/C13/C13-F03.svg){#fig-anm-c13-f03 fig-alt="C13-F03. En x² alrededor de 1 y con ε=1/2, el certificado de la prueba usa δ=1/6. El mayor radio simétrico es √(3/2)−1. El certificado conservador basta para demostrar el límite; la optimización exige el argumento adicional del ejercicio 13.8."}
-
-El radio no necesita ser el mayor posible. En $a=1$, $\delta=\min(1,\varepsilon/3)$ es cómodo aunque conservador. Buscar el radio óptimo puede ser un problema distinto; para demostrar un límite basta un certificado verificable.
-
-### Evitar un denominador pequeño
-
-Para $r(x)=1/x$ en $a\ne0$, restringimos $|x-a|<|a|/2$. La triangular inversa da $|x|\ge |a|-|x-a|>|a|/2$. En esa ventana el dominio excluye cero automáticamente y
+Para $r(x)=1/x$, con dominio $\mathbb R\setminus\{0\}$ y $a\ne0$, el factor variable aparece en el denominador. Si $|x-a|<|a|/2$, la triangular inversa da $|x|\ge|a|-|x-a|>|a|/2>0$. Todas esas entradas evitan cero con una separación común, y, para $x\ne a$,
 
 $$
 \left|\frac1x-\frac1a\right|
@@ -331,9 +320,7 @@ $$
 <\frac{2|x-a|}{|a|^2}.
 $$
 
-El radio $\delta=\min(|a|/2,\varepsilon |a|^2/2)$ prueba $\lim_{x\to a}1/x=1/a$. No basta decir que un denominador es distinto de cero: hay que separarlo de cero por una barrera positiva válida para toda la ventana.
-
-Cada ejemplo sigue el mismo método: descomponer el error, controlar factores auxiliares y reunir restricciones mediante un mínimo. No usamos reglas de límites todavía; estamos construyéndolas desde desigualdades.
+Elegimos $\delta=\min(|a|/2,\varepsilon|a|^2/2)>0$. Para cualquier entrada de su ventana perforada, la barrera anterior permite invertir el denominador y la restricción de precisión da $2|x-a|/|a|^2<\varepsilon$. Queda probado $\lim_{x\to a}1/x=1/a$. Saber sólo que cada denominador es distinto de cero no habría proporcionado la cota uniforme que utiliza esta estimación.
 
 ### Antes de seguir
 
@@ -563,33 +550,26 @@ Si $|x-1|<1$, entonces $|x-3|\ge2-|x-1|>1$; las entradas no alcanzan $3$. El err
 El dominio natural excluye tres. La ventana auxiliar alrededor de uno permanece separada de ese punto porque $|x-3|>1$. Después de reunir los cocientes, el numerador del error es $x-1$ y el denominador tiene magnitud mayor que dos. El radio de precisión $2\varepsilon$ controla ese error y el mínimo conserva la protección del denominador. La prueba declara por qué cada evaluación está permitida antes de aplicar la estimación.
 
 </details>
+
 ## 13.3. Un destino, barreras locales y orden
 
 []{#MA-SEC-ANM-01-013-003}
 
-La definición presenta un candidato $L$. Antes de llamarlo el límite debemos comprobar que ningún otro candidato puede cumplir el mismo contrato. La geometría sugiere usar dos ventanas de salida disjuntas, pero necesitamos una entrada que ambas estén obligadas a controlar.
-
-### Unicidad
+Dos candidatos distintos podrían exigir radios diferentes. Para compararlos necesitamos reducirnos a la intersección de sus ventanas y encontrar allí una entrada: ésa es la función que cumplirá la acumulación en la prueba de unicidad.
 
 **Teorema.** Si $a\in D'$ y $f:D\to\mathbb R$ tiene límites $L$ y $M$ en $a$, entonces $L=M$.
 
-Si fueran distintos, $d=|L-M|>0$. Proponemos $\varepsilon=d/3$ a ambos contratos, obteniendo $\delta_L,\delta_M>0$. Tomamos $\delta=\min(\delta_L,\delta_M)$. Aquí gastamos la acumulación: existe $x\in D$ con $0<|x-a|<\delta$. Para esa misma entrada las dos cotas dan $d\le |L-f(x)|+|f(x)-M|<2d/3$, contradicción. La coincidencia de la entrada importa tanto como la separación de las salidas.
+Supongamos $L\ne M$ y pongamos $d=|L-M|>0$. Para tolerancia $d/3$, los dos límites entregan radios $\delta_L,\delta_M>0$. Su mínimo sigue siendo positivo y, como $a\in D'$, existe $x\in D$ con $0<|x-a|<\min(\delta_L,\delta_M)$. Ambas estimaciones se aplican a esa misma salida. La triangular da entonces $d\le|L-f(x)|+|f(x)-M|<2d/3$, contradicción. Sin una entrada común no habríamos podido enlazar las dos cotas.
 
-### Acotación suficiente cerca del centro
+Una sola tolerancia también produce una consecuencia útil. Si $f\to L$, la tolerancia $1$ proporciona un $r>0$ con $|f(x)-L|<1$ en $U_D(a,r)$, y allí $|f(x)|\le|f(x)-L|+|L|<|L|+1$. Es una acotación local perforada. El cuadrado tiene límite cero en cero y crece sin cota en toda la recta, por lo que esta conclusión sólo se extiende a las entradas de la ventana obtenida.
 
-Si $f\to L$, usamos una sola tolerancia, $\varepsilon=1$. Existe $r>0$ con $|f(x)-L|<1$ en $U_D(a,r)$; por tanto $|f(x)|\le |f(x)-L|+|L|<|L|+1$. Ésta es una cota local perforada. No afirma acotación de toda la función: $x^2\to0$ en cero y es no acotada en $\mathbb R$.
+Si además $a\in D$, la barrera $\max(|L|+1,|f(a)|+1)$ incorpora su valor y acota también las entradas no perforadas de esa ventana. El límite no había estimado $f(a)$; lo hemos añadido por separado como un único valor real.
 
-Si $a\in D$ podemos incluir su valor en una cota mayor, por ejemplo $\max(|L|+1,|f(a)|+1)$. Esto no transforma el límite en una afirmación sobre el valor central; sólo añade un dato finito a una cota.
-
-### El orden eventual pasa al límite
-
-Supongamos $f,g:D\to\mathbb R$, $f\to L$, $g\to M$ y $f(x)\le g(x)$ en alguna ventana perforada. Si $L>M$, ponemos $\varepsilon=(L-M)/3$ y reunimos los dos radios y la ventana de orden. Acumulación entrega una entrada allí. Entonces $f(x)>L-\varepsilon>M+\varepsilon>g(x)$, contradicción. Concluimos $L\le M$. Un orden estricto de valores no fuerza orden estricto de límites: $0<x$ en $(0,\infty)$ y ambas funciones tienen límite cero.
+Supongamos $f,g:D\to\mathbb R$, $f\to L$, $g\to M$ y $f(x)\le g(x)$ en alguna ventana perforada. Si $L>M$, tomamos $\varepsilon=(L-M)/3$ y el mínimo de los radios de ambos límites y del radio de orden. La acumulación da una entrada común, donde $f(x)>L-\varepsilon>M+\varepsilon>g(x)$ contradice la desigualdad supuesta. Así $L\le M$. La desigualdad puede perder su carácter estricto al pasar al límite: en $(0,\infty)$ tenemos $0<x$, mientras la función cero y la identidad tienden ambas a cero en cero.
 
 **Teorema del encierro.** Si $p(x)\le f(x)\le q(x)$ cerca de $a$, $p\to L$ y $q\to L$, entonces $f\to L$. Para $\varepsilon>0$, reúna radios para $p,q$ y para el orden. Allí $L-\varepsilon<p(x)\le f(x)\le q(x)<L+\varepsilon$, luego $|f(x)-L|<\varepsilon$. No hemos supuesto existencia previa del límite de $f$; acabamos de probarla.
 
-Como primer uso, sea $b:D\to\mathbb R$ con $|b(x)|\le K$ cerca de cero, donde $K\ge0$ y $0\in D'$. Para $h(x)=xb(x)$, $|h(x)|\le K|x|$. Si $K=0$, el error es cero localmente. Si $K>0$, $\delta=\min(r,\varepsilon/K)$ prueba $h\to0$. El factor $b$ puede carecer de límite: sólo usamos su cota.
-
-Un límite finito proporciona barreras locales; las barreras también pueden construir límites. Esta doble dirección será útil al operar con funciones que oscilan.
+Sea ahora $b:D\to\mathbb R$, con $0\in D'$ y $|b(x)|\le K$ en $U_D(0,r)$ para ciertos $r>0$, $K\ge0$. En $h(x)=xb(x)$, la estimación $|h(x)|\le K|x|$ permite tomar $\delta=\min(r,\varepsilon/K)$ cuando $K>0$. Si $K=0$, la función $b$ es cero en esa ventana y el error ya es nulo, sin dividir por $K$. No hace falta que $b$ tenga límite: puede valer uno en los racionales y menos uno en los irracionales. La cota controla el tamaño de su oscilación y el factor $x$ hace pequeño todo el producto.
 
 ### Antes de seguir
 
@@ -815,13 +795,12 @@ Si $L\ne M$, $d=|L-M|>0$. Ambos contratos para $\varepsilon=d/2$ dan radios posi
 Cada error es estrictamente menor que la mitad de la distancia entre candidatos. Al sumarlos obtenemos una cantidad estrictamente menor que la distancia completa, aunque los dos presupuestos sumen exactamente esa distancia. Por eso no se exige un margen de un tercio en esta variante. La entrada común sigue siendo indispensable y viene de la acumulación; sin ella, los controles podrían ser vacíos y la triangular no podría aplicarse a una salida real.
 
 </details>
+
 ## 13.4. Negar un candidato y construir infracciones
 
 []{#MA-SEC-ANM-01-013-004}
 
-Para probar un límite debemos responder a todas las tolerancias. Para refutar un candidato basta encontrar una tolerancia que ninguna ventana de entrada pueda satisfacer. La tolerancia de fracaso permanece fija mientras el radio de entrada cambia.
-
-### La negación conserva el orden de dependencias
+Un candidato falla cuando alguna precisión queda fuera del alcance de todas las ventanas. Aunque reduzcamos el radio, deberá persistir una entrada cuya salida incumpla esa misma precisión. La entrada puede cambiar al reducir la ventana; la tolerancia que acredita el fracaso permanece fija.
 
 Con los datos $f,D,a,L$ fijados y $a\in D'$, negar el contrato equivale a
 
@@ -830,31 +809,27 @@ $$
 \quad 0<|x-a|<\delta,\qquad |f(x)-L|\ge\varepsilon_0.
 $$
 
-El punto infractor sí puede depender del radio. La desigualdad final es $\ge$, no $>$: alcanzar la frontera de la bola abierta ya incumple el control.
+Para cada radio propuesto se busca un infractor, que puede depender de él y del candidato fijado. La negación del error estricto incluye la frontera: si $|f(x)-L|=\varepsilon_0$, la salida ya está fuera de $B(L,\varepsilon_0)$. Por eso se exige $\ge\varepsilon_0$ y no solamente $>\varepsilon_0$.
 
-Decir que $L$ no es límite es diferente de decir que la función no tiene ningún límite. Para lo segundo debemos descartar todo $L\in\mathbb R$ o usar un argumento que impida un destino único.
+Refutar un candidato deja abierta la existencia de otros: la función constante uno incumple el candidato cero y tiene límite uno. Para demostrar que no existe ningún límite habrá que descartar cada $L\in\mathbb R$ o encontrar consecuencias incompatibles de cualquier supuesto límite.
 
-### Una infracción en cada escala
-
-Para $n\in\mathbb N=\{0,1,\ldots\}$, sea $\eta_n=1/(n+1)$. Por C06, $\eta_n\to0$. Un candidato falla si y sólo si hay $\varepsilon_0>0$ para el que todos los conjuntos
+Podemos registrar los fallos en escalas numeradas. Para $n\in\mathbb N=\{0,1,\ldots\}$, ponemos $\eta_n=1/(n+1)$, de modo que todos los términos están definidos y $\eta_n\to0$ por C06. Un candidato falla si y sólo si existe $\varepsilon_0>0$ tal que todos los conjuntos
 
 $$
 E_n=\{x\in D:0<|x-a|<\eta_n,\ |f(x)-L|\ge\varepsilon_0\}
 $$
 
-son no vacíos. La negación completa implica esto al usar $\delta=\eta_n$. Recíprocamente, fijado cualquier $\delta>0$, elegimos un índice con $\eta_n<\delta$ y obtenemos un único testigo de $E_n$. Ese punto incumple también el radio $\delta$.
+son no vacíos. La negación completa lo implica al proponer el radio $\eta_n$. Para la vuelta, dado cualquier $\delta>0$, la arquimedianidad permite tomar un índice con $\eta_n<\delta$. Un testigo del correspondiente $E_n$ es entonces una entrada de la ventana de radio $\delta$ con error al menos $\varepsilon_0$, como se requería. Este argumento usa un solo conjunto de infractores después de recibir el radio.
 
-Hemos construido una familia de conjuntos de infractores. No hemos construido automáticamente una función que elija un elemento de cada $E_n$. La distinción entre $\forall n\,\exists x$ y $\exists(x_n)\,\forall n$ se volverá necesaria en la equivalencia secuencial.
+Una sucesión de infractores exigiría algo más: una función $n\mapsto x_n$ con $x_n\in E_n$ simultáneamente para todo $n$. La afirmación $\forall n\,\exists x\in E_n$ no especifica esa función. Para pasar de la familia de conjuntos a una ruta utilizaremos una regla de selección dada o una hipótesis adicional, que habrá que declarar.
 
-![C13-F04. Para f(x)=1 y el candidato L=0, xₙ=1/(n+2) infringe la tolerancia fija ε₀=1/2 dentro de cada escala ηₙ=1/(n+1). Esto refuta sólo el candidato 0: la función sí tiene límite 1. La fórmula proporciona aquí la ruta explícita.](../../assets/books/anm/C13/C13-F04.svg){#fig-anm-c13-f04 fig-alt="C13-F04. Para f(x)=1 y el candidato L=0, xₙ=1/(n+2) infringe la tolerancia fija ε₀=1/2 dentro de cada escala ηₙ=1/(n+1). Esto refuta sólo el candidato 0: la función sí tiene límite 1. La fórmula proporciona aquí la ruta explícita."}
-
-### Refutar todos los destinos
+![C13-F04. Para f(x)=1 y el candidato L=0, xₙ=1/(n+2) infringe la tolerancia fija ε₀=1/2 dentro de cada escala ηₙ=1/(n+1). Esto refuta sólo el candidato 0: la función sí tiene límite 1. La fórmula proporciona aquí la ruta explícita.](../../assets/books/anm/C13/C13-F04.svg){#fig-anm-c13-f04 fig-alt="Cinco ventanas perforadas decrecientes con un punto infractor cada una y, al lado, cinco salidas iguales a uno fuera de la banda fija alrededor de cero."}
 
 Sea $s(x)=-1$ para $x<0$ y $s(x)=1$ para $x\ge0$, en dominio real. Para cualquier $L$, al menos una de las distancias $|-1-L|$, $|1-L|$ es $\ge1$: si ambas fueran menores que $1$, la triangular daría $2<2$.
 
-Elegimos un signo cuya salida tenga esa distancia. Dado $\delta>0$, el punto $x=-\delta/2$ o $x=\delta/2$, según el signo elegido, es infractor con la tolerancia fija $\varepsilon_0=1$. El signo depende de $L$; el punto depende de $\delta$. Así se descarta todo candidato sin convertir el dibujo en una prueba.
+Fijado $L$, escogemos una de las dos ramas cuya distancia a él sea al menos uno. Para cada $\delta>0$ tomamos $x=-\delta/2$ si la rama es negativa y $x=\delta/2$ si es positiva. En ambos casos $0<|x|<\delta$ y $|s(x)-L|\ge1$. La tolerancia uno sirve a cualquier escala: la rama se fija según $L$ y sólo la entrada se adapta al radio. Esto descarta todos los candidatos reales.
 
-Otra refutación útil: $r(x)=1/x$ en $(0,\infty)$ no tiene límite real finito en cero. Para cualquier $L$ y $\delta>0$, elijamos $x=\min(\delta/2,1/[2(|L|+1)])>0$. Entonces $x<\delta$ y $1/x\ge2(|L|+1)$, de donde $|1/x-L|\ge1/x-|L|>1$. No hemos definido aquí un límite infinito; sólo descartamos todos los reales.
+También $r(x)=1/x$ en $(0,\infty)$ carece de límite real finito en cero. Dados $L\in\mathbb R$ y $\delta>0$, ponemos $x=\min(\delta/2,1/[2(|L|+1)])$. Ambos términos son positivos, así que $0<x\le\delta/2<\delta$, mientras $1/x\ge2(|L|+1)$. Por la triangular inversa, $|1/x-L|\ge1/x-|L|\ge|L|+2>1$. La misma tolerancia uno refuta cada destino finito; esta conclusión no introduce una definición de límite infinito.
 
 ### Antes de seguir
 
@@ -1082,39 +1057,36 @@ El salto con salidas $-1$ y $1$ está acotado por $1$. Para cada candidato $L$ u
 Para cada candidato, la distancia entre las dos salidas obliga a que una de ellas quede separada de él al menos por uno. Elegimos esa rama una vez fijado el candidato. Después cada radio proporciona una entrada de la rama con magnitud $\delta/2$. Así se verifican todos los cuantificadores de la refutación. La función mantiene magnitudes iguales a uno, de modo que la inexistencia del límite no puede atribuirse a falta de acotación.
 
 </details>
+
 ## 13.5. Lo que detectan las sucesiones
 
 []{#MA-SEC-ANM-01-013-005}
 
-Una aproximación secuencial elige una ruta numerada dentro del dominio. El límite funcional debe controlar todas esas rutas, pero una ruta favorable no certifica el comportamiento de toda una ventana.
+Una ruta numerada sólo visita algunas entradas del dominio. Si existe límite funcional, las estimaciones de una ventana se aplicarán a todos los términos suficientemente tardíos de cualquier ruta que se acerque al centro sin alcanzarlo. Esta consecuencia permite detectar fallos mediante sucesiones explícitas.
 
-Llamemos admisible a una sucesión $(x_n)$ con $x_n\in D\setminus\{a\}$ para todos los índices y $x_n\to a$. Las imágenes forman una sucesión bien tipada: $x:\mathbb N\to D$ se compone con $f:D\to\mathbb R$. No basta que $x_n$ sea real; debe pertenecer al dominio y evitar el centro.
-
-### De la ventana a cualquier ruta
+Llamamos admisible a una sucesión $(x_n)$ con $x_n\in D\setminus\{a\}$ para todo índice y $x_n\to a$. La pertenencia al dominio hace que $f(x_n)$ esté definido; la evitación del centro permite usar el límite perforado. La convergencia de las entradas será la que sitúe cada cola suficientemente tardía dentro del radio requerido.
 
 **Proposición.** Si $f\to L$ en $a$, entonces $f(x_n)\to L$ para toda sucesión admisible.
 
-Fijemos tal sucesión y $\varepsilon>0$. El límite funcional ofrece $\delta>0$. La convergencia de entradas ofrece $N$ con $|x_n-a|<\delta$ para $n\ge N$. Por admisibilidad, también $0<|x_n-a|$; la implicación funcional da $|f(x_n)-L|<\varepsilon$ en toda esa cola. No se ha elegido una nueva sucesión.
+Fijemos una sucesión admisible y $\varepsilon>0$. El límite funcional proporciona $\delta>0$ y la convergencia $x_n\to a$ proporciona después $N$ con $|x_n-a|<\delta$ para $n\ge N$. Como todos esos términos están en $D$ y son distintos de $a$, cumplen el antecedente completo del control funcional. Se sigue $|f(x_n)-L|<\varepsilon$ en toda la cola, que es precisamente la convergencia de las imágenes. El argumento trabaja sobre la sucesión dada y no selecciona otra.
 
-Si permitiéramos términos iguales a $a$, la sucesión constante del centro exigiría $f(a)=L$. La definición perforada no proporciona esa igualdad. Se puede permitir un prefijo finito de centros si la cola los evita, usando el carácter eventual de C06.
+La sucesión constante $x_n=a$ mostraría por qué hay que excluir el centro: si $f(a)$ existe, sus imágenes son constantemente $f(a)$, que puede diferir de $L$; si no existe, ni siquiera forman una sucesión evaluable. Puede permitirse un prefijo finito de términos centrales cuando todas las evaluaciones estén definidas y la cola los evite. Basta entonces tomar el máximo entre el corte que elimina esos términos y el corte que entra en el radio $\delta$.
 
-### La recíproca: dónde aparece una selección
-
-Si el candidato falla, §13.4 ofrece conjuntos $E_n$ no vacíos. Para contradecir el control de todas las rutas queremos una ruta con $x_n\in E_n$. Una colección de existencias no es todavía una regla de selección.
+Para obtener la recíproca partimos de un fallo y de los conjuntos no vacíos $E_n$ de §13.4. Una ruta con $x_n\in E_n$ se acercaría a $a$ manteniendo sus imágenes a distancia al menos $\varepsilon_0$ de $L$. La cuestión pendiente es definir todos sus términos. Una enumeración del dominio ofrece una regla mediante el buen orden de los naturales.
 
 **Teorema para un dominio enumerado.** Si está dada una sobreyección $e:\mathbb N\to D$, entonces $f\to L$ si y sólo si todas las sucesiones admisibles tienen imágenes que convergen a $L$.
 
-La dirección directa está probada. Para la inversa, si el límite falla, fijemos $\varepsilon_0$ y los $E_n$. El conjunto $I_n=\{k\in\mathbb N:e(k)\in E_n\}$ es no vacío por sobreyectividad. Definimos $k_n=\min I_n$, mínimo único de naturales, y $x_n=e(k_n)$. Entonces $0<|x_n-a|<1/(n+1)$, luego $x_n\to a$, mientras $|f(x_n)-L|\ge\varepsilon_0$ para todo índice. Sus imágenes no convergen a $L$, contradicción. Los $k_n$ no tienen que ser estrictamente crecientes; ésta no es una extracción de una sucesión previa.
+La dirección directa está probada. Para la inversa, supongamos que falla el límite y fijemos la tolerancia $\varepsilon_0$ y los $E_n$. La sobreyectividad asegura que $I_n=\{k\in\mathbb N:e(k)\in E_n\}$ es no vacío. Tiene por tanto un mínimo natural único, y las fórmulas $k_n=\min I_n$, $x_n=e(k_n)$ definen la ruta. Como $0<|x_n-a|<1/(n+1)$, tenemos $x_n\to a$; como $|f(x_n)-L|\ge\varepsilon_0$ para todo índice, sus imágenes no convergen a $L$. Esto contradice la hipótesis sobre todas las rutas admisibles.
 
-![C13-F05. En el dominio de recíprocos enteros, con f=1, a=L=0 y ε₀=1/2, la enumeración empieza con los denominadores 1,4,2,8,3,5,7,6 y continúa 9,10,… . Se marca e(k)<1/(n+1) y se rodea el menor índice válido. Los índices seleccionados pueden repetirse; el mínimo es de índices, no de valores reales.](../../assets/books/anm/C13/C13-F05.svg){#fig-anm-c13-f05 fig-alt="C13-F05. En el dominio de recíprocos enteros, con f=1, a=L=0 y ε₀=1/2, la enumeración empieza con los denominadores 1,4,2,8,3,5,7,6 y continúa 9,10,… . Se marca e(k)&lt;1/(n+1) y se rodea el menor índice válido. Los índices seleccionados pueden repetirse; el mínimo es de índices, no de valores reales."}
+El mínimo se toma entre índices naturales. Un conjunto real no vacío como $(0,1)$ puede carecer de mínimo, por lo que no podríamos sustituir la regla por $x_n=\min E_n$. Tampoco se exige que los $k_n$ crezcan estrictamente: la ruta no tiene por qué ser una subsucesión de la enumeración. La cota de distancias basta para la convergencia. Aunque haya repeticiones, un punto fijo $t\ne a$ queda excluido desde que $1/(n+1)<|t-a|$, y no puede reaparecer arbitrariamente tarde.
+
+![C13-F05. En el dominio de recíprocos enteros, con f=1, a=L=0 y ε₀=1/2, la enumeración empieza con los denominadores 1,4,2,8,3,5,7,6 y continúa 9,10,… . Se marca e(k)<1/(n+1) y se rodea el menor índice válido. Los índices seleccionados pueden repetirse; el mínimo es de índices, no de valores reales.](../../assets/books/anm/C13/C13-F05.svg){#fig-anm-c13-f05 fig-alt="Matriz de ocho escalas y diez índices con elegibilidad exacta y el primer índice elegible rodeado; varias filas comparten índice."}
 
 **Teorema condicional para dominios arbitrarios.** Bajo el principio de elección numerable para subconjuntos de reales, $\mathrm{CC}(\mathbb R)$, vale la misma equivalencia para todo $D\subseteq\mathbb R$. Este principio dice que cada familia numerable de subconjuntos reales no vacíos admite un selector. Aplicarlo a los $E_n$ produce $x_n\in E_n$; las dos desigualdades anteriores completan la contradicción. Es exactamente el paso adicional. No lo necesitamos para la dirección directa ni para el caso enumerado, y no lo incorporamos silenciosamente como axioma.
 
-### Refutar con rutas ya dadas
+En el salto de §13.4 ya disponemos de las fórmulas $u_n=-1/(n+1)$ y $v_n=1/(n+1)$. Ambas rutas son admisibles en cero y sus imágenes son constantemente $-1$ y $1$. Si hubiera un límite funcional $L$, la dirección directa y la unicidad del límite de sucesiones de C06 obligarían a $L=-1$ y $L=1$. Las rutas están definidas antes de invocar el argumento, por lo que esta refutación no usa elección numerable ni la recíproca condicional.
 
-Para el salto de §13.4, $u_n=-1/(n+1)$ y $v_n=1/(n+1)$ son admisibles en cero. Sus imágenes son constantes $-1$ y $1$. Si hubiese límite funcional $L$, la dirección directa y la unicidad secuencial de C06 obligarían $L=-1=1$. Esta refutación es incondicional: las rutas están dadas mediante fórmulas, no elegidas de conjuntos arbitrarios.
-
-Una sola ruta con imágenes que no convergen a un candidato lo refuta. Dos rutas con destinos distintos refutan la existencia de cualquier límite. Muchas rutas favorables, sin argumento universal, no prueban existencia.
+Una ruta que incumpla la convergencia hacia $L$ refuta ese candidato; dos rutas con destinos distintos descartan cualquier límite funcional. Para probar existencia con información secuencial se necesita, en cambio, controlar todas las rutas admisibles y justificar la recíproca bajo las hipótesis que acabamos de distinguir.
 
 ### Antes de seguir
 
@@ -1342,23 +1314,20 @@ La prueba de convergencia sólo necesita $|x_n-a|<1/(n+1)$; no usa inyectividad.
 Si $t\ne a$ tiene distancia fija $d>0$, existe un corte desde el cual $1/(n+1)<d$. La cota de los infractores excluye entonces que $x_n=t$ en cualquier índice posterior. Cada valor no central puede repetirse al principio, pero sólo finitas veces. No se deduce que todos los términos sean distintos ni se necesita imponerlo: la convergencia sigue únicamente de que sus distancias al centro se reduzcan con la escala.
 
 </details>
+
 ## 13.6. Combinar límites con presupuestos de error
 
 []{#MA-SEC-ANM-01-013-006}
 
-Ya sabemos construir radios para funciones concretas. Ahora probaremos reglas que permitan combinar límites sin rehacer toda la estimación. Las pruebas se harán con ventanas, de modo que no dependerán de la recíproca secuencial condicional.
+Las operaciones se pueden tratar directamente mediante las estimaciones de ventanas. Así sus reglas conservarán el alcance de las pruebas por radios, sin recurrir a la recíproca secuencial condicional ni seleccionar entradas de una familia de conjuntos.
 
 Sean $f,g:D\to\mathbb R$, $a\in D'$, $f\to L$ y $g\to M$. Todas las restricciones siguientes se cumplen en ventanas perforadas de ese mismo dominio.
 
-### Sumas, constantes y magnitudes
+Para una suma, la triangular descompone el error: $|(f+g)-(L+M)|\le|f-L|+|g-M|$. Dado $\varepsilon>0$, pedimos a cada límite un error menor que $\varepsilon/2$ y tomamos el mínimo de los dos radios. En esa ventana ambos controles están disponibles y su suma es menor que $\varepsilon$. Queda probado $f+g\to L+M$.
 
-Para $\varepsilon>0$, tomamos radios que aseguren $|f-L|<\varepsilon/2$ y $|g-M|<\varepsilon/2$. Su mínimo da $|(f+g)-(L+M)|\le |f-L|+|g-M|<\varepsilon$. Por tanto $f+g\to L+M$.
+Si $\lambda\ne0$, la identidad $|\lambda f-\lambda L|=|\lambda||f-L|$ pide una precisión $\varepsilon/|\lambda|$ al límite de $f$. Si $\lambda=0$, el error es cero y cualquier radio positivo sirve. Se obtiene $\lambda f\to\lambda L$ en ambos casos, y la elección $\lambda=-1$ junto con la suma prueba la regla de restas. Para las magnitudes, la triangular inversa da $||f|-|L||\le|f-L|$, de modo que el mismo radio prueba $|f|\to|L|$.
 
-Para $\lambda f$, si $\lambda=0$ el error es cero; si $\lambda\ne0$, pedimos $|f-L|<\varepsilon/|\lambda|$. Entonces $|\lambda f-\lambda L|<\varepsilon$. Esto prueba también restas usando $\lambda=-1$ y la regla de suma. La triangular inversa da $||f|-|L||\le |f-L|$, así que $|f|\to|L|$ con el mismo radio.
-
-### El producto necesita una barrera y dos errores
-
-La identidad útil es $fg-LM=f(g-M)+M(f-L)$. El primer factor $f$ varía; §13.3 nos permite fijar $|f|<A:=|L|+1$ en algún radio $r$. Sea $B=|M|+1>0$. Para $\varepsilon>0$ pedimos $|g-M|<\varepsilon/(2A)$ y $|f-L|<\varepsilon/(2B)$, y reunimos esos radios con $r$. Allí
+En el producto, añadir y restar $fM$ da $fg-LM=f(g-M)+M(f-L)$. El primer error está multiplicado por un valor variable de $f$, que §13.3 permite acotar por $A:=|L|+1$ en una ventana de radio $r>0$. Ponemos además $B=|M|+1>0$. Dado $\varepsilon>0$, pedimos $|g-M|<\varepsilon/(2A)$ y $|f-L|<\varepsilon/(2B)$, y tomamos el mínimo de esos radios con $r$. En la ventana común,
 
 $$
 |fg-LM|\le |f||g-M|+|M||f-L|
@@ -1366,27 +1335,27 @@ $$
 =\varepsilon.
 $$
 
-El uso de $B$ evita dividir por $|M|$ cuando $M=0$. La identidad no basta sola: la cota local convierte un coeficiente variable en una constante que permite repartir el presupuesto.
+Ambos denominadores son positivos incluso si alguno de los límites es cero. Cada término de la estimación queda por debajo de su presupuesto $\varepsilon/2$: si un multiplicador se anula, el término es cero; en otro caso se utilizan las cotas estrictas. La barrera local es lo que permite tratar el factor variable con un presupuesto fijo.
 
-### Recíprocos y cocientes: restringir el dominio a tiempo
-
-Si $M\ne0$, pedir $|g-M|<|M|/2$ da $|g|>|M|/2$. Por tanto $g(x)\ne0$ cerca de $a$ y
+Para invertir $g$ necesitamos primero proteger el denominador. Si $M\ne0$, la tolerancia $|M|/2$ entrega un radio donde $|g(x)|\ge|M|-|g(x)-M|>|M|/2>0$. Allí el recíproco está definido y su error satisface
 
 $$
 \left|\frac1{g(x)}-\frac1M\right|
 =\frac{|g(x)-M|}{|g(x)||M|}
-<\frac{2|g(x)-M|}{|M|^2}.
+\le\frac{2|g(x)-M|}{|M|^2}.
 $$
 
-Pedimos además $|g-M|<\varepsilon |M|^2/2$ y tomamos el mínimo de radios. Así $1/g\to1/M$ en $D_0=\{x\in D:g(x)\ne0\}$. Este dominio tiene a $a$ como punto de acumulación: para cualquier radio, la acumulación de $D$ ofrece un punto dentro del mínimo con la ventana de no anulación, y ese punto pertenece a $D_0$.
+Se admite igualdad cuando $g(x)=M$, pues ambos errores son cero.[^C13-reciproco] Pedimos además $|g(x)-M|<\varepsilon|M|^2/2$ y reunimos los dos radios. La última cota del error es entonces estrictamente menor que $\varepsilon$, también en ese caso nulo. Así $1/g\to1/M$ en $D_0=\{x\in D:g(x)\ne0\}$.
 
-La restricción de $f$ a $D_0$ conserva su límite porque el control universal en $D$ vale en el subconjunto. Aplicar la regla del producto a $f|_{D_0}$ y $1/g$ prueba $f/g\to L/M$. No se afirma que el cociente esté definido en todos los puntos del dominio original.
+Para formular ese límite debemos comprobar $a\in D_0'$. Dado cualquier radio positivo, la acumulación de $D$ proporciona una entrada dentro del mínimo de ese radio y del radio de no anulación. La entrada pertenece a $D_0$, es distinta de $a$ y está dentro del radio propuesto. Por tanto el dominio del recíproco también acumula en $a$.
 
-### Primer uso y una trampa
+[^C13-reciproco]: Se corrige aquí el signo estricto de la estimación original por una desigualdad no estricta. El caso $g\equiv M\ne0$ daría $0<0$ con aquel signo. La cota final estricta y la conclusión del argumento se conservan.
 
-Suma y producto prueban por inducción finita que un polinomio $P$ tiene límite $P(a)$ en cada $a$: las constantes y la identidad cumplen la definición, multiplicar construye potencias y sumar reúne términos. Si $Q(a)\ne0$, el cociente $P/Q$ tiene límite $P(a)/Q(a)$ en su dominio natural. Esta prueba no usa continuidad ni derivadas.
+El control de $f$ en $D$ sigue siendo válido al restringir las entradas a $D_0$. Como acabamos de comprobar su acumulación, podemos aplicar allí la regla del producto a $f|_{D_0}$ y $1/g$, obteniendo $f/g\to L/M$. Los ceros lejanos de $g$ siguen excluidos del dominio del cociente; la barrera sólo garantiza una ventana perforada local sin ceros.
 
-Si $Q(a)=0$, la regla de cocientes no decide nada. $(x^2-1)/(x-1)$ en $x\ne1$ se simplifica a $x+1$ y tiene límite $2$ en $1$. En cambio $1/(x-1)$ no tiene límite finito allí. El denominador límite no nulo es una hipótesis suficiente del criterio, no una clasificación de todo cociente posible.
+Las constantes tienen error cero y la identidad satisface el límite en $a$ con $\delta=\varepsilon$. Una inducción finita que multiplica potencias y suma términos prueba por estas reglas que todo polinomio $P$ tiene límite $P(a)$. Si $Q(a)\ne0$, el cociente $P/Q$ tiene límite $P(a)/Q(a)$ en su dominio natural $\{x:Q(x)\ne0\}$; la barrera anterior acredita que ese dominio acumula en $a$. La prueba sólo ha usado álgebra y ventanas.
+
+Si $Q(a)=0$, falta la barrera que utiliza la regla y debemos estudiar el cociente por otro argumento. En $x\ne1$, la factorización permite cancelar $(x^2-1)/(x-1)=x+1$, cuyo límite en $1$ es $2$. En cambio, para $1/(x-1)$ la refutación de §13.4 se traslada poniendo $t=x-1>0$ y descarta todo límite finito. Tener denominador límite cero es compatible con ambos comportamientos.
 
 ### Antes de seguir
 
@@ -1612,37 +1581,34 @@ Sea $f(x)=g(x)=s(x)$, el salto con valores $\pm1$. Las rutas positivas y negativ
 Para cada factor, las entradas a ambos lados de cero producen valores constantes diferentes, y las rutas explícitas de cada signo refutan cualquier destino común. Al multiplicar los factores iguales, los signos se cancelan y queda siempre uno. El producto tiene error cero respecto de uno en toda entrada. Por tanto la convergencia de ambos factores es una hipótesis suficiente de la regla del producto, pero no una condición necesaria para que el producto concreto converja.
 
 </details>
+
 ## 13.7. Cambiar las rutas disponibles
 
 []{#MA-SEC-ANM-01-013-007}
 
-El dominio forma parte de la pregunta. Si retiramos entradas, retiramos posibles infractores. Un límite que vale en un dominio grande se conserva al restringirlo; un límite obtenido en un dominio pequeño puede dejar de valer al devolver entradas.
+Al restringir un dominio se retiran entradas que podrían incumplir una precisión. Un control universal en el dominio original seguirá siendo válido en el subconjunto, siempre que allí continúe teniendo sentido la pregunta de límite. La vuelta exigirá asegurarse de que ninguna de las entradas recuperadas quede sin controlar.
 
-### Restricción y reunión finita
+Si $A\subseteq D$, $a\in A'$ y $f\to L$ a través de $D$, el mismo radio controla $f|_A$, porque cada entrada de $U_A(a,\delta)$ pertenece a $U_D(a,\delta)$. La acumulación se exige de nuevo en $A$: reducir el dominio podría haber dejado al centro aislado o haber eliminado todas las entradas próximas.
 
-Si $A\subseteq D$, $a\in A'$ y $f\to L$ a través de $D$, el mismo radio controla $f|_A$. La acumulación de $A$ asegura que la nueva pregunta no sea vacía.
+Sean más generalmente $D_1,\ldots,D_k\subseteq D$, con $k\ge1$ y $a\in D_i'$ para todos, y supongamos que existe $r>0$ con $U_D(a,r)\subseteq D_1\cup\cdots\cup D_k$. Si todas las restricciones tienen límite $L$, para cada $\varepsilon>0$ tomamos sus radios y el mínimo de ellos con $r$. Es positivo porque sólo hay finitos radios. Cualquier entrada de esa ventana pertenece al menos a una pieza, cuyo control basta para asegurar $|f(x)-L|<\varepsilon$, aunque pertenezca también a otras. Esto prueba el límite en $D$.
 
-Más generalmente, sean $D_1,\ldots,D_k\subseteq D$, con $k\ge1$, $a\in D_i'$ para todos, y supongamos que existe $r>0$ con $U_D(a,r)\subseteq D_1\cup\cdots\cup D_k$. Si las restricciones tienen el mismo límite $L$, dado $\varepsilon$ tomamos un radio por cada una y el mínimo con $r$. Toda entrada de la ventana pertenece a alguna pieza y cumple su estimación. Así $f\to L$ en $D$. Es una reunión finita de radios positivos; una familia infinita no proporciona necesariamente un mínimo positivo.
+Una familia infinita de radios positivos puede no tener ningún margen positivo común: los radios $1/(n+1)$ tienen ínfimo cero y ni siquiera tienen mínimo. Por ello la reunión infinita requiere otro argumento; el ejercicio 13.33 muestra cómo cada pieza puede excluir su propia infracción mientras la unión las recupera arbitrariamente cerca del centro.
 
-### Lados disponibles, lados inexistentes
+Los dominios laterales son $D_-=D\cap(-\infty,a)$ y $D_+=D\cap(a,\infty)$. El límite izquierdo es el de $f|_{D_-}$ en $a$, cuando $a\in D_-'$; el derecho se define análogamente con $D_+$. Cada uno exige entradas de su propio lado arbitrariamente próximas. Así, en $D=[a,\infty)$ el lado izquierdo está vacío y no recibe límite bajo nuestra convención.
 
-Definimos $D_-=D\cap(-\infty,a)$ y $D_+=D\cap(a,\infty)$. El límite por la izquierda es el límite de $f|_{D_-}$ en $a$, siempre que $a\in D_-'$; análogamente a la derecha. No asignamos un límite a un lado que no acumula entradas.
+Si ambos lados acumulan, un límite $L$ en $D$ se restringe a cada uno. Recíprocamente, si ambos límites laterales existen y son $L$, el mínimo de sus radios controla todas las entradas perforadas, pues cada una pertenece a uno de los dos lados. Queda probada la equivalencia entre el límite completo y la coincidencia de los dos límites laterales, bajo la hipótesis de acumulación en ambos.
 
-Cuando ambos lados acumulan, el límite en $D$ existe y es $L$ si y sólo si ambos límites laterales existen y son $L$. La ida es restricción; la vuelta usa la reunión finita, pues toda entrada perforada pertenece a un lado.
+![C13-F06. El salto tiene destinos laterales −1 y 1 en el dominio real, por lo que no admite un destino común. Restringido a entradas positivas, tiene límite 1 en cero. El lado izquierdo ausente no recibe un límite por vacuidad.](../../assets/books/anm/C13/C13-F06.svg){#fig-anm-c13-f06 fig-alt="Dos gráficos del salto, primero con ambos lados y después sólo con entradas positivas y un círculo vacío en cero uno."}
 
-![C13-F06. El salto tiene destinos laterales −1 y 1 en el dominio real, por lo que no admite un destino común. Restringido a entradas positivas, tiene límite 1 en cero. El lado izquierdo ausente no recibe un límite por vacuidad.](../../assets/books/anm/C13/C13-F06.svg){#fig-anm-c13-f06 fig-alt="C13-F06. El salto tiene destinos laterales −1 y 1 en el dominio real, por lo que no admite un destino común. Restringido a entradas positivas, tiene límite 1 en cero. El lado izquierdo ausente no recibe un límite por vacuidad."}
+Si sólo $D_+$ acumula en $a$, la negación de acumulación en $D_-$ proporciona un radio sin entradas de ese lado. Al reunirlo con un radio del límite derecho, toda entrada pertinente queda a la derecha y recibe su control. Por restricción se obtiene la implicación inversa, así que el límite en $D$ equivale al derecho. El caso izquierdo es simétrico. Además, cuando $a\in D'$ al menos uno de los lados acumula: si ninguno lo hiciera, el mínimo de sus radios sin entradas dejaría vacía una ventana perforada de $D$, contradicción.
 
-Si sólo acumula $D_+$, existe un radio sin entradas de $D_-$: ésa es la negación de acumulación del lado izquierdo. En esa ventana el límite en $D$ equivale al de la derecha. Si $a\in D'$, al menos un lado acumula: si ninguno lo hiciera, el mínimo de sus radios sin entradas eliminaría toda ventana perforada, contradicción.
+En el salto $s$, las salidas de la izquierda son siempre $-1$ y las de la derecha siempre $1$, de modo que los límites laterales son esos dos números distintos. Al restringir a $(0,\infty)$ sólo queda el límite $1$ en cero. Cero puede ser el centro de este límite aunque no pertenezca al dominio restringido, y no necesitamos atribuir ningún límite al lado eliminado.
 
-El salto $s$ tiene límites laterales $-1$ y $1$, y no tiene límite en el dominio real. Restringir a $(0,\infty)$ deja un límite perfectamente válido en cero, aunque cero no pertenezca al dominio.
+Una restricción puede ser densa y aun así omitir todas las entradas problemáticas. Sea $d:\mathbb R\to\mathbb R$, con $d(x)=0$ si $x\in\mathbb Q$ y $d(x)=1$ en caso contrario, donde $\mathbb Q$ designa su copia canónica real. La restricción racional es constante cero, por lo que tiene límite cero en cada punto de acumulación de ese dominio.
 
-### Un dominio denso puede ocultar todas las infracciones
+La función completa carece de límite en cero. Las rutas explícitas $u_n=1/(n+1)$ y $v_n=\sqrt2/(n+1)$ son no nulas y convergen a cero, pero sus imágenes son constantemente $0$ y $1$, respectivamente. Para verificar la segunda afirmación, si algún $v_n$ fuese racional, multiplicarlo por el entero positivo $n+1$ haría racional a $\sqrt2$, contradiciendo C10. La dirección secuencial directa obliga a que las imágenes de ambas rutas compartan cualquier supuesto límite funcional, lo cual es imposible.
 
-Sea $d:\mathbb R\to\mathbb R$, con $d(x)=0$ si $x\in\mathbb Q$ y $d(x)=1$ en caso contrario; aquí $\mathbb Q$ significa su copia canónica en $\mathbb R$. La restricción racional tiene límite cero en cada punto de acumulación de ese dominio porque es constante.
-
-En cero, la función completa no tiene límite. Las rutas $u_n=1/(n+1)$ y $v_n=\sqrt2/(n+1)$ convergen a cero, son no nulas, y sus valores son respectivamente $0$ y $1$. Cada $v_n$ es irracional: de ser racional, multiplicarlo por el entero no nulo $n+1$ haría racional a $\sqrt2$, contradiciendo C10. La dirección secuencial ya probada descarta un destino común.
-
-Densidad garantiza entradas próximas; no garantiza que probar sólo en esas entradas describa una función arbitraria. Para rescatar tal inferencia harían falta hipótesis adicionales, que no estamos suponiendo.
+La densidad asegura entradas próximas del subconjunto y no impone relación alguna entre sus valores y los de las entradas omitidas. En este ejemplo las rutas racionales pueden ser favorables en todas las escalas mientras las irracionales conservan un error fijo. La información de la restricción no alcanza para controlar la función arbitraria en el dominio completo.
 
 ### Antes de seguir
 
@@ -1870,41 +1836,38 @@ Si ninguno acumulara, habría radios positivos $r_-,r_+$ sin entradas de cada la
 Si ninguno de los lados acumulara, existirían dos radios que eliminan sus respectivas entradas. Su mínimo eliminaría todas las entradas distintas del centro, contradiciendo la acumulación del dominio. Si sólo un lado acumula, el otro está ausente en alguna ventana y puede descartarse al reducir el radio. El límite completo se vuelve exactamente el límite del lado disponible. No se asigna un destino por vacuidad al lado que falta.
 
 </details>
+
 ## 13.8. Componer controles sin perder la perforación
 
 []{#MA-SEC-ANM-01-013-008}
 
-Transportar dos ventanas consecutivas parece inmediato: primero $f$ acerca $x$ a $b$; después $g$ acerca la salida a $L$. Pero el segundo límite controla entradas próximas a $b$ y distintas de $b$. La primera función puede enviar muchas entradas directamente a ese centro.
-
-### Composición con evitación del centro intermedio
+En una composición, las salidas de $f$ serán entradas de $g$. El límite $f\to b$ permite situarlas tan cerca de $b$ como se requiera, pero también permite que coincidan exactamente con $b$. El límite perforado de $g$ sólo estima las otras entradas, de modo que hay que resolver ese posible contacto antes de aplicarlo.
 
 **Teorema.** Sean $f:D\to E$, con $D,E\subseteq\mathbb R$, $a\in D'$, $b\in E'$ y $g:E\to\mathbb R$. Supongamos $f\to b$ en $a$, $g\to L$ en $b$, y que existe $r>0$ con $f(x)\ne b$ para todo $x\in U_D(a,r)$. Entonces $g\circ f\to L$ en $a$.
 
-**Mapa de la prueba.** El desafío final $\varepsilon$ determina un radio intermedio $\eta$ para $g$; ese radio es el desafío que presentamos a $f$. La evitación garantiza que el punto intermedio esté en la ventana perforada y no sólo en la ventana completa.
+La tolerancia final se presenta primero a $g$. Su respuesta será una escala intermedia alrededor de $b$, y ésa será la precisión que pediremos a $f$. La hipótesis de evitación completará la desigualdad positiva que exige la ventana perforada de la segunda función.
 
-Fijemos $\varepsilon>0$. Para $g$ obtenemos $\eta>0$ tal que $y\in E$, $0<|y-b|<\eta$ implica $|g(y)-L|<\varepsilon$. Para $f$ obtenemos $\delta_f>0$ que asegura $|f(x)-b|<\eta$. Sea $\delta=\min(r,\delta_f)$. Para cualquier $x\in U_D(a,\delta)$, el tipo da $f(x)\in E$, la primera cota da distancia menor que $\eta$ y la evitación da distancia positiva. Podemos aplicar el segundo contrato: $|g(f(x))-L|<\varepsilon$. Así se reensamblan las dos metas.
+Fijemos $\varepsilon>0$. El límite de $g$ proporciona $\eta>0$ tal que, si $y\in E$ y $0<|y-b|<\eta$, entonces $|g(y)-L|<\varepsilon$. El límite de $f$ proporciona después $\delta_f>0$ con $|f(x)-b|<\eta$ en $U_D(a,\delta_f)$. Tomamos $\delta=\min(r,\delta_f)>0$. Para cualquier $x\in U_D(a,\delta)$, el tipo $f:D\to E$ autoriza evaluar $g(f(x))$, la estimación de $f$ da la cota superior y la evitación da $f(x)\ne b$. Se cumple por tanto $0<|f(x)-b|<\eta$, y el control de $g$ concluye $|g(f(x))-L|<\varepsilon$.
 
-### Una alternativa permite tocar el centro
+Bajo los mismos supuestos sobre los dos límites, la condición $b\in E$ y $g(b)=L$ permite prescindir de la evitación. Usamos el radio $\delta_f$ que responde a la escala $\eta$ y distinguimos los valores intermedios: si $f(x)\ne b$, se aplica la estimación perforada de $g$; si $f(x)=b$, el error final es $|g(b)-L|=0$. Ambas posibilidades quedan controladas en toda la ventana. Esta condición central permite demostrar la composición antes de introducir el vocabulario de continuidad.
 
-Si $b\in E$ y $g(b)=L$, podemos retirar la evitación. Con el mismo radio de $f$, cada entrada produce uno de dos casos. Si $f(x)\ne b$, usamos el límite de $g$; si $f(x)=b$, el error final es $|g(b)-L|=0$. El argumento prueba la composición sin haber introducido aún el vocabulario de continuidad.
+![C13-F07. La interior envía toda entrada a 0. La exterior tiene límite 0 en 0, pero g(0)=1; su contrato perforado no controla ese valor. La composición es constante 1. La cercanía intermedia necesita además evitación del centro o un valor central compatible.](../../assets/books/anm/C13/C13-F07.svg){#fig-anm-c13-f07 fig-alt="Gráfico de la interior constante cero y de la exterior cero fuera del centro, con un punto lleno en cero uno señalado como única salida alcanzada."}
 
-![C13-F07. La interior envía toda entrada a 0. La exterior tiene límite 0 en 0, pero g(0)=1; su contrato perforado no controla ese valor. La composición es constante 1. La cercanía intermedia necesita además evitación del centro o un valor central compatible.](../../assets/books/anm/C13/C13-F07.svg){#fig-anm-c13-f07 fig-alt="C13-F07. La interior envía toda entrada a 0. La exterior tiene límite 0 en 0, pero g(0)=1; su contrato perforado no controla ese valor. La composición es constante 1. La cercanía intermedia necesita además evitación del centro o un valor central compatible."}
+Sin resolver el caso central, los dos límites pueden ser insuficientes. Sea $f(x)=0$ en $\mathbb R$ y $g(y)=0$ para $y\ne0$, con $g(0)=1$. Tanto $f\to0$ en cero como $g\to0$ en cero tienen error nulo en sus ventanas pertinentes. Sin embargo, la composición evalúa siempre el valor excepcional $g(0)$, por lo que es constantemente uno y tiene límite $1$. El control exterior nunca había estimado esa evaluación. En el ejercicio 13.40 se precisa cuándo un valor central distinto de $L$ obliga a evitarlo para que la composición tenga ese destino.
 
-La alternativa es necesaria para ese mecanismo. Sea $f(x)=0$ en todo $\mathbb R$ y $g(y)=0$ si $y\ne0$, $g(0)=1$. Tenemos $f\to0$ en cero y $g\to0$ en cero, pero $(g\circ f)(x)=1$ para toda entrada, cuyo límite es $1$, no $0$. No falló la cercanía: falló la autorización para aplicar un contrato perforado en su centro.
-
-### Un certificado que se puede reutilizar
-
-Supongamos que $|f(x)-b|\le C|x-a|$ cerca de $a$, con $C>0$, y que para cada $\varepsilon>0$ tenemos un radio válido $\eta_g(\varepsilon)$ para $g$. Si se cumple la evitación o la alternativa $g(b)=L$, sirve
+El diseño del radio puede escribirse explícitamente cuando ya tenemos una estimación interior. Supongamos $|f(x)-b|\le C|x-a|$ cerca de $a$, con $C>0$, y un radio válido $\eta_g(\varepsilon)$ para cada tolerancia exterior. Si se cumple la evitación o la alternativa $b\in E$, $g(b)=L$, podemos tomar
 
 $$
 \delta(\varepsilon)=\min\left(r,\frac{\eta_g(\varepsilon)}{C}\right),
 $$
 
-donde $r$ reúne las restricciones locales. Para $x$ dentro de ese radio, $|f(x)-b|<\eta_g(\varepsilon)$, y el argumento anterior decide el caso central. Si $C=0$, la cota fuerza $f(x)=b$ localmente; sólo la alternativa central permite esta prueba y el resultado es inmediato.
+donde $r>0$ reúne las restricciones locales. Para toda entrada de esa ventana, $|f(x)-b|\le C|x-a|<C\delta(\varepsilon)\le\eta_g(\varepsilon)$. La desigualdad superior no prueba evitación; ésta debe proceder de la hipótesis correspondiente, o bien resolverse el contacto con $g(b)=L$.
 
-Una prueba de límite consta de dos piezas: un procedimiento para producir radios y una verificación universal en el dominio. Un gráfico propone el mecanismo; una tabla ensaya casos; una sucesión puede detectar una infracción. La desigualdad o el argumento universal es lo que certifica toda la ventana.
+Si $C=0$, la cota obliga a $f(x)=b$ localmente. Como la acumulación hace no vacía cada ventana perforada, ese caso es incompatible con la evitación. El tipo asegura entonces $b\in E$ y la composición es localmente constante $g(b)$: tiene ese límite directamente, con error cero, incluso sin conocer un límite exterior. Para obtener el destino propuesto $L$ es necesario y suficiente que $g(b)=L$.
 
-Este capítulo ha separado cercanía, evaluación central y rutas disponibles. En el siguiente preguntaremos qué cambia al exigir que el destino sea precisamente el valor de la función en el centro.
+El radio elegido debe ser positivo y depender sólo de los datos fijados y de la tolerancia. La comprobación posterior toma cualquier entrada del dominio en la ventana perforada y verifica el error estricto, incluidos los denominadores y las evaluaciones intermedias. Una fórmula de radio sólo termina la prueba cuando se ha establecido esa implicación universal.
+
+El límite ha permitido mantener separados el valor central y el comportamiento próximo. Exigir que el destino sea precisamente el valor de la función en el centro añadirá una condición que el ejemplo de $g(0)=1$ deja visible.
 
 ### Antes de seguir
 

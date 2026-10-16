@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 28 — Intercambiar límites con operaciones
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,7 +28,7 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-28)
 
-C27 construyó el contrato uniforme. Ahora probaremos qué operaciones conserva, construyendo cada destino antes de identificarlo: continuidad, límites relativos, integrabilidad y derivabilidad. C14/C18/C23 son centrales; C10/C13/C16/C17/C19/C24 aportan interfaces declaradas. C29 sólo se anuncia al final.
+Una banda uniforme permite escoger una fila antes de acercar la entrada a un centro. Con ese orden podremos completar la prueba de continuidad que fallaba para convergencia puntual. La integración aprovechará además una longitud fija; la diferenciación necesitará controlar incrementos y un valor de anclaje. Construiremos cada destino antes de identificarlo, usando C14, C18 y C23 y las interfaces declaradas de C10, C13, C16, C17, C19 y C24.
 
 ## 28.1. Fijar una fila para conservar continuidad
 
@@ -40,15 +40,15 @@ C27 permite escoger una etapa antes de conocer la entrada. Ésa es la diferencia
 
 $$|f(x)-f(x_0)|\le |f(x)-f_N(x)|+|f_N(x)-f_N(x_0)|+|f_N(x_0)-f(x_0)|<\varepsilon.$$
 
-El radio se obtiene **después** de fijar la fila; no debe funcionar para todas las filas. Tampoco se necesita una cota global de sus valores. Basta que haya filas continuas en el punto con índices arbitrariamente grandes: para cada tolerancia escogemos una de ellas después del corte. Si todas son continuas en $X$, la conclusión se aplica en todo $X$. En el vacío no hay puntos que comprobar.
+Después de escoger la fila, su continuidad proporciona el radio. No hace falta un radio válido para todas las filas ni una barrera de sus valores. Incluso basta que existan filas continuas en el punto con índices arbitrariamente grandes: para cada tolerancia elegimos una después del corte uniforme. Si todas las filas son continuas en $X$, repetimos el argumento en cada centro y obtenemos continuidad de $f$ en $X$. El caso vacío no tiene puntos que comprobar.
 
 **Continuidad uniforme es otra propiedad.** Si las filas son uniformemente continuas en $X$, la misma prueba usa el radio de una fila para todo par $x,y\in X$. Así el límite es uniformemente continuo. No se exige de antemano un radio común a la familia de filas. Si sólo sabemos continuidad ordinaria de las filas, obtenemos continuidad ordinaria; en un compacto, C17 convierte después la del límite en uniforme.
 
 Para $f_n(x)=x+1/(n+1)$ en toda la recta, el error de aproximación es $1/(n+1)$ y el límite es la identidad, uniformemente continua y no acotada. El control de errores no es una barrera de valores.
 
-**Una prueba que ahora sí funciona.** Las potencias de C26 en $[0,1]$ son continuas, pero su límite vale cero antes de uno y uno en uno. R1 demuestra por contraposición que no pueden converger uniformemente. La conclusión concuerda con la envolvente uno de C27. En $[0,1)$ el límite es continuo y la convergencia sigue sin ser uniforme: continuidad del destino es una consecuencia suficiente, no una caracterización del modo de convergencia.
+La contraposición permite reutilizar las potencias de C26 en $[0,1]$. Sus filas son continuas y su límite es discontinuo en uno, así que la convergencia no puede ser uniforme; coincide con la envolvente uno calculada en C27. Sobre $[0,1)$ el límite sí es continuo y la convergencia sigue sin ser uniforme. La continuidad del destino se hereda bajo uniformidad, pero no caracteriza por sí sola ese modo de convergencia.
 
-![En la ventana \[−1,1\], la fila x+1/5 aproxima la identidad con error1/5. Los tres tramos en el segundo panel separan aproximación en ambas entradas y variación de la fila fija. Para entradas0 y1/10, el presupuesto triangular es1/2, aunque la diferencia real es1/10. La prueba general fija fila antes del radio.](../../assets/books/anm/C28/C28-F01.svg){#fig-anm-c28-f01 fig-alt="En la ventana \[−1,1\], la fila x+1/5 aproxima la identidad con error1/5. Los tres tramos en el segundo panel separan aproximación en ambas entradas y variación de la fila fija. Para entradas0 y1/10, el presupuesto triangular es1/2, aunque la diferencia real es1/10. La prueba general fija fila antes del radio."}
+![En la ventana \[−1,1\], la fila x+1/5 aproxima la identidad con error1/5. Los tres tramos en el segundo panel separan aproximación en ambas entradas y variación de la fila fija. Para entradas0 y1/10, el presupuesto triangular es1/2, aunque la diferencia real es1/10. La prueba general fija fila antes del radio.](../../assets/books/anm/C28/C28-F01.svg){#fig-anm-c28-f01 fig-alt="En la ventana [−1,1], la fila x+1/5 aproxima la identidad con error1/5. Los tres tramos en el segundo panel separan aproximación en ambas entradas y variación de la fila fija. Para entradas0 y1/10, el presupuesto triangular es1/2, aunque la diferencia real es1/10. La prueba general fija fila antes del radio."}
 
 ### Microcontroles
 
@@ -252,11 +252,12 @@ Demuestra la versión de R1 que sólo exige filas continuas en $x_0$ con índice
 Ante $\varepsilon>0$, el contrato uniforme entrega un corte $N$ para error $\varepsilon/3$. La hipótesis de índices continuos arbitrariamente grandes permite tomar algún $n\ge N$ cuya fila sea continua en $x_0$. Fijamos esa fila y su radio para variación menor que $\varepsilon/3$. Como está en la cola, los errores de aproximación en $x$ y $x_0$ también son menores que esa cantidad. La triangular de tres términos prueba continuidad de $f$ en el centro. Se necesita sólo una fila adecuada para la tolerancia recibida, sin construir una subsucesión infinita de ellas.
 
 </details>
+
 ## 28.2. Dos límites con un presupuesto común
 
 []{#MA-SEC-ANM-01-028-002}
 
-Continuidad combina dos aproximaciones: avanzar el índice y acercar la entrada. Primero construiremos los destinos antes de intercambiar el orden.
+Para intercambiar el límite del índice y el de la entrada debemos comprobar primero que existan los dos destinos finales. Si las filas ya tienen límite en el centro, el control uniforme hará de Cauchy la sucesión de esos límites. Después fijaremos una fila que aproxime a la función y cuyo límite aproxime al destino construido.
 
 **R2 — Existencia e intercambio de límites.** Sea $a$ punto de acumulación de $X\subseteq\mathbb R$. Supongamos $f_n\to f$ uniformemente en $X$ y que existen los límites relativos perforados
 
@@ -268,7 +269,7 @@ Para construir $p$, usamos Cauchy uniforme de C27. Dada $\eta>0$, hay $N$ con $|
 
 $$|p_n-p_m|\le\eta/2<\eta.$$
 
-Hay entradas perforadas arbitrariamente cercanas porque $a\in X'$; no hemos creado un límite vacío. C10 construye el único real $p$ de esta sucesión de Cauchy.
+Como $a$ es punto de acumulación de $X$, las ventanas perforadas contienen entradas arbitrariamente cercanas y el paso al límite tiene su dominio acreditado. La desigualdad obtenida hace de Cauchy la sucesión $(p_n)$; C10 proporciona su único límite real $p$.
 
 Ahora, para $\varepsilon>0$, elegimos una fila $n$ suficientemente grande para que $|f(x)-f_n(x)|<\varepsilon/3$ en todo $X$ y $|p_n-p|<\varepsilon/3$. Con **ese índice fijo**, el límite de la fila da un radio con $|f_n(x)-p_n|<\varepsilon/3$ en la ventana perforada. Por triangular, $|f(x)-p|<\varepsilon$. Se ha probado la existencia del límite de $f$, además de la igualdad
 
@@ -284,7 +285,7 @@ da convergencia a $p$. El corte uniforme controla el primer término y el límit
 
 Para $f_n(x)=x+1/(n+1)$, $a=0$, tenemos $p_n=1/(n+1)$ y $p=0$. En cambio, $r_n(x)=(n+1)x/[1+(n+1)x]$ sobre $(0,1]$ tiene límite puntual uno, pero cada fila tiende a cero cuando $x\downarrow0$. Los iterados son uno y cero; la ruta $x_n=1/(n+1)$ vale $1/2$. La falta de uniformidad explica la discrepancia, sin negar existencia de ambos iterados.
 
-![La familia uniforme x+1/(n+1) tiene límites de fila1/(n+1) en cero y destino común0. En la familia racional r_n=(n+1)x/\[1+(n+1)x\], el límite puntual en(0,1\] es1, pero los destinos de fila en cero son0. La ruta dada1/(n+1) vale1/2. Las líneas horizontales muestran destinos calculados, no una inferencia de muestras.](../../assets/books/anm/C28/C28-F02.svg){#fig-anm-c28-f02 fig-alt="La familia uniforme x+1/(n+1) tiene límites de fila1/(n+1) en cero y destino común0. En la familia racional r_n=(n+1)x/\[1+(n+1)x\], el límite puntual en(0,1\] es1, pero los destinos de fila en cero son0. La ruta dada1/(n+1) vale1/2. Las líneas horizontales muestran destinos calculados, no una inferencia de muestras."}
+![La familia uniforme x+1/(n+1) tiene límites de fila1/(n+1) en cero y destino común0. En la familia racional r_n=(n+1)x/\[1+(n+1)x\], el límite puntual en(0,1\] es1, pero los destinos de fila en cero son0. La ruta dada1/(n+1) vale1/2. Las líneas horizontales muestran destinos calculados, no una inferencia de muestras.](../../assets/books/anm/C28/C28-F02.svg){#fig-anm-c28-f02 fig-alt="La familia uniforme x+1/(n+1) tiene límites de fila1/(n+1) en cero y destino común0. En la familia racional r_n=(n+1)x/[1+(n+1)x], el límite puntual en(0,1] es1, pero los destinos de fila en cero son0. La ruta dada1/(n+1) vale1/2. Las líneas horizontales muestran destinos calculados, no una inferencia de muestras."}
 
 ### Microcontroles
 
@@ -486,11 +487,12 @@ Prueba $f_n(x_n)\to p$ bajo R2 para cualquier ruta dada $x_n\in X\setminus\{a\}$
 La ruta está dada con $x_n\in X\setminus\{a\}$ y $x_n\to a$. R2 ya probó que $f(x)\to p$ en el dominio perforado. Para $\varepsilon>0$, la uniformidad da un corte para $|f_n(x)-f(x)|<\varepsilon/2$ en toda entrada. El límite relativo de $f$ da un radio, y la convergencia de la ruta da otro corte desde el que $|f(x_n)-p|<\varepsilon/2$. El máximo de ambos cortes controla $|f_n(x_n)-p|\le|f_n(x_n)-f(x_n)|+|f(x_n)-p|<\varepsilon$. No se escoge una ruta por cada escala: se demuestra la afirmación para cualquier ruta admisible ya dada.
 
 </details>
+
 ## 28.3. Compacidad y monotonía: el mecanismo de Dini
 
 []{#MA-SEC-ANM-01-028-003}
 
-La continuidad del límite no caracteriza uniformidad, pero en presencia de compacidad y orden de las filas sí puede producirla.
+La continuidad del destino no bastaba para controlar las potencias en $(0,1)$. Al añadir compacidad del dominio y monotonía de las columnas, los cortes locales podrán reunirse mediante una cubierta finita. Ése será el mecanismo del teorema de Dini.
 
 **R3 — Dini, con todas sus hipótesis.** Sea $K\subseteq\mathbb R$ compacto. Sean $f_n$ continuas relativamente a $K$, decrecientes por columnas y convergentes puntualmente a una función continua $f$. Entonces $f_n\to f$ uniformemente en $K$. Para filas crecientes aplicamos el resultado a $-f_n$.
 
@@ -500,7 +502,7 @@ $$U_n=\{x\in K:e_n(x)<\varepsilon/2\}.$$
 
 Continuidad de $f_n$ y $f$ hace abiertos estos conjuntos. Son crecientes y cubren $K$ por convergencia puntual. Para conectar con la definición de cubierta de C16, podemos usar todos los pares $(n,r)$ de bolas reales cuyo corte con $K$ esté contenido en $U_n$: esa familia abierta cubre $K$ sin escoger un radio por cada punto. Compacidad entrega una subfamilia finita. Si $K\ne\varnothing$, sus índices naturales tienen máximo $N$ y todos sus cortes están en $U_N$. Por tanto $e_n(x)<\varepsilon/2<\varepsilon$ para todo $x\in K$ y $n\ge N$. Si $K$ es vacío, el contrato es vacuo.
 
-**Dónde se gastó cada hipótesis.** Puntualidad cubre; continuidad abre; compacidad reduce a finito; monotonía convierte los índices finitos en un corte para toda la cola. No se tomó un máximo de infinitos umbrales ni se supuso una tasa geométrica. El teorema es cualitativo: no entrega una fórmula universal para $N(\varepsilon)$.
+La convergencia puntual hace que los abiertos $U_n$ cubran el compacto. La continuidad garantiza que son abiertos; la compacidad reduce la cubierta a finitísimos índices y la monotonía permite dominarlos con su máximo y conservar el control en toda la cola. La prueba no proporciona una tasa geométrica ni una fórmula universal para $N(\varepsilon)$: construye un corte a partir de la cubierta correspondiente a esa tolerancia.
 
 Para $f_n(x)=x/(n+1)$ en $[0,1]$, las columnas decrecen a cero y la cota explícita $1/(n+1)$ confirma el teorema. Las potencias en $[0,1]$ tienen destino discontinuo y conservan envolvente uno. En $(0,1)$ las mismas potencias tienen destino continuo, pero el dominio no es compacto y la envolvente sigue siendo uno.
 
@@ -508,7 +510,7 @@ Las indicadoras $s_n=\mathbf1_{(0,1/(n+1))}$ sobre $[0,1]$ decrecen puntualmente
 
 **Otro uso de finitud.** Si una familia dada de abiertos cubre un compacto y la convergencia es uniforme en el corte del compacto con cada miembro, una subcubierta finita y C27 producen uniformidad en todo el compacto. «Uniforme cerca de cada punto» debe significar uniformidad en una vecindad fija del punto; continuidad local sola no lo dice. La cubierta se construye con todos los abiertos admisibles, sin elegir uno por punto.
 
-![Para e_n=x/(n+1) en\[0,1\] y tolerancia1/4, los abiertos relativos U_n={e_n<1/8} crecen hasta cubrir todo el segmento desde n=8. En n=7 falta el extremo1. Potencias en(0,1) conservan envolvente1 pese a destino continuo: falta compacidad. Cada abierto y cada corte están definidos por la desigualdad exacta.](../../assets/books/anm/C28/C28-F03.svg){#fig-anm-c28-f03 fig-alt="Para e_n=x/(n+1) en\[0,1\] y tolerancia1/4, los abiertos relativos U_n={e_n&lt;1/8} crecen hasta cubrir todo el segmento desde n=8. En n=7 falta el extremo1. Potencias en(0,1) conservan envolvente1 pese a destino continuo: falta compacidad. Cada abierto y cada corte están definidos por la desigualdad exacta."}
+![Para e_n=x/(n+1) en\[0,1\] y tolerancia1/4, los abiertos relativos U_n={e_n<1/8} crecen hasta cubrir todo el segmento desde n=8. En n=7 falta el extremo1. Potencias en(0,1) conservan envolvente1 pese a destino continuo: falta compacidad. Cada abierto y cada corte están definidos por la desigualdad exacta.](../../assets/books/anm/C28/C28-F03.svg){#fig-anm-c28-f03 fig-alt="Para e_n=x/(n+1) en[0,1] y tolerancia1/4, los abiertos relativos U_n={e_n<1/8} crecen hasta cubrir todo el segmento desde n=8. En n=7 falta el extremo1. Potencias en(0,1) conservan envolvente1 pese a destino continuo: falta compacidad. Cada abierto y cada corte están definidos por la desigualdad exacta."}
 
 ### Microcontroles
 
@@ -710,11 +712,12 @@ Prueba que una cubierta abierta dada de un compacto, con convergencia uniforme e
 Sea una cubierta abierta dada de un compacto $K$, y supongamos uniformidad hacia la misma candidata en cada corte de la cubierta con $K$. Compacidad extrae finitísimos abiertos cuyos cortes todavía cubren $K$. Para $\varepsilon>0$, cada corte seleccionado entrega un índice válido; tomamos el máximo de esa lista finita. Toda entrada de $K$ pertenece a alguno y cumple el error menor que $\varepsilon$ en cualquier etapa posterior al máximo. Así hay uniformidad global. Las piezas son fijas antes de recibir los índices. Si $K$ es vacío, cualquier corte sirve sin seleccionar piezas.
 
 </details>
+
 ## 28.4. La integral soporta un error global pequeño
 
 []{#MA-SEC-ANM-01-028-004}
 
-La integral de Riemann requiere existencia, no sólo una notación bajo el signo de límite. Trabajaremos en un intervalo cerrado fijo $[a,b]$, con $a<b$ y longitud $\ell=b-a$.
+Para transportar integrabilidad no basta estimar una diferencia de integrales: primero debe existir la integral del límite. Trabajaremos en un intervalo fijo $[a,b]$, con $a<b$ y longitud $\ell=b-a$. La banda uniforme permitirá comparar las brechas de Darboux antes de comparar los valores integrales.
 
 **R4 — Límite uniforme de integrables.** Si cada $f_n$ es integrable de Riemann en $[a,b]$ y $f_n\to f$ uniformemente, entonces $f$ es integrable y
 
@@ -724,7 +727,7 @@ Primero existe una barrera para $f$: el corte uniforme para error uno entrega un
 
 $$U(f,P)\le U(u,P)+\delta\ell,\qquad L(f,P)\ge L(u,P)-\delta\ell.$$
 
-En efecto, todo valor de $f$ queda bajo la cota superior local de $u$ más $\delta$ y sobre su cota inferior menos $\delta$. Pasar a extremos conserva desigualdades débiles; sumar anchuras produce exactamente $\ell$. Así
+En cada pieza, una cota superior de $u$ más $\delta$ acota todos los valores de $f$, y una cota inferior menos $\delta$ queda por debajo de ellos. Tomar supremo e ínfimo conserva estas comparaciones débiles. Al multiplicar por anchuras y sumar, las correcciones acumulan exactamente $\delta\ell$ a cada lado. Restando las dos sumas resulta
 
 $$G(f,P)\le G(u,P)+2\delta\ell.$$
 
@@ -740,7 +743,7 @@ Para $f_n(t)=t^2+1/(n+1)$ en $[0,1]$, la integral es $1/3+1/(n+1)$ y el error es
 
 **Puntualidad no basta.** Las tiendas normalizadas $b_n=(n+3)t_n$ de C26 son continuas e integrables, tienden puntualmente a cero y tienen integral uno. Ambas integrales comparadas existen y difieren. Las indicadoras finitas de racionales de C25 tienden a Dirichlet, que ni siquiera es integrable: allí la comparación final no está definida. Las dos fallas son distintas.
 
-![La perturbación constante1/(n+1) sobre t² en\[0,1\] tiene área de error igual a su envolvente. Las tiendas normalizadas de k=n+3 conservan área1 y altura k, pese a destino puntual0. Los perfiles son continuos y sus áreas se acreditan por ramas afines antes de dibujar.](../../assets/books/anm/C28/C28-F04.svg){#fig-anm-c28-f04 fig-alt="La perturbación constante1/(n+1) sobre t² en\[0,1\] tiene área de error igual a su envolvente. Las tiendas normalizadas de k=n+3 conservan área1 y altura k, pese a destino puntual0. Los perfiles son continuos y sus áreas se acreditan por ramas afines antes de dibujar."}
+![La perturbación constante1/(n+1) sobre t² en\[0,1\] tiene área de error igual a su envolvente. Las tiendas normalizadas de k=n+3 conservan área1 y altura k, pese a destino puntual0. Los perfiles son continuos y sus áreas se acreditan por ramas afines antes de dibujar.](../../assets/books/anm/C28/C28-F04.svg){#fig-anm-c28-f04 fig-alt="La perturbación constante1/(n+1) sobre t² en[0,1] tiene área de error igual a su envolvente. Las tiendas normalizadas de k=n+3 conservan área1 y altura k, pese a destino puntual0. Los perfiles son continuos y sus áreas se acreditan por ramas afines antes de dibujar."}
 
 ### Microcontroles
 
@@ -942,6 +945,7 @@ Distingue la falla integral de los indicadores finitos de racionales de C25 de l
 Los indicadores de los conjuntos finitos $E_{n+1}$ de racionales son integrables y tienen valor cero por modificaciones finitas. En cada racional reducido, la columna pasa definitivamente a uno cuando su denominador queda incluido; en cada irracional permanece cero. El destino puntual es Dirichlet, que tiene ínfimo cero y supremo uno en toda pieza no degenerada. Su brecha fija impide integrabilidad propia. Así el límite de valores integrales existe y vale cero, pero la integral del destino no existe. Este fallo difiere del ejemplo de tiendas normalizadas, donde ambas operaciones estaban definidas y discrepaban en valor.
 
 </details>
+
 ## 28.5. Acumulaciones, pesos y extremos variables
 
 []{#MA-SEC-ANM-01-028-005}
@@ -968,13 +972,13 @@ Se puede mejorar a $E_n\int_a^b|w|$. Existencia de los productos y del absoluto 
 
 $$\left|\int_{u_n}^{v_n}f_n-\int_u^v f\right|\le\ell E_n+B|u_n-u|+B|v_n-v|.$$
 
-Primero cambiamos $f_n$ por $f$ manteniendo extremos; luego movemos los extremos de la integral de $f$. La cota es válida si están invertidos o coinciden. Tres errores tendentes a cero permiten el límite, porque todos los intervalos viven en el mismo marco finito.
+Descomponemos el error en dos cambios. Primero sustituimos $f_n$ por $f$ sin mover los extremos, con coste a lo sumo $\ell E_n$. Luego, por aditividad orientada, mover cada extremo de la integral de $f$ añade un tramo cuya integral tiene magnitud a lo sumo $B$ veces su longitud. Obtenemos los otros dos términos de la cota, también cuando los extremos coinciden o se invierten. Todos tienden a cero dentro de un mismo marco finito.
 
 Para $f_n(t)=t^2+1/(n+1)$, $c=0$, $A_n(x)=x^3/3+x/(n+1)$. El error de acumulación es $|x|/(n+1)$; en $[0,1]$ su envolvente es $1/(n+1)$. Si el peso es $w(t)=t$, el error integral final es $1/[2(n+1)]$.
 
 **La longitud también es una hipótesis.** Las funciones constantes $1/(n+1)$ convergen uniformemente a cero en toda la recta. Sin embargo, su integral en $[0,n+1]$ vale uno. Los intervalos crecen y no hay una longitud fija que multiplique un error tendente a cero. No se ha definido ni utilizado aquí una integral impropia: cada etapa es una integral propia finita. Uniformidad es suficiente en el marco fijo, pero no necesaria para igualdad de un par de límites integrales: las tiendas sin normalizar tienen integral $1/(n+3)\to0$ sin converger uniformemente.
 
-![Acumuladas de t²+1/(n+1) desde0: error x/(n+1), bajo una cota común1/(n+1) en\[0,1\]. Para constantes1/(n+1) integradas en\[0,n+1\], la altura baja y la longitud crece; el área queda1. Se representan integrales propias finitas de cada etapa, sin introducir integración impropia.](../../assets/books/anm/C28/C28-F05.svg){#fig-anm-c28-f05 fig-alt="Acumuladas de t²+1/(n+1) desde0: error x/(n+1), bajo una cota común1/(n+1) en\[0,1\]. Para constantes1/(n+1) integradas en\[0,n+1\], la altura baja y la longitud crece; el área queda1. Se representan integrales propias finitas de cada etapa, sin introducir integración impropia."}
+![Acumuladas de t²+1/(n+1) desde0: error x/(n+1), bajo una cota común1/(n+1) en\[0,1\]. Para constantes1/(n+1) integradas en\[0,n+1\], la altura baja y la longitud crece; el área queda1. Se representan integrales propias finitas de cada etapa, sin introducir integración impropia.](../../assets/books/anm/C28/C28-F05.svg){#fig-anm-c28-f05 fig-alt="Acumuladas de t²+1/(n+1) desde0: error x/(n+1), bajo una cota común1/(n+1) en[0,1]. Para constantes1/(n+1) integradas en[0,n+1], la altura baja y la longitud crece; el área queda1. Se representan integrales propias finitas de cada etapa, sin introducir integración impropia."}
 
 ### Microcontroles
 
@@ -1176,11 +1180,12 @@ Sobre la recta, las funciones constantes $f_n=1/(n+1)$ convergen uniformemente a
 La integrabilidad basta para construir acumulaciones y hacerlas Lipschitz, por una cota absoluta de la tasa. Bajo uniformidad de las integrandas, sus acumuladas convergen uniformemente por la longitud común. Si las integrandas son además continuas, R1 hace continuo al destino y C24 identifica las derivadas de sus acumuladas con las tasas en el interior, y relativamente en los bordes. Si sólo son integrables, la recuperación de la tasa exige continuidad en el centro considerado. Un pico aislado puede cambiar la tasa sin cambiar ninguna acumulación; un salto puede producir una esquina sin derivada. La continuidad de la acumulada y la identificación de su derivada tienen por tanto hipótesis diferentes.
 
 </details>
+
 ## 28.6. Derivadas uniformes y un valor de anclaje
 
 []{#MA-SEC-ANM-01-028-006}
 
-La derivada divide incrementos por distancias pequeñas. Un error de valores uniformemente pequeño puede amplificarse sin límite tras esa división. El control adecuado actúa sobre las derivadas.
+Un error pequeño de valores no controla por sí solo los cocientes incrementales: al dividir por una distancia que tiende a cero puede amplificarse. Para derivar el límite buscaremos primero un error de incrementos que sea proporcional a esa distancia. La convergencia uniforme de las derivadas permitirá obtenerlo mediante Lagrange; un valor de anclaje fijará las constantes.
 
 **R6 — Teorema de convergencia de derivadas.** Sean $a<b$, $f_n$ continuas en $[a,b]$ y derivables en $(a,b)$. Supongamos que $g_n=f_n'$ converge uniformemente a $g$ en $(a,b)$ y que, para un $c\in[a,b]$, $f_n(c)\to\lambda$. Entonces existe $f$ con $f_n\to f$ uniformemente en $[a,b]$, $f(c)=\lambda$ y $f'=g$ en $(a,b)$. No se supone continuidad de las derivadas.
 
@@ -1198,7 +1203,7 @@ Fijamos $n,x,y$ y pasamos $m\to\infty$. C10/C13 conservan orden y C27 da $E_m\to
 
 $$|(f-f_n)(y)-(f-f_n)(x)|\le E_n|y-x|.$$
 
-No se afirmó que $f$ ya fuera derivable. Esta desigualdad de incrementos se obtiene antes de cualquier cociente nuevo.
+El paso al límite ha producido una estimación entre incrementos de $f$ y de una fila fija sin atribuir todavía derivada a $f$. El factor $|y-x|$ es lo que permitirá dividir después sin perder la cota de error.
 
 **Identificar la derivada.** Fijamos $x_0\in(a,b)$ y $\varepsilon>0$. Elegimos una fila $n$ con $E_n<\varepsilon/3$. Para cualquier $x\ne x_0$ admisible, la desigualdad anterior controla en $E_n$ la diferencia de cocientes de $f$ y $f_n$. La derivabilidad de esa fila fija aporta un radio para el segundo error. Finalmente,
 
@@ -1412,11 +1417,12 @@ Explica por qué R6 no necesita continuidad de $g_n$ ni de $g$.
 Lagrange exige continuidad de las funciones comparadas en el segmento y derivabilidad en su interior, pero no continuidad de sus derivadas. R6 aplica esa herramienta a diferencias de filas y usa una cota uniforme de las diferencias de derivadas. La identificación final del destino se obtiene mediante cocientes de una fila fija y la cota proporcional de incrementos. No se integra $g$ ni se presupone que sea una tasa continua o integrable. Si las derivadas tienen extensiones continuas y convergen uniformemente, el teorema de continuidad añade esa regularidad al destino como una conclusión adicional.
 
 </details>
+
 ## 28.7. Lo que la convergencia de valores no controla
 
 []{#MA-SEC-ANM-01-028-007}
 
-La uniformidad de valores conserva continuidad, pero no derivabilidad. Tampoco basta saber que existen las derivadas puntuales de las filas y que éstas tienen un límite puntual.
+Los ejemplos siguientes separan las premisas del teorema de derivadas. La uniformidad de valores puede dejar un límite no derivable; incluso cuando éste sea derivable, el límite puntual de las derivadas puede ser distinto. También puede fallar la construcción de los valores si falta el anclaje.
 
 **R7 — Tres pruebas de frontera.** Sea $k=n+1$ y
 
@@ -1434,9 +1440,9 @@ C27 da convergencia uniforme de valores a cero con envolvente $1/(2\sqrt k)$. En
 
 **Un control local no es global.** Para $f_n(x)=x/(n+1)$ en $\mathbb R$, las derivadas convergen uniformemente a cero y $f_n(0)=0$. Los valores convergen uniformemente en cada segmento acotado, pero no en toda la recta: en $x=n+1$ el error es uno. El factor $|x-c|$ de R6 no tiene barrera global.
 
-La operación de derivar no es continua respecto de la sola norma de valores: $h_n$ es una sucesión de errores pequeños cuyas derivadas no se acercan uniformemente a cero. La integral en un marco fijo sí tiene la cota de R4. Los operadores requieren presupuestos diferentes; no basta que sus fórmulas se parezcan a un paso al límite.
+Los errores $h_n$ tienden a cero uniformemente, pero sus derivadas conservan valor uno en cero. Derivar no es, por tanto, una operación continua respecto de la sola norma de valores. La integración en el marco fijo sí tiene la estimación de R4. Para cada operación ha sido necesario identificar el presupuesto de error que su prueba utiliza.
 
-![Raíces suavizadas sqrt(x²+1/k²) convergen uniformemente a|x|, que tiene esquina en0. Para h_n=x/(1+kx²), las derivadas son(1−kx²)/(1+kx²)² y conservan valor1 en0; su destino puntual vale0 fuera de0. Se muestra la ventana\[−1,1\] de reglas definidas sobre todaR. No se concluye uniformidad de derivadas.](../../assets/books/anm/C28/C28-F07.svg){#fig-anm-c28-f07 fig-alt="Raíces suavizadas sqrt(x²+1/k²) convergen uniformemente a|x|, que tiene esquina en0. Para h_n=x/(1+kx²), las derivadas son(1−kx²)/(1+kx²)² y conservan valor1 en0; su destino puntual vale0 fuera de0. Se muestra la ventana\[−1,1\] de reglas definidas sobre todaR. No se concluye uniformidad de derivadas."}
+![Raíces suavizadas sqrt(x²+1/k²) convergen uniformemente a|x|, que tiene esquina en0. Para h_n=x/(1+kx²), las derivadas son(1−kx²)/(1+kx²)² y conservan valor1 en0; su destino puntual vale0 fuera de0. Se muestra la ventana\[−1,1\] de reglas definidas sobre todaR. No se concluye uniformidad de derivadas.](../../assets/books/anm/C28/C28-F07.svg){#fig-anm-c28-f07 fig-alt="Raíces suavizadas sqrt(x²+1/k²) convergen uniformemente a|x|, que tiene esquina en0. Para h_n=x/(1+kx²), las derivadas son(1−kx²)/(1+kx²)² y conservan valor1 en0; su destino puntual vale0 fuera de0. Se muestra la ventana[−1,1] de reglas definidas sobre todaR. No se concluye uniformidad de derivadas."}
 
 ### Microcontroles
 
@@ -1638,11 +1644,12 @@ Construye un ejemplo en $[0,1]\cup[2,3]$ donde la ancla en la primera pieza no c
 En $X=[0,1]\cup[2,3]$, definimos $f_n=0$ en la primera componente y $f_n=n$ en la segunda. Son continuas relativamente al dominio y derivables con derivada cero en los interiores de ambas piezas. Las derivadas convergen uniformemente a cero y el anclaje $f_n(0)=0$ es exacto. Sin embargo cualquier columna de la segunda componente diverge. El segmento que une una entrada de cada pieza atraviesa $(1,2)$, donde las funciones no están dadas, así no puede aplicarse Lagrange para transportar el dato inicial. Se necesita una ancla que fije la constante de cada componente.
 
 </details>
+
 ## 28.8. Certificar varias operaciones a la vez
 
 []{#MA-SEC-ANM-01-028-008}
 
-Los teoremas anteriores permiten convertir una aproximación en una cadena de certificados, indicando para cada operación su dominio, existencia y cota.
+En un ejemplo polinómico podemos calcular a la vez los errores de valores, derivadas y acumulaciones. Esto permitirá comparar las cotas generales con los errores exactos y comprobar qué exige una tolerancia estricta en la frontera de un corte.
 
 **R8 — Un paquete explícito.** En $[-1,1]$, sean
 
@@ -1664,11 +1671,11 @@ Los extremos de $u'$ son los valores de la extensión continua; coinciden con de
 
 **Un número finito de derivadas.** Para $r\ge1$ fijo, supongamos filas $C^r$ en un mismo segmento, convergencia uniforme de sus derivadas de orden $r$ y convergencia de los valores de órdenes $0,\ldots,r-1$ en un anclaje común. Aplicamos R6 primero a las filas de orden $r-1$, después a las de orden $r-2$ y así un número finito de veces. Se construyen límites uniformes para todos los órdenes y se identifica cada derivada con el siguiente. No se usa una serie infinita ni Taylor para justificar esta inducción finita. Para $r=0$ sólo queda convergencia uniforme de valores.
 
-**Guía de decisiones.** Para continuidad, una fila fija dentro de una banda. Para integrar, existencia por Darboux y longitud finita multiplicando el error. Para derivar, control uniforme de derivadas, segmentos admisibles y anclaje, seguido de error de incrementos proporcional a distancia. En cada caso se prueba la existencia del objeto final antes de escribir la igualdad de operaciones.
+Las pruebas utilizan tres controles distintos: una fila fija dentro de la banda para conservar continuidad; brechas de Darboux y longitud finita para integrar; incrementos proporcionales a la distancia y un anclaje para derivar. En cada caso, la existencia del destino se establece antes de identificar las operaciones en el límite.
 
-C29 usará estas herramientas sobre sucesiones de sumas parciales. Aquí sólo se trabajó con familias de funciones y con operaciones finitas: ni el criterio M de Weierstrass ni radios de convergencia han sido utilizados por anticipado.
+Estos argumentos se han aplicado a familias de funciones. Cuando las filas sean sumas parciales de una serie, habrá que demostrar las hipótesis sobre esa familia antes de integrar o derivar término a término; aún no se han usado el criterio M ni los radios de convergencia.
 
-![En el paquete polinómico dyádico sobre\[−1,1\], los errores exactos de valores y derivadas son2^(−n); el de acumulación es2^(−n)/2. Con tolerancia estricta1/8 para derivadas, n=3 es frontera y n=4 es el primer índice válido. Las curvas polinómicas y las envolventes provienen de fórmulas probadas.](../../assets/books/anm/C28/C28-F08.svg){#fig-anm-c28-f08 fig-alt="En el paquete polinómico dyádico sobre\[−1,1\], los errores exactos de valores y derivadas son2^(−n); el de acumulación es2^(−n)/2. Con tolerancia estricta1/8 para derivadas, n=3 es frontera y n=4 es el primer índice válido. Las curvas polinómicas y las envolventes provienen de fórmulas probadas."}
+![En el paquete polinómico dyádico sobre\[−1,1\], los errores exactos de valores y derivadas son2^(−n); el de acumulación es2^(−n)/2. Con tolerancia estricta1/8 para derivadas, n=3 es frontera y n=4 es el primer índice válido. Las curvas polinómicas y las envolventes provienen de fórmulas probadas.](../../assets/books/anm/C28/C28-F08.svg){#fig-anm-c28-f08 fig-alt="En el paquete polinómico dyádico sobre[−1,1], los errores exactos de valores y derivadas son2^(−n); el de acumulación es2^(−n)/2. Con tolerancia estricta1/8 para derivadas, n=3 es frontera y n=4 es el primer índice válido. Las curvas polinómicas y las envolventes provienen de fórmulas probadas."}
 
 ### Microcontroles
 

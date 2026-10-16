@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 8 — Subsucesiones, acumulación y Bolzano–Weierstrass
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,37 +28,35 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-8)
 
-Una sucesión puede permanecer entre dos barreras y seguir oscilando. El capítulo anterior obtuvo convergencia cuando había además una dirección monótona; ahora preguntaremos qué se puede rescatar de la sola acotación. La respuesta requerirá cambiar el objeto que seguimos: elegiremos algunos términos, conservando su orden, y construiremos una sucesión nueva.
+La sucesión $(-1)^n$ permanece entre $-1$ y $1$, pero ninguna de sus colas se acerca a un único número. Si conservamos sólo los índices impares, todos los valores elegidos son $-1$. La acotación no dio convergencia a la sucesión entera; al seleccionar términos aparece, sin embargo, un comportamiento estable que la oscilación ocultaba.
 
-Primero precisaremos qué significa extraer y qué ocurre con el índice original. Después relacionaremos los destinos de las extracciones con la idea de volver cerca de un punto. Esa preparación permitirá demostrar Bolzano–Weierstrass: toda sucesión real acotada contiene una subsucesión convergente. El argumento hará visible dónde interviene la completitud y por qué necesitamos conservar infinitos índices en cada paso.
+Buscamos hasta dónde puede llevarse esa selección en una sucesión real acotada cualquiera. Los términos elegidos deberán mantener su orden y avanzar indefinidamente en los índices originales. Para encontrar un destino sin conocerlo de antemano, iremos estrechando intervalos que todavía reciban infinitos índices; los intervalos cerrados encajados de C03 proporcionarán después el punto al que dirigir la extracción.
 
-Usaremos la propiedad arquimediana y los intervalos cerrados encajados de C03, las nociones locales de C04 y la definición, unicidad y reglas elementales de convergencia de C06. Las sucesiones mantienen dominio $\mathbb N=\{0,1,2,\ldots\}$ y codominio $\mathbb R$. La extracción no añade un término final ni convierte una muestra finita en prueba de un comportamiento infinito.
+Conservamos $\mathbb N=\{0,1,2,\ldots\}$. Las bolas y los puntos de acumulación de C04 permitirán relacionar este problema de sucesiones con los conjuntos de valores, y las pruebas de convergencia seguirán usando la definición y las reglas de C06.
 
 ## 8.1. Seleccionar términos sin perder el orden
 
 []{#MA-SEC-ANM-01-008-001}
 
-La sucesión $a_n=(-1)^n$ no se acerca a un único número: alterna entre uno y menos uno. Sin embargo, si leemos sólo los términos de índice impar, obtenemos una sucesión constante igual a menos uno. Hemos descartado términos, pero conservamos el orden en que aparecían. Esa operación permite encontrar un comportamiento estable dentro de una sucesión que no lo tiene globalmente.
+Al leer los términos impares de $a_n=(-1)^n$, las posiciones originales $1,3,5,\ldots$ pasan a ocupar las nuevas posiciones $0,1,2,\ldots$. El término original $a_5=-1$, por ejemplo, queda en la posición nueva $2$. Los valores conservan su altura; los índices necesitan una regla de traducción.
 
-Hay dos preguntas distintas al escribir el primer término de la nueva sucesión: qué posición ocupa ahora y qué posición ocupaba antes. En el ejemplo, la posición nueva cero corresponde a la posición original uno; la nueva uno, a la original tres. La regla que relaciona ambas es $\varphi(k)=2k+1$.
+Esa regla es $\varphi(k)=2k+1$: $\varphi(0)=1$, $\varphi(2)=5$ y $b_2=a_{\varphi(2)}=-1$. El índice nuevo y el original son naturales, mientras que la evaluación produce un término real.
 
 **Definición.** Sea $a:\mathbb N\to\mathbb R$. Una **subsucesión** de $a$ es una sucesión $b=a\circ\varphi$, donde $\varphi:\mathbb N\to\mathbb N$ es estrictamente creciente. Así, $b_k=a_{\varphi(k)}$, y $i<j$ implica $\varphi(i)<\varphi(j)$.
 
 Conservamos $\mathbb N=\{0,1,2,\ldots\}$. El índice nuevo $k$ y el índice original $\varphi(k)$ son naturales; $a_{\varphi(k)}$ es un real. Cuando un natural aparece en una expresión real como $1/(k+1)$, se entiende su imagen mediante la inclusión canónica. La coincidencia de numerales no identifica los objetos de ambos sistemas.
 
-El crecimiento estricto impide repetir índices y volver hacia atrás. Permite saltar tantos términos como queramos, e incluso no saltar ninguno: la identidad $\varphi(k)=k$ produce la propia sucesión. También permite repetir valores; en nuestro ejemplo todos los índices elegidos son diferentes y todas las evaluaciones valen menos uno. Por otra parte, la regla $\varphi(k)=0$ produce una función compuesta constante, pero no es un selector de subsucesión: se detiene en un único índice.
+El crecimiento estricto impide reutilizar un índice o volver hacia atrás. Se pueden saltar términos o conservarlos todos: la identidad $\varphi(k)=k$ produce la propia sucesión. También $\varphi(k)=k+3$ es un selector, pues $\varphi(k+1)=\varphi(k)+1$; da la cola desde $3$ reindexada desde cero. En cambio, $\varphi(k)=0$ define una composición constante sin ser selector: usa siempre el mismo índice. En la selección impar los índices son distintos y los valores coinciden, de modo que el requisito de crecimiento afecta a las posiciones elegidas.
 
 **Lema de los índices.** Todo selector estrictamente creciente satisface $\varphi(k)\ge k$. Además, la composición de dos selectores estrictamente crecientes vuelve a serlo.
 
 Para la primera afirmación usamos inducción. En cero, $\varphi(0)\ge0$ porque su valor es natural. Si $\varphi(k)\ge k$, el crecimiento estricto entre naturales da $\varphi(k+1)\ge\varphi(k)+1\ge k+1$. La comparación de índices consecutivos basta para acreditar crecimiento estricto universal: si $i<j$, se encadenan las desigualdades desde $i$ hasta $j$. Para la composición, si $i<j$, entonces $\psi(i)<\psi(j)$, y aplicar el crecimiento de $\varphi$ da $\varphi(\psi(i))<\varphi(\psi(j))$.
 
-Este lema tendrá una utilidad concreta: llegar lejos en el índice nuevo garantiza haber llegado al menos igual de lejos en el original. Y si extraemos de una extracción, la función resultante sigue siendo una subsucesión de la inicial, pues $b_{\psi(j)}=a_{(\varphi\circ\psi)(j)}$. El orden de la composición está determinado por el recorrido: primero $j$ pasa a $\psi(j)$ y después a $\varphi(\psi(j))$.
+La desigualdad $\varphi(k)\ge k$ asegura que avanzar en la nueva sucesión nos lleva al menos igual de lejos en la original. Si extraemos de una extracción, $b_{\psi(j)}=a_{(\varphi\circ\psi)(j)}$: primero se recorre $j\mapsto\psi(j)$ y después $\psi(j)\mapsto\varphi(\psi(j))$. Para $\varphi(k)=2k+1$ y $\psi(j)=3j$, el selector compuesto es $6j+1$.
 
-La figura siguiente mantiene separados esos recorridos y las alturas seleccionadas.
+![La selección impar cambia el índice horizontal y conserva la altura menos uno. Los índices elegidos son distintos, aunque los valores se repiten.](../../assets/books/anm/revision-20261016/C08/ANM-C08-F01_LEGIBLE_v01.svg){#fig-anm-c08-f01 fig-alt="Dos gráficas muestran la sucesión alternante y su selección impar constante menos uno; una tabla relaciona los índices nuevos cero a tres con uno, tres, cinco y siete."}
 
-![La selección impar cambia el índice horizontal y conserva la altura menos uno. Los índices elegidos son distintos, aunque los valores se repiten.](../../assets/books/anm/C08/C08-F01.svg){#fig-anm-c08-f01 fig-alt="La selección impar cambia el índice horizontal y conserva la altura menos uno. Los índices elegidos son distintos, aunque los valores se repiten."}
-
-Al trasladar los puntos impares a la gráfica de $b$, cambia su coordenada horizontal: el punto original $(3,-1)$ corresponde al punto nuevo $(1,-1)$. La altura se conserva. Ninguna de las dos gráficas contiene segmentos entre términos; ambas representan funciones de dominio natural.
+En la [figura 8.1](#fig-anm-c08-f01), el punto original $(3,-1)$ corresponde al nuevo $(1,-1)$, y $(5,-1)$ pasa a $(2,-1)$. Las dos gráficas conservan puntos discretos, sin segmentos entre posiciones naturales.
 
 ### Antes de seguir
 
@@ -247,27 +245,28 @@ Construye dos subsucesiones diferentes de una misma sucesión que tengan exactam
 Toma $a_n=(-1)^n$, la identidad $\varphi(k)=k$ y el selector $\psi(k)=k+1$. Resultan $b_k=(-1)^k$ y $c_k=(-1)^{k+1}$. Ambos tienen imagen $\{-1,1\}$ porque ambas paridades aparecen, pero $b_0=1$ y $c_0=-1$. Por tanto las funciones son distintas. Comparar las imágenes elimina el orden y no permite recuperar la función.
 
 </details>
+
 ## 8.2. Lo que conserva una subsucesión
 
 []{#MA-SEC-ANM-01-008-002}
 
-Si una ventana alrededor de $L$ contiene todos los términos desde cierto índice, cualquier selección que avance indefinidamente terminará dentro de esa ventana. El lema anterior convierte esta lectura geométrica en una prueba con los dos índices bien separados.
+Una ventana que contiene una cola completa conserva el control al descartar términos, siempre que los índices seleccionados sigan avanzando. La desigualdad del lema anterior permite transportar el corte de convergencia al dominio nuevo.
 
 **Proposición.** Si $a_n\to L$ y $\varphi$ es un selector estrictamente creciente, entonces $a_{\varphi(k)}\to L$.
 
 Fijemos $\varepsilon>0$. La convergencia original proporciona $N\in\mathbb N$ tal que $n\ge N$ implica $|a_n-L|<\varepsilon$. Para verificar la definición en el dominio nuevo, tomamos $K=N$. Si $k\ge K$, entonces $\varphi(k)\ge k\ge N$, por lo que $|a_{\varphi(k)}-L|<\varepsilon$. Se ha obtenido un umbral válido para cada tolerancia, y eso demuestra la proposición.
 
-No afirmamos que $K=N$ sea el menor umbral posible: un selector puede avanzar mucho más rápido. Lo que importa es que el umbral elegido funciona para todos los índices nuevos posteriores. La prueba tampoco exige que los valores seleccionados sean distintos.
+El corte transportado es suficiente, aunque un selector rápido puede haber omitido antes todos los términos que incumplían la tolerancia. Tampoco necesitamos que los valores seleccionados sean distintos.
 
-Como primer uso, volvamos a $(-1)^n$. La selección par es constante uno y la impar es constante menos uno. Si la sucesión original tuviera límite $L$, ambas selecciones convergerían a $L$. La unicidad del límite demostrada en §6.4 obligaría a que uno fuese igual a menos uno, una contradicción. Dos destinos diferentes de subsucesiones bastan para descartar la convergencia global.
+En $(-1)^n$, la selección par converge a $1$ y la impar a $-1$. Un límite global $L$ sería límite de ambas por la proposición; la unicidad de C06 §6.4 obligaría a $1=L=-1$. Queda así descartada la convergencia global mediante dos destinos incompatibles.
 
-La existencia de una sola subsucesión convergente deja abierta la conducta de los términos descartados. Consideremos ahora la función definida, para cada $j\in\mathbb N$, por $a_{2j}=1/(j+1)$ y $a_{2j+1}=2$. La paridad determina un único valor en cada índice. Su subsucesión par $b_k=1/(k+1)$ converge a cero, mientras que la impar es constante dos; de nuevo la sucesión completa carece de límite real.
+Una única selección convergente deja sin controlar lo descartado. Definamos $a_{2j}=1/(j+1)$ y $a_{2j+1}=2$ para cada $j\in\mathbb N$. La paridad asigna un único valor en todo el dominio. La selección par $b_k=1/(k+1)$ converge a cero y la impar es constante dos, por lo que la sucesión completa tampoco tiene límite real.
 
-![La ventana de radio medio captura la selección par desde k=2, pero los términos impares de la sucesión original permanecen en dos. La frontera no pertenece a la ventana.](../../assets/books/anm/C08/C08-F02.svg){#fig-anm-c08-f02 fig-alt="La ventana de radio medio captura la selección par desde k=2, pero los términos impares de la sucesión original permanecen en dos. La frontera no pertenece a la ventana."}
+![La ventana de radio medio captura la selección par desde k=2, pero los términos impares de la sucesión original permanecen en dos. La frontera no pertenece a la ventana.](../../assets/books/anm/C08/C08-F02.svg){#fig-anm-c08-f02 fig-alt="La gráfica original alterna recíprocos y doses; otra gráfica reindexa los recíprocos. Dos líneas de frontera señalan radio medio, con el término de índice uno en el borde y el corte dos dentro."}
 
-Para la ventana dibujada, de radio $1/2$, el término $b_1=1/2$ está en la frontera y no satisface la desigualdad estricta. Desde $k=2$, en cambio, $b_k\le1/3<1/2$. En la gráfica original aún aparecen términos iguales a dos después de cualquier corte. El sombreado muestra una tolerancia concreta; la convergencia de $b$ se debe al argumento para toda tolerancia de C06, no a la cantidad de puntos visibles.
+En la [figura 8.2](#fig-anm-c08-f02), la ventana de radio $1/2$ excluye $b_1=1/2$, cuyo error está en la frontera. Para $k\ge2$, $b_k\le1/3<1/2$, así que el corte $K=2$ funciona en la selección. En la sucesión original siguen apareciendo doses después de cualquier corte. La convergencia de $b$ exige además el control para todas las tolerancias ya demostrado en C06.
 
-También se conservan cotas: si $|a_n|\le M$ para todo $n$, sustituir $n$ por $\varphi(k)$ da $|a_{\varphi(k)}|\le M$. Si $a$ es no decreciente, el orden $\varphi(k)<\varphi(k+1)$ da $a_{\varphi(k)}\le a_{\varphi(k+1)}$; una subsucesión de una sucesión no creciente conserva de la misma manera esa dirección. Ninguna de estas afirmaciones obliga a que la sucesión original tenga las propiedades de una selección particular.
+También se conservan cotas: si $|a_n|\le M$ para todo $n$, sustituir $n$ por $\varphi(k)$ da $|a_{\varphi(k)}|\le M$. Si $a$ es no decreciente, el orden $\varphi(k)<\varphi(k+1)$ da $a_{\varphi(k)}\le a_{\varphi(k+1)}$; una subsucesión de una sucesión no creciente conserva de la misma manera esa dirección. Ninguna de estas afirmaciones obliga a que la sucesión original tenga las propiedades de una selección particular. Por ejemplo, una cota global $7$ sigue dando $|a_{\varphi(k)}|\le7$ en todos los índices nuevos.
 
 ### Antes de seguir
 
@@ -471,11 +470,12 @@ Sea $a$ monótona y supón que una subsucesión converge a $L\in\mathbb R$. Demu
 Supón primero que $a$ es no decreciente. Para un índice fijo $n$, los índices seleccionados son eventualmente mayores que $n$, por lo que $a_n\le a_{\varphi(k)}$ eventualmente. El orden de límites de C06 da $a_n\le L$. Dado $\varepsilon>0$, toma un término seleccionado $a_{\varphi(K)}>L-\varepsilon$ y pon $N=\varphi(K)$. Para $n\ge N$, la monotonía y la cota recién probada dan $L-\varepsilon<a_N\le a_n\le L$, así que $|a_n-L|<\varepsilon$. Si $a$ es no creciente, aplica el argumento a $-a$, cuya selección converge a $-L$, y cambia de signo. La dirección monótona propaga a toda una cola la información de un solo término seleccionado.
 
 </details>
+
 ## 8.3. Regresar cerca de un punto
 
 []{#MA-SEC-ANM-01-008-003}
 
-La sucesión par-impar anterior regresa cerca de cero después de cualquier corte, aunque nunca quede completamente atrapada allí. Conviene dar un nombre a ese regreso persistente. Una visita aislada al comienzo no basta: debe ser posible exigir al mismo tiempo cercanía y un índice arbitrariamente tardío.
+La selección par del ejemplo anterior puede volver cerca de cero después de cualquier corte, mientras los términos impares siguen fuera de la ventana. Esa persistencia pide cercanía y un índice tardío a la vez; una visita inicial aislada no la satisface.
 
 **Definición.** Un real $L$ es un **punto de acumulación de la sucesión** $a$ si
 
@@ -484,13 +484,13 @@ $$
 |a_n-L|<\varepsilon.
 $$
 
-Diremos también *punto de acumulación secuencial* para distinguirlo de la acumulación de un conjunto. La condición significa que cada bola $B(L,\varepsilon)$ contiene términos con índices arbitrariamente grandes. Equivale a que el conjunto de índices de visita sea infinito: un conjunto finito de índices queda antes de algún corte, mientras que un conjunto infinito no cabe en un prefijo finito.
+Llamaremos también *punto de acumulación secuencial* a este $L$ para distinguirlo de la acumulación de un conjunto. Cada bola $B(L,\varepsilon)$ recibe infinitos índices: si no hubiera visitas, el corte $0$ ya impediría encontrarlas; si hubiera una cantidad finita no vacía, el corte $1+\max E$, para ese conjunto $E$ de índices de visita, las dejaría atrás. Si los índices son infinitos, no pueden estar contenidos en ningún prefijo finito y hay uno después de cada corte.
 
-En la convergencia, después de fijar $\varepsilon$ buscamos un corte a partir del cual **todos** los términos entren. Aquí, dados $\varepsilon$ y un corte cualquiera, buscamos **algún** término posterior dentro. La diferencia permite que una sucesión tenga varios puntos de acumulación secuencial, como sucede con uno y menos uno para $(-1)^n$.
+La convergencia exige, para cada tolerancia, un corte que controle **todos** los términos posteriores. La acumulación secuencial exige **alguno** después de cada corte, permitiendo varios destinos: $1$ y $-1$ lo son para $(-1)^n$.
 
 **Proposición.** Un real $L$ es punto de acumulación secuencial de $a$ si y sólo si existe una subsucesión de $a$ que converge a $L$.
 
-La construcción debe satisfacer dos obligaciones que no se resuelven por separado: los errores han de reducirse y los índices han de avanzar. Para forzar la primera utilizaremos $1/(k+1)$; para la segunda, el índice elegido antes más uno.
+Podemos reunir las visitas persistentes en una selección convergente si coordinamos dos exigencias. La escala $1/(k+1)$ hará pequeños los errores y el corte posterior al índice elegido impedirá detenernos en una misma posición.
 
 Supongamos primero que $L$ cumple la definición. El conjunto de índices con $|a_n-L|<1$ es no vacío; sea $n_0$ su mínimo. Una vez elegido $n_k$, la definición aplicada al corte $n_k+1$ y al radio $1/(k+2)$ garantiza que el conjunto
 
@@ -500,15 +500,15 @@ $$
 
 es no vacío. Definimos $n_{k+1}$ como su mínimo. El buen orden de los naturales permite continuar la recursión, y las desigualdades $n_{k+1}>n_k$ convierten $\varphi(k)=n_k$ en un selector estrictamente creciente. Por construcción, $|a_{n_k}-L|<1/(k+1)$ para todo $k$.
 
-Queda comprobar la convergencia, porque una escala escrita no sustituye su definición. Dado $\varepsilon>0$, la propiedad arquimediana de C03 permite elegir $K$ con $1/(K+1)<\varepsilon$. Si $k\ge K$, entonces $|a_{n_k}-L|<1/(k+1)\le1/(K+1)<\varepsilon$. La subsucesión construida converge a $L$.
+Para comprobar la convergencia, recibimos $\varepsilon>0$ y tomamos $K=\lfloor1/\varepsilon\rfloor$, con el piso positivo construido en C06. Si $k\ge K$, entonces $K+1>1/\varepsilon$ y $|a_{n_k}-L|<1/(k+1)\le1/(K+1)<\varepsilon$. El corte responde a la tolerancia y controla toda la selección desde él.
 
 Recíprocamente, supongamos que $a_{\varphi(k)}\to L$. Dados $\varepsilon>0$ y $N\in\mathbb N$, sea $K$ un umbral para esa subsucesión. Tomamos $k=\max\{K,N\}$ y $n=\varphi(k)$. El lema de §8.1 da $n\ge k\ge N$, y la convergencia da $|a_n-L|<\varepsilon$. Esto cumple exactamente la definición de acumulación secuencial.
 
-Para ver la construcción en acción, usemos $a_{2j}=1/(j+1)$, $a_{2j+1}=2$ y $L=0$. La regla de mínimos produce $n_0=2$, $n_1=4$, $n_2=6$ y, en general, $n_k=2(k+1)$. En efecto, el error correspondiente es $1/(k+2)<1/(k+1)$; los índices pares anteriores que aún pudieran superar el corte no cumplen la desigualdad estricta. El término elegido no tiene por qué ser el primero después del corte.
+En $a_{2j}=1/(j+1)$, $a_{2j+1}=2$ y $L=0$, el primer mínimo es $n_0=2$: $a_0=1$ y $a_1=2$ fallan el error menor que uno, mientras $a_2=1/2$ lo cumple. Siguen $n_1=4$, $n_2=6$ y, por inducción, $n_k=2(k+1)$. Para el paso $k$, el error elegido es $1/(k+2)<1/(k+1)$; el par anterior tiene error exactamente $1/(k+1)$ y los impares valen $2$. La frontera estricta explica por qué el mínimo puede ir más allá del corte impuesto.
 
-![El corte impuesto y el índice elegido son diferentes. Cada paso conserva el avance temporal y obtiene un error menor que la tolerancia solicitada.](../../assets/books/anm/C08/C08-F04.svg){#fig-anm-c08-f04 fig-alt="El corte impuesto y el índice elegido son diferentes. Cada paso conserva el avance temporal y obtiene un error menor que la tolerancia solicitada."}
+![El corte impuesto y el índice elegido son diferentes. Cada paso conserva el avance temporal y obtiene un error menor que la tolerancia solicitada.](../../assets/books/anm/C08/C08-F04.svg){#fig-anm-c08-f04 fig-alt="Tres pasos de extracción muestran cortes cero, tres y cinco, y elecciones dos, cuatro y seis; los valores medio, tercio y cuarto quedan estrictamente dentro de sus tolerancias."}
 
-El mínimo natural elimina ambigüedad en la definición de cada índice. No proporciona por sí solo un algoritmo efectivo: decidir una condición sobre reales dados abstractamente puede requerir información que no se ha especificado. La proposición es una construcción matemática por recursión y existencia de testigos.
+El mínimo natural fija cada elección sin ambigüedad. La construcción usa recursión y existencia de testigos; no garantiza un algoritmo efectivo para decidir las condiciones sobre reales abstractos.
 
 ### Antes de seguir
 
@@ -708,47 +708,40 @@ Sea $m\ge2$ natural. Prueba que el conjunto de puntos secuenciales de $a$ es la 
 Un punto secuencial de alguna $b^{(r)}$ es límite de una extracción de ella; componiendo selectores resulta límite de una extracción de $a$, así que es punto secuencial de $a$. Para la inclusión inversa, sea $L$ punto secuencial de $a$ y supón que no lo es de ninguna $b^{(r)}$. Para cada residuo existen $\varepsilon_r>0$ y $K_r$ tales que $|b^{(r)}_k-L|\ge\varepsilon_r$ si $k\ge K_r$. Toma $\varepsilon=\min_r\varepsilon_r>0$ y $N=m\max_r K_r$. La división euclídea y el argumento de cortes del ejercicio 8.7 muestran que todo $n\ge N$ tiene error al menos $\varepsilon$. Esto contradice que $L$ sea punto secuencial. La finitud de residuos permite obtener un radio positivo común.
 
 </details>
+
 ## 8.4. Puntos de una sucesión y puntos de un conjunto
 
 []{#MA-SEC-ANM-01-008-004}
 
-Al pasar de una sucesión a su imagen olvidamos cuándo aparece cada valor y cuántas veces se repite. Esa pérdida de información afecta a la acumulación. La constante $c_n=0$ tiene cero como punto de acumulación secuencial, pero el conjunto $\{0\}$ no tiene puntos de acumulación: ninguna bola perforada alrededor de cero encuentra un valor distinto del centro.
+La imagen olvida cuándo aparece un valor y cuántas veces se repite. En la constante $c_n=0$, cero aparece después de cualquier corte y es punto secuencial. Su imagen $\{0\}$ no tiene acumulación como conjunto: alrededor de cero, ninguna bola perforada contiene un valor de la imagen; para un centro $x\ne0$, el radio $|x|/2>0$ excluye el único valor $0$. Así quedan descartados todos los centros reales.
 
-Recordemos las definiciones de C04 para un conjunto $A\subseteq\mathbb R$. Un punto $L$ es **adherente** a $A$ si toda bola $B(L,r)$, con $r>0$, corta a $A$; es un **punto de acumulación de $A$** si toda esa bola contiene un punto de $A$ distinto de $L$. La segunda condición permite que $L$ pertenezca o no a $A$, pero nunca acepta al propio centro como testigo.
-
-### Adherencia y sucesiones de puntos del conjunto
+Para un conjunto $A\subseteq\mathbb R$, C04 llama **adherente** a un punto $L$ si toda bola $B(L,r)$, $r>0$, corta a $A$, y **punto de acumulación de $A$** si cada bola contiene un punto de $A$ distinto de $L$. La acumulación puede ocurrir dentro o fuera del conjunto; la diferencia está en que el testigo nunca puede ser el propio centro.
 
 **Proposición.** Un real $L$ es adherente a $A$ si y sólo si existe una sucesión $x:\mathbb N\to\mathbb R$ con valores en $A$ que converge a $L$.
 
 Si $L$ es adherente, cada conjunto $A\cap B(L,1/(k+1))$ es no vacío. Elegimos un punto $x_k$ en cada uno. Entonces $|x_k-L|<1/(k+1)$, y el mismo control arquimediano usado en §8.3 prueba que $x_k\to L$. En sentido inverso, si $x_k\in A$ y $x_k\to L$, una bola de radio $r>0$ contiene todos los términos desde un umbral; en particular contiene uno de ellos y corta a $A$. Para $A=\varnothing$, ambas afirmaciones son falsas: no hay punto adherente ni una función de dominio no vacío con valores allí.
 
-La elección de estos puntos reales necesita una precisión fundacional. Trabajamos en el marco clásico con elección: para el conjunto $A$ fijado, podemos fijar una función $c$ que asigna a cada subconjunto no vacío $S\subseteq A$ un elemento $c(S)\in S$. Las elecciones anteriores pueden escribirse $x_k=c(A\cap B(L,1/(k+1)))$. Usaremos la misma base cuando el conjunto admisible dependa de elecciones previas. No estamos tomando un mínimo real, que puede no existir, ni deduciendo esta elección de la completitud. En §8.3 elegíamos mínimos de conjuntos de **índices naturales**; allí basta su buen orden.
-
-### Acumulación y exclusión del centro
+Para precisar esas elecciones de puntos reales, trabajamos en el marco clásico con elección. Fijado $A$, disponemos de una función $c$ que asigna a cada subconjunto no vacío $S\subseteq A$ un elemento $c(S)\in S$. Podemos escribir $x_k=c(A\cap B(L,1/(k+1)))$ y usar la misma función cuando el conjunto admisible dependa de elecciones anteriores. Esto no toma un mínimo real, que podría no existir, ni procede de completitud. En §8.3 los conjuntos admisibles eran de índices naturales y su buen orden bastaba para tomar mínimos.
 
 **Proposición.** Un real $L$ es punto de acumulación de $A$ si y sólo si existe una sucesión de puntos de $A\setminus\{L\}$ que converge a $L$.
 
-Si $L$ es punto de acumulación, elegimos $x_k$ en $A\cap B(L,1/(k+1))\setminus\{L\}$, no vacío por definición. La estimación ya demostrada acredita convergencia. Recíprocamente, si una sucesión así converge a $L$, cada bola contiene un término suyo y ese término es distinto de $L$; queda satisfecho el criterio de bola perforada.
+Si $L$ es punto de acumulación, los conjuntos $A\cap B(L,1/(k+1))\setminus\{L\}$ son no vacíos; la función de elección permite tomar $x_k$ en cada uno. El error $|x_k-L|<1/(k+1)$ acredita convergencia. En sentido inverso, una sucesión de valores en $A\setminus\{L\}$ que converge a $L$ aporta en cada bola un término distinto del centro, que es el testigo requerido.
 
-Es posible exigir algo más: los valores elegidos pueden ser dos a dos distintos. Elegimos primero $x_0\in A\cap B(L,1)\setminus\{L\}$. Si ya elegimos $x_0,\ldots,x_{k-1}$, todos diferentes de $L$, tomamos para $k\ge1$
+La acumulación permite incluso elegir valores dos a dos distintos. Tomamos primero $x_0\in A\cap B(L,1)\setminus\{L\}$. Para evitar los valores $x_0,\ldots,x_{k-1}$ ya elegidos, con $k\ge1$, reducimos el radio por debajo de todas sus distancias al centro:
 
 $$
 r_k=\min\left\{\frac1{k+1},\frac12\min_{0\le j<k}|x_j-L|\right\}>0.
 $$
 
-El mínimo interior es sobre una familia finita no vacía de números positivos. Elegimos $x_k\in A\cap B(L,r_k)\setminus\{L\}$. Su distancia al centro es menor que la mitad de la distancia de cualquiera de los valores anteriores, de modo que no coincide con ellos. También es menor que $1/(k+1)$; por eso la nueva sucesión converge a $L$. La base $k=0$ se trató aparte para no tomar un mínimo de una familia vacía.
+El mínimo interior existe y es positivo porque reúne finitas distancias positivas y no está vacío. Elegimos $x_k\in A\cap B(L,r_k)\setminus\{L\}$ mediante la función fijada. Su distancia al centro es menor que la mitad de cualquiera de las distancias anteriores, lo que impide repetir esos valores; también es menor que $1/(k+1)$, de modo que $x_k\to L$. La elección inicial separada evita tomar un mínimo vacío.
 
-Esta construcción explica por qué toda bola alrededor de un punto de acumulación de un conjunto contiene infinitos puntos de ese conjunto. Puede probarse directamente: si dentro de alguna bola de radio $r$ sólo hubiera finitos puntos distintos de $L$, o no habría ninguno, o la menor de sus distancias positivas permitiría escoger una bola menor que los evitara a todos. Ambas posibilidades contradicen la acumulación. Recíprocamente, infinitos puntos en cada bola garantizan un testigo distinto del centro.
-
-### Lo que la imagen no conserva
+En particular, cada bola alrededor de un punto de acumulación contiene infinitos puntos del conjunto. Si una bola de radio $r$ sólo contuviera finitos puntos distintos de $L$, y hubiera alguno, el mínimo positivo de sus distancias permitiría reducir el radio y excluirlos a todos. Si no hubiera ninguno, la propia bola ya contradiría acumulación. A la inversa, infinitos puntos en una bola garantizan alguno distinto del centro.
 
 Comparemos $c_n=0$ con $d_0=0$ y $d_n=1$ para $n\ge1$.
 
-![Las visitas tardías de una sucesión no equivalen a acumulación de su imagen. Los conjuntos finitos dibujados no tienen puntos de acumulación.](../../assets/books/anm/C08/C08-F03.svg){#fig-anm-c08-f03 fig-alt="Las visitas tardías de una sucesión no equivalen a acumulación de su imagen. Los conjuntos finitos dibujados no tienen puntos de acumulación."}
+![Las visitas tardías de una sucesión no equivalen a acumulación de su imagen. Los conjuntos finitos dibujados no tienen puntos de acumulación.](../../assets/books/anm/C08/C08-F03.svg){#fig-anm-c08-f03 fig-alt="Una constante cero y una sucesión inicialmente cero y después uno se muestran sobre ejes temporales. Sus imágenes reducen todas las repeticiones a uno o dos puntos."}
 
 En $d$, cero pertenece a la imagen y es adherente a ella, pero no es punto secuencial: el corte $N=1$ y el radio $1/2$ eliminan todas las visitas a cero. Uno sí es un punto secuencial y es el único, porque la sucesión converge a uno. La imagen $\{0,1\}$ no tiene puntos de acumulación como conjunto. Para un centro perteneciente a ella basta un radio menor que uno; para un centro exterior basta un radio menor que la distancia a ambos puntos. La imagen conserva el cero inicial y pierde la persistencia temporal del uno.
-
-Las caracterizaciones anteriores permiten transportar preguntas entre conjuntos y sucesiones, siempre que se conserve la condición sobre los testigos. En §8.7 necesitaremos valores distintos para convertir una extracción convergente en acumulación de un conjunto.
 
 ### Antes de seguir
 
@@ -975,41 +968,36 @@ Demuestra que $F\subseteq\mathbb R$ es cerrado si y sólo si el límite de toda 
 Si $F$ es cerrado y $x_n\in F$ converge a $L$, cada bola alrededor de $L$ contiene términos de $F$, así que $L$ es adherente y pertenece a $F$. Recíprocamente, si todos esos límites pertenecen a $F$, toma cualquier punto adherente $L$. Por §8.4 existe una sucesión de puntos de $F$ que converge a $L$; la hipótesis da $L\in F$. Así $F$ contiene todos sus puntos adherentes y es cerrado por C04. Si $F=\varnothing$, no existen sucesiones con valores en él; la propiedad universal es vacua y el vacío es cerrado. La equivalencia no requiere acotación porque sólo considera sucesiones que ya convergen.
 
 </details>
+
 ## 8.5. Dividir el espacio y conservar índices
 
 []{#MA-SEC-ANM-01-008-005}
 
-En §8.3 conocíamos el candidato $L$ y aprovechábamos sus visitas tardías para construir una extracción. Una sucesión acotada presenta un problema anterior: ¿cómo encontrar un candidato sin tenerlo señalado? Sus valores permanecen en una región limitada, pero pueden oscilar de cualquier manera. La monotonía de C07 no está disponible como hipótesis.
+Para construir una extracción hacia $L$ hemos supuesto que ya conocíamos un punto secuencial. La sola acotación no lo señala. Podemos buscarlo estrechando la región que contiene los valores, sin exigir que los términos originales sigan una dirección monótona.
 
-Buscaremos regiones cada vez menores que todavía contengan términos con índices arbitrariamente grandes. Conservar un solo término sería insuficiente: podríamos seguir encerrando el mismo índice y no obtener una subsucesión. La reserva adecuada es un conjunto infinito de índices, aunque muchos de esos índices tengan el mismo valor.
+Cada región elegida deberá conservar infinitos índices de visita. Si sólo conserváramos algún término, todos los intervalos podrían encerrar la misma evaluación, sin dejar un índice posterior para continuar la extracción. La reserva se refiere a índices, aunque sus valores puedan coincidir.
 
-**Mapa de la prueba.** Partiremos de un intervalo que contenga todos los términos. Lo dividiremos por mitades conservando infinitos índices en la mitad elegida. La completitud proporcionará un punto común a los intervalos encajados. En §8.6 seleccionaremos índices crecientes dentro de ellos y comprobaremos la convergencia al punto común. Cada paso entrega un objeto que el siguiente necesita.
-
-Sea $a$ una sucesión acotada. Existe $M\ge0$ tal que $|a_n|\le M$ para todo $n$. Si $M=0$, todos los términos valen cero y la identidad ya es una selección convergente; reservemos este caso resuelto. Supongamos $M>0$ y pongamos $I_0=[-M,M]$.
-
-### Una mitad que no agote las visitas
+Sea $|a_n|\le M$ para todo $n$, con $M\ge0$. Si $M=0$, la sucesión es constante cero y el selector identidad ya converge. Para $M>0$, empezamos por $I_0=[-M,M]$, que contiene todos los términos.
 
 Supongamos construido un intervalo cerrado $I_k=[u_k,v_k]$ cuyo conjunto de índices de visita $E_k=\{n\in\mathbb N:a_n\in I_k\}$ es infinito. Su punto medio es $m_k=(u_k+v_k)/2$. Las mitades cerradas $[u_k,m_k]$ y $[m_k,v_k]$ cubren $I_k$. Si cada una recibiera sólo finitos índices, la unión de esos dos conjuntos finitos contendría todos los índices de $E_k$, contradiciendo su infinitud.
 
-Por tanto al menos una mitad conserva infinitos índices. Definimos $I_{k+1}$ como la izquierda cuando ésta los conserva, y como la derecha en caso contrario. Si ambas sirven, esta regla decide cuál usar. El punto medio pertenece a las dos mitades: no necesitamos que sean disjuntas para el argumento de unión finita. Tampoco suponemos que decidir infinitud constituya un procedimiento computable con una muestra finita.
+Al menos una mitad conserva, por tanto, infinitos índices. Elegimos la izquierda cuando cumple esa condición y la derecha en caso contrario; la regla también decide cuando ambas sirven. Las dos mitades comparten su punto medio, pero la unión de dos conjuntos finitos seguiría siendo finita aunque se solaparan. La decisión usa la propiedad matemática de infinitud, sin pretender deducirla de una muestra finita.
 
 La construcción comienza porque $E_0=\mathbb N$. Por inducción, todos los $E_k$ son infinitos, todos los intervalos son cerrados y no vacíos, $I_{k+1}\subseteq I_k$ y su anchura es $w_k=v_k-u_k=2M/2^k$. Aquí la acotación permitió crear $I_0$; el argumento de finitud permite repetir cada partición.
 
 Para ilustrar la regla, tomemos $a_n=(-1)^n/(n+1)$ y $M=1$. La mitad izquierda de $[-1,1]$ conserva todos los términos impares. Después se elige siempre la mitad que llega a cero: una mitad negativa separada de cero sólo contiene finitos términos, pues $1/(n+1)$ llega a ser menor que cualquier distancia positiva fijada. Así $I_k=[-2^{1-k},0]$ para $k\ge1$.
 
-![Los intervalos se estrechan y siguen recibiendo infinitos índices impares. La prueba de esa infinitud usa la fórmula, no el número de puntos dibujados; las mitades cerradas comparten su extremo.](../../assets/books/anm/C08/C08-F05.svg){#fig-anm-c08-f05 fig-alt="Los intervalos se estrechan y siguen recibiendo infinitos índices impares. La prueba de esa infinitud usa la fórmula, no el número de puntos dibujados; las mitades cerradas comparten su extremo."}
+![Los intervalos se estrechan y siguen recibiendo infinitos índices impares. La prueba de esa infinitud usa la fórmula, no el número de puntos dibujados; las mitades cerradas comparten su extremo.](../../assets/books/anm/C08/C08-F05.svg){#fig-anm-c08-f05 fig-alt="Cuatro segmentos cerrados encajados se acercan a cero; marcas discretas de valores alternantes recíprocos señalan los valores dentro y fuera de la mitad elegida."}
 
-Los segmentos representan intervalos cerrados del eje de valores, no trayectorias de la sucesión. La fórmula de los términos impares acredita las visitas infinitas que el dibujo finito sólo puede sugerir. En la prueba general no conocemos el punto común de antemano como ocurre en este ejemplo.
+La [figura 8.5](#fig-anm-c08-f05) muestra intervalos del eje de valores. Sus segmentos representan esos conjuntos cerrados, sin interpolar la sucesión; las visitas infinitas proceden de la fórmula de los términos impares. En este ejemplo el punto común es conocido, mientras que la construcción general todavía debe obtenerlo.
 
-### Existencia y unicidad del punto común
+Para aplicar el teorema de intervalos cerrados encajados de C03 §§3.5–3.6, ajustamos la indexación escribiendo $J_m=I_{m-1}$ para $m\ge1$. Los intervalos son cerrados, acotados, no vacíos y cumplen $J_{m+1}\subseteq J_m$. La completitud garantiza un real $L$ en todos ellos y, por tanto, en todos los $I_k$. La disminución de anchuras tendrá que probar después que ese punto es único.
 
-La familia encajada satisface las hipótesis del teorema de intervalos cerrados de §§3.5–3.6. Para ajustarnos a la indexación positiva de aquella formulación, ponemos $J_m=I_{m-1}$ para $m\ge1$. Son intervalos cerrados, acotados y no vacíos, y $J_{m+1}\subseteq J_m$. C03 garantiza un real $L$ perteneciente a todos ellos, y por tanto a todos los $I_k$. **Éste es el uso directo de completitud:** asegura que el proceso no deja un hueco donde esperábamos un destino.
+Por inducción, $2^k\ge k+1$: vale para $k=0$ y el paso usa $2^{k+1}\ge2(k+1)\ge k+2$. Así $w_k\le2M/(k+1)$. Para $\varepsilon>0$, tomamos $K=\lfloor2M/\varepsilon\rfloor+1$, cuyo argumento es positivo porque estamos en el caso $M>0$. Entonces $K+1>2M/\varepsilon$ y $w_K<\varepsilon$. Se reutiliza la consecuencia arquimediana de C03 a través del piso de C06, sin recurrir a un teorema posterior de límites de potencias.
 
-La anchura puede hacerse menor que cualquier número positivo sin recurrir a resultados posteriores. Por inducción, $2^k\ge k+1$: vale en cero y, si vale en $k$, entonces $2^{k+1}\ge2(k+1)\ge k+2$. Por ello $w_k\le2M/(k+1)$. Dado $\varepsilon>0$, arquimedianidad permite elegir $K$ con $K+1>2M/\varepsilon$; así $w_K<\varepsilon$. Esta propiedad arquimediana hereda también completitud según la construcción de C03, aunque aquí la reutilicemos como herramienta ya probada.
+Si $L$ y $H$ fueran puntos comunes distintos, con distancia $d=|L-H|>0$, el corte $K=\lfloor2M/d\rfloor+1$ daría $w_K\le2M/(K+1)<d$. Pero ambos pertenecen a $I_K$, de modo que $d\le w_K<d$, contradicción. Para $M=0$ la unicidad ya era inmediata en el singleton inicial $\{0\}$.
 
-Si $L$ y $H$ fueran dos puntos comunes distintos, su distancia $d=|L-H|$ sería positiva. Tomando $K$ con $w_K<d$, la pertenencia de ambos a $I_K$ daría $d\le w_K<d$, imposible. El punto común es único.
-
-Tenemos ahora un destino real y una reserva infinita de índices en cada intervalo. Aún falta enlazar esas reservas respetando el tiempo. Un punto común a intervalos no es, por sí solo, una subsucesión ni demuestra convergencia de la sucesión original.
+El punto común y las reservas $E_k$ proporcionan datos diferentes: la región de valores se estrecha alrededor de $L$, pero todavía hay que enlazar índices crecientes dentro de esas regiones. Ése es el paso que convertirá los intervalos en una subsucesión.
 
 ### Antes de seguir
 
@@ -1215,17 +1203,18 @@ Para los intervalos $I_k=[u_k,v_k]$ de §8.5, reconstruye la existencia del punt
 El conjunto de extremos izquierdos es no vacío y está acotado superiormente por $v_0$, así que completitud da su supremo $L$. Para cada $k$, $u_k\le L$. Además $v_k$ es cota superior de todos los $u_j$: si $j\ge k$, el encajamiento da $u_j\le v_j\le v_k$; si $j<k$, da $u_j\le u_k\le v_k$. Por minimalidad del supremo, $L\le v_k$. Luego $L\in I_k$ para todo $k$. Si dos puntos comunes distaran $d>0$, una anchura menor que $d$ lo impediría. Esta prueba abre la interfaz de C03 y muestra que completitud se usa en la existencia del supremo, no en calcular una fórmula del candidato.
 
 </details>
+
 ## 8.6. Bolzano–Weierstrass: construir la extracción
 
 []{#MA-SEC-ANM-01-008-006}
 
 **Teorema de Bolzano–Weierstrass para sucesiones reales.** Toda sucesión real acotada tiene una subsucesión convergente.
 
-El enunciado garantiza algún destino real para alguna selección; no promete que todas las selecciones tengan el mismo destino ni que converja la sucesión entera. En $(-1)^n$ podemos elegir cualquiera de las dos paridades. El teorema alcanza sucesiones para las que no conocemos una fórmula útil del selector.
+La conclusión garantiza una selección convergente a algún real, incluso cuando no disponemos de una fórmula para el selector. En $(-1)^n$ podemos elegir cualquiera de las paridades, con destinos distintos; la existencia afirmada no obliga a que converja la sucesión entera.
 
-La sección anterior resolvió la parte espacial de la demostración. Para $M>0$ disponemos de intervalos $I_k$ encajados, de anchuras arbitrariamente pequeñas, con un punto común $L$ y con conjuntos $E_k=\{n:a_n\in I_k\}$ infinitos. Necesitamos que la elección dentro de $I_{k+1}$ ocurra después de la elección dentro de $I_k$. Ésa es precisamente la función de haber conservado infinitos índices.
+Para el caso $M>0$, usamos los intervalos de §8.5, su punto común $L$ y las reservas infinitas $E_k=\{n\in\mathbb N:a_n\in I_k\}$. Para elegir dentro del intervalo siguiente necesitaremos un índice posterior al ya utilizado.
 
-Definimos $n_0=\min E_0$. Una vez elegido $n_k$, el conjunto $E_{k+1}$ no puede estar contenido en el prefijo finito $\{0,\ldots,n_k\}$. Por tanto el conjunto de sus elementos mayores que $n_k$ es no vacío y tiene mínimo. Ponemos
+Definimos $n_0=\min E_0$. Una vez elegido $n_k$, el conjunto $E_{k+1}\setminus\{0,\ldots,n_k\}$ es no vacío: si no lo fuera, $E_{k+1}$ estaría contenido en un conjunto finito y sería finito. Sus elementos son precisamente los índices de $E_{k+1}$ mayores que $n_k$, y su buen orden permite definir
 
 $$
 n_{k+1}=\min\{n\in E_{k+1}:n>n_k\}.
@@ -1233,17 +1222,17 @@ $$
 
 La recursión da un índice en cada paso, $n_{k+1}>n_k$ y $a_{n_k}\in I_k$. La primera propiedad, encadenada entre dos índices cualesquiera, demuestra que $\varphi(k)=n_k$ es un selector estrictamente creciente. Así $b_k=a_{n_k}$ es efectivamente una subsucesión de $a$.
 
-Verifiquemos ahora su límite. Dado $\varepsilon>0$, elegimos $K$ con $w_K<\varepsilon$, como en §8.5. Si $k\ge K$, tanto $a_{n_k}$ como $L$ pertenecen a $I_k\subseteq I_K$. Dos puntos de un intervalo de anchura $w_K$ distan a lo sumo esa anchura, luego
+Para $\varepsilon>0$, elegimos primero $K$ con $w_K<\varepsilon$, mediante la fórmula de §8.5. Si $k\ge K$, tanto $a_{n_k}$ como $L$ están en $I_k\subseteq I_K$. Sus distancias quedan controladas por la anchura del mismo intervalo:
 
 $$
 |b_k-L|=|a_{n_k}-L|\le w_K<\varepsilon.
 $$
 
-Esto prueba $b_k\to L$. Si la cota inicial era $M=0$, la selección identidad converge a cero, caso resuelto antes de la bisección. Quedan cubiertas todas las sucesiones acotadas y termina la demostración.
+La estimación demuestra $b_k\to L$. Junto con la selección identidad del caso $M=0$, queda probado el teorema para toda sucesión real acotada.
 
 Volvamos al ejemplo $a_n=(-1)^n/(n+1)$. Los seis primeros mínimos de la construcción son $0,1,3,5,7,15$, con valores $1,-1/2,-1/4,-1/6,-1/8,-1/16$. El salto de siete a quince es real: los índices impares intermedios aún tienen valores menores que el extremo izquierdo de $I_5=[-1/16,0]$.
 
-![Los índices originales 0,1,3,5,7,15 se convierten en los índices nuevos 0 a 5. Para k≥4 la anchura 1/8 de I4 controla el error y es menor que la tolerancia 1/4.](../../assets/books/anm/C08/C08-F06.svg){#fig-anm-c08-f06 fig-alt="Los índices originales 0,1,3,5,7,15 se convierten en los índices nuevos 0 a 5. Para k≥4 la anchura 1/8 de I4 controla el error y es menor que la tolerancia 1/4."}
+![Los índices originales 0,1,3,5,7,15 se convierten en los índices nuevos 0 a 5. Para k≥4 la anchura 1/8 de I4 controla el error y es menor que la tolerancia 1/4.](../../assets/books/anm/C08/C08-F06.svg){#fig-anm-c08-f06 fig-alt="Tabla de seis pasos seguida de una gráfica discreta y una ampliación de menos un octavo a cero. El destino se marca como referencia, no como término."}
 
 | Paso k | Intervalo Iₖ | Índice nₖ | Valor aₙₖ |
 |---|---|---|---|
@@ -1256,9 +1245,9 @@ Volvamos al ejemplo $a_n=(-1)^n/(n+1)$. Los seis primeros mínimos de la constru
 
 Para $\varepsilon=1/4$ podemos usar $K=4$, porque $I_4=[-1/8,0]$ tiene anchura $1/8<1/4$. Ese umbral es suficiente; no se afirma que sea mínimo. La tabla separa el contador $k$ de refinamientos, el índice original $n_k$ y el valor $a_{n_k}$. Una ampliación gráfica debe conservar esa distinción y declarar su escala.
 
-La prueba puede reconstruirse recordando las tres funciones de los objetos auxiliares: $I_k$ reduce la región de valores, $E_k$ impide que la elección de índices se detenga y $n_k$ convierte esa reserva en una función ordenada. La completitud garantiza $L$; la estimación con la anchura garantiza convergencia. Ninguno de esos pasos autoriza a insertar un «último término» de índice infinito.
+Los intervalos reducen la región de valores; las reservas infinitas permiten seguir eligiendo índices posteriores. La completitud aportó $L$ y la estimación por anchura verifica la convergencia de la función construida.
 
-Ya podemos invocar Bolzano–Weierstrass sin repetir la construcción. Por ejemplo, cualquier sucesión con valores en $[-3,7]$ admite una extracción convergente, aunque oscile y repita valores. Para afirmar que el límite sigue dentro del conjunto de partida necesitaremos atender a si ese conjunto es cerrado; ésa será nuestra siguiente aplicación.
+Por ejemplo, toda sucesión con valores en $[-3,7]$ admite una extracción convergente, aunque oscile o repita valores. Para decidir si el límite permanece en el conjunto que contiene los términos, importa además que ese conjunto sea cerrado.
 
 ### Antes de seguir
 
@@ -1466,11 +1455,12 @@ Construimos selectores originales $\varphi_r$ anidados. Aplica la construcción 
 Define la diagonal $\theta(k)=\varphi_k(k)$. Como $\psi_{k+1}(k+1)\ge k+1$, se tiene $\theta(k+1)=\varphi_k(\psi_{k+1}(k+1))\ge\varphi_k(k+1)>\varphi_k(k)=\theta(k)$. Por tanto $\theta$ es selector. Fija $r$. Para $k\ge r$, el anidamiento permite escribir $\theta(k)=\varphi_r(t_k)$, con $t_k\ge k$; esto se deduce componiendo los selectores posteriores, cada uno mayor o igual a la identidad. Como $\theta$ crece y $\varphi_r$ es estrictamente creciente, los $t_k$ también crecen. Dada una tolerancia para el límite de $a^{(r)}_{\varphi_r(j)}$, toma su umbral $J$ y luego $K=\max\{r,J\}$. Para $k\ge K$, $t_k\ge k\ge J$ y el término diagonal cumple la tolerancia. Cada $r$ fijo queda controlado; no se ha afirmado un umbral uniforme en $r$.
 
 </details>
+
 ## 8.7. De la extracción a los conjuntos
 
 []{#MA-SEC-ANM-01-008-007}
 
-La infinitud de índices es automática en una sucesión, incluso si todos sus términos coinciden. Un conjunto infinito plantea otra condición: contiene infinitos **valores distintos**. Para aplicar el resultado anterior sin perder esa información construiremos una sucesión que no repita valores.
+Una sucesión tiene infinitos índices aunque repita un único valor. Para deducir acumulación de un conjunto infinito necesitaremos conservar su infinitud de **valores distintos**, evitando que la extracción obtenida sea sólo una constante repetida.
 
 **Teorema.** Todo conjunto infinito y acotado $A\subseteq\mathbb R$ tiene al menos un punto de acumulación en $\mathbb R$.
 
@@ -1478,11 +1468,11 @@ Fijemos la función de elección sobre los subconjuntos no vacíos de $A$ descri
 
 Como $A$ es acotado, la sucesión también lo es. Bolzano–Weierstrass produce una subsucesión $y_j=x_{\varphi(j)}$ que converge a algún real $L$. Los valores de $y$ siguen siendo distintos. En consecuencia, a lo sumo uno coincide con $L$. Si ninguno coincide, $y$ ya tiene valores en $A\setminus\{L\}$. Si $y_{j_0}=L$, consideramos $z_k=y_{j_0+1+k}$: esta cola reindexada conserva el límite por C06 y evita el centro. En ambos casos la caracterización de §8.4 demuestra que $L$ es punto de acumulación de $A$.
 
-¿Por qué fue útil evitar repeticiones? Si hubiéramos elegido siempre un mismo punto de $A$, Bolzano–Weierstrass habría encontrado una constante. Su límite sería adherente a $A$, pero no tendríamos un testigo distinto del centro en cada bola. La separación entre adherencia y acumulación interviene exactamente al final del argumento.
+Repetir siempre el mismo punto de $A$ habría producido una constante y, por tanto, sólo un límite adherente. Elegir valores distintos permite retirar a lo sumo una aparición del centro y obtener un testigo diferente de $L$ en cada bola, que es lo que exige acumulación.
 
 El punto obtenido puede quedar fuera de $A$. Para $A=\{1/(n+1):n\in\mathbb N\}$, todos los valores son positivos y cero no pertenece a $A$. Sin embargo, para cada $r>0$ existe $n$ con $0<1/(n+1)<r$, de modo que cero es punto de acumulación de $A$.
 
-![Cero es punto de acumulación de los recíprocos positivos y no pertenece a su conjunto. Sí pertenece al intervalo cerrado [0,1] que contiene todos esos puntos.](../../assets/books/anm/C08/C08-F07.svg){#fig-anm-c08-f07 fig-alt="Cero es punto de acumulación de los recíprocos positivos y no pertenece a su conjunto. Sí pertenece al intervalo cerrado [0,1] que contiene todos esos puntos."}
+![Cero es punto de acumulación de los recíprocos positivos y no pertenece a su conjunto. Sí pertenece al intervalo cerrado \[0,1\] que contiene todos esos puntos.](../../assets/books/anm/C08/C08-F07.svg){#fig-anm-c08-f07 fig-alt="Una fila muestra recíprocos positivos y un cero excluido del conjunto A; otra muestra el intervalo cerrado de cero a uno con el extremo cero incluido."}
 
 **Corolario.** Toda sucesión con valores en un conjunto cerrado y acotado $F\subseteq\mathbb R$ tiene una subsucesión que converge a un punto de $F$.
 
@@ -1490,7 +1480,9 @@ La acotación proporciona una extracción convergente a $L$ por el teorema de §
 
 En particular, si todos los términos están en $[u,v]$, con $u\le v$, se obtiene un límite subsucesional en ese mismo intervalo, incluidos sus extremos. Para un intervalo abierto la pertenencia puede fallar: $1/(n+2)$ tiene valores en $(0,1)$ y converge a cero.
 
-Las hipótesis de la afirmación sobre conjuntos infinitos no se pueden borrar. Un conjunto finito no tiene puntos de acumulación: alrededor de un centro se pueden excluir sus finitísimos puntos diferentes usando el mínimo de sus distancias positivas, y si no hay ninguno la condición ya falla. Por otra parte, $\mathbb N$ considerado dentro de $\mathbb R$ es infinito, pero no tiene puntos de acumulación reales. En un centro natural, radio $1/2$ excluye los demás naturales. En un centro no natural $L$, la bola de radio uno contiene a lo sumo finitísimos naturales; si contiene alguno, una bola menor que todas sus distancias a $L$ los excluye, y si no, esa bola ya sirve. La finitud local se debe a que un intervalo acotado sólo contiene finitísimos naturales, por arquimedianidad.
+La infinitud y la acotación desempeñan papeles separados. Un conjunto finito carece de puntos de acumulación: para cualquier centro, si quedan puntos distintos de él, sus distancias forman una familia finita no vacía con mínimo positivo y un radio menor los excluye; si no quedan, cualquier bola perforada falla ya.
+
+El conjunto $\mathbb N\subset\mathbb R$ es infinito y no acotado, y tampoco tiene puntos de acumulación reales. Para un centro $x<0$, el radio $-x/2$ deja la bola en los negativos. Si $x\in\mathbb N$, el radio $1/2$ excluye los demás naturales. En el caso restante, $x>0$ no es natural: $q=\lfloor x\rfloor$ satisface $q<x<q+1$, y el radio $\min\{x-q,q+1-x\}/2>0$ deja la bola dentro de $(q,q+1)$, sin naturales. Se han excluido todos los centros, mediante el piso de C06 y la separación de naturales consecutivos.
 
 ### Antes de seguir
 
@@ -1699,11 +1691,12 @@ $$
 El primer sumando está acotado por $1/(k+1)$ y el segundo tiende a cero. Para cualquier tolerancia se hacen ambos menores que su mitad reuniendo los umbrales. Así $y_{\varphi(k)}\to L$; como $B$ es cerrado, $L\in B$, contradiciendo $A\cap B=\varnothing$. No necesitábamos acotación global de $B$: la proximidad a la extracción de $A$ produjo la convergencia necesaria.
 
 </details>
+
 ## 8.8. Cuándo las extracciones determinan la sucesión
 
 []{#MA-SEC-ANM-01-008-008}
 
-Una selección convergente no obliga a converger a la sucesión original. Hemos visto también que dos destinos distintos impiden esa convergencia. Falta examinar una situación intermedia: conocemos un único destino posible para todas las extracciones convergentes. Bajo acotación, esa información sí resulta suficiente.
+Una extracción convergente deja sin controlar los términos descartados. Si la sucesión es acotada, cualquier nueva selección seguirá admitiendo un destino por Bolzano–Weierstrass; por eso conocer un único punto secuencial puede recuperar el control global.
 
 **Teorema.** Para una sucesión real acotada $a$ y un real $L$, son equivalentes:
 
@@ -1712,7 +1705,7 @@ Una selección convergente no obliga a converger a la sucesión original. Hemos 
 
 Si $a_n\to L$, la identidad es una selección convergente a $L$, de modo que $L$ es punto secuencial por §8.3. Si $H$ es cualquier otro punto secuencial, existe una subsucesión convergente a $H$. Por §8.2 también converge a $L$; la unicidad del límite da $H=L$. Esta dirección no requiere suponer acotación por separado, pues toda sucesión convergente ya es acotada.
 
-Para la recíproca conviene trabajar con la negación. Si falla la convergencia a $L$, existe **una tolerancia fija** $\varepsilon_0>0$ tal que, después de cualquier corte $N$, aparece algún término con $|a_n-L|\ge\varepsilon_0$. La tolerancia se elige antes de construir la selección. Queremos reunir esos términos que incumplen el mismo control.
+Si falla la convergencia a $L$, su negación proporciona **una tolerancia fija** $\varepsilon_0>0$ y, después de cualquier corte $N$, algún término con $|a_n-L|\ge\varepsilon_0$. Reuniremos esos infractores manteniendo el mismo margen durante toda la extracción.
 
 Sea $n_0$ el menor índice con $|a_{n_0}-L|\ge\varepsilon_0$. Dados $n_k$, tomamos el menor índice $n\ge n_k+1$ con esa propiedad como $n_{k+1}$. La negación de convergencia garantiza que cada conjunto admisible es no vacío. Así $b_k=a_{n_k}$ es una subsucesión y todos sus términos distan al menos $\varepsilon_0$ de $L$.
 
@@ -1720,19 +1713,17 @@ Aquí se utiliza la acotación de $a$: también $b$ es acotada y Bolzano–Weier
 
 Pero la convergencia a $L$ exige $|b_{\psi(j)}-L|<\varepsilon_0$ para todos los índices suficientemente grandes, mientras que la construcción garantiza $|b_{\psi(j)}-L|\ge\varepsilon_0$ para **todos** ellos. La contradicción demuestra $a_n\to L$.
 
-El paso decisivo fue aplicar Bolzano–Weierstrass a la selección de términos que incumplían la tolerancia. La acotación impide que esa selección carezca por completo de destinos reales. Si sólo se sabe que hay «a lo sumo un» punto secuencial, Bolzano–Weierstrass proporciona la existencia que falta bajo la misma hipótesis de acotación; sin ella, la frase no basta.
+La acotación permitió encontrar un destino para la selección de infractores; sin ella esa selección podría escapar de todas las regiones acotadas. También asegura existencia cuando sólo sabemos que hay «a lo sumo un» punto secuencial: Bolzano–Weierstrass aporta al menos uno y el criterio anterior aplica entonces a ese único destino.
 
-### El papel de la acotación
-
-Definamos $c_{2j}=0$ y $c_{2j+1}=j+1$. Su selección par converge a cero. Para cualquier real $H\ne0$, escojamos $r=|H|/2>0$. Los términos pares quedan fuera de $B(H,r)$. Además, por arquimedianidad existe $J$ con $J+1>H+r$; para $j\ge J$ los términos impares también quedan fuera, por encima de la bola. Después del corte $2J$ no hay visitas a esa bola, así que $H$ no es punto secuencial. Cero es, por tanto, el único punto secuencial real de $c$.
+La sucesión $c_{2j}=0$, $c_{2j+1}=j+1$ muestra la necesidad de aquella hipótesis. La selección par converge a cero. Para excluir cualquier $H\ne0$, fijamos $r=\min\{|H|/2,1\}>0$, elegimos un natural $K>\max\{0,H+1\}$ y tomamos el corte $N=2K$. Los términos pares tienen error $|H|>r$. Si $n=2j+1\ge2K$, la aritmética natural da $j\ge K$; entonces $c_n=j+1\ge K+1>H+r$ y también queda fuera de $B(H,r)$. No hay visitas después de ese corte, de modo que $H$ no es punto secuencial. Cero es el único.
 
 Sin embargo, $c$ no converge: no es acotada, ya que los términos impares superan cualquier cota real. Toda sucesión convergente es acotada por C06. La hipótesis del teorema no puede suprimirse.
 
-![El ejemplo acotado tiene dos destinos y una selección constante de infractores. El no acotado sólo tiene el destino secuencial cero: sus términos impares superan toda cota, como demuestra la fórmula.](../../assets/books/anm/C08/C08-F08.svg){#fig-anm-c08-f08 fig-alt="El ejemplo acotado tiene dos destinos y una selección constante de infractores. El no acotado sólo tiene el destino secuencial cero: sus términos impares superan toda cota, como demuestra la fórmula."}
+![El ejemplo acotado tiene dos destinos y una selección constante de infractores. El no acotado sólo tiene el destino secuencial cero: sus términos impares superan toda cota, como demuestra la fórmula.](../../assets/books/anm/C08/C08-F08.svg){#fig-anm-c08-f08 fig-alt="Dos gráficos discretos contrastan una sucesión acotada con destinos cero y dos y otra con ceros pares y términos impares crecientes. La escala mostrada es una muestra, no una cota del segundo caso."}
 
-El primer panel vuelve al ejemplo acotado $a_{2j}=1/(j+1)$, $a_{2j+1}=2$: tiene dos destinos, cero y dos. Sirve para mostrar una selección que incumple una tolerancia alrededor de cero; **no** es un ejemplo con destino único. El segundo panel muestra el contraejemplo no acotado recién demostrado. La región vertical dibujada es sólo una muestra; la fórmula de los términos impares justifica su falta de cota.
+En la [figura 8.8](#fig-anm-c08-f08), el primer panel corresponde a $a_{2j}=1/(j+1)$, $a_{2j+1}=2$, que es acotada y tiene los dos destinos $0$ y $2$. Sus términos impares refutan el control alrededor de cero; no ejemplifica unicidad. El segundo panel representa la construcción no acotada anterior. La escala dibujada contiene una muestra de sus términos, sin constituir una cota.
 
-Al terminar el capítulo disponemos de una manera de descubrir destinos dentro de una sucesión acotada, de caracterizar la acumulación mediante extracciones y de recuperar convergencia cuando ese destino es único. Las reservas de índices, las bolas perforadas y la completitud han tenido funciones diferentes. Mantenerlas separadas permitirá estudiar más adelante las barreras que describen el conjunto de destinos cuando hay varios.
+El criterio de destino único usa Bolzano–Weierstrass para someter a prueba lo que quedó fuera de una ventana: de persistir allí infinitos índices, permitirían construir otro destino. La acotación garantiza esa posibilidad de extraer y la unicidad la vuelve incompatible con el margen fijo que conservaron los infractores.
 
 ### Antes de seguir
 

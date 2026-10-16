@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: 'Capítulo 27 — Convergencia uniforme: controlar toda la función a la vez'
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,7 +28,7 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-27)
 
-El contrato de C26 permitió una cola para cada entrada. Ahora exigiremos una cola común y construiremos la envolvente y la distancia que la miden. C02/C03 justifican los supremos; C10 construye destinos de columnas de Cauchy; C14 se usa en rutas dadas. No se importan teoremas de intercambio de C28 ni series de funciones o teoría métrica posterior.
+La familia $x/(n+1)$ permite esperar tanto como haga falta en una entrada fija y, sin embargo, conserva errores grandes en otras entradas de cada etapa. Para controlar una función completa exigiremos un solo corte para todo el dominio. El supremo medirá ese error cuando esté acotado, y el criterio de Cauchy permitirá construir un destino sin conocer su fórmula. Utilizaremos completitud de C03 y C10 y las herramientas de C14 para rutas dadas; los teoremas de intercambio se demostrarán después, en C28.
 
 ## 27.1. Una cola que sirve para todas las entradas
 
@@ -67,7 +67,7 @@ $$
 $$
 Ahora la entrada infractora puede cambiar con el corte y el índice. Para $g_n(x)=x/(n+1)$ en $\mathbb R$, C26 probó límite puntual cero. Con $\varepsilon_0=1/2$, ante cualquier $N$ tomamos $n=N$ y $x=N+1$: el error es1. Por tanto la convergencia no es uniforme en la recta.
 
-No hace falta elegir infinitamente muchos puntos de conjuntos arbitrarios para esta refutación: el testigo está dado por una fórmula para cada desafío. La negación lógica afirma existencia de infracciones; convertirlas en una sucesión simultáneamente escogida requeriría justificar una regla de selección si no disponemos de fórmulas. No usaremos esa conversión como herramienta oculta.
+En esta refutación, la fórmula $n=N$, $x=N+1$ proporciona los testigos ante cualquier corte propuesto. La negación del contrato sólo pide esas existencias. Si quisiéramos reunir infractores arbitrarios en una sucesión, tendríamos que justificar una regla de selección; aquí las rutas que usaremos están dadas explícitamente.
 
 ![En la ventana dibujada−1≤x≤1, f_n=x+1/(n+1) y límite f=x. La banda de tolerancia1/4 tiene fronteras abiertas: n=3 cae en la frontera y no sirve; n=4 y n=9 quedan dentro. La prueba controla toda la recta y todas las filas desdeN=4.](../../assets/books/anm/C27/C27-F01.svg){#fig-anm-c27-f01 fig-alt="En la ventana dibujada−1≤x≤1, f_n=x+1/(n+1) y límite f=x. La banda de tolerancia1/4 tiene fronteras abiertas: n=3 cae en la frontera y no sirve; n=4 y n=9 quedan dentro. La prueba controla toda la recta y todas las filas desdeN=4."}
 
@@ -273,6 +273,7 @@ Prueba que modificar un número finito de filas no altera una convergencia unifo
 Sean $f_n\to f$ uniformemente y $g_n=f_n$ para todo $n\ge M$. Ante $\varepsilon>0$, el contrato original proporciona un corte $N$ independiente de la entrada. Tomamos $K=\max(N,M)$. Para $n\ge K$ y toda entrada, $|g_n(x)-f(x)|=|f_n(x)-f(x)|<\varepsilon$. Así la familia modificada tiene el mismo límite uniforme. Las filas del prefijo pueden cambiar de modo arbitrario, incluso perder acotación, siempre que sigan siendo funciones sobre el dominio común declarado.
 
 </details>
+
 ## 27.2. La envolvente de error y sus fronteras
 
 []{#MA-SEC-ANM-01-027-002}
@@ -307,7 +308,7 @@ Podemos adoptar para el vacío la convención $E_n=0$ y conservar la equivalenci
 
 ### Estricto en cada entrada no es estricto en el supremo
 
-En $X=(0,1)$, la función de error $e(x)=x$ cumple $e(x)<1$ en toda entrada y tiene supremo1. No lo alcanza. Para demostrar ese supremo,1 es cota superior y cualquier $c<1$ deja algún punto mayor que $c$ dentro del intervalo, por ejemplo $(1+\max(c,0))/2$. Por tanto no se puede inferir $E_n<\varepsilon$ sólo de errores individuales menores que $\varepsilon$. La tolerancia partida de la prueba anterior convierte una cota no estricta en la precisión estricta requerida.
+En $X=(0,1)$, el error $e(x)=x$ es menor que uno en toda entrada, pero su supremo es uno. En efecto, uno es cota superior y cualquier $c<1$ deja dentro del intervalo un punto mayor, por ejemplo $(1+\max(c,0))/2$. El supremo no tiene por qué conservar una desigualdad estricta válida en cada entrada. Por eso la prueba anterior pide error menor que $\varepsilon/2$: al tomar el supremo queda una cota no estricta que todavía es menor que la tolerancia final $\varepsilon$.
 
 Tampoco se puede exigir que todos los errores iniciales sean acotados. En $X=(0,1]$, definamos $f_0(x)=1/x$ y $f_n(x)=0$ para $n\ge1$, con candidata cero. La convergencia es uniforme: sirve $N=1$ para cualquier tolerancia. Pero la imagen de errores de la primera fila no tiene cota real. Suprimir el prefijo no altera una propiedad de cola.
 
@@ -521,11 +522,12 @@ Para las tiendas $t_n$ de C26, analiza $B_n(1/2)=\{x:t_n(x)\ge1/2\}$ y sus colum
 Con $k=n+3$, la condición $t_n(x)\ge1/2$ equivale a $1-|kx-2|\ge1/2$, es decir $|kx-2|\le1/2$. Por tanto $B_n(1/2)=[3/(2k),5/(2k)]$, un segmento no vacío contenido en $[0,1]$. Los extremos pertenecen porque la infracción incluye igualdad. La entrada cero queda fuera siempre. Para $x>0$ fijo, desde un corte con $n+3>3/x$ queda a la derecha de todo el soporte y no vuelve a pertenecer al conjunto infractor. Cada entrada sale eventualmente, pero ningún conjunto completo queda vacío. Ésa es la diferencia entre el contrato puntual y el uniforme en este ejemplo.
 
 </details>
+
 ## 27.3. Calcular la peor discrepancia
 
 []{#MA-SEC-ANM-01-027-003}
 
-Calcular una envolvente puede acreditar el control global o detectar una obstrucción. En cada ejemplo distinguiremos la cota superior de la prueba de que es la mejor, y el supremo de su posible realización.
+Para calcular una envolvente debemos dar una cota válida en todas las entradas y mostrar que ninguna menor sirve. A veces la igualdad se realiza en una entrada; otras veces sólo podemos aproximarla. Los ejemplos siguientes separan ambas situaciones y muestran cómo cambia el resultado al restringir el dominio.
 
 ### Potencias: una barrera que no se alcanza
 
@@ -555,9 +557,9 @@ $$
 $$
 En cero se verifica directamente. La igualdad se alcanza en $x=\pm1/\sqrt{k}$, por lo que $E_n=1/(2\sqrt{k})$. Dada $\varepsilon>0$, un natural $N>1/(4\varepsilon^2)$ hace $E_n<\varepsilon$ para todo $n\ge N$. Tenemos convergencia uniforme en un dominio no acotado.
 
-Una ventana de dibujo finita no decide el supremo sobre toda $\mathbb R$. El cuadrado positivo y los puntos de igualdad son el certificado global; la figura sólo los representa. En estos ejemplos el tamaño del dominio, por sí solo, no determina el modo de convergencia.
+La cota en toda la recta procede del cuadrado no negativo y su exactitud, de los dos puntos de igualdad. Así queda justificado el supremo fuera de cualquier ventana elegida para dibujar. El ejemplo converge uniformemente sobre un dominio no acotado, mientras las potencias fallaban en un segmento: el tamaño del dominio, por sí solo, no decide la uniformidad.
 
-![Potencias en\[0,1\] y tiendas de altura1 conservan envolvente1; potencias en\[0,1/2\] tienen máximo2^(−n); h_n sobreR tiene máximo1/(2√(n+1)). Las líneas muestran envolventes certificadas por fórmulas, no supremos inferidos de un muestreo.](../../assets/books/anm/C27/C27-F03.svg){#fig-anm-c27-f03 fig-alt="Potencias en\[0,1\] y tiendas de altura1 conservan envolvente1; potencias en\[0,1/2\] tienen máximo2^(−n); h_n sobreR tiene máximo1/(2√(n+1)). Las líneas muestran envolventes certificadas por fórmulas, no supremos inferidos de un muestreo."}
+![Potencias en\[0,1\] y tiendas de altura1 conservan envolvente1; potencias en\[0,1/2\] tienen máximo2^(−n); h_n sobreR tiene máximo1/(2√(n+1)). Las líneas muestran envolventes certificadas por fórmulas, no supremos inferidos de un muestreo.](../../assets/books/anm/C27/C27-F03.svg){#fig-anm-c27-f03 fig-alt="Potencias en[0,1] y tiendas de altura1 conservan envolvente1; potencias en[0,1/2] tienen máximo2^(−n); h_n sobreR tiene máximo1/(2√(n+1)). Las líneas muestran envolventes certificadas por fórmulas, no supremos inferidos de un muestreo."}
 
 ### Microcontroles
 
@@ -759,11 +761,12 @@ Define $v_n(x)=x^{n+1}/(n+1)$ en $[0,1]$. Calcula el máximo y demuestra uniform
 Para $0\le x\le1$, se tiene $0\le x^{n+1}\le1$. Así $|v_n(x)|\le1/(n+1)$ y la entrada uno alcanza la cota. Es el máximo y la envolvente de error respecto de cero. Un natural $N>1/\varepsilon$ da $1/(n+1)<\varepsilon$ para todos los índices posteriores, uniformemente en la entrada. En las potencias sin ese divisor el peor error permanece cerca de uno; aquí la amplitud decreciente controla también las entradas próximas al extremo.
 
 </details>
+
 ## 27.4. Restringir el dominio y seguir rutas
 
 []{#MA-SEC-ANM-01-027-004}
 
-La convergencia uniforme se refiere a un dominio concreto. Sus reglas de transporte deben conservar ese dato; olvidar el dominio puede convertir una estimación correcta en una conclusión falsa.
+Restringir el dominio conserva el corte uniforme, pues reduce las entradas que debemos controlar. Reunir dominios exige, en cambio, un corte que cubra todos sus miembros. La finitud hará posible tomar el máximo de los cortes; una unión infinita puede perder esa garantía.
 
 ### Restringir y reunir finitamente
 
@@ -792,7 +795,7 @@ $$
 $$
 prueba convergencia de la diagonal a $f(x)$. Aquí continuidad del límite se declara como hipótesis; aún no la hemos deducido de continuidad de las filas. C28 estudiará esa preservación.
 
-Para detectar fracaso uniforme basta una ruta explícita con errores que no desaparecen en índices arbitrariamente tardíos. Las tiendas tienen $x_n=2/(n+3)$ y error1. No afirmamos sin hipótesis de selección que todo fracaso pueda convertirse automáticamente en una diagonal previamente dada.
+Una ruta explícita con errores que no desaparecen en índices arbitrariamente tardíos basta para refutar uniformidad. Las tiendas proporcionan $x_n=2/(n+3)$ y error uno en todo índice. La ruta prueba la obstrucción sin tener que convertir una familia de existencias arbitrarias en una selección simultánea.
 
 ### Reindexar y conservar una cola
 
@@ -800,7 +803,7 @@ Cambiar unas pocas filas iniciales no altera convergencia uniforme: se reúne el
 
 La conversa no vale con una sola subsucesión. Filas constantes $f_n(x)=(-1)^n$ en un dominio no vacío tienen subsucesión par uniformemente igual a1, pero la familia completa no converge ni puntualmente. Capturar algunas filas no captura toda una cola.
 
-![A la izquierda, envolventes de potencias en dos miembros de la familia X_j=\[0,1−1/(j+2)\] y en la unión de todos sus miembros\[0,1). Cada restricción cerrada tiene cota decreciente, pero la unión infinita mantiene error supremo1. A la derecha, una ruta sin límite x_n=(−1)^n sigue teniendo error1/(n+1) bajo la familia uniforme x+1/(n+1).](../../assets/books/anm/C27/C27-F04.svg){#fig-anm-c27-f04 fig-alt="A la izquierda, envolventes de potencias en dos miembros de la familia X_j=\[0,1−1/(j+2)\] y en la unión de todos sus miembros\[0,1). Cada restricción cerrada tiene cota decreciente, pero la unión infinita mantiene error supremo1. A la derecha, una ruta sin límite x_n=(−1)^n sigue teniendo error1/(n+1) bajo la familia uniforme x+1/(n+1)."}
+![A la izquierda, envolventes de potencias en dos miembros de la familia X_j=\[0,1−1/(j+2)\] y en la unión de todos sus miembros\[0,1). Cada restricción cerrada tiene cota decreciente, pero la unión infinita mantiene error supremo1. A la derecha, una ruta sin límite x_n=(−1)^n sigue teniendo error1/(n+1) bajo la familia uniforme x+1/(n+1).](../../assets/books/anm/C27/C27-F04.svg){#fig-anm-c27-f04 fig-alt="A la izquierda, envolventes de potencias en dos miembros de la familia X_j=[0,1−1/(j+2)] y en la unión de todos sus miembros[0,1). Cada restricción cerrada tiene cota decreciente, pero la unión infinita mantiene error supremo1. A la derecha, una ruta sin límite x_n=(−1)^n sigue teniendo error1/(n+1) bajo la familia uniforme x+1/(n+1)."}
 
 ### Microcontroles
 
@@ -1002,11 +1005,12 @@ Prueba transferencia uniforme a una subsucesión estrictamente creciente de índ
 Sea $(n_j)$ una sucesión estrictamente creciente de naturales. La inducción da $n_j\ge j$: el primer término es no negativo y cada siguiente es al menos una unidad mayor. Si $N$ es un corte uniforme de la familia, entonces para $j\ge N$ se tiene $n_j\ge N$ y $|f_{n_j}(x)-f(x)|<\varepsilon$ para toda entrada. Así la subsucesión hereda el límite uniforme. La conversa falla en las filas constantes $(-1)^n$ sobre un dominio no vacío: la subsucesión par es idénticamente uno, mientras la completa alterna y no tiene límite puntual ni uniforme.
 
 </details>
+
 ## 27.5. Operar bajo un presupuesto común
 
 []{#MA-SEC-ANM-01-027-005}
 
-Una estimación para todas las entradas permite reunir presupuestos de error sin volver a escoger el corte en cada punto. Pero los factores y denominadores necesitan barreras que también valgan en todo el dominio.
+Las estimaciones uniformes permiten reunir cortes sin volver a fijar una entrada. En sumas basta repartir el error; en productos y cocientes también debemos controlar los factores que multiplican ese error y separar los denominadores de cero. Las barreras necesarias han de valer en todo el dominio.
 
 ### Reglas lineales y operaciones de proximidad
 
@@ -1253,11 +1257,12 @@ Si $|g(x)|\ge m>0$ y $g_n\to g$ uniformemente, prueba uniformidad de los recípr
 El contrato uniforme para error $m/2$ proporciona una cola en la que $|g_n(x)|\ge|g(x)|-|g_n(x)-g(x)|>m/2$ para todas las entradas. Así los recíprocos de esa cola son funciones reales sobre el mismo $X$. Allí $|1/g_n-1/g|=|g_n-g|/(|g_n||g|)\le2|g_n-g|/m^2$. Para $\varepsilon>0$, reunimos el corte de dominio con el corte uniforme para error original menor que $\varepsilon m^2/2$. El error recíproco es entonces menor que $\varepsilon$. Las filas iniciales pueden tener ceros; para hablar de una familia desde el índice cero deben revisarse o reemplazarse explícitamente por funciones definidas, sin alterar esta cola.
 
 </details>
+
 ## 27.6. Una distancia entre funciones acotadas
 
 []{#MA-SEC-ANM-01-027-006}
 
-Queremos que la envolvente no sea sólo una cuenta para cada ejemplo: puede medir la distancia entre dos funciones completas. Hay que elegir un conjunto donde esa distancia sea siempre un real.
+La envolvente puede medir la distancia entre dos funciones completas si su diferencia tiene magnitud acotada. Para que la fórmula dé siempre un número real, comenzaremos con el conjunto de funciones acotadas. Después veremos cómo extender la misma construcción a funciones que comparten una base no acotada.
 
 ### Construir el espacio y la norma
 
@@ -1516,11 +1521,12 @@ En $\mathbb R$ explica por qué la distancia suprema no es real entre $x$ y0, pe
 La diferencia entre la identidad $r(x)=x$ y cero tiene magnitud $|x|$, no acotada en la recta. Por tanto no tiene supremo real y $d_\infty(r,0)$ no es una distancia real definida en esta teoría. Si $u,v$ son acotadas, en cambio, $(r+u)-(r+v)=u-v$ tiene una barrera global dada por la suma de sus cotas. Su norma existe y define la distancia entre esas dos traslaciones. La clase $r+\mathcal B(\mathbb R)$ permite medir diferencias acotadas con una base común no acotada; no extiende la distancia real a todos los pares arbitrarios de funciones.
 
 </details>
+
 ## 27.7. Cauchy uniforme y completitud
 
 []{#MA-SEC-ANM-01-027-007}
 
-C10 permitió converger sin conocer previamente el destino de una sucesión real. Podemos pedir ahora que el control de pares sirva al mismo tiempo en todas las entradas.
+En C10, controlar todos los pares tardíos de una sucesión real permitió construir un límite sin conocerlo de antemano. Para funciones pediremos que ese mismo corte controle los pares en cualquier entrada. La completitud real resolverá cada columna; la parte decisiva será comprobar que los límites obtenidos conservan el corte común.
 
 ### El criterio uniforme de Cauchy
 
@@ -1540,7 +1546,7 @@ $$
 $$
 Esta dirección no usa completitud.
 
-En la vuelta, fijada cualquier entrada $x$, el contrato uniforme implica que su columna es de Cauchy en $\mathbb R$. C10, y por tanto completitud de los reales, entrega su límite. C26 construye la función $f$ mediante el grafo de esas salidas únicas, sin seleccionar arbitrariamente números límite.
+En la vuelta, fijamos una entrada $x$. El contrato uniforme hace de Cauchy su columna numérica, y C10 proporciona un único límite real. Como esto vale para cada entrada, el grafo de las salidas únicas construye una función $f:X\to\mathbb R$, según C26. Falta demostrar que la aproximación a esa función es uniforme; la existencia columna por columna todavía no lo dice.
 
 Fijemos ahora $\varepsilon>0$ y recibamos un único corte $N$ del contrato de Cauchy con tolerancia $\varepsilon/3$. Para cualquier $n\ge N$ y cualquier $x$, todos los índices $m\ge N$ cumplen
 $$
@@ -1776,11 +1782,12 @@ Explica qué pasos del criterio uniforme de Cauchy gastan completitud y cuáles 
 La dirección de convergencia uniforme a Cauchy sólo usa el destino dado, la triangular y un corte común. En la dirección inversa, la completitud de los reales interviene al aplicar C10 para obtener el límite de cada columna de Cauchy. La unicidad de esas salidas construye el grafo de una función. Para recuperar uniformidad se mantiene fijo un índice y una entrada y se lleva la otra columna al límite: continuidad del absoluto y orden conservan una cota no estricta, cuyo margen $\varepsilon/3$ basta para el contrato. Si se trabaja en $\mathcal B(X)$, una fila acotada de referencia aporta después la barrera del destino. Ningún paso exige compacidad del dominio ni continuidad de las filas.
 
 </details>
+
 ## 27.8. Certificar una aproximación completa
 
 []{#MA-SEC-ANM-01-027-008}
 
-Ya tenemos un modo de convergencia, una envolvente real cuando el error está acotado, una distancia en un espacio adecuado y un criterio que construye destinos. Terminemos con certificados que permiten usarlos sin adivinar una fórmula límite.
+Podemos aplicar el criterio de Cauchy cuando conocemos cuánto cambia una etapa respecto de la siguiente. Las diferencias vecinas sólo serán suficientes si su acumulación entre dos índices tardíos admite una barrera que desaparezca. Un presupuesto geométrico permite demostrarlo mediante sumas finitas y obtener después una cota de error hacia el destino construido.
 
 ### Sumar sólo un presupuesto finito de incrementos
 
@@ -1825,9 +1832,9 @@ Tampoco ser uniformemente convergente significa tener valores conjuntamente acot
 
 ### Volver a mirar el contrato
 
-Para acreditar uniformidad, una cota de error válida para toda entrada y toda una cola basta; no tiene que ser el supremo exacto. Para refutarla basta una tolerancia y testigos tardíos dentro del dominio. Para usar una distancia, se declara primero la clase en que las diferencias son acotadas. Para construir un límite desde Cauchy, se rastrea la completitud de las columnas y se mantiene el corte común al pasar al límite.
+Una cota común del error basta para acreditar uniformidad, aunque no sea el supremo exacto. Para refutarla, una tolerancia fija y testigos tardíos dentro del dominio bastan. El uso de una distancia exige declarar primero dónde las diferencias están acotadas; la construcción desde Cauchy exige además mantener el corte común al pasar al límite en cada columna.
 
-El próximo capítulo preguntará qué operaciones pueden atravesar este nuevo contrato: continuidad, integración y diferenciación. C27 ha preparado la herramienta y ya sabe que el control global de valores, por sí solo, no resuelve todos los intercambios. Las hipótesis que los autorizan serán demostradas en C28, sin utilizarlas antes de tiempo aquí.
+La uniformidad controla valores completos, pero el ejemplo de las derivadas de $x/(1+kx^2)$ mostró que ese control por sí solo no autoriza a derivar el límite. La continuidad, la integración y la diferenciación impondrán obligaciones diferentes al intentar transportar este modo de aproximación.
 
 ![Con C=q=1/2, las cotas de incrementos son2^(−j−1) y el presupuesto posterior2^(−m). En la familia f_n=r+(1−2^(−n))a, |a|≤1, ese presupuesto controla todo el error hacia r+a, aunque r sea no acotada. El destino se acredita por Cauchy uniforme antes de usar la estimación posterior.](../../assets/books/anm/C27/C27-F08.svg){#fig-anm-c27-f08 fig-alt="Con C=q=1/2, las cotas de incrementos son2^(−j−1) y el presupuesto posterior2^(−m). En la familia f_n=r+(1−2^(−n))a, |a|≤1, ese presupuesto controla todo el error hacia r+a, aunque r sea no acotada. El destino se acredita por Cauchy uniforme antes de usar la estimación posterior."}
 

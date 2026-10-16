@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 23 — Integral de Riemann y Darboux
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,7 +28,7 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-23)
 
-C22 construyó sumas finitas y un límite que debe controlar toda etiqueta. Ahora construiremos dos envolventes a partir de cotas de valores, demostraremos cuándo coinciden y probaremos que producen exactamente ese límite. La brecha ponderada de oscilaciones será el certificado que conecta ambos métodos.
+Una suma etiquetada puede cambiar al refinar porque también cambian las alturas elegidas. Si en cada pieza usamos la mejor cota inferior y la mejor cota superior, obtenemos en cambio dos sumas que encierran todas las elecciones posibles. El refinamiento las acercará desde lados opuestos. Construiremos la integral cuando ese intervalo de incertidumbre pueda hacerse arbitrariamente estrecho y demostraremos que coincide con el límite exigido en C22.
 
 C02/C03 orden y completitud, C14 continuidad y C22 particiones/sumas son herramientas centrales. C16/C17 ya cerrados aportan la interfaz de compacidad y escala uniforme sólo para el caso continuo. No usamos antiderivadas ni el teorema fundamental, reservado para C24.
 
@@ -41,7 +41,7 @@ Fijemos $a<b$ y una función $f:[a,b]\to\mathbb R$. Hasta que se diga otra cosa,
 $$m(f,J)=\inf f[J],\qquad M(f,J)=\sup f[J],\qquad
 \omega(f,J)=M(f,J)-m(f,J)\ge0.$$
 
-La oscilación es una diferencia de cotas extremas, no una derivada ni la diferencia entre dos muestras elegidas. No exigimos que los extremos se alcancen. Si $J\subseteq K$, la inclusión de imágenes y las propiedades de cotas dan
+La oscilación mide la anchura de la banda completa de valores de $f$ sobre $J$. Sus extremos pueden no alcanzarse, de modo que no basta restar dos muestras elegidas. Al restringir el conjunto de entradas desaparecen posibles valores: una cota inferior anterior sigue siendo inferior y una superior sigue siendo superior. Por ello, si $J\subseteq K$,
 
 $$m(f,K)\le m(f,J)\le M(f,J)\le M(f,K),\qquad
 \omega(f,J)\le\omega(f,K).$$
@@ -256,6 +256,7 @@ Construye sobre[0,1] una función con muestras0 en0 y1 y oscilación arbitrariam
 Dado un tamaño deseado $R>0$, elegimos $H=R+1$ y definimos $f(1/2)=H$, $f(x)=0$ para las demás entradas de $[0,1]$. Las muestras en cero y uno son ambas cero. Sin embargo, la imagen es $\{0,H\}$, así $m=0$, $M=H$ y $\omega=H>R$. Para cada $H$ fijo la función está acotada. Esta familia muestra que conservar las dos muestras no limita la altura de una entrada distinta y, por tanto, no limita la oscilación.
 
 </details>
+
 ## 23.2. Dos sumas que el refinamiento sí ordena
 
 []{#MA-SEC-ANM-01-023-002}
@@ -273,7 +274,7 @@ Multiplicar $m_i\le f(\xi_i)\le M_i$ por anchuras positivas y sumar prueba el en
 
 $$G(f,P):=U(f,P)-L(f,P)=\sum_i\omega(f,I_i)\Delta_i.$$
 
-La brecha es no negativa. Vale cero exactamente cuando todas las oscilaciones de piezas son cero: cada sumando es no negativo y, si su suma es cero, cada producto es cero; dividir por su anchura positiva fuerza oscilación cero. Sobre piezas cerradas, eso hace constante a $f$ en cada una. Los nodos compartidos igualan las constantes vecinas: brecha cero en alguna partición implica que $f$ es constante en todo $[a,b]$. Por ello integrabilidad no exige una partición de brecha cero.
+La brecha es no negativa porque todas las oscilaciones y anchuras lo son. Si vale cero, cada producto de la suma debe ser cero; como las anchuras son positivas, todas las oscilaciones son cero. Esto hace constante a $f$ en cada pieza cerrada. El nodo que comparten dos piezas obliga a que sus constantes coincidan y, recorriendo la lista, $f$ resulta constante en todo $[a,b]$. Para integrar una función que varía necesitaremos brechas arbitrariamente pequeñas, aunque ninguna llegue a anularse.
 
 Si $P\preceq Q$, cada pieza hija está contenida en su padre; su ínfimo no es menor y su supremo no es mayor. Las anchuras de las hijas suman la del padre. Multiplicar las comparaciones por esas anchuras y agrupar finitamente prueba
 
@@ -288,7 +289,7 @@ U_n=\frac13+\frac1{2n}+\frac1{6n^2},\quad G_n=\frac1n.$$
 
 El encierro usa cotas verdaderas sobre cada pieza, no una colección de muestras sin garantía.
 
-![x² en\[0,1\]: rectángulos inferiores/superiores con n2 y n4. Las cotas locales son extremos verdaderos; brechas1/2 y1/4. La recta curva es la misma en ambos paneles.](../../assets/books/anm/C23/C23-F02.svg){#fig-anm-c23-f02 fig-alt="x² en\[0,1\]: rectángulos inferiores/superiores con n2 y n4. Las cotas locales son extremos verdaderos; brechas1/2 y1/4. La recta curva es la misma en ambos paneles."}
+![x² en\[0,1\]: rectángulos inferiores/superiores con n2 y n4. Las cotas locales son extremos verdaderos; brechas1/2 y1/4. La recta curva es la misma en ambos paneles.](../../assets/books/anm/C23/C23-F02.svg){#fig-anm-c23-f02 fig-alt="x² en[0,1]: rectángulos inferiores/superiores con n2 y n4. Las cotas locales son extremos verdaderos; brechas1/2 y1/4. La recta curva es la misma en ambos paneles."}
 
 ### Microcontroles
 
@@ -490,6 +491,7 @@ Explica por qué S=1/4 y S=3/4 para x en mitades no contradicen monotonía de Da
 Para $f(x)=x$, la partición trivial tiene $L=0$ y $U=1$, y su etiqueta media da $S=1/2$. En las mitades, las etiquetas izquierdas dan $S=(0+1/2)/2=1/4$ y las derechas $S=(1/2+1)/2=3/4$. Son, respectivamente, $L$ y $U$ de la partición refinada. La monotonía de Darboux se verifica en $0\le1/4$ y $3/4\le1$: mejoran las dos barreras. Comparar esas dos sumas etiquetadas con $1/2$ da movimientos opuestos, porque las etiquetas se han cambiado. Ninguna de esas comparaciones contradice la monotonía de las barreras.
 
 </details>
+
 ## 23.3. Completitud y criterio de Darboux
 
 []{#MA-SEC-ANM-01-023-003}
@@ -507,13 +509,13 @@ Llamamos integrable de Darboux a $f$ cuando $\ell_f=u_f$. Su valor común se esc
 $$\ell_f=u_f\quad\Longleftrightarrow\quad
 \forall\varepsilon>0\ \exists P:\ G(f,P)<\varepsilon.$$
 
-Para la dirección directa, la propiedad del supremo proporciona $P$ con $L(f,P)>\ell_f-\varepsilon/2$; el ínfimo da $Q$ con $U(f,Q)<u_f+\varepsilon/2$. Su refinamiento común $R$ tiene brecha menor que $\varepsilon$ cuando los extremos coinciden. Sólo se instancian dos testigos para una tolerancia fijada. Para la inversa, $0\le u_f-\ell_f\le G(f,P)$ para toda $P$; si la diferencia fuese $d>0$, pedir brecha menor que $d/2$ sería contradictorio. Por tanto es cero.
+Si $\ell_f=u_f$, aproximamos ese valor por debajo con una suma inferior y por arriba con una superior: la propiedad del supremo da $P$ con $L(f,P)>\ell_f-\varepsilon/2$ y la del ínfimo da $Q$ con $U(f,Q)<u_f+\varepsilon/2$. Los cortes pueden ser distintos, pero su refinamiento común $R$ aumenta la suma inferior y disminuye la superior. Su brecha es, por tanto, menor que $\varepsilon$. Sólo hemos escogido dos testigos para una tolerancia fijada. En sentido inverso, la banda anterior da $0\le u_f-\ell_f\le G(f,P)$ para toda $P$. Si la diferencia fuera $d>0$, una partición con brecha menor que $d/2$ contradiría esa desigualdad. Luego la diferencia es cero.
 
 Una partición buena conserva la precisión bajo todo refinamiento. El criterio equivale también a: para cada tolerancia existe $P$ tal que todos sus refinamientos tienen brecha menor que ella; la recíproca usa el refinamiento reflexivo $P\preceq P$.
 
 Si $f$ es integrable, $I_D$ y todas las sumas etiquetadas de $P$ están en $[L,U]$, por lo que $|S-I_D|\le G$. El punto medio numérico $A_P=(L+U)/2$ tiene certificado más fino $|A_P-I_D|\le G/2$. No afirma que $A_P$ sea una suma etiquetada ni el valor exacto. Para $x^2$, $G_n=1/n\to0$, así que el criterio recupera el valor $1/3$ de C22, aunque ninguna partición tenga brecha cero.
 
-![En x², los intervalos \[L_n,U_n\] para n2,4,8,16 se acercan a1/3. Con n4, medio11/32 y media anchura1/8; no se afirma exactitud del medio.](../../assets/books/anm/C23/C23-F03.svg){#fig-anm-c23-f03 fig-alt="En x², los intervalos \[L_n,U_n\] para n2,4,8,16 se acercan a1/3. Con n4, medio11/32 y media anchura1/8; no se afirma exactitud del medio."}
+![En x², los intervalos \[L_n,U_n\] para n2,4,8,16 se acercan a1/3. Con n4, medio11/32 y media anchura1/8; no se afirma exactitud del medio.](../../assets/books/anm/C23/C23-F03.svg){#fig-anm-c23-f03 fig-alt="En x², los intervalos [L_n,U_n] para n2,4,8,16 se acercan a1/3. Con n4, medio11/32 y media anchura1/8; no se afirma exactitud del medio."}
 
 ### Microcontroles
 
@@ -715,31 +717,32 @@ El centro de las cotas es $A=(7/32+15/32)/2=11/32$. La longitud del intervalo ce
 **Retorno visual.** Véase [C23-F03](analisis-para-matematicos-capitulo-23-integral-de-riemann-y-darboux.html#fig-anm-c23-f03), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
 </details>
+
 ## 23.4. El puente hacia todas las sumas de Riemann
 
 []{#MA-SEC-ANM-01-023-004}
 
 C22 definió Riemann por un real $I_R$ y el contrato $\forall\varepsilon>0\exists\delta>0\forall(P,\xi)$, malla menor que $\delta$ implica $|S-I_R|<\varepsilon$. Demostraremos su equivalencia con Darboux, con igualdad de valores.
 
-Primero, ese contrato obliga acotación aun si no se añadió como hipótesis. Pedimos tolerancia1 y fijamos una uniforme $P$ de malla menor que el radio; elegimos etiquetas medias. Para cada pieza $i$, dejamos todas las otras etiquetas fijas y variamos $t\in I_i$. La suma tiene forma $f(t)\Delta_i+C_i$ y queda entre $I_R-1$ e $I_R+1$. Así $|f(t)|\le(|I_R|+1+|C_i|)/\Delta_i$. Las anchuras son positivas y hay sólo finitísimas cotas; su máximo acota $f$ en el intervalo cubierto por las piezas.
+El contrato de Riemann obliga primero a que $f$ esté acotada, aunque no se haya supuesto. Pedimos tolerancia $1$ y tomamos una partición uniforme $P$ de malla menor que el radio, con etiquetas medias. Dentro de una pieza $I_i$ dejamos fijas las otras etiquetas y variamos sólo $t\in I_i$. La suma tiene forma $f(t)\Delta_i+C_i$, donde $C_i$ permanece fijo, y el contrato la mantiene entre $I_R-1$ e $I_R+1$. Así $|f(t)|\le(|I_R|+1+|C_i|)/\Delta_i$. La anchura positiva permite dividir y proporciona una cota para cada pieza. El máximo de estas finitísimas cotas controla toda la función, pues las piezas cubren el intervalo.
 
 Para una partición fija y $\eta>0$, hay etiquetas $\xi^+$ y $\xi^-$ con
 
 $$U(f,P)-\eta<S(f;P,\xi^+)\le U(f,P),\quad
 L(f,P)\le S(f;P,\xi^-)<L(f,P)+\eta.$$
 
-En cada pieza aproximamos supremo o ínfimo con error menor que $\eta/(b-a)$; sumar los errores ponderados por anchuras da menos que $\eta$. La elección de la familia finita se justifica por inducción en sus índices: añadir un testigo existencial al prefijo. No se necesitan extremos alcanzados ni elección para una familia infinita.
+Para aproximar la suma superior escogemos en cada pieza un valor a distancia menor que $\eta/(b-a)$ de su supremo; para la inferior hacemos lo mismo con su ínfimo. Multiplicar por las anchuras y sumar acumula un error menor que $\eta$, porque las anchuras suman $b-a$. Los testigos pueden reunirse por inducción en el número finito de piezas. Así obtenemos familias de etiquetas sin suponer extremos alcanzados ni recurrir a una elección infinita.
 
 Si existe $I_R$, pedimos error $\varepsilon/4$ y fijamos una uniforme que cumpla el radio. El lema con $\eta=\varepsilon/4$ da $U<I_R+\varepsilon/2$ y $L>I_R-\varepsilon/2$, luego $G<\varepsilon$. Darboux existe y su valor queda entre esos extremos para cada tolerancia; si difería de $I_R$, elegir una tolerancia menor que la distancia contradice ese encierro. Por tanto $I_D=I_R$.
 
-La vuelta requiere controlar particiones que no refinan la buena. Fijemos $P_*$ con brecha menor que $\varepsilon/2$, y sea $q$ su número de nodos interiores. Para cualquier $Q$, formamos $R=Q\cup P_*$. Sólo cambian las piezas de $Q$ cuyo interior contiene algún nodo interior de $P_*$; hay a lo sumo $q$, pues los interiores son disjuntos. En cada pieza modificada, la suma superior puede bajar como máximo $2B$ veces su anchura: tanto altura antigua como alturas hijas están en $[-B,B]$ y las anchuras hijas suman la antigua. El aumento inferior tiene la misma cota. En las demás piezas no cambia nada. Sumando,
+Para la vuelta, una partición de brecha pequeña no basta directamente: Riemann exige controlar también cortes que no la refinan. Fijemos $P_*$ con brecha menor que $\varepsilon/2$ y llamemos $q$ a su número de nodos interiores. Dada cualquier $Q$, formamos el refinamiento común $R=Q\cup P_*$. Una pieza de $Q$ sólo se modifica si contiene en su interior algún nodo interior de $P_*$. Como los interiores de las piezas son disjuntos, hay a lo sumo $q$ piezas modificadas. En cada una, la suma superior puede bajar a lo sumo $2B$ veces su anchura: la altura antigua y las alturas hijas pertenecen a $[-B,B]$, y las anchuras hijas suman la del padre. El aumento de la suma inferior tiene la misma cota. Cada anchura modificada es a lo sumo $\|Q\|$, por lo que
 
 $$G(f,Q)\le G(f,R)+4Bq\|Q\|
 \le G(f,P_*)+4Bq\|Q\|.$$
 
 Si $Bq>0$, tomamos $\delta=\varepsilon/(8Bq)$. Malla menor da brecha menor que $\varepsilon$, y el encierro común de $S$ e $I_D$ prueba el contrato de Riemann. Si $Bq=0$, el segundo término es cero y cualquier radio positivo sirve: no se divide por cero. Queda además demostrado que, para una función acotada integrable, todas las particiones de malla suficientemente pequeña tienen brecha pequeña. Conservar los cortes y reducir la malla son rutas distintas, conectadas por este conteo finito.
 
-![P*=(0,1/2,1), Q=(0,2/5,7/10,1). Sólo la pieza\[2/5,7/10\] de Q contiene el corte1/2 en su interior. R es la unión; q1 y malla Q2/5 controlan el coste por4Bq·malla.](../../assets/books/anm/C23/C23-F04.svg){#fig-anm-c23-f04 fig-alt="P*=(0,1/2,1), Q=(0,2/5,7/10,1). Sólo la pieza\[2/5,7/10\] de Q contiene el corte1/2 en su interior. R es la unión; q1 y malla Q2/5 controlan el coste por4Bq·malla."}
+![P*=(0,1/2,1), Q=(0,2/5,7/10,1). Sólo la pieza\[2/5,7/10\] de Q contiene el corte1/2 en su interior. R es la unión; q1 y malla Q2/5 controlan el coste por4Bq·malla.](../../assets/books/anm/C23/C23-F04.svg){#fig-anm-c23-f04 fig-alt="P*=(0,1/2,1), Q=(0,2/5,7/10,1). Sólo la pieza[2/5,7/10] de Q contiene el corte1/2 en su interior. R es la unión; q1 y malla Q2/5 controlan el coste por4Bq·malla."}
 
 ### Microcontroles
 
@@ -941,6 +944,7 @@ Para B=2,q=3 y brecha buena<ε/2, produce radio suficiente; trata Bq=0.
 Con $B=2$ y $q=3$, la corrección del puente es $4Bq\|Q\|=24\|Q\|$. Si $G(f,P_*)<\varepsilon/2$, elegimos $\delta=\varepsilon/48>0$. Toda $Q$ de malla menor que $\delta$ cumple $G(f,Q)<\varepsilon/2+24\delta=\varepsilon$. Una suma etiquetada de $Q$ y la integral de Darboux están ambas entre $L(f,Q)$ y $U(f,Q)$, así su distancia es menor que $\varepsilon$: queda probado el contrato de Riemann. Para $Bq=0$ la corrección es cero y cualquier radio positivo sirve. Si $B=0$, la función es cero; si $q=0$, la partición buena es la trivial y todas las particiones la refinan.
 
 </details>
+
 ## 23.5. Clases integrables y radios útiles
 
 []{#MA-SEC-ANM-01-023-005}
@@ -952,15 +956,15 @@ $$G(f,P)=\sum_i(f(x_i)-f(x_{i-1}))\Delta_i
 
 Las diferencias son no negativas y su suma telescopa. Uniformes de malla pequeña y el criterio prueban integrabilidad, sin continuidad. Si la diferencia extrema es cero, la función es constante y no se divide por ella. Para funciones no crecientes se aplica lo anterior a $-f$, o se invierten los extremos; la cota es $\|P\||f(b)-f(a)|$.
 
-Si $f$ es Lipschitz con constante $L$, la diferencia de cualesquiera valores en una pieza es menor o igual que $L\Delta_i$. Esto implica $M_i-m_i\le L\Delta_i$: para todo $s,t$, $f(s)\le f(t)+L\Delta_i$; tomar primero supremo en $s$ y luego ínfimo en $t$ conserva la cota. Así $G\le L\|P\|(b-a)$ y obtenemos integrabilidad y un radio explícito si $L>0$.
+Si $f$ es Lipschitz con constante $L\ge0$, en una pieza toda diferencia de valores tiene magnitud a lo sumo $L\Delta_i$. Para trasladar esa comparación a los extremos, escribimos $f(s)\le f(t)+L\Delta_i$ para todo $s,t$. Tomar primero el supremo en $s$ da $M_i\le f(t)+L\Delta_i$; tomar luego el ínfimo en $t$ da $M_i-m_i\le L\Delta_i$. De aquí $G\le L\|P\|(b-a)$ y el criterio prueba integrabilidad. Si $L>0$ la cota proporciona un radio explícito; si $L=0$, la función es constante y la brecha ya es cero.
 
 Toda función continua en $[a,b]$ es integrable. Precisemos la herramienta heredada: C16 da compacidad del intervalo cerrado y subcubrimientos finitos; C17 conecta esa compacidad con una escala uniforme. Reconstruimos el mecanismo que necesitamos sin selección infinita. Para tolerancia1, consideramos todos los pares $(c,r)$ con $c\in[a,b]$, $r>0$ y $|f(y)-f(c)|<1$ cuando $y$ está en el dominio y $|y-c|<r$. Sus bolas de radio $r/2$ cubren el intervalo por continuidad. Un subcubrimiento finito da cota $\max_j(|f(c_j)|+1)$.
 
-Para $\eta>0$, repetimos con error $\eta/2$ y bolas interiores de radio $r/2$. Un subcubrimiento finito proporciona $\delta=\min_j r_j/2>0$. Si $|s-t|<\delta$, elegimos una de esas bolas que contiene $s$; tanto $s$ como $t$ están a distancia menor que $r_j$ de su centro, y triangular da $|f(s)-f(t)|<\eta$. Si una pieza mide menos que $\delta$, todos sus valores difieren menos que $\eta$ y su oscilación es a lo sumo $\eta$. Pedir $\eta=\varepsilon/(2(b-a))$ produce $G\le\eta(b-a)=\varepsilon/2<\varepsilon$ en cualquier partición de esa malla. No se supone que los supremos se alcancen; el margen absorbe la desigualdad no estricta al tomarlos.
+Para conseguir un control uniforme de diferencias, repetimos la construcción con error $\eta/2$, donde $\eta>0$. Un subcubrimiento finito por las bolas de radio $r_j/2$ permite fijar $\delta=\min_j r_j/2>0$. Si $|s-t|<\delta$, alguna bola interior contiene $s$. Entonces $|s-c_j|<r_j/2$ y $|t-c_j|\le|t-s|+|s-c_j|<r_j$. Ambos valores difieren del valor central menos que $\eta/2$, así que $|f(s)-f(t)|<\eta$. En una pieza de anchura menor que $\delta$ todas las diferencias satisfacen esa cota; al pasar a supremo e ínfimo obtenemos oscilación a lo sumo $\eta$. Elegimos $\eta=\varepsilon/(2(b-a))$: cualquier partición de esa malla cumple $G\le\eta(b-a)=\varepsilon/2<\varepsilon$. El margen final conserva la desigualdad estricta requerida aunque tomar extremos haya producido una cota no estricta.
 
 C22 ya probó integrabilidad de escalones y estabilidad por modificaciones finitas; la equivalencia les asigna también el mismo valor de Darboux. Continuidad es suficiente, no necesaria. Un salto monotónico o un valor aislado puede ser integrable. La continuidad local sola sobre un intervalo abierto no suministra la compacidad ni la acotación usadas aquí.
 
-![h=0 para x<1/2 y h=1 para x≥1/2 es monótona con salto. En uniformes pares su brecha1/n tiende a0, controlada por malla, sin continuidad.](../../assets/books/anm/C23/C23-F05.svg){#fig-anm-c23-f05 fig-alt="h=0 para x&lt;1/2 y h=1 para x≥1/2 es monótona con salto. En uniformes pares su brecha1/n tiende a0, controlada por malla, sin continuidad."}
+![h=0 para x<1/2 y h=1 para x≥1/2 es monótona con salto. En uniformes pares su brecha1/n tiende a0, controlada por malla, sin continuidad.](../../assets/books/anm/C23/C23-F05.svg){#fig-anm-c23-f05 fig-alt="h=0 para x<1/2 y h=1 para x≥1/2 es monótona con salto. En uniformes pares su brecha1/n tiende a0, controlada por malla, sin continuidad."}
 
 ### Microcontroles
 
@@ -1162,6 +1166,7 @@ Da una función continua en(0,1] que no tenga la cota global usada en la prueba 
 La función $f(x)=1/x$ es continua en $(0,1]$. Para cualquier $M>0$ tomamos $x=1/(M+1)$, que pertenece al dominio y satisface $f(x)=M+1>M$. Por tanto no existe cota superior global. El dominio no es compacto: la sucesión $1/(n+1)$ tiende a cero, que queda fuera de él. La construcción por subcubrimiento finito de este capítulo exige un cerrado $[a,b]$; en este ejemplo no entrega la cota necesaria para las sumas de Darboux del intervalo completo.
 
 </details>
+
 ## 23.6. Álgebra de funciones e integrales
 
 []{#MA-SEC-ANM-01-023-006}
@@ -1179,7 +1184,7 @@ $$f(s)g(s)-f(t)g(t)=f(s)(g(s)-g(t))+g(t)(f(s)-f(t))$$
 
 da $\omega(fg,J)\le B_f\omega(g,J)+B_g\omega(f,J)$. No se multiplica una integral por otra: es una cota local del producto de funciones.
 
-Si $f,g$ son integrables, elegimos particiones con brechas tan pequeñas como se requiera para cada una y las llevamos a un refinamiento común. Las desigualdades anteriores producen brechas arbitrariamente pequeñas para sumas, múltiplos, valor absoluto y producto. Por ejemplo, para producto basta pedir a ambas brecha menor que $\varepsilon/(B_f+B_g+1)$: el resultado es menor que $\varepsilon$, incluso si alguna constante es cero.
+Para trasladar estas cotas locales a la integrabilidad, necesitamos una misma partición en la que sean pequeñas las brechas de $f$ y de $g$. Elegimos una para cada función y pasamos al refinamiento común, donde ninguna brecha aumenta. Las desigualdades anteriores hacen entonces arbitrariamente pequeñas las de la suma, los múltiplos, el valor absoluto y el producto. En este último caso basta pedir a ambas brecha menor que $\varepsilon/(B_f+B_g+1)$: la suma ponderada por $B_f,B_g$ queda menor que $\varepsilon$, sin dividir por una constante que pudiera ser cero.
 
 Los valores de sumas y múltiplos se calculan con la equivalencia de Riemann y la identidad finita de C22. Para $h=\alpha f+\beta g$, pedimos a ambos errores menores que $\varepsilon/(|\alpha|+|\beta|+1)$ y tomamos el menor de sus radios. Triangular demuestra que $S(h)$ se acerca a $\alpha I_f+\beta I_g$ con error menor que $\varepsilon$; unicidad identifica el valor. Es linealidad de la integral, no una regla de primitivas.
 
@@ -1387,6 +1392,7 @@ Prueba |If|≤I|f| y calcula la desigualdad para2x−1 en[0,1] una vez habilitad
 La triangular inversa implica $\omega(|f|,J)\le\omega(f,J)$ en cada pieza. Toda partición de brecha pequeña para $f$ tiene brecha al menos tan pequeña para $|f|$, así ésta es integrable. El orden $-|f|\le f\le|f|$, junto con linealidad, da $-I_{|f|}\le I_f\le I_{|f|}$, luego $|I_f|\le I_{|f|}$. Para $f(x)=2x-1$ en $[0,1]$, linealidad da $I_f=2(1/2)-1=0$. Una vez probada aditividad, partimos en $1/2$: $|f|=1-2x$ a la izquierda y $|f|=2x-1$ a la derecha. El certificado afín de C22 da $I_{[0,1/2]}x=1/8$ e $I_{[1/2,1]}x=3/8$. Las dos contribuciones son $1/2-2(1/8)=1/4$ y $2(3/8)-1/2=1/4$. Por tanto $0=|I_f|<I_{|f|}=1/2$.
 
 </details>
+
 ## 23.7. Restringir, pegar y orientar
 
 []{#MA-SEC-ANM-01-023-007}
@@ -1395,7 +1401,7 @@ Sea $a<c<b$ y $f$ acotada. Si es integrable en $[a,b]$, también lo es en cada s
 
 Recíprocamente, si las restricciones son integrables, para cada tolerancia tomamos particiones de ambas con brechas menores que $\varepsilon/2$. Concatenarlas en el nodo común $c$ da una partición de $[a,b]$ cuya brecha es la suma, menor que $\varepsilon$. Aquí el valor de $f(c)$ es uno y el mismo en ambas restricciones; no se pegan dos valores incompatibles. Así $f$ es integrable en todo el intervalo.
 
-La aditividad del valor requiere también prueba. Elijamos particiones en ambos lados con brechas menores que $\varepsilon/4$ y cualquier familia explícita de etiquetas en ellas. Sus sumas se concatenan exactamente: $S_{a,b}=S_{a,c}+S_{c,b}$. Las tres integrales quedan a distancia menor que $\varepsilon/4,\varepsilon/4,\varepsilon/2$, respectivamente, de esas sumas, pues la brecha completa es menor que $\varepsilon/2$. Triangular da
+La concatenación permite identificar también el valor, además de demostrar existencia. Elegimos en ambos lados particiones con brechas menores que $\varepsilon/4$ y etiquetas explícitas. Al concatenarlas, las sumas cumplen exactamente $S_{a,b}=S_{a,c}+S_{c,b}$. Cada integral lateral dista de su suma menos que $\varepsilon/4$ y la integral completa dista de la suma concatenada menos que $\varepsilon/2$, porque ésa es la cota para la brecha total. La triangular da
 
 $$\left|I_{a,b}-(I_{a,c}+I_{c,b})\right|<\varepsilon.$$
 
@@ -1403,7 +1409,7 @@ Para todo $\varepsilon$ implica igualdad. Por inducción se extiende a finitísi
 
 Con ello, $|2x-1|$ se integra como $1-2x$ a la izquierda de $1/2$ y $2x-1$ a la derecha. La fórmula afín de C22 da $1/4$ en cada mitad, total $1/2$. Un único punto no aporta una anchura positiva: C22 prueba que cambiar finitos valores conserva integral; el puente de este capítulo lo traslada a Darboux, aun cuando sus sumas para una partición fija cambien.
 
-Ahora declaramos convenciones separadas: $\int_a^a f=0$ y $\int_b^a f=-\int_a^b f$ cuando la integral sobre el intervalo ordenado existe. No son particiones con anchuras negativas ni una división por longitud cero. La aditividad se extiende a cualquier orden de tres extremos cuando existe integral en el intervalo que los contiene: se ordenan los extremos, se aplica la igualdad positiva demostrada y se transponen términos con estas convenciones.
+Extendemos ahora la notación mediante las convenciones $\int_a^a f=0$ y $\int_b^a f=-\int_a^b f$, siempre que exista la integral sobre el intervalo ordenado. Las anchuras de las particiones utilizadas en la construcción siguen siendo positivas; el signo de orientación se incorpora después. Para cualquier orden de tres extremos, la aditividad se obtiene ordenándolos, aplicando la igualdad ya probada y transponiendo términos con estas convenciones. Se exige integrabilidad en el intervalo que los contiene.
 
 ![|2x−1| se acumula con1/4 en cada mitad, total1/2. Orientación inversa da−1/2 por convención posterior, sin piezas de anchura negativa.](../../assets/books/anm/C23/C23-F07.svg){#fig-anm-c23-f07 fig-alt="|2x−1| se acumula con1/4 en cada mitad, total1/2. Orientación inversa da−1/2 por convención posterior, sin piezas de anchura negativa."}
 
@@ -1607,6 +1613,7 @@ Explica por qué alterar sólo f(c) conserva la integral pero puede cambiar L y 
 Sean $f$ y $g$ iguales excepto en $c$, con $D=|f(c)-g(c)|$. Una etiqueta igual a $c$ puede aparecer en a lo sumo dos piezas cerradas. Por tanto $|S_f-S_g|\le2D\|P\|$. Para una tolerancia $\varepsilon$, el contrato de $f$ con error $\varepsilon/2$ y una malla además menor que $\varepsilon/(4D)$, si $D>0$, dan el mismo contrato para $g$ y el mismo valor por triangular. Si $D=0$, las funciones coinciden. La equivalencia transfiere la conclusión a Darboux. En una partición fija, el valor de $c$ sí puede alterar un extremo local: la función cero tiene $L=U=0$, mientras al poner altura uno en $c=1/2$, sobre las mitades queda $L=0$ y $U=1$. Las dos funciones tienen integral cero.
 
 </details>
+
 ## 23.8. Certificar un valor y reconocer el alcance
 
 []{#MA-SEC-ANM-01-023-008}
@@ -1623,7 +1630,7 @@ Un valor aislado separa integrabilidad de exactitud finita. Sea $p(1/2)=1$ y $p(
 
 Una brecha persistente puede, por el contrario, impedir integrabilidad. Si una función acotada toma0 y1 en toda pieza no degenerada, todas sus sumas inferiores son0 y superiores $b-a$. Sus integrales extremas difieren. Es una condición universal sobre cada pieza, no una conclusión que se pueda extraer de unos puntos de dibujo; C25 estudiará ejemplos de discontinuidad y esa frontera con detalle.
 
-El cierre deja habilitada una integral única por dos construcciones equivalentes, clases integrables y operaciones justificadas. El capítulo siguiente relacionará acumulación y derivada; aquí no se ha aplicado el teorema fundamental ni una regla general de antiderivadas.
+La integral queda así determinada por dos procedimientos equivalentes: el límite de todas las sumas de malla pequeña y la coincidencia de las cotas extremas de Darboux. Sus operaciones proceden de comparaciones finitas y de tolerancias. La relación con las antiderivadas aún requiere otra prueba, que parta de esta acumulación ya construida.
 
 ![Con n4, x² está certificado entre7/32 y15/32 y su medio11/32. Para el pico p(1/2)=1, p=0 fuera, cortes1/2±r dan L0,U2r: integral0 con toda brecha finita positiva.](../../assets/books/anm/C23/C23-F08.svg){#fig-anm-c23-f08 fig-alt="Con n4, x² está certificado entre7/32 y15/32 y su medio11/32. Para el pico p(1/2)=1, p=0 fuera, cortes1/2±r dan L0,U2r: integral0 con toda brecha finita positiva."}
 

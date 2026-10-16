@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 20 — Convexidad y control por tangentes y secantes
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,7 +28,7 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-20)
 
-Una cuerda compara tres salidas antes de que exista una derivada. Partiendo de esa comparación construiremos continuidad interior, pendientes laterales y rectas de soporte. Después conectaremos estas herramientas con el orden de la primera derivada y el signo de la segunda. Las desigualdades finitas y los certificados de error serán consecuencias demostradas, con sus hipótesis y límites.
+Entre dos puntos de la parábola, la cuerda queda por encima de la curva. Podemos medir esa diferencia con una identidad algebraica, sin conocer todavía sus derivadas. La comparación también tiene sentido para una curva con esquina, como el valor absoluto. Al exigirla para todas las entradas y todos los pesos aparecerá un orden de secantes que permitirá construir continuidad interior y rectas de soporte; las derivadas entrarán después, como otra forma de reconocer ese orden.
 
 C18 aporta derivadas y sus reglas; C19 transporta pendientes por Lagrange, signo y constancia. Completitud para supremos, continuidad y raíces son interfaces heredadas de C03/C10/C14. C16 garantiza mínimos sólo cuando se añade continuidad sobre compacto. No se usa Taylor, integración ni nuevas reglas para potencias reales generales. Convexidad no supone derivabilidad o continuidad de borde; las extensiones al borde se justifican por separado.
 
@@ -36,7 +36,7 @@ C18 aporta derivadas y sus reglas; C19 transporta pendientes por Lagrange, signo
 
 []{#MA-SEC-ANM-01-020-001}
 
-¿Qué significa que una curva quede por debajo de las cuerdas que unen sus puntos? Antes de hablar de derivadas, fijemos dos entradas $a,b$ de un intervalo $I$ y un peso $t\in[0,1]$. La entrada intermedia es $z=(1-t)a+tb$; el carácter intervalar garantiza que pertenece al dominio. La altura interpolada es $(1-t)f(a)+tf(b)$. La comparación enfrenta dos procedimientos distintos: evaluar después de combinar entradas o combinar después de evaluar.
+Fijemos dos entradas $a,b$ de un intervalo $I$ y un peso $t\in[0,1]$. El intervalo contiene la entrada combinada $z=(1-t)a+tb$, así que podemos evaluar $f(z)$ y compararlo con la altura interpolada $(1-t)f(a)+tf(b)$. En un procedimiento combinamos las entradas antes de evaluar; en el otro combinamos las salidas con los mismos pesos. La convexidad decidirá el orden entre esas dos alturas.
 
 Una función real finita $f:I\to\mathbb R$ es **convexa** si, para todo $a,b\in I$ y todo $t\in[0,1]$,
 
@@ -44,25 +44,25 @@ $$f((1-t)a+tb)\le(1-t)f(a)+tf(b).$$
 
 Es **estrictamente convexa** si la desigualdad es estricta cuando $a\ne b$ y $0<t<1$. Las exclusiones son necesarias: si se repite la entrada o un peso es cero, ambos procedimientos coinciden. **Cóncava** significa la desigualdad opuesta; equivale a que $-f$ sea convexa. Estrictamente cóncava se define de la misma forma. No añadimos continuidad o derivabilidad a estas definiciones. En un singleton la condición estricta es vacía; los teoremas diferenciales siguientes trabajarán sobre intervalos abiertos no vacíos.
 
-Para el cuadrado no necesitamos un dibujo ni una segunda derivada. Una expansión da
+En el cuadrado, una expansión permite calcular exactamente cuánto supera la cuerda al valor de la función:
 
 $$
 (1-t)a^2+tb^2-((1-t)a+tb)^2=t(1-t)(b-a)^2.
 $$
 
-Todos los factores son no negativos y el producto es positivo bajo las condiciones estrictas. Así $x^2$ es estrictamente convexa sobre $\mathbb R$. Una recta $A+Bx$ produce diferencia cero: es convexa y cóncava, pero no estrictamente convexa en ningún intervalo con dos entradas. Añadir una recta a una función conserva exactamente sus diferencias de convexidad.
+El producto es no negativo para todos los pesos permitidos y es positivo cuando las entradas son distintas y el peso es interior. Esto demuestra convexidad estricta de $x^2$ en toda la recta y determina también los casos de igualdad. En una afín $A+Bx$ la diferencia es siempre cero: es convexa y cóncava, aunque no estrictamente convexa sobre ningún intervalo con dos entradas. Por la misma igualdad, sumar una afín a cualquier función deja intactas sus diferencias de convexidad.
 
 El valor absoluto también es convexo. La desigualdad triangular y la homogeneidad para pesos no negativos dan
 
 $$|(1-t)a+tb|\le(1-t)|a|+t|b|.$$
 
-No es estrictamente convexo: dos entradas positivas distintas quedan en un mismo tramo recto. Además no es derivable en cero, como muestra C18. La convexidad contiene curvas con esquinas y por ello no puede definirse exigiendo tangentes.
+En el tramo positivo, el valor absoluto coincide con la identidad y da igualdad entre entradas distintas con pesos interiores. Es, por tanto, convexo sin ser estrictamente convexo. Tampoco es derivable en cero por C18. La definición mediante cuerdas incluye esa esquina porque sólo utiliza valores y sus comparaciones; no presupone una tangente.
 
-Las combinaciones $\alpha f+\beta g$ de funciones convexas son convexas para $\alpha,\beta\ge0$: multiplicamos sus dos desigualdades por pesos no negativos y sumamos. Un coeficiente negativo puede invertir el orden; no se omite esta condición. La restricción a un subintervalo conserva la propiedad porque conserva todas sus combinaciones. La orientación del orden, no la impresión de que una curva «sube», define convexidad: $x^2$ decrece a la izquierda de cero y sigue siendo convexa.
+Si $f$ y $g$ son convexas en el mismo intervalo, multiplicamos sus desigualdades por $\alpha,\beta\ge0$ y las sumamos para obtener convexidad de $\alpha f+\beta g$. Un coeficiente negativo podría invertir la comparación y pierde esa garantía. Restringir a un subintervalo conserva las combinaciones y también la propiedad. La monotonía responde a otra comparación: $x^2$ decrece a la izquierda de cero y mantiene convexidad en toda la recta.
 
-![En el cuadrado, entre −1 y2, la cuerda es z+2. Para z=−1+3t su diferencia con z² es9t(1−t), positiva para0<t<1 y nula en bordes. La identidad prueba convexidad estricta; el muestreo sólo la representa.](../../assets/books/anm/C20/C20-F01.svg){#fig-anm-c20-f01 fig-alt="En el cuadrado, entre −1 y2, la cuerda es z+2. Para z=−1+3t su diferencia con z² es9t(1−t), positiva para0&lt;t&lt;1 y nula en bordes. La identidad prueba convexidad estricta; el muestreo sólo la representa."}
+![En el cuadrado, entre −1 y2, la cuerda es z+2. Para z=−1+3t su diferencia con z² es9t(1−t), positiva para0<t<1 y nula en bordes. La identidad prueba convexidad estricta; el muestreo sólo la representa.](../../assets/books/anm/C20/C20-F01.svg){#fig-anm-c20-f01 fig-alt="Cuadrado debajo de su cuerda y un panel de diferencia positiva entre pesos extremos, con máximo9/4."}
 
-La figura representa la diferencia algebraica ya calculada. Una colección finita de cuerdas no certifica una condición que cuantifica sobre todas las entradas y todos los pesos.
+La figura ilustra una cuerda y su diferencia exacta. La identidad anterior controla cualquier par de entradas y cualquier peso, que es la obligación universal de la definición; una colección finita de cuerdas dibujadas no la sustituye.
 
 ### Microcontroles
 
@@ -292,11 +292,12 @@ Para cada $j$, $f_j(z)\le(1-t)f_j(a)+tf_j(b)\le(1-t)F(a)+tF(b)$, porque los peso
 Para cada índice se obtiene la misma cota superior en la entrada combinada, formada con los dos supremos de borde. El supremo de valores allí no puede superar esa cota. La prueba no supone un índice que maximice cada altura ni reúne elecciones de índices para las entradas. La finitud declarada mantiene la función resultante con valores reales.
 
 </details>
+
 ## 20.2. Tres pendientes y una rigidez
 
 []{#MA-SEC-ANM-01-020-002}
 
-La definición puede convertirse en una regla de orden para tres secantes. Si $u<v<w$ pertenecen a $I$, escribimos
+Para traducir esa comparación de alturas a pendientes, tomemos tres entradas ordenadas $u<v<w$ de $I$. La entrada central se expresa como una combinación interior de las otras dos, y sus coeficientes son las proporciones de las longitudes:
 
 $$S(u,v)=\frac{f(v)-f(u)}{v-u},\qquad
 v=\frac{w-v}{w-u}u+\frac{v-u}{w-u}w.$$
@@ -309,19 +310,19 @@ Restar los términos correspondientes y dividir por productos positivos da
 
 $$S(u,v)\le S(u,w)\le S(v,w).$$
 
-También $S(u,w)$ es la media ponderada de $S(u,v)$ y $S(v,w)$, con pesos $(v-u)/(w-u)$ y $(w-v)/(w-u)$. Por ello las dos desigualdades anteriores equivalen a $S(u,v)\le S(v,w)$. En sentido inverso, esta última desigualdad, válida para todo triple ordenado, se reorganiza en la desigualdad de convexidad en una entrada interior. Las entradas coincidentes y los pesos extremos dan igualdad directamente. Hemos probado la equivalencia sin derivadas.
+La diferencia total de valores es la suma de los incrementos de sus dos piezas. Por eso $S(u,w)$ es la media ponderada de $S(u,v)$ y $S(v,w)$ con pesos $(v-u)/(w-u)$ y $(w-v)/(w-u)$, ambos positivos y de suma uno. La cadena equivale entonces a ordenar las dos pendientes cortas: $S(u,v)\le S(v,w)$. En sentido inverso, multiplicar esta desigualdad por $(v-u)(w-v)>0$ y reagrupar los términos recupera la comparación de cuerda en $v$. Cada combinación interior puede escribirse como un triple así; las entradas coincidentes y los pesos extremos se verifican por igualdad. La equivalencia queda demostrada sólo con álgebra.
 
-Con convexidad estricta, para cada triple distinto ambas desigualdades son estrictas. El mismo álgebra prueba la recíproca. Para el cuadrado, $S(u,v)=u+v$; en $0<1<3$ las pendientes son $1,3,4$. La secante larga no tiene por qué coincidir con la de un tramo pequeño.
+Si la convexidad es estricta, la comparación de altura en $v$ es estricta y las operaciones con denominadores positivos conservan ese signo. Las dos pendientes cortas quedan estrictamente ordenadas y su media larga queda entre ambas, también estrictamente; el argumento inverso recupera convexidad estricta. Para el cuadrado, $S(u,v)=u+v$: con entradas $0,1,3$ aparecen $1<3<4$, y la pendiente larga es $(1/3)1+(2/3)4=3$.
 
-La igualdad puede ser más informativa que una cota. Supongamos que $f$ es convexa sobre $[a,b]$, $a<b$, y que en algún $z\in(a,b)$ coincide con la recta de la cuerda $\ell$. Definamos $h=\ell-f$. Convexidad de $f$ equivale a concavidad de $h$; además $h\ge0$ en el segmento y $h(a)=h(z)=h(b)=0$.
+La igualdad interior impone una restricción adicional. Sea $f$ convexa en $[a,b]$, con $a<b$, y supongamos que coincide con su cuerda $\ell$ en algún $z\in(a,b)$. La diferencia $h=\ell-f$ es cóncava, no negativa en todo el segmento y satisface $h(a)=h(z)=h(b)=0$. Veremos que no puede conservar una altura positiva en ninguno de los lados del contacto.
 
-Si $a<x<z$, expresamos $z$ como combinación con pesos positivos de $x$ y $b$. Concavidad da $0=h(z)\ge\theta h(x)+(1-\theta)h(b)=\theta h(x)$, donde $\theta>0$. Así $h(x)=0$. Para $z<x<b$ expresamos $z$ como combinación de $a$ y $x$ y obtenemos el mismo resultado. Los bordes y $z$ ya tenían valor cero. Entonces $f=\ell$ en todo $[a,b]$.
+Si $a<x<z$, escribimos $z=\theta x+(1-\theta)b$, donde $\theta=(b-z)/(b-x)\in(0,1)$. La concavidad da $0=h(z)\ge\theta h(x)+(1-\theta)h(b)=\theta h(x)$, así que la no negatividad obliga a $h(x)=0$. Si $z<x<b$, usamos $z=(1-\eta)a+\eta x$, con $\eta=(z-a)/(x-a)\in(0,1)$, y obtenemos $0\ge\eta h(x)$ y la misma conclusión. Los bordes y $z$ ya tenían valor cero: $f$ coincide con la cuerda en todo $[a,b]$.
 
 Este argumento demuestra la **rigidez de una cuerda**: una igualdad interior en una función convexa obliga a un tramo afín completo. En consecuencia, una función convexa es estrictamente convexa exactamente cuando no es afín en ningún subsegmento no degenerado. No se requiere segunda derivada, y un tramo recto puede aparecer sin que toda la función sea una recta.
 
-![El cuadrado tiene pendientes1,3,4 para las cuerdas de0,1,3. La secante larga es una media ponderada de las cortas. En max(0,x), el contacto interior con la cuerda de1 a3 fuerza afinidad en ese segmento; no obliga a una recta en todo el dominio.](../../assets/books/anm/C20/C20-F02.svg){#fig-anm-c20-f02 fig-alt="El cuadrado tiene pendientes1,3,4 para las cuerdas de0,1,3. La secante larga es una media ponderada de las cortas. En max(0,x), el contacto interior con la cuerda de1 a3 fuerza afinidad en ese segmento; no obliga a una recta en todo el dominio."}
+![El cuadrado tiene pendientes1,3,4 para las cuerdas de0,1,3. La secante larga es una media ponderada de las cortas. En max(0,x), el contacto interior con la cuerda de1 a3 fuerza afinidad en ese segmento; no obliga a una recta en todo el dominio.](../../assets/books/anm/C20/C20-F02.svg){#fig-anm-c20-f02 fig-alt="Tres secantes del cuadrado ordenadas y, al lado, un tramo recto de una función con esquina."}
 
-Para controlar pendientes con un extremo fijo se reutiliza el mismo triple. $S(c,x)$ no decrece cuando $x>c$ aumenta; $S(x,c)$ no decrece cuando $x<c$ aumenta. Estas dos familias tienen sentidos de aproximación distintos al llegar a $c$, que serán decisivos en la sección siguiente.
+El orden de triples también permite mover un extremo dejando el otro fijo. Con centro $c$, la pendiente $S(c,x)$ no decrece al aumentar $x>c$, y $S(x,c)$ no decrece al aumentar $x<c$. Al acercarnos a $c$ por cada lado recorreremos estas familias en direcciones diferentes. Sus cotas óptimas proporcionarán los dos límites laterales.
 
 ### Microcontroles
 
@@ -549,11 +550,12 @@ Si es estrictamente convexa, una afinidad en un segmento no degenerado daría ig
 La dirección recíproca parte de convexidad débil, que impide una desigualdad contraria. Un fallo de estrictitud interior debe por ello ser igualdad, y la rigidez la convierte en afinidad del tramo. La ausencia de tramos afines descarta ese caso. Los pesos extremos y entradas repetidas se excluyen porque siempre producen igualdad.
 
 </details>
+
 ## 20.3. La convexidad fabrica continuidad
 
 []{#MA-SEC-ANM-01-020-003}
 
-¿Puede la desigualdad entre tres pendientes construir por sí sola un radio de continuidad? Sea $f$ convexa y finita sobre un intervalo $I$. Fijemos un segmento $[c,d]$ en su interior, con $c<d$, y elijamos entradas $a<c<d<b$ de $I$. Para $c\le x<y\le d$, las comparaciones de la sección anterior dan
+Para construir continuidad necesitamos una barrera de pendientes que funcione para todos los pares de una región. Sea $f$ convexa y finita en un intervalo $I$, y fijemos $[c,d]$ en su interior, con $c<d$. Podemos tomar entradas exteriores $a<c<d<b$ de $I$. Las secantes entre esas anclas y la región interior encierran cualquier pendiente con $c\le x<y\le d$:
 
 $$S(a,c)\le S(a,x)\le S(x,y)\le S(y,b)\le S(d,b).$$
 
@@ -561,24 +563,24 @@ Cuando $x=c$ o $y=d$, una comparación es simplemente igualdad; no se divide por
 
 $$L=\max\{|S(a,c)|,\ |S(d,b)|\}.$$
 
-La banda de pendientes implica $|f(y)-f(x)|\le L|y-x|$. Para entradas iguales el incremento es cero, y para entradas invertidas usamos simetría. Así $f$ es Lipschitz sobre todo segmento que tenga un margen interior a ambos lados. Si $L>0$, $\delta=\varepsilon/L$ prueba uniformidad en ese segmento; si $L=0$, la función es constante allí y cualquier radio sirve. Al colocar un centro interior dentro de uno de estos segmentos se obtiene continuidad en ese centro. No hemos usado ninguna derivada ni un teorema que ya suponga continuidad.
+Toda pendiente de esa banda tiene magnitud a lo sumo $L$, de donde $|f(y)-f(x)|\le L|y-x|$. Los pares iguales tienen incremento cero y los invertidos se cubren por simetría. Así la restricción a $[c,d]$ es Lipschitz: para $L>0$ sirve el radio uniforme $\delta=\varepsilon/L$, y para $L=0$ todas las salidas son iguales y cualquier radio positivo sirve. Cada centro interior puede situarse dentro de un segmento con margen a ambos lados, lo que prueba continuidad en él. El argumento no utilizó derivadas ni supuso previamente la continuidad que acaba de obtener.
 
-La conclusión es local en el interior. En $[0,1]$, la función $f(0)=1$ y $f(x)=0$ para $x>0$ es convexa: una combinación interior positiva tiene salida cero y la altura combinada es no negativa; si la entrada combinada es cero, las entradas con peso positivo son cero y se obtiene igualdad. Sin embargo no es continua en el borde cero. La convexidad finita no autoriza extender automáticamente la continuidad a los extremos incluidos.
+El margen interior importa. En $[0,1]$, la función que vale uno en cero y cero en toda entrada positiva es convexa: si la combinación es positiva, su salida es cero y no supera la media no negativa de salidas; si es cero, todas las entradas con peso positivo son cero y las dos alturas valen uno. Sin embargo, las entradas positivas que tienden a cero mantienen salida cero, distinta de $f(0)=1$. La convexidad finita garantiza continuidad interior sin imponerla en un borde incluido.
 
 Hay también pendientes laterales bien determinadas. Fijemos ahora $c\in\operatorname{int}I$ y consideremos
 
 $$A=\sup_{x<c,\ x\in I}S(x,c),\qquad
 B=\inf_{y>c,\ y\in I}S(c,y).$$
 
-Las familias no son vacías. Una secante fija de la derecha acota superiormente todas las de la izquierda, y una secante fija de la izquierda acota inferiormente todas las de la derecha. Valores de cada familia aportan la otra cota necesaria, de modo que $A$ y $B$ son reales finitos. Cada secante izquierda es menor o igual que cada secante derecha: tomando supremo e ínfimo resulta $A\le B$.
+Como $c$ es interior, las dos familias de secantes son no vacías. El orden de triples sitúa cada pendiente izquierda por debajo de cada pendiente derecha: una secante derecha fija acota superiormente toda la familia izquierda y una izquierda fija acota inferiormente toda la derecha. La completitud da entonces un supremo $A$ y un ínfimo $B$ reales finitos. Para cada pendiente derecha, el supremo izquierdo sigue estando por debajo; al tomar después el ínfimo derecho obtenemos $A\le B$.
 
-Para identificar el límite izquierdo, dado $\varepsilon>0$ el supremo proporciona un $x_0<c$ con $A-\varepsilon<S(x_0,c)\le A$. Si $x_0<x<c$, la monotonía con extremo fijo encierra $S(x,c)$ entre esos mismos valores. El radio $c-x_0$ prueba el límite $A$ cuando $x\uparrow c$. A la derecha, el ínfimo proporciona $y_0>c$ con $B\le S(c,y_0)<B+\varepsilon$; para $c<y<y_0$ la secante queda entre $B$ y esta cota. El radio $y_0-c$ prueba el límite $B$.
+Para demostrar el límite izquierdo, dada $\varepsilon>0$, el número $A-\varepsilon$ no es cota superior de las pendientes izquierdas. Existe, pues, un $x_0<c$ con $A-\varepsilon<S(x_0,c)\le A$. Cuando $x_0<x<c$, el orden con extremo fijo da $A-\varepsilon<S(x_0,c)\le S(x,c)\le A$. El radio $c-x_0>0$ acredita el límite $A$ sin exigir que el supremo se alcance. A la derecha, la propiedad del ínfimo proporciona $y_0>c$ con $B\le S(c,y_0)<B+\varepsilon$. Para $c<y<y_0$, la pendiente queda entre $B$ y esa cota superior, y el radio $y_0-c$ demuestra el límite $B$.
 
 Por definición de cociente incremental, $f'_-(c)=A$ y $f'_+(c)=B$. La derivada bilateral existe exactamente cuando $A=B$: si coinciden, el mínimo de los dos radios sirve a ambos lados; si existe una derivada, sus dos restricciones tienen el mismo límite. Para $|x|$ en cero se obtienen $A=-1$ y $B=1$. La continuidad fabricada por convexidad admite una esquina.
 
-![Para |x|, anclas−1 y1 encierran las secantes de\[−1/2,1/2\] entre−1 y1, dando L=1. Al centro0, las secantes izquierdas valen−1 y las derechas1; los círculos abiertos excluyen el cociente de incremento nulo. La función es continua y Lipschitz, pero no derivable en cero.](../../assets/books/anm/C20/C20-F03.svg){#fig-anm-c20-f03 fig-alt="Para |x|, anclas−1 y1 encierran las secantes de\[−1/2,1/2\] entre−1 y1, dando L=1. Al centro0, las secantes izquierdas valen−1 y las derechas1; los círculos abiertos excluyen el cociente de incremento nulo. La función es continua y Lipschitz, pero no derivable en cero."}
+![Para |x|, anclas−1 y1 encierran las secantes de\[−1/2,1/2\] entre−1 y1, dando L=1. Al centro0, las secantes izquierdas valen−1 y las derechas1; los círculos abiertos excluyen el cociente de incremento nulo. La función es continua y Lipschitz, pero no derivable en cero.](../../assets/books/anm/C20/C20-F03.svg){#fig-anm-c20-f03 fig-alt="Valor absoluto con un intervalo interior sombreado y, al lado, dos niveles de secantes que llegan a límites distintos."}
 
-Estas derivadas laterales finitas se afirman en centros interiores. No se ha probado finitud de pendientes laterales en bordes ni una constante Lipschitz para todo un intervalo abierto no acotado.
+La finitud de estos límites se ha probado en centros interiores, donde hay secantes de ambos lados que los acotan. No podemos trasladarla a los bordes ni convertir las constantes de segmentos interiores en una sola constante Lipschitz para un intervalo abierto no acotado.
 
 ### Microcontroles
 
@@ -806,35 +808,36 @@ Si el cuadrado tuviera constante global $L$, comparar0 y $x>0$ daría $x^2\le Lx
 El control local interior puede cambiar de constante al cambiar la región y no da una constante para toda la recta. Cerca de un borde, incluso continuidad no asegura una banda de secantes finita. Los dos ejemplos infringen barreras propuestas con pares válidos. Usar después criterios diferenciales para verificar el segundo ejemplo no los convierte en premisas de la prueba temprana.
 
 </details>
+
 ## 20.4. Rectas que sostienen y una envolvente
 
 []{#MA-SEC-ANM-01-020-004}
 
-Una cuerda domina la curva desde arriba entre sus extremos. Busquemos ahora rectas que queden debajo en todo el dominio. Con $c$ interior y $A=f'_-(c)\le B=f'_+(c)$ definidos antes, tomemos cualquier $p\in[A,B]$ y la recta
+Las cuerdas quedan por encima de la curva dentro de sus propios segmentos. El orden lateral permite construir también rectas que queden por debajo en todas las entradas del intervalo. Fijemos un centro interior $c$, sus pendientes laterales $A=f'_-(c)\le B=f'_+(c)$ y cualquier $p\in[A,B]$. Consideremos la recta
 
 $$\ell_{c,p}(x)=f(c)+p(x-c).$$
 
-Si $x>c$, tenemos $S(c,x)\ge B\ge p$ y por ello $f(x)-f(c)\ge p(x-c)$. Si $x<c$, $S(x,c)\le A\le p$; al multiplicar por $x-c<0$, el orden se invierte y se obtiene la misma desigualdad. En $x=c$ hay igualdad. Por tanto $\ell_{c,p}(x)\le f(x)$ para todo $x\in I$.
+Para $x>c$, la definición de $B$ da $S(c,x)\ge B\ge p$; multiplicar por $x-c>0$ produce $f(x)-f(c)\ge p(x-c)$. Para $x<c$, tenemos $S(x,c)\le A\le p$, y al multiplicar por $x-c<0$ se invierte el orden y obtenemos la misma comparación de alturas. En el centro hay igualdad. Por tanto $\ell_{c,p}(x)\le f(x)$ en todo $I$, y llamamos a esa recta un soporte en $c$.
 
-La recíproca caracteriza todas las pendientes de soporte en ese centro. Si una recta que pasa por $(c,f(c))$ queda debajo para todas las entradas, a la derecha obliga a $p\le S(c,x)$ y por tanto $p\le B$. A la izquierda obliga a $S(x,c)\le p$, luego $A\le p$. El conjunto de pendientes permitidas es exactamente el intervalo cerrado $[A,B]$, sin asumir que haya una tangente única.
+Si una recta por $(c,f(c))$ es soporte, las mismas divisiones permiten determinar su pendiente. A la derecha exige $p\le S(c,x)$ para todas las entradas y, por ello, $p\le B$. A la izquierda exige $S(x,c)\le p$ para todas y, por ello, $A\le p$. Así el intervalo cerrado $[A,B]$ contiene exactamente las pendientes permitidas. Una esquina puede tener varias, aun cuando no haya tangente bilateral.
 
 Cuando $f$ es derivable en $c$, $A=B=f'(c)$ y la única recta de soporte que pasa por ese punto es la tangente:
 
 $$f(x)\ge f(c)+f'(c)(x-c).$$
 
-En el valor absoluto, en cero hay toda una familia $px$, $-1\le p\le1$; las rectas extremas $x$ y $-x$ sostienen sus dos tramos. Para el cuadrado, la tangente en $c$ es $2cx-c^2$ y la diferencia $x^2-(2cx-c^2)=(x-c)^2$ exhibe el soporte. El soporte no se restringe a un radio pequeño: controla todas las entradas del mismo intervalo.
+En cero, el valor absoluto admite todos los soportes $px$ con $-1\le p\le1$; las rectas extremas $x$ y $-x$ sostienen sus dos tramos. El cuadrado tiene tangente $2cx-c^2$ en $c$, y la identidad $x^2-(2cx-c^2)=(x-c)^2\ge0$ prueba su soporte en toda la recta. La comparación no se limita a un radio pequeño alrededor del contacto.
 
 Una función convexa finita sobre un intervalo abierto no vacío es la **envolvente superior** de sus rectas de soporte:
 
 $$f(x)=\sup_{c\in I,\ p\in[f'_-(c),f'_+(c)]}\ell_{c,p}(x).$$
 
-Para un $x$ fijo, todas las rectas están debajo de $f(x)$ y la familia no es vacía. La recta construida con $c=x$ y cualquier pendiente del intervalo permitido alcanza exactamente $f(x)$. Se justifican así existencia del supremo e igualdad. Esta formulación en un intervalo abierto evita atribuir un soporte finito a un borde donde puede no existir.
+Para un $x$ fijo, la familia de valores de los soportes es no vacía y todos están acotados superiormente por el real $f(x)$. Además $x$ es un centro interior y podemos usar $c=x$, por ejemplo con pendiente $p=f'_-(x)$, para obtener igualdad en esa entrada. El supremo existe y vale $f(x)$. La formulación sobre un intervalo abierto evita reclamar un soporte finito en un borde donde podría faltar.
 
-En sentido inverso, sea una familia no vacía de rectas $\ell_j$ cuyo supremo $F(x)$ sea real finito para todas las entradas de un intervalo. Cada recta satisface $\ell_j((1-t)a+tb)=(1-t)\ell_j(a)+t\ell_j(b)\le(1-t)F(a)+tF(b)$. Tomar el supremo da convexidad de $F$. Ni siquiera se requiere que alguna recta alcance el supremo. Por ejemplo $|x|=\max\{x,-x\}$.
+Recíprocamente, sea una familia no vacía de rectas $\ell_j$ con supremo $F(x)$ real finito en cada entrada de un intervalo. Para cada índice, la igualdad afín y las dos cotas de borde dan $\ell_j((1-t)a+tb)=(1-t)\ell_j(a)+t\ell_j(b)\le(1-t)F(a)+tF(b)$. El lado derecho es una barrera común; tomar el supremo en la entrada combinada prueba convexidad de $F$, aunque ningún índice alcance ese supremo. El valor absoluto tiene una representación especialmente breve: $|x|=\max\{x,-x\}$.
 
-![Las tangentes2cx−c² sostienen x² porque su diferencia es(x−c)². Se representan tres; la envolvente completa requiere todos los centros y alcanza x² al tomar c=x. El valor absoluto es la envolvente de x y−x, y en cero admite todo soporte px con−1≤p≤1.](../../assets/books/anm/C20/C20-F04.svg){#fig-anm-c20-f04 fig-alt="Las tangentes2cx−c² sostienen x² porque su diferencia es(x−c)². Se representan tres; la envolvente completa requiere todos los centros y alcanza x² al tomar c=x. El valor absoluto es la envolvente de x y−x, y en cero admite todo soporte px con−1≤p≤1."}
+![Las tangentes2cx−c² sostienen x² porque su diferencia es(x−c)². Se representan tres; la envolvente completa requiere todos los centros y alcanza x² al tomar c=x. El valor absoluto es la envolvente de x y−x, y en cero admite todo soporte px con−1≤p≤1.](../../assets/books/anm/C20/C20-F04.svg){#fig-anm-c20-f04 fig-alt="Varias tangentes debajo del cuadrado y, al lado, dos rectas cuyo máximo forma una esquina con soportes adicionales."}
 
-Dos envolventes diferentes participan en el control: las cuerdas sobre cada segmento por arriba y las rectas de soporte por abajo. Confundir sus direcciones cambia las desigualdades. Si $f$ es estrictamente convexa y derivable, la tangente toca sólo en su centro: una segunda igualdad forzaría un tramo afín, por convexidad y la rigidez de la cuerda aplicada a la diferencia respecto del soporte.
+La cuerda controla por arriba dentro de su segmento y el soporte por abajo en todo el intervalo. Si un soporte toca en dos entradas distintas $a,b$, convexidad obliga a que la función no supere la recta entre ellas, mientras el soporte obliga a que no quede debajo. Hay igualdad en todo $[a,b]$. En una función estrictamente convexa ese tramo afín es imposible, así que una tangente de una convexa estricta derivable sólo toca en su propio centro.
 
 ### Microcontroles
 
@@ -1062,6 +1065,7 @@ En una entrada $z=(1-t)a+tb$, convexidad da $f(z)\le(1-t)f(a)+tf(b)=(1-t)\ell(a)
 El soporte aporta una cota inferior en la entrada combinada y la cuerda una superior con la misma recta, pues comparten sus bordes. Ambas obligan a igualdad. Dos contactos de una convexa estricta crearían así un tramo afín prohibido. En el caso derivable, la tangente ya tiene su contacto central y sólo puede tener ése.
 
 </details>
+
 ## 20.5. Derivadas ordenadas, curvas convexas
 
 []{#MA-SEC-ANM-01-020-005}
@@ -1072,19 +1076,19 @@ Si $f$ es convexa, para $x<y$ las secantes al acercarse a sus extremos dan
 
 $$f'(x)\le S(x,y)\le f'(y).$$
 
-La primera cota se obtiene de las secantes derechas con centro $x$, y la segunda de las izquierdas con centro $y$, usando los límites de la sección20.3. Por transitividad $f'(x)\le f'(y)$ para cualquier par ordenado. No se supone continuidad de $f'$.
+La primera comparación usa el límite de las secantes derechas centradas en $x$, y la segunda el de las izquierdas centradas en $y$, ambos identificados en §20.3. Resulta $f'(x)\le f'(y)$ para todo par ordenado. Hemos obtenido el orden de la función derivada sin suponer su continuidad.
 
-Supongamos en sentido inverso que $f'$ es no decreciente. Para $u<v<w$ de $I$, cada subsegmento está en el dominio; la derivabilidad implica continuidad en sus bordes por C18. Lagrange de C19 proporciona $c\in(u,v)$ y $d\in(v,w)$ con $S(u,v)=f'(c)$ y $S(v,w)=f'(d)$. Como $c<d$, el orden de $f'$ implica $S(u,v)\le S(v,w)$. La equivalencia algebraica de20.2 da convexidad. Los puntos son dos testigos distintos de valor medio, y su ubicación en segmentos vecinos permite compararlos; no se afirma que coincidan.
+Supongamos ahora que $f'$ es no decreciente. Para $u<v<w$ en $I$, la función es continua en los bordes de los dos segmentos por C18 y derivable en sus interiores. Lagrange de C19 da $c\in(u,v)$ y $d\in(v,w)$ con $S(u,v)=f'(c)$ y $S(v,w)=f'(d)$. La ubicación asegura $c<d$, de modo que el orden de $f'$ da $S(u,v)\le S(v,w)$. La equivalencia algebraica de §20.2 recupera convexidad. Aquí sí nos sirven dos testigos diferentes: los segmentos vecinos ya los dejan en el orden que necesitamos.
 
-Hay otra equivalencia útil: $f$ es convexa si y sólo si todas sus tangentes son soportes globales. Una dirección fue demostrada en20.4. Para la otra, fijemos $a<b$ y $z=(1-t)a+tb$, con $0<t<1$. Aplicamos el soporte en $z$ a las entradas $a,b$, multiplicamos por $1-t,t$ y sumamos. Los términos con $f'(z)$ se cancelan porque $(1-t)(a-z)+t(b-z)=0$. Resulta $(1-t)f(a)+tf(b)\ge f(z)$. Las combinaciones triviales dan igualdad.
+También podemos reconocer convexidad por el soporte de todas las tangentes. Una dirección procede de §20.4. Para la otra, tomamos $a<b$, $0<t<1$ y $z=(1-t)a+tb$. El soporte centrado en $z$ da comparaciones para las entradas $a,b$. Al multiplicarlas por $1-t,t$ y sumar, el término de pendiente desaparece porque $(1-t)(a-z)+t(b-z)=0$, y queda $(1-t)f(a)+tf(b)\ge f(z)$. Los pesos extremos o las entradas repetidas dan igualdad directamente. Se utilizó el soporte global en ambas entradas, no sólo una aproximación local.
 
 La versión estricta exige cuidado. Si $f'$ es estrictamente creciente, los dos centros $c<d$ de valor medio producen pendientes estrictamente ordenadas y por20.2 $f$ es estrictamente convexa. Si $f$ es estrictamente convexa, ya sabemos que $f'$ no decrece. Si para algún $x<y$ ocurriera $f'(x)=f'(y)$, el orden encerraría todas las derivadas entre ambos en el mismo valor $k$. C19 aplicado a $f(t)-kt$ lo haría constante en $[x,y]$. Ese tramo afín contradice la convexidad estricta. Así $f'$ es estrictamente creciente.
 
-Una derivada no decreciente no equivale a una función no decreciente. El cuadrado tiene $f'=2x$ estrictamente creciente, pero $f$ decrece en $(-\infty,0]$ y crece en $[0,\infty)$. Por otro lado, el cubo es estrictamente creciente y no es convexo en toda la recta: su derivada $3x^2$ no es no decreciente en toda ella. El signo de $f'$ controla la monotonía de $f$; el orden de $f'$ controla su convexidad.
+El orden de $f'$ y su signo responden a preguntas diferentes. En el cuadrado, $f'=2x$ es estrictamente creciente y certifica convexidad estricta; la propia función decrece en $(-\infty,0]$ y crece en $[0,\infty)$ por el signo de esa derivada. El cubo es estrictamente creciente, pero su derivada $3x^2$ no es no decreciente en toda la recta y, por tanto, el cubo no es globalmente convexo. Ordenar pendientes no equivale a ordenar las salidas.
 
-![El cuadrado tiene derivada2x estrictamente creciente y por ello es estrictamente convexo. El signo negativo de esa derivada a la izquierda de cero hace decrecer f allí; el positivo a la derecha la hace crecer. El orden de pendientes y el orden de salidas son controles diferentes.](../../assets/books/anm/C20/C20-F05.svg){#fig-anm-c20-f05 fig-alt="El cuadrado tiene derivada2x estrictamente creciente y por ello es estrictamente convexo. El signo negativo de esa derivada a la izquierda de cero hace decrecer f allí; el positivo a la derecha la hace crecer. El orden de pendientes y el orden de salidas son controles diferentes."}
+![El cuadrado tiene derivada2x estrictamente creciente y por ello es estrictamente convexo. El signo negativo de esa derivada a la izquierda de cero hace decrecer f allí; el positivo a la derecha la hace crecer. El orden de pendientes y el orden de salidas son controles diferentes.](../../assets/books/anm/C20/C20-F05.svg){#fig-anm-c20-f05 fig-alt="Una parábola con mínimo y una recta creciente que representa su derivada, cruzando el nivel cero."}
 
-Sobre $[a,b]$, si $f$ es continua incluyendo los extremos y derivable en $(a,b)$, el orden de la derivada interior basta para convexidad en todo el segmento: la prueba por los dos subsegmentos de Lagrange conserva sus hipótesis incluso cuando $u=a$ o $w=b$. Las tangentes en centros interiores sostienen también los bordes por paso al límite. Sin continuidad en bordes esta extensión es falsa; $f(0)=-1$ y $f(x)=0$ para $0<x\le1$ tiene derivada interior cero pero viola la cuerda de0 a1.
+En un segmento cerrado $[a,b]$, continuidad incluyendo los bordes y derivabilidad en $(a,b)$ permiten la misma prueba con dos aplicaciones de Lagrange. Sigue siendo válida cuando el primer extremo es $a$ o el último es $b$, así que el orden de la derivada interior da convexidad en todo el segmento. Las tangentes de centros interiores sostienen también los valores de borde, por continuidad y paso al límite. Si retiramos continuidad, el criterio puede fallar: la función $f(0)=-1$ y $f(x)=0$ para $0<x\le1$ tiene derivada interior cero, pero su valor en $1/2$ es cero y la cuerda de cero a uno tiene allí altura $-1/2$.
 
 ### Microcontroles
 
@@ -1312,6 +1316,7 @@ En cualquier centro interior hay un radio donde $f=0$, así $f\prime=0$ en todo 
 Modificar el borde no afecta las derivadas en centros interiores, que siguen siendo cero. Pero cambia la cuerda que incluye ese borde y su altura cae por debajo del valor interior. La falta de continuidad impide extender el criterio abierto al segmento cerrado. El ejemplo conserva orden de derivadas y muestra el gasto de la hipótesis de borde.
 
 </details>
+
 ## 20.6. La segunda derivada y sus límites
 
 []{#MA-SEC-ANM-01-020-006}
@@ -1320,19 +1325,19 @@ La segunda derivada es la derivada de la función $f'$ en los centros donde esta
 
 $$f\text{ es convexa en }I\quad\Longleftrightarrow\quad f''(x)\ge0\text{ para todo }x\in I.$$
 
-Si $f''\ge0$, C19 aplicado a la función $f'$ la hace no decreciente: esta función es derivable en $I$, y por ello continua sobre cada segmento interior. La equivalencia de20.5 hace convexa a $f$. En sentido inverso, si $f$ es convexa, $f'$ no decrece; donde $f'$ es derivable, todos sus cocientes incrementales son no negativos, tanto por incrementos positivos como negativos. Su límite $f''$ también es no negativo. No se ha pedido continuidad de $f''$.
+Si $f''\ge0$, aplicamos el resultado de signo de C19 a $f'$. La existencia de su derivada la hace continua en cada segmento interior, y el signo hace a $f'$ no decreciente. El criterio de §20.5 da entonces convexidad de $f$. A la inversa, convexidad hace no decreciente a $f'$; todos sus cocientes incrementales son no negativos, también para incrementos negativos, porque numerador y denominador cambian de signo juntos. El límite existente $f''$ conserva la cota cero. Ninguna dirección requiere continuidad de la segunda derivada.
 
-Si $f''>0$ en todos los puntos, C19 da crecimiento estricto de $f'$ y por ello convexidad estricta. La recíproca estricta es falsa: $f(x)=x^4$ tiene $f'(x)=4x^3$ estrictamente creciente, así es estrictamente convexa, pero $f''(0)=0$. El criterio débil $f''\ge0$ caracteriza convexidad; el criterio positivo es una condición suficiente más fuerte para la estricta.
+Con $f''>0$ en todo el intervalo, C19 hace estrictamente creciente a $f'$ y obtenemos convexidad estricta. La vuelta no es válida: $x^4$ tiene primera derivada $4x^3$ estrictamente creciente y es estrictamente convexa, pero su segunda derivada vale cero en el origen. La desigualdad débil $f''\ge0$ caracteriza convexidad bajo la hipótesis de doble derivabilidad; la positividad en todos los centros ofrece una condición suficiente más fuerte para estrictitud.
 
-Aplicar los mismos resultados a $-f$ demuestra concavidad cuando $f''\le0$, y concavidad estricta si $f''<0$. En $(0,\infty)$, $f(x)=1/x$ tiene $f'=-1/x^2$ y $f''=2/x^3>0$: es decreciente y estrictamente convexa. La raíz $g(x)=\sqrt{x}$ tiene $g'=1/(2\sqrt{x})$ y $g''=-1/(4x^{3/2})<0$ sobre $(0,\infty)$, de modo que es estrictamente cóncava allí. Estas fórmulas se derivan con las reglas de C18, cocientes y cadena, sin asumir reglas para potencias reales arbitrarias. Su continuidad en cero permite pasar las desigualdades al segmento que incluye ese borde.
+Aplicando estos resultados a $-f$, el signo $f''\le0$ da concavidad y $f''<0$ da concavidad estricta. En $(0,\infty)$, el recíproco tiene $f'=-1/x^2<0$ y $f''=2/x^3>0$: sus valores decrecen y sus pendientes aumentan, de modo que es estrictamente convexo. Para la raíz, C18 da $g'=1/(2\sqrt x)>0$; derivar ese recíproco mediante las mismas reglas da $g''=-(1/\sqrt x)/(4x)=-1/(4x^{3/2})<0$. Es creciente y estrictamente cóncava en el semieje positivo. Todas las divisiones se realizan allí; la potencia fraccionaria sólo abrevia productos y raíces construidos. La continuidad de la raíz en cero permite pasar las desigualdades de concavidad a segmentos que incluyan ese borde, sin atribuirle una segunda derivada finita allí.
 
-En un centro $c$ derivable de una función convexa, $f'(c)=0$ garantiza un mínimo global: el soporte horizontal dice $f(x)\ge f(c)$ para todas las entradas. Si la convexidad es estricta, el mínimo es único. Si un mínimo se alcanza en un centro interior derivable, Fermat de C19 da la condición necesaria $f'(c)=0$. En una frontera no se exige esta igualdad: la identidad en $[0,1]$ tiene su mínimo en cero y derivada relativa uno.
+Si una función convexa es derivable en un centro interior $c$ y $f'(c)=0$, su soporte es horizontal y da $f(x)\ge f(c)$ en todo el dominio. El centro ya aporta un mínimo global, y la convexidad estricta lo hace único. En sentido contrario, Fermat de C19 fuerza derivada cero en un mínimo interior derivable. La frontera queda fuera de esa necesidad: la identidad en $[0,1]$ tiene mínimo en cero con derivada relativa uno.
 
-Un signo de segunda derivada en un único centro no es un certificado global. La función $q(x)=x^2-x^4$ satisface $q''(0)=2$, pero $q''(x)=2-12x^2$ es negativa, por ejemplo, en1; no es convexa en toda la recta. Tampoco $f''(c)=0$ determina un extremo ni un cambio de convexidad: $x^4$ es convexa a ambos lados de cero, mientras $x^3$ es cóncava a la izquierda y convexa a la derecha, y en cero no tiene extremo. Las hipótesis sobre un intervalo no se reemplazan por una muestra central.
+Para aplicar un criterio global necesitamos controlar todo el intervalo. La función $q(x)=x^2-x^4$ tiene $q''(0)=2>0$, pero $q''(x)=2-12x^2$ vale $-10$ en uno y excluye convexidad en toda la recta. Una segunda derivada nula en un centro tampoco decide lo que sucede a sus lados: $x^4$ conserva convexidad al cruzar cero, mientras $x^3$ es cóncava a la izquierda, convexa a la derecha y no tiene extremo en cero. El dato puntual no reemplaza esas comparaciones vecinas.
 
-![La derivada4x³ del cuarto poder es estrictamente creciente y prueba convexidad estricta. Su segunda derivada12x² se anula en cero, sin cambio de convexidad. Positividad estricta en todos los centros es suficiente pero no necesaria, y no hay margen uniforme m>0 alrededor del origen.](../../assets/books/anm/C20/C20-F06.svg){#fig-anm-c20-f06 fig-alt="La derivada4x³ del cuarto poder es estrictamente creciente y prueba convexidad estricta. Su segunda derivada12x² se anula en cero, sin cambio de convexidad. Positividad estricta en todos los centros es suficiente pero no necesaria, y no hay margen uniforme m&gt;0 alrededor del origen."}
+![La derivada4x³ del cuarto poder es estrictamente creciente y prueba convexidad estricta. Su segunda derivada12x² se anula en cero, sin cambio de convexidad. Positividad estricta en todos los centros es suficiente pero no necesaria, y no hay margen uniforme m>0 alrededor del origen.](../../assets/books/anm/C20/C20-F06.svg){#fig-anm-c20-f06 fig-alt="Cuarto poder con contacto horizontal en cero y una parábola de segunda derivada que también vale cero allí."}
 
-Convexidad tampoco garantiza que el mínimo exista. Sobre $(0,1)$, $x^2$ es estrictamente convexa y tiene ínfimo cero, pero no lo alcanza. C16 proporciona existencia sobre segmentos compactos continuos; cuando se usa, debe nombrarse esa condición adicional.
+La unicidad de un mínimo, cuando existe, no produce por sí sola una entrada que lo alcance. El cuadrado en $(0,1)$ es estrictamente convexo y tiene ínfimo cero sin mínimo: cada entrada $x$ tiene otra $x/2$ con menor salida. Sobre un segmento compacto, C16 sí asegura un mínimo al añadir continuidad, y esa hipótesis debe mantenerse cuando se usa.
 
 ### Microcontroles
 
@@ -1560,35 +1565,36 @@ Distingue las conclusiones sobre mínimos de: (i) función convexa derivable con
 Un centro estacionario interior ya proporciona una entrada y su soporte horizontal acredita el mínimo global. Estrictitud asegura unicidad si ese mínimo existe. En una frontera puede haber mínimo sin pendiente relativa cero, y en un intervalo abierto puede faltar por completo el minimizador. Existencia, ubicación y unicidad responden a hipótesis diferentes.
 
 </details>
+
 ## 20.7. Jensen: combinar sin perder el control
 
 []{#MA-SEC-ANM-01-020-007}
 
-La definición combina dos entradas. ¿Cómo controla una media finita? Si $x_1,\ldots,x_n$ están en $I$, los pesos $\lambda_i\ge0$ suman1 y $n\ge1$, entonces
+Para una función convexa, la comparación de dos entradas se extiende a una media finita. Si $x_1,\ldots,x_n$ están en $I$, los pesos $\lambda_i\ge0$ suman1 y $n\ge1$, entonces
 
 $$f\left(\sum_{i=1}^n\lambda_i x_i\right)\le\sum_{i=1}^n\lambda_i f(x_i).$$
 
-Esta es la desigualdad finita de Jensen. Antes de evaluar debemos comprobar que la combinación está en $I$: la misma inducción que sigue construye cada media como combinación de entradas anteriores, y los intervalos conservan estas combinaciones.
+La desigualdad se llama Jensen finito. Antes de evaluar su lado izquierdo necesitamos saber que la media pertenece a $I$. La inducción siguiente demostrará a la vez esa pertenencia y la comparación, reduciendo una media de varias entradas a combinaciones de dos dentro del mismo intervalo.
 
-Para $n=1$ hay igualdad. Supongamos probado el caso $n-1$ y pongamos $s=\sum_{i<n}\lambda_i=1-\lambda_n$. Si $s=0$, todos los pesos anteriores son cero y sólo queda $x_n$. Si $\lambda_n=0$, entonces $s=1$ y aplicamos directamente la hipótesis inductiva. En el caso restante $0<s<1$, definimos $y=\sum_{i<n}(\lambda_i/s)x_i$. Los pesos normalizados son no negativos y suman1, luego $y\in I$ y $f(y)\le\sum_{i<n}(\lambda_i/s)f(x_i)$. Convexidad para $sy+(1-s)x_n$ da $f(\sum_i\lambda_i x_i)\le sf(y)+(1-s)f(x_n)$; sustituyendo la cota anterior termina el paso. Ninguna división por un peso nulo se ha ocultado.
+Para $n=1$, el único peso vale uno y hay igualdad. Supongamos probado el caso $n-1$ y pongamos $s=\sum_{i<n}\lambda_i=1-\lambda_n$. Si $s=0$, la no negatividad fuerza todos los pesos anteriores a ser cero y sólo queda $x_n$. Si $\lambda_n=0$, los primeros pesos ya suman uno y basta la hipótesis inductiva. En el caso restante $0<s<1$, la media normalizada $y=\sum_{i<n}(\lambda_i/s)x_i$ pertenece a $I$ por inducción y cumple $f(y)\le\sum_{i<n}(\lambda_i/s)f(x_i)$. Convexidad aplicada a $sy+(1-s)x_n$ mantiene la media completa en $I$ y da $f(\sum_i\lambda_i x_i)\le sf(y)+(1-s)f(x_n)$. Sustituir la cota inductiva termina el paso sin dividir por ningún peso total nulo.
 
-Si $f$ es estrictamente convexa, hay igualdad exactamente cuando todas las entradas con peso positivo son iguales. Una dirección es directa. Para la otra descartemos primero pesos cero. Si al menos dos entradas activas difieren, elijamos una con valor mínimo y agrupemos todas las entradas activas con ese mismo valor. Su peso total $\theta$ satisface $0<\theta<1$; la media $y$ de las restantes es estrictamente mayor que ese mínimo, porque cada una es mayor y sus pesos son positivos. La convexidad estricta entre mínimo e $y$, seguida de Jensen en cada grupo, hace estricta la desigualdad completa. El argumento usa sólo grupos finitos.
+Para una función estrictamente convexa, hay igualdad exactamente cuando todas las entradas con peso positivo coinciden; las de peso cero no afectan ninguna de las dos alturas. Si las entradas activas coinciden, la igualdad es directa. Si difieren, agrupamos todas las de valor mínimo y llamamos $\theta$ a su peso total. Queda al menos una entrada mayor, por lo que $0<\theta<1$. La media $y$ del resto es estrictamente mayor que el mínimo: todos sus pesos normalizados son positivos y todas sus entradas lo superan. La comparación estricta entre ese mínimo e $y$, seguida de Jensen dentro de los grupos, hace estricta la desigualdad completa. Sólo se agrupan finitos términos.
 
 Para el cuadrado, con $\mu=\sum_i\lambda_i x_i$, la diferencia tiene una identidad exacta:
 
 $$\sum_i\lambda_i x_i^2-\mu^2=\sum_i\lambda_i(x_i-\mu)^2\ge0.$$
 
-La expansión usa $\sum_i\lambda_i=1$ y $\sum_i\lambda_i x_i=\mu$. La identidad también identifica la igualdad: cada término con peso positivo debe anularse. Para $\lambda=(1/4,1/2,1/4)$ y $x=(0,1,3)$ se obtiene $\mu=5/4$, media de cuadrados $11/4$ y diferencia $19/16$.
+Al expandir las desviaciones, las relaciones $\sum_i\lambda_i=1$ y $\sum_i\lambda_i x_i=\mu$ cancelan los términos cruzados y dejan la identidad. Cada sumando de la derecha es no negativo; la igualdad exige que se anulen todos los de peso positivo. Con pesos $(1/4,1/2,1/4)$ y entradas $(0,1,3)$ obtenemos $\mu=5/4$, media de cuadrados $11/4$ y diferencia $11/4-25/16=19/16$. Las tres desviaciones ponderadas son $25/64$, $2/64$ y $49/64$, cuya suma coincide con esa diferencia.
 
 Para entradas positivas usamos la convexidad estricta de $1/x$ ya demostrada:
 
 $$\frac1{\sum_i\lambda_i x_i}\le\sum_i\frac{\lambda_i}{x_i}.$$
 
-La media es positiva porque algún peso es positivo y todas las entradas lo son. Con pesos iguales, multiplicar por la suma positiva produce $(\sum_i x_i)(\sum_i1/x_i)\ge n^2$, con igualdad exactamente cuando todas las entradas son iguales. No se necesita logaritmo, exponencial ni una regla de potencias reales.
+La media es positiva porque algún peso es positivo y todas las entradas lo son; por tanto pertenece al dominio del recíproco. Si los pesos son iguales a $1/n$, la desigualdad se convierte en $n/(\sum_i x_i)\le(1/n)\sum_i1/x_i$. Multiplicar por $n\sum_i x_i>0$ da $(\sum_i x_i)(\sum_i1/x_i)\ge n^2$. Todos esos pesos son positivos, así la igualdad ocurre exactamente cuando todas las entradas coinciden, también para $n=1$. La prueba sólo utiliza Jensen y la convexidad ya demostrada del recíproco.
 
-![Con entradas0,1,3 y pesos1/4,1/2,1/4, la media es5/4, f(media)=25/16 y la media de cuadrados11/4. La diferencia19/16 coincide con las desviaciones ponderadas25/64,2/64,49/64. La identidad prueba no negatividad; los tres datos sólo ilustran Jensen finito.](../../assets/books/anm/C20/C20-F07.svg){#fig-anm-c20-f07 fig-alt="Con entradas0,1,3 y pesos1/4,1/2,1/4, la media es5/4, f(media)=25/16 y la media de cuadrados11/4. La diferencia19/16 coincide con las desviaciones ponderadas25/64,2/64,49/64. La identidad prueba no negatividad; los tres datos sólo ilustran Jensen finito."}
+![Con entradas0,1,3 y pesos1/4,1/2,1/4, la media es5/4, f(media)=25/16 y la media de cuadrados11/4. La diferencia19/16 coincide con las desviaciones ponderadas25/64,2/64,49/64. La identidad prueba no negatividad; los tres datos sólo ilustran Jensen finito.](../../assets/books/anm/C20/C20-F07.svg){#fig-anm-c20-f07 fig-alt="Cuadrado con entradas ponderadas y dos alturas en la media; tres barras suman la diferencia exacta."}
 
-Los pesos negativos invalidan el mecanismo: con el cuadrado, pesos2 y−1 y entradas0 y1 dan una media−1, cuyo cuadrado1 no es menor o igual que la media de cuadrados−1. La suma de pesos sigue siendo1, pero la condición de signo se perdió. Este capítulo establece Jensen finito; no convierte una suma finita en una integral o en una media infinita.
+Mantener la suma uno sin conservar el signo de los pesos puede destruir la desigualdad. Para el cuadrado, los pesos $2,-1$ y entradas $0,1$ dan media $-1$, de cuadrado uno, mientras la combinación de cuadrados es $-1$. La comparación $1\le-1$ falla. Un peso negativo puede sacar la entrada del segmento y, al ponderar desigualdades, invierte su sentido. Jensen finito exigía no negatividad; el resultado no se extiende aquí a medias infinitas o integrales.
 
 ### Microcontroles
 
@@ -1816,17 +1822,18 @@ Con entradas0 y1, la combinación es−1 y su cuadrado vale1. La media de cuadra
 El contraejemplo mantiene suma uno pero pierde no negatividad. La entrada combinada puede salir del segmento entre las muestras y ponderar una desigualdad con signo negativo invierte su sentido. Esas son las obligaciones que dejan de estar disponibles en la prueba. La conclusión falsa no contradice el teorema con sus premisas completas.
 
 </details>
+
 ## 20.8. Bandas cuadráticas y mínimos certificados
 
 []{#MA-SEC-ANM-01-020-008}
 
 Una tangente aporta una cota inferior a una función convexa. Si además controlamos la segunda derivada, podemos encerrar el error entre dos cantidades explícitas sin usar Taylor. Sea $f$ dos veces derivable en un intervalo abierto $I$, y supongamos $m\le f''(x)\le M$ en todos sus puntos, con $m\le M$ reales.
 
-La función $q_m(x)=f(x)-(m/2)x^2$ tiene segunda derivada $f''-m\ge0$, luego es convexa por20.6. Su soporte en $c$ da
+Restar un cuadrado permite convertir una barrera de segunda derivada en convexidad. Para $q_m(x)=f(x)-(m/2)x^2$, la segunda derivada es $f''-m\ge0$, así que §20.6 la hace convexa. Su tangente de soporte en $c$ proporciona
 
 $$q_m(x)\ge q_m(c)+q_m'(c)(x-c).$$
 
-Sustituimos $q_m'=f'-mx$ y agrupamos el polinomio cuadrático; resulta
+Al sustituir $q_m'=f'-mx$, los términos cuadráticos se reúnen mediante $x^2-c^2-2c(x-c)=(x-c)^2$, y la desigualdad se convierte en
 
 $$f(x)-f(c)-f'(c)(x-c)\ge\frac m2(x-c)^2.$$
 
@@ -1834,7 +1841,7 @@ Del mismo modo $q_M(x)=f(x)-(M/2)x^2$ es cóncava, y el soporte superior de una 
 
 $$\frac m2(x-c)^2\le f(x)-f(c)-f'(c)(x-c)\le\frac M2(x-c)^2.$$
 
-No se exige $m\ge0$ para esta banda firmada. Si sólo $|f''|\le K$, elegimos $m=-K$ y $M=K$ y obtenemos una cota absoluta $K(x-c)^2/2$. Los límites de C18 por sí solos no aportaban este coeficiente cuadrático; aquí lo aportan las cotas universales y el criterio de convexidad.
+La banda admite $m$ negativo: lo que vuelve convexa a $q_m$ es la diferencia $f''-m$, no el signo propio de $m$. Si sólo conocemos $|f''|\le K$, tomamos $m=-K$ y $M=K$ y obtenemos una cota absoluta de resto $K(x-c)^2/2$. La derivabilidad de C18 no daba por sí sola este coeficiente; aquí procede de cotas válidas en todos los centros y del criterio de convexidad.
 
 El mismo truco aplicado a cuerdas, con $z=(1-t)a+tb$, da
 
@@ -1844,11 +1851,11 @@ $$
 \le\frac M2\,t(1-t)(b-a)^2.
 $$
 
-Se resta la desigualdad de convexidad de $q_m$ y se usa la identidad del cuadrado de20.1; con $q_M$ se usa concavidad. Se incluyen $t=0,1$ sin división. Si $f$ es continua en los extremos de un segmento y las cotas rigen en su interior, las dos funciones auxiliares son continuas allí y20.5 permite estas mismas bandas en todo el segmento.
+Aplicamos convexidad a $q_m$ en la combinación $z$ y trasladamos sus términos cuadráticos. La identidad de §20.1 deja la barrera inferior de cuerda; la concavidad de $q_M$ da la superior. Para $t=0,1$, ambos errores y factores valen cero sin dividir. Si $f$ es continua en los bordes de un segmento y las cotas rigen en su interior, las auxiliares también son continuas allí y el criterio de §20.5 extiende estas bandas de cuerda a todo el segmento. Las comparaciones con tangentes de centros interiores incluyen igualmente las entradas de borde por paso al límite.
 
-![En\[−1,1\], x²+x⁴ tiene2≤f′′≤14; desde su mínimo único0 queda entre x² y7x². El panel muestra una ventana interior. En x=1/4, la pendiente9/16 y m=2 certifican distancia≤9/32 y pérdida≤81/1024; los valores exactos son1/4 y17/256. La existencia del centro estacionario se verifica antes de usar el certificado.](../../assets/books/anm/C20/C20-F08.svg){#fig-anm-c20-f08 fig-alt="En\[−1,1\], x²+x⁴ tiene2≤f′′≤14; desde su mínimo único0 queda entre x² y7x². El panel muestra una ventana interior. En x=1/4, la pendiente9/16 y m=2 certifican distancia≤9/32 y pérdida≤81/1024; los valores exactos son1/4 y17/256. La existencia del centro estacionario se verifica antes de usar el certificado."}
+![En\[−1,1\], x²+x⁴ tiene2≤f′′≤14; desde su mínimo único0 queda entre x² y7x². El panel muestra una ventana interior. En x=1/4, la pendiente9/16 y m=2 certifican distancia≤9/32 y pérdida≤81/1024; los valores exactos son1/4 y17/256. La existencia del centro estacionario se verifica antes de usar el certificado.](../../assets/books/anm/C20/C20-F08.svg){#fig-anm-c20-f08 fig-alt="Función entre dos bandas cuadráticas y, al lado, barras de distancia real y certificada con la pérdida exacta anotada."}
 
-Cuando $m>0$, la cota inferior hace estrictamente convexa a $f$, lo que suele llamarse convexidad fuerte con constante $m$. Si existe un centro $r$ con $f'(r)=0$, es el único mínimo global. Para cualquier $x\in I$, C19 aplicado a $f'$ entre $r$ y $x$ da $|f'(x)|\ge m|x-r|$: el signo del incremento se conserva y cada testigo tiene segunda derivada al menos $m$. Así
+Si $m>0$, la banda de cuerda tiene barrera inferior positiva para entradas distintas y pesos interiores, y hace estrictamente convexa a $f$; este margen se llama convexidad fuerte con constante $m$. Si existe un centro $r$ con $f'(r)=0$, su soporte horizontal lo convierte en el único mínimo global. Para cualquier otra entrada $x$, C19 aplicado a $f'$ entre $r$ y $x$ da $|f'(x)|\ge m|x-r|$, porque cada segunda derivada intermedia es al menos $m$ y $f'(r)=0$. Dividir por el margen positivo produce
 
 $$|x-r|\le\frac{|f'(x)|}{m}.$$
 
@@ -1856,11 +1863,11 @@ Además, aplicando la banda inferior con centro $x$ y entrada $r$,
 
 $$0\le f(x)-f(r)\le f'(x)(x-r)-\frac m2(x-r)^2\le\frac{f'(x)^2}{2m}.$$
 
-La última cota se prueba completando el cuadrado en $x-r$. Se exige la existencia del centro estacionario; $m>0$ en un intervalo abierto no la garantiza, como muestra $x^2$ sobre $(0,1)$.
+Para ver la última desigualdad, ponemos $d=x-r$ y completamos el cuadrado: $f'(x)d-(m/2)d^2=f'(x)^2/(2m)-(m/2)(d-f'(x)/m)^2\le f'(x)^2/(2m)$. La no negatividad de la pérdida procede de que $r$ es mínimo. Su existencia sigue siendo una premisa: incluso con $m>0$, el cuadrado en $(0,1)$ no tiene centro estacionario ni alcanza su ínfimo.
 
-Para $f(x)=x^2+x^4$ sobre $[-1,1]$, $f''=2+12x^2$ permite $m=2$, $M=14$; las hipótesis de borde se cumplen. El mínimo único es $r=0$. En $x=1/4$, $f'(x)=9/16$ y $f(x)=17/256$: el certificado de posición es $|x-r|\le9/32$ y el de pérdida es $f(x)-f(r)\le81/1024$. Los valores exactos $1/4\le9/32$ y $17/256=68/1024\le81/1024$ comprueban la consistencia; las pruebas, no esta muestra, garantizan las bandas universales.
+Para $f(x)=x^2+x^4$ en $[-1,1]$, la segunda derivada $2+12x^2$ permite $m=2$ y $M=14$, y la continuidad de bordes mantiene las bandas en el segmento. El centro $r=0$ es estacionario y su soporte, reforzado por la barrera positiva, acredita el mínimo único. En $x=1/4$ tenemos $f'(x)=9/16$ y $f(x)=17/256$. El certificado de posición es $|x-r|\le9/32$ y el de pérdida $f(x)-f(r)\le81/1024$. Los errores exactos son $1/4=8/32$ y $17/256=68/1024$, respectivamente. Esas cuentas comparan la precisión efectiva del ejemplo con las garantías ya demostradas para todas las entradas.
 
-La convexidad estricta no siempre ofrece una constante $m>0$: $x^4$ tiene segunda derivada cero en el origen, y para $x\to0$ la razón $|f'(x)|/|x|=4x^2$ tiende a cero. El control cuantitativo debe gastar una hipótesis cuantitativa. C21 podrá desarrollar modelos polinómicos generales; aquí las bandas proceden de restar un cuadrado y aplicar teoremas ya demostrados.
+La convexidad estricta del cuarto poder no ofrece un margen positivo uniforme alrededor de cero. Su segunda derivada $12x^2$ se anula en el origen y puede hacerse menor que cualquier $m>0$ incluso al excluir ese centro. También $|f'(x)|/|x|=4x^2$ tiende a cero para $x\ne0$ que se acerca al origen. Las divisiones de los certificados requieren una barrera cuantitativa demostrada, que no se obtiene de la sola estrictitud.
 
 ### Microcontroles
 

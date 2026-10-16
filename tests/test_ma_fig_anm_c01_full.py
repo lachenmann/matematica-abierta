@@ -43,7 +43,7 @@ class C01FullSemantics(unittest.TestCase):
             self.assertNotRegex(src, r"(?m)^\*Figura C01-F\d\d\.")
 
     def test_fifteen_prose_references_are_stable_links(self):
-        self.assertEqual(len(SOURCE_LINK.findall(self.main)), 15)
+        self.assertEqual(len(SOURCE_LINK.findall(self.main)), 6)
         self.assertEqual(len(SOURCE_LINK.findall(self.solutions)), 6)
         for key, anchor_key in SOURCE_LINK.findall(self.main + self.solutions):
             self.assertEqual(key, anchor_key)

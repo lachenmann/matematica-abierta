@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: 'Capítulo 21 — Taylor: modelos locales y error'
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,7 +28,7 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-21)
 
-Una aproximación no queda certificada al escribir sus coeficientes. Este capítulo construye el polinomio central finito, demuestra lo que deja fuera y precisa cómo controlar ese resto. Se distinguen datos centrales, información en un segmento y cotas sobre una región completa.
+En el cubo centrado en uno, la recta que conserva el valor y la pendiente deja un error que podemos calcular por expansión. Añadir el término cuadrático reduce ese error a un cubo del desplazamiento. Para extender esta observación a otras funciones tendremos que relacionar los datos de un centro con lo que ocurre entre dos entradas: el polinomio se construye con las derivadas centrales, pero la garantía de error dependerá de las hipótesis disponibles en el segmento o cerca del centro.
 
 C18 aporta diferenciabilidad y reglas; C19 Rolle, Lagrange y Cauchy; C20 bandas y alcance de convexidad. Inducción, sumas finitas, tipos, límites, continuidad y raíces son interfaces heredadas. No se usan integrales, sumas infinitas ni reglas nuevas para potencias reales generales. El polinomio vive en toda la recta, pero el error se evalúa sólo donde la función original existe.
 
@@ -36,11 +36,11 @@ C18 aporta diferenciabilidad y reglas; C19 Rolle, Lagrange y Cauchy; C20 bandas 
 
 []{#MA-SEC-ANM-01-021-001}
 
-La recta de C18 conserva el valor y la primera derivada de una función en un centro. Si conocemos más derivadas, ¿qué polinomio conserva exactamente esos datos? Primero resolvamos este problema finito; todavía no afirmamos nada sobre el error fuera del centro.
+La recta de C18 conserva el valor y la primera derivada de una función en un centro. Para conservar más derivadas buscaremos un polinomio escrito en potencias del desplazamiento respecto de ese centro. Esta elección hará que, al evaluar cada derivada en él, desaparezcan todos los términos salvo uno; podremos determinar los coeficientes por separado antes de estudiar el error fuera del centro.
 
 Fijemos $n\ge0$ y un centro $c$. Escribimos $f^{(0)}=f$ y $f^{(k+1)}=(f^{(k)})'$ donde esas derivadas existen en el dominio indicado. El factorial se define por $0!=1$ y $(k+1)!=(k+1)k!$. Inducción demuestra su positividad. En fórmulas reales, $k!$ abrevia su copia real positiva mediante la incrustación de naturales; no identificamos silenciosamente los dos tipos. La potencia de exponente cero es la función constante1, también en el centro.
 
-Busquemos $P(t)=\sum_{k=0}^n a_k(t-c)^k$. Las reglas de C18 para productos finitos dan, por inducción, que la derivada de orden $j$ del término de grado $k$ es cero si $j>k$, y es $k!/(k-j)!\,(t-c)^{k-j}$ si $j\le k$. Al evaluar en $c$, sólo sobrevive el término $k=j$. Por tanto
+Busquemos $P(t)=\sum_{k=0}^n a_k(t-c)^k$. Las reglas de C18 para productos finitos dan, por inducción, que la derivada de orden $j$ de la potencia $(t-c)^k$ es cero si $j>k$, y es $k!/(k-j)!\,(t-c)^{k-j}$ si $j\le k$. En la derivada del término completo se conserva además el factor $a_k$. Al evaluar en $c$, las potencias positivas se anulan y sólo sobrevive el término $k=j$, cuya potencia de exponente cero vale uno. Por tanto
 
 $$P^{(j)}(c)=j!a_j,\qquad 0\le j\le n.$$
 
@@ -50,13 +50,13 @@ $$T_{n,c}f(t)=\sum_{k=0}^n\frac{f^{(k)}(c)}{k!}(t-c)^k.$$
 
 Es el único polinomio de grado a lo sumo $n$ que reproduce todos esos datos en el centro. «Orden $n$» no significa grado exactamente $n$: el coeficiente superior puede ser cero. Para $n=0$ sólo retenemos el valor; para $n=1$ recuperamos la recta; para $n=2$ aparece $f''(c)(t-c)^2/2$. La definición usa datos finitos, no infinitas derivadas ni una suma infinita.
 
-Si $f(t)=t^3$ y $c=1$, tenemos $f(c)=1$, $f'(c)=3$ y $f''(c)=6$. Así $T_{2,1}f(1+h)=1+3h+3h^2$. La identidad $(1+h)^3=1+3h+3h^2+h^3$ muestra en este caso un resto exacto $h^3$. No hemos probado todavía que todas las funciones tengan un resto semejante.
+Para $f(t)=t^3$ y $c=1$, los datos son $f(c)=1$, $f'(c)=3$ y $f''(c)=6$. Obtenemos $T_{2,1}f(1+h)=1+3h+3h^2$. Al expandir $(1+h)^3$, la diferencia respecto de este polinomio es exactamente $h^3$. En el mismo ejemplo, la recta $1+3h$ deja $3h^2+h^3$: incorporar el dato de segunda derivada elimina el término cuadrático del error. La identidad del cubo permite esta comparación exacta; para una función general todavía necesitamos demostrar qué queda fuera de su polinomio.
 
 La igualdad de datos centrales tampoco determina toda una función. Para un $n$ fijo, los polinomios $P(t)$ y $P(t)+A(t-c)^{n+1}$ tienen los mismos valores derivados de órdenes0 a$n$ en $c$, para cualquier real $A$, pero difieren fuera del centro si $A\ne0$. La unicidad afirmada sólo afecta a polinomios de grado a lo sumo $n$.
 
-![El cubo centrado en1 tiene T₁=1+3h y T₂=1+3h+3h². El resto de orden2 es h³, no cero fuera del centro. Las identidades finitas prueban estos valores; la coincidencia central no determina una función completa.](../../assets/books/anm/C21/C21-F01.svg){#fig-anm-c21-f01 fig-alt="El cubo centrado en1 tiene T₁=1+3h y T₂=1+3h+3h². El resto de orden2 es h³, no cero fuera del centro. Las identidades finitas prueban estos valores; la coincidencia central no determina una función completa."}
+![El cubo centrado en1 tiene T₁=1+3h y T₂=1+3h+3h². El resto de orden2 es h³, no cero fuera del centro. Las identidades finitas prueban estos valores; la coincidencia central no determina una función completa.](../../assets/books/anm/C21/C21-F01.svg){#fig-anm-c21-f01 fig-alt="Curva cúbica con dos modelos centrales y un panel separado del resto cúbico firmado."}
 
-En el resto del capítulo escribiremos $R_{n,c}(x)=f(x)-T_{n,c}f(x)$. Es una función del dominio de $f$, mientras el polinomio está definido en toda $\mathbb R$. Cada comparación se hace en entradas donde la función original existe.
+Escribiremos $R_{n,c}(x)=f(x)-T_{n,c}f(x)$ para el resto. Su dominio es el de $f$: aunque el polinomio esté definido en toda $\mathbb R$, la diferencia sólo tiene sentido donde existe la función original. Esta restricción acompañará tanto a las identidades exactas como a las cotas de error.
 
 ### Microcontroles
 
@@ -286,6 +286,7 @@ El centro0 pertenece al dominio declarado$t<1$; las derivadas centrales usadas d
 El contrato debe acreditar pertenencia del centro, existencia de los datos y lectura real de los factoriales. El polinomio definido por ellos no tiene una singularidad, pero la función sí pierde definición en uno. Una cota de error requiere controlar la región donde se comparan ambas y su distancia a esa singularidad.
 
 </details>
+
 ## 21.2. Rolle se repite sin perder sus hipótesis
 
 []{#MA-SEC-ANM-01-021-002}
@@ -296,21 +297,21 @@ $$H_k(c)=0\quad(0\le k\le n),\qquad H_0(x)=0.$$
 
 No exigimos continuidad de $H_n'$ ni su existencia en los bordes.
 
-Empezamos con $z_0=x$. Rolle aplicado a $H_0$ entre $c$ y $z_0$ da un $z_1$ estrictamente entre ambos con $H_0'(z_1)=0$. Si $n\ge1$, la identidad de la cadena dice $H_1(z_1)=0$; además $H_1(c)=0$. Ahora Rolle aplicado a $H_1$ entre $c$ y $z_1$ da $z_2$ estrictamente entre ambos. Repetimos.
+Empezamos con $z_0=x$. Los valores $H_0(c)=H_0(z_0)=0$, junto con continuidad en el segmento y derivabilidad en su interior, permiten aplicar Rolle y obtener un $z_1$ estrictamente entre ambos con $H_0'(z_1)=0$. Si $n\ge1$, la relación $H_0'=H_1$ convierte ese resultado en $H_1(z_1)=0$. Como también $H_1(c)=0$, el siguiente miembro tiene de nuevo dos valores iguales y podemos aplicar Rolle entre $c$ y $z_1$.
 
-El invariante del paso $k$ es $H_k(c)=H_k(z_k)=0$, con $z_k\ne c$; continuidad en el subsegmento y derivabilidad en su interior permiten obtener $z_{k+1}$ con $H_k'(z_{k+1})=0$. Para $k<n$ se convierte en $H_{k+1}(z_{k+1})=0$ y permite continuar. En el paso final obtenemos
+En general, al llegar al miembro $H_k$ conservamos $H_k(c)=H_k(z_k)=0$, con $z_k\ne c$. La continuidad en $K$ se restringe al nuevo subsegmento y su interior sigue dentro del interior de $K$, donde existe la derivada requerida. Rolle proporciona entonces $z_{k+1}$ estrictamente entre $c$ y $z_k$, con $H_k'(z_{k+1})=0$. Para $k<n$, la relación entre miembros da $H_{k+1}(z_{k+1})=0$ y permite continuar. Cuando $k=n$, ya hemos alcanzado la conclusión:
 
 $$H_n'(z_{n+1})=0,\qquad z_{n+1}\text{ estrictamente entre }c\text{ y }x.$$
 
 Se han usado $n+1$ aplicaciones de Rolle, no $n$. El caso $n=0$ consiste en una sola. Si $x<c$, todos los segmentos se ordenan mediante mínimo y máximo; los nuevos puntos siguen acercándose a $c$ por el lado izquierdo. La derivada de una restricción interior coincide con la original, y cada subsegmento mantiene extremos distintos. Si $x=c$, no hay segmento no degenerado y no se afirma un punto intermedio.
 
-Cuando una función $H$ tiene derivadas continuas hasta orden $n$ en ese segmento, tomamos $H_k=H^{(k)}$ y leemos la hipótesis como un cero central repetido, más otro cero en $x$. La continuidad de los primeros miembros es exactamente lo que permite cada Rolle; la derivada final no necesita ser continua.
+Cuando partimos de una función $H$ con derivadas continuas hasta orden $n$ en ese segmento y derivada de orden $n+1$ en su interior, tomamos $H_k=H^{(k)}$. Las igualdades centrales suministran un cero para cada miembro; el otro procede del paso anterior. Así puede repetirse Rolle aun cuando el último miembro derivado no sea continuo: su continuidad no interviene después de obtener el punto final.
 
-Por ejemplo $H(t)=t^3(1-t)$, con $c=0$ y $x=1$, cumple $H(0)=H'(0)=H''(0)=0$ y $H(1)=0$. Una elección es $z_1=3/4$, $z_2=1/2$ y $z_3=1/4$: $H'(3/4)=0$, $H''(1/2)=0$ y $H'''(1/4)=0$. Cada nuevo punto queda dentro del segmento anterior. Estas coordenadas son particulares de este polinomio; el lema general sólo asegura existencia.
+Para seguir una cadena concreta, tomemos $H(t)=t^3(1-t)$, $c=0$, $x=1$ y $n=2$. Tenemos $H(0)=H'(0)=H''(0)=0$ y $H(1)=0$. Las derivadas $H'(t)=3t^2-4t^3$, $H''(t)=6t-12t^2$ y $H'''(t)=6-24t$ permiten escoger $z_1=3/4$, $z_2=1/2$ y $z_3=1/4$, respectivamente. Cada punto anula la derivada correspondiente y queda estrictamente entre cero y el anterior. Las coordenadas se han podido calcular porque conocemos este polinomio; el lema asegura existencia sin exigir un cálculo semejante.
 
-![Para H=t³(1−t), con n=2, una cadena válida usa z₁=3/4, z₂=1/2 y z₃=1/4. Cada paso conserva un cero en el centro0 y obtiene el otro en el segmento anterior. Hay n+1=3 aplicaciones; los puntos exactos son particulares del ejemplo.](../../assets/books/anm/C21/C21-F02.svg){#fig-anm-c21-f02 fig-alt="Para H=t³(1−t), con n=2, una cadena válida usa z₁=3/4, z₂=1/2 y z₃=1/4. Cada paso conserva un cero en el centro0 y obtiene el otro en el segmento anterior. Hay n+1=3 aplicaciones; los puntos exactos son particulares del ejemplo."}
+![Para H=t³(1−t), con n=2, una cadena válida usa z₁=3/4, z₂=1/2 y z₃=1/4. Cada paso conserva un cero en el centro0 y obtiene el otro en el segmento anterior. Hay n+1=3 aplicaciones; los puntos exactos son particulares del ejemplo.](../../assets/books/anm/C21/C21-F02.svg){#fig-anm-c21-f02 fig-alt="Polinomio con ceros de borde y, al lado, tres segmentos anidados rotulados por la derivada cuyo cero se obtiene."}
 
-No se supone una elección simultánea de puntos para todas las entradas o todos los órdenes. Para un $n$ y un $x$ fijados, una inducción finita construye las existencias necesarias. Tampoco se confunde el número de ceros de $H$ con el de sus derivadas: las igualdades centrales de cada miembro suministran un borde reutilizable en cada paso.
+Para cada $n$ y cada $x$ fijados, los puntos se obtienen mediante una inducción finita. No necesitamos escogerlos simultáneamente para todas las entradas o todos los órdenes. En la cadena, el cero central de cada miembro hace posible el paso siguiente, aunque los otros ceros pertenezcan a funciones derivadas diferentes.
 
 ### Microcontroles
 
@@ -538,27 +539,28 @@ Cada$H_k$ se usa como función de un Rolle sobre un subsegmento, así necesita c
 Los papeles de función y derivada cambian al pasar al siguiente miembro. Cada nueva función de Rolle debe tener continuidad en sus dos bordes, pero la última derivada no necesita ese control como función de otro paso. La prueba declara un orden fijo y termina antes de exigir una continuidad adicional no prevista.
 
 </details>
+
 ## 21.3. Forzar el resto: la fórmula de Lagrange
 
 []{#MA-SEC-ANM-01-021-003}
 
 Tomemos una función $f$ derivable hasta orden $n+1$ en un intervalo abierto $J$, y un centro $c$ y una entrada $x$ de $J$. La existencia de cada derivada hasta orden $n+1$ hace continuas a las funciones $f,\ldots,f^{(n)}$ sobre cada segmento interior. No se supone continuidad de $f^{(n+1)}$.
 
-Para $x=c$, $R_{n,c}(c)=0$ por construcción. Sea ahora $x\ne c$ y fijemos el coeficiente
+Si $x=c$, la construcción da directamente $R_{n,c}(c)=0$. Para $x\ne c$ queremos que una función auxiliar tenga ese mismo cero central con todas las derivadas hasta orden $n$, y además se anule en $x$. Restar el polinomio de Taylor ya consigue las condiciones centrales. Podemos imponer la condición restante restando un múltiplo de $(t-c)^{n+1}$, pues esa potencia y sus primeras $n$ derivadas se anulan en $c$. El coeficiente necesario es
 
 $$A=\frac{R_{n,c}(x)}{(x-c)^{n+1}}.$$
 
-El denominador es no nulo. El coeficiente depende de la entrada que acabamos de fijar; no representa un único valor válido para todas las entradas. Definamos en el segmento que une $c$ y $x$
+El denominador es no nulo y la elección del numerador hará que la nueva diferencia se anule en $x$. Fijamos esta entrada durante toda la prueba; $A$ puede cambiar cuando cambie $x$. Definamos en el segmento que une $c$ y $x$
 
 $$H(t)=f(t)-T_{n,c}f(t)-A(t-c)^{n+1}.$$
 
-La elección de $A$ fuerza $H(x)=0$. En el centro, la coincidencia de datos de Taylor y el exponente $n+1$ dan $H^{(k)}(c)=0$ para $0\le k\le n$. Los miembros hasta orden $n$ son continuos sobre el segmento y enlazan sus derivadas. El lema de Rolle repetido produce un $\xi$ estrictamente entre $c$ y $x$ con $H^{(n+1)}(\xi)=0$.
+Al sustituir $t=x$ obtenemos $H(x)=0$. En el centro, la coincidencia de datos de Taylor y el exponente $n+1$ dan $H^{(k)}(c)=0$ para $0\le k\le n$. La hipótesis de derivabilidad hace continuos a los miembros hasta orden $n$ y proporciona sus relaciones de derivación en el interior. Se cumplen así todas las condiciones del lema anterior, que da un $\xi$ estrictamente entre $c$ y $x$ con $H^{(n+1)}(\xi)=0$.
 
 La derivada de orden $n+1$ del polinomio de Taylor es cero; la de $(t-c)^{n+1}$ es la constante $(n+1)!$. Entonces
 
 $$0=f^{(n+1)}(\xi)-A(n+1)!.$$
 
-Despejar $A$ y recuperar su definición demuestra la igualdad exacta
+Como $(n+1)!$ es positivo, podemos despejar $A$ en esta igualdad. Sustituir después su definición y multiplicar por $(x-c)^{n+1}$ devuelve el resto que habíamos incorporado al auxiliar:
 
 $$f(x)=T_{n,c}f(x)+\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-c)^{n+1}.$$
 
@@ -566,9 +568,9 @@ Es Taylor finito con **resto de Lagrange**. Para $n=0$ recupera el valor medio d
 
 La prueba también admite un contrato sobre un segmento cerrado: una cadena dada $f_0,\ldots,f_n$ continua incluyendo los bordes, con $f_k'=f_{k+1}$ en el interior, y $f_n'$ existente en todo el interior. El polinomio usa los valores $f_k(c)$ de esas extensiones continuas; la derivada final sólo se evalúa en $\xi$. No se presupone un operador de derivación en los bordes. Las identidades para $H_k$ y Rolle son las mismas. Este contrato incluye centros fronterizos y no pide la derivada final en el propio centro.
 
-![Para t³ en centro0, entrada1 y orden1, R=1 y A=1. El auxiliar H=t³−t² tiene los ceros centrales requeridos y otro en1. La derivada final H′′=6t−2 se anula en ξ=1/3 y devuelve R=f′′(ξ)/2=1.](../../assets/books/anm/C21/C21-F03.svg){#fig-anm-c21-f03 fig-alt="Para t³ en centro0, entrada1 y orden1, R=1 y A=1. El auxiliar H=t³−t² tiene los ceros centrales requeridos y otro en1. La derivada final H′′=6t−2 se anula en ξ=1/3 y devuelve R=f′′(ξ)/2=1."}
+![Para t³ en centro0, entrada1 y orden1, R=1 y A=1. El auxiliar H=t³−t² tiene los ceros centrales requeridos y otro en1. La derivada final H′′=6t−2 se anula en ξ=1/3 y devuelve R=f′′(ξ)/2=1.](../../assets/books/anm/C21/C21-F03.svg){#fig-anm-c21-f03 fig-alt="Auxiliar con bordes cero y una recta de segunda derivada cuyo cero interior está en un tercio, distinto del punto medio."}
 
-Para $f(t)=t^3$, centro1 y orden2, $f'''=6$ y el resto es $6h^3/3!=h^3$, coincidente con la expansión exacta de21.1. No hay un punto distinguido: todos los puntos interiores dan el mismo valor de tercera derivada. Para el cuadrado y orden1 ocurre lo mismo con la segunda derivada constante.
+Volvamos al cubo con centro $1$ y orden $2$. Su tercera derivada vale $6$ en toda la recta, por lo que la fórmula da $6h^3/3!=h^3$, el resto exacto de §21.1. Cualquier punto interior sirve en este caso: todos producen el mismo valor de derivada. Lo mismo ocurre para el cuadrado con orden $1$, cuya segunda derivada es constante.
 
 ### Microcontroles
 
@@ -796,6 +798,7 @@ El polinomio es$T_{0,c}=f(c)$ y1!=1, de modo que$f(x)-f(c)=f\prime(\xi)(x-c)$. P
 El factorial y el incremento reducen la fórmula a la igualdad de valor medio, pero conservan sus condiciones de dominio. Un segmento no degenerado necesita continuidad de bordes y derivabilidad interior. En el centro coincidente el resto se anula directamente y no se añade un testigo inexistente.
 
 </details>
+
 ## 21.4. Un punto desconocido, una cota verificable
 
 []{#MA-SEC-ANM-01-021-004}
@@ -806,27 +809,27 @@ $$|R_{n,c}(x)|\le\frac{M}{(n+1)!}|x-c|^{n+1}.$$
 
 Para $x=c$ los dos lados son cero; para $x\ne c$ aplicamos la cota en un testigo suministrado por Lagrange. No hace falta que la derivada final alcance un máximo o sea continua. Si $M=0$, el resto es cero y no se divide por $M$.
 
-Cuando la misma $M$ sirve en el interior de $[c-\rho,c+\rho]$, el mismo número $M\rho^{n+1}/(n+1)!$ acota todos los errores de ese segmento. El orden lógico es región, cota universal, entrada y testigo; tomar un máximo sobre puntos desconocidos sin justificarlo no resuelve el problema.
+Fijemos ahora una región $[c-\rho,c+\rho]$, con $\rho>0$, donde se cumpla el contrato anterior y una misma $M$ controle la derivada final en su interior. Para cada entrada $x$ de la región, el punto intermedio queda dentro de ella y $|x-c|\le\rho$. Por tanto $M\rho^{n+1}/(n+1)!$ acota simultáneamente todos los errores. La cota universal de la derivada se establece antes de elegir la entrada y su testigo; así la conclusión no depende de conocerlos ni de escoger una familia de puntos intermedios.
 
-También hay una forma exacta de Cauchy. En el contrato abierto de21.3, fijemos $x$ y dejemos variar el centro auxiliar $t$:
+Otra forma exacta del resto se obtiene dejando variar el centro del polinomio auxiliar. Bajo el contrato abierto de §21.3, fijemos $x\ne c$ y consideremos
 
 $$G(t)=f(x)-\sum_{k=0}^n\frac{f^{(k)}(t)}{k!}(x-t)^k.$$
 
-En el extremo $t=x$, el término de grado cero da $G(x)=0$; en $t=c$ tenemos $G(c)=R_{n,c}(x)$. Al derivar, la parte que deriva $f^{(k)}$ cancela con la que deriva la potencia del término siguiente. Los dos sumatorios finitos dejan
+En $t=x$, el término de grado cero da $G(x)=0$; en $t=c$ tenemos $G(c)=R_{n,c}(x)$. Al derivar el término de índice $k$, aparecen una parte que deriva $f^{(k)}(t)$ y, para $k\ge1$, otra que deriva $(x-t)^k$. Esta última es $-f^{(k)}(t)(x-t)^{k-1}/(k-1)!$ y cancela con la primera parte del índice $k-1$. Sólo queda la parte que deriva el coeficiente del término de índice $n$. Como la suma se resta en $G$, obtenemos
 
 $$G'(t)=-\frac{f^{(n+1)}(t)}{n!}(x-t)^n.$$
 
-Esta cancelación puede comprobarse término a término; para $n=0$ sólo hay $G'=-f'$. Lagrange aplicado a $G$ en el segmento, o Cauchy de C19 con la segunda función $t$, produce un $\eta$ estrictamente interior con
+Para $n=0$ no hay términos que cancelar y la fórmula se reduce a $G'=-f'$. En cualquier orden, el contrato abierto garantiza continuidad de $G$ en el segmento y derivabilidad en su interior. Lagrange aplicado a $G$, o Cauchy de C19 con la segunda función $t$, da un $\eta$ estrictamente entre $c$ y $x$ para el que $G(x)-G(c)=G'(\eta)(x-c)$. Sustituir los valores de borde y la derivada conduce a
 
 $$R_{n,c}(x)=\frac{f^{(n+1)}(\eta)}{n!}(x-\eta)^n(x-c).$$
 
-El signo procede de $G(x)-G(c)=-R_{n,c}(x)$ y del signo negativo de $G'$. Para $n=0$ la potencia vale1, sin un cociente nulo. Como $|x-\eta|\le|x-c|$, una cota absoluta da $|R|\le M|x-c|^{n+1}/n!$. Es válida aunque, con una cota constante, suele ser menos ajustada que Lagrange. Las dos formas pueden tener testigos diferentes.
+Ésta es la forma de Cauchy del resto. Los signos negativos de $G(x)-G(c)=-R_{n,c}(x)$ y de $G'$ se cancelan. Para $n=0$, la potencia de exponente cero vale uno y no hay ningún cociente nulo. Como $|x-\eta|\le|x-c|$, una cota $|f^{(n+1)}|\le M$ en el interior da $|R|\le M|x-c|^{n+1}/n!$. Con esa misma cota constante, Lagrange ofrece un denominador factorial mayor cuando $n\ge1$. Las dos identidades son exactas y pueden usar puntos intermedios diferentes.
 
 Si $m\le f^{(n+1)}\le M$, el coeficiente $R/(x-c)^{n+1}$ de Lagrange está entre $m/(n+1)!$ y $M/(n+1)!$. Para transformarlo en una banda del resto hay que atender al signo de $(x-c)^{n+1}$. Si es negativo, el orden de las cotas se invierte. Una cota absoluta evita este cambio; una banda firmada conserva información direccional.
 
-![Con f=t³, c=0, x=1 y n=1, G=1−3t²+2t³ y G′=−6t(1−t). La secante de G tiene pendiente−1 y dos testigos η=(1±1/√3)/2. Ambos dan R=6η(1−η)=1, distintos del ξ=1/3 de Lagrange.](../../assets/books/anm/C21/C21-F04.svg){#fig-anm-c21-f04 fig-alt="Con f=t³, c=0, x=1 y n=1, G=1−3t²+2t³ y G′=−6t(1−t). La secante de G tiene pendiente−1 y dos testigos η=(1±1/√3)/2. Ambos dan R=6η(1−η)=1, distintos del ξ=1/3 de Lagrange."}
+![Con f=t³, c=0, x=1 y n=1, G=1−3t²+2t³ y G′=−6t(1−t). La secante de G tiene pendiente−1 y dos testigos η=(1±1/√3)/2. Ambos dan R=6η(1−η)=1, distintos del ξ=1/3 de Lagrange.](../../assets/books/anm/C21/C21-F04.svg){#fig-anm-c21-f04 fig-alt="Función G con secante y un perfil derivado que cruza la pendiente de esa secante en dos centros."}
 
-Con $n=1$, el exponente2 siempre es no negativo y recuperamos las bandas cuadráticas de C20. Si $n=2$ y $f'''$ es positiva, el resto es positivo a la derecha del centro y negativo a su izquierda. «Error pequeño» y «error de signo conocido» son conclusiones diferentes.
+Con $n=1$, el factor $(x-c)^2$ es no negativo y las cotas de la segunda derivada recuperan las bandas cuadráticas de C20. Con $n=2$ y tercera derivada positiva, el cubo del desplazamiento hace positivo el resto a la derecha y negativo a la izquierda. La banda firmada informa de qué lado del aproximante se encuentra la función, además de controlar la magnitud de la diferencia.
 
 ### Microcontroles
 
@@ -1054,6 +1057,7 @@ Para cada entrada$x$ del segmento, la prueba de Lagrange se aplica a su subsegme
 Para cada entrada el segmento que la une al centro está dentro de la región protegida. La misma barrera sirve para cualquier testigo interior de cualquiera de esos segmentos. La distancia máxima $\rho$ convierte el control puntual en uno común. No se eligen simultáneamente testigos ni se infiere la barrera de una muestra finita.
 
 </details>
+
 ## 21.5. Peano: lo que desaparece al cambiar de escala
 
 []{#MA-SEC-ANM-01-021-005}
@@ -1066,31 +1070,31 @@ Para $n=1$ la hipótesis significa solamente que $f$ es derivable en $c$; no pid
 
 $$0<|h|<\delta\ \Longrightarrow\ |R_{n,c}(c+h)|<\varepsilon|h|^n.$$
 
-El radio se mantiene dentro del dominio. La forma de **Peano** dice que el error normalizado desaparece; no suministra por sí sola una constante para $|h|^{n+1}$ ni un radio numérico calculable.
+El radio se toma suficientemente pequeño para mantener $c+h$ en el dominio. La forma de **Peano** controla el error después de dividirlo por $|h|^n$: para cualquier margen positivo acaba quedando por debajo de él. Esta conclusión no proporciona por sí sola una constante para $|h|^{n+1}$ ni un radio numérico calculable.
 
-Demostremos por inducción. Para $n=1$ es exactamente la definición de derivada en $c$, multiplicada por $|h|$. Para el paso $n\ge2$, pongamos $H=f-T_{n,c}f$. El polinomio conserva todos los datos centrales, por lo que $H^{(k)}(c)=0$ para $0\le k\le n$. Aplicamos la hipótesis inductiva a $H'$ con orden $n-1$: su polinomio central es cero y
+La demostraremos por inducción. Para $n=1$, el cociente del resto lineal por $h$ tiende a cero por la definición de derivada en $c$; tomar valores absolutos y multiplicar por $|h|$ da la afirmación. Para $n\ge2$, pongamos $H=f-T_{n,c}f$. Se tiene $H^{(k)}(c)=0$ para $0\le k\le n$. La función $H'$ cumple las hipótesis de Peano de orden $n-1$: dispone de derivadas hasta orden $n-2$ en un entorno y su derivada de ese orden es derivable en $c$. Todos sus datos centrales hasta orden $n-1$ son cero. La hipótesis inductiva da entonces
 
 $$H'(c+u)=o(|u|^{n-1}).$$
 
-Fijada $\varepsilon>0$, elegimos un radio donde $|H'(c+u)|<n\varepsilon|u|^{n-1}$ para toda entrada perforada. Para $0<|h|$ dentro de ese radio, Cauchy de C19 entre $c$ y $c+h$, con funciones $H(t)$ y $(t-c)^n$, da un $\xi$ interior:
+Para pasar de esta estimación de $H'$ a la de $H$, compararemos sus incrementos con los de la potencia de orden $n$. Fijada $\varepsilon>0$, elegimos un radio dentro del dominio donde $|H'(c+u)|<n\varepsilon|u|^{n-1}$ para toda entrada perforada. El factor $n$ compensará la derivada de la potencia. Si $0<|h|$ está dentro del radio, Cauchy de C19 aplicado entre $c$ y $c+h$ a $H(t)$ y $(t-c)^n$ proporciona un $\xi$ interior y la identidad
 
 $$\frac{H(c+h)}{h^n}=
 \frac{H'(\xi)}{n(\xi-c)^{n-1}}.$$
 
-Ambas funciones son continuas en el segmento y derivables en su interior: para $n\ge2$ se dispone de $H'$ en el entorno. El denominador de la derivada no es cero porque $\xi\ne c$. El incremento de la potencia es $h^n\ne0$. La cota inductiva en $\xi$ hace que el valor absoluto del cociente sea menor que $\varepsilon$. Así termina la inducción sin derivada de orden $n+1$ ni continuidad supuesta de la derivada de orden $n$ en un entorno.
+Para $n\ge2$, $H'$ existe en un entorno, de modo que $H$ es continua en el segmento y derivable en su interior; la potencia tiene ambas propiedades. Su incremento es $h^n\ne0$ y su derivada interior $n(\xi-c)^{n-1}$ tampoco se anula, porque $\xi\ne c$. Podemos, pues, escribir el cociente mostrado. Además $0<|\xi-c|<|h|$, de manera que la cota inductiva se aplica en $\xi$. Al tomar valores absolutos y dividir por $n|\xi-c|^{n-1}$ obtenemos un número menor que $\varepsilon$. Esto prueba el paso sin pedir una derivada de orden $n+1$ ni continuidad de la derivada de orden $n$ en un entorno.
 
 Para $n=0$, la afirmación $f(c+h)-f(c)=o(1)$ es continuidad en $c$ y se trata separadamente. Tampoco se deriva un resto pequeño: de $r(h)=o(|h|^n)$ no se puede inferir una fórmula para $r'(h)$ sin hipótesis adicionales.
 
-Un ejemplo distingue órdenes. Sea $f(h)=h^2\sqrt{|h|}$. En cero, $f'(0)=f''(0)=0$; fuera de cero, $f'(h)=(5/2)\operatorname{sgn}(h)|h|^{3/2}$ y $f''(h)=(15/4)\sqrt{|h|}$. Estas fórmulas se obtienen por producto y derivada de raíz en cada lado; los cocientes centrales verifican los dos valores nulos. Su polinomio de orden2 es cero y
+La función $f(h)=h^2\sqrt{|h|}$ permite distinguir esta conclusión de una cota cúbica. Fuera de cero, las reglas de producto y de raíz aplicadas en cada lado dan $f'(h)=(5/2)\operatorname{sgn}(h)|h|^{3/2}$ y $f''(h)=(15/4)\sqrt{|h|}$. En cero, el cociente de $f(h)-f(0)$ por $h$ es $h\sqrt{|h|}$ y tiende a cero, por lo que $f'(0)=0$. A su vez, el cociente de $f'(h)-f'(0)$ por $h$ es $(5/2)\sqrt{|h|}$ y también tiende a cero: $f''(0)=0$. El polinomio de orden $2$ es, por tanto, cero, y los dos errores normalizados son
 
 $$\frac{f(h)}{|h|^2}=\sqrt{|h|}\to0,\qquad
 \frac{f(h)}{|h|^3}=\frac1{\sqrt{|h|}}.$$
 
-El segundo cociente es no acotado cerca de cero. Hay resto de Peano de orden2, pero no una cota $C|h|^3$ con constante finita en un radio. La derivada tercera fuera de cero es no acotada; que existan testigos de Lagrange en segmentos unilaterales no crea una cota uniforme.
+El primer cociente tiende a cero y acredita Peano de orden $2$. El segundo crece sin cota al acercarse al centro, por lo que ninguna constante finita $C$ puede hacer $|f(h)|\le C|h|^3$ en un radio. La tercera derivada existe fuera de cero y no está acotada cerca de él. El contrato cerrado de Lagrange permite obtener testigos en cada segmento unilateral, ya que $f,f',f''$ son continuas hasta cero; esos testigos no proporcionan una cota uniforme de la tercera derivada.
 
-![Para R=h²√|h|, el cociente por |h|² es √|h| y tiende a cero, mientras el cociente por |h|³ es1/√|h| y no está acotado cerca de cero. Se representan distancias positivas con escala logarítmica y se excluye la entrada0. Las identidades y radios, no el dibujo, prueban ambos comportamientos.](../../assets/books/anm/C21/C21-F05.svg){#fig-anm-c21-f05 fig-alt="Para R=h²√|h|, el cociente por |h|² es √|h| y tiende a cero, mientras el cociente por |h|³ es1/√|h| y no está acotado cerca de cero. Se representan distancias positivas con escala logarítmica y se excluye la entrada0. Las identidades y radios, no el dibujo, prueban ambos comportamientos."}
+![Para R=h²√|h|, el cociente por |h|² es √|h| y tiende a cero, mientras el cociente por |h|³ es1/√|h| y no está acotado cerca de cero. Se representan distancias positivas con escala logarítmica y se excluye la entrada0. Las identidades y radios, no el dibujo, prueban ambos comportamientos.](../../assets/books/anm/C21/C21-F05.svg){#fig-anm-c21-f05 fig-alt="Dos paneles con la misma distancia al centro: un error normalizado decrece hacia cero y el otro crece sin cota."}
 
-La escala correcta es parte del enunciado: un error que tiende a cero en valor absoluto puede seguir siendo enorme al dividirlo por $|h|^n$. El zoom muestra una regla normalizada ya demostrada y no sustituye el radio que controla todas las entradas.
+En este ejemplo el error absoluto tiende a cero, pero sólo una de las dos normalizaciones desaparece. La figura representa esas identidades para distancias positivas al centro. Acercar la vista a la curva no sustituye la estimación que ha de controlar todas las entradas de un radio.
 
 ### Microcontroles
 
@@ -1318,6 +1322,7 @@ Como$|f(h)|/|h|^2=\sqrt{|h|}$, tomamos$\delta=\varepsilon^2$ o el mínimo con un
 El radio cuadrático se diseña a partir de la precisión del error normalizado. Multiplicar la desigualdad de raíz por la escala positiva devuelve el error de valor pedido. El cociente del siguiente orden sigue sin barrera, así el mismo radio no acredita una tasa cúbica uniforme.
 
 </details>
+
 ## 21.6. La primera derivada que no se anula
 
 []{#MA-SEC-ANM-01-021-006}
@@ -1326,17 +1331,17 @@ Taylor local puede decidir la forma de una función cerca de un centro, incluso 
 
 $$f(c+h)-f(c)=ah^m+r(h),\qquad r(h)=o(|h|^m).$$
 
-Elegimos un radio donde $|r(h)|<(|a|/2)|h|^m$. Para entradas no nulas dentro de él, el término principal domina: el error no puede cambiar su signo. Si $m$ es par, $h^m=|h|^m$ en ambos lados. Con $a>0$ hay un mínimo local estricto; con $a<0$, un máximo local estricto. Si $m$ es impar, el término principal cambia de signo al cambiar el lado y por ello no hay extremo local. Se requieren entradas por ambos lados; el criterio se afirma en un centro interior.
+Como $a\ne0$, podemos usar $|a|/2$ como margen en Peano y elegir un radio donde $|r(h)|<(|a|/2)|h|^m$. Para $h\ne0$, el término principal tiene magnitud $|a||h|^m$, de modo que el resto no puede cambiar su signo. Si $m$ es par, $h^m=|h|^m$ en ambos lados: $a>0$ da un mínimo local estricto y $a<0$ un máximo local estricto. Si $m$ es impar, el signo cambia al pasar de un lado al otro y hay valores mayores y menores que $f(c)$ arbitrariamente cerca del centro. En este caso no hay extremo local. La última conclusión utiliza entradas por ambos lados, por lo que el criterio se afirma en un centro interior.
 
-Este argumento incluye el criterio de segunda derivada en un punto estacionario, pero no necesita que $f''$ sea continua en un entorno. También explica $x^4$ y $x^3$ en cero: el primer orden no nulo es4, positivo y par en el primer caso;3, positivo e impar en el segundo. Las funciones tienen derivada primera nula en cero, pero comportamientos distintos.
+Para $m=2$, el argumento da el criterio de segunda derivada en un punto estacionario sin exigir continuidad de $f''$ en un entorno. En cero, $x^4$ tiene su primer coeficiente no nulo positivo en orden $4$ y presenta mínimo estricto; $x^3$ lo tiene positivo en orden $3$ y cambia de signo. La derivada primera nula que comparten no alcanza para distinguirlos, mientras el primer orden no nulo sí lo hace.
 
 Si todos los datos hasta orden $n$ se anulan, el criterio guarda silencio. Los polinomios $h^{2(n+1)}$, $-h^{2(n+1)}$ y $h^{2(n+1)+1}$ tienen los mismos datos hasta ese orden, incluidos el valor cero, y respectivamente presentan mínimo, máximo y ausencia de extremo en cero. No se dice que sus primeras derivadas no nulas sean las mismas: precisamente esa información está fuera del paquete de datos fijado.
 
-La conclusión es local, no global. $q(h)=h^2-h^4$ tiene un mínimo local estricto en cero por el primer término no nulo positivo de orden2. Pero $q(2)=-12<q(0)=0$, de modo que cero no es un mínimo global. C20 podía pasar de pendiente cero a mínimo global porque añadía convexidad en todo el intervalo. No intercambiamos esa hipótesis con un desarrollo central.
+El radio de Peano sólo da una conclusión local. Para $q(h)=h^2-h^4$, el primer término no nulo en cero es positivo y de orden $2$, así que hay mínimo local estricto. Sin embargo, $q(2)=-12<q(0)=0$. En C20, una pendiente cero podía acreditar mínimo global al añadirse convexidad en todo el intervalo; los datos centrales de este ejemplo no aportan esa hipótesis.
 
 Para un error de signo conocido también importa la paridad. Si $f^{(n+1)}$ tiene signo positivo en todo el segmento y no es cero en el testigo, el resto de Lagrange tiene el signo de $(x-c)^{n+1}$. En cambio Peano no ofrece un signo del resto; permite controlar su tamaño relativo frente a un término principal no nulo.
 
-![En cero, h⁴ tiene primer coeficiente no nulo positivo de orden4 y mínimo estricto; h³ lo tiene de orden3 y cambia de signo. El criterio usa un radio donde el resto no supera la mitad del término principal y exige un centro interior con ambos lados.](../../assets/books/anm/C21/C21-F06.svg){#fig-anm-c21-f06 fig-alt="En cero, h⁴ tiene primer coeficiente no nulo positivo de orden4 y mínimo estricto; h³ lo tiene de orden3 y cambia de signo. El criterio usa un radio donde el resto no supera la mitad del término principal y exige un centro interior con ambos lados."}
+![En cero, h⁴ tiene primer coeficiente no nulo positivo de orden4 y mínimo estricto; h³ lo tiene de orden3 y cambia de signo. El criterio usa un radio donde el resto no supera la mitad del término principal y exige un centro interior con ambos lados.](../../assets/books/anm/C21/C21-F06.svg){#fig-anm-c21-f06 fig-alt="Cuarto poder positivo a ambos lados y cubo de signo distinto en las dos mitades del dominio."}
 
 Cuando el centro es borde, sólo hay un lado admisible y el caso impar puede comportarse como un extremo relativo. La función $x$ en $[0,1]$ tiene mínimo en cero. Antes de aplicar un criterio de paridad hay que fijar el dominio y sus entradas admisibles.
 
@@ -1566,18 +1571,19 @@ La función tiene primer coeficiente1 y orden1 impar, pero el dominio sólo ofre
 El dominio de frontera sólo admite el lado positivo del incremento. La comparación de término principal y resto puede preservar su signo en ese lado sin producir ninguna salida negativa. Esa versión unilateral permite un mínimo relativo. La conclusión impar interior necesitaba precisamente las entradas del lado ausente.
 
 </details>
+
 ## 21.7. Aproximantes con certificados racionales
 
 []{#MA-SEC-ANM-01-021-007}
 
-Un número escrito en un aproximante no es todavía un certificado. Debemos identificar el dominio de todas las derivadas usadas y una cota válida en el segmento completo.
+Para aproximar una cantidad concreta tendremos que acompañar el valor del polinomio con una región donde podamos controlar el resto. En los ejemplos siguientes, una identidad finita y una cota de derivada ofrecen dos maneras de construir ese certificado. En ambas mantendremos explícito el dominio de las operaciones.
 
 Primero tomemos $f(h)=1/(1-h)$ para $h<1$, centro0. Inducción con la regla del cociente da $f^{(k)}(h)=k!/(1-h)^{k+1}$ y por ello $T_{n,0}f(h)=\sum_{k=0}^n h^k$. La identidad geométrica finita proporciona un resto más preciso que un testigo:
 
 $$(1-h)\sum_{k=0}^n h^k=1-h^{n+1},\qquad
 R_{n,0}(h)=\frac{h^{n+1}}{1-h}.$$
 
-Es una identidad de sumas finitas; no se ha usado una serie. En $|h|\le\rho<1$, $1-h\ge1-\rho>0$ y por tanto $|R|\le\rho^{n+1}/(1-\rho)$. La distancia a la singularidad es parte de la cota. No vale cruzar $h=1$ ni omitir ese margen.
+En $|h|\le\rho<1$, el denominador satisface $1-h\ge1-\rho>0$. Dividir por esa barrera positiva y acotar el numerador da $|R|\le\rho^{n+1}/(1-\rho)$ para todas las entradas de la región. El margen $1-\rho$ mide aquí la separación de la singularidad. La identidad sólo ha usado una suma finita y la cota no permite cruzar $h=1$.
 
 Para una raíz, sea $g(h)=\sqrt{1+h}$, $h>-1$. C18 da
 
@@ -1589,7 +1595,7 @@ Aquí $(1+h)^{3/2}$ y $(1+h)^{5/2}$ abrevian productos de potencias enteras por 
 
 $$T_{2,0}g(h)=1+\frac h2-\frac{h^2}8.$$
 
-Para $|h|\le1/4$, $1+h\ge3/4$ y $\sqrt{1+h}\ge3/4$: la raíz de un número al menos3/4 es al menos3/4 por comparación de cuadrados y positividad. Así
+Para $|h|\le1/4$ tenemos $1+h\ge3/4$. También $\sqrt{1+h}\ge3/4$: los dos lados son no negativos y $(3/4)^2\le3/4\le1+h$. Esta barrera algo menor que la raíz del borde mantiene racional toda la estimación. Como $(1+h)^{5/2}=(1+h)^2\sqrt{1+h}$, obtenemos
 
 $$0<g'''(h)\le\frac3{8(3/4)^2(3/4)}=\frac89.$$
 
@@ -1597,7 +1603,7 @@ Lagrange da $|R_2(h)|\le(4/27)|h|^3$. En $h=1/4$, el resto es positivo y
 
 $$\frac{143}{128}<\sqrt{\frac54}\le\frac{143}{128}+\frac1{432}.$$
 
-El primer número es el polinomio evaluado; la cantidad1/432 es un límite superior de error, no una cifra estimada desde una gráfica. La positividad estricta de la tercera derivada y $h>0$ justifican el extremo inferior abierto.
+El número $143/128$ resulta de evaluar el polinomio en $1/4$, y $1/432$ resulta de sustituir esa entrada en $(4/27)|h|^3$. La tercera derivada es estrictamente positiva en todo el segmento y el desplazamiento también es positivo, por lo que el resto es mayor que cero. Esto justifica el extremo inferior abierto del intervalo.
 
 Podemos cotejar el certificado con un mecanismo algebraico independiente. La diferencia de cuadrados es $5/4-(143/128)^2=31/16384>0$. Racionalizar da
 
@@ -1605,11 +1611,11 @@ $$\sqrt{\frac54}-\frac{143}{128}
 =\frac{31}{16384\left(\sqrt{5/4}+143/128\right)}
 \le\frac{31}{34688}.$$
 
-La última cota usa $\sqrt{5/4}\ge1$, así el denominador es al menos $16384(271/128)=34688$. Es más ajustada que1/432. La comparación no invalida Taylor: dos mecanismos pueden certificar la misma cantidad con eficiencias distintas.
+Como $\sqrt{5/4}\ge1$, el denominador es al menos $16384(271/128)=34688$. Además $31\cdot432=13392<34688$, de modo que $31/34688<1/432$. La racionalización da en este caso una cota más ajustada; la obtenida con Taylor sigue siendo un certificado válido del mismo error.
 
-![Para la raíz, T₂=1+h/2−h²/8 y en |h|≤1/4 vale |R₂|≤(4/27)|h|³. En h=1/4 el aproximante143/128 es inferior a √(5/4); Taylor acota su error por1/432 y racionalización por31/34688. Los extremos izquierdos abiertos indican error estrictamente positivo; no se infiere una coordenada de raíz desde la figura.](../../assets/books/anm/C21/C21-F07.svg){#fig-anm-c21-f07 fig-alt="Para la raíz, T₂=1+h/2−h²/8 y en |h|≤1/4 vale |R₂|≤(4/27)|h|³. En h=1/4 el aproximante143/128 es inferior a √(5/4); Taylor acota su error por1/432 y racionalización por31/34688. Los extremos izquierdos abiertos indican error estrictamente positivo; no se infiere una coordenada de raíz desde la figura."}
+![Para la raíz, T₂=1+h/2−h²/8 y en |h|≤1/4 vale |R₂|≤(4/27)|h|³. En h=1/4 el aproximante143/128 es inferior a √(5/4); Taylor acota su error por1/432 y racionalización por31/34688. Los extremos izquierdos abiertos indican error estrictamente positivo; no se infiere una coordenada de raíz desde la figura.](../../assets/books/anm/C21/C21-F07.svg){#fig-anm-c21-f07 fig-alt="Error firmado de raíz dentro de una banda cúbica y dos intervalos positivos de error con cotas racionales diferentes."}
 
-Ni el polinomio central ni unas pocas muestras detectan por sí solos el margen de dominio o el valor máximo posible de una derivada. El certificado reúne aproximante, región, hipótesis y cota; conserva el error como parte de la respuesta.
+En cada certificado intervienen el aproximante, la región y una estimación válida en toda ella. Unas pocas muestras no dan por sí solas esa estimación ni permiten descubrir un denominador que se anula entre las entradas examinadas. El error controlado forma parte del resultado de la aproximación.
 
 ### Microcontroles
 
@@ -1837,6 +1843,7 @@ El resto exacto es$h^{n+1}/(1-h)$. En la región declarada, $1-h\ge1-\rho>0$ y$|
 El margen $1-\rho$ limita el denominador uniformemente sólo en la región fijada. Al acercarse a la singularidad ese margen desaparece y el numerador del resto no tiende a cero para un orden fijo. Una barrera de error previa puede entonces infringirse con entradas todavía válidas. No se elimina una condición de dominio al conservar la fórmula.
 
 </details>
+
 ## 21.8. Combinar modelos y elegir la resolución
 
 []{#MA-SEC-ANM-01-021-008}
@@ -1847,9 +1854,9 @@ Para el producto,
 
 $$fg=PQ+Pv+Qu+uv.$$
 
-Los polinomios son acotados en un radio por continuidad en cero. Dividir $Pv$ y $Qu$ por $|h|^n$ deja un factor acotado por otro que tiende a cero. Además $v(h)\to0$, y $|uv|/|h|^n=(|u|/|h|^n)|v|\to0$. Por tanto el error del producto respecto de $PQ$ es $o(|h|^n)$. Si $PQ$ tiene términos de grado mayor que$n$, los eliminamos: su suma finita es $h^{n+1}$ por otro polinomio, y al normalizar por $|h|^n$ tiende a cero. La parte truncada es un modelo del mismo orden, sin derivar el resto.
+Los polinomios $P,Q$ están acotados en algún radio por continuidad en cero. Por tanto $|Pv|/|h|^n$ y $|Qu|/|h|^n$ tienden a cero: en cada producto hay un factor acotado y otro que desaparece. Además $v(h)\to0$ y $|uv|/|h|^n=(|u|/|h|^n)|v|\to0$. La suma de estos tres errores es $o(|h|^n)$. Si $PQ$ tiene términos de grado mayor que $n$, su suma finita se escribe como $h^{n+1}B(h)$, con $B$ polinómico y acotado cerca de cero. Su valor absoluto dividido por $|h|^n$ es $|h||B(h)|$ y también tiende a cero. Podemos eliminar esos términos y conservar un modelo de grado a lo sumo $n$, sin derivar los restos.
 
-La sustitución exige conservar dominio y escala. Por ejemplo
+Al sustituir expresiones en una aproximación hay que conservar tanto la región como la escala del error. Para verlo con un denominador explícito, consideremos
 
 $$F(h)=\frac1{1-h-h^2}.$$
 
@@ -1861,25 +1868,25 @@ y así
 
 $$F(h)=1+h+2h^2+\frac{3h^3+2h^4}{1-h-h^2}.$$
 
-El resto queda acotado por $(56/11)|h|^3$ en ese segmento. Además $F(0)=1$, $F'(0)=1$ y $F''(0)=4$, por cociente y cadena, de modo que el polinomio mostrado es realmente su Taylor de orden2. Sustituir una expresión en un modelo sin comprobar denominadores podría haber perdido precisamente esta garantía.
+En el segmento elegido, $|3h^3+2h^4|\le(3+2/4)|h|^3=(7/2)|h|^3$. Dividir por la barrera $11/16$ da la cota $(56/11)|h|^3$ para el resto. Podemos verificar además que el polinomio es el Taylor de orden $2$. Si $d(h)=1-h-h^2$, cociente y cadena dan $F'=(1+2h)/d^2$ y $F''=2/d^2+2(1+2h)^2/d^3$. En cero resultan $F(0)=1$, $F'(0)=1$ y $F''(0)=4$, que producen los coeficientes $1,1,2$. La barrera del denominador garantiza la validez de estas operaciones en toda la región.
 
-Para elegir un grado no basta pensar «más términos, menos error». Se fija primero una región y una tolerancia, y se prueba una cota en función del grado. Para $1/(1-h)$ en $|h|\le1/4$,21.7 da
+La misma disciplina permite elegir el grado a partir de una tolerancia. Fijemos la región $|h|\le1/4$ y pidamos error a lo sumo $1/1000$ para $1/(1-h)$. La identidad de §21.7 expresa la cota en función del orden:
 
 $$|R_n(h)|\le\frac{(1/4)^{n+1}}{3/4}=\frac1{3\cdot4^n}.$$
 
-El orden4 produce1/768, mayor que1/1000; el orden5 produce1/3072, menor. Esta cota uniforme certifica el objetivo1/1000 con orden5. Es además el menor orden que funciona con esta cota: los números decrecen al multiplicar por1/4, y en $h=1/4$ la igualdad del resto hace fallar cada orden hasta4. En esa entrada el polinomio de orden5 vale1365/1024 y su error frente a4/3 es exactamente1/3072.
+Para $n=4$ resulta $1/768>1/1000$, y para $n=5$ resulta $1/3072<1/1000$. El orden $5$ certifica, pues, la tolerancia en toda la región. Para comprobar que es el menor orden que sirve, usamos el resto exacto en $h=1/4$, donde se alcanza la cota. Cada orden hasta $4$ tiene allí un error al menos $1/768$, porque los valores de la cota decrecen al multiplicarse por $1/4$. En esa entrada, el polinomio de orden $5$ vale $1365/1024$ y su diferencia respecto de $4/3$ es exactamente $1/3072$.
 
-![Para1/(1−h) en |h|≤1/4, el resto finito da cota1/(3·4ⁿ). El orden4 falla la tolerancia1/1000 porque en1/4 su error es1/768; orden5 la satisface con1/3072, que se alcanza allí. El panel izquierdo representa ocho grados finitos y no afirma una expansión infinita.](../../assets/books/anm/C21/C21-F08.svg){#fig-anm-c21-f08 fig-alt="Para1/(1−h) en |h|≤1/4, el resto finito da cota1/(3·4ⁿ). El orden4 falla la tolerancia1/1000 porque en1/4 su error es1/768; orden5 la satisface con1/3072, que se alcanza allí. El panel izquierdo representa ocho grados finitos y no afirma una expansión infinita."}
+![Para1/(1−h) en |h|≤1/4, el resto finito da cota1/(3·4ⁿ). El orden4 falla la tolerancia1/1000 porque en1/4 su error es1/768; orden5 la satisface con1/3072, que se alcanza allí. El panel izquierdo representa ocho grados finitos y no afirma una expansión infinita.](../../assets/books/anm/C21/C21-F08.svg){#fig-anm-c21-f08 fig-alt="Cotas por grado cruzan una tolerancia y, al lado, el error de orden5 queda debajo de su cota en todo el segmento representado."}
 
 Cambiar el centro también cambia todos los datos. Para una función polinómica conocida se puede reexpandir exactamente; para una función general no se trasladan los coeficientes centrales sin nueva información o un control del error de traslado. Aquí cada expansión conserva su centro declarado.
 
-Finalmente, un paquete finito de derivadas y de valores muestreados no impone una función completa ni un error universal fuera de la región certificada. Si $h_1,\ldots,h_m$ son muestras no nulas y $P$ un modelo central de orden$n$, los polinomios
+Podemos precisar también el límite de los datos finitos, incluso si añadimos valores muestreados. Sean $h_1,\ldots,h_m$ muestras no nulas y $P$ un modelo central de orden $n$. Los polinomios
 
 $$P(h)+A\,h^{n+1}\prod_{j=1}^m(h-h_j)^2$$
 
-conservan los datos centrales hasta orden$n$ y los valores en todas las muestras. En otra entrada no nula distinta de ellas, el factor multiplicador es no cero y variar $A$ permite modificar el valor arbitrariamente. El producto vacío, si no hay muestras, vale1. Esta construcción finita muestra el límite de la información disponible.
+conservan los datos centrales hasta orden $n$, pues el término añadido tiene el factor $h^{n+1}$, y conservan los valores de todas las muestras, donde se anula otro factor. En cualquier otra entrada no nula, el factor que multiplica a $A$ es distinto de cero: al variar este real podemos modificar allí el valor arbitrariamente. Si no hay muestras, el producto vacío vale uno y el mismo razonamiento sigue siendo válido. Los datos centrales y las muestras no determinan una función completa ni una cota universal fuera de la región certificada.
 
-El radio que se reduce para un orden fijo y el grado que aumenta en una región fija son controles distintos. Este capítulo demuestra polinomios finitos, residuos y certificados; no declara que una expansión infinita represente a una función. La teoría de sumas infinitas necesitará sus propias condiciones y su propia justificación del resto.
+Reducir el radio con un orden fijo y aumentar el grado en una región fija son problemas diferentes. Peano responde al primero mediante un límite normalizado; en el ejemplo del recíproco, la identidad finita permitió resolver el segundo con una cota explícita. Ninguna de estas conclusiones afirma por sí sola que una expansión infinita represente a la función: para ello habría que estudiar las sumas infinitas y justificar de nuevo el comportamiento del resto.
 
 ### Microcontroles
 

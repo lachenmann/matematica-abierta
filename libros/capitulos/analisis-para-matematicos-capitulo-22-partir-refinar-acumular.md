@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 22 — Partir, refinar, acumular
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,7 +28,7 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-22)
 
-La integral elemental sugiere acumular alturas sobre anchuras. Aquí construimos los datos finitos y el control que permitirán convertir esa intuición en un número estable. Separamos cortes, resolución y elecciones de etiquetas; ninguna figura ni antiderivada proporciona por sí sola el límite.
+Para acumular los valores de una función en un intervalo, podemos dividirlo en piezas, escoger una altura en cada una y sumar los productos de altura por anchura. El resultado depende de las piezas y de las alturas elegidas. Antes de llamarlo integral necesitamos precisar qué significa hacer pequeñas todas las piezas y cómo controlar el efecto de esas elecciones. Las primeras garantías procederán de identidades entre sumas finitas.
 
 C01–C03 aportan naturales, orden real y arquimedianidad; funciones, inducción y sumas finitas son interfaces heredadas. La integral elemental externa motiva y no se usa para demostrar. C23 reserva Darboux y sus equivalencias; C24 el teorema fundamental.
 
@@ -52,7 +52,7 @@ Para una representación como piezas disjuntas se puede usar $[a,x_1]$ y $(x_{i-
 
 La longitud $b-a$ es un dato algebraico demostrado. Un dibujo de rectángulos ayuda a reconocerla, pero aquí no presupone una noción de área para regiones curvas. Los intervalos degenerados y la orientación inversa quedan fuera de este contrato inicial.
 
-![En \[0,1\], P=(0,1/4,1) tiene anchuras1/4 y3/4, suma1. Los cerrados vecinos comparten1/4; sus interiores son disjuntos.](../../assets/books/anm/C22/C22-F01.svg){#fig-anm-c22-f01 fig-alt="En \[0,1\], P=(0,1/4,1) tiene anchuras1/4 y3/4, suma1. Los cerrados vecinos comparten1/4; sus interiores son disjuntos."}
+![En \[0,1\], P=(0,1/4,1) tiene anchuras1/4 y3/4, suma1. Los cerrados vecinos comparten1/4; sus interiores son disjuntos.](../../assets/books/anm/C22/C22-F01.svg){#fig-anm-c22-f01 fig-alt="En [0,1], P=(0,1/4,1) tiene anchuras1/4 y3/4, suma1. Los cerrados vecinos comparten1/4; sus interiores son disjuntos."}
 
 ### Microcontroles
 
@@ -272,6 +272,7 @@ Describe una codificación de todas las particiones como conjunto y exhibe un el
 Una partición puede codificarse por $(n,p)$, donde $n\in\mathbb N$, $n\ge1$ y $p:\{0,\ldots,n\}\to[a,b]$. Los grafos de esas funciones pertenecen al conjunto $\mathcal P(\mathbb N\times[a,b])$, así un ambiente para los códigos es $\mathbb N\times\mathcal P(\mathbb N\times[a,b])$. Separar los códigos con extremos $p(0)=a$, $p(n)=b$ y crecimiento estricto define el conjunto de particiones. El código con $n=1$ y valores $a,b$ pertenece a él porque $a<b$.
 
 </details>
+
 ## 22.2. Refinar conservando los cortes
 
 []{#MA-SEC-ANM-01-022-002}
@@ -284,7 +285,7 @@ $$(t-x_{j-1})+(x_j-t)=x_j-x_{j-1}.$$
 
 Insertar un nodo ya presente no modifica la lista. Repetir un nodo produciría una anchura cero y violaría la definición.
 
-Para dos particiones $P,Q$, recorramos la lista de $Q$: conservamos cada nodo que ya aparece e insertamos cada otro por el procedimiento anterior. Una inducción finita construye $R$ con $V(R)=V(P)\cup V(Q)$. Entonces $P\preceq R$, $Q\preceq R$ y, si $S$ refina a ambas, la unión de nodos está contenida en $V(S)$: $R\preceq S$. Es el menor refinamiento común, no una elección de una familia infinita.
+Dos particiones pueden tener cortes diferentes, de modo que ninguna refine a la otra. Para compararlas conservaremos todos los nodos de ambas. Recorremos la lista de $Q$ e insertamos en $P$ cada nodo que aún no aparezca. El procedimiento de inserción anterior y una inducción finita construyen una partición $R$ con $V(R)=V(P)\cup V(Q)$. Por construcción $P\preceq R$ y $Q\preceq R$. Si otra partición $S$ refina a ambas, contiene todos los nodos de la unión y por ello $R\preceq S$. Así obtenemos el menor refinamiento común mediante un número finito de inserciones.
 
 Por ejemplo, $(0,1/2,1)$ y $(0,1/3,2/3,1)$ tienen refinamiento común $(0,1/3,1/2,2/3,1)$. Sus cuatro anchuras son $1/3,1/6,1/6,1/3$. Refinar no quiere decir desplazar los cortes a posiciones aparentemente más regulares: reemplazar $1/2$ por $1/3$ pierde un nodo.
 
@@ -506,6 +507,7 @@ Compara $(0,1/2,1)$ y $(0,1/3,2/3,1)$ bajo refinamiento; explica cómo corregir 
 La segunda lista no contiene el nodo $1/2$ y la primera no contiene $1/3$ ni $2/3$. Ninguna conserva todos los nodos de la otra, así son incomparables bajo refinamiento. Su unión ordenada sí da un refinamiento común. Mover un corte o comparar sólo el número de piezas no sustituye la inclusión requerida.
 
 </details>
+
 ## 22.3. La malla mide el peor intervalo
 
 []{#MA-SEC-ANM-01-022-003}
@@ -516,9 +518,9 @@ $$\|P\|=\max_{1\le i\le n}\Delta_i.$$
 
 Ese máximo existe por inducción finita: comparar el siguiente real con el máximo anterior. Se cumplen $0<\|P\|\le b-a$ y $b-a\le n\|P\|$, donde $n$ en la última expresión significa su copia real. Por tanto $\|P\|\ge(b-a)/n$.
 
-Si $P\preceq Q$, cada pieza de $Q$ queda dentro de alguna pieza de $P$. Para verlo, localizamos su extremo izquierdo en los nodos de $P$; no puede atravesar un nodo antiguo en su interior, porque ese nodo también es de $Q$ y sus extremos son consecutivos. Su anchura es menor o igual que la antigua. Al tomar máximos, $\|Q\|\le\|P\|$. Una inserción propia puede conservar la malla si deja sin dividir una pieza máxima.
+Si $P\preceq Q$, cada pieza de $Q$ queda dentro de alguna pieza de $P$. En efecto, entre dos nodos consecutivos de $Q$ no puede haber un nodo antiguo: también sería de $Q$ y contradiría que los extremos son consecutivos. Localizando el extremo izquierdo se identifica, pues, una pieza antigua que contiene toda la nueva. Su anchura no supera la del padre, y tomar máximos da $\|Q\|\le\|P\|$. La desigualdad puede ser una igualdad aun en un refinamiento propio: basta dejar sin dividir una pieza que conserve la anchura máxima.
 
-La partición uniforme $U_n$ tiene nodos $a+(b-a)i/n$ y malla $(b-a)/n$. Positividad de $n$ permite dividir; la arquimedianidad de C03 da, para $\delta>0$, un natural $n>(b-a)/\delta$, por lo que $\|U_n\|<\delta$. Hay siempre particiones suficientemente finas. Si necesitamos además conservar una partición dada, el refinamiento común con $U_n$ tiene malla menor que $\delta$.
+Para conseguir una malla menor que un radio dado $\delta>0$, repartimos la longitud en partes iguales. La partición uniforme $U_n$ tiene nodos $a+(b-a)i/n$ y malla $(b-a)/n$. La arquimedianidad de C03 proporciona un natural $n>(b-a)/\delta$; es positivo y permite dividir para obtener $\|U_n\|<\delta$. Si también debemos conservar una partición ya fijada, tomamos su refinamiento común con $U_n$. Como refina a la uniforme, su malla sigue siendo menor que $\delta$.
 
 Contar intervalos no basta. En $[0,1]$ podemos conservar $[0,1/2]$ y dividir $[1/2,1]$ en $m$ piezas iguales. Hay $m+1$ piezas, pero la malla es siempre $1/2$. Repetir este refinamiento con $m=2^k$ da una cadena anidada cuyo número de piezas crece sin que la malla tienda a cero. La resolución requerida es global sobre todas las piezas, no sólo sobre la región donde se añadieron cortes.
 
@@ -740,6 +742,7 @@ Dada $P$ y $\delta>0$, prueba que hay un refinamiento de $P$ de malla menor que 
 Arquimedianidad da un natural $n>(b-a)/\delta$, y la uniforme $U_n$ cumple $\|U_n\|<\delta$. Formamos el refinamiento común $R$ con los nodos de $P$ y $U_n$. Conserva todos los cortes de $P$ y su malla no supera la de $U_n$. Por tanto $P\preceq R$ y $\|R\|<\delta$.
 
 </details>
+
 ## 22.4. Etiquetas y acumulación firmada
 
 []{#MA-SEC-ANM-01-022-004}
@@ -760,7 +763,7 @@ Si $f\le g$ en todo el intervalo, la positividad de cada anchura da $S(f;P,\xi)\
 
 Para $f(x)=x$ en $[0,1]$, $P=(0,1/2,1)$ tiene sumas izquierda $1/4$, media $1/2$ y derecha $3/4$. Para $f(x)=2x-1$, las mismas etiquetas producen $-1/2,0,1/2$. La cancelación de la suma media no borra las dos contribuciones de distinto signo.
 
-![Para x en\[0,1\], dos piezas iguales dan sumas izquierda1/4, media1/2 y derecha3/4. Alturas etiquetadas, anchuras y valores se distinguen.](../../assets/books/anm/C22/C22-F04.svg){#fig-anm-c22-f04 fig-alt="Para x en\[0,1\], dos piezas iguales dan sumas izquierda1/4, media1/2 y derecha3/4. Alturas etiquetadas, anchuras y valores se distinguen."}
+![Para x en\[0,1\], dos piezas iguales dan sumas izquierda1/4, media1/2 y derecha3/4. Alturas etiquetadas, anchuras y valores se distinguen.](../../assets/books/anm/C22/C22-F04.svg){#fig-anm-c22-f04 fig-alt="Para x en[0,1], dos piezas iguales dan sumas izquierda1/4, media1/2 y derecha3/4. Alturas etiquetadas, anchuras y valores se distinguen."}
 
 ### Microcontroles
 
@@ -978,6 +981,7 @@ Si $-2\le f\le3$ en $[-1,2]$, acota todas las sumas y su valor absoluto.
 La longitud de $[-1,2]$ es tres. Comparar las alturas con constantes da $-2\cdot3\le S\le3\cdot3$, es decir $-6\le S\le9$. La triangular y $|f|\le3$ dan además $|S|\le9$. Las barreras protegen todas las entradas sin exigir que exista un argumento de máximo o mínimo.
 
 </details>
+
 ## 22.5. Lo que un cambio de etiquetas puede alterar
 
 []{#MA-SEC-ANM-01-022-005}
@@ -987,7 +991,7 @@ En una partición fija, dos familias $\xi,\eta$ cumplen
 $$|S(f;P,\xi)-S(f;P,\eta)|
 \le\sum_i |f(\xi_i)-f(\eta_i)|\Delta_i.$$
 
-Es triangular después de restar término a término. Si disponemos de números dados $d_i\ge0$ que acotan $|f(s)-f(t)|$ para todos $s,t\in I_i$, obtenemos el certificado $\sum_i d_i\Delta_i$. No se exige un máximo ni llamamos aquí $d_i$ la oscilación exacta; C23 construirá esa noción con supremos.
+Al restar las sumas con la misma partición, las anchuras coinciden término a término. La desigualdad triangular da entonces la fórmula. Si para cada pieza disponemos de un número $d_i\ge0$ que acota $|f(s)-f(t)|$ para todos $s,t\in I_i$, podemos sustituir esas cotas y obtener el certificado $\sum_i d_i\Delta_i$. Basta que sean barreras válidas; no exigimos que se alcancen ni que sean las mejores posibles. La oscilación exacta se construirá con supremos en C23.
 
 Si $f$ es Lipschitz con constante dada $L\ge0$, entonces $|f(s)-f(t)|\le L|s-t|$ en todo el intervalo. Como las dos etiquetas de una pieza distan a lo sumo $\Delta_i$,
 
@@ -996,11 +1000,11 @@ $$|S(f;P,\xi)-S(f;P,\eta)|\le L\sum_i\Delta_i^2
 
 Se ha demostrado independencia progresiva de etiquetas sobre una partición; aún no existencia de un número límite para todas las particiones.
 
-También podemos comparar con un refinamiento $Q$. Cada pieza hija $J$ queda en un padre $I_i$ y sus anchuras suman $\Delta_i$. Reescribimos la contribución antigua como suma de $f(\xi_i)|J|$ y restamos las nuevas. Tanto la etiqueta hija como la antigua están en $I_i$; la cota Lipschitz da
+La misma idea permite comparar una partición con un refinamiento $Q$. Dentro de cada padre $I_i$, las anchuras de las piezas hijas $J$ suman $\Delta_i$. Podemos por ello escribir su contribución antigua como $\sum_{J\subset I_i}f(\xi_i)|J|$ y restar las nuevas contribuciones. Las dos alturas se evalúan en el mismo padre, así que su diferencia absoluta es a lo sumo $L\Delta_i\le L\|P\|$. Multiplicar por $|J|$ y sumar todas las hijas deja como longitud total $b-a$. Resulta
 
 $$|S(f;Q,\eta)-S(f;P,\xi)|\le L\|P\|(b-a).$$
 
-Para $P,Q$ arbitrarias, usar su refinamiento común y una familia explícita de etiquetas en él, luego triangular, da $L(b-a)(\|P\|+\|Q\|)$. No se requiere escoger etiquetas para una familia infinita.
+Para comparar $P,Q$ arbitrarias, las llevamos a su refinamiento común $R$ y elegimos allí etiquetas explícitas, por ejemplo los extremos izquierdos. El error entre cada suma original y la de $R$ está controlado por la malla de su propia partición. La triangular da así $L(b-a)(\|P\|+\|Q\|)$. Una sola familia de etiquetas en un refinamiento finito basta para esta comparación.
 
 No hay monotonía general de sumas etiquetadas al refinar. Para $f(x)=x$, la partición trivial etiquetada en $1/2$ da $1/2$; el refinamiento en mitades con etiquetas izquierdas da $1/4$ y con derechas $3/4$. Malla decreciente y orden de valores son asuntos distintos.
 
@@ -1222,6 +1226,7 @@ Si $f$ es Lipschitz3 en $[0,2]$ y las mallas de $P,Q$ son≤1/10 y≤1/20, acota
 Tomamos el refinamiento común y una familia explícita de etiquetas en él, por ejemplo las izquierdas. Cada suma original se compara con esa tercera usando su malla y la barrera Lipschitz tres. La triangular da $|S_P-S_Q|\le3\cdot2(\|P\|+\|Q\|)\le6(1/10+1/20)=9/10$. La cota protege todas las etiquetas originales y no identifica todavía un valor integral.
 
 </details>
+
 ## 22.6. Escalones: exactitud finita y nodos excepcionales
 
 []{#MA-SEC-ANM-01-022-006}
@@ -1230,7 +1235,7 @@ Un modelo escalonado tiene nodos $a=z_0<\cdots<z_m=b$ y valores $c_j$ constantes
 
 $$A(s)=\sum_{j=1}^m c_j(z_j-z_{j-1}).$$
 
-Insertar un corte dentro de una pieza copia la misma constante en las dos hijas y conserva $A$ por suma de anchuras. Si dos representaciones describen la misma función en los interiores, su refinamiento común tiene en cada interior hijo la misma constante de ambas: sumando allí muestra que $A$ no depende de la representación. Un punto interior hijo existe por el punto medio; los valores en un número finito de nodos no añaden una anchura.
+Insertar un corte dentro de una pieza reparte su anchura y copia la misma constante en las dos hijas, por lo que conserva $A$. Si dos representaciones describen la misma función en los interiores, pasamos a su refinamiento común. Cada interior hijo contiene su punto medio y está dentro de un interior de cada representación. Evaluar allí la función identifica las dos constantes; sumar las contribuciones de las hijas muestra que ambas representaciones dan el mismo $A$. Los valores en los nodos pueden ser excepcionales, pero esos puntos no añaden ninguna anchura a la suma definida.
 
 No confundamos ese funcional con cualquier suma etiquetada. Si una partición respeta los cortes y sus etiquetas evitan los nodos, la suma es exactamente $A$. Si una etiqueta cae en un nodo cuyo valor es excepcional, puede perder esa igualdad.
 
@@ -1240,7 +1245,7 @@ $$|S(f;P,\xi)-S(g;P,\xi)|\le2kD\|P\|.$$
 
 La cuenta puede sobreestimar, y en extremos sólo interviene una pieza; es una cota suficiente. Para $k=0$ es cero.
 
-Probemos además estabilidad del escalón para particiones que no respetan sus cortes. Sea $B\ge0$ una cota de todos sus valores, incluidas las excepciones. Llevamos $P$ al refinamiento común con la representación del escalón. A cada hija damos como altura su constante interior; su suma es $A$. Padres cerrados que no tocan ningún nodo tienen altura constante, y contribución exactamente igual. Cada uno de los $m+1$ nodos toca a lo sumo dos padres, así que la longitud total de padres malos es como máximo $2(m+1)\|P\|$. La diferencia de alturas en cada uno es como máximo $2B$. Resulta
+Para controlar también particiones que no respetan los cortes del escalón, sea $B\ge0$ una cota de todos sus valores, incluidas las excepciones. Refinamos $P$ con la representación del escalón y asignamos a cada hija su constante interior; esta suma vale $A$. Un padre cerrado que no toca ningún nodo del escalón tiene altura constante y su contribución no cambia. Sólo debemos estimar los padres que tocan algún nodo. Cada uno de los $m+1$ nodos pertenece a lo sumo a dos padres, cada padre tiene longitud a lo sumo $\|P\|$ y cada diferencia de alturas es a lo sumo $2B$. Aunque esta cuenta repita algún padre, proporciona la barrera suficiente
 
 $$|S(s;P,\xi)-A(s)|\le4B(m+1)\|P\|.$$
 
@@ -1464,6 +1469,7 @@ Representa la constante3 en $[0,2]$ con una pieza y con cortes1/2 y3/2; demuestr
 Una única pieza de longitud dos y altura tres aporta seis. Con cortes $1/2$ y $3/2$, las anchuras son $1/2$, uno y $1/2$, y las contribuciones $3/2$, tres y $3/2$ suman seis. La identidad de longitudes explica esta igualdad para cualquier subdivisión de una región constante. Dos representaciones generales se comparan mediante su refinamiento común.
 
 </details>
+
 ## 22.7. Un límite que todas las etiquetas deben compartir
 
 []{#MA-SEC-ANM-01-022-007}
@@ -1475,15 +1481,15 @@ $$\forall\varepsilon>0\ \exists\delta>0\ \forall(P,\xi):
 
 El radio puede depender de $f,[a,b]$ y $\varepsilon$, pero se elige antes de la partición y de todas sus etiquetas. Denotamos ese real por $\int_a^b f(x)\,dx$. Es una definición mediante sumas finitas y tolerancias; la notación no afirma una antiderivada ni integra infinitesimales. Que se vea área en una figura es interpretación, no existencia automática.
 
-El valor es único. Si $I,J$ cumplen el contrato y $d=|I-J|>0$, pedimos tolerancia $d/3$ a ambos y tomamos una partición uniforme de malla menor que los dos radios, con etiquetas explícitas. La triangular da $d<2d/3$, contradicción. La existencia de particiones pequeñas impide que el cuantificador universal sea vacío.
+Para probar unicidad, supongamos que dos reales $I,J$ cumplen el contrato y que $d=|I-J|>0$. Pedimos error menor que $d/3$ a ambos. La construcción de §22.3 permite tomar una partición uniforme con malla menor que los dos radios; fijamos en ella etiquetas explícitas. Su suma queda a distancia menor que $d/3$ de cada candidato. La triangular daría entonces $d<2d/3$, contradicción. La existencia de particiones pequeñas es esencial: permite usar las dos garantías sobre una misma suma.
 
 Si un certificado demostrado tiene forma $|S-I|\le C\|P\|$ para todas las particiones y etiquetas, con $C\ge0$, la definición se cumple: para $C>0$ tomamos $\delta=\varepsilon/C$ y para $C=0$ cualquier radio positivo. Por la sección anterior, los escalones son integrables y su integral es $A$. La cota de diferencias en $k$ puntos prueba que cambiar valores finitos conserva cualquier integral existente: para $2kD>0$ escogemos además $\|P\|<\varepsilon/(4kD)$ y pedimos error $\varepsilon/2$ al original; los casos de constante cero se separan.
 
 El límite de una selección de sumas es consecuencia, no sustituto del contrato. Si $\|P_r\|\to0$ y cada $\xi^{(r)}$ es una familia dada, integrabilidad implica $S(f;P_r,\xi^{(r)})\to I$: para un $\delta$ válido, las mallas eventualmente quedan por debajo. Observar sólo una familia de etiquetas o una cadena de refinamientos no controla las demás. En particular, contar piezas no demuestra ni siquiera que sus mallas tiendan a cero.
 
-No hemos probado que toda función acotada sea integrable ni que toda continua lo sea. C23 construirá cotas inferiores/superiores, oscilación y equivalencias. C24 conectará acumulación y derivación.
+Estos certificados dan existencia para escalones y para las modificaciones finitas de una función ya integrable. Todavía falta un procedimiento que decida la integrabilidad de clases más amplias, como las funciones continuas. Las cotas inferiores y superiores de Darboux proporcionarán ese procedimiento en C23; la relación con la derivación requerirá después el teorema fundamental de C24.
 
-![Para x en\[0,1\], todas las sumas cumplen |S−1/2|≤malla/2. Con tolerancia1/20, un radio1/10 sirve; se exige malla estrictamente menor. Las muestras sólo ilustran la banda universal demostrada.](../../assets/books/anm/C22/C22-F07.svg){#fig-anm-c22-f07 fig-alt="Para x en\[0,1\], todas las sumas cumplen |S−1/2|≤malla/2. Con tolerancia1/20, un radio1/10 sirve; se exige malla estrictamente menor. Las muestras sólo ilustran la banda universal demostrada."}
+![Para x en\[0,1\], todas las sumas cumplen |S−1/2|≤malla/2. Con tolerancia1/20, un radio1/10 sirve; se exige malla estrictamente menor. Las muestras sólo ilustran la banda universal demostrada.](../../assets/books/anm/C22/C22-F07.svg){#fig-anm-c22-f07 fig-alt="Para x en[0,1], todas las sumas cumplen |S−1/2|≤malla/2. Con tolerancia1/20, un radio1/10 sirve; se exige malla estrictamente menor. Las muestras sólo ilustran la banda universal demostrada."}
 
 ### Microcontroles
 
@@ -1701,6 +1707,7 @@ Sea $\|P_r\|\to0$ con etiquetas dadas. Demuestra convergencia de las sumas si $f
 Para una tolerancia $\varepsilon$, el contrato universal entrega $\delta>0$. Como las mallas dadas tienden a cero, existe un índice $N$ desde el que todas son menores que $\delta$. Sus sumas, con las etiquetas dadas, cumplen entonces $|S_r-I|<\varepsilon$. Esto prueba convergencia a $I$. Una sola sucesión de datos no controla por ese argumento las otras particiones y etiquetas cuantificadas por el contrato.
 
 </details>
+
 ## 22.8. Certificados antes de fórmulas de integración
 
 []{#MA-SEC-ANM-01-022-008}
@@ -1715,7 +1722,7 @@ Para $f(x)=x^2$ en $[0,1]$, pongamos $u=x_{i-1}$, $v=x_i$. La identidad del cubo
 
 $$\frac{v^3-u^3}{3}=(v-u)\frac{u^2+uv+v^2}{3}.$$
 
-Todos $u^2,uv,v^2,\xi_i^2$ quedan entre $u^2$ y $v^2$. La diferencia entre $\xi_i^2$ y la media indicada es a lo sumo $v^2-u^2=(v-u)(v+u)\le2\Delta_i$. Sumando, telescopía prueba
+Como $0\le u\le\xi_i\le v\le1$, los números $u^2,uv,v^2$ y $\xi_i^2$ quedan entre $u^2$ y $v^2$. También la media de los tres primeros está en esa banda. La diferencia entre ella y $\xi_i^2$ tiene, por tanto, magnitud a lo sumo $v^2-u^2=(v-u)(v+u)\le2\Delta_i$. Al multiplicar por la anchura y sumar, los incrementos cúbicos de la identidad anterior telescopan y dejan $1/3$. Obtenemos
 
 $$\left|S(x^2;P,\xi)-\frac13\right|\le2\sum_i\Delta_i^2\le2\|P\|.$$
 
@@ -1726,9 +1733,9 @@ $$\frac13-\frac1{2n}+\frac1{6n^2},\qquad
 
 La identidad $\sum_{i=1}^n i^2=n(n+1)(2n+1)/6$ que los produce se demuestra por inducción: el caso1 es directo; añadir $(n+1)^2$ y factorizar da la expresión con $n+1$. Las copias reales de índices y $n>0$ preceden a estas divisiones. Para $n=4$ los valores son $7/32$ y $15/32$, alrededor de $1/3$. La suma media es $1/3-1/(12n^2)$; procede de expandir $(i-1/2)^2$ y sumar. Una etiqueta central no da exactitud cuadrática.
 
-Para error menor que $1/100$, el certificado universal $2\|P\|$ permite elegir $n>200$ en la partición uniforme, pero se aplica también a cualquier otra partición de esa malla. El límite probado conserva todas las etiquetas, incluso mezclas que no sean izquierda/derecha/media. Gráficas de unas pocas sumas ilustran este control ya demostrado. Preparar la integral es fabricar un límite estable; las cotas óptimas y las clases generales integrables pertenecen al capítulo siguiente.
+Para exigir error menor que $1/100$, la cota $2\|P\|$ pide malla menor que $1/200$. En la partición uniforme basta elegir $n>200$; cualquier otra partición con esa malla satisface la misma garantía, incluidas todas sus mezclas de etiquetas. Las fórmulas izquierda, derecha y media permiten comparar aproximaciones concretas, mientras el certificado universal es el que demuestra la existencia de la integral.
 
-![Para x² en\[0,1\], sumas uniformes izquierda/media/derecha se acercan a1/3 por fórmulas finitas. Con n4 valen7/32,21/64,15/32; el certificado2·malla sirve para toda etiqueta, no sólo estas tres.](../../assets/books/anm/C22/C22-F08.svg){#fig-anm-c22-f08 fig-alt="Para x² en\[0,1\], sumas uniformes izquierda/media/derecha se acercan a1/3 por fórmulas finitas. Con n4 valen7/32,21/64,15/32; el certificado2·malla sirve para toda etiqueta, no sólo estas tres."}
+![Para x² en\[0,1\], sumas uniformes izquierda/media/derecha se acercan a1/3 por fórmulas finitas. Con n4 valen7/32,21/64,15/32; el certificado2·malla sirve para toda etiqueta, no sólo estas tres.](../../assets/books/anm/C22/C22-F08.svg){#fig-anm-c22-f08 fig-alt="Para x² en[0,1], sumas uniformes izquierda/media/derecha se acercan a1/3 por fórmulas finitas. Con n4 valen7/32,21/64,15/32; el certificado2·malla sirve para toda etiqueta, no sólo estas tres."}
 
 ### Microcontroles
 
