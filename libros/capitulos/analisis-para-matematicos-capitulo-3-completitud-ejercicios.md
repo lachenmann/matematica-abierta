@@ -29,7 +29,7 @@ license: GFDL-1.3-or-later
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.html) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.html) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.html)
 
 ## §3.1. El problema heredado: definir no basta
 
@@ -1602,4 +1602,4 @@ Después responde estas cuestiones de conexión:
 
 Cierra formulando en una sola frase matemática —sin apelar a la imagen informal de una línea continua— qué aporta la completitud de $\mathbb R$.
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.html) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-3-completitud-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 3](analisis-para-matematicos-capitulo-3-completitud.html) · [Ejercicios](analisis-para-matematicos-capitulo-3-completitud-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-3-completitud-soluciones.html)

@@ -26,7 +26,7 @@ provenance:
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 12](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html) · [Ejercicios](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 12](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html) · [Ejercicios](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-soluciones.html)
 
 ## 12.1. La misma regla, tres objetos
 
@@ -454,4 +454,4 @@ Por la equivalencia del manuscrito, la segunda condición equivale a $f[A]\subse
 
 La hipótesis describe qué conjuntos contienen a $C$ y los compara con una selección de entradas. La equivalencia entre imagen y preimagen convierte esa selección en la condición de contener a $f[A]$. Para recuperar la igualdad elegimos dos conjuntos de prueba: $C$ y $f[A]$. Cada uno se contiene a sí mismo, y la equivalencia obliga a que contenga al otro. Las dos inclusiones concluyen la prueba sin escoger elementos concretos y abarcan también los casos vacíos.
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 12](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html) · [Ejercicios](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 12](analisis-para-matematicos-capitulo-12-que-hace-una-funcion.html) · [Ejercicios](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-12-que-hace-una-funcion-soluciones.html)

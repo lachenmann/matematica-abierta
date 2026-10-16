@@ -61,17 +61,17 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-Esta edición reúne el libro completo: **32 capítulos (0–31)**, prefacio y epílogo, **1.290 ejercicios con sus soluciones** y **2.048 microcontroles resueltos**. El recorrido parte de la construcción de los números reales y llega a los espacios métricos, pasando por límites, continuidad, derivadas, integrales y convergencia uniforme.
+Esta edición reúne el libro completo: **32 capítulos (0–31)**, prefacio y epílogo, **1.290 ejercicios con sus soluciones**. El recorrido parte de la construcción de los números reales y llega a los espacios métricos, pasando por límites, continuidad, derivadas, integrales y convergencia uniforme.
 
 [Comenzar por el capítulo 0](../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html) · [Leer el prefacio](#prefacio) · [Consultar el epílogo](../capitulos/analisis-para-matematicos-epilogo.html)
 
 ## Descargas de la edición revisada
 
-La edición del 16 de octubre de 2026 incorpora la revisión completa de los capítulos 0–31. Ambos PDFs conservan los **1.290 ejercicios y 2.048 microcontroles con sus 3.338 soluciones**, en composición AMS Book.
+La edición del 16 de octubre de 2026 incorpora la revisión completa de los capítulos 0–31. Ambos PDFs conservan los **1.290 ejercicios con sus soluciones**, en composición AMS Book.
 
-- [PDF A4 para lectura digital](../../assets/books/anm/downloads/ANM_A4_Digital_Con_Soluciones_v03.pdf)
-- [PDF carta para impresión](../../assets/books/anm/downloads/ANM_Carta_Impresion_Con_Soluciones_v03.pdf)
-- [Proyecto Overleaf completo](../../assets/books/anm/downloads/ANM_Overleaf_MA_PDF_v03.zip)
+- [PDF A4 para lectura digital](../../assets/books/anm/downloads/ANM_A4_Digital_Con_Soluciones_v04.pdf)
+- [PDF carta para impresión](../../assets/books/anm/downloads/ANM_Carta_Impresion_Con_Soluciones_v04.pdf)
+- [Proyecto Overleaf completo](../../assets/books/anm/downloads/ANM_Overleaf_MA_PDF_v04.zip)
 
 El proyecto Overleaf incluye las fuentes LaTeX y las figuras necesarias para compilar con XeLaTeX. `main.tex` corresponde a A4 y `main-carta.tex` a carta.
 
@@ -105,7 +105,7 @@ El análisis comienza a volverse propio cuando podemos explicar por qué una her
 
 ## Capítulos disponibles
 
-Los microcontroles y ejercicios están integrados en cada capítulo. Intenta resolver cada pregunta antes de abrir su solución desarrollada.
+Los ejercicios están integrados en cada capítulo. Intenta resolver cada pregunta antes de abrir su solución desarrollada.
 
 0. [**Construir los números reales**](../capitulos/analisis-para-matematicos-capitulo-0-construir-los-numeros-reales.html).
 

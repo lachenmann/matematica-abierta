@@ -26,7 +26,7 @@ provenance:
 css: ../../assets/books/anm/reader.css
 ---
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 28](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html) · [Ejercicios](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 28](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html) · [Ejercicios](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-soluciones.html)
 
 ## 28.1. Una fila dentro de la banda
 
@@ -380,4 +380,4 @@ La clase de R8 contiene funciones continuas en un segmento no degenerado cuya de
 
 Supongamos $r\ge1$, filas $C^r$ en el mismo segmento, convergencia uniforme de sus capas de orden $r$ y convergencia en un anclaje común de las capas de órdenes cero hasta $r-1$. Aplicamos R6 a las funciones de orden $r-1$, cuya derivada es la capa superior y cuyo dato inicial converge. Obtenemos un destino uniforme de ese orden y la identificación de su derivada con el destino de orden $r$. Repetimos para el orden $r-2$ usando la capa recién construida como derivada uniforme, y continuamos hasta los valores. Son sólo $r$ pasos. R1 conserva continuidad de los destinos extendidos al cerrado, y las cotas de incrementos identifican las derivadas relativas de borde. Se obtiene convergencia uniforme de todas las capas con sus relaciones de derivación. Para $r=0$ queda únicamente la convergencia uniforme de valores; no se utiliza Taylor ni una operación infinita para justificar el descenso.
 
-[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 28](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html) · [Ejercicios](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-soluciones.html) · [Soluciones de microcontroles](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-microcontroles.html)
+[Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Capítulo 28](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones.html) · [Ejercicios](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-ejercicios.html) · [Soluciones](analisis-para-matematicos-capitulo-28-intercambiar-limites-con-operaciones-soluciones.html)
