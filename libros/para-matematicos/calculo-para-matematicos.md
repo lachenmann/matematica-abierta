@@ -50,7 +50,7 @@ provenance:
   sources: []
 bibliography: ../../assets/books/cpm-tomo-i/references.bib
 nocite: |
-  @ma-abbott, @ma-apostol-calculus-1, @ma-courant-john-1, @ma-hardy, @ma-labbe-calculo-1, @ma-nitecki, @ma-polya-szego-1, @ma-protter-morrey-1, @ma-pugh, @ma-radozycki-1, @ma-rudin, @ma-spivak-calculus, @ma-tao-1, @ma-velleman, @ma-zorich-1, @jacob-evans-analysis-v1
+  @ma-abbott, @ma-apostol-calculus-1, @ma-courant-john-1, @ma-hardy, @ma-labbe-calculo-1, @ma-nitecki, @ma-polya-szego-1, @ma-protter-morrey-1, @ma-pugh, @ma-radozycki-1, @ma-radozycki-2, @ma-rudin, @ma-spivak-calculus, @ma-tao-1, @ma-velleman, @ma-zorich-1, @jacob-evans-analysis-v1
 license: GFDL-1.3-or-later
 ---
 
