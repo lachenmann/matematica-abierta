@@ -48,6 +48,9 @@ related:
 provenance:
   type: synthesis
   sources: []
+bibliography: ../../assets/books/cpm-tomo-i/references.bib
+nocite: |
+  @ma-abbott, @ma-apostol-calculus-1, @ma-courant-john-1, @ma-hardy, @ma-labbe-calculo-1, @ma-nitecki, @ma-polya-szego-1, @ma-protter-morrey-1, @ma-pugh, @ma-radozycki-1, @ma-rudin, @ma-spivak-calculus, @ma-tao-1, @ma-velleman, @ma-zorich-1, @jacob-evans-analysis-v1
 license: GFDL-1.3-or-later
 ---
 
@@ -98,3 +101,10 @@ Edición revisada del **16 de octubre de 2026**, firmada por **A. Peña**. Ambos
 - [PDF A4 para lectura digital](../../assets/books/cpm-tomo-i/downloads/Calculo_para_matematicos_Tomo_I_amsbook.pdf).
 - [PDF carta para impresión](../../assets/books/cpm-tomo-i/downloads/Calculo_para_matematicos_Tomo_I_carta_amsbook.pdf).
 - [Proyecto LaTeX completo para Overleaf](../../assets/books/cpm-tomo-i/downloads/Calculo_para_matematicos_Tomo_I_Overleaf_amsbook.zip).
+
+## Bibliografía del Tomo I
+
+Estas fuentes sustentan la arquitectura, la exposición y el control de rigor del tomo. Las colecciones de problemas sirven de contraste para el diseño de ejercicios originales; Velleman aporta el apoyo metodológico para las demostraciones. Se incluyen las obras de cálculo de una variable y sus controles de análisis, sin incorporar las referencias reservadas a los tomos posteriores.
+
+::: {#refs}
+:::
