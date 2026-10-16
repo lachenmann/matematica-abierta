@@ -9,7 +9,7 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-10-07
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 areas:
 - analisis
 level: universitario
@@ -42,244 +42,73 @@ include-in-header:
 
 *De los racionales a la recta completa*
 
-[]{#MA-SEC-ANM-01-000-010}
-
-Los números reales suelen entrar en un curso de análisis como si ya estuvieran esperándonos. Escribimos $\mathbb R$, dibujamos una recta, colocamos sobre ella números racionales e irracionales y empezamos a hablar de límites, continuidad o derivadas. La notación funciona tan bien y la imagen de la recta es tan familiar que resulta fácil olvidar una pregunta anterior a todas esas técnicas:
-
-> **¿Por qué tenemos derecho a suponer que existe un sistema numérico con todas las propiedades que atribuimos a los números reales?**
-
-La pregunta no es filosófica en un sentido vago. Es una pregunta matemática muy concreta. Podemos escribir una lista de propiedades que quisiéramos que cumpliera un sistema numérico; otra cosa es demostrar que esas propiedades son compatibles y que hay, efectivamente, algún objeto matemático que las satisface todas a la vez.
-
-Ése será el problema fundacional de este capítulo.
-
-Nuestro punto de partida no será una definición ya terminada de $\mathbb R$. Tampoco reconstruiremos toda la aritmética desde los axiomas de la teoría de conjuntos. Tomaremos como disponibles los lenguajes elementales de conjuntos y funciones, junto con los sistemas $\mathbb N$, $\mathbb Z$ y $\mathbb Q$ y su aritmética usual. A partir de ahí construiremos, paso a paso, un sistema que satisfaga las exigencias que queremos imponer a los reales.
-
-Esto es lo que aquí significa una **construcción acotada**: construiremos explícitamente el nuevo objeto, pero no convertiremos el capítulo en una reconstrucción de toda la matemática desde ZF/ZFC. Trabajaremos dentro del marco clásico habitual; no estamos usando la palabra «constructivo» en el sentido técnico de la matemática constructivista.
-
-La estrategia será deliberadamente lenta. Primero fijaremos la especificación: qué tendría que cumplir un candidato a «sistema de números reales». Después veremos por qué los racionales no bastan. Sólo entonces tendrá sentido preguntarnos cómo reparar exactamente ese defecto.
-
-Hay además una segunda cuestión que quedará esperando detrás de la primera. Incluso si logramos construir un sistema con las propiedades deseadas, todavía habrá que preguntarse si otro sistema construido de manera distinta podría representar una estructura esencialmente diferente. No abriremos todavía ese problema. Primero debemos resolver el más básico:
+Los números racionales permiten aproximar con mucha precisión ciertas cantidades, incluso cuando todavía no sabemos cómo representarlas exactamente. Consideremos, por ejemplo, dos fracciones:
 
 $$
-\boxed{\text{¿existe algún sistema que merezca llamarse sistema de números reales?}}
+\left(\frac75\right)^2=\frac{49}{25}<2,
+\qquad
+\left(\frac32\right)^2=\frac94>2.
 $$
+
+La primera tiene un cuadrado demasiado pequeño; la segunda, demasiado grande. Podemos elegir nuevas fracciones entre ambas, comparar sus cuadrados con $2$ y estrechar progresivamente el intervalo de búsqueda. Sin embargo, por mucho que afinemos las aproximaciones, hay una cuestión que ese procedimiento no responde por sí solo: **¿existe en nuestro sistema numérico un elemento cuyo cuadrado sea exactamente $2$?** Saber que podemos aproximar una posición no equivale todavía a demostrar que la posición está ocupada por un número del sistema.
+
+En *Cálculo para matemáticos*, la recta real nos permitía pasar de aproximaciones a resultados exactos al estudiar límites, continuidad e integrales. La pregunta por una cantidad que esas aproximaciones todavía no alcanzan nos obliga a examinar qué sostiene aquel paso: cuando un argumento de cálculo asegura que cierta cantidad existe, ¿qué propiedad de los números hace posible la conclusión y cómo podemos justificarla?
+
+La búsqueda de un número cuyo cuadrado sea $2$ revela una dificultad que las aproximaciones sucesivas dejan abierta: una familia racional puede estar acotada y carecer dentro de $\mathbb Q$ de la mejor de sus cotas superiores. Para representar esa frontera sin dar por existentes los números que faltan, utilizaremos conjuntos de racionales, las *cortaduras de Dedekind*. El desafío consiste en hacer aritmética con esos conjuntos y probar que su orden posee la propiedad que echamos de menos en los racionales: toda familia no vacía y acotada superiormente tiene supremo.
+
+Ése será el problema fundacional de este capítulo y la primera pregunta fundamental del análisis.
+
+Sólo después de demostrar que una construcción satisface todas esas propiedades podremos llamarla un modelo de los números reales. Quedará todavía una pregunta: si hubiéramos realizado la construcción de otro modo, ¿habríamos obtenido los mismos números? La comparación se hará mediante una correspondencia que conserve la aritmética y el orden, aunque los elementos de los dos modelos sean objetos conjuntistas diferentes.
 
 ## 0.1. ¿Existen los números reales?
 
 []{#MA-SEC-ANM-01-000-001}
 
-Para responder a una pregunta de existencia necesitamos saber antes qué estamos buscando. Decir simplemente «queremos construir $\mathbb R$» no sirve, porque el símbolo $\mathbb R$ ya presupone el objeto cuya existencia queremos justificar.
+Volvamos a las dos fracciones con las que comenzamos. En su comparación hemos utilizado la suma y el producto racionales, así como el orden que permite afirmar que un cuadrado es menor o mayor que otro. Todo ello funciona dentro de $\mathbb Q$. El problema aparece cuando queremos pasar del conjunto de aproximaciones a una frontera que no necesariamente es racional. Antes de construir un sistema más amplio necesitamos saber exactamente qué le vamos a exigir, de modo que podamos reconocer si nuestra construcción lo consigue.
 
-Así que, por el momento, olvidemos ese símbolo y llamemos $F$ a un candidato desconocido. No sabemos todavía si existe. Lo único que podemos hacer es redactar una lista de requisitos.
+Llamemos $F$ al sistema que buscamos. Por el momento, $F$ es únicamente el nombre de un candidato; no hemos demostrado que exista. Queremos poder realizar en él la aritmética ordinaria: sumar, restar, multiplicar y dividir por elementos no nulos, con leyes que permitan transformar expresiones sin contradicciones. La estructura algebraica que reúne esas exigencias es la de un **cuerpo**. En particular, $F$ debe contar con operaciones $+$ y $\cdot$, elementos $0$ y $1$ distintos entre sí, leyes asociativas, conmutativas y distributiva, opuestos aditivos e inversos multiplicativos para todos los elementos no nulos.
 
-### Primera exigencia: una aritmética suficientemente rica
-
-Queremos poder sumar, restar, multiplicar y dividir por elementos no nulos. No basta con que esas operaciones estén definidas de cualquier manera: deben obedecer las leyes algebraicas que hacen posible la aritmética ordinaria.
-
-La estructura adecuada es la de **cuerpo**. Esto significa, entre otras cosas, que en $F$ tenemos dos operaciones,
+Necesitamos asimismo comparar sus elementos. Para cualesquiera $x,y\in F$, debe ocurrir exactamente una de las posibilidades $x<y$, $x=y$ o $y<x$. Ese orden ha de ser compatible con las operaciones, pues, de otro modo, las desigualdades perderían las propiedades que acabamos de usar al comparar cuadrados. Con la notación $\le$ para el orden no estricto, las dos compatibilidades fundamentales son
 
 $$
-+,\qquad \cdot,
-$$
-
-dos elementos distinguidos,
-
-$$
-0,\qquad 1,
-$$
-
-con $0\ne1$, y que se cumplen las leyes habituales de asociatividad, conmutatividad y distributividad. Cada elemento tiene un opuesto aditivo, y cada elemento distinto de cero tiene un inverso multiplicativo.
-
-No necesitamos volver a enumerar aquí todos los axiomas como una lista aislada. Lo importante es reconocer lo que esta primera exigencia garantiza: si nuestro candidato existe, su aritmética tendrá la misma arquitectura básica que la aritmética racional.
-
-Pero un cuerpo, por sí solo, todavía no se parece necesariamente a una recta.
-
-### Segunda exigencia: un orden compatible con la aritmética
-
-Queremos poder comparar dos elementos de $F$. Para cualesquiera $x,y\in F$, debe tener sentido preguntar si
-
-$$
-x<y,\qquad x=y,\qquad y<x.
-$$
-
-Ese orden debe ser lineal: dos elementos siempre son comparables. Y, además, debe cooperar con las operaciones.
-
-Las compatibilidades fundamentales son:
-
-$$
-x\le y
-\quad\Longrightarrow\quad
-x+z\le y+z
+x\le y\quad\Longrightarrow\quad x+z\le y+z,
 $$
 
 para todo $z\in F$, y
 
 $$
-0\le x,\qquad 0\le y
-\quad\Longrightarrow\quad
-0\le xy.
+0\le x,\quad 0\le y
+\quad\Longrightarrow\quad 0\le xy.
 $$
 
-Estas dos reglas condensan una enorme cantidad de aritmética ordenada. La primera dice que trasladar dos números por la misma cantidad no cambia cuál es menor. La segunda dice que el producto de dos elementos no negativos sigue siendo no negativo.
+La primera expresa que una misma traslación conserva el orden; la segunda permite multiplicar cantidades no negativas sin invertir su signo. Un cuerpo con un orden lineal que satisface estas reglas se llama **cuerpo ordenado**. Los racionales ya constituyen uno. Si esas fueran todas nuestras exigencias, la ampliación estaría de más.
 
-Un cuerpo equipado con un orden lineal compatible de esta manera se llama **cuerpo ordenado**.
-
-Hasta aquí ya tenemos una estructura bastante rica. Podemos hacer álgebra y podemos hablar de izquierda y derecha en una representación ordenada. Sin embargo, todavía falta exactamente la propiedad que hará posible gran parte del análisis.
-
-### Tercera exigencia: que las barreras necesarias existan dentro del sistema
-
-Supongamos que $A\subseteq F$ es un conjunto no vacío y que está acotado superiormente. Esto significa que existe algún $u\in F$ tal que
+Consideremos entonces una familia de elementos de $F$. Diremos que un conjunto $A\subseteq F$ está *acotado superiormente* cuando existe un elemento $u\in F$ situado por encima de todos sus miembros:
 
 $$
-a\le u
+a\le u\qquad\text{para todo }a\in A.
 $$
 
-para todo $a\in A$.
-
-Podemos entonces preguntar si existe una **menor cota superior**: una cota $s$ que siga estando por encima de todos los elementos de $A$, pero que no pueda reemplazarse por ninguna cota superior más pequeña.
-
-Formalmente, queremos un elemento $s\in F$ tal que:
-
-1. para todo $a\in A$,
-   $$
-   a\le s;
-   $$
-2. si $u\in F$ es cualquier cota superior de $A$, entonces
-   $$
-   s\le u.
-   $$
-
-Si ese elemento existe, lo llamamos **supremo** de $A$ y escribimos
+Es posible disponer de muchas cotas superiores. La que nos interesa, cuando existe, es la menor de todas ellas. Un elemento $s\in F$ es el **supremo** de $A$ si se cumplen simultáneamente
 
 $$
-s=\sup A.
+\begin{aligned}
+&a\le s &&\text{para todo }a\in A,\\
+&s\le u &&\text{para toda cota superior }u\text{ de }A.
+\end{aligned}
 $$
 
-Ahora podemos formular la tercera exigencia:
+La primera línea asegura que $s$ es una cota superior; la segunda, que ninguna cota superior puede quedar por debajo de él. Esta segunda obligación es esencial. Saber que un conjunto está acotado no asegura todavía que la colección de sus cotas tenga un elemento mínimo. Tampoco exigimos que el supremo pertenezca al propio conjunto: en $\mathbb Q$, por ejemplo, el conjunto de racionales estrictamente menores que $1$ tiene supremo $1$, aunque $1$ no sea uno de sus elementos.
 
-> Todo subconjunto no vacío de $F$ que esté acotado superiormente debe poseer un supremo en $F$.
+La propiedad que falta en nuestra especificación puede formularse ahora con precisión: **todo subconjunto no vacío y acotado superiormente de $F$ debe poseer un supremo perteneciente a $F$**. Se denomina *propiedad del supremo* o *completitud de orden*. Importa la frase «perteneciente a $F$»: que una familia tenga una frontera en un sistema numérico mayor no basta para que el sistema inicial sea completo.
 
-Ésta es la forma de completitud que utilizaremos en este capítulo. Más precisamente, se trata de **completitud de orden mediante la propiedad del supremo**.
-
-No estamos hablando todavía de sucesiones de Cauchy ni de convergencia. Esas formulaciones aparecerán mucho más adelante. Aquí la completitud significa algo muy concreto: cuando el orden exige una mejor barrera para un conjunto no vacío y acotado superiormente, esa barrera existe dentro del propio sistema.
-
-### La especificación completa
-
-Podemos reunir ahora las tres exigencias.
-
-Buscamos un sistema $F$ que sea:
-
-$$
-\boxed{
-\text{cuerpo}
-+
-\text{orden lineal compatible}
-+
-\text{propiedad del supremo}.
-}
-$$
-
-A una estructura así la llamaremos **cuerpo ordenado completo**.
-
-Hay además una exigencia de continuidad histórica y aritmética que pronto tendremos que precisar: queremos que los números racionales aparezcan dentro de nuestro sistema sin perder su aritmética ni su orden. Pero incluso la frase «los racionales están dentro de $F$» necesita una formulación rigurosa. ¿Significa inclusión literal? ¿Significa que hay una copia de $\mathbb Q$ que conserva la estructura? Ésa será precisamente la pregunta de la sección siguiente.
-
-Por ahora basta con registrar la especificación central:
-
-$$
-\boxed{\text{Queremos un cuerpo ordenado completo que prolongue la aritmética racional.}}
-$$
-
-La figura [C00-F01](#fig-anm-c00-f01) concentra esta lectura en un único mapa visual.
+Reunidas estas exigencias, buscamos un **cuerpo ordenado completo**. Queremos, además, que los racionales se reconozcan en él sin perder sus operaciones ni su orden. Más adelante construiremos una aplicación inyectiva desde $\mathbb Q$ a nuestro candidato y comprobaremos esas propiedades; solamente entonces estará justificada la notación abreviada $\mathbb Q\subseteq F$.
 
 ![La especificación abre la pregunta de existencia; la comparación estructural sólo aparece después de construir y verificar un modelo.](../../assets/books/anm/C00-F01.svg){#fig-anm-c00-f01 fig-alt="Mapa lógico con cuatro etapas: especificación, pregunta de existencia, construcción/verificación y comparación estructural; la apertura deja explícitamente la respuesta sin revelar."}
 
-### Especificar no es demostrar que existe
+Enunciar condiciones no garantiza que exista un objeto que las satisfaga. Sería perfectamente posible exigir a un número que cumpliera a la vez $x<0$ y $x>1$; el enunciado se entiende, pero sus condiciones son incompatibles. Al describir un cuerpo ordenado completo aún no hemos demostrado que sus axiomas puedan cumplirse simultáneamente. La expresión «sea $F$ un cuerpo ordenado completo» será legítima más adelante como hipótesis de un teorema, pero no puede utilizarse como respuesta a la pregunta de si tales cuerpos existen. Para responderla tendremos que exhibir un modelo concreto y verificar todas las propiedades que acabamos de formular.
 
-Aquí aparece el paso lógico que suele quedar oculto.
-
-Hemos descrito con bastante precisión qué queremos. Eso no demuestra que podamos tenerlo.
-
-En matemáticas es posible escribir sistemas de condiciones incompatibles. Por ejemplo, podríamos pedir un número $x$ que satisficiera simultáneamente
-
-$$
-x<0
-$$
-
-y
-
-$$
-x>1.
-$$
-
-La frase está perfectamente formada, pero no por eso existe un objeto que la satisfaga.
-
-Con una estructura axiomática ocurre lo mismo a otra escala. Podemos enumerar propiedades deseables y estudiar qué consecuencias tendrían **si** algún sistema las cumpliera. Pero mientras no construyamos al menos un modelo, sigue abierta la cuestión de si todas esas propiedades pueden coexistir.
-
-Por eso la afirmación
-
-> «Sea $F$ un cuerpo ordenado completo»
-
-tiene dos usos muy distintos.
-
-En una demostración posterior, cuando la existencia ya esté establecida, puede funcionar como una hipótesis perfectamente legítima. En este punto del libro, en cambio, no podemos usarla para resolver la pregunta fundacional. Si queremos justificar la existencia de los reales, necesitamos exhibir un sistema y demostrar que cumple lo que acabamos de exigir.
-
-La distinción puede resumirse así:
-
-$$
-\boxed{
-\text{definir la clase de objetos que buscamos}
-\;\not\Rightarrow\;
-\text{probar que esa clase contiene algún objeto}.
-}
-$$
-
-Ésta será una regla importante durante todo el capítulo. Cada vez que introduzcamos una nueva construcción, preguntaremos no sólo qué pretende representar, sino qué falta todavía por verificar antes de poder afirmar que hemos construido realmente un cuerpo ordenado completo.
-
-### ¿Por qué no basta con los racionales?
-
-Una reacción natural sería pensar que quizá ya tenemos lo que necesitamos. Después de todo, $\mathbb Q$ posee una aritmética muy rica y un orden perfectamente bien comportado. Podemos sumar, restar, multiplicar, dividir por elementos no nulos y comparar racionales.
-
-Entonces, antes de inventar nada nuevo, la pregunta correcta es:
-
-> **¿Satisface ya $\mathbb Q$ nuestra especificación?**
-
-No responderemos todavía. Hacerlo bien requiere localizar una familia racional concreta para la cual la propiedad del supremo falle dentro de $\mathbb Q$, y esa demostración merece una sección propia.
-
-Lo importante aquí es advertir cómo ha cambiado el problema. Ya no estamos preguntando vagamente si a los racionales «les faltan números». Tenemos un criterio exacto que podemos auditar:
-
-1. ¿es $\mathbb Q$ un cuerpo?;
-2. ¿está linealmente ordenado de manera compatible con su aritmética?;
-3. ¿todo subconjunto racional no vacío y acotado superiormente tiene un supremo racional?
-
-Las dos primeras preguntas tienen respuesta afirmativa. La tercera será el punto decisivo.
-
-### Una segunda pregunta queda en espera
-
-Aunque todavía no podamos responder la pregunta de existencia, conviene distinguirla de otra que aparecerá más adelante.
-
-Supongamos, sólo de manera hipotética, que lográramos construir un cuerpo ordenado completo $F$. Y supongamos que otra construcción produjera un cuerpo ordenado completo $G$.
-
-Aun entonces habría que decidir qué significa que ambos representen «los mismos números reales».
-
-No exigiríamos necesariamente que $F$ y $G$ fueran literalmente el mismo conjunto. Dos realizaciones matemáticas pueden tener elementos subyacentes distintos y, sin embargo, poseer exactamente la misma estructura relevante. La noción precisa que permitirá comparar esos modelos será la de **isomorfismo de cuerpos ordenados**.
-
-Pero no abriremos todavía esa investigación. Sería prematuro discutir cuántos modelos puede haber cuando aún no hemos demostrado que haya siquiera uno.
-
-El orden lógico del capítulo será, por tanto:
-
-$$
-\boxed{
-\text{primero existencia;}
-\qquad
-\text{después, y sólo después, comparación estructural}.
-}
-$$
-
-En este momento sólo la primera pregunta está activa:
-
-$$
-\boxed{\text{¿Existe algún cuerpo ordenado completo?}}
-$$
+Incluso entonces faltará distinguir existencia de unicidad. Podrían construirse dos sistemas cuyos elementos, considerados como conjuntos, no fueran iguales. Lo que habrá que comprobar es si sus estructuras están relacionadas por una correspondencia que preserve exactamente el orden y las operaciones. Ése es un problema posterior: la existencia nos permitirá hablar de los reales; la comparación de modelos explicará en qué sentido esa estructura es única.
 
 ### Antes de seguir
 
@@ -469,383 +298,74 @@ La etapa IV acredita que cada subconjunto no vacío acotado superiormente posee 
 Si otro objeto $N$ superara las mismas verificaciones, existirían dos modelos de la especificación. La pregunta nueva sería si sus estructuras pueden compararse mediante un isomorfismo de cuerpos ordenados y si esa correspondencia es única. La construcción y verificación de $M$ ya habría resuelto existencia; esa comparación necesita su propia prueba.
 
 </details>
+
 ## 0.2. Extender sin perder estructura: de $\mathbb N$ a $\mathbb Q$
 
 []{#MA-SEC-ANM-01-000-002}
 
-La sección anterior dejó pendiente una frase que solemos escribir sin pensarlo demasiado:
+Hay una exigencia que no podemos resolver añadiendo simplemente nuevos símbolos: la aritmética racional debe seguir funcionando en el sistema que construyamos. Ya conocemos dos ampliaciones numéricas que permiten entender lo que esto significa.
 
-$$
-\mathbb Q\subseteq F.
-$$
+En los naturales, la ecuación $x+3=1$ no tiene solución. Al pasar a los enteros aparece un elemento nuevo, $-2$, que la resuelve. En los enteros, en cambio, la ecuación $2x=1$ sigue sin solución; los racionales incorporan el elemento $1/2$. En ambos casos ganamos la capacidad de resolver una clase de ecuaciones que antes quedaba fuera del sistema, pero conservamos las relaciones y los cálculos que ya eran válidos. El paso de un sistema al siguiente no puede convertir dos números antiguos distintos en uno solo, ni hacer que su suma anterior cambie de valor.
 
-A primera vista parece una afirmación inocente: queremos que el sistema numérico que eventualmente construyamos «contenga» a los racionales. Pero, si estamos tratando de justificar desde el principio qué significa construir una nueva estructura numérica, la palabra **contener** merece una explicación.
-
-No siempre dos sistemas numéricos han sido construidos de modo que uno sea literalmente un subconjunto del otro. Incluso cuando elegimos implementaciones conjuntistas que permiten escribir una inclusión literal, esa inclusión concreta no es lo que realmente importa para el álgebra y el orden. Lo esencial es que los números antiguos puedan aparecer dentro del sistema nuevo **sin que cambien las relaciones y operaciones que ya tenían**.
-
-Ésa es la idea de una **incrustación estructural**.
-
-### Una copia que conserva lo importante
-
-Supongamos que $A$ y $B$ son dos sistemas dotados de cierta estructura y que queremos representar a $A$ dentro de $B$. Una aplicación
+La formulación matemática de esa conservación es una **incrustación estructural**. Si $A$ y $B$ son sistemas dotados de operaciones y relaciones, una aplicación
 
 $$
 \iota:A\longrightarrow B
 $$
 
-será una incrustación, al nivel estructural que corresponda, si cumple dos requisitos generales:
-
-1. es **inyectiva**, de modo que elementos distintos de $A$ siguen siendo distintos después de transportarlos a $B$;
-2. conserva las operaciones y relaciones relevantes de $A$.
-
-La palabra «relevantes» importa. No todos los sistemas poseen exactamente la misma clase de estructura. $\mathbb N$ no es un cuerpo y $\mathbb Z$ tampoco. Por eso sería incorrecto llamar uniformemente «incrustaciones de cuerpos» a todas las flechas de la cadena
+permite reconocer a $A$ como una copia dentro de $B$ cuando es inyectiva y conserva toda la estructura pertinente. Inyectividad significa que $\iota(a)=\iota(b)$ obliga a $a=b$: la representación no confunde objetos que antes podíamos distinguir. Si ambos sistemas poseen una suma, conservarla significa que los dos caminos disponibles, calcular primero y después trasladar o trasladar primero y después calcular, coinciden:
 
 $$
-\mathbb N\hookrightarrow\mathbb Z\hookrightarrow\mathbb Q.
+\iota(a+b)=\iota(a)+\iota(b).
 $$
 
-Lo correcto es preguntar, en cada etapa, **qué estructura existe ya y qué debe preservarse al pasar al sistema mayor**.
+Las operaciones de la derecha se realizan en $B$, mientras que la suma de la izquierda, antes de aplicar $\iota$, se ha efectuado en $A$. Por eso la igualdad contiene una afirmación matemática, aunque después utilicemos la misma notación para ambas operaciones.
 
-Por ejemplo, si una incrustación entre dos sistemas ordenados con suma y producto se denota por $\iota$, esperamos relaciones como
-
-$$
-\iota(m+n)=\iota(m)+\iota(n),
-$$
+En la ampliación de los naturales a los enteros disponemos de una aplicación canónica
 
 $$
-\iota(mn)=\iota(m)\iota(n),
+\iota_{\mathbb N\mathbb Z}:\mathbb N\hookrightarrow\mathbb Z.
 $$
 
-y, para el orden,
+Envía cada natural al entero correspondiente y conserva suma, producto, cero, unidad y orden. Para $m,n\in\mathbb N$, en particular,
 
 $$
-m<n
-\quad\Longleftrightarrow\quad
-\iota(m)<\iota(n).
-$$
-
-También queremos que los elementos distinguidos se transporten correctamente cuando formen parte de la estructura:
-
-$$
-\iota(0)=0,
-\qquad
-\iota(1)=1.
-$$
-
-Así, la imagen $\iota(A)$ dentro de $B$ no es sólo una colección de puntos que lleva las mismas etiquetas. Es una **copia estructural** de $A$.
-
-### Primer paso: de $\mathbb N$ a $\mathbb Z$
-
-Los naturales sirven muy bien para contar y multiplicar cantidades no negativas. Pero su aritmética tiene una limitación inmediata: la resta no siempre puede resolverse dentro de $\mathbb N$.
-
-Por ejemplo, la ecuación
-
-$$
-x+3=1
-$$
-
-no tiene solución natural.
-
-Los enteros amplían el sistema incorporando opuestos aditivos. La idea importante para nosotros no es reconstruir aquí $\mathbb Z$ como clases de pares de naturales; esa construcción pertenece a un nivel fundacional más profundo que estamos tomando como disponible. Lo que sí necesitamos entender es cómo los naturales sobreviven dentro de los enteros.
-
-Existe una aplicación canónica
-
-$$
-\iota_{\mathbb N\mathbb Z}:\mathbb N\longrightarrow\mathbb Z
-$$
-
-que envía cada natural al entero correspondiente. Bajo la notación usual escribimos simplemente
-
-$$
-0\mapsto0,
-\quad
-1\mapsto1,
-\quad
-2\mapsto2,
-\quad\ldots
-$$
-
-pero lo que debemos recordar es la estructura que esa escritura comprime. Para $m,n\in\mathbb N$:
-
-$$
+\begin{aligned}
 \iota_{\mathbb N\mathbb Z}(m+n)
-=
-\iota_{\mathbb N\mathbb Z}(m)+\iota_{\mathbb N\mathbb Z}(n),
-$$
-
-$$
+ &=\iota_{\mathbb N\mathbb Z}(m)+\iota_{\mathbb N\mathbb Z}(n),\\
 \iota_{\mathbb N\mathbb Z}(mn)
-=
-\iota_{\mathbb N\mathbb Z}(m)\,\iota_{\mathbb N\mathbb Z}(n),
-$$
-
-y
-
-$$
-m<n
-\quad\Longleftrightarrow\quad
+ &=\iota_{\mathbb N\mathbb Z}(m)\,\iota_{\mathbb N\mathbb Z}(n),\\
+m<n&\ \Longleftrightarrow\ 
 \iota_{\mathbb N\mathbb Z}(m)<\iota_{\mathbb N\mathbb Z}(n).
+\end{aligned}
 $$
 
-La aplicación es inyectiva. Por tanto, $\mathbb N$ no desaparece cuando pasamos a $\mathbb Z$: reaparece como una copia estructural dentro del sistema mayor.
+La existencia de enteros negativos amplía lo que podemos hacer con la resta, sin modificar estas igualdades. No tendría sentido describir la flecha como una incrustación de cuerpos: ni $\mathbb N$ ni $\mathbb Z$ son cuerpos. Las palabras con las que calificamos una incrustación deben corresponder a la estructura que existe realmente en su dominio.
 
-El sistema nuevo resuelve además problemas que antes no podían plantearse internamente. En $\mathbb Z$ la ecuación anterior sí tiene solución:
-
-$$
-x=-2.
-$$
-
-Podemos resumir la transición así:
+Para incluir los enteros en los racionales utilizamos
 
 $$
-\boxed{
+\iota_{\mathbb Z\mathbb Q}:\mathbb Z\hookrightarrow\mathbb Q,
+\qquad n\longmapsto\frac n1.
+$$
+
+Aquí el dominio es un anillo ordenado. La aplicación conserva sus operaciones, el cero, la unidad y el orden. Es inyectiva, porque $m/1=n/1$ implica $m=n$. Así aparece en $\mathbb Q$ una copia del anillo ordenado $\mathbb Z$; la incorporación de cocientes no altera las sumas ni los productos de los enteros, y hace posible resolver $2x=1$.
+
+Al componer las dos incrustaciones obtenemos una representación fiel de los naturales entre los racionales:
+
+$$
 \mathbb N
 \overset{\iota_{\mathbb N\mathbb Z}}{\hookrightarrow}
 \mathbb Z
-\qquad
-\text{preservando suma, producto y orden, y añadiendo opuestos aditivos.}
-}
-$$
-
-### Segundo paso: de $\mathbb Z$ a $\mathbb Q$
-
-Los enteros reparan el problema de la resta, pero todavía no permiten resolver toda división.
-
-La ecuación
-
-$$
-2x=1
-$$
-
-no tiene solución entera.
-
-Los racionales amplían el sistema incorporando cocientes. De nuevo, no necesitamos reconstruir aquí $\mathbb Q$ como clases de equivalencia de pares de enteros. Basta recordar la forma canónica en que los enteros se representan entre los racionales:
-
-$$
-\iota_{\mathbb Z\mathbb Q}:\mathbb Z\longrightarrow\mathbb Q,
-\qquad
-n\longmapsto\frac n1.
-$$
-
-Esta vez la estructura disponible en el dominio es más rica: $\mathbb Z$ es un anillo ordenado. La aplicación conserva la suma,
-
-$$
-\iota_{\mathbb Z\mathbb Q}(m+n)
-=
-\iota_{\mathbb Z\mathbb Q}(m)
-+
-\iota_{\mathbb Z\mathbb Q}(n),
-$$
-
-el producto,
-
-$$
-\iota_{\mathbb Z\mathbb Q}(mn)
-=
-\iota_{\mathbb Z\mathbb Q}(m)
-\iota_{\mathbb Z\mathbb Q}(n),
-$$
-
-el cero y la unidad,
-
-$$
-\iota_{\mathbb Z\mathbb Q}(0)=0,
-\qquad
-\iota_{\mathbb Z\mathbb Q}(1)=1,
-$$
-
-y el orden:
-
-$$
-m<n
-\quad\Longleftrightarrow\quad
-\frac m1<\frac n1.
-$$
-
-Además es inyectiva. Por eso podemos decir con precisión que $\mathbb Z$ se incrusta como anillo ordenado en $\mathbb Q$.
-
-El nuevo sistema permite resolver, entre muchas otras, la ecuación
-
-$$
-2x=1,
-$$
-
-porque ahora
-
-$$
-x=\frac12
-$$
-
-pertenece al dominio.
-
-La segunda ampliación puede resumirse así:
-
-$$
-\boxed{
-\mathbb Z
 \overset{\iota_{\mathbb Z\mathbb Q}}{\hookrightarrow}
-\mathbb Q
-\qquad
-\text{preservando la estructura de anillo ordenado y añadiendo cocientes.}
-}
-$$
-
-### Una ampliación no borra el sistema anterior
-
-Estas dos etapas comparten una misma forma lógica. Primero tenemos un sistema en el que cierta operación no siempre puede resolverse. Después construimos o adoptamos un sistema más amplio en el que esa operación sí puede realizarse, pero exigimos que la aritmética anterior permanezca reconocible.
-
-Podemos verlo como una cadena:
-
-$$
-\mathbb N
-\hookrightarrow
-\mathbb Z
-\hookrightarrow
 \mathbb Q.
 $$
 
-Cada flecha significa algo más fuerte que «hay una función de un conjunto a otro». Significa que la estructura disponible antes de la ampliación se transporta sin colapsos.
-
-Ésta es precisamente la función de la inyectividad. Si dos elementos distintos $a,b\in A$ fueran enviados al mismo punto,
-
-$$
-\iota(a)=\iota(b),
-$$
-
-el sistema mayor habría perdido la capacidad de distinguirlos. Ya no tendríamos una copia fiel del sistema original.
-
-Y ésta es la función de las identidades de preservación. Si, por ejemplo,
-
-$$
-\iota(a+b)\ne\iota(a)+\iota(b),
-$$
-
-entonces calcular primero en $A$ y transportar el resultado no coincidiría con transportar los datos y calcular después en $B$. La vieja aritmética habría cambiado durante el traslado.
-
-Una buena incrustación evita ambos problemas.
-
-### Incrustar no significa identificar literalmente
-
-Ahora podemos precisar por qué la notación
-
-$$
-\mathbb N\subseteq\mathbb Z\subseteq\mathbb Q
-$$
-
-es útil y, al mismo tiempo, conceptualmente peligrosa si se toma demasiado literalmente.
-
-Supongamos que tenemos una incrustación
-
-$$
-\iota:A\hookrightarrow B.
-$$
-
-Su imagen es el subconjunto
-
-$$
-\iota(A)=\{\iota(a):a\in A\}\subseteq B.
-$$
-
-Como $\iota$ es inyectiva y preserva la estructura pertinente, $A$ y $\iota(A)$ son estructuralmente indistinguibles para las operaciones y relaciones que estamos considerando. Podemos entonces adoptar una convención muy cómoda: **identificar $A$ con su imagen**.
-
-Después de hacer esa identificación, dejamos de escribir constantemente $\iota(a)$ y escribimos simplemente $a$. La flecha
-
-$$
-A\hookrightarrow B
-$$
-
-queda comprimida en la notación familiar
-
-$$
-A\subseteq B.
-$$
-
-Pero el orden lógico es importante:
-
-$$
-\boxed{
-\text{primero construimos una incrustación}
-\;\longrightarrow\;
-\text{después identificamos el dominio con su imagen}.
-}
-$$
-
-No al revés.
-
-Esto explica por qué una implementación conjuntista concreta no es esencial. En una construcción posible de los enteros, un entero puede estar representado por una clase de equivalencia de pares de naturales; en una construcción posible de los racionales, un racional puede estar representado por una clase de equivalencia de pares de enteros. En ese nivel, el objeto llamado $2\in\mathbb N$ no tiene por qué ser literalmente el mismo conjunto que el objeto que representa $2\in\mathbb Z$ o $2\in\mathbb Q$.
-
-Sin embargo, las incrustaciones canónicas permiten transportar el $2$ natural al $2$ entero y después al $2$ racional preservando toda la estructura relevante. Para el trabajo matemático ordinario, identificamos esas copias y escribimos simplemente
-
-$$
-2.
-$$
-
-La notación inclusiva es, por tanto, una **economía estructural**.
-
-La figura [C00-F02](#fig-anm-c00-f02) concentra esta lectura en un único mapa visual.
+Habitualmente sustituimos este diagrama por la escritura $\mathbb N\subseteq\mathbb Z\subseteq\mathbb Q$. Es una convención muy útil, pero conviene saber sobre qué descansa. Una incrustación $\iota:A\hookrightarrow B$ tiene una imagen $\iota(A)$ que sí es, literalmente, un subconjunto de $B$. Como $\iota$ es inyectiva y conserva la estructura, podemos identificar cada elemento de $A$ con su imagen; después de esa identificación escribimos $A\subseteq B$ y dejamos de mostrar la aplicación. Si, por ejemplo, hemos construido enteros mediante clases de pares de naturales o racionales mediante clases de pares de enteros, las representaciones del número $2$ en esos conjuntos no tienen por qué ser literalmente el mismo objeto conjuntista. Las incrustaciones permiten tratarlo como el mismo número para todo cálculo pertinente.
 
 ![Las ampliaciones se realizan mediante incrustaciones tipadas; identificar un sistema con su imagen es un segundo paso, no una inclusión literal previa.](../../assets/books/anm/C00-F02.svg){#fig-anm-c00-f02 fig-alt="Tres universos separados N, Z y Q con flechas inyectivas rotuladas por la estructura preservada y un segundo panel que distingue incrustación, imagen e identificación."}
 
-### El diagrama que realmente debemos leer
-
-Cuando escribamos en adelante
-
-$$
-\mathbb N\subseteq\mathbb Z\subseteq\mathbb Q,
-$$
-
-conviene que mentalmente veamos detrás el diagrama más preciso
-
-$$
-\mathbb N
-\overset{\iota_{\mathbb N\mathbb Z}}{\hookrightarrow}
-\mathbb Z
-\overset{\iota_{\mathbb Z\mathbb Q}}{\hookrightarrow}
-\mathbb Q,
-$$
-
-seguido de dos identificaciones con las imágenes correspondientes.
-
-Esto nos permite distinguir tres afirmaciones que suelen confundirse:
-
-1. **hay una aplicación** entre dos sistemas;
-2. **hay una incrustación estructural**, es decir, una aplicación inyectiva que conserva la estructura pertinente;
-3. **adoptamos la convención de identificar el sistema menor con su imagen** y, sólo entonces, usamos notación de inclusión.
-
-La segunda afirmación es matemática. La tercera es una decisión notacional sustentada por la segunda.
-
-### ¿Y qué ocurrirá con los racionales?
-
-La pregunta que motivó esta sección puede formularse ahora con mucha más precisión.
-
-En §0.1 dijimos que buscamos un sistema que prolongue la aritmética racional. Ya sabemos qué debe significar la palabra «prolongar»: no bastará con encontrar dentro del sistema nuevo algunos elementos que llamemos racionales. Tendrá que existir una copia de $\mathbb Q$ que conserve su suma, su producto, su cero, su unidad y su orden.
-
-Pero no construiremos todavía esa flecha. Hacerlo antes de tener un candidato concreto sería adelantarnos al problema.
-
-Por ahora sólo hemos establecido el lenguaje con el que podremos formular la exigencia cuando llegue el momento.
-
-Lo que sí podemos hacer inmediatamente es mirar el último sistema de la cadena que ya poseemos:
-
-$$
-\mathbb Q.
-$$
-
-Los racionales son un cuerpo ordenado. Por tanto, satisfacen las dos primeras exigencias de §0.1. La pregunta decisiva es si satisfacen también la tercera:
-
-$$
-\boxed{
-\text{¿todo subconjunto no vacío de }\mathbb Q
-\text{ acotado superiormente posee un supremo racional?}
-}
-$$
-
-Si la respuesta fuera afirmativa, quizá no necesitaríamos ampliar nada más. Si fuera negativa, la cadena
-
-$$
-\mathbb N\hookrightarrow\mathbb Z\hookrightarrow\mathbb Q
-$$
-
-no habría terminado todavía.
+Conservar la aritmética de $\mathbb Q$ exige construir una aplicación $\iota_{\mathbb Q}:\mathbb Q\hookrightarrow F$ que preserve suma, producto, cero, unidad y orden, y que permita recuperar la aritmética racional dentro de $F$. Por el momento no podemos exhibir esa aplicación, porque todavía no hemos construido el sistema de llegada. Sí podemos averiguar si hace falta construirlo: $\mathbb Q$ ya es un cuerpo ordenado; sólo queda examinar si tiene la propiedad del supremo.
 
 ### Antes de seguir
 
@@ -1491,370 +1011,75 @@ La unidad no se conserva, pues $f(1)=2\ne1$. Tampoco el producto: $f(mn)=2mn$, m
 Así no es la incrustación de anillos ordenados que preserva la aritmética entera dentro de $\mathbb Q$. Identificar $n$ con $2n$ usando las operaciones ambientales conservaría suma y orden, pero cambiaría unidad y producto. La copia debe declararse respecto de la estructura que realmente conserva.
 
 </details>
+
 ## 0.3. El obstáculo: $\mathbb Q$ no está completo
 
 []{#MA-SEC-ANM-01-000-003}
 
-La cadena
-
-$$
-\mathbb N\hookrightarrow\mathbb Z\hookrightarrow\mathbb Q
-$$
-
-nos ha llevado hasta un sistema numérico muy poderoso. Los racionales forman un cuerpo ordenado: podemos sumar, restar, multiplicar, dividir por elementos no nulos y comparar cualquier par de números. Además, entre dos racionales distintos siempre hay otro racional.
-
-A primera vista podría parecer que ya tenemos todo lo necesario. Pero la especificación de §0.1 incluía una tercera exigencia que todavía no hemos auditado:
-
-> **¿Todo subconjunto no vacío de $\mathbb Q$ que esté acotado superiormente posee un supremo racional?**
-
-Para responder no basta con decir que «faltan irracionales». Esa frase supone demasiado pronto que ya sabemos qué objetos faltan. Necesitamos exhibir, usando sólo aritmética racional, un conjunto para el cual la mejor barrera requerida por el orden no exista dentro de $\mathbb Q$.
-
-### Un conjunto racional que exige una frontera
-
-Consideremos
+Regresemos a las aproximaciones al cuadrado de $2$. Nos gustaría reunir todos los racionales no negativos cuyo cuadrado es todavía menor que $2$ y preguntar dónde termina ese conjunto. Podemos formular la pregunta sin suponer que exista un número real con cuadrado igual a $2$. Todo ocurre, de momento, dentro de los racionales:
 
 $$
 S_2=\{q\in\mathbb Q:q\ge0,\ q^2<2\}.
 $$
 
-Todo lo que aparece en esta definición pertenece a $\mathbb Q$. No hemos introducido ningún número real nuevo ni hemos supuesto la existencia de un elemento cuyo cuadrado sea $2$.
+Si queremos utilizar $S_2$ para poner a prueba la completitud de $\mathbb Q$, primero debemos comprobar las hipótesis de la propiedad del supremo. El conjunto no es vacío, porque $1\in S_2$. También está acotado superiormente: si $q\in S_2$ y tuviéramos $q\ge2$, se seguiría $q^2\ge4>2$, una contradicción. Por tanto $2$ es una cota superior de $S_2$, de hecho todos sus elementos son menores que $2$.
 
-Primero verifiquemos las dos hipótesis que harían aplicable la propiedad del supremo si $\mathbb Q$ fuera completo.
+Supongamos que existiera un racional $s=\sup_{\mathbb Q}S_2$. Puesto que $1\in S_2$ y $2$ es una cota superior, debería cumplir $1\le s\le2$. En particular, $s>0$, de modo que podemos comparar $s^2$ con $2$ y dividir por expresiones positivas que contengan $s$. Hay tres posibilidades, y examinarlas permite descubrir qué debería fallar en cualquier candidato racional.
 
-El conjunto no es vacío, porque
-
-$$
-1\in S_2.
-$$
-
-También está acotado superiormente. En efecto, $2$ es una cota superior: si $q\in S_2$ y ocurriera $q\ge2$, entonces, como $q\ge0$,
-
-$$
-q^2\ge4>2,
-$$
-
-contradiciendo la condición $q^2<2$. Por tanto todo $q\in S_2$ satisface $q<2$.
-
-Así tenemos, enteramente dentro de los racionales,
-
-$$
-S_2\ne\varnothing
-\qquad\text{y}\qquad
-S_2\text{ está acotado superiormente en }\mathbb Q.
-$$
-
-Si $\mathbb Q$ satisficiera nuestra tercera exigencia, debería existir un racional
-
-$$
-s=\sup_{\mathbb Q}S_2.
-$$
-
-Vamos a demostrar que tal $s$ no puede existir.
-
-### Qué tendría que satisfacer un supuesto supremo racional
-
-Supongamos, para obtener una contradicción, que existe
-
-$$
-s\in\mathbb Q
-$$
-
-que es el supremo de $S_2$ dentro de $\mathbb Q$.
-
-Como $1\in S_2$, necesariamente
-
-$$
-s\ge1.
-$$
-
-Y como $2$ es una cota superior,
-
-$$
-s\le2.
-$$
-
-En particular, $s>0$. Ahora comparemos $s^2$ con $2$.
-
-Hay tres posibilidades:
-
-$$
-s^2<2,
-\qquad
-s^2=2,
-\qquad
-s^2>2.
-$$
-
-Mostraremos que las tres son imposibles.
-
-### Si $s^2<2$, todavía podemos avanzar hacia la derecha
-
-Supongamos primero
-
-$$
-s^2<2.
-$$
-
-Como $s$ es racional, también lo es
+Si $s^2<2$, el candidato se encuentra todavía del lado permitido por la definición de $S_2$. Para demostrar que no es una cota superior necesitamos avanzar un poco hacia la derecha **sin salir del conjunto**. ¿Cuánto podemos avanzar? La diferencia $2-s^2$ mide el margen positivo disponible entre el cuadrado actual y el valor que no queremos alcanzar. Al sustituir $s$ por $s+\delta$, el cuadrado aumenta en $2s\delta+\delta^2$; por eso debemos escoger $\delta$ suficientemente pequeño para que ese incremento no consuma todo el margen. Una elección racional conveniente es
 
 $$
 \delta=\frac{2-s^2}{2s+2}.
 $$
 
-Además $\delta>0$. Como $s\ge1$, tenemos $2-s^2\le1$ y $2s+2\ge4$, de modo que
+Como $1\le s$ y $s^2<2$, tenemos $0<\delta<1$. Esta cota permite utilizar $\delta^2<\delta$ y calcular
 
 $$
-0<\delta<1.
-$$
-
-Consideremos el racional $s+\delta$. Claramente
-
-$$
-s+\delta>s.
-$$
-
-Veamos, sin aproximaciones decimales, que sigue perteneciendo a $S_2$. Tenemos
-
-$$
+\begin{aligned}
 (s+\delta)^2
-=s^2+2s\delta+\delta^2.
+ &=s^2+2s\delta+\delta^2\\
+ &<s^2+(2s+1)\delta\\
+ &=2-\frac{2-s^2}{2s+2}<2.
+\end{aligned}
 $$
 
-Como $0<\delta<1$, se cumple $\delta^2<\delta$. Por tanto
+Por tanto $s+\delta$ es racional, es positivo y pertenece a $S_2$, aunque $s+\delta>s$. Hemos encontrado un miembro del conjunto situado por encima de su supuesta cota superior: una contradicción. La elección de $\delta$ procede del incremento del cuadrado: su denominador deja un margen que las dos desigualdades del cálculo conservan estrictamente positivo.
+
+Cuando $s^2>2$, la condición que debemos poner a prueba es la minimalidad. Un desplazamiento hacia la izquierda que conserve el cuadrado por encima de dos proporcionaría otra cota superior menor; para construirlo tomemos
 
 $$
-(s+\delta)^2
-< s^2+(2s+1)\delta.
+\delta=\frac{s^2-2}{4s},
+\qquad t=s-\delta.
 $$
 
-Pero
-
-$$
-(2s+1)\delta
-=(2-s^2)\frac{2s+1}{2s+2}
-<2-s^2,
-$$
-
-porque
-
-$$
-\frac{2s+1}{2s+2}<1.
-$$
-
-Así,
-
-$$
-(s+\delta)^2<2.
-$$
-
-Como $s+\delta>0$, obtenemos
-
-$$
-s+\delta\in S_2.
-$$
-
-Esto contradice que $s$ sea una cota superior de $S_2$, pues hemos encontrado un elemento del conjunto estrictamente mayor que $s$.
-
-Luego no puede ocurrir
-
-$$
-s^2<2.
-$$
-
-### Si $s^2>2$, podemos mejorar la cota hacia la izquierda
-
-Supongamos ahora
-
-$$
-s^2>2.
-$$
-
-Definamos el racional positivo
-
-$$
-\delta=\frac{s^2-2}{4s}.
-$$
-
-Como $s>0$, tenemos $\delta>0$. Además $\delta<s$, pues
-
-$$
-s^2-2<4s^2.
-$$
-
-Por tanto
-
-$$
-t=s-\delta
-$$
-
-es un racional positivo y satisface $t<s$.
-
-Calculemos su cuadrado:
+La cantidad $\delta$ es racional y positiva. Además $\delta<s$, pues $s^2-2<4s^2$ para $s>0$; por ello $t>0$. Nos interesa que el cuadrado de $t$ permanezca por encima de $2$, y la elección permite verificarlo sin aproximaciones:
 
 $$
 \begin{aligned}
 t^2
-&=(s-\delta)^2\\
-&=s^2-2s\delta+\delta^2\\
-&>s^2-2s\delta\\
-&=s^2-\frac{s^2-2}{2}\\
-&=\frac{s^2+2}{2}\\
-&>2.
+ &=s^2-2s\delta+\delta^2\\
+ &>s^2-2s\delta\\
+ &=\frac{s^2+2}{2}>2.
 \end{aligned}
 $$
 
-Ahora tomemos cualquier $q\in S_2$. Si ocurriera $q\ge t$, como ambos son no negativos tendríamos
+Ningún $q\in S_2$ puede satisfacer $q\ge t$, porque ambos números serían no negativos y entonces $q^2\ge t^2>2$, contra la definición de $S_2$. Todos los elementos del conjunto son, pues, menores que $t$. Así $t$ es otra cota superior racional, pero $t<s$, lo que contradice la condición de que $s$ fuera la menor.
+
+Queda la posibilidad $s^2=2$. Aquí basta la aritmética entera. Si un racional escrito en términos mínimos como $s=m/n$, con $m,n\in\mathbb Z$ y $n>0$, satisficiera esa igualdad, obtendríamos $m^2=2n^2$. El cuadrado de un entero impar es impar; por tanto, $m$ tendría que ser par, digamos $m=2k$. Sustituyendo, se sigue $n^2=2k^2$, de donde $n$ también es par. Esto contradice que la fracción $m/n$ se haya escrito en términos mínimos. Ningún racional tiene cuadrado igual a $2$.
+
+Hemos descartado las tres posibilidades. Si el supuesto supremo tuviera cuadrado menor que $2$, no sería cota superior; si su cuadrado fuera mayor que $2$, no sería la menor cota superior; y la igualdad no puede darse en $\mathbb Q$. Como $S_2$ es no vacío y está acotado superiormente, concluimos que
 
 $$
-q^2\ge t^2>2,
+\boxed{S_2\text{ no tiene supremo en }\mathbb Q.}
 $$
 
-lo cual contradice $q^2<2$. Por tanto
+En consecuencia, **$\mathbb Q$ no tiene la propiedad del supremo**. Obsérvese que para alcanzar esta conclusión no bastaba con demostrar que no hay racional cuyo cuadrado sea $2$: había que justificar también por qué el supremo, si existiera, estaría obligado a satisfacer esa igualdad. Los dos argumentos de perturbación cumplen precisamente esa función.
 
-$$
-q<t
-$$
-
-para todo $q\in S_2$.
-
-Eso significa que $t$ es también una cota superior de $S_2$. Pero
-
-$$
-t<s,
-$$
-
-contradiciendo que $s$ sea la **menor** cota superior.
-
-Luego tampoco puede ocurrir
-
-$$
-s^2>2.
-$$
-
-### ¿Podría ocurrir $s^2=2$?
-
-Sólo queda la posibilidad
-
-$$
-s^2=2.
-$$
-
-Pero ningún racional tiene cuadrado igual a $2$.
-
-Para comprobarlo, supongamos que
-
-$$
-s=\frac mn
-$$
-
-con $m,n\in\mathbb Z$, $n>0$ y la fracción escrita en términos mínimos. Si $s^2=2$, entonces
-
-$$
-m^2=2n^2.
-$$
-
-De aquí $m^2$ es par, luego $m$ es par. Escribamos
-
-$$
-m=2k.
-$$
-
-Sustituyendo,
-
-$$
-4k^2=2n^2,
-$$
-
-y por tanto
-
-$$
-n^2=2k^2.
-$$
-
-Así $n^2$ es par y, en consecuencia, $n$ también es par. Pero entonces $m$ y $n$ tienen al menos el factor común $2$, contradiciendo que $m/n$ estuviera en términos mínimos.
-
-Por tanto
-
-$$
-\boxed{\text{no existe }s\in\mathbb Q\text{ tal que }s^2=2.}
-$$
-
-### La contradicción está cerrada
-
-Las tres posibilidades para $s^2$ han quedado descartadas:
-
-- si $s^2<2$, existe un racional mayor que $s$ que todavía pertenece a $S_2$;
-- si $s^2>2$, existe una cota superior racional de $S_2$ menor que $s$;
-- si $s^2=2$, contradicimos la aritmética racional elemental.
-
-Luego el supuesto inicial era imposible:
-
-$$
-\boxed{S_2\text{ no posee supremo en }\mathbb Q.}
-$$
-
-Y, como $S_2$ es no vacío y está acotado superiormente, concluimos:
-
-$$
-\boxed{\mathbb Q\text{ no es completo en el sentido de la propiedad del supremo}.}
-$$
-
-Éste es el primer resultado negativo verdaderamente estructural del capítulo.
-
-### Densidad no significa completitud
-
-Vale la pena detenernos en una posible confusión. Los racionales son densos: entre dos racionales distintos siempre podemos encontrar otro racional. Sin embargo, acabamos de demostrar que $S_2$ no tiene supremo racional.
-
-No hay contradicción. Las dos propiedades responden preguntas diferentes.
-
-La densidad dice, esquemáticamente,
-
-$$
-p<q
-\quad\Longrightarrow\quad
-\exists r\in\mathbb Q:\ p<r<q.
-$$
-
-Es una afirmación sobre lo que ocurre **entre dos puntos que ya pertenecen al sistema**.
-
-La completitud mediante supremos dice algo distinto: si un conjunto no vacío está acotado superiormente, debe existir **dentro del sistema** la mejor de todas sus cotas superiores.
-
-Así puede ocurrir que haya racionales arbitrariamente intercalados y, aun así, falte exactamente la frontera que una familia racional necesita.
-
-Ésta es la razón por la que no conviene representar $\mathbb Q$ como una recta con un agujero grande y visible. Su defecto no es macroscópico. Podemos acercarnos racionalmente tanto como queramos a ciertas fronteras y, sin embargo, la frontera requerida no pertenece al sistema.
-
-La figura [C00-F03](#fig-anm-c00-f03) concentra esta lectura en un único mapa visual.
+El resultado tampoco contradice la densidad de los racionales. Entre cualesquiera $p<q$ de $\mathbb Q$ hay un racional intermedio, por ejemplo $(p+q)/2$. Esa propiedad habla de lo que ocurre entre *dos números que ya están en el sistema*. La propiedad del supremo exige algo más: que todo conjunto no vacío y acotado superiormente posea dentro del propio sistema la mejor de sus cotas superiores. Puede haber tantos racionales como queramos entre dos posiciones y faltar, aun así, la frontera requerida por un conjunto entero.
 
 ![S₂ es no vacío y acotado en Q, pero todo candidato racional a supremo falla por uno de tres mecanismos.](../../assets/books/anm/C00-F03.svg){#fig-anm-c00-f03 fig-alt="Recta racional conceptual para S₂ y tres paneles: si s²<2 se avanza a la derecha dentro de S₂; si s²=2 no hay racional; si s²>2 se encuentra una cota superior menor."}
 
-### El defecto está localizado
-
-La comparación con la especificación de §0.1 queda ahora muy limpia.
-
-Los racionales satisfacen:
-
-$$
-\boxed{\text{estructura de cuerpo ordenado}.}
-$$
-
-Pero fallan en:
-
-$$
-\boxed{\text{propiedad del supremo}.}
-$$
-
-Por tanto, si queremos justificar la existencia de los números reales, no necesitamos abandonar la aritmética racional ni sustituirla por otra irreconocible. Necesitamos **extenderla sin perderla** y, al mismo tiempo, añadir las fronteras que $\mathbb Q$ no puede contener por sí solo.
-
-La pregunta constructiva aparece ahora de manera natural:
-
-$$
-\boxed{
-\text{Si una frontera no pertenece a }\mathbb Q,
-\text{ ¿podemos describir su posición usando sólo información racional?}
-}
-$$
-
-No responderemos aún con un nombre. La sección siguiente construirá el objeto que hace posible esa idea.
+La frontera de $S_2$ falta en un sistema que ya dispone de suma, producto y orden. Podemos intentar prolongar esas estructuras conservando la información que sí tenemos: cuáles son los racionales situados a la izquierda de la frontera buscada. Describir una posición por ese conjunto permitirá construirla sin suponer de antemano el número que debería ocuparla.
 
 ### Antes de seguir
 
@@ -2570,385 +1795,105 @@ $$
 $$
 
 </details>
+
 ## 0.4. Construir una frontera sin tener el punto
 
 []{#MA-SEC-ANM-01-000-004}
 
-La sección anterior terminó con una situación incómoda. El conjunto
+El conjunto $S_2$ está definido mediante condiciones que podemos comprobar para cada racional: ser no negativo y tener cuadrado menor que $2$. Esa información no depende de haber encontrado su menor cota superior. La construcción de Dedekind toma el conjunto que describe un lado de la frontera como nuevo objeto matemático; para reconocer qué propiedades deberá tener, empecemos por una frontera que ya conocemos.
 
-$$
-S_2=\{q\in\mathbb Q:q\ge0,\ q^2<2\}
-$$
-
-está formado enteramente por racionales, es no vacío y está acotado superiormente, pero no tiene supremo en $\mathbb Q$. Sabemos, por tanto, qué clase de objeto falta: necesitamos incorporar una frontera que el orden racional exige, aunque esa frontera no sea todavía un elemento de nuestro sistema.
-
-¿Cómo podemos construir algo que represente esa posición **sin suponer de antemano que el punto ya existe**?
-
-La idea de Dedekind consiste en cambiar la pregunta. En vez de intentar nombrar directamente la frontera ausente, preguntaremos:
-
-> **¿Qué racionales quedarían a su izquierda?**
-
-Esa información sí vive por completo dentro de $\mathbb Q$. Si logramos caracterizar qué propiedades debe tener el conjunto de todos esos racionales, podremos usar el propio conjunto como código de la posición que buscamos.
-
-### De una frontera a su lado izquierdo
-
-Imaginemos por un momento una posición determinada por un racional $c$. Sin introducir todavía ninguna notación especial, el conjunto natural de racionales que quedan antes de $c$ es
-
+El primer ejemplo está enteramente a nuestro alcance. Si $c\in\mathbb Q$, su lado izquierdo es
 $$
 L_c=\{q\in\mathbb Q:q<c\}.
 $$
-
-Este conjunto tiene cuatro rasgos simples.
-
-Primero, no es vacío. Por ejemplo,
-
+El conjunto contiene a $c-1$ y excluye a $c$; además, con cada racional $q$ contiene todos los racionales menores que $q$. Tampoco tiene un último elemento: dado $q<c$, el punto medio $(q+c)/2$ es racional y satisface
 $$
-c-1\in L_c.
+q<\frac{q+c}{2}<c.
 $$
+Estas propiedades pueden formularse sin mencionar la frontera $c$. Eso permite exigirlas a un subconjunto de racionales incluso cuando no disponemos de ningún racional que desempeñe el papel de frontera.
 
-Segundo, no contiene a todos los racionales, porque
+**Definición.** Una **cortadura de Dedekind** es un subconjunto propio $A\subsetneq\mathbb Q$ tal que:
 
+1. $A\ne\varnothing$;
+2. para todo $q\in A$ y todo $r\in\mathbb Q$, si $r<q$, entonces $r\in A$;
+3. para todo $q\in A$ existe $r\in A$ con $q<r$.
+
+La segunda condición dice que $A$ está **cerrado hacia abajo**. La tercera expresa que $A$ **no tiene máximo**: cada uno de sus elementos puede ser superado por otro elemento del mismo conjunto. Junto con la condición de ser propio, son las cuatro propiedades que acabamos de reconocer en $L_c$, de modo que $L_c$ es una cortadura para todo racional $c$.
+
+La clausura hacia abajo recoge lo que significa registrar un lado izquierdo completo. Un conjunto que contuviera a $3/2$ y omitiera a $1/2$ dejaría un hueco entre los racionales que pretende reunir. Las condiciones de no vaciedad y de ser propio excluyen, respectivamente, a $\varnothing$ y a $\mathbb Q$, y hacen que haya racionales dentro y fuera de la cortadura. Ninguna de esas exigencias se deduce de las otras: el conjunto vacío satisface vacíamente las dos últimas cláusulas, y $\mathbb Q$ es cerrado hacia abajo y carece de máximo, pues con cada racional $q$ contiene a $q+1$.
+
+La ausencia de máximo fija una convención donde podría producirse una duplicación. Para un racional $c$, los conjuntos
 $$
-c\notin L_c.
-$$
-
-Tercero, si un racional pertenece a $L_c$, entonces todo racional menor también pertenece. En efecto, si
-
-$$
-q<c
-\qquad\text{y}\qquad
-r<q,
-$$
-
-entonces, por transitividad del orden,
-
-$$
-r<c.
-$$
-
-Finalmente, $L_c$ no tiene un elemento mayor que todos los demás. Si $q\in L_c$, entonces $q<c$ y el racional
-
-$$
-r=\frac{q+c}{2}
-$$
-
-satisface
-
-$$
-q<r<c.
-$$
-
-Por tanto $r\in L_c$ y $r>q$.
-
-Estas propiedades no dependen de dibujar una recta real ni de poseer ya un objeto situado en la frontera. Se expresan exclusivamente mediante pertenencia, subconjuntos y el orden de $\mathbb Q$.
-
-Eso sugiere tomar esas propiedades como definición.
-
-### Definición: cortadura de Dedekind
-
-> **Definición.** Una **cortadura de Dedekind** es un subconjunto propio $A\subsetneq\mathbb Q$ que satisface:
->
-> 1. $A\ne\varnothing$;
-> 2. si $q\in A$ y $r<q$, entonces $r\in A$;
-> 3. $A$ no tiene máximo: para todo $q\in A$ existe $r\in A$ tal que $q<r$.
-
-La segunda condición suele describirse diciendo que $A$ es **cerrado hacia abajo**. Una vez que un racional entra en $A$, todos los racionales menores entran con él.
-
-La tercera condición merece más atención. No es un adorno técnico. Es la condición que decide de qué lado de una frontera racional colocamos la frontera misma.
-
-### Por qué prohibimos un máximo
-
-Supongamos otra vez que $c\in\mathbb Q$. Si sólo exigiéramos que el conjunto fuera no vacío, propio y cerrado hacia abajo, entonces los dos conjuntos
-
-$$
-\{q\in\mathbb Q:q<c\}
-$$
-
-y
-
-$$
+\{q\in\mathbb Q:q<c\},
+\qquad
 \{q\in\mathbb Q:q\le c\}
 $$
+son propios, no vacíos y cerrados hacia abajo, pero difieren en un elemento: el segundo contiene a $c$ y el primero lo excluye. Si admitiéramos ambos, tendríamos dos códigos para la misma frontera racional. Exigir que no haya máximo conserva el primero y descarta el segundo. El racional que determina la frontera queda fuera del conjunto que lo representa.
 
-serían admisibles.
-
-Los dos describen la misma separación intuitiva de los racionales alrededor de $c$, pero serían dos objetos distintos. El segundo contiene un máximo, precisamente $c$; el primero no.
-
-La convención de exigir **ausencia de máximo** elimina esa duplicación. Cuando la frontera corresponde a un racional, la codificamos siempre mediante los racionales estrictamente menores que ella.
-
-Así, una cortadura no es «la frontera más todo lo que queda a la izquierda». Es solamente el lado izquierdo, sin último elemento.
-
-Este detalle será crucial más adelante: queremos que una posición tenga un solo código.
-
-### Una cortadura cuya frontera no hemos construido
-
-El ejemplo racional $L_c$ podría dar la impresión de que las cortaduras sólo sirven para volver a escribir racionales que ya conocemos. Pero el problema de §0.3 apunta exactamente en la dirección contraria.
-
-Consideremos ahora el subconjunto
-
+El conjunto $S_2$ de §0.3 aún no cumple estas condiciones. Contiene a $1$, pero omite a $-2<1$, porque sólo reúne racionales no negativos. Si queremos registrar todo el lado izquierdo asociado a la dificultad que descubrimos, debemos incorporar también los racionales negativos. Definamos
 $$
-A_2=\{q\in\mathbb Q:q<0\ \text{o}\ q^2<2\}.
+A_2=\{q\in\mathbb Q:q<0\ \text{o}\ q^2<2\}
+    =\{q\in\mathbb Q:q<0\}\cup S_2.
 $$
+La cláusula $q<0$ importa: un racional negativo de gran valor absoluto puede tener cuadrado mayor que $2$ y, aun así, debe estar incluido en este lado izquierdo. Toda la definición sigue expresada mediante aritmética racional; ningún punto real aparece como parámetro.
 
-Esta definición usa únicamente números racionales, desigualdades racionales y multiplicación racional. No hemos introducido ningún número cuyo cuadrado sea $2$.
+**Proposición.** El conjunto $A_2$ es una cortadura de Dedekind.
 
-Vamos a comprobar que $A_2$ es una cortadura.
+**Demostración.** Tenemos $0\in A_2$, mientras que $2\notin A_2$, porque $2$ es positivo y su cuadrado es $4$. Así se cumplen la no vaciedad y la condición de ser propio.
 
-Es no vacío, porque
-
+Para comprobar la clausura hacia abajo, tomemos $q\in A_2$ y $r\in\mathbb Q$ con $r<q$. Si $r<0$, la propia definición ya da $r\in A_2$. En el caso restante, $0\le r<q$, también $q>0$, de modo que la pertenencia de $q$ obliga a $q^2<2$. Como
 $$
-0\in A_2.
+q^2-r^2=(q-r)(q+r)>0,
 $$
+obtenemos $r^2<q^2<2$, y de nuevo $r\in A_2$. El argumento distingue los signos porque elevar al cuadrado conserva el orden entre racionales no negativos; aplicarlo sin esa restricción habría dado una inferencia falsa.
 
-Es propio, porque
-
+Falta encontrar, por encima de cada $q\in A_2$, otro racional que siga perteneciendo al conjunto. Para $q<0$ basta tomar $q/2$: se cumple $q<q/2<0$. Cuando $q\ge0$, esa elección ya no avanza hacia la derecha. Disponemos, en cambio, del margen positivo $2-q^2$, y podemos emplearlo como en §0.3 para controlar cuánto aumenta el cuadrado. Si elegimos
 $$
-2\notin A_2:
-\qquad
-2\not<0
-\quad\text{y}\quad
-2^2=4\not<2.
+\delta=\frac{2-q^2}{2q+3},
 $$
-
-Veamos ahora la clausura hacia abajo. Sea $q\in A_2$ y sea $r<q$.
-
-Si $q<0$, entonces también $r<0$, de modo que $r\in A_2$.
-
-Si $q\ge0$, la pertenencia $q\in A_2$ obliga a que
-
+el numerador es positivo y el denominador es al menos $3$, por lo que
 $$
-q^2<2.
+0<\delta\le\frac23<1.
 $$
-
-Si $r<0$, ya sabemos que $r\in A_2$. Si, en cambio,
-
-$$
-0\le r<q,
-$$
-
-entonces
-
-$$
-r^2<q^2<2,
-$$
-
-y nuevamente $r\in A_2$.
-
-Por tanto $A_2$ es cerrado hacia abajo.
-
-Falta demostrar que no tiene máximo. Tomemos $q\in A_2$.
-
-Si $q<0$, basta considerar
-
-$$
-r=\frac q2.
-$$
-
-Como $q<0$, tenemos
-
-$$
-q<\frac q2<0,
-$$
-
-de modo que $r\in A_2$ y $r>q$.
-
-Queda el caso $q\ge0$. Entonces $q^2<2$. Definamos
-
-$$
-\delta=\frac{2-q^2}{2q+3}.
-$$
-
-El número $\delta$ es racional y positivo. Además,
-
-$$
-0<\delta<1,
-$$
-
-porque $2-q^2\le2$ y $2q+3\ge3$. Por tanto $\delta^2<\delta$. Ahora
-
+La elección del denominador permite que el aumento $2q\delta+\delta^2$ sea estrictamente menor que el margen disponible. En efecto, $\delta^2<\delta$ y
 $$
 \begin{aligned}
 (q+\delta)^2
 &=q^2+2q\delta+\delta^2\\
 &<q^2+(2q+1)\delta\\
 &=q^2+(2-q^2)\frac{2q+1}{2q+3}\\
-&<q^2+(2-q^2)\\
-&=2.
+&<q^2+(2-q^2)=2.
 \end{aligned}
 $$
+Las dos desigualdades estrictas tienen razones distintas: la primera usa $0<\delta<1$; la última usa $2-q^2>0$ y $(2q+1)/(2q+3)<1$. Por tanto $q+\delta$ es un racional de $A_2$ mayor que $q$. El caso $q=0$ está incluido en este cálculo. Ningún elemento de $A_2$ es máximo, y quedan verificadas todas las condiciones. $\square$
 
-Así,
-
+Podemos reunir todas las cortaduras en un conjunto:
 $$
-q+\delta\in A_2
-\qquad\text{y}\qquad
-q+\delta>q.
+\mathcal D=\{A\subseteq\mathbb Q:A\text{ es una cortadura de Dedekind}\}
+\subseteq\mathcal P(\mathbb Q).
 $$
-
-Ningún elemento de $A_2$ puede ser máximo.
-
-Hemos demostrado, sin introducir ningún irracional preexistente, que
-
-$$
-\boxed{A_2\text{ es una cortadura de Dedekind}.}
-$$
-
-Éste es el punto conceptual decisivo. En §0.3 encontramos una frontera que $\mathbb Q$ necesitaba pero no podía proporcionar como elemento. Ahora hemos construido, usando sólo racionales, un objeto que registra exactamente un **lado izquierdo racional** asociado a esa frontera.
-
-No diremos todavía que $A_2$ «es» un número real. Por ahora es un subconjunto de $\mathbb Q$ con propiedades precisas. Primero construiremos el sistema formado por todos esos objetos y veremos qué estructura posee.
-
-### El nuevo dominio: todas las cortaduras
-
-Denotemos por
-
-$$
-\mathcal D
-=
-\{A\subseteq\mathbb Q:A\text{ es una cortadura de Dedekind}\}.
-$$
-
-Cada elemento de $\mathcal D$ es, por definición, un **conjunto de racionales**.
-
-Desde el punto de vista conjuntista, no hay aquí una nueva suposición misteriosa. Todo subconjunto de $\mathbb Q$ pertenece al conjunto potencia $\mathcal P(\mathbb Q)$, y la propiedad de ser cortadura selecciona algunos de esos subconjuntos. En el marco clásico que adoptamos al comienzo del capítulo podemos escribir
-
-$$
-\boxed{\mathcal D\subseteq\mathcal P(\mathbb Q)}
-$$
-
-y considerar $\mathcal D$ como un conjunto bien definido. Una formalización axiomática completa expresaría esta selección mediante los principios usuales de teoría de conjuntos; no necesitamos abrir aquí una reconstrucción de ZF/ZFC.
-
-La pregunta cambia entonces de forma. Ya no preguntamos dónde está una frontera ausente en una recta que todavía no poseemos. Tenemos un nuevo dominio concreto, $\mathcal D$, y podemos preguntar qué relaciones y operaciones admite.
-
-La primera estructura aparece inmediatamente.
-
-### Ordenar posiciones por inclusión
-
-Si una posición queda más a la derecha que otra, debería dejar **más racionales** a su izquierda. En el lenguaje de cortaduras, «tener más racionales a la izquierda» significa simplemente contener al otro conjunto.
-
-Esto motiva la definición
-
-$$
-A\le_{\mathcal D}B
-\quad\Longleftrightarrow\quad
-A\subseteq B.
-$$
-
-Y, para el orden estricto,
-
-$$
-A<_{\mathcal D}B
-\quad\Longleftrightarrow\quad
-A\subsetneq B.
-$$
-
-La inclusión ya es reflexiva y transitiva. Además, si
-
-$$
-A\subseteq B
-\qquad\text{y}\qquad
-B\subseteq A,
-$$
-
-entonces $A=B$. Por tanto $\le_{\mathcal D}$ es al menos un orden parcial.
-
-Pero necesitamos algo más: queremos poder comparar **cualesquiera dos** cortaduras. Sorprendentemente, la clausura hacia abajo fuerza exactamente esa comparabilidad.
-
-> **Proposición.** Si $A,B\in\mathcal D$, entonces
->
-> $$
-> A\subseteq B
-> \qquad\text{o}\qquad
-> B\subseteq A.
-> $$
->
-> En consecuencia, la inclusión define un orden lineal sobre $\mathcal D$.
-
-**Demostración.** Si $A\subseteq B$, no hay nada que probar. Supongamos entonces que
-
-$$
-A\not\subseteq B.
-$$
-
-Existe por tanto algún
-
-$$
-a\in A\setminus B.
-$$
-
-Tomemos un elemento cualquiera $b\in B$. No puede ocurrir que $a<b$, porque entonces, como $b\in B$ y $B$ es cerrado hacia abajo, tendríamos $a\in B$, contradicción. Tampoco puede ocurrir $a=b$, porque $a\notin B$ y $b\in B$.
-
-Por la tricotomía del orden racional, necesariamente
-
-$$
-b<a.
-$$
-
-Pero $a\in A$ y $A$ es cerrado hacia abajo, de modo que
-
-$$
-b\in A.
-$$
-
-Como $b\in B$ era arbitrario, concluimos
-
-$$
-B\subseteq A.
-$$
-
-Así, para cualesquiera $A,B\in\mathcal D$, una de las dos inclusiones se cumple. Junto con reflexividad, antisimetría y transitividad, esto demuestra que $\le_{\mathcal D}$ es un orden lineal. $\square$
-
-La prueba merece ser leída estructuralmente. No hemos comparado supuestos puntos frontera. Hemos comparado **información racional**. Si un racional pertenece a $A$ pero no a $B$, la clausura hacia abajo obliga a que todos los racionales de $B$ queden por debajo de ese testigo y, por tanto, también pertenezcan a $A$.
-
-### Una posición codificada desde la izquierda
-
-Podemos resumir la idea construida hasta aquí así:
-
-$$
-\boxed{
-\text{posición buscada}
-\quad\rightsquigarrow\quad
-\text{conjunto de racionales que quedan a su izquierda}.
-}
-$$
-
-La flecha no significa todavía que hayamos construido los números reales. Sólo hemos encontrado un tipo de objeto capaz de registrar posiciones que $\mathbb Q$ no puede contener como elementos.
-
-Cuanto mayor es una cortadura por inclusión, más racionales registra a su izquierda y, por tanto, más a la derecha queda la posición codificada.
-
-Es importante mantener los tipos separados:
-
-$$
-A\in\mathcal D,
-\qquad
-A\subseteq\mathbb Q,
-\qquad
-q\in\mathbb Q.
-$$
-
-Una cortadura no es un racional, ni es todavía un «punto de la recta real» previamente existente. Es un conjunto de racionales con una estructura de orden que acabamos de construir.
-
-La figura [C00-F04](#fig-anm-c00-f04) concentra esta lectura en un único mapa visual.
+En el marco conjuntista clásico del capítulo, el conjunto potencia $\mathcal P(\mathbb Q)$ proporciona el dominio dentro del cual seleccionamos los subconjuntos que satisfacen la definición. Cada elemento de $\mathcal D$ es un conjunto de racionales; si $A\in\mathcal D$ y $q\in A$, entonces $A\subseteq\mathbb Q$ y $q\in\mathbb Q$. La pertenencia $q\in A$ y la inclusión $A\subseteq\mathbb Q$ relacionan objetos de tipos distintos y no pueden intercambiarse.
 
 ![La cortadura es un subconjunto de Q; la frontera sólo codifica una posición y no es un punto primitivo del sistema.](../../assets/books/anm/C00-F04.svg){#fig-anm-c00-f04 fig-alt="Recta racional con una región izquierda marcada como A, frontera conceptual excluida y lista de las cuatro obligaciones: no vacío, propio, clausura inferior y ausencia de máximo."}
 
-### Lo que todavía falta
-
-Tenemos un conjunto $\mathcal D$ y hemos demostrado que sus elementos están linealmente ordenados por inclusión. Esto ya reproduce una parte esencial de la idea de posición, pero está muy lejos de cerrar nuestra especificación inicial.
-
-Todavía no sabemos sumar dos cortaduras. No sabemos multiplicarlas. No hemos construido un cero, un uno, opuestos ni inversos. Mucho menos hemos demostrado que $\mathcal D$ sea completo.
-
-Antes de intentar esa aritmética necesitamos resolver una cuestión más básica. El sistema nuevo debe **extender sin destruir** al sistema racional, tal como $\mathbb Z$ extendía a $\mathbb N$ y $\mathbb Q$ extendía a $\mathbb Z$.
-
-La pregunta inmediata es, por tanto:
-
+La frontera dibujada sirve para interpretar las propiedades del conjunto; la construcción dispone efectivamente de $A$ y de sus racionales. Podemos, por ello, comparar cortaduras sin disponer de puntos frontera externos. Una posición situada más a la derecha debería registrar todos los racionales registrados por una posición anterior y algunos más. La inclusión expresa justamente esa relación. Para $A,B\in\mathcal D$ definimos
 $$
-\boxed{
-\text{¿cómo reconocemos dentro de }\mathcal D
-\text{ una copia fiel de }\mathbb Q\text{?}
-}
+A\le_{\mathcal D}B\quad\Longleftrightarrow\quad A\subseteq B,
+\qquad
+A<_{\mathcal D}B\quad\Longleftrightarrow\quad A\subsetneq B.
 $$
 
-La respuesta comenzará observando que cada racional ya determina una cortadura natural. Construiremos esa correspondencia en la sección siguiente y comprobaremos primero que preserva el orden; la certificación algebraica completa tendrá que esperar hasta que hayamos definido las operaciones de $\mathcal D$.
+La inclusión es reflexiva, antisimétrica y transitiva: $A\subseteq A$; las inclusiones $A\subseteq B$ y $B\subseteq A$ equivalen conjuntamente a $A=B$; y $A\subseteq B\subseteq C$ implica $A\subseteq C$. Para conjuntos arbitrarios puede faltar la comparabilidad. Por ejemplo, $\{0\}$ y $\{1\}$ no están incluidos uno en otro. Entre cortaduras, la clausura hacia abajo impide esa situación.
+
+**Proposición.** La inclusión define un orden lineal en $\mathcal D$: para cualesquiera $A,B\in\mathcal D$ se cumple $A\subseteq B$ o $B\subseteq A$.
+
+**Demostración.** Si $A\subseteq B$, ya tenemos una de las comparaciones. En caso contrario existe un racional $a\in A\setminus B$. Ese único testigo permitirá probar que todo $B$ está contenido en $A$.
+
+Sea $b\in B$ arbitrario. Si ocurriera $a<b$, la clausura hacia abajo de $B$ obligaría a $a\in B$, contradiciendo la elección de $a$. Tampoco puede ocurrir $a=b$, pues $b$ pertenece a $B$ y $a$ no. La tricotomía del orden racional deja entonces $b<a$. Como $a\in A$, la clausura hacia abajo de $A$ da $b\in A$. Hemos probado $B\subseteq A$; junto con las propiedades de la inclusión ya señaladas, esto establece el orden lineal. $\square$
+
+La prueba explica por qué dos lados izquierdos racionales sólo pueden estar anidados. Un racional que pertenece a $A$ y queda fuera de $B$ obliga a que todos los elementos de $B$ sean menores que él, y por ello pertenezcan a $A$. En particular, una inclusión estricta $A\subsetneq B$ contiene información concreta: hay algún racional en $B$ que todavía no aparece en $A$.
+
+El orden por inclusión permite comparar tanto las cortaduras $L_c$ como $A_2$, aunque todavía no sepamos sumar ni multiplicar estos objetos. Las cortaduras $L_c$ ofrecen además un vínculo con la aritmética de partida: cada racional tiene ya una representación en $\mathcal D$. Falta comprobar que racionales distintos dan representaciones distintas y que la comparación de éstas recupera su orden.
 
 ### Antes de seguir
 
@@ -3973,474 +2918,117 @@ $$
 Esto sitúa a $A_2$ en el orden por inclusión sin identificarla todavía con ningún número real previamente existente.
 
 </details>
+
 ## 0.5. Una copia de $\mathbb Q$ dentro del nuevo sistema
 
 []{#MA-SEC-ANM-01-000-005}
 
-En §0.4 construimos un nuevo dominio, $\mathcal D$, cuyos elementos son cortaduras de Dedekind. Sabemos además que $\mathcal D$ está linealmente ordenado por inclusión. Pero la construcción sólo será útil para nuestro problema original si el sistema racional que ya conocemos reaparece dentro de ella sin perder su orden.
-
-La situación es análoga a la de §0.2. Cuando pasamos de $\mathbb Z$ a $\mathbb Q$, no nos conformamos con encontrar dentro del sistema mayor objetos que pudiéramos etiquetar informalmente como enteros. Construimos una aplicación inyectiva que conservaba la estructura disponible. Ahora debemos hacer lo mismo con los racionales y las cortaduras.
-
-La diferencia es que todavía no hemos definido suma ni producto en $\mathcal D$. Por tanto, en esta sección sólo podemos aspirar a una primera certificación:
-
-$$
-\boxed{
-\mathbb Q
-\longrightarrow
-\mathcal D
-\qquad
-\text{preservando exactamente el orden.}
-}
-$$
-
-La certificación algebraica tendrá que esperar.
-
-### La cortadura determinada por un racional
-
-En la sección anterior apareció ya una familia natural de cortaduras. Para cada $q\in\mathbb Q$, definimos
-
+Para cada $q\in\mathbb Q$, escribamos
 $$
 q^*=\{r\in\mathbb Q:r<q\}.
 $$
-
-El símbolo $q^*$ no significa una nueva operación sobre racionales. Es simplemente un nombre para el subconjunto de $\mathbb Q$ formado por todos los racionales estrictamente menores que $q$.
-
-Antes de usarlo como elemento de $\mathcal D$, debemos comprobar que satisface la definición completa de cortadura.
-
-> **Proposición.** Para todo $q\in\mathbb Q$, el conjunto
->
-> $$
-> q^*=\{r\in\mathbb Q:r<q\}
-> $$
->
-> es una cortadura de Dedekind.
-
-**Demostración.** Verificamos las cuatro condiciones.
-
-Primero, $q^*$ no es vacío. Por ejemplo,
-
-$$
-q-1<q,
-$$
-
-luego
-
-$$
-q-1\in q^*.
-$$
-
-Segundo, $q^*$ es propio. El propio $q$ no pertenece a $q^*$, porque $q<q$ es falso. Por tanto
-
-$$
-q^*\ne\mathbb Q.
-$$
-
-Tercero, $q^*$ es cerrado hacia abajo. Si $r\in q^*$ y $s<r$, entonces
-
-$$
-s<r<q,
-$$
-
-y por transitividad
-
-$$
-s<q.
-$$
-
-Así $s\in q^*$.
-
-Cuarto, $q^*$ no tiene máximo. Si $r\in q^*$, entonces $r<q$. El racional
-
-$$
-t=\frac{r+q}{2}
-$$
-
-satisface
-
-$$
-r<t<q.
-$$
-
-Por tanto $t\in q^*$ y $t>r$. Ningún elemento de $q^*$ puede ser el último.
-
-Hemos verificado todas las condiciones, de modo que
-
-$$
-\boxed{q^*\in\mathcal D\qquad\text{para todo }q\in\mathbb Q.}
-$$
-
-$\square$
-
-La ausencia de máximo vuelve a desempeñar aquí un papel preciso. La posición racional $q$ queda codificada por los racionales **estrictamente** menores que $q$, no por un conjunto que incluya también a $q$. Así todas las posiciones racionales obedecen la misma convención que fijamos al definir las cortaduras.
-
-### La aplicación racional
-
-Podemos definir ahora
-
+Es la cortadura que antes llamamos $L_q$. La verificación hecha en §0.4 da, para todo $q$, $q^*\in\mathcal D$: contiene a $q-1$, excluye a $q$, es cerrada hacia abajo por transitividad y carece de máximo porque entre $r<q$ y $q$ está $(r+q)/2$. Podemos definir, por tanto, la aplicación
 $$
 \iota_{\mathbb Q}:\mathbb Q\longrightarrow\mathcal D,
 \qquad
 \iota_{\mathbb Q}(q)=q^*.
 $$
+La estrella distingue al racional de su imagen, que es un conjunto. Por ejemplo, $0^*=\{r\in\mathbb Q:r<0\}$ es un elemento de $\mathcal D$, mientras que $0$ es un elemento de $\mathbb Q$ y no pertenece a $0^*$.
 
-La pregunta decisiva es si esta aplicación conserva la disposición de los racionales. Si $p<q$, esperamos que todos los racionales situados a la izquierda de $p$ estén también a la izquierda de $q$, pero no al revés. En el lenguaje de $\mathcal D$, eso debería expresarse como
+Para que la aplicación conserve el orden necesitamos que $p<q$ se traduzca en $p^*\subsetneq q^*$. El significado de ambos conjuntos sugiere esta implicación: todo racional menor que $p$ es menor que $q$, y el propio $p$ ya queda a la izquierda de $q$ aunque nunca quede a su propia izquierda. También debemos poder recorrer la relación en sentido inverso y recuperar la desigualdad de los racionales a partir de sus imágenes.
 
+**Proposición.** Para cualesquiera $p,q\in\mathbb Q$,
 $$
-p^*\subsetneq q^*.
+p<q\quad\Longleftrightarrow\quad p^*\subsetneq q^*.
 $$
-
-No es sólo una intuición. Es una equivalencia exacta.
-
-> **Proposición.** Para cualesquiera $p,q\in\mathbb Q$,
->
-> $$
-> \boxed{
-> p<q
-> \quad\Longleftrightarrow\quad
-> p^*\subsetneq q^*.
-> }
-> $$
-
-**Demostración.** Supongamos primero que
-
+La aplicación $\iota_{\mathbb Q}$ es inyectiva y además satisface
 $$
-p<q.
+p\le q\quad\Longleftrightarrow\quad p^*\subseteq q^*.
 $$
 
-Si $r\in p^*$, entonces $r<p$, y por transitividad
+**Demostración.** Supongamos primero $p<q$. Si $r\in p^*$, entonces $r<p<q$, por lo que $r\in q^*$. Esto prueba $p^*\subseteq q^*$. La inclusión es estricta porque $p\in q^*$ y $p\notin p^*$.
 
-$$
-r<p<q.
-$$
-
-Por tanto $r\in q^*$. Hemos demostrado
-
-$$
-p^*\subseteq q^*.
-$$
-
-La inclusión es estricta porque
-
-$$
-p<q
-$$
-
-implica
-
-$$
-p\in q^*,
-$$
-
-mientras que
-
-$$
-p\notin p^*.
-$$
-
-Luego
-
-$$
-p^*\subsetneq q^*.
-$$
-
-Para la implicación recíproca, supongamos
-
-$$
-p^*\subsetneq q^*.
-$$
-
-Como la inclusión es estricta, existe algún racional
-
-$$
-r\in q^*\setminus p^*.
-$$
-
-De $r\in q^*$ obtenemos
-
-$$
-r<q.
-$$
-
-Y de $r\notin p^*$ obtenemos que no es cierto $r<p$. Por tricotomía en $\mathbb Q$,
-
-$$
-p\le r.
-$$
-
-Así
-
+Para el recíproco, la inclusión estricta proporciona un racional $r\in q^*\setminus p^*$. La pertenencia a $q^*$ dice $r<q$, y la no pertenencia a $p^*$ dice que $r<p$ es falso. Por tricotomía, $p\le r$; de ahí
 $$
 p\le r<q,
 $$
+y concluimos $p<q$. Este testigo convierte una diferencia entre conjuntos en una desigualdad entre sus parámetros.
 
-y en particular
+Si $p^*=q^*$, no puede ocurrir $p<q$, pues acabamos de probar que produciría una inclusión estricta; por la misma razón tampoco puede ocurrir $q<p$. La tricotomía obliga a $p=q$, lo que demuestra la inyectividad.
 
+Para el orden no estricto, $p\le q$ significa $p<q$ o $p=q$, y ambos casos dan $p^*\subseteq q^*$. Recíprocamente, si $p^*\subseteq q^*$ y tuviéramos $q<p$, la equivalencia estricta daría $q^*\subsetneq p^*$, incompatible con aquella inclusión. Luego $p\le q$. $\square$
+
+Decimos que $\iota_{\mathbb Q}$ **preserva** el orden porque transporta cada desigualdad racional a las imágenes, y que lo **refleja** porque la comparación de las imágenes permite reconstruirla. La equivalencia incluye ambas direcciones; así, el nuevo lenguaje no confunde racionales distintos ni altera su posición relativa. Por ejemplo,
 $$
-p<q.
+0^*\subsetneq1^*\subsetneq\left(\frac32\right)^*
 $$
-
-Quedan demostradas ambas implicaciones. $\square$
-
-Esta proposición concentra exactamente la relación que buscábamos. La aplicación $\iota_{\mathbb Q}$ no sólo **preserva** el orden estricto; también lo **refleja**:
-
+reproduce $0<1<3/2$. También puede leerse directamente una cadena con signos distintos:
 $$
-p<q
-\quad\Longleftrightarrow\quad
-\iota_{\mathbb Q}(p)<_{\mathcal D}\iota_{\mathbb Q}(q).
+(-2)^*\subsetneq0^*\subsetneq3^*.
 $$
+Si $r<-2$, entonces $r<0$, y $-1\in0^*\setminus(-2)^*$ prueba que la primera inclusión es estricta. Si $r<0$, entonces $r<3$, y $1\in3^*\setminus0^*$ prueba lo mismo para la segunda. Los signos de los parámetros no exigen cambiar la definición.
 
-En otras palabras, mirar las imágenes dentro de $\mathcal D$ permite recuperar por completo el orden racional original.
-
-### La inyectividad no necesita una prueba separada larga
-
-La preservación y reflexión del orden ya contienen casi toda la información necesaria para demostrar que no colapsamos racionales distintos.
-
-Supongamos
-
+La imagen de la aplicación es el subconjunto
 $$
-p^*=q^*.
+\mathcal Q^*=\iota_{\mathbb Q}(\mathbb Q)
+=\{q^*:q\in\mathbb Q\}\subseteq\mathcal D.
 $$
-
-Si $p<q$, la proposición anterior obligaría a
-
+La inyectividad permite recuperar de manera única el racional representado por cada cortadura de $\mathcal Q^*$. En efecto, la regla
 $$
-p^*\subsetneq q^*,
+\rho:\mathcal Q^*\longrightarrow\mathbb Q,\qquad \rho(q^*)=q
 $$
-
-contradicción. Si $q<p$, obtendríamos análogamente
-
+está bien definida porque una igualdad $p^*=q^*$ implica $p=q$; además,
 $$
-q^*\subsetneq p^*,
-$$
-
-también imposible. Por tricotomía sólo queda
-
-$$
-p=q.
-$$
-
-Por tanto
-
-$$
-\boxed{
-\iota_{\mathbb Q}\text{ es inyectiva.}
-}
-$$
-
-Hemos obtenido así una **incrustación de órdenes lineales**:
-
-$$
-\boxed{
-\iota_{\mathbb Q}:\mathbb Q\hookrightarrow\mathcal D,
+\rho(\iota_{\mathbb Q}(q))=q,
 \qquad
-q\longmapsto q^*,
-}
+\iota_{\mathbb Q}(\rho(A))=A\quad(A\in\mathcal Q^*).
 $$
+La segunda identidad usa $A=q^*$, como permite la definición de la imagen; la equivalencia de la proposición muestra además que $\rho$ conserva el orden: de $p^*<_{\mathcal D}q^*$ recuperamos $p<q$. Al restringir el codominio de $\iota_{\mathbb Q}$ a $\mathcal Q^*$, tenemos por ello dos aplicaciones inversas que conservan el orden. Éste es el sentido preciso en que $\mathcal Q^*$ es una copia ordenada de $\mathbb Q$.
 
-con
-
+La copia conserva también la densidad interna del orden racional. Entre $p^*<_{\mathcal D}q^*$ podemos tomar $r=(p+q)/2$; como $p<r<q$, resulta
 $$
-p<q
-\quad\Longleftrightarrow\quad
-p^*\subsetneq q^*.
+p^*<_{\mathcal D}r^*<_{\mathcal D}q^*,
+\qquad r^*\in\mathcal Q^*.
 $$
+El resultado habla de dos cortaduras racionales. Para saber si $\mathcal D$ aporta posiciones nuevas debemos examinar una cortadura que no pertenezca a esa imagen.
 
-No hemos hecho todavía ninguna afirmación sobre suma o producto en $\mathcal D$.
-
-### Cómo reaparecen las posiciones racionales
-
-Algunos ejemplos ayudan a leer la construcción:
-
+Volvamos a $A_2$. Las inclusiones
 $$
-0^*=\{r\in\mathbb Q:r<0\},
+1^*\subsetneq A_2\subsetneq2^*
 $$
+se prueban sin salir de $\mathbb Q$. Si $r<1$, o bien $r<0$, o bien $0\le r<1$ y $r^2<1<2$; en ambos casos $r\in A_2$. El racional $1$ pertenece a $A_2$ y no a $1^*$, lo que prueba la primera inclusión estricta. A su vez, cualquier $r\in A_2$ es menor que $2$: para $r<0$ es inmediato, y para $r\ge0$ la alternativa $r\ge2$ daría $r^2\ge4$, contra la pertenencia a $A_2$. Finalmente, $3/2$ pertenece a $2^*$ y queda fuera de $A_2$, pues $(3/2)^2=9/4>2$. Esto prueba la segunda inclusión estricta.
 
+Entre $1^*$ y $2^*$ se encuentra también, por ejemplo, $(4/3)^*$, de modo que aquellas inclusiones aún no distinguen a $A_2$ de todas las cortaduras racionales. Para demostrar que hemos construido una posición nueva debemos descartar la igualdad $A_2=c^*$ para **todo** racional $c$. La dificultad aritmética de §0.3 proporciona el argumento.
+
+Supongamos $A_2=c^*$ con $c\in\mathbb Q$. Como $0\in A_2$, tendríamos $0<c$. Si $c^2<2$, el propio $c$ pertenecería a $A_2$, aunque $c\notin c^*$, una contradicción. La igualdad $c^2=2$ es imposible por la demostración de paridad de §0.3. Si $c^2>2$, podemos retroceder desde $c$ un poco sin que el cuadrado baje hasta $2$: tomemos
 $$
-1^*=\{r\in\mathbb Q:r<1\},
+\delta=\frac{c^2-2}{4c},
+\qquad t=c-\delta.
 $$
-
-y
-
+Son racionales, y $0<\delta<c$, porque $0<c^2-2<4c^2$. De aquí $0<t<c$, mientras que
 $$
-\left(\frac32\right)^*
-=
-\left\{r\in\mathbb Q:r<\frac32\right\}.
+t^2=c^2-2c\delta+\delta^2
+>\frac{c^2+2}{2}>2.
 $$
-
-Como
-
+Por tanto $t\in c^*$ y $t\notin A_2$, otra contradicción. Los tres casos quedan descartados y concluimos
 $$
-0<1<\frac32,
+A_2\notin\mathcal Q^*,
+\qquad\text{por tanto}\qquad
+\mathcal Q^*\subsetneq\mathcal D.
 $$
-
-la proposición anterior se traduce exactamente en
-
-$$
-0^*\subsetneq1^*\subsetneq\left(\frac32\right)^*.
-$$
-
-La geometría del orden racional se ha convertido en una geometría de inclusión entre conjuntos.
-
-Podemos volver incluso a la cortadura $A_2$ de §0.4. Recordemos
-
-$$
-A_2=\{q\in\mathbb Q:q<0\ \text{o}\ q^2<2\}.
-$$
-
-Sin introducir ninguna frontera real preexistente, podemos situarla entre dos posiciones racionales conocidas:
-
-$$
-\boxed{1^*\subsetneq A_2\subsetneq2^*.}
-$$
-
-En efecto, si $r<1$, entonces o bien $r<0$, o bien $0\le r<1$, y en este último caso $r^2<1<2$; por tanto $r\in A_2$. Además
-
-$$
-1\in A_2
-\qquad\text{pero}\qquad
-1\notin1^*,
-$$
-
-así que la primera inclusión es estricta.
-
-Por otro lado, todo $r\in A_2$ satisface $r<2$. Si $r<0$, esto es inmediato; si $r\ge0$ y $r^2<2$, no puede ocurrir $r\ge2$, porque entonces $r^2\ge4$. Por consiguiente
-
-$$
-A_2\subseteq2^*.
-$$
-
-La inclusión vuelve a ser estricta, pues
-
-$$
-\frac32<2,
-$$
-
-de modo que
-
-$$
-\frac32\in2^*,
-$$
-
-pero
-
-$$
-\left(\frac32\right)^2=\frac94>2,
-$$
-
-y por tanto
-
-$$
-\frac32\notin A_2.
-$$
-
-Así $A_2$ ocupa, dentro del orden de $\mathcal D$, una posición estrictamente intermedia entre $1^*$ y $2^*$. Ésta es ya una manifestación concreta de que $\mathcal D$ contiene más posiciones ordenadas que las provenientes directamente de racionales.
-
-No necesitamos todavía dar un nombre numérico a la posición codificada por $A_2$. La relación de orden basta.
-
-### Copia, imagen e identificación
-
-Conviene recuperar ahora la distinción de §0.2.
-
-La aplicación
-
-$$
-\iota_{\mathbb Q}:\mathbb Q\hookrightarrow\mathcal D
-$$
-
-produce la imagen
-
-$$
-\iota_{\mathbb Q}(\mathbb Q)
-=
-\{q^*:q\in\mathbb Q\}
-\subseteq\mathcal D.
-$$
-
-Como $\iota_{\mathbb Q}$ es inyectiva y conserva y refleja el orden, $\mathbb Q$ y $\iota_{\mathbb Q}(\mathbb Q)$ son indistinguibles **como conjuntos linealmente ordenados**. En ese sentido preciso, ya podemos decir que $\mathcal D$ contiene una copia ordenada de los racionales.
-
-Pero todavía no debemos afirmar algo más fuerte de lo que hemos demostrado.
-
-En $\mathbb Q$ disponemos de suma y producto. En $\mathcal D$, por ahora, sólo hemos construido el orden por inclusión. Aún no existen en nuestro desarrollo operaciones
-
-$$
-\mathcal D\times\mathcal D\longrightarrow\mathcal D
-$$
-
-que podamos comparar con la aritmética racional.
-
-Por eso el certificado actual es
-
-$$
-\boxed{
-\text{INJECTIVE = VERIFIED}
-\qquad
-\text{ORDER = PRESERVED AND REFLECTED}
-}
-$$
-
-mientras que permanece pendiente
-
-$$
-\boxed{
-\text{ORDERED-FIELD EMBEDDING = NOT YET CERTIFIED}.
-}
-$$
-
-Sólo después de definir suma y producto en $\mathcal D$ podremos preguntar y demostrar si
-
-$$
-p^*+q^*=(p+q)^*
-$$
-
-y
-
-$$
-p^*q^*=(pq)^*.
-$$
-
-Esas igualdades no se usan aquí: son obligaciones futuras.
-
-Por la misma razón, aunque podemos trabajar sin ambigüedad con la imagen $\iota_{\mathbb Q}(\mathbb Q)\subseteq\mathcal D$, aplazaremos la abreviatura no cualificada
-
-$$
-\mathbb Q\subseteq\mathcal D
-$$
-
-hasta haber certificado también la estructura de cuerpo. Queremos que la notación inclusiva signifique al final exactamente lo mismo que significó en §0.2: una identificación sustentada por toda la estructura que pretendemos conservar, no sólo por una semejanza parcial.
-
-La figura [C00-F05](#fig-anm-c00-f05) concentra esta lectura en un único mapa visual.
+La construcción contiene efectivamente un objeto que ningún racional representa. Hemos probado esta afirmación comparando subconjuntos racionales y usando perturbaciones racionales; sigue sin ser necesario invocar un número real cuyo cuadrado sea $2$.
 
 ![El orden p<q<r se recupera como anidamiento p*⊊q*⊊r*, mientras la certificación algebraica permanece pendiente en §0.5.](../../assets/books/anm/C00-F05.svg){#fig-anm-c00-f05 fig-alt="Dos paneles muestran racionales p<q<r y sus cortaduras racionales anidadas; una banda final separa inyectividad y orden ya verificados de suma y producto todavía pendientes."}
 
-### Lo que hemos ganado y lo que falta
+El isomorfismo de órdenes entre $\mathbb Q$ y $\mathcal Q^*$ autoriza a identificar sus posiciones ordenadas. La inclusión literal que hemos construido es $\mathcal Q^*\subseteq\mathcal D$: los elementos de la imagen son conjuntos, y los racionales de partida se corresponden con ellos mediante $\iota_{\mathbb Q}$. Mantendremos visible esa correspondencia al introducir las operaciones, pues conservar el orden no acredita por sí mismo ninguna ley aritmética.
 
-La construcción ha superado ya una prueba importante. El nuevo dominio no coloca los racionales en un rincón irreconocible ni altera su orden. Cada racional $q$ determina canónicamente una cortadura $q^*$, y la posición relativa de dos racionales queda reproducida exactamente por la inclusión de sus cortaduras.
-
-Podemos resumir el resultado de esta sección como
-
+La suma y el producto deberán ser aplicaciones de $\mathcal D\times\mathcal D$ en $\mathcal D$, con valores que satisfagan otra vez las condiciones de cortadura. Después habrá que demostrar sus leyes y comprobar que, para todos $p,q\in\mathbb Q$, sumar o multiplicar sus imágenes produce las imágenes de $p+q$ y $pq$:
 $$
-\boxed{
-\mathbb Q
-\overset{\iota_{\mathbb Q}}{\hookrightarrow}
-(\mathcal D,\subseteq)
+p^*+q^*=(p+q)^*,
 \qquad
-\text{como orden lineal.}
-}
+p^*q^*=(pq)^*.
 $$
-
-Esto resuelve sólo la parte **ordinal** de la extensión. Para convertir $\mathcal D$ en un candidato serio a sistema de números reales necesitamos transportar también la aritmética.
-
-La siguiente pregunta es inevitable:
-
-$$
-\boxed{
-\text{¿cómo podemos sumar dos lados izquierdos racionales}
-\\
-\text{de modo que el resultado vuelva a ser una cortadura?}
-}
-$$
-
-Ése será el primer paso hacia la estructura algebraica de $\mathcal D$.
+Estas expresiones formulan las identidades que deberán cumplir las operaciones por construir; aún no se usan como igualdades demostradas. También habrá que reconocer el cero y la unidad y justificar los opuestos y los inversos. Al verificar esa estructura completa podremos adoptar la identificación usual de los racionales con una copia de cuerpo ordenado dentro de $\mathcal D$. La primera operación exige dar un significado a la suma de dos lados izquierdos racionales y demostrar que el conjunto resultante vuelve a ser una cortadura.
 
 ### Antes de seguir
 
@@ -5181,914 +3769,122 @@ Para $q\in\mathbb Q$, $(\rho\circ\iota_{\mathbb Q})(q)=\rho(q^*)=q$. Para $A=q^*
 La equivalencia $p<q\iff p^*\subsetneq q^*$ dice que esa biyección preserva y refleja el orden. Si $p^*<_{\mathcal D}q^*$, tome $r=(p+q)/2$. Entonces $p<r<q$ y la equivalencia da $p^*<_{\mathcal D}r^*<_{\mathcal D}q^*$, con $r^*\in\mathcal Q^*$. Así la imagen reproduce el orden racional y su densidad interna. En esta sección aún faltan las operaciones y su preservación para poder concluir una copia de cuerpo ordenado.
 
 </details>
+
 ## 0.6. Dar aritmética a las cortaduras I: suma y opuesto
 
 []{#MA-SEC-ANM-01-000-006}
 
-En §0.5 conseguimos que los racionales reaparecieran dentro de $\mathcal D$ sin perder su orden. Pero un sistema de números reales no puede limitarse a ordenar posiciones: debe permitir operar con ellas.
-
-La primera pregunta algebraica es la más natural:
-
+Para sumar dos cortaduras podemos empezar con los racionales que contienen. Si $a\in A$ y $b\in B$, la suma racional $a+b$ debería quedar a la izquierda de la posición que buscamos. Reunamos todas esas sumas:
 $$
-\boxed{
-\text{dados }A,B\in\mathcal D,
-\text{ ¿cómo construir una cortadura que represente su suma?}
-}
+A+B=\{a+b:a\in A,\ b\in B\}.
 $$
+Aquí el signo $+$ adquiere un segundo uso: dentro de las llaves es la operación conocida en $\mathbb Q$; a la izquierda designa el conjunto que acabamos de definir. Tendremos una suma de cortaduras cuando hayamos comprobado que ese conjunto pertenece a $\mathcal D$.
 
-La idea debe nacer de la aritmética racional que ya poseemos. Si $a\in A$ y $b\in B$ son racionales situados a la izquierda de las posiciones codificadas por $A$ y $B$, entonces $a+b$ debería quedar a la izquierda de la posición suma. Esto sugiere definir el nuevo lado izquierdo usando precisamente todas esas sumas racionales.
+Hay un hecho sencillo que utilizaremos repetidamente. Si $a\in A$ y $u\in\mathbb Q\setminus A$, entonces $a<u$. La igualdad daría $u\in A$; la desigualdad $u<a$ daría lo mismo por clausura inferior. La tricotomía racional deja únicamente $a<u$. Así, un racional exterior proporciona una cota estricta para todos los racionales interiores, aunque no sepamos dónde está una supuesta frontera numérica.
 
-### Sumar dos cortaduras
+**Proposición.** Para cualesquiera $A,B\in\mathcal D$, el conjunto $A+B$ es una cortadura.
 
-Para $A,B\in\mathcal D$, definimos
+**Demostración.** Podemos elegir $a_0\in A$ y $b_0\in B$, por lo que $a_0+b_0\in A+B$. También podemos elegir $u\notin A$ y $v\notin B$. El hecho anterior da $a+b<u+v$ para todos $a\in A$, $b\in B$; en particular, $u+v\notin A+B$. El conjunto es no vacío y propio.
 
+Si $x=a+b\in A+B$ y $y<x$, necesitamos representar exactamente a $y$ como una suma admisible. Mantengamos $b$ y modifiquemos el otro sumando: $a'=y-b<a$, de modo que $a'\in A$ y $y=a'+b\in A+B$. Finalmente, dado $x=a+b$, la ausencia de máximo en $A$ proporciona $a'\in A$ con $a'>a$. Entonces $a'+b\in A+B$ y $a'+b>x$. El conjunto es cerrado hacia abajo y carece de máximo. $\square$
+
+La definición produce, por tanto, una aplicación $+:\mathcal D\times\mathcal D\to\mathcal D$. Para comprobar qué hace con los racionales de partida, sean $p,q\in\mathbb Q$. Si $x=a+b$ con $a<p$ y $b<q$, entonces $x<p+q$; por ello $p^*+q^*\subseteq(p+q)^*$. En sentido inverso, un racional $x<p+q$ deja un margen positivo que podemos repartir por igual entre ambos sumandos. Tomemos
 $$
-\boxed{
-A+B
-=
-\{a+b:a\in A,\ b\in B\}.
-}
+\varepsilon=\frac{p+q-x}{2},\qquad a=p-\varepsilon,\qquad b=q-\varepsilon.
 $$
-
-Equivalentemente, para $x\in\mathbb Q$,
-
+Se cumplen $a<p$, $b<q$ y $a+b=x$. Esto prueba la inclusión contraria y establece
 $$
-x\in A+B
-\quad\Longleftrightarrow\quad
-\exists a\in A\ \exists b\in B:
-x=a+b.
-$$
-
-La fórmula es sencilla. Lo que todavía no sabemos es si el conjunto obtenido vuelve a pertenecer a $\mathcal D$. Esa verificación es parte de la definición efectiva de la operación: no basta con escribir una regla y esperar que el resultado sea una cortadura.
-
-> **Proposición.** Si $A,B\in\mathcal D$, entonces $A+B\in\mathcal D$.
-
-**Demostración.** Verificamos las cuatro condiciones de cortadura.
-
-Como $A$ y $B$ son no vacíos, podemos elegir
-
-$$
-a_0\in A,
-\qquad
-b_0\in B.
-$$
-
-Entonces
-
-$$
-a_0+b_0\in A+B,
-$$
-
-de modo que $A+B$ no es vacío.
-
-Para ver que es propio, elijamos racionales exteriores
-
-$$
-u\notin A,
-\qquad
-v\notin B.
-$$
-
-Todo elemento de una cortadura está estrictamente por debajo de cualquier racional exterior. En efecto, si $a\in A$ y $u\notin A$, no puede ocurrir $u\le a$, porque la clausura hacia abajo obligaría a $u\in A$. Por tanto
-
-$$
-a<u.
-$$
-
-Análogamente, $b<v$ para todo $b\in B$. Así, para cualesquiera $a\in A$ y $b\in B$,
-
-$$
-a+b<u+v.
-$$
-
-En particular,
-
-$$
-u+v\notin A+B,
-$$
-
-y por tanto $A+B\ne\mathbb Q$.
-
-Comprobemos la clausura hacia abajo. Sea
-
-$$
-x=a+b\in A+B
-$$
-
-y sea $y<x$. Definimos
-
-$$
-a'=y-b.
-$$
-
-Como $y<a+b$, tenemos
-
-$$
-a'<a.
-$$
-
-La clausura inferior de $A$ implica $a'\in A$, y entonces
-
-$$
-y=a'+b\in A+B.
-$$
-
-Finalmente, $A+B$ no tiene máximo. Si
-
-$$
-x=a+b\in A+B,
-$$
-
-la ausencia de máximo en $A$ proporciona $a'\in A$ con
-
-$$
-a<a'.
-$$
-
-Entonces
-
-$$
-x=a+b<a'+b,
-$$
-
-y $a'+b\in A+B$.
-
-Las cuatro condiciones quedan verificadas. Por tanto
-
-$$
-\boxed{A+B\in\mathcal D.}
-$$
-
-$\square$
-
-La suma es, pues, una operación interna bien definida:
-
-$$
-+:\mathcal D\times\mathcal D\longrightarrow\mathcal D.
-$$
-
-### La suma racional reaparece exactamente
-
-La definición no sólo produce una operación. Debe ser compatible con la copia de $\mathbb Q$ construida en §0.5.
-
-Tomemos $p,q\in\mathbb Q$. Afirmamos que
-
-$$
-\boxed{
 p^*+q^*=(p+q)^*.
-}
 $$
+El reparto del margen satisface la igualdad exacta que pide la definición de suma: los testigos recuperan $x$ aunque ambos deban quedar estrictamente por debajo de sus fronteras racionales.
 
-Si $x\in p^*+q^*$, existen $a<p$ y $b<q$ tales que
-
-$$
-x=a+b.
-$$
-
-Entonces
-
-$$
-x=a+b<p+q,
-$$
-
-de modo que
-
-$$
-x\in(p+q)^*.
-$$
-
-Así,
-
-$$
-p^*+q^*\subseteq(p+q)^*.
-$$
-
-Para la inclusión contraria, sea
-
-$$
-x<p+q.
-$$
-
-Definamos
-
-$$
-\varepsilon=\frac{p+q-x}{2}>0,
-$$
-
-y tomemos
-
-$$
-a=p-\varepsilon,
-\qquad
-b=q-\varepsilon.
-$$
-
-Entonces $a<p$, $b<q$ y
-
-$$
-a+b
-=
-p+q-2\varepsilon
-=
-x.
-$$
-
-Por tanto $a\in p^*$, $b\in q^*$ y
-
-$$
-x\in p^*+q^*.
-$$
-
-Concluimos
-
-$$
-\boxed{
-p^*+q^*=(p+q)^*.
-}
-$$
-
-Ésta es la primera certificación algebraica de la aplicación racional:
-
-$$
-\iota_{\mathbb Q}(p+q)
-=
-\iota_{\mathbb Q}(p)+\iota_{\mathbb Q}(q).
-$$
-
-Todavía no hemos certificado el producto, de modo que la incrustación de **cuerpos** sigue pendiente.
-
-### Asociatividad y conmutatividad
-
-La suma de cortaduras hereda estas dos leyes de la suma racional, pero conviene verificar por qué.
-
-Para $A,B,C\in\mathcal D$, un racional $x$ pertenece a $(A+B)+C$ exactamente cuando existen
-
-$$
-a\in A,\qquad b\in B,\qquad c\in C
-$$
-
-tales que
-
-$$
-x=(a+b)+c.
-$$
-
-Por asociatividad en $\mathbb Q$,
-
-$$
-(a+b)+c=a+(b+c),
-$$
-
-y esta última expresión caracteriza precisamente la pertenencia a $A+(B+C)$. Por extensionalidad,
-
-$$
-\boxed{(A+B)+C=A+(B+C).}
-$$
-
-Del mismo modo,
-
-$$
-x=a+b=b+a
-$$
-
-muestra que
-
-$$
-\boxed{A+B=B+A.}
-$$
-
-No estamos trasladando mecánicamente las leyes de $\mathbb Q$: estamos usando la definición de la nueva operación para reducir la igualdad de cortaduras a igualdades racionales entre sus testigos.
-
-### El cero aditivo
-
-La cortadura racional asociada a $0$ es
-
-$$
-0^*=\{r\in\mathbb Q:r<0\}.
-$$
-
-Afirmamos que actúa como neutro para la nueva suma.
-
-Sea $x\in A+0^*$. Entonces
-
-$$
-x=a+b
-$$
-
-para algún $a\in A$ y algún $b<0$. Por tanto
-
-$$
-x<a.
-$$
-
-Como $A$ es cerrado hacia abajo,
-
-$$
-x\in A.
-$$
-
-Así,
-
-$$
-A+0^*\subseteq A.
-$$
-
-Para la inclusión contraria, sea $x\in A$. Como $A$ no tiene máximo, existe $a\in A$ con
-
-$$
-x<a.
-$$
-
-Definamos
-
-$$
-b=x-a.
-$$
-
-Entonces $b<0$, es decir, $b\in0^*$, y
-
-$$
-x=a+b.
-$$
-
-Por tanto $x\in A+0^*$. Hemos probado
-
-$$
-A\subseteq A+0^*.
-$$
-
-En consecuencia,
-
-$$
-\boxed{A+0^*=A.}
-$$
-
-Por conmutatividad,
-
-$$
-0^*+A=A.
-$$
-
-Podemos escribir
-
-$$
-0_{\mathcal D}:=0^*
-$$
-
-si queremos enfatizar su función dentro del nuevo sistema. Pero no es un objeto elegido arbitrariamente: es exactamente la cortadura que ya representa al racional $0$.
-
-### Por qué el opuesto no es un simple reflejo
-
-La suma fue relativamente directa. El opuesto contiene el primer obstáculo serio.
-
-Si imagináramos una cortadura como una región situada a la izquierda de una frontera, podríamos sentir la tentación de «reflejarla» respecto de cero. Pero hay que recordar que una cortadura no contiene su frontera.
-
-Consideremos el corte racional
-
-$$
-q^*=\{r\in\mathbb Q:r<q\}.
-$$
-
-Su complemento es
-
-$$
-\mathbb Q\setminus q^*
-=
-\{r\in\mathbb Q:r\ge q\}.
-$$
-
-Si simplemente negáramos sus elementos obtendríamos
-
-$$
-\{-r:r\notin q^*\}
-=
-\{s\in\mathbb Q:s\le -q\}.
-$$
-
-Este conjunto tiene máximo, precisamente $-q$. Por tanto **no es una cortadura**.
-
-El dibujo de un reflejo capta una intención geométrica, pero no la definición correcta. Debemos volver a imponer la convención de lado izquierdo **sin punto final**.
-
-La forma adecuada es tomar todos los racionales que quedan estrictamente por debajo de algún negativo de un punto exterior de $A$.
-
-> **Definición.** Para $A\in\mathcal D$, definimos su **opuesto** por
->
-> $$
-> \boxed{
-> -A
-> =
-> \{q\in\mathbb Q:
-> \exists s\notin A\text{ tal que }q<-s\}.
-> }
-> $$
-
-Esta definición puede leerse como la clausura inferior de los negativos del complemento de $A$.
-
-### El opuesto vuelve a ser una cortadura
-
-> **Proposición.** Si $A\in\mathcal D$, entonces $-A\in\mathcal D$.
-
-**Demostración.** Como $A$ es propio, existe algún racional
-
-$$
-s\notin A.
-$$
-
-Entonces
-
-$$
--s-1<-s,
-$$
-
-de modo que
-
-$$
--s-1\in -A.
-$$
-
-Así $-A$ no es vacío.
-
-Como $A$ no es vacío, tomemos $a\in A$. Afirmamos que
-
+Las leyes asociativa y conmutativa también se leen en los testigos. Para cualquier $x\in\mathbb Q$,
 $$
--a\notin -A.
+\begin{aligned}
+x\in(A+B)+C
+&\iff \exists a\in A\ \exists b\in B\ \exists c\in C:\ x=(a+b)+c\\
+&\iff \exists a\in A\ \exists b\in B\ \exists c\in C:\ x=a+(b+c)\\
+&\iff x\in A+(B+C).
+\end{aligned}
 $$
+La igualdad de los conjuntos sigue de estas equivalencias. Intercambiar $a$ y $b$ en $x=a+b$ da, en ambos sentidos, $A+B=B+A$.
 
-Si ocurriera lo contrario, existiría $s\notin A$ tal que
-
-$$
--a<-s,
-$$
-
-es decir,
-
-$$
-s<a.
-$$
-
-Pero $a\in A$ y $A$ es cerrado hacia abajo, por lo que $s\in A$, contradicción. Por tanto $-A$ es propio.
-
-La clausura hacia abajo es inmediata. Si $q\in-A$, existe $s\notin A$ con
-
-$$
-q<-s.
-$$
-
-Si $p<q$, entonces
-
-$$
-p<q<-s,
-$$
-
-y el mismo $s$ demuestra que $p\in-A$.
-
-Finalmente, tomemos $q\in-A$. Existe $s\notin A$ tal que
-
-$$
-q<-s.
-$$
-
-Por densidad de $\mathbb Q$, el racional
-
-$$
-q'=\frac{q-s}{2}
-$$
-
-satisface
-
-$$
-q<q'<-s.
-$$
-
-Así $q'\in-A$ y $q'>q$. Por tanto $-A$ no tiene máximo.
-
-Concluimos
-
-$$
-\boxed{-A\in\mathcal D.}
-$$
-
-$\square$
-
-Obsérvese el detalle técnico:
-
-$$
-\frac{q-s}{2}
-=
-\frac{q+(-s)}{2}.
-$$
-
-Es simplemente el punto medio racional entre $q$ y $-s$; no interviene ninguna aritmética real todavía.
-
-### Un lema para aproximarnos a la frontera desde dentro
-
-Para demostrar que $-A$ es realmente el inverso aditivo de $A$ necesitaremos una propiedad que conviene aislar.
-
-> **Lema de aproximación racional.** Si $A\in\mathcal D$ y $h\in\mathbb Q$ satisface $h>0$, entonces existe $a\in A$ tal que
->
-> $$
-> a+h\notin A.
-> $$
-
-**Demostración.** Elijamos
-
+El candidato a cero es $0^*=\{r\in\mathbb Q:r<0\}$. Si $x=a+b$ con $a\in A$ y $b<0$, entonces $x<a$, así que $x\in A$. Para recuperar cualquier $x\in A$ como elemento de $A+0^*$, elegimos $a\in A$ mayor que $x$ y ponemos $b=x-a<0$. Tenemos $x=a+b$, y concluimos
 $$
-a_0\in A
-\qquad\text{y}\qquad
-u\notin A.
+A+0^*=A=0^*+A.
 $$
-
-Como $a_0<u$, la propiedad arquimediana de $\mathbb Q$ permite elegir $n\in\mathbb N$ tal que
+La ausencia de máximo permite aquí introducir un sumando estrictamente negativo sin abandonar el conjunto. Es la razón por la que el lado izquierdo abierto se comporta bien con esta suma.
 
+La suma sugiere buscar una manera de deshacerla. Para una cortadura racional queremos recuperar $(-q)^*$ a partir de $q^*$, y el reflejo parece una primera posibilidad. Pero reflejar los elementos de $q^*$ cambia el lado izquierdo $r<q$ en el lado derecho $-r>-q$, que no está cerrado hacia abajo. Con $q=0$, por ejemplo, obtenemos los racionales positivos: el conjunto contiene a $1$ y excluye a $-1<1$. Reflejar el complemento orienta el conjunto correctamente, pero conserva un extremo: para una cortadura racional,
 $$
-nh>u-a_0.
+\{-s:s\notin q^*\}=\{t\in\mathbb Q:t\le -q\}.
 $$
-
-Entonces
-
+Este conjunto tiene máximo. Debemos tomar los racionales estrictamente menores que los puntos reflejados del complemento. Definimos
 $$
-a_0+nh>u.
+-A=\{x\in\mathbb Q:\exists s\in\mathbb Q\setminus A\text{ con }x<-s\}.
 $$
 
-Ese racional no puede pertenecer a $A$: si perteneciera, la clausura hacia abajo y $u<a_0+nh$ obligarían a $u\in A$.
+**Proposición.** Si $A\in\mathcal D$, entonces $-A\in\mathcal D$.
 
-Por tanto, en la lista finita
+**Demostración.** Un exterior $s\notin A$ proporciona $-s-1\in-A$. Para mostrar que el conjunto es propio, tomemos $a\in A$. Si $-a\in-A$, existiría un exterior $s$ con $-a<-s$, es decir, $s<a$; la clausura inferior de $A$ daría $s\in A$, contradicción. Por tanto $-a\notin-A$.
 
+Si $x<-s$ con $s\notin A$, todo $y<x$ satisface también $y<-s$, y pertenece a $-A$. El mismo testigo deja además espacio para aumentar $x$: el punto medio $(x-s)/2$ cumple
 $$
-a_0,\ a_0+h,\ a_0+2h,\ldots,a_0+nh
+x<\frac{x-s}{2}<-s.
 $$
-
-el primer término pertenece a $A$ y el último no. Existe entonces un primer índice $k\ge1$ para el que
+Este racional pertenece a $-A$, de modo que no hay máximo. $\square$
 
+Con esta definición recuperamos el opuesto racional. Si $x\in-(q^*)$, algún $s\ge q$ satisface $x<-s\le -q$, luego $x\in(-q)^*$. Si $x<-q$, el propio $s=q\notin q^*$ sirve como testigo de $x\in-(q^*)$. Así,
 $$
-a_0+kh\notin A.
+-(q^*)=(-q)^*.
 $$
+Todavía necesitamos demostrar $A+(-A)=0^*$ para una cortadura arbitraria. La inclusión hacia $0^*$ es accesible: si $x=a+b$ con $a\in A$ y $b\in-A$, hay $s\notin A$ con $b<-s$, y entonces $a<s$ obliga a $x<a-s<0$. Para la inclusión inversa, un racional $x<0$ fija el margen que podemos permitirnos entre un elemento interior y uno exterior. Si logramos acercarlos lo suficiente, ese margen permitirá escribir $x$ como suma de dos testigos admisibles.
 
-Por minimalidad,
+**Lema de aproximación racional.** Para toda $A\in\mathcal D$ y todo $h\in\mathbb Q$ con $h>0$, existe $a\in A$ tal que $a+h\notin A$.
 
-$$
-a:=a_0+(k-1)h\in A,
-$$
+**Demostración.** Elijamos $a_0\in A$ y $u\notin A$. Por la propiedad arquimediana de $\mathbb Q$ existe $n\in\mathbb N$ tal que $nh>u-a_0$. De aquí $a_0+nh>u$, y ese término queda fuera de $A$: si perteneciera, la clausura inferior arrastraría a $u$ dentro de $A$.
 
-mientras que
-
+En la lista finita $a_0,a_0+h,\ldots,a_0+nh$, el primero está dentro y el último fuera. Sea $k$ el primer índice de salida. Tenemos $1\le k\le n$, de modo que
 $$
-a+h=a_0+kh\notin A.
+a=a_0+(k-1)h\in A,\qquad a+h=a_0+kh\notin A.
 $$
-
 Esto demuestra el lema. $\square$
 
-El lema formaliza una intuición importante: por pequeño que sea un paso racional positivo $h$, no puede ocurrir que podamos avanzar indefinidamente dentro de una cortadura en saltos de tamaño $h$. En algún punto, uno de esos saltos cruza su frontera codificada.
+La arquimedianidad obliga a salir de la cortadura después de un número finito de pasos de tamaño $h>0$ desde $a_0$; el primer índice de salida conserva un racional dentro y el siguiente fuera, a distancia $h$. Ese par sustituirá a la frontera real de la que aún no disponemos.
 
-### El opuesto es realmente el inverso aditivo
+**Proposición.** Para toda $A\in\mathcal D$, se cumple $A+(-A)=0^*$.
 
-Ya podemos demostrar la identidad central.
-
-> **Proposición.** Para todo $A\in\mathcal D$,
->
-> $$
-> \boxed{A+(-A)=0^*.}
-> $$
-
-**Demostración.** Empecemos por una inclusión.
-
-Sea
-
-$$
-x=a+b\in A+(-A),
-$$
-
-con $a\in A$ y $b\in-A$. Por definición de $-A$, existe $s\notin A$ tal que
-
-$$
-b<-s.
-$$
-
-Como $a\in A$ y $s\notin A$, necesariamente
-
-$$
-a<s.
-$$
-
-Por tanto
-
-$$
-x=a+b<a-s<0.
-$$
-
-Así $x\in0^*$, y hemos probado
-
-$$
-A+(-A)\subseteq0^*.
-$$
-
-Para la inclusión contraria, tomemos
-
-$$
-x\in0^*.
-$$
-
-Entonces $x<0$. Definamos
-
-$$
-h=-\frac{x}{2}>0.
-$$
-
-Por el lema de aproximación racional, existe $a\in A$ tal que
-
-$$
-a+h\notin A.
-$$
-
-Escribamos
-
-$$
-s=a+h
-$$
-
-y
-
-$$
-b=x-a.
-$$
-
-Como $x=-2h$,
-
-$$
-b=-2h-a.
-$$
-
-Luego
-
-$$
-b<-h-a=-s.
-$$
-
-Tenemos $s\notin A$, así que la desigualdad $b<-s$ demuestra
-
-$$
-b\in-A.
-$$
-
-Finalmente,
-
-$$
-x=a+b,
-$$
-
-con $a\in A$ y $b\in-A$. Por tanto
-
-$$
-x\in A+(-A).
-$$
-
-Hemos obtenido
-
-$$
-0^*\subseteq A+(-A).
-$$
-
-Las dos inclusiones dan
-
-$$
-\boxed{A+(-A)=0^*.}
-$$
-
-$\square$
-
-Ahora sí la notación $-A$ está justificada algebraicamente: no sólo hemos construido otra cortadura, sino la única que, al sumarse con $A$, produce el neutro aditivo.
-
-### La estructura aditiva de $\mathcal D$
-
-Podemos reunir lo demostrado.
-
-Para cualesquiera $A,B,C\in\mathcal D$:
-
-$$
-(A+B)+C=A+(B+C),
-$$
-
-$$
-A+B=B+A,
-$$
-
-$$
-A+0^*=A,
+**Demostración.** La inclusión $A+(-A)\subseteq0^*$ quedó probada antes del lema. Sea $x\in0^*$ y pongamos $h=-x/2>0$. El lema proporciona $a\in A$ con $s=a+h\notin A$. Definamos $b=x-a$. Como $x=-2h$,
 $$
-
-y existe $-A\in\mathcal D$ tal que
-
-$$
-A+(-A)=0^*.
-$$
-
-Por tanto
-
-$$
-\boxed{
-(\mathcal D,+,0^*)
-\text{ es un grupo abeliano}.
-}
-$$
-
-La unicidad del opuesto se deduce ahora como en cualquier grupo. Si $B$ y $C$ satisfacen
-
-$$
-A+B=0^*
-\qquad\text{y}\qquad
-A+C=0^*,
-$$
-
-entonces
-
-$$
-B
-=
-B+0^*
-=
-B+(A+C)
-=
-(B+A)+C
-=
-0^*+C
-=
-C.
-$$
-
-En particular, la definición complicada del opuesto no genera ambigüedad: cada cortadura tiene un único inverso aditivo.
-
-### El orden es compatible con la suma
-
-Nos falta verificar que la nueva aritmética respeta el orden por inclusión.
-
-Si
-
-$$
-A\subseteq B,
-$$
-
-entonces cualquier elemento de $A+C$ tiene la forma $a+c$ con $a\in A\subseteq B$ y $c\in C$. Por tanto
-
-$$
-A+C\subseteq B+C.
-$$
-
-Así la suma preserva el orden.
-
-Una vez disponibles los opuestos, podemos demostrar también la recíproca. Si
-
-$$
-A+C\subseteq B+C,
-$$
-
-sumamos $-C$ a ambos lados. La monotonía recién demostrada da
-
-$$
-(A+C)+(-C)
-\subseteq
-(B+C)+(-C).
-$$
-
-Por asociatividad,
-
-$$
-A+(C+(-C))
-\subseteq
-B+(C+(-C)),
-$$
-
-y como
-
-$$
-C+(-C)=0^*,
-$$
-
-obtenemos
-
-$$
-A\subseteq B.
-$$
-
-Por consiguiente,
-
-$$
-\boxed{
-A\subseteq B
-\quad\Longleftrightarrow\quad
-A+C\subseteq B+C.
-}
-$$
-
-Y para el orden estricto,
-
-$$
-\boxed{
-A\subsetneq B
-\quad\Longleftrightarrow\quad
-A+C\subsetneq B+C.
-}
-$$
-
-La traducción por una cortadura conserva y refleja la posición relativa, exactamente como esperamos de un grupo ordenado.
-
-Podemos resumir el estado alcanzado:
-
-$$
-\boxed{
-(\mathcal D,+,\le_{\mathcal D})
-\text{ es un grupo abeliano linealmente ordenado}.
-}
-$$
-
-### El opuesto racional también coincide
-
-La compatibilidad con la copia racional puede afinarse todavía más. Para $q\in\mathbb Q$,
-
-$$
-\boxed{
--(q^*)=(-q)^*.
-}
-$$
-
-En efecto, si $x\in-(q^*)$, existe $s\notin q^*$ con
-
-$$
-x<-s.
-$$
-
-La condición $s\notin q^*$ significa $s\ge q$. Entonces
-
+b=-2h-a<-h-a=-s.
 $$
--s\le -q,
-$$
+Por ello $b\in-A$, y $x=a+b\in A+(-A)$. Hemos probado $0^*\subseteq A+(-A)$ y, con ella, la igualdad. $\square$
 
-y por tanto
+El factor $1/2$ deja el margen estricto exigido por la definición del opuesto: elegir $h=-x$ daría $b=-s$ y ya no permitiría usar el testigo $s$.
 
+Las propiedades demostradas hacen de $(\mathcal D,+,0^*)$ un grupo abeliano. Podemos justificar desde ellas las reglas que usaremos al restar. Si $A+B=0^*=A+C$, entonces
 $$
-x<-q.
+B=B+(A+C)=(B+A)+C=C,
 $$
-
-Así $x\in(-q)^*$.
-
-Recíprocamente, si $x<-q$, tomamos $s=q$. Como $q\notin q^*$ y
-
+por lo que el inverso aditivo es único. En particular, $-0^*=0^*$ y $-(-A)=A$. Asimismo, $(-A)+(-B)$ es inverso de $A+B$, porque al reagrupar su suma aparecen $A+(-A)$ y $B+(-B)$; luego
 $$
-x<-q=-s,
+-(A+B)=(-A)+(-B).
 $$
-
-la definición del opuesto da
+Escribiremos $A-B$ para $A+(-B)$. Si $A+C=B+C$, sumar $-C$ y reagrupar da $A=B$; ésta es la cancelación aditiva.
 
+La inclusión interactúa con la suma mediante los mismos testigos: de $A\subseteq B$ se sigue $A+C\subseteq B+C$. La implicación inversa se obtiene aplicando esa monotonía a una inclusión $A+C\subseteq B+C$ y sumando $-C$ a ambos miembros. Las leyes aditivas reducen el resultado a $A\subseteq B$. Tenemos, por tanto,
 $$
-x\in-(q^*).
+A\subseteq B\iff A+C\subseteq B+C.
 $$
-
-Por tanto la copia racional conserva ya toda su estructura aditiva:
-
+También se conserva y refleja la inclusión estricta. En efecto, la inclusión ya se transporta en ambos sentidos, y una igualdad de las sumas equivaldría, por cancelación, a la igualdad de los sumandos originales. Así,
 $$
-\boxed{
-\begin{aligned}
-(p+q)^*&=p^*+q^*,\\
-0_{\mathcal D}&=0^*,\\
-(-q)^*&=-(q^*).
-\end{aligned}
-}
+A\subsetneq B\iff A+C\subsetneq B+C.
 $$
-
-El certificado parcial de §0.5 ha crecido:
-
-```text
-INJECTIVE = VERIFIED
-ORDER = PRESERVED_AND_REFLECTED
-ADDITION = PRESERVED
-ZERO = PRESERVED
-ADDITIVE_INVERSES = PRESERVED
-MULTIPLICATION = NOT_YET_DEFINED
-ORDERED_FIELD_EMBEDDING = NOT_YET_CERTIFIED
-```
-
-Todavía no podemos llamar a $\iota_{\mathbb Q}$ una incrustación de cuerpos ordenados. Falta construir el producto en $\mathcal D$, demostrar sus leyes, identificar la unidad y construir los inversos multiplicativos.
-
-La figura [C00-F06](#fig-anm-c00-f06) concentra esta lectura en un único mapa visual.
+El orden lineal de §0.4 convierte a $\mathcal D$ en un grupo abeliano linealmente ordenado. En adelante escribiremos $A\le B$ o $A<B$ para estas inclusiones cuando los objetos sean cortaduras. Al trasladar $A<0^*$ por $-A$ obtenemos $0^*<-A$; al trasladar $0^*<A$ obtenemos $-A<0^*$. El opuesto cambia, pues, el signo, y todas estas afirmaciones descansan ya en leyes demostradas.
 
 ![La estructura aditiva se construye por testigos racionales, racionales exteriores y el lema de cruce; el opuesto permite cancelar traslaciones.](../../assets/books/anm/C00-F06.svg){#fig-anm-c00-f06 fig-alt="Mapa de prueba con cuatro módulos: suma a+b, opuesto mediante s fuera de A y x<−s, un inset del lema de cruce a∈A y a+h∉A, y cancelación usando C+(−C)=0*."}
 
-### Lo que hemos construido
-
-El paso de §0.5 a §0.6 es sustancial. Allí $\mathcal D$ era sólo un conjunto linealmente ordenado que contenía una copia ordenada de $\mathbb Q$. Ahora sus elementos pueden sumarse, poseen un cero y un opuesto, y la suma es compatible con el orden.
-
-Además, cuando restringimos esta suma a las cortaduras racionales, recuperamos exactamente la suma que ya conocíamos en $\mathbb Q$.
-
-Pero un cuerpo necesita más.
-
-Todavía debemos responder:
-
-$$
-\boxed{
-\text{¿cómo multiplicar cortaduras y cómo invertir una cortadura no nula?}
-}
-$$
-
-El producto será más delicado que la suma porque el signo importa. Primero tendremos que entender qué significa positividad dentro de $\mathcal D$, definir el producto en el sector positivo y sólo después extenderlo coherentemente a todos los casos.
+La aplicación $q\mapsto q^*$ conserva la suma, el cero y los opuestos, además de preservar y reflejar el orden. El producto aún debe construirse. La diferencia se aprecia al intentar repetir la receta de la suma: los testigos negativos, que allí no causaban dificultades, cambian por completo lo que sucede al multiplicarlos.
 
 ### Antes de seguir
 
@@ -7328,1288 +5124,245 @@ $$
 El estado algebraico sigue siendo parcial: la multiplicación, la unidad multiplicativa y los inversos multiplicativos todavía no forman parte del sistema construido.
 
 </details>
+
 ## 0.7. Dar aritmética a las cortaduras II: producto e inverso
 
 []{#MA-SEC-ANM-01-000-007}
 
-La suma pudo construirse directamente a partir de sumas racionales. Para el producto aparece una dificultad nueva: **el signo importa**.
+Toda cortadura contiene racionales negativos de magnitud arbitrariamente grande. Si fijamos $a_0\in A$, cualquier entero negativo $-n<a_0$ pertenece a $A$. Para dos cortaduras $A,B$, podemos elegir $n$ tan grande que $-n$ pertenezca a ambas. El conjunto de productos $\{ab:a\in A,b\in B\}$ contiene entonces valores $n^2$ arbitrariamente grandes; ningún racional exterior podría dominarlo. Incluso con $A=B=1^*$, dos testigos situados muy a la izquierda producen valores positivos muy a la derecha.
 
-Si intentáramos copiar sin más la receta aditiva y definiéramos un producto usando todos los números $ab$ con $a\in A$ y $b\in B$, fracasaríamos incluso antes de estudiar las leyes algebraicas. Toda cortadura contiene racionales negativos arbitrariamente pequeños. Si $a$ y $b$ son muy negativos, el producto $ab$ puede ser positivo y arbitrariamente grande. El conjunto generado de esa manera dejaría de representar la frontera que buscamos.
+Para construir la multiplicación conviene empezar por cortaduras positivas y por testigos positivos. El significado de «positiva» ya está fijado por el orden: $A>0^*$ quiere decir $0^*\subsetneq A$. Esta condición equivale a $0\in A$ y también a la existencia de algún $a\in A$ con $a>0$. En efecto, una inclusión estricta proporciona $x\in A$ con $x\ge0$, y la clausura inferior da $0\in A$ si $x>0$. Si $0\in A$, la ausencia de máximo proporciona un elemento positivo. Y si $a\in A$ es positivo, todos los racionales negativos pertenecen a $A$, mientras que $a$ atestigua que la inclusión de $0^*$ es estricta.
 
-La salida correcta será gradual:
+Para $A>0^*$ escribamos $A_{>0}=\{a\in A:a>0\}$. Es un conjunto no vacío. Además, todo exterior $u\notin A$ es positivo, pues está estrictamente por encima de cualquier elemento de $A_{>0}$. Este hecho nos permitirá controlar los productos con desigualdades racionales orientadas correctamente.
 
+**Definición.** Para $A,B>0^*$ ponemos
 $$
-\boxed{
-\text{producto positivo}
-\longrightarrow
-\text{todos los signos}
-\longrightarrow
-\text{unidad}
-\longrightarrow
-\text{inversos}
-\longrightarrow
-\text{leyes de cuerpo}.
-}
+A\cdot_+B=\{x\in\mathbb Q:\exists a\in A_{>0}\ \exists b\in B_{>0}:x<ab\}.
 $$
+La desigualdad estricta reúne todo el lado izquierdo de los productos admisibles y deja espacio por encima de cada elemento. El dominio de $\cdot_+$ consta únicamente de pares de cortaduras estrictamente positivas.
 
-No vamos a suponer ninguna multiplicación real previa. Cada paso se construirá usando únicamente la aritmética racional y la estructura aditiva de $\mathcal D$ obtenida en §0.6.
+**Proposición.** Si $A,B>0^*$, entonces $A\cdot_+B$ es una cortadura estrictamente positiva.
 
-### Positividad dentro de $\mathcal D$
+**Demostración.** Elijamos $a\in A_{>0}$ y $b\in B_{>0}$. Como $0<ab$, tenemos $0\in A\cdot_+B$, y el conjunto es no vacío. Para exteriores $u\notin A$, $v\notin B$, sabemos $u,v>0$. Cualesquiera testigos positivos satisfacen $a<u$, $b<v$, y por ello $ab<ub<uv$. En consecuencia, $uv\notin A\cdot_+B$: el conjunto es propio.
 
-Recordemos que
+Si $x<ab$ y $y<x$, los mismos testigos dan $y<ab$. También el punto medio $z=(x+ab)/2$ cumple $x<z<ab$, así que pertenece al conjunto y supera a $x$. Quedan probadas la clausura inferior y la ausencia de máximo. Al contener a $0$, la cortadura es positiva. $\square$
 
-$$
-0^*=\{q\in\mathbb Q:q<0\}.
-$$
-
-Como el orden de $\mathcal D$ es la inclusión, diremos que una cortadura $A$ es **estrictamente positiva** cuando
-
-$$
-0^*\subsetneq A.
-$$
-
-Esta condición tiene dos formas equivalentes muy útiles.
-
-> **Lema.** Para $A\in\mathcal D$, son equivalentes:
->
-> 1. $0^*<_{\mathcal D}A$;
-> 2. $0\in A$;
-> 3. existe $a\in A$ con $a>0$.
-
-**Demostración.** Si $0^*\subsetneq A$, existe $x\in A\setminus0^*$. Entonces $x\ge0$. Si $x=0$, ya tenemos $0\in A$; si $x>0$, la clausura hacia abajo de $A$ da igualmente $0\in A$.
-
-Si $0\in A$, la ausencia de máximo proporciona $a\in A$ con $0<a$.
-
-Finalmente, si $a\in A$ y $a>0$, todo $q<0$ satisface $q<a$, luego $q\in A$. Así $0^*\subseteq A$, y la inclusión es estricta porque $a\in A\setminus0^*$. $\square$
-
-Escribiremos
-
-$$
-A_{>0}:=\{a\in A:a>0\}.
-$$
-
-Cuando $A>0^*$, el lema garantiza que $A_{>0}$ no es vacío.
-
-### El producto de dos cortaduras positivas
-
-Sean $A,B>0^*$. Definimos primero
-
-$$
-\boxed{
-A\cdot_+B
-=
-\{x\in\mathbb Q:
-\exists a\in A_{>0}\ \exists b\in B_{>0}
-\text{ tales que }x<ab\}.
-}
-$$
-
-La desigualdad estricta $x<ab$ es deliberada. No tomamos sólo los productos $ab$; tomamos todo el lado racional situado por debajo de alguno de esos productos.
-
-> **Proposición.** Si $A,B>0^*$, entonces $A\cdot_+B$ es una cortadura estrictamente positiva.
-
-**Demostración.** Como $A$ y $B$ son positivos, existen $a\in A$ y $b\in B$ con $a,b>0$. Entonces
-
-$$
-0<ab,
-$$
-
-de modo que $0\in A\cdot_+B$. El conjunto es no vacío y, una vez verificada la condición de cortadura, será positivo.
-
-Para probar que es propio, elijamos racionales exteriores
-
-$$
-u\notin A,
-\qquad
-v\notin B.
-$$
-
-Como $A$ y $B$ contienen racionales positivos, todo racional exterior está por encima de esos elementos y, en particular,
-
-$$
-u>0,
-\qquad
-v>0.
-$$
-
-Si $a\in A_{>0}$ y $b\in B_{>0}$, entonces
-
-$$
-a<u,
-\qquad
-b<v,
-$$
-
-y por compatibilidad del orden racional con el producto positivo,
-
-$$
-ab<ub<uv.
-$$
-
-Por tanto ningún par de testigos puede satisfacer $uv<ab$. Así
-
-$$
-uv\notin A\cdot_+B,
-$$
-
-y el conjunto es propio.
-
-La clausura hacia abajo es inmediata: si $x<ab$ y $y<x$, entonces
-
-$$
-y<x<ab,
-$$
-
-y los mismos $a,b$ prueban $y\in A\cdot_+B$.
-
-Para la ausencia de máximo, si $x\in A\cdot_+B$, existen $a\in A_{>0}$ y $b\in B_{>0}$ con $x<ab$. Por densidad de $\mathbb Q$ existe $y$ tal que
-
-$$
-x<y<ab.
-$$
-
-Los mismos testigos muestran $y\in A\cdot_+B$. Ningún elemento puede ser máximo.
-
-Hemos obtenido una cortadura y, como contiene $0$, es estrictamente positiva. Por tanto
-
-$$
-\boxed{A\cdot_+B\in\mathcal D\quad\text{y}\quad A\cdot_+B>0^*.}
-$$
-
-$\square$
-
-### El producto racional positivo reaparece
-
-Antes de extender el producto a signos arbitrarios, comprobemos que la nueva regla hace lo correcto sobre los racionales positivos.
-
-> **Proposición.** Si $p,q\in\mathbb Q$ y $p,q>0$, entonces
->
-> $$
-> \boxed{p^*\cdot_+q^*=(pq)^*.}
-> $$
-
-**Demostración.** Si $x\in p^*\cdot_+q^*$, existen
-
-$$
-0<a<p,
-\qquad
-0<b<q,
-$$
-
-con $x<ab$. Como
-
-$$
-ab<pb<pq,
-$$
-
-tenemos $x<pq$, luego $x\in(pq)^*$.
-
-Recíprocamente, sea $x<pq$. Si $x\le0$, elegimos racionales
-
-$$
-0<a<p,
-\qquad
-0<b<q.
-$$
-
-Entonces $x\le0<ab$, de modo que $x\in p^*\cdot_+q^*$.
-
-Supongamos ahora
-
-$$
-0<x<pq.
-$$
-
-Como $q>0$,
-
-$$
-\frac{x}{q}<p.
-$$
-
-Por densidad de $\mathbb Q$ elegimos $a$ con
-
+Para racionales $p,q>0$, esta regla recupera $(pq)^*$. La inclusión $p^*\cdot_+q^*\subseteq(pq)^*$ se sigue de $x<ab<pb<pq$ cuando $0<a<p$ y $0<b<q$. Para la contraria, sea $x<pq$. Si $x\le0$, bastan $a=p/2$ y $b=q/2$. Si $x>0$, la desigualdad $x/q<p$ deja un intervalo racional en el que elegir
 $$
 \frac{x}{q}<a<p.
 $$
-
-Entonces $a>0$ y $x<aq$, por lo que
-
-$$
-\frac xa<q.
-$$
-
-Otra aplicación de la densidad proporciona $b$ tal que
-
-$$
-\frac xa<b<q.
-$$
-
-Así $0<a<p$, $0<b<q$ y $x<ab$. Por tanto $x\in p^*\cdot_+q^*$.
-
-La doble inclusión prueba
-
-$$
-\boxed{p^*\cdot_+q^*=(pq)^*.}
-$$
-
-$\square$
-
-### Extender el producto a todos los signos
-
-En §0.6 demostramos que $(\mathcal D,+,0^*)$ es un grupo abeliano ordenado. De ahí obtenemos inmediatamente dos hechos.
-
-Primero, el opuesto es involutivo:
-
-$$
-\boxed{-(-A)=A.}
-$$
-
-En efecto, $A$ y $-(-A)$ son ambos inversos aditivos de $-A$, y el inverso aditivo es único.
-
-Segundo, el opuesto invierte el signo. Si $A<0^*$, al sumar $-A$ a ambos lados obtenemos
-
-$$
-0^*<-A.
-$$
-
-Análogamente,
-
-$$
-A>0^*
-\quad\Longleftrightarrow\quad
--A<0^*.
-$$
-
-Como el orden de $\mathcal D$ es lineal, toda cortadura cae exactamente en uno de los tres casos
-
-$$
-A<0^*,
-\qquad
-A=0^*,
-\qquad
-A>0^*.
-$$
-
-Ya podemos definir el producto general.
-
-> **Definición.** Para $A,B\in\mathcal D$, definimos
->
-> $$
-> \boxed{
-> A\cdot B=
-> \begin{cases}
-> 0^*,&A=0^*\text{ o }B=0^*,\\[1ex]
-> A\cdot_+B,&A>0^*,\ B>0^*,\\[1ex]
-> (-A)\cdot_+(-B),&A<0^*,\ B<0^*,\\[1ex]
-> -\bigl(A\cdot_+(-B)\bigr),&A>0^*>B,\\[1ex]
-> -\bigl((-A)\cdot_+B\bigr),&B>0^*>A.
-> \end{cases}
-> }
-> $$
-
-Los cinco casos son exhaustivos y disjuntos. En cada aparición de $\cdot_+$ los argumentos son estrictamente positivos, y por la proposición anterior el resultado vuelve a ser una cortadura. Por tanto
-
-$$
-\boxed{
-\cdot:\mathcal D\times\mathcal D\longrightarrow\mathcal D
-}
-$$
-
-es una operación bien definida.
-
-La regla de signos queda incorporada en la propia definición: el producto de dos cortaduras no nulas del mismo signo es positivo; el de signos opuestos es negativo.
-
-Éste es uno de los puntos donde usamos explícitamente el marco clásico fijado al comienzo del capítulo: el orden lineal permite decidir conceptualmente entre los tres casos de signo. No estamos afirmando que esa separación constituya un algoritmo efectivo para una representación arbitraria de cortaduras.
-
-### El producto racional se conserva para todos los signos
-
-La verificación positiva ya está hecha. Los otros signos se reducen a ella mediante
-
-$$
--(q^*)=(-q)^*.
-$$
-
-Si $p,q<0$, entonces $-p,-q>0$ y
-
-$$
-\begin{aligned}
-p^*\cdot q^*
-&=(-p)^*\cdot_+(-q)^*\\
-&=((-p)(-q))^*\\
-&=(pq)^*.
-\end{aligned}
-$$
-
-Si $p>0>q$, entonces
-
-$$
-\begin{aligned}
-p^*\cdot q^*
-&=-\bigl(p^*\cdot_+(-q)^*\bigr)\\
-&=-\bigl(p(-q)\bigr)^*\\
-&=(pq)^*.
-\end{aligned}
-$$
-
-El caso $q>0>p$ es simétrico, y si alguno es cero ambos miembros son $0^*$.
-
-Por tanto, para **todos** $p,q\in\mathbb Q$,
-
-$$
-\boxed{
- p^*\cdot q^*=(pq)^*.
-}
-$$
-
-La segunda gran obligación algebraica de la copia racional queda cerrada.
-
-### La unidad multiplicativa
-
-Definimos
-
-$$
-1_{\mathcal D}:=1^*.
-$$
-
-Como $0<1$, §0.5 da
-
-$$
-0^*<1^*.
-$$
-
-En particular,
-
-$$
-0^*\ne1^*.
-$$
-
-Veamos primero cómo actúa $1^*$ sobre una cortadura positiva $A$.
-
-> **Proposición.** Si $A>0^*$, entonces
->
-> $$
-> \boxed{A\cdot_+1^*=A=1^*\cdot_+A.}
-> $$
-
-**Demostración.** Sea $x\in A\cdot_+1^*$. Existen $a\in A$ y $b\in\mathbb Q$ con
-
-$$
-0<a,
-\qquad
-0<b<1,
-\qquad
-x<ab.
-$$
-
-Como $ab<a$, tenemos $x<a$, y la clausura hacia abajo de $A$ da $x\in A$. Así
-
-$$
-A\cdot_+1^*\subseteq A.
-$$
-
-Para la inclusión inversa, sea $x\in A$. Si $x\le0$, elegimos cualquier $a\in A$ positivo y cualquier racional $b$ con $0<b<1$; entonces $x<ab$, de modo que $x\in A\cdot_+1^*$.
-
-Si $x>0$, la ausencia de máximo proporciona $a\in A$ con $x<a$. Entonces
-
-$$
-0<\frac xa<1.
-$$
-
-Por densidad elegimos $b$ tal que
-
-$$
-\frac xa<b<1.
-$$
-
-Así $b\in1^*$, $b>0$ y $x<ab$. Por tanto $x\in A\cdot_+1^*$.
-
-La identidad por la izquierda se obtiene con los mismos testigos, intercambiados. $\square$
-
-Si $A=0^*$, la identidad es inmediata por definición del producto general. Si $A<0^*$, entonces $-A>0^*$ y
-
-$$
-A\cdot1^*
-=
--\bigl((-A)\cdot_+1^*\bigr)
-=
--(-A)
-=
-A.
-$$
-
-Análogamente $1^*\cdot A=A$. Hemos demostrado
-
-$$
-\boxed{A\cdot1^*=A=1^*\cdot A\qquad(A\in\mathcal D).}
-$$
-
-### Construir el recíproco positivo
-
-La unidad no basta: para obtener un cuerpo, toda cortadura no nula debe poseer inverso multiplicativo.
-
-Comencemos otra vez en el sector positivo. Sea $A>0^*$. Los racionales positivos exteriores $s\notin A$ quedan por encima de todos los racionales positivos interiores de $A$. Sus recíprocos, por tanto, apuntan hacia la frontera inversa.
-
-Definimos
-
-$$
-\boxed{
-A^{-1,+}
-=
-\left\{
-q\in\mathbb Q:
-q\le0
-\text{ o }
-\exists s>0\;
-\bigl(s\notin A\ \text{y}\ q<s^{-1}\bigr)
-\right\}.
-}
-$$
-
-> **Proposición.** Si $A>0^*$, entonces $A^{-1,+}$ es una cortadura estrictamente positiva.
-
-**Demostración.** Como $0\le0$, tenemos
-
-$$
-0\in A^{-1,+}.
-$$
-
-Así el conjunto es no vacío.
-
-Como $A$ es positiva, existe $a\in A$ con $a>0$. Afirmamos que
-
-$$
-a^{-1}\notin A^{-1,+}.
-$$
-
-No pertenece por la primera cláusula porque $a^{-1}>0$. Si perteneciera por la segunda, existiría $s>0$ con
-
-$$
-s\notin A
-\qquad\text{y}\qquad
-a^{-1}<s^{-1}.
-$$
-
-Para racionales positivos, invertir revierte el orden; por tanto
-
-$$
-s<a.
-$$
-
-Pero $a\in A$ y $A$ es cerrado hacia abajo, así que $s\in A$, contradicción. El conjunto es propio.
-
-La clausura hacia abajo se verifica directamente. Si $q\le0$ y $r<q$, entonces $r\le0$. Si, en cambio, $q<s^{-1}$ para algún $s>0$ exterior y $r<q$, entonces
-
-$$
-r<q<s^{-1},
-$$
-
-y el mismo $s$ demuestra $r\in A^{-1,+}$.
-
-Falta la ausencia de máximo. Si $q<0$, entonces
-
-$$
-q<0\in A^{-1,+}.
-$$
-
-Si $q=0$, como $A$ es propio existe $s\notin A$; además $s>0$, pues $0\in A$ y cualquier $s\le0$ pertenecería a $A$. Por densidad elegimos
-
-$$
-0<r<s^{-1}.
-$$
-
-Entonces $r\in A^{-1,+}$ y $r>q$.
-
-Finalmente, si $q>0$ pertenece a $A^{-1,+}$, existe $s>0$, $s\notin A$, con
-
-$$
-q<s^{-1}.
-$$
-
-Por densidad elegimos
-
-$$
-q<r<s^{-1}.
-$$
-
-El mismo $s$ muestra $r\in A^{-1,+}$.
-
-Así $A^{-1,+}$ es una cortadura. Como contiene $0$, es estrictamente positiva. $\square$
-
-### El recíproco positivo cumple la ley del inverso
-
-La construcción anterior sólo merece llamarse recíproco si su producto con $A$ es exactamente $1^*$.
-
-> **Teorema.** Si $A>0^*$, entonces
->
-> $$
-> \boxed{
-> A\cdot_+A^{-1,+}=1^*=A^{-1,+}\cdot_+A.
-> }
-> $$
-
-**Demostración.** Probemos primero
-
-$$
-A\cdot_+A^{-1,+}\subseteq1^*.
-$$
-
-Sea $x\in A\cdot_+A^{-1,+}$. Existen $a\in A$, $a>0$, y $b\in A^{-1,+}$, $b>0$, tales que
-
-$$
-x<ab.
-$$
-
-Como $b>0$, su pertenencia al recíproco no puede venir de la cláusula $b\le0$. Existe entonces $s>0$, $s\notin A$, con
-
-$$
-b<s^{-1}.
-$$
-
-Todo elemento de $A$ está estrictamente por debajo de todo racional exterior, de modo que
-
-$$
-a<s.
-$$
-
-Por tanto
-
-$$
-x<ab<a\,s^{-1}=\frac as<1.
-$$
-
-Así $x\in1^*$.
-
-Para la inclusión inversa, sea
-
-$$
-x<1.
-$$
-
-Si $x\le0$, basta elegir $a\in A$ positivo y $b\in A^{-1,+}$ positivo; entonces $x<ab$, y por tanto $x\in A\cdot_+A^{-1,+}$.
-
-Supongamos
-
-$$
-0<x<1.
-$$
-
-Elijamos $c\in A$ con $c>0$. Como $(1-x)c>0$, por densidad de $\mathbb Q$ elegimos
-
-$$
-0<h<(1-x)c.
-$$
-
-Aplicamos ahora el lema de aproximación racional de §0.6: existe $a\in A$ tal que
-
-$$
-s:=a+h\notin A.
-$$
-
-Como $c\in A$ y $s\notin A$, necesariamente $c<s=a+h$, de donde
-
+Con ese $a>0$, tenemos $x/a<q$, y podemos elegir
 $$
-a>c-h>0.
+\frac{x}{a}<b<q.
 $$
-
-Además,
-
+Entonces $a\in p^*_{>0}$, $b\in q^*_{>0}$ y $x<ab$. Las dos aplicaciones de densidad introducen testigos estrictamente interiores cuyo producto sigue por encima de $x$. Por doble inclusión,
 $$
-(1-x)(c-h)-xh=(1-x)c-h>0.
+p^*\cdot_+q^*=(pq)^*\qquad(p,q>0).
 $$
 
-Como $a>c-h$ y $1-x>0$,
+Los testigos positivos permiten estudiar cómo se comporta esta operación al cambiar el orden o la agrupación de sus factores. La conmutatividad positiva se deduce intercambiando los testigos $a,b$ en $x<ab$. Para la asociatividad hay que insertar un testigo intermedio: el producto definido por una desigualdad no permite usar sin más a $ab$ como elemento de $A\cdot_+B$.
 
+**Proposición.** Para $A,B,C>0^*$,
 $$
-(1-x)a>xh.
+(A\cdot_+B)\cdot_+C=A\cdot_+(B\cdot_+C).
 $$
 
-Reordenando,
-
-$$
-a>x(a+h)=xs.
-$$
+**Demostración.** Si $x\in(A\cdot_+B)\cdot_+C$, existen $u\in(A\cdot_+B)_{>0}$ y $c\in C_{>0}$ con $x<uc$, y luego $a\in A_{>0}$, $b\in B_{>0}$ con $u<ab$. Así $x<uc<abc$. Si $x\le0$, elijamos $0<v<bc$; si $x>0$, elijamos $x/a<v<bc$. En ambos casos $v>0$, $v\in B\cdot_+C$ y $x<av$, lo que da $x\in A\cdot_+(B\cdot_+C)$.
 
-Por tanto
+En la otra dirección, si $x\in A\cdot_+(B\cdot_+C)$, hay $a\in A_{>0}$ y $v\in(B\cdot_+C)_{>0}$ con $x<av$, y $b\in B_{>0}$, $c\in C_{>0}$ con $v<bc$. De nuevo $x<abc$. Si $x\le0$, tomamos $0<u<ab$; si $x>0$, tomamos $x/c<u<ab$. Entonces $u\in(A\cdot_+B)_{>0}$ y $x<uc$, como exige la pertenencia a $(A\cdot_+B)\cdot_+C$. La densidad racional permite todas las elecciones indicadas. $\square$
 
+La cortadura $1^*$ será la unidad. Para $A>0^*$, si $x\in A\cdot_+1^*$, hay $a\in A_{>0}$ y $0<b<1$ con $x<ab<a$, de donde $x\in A$. Recíprocamente, si $x\in A$ y $x\le0$, cualquier $a\in A_{>0}$ junto con $b=1/2$ sirve. Si $x>0$, elegimos $a\in A$ con $a>x$ y después un racional $x/a<b<1$. Así $x<ab$ y $x\in A\cdot_+1^*$. Por tanto
 $$
-\frac xa<\frac1s.
+A\cdot_+1^*=A=1^*\cdot_+A.
 $$
 
-La densidad racional permite elegir $b$ con
+La ley que conecta esta multiplicación con la suma necesita su propia demostración. Una suma positiva de dos cortaduras positivas puede representarse mediante sumandos racionales positivos, aunque los testigos iniciales no lo sean. En efecto, sea $u=b_0+c_0>0$, con $b_0\in B$, $c_0\in C$. Si ambos son positivos, ya tenemos la representación buscada. Si $b_0\le0$, elijamos $d\in B_{>0}$ y $0<b<\min\{u,d\}$. Entonces $b\in B_{>0}$, y $c=u-b$ satisface $0<c<c_0$, por lo que $c\in C_{>0}$. Si $c_0\le0$, intercambiamos los papeles: elegimos $e\in C_{>0}$, $0<c<\min\{u,e\}$ y ponemos $b=u-c$, que cumple $0<b<b_0$ y pertenece a $B$. Los dos testigos originales no pueden ser simultáneamente no positivos porque su suma es $u>0$.
 
+**Proposición.** Si $A,B,C>0^*$, entonces
 $$
-\frac xa<b<\frac1s.
+A\cdot_+(B+C)=(A\cdot_+B)+(A\cdot_+C).
 $$
 
-Tenemos $b>0$, y como $s>0$, $s\notin A$ y $b<s^{-1}$,
-
+**Demostración.** La cortadura $B+C$ es positiva porque contiene a $0=0+0$. Sea $x\in A\cdot_+(B+C)$. Existen $a\in A_{>0}$ y $u\in(B+C)_{>0}$ con $x<au$. Por el argumento anterior podemos escribir $u=b+c$, con $b\in B_{>0}$ y $c\in C_{>0}$. Tenemos $x<ab+ac$. Elijamos un racional $y$ con
 $$
-b\in A^{-1,+}.
+x-ac<y<ab
 $$
-
-Además $x<ab$. Luego
+y pongamos $z=x-y$. La desigualdad superior da $y\in A\cdot_+B$; la inferior da $z<ac$, y por ello $z\in A\cdot_+C$. Como $x=y+z$, obtenemos una inclusión.
 
+Para la contraria, sea $x=y+z$ con $y\in A\cdot_+B$ y $z\in A\cdot_+C$. Existen $a_1,a_2\in A_{>0}$, $b\in B_{>0}$ y $c\in C_{>0}$ tales que $y<a_1b$ y $z<a_2c$. El máximo $m=\max\{a_1,a_2\}$ pertenece a $A$, pues es uno de los dos testigos. La ausencia de máximo permite elegir $a\in A$ con $a>m$. Al ser $b,c$ positivos,
 $$
-x\in A\cdot_+A^{-1,+}.
+x=y+z<a_1b+a_2c<ab+ac=a(b+c).
 $$
-
-Así $1^*\subseteq A\cdot_+A^{-1,+}$, y la igualdad queda demostrada.
-
-La igualdad con los factores intercambiados se obtiene con los mismos testigos, usando la conmutatividad de la multiplicación racional $ab=ba$ dentro de la definición de $\cdot_+$. $\square$
-
-El punto técnico más delicado ha sido obtener simultáneamente un racional interior $a$ y uno exterior $s=a+h$ suficientemente próximos para que entre $x/a$ y $1/s$ quede espacio racional. Ése es exactamente el motivo por el que el lema de aproximación de §0.6 era necesario.
-
-### El inverso de una cortadura no nula
+Además $b+c\in(B+C)_{>0}$. Los testigos $a,b+c$ prueban que $x\in A\cdot_+(B+C)$. $\square$
 
-Sea ahora $A\ne0^*$. Por tricotomía, $A$ es positiva o negativa. Definimos
+Reemplazar los dos testigos de $A$ por uno mayor que ambos permite reunir los productos bajo un factor común; la distributividad racional se aplica a esos testigos y produce la inclusión entre cortaduras.
 
+Podemos extender el producto al conjunto entero. En el grupo ordenado de §0.6, toda cortadura no nula es positiva o tiene opuesto positivo; además $-(-A)=A$. Definimos
 $$
-\boxed{
-A^{-1}
-=
+A\cdot B=
 \begin{cases}
-A^{-1,+},&A>0^*,\\[1ex]
--\bigl((-A)^{-1,+}\bigr),&A<0^*.
+0^*,&A=0^*\text{ o }B=0^*,\\
+A\cdot_+B,&A>0^*,\ B>0^*,\\
+(-A)\cdot_+(-B),&A<0^*,\ B<0^*,\\
+-\bigl(A\cdot_+(-B)\bigr),&A>0^*>B,\\
+-\bigl((-A)\cdot_+B\bigr),&B>0^*>A.
 \end{cases}
-}
 $$
+Los casos son disjuntos y exhaustivos por la tricotomía. Cada aparición de $\cdot_+$ recibe cortaduras estrictamente positivas, y tomar un opuesto conserva $\mathcal D$. La regla determina así una operación $\mathcal D\times\mathcal D\to\mathcal D$. El producto de dos factores no nulos es positivo cuando tienen el mismo signo y negativo cuando tienen signos distintos. Esta separación usa el orden lineal clásico; no afirma que el signo de una cortadura arbitrariamente representada pueda decidirse por un algoritmo.
 
-Si $A>0^*$, la ley del inverso ya está demostrada. Supongamos $A<0^*$ y pongamos
-
+La definición separa en cada factor una parte positiva y la aplicación eventual del opuesto. Toda cortadura no nula se escribe de manera única como $P$ o $-P$, con $P>0^*$. Esta representación permite seguir el signo y la parte positiva al agrupar tres factores. Si $\epsilon\in\{+1,-1\}$ y $P>0^*$, escribamos $\epsilon P$ como abreviatura de $P$ cuando $\epsilon=+1$ y de $-P$ cuando $\epsilon=-1$. Esta notación sólo aplica o deja de aplicar el opuesto; no presupone un producto de cortaduras. Las cuatro ramas no nulas de la definición dicen exactamente
 $$
-B=-A>0^*.
+(\epsilon P)(\eta Q)=(\epsilon\eta)(P\cdot_+Q),
+\qquad \epsilon,\eta\in\{+1,-1\},\quad P,Q>0^*.
 $$
+A la derecha, $\epsilon\eta$ es el producto de dos signos racionales. Como $P\cdot_+Q>0^*$, podemos aplicar otra vez esta regla al multiplicar por un tercer factor $\theta R$. Las dos agrupaciones tienen signos $(\epsilon\eta)\theta$ y $\epsilon(\eta\theta)$ y partes positivas $(P\cdot_+Q)\cdot_+R$ y $P\cdot_+(Q\cdot_+R)$. Los signos coinciden por aritmética racional y las partes positivas por la proposición de asociatividad. Si hay un factor cero, las dos agrupaciones valen $0^*$ por definición. Queda probada la asociatividad general.
 
-Entonces
-
+Intercambiar $\epsilon,P$ con $\eta,Q$ en la misma fórmula y usar la conmutatividad positiva demuestra $AB=BA$ para factores no nulos; si hay un cero, ambos productos son cero. La fórmula también prueba, cambiando un signo y usando la involutividad del opuesto,
 $$
-A^{-1}=-B^{-1,+}.
+(-A)B=-(AB),\qquad A(-B)=-(AB),\qquad (-A)(-B)=AB.
 $$
+Si algún factor es cero, estas identidades se reducen a $-0^*=0^*$. Por su parte, la unidad positiva ya demostrada y las ramas con cero o con un factor negativo dan, para todo $A$,
+$$
+A1^*=A=1^*A.
+$$
+En el caso negativo la cuenta es $A1^*=-\bigl((-A)\cdot_+1^*\bigr)=-(-A)=A$. Finalmente, $1^*\ne0^*$ porque la aplicación racional conserva estrictamente $0<1$.
 
-Los dos factores $A$ y $A^{-1}$ son negativos. Por la definición signada del producto y la involutividad del opuesto,
+Las reglas de signo permiten recuperar el producto racional completo. Si $p,q<0$, usamos $-(p^*)=(-p)^*$ para obtener
+$$
+p^*q^*=(-p)^*\cdot_+(-q)^*=((-p)(-q))^*=(pq)^*.
+$$
+Si $p>0>q$, resulta
+$$
+p^*q^*=-\bigl(p^*\cdot_+(-q)^*\bigr)
+=-\bigl((p(-q))^*\bigr)=(pq)^*.
+$$
+El caso $q>0>p$ se obtiene intercambiando los factores mediante la conmutatividad recién probada. Con un factor cero, ambos miembros son $0^*$. Junto con el caso positivo, tenemos $p^*q^*=(pq)^*$ para todos los racionales $p,q$.
 
+Al distribuir un producto aparece una dificultad que la asociatividad no presentaba. Conocer los signos de $B$ y $C$ no determina el signo de $B+C$ cuando uno es positivo y el otro negativo: también hay que comparar sus magnitudes. Esa comparación nos permitirá expresar el caso mixto mediante una suma de cortaduras positivas, donde la distributividad ya está demostrada.
+
+Fijemos primero $A>0^*$. Si $B=0^*$, la igualdad $A(B+C)=AB+AC$ se reduce a $AC=0^*+AC$; si $C=0^*$, se reduce a $AB=AB+0^*$. Para $B,C>0^*$ ya está demostrada. Si ambos son negativos, pongamos $B=-B_0$, $C=-C_0$, con $B_0,C_0>0^*$. La ley aditiva del opuesto y las reglas de signo dan
 $$
 \begin{aligned}
-A\cdot A^{-1}
-&=(-A)\cdot_+(-A^{-1})\\
-&=B\cdot_+B^{-1,+}\\
-&=1^*.
+A(B+C)&=A\bigl(-(B_0+C_0)\bigr)\\
+&=-\bigl(A(B_0+C_0)\bigr)\\
+&=-(AB_0+AC_0)\\
+&=(-AB_0)+(-AC_0)=AB+AC.
 \end{aligned}
 $$
+La única distributividad empleada en esta cuenta es la positiva.
 
-El producto en el orden inverso se demuestra igual. Por tanto
-
-$$
-\boxed{
-A\cdot A^{-1}=1^*=A^{-1}\cdot A
-\qquad(A\ne0^*).
-}
-$$
-
-Todo elemento no nulo de $\mathcal D$ posee ya inverso multiplicativo.
-
-### Conmutatividad y asociatividad del producto
-
-Para el producto positivo, la conmutatividad es inmediata a partir de los testigos:
-
-$$
-x<ab
-\quad\Longleftrightarrow\quad
-x<ba.
-$$
-
-Por tanto
-
-$$
-\boxed{A\cdot_+B=B\cdot_+A}
-$$
-
-para $A,B>0^*$.
-
-La asociatividad requiere una verificación ligeramente más cuidadosa porque la definición usa desigualdades, no productos frontera exactos.
-
-> **Proposición.** Si $A,B,C>0^*$, entonces
->
-> $$
-> \boxed{(A\cdot_+B)\cdot_+C=A\cdot_+(B\cdot_+C).}
-> $$
-
-**Demostración.** Sea
-
-$$
-x\in(A\cdot_+B)\cdot_+C.
-$$
-
-Existen $u>0$ y $c\in C_{>0}$ tales que
-
-$$
-u\in A\cdot_+B,
-\qquad
-x<uc.
-$$
-
-A su vez existen $a\in A_{>0}$ y $b\in B_{>0}$ con
-
-$$
-u<ab.
-$$
-
-Como $c>0$,
-
-$$
-x<uc<abc.
-$$
-
-Si $x\le0$, elegimos por densidad cualquier $v$ con
-
-$$
-0<v<bc.
-$$
-
-Entonces $v\in B\cdot_+C$ y $x<0<av$, de modo que $x\in A\cdot_+(B\cdot_+C)$.
-
-Si $x>0$, de $x<abc$ obtenemos
-
-$$
-\frac xa<bc.
-$$
-
-Por densidad elegimos
-
-$$
-\frac xa<v<bc.
-$$
-
-Entonces $v>0$, $v\in B\cdot_+C$ y $x<av$. Así
-
-$$
-(A\cdot_+B)\cdot_+C
-\subseteq
-A\cdot_+(B\cdot_+C).
-$$
-
-Para la inclusión inversa, partimos de
-
-$$
-x\in A\cdot_+(B\cdot_+C).
-$$
-
-Existen $a\in A_{>0}$ y $v>0$ con
-
-$$
-v\in B\cdot_+C,
-\qquad
-x<av.
-$$
-
-Escogemos $b\in B_{>0}$ y $c\in C_{>0}$ tales que $v<bc$. Así
-
-$$
-x<av<abc.
-$$
-
-Si $x\le0$, elegimos $u$ con $0<u<ab$ y obtenemos $x<0<uc$. Si $x>0$, elegimos por densidad
-
-$$
-\frac xc<u<ab.
-$$
-
-En ambos casos $u\in A\cdot_+B$ y $x<uc$, por lo que
-
-$$
-x\in(A\cdot_+B)\cdot_+C.
-$$
-
-La doble inclusión prueba la asociatividad positiva. $\square$
-
-Para extender estas leyes a todos los signos, cada cortadura no nula puede escribirse como una **parte positiva** acompañada de un signo: si $A>0^*$ usamos $A$; si $A<0^*$ usamos $-A>0^*$. La definición del producto dice exactamente que el núcleo positivo se multiplica mediante $\cdot_+$ y aparece un opuesto exterior si y sólo si hay un número impar de factores negativos.
-
-De aquí se obtiene, sin dejar casos sin cubrir:
-
-$$
-\boxed{A\cdot B=B\cdot A}
-$$
-
-y
-
-$$
-\boxed{(A\cdot B)\cdot C=A\cdot(B\cdot C)}
-$$
-
-para cualesquiera $A,B,C\in\mathcal D$: si alguno es cero, ambos miembros son $0^*$; si ninguno es cero, los dos lados poseen el mismo signo y el mismo núcleo positivo, iguales por conmutatividad y asociatividad de $\cdot_+$.
-
-### La distributividad positiva
-
-Nos falta la ley que conecta las dos operaciones.
-
-> **Proposición.** Si $A,B,C>0^*$, entonces
->
-> $$
-> \boxed{A\cdot_+(B+C)=(A\cdot_+B)+(A\cdot_+C).}
-> $$
-
-**Demostración.** Primero observemos que $B+C$ es positiva: como $0\in B$ y $0\in C$,
-
-$$
-0=0+0\in B+C.
-$$
-
-Sea
-
-$$
-x\in A\cdot_+(B+C).
-$$
-
-Existen $a\in A_{>0}$ y $u\in(B+C)_{>0}$ tales que
-
-$$
-x<au.
-$$
-
-Por definición de suma,
-
-$$
-u=b_0+c_0
-$$
-
-para ciertos $b_0\in B$ y $c_0\in C$. Como $u>0$, podemos reemplazar esta representación por otra
-
-$$
-u=b+c
-$$
-
-con $b\in B_{>0}$ y $c\in C_{>0}$. En efecto, si ya $b_0,c_0>0$ no hay nada que hacer. Si, por ejemplo, $b_0\le0$, entonces $c_0>0$. Elegimos algún $d\in B$ positivo y luego un racional
-
-$$
-0<b<\min\{u,d\}.
-$$
-
-Así $b\in B$, y definiendo $c=u-b$ tenemos $c>0$ y, como $b>b_0$,
-
-$$
-c=u-b<u-b_0=c_0,
-$$
-
-por lo que $c\in C$. El otro caso es simétrico.
-
-Tenemos entonces
-
-$$
-x<a(b+c)=ab+ac.
-$$
-
-Como $x-ac<ab$, por densidad elegimos $y$ con
-
-$$
-x-ac<y<ab.
-$$
-
-Definimos
-
-$$
-z=x-y.
-$$
-
-Entonces $y\in A\cdot_+B$, mientras que
-
-$$
-z=x-y<ac
-$$
-
-implica $z\in A\cdot_+C$. Como $x=y+z$,
-
-$$
-x\in(A\cdot_+B)+(A\cdot_+C).
-$$
-
-Esto prueba una inclusión.
-
-Recíprocamente, sea
-
-$$
-x\in(A\cdot_+B)+(A\cdot_+C).
-$$
-
-Existen $y,z$ tales que
-
-$$
-x=y+z,
-\qquad
-y\in A\cdot_+B,
-\qquad
-z\in A\cdot_+C.
-$$
-
-Podemos escoger
-
-$$
-a_1,a_2\in A_{>0},
-\qquad
-b\in B_{>0},
-\qquad
-c\in C_{>0}
-$$
-
-con
-
-$$
-y<a_1b,
-\qquad
-z<a_2c.
-$$
-
-Sea $m=\max\{a_1,a_2\}$. Como $m\in A$ y $A$ no tiene máximo, existe $a\in A$ con
-
-$$
-m<a.
-$$
-
-Entonces $a>0$, $a_1<a$ y $a_2<a$. Como $b,c>0$,
-
-$$
-\begin{aligned}
-x
-&=y+z\\
-&<a_1b+a_2c\\
-&<ab+ac\\
-&=a(b+c).
-\end{aligned}
+Supongamos $B>0^*>C$ y escribamos $C_0=-C>0^*$. Debemos comparar $B$ y $C_0$. Si son iguales, $B+C=0^*$ y $AB+AC=AB-AB=0^*$, así que la igualdad se cumple. Si $C_0<B$, la traslación del orden da
 $$
-
-Además $b+c\in B+C$ y $b+c>0$. Por tanto
-
-$$
-x\in A\cdot_+(B+C).
-$$
-
-La doble inclusión demuestra la distributividad positiva. $\square$
-
-### Reglas de signo y distributividad general
-
-De la definición signada del producto se deducen, para cualesquiera $A,B\in\mathcal D$,
-
-$$
-\boxed{(-A)\cdot B=-(A\cdot B),}
-$$
-
-$$
-\boxed{A\cdot(-B)=-(A\cdot B),}
-$$
-
-y
-
-$$
-\boxed{(-A)\cdot(-B)=A\cdot B.}
-$$
-
-Si alguno de los factores es cero, las identidades son inmediatas. Si ambos son no nulos, la tricotomía de signos reduce cada miembro al mismo producto positivo, con exactamente el mismo número de opuestos exteriores. La involutividad $-(-A)=A$ cierra los casos.
-
-Ahora fijemos $A>0^*$ y permitamos que $B,C$ tengan cualquier signo. Si $B=0^*$ o $C=0^*$, la identidad se reduce, respectivamente, a $AC=0^*+AC$ o $AB=AB+0^*$, por la definición del producto con cero y la identidad aditiva. Podemos suponer entonces que ambos son no nulos. Si $B$ y $C$ son ambos positivos, ya tenemos la distributividad. Si ambos son negativos, escribimos
-
-$$
-B=-B_0,
-\qquad
-C=-C_0
-$$
-
-con $B_0,C_0>0^*$. Entonces
-
-$$
-B+C=-(B_0+C_0),
-$$
-
-y las reglas de signo junto con la distributividad positiva producen
-
-$$
-A(B+C)=AB+AC.
-$$
-
-Queda el caso de signos opuestos. Supongamos, por ejemplo,
-
-$$
-B>0^*>C,
-$$
-
-y pongamos $C_0=-C>0^*$. Por linealidad del orden, exactamente una de las tres relaciones
-
-$$
-B=C_0,
-\qquad
-C_0<B,
-\qquad
-B<C_0
-$$
-
-se cumple.
-
-Si $B=C_0$, entonces $B+C=0^*$ y ambos miembros de la distributividad son $0^*$.
-
-Si $C_0<B$, definimos
-
-$$
-D=B-C_0=B+(-C_0).
-$$
-
-Por compatibilidad del orden con las traslaciones, $D>0^*$ y
-
+D=B-C_0>0^*,\qquad C_0+D=B.
 $$
-C_0+D=B.
-$$
-
-La distributividad positiva da
-
-$$
-AB=AC_0+AD.
-$$
-
-Cancelando $AC_0$ en el grupo aditivo,
-
+Podemos aplicar la distributividad positiva a esta última suma: $AB=AC_0+AD$. Sumando $-AC_0$ y usando las leyes del grupo, obtenemos
 $$
 AD=AB-AC_0=AB+AC.
 $$
-
-Pero $D=B+C$. Luego
-
-$$
-A(B+C)=AB+AC.
-$$
-
-Si $B<C_0$, definimos
-
-$$
-D=C_0-B>0^*.
-$$
-
-Entonces $C_0=B+D$, de modo que la distributividad positiva da
-
-$$
-AC_0=AB+AD.
-$$
-
-Tras cancelar $AB$ obtenemos
-
+Como $D=B+C$, es la igualdad buscada. Si $B<C_0$, pongamos $D=C_0-B>0^*$. Entonces $B+D=C_0$, y la distributividad positiva da $AC_0=AB+AD$. Al sumar $-AC_0$ a ambos miembros y reagrupar resulta
 $$
 AB-AC_0=-AD.
 $$
-
-Como $B+C=-D$ y $AC=-AC_0$, esto vuelve a ser exactamente
-
+Ahora $B+C=-D$ y $AC=-AC_0$; por la regla de signos,
 $$
-A(B+C)=AB+AC.
+A(B+C)=A(-D)=-AD=AB-AC_0=AB+AC.
 $$
+Si $B<0^*<C$, intercambiamos $B,C$: la conmutatividad aditiva transforma $A(C+B)=AC+AB$ en la igualdad requerida. Así se cubren todos los signos de los sumandos con $A$ positivo.
 
-El caso $B<0^*<C$ se obtiene intercambiando $B$ y $C$ y usando la conmutatividad de la suma.
-
-Así, para **todo** $A>0^*$ y todos $B,C\in\mathcal D$,
-
-$$
-A(B+C)=AB+AC.
-$$
-
-Si ahora $A<0^*$, escribimos $A=-A_0$ con $A_0>0^*$. Entonces
-
+Para $A<0^*$ pongamos $A_0=-A>0^*$. La identidad recién establecida, las reglas de signo y la ley aditiva del opuesto permiten escribir
 $$
 \begin{aligned}
-A(B+C)
-&=-\bigl(A_0(B+C)\bigr)\\
+A(B+C)&=-\bigl(A_0(B+C)\bigr)\\
 &=-(A_0B+A_0C)\\
-&=(-A_0B)+(-A_0C)\\
-&=AB+AC.
+&=(-A_0B)+(-A_0C)=AB+AC.
 \end{aligned}
 $$
-
-Si $A=0^*$ la identidad es inmediata. Hemos demostrado la distributividad general:
-
+Para $A=0^*$ ambos miembros son cero. Hemos probado la distributividad para todos $A,B,C\in\mathcal D$. La ley por la derecha se obtiene usando la conmutatividad multiplicativa:
 $$
-\boxed{A(B+C)=AB+AC.}
+A(B+C)=AB+AC,\qquad (B+C)A=BA+CA.
 $$
 
-La distributividad por la derecha se sigue de la conmutatividad del producto:
-
+Para completar la aritmética queda construir el inverso de cada cortadura no nula. Cuando $A>0^*$, un exterior $s\notin A$ es positivo y queda por encima de todos los racionales positivos interiores. Su recíproco racional $1/s$ proporciona una aproximación desde abajo a la posición inversa. Definimos
 $$
-\boxed{(B+C)A=BA+CA.}
+A^{-1,+}=\{q\in\mathbb Q:q\le0\text{ o }\exists s\in\mathbb Q,
+\ s>0,\ s\notin A,\ q<1/s\}.
 $$
+La cláusula $q\le0$ incluye desde el comienzo toda la parte no positiva que deberá contener una cortadura positiva. De hecho, puesto que existe un exterior positivo, estos racionales también satisfacen la segunda cláusula con ese exterior; la primera hace inmediata su pertenencia y evita repetir la elección.
 
-No quedan casos de signo abiertos.
-
-### Compatibilidad del orden con el producto
-
-La compatibilidad con la suma ya quedó demostrada en §0.6:
-
+**Proposición.** Si $A>0^*$, entonces $A^{-1,+}$ es una cortadura estrictamente positiva y
 $$
-A\le_{\mathcal D}B
-\quad\Longrightarrow\quad
-A+C\le_{\mathcal D}B+C.
+A\cdot_+A^{-1,+}=1^*.
 $$
 
-Para la multiplicación basta verificar la positividad del producto de elementos no negativos. Si
+**Demostración.** El conjunto contiene a $0$. Para probar que es propio, elijamos $a\in A_{>0}$. El racional $1/a$ no puede pertenecer por la primera cláusula. Si perteneciera por la segunda, algún $s>0$ exterior satisfaría $1/a<1/s$, es decir, $s<a$. Eso contradice que todo exterior está por encima de $a$.
 
+La clausura inferior se conserva en ambas cláusulas: de $r<q\le0$ se sigue $r\le0$; de $r<q<1/s$ se sigue $r<1/s$. Para la ausencia de máximo, si $q<0$ podemos superarlo con $0$. Si $q=0$, elegimos un exterior $s>0$ y lo superamos con $1/(2s)$, que pertenece al conjunto. Si $q>0$ pertenece, hay un exterior $s>0$ con $q<1/s$, y el punto medio entre ambos proporciona otro elemento mayor. Es una cortadura y, al contener a $0$, es positiva.
+
+Sea ahora $x\in A\cdot_+A^{-1,+}$. Existen $a\in A_{>0}$ y $b\in(A^{-1,+})_{>0}$ con $x<ab$. La pertenencia de $b>0$ proporciona $s>0$, $s\notin A$, con $b<1/s$. Como $a<s$,
 $$
-0^*\le A,
-\qquad
-0^*\le B,
+x<ab<a/s<1.
 $$
+Así $A\cdot_+A^{-1,+}\subseteq1^*$.
 
-cada factor es cero o estrictamente positivo. Si alguno es cero,
+Para la inclusión contraria tomemos $x<1$. Si $x\le0$, dos testigos positivos cualesquiera, uno de cada cortadura, dan $x<ab$. Supongamos $0<x<1$. Necesitamos $a\in A_{>0}$ y un exterior positivo $s$ tales que el intervalo $(x/a,1/s)$ sea no vacío; dentro de él podremos elegir el testigo $b$. El lema de aproximación permite acercar un interior y un exterior, pero debemos escoger antes su distancia de modo que la inversión deje abierto ese intervalo.
 
+Fijemos $c\in A_{>0}$ y elijamos un racional
 $$
-AB=0^*.
+0<h<(1-x)c.
 $$
-
-Si ambos son positivos, la construcción de $\cdot_+$ demostró que
-
+El lema de aproximación racional de §0.6 proporciona $a\in A$ con $s=a+h\notin A$. Como $c\in A$ y $s\notin A$, tenemos $c<s=a+h$. Además $h<(1-x)c<c$, de modo que $a>c-h>0$ y también $s>0$. El tamaño elegido para $h$ asegura
 $$
-AB>0^*.
+(1-x)(c-h)-xh=(1-x)c-h>0.
 $$
-
-Por tanto
-
+Al usar $a>c-h$ obtenemos $(1-x)a>xh$, o equivalentemente $a>x(a+h)=xs$. Como $a,s$ son positivos, esto da
 $$
-\boxed{
-0^*\le A,\ 0^*\le B
-\quad\Longrightarrow\quad
-0^*\le AB.
-}
+\frac{x}{a}<\frac1s.
 $$
+Elijamos un racional $b$ estrictamente entre ambos extremos. Se cumple $b>0$, $b<1/s$ y $s\notin A$, luego $b\in A^{-1,+}$. También $x<ab$, por lo que $x\in A\cdot_+A^{-1,+}$. La doble inclusión prueba la igualdad. $\square$
 
-Ésta es exactamente la compatibilidad multiplicativa que exige un cuerpo ordenado.
+La condición sobre $h$ conserva, después de invertir, el intervalo donde la densidad de $\mathbb Q$ proporciona el segundo testigo. El inverso de la cortadura queda construido con recíprocos racionales, antes de disponer de completitud.
 
-### Ya tenemos un cuerpo ordenado
-
-Podemos reunir todas las verificaciones.
-
-De §0.6 sabemos que
-
+Para $A\ne0^*$ definimos
 $$
-(\mathcal D,+,0^*)
+A^{-1}=\begin{cases}
+A^{-1,+},&A>0^*,\\
+-\bigl((-A)^{-1,+}\bigr),&A<0^*.
+\end{cases}
 $$
-
-es un grupo abeliano.
-
-En esta sección hemos demostrado que:
-
-- el producto es una operación interna en $\mathcal D$;
-- es conmutativo y asociativo;
-- $1^*$ es unidad y $1^*\ne0^*$;
-- todo $A\ne0^*$ posee un inverso multiplicativo $A^{-1}$;
-- el producto distribuye respecto de la suma;
-- el orden lineal por inclusión es compatible con suma y producto de elementos no negativos.
-
-Por tanto
-
+En el caso positivo, $AA^{-1}=1^*$ ya está probado. Si $A<0^*$, sea $P=-A>0^*$. Tenemos $A=-P$ y $A^{-1}=-P^{-1,+}$; la rama de dos factores negativos da
 $$
-\boxed{
-(\mathcal D,+,\cdot,\le_{\mathcal D})
-\text{ es un cuerpo ordenado}.
-}
+AA^{-1}=P\cdot_+P^{-1,+}=1^*.
 $$
-
-Éste es el primer cierre estructural completo de la construcción.
-
-Pero **todavía no** hemos demostrado completitud. No podemos cerrar aún la pregunta de existencia formulada en §0.1, porque nuestra especificación pedía un **cuerpo ordenado completo**, no sólo un cuerpo ordenado.
-
-### La copia racional queda finalmente certificada como cuerpo ordenado
-
-Regresemos ahora a la aplicación construida en §0.5:
-
+La conmutatividad da también $A^{-1}A=1^*$. El inverso es único: si $AB=1^*=AC$, entonces, usando el inverso construido y la asociatividad,
 $$
-\iota_{\mathbb Q}(q)=q^*.
+B=1^*B=(A^{-1}A)B=A^{-1}(AB)=A^{-1}
+=A^{-1}(AC)=(A^{-1}A)C=C.
 $$
+Así las cortaduras no nulas forman un grupo abeliano multiplicativo: el producto de dos no nulas nunca es cero por las reglas de signo, y ya disponemos de asociatividad, unidad e inversos.
 
-Ya habíamos probado:
-
+La compatibilidad multiplicativa del orden se reconoce primero en el cono no negativo. Si $A,B\ge0^*$ y alguno es cero, $AB=0^*$. Si ambos son positivos, la construcción da $AB>0^*$. De ahí resulta $AB\ge0^*$ para factores no negativos. También recuperamos la monotonía usual: si $A\le B$ y $C\ge0^*$, entonces $B-A\ge0^*$, luego $(B-A)C\ge0^*$. Por distributividad y las reglas de signo,
 $$
-p<q
-\quad\Longleftrightarrow\quad
-p^*\subsetneq q^*,
+(B-A)C=BC-AC,
 $$
+y al trasladar obtenemos $AC\le BC$. Si $A<B$ y $C>0^*$, los dos factores $(B-A),C$ son positivos y el mismo argumento da $AC<BC$.
 
-la inyectividad, y en §0.6:
-
+Podemos reunir las propiedades verificadas en una afirmación estructural:
 $$
-(p+q)^*=p^*+q^*,
-\qquad
-0_{\mathcal D}=0^*,
-\qquad
-(-q)^*=-(q^*).
+(\mathcal D,+,\cdot,\le)\text{ es un cuerpo ordenado, con cero }0^*
+\text{ y unidad }1^*.
 $$
+Las operaciones y el orden de ese cuerpo se han obtenido mediante racionales interiores y exteriores. Disponemos de las leyes necesarias para calcular con cortaduras; la dificultad inicial de las familias acotadas todavía exige demostrar la propiedad del supremo.
 
-Ahora añadimos
-
+La copia racional adquiere con ello toda su estructura de cuerpo ordenado. La aplicación $\iota_{\mathbb Q}(q)=q^*$ es inyectiva, conserva y refleja el orden, y satisface
 $$
-(pq)^*=p^*\cdot q^*,
+(p+q)^*=p^*+q^*,\qquad (pq)^*=p^*q^*,\qquad
+\iota_{\mathbb Q}(0)=0^*,\qquad\iota_{\mathbb Q}(1)=1^*.
 $$
-
-y por definición
-
-$$
-1_{\mathcal D}=1^*.
-$$
-
-Así quedan preservados suma, producto, cero, uno y orden. En consecuencia,
-
-$$
-\boxed{
-\iota_{\mathbb Q}:\mathbb Q\hookrightarrow\mathcal D
-\text{ es una incrustación de cuerpos ordenados}.
-}
-$$
-
-La identificación habitual queda ahora plenamente autorizada: cuando no haya peligro de confundir objetos con sus códigos, podremos escribir
-
-$$
-\mathbb Q\subseteq\mathcal D
-$$
-
-entendiendo que hemos identificado cada racional $q$ con su imagen $q^*$.
-
-También los inversos racionales se conservan. Si $q\ne0$, entonces
-
-$$
-q^*\cdot(q^{-1})^*=(qq^{-1})^*=1^*.
-$$
-
-Por unicidad del inverso multiplicativo,
-
-$$
-\boxed{(q^{-1})^*=(q^*)^{-1}.}
-$$
-
-El certificado pendiente de §0.5 queda, por fin, completo:
-
-```text
-RATIONAL_EMBEDDING = ORDERED_FIELD_EMBEDDING_ESTABLISHED
-INJECTIVE = VERIFIED
-ORDER = PRESERVED_AND_REFLECTED
-ADDITION = PRESERVED
-MULTIPLICATION = PRESERVED
-ZERO_ONE = PRESERVED
-ADDITIVE_MULTIPLICATIVE_INVERSES = PRESERVED
-```
-
-La figura [C00-F11](#fig-anm-c00-f11) reúne ahora la arquitectura multiplicativa completa, ya demostrada, y hace visible dónde intervienen el cono positivo, los signos y el inverso.
+Conserva asimismo opuestos e inversos: la igualdad $-(q^*)=(-q)^*$ se probó directamente en §0.6; si $q\ne0$, entonces $q^*(q^{-1})^*=(qq^{-1})^*=1^*$, y la unicidad del inverso da $(q^{-1})^*=(q^*)^{-1}$. Por tanto $\iota_{\mathbb Q}$ es una incrustación de cuerpos ordenados. Su imagen $\mathcal Q^*$ es un subcuerpo ordenado de $\mathcal D$, y la notación usual $\mathbb Q\subseteq\mathcal D$ abrevia la identificación de los racionales con esa imagen. La inclusión literal sigue siendo $\mathcal Q^*\subseteq\mathcal D$.
 
 ![El producto ingenuo falla; la construcción pasa al cono positivo, se extiende a todos los signos y sólo después cierra la estructura de cuerpo ordenado.](../../assets/books/anm/C00-F11.svg){#fig-anm-c00-f11 fig-alt="Diagrama de flujo desde producto ingenuo hasta inverso general, matriz 2×2 de signos y lista de obligaciones: inversos, asociatividad, conmutatividad, distributividad y compatibilidad con el orden."}
 
-### Qué falta para responder «sí existen»
-
-La construcción ha avanzado mucho. Tenemos un cuerpo ordenado concreto, formado enteramente por subconjuntos racionales, y dentro de él aparece una copia fiel de $\mathbb Q$.
-
-Sin embargo, la especificación de §0.1 contenía una última exigencia:
-
-$$
-\boxed{\text{toda parte no vacía y acotada superiormente debe tener supremo}.}
-$$
-
-No hemos demostrado todavía esa propiedad para $\mathcal D$.
-
-El próximo paso será sorprendentemente sencillo de formular. Si $\mathscr A\subseteq\mathcal D$ es una familia no vacía de cortaduras, el candidato natural a reunir toda la información racional situada a la izquierda de sus miembros es
-
-$$
-\bigcup_{A\in\mathscr A}A.
-$$
-
-La pregunta decisiva será si esa unión es otra cortadura y, cuando la familia está acotada superiormente, si es precisamente su menor cota superior.
+La dificultad que motivó la construcción sigue reclamando una propiedad adicional: toda familia no vacía y acotada superiormente debe tener supremo. Para una familia de cortaduras, reunir sus lados izquierdos sugiere un candidato concreto, la unión de todos sus miembros. Habrá que comprobar que esa unión es una cortadura y que ocupa exactamente la posición de menor cota superior.
 
 ### Antes de seguir
 
@@ -10395,615 +7148,43 @@ En esta etapa se han probado las leyes de cuerpo ordenado. La propiedad del supr
 No es legítimo convertir el primer certificado en el segundo sin una prueba adicional.
 
 </details>
+
 ## 0.8. Sí existen: el supremo como unión
 
 []{#MA-SEC-ANM-01-000-008}
 
-Volvamos a la pregunta con la que comenzó el capítulo.
+Una cota superior de una familia de cortaduras debe contener a cada miembro de la familia, porque el orden es la inclusión. Eso indica qué conjunto deberíamos probar: la unión reúne todos los racionales que estamos obligados a incluir y no añade ninguno más.
 
-En §0.1 no preguntamos simplemente si podíamos fabricar un conjunto más grande que $\mathbb Q$. Pedimos algo mucho más preciso: un sistema que fuera a la vez un cuerpo ordenado y que además tuviera la propiedad del supremo.
-
-Después de §0.7 ya poseemos la primera mitad:
-
+Sea $\mathscr A\subseteq\mathcal D$ una familia no vacía y acotada superiormente. Existe, pues, $U\in\mathcal D$ tal que $A\subseteq U$ para todo $A\in\mathscr A$. Pongamos
 $$
-\boxed{
-(\mathcal D,+,\cdot,\le_{\mathcal D})
-\text{ es un cuerpo ordenado}.
-}
-$$
-
-También sabemos que contiene una copia de $\mathbb Q$ como subcuerpo ordenado, mediante
-
-$$
-q\longmapsto q^*.
-$$
-
-Pero la pregunta de existencia sigue incompleta mientras no respondamos:
-
-> **Ya tenemos un cuerpo ordenado que contiene una copia de $\mathbb Q$. ¿Es completo?**
-
-Éste es el último requisito de la especificación inicial.
-
-Y aquí la construcción por cortaduras revela la razón profunda por la que el orden por inclusión era tan natural.
-
-### Si queremos una frontera superior, reunamos toda la información situada a la izquierda
-
-Sea
-
-$$
-\mathscr A\subseteq\mathcal D
-$$
-
-una familia **no vacía** de cortaduras y supongamos que está **acotada superiormente** en $\mathcal D$.
-
-Esto significa que existe alguna cortadura
-
-$$
-U\in\mathcal D
-$$
-
-tal que
-
-$$
-A\subseteq U
-\qquad
-\text{para todo }A\in\mathscr A.
-$$
-
-Recordemos que en $\mathcal D$ el orden es la inclusión. Por tanto decir que $U$ es una cota superior no introduce una noción nueva: significa exactamente que $U$ contiene toda la información racional contenida en cada miembro de $\mathscr A$.
-
-Si buscamos la **menor** cortadura con esa propiedad, parece natural no añadir ninguna información racional innecesaria. Debemos reunir solamente los racionales que ya aparecen en alguno de los miembros de la familia.
-
-Esto conduce al candidato
-
-$$
-\boxed{
 S=\bigcup_{A\in\mathscr A}A.
-}
 $$
+Para que esta fórmula proporcione un supremo dentro de nuestro sistema necesitamos primero $S\in\mathcal D$.
 
-Equivalentemente,
+**Proposición.** La unión $S$ es una cortadura.
 
-$$
-q\in S
-\quad\Longleftrightarrow\quad
-\text{existe }A\in\mathscr A\text{ tal que }q\in A.
-$$
-
-La fórmula es sencilla. Pero todavía no podemos llamarla supremo.
-
-Primero hay dos tareas distintas:
-
-1. demostrar que $S$ vuelve a ser una cortadura, es decir, que $S\in\mathcal D$;
-2. demostrar que $S$ es realmente la menor cota superior de $\mathscr A$.
-
-No confundiremos ambas.
-
-### Primer bloque: la unión vuelve a ser una cortadura
-
-> **Proposición.** Sea $\mathscr A\subseteq\mathcal D$ no vacía y acotada superiormente. Entonces
->
-> $$
-> S=\bigcup_{A\in\mathscr A}A
-> $$
->
-> es una cortadura de Dedekind.
-
-**Demostración.** Debemos verificar, una vez más, las cuatro condiciones de la definición.
-
-#### 1. La unión no es vacía
-
-Como $\mathscr A$ no es vacía, existe algún
-
-$$
-A_0\in\mathscr A.
-$$
-
-Y como $A_0$ es una cortadura, tampoco es vacía. Por tanto existe algún racional
-
-$$
-q\in A_0.
-$$
-
-Pero $A_0$ es uno de los conjuntos cuya unión forma $S$, luego
-
-$$
-q\in S.
-$$
-
-Así
-
-$$
-\boxed{S\ne\varnothing.}
-$$
-
-No hemos elegido un elemento de cada cortadura de la familia. Sólo hemos utilizado un miembro $A_0$ de la familia y un elemento suyo. No aparece aquí ninguna función de elección global.
-
-#### 2. La unión no es todo $\mathbb Q$
-
-Aquí se usa exactamente la hipótesis de acotación superior.
-
-Sea $U\in\mathcal D$ una cota superior de $\mathscr A$. Entonces
-
-$$
-A\subseteq U
-\qquad
-\text{para todo }A\in\mathscr A.
-$$
-
-Si $q\in S$, por definición de unión existe $A\in\mathscr A$ tal que $q\in A$. Como $A\subseteq U$,
-
-$$
-q\in U.
-$$
-
-Luego
-
-$$
-S\subseteq U.
-$$
-
-Pero $U$ es una cortadura, así que
-
-$$
-U\ne\mathbb Q.
-$$
-
-Por consiguiente $S$ tampoco puede ser todo $\mathbb Q$. En efecto, si $S=\mathbb Q$, de
-
-$$
-S\subseteq U\subseteq\mathbb Q
-$$
-
-se seguiría $U=\mathbb Q$, contradicción.
-
-Por tanto
-
-$$
-\boxed{S\ne\mathbb Q.}
-$$
-
-Obsérvese dónde se gastó la hipótesis de acotación: precisamente para impedir que la unión creciera hasta ocupar todos los racionales.
-
-#### 3. La unión es cerrada hacia abajo
-
-Sea
-
-$$
-q\in S
-$$
-
-y tomemos un racional $r<q$.
-
-Como $q\in S$, existe alguna cortadura
-
-$$
-A\in\mathscr A
-$$
-
-tal que
-
-$$
-q\in A.
-$$
-
-Pero $A$ es cerrada hacia abajo. De $r<q$ y $q\in A$ obtenemos
-
-$$
-r\in A.
-$$
-
-Entonces, por definición de unión,
-
-$$
-r\in S.
-$$
-
-Así $S$ es cerrada hacia abajo.
-
-#### 4. La unión no tiene máximo
-
-Sea nuevamente
-
-$$
-q\in S.
-$$
-
-Existe $A\in\mathscr A$ con $q\in A$.
-
-Como $A$ no tiene máximo, existe un racional $r\in A$ tal que
-
-$$
-q<r.
-$$
-
-Y como $A\subseteq S$,
-
-$$
-r\in S.
-$$
-
-Por tanto ningún elemento de $S$ puede ser máximo.
-
-Hemos comprobado las cuatro condiciones:
-
-$$
-S\ne\varnothing,
-\qquad
-S\ne\mathbb Q,
-$$
-
-$S$ es cerrada hacia abajo y $S$ no tiene máximo. Luego
-
-$$
-\boxed{
-S=\bigcup_{A\in\mathscr A}A\in\mathcal D.
-}
-$$
-
-$\square$
-
-Éste es el primer cierre. La unión no es sólo un subconjunto de $\mathbb Q$: es nuevamente un **elemento del mismo sistema ordenado** que estamos construyendo.
-
-### Segundo bloque: la unión es el supremo
-
-Ahora sí podemos preguntar qué posición ocupa $S$ dentro del orden de $\mathcal D$.
-
-> **Teorema.** Si $\mathscr A\subseteq\mathcal D$ es no vacía y está acotada superiormente, entonces
->
-> $$
-> \boxed{
-> \sup_{\mathcal D}\mathscr A
-> =
-> \bigcup_{A\in\mathscr A}A.
-> }
-> $$
-
-**Demostración.** Un supremo debe satisfacer dos propiedades:
-
-1. ser cota superior;
-2. estar por debajo de cualquier otra cota superior.
-
-Verifiquemos ambas.
-
-#### La unión es una cota superior
-
-Sea $A\in\mathscr A$.
-
-Todo elemento de $A$ pertenece, por definición, a la unión de todos los miembros de $\mathscr A$. Por tanto
-
-$$
-A\subseteq S.
-$$
-
-Como el orden de $\mathcal D$ es la inclusión,
-
-$$
-A\le_{\mathcal D}S.
-$$
-
-Esto vale para todo $A\in\mathscr A$. Así $S$ es una cota superior de la familia.
-
-#### La unión es la menor cota superior
-
-Sea ahora $V\in\mathcal D$ cualquier cota superior de $\mathscr A$.
+**Demostración.** Como la familia es no vacía, podemos elegir un miembro $A_0\in\mathscr A$ y luego un racional $q\in A_0$. Entonces $q\in S$; para obtener ese primer elemento basta un solo miembro de la familia.
 
-Entonces
+Además $S\subseteq U$: si $q\in S$, pertenece a algún $A\in\mathscr A$, y por ello pertenece a $U$. Un racional exterior a $U$ queda también fuera de $S$, de modo que $S\ne\mathbb Q$. Éste es el paso que necesita la acotación superior.
 
-$$
-A\subseteq V
-\qquad
-\text{para todo }A\in\mathscr A.
-$$
-
-Tomemos un racional cualquiera
-
-$$
-q\in S.
-$$
-
-Por definición de unión existe algún $A\in\mathscr A$ con
-
-$$
-q\in A.
-$$
-
-Como $V$ es cota superior,
-
-$$
-A\subseteq V,
-$$
-
-y por tanto
-
-$$
-q\in V.
-$$
-
-Hemos demostrado
-
-$$
-S\subseteq V.
-$$
-
-En el orden de $\mathcal D$ esto significa
-
-$$
-S\le_{\mathcal D}V.
-$$
-
-Por tanto $S$ es menor o igual que cualquier cota superior de $\mathscr A$.
-
-Las dos condiciones juntas prueban
-
-$$
-\boxed{
-S=\sup_{\mathcal D}\mathscr A.
-}
-$$
-
-$\square$
-
-La identidad merece quedar aislada:
-
-$$
-\boxed{
-\sup_{\mathcal D}\mathscr A
-=
-\bigcup\mathscr A.
-}
-$$
-
-No es una analogía ni una regla mnemotécnica. Es literalmente la fórmula del supremo en el modelo de Dedekind.
-
-### Por qué la fórmula es tan natural
-
-Una cortadura codifica una posición mediante todos los racionales que quedan a su izquierda.
-
-Si $\mathscr A$ es una familia de posiciones y queremos una posición que quede por encima de todas ellas, deberá contener todos los racionales que aparecen a la izquierda de cualquiera de sus miembros. Eso obliga a incluir
-
-$$
-\bigcup\mathscr A.
-$$
-
-Pero si añadimos un racional que no aparece en ninguno de los miembros, estaremos introduciendo información que no es necesaria para ser cota superior.
-
-Por eso la unión cumple simultáneamente las dos exigencias:
-
-$$
-\boxed{
-\text{contiene a todos}
-\quad+\quad
-\text{no contiene más de lo necesario}.
-}
-$$
-
-En el orden por inclusión, esas dos frases son exactamente
-
-$$
-\text{cota superior}
-\quad+\quad
-\text{menor cota superior}.
-$$
-
-La completitud no ha sido añadida desde fuera. Ha emergido de la propia forma en que codificamos las posiciones.
-
-### La propiedad del supremo queda demostrada
-
-La familia $\mathscr A$ fue arbitraria, salvo por las dos hipótesis que aparecen en la definición de completitud:
-
-$$
-\mathscr A\ne\varnothing
-$$
-
-y
-
-$$
-\mathscr A\text{ está acotada superiormente}.
-$$
-
-Hemos demostrado que para toda familia de ese tipo existe un elemento de $\mathcal D$ que es su supremo.
-
-Por tanto
-
-$$
-\boxed{
-(\mathcal D,\le_{\mathcal D})
-\text{ satisface la propiedad del supremo}.
-}
-$$
-
-En el lenguaje del estado interno del capítulo:
-
-```text
-SUPREMUM_PROPERTY = VERIFIED
-```
-
-Conviene notar algo fundacionalmente preciso. Para una familia $\mathscr A$ ya dada como conjunto, el candidato anterior es simplemente su unión conjuntista. No hemos supuesto ningún «supremo real» previo para construirla. Tampoco hemos usado el axioma de elección. Y la fórmula extensional
-
-$$
-\sup_{\mathcal D}\mathscr A=\bigcup\mathscr A
-$$
-
-no debe confundirse con la afirmación de que exista un algoritmo capaz de calcular el supremo a partir de una presentación arbitraria de una familia. Aquí estamos demostrando existencia matemática dentro del marco clásico fijado al comienzo del capítulo.
-
-### El cierre que faltaba
-
-Ahora podemos juntar por primera vez los dos certificados necesarios.
-
-De §0.7:
-
-```text
-ORDERED_FIELD = VERIFIED
-```
-
-De la prueba recién terminada:
-
-```text
-SUPREMUM_PROPERTY = VERIFIED
-```
-
-Por definición de cuerpo ordenado completo, obtenemos:
-
-> **Teorema de existencia.**
->
-> La estructura de cortaduras de Dedekind
->
-> $$
-> (\mathcal D,+,\cdot,\le_{\mathcal D})
-> $$
->
-> es un cuerpo ordenado completo.
-
-Es decir,
-
-$$
-\boxed{
-\mathcal D
-\text{ es un cuerpo ordenado completo}.
-}
-$$
-
-Además, por §0.7,
-
-$$
-\iota_{\mathbb Q}:\mathbb Q\hookrightarrow\mathcal D
-$$
-
-es una incrustación de cuerpos ordenados.
-
-Por tanto hemos construido explícitamente un sistema que satisface toda la especificación de §0.1.
+Si $q\in S$ y $r<q$ es racional, algún miembro $A$ contiene a $q$. La clausura inferior de ese mismo miembro da $r\in A\subseteq S$. Finalmente, la ausencia de máximo en $A$ proporciona $t\in A$ con $t>q$; también $t\in S$. Así la unión es cerrada hacia abajo y carece de máximo. $\square$
 
-La pregunta inicial recibe, por fin, una respuesta matemática:
-
-$$
-\boxed{\text{SÍ: los sistemas de números reales existen}.}
-$$
-
-Más precisamente,
-
-$$
-\boxed{
-\text{existe al menos un cuerpo ordenado completo}
-\text{ que contiene una copia ordenada de }\mathbb Q.
-}
-$$
-
-Ésta es una afirmación de existencia, no una convención terminológica.
-
-Hasta ahora habíamos hablado de $\mathcal D$ como un candidato construido a partir de cortaduras. Desde este momento queda autorizado decir:
-
-$$
-\boxed{
-\mathcal D\text{ es un modelo de los números reales}.
-}
-$$
-
-No estamos afirmando que «un número real sea, por esencia, un conjunto de racionales». Estamos diciendo que los conjuntos racionales llamados cortaduras, con las operaciones y el orden que construimos, realizan exactamente la estructura que pedíamos.
-
-La diferencia es importante:
-
+**Teorema.** Toda familia no vacía y acotada superiormente de cortaduras tiene supremo, dado por
 $$
-\boxed{
-\text{modelo concreto}
-\neq
-\text{ontología obligatoria}.
-}
+\sup_{\mathcal D}\mathscr A=\bigcup\mathscr A.
 $$
 
-Las cortaduras han demostrado que la especificación es realizable: existe una estructura que la satisface.
-
-### La cortadura que antes era sólo una frontera codificada
-
-Podemos mirar retrospectivamente a $A_2$.
-
-En §0.4 construimos
-
-$$
-A_2=\{q\in\mathbb Q:q<0\ \text{o}\ q^2<2\}
-$$
-
-sin presuponer ningún irracional. Demostramos que era una cortadura y que no coincidía con ninguna cortadura racional $q^*$.
-
-En aquel momento nos negamos deliberadamente a llamarla «número real»: aún no habíamos probado que el sistema de todas las cortaduras tuviera la estructura requerida.
-
-Ahora la situación ha cambiado. Como
-
-$$
-A_2\in\mathcal D
-$$
-
-y $\mathcal D$ es un modelo de los reales, $A_2$ es legítimamente un elemento de un sistema de números reales; además no pertenece a la copia racional
-
-$$
-\iota_{\mathbb Q}(\mathbb Q).
-$$
+**Demostración.** La proposición permite considerar $S$ como un elemento de $\mathcal D$. Para todo $A\in\mathscr A$ se cumple $A\subseteq S$, por definición de unión; luego $S$ es cota superior. Si $V\in\mathcal D$ es cualquier otra cota superior, cada $q\in S$ pertenece a algún $A\in\mathscr A$ y ese $A$ está contenido en $V$. Por tanto $q\in V$, y hemos probado $S\subseteq V$. La unión es la menor cota superior. $\square$
 
-No necesitamos identificar todavía qué operación algebraica especial satisface $A_2$. Lo importante para el arco de existencia es más básico: la «posición faltante» de §0.3 ya vive dentro de un cuerpo ordenado completo que hemos construido sin asumir previamente los reales.
+Las hipótesis impiden que la unión escape del sistema por alguno de sus dos extremos: para la familia de todas las cortaduras racionales sería $\mathbb Q$ y quedaría fuera de $\mathcal D$, mientras que para la familia vacía sería $\varnothing$. La no vaciedad y la acotación garantizan que la unión siga siendo una cortadura.
 
-### La figura lógica del cierre de existencia
+Junto con las operaciones de §§0.6–0.7, esta propiedad establece que $(\mathcal D,+,\cdot,\le)$ es un cuerpo ordenado completo. Hemos construido un sistema que satisface la especificación inicial y contiene la copia racional $q\mapsto q^*$. Podemos adoptar $\mathcal D$ como un modelo de los números reales. En particular, la cortadura $A_2$, construida enteramente mediante aritmética racional y distinta de todas las cortaduras racionales, es un elemento de ese modelo fuera de su subcuerpo racional.
 
-La figura [C00-F07](#fig-anm-c00-f07) concentra esta lectura en un único mapa visual.
+La fórmula del supremo no ha utilizado números reales anteriores: la unión es una operación sobre conjuntos de racionales. Tampoco proporciona, por sí sola, un algoritmo para calcular supremos de familias presentadas arbitrariamente. Lo que prueba es que el objeto requerido existe en el marco clásico en que trabajamos.
 
 ![La unión es candidata a supremo sólo tras verificar por separado que pertenece a D y que es la menor cota superior.](../../assets/books/anm/C00-F07.svg){#fig-anm-c00-f07 fig-alt="Familia de cortaduras y su unión, con dos paneles de certificación: primero S pertenece a D —señalando dónde se usa la acotación— y después S es el supremo; al final se combinan cuerpo ordenado y propiedad del supremo."}
 
-El orden de lectura de este cierre debe quedar muy claro:
-
-$$
-\boxed{
-\begin{array}{c}
-\mathcal D\text{ es cuerpo ordenado}\\
-+\\
-\text{toda familia no vacía y acotada tiene supremo}\\
-\hline
-\mathcal D\text{ es cuerpo ordenado completo}\\
-\Downarrow\\
-\text{existe un modelo de los números reales}.
-\end{array}
-}
-$$
-
-La unión no prueba por sí sola la existencia de los reales. La unión completa una construcción algebraica y ordenada que ya habíamos verificado.
-
-El estado narrativo cambia aquí:
-
-```text
-EXISTENCE_QUESTION = CLOSED
-```
-
-### Pero aparece inmediatamente una nueva pregunta
-
-Hemos construido **un** cuerpo ordenado completo.
-
-¿Eso basta para hablar de **los** números reales?
-
-Podría ocurrir, al menos en principio, que otra persona siguiera una construcción completamente distinta y obtuviera otro cuerpo ordenado completo, con elementos literalmente diferentes de nuestras cortaduras.
-
-Entonces tendríamos que preguntar si ambos sistemas representan realmente la misma estructura matemática o si la especificación de §0.1 admite varias estructuras esencialmente distintas.
-
-Éste es un problema diferente del que acabamos de resolver.
-
-La pregunta de existencia era:
-
-$$
-\boxed{\text{¿hay al menos uno?}}
-$$
-
-La respuesta es sí.
-
-La nueva pregunta es:
-
-$$
-\boxed{
-\text{si hay dos, ¿pueden ser esencialmente diferentes?}
-}
-$$
-
-Dicho de otra manera:
-
-> **Hemos construido uno. ¿Pero hemos construido los reales, o sólo unos reales posibles?**
-
-Para responder tendremos que abandonar por un momento la implementación concreta mediante cortaduras y estudiar cuerpos ordenados completos arbitrarios. El puente entre modelos volverá a ser el sistema racional que ambos deben contener.
+Otra construcción podría producir un cuerpo ordenado completo cuyos elementos fueran objetos diferentes de nuestras cortaduras. Para comparar ambos sistemas necesitaremos describir sus posiciones mediante información común. Los racionales volverán a desempeñar ese papel, pero primero debemos demostrar qué lugar ocupan en un cuerpo ordenado completo cualquiera.
 
 ### Antes de seguir
 
@@ -11821,1076 +8002,129 @@ La unión arbitraria tampoco produce siempre una cortadura. Para $\mathscr N=\{n
 Combinando ese teorema con las leyes de cuerpo ordenado, se concluye que $\mathcal D$ es un cuerpo ordenado completo con la incrustación racional $q\mapsto q^*$. Ésa es una prueba de existencia de un modelo. No demuestra igualdad literal con cualquier otra construcción ni demuestra aún un isomorfismo entre modelos. Al cerrar §0.8, la existencia está acreditada y la comparación estructural queda por demostrar en §§0.9–0.10.
 
 </details>
+
 ## 0.9. ¿Podría haber otros reales?
 
 []{#MA-SEC-ANM-01-000-009}
 
-La pregunta de existencia ya está cerrada.
+Sea $F$ un cuerpo ordenado completo. Ya disponemos de un modelo, así que esta hipótesis no encubre una suposición de existencia. El propósito es estudiar todos los sistemas que satisfacen la misma especificación, utilizando únicamente sus leyes de cuerpo, su orden y la propiedad del supremo.
 
-Construimos un cuerpo ordenado completo concreto, $\mathcal D$, formado por cortaduras de Dedekind. Por tanto sabemos que la especificación de §0.1 es realizable.
-
-Pero una construcción concreta nunca responde por sí sola a una pregunta de **unicidad estructural**.
-
-Podríamos haber elegido otra representación de las posiciones faltantes. Podríamos haber construido objetos cuyos elementos no fueran subconjuntos de $\mathbb Q$. Incluso podríamos encontrar un cuerpo ordenado completo cuyo conjunto subyacente no se pareciera en absoluto a $\mathcal D$.
-
-La pregunta que queda es entonces:
-
-$$
-\boxed{
-\text{¿todos los cuerpos ordenados completos}
-\\
-\text{representan esencialmente la misma estructura?}
-}
-$$
-
-No intentaremos responderla comparando directamente dos codificaciones. Eso volvería a privilegiar las cortaduras.
-
-Abandonaremos ahora la implementación concreta.
-
-Sea
-
-$$
-F=(F,+,\cdot,0_F,1_F,\le_F)
-$$
-
-un **cuerpo ordenado completo arbitrario**.
-
-No suponemos que sus elementos sean cortaduras. No suponemos que $F=\mathcal D$. No suponemos siquiera que sepamos cómo fueron construidos sus elementos.
-
-Usaremos únicamente:
-
-1. las leyes de cuerpo;
-2. el orden compatible;
-3. la propiedad del supremo.
-
-La estrategia será descubrir cuánto de la estructura de $F$ queda forzado por esas tres propiedades.
-
-El hilo conductor será el mismo sistema que nos acompañó durante toda la construcción:
-
-$$
-\boxed{\mathbb Q.}
-$$
-
-Si cualquier cuerpo ordenado completo contiene una copia canónica y densa de los racionales, entonces los racionales pueden funcionar como un **lenguaje común** para describir posiciones en modelos distintos.
-
-Ésa será la idea central de esta sección.
-
-### Primer paso: un cuerpo ordenado no puede tener característica positiva
-
-La unidad de un cuerpo ordenado satisface
-
-$$
-0_F<1_F.
-$$
-
-Por invariancia del orden bajo traslación,
-
-$$
-0_F<1_F<1_F+1_F<1_F+1_F+1_F<\cdots.
-$$
-
-Formalmente, definamos los numerales de $F$ mediante
-
-$$
-\nu_F(0)=0_F,
-\qquad
-\nu_F(n+1)=\nu_F(n)+1_F.
-$$
-
-Por inducción,
-
-$$
-m<n
-\quad\Longrightarrow\quad
-\nu_F(m)<\nu_F(n).
-$$
-
-En particular,
-
-$$
-n>0
-\quad\Longrightarrow\quad
-\nu_F(n)>0_F,
-$$
-
-de modo que
-
-$$
-\nu_F(n)\ne0_F.
-$$
-
-Por tanto no existe entero positivo $n$ tal que
-
-$$
-\underbrace{1_F+\cdots+1_F}_{n\text{ veces}}=0_F.
-$$
-
-Esto demuestra:
-
-$$
-\boxed{\operatorname{char}F=0.}
-$$
-
-La conclusión es más importante de lo que parece. Significa que los numerales naturales no colapsan dentro de $F$ y que podemos prolongar esa copia a los enteros y luego a los racionales.
-
-### La copia canónica de $\mathbb Z$
-
-Los enteros no se introducen en $F$ mediante una identificación literal. Construimos una aplicación.
-
-Si un entero está representado por la diferencia formal $m-n$, definimos
-
-$$
-\jmath_{\mathbb Z}^F(m-n)
-=
-\nu_F(m)-\nu_F(n).
-$$
-
-La definición es independiente de la representación.
-
-En efecto, si
-
-$$
-m-n=p-q
-$$
-
-como enteros, entonces
-
-$$
-m+q=n+p.
-$$
-
-Aplicando la compatibilidad aditiva de $\nu_F$,
-
-$$
-\nu_F(m)+\nu_F(q)
-=
-\nu_F(n)+\nu_F(p),
-$$
-
-y tras trasladar términos obtenemos
-
-$$
-\nu_F(m)-\nu_F(n)
-=
-\nu_F(p)-\nu_F(q).
-$$
-
-Así queda bien definida una aplicación
-
-$$
-\jmath_{\mathbb Z}^F:\mathbb Z\longrightarrow F.
-$$
-
-Además preserva suma, producto, cero, uno y opuesto. La preservación y reflexión del orden se deducen del hecho de que los numerales preservan estrictamente el orden y de la aritmética ordenada de $F$.
-
-En particular,
-
-$$
-\jmath_{\mathbb Z}^F
-$$
-
-es inyectiva.
-
-Éste es otro modo de leer la característica cero: dentro de cualquier cuerpo ordenado aparece canónicamente una copia ordenada de $\mathbb Z$.
-
-### La copia canónica de $\mathbb Q$
-
-Ahora podemos incorporar divisiones.
-
-Sea
-
-$$
-q=\frac ab\in\mathbb Q,
-\qquad
-a,b\in\mathbb Z,
-\qquad
-b\ne0.
-$$
-
-Definimos
-
-$$
-\boxed{
-\iota_F(q)
-=
-\jmath_{\mathbb Z}^F(a)
-\bigl(\jmath_{\mathbb Z}^F(b)\bigr)^{-1}.
-}
-$$
-
-El inverso existe porque $b\ne0$ y $\jmath_{\mathbb Z}^F$ es inyectiva.
-
-Debemos verificar que el valor no depende de la fracción elegida.
-
-Si
-
-$$
-\frac ab=\frac cd,
+Empecemos por la unidad. En cualquier cuerpo ordenado, el cuadrado de un elemento no nulo es positivo: si el elemento es negativo, su opuesto es positivo y tiene el mismo cuadrado. Los cuadrados son no negativos por compatibilidad multiplicativa y no son cero en un cuerpo salvo que el elemento lo sea. Aplicado a $1_F$, esto da $1_F=1_F^2>0_F$. Definamos los numerales por
 $$
-
-entonces
-
-$$
-ad=bc
-$$
-
-en $\mathbb Z$. Aplicando la multiplicatividad de $\jmath_{\mathbb Z}^F$,
-
-$$
-\jmath_{\mathbb Z}^F(a)\jmath_{\mathbb Z}^F(d)
-=
-\jmath_{\mathbb Z}^F(b)\jmath_{\mathbb Z}^F(c).
-$$
-
-Como los denominadores tienen imágenes no nulas, podemos multiplicar por sus inversos y obtenemos
-
-$$
-\jmath_{\mathbb Z}^F(a)
-\bigl(\jmath_{\mathbb Z}^F(b)\bigr)^{-1}
-=
-\jmath_{\mathbb Z}^F(c)
-\bigl(\jmath_{\mathbb Z}^F(d)\bigr)^{-1}.
-$$
-
-Por tanto $\iota_F$ está bien definida.
-
-Las mismas fórmulas racionales muestran que
-
-$$
-\iota_F(p+q)=\iota_F(p)+\iota_F(q),
-$$
-
-$$
-\iota_F(pq)=\iota_F(p)\iota_F(q),
-$$
-
-$$
-\iota_F(0)=0_F,
-\qquad
-\iota_F(1)=1_F.
-$$
-
-Y el orden también se conserva y refleja:
-
-$$
-\boxed{
-p<q
-\quad\Longleftrightarrow\quad
-\iota_F(p)<\iota_F(q).
-}
-$$
-
-En consecuencia,
-
-$$
-\boxed{
-\iota_F:\mathbb Q\hookrightarrow F
-}
-$$
-
-es una incrustación de cuerpos ordenados.
-
-No hemos usado completitud para construir esta copia. Todo cuerpo ordenado contiene ya una copia canónica de $\mathbb Q$.
-
-Más aún, esa copia no depende de una elección arbitraria. Una incrustación de cuerpos ordenados $\mathbb Q\to F$ debe enviar $1$ a $1_F$, por lo que fija los numerales, después los enteros y finalmente las fracciones. Así, si existe una incrustación racional, es ésta.
-
-Por eso podemos hablar con propiedad de **la** copia canónica de $\mathbb Q$ en $F$.
-
-A partir de ahora mantendremos visible la aplicación $\iota_F$ cuando sea importante distinguir universos.
-
-### Dónde empieza a trabajar la completitud
-
-Hasta aquí sólo hemos usado que $F$ es un cuerpo ordenado.
-
-Ahora gastaremos por primera vez la hipótesis adicional:
-
-$$
-\boxed{F\text{ es completo}.}
-$$
-
-La consecuencia inmediata será la propiedad arquimediana.
-
-> **Teorema.** Todo cuerpo ordenado completo es arquimediano.
-
-**Demostración.** Supongamos, por contradicción, que los numerales de $F$ estuvieran acotados superiormente. Es decir, que el conjunto
-
-$$
-N_F=\{\nu_F(n):n\in\mathbb N\}
-$$
-
-tuviera alguna cota superior.
-
-Como $N_F$ es no vacío y $F$ es completo, existiría
-
-$$
-s=\sup N_F.
-$$
-
-Puesto que
-
-$$
-s-1_F<s,
-$$
-
-el elemento $s-1_F$ no puede ser también cota superior de $N_F$: de serlo, sería una cota superior estrictamente menor que el supremo.
-
-Por tanto existe algún $n\in\mathbb N$ tal que
-
-$$
-s-1_F<\nu_F(n).
-$$
-
-Sumando $1_F$,
-
-$$
-s<\nu_F(n)+1_F
-=
-\nu_F(n+1).
-$$
-
-Pero $\nu_F(n+1)\in N_F$, contradiciendo que $s$ sea cota superior.
-
-Luego los numerales no están acotados superiormente. Equivalentemente, para todo $x\in F$ existe $n\in\mathbb N$ tal que
-
-$$
-x<\nu_F(n).
-$$
-
-Por tanto
-
-$$
-\boxed{F\text{ es arquimediano}.}
-$$
-
-$\square$
-
-Aquí la completitud tuvo un gasto preciso: produjo el supremo de la supuesta colección acotada de numerales. Sin ese supremo, la contradicción no podría formularse de esta manera.
-
-### No saltaremos directamente a «los racionales son densos»
-
-La arquimedianidad nos dice que los enteros alcanzan cualquier escala. Todavía necesitamos convertir esa propiedad global en una herramienta de **localización**.
-
-Primero localizaremos cualquier elemento entre dos enteros consecutivos.
-
-> **Lema de localización entera.** Para todo $x\in F$ existe $m\in\mathbb Z$ tal que
->
-> $$
-> \boxed{
-> \iota_F(m-1)\le x<\iota_F(m).
-> }
-> $$
-
-Aquí usamos $\iota_F(m)$, para $m\in\mathbb Z$, como abreviatura de
-
+\nu_F(0)=0_F,\qquad \nu_F(n+1)=\nu_F(n)+1_F.
 $$
-\iota_F\bigl(\iota_{\mathbb Z\mathbb Q}(m)\bigr),
-$$
+Cada paso aumenta estrictamente el valor, de modo que $m<n$ implica $\nu_F(m)<\nu_F(n)$. Ningún numeral positivo es cero: $F$ tiene característica cero.
 
-es decir, de la composición
-
+Los numerales conservan la suma y el producto. Para la suma, fijado $m$, la inducción sobre $n$ comienza con $\nu_F(m+0)=\nu_F(m)+0_F$; el paso usa
 $$
-\mathbb Z
-\overset{\iota_{\mathbb Z\mathbb Q}}{\hookrightarrow}
-\mathbb Q
-\overset{\iota_F}{\hookrightarrow}
-F.
+\nu_F(m+n+1)=\nu_F(m+n)+1_F
+=\nu_F(m)+\nu_F(n+1).
 $$
-
-No se trata de una restricción literal salvo después de la identificación notacional explicada en §0.2.
-
-**Demostración.** Por arquimedianidad podemos elegir $n\in\mathbb N$ tal que
-
+Para el producto, el caso $n=0$ es inmediato y el paso se obtiene de la identidad natural $m(n+1)=mn+m$, de la aditividad recién probada y de la distributividad en $F$:
 $$
-|x|<\nu_F(n).
+\nu_F(m(n+1))=\nu_F(mn)+\nu_F(m)
+=\nu_F(m)\bigl(\nu_F(n)+1_F\bigr).
 $$
-
-Si fuese necesario aumentar $n$, podemos suponer $n>0$.
 
-Entonces
-
+Representemos un entero por una diferencia $m-n$ de naturales y pongamos
 $$
--\nu_F(n)<x<\nu_F(n).
+\jmath_F(m-n)=\nu_F(m)-\nu_F(n).
 $$
-
-Consideremos el conjunto de naturales
+Si $m-n=p-q$, entonces $m+q=n+p$. La conservación de la suma da $\nu_F(m)+\nu_F(q)=\nu_F(n)+\nu_F(p)$, y al trasladar términos obtenemos la igualdad entre las dos imágenes propuestas. La regla está bien definida.
 
+La fórmula $(m-n)+(p-q)=(m+p)-(n+q)$ demuestra que $\jmath_F$ conserva la suma. Para el producto usamos
 $$
-K=
-\left\{
-k\in\mathbb N:
-x<-\nu_F(n)+\nu_F(k)
-\right\}.
+(m-n)(p-q)=(mp+nq)-(mq+np).
 $$
-
-Este conjunto no es vacío. Por ejemplo, si tomamos $k=2n+1$, entonces
-
+Aplicando las leyes de los numerales y distribuyendo en $F$, el segundo miembro tiene imagen
 $$
--\nu_F(n)+\nu_F(2n+1)
-=
-\nu_F(n+1)
->
-x.
+\bigl(\nu_F(m)-\nu_F(n)\bigr)
+\bigl(\nu_F(p)-\nu_F(q)\bigr).
 $$
+Así se conserva el producto. Se conservan también $0$, $1$ y los opuestos. Un entero positivo $k$ tiene imagen $\nu_F(k)>0_F$, mientras que uno negativo tiene imagen negativa. Como $a<b$ equivale a $b-a>0$, la conservación de diferencias prueba que $\jmath_F$ conserva y refleja el orden; en particular, es inyectiva.
 
-Por el buen orden de $\mathbb N$, $K$ tiene un elemento mínimo; llamémoslo $k_0$.
-
-No puede ser $k_0=0$, porque
-
+Para $a,b\in\mathbb Z$, $b\ne0$, definimos
 $$
--\nu_F(n)<x.
+\iota_F\!\left(\frac ab\right)=\jmath_F(a)\jmath_F(b)^{-1}.
 $$
-
-Por tanto
+El inverso existe por inyectividad. Si $a/b=c/d$, entonces $ad=bc$, y la multiplicatividad de $\jmath_F$ transporta esa igualdad a $F$. Multiplicar por las imágenes inversas de los denominadores prueba que la regla no depende del representante racional.
 
+Escribiendo $a_F=\jmath_F(a)$ y análogamente para otros enteros, las identidades
 $$
-k_0=k+1
+(a_Fb_F^{-1})+(c_Fd_F^{-1})
+=(a_Fd_F+b_Fc_F)(b_Fd_F)^{-1},
 $$
-
-para algún $k\in\mathbb N$.
-
-La minimalidad de $k_0$ implica que $k\notin K$, es decir, no ocurre
-
 $$
-x<-\nu_F(n)+\nu_F(k).
+(a_Fb_F^{-1})(c_Fd_F^{-1})=(a_Fc_F)(b_Fd_F)^{-1}
 $$
-
-Por totalidad del orden,
-
+prueban que $\iota_F$ conserva suma y producto, además de cero y unidad. Con denominador $b>0$, el signo de $a_Fb_F^{-1}$ es el de $a$: el inverso de un elemento positivo es positivo, pues un inverso no positivo no podría multiplicarlo para dar $1_F>0_F$. Aplicado a la diferencia de dos racionales, esto demuestra
 $$
--\nu_F(n)+\nu_F(k)\le x.
+p<q\iff\iota_F(p)<\iota_F(q).
 $$
+Hemos construido una incrustación de cuerpos ordenados. Es única: toda aplicación que conserve unidad y operaciones debe fijar sucesivamente numerales, enteros e inversos de enteros no nulos y, con ellos, todas las fracciones. Esta copia racional existe en cualquier cuerpo ordenado; aún no hemos utilizado la completitud.
 
-En cambio, como $k_0\in K$,
-
+La existencia de la copia racional deja abierta una cuestión sobre su alcance dentro de $F$: los numerales podrían, en principio, quedar todos por debajo de una misma cota. La completitud permite descartar esa posibilidad. Supongamos que el conjunto $N_F=\{\nu_F(n):n\in\mathbb N\}$ estuviera acotado superiormente. Es no vacío y, por completitud, tendría supremo $s$. El elemento $s-1_F<s$ no puede ser otra cota superior; por tanto, algún $n$ satisface $s-1_F<\nu_F(n)$. Al sumar $1_F$ resulta
 $$
-x<
--\nu_F(n)+\nu_F(k+1).
+s<\nu_F(n)+1_F=\nu_F(n+1),
 $$
-
-Definamos el entero
+contradiciendo que $s$ domina a todos los numerales. Concluimos que $N_F$ no está acotado superiormente: para cada $x\in F$ hay $n\in\mathbb N$ con $x<\nu_F(n)$. Ésta es la propiedad arquimediana.
 
+Encontrar un entero mayor que $x$ todavía no controla la distancia que los separa. Una pareja de enteros consecutivos dará ese control y permitirá después reducir la escala; elijamos $n>0$ con $-\nu_F(n)<x<\nu_F(n)$, aplicando arquimedianidad a $\max\{x,-x\}$. El conjunto
 $$
-m=-n+(k+1).
+K=\{k\in\mathbb N:x<-\nu_F(n)+\nu_F(k)\}
 $$
-
-Entonces su predecesor es
-
+contiene a $2n+1$ y no contiene a $0$. Su mínimo $k_0$ es positivo. La pertenencia de $k_0$ y la no pertenencia de $k_0-1$ dan
 $$
-m-1=-n+k,
+-\nu_F(n)+\nu_F(k_0-1)\le x
+<-\nu_F(n)+\nu_F(k_0).
 $$
-
-y las dos desigualdades anteriores se escriben exactamente como
-
+Con $m=-n+k_0\in\mathbb Z$, obtenemos
 $$
 \iota_F(m-1)\le x<\iota_F(m).
 $$
+Aquí y en adelante, al aplicar $\iota_F$ a un entero entendemos su imagen racional canónica. La minimalidad es lo que asegura que los dos extremos sean consecutivos.
 
-$\square$
+**Teorema de densidad racional.** Si $x<y$ en $F$, existe $q\in\mathbb Q$ con $x<\iota_F(q)<y$.
 
-Éste es el eslabón que no debe quedar oculto detrás de la palabra «arquimediano».
-
-La propiedad arquimediana dice que la rejilla entera llega suficientemente lejos; el lema anterior dice algo más operativo: **todo elemento queda atrapado en una celda de anchura uno de esa rejilla**.
-
-### De la rejilla entera a la rejilla racional
-
-Ahora podemos refinar la escala.
-
-Sean
-
+**Demostración.** Buscamos una malla cuyo paso sea menor que la separación de los dos elementos. Por arquimedianidad, elijamos $n>0$ con $\nu_F(n)>(y-x)^{-1}$; entonces $0<\iota_F(1/n)<y-x$. Multiplicar por el numeral convierte la búsqueda en la localización entera que acabamos de demostrar: localicemos $x\nu_F(n)$ entre dos enteros consecutivos:
 $$
-x<y
+\iota_F(m-1)\le x\nu_F(n)<\iota_F(m).
 $$
-
-en $F$.
-
-Queremos encontrar un racional $q$ cuya imagen quede estrictamente entre ambos.
-
-La diferencia
-
+Al dividir por $\nu_F(n)>0$ obtenemos
 $$
-y-x
+x<\iota_F(m/n)\le x+\iota_F(1/n)<y.
 $$
+La desigualdad central procede del extremo inferior de la localización; las dos exteriores aseguran que $q=m/n$ queda estrictamente entre $x$ e $y$. $\square$
 
-es positiva. Por tanto $(y-x)^{-1}>0$. La arquimedianidad proporciona $n\in\mathbb N$ tal que
-
-$$
-(y-x)^{-1}<\nu_F(n).
-$$
-
-Esta desigualdad obliga a $n>0$. Como ambos miembros son positivos, al invertir se revierte el orden:
-
-$$
-0<\nu_F(n)^{-1}<y-x.
-$$
-
-La compatibilidad de la copia racional con los inversos identifica
-
-$$
-\nu_F(n)^{-1}
-=
-\iota_F\!\left(\frac1n\right).
-$$
-
-Así,
-
-$$
-0<\iota_F\!\left(\frac1n\right)<y-x.
-$$
-
-Multipliquemos $x$ por el entero positivo $\iota_F(n)$. El lema de localización entera proporciona un entero $m$ tal que
-
-$$
-\iota_F(m-1)
-\le
-x\,\iota_F(n)
-<
-\iota_F(m).
-$$
-
-Como $\iota_F(n)>0$, dividimos por ella y obtenemos
-
-$$
-\iota_F\!\left(\frac{m-1}{n}\right)
-\le
-x
-<
-\iota_F\!\left(\frac mn\right).
-$$
-
-La primera desigualdad también implica
-
-$$
-\iota_F(m)
-\le
-x\,\iota_F(n)+1_F,
-$$
-
-y, dividiendo otra vez por $\iota_F(n)$,
-
-$$
-\iota_F\!\left(\frac mn\right)
-\le
-x+\iota_F\!\left(\frac1n\right)
-<
-x+(y-x)
-=
-y.
-$$
-
-Por tanto, para
-
-$$
-q=\frac mn\in\mathbb Q,
-$$
-
-tenemos
-
-$$
-\boxed{
-x<\iota_F(q)<y.
-}
-$$
-
-Hemos demostrado:
-
-> **Teorema de densidad racional.** Para cualesquiera $x,y\in F$ con $x<y$, existe $q\in\mathbb Q$ tal que
->
-> $$
-> \boxed{x<\iota_F(q)<y.}
-> $$
-
-La cadena lógica queda ahora visible:
-
-$$
-\boxed{
-\text{completitud}
-\Rightarrow
-\text{arquimedianidad}
-\Rightarrow
-\text{localización entera}
-\Rightarrow
-\text{localización racional}
-\Rightarrow
-\text{densidad de }\iota_F(\mathbb Q).
-}
-$$
-
-No hemos usado ninguna imagen intuitiva de «racionales muy juntos». La densidad se dedujo de propiedades estructurales precisas.
-
-La figura [C00-F08](#fig-anm-c00-f08) concentra esta lectura en un único mapa visual.
+El primer punto de la malla situado a la derecha de $x$ queda a una distancia de a lo sumo un paso y, por ello, también a la izquierda de $y$. La completitud intervino al demostrar la arquimedianidad; desde ese momento, la localización entera y la densidad sólo necesitaron las leyes de cuerpo ordenado.
 
 ![La densidad racional en un cuerpo completo es una conclusión de característica cero, copia racional, arquimedianidad y localización.](../../assets/books/anm/C00-F08.svg){#fig-anm-c00-f08 fig-alt="Cadena de seis nodos desde char F=0 hasta Q densa en F y dos escalas del cuerpo abstracto: primero localizar x entre enteros consecutivos y luego refinar con una malla racional entre x e y."}
 
-### La información racional situada debajo de un elemento
-
-Ya estamos preparados para el objeto que permitirá comparar modelos.
-
-Sea
-
-$$
-x\in F.
-$$
-
-Definimos su **traza racional inferior**:
-
-$$
-\boxed{
-A_x
-=
-\{q\in\mathbb Q:\iota_F(q)<x\}.
-}
-$$
-
-Es importante mantener los tipos separados:
-
-$$
-x\in F,
-\qquad
-q\in\mathbb Q,
-\qquad
-A_x\subseteq\mathbb Q.
-$$
-
-La traza no vive en $F$. Es un subconjunto de los racionales que registra cuáles elementos de la rejilla racional canónica quedan por debajo de $x$.
-
-Si esta información es suficientemente rica para reconstruir $x$, entonces tendremos un lenguaje común independiente de la implementación concreta de $F$.
-
-Pero antes debemos demostrar que $A_x$ tiene exactamente la forma de una cortadura.
-
-### La traza racional es una cortadura de Dedekind
-
-> **Proposición.** Para todo $x\in F$, el conjunto
->
-> $$
-> A_x=\{q\in\mathbb Q:\iota_F(q)<x\}
-> $$
->
-> es una cortadura de Dedekind de $\mathbb Q$.
-
-**Demostración.**
-
-#### 1. $A_x$ es no vacío
-
-Como
-
-$$
-x-1_F<x,
-$$
-
-la densidad racional proporciona $q_-\in\mathbb Q$ tal que
-
-$$
-x-1_F
-<
-\iota_F(q_-)
-<
-x.
-$$
-
-Por definición,
-
-$$
-q_-\in A_x.
-$$
-
-Así $A_x\ne\varnothing$.
-
-#### 2. $A_x$ es propio
-
-Como
-
-$$
-x<x+1_F,
-$$
-
-la densidad racional proporciona $q_+\in\mathbb Q$ tal que
-
-$$
-x
-<
-\iota_F(q_+)
-<
-x+1_F.
-$$
-
-Entonces no puede cumplirse $\iota_F(q_+)<x$. Por tanto
-
-$$
-q_+\notin A_x,
-$$
-
-y así
-
-$$
-A_x\ne\mathbb Q.
-$$
-
-#### 3. $A_x$ es cerrado hacia abajo
-
-Sea $q\in A_x$ y sea $p<q$ racional.
-
-Como $\iota_F$ preserva estrictamente el orden,
-
-$$
-\iota_F(p)<\iota_F(q).
-$$
-
-Y como $q\in A_x$,
-
-$$
-\iota_F(q)<x.
-$$
-
-Por transitividad,
-
-$$
-\iota_F(p)<x.
-$$
-
-Luego
-
-$$
-p\in A_x.
-$$
-
-#### 4. $A_x$ no tiene máximo
-
-Sea $q\in A_x$. Entonces
-
-$$
-\iota_F(q)<x.
-$$
-
-Por densidad racional existe $r\in\mathbb Q$ tal que
-
-$$
-\iota_F(q)
-<
-\iota_F(r)
-<
-x.
-$$
-
-Como $\iota_F$ refleja el orden,
-
-$$
-q<r.
-$$
-
-Y como $\iota_F(r)<x$,
-
-$$
-r\in A_x.
-$$
-
-Por tanto ningún elemento de $A_x$ es máximo.
-
-Hemos verificado las cuatro condiciones. Así
-
-$$
-\boxed{
-A_x\in\mathcal D.
-}
-$$
-
-$\square$
-
-La construcción por cortaduras reaparece aquí de una manera nueva. Ya no estamos usando $\mathcal D$ para **fabricar** los reales. Estamos usando la noción de cortadura como un **código racional de posición** que puede asociarse a un elemento de cualquier cuerpo ordenado completo.
-
-### ¿La traza recuerda realmente al elemento?
-
-Ahora llega el punto decisivo.
-
-La traza $A_x$ registra todos los racionales cuyas imágenes están por debajo de $x$. ¿Podrían dos posiciones diferentes compartir exactamente la misma información racional?
-
-Antes de comparar dos modelos, demostraremos algo más básico: dentro de un mismo modelo, la traza permite reconstruir al elemento.
-
-Consideremos el subconjunto de $F$
-
-$$
-\iota_F(A_x)
-=
-\{\iota_F(q):q\in A_x\}.
-$$
-
-Es no vacío porque $A_x$ lo es.
-
-Además está acotado superiormente por $x$, ya que para todo $q\in A_x$,
-
-$$
-\iota_F(q)<x.
-$$
-
-Aquí gastamos nuevamente la completitud de $F$. Existe por tanto
-
-$$
-s
-=
-\sup_F\iota_F(A_x).
-$$
-
-Afirmamos que
-
-$$
-\boxed{s=x.}
-$$
-
-Como $x$ es una cota superior de $\iota_F(A_x)$, por minimalidad del supremo,
-
-$$
-s\le x.
-$$
-
-Supongamos que la desigualdad fuese estricta:
-
-$$
-s<x.
-$$
-
-Por densidad racional existiría $q\in\mathbb Q$ tal que
-
-$$
-s<\iota_F(q)<x.
-$$
-
-La segunda desigualdad implica
-
-$$
-q\in A_x.
-$$
-
-Entonces
-
-$$
-\iota_F(q)\in\iota_F(A_x),
-$$
-
-pero la primera desigualdad afirma
-
-$$
-s<\iota_F(q),
-$$
-
-contradiciendo que $s$ sea una cota superior de ese conjunto.
-
-Por tanto no puede ocurrir $s<x$. Como ya sabemos $s\le x$, concluimos
-
-$$
-s=x.
-$$
-
-Así obtenemos la fórmula de reconstrucción:
-
-$$
-\boxed{
-x
-=
-\sup_F
-\{\iota_F(q):q\in A_x\}.
-}
-$$
-
-La interpretación es fundamental:
-
-$$
-\boxed{
-\text{un elemento de }F
-\text{ queda determinado por los racionales que están debajo de él}.
-}
-$$
-
-La figura [C00-F09](#fig-anm-c00-f09) concentra esta lectura en un único mapa visual.
-
-![x vive en F y Aₓ vive en Q; la traza racional registra la posición de x y la completitud permite reconstruirlo.](../../assets/books/anm/C00-F09.svg){#fig-anm-c00-f09 fig-alt="Panel superior con x y varias imágenes racionales dentro de F, panel central con la cortadura Aₓ en Q y sus cuatro propiedades, y retorno a F mediante x=sup_F ι_F(Aₓ)."}
-
-### Dos elementos distintos no pueden tener la misma traza
-
-La fórmula anterior tiene una consecuencia inmediata.
-
-Si
-
-$$
-A_x=A_y,
-$$
-
-entonces
-
-$$
-\iota_F(A_x)=\iota_F(A_y),
-$$
-
-y por reconstrucción
-
-$$
-x
-=
-\sup_F\iota_F(A_x)
-=
-\sup_F\iota_F(A_y)
-=
-y.
-$$
-
-Por tanto la aplicación
-
-$$
-x\longmapsto A_x
-$$
-
-es inyectiva.
-
-También el orden queda registrado por las trazas.
-
-Si
-
-$$
-x\le y,
-$$
-
-entonces todo racional situado debajo de $x$ está también debajo de $y$, de modo que
-
-$$
-A_x\subseteq A_y.
-$$
-
-Y si
-
-$$
-x<y,
-$$
-
-la densidad racional proporciona un $q$ con
-
-$$
-x<\iota_F(q)<y.
-$$
-
-Ese racional pertenece a $A_y$ pero no a $A_x$. Por tanto
-
+Podemos describir un elemento de $F$ mediante los racionales que quedan debajo de él. Para $x\in F$, su **traza racional inferior** es
 $$
-A_x\subsetneq A_y.
+A_x^F=\{q\in\mathbb Q:\iota_F(q)<x\}.
 $$
-
-Así la posición en $F$ puede leerse enteramente a través de información racional:
-
-$$
-\boxed{
-x<y
-\quad\Longrightarrow\quad
-A_x\subsetneq A_y.
-}
-$$
-
-Para la recíproca no necesitamos introducir todavía el transporte entre modelos. Si $A_x\subseteq A_y$, entonces
-
-$$
-\iota_F(A_x)\subseteq\iota_F(A_y).
-$$
-
-Por reconstrucción,
-
-$$
-y=\sup_F\iota_F(A_y),
-$$
-
-de modo que $y$ es una cota superior de $\iota_F(A_x)$. Pero también
+El superíndice se omitirá cuando el cuerpo sea inequívoco. El elemento $x$ vive en $F$; su traza es un subconjunto del conjunto común $\mathbb Q$.
 
+**Proposición.** La traza $A_x$ es una cortadura y determina al elemento mediante
 $$
 x=\sup_F\iota_F(A_x).
 $$
 
-Por la minimalidad del supremo,
+**Demostración.** La densidad proporciona un racional cuya imagen está entre $x-1_F$ y $x$, y otro cuya imagen está entre $x$ y $x+1_F$. El primero pertenece a $A_x$ y el segundo queda fuera: la traza es no vacía y propia. Si $p<q$ y $q\in A_x$, entonces $\iota_F(p)<\iota_F(q)<x$, así que $p\in A_x$. Si $q\in A_x$, la densidad aplicada entre $\iota_F(q)$ y $x$ proporciona $r\in A_x$ con $q<r$. Esto prueba clausura inferior y ausencia de máximo.
 
+La imagen $\iota_F(A_x)$ es no vacía y está acotada por $x$; por completitud tiene supremo $s\le x$. Si $s<x$, la densidad daría un racional $q$ con $s<\iota_F(q)<x$. Entonces $q\in A_x$, contradiciendo que $s$ es una cota superior de su imagen. De aquí $s=x$. $\square$
+
+La densidad permite también comprobar directamente que $x$ es la menor cota superior de su traza: cualquier elemento menor deja entre ambos una imagen racional que aún pertenece a la traza. Esa observación no demuestra completitud, pues reconstruye un elemento del que ya disponíamos; realizar una cortadura racional arbitraria será una obligación distinta.
+
+![x vive en F y Aₓ vive en Q; la traza racional registra la posición de x y la completitud permite reconstruirlo.](../../assets/books/anm/C00-F09.svg){#fig-anm-c00-f09 fig-alt="Panel superior con x y varias imágenes racionales dentro de F, panel central con la cortadura Aₓ en Q y sus cuatro propiedades, y retorno a F mediante x=sup_F ι_F(Aₓ)."}
+
+Si $x\le y$, todo racional debajo de $x$ está debajo de $y$, y por ello $A_x\subseteq A_y$. Recíprocamente, si $A_x\subseteq A_y$, el elemento $y$ domina a $\iota_F(A_x)$; por la fórmula de reconstrucción, $x\le y$. Además $A_x=A_y$ implica $x=y$. Si $x<y$, un racional con $x<\iota_F(q)<y$ pertenece a $A_y\setminus A_x$, haciendo estricta la inclusión. Así,
 $$
-x\le y.
+x\le y\iff A_x\subseteq A_y,\qquad
+x<y\iff A_x\subsetneq A_y.
 $$
-
-En consecuencia,
-
-$$
-\boxed{
-x\le y
-\quad\Longleftrightarrow\quad
-A_x\subseteq A_y.
-}
-$$
-
-Y, combinando esta equivalencia con la inyectividad de $x\mapsto A_x$,
-
-$$
-\boxed{
-x<y
-\quad\Longleftrightarrow\quad
-A_x\subsetneq A_y.
-}
-$$
-
-La traza racional no es una mera etiqueta. Conserva toda la posición ordenada del elemento.
-
-### El lenguaje común entre modelos
-
-Ya podemos ver por qué hemos hecho todo este trabajo.
-
-Sea $F$ cualquier cuerpo ordenado completo.
-
-A cada elemento
-
-$$
-x\in F
-$$
-
-le hemos asociado una cortadura
-
-$$
-A_x\subseteq\mathbb Q.
-$$
-
-Y hemos demostrado que $x$ se recupera exactamente a partir de esa información:
-
-$$
-x
-=
-\sup_F\iota_F(A_x).
-$$
-
-Nada de esta descripción depende de que $F$ esté construido mediante cortaduras.
-
-Por tanto, si mañana tomamos otro cuerpo ordenado completo $G$, podremos repetir exactamente el mismo procedimiento:
-
-$$
-y\in G
-\longmapsto
-A_y\subseteq\mathbb Q.
-$$
-
-Los elementos de $F$ y $G$ pueden ser objetos conjuntistas completamente diferentes. Pero sus **trazas racionales viven en el mismo conjunto $\mathbb Q$**.
-
-Ése es el puente que necesitábamos.
-
-$$
-\boxed{
-\mathbb Q
-\text{ es el lenguaje común para comparar modelos completos distintos}.
-}
-$$
-
-El objetivo ya no será comparar directamente $x\in F$ con un supuesto elemento correspondiente de $G$.
-
-La estrategia será:
-
-1. registrar la posición de $x$ mediante $A_x\subseteq\mathbb Q$;
-2. transportar esa misma información racional a $G$;
-3. reconstruir allí la posición correspondiente mediante un supremo.
-
-Éste será el mecanismo de la última sección.
-
-El estado narrativo permanece:
-
-```text
-UNIQUENESS_QUESTION = OPEN
-```
-
-Pero ahora disponemos de todas las piezas conceptuales para atacarla.
+Las trazas de elementos de otro cuerpo completo $G$ vivirán también en $\mathbb Q$. Podemos comparar esas trazas aunque no exista todavía ninguna correspondencia entre los elementos de $F$ y $G$. Falta mostrar que al reconstruir en $G$ la traza de un elemento de $F$ obtenemos exactamente la posición que buscamos.
 
 ### Antes de seguir
 
@@ -14065,1327 +9299,140 @@ $$
 entre dos modelos completos. Sólo hemos construido el código racional que permitirá ese transporte en §0.10.
 
 </details>
+
 ## 0.10. Únicos hasta isomorfismo
 
-Estamos en condiciones de responder la última pregunta del capítulo.
+[]{#MA-SEC-ANM-01-000-010}
 
-En §0.8 demostramos **existencia**: el modelo de Dedekind $\mathcal D$ es un cuerpo ordenado completo.
-
-En §0.9 dejamos de mirar su codificación particular y tomamos un cuerpo ordenado completo arbitrario $F$. Allí demostramos que cada elemento
-
-$$
-x\in F
-$$
-
-queda determinado por su traza racional inferior
-
-$$
-A_x
-=
-\{q\in\mathbb Q:\iota_F(q)<x\},
-$$
-
-y que puede reconstruirse mediante
-
-$$
-x
-=
-\sup_F\iota_F(A_x).
-$$
-
-Ahora tomemos dos cuerpos ordenados completos arbitrarios:
-
-$$
-F
-\qquad\text{y}\qquad
-G.
-$$
-
-Cada uno contiene su copia racional canónica:
-
-$$
-\iota_F:\mathbb Q\hookrightarrow F,
-\qquad
-\iota_G:\mathbb Q\hookrightarrow G.
-$$
-
-Queremos construir una correspondencia
-
-$$
-F\longrightarrow G
-$$
-
-sin mirar cómo fueron construidos sus elementos.
-
-La idea ya está preparada. Para $x\in F$:
-
-1. registramos su posición mediante $A_x\subseteq\mathbb Q$;
-2. interpretamos esos mismos racionales dentro de $G$;
-3. tomamos allí la frontera que determina esa información.
-
-Es decir,
-
-$$
-\boxed{
-F
-\longrightarrow
-A_x\subseteq\mathbb Q
-\longrightarrow
-\iota_G(A_x)\subseteq G
-\longrightarrow
-\sup_G
-\longrightarrow
-G.
-}
-$$
-
-Éste será el transporte canónico entre los dos modelos.
-
-### Antes de escribir el supremo: buena definición
-
-Sería un error escribir inmediatamente
-
-$$
-\phi(x)=\sup_G\iota_G(A_x)
-$$
-
-sin verificar las hipótesis que permiten tomar ese supremo.
-
-Fijemos
-
-$$
-x\in F.
-$$
-
-Por §0.9, $A_x$ es una cortadura de Dedekind. En particular,
-
-$$
-A_x\ne\varnothing
-\qquad\text{y}\qquad
-A_x\ne\mathbb Q.
-$$
-
-La imagen
-
-$$
-\iota_G(A_x)
-=
-\{\iota_G(q):q\in A_x\}
-$$
-
-es no vacía: basta tomar cualquier $r\in A_x$; entonces
-
-$$
-\iota_G(r)\in\iota_G(A_x).
-$$
-
-Debemos además exhibir una cota superior.
-
-Como $A_x$ es propio, existe algún racional
-
-$$
-u\notin A_x.
-$$
-
-Afirmamos que todo $q\in A_x$ satisface
-
-$$
-q<u.
-$$
-
-En efecto, si $q=u$, tendríamos $u\in A_x$. Y si $u<q$, como $q\in A_x$ y $A_x$ es cerrado hacia abajo, también obtendríamos $u\in A_x$. Ambas posibilidades son imposibles. Por tricotomía racional queda
-
-$$
-q<u.
-$$
-
-Como $\iota_G$ preserva el orden,
-
-$$
-\iota_G(q)<\iota_G(u)
-\qquad
-(q\in A_x).
-$$
-
-Por tanto
-
-$$
-\iota_G(u)
-$$
-
-es una cota superior de $\iota_G(A_x)$.
-
-Ahora sí hemos verificado:
-
-$$
-\iota_G(A_x)\ne\varnothing
-$$
-
-y
-
-$$
-\iota_G(A_x)\text{ está acotado superiormente en }G.
-$$
-
-Aquí aparece el primer gasto de completitud de esta sección. Como $G$ es completo, existe el supremo de ese conjunto.
-
-Podemos definir, legítimamente,
-
-$$
-\boxed{
-\phi:F\longrightarrow G,
-\qquad
-\phi(x)
-=
-\sup_G\{\iota_G(q):q\in A_x\}.
-}
-$$
-
-No estamos escogiendo uno entre varios candidatos. El supremo, cuando existe, es único. El valor $\phi(x)$ queda determinado por la estructura.
-
-### El transporte conserva exactamente la traza racional
-
-La propiedad decisiva de $\phi$ es más fuerte que una simple monotonicidad.
-
-> **Proposición.** Para todo $x\in F$,
->
-> $$
-> \boxed{
-> A_{\phi(x)}^{\,G}=A_x^{\,F}.
-> }
-> $$
-
-Los superíndices sólo recuerdan en qué cuerpo se calcula cada traza.
-
-**Demostración.** Escribamos
-
-$$
-S_x=\iota_G(A_x)
-$$
-
-y
-
-$$
-\phi(x)=\sup_G S_x.
-$$
-
-Probemos primero
-
-$$
-A_x\subseteq A_{\phi(x)}.
-$$
-
-Sea $q\in A_x$. Como $A_x$ no tiene máximo, existe $r\in A_x$ con
-
-$$
-q<r.
-$$
-
-La copia racional de $G$ preserva el orden:
-
-$$
-\iota_G(q)<\iota_G(r).
-$$
-
-Además,
-
-$$
-\iota_G(r)\in S_x,
-$$
-
-de modo que
-
-$$
-\iota_G(r)\le\sup_GS_x=\phi(x).
-$$
-
-Así
-
-$$
-\iota_G(q)<\phi(x),
-$$
-
-y por definición
-
-$$
-q\in A_{\phi(x)}.
-$$
-
-Por tanto
-
-$$
-A_x\subseteq A_{\phi(x)}.
-$$
-
-Para la inclusión inversa, sea
-
-$$
-q\in A_{\phi(x)}.
-$$
-
-Entonces
-
-$$
-\iota_G(q)<\phi(x).
-$$
-
-Supongamos que $q\notin A_x$. Como acabamos de observar al demostrar la acotación, todo $r\in A_x$ satisface
-
-$$
-r<q.
-$$
-
-Por tanto
-
-$$
-\iota_G(r)<\iota_G(q)
-\qquad
-(r\in A_x).
-$$
-
-Así $\iota_G(q)$ es una cota superior de $S_x$. Por minimalidad del supremo,
-
-$$
-\phi(x)=\sup_GS_x\le\iota_G(q),
-$$
-
-contradicción con
-
-$$
-\iota_G(q)<\phi(x).
-$$
-
-Luego necesariamente
-
-$$
-q\in A_x.
-$$
-
-Hemos obtenido la segunda inclusión y, por tanto,
-
-$$
-\boxed{
-A_{\phi(x)}=A_x.
-}
-$$
-
-$\square$
-
-Este resultado explica exactamente qué hace $\phi$. No transporta la representación conjuntista de $x$; transporta su **posición racional**.
-
-### El orden queda transportado sin deformación
-
-En §0.9 demostramos que, en cualquier cuerpo ordenado completo,
-
-$$
-x\le y
-\quad\Longleftrightarrow\quad
-A_x\subseteq A_y
-$$
-
-y
-
-$$
-x<y
-\quad\Longleftrightarrow\quad
-A_x\subsetneq A_y.
-$$
-
-Usando la identidad de trazas recién obtenida,
-
-$$
-\begin{aligned}
-x\le y
-&\Longleftrightarrow
-A_x\subseteq A_y\\
-&\Longleftrightarrow
-A_{\phi(x)}\subseteq A_{\phi(y)}\\
-&\Longleftrightarrow
-\phi(x)\le\phi(y).
-\end{aligned}
-$$
-
-Del mismo modo,
-
-$$
-\boxed{
-x<y
-\quad\Longleftrightarrow\quad
-\phi(x)<\phi(y).
-}
-$$
-
-Por tanto $\phi$ preserva y refleja el orden.
-
-En particular es inyectiva: si
-
-$$
-\phi(x)=\phi(y),
-$$
-
-las dos imágenes tienen la misma traza; pero
-
-$$
-A_{\phi(x)}=A_x,
-\qquad
-A_{\phi(y)}=A_y,
-$$
-
-de modo que $A_x=A_y$, y §0.9 da
-
-$$
-x=y.
-$$
-
-### La función simétrica proporciona la inversa
-
-Todavía no hemos demostrado que todo elemento de $G$ sea imagen de alguno de $F$.
-
-No lo haremos por cardinalidad ni escogiendo preimágenes.
-
-Repetimos exactamente la misma construcción con los cuerpos intercambiados:
-
-$$
-\boxed{
-\psi:G\longrightarrow F,
-\qquad
-\psi(y)
-=
-\sup_F\{\iota_F(q):q\in A_y^{\,G}\}.
-}
-$$
-
-La buena definición de $\psi$ gasta ahora la completitud de $F$, del mismo modo que la de $\phi$ gastó la completitud de $G$.
-
-Además,
-
-$$
-\boxed{
-A_{\psi(y)}^{\,F}=A_y^{\,G}.
-}
-$$
-
-Tomemos $x\in F$. Entonces
-
-$$
-A_{\psi(\phi(x))}^{\,F}
-=
-A_{\phi(x)}^{\,G}
-=
-A_x^{\,F}.
-$$
-
-Como la traza determina al elemento dentro de $F$,
-
-$$
-\boxed{\psi(\phi(x))=x.}
-$$
-
-Simétricamente, para todo $y\in G$,
-
-$$
-\boxed{\phi(\psi(y))=y.}
-$$
-
-Así,
-
-$$
-\boxed{
-\psi=\phi^{-1}.
-}
-$$
-
-En particular,
-
-$$
-\boxed{
-\phi:F\longrightarrow G
-\text{ es biyectiva}.
-}
-$$
-
-La sobreyectividad no proviene de contar elementos ni de una elección sobre fibras. La preimagen de $y$ está dada canónicamente por $\psi(y)$.
-
-Además, como $\psi$ se construye por el mismo procedimiento, también preserva y refleja el orden. Por tanto $\phi$ ya es un isomorfismo de los órdenes lineales subyacentes.
-
-Falta demostrar que conserva la aritmética.
-
-### Primero: el transporte fija la copia racional
-
-Sea $q\in\mathbb Q$.
-
-La traza racional de $\iota_F(q)$ es
-
-$$
-A_{\iota_F(q)}
-=
-\{r\in\mathbb Q:r<q\}
-=
-q^*.
-$$
-
-En efecto,
-
-$$
-r\in A_{\iota_F(q)}
-\Longleftrightarrow
-\iota_F(r)<\iota_F(q)
-\Longleftrightarrow
-r<q.
-$$
-
-De la misma manera,
-
+Sean $F,G$ cuerpos ordenados completos, con sus incrustaciones racionales canónicas. Dado $x\in F$, la traza $A_x^F$ es no vacía y propia. Su imagen en $G$ es no vacía; además, si $u\in\mathbb Q\setminus A_x^F$, todo $q\in A_x^F$ satisface $q<u$, de modo que $\iota_G(u)$ domina esa imagen. Podemos usar la completitud de $G$ para definir
 $$
-A_{\iota_G(q)}=q^*.
+\phi:F\longrightarrow G,\qquad
+\phi(x)=\sup_G\iota_G(A_x^F).
 $$
+El exterior $u$ acredita la acotación; el valor definido es el supremo de la imagen y queda determinado de manera única, cualquiera que haya sido el exterior utilizado.
 
-Pero $\phi$ conserva la traza:
+**Proposición.** Para cada $x\in F$, se cumple $A_{\phi(x)}^G=A_x^F$.
 
+**Demostración.** Si $q\in A_x^F$, la ausencia de máximo proporciona $r\in A_x^F$ con $q<r$. Como $\iota_G(r)\le\phi(x)$,
 $$
-A_{\phi(\iota_F(q))}
-=
-A_{\iota_F(q)}
-=
-q^*
-=
-A_{\iota_G(q)}.
+\iota_G(q)<\iota_G(r)\le\phi(x),
 $$
+y $q\in A_{\phi(x)}^G$. Elegir $r$ por encima del racional inicial aprovecha la ausencia de máximo para obtener la desigualdad estricta que exige una traza; la condición de cota superior por sí sola sería insuficiente.
 
-La traza determina al elemento en $G$. Por tanto
+Si $q\in A_{\phi(x)}^G$ pero $q\notin A_x^F$, todos los miembros de $A_x^F$ son menores que $q$. Entonces $\iota_G(q)$ sería cota superior de $\iota_G(A_x^F)$, obligando a $\phi(x)\le\iota_G(q)$, contra la pertenencia de $q$ a la traza de $\phi(x)$. Esto prueba la inclusión inversa. $\square$
 
+Las equivalencias de orden de §0.9 y esta identidad dan
 $$
-\boxed{
-\phi(\iota_F(q))=\iota_G(q)
-\qquad(q\in\mathbb Q).
-}
+x\le y\iff\phi(x)\le\phi(y),\qquad
+x<y\iff\phi(x)<\phi(y).
 $$
-
-Es decir,
-
-$$
-\boxed{
-\phi\circ\iota_F=\iota_G.
-}
-$$
-
-En particular,
-
-$$
-\boxed{
-\phi(0_F)=0_G,
-\qquad
-\phi(1_F)=1_G.
-}
-$$
-
-### Leer una suma mediante racionales
-
-Para demostrar que $\phi$ conserva la suma evitaremos intentar calcular directamente el supremo de $A_{x+y}$.
-
-Primero caracterizaremos esa traza usando sólo $A_x$ y $A_y$.
-
-> **Lema.** Sean $x,y\in F$ y $q\in\mathbb Q$. Entonces
->
-> $$
-> \boxed{
-> q\in A_{x+y}
-> \Longleftrightarrow
-> \exists r\in A_x\;\exists s\in A_y:
-> q<r+s.
-> }
-> $$
-
-**Demostración.** Supongamos primero
-
-$$
-q\in A_{x+y}.
-$$
-
-Entonces
-
-$$
-\iota_F(q)<x+y.
-$$
-
-Trasladando $-y$,
-
-$$
-\iota_F(q)-y<x.
-$$
-
-La copia racional es densa en $F$, de modo que existe $r\in\mathbb Q$ con
-
-$$
-\iota_F(q)-y
-<
-\iota_F(r)
-<
-x.
-$$
-
-La segunda desigualdad dice
-
-$$
-r\in A_x.
-$$
-
-La primera equivale a
-
-$$
-\iota_F(q)-\iota_F(r)<y.
-$$
-
-Aplicando de nuevo densidad, existe $s\in\mathbb Q$ tal que
-
-$$
-\iota_F(q)-\iota_F(r)
-<
-\iota_F(s)
-<
-y.
-$$
-
-Entonces
-
-$$
-s\in A_y
-$$
-
-y
-
-$$
-\iota_F(q)
-<
-\iota_F(r)+\iota_F(s)
-=
-\iota_F(r+s).
-$$
-
-Como $\iota_F$ refleja el orden,
-
-$$
-q<r+s.
-$$
-
-Esto prueba la implicación directa.
-
-Recíprocamente, supongamos que existen
-
-$$
-r\in A_x,
-\qquad
-s\in A_y,
-\qquad
-q<r+s.
-$$
-
-Entonces
-
-$$
-\iota_F(r)<x,
-\qquad
-\iota_F(s)<y.
-$$
-
-Sumando,
-
-$$
-\iota_F(r)+\iota_F(s)<x+y.
-$$
-
-Además,
-
-$$
-\iota_F(q)
-<
-\iota_F(r+s)
-=
-\iota_F(r)+\iota_F(s).
-$$
-
-Por transitividad,
-
-$$
-\iota_F(q)<x+y,
-$$
-
-es decir,
-
-$$
-q\in A_{x+y}.
-$$
-
-$\square$
-
-El lado derecho del criterio depende solamente de las dos trazas racionales.
-
-Como
-
-$$
-A_{\phi(x)}=A_x,
-\qquad
-A_{\phi(y)}=A_y,
-$$
-
-el mismo criterio aplicado en $G$ da, para todo $q\in\mathbb Q$,
-
-$$
-q\in A_{x+y}
-\Longleftrightarrow
-q\in A_{\phi(x)+\phi(y)}.
-$$
-
-Por otro lado,
-
-$$
-A_{\phi(x+y)}=A_{x+y}.
-$$
-
-Luego
-
-$$
-A_{\phi(x+y)}
-=
-A_{\phi(x)+\phi(y)}.
-$$
-
-La traza determina al elemento en $G$. Concluimos
-
-$$
-\boxed{
-\phi(x+y)=\phi(x)+\phi(y).
-}
-$$
-
-La preservación del cero implica ahora automáticamente la del opuesto. Como
-
-$$
-x+(-x)=0_F,
-$$
-
-aplicamos $\phi$:
-
-$$
-\phi(x)+\phi(-x)=0_G.
-$$
-
-Por unicidad del inverso aditivo,
-
-$$
-\boxed{
-\phi(-x)=-\phi(x).
-}
-$$
-
-Así también se conserva la resta.
-
-### Leer el producto cuando los factores son no negativos
-
-La multiplicación exige una precaución adicional: el orden del producto se comporta limpiamente al trabajar primero con factores no negativos.
-
-Sean
-
-$$
-0_F\le x,
-\qquad
-0_F\le y.
-$$
-
-Para $q\in\mathbb Q$ tenemos la siguiente caracterización.
-
-> **Lema.**
->
-> $$
-> \boxed{
-> \begin{aligned}
-> q\in A_{xy}
-> \Longleftrightarrow{}&
-> q<0\\
-> &\text{o existen }r,s\in\mathbb Q
-> \text{ tales que}\\
-> &0<r,\quad 0<s,\quad
-> r\in A_x,\quad s\in A_y,\quad q<rs.
-> \end{aligned}
-> }
-> $$
-
-**Demostración.** Supongamos primero
-
-$$
-q\in A_{xy},
+En particular, $\phi$ es inyectiva. Para probar la sobreyectividad, construyamos simétricamente
 $$
-
-de modo que
-
-$$
-\iota_F(q)<xy.
-$$
-
-Si $q<0$, ya estamos en la primera alternativa.
-
-Supongamos entonces
-
-$$
-q\ge0.
-$$
-
-Como $x,y\ge0$ y
-
-$$
-0\le\iota_F(q)<xy,
-$$
-
-el producto $xy$ es positivo; por tanto $x>0$ y $y>0$.
-
-Multiplicando la desigualdad
-
-$$
-\iota_F(q)<xy
-$$
-
-por $y^{-1}>0$, obtenemos
-
-$$
-\iota_F(q)y^{-1}<x.
-$$
-
-Por densidad racional existe $r\in\mathbb Q$ tal que
-
-$$
-\iota_F(q)y^{-1}
-<
-\iota_F(r)
-<
-x.
-$$
-
-Como el extremo izquierdo es no negativo,
-
-$$
-r>0,
-$$
-
-y además
-
-$$
-r\in A_x.
-$$
-
-La primera desigualdad da
-
-$$
-\iota_F(q)<\iota_F(r)y.
-$$
-
-Como $\iota_F(r)>0$, multiplicamos por su inverso:
-
-$$
-\iota_F(q)\iota_F(r)^{-1}<y.
-$$
-
-Aplicando otra vez densidad, existe $s\in\mathbb Q$ con
-
-$$
-\iota_F(q)\iota_F(r)^{-1}
-<
-\iota_F(s)
-<
-y.
-$$
-
-Entonces
-
-$$
-s>0,
-\qquad
-s\in A_y,
-$$
-
-y
-
-$$
-\iota_F(q)
-<
-\iota_F(r)\iota_F(s)
-=
-\iota_F(rs).
-$$
-
-Por reflexión del orden,
-
-$$
-q<rs.
-$$
-
-Recíprocamente, si $q<0$, entonces
-
-$$
-\iota_F(q)<0_F\le xy,
+\psi:G\longrightarrow F,\qquad
+\psi(y)=\sup_F\iota_F(A_y^G).
 $$
-
-de modo que $q\in A_{xy}$.
-
-Si existen $r,s>0$ con
-
-$$
-r\in A_x,
-\qquad
-s\in A_y,
-\qquad
-q<rs,
-$$
-
-entonces
-
-$$
-0<\iota_F(r)<x,
-\qquad
-0<\iota_F(s)<y.
-$$
-
-La monotonía del producto por factores positivos da
-
-$$
-\iota_F(r)\iota_F(s)<xy.
-$$
-
-Y de $q<rs$ obtenemos
-
-$$
-\iota_F(q)
-<
-\iota_F(rs)
-=
-\iota_F(r)\iota_F(s).
-$$
-
-Por transitividad,
-
-$$
-\iota_F(q)<xy.
-$$
-
-Así $q\in A_{xy}$.
-
-$\square$
-
-Como $\phi$ preserva el orden y el cero,
-
-$$
-x,y\ge0
-\quad\Longrightarrow\quad
-\phi(x),\phi(y)\ge0.
-$$
-
-El criterio anterior depende únicamente de $A_x$ y $A_y$. Usando otra vez
-
-$$
-A_{\phi(x)}=A_x,
-\qquad
-A_{\phi(y)}=A_y,
-$$
-
-concluimos
-
-$$
-A_{\phi(xy)}
-=
-A_{\phi(x)\phi(y)}.
+El mismo argumento verifica su buena definición y prueba $A_{\psi(y)}^F=A_y^G$. Por tanto
 $$
-
-Por reconstrucción desde la traza,
-
+A_{\psi(\phi(x))}^F=A_{\phi(x)}^G=A_x^F.
 $$
-\boxed{
-\phi(xy)=\phi(x)\phi(y)
-\qquad
-(x,y\ge0).
-}
-$$
-
-### El producto para todos los signos
+La traza determina al elemento en $F$, así que $\psi(\phi(x))=x$. Intercambiando los cuerpos obtenemos $\phi(\psi(y))=y$. Cada $y$ tiene la preimagen explícita $\psi(y)$ y ambas aplicaciones son inversas. Hemos construido un isomorfismo de órdenes; debemos verificar todavía las operaciones.
 
-No dejaremos la multiplicatividad restringida al cono positivo.
-
-Sean $x,y\in F$ arbitrarios.
-
-Si ambos son no negativos, el resultado ya está probado.
-
-Supongamos
-
+La identidad de trazas permite reconocer primero las posiciones racionales dentro de la correspondencia. Para $q\in\mathbb Q$, la conservación y reflexión del orden racional dan
 $$
-x<0\le y.
+A_{\iota_F(q)}^F=q^*=A_{\iota_G(q)}^G.
 $$
-
-Entonces $-x>0$ y
-
+Como $\phi$ conserva trazas, la unicidad de reconstrucción en $G$ implica
 $$
-xy=-((-x)y).
+\phi(\iota_F(q))=\iota_G(q).
 $$
+En particular, conserva cero y unidad.
 
-Usando la preservación del opuesto y el caso no negativo,
-
+Para transportar la suma necesitamos reconocer qué racionales quedan debajo de $x+y$ usando sólo los que quedan debajo de cada sumando. El margen de una desigualdad estricta permite elegir dos testigos racionales que aún dejan a $q$ por debajo de su suma. Para cualesquiera $x,y\in F$ y $q\in\mathbb Q$,
 $$
-\begin{aligned}
-\phi(xy)
-&=
--\phi((-x)y)\\
-&=
--\bigl(\phi(-x)\phi(y)\bigr)\\
-&=
--\bigl((-\phi(x))\phi(y)\bigr)\\
-&=
-\phi(x)\phi(y).
-\end{aligned}
+q\in A_{x+y}^F
+\iff \exists r\in A_x^F\ \exists s\in A_y^F:\ q<r+s.
 $$
-
-El caso
-
+Probemos la implicación que requiere construir los testigos. Si $\iota_F(q)<x+y$, entonces $\iota_F(q)-y<x$. Por densidad, elijamos un racional $r$ con
 $$
-x\ge0>y
+\iota_F(q)-y<\iota_F(r)<x.
 $$
-
-es simétrico.
-
-Finalmente, si
-
+Tenemos $r\in A_x^F$ y $\iota_F(q)-\iota_F(r)<y$. Una segunda aplicación de densidad proporciona $s$ tal que
 $$
-x<0,
-\qquad
-y<0,
+\iota_F(q)-\iota_F(r)<\iota_F(s)<y.
 $$
-
-entonces
-
+De aquí $s\in A_y^F$ y $q<r+s$, usando la reflexión del orden racional. En el sentido inverso, tales testigos satisfacen
 $$
--x>0,
-\qquad
--y>0,
+\iota_F(q)<\iota_F(r)+\iota_F(s)<x+y,
 $$
+y por ello $q\in A_{x+y}^F$.
 
-y
-
+En este criterio sólo intervienen subconjuntos de $\mathbb Q$ y su suma racional, datos que el transporte conserva. Al aplicarlo en $G$, las igualdades de trazas dan
 $$
-xy=(-x)(-y).
+A_{\phi(x+y)}^G=A_{x+y}^F
+=A_{\phi(x)+\phi(y)}^G.
 $$
-
-Por tanto
+La reconstrucción en $G$ obliga a $\phi(x+y)=\phi(x)+\phi(y)$. Como $\phi(0_F)=0_G$, aplicar esta identidad a $x+(-x)=0_F$ y usar unicidad del inverso aditivo prueba también $\phi(-x)=-\phi(x)$.
 
+Para el producto trabajemos primero con $x,y\ge0_F$. Su traza satisface
 $$
-\begin{aligned}
-\phi(xy)
-&=
-\phi((-x)(-y))\\
-&=
-\phi(-x)\phi(-y)\\
-&=
-(-\phi(x))(-\phi(y))\\
-&=
-\phi(x)\phi(y).
-\end{aligned}
+q\in A_{xy}^F\iff q<0\ \text{o}\
+\exists r,s\in\mathbb Q:\ 0<r,\ 0<s,\ r\in A_x^F,\ s\in A_y^F,\ q<rs.
 $$
+Si $q<0$, su imagen está debajo de $0_F\le xy$. Si hay testigos positivos $r,s$ como los indicados, entonces $0_F<\iota_F(r)<x$ y $0_F<\iota_F(s)<y$; multiplicando por cantidades positivas obtenemos $\iota_F(rs)<xy$, y $q<rs$ implica $\iota_F(q)<xy$.
 
-Hemos cerrado todos los casos:
-
+Recíprocamente, supongamos $\iota_F(q)<xy$ y $q\ge0$. Esto obliga a $x,y>0_F$. Podemos dividir por $y$ y elegir, mediante densidad,
 $$
-\boxed{
-\phi(xy)=\phi(x)\phi(y)
-\qquad
-\text{para todos }x,y\in F.
-}
+\iota_F(q)y^{-1}<\iota_F(r)<x.
 $$
-
-Como además
-
+El extremo izquierdo es no negativo, por lo que $r>0$ y $r\in A_x^F$. La primera desigualdad permite otra elección racional:
 $$
-\phi(1_F)=1_G,
+\iota_F(q)\iota_F(r)^{-1}<\iota_F(s)<y.
 $$
-
-los inversos también se preservan. Si $x\ne0_F$,
+Entonces $s>0$, $s\in A_y^F$ y $q<rs$. Esto demuestra el criterio. Si uno de $x,y$ es cero, la segunda alternativa no admite los dos testigos positivos y queda exactamente la traza $0^*$, como debe ocurrir.
 
+Dado que $\phi$ preserva cero y orden, transporta elementos no negativos a elementos no negativos. El criterio del producto y la igualdad de trazas, aplicados en ambos cuerpos, dan
 $$
-xx^{-1}=1_F,
+A_{\phi(xy)}^G=A_{\phi(x)\phi(y)}^G.
 $$
+Por tanto $\phi(xy)=\phi(x)\phi(y)$ cuando $x,y\ge0_F$.
 
-luego
-
+Para $x<0_F\le y$, usamos $xy=-((-x)y)$, la conservación del opuesto y el caso no negativo:
 $$
-\phi(x)\phi(x^{-1})=1_G.
+\phi(xy)=-\phi((-x)y)
+=-\bigl(\phi(-x)\phi(y)\bigr)=\phi(x)\phi(y).
 $$
-
-La inyectividad y la preservación de cero garantizan $\phi(x)\ne0_G$, y por unicidad del inverso,
-
+Para $x\ge0_F>y$, intercambiamos los factores y utilizamos la conmutatividad del producto en ambos cuerpos. Si ambos son negativos,
 $$
-\boxed{
-\phi(x^{-1})=\phi(x)^{-1}.
-}
+\phi(xy)=\phi((-x)(-y))
+=\phi(-x)\phi(-y)=(-\phi(x))(-\phi(y))=\phi(x)\phi(y).
 $$
-
-La figura [C00-F12](#fig-anm-c00-f12) resume por qué la misma traza racional obliga a transportar también la aritmética, una vez cerrados suma, producto y todos los casos de signo.
+Así se conserva el producto para todos los signos. Para $x\ne0_F$, la inyectividad y la conservación del cero garantizan $\phi(x)\ne0_G$; al aplicar la multiplicatividad a $xx^{-1}=1_F$ y usar unicidad del inverso obtenemos $\phi(x^{-1})=\phi(x)^{-1}$.
 
 ![La misma traza racional obliga a que φ fije Q y preserve suma y producto; el producto se demuestra primero en no negativos y luego se cierran los tres casos de signo.](../../assets/books/anm/C00-F12.svg){#fig-anm-c00-f12 fig-alt="Tres paneles: racionales fijos, caracterización de la suma por trazas y caracterización del producto en no negativos seguida por tres casos de signo y conclusión de multiplicatividad total."}
 
-### Ya tenemos un isomorfismo de cuerpos ordenados
-
-Podemos reunir el tablero de obligaciones.
-
-La función
-
-$$
-\phi:F\longrightarrow G
-$$
-
-es:
-
-- bien definida;
-- biyectiva;
-- preserva y refleja el orden;
-- preserva $0$ y $1$;
-- preserva la suma;
-- preserva los opuestos;
-- preserva el producto para todos los signos;
-- preserva inversos;
-- satisface
-  $$
-  \phi\circ\iota_F=\iota_G.
-  $$
-
-Por tanto
-
-$$
-\boxed{
-\phi:F\longrightarrow G
-\text{ es un isomorfismo de cuerpos ordenados}.
-}
-$$
-
-La existencia de un isomorfismo está demostrada.
-
-Pero todavía debemos responder una última cuestión: ¿podría existir otro?
-
-### Cualquier isomorfismo ordenado está obligado a fijar los racionales
-
-Sea
-
-$$
-T:F\longrightarrow G
-$$
-
-un isomorfismo de cuerpos ordenados cualquiera.
-
-La composición
-
-$$
-T\circ\iota_F:\mathbb Q\longrightarrow G
-$$
-
-es también una incrustación de cuerpos ordenados: $T$ preserva $0$, $1$, suma, producto y orden.
-
-Pero en §0.9 demostramos que la copia racional en un cuerpo ordenado es **canónica y única**.
-
-Por tanto
-
-$$
-\boxed{
-T\circ\iota_F=\iota_G.
-}
-$$
-
-Así todo isomorfismo de cuerpos ordenados entre $F$ y $G$ fija automáticamente la copia racional, en el sentido estructural correcto.
-
-### La traza fuerza la unicidad punto por punto
-
-Fijemos $x\in F$.
-
-Para cualquier $q\in\mathbb Q$,
-
+Hemos probado que $\phi$ es un isomorfismo de cuerpos ordenados. Su construcción parece determinada por los racionales; para demostrar que ningún otro isomorfismo es posible, sea $T:F\to G$ un isomorfismo de cuerpos ordenados cualquiera. La composición $T\circ\iota_F$ es una incrustación racional en $G$, y la unicidad de esa incrustación impone $T\circ\iota_F=\iota_G$. Para todo $x\in F$ y todo $q\in\mathbb Q$,
 $$
 \begin{aligned}
-q\in A_x
-&\Longleftrightarrow
-\iota_F(q)<x\\
-&\Longleftrightarrow
-T(\iota_F(q))<T(x)\\
-&\Longleftrightarrow
-\iota_G(q)<T(x)\\
-&\Longleftrightarrow
-q\in A_{T(x)}.
+q\in A_x^F
+&\iff\iota_F(q)<x\\
+&\iff T(\iota_F(q))<T(x)\\
+&\iff\iota_G(q)<T(x)\\
+&\iff q\in A_{T(x)}^G.
 \end{aligned}
 $$
+Por tanto $A_{T(x)}^G=A_x^F=A_{\phi(x)}^G$, y la reconstrucción en $G$ da $T(x)=\phi(x)$. Como vale para cada $x$, tenemos $T=\phi$.
 
-Por tanto
+**Teorema de existencia y unicidad.** Existen cuerpos ordenados completos. Entre cualesquiera dos de ellos hay un único isomorfismo de cuerpos ordenados.
 
-$$
-\boxed{
-A_{T(x)}=A_x.
-}
-$$
-
-Pero el transporte canónico también satisface
-
-$$
-\boxed{
-A_{\phi(x)}=A_x.
-}
-$$
-
-Luego
-
-$$
-A_{T(x)}=A_{\phi(x)}.
-$$
-
-La traza racional determina al elemento de $G$. En consecuencia,
-
-$$
-T(x)=\phi(x).
-$$
-
-Como esto vale para todo $x\in F$,
-
-$$
-\boxed{
-T=\phi.
-}
-$$
-
-Hemos demostrado la conclusión fuerte:
-
-> **Teorema de unicidad.** Si $F$ y $G$ son cuerpos ordenados completos, existe un único isomorfismo de cuerpos ordenados
->
-> $$
-> \boxed{
-> \phi:F\longrightarrow G.
-> }
-> $$
-
-Ese isomorfismo es el transporte canónico determinado por las trazas racionales.
-
-Tomando $F=G$, obtenemos además una rigidez importante:
-
-$$
-\boxed{
-\text{todo automorfismo de cuerpo ordenado de }F
-\text{ es la identidad}.
-}
-$$
-
-En efecto, necesariamente fija la copia racional y, por la misma prueba, fija cada traza y por tanto cada elemento.
-
-### Qué significa realmente «únicos»
-
-Podemos cerrar ahora la distinción que quedó pendiente desde §0.1.
-
-Sean $F$ y $G$ dos sistemas que satisfacen la especificación de los números reales.
-
-No hemos demostrado
-
-$$
-F=G
-$$
-
-como conjuntos.
-
-Sus elementos pueden ser objetos literalmente distintos. Un modelo puede estar construido con cortaduras; otro podría usar una codificación completamente diferente.
-
-Lo que hemos probado es:
-
-```text
-LITERAL_EQUALITY = NOT_REQUIRED
-EXISTS_AN_ORDERED_FIELD_ISOMORPHISM = YES
-UNIQUE_ORDERED_FIELD_ISOMORPHISM = YES
-```
-
-Es decir,
-
-$$
-\boxed{
-F\cong G
-\quad
-\text{mediante un único isomorfismo de cuerpos ordenados}.
-}
-$$
-
-La estructura no depende de la implementación.
-
-También conviene distinguir otra idea:
-
-$$
-\boxed{
-\text{canónico por unicidad}
-\neq
-\text{computable}.
-}
-$$
-
-La fórmula de $\phi$ mediante trazas racionales y supremos determina una función matemática única. Eso no afirma que, dada una representación arbitraria de elementos de $F$ y $G$, exista automáticamente un algoritmo que calcule sus imágenes.
-
-Nuestra cuestión aquí era estructural, y esa cuestión queda completamente resuelta.
-
-### El cierre de las dos preguntas
-
-Podemos volver finalmente a la apertura del capítulo.
-
-Primera pregunta:
-
-$$
-\boxed{\text{¿existe un cuerpo ordenado completo?}}
-$$
-
-Respuesta de §§0.4–0.8:
-
-$$
-\boxed{\text{sí}.}
-$$
-
-Las cortaduras de Dedekind proporcionan uno.
-
-Segunda pregunta:
-
-$$
-\boxed{
-\text{si existen dos, ¿pueden ser esencialmente distintos?}
-}
-$$
-
-Respuesta de §§0.9–0.10:
-
-$$
-\boxed{\text{no}.}
-$$
-
-Cualesquiera dos cuerpos ordenados completos están relacionados por un único isomorfismo de cuerpos ordenados.
-
-Podemos condensar el resultado central del capítulo:
-
-$$
-\boxed{
-\text{EXISTENCIA}
-+
-\text{UNICIDAD HASTA ÚNICO ISOMORFISMO}
-=
-\text{JUSTIFICACIÓN ESTRUCTURAL DE }\mathbb R.
-}
-$$
-
-Desde el punto de vista matemático, esto es lo que autoriza hablar de **los números reales** sin convertir una construcción concreta en una definición ontológica obligatoria.
-
-Las cortaduras son una realización.
-
-La estructura de cuerpo ordenado completo es lo que todas las realizaciones comparten.
-
-La figura [C00-F10](#fig-anm-c00-f10) concentra esta lectura en un único mapa visual.
+La existencia procede de las cortaduras y la propiedad del supremo demostrada en §0.8. La unicidad identifica estructuras aunque sus elementos tengan representaciones conjuntistas diferentes. Al tomar $F=G$, la identidad ya es un isomorfismo; por unicidad, todo automorfismo de cuerpo ordenado de $F$ es la identidad.
 
 ![El transporte F→G pasa por la traza racional común; el transporte simétrico produce la inversa y fuerza la unicidad del isomorfismo.](../../assets/books/anm/C00-F10.svg){#fig-anm-c00-f10 fig-alt="Tres universos F, Q y G muestran x→Aₓ→φ(x) y el transporte simétrico y→A_y→ψ(y); un panel final distingue igualdad literal, existencia de isomorfismo y unicidad."}
 
-El estado narrativo final es:
+La fórmula $\phi(x)=\sup_G\iota_G(A_x^F)$ determina un valor único. Calcularlo a partir de una representación concreta exige información adicional sobre cómo se presentan elementos, trazas y supremos; el teorema estructural no suministra automáticamente esos procedimientos. Las cortaduras nos permitieron construir un modelo y comprobar su existencia. La comparación con cualquier otro modelo nos permite trabajar con la estructura común y utilizar el símbolo $\mathbb R$ sin tener que fijar para siempre una representación particular de sus elementos.
 
-```text
-EXISTENCE_QUESTION = CLOSED
-UNIQUENESS_QUESTION = CLOSED
-REAL_NUMBER_STRUCTURE = CANONICAL_UP_TO_UNIQUE_ORDERED_FIELD_ISOMORPHISM
-```
+## Lectura complementaria
+
+[*La construcción de los reales*](https://matematicaabierta.cl/libros/otros/la-construccion-de-los-reales.html) ofrece otra ruta de demostración de la unicidad mediante operaciones con conjuntos y supremos, y desarrolla operaciones sobre cortaduras mediante recintos racionales. Puede leerse después de este capítulo para comparar estrategias y estudiar sus comprobaciones adicionales. La [guía de lectura](https://matematicaabierta.cl/blog/la-construccion-de-los-reales-existencia-unicidad-y-dos-caminos.html) explica la relación entre ambas exposiciones y da acceso al libro completo, con sus 78 ejercicios resueltos.
 
 ### Antes de cerrar el manuscrito del capítulo
 

@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: 'Capítulo 16 — Compacidad: del control local al control finito'
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,31 +28,31 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-16)
 
-Una cubierta abierta puede contener infinitos controles locales. La compacidad exige que, para cada cubierta dada, baste un conjunto finito de sus índices para proteger todos los puntos. Ese paso de lo local a lo finito permitirá convertir continuidad en extremos alcanzados y márgenes positivos.
+Si una función continua nunca se anula, cada punto dispone de una vecindad donde sus valores permanecen separados de cero. Esos márgenes locales pueden reducirse al variar el punto y no dar una barrera positiva común. En un dominio compacto no vacío, la función alcanzará un mínimo positivo de su magnitud. El recurso que permite obtener esa conclusión consiste en reducir cualquier cubierta abierta dada a una subfamilia finita que todavía cubra todo el dominio.
 
-Partimos de abiertos y cerrados de C04, extracción de sucesiones dadas de C08 y continuidad de C14, con supremo de C00, límites de C06 y tipos de C12 como interfaces heredadas. Primero probaremos que un segmento es compacto usando supremo; después deduciremos Heine–Borel sin usar sucesiones. Distinguiremos extracción de una ruta dada y selección de una ruta nueva. Las imágenes continuas, los extremos y las inversas se tratarán por cubiertas y cerradura. No usamos continuidad uniforme ni derivadas. La recíproca secuencial general se declara condicional a CC(R); para una enumeración dada se construyen los testigos por mínimos de índices.
+La prueba comenzará con segmentos y el supremo de C00, usando los abiertos de C04 sin recurrir a una equivalencia secuencial. Heine–Borel permitirá después reconocer los compactos reales por cerradura y acotación. La extracción de sucesiones dadas de C08 y la continuidad de C14, con las herramientas de C06 y C12, tendrán funciones distintas en las consecuencias. La recíproca secuencial general mantendrá explícita CC(R), o una enumeración sobreyectiva dada cuando esté disponible; no se utilizarán continuidad uniforme ni derivadas.
 
 ## 16.1. Una cubierta dada y una reducción finita
 
 []{#MA-SEC-ANM-01-016-001}
 
-En C14 un punto recibía un radio de control; en C15 la ausencia de separaciones producía valores intermedios. Ahora buscamos otra forma de pasar de información local a una conclusión global: que una familia de vecindades pueda reducirse a un número finito de ellas, sin dejar puntos sin cubrir.
+En una cubierta, cada punto está en algún abierto de la familia. La dificultad es conservar esa cobertura de todos los puntos usando sólo finitos miembros originales. Para un conjunto fijo podemos encontrar una cubierta finita cómoda, pero la compacidad debe responder también a cualquier otra cubierta que se nos entregue.
 
 **Definición.** Una cubierta abierta de $K\subseteq\mathbb R$ es una familia dada $U:I\to\mathcal P(\mathbb R)$, cuyos miembros $U_i$ son abiertos reales, tal que
 
 $$K\subseteq\bigcup_{i\in I}U_i.$$
 
-La cobertura significa $\forall x\in K\;\exists i\in I:\;x\in U_i$. No presupone una función que elija un índice para cada punto. Una **subcubierta finita** es una restricción a un conjunto finito $J\subseteq I$ que todavía cubre $K$. Se conservan miembros de la familia original; no se reemplazan por nuevos abiertos. Índices diferentes pueden tener el mismo abierto asociado.
+La inclusión significa $\forall x\in K\;\exists i\in I:\;x\in U_i$. Para un punto fijado podemos usar un índice que lo cubra, sin disponer por ello de una función que seleccione índices simultáneamente para todos los puntos. Una **subcubierta finita** restringe la misma familia a un conjunto finito $J\subseteq I$ y conserva cobertura de todo $K$. Sus abiertos deben proceder de la cubierta recibida; no se sustituyen por nuevos abiertos. También puede haber índices distintos asociados al mismo abierto.
 
-**Compacidad.** $K$ es compacto si **toda** cubierta abierta dada de $K$ admite una subcubierta finita. El orden de cuantificadores es: familia arbitraria completa, luego un conjunto finito de índices, luego cobertura de todos los puntos. Exhibir una única cubierta finita no prueba compacidad: $\{\mathbb R\}$ cubre finitamente cualquier conjunto real. Para refutarla, en cambio, basta una cubierta concreta sin ninguna reducción finita.
+**Compacidad.** $K$ es compacto si **toda** cubierta abierta dada de $K$ admite una subcubierta finita. Primero se recibe la familia arbitraria, después se obtiene un conjunto finito de sus índices y con ellos se debe cubrir cada punto. La familia $\{\mathbb R\}$ cubre finitamente cualquier conjunto real, pero eso sólo verifica una elección particular de cubierta. Para negar compacidad basta, en cambio, una cubierta concreta que ninguna subfamilia finita consiga reducir.
 
-![Los abiertos U1=(−1/4,2/5), U2=(3/10,4/5), U3=(7/10,5/4) y U4=(1/5,3/5) cubren \[0,1\]. J={1,2,3} basta, incluidos los extremos. Esta verificación particular no demuestra por sí sola compacidad; la definición cuantifica sobre toda cubierta.](../../assets/books/anm/C16/C16-F01.svg){#fig-anm-c16-f01 fig-alt="Los abiertos U1=(−1/4,2/5), U2=(3/10,4/5), U3=(7/10,5/4) y U4=(1/5,3/5) cubren \[0,1\]. J={1,2,3} basta, incluidos los extremos. Esta verificación particular no demuestra por sí sola compacidad; la definición cuantifica sobre toda cubierta."}
+![Los abiertos U1=(−1/4,2/5), U2=(3/10,4/5), U3=(7/10,5/4) y U4=(1/5,3/5) cubren \[0,1\]. J={1,2,3} basta, incluidos los extremos. Esta verificación particular no demuestra por sí sola compacidad; la definición cuantifica sobre toda cubierta.](../../assets/books/anm/revision-20261016/C16/C16-F01.svg){#fig-anm-c16-f01 fig-alt="Cuatro ventanas abiertas sobre un segmento cerrado. Las primeras tres se solapan y protegen los extremos cero y uno; la cuarta puede descartarse."}
 
 **R1. Casos finitos y una primera fuga.** El vacío es compacto: de cualquier cubierta tomamos $J=\varnothing$, cuya unión cubre el vacío. Para un singleton $\{a\}$, la cobertura proporciona un índice $i$ con $a\in U_i$; $J=\{i\}$ basta. Una unión de dos compactos es compacta: una cubierta de la unión cubre por separado ambas piezas, que entregan conjuntos finitos $J_1,J_2$; la unión finita $J_1\cup J_2$ cubre todo. Inducción finita da compacidad de conjuntos finitos y de uniones finitas de compactos. No se está escogiendo una subcubierta por cada miembro de una familia infinita.
 
-La recta no es compacta. Los abiertos $U_n=(-(n+1),n+1)$, $n\in\mathbb N$, la cubren por arquimedianidad. Para un conjunto finito no vacío de índices $J$, existe $m=\max J$; todos sus miembros están en $U_m$, y $m+2$ queda fuera. La subfamilia vacía tampoco cubre la recta. Se ha refutado la posibilidad de cualquier $J$ finito en esta cubierta.
+La recta admite una cubierta sin reducción finita. Los abiertos $U_n=(-(n+1),n+1)$, para $n\in\mathbb N$, cubren cada real por arquimedianidad. Si $J\subseteq\mathbb N$ es finito y no vacío, tiene máximo $m$, y cada $U_j$ seleccionado está contenido en $U_m$. El punto $m+2$ queda fuera de toda la unión seleccionada. La subfamilia vacía tampoco cubre la recta, así que hemos descartado todos los conjuntos finitos de índices para esta cubierta.
 
-**Herramienta finita.** Un conjunto finito no vacío de reales tiene mínimo y máximo: se ordena una lista finita comparando dos valores en cada paso. Si sus valores son todos positivos, el mínimo es positivo porque es uno de ellos. Para una familia infinita positiva esto no vale: $1/(n+1)>0$ para todo $n$, pero su ínfimo es cero. La compacidad será valiosa precisamente porque entrega un conjunto finito concreto antes de tomar un mínimo.
+Un conjunto finito no vacío de reales tiene mínimo y máximo: basta recorrer una lista finita y conservar en cada comparación el menor y el mayor encontrados. El mínimo es uno de los valores de la lista, de modo que si todos son positivos, también lo es él. Para los infinitos radios $1/(n+1)$, cualquier candidato positivo deja de ser cota inferior al encontrar un recíproco menor; su ínfimo es cero. La reducción a finitos controles será la que permita conservar un margen positivo al reunirlos.
 
 ### Microcontroles
 
@@ -282,6 +282,7 @@ Por arquimedianidad cada real está en algún $[-n,n]$, así la unión es $\math
 Cada real tiene magnitud menor o igual que algún natural y por eso pertenece a uno de los segmentos. Esta identidad de la unión sitúa el ejemplo exactamente en la recta, cuyo fallo de compacidad ya se muestra por una cubierta. No basta que cada pieza individual admita reducciones: sus listas pueden crecer sin una cota finita común al recorrer todas las piezas.
 
 </details>
+
 ## 16.2. El supremo prolonga los segmentos cubiertos
 
 []{#MA-SEC-ANM-01-016-002}
@@ -290,23 +291,23 @@ Cada real tiene magnitud menor o igual que algún natural y por eso pertenece a 
 
 $$S=\{x\in[a,b]:[a,x]\text{ admite una subcubierta finita de }U\}.$$
 
-Este conjunto guarda una propiedad existencial, no una elección $x\mapsto J_x$. Contiene $a$, porque algún abierto de la cubierta contiene ese punto y cubre el segmento degenerado $[a,a]$. Está acotado por $b$. La completitud de C00 proporciona $c=\sup S$ con $a\le c\le b$.
+Pertenecer a $S$ significa que existe alguna reducción finita para ese segmento; no se ha definido una asignación $x\mapsto J_x$. Un abierto que contiene $a$ cubre $[a,a]$, así que $a\in S$. Además $S\subseteq[a,b]$ está acotado por $b$. La completitud de C00 proporciona $c=\sup S$, y las dos propiedades $a\in S$ y $b$ cota dan $a\le c\le b$. Podemos aplicar la cubierta a $c$ aunque todavía no sepamos que pertenece a $S$.
 
-La cobertura proporciona un índice $i_c$ con $c\in U_{i_c}$. La apertura da $r>0$ tal que $(c-r,c+r)\subseteq U_{i_c}$. La propiedad aproximante del supremo entrega $t\in S$ con $c-r/2<t\le c$: si no hubiera tal $t$, el real $c-r/2<c$ sería una cota superior de $S$, contradicción.
+Fijemos un índice $i_c$ con $c\in U_{i_c}$. Su apertura da $r>0$ con $(c-r,c+r)\subseteq U_{i_c}$. Para aprovechar ese margen buscamos un segmento ya cubierto que llegue cerca de $c$. Como $c-r/2<c$ no es cota superior de $S$, existe $t\in S$ con $c-r/2<t\le c$. Este testigo puede ser el propio $c$ si pertenece a $S$; la prueba no necesita que la distancia sea positiva.
 
-Fijamos una subcubierta finita $J_t$ de $[a,t]$, disponible para este único $t$. Definimos
+Para ese único $t$, la definición de $S$ entrega una subcubierta finita $J_t$ de $[a,t]$. Prolongamos hasta
 
 $$d=\min(b,c+r/2).$$
 
-Entonces $c\le d\le b$, y para todo $z\in[t,d]$ tenemos $c-r<z<c+r$, pues $t>c-r/2$ y $d\le c+r/2$. Así $[t,d]\subseteq U_{i_c}$. Los índices $J_t\cup\{i_c\}$ son finitos y cubren $[a,d]$: hasta $t$ actúa la cobertura anterior, y desde $t$ hasta $d$ el nuevo abierto. Por definición, $d\in S$.
+La fórmula garantiza $c\le d\le b$, y para cualquier $z\in[t,d]$ tenemos $z\ge t>c-r/2>c-r$ y $z\le d\le c+r/2<c+r$. Por tanto el abierto $U_{i_c}$ contiene todo el tramo $[t,d]$. Los índices $J_t\cup\{i_c\}$ siguen siendo finitos y pertenecen a la familia original: cubren $[a,t]$ con la reducción anterior y $[t,d]$ con el nuevo abierto. Como ambos tramos forman $[a,d]$, obtenemos $d\in S$.
 
-![Esquema del caso hipotético c<b. Con c−r/2<t≤c y d=min(b,c+r/2), el conjunto Jt más el índice que cubre c cubre \[a,d\]. Por tanto d∈S; si c<b, d>c contradice la cota. Cuando c=b, la misma construcción da d=b∈S. Las posiciones son ilustrativas.](../../assets/books/anm/C16/C16-F02.svg){#fig-anm-c16-f02 fig-alt="Esquema del caso hipotético c&lt;b. Con c−r/2&lt;t≤c y d=min(b,c+r/2), el conjunto Jt más el índice que cubre c cubre \[a,d\]. Por tanto d∈S; si c&lt;b, d&gt;c contradice la cota. Cuando c=b, la misma construcción da d=b∈S. Las posiciones son ilustrativas."}
+![Esquema del caso hipotético c<b. Con c−r/2<t≤c y d=min(b,c+r/2), el conjunto Jt más el índice que cubre c cubre \[a,d\]. Por tanto d∈S; si c<b, d>c contradice la cota. Cuando c=b, la misma construcción da d=b∈S. Las posiciones son ilustrativas.](../../assets/books/anm/revision-20261016/C16/C16-F02.svg){#fig-anm-c16-f02 fig-alt="Segmento previamente cubierto hasta t y prolongación roja hasta d dentro del abierto que contiene c. Se distinguen c, d y el extremo final b."}
 
-Como $c$ es cota superior, $d\le c$. Si $c<b$, la fórmula del mínimo da $d>c$, contradicción. Por tanto $c=b$. Pero la prueba aporta algo más que esa igualdad: el punto construido $d$ pertenece a $S$ y, al ser $c=b$, también $d=b$. Hemos demostrado $b\in S$, cuya definición entrega la subcubierta finita buscada de $[a,b]$.
+Si $c<b$, tanto $b$ como $c+r/2$ son mayores que $c$, y su mínimo $d$ también lo es. Esto contradice que $c$ acote a $S$, pues acabamos de probar $d\in S$. Luego $c=b$. La construcción conserva además la pertenencia de $d$: al sustituir $c=b$ resulta $d=b\in S$, cuya definición proporciona una subcubierta finita de todo $[a,b]$.
 
-El último paso es esencial. De $\sup S=b$ no se deduce por sí solo $b\in S$; $S=[a,b)$, cuando $a<b$, ilustra ese error lógico. Aquí la apertura de un abierto que contiene el extremo final cierra la cobertura. El mismo argumento incluye $a=b$, aunque R1 ya resuelve ese caso; si la notación $[a,b]$ se usa con $a>b$, denota el vacío y R1 vuelve a aplicarse.
+La igualdad $\sup S=b$ no habría bastado para terminar: cuando $a<b$, el conjunto $[a,b)$ tiene ese supremo y no lo contiene. La apertura en torno al extremo es lo que ha permitido probar pertenencia, además de identificar la cota. Para $a=b$ basta el abierto que cubre el único punto, aunque el argumento también lo incluye; con la convención $[a,b]=\varnothing$ si $a>b$, sirve directamente la subfamilia vacía.
 
-No se eligió un abierto para cada punto ni una subcubierta para cada segmento. Se fijaron sólo los testigos asociados a $c$ y a un $t$ concreto. El intervalo y la completitud localizaron la frontera; la apertura impidió que la reducción finita se detuviera antes del final y permitió alcanzarlo.
+Los testigos utilizados fueron un índice para $a$, otro para $c$, un radio de este último abierto y un punto aproximante $t$ con una reducción finita de su segmento. No se necesitó elegir un abierto por cada punto ni una reducción por cada miembro de $S$. La prolongación de un único segmento cercano a la frontera resolvió la cobertura completa.
 
 ### Microcontroles
 
@@ -534,29 +535,30 @@ No cubre $[0,1]$ porque ningún miembro contiene cero. Sí cubre $(0,1)$: dado u
 La ausencia de cero de todos los abiertos invalida cobertura del segmento cerrado, aunque cubran cada punto positivo. Para el intervalo abierto, el testigo fuera de cualquier reducción finita muestra un fallo real de compacidad. R2 se aplica a familias que cubren también los extremos del segmento. La misma familia puede ser una cubierta de un subconjunto y no serlo del conjunto mayor.
 
 </details>
+
 ## 16.3. Heredar compacidad sin perder índices
 
 []{#MA-SEC-ANM-01-016-003}
 
-Una parte de un compacto puede dejar escapar puntos de adherencia. Antes de conocer Heine–Borel necesitamos identificar qué partes conservan la propiedad de cubiertas.
+Estar dentro de un compacto no garantiza heredar su compacidad: un subconjunto puede omitir una frontera a la que se acercan sus puntos. La cerradura relativa permitirá ampliar cualquier cubierta de ese subconjunto a una del compacto y después recuperar índices de la cubierta original.
 
 **R3. Un cerrado relativo de un compacto es compacto.** Sea $K$ compacto, $A\subseteq K$ cerrado relativo. Por C04/C14 existe un cerrado real $F$ con $A=K\cap F$. Fijamos una cubierta abierta arbitraria $(U_i)_{i\in I}$ de $A$. Puede no cubrir $K\setminus A$. Para cubrir lo que falta añadimos el abierto completo $V=\mathbb R\setminus F$.
 
-Si $x\in K$, o está en $F$, y entonces pertenece a $A$ y a algún $U_i$, o está en $V$. Por ello la familia ampliada cubre $K$. Para que el índice adicional no colisione con uno antiguo, etiquetamos los índices originales como $(i,0)$ y reservamos un índice nuevo $*$ con etiqueta distinta. En la familia ampliada, $(i,0)$ conserva el valor $U_i$ y $*$ tiene valor $V$. Compacidad entrega un conjunto finito de índices ampliados.
+Para cada $x\in K$, si $x\in F$, entonces $x\in A$ y lo cubre algún $U_i$; si $x\notin F$, lo cubre $V$. La familia ampliada cubre así $K$. Para distinguir la procedencia de sus miembros usamos los índices $(i,0)$ para los antiguos y el índice $(\varnothing,1)$ para el añadido. Sus valores son respectivamente $U_i$ y $V$, y las etiquetas diferentes impiden colisiones aunque coincidan algunos abiertos como conjuntos. La compacidad de $K$ entrega un conjunto finito de estos índices ampliados.
 
-Retenemos los índices originales que aparecen allí; la proyección $(i,0)\mapsto i$ conserva finitud. Para un $x\in A$, ningún abierto adicional puede ser el único que lo cubra: $x\in F$ implica $x\notin V$. Por tanto un índice original de la lista finita cubre $x$. Los índices retenidos dan una subcubierta finita de la cubierta original de $A$. Puesto que ésta era arbitraria, $A$ es compacto.
+Retenemos los índices de la forma $(i,0)$ y los proyectamos a sus $i$ originales, obteniendo un conjunto finito $J\subseteq I$. Si $x\in A$, entonces $x\in F$ y $x\notin V$: el índice excepcional no puede cubrirlo. Alguno de los originales seleccionados debe hacerlo, por lo que $J$ cubre todo $A$. Como la cubierta de $A$ era arbitraria, queda probada su compacidad.
 
-El abierto añadido debe cubrir **todo** $K\setminus A$, no sólo la zona próxima a un extremo de un segmento ambiente. Y se retiran índices, no necesariamente un valor de abierto de una colección sin etiquetas: si un valor estaba repetido, las etiquetas mantienen qué miembros procedían de la cubierta original.
+El abierto añadido cubre todo $K\setminus A$. Un recorte cerca de un extremo de un segmento ambiente podría dejar parte de ese complemento sin cubrir e impedir la aplicación de compacidad. Al volver a la cubierta original se retira un índice etiquetado concreto, no todos los índices que tengan un mismo abierto como valor.
 
-**Primera reutilización.** Si $F$ es cerrado real, $K\cap F$ es compacto por R3. Todo cerrado acotado contenido en un segmento será, por tanto, candidato para la dirección suficiente de Heine–Borel. Para $K=[-2,2]$ y $F=(-\infty,-1]\cup[1,\infty)$ obtenemos el compacto $[-2,-1]\cup[1,2]$, aunque tenga dos piezas.
+En particular, si $F$ es cerrado real y $K$ es compacto, $K\cap F$ es compacto. Para $K=[-2,2]$ y $F=(-\infty,-1]\cup[1,\infty)$ obtenemos $[-2,-1]\cup[1,2]$. En la prueba de herencia, el abierto añadido es $(-1,1)$ y cubre la zona central que falta. El argumento no necesita que el cerrado relativo sea un intervalo.
 
-La hipótesis de cerradura no se puede quitar. El subconjunto $(0,1)$ de $[0,1]$ admite la cubierta
+Para ver qué puede fallar sin cerradura relativa, consideremos $(0,1)\subseteq[0,1]$ y la familia
 
 $$U_n=(1/(n+2),2),\qquad n\in\mathbb N.$$
 
-Para cada $x\in(0,1)$, arquimedianidad permite $n$ con $1/(n+2)<x$, de modo que la familia cubre. Una subfamilia finita no vacía tiene índice máximo $m$, y su unión es $U_m$ porque los abiertos aumentan con $n$. El punto $1/(2(m+2))$ pertenece a $(0,1)$ y queda fuera de esa unión. Ninguna subfamilia finita cubre el dominio; la vacía tampoco. Éste es el escape que la cerradura relativa impediría.
+Cada $x\in(0,1)$ supera algún $1/(n+2)$ por arquimedianidad, así que la familia cubre ese dominio. Los abiertos crecen con el índice. Para una subfamilia finita no vacía, su máximo índice $m$ da unión exactamente $U_m$, y el punto $1/(2(m+2))$ pertenece a $(0,1)$ pero queda por debajo del extremo izquierdo de $U_m$. No está cubierto. La subfamilia vacía tampoco cubre el intervalo. Este subconjunto no es compacto; la misma familia ni siquiera cubre el segmento cerrado, porque ninguno de sus abiertos contiene cero.
 
-![Un=(1/(n+2),2), n≥0, cubre (0,1). Toda subfamilia finita no vacía tiene máximo m y omite x=1/\[2(m+2)\]. Arriba se ilustra m=3; abajo el acercamiento de umbrales a cero es esquemático. El caso de subfamilia vacía se descarta por no vacuidad de K.](../../assets/books/anm/C16/C16-F03.svg){#fig-anm-c16-f03 fig-alt="Un=(1/(n+2),2), n≥0, cubre (0,1). Toda subfamilia finita no vacía tiene máximo m y omite x=1/\[2(m+2)\]. Arriba se ilustra m=3; abajo el acercamiento de umbrales a cero es esquemático. El caso de subfamilia vacía se descarta por no vacuidad de K."}
+![Un=(1/(n+2),2), n≥0, cubre (0,1). Toda subfamilia finita no vacía tiene máximo m y omite x=1/\[2(m+2)\]. Arriba se ilustra m=3; abajo el acercamiento de umbrales a cero es esquemático. El caso de subfamilia vacía se descarta por no vacuidad de K.](../../assets/books/anm/revision-20261016/C16/C16-F03.svg){#fig-anm-c16-f03 fig-alt="Un segmento con ambos extremos abiertos y un punto omitido por una ventana de índice máximo. Otra fila indica ventanas que se acercan a cero sin alcanzarlo."}
 
 ### Microcontroles
 
@@ -784,31 +786,32 @@ La intersección $K\cap F$ es cerrada relativa a $K$, y R3 la hace compacta. Par
 Después de Heine–Borel, cada miembro compacto es cerrado real, y una intersección arbitraria de cerrados sigue siendo cerrada. Fijar un único miembro de la familia no vacía aporta un ambiente compacto que contiene toda la intersección. No se requiere que haya una entrada común ni seleccionar un miembro por cada índice. La familia vacía no ofrece ese ambiente y su intersección convencional es la recta no compacta.
 
 </details>
+
 ## 16.4. Heine–Borel: cerrar las dos direcciones
 
 []{#MA-SEC-ANM-01-016-004}
 
 **R4. En la recta real, compacto equivale a cerrado y acotado.** Probaremos las dos necesidades desde cubiertas y la suficiencia desde R2/R3. No intervienen sucesiones ni una equivalencia secuencial anticipada.
 
-**Acotación necesaria.** Sea $K$ compacto no vacío. La cubierta $U_n=(-(n+1),n+1)$ cubre toda la recta y también $K$. Una subcubierta finita debe tener índices no vacíos. Si $m$ es su máximo, $K\subseteq U_m\subseteq[-(m+1),m+1]$. Para $K=\varnothing$ sirven las cotas cero. Aquí el máximo se toma después de obtener finitud, no sobre la familia infinita original.
+Para probar acotación, supongamos primero $K\ne\varnothing$. La cubierta $U_n=(-(n+1),n+1)$ de la recta cubre también $K$, y la compacidad proporciona un conjunto finito de índices $J$. No puede ser vacío porque cubre un punto de $K$. Su máximo $m$ domina a los índices seleccionados y da $K\subseteq U_m\subseteq[-(m+1),m+1]$. Sólo después de la reducción finita hemos tomado ese máximo. El conjunto vacío se acota directamente, por ejemplo con cero.
 
-**Cerradura necesaria.** Fijemos $p\notin K$, con $K$ no vacío. Los abiertos determinados por fórmula
+Para demostrar cerradura, fijemos $p\notin K$ y supongamos $K\ne\varnothing$. Definimos los abiertos
 
 $$V_n=\{x\in\mathbb R:|x-p|>1/(n+1)\},\qquad n\in\mathbb N,$$
 
-son uniones de dos rayos abiertos. Cubren $K$: para cada $x\in K$, $|x-p|>0$, y algún recíproco $1/(n+1)$ es menor que esa distancia. Una subcubierta finita con máximo índice $m$ da $K\subseteq V_m$, pues los $V_n$ aumentan. Por consiguiente, la bola de centro $p$ y radio $1/(m+1)>0$ no toca $K$. Se ha construido una vecindad del punto exterior dentro del complemento. Como $p$ era arbitrario, $\mathbb R\setminus K$ es abierto y $K$ cerrado. Si $K$ es vacío, su complemento es la recta y ya es abierto.
+Cada $V_n$ es la unión de los rayos $(-\infty,p-1/(n+1))$ y $(p+1/(n+1),\infty)$. Cubren $K$ porque, fijado $x\in K$, la distancia $|x-p|>0$ supera algún recíproco. La compacidad da una subcubierta finita no vacía y su máximo índice $m$ domina a los demás, ya que los $V_n$ aumentan. Así $K\subseteq V_m$, y la bola de $p$ de radio $1/(m+1)>0$ es disjunta de $K$. Cada punto exterior dispone de una bola dentro del complemento, que es por tanto abierto. El vacío también es cerrado, pues su complemento es toda la recta.
 
-**Suficiencia.** Supongamos $K$ cerrado y acotado. Hay $M>0$ tal que $K\subseteq[-M,M]$. Ese segmento es compacto por R2. La igualdad $K=[-M,M]\cap K$ presenta a $K$ como cerrado relativo del segmento, y R3 prueba su compacidad. Se incluyen los conjuntos vacíos.
+Para la suficiencia, si $K$ es cerrado y acotado, tomamos $M>0$ con $K\subseteq[-M,M]$. El segmento es compacto por R2 y $K=[-M,M]\cap K$ es cerrado relativo en él. R3 da compacidad de $K$, incluido el caso vacío. Las dos condiciones geométricas se han utilizado por separado: la acotación da el ambiente compacto y la cerradura permite heredar su propiedad.
 
-![Heine–Borel real exige cerradura y acotación. El segmento cerrado cumple ambas; (0,1\] pierde cerradura y R pierde acotación. La unión de los dos segmentos cumple ambas aunque tiene un hueco. Las pruebas generales preceden a la clasificación.](../../assets/books/anm/C16/C16-F04.svg){#fig-anm-c16-f04 fig-alt="Heine–Borel real exige cerradura y acotación. El segmento cerrado cumple ambas; (0,1\] pierde cerradura y R pierde acotación. La unión de los dos segmentos cumple ambas aunque tiene un hueco. Las pruebas generales preceden a la clasificación."}
+![Heine–Borel real exige cerradura y acotación. El segmento cerrado cumple ambas; (0,1\] pierde cerradura y R pierde acotación. La unión de los dos segmentos cumple ambas aunque tiene un hueco. Las pruebas generales preceden a la clasificación.](../../assets/books/anm/revision-20261016/C16/C16-F04.svg){#fig-anm-c16-f04 fig-alt="Cuatro dominios muestran extremos incluidos, un extremo omitido, una recta ilimitada y dos segmentos cerrados separados."}
 
-Heine–Borel es un teorema que identifica una propiedad universal de cubiertas con dos condiciones geométricas; no redefinimos retrospectivamente la compacidad. Tampoco lo aplicamos a espacios arbitrarios: aquí el orden completo y la geometría real son parte del argumento.
+Heine–Borel caracteriza mediante cerradura y acotación la propiedad de cubiertas definida al principio. Las pruebas anteriores han usado el orden completo y las bolas de la recta; el resultado no se está afirmando para espacios arbitrarios ni se ha obtenido de una recíproca secuencial.
 
-La acotación sola falla en $(0,1)$; la cerradura sola falla en $\mathbb R$. $[-2,-1]\cup[1,2]$ es compacto y no conexo, mientras $(0,1)$ es conexo por C15 y no compacto. Son propiedades distintas. El conjunto
+La acotación sin cerradura falla en $(0,1)$ y la cerradura sin acotación falla en $\mathbb R$. También son distintas compacidad y conexidad: $[-2,-1]\cup[1,2]$ es cerrado y acotado, pero el corte cero lo separa; $(0,1)$ es un intervalo conexo por C15 y no es compacto. El conjunto
 
 $$K=\{0\}\cup\{1/(n+1):n\in\mathbb N\}$$
 
-también es compacto. Está en $[0,1]$. Para probar cerradura sin una recíproca secuencial, fijamos $p\notin K$. Si $p$ está fuera de $[0,1]$, una bola pequeña evita el segmento. Si $0<p\le1$, una cola de los recíprocos es menor que $p/2$ y queda lejos de $p$; los términos anteriores son una lista finita, ninguno igual a $p$, y el mínimo de sus distancias junto con $p/2$ es positivo. La mitad de ese mínimo da una bola disjunta de $K$. El complemento es abierto; Heine–Borel concluye compacidad. Quitar cero deja un conjunto acotado no cerrado, porque los recíprocos entran en toda vecindad de cero, y destruye compacidad.
+es otro compacto. Está contenido en $[0,1]$; para demostrar su cerradura fijamos un punto exterior $p$. Si $p<0$ o $p>1$, la mitad de su distancia al segmento da una bola que evita $K$. En otro caso $0<p<1$, pues cero y uno pertenecen al conjunto. Elegimos $N\ge1$ con $1/(N+1)<p/2$. Toda la cola de recíprocos queda por debajo de $p/2$ y dista de $p$ más que $p/2$; cero dista $p$. Las distancias de $p$ a los términos del prefijo $n<N$ son finitas en número y positivas. La mitad del mínimo de esas distancias y de $p/2$ da un radio que evita prefijo, cola y cero. El complemento es abierto y Heine–Borel prueba compacidad. Quitar cero destruye cerradura, porque cada bola suya contiene un recíproco, y con ella destruye compacidad.
 
 ### Microcontroles
 
@@ -1036,6 +1039,7 @@ $[-2,-1]\cup[1,2]$ es cerrado y acotado, compacto por R4; se separa por los rayo
 El compacto con dos piezas obtiene sus propiedades de cerradura y acotación, pero el corte cero muestra su separación. El intervalo abierto obtiene conexidad de intervalaridad, mientras una frontera ausente le impide cerradura y compacidad. Los dos ejemplos son necesarios para descartar las dos implicaciones posibles. Las propiedades pueden coexistir en otros dominios sin que una caracterice a la otra.
 
 </details>
+
 ## 16.5. Sucesiones: extraer y seleccionar son tareas distintas
 
 []{#MA-SEC-ANM-01-016-005}
@@ -1044,7 +1048,7 @@ El compacto con dos piezas obtiene sus propiedades de cerradura y acotación, pe
 
 **R5, dirección directa.** Todo compacto real es secuencialmente compacto. Por R4 es cerrado y acotado. Una sucesión dada de puntos de $K$ es acotada, y Bolzano–Weierstrass de C08 proporciona una subsucesión convergente en $\mathbb R$. Su límite está en $K$: si estuviera fuera, la apertura del complemento daría una bola exterior que la convergencia obligaría a ocupar a términos que pertenecen a $K$, contradicción. La extracción actúa sobre una sucesión ya dada mediante el mecanismo de C08, con bisección e índices naturales mínimos; no fabrica puntos de un conjunto arbitrario.
 
-En $(0,1]$, la sucesión $x_n=1/(n+1)$ converge a cero y toda subsucesión también. Por unicidad, ninguna converge a un miembro de $(0,1]$. Ese dominio no es secuencialmente compacto. Añadir cero restaura cerradura y compacidad, y por R5 toda sucesión dada tiene una extracción adecuada, no sólo esta sucesión especial.
+En $(0,1]$, la sucesión dada $x_n=1/(n+1)$ refuta compacidad secuencial. Para cualquier selector estrictamente creciente $\varphi$, se cumple $\varphi(k)\ge k$ por inducción y $0<x_{\varphi(k)}\le1/(k+1)\to0$. Toda extracción tiene límite cero; por unicidad, ninguna puede converger además a un miembro de $(0,1]$. Al añadir cero a los recíprocos obtenemos el compacto ya probado y R5 garantiza una extracción con límite perteneciente al conjunto para cualquier sucesión dada en él.
 
 **Recíproca con alcance.** Para un conjunto arbitrario, probar «secuencialmente compacto implica compacto» requiere, en el argumento siguiente, la hipótesis adicional $\mathrm{CC}(\mathbb R)$: toda familia numerable dada de subconjuntos reales no vacíos admite una selección simultánea. Esta hipótesis es local al enunciado condicional; no se adopta globalmente.
 
@@ -1052,15 +1056,15 @@ Si $K$ no fuera acotado, los conjuntos
 
 $$E_n=\{x\in K:|x|>n\}$$
 
-serían no vacíos. Bajo $\mathrm{CC}(\mathbb R)$ escogemos una sucesión $x_n\in E_n$. Toda subsucesión con índices crecientes cumple $|x_{\varphi(k)}|>\varphi(k)\ge k$, luego es no acotada y no puede converger; contradice compacidad secuencial. Así $K$ es acotado.
+serían no vacíos. Aplicamos aquí $\mathrm{CC}(\mathbb R)$ para definir simultáneamente $x_n\in E_n$. Si alguna subsucesión de índices crecientes $\varphi$ convergiera, sería acotada. Sin embargo, $|x_{\varphi(k)}|>\varphi(k)\ge k$ supera cualquier cota fija para un índice suficientemente grande. Ninguna extracción puede converger, contra compacidad secuencial. Así $K$ es acotado bajo la hipótesis declarada.
 
-Si no fuera cerrado, habría un punto $p\notin K$ adherente a $K$. Los conjuntos $F_n=K\cap(p-1/(n+1),p+1/(n+1))$ serían no vacíos. La misma hipótesis permite una sucesión $z_n\in F_n$, que converge a $p$. Compacidad secuencial entrega una subsucesión con límite $\ell\in K$; como toda subsucesión de una convergente conserva el límite, también converge a $p$. Unicidad da $\ell=p$, contradicción. Así $K$ es cerrado, y R4 lo hace compacto.
+Si $K$ no fuera cerrado, habría un punto adherente $p\notin K$. Los conjuntos $F_n=K\cap(p-1/(n+1),p+1/(n+1))$ son no vacíos. Aplicando la misma hipótesis de selección obtenemos $z_n\in F_n$ y la cota $|z_n-p|<1/(n+1)$ prueba $z_n\to p$. La compacidad secuencial entrega una subsucesión con límite $\ell\in K$, que también converge a $p$ por ser extracción de una sucesión convergente. La unicidad da $\ell=p$, contradicción. Por tanto $K$ es cerrado y R4 lo hace compacto.
 
-Las dos fabricaciones de rutas son el gasto exacto de selección; no lo es la posterior extracción. Si $K\ne\varnothing$ viene con una sobreyección **dada** $e:\mathbb N\to K$, la recíproca se prueba sin ese gasto adicional: en cada $E_n$ o $F_n$ se toma el menor índice $j$ con $e(j)$ en el conjunto requerido, que existe por sobreyectividad y buen orden natural. Esa regla determina la ruta. El vacío se trata aparte. No inferimos una enumeración de un conjunto real arbitrario.
+La selección adicional ha intervenido al fabricar las rutas $x_n$ y $z_n$; la extracción posterior trabaja sobre rutas ya definidas. Si $K\ne\varnothing$ viene con una sobreyección dada $e:\mathbb N\to K$, podemos definirlas sin CC(R): para cada $E_n$ o $F_n$, el conjunto de índices $j$ con $e(j)$ dentro es no vacío y tiene un menor elemento natural único. Evaluar $e$ en ese mínimo determina el término. Los índices de fabricación pueden repetirse; no son los índices crecientes de una extracción. La enumeración es un dato y no se infiere para un conjunto real arbitrario. Para el vacío, la compacidad se comprueba directamente.
 
-![La ruta an=1/(n+1) y cada subsucesión convergen a cero. En (0,1\] ese límite queda fuera; al añadir cero al conjunto de recíprocos queda dentro de un compacto. Sólo se muestran los primeros términos. La recíproca secuencial general requiere CC(R), mientras una enumeración sobreyectiva dada permite mínimos de índices.](../../assets/books/anm/C16/C16-F05.svg){#fig-anm-c16-f05 fig-alt="La ruta an=1/(n+1) y cada subsucesión convergen a cero. En (0,1\] ese límite queda fuera; al añadir cero al conjunto de recíprocos queda dentro de un compacto. Sólo se muestran los primeros términos. La recíproca secuencial general requiere CC(R), mientras una enumeración sobreyectiva dada permite mínimos de índices."}
+![La ruta an=1/(n+1) y cada subsucesión convergen a cero. En (0,1\] ese límite queda fuera; al añadir cero al conjunto de recíprocos queda dentro de un compacto. Sólo se muestran los primeros términos. La recíproca secuencial general requiere CC(R), mientras una enumeración sobreyectiva dada permite mínimos de índices.](../../assets/books/anm/revision-20261016/C16/C16-F05.svg){#fig-anm-c16-f05 fig-alt="Dos filas de puntos recíprocos que se acercan a cero. El límite aparece como círculo vacío en la primera y lleno en la segunda."}
 
-Por tanto disponemos de compacto $\Longleftrightarrow$ cerrado y acotado y de compacto $\Longrightarrow$ secuencialmente compacto sin selección adicional en estas pruebas. La equivalencia con compacidad secuencial se establece bajo $\mathrm{CC}(\mathbb R)$ o con una enumeración dada del dominio no vacío. No afirmamos una equivalencia universal sin su premisa. Ésta es la misma disciplina de selección usada en C13/C14.
+Las pruebas por cubiertas establecieron compacto $\Longleftrightarrow$ cerrado y acotado, y la extracción de una sucesión dada estableció compacto $\Longrightarrow$ secuencialmente compacto. La vuelta secuencial que acabamos de demostrar conserva CC(R) para conjuntos reales arbitrarios, o utiliza la enumeración sobreyectiva dada de un conjunto no vacío. Este alcance no se extiende silenciosamente a una equivalencia universal sin premisa.
 
 ### Microcontroles
 
@@ -1288,6 +1292,7 @@ Si $K$ fuera no acotado, cada $E_n=\{x\in K:|x|>n\}$ sería no vacío. La sobrey
 La enumeración sobreyectiva es un dato adicional: no se deduce de compacidad secuencial ni se construye sin justificación. El buen orden natural determina un índice mínimo para cada condición no vacía y con ello un término único. Los índices de fabricación pueden repetirse y no son los índices de extracción. Una vez fabricadas las rutas, las dos contradicciones prueban acotación y cerradura, suficientes por R4.
 
 </details>
+
 ## 16.6. La continuidad lleva compactos a compactos
 
 []{#MA-SEC-ANM-01-016-006}
@@ -1296,23 +1301,23 @@ La enumeración sobreyectiva es un dato adicional: no se deduce de compacidad se
 
 $$A_i=h^{-1}[V_i]=\{x\in K:f(x)\in V_i\}$$
 
-son abiertas **relativas a $K$**, y cubren $K$. La definición de compacidad pide abiertos de toda la recta. No podemos ignorar ese cambio de ambiente ni escoger sin justificación un abierto ambiente para cada índice.
+son abiertas relativas a $K$ y cubren $K$. La definición que hemos adoptado aplica compacidad a abiertos de la recta, y una preimagen relativa puede no serlo: para la identidad en $[0,1]$, la preimagen de $(-1,1/2)$ es $[0,1/2)$, que contiene cero pero ninguna bola real alrededor de cero. Necesitamos una cubierta ambiental que conserve exactamente las mismas pertenencias dentro de $K$.
 
-La cerradura de $K$, ya probada en R4, resuelve el problema por una fórmula única:
+Como R4 ya demostró que $K$ es cerrado real, definimos para cada índice
 
 $$W_i=(\mathbb R\setminus K)\cup A_i.$$
 
-Cada $W_i$ es abierto real. Un punto fuera de $K$ tiene una bola en el complemento abierto, contenida en $W_i$. Para un punto $x\in A_i$, la apertura relativa da, para este índice y punto fijados, un abierto $O$ con $A_i=K\cap O$. Entonces $x\in O$ y todo punto de $O$ está fuera de $K$ o en $A_i$; por eso $O\subseteq W_i$ proporciona la vecindad necesaria. No construimos una familia elegida $(O_i)$: la familia $(W_i)$ ya está determinada por la fórmula. Además
+Cada $W_i$ es abierto real. Si un punto está fuera de $K$, el complemento abierto proporciona una bola dentro de $W_i$. Para un punto de $A_i$, fijado este índice, la apertura relativa da un abierto real $O$ con $A_i=K\cap O$. Cualquier punto de $O$ está fuera de $K$ o pertenece a $A_i$, de modo que $O\subseteq W_i$ y ofrece una vecindad real del punto. La familia $W$ está definida por una fórmula única: el representante $O$ sólo se usa para acreditar la apertura del índice considerado y no se reúne una familia escogida $(O_i)$. Además,
 
 $$K\cap W_i=A_i.$$
 
-La familia $W$ cubre $K$ porque cada $f(x)$ está en algún $V_i$. Compacidad da un $J\subseteq I$ finito que cubre $K$ mediante los $W_j$. Para cualquier $y\in H$ hay un $x\in K$ con $f(x)=y$. Un índice $j\in J$ cubre ese $x$; como $x\in K\cap W_j=A_j$, obtenemos $y\in V_j$. Los mismos índices finitos cubren $H$ en la cubierta original. Ésta era arbitraria, luego $H$ es compacto.
+La familia $W$ cubre $K$, porque para cada $x\in K$ la salida $f(x)$ está en algún $V_i$ y por tanto $x\in A_i\subseteq W_i$. La compacidad proporciona un conjunto finito $J\subseteq I$ que cubre $K$ con los $W_j$. Fijada cualquier salida $y\in H$, la pertenencia a la imagen entrega una entrada $x\in K$ con $f(x)=y$. Algún $j\in J$ cubre esa entrada y $x\in K\cap W_j=A_j$ implica $y\in V_j$. Los mismos índices finitos cubren así $H$ con los abiertos originales. No se necesita que la entrada de cada salida sea única ni elegir simultáneamente todas esas entradas.
 
-![Para q(x)=x² sobre K=\[−2,−1\]∪\[1,2\], H=\[1,4\]. V1=(1/2,5/2) y V2=(2,9/2) cubren H; sus preimágenes relativas cubren K. Antes de aplicar compacidad se levantan mediante Wi=(R menos K)∪q⁻¹\[Vi\], una fórmula canónica de abiertos reales. No se requiere inyectividad ni elegir un ambiente por índice.](../../assets/books/anm/C16/C16-F06.svg){#fig-anm-c16-f06 fig-alt="Para q(x)=x² sobre K=\[−2,−1\]∪\[1,2\], H=\[1,4\]. V1=(1/2,5/2) y V2=(2,9/2) cubren H; sus preimágenes relativas cubren K. Antes de aplicar compacidad se levantan mediante Wi=(R menos K)∪q⁻¹\[Vi\], una fórmula canónica de abiertos reales. No se requiere inyectividad ni elegir un ambiente por índice."}
+![Para q(x)=x² sobre K=\[−2,−1\]∪\[1,2\], H=\[1,4\]. V1=(1/2,5/2) y V2=(2,9/2) cubren H; sus preimágenes relativas cubren K. Antes de aplicar compacidad se levantan mediante Wi=(R menos K)∪q⁻¹\[Vi\], una fórmula canónica de abiertos reales. No se requiere inyectividad ni elegir un ambiente por índice.](../../assets/books/anm/revision-20261016/C16/C16-F06.svg){#fig-anm-c16-f06 fig-alt="Dos ramas de la parábola sobre un dominio de dos segmentos, con dos bandas de salida que se solapan; debajo aparecen las dos ventanas que cubren el segmento imagen."}
 
-La prueba convierte preimágenes relativas en abiertos ambientales antes de aplicar compacidad; después devuelve índices, no una función inversa. No necesita inyectividad, sucesiones seleccionadas ni compacidad del dominio completo $D$. Por Heine–Borel, $f[K]$ es cerrado y acotado. Así toda continua sobre un compacto tiene valores acotados, incluso si el compacto está formado por varias piezas.
+El paso a $W_i$ permitió aplicar compacidad en su ambiente real y la identidad al recortar devolvió los índices hacia las salidas. No se exigió inyectividad, una sucesión seleccionada ni compacidad de todo $D$, sino sólo del subconjunto $K$. Por Heine–Borel la imagen es cerrada y acotada; en particular, una continua tiene valores acotados sobre cada compacto de su dominio, aunque éste tenga varias piezas.
 
-Las direcciones inversas fallan. Una constante en $\mathbb R$ tiene imagen singleton compacta aunque el dominio no lo sea. Y para $f(x)=1/(1+x^2)$ en $\mathbb R$, continua por C14, el singleton compacto $\{0\}$ tiene preimagen vacía compacta, mientras $\{1\}$ tiene preimagen singleton; ninguno describe la compacidad del dominio. Para ver que una preimagen compacta de salida puede ser no compacta, basta la constante $f:\mathbb R\to\mathbb R$, $f=0$: la preimagen de $\{0\}$ es toda $\mathbb R$. Preservación de imagen no significa preservación de preimagen.
+La conclusión no se invierte: una constante en $\mathbb R$ es continua y tiene imagen singleton compacta, mientras su dominio no es compacto. Tampoco hay preservación universal por preimagen: para la constante cero, $f^{-1}[\{0\}]=\mathbb R$. En cambio, la continua $r(x)=1/(1+x^2)$ en la recta tiene preimagen vacía de $\{0\}$ y preimagen $\{0\}$ de $\{1\}$, ambas compactas; conocer esas fibras particulares tampoco prueba compacidad del dominio. El resultado demostrado concierne a imágenes directas de compactos.
 
 ### Microcontroles
 
@@ -1540,11 +1545,12 @@ Para la identidad $h:[0,1]\to\mathbb R$, la preimagen de $(-1,1/2)$ es $[0,1/2)$
 El extremo cero pertenece a la preimagen y toda bola real suya incluye negativos, de modo que apertura relativa no puede reinterpretarse como real. El levantamiento añade las entradas exteriores a $K$ y sí proporciona abiertos ambientales. Su identidad al recortar garantiza que la reparación no cambia qué entradas del compacto corresponden a cada abierto de salida. Así los índices finitos aún vuelven a la cubierta original.
 
 </details>
+
 ## 16.7. Por qué los extremos llegan a alcanzarse
 
 []{#MA-SEC-ANM-01-016-007}
 
-Acotar valores permite formar supremo e ínfimo; no garantiza que sean valores alcanzados. El paso nuevo es combinar acotación con cerradura de la imagen.
+Una imagen acotada y no vacía tiene supremo e ínfimo reales, pero todavía pueden faltar en ella. La cerradura que acabamos de obtener para las imágenes compactas impedirá esa ausencia y permitirá recuperar entradas que alcancen las cotas.
 
 **Lema de extremos de un compacto.** Si $H\subseteq\mathbb R$ es compacto y no vacío, $M=\sup H$ y $m=\inf H$ existen por R4 y completitud. Si $M\notin H$, la cerradura da $r>0$ con $(M-r,M+r)\cap H=\varnothing$. Pero $M-r/2<M$ no es cota superior, así existe $y\in H$ con $M-r/2<y\le M$, que cae en la bola excluida. Contradicción: $M\in H$ y es máximo. Si $m\notin H$, una bola de radio $s>0$ no toca $H$, mientras $m+s/2>m$ no es cota inferior; existe $z\in H$ con $m\le z<m+s/2$, de nuevo contradicción. Así $m\in H$ y es mínimo. No elegimos una sucesión que aproxime extremos.
 
@@ -1552,15 +1558,15 @@ Acotar valores permite formar supremo e ínfimo; no garantiza que sean valores a
 
 $$f(x_-)\le f(x)\le f(x_+)\qquad(x\in K).$$
 
-R6 hace compacta la imagen $H=f[K]$. La no vacuidad de $K$ proporciona una entrada y una salida, así $H$ tampoco es vacío. El lema da $m,M\in H$. Por definición de imagen existen dos entradas $x_-,x_+$ con $f(x_-)=m$, $f(x_+)=M$, y sus desigualdades sobre todo $H$ dan la conclusión. Son dos testigos concretos, no una selección de preimágenes para todos los valores. No se garantiza que los puntos sean únicos, distintos ni extremos del dominio.
+Por R6, $H=f[K]$ es compacto. Como $K$ contiene una entrada, $H$ contiene su salida y es no vacío. El lema da $m,M\in H$ y, por definición de imagen, existen $x_-,x_+\in K$ con $f(x_-)=m$ y $f(x_+)=M$. Las cotas sobre todos los valores de $H$ producen las desigualdades de R7. Se han usado dos testigos concretos de valores alcanzados, sin definir una inversa ni un selector de todas las fibras. No se afirma que esos argumentos sean únicos, distintos o extremos del dominio.
 
-![En \[0,3\], f(x)=(x−1)² alcanza mínimo cero en x=1 y máximo cuatro en x=3. La existencia general procede de la compacidad de la imagen y de su cerradura, que hacen miembros al ínfimo y al supremo. Un extremo de salida puede tener un argumento interior; no se afirma unicidad en general.](../../assets/books/anm/C16/C16-F07.svg){#fig-anm-c16-f07 fig-alt="En \[0,3\], f(x)=(x−1)² alcanza mínimo cero en x=1 y máximo cuatro en x=3. La existencia general procede de la compacidad de la imagen y de su cerradura, que hacen miembros al ínfimo y al supremo. Un extremo de salida puede tener un argumento interior; no se afirma unicidad en general."}
+![En \[0,3\], f(x)=(x−1)² alcanza mínimo cero en x=1 y máximo cuatro en x=3. La existencia general procede de la compacidad de la imagen y de su cerradura, que hacen miembros al ínfimo y al supremo. Un extremo de salida puede tener un argumento interior; no se afirma unicidad en general.](../../assets/books/anm/revision-20261016/C16/C16-F07.svg){#fig-anm-c16-f07 fig-alt="Parábola restringida al segmento de cero a tres, con mínimo interior en uno y máximo en el extremo derecho."}
 
-Por ejemplo, $f(x)=(x-1)^2$ en $[0,3]$ tiene mínimo $0$ en el punto interior $1$ y máximo $4$ en $3$: $0\le(x-1)^2\le4$ porque $-1\le x-1\le2$, y las igualdades indicadas se alcanzan. En $\{-1,1\}$, $x^2$ es constante con valor $1$, y ambos puntos son minimizadores y maximizadores. No hace falta conexidad para extremos.
+Para $f(x)=(x-1)^2$ en $[0,3]$, se cumple $-1\le x-1\le2$ y por tanto $0\le(x-1)^2\le4$. La igualdad inferior exige $x=1$, que es un punto interior. La superior exige $|x-1|=2$, con candidatos $3$ y $-1$; sólo $3$ pertenece al dominio. El mínimo es cero y el máximo cuatro, alcanzados donde indica la figura. En $\{-1,1\}$, en cambio, el cuadrado vale uno en ambas entradas y las dos minimizan y maximizan. La compacidad permite tanto un extremo interior como extremizadores no únicos.
 
-Si el dominio es además un segmento, C15 añade que la imagen es intervalo. Junto con los extremos alcanzados obtenemos $f[[a,b]]=[m,M]$, donde $m,M$ son extremos **globales**, no necesariamente $f(a),f(b)$. Ésta es una combinación posterior de dos herramientas ya probadas: compacidad proporciona los extremos y conexidad rellena entre ellos. En un compacto roto, la imagen puede ser compacta y omitir valores intermedios; la identidad en $[-2,-1]\cup[1,2]$ lo muestra.
+Si el dominio es además un segmento, C15 hace intervalar a la imagen. Weierstrass aporta extremos globales alcanzados $m,M$, así toda salida está en $[m,M]$; la intervalaridad y la pertenencia de ambos extremos dan la inclusión contraria. Obtenemos $f[[a,b]]=[m,M]$, también cuando $a=b$. No podemos identificar sin más $m,M$ con $f(a),f(b)$, como muestra el mínimo interior anterior. En un compacto separado, la identidad de $[-2,-1]\cup[1,2]$ conserva una imagen compacta con hueco: la compacidad da los extremos y la conexidad es la que permite rellenar entre ellos.
 
-Las hipótesis tienen fallos distintos. La identidad en $(0,1)$ es continua y acotada, pero no alcanza sus extremos $0,1$, porque el dominio no es compacto. En $[0,1]$, la función $u(x)=x$ para $x<1$ y $u(1)=0$ es acotada pero no tiene máximo: toda salida positiva menor que $1$ tiene otra mayor y $1$ nunca se alcanza. Es discontinua en $1$; ahí se perdió la continuidad requerida por R6. El vacío es compacto, pero no tiene entradas que puedan servir de minimizadores: no vacuidad no es una formalidad.
+La identidad en $(0,1)$ conserva continuidad y acotación, pero no alcanza el ínfimo cero ni el supremo uno porque su dominio no es compacto. Sobre el compacto $[0,1]$, la función $u(x)=x$ para $x<1$ y $u(1)=0$ tiene imagen $[0,1)$ y tampoco alcanza máximo: cada salida $y$ admite otra mayor, $(y+1)/2$, dentro de la imagen. Aquí falla continuidad en uno; para cualquier radio $\delta>0$, $x=1-\min(\delta/2,1/4)$ pertenece al dominio, dista menos que $\delta$ del centro y su salida difiere de $u(1)$ en al menos $3/4$, refutando la tolerancia $1/2$. El vacío sí es compacto, pero carece de entradas extremizadoras. Estas posibilidades explican por separado las hipótesis de R7.
 
 ### Microcontroles
 
@@ -1788,6 +1794,7 @@ R2 hace compacto al segmento y R7 aporta extremos globales alcanzados $m\le M$ d
 La primera inclusión procede de las cotas globales alcanzadas de Weierstrass. La segunda procede de intervalaridad de la imagen y pertenencia de los dos valores extremos. Si $a=b$, la imagen es un singleton y ambas inclusiones siguen siendo válidas. El contraejemplo muestra que los valores globales deben identificarse por la función completa, no asignarse de antemano a los extremos de entrada.
 
 </details>
+
 ## 16.8. Márgenes positivos e inversas sobre compactos
 
 []{#MA-SEC-ANM-01-016-008}
@@ -1796,23 +1803,23 @@ La primera inclusión procede de las cotas globales alcanzadas de Weierstrass. L
 
 $$|f(x)|\ge m>0\qquad(x\in K).$$
 
-Todos los puntos quedan separados de cero por el mismo margen. Así $1/f$ está definida en todo $K$, es continua por C14 y cumple $|1/f(x)|\le1/m$. Si $g:K\to\mathbb R$ es continua, R7 o R6 acota $|g|$ por algún $B\ge0$, y $|g(x)/f(x)|\le B/m$. La ausencia de ceros determina el dominio del cociente; compacidad y continuidad dan la cota global. Sin compacidad, $f(x)=x$ en $(0,1]$ es positiva pero no admite $m>0$ común: algún $1/(n+1)$ es menor que cualquier candidato positivo.
+El mínimo alcanzado de $|f|$ es una magnitud de la forma $|f(x_0)|$, y la ausencia de ceros la hace positiva. Esto da una barrera común, más fuerte que disponer de un valor no nulo en cada punto por separado. El recíproco está definido en todo $K$, es continuo por C14 y satisface $|1/f(x)|\le1/m$. Para otra continua $g:K\to\mathbb R$, R6 o R7 proporciona $B\ge0$ con $|g(x)|\le B$, y queda $|g(x)/f(x)|\le B/m$ en todo $K$. En $(0,1]$, la identidad es positiva pero algún recíproco $1/(n+1)$ es menor que cualquier margen propuesto; sin compacidad no se obtiene esa conclusión global.
 
-![La función x² en K=\[−2,−1\]∪\[1,2\] tiene mínimo alcanzado m=1. Ningún valor de |f| entra en \[0,1); por tanto |1/f|≤1. El margen requiere compacidad, continuidad y ausencia de ceros. En (0,1\], la identidad es positiva pero carece de margen positivo global.](../../assets/books/anm/C16/C16-F08.svg){#fig-anm-c16-f08 fig-alt="La función x² en K=\[−2,−1\]∪\[1,2\] tiene mínimo alcanzado m=1. Ningún valor de |f| entra en \[0,1); por tanto |1/f|≤1. El margen requiere compacidad, continuidad y ausencia de ceros. En (0,1\], la identidad es positiva pero carece de margen positivo global."}
+![La función x² en K=\[−2,−1\]∪\[1,2\] tiene mínimo alcanzado m=1. Ningún valor de |f| entra en \[0,1); por tanto |1/f|≤1. El margen requiere compacidad, continuidad y ausencia de ceros. En (0,1\], la identidad es positiva pero carece de margen positivo global.](../../assets/books/anm/revision-20261016/C16/C16-F08.svg){#fig-anm-c16-f08 fig-alt="Dos ramas del cuadrado con mínimo uno; una franja bajo ese nivel separa toda la imagen del cero y controla el recíproco."}
 
-Otra aplicación es el punto más próximo a un real dado $p$. La función $d_p(x)=|x-p|$ es continua por C14, y R7 le da un mínimo en $K$. Si $p\notin K$, ese mínimo es positivo; si $p\in K$, es cero. Puede haber dos minimizadores: para $K=\{-1,1\}$ y $p=0$ ambos están a distancia $1$. La prueba produce un minimizador para este $p$ fijado, sin construir una selección global para todos los puntos exteriores.
+Para un real $p$ fijado, la función distancia $d_p(x)=|x-p|$ es continua por C14 y alcanza su mínimo en el compacto no vacío $K$. Si $p\notin K$, el minimizador $x_0$ es distinto de $p$ y la distancia mínima $|x_0-p|$ es positiva. Si $p\in K$, se alcanza cero en la entrada $p$. Puede haber varios puntos más próximos: para $K=\{-1,1\}$ y $p=0$, ambos dan distancia uno. La prueba produce un minimizador para este $p$; no una selección única o simultánea para todos los puntos exteriores.
 
-**Fibras compactas.** Para una continua $f:K\to\mathbb R$ y un cerrado real $F$, la preimagen $f^{-1}[F]$ es cerrada relativa a $K$ por C14 y compacta por R3. En particular, cada fibra $f^{-1}[\{y\}]$ es compacta, incluso vacía. Aquí sí se conserva compacidad de preimágenes, porque el dominio compacto y la cerradura de la condición de salida son premisas adicionales. No se afirma ese resultado en dominios arbitrarios.
+**Fibras compactas.** Para una continua $f:K\to\mathbb R$ con dominio compacto y un cerrado real $F$, C14 hace $f^{-1}[F]$ cerrado relativo a $K$ y R3 lo hace compacto. En particular, cada fibra $f^{-1}[\{y\}]$ es compacta, incluso cuando el valor no se alcanza y la fibra es vacía. Aquí el dominio compacto y la condición cerrada de salida aportan las hipótesis que faltaban en el contraejemplo de la constante en la recta. El cerrado $F$ ni siquiera necesita ser acotado: la acotación relevante está en el dominio.
 
-**Inversa en un compacto.** Una inyección continua $f:K\to\mathbb R$ con $K$ compacto es un homeomorfismo $K\to H=f[K]$. Retipar la salida de f a H conserva la continuidad, porque las distancias de salida son las mismas. Inyectividad y definición de imagen dan una inversa $h:H\to K$. Para probar continuidad de $h$ usamos el criterio de preimágenes de cerrados relativos de C14. Si $A$ es cerrado relativo a $K$, R3 lo hace compacto y R6 hace compacta su imagen $f[A]$. R4 dice que ésta es cerrada real y por tanto cerrada relativa a $H$. Por bijectividad,
+**Inversa en un compacto.** Una inyección continua $f:K\to\mathbb R$ con $K$ compacto es un homeomorfismo $K\to H=f[K]$. Al declarar codominio $H$ se conserva el control de distancias de $f$. Cada salida de $H$ tiene una entrada única por definición de imagen e inyectividad, así que existe $h:H\to K$. Sea $A$ cerrado relativo a $K$. Por R3 es compacto y por R6 su imagen $f[A]$ también lo es; R4 la hace cerrada real y, en particular, cerrada relativa a $H$. La biyectividad hacia la imagen da
 
 $$h^{-1}[A]=f[A].$$
 
-Así la preimagen por $h$ de todo cerrado relativo a su codominio $K$ es cerrada relativa a su dominio $H$, y C14 concluye continuidad. No requiere que $K$ sea intervalo ni que haya una orientación monótona global. El vacío tampoco causa problema: su inversa vacía es continua.
+El miembro izquierdo es la preimagen por $h$ de un cerrado relativo de su codominio $K$, y el derecho acaba de probarse cerrado relativo en su dominio $H$. Como vale para todo $A$, el criterio de C14 concluye continuidad de $h$. La prueba incluye el vacío, donde tanto la inversa como sus controles son vacíos, y no necesita que el compacto sea intervalo ni que exista monotonía global.
 
-Comparemos con C15: allí un intervalo permitía construir la inversa continua mediante barreras de orden; aquí la compacidad permite transportar cerrados y justificar continuidad incluso en dominios rotos. Son dos hipótesis suficientes distintas. El ejemplo $[0,1)\cup[2,3]$ de C14/C15, con ramas $x$ y $x-1$, no contradice este resultado: falta el punto $1$ adherente al primer segmento, así el dominio no es cerrado ni compacto.
+En C15 la intervalaridad permitió construir barreras de orden para la inversa. La compacidad permite otra prueba mediante cerrados, aplicable también a dominios separados. La biyección de C14/C15 sobre $[0,1)\cup[2,3]$, con ramas $x$ y $x-1$, queda fuera de esta hipótesis: el punto uno es adherente al dominio y falta en él, así que no es cerrado ni compacto. La falla de continuidad inversa de aquel ejemplo no contradice el resultado presente.
 
-La herramienta principal de C16 es reducir cubiertas arbitrarias a datos finitos. Heine–Borel facilita reconocerla, la extracción secuencial la refleja con su alcance declarado, y continuidad la convierte en extremos y márgenes positivos. C17 estudiará un uso adicional del mismo recurso: obtener un radio de continuidad que funcione para todos los centros a la vez. No lo hemos usado para probar ninguno de los resultados actuales.
+La positividad en cada entrada adquirió un margen común al convertirse el ínfimo de $|f|$ en un valor alcanzado. La misma pertenencia de los extremos a la imagen permitió minimizar distancias, mientras el transporte de compactos convirtió imágenes de cerrados en preimágenes cerradas de la inversa. Todos esos pasos se apoyan en la reducción finita de cubiertas, sin haber exigido todavía un radio de continuidad común para todos los centros.
 
 ### Microcontroles
 

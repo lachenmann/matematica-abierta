@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 29 — Series de funciones y series de potencias
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,7 +28,7 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-29)
 
-C11 permite controlar sumas numéricas;C27–C28 aportan uniformidad y operaciones. Ahora construiremos series funcionales, radios de potencias y certificados interiores. Las fronteras se examinan aparte. El puente hacia ACM conserva los mecanismos de magnitud sin adelantar teoremas complejos.
+La identidad geométrica finita ya dio aproximantes con error controlado. Para convertir sus límites en una teoría de series de funciones, estudiaremos la sucesión de sumas parciales y exigiremos a sus colas el control de C27. C11 aportará las comparaciones numéricas y C28 permitirá transportar operaciones. En las series de potencias, un punto de convergencia abrirá una región interior protegida; los extremos necesitarán pruebas propias.
 
 ## 29.1. Una serie es una sucesión de sumas parciales
 
@@ -54,7 +54,7 @@ Así $u_j\to0$ uniformemente. La recíproca falla ya para funciones constantes $
 $$S_n(x)=\frac{1-x^{n+1}}{1-x},\qquad S(x)=\frac1{1-x},\qquad |R_n(x)|\le\frac{r^{n+1}}{1-r}.$$
 En todo $(-1,1)$ falta uniformidad: cada resto $x^{n+1}/(1-x)$ es no acotado cuando $x$ se aproxima a $1$ desde dentro. Convergencia en cada ventana cerrada interior no significa convergencia uniforme en todo el dominio abierto.
 
-![En la ventana de radio1/2, los parciales geométricos convergen a1/(1−x). El resto está acotado por2^(−n), con igualdad en el extremo positivo. El corte estricto para tolerancia1/8 empieza en n4; la frontera n3 no lo acredita.](../../assets/books/anm/C29/C29-F01.svg){#fig-anm-c29-f01 fig-alt="En la ventana de radio1/2, los parciales geométricos convergen a1/(1−x). El resto está acotado por2^(−n), con igualdad en el extremo positivo. El corte estricto para tolerancia1/8 empieza en n4; la frontera n3 no lo acredita."}
+![En la ventana de radio1/2, los parciales geométricos convergen a1/(1−x). El resto está acotado por2^(−n), con igualdad en el extremo positivo. El corte estricto para tolerancia1/8 empieza en n4; la frontera n3 no lo acredita.](../../assets/books/anm/revision-20261016/C29/C29-F01.svg){#fig-anm-c29-f01 fig-alt="En la ventana de radio1/2, los parciales geométricos convergen a1/(1−x). El resto está acotado por2^(−n), con igualdad en el extremo positivo. El corte estricto para tolerancia1/8 empieza en n4; la frontera n3 no lo acredita."}
 
 ### Microcontroles
 
@@ -272,11 +272,12 @@ Fije una entrada $x$. Para $m>n$, la hipótesis da $|S_m(x)-S_n(x)|\le\eta_n$, y
 Mantenga fijos $n$ y $x$ y haga $m\to\infty$. Se obtiene $|S(x)-S_n(x)|\le\eta_n$. Como la misma sucesión de barreras sirve para todas las entradas, basta elegir $N$ con $\eta_n<\varepsilon$ para $n\ge N$. Queda construida la suma y acreditada su convergencia uniforme, sin presuponerla al estimar los bloques.
 
 </details>
+
 ## 29.2. El criterio M y lo que no afirma
 
 []{#MA-SEC-ANM-01-029-002}
 
-¿Cómo controlar todos los bloques de una serie sin conocer todavía su suma? Sustituimos cada término por un presupuesto numérico común a todas las entradas.
+Para aplicar Cauchy uniforme sin conocer todavía la suma, necesitamos controlar todos los bloques tardíos con un corte independiente de la entrada. Podemos conseguirlo acotando las magnitudes de los términos por una serie numérica convergente: su cola proporcionará el presupuesto común.
 
 **Criterio M de Weierstrass.** Supongamos $M_j\ge0$, $|u_j(x)|\le M_j$ para todo $j$ y $x\in X$, y que la serie numérica $\sum_{j=0}^{\infty}M_j$ converge a $A$. Entonces $\sum u_j$ converge uniformemente en $X$. También converge uniformemente la serie de magnitudes $\sum|u_j|$, y en cada entrada la primera serie converge absolutamente.
 
@@ -288,13 +289,13 @@ Asimismo $|S(x)|\le A$. El paso al límite conserva $\le$, no una desigualdad es
 
 Para $|u_j(x)|\le C\rho^j$, $0<\rho<1$, resulta $T_n=C\rho^{n+1}/(1-\rho)$. Por ejemplo $u_j(x)=x^j$ en $[-1/2,1/2]$ tiene $E_n\le2^{-n}$: para exigir error estrictamente menor que $1/8$ basta $n\ge4$. $n=3$ es frontera; la desigualdad débil del certificado no lo admite.
 
-**Tres propiedades distintas.** Convergencia absoluta en cada entrada, convergencia uniforme de la serie de magnitudes y existencia de mayorantes sumables comunes son afirmaciones diferentes. El criterio M implica las tres, pero no es necesario para uniformidad. En $X=\{0,1,2,\ldots\}$, pongamos $u_j(x)=1/(j+1)$ si $x=j$ y $0$ en otra entrada. Cada suma tiene a lo sumo un término no nulo. El resto tiene supremo $1/(n+2)$, tanto para la serie original como para la de magnitudes: ambas son uniformes. Sin embargo cualquier mayorante común satisface $M_j\ge1/(j+1)$, de modo que ninguna serie de mayorantes converge.
+**Tres propiedades distintas.** El criterio M asegura convergencia absoluta en cada entrada y convergencia uniforme tanto de la serie como de sus magnitudes. La existencia de mayorantes comunes sumables es, sin embargo, una exigencia adicional. En $X=\{0,1,2,\ldots\}$, sea $u_j(x)=1/(j+1)$ para $x=j$ y cero en las otras entradas. En cada entrada sólo aparece un término no nulo. Después del parcial $n$, el mayor resto posible es $1/(n+2)$, alcanzado en $x=n+1$, también para la serie de magnitudes. Ambas convergen uniformemente, pero todo mayorante común debe satisfacer $M_j\ge1/(j+1)$ y su serie diverge por comparación con la armónica. Así M es suficiente y no necesario para uniformidad.
 
 La otra separación aparece en la geométrica sobre $(-1,1)$: en cada entrada converge absolutamente, pero no uniformemente. Y la serie constante $(-1)^j/(j+1)$ converge uniformemente por el criterio alternado de C11, sin converger absolutamente. El dominio y las cancelaciones son parte del diagnóstico.
 
 Si la comparación M sólo vale desde un índice fijo, se aplica al tramo final. El prefijo se suma aparte. No se concluye entonces $|S|\le A$ sin incluir una cota para ese prefijo; éste puede ser no acotado.
 
-![Los mayorantes geométricos2^(−j) tienen cola sumable2^(−n). En el dominio discreto de entradas enteras, los términos1/(j+1) se apoyan en una sola entrada cada uno: su serie y sus magnitudes tienen error1/(n+2), aunque las normas individuales formen una armónica divergente. La fórmula de la cola completa, no los primeros puntos, prueba uniformidad.](../../assets/books/anm/C29/C29-F02.svg){#fig-anm-c29-f02 fig-alt="Los mayorantes geométricos2^(−j) tienen cola sumable2^(−n). En el dominio discreto de entradas enteras, los términos1/(j+1) se apoyan en una sola entrada cada uno: su serie y sus magnitudes tienen error1/(n+2), aunque las normas individuales formen una armónica divergente. La fórmula de la cola completa, no los primeros puntos, prueba uniformidad."}
+![Los mayorantes geométricos2^(−j) tienen cola sumable2^(−n). En el dominio discreto de entradas enteras, los términos1/(j+1) se apoyan en una sola entrada cada uno: su serie y sus magnitudes tienen error1/(n+2), aunque las normas individuales formen una armónica divergente. La fórmula de la cola completa, no los primeros puntos, prueba uniformidad.](../../assets/books/anm/revision-20261016/C29/C29-F02.svg){#fig-anm-c29-f02 fig-alt="Los mayorantes geométricos2^(−j) tienen cola sumable2^(−n). En el dominio discreto de entradas enteras, los términos1/(j+1) se apoyan en una sola entrada cada uno: su serie y sus magnitudes tienen error1/(n+2), aunque las normas individuales formen una armónica divergente. La fórmula de la cola completa, no los primeros puntos, prueba uniformidad."}
 
 ### Microcontroles
 
@@ -506,11 +507,12 @@ La razón $x/3$ está entre cero y $1/3$ en $[0,1]$. La identidad geométrica da
 El criterio M usa $M_j=3^{-j}$. Su cola es precisamente $3^{-n}/2$, de modo que coincide con la envolvente exacta y prueba convergencia absoluta y uniforme. La coincidencia se explica porque en $x=1$ todos los términos alcanzan simultáneamente su mayorante y tienen signo positivo.
 
 </details>
+
 ## 29.3. Operaciones sobre sumas infinitas
 
 []{#MA-SEC-ANM-01-029-003}
 
-Las operaciones actúan primero sobre $S_n$, donde todo es finito. C28 decide qué presupuesto permite pasar después al límite.
+Cada operación se realiza primero sobre $S_n$, donde sólo intervienen sumas finitas. Para identificar después el resultado con una operación sobre $S$, comprobaremos las hipótesis de C28 sobre esa sucesión de parciales. La justificación del límite será distinta para continuidad, integración y derivación.
 
 **Continuidad.** Si cada $u_j$ es continua en $X$ y la serie converge uniformemente allí, cada $S_n$ es continua y C28 hace continua a $S$ en el dominio relativo. En un dominio abierto basta uniformidad en una vecindad de cada punto. No se necesita una única banda para todo el abierto. El criterio M con términos continuos proporciona una condición suficiente inmediatamente reutilizable.
 
@@ -528,7 +530,7 @@ El ancla paga las constantes que las derivadas no ven. La prueba de C28 usa valo
 
 **La sola uniformidad de valores no permite derivar.** Sea $h_n(x)=\sqrt{x^2+1/(n+1)^2}$ en $[-1,1]$. Definamos $u_0=h_0$ y, para $j\ge1$, $u_j=h_j-h_{j-1}$. Entonces $S_n=h_n$ telescópicamente y $S_n\to|x|$ uniformemente, con error máximo $1/(n+1)$. Cada término es suave, pero el destino no es derivable en $0$. Allí todas las derivadas parciales valen $0$; su límite no puede ser la derivada inexistente del destino. La regularidad infinita de las filas no reemplaza el control de la serie derivada.
 
-![La serie2^(−j)x² tiene suma2x² y parciales(2−2^(−n))x², con integrales y errores acreditados. En cambio el telescopio de raíces suavizadas converge uniformemente a|x|; sus parciales son suaves pero el destino tiene una esquina en cero. La uniformidad de valores no autoriza derivación.](../../assets/books/anm/C29/C29-F03.svg){#fig-anm-c29-f03 fig-alt="La serie2^(−j)x² tiene suma2x² y parciales(2−2^(−n))x², con integrales y errores acreditados. En cambio el telescopio de raíces suavizadas converge uniformemente a|x|; sus parciales son suaves pero el destino tiene una esquina en cero. La uniformidad de valores no autoriza derivación."}
+![La serie2^(−j)x² tiene suma2x² y parciales(2−2^(−n))x², con integrales y errores acreditados. En cambio el telescopio de raíces suavizadas converge uniformemente a|x|; sus parciales son suaves pero el destino tiene una esquina en cero. La uniformidad de valores no autoriza derivación.](../../assets/books/anm/revision-20261016/C29/C29-F03.svg){#fig-anm-c29-f03 fig-alt="La serie2^(−j)x² tiene suma2x² y parciales(2−2^(−n))x², con integrales y errores acreditados. En cambio el telescopio de raíces suavizadas converge uniformemente a|x|; sus parciales son suaves pero el destino tiene una esquina en cero. La uniformidad de valores no autoriza derivación."}
 
 ### Microcontroles
 
@@ -748,6 +750,7 @@ Los términos derivados $2^{1-j}x$ tienen mayorantes sumables $2^{1-j}$; además
 Integrar desde cero da $\int_0^x S(t)\,dt=2x^3/3$ y $\int_0^x S_n(t)\,dt=(2-2^{-n})x^3/3$. El resto acumulado es $2^{-n}x^3/3$, cuya envolvente es $2^{-n}/3$. Las tres envolventes se alcanzan en los extremos; el signo de $x^3$ conserva la orientación cuando $x<0$.
 
 </details>
+
 ## 29.4. Un punto de convergencia abre una región interior
 
 []{#MA-SEC-ANM-01-029-004}
@@ -762,13 +765,13 @@ El criterio M da convergencia absoluta en cada entrada y uniforme, incluso de la
 
 **Construcción del radio.** Sea $H=\{|t-c|:\text{ la serie converge en }t\}$. Contiene $0$. Si $H$ es acotado, definimos $R=\sup H\ge0$; si es no acotado, escribimos $R=\infty$. No afirmamos que el supremo pertenezca a $H$.
 
-Si $0<r<R$, el significado del supremo (o la no acotación) entrega una entrada convergente $t$ con $|t-c|>r$. El lema protege $[c-r,c+r]$. En consecuencia la serie converge absolutamente cuando $|x-c|<R$, y uniformemente en cada segmento cerrado interior. Si $|x-c|>R$, no puede converger: esa distancia pertenecería a $H$ y excedería su cota. Para $R=0$, sólo converge en $c$; para $R=\infty$, converge en toda la recta, uniformemente en cada segmento acotado.
+Si $0<r<R$, la propiedad del supremo, o la no acotación de $H$ cuando $R=\infty$, proporciona una distancia convergente mayor que $r$. Tomamos una entrada $t$ que la realice y aplicamos el lema interior: la serie converge absolutamente y uniformemente en $[c-r,c+r]$. Cada entrada con $|x-c|<R$ pertenece a uno de esos segmentos, salvo el centro, donde la suma ya es $a_0$. Una entrada de distancia mayor que un $R$ finito no puede ser convergente, pues añadiría a $H$ un número que supera su cota superior. Para $R=0$ sólo queda el centro; para $R=\infty$ obtenemos toda la recta y uniformidad en cada segmento acotado.
 
 Cuando $0<R<\infty$, el dominio es $(c-R,c+R)$ más ninguno, uno o ambos extremos, según las dos series numéricas obtenidas por sustitución. La convergencia en un extremo fuerza el interior, pero no la convergencia en el extremo opuesto. Todo compacto del intervalo abierto está dentro de un segmento cerrado interior: la función continua $|x-c|$ alcanza allí un máximo menor que $R$. Por restricción, la uniformidad también vale sobre ese compacto.
 
 **Qué no promete el radio.** La geométrica tiene $R=1$ y converge uniformemente en cada $[-r,r]$, $r<1$, pero no en todo $(-1,1)$. Las cotas empeoran al aumentar $r$ hacia $1$. «Localmente uniforme» recuerda ese margen disponible alrededor de cada punto; no significa un corte común hasta la frontera.
 
-![Un punto convergente a distancia s protege cada segmento de radio r<s mediante la razónr/s. Para la geométrica escalada de términos(x/2)^j se ilustran centro0, punto convergente t1 y radio interior r1/2. Su radio total es2 y los extremos±2 son abiertos. El presupuesto M1 es válido en t1; no se infiere convergencia en±2 desde el margen interior.](../../assets/books/anm/C29/C29-F04.svg){#fig-anm-c29-f04 fig-alt="Un punto convergente a distancia s protege cada segmento de radio r&lt;s mediante la razónr/s. Para la geométrica escalada de términos(x/2)^j se ilustran centro0, punto convergente t1 y radio interior r1/2. Su radio total es2 y los extremos±2 son abiertos. El presupuesto M1 es válido en t1; no se infiere convergencia en±2 desde el margen interior."}
+![Un punto convergente a distancia s protege cada segmento de radio r<s mediante la razónr/s. Para la geométrica escalada de términos(x/2)^j se ilustran centro0, punto convergente t1 y radio interior r1/2. Su radio total es2 y los extremos±2 son abiertos. El presupuesto M1 es válido en t1; no se infiere convergencia en±2 desde el margen interior.](../../assets/books/anm/revision-20261016/C29/C29-F04.svg){#fig-anm-c29-f04 fig-alt="Un punto convergente a distancia s protege cada segmento de radio r<s mediante la razónr/s. Para la geométrica escalada de términos(x/2)^j se ilustran centro0, punto convergente t1 y radio interior r1/2. Su radio total es2 y los extremos±2 son abiertos. El presupuesto M1 es válido en t1; no se infiere convergencia en±2 desde el margen interior."}
 
 ### Microcontroles
 
@@ -986,11 +989,12 @@ Para $\sum_{j\ge0}x^j/(j+1)^2$, el cociente de coeficientes tiende a uno y tambi
 De hecho, su cola común es $\le\sum_{j=n+1}^{\infty}[1/j-1/(j+1)]=1/(n+1)$. Fuera de $[-1,1]$ los términos no tienden a cero, por cociente de magnitudes mayor que uno. El radio compartido no determina el comportamiento en el borde ni la uniformidad en la ventana máxima.
 
 </details>
+
 ## 29.5. Calcular el radio y examinar los extremos
 
 []{#MA-SEC-ANM-01-029-005}
 
-El radio ya existe antes de cualquier fórmula para calcularlo. Las siguientes pruebas proporcionan métodos suficientes; si sus límites no existen, permanece la construcción anterior.
+El radio se ha construido a partir del conjunto de entradas convergentes. Podemos buscar fórmulas para calcularlo mediante comparaciones geométricas, pero su existencia no depende de que algún cociente o alguna sucesión de raíces tenga límite. Cuando esos métodos no decidan, permanece la construcción por supremo.
 
 **Comparación geométrica por cocientes.** Para una serie numérica con términos no nulos desde cierto índice, si $|b_{j+1}|/|b_j|\to L<1$, elijamos $L<q<1$. Eventualmente $|b_{j+1}|\le q|b_j|$; inducción finita da $|b_{N+k}|\le|b_N|q^k$. C11 prueba convergencia absoluta por comparación. Si el límite es $L>1$, elijamos $1<q<L$. Eventualmente las magnitudes crecen al menos como $|b_N|q^k$, así que los términos no tienden a cero y la serie diverge. El mismo argumento funciona si el cociente tiende a infinito. El caso $L=1$ queda sin decidir.
 
@@ -1013,7 +1017,7 @@ así que una comparación telescópica prueba convergencia absoluta en ambos ext
 
 Una serie con sólo finitos coeficientes no nulos tiene $R=\infty$. Para $a_j=j!$, los cocientes de términos son $(j+1)|x|\to\infty$ si $x\ne0$, luego $R=0$. Para $a_j=1/j!$, los cocientes tienden a cero en cada entrada y $R=\infty$. Finalmente $\sum_{k=0}^{\infty}x^{2k}$ tiene ceros en todos los coeficientes impares: se reconoce como geométrica de razón $x^2$, de radio $1$, sin forzar un cociente entre coeficientes consecutivos.
 
-![Cuatro series de radio1 realizan las cuatro combinaciones de extremos: geométrica ninguno; x^j/j sólo−1; (−1)^jx^j/j sólo1; x^j/(j+1)² ambos. Círculos abiertos y cerrados codifican divergencia y convergencia además del color. Los tipos condicional y absoluto se indican por texto.](../../assets/books/anm/C29/C29-F05.svg){#fig-anm-c29-f05 fig-alt="Cuatro series de radio1 realizan las cuatro combinaciones de extremos: geométrica ninguno; x^j/j sólo−1; (−1)^jx^j/j sólo1; x^j/(j+1)² ambos. Círculos abiertos y cerrados codifican divergencia y convergencia además del color. Los tipos condicional y absoluto se indican por texto."}
+![Cuatro series de radio1 realizan las cuatro combinaciones de extremos: geométrica ninguno; x^j/j sólo−1; (−1)^jx^j/j sólo1; x^j/(j+1)² ambos. Círculos abiertos y cerrados codifican divergencia y convergencia además del color. Los tipos condicional y absoluto se indican por texto.](../../assets/books/anm/revision-20261016/C29/C29-F05.svg){#fig-anm-c29-f05 fig-alt="Cuatro series de radio1 realizan las cuatro combinaciones de extremos: geométrica ninguno; x^j/j sólo−1; (−1)^jx^j/j sólo1; x^j/(j+1)² ambos. Círculos abiertos y cerrados codifican divergencia y convergencia además del color. Los tipos condicional y absoluto se indican por texto."}
 
 ### Microcontroles
 
@@ -1232,6 +1236,7 @@ En todas, el cociente de magnitudes de los coeficientes en potencias de $x+3$ ti
 **Retorno visual.** Véase [C29-F05](analisis-para-matematicos-capitulo-29-series-de-funciones-y-series-de-potencias.html#fig-anm-c29-f05), después del argumento completo: la figura permite reconocer el mecanismo y no sustituye la prueba.
 
 </details>
+
 ## 29.6. Derivar e integrar dentro del radio
 
 []{#MA-SEC-ANM-01-029-006}
@@ -1244,9 +1249,9 @@ Los términos $n\rho^n$ tienden a cero por la misma comparación de cocientes. P
 $$\sum_{j=n+1}^{\infty}j\rho^{j-1}=\frac{\rho^n[(n+1)-n\rho]}{(1-\rho)^2}.$$
 No se ha derivado una suma infinita para justificar este mayorante: sólo una identidad polinómica finita.
 
-El criterio M hace uniforme la serie derivada en el segmento. Las sumas parciales originales valen exactamente $a_0$ en el ancla $c$. §29.3 aplica y demuestra, en su interior,
+El mayorante sumable y el criterio M hacen uniforme la serie derivada en el segmento elegido. En el anclaje $c$, cada parcial original vale exactamente $a_0$, por lo que se cumple también la convergencia numérica requerida en §29.3. El teorema de derivadas produce la suma y demuestra, en el interior del segmento,
 $$F^{\prime}(x)=\sum_{j=1}^{\infty}ja_j(x-c)^{j-1}.$$
-Para cualquier punto con $|x-c|<R$, podemos elegir $r,s$ que lo contengan estrictamente, así que la fórmula vale en todo el intervalo abierto. Las cotas son locales, con un margen positivo respecto de $R$.
+Para cualquier entrada con $|x-c|<R$ podemos elegir $r,s$ que la contengan estrictamente y satisfagan $0<r<s<R$. La fórmula vale así en todo el intervalo abierto, con cotas locales que conservan un margen positivo respecto de la frontera.
 
 **El radio de la derivada coincide.** Acabamos de probar que la serie derivada converge absolutamente en cada distancia menor que $R$, luego su radio es al menos $R$. Recíprocamente, si la derivada converge en una entrada $t$ de distancia positiva, en cualquier distancia $d<|t-c|$ converge absolutamente por el lema interior aplicado a esa nueva serie. Allí,
 $$\sum_{j=1}^{\infty}|a_j|d^j\le d\sum_{j=1}^{\infty}j|a_j|d^{j-1}<\infty.$$
@@ -1262,7 +1267,7 @@ un mayorante sumable. Por tanto el radio original es al menos cualquier $r<d$, y
 $$F^{(k)}(x)=\sum_{j=k}^{\infty}\frac{j!}{(j-k)!}a_j(x-c)^{j-k}.$$
 Cada orden tiene uniformidad en segmentos interiores. El orden $k$ se fija antes del corte; no se promete control uniforme de todos los órdenes simultáneamente. Ninguna de estas pruebas autoriza derivar la serie en $c\pm R$.
 
-![La cola de valores geométricos en radio1/2 es2^(−n). La cola de derivadas es(n+2)2^(1−n). Ambas se calculan por identidades finitas; el factor de índice demora el corte, aunque el radio siga siendo1. El segundo panel muestra las primeras magnitudesj(1/2)^(j−1) del mayorante derivativo.](../../assets/books/anm/C29/C29-F06.svg){#fig-anm-c29-f06 fig-alt="La cola de valores geométricos en radio1/2 es2^(−n). La cola de derivadas es(n+2)2^(1−n). Ambas se calculan por identidades finitas; el factor de índice demora el corte, aunque el radio siga siendo1. El segundo panel muestra las primeras magnitudesj(1/2)^(j−1) del mayorante derivativo."}
+![La cola de valores geométricos en radio1/2 es2^(−n). La cola de derivadas es(n+2)2^(1−n). Ambas se calculan por identidades finitas; el factor de índice demora el corte, aunque el radio siga siendo1. El segundo panel muestra las primeras magnitudesj(1/2)^(j−1) del mayorante derivativo.](../../assets/books/anm/revision-20261016/C29/C29-F06.svg){#fig-anm-c29-f06 fig-alt="La cola de valores geométricos en radio1/2 es2^(−n). La cola de derivadas es(n+2)2^(1−n). Ambas se calculan por identidades finitas; el factor de índice demora el corte, aunque el radio siga siendo1. El segundo panel muestra las primeras magnitudesj(1/2)^(j−1) del mayorante derivativo."}
 
 ### Microcontroles
 
@@ -1480,11 +1485,12 @@ En cualquier ventana estrictamente interior al radio, aplique tres veces el teor
 Al evaluar en $c$, se anulan los grados positivos y sólo queda $j=3$: $F^{(3)}(c)=6a_3$, luego $a_3=F^{(3)}(c)/6$. El orden tres está fijado antes de elegir cortes. La fórmula se acredita en el interior, sin una afirmación adicional sobre los extremos.
 
 </details>
+
 ## 29.7. Coeficientes, funciones y certificados
 
 []{#MA-SEC-ANM-01-029-007}
 
-La suma deja de ser una caja negra: las operaciones acreditadas producen fórmulas y certificados que se pueden verificar independientemente.
+Las fórmulas anteriores permiten identificar sumas y recuperar sus coeficientes. En los ejemplos siguientes distinguiremos la definición de una función por su serie de las propiedades que después podremos demostrar mediante derivación y estimaciones de cola.
 
 **Geométrica y su derivada.** En $|x|<1$,
 $$\frac1{1-x}=\sum_{j=0}^{\infty}x^j,\qquad \frac1{(1-x)^2}=\sum_{j=1}^{\infty}jx^{j-1}.$$
@@ -1494,7 +1500,7 @@ La primera identidad procede del resto finito; la segunda emplea §29.6 y la reg
 $$E(x)=\sum_{j=0}^{\infty}\frac{x^j}{j!}.$$
 Su radio infinito, ya probado, permite derivar en cada segmento: $E^{\prime}=E$ al reindexar $j-1$ y $E(0)=1$. De aquí se obtienen propiedades sin asumirlas. Por producto y cadena, la derivada de $E(x)E(-x)$ es cero; valor medio hace constante el producto en cada segmento, y su valor en cero es $1$. Así $E(x)$ nunca es cero. Su continuidad, el valor positivo en cero y el teorema del valor intermedio hacen $E(x)>0$ para toda entrada.
 
-Fijemos $a$. La función de $t$ dada por $E(a+t)E(-t)$ tiene derivada cero y vale $E(a)$ en cero. Como $E(t)E(-t)=1$, se sigue $E(a+t)=E(a)E(t)$. Además, si una función derivable $y$ en un intervalo que contiene cero satisface $y^{\prime}=y$ y $y(0)=1$, la derivada de $y(t)E(-t)$ es cero. Valor medio da ese producto igual a $1$, luego $y=E$ en el intervalo. Se ha probado existencia y unicidad para esta ecuación concreta, sin importar un teorema general de ecuaciones diferenciales.
+Para demostrar la regla de suma de argumentos, fijemos $a$ y consideremos $E(a+t)E(-t)$. Producto, cadena y $E'=E$ hacen cero su derivada. Lagrange la hace constante en cada segmento y su valor en cero es $E(a)$. Multiplicamos entonces por $E(t)$ y usamos $E(t)E(-t)=1$ para obtener $E(a+t)=E(a)E(t)$. El mismo mecanismo da unicidad: si $y'=y$ y $y(0)=1$ en un intervalo que contiene cero, la derivada de $y(t)E(-t)$ es cero, su valor es uno y resulta $y=E$. La prueba resuelve esta ecuación concreta mediante una función auxiliar; no presupone un teorema general de ecuaciones diferenciales.
 
 **Un certificado factorial en una ventana.** Para $|x|\le r$, tomemos $n$ con $q=r/(n+2)<1$. Desde el primer término omitido los cocientes de magnitudes son a lo sumo $q$, y entonces
 $$\left|E(x)-\sum_{j=0}^n\frac{x^j}{j!}\right|\le\frac{r^{n+1}}{(n+1)!}\frac1{1-r/(n+2)}.$$
@@ -1504,7 +1510,7 @@ En $[-1,1]$ y $n=4$, esta cota es $1/100$, por debajo de la tolerancia estricta 
 $$F^{(k)}(c)=k!a_k.$$
 Si dos series del mismo centro representan la misma función en una vecindad de $c$, con radios positivos, sus derivadas de cada orden coinciden allí y todos sus coeficientes son iguales. Esto no afirma que cualquier función infinitamente derivable sea representable por una serie. Hemos probado una propiedad de funciones que ya tienen representación convergente, no su existencia para funciones arbitrarias.
 
-![Para la exponencial definida por su serie, en\[−1,1\] el parcial de grado4 tiene cota uniforme1/100, menor que1/50. Los coeficientes factoriales y las cotas se calculan con fracciones exactas. Las curvas sólo ilustran reglas ya acreditadas; no se infiere el certificado por muestreo.](../../assets/books/anm/C29/C29-F07.svg){#fig-anm-c29-f07 fig-alt="Para la exponencial definida por su serie, en\[−1,1\] el parcial de grado4 tiene cota uniforme1/100, menor que1/50. Los coeficientes factoriales y las cotas se calculan con fracciones exactas. Las curvas sólo ilustran reglas ya acreditadas; no se infiere el certificado por muestreo."}
+![Para la exponencial definida por su serie, en\[−1,1\] el parcial de grado4 tiene cota uniforme1/100, menor que1/50. Los coeficientes factoriales y las cotas se calculan con fracciones exactas. Las curvas sólo ilustran reglas ya acreditadas; no se infiere el certificado por muestreo.](../../assets/books/anm/revision-20261016/C29/C29-F07.svg){#fig-anm-c29-f07 fig-alt="Para la exponencial definida por su serie, en[−1,1] el parcial de grado4 tiene cota uniforme1/100, menor que1/50. Los coeficientes factoriales y las cotas se calculan con fracciones exactas. Las curvas sólo ilustran reglas ya acreditadas; no se infiere el certificado por muestreo."}
 
 ### Microcontroles
 
@@ -1718,11 +1724,12 @@ Fije $a\in\mathbb R$ y considere $Q(t)=E(a+t)E(-t)$. Como $E'=E$, se tiene $Q'=0
 Sea $y$ una solución derivable de $y'=y$, $y(0)=1$ en un intervalo que contiene cero. La derivada de $y(t)E(-t)$ es $y'(t)E(-t)-y(t)E(-t)=0$. Su valor es, por tanto, la constante uno. Multiplicar por $E(t)$ da $y(t)=E(t)$ en todo ese intervalo. La serie factorial proporciona la existencia y este argumento acredita la unicidad.
 
 </details>
+
 ## 29.8. Productos y el puente hacia análisis complejo
 
 []{#MA-SEC-ANM-01-029-008}
 
-Para sumar dos series basta sumar parciales con el mismo corte: la triangular suma sus errores. Multiplicar obliga a revisar qué región de pares de índices se está sumando.
+Para sumar series basta sumar parciales con el mismo corte y reunir sus errores. En un producto, cada término de un parcial se multiplica por todos los del otro: aparece un cuadrado de pares de índices. Agrupar por grado total produce un triángulo diferente. La convergencia absoluta permitirá controlar exactamente los pares que faltan entre ambas regiones.
 
 **Producto de Cauchy de series numéricas absolutamente convergentes.** Sean $\sum\alpha_j=A$ y $\sum\beta_j=B$, con totales de magnitudes $A_*\!,B_*<\infty$. Definamos $\gamma_n=\sum_{j=0}^n\alpha_j\beta_{n-j}$, una suma finita. Los totales de magnitudes de $\gamma$ están acotados por $A_*B_*$: cada triángulo $j+k\le N$ está dentro del cuadrado $0\le j,k\le N$, y la triangular finita controla el primero por el producto de dos sumas positivas. C11 construye convergencia absoluta de $\sum\gamma_n$.
 
@@ -1734,13 +1741,13 @@ donde $T_\alpha(h)=\sum_{j>h}|\alpha_j|$ y análogamente para $\beta$. Fijando $
 $$F(x)G(x)=\sum_{n=0}^{\infty}d_n(x-c)^n.$$
 El radio del producto es al menos el mínimo; puede ser mayor. Por ejemplo $(\sum_{n\ge0}x^n)(1-x)=1$ en $(-1,1)$: el producto tiene sólo su coeficiente constante no nulo y radio infinito. La identidad demostrada en el dominio común no declara convergente la serie geométrica fuera de él.
 
-Si las series de magnitudes convergen uniformemente en una ventana y sus totales están acotados allí por $A_*,B_*$ comunes, la misma cota triangular prueba uniformidad del producto de Cauchy. Para potencias esto está asegurado por el criterio M en cada segmento interior. La absoluta puntual basta para identificar el producto en una entrada; la cota común es lo que protege todas las entradas a la vez.
+Para obtener uniformidad en una ventana, los totales de magnitudes deben tener barreras comunes $A_*,B_*$ y las colas de ambas series de magnitudes deben desaparecer uniformemente allí. La misma estimación con dos colas controla entonces el producto de Cauchy en todas las entradas. Las series de potencias cumplen esas condiciones en cada segmento interior por el criterio M. En una entrada basta convergencia absoluta para identificar el producto; el control común permite hacerlo uniformemente en la región.
 
 **Puente hacia ACM.** El mecanismo interior depende de una magnitud: $|a_j(x-c)^j|\le M(r/s)^j$, y no del orden de $x$. En análisis complejo, la distancia $|z-c|$ describe discos en lugar de segmentos; la triangular y las magnitudes volverán a proteger sumas y productos. Aquí esa observación es una ruta curricular: no se afirma todavía diferenciabilidad compleja, continuación analítica, integración en curvas ni comportamiento en toda la circunferencia frontera. Se reconstruirán allí las definiciones y las pruebas pertinentes. El aprendizaje transferible es concreto: fijar una región interior, reservar un margen y controlar su cola completa.
 
-**Cierre del capítulo.** Una serie funcional se estudia mediante sus parciales; Cauchy construye la suma; M aporta un presupuesto numérico; C28 permite operaciones bajo sus hipótesis. Las potencias añaden una geometría radial, uniformidad interior, coeficientes recuperables y productos acreditados. La siguiente puerta de ANM es C30, *Espacios métricos*: abstraerá la distancia que ya organiza estas ventanas, sin abrirse en este cierre.
+La geometría interior de las potencias procede de comparar magnitudes y reservar un margen antes de la frontera. El producto de Cauchy utiliza también magnitudes para controlar los pares de índices omitidos. Estos mecanismos podrán reutilizarse con otras nociones de distancia, siempre que se construyan sus dominios y se acrediten las operaciones correspondientes.
 
-![El parcial de producto de Cauchy reúne pares j+k≤N, mientras el producto de parciales reúne un cuadrado. Todo par excluido del triángulo tiene algún índice mayor que floor(N/2), lo que produce la cota de dos colas. Para dos geométricas en radio1/2 se comparan la cota triangular4·2^(−floor(N/2)) y la cola exacta(N+3)2^(−N).](../../assets/books/anm/C29/C29-F08.svg){#fig-anm-c29-f08 fig-alt="El parcial de producto de Cauchy reúne pares j+k≤N, mientras el producto de parciales reúne un cuadrado. Todo par excluido del triángulo tiene algún índice mayor que floor(N/2), lo que produce la cota de dos colas. Para dos geométricas en radio1/2 se comparan la cota triangular4·2^(−floor(N/2)) y la cola exacta(N+3)2^(−N)."}
+![El parcial de producto de Cauchy reúne pares j+k≤N, mientras el producto de parciales reúne un cuadrado. Todo par excluido del triángulo tiene algún índice mayor que floor(N/2), lo que produce la cota de dos colas. Para dos geométricas en radio1/2 se comparan la cota triangular4·2^(−floor(N/2)) y la cola exacta(N+3)2^(−N).](../../assets/books/anm/revision-20261016/C29/C29-F08.svg){#fig-anm-c29-f08 fig-alt="El parcial de producto de Cauchy reúne pares j+k≤N, mientras el producto de parciales reúne un cuadrado. Todo par excluido del triángulo tiene algún índice mayor que floor(N/2), lo que produce la cota de dos colas. Para dos geométricas en radio1/2 se comparan la cota triangular4·2^(−floor(N/2)) y la cola exacta(N+3)2^(−N)."}
 
 ### Microcontroles
 

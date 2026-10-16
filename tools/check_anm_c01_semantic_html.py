@@ -75,7 +75,7 @@ def audit(root: Path, site: Path) -> tuple[dict, list[str]]:
     links_total = 0
     figures_total = 0
     for path, wanted, wanted_links in (
-        (CHAPTER, ("C01-F01", "C01-F02", "C01-F03", "C01-F05", "C01-F11", "C01-F06", "C01-F07", "C01-F12", "C01-F08", "C01-F13", "C01-F09", "C01-F14"), 15),
+        (CHAPTER, ("C01-F01", "C01-F02", "C01-F03", "C01-F05", "C01-F11", "C01-F06", "C01-F07", "C01-F12", "C01-F08", "C01-F13", "C01-F09", "C01-F14"), 6),
         (SOLUTIONS, SOLUTION_IDS, 6),
     ):
         src = (root / path).read_text(encoding="utf-8")

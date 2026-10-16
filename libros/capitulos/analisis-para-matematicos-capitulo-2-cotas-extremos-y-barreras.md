@@ -9,7 +9,7 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 areas:
 - analisis
 level: universitario
@@ -31,325 +31,43 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-2)
 
-[]{#MA-SEC-ANM-01-002-008}
+Un conjunto puede contener muchos números y, aun así, admitir una descripción sencilla de hasta dónde llegan. Para $A=\{-2,0,1,3\}$, por ejemplo, sabemos que ningún elemento supera $3$. También podríamos decir que ninguno supera $5$, aunque ese dato deja más espacio entre el conjunto y la barrera elegida. Con el intervalo $(0,1)$ ocurre algo parecido: todos sus puntos quedan por debajo de $1$, pero esta vez la barrera no pertenece al conjunto. La relación de orden permite describir ambas situaciones y separar dos preguntas que el dibujo de la recta tiende a confundir: cuál es la barrera más ajustada y si algún elemento del conjunto la alcanza.
 
-En el capítulo anterior aprendimos a mirar la recta real con un poco más de cuidado. Ya no era solamente el lugar donde colocamos números: distinguimos qué información pertenece al orden, qué información pertenece a la distancia y cómo ambas estructuras se coordinan en $\mathbb R$. Ahora vamos a usar sólo una parte de esa infraestructura —el orden— para plantear una pregunta nueva.
+En C00 construimos los números reales y establecimos su completitud. Aquí desarrollaremos el lenguaje que permite reconocer y comparar sus extremos, procurando identificar qué argumentos usan sólo el orden y cuáles necesitan aquella propiedad de existencia. Esta distinción resulta útil incluso cuando ya conocemos la completitud: nos permite transportar una prueba a otros sistemas ordenados y localizar el punto preciso en que ese transporte deja de funcionar.
 
-Supongamos que tenemos un conjunto de números reales. Puede ser un intervalo, una colección finita de puntos, una semirrecta o algún conjunto mucho menos regular. En lugar de comparar dos números concretos, queremos decir algo sobre **todo el conjunto a la vez**. ¿Cómo podemos expresar que ninguno de sus elementos sobrepasa cierto nivel? ¿Cómo registramos que todos permanecen por encima de una barrera inferior? Y, una vez que sabemos que existen muchas barreras posibles, ¿tiene sentido preguntar por la más ajustada?
-
-La primera palabra que necesitaremos es **cota**.
-
-La idea es elemental. Si todos los elementos de un conjunto $A$ quedan a la izquierda de un número $u$, entonces $u$ controla a $A$ desde arriba. Si todos quedan a la derecha de un número $l$, entonces $l$ lo controla desde abajo. Pero esa imagen tan sencilla contiene varias distinciones que en análisis se vuelven decisivas.
-
-Una barrera que controla al conjunto no tiene por qué pertenecer a él. Tampoco tiene por qué ser única. Y, aunque podamos mover una barrera hasta hacerla cada vez más ajustada, todavía no sabemos si existirá una posición extremal que merezca llamarse «la mejor».
-
-Ésa será la pregunta que guiará el capítulo:
-
-> **¿Cómo se describe con precisión la barrera más ajustada que controla un conjunto, y qué diferencia hay entre que esa barrera exista y que además sea alcanzada por el conjunto?**
-
-No intentaremos responder todo de una vez. Primero aprenderemos a hablar correctamente de barreras cualesquiera. Después distinguiremos las barreras que pertenecen al conjunto de las que sólo lo controlan; más adelante aislaremos las barreras extremales que reciben los nombres de supremo e ínfimo. Sólo al final podremos formular con precisión la pregunta que abrirá el capítulo siguiente: **¿qué propiedad especial de $\mathbb R$ garantiza que ciertas barreras extremales existan?**
-
-Por ahora no necesitamos completitud, sucesiones ni topología. Nos basta el orden de la recta.
+[]{#MA-SEC-ANM-01-002-001}
 
 ## 2.1. Controlar un conjunto desde arriba y desde abajo
 
-Empecemos con un ejemplo concreto. Consideremos
+Para el conjunto finito de la apertura, tanto $3$ como $5$ controlan todos los elementos desde arriba. El número $2$ falla, porque el elemento $3$ lo sobrepasa. Lo que decide cada respuesta es una comparación con **todos** los elementos del conjunto. Dado $A\subseteq\mathbb R$, llamamos **cota superior** de $A$ a un número $u\in\mathbb R$ tal que $a\le u$ para todo $a\in A$. Una **cota inferior** es un número $l\in\mathbb R$ que satisface $l\le a$ para todo $a\in A$. Reuniremos esas cotas en los conjuntos
 
 $$
-A=\{-2,0,1,3\}.
-$$
-
-Si colocamos estos cuatro puntos sobre la recta, el número $5$ queda a la derecha de todos ellos. También $4$, $10$ y $100$. Cualquiera de esos números sirve para decir:
-
-> ningún elemento de $A$ está por encima de aquí.
-
-En cambio, $2$ ya no sirve, porque $3\in A$ queda a su derecha.
-
-Esta observación se formaliza de la manera siguiente.
-
-Diremos que un número real $u$ es una **cota superior** de un conjunto $A\subseteq\mathbb R$ cuando
-
-$$
-a\le u
+U(A)=\{u\in\mathbb R:\forall a\in A,\ a\le u\},
 \qquad
-\text{para todo }a\in A.
-$$
-
-En notación cuantificada:
-
-$$
-\forall a\in A,\qquad a\le u.
-$$
-
-De manera dual, diremos que un número real $l$ es una **cota inferior** de $A$ cuando
-
-$$
-l\le a
-\qquad
-\text{para todo }a\in A.
-$$
-
-Es decir,
-
-$$
-\forall a\in A,\qquad l\le a.
-$$
-
-Conviene detenernos aquí, porque estas dos definiciones son mucho más importantes de lo que aparentan.
-
-Una cota superior no es «un número grande» en términos absolutos. Es un número grande **respecto del conjunto que estamos estudiando**. El número $10$ puede ser una cota superior de un conjunto y no serlo de otro. La propiedad depende siempre del par formado por el conjunto y la barrera.
-
-Lo mismo ocurre con una cota inferior. No preguntamos si $l$ es pequeño en algún sentido universal, sino si todos los elementos de $A$ quedan por encima de él.
-
-### Una cota no tiene por qué pertenecer al conjunto
-
-Tomemos ahora
-
-$$
-B=(0,1).
-$$
-
-El número $1$ es una cota superior de $B$, porque todo $b\in B$ satisface
-
-$$
-b<1,
-$$
-
-y por tanto también $b\le1$.
-
-Pero
-
-$$
-1\notin B.
-$$
-
-Esto no crea ninguna dificultad. La definición de cota superior exige que los elementos del conjunto no sobrepasen la barrera; **no exige que la barrera sea uno de esos elementos**.
-
-Del mismo modo, $0$ es una cota inferior de $(0,1)$ aunque
-
-$$
-0\notin(0,1).
-$$
-
-Esta distinción será crucial durante todo el capítulo. Más adelante introduciremos nociones en las que la pertenencia al conjunto sí será obligatoria. Por ahora debemos resistir la tentación de incorporar esa condición antes de tiempo.
-
-Podemos resumirlo así:
-
-> **ser cota es una relación de control, no una relación de pertenencia.**
-
-### Una cota casi nunca es única
-
-Volvamos al conjunto
-
-$$
-B=(0,1).
-$$
-
-Ya vimos que $1$ es una cota superior. Pero también lo son $2$, $10$, $\pi$ y cualquier número real mayor que $1$.
-
-¿Por qué?
-
-Si $u$ es una cota superior de $A$ y $v\ge u$, entonces para todo $a\in A$ tenemos
-
-$$
-a\le u\le v.
-$$
-
-Por transitividad del orden,
-
-$$
-a\le v.
-$$
-
-Así que $v$ también es una cota superior.
-
-Acabamos de obtener una primera propiedad estructural:
-
-> si una barrera superior funciona, cualquier barrera colocada más a la derecha también funciona.
-
-Dualmente, si $l$ es una cota inferior de $A$ y $m\le l$, entonces $m$ también es una cota inferior.
-
-La figura [C02-F01](#fig-anm-c02-f01) hace visible precisamente esta movilidad de las barreras.
-
-![La validez de una barrera depende de su posición respecto del conjunto: una cota superior sigue siéndolo al desplazarse a la derecha y una inferior al desplazarse a la izquierda.](../../assets/books/anm/C02/C02-F01.svg){#fig-anm-c02-f01 fig-alt="Dos paneles muestran cotas superiores e inferiores válidas e inválidas alrededor de un conjunto finito sobre la recta. Las barreras válidas conservan su propiedad al moverse en la dirección exterior y pueden perderla al cruzar elementos del conjunto."}
-
-La idea visual no reemplaza la definición. Una barrera dibujada puede parecer válida en un caso particular; la afirmación matemática exige verificar la desigualdad para **todo** elemento del conjunto.
-
-### El conjunto de todas las cotas
-
-Como normalmente hay muchas cotas, resulta útil reunirlas en un conjunto.
-
-Definiremos el **conjunto de cotas superiores** de $A$ por
-
-$$
-U(A)=\{u\in\mathbb R:\forall a\in A,\ a\le u\}.
-$$
-
-Y el **conjunto de cotas inferiores** por
-
-$$
 L(A)=\{l\in\mathbb R:\forall a\in A,\ l\le a\}.
 $$
 
-La letra $U$ puede recordarnos *upper bounds* y la letra $L$, *lower bounds*, pero lo importante no es la inicial sino la estructura.
+La definición permite que una cota pertenezca a $A$, pero no lo exige. En el ejemplo finito, $3$ pertenece a $A$ y $5$ no; ambos son cotas superiores. Para $B=(0,1)$, los números $0$ y $1$ son, respectivamente, cota inferior y superior, aunque ninguno pertenece a $B$. El control depende de las desigualdades y sigue siendo válido cuando el conjunto no incluye la barrera.
 
-Para
+Una vez encontrada una cota superior, cualquier número mayor también sirve: si $a\le u$ para todo $a\in A$ y $v\ge u$, la transitividad da $a\le u\le v$. Del mismo modo, si $l$ es cota inferior y $m\le l$, entonces $m\le l\le a$ para todo $a\in A$, de modo que $m$ también es cota inferior. Esto explica que las cotas del conjunto finito formen las semirrectas $U(A)=[3,\infty)$ y $L(A)=(-\infty,-2]$. No hay otras: una cota superior menor que $3$ quedaría desmentida por el propio elemento $3$, y una cota inferior mayor que $-2$ por el elemento $-2$.
 
-$$
-A=\{-2,0,1,3\},
-$$
+![La validez de una barrera depende de su posición respecto del conjunto: una cota superior sigue siéndolo al desplazarse a la derecha y una inferior al desplazarse a la izquierda.](../../assets/books/anm/C02/C02-F01.svg){#fig-anm-c02-f01 fig-alt="Dos paneles muestran cotas superiores e inferiores válidas e inválidas alrededor de un conjunto finito sobre la recta. Las barreras válidas conservan su propiedad al moverse en la dirección exterior y pueden perderla al cruzar elementos del conjunto."}
 
-tenemos
+Decimos que $A$ está **acotado superiormente** si $U(A)\ne\varnothing$, y **acotado inferiormente** si $L(A)\ne\varnothing$. Cuando cumple ambas condiciones, está **acotado**. Para un conjunto no vacío, elegir una cota inferior $l$ y una superior $u$ nos da $l\le a\le u$ para todo $a\in A$; tomando uno de esos elementos comprobamos además que $l\le u$. Por tanto, estar acotado equivale a quedar contenido en algún intervalo $[l,u]$. La equivalencia también vale para el vacío, que está contenido, por ejemplo, en $[0,0]$; examinaremos sus familias de cotas en §2.7.
 
-$$
-U(A)=[3,\infty)
-$$
+La acotación no cuenta elementos. El intervalo $(0,1)$ es infinito y está acotado, mientras que $(0,\infty)$ sólo está acotado inferiormente. En efecto, para cualquier candidato $u$ a cota superior, el número $\max\{1,u+1\}$ es positivo y mayor que $u$. Dualmente, $(-\infty,5)$ está acotado superiormente, pero el número $\min\{4,l-1\}$ descarta cualquier candidato $l$ a cota inferior. La recta $\mathbb R$ no tiene cotas en ninguna dirección, pues a cada $x$ le acompañan $x+1$ y $x-1$.
 
-y
+Estos argumentos emplean la negación de una afirmación universal. Para probar que $u$ falla como cota superior basta encontrar **un** elemento que lo sobrepase; para descartar una cota inferior basta encontrar uno que quede por debajo. En símbolos,
 
 $$
-L(A)=(-\infty,-2].
-$$
-
-Aquí podemos verificar las fórmulas directamente: todo número $u\ge3$ domina a todos los elementos de $A$, mientras que cualquier número menor que $3$ falla al menos frente al elemento $3$. De modo dual, todo número $l\le-2$ queda por debajo de todos los elementos de $A$, y cualquier número mayor que $-2$ falla frente a $-2$.
-
-No conviene extraer todavía una teoría general de los extremos de $U(A)$ y $L(A)$. Eso será precisamente el trabajo de las secciones siguientes. Por ahora sólo nos interesa advertir que las cotas forman ellas mismas conjuntos con una geometría muy simple en la recta: una vez que aparece una cota superior, todas las posiciones a su derecha también son cotas; una vez que aparece una cota inferior, todas las posiciones a su izquierda también lo son.
-
-### Acotación superior, inferior y bilateral
-
-Las definiciones de cota nos permiten clasificar conjuntos según exista o no alguna barrera válida.
-
-Diremos que $A$ está **acotado superiormente** si posee al menos una cota superior. En símbolos,
-
-$$
-U(A)\ne\varnothing.
-$$
-
-Diremos que $A$ está **acotado inferiormente** si posee al menos una cota inferior:
-
-$$
-L(A)\ne\varnothing.
-$$
-
-Y diremos simplemente que $A$ está **acotado** si está acotado tanto superior como inferiormente.
-
-Equivalente a esto, $A$ está acotado si existen números reales $l$ y $u$ tales que
-
-$$
-l\le a\le u
+u\notin U(A)\ \Longleftrightarrow\ \exists a\in A:\ a>u,
 \qquad
-\text{para todo }a\in A.
+l\notin L(A)\ \Longleftrightarrow\ \exists a\in A:\ a<l.
 $$
 
-Geométricamente, todo el conjunto queda contenido entre dos barreras:
+Así, para $A=(-2,4)$, los números $4$ y $5$ son cotas superiores, pero $3$ queda descartado por $7/2\in A$; los números $-2$ y $-3$ son cotas inferiores, pero $0$ queda descartado por $-1\in A$. No necesitamos revisar uno por uno todos los puntos para refutar una cota. Encontrar un testigo basta, mientras que verificarla exige un argumento que abarque el conjunto entero.
 
-$$
-A\subseteq[l,u].
-$$
-
-Esta equivalencia es sencilla, pero conviene leerla en ambos sentidos.
-
-Si sabemos que
-
-$$
-A\subseteq[l,u],
-$$
-
-entonces ningún elemento de $A$ puede quedar por debajo de $l$ ni por encima de $u$; por tanto, $l$ es cota inferior y $u$ es cota superior.
-
-Recíprocamente, si $l$ es cota inferior y $u$ es cota superior, entonces cada $a\in A$ satisface
-
-$$
-l\le a\le u,
-$$
-
-de modo que
-
-$$
-a\in[l,u].
-$$
-
-Por tanto,
-
-$$
-A\subseteq[l,u].
-$$
-
-### Acotado no significa finito
-
-Hay una confusión frecuente que conviene eliminar desde ahora.
-
-El conjunto
-
-$$
-(0,1)
-$$
-
-tiene infinitos elementos, pero está acotado: $0$ es una cota inferior y $1$ es una cota superior.
-
-Por tanto,
-
-> **acotación y cantidad de elementos son conceptos distintos.**
-
-Un conjunto puede ser infinito y estar perfectamente confinado entre dos barreras. El orden no está contando cuántos elementos hay; está controlando dónde pueden estar.
-
-También puede ocurrir lo contrario: un conjunto puede extenderse indefinidamente en una dirección.
-
-Por ejemplo,
-
-$$
-C=(0,\infty)
-$$
-
-está acotado inferiormente —por ejemplo, $0$ es una cota inferior—, pero no está acotado superiormente. Dado cualquier candidato $u\in\mathbb R$, siempre podemos encontrar un elemento de $C$ mayor que $u$. Por tanto,
-
-$$
-U(C)=\varnothing.
-$$
-
-Dualmente,
-
-$$
-D=(-\infty,5)
-$$
-
-está acotado superiormente, pero no inferiormente.
-
-Y el conjunto completo de los reales,
-
-$$
-\mathbb R,
-$$
-
-no está acotado ni superior ni inferiormente.
-
-### Cómo negar que un número sea cota
-
-Las definiciones cuantificadas también nos enseñan a reconocer cuándo una barrera falla.
-
-Decir que $u$ **no** es cota superior de $A$ significa negar
-
-$$
-\forall a\in A,\quad a\le u.
-$$
-
-La negación correcta es
-
-$$
-\exists a\in A
-\quad\text{tal que}\quad
-a>u.
-$$
-
-Es decir, para destruir la afirmación «$u$ controla a todo $A$ desde arriba» basta encontrar **un solo** elemento que cruce la barrera.
-
-De manera dual, $l$ no es cota inferior de $A$ exactamente cuando existe algún $a\in A$ con
-
-$$
-a<l.
-$$
-
-Esta traducción lógica será útil una y otra vez. También explica por qué el dibujo de una barrera tiene valor matemático: moverla puede revelar el momento en que un elemento del conjunto pasa al lado prohibido. Pero la figura es sólo la representación; la condición exacta es cuantificada.
+[]{#MA-SEC-ANM-01-002-002}
 
 ### Antes de seguir
 
@@ -1186,275 +904,30 @@ $$
 La estructura no cambia: las familias de cotas siguen siendo semirrectas del mismo tipo; sólo se desplazan exactamente la misma cantidad que el conjunto.
 
 </details>
+
 ## 2.2. Extremos alcanzados: máximo y mínimo
 
-En la sección anterior vimos que una cota es una barrera que controla a todo el conjunto, pero no tiene por qué pertenecer a él. Ahora vamos a añadir justamente esa condición que habíamos dejado fuera.
-
-Volvamos al conjunto
+El número $3$ tiene una relación con $\{-2,0,1,3\}$ que no comparte la cota superior $5$: es uno de sus elementos. Llamamos **máximo** de $A$ a un número $M$ que pertenece a $A$ y satisface $a\le M$ para todo $a\in A$. Dualmente, un **mínimo** es un número $m\in A$ tal que $m\le a$ para todo $a\in A$. Las dos condiciones de cada definición se reúnen en
 
 $$
-A=\{-2,0,1,3\}.
+M=\max A\ \Longleftrightarrow\ M\in A\cap U(A),
+\qquad
+m=\min A\ \Longleftrightarrow\ m\in A\cap L(A).
 $$
 
-El número $5$ es una cota superior de $A$, pero no parece tener un vínculo especialmente estrecho con el conjunto: podríamos reemplazarlo por $6$, $10$ o $100$ y seguiría funcionando. El número $3$, en cambio, hace algo más. También controla a todos los elementos de $A$ desde arriba, pero además
+En nuestro ejemplo, $\max A=3$ y $\min A=-2$. La cota $5$ no es máximo porque no pertenece a $A$, y el elemento $1$ tampoco lo es porque $3>1$. Pertenecer y ser cota son exigencias distintas; un extremo alcanzado las cumple simultáneamente. Para $\{-3,-1,2,7\}$, las mismas comprobaciones dan mínimo $-3$ y máximo $7$.
 
-$$
-3\in A.
-$$
-
-La barrera ha sido **alcanzada por el propio conjunto**.
-
-Esa diferencia motiva la siguiente definición.
-
-Diremos que un número real $M$ es el **máximo** de un conjunto $A\subseteq\mathbb R$ cuando se cumplen simultáneamente dos condiciones:
-
-$$
-M\in A
-$$
-
-y
-
-$$
-\forall a\in A,\qquad a\le M.
-$$
-
-Cuando esto ocurre escribimos
-
-$$
-M=\max A.
-$$
-
-De manera dual, un número real $m$ es el **mínimo** de $A$ cuando
-
-$$
-m\in A
-$$
-
-y
-
-$$
-\forall a\in A,\qquad m\le a,
-$$
-
-y entonces escribimos
-
-$$
-m=\min A.
-$$
-
-Las definiciones tienen dos piezas que conviene mantener separadas. Ser máximo significa:
-
-1. **ser cota superior** de $A$;
-2. **pertenecer a $A$**.
-
-Ser mínimo significa, de manera dual:
-
-1. **ser cota inferior** de $A$;
-2. **pertenecer a $A$**.
-
-Por eso podemos condensar las definiciones usando los conjuntos de cotas introducidos en §2.1:
-
-$$
-M=\max A
-\quad\Longleftrightarrow\quad
-M\in A\cap U(A),
-$$
-
-mientras que
-
-$$
-m=\min A
-\quad\Longleftrightarrow\quad
-m\in A\cap L(A).
-$$
-
-Estas equivalencias no añaden una teoría nueva: sólo reúnen en una sola expresión las dos condiciones de la definición.
-
-### Una cota superior no es automáticamente un máximo
-
-Esta es la primera distinción que debemos fijar con absoluta claridad.
-
-Para
-
-$$
-A=\{-2,0,1,3\},
-$$
-
-el número $5$ satisface
-
-$$
-5\in U(A),
-$$
-
-pero
-
-$$
-5\notin A.
-$$
-
-Por tanto, $5$ es una cota superior, pero **no** es el máximo.
-
-En cambio,
-
-$$
-3\in U(A)
-\quad\text{y}\quad
-3\in A,
-$$
-
-así que
-
-$$
-\max A=3.
-$$
-
-Dualmente,
-
-$$
-\min A=-2.
-$$
-
-La figura [C02-F02](#fig-anm-c02-f02) hace visible esta diferencia sin convertirla en una mera cuestión de apariencia gráfica.
+Máximo y mínimo, cuando existen, son únicos. Si $M$ y $N$ fueran máximos de un mismo conjunto, de $M\in A$ y de que $N$ es cota superior obtendríamos $M\le N$; intercambiando sus papeles obtendríamos $N\le M$. La antisimetría obliga a que $M=N$. Para dos mínimos $m,n$, las condiciones de cota inferior dan $m\le n$ y $n\le m$, de nuevo con igualdad. Esto justifica que hablemos de *el* máximo y *el* mínimo, sin afirmar todavía que todo conjunto los tenga.
 
 ![Máximo y mínimo combinan dos condiciones: ser barrera y pertenecer al conjunto; los puntos llenos y huecos separan visualmente ambas condiciones.](../../assets/books/anm/C02/C02-F02.svg){#fig-anm-c02-f02 fig-alt="Dos intervalos comparan extremos cerrados y abiertos. En el intervalo cerrado los extremos pertenecen y son mínimo y máximo; en el abierto las mismas fronteras no pertenecen y no son extremos alcanzados."}
 
-El dibujo puede ayudarnos a ver la diferencia entre una barrera exterior y una barrera alcanzada. Pero la condición matemática sigue siendo la conjunción exacta
+Para $[0,1]$, los extremos son $0$ y $1$. El intervalo $(0,1)$ tiene las mismas cotas $0$ y $1$, pero carece de mínimo y de máximo. Podemos demostrarlo sin limitarnos a observar que los extremos dibujados están abiertos. Dado cualquier $x\in(0,1)$, el número $(x+1)/2$ sigue en $(0,1)$ y es mayor que $x$; por tanto, $x$ no es máximo. El número $x/2$ sigue en el intervalo y es menor que $x$, por lo que tampoco puede ser mínimo. Como el argumento sirve para cualquier elemento, quedan descartados todos los candidatos.
 
-$$
-M\in A
-\quad\text{y}\quad
-\forall a\in A,\ a\le M.
-$$
+El punto medio realiza la misma tarea en un intervalo cualquiera con $a<b$. Si $x<b$, entonces $x<(x+b)/2<b$; si $x>a$, entonces $a<(a+x)/2<x$. Por eso $[a,b]$ tiene ambos extremos alcanzados, $[a,b)$ tiene mínimo $a$ y carece de máximo, $(a,b]$ tiene máximo $b$ y carece de mínimo, y $(a,b)$ carece de ambos. En particular, $[-2,5)$ tiene mínimo $-2$ y ningún máximo, mientras que $(2,4)$ no tiene máximo porque a cada $x$ le sigue el punto $(x+4)/2$ del mismo intervalo.
 
-### Si existe, el máximo es único
+En estos ejemplos, la acotación permanece cuando retiramos un extremo, aunque puede desaparecer el máximo o el mínimo correspondiente. Necesitamos una noción que describa la posición de la barrera sin exigir que el conjunto la contenga.
 
-Las definiciones permiten demostrar de inmediato una propiedad importante.
-
-Supongamos que $M$ y $N$ fueran ambos máximos de un mismo conjunto $A$.
-
-Como $M$ es máximo, domina a todos los elementos de $A$. Pero $N$ pertenece a $A$, de modo que
-
-$$
-N\le M.
-$$
-
-Por otra parte, como $N$ también es máximo y $M\in A$, tenemos
-
-$$
-M\le N.
-$$
-
-Las dos desigualdades juntas obligan a que
-
-$$
-M=N.
-$$
-
-Por tanto:
-
-> **un conjunto no puede tener dos máximos distintos.**
-
-La prueba para el mínimo es exactamente dual. Si $m$ y $n$ fueran mínimos de $A$, entonces $m\le n$ porque $m$ está por debajo de todo elemento de $A$, y $n\le m$ porque $n$ también está por debajo de todo elemento de $A$. Luego
-
-$$
-m=n.
-$$
-
-Así, máximo y mínimo, **cuando existen**, son únicos.
-
-La expresión «cuando existen» importa. La definición nos dice qué tendría que cumplir un máximo; no nos promete que todo conjunto posea uno.
-
-### Estar acotado no basta para tener máximo o mínimo
-
-Comparemos ahora dos conjuntos muy parecidos:
-
-$$
-A=[0,1]
-$$
-
-y
-
-$$
-B=(0,1).
-$$
-
-Ambos están acotados. En los dos casos, $0$ es una cota inferior y $1$ es una cota superior.
-
-Pero en $A=[0,1]$ los dos extremos pertenecen al conjunto. Por tanto,
-
-$$
-\min A=0,
-\qquad
-\max A=1.
-$$
-
-En $B=(0,1)$ ocurre algo distinto. El número $1$ sigue siendo cota superior, pero
-
-$$
-1\notin B,
-$$
-
-de modo que no puede ser máximo.
-
-Podríamos preguntarnos si tal vez algún otro número de $(0,1)$ desempeña ese papel. Tomemos un elemento cualquiera
-
-$$
-x\in(0,1).
-$$
-
-El número
-
-$$
-y=\frac{x+1}{2}
-$$
-
-satisface
-
-$$
-x<y<1.
-$$
-
-Por tanto, $y\in(0,1)$ y además $y>x$. Esto demuestra que **ningún** $x\in(0,1)$ puede dominar a todos los elementos del conjunto. En consecuencia,
-
-$$
-(0,1)
-\quad\text{no tiene máximo}.
-$$
-
-El argumento para el mínimo es dual. Dado cualquier $x\in(0,1)$, el número
-
-$$
-z=\frac{x}{2}
-$$
-
-satisface
-
-$$
-0<z<x,
-$$
-
-de modo que $z\in(0,1)$ y $z<x$. Por tanto, ningún elemento de $(0,1)$ puede ser mínimo.
-
-Así obtenemos una advertencia fundamental:
-
-> **un conjunto puede estar acotado superior e inferiormente y, sin embargo, no tener máximo ni mínimo.**
-
-No conviene explicar todavía esta diferencia diciendo que un intervalo es «cerrado» y el otro «abierto» en sentido topológico. Esas nociones generales pertenecen a un capítulo posterior. Aquí todo se resuelve con las definiciones de orden y pertenencia.
-
-### Cuatro comportamientos con los mismos extremos
-
-Los intervalos con extremos $a<b$ permiten separar rápidamente las posibilidades:
-
-- $[a,b]$ tiene mínimo $a$ y máximo $b$;
-- $[a,b)$ tiene mínimo $a$ pero no máximo;
-- $(a,b]$ tiene máximo $b$ pero no mínimo;
-- $(a,b)$ no tiene ni máximo ni mínimo.
-
-La diferencia no está en que las barreras $a$ y $b$ desaparezcan: siguen controlando a los cuatro conjuntos. Lo que cambia es si esas barreras pertenecen o no al conjunto.
-
-Esta observación nos da una regla de lectura útil:
-
-> para decidir si una cota es además un máximo o un mínimo, hay que comprobar **pertenencia**, no sólo posición.
+[]{#MA-SEC-ANM-01-002-003}
 
 ### Antes de seguir
 
@@ -2247,259 +1720,36 @@ $$
 No hemos usado ninguna noción posterior. Todo depende de pertenencia al conjunto transformado y de cómo una transformación afín afecta las desigualdades que definen máximo y mínimo.
 
 </details>
+
 ## 2.3. La mejor barrera: supremo e ínfimo
 
-Terminamos la sección anterior con un conjunto que estaba perfectamente controlado y, sin embargo, no tenía máximo. El ejemplo era
+Entre las cotas superiores de $(0,1)$, el número $1$ tiene una propiedad que no comparte $2$: ninguna cota superior es menor que él. Esta propiedad define el **supremo**. Un número $s$ es el supremo de $A$ si es cota superior de $A$ y satisface $s\le u$ para toda cota superior $u$ de $A$. El **ínfimo** es una cota inferior $i$ tal que $l\le i$ para toda cota inferior $l$ de $A$. Así,
 
 $$
-A=(0,1).
+s=\sup A\ \Longleftrightarrow\ s=\min U(A),
+\qquad
+i=\inf A\ \Longleftrightarrow\ i=\max L(A).
 $$
 
-Sabemos que $1$ es una cota superior de $A$. También lo son $2$, $10$ y cualquier número mayor que $1$. Pero todas esas cotas no desempeñan el mismo papel: algunas dejan mucho espacio entre la barrera y el conjunto, mientras que $1$ parece ocupar una posición límite.
+La minimalidad se refiere a $U(A)$, y la maximalidad a $L(A)$. Ninguna de esas condiciones exige que $s$ o $i$ pertenezcan al conjunto original. Para comprobar un supremo hay que atender a sus dos obligaciones: controlar a $A$ desde arriba y quedar por debajo de todas las demás cotas superiores.
 
-La pregunta ya no es si la barrera pertenece a $A$. Esa fue la cuestión del máximo. Ahora queremos preguntar algo distinto:
+Verifiquémoslas para $(0,1)$. Todo $u\ge1$ es cota superior, porque $a<1\le u$ para todo $a\in(0,1)$. Si $u<1$, buscamos un elemento del intervalo mayor que $u$. Cuando $u<0$ sirve $1/2$; cuando $0\le u<1$ sirve $(u+1)/2$, que está entre $u$ y $1$. Hemos probado que $U((0,1))=[1,\infty)$ y, por tanto, que $\sup(0,1)=1$.
 
-> **entre todas las cotas superiores, ¿hay una que sea menor que todas las demás?**
+Para el lado inferior, todo $l\le0$ es cota inferior. Si $l>0$, entonces $l/2$ descarta la cota cuando $l\le1$, mientras que $1/2$ la descarta cuando $l>1$. En ambos casos encontramos un punto de $(0,1)$ menor que $l$. Así, $L((0,1))=(-\infty,0]$ y $\inf(0,1)=0$. La prueba se obtiene de las definiciones y de la posibilidad de tomar puntos medios; la completitud no interviene en esta identificación particular.
 
-Si existe, esa barrera es el **supremo**.
+![El supremo y el ínfimo son extremos de las familias de cotas U(A) y L(A), no condiciones de pertenencia al conjunto original.](../../assets/books/anm/C02/C02-F03.svg){#fig-anm-c02-f03 fig-alt="Tres carriles alineados muestran A=(2,5), L(A)=(-infinito,2\] y U(A)=\[5,infinito). Las marcas 2 y 5 son respectivamente el máximo de L(A) y el mínimo de U(A), aunque sean puntos abiertos en A."}
 
-Sea $A\subseteq\mathbb R$. Diremos que un número real $s$ es el **supremo** de $A$ cuando se cumplen dos condiciones:
-
-1. $s$ es cota superior de $A$;
-2. toda cota superior $u$ de $A$ satisface $s\le u$.
-
-En símbolos,
+La forma de esas familias de cotas es general. Si $s=\sup A$, entonces toda cota superior $u$ satisface $s\le u$, de modo que $U(A)\subseteq[s,\infty)$. Recíprocamente, como $s$ es cota superior, cualquier $u\ge s$ también lo es por transitividad. Dualmente, cuando $i=\inf A$, las cotas inferiores son exactamente los números menores o iguales que $i$. Obtenemos
 
 $$
-\forall a\in A,\quad a\le s,
+U(A)=[s,\infty),\qquad L(A)=(-\infty,i],
 $$
 
-y
+cada igualdad bajo la hipótesis de existencia de su extremo correspondiente. Para $A=(2,5)$ resultan $U(A)=[5,\infty)$ y $L(A)=(-\infty,2]$, con supremo $5$ e ínfimo $2$. Para $B=\{-4,1,7\}$ resultan $U(B)=[7,\infty)$ y $L(B)=(-\infty,-4]$, cuyos extremos sí pertenecen a $B$.
 
-$$
-\forall u\in U(A),\quad s\le u.
-$$
+También aquí hay unicidad. Si $s,t$ fueran supremos de $A$, cada uno sería cota superior y la minimalidad del otro daría $s\le t$ y $t\le s$; por antisimetría, $s=t$. Si $i,j$ fueran ínfimos, cada uno sería cota inferior y la maximalidad del otro daría $j\le i$ e $i\le j$, luego $i=j$. La notación $\sup A$ o $\inf A$ designa, pues, un número determinado cuando hemos asegurado su existencia. Puede asegurarse mediante una comprobación como las anteriores o mediante la completitud de $\mathbb R$, con sus hipótesis de no vaciedad y acotación en la dirección apropiada. Son justificaciones diferentes y conviene reconocer cuál usamos.
 
-Cuando existe tal número, escribimos
-
-$$
-s=\sup A.
-$$
-
-La segunda condición expresa la palabra decisiva: **menor**. No basta con que $s$ controle al conjunto desde arriba; debe ser la menor de todas las barreras superiores válidas.
-
-Dualmente, diremos que un número real $i$ es el **ínfimo** de $A$ cuando
-
-1. $i$ es cota inferior de $A$;
-2. toda cota inferior $l$ de $A$ satisface $l\le i$.
-
-Es decir,
-
-$$
-\forall a\in A,\quad i\le a,
-$$
-
-y
-
-$$
-\forall l\in L(A),\quad l\le i.
-$$
-
-Cuando existe, escribimos
-
-$$
-i=\inf A.
-$$
-
-Aquí la palabra decisiva es **mayor**: el ínfimo es la mayor de todas las cotas inferiores.
-
-### El supremo es un extremo del conjunto de cotas
-
-Las definiciones se vuelven especialmente transparentes si recordamos los conjuntos $U(A)$ y $L(A)$ introducidos en §2.1.
-
-Decir que $s$ es supremo significa exactamente que $s$ pertenece a $U(A)$ y que no hay ningún elemento de $U(A)$ menor que él. Por tanto,
-
-$$
-\sup A=\min U(A),
-$$
-
-si ese mínimo existe.
-
-Dualmente,
-
-$$
-\inf A=\max L(A),
-$$
-
-si ese máximo existe.
-
-Esta reformulación merece atención. El supremo no se define, en primer lugar, como «el punto más a la derecha de $A$». Se define como un extremo del **conjunto de sus cotas superiores**. Del mismo modo, el ínfimo es un extremo del conjunto de cotas inferiores.
-
-Eso explica por qué la pertenencia a $A$ no aparece en la definición. La pregunta relevante es si $s$ pertenece a $U(A)$ y es su mínimo; que además pertenezca o no a $A$ es una cuestión distinta, que estudiaremos en la sección siguiente.
-
-### Un ejemplo: las cotas de $(0,1)$
-
-Volvamos a
-
-$$
-A=(0,1).
-$$
-
-Afirmamos que
-
-$$
-U(A)=[1,\infty).
-$$
-
-Veámoslo en los dos sentidos.
-
-Si $u\ge1$, entonces todo $a\in(0,1)$ satisface
-
-$$
-a<1\le u,
-$$
-
-por lo que $u$ es cota superior de $A$.
-
-En cambio, si $u<1$, podemos elegir, por ejemplo,
-
-$$
-a=\frac{u+1}{2}.
-$$
-
-Cuando $0\le u<1$, se cumple $u<a<1$, así que $u$ no es cota superior. Si $u<0$, cualquier número de $(0,1)$ es mayor que $u$, de modo que tampoco es cota superior. Por tanto, no hay cotas superiores menores que $1$.
-
-Así,
-
-$$
-U(A)=[1,\infty),
-$$
-
-y su mínimo es $1$. Luego
-
-$$
-\sup(0,1)=1.
-$$
-
-De manera dual,
-
-$$
-L(A)=(-\infty,0],
-$$
-
-de modo que
-
-$$
-\inf(0,1)=0.
-$$
-
-Observemos qué hemos hecho: no hemos usado sucesiones, límites ni completitud. Hemos verificado directamente, mediante el orden, cuál es el mínimo de $U(A)$ y cuál es el máximo de $L(A)$ para este conjunto concreto.
-
-### Si el supremo existe, determina todas las cotas superiores
-
-La descripción anterior no es especial de $(0,1)$. Supongamos que $s=\sup A$ existe.
-
-Como $s$ es cota superior, sabemos que
-
-$$
-s\in U(A).
-$$
-
-Y como toda cota mayor que una cota superior sigue siendo cota superior, todo $u\ge s$ pertenece también a $U(A)$. Por tanto,
-
-$$
-[s,\infty)\subseteq U(A).
-$$
-
-Por otra parte, como $s$ es la menor cota superior, ningún número $u<s$ puede pertenecer a $U(A)$. De aquí obtenemos
-
-$$
-U(A)\subseteq[s,\infty).
-$$
-
-Las dos inclusiones dan
-
-$$
-\boxed{U(A)=[s,\infty)}.
-$$
-
-Dualmente, si $i=\inf A$ existe, entonces
-
-$$
-\boxed{L(A)=(-\infty,i]}.
-$$
-
-Estas identidades muestran que, cuando el extremo existe, toda la familia de barreras queda determinada por una sola posición crítica.
-
-La figura [C02-F03](#fig-anm-c02-f03) separa visualmente los tres objetos que intervienen aquí: el conjunto original $A$, el conjunto $U(A)$ de cotas superiores y el conjunto $L(A)$ de cotas inferiores.
-
-![El supremo y el ínfimo son extremos de las familias de cotas U(A) y L(A), no condiciones de pertenencia al conjunto original.](../../assets/books/anm/C02/C02-F03.svg){#fig-anm-c02-f03 fig-alt="Tres carriles alineados muestran A=(2,5), L(A)=(-infinito,2] y U(A)=[5,infinito). Las marcas 2 y 5 son respectivamente el máximo de L(A) y el mínimo de U(A), aunque sean puntos abiertos en A."}
-
-La separación de carriles es matemáticamente importante: un punto puede ser extremo de $U(A)$ sin que eso diga todavía si pertenece a $A$.
-
-### Si existe, el supremo es único
-
-La palabra «el» en «el supremo» necesita justificación.
-
-Supongamos que $s$ y $t$ fueran ambos supremos de $A$.
-
-Como $s$ es supremo y $t$ es una cota superior, la minimalidad de $s$ implica
-
-$$
-s\le t.
-$$
-
-Pero, simétricamente, como $t$ es supremo y $s$ es una cota superior,
-
-$$
-t\le s.
-$$
-
-Por antisimetría del orden,
-
-$$
-s=t.
-$$
-
-Por tanto:
-
-> **si un conjunto tiene supremo, éste es único.**
-
-La prueba para el ínfimo es dual. Si $i$ y $j$ fueran ambos ínfimos de $A$, entonces, puesto que ambos son cotas inferiores y cada uno es la mayor de ellas,
-
-$$
-i\le j
-\quad\text{y}\quad
-j\le i,
-$$
-
-de donde
-
-$$
-i=j.
-$$
-
-Así, supremo e ínfimo son únicos **cuando existen**.
-
-### Definir no es todavía demostrar existencia
-
-Este punto merece quedar fijado desde ahora.
-
-La definición de supremo nos dice cómo reconocer a un número $s$ **si existe**: debe ser una cota superior y debe estar por debajo de todas las demás cotas superiores. Pero la definición, por sí sola, no demuestra que tal número exista para cualquier conjunto.
-
-Lo mismo vale para el ínfimo.
-
-Por eso, en este libro escribiremos expresiones como
-
-$$
-\sup A
-\qquad\text{o}\qquad
-\inf A
-$$
-
-sólo cuando su existencia haya sido establecida o se haya supuesto explícitamente.
-
-En ejemplos concretos, como $(0,1)$, podemos verificar la existencia directamente. La pregunta general —qué propiedad de $\mathbb R$ garantiza que ciertos conjuntos acotados posean siempre una barrera extremal— queda todavía abierta y no será respondida en esta sección.
+[]{#MA-SEC-ANM-01-002-004}
 
 ### Antes de seguir
 
@@ -3437,301 +2687,45 @@ $$
 Todo el argumento usa únicamente las definiciones de cota, supremo e ínfimo y el hecho de que $\alpha>0$ preserva el orden. No se ha utilizado ninguna garantía general de existencia.
 
 </details>
+
 ## 2.4. Alcanzado frente a no alcanzado
 
-En las tres secciones anteriores hemos ido añadiendo información por capas. Primero apareció una **cota**, que simplemente controla al conjunto desde arriba o desde abajo. Después apareció un **máximo** o un **mínimo**, que además pertenece al conjunto. Finalmente introdujimos el **supremo** y el **ínfimo**, que seleccionan las barreras extremales entre todas las cotas.
+Supongamos que $s=\sup A$. Si además $s\in A$, entonces $s$ es una cota superior que pertenece al conjunto, de modo que $s=\max A$. En sentido inverso, si $M=\max A$, sabemos ya que $M$ es cota superior. Para demostrar que es la menor, basta tomar cualquier otra cota superior $u$: como $M\in A$, la condición que define a $u$ obliga a que $M\le u$. Por tanto, todo máximo es también supremo, y su existencia queda justificada sin recurrir a la completitud.
 
-Ahora podemos comparar esas nociones de manera exacta.
-
-La pregunta central es muy simple:
-
-> **si la mejor barrera existe, ¿qué cambia cuando el conjunto realmente la alcanza?**
-
-La respuesta une máximo con supremo y mínimo con ínfimo.
-
-### Cuando el supremo pertenece al conjunto
-
-Supongamos que $\sup A$ existe y escribamos
+El razonamiento inferior puede reconstruirse con las desigualdades correspondientes. Si $i=\inf A$ pertenece a $A$, es mínimo por definición. Si $m=\min A$, entonces $m$ es cota inferior y toda otra cota inferior $l$ satisface $l\le m$, porque $m\in A$. Luego $m$ es la mayor cota inferior. En consecuencia,
 
 $$
-s=\sup A.
-$$
-
-Por definición, $s$ es una cota superior de $A$. Si además ocurre que
-
-$$
-s\in A,
-$$
-
-entonces se cumplen simultáneamente las dos condiciones que definen al máximo:
-
-1. $s$ pertenece a $A$;
-2. todo $a\in A$ satisface $a\le s$.
-
-Por tanto,
-
-$$
-\max A=s=\sup A.
-$$
-
-Hemos probado una dirección:
-
-$$
-\sup A\in A
-\quad\Longrightarrow\quad
-\max A\text{ existe y }\max A=\sup A.
-$$
-
-La conversa es igualmente importante.
-
-Supongamos ahora que $\max A$ existe. Escribamos
-
-$$
-M=\max A.
-$$
-
-Como $M$ domina a todos los elementos de $A$, es una cota superior. Pero, además, si $u$ es cualquier otra cota superior de $A$, entonces $M\in A$ obliga a que
-
-$$
-M\le u.
-$$
-
-Así que $M$ es menor o igual que toda cota superior. En otras palabras, $M$ es la menor cota superior de $A$.
-
-Por tanto,
-
-$$
-M=\sup A.
-$$
-
-De este modo, siempre que el supremo exista,
-
-$$
-\boxed{
-\max A\text{ existe}
-\quad\Longleftrightarrow\quad
-\sup A\in A
-}
-$$
-
-y, cuando estas condiciones se cumplen,
-
-$$
-\boxed{\max A=\sup A.}
-$$
-
-La igualdad no es una coincidencia de notación. Expresa que una misma barrera puede verse de dos maneras: como **la menor de todas las cotas superiores** y, si además pertenece al conjunto, como **el mayor elemento del propio conjunto**.
-
-### El dual inferior
-
-Todo el argumento tiene una versión reflejada.
-
-Si $\inf A$ existe y
-
-$$
-\inf A\in A,
-$$
-
-entonces ese número es una cota inferior que además pertenece al conjunto, así que es el mínimo.
-
-Recíprocamente, si $\min A$ existe, entonces el mínimo es una cota inferior y, por pertenecer a $A$, queda por encima de cualquier otra cota inferior. Por tanto es la mayor cota inferior.
-
-De este modo, siempre que el ínfimo exista,
-
-$$
-\boxed{
-\min A\text{ existe}
-\quad\Longleftrightarrow\quad
-\inf A\in A
-}
-$$
-
-y, cuando estas condiciones se cumplen,
-
-$$
-\boxed{\min A=\inf A.}
-$$
-
-Máximo y mínimo son, por tanto, **supremo e ínfimo alcanzados**.
-
-### La misma barrera, distinta pertenencia
-
-El contraste más limpio aparece al comparar
-
-$$
-A=[a,s]
-$$
-
-y
-
-$$
-B=[a,s),
-$$
-
-con $a<s$.
-
-En ambos conjuntos, $s$ es cota superior. Además, ningún número menor que $s$ puede ser cota superior: si $u<s$, existe un punto del intervalo situado entre $u$ y $s$ que pertenece al conjunto correspondiente. Por tanto,
-
-$$
-\sup A=s
-\qquad\text{y}\qquad
-\sup B=s.
-$$
-
-La posición de la barrera extremal no cambia.
-
-Pero la pertenencia sí cambia:
-
-$$
-s\in A,
+\max A\text{ existe}\ \Longleftrightarrow\ \sup A\in A,
 \qquad
-s\notin B.
+\min A\text{ existe}\ \Longleftrightarrow\ \inf A\in A,
 $$
 
-En consecuencia,
+siempre que exista la barrera extremal mencionada en cada equivalencia. Cuando existe el máximo se cumple $\max A=\sup A$; cuando existe el mínimo, $\min A=\inf A$. Podemos describirlos como supremo e ínfimo **alcanzados**.
+
+Comparemos $A=[a,s]$ y $B=[a,s)$, con $a<s$. Ambos tienen supremo $s$. Para $A$, basta que $s$ sea su máximo; para $B$, además de comprobar que $s$ es cota, hay que descartar todas las cotas menores. Si $u<s$, el punto
 
 $$
-\max A=s,
+x=\frac{\max\{a,u\}+s}{2}
 $$
 
-mientras que $B$ no tiene máximo.
-
-La figura [C02-F04](#fig-anm-c02-f04) hace visible exactamente esta invariancia de la barrera y el cambio de pertenencia.
+pertenece a $B$ y es mayor que $u$: la elección de $\max\{a,u\}$ asegura simultáneamente que $x>a$ y $x>u$, y el punto medio conserva $x<s$. Así, ninguna barrera menor funciona. Sin embargo, $s$ pertenece a $A$ y queda fuera de $B$. El primero tiene máximo $s$ y el segundo no tiene máximo, aunque sus familias de cotas superiores coinciden.
 
 ![Cerrar o abrir la barrera extremal puede cambiar la existencia del máximo sin cambiar el supremo.](../../assets/books/anm/C02/C02-F04.svg){#fig-anm-c02-f04 fig-alt="Dos intervalos alineados, uno cerrado en s y otro abierto en s, comparten el mismo supremo. Sólo el intervalo que contiene s tiene máximo."}
 
-El punto esencial no es que un extremo se dibuje lleno o hueco. Esa diferencia gráfica sólo codifica una afirmación lógica:
+Los intervalos con extremos $a<b$ reúnen todas las combinaciones de alcanzamiento:
 
-$$
-s\in A
-\quad\text{o}\quad
-s\notin A.
-$$
+| Conjunto | Ínfimo | Supremo | Mínimo | Máximo |
+|---|---|---|---|---|
+| $[a,b]$ | $a$ | $b$ | $a$ | $b$ |
+| $[a,b)$ | $a$ | $b$ | $a$ | No existe |
+| $(a,b]$ | $a$ | $b$ | No existe | $b$ |
+| $(a,b)$ | $a$ | $b$ | No existe | No existe |
 
-La existencia del supremo responde a una pregunta sobre el conjunto de cotas; la existencia del máximo añade una pregunta de pertenencia.
+Por ejemplo, $[-1,3)$ tiene ínfimo y mínimo $-1$, supremo $3$ y ningún máximo; en $(-2,4]$ está alcanzado el supremo $4$ y no está alcanzado el ínfimo $-2$. Ninguna de estas conclusiones requiere todavía interpretar los intervalos mediante nociones topológicas.
 
-### Cuatro situaciones que no debemos confundir
+También debemos distinguir la falta de alcanzamiento de la falta de acotación. Para $(0,1)$, el número $2$ es una cota superior que puede mejorarse, mientras que $1$ es la barrera extremal y no se alcanza. Para $(0,1]$, esa misma barrera sí se alcanza. En cambio, $(0,\infty)$ no tiene ninguna cota superior real, por lo que carece de supremo real. La semirrecta $[0,\infty)$ tiene mínimo e ínfimo $0$, pero no supremo real; $(-\infty,5]$ tiene máximo y supremo $5$, pero no ínfimo real. Usaremos supremos e ínfimos con valores en $\mathbb R$; los símbolos de infinito de la notación de intervalos no son valores admisibles para esos extremos en este capítulo.
 
-Ya contamos con lenguaje suficiente para distinguir cuatro fenómenos diferentes.
-
-**1. Una cota que no es extremal.**
-
-Para
-
-$$
-A=(0,1),
-$$
-
-el número $2$ es cota superior, pero no es supremo porque existe una cota superior menor, por ejemplo $1$.
-
-**2. Una barrera extremal no alcanzada.**
-
-Para el mismo conjunto,
-
-$$
-\sup A=1,
-$$
-
-pero
-
-$$
-1\notin A.
-$$
-
-Existe supremo, pero no máximo.
-
-**3. Una barrera extremal alcanzada.**
-
-Para
-
-$$
-B=(0,1],
-$$
-
-tenemos
-
-$$
-\sup B=1
-\quad\text{y}\quad
-1\in B,
-$$
-
-por lo que
-
-$$
-\max B=1.
-$$
-
-**4. Ausencia de acotación.**
-
-Para
-
-$$
-C=(0,\infty),
-$$
-
-no existe ninguna cota superior real. Por tanto, en el marco actual no hay un supremo real que comparar con un máximo.
-
-Estas cuatro situaciones corresponden a preguntas distintas. Confundirlas hace parecer misteriosa una teoría que, en realidad, se organiza mediante comprobaciones muy precisas.
-
-### Los cuatro intervalos vuelven a aparecer
-
-Tomemos otra vez $a<b$.
-
-Para los cuatro intervalos básicos tenemos:
-
-- $[a,b]$: $\inf=a$ y $\sup=b$, ambos alcanzados; por tanto $\min=a$ y $\max=b$;
-- $[a,b)$: $\inf=a$ está alcanzado y $\sup=b$ no; por tanto existe mínimo pero no máximo;
-- $(a,b]$: $\inf=a$ no está alcanzado y $\sup=b$ sí; por tanto existe máximo pero no mínimo;
-- $(a,b)$: $\inf=a$ y $\sup=b$, pero ninguno está alcanzado; no hay mínimo ni máximo.
-
-La diferencia entre estos casos no exige todavía hablar de conjuntos abiertos o cerrados como nociones topológicas. Basta controlar dos datos:
-
-1. dónde está la barrera extremal;
-2. si esa barrera pertenece al conjunto.
-
-### Semirrectas: cuando falta una de las barreras
-
-La comparación también ayuda a leer conjuntos no acotados en una dirección.
-
-Consideremos
-
-$$
-A=[0,\infty).
-$$
-
-El conjunto tiene mínimo:
-
-$$
-\min A=0,
-$$
-
-y por tanto
-
-$$
-\inf A=0.
-$$
-
-Pero no está acotado superiormente. No existe una cota superior real, así que en nuestro marco actual no escribimos $\sup A$.
-
-Dualmente, para
-
-$$
-B=(-\infty,5],
-$$
-
-se cumple
-
-$$
-\max B=\sup B=5,
-$$
-
-pero el conjunto no está acotado inferiormente y no tiene ínfimo real en el sentido que estamos usando.
-
-Esto ayuda a separar dos fallas muy diferentes:
-
-- una barrera extremal puede existir pero no ser alcanzada;
-- puede ocurrir que ni siquiera exista una cota en esa dirección.
+[]{#MA-SEC-ANM-01-002-005}
 
 ### Antes de seguir
 
@@ -4611,334 +3605,51 @@ que no tiene ni mínimo ni máximo.
 Los cuatro conjuntos comparten las mismas barreras extremales $0$ y $1$. Lo único que cambia es cuáles de esas barreras pertenecen al conjunto original.
 
 </details>
+
 ## 2.5. Acercarse a una barrera sin tocarla
 
-Hasta ahora hemos descrito el supremo como la menor de todas las cotas superiores. Esa definición es exacta, pero todavía podemos extraer de ella una consecuencia que será muy útil en análisis.
-
-Supongamos que $A\subseteq\mathbb R$ es **no vacío** y que
+La minimalidad del supremo contiene una información sobre los propios elementos de $A$. Si $s=\sup A$ y elegimos $\varepsilon>0$, el número $s-\varepsilon$ es menor que la menor cota superior, por lo que deja de ser cota. Al negar su condición de cota obtenemos un elemento $a\in A$ con $a>s-\varepsilon$. Además, $a\le s$ porque $s$ sí es cota superior. Hemos demostrado que
 
 $$
-s=\sup A.
+\forall\varepsilon>0\;\exists a\in A:\qquad s-\varepsilon<a\le s.
 $$
 
-Ya sabemos dos cosas:
+La franja $(s-\varepsilon,s]$ contiene, por tanto, algún elemento de $A$, cualquiera que sea su anchura positiva. Si existiera un margen $\varepsilon_0>0$ cuya franja quedara vacía, como todos los elementos están por debajo de $s$, todos tendrían que satisfacer $a\le s-\varepsilon_0$. Esa barrera más baja seguiría siendo cota y desmentiría la minimalidad de $s$.
 
-1. $s$ es cota superior de $A$;
-2. ningún número menor que $s$ puede seguir siendo cota superior.
+![La caracterización epsilon dice que ninguna franja positiva inmediatamente bajo el supremo puede quedar vacía de puntos del conjunto.](../../assets/books/anm/revision-20261016/C02/ANM-C02-F05_LEGIBLE_v01.svg){#fig-anm-c02-f05 fig-alt="Tres franjas de distinto ancho junto a una misma barrera s muestran un testigo de A dentro de cada una. Las franjas son instancias independientes y no forman una sucesión."}
 
-La segunda afirmación puede escribirse de una manera especialmente precisa. Tomemos cualquier número $\varepsilon>0$. Entonces
+El orden de los cuantificadores permite que el elemento elegido dependa de la anchura: primero fijamos $\varepsilon$ y después encontramos $a$. Cuando $s\in A$, podemos usar siempre $a=s$; cuando $s\notin A$, esa elección está prohibida, pero cada franja sigue conteniendo un punto del conjunto. La afirmación no necesita introducir una sucesión ni elegir de antemano una lista de testigos.
 
-$$
-s-\varepsilon<s.
-$$
+La condición local también permite reconocer el supremo, siempre que sepamos de antemano que el candidato es cota superior. En efecto, supongamos que $s$ es cota y que cada franja $(s-\varepsilon,s]$ contiene algún elemento de $A$. Para probar la minimalidad, tomemos una cota superior cualquiera $u$. Si fuera $u<s$, querríamos que la franja empezara exactamente en $u$, de modo que elegimos $\varepsilon=s-u>0$. La hipótesis da entonces $a\in A$ con $u=s-\varepsilon<a$, contradiciendo que $u$ sea cota superior. Así $s\le u$ para toda cota superior $u$, y $s=\sup A$.
 
-Como $s$ es la **menor** cota superior, el número $s-\varepsilon$ no puede ser una cota superior de $A$.
-
-Pero en §2.1 aprendimos cómo se niega que un número sea cota superior. Decir que $s-\varepsilon$ no controla a todo $A$ desde arriba significa que existe algún elemento $a\in A$ para el cual
+Para $A\ne\varnothing$, queda probada la **caracterización $\varepsilon$**:
 
 $$
-a>s-\varepsilon.
-$$
-
-Y como $s$ sí es cota superior,
-
-$$
-a\le s.
-$$
-
-Por tanto,
-
-$$
-s-\varepsilon<a\le s.
-$$
-
-Como $\varepsilon>0$ era arbitrario, obtenemos:
-
-$$
-\boxed{
-\forall\varepsilon>0\;\exists a\in A
-\quad\text{tal que}\quad
-s-\varepsilon<a\le s.
-}
-$$
-
-Esta es la **caracterización $\varepsilon$ del supremo**.
-
-### ¿Qué está diciendo realmente la condición?
-
-La fórmula parece más complicada que la definición original, pero su contenido geométrico es sencillo.
-
-El intervalo
-
-$$
-(s-\varepsilon,s]
-$$
-
-es una franja de anchura $\varepsilon$ pegada a la barrera superior $s$. La condición afirma que, por pequeña que elijamos esa anchura, la franja contiene al menos un elemento de $A$.
-
-Dicho de otro modo:
-
-> **no existe un margen positivo fijo que separe a todo el conjunto de su supremo por la izquierda.**
-
-Esto no significa necesariamente que $s$ pertenezca a $A$. Si $s\in A$, podemos elegir simplemente $a=s$ para cualquier $\varepsilon>0$. Pero si $s\notin A$, la condición sigue siendo válida: cada franja $(s-\varepsilon,s]$ debe contener algún elemento del conjunto, aunque la propia barrera quede fuera de él.
-
-Por eso esta formulación describe tanto extremos alcanzados como no alcanzados.
-
-La figura [C02-F05](#fig-anm-c02-f05) hace visible exactamente esta idea, sin convertir las distintas elecciones de $\varepsilon$ en una sucesión.
-
-![La caracterización epsilon dice que ninguna franja positiva inmediatamente bajo el supremo puede quedar vacía de puntos del conjunto.](../../assets/books/anm/C02/C02-F05.svg){#fig-anm-c02-f05 fig-alt="Tres franjas de distinto ancho junto a una misma barrera s muestran un testigo de A dentro de cada una. Las franjas son instancias independientes y no forman una sucesión."}
-
-El dibujo puede mostrar varias anchuras posibles, pero la afirmación matemática no habla de una lista de anchuras ni de puntos elegidos de antemano. El orden de los cuantificadores es esencial:
-
-$$
-\forall\varepsilon>0\;\exists a\in A.
-$$
-
-Primero se fija un $\varepsilon$ cualquiera; **después** se afirma que existe algún elemento adecuado de $A$. El elemento puede depender de $\varepsilon$.
-
-### La conversa: la condición $\varepsilon$ recupera el supremo
-
-La implicación anterior salió directamente de la definición de supremo. Ahora probemos la dirección inversa.
-
-Supongamos que $A$ es no vacío, que $s$ es una cota superior de $A$ y que
-
-$$
-\forall\varepsilon>0\;\exists a\in A
-\quad\text{tal que}\quad
-s-\varepsilon<a\le s.
-$$
-
-Queremos demostrar que
-
-$$
-s=\sup A.
-$$
-
-Como ya sabemos que $s$ es cota superior, sólo falta demostrar que es la **menor** de ellas.
-
-Sea $u$ una cota superior cualquiera de $A$. Supongamos, buscando una contradicción, que
-
-$$
-u<s.
-$$
-
-Entonces el número
-
-$$
-\varepsilon=s-u
-$$
-
-es positivo. Por la condición $\varepsilon$, existe $a\in A$ tal que
-
-$$
-s-\varepsilon<a\le s.
-$$
-
-Pero
-
-$$
-s-\varepsilon
-=
-s-(s-u)
-=
-u.
-$$
-
-Así que
-
-$$
-u<a.
-$$
-
-Esto contradice que $u$ sea cota superior de $A$.
-
-Por tanto, ninguna cota superior puede ser menor que $s$. Luego
-
-$$
-s\le u
-$$
-
-para toda cota superior $u$, y por definición
-
-$$
-s=\sup A.
-$$
-
-Hemos probado la equivalencia completa:
-
-$$
-\boxed{
-s=\sup A
-\quad\Longleftrightarrow\quad
+s=\sup A\quad\Longleftrightarrow\quad
 \begin{cases}
-s\text{ es cota superior de }A,\\[2mm]
-\forall\varepsilon>0\;\exists a\in A:
-s-\varepsilon<a\le s,
+s\text{ es cota superior de }A,\\[1mm]
+\forall\varepsilon>0\;\exists a\in A:\ s-\varepsilon<a\le s.
 \end{cases}
-}
 $$
 
-siempre que $A$ sea no vacío.
+La condición de cota no debe perderse al usar este criterio. La aproximación por la izquierda, por sí sola, no controla los elementos que pudieran quedar por encima de $s$. La condición con un testigo, por su parte, exige que $A$ sea no vacío: ningún elemento puede elegirse en el vacío.
 
-### ¿Por qué necesitamos decir que $A$ es no vacío?
+Para $A=(0,1)$ podemos ver la elección del testigo directamente. Si $0<\varepsilon<2$, sirve $a=1-\varepsilon/2$, pues está en $(0,1)$ y cumple $1-\varepsilon<a<1$. Si $\varepsilon\ge2$, sirve $a=1/2$. Para $A=(2,5)$, sirve $a=5-\varepsilon/2$ cuando $0<\varepsilon<6$, y $a=7/2$ cuando $\varepsilon\ge6$. La división en casos asegura que el testigo permanezca dentro del intervalo aun cuando la anchura elegida sea grande.
 
-La hipótesis no es decorativa.
-
-La condición
+La versión inferior se obtiene atendiendo al lado por el que una cota puede mejorarse. Si $i=\inf A$, el número $i+\varepsilon$ no es cota inferior; existe, por tanto, $a\in A$ con $a<i+\varepsilon$, y la condición de cota $i$ da $i\le a$. Recíprocamente, supongamos que $i$ es cota inferior y que cada franja $[i,i+\varepsilon)$ contiene un elemento de $A$. Si hubiera una cota inferior $l>i$, elegiríamos $\varepsilon=l-i$ y obtendríamos $a<l$, contradiciendo esa condición de cota. Luego
 
 $$
-\forall\varepsilon>0\;\exists a\in A:\ s-\varepsilon<a\le s
-$$
-
-exige explícitamente la existencia de un elemento de $A$. Si $A=\varnothing$, esa afirmación es falsa para cualquier $s$.
-
-Más adelante analizaremos con cuidado el conjunto vacío como caso límite. Por ahora basta registrar que esta caracterización $\varepsilon$ está formulada para conjuntos **no vacíos**.
-
-### La versión para el ínfimo
-
-Todo el argumento tiene un dual inferior.
-
-Supongamos que $A$ es no vacío y que
-
-$$
-i=\inf A.
-$$
-
-Como $i$ es la mayor cota inferior, para cualquier $\varepsilon>0$ el número
-
-$$
-i+\varepsilon>i
-$$
-
-ya no puede ser cota inferior. Por tanto existe algún $a\in A$ tal que
-
-$$
-a<i+\varepsilon.
-$$
-
-Y como $i$ sí es cota inferior,
-
-$$
-i\le a.
-$$
-
-Luego
-
-$$
-i\le a<i+\varepsilon.
-$$
-
-Obtenemos:
-
-$$
-\boxed{
-\forall\varepsilon>0\;\exists a\in A
-\quad\text{tal que}\quad
-i\le a<i+\varepsilon.
-}
-$$
-
-Recíprocamente, si $i$ es una cota inferior de un conjunto no vacío $A$ y satisface esta condición para todo $\varepsilon>0$, entonces $i=\inf A$.
-
-La prueba reproduce exactamente la lógica anterior. Si una cota inferior $l$ fuera mayor que $i$, tomaríamos
-
-$$
-\varepsilon=l-i>0.
-$$
-
-La condición proporcionaría un elemento $a\in A$ con
-
-$$
-i\le a<i+\varepsilon=l,
-$$
-
-lo que contradice que $l$ sea cota inferior.
-
-Así,
-
-$$
-\boxed{
-i=\inf A
-\quad\Longleftrightarrow\quad
+i=\inf A\quad\Longleftrightarrow\quad
 \begin{cases}
-i\text{ es cota inferior de }A,\\[2mm]
-\forall\varepsilon>0\;\exists a\in A:
-i\le a<i+\varepsilon,
+i\text{ es cota inferior de }A,\\[1mm]
+\forall\varepsilon>0\;\exists a\in A:\ i\le a<i+\varepsilon,
 \end{cases}
-}
+\qquad A\ne\varnothing.
 $$
 
-para $A\ne\varnothing$.
+Podemos prescindir de la letra $\varepsilon$ sin cambiar el contenido. Para el supremo, la condición dice que todo $r<s$ deja de ser cota superior: existe $a\in A$ con $r<a\le s$. Basta sustituir $\varepsilon=s-r$; en sentido inverso, se toma $r=s-\varepsilon$. Para el ínfimo, todo $r>i$ admite $a\in A$ con $i\le a<r$, mediante las sustituciones $\varepsilon=r-i$ y $r=i+\varepsilon$. Estas formulaciones describen la misma imposibilidad de mejorar positivamente una barrera extremal.
 
-### Un ejemplo sin máximo
-
-Consideremos otra vez
-
-$$
-A=(0,1).
-$$
-
-Sabemos que
-
-$$
-\sup A=1,
-$$
-
-aunque $1\notin A$.
-
-Tomemos $\varepsilon>0$. Queremos encontrar un elemento $a\in(0,1)$ que satisfaga
-
-$$
-1-\varepsilon<a<1.
-$$
-
-Si $0<\varepsilon<2$, podemos elegir
-
-$$
-a=1-\frac{\varepsilon}{2},
-$$
-
-que cumple
-
-$$
-1-\varepsilon
-<
-1-\frac{\varepsilon}{2}
-<
-1.
-$$
-
-Si $\varepsilon\ge2$, basta elegir, por ejemplo,
-
-$$
-a=\frac12,
-$$
-
-pues entonces $1-\varepsilon\le-1<\frac12<1$.
-
-Lo importante no es la fórmula particular usada para escoger $a$, sino el patrón lógico: **cada margen positivo que intentemos dejar por debajo de $1$ es atravesado por algún elemento del conjunto**.
-
-No hemos construido una sucesión. Para cada $\varepsilon$ hemos respondido a una pregunta independiente de existencia.
-
-### Una lectura alternativa
-
-La caracterización puede expresarse también así.
-
-Si $s=\sup A$, entonces para todo $r<s$ existe algún $a\in A$ con
-
-$$
-r<a\le s.
-$$
-
-En efecto, basta escribir
-
-$$
-\varepsilon=s-r>0.
-$$
-
-Recíprocamente, si $s$ es cota superior y todo $r<s$ deja de ser cota superior, entonces $s$ es la menor cota superior.
-
-Esta formulación y la formulación con $\varepsilon$ dicen lo mismo. La segunda será especialmente útil porque convierte la idea de “barrera imposible de bajar” en una afirmación cuantificada mediante un **margen positivo**.
+[]{#MA-SEC-ANM-01-002-006}
 
 ### Antes de seguir
 
@@ -6004,330 +4715,47 @@ La figura [C02-F09](#fig-anm-c02-f09) sintetiza las dos mitades de la prueba del
 ![La prueba de sup(A+B)=sup A+sup B combina una cota superior obvia con testigos a y b elegidos dentro de franjas epsilon sobre dos.](../../assets/books/anm/C02/C02-F09.svg){#fig-anm-c02-f09 fig-alt="Tres paneles muestran puntos a y b a menos de epsilon sobre dos de sus supremos y la suma a+b a menos de epsilon de sA+sB. Un panel inferior separa las dos mitades de la prueba."}
 
 </details>
+
 ## 2.6. Comparar conjuntos por sus barreras
 
-Hasta ahora hemos estudiado un conjunto por vez. Fijábamos $A$, buscábamos sus cotas y, cuando existían, localizábamos sus barreras extremales. Ahora cambiaremos la pregunta: ¿qué ocurre con esas barreras cuando **cambiamos el conjunto**?
-
-La situación básica será una inclusión
+Si $A\subseteq B$, cualquier cota que controle a todo $B$ controla también a $A$, porque los elementos de $A$ están entre los de $B$. Para una cota superior $u$ esto significa que $b\le u$ para todo $b\in B$ implica $a\le u$ para todo $a\in A$; para una cota inferior $l$, que $l\le b$ para todo $b\in B$ implica $l\le a$ para todo $a\in A$. Así,
 
 $$
-A\subseteq B.
+U(B)\subseteq U(A),\qquad L(B)\subseteq L(A).
 $$
 
-Esto significa que todo elemento de $A$ pertenece también a $B$, aunque $B$ puede contener puntos adicionales. Intuitivamente, controlar al conjunto más grande debería imponer más restricciones. Conviene convertir esa intuición en una afirmación exacta.
-
-### Las cotas se comparan antes que los supremos
-
-Supongamos que $A\subseteq B$ y que $u$ es una cota superior de $B$. Entonces
+Al ampliar el conjunto original imponemos más condiciones a sus cotas, y por eso ambas inclusiones se invierten. Si además existen los supremos, $\sup B$ es una de las cotas superiores de $A$, por lo que la minimalidad de $\sup A$ obliga a que $\sup A\le\sup B$. Si existen los ínfimos, $\inf B$ es cota inferior de $A$, y la maximalidad de $\inf A$ obliga a que $\inf B\le\inf A$. Hemos probado
 
 $$
-b\le u
-\qquad
-\text{para todo }b\in B.
+A\subseteq B\quad\Longrightarrow\quad
+\sup A\le\sup B,\qquad \inf B\le\inf A,
 $$
 
-Pero cada elemento $a\in A$ es también un elemento de $B$. Por tanto,
-
-$$
-a\le u
-\qquad
-\text{para todo }a\in A.
-$$
-
-Así, toda cota superior de $B$ es automáticamente una cota superior de $A$. En términos de los conjuntos de cotas,
-
-$$
-\boxed{U(B)\subseteq U(A).}
-$$
-
-La dirección de la inclusión merece atención. Al **agrandar** el conjunto original, el conjunto de cotas superiores puede **reducirse**: una barrera que controlaba a $A$ puede dejar de controlar a $B$ si los nuevos puntos quedan a su derecha.
-
-La afirmación dual es
-
-$$
-\boxed{L(B)\subseteq L(A).}
-$$
-
-En efecto, si $l$ es cota inferior de $B$, entonces $l\le b$ para todo $b\in B$ y, en particular, $l\le a$ para todo $a\in A$. Por tanto $l$ también es cota inferior de $A$.
-
-Podemos resumir el efecto de la inclusión así:
-
-> **más puntos en el conjunto significan más restricciones para sus barreras.**
-
-### Monotonía del supremo
-
-Supongamos ahora que $A\subseteq B$ y que existen ambos supremos.
-
-Escribamos
-
-$$
-s_A=\sup A,
-\qquad
-s_B=\sup B.
-$$
-
-Como $s_B$ es una cota superior de $B$, la inclusión
-
-$$
-U(B)\subseteq U(A)
-$$
-
-nos dice que $s_B$ también es una cota superior de $A$.
-
-Pero $s_A$ es la **menor** cota superior de $A$. Por tanto,
-
-$$
-s_A\le s_B.
-$$
-
-Es decir,
-
-$$
-\boxed{
-A\subseteq B
-\quad\Longrightarrow\quad
-\sup A\le\sup B,
-}
-$$
-
-siempre que ambos supremos existan.
-
-Esta desigualdad expresa una forma de **monotonía**: al agregar puntos, la barrera superior extremal no puede desplazarse hacia la izquierda. Puede moverse hacia la derecha o permanecer donde estaba.
-
-### Monotonía del ínfimo
-
-El comportamiento inferior invierte la dirección.
-
-Supongamos nuevamente que $A\subseteq B$ y que existen ambos ínfimos. Escribamos
-
-$$
-i_A=\inf A,
-\qquad
-i_B=\inf B.
-$$
-
-Como $i_B$ es cota inferior de $B$, también pertenece a $L(A)$. Y como $i_A$ es la **mayor** cota inferior de $A$, obtenemos
-
-$$
-i_B\le i_A.
-$$
-
-Por tanto,
-
-$$
-\boxed{
-A\subseteq B
-\quad\Longrightarrow\quad
-\inf B\le\inf A,
-}
-$$
-
-cuando ambos ínfimos existen.
-
-Al agregar puntos, la barrera inferior extremal no puede desplazarse hacia la derecha. Puede moverse hacia la izquierda o permanecer fija.
-
-La figura [C02-F06](#fig-anm-c02-f06) muestra primero la inclusión entre conjuntos de cotas y sólo después el movimiento posible de las barreras extremales.
+bajo las hipótesis de existencia correspondientes. Primero comparamos familias de cotas; las desigualdades entre sus extremos se desprenden después de la misma comparación.
 
 ![Al ampliar un conjunto, las familias de cotas se restringen; las barreras extremales pueden permanecer o desplazarse según dónde aparezcan los nuevos puntos.](../../assets/books/anm/C02/C02-F06.svg){#fig-anm-c02-f06 fig-alt="Tres paneles comparan una inclusión estricta con el mismo supremo, otra con supremo desplazado y la adición de un punto dentro o fuera del intervalo entre ínfimo y supremo."}
 
-La secuencia lógica es importante. No estamos memorizando dos desigualdades aisladas: primero comprendemos cómo la inclusión modifica las **familias de cotas** y después leemos qué ocurre con sus extremos.
+Una inclusión estricta no fuerza desigualdades estrictas entre las barreras. Para $(0,1)\subsetneq[0,1]$, los supremos coinciden en $1$ y los ínfimos en $0$. Añadir los extremos los vuelve alcanzados sin moverlos. En cambio, para $[0,1]\subsetneq[-2,3]$, obtenemos $\sup[0,1]=1<3=\sup[-2,3]$ e $\inf[-2,3]=-2<0=\inf[0,1]$. Lo que importa es dónde están los puntos añadidos respecto de las barreras anteriores; el mero hecho de añadirlos no decide si habrá desplazamiento.
 
-### Inclusión estricta no significa desplazamiento estricto
-
-Aquí aparece una posible falsa intuición.
-
-Podría parecer que si
+La reflexión respecto del origen proporciona una comparación de otro tipo. Definamos $-A=\{-a:a\in A\}$. Si $l$ es cota inferior de $A$, tenemos $l\le a$ para todo $a\in A$, y al cambiar de signo obtenemos $-a\le-l$. Por tanto, $-l$ es cota superior de $-A$. Recíprocamente, si $u$ es cota superior de $-A$, entonces $-a\le u$ para todo $a\in A$, lo que equivale a $-u\le a$; así $-u$ es cota inferior de $A$. Estas dos direcciones dan $U(-A)=-L(A)$. El mismo cálculo, partiendo de $l\le-a$, da $L(-A)=-U(A)$:
 
 $$
-A\subsetneq B,
+U(-A)=-L(A),\qquad L(-A)=-U(A).
 $$
 
-entonces necesariamente
+Si existe $\inf A$, es el mayor elemento de $L(A)$. La reflexión convierte ese mayor elemento en el menor de $-L(A)=U(-A)$, con lo que asegura a la vez la existencia y el valor del supremo reflejado. Dualmente, el menor elemento de $U(A)$ se convierte en el mayor de $L(-A)$. Obtenemos
 
 $$
-\sup A<\sup B.
+\sup(-A)=-\inf A,\qquad \inf(-A)=-\sup A,
 $$
 
-Eso es falso.
+cada identidad cuando existe el extremo de $A$ que aparece a la derecha. Por ejemplo, para $A=[-1,4)$ tenemos $-A=(-4,1]$; el ínfimo $-1$ se transforma en el supremo $1$ y el supremo $4$ en el ínfimo $-4$. La pertenencia también se transporta: el mínimo de $A$ se transforma en máximo de $-A$, mientras que el ínfimo $-4$ del reflejo sigue sin alcanzarse.
 
-Por ejemplo, tomemos
+![La reflexión x↦−x invierte el orden y convierte cotas inferiores en superiores, intercambiando ínfimo y supremo con cambio de signo.](../../assets/books/anm/C02/C02-F07.svg){#fig-anm-c02-f07 fig-alt="Dos rectas muestran A=\[-1,4) y -A=(-4,1\]. Flechas de reflexión relacionan inf A con sup(-A) y sup A con inf(-A)."}
 
-$$
-A=(0,1)
-$$
+Las pruebas de monotonía y reflexión han utilizado las definiciones y las propiedades del orden. No necesitan una garantía general de existencia porque los extremos de partida figuraban entre sus hipótesis. Esta economía de dependencias será útil al examinar por qué la existencia general sí requiere una propiedad adicional.
 
-y
-
-$$
-B=[0,1].
-$$
-
-Tenemos una inclusión estricta,
-
-$$
-A\subsetneq B,
-$$
-
-pero
-
-$$
-\sup A=\sup B=1
-$$
-
-y también
-
-$$
-\inf A=\inf B=0.
-$$
-
-El conjunto $B$ contiene puntos que $A$ no contiene, pero esos puntos nuevos no empujan las barreras extremales más allá de sus posiciones anteriores.
-
-Así que las conclusiones correctas son no estrictas:
-
-$$
-\sup A\le\sup B,
-\qquad
-\inf B\le\inf A.
-$$
-
-Puede haber igualdad incluso cuando $A\ne B$.
-
-### Cuando las barreras sí se desplazan
-
-Comparemos ahora
-
-$$
-A=[0,1]
-$$
-
-y
-
-$$
-B=[-2,3].
-$$
-
-Entonces
-
-$$
-A\subseteq B,
-$$
-
-pero los puntos adicionales de $B$ aparecen a ambos lados. Como consecuencia,
-
-$$
-\sup A=1<3=\sup B
-$$
-
-y
-
-$$
-\inf B=-2<0=\inf A.
-$$
-
-Este ejemplo muestra las dos direcciones posibles del desplazamiento: la barrera superior puede ser empujada hacia la derecha y la inferior hacia la izquierda.
-
-Lo que nunca puede ocurrir, bajo $A\subseteq B$, es lo contrario:
-
-$$
-\sup B<\sup A
-$$
-
-o
-
-$$
-\inf A<\inf B,
-$$
-
-si los extremos correspondientes existen.
-
-### La reflexión intercambia arriba y abajo
-
-Hay otra comparación especialmente útil porque convierte las afirmaciones superiores en inferiores y viceversa.
-
-Para un conjunto $A\subseteq\mathbb R$, definamos su reflejo respecto del origen por
-
-$$
--A=\{-a:a\in A\}.
-$$
-
-El orden se invierte al cambiar de signo. Si $l$ es una cota inferior de $A$, entonces
-
-$$
-l\le a
-\qquad
-\text{para todo }a\in A.
-$$
-
-Al multiplicar por $-1$ se invierte la desigualdad:
-
-$$
--a\le -l
-\qquad
-\text{para todo }a\in A.
-$$
-
-Por tanto, $-l$ es una cota superior de $-A$.
-
-Recíprocamente, toda cota superior de $-A$ surge de esta manera. Así,
-
-$$
-U(-A)=-L(A),
-$$
-
-donde
-
-$$
--L(A)=\{-l:l\in L(A)\}.
-$$
-
-Dualmente,
-
-$$
-L(-A)=-U(A).
-$$
-
-Ahora supongamos que $\inf A$ existe. Como
-
-$$
-\inf A=\max L(A),
-$$
-
-al cambiar de signo, el mayor elemento de $L(A)$ se convierte en el menor elemento de $-L(A)=U(-A)$. Por tanto existe $\sup(-A)$ y
-
-$$
-\boxed{\sup(-A)=-\inf A.}
-$$
-
-De manera dual, si $\sup A$ existe, entonces existe $\inf(-A)$ y
-
-$$
-\boxed{\inf(-A)=-\sup A.}
-$$
-
-Estas identidades no son reglas algebraicas independientes. Expresan simplemente que la reflexión invierte el orden y, con él, intercambia barreras superiores e inferiores.
-
-La figura [C02-F07](analisis-para-matematicos-capitulo-3-completitud.html#fig-anm-c02-f07) acompaña esta dualidad mediante la reflexión de la recta, sin sustituir la justificación algebraica de la inversión del orden.
-
-![La reflexión x↦−x invierte el orden y convierte cotas inferiores en superiores, intercambiando ínfimo y supremo con cambio de signo.](../../assets/books/anm/C02/C02-F07.svg){#fig-anm-c02-f07 fig-alt="Dos rectas muestran A=[-1,4) y -A=(-4,1]. Flechas de reflexión relacionan inf A con sup(-A) y sup A con inf(-A)."}
-
-### Qué no estamos haciendo todavía
-
-Las comparaciones de esta sección son puramente estructurales. Hemos usado sólo:
-
-- inclusión de conjuntos;
-- definición de cota;
-- minimalidad del supremo y maximalidad del ínfimo;
-- inversión del orden bajo $x\mapsto -x$.
-
-No estamos desarrollando todavía un cálculo general de expresiones como
-
-$$
-\sup(A+B),
-\qquad
-\sup(AB),
-$$
-
-o supremos de imágenes de funciones. Esas reglas requieren hipótesis y contextos adicionales que no necesitamos aquí.
+[]{#MA-SEC-ANM-01-002-007}
 
 ### Antes de seguir
 
@@ -7400,216 +5828,36 @@ $$
 Sin embargo, $A$ contiene sólo dos puntos y $B$ contiene todo el intervalo entre ellos. Las familias de cotas registran las barreras extremales, pero **no reconstruyen la estructura interna del conjunto**.
 
 </details>
+
 ## 2.7. Definir una barrera no garantiza que exista
 
-Durante casi todo el capítulo ha reaparecido una cláusula que conviene mirar de frente: **cuando el supremo existe**, **cuando el ínfimo existe**, **cuando ambos extremos existen**. No es una precaución estilística. Señala una separación lógica fundamental.
+La igualdad $\sup A=\min U(A)$ precisa qué buscamos, pero no construye por sí sola ese mínimo. Para que exista un supremo real, $U(A)$ debe ser no vacío y debe tener un menor elemento. Son exigencias distintas. Para $A=(0,\infty)$ falla ya la primera: dado $u\in\mathbb R$, el punto $\max\{1,u+1\}$ pertenece a $A$ y lo sobrepasa, luego $U(A)=\varnothing$. Para $(0,1)$, en cambio, hemos calculado $U((0,1))=[1,\infty)$; esta familia tiene mínimo y el cálculo justifica directamente el supremo.
 
-Hasta aquí hemos respondido con bastante detalle una pregunta:
-
-> **¿qué tendría que cumplir un número para ser el supremo o el ínfimo de un conjunto?**
-
-La respuesta está en las definiciones. Si $s=\sup A$, entonces $s$ debe ser una cota superior de $A$ y, entre todas las cotas superiores, debe ser la menor. De manera dual, $i=\inf A$ debe ser la mayor cota inferior.
-
-Pero de una definición no se deduce automáticamente que exista un objeto que la satisfaga.
-
-La pregunta distinta es:
-
-> **¿bajo qué hipótesis podemos garantizar que esa barrera extremal existe?**
-
-Ésta es una pregunta de existencia, y todavía no la hemos resuelto en general.
-
-### Dos obstáculos diferentes
-
-La escritura
+El vacío permite observar la segunda exigencia con especial claridad. Si $A=\varnothing$, todo número real es cota superior, porque no hay ningún $a\in A$ que pueda violar $a\le u$. La misma verdad vacía hace que todos los reales sean cotas inferiores. Por tanto,
 
 $$
-\sup A=\min U(A)
+U(\varnothing)=L(\varnothing)=\mathbb R.
 $$
 
-muestra con claridad que para hablar de un supremo real deben superarse dos obstáculos lógicamente distintos.
+Estas familias tienen muchos elementos, pero ninguna posee el extremo que necesitamos: $\mathbb R$ no tiene mínimo, pues a cualquier $x$ le precede $x-1$, y no tiene máximo, pues le sigue $x+1$. Así, $\varnothing$ carece de supremo e ínfimo reales. Para $(0,\infty)$ no había cotas superiores; para el vacío están todas y no hay una menor. La ausencia de supremo tiene razones diferentes en cada caso.
 
-Primero, el conjunto debe tener alguna cota superior:
+Si $A\subseteq\mathbb R$ es **no vacío y acotado superiormente**, la completitud establecida en C00 garantiza que $U(A)$ posee mínimo. Debemos distinguir esa garantía de la definición: no basta razonar que $U(A)$ es no vacío y, por ello, tiene mínimo, porque un subconjunto no vacío como $(0,1)$ puede carecer de mínimo. En el caso de una familia de cotas de un conjunto no vacío, el paso se justifica mediante una propiedad específica de los reales. C03 estudiará esa propiedad de manera sistemática y relacionará sus formulaciones.
 
-$$
-U(A)\ne\varnothing.
-$$
+![La definición y la comprobación particular tienen funciones distintas de la garantía por completitud, establecida en C00 y estudiada sistemáticamente en C03.](../../assets/books/anm/revision-20261016/C02/ANM-C02-F08_CONTINUIDAD_v01.svg){#fig-anm-c02-f08 fig-alt="Tres niveles distinguen definición del supremo, comprobación de un candidato y garantía por completitud para conjuntos no vacíos y acotados superiormente."}
 
-Segundo, el conjunto de cotas superiores debe poseer un mínimo.
-
-Por tanto, no basta con preguntar si hay barreras. Hay que preguntar además si entre ellas existe una **menor**.
-
-Dualmente, para un ínfimo necesitamos que
-
-$$
-L(A)\ne\varnothing
-$$
-
-y que $L(A)$ posea un máximo.
-
-Esta descomposición permite distinguir fallas que, a primera vista, podrían parecer iguales.
-
-### Primer caso: no hay cotas en esa dirección
-
-Consideremos
-
-$$
-A=(0,\infty).
-$$
-
-Ya sabemos que no está acotado superiormente. En símbolos,
-
-$$
-U(A)=\varnothing.
-$$
-
-Por tanto, en el marco de los números reales ordinarios no hay siquiera un conjunto no vacío de cotas superiores del cual buscar un mínimo. No escribimos $\sup A$ como número real.
-
-La falla ocurre en el **primer** paso: no existen barreras superiores.
-
-Dualmente, para
-
-$$
-B=(-\infty,0)
-$$
-
-tenemos
-
-$$
-L(B)=\varnothing,
-$$
-
-de modo que no hay ínfimo real en el sentido que estamos usando.
-
-No introduciremos aquí las convenciones $+\infty$ o $-\infty$. En este capítulo, supremo e ínfimo son números reales cuando existen.
-
-### Segundo caso: hay cotas, pero todavía falta justificar una extremal
-
-Supongamos ahora que $A$ sí está acotado superiormente. Entonces
-
-$$
-U(A)\ne\varnothing.
-$$
-
-Esto elimina el primer obstáculo, pero la definición del supremo todavía exige algo más:
-
-$$
-\min U(A)\text{ debe existir}.
-$$
-
-En muchos ejemplos concretos del capítulo pudimos verificar ese mínimo directamente. Para $(0,1)$, por ejemplo,
-
-$$
-U((0,1))=[1,\infty),
-$$
-
-y el mínimo de ese conjunto es $1$.
-
-Pero ese cálculo particular no demuestra una afirmación general sobre **todo** subconjunto no vacío y acotado superiormente de $\mathbb R$.
-
-La figura [C02-F08](#fig-anm-c02-f08) fija precisamente esta separación entre definición y existencia.
-
-![Definir el supremo y verificarlo en un caso concreto no equivalen a disponer de una garantía general de existencia; esa última puerta queda para C03.](../../assets/books/anm/C02/C02-F08.svg){#fig-anm-c02-f08 fig-alt="Diagrama vertical de tres niveles: definición, verificación particular y garantía general. En el último nivel permanece abierta la pregunta min U(A)?, conectada mediante una flecha discontinua con C03 completitud."}
-
-El signo de interrogación es parte del contenido matemático: la figura no debe sugerir que toda familia de cotas posee automáticamente una barrera extremal.
-
-### El conjunto vacío como control lógico
-
-El conjunto vacío obliga a leer las definiciones con especial cuidado.
-
-Sea
-
-$$
-A=\varnothing.
-$$
-
-Recordemos que $u$ es cota superior de $A$ cuando
-
-$$
-\forall a\in A,\qquad a\le u.
-$$
-
-Como no existe ningún elemento $a\in\varnothing$ que pueda violar la desigualdad, la afirmación universal es verdadera para **todo** $u\in\mathbb R$. Por tanto,
-
-$$
-U(\varnothing)=\mathbb R.
-$$
-
-Exactamente el mismo razonamiento da
-
-$$
-L(\varnothing)=\mathbb R.
-$$
-
-Ahora bien, $\mathbb R$ no tiene mínimo ni máximo. Dado cualquier $x\in\mathbb R$, el número $x-1$ es menor y $x+1$ es mayor.
-
-Por consiguiente,
-
-$$
-U(\varnothing)=\mathbb R\quad\text{no tiene mínimo},
-$$
-
-y
-
-$$
-L(\varnothing)=\mathbb R\quad\text{no tiene máximo}.
-$$
-
-Así, con nuestras definiciones en $\mathbb R$ ordinario, **no introducimos $\sup\varnothing$ ni $\inf\varnothing$ como números reales**.
-
-Este ejemplo es útil porque muestra una falla distinta de la de un conjunto no acotado. Para $(0,\infty)$ teníamos $U(A)=\varnothing$; para $A=\varnothing$ ocurre lo contrario: $U(A)=\mathbb R$. En ambos casos no aparece un mínimo de $U(A)$, pero por razones completamente distintas.
-
-### El orden por sí solo no basta
-
-Todavía queda una cuestión más profunda. Podría pensarse que, una vez que un sistema numérico está ordenado y un conjunto tiene cotas superiores, la menor de ellas debe aparecer automáticamente. Eso tampoco es una consecuencia del orden por sí solo.
-
-Como contraste motivacional, consideremos el sistema ordenado $\mathbb Q$ y el conjunto
+El contraste con $\mathbb Q$ permite comprobar que el orden por sí solo no alcanza. Dentro de los racionales, consideremos
 
 $$
 S=\{q\in\mathbb Q:q>0\text{ y }q^2<2\}.
 $$
 
-Este conjunto posee cotas superiores racionales; por ejemplo, $2$ es una. Sin embargo, no posee una menor cota superior **dentro de $\mathbb Q$**.
+El conjunto es no vacío porque $1\in S$, y $2$ es cota superior racional: si $q\ge2$, entonces $q^2\ge4>2$. Sin embargo, no hay supremo de $S$ **dentro de $\mathbb Q$**. La solución del problema 38 demuestra el hecho mediante perturbaciones racionales: si un candidato positivo tiene cuadrado menor que $2$, todavía hay un elemento de $S$ mayor que él; si tiene cuadrado mayor que $2$, hay una cota superior racional menor; y ningún racional tiene cuadrado igual a $2$.
 
-No desarrollaremos aquí la demostración de este hecho. Su función en este punto es conceptual: muestra que disponer de un orden y de cotas no fuerza por sí solo la existencia del extremo requerido dentro del mismo sistema numérico.
+La referencia al sistema en que buscamos la cota es esencial. Podemos considerar el mismo $S$ como subconjunto de $\mathbb R$, donde la completitud sí garantiza su supremo. Esto no contradice su falta de supremo racional: ahora permitimos cotas en un conjunto numérico mayor. Haber demostrado que un conjunto tiene cotas dentro de un sistema ordenado no asegura que la barrera extremal se encuentre dentro de ese mismo sistema.
 
-Esto permite formular con precisión lo que todavía falta entender sobre $\mathbb R$.
+Podemos, pues, reconocer tres tareas. La definición establece las condiciones que debe cumplir un supremo; una verificación particular comprueba que cierto número las cumple para un conjunto dado; una garantía general afirma que, bajo hipótesis precisas, siempre existe un número que las cumple. Las pruebas de los intervalos realizan la segunda tarea. La completitud realiza la tercera y aporta algo que el orden de $\mathbb Q$ no posee. Conservar esa separación permite entender el contenido de una demostración incluso cuando su conclusión ya nos resulta conocida.
 
-### Definición, verificación local y garantía general
-
-Conviene separar tres niveles que hasta ahora han aparecido entrelazados.
-
-**Nivel 1: definición.**
-
-Decimos qué significa que un número $s$ sea el supremo de $A$.
-
-**Nivel 2: verificación en un ejemplo concreto.**
-
-Para un conjunto particular podemos demostrar directamente que cierto número satisface la definición. Así hicimos con intervalos como $(0,1)$.
-
-**Nivel 3: garantía general de existencia.**
-
-Queremos saber si una clase completa de conjuntos posee siempre un supremo bajo ciertas hipótesis.
-
-Los dos primeros niveles pertenecen plenamente a este capítulo. El tercero requiere una propiedad adicional de los números reales que todavía no hemos establecido.
-
-Esta distinción evita una inferencia muy común:
-
-> **haber definido el supremo no equivale a haber demostrado que todo conjunto acotado superiormente tenga uno.**
-
-### Lo que podemos afirmar y lo que todavía no
-
-A estas alturas podemos usar con seguridad enunciados condicionales como:
-
-- si $\sup A$ existe y pertenece a $A$, entonces coincide con $\max A$;
-- si $A\subseteq B$ y existen ambos supremos, entonces $\sup A\le\sup B$;
-- si $\inf A$ existe, entonces $\sup(-A)=-\inf A$;
-- si $s$ es una cota superior de un conjunto no vacío y satisface la caracterización $\varepsilon$, entonces $s=\sup A$.
-
-Todos estos enunciados dicen qué ocurre **una vez asegurada la existencia** de los objetos que intervienen.
-
-Lo que todavía no podemos usar como teorema disponible en C02 es la afirmación general de que todo subconjunto no vacío y acotado superiormente de $\mathbb R$ posee supremo.
-
-Esa afirmación será precisamente la puerta del capítulo siguiente.
+[]{#MA-SEC-ANM-01-002-008}
 
 ### Antes de seguir
 
@@ -8470,223 +6718,26 @@ Este ejemplo separa tres niveles:
 El orden y la acotación, por sí solos, no garantizan la existencia de la barrera extremal en el mismo sistema numérico. Ésa es exactamente la clase de problema de existencia que C02 deja identificada antes de pasar a la completitud.
 
 </details>
+
 ## 2.8. De las barreras a la completitud
 
-Llegamos al final del capítulo con una pregunta que no apareció de golpe. Fue surgiendo a medida que refinábamos la idea de barrera.
-
-Al principio sólo necesitábamos controlar un conjunto desde arriba o desde abajo. Después aprendimos a reunir todas las barreras posibles en los conjuntos $U(A)$ y $L(A)$. Más tarde preguntamos por la mejor de esas barreras, distinguimos si el conjunto la alcanza o no y vimos cómo reconocerla mediante condiciones cuantificadas.
-
-La cadena completa puede resumirse así:
-
-```text
-cota
-→ conjunto de cotas
-→ mejor cota
-→ alcanzada / no alcanzada
-→ existencia no garantizada por la definición
-→ completitud
-```
-
-Las primeras cinco etapas pertenecen ya a nuestro lenguaje. La última palabra —**completitud**— nombra precisamente la propiedad adicional que necesitamos estudiar para transformar ciertas afirmaciones condicionales en garantías generales de existencia.
-
-### Qué hemos aprendido a distinguir
-
-Conviene reconstruir el recorrido sin perder las separaciones que lo hicieron posible.
-
-Una **cota superior** de $A$ es simplemente un número que domina a todos sus elementos. No tiene por qué pertenecer al conjunto y, en general, no es única.
-
-Un **máximo**, en cambio, añade pertenencia. Es una cota superior que además pertenece a $A$.
-
-Un **supremo** hace otra cosa: no pregunta si la barrera pertenece al conjunto, sino si es la menor entre todas las cotas superiores.
-
-Por eso las tres nociones responden a preguntas diferentes:
-
-1. ¿controla al conjunto desde arriba?;
-2. ¿la barrera pertenece al conjunto?;
-3. ¿es la menor de todas las barreras superiores?
-
-La misma separación aparece, reflejada, entre cota inferior, mínimo e ínfimo.
-
-Esta distinción evita una confusión frecuente: que dos nociones coincidan en ciertos ejemplos no significa que sean la misma noción. Cuando un máximo existe, coincide con el supremo; pero un supremo puede existir sin que haya máximo.
-
-### Por qué el supremo puede no pertenecer al conjunto
-
-El ejemplo
+La completitud de los reales puede formularse en el lenguaje de este capítulo: **todo subconjunto no vacío de $\mathbb R$ que esté acotado superiormente posee un supremo en $\mathbb R$**. En términos de familias de cotas, afirma que
 
 $$
-A=(0,1)
+A\ne\varnothing\quad\text{y}\quad U(A)\ne\varnothing
+\quad\Longrightarrow\quad
+\min U(A)\text{ existe en }\mathbb R.
 $$
 
-resume bien esta diferencia.
+El contenido de esta afirmación está en la existencia del mínimo. La definición ya nos dice que, si existe, será el supremo; la completitud asegura que las hipótesis indicadas bastan para encontrarlo. El ejemplo del vacío muestra por qué no podemos omitir la no vaciedad, y la semirrecta $(0,\infty)$ muestra por qué no podemos omitir la acotación superior. La figura C02-F08 separa esta garantía de la definición y de la verificación de un caso particular.
 
-Sabemos que
+La existencia del supremo tampoco asegura que el conjunto lo alcance. Para $(0,1)$ tenemos supremo $1$ y ningún máximo; para $(0,1]$, el mismo supremo pertenece al conjunto y es máximo. La diferencia se decide por la pertenencia. Por eso la completitud permite asegurar que existe la mejor cota, pero no convierte todo conjunto no vacío y acotado superiormente en un conjunto con máximo.
 
-$$
-\sup A=1,
-$$
+La condición con $\varepsilon$ describe lo que sigue siendo cierto aunque la barrera no se alcance. Si $s=\sup A$, cualquier intento de bajarla en una cantidad positiva deja fuera algún punto del conjunto. Ese punto satisface $s-\varepsilon<a\le s$ y puede depender de $\varepsilon$. Para verificar un candidato necesitamos, además, saber que controla a todos los elementos desde arriba. La condición de cota y la imposibilidad de mejorarla recuperan juntas la definición de supremo; ninguna de las dos debe desaparecer al abreviar la prueba.
 
-pero
+Por su parte, un máximo proporciona su propia garantía de existencia del supremo: si $M\in A$ domina al conjunto, cualquier cota superior debe dominar también al propio $M$, y así $M$ es la menor. Esta prueba y las de monotonía, reflexión y caracterización $\varepsilon$ aclaran por qué hemos conservado hipótesis como «supongamos que existe el supremo». Su función es mostrar exactamente qué utiliza cada argumento. La completitud permite verificar esas hipótesis para todos los conjuntos reales no vacíos y acotados en la dirección requerida; las pruebas condicionales explican después cómo se comportan los extremos obtenidos.
 
-$$
-1\notin A.
-$$
-
-No hay contradicción. La definición de supremo exige que $1$ sea la menor cota superior, no que pertenezca al conjunto.
-
-Lo que sí sabemos es que la barrera no puede quedar separada de $A$ por un margen positivo fijo. Para todo $\varepsilon>0$ existe $a\in A$ tal que
-
-$$
-1-\varepsilon<a\le1.
-$$
-
-La barrera puede no ser alcanzada y, sin embargo, ser imposible de mejorar.
-
-Ésa es exactamente la información que codifica la caracterización $\varepsilon$: no afirma pertenencia; afirma **extremalidad**.
-
-### Por qué un máximo ya es automáticamente el supremo
-
-La situación cambia si $M=\max A$.
-
-Como $M$ es máximo,
-
-$$
-M\in A
-$$
-
-y todo $a\in A$ satisface
-
-$$
-a\le M.
-$$
-
-Así, $M$ es una cota superior.
-
-Pero si $u$ es cualquier otra cota superior, entonces, puesto que $M\in A$,
-
-$$
-M\le u.
-$$
-
-Por tanto $M$ es menor o igual que toda cota superior. Es decir, es la menor cota superior:
-
-$$
-M=\sup A.
-$$
-
-Así, el máximo no necesita una teoría independiente para convertirse en supremo. La pertenencia al conjunto hace que la condición extremal surja inmediatamente.
-
-Dualmente, si $\min A$ existe, entonces
-
-$$
-\min A=\inf A.
-$$
-
-### Qué expresa realmente la condición con $\varepsilon$
-
-La caracterización
-
-$$
-\forall\varepsilon>0\;\exists a\in A:
-\qquad
-s-\varepsilon<a\le s
-$$
-
-no debe leerse como una receta para construir una sucesión. En este capítulo no hemos hecho eso.
-
-Su función es otra: traducir la afirmación
-
-> $s$ es la menor cota superior
-
-a una forma local alrededor de $s$.
-
-Si existiera algún $\varepsilon_0>0$ tal que ningún elemento de $A$ entrara en
-
-$$
-(s-\varepsilon_0,s],
-$$
-
-entonces $s-\varepsilon_0$ seguiría siendo cota superior. En ese caso $s$ no sería la menor.
-
-Por tanto, la condición con $\varepsilon$ expresa una imposibilidad:
-
-> **ninguna disminución positiva de la barrera puede seguir controlando al conjunto completo.**
-
-Ésta será una forma de razonamiento que reaparecerá más adelante en análisis, aunque aquí la hemos usado sin sucesiones ni límites.
-
-### Lo que la definición todavía no puede hacer por nosotros
-
-Hasta este punto podemos reconocer un supremo cuando lo tenemos delante. También podemos demostrar en ejemplos particulares que cierto número es el supremo.
-
-Pero sigue existiendo una diferencia entre dos tipos de afirmaciones.
-
-Podemos decir:
-
-> si $s=\sup A$, entonces $s$ tiene determinadas propiedades.
-
-Podemos decir también:
-
-> para este conjunto concreto $A$, el número $s$ satisface la definición de supremo.
-
-Lo que todavía no podemos afirmar como resultado disponible en C02 es:
-
-> para todo conjunto de cierto tipo, existe necesariamente un número $s$ que satisface esa definición.
-
-Ese salto es precisamente el problema de existencia.
-
-La figura [C02-F08](#fig-anm-c02-f08), ya introducida en §2.7, sirve también como mapa de esta transición: primero hay que tener cotas y después hay que justificar que entre ellas aparezca una cota extremal.
-
-El esquema debe seguir conservando el signo de interrogación en
-
-$$
-\min U(A)\;?
-$$
-
-porque ésa es justamente la pregunta que este capítulo no resuelve en general.
-
-### La afirmación que falta
-
-La sección anterior dejó claro que el orden por sí solo no basta. El contraste con $\mathbb Q$ muestra que un conjunto puede estar acotado superiormente dentro de un sistema ordenado y, aun así, carecer allí de una menor cota superior.
-
-Por tanto, si queremos una garantía general en $\mathbb R$, necesitamos una propiedad específica de los números reales.
-
-La afirmación que el capítulo siguiente deberá introducir y justificar puede formularse así:
-
-> **Todo subconjunto no vacío de $\mathbb R$ que esté acotado superiormente posee un supremo en $\mathbb R$.**
-
-En C02 esta frase no se usa como teorema ni se demuestra. Sólo identifica con precisión la pieza que falta.
-
-Mediante la reflexión $A\mapsto -A$, una garantía correspondiente para ínfimos quedará vinculada a la misma estructura. Pero esa equivalencia y las distintas formulaciones de completitud pertenecen al desarrollo siguiente.
-
-### Del «si existe» a la garantía
-
-Podemos ahora ver con claridad qué cambiará cuando dispongamos de completitud.
-
-Hasta aquí hemos trabajado muchas veces bajo hipótesis como
-
-$$
-\text{“supongamos que }\sup A\text{ existe”.}
-$$
-
-Eso nos permitió estudiar unicidad, pertenencia, caracterizaciones $\varepsilon$, monotonía y reflexión.
-
-La completitud tendrá otra función: bajo hipótesis apropiadas, permitirá pasar de
-
-$$
-\text{“si existe”}
-$$
-
-a
-
-$$
-\text{“existe”.}
-$$
-
-Ése es un cambio lógico importante. No añade una nueva definición de supremo; añade una garantía de existencia.
-
-Por eso la completitud no debe confundirse con la definición de supremo. Son piezas distintas:
-
-- la definición dice **qué es** el supremo;
-- la completitud dirá **cuándo podemos asegurar que existe**.
+C03 retomará la completitud que ya conocimos en la construcción de $\mathbb R$ y estudiará cómo se expresa mediante barreras, separaciones e intervalos compatibles. El trabajo de este capítulo permite entrar en esa discusión con una pregunta precisa: qué afirmación de existencia hace falta en cada paso y qué parte del razonamiento sigue siendo válida en un sistema ordenado que no disponga de ella.
 
 ### Autoexplicación de cierre
 

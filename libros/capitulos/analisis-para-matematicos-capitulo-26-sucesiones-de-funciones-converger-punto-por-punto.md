@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: 'Capítulo 26 — Sucesiones de funciones: converger punto por punto'
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,7 +28,7 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-26)
 
-Una etapa entrega ahora una función entera. Miraremos sus columnas con las herramientas numéricas de C06 y preguntaremos qué cambia cuando también cambia la entrada. C12–C14 aportan tipos, límites y continuidad. C03 y las interfaces de C18/C23/C24/C25 se declaran al usarlas en pruebas y ejemplos; no se importan resultados de C27 o C28.
+La familia $f_n(x)=x/(n+1)$ tiende a cero en cada entrada real fija, aunque en toda etapa podamos encontrar una entrada donde su valor sea uno. Para entender esa diferencia, consideraremos cada columna como una sucesión numérica de C06 y mantendremos visible qué puede depender de la entrada. C12–C14 aportan funciones, límites y continuidad; la arquimedianidad de C03 y las herramientas de C18 y C23–C25 se utilizarán con sus hipótesis en los ejemplos.
 
 ## 26.1. Dos índices, dos maneras de mirar
 
@@ -44,7 +44,7 @@ F:\mathbb N\times X\to\mathbb R,\qquad F(n,x)=f_n(x).
 $$
 En la ida, la evaluación produce una salida única; en la vuelta, la sección $x\mapsto F(n,x)$ produce cada función. No se elige una salida entre varias. El grafo reúne pares con salidas ya únicas.
 
-Fijar $n$ deja la fila $f_n$; fijar $x$ deja la sucesión numérica $n\mapsto f_n(x)$. La gráfica de una fila vive en $X\times\mathbb R$. Una columna se dibuja con índice horizontal y valor vertical. Usar un mismo dibujo sin distinguir esos ejes puede hacer parecer que la convergencia cambia el dominio.
+Hay dos maneras de recorrer el mismo objeto. Al fijar $n$ obtenemos la fila $f_n$, cuya gráfica tiene entrada $x$ y salida real. Al fijar $x$ obtenemos una columna, la sucesión numérica $n\mapsto f_n(x)$, donde el eje horizontal representa ahora índices. Distinguir estos ejes evita atribuir a la función completa lo que sólo hemos comprobado para una entrada.
 
 Por ejemplo,
 $$
@@ -68,7 +68,7 @@ Para $f_n(x)=(-1)^n x$ en $\mathbb R$, la columna de cero es constante y converg
 
 Si $X$ es vacío, existe una única función $X\to\mathbb R$ y toda afirmación para sus entradas es vacua. Los ejemplos y las refutaciones siguientes tendrán dominios no vacíos. Una figura con unas pocas columnas permite leer el tipo del objeto; no certifica las columnas que no muestra.
 
-![Familia x/(n+1): las filas son gráficas respecto de x; las columnas fijan entradas y dibujan valores respecto del índice. Sólo se muestran tres entradas y tres etapas: la prueba para toda entrada está en R1–R2.](../../assets/books/anm/C26/C26-F01.svg){#fig-anm-c26-f01 fig-alt="Familia x/(n+1): las filas son gráficas respecto de x; las columnas fijan entradas y dibujan valores respecto del índice. Sólo se muestran tres entradas y tres etapas: la prueba para toda entrada está en R1–R2."}
+![Familia x/(n+1): las filas son gráficas respecto de x; las columnas fijan entradas y dibujan valores respecto del índice. Sólo se muestran tres entradas y tres etapas: la prueba para toda entrada está en R1–R2.](../../assets/books/anm/revision-20261016/C26/C26-F01.svg){#fig-anm-c26-f01 fig-alt="Familia x/(n+1): las filas son gráficas respecto de x; las columnas fijan entradas y dibujan valores respecto del índice. Sólo se muestran tres entradas y tres etapas: la prueba para toda entrada está en R1–R2."}
 
 ### Microcontroles
 
@@ -272,6 +272,7 @@ Define $f_n(x)=1$ si $x=n$ y $0$ en otro caso, en $\mathbb R$. Determina su lím
 Si $x\notin\mathbb N$, ninguna fila tiene su pico en esa entrada y la columna es cero desde el inicio. Si $x=m\in\mathbb N$, el único término de altura uno es el de índice $m$; desde $N=m+1$ toda la cola es cero. Así $f_n(x)\to0$ para cada $x\in\mathbb R$. Cada fila contiene un pico de altura uno, pero éste aparece en una entrada diferente al aumentar el índice. El argumento clasifica una entrada arbitraria y controla su cola completa; unas pocas gráficas no certificarían esa afirmación universal.
 
 </details>
+
 ## 26.2. Una cola para cada entrada
 
 []{#MA-SEC-ANM-01-026-002}
@@ -292,7 +293,7 @@ $$
 $$
 La elección sirve también para $x=0$, pero separar la columna constante muestra que no necesitamos dividir por cero. La prueba responde a todo $x$ real y a toda tolerancia; comprobar dos entradas de una tabla no lo haría.
 
-La dependencia permitida no es una dependencia obligatoria. Una familia puede tener un corte que funcione simultáneamente en muchas entradas. La definición puntual no exige ese privilegio. Si lo hay para un conjunto finito $A=\{x_1,\ldots,x_m\}$, lo podemos obtener: para una tolerancia fija, tomamos los $m$ cortes y su máximo. Toda cola posterior satisface las $m$ obligaciones. Si $A$ es vacío, sirve cualquier corte. No se toma el máximo de una colección infinita de umbrales.
+Aunque la definición permite que el corte dependa de la entrada, no obliga a que sea diferente en cada una. Para una tolerancia y un conjunto finito $A=\{x_1,\ldots,x_m\}$, podemos reunir los cortes puntuales y tomar su máximo. Toda cola posterior satisface las $m$ obligaciones a la vez. Si $A$ es vacío, cualquier corte sirve. La finitud es lo que permite esta operación; una familia infinita de umbrales puede no tener un máximo natural.
 
 ### Unicidad y negación
 
@@ -309,7 +310,7 @@ $$
 $$
 El punto infractor debe permanecer fijo cuando $N$ varía. Si ante cada corte fabricamos una entrada distinta, habremos refutado una obligación simultánea más fuerte, no necesariamente la convergencia puntual.
 
-Para $(-1)^n x$ y candidata cero, $x=1$ y $\varepsilon_0=1/2$ dan error1 en todo índice. Esto sí es una refutación puntual. Para $x/(n+1)$, escoger $x_n=n+1$ da error1 en cada etapa, pero la entrada cambia; la prueba anterior sigue mostrando convergencia puntual en $\mathbb R$.
+Para la familia $(-1)^n x$ y la candidata cero, la entrada fija $x=1$ conserva error uno en todo índice. Con $\varepsilon_0=1/2$ refutamos la convergencia puntual. En cambio, para $x/(n+1)$ podemos lograr el mismo error tomando $x_n=n+1$, pero ya hemos cambiado la entrada con la etapa. Esa ruta no contradice la prueba para cada columna fija; muestra que sus cortes no controlan simultáneamente toda la recta.
 
 ### Umbrales mínimos sin elegir infinitamente
 
@@ -320,7 +321,7 @@ H(x,\varepsilon)=\{N\in\mathbb N:\forall n\ge N,\
 $$
 es no vacío cuando hay convergencia puntual. El buen orden de los naturales da su mínimo $\tau(x,\varepsilon)$. Esta regla es única y define una función sobre los pares autorizados. Si $\varepsilon$ disminuye, las obligaciones se vuelven más fuertes y el umbral mínimo no puede disminuir. Una fórmula suficiente de corte puede ser mayor que $\tau$; minimalidad y validez son preguntas distintas.
 
-![Para x/(n+1) y tolerancia1/4, el umbral mínimo en las entradas no negativas mostradas es piso(4x). En cambio, la entrada móvil x_n=n+1 produce error1 en toda etapa. Esa ruta no refuta la convergencia puntual.](../../assets/books/anm/C26/C26-F02.svg){#fig-anm-c26-f02 fig-alt="Para x/(n+1) y tolerancia1/4, el umbral mínimo en las entradas no negativas mostradas es piso(4x). En cambio, la entrada móvil x_n=n+1 produce error1 en toda etapa. Esa ruta no refuta la convergencia puntual."}
+![Para x/(n+1) y tolerancia1/4, el umbral mínimo en las entradas no negativas mostradas es piso(4x). En cambio, la entrada móvil x_n=n+1 produce error1 en toda etapa. Esa ruta no refuta la convergencia puntual.](../../assets/books/anm/revision-20261016/C26/C26-F02.svg){#fig-anm-c26-f02 fig-alt="Para x/(n+1) y tolerancia1/4, el umbral mínimo en las entradas no negativas mostradas es piso(4x). En cambio, la entrada móvil x_n=n+1 produce error1 en toda etapa. Esa ruta no refuta la convergencia puntual."}
 
 ### Microcontroles
 
@@ -522,11 +523,12 @@ Para $f_n(x)=x/(n+1)$ calcula $\tau(x,\varepsilon)$ y comprueba la frontera estr
 Sea $r=|x|/\varepsilon\ge0$. Como el error $|x|/(n+1)$ no aumenta con $n$, un corte $N$ es válido exactamente cuando $N+1>r$. Ponemos $m=\lfloor r\rfloor$, caracterizado por $m\le r<m+1$. El corte $N=m$ cumple la desigualdad estricta. Si un natural $N<m$, entonces $N+1\le m\le r$, de modo que ya el error en ese índice es al menos $\varepsilon$ y falla. Por tanto $\tau(x,\varepsilon)=\lfloor|x|/\varepsilon\rfloor$, incluido $x=0$, donde el mínimo es cero. Cuando $r$ es un entero positivo, el índice anterior da error exactamente igual a $\varepsilon$, que no satisface el contrato estricto.
 
 </details>
+
 ## 26.3. Lo que se transporta columna por columna
 
 []{#MA-SEC-ANM-01-026-003}
 
-Las operaciones puntuales se definen fila por fila y entrada por entrada. Para probar su convergencia fijamos primero $x$. Reutilizar resultados numéricos es legítimo porque entonces todos los términos que intervienen son reales de sucesiones ya dadas. Es útil reconstruir las estimaciones para ver dónde quedan las dependencias.
+Para estudiar las operaciones fijamos primero una entrada $x$. Cada familia se convierte entonces en una sucesión de números reales y podemos aplicar las reglas de C06. Reconstruiremos las estimaciones para distinguir las constantes y cortes que dependen de esa entrada de los que, bajo otra hipótesis, podrían valer en todo el dominio.
 
 ### Sumas, productos y cocientes
 
@@ -554,11 +556,11 @@ Si $a_n(x)\le f_n(x)\le b_n(x)$ eventualmente y ambos extremos convergen al mism
 
 ### Tres alcances de acotación
 
-La convergencia puntual implica que para cada $x$ hay $B_x$ con $|f_n(x)|\le B_x$ para todos los índices: una cola acotada y el máximo de los términos iniciales finitos dan esa barrera por C06. No implica una constante común para todas las entradas e índices. Tampoco la acotación de cada fila implica una cota común entre filas.
+La convergencia numérica en una columna proporciona una cota para todos sus términos: acotamos una cola y tomamos después el máximo con los finitísimos términos iniciales. Así, para cada $x$ existe $B_x$ con $|f_n(x)|\le B_x$ para todo $n$. Esa barrera puede crecer al cambiar $x$. También puede ocurrir que cada fila esté acotada y que sus cotas crezcan con $n$. Ninguna de esas afirmaciones produce por sí sola una constante para todas las filas y entradas.
 
 En $[0,\infty)$, $u_n(x)=\min(n,x)$ converge a $u(x)=x$: para $n\ge x$ ya coincide. Cada fila está acotada por $n$, pero el límite no está acotado. En cambio, si $|f_n(x)|\le B$ para todos $n,x$, la preservación del orden da $|f(x)|\le B$ para todo $x$. La posición de la constante dentro o fuera de los cuantificadores determina qué puede heredarse.
 
-![Filas u_n(x)=min(n,x), aquí restringidas a la ventana0≤x≤6 para dibujar. Cada fila tiene barrera n; cada columna tiene barrera x. El límite en todo\[0,∞) es x, no acotado. La ventana finita no demuestra la falta de cota global.](../../assets/books/anm/C26/C26-F03.svg){#fig-anm-c26-f03 fig-alt="Filas u_n(x)=min(n,x), aquí restringidas a la ventana0≤x≤6 para dibujar. Cada fila tiene barrera n; cada columna tiene barrera x. El límite en todo\[0,∞) es x, no acotado. La ventana finita no demuestra la falta de cota global."}
+![Filas u_n(x)=min(n,x), aquí restringidas a la ventana0≤x≤6 para dibujar. Cada fila tiene barrera n; cada columna tiene barrera x. El límite en todo\[0,∞) es x, no acotado. La ventana finita no demuestra la falta de cota global.](../../assets/books/anm/revision-20261016/C26/C26-F03.svg){#fig-anm-c26-f03 fig-alt="Filas u_n(x)=min(n,x), aquí restringidas a la ventana0≤x≤6 para dibujar. Cada fila tiene barrera n; cada columna tiene barrera x. El límite en todo[0,∞) es x, no acotado. La ventana finita no demuestra la falta de cota global."}
 
 ### Microcontroles
 
@@ -760,6 +762,7 @@ Si $f_n\to f$ puntualmente y todos sus valores y los de $f$ son no negativos, de
 Para una entrada fija, escribimos $u_n=f_n(x)\ge0$ y $u=f(x)\ge0$. Sus raíces reales están definidas. Si $u_n\ge u$, la diferencia de raíces es no negativa y $u_n-u=(\sqrt{u_n}-\sqrt u)(\sqrt{u_n}+\sqrt u)\ge(\sqrt{u_n}-\sqrt u)^2$. Intercambiar los dos valores cubre el orden inverso, así $|\sqrt{u_n}-\sqrt u|^2\le|u_n-u|$. Para $\varepsilon>0$, la convergencia de la columna da una cola con $|u_n-u|<\varepsilon^2$, luego el error de raíces es menor que $\varepsilon$. Esto también cubre $u=0$. Sólo se usa el control de la columna y la operación raíz, sin continuidad de las filas.
 
 </details>
+
 ## 26.4. Potencias y una discontinuidad nueva
 
 []{#MA-SEC-ANM-01-026-004}
@@ -786,7 +789,7 @@ p(x)=
 $$
 La prueba identifica primero los valores y después reúne las columnas; ningún argumento visual reemplaza la estimación.
 
-La función $p$ es continua relativamente a $[0,1]$ en cada $x<1$: basta un radio menor que $1-x$ para quedar donde es constante. En uno falla. Para cualquier $\delta>0$, tomando $d=\min(\delta/2,1/2)>0$ y $y=1-d$ obtenemos $0<|y-1|<\delta$ y $|p(y)-p(1)|=1$. Con tolerancia $1/2$ ningún radio sirve. Así funciones continuas pueden tener un límite puntual discontinuo incluso en un segmento compacto.
+Para $x<1$, un radio menor que $1-x$ mantiene las entradas en la región donde $p$ es constante, por lo que el límite es continuo allí. En uno ocurre lo contrario: dado cualquier $\delta>0$, tomamos $d=\min(\delta/2,1/2)>0$ e $y=1-d$. Se cumple $0<|y-1|<\delta$ y la diferencia de salidas es uno. Ningún radio sirve para la tolerancia $1/2$. Las filas continuas tienen, por tanto, un límite puntual discontinuo, incluso sobre este dominio compacto.
 
 ### La entrada cercana al extremo responde tarde
 
@@ -802,7 +805,7 @@ Cada etapa tiene una entrada con error grande aunque toda entrada fija menor que
 
 Restringir a $[0,c]$ con $0<c<1$ permite usar el mismo $t_c=1/c-1$ para todas las entradas: $x^n\le c^n\le1/(1+nt_c)$. Si $c=0$, desde $n=1$ el error es cero. En $[0,1)$ el límite es continuo, pero los $x_n$ siguen perteneciendo al dominio y el error simultáneo persiste. Continuidad del límite y control simultáneo son obligaciones diferentes.
 
-![Potencias en\[0,1\], con p0=1. El límite vale0 antes de1, punto abierto allí, y1 en1, punto cerrado. La ruta x_n=1−1/\[2(n+1)\] mantiene error mayor que1/2 mediante Bernoulli, aunque toda columna interior converge a cero.](../../assets/books/anm/C26/C26-F04.svg){#fig-anm-c26-f04 fig-alt="Potencias en\[0,1\], con p0=1. El límite vale0 antes de1, punto abierto allí, y1 en1, punto cerrado. La ruta x_n=1−1/\[2(n+1)\] mantiene error mayor que1/2 mediante Bernoulli, aunque toda columna interior converge a cero."}
+![Potencias en\[0,1\], con p0=1. El límite vale0 antes de1, punto abierto allí, y1 en1, punto cerrado. La ruta x_n=1−1/\[2(n+1)\] mantiene error mayor que1/2 mediante Bernoulli, aunque toda columna interior converge a cero.](../../assets/books/anm/revision-20261016/C26/C26-F04.svg){#fig-anm-c26-f04 fig-alt="Potencias en[0,1], con p0=1. El límite vale0 antes de1, punto abierto allí, y1 en1, punto cerrado. La ruta x_n=1−1/[2(n+1)] mantiene error mayor que1/2 mediante Bernoulli, aunque toda columna interior converge a cero."}
 
 ### Microcontroles
 
@@ -1004,6 +1007,7 @@ Calcula el conjunto de convergencia real de la misma familia de potencias en $[-
 Si $|x|<1$, para $n\ge1$ tenemos $|p_n(x)|=|x|^n$. La prueba geométrica anterior aplicada a $|x|$ da límite cero, con el caso $x=0$ tratado por la recurrencia. En $x=1$, todos los valores son uno. En $x=-1$, las subsucesiones pares e impares son constantes uno y menos uno, así la columna no tiene límite real. Por tanto el conjunto de convergencia en $[-1,1]$ es $(-1,1]$. La función límite sobre él vale cero en $(-1,1)$ y uno en el extremo uno. La familia no converge puntualmente en todo el dominio ampliado porque falla la nueva columna de menos uno.
 
 </details>
+
 ## 26.5. Cambiar la entrada mientras cambia el índice
 
 []{#MA-SEC-ANM-01-026-005}
@@ -1048,9 +1052,9 @@ $$
 $$
 Se han comprobado ambas existencias antes de comparar. Que ambas operaciones de límite estén definidas no autoriza a permutarlas. Una figura de la transición muestra dónde se comprime el cambio, pero las dos evaluaciones son la prueba.
 
-La diagonal tampoco queda resuelta sólo por la continuidad del límite. En la sección siguiente tendremos límite cero continuo y una ruta que sigue un pico de altura1. Para explicar qué dato adicional puede controlar diagonales, construiremos en §26.8 una estimación común de proximidad, sin usar aún los teoremas de C27 o C28.
+En la capa racional, el límite ya pierde continuidad en el origen. El ejemplo siguiente separará esa pérdida del problema de las diagonales: tendrá límite cero continuo, pero una ruta de entradas podrá seguir un pico de altura uno. Más adelante comprobaremos cómo una misma estimación Lipschitz para todas las filas sí permite controlar una ruta convergente.
 
-![Capa a_n(x)=(n+1)x/\[1+(n+1)x\]. Las rutas1/(n+1),1/(n+1)^2 y1/√(n+1) llegan a0 pero sus salidas tienden a1/2,0 y1. Los límites iterados en entrada e índice dan0 y1; las curvas son representaciones de fórmulas probadas.](../../assets/books/anm/C26/C26-F05.svg){#fig-anm-c26-f05 fig-alt="Capa a_n(x)=(n+1)x/\[1+(n+1)x\]. Las rutas1/(n+1),1/(n+1)^2 y1/√(n+1) llegan a0 pero sus salidas tienden a1/2,0 y1. Los límites iterados en entrada e índice dan0 y1; las curvas son representaciones de fórmulas probadas."}
+![Capa a_n(x)=(n+1)x/\[1+(n+1)x\]. Las rutas1/(n+1),1/(n+1)^2 y1/√(n+1) llegan a0 pero sus salidas tienden a1/2,0 y1. Los límites iterados en entrada e índice dan0 y1; las curvas son representaciones de fórmulas probadas.](../../assets/books/anm/revision-20261016/C26/C26-F05.svg){#fig-anm-c26-f05 fig-alt="Capa a_n(x)=(n+1)x/[1+(n+1)x]. Las rutas1/(n+1),1/(n+1)^2 y1/√(n+1) llegan a0 pero sus salidas tienden a1/2,0 y1. Los límites iterados en entrada e índice dan0 y1; las curvas son representaciones de fórmulas probadas."}
 
 ### Microcontroles
 
@@ -1252,6 +1256,7 @@ Para $c>0$ construye una ruta en $[0,1]$ que coincida eventualmente con $c/(n+1)
 Para $c>0$, definimos $x_n=\min(1,c/(n+1))$. Cada entrada pertenece a $(0,1]$. Elegimos un natural $N>c$; para $n\ge N$, se tiene $c/(n+1)<1$ y la ruta coincide con la fórmula requerida. Esa cola tiende a cero, así toda la ruta también. En ella $(n+1)x_n=c$ y $a_n(x_n)=c/(1+c)$ exactamente. Las salidas iniciales pueden ser distintas, pero su prefijo finito no cambia el límite $c/(1+c)$. La reparación permite evaluar todas las etapas aunque $c>1$.
 
 </details>
+
 ## 26.6. Picos que ninguna entrada fija retiene
 
 []{#MA-SEC-ANM-01-026-006}
@@ -1291,9 +1296,9 @@ b_n(z_n)=k,\qquad \int_0^1b_n(x)\,dx=1.
 $$
 El límite de las integrales vale1 y la integral del límite vale0. Los dos valores existen y difieren. La amplitud compensa exactamente la anchura del soporte. Este ejemplo muestra un intercambio fallido, no un teorema general sobre cuándo intercambiar.
 
-En $t_n$ había altura común y áreas decrecientes; en $b_n$ cada columna sigue acotada por su prefijo finito y cola cero, pero las alturas de las filas crecen. Ninguna de esas observaciones permite concluir a partir de un número finito de muestreos: los puntos que siguen el pico están dados por fórmula y prueban la obstrucción para todo índice.
+La altura común de $t_n$ deja que sus integrales disminuyan con la anchura; al multiplicar por $k$, la familia $b_n$ compensa exactamente esa disminución. En ambas, cada columna termina en cero y queda acotada por su prefijo finito, pero las cotas de las filas de $b_n$ crecen. La ruta explícita $z_n=2/(n+3)$ sigue las alturas máximas en todo índice y distingue esos controles que una tabla finita podría confundir.
 
-![Tiendas con k=n+3, soporte\[1/k,3/k\] dentro\[0,1\]. Altura1 y área1/k a la izquierda; altura k y área1 a la derecha. Ambas familias convergen puntualmente a cero; seguir2/k mantiene el pico. No se infiere el área desde el dibujo: se calculó por ramas.](../../assets/books/anm/C26/C26-F06.svg){#fig-anm-c26-f06 fig-alt="Tiendas con k=n+3, soporte\[1/k,3/k\] dentro\[0,1\]. Altura1 y área1/k a la izquierda; altura k y área1 a la derecha. Ambas familias convergen puntualmente a cero; seguir2/k mantiene el pico. No se infiere el área desde el dibujo: se calculó por ramas."}
+![Tiendas con k=n+3, soporte\[1/k,3/k\] dentro\[0,1\]. Altura1 y área1/k a la izquierda; altura k y área1 a la derecha. Ambas familias convergen puntualmente a cero; seguir2/k mantiene el pico. No se infiere el área desde el dibujo: se calculó por ramas.](../../assets/books/anm/revision-20261016/C26/C26-F06.svg){#fig-anm-c26-f06 fig-alt="Tiendas con k=n+3, soporte[1/k,3/k] dentro[0,1]. Altura1 y área1/k a la izquierda; altura k y área1 a la derecha. Ambas familias convergen puntualmente a cero; seguir2/k mantiene el pico. No se infiere el área desde el dibujo: se calculó por ramas."}
 
 ### Microcontroles
 
@@ -1495,17 +1500,18 @@ Demuestra que las tiendas $t_n$ no satisfacen una cota Lipschitz con la misma co
 Para cualquier índice, ponemos $u_n=1/k$ y $v_n=2/k$, con $k=n+3$. Ambas entradas pertenecen al dominio y sus alturas son $t_n(u_n)=0$ y $t_n(v_n)=1$. Si existiera una constante Lipschitz común $L\ge0$, tendría que cumplirse $1=|t_n(v_n)-t_n(u_n)|\le L|v_n-u_n|=L/k$, luego $k\le L$ para todo índice. Arquimedianidad proporciona $n$ con $n+3>L$, contradicción. Cada fila sí tiene constante $k$, pues el absoluto y el máximo con cero no aumentan diferencias y la función afín tiene pendiente $k$. Lo que falta es una barrera independiente de la etapa.
 
 </details>
+
 ## 26.7. Tres intercambios que pueden fallar
 
 []{#MA-SEC-ANM-01-026-007}
 
-Antes de intercambiar operaciones, hay que comprobar que los objetos que se comparan existen. C25 ya produjo una familia en la que esta precaución decide la cuestión.
+Los ejemplos siguientes separan dos fallos posibles: que una operación deje de existir en el límite o que siga existiendo y produzca un valor distinto del límite de los resultados. El caso de Dirichlet de C25 ofrece el primero; las tiendas de altura creciente ya ofrecieron el segundo para las integrales.
 
 ### La integrabilidad puede desaparecer
 
 Sea $E_m\subseteq[0,1]$ el conjunto de racionales irreducibles con denominador como máximo $m$, y $d_n=\mathbf1_{E_{n+1}}$. C25 demostró finitud de $E_m$ e integral0 de su indicadora. Si $x$ es irracional, $d_n(x)=0$ siempre. Si $x=p/q$ irreducible, $d_n(x)=1$ desde $n+1\ge q$. Por ello $d_n$ converge puntualmente a la indicadora de los racionales, la función de Dirichlet.
 
-Todas las filas son integrables, con integral0, y la familia está acotada entre0 y1. El límite no es integrable por C25. Por tanto no se puede escribir su integral de Riemann como uno de los miembros de una igualdad. El ejemplo de $b_n$ era más fuerte respecto de otra pregunta: allí existían ambas integrales comparadas y tenían valores distintos. Cada contraejemplo tiene un alcance que conviene conservar.
+Cada fila es integrable de valor cero y toda la familia queda entre cero y uno. Sin embargo, C25 demuestra que el límite de Dirichlet no tiene integral de Riemann. Aquí no hay dos valores integrales que comparar. En la familia $b_n$ sí existían tanto la integral del límite como el límite de las integrales y diferían. Mantener esta distinción permite formular exactamente qué refuta cada ejemplo.
 
 ### Las derivadas pueden tener otro límite
 
@@ -1547,7 +1553,7 @@ $$
 $$
 El control puntual en $x$ elige un $n$ grande para el último término; la continuidad de esa fila controla el término central cerca de $x$. El primer término requiere ahora controlar entradas $y$ variables con esa misma fila. La convergencia puntual no proporciona ese control en toda la ventana. Ese es el paso inválido, no la desigualdad triangular. Los ejemplos de potencias y capa racional lo hacen visible.
 
-![h_n=x/(1+kx²) y h_n′=(1−kx²)/(1+kx²)², k=n+1. Los valores tienden a cero con máximo1/(2√k); las derivadas tienden a0 fuera de0 pero conservan1 en0. El punto excepcional del límite de derivadas está marcado; la derivada del límite vale0.](../../assets/books/anm/C26/C26-F07.svg){#fig-anm-c26-f07 fig-alt="h_n=x/(1+kx²) y h_n′=(1−kx²)/(1+kx²)², k=n+1. Los valores tienden a cero con máximo1/(2√k); las derivadas tienden a0 fuera de0 pero conservan1 en0. El punto excepcional del límite de derivadas está marcado; la derivada del límite vale0."}
+![h_n=x/(1+kx²) y h_n′=(1−kx²)/(1+kx²)², k=n+1. Los valores tienden a cero con máximo1/(2√k); las derivadas tienden a0 fuera de0 pero conservan1 en0. El punto excepcional del límite de derivadas está marcado; la derivada del límite vale0.](../../assets/books/anm/revision-20261016/C26/C26-F07.svg){#fig-anm-c26-f07 fig-alt="h_n=x/(1+kx²) y h_n′=(1−kx²)/(1+kx²)², k=n+1. Los valores tienden a cero con máximo1/(2√k); las derivadas tienden a0 fuera de0 pero conservan1 en0. El punto excepcional del límite de derivadas está marcado; la derivada del límite vale0."}
 
 ### Microcontroles
 
@@ -1749,11 +1755,12 @@ Compara potencias, tiendas normalizadas y $d_n$ según qué propiedad falla y qu
 En las potencias sobre $[0,1]$ todas las filas son continuas y el límite puntual existe, pero es discontinuo en uno. En las tiendas normalizadas $b_n$ existen las integrales de todas las filas y del límite nulo; el límite de las primeras es uno y la segunda vale cero. En $d_n=\mathbf1_{E_{n+1}}$, las filas tienen integral cero y límite puntual Dirichlet, pero éste carece de integral propia. Los dos ejemplos integrales fallan de formas distintas: uno da valores desiguales y el otro deja inexistente una operación. Cada afirmación debe conservar esa diferencia de alcance.
 
 </details>
+
 ## 26.8. Certificados que recuperan control
 
 []{#MA-SEC-ANM-01-026-008}
 
-El capítulo ha dado reglas válidas columna por columna y contraejemplos que impiden convertirlas sin más en reglas para toda la función. Podemos recuperar algunos controles mediante hipótesis concretas, sin adelantar los teoremas generales del capítulo siguiente.
+La convergencia en cada entrada ha permitido operar con columnas, pero no ha dado control automático de entradas móviles. Buscaremos una hipótesis que relacione los valores de cada fila en dos entradas mediante una misma constante. Esa relación podrá pasar al límite y cerrar directamente el error de una diagonal.
 
 ### Una estimación común de proximidad pasa al límite
 
@@ -1791,13 +1798,13 @@ Para $u_n(x)=\min(n,x)$ en $[0,\infty)$, las columnas son crecientes y acotadas 
 
 ### Qué debe entregar una prueba
 
-Un certificado puntual identifica dominio común, candidata, entrada fija, tolerancia, corte y control de toda la cola. Una refutación puntual conserva una entrada y una tolerancia mientras produce infracciones tardías. Una refutación de un corte simultáneo puede mover la entrada; una diagonal dada puede demostrar esa obstrucción sin elección numerable. Un intercambio fallido requiere declarar qué operaciones existen, como hicimos con las áreas y derivadas; si la integral del límite no existe, se informa precisamente eso.
+En una prueba puntual, la entrada y la tolerancia se fijan antes de construir el corte, y la estimación debe valer en toda la cola. Para refutarla necesitamos mantener una entrada y una tolerancia con infracciones arbitrariamente tardías. Mover la entrada puede refutar un corte simultáneo, como hacen las rutas explícitas anteriores, pero no el contrato puntual. Antes de comparar límites con integrales o derivadas comprobamos además que existan las operaciones de ambos lados.
 
 En un conjunto finito, el máximo de umbrales resuelve todas las entradas para una tolerancia. En un conjunto infinito, ese máximo puede no existir. Compactitud del dominio, continuidad de las filas, continuidad del límite y una cota común de valores, considerados por separado, no borran las dependencias que los ejemplos han exhibido.
 
-La siguiente pregunta queda bien formulada: ¿qué significa exigir una sola cola para todas las entradas y cómo se mide ese control? C27 dará el contrato y la distancia apropiados. Aquí ya sabemos por qué el cambio de cuantificadores es sustantivo; no usaremos sus resultados para certificar retroactivamente estas pruebas.
+El obstáculo en los ejemplos es la ausencia de un solo corte que sirva para todas las entradas. Exigir ese corte cambiará el contrato de convergencia y hará posible medir el error de la función completa. La prueba puntual, por sí sola, deja esa obligación abierta.
 
-![Familia f_n(x)=x+1/(n+1), con constante Lipschitz común L=1 y límite x. En la ruta x_n=1/(n+1), el error hacia f(0) es2/(n+1), suma de distancia de entrada y error puntual. La estimación común, no una muestra finita, justifica el control para cualquier ruta convergente dada.](../../assets/books/anm/C26/C26-F08.svg){#fig-anm-c26-f08 fig-alt="Familia f_n(x)=x+1/(n+1), con constante Lipschitz común L=1 y límite x. En la ruta x_n=1/(n+1), el error hacia f(0) es2/(n+1), suma de distancia de entrada y error puntual. La estimación común, no una muestra finita, justifica el control para cualquier ruta convergente dada."}
+![Familia f_n(x)=x+1/(n+1), con constante Lipschitz común L=1 y límite x. En la ruta x_n=1/(n+1), el error hacia f(0) es2/(n+1), suma de distancia de entrada y error puntual. La estimación común, no una muestra finita, justifica el control para cualquier ruta convergente dada.](../../assets/books/anm/revision-20261016/C26/C26-F08.svg){#fig-anm-c26-f08 fig-alt="Familia f_n(x)=x+1/(n+1), con constante Lipschitz común L=1 y límite x. En la ruta x_n=1/(n+1), el error hacia f(0) es2/(n+1), suma de distancia de entrada y error puntual. La estimación común, no una muestra finita, justifica el control para cualquier ruta convergente dada."}
 
 ### Microcontroles
 

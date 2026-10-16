@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 11 — Series como laboratorio de convergencia
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,15 +28,15 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-11)
 
-Una sucesión de aportes puede tender a cero y seguir acumulando cantidades apreciables. Queremos decidir cuándo el proceso de sumación tiene un destino real, qué controla los bloques que aún faltan y cómo certificar una aproximación sin conocer la suma exacta. Las sumas parciales serán el puente entre acumulación y los límites de C06 y C10.
+Si vamos añadiendo $1,1/2,1/4,1/8,\ldots$, cada aporte es menor que el anterior y los totales se acercan a dos. Al añadir $1,1/2,1/3,1/4,\ldots$ también disminuyen los aportes, pero los totales superan cualquier barrera. La diferencia entre ambos procesos no puede leerse en el hecho de que los términos tiendan a cero: necesitamos controlar lo que pueden acumular muchos términos juntos.
 
-Trabajaremos con sucesiones reales e índices desde cero. Seleccionaremos mecanismos de convergencia por lo que permiten ver: fórmulas finitas, barreras positivas, control de magnitudes, cancelación alternada y conservación de los índices al agrupar. Cada mecanismo se prueba antes de emplearlo. El objetivo es reconocer qué hipótesis convierte una intuición de acumulación en un control uniforme de toda la cola.
+En C10 aprendimos a reconocer la convergencia comparando dos términos tardíos de una sucesión. Para una acumulación, esos dos términos serán los totales calculados hasta dos índices distintos; su diferencia recogerá exactamente los aportes añadidos entre ambos. Esa identidad finita permite trasladar el criterio de Cauchy al problema de sumar indefinidamente sin dar por existente la suma que buscamos.
 
 ## 11.1. De los términos a las sumas parciales
 
 []{#MA-SEC-ANM-01-011-001}
 
-Los aportes $1,1/2,1/4,\ldots$ disminuyen; los totales $1,3/2,7/4,\ldots$ aumentan. Son dos sucesiones reales diferentes. Para estudiar lo que se acumula necesitamos construir la segunda a partir de la primera y decidir después si tiene un destino real.
+Los primeros totales de los aportes geométricos son $1,3/2,7/4,15/8$. El aporte de índice $3$ vale $1/8$, mientras que el total de ese mismo índice vale $15/8$: el primero registra lo que acabamos de añadir y el segundo incorpora todo lo anterior. La pregunta por una suma infinita se refiere al comportamiento de los totales. Para formularla debemos construir esa nueva sucesión a partir de los aportes.
 
 Dada $a:\mathbb N\to\mathbb R$, con $\mathbb N=\{0,1,2,\ldots\}$, definimos su **sucesión de sumas parciales** $s=\operatorname{PS}(a)$ mediante
 
@@ -44,7 +44,7 @@ $$
 s_0=a_0,\qquad s_{n+1}=s_n+a_{n+1}.
 $$
 
-Cada paso suma dos reales y determina un único real; la recursión define $s$ en todos los naturales y una inducción prueba su unicidad. Escribimos $s_n=\sum_{k=0}^n a_k$: contiene $n+1$ términos, no $n$. Una suma con ningún término se toma igual a cero cuando aparezca un bloque vacío.
+La condición inicial ya incorpora $a_0$; $s_0$ no es el total vacío. Una vez conocido $s_n$, la regla siguiente determina un único real $s_{n+1}$, de modo que la recursión produce una sucesión en todos los naturales. Si otra sucesión satisficiera las mismas reglas, coincidiría en cero y cada coincidencia obligaría a la del índice siguiente: la inducción prueba su unicidad. La abreviatura $s_n=\sum_{k=0}^n a_k$ contiene $n+1$ aportes. Reservamos el valor cero para una suma sin términos, que aparecerá al eliminar un prefijo de longitud cero o al comparar un total consigo mismo.
 
 La **serie de términos $a$** es este proceso de sumación. Decimos que converge si $s_n\to S$ para algún $S\in\mathbb R$, y entonces llamamos a $S$ su suma y escribimos
 
@@ -52,23 +52,21 @@ $$
 \sum_{n=0}^{\infty}a_n=S.
 $$
 
-Antes de demostrar convergencia, el símbolo de serie designa el proceso que estamos estudiando; no afirma que ya exista ese real. El límite es único por C06. Una serie divergente puede tener sumas parciales no acotadas o puede oscilar dentro de una región acotada.
+Mientras no hayamos probado que los totales convergen, el símbolo de serie nombra el proceso y deja abierta la existencia de ese real. Si existe, C06 garantiza su unicidad. Por eso podemos estudiar una serie divergente sin asignarle una suma: sus totales siguen estando definidos en cada índice, aunque crezcan sin barrera o persistan en oscilar.
 
-**Recuperar los aportes.** La construcción conserva toda la información de $a$, pues
+Conocer todos los totales permite además reconstruir cada aporte. El primero está dado por la condición inicial; para los demás basta restar dos totales consecutivos:
 
 $$
 a_0=s_0,\qquad a_{n+1}=s_{n+1}-s_n.
 $$
 
-La primera igualdad es la condición inicial; la segunda se obtiene restando $s_n$ en la recursión. Por ello $\operatorname{PS}(a)=\operatorname{PS}(b)$ implica $a=b$. En cambio, tener la misma suma real no obliga a tener los mismos términos: $(1,0,0,\ldots)$ y $(1/2,1/2,0,\ldots)$ generan procesos diferentes que convergen ambos a uno.
+La resta elimina el prefijo que ambos totales comparten y deja sólo el aporte nuevo. En consecuencia, $\operatorname{PS}(a)=\operatorname{PS}(b)$ obliga a que $a=b$. Si sólo conocemos el límite de los totales, hemos perdido esa información: $(1,0,0,\ldots)$ y $(1/2,1/2,0,\ldots)$ suman uno, pero sus primeros totales son distintos. Una sucesión de aportes, su sucesión de totales y el real al que éstos convergen cumplen funciones diferentes; los dos primeros objetos son funciones $\mathbb N\to\mathbb R$ y el tercero es un número.
 
-Para $a_n=(-1)^n$, las sumas parciales son $s_{2k}=1$ y $s_{2k+1}=0$, como se verifica por parejas. La sucesión $s$ está acotada, pero no converge: después de cualquier corte hay sumas parciales de ambos valores. Para $a_n=0$ todos los totales valen cero. Incluso cuando término y total tienen el mismo valor en un índice, siguen cumpliendo papeles distintos.
+En $a_n=(-1)^n$, cada pareja consecutiva suma cero. Hasta el índice $2k+1$ hay $k+1$ parejas completas, por lo que $s_{2k+1}=0$; hasta $2k$ quedan $k$ parejas y un uno, por lo que $s_{2k}=1$. Los totales están acotados y, sin embargo, después de cualquier corte hay dos de ellos separados por uno. La tolerancia fija $1/2$ impide Cauchy. Estar en una región acotada no decide la convergencia de una acumulación. Para $a_n=0$, la recursión da $s_n=0$ en cada índice.
 
-En el ejemplo inicial $a_n=2^{-n}$, una inducción en la recursión da $s_n=2-2^{-n}$. Además $2^n\ge n+1$ por inducción, luego $2^{-n}\le1/(n+1)$. Para cualquier $\varepsilon>0$, elegir $N+1>1/\varepsilon$ hace tanto $|a_n|$ como $|s_n-2|$ menores que $\varepsilon$ para $n\ge N$. Así los dos destinos mostrados quedan probados directamente, antes de desarrollar la identidad geométrica general.
+Para los aportes $a_n=2^{-n}$ podemos identificar el destino antes de disponer de un criterio general. En cero, $s_0=1=2^{-0}$. Si $s_n=2-2^{-n}$, al añadir $2^{-(n+1)}$ queda $s_{n+1}=2-2^{-(n+1)}$. La inducción prueba $s_n=2-2^{-n}$. Otra inducción da $2^n\ge n+1$, de donde $2^{-n}\le1/(n+1)$. Dada $\varepsilon>0$, elegir $N+1>1/\varepsilon$ controla tanto $|a_n|$ como $|s_n-2|$ para $n\ge N$. Los aportes tienden a cero y los totales a dos, como distingue la figura 11.1.
 
-![Los aportes geométricos disminuyen hacia cero mientras los totales aumentan hacia dos. En el índice n se han acumulado n+1 términos: los paneles representan dos sucesiones distintas.](../../assets/books/anm/C11/C11-F01.svg){#fig-anm-c11-f01 fig-alt="Los aportes geométricos disminuyen hacia cero mientras los totales aumentan hacia dos. En el índice n se han acumulado n+1 términos: los paneles representan dos sucesiones distintas."}
-
-La figura compara aportes y totales en el mismo índice. Leer un punto en el panel de términos no permite inferir el destino del panel de acumulación; éste es el objeto al que aplicaremos Cauchy.
+![Los aportes geométricos disminuyen hacia cero mientras los totales aumentan hacia dos. En el índice n se han acumulado n+1 términos: los paneles representan dos sucesiones distintas.](../../assets/books/anm/revision-20261016/C11/C11-F01.svg){#fig-anm-c11-f01 fig-alt="Arriba se muestran ocho términos geométricos que decrecen; abajo, ocho sumas parciales que aumentan. Los puntos conservan sus índices y las líneas horizontales marcan referencias cero y dos; no se unen términos."}
 
 ### Antes de seguir
 
@@ -306,17 +304,18 @@ Después del argumento, la [figura 11.5](analisis-para-matematicos-capitulo-11-s
 El primer bloque tiene dos aportes; los primeros $m-1$ bloques contienen $2(1+\cdots+(m-1))=m(m-1)$ aportes, lo que explica la posición inicial del bloque $m$. Su mitad positiva eleva el total a uno y su mitad negativa lo devuelve a cero. Para negar Cauchy, recibido un corte escogemos un bloque posterior completo y comparamos sus totales de mitad y final. Su separación es uno. Los saltos individuales se hacen pequeños, pero el número creciente de aportes permite mantener una excursión de tamaño fijo.
 
 </details>
+
 ## 11.2. Cauchy mide bloques completos
 
 []{#MA-SEC-ANM-01-011-002}
 
-Dos totales tardíos difieren en lo que se sumó entre sus cortes. Si $p>q$, la recursión y una inducción sobre $p-q$ dan la identidad finita
+Para comparar dos totales, restemos primero la parte que ya estaba sumada en ambos. Si $p>q$, la diferencia debe contener los aportes de índices $q+1,\ldots,p$, exactamente los que se añadieron después del corte $q$. La recursión permite demostrarlo sin hablar todavía de convergencia:
 
 $$
 s_p-s_q=\sum_{k=q+1}^{p}a_k.
 $$
 
-El bloque empieza en $q+1$ porque $a_q$ ya forma parte de $s_q$. El caso $p=q+1$ es la recursión; al prolongar el extremo superior se añade $a_{p+1}$ a ambos miembros. Esta identidad traduce la pregunta sobre dos sumas parciales a una pregunta sobre cualquier acumulación tardía.
+Con $p=q+1$ la igualdad es la propia regla de construcción. Fijado $q$, si vale hasta $p$, entonces $s_{p+1}-s_q=(s_p-s_q)+a_{p+1}$ prolonga el bloque hasta $p+1$. La inducción sobre su longitud $p-q$ prueba todos los casos. El índice inicial importa: incluir $a_q$ contaría dos veces un aporte que ya estaba incorporado en $s_q$.
 
 **Criterio de Cauchy para series reales.** La serie de $a$ converge si y sólo si
 
@@ -326,29 +325,27 @@ $$
 \left|\sum_{k=q+1}^{p}a_k\right|<\varepsilon.
 $$
 
-Por definición, la serie converge cuando converge $s$. C10 equivale esa convergencia real a que $|s_p-s_q|<\varepsilon$ para todos $p,q\ge N$, y la identidad demuestra una dirección. Recíprocamente, si los bloques ordenados cumplen el control, los pares con $p>q$ quedan controlados; si $q>p$, intercambiamos los índices y usamos simetría del valor absoluto; si $p=q$, la distancia es cero. Así $s$ es de Cauchy y C10 aporta un destino real. La completitud se usa en esta última existencia, no en la identidad finita.
+La definición de serie convergente pregunta por la convergencia de $s$. Según C10, en $\mathbb R$ eso equivale a controlar $|s_p-s_q|$ después de un único corte. La identidad de bloques sustituye esa diferencia por una suma finita cuando $p>q$. Si los bloques satisfacen la condición escrita, los pares en el otro orden se reducen a éstos por $|s_p-s_q|=|s_q-s_p|$, y los pares iguales tienen distancia cero. Por tanto todos los pares tardíos satisfacen Cauchy y la completitud, a través de C10, proporciona un destino real. La identidad finita traduce el control; la completitud garantiza existencia.
 
-El corte se escoge antes que los dos extremos; debe funcionar para bloques de cualquier longitud. Permitir un corte distinto para cada longitud fija debilitaría el enunciado.
+El corte se elige después de recibir la tolerancia y antes de escoger los dos extremos del bloque. Debe servir aunque la longitud $p-q$ sea enorme. Para apreciar la diferencia, fijemos una longitud $r\ge1$ en la armónica: un bloque desde $q+1$ hasta $q+r$ tiene suma a lo sumo $r/(q+2)$ y se hace pequeño al avanzar $q$. El corte que da $N+2>r/\varepsilon$ depende de $r$. El criterio de Cauchy exige un corte que funcione antes de saber qué longitud habrá que controlar.
 
-**Condición necesaria.** Si una serie converge, entonces $a_n\to0$. En efecto, para $n\ge N+1$, el bloque con $q=n-1$ y $p=n$ tiene un término y da $|a_n|<\varepsilon$. Este argumento muestra también la limitación: controlar bloques de longitud uno no controla todos los bloques.
+**Condición necesaria.** Si una serie converge, entonces $a_n\to0$. Para comprobarlo, recibamos $\varepsilon>0$ y tomemos el corte $N$ del criterio de bloques. Si $n\ge N+1$, podemos elegir $q=n-1$ y $p=n$: los extremos cumplen $p>q\ge N$ y el bloque sólo contiene $a_n$, así que $|a_n|<\varepsilon$. El corte de los términos se ha desplazado una unidad. Hemos probado una consecuencia de controlar todos los bloques; los bloques de un término por sí solos todavía no controlan los más largos.
 
-La serie de $a_n=1/(n+1)$ lo muestra. Sus términos tienden a cero. Para cualquier corte $N$, pongamos $m=N+1$, $q=m-1$ y $p=2m-1$. Ambos índices están después del corte y
+Volvamos a los aportes $a_n=1/(n+1)$, que tienden a cero. Para poner a prueba todos los bloques necesitamos permitir que su longitud aumente con su posición. Dado un corte $N$, tomemos $m=N+1$, $q=m-1=N$ y $p=2m-1=2N+1$. Al restar los totales, quedan los $m$ denominadores desde $m+1$ hasta $2m$: ninguno de sus recíprocos es menor que $1/(2m)$. Por tanto,
 
 $$
 s_{2m-1}-s_{m-1}=\sum_{j=m+1}^{2m}\frac1j\ge m\frac1{2m}=\frac12.
 $$
 
-La tolerancia fija $1/2$ contradice el criterio. La longitud del bloque crece: muchos aportes pequeños pueden acumular una cantidad que no desaparece. Esta prueba de divergencia usa sumas finitas, no un valor supuesto de una suma infinita.
+La misma tolerancia $1/2$ falla después de cada corte, aunque cada aporte individual se haga pequeño. Los bloques conservan una separación porque su número de términos crece al mismo tiempo que éstos disminuyen. Así la serie armónica diverge por una estimación sobre sumas finitas; no se ha presupuesto el valor de ninguna expresión infinita.
 
-![Los bloques de m aportes armónicos entre los denominadores m+1 y 2m conservan suma al menos un medio. Los términos individuales se reducen, pero la longitud del bloque puede crecer.](../../assets/books/anm/C11/C11-F02.svg){#fig-anm-c11-f02 fig-alt="Los bloques de m aportes armónicos entre los denominadores m+1 y 2m conservan suma al menos un medio. Los términos individuales se reducen, pero la longitud del bloque puede crecer."}
+![Los bloques de m aportes armónicos entre los denominadores m+1 y 2m conservan suma al menos un medio. Los términos individuales se reducen, pero la longitud del bloque puede crecer.](../../assets/books/anm/revision-20261016/C11/C11-F02.svg){#fig-anm-c11-f02 fig-alt="Totales armónicos discretos con tres pares de cortes destacados muestran incrementos de al menos un medio; una anotación identifica sus índices. Debajo, los términos individuales decrecen. El criterio exige todos los bloques, no sólo los términos."}
 
 | m | q = m−1 | p = 2m−1 | Cota inferior exacta del bloque |
 |---|---|---|---|
 | 4 | 3 | 7 | ≥ $1/2$ |
 | 8 | 7 | 15 | ≥ $1/2$ |
 | 16 | 15 | 31 | ≥ $1/2$ |
-
-La muestra exhibe algunos bloques; la elección $m=N+1$ prueba que existen después de todo corte. La figura por sí sola no extiende un cálculo finito a todos los índices.
 
 ### Antes de seguir
 
@@ -582,44 +579,45 @@ Después del argumento, la [figura 11.2](analisis-para-matematicos-capitulo-11-s
 La reparación debe pedir control del valor absoluto, porque «menor que $\varepsilon$» como desigualdad firmada no controla aportes negativos grandes. Si un bloque tiene $r\le M$ términos, hacemos cada magnitud menor que $\varepsilon/M$. La triangular da una suma de magnitudes estrictamente menor que $r\varepsilon/M\le\varepsilon$. El factor $M$ reparte el presupuesto entre el máximo número de errores permitidos. Si las longitudes no están acotadas, esta elección no controla todos los bloques.
 
 </details>
+
 ## 11.3. Fórmulas finitas y restos exactos
 
 []{#MA-SEC-ANM-01-011-003}
 
-Una fórmula para el total finito puede resolver simultáneamente existencia y error. La estrategia consiste en simplificar $s_n$ antes de tomar límites; manipular una supuesta suma infinita invertiría ese orden.
+En algunas series podemos calcular cada total y dejar que una fórmula finita resuelva el problema del límite. Las cancelaciones deben producirse en ese cálculo, donde sólo intervienen finitos reales; una supuesta suma infinita no puede usarse como si ya fuera un número antes de demostrar que existe.
 
-Si $a_n=c_n-c_{n+1}$, una inducción cancela términos consecutivos y entrega
+Si $a_n=c_n-c_{n+1}$, las primeras sumas son $c_0-c_1$, $(c_0-c_1)+(c_1-c_2)=c_0-c_2$, y así sucesivamente. Cada valor interior aparece una vez con cada signo. La misma cancelación se justifica por inducción: si el total de corte $n$ es $c_0-c_{n+1}$, añadir $c_{n+1}-c_{n+2}$ produce $c_0-c_{n+2}$ en el corte siguiente. En general,
 
 $$
 s_n=c_0-c_{n+1}.
 $$
 
-Por C06, si $c_n\to C$, entonces la serie converge y su suma es $c_0-C$. Recíprocamente, si $s_n\to S$, la misma identidad da $c_{n+1}\to c_0-S$, y la sucesión completa $c$ tiene ese límite: un único término inicial no altera el control eventual. Cuando convergen, el **resto** en el corte $n$ es el real
+La identidad reduce la convergencia de la serie a la de $c$. Si $c_n\to C$, las reglas de C06 dan $s_n\to c_0-C$. En la otra dirección, si $s_n\to S$, entonces $c_{n+1}=c_0-s_n\to c_0-S$. Un corte $N$ para esta última sucesión se convierte en el corte $N+1$ de $c$, de modo que también converge la sucesión completa. La cancelación no crea un destino cuando $c$ carece de él. Una vez probada la convergencia, llamamos **resto** a $R_n=S-s_n$ y obtenemos
 
 $$
 R_n=S-s_n=c_{n+1}-C.
 $$
 
-Por ejemplo, $a_n=1/((n+1)(n+2))=1/(n+1)-1/(n+2)$ produce $s_n=1-1/(n+2)$, suma uno y resto $1/(n+2)$. No se requiere un criterio nuevo para cada fracción: se reconoce una diferencia finita y se reutiliza un límite conocido.
+La fracción $1/((n+1)(n+2))$ permite esta cancelación porque $1/(n+1)-1/(n+2)$ tiene numerador $(n+2)-(n+1)=1$ sobre el mismo denominador. Sus totales son $s_n=1-1/(n+2)$, luego la suma es uno y el resto exacto $1/(n+2)$. Si se pide error menor que $1/100$, necesitamos $n+2>100$: $n=99$ sirve y utiliza cien aportes; $n=98$ sólo da igualdad con la tolerancia.
 
-Para la serie geométrica $a_n=r^n$, las potencias naturales satisfacen $r^0=1$ y $r^{n+1}=r^nr$; en particular usamos $0^0=1$ como convención de exponente cero. Al restar la suma finita multiplicada por $r$, o por inducción, obtenemos
+Para los aportes geométricos $a_n=r^n$, con $r\in\mathbb R$, usamos $r^0=1$ y $r^{n+1}=r^nr$. Esta convención fija también $0^0=1$ en el término de exponente cero de la serie. Escribamos $s_n=1+r+\cdots+r^n$ y multipliquemos por $r$: los términos interiores coinciden con los de $rs_n=r+\cdots+r^{n+1}$. Restar las dos sumas finitas deja
 
 $$
 (1-r)s_n=1-r^{n+1}.
 $$
 
-Si $|r|<1$, las potencias $r^{n+1}$ tienden a cero. Para $0<\rho=|r|<1$, escribimos $\rho^{-1}=1+t$ con $t>0$; la inducción da $(1+t)^n\ge1+nt$, por lo que $\rho^n\le1/(1+nt)\to0$ por arquimedianidad. Si $r=0$, el primer término vale uno y los siguientes cero. Como $1-r\ne0$, C06 aplicado a la identidad finita demuestra
+La identidad vale para todo $r$, incluido $r=1$, donde sólo dice $0=0$. Si $|r|<1$, podemos dividir por $1-r$ y estudiar la potencia restante. Para $0<\rho=|r|<1$, pongamos $\rho^{-1}=1+t$ con $t>0$. La inducción en $(1+t)^n\ge1+nt$ da $0<\rho^n\le1/(1+nt)\to0$ por arquimedianidad; por ello también $r^{n+1}\to0$. Para $r=0$, el primer aporte es uno y los demás cero, así que todos los totales son uno. Las reglas de límites aplicadas a la fórmula finita proporcionan
 
 $$
 S=\frac1{1-r},\qquad R_n=\frac{r^{n+1}}{1-r},\qquad
 |R_n|=\frac{|r|^{n+1}}{|1-r|}.
 $$
 
-La estimación precisa usa $|1-r|$; para razones negativas puede ser mejor que reemplazarlo por $1-|r|$. La serie geométrica converge exactamente para $|r|<1$. Si $|r|\ge1$, sus términos no tienden a cero: $|r^n|\ge1$ en cada índice, y la condición necesaria de §11.2 descarta convergencia. Esto incluye $r=1$ y $r=-1$ sin dividir por cero.
+El denominador del error exacto es $|1-r|$. Si $r<0$, ese valor es $1+|r|$, mayor que $1-|r|$, y conservarlo mejora la estimación. Fuera de $(-1,1)$, las magnitudes $|r^n|\ge1$ no tienden a cero y la condición necesaria descarta convergencia. En $r=1$, los totales son $n+1$; en $r=-1$, alternan entre uno y cero. La geométrica converge exactamente para $|r|<1$, con los extremos tratados sin efectuar ninguna división prohibida.
 
-![La geométrica de razón menos un medio alterna sus totales alrededor de dos tercios. La identidad finita determina el resto con signo, no sólo una cota de su magnitud.](../../assets/books/anm/C11/C11-F03.svg){#fig-anm-c11-f03 fig-alt="La geométrica de razón menos un medio alterna sus totales alrededor de dos tercios. La identidad finita determina el resto con signo, no sólo una cota de su magnitud."}
+![La geométrica de razón menos un medio alterna sus totales alrededor de dos tercios. La identidad finita determina el resto con signo, no sólo una cota de su magnitud.](../../assets/books/anm/revision-20261016/C11/C11-F03.svg){#fig-anm-c11-f03 fig-alt="Ocho totales discretos a ambos lados de dos tercios; debajo, segmentos en un eje de valores desde s_2 y s_3 al destino. Los restos tienen signos alternados y valores exactos menos un doceavo y un veinticuatroavo."}
 
-Para $r=-1/2$, el total alterna alrededor de $2/3$ y su error exacto es $(2/3)2^{-(n+1)}$. El valor numérico del destino aparece después de la identidad y de la prueba del límite de las potencias.
+Con $r=-1/2$, la suma es $2/3$ y el resto firmado $(2/3)(-1/2)^{n+1}$ cambia de signo con la paridad. Por ejemplo, $s_2=3/4$ está por encima de la suma y deja resto $-1/12$, mientras $s_3=5/8$ queda por debajo y deja $1/24$, como muestra la figura. Su magnitud es $(2/3)2^{-(n+1)}=1/(3\cdot2^n)$. En $n=5$ vale $1/96$ y en $n=6$ vale $1/192$, de modo que el primer corte con error menor que $1/100$ es seis. Podemos afirmar esa minimalidad porque conocemos el error exacto.
 
 ### Antes de seguir
 
@@ -857,11 +855,12 @@ Siempre $s_n=c_0-c_{n+1}$. Si $c_n\to C$, la serie tiene suma $c_0-C$. Si $s_n\t
 Para la vuelta, conocer $s_n\to S$ da el límite de $c_{n+1}$ por la identidad $c_{n+1}=c_0-s_n$. Si ese control funciona desde $n\ge N$, el control de $c_j$ funciona desde $j\ge N+1$. El valor inicial no afecta la convergencia porque queda fuera de una cola suficientemente tardía. El telescopaje reduce el problema a otra sucesión; si ésta oscila o carece de destino, la cancelación algebraica por sí sola no lo remedia.
 
 </details>
+
 ## 11.4. Acumulación positiva y barreras
 
 []{#MA-SEC-ANM-01-011-004}
 
-Cuando $a_n\ge0$, cada nuevo aporte mueve el total hacia la derecha: $s_{n+1}-s_n=a_{n+1}\ge0$. El control de cancelaciones desaparece y la cuestión se reduce a encontrar una barrera superior para todos los totales.
+Si todos los aportes son no negativos, los totales sólo pueden aumentar o permanecer iguales: $s_{n+1}-s_n=a_{n+1}\ge0$. En esta situación, una barrera superior tiene más fuerza que en una sucesión oscilante. Una vez que un total se acerca a la menor barrera posible, los siguientes no pueden retroceder ni sobrepasarla.
 
 **Barrera positiva.** Una serie de términos no negativos converge si y sólo si sus sumas parciales están acotadas superiormente. La necesidad se sigue de C06. Para probar suficiencia desde las bases de completitud, sea
 
@@ -869,25 +868,25 @@ $$
 S=\sup\{s_n:n\in\mathbb N\}.
 $$
 
-El conjunto es no vacío y tiene cota superior por hipótesis, de modo que el supremo real existe por C03, la base de completitud heredada en C10. Dada $\varepsilon>0$, $S-\varepsilon$ no puede ser cota superior: existe $N$ con $S-\varepsilon<s_N\le S$. La no negatividad asegura que para todo $n\ge N$, $s_N\le s_n\le S$, luego $|S-s_n|<\varepsilon$. Hemos reconstruido el mecanismo de monotonía y barrera sin necesitar importar otro criterio de series.
+El conjunto contiene $s_0$ y está acotado superiormente por hipótesis, de modo que C03 asegura un supremo real. Dada $\varepsilon>0$, el número $S-\varepsilon$ es menor que la menor cota superior y no puede acotar todos los totales: existe $N$ con $S-\varepsilon<s_N\le S$. La no negatividad conserva ese acercamiento, pues $s_N\le s_n\le S$ para $n\ge N$. Así $|S-s_n|=S-s_n<\varepsilon$. La completitud construye la barrera y el signo de los aportes mantiene toda la cola cerca de ella.
 
-Si los totales no tienen cota superior, exceden finalmente cualquier real $M$: existe $N$ con $s_N>M$, y todos los posteriores son mayores que $M$. Esta es una descripción de divergencia hacia arriba; no asigna a la serie una suma real llamada infinito.
+Si, por el contrario, los totales no están acotados superiormente, dado cualquier real $M$ existe $N$ con $s_N>M$; la monotonía obliga a que todos los posteriores también excedan $M$. Esa divergencia hacia arriba describe el comportamiento de los totales. La definición de suma utilizada aquí exige un real y no asigna al proceso un nuevo número llamado infinito.
 
-**Comparación directa.** Si $0\le a_n\le b_n$ en todos los índices y la serie de $b$ converge, entonces la de $a$ también converge y sus sumas cumplen $0\le S_a\le S_b$. Las desigualdades se conservan al sumar finitamente, de modo que $0\le s_n\le t_n\le S_b$. La barrera positiva aporta $S_a$ y C06 conserva el orden al pasar al límite. También podemos comparar desde un índice fijo: se aplica el mismo argumento a las colas reindexadas, dejando el prefijo como una suma real finita. En ese caso, la desigualdad entre sumas completas requiere considerar sus prefijos y no se afirma automáticamente.
+**Comparación directa.** Si $0\le a_n\le b_n$ en todos los índices y la serie de $b$ converge, entonces la de $a$ también converge y sus sumas cumplen $0\le S_a\le S_b$. Para demostrarlo, llamemos $s_n,t_n$ a los totales respectivos. Sumar las desigualdades finitas da $0\le s_n\le t_n\le S_b$, donde la última cota usa que los totales no negativos de $b$ crecen hacia $S_b$. La barrera positiva proporciona $S_a$, y el paso al límite conserva el orden. Si la comparación sólo vale desde un índice $m$, se aplica a las colas reindexadas y luego se añaden sus prefijos finitos; éstos pueden alterar el orden de las sumas completas. Por ejemplo, $(100,0,0,\ldots)$ y la sucesión nula coinciden desde uno, pero sus sumas son cien y cero. Una comparación eventual prueba convergencia de las colas, sin imponer por sí sola $S_a\le S_b$.
 
-El ejemplo $a_n=1/(n+2)^2$ queda dominado por
+Para los aportes $a_n=1/(n+2)^2$ no disponemos de una cancelación exacta como la anterior. Podemos usarla como barrera: los denominadores son positivos y $(n+2)^2\ge(n+1)(n+2)$, por lo que
 
 $$
 0\le\frac1{(n+2)^2}\le\frac1{(n+1)(n+2)}.
 $$
 
-La serie de la derecha tiene suma uno por §11.3, así que $\sum a_n$ converge con suma entre cero y uno. Incluso su resto se controla: para $p>n$ sumamos la comparación sólo en el bloque $n+1,\ldots,p$ y luego tomamos $p\to\infty$. El telescopaje entrega
+La serie que domina tiene suma uno por telescopaje. Los totales de $a$ quedan entre cero y uno, y por tanto existe $S_a$. Para estimar lo que falta, apliquemos la misma comparación sólo al bloque posterior al corte $n$. Si $p>n$, obtenemos $0\le s_p-s_n\le1/(n+2)-1/(p+2)$. En este punto ya conocemos la existencia de $S_a$; mantener $n$ fijo y tomar $p\to\infty$ permite concluir
 
 $$
 0\le S_a-s_n\le\frac1{n+2}.
 $$
 
-Encontrar una barrera puede probar existencia sin calcular el valor exacto del destino. El bloque posterior da además un certificado de error.
+La comparación ha resuelto dos obligaciones distintas: primero proporcionó una barrera común para demostrar existencia y después una cota del bloque posterior para medir el error. Ninguno de esos pasos necesita una fórmula para $S_a$.
 
 ### Antes de seguir
 
@@ -1121,11 +1120,12 @@ Después del argumento, la [figura 11.1](analisis-para-matematicos-capitulo-11-s
 Multiplicar el aporte telescópico positivo por una cantidad entre cero y uno lo mantiene entre cero y ese aporte original. Por eso todos los totales son crecientes y no superan uno. La comparación de bloques da una cota de resto independiente de las elecciones de $\theta_n$. No obstante, esas elecciones cambian la suma: si todas valen cero, la suma es cero; si todas valen uno, es uno. Una garantía uniforme de error no implica que los destinos coincidan.
 
 </details>
+
 ## 11.5. Control absoluto de la acumulación
 
 []{#MA-SEC-ANM-01-011-005}
 
-Con signos variables, una cota superior de $s_n$ no impide que los totales bajen u oscilen. Un control más fuerte suma las magnitudes y, mediante la desigualdad triangular, protege cualquier bloque independientemente de sus cancelaciones.
+Cuando los signos varían, los totales pueden retroceder y una barrera superior deja de retenerlos cerca de un destino. Podemos exigir un control que sobreviva incluso al borrar todas las cancelaciones: sumar las magnitudes de los aportes. La desigualdad triangular relacionará ese nuevo proceso, no negativo, con las distancias entre los totales originales.
 
 La serie de $a$ **converge absolutamente** cuando converge la serie de $|a_n|$. Si la original converge y la de magnitudes diverge, la convergencia es **condicional**. Este segundo término sólo se aplica cuando existe la suma de la original.
 
@@ -1136,25 +1136,25 @@ $$
 |s_p-s_q|\le u_p-u_q=\sum_{k=q+1}^p|a_k|\quad(p>q).
 $$
 
-En la inducción del bloque, añadir el siguiente término aumenta el lado derecho en su magnitud; el caso inicial de un término es igualdad. Estas estimaciones son finitas y no suponen convergencia.
+Para un bloque de un término hay igualdad entre su magnitud y la suma de magnitudes. Si la estimación vale hasta $p$, la desigualdad triangular da $|\sum_{k=q+1}^{p+1}a_k|\le|\sum_{k=q+1}^{p}a_k|+|a_{p+1}|$, y la hipótesis inductiva completa el paso. La prueba de $|s_n|\le u_n$ procede del mismo modo desde cero. Son desigualdades entre sumas finitas, válidas aunque ninguna de las series tenga todavía un destino.
 
-**La convergencia absoluta implica convergencia.** Si $u_n\to A$, Cauchy aplicado a $u$ proporciona, para cada $\varepsilon>0$, un único corte que controla todos sus bloques. Como $u$ crece, $u_p-u_q=|u_p-u_q|<\varepsilon$ después de ese corte. La estimación anterior controla entonces $|s_p-s_q|$, y C10 garantiza $s_n\to S\in\mathbb R$. Completitud aparece en esa garantía de destino. Tomando límites en $|s_n|\le u_n$, mediante $||s_n|-|S||\le|s_n-S|$ y el orden de C06, resulta $|S|\le A$.
+**La convergencia absoluta implica convergencia.** Supongamos $u_n\to A$. El criterio de Cauchy aplicado a $u$ da, para cada $\varepsilon>0$, un corte $N$ con $u_p-u_q=|u_p-u_q|<\varepsilon$ cuando $p>q\ge N$, pues $u$ es creciente. La desigualdad finita transmite ese mismo corte a $|s_p-s_q|$. Así los totales originales son de Cauchy y C10 proporciona $S\in\mathbb R$, sin haber supuesto su existencia al comenzar. Para pasar al límite en $|s_n|\le u_n$, la desigualdad $\bigl||s_n|-|S|\bigr|\le|s_n-S|$ demuestra $|s_n|\to|S|$; la conservación del orden de C06 da $|S|\le A$. Acotar sólo cada $|s_n|$ no habría demostrado convergencia: lo que hizo funcionar el argumento fue controlar diferencias de totales.
 
-Hay una versión de error más útil que la desigualdad global. Fijado $n$, en todos los bloques posteriores $|s_p-s_n|\le u_p-u_n$; al tomar $p\to\infty$ obtenemos
+El control global $|S|\le A$ mide el resultado completo, pero para aproximarlo necesitamos saber lo que queda después del corte. Fijemos $n$. Para todos los extremos posteriores $p>n$ vale $|s_p-s_n|\le u_p-u_n$. Los dos totales de corte $n$ permanecen constantes mientras $p$ tiende a infinito. El límite y la conservación del orden dan
 
 $$
 |R_n|=|S-s_n|\le A-u_n.
 $$
 
-Si $|a_n|\le C\rho^n$ con $C\ge0$ y $0<\rho<1$, la comparación de magnitudes con la geométrica prueba convergencia absoluta y
+Una cota geométrica de las magnitudes produce una garantía explícita. Si $|a_n|\le C\rho^n$ con $C\ge0$ y $0<\rho<1$, la comparación positiva con la geométrica demuestra primero convergencia absoluta. Al sumar la comparación sólo desde $n+1$ hasta $p$ y después tomar $p\to\infty$, obtenemos
 
 $$
 |R_n|\le\frac{C\rho^{n+1}}{1-\rho}.
 $$
 
-Para $C=0$, todos los términos son cero. Para $C>0$, se escoge el corte usando el límite de $\rho^n$ ya probado; el número de términos sumados hasta $n$ sigue siendo $n+1$. Los signos pueden depender arbitrariamente del índice porque el control absoluto trabaja antes de toda cancelación.
+El exponente $n+1$ corresponde al primer aporte que no está incluido en $s_n$. Para $C=0$, todos los aportes y el resto son cero. Para $C>0$, el límite de $\rho^n$ permite escoger un corte con la cota estrictamente menor que la tolerancia solicitada. Los signos pueden variar de cualquier manera: por ejemplo, si $a_n=\sigma_n2^{-n}$ con $\sigma_n\in\{-1,1\}$, las magnitudes suman dos y el resto está acotado por $2^{-n}$, independientemente de cómo se hayan elegido los signos.
 
-La serie $a_n=(-1)^n$ muestra que acotación de $s$ no basta. La afirmación recíproca, que toda serie convergente sea absoluta, requiere otro examen: el próximo mecanismo conservará cancelaciones y permitirá un ejemplo condicional.
+Ese control renuncia a aprovechar las cancelaciones. Queda abierta la posibilidad de que los totales originales converjan precisamente gracias a ellas, aunque los de magnitudes no lo hagan. La alternancia permitirá reconocer esa situación con una estimación de bloques diferente.
 
 ### Antes de seguir
 
@@ -1388,11 +1388,12 @@ Si todos son no negativos, $S=A$; si todos son no positivos, $S=-A$, por identid
 Las sucesiones $p_n$ y $m_n$ separan los aportes positivos y las magnitudes de los negativos: $a_n=p_n-m_n$ y $|a_n|=p_n+m_n$. Si ambas partes acumuladas fueran positivas, la resta tendría magnitud estrictamente menor que su suma. La igualdad obliga a que una parte acumule cero. Como sus aportes son no negativos, ni uno solo puede ser positivo si la suma es cero. Por eso todos los aportes originales tienen un mismo signo débil, y los ceros son compatibles con cualquiera de las dos descripciones.
 
 </details>
+
 ## 11.6. Alternancia: encerrar sin sumar magnitudes
 
 []{#MA-SEC-ANM-01-011-006}
 
-Supongamos $0\le b_{n+1}\le b_n$ y $b_n\to0$, y tomemos $a_n=(-1)^nb_n$. La alternancia fija los signos, el decrecimiento impide que la segunda magnitud de una pareja supere la primera y el límite cero hará pequeño cualquier bloque tardío. Debemos mostrar cómo cooperan esas tres condiciones.
+Consideremos $a_n=(-1)^nb_n$ bajo las hipótesis $0\le b_{n+1}\le b_n$ y $b_n\to0$. Aquí decrecer significa no crecer: se permiten magnitudes iguales y colas enteramente nulas. En una pareja, la segunda magnitud no supera a la primera; esa comparación permite aprovechar la cancelación. Para que el argumento sirva a Cauchy necesitamos un control que valga para bloques de cualquier longitud, empiecen y terminen en la paridad que sea.
 
 **Lema de bloque alternado.** Si $c_0\ge c_1\ge\cdots\ge c_m\ge0$, entonces
 
@@ -1400,28 +1401,28 @@ $$
 0\le c_0-c_1+c_2-\cdots+(-1)^mc_m\le c_0.
 $$
 
-La cota inferior se obtiene agrupando $(c_0-c_1)+(c_2-c_3)+\cdots$, con un último término no negativo si sobra. Para la superior, escribimos $c_0-(c_1-c_2)-(c_3-c_4)-\cdots$, y restamos también el último término si el índice final es impar. Cada diferencia entre magnitudes contiguas es no negativa. Las dos formas son reorganizaciones de una suma finita, no de una serie infinita.
+Podemos leer la misma suma de dos maneras. Para verla no negativa, agrupamos desde el comienzo: $(c_0-c_1)+(c_2-c_3)+\cdots$. Si el último índice $m$ es par, queda el aporte positivo $c_m$; si es impar, todos los aportes quedan emparejados. Para acotarla superiormente, dejamos $c_0$ fuera y escribimos $c_0-(c_1-c_2)-(c_3-c_4)-\cdots$. Si $m$ es impar, restamos también el último $c_m$; si es par, las diferencias cubren los términos restantes. En ambos casos sólo se restan cantidades no negativas a $c_0$. Las dos escrituras usan asociatividad de una suma finita y prueban las dos cotas.
 
-**Criterio alternado.** La serie de $(-1)^nb_n$ converge. En un bloque desde $q+1$ hasta $p$, sacar el signo inicial y aplicar el lema da
+**Criterio alternado.** La serie de $(-1)^nb_n$ converge. Para aplicarle el lema a un bloque desde $q+1$ hasta $p$, multipliquemos por el signo de su primer aporte, $(-1)^{q+1}$. La primera magnitud queda positiva y las siguientes alternan; como siguen decreciendo, el lema proporciona
 
 $$
 0\le(-1)^{q+1}(s_p-s_q)\le b_{q+1},\qquad
 |s_p-s_q|\le b_{q+1}.
 $$
 
-Dada $\varepsilon>0$, elegimos $N$ tal que $b_j<\varepsilon$ para $j\ge N$. Si $p>q\ge N$, también $q+1\ge N$; la estimación vale para cualquier longitud del bloque y prueba Cauchy. C10 proporciona $S\in\mathbb R$. Hemos probado Leibniz directamente desde bloques, sin reunir dos límites de paridades mediante un resultado no explicado.
+Dada $\varepsilon>0$, el límite $b_j\to0$ proporciona un corte $N$ con $b_j<\varepsilon$ para $j\ge N$. Si $p>q\ge N$, el primer índice del bloque también satisface $q+1\ge N$, y la cota anterior da $|s_p-s_q|<\varepsilon$ para cualquier longitud. Queda probado Cauchy de los totales, y C10 asegura una suma real $S$. El decrecimiento hizo posible el encierro de bloques; el límite cero hizo pequeño su ancho. Ninguna de las dos hipótesis sustituye a la otra.
 
-Fijado $n$, tomamos $p\to\infty$ en el control con signo para obtener
+La estimación contiene también la orientación del error. Conservemos fijo el corte $n$ y dejemos $p\to\infty$ en la desigualdad firmada del bloque. El orden se conserva en forma no estricta y resulta
 
 $$
 0\le(-1)^{n+1}R_n\le b_{n+1},\qquad |R_n|\le b_{n+1}.
 $$
 
-Si $n$ es par, $s_{n+1}\le S\le s_n$; si $n$ es impar, $s_n\le S\le s_{n+1}$. En particular, los intervalos $[s_{2k+1},s_{2k}]$ contienen el destino. Sus extremos inferiores crecen porque $s_{2k+3}-s_{2k+1}=b_{2k+2}-b_{2k+3}\ge0$; los superiores decrecen porque $s_{2k+2}-s_{2k}=-b_{2k+1}+b_{2k+2}\le0$. La anchura es $b_{2k+1}$ y tiende a cero. Estos intervalos reinterpretan un destino cuya existencia ya se ha demostrado.
+Para $n$ par, el signo $(-1)^{n+1}$ es negativo y la desigualdad dice $s_{n+1}=s_n-b_{n+1}\le S\le s_n$; para $n$ impar, dice $s_n\le S\le s_n+b_{n+1}=s_{n+1}$. El resto tiene el signo del próximo aporte cuando no es cero. Las fronteras pueden coincidir con $S$, de modo que no corresponde exigir desigualdades estrictas. En particular, cada intervalo $[s_{2k+1},s_{2k}]$ contiene la suma. Sus inferiores aumentan porque $s_{2k+3}-s_{2k+1}=b_{2k+2}-b_{2k+3}\ge0$; sus superiores disminuyen porque $s_{2k+2}-s_{2k}=-b_{2k+1}+b_{2k+2}\le0$. La anchura $s_{2k}-s_{2k+1}=b_{2k+1}$ tiende a cero. Estos intervalos precisan la localización de una suma cuya existencia ya se probó con Cauchy.
 
-Para $b_n=1/(n+1)$, la serie alternada converge y $|R_n|\le1/(n+2)$. La serie de magnitudes es la armónica divergente de §11.2: la convergencia es condicional. No precisamos calcular $S$ ni identificarlo con un logaritmo para probar o estimar la convergencia.
+En la armónica alternada, $b_n=1/(n+1)$ cumple las hipótesis y obtenemos $|R_n|\le1/(n+2)$. La serie converge; su serie de magnitudes es la armónica divergente de §11.2. Se cumplen así las dos obligaciones de una convergencia condicional. Identificar la suma con un logaritmo no hace falta para demostrar su existencia, clasificarla ni estimar su error.
 
-![La cancelación mantiene los totales alternados en intervalos que se estrechan, aunque los totales de magnitudes crezcan sin barrera. Los extremos de paridad encierran la suma y la anchura es la siguiente magnitud.](../../assets/books/anm/C11/C11-F04.svg){#fig-anm-c11-f04 fig-alt="La cancelación mantiene los totales alternados en intervalos que se estrechan, aunque los totales de magnitudes crezcan sin barrera. Los extremos de paridad encierran la suma y la anchura es la siguiente magnitud."}
+![La cancelación mantiene los totales alternados en intervalos que se estrechan, aunque los totales de magnitudes crezcan sin barrera. Los extremos de paridad encierran la suma y la anchura es la siguiente magnitud.](../../assets/books/anm/revision-20261016/C11/C11-F04.svg){#fig-anm-c11-f04 fig-alt="Totales alternados y totales de magnitudes comparados como sucesiones distintas. Seis intervalos cerrados en el mismo eje de valores tienen extremos inferiores crecientes y superiores decrecientes; no se identifica numéricamente el destino."}
 
 | k | Extremo inferior $s_{2k+1}$ | Extremo superior $s_{2k}$ | Anchura |
 |---|---|---|---|
@@ -1432,9 +1433,9 @@ Para $b_n=1/(n+1)$, la serie alternada converge y $|R_n|\le1/(n+2)$. La serie de
 | 4 | 1627/2520 | 1879/2520 | 1/10 |
 | 5 | 18107/27720 | 20417/27720 | 1/12 |
 
-La figura conserva un eje de valores común para los intervalos y separa términos de sumas parciales. La anchura permite un error garantizado aunque el destino carezca todavía de una fórmula.
+La tabla mantiene valores racionales exactos para los dos extremos. Al avanzar una etapa, ambos quedan dentro del intervalo anterior, de modo que cada nueva pareja conserva toda la información previa y reduce la anchura. El eje común de la figura permite leer ese encajamiento sin desplazar artificialmente el destino.
 
-**Una hipótesis que no se puede borrar.** La alternancia y el término nulo sin decrecimiento no bastan. Sea $d_k=1/(k+1)$, $b_{2k}=2d_k$ y $b_{2k+1}=d_k$. Entonces $b_n\to0$ y los signos alternan, pero cada pareja aporta $d_k$. Las sumas parciales de índice $2m+1$ son $\sum_{k=0}^m d_k$, no acotadas por §11.4 y la divergencia armónica. La serie original tampoco converge, pues una extracción de una sucesión convergente tendría el mismo límite por el control ε–N. La monotonía impedía esa acumulación repetida del desequilibrio.
+Si se suprime el decrecimiento, la alternancia y el término nulo no bastan. Tomemos $d_k=1/(k+1)$, $b_{2k}=2d_k$ y $b_{2k+1}=d_k$. Para cualquier tolerancia, un corte común de las dos paridades muestra $b_n\to0$. Sin embargo, en $a_n=(-1)^nb_n$ cada pareja suma $d_k$, y $s_{2m+1}=\sum_{k=0}^m1/(k+1)$ son los totales armónicos. Éstos no están acotados, así que tampoco puede converger la sucesión completa de totales: una extracción de una sucesión convergente hereda su límite por la definición ε–N. La hipótesis que falla se ve entre parejas: $2/(k+2)>1/(k+1)$ para $k>0$, por lo que las magnitudes aumentan en esos pasos. La compensación deja cada vez un residuo positivo que vuelve a acumularse.
 
 ### Antes de seguir
 
@@ -1670,37 +1671,38 @@ Aplique §11.6 a la cola reindexada, con un signo global $\eta$ que no altera la
 La reindexación hace que el aporte de índice original $n$ corresponda a $k=n-m$. Tras incorporarlo, el siguiente aporte de la cola tiene magnitud $b_{n-m+1}$, lo que explica el desplazamiento del resto. El prefijo $P_m$ se suma tanto al total como al destino y se cancela al calcular su diferencia. El signo global $\eta$ cambia la orientación del encierro, pero no la cota de error absoluto. Para $m=0$ el prefijo es vacío y se recupera el caso inicial.
 
 </details>
+
 ## 11.7. Agrupar términos y conservar el recorrido
 
 []{#MA-SEC-ANM-01-011-007}
 
-Agrupar términos consecutivos conserva los totales en los extremos de cada grupo, pero deja de mostrar los totales intermedios. Para precisar esta operación, sea $\phi:\mathbb N\to\mathbb N$ estrictamente creciente y definamos
+Agrupar varios aportes consecutivos parece una operación inocente porque sólo modifica paréntesis en sumas finitas. En los totales que observamos sí hay un cambio: al registrar únicamente el final de cada grupo dejamos de ver los índices interiores. Para especificar cuáles conservamos, elijamos una función estrictamente creciente $\phi:\mathbb N\to\mathbb N$ y definamos
 
 $$
 g_0=\sum_{j=0}^{\phi(0)}a_j,\qquad
 g_k=\sum_{j=\phi(k-1)+1}^{\phi(k)}a_j\quad(k\ge1).
 $$
 
-Cada grupo es finito y no vacío. Una inducción y la partición de sumas finitas demuestran que sus sumas parciales son $t_k=s_{\phi(k)}$. Si la serie original converge a $S$, también converge la agrupada a $S$: la inducción da $\phi(k)\ge k$, de modo que el mismo corte ε–N controla $s_{\phi(k)}$. No se permutan términos.
+El primer grupo empieza en cero y cada uno de los siguientes empieza justo después del anterior. La estricta monotonía de $\phi$ hace que sean finitos y no vacíos. Si $t$ es la sucesión de totales agrupados, entonces $t_0=g_0=s_{\phi(0)}$; suponiendo la igualdad hasta $k-1$, añadir $g_k=s_{\phi(k)}-s_{\phi(k-1)}$ da $t_k=s_{\phi(k)}$. Por inducción, los totales agrupados son exactamente una extracción de los originales. Además $\phi(0)\ge0$ y $\phi(k+1)\ge\phi(k)+1$ implican $\phi(k)\ge k$. Si $s_n\to S$, un corte $N$ de esa convergencia sirve para $t_k$ cuando $k\ge N$. Agrupar conserva la suma de una serie convergente sin permutar sus términos.
 
-La recíproca falla. Agrupar $(1,-1,1,-1,\ldots)$ por parejas produce $g_k=0$ y $t_k=0$, pero el proceso original alterna entre uno y cero. Hemos seleccionado una extracción convergente, no demostrado convergencia del recorrido completo.
+La vuelta no se sigue de esa identidad. Para los aportes $(1,-1,1,-1,\ldots)$, elijamos $\phi(k)=2k+1$: cada grupo suma cero y todos los $t_k$ son cero. Los totales originales pares siguen valiendo uno y no convergen. La agrupación observó sólo una extracción convergente y ocultó los otros totales.
 
-**Qué información falta.** Para cada $n>\phi(0)$ existe un único $k\ge1$ con $\phi(k-1)<n\le\phi(k)$: basta tomar el menor índice cuyo extremo alcanza $n$, que existe porque $\phi(k)\ge k$. Si $t_k\to S$ y las distancias interiores a ese extremo tienden uniformemente a cero, los índices omitidos recuperan el mismo destino. En términos precisos, si para todo $\varepsilon>0$ existe $K$ tal que
+Para recuperar el recorrido completo necesitamos medir cuánto puede alejarse un total interior del final de su grupo. Si $n>\phi(0)$, existe un único $k\ge1$ con $\phi(k-1)<n\le\phi(k)$: el menor índice cuyo extremo alcanza $n$ existe porque $\phi(k)\ge k$, y la estricta monotonía determina el intervalo. Supongamos que $t_k\to S$ y que, para todo $\varepsilon>0$, existe $K$ tal que
 
 $$
 k\ge K,\quad \phi(k-1)<n\le\phi(k)
 \quad\Longrightarrow\quad |s_n-s_{\phi(k)}|<\varepsilon,
 $$
 
-entonces $s_n\to S$. Para probarlo, hacemos menores que $\varepsilon/2$ tanto la distancia interior como $|t_k-S|$, con un corte común $K\ge1$. Todo $n\ge\phi(K-1)+1$ pertenece a un grupo con $k\ge K$; la desigualdad triangular da $|s_n-S|<\varepsilon$.
+entonces $s_n\to S$. En efecto, para una tolerancia dada elegimos un corte de grupos que haga menores que $\varepsilon/2$ tanto las distancias interiores como $|t_k-S|$, y tomamos un corte común $K\ge1$. Todo índice original $n\ge\phi(K-1)+1$ pertenece a un grupo con $k\ge K$. La desigualdad $|s_n-S|\le|s_n-s_{\phi(k)}|+|t_k-S|<\varepsilon$ controla todos esos índices, incluidos los finales, donde el primer sumando es cero. El control interior es uniforme dentro de cada grupo: no se limita a una posición elegida de antemano.
 
-Una condición suficiente fácil de verificar es que los grupos tengan longitud acotada y $a_n\to0$. Si las longitudes son a lo sumo un natural $M\ge1$, entonces $s_{\phi(k)}-s_n$ suma a lo sumo $M$ términos del propio grupo. Dada $\varepsilon>0$, escogemos $J$ con $|a_j|<\varepsilon/M$ para $j\ge J$. Para $k\ge\max\{1,J\}$, $\phi(k-1)+1\ge k\ge J$; todos los términos interiores pertenecen a esa cola y su suma de magnitudes es menor que $\varepsilon$ cuando el bloque no es vacío. Si es vacío, la distancia es cero. La condición anterior queda probada. No negatividad no interviene: el control es absoluto y finito.
+Una cota común de longitudes permite obtener ese control a partir de $a_n\to0$. Supongamos que cada grupo tiene a lo sumo $M\ge1$ aportes. La diferencia $s_{\phi(k)}-s_n$, para un índice $n$ de ese grupo, suma a lo sumo $M$ de sus aportes. Dada $\varepsilon>0$, escojamos $J$ con $|a_j|<\varepsilon/M$ para $j\ge J$. Si $k\ge\max\{1,J\}$, todo índice del grupo satisface $j\ge\phi(k-1)+1\ge k\ge J$. La triangular finita da una magnitud estrictamente menor que $\varepsilon$ para cada bloque no vacío; para el bloque vacío vale cero. Junto con convergencia de los finales, esto prueba la de todos los totales. El número $M$ impide acumular una cantidad ilimitada de errores pequeños.
 
-El límite cero del término por sí solo tampoco permite cualquier longitud de grupo. En el bloque número $m\ge1$, pongamos $m$ aportes $1/m$ seguidos de $m$ aportes $-1/m$. El bloque empieza en el índice $m(m-1)$ y termina en $m(m+1)-1$. Esos intervalos particionan $\mathbb N$. Los términos tienden a cero; los totales de fin de bloque son cero, mientras los totales tras la mitad positiva valen uno. Agrupar cada bloque produce suma cero, pero la serie original diverge. El grupo puede acumular una excursión fija aunque cada aporte sea pequeño.
+Las longitudes crecientes pueden ocultar excursiones persistentes aun cuando $a_n\to0$. En el bloque $m\ge1$ coloquemos $m$ aportes $1/m$ seguidos de $m$ aportes $-1/m$. Los bloques anteriores contienen $2(1+\cdots+(m-1))=m(m-1)$ aportes, de modo que el bloque ocupa desde $m(m-1)$ hasta $m(m+1)-1$; el siguiente empieza justo después y estos intervalos cubren $\mathbb N$. Cada bloque deja el total cero al terminar, mientras que la mitad positiva alcanza uno en el índice $m^2-1$. Para hacer pequeños todos los aportes tardíos basta escoger $M$ con $1/M<\varepsilon$ y cortar en el comienzo del bloque $M$: después, $|a_n|\le1/M<\varepsilon$. Pero dado cualquier corte de totales podemos elegir un bloque completo posterior y comparar su mitad y su final, separados por uno. Los totales no son de Cauchy. Si agrupamos cada bloque entero, en cambio, todos los totales agrupados valen cero.
 
-![Cada grupo termina con total cero, pero su mitad alcanza uno. Los términos se hacen pequeños y los grupos más largos: conservar sólo sus extremos borra excursiones que impiden convergencia.](../../assets/books/anm/C11/C11-F05.svg){#fig-anm-c11-f05 fig-alt="Cada grupo termina con total cero, pero su mitad alcanza uno. Los términos se hacen pequeños y los grupos más largos: conservar sólo sus extremos borra excursiones que impiden convergencia."}
+![Cada grupo termina con total cero, pero su mitad alcanza uno. Los términos se hacen pequeños y los grupos más largos: conservar sólo sus extremos borra excursiones que impiden convergencia.](../../assets/books/anm/revision-20261016/C11/C11-F05.svg){#fig-anm-c11-f05 fig-alt="Treinta totales discretos suben a uno y vuelven a cero en cinco bloques crecientes. Mitades y extremos se distinguen por formas. Debajo, las magnitudes de los aportes se reducen de uno a un quinto; no se conectan puntos."}
 
-El dibujo muestra el recorrido que la agrupación ocultaría. El control de longitudes de grupo es una manera de impedir que esos índices intermedios se alejen del destino.
+La figura conserva precisamente las posiciones que una agrupación completa de bloques omitiría. La cota de longitud no es necesaria para toda agrupación: una serie ya convergente permite grupos arbitrariamente largos y conserva su suma. Su función en el resultado anterior es suficiente y concreta: junto con término nulo, garantiza que la convergencia observada en los finales se extienda a los índices interiores.
 
 ### Antes de seguir
 
@@ -1936,43 +1938,44 @@ Después del argumento, la [figura 11.5](analisis-para-matematicos-capitulo-11-s
 Después de cada bloque completo el total es cero, porque las dos mitades se compensan exactamente. Dentro del bloque, todos los totales están entre cero y $h_m$, y la cima alcanza $h_m$. Si esas alturas tienden a cero, el encierro controla todos los índices posteriores, no sólo los finales. Si la serie converge, los finales fuerzan límite cero y las cimas deben acercarse a ese mismo límite. La serie converge exactamente cuando desaparecen las excursiones interiores, aunque las longitudes crezcan.
 
 </details>
+
 ## 11.8. Elegir un control y certificar el error
 
 []{#MA-SEC-ANM-01-011-008}
 
-La primera decisión ante una serie consiste en identificar qué sucesión de totales estamos estudiando y qué mecanismo controla sus bloques. Una fórmula telescópica puede dar el resto exacto; una comparación no negativa produce una barrera; el control absoluto garantiza estabilidad sin seguir los signos; el control alternado preserva cancelaciones y entrega un intervalo. Cada mecanismo responde a una dificultad concreta.
+Una prueba de convergencia puede dejar sin calcular la suma y, aun así, proporcionar una aproximación útil. En la armónica alternada conocemos dos totales que la encierran y podemos calcularlos exactamente. La cuestión pasa a ser qué número elegir dentro de ese intervalo y qué error queda garantizado por sus fronteras.
 
-Un certificado útil separa existencia de precisión. Primero se prueba que $s_n\to S$; luego una cota $|S-s_n|\le E_n$ permite decidir si el total calculado cumple la tolerancia. Para asegurar error estrictamente menor que $\varepsilon$ se escoge $E_n<\varepsilon$, no sólo $E_n\le\varepsilon$. Si conocemos $L_n\le S\le U_n$, podemos usar el punto medio $M_n=(L_n+U_n)/2$ como aproximación, con
+Supongamos que ya está probada la existencia de $S$ y disponemos de $L_n\le S\le U_n$. Si usamos un extremo como aproximación, la anchura completa controla su distancia a $S$. El punto medio $M_n=(L_n+U_n)/2$ equilibra las dos distancias a las fronteras y reduce a la mitad el peor error:
 
 $$
 |S-M_n|\le\frac{U_n-L_n}{2}.
 $$
 
-La prueba es finita: restar $M_n$ a las dos desigualdades deja fronteras simétricas. El punto medio es un real construido con dos totales; puede ser una mejor aproximación aunque no sea una suma parcial de la serie.
+Al restar $M_n$ del encierro, obtenemos $-(U_n-L_n)/2\le S-M_n\le(U_n-L_n)/2$, que prueba la cota. Ese promedio es un nuevo real y no tiene por qué coincidir con un total. Por ejemplo, los dos primeros totales geométricos $1$ y $3/2$ tienen promedio $5/4$, que no aparece en su sucesión creciente; esos dos totales distinguen los objetos, aunque no encierren la suma dos. La garantía de error requiere fronteras ya demostradas, no una ventana sugerida sólo por la apariencia de algunos valores.
 
-En la armónica alternada de §11.6, $L_k=s_{2k+1}$, $U_k=s_{2k}$ y $U_k-L_k=1/(2k+2)$. El punto medio tiene error a lo sumo $1/(4k+4)$. Con $k=2$, $s_4=47/60$, $s_5=37/60$, y por tanto
+Para la armónica alternada sí tenemos fronteras certificadas: $L_k=s_{2k+1}$ y $U_k=s_{2k}$, con anchura $1/(2k+2)$. Su promedio tiene error a lo sumo $1/(4k+4)$. En $k=2$, la suma finita $s_4=1-1/2+1/3-1/4+1/5=47/60$ y el aporte siguiente dan $s_5=37/60$. Por ello,
 
 $$
 \frac{37}{60}\le S\le\frac{47}{60},\qquad
 M_2=\frac7{10},\qquad |S-M_2|\le\frac1{12}<\frac1{10}.
 $$
 
-El cálculo usa seis términos para construir ambos extremos; no convierte $7/10$ en el valor exacto de $S$. La precisión se certifica sin usar una fórmula del destino.
+Seis aportes bastan para construir ambos extremos y obtener error menor que $1/10$, sin identificar el valor exacto de $S$. El número $7/10$ es la aproximación elegida: una cota positiva de error permite otros valores de $S$ dentro del encierro y no fuerza igualdad con el promedio.
 
-![El intervalo entre s_5 y s_4 contiene la suma de la armónica alternada. Su punto medio, siete décimos, tiene error a lo sumo un doceavo, menor que un décimo, sin afirmar que sea la suma exacta.](../../assets/books/anm/C11/C11-F06.svg){#fig-anm-c11-f06 fig-alt="El intervalo entre s_5 y s_4 contiene la suma de la armónica alternada. Su punto medio, siete décimos, tiene error a lo sumo un doceavo, menor que un décimo, sin afirmar que sea la suma exacta."}
+![El intervalo entre s_5 y s_4 contiene la suma de la armónica alternada. Su punto medio, siete décimos, tiene error a lo sumo un doceavo, menor que un décimo, sin afirmar que sea la suma exacta.](../../assets/books/anm/revision-20261016/C11/C11-F06.svg){#fig-anm-c11-f06 fig-alt="Intervalo cerrado desde treinta y siete sesentavos hasta cuarenta y siete sesentavos y punto medio siete décimos. La ventana abierta de radio un décimo alrededor del punto medio contiene todo el intervalo; el destino no se dibuja como un punto conocido."}
 
-La mitad de la anchura controla el error del punto medio; la anchura completa controla el de un extremo. Se conserva el origen de cada número para no confundir total, aproximación y suma.
+En general, de $|S-s_n|\le E_n$ sólo obtenemos un error estrictamente menor que $\varepsilon$ si la información adicional lo garantiza; la condición suficiente es $E_n<\varepsilon$. Pedir únicamente $E_n\le\varepsilon$ deja abierta la igualdad. En la geométrica $2^{-n}$, el resto exacto $2^{-n}$ vale $1/16$ en $n=4$ y sólo baja de esa tolerancia en $n=5$, que incorpora seis términos. El origen de los índices y el carácter estricto de la precisión forman parte del certificado.
 
-Las operaciones entre series también requieren una traducción finita. Si las series de $a,b$ convergen a $A,B$ y $\alpha,\beta\in\mathbb R$, una inducción da
+También las operaciones entre series se justifican empezando por los totales finitos. Sean las series de $a,b$ convergentes a $A,B$ y sean $\alpha,\beta\in\mathbb R$. Distribuir los escalares y sumar término a término, o demostrarlo por inducción, proporciona
 
 $$
 \sum_{j=0}^n(\alpha a_j+\beta b_j)
 =\alpha\sum_{j=0}^na_j+\beta\sum_{j=0}^nb_j.
 $$
 
-El álgebra de C06 prueba entonces convergencia y suma $\alpha A+\beta B$. No basta conocer $a_n\to0$ y $b_n\to0$. Si eliminamos un prefijo de longitud $m$, la cola reindexada $c_k=a_{m+k}$ tiene totales $s_{m+n}-P_m$, donde $P_m=\sum_{j=0}^{m-1}a_j$ y $P_0=0$. Su suma es $S-P_m$ cuando la original converge; recíprocamente, convergencia de la cola permite añadir el prefijo. Igual comportamiento de convergencia no significa igualdad numérica de las sumas.
+Las reglas de límites de C06 dan entonces convergencia y suma $\alpha A+\beta B$. Las hipótesis de convergencia son necesarias para esa aplicación: los aportes constantemente uno y constantemente menos uno producen dos series divergentes, aunque al sumarlos término a término obtengamos la serie nula. No existen en ese caso dos sumas reales previas a las que aplicar la regla. Para eliminar un prefijo de longitud $m$, pongamos $c_k=a_{m+k}$ y $P_m=\sum_{j=0}^{m-1}a_j$, con $P_0=0$. Sus totales $t_n$ son $s_{m+n}-P_m$. Si $s_n\to S$, convergen a $S-P_m$; recíprocamente, si la cola converge a $T$, escribir $s_j=P_m+t_{j-m}$ para $j\ge m$ prueba que la original converge a $P_m+T$. El caso $m=0$ devuelve el proceso inicial sin formar un prefijo no vacío.
 
-El laboratorio deja varias maneras de controlar una acumulación, cada una con hipótesis identificables. Una lista finita de valores no decide por sí sola una convergencia infinita; la prueba debe alcanzar todos los bloques posteriores. A la vez, una estimación explícita puede convertir esa prueba en un corte utilizable cuando los términos y los datos de la cota pueden evaluarse. La definición de convergencia sola no proporciona ese procedimiento efectivo.
+Una muestra finita de totales puede orientar la búsqueda de un control, pero no determina lo que vendrá después. Podemos conservar todos los aportes observados y continuar con ceros, obteniendo una serie convergente, o continuar con unos, obteniendo totales que crecen sin barrera. La prueba necesita una regla que alcance la cola completa. Cuando esa regla proporciona además una cota evaluable de resto, podemos convertir la existencia de la suma en un corte útil para la precisión solicitada.
 
 ### Antes de seguir
 

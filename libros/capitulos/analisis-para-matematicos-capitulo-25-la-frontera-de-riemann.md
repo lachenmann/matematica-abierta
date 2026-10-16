@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 25 — La frontera de Riemann
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,7 +28,7 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-25)
 
-La continuidad global permitió integrar, pero no fue una condición necesaria. Ahora seguiremos la oscilación que las particiones pueden confinar y la que persiste en toda anchura. El criterio de C23 será la herramienta para probar cada ejemplo y caracterizar la frontera por niveles positivos.
+Un salto no impide necesariamente integrar: la oscilación puede mantenerse alta en las piezas que lo tocan y, sin embargo, esas piezas pueden ocupar una longitud cada vez menor. Dirichlet y Thomae obligarán a mirar por separado la altura de la oscilación y el lugar donde persiste. El criterio de Darboux permitirá convertir esa distinción en pruebas de integrabilidad y en una caracterización por niveles positivos.
 
 C23 es el prerrequisito central. Completitud/arquimedianidad de C03, vecindades/cerrados de C04, geométricas de C06, continuidad de C14 y compacto de C16 son interfaces previas declaradas. Normalización racional, paridad y raíz2 pertenecen al toolbox aritmético heredado; densidad se reconstruye antes de usarla. No se construye ni se usa aquí medida o integral de Lebesgue.
 
@@ -36,7 +36,7 @@ C23 es el prerrequisito central. Completitud/arquimedianidad de C03, vecindades/
 
 []{#MA-SEC-ANM-01-025-001}
 
-C23 definió integrabilidad mediante una brecha que debe poder hacerse arbitrariamente pequeña. La continuidad global fue una condición suficiente; ahora investigaremos exactamente qué parte de esa condición puede faltar. Fijamos $a<b$ y una función acotada $f:[a,b]\to\mathbb R$, con $|f|\le B$, $B\ge0$.
+En la brecha de Darboux, cada oscilación se multiplica por la anchura de su pieza. Una gran oscilación en pocas piezas cortas puede aportar poco al total, mientras una oscilación menor que persista sobre toda la longitud puede impedir que desaparezca. Fijemos $a<b$ y una función acotada $f:[a,b]\to\mathbb R$, con $|f|\le B$, $B\ge0$, para cuantificar ambas contribuciones.
 
 **R1 — Presupuesto ponderado.** Para una partición $P$ con piezas cerradas $I_i$ y anchuras $\Delta_i>0$, escribimos $\omega_i=\sup f(I_i)-\inf f(I_i)$, de modo que
 $$G(f,P)=U(f,P)-L(f,P)=\sum_i\omega_i\Delta_i.$$
@@ -49,11 +49,11 @@ La primera desigualdad retiene sólo términos malos; la segunda acota los bueno
 $$\Omega_f(x)=\inf_{r>0}\omega(f,V_r(x)).$$
 El conjunto de oscilaciones es no vacío y está en $[0,2B]$; completitud asegura el ínfimo. No suponemos un radio mínimo ni un extremo alcanzado. Los radios menores no aumentan oscilación por restricción.
 
-Se cumple $\Omega_f(x)=0$ si y sólo si $f$ es continua relativamente al segmento en $x$. Si es continua, para una tolerancia $\varepsilon/3$ todos los valores de una vecindad están a distancia menor de ella respecto de $f(x)$. Dos valores difieren menos que $2\varepsilon/3$, y tomando supremo e ínfimo la oscilación es a lo sumo ese número. Como $\varepsilon$ es arbitraria, el ínfimo es cero. Recíprocamente, si el ínfimo es cero, para cada $\varepsilon>0$ existe un radio con oscilación menor que $\varepsilon$. Como el valor central está entre las cotas, cualquier valor de esa vecindad está a distancia menor que $\varepsilon$ de él. Es la definición de continuidad.
+La igualdad $\Omega_f(x)=0$ equivale a continuidad relativa de $f$ en $x$. Si $f$ es continua, elegimos una vecindad donde cada valor dista de $f(x)$ menos que $\varepsilon/3$. Dos valores de ella difieren menos que $2\varepsilon/3$; al tomar las cotas extremas la oscilación es a lo sumo ese número. Como podemos hacerlo para todo $\varepsilon>0$, el ínfimo es cero. Recíprocamente, un ínfimo cero proporciona para cada $\varepsilon>0$ un radio cuya oscilación es menor que $\varepsilon$. El valor central pertenece a la misma banda que todos los demás, así que su distancia a cualquiera de ellos es menor que $\varepsilon$. Recuperamos la condición de continuidad.
 
-Para cada $\eta>0$ ponemos $D_\eta=\{x:\Omega_f(x)\ge\eta\}$. Es cerrado relativo: si $\Omega_f(x)<\eta$, hay una vecindad de oscilación menor que $\eta$. Para centros suficientemente próximos a $x$, una vecindad menor queda dentro de ella y su oscilación puntual sigue menor que $\eta$. Su complemento es abierto relativo. C16 hace compacto a $D_\eta$. Estos conjuntos distinguen amplitudes de discontinuidad; no son una lista de muestras.
+Para cada $\eta>0$, sea $D_\eta=\{x:\Omega_f(x)\ge\eta\}$. Veremos que es cerrado relativo. Si $\Omega_f(x)<\eta$, alguna vecindad $V_r(x)$ tiene oscilación menor que $\eta$. Todo centro $y$ suficientemente próximo a $x$ admite una vecindad más pequeña contenida en $V_r(x)$; por restricción su oscilación puntual también es menor que $\eta$. Así el complemento de $D_\eta$ es abierto relativo. C16 hace compacto a este cerrado del segmento. Cada nivel separa los puntos según una amplitud que no desaparece al reducir el radio.
 
-![Dos piezas de anchuras2/5 y3/5 con oscilaciones4/5 y1/5 aportan8/25 y3/25 a la brecha, total11/25. Para nivel1/2, la longitud mala es2/5 y su contribución mínima1/5.](../../assets/books/anm/C25/C25-F01.svg){#fig-anm-c25-f01 fig-alt="Dos piezas de anchuras2/5 y3/5 con oscilaciones4/5 y1/5 aportan8/25 y3/25 a la brecha, total11/25. Para nivel1/2, la longitud mala es2/5 y su contribución mínima1/5."}
+![Dos piezas de anchuras2/5 y3/5 con oscilaciones4/5 y1/5 aportan8/25 y3/25 a la brecha, total11/25. Para nivel1/2, la longitud mala es2/5 y su contribución mínima1/5.](../../assets/books/anm/revision-20261016/C25/C25-F01.svg){#fig-anm-c25-f01 fig-alt="Dos piezas de anchuras2/5 y3/5 con oscilaciones4/5 y1/5 aportan8/25 y3/25 a la brecha, total11/25. Para nivel1/2, la longitud mala es2/5 y su contribución mínima1/5."}
 
 ### Microcontroles
 
@@ -257,19 +257,20 @@ Explica por qué un valor excepcional en un nodo puede afectar dos piezas, aunqu
 Las piezas $[x_{i-1},x_i]$ y $[x_i,x_{i+1}]$ contienen el nodo compartido $x_i$. Si la tasa es cero salvo por altura uno en ese nodo, las dos piezas tienen ínfimo cero y supremo uno. Su contribución a la brecha es la suma de sus dos anchuras. No aparece un término separado por el punto: su efecto está en las imágenes de las piezas que lo incluyen. Al afinar alrededor del nodo esas anchuras pueden hacerse pequeñas, y la invariancia ante cambios finitos de C23 conserva el valor integral.
 
 </details>
+
 ## 25.2. Discontinuidades que caben en collares
 
 []{#MA-SEC-ANM-01-025-002}
 
-Un salto puede mantener una oscilación grande en las piezas que lo tocan, pero esas piezas pueden tener longitud pequeña. El argumento necesita separar amplitud y anchura.
+Alrededor de un número finito de discontinuidades podemos reservar intervalos cortos y admitir allí la barrera global $2B$. Fuera de ellos, la continuidad reducirá la oscilación. Para sumar ambas estimaciones necesitaremos una sola partición que distinga las dos regiones.
 
 **R2 — Un número finito de discontinuidades.** Una función acotada en $[a,b]$ y continua fuera de un conjunto finito $E$ es integrable.
 
 Dada $\varepsilon>0$, si $B=0$ la función es cero y el resultado es inmediato. Para cubrir también ese caso sin dividir por cero, fijemos $\eta=\varepsilon/[2(b-a)]$ y $\sigma=\varepsilon/[4(B+1)]$. Si $E$ tiene $k$ puntos, cada uno puede cubrirse por un intervalo abierto de radio $r=\sigma/[4(k+1)]$. Su unión $O$ tiene una cobertura finita cuya suma de longitudes es $2kr<\sigma$. Con $E$ vacío tomamos $O$ vacío.
 
-Para $x\notin O$, la continuidad proporciona un radio $r_x>0$ con oscilación menor que $\eta$ sobre $V_{r_x}(x)$: basta controlar diferencias con el centro por $\eta/3$. Para $x\in O$, existe un radio con $V_{r_x}(x)\subseteq O$. Para evitar una selección infinita, usamos todos los pares válidos $(x,r)$ de esos dos tipos. Sus vecindades de radio $r/2$ cubren $[a,b]$; C16 permite extraer finitos pares. Sea $\delta$ el mínimo positivo de sus radios medios.
+Fuera de $O$, la continuidad da un radio $r_x>0$ con oscilación menor que $\eta$ sobre $V_{r_x}(x)$: basta controlar la distancia de cada valor al central por $\eta/3$. Dentro de $O$, la apertura da un radio cuya vecindad queda contenida en $O$. Consideramos todos los pares centro/radio que satisfacen alguna de estas condiciones; sus vecindades de radio medio cubren $[a,b]$. Así no hace falta seleccionar un radio para cada centro antes de usar C16. Un subcubrimiento finito proporciona el mínimo positivo de esos radios medios, que llamamos $\delta$.
 
-Tomemos una partición uniforme de malla menor que $\delta$. Cada pieza tiene un punto en alguna de las vecindades de radio medio. Todos sus demás puntos quedan dentro de la correspondiente vecindad grande, pues su distancia al centro es menor que $\delta+r/2\le r$. Así toda pieza queda contenida en $O$ o tiene oscilación menor que $\eta$.
+Tomamos una partición uniforme de malla menor que $\delta$. Dada una pieza, elegimos un punto suyo y una vecindad de radio medio que lo contenga. Si el radio grande es $r$, cualquier otro punto de la pieza dista de ese centro menos que $\delta+r/2\le r$. Toda la pieza queda entonces en la vecindad grande: está contenida en $O$ o tiene oscilación menor que $\eta$. La escala común ha convertido la información local en una alternativa válida para cada pieza completa.
 
 Las piezas del primer tipo tienen suma de anchuras menor que $\sigma$. El hecho finito usado aquí se demuestra cortando en todos los extremos de la cobertura de $O$: cada celda cubierta contribuye una sola vez a la unión y al menos una vez a la suma de longitudes de los intervalos que la cubren. Por tanto la longitud total de piezas con interiores disjuntos contenidas en esa unión es a lo sumo dicha suma. R1 da
 $$G(f,P)\le\eta(b-a)+2B\sigma
@@ -278,7 +279,7 @@ El criterio de C23 concluye. No se presume uniformidad local junto a los saltos:
 
 En $[0,1]$, el escalón de corte $c=1/2$ tiene brecha a lo sumo igual a la anchura total de piezas que tocan ese corte. Insertando $c-r,c,c+r$, con $0<r<1/2$, las piezas que tocan el corte suman $2r$, una cota de la longitud mala. Con el valor nodal uno, la pieza derecha es constante y sólo la izquierda oscila: $L=1/2$, $U=1/2+r$ y la brecha exacta es $r\le2r$. El valor del nodo afecta ambos lados por ser piezas cerradas; C23 asegura que cambiarlo no altera el valor integral.
 
-![Escalón de corte1/2, valor nodal1, radio r=1/10. Los collares tocan dos piezas de longitud total1/5, pero la derecha es constante: L1/2,U3/5,brecha1/10.](../../assets/books/anm/C25/C25-F02.svg){#fig-anm-c25-f02 fig-alt="Escalón de corte1/2, valor nodal1, radio r=1/10. Los collares tocan dos piezas de longitud total1/5, pero la derecha es constante: L1/2,U3/5,brecha1/10."}
+![Escalón de corte1/2, valor nodal1, radio r=1/10. Los collares tocan dos piezas de longitud total1/5, pero la derecha es constante: L1/2,U3/5,brecha1/10.](../../assets/books/anm/revision-20261016/C25/C25-F02.svg){#fig-anm-c25-f02 fig-alt="Escalón de corte1/2, valor nodal1, radio r=1/10. Los collares tocan dos piezas de longitud total1/5, pero la derecha es constante: L1/2,U3/5,brecha1/10."}
 
 ### Microcontroles
 
@@ -480,11 +481,12 @@ Verifica que η=ε/[2(b−a)] y σ=ε/[4(B+1)] aseguran G<ε bajo la clasificaci
 Sean $a<b$, $|f|\le B$ y $\varepsilon>0$. Con $\eta=\varepsilon/[2(b-a)]$ y $\sigma=\varepsilon/[4(B+1)]$, la clasificación de R2 da longitud mala menor que $\sigma$. La cota de R1 implica $G\le\eta(b-a)+2B\sigma=\varepsilon/2+B\varepsilon/[2(B+1)]$. Como $B/(B+1)<1$, el último número es estrictamente menor que $\varepsilon$. Las desigualdades no estrictas obtenidas al sumar no agotan el margen. Si $B=0$, la función y la brecha son cero; los mismos parámetros permanecen definidos.
 
 </details>
+
 ## 25.3. La obstrucción densa de Dirichlet
 
 []{#MA-SEC-ANM-01-025-003}
 
-Las discontinuidades pueden ser tan persistentes que ninguna longitud pequeña las confine. Para probarlo hay que encontrar valores distintos en toda pieza, no sólo en muchos puntos dibujados.
+Para que una oscilación impida toda reducción de la brecha, debe persistir en cualquier pieza de anchura positiva. Construiremos ese caso mediante valores racionales e irracionales. Antes de calcular los extremos locales necesitamos probar que ambos tipos de entradas aparecen en todo intervalo abierto.
 
 **Densidad que vamos a gastar.** Entre dos reales $u<v$ existe un racional. Por arquimedianidad elija un natural positivo $n$ con $n(v-u)>1$. El principio del menor natural, después de trasladar $nu$ por un entero positivo si hace falta, proporciona un entero $k$ con $nu<k\le nu+1<nv$. Entonces $k/n\in(u,v)$. Este argumento es el lema de parte entera construido por mínimo natural; no presupone un punto racional obtenido por aproximación numérica.
 
@@ -498,9 +500,9 @@ En cada vecindad relativa hay ambos valores, luego $\Omega_d(x)=1$ en todo el do
 
 El contrato de sumas etiquetadas también falla directamente: dada cualquier malla tan pequeña como se desee, elegir etiquetas racionales en las finitísimas piezas produce suma $b-a$, e irracionales produce suma cero. Un mismo candidato no puede quedar a distancia menor que $(b-a)/3$ de ambos. Se instancian sólo existencias finitas por inducción, no una selección sobre todas las particiones a la vez.
 
-Un dibujo con puntos racionales es una muestra finita de valores; no puede representar ni probar la densidad completa. La prueba anterior es la que certifica las cotas de cada intervalo.
+La densidad demostrada es la que permite fijar las cotas exactas en cada pieza de cualquier partición. Una muestra finita de puntos racionales e irracionales no controla los intervalos que faltan, por más abundante que parezca en un dibujo.
 
-![Dirichlet en\[−1,2\]: densidad racional e irracional prueba m0,M1 en toda pieza. Toda partición tiene L0,U3 y brecha3; el gráfico representa bandas certificadas, no una muestra que pruebe densidad.](../../assets/books/anm/C25/C25-F03.svg){#fig-anm-c25-f03 fig-alt="Dirichlet en\[−1,2\]: densidad racional e irracional prueba m0,M1 en toda pieza. Toda partición tiene L0,U3 y brecha3; el gráfico representa bandas certificadas, no una muestra que pruebe densidad."}
+![Dirichlet en\[−1,2\]: densidad racional e irracional prueba m0,M1 en toda pieza. Toda partición tiene L0,U3 y brecha3; el gráfico representa bandas certificadas, no una muestra que pruebe densidad.](../../assets/books/anm/revision-20261016/C25/C25-F03.svg){#fig-anm-c25-f03 fig-alt="Dirichlet en[−1,2]: densidad racional e irracional prueba m0,M1 en toda pieza. Toda partición tiene L0,U3 y brecha3; el gráfico representa bandas certificadas, no una muestra que pruebe densidad."}
 
 ### Microcontroles
 
@@ -702,15 +704,16 @@ Explica por qué los puntos dibujados de Dirichlet no justifican sus cotas local
 Una representación de Dirichlet dibuja finitísimas entradas de cada tipo. Siempre puede elegirse un intervalo pequeño que evite todas las entradas dibujadas. El cálculo de los extremos requiere, sin embargo, una altura cero y una altura uno en cada pieza no degenerada real. Las pruebas aritméticas construyen esos testigos para un intervalo arbitrario, sin depender de una resolución gráfica. Sólo después de establecer esa densidad puede concluirse que todas las oscilaciones valen uno.
 
 </details>
+
 ## 25.4. Thomae: alturas pequeñas y picos finitos
 
 []{#MA-SEC-ANM-01-025-004}
 
-Tener discontinuidades en todos los racionales no basta para impedir la integral. La amplitud de los picos puede disminuir al aumentar su complejidad aritmética.
+Thomae también será discontinua en todos los racionales, pero su altura dependerá del denominador reducido. A partir de una altura positiva sólo quedarán finitísimos picos por aislar; el resto se controlará por una barrera pequeña válida en todas las entradas.
 
 **R4 — Función de Thomae.** Sobre $[0,1]$, definimos $T(x)=0$ si $x$ es irracional; si $x=p/q$ en su forma reducida única, $q\ge1$, ponemos $T(x)=1/q$. En particular $T(0)=T(1)=1$, por denominador uno. La normalización racional heredada asegura una salida única; $0\le T\le1$.
 
-Para un entero $N\ge1$, el conjunto $E_N$ de racionales de denominador reducido a lo sumo $N$ es finito. Está contenido en los valores $p/q$ con $1\le q\le N$ y $0\le p\le q$, a lo sumo $\sum_{q=1}^N(q+1)=N(N+3)/2$ candidatos. Repeticiones sólo disminuyen cardinalidad. Todo pico mayor que $1/N$ pertenece a ese conjunto, y fuera de él $T\le1/(N+1)$.
+Fijado un entero $N\ge1$, los racionales de denominador reducido a lo sumo $N$ forman un conjunto finito $E_N$. Para cada denominador $q$ entre $1$ y $N$, basta examinar los numeradores $0\le p\le q$. Hay a lo sumo $\sum_{q=1}^N(q+1)=N(N+3)/2$ candidatos; las fracciones repetidas sólo reducen esa cantidad. Fuera de $E_N$, un racional tiene denominador al menos $N+1$ y un irracional tiene altura cero, de modo que $T\le1/(N+1)$ en todo el complemento. En particular, todo pico mayor que $1/N$ pertenece a $E_N$.
 
 **Continuidad exacta.** En un irracional $x$, dado $\varepsilon>0$, elija $N$ con $1/(N+1)<\varepsilon$. Como $E_N$ es finito y no contiene $x$, la mínima distancia a él es positiva. Un radio menor evita todos sus picos, y allí $|T(t)-T(x)|=T(t)\le1/(N+1)<\varepsilon$. Si el conjunto fuese vacío cualquier radio serviría. En un racional $x=p/q$, cualquier vecindad contiene un irracional de valor cero, a distancia de salida $1/q$ respecto del centro. La tolerancia $1/(2q)$ refuta continuidad, también relativamente en los bordes. Así sus discontinuidades son exactamente los racionales. Además, en $x=p/q$ podemos evitar el conjunto finito $E_q\setminus\{x\}$ con un radio positivo. En esa vecindad todos los valores son a lo sumo $1/q$ y existe un irracional de valor cero, mientras el centro vale $1/q$. Su oscilación es $1/q$; toda vecindad contiene esos dos valores y tiene oscilación al menos $1/q$. Por ello $\Omega_T(x)=1/q$, y en los irracionales es cero.
 
@@ -722,7 +725,7 @@ Cada pieza contiene un irracional, así $L(T,P)=0$. El criterio de Darboux prueb
 
 Para $N=4$, los picos que deben aislarse están en $0,1/4,1/3,1/2,2/3,3/4,1$; fuera de ellos la altura es a lo sumo $1/5$. Esta cuenta finita sirve de certificado parcial, no de dibujo del conjunto completo de discontinuidades.
 
-![Thomae en\[0,1\]: panel izquierdo muestra sólo racionales de denominador≤16. Panel derecho aísla E4, siete picos; todo punto omitido de E4 tiene altura≤1/5. Los puntos dibujados no son toda la función.](../../assets/books/anm/C25/C25-F04.svg){#fig-anm-c25-f04 fig-alt="Thomae en\[0,1\]: panel izquierdo muestra sólo racionales de denominador≤16. Panel derecho aísla E4, siete picos; todo punto omitido de E4 tiene altura≤1/5. Los puntos dibujados no son toda la función."}
+![Thomae en\[0,1\]: panel izquierdo muestra sólo racionales de denominador≤16. Panel derecho aísla E4, siete picos; todo punto omitido de E4 tiene altura≤1/5. Los puntos dibujados no son toda la función.](../../assets/books/anm/revision-20261016/C25/C25-F04.svg){#fig-anm-c25-f04 fig-alt="Thomae en[0,1]: panel izquierdo muestra sólo racionales de denominador≤16. Panel derecho aísla E4, siete picos; todo punto omitido de E4 tiene altura≤1/5. Los puntos dibujados no son toda la función."}
 
 ### Microcontroles
 
@@ -924,11 +927,12 @@ Compara Thomae y Dirichlet sin usar un criterio de medida.
 Dirichlet mantiene las alturas cero y uno en toda vecindad; su oscilación puntual es uno y su brecha en $[0,1]$ es siempre uno. Thomae vale cero en los irracionales y en los racionales tiene altura inversa al denominador reducido. Para cada nivel positivo sólo finitísimos picos lo alcanzan. Una cobertura corta de esos picos limita su aporte superior, y la cota universal de los demás limita el resto. Se obtienen sumas superiores arbitrariamente pequeñas y sumas inferiores cero, de modo que Thomae integra cero. Aunque ambas tienen discontinuidades en todos los racionales, sus amplitudes en vecindades pequeñas son diferentes. El argumento utiliza denominadores y coberturas finitas, sin un criterio de medida.
 
 </details>
+
 ## 25.5. Un criterio exacto por niveles
 
 []{#MA-SEC-ANM-01-025-005}
 
-Podemos expresar la frontera exactamente con los conjuntos compactos $D_\eta$ de R1, usando sólo coberturas finitas por intervalos y sumas de longitudes.
+Los ejemplos anteriores sugieren examinar, para cada amplitud positiva, el conjunto donde esa oscilación persiste en cualquier radio. Los conjuntos $D_\eta$ permiten hacerlo sin exigir que todas las discontinuidades puedan cubrirse de una vez con longitud pequeña. Bastarán coberturas finitas de cada nivel por separado.
 
 **Contenido finito nulo.** Diremos que un conjunto $E\subseteq[a,b]$ tiene esta propiedad si para cada $\sigma>0$ admite una cobertura por finitísimos intervalos abiertos con extremos reales finitos cuya suma de longitudes es menor que $\sigma$. El vacío admite la cobertura vacía. No estamos definiendo una medida, ni declarando aditividad numerable. Un conjunto finito tiene la propiedad por collares; el segmento completo no la tiene, porque la longitud de una unión finita que lo cubre es al menos $b-a$, por el corte en extremos y subaditividad finita de R2.
 
@@ -944,11 +948,11 @@ Los nodos de borde también se cubren por intervalos reales, aunque parte de ell
 
 **Suficiencia.** Para $\varepsilon>0$ tome $\eta=\varepsilon/[2(b-a)]$ y $\sigma=\varepsilon/[4(B+1)]$. Por hipótesis cubra $D_\eta$ con finitísimos abiertos de longitud total menor que $\sigma$ y llame $O$ a su unión. Para un centro fuera de $O$, $\Omega_f(x)<\eta$, de modo que existe una vecindad con oscilación menor que $\eta$. Para un centro dentro de $O$, hay una vecindad contenida en $O$.
 
-Use todos los pares centro/radio válidos, cúbralos por vecindades de radio medio y extraiga un subcubrimiento finito mediante C16, exactamente como en R2. Una partición de malla menor que el mínimo radio medio tiene cada pieza dentro de $O$ o dentro de una vecindad buena. Las del primer tipo suman anchura menor que $\sigma$ por subaditividad finita; las otras tienen oscilación menor que $\eta$. El mismo cálculo de R2 da $G(f,P)<\varepsilon$. C23 concluye.
+Las vecindades de radio medio de todos esos pares válidos cubren el segmento. C16 da un subcubrimiento finito y el mínimo de sus radios medios proporciona una escala común. Como en R2, cada pieza de malla menor que ella queda dentro de $O$ o de una vecindad con oscilación menor que $\eta$. Las piezas del primer tipo suman anchura menor que $\sigma$ por la subaditividad finita; las restantes se estiman con $\eta$. El presupuesto de R1 y las elecciones de $\eta,\sigma$ dan el mismo cálculo de R2: $G(f,P)<\varepsilon$. El criterio de C23 concluye la integrabilidad.
 
 Los niveles compactos, no la unión de todas las discontinuidades, reciben el certificado finito. Para Thomae, $D_\eta=\{p/q:1/q\ge\eta\}$ es finito cuando $\eta>0$, aunque la unión de sus niveles positivos sea densa. Para Dirichlet, $D_\eta=[a,b]$ si $0<\eta\le1$, y falla la cobertura pequeña. No se ha desarrollado aquí el criterio de Lebesgue basado en medida.
 
-![Para Thomae, D_(1/4)=E4 es finito y admite collares pequeños. Su unión de niveles positivos contiene todos los racionales, densa; la banda inferior sólo representa una muestra, sin convertirla en un conjunto finito.](../../assets/books/anm/C25/C25-F05.svg){#fig-anm-c25-f05 fig-alt="Para Thomae, D_(1/4)=E4 es finito y admite collares pequeños. Su unión de niveles positivos contiene todos los racionales, densa; la banda inferior sólo representa una muestra, sin convertirla en un conjunto finito."}
+![Para Thomae, D_(1/4)=E4 es finito y admite collares pequeños. Su unión de niveles positivos contiene todos los racionales, densa; la banda inferior sólo representa una muestra, sin convertirla en un conjunto finito.](../../assets/books/anm/revision-20261016/C25/C25-F05.svg){#fig-anm-c25-f05 fig-alt="Para Thomae, D_(1/4)=E4 es finito y admite collares pequeños. Su unión de niveles positivos contiene todos los racionales, densa; la banda inferior sólo representa una muestra, sin convertirla en un conjunto finito."}
 
 ### Microcontroles
 
@@ -1150,11 +1154,12 @@ Verifica el contenido finito nulo del vacío y de conjuntos finitos; explica el 
 El vacío tiene una cobertura vacía cuya suma de longitudes es cero para cualquier tolerancia positiva. Para un conjunto de $k>0$ puntos, los collares de radio $\sigma/[4(k+1)]$ dan suma $\sigma k/[2(k+1)]<\sigma$. Así los conjuntos finitos tienen contenido finito nulo. Si la cota absoluta es $B=0$, entonces $f=0$, todas las oscilaciones puntuales son cero y todos los niveles positivos son vacíos. La brecha también es cero. En la suficiencia, el parámetro $\sigma=\varepsilon/[4(B+1)]$ sigue definido y positivo; no se requiere dividir por $B$.
 
 </details>
+
 ## 25.6. Un soporte infinito de longitud evanescente
 
 []{#MA-SEC-ANM-01-025-006}
 
-Las discontinuidades de una integrable tampoco están obligadas a ser un conjunto finito ni a presentarse sólo como picos aritméticos. Un soporte geométrico infinito puede confinarse con longitud cada vez menor.
+También podemos obtener integral cero concentrando una función acotada en un soporte geométrico infinito. La propiedad útil será poder encerrar todo ese soporte en una cobertura finita de longitud arbitrariamente pequeña. La compacidad permitirá ajustar las particiones a la cobertura.
 
 **Lema de soporte compacto.** Sea $E\subseteq[a,b]$ compacto y de contenido finito nulo. Si $f$ es acotada, no negativa y cero fuera de $E$, entonces es integrable y su integral es cero. Cubra $E$ con una unión abierta $O$ de longitud total menor que $\varepsilon/(B+1)$. Para todos los pares $(x,r)$ con $x\in E$ y $V_r(x)\subseteq O$, los radios medios cubren $E$; extraiga finitos por compacidad. Si $E$ es vacío, $f=0$. Si no, su mínimo radio medio $\delta>0$ tiene esta propiedad: toda pieza de malla menor que $\delta$ que toque $E$ queda dentro de $O$. Las demás tienen supremo cero. Las primeras suman anchura menor que la cobertura, luego $0\le U(f,P)<B\varepsilon/(B+1)<\varepsilon$ si $B>0$; con $B=0$ es cero. Así $G\le U<\varepsilon$ y el encierro obliga al valor cero. Se controlan también etiquetas en extremos del soporte.
 
@@ -1168,7 +1173,7 @@ La indicadora $\mathbf1_C$ es discontinua exactamente en $C$. Fuera de él, la a
 
 El conjunto es infinito: por ejemplo todos los extremos $3^{-n}$, $n\ge1$, sobreviven en $C$ y son distintos. No necesitamos demostrar aquí su cardinalidad exacta. Lo que decide esta integral son coberturas finitas de longitud pequeña, no el número de puntos. Una etapa $C_n$ no es el conjunto final; sus intervalos completos no se deben dibujar como si todos sus puntos sobrevivieran.
 
-![Etapas C0 a C4 de la construcción ternaria: cada una envuelve C y tiene2^n componentes de3^(−n), total(2/3)^n. La figura no dibuja toda la intersección ni afirma que cada punto de una etapa sobreviva.](../../assets/books/anm/C25/C25-F06.svg){#fig-anm-c25-f06 fig-alt="Etapas C0 a C4 de la construcción ternaria: cada una envuelve C y tiene2^n componentes de3^(−n), total(2/3)^n. La figura no dibuja toda la intersección ni afirma que cada punto de una etapa sobreviva."}
+![Etapas C0 a C4 de la construcción ternaria: cada una envuelve C y tiene2^n componentes de3^(−n), total(2/3)^n. La figura no dibuja toda la intersección ni afirma que cada punto de una etapa sobreviva.](../../assets/books/anm/revision-20261016/C25/C25-F06.svg){#fig-anm-c25-f06 fig-alt="Etapas C0 a C4 de la construcción ternaria: cada una envuelve C y tiene2^n componentes de3^(−n), total(2/3)^n. La figura no dibuja toda la intersección ni afirma que cada punto de una etapa sobreviva."}
 
 ### Microcontroles
 
@@ -1370,6 +1375,7 @@ Demuestra el paso de malla del lema de soporte compacto sin ignorar nodos.
 Sea $E$ no vacío compacto y $O$ una unión abierta que lo cubre. Para todos los pares $(c,r)$ con $c\in E$, $r>0$ y $V_r(c)\subseteq O$, las vecindades $V_{r/2}(c)$ cubren $E$. Compacidad extrae finitísimos pares y da $\delta=\min_j r_j/2>0$. Si una pieza de malla menor que $\delta$ toca $E$ en $t$, elegimos una vecindad media que contenga a $t$. Para cualquier entrada $s$ de esa pieza, $|s-c_j|\le|s-t|+|t-c_j|<\delta+r_j/2\le r_j$, así toda la pieza está en $O$. El razonamiento funciona también cuando $t$ es un nodo de borde o compartido, y entonces controla ambas piezas que lo toquen. Sus interiores disjuntos permiten acotar la suma de anchuras por la longitud total de la cobertura. Si $E$ es vacío, no hay piezas afectadas.
 
 </details>
+
 ## 25.7. Cambiar muchos valores y aproximar
 
 []{#MA-SEC-ANM-01-025-007}
@@ -1381,7 +1387,7 @@ $$\omega(f,I)\le\omega(g,I)+2\delta,\qquad
 G(f,P)\le G(g,P)+2\delta(b-a).$$
 En efecto, para dos entradas cualesquiera la diferencia de valores de $f$ se acota por la correspondiente de $g$ más $2\delta$; tomar cotas extremas prueba la primera desigualdad, y ponderar por anchuras la segunda. Por tanto, si para toda $\delta>0$ existe una integrable $g$ con esa cota global, $f$ es integrable: dada $\varepsilon>0$, use $\delta=\varepsilon/[4(b-a)]$, y una partición de $g$ con brecha menor que $\varepsilon/2$.
 
-Después de demostrar existencia, orden y linealidad dan $|\int f-\int g|\le\delta(b-a)$. La frase después importa: no puede usarse ese error entre integrales para justificar una integral aún inexistente.
+Una vez probada la integrabilidad de $f$, el orden y la linealidad dan $|\int f-\int g|\le\delta(b-a)$. El argumento de brechas ha sido necesario antes: la estimación entre valores integrales sólo tiene sentido cuando ambas integrales existen.
 
 Para Thomae, defina $T_N=T$ en $E_N$ y cero fuera. Su soporte es finito, por lo que es integrable de valor cero. La cota $|T-T_N|\le1/(N+1)$ vale para toda entrada. R7 da otra prueba de integrabilidad y del valor cero de $T$. No es sólo que para cada entrada se encuentre un índice: un único $N$ controla simultáneamente todas las entradas con la tolerancia fijada.
 
@@ -1391,7 +1397,7 @@ Para todo $N$ existen racionales de denominador mayor que él: el conjunto de ra
 
 Thomae y cero difieren en todos los racionales, aunque sus integrales coinciden; Dirichlet y cero también difieren sólo allí, pero la primera ni siquiera es integrable. Así modificaciones en una familia infinita dada requieren un argumento nuevo. Las sucesiones de funciones tendrán su teoría en C26/C27; este contraste sólo establece las estimaciones y el fallo concretos que motivan ese paso.
 
-![Truncar Thomae en E_N conserva integral0 y error global≤1/(N+1). Los indicadores de E_N también integran0 y se estabilizan entrada por entrada en Dirichlet, pero mantienen error global1.](../../assets/books/anm/C25/C25-F07.svg){#fig-anm-c25-f07 fig-alt="Truncar Thomae en E_N conserva integral0 y error global≤1/(N+1). Los indicadores de E_N también integran0 y se estabilizan entrada por entrada en Dirichlet, pero mantienen error global1."}
+![Truncar Thomae en E_N conserva integral0 y error global≤1/(N+1). Los indicadores de E_N también integran0 y se estabilizan entrada por entrada en Dirichlet, pero mantienen error global1.](../../assets/books/anm/revision-20261016/C25/C25-F07.svg){#fig-anm-c25-f07 fig-alt="Truncar Thomae en E_N conserva integral0 y error global≤1/(N+1). Los indicadores de E_N también integran0 y se estabilizan entrada por entrada en Dirichlet, pero mantienen error global1."}
 
 ### Microcontroles
 
@@ -1593,11 +1599,12 @@ Compara dos modificaciones de la función cero en los racionales y precisa sus r
 Sobre $[0,1]$, sustituimos las alturas de la tasa cero en los racionales de dos maneras. Si ponemos en cada fracción reducida $p/q$ la altura $1/q$, obtenemos Thomae, integrable con valor cero por la separación de picos grandes y alturas pequeñas. Si ponemos altura uno en todos los racionales, obtenemos Dirichlet, no integrable por su brecha fija. En ambos casos el conjunto modificado es la misma colección numerable de racionales. El resultado de cambios finitos de C23 no decide ninguna modificación infinita por sí solo; las amplitudes y su distribución requieren una prueba nueva.
 
 </details>
+
 ## 25.8. La frontera y el paso que todavía falta
 
 []{#MA-SEC-ANM-01-025-008}
 
-La frontera demostrada permite separar tres preguntas: si las cotas locales existen, si sus brechas pueden colapsar y qué información puntual conserva el valor obtenido.
+La acotación permite formar los extremos locales, pero sólo la reducción de sus brechas permite integrar. El criterio por niveles separa esas dos obligaciones y muestra por qué conjuntos densos de discontinuidades pueden tener comportamientos diferentes.
 
 **R8 — Balance de la teoría disponible.** En un cerrado no degenerado, integrabilidad de Riemann exige acotación, como probó C23 desde su contrato universal de etiquetas. Con acotación, R5 caracteriza exactamente la existencia mediante contenido finito nulo de cada nivel positivo de oscilación. No exige ausencia de discontinuidades, ni que el conjunto completo de ellas admita una cobertura finita de longitud arbitrariamente pequeña.
 
@@ -1605,15 +1612,13 @@ En particular los racionales de $[0,1]$ no tienen contenido finito nulo. Si una 
 
 Tampoco basta limitar el número de discontinuidades sin verificar acotación. En $[0,1]$, declare $h(0)=0$ y $h(x)=1/x$ para $x>0$. Es continua fuera de cero, pero no acotada: para cualquier $B>0$ una entrada positiva menor que $1/(B+1)$ tiene valor mayor que $B$. No tiene integral de Riemann en el sentido propio de C23. No desarrollamos aquí una integral impropia ni inferimos su valor por un proceso distinto.
 
-**Qué informa un dibujo y qué necesita prueba.** Una muestra finita de picos no certifica que todas las alturas omitidas sean pequeñas; la cota aritmética $1/(N+1)$ sí lo hace. Una etapa de Cantor no es su intersección; su longitud $(2/3)^n$ sólo es útil porque toda la intersección queda dentro de ella. Rectángulos Darboux usan cotas de todas las entradas de la pieza; cambiar nodos compartidos afecta piezas finitas, aun cuando no altere el valor integral.
-
-Los ejemplos sintetizan la frontera: finitos saltos acotados admiten collares; Dirichlet conserva una oscilación de altura uno en toda anchura; Thomae confina las alturas grandes en picos finitos; un soporte compacto ternario admite coberturas pequeñas; familias entrada por entrada pueden escapar del control global.
+Las figuras conservan en estos ejemplos el alcance de sus estimaciones. En Thomae, la cota $1/(N+1)$ controla todos los picos omitidos de $E_N$. En Cantor, la etapa $C_n$ encierra toda la intersección y su longitud $(2/3)^n$ permite construir la cobertura. Los rectángulos de Darboux usan cotas de todas las entradas de cada pieza, incluidos los nodos compartidos. Cada dibujo representa un control previamente demostrado.
 
 La terminología de longitud usada hasta aquí es finita y elemental. Una teoría más amplia podrá organizar coberturas numerables y tratar otras clases de funciones, pero necesitará construir sus nociones, probar sus reglas y definir otra integral. No se asigna aquí una integral alternativa a Dirichlet ni se usa el criterio de Lebesgue como una herramienta ya disponible.
 
-El siguiente problema del libro será un objeto distinto: cuando la entrada sigue fija y lo que cambia con el índice es toda una función, ¿qué significa converger y qué cuantificadores permiten conservar sus propiedades? C26 abrirá esa cuestión; este capítulo concluye la parte de integración propia con sus hipótesis y sus límites explícitos.
+El contraste entre las truncaciones de Thomae y los indicadores de $E_N$ deja una dificultad precisa: estabilizar los valores en cada entrada no basta para conservar integrabilidad. Para hacerlo, la aproximación necesita una estimación que controle todas las entradas a la vez. Esa diferencia ya aparece en los ejemplos finitos y exige distinguir cuidadosamente el orden de los cuantificadores al estudiar sucesiones de funciones.
 
-![Escalón,Thomae e indicadora de C tienen integral propia con los mecanismos probados; Dirichlet falla por brecha persistente y1/x falla por acotación. Las barras de Dirichlet son brechas, no valores integrales alternativos.](../../assets/books/anm/C25/C25-F08.svg){#fig-anm-c25-f08 fig-alt="Escalón,Thomae e indicadora de C tienen integral propia con los mecanismos probados; Dirichlet falla por brecha persistente y1/x falla por acotación. Las barras de Dirichlet son brechas, no valores integrales alternativos."}
+![Escalón,Thomae e indicadora de C tienen integral propia con los mecanismos probados; Dirichlet falla por brecha persistente y1/x falla por acotación. Las barras de Dirichlet son brechas, no valores integrales alternativos.](../../assets/books/anm/revision-20261016/C25/C25-F08.svg){#fig-anm-c25-f08 fig-alt="Escalón,Thomae e indicadora de C tienen integral propia con los mecanismos probados; Dirichlet falla por brecha persistente y1/x falla por acotación. Las barras de Dirichlet son brechas, no valores integrales alternativos."}
 
 ### Microcontroles
 

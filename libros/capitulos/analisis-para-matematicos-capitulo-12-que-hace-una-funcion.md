@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 12 — Qué hace una función
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,24 +28,22 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-12)
 
-Una función transforma entradas en salidas y, al hacerlo, transporta conjuntos. Puede conservar información o perderla: fusionar puntos, omitir valores, invertir el orden y cambiar distancias. Queremos describir esas acciones sin confundir el objeto con su fórmula o con el dibujo de su gráfica.
+Al elevar al cuadrado, las entradas $-2$ y $2$ llegan a la misma salida $4$. Si sólo conocemos ese resultado, hemos perdido la posibilidad de reconocer cuál de las dos entradas se utilizó. Pero la regla también deja salidas sin alcanzar: ningún real tiene cuadrado negativo. Para describir ambas cosas necesitamos saber dónde se permiten las entradas y dónde se declaran las salidas; la expresión $x^2$ por sí sola no contiene esos datos.
 
-La teoría elemental de funciones será nuestro punto de partida externo; las bolas y vecindades de C04 permitirán formular ventanas de entrada y salida. Reconstruiremos las leyes necesarias con testigos y pertenencias. No necesitaremos límites de funciones, continuidad o derivadas: primero aprenderemos a decir con precisión qué transporta una función.
+Las sucesiones que hemos estudiado son funciones cuyo dominio es el conjunto de los naturales. Al admitir otros dominios podremos transportar intervalos, seleccionar entradas por sus salidas y encadenar transformaciones. Las bolas y vecindades de C04 servirán para medir conjuntos de entradas próximos a un punto. Las preguntas iniciales son algebraicas y conjuntistas: qué se alcanza, qué se identifica y qué puede deshacerse, antes de introducir límites de funciones o continuidad.
 
 ## 12.1. Una función tiene un tipo
 
 []{#MA-SEC-ANM-01-012-001}
 
-Escribir $x^2$ no dice todavía qué entradas admitimos ni en qué conjunto buscamos las salidas. Comparemos
+Consideremos dos maneras de declarar la regla del cuadrado:
 
 $$
 f:\mathbb R\to\mathbb R,\quad f(x)=x^2,
 \qquad g:[0,\infty)\to[0,\infty),\quad g(x)=x^2.
 $$
 
-Ambas reglas dan $4$ al introducir $2$. Sin embargo, $-2$ pertenece al dominio de $f$ y no al de $g$. Tampoco tienen el mismo codominio. Coinciden numéricamente en sus entradas comunes, pero son funciones distintas. El tipo forma parte de lo que afirmamos.
-
-### La asignación y sus tres datos
+En ambas podemos introducir $2$ y obtener $4$, pero $-2$ sólo está admitido en la primera. También difieren los conjuntos declarados de salidas. La coincidencia de algunos cálculos no identifica esos objetos: cada evaluación debe hacerse dentro del dominio de la función que estamos utilizando.
 
 Una función $f:D\to E$ consta de un dominio $D$, un codominio $E$ y una asignación que a cada $x\in D$ hace corresponder exactamente un $f(x)\in E$. «Cada» impide dejar entradas sin salida; «exactamente un» impide asignar dos salidas distintas a una misma entrada. No impide que entradas distintas compartan salida.
 
@@ -55,25 +53,21 @@ $$
 G_f=\{(x,f(x)):x\in D\}\subseteq D\times E.
 $$
 
-Adoptamos la convención tipada: dos funciones son iguales cuando sus dominios, sus codominios y sus asignaciones coinciden. Un grafo dibujado dentro de un plano puede ocultar el codominio declarado. Por ejemplo, las aplicaciones $\mathbb R\to\mathbb R$ y $\mathbb R\to[0,\infty)$ dadas por $x^2$ tienen el mismo conjunto de pares, pero distintos codominios; son objetos tipados distintos.
+Adoptamos la convención tipada: dos funciones son iguales cuando sus dominios, sus codominios y sus asignaciones coinciden. El grafo registra todas las evaluaciones, pero puede dejar invisible una parte del codominio. Por ejemplo, las aplicaciones $\mathbb R\to\mathbb R$ y $\mathbb R\to[0,\infty)$ dadas por $x^2$ tienen los mismos pares $(x,x^2)$. La primera declara además las salidas negativas, aunque no las alcance; la segunda declara únicamente salidas que sí alcanza. Bajo nuestra convención son funciones distintas, y esa diferencia será decisiva al pedir una inversa.
 
-La regla $f(x)=\pm\sqrt{x}$, con las dos salidas admitidas para $x>0$, no define una función real. En cambio, $f(x)=x^2$ sí: cada entrada tiene una única salida, aunque $f(-2)=f(2)$. La dificultad de reconstruir una entrada a partir de la salida no viola la definición.
+La unicidad de la definición se comprueba después de fijar una entrada. Si se permiten simultáneamente los dos valores $\pm\sqrt x$ para $x>0$, esa entrada recibe dos salidas y la regla no define una función real. En $f(x)=x^2$, en cambio, tanto $2$ como $-2$ reciben una sola salida, aunque sea la misma. La propiedad de impedir esa coincidencia entre entradas distintas se llama inyectividad; no forma parte de la definición de función.
 
-### Tres objetos que conviene separar
+La notación también distingue niveles: $f$ es la asignación completa, $f(2)=4$ es un valor cuando $2$ pertenece al dominio y $G_f$ es un conjunto de pares. La gráfica cartesiana representa ese conjunto cuando dominio y codominio están en $\mathbb R$. Una tabla o un dibujo de flechas pueden mostrar las mismas evaluaciones desde otra perspectiva, pero una tabla parcial deja abiertas las entradas que no aparecen en ella.
 
-$f$ es una función; $f(2)=4$ es un valor; $G_f$ es un conjunto de pares. La gráfica cartesiana representa el grafo cuando ambos conjuntos son subconjuntos de $\mathbb R$. Las flechas entre conjuntos y una tabla representan la misma asignación desde otras perspectivas. Una tabla parcial sólo registra algunas entradas: por sí sola no determina los valores que faltan en un dominio infinito.
+Si fijamos el mismo tipo $f,g:D\to E$, la igualdad se prueba comparando $f(x)$ y $g(x)$ para toda entrada $x\in D$. Cada par de un grafo pertenecerá entonces al otro; recíprocamente, si los grafos coinciden, el par $(x,f(x))$ también pertenece al de $g$ y su salida única obliga a $f(x)=g(x)$. Tres evaluaciones sólo prueban tres igualdades. Si las entradas observadas son $r_1,r_2,r_3$, las funciones reales $f(x)=0$ y $g(x)=(x-r_1)(x-r_2)(x-r_3)$ coinciden en ellas y difieren en cualquier real distinto de las tres.
 
-Para comparar funciones tipadas $f,g:D\to E$, basta comprobar $f(x)=g(x)$ para todo $x\in D$. Entonces cada par del grafo de una está en el de la otra y recíprocamente. La igualdad de grafos y tipos da igualdad de funciones. Comprobarlo sólo en tres entradas prueba únicamente tres igualdades numéricas.
+Para una sucesión $a:\mathbb N\to\mathbb R$, $a_n=n^2$, el grafo contiene $(0,0),(1,1),(2,4),\ldots$. La entrada $1/2$ no está autorizada y el par $(1/2,1/4)$ no pertenece a ese grafo. Sí pertenece al de la función real $x\mapsto x^2$. Una curva que una los puntos de la sucesión puede ayudar a compararlos, pero añade evaluaciones de otra función; no amplía el dominio original.
 
-En particular, $a:\mathbb N\to\mathbb R$, $a_n=n^2$, es una sucesión y su grafo tiene puntos $(n,n^2)$ con $n=0,1,2,\ldots$. No incluye entradas entre naturales. La función real $f(x)=x^2$ tiene otro dominio. No se debe completar el grafo discreto con una curva y declarar que el objeto sigue siendo la misma sucesión.
+El dominio también impide evaluar fórmulas en entradas prohibidas. Para $h:\mathbb R\setminus\{0\}\to\mathbb R$, $h(x)=1/x$, la expresión $h(0)$ no designa un valor. Asignar un número en cero supondría construir otra función, con nuevo dominio y una regla adicional en esa entrada. La función ya declarada no se modifica al escribir una evaluación que su tipo excluye.
 
-### El tipo impide errores de composición
+El dibujo de flechas del cuadrado en un dominio finito permite ver las dos cuestiones que estudiaremos: hay salidas compartidas y hay salidas declaradas sin entrada. Para pasar de unas pocas evaluaciones a conjuntos enteros, necesitamos definir con precisión qué significa reunir todas las salidas o seleccionar todas las entradas que cumplen una condición.
 
-Una fórmula también puede esconder una entrada prohibida. Si $h:\mathbb R\setminus\{0\}\to\mathbb R$ se define por $h(x)=1/x$, $h(0)$ no existe como evaluación de esa función. No se corrige esto cambiando el resultado: primero habría que definir otro objeto con otro dominio y una nueva asignación en cero.
-
-La pregunta que acompañará al capítulo será: dado un conjunto de entradas, ¿qué salidas produce?, y dado un conjunto de salidas aceptables, ¿qué entradas lo alcanzan? Para responderla, debemos conservar $D$ y $E$ en cada paso.
-
-![En el dominio finito {-2,0,2}, el cuadrado asigna una salida a cada entrada; dos entradas comparten 4 y el codominio {-1,0,4} contiene una salida no alcanzada.](../../assets/books/anm/C12/C12-F01.svg){#fig-anm-c12-f01 fig-alt="En el dominio finito {-2,0,2}, el cuadrado asigna una salida a cada entrada; dos entradas comparten 4 y el codominio {-1,0,4} contiene una salida no alcanzada."}
+![En el dominio finito {-2,0,2}, el cuadrado asigna una salida a cada entrada; dos entradas comparten 4 y el codominio {-1,0,4} contiene una salida no alcanzada.](../../assets/books/anm/revision-20261016/C12/C12-F01.svg){#fig-anm-c12-f01 fig-alt="Dos conjuntos finitos: las entradas menos dos y dos apuntan ambas a cuatro, cero apunta a cero y la salida menos uno no recibe flecha."}
 
 ### Antes de seguir
 
@@ -301,33 +295,30 @@ $G_a=\{(n,2n+1):n\in\mathbb N\}\subsetneq G_f$. La inclusión es estricta porque
 Cada índice natural también es real, y ambas asignaciones producen $2n+1$ allí; esto prueba la inclusión de grafos. La entrada $1/2$ demuestra que la inclusión es propia. Un dibujo que una los puntos de la sucesión añade evaluaciones para entradas que no pertenecen a $\mathbb N$. Esos puntos intermedios forman parte del grafo de la función real, no del grafo de la sucesión. La expresión algebraica compartida no elimina la diferencia de dominios.
 
 </details>
+
 ## 12.2. Imagen: transportar un conjunto
 
 []{#MA-SEC-ANM-01-012-002}
 
-Al introducir una entrada, obtenemos un valor. Al introducir un conjunto de entradas, reunimos las salidas que realmente se alcanzan. Si $f:D\to E$ y $A\subseteq D$, su **imagen directa** es
+Si introducimos un conjunto $A$ de entradas permitidas, podemos reunir las salidas que produce alguna de ellas. Para $f:D\to E$ y $A\subseteq D$, la **imagen directa** es
 
 $$
 f[A]=\{y\in E:\text{existe }x\in A\text{ con }f(x)=y\}.
 $$
 
-Usamos corchetes para distinguir esta operación de $f(x)$. Así, $f[\{2\}]=\{f(2)\}$ es un conjunto unitario, mientras que $f(2)$ es un elemento del codominio. El conjunto $f[D]$, imagen total, puede ser menor que $E$. El codominio expresa salidas permitidas; la imagen expresa salidas alcanzadas.
+Los corchetes distinguen una operación sobre conjuntos de la evaluación en un elemento. Por ejemplo, $f(2)$ es una salida, mientras $f[\{2\}]=\{f(2)\}$ es el conjunto que contiene esa salida. La imagen total $f[D]$ está contenida en el codominio $E$, pero puede dejar fuera elementos declarados: una cosa es permitir una salida y otra encontrar una entrada que la produzca.
 
-### La prueba exige un testigo
-
-Para afirmar $y\in f[A]$ hay que encontrar una entrada $x\in A$ con salida $y$. Para calcular una imagen exactamente no basta producir algunos valores: debemos probar que ninguna otra salida aparece y que todas las salidas anunciadas se alcanzan.
+Pertenecer a $f[A]$ exige un testigo: una entrada $x\in A$ con $f(x)=y$. Resolver la ecuación sólo cumple una parte de la tarea; el testigo debe estar en el conjunto de entradas considerado. Para determinar exactamente una imagen probamos dos inclusiones: que toda salida producida está en el conjunto anunciado y que cada elemento de ese conjunto se produce realmente.
 
 Sea $q:\mathbb R\to\mathbb R$, $q(x)=x^2$, y $A=[-2,1]$. Afirmamos $q[A]=[0,4]$. Si $x\in A$, entonces $|x|\le2$ y $0\le x^2\le4$, de modo que $q[A]\subseteq[0,4]$. Recíprocamente, para $y\in[0,4]$, la raíz real no negativa $\sqrt y$ existe y satisface $0\le\sqrt y\le2$. La entrada $x=-\sqrt y$ está en $[-2,0]\subseteq A$ y $x^2=y$. Por tanto $[0,4]\subseteq q[A]$. La existencia y unicidad de la raíz no negativa se acreditaron en §10.7; no las deducimos de un teorema posterior sobre funciones.
 
-Observe por qué elegimos la raíz negativa: $\sqrt4=2$ no pertenece a $A$. Una solución algebraica de $x^2=y$ que queda fuera del dominio considerado no sirve como testigo. La imagen depende del conjunto de entradas, no sólo de la ecuación.
+La elección de la raíz negativa conserva el testigo dentro de $A$. La candidata positiva $\sqrt4=2$ quedaría fuera de $[-2,1]$, mientras que $-\sqrt4=-2$ sí pertenece. La misma ecuación puede tener varias soluciones reales y sólo algunas ser entradas admitidas en el problema. Ese recorte explica por qué la imagen depende del conjunto de partida.
 
-![El cuadrado transporta \[-2,1\] a \[0,4\]. Seleccionar las salidas (1,4\] recupera dos ramas: \[-2,-1) y (1,2\]. Imagen y preimagen responden preguntas distintas.](../../assets/books/anm/C12/C12-F02.svg){#fig-anm-c12-f02 fig-alt="El cuadrado transporta \[-2,1\] a \[0,4\]. Seleccionar las salidas (1,4\] recupera dos ramas: \[-2,-1) y (1,2\]. Imagen y preimagen responden preguntas distintas."}
+![El cuadrado transporta \[-2,1\] a \[0,4\]. Seleccionar las salidas (1,4\] recupera dos ramas: \[-2,-1) y (1,2\]. Imagen y preimagen responden preguntas distintas.](../../assets/books/anm/revision-20261016/C12/C12-F02.svg){#fig-anm-c12-f02 fig-alt="Dos paneles del cuadrado: [-2,1] tiene imagen [0,4]; la banda de salidas (1,4] selecciona [-2,-1) y (1,2]. Extremos abiertos y cerrados diferenciados."}
 
-### La imagen reúne, pero no cuenta multiplicidades
+En $A=\{-2,-1,1,2\}$, las cuatro evaluaciones del cuadrado sólo producen $q[A]=\{1,4\}$. Todo valor de la imagen está en esa lista y ambos se alcanzan, por ejemplo en $-1$ y $-2$. Los conjuntos no conservan multiplicidades: que $1$ tenga dos entradas no crea dos elementos llamados uno. La pérdida de información aparece al reunir las salidas.
 
-Para el conjunto finito $A=\{-2,-1,1,2\}$, $q[A]=\{1,4\}$. Cuatro entradas producen dos salidas. Los conjuntos no guardan repeticiones: no escribimos dos copias de $1$. La identificación de entradas será responsable de algunas pérdidas de información.
-
-Si $A\subseteq C\subseteq D$, entonces $f[A]\subseteq f[C]$. En efecto, un testigo $x\in A$ también está en $C$. La misma entrada sirve en ambas definiciones. Esta propiedad se llama monotonía de la operación de imagen respecto de la inclusión; no dice que $f$ sea creciente como función de números reales. El cuadrado respeta esta inclusión aunque no sea creciente en toda la recta.
+La operación de imagen conserva inclusiones: si $A\subseteq C\subseteq D$ y $y\in f[A]$, un testigo $x\in A$ también pertenece a $C$, de modo que $y\in f[C]$. Es una monotonía respecto del orden de inclusión entre conjuntos. No requiere que $f$ preserve el orden numérico: el cuadrado cumple esta propiedad aunque no sea creciente en toda la recta.
 
 Además,
 
@@ -335,11 +326,9 @@ $$
 f[\varnothing]=\varnothing,\qquad f[\{x\}]=\{f(x)\}.
 $$
 
-La primera igualdad se debe a la inexistencia de testigos en el vacío. En la segunda, la única entrada permitida es $x$. Aunque $D$ sea vacío, la definición sigue funcionando: la función vacía $\varnothing\to E$ tiene imagen vacía.
+En el vacío no hay entradas que puedan servir de testigo, por lo que su imagen es vacía. En $\{x\}$ sólo está permitida la entrada $x$, que alcanza exactamente $f(x)$. Estas afirmaciones incluyen el dominio vacío: la asignación vacía $\varnothing\to E$ es una función y su imagen es vacía para cualquier $E$.
 
-### La imagen de una ventana debe calcularse
-
-No inferimos $q[(-2,2)]=(q(-2),q(2))$. Los extremos ni siquiera pertenecen al conjunto de entradas, y esa expresión sería $(4,4)=\varnothing$. El cálculo correcto es $[0,4)$: cero se alcanza, todo cuadrado de una entrada del intervalo es menor que cuatro y, para cada $0\le y<4$, $\sqrt y\in(-2,2)$ sirve como testigo. Transportar un intervalo requiere estudiar el mecanismo de la función; no consiste en transportar ciegamente sus extremos.
+Los extremos de un intervalo tampoco bastan para transportar sus puntos. Si intentáramos escribir $q[(-2,2)]=(q(-2),q(2))$, obtendríamos $(4,4)=\varnothing$, aunque cero está en la imagen. Las entradas extremas ni siquiera pertenecen a ese intervalo. El cálculo correcto es $[0,4)$: de $-2<x<2$ se sigue $0\le x^2<4$, y para cada $0\le y<4$ la entrada $\sqrt y\in[0,2)\subset(-2,2)$ alcanza $y$. Cero se incluye porque se alcanza; cuatro se excluye porque sus únicas entradas son $\pm2$, ambas prohibidas.
 
 ### Antes de seguir
 
@@ -565,19 +554,18 @@ Si $y\in f[A]\setminus f[C]$, existe $a\in A$ con $f(a)=y$. Ese $a$ no puede est
 La condición $y\notin f[C]$ impide que cualquier testigo de esa salida pertenezca a $C$. Por eso un testigo en $A$ debe estar fuera de $C$. La vuelta puede fallar: una entrada fuera de $C$ puede compartir su salida con otra dentro de $C$. En el ejemplo, menos uno está en $A\setminus C$, pero su salida uno también es producida por la entrada uno de $C$, y se elimina al restar los conjuntos de salidas.
 
 </details>
+
 ## 12.3. Preimagen: seleccionar por la salida
 
 []{#MA-SEC-ANM-01-012-003}
 
-Ahora fijamos las salidas aceptables. Si $f:D\to E$ y $B\subseteq E$, definimos la **preimagen**
+Podemos invertir la pregunta sin intentar invertir la función. En lugar de dar entradas y reunir salidas, fijemos un conjunto de salidas aceptables $B\subseteq E$ y conservemos las entradas que llegan a él. Para $f:D\to E$, la **preimagen** es
 
 $$
 f^{-1}[B]=\{x\in D:f(x)\in B\}.
 $$
 
-Es un subconjunto del dominio. No evaluamos una función inversa; comprobamos una condición sobre la salida de cada entrada. La preimagen está definida para cualquier función, incluso cuando muchas entradas comparten salida o algunas salidas nunca se alcanzan.
-
-### Fibras: todas las entradas de una misma salida
+El resultado vive en $D$. Para decidir si una entrada pertenece, la evaluamos y comprobamos si su salida está en $B$. Este procedimiento funciona aunque una salida tenga varias entradas o ninguna. La notación $f^{-1}[B]$ nombra una selección de entradas y no supone todavía la existencia de una función inversa.
 
 La preimagen $f^{-1}[\{y\}]$ se llama **fibra sobre $y$**. Para $q:\mathbb R\to\mathbb R$, $q(x)=x^2$,
 
@@ -587,11 +575,9 @@ q^{-1}[\{0\}]=\{0\},\qquad
 q^{-1}[\{-1\}]=\varnothing.
 $$
 
-Una fibra puede tener dos elementos, uno o ninguno. Lo que es único en una función es la salida de cada entrada, no la entrada de cada salida. La notación $q^{-1}(4)$ como evaluación de una inversa no está autorizada: $q:\mathbb R\to\mathbb R$ no es biyectiva.
+La fibra sobre cuatro tiene dos entradas: $x^2=4$ equivale a $(x-2)(x+2)=0$, así que sólo pueden ser $-2$ y $2$, y ambas sirven. Sobre cero sólo está cero; sobre menos uno no hay entrada porque todo cuadrado real es no negativo. Son tres resultados compatibles con una función: cada entrada conserva una única salida. Escribir $q^{-1}(4)$ como evaluación de una inversa, en cambio, no está autorizado para $q:\mathbb R\to\mathbb R$, que no es biyectiva.
 
-Dos fibras distintas son disjuntas. Si $x$ estuviera en las fibras de $y$ y $z$, tendríamos $f(x)=y$ y $f(x)=z$, luego $y=z$. Aquí gastamos exactamente la unicidad de salida.
-
-### Resolver la condición y después respetar el dominio
+Las fibras sobre salidas diferentes son disjuntas. Una entrada común a las fibras de $y$ y $z$ cumpliría simultáneamente $f(x)=y$ y $f(x)=z$; la unicidad de su salida obliga a $y=z$. Las fibras sobre los elementos de $f[D]$ son además no vacías y cubren $D$, pues cada $x$ pertenece a la fibra de $f(x)$. Si se indexaran por todo $E$, podrían aparecer fibras vacías correspondientes a salidas no alcanzadas.
 
 Para el mismo cuadrado,
 
@@ -600,7 +586,7 @@ q^{-1}[(1,4]]=\{x\in\mathbb R:1<x^2\le4\}
 =[-2,-1)\cup(1,2].
 $$
 
-La condición equivale a $1<|x|\le2$. Por eso incluimos $-2$ y $2$, excluimos $-1$ y $1$, y conservamos dos ramas. La fibra no elige automáticamente una raíz positiva.
+Resolver $1<x^2\le4$ equivale a $1<|x|\le2$. La rama positiva da $(1,2]$ y la negativa $[-2,-1)$. Los puntos $\pm2$ se incluyen por el extremo cerrado cuatro de las salidas; $\pm1$ se excluyen por el extremo abierto uno. Las dos ramas satisfacen la misma condición y ambas deben conservarse.
 
 Si cambiamos la función a $r:[0,\infty)\to\mathbb R$, $r(x)=x^2$, la misma condición produce
 
@@ -608,9 +594,7 @@ $$
 r^{-1}[(1,4]]=(1,2].
 $$
 
-La rama negativa desaparece porque nunca perteneció al dominio de $r$. No desaparece por una modificación del conjunto de salidas.
-
-### Dos identidades que orientan la selección
+La desigualdad sobre la salida no ha cambiado. Lo que cambia es el lugar donde buscamos entradas: intersectamos $[-2,-1)\cup(1,2]$ con $[0,\infty)$ y queda $(1,2]$. Resolver una condición y recortarla por el dominio son obligaciones distintas. Una solución real fuera del dominio no entra en la preimagen de la función restringida.
 
 Para toda función $f:D\to E$,
 
@@ -618,17 +602,17 @@ $$
 f^{-1}[E]=D,\qquad f^{-1}[\varnothing]=\varnothing.
 $$
 
-Toda entrada tiene salida en $E$; ninguna tiene salida en el vacío. También, si $B\subseteq H\subseteq E$, entonces $f^{-1}[B]\subseteq f^{-1}[H]$: una salida aceptada por $B$ es aceptada por $H$.
+Toda entrada tiene salida en $E$, lo que prueba $D\subseteq f^{-1}[E]$; la inclusión contraria forma parte de la definición de preimagen. Ninguna entrada tiene salida en el vacío. Si $B\subseteq H\subseteq E$, la condición $f(x)\in B$ implica $f(x)\in H$ para la misma entrada, luego $f^{-1}[B]\subseteq f^{-1}[H]$. La selección hacia atrás conserva inclusiones sin ninguna condición de inyectividad o sobreyectividad.
 
-Hay una identidad más informativa:
+Para entender cuánto recuperamos al seleccionar hacia atrás y volver hacia delante, calculemos
 
 $$
 f[f^{-1}[B]]=B\cap f[D].
 $$
 
-Para probar la inclusión de izquierda a derecha, si $y=f(x)$ con $x\in f^{-1}[B]$, entonces $y\in B$ y $y\in f[D]$. Recíprocamente, si $y\in B\cap f[D]$, existe $x\in D$ con $f(x)=y$; como $y\in B$, ese $x$ está en $f^{-1}[B]$, luego $y$ está en su imagen. La igualdad dice que volver hacia delante recupera sólo las salidas solicitadas que podían alcanzarse.
+Si $y$ está a la izquierda, existe $x\in f^{-1}[B]$ con $f(x)=y$. Esa entrada está en $D$ y su salida pertenece a $B$, así que $y\in B\cap f[D]$. Para la inclusión inversa, partimos de $y\in B\cap f[D]$: la pertenencia a la imagen ofrece un testigo $x\in D$ con $f(x)=y$, y la pertenencia a $B$ hace que ese testigo esté en $f^{-1}[B]$. Así vuelve a producir $y$ al tomar imagen. La operación recupera las salidas solicitadas que realmente podían alcanzarse.
 
-Si $B=\{-1,4\}$ para $q$, la preimagen es $\{-2,2\}$ y su imagen es $\{4\}$: el valor imposible $-1$ no reaparece. La preimagen es una selección de entradas compatibles, no una promesa de que toda salida tenga entrada.
+Por ejemplo, para el cuadrado y $B=\{-1,4\}$, la selección da $\{-2,2\}$ y su imagen es $\{4\}$. La salida imposible $-1$ no reaparece. Si exigiéramos recuperar exactamente todo $B$ para cualquier subconjunto del codominio, estaríamos exigiendo sobreyectividad; basta tomar $B=E$ para ver esa obligación.
 
 ### Antes de seguir
 
@@ -854,15 +838,14 @@ Para una entrada cualquiera $x\in D$, tomamos $B=\{f(x)\}$. Entonces $x\in f^{-1
 El conjunto $B$ se elige después de fijar una entrada $x$, y eso es legítimo porque la hipótesis cubre todos los subconjuntos del codominio. En el conjunto unitario $\{f(x)\}$ sólo hay un valor disponible. La igualdad de preimágenes obliga a que la salida de $g$ para esa misma entrada sea ese valor. Repetimos el razonamiento para una entrada arbitraria, no para una muestra finita. Con tipos iguales, la coincidencia de todas las evaluaciones identifica ambas funciones.
 
 </details>
+
 ## 12.4. Qué operaciones sobreviven al transporte
 
 []{#MA-SEC-ANM-01-012-004}
 
-Unir dos grupos de entradas y luego transportarlos produce las mismas salidas que transportarlos por separado y unir sus imágenes. Intersectar exige más cuidado: una salida común puede venir de entradas distintas.
+Las imágenes de una unión pueden reunirse sin perder salidas: un testigo pertenece a una pieza o a la otra. Al intersectar imágenes aparece una dificultad distinta: la misma salida puede tener un testigo en cada pieza sin que esas entradas coincidan. Esa diferencia entre uno y dos testigos decide qué operaciones se conservan.
 
 Fijemos $f:D\to E$, $A,C\subseteq D$ y $B,H\subseteq E$.
-
-### La imagen y sus testigos
 
 Tenemos
 
@@ -871,17 +854,15 @@ f[A\cup C]=f[A]\cup f[C],\qquad
 f[A\cap C]\subseteq f[A]\cap f[C].
 $$
 
-En la primera igualdad, $y$ pertenece al lado izquierdo si existe $x$ con $f(x)=y$ y $x\in A$ o $x\in C$. Esto equivale a que $y$ tenga un testigo en alguno de los dos conjuntos, es decir, a pertenecer a alguna imagen. Ambas implicaciones usan el mismo testigo escogido.
+Para la unión, tomemos $y\in f[A\cup C]$ y una entrada $x\in A\cup C$ con $f(x)=y$. Si $x\in A$, entonces $y\in f[A]$; si $x\in C$, entonces $y\in f[C]$. En la dirección contraria, cualquier testigo en una de las piezas también pertenece a la unión. El mismo testigo acredita las dos implicaciones y prueba la igualdad.
 
-Para la segunda, un testigo en $A\cap C$ pertenece a los dos conjuntos. Pero en sentido contrario, $y\in f[A]\cap f[C]$ sólo da $a\in A$ y $c\in C$ con $f(a)=f(c)=y$. No sabemos que $a=c$.
+Un testigo en $A\cap C$ sirve a la vez en ambas imágenes, lo que prueba la inclusión de la segunda fórmula. Para intentar la vuelta, $y\in f[A]\cap f[C]$ sólo ofrece $a\in A$ y $c\in C$ con $f(a)=f(c)=y$. Nos falta una razón para que $a=c$: dos pertenencias a imágenes no proporcionan por sí solas una entrada común.
 
-Con $q(x)=x^2$, $A=\{-1\}$ y $C=\{1\}$, la intersección de entradas es vacía, mientras que las dos imágenes son $\{1\}$. Así, la inclusión puede ser estricta. Si $f$ es **inyectiva**, es decir, $f(a)=f(c)$ implica $a=c$, los dos testigos coinciden y pertenecen a $A\cap C$. En ese caso obtenemos igualdad.
+En el cuadrado, $A=\{-1\}$ y $C=\{1\}$ no comparten entrada, pero ambas imágenes son $\{1\}$. La inclusión es estricta. Si $f$ es **inyectiva**, es decir, si $f(a)=f(c)$ implica $a=c$, los dos testigos de una salida común coinciden y pertenecen a $A\cap C$; entonces hay igualdad. Esta hipótesis resuelve exactamente el paso que faltaba. A la inversa, exigir esa igualdad para todos los pares de conjuntos prohíbe cualquier colisión, como se comprobará con conjuntos unitarios en los problemas.
 
-![Una salida en ambas imágenes puede tener dos testigos diferentes. Para convertirlos en una entrada común se necesita inyectividad.](../../assets/books/anm/C12/C12-F03.svg){#fig-anm-c12-f03 fig-alt="Una salida en ambas imágenes puede tener dos testigos diferentes. Para convertirlos en una entrada común se necesita inyectividad."}
+![Una salida en ambas imágenes puede tener dos testigos diferentes. Para convertirlos en una entrada común se necesita inyectividad.](../../assets/books/anm/revision-20261016/C12/C12-F03.svg){#fig-anm-c12-f03 fig-alt="Dos paneles: los conjuntos unitarios {-1} y {1} son disjuntos pero ambos tienen imagen {1}; dos testigos distintos apuntan a la misma salida."}
 
-### La preimagen conserva las operaciones
-
-Para una entrada fija $x\in D$ hay una única salida que podemos comparar con ambos conjuntos. Por eso las siguientes equivalencias son exactas:
+En una preimagen la entrada $x\in D$ permanece fija. Cada condición consulta su única salida $f(x)$, de modo que podemos combinar las condiciones lógicas sobre ella:
 
 $$
 \begin{aligned}
@@ -891,7 +872,7 @@ x\in f^{-1}[E\setminus B]&\iff f(x)\notin B.
 \end{aligned}
 $$
 
-La primera condición equivale a pertenecer a $f^{-1}[B]\cup f^{-1}[H]$; la segunda, a $f^{-1}[B]\cap f^{-1}[H]$; la tercera, a $D\setminus f^{-1}[B]$. Por extensionalidad,
+La alternativa de la primera fila selecciona $f^{-1}[B]\cup f^{-1}[H]$; la conjunción de la segunda selecciona $f^{-1}[B]\cap f^{-1}[H]$; negar la pertenencia en la tercera selecciona $D\setminus f^{-1}[B]$. Las equivalencias valen para toda entrada de $D$ y proporcionan ambas inclusiones de cada identidad. Por extensionalidad,
 
 $$
 \begin{aligned}
@@ -901,19 +882,17 @@ f^{-1}[E\setminus B]&=D\setminus f^{-1}[B].
 \end{aligned}
 $$
 
-Ninguna de estas pruebas necesita inyectividad o sobreyectividad. Sí necesita los complementos correctos: a la izquierda complementamos dentro de $E$, a la derecha dentro de $D$. El criterio $f(x)\in B\setminus H$ equivale a $f(x)\in B$ y $f(x)\notin H$; por el mismo argumento,
+No hemos reunido testigos distintos ni pedido que toda salida tenga entrada. Por eso las leyes no requieren inyectividad o sobreyectividad. Los complementos sí deben respetar sus universos: $E\setminus B$ es un conjunto de salidas y $D\setminus f^{-1}[B]$ un conjunto de entradas. La condición $f(x)\in B\setminus H$ dice $f(x)\in B$ y $f(x)\notin H$; al traducir esas dos exigencias a preimágenes obtenemos también
 
 $$
 f^{-1}[B\setminus H]=f^{-1}[B]\setminus f^{-1}[H].
 $$
 
-### Qué recupera la vuelta al dominio
+El viaje en el otro sentido conserva todas las entradas originales: $A\subseteq f^{-1}[f[A]]$, porque $f(a)\in f[A]$ para cada $a\in A$. Puede recuperar otras entradas que compartan sus salidas. Con el cuadrado y $A=\{1\}$ obtenemos $f^{-1}[f[A]]=\{-1,1\}$. Llamaremos a este conjunto la **saturación de $A$ por las fibras**: reúne cada fibra que toca $A$ con todas sus entradas.
 
-Siempre $A\subseteq f^{-1}[f[A]]$, pues cada $a\in A$ tiene su salida en $f[A]$. Para $q$ y $A=\{1\}$, el lado derecho es $\{-1,1\}$: hemos añadido entradas que comparten salida con alguna entrada original. Llamaremos a este conjunto la **saturación de $A$ por las fibras**.
+Si $f$ es inyectiva, una entrada $x$ de esa saturación comparte salida con algún $a\in A$ y debe coincidir con él. La inclusión se convierte en igualdad. Para una función cualquiera, saturar puede ampliar $A$, pero no produce salidas nuevas: la identidad de §12.3 da $f[f^{-1}[f[A]]]=f[A]$. Una segunda saturación seleccionaría las mismas fibras completas.
 
-Si $f$ es inyectiva, una entrada $x$ del lado derecho comparte salida con algún $a\in A$; entonces $x=a$, y la inclusión se convierte en igualdad. La hipótesis se utiliza para recuperar la entrada y no para justificar la existencia de preimagen.
-
-La imagen tampoco conserva complementos en general. Para el cuadrado, $q[\mathbb R\setminus\{1\}]=[0,\infty)$ porque el valor $1$ aún se alcanza en $-1$. En cambio, $\mathbb R\setminus q[\{1\}]=\mathbb R\setminus\{1\}$. Identificar entradas y omitir salidas del codominio impide una ley de complementos. No confundamos esa pérdida con las leyes exactas de selección hacia atrás.
+Los complementos de imágenes también pueden fallar por una colisión. Para el cuadrado, quitar la entrada $1$ no elimina su salida, porque $-1$ todavía produce uno: $q[\mathbb R\setminus\{1\}]=[0,\infty)$. En cambio, $\mathbb R\setminus q[\{1\}]=\mathbb R\setminus\{1\}$, que excluye uno e incluye negativos. La identificación de entradas y las salidas no alcanzadas del codominio son dos obstáculos diferentes a una ley de complementos.
 
 ### Antes de seguir
 
@@ -1141,13 +1120,12 @@ Toda entrada tiene salida en alguna pieza, de modo que pertenece a alguna preima
 Cubrir todo $E$ garantiza que cada salida esté en alguna pieza y, por tanto, cada entrada en alguna preimagen. La disjunción garantiza que una entrada no caiga en dos preimágenes distintas. Pero que una pieza de salidas sea no vacía no obliga a que contenga una salida alcanzada. Para el cuadrado, la pieza negativa existe y tiene preimagen vacía. El transporte hacia atrás conserva cobertura y disjunción, pero puede perder la no vacuidad de las piezas.
 
 </details>
+
 ## 12.5. Componer, restringir y deshacer
 
 []{#MA-SEC-ANM-01-012-005}
 
-Una transformación puede alimentar otra. Si $f:D\to E$ y $g:E\to F$, definimos $g\circ f:D\to F$ por $(g\circ f)(x)=g(f(x))$. El tipo garantiza que la segunda evaluación está autorizada. Más generalmente, basta que la imagen de $f$ esté contenida en el dominio de $g$; entonces se declara explícitamente el tipo de la composición.
-
-### Dos etapas hacia delante y hacia atrás
+Una transformación puede entregar las entradas de otra. Si $f:D\to E$ y $g:E\to F$, definimos $g\circ f:D\to F$ por $(g\circ f)(x)=g(f(x))$. Primero $x\in D$ produce un elemento de $E$ y después $g$ puede evaluarse en él. Más generalmente basta que $f[D]$ esté contenido en el dominio de $g$, aunque no coincidan los conjuntos intermedios declarados; hay que comprobarlo y declarar el tipo de la composición. Una fórmula como $1/(x-1)$ no autoriza la entrada $x=1$ si la segunda etapa consiste en invertir $x-1$.
 
 Si $A\subseteq D$ y $C\subseteq F$,
 
@@ -1156,11 +1134,9 @@ $$
 (g\circ f)^{-1}[C]=f^{-1}[g^{-1}[C]].
 $$
 
-La primera igualdad se prueba con testigos. Una salida de $(g\circ f)[A]$ es $g(f(x))$ con $x\in A$, luego proviene por $g$ de un elemento de $f[A]$. Recíprocamente, si $z=g(y)$ con $y\in f[A]$, existe $x\in A$ con $f(x)=y$, de modo que $z=g(f(x))$. Para la segunda, una entrada $x\in D$ satisface $g(f(x))\in C$ exactamente cuando $f(x)\in g^{-1}[C]$, es decir, $x\in f^{-1}[g^{-1}[C]]$. Hacia atrás comprobamos primero el filtro de la última etapa.
+Para transportar $A$ hacia delante, cada salida compuesta tiene forma $g(f(x))$ con $x\in A$ y, por tanto, pertenece a $g[f[A]]$. Recíprocamente, un testigo intermedio $y\in f[A]$ de una salida $z=g(y)$ tiene a su vez una entrada $x\in A$ con $f(x)=y$; sustituir da $z=g(f(x))$. Para seleccionar hacia atrás fijamos $x\in D$: $g(f(x))\in C$ equivale a que $f(x)$ esté en $g^{-1}[C]$, es decir, a que $x$ esté en $f^{-1}[g^{-1}[C]]$. La última etapa de evaluación es la primera condición que resolvemos al regresar.
 
-Por ejemplo, $f(x)=x^2$ y $g(y)=y+1$, ambas reales, dan $(g\circ f)(x)=x^2+1$. Para llegar a $(2,5]$, primero $y+1\in(2,5]$ exige $y\in(1,4]$; después $x^2\in(1,4]$ exige $x\in[-2,-1)\cup(1,2]$. No se ha invertido el cuadrado como función.
-
-### Restringir cambia el objeto
+En $f(x)=x^2$ y $g(y)=y+1$, ambas de $\mathbb R$ a $\mathbb R$, la composición es $x^2+1$. Para seleccionar salidas en $(2,5]$, empezamos con $2<y+1\le5$, equivalente a $1<y\le4$. Después resolvemos $1<x^2\le4$ y recuperamos $[-2,-1)\cup(1,2]$. La exclusión de las raíces de uno y la inclusión de las de cuatro vienen de los extremos de las salidas finales. Ninguna etapa ha requerido una inversa del cuadrado.
 
 Para $A\subseteq D$, la **restricción** $f|_A:A\to E$ conserva las asignaciones en $A$. Su imagen es $f[A]$ y, para $B\subseteq E$,
 
@@ -1168,9 +1144,7 @@ $$
 (f|_A)^{-1}[B]=A\cap f^{-1}[B].
 $$
 
-Ambos lados seleccionan precisamente los $x\in A$ cuya salida está en $B$. Restricción y cambio de codominio son decisiones diferentes. Restringir el cuadrado a $[0,\infty)$ hace única la entrada de cada salida alcanzada; declarar luego codominio $[0,\infty)$ hace que todas las salidas declaradas se alcancen.
-
-### Cuándo existe una inversa
+Pertenecer a cualquiera de los dos lados exige exactamente $x\in A$ y $f(x)\in B$. La restricción conserva los valores y el codominio $E$; no lo sustituye automáticamente por la imagen. Para el cuadrado, restringir entradas a $[0,\infty)$ elimina las colisiones y da inyectividad, pero con codominio $\mathbb R$ siguen faltando entradas para todas las salidas negativas. Sólo al declarar además codominio $[0,\infty)$ obtenemos sobreyectividad, gracias a la existencia y unicidad de la raíz no negativa de §10.7.
 
 $f:D\to E$ es **sobreyectiva** si $f[D]=E$, y **biyectiva** si además es inyectiva. Sólo entonces existe una función inversa $h:E\to D$ que deshace $f$ en ambas direcciones:
 
@@ -1178,13 +1152,13 @@ $$
 h\circ f=\operatorname{id}_D,\qquad f\circ h=\operatorname{id}_E.
 $$
 
-Construyámosla. Para cada $y\in E$, sobreyectividad proporciona $x\in D$ con $f(x)=y$; inyectividad asegura que ese $x$ es único. Definimos $h(y)$ como esa entrada. Entonces $h(f(x))=x$ y $f(h(y))=y$, que son las identidades anunciadas. Si otra función $k$ las cumple, $f(k(y))=y=f(h(y))$ e inyectividad da $k(y)=h(y)$ para todo $y$; la inversa es única.
+La sobreyectividad proporciona, para cada $y\in E$, alguna entrada $x\in D$ con $f(x)=y$; la inyectividad impide que haya dos. Definimos $h(y)$ como esa única entrada. Para $x\in D$, la entrada que produce $f(x)$ sólo puede ser $x$, luego $h(f(x))=x$. Para $y\in E$, la propia definición da $f(h(y))=y$. Si otra función $k:E\to D$ deshiciera $f$, entonces $f(k(y))=y=f(h(y))$ y la inyectividad daría $k(y)=h(y)$ para todo $y$. Así la inversa existe y es única; la definición por entrada única no obliga a escoger arbitrariamente entre varias candidatas.
 
-También la condición es necesaria. Si existen las dos identidades, de $f(x)=f(z)$ obtenemos $x=h(f(x))=h(f(z))=z$, luego inyectividad. Para cada $y\in E$, $x=h(y)$ cumple $f(x)=y$, luego sobreyectividad. Hemos probado ambas direcciones.
+Las dos identidades también obligan a las hipótesis. Si $f(x)=f(z)$, aplicar $h$ y usar $h\circ f=\operatorname{id}_D$ da $x=z$. Para una salida cualquiera $y\in E$, la identidad $f\circ h=\operatorname{id}_E$ proporciona la entrada $h(y)$ que la alcanza. La primera recupera entradas y fuerza inyectividad; la segunda alcanza salidas y fuerza sobreyectividad. Se necesitan ambas para deshacer la función en los dos sentidos.
 
-Escribimos $h=f^{-1}$ sólo tras esta verificación. Ahora sí $f^{-1}(y)$ es una entrada y $f^{-1}[B]=h[B]$ es su colección para $y\in B$. En efecto, $x$ pertenece al primer conjunto si $f(x)\in B$, y entonces $x=h(f(x))$ está en $h[B]$; recíprocamente $x=h(y)$ con $y\in B$ implica $f(x)=y\in B$.
+Tras probarlo, escribimos $h=f^{-1}$. La evaluación $f^{-1}(y)$ es entonces una entrada única. Para $B\subseteq E$, su imagen por $h$ coincide con la preimagen ya definida: si $f(x)\in B$, entonces $x=h(f(x))\in h[B]$; si $x=h(y)$ con $y\in B$, entonces $f(x)=y\in B$. Por tanto $f^{-1}[B]=h[B]$. Esta coincidencia explica la notación, pero la selección de preimágenes estaba disponible incluso cuando no existía $h$.
 
-Para $f(x)=2x+1$ como aplicación $\mathbb R\to\mathbb R$, la igualdad de salidas da $x=z$, y para cualquier $y$ sirve $x=(y-1)/2$. La inversa es $h(y)=(y-1)/2$. Para el cuadrado real completo no existe inversa; para la aplicación $[0,\infty)\to[0,\infty)$ sí, y es la raíz no negativa. El tipo decide qué puede deshacerse.
+Para $f:\mathbb R\to\mathbb R$, $f(x)=2x+1$, despejar $y=2x+1$ da $x=(y-1)/2$, una entrada real única para cualquier $y$. La candidata $h(y)=(y-1)/2$ verifica $h(f(x))=x$ y $f(h(y))=y$ por sustitución. El cuadrado en toda la recta carece de inversa; como aplicación $[0,\infty)\to[0,\infty)$ sí la tiene, dada por la raíz no negativa. El mismo cálculo de una raíz cambia de función cuando cambian los tipos.
 
 ### Antes de seguir
 
@@ -1410,6 +1384,7 @@ La candidata $h=f^{-1}\circ g^{-1}:F\to D$ está tipada. Para $x\in D$, $h(g(f(x
 Una salida final $z\in F$ se deshace primero mediante $g^{-1}$, que la lleva al conjunto intermedio $E$. Después $f^{-1}$ la lleva a la entrada inicial en $D$. Invertir ese orden daría, en general, una composición sin tipos compatibles. Las dos identidades verificadas garantizan tanto recuperar todas las entradas como producir todas las salidas; juntas prueban biyectividad. La comprobación debe hacerse para variables arbitrarias de ambos conjuntos, no para ejemplos puntuales.
 
 </details>
+
 ## 12.6. Transportar el orden no rellena los huecos
 
 []{#MA-SEC-ANM-01-012-006}
@@ -1422,9 +1397,7 @@ $$
 
 Es **estrictamente creciente** cuando $x<y$ implica $f(x)<f(y)$. «No creciente» y «estrictamente decreciente» invierten las desigualdades entre salidas. Siempre declaramos cuál sentido usamos: algunas convenciones llaman creciente al caso no estricto.
 
-### Orden estricto y recuperación
-
-Una función estrictamente creciente es inyectiva. Si $x\ne y$, la tricotomía da $x<y$ o $y<x$; en ambos casos sus salidas son distintas. La misma prueba sirve para una estrictamente decreciente. Una no decreciente puede ser constante en todo su dominio y no ser inyectiva.
+Una función estrictamente creciente es inyectiva. Dos entradas distintas se ordenan por tricotomía: si $x<y$, sus salidas satisfacen $f(x)<f(y)$, y si $y<x$ sucede lo contrario; no pueden coincidir. El mismo argumento sirve para una función estrictamente decreciente y no requiere que el dominio sea un intervalo. Una constante es no decreciente y no creciente a la vez; en un dominio con al menos dos entradas distintas no es inyectiva.
 
 Si $f$ es no decreciente y $a,b\in D$ con $a\le b$, entonces
 
@@ -1432,9 +1405,7 @@ $$
 f[D\cap[a,b]]\subseteq[f(a),f(b)].
 $$
 
-Cada entrada $x$ del conjunto cumple $a\le x\le b$, de donde $f(a)\le f(x)\le f(b)$. Esto es una inclusión, no una igualdad prometida: el argumento controla las salidas que existen, pero no produce testigos para todas las salidas intermedias.
-
-### Un salto que conserva el orden
+Para cada $x\in D\cap[a,b]$, las dos comparaciones $a\le x$ y $x\le b$ dan $f(a)\le f(x)\le f(b)$. Esto sitúa todas las salidas producidas entre las extremas. Para convertir la inclusión en igualdad faltaría producir una entrada para cada número intermedio; la prueba de monotonía todavía no ha ofrecido esos testigos.
 
 Definamos $s:\mathbb R\to\mathbb R$ por
 
@@ -1442,7 +1413,7 @@ $$
 s(x)=\begin{cases}x,&x<0,\\x+1,&x\ge0.\end{cases}
 $$
 
-Es estrictamente creciente. Para dos entradas negativas o dos no negativas, la diferencia de salidas es la diferencia de entradas. Si $x<0\le y$, entonces $s(x)=x<0<1\le y+1=s(y)$. Son todos los casos para $x<y$.
+Para demostrar que es estrictamente creciente debemos comprobar todos los pares $x<y$. Si ambos son negativos, las salidas conservan esas entradas; si ambos son no negativos, sumar uno conserva su orden estricto. En el caso que cruza cero, $x<0\le y$ da $s(x)=x<0<1\le y+1=s(y)$. Los tres casos agotan las posiciones posibles y prueban el crecimiento en toda la recta.
 
 Sin embargo,
 
@@ -1450,15 +1421,13 @@ $$
 s[[-1,1]]=[-1,0)\cup[1,2].
 $$
 
-En la rama negativa alcanzamos exactamente $[-1,0)$; en la no negativa exactamente $[1,2]$. El valor $1/2$ queda entre $s(-1)=-1$ y $s(1)=2$, pero no tiene entrada. Monotonía estricta no rellena huecos. Un resultado que garantice salidas intermedias necesitará otra hipótesis, que estudiaremos más adelante.
+La rama de entradas $[-1,0)$ mantiene exactamente esas salidas, mientras $[0,1]$ se traslada a $[1,2]$. Cada valor de la primera pieza se alcanza en sí mismo y cada valor $t$ de la segunda en $t-1$. El número $1/2$ está entre $s(-1)=-1$ y $s(1)=2$, pero ninguna rama lo alcanza. Ordenar estrictamente las salidas existentes permite un hueco en la imagen. Para garantizar todas las salidas intermedias hará falta otra hipótesis.
 
-![El salto conserva el orden estricto entre todas las entradas, pero la imagen de \[-1,1\] es \[-1,0) unión \[1,2\]. Ordenar salidas existentes no produce las que faltan.](../../assets/books/anm/C12/C12-F04.svg){#fig-anm-c12-f04 fig-alt="El salto conserva el orden estricto entre todas las entradas, pero la imagen de \[-1,1\] es \[-1,0) unión \[1,2\]. Ordenar salidas existentes no produce las que faltan."}
+![El salto conserva el orden estricto entre todas las entradas, pero la imagen de \[-1,1\] es \[-1,0) unión \[1,2\]. Ordenar salidas existentes no produce las que faltan.](../../assets/books/anm/revision-20261016/C12/C12-F04.svg){#fig-anm-c12-f04 fig-alt="Gráfica de s(x)=x para x negativo y s(x)=x+1 para x no negativo en [-1,1]: punto abierto en (0,0), cerrado en (0,1); la imagen omite [0,1)."}
 
-### Las funciones afines permiten un cálculo completo
+En una aplicación afín $h(x)=mx+b$, la diferencia $h(y)-h(x)=m(y-x)$ decide el orden. Para $x<y$, el factor $y-x$ es positivo: si $m>0$ la diferencia es positiva y hay crecimiento estricto; si $m<0$ es negativa y hay decrecimiento estricto; si $m=0$ todas las salidas coinciden. La constante de traslación se cancela.
 
-Para $h(x)=mx+b$ como aplicación real, la diferencia $h(y)-h(x)=m(y-x)$ decide el orden: creciente estricta si $m>0$, decreciente estricta si $m<0$, constante si $m=0$.
-
-Para calcular las imágenes de intervalos, escribamos $h(x)=mx+c$, con $c$ como término independiente. Así,
+Escribamos el término independiente como $c$ al calcular la imagen de $[a,b]$, para no confundirlo con el extremo derecho. Para $a\le b$ obtenemos
 
 $$
 h[[a,b]]=[ma+c,mb+c]\quad(m>0),
@@ -1468,9 +1437,9 @@ $$
 h[[a,b]]=[mb+c,ma+c]\quad(m<0).
 $$
 
-La inclusión sale del orden. Para la inclusión inversa, dado $t$ entre las salidas extremas, $x=(t-c)/m$ satisface las desigualdades de entrada, con inversión al dividir por $m<0$, y alcanza $t$. La misma prueba para extremos estrictos da imágenes de intervalos abiertos, y permite decidir cada extremo en intervalos semiabiertos. Si $m=0$ y el intervalo es no vacío, la imagen es $\{c\}$.
+El orden prueba la inclusión de cada imagen en el intervalo indicado. Para la vuelta, fijamos una salida $t$ entre las extremas y despejamos $x=(t-c)/m$. Si $m>0$, dividir mantiene las desigualdades; si $m<0$, las invierte. En ambos casos obtenemos $a\le x\le b$ y $h(x)=t$, que acredita todas las salidas del intervalo. La misma resolución con desigualdades estrictas trata intervalos abiertos o semiabiertos y decide cuál extremo se incluye. Cuando $m=0$, la fórmula de despeje no se usa: todo intervalo no vacío tiene imagen $\{c\}$.
 
-El cuadrado es estrictamente creciente en $[0,\infty)$ y estrictamente decreciente en $(-\infty,0]$. Para $0\le x<y$, $y^2-x^2=(y-x)(y+x)>0$. Para $x<y\le0$, ambos factores tienen signos que dan $y^2-x^2<0$. Separar ramas explica por qué el cuadrado no conserva el orden en toda la recta y por qué una sola fórmula puede requerir dos mecanismos de transporte.
+Las dos ramas del cuadrado muestran por qué el dominio importa también para el orden. Si $0\le x<y$, entonces $y-x>0$ y $y+x>0$, de modo que $y^2-x^2=(y-x)(y+x)>0$. Si $x<y\le0$, el primer factor sigue siendo positivo y el segundo es negativo, luego $y^2-x^2<0$. Así el cuadrado crece estrictamente en $[0,\infty)$ y decrece estrictamente en $(-\infty,0]$, con cero incluido en ambas ramas, pero no tiene un mismo sentido de monotonía en toda la recta.
 
 ### Antes de seguir
 
@@ -1698,13 +1667,12 @@ Intercambiamos $0$ y $1$ y fijamos todo otro real: $f(0)=1$, $f(1)=0$, $f(x)=x$ 
 La asignación intercambia dos entradas y deja todas las demás fijas. Aplicarla dos veces restaura cada real, lo que proporciona una inversa igual a ella misma y prueba biyectividad. Un par de entradas prueba el fallo del crecimiento no estricto y otro prueba el fallo del decrecimiento no estricto. La conclusión no se deriva sólo de que la función parezca irregular: cada propiedad universal se refuta mediante testigos explícitos.
 
 </details>
+
 ## 12.7. Distancia y escala: medir la deformación
 
 []{#MA-SEC-ANM-01-012-007}
 
-Conservar el orden no dice cuánto se separan las salidas. Una transformación puede mantener izquierda y derecha mientras amplía las distancias; otra puede invertir el orden y conservar todas las distancias. Mediremos esto mediante pares de entradas.
-
-### Escala exacta en una aplicación afín
+La función $x\mapsto-x$ invierte el orden y conserva todas las distancias; $x\mapsto2x$ conserva el orden y duplica las distancias. Para distinguir esos efectos debemos comparar separaciones, además de posiciones relativas. Las aplicaciones afines permiten calcular ambos cambios exactamente.
 
 Si $h(x)=mx+c$, entonces para todo $x,y\in\mathbb R$,
 
@@ -1712,11 +1680,9 @@ $$
 |h(x)-h(y)|=|m(x-y)|=|m|\,|x-y|.
 $$
 
-La traslación $c$ se cancela. El factor métrico es $|m|$, mientras que el signo de $m$ decide la orientación. Para $m=-1$ se invierte el orden y se conserva la distancia; para $m=2$ se conserva el orden y se duplica la distancia; para $m=0$ todas las distancias se vuelven cero.
+La constante $c$ desaparece al restar. La magnitud $|m|$ fija la escala métrica y el signo de $m$ fija la orientación. Con $m=-1$ las salidas se ordenan al revés y mantienen su distancia; con $m=2$ mantienen el orden y duplican la separación; con $m=0$ las distancias se anulan. El factor $|m|$ es además la menor cota no negativa posible en toda la recta: cualquier cota debe funcionar para las entradas cero y uno y, por tanto, ser al menos $|m|$.
 
-![La traslación cambia posición, el signo de m cambia orientación y |m| cambia distancia. Los tres papeles se separan en h(x)=mx+c.](../../assets/books/anm/C12/C12-F05.svg){#fig-anm-c12-f05 fig-alt="La traslación cambia posición, el signo de m cambia orientación y |m| cambia distancia. Los tres papeles se separan en h(x)=mx+c."}
-
-### Una cota uniforme es una afirmación sobre todo el dominio
+![La traslación cambia posición, el signo de m cambia orientación y |m| cambia distancia. Los tres papeles se separan en h(x)=mx+c.](../../assets/books/anm/revision-20261016/C12/C12-F05.svg){#fig-anm-c12-f05 fig-alt="Tres transportes de las entradas cero y uno: x+2 conserva distancia uno; -x+2 invierte orientación y conserva distancia uno; 2x+2 duplica distancia a dos."}
 
 Una función $f:D\to\mathbb R$ tiene **cota de expansión $L$**, o es $L$-Lipschitz, si $L\ge0$ y
 
@@ -1724,7 +1690,7 @@ $$
 |f(x)-f(y)|\le L|x-y|\qquad\text{para todos }x,y\in D.
 $$
 
-El mismo $L$ debe servir para todos los pares. No basta calcular el cociente para dos entradas seleccionadas. La desigualdad tiene sentido también cuando $x=y$, sin dividir por cero. Si $0\le L<1$, esta estimación expresa contracción de distancias; si $L=1$, impide expansión; no exige igualdad exacta.
+La constante $L$ puede depender de la función y del dominio, pero se fija antes de elegir el par y debe servir para todos sus elementos. La estimación también incluye $x=y$, donde ambos miembros valen cero; formularla sin cocientes evita dividir por esa distancia nula. Si $0\le L<1$, expresa contracción; si $L=1$, prohíbe expansión, aunque algunas distancias puedan disminuir. Una muestra de pares comprueba esos casos particulares y deja pendiente la afirmación universal.
 
 Por la desigualdad triangular, $|x|\le|x-y|+|y|$ y $|y|\le|x-y|+|x|$. Restando obtenemos
 
@@ -1732,9 +1698,7 @@ $$
 \bigl||x|-|y|\bigr|\le|x-y|.
 $$
 
-Por tanto $x\mapsto|x|$ tiene cota $1$, aunque identifica $x$ y $-x$. Una cota superior de distancia no garantiza que la entrada pueda recuperarse.
-
-### El dominio cambia el control del cuadrado
+Así $x\mapsto|x|$ tiene cota de expansión uno. Esa cota es óptima: las entradas cero y uno conservan distancia uno. Sin embargo, las entradas $x$ y $-x$ comparten salida. Un control superior limita cuánto pueden separarse las salidas y permite que dos de ellas colapsen en una sola.
 
 Para $q(x)=x^2$,
 
@@ -1742,11 +1706,9 @@ $$
 |q(x)-q(y)|=|x-y|\,|x+y|.
 $$
 
-Si $x,y\in[-R,R]$ con $R>0$, $|x+y|\le|x|+|y|\le2R$, y obtenemos cota $2R$. La factorización produce el control; el dominio lo hace uniforme.
+La fórmula contiene un factor variable $|x+y|$. Si el dominio es $[-R,R]$ con $R>0$, la triangular da $|x+y|\le|x|+|y|\le2R$. Al sustituir, obtenemos $|q(x)-q(y)|\le2R|x-y|$ para todos los pares del intervalo. La restricción del dominio proporciona la misma cota para ese factor antes de conocer las entradas.
 
-No existe una cota finita $L$ para el cuadrado en toda $\mathbb R$. Dado cualquier $L\ge0$, tomemos $x=L+1$ e $y=x+1$. Su distancia es $1$, pero la distancia de salidas es $2x+1=2L+3>L$. Hemos elegido un par después de recibir la constante propuesta y refutado su universalidad. No necesitamos derivadas.
-
-### Control inferior y composición
+En toda la recta no existe tal cota finita. Recibamos cualquier $L\ge0$ propuesto y elijamos después $x=L+1$, $y=L+2$. Las entradas distan uno y sus cuadrados distan $(L+2)^2-(L+1)^2=2L+3>L$, contra la estimación. Como el par se construye ante cualquier constante, refuta la existencia de una cota global. El argumento es algebraico y no utiliza derivadas.
 
 Si además existe $c>0$ con
 
@@ -1754,15 +1716,15 @@ $$
 c|x-y|\le|f(x)-f(y)|\qquad(x,y\in D),
 $$
 
-$f$ es inyectiva: salidas iguales fuerzan $c|x-y|=0$, luego $x=y$. Para la inversa sobre la imagen, $h:f[D]\to D$, poniendo $u=f(x)$ y $v=f(y)$ se obtiene $|h(u)-h(v)|\le |u-v|/c$. Su dominio es la imagen, aunque el codominio original de $f$ sea mayor.
+entonces $f$ es inyectiva. En efecto, si dos salidas coinciden, el lado derecho es cero y obliga a $c|x-y|=0$; la positividad de $c$ da $x=y$. Para construir la inversa declaramos codominio $f[D]$, que contiene exactamente las salidas con entrada, y obtenemos $h:f[D]\to D$. Dado cualquier par $u,v\in f[D]$, sus entradas únicas $x=h(u)$, $y=h(v)$ satisfacen $c|h(u)-h(v)|\le|u-v|$. Dividir por $c>0$ da $|h(u)-h(v)|\le|u-v|/c$. La cota inferior original se convierte en una cota superior de la recuperación; la inversa sólo se evalúa en la imagen, aunque el codominio original fuese mayor.
 
-Finalmente, si $f:D\to E\subseteq\mathbb R$ tiene cota $L$ y $g:E\to\mathbb R$ tiene cota $M$, entonces
+Si $f:D\to E\subseteq\mathbb R$ tiene cota de expansión $L$ y $g:E\to\mathbb R$ tiene cota $M$, las salidas intermedias $f(x),f(y)$ pertenecen al dominio donde se aplica la segunda estimación. Por ello,
 
 $$
 |g(f(x))-g(f(y))|\le M|f(x)-f(y)|\le ML|x-y|.
 $$
 
-El producto controla la composición. Estos son controles algebraicos de distancia; su relación con límites y continuidad se desarrollará después, sin usarla como herramienta aquí.
+Los factores se multiplican: la segunda etapa actúa sobre una distancia ya controlada por la primera. Si uno vale cero, la composición tiene cota cero y las mismas desigualdades siguen siendo válidas. Estas estimaciones se han obtenido comparando valores mediante álgebra; no hemos invocado una teoría posterior de límites o continuidad.
 
 ### Antes de seguir
 
@@ -1988,29 +1950,26 @@ $q$ tiene cota $4$ y $h$ tiene escala exacta $3$, luego la composición tiene co
 El factor cuatro del cuadrado en $[-2,2]$ se multiplica por la escala exacta tres de la segunda etapa, dando doce. Que el producto sea una cota no demuestra por sí solo optimalidad; ésta requiere otro argumento. Los pares cercanos al extremo dos tienen cociente de distancias $3(x+y)$ próximo a doce. La elección indicada mantiene ambas entradas en el dominio y supera cualquier factor menor propuesto. Así la cota compuesta resulta óptima en este caso concreto.
 
 </details>
+
 ## 12.8. Representaciones y ventanas de control
 
 []{#MA-SEC-ANM-01-012-008}
 
-Una gráfica organiza entradas horizontalmente y salidas verticalmente; una tabla fija algunas evaluaciones; una representación por flechas muestra identificaciones; una imagen de rejilla revela cómo se deforman direcciones. Cada representación responde preguntas distintas. Ninguna sustituye el tipo ni las pruebas de transporte.
+Un dibujo del grafo coloca una entrada real en el eje horizontal y su salida en el vertical. Una transformación de una rejilla hace algo diferente: recibe un punto del plano entero y devuelve otro punto. Aunque ambos objetos puedan dibujarse en una hoja, sus tipos y el papel de las coordenadas no coinciden.
 
-### Una rejilla necesita una función planar
-
-Para hacer literal la transformación de una rejilla, ampliamos el universo y lo declaramos:
+Para transformar una rejilla declaramos una función entre planos:
 
 $$
 T:\mathbb R^2\to\mathbb R^2,\qquad T(u,v)=(u+v,v).
 $$
 
-La entrada es un par y la salida otro par. $T$ no es una función escalar $\mathbb R\to\mathbb R$, ni es el grafo de una función escalar. Su inversa es $S(a,b)=(a-b,b)$: sustituir da $S(T(u,v))=(u,v)$ y $T(S(a,b))=(a,b)$. Ambas composiciones están tipadas en $\mathbb R^2$.
+La salida $(u+v,v)$ es un único elemento de $\mathbb R^2$, con dos coordenadas; no son dos resultados alternativos. Para recuperar la entrada a partir de $(a,b)$, las ecuaciones $a=u+v$, $b=v$ dan $v=b$ y $u=a-b$. La candidata $S:\mathbb R^2\to\mathbb R^2$, $S(a,b)=(a-b,b)$, verifica $S(T(u,v))=(u,v)$ y $T(S(a,b))=(a,b)$. Así se prueba la inversa para todo punto, sin deducirla de la apariencia del dibujo.
 
-La recta horizontal $v=k$ se transforma en $(u+k,k)$ y sigue siendo horizontal. La recta vertical $u=j$ se transforma en $(j+v,v)$, una recta oblicua. En particular, el cuadrado con vértices $(0,0),(1,0),(1,1),(0,1)$ se transforma en el paralelogramo de vértices $(0,0),(1,0),(2,1),(1,1)$. Los lados horizontales conservan longitud; un lado vertical unitario pasa a tener longitud $\sqrt2$ según la distancia euclídea $\sqrt{(a-c)^2+(b-d)^2}$. La deformación depende de la dirección, no de un único factor de escala exacto.
+En la horizontal $v=k$, los puntos se transforman en $(u+k,k)$: la segunda coordenada permanece fija y la primera recorre todos los reales, por lo que se obtiene toda la misma horizontal. En la vertical $u=j$, las salidas $(j+v,v)$ cumplen $a-b=j$. Recíprocamente, cualquier punto con $a-b=j$ proviene de $(j,b)$, así que se obtiene toda esa recta oblicua. El cuadrado de vértices $(0,0),(1,0),(1,1),(0,1)$ tiene vértices imagen $(0,0),(1,0),(2,1),(1,1)$. De hecho, toda su imagen se describe por $0\le b\le1$ y $b\le a\le b+1$: las desigualdades equivalen a que su entrada recuperada $(a-b,b)$ esté en $[0,1]^2$. Así se controla también el interior y la frontera del paralelogramo.
 
-![T:R²→R² transporta el cuadrado unitario a un paralelogramo. Su inversa (a,b)↦(a−b,b) recupera las entradas; la escala depende de la dirección.](../../assets/books/anm/C12/C12-F06.svg){#fig-anm-c12-f06 fig-alt="T:R²→R² transporta el cuadrado unitario a un paralelogramo. Su inversa (a,b)↦(a−b,b) recupera las entradas; la escala depende de la dirección."}
+![T:R²→R² transporta el cuadrado unitario a un paralelogramo. Su inversa (a,b)↦(a−b,b) recupera las entradas; la escala depende de la dirección.](../../assets/books/anm/revision-20261016/C12/C12-F06.svg){#fig-anm-c12-f06 fig-alt="Rejilla cuadrada antes y después de T(u,v)=(u+v,v), con cuadrado unitario sombreado y su paralelogramo imagen; horizontales conservadas, verticales oblicuas."}
 
-La rejilla es un conjunto de rectas; su transporte se define punto a punto por $T$. No se deduce ninguna propiedad de una región infinita sólo porque un dibujo muestre seis segmentos. Las fórmulas de las rectas y la inversa justifican lo que la figura representa.
-
-### Dos ventanas y una sola condición de transporte
+La distancia euclídea entre $(a,b)$ y $(c,d)$ es $\sqrt{(a-c)^2+(b-d)^2}$. El segmento horizontal de $(0,0)$ a $(1,0)$ conserva longitud uno bajo $T$; el vertical de $(0,0)$ a $(0,1)$ pasa al segmento de $(0,0)$ a $(1,1)$ y tiene longitud $\sqrt2$. Un factor exacto común tendría que ser uno por el primer segmento y $\sqrt2$ por el segundo, lo que es imposible. Las fórmulas de las rectas y la inversa justifican el transporte de la rejilla entera; la muestra finita sólo lo representa.
 
 Regresemos a $f:D\to E$, con $D,E\subseteq\mathbb R$. Para $A\subseteq D$ y $B\subseteq E$,
 
@@ -2018,7 +1977,7 @@ $$
 f[A]\subseteq B\quad\Longleftrightarrow\quad A\subseteq f^{-1}[B].
 $$
 
-Si $f[A]\subseteq B$, cada $x\in A$ tiene $f(x)\in f[A]\subseteq B$, luego $x\in f^{-1}[B]$. Recíprocamente, si $A\subseteq f^{-1}[B]$ y $y\in f[A]$, un testigo $x\in A$ cumple $f(x)=y$ y $f(x)\in B$; entonces $y\in B$. Las dos implicaciones mantienen el tipo de los conjuntos.
+En la primera dirección, $x\in A$ implica $f(x)\in f[A]\subseteq B$ y, por definición, $x\in f^{-1}[B]$. En la vuelta, una salida $y\in f[A]$ tiene un testigo $x\in A$; la inclusión de entradas lo sitúa en $f^{-1}[B]$ y da $y=f(x)\in B$. La equivalencia expresa el mismo control en dos conjuntos distintos y no exige que $f$ sea invertible.
 
 Con $x_0\in D$ y radios $r,\rho>0$, podemos aplicar esta equivalencia a
 
@@ -2026,25 +1985,23 @@ $$
 U=D\cap B(x_0,r),\qquad V=E\cap B(f(x_0),\rho).
 $$
 
-Transportar toda la ventana de entrada dentro de la ventana de salida equivale a que la primera esté contenida en la preimagen de la segunda. Son radios fijos, no una definición de límite. Una función arbitraria puede incumplir la inclusión, aunque el centro sí esté en la preimagen.
+La ventana $U$ sólo contiene entradas donde podemos evaluar $f$. Si, por ejemplo, $D=[0,\infty)$ y $x_0=0$, una bola real también contiene negativos y es necesario recortarla por $D$. De modo análogo, $V$ conserva las salidas permitidas por $E$. La equivalencia dice que transportar toda $U$ dentro de $V$ es lo mismo que incluir $U$ en $f^{-1}[V]$. Los radios son fijos: todavía no se ha formulado una condición de límite ni asegurado que la inclusión valga para una función arbitraria.
 
-Para $q(x)=x^2$, $x_0=1$, $r=1/4$ y $\rho=1$, las entradas de $U=(3/4,5/4)$ satisfacen $|x+1|<9/4$, por lo que
+Para el cuadrado real, tomemos $x_0=1$, $r=1/4$ y $\rho=1$. La ventana de entrada es $U=(3/4,5/4)$ y la de salida $(0,2)$. Si $|x-1|<1/4$, la triangular da $|x+1|=|(x-1)+2|<9/4$. Factorizar la diferencia de cuadrados aprovecha precisamente ese control:
 
 $$
 |q(x)-q(1)|=|x-1|\,|x+1|<\frac14\frac94=\frac9{16}<1.
 $$
 
-Así $q[U]\subseteq(0,2)$, y equivalentemente $U\subseteq q^{-1}[(0,2)]$. Hemos certificado la inclusión mediante una estimación; la apariencia de la parábola no es la prueba.
+La estimación vale para cada entrada de $U$, de modo que certifica $q[U]\subseteq(0,2)$ y, equivalentemente, $U\subseteq q^{-1}[(0,2)]$. La preimagen completa es $(-\sqrt2,0)\cup(0,\sqrt2)$; $U$ ocupa sólo una parte de ella. Para asegurar la inclusión basta una cota de todos sus puntos, sin calcular ni observar por separado infinitas evaluaciones.
 
-### Pertenecer no es rodear
+La función de salto de §12.6 ofrece una selección de otro tipo. Como $s(0)=1$, consideremos $B(1,1/4)=(3/4,5/4)$. Ninguna entrada negativa sirve: su salida es negativa. Para las no negativas, la condición $3/4<x+1<5/4$ equivale a $-1/4<x<1/4$, y recortarla por $x\ge0$ deja $s^{-1}[B(1,1/4)]=[0,1/4)$.
 
-Para la función de salto $s$ de §12.6, $s(0)=1$. La preimagen de la bola $B(1,1/4)=(3/4,5/4)$ es $[0,1/4)$. En la rama negativa no hay salida positiva; en la no negativa la condición es $3/4<x+1<5/4$, que recortada por $x\ge0$ da ese intervalo.
+La preimagen contiene cero, pero no es una vecindad real de cero. Para cualquier radio $r>0$, la entrada $-r/2$ pertenece a $B(0,r)$ y queda fuera de $[0,1/4)$. Por tanto ninguna bola real centrada en cero está contenida en esa selección. El universo importa: una vecindad relativa a un dominio restringido a los no negativos respondería a otra pregunta. Aquí seguimos en toda la recta, como en C04.
 
-La preimagen contiene $0$, pero no es vecindad de $0$ en la recta: ninguna bola de radio positivo centrada en cero cabe en ella, pues siempre contiene entradas negativas. Es la distinción de C04 aplicada a una selección por salidas. El transporte de ventanas planteará nuevas preguntas en el capítulo siguiente.
+La comparación entre las dos ventanas termina en una diferencia precisa. En el cuadrado hemos encerrado las salidas de toda una bola alrededor de la entrada; la preimagen del salto contiene el centro y excluye todas las entradas negativas, por próximas que estén a él. Para estudiar cómo se comporta una función cerca de un punto tendremos que seguir controlando conjuntos completos de entradas próximas, conservando los dominios y los radios en cada afirmación.
 
-Volvemos a la pregunta inicial: una función transporta puntos y conjuntos; puede identificar entradas, omitir salidas, invertir el orden o deformar distancias. Imagen, preimagen, tipo y estimaciones nos permiten especificar qué ocurre antes de introducir cualquier teoría de límites de funciones.
-
-![En el cuadrado, una estimación certifica que una ventana completa cabe en la preimagen. En el salto, la preimagen contiene el centro pero no es vecindad. La pertenencia y el margen alrededor del centro son datos distintos.](../../assets/books/anm/C12/C12-F07.svg){#fig-anm-c12-f07 fig-alt="En el cuadrado, una estimación certifica que una ventana completa cabe en la preimagen. En el salto, la preimagen contiene el centro pero no es vecindad. La pertenencia y el margen alrededor del centro son datos distintos."}
+![En el cuadrado, una estimación certifica que una ventana completa cabe en la preimagen. En el salto, la preimagen contiene el centro pero no es vecindad. La pertenencia y el margen alrededor del centro son datos distintos.](../../assets/books/anm/revision-20261016/C12/C12-F07.svg){#fig-anm-c12-f07 fig-alt="Comparación de ventanas: para el cuadrado alrededor de uno, la ventana (3/4,5/4) está dentro de la preimagen de (0,2); para el salto, la preimagen de (3/4,5/4) es [0,1/4) y no rodea cero."}
 
 ### Antes de seguir
 

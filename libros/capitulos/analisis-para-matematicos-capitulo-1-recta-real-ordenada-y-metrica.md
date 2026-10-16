@@ -9,7 +9,7 @@ book-id: MA-BOK-0010
 status: published
 solution-status: complete
 date-created: 2026-09-30
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 areas:
 - analisis
 level: universitario
@@ -30,83 +30,29 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-1)
 
-[]{#MA-SEC-ANM-01-001-008}
+En la configuración $0<1<4$, el punto intermedio está a una unidad del extremo izquierdo y a tres del derecho. En $0<2<4$, las dos separaciones son iguales. El patrón de orden es el mismo, aunque las distancias difieren; si reflejamos cualquiera de las dos configuraciones respecto del origen, ocurre algo complementario: todas sus separaciones se conservan y la orientación se invierte. Estos ejemplos permiten distinguir dos preguntas que el dibujo habitual de la recta reúne con tanta facilidad que a menudo dejamos de advertir la diferencia: dónde está un punto respecto de otro y cuánto los separa.
 
-A esta altura ya hemos usado la recta real tantas veces que cuesta verla como un objeto que merezca explicación. Dibujamos puntos sobre ella, resolvemos desigualdades, hablamos de intervalos, seguimos el movimiento de una variable y, si alguien escribe $x<y$, casi sentimos que la posición de ambos números está delante de nosotros. La recta se ha vuelto tan familiar que muchas ideas distintas terminan fundiéndose en una sola imagen.
-
-Pero justamente ahí aparece una buena pregunta: **¿qué estamos usando realmente cada vez que razonamos sobre la recta?**
-
-A veces necesitamos saber qué número está antes que otro; otras veces no nos importa quién está a la izquierda, sino cuánto separa a dos puntos; en otros argumentos hacemos operaciones algebraicas y sólo después interpretamos geométricamente lo que obtuvimos. Todo ocurre sobre los mismos números reales, pero no todo pertenece a la misma estructura.
-
-Ese será nuestro punto de partida. No vamos a reconstruir $\mathbb R$ desde sus fundamentos ni a repetir las técnicas elementales que ya manejamos. Vamos a hacer algo más útil para el análisis: tomar la recta que ya conocemos y preguntarnos qué información contiene cada una de las maneras habituales de mirarla.
-
-La pregunta que guiará el capítulo es:
-
-> **¿Qué información obtenemos al saber dónde está un punto en el orden de la recta y qué información obtenemos al saber a qué distancia está de otro?**
-
-No intentemos responderla demasiado rápido. Si lo hiciéramos, probablemente diríamos que ambas cosas son más o menos lo mismo, porque en la recta los intervalos, las desigualdades y las distancias parecen encajar de manera casi automática. Y es verdad que encajan extraordinariamente bien; lo interesante será descubrir **por qué** encajan y, antes de eso, aprender a distinguir las piezas.
-
-Empezaremos separando las distintas estructuras que solemos superponer en un mismo dibujo. Después veremos cómo el orden produce intervalos, cómo el valor absoluto deja de ser una regla algebraica algo misteriosa cuando lo leemos como distancia y, finalmente, por qué una condición métrica puede transformarse en una condición de intervalo. Ese ir y venir entre lenguajes será una de las herramientas básicas del análisis.
+La construcción del capítulo anterior nos proporciona un cuerpo ordenado completo. Sobre esa estructura definiremos una distancia mediante el valor absoluto y estudiaremos cómo se relaciona con el orden. Una condición de cercanía acabará describiendo un intervalo, y la igualdad en una estimación de distancias permitirá reconocer cuándo un punto está entre otros dos. Cada traducción tendrá una justificación propia; la familiaridad de la recta ayudará a encontrarla, pero las conclusiones descansarán en las propiedades demostradas.
 
 ## 1.1. La misma recta, varias estructuras
 
-Escribamos simplemente $\mathbb R$ y hagamos una pausa. ¿Qué hemos escrito?
+[]{#MA-SEC-ANM-01-001-001}
 
-La respuesta obvia es «los números reales», pero eso todavía deja abierta la pregunta importante. Sobre esos números podemos sumar y multiplicar; podemos decidir si uno es menor que otro; podemos colocarlos sobre una recta y medir separaciones. El conjunto de puntos es el mismo, pero las preguntas que hacemos no lo son.
+La afirmación $x<y$ compara posiciones en el orden real; una igualdad como $x+y=z$ relaciona los mismos números mediante una operación algebraica. Si preguntamos si la separación de $x$ e $y$ coincide con la de otros dos puntos $u$ y $v$, estamos pidiendo información métrica. Un argumento puede necesitar las tres estructuras, pero la presencia de los mismos símbolos no permite sustituir una clase de información por otra.
 
-Desde el punto de vista **algebraico**, nos interesan operaciones como $x+y$, $xy$ o $x-y$. Desde el punto de vista **ordenado**, nos interesan relaciones como $x<y$ o $x\le y$. Y desde el punto de vista **métrico**, la pregunta típica ya no es «¿cuál viene antes?», sino «¿qué tan lejos están?».
-
-Pensemos en tres puntos reales $x$, $y$ y $z$ y supongamos que sabemos que
+Consideremos $x<y<z$. Sabemos cuál de los puntos aparece primero y que $y$ queda entre los extremos. La desigualdad no fija las separaciones: podemos mover el punto intermedio sin abandonar ese patrón, como muestran las dos configuraciones de la apertura. Tampoco una separación determina una orientación. Al reflejar los tres puntos respecto del origen, obtenemos
 
 $$
-x<y<z.
+-z<-y<-x.
 $$
 
-¿Qué hemos aprendido exactamente? Sabemos que $y$ queda entre $x$ y $z$ en la orientación habitual de la recta; sabemos cuál aparece primero y cuál después. Pero no sabemos si $x$ y $y$ están casi pegados o enormemente separados, ni tampoco si $y$ está mucho más cerca de $x$ que de $z$. El orden nos ha dado bastante información, pero no esa información.
-
-Probemos ahora el experimento contrario. Imaginemos que conocemos las separaciones entre los tres puntos, pero ocultamos las etiquetas «izquierda» y «derecha». Podemos seguir diciendo qué pares están más cerca, cuáles más lejos e incluso comparar longitudes, pero algo se ha perdido: la distancia, por sí sola, no nos dice hacia qué lado está cada punto.
-
-Una reflexión hace esta diferencia especialmente visible. Partamos otra vez de
-
-$$
-x<y<z.
-$$
-
-y reflejemos toda la configuración respecto del origen. La orientación cambia: lo que estaba a la izquierda pasa a la derecha y viceversa. Sin embargo, las separaciones permanecen iguales. Más adelante demostraremos este hecho con una fórmula muy sencilla; ahora lo que nos interesa es la idea que el experimento descubre.
-
-La figura [C01-F01](#fig-anm-c01-f01) concentra esta lectura en una sola comparación.
+Las restas que describen los desplazamientos cambian de signo, mientras que sus magnitudes permanecen iguales. Esta conservación puede comprobarse en ejemplos numéricos; cuando definamos la distancia, la expresaremos como una identidad válida para cualquier par.
 
 ![La reflexión conserva todas las separaciones pero invierte la orientación; orden y métrica interactúan sin contener exactamente la misma información.](../../assets/books/anm/C01/C01-F01.svg){#fig-anm-c01-f01 fig-alt="Dos rectas numéricas comparan una configuración x<y<z con su reflejo. Las distancias correspondientes se mantienen, mientras el orden de izquierda a derecha se invierte."}
 
-Así aparece nuestra primera conclusión estructural: **el orden sabe algo que la distancia no sabe**, porque distingue una orientación. Pero conviene no exagerar la separación. En $\mathbb R$, orden y distancia están tan bien coordinados que muchas veces podremos traducir exactamente una descripción en la otra. Los intervalos surgirán del orden y, unas páginas después, veremos que ciertas condiciones de distancia describen precisamente esos mismos intervalos.
+La reflexión combina, por tanto, una operación algebraica con dos efectos diferentes sobre la configuración: invierte las desigualdades estrictas y conserva las separaciones. Permite reconocer el alcance de cada descripción sin exigir que las estructuras actúen aisladas. Una desigualdad que contiene una suma ya utiliza álgebra y orden; al interpretar su conjunto de soluciones como una región de cercanía añadiremos una lectura métrica.
 
-Ésa es una de las razones por las que la recta real es un lugar tan cómodo para aprender análisis: varias estructuras distintas cooperan de una manera excepcionalmente estrecha.
-
-### ¿Qué pregunta estamos haciendo?
-
-Podemos convertir todo esto en un pequeño hábito. Cuando aparezca una afirmación sobre números reales, antes de manipular símbolos preguntémonos qué clase de información está pidiendo.
-
-Si escribimos
-
-$$
-x<y,
-$$
-
-estamos comparando posiciones: la estructura relevante es el **orden**.
-
-Si preguntamos cuánto separa a $x$ de $y$, estamos haciendo una pregunta **métrica**.
-
-Si calculamos $x+y$, $xy$ o $x-y$, estamos usando la estructura **algebraica**.
-
-Por supuesto, los argumentos interesantes empiezan cuando estas capas se mezclan. Una expresión algebraica puede aparecer dentro de una desigualdad; esa desigualdad puede describir una región de la recta; y esa misma región podrá terminar siendo descrita por una condición de distancia. Cuando lleguemos a ese punto, la traducción parecerá natural, pero será natural porque habremos entendido qué aporta cada estructura.
-
-### Una precaución con los dibujos
-
-Hay otra cuestión que vale la pena aclarar desde ahora. Dibujamos la recta horizontalmente y colocamos los números crecientes de izquierda a derecha; después de años de hacerlo, casi parece que «izquierda» y «derecha» pertenecieran físicamente a $\mathbb R$. Pero no es así: forman parte de nuestra representación de su orden.
-
-Esto no vuelve engañosos a los dibujos. Al contrario, los vuelve más interesantes, porque obliga a preguntar qué está haciendo exactamente cada elemento de una figura. Si una reflexión conserva las separaciones pero invierte la orientación, el dibujo puede hacernos ver el fenómeno de inmediato; lo que no puede hacer, por sí solo, es convertir esa observación en una afirmación universal demostrada.
-
-Usaremos muchas figuras de esta manera. Primero nos permitirán ver algo; después preguntaremos qué es exactamente lo que estamos viendo; finalmente buscaremos una formulación que pueda demostrarse. Una buena figura no reemplaza el argumento: nos ayuda a encontrarlo y, una vez encontrado, nos ayuda a comprender por qué funciona.
+«Izquierda» y «derecha» son los nombres que damos al representar el orden en una recta orientada. Un dibujo puede mostrar de inmediato cómo cambia una configuración bajo reflexión, pero un resultado universal requiere comprobarlo para puntos arbitrarios. Esa será también la función de las figuras de este capítulo: hacer visibles relaciones que después podamos expresar y justificar con las operaciones y el orden de los reales.
 
 ### Probemos la distinción
 
@@ -486,181 +432,50 @@ Los dos ejemplos satisfacen exactamente la misma clase de condición algebraica 
 La idea transferible es que **usar los mismos números no convierte en equivalentes las estructuras que colocamos sobre ellos**. Antes de concluir algo, conviene identificar qué clase de información tenemos y qué clase de información estamos intentando obtener.
 
 </details>
+
 ## 1.2. Orden: izquierda, derecha y estar entre
 
-En la sección anterior vimos que el orden y la distancia responden preguntas distintas. Ahora vamos a concentrarnos, por un momento, sólo en el orden. Esto significa que todavía no preguntaremos cuánto separa a dos puntos; nos bastará con saber cuál aparece antes, cuál después y qué significa que uno quede entre otros dos.
+[]{#MA-SEC-ANM-01-001-002}
 
-Empecemos con algo que parece demasiado sencillo para merecer atención. Si escribimos
-
-$$
-x<y,
-$$
-
-decimos que $x$ es menor que $y$. En la representación habitual de la recta real, esto significa que $x$ queda a la izquierda de $y$. Si escribimos $x\le y$, permitimos además el caso $x=y$.
-
-Hasta aquí no hay ninguna novedad técnica. Lo importante es advertir que estas relaciones ya organizan la recta: en cuanto fijamos dos números distintos, uno queda antes que el otro, y esa comparación nos permite comenzar a hablar de regiones delimitadas por puntos.
-
-### ¿Qué significa realmente «estar entre»?
-
-Tomemos tres números reales. Si escribimos
-
-$$
-x\le y\le z,
-$$
-
-es natural decir que $y$ está entre $x$ y $z$. Pero hay un pequeño problema escondido en esa frase: hemos supuesto que $x$ está a la izquierda de $z$. ¿Qué ocurriría si los extremos aparecieran en el orden contrario?
-
-No queremos que la expresión «$y$ está entre $x$ y $z$» dependa del orden en que decidamos nombrar los extremos. Por eso conviene formularla de una manera que no privilegie ninguna orientación.
+En la representación habitual, $x<y$ sitúa a $x$ a la izquierda de $y$; la relación $x\le y$ admite además que coincidan. Comparar tres puntos permite hablar de uno situado entre otros dos, siempre que cuidemos una cuestión de orientación: los extremos pueden haberse nombrado en cualquiera de los dos órdenes.
 
 Diremos que **$y$ está entre $x$ y $z$** cuando
 
 $$
-\min\{x,z\}\le y\le \max\{x,z\}.
+\min\{x,z\}\le y\le\max\{x,z\}.
 $$
 
-Esta fórmula hace exactamente lo que necesitamos. Si $x\le z$, se reduce a
+Si $x\le z$, la condición se lee $x\le y\le z$; si $z\le x$, se lee $z\le y\le x$. La totalidad del orden asegura que esos casos cubren todas las posibilidades, incluido $x=z$, cuando la condición obliga a que los tres puntos coincidan. Los extremos están admitidos: «estar entre» tendrá aquí el sentido de pertenecer al tramo cerrado que determinan.
+
+Cuando fijamos $a<b$, podemos reunir los puntos que cumplen una condición de orden entre ambos extremos. El **intervalo abierto** es
 
 $$
-x\le y\le z;
+(a,b)=\{x\in\mathbb R:a<x<b\},
 $$
 
-si $z\le x$, se convierte en
-
-$$
-z\le y\le x.
-$$
-
-En ambos casos expresa la misma idea geométrica: $y$ pertenece al tramo de la recta delimitado por $x$ y $z$, y permitimos que coincida con uno de los extremos.
-
-¿Por qué molestarnos en escribirlo así? Porque más adelante aparecerá una caracterización de «estar entre» que ya no estará formulada con desigualdades, sino con distancias. Cuando comparemos ambas formulaciones necesitaremos una definición de «entre» que no haya incorporado accidentalmente una orientación.
-
-### De dos fronteras a un intervalo
-
-Supongamos ahora que elegimos dos números $a$ y $b$ con
-
-$$
-a<b.
-$$
-
-¿Qué puntos quedan estrictamente entre ellos? Exactamente aquellos $x$ que satisfacen
-
-$$
-a<x<b.
-$$
-
-A este conjunto lo llamamos **intervalo abierto** de extremos $a$ y $b$, y escribimos
-
-$$
-(a,b)=\{x\in\mathbb R:a<x<b\}.
-$$
-
-Los paréntesis nos recuerdan que los extremos no pertenecen al conjunto. En efecto, $a$ no satisface $a<a<b$, y $b$ tampoco satisface $a<b<b$.
-
-Pero quizá queramos incluir ambos extremos. Entonces cambiamos las desigualdades estrictas por desigualdades no estrictas:
+y el **intervalo cerrado** es
 
 $$
 [a,b]=\{x\in\mathbb R:a\le x\le b\}.
 $$
 
-Éste es el **intervalo cerrado** de extremos $a$ y $b$.
-
-Entre ambas posibilidades quedan dos casos mixtos:
+En el primero, ninguno de los extremos satisface las dos desigualdades estrictas; en el segundo, ambos pertenecen. Podemos decidir su inclusión por separado y obtener los intervalos mixtos
 
 $$
 [a,b)=\{x\in\mathbb R:a\le x<b\},
-$$
-
-y
-
-$$
+\qquad
 (a,b]=\{x\in\mathbb R:a<x\le b\}.
 $$
 
-No hay que memorizar cuatro dibujos separados. La notación está diciendo exactamente qué ocurre en cada frontera: un corchete incluye el extremo correspondiente; un paréntesis lo excluye.
-
-La figura [C01-F02](#fig-anm-c01-f02) concentra esta lectura en una sola comparación.
+Cada paréntesis excluye el extremo correspondiente y cada corchete lo incluye. Las palabras «abierto» y «cerrado» nombran aquí estos tipos de intervalo; la teoría de conjuntos abiertos y cerrados en sentido topológico se desarrollará más adelante.
 
 ![Paréntesis y corchetes registran exactamente si cada frontera satisface una desigualdad estricta o no estricta.](../../assets/books/anm/C01/C01-F02.svg){#fig-anm-c01-f02 fig-alt="Cuatro rectas alineadas muestran (a,b), [a,b], (a,b] y [a,b), con extremos abiertos o cerrados y sus desigualdades equivalentes."}
 
-Conviene detenernos en una posible confusión. Acabamos de usar las palabras «abierto» y «cerrado», pero todavía no estamos hablando de conjuntos abiertos y cerrados en sentido topológico. Por ahora son simplemente los nombres tradicionales de estos tipos de intervalo. La teoría general que explica esas palabras vendrá más adelante.
+Esta notación nombra conjuntos, mientras que las desigualdades expresan condiciones de pertenencia. Así, $x\in(-2,5]$ equivale a $-2<x\le5$, y $3\le x<7$ equivale a $x\in[3,7)$. En el mismo sentido, $x\in(-3,2)$ se lee $-3<x<2$, $x\in[0,5)$ se lee $0\le x<5$, y $-1<x\le4$ selecciona el intervalo $(-1,4]$. Traducir conserva tanto los puntos interiores como la decisión sobre cada extremo.
 
-### Traducir en ambos sentidos
+Una condición puede imponer sólo una frontera. Los reales que satisfacen $x<4$ forman $(-\infty,4)$, y los que satisfacen $x\ge-1$ forman $[-1,\infty)$. Del mismo modo, $x>6$ describe $(6,\infty)$ y $x\le0$ describe $(-\infty,0]$. Los símbolos $-\infty$ y $\infty$ indican que falta una frontera real en esa dirección; no son puntos reales que podamos incluir en el conjunto. Por eso llevan paréntesis.
 
-La notación de intervalos es útil porque comprime información, pero no queremos que se convierta en un código que sólo sepamos leer de izquierda a derecha. Debemos poder pasar con soltura de desigualdades a intervalos y de intervalos a desigualdades.
-
-Por ejemplo,
-
-$$
-x\in(-2,5]
-$$
-
-significa exactamente
-
-$$
--2<x\le 5.
-$$
-
-Y si sabemos que
-
-$$
-3\le x<7,
-$$
-
-podemos expresar la misma condición diciendo
-
-$$
-x\in[3,7).
-$$
-
-Parece una traducción elemental, y lo es, pero tiene una importancia que irá creciendo. Muy pronto aparecerán condiciones expresadas mediante valor absoluto y distancia, y querremos reconocer qué región de la recta describen. Si la traducción entre orden e intervalo no es automática, la traducción posterior entre distancia e intervalo tampoco lo será.
-
-Probemos un caso ligeramente menos inmediato. ¿Qué conjunto describe la condición
-
-$$
-x<4?
-$$
-
-No hay una frontera izquierda finita. Queremos todos los reales que quedan a la izquierda de $4$, de modo que escribimos
-
-$$
-(-\infty,4).
-$$
-
-Del mismo modo,
-
-$$
-x\ge -1
-$$
-
-describe la semirrecta
-
-$$
-[-1,\infty).
-$$
-
-Los símbolos $-\infty$ y $\infty$ no representan puntos reales que puedan incluirse en el conjunto. Por eso siempre aparecen acompañados por paréntesis, nunca por corchetes.
-
-### Los intervalos nacen del orden
-
-Ya podemos ver la idea estructural de esta sección. Un intervalo no es, en primer lugar, una figura sombreada sobre una recta; es el conjunto de puntos que satisfacen ciertas relaciones de orden respecto de una o dos fronteras.
-
-Por eso
-
-$$
-(a,b)
-$$
-
-no es una notación independiente de
-
-$$
-a<x<b.
-$$
-
-Ambas expresiones dicen lo mismo en lenguajes distintos: la primera nombra el conjunto; la segunda describe mediante el orden qué significa pertenecer a él.
-
-Éste es nuestro primer puente sistemático entre dos representaciones de una misma condición. Más adelante añadiremos una tercera. Cuando aprendamos a interpretar $|x-a|$ como una distancia, veremos que algunas regiones que ahora describimos mediante desigualdades también pueden describirse diciendo simplemente que un punto está suficientemente cerca de otro.
-
-Antes de llegar allí, conviene conservar una imagen muy sencilla: **el orden coloca fronteras; los intervalos reúnen los puntos que quedan entre ellas**.
+El orden permite describir estas regiones sin asignar todavía un tamaño a sus separaciones. Para expresar un margen alrededor de un punto necesitamos una cantidad no negativa que mida la magnitud de un desplazamiento.
 
 ### Antes de seguir
 
@@ -1150,159 +965,60 @@ No hace falta una tercera posibilidad porque el orden de $\mathbb R$ compara sie
 La idea transferible es que la fórmula con $\min$ y $\max$ no introduce una nueva noción de «estar entre»: comprime en una expresión simétrica los dos órdenes posibles de los extremos.
 
 </details>
+
 ## 1.3. Valor absoluto: distancia al origen
 
-Hasta ahora hemos usado el orden para decidir dónde queda un punto respecto de otros. Pero al final de la sección anterior dejamos abierta una pregunta distinta: una vez que sabemos que un punto está a la izquierda o a la derecha, ¿cómo expresamos **cuánto** se ha alejado de un punto de referencia?
+[]{#MA-SEC-ANM-01-001-003}
 
-Comencemos por el punto de referencia más familiar: el origen.
-
-El valor absoluto ya no es nuevo para nosotros. Sabemos calcular, por ejemplo,
+Los números $5$ y $-5$ se encuentran en lados opuestos del origen, pero sus separaciones respecto de él coinciden:
 
 $$
-|5|=5
-\qquad\text{y}\qquad
-|-5|=5.
+|5|=5,\qquad|-5|=5.
 $$
 
-Lo que nos interesa ahora no es repetir esa regla, sino preguntarnos qué está midiendo. Los números $5$ y $-5$ ocupan lados opuestos del origen, de modo que el orden distingue perfectamente sus posiciones; sin embargo, ambos están a la misma separación de $0$. El valor absoluto conserva justamente esa información y deja de lado la orientación.
-
-Ésta es la lectura que queremos fijar:
-
-$$
-|x|=\text{distancia de }x\text{ al origen}.
-$$
-
-Dicho de otro modo, $x$ nos dice a qué lado del origen estamos y cuánto nos hemos desplazado con signo; $|x|$ conserva únicamente el tamaño de ese desplazamiento.
-
-### La definición por casos, vista de nuevo
-
-Recordemos brevemente la definición conocida:
+La definición del **valor absoluto** conserva la magnitud y elimina el signo del desplazamiento:
 
 $$
 |x|=
 \begin{cases}
-x,&x\ge 0,\\
+x,&x\ge0,\\
 -x,&x<0.
 \end{cases}
 $$
 
-¿Por qué aparecen exactamente esos dos casos? Si $x\ge0$, el número $x$ ya expresa una separación no negativa respecto de $0$, así que no hay nada que corregir. Si $x<0$, en cambio, el número $x$ lleva incorporada la orientación hacia el lado negativo; para obtener solamente la magnitud de la separación necesitamos cambiar su signo, y por eso aparece $-x$.
+Si el número es no negativo, ya tiene el signo adecuado para representar una longitud. Si es negativo, su opuesto es positivo. De aquí se obtiene $|x|\ge0$ y también $|x|=0$ si y sólo si $x=0$. La misma definición da $|-x|=|x|$: cambiar la orientación no cambia la magnitud. Leeremos $|x|$ como la distancia de $x$ al origen; la función de distancia entre puntos se precisará en §1.4.
 
-Así, la definición por casos deja de parecer una receta arbitraria. Está haciendo una tarea geométrica muy precisa: producir siempre una cantidad no negativa que mida cuán lejos está $x$ de $0$.
-
-Esto explica inmediatamente por qué
+Para $r>0$, la igualdad $|x|=r$ admite las dos soluciones $x=r$ y $x=-r$, una a cada lado. Por ejemplo, $|x|=6$ determina los puntos $6$ y $-6$, sin distinguir cuál de ellos se ha elegido. Una desigualdad reúne una región completa. Si $x\ge0$, la condición $|x|<r$ se reduce a $x<r$ y la desigualdad $-r<x$ ya es automática; si $x<0$, se reduce a $-x<r$, es decir, $-r<x$, mientras que $x<r$ es automática. Ambos casos, recorridos también en sentido inverso, prueban
 
 $$
-|x|\ge0
+|x|<r\iff-r<x<r.
 $$
 
-para todo $x\in\mathbb R$, y también por qué
+Así, $|x|<2$ describe $(-2,2)$ y excluye sus dos extremos. Si pedimos una magnitud mayor que el umbral, los mismos casos dan
 
 $$
-|x|=0
+|x|>r\iff x<-r\ \text{o}\ x>r.
 $$
 
-sólo cuando $x=0$. No son propiedades desconectadas que haya que memorizar; son exactamente lo que esperaríamos de una medida de separación respecto del origen.
+El primer conjunto queda entre dos fronteras; el segundo reúne las dos regiones exteriores. La disyunción es necesaria porque podemos alejarnos del origen en cualquiera de las dos direcciones.
 
-### Una misma distancia, dos posiciones
-
-Tomemos ahora un número $r>0$ y preguntemos qué significa
+Para medir respecto de otro punto $a$, la resta $x-a$ registra el desplazamiento orientado desde $a$ hasta $x$: es positiva a su derecha, negativa a su izquierda y cero si coinciden. Tomar su valor absoluto produce
 
 $$
-|x|=r.
+|x-a|=\text{distancia de }x\text{ al punto }a.
 $$
 
-Si pensamos sólo algebraicamente, podemos resolver la ecuación y obtener
+Por ejemplo, respecto del centro $3$, los puntos $7$ y $-1$ tienen desplazamientos $7-3=4$ y $-1-3=-4$, pero
 
 $$
-x=r
-\qquad\text{o}\qquad
-x=-r.
+|7-3|=4,\qquad|-1-3|=4.
 $$
 
-Pero la lectura geométrica dice algo más sencillo: buscamos los puntos cuya distancia al origen es exactamente $r$. En una recta hay dos, uno a cada lado de $0$.
-
-La orientación distingue esos dos puntos; la distancia al origen no.
-
-Lo mismo ocurre si cambiamos la igualdad por una desigualdad. La condición
-
-$$
-|x|<r
-$$
-
-pide todos los puntos cuya separación del origen es menor que $r$. Si miramos la recta, esos puntos son precisamente los que quedan entre $-r$ y $r$:
-
-$$
--r<x<r.
-$$
-
-En cambio,
-
-$$
-|x|>r
-$$
-
-selecciona los puntos que quedan a más de $r$ unidades del origen, es decir,
-
-$$
-x<-r
-\qquad\text{o}\qquad
-x>r.
-$$
-
-Aquí reaparece el puente que comenzamos a construir en §1.2. Una expresión con valor absoluto puede describir una región de la recta, y esa misma región puede expresarse mediante relaciones de orden. Por ahora estamos trabajando con el origen como centro; más adelante haremos esta traducción de manera sistemática para un centro cualquiera.
-
-### ¿Tiene algo especial el origen?
-
-Ésta es una buena pregunta, porque hasta este momento podría parecer que el valor absoluto estuviera esencialmente ligado a $0$. Pero supongamos que queremos medir la separación entre un punto $x$ y otro punto fijo $a$.
-
-La cantidad
-
-$$
-x-a
-$$
-
-nos dice el desplazamiento de $a$ hacia $x$ con orientación: es positiva si $x$ queda a la derecha de $a$, negativa si queda a la izquierda y cero si ambos puntos coinciden. Si queremos conservar sólo el tamaño de ese desplazamiento, hacemos exactamente lo mismo que antes:
-
-$$
-|x-a|.
-$$
-
-Así, $|x-a|$ mide la distancia de $x$ al punto $a$.
-
-Esta observación es sencilla, pero cambia bastante nuestra manera de leer el valor absoluto. El origen deja de ocupar una posición privilegiada. La expresión $|x|$ no es más que el caso $a=0$ de una idea más general:
-
-$$
-|x-a|=\text{distancia de }x\text{ al centro }a.
-$$
-
-La figura [C01-F03](#fig-anm-c01-f03) concentra esta lectura en una sola comparación.
+Restar el centro cambia la referencia del cálculo; aplicar el valor absoluto retiene el tamaño de la separación. En particular, $|x-a|=0$ equivale a $x-a=0$ y, por tanto, a $x=a$.
 
 ![El paso |x| → |x−a| → d(x,y)=|x−y| elimina gradualmente una referencia privilegiada y conserva la idea de medir separación.](../../assets/books/anm/C01/C01-F03.svg){#fig-anm-c01-f03 fig-alt="Tres paneles muestran la distancia de x al origen, la distancia de x a un centro a y la distancia entre dos puntos x e y; el tercer panel distingue resta orientada de longitud no orientada."}
 
-Probemos con un ejemplo. Si elegimos $a=3$, entonces los puntos $7$ y $-1$ están en lados distintos de $3$, pero
-
-$$
-|7-3|=4
-\qquad\text{y}\qquad
-|-1-3|=4.
-$$
-
-Ambos están a cuatro unidades del centro elegido. De nuevo, la expresión sin valor absoluto recuerda la orientación —$7-3=4$ mientras que $-1-3=-4$—, pero el valor absoluto retiene solamente la separación.
-
-### Cambiar el centro no cambia la idea
-
-Podemos mirar esta operación como una especie de recentrado conceptual. Cuando trabajamos con $|x|$, preguntamos por la posición de $x$ respecto de $0$; cuando trabajamos con $|x-a|$, hacemos exactamente la misma pregunta, pero tomando $a$ como referencia.
-
-Conviene ser precisos aquí: no estamos afirmando que restar $a$ mueva físicamente el punto $x$ sobre la recta. Lo que cambia es la referencia desde la que describimos su posición. El número $x-a$ es el desplazamiento orientado desde $a$ hasta $x$; el número $|x-a|$ es el tamaño de ese desplazamiento.
-
-Este modo de leer las barras de valor absoluto será mucho más útil en análisis que recordarlas sólo como una definición por casos. Cuando aparezca una condición como
-
-$$
-|x-a|<r,
-$$
-
-querremos leerla primero en palabras: «$x$ está a menos de $r$ unidades de $a$». Después podremos preguntarnos qué intervalo describe. Esa traducción completa llegará en §1.7; por ahora basta con reconocer qué está midiendo la expresión.
+La condición $|x-a|<r$ puede leerse como «la separación respecto de $a$ es menor que $r$». La misma interpretación sirve para cualquier centro: el origen corresponde al caso particular $a=0$. Para comparar dos puntos sin fijar de antemano cuál desempeña el papel de referencia, hagamos variar ambos argumentos.
 
 ### Antes de seguir
 
@@ -1830,181 +1546,84 @@ Geométricamente, $a$ es el punto medio entre $x$ e $y$: los dos puntos distinto
 Este problema conecta tres lenguajes del capítulo. La igualdad de valores absolutos expresa información métrica; la ecuación $x+y=2a$ la traduce algebraicamente; y la interpretación final sitúa a $a$ entre los dos puntos de manera simétrica.
 
 </details>
+
 ## 1.4. Distancia entre dos puntos reales
 
-En §1.3 dejamos de pensar el valor absoluto únicamente como una regla por casos y empezamos a leer $|x-a|$ como la separación entre $x$ y un centro elegido $a$. El paso siguiente es casi inevitable: si el punto de referencia puede ser cualquiera, ¿por qué seguir tratándolo como un centro fijo? Tomemos dos puntos reales $x$ e $y$ y hagamos que ambos puedan variar.
+[]{#MA-SEC-ANM-01-001-004}
 
-La resta
-
-$$
-x-y
-$$
-
-sigue registrando un desplazamiento orientado: es positiva si $x$ queda a la derecha de $y$, negativa si queda a la izquierda y cero si coinciden. Pero si queremos medir solamente cuánto separa a los dos puntos, la orientación vuelve a ser información sobrante. Por eso definimos
+Definimos la **distancia estándar** de la recta real mediante
 
 $$
-d(x,y)=|x-y|.
+d:\mathbb R\times\mathbb R\longrightarrow[0,\infty),
+\qquad d(x,y)=|x-y|.
 $$
 
-Llamaremos a $d$ la **distancia estándar** —o **métrica estándar**— de la recta real. Por ahora este nombre sólo se refiere a esta función concreta sobre $\mathbb R$; la teoría abstracta de espacios métricos llegará mucho más adelante.
+Por ejemplo, $d(2,7)=|-5|=5$ y $d(7,2)=|5|=5$: intercambiar los puntos invierte el desplazamiento y conserva su longitud. Verificaremos que la función tiene las propiedades que utilizaremos al razonar con distancias.
 
-La definición merece una primera comprobación. Si intercambiamos los puntos, la resta cambia de signo:
+**Proposición.** Para cualesquiera $x,y,z\in\mathbb R$,
 
 $$
-y-x=-(x-y),
+\begin{gathered}
+d(x,y)\ge0,\qquad d(x,y)=0\iff x=y,\\
+d(x,y)=d(y,x),\qquad
+d(x,z)\le d(x,y)+d(y,z).
+\end{gathered}
 $$
 
-pero su valor absoluto no cambia. Así que
+**Demostración.** La no negatividad sigue de la del valor absoluto. Además,
+
+$$
+d(x,y)=0\iff|x-y|=0\iff x-y=0\iff x=y.
+$$
+
+Como $y-x=-(x-y)$ y el valor absoluto no cambia al tomar el opuesto,
 
 $$
 d(x,y)=|x-y|=|y-x|=d(y,x).
 $$
 
-Esto coincide con la geometría que esperamos: recorrer el segmento desde $x$ hasta $y$ o desde $y$ hasta $x$ cambia el sentido del recorrido, no su longitud.
-
-La tercera escena de la figura [C01-F03](#fig-anm-c01-f03) ya anticipaba esta simetría: $x-y$ y $y-x$ cambian de signo al invertir el sentido, mientras $|x-y|$ conserva la misma longitud.
-
-### ¿Qué debe cumplir una distancia?
-
-Antes de seguir calculando ejemplos, conviene preguntarnos por qué esta función merece realmente el nombre de distancia. En la recta hay cuatro propiedades que esperamos de cualquier medición razonable entre puntos: que nunca produzca longitudes negativas, que sólo dé cero cuando los puntos coinciden, que no dependa del sentido en que medimos y que ir directamente de un punto a otro nunca sea más largo que obligarnos a pasar por un tercero.
-
-Para $x,y,z\in\mathbb R$, la función
+Para la última desigualdad necesitamos controlar el valor absoluto de una suma. La definición por casos asegura $-|u|\le u\le|u|$ para todo real $u$. Al escribir lo mismo para $v$ y sumar miembro a miembro obtenemos
 
 $$
-d(x,y)=|x-y|
+-(|u|+|v|)\le u+v\le|u|+|v|.
 $$
 
-satisface:
-
-1. **No negatividad:**
-   $$
-   d(x,y)\ge0.
-   $$
-2. **Identidad de los puntos a distancia cero:**
-   $$
-   d(x,y)=0\iff x=y.
-   $$
-3. **Simetría:**
-   $$
-   d(x,y)=d(y,x).
-   $$
-4. **Desigualdad triangular:**
-   $$
-   d(x,z)\le d(x,y)+d(y,z).
-   $$
-
-Las tres primeras casi se leen directamente en la definición, pero vale la pena justificar las cuatro porque serán parte de la infraestructura del análisis posterior.
-
-**Demostración.** La no negatividad sigue de $|x-y|\ge0$. Además,
+Si $u+v$ es no negativo, la cota superior controla su valor absoluto; si es negativo, la cota inferior, cambiada de signo, da el mismo control. Por tanto,
 
 $$
-d(x,y)=0
-\iff |x-y|=0
-\iff x-y=0
-\iff x=y,
+|u+v|\le|u|+|v|.
 $$
 
-de modo que la distancia sólo se anula cuando los dos puntos coinciden. La simetría ya la vimos:
+El desplazamiento total se descompone como $x-z=(x-y)+(y-z)$. Aplicar la desigualdad con $u=x-y$ y $v=y-z$ da
 
 $$
-d(x,y)=|x-y|=|-(y-x)|=|y-x|=d(y,x).
+d(x,z)=|x-z|\le|x-y|+|y-z|=d(x,y)+d(y,z).
 $$
 
-Queda la cuarta propiedad. Aquí necesitamos una propiedad elemental del valor absoluto. Para cualquier número real $u$,
+Quedan probadas las cuatro propiedades. $\square$
+
+La última es la **desigualdad triangular**: introducir un punto de paso no puede acortar la distancia directa entre los extremos. Hemos obtenido esa lectura geométrica a partir de una estimación algebraica; para saber cuándo el recorrido tiene exactamente la misma longitud necesitaremos examinar la posición del punto intermedio.
+
+La triangular permite también controlar cuánto cambian las distancias al origen. Escribimos $x=(x-y)+y$ para que aparezca la separación entre los puntos y aplicamos la desigualdad:
 
 $$
--|u|\le u\le |u|.
+|x|\le|x-y|+|y|,
+\qquad |x|-|y|\le|x-y|.
 $$
 
-Si escribimos esta desigualdad para $u$ y para $v$ y sumamos miembro a miembro, obtenemos
+Intercambiar los puntos y usar $|y-x|=|x-y|$ proporciona la otra dirección,
 
 $$
--(|u|+|v|)\le u+v\le |u|+|v|.
+|y|-|x|\le|x-y|.
 $$
 
-Como $|u|+|v|\ge0$, estas dos desigualdades dicen precisamente que
+Las dos cotas equivalen a
 
 $$
-|u+v|\le |u|+|v|.
+\boxed{\bigl||x|-|y|\bigr|\le|x-y|.}
 $$
 
-Ahora basta elegir
-
-$$
-u=x-y,
-\qquad
-v=y-z.
-$$
-
-Entonces $u+v=x-z$, y por tanto
-
-$$
-|x-z|\le |x-y|+|y-z|,
-$$
-
-o, en el lenguaje que acabamos de introducir,
-
-$$
-d(x,z)\le d(x,y)+d(y,z).
-$$
-
-Eso demuestra las cuatro propiedades. $\square$
-
-La última desigualdad es tan importante que recibirá atención propia en la sección siguiente. Allí dejaremos de verla sólo como una consecuencia algebraica de las barras de valor absoluto y preguntaremos qué dice geométricamente sobre una ruta que va de $x$ a $z$ pasando por $y$.
-
-### Una primera estimación: cuánto puede cambiar una distancia
-
-La desigualdad triangular permite obtener casi de inmediato otra estimación muy útil. Escribamos
-
-$$
-x=(x-y)+y.
-$$
-
-Aplicando la desigualdad triangular al valor absoluto,
-
-$$
-|x|\le |x-y|+|y|,
-$$
-
-de donde
-
-$$
-|x|-|y|\le |x-y|.
-$$
-
-Si intercambiamos $x$ e $y$, obtenemos también
-
-$$
-|y|-|x|\le |x-y|.
-$$
-
-Las dos desigualdades juntas equivalen a
-
-$$
-\bigl||x|-|y|\bigr|\le |x-y|.
-$$
-
-Ésta es la **desigualdad triangular inversa**. Su lectura es especialmente instructiva: la diferencia entre las distancias de $x$ e $y$ al origen nunca puede ser mayor que la distancia entre $x$ e $y$.
-
-Por ejemplo, si dos puntos están separados por apenas $0.01$, sus distancias al origen no pueden diferir en $3$ ni en $100$; a lo sumo pueden diferir en $0.01$. La desigualdad convierte una intuición geométrica bastante natural en una estimación exacta.
-
-No conviene memorizarla como una segunda fórmula independiente. Lo importante es reconocer de dónde salió: tomamos la desigualdad triangular, aislamos una diferencia y repetimos el argumento con los puntos intercambiados. Ese patrón de razonamiento —obtener control sobre una diferencia a partir de una desigualdad ya conocida— reaparecerá muchas veces en análisis.
-
-### La orientación desaparece, la separación permanece
-
-Volvamos por un momento a la definición
-
-$$
-d(x,y)=|x-y|.
-$$
-
-La resta $x-y$ distingue orientación; la distancia no. Si $x<y$, entonces $x-y<0$ y $y-x>0$, pero
-
-$$
-|x-y|=|y-x|.
-$$
-
-Esto nos permite precisar una idea que apareció ya en §1.1: conocer una distancia no nos dice cuál de los dos puntos está a la izquierda. La métrica registra **separación**, mientras que el orden registra **orientación y posición relativa**. En la recta ambas estructuras cooperan estrechamente, pero no contienen la misma información.
+Ésta es la **desigualdad triangular inversa**. Si dos puntos están separados por $0.01$, sus distancias al origen pueden diferir a lo sumo en $0.01$. El argumento muestra cómo obtener una estimación para una diferencia: aislarla en la triangular y repetir el cálculo con los puntos intercambiados. Este control no requiere conocer cuál está a la izquierda; los problemas 19–21 lo desarrollan para otro centro y para la propagación de cotas.
 
 ### Antes de seguir
 
@@ -2806,157 +2425,61 @@ $$
 El resultado expresa una regla de propagación de error: si $y$ está a lo sumo $\varepsilon$ de $x$, entonces su distancia al origen puede diferir de la de $x$ en no más de $\varepsilon$. A partir de una banda conocida para $|x|$ obtenemos automáticamente una banda ampliada, y óptima en general, para $|y|$.
 
 </details>
+
 ## 1.5. La desigualdad triangular y la geometría de «estar entre»
 
-En §1.4 demostramos que la distancia estándar satisface
+[]{#MA-SEC-ANM-01-001-005}
+
+Entre $1$ y $7$, pasar por $4$ no añade longitud:
 
 $$
-d(x,z)\le d(x,y)+d(y,z).
+d(1,7)=6=d(1,4)+d(4,7)=3+3.
 $$
 
-Algebraicamente, la desigualdad ya está resuelta. Pero si nos quedáramos sólo con la demostración, perderíamos una parte importante de lo que esta fórmula está diciendo. En la recta, podemos leer los dos lados como longitudes de dos recorridos distintos: el lado izquierdo mide el trayecto directo de $x$ a $z$; el lado derecho mide lo que recorremos si obligamos al camino a pasar primero por $y$.
-
-La pregunta interesante ya no es entonces «¿por qué el camino directo no es más largo?», sino otra más fina:
-
-> **¿Cuándo pasar por $y$ no añade ninguna longitud?**
-
-Tomemos un ejemplo sencillo. Si $x=1$, $y=4$ y $z=7$, entonces
-
-$$
-d(1,7)=6
-$$
-
-y, al mismo tiempo,
-
-$$
-d(1,4)+d(4,7)=3+3=6.
-$$
-
-No hemos pagado ninguna longitud extra por pasar por $4$, porque $4$ ya estaba en el trayecto entre $1$ y $7$. En cambio, si obligamos al recorrido a pasar por $y=10$, obtenemos
-
-$$
-d(1,10)+d(10,7)=9+3=12,
-$$
-
-que es estrictamente mayor que la distancia directa $d(1,7)=6$. Para visitar $10$ tenemos que sobrepasar $7$ y luego retroceder.
-
-Esta diferencia entre **avanzar sin retroceso** y **salirse del segmento para volver** contiene toda la geometría del caso de igualdad.
-
-La figura [C01-F05](#fig-anm-c01-f05) concentra esta lectura en una sola comparación.
+Pasar por $10$, en cambio, produce $d(1,10)+d(10,7)=9+3=12$: debemos sobrepasar el destino y regresar. La diferencia sugiere que la igualdad triangular reconoce precisamente los puntos situados entre los extremos.
 
 ![En la recta hay igualdad triangular exactamente cuando $y$ está entre los extremos; fuera del segmento aparece recorrido redundante.](../../assets/books/anm/C01/C01-F05.svg){#fig-anm-c01-f05 fig-alt="Tres paneles comparan el caso y entre x y z con y situado a la izquierda o a la derecha. La ruta pasando por y tiene la misma longitud sólo en el primer caso y es mayor en los otros dos."}
 
-### Cuando $y$ está entre los extremos
-
-Recordemos nuestra definición de §1.2: $y$ está entre $x$ y $z$ cuando
+**Proposición.** Para cualesquiera $x,y,z\in\mathbb R$,
 
 $$
-\min\{x,z\}\le y\le \max\{x,z\}.
+\boxed{d(x,z)=d(x,y)+d(y,z)
+\iff\min\{x,z\}\le y\le\max\{x,z\}.}
 $$
 
-Supongamos primero que $x\le y\le z$. Entonces las diferencias $y-x$ y $z-y$ son no negativas, de modo que
-
-$$
-d(x,y)=y-x
-$$
-
-y
-
-$$
-d(y,z)=z-y.
-$$
-
-Al sumarlas,
+**Demostración.** Si $x\le y\le z$, las diferencias sucesivas son no negativas, de modo que
 
 $$
 d(x,y)+d(y,z)=(y-x)+(z-y)=z-x=d(x,z).
 $$
 
-Si el orden de los extremos es el contrario, $z\le y\le x$, ocurre exactamente lo mismo con los papeles de $x$ y $z$ intercambiados. Por tanto, siempre que $y$ esté entre los extremos,
+Si $z\le y\le x$, intercambiamos los extremos y utilizamos la simetría de la distancia para obtener la misma igualdad. Esto prueba la implicación desde «estar entre», incluyendo los casos $y=x$ o $y=z$, cuando uno de los sumandos es cero.
+
+Para la conversa, la simetría permite suponer $x\le z$. Fuera del tramo cerrado, el cálculo exhibe una cantidad adicional estrictamente positiva. Si $y<x$,
 
 $$
-d(x,z)=d(x,y)+d(y,z).
+\begin{aligned}
+d(x,y)+d(y,z)
+&=(x-y)+(z-y)\\
+&=(z-x)+2(x-y)>z-x=d(x,z).
+\end{aligned}
 $$
 
-Los casos $y=x$ o $y=z$ están incluidos. Si, por ejemplo, $y=x$, entonces $d(x,y)=0$ y la igualdad se reduce simplemente a $d(x,z)=d(x,z)$. Esto importa porque nuestra noción de «estar entre» permite coincidir con los extremos.
-
-### ¿Y si aparece la igualdad?
-
-La dirección anterior era la más fácil de imaginar: si $y$ está entre $x$ y $z$, las longitudes se concatenan sin retroceso. Lo más interesante es la conversa. Supongamos ahora que sabemos que
+Si $y>z$,
 
 $$
-d(x,z)=d(x,y)+d(y,z).
+\begin{aligned}
+d(x,y)+d(y,z)
+&=(y-x)+(y-z)\\
+&=(z-x)+2(y-z)>z-x=d(x,z).
+\end{aligned}
 $$
 
-¿Estamos obligados a concluir que $y$ está entre $x$ y $z$? En la recta real, sí.
+Ninguna región exterior permite la igualdad. Debe cumplirse $x\le y\le z$, y al restituir los dos órdenes posibles de los extremos obtenemos la condición con mínimo y máximo. El caso $x=z$ está cubierto: cualquier punto distinto del extremo común cae en una de las regiones exteriores. $\square$
 
-Como la afirmación no cambia si intercambiamos $x$ y $z$, podemos estudiar el caso $x\le z$. Queremos ver dónde puede estar $y$. Hay tres posibilidades: a la izquierda de $x$, entre $x$ y $z$, o a la derecha de $z$.
+El exceso es el doble de la distancia recorrida más allá de un extremo, porque debemos recorrer ese tramo al salir y al regresar. Por ejemplo, entre $-2$ y $5$, pasar por $1$ da $3+4=7$, la longitud directa; pasar por $8$ da $10+3=13$, con un exceso $13-7=6=2(8-5)$. El problema 25 estudia ese exceso como función del punto de paso.
 
-Ya sabemos qué ocurre en el caso intermedio. Veamos qué pasa si $y<x$. Entonces
-
-$$
-d(x,y)=x-y,
-\qquad
-d(y,z)=z-y,
-$$
-
-y por tanto
-
-$$
-d(x,y)+d(y,z)=x+z-2y.
-$$
-
-Como $y<x$, tenemos $x-y>0$, y de hecho
-
-$$
-d(x,y)+d(y,z)=(z-x)+2(x-y)>z-x=d(x,z).
-$$
-
-Aparece longitud extra: para ir de $x$ a $z$ pasando por un punto situado a la izquierda de $x$, primero debemos retroceder y luego desandar ese retroceso.
-
-Si, en cambio, $y>z$, obtenemos de manera análoga
-
-$$
-d(x,y)+d(y,z)=(z-x)+2(y-z)>z-x=d(x,z).
-$$
-
-También aquí aparece un recorrido redundante, ahora por haber sobrepasado $z$.
-
-Así que la igualdad sólo puede ocurrir en el caso que quedaba: $x\le y\le z$. Al devolver la simetría entre los extremos, obtenemos la caracterización completa:
-
-$$
-\boxed{
- d(x,z)=d(x,y)+d(y,z)
- \iff
- \min\{x,z\}\le y\le \max\{x,z\}.
-}
-$$
-
-Éste es uno de los primeros lugares del capítulo donde orden y distancia se encuentran de manera exacta. La frase «$y$ está entre $x$ y $z$» pertenece al lenguaje del orden; la igualdad de distancias pertenece al lenguaje métrico. En la recta real, ambas descripciones expresan la misma situación.
-
-### Desigualdad estricta fuera del segmento
-
-La caracterización anterior nos permite decir algo un poco más fuerte sin hacer una nueva demostración. Si $y$ **no** está entre $x$ y $z$, entonces la igualdad es imposible y la desigualdad triangular se vuelve estricta:
-
-$$
-d(x,z)<d(x,y)+d(y,z).
-$$
-
-En la recta, por tanto, la desigualdad triangular no es sólo una cota. También detecta si el punto intermedio pertenece o no al tramo determinado por los extremos.
-
-Conviene advertir desde ahora que esta lectura tan precisa depende de la geometría unidimensional de $\mathbb R$. Más adelante, cuando trabajemos con espacios métricos abstractos, no podremos suponer sin demostración que la igualdad triangular caracteriza una noción única de «estar entre». Aquí sí podemos hacerlo porque el orden lineal de la recta controla completamente la posición relativa de tres puntos.
-
-### Qué nos enseñó realmente la igualdad
-
-Volvamos a la pregunta inicial. ¿Cuándo pasar por $y$ no añade longitud? Exactamente cuando $y$ ya se encuentra entre los extremos. En cualquier otro caso, el recorrido contiene una ida y vuelta innecesaria.
-
-Podemos resumirlo así:
-
-- **orden:** $y$ está entre $x$ y $z$;
-- **métrica:** $d(x,z)=d(x,y)+d(y,z)$;
-- **geometría:** el recorrido $x\to y\to z$ no contiene retroceso.
-
-Tres lenguajes distintos, una misma configuración.
+La igualdad reconoce que el punto está entre los extremos, pero permite que coincida con cualquiera de ellos y no exige que sea el punto medio. Hemos expresado una relación de orden mediante distancias sin elegir una orientación. Para esta equivalencia usamos el orden lineal y la distancia concreta de la recta; su validez no se extiende por el solo nombre de «distancia» a una geometría métrica arbitraria.
 
 ### Antes de seguir
 
@@ -3789,135 +3312,57 @@ de modo que la orientación se invierte.
 La conclusión es doble. Las distancias sí permiten recuperar **qué punto está entre los otros dos**; pero no permiten decidir **qué extremo está a la izquierda y cuál a la derecha**. La métrica permite recuperar la relación de estar entre; la elección de izquierda y derecha sigue abierta.
 
 </details>
+
 ## 1.6. Bolas métricas: ventanas alrededor de un punto
 
-En la sección anterior dejamos tres puntos libres y preguntamos qué ocurría al obligar a una ruta a pasar por uno de ellos. Ahora fijaremos sólo uno. Elegimos un punto $a\in\mathbb R$ y queremos reunir todos los puntos que estén **suficientemente cerca** de él.
+[]{#MA-SEC-ANM-01-001-006}
 
-La palabra «suficientemente» necesita, naturalmente, una medida. Elijamos un número $r>0$ y exijamos que la distancia desde $x$ hasta $a$ sea menor que $r$. Esto conduce a la definición
+Fijemos un punto $a$ y un margen $r>0$. Los puntos cuya separación respecto de $a$ es menor que ese margen forman la **bola abierta de centro $a$ y radio $r$**:
 
 $$
 B(a,r)=\{x\in\mathbb R:d(x,a)<r\}.
 $$
 
-Llamaremos a $B(a,r)$ la **bola abierta de centro $a$ y radio $r$** en la recta real.
-
-Hay dos datos que conviene mantener separados desde el comienzo. El **centro** $a$ decide alrededor de qué punto estamos midiendo; el **radio** $r$ decide cuánta separación estamos dispuestos a admitir. La condición $r>0$ no es decorativa: un radio positivo expresa un margen real de cercanía alrededor del centro.
-
-### ¿Qué forma tiene una bola en la recta?
-
-El nombre «bola» puede sugerir un disco o una esfera, pero aquí nuestros puntos viven en $\mathbb R$. No deberíamos adivinar la forma del conjunto a partir de la palabra; debemos leer la definición.
-
-Un punto $x$ pertenece a $B(a,r)$ exactamente cuando
+El nombre no determina la forma del conjunto: debemos encontrarla usando la distancia del espacio donde trabajamos. En la recta, la definición da
 
 $$
-d(x,a)<r.
+\begin{aligned}
+x\in B(a,r)
+&\iff |x-a|<r\\
+&\iff-r<x-a<r\\
+&\iff a-r<x<a+r.
+\end{aligned}
 $$
 
-Como la distancia estándar es $d(x,a)=|x-a|$, esto equivale a
+La equivalencia del valor absoluto, demostrada en §1.3 para un real cualquiera, se aplica al desplazamiento $x-a$; sumar el centro conserva las desigualdades. Como todos los pasos son reversibles, obtenemos la igualdad de conjuntos
 
 $$
-|x-a|<r.
+\boxed{B(a,r)=(a-r,a+r).}
 $$
-
-En §1.3 vimos que una desigualdad de valor absoluto centrada en el origen describe todos los puntos situados entre dos fronteras simétricas. Aplicando esa misma lectura al desplazamiento $x-a$, obtenemos
-
-$$
--r<x-a<r.
-$$
-
-Sumando $a$ en los tres miembros,
-
-$$
-a-r<x<a+r.
-$$
-
-Pero ésta es precisamente la condición de pertenencia al intervalo $(a-r,a+r)$. Hemos demostrado, por tanto, que
-
-$$
-\boxed{B(a,r)=(a-r,a+r)}.
-$$
-
-La igualdad de conjuntos merece leerse en ambas direcciones. Si $x$ está a menos de $r$ unidades de $a$, entonces queda entre $a-r$ y $a+r$; y si queda entre esas dos fronteras, entonces su distancia a $a$ es menor que $r$.
-
-La figura [C01-F06](#fig-anm-c01-f06) concentra esta lectura en una sola comparación.
 
 ![En ℝ, d(x,a)<r selecciona exactamente los puntos del intervalo abierto (a−r,a+r); las fronteras quedan fuera porque están a distancia r.](../../assets/books/anm/C01/C01-F06.svg){#fig-anm-c01-f06 fig-alt="Recta numérica centrada en a con extremos abiertos a-r y a+r, ambos a distancia r del centro, y cadena de equivalencias entre distancia, valor absoluto y desigualdad doble."}
 
-### El centro localiza; el radio controla el margen
+Los extremos satisfacen $d(a-r,a)=|-r|=r$ y $d(a+r,a)=|r|=r$. Quedan fuera porque la definición exige una distancia estrictamente menor. El centro, en cambio, pertenece, pues su distancia a sí mismo es cero y el radio es positivo.
 
-La identidad
-
-$$
-B(a,r)=(a-r,a+r)
-$$
-
-nos permite ver con mucha claridad qué hace cada parámetro.
-
-Si mantenemos fijo $r$ y cambiamos $a$, ambos extremos se desplazan en la misma cantidad. La bola se traslada a lo largo de la recta sin cambiar su tamaño. Por ejemplo,
+El centro y el radio controlan aspectos distintos. Mantener el radio y cambiar el centro traslada los dos extremos: $B(0,2)=(-2,2)$ y $B(5,2)=(3,7)$ tienen la misma anchura. En general,
 
 $$
-B(0,2)=(-2,2)
+B(a+3,r)=(a-r+3,a+r+3).
 $$
 
-mientras que
+Si mantenemos el centro y duplicamos el radio, obtenemos
 
 $$
-B(5,2)=(3,7).
+B(a,2r)=(a-2r,a+2r).
 $$
 
-El radio sigue siendo $2$; sólo hemos cambiado el punto alrededor del cual medimos.
-
-Si, en cambio, mantenemos fijo el centro y variamos $r$, ocurre otra cosa. Con centro $a$,
-
-$$
-B(a,1)=(a-1,a+1),
-$$
-
-$$
-B(a,2)=(a-2,a+2),
-$$
-
-y, más generalmente, un radio mayor permite una separación mayor en ambos sentidos. El intervalo se ensancha simétricamente respecto del centro.
-
-La figura [C01-F07](#fig-anm-c01-f07) concentra esta lectura en una sola comparación.
+Las dos fronteras se alejan del mismo centro y el intervalo contiene al anterior. Esta inclusión se prueba directamente desde la condición métrica: si $0<r<s$ y $d(x,a)<r$, entonces también $d(x,a)<s$. Para comprobar que es estricta, el punto $x=a+(r+s)/2$ tiene distancia $(r+s)/2$, comprendida estrictamente entre los radios.
 
 ![Mover el centro traslada la bola sin cambiar su anchura; aumentar el radio ensancha la región simétricamente alrededor del mismo centro.](../../assets/books/anm/C01/C01-F07.svg){#fig-anm-c01-f07 fig-alt="Dos paneles: el primero compara dos bolas de igual radio y centros distintos; el segundo compara dos bolas del mismo centro y radios diferentes."}
 
-Por eso resulta útil pensar en la bola como una **ventana** alrededor de $a$: mover $a$ desplaza la ventana; aumentar $r$ la abre; disminuir $r$ la estrecha. Pero conviene conservar la jerarquía correcta. «Ventana» es una imagen; la definición matemática es
+Si extendiéramos la fórmula a radio cero, exigiríamos $d(x,a)<0$, que ningún punto satisface. La misma dificultad aparece con radios negativos, de modo que esa extensión daría el conjunto vacío y excluiría incluso al centro. La definición usada aquí mantiene $r>0$ para expresar un margen de cercanía alrededor de $a$.
 
-$$
-B(a,r)=\{x\in\mathbb R:d(x,a)<r\}.
-$$
-
-### Por qué exigimos $r>0$
-
-Podría parecer que la condición $r>0$ es una formalidad. Veamos qué ocurre si la abandonamos.
-
-Si $r=0$, la condición sería
-
-$$
-d(x,a)<0,
-$$
-
-que ningún punto puede satisfacer porque las distancias nunca son negativas. Si $r<0$, con mayor razón tampoco existe ningún $x$ cuya distancia no negativa a $a$ sea menor que ese número negativo.
-
-Así, los radios no positivos no producen una región de cercanía alrededor del centro. Para la noción que queremos usar, el radio debe ser estrictamente positivo.
-
-### Una primera lectura de tolerancia
-
-La notación de bolas nos permite condensar una idea que aparecerá una y otra vez en análisis. Supongamos que $a$ es un valor de referencia y que aceptamos un error menor que $r$. Decir
-
-$$
-x\in B(a,r)
-$$
-
-significa que $x$ permanece dentro de ese margen:
-
-$$
-d(x,a)<r.
-$$
-
-En la recta, ya sabemos además que esto equivale a quedar entre las dos fronteras $a-r$ y $a+r$. Todavía no vamos a sistematizar todas las traducciones posibles —eso será precisamente el trabajo de §1.7—, pero ya podemos ver la idea que las sostiene: **una tolerancia positiva alrededor de un centro define una región precisa de puntos admitidos**.
+Una bola puede interpretarse así como una tolerancia: si aceptamos un error menor que $r$ respecto del valor de referencia $a$, los valores admitidos son sus puntos. Para usar esa interpretación sin perder información debemos conservar tanto el lado de la comparación como la decisión de admitir o excluir la frontera.
 
 ### Antes de seguir
 
@@ -4672,199 +4117,62 @@ La suma $d(a,b)+r$ es la distancia desde $b$ hasta la frontera más lejana de la
 El panel de inclusión de la figura [C01-F12](#fig-anm-c01-f12) muestra esta misma condición como comparación de fronteras: el alcance total desde $b$ hasta el extremo más lejano de la bola pequeña no puede sobrepasar el radio $s$.
 
 </details>
+
 ## 1.7. Traducir entre orden, distancia y tolerancia
 
-En §1.6 apareció una equivalencia que merece algo más que una mirada pasajera. Para $r>0$ vimos que
+[]{#MA-SEC-ANM-01-001-007}
+
+Para $a,x\in\mathbb R$ y $r>0$, la descripción de la bola proporciona cuatro formas de una misma condición:
 
 $$
-B(a,r)=\{x\in\mathbb R:d(x,a)<r\}=(a-r,a+r).
+\boxed{\begin{aligned}
+|x-a|<r&\iff d(x,a)<r\\
+&\iff a-r<x<a+r\\
+&\iff x\in(a-r,a+r).
+\end{aligned}}
 $$
 
-Esta igualdad reúne varias maneras de describir exactamente el mismo conjunto. Una habla de **distancia**; otra, de **valor absoluto**; otra, de **orden**; y otra, de **pertenencia a una región de la recta**. A partir de ahora conviene aprender a cambiar de una a otra deliberadamente.
+Cada forma destaca algo que puede necesitar un argumento: el valor absoluto permite calcular, la distancia expresa el margen y las desigualdades sitúan los puntos admitidos. La pertenencia nombra esa región como conjunto. Podemos recorrer la cadena en cualquiera de los dos sentidos: partiendo del intervalo, restar $a$ da $-r<x-a<r$, y la definición por casos recupera el valor absoluto.
 
-La cadena fundamental es
-
-$$
-\boxed{
-|x-a|<r
-\iff d(x,a)<r
-\iff a-r<x<a+r
-\iff x\in(a-r,a+r)
-}
-$$
-
-para todo $a,x\in\mathbb R$ y todo $r>0$.
-
-No hay cuatro hechos distintos aquí. Hay una sola condición expresada en cuatro lenguajes.
-
-### Leer la cadena de izquierda a derecha
-
-Supongamos que comenzamos con
+Si admitimos la frontera, la misma discusión de signos con desigualdades no estrictas da
 
 $$
-|x-a|<r.
+\boxed{\begin{aligned}
+|x-a|\le r&\iff d(x,a)\le r\\
+&\iff a-r\le x\le a+r\\
+&\iff x\in[a-r,a+r].
+\end{aligned}}
 $$
 
-La expresión $|x-a|$ mide la separación entre $x$ y $a$, de modo que podemos leer inmediatamente
+Los puntos $a-r$ y $a+r$ están a distancia exactamente $r$ y ahora pertenecen. El centro y el umbral son los mismos; cambia la condición de pertenencia en dos puntos concretos.
+
+Pedir una separación mayor selecciona las regiones exteriores. Si el desplazamiento es no negativo, debe ser mayor que $r$; si es negativo, su opuesto debe serlo. Por tanto,
 
 $$
-d(x,a)<r.
+\boxed{\begin{aligned}
+|x-a|>r&\iff d(x,a)>r\\
+&\iff x<a-r\ \text{o}\ x>a+r\\
+&\iff x\in(-\infty,a-r)\cup(a+r,\infty).
+\end{aligned}}
 $$
 
-La desigualdad dice que $x$ está a menos de $r$ unidades del centro. En la recta, esto significa que no ha alcanzado ninguna de las dos fronteras situadas exactamente a distancia $r$:
+Al admitir también los puntos a distancia igual al umbral obtenemos
 
 $$
-a-r<x<a+r.
+\boxed{\begin{aligned}
+|x-a|\ge r&\iff d(x,a)\ge r\\
+&\iff x\le a-r\ \text{o}\ x\ge a+r\\
+&\iff x\in(-\infty,a-r]\cup[a+r,\infty).
+\end{aligned}}
 $$
 
-Y esa condición de orden es precisamente la pertenencia al intervalo
-
-$$
-x\in(a-r,a+r).
-$$
-
-Cada paso cambia la representación, no el conjunto de puntos admitidos.
-
-### Leerla también de derecha a izquierda
-
-La traducción sólo está realmente dominada cuando podemos recorrerla en sentido contrario. Si sabemos que
-
-$$
-x\in(a-r,a+r),
-$$
-
-entonces
-
-$$
-a-r<x<a+r.
-$$
-
-Restando $a$ en los tres miembros obtenemos
-
-$$
--r<x-a<r,
-$$
-
-que equivale a
-
-$$
-|x-a|<r,
-$$
-
-y, por definición de la distancia estándar,
-
-$$
-d(x,a)<r.
-$$
-
-La utilidad de este recorrido inverso aparecerá constantemente: a veces un problema estará formulado mediante una región de la recta, pero lo que necesitaremos para argumentar será una estimación de distancia; otras veces ocurrirá exactamente al revés.
-
-### ¿Qué cambia si admitimos la frontera?
-
-Consideremos ahora
-
-$$
-|x-a|\le r.
-$$
-
-La única diferencia es que permitimos que la separación sea exactamente $r$. Las dos fronteras $a-r$ y $a+r$ pasan entonces a formar parte del conjunto. La cadena correspondiente es
-
-$$
-\boxed{
-|x-a|\le r
-\iff d(x,a)\le r
-\iff a-r\le x\le a+r
-\iff x\in[a-r,a+r]
-}
-$$
-
-De $<$ a $\le$ no cambia el centro ni cambia el radio: cambia únicamente la decisión sobre la frontera.
-
-Esta observación parece elemental, pero conviene hacerla explícita porque en análisis la diferencia entre «menor que» y «menor o igual que» puede determinar qué puntos pertenecen a un conjunto y cuáles quedan fuera.
-
-### De puntos cercanos a puntos lejanos
-
-¿Qué ocurre si invertimos la comparación y preguntamos por puntos cuya distancia al centro sea **mayor** que $r$?
-
-La condición
-
-$$
-|x-a|>r
-$$
-
-ya no selecciona los puntos situados entre las dos fronteras, sino los que quedan fuera de ellas. Algebraicamente,
-
-$$
-|x-a|>r
-\iff x<a-r\quad\text{o}\quad x>a+r.
-$$
-
-En términos métricos y de regiones,
-
-$$
-\boxed{
-|x-a|>r
-\iff d(x,a)>r
-\iff x<a-r\ \text{o}\ x>a+r
-\iff x\in(-\infty,a-r)\cup(a+r,\infty)
-}
-$$
-
-Aquí aparece una diferencia geométrica importante: la región ya no es un único intervalo, sino la unión de dos semirrectas. Para estar a más de $r$ unidades de $a$, el punto debe haber cruzado una de las dos fronteras.
-
-Si permitimos además la igualdad, obtenemos
-
-$$
-\boxed{
-|x-a|\ge r
-\iff d(x,a)\ge r
-\iff x\le a-r\ \text{o}\ x\ge a+r
-\iff x\in(-\infty,a-r]\cup[a+r,\infty)
-}
-$$
-
-De nuevo, la diferencia entre $>$ y $\ge$ sólo decide si los puntos frontera —aquellos cuya distancia a $a$ es exactamente $r$— quedan excluidos o incluidos.
-
-La figura [C01-F08](#fig-anm-c01-f08) concentra esta lectura en una sola comparación.
+La unión de dos semirrectas registra las dos maneras de alejarse del centro. Conservar sólo una rama excluiría puntos que satisfacen la condición original; el problema 35 diagnostica ese error.
 
 ![Las condiciones <, ≤, > y ≥ combinan dos decisiones: cerca o lejos del centro y frontera excluida o incluida.](../../assets/books/anm/C01/C01-F08.svg){#fig-anm-c01-f08 fig-alt="Matriz de cuatro rectas con las regiones definidas por |x-a|<r, |x-a|<=r, |x-a|>r y |x-a|>=r, manteniendo fijos a y r."}
 
-### Dos decisiones que conviene separar
+Aumentar el umbral tiene efectos opuestos según la condición. Si $0<r<s$, todo punto con $d(x,a)<r$ también cumple $d(x,a)<s$, mientras que $d(x,a)>s$ implica $d(x,a)>r$. La región interior crece y la exterior se contrae. Las dos inclusiones son estrictas: el punto $a+(r+s)/2$ tiene distancia entre ambos umbrales y permite distinguir los conjuntos en cada caso.
 
-Las cuatro condiciones anteriores pueden organizarse mediante dos preguntas independientes.
-
-La primera es:
-
-> **¿Queremos puntos más cercanos que $r$ o puntos más lejanos que $r$?**
-
-La segunda es:
-
-> **¿Admitimos los puntos situados exactamente a distancia $r$?**
-
-La primera decisión determina si seleccionamos la región entre $a-r$ y $a+r$ o la región situada fuera de esas dos marcas. La segunda determina si las marcas mismas se incluyen.
-
-Por eso las cuatro posibilidades no forman una lista arbitraria que haya que memorizar. Surgen al combinar dos elecciones conceptuales muy simples:
-
-- cerca / lejos;
-- frontera excluida / frontera incluida.
-
-### La tolerancia como lenguaje de análisis
-
-La palabra **tolerancia** permite anticipar por qué estas traducciones serán útiles más adelante. Si $a$ es un valor de referencia y $r>0$ es el error máximo que estamos dispuestos a tolerar estrictamente, entonces
-
-$$
-d(x,a)<r
-$$
-
-significa que $x$ está dentro de ese margen. En la recta podemos decir exactamente lo mismo escribiendo
-
-$$
-a-r<x<a+r.
-$$
-
-La primera formulación enfatiza **cuánto puede separarse** $x$ de $a$; la segunda muestra **dónde puede estar** $x$ en el orden de la recta.
-
-Esta dualidad será central cuando aparezcan definiciones de aproximación y límite. No necesitamos introducirlas todavía. Lo importante aquí es reconocer la infraestructura que esas definiciones utilizarán: una condición de cercanía puede leerse como una desigualdad, como una distancia o como una región alrededor de un punto.
+En una condición de tolerancia, cambiar $<$ por $\le$ puede decidir si un valor es admisible; cambiar $<$ por $>$ cambia la región entera. Mantener esas decisiones durante la traducción permite pasar de una estimación a un conjunto y volver a la estimación sin alterar el problema. Los ejercicios finales estudian cómo se combinan dos márgenes y qué ocurre al imponer a la vez un umbral inferior y otro superior.
 
 ### Traducir sin perder información
 
@@ -5708,216 +5016,63 @@ La figura [C01-F13](#fig-anm-c01-f13) concentra esta lectura en una sola compara
 ![En A_t={x: t<d(x,a)≤2t}, aumentar t mueve los dos umbrales; por eso la familia no es monótona por inclusión y A_t∩A_s es vacía exactamente cuando s≥2t.](../../assets/books/anm/C01/C01-F13.svg){#fig-anm-c01-f13 fig-alt="Dos paneles comparan las bandas métricas A_t y A_s en la recta y los intervalos de distancias (t,2t] y (s,2s] en un eje auxiliar."}
 
 </details>
+
 ## 1.8. Qué ve el orden y qué ve la distancia
 
-Hemos pasado buena parte del capítulo traduciendo entre dos maneras de describir la recta. El orden nos dice qué punto queda antes, después o entre otros; la distancia nos dice cuánto separa a dos puntos. En $\mathbb R$ ambas estructuras cooperan tan bien que es fácil olvidar que no contienen exactamente la misma información.
+[]{#MA-SEC-ANM-01-001-008}
 
-Para cerrar el capítulo vamos a someter la recta a algunas transformaciones muy simples y preguntar, en cada caso, qué permanece y qué cambia.
+Las traducciones anteriores coordinan orden y distancia, pero no identifican su información. Podemos precisar la diferencia transformando simultáneamente todos los puntos y comprobando qué relaciones se conservan.
 
-Partamos de dos puntos con
-
-$$
-x<y.
-$$
-
-Nos interesarán dos datos distintos:
-
-- su orden relativo;
-- su distancia $d(x,y)$.
-
-La pregunta será siempre la misma: **después de transformar ambos puntos, ¿qué ha ocurrido con cada uno de esos datos?**
-
-### Trasladar la recta
-
-Empecemos sumando el mismo número $c$ a todos los puntos:
-
-$$
-x\longmapsto x+c.
-$$
-
-Si $x<y$, entonces
-
-$$
-x+c<y+c.
-$$
-
-La traslación preserva, por tanto, el orden. Pero también preserva exactamente la distancia, porque
+Una **traslación** suma un mismo real $c$ a cada punto, $x\mapsto x+c$. De $x<y$ se obtiene $x+c<y+c$, y al comparar las imágenes la constante se cancela:
 
 $$
 \begin{aligned}
 d(x+c,y+c)
 &=|(x+c)-(y+c)|\\
-&=|x-y|\\
-&=d(x,y).
+&=|x-y|=d(x,y).
 \end{aligned}
 $$
 
-Nada se ha estirado, comprimido ni reflejado. Toda la configuración se ha desplazado como un bloque rígido a lo largo de la recta.
+La traslación conserva el orden y todas las distancias. Las separaciones de una configuración, por sí solas, no fijan una posición absoluta sobre la recta.
 
-Esta primera transformación conserva simultáneamente las dos estructuras que hemos estudiado: conserva la orientación del orden y conserva todas las distancias.
-
-### Escalar la recta
-
-Consideremos ahora
-
-$$
-x\longmapsto \lambda x,
-$$
-
-donde $\lambda\in\mathbb R$. Para la distancia obtenemos una fórmula que vale para cualquier $\lambda$:
+Para una **escala** $x\mapsto\lambda x$, con $\lambda\in\mathbb R$, utilizamos la identidad $|uv|=|u||v|$. La definición por casos la justifica separando los signos de los factores: si alguno es cero, ambos miembros son cero; para factores no nulos, las magnitudes se multiplican y el valor absoluto elimina el signo del producto. Así,
 
 $$
 \begin{aligned}
 d(\lambda x,\lambda y)
-&=|\lambda x-\lambda y|\\
 &=|\lambda(x-y)|\\
 &=|\lambda|\,|x-y|\\
 &=|\lambda|\,d(x,y).
 \end{aligned}
 $$
 
-La consecuencia es clara: una escala no conserva necesariamente las distancias, pero las transforma de una manera perfectamente controlada. Todas se multiplican por el mismo factor $|\lambda|$.
+Todas las distancias se multiplican por el mismo factor no negativo. Si $\lambda>0$, se conserva el orden estricto; si $\lambda<0$, se invierte. Por ejemplo, los factores $3$ y $-3$ convierten ambos una separación de longitud $2$ en una de longitud $6$, aunque el primero conserva la orientación y el segundo la invierte.
 
-¿Qué ocurre con el orden? Aquí el signo de $\lambda$ sí importa.
-
-Si $\lambda>0$, de $x<y$ obtenemos
+Una aplicación que conserva todas las distancias se llama **isometría**. Entre las escalas, eso ocurre exactamente cuando $|\lambda|=1$: la suficiencia se lee en la fórmula, y la necesidad se obtiene aplicándola a los puntos $0$ y $1$, cuya distancia es uno. La elección $\lambda=-1$ produce la reflexión
 
 $$
-\lambda x<\lambda y.
+x\mapsto-x,\qquad d(-x,-y)=d(x,y),
 $$
 
-La orientación se conserva, mientras que las distancias se multiplican por $\lambda$.
-
-Si $\lambda<0$, en cambio,
+que invierte toda desigualdad estricta:
 
 $$
-\lambda x>\lambda y.
+x<y\iff-x>-y.
 $$
 
-La orientación se invierte, aunque las distancias siguen escalándose por el factor positivo $|\lambda|$.
-
-Este contraste merece atención: el signo de $\lambda$ es decisivo para el orden, pero la distancia sólo registra su valor absoluto.
-
-### La reflexión como caso decisivo
-
-Tomemos ahora $\lambda=-1$. La transformación es
-
-$$
-x\longmapsto -x.
-$$
-
-Por la fórmula anterior,
-
-$$
-d(-x,-y)=|-1|\,d(x,y)=d(x,y).
-$$
-
-Así que la reflexión preserva **exactamente** todas las distancias.
-
-Sin embargo, si
-
-$$
-x<y,
-$$
-
-entonces
-
-$$
--x>-y.
-$$
-
-La izquierda y la derecha se intercambian.
-
-La figura [C01-F09](#fig-anm-c01-f09) concentra esta lectura en una sola comparación.
+Una configuración y su reflejo tienen las mismas distancias etiquetadas, pero orientaciones opuestas. Las distancias sí permiten recuperar la relación no orientada de estar entre, gracias a la igualdad triangular de §1.5; la elección de izquierda y derecha queda abierta.
 
 ![Traslación, escala positiva, reflexión y λ=0 afectan de manera distinta orden y métrica; preservar distancia exacta no es lo mismo que escalarla uniformemente.](../../assets/books/anm/C01/C01-F09.svg){#fig-anm-c01-f09 fig-alt="Cuatro paneles muestran una traslación, una escala positiva, una reflexión y el caso lambda cero, indicando en cada caso qué ocurre con el orden y con las distancias."}
 
-Éste es el ejemplo que termina de separar las dos estructuras. Si conociéramos únicamente todas las distancias entre los puntos de una configuración, no podríamos distinguir esa configuración de su imagen reflejada. Las separaciones serían idénticas, aunque la orientación hubiese cambiado por completo.
-
-La aplicación $x\mapsto -x$ es, por ello, una **isometría** de la recta: preserva todas las distancias. Pero es una isometría que invierte la orientación.
-
-### El caso degenerado $\lambda=0$
-
-Queda un caso que conviene no esconder dentro de la fórmula general. Si $\lambda=0$, todos los puntos son enviados al mismo lugar:
-
-$$
-x\longmapsto 0.
-$$
-
-La ley métrica sigue siendo algebraicamente correcta:
+El caso $\lambda=0$ exige otra interpretación. Todos los puntos se envían a cero y la ley de escala sigue siendo válida:
 
 $$
 d(0,0)=0=|0|\,d(x,y).
 $$
 
-Pero ahora todas las distancias han colapsado a cero.
+Sin embargo, dos puntos distintos adquieren la misma imagen. La transformación no conserva ni invierte el orden **estricto**, porque ninguna de las desigualdades $0<0$ o $0>0$ es verdadera. Es un colapso de las distancias y de la distinción entre puntos, diferente de una reflexión.
 
-Tampoco podemos decir que el orden se preserve o se invierta. Si $x<y$, ambos puntos tienen la misma imagen, $0$. Por tanto, ya no aparece ninguna desigualdad estricta entre sus imágenes: no tenemos ni $0<0$ ni $0>0$.
-
-El caso $\lambda=0$ no es una inversión del orden: es un **colapso**. Puntos distintos dejan de distinguirse después de la transformación.
-
-Esta distinción será útil cada vez que interpretemos una fórmula de transformación. Una identidad algebraica puede seguir siendo válida en un caso degenerado aunque la interpretación geométrica cambie radicalmente.
-
-### Tres preguntas diferentes
-
-Podemos ahora organizar lo aprendido sin confundir tres preguntas que parecen similares.
-
-La primera es:
-
-> **¿Se preservan exactamente las distancias?**
-
-Para una traslación, sí. Para una escala $x\mapsto\lambda x$, esto ocurre exactamente cuando
-
-$$
-|\lambda|=1.
-$$
-
-En la recta real, los casos son $\lambda=1$ y $\lambda=-1$: identidad y reflexión.
-
-La segunda pregunta es:
-
-> **¿Cómo cambian las distancias?**
-
-Para cualquier escala,
-
-$$
-d(\lambda x,\lambda y)=|\lambda|d(x,y).
-$$
-
-Si $|\lambda|>1$, se amplían; si $0<|\lambda|<1$, se contraen; si $\lambda=0$, colapsan a cero.
-
-La tercera pregunta es:
-
-> **¿Qué ocurre con el orden?**
-
-- una traslación lo preserva;
-- una escala con $\lambda>0$ lo preserva;
-- una escala con $\lambda<0$ lo invierte;
-- una escala con $\lambda=0$ no lo preserva ni lo invierte: destruye toda distinción estricta entre los puntos.
-
-Estas respuestas no son intercambiables. Saber qué sucede con las distancias no determina por sí solo qué sucede con la orientación.
-
-### Volvamos al comienzo
-
-En §1.1 empezamos con una observación: sobre la misma recta podemos hacer preguntas algebraicas, de orden y métricas. Después fuimos construyendo puentes entre ellas. Los intervalos surgieron del orden; el valor absoluto se convirtió en distancia; la desigualdad triangular relacionó distancia y posición; las bolas resultaron ser intervalos; y una condición de tolerancia pudo escribirse indistintamente mediante distancia o desigualdades.
-
-Ahora podemos precisar la conclusión que entonces apenas intuíamos.
-
-La métrica estándar de $\mathbb R$ permite decir **cuánto separa** a los puntos. El orden permite decir **cómo están orientados y situados unos respecto de otros**. En la recta ambas estructuras son extraordinariamente compatibles, pero una no se reduce a la otra.
-
-La reflexión lo muestra de la manera más limpia:
-
-$$
-d(-x,-y)=d(x,y),
-$$
-
-mientras que
-
-$$
-x<y\iff -x>-y.
-$$
-
-La distancia permanece; la orientación cambia.
+Hemos visto que la distancia puede conservarse mientras cambia la orientación, y que el orden puede conservarse mientras cambian las distancias. En la recta estándar podemos traducir las regiones de cercanía a intervalos y reconocer la posición intermedia mediante una igualdad métrica, pero esas traducciones no eliminan la elección de orientación. El problema 42 completa esta observación: al clasificar todas las isometrías, mostrará que una vez elegidos la imagen del origen y un sentido global, las distancias fuerzan todas las demás imágenes.
 
 ### Antes de cerrar el capítulo
 

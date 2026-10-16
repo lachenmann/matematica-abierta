@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 31 — Completitud, compacidad y conexidad en espacios métricos
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,13 +28,13 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-31)
 
-C15 y C16 estudiaron conexidad y compacidad en la recta; C30 reconstruyó las herramientas de distancia. Ahora distinguiremos destinos de Cauchy, redes finitas, coberturas y separaciones. Las pruebas indicarán cuándo trabajan sobre una ruta dada y cuándo seleccionan puntos nuevos. Los resultados de dimensión finita se acreditan con las métricas declaradas; no se trasladan por semejanza visual a cualquier espacio.
+La sucesión de recíprocos puede ser de Cauchy en un intervalo abierto y tener su único destino fuera de él. Una métrica hace posible formular esa pérdida, pero no la resuelve. La completitud exigirá conservar los destinos; las redes finitas controlarán cuántos lugares distintos quedan a cada escala; las coberturas definirán compacidad y las separaciones, conexidad. Las pruebas distinguirán cuándo usan una sucesión dada y cuándo necesitan seleccionar puntos nuevos, y los resultados de dimensión finita conservarán sus métricas expresas.
 
 ## 31.1. Dar destino a todas las sucesiones de Cauchy
 
 []{#MA-SEC-ANM-01-031-001}
 
-Un recorrido puede estabilizarse sin encontrar un punto donde terminar. En C30, $x_n=1/(n+2)$ era Cauchy en $(0,1)$, pero su único posible límite real era $0$, que no pertenecía al espacio. La cuestión global ya no es cuánto se acercan los términos, sino si el espacio contiene todos los destinos exigidos por esas colas.
+En $(0,1)$, los términos $x_n=1/(n+2)$ se acercan entre sí tanto como queramos, pero su único posible límite real es cero y queda fuera del espacio. Queremos distinguir los espacios en los que esto puede ocurrir de aquellos que contienen un destino para toda cola de Cauchy.
 
 Un espacio métrico $(X,d)$ es **completo** si toda sucesión de Cauchy $x:\mathbb N\to X$ converge a un punto de $X$. No se exige que toda sucesión converja; en $\mathbb R$, la sucesión $n$ no es Cauchy. El espacio vacío es completo de modo vacuo. Un espacio discreto también es completo: la condición de Cauchy para $\varepsilon=1/2$ obliga a una cola constante, cuyo valor es el destino. Esto no implica que el espacio sea finito.
 
@@ -48,7 +48,7 @@ La recta usual es completa por C10. Para $\mathbb R^m$, con $m\ge1$ finito y $d_
 
 Antes de usar esa métrica debemos acreditar $f\in\mathcal B(T)$. Para $\varepsilon=1$, el argumento anterior da un índice $N$ con $|f(t)-f_N(t)|\le1/2$ para todo $t$. Si $|f_N(t)|\le M$, resulta $|f(t)|\le M+1/2$. La función límite es acotada y la convergencia en supremo está justificada. Sobre un espacio métrico $T$, las funciones acotadas continuas forman un subespacio completo: el límite uniforme es continuo por la prueba de tres errores de C28, que se reconstruye con bolas en el dominio y valor absoluto en el codominio. Concretamente, elegimos una función a distancia menor que $\varepsilon/3$ del límite y usamos su continuidad para el error central. No se exige compacidad de $T$.
 
-![La misma cola recíproca tiene destino cero en [0,1] y carece de destino interno en (0,1). El recinto se declara antes de identificar su límite. Los primeros ocho términos son una muestra; la cota de Cauchy y la unicidad prueban el resultado para toda la cola.](../../assets/books/anm/C31/C31-F01.svg){#fig-anm-c31-f01 fig-alt="La misma cola recíproca tiene destino cero en [0,1] y carece de destino interno en (0,1). El recinto se declara antes de identificar su límite. Los primeros ocho términos son una muestra; la cota de Cauchy y la unicidad prueban el resultado para toda la cola."}
+![La misma cola recíproca tiene destino cero en [0,1] y carece de destino interno en (0,1). El recinto se declara antes de identificar su límite. Los primeros ocho términos son una muestra; la cota de Cauchy y la unicidad prueban el resultado para toda la cola.](../../assets/books/anm/revision-20261016/C31/C31-F01.svg){#fig-anm-c31-f01 fig-alt="La misma cola recíproca tiene destino cero en [0,1] y carece de destino interno en (0,1). El recinto se declara antes de identificar su límite. Los primeros ocho términos son una muestra; la cota de Cauchy y la unicidad prueban el resultado para toda la cola."}
 
 ### Microcontroles
 
@@ -286,13 +286,14 @@ La cota $d(y_n,a)<1/(n+1)$ acredita $y_n\to a$ en $X$. Toda convergente es Cauch
 Unicidad en $X$ implica $a=b\in Y$. Por tanto $Y$ contiene su clausura y es cerrado. No se requiere que $X$ sea completo; la selección de los testigos es la obligación adicional explícita que permite construir la sucesión.
 
 </details>
+
 ## 31.2. Encerrar un destino y construirlo por iteración
 
 []{#MA-SEC-ANM-01-031-002}
 
 La completitud puede reconocerse mirando recintos que se estrechan. Sea $(X,d)$ completo y sea $F_0\supset F_1\supset\cdots$ una familia de conjuntos cerrados no vacíos, de diámetro finito, con $\operatorname{diam}F_n\to0$. El diámetro es $\sup\{d(x,y):x,y\in F_n\}$. Para construir una sucesión fijamos testigos $x_n\in F_n$; éste es un uso de elección numerable, salvo que los testigos formen parte de los datos.
 
-Si $p,q\ge N$, ambos testigos están en $F_N$ y $d(x_p,x_q)\le\operatorname{diam}F_N$. La sucesión es Cauchy, tiene límite $a$, y para cada $N$ su cola vive en el cerrado $F_N$, luego $a\in F_N$. Si $a,b$ pertenecen a todos los recintos, $d(a,b)\le\operatorname{diam}F_N$ para todo $N$, de donde $a=b$. Hay un único punto común. Sin encogimiento la unicidad falla: $F_n=[0,1]$. Sin completitud, $F_n=(0,1/(n+1)]$ son cerrados relativos en $(0,1)$, no vacíos, anidados y de diámetro $1/(n+1)$, pero su intersección es vacía.
+Si $p,q\ge N$, ambos testigos están en $F_N$, de modo que $d(x_p,x_q)\le\operatorname{diam}F_N$. La sucesión es Cauchy y tiene un límite $a$ por completitud. Para cada $N$, su cola está en el cerrado $F_N$ y por ello también $a\in F_N$. Si dos puntos $a,b$ pertenecieran a todos los recintos, su distancia sería a lo sumo $\operatorname{diam}F_N$ para todo $N$; al tender esos diámetros a cero resulta $a=b$. Hay un único punto común. Sin encogimiento puede fallar la unicidad, como en $F_n=[0,1]$. Sin completitud puede fallar la existencia: en $X=(0,1)$, los conjuntos $F_n=(0,1/(n+2)]$ son cerrados relativos no vacíos, anidados, de diámetro $1/(n+2)$ y con intersección vacía.[^C31-recintos]
 
 **Una función puede suministrar sus propios testigos.** Sea $X\ne\varnothing$ completo y $T:X\to X$ una **contracción**: existe $q\in[0,1)$ con $d(Tx,Ty)\le qd(x,y)$ para todos los pares. Partimos de un $x_0$ dado y definimos $x_{n+1}=Tx_n$. Esta recursión es determinada; no se elige de nuevo en cada paso. Escribamos $C=d(x_1,x_0)$. Por inducción $d(x_{n+1},x_n)\le Cq^n$. Para $p>n$, sumar el bloque finito da
 $$d(x_p,x_n)\le C\sum_{j=n}^{p-1}q^j\le\frac{Cq^n}{1-q}.$$
@@ -306,7 +307,7 @@ En $X=[0,1]$, $T(x)=(x+1)/2$ es una contracción de razón $1/2$. Desde $x_0=0$,
 $$|T(y)-T(x)|=(y-x)\left(1-\frac1{xy}\right)<y-x\quad(1\le x<y),$$
 pero no tiene punto fijo. Los cocientes se acercan a $1$ y no hay una razón común menor que $1$.
 
-![La iteración x(n+1)=(x(n)+1)/2 desde cero produce x(n)=1−2^(−n). El destino 1 pertenece al segmento y queda fuera del intervalo abierto. El error exacto coincide con la cota geométrica; para error estrictamente menor que 1/16 el primer corte es 5, no 4.](../../assets/books/anm/C31/C31-F02.svg){#fig-anm-c31-f02 fig-alt="La iteración x(n+1)=(x(n)+1)/2 desde cero produce x(n)=1−2^(−n). El destino 1 pertenece al segmento y queda fuera del intervalo abierto. El error exacto coincide con la cota geométrica; para error estrictamente menor que 1/16 el primer corte es 5, no 4."}
+![La iteración x(n+1)=(x(n)+1)/2 desde cero produce x(n)=1−2^(−n). El destino 1 pertenece al segmento y queda fuera del intervalo abierto. El error exacto coincide con la cota geométrica; para error estrictamente menor que 1/16 el primer corte es 5, no 4.](../../assets/books/anm/revision-20261016/C31/C31-F02.svg){#fig-anm-c31-f02 fig-alt="La iteración x(n+1)=(x(n)+1)/2 desde cero produce x(n)=1−2^(−n). El destino 1 pertenece al segmento y queda fuera del intervalo abierto. El error exacto coincide con la cota geométrica; para error estrictamente menor que 1/16 el primer corte es 5, no 4."}
 
 ### Microcontroles
 
@@ -544,11 +545,12 @@ La ecuación $T(x)=x$ exigiría $1/x=0$, imposible. El dominio es cerrado en la 
 Para $x=n$, $y=n+1$, las razones entre distancia de imágenes y distancia de entradas son $1-1/[n(n+1)]\to1$. Dado cualquier $q<1$, alguna razón es mayor que $q$. No existe una razón uniforme de contracción, aunque cada par distinto reduzca estrictamente su distancia.
 
 </details>
+
 ## 31.3. Cubrir con pocas bolas a cada escala
 
 []{#MA-SEC-ANM-01-031-003}
 
-Un conjunto puede estar contenido en una sola bola grande y, sin embargo, necesitar infinitas bolas pequeñas para ser cubierto. En un espacio discreto infinito todas las distancias son a lo sumo $1$, pero cada bola de radio $1/2$ es un singleton. La acotación no controla cuántas posiciones diferentes sobreviven a una escala pequeña.
+En un espacio discreto infinito, una sola bola de radio dos contiene todos los puntos, pues sus distancias no superan uno. Sin embargo, cada bola de radio $1/2$ contiene sólo su centro y ninguna cantidad finita cubre el espacio. Para describir esa diferencia necesitamos exigir redes finitas a cada escala, además de una cota global.
 
 Un espacio $X$ es **totalmente acotado** si para cada $\varepsilon>0$ existen finitos centros $a_1,\ldots,a_r\in X$ tales que $X=\bigcup_{i=1}^rB(a_i,\varepsilon)$. Llamamos a esos centros una red finita de radio $\varepsilon$. Para $X=\varnothing$ se admite $r=0$. La definición exige todas las escalas; una cobertura para un único radio sólo acredita una información parcial.
 
@@ -558,11 +560,11 @@ Si $X\ne\varnothing$ es totalmente acotado, una red de radio $1$ y un centro fij
 
 **Las coordenadas finitas admiten mallas.** Todo subconjunto acotado de $(\mathbb R^m,d_\infty)$ es totalmente acotado. Encerramos el conjunto en $[-M,M]^m$, elegimos un paso $h<\varepsilon$ y dividimos cada intervalo en finitos tramos de longitud a lo sumo $h$. Hay finitas celdas. De cada celda que corte el conjunto tomamos un representante; dos puntos de esa celda tienen distancia máximo a lo sumo $h<\varepsilon$. Los representantes forman una red. Se usa finitud, no una extracción simultánea de infinitos centros. Por comparación de métricas sirve para $d_1$, ajustando el paso a $h<\varepsilon/m$.
 
-Un subconjunto finito es totalmente acotado a cualquier radio: sus propios puntos son centros. $(0,1)$ también lo es como subconjunto acotado de la recta, pero no es completo. La discreta infinita es completa y acotada, pero no totalmente acotada. Ya aparecen dos obstáculos independientes: faltar destinos y tener demasiados lugares separados a pequeña escala.
+Los propios puntos de un conjunto finito forman una red para cualquier radio positivo. El intervalo $(0,1)$ también admite redes finitas por la construcción de mallas, pero pierde el destino de los recíprocos. La discreta infinita conserva todos los destinos de Cauchy, aunque no admite redes finitas pequeñas. La falta de destinos y el exceso de puntos separados son obstáculos independientes.
 
 **La obstrucción separada.** Si existe $\eta>0$ y una sucesión con $d(x_n,x_k)\ge\eta$ para índices distintos, ninguna bola de radio $\eta/2$ puede contener dos términos. La triangular daría una distancia estrictamente menor que $\eta$. Una red finita es imposible. El argumento vale también para cualquier conjunto infinito de puntos separados, sin enumerarlo previamente: cada bola contiene a lo sumo un punto y una unión finita sólo contiene finitos puntos del conjunto.
 
-![Cinco centros 0,1/4,1/2,3/4,1 cubren [0,1] con bolas relativas de radio 3/20: el peor error es 1/8, menor que el radio. En la discreta infinita cada bola de radio 1/2 sólo contiene un punto. Los seis puntos dibujados representan el patrón, no un espacio finito completo.](../../assets/books/anm/C31/C31-F03.svg){#fig-anm-c31-f03 fig-alt="Cinco centros 0,1/4,1/2,3/4,1 cubren [0,1] con bolas relativas de radio 3/20: el peor error es 1/8, menor que el radio. En la discreta infinita cada bola de radio 1/2 sólo contiene un punto. Los seis puntos dibujados representan el patrón, no un espacio finito completo."}
+![Cinco centros 0,1/4,1/2,3/4,1 cubren [0,1] con bolas relativas de radio 3/20: el peor error es 1/8, menor que el radio. En la discreta infinita cada bola de radio 1/2 sólo contiene un punto. Los seis puntos dibujados representan el patrón, no un espacio finito completo.](../../assets/books/anm/revision-20261016/C31/C31-F03.svg){#fig-anm-c31-f03 fig-alt="Cinco centros 0,1/4,1/2,3/4,1 cubren [0,1] con bolas relativas de radio 3/20: el peor error es 1/8, menor que el radio. En la discreta infinita cada bola de radio 1/2 sólo contiene un punto. Los seis puntos dibujados representan el patrón, no un espacio finito completo."}
 
 ### Microcontroles
 
@@ -792,6 +794,7 @@ Dos términos distintos no pueden estar en una misma bola abierta de radio $\eta
 Si hubiese una red con $r$ centros a esa escala, cada bola contendría a lo sumo un término, y la unión cubriría a lo sumo $r$ términos. Los primeros $r+1$ son todos distintos y darían contradicción. Así el espacio no es totalmente acotado. Usar radio $\eta/2$ conserva la desigualdad estricta necesaria; un radio $\eta$ no proporciona la misma exclusión de dos términos.
 
 </details>
+
 ## 31.4. Compacidad: reducir cualquier cobertura
 
 []{#MA-SEC-ANM-01-031-004}
@@ -810,7 +813,7 @@ Así $B(a,\delta)$ evita $K$. Si $K$ es vacío, el complemento ya es todo el amb
 
 Un cerrado relativo de un compacto es compacto: una cobertura de $F$ se completa con $K\setminus F$, y una subcobertura finita de $K$ deja finitos abiertos para $F$. Una unión finita de compactos también es compacta, al unir sus subcoberturas finitas. Una unión infinita puede fallar: los singletons $\{n\}$ son compactos, pero $\mathbb N$ en la recta es no acotado y no compacto. En la discreta infinita, la cobertura por singletons no admite reducción finita, aunque el espacio sea completo y acotado.
 
-![Las coberturas se reducen reteniendo miembros originales. Las dos ventanas (−1,3/4) y (1/4,2) cubren [0,1]. Para los recintos de colas de 1/(n+1), la clausura dentro de [0,1] contiene cero y tiene diámetro 1/(N+1); la anidación y la compacidad suministran el destino interno.](../../assets/books/anm/C31/C31-F04.svg){#fig-anm-c31-f04 fig-alt="Las coberturas se reducen reteniendo miembros originales. Las dos ventanas (−1,3/4) y (1/4,2) cubren [0,1]. Para los recintos de colas de 1/(n+1), la clausura dentro de [0,1] contiene cero y tiene diámetro 1/(N+1); la anidación y la compacidad suministran el destino interno."}
+![Las coberturas se reducen reteniendo miembros originales. Las dos ventanas (−1,3/4) y (1/4,2) cubren [0,1]. Para los recintos de colas de 1/(n+1), la clausura dentro de [0,1] contiene cero y tiene diámetro 1/(N+1); la anidación y la compacidad suministran el destino interno.](../../assets/books/anm/revision-20261016/C31/C31-F04.svg){#fig-anm-c31-f04 fig-alt="Las coberturas se reducen reteniendo miembros originales. Las dos ventanas (−1,3/4) y (1/4,2) cubren [0,1]. Para los recintos de colas de 1/(n+1), la clausura dentro de [0,1] contiene cero y tiene diámetro 1/(N+1); la anidación y la compacidad suministran el destino interno."}
 
 ### Microcontroles
 
@@ -1044,15 +1047,16 @@ Si algún $z\in B(a,\delta)$ perteneciera a una bola retenida, triangular daría
 El conjunto de distancias es no vacío, acotado inferiormente por cero y contiene valores finitos, de modo que tiene ínfimo real. La cota común da $\inf_{k\in K}d(a,k)\ge\delta>0$. No se ha supuesto que exista un punto minimizante.
 
 </details>
+
 ## 31.5. La equivalencia métrica y sus elecciones
 
 []{#MA-SEC-ANM-01-031-005}
 
-Tenemos ya una dirección sin selección infinita: compacto implica completo y totalmente acotado. Para volver necesitamos producir recorridos o escoger redes a diferentes escalas. En esta sección rige la convención clásica de selección declarada en §31.1; no escondemos ese paso detrás de una frase como «tomemos puntos».
+La compacidad ya ha proporcionado completitud y redes finitas sin construir sucesiones nuevas. Para obtener la dirección inversa escogeremos redes a diferentes escalas y extraeremos recorridos. Conservaremos en estas construcciones la convención clásica de selección declarada en §31.1, distinguiéndola de los mínimos naturales que determinan índices de una sucesión ya dada.
 
 Un espacio es **secuencialmente compacto** si toda sucesión en él tiene una subsucesión convergente con límite interno. El vacío satisface esta condición de modo vacuo. En un espacio totalmente acotado, fijamos una red finita para cada radio $2^{-j}$, $j=1,2,\ldots$; elegir la lista de redes usa elección numerable de tales listas. Sea $(x_n)$ una sucesión. Entre las bolas de la primera red, alguna captura infinitos índices. Escogemos la primera de una enumeración finita con esa propiedad, y conservamos sus índices. A cada nivel hacemos lo mismo dentro del conjunto infinito anterior, obteniendo conjuntos de índices $I_1\supset I_2\supset\cdots$, cada uno contenido en una bola de radio $2^{-j}$. El desempate finito se hace por menor posición de la lista, no por escoger un punto del espacio.
 
-Elegimos $n_1=\min I_1$ y $n_{j+1}=\min\{n\in I_{j+1}:n>n_j\}$. Existen porque un conjunto infinito de naturales no está acotado. Si $p,q\ge j$, los puntos $x_{n_p},x_{n_q}$ están en la misma bola del nivel $j$, y su distancia es menor que $2^{1-j}$. La subsucesión es Cauchy. Si además el espacio es completo, converge a un punto interno. Hemos probado completo más totalmente acotado implica secuencialmente compacto, haciendo visibles los dos usos distintos: las redes requieren selección; los índices posteriores usan mínimos naturales.
+De los conjuntos de índices anidados extraemos una subsucesión mediante mínimos: $n_1=\min I_1$ y $n_{j+1}=\min\{n\in I_{j+1}:n>n_j\}$. El segundo conjunto es no vacío porque $I_{j+1}$ es infinito y un conjunto infinito de naturales no está acotado. Para $p,q\ge j$, ambos puntos $x_{n_p},x_{n_q}$ están en la bola del nivel $j$, así que su distancia es menor que $2^{1-j}$. La subsucesión es de Cauchy. Si el espacio es completo, obtiene un destino interno y hemos probado compacidad secuencial. Las redes a todas las escalas usaron selección; una vez dadas, la extracción de índices quedó determinada por mínimos.
 
 **La secuencia impide una escala rebelde.** Si un espacio secuencialmente compacto no fuese totalmente acotado, existiría $\varepsilon>0$ para el que ninguna colección finita de bolas cubriera. Elegimos $x_0\in X$ y, recursivamente,
 $$x_{n+1}\notin\bigcup_{i=0}^nB(x_i,\varepsilon).$$
@@ -1064,7 +1068,7 @@ Como el espacio es totalmente acotado, una red finita de radio $\lambda/2$ cubre
 $$X\text{ compacto}\quad\Longleftrightarrow\quad X\text{ completo y totalmente acotado}\quad\Longleftrightarrow\quad X\text{ secuencialmente compacto}.$$
 La diferencia con la recta queda localizada: allí acotación y acotación total coinciden por las mallas finitas. En un espacio métrico general no coinciden. Reemplazar «totalmente acotado» por «acotado» haría falsa la equivalencia. La extracción tampoco convierte cualquier sucesión original en convergente: en $[0,1]$, una sucesión alternante entre $0$ y $1$ tiene selecciones convergentes y carece de límite global.
 
-![El mapa de prueba señala las direcciones entre compacto, completo más totalmente acotado y secuencialmente compacto. La dirección de coberturas a completitud y redes es directa. Las otras construcciones indican redes elegidas por niveles, selección dependiente o puntos infractores. Todas las equivalencias se leen bajo la convención de selección explícita del capítulo.](../../assets/books/anm/C31/C31-F05.svg){#fig-anm-c31-f05 fig-alt="El mapa de prueba señala las direcciones entre compacto, completo más totalmente acotado y secuencialmente compacto. La dirección de coberturas a completitud y redes es directa. Las otras construcciones indican redes elegidas por niveles, selección dependiente o puntos infractores. Todas las equivalencias se leen bajo la convención de selección explícita del capítulo."}
+![El mapa de prueba señala las direcciones entre compacto, completo más totalmente acotado y secuencialmente compacto. La dirección de coberturas a completitud y redes es directa. Las otras construcciones indican redes elegidas por niveles, selección dependiente o puntos infractores. Todas las equivalencias se leen bajo la convención de selección explícita del capítulo.](../../assets/books/anm/revision-20261016/C31/C31-F05.svg){#fig-anm-c31-f05 fig-alt="El mapa de prueba señala las direcciones entre compacto, completo más totalmente acotado y secuencialmente compacto. La dirección de coberturas a completitud y redes es directa. Las otras construcciones indican redes elegidas por niveles, selección dependiente o puntos infractores. Todas las equivalencias se leen bajo la convención de selección explícita del capítulo."}
 
 ### Microcontroles
 
@@ -1300,11 +1304,12 @@ El intervalo $[0,1]$ es compacto. En él, defina $x_n=0$ para índices pares y $
 Si la sucesión completa tuviera límite, toda subsucesión tendría ese mismo límite. Las dos anteriores forzarían simultáneamente cero y uno, contradiciendo unicidad. Por tanto la sucesión no converge. La compacidad secuencial garantiza alguna subsucesión convergente de cada sucesión, sin imponer convergencia de la totalidad.
 
 </details>
+
 ## 31.6. Transportar compacidad por continuidad
 
 []{#MA-SEC-ANM-01-031-006}
 
-La compacidad permite transformar ventanas locales en un control de todo el dominio. Primero probemos que una función continua $f:K\to Y$ lleva un compacto a un compacto. Si abiertos de $Y$ cubren $f(K)$, sus preimágenes son abiertos relativos de $K$ por C30 y cubren $K$. Una subcobertura finita de preimágenes da una subcobertura finita de la imagen. No se requieren inyectividad, sobreyectividad sobre $Y$ ni elección de puntos de fibras.
+Para transportar compacidad mediante una función continua $f:K\to Y$, partimos de una cobertura abierta de $f(K)$. Sus preimágenes son abiertas relativas y cubren $K$. La compacidad de éste deja una subcobertura finita y los mismos miembros originales cubren la imagen. El argumento no necesita escoger una preimagen de cada punto ni exige inyectividad o sobreyectividad sobre todo $Y$.
 
 Para $f:K\to\mathbb R$ continua y $K\ne\varnothing$ compacto, $f(K)$ es no vacío, compacto, cerrado y acotado. Su supremo $s$ existe por C3. Toda bola real de radio $\varepsilon>0$ alrededor de $s$ corta $f(K)$, porque $s-\varepsilon$ no es cota superior. Así $s\in\operatorname{cl}f(K)=f(K)$. Hay un $a\in K$ con $f(a)=s$. El ínfimo se trata del mismo modo. La selección de un punto que alcanza cada extremo es una existencia aislada, no una familia infinita. Se recupera el teorema de extremos de C16 para una función real sobre cualquier compacto métrico. Para codominio métrico arbitrario podemos concluir imagen compacta y acotada, pero «máximo» requiere orden adicional.
 
@@ -1316,9 +1321,9 @@ Si $f$ es una biyección continua de un compacto $K$ a un espacio métrico $Y$, 
 
 **Heine–Borel en dimensión finita, con la métrica declarada.** Un subconjunto $K\subset(\mathbb R^m,d_\infty)$ es compacto si y sólo si es cerrado y acotado. El sentido directo ya está demostrado. En el otro, la recta completa por coordenadas hace completo $\mathbb R^m$; cerrado hace completo el subespacio; acotado produce mallas finitas de §31.3; §31.5 da compacidad, bajo su convención de selección. Para $d_1$ las constantes de comparación conservan todas estas propiedades. No se importa una norma euclídea sin definirla.
 
-No basta que un espacio completo y acotado sea el dominio de una función continua para obtener uniformidad. Sobre $\mathbb N$ con $d(n,m)=|1/(n+1)-1/(m+1)|$ podemos tener pérdidas de destino, así que no usamos ese ejemplo para el requisito de completo. Un contraejemplo que sí lo satisface será construido en §31.8 mediante una métrica truncada sobre $\mathbb R$: la función $x\mapsto x^2$ es continua y no uniformemente continua. La compacidad es una hipótesis global precisa, no un sinónimo de «no irse demasiado lejos».
+La continuidad uniforme procede aquí de compacidad, no de completitud y acotación por separado. En §31.8 construiremos un dominio que sí es completo y acotado, la recta con métrica truncada, sobre el que $x\mapsto x^2$ sigue siendo continua y falla la uniformidad. La ausencia de redes finitas pequeñas explicará por qué no podemos aplicar el argumento de la cubierta finita.
 
-![Para f(t)=t² en [0,1], la imagen es [0,1] y contiene ambos extremos. Las bolas relativas de centros 0,1/4,1/2,3/4,1 y radio reducido 3/20 cubren el dominio. Los radios completos 3/10 controlan error de imagen menor que 3/5; con tolerancia 6/5, el mínimo de radios reducidos ofrece un control global de entrada.](../../assets/books/anm/C31/C31-F06.svg){#fig-anm-c31-f06 fig-alt="Para f(t)=t² en [0,1], la imagen es [0,1] y contiene ambos extremos. Las bolas relativas de centros 0,1/4,1/2,3/4,1 y radio reducido 3/20 cubren el dominio. Los radios completos 3/10 controlan error de imagen menor que 3/5; con tolerancia 6/5, el mínimo de radios reducidos ofrece un control global de entrada."}
+![Para f(t)=t² en [0,1], la imagen es [0,1] y contiene ambos extremos. Las bolas relativas de centros 0,1/4,1/2,3/4,1 y radio reducido 3/20 cubren el dominio. Los radios completos 3/10 controlan error de imagen menor que 3/5; con tolerancia 6/5, el mínimo de radios reducidos ofrece un control global de entrada.](../../assets/books/anm/revision-20261016/C31/C31-F06.svg){#fig-anm-c31-f06 fig-alt="Para f(t)=t² en [0,1], la imagen es [0,1] y contiene ambos extremos. Las bolas relativas de centros 0,1/4,1/2,3/4,1 y radio reducido 3/20 cubren el dominio. Los radios completos 3/10 controlan error de imagen menor que 3/5; con tolerancia 6/5, el mínimo de radios reducidos ofrece un control global de entrada."}
 
 ### Microcontroles
 
@@ -1556,6 +1561,7 @@ Tiene redes finitas a toda escala mediante una partición suficientemente fina d
 Para $a,b\in K$, defina $\gamma(t)=(1-t)a+tb$, $0\le t\le1$. Cada coordenada cumple $|\gamma_i(t)|\le(1-t)|a_i|+t|b_i|\le1$, de modo que el camino permanece en $K$. Además $d_\infty(\gamma(t),\gamma(s))=|t-s|d_\infty(a,b)$, que acredita continuidad, incluidos los pares iguales. Por tanto es conexo por caminos y conexo.
 
 </details>
+
 ## 31.7. Conexidad: impedir una separación
 
 []{#MA-SEC-ANM-01-031-007}
@@ -1564,7 +1570,7 @@ Completitud se ocupa de colas; compacidad, de coberturas. La tercera pregunta es
 
 La definición equivale a no tener subconjuntos abiertos y cerrados a la vez salvo $\varnothing$ y $X$. En una separación cada abierto es complemento del otro y por tanto cerrado. Recíprocamente, un conjunto abierto y cerrado propio y no vacío forma una separación con su complemento. Hay una segunda lectura útil: $X$ es conexo si y sólo si toda función continua a $\{0,1\}$ con métrica discreta es constante. Una función no constante produce por preimagen la separación de los dos singletons. Una separación produce la función que vale $0$ en una parte y $1$ en la otra; las cuatro posibles preimágenes de abiertos del codominio son abiertas. Es un certificado binario de desconexión.
 
-**Una imagen continua conserva conexidad.** Si $f(X)$ tuviera una separación relativa, sus preimágenes serían abiertos disjuntos que cubren $X$ y son no vacíos porque cada parte contiene una imagen. Contradice la conexidad. La continuidad no obliga a la imagen a ser abierta, pero sí transporta la imposibilidad de separar. Ninguna sucesión ni selector infinito interviene en esta prueba.
+**Una imagen continua conserva conexidad.** Si $f(X)$ tuviera una separación relativa, las preimágenes de sus dos partes serían abiertas disjuntas que cubren $X$. Ambas serían no vacías porque cada parte contiene algún valor de la función. Esto separaría $X$ y contradice la conexidad. La prueba usa preimágenes y no necesita construir sucesiones ni seleccionar infinitos puntos; tampoco exige que la imagen de un abierto sea abierta.
 
 **En la recta usual, conexo significa intervalo.** Si $A$ es conexo y contiene $a<b$, pero no contiene algún $c\in(a,b)$, entonces $A\cap(-\infty,c)$ y $A\cap(c,\infty)$ son una separación. Por tanto contiene todos los puntos intermedios. Para probar el converso, sea $I$ un intervalo y supongamos una separación $U,V$. Tomamos $u\in U$, $v\in V$; intercambiando nombres si hace falta, $u<v$. El segmento $[u,v]$ pertenece a $I$. El conjunto $S=U\cap[u,v]$ es no vacío y acotado, de modo que tiene supremo $s\in[u,v]$.
 
@@ -1574,7 +1580,7 @@ La clausura de un conexo $A$ es conexa. Si su clausura se separara en $U,V$, la 
 
 Un **camino** de $a$ a $b$ es una función continua $\gamma:[0,1]\to X$ con extremos $a,b$. Un espacio es conexo por caminos si cada par puede unirse así; en el vacío la condición es vacua. Todo espacio conexo por caminos es conexo: una separación y un punto en cada parte producirían por el camino una separación del intervalo mediante preimágenes. El converso no se afirma sin prueba. En $\mathbb R^m$ las operaciones coordenadas permiten caminos lineales $\gamma(t)=(1-t)a+tb$ dentro de cualquier conjunto convexo; la estimación $d_\infty(\gamma(t),\gamma(s))=|t-s|d_\infty(a,b)$ acredita continuidad. Una imagen real continua de un conexo toma todos los valores intermedios entre dos de sus valores, pues su imagen es un intervalo. Ésta es la forma métrica del mecanismo de C15.
 
-![Dos segmentos separados admiten una función continua binaria que vale cero a la izquierda y uno a la derecha. Sobre el intervalo completo, el mismo salto no es continuo: una ventana alrededor de cero ve ambos valores. Conexidad se diagnostica con abiertos relativos o preimágenes, sin confundirla con compacidad de los dos segmentos.](../../assets/books/anm/C31/C31-F07.svg){#fig-anm-c31-f07 fig-alt="Dos segmentos separados admiten una función continua binaria que vale cero a la izquierda y uno a la derecha. Sobre el intervalo completo, el mismo salto no es continuo: una ventana alrededor de cero ve ambos valores. Conexidad se diagnostica con abiertos relativos o preimágenes, sin confundirla con compacidad de los dos segmentos."}
+![Dos segmentos separados admiten una función continua binaria que vale cero a la izquierda y uno a la derecha. Sobre el intervalo completo, el mismo salto no es continuo: una ventana alrededor de cero ve ambos valores. Conexidad se diagnostica con abiertos relativos o preimágenes, sin confundirla con compacidad de los dos segmentos.](../../assets/books/anm/revision-20261016/C31/C31-F07.svg){#fig-anm-c31-f07 fig-alt="Dos segmentos separados admiten una función continua binaria que vale cero a la izquierda y uno a la derecha. Sobre el intervalo completo, el mismo salto no es continuo: una ventana alrededor de cero ve ambos valores. Conexidad se diagnostica con abiertos relativos o preimágenes, sin confundirla con compacidad de los dos segmentos."}
 
 ### Microcontroles
 
@@ -1806,11 +1812,12 @@ Por conexidad, no podrían ser ambas no vacías, luego cada $A_i$ quedaría en u
 Así la unión es conexa. Si la familia es vacía, su unión es el vacío y también es conexa, tratado directamente sin necesitar un punto común.
 
 </details>
+
 ## 31.8. Comparar lo que sobrevive y cerrar la ruta
 
 []{#MA-SEC-ANM-01-031-008}
 
-Llegamos a tres propiedades globales que responden preguntas diferentes. Un destino para cada Cauchy no impide una separación; una cobertura finita no exige un camino; la ausencia de separación no garantiza destinos. La comparación debe usar ejemplos con su ambiente y su métrica, porque cambiar esa información puede cambiar la respuesta.
+Podemos comparar las propiedades globales en espacios conocidos, manteniendo indicada la métrica. La completitud pide destinos para colas de Cauchy; la acotación total pide redes a cualquier escala; la compacidad pide subcoberturas finitas y la conexidad impide separaciones. Los ejemplos siguientes muestran que ninguna de esas obligaciones debe sustituirse por otra sin una prueba.
 
 | Espacio con métrica indicada | Completo | Totalmente acotado | Compacto | Conexo |
 |---|---|---|---|---|
@@ -1820,7 +1827,7 @@ Llegamos a tres propiedades globales que responden preguntas diferentes. Un dest
 | $\{0,1\}$, usual | Sí | Sí | Sí | No |
 | $\mathbb N$, discreta | Sí | No | No | No |
 
-Cada fila tiene un certificado. El segmento es cerrado y acotado en la recta e intervalo. El abierto pierde el destino de los recíprocos, aunque tiene redes finitas y es intervalo. La recta contiene la sucesión de enteros separados y es completa e intervalo. Dos puntos son un compacto finito y se separan. La discreta infinita tiene todas las Cauchy eventualmente constantes y necesita un singleton por bola pequeña. «Acotado» no aparece como sustituto de acotación total: la última fila es acotada y sigue fallando compacidad.
+El segmento $[0,1]$ es cerrado y acotado en la recta, además de intervalo. El abierto $(0,1)$ conserva las redes finitas y la conexidad, pero pierde el destino de los recíprocos. La recta es completa y conexa, aunque contiene los enteros separados y no es totalmente acotada. Dos puntos forman un compacto finito que se puede separar. En la discreta infinita, toda Cauchy es eventualmente constante, pero cada bola pequeña sólo cubre un punto. Esta última fila es además acotada y refuta que esa propiedad baste para compacidad.
 
 **Acotar la regla de medir no acota la complejidad.** En $\mathbb R$ pongamos $d'(x,y)=\min\{|x-y|,1\}$. C30 probó que es una métrica con los mismos abiertos, convergencias y sucesiones de Cauchy que la usual. Por tanto es completa y conexa. Todo el espacio está acotado, pues $d'\le1$. Sin embargo los enteros distintos tienen distancia $1$, no hay red finita de radio $1/2$ y el espacio no es compacto. La función $f(x)=x^2$ es continua porque la topología del dominio es la usual, pero no uniformemente continua: para $x_n=n$, $y_n=n+1/n$, $n\ge1$, $d'(x_n,y_n)=1/n\to0$ mientras
 $$|f(y_n)-f(x_n)|=2+1/n^2\ge2.$$
@@ -1830,9 +1837,11 @@ Una tolerancia de salida $1$ refuta cualquier radio de entrada global. Se acredi
 
 Las comparaciones por constantes positivas de C30 conservan abiertos, Cauchy, acotación total y completitud. Para una comparación $c d\le e\le C d$, una red $d$ de radio $\varepsilon/C$ es una red $e$ de radio $\varepsilon$, y se razona al revés con $c$. Un **homeomorfismo**, biyección continua con inversa continua, conserva compacidad y conexidad por las pruebas de imágenes, pero no tiene por qué conservar completitud o acotación total. Una biyección uniformemente continua con inversa uniformemente continua sí conserva esas dos: transporta Cauchy; si la imagen tiene un destino, la inversa lo devuelve; y para redes transforma una tolerancia de salida en un radio común de entrada. No basta continuidad punto a punto para esta última conversión.
 
-Sobre un compacto, todo homeomorfismo entre espacios métricos es uniforme en ambos sentidos por §31.6; allí las distinciones se reconcilian. Fuera de la compacidad vuelven a separarse. El libro comenzó construyendo una recta sin huecos, aprendió a controlar ventanas y colas, y termina identificando cuáles de esos mecanismos pertenecían a la distancia y cuáles al orden o a la geometría finita. Las coordenadas múltiples reutilizarán mallas y cortes comunes; los espacios de funciones reutilizarán supremos y completitud; el análisis complejo reutilizará continuidad y regiones conexas; medida e integración posteriores deberán sustituir o ampliar los controles de longitud que aquí se construyeron. Ninguna de esas rutas se da por demostrada en esta síntesis.
+Sobre un compacto, un homeomorfismo métrico y su inversa son uniformemente continuos por §31.6. Fuera de él, las comparaciones anteriores separan las propiedades que sólo recuerdan los abiertos de las que necesitan un control común de distancias. Las pruebas permiten reconocer qué procedía del orden de la recta y qué puede reutilizarse en coordenadas finitas, espacios de funciones o regiones del análisis complejo. Las teorías posteriores de medida e integración tendrán que construir los controles de longitud que amplíen los usados aquí; esas extensiones no se deducen de la sola abstracción métrica.
 
-![La métrica truncada en la recta conserva Cauchy y completitud, pero hace acotado un espacio todavía no compacto. Los pares n y n+1/n tienen entrada 1/n que tiende a cero y salida cuadrática 2+1/n² al menos 2. La tabla compara cuatro modelos y mantiene separadas completitud, redes finitas, compacidad y conexidad.](../../assets/books/anm/C31/C31-F08.svg){#fig-anm-c31-f08 fig-alt="La métrica truncada en la recta conserva Cauchy y completitud, pero hace acotado un espacio todavía no compacto. Los pares n y n+1/n tienen entrada 1/n que tiende a cero y salida cuadrática 2+1/n² al menos 2. La tabla compara cuatro modelos y mantiene separadas completitud, redes finitas, compacidad y conexidad."}
+![La métrica truncada en la recta conserva Cauchy y completitud, pero hace acotado un espacio todavía no compacto. Los pares n y n+1/n tienen entrada 1/n que tiende a cero y salida cuadrática 2+1/n² al menos 2. La tabla compara cuatro modelos y mantiene separadas completitud, redes finitas, compacidad y conexidad.](../../assets/books/anm/revision-20261016/C31/C31-F08.svg){#fig-anm-c31-f08 fig-alt="La métrica truncada en la recta conserva Cauchy y completitud, pero hace acotado un espacio todavía no compacto. Los pares n y n+1/n tienen entrada 1/n que tiende a cero y salida cuadrática 2+1/n² al menos 2. La tabla compara cuatro modelos y mantiene separadas completitud, redes finitas, compacidad y conexidad."}
+
+[^C31-recintos]: En el testigo fuente aparece $(0,1/(n+1)]$ para $n\ge0$ dentro de $(0,1)$. Su término inicial contiene el punto $1$, ajeno a ese espacio. La edición revisada desplaza el denominador a $n+2$ y el diámetro a $1/(n+2)$; así todos los recintos son subespacios del ambiente declarado. El original se conserva íntegro en la trazabilidad.
 
 ### Microcontroles
 

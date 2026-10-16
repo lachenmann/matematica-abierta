@@ -18,7 +18,7 @@ related:
 - MA-BOK-0010
 license: GFDL-1.3-or-later
 title: Capítulo 30 — Espacios métricos
-date-modified: '2026-10-12'
+date-modified: '2026-10-16'
 provenance:
   type: original
   sources:
@@ -28,13 +28,13 @@ css: ../../assets/books/anm/reader.css
 
 [Índice del libro](../para-matematicos/analisis-para-matematicos.html) · [Ejercicios de este capítulo](#ejercicios-30)
 
-C1 separó orden y distancia; C4,C6,C10 yC14 construyeron ventanas, convergencia, Cauchy y continuidad. Ahora reconstruiremos esas pruebas cuando los puntos sólo tienen una métrica. El destino debe vivir en su espacio, y las recíprocas secuenciales declaran selección de testigos. C31 queda como única puerta siguiente.
+La distancia de Hamming compara palabras y la distancia suprema compara funciones. Sus puntos son objetos diferentes, pero ambas permiten hablar de proximidad y de errores pequeños. Reconstruiremos con una métrica las pruebas de ventanas, convergencia, Cauchy y continuidad desarrolladas en la recta en C1, C4, C6, C10 y C14. Mantendremos el destino dentro del espacio declarado y haremos explícita la selección de testigos cuando una recíproca secuencial la requiera.
 
 ## 30.1. Conservar la distancia, soltar las coordenadas
 
 []{#MA-SEC-ANM-01-030-001}
 
-En la recta, muchas pruebas parecían usar simultáneamente orden, operaciones y distancia. Ahora preguntamos cuáles sobreviven cuando los puntos ya no son números. El conjunto puede estar formado por palabras, funciones o configuraciones; la información disponible será una distancia real entre cada par.
+En la recta, algunas pruebas sólo utilizan que la distancia es positiva entre puntos distintos y satisface la desigualdad triangular. Podemos conservarlas aunque los puntos sean palabras, funciones o configuraciones que no se suman ni se ordenan. El dato común será una distancia real entre cada par.
 
 Una **métrica** en un conjunto $X$ es una función $d:X\times X\to[0,\infty)$ que, para todos $x,y,z\in X$, cumple
 $$d(x,y)=0\iff x=y,\qquad d(x,y)=d(y,x),\qquad d(x,z)\le d(x,y)+d(y,z).$$
@@ -48,13 +48,13 @@ La métrica usual $d(x,y)=|x-y|$ en $\mathbb R$ cumple los axiomas por C1. La re
 $$\mathbf1_{\{x_i\ne z_i\}}\le\mathbf1_{\{x_i\ne y_i\}}+\mathbf1_{\{y_i\ne z_i\}}.$$
 Sumar las $m$ desigualdades prueba la triangular; las otras propiedades son directas. La proximidad mide coincidencia de símbolos, sin necesidad de una recta que ordene las palabras.
 
-**Diagnosticar propuestas.** $|x-y|^2$ no es una métrica en $\mathbb R$: entre $0,1,2$, el trayecto directo cuesta $4$ y el desvío cuesta $1+1$. Una función no negativa y simétrica que vale cero en la diagonal todavía puede fallar. Asimismo $p((a,b),(c,e))=|a-c|$ en $\mathbb R^2$ satisface triangular y simetría, pero distancia cero no distingue puntos con primera coordenada igual. Es una pseudométrica, no una métrica sobre ese conjunto. Si se omitiera la separación, la unicidad de límites que probaremos después perdería su conclusión de igualdad de puntos.
+**Diagnosticar propuestas.** La función $|x-y|^2$ falla como métrica en $\mathbb R$: para $0,1,2$, la distancia directa propuesta es $4$, mayor que el desvío $1+1$. La positividad y la simetría no garantizan la triangular. Otra propuesta, $p((a,b),(c,e))=|a-c|$ en $\mathbb R^2$, sí satisface triangular y simetría, pero no separa puntos con primera coordenada igual. Es una pseudométrica. Esa falta impediría deducir igualdad de dos destinos a partir de una distancia cero.
 
 **La primera herramienta universal.** De la triangular, primero en un sentido y luego en el otro,
 $$|d(x,a)-d(y,a)|\le d(x,y).$$
 Aquí sí restamos números: los valores reales de la distancia, no los puntos $x,y$. Esta desigualdad triangular inversa permitirá cambiar centros, abrir ventanas y demostrar continuidad sin coordenadas.
 
-![Las palabras000,101 y111 tienen distancias de Hamming2,1 y3. Cada columna contribuye según desacuerdo de símbolos; el triángulo directo3 coincide con el desvío2+1. La propuesta cuadrática real falla en0,1,2: directo4 y desvío1+1. El primer mecanismo se prueba para todas las coordenadas; el segundo es un contraejemplo completo.](../../assets/books/anm/C30/C30-F01.svg){#fig-anm-c30-f01 fig-alt="Las palabras000,101 y111 tienen distancias de Hamming2,1 y3. Cada columna contribuye según desacuerdo de símbolos; el triángulo directo3 coincide con el desvío2+1. La propuesta cuadrática real falla en0,1,2: directo4 y desvío1+1. El primer mecanismo se prueba para todas las coordenadas; el segundo es un contraejemplo completo."}
+![Las palabras000,101 y111 tienen distancias de Hamming2,1 y3. Cada columna contribuye según desacuerdo de símbolos; el triángulo directo3 coincide con el desvío2+1. La propuesta cuadrática real falla en0,1,2: directo4 y desvío1+1. El primer mecanismo se prueba para todas las coordenadas; el segundo es un contraejemplo completo.](../../assets/books/anm/revision-20261016/C30/C30-F01.svg){#fig-anm-c30-f01 fig-alt="Las palabras000,101 y111 tienen distancias de Hamming2,1 y3. Cada columna contribuye según desacuerdo de símbolos; el triángulo directo3 coincide con el desvío2+1. La propuesta cuadrática real falla en0,1,2: directo4 y desvío1+1. El primer mecanismo se prueba para todas las coordenadas; el segundo es un contraejemplo completo."}
 
 ### Microcontroles
 
@@ -274,6 +274,7 @@ En la ruta inversa, $d(a,b)\le d(a,x)+d(x,y)+d(y,b)$, luego $d(a,b)-d(x,y)\le d(
 Los objetos restados son valores reales finitos de la métrica. Ninguna operación de resta entre puntos de $X$ interviene en la prueba.
 
 </details>
+
 ## 30.2. Bolas y el margen de una ventana
 
 []{#MA-SEC-ANM-01-030-002}
@@ -286,7 +287,7 @@ La segunda notación evita confundirla con la clausura de la primera, que no sie
 $$d(a,z)\le d(a,y)+d(y,z)<d(a,y)+\eta=r.$$
 Por tanto $B_d(y,\eta)\subset B_d(a,r)$. La forma concreta de la bola puede cambiar; el margen nace siempre de la triangular. Más generalmente, $B_d(y,s)\subset B_d(a,r)$ cuando $d(a,y)+s\le r$ y $s>0$, porque la pertenencia a la primera bola aporta una desigualdad estricta. La inclusión puede darse sin esa condición suficiente, por ejemplo en espacios discretos.
 
-Un conjunto $V\subset X$ es una vecindad de $a$ si contiene alguna bola abierta centrada en $a$. Puede tener componentes adicionales y no necesita ser una bola. El enunciado es local: se exige una ventana positiva alrededor del punto, no una forma particular del conjunto completo.
+Un conjunto $V\subset X$ es una vecindad de $a$ si contiene alguna bola abierta centrada en $a$. La vecindad puede incluir otros puntos o componentes: lo que necesitamos para un argumento local es conservar una ventana positiva completa alrededor del centro.
 
 **Dos geometrías sin una norma presupuesta.** Para pares $x=(x_1,x_2)$, $y=(y_1,y_2)$, definimos
 $$d_1(x,y)=|x_1-y_1|+|x_2-y_2|,\qquad d_\infty(x,y)=\max\{|x_1-y_1|,|x_2-y_2|\}.$$
@@ -298,7 +299,7 @@ En la métrica discreta, $B_D(a,r)=\{a\}$ cuando $0<r\le1$, y $B_D(a,r)=X$ cuand
 $$d(y,a)\ge d(x,a)-d(x,y)>d(x,a)-s>r.$$
 Así la ventana alrededor de $x$ queda en el complemento. Esto prueba cierre de $C_d(a,r)$, pero no igualdad con la clausura de $B_d(a,r)$. En un espacio discreto de al menos dos puntos, la bola abierta de radio $1$ es el singleton $\{a\}$, ya cerrado, mientras la bola cerrada de ese radio es todo $X$.
 
-![Las bolas unidad de d1 y d∞ en el origen son rombo y cuadrado, con fronteras excluidas. La entrada(1/2,1/2) pertenece al cuadrado y queda en la frontera del rombo. En la discreta, la bola abierta de radio1 sólo contiene el centro y la cerrada de radio1 contiene todos los puntos del conjunto ilustrado. Abierto/cerrado se codifica con formas además de color.](../../assets/books/anm/C30/C30-F02.svg){#fig-anm-c30-f02 fig-alt="Las bolas unidad de d1 y d∞ en el origen son rombo y cuadrado, con fronteras excluidas. La entrada(1/2,1/2) pertenece al cuadrado y queda en la frontera del rombo. En la discreta, la bola abierta de radio1 sólo contiene el centro y la cerrada de radio1 contiene todos los puntos del conjunto ilustrado. Abierto/cerrado se codifica con formas además de color."}
+![Las bolas unidad de d1 y d∞ en el origen son rombo y cuadrado, con fronteras excluidas. La entrada(1/2,1/2) pertenece al cuadrado y queda en la frontera del rombo. En la discreta, la bola abierta de radio1 sólo contiene el centro y la cerrada de radio1 contiene todos los puntos del conjunto ilustrado. Abierto/cerrado se codifica con formas además de color.](../../assets/books/anm/revision-20261016/C30/C30-F02.svg){#fig-anm-c30-f02 fig-alt="Las bolas unidad de d1 y d∞ en el origen son rombo y cuadrado, con fronteras excluidas. La entrada(1/2,1/2) pertenece al cuadrado y queda en la frontera del rombo. En la discreta, la bola abierta de radio1 sólo contiene el centro y la cerrada de radio1 contiene todos los puntos del conjunto ilustrado. Abierto/cerrado se codifica con formas además de color."}
 
 ### Microcontroles
 
@@ -514,6 +515,7 @@ El complemento es abierto y $C_d(a,r)$ es cerrado. Puesto que contiene a $B_d(a,
 La inclusión opuesta no se ha probado y puede fallar: en la métrica discreta, con al menos dos puntos y radio uno, la clausura de la bola abierta es $\{a\}$ y la bola cerrada es todo $X$.
 
 </details>
+
 ## 30.3. Abiertos, cerrados y ambiente relativo
 
 []{#MA-SEC-ANM-01-030-003}
@@ -536,9 +538,9 @@ La ida construye $U$ como la unión de todas las bolas de $X$ con centro en $A$ 
 $$\operatorname{cl}_Y A=Y\cap\operatorname{cl}_X A.$$
 Interior y frontera requieren también el complemento correcto: no se obtienen en general intersectando los correspondientes objetos de $X$ con $Y$.
 
-Por ejemplo, $Y=[0,1]$ y $A=[0,1/2)$ con distancia usual. En $Y$, $A$ es abierto, su clausura es $[0,1/2]$ y su frontera es sólo $\{1/2\}$. En toda la recta su interior es $(0,1/2)$ y su frontera es $\{0,1/2\}$. La etiqueta del ambiente cambia una conclusión concreta.
+Para ver el efecto del ambiente, tomemos $Y=[0,1]$ y $A=[0,1/2)$ con distancia usual. Dentro de $Y$, una bola relativa pequeña alrededor de cero queda en $A$, así que ese punto es interior. De hecho $A$ es abierto en $Y$, su clausura es $[0,1/2]$ y su frontera sólo $\{1/2\}$. En toda la recta, las ventanas de cero contienen negativos ajenos a $A$: el interior pasa a ser $(0,1/2)$ y la frontera $\{0,1/2\}$.
 
-![Para A=\[0,1/2), el ambienteR da frontera{0,1/2}, mientras Y=\[0,1\] da frontera{1/2}. El punto0 pertenece aA en ambos, pero enY es interior relativo. Las bandas distinguen conjunto, ambiente y marcadores de frontera; no se obtiene frontera relativa sólo intersectando la absoluta.](../../assets/books/anm/C30/C30-F03.svg){#fig-anm-c30-f03 fig-alt="Para A=\[0,1/2), el ambienteR da frontera{0,1/2}, mientras Y=\[0,1\] da frontera{1/2}. El punto0 pertenece aA en ambos, pero enY es interior relativo. Las bandas distinguen conjunto, ambiente y marcadores de frontera; no se obtiene frontera relativa sólo intersectando la absoluta."}
+![Para A=\[0,1/2), el ambienteR da frontera{0,1/2}, mientras Y=\[0,1\] da frontera{1/2}. El punto0 pertenece aA en ambos, pero enY es interior relativo. Las bandas distinguen conjunto, ambiente y marcadores de frontera; no se obtiene frontera relativa sólo intersectando la absoluta.](../../assets/books/anm/revision-20261016/C30/C30-F03.svg){#fig-anm-c30-f03 fig-alt="Para A=[0,1/2), el ambienteR da frontera{0,1/2}, mientras Y=[0,1] da frontera{1/2}. El punto0 pertenece aA en ambos, pero enY es interior relativo. Las bandas distinguen conjunto, ambiente y marcadores de frontera; no se obtiene frontera relativa sólo intersectando la absoluta."}
 
 ### Microcontroles
 
@@ -754,6 +756,7 @@ Para $y\in Y$ y todo $r>0$, $B_Y(y,r)\cap A=[Y\cap B_X(y,r)]\cap A=B_X(y,r)\cap 
 Para refutar la fórmula de interiores, tome $A=Y=[0,1]$ dentro de $X=\mathbb R$. El interior de $A$ en $Y$ es todo $Y$, pero $Y\cap\operatorname{int}_X A=(0,1)$. En los extremos, las bolas relativas omiten los puntos exteriores que impiden el interior absoluto.
 
 </details>
+
 ## 30.4. Convergencia con un destino en el espacio
 
 []{#MA-SEC-ANM-01-030-004}
@@ -776,11 +779,11 @@ Los límites del último renglón son reales, ya acreditados por C6.
 
 **Cierre y selección de testigos.** Si una sucesión con valores en $A$ converge a $a\in X$, cada bola de $a$ contiene términos tardíos, así que $a\in\operatorname{cl}_X A$. En particular un conjunto cerrado retiene todos esos destinos. La vuelta requiere reunir testigos: si $a\in\operatorname{cl}_X A$, los conjuntos $A\cap B(a,1/(n+1))$ son no vacíos. Si se dispone de una selección $a_n$ en cada uno, su distancia a $a$ es menor que $1/(n+1)$ y converge. La existencia general de esa selección se garantiza bajo **elección numerable para subconjuntos de $X$**, que denotaremos $\mathrm{CC}(X)$; también basta una selección explícitamente dada. No se esconde esta interfaz lógica en la frase «escojamos una sucesión».
 
-Bajo esa misma condición, $A$ es cerrado si y sólo si contiene el límite de toda sucesión suya convergente en $X$: si no fuera cerrado, un punto de su clausura fuera de $A$ y la selección anterior refutarían la propiedad. La dirección desde cerrado no usa elección. Si los testigos son naturales dentro de un conjunto enumerado, se puede escoger el primer índice admisible y evitar una elección arbitraria.
+Con $\mathrm{CC}(X)$, o con los testigos explícitos requeridos, obtenemos el criterio secuencial de cerrado. La dirección desde cerrado retiene todos los límites y no usa elección. Para la vuelta, si $A$ no fuera cerrado habría un punto de su clausura fuera de él; la selección anterior produciría una sucesión de $A$ convergente a ese punto y refutaría la retención. Cuando los testigos pertenecen a un conjunto enumerado, elegir el primer índice admisible puede proporcionar la regla sin elección arbitraria.
 
 En la métrica discreta, converger a $a$ equivale a ser eventualmente igual a $a$, porque la tolerancia $1/2$ excluye cualquier otro punto. En la usual sobre $\mathbb R$, $1/(n+1)\to0$ sin ser eventualmente cero. La misma sintaxis de captura adquiere contenido diferente al cambiar la métrica.
 
-![Los recíprocos1/(n+1) convergen a0 en la métrica usual y tienen error1/(n+1), con corte estricto n4 para tolerancia1/4. Los mismos valores tienen distancia discreta1 a0 en todos los índices y no convergen a ningún destino discreto, pues sus términos son todos distintos. Los puntos representan índices enteros, sin interpolar una sucesión.](../../assets/books/anm/C30/C30-F04.svg){#fig-anm-c30-f04 fig-alt="Los recíprocos1/(n+1) convergen a0 en la métrica usual y tienen error1/(n+1), con corte estricto n4 para tolerancia1/4. Los mismos valores tienen distancia discreta1 a0 en todos los índices y no convergen a ningún destino discreto, pues sus términos son todos distintos. Los puntos representan índices enteros, sin interpolar una sucesión."}
+![Los recíprocos1/(n+1) convergen a0 en la métrica usual y tienen error1/(n+1), con corte estricto n4 para tolerancia1/4. Los mismos valores tienen distancia discreta1 a0 en todos los índices y no convergen a ningún destino discreto, pues sus términos son todos distintos. Los puntos representan índices enteros, sin interpolar una sucesión.](../../assets/books/anm/revision-20261016/C30/C30-F04.svg){#fig-anm-c30-f04 fig-alt="Los recíprocos1/(n+1) convergen a0 en la métrica usual y tienen error1/(n+1), con corte estricto n4 para tolerancia1/4. Los mismos valores tienen distancia discreta1 a0 en todos los índices y no convergen a ningún destino discreto, pues sus términos son todos distintos. Los puntos representan índices enteros, sin interpolar una sucesión."}
 
 ### Microcontroles
 
@@ -996,6 +999,7 @@ La desigualdad de dos centros da $|d(x_n,y_n)-d(a,b)|\le d(x_n,a)+d(y_n,b)$. Par
 Si además $d(x_n,y_n)\to0$, la unicidad del límite real da $d(a,b)=0$; separación implica $a=b$. Si todavía no se ha supuesto convergencia de $y_n$, basta saber $x_n\to a$ y $d(x_n,y_n)\to0$: triangular da $d(y_n,a)\le d(y_n,x_n)+d(x_n,a)\to0$, construyendo su convergencia al mismo destino.
 
 </details>
+
 ## 30.5. Cauchy compara toda la cola
 
 []{#MA-SEC-ANM-01-030-005}
@@ -1004,7 +1008,7 @@ La condición de **Cauchy** compara dos índices tardíos sin nombrar destino:
 $$\forall\varepsilon>0\ \exists N\ \forall p,q\ge N:\quad d(x_p,x_q)<\varepsilon.$$
 El corte precede a ambos índices. Conocer sólo $d(x_{n+1},x_n)\to0$ no basta. La negación fija una tolerancia $\varepsilon_0>0$ antes del corte adversario y exige, para todo $N$, algún par $p,q\ge N$ con $d(x_p,x_q)\ge\varepsilon_0$.
 
-**Convergente implica Cauchy.** Si $x_n\to a$, usemos tolerancia $\varepsilon/2$ en la convergencia. Después de su corte, la triangular a través de $a$ da distancia entre cualesquiera dos términos menor que $\varepsilon$. Esta prueba no necesita construir un destino: lo recibe de la hipótesis.
+**Convergente implica Cauchy.** Para cada $\varepsilon>0$, la convergencia da una cola situada a distancia menor que $\varepsilon/2$ de su destino $a$. Dos términos de ella pueden unirse pasando por $a$ y la triangular hace su distancia menor que $\varepsilon$. La prueba usa el destino recibido y no necesita construirlo mediante completitud.
 
 **Cauchy implica acotada.** Con tolerancia $1$ fijamos una cola y su término $x_{N_0}$. Todo término posterior está a distancia menor que $1$ de esa referencia. Las distancias de los finitísimos términos anteriores tienen máximo; un radio que exceda ese máximo y $1$ contiene la sucesión. De nuevo la prueba no usa completitud. La recíproca falla: una alternancia entre dos puntos distintos es acotada y conserva separación positiva después de todo corte.
 
@@ -1014,13 +1018,13 @@ Se usa una elección finita de un índice natural, no se supone que exista siemp
 
 **Cauchy no garantiza destino en un espacio arbitrario.** En $X=(0,1)$ con distancia usual, $x_n=1/(n+2)$ es de Cauchy: para $p,q\ge N$ sus valores están en $(0,1/(N+2)]$, y su separación es a lo sumo $1/(N+2)$. Vista en $\mathbb R$, converge a cero. Si convergiera a $a\in(0,1)$, las mismas distancias acreditarían esa convergencia en $\mathbb R$, y unicidad forzaría $a=0$, imposible. C10 construía destinos reales mediante completitud; aquí no hemos añadido esa propiedad a todo conjunto con distancia.
 
-En la métrica discreta, Cauchy implica cola constante: con tolerancia $1/2$, todos los pares tardíos deben coincidir con $x_N$. Por eso esas sucesiones sí tienen destino. La existencia de destinos de Cauchy será una pregunta central de C31, junto con compacidad y conexidad; aquí sólo hemos distinguido las obligaciones.
+En la métrica discreta, la tolerancia $1/2$ del contrato de Cauchy obliga a que todos los términos tardíos coincidan con $x_N$. La cola es constante y su valor pertenece al espacio, por lo que sí hay destino. La comparación con $(0,1)$ muestra que disponer de una métrica y estabilizar distancias no resuelve por sí solo la existencia del límite.
 
 **Un presupuesto de saltos que sí controla bloques.** Si $d(x_{n+1},x_n)\le C\rho^n$, con $C\ge0$ y $0<\rho<1$, la triangular iterada finitamente da, para $p>q$,
 $$d(x_p,x_q)\le\sum_{j=q}^{p-1}C\rho^j\le\frac{C\rho^q}{1-\rho}.$$
 La identidad geométrica finita y $\rho^q\to0$ hacen Cauchy a $x$. Sin una propiedad adicional del espacio no se declara un destino. Si ya existe $a$ con $x_p\to a$, pasar $p$ al límite en la distancia prueba el certificado $d(x_q,a)\le C\rho^q/(1-\rho)$. Estabilización, existencia y error quedan como pasos distintos.
 
-![En(0,1), los términos1/(n+2) son Cauchy con cota de pares1/(N+2), pero el candidato externo0 queda fuera del espacio. En sumas armónicas finitas, los saltos vecinos desaparecen y los pares de bloques de longitud creciente siguen separados al menos por1/2. Las diferencias exactas acreditan la negación de Cauchy.](../../assets/books/anm/C30/C30-F05.svg){#fig-anm-c30-f05 fig-alt="En(0,1), los términos1/(n+2) son Cauchy con cota de pares1/(N+2), pero el candidato externo0 queda fuera del espacio. En sumas armónicas finitas, los saltos vecinos desaparecen y los pares de bloques de longitud creciente siguen separados al menos por1/2. Las diferencias exactas acreditan la negación de Cauchy."}
+![En(0,1), los términos1/(n+2) son Cauchy con cota de pares1/(N+2), pero el candidato externo0 queda fuera del espacio. En sumas armónicas finitas, los saltos vecinos desaparecen y los pares de bloques de longitud creciente siguen separados al menos por1/2. Las diferencias exactas acreditan la negación de Cauchy.](../../assets/books/anm/revision-20261016/C30/C30-F05.svg){#fig-anm-c30-f05 fig-alt="En(0,1), los términos1/(n+2) son Cauchy con cota de pares1/(N+2), pero el candidato externo0 queda fuera del espacio. En sumas armónicas finitas, los saltos vecinos desaparecen y los pares de bloques de longitud creciente siguen separados al menos por1/2. Las diferencias exactas acreditan la negación de Cauchy."}
 
 ### Microcontroles
 
@@ -1238,6 +1242,7 @@ Para ambos índices $\ge N$, intercambiarlos si hace falta deja una distancia $\
 Si ya se sabe $x_p\to a\in X$, la triangular inversa da $|d(x_q,x_p)-d(x_q,a)|\le d(x_p,a)\to0$. Con $q$ fijo se puede pasar al límite en la cota y obtener $d(x_q,a)\le6\,2^{-q}$. Para tolerancia estricta $3/8$, se pide $6\,2^{-q}<3/8$, equivalente a $q>4$. El primer corte certificado es cinco; en cuatro la barrera sólo da $\le3/8$. La sucesión real $x_q=6\,2^{-q}$ alcanza el error al destino cero y muestra que cuatro no garantiza la desigualdad estricta.
 
 </details>
+
 ## 30.6. Continuidad entre espacios métricos
 
 []{#MA-SEC-ANM-01-030-006}
@@ -1246,7 +1251,7 @@ Sean espacios métricos $(X,d_X)$ y $(Y,d_Y)$ y una función $f:X\to Y$. Es cont
 $$\forall\varepsilon>0\ \exists\delta>0\ \forall x\in X:\quad d_X(x,a)<\delta\ \Longrightarrow\ d_Y(f(x),f(a))<\varepsilon.$$
 Se incluye el centro. El radio de entrada puede depender de $a$ y de la tolerancia. En un punto aislado la continuidad de cualquier función es automática: una bola que sólo contiene el centro cumple todas las exigencias.
 
-**Continuidad transporta sucesiones dadas.** Si $x_n\to a$, primero pedimos a $f$ un radio $\delta$ para la tolerancia de salida, y luego a la sucesión un corte que la sitúe dentro de esa bola. Entonces $f(x_n)\to f(a)$. No se elige una sucesión para probar esta dirección: ya es parte de la hipótesis.
+**Continuidad transporta sucesiones dadas.** Dada $x_n\to a$ y una tolerancia de salida, pedimos a la continuidad un radio $\delta$ de entrada. Después pedimos a la sucesión un corte que la mantenga en esa bola. Las imágenes de toda la cola quedan en la bola de salida y convergen a $f(a)$. La sucesión ya está dada en la hipótesis; esta dirección no necesita seleccionar testigos.
 
 Para la vuelta, la falla de continuidad en $a$ fija $\varepsilon_0>0$ y, para cada $\delta>0$, una entrada con $d_X(x,a)<\delta$ y $d_Y(f(x),f(a))\ge\varepsilon_0$. Los conjuntos de infractores con $\delta=1/(n+1)$ son no vacíos. Bajo $\mathrm{CC}(X)$, o si esos testigos se suministran, forman una sucesión que converge a $a$ y cuyas imágenes no convergen a $f(a)$. Así el criterio secuencial es una equivalencia con esa interfaz explícita; la implicación directa es incondicional.
 
@@ -1256,9 +1261,9 @@ Para la vuelta, la falla de continuidad en $a$ fija $\varepsilon_0>0$ y, para ca
 
 **Funciones que siempre tenemos.** Para $b\in X$, $x\mapsto d_X(x,b)$ es continua hacia $\mathbb R$: la triangular inversa da error a lo sumo $d_X(x,a)$, así que sirve $\delta=\varepsilon$. Los singletons son cerrados: alrededor de $x\ne b$ la bola de radio $d_X(x,b)/2$ evita a $b$. Los conjuntos de nivel de una función continua real son cerrados por preimagen de singletons, y las regiones definidas por desigualdades estrictas son abiertas por preimagen de intervalos abiertos.
 
-La continuidad asegura preimágenes abiertas, no imágenes abiertas. Una función constante $\mathbb R\to\mathbb R$ envía el abierto completo a un singleton no abierto. Tampoco una biyección continua garantiza inversa continua: la identidad del conjunto $\mathbb R$, desde su métrica discreta hacia la usual, es continua en cada punto aislado; su inversa no es continua, pues ninguna ventana usual en cero contiene sólo ese punto. Son funciones tipadas entre métricas distintas, aunque la regla de valores sea la misma.
+La caracterización usa preimágenes abiertas. No asegura que las imágenes sean abiertas: una constante $\mathbb R\to\mathbb R$ envía el abierto completo a un singleton. Tampoco una biyección continua garantiza continuidad de su inversa. La identidad desde $\mathbb R$ discreta hacia $\mathbb R$ usual es continua porque cada entrada es aislada en el dominio. En la dirección inversa, ninguna bola usual en cero contiene sólo ese punto, como exigiría una bola discreta de radio $1/2$. La regla de valores es la misma; las métricas de entrada y salida cambian la obligación.
 
-![La función valor absoluto lleva hacia atrás la banda abierta de salida(1,2) a las dos ventanas(−2,−1) y(1,2). Para la identidad de la usual hacia la discreta, cualquier radioδ falla con una entradaδ/2 distinta de0: la distancia discreta de salida sigue siendo1. Las tres radios ilustrados no sustituyen la regla válida para todoδ>0.](../../assets/books/anm/C30/C30-F06.svg){#fig-anm-c30-f06 fig-alt="La función valor absoluto lleva hacia atrás la banda abierta de salida(1,2) a las dos ventanas(−2,−1) y(1,2). Para la identidad de la usual hacia la discreta, cualquier radioδ falla con una entradaδ/2 distinta de0: la distancia discreta de salida sigue siendo1. Las tres radios ilustrados no sustituyen la regla válida para todoδ&gt;0."}
+![La función valor absoluto lleva hacia atrás la banda abierta de salida(1,2) a las dos ventanas(−2,−1) y(1,2). Para la identidad de la usual hacia la discreta, cualquier radioδ falla con una entradaδ/2 distinta de0: la distancia discreta de salida sigue siendo1. Las tres radios ilustrados no sustituyen la regla válida para todoδ>0.](../../assets/books/anm/revision-20261016/C30/C30-F06.svg){#fig-anm-c30-f06 fig-alt="La función valor absoluto lleva hacia atrás la banda abierta de salida(1,2) a las dos ventanas(−2,−1) y(1,2). Para la identidad de la usual hacia la discreta, cualquier radioδ falla con una entradaδ/2 distinta de0: la distancia discreta de salida sigue siendo1. Las tres radios ilustrados no sustituyen la regla válida para todoδ>0."}
 
 ### Microcontroles
 
@@ -1476,6 +1481,7 @@ Para cualquier $r\in\mathbb R$, el nivel $\{x:d(x,b)=r\}$ es $F^{-1}[\{r\}]$. El
 Estas conclusiones incluyen niveles vacíos y la región vacía cuando $r\le0$. No se exige que exista algún punto a distancia exactamente $r$ ni que la distancia recorra todos los valores de un intervalo.
 
 </details>
+
 ## 30.7. Una escala común y espacios de funciones
 
 []{#MA-SEC-ANM-01-030-007}
@@ -1484,7 +1490,7 @@ La continuidad uniforme exige un radio común para todos los pares de entradas:
 $$\forall\varepsilon>0\ \exists\delta>0\ \forall x,y\in X:\quad d_X(x,y)<\delta\ \Longrightarrow\ d_Y(f(x),f(y))<\varepsilon.$$
 No se fija un centro antes de pedir el radio. Una función es $L$-Lipschitz, con $L\ge0$, si $d_Y(f(x),f(y))\le Ld_X(x,y)$ para todo par. Si $L>0$, $\delta=\varepsilon/L$ acredita continuidad uniforme; si $L=0$, todas las imágenes coinciden y sirve cualquier radio positivo. Para dominio vacío, las condiciones son vacuas y no hace falta nombrar una imagen común.
 
-**Cauchy se transporta bajo una escala común.** Recibida una tolerancia de salida, continuidad uniforme entrega $\delta$ para todos los pares. Cauchy en $X$ sitúa después de un corte todas las parejas a distancia menor que $\delta$. Sus imágenes quedan a distancia menor que la tolerancia, por lo que forman una sucesión de Cauchy en $Y$. No se necesita que la sucesión original ni su imagen tengan destino.
+**Cauchy se transporta bajo una escala común.** La continuidad uniforme transforma una tolerancia de salida en un único radio $\delta$ que sirve para todos los pares de entradas. El contrato de Cauchy sitúa después todos los pares tardíos a distancia menor que ese radio. Sus imágenes quedan a distancia menor que la tolerancia y son de Cauchy en $Y$. Ninguna parte de esta prueba requiere que ya exista un destino en $X$ o en $Y$.
 
 La continuidad punto a punto no basta para ese transporte. En $(0,1)$, $f(x)=1/x$ es continua: en un centro $a>0$, si $|x-a|<a/2$, entonces $x>a/2$ y $|1/x-1/a|\le2|x-a|/a^2$, lo que permite un radio dependiente de $a$. Pero para $x_n=1/(n+2)$ e $y_n=1/(n+3)$, la distancia de entrada es $1/((n+2)(n+3))\to0$ y la de salida es exactamente $1$. Estos pares niegan uniformidad, con tolerancia fija $1/2$. Además la sucesión Cauchy $x_n$ tiene imágenes $n+2$, que no son de Cauchy. La falla ocurre hacia un punto que no pertenece al dominio, de modo que no contradice continuidad en ningún centro suyo.
 
@@ -1500,7 +1506,7 @@ Las cotas de $f,g$ aseguran finitud; el conjunto de magnitudes no vacío tiene s
 
 Convergencia en esta métrica equivale a convergencia uniforme hacia una función acotada: una distancia de supremo menor que $\varepsilon$ controla todas las entradas; en sentido inverso, control puntual estricto con tolerancia $\varepsilon/2$ deja supremo a lo sumo $\varepsilon/2<\varepsilon$. Se conserva el margen entre desigualdad estricta y supremo. Por ejemplo en $T=[0,1]$, $f_n(t)=t/(n+1)$ tiene distancia exacta $1/(n+1)$ a cero. La convergencia puntual sola de $t^{n+1}$ al destino discontinuo que vale uno en $1$ y cero antes tiene distancia de supremo $1$ en cada índice. No hay convergencia métrica aunque cada evaluación converja.
 
-![Los errores de t^(n+1) frente al destino puntual valen t^(n+1) para t<1 y0 en1; su supremo es1 sin alcanzarse. Las curvas no contienen una falsa unión entre el límite izquierdo y el valor extremo. La distancia real aA=(0,1) vale0 en\[0,1\], aunque el ínfimo no se alcance en los extremos; fuera es la separación al extremo más cercano.](../../assets/books/anm/C30/C30-F07.svg){#fig-anm-c30-f07 fig-alt="Los errores de t^(n+1) frente al destino puntual valen t^(n+1) para t&lt;1 y0 en1; su supremo es1 sin alcanzarse. Las curvas no contienen una falsa unión entre el límite izquierdo y el valor extremo. La distancia real aA=(0,1) vale0 en\[0,1\], aunque el ínfimo no se alcance en los extremos; fuera es la separación al extremo más cercano."}
+![Los errores de t^(n+1) frente al destino puntual valen t^(n+1) para t<1 y0 en1; su supremo es1 sin alcanzarse. Las curvas no contienen una falsa unión entre el límite izquierdo y el valor extremo. La distancia real aA=(0,1) vale0 en\[0,1\], aunque el ínfimo no se alcance en los extremos; fuera es la separación al extremo más cercano.](../../assets/books/anm/revision-20261016/C30/C30-F07.svg){#fig-anm-c30-f07 fig-alt="Los errores de t^(n+1) frente al destino puntual valen t^(n+1) para t<1 y0 en1; su supremo es1 sin alcanzarse. Las curvas no contienen una falsa unión entre el límite izquierdo y el valor extremo. La distancia real aA=(0,1) vale0 en[0,1], aunque el ínfimo no se alcance en los extremos; fuera es la separación al extremo más cercano."}
 
 ### Microcontroles
 
@@ -1722,11 +1728,12 @@ Si $f=g$, el supremo es cero. Si el supremo es cero, cada error es cero, luego $
 Si $D_\infty(f_n,f)\to0$, una distancia menor que $\varepsilon$ controla todos los errores y da uniformidad. Recíprocamente, uniformidad con tolerancia $\varepsilon/2$ deja $D_\infty(f_n,f)\le\varepsilon/2<\varepsilon$ en toda la cola. El destino pertenece aquí a $\mathcal B(T)$; si sólo se sabe que es límite uniforme de funciones acotadas, un parcial con error menor que uno prueba su acotación. La completitud real se usa para formar los supremos, sin haber probado todavía completitud del espacio de funciones.
 
 </details>
+
 ## 30.8. Cambiar la métrica y auditar lo que permanece
 
 []{#MA-SEC-ANM-01-030-008}
 
-Un conjunto puede llevar varias métricas. Antes de decir que son «equivalentes», precisemos qué propiedad se quiere conservar.
+Para comparar dos métricas sobre el mismo conjunto distinguiremos el control global por constantes del que sólo conserva ventanas locales. El primero transportará también Cauchy y acotación; tener los mismos abiertos, por sí solo, dejará esas propiedades sin decidir.
 
 **Comparación cuantitativa.** Si $c,C>0$ y $c\,d(x,y)\le e(x,y)\le C\,d(x,y)$ para todos los pares, las identidades en ambos sentidos son Lipschitz. Las inclusiones de bolas
 $$B_d(a,r/C)\subset B_e(a,r),\qquad B_e(a,cr)\subset B_d(a,r)$$
@@ -1746,9 +1753,9 @@ Las mismas funciones continuas e inversas prueban que $e_\phi$ y la distancia us
 
 Pero $x_n=n$ es de Cauchy en $e_\phi$: sus imágenes $n/(n+1)$ tienen toda la cola entre $N/(N+1)$ y $1$, así que las distancias son a lo sumo $1/(N+1)$. No es de Cauchy usual, porque los vecinos distan uno. No converge a ningún real en $e_\phi$, pues las imágenes convergen a $1$, que queda fuera de $(-1,1)$. Una coincidencia de ventanas locales no garantiza un radio uniforme global para la identidad inversa. La sucesión también demuestra que misma topología no significa mismos conjuntos acotados.
 
-**Balance de herramientas.** Sobreviven las pruebas de ventanas, unicidad, perturbación, convergente implica Cauchy, acotación y continuidad por preimágenes. El orden y las operaciones sólo se usan en los valores reales de las distancias o en ejemplos que poseen esas estructuras. La equivalencia secuencial inversa conserva su interfaz $\mathrm{CC}(X)$ o testigos dados. El paso Cauchy→destino, las equivalencias de compacidad y la estructura de conjuntos conexos requieren un nuevo examen. La única puerta siguiente es C31, *Completitud, compacidad y conexidad en espacios métricos*.
+Las pruebas de unicidad, perturbación y continuidad por preimágenes han podido reconstruirse con la triangular y la separación, sin operaciones entre puntos. La existencia de destinos de Cauchy sigue siendo una propiedad adicional del espacio. Las recíprocas secuenciales conservan, además, la hipótesis $\mathrm{CC}(X)$ o la disponibilidad explícita de testigos. Estas distinciones permitirán estudiar completitud, compacidad y conexidad con sus obligaciones propias.
 
-![La transformaciónφ(x)=x/(1+|x|) envíaR biyectivamente a(−1,1), con inversa continua. Por ella la métricaeφ tiene los mismos abiertos que la usual. La sucesiónn tiene cota de cola1/(N+1) en eφ y separación de vecinos1 en la usual. Sus imágenes tienden al punto externo1, por lo que no tiene destino real en eφ. La ventana gráfica\[−6,6\] no representa todo el recorrido deφ.](../../assets/books/anm/C30/C30-F08.svg){#fig-anm-c30-f08 fig-alt="La transformaciónφ(x)=x/(1+|x|) envíaR biyectivamente a(−1,1), con inversa continua. Por ella la métricaeφ tiene los mismos abiertos que la usual. La sucesiónn tiene cota de cola1/(N+1) en eφ y separación de vecinos1 en la usual. Sus imágenes tienden al punto externo1, por lo que no tiene destino real en eφ. La ventana gráfica\[−6,6\] no representa todo el recorrido deφ."}
+![La transformaciónφ(x)=x/(1+|x|) envíaR biyectivamente a(−1,1), con inversa continua. Por ella la métricaeφ tiene los mismos abiertos que la usual. La sucesiónn tiene cota de cola1/(N+1) en eφ y separación de vecinos1 en la usual. Sus imágenes tienden al punto externo1, por lo que no tiene destino real en eφ. La ventana gráfica\[−6,6\] no representa todo el recorrido deφ.](../../assets/books/anm/revision-20261016/C30/C30-F08.svg){#fig-anm-c30-f08 fig-alt="La transformaciónφ(x)=x/(1+|x|) envíaR biyectivamente a(−1,1), con inversa continua. Por ella la métricaeφ tiene los mismos abiertos que la usual. La sucesiónn tiene cota de cola1/(N+1) en eφ y separación de vecinos1 en la usual. Sus imágenes tienden al punto externo1, por lo que no tiene destino real en eφ. La ventana gráfica[−6,6] no representa todo el recorrido deφ."}
 
 ### Microcontroles
 
