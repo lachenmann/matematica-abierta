@@ -2554,7 +2554,7 @@ Esto todavía no dice cómo se mide $x$.
 
 Una regla adicional podría especificar:
 
-$$[\mathrm{OBS}] \qquad x \longleftrightarrow \begin{gathered}\text{valor obtenido al convertir una}\\\text{coordenada de imagen mediante una}\\\text{calibración}\end{gathered}.$$
+$[\mathrm{OBS}] \qquad x \longleftrightarrow \begin{gathered}\text{valor obtenido al}\\\text{convertir una}\\\text{coordenada de imagen}\\\text{mediante una}\\\text{calibración}\end{gathered}.$
 
 La primera correspondencia otorga significado físico al símbolo. La segunda lo conecta con un procedimiento de observación.
 
@@ -3036,7 +3036,7 @@ El modelo elimina, entre otras cosas, todos los niveles intermedios, la forma de
 
 La conclusión metodológica es importante:
 
-$$\boxed{ \begin{gathered}\text{un modelo puede ser suficiente para}\\\text{una pregunta aunque omita casi toda la}\\\text{física del sistema}\end{gathered}. }$$
+$\boxed{ \begin{gathered}\text{un modelo puede ser suficiente para}\\\text{una pregunta aunque omita casi toda}\\\text{la física del sistema}\end{gathered}. }$
 
 La suficiencia depende de la tarea.
 
@@ -3058,7 +3058,7 @@ Las reglas `[``OBS``]` conectan parte de ese significado con procedimientos de o
 
 Por tanto, la fórmula central de esta sección no debe leerse como una axiomatización de la física, sino como una disciplina de lectura:
 
-$$\boxed{ \begin{gathered}\text{no preguntes solo «¿qué ecuación}\\\text{tengo?»; pregunta «¿qué modelo está}\\\text{representando esta ecuación?»}\end{gathered} }$$
+$\boxed{ \begin{gathered}\text{no preguntes solo «¿qué ecuación}\\\text{tengo?»; pregunta «¿qué modelo está}\\\text{representando esta ecuación?»}\end{gathered} }$
 
 Ahora podemos abordar el problema que hemos aplazado deliberadamente. Dentro de $\mathcal L$ aparecen ecuaciones de tipos muy diferentes. Algunas definen. Algunas resumen regularidades empíricas. Algunas expresan postulados. Algunas son hipótesis del modelo. Algunas son aproximaciones. Y otras se deducen matemáticamente.
 
@@ -3614,7 +3614,7 @@ El estatus depende de información contextual:
 
 En términos de §5:
 
-$$\boxed{ \begin{gathered}\text{la sintaxis pertenece al núcleo}\\\text{formal; el estatus exige también el}\\\text{diccionario de interpretación y la}\\\text{historia lógica del argumento}\end{gathered}. }$$
+$\boxed{ \begin{gathered}\text{la sintaxis pertenece al núcleo}\\\text{formal; el estatus exige también el}\\\text{diccionario de interpretación y la}\\\text{historia lógica del argumento}\end{gathered}. }$
 
 ### Síntesis {#fispm-c01-suxedntesis-3}
 
@@ -3914,7 +3914,7 @@ Más adelante introduciremos un marco mecánico general que proporcionará princ
 
 El punto importante es:
 
-$$\boxed{ \begin{gathered}\text{la teoría no es «la teoría del}\\\text{péndulo»; el péndulo es un modelo}\\\text{particular construido dentro de un}\\\text{marco más general}\end{gathered} }$$
+$\boxed{ \begin{gathered}\text{la teoría no es «la teoría del}\\\text{péndulo»; el péndulo es un modelo}\\\text{particular construido dentro de un}\\\text{marco más general}\end{gathered} }$
 
 Todavía no necesitamos conocer ese marco para comprender la jerarquía. La misma situación experimental puede admitir representaciones de distinto nivel sin que las palabras históricas «ley», «modelo» o «teoría» se utilicen siempre con idéntico alcance. Consideremos un dispositivo óptico.
 
@@ -4175,7 +4175,7 @@ Una teoría no produce por sí sola una predicción concreta sin especificar un 
 
 El principio que conservará el lector es:
 
-$$\boxed{ \begin{gathered}\text{no confundir una relación física, una}\\\text{representación de un sistema y el}\\\text{marco que organiza muchas}\\\text{representaciones}\end{gathered} }$$
+$\boxed{ \begin{gathered}\text{no confundir una relación física, una}\\\text{representación de un sistema y el}\\\text{marco que organiza muchas}\\\text{representaciones}\end{gathered} }$
 
 Con esta distinción ya podemos formular una nueva pregunta.
 
@@ -8485,7 +8485,7 @@ es: $[\mathrm{MATH}].$ La regla que conecta la señal $y$ con una lectura real d
 
 La solución completa muestra:
 
-$$\boxed{ \begin{gathered}\text{una matemática impecable puede revelar}\\\text{precisamente que el modelo físico}\\\text{necesita revisión}\end{gathered}. }$$
+$\boxed{ \begin{gathered}\text{una matemática impecable puede}\\\text{revelar precisamente que el modelo}\\\text{físico necesita revisión}\end{gathered}. }$
 
 ### Síntesis {#fispm-c01-suxedntesis-10}
 
