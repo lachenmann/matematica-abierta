@@ -6,7 +6,7 @@ content-type: book
 collection: PM-FIS
 status: published
 date-created: 2026-09-10
-date-modified: 2026-10-15
+date-modified: 2026-10-17
 areas:
   - fisica-matematica
   - fundamentos
@@ -66,7 +66,6 @@ provenance:
 license: GFDL-1.3-or-later
 ---
 
-# Física para matemáticos
 
 **Física para matemáticos** es un libro abierto concebido para estudiantes de matemática pura que quieren aprender física sin reducirla a una colección de fórmulas ni convertirla, en el extremo opuesto, en una teoría matemática desligada de los fenómenos.
 
@@ -145,6 +144,14 @@ La demostración matemática comienza después de declarar las premisas físicas
 :::
 
 ## Tomo I — Fundamentos y mecánica {#tomo-i-fundamentos-y-mecanica}
+
+**Edición ilustrada v04 · 17 de octubre de 2026.** Los 30 capítulos se leen íntegramente en la web, con 900 ejercicios y sus soluciones y 176 figuras vectoriales. Las figuras se pueden ampliar para examinar sus detalles.
+
+- [PDF A4 para lectura](/assets/books/fispm/downloads/v04/FPM_Tomo_I_Lectura_A4_AMSBook_CM_v04.pdf) (1140 páginas).
+- [PDF carta para impresión](/assets/books/fispm/downloads/v04/FPM_Tomo_I_Impresion_Carta_AMSBook_CM_v04.pdf) (1230 páginas).
+- [Proyecto LaTeX completo para Overleaf](/assets/books/fispm/downloads/v04/FPM_Tomo_I_AMSBook_CM_Illustrado_Overleaf_v04.zip).
+- [Inventario de ilustraciones](/assets/books/fispm/downloads/v04/INVENTARIO_ILUSTRACIONES_v04.csv) e [informe de revisión](/assets/books/fispm/downloads/v04/INFORME_EDICION_v04.md).
+
 
 El tomo reúne treinta capítulos, con ejercicios y soluciones desarrolladas. Esta edición web seguirá recibiendo correcciones e ilustraciones; la revisión ampliada continúa.
 

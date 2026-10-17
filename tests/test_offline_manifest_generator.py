@@ -57,6 +57,29 @@ def sample_catalog():
 
 
 class OfflineManifestGeneratorTests(unittest.TestCase):
+    def test_mathematical_inequalities_in_image_attributes_are_packaged(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            chapter = site / 'libros/capitulos/image.html'
+            chapter.parent.mkdir(parents=True)
+            image = site / 'assets/diagram.svg'
+            image.parent.mkdir()
+            image.write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"/>')
+            chapter.write_text('<html lang="es"><head>'
+                '<script id="ma-math-font-ready">window.MathJax={startup:{}};</script>'
+                '</head><body><script id="quarto-html-before-body">window.theme=true;</script>'
+                '<div id="quarto-content"><main id="quarto-document-content">'
+                '<a class="lightbox" title="Sección x > 0" href="../../assets/diagram.svg">'
+                '<img alt="Región x > 0, y < 1" src="../../assets/diagram.svg"></a>'
+                '</main></div></body></html>')
+            assets = CanonicalAssets(site)
+            html = assets.chapter('/libros/capitulos/image.html', 'MA-BCH-0370').decode()
+            href = re.search(r'href="([^"]+\.svg)"', html)[1]
+            src = re.search(r'src="([^"]+\.svg)"', html)[1]
+            self.assertEqual(href, src)
+            self.assertEqual(assets.assets[src.removeprefix('../')], image.read_bytes())
+            self.assertIn('alt="Región x > 0, y < 1"', html)
+
     def test_canonical_images_and_lightbox_share_packaged_resources(self):
         with tempfile.TemporaryDirectory() as tmp:
             site = Path(tmp)
