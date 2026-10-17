@@ -3328,7 +3328,7 @@ La enmienda **JCGM 100:2008/Amd.1:2026 --- *Nonlinearity in measurement models**
 
 Este capítulo no desarrolla esos métodos. La conclusión operativa es más modesta y más importante:
 
-$\boxed{ \begin{gathered}\text{si el primer orden deja de representar}\\\text{el modelo, hay que detener la fórmula}\\\text{de primer orden.}\end{gathered} }$
+$$\boxed{ \begin{gathered}\text{si el primer orden deja de representar}\\\text{el modelo, hay que detener la fórmula}\\\text{de primer orden.}\end{gathered} }$$
 
 []{#una-prueba-de-estrés-de-la-aproximación}
 
@@ -5881,7 +5881,7 @@ Pero no toda fuente de error físico queda automáticamente reducida por el mism
 
 Por tanto,
 
-$\boxed{ \text{aumentar }N \begin{gathered}\text{mejora ciertas}\\\text{contribuciones del}\\\text{modelo, no todas las}\\\text{posibles fuentes de}\\\text{inexactitud.}\end{gathered} }$
+$$\boxed{ \text{aumentar }N \begin{gathered}\text{mejora ciertas}\\\text{contribuciones del}\\\text{modelo, no todas las}\\\text{posibles fuentes de}\\\text{inexactitud.}\end{gathered} }$$
 
 Ésta es una aplicación directa del principio 3.7:
 
@@ -6256,7 +6256,7 @@ Ni:
 
 Cada una de estas afirmaciones introduce contenido que no está contenido automáticamente en la escritura del resultado. Por tanto,
 
-$\boxed{ \begin{gathered}\text{un resultado justifica sólo las}\\\text{conclusiones sostenidas por su}\\\text{mensurando, su modelo y la}\\\text{semántica declarada de la}\\\text{incertidumbre}\end{gathered}. }$
+$$\boxed{ \begin{gathered}\text{un resultado justifica sólo las}\\\text{conclusiones sostenidas por su}\\\text{mensurando, su modelo y la}\\\text{semántica declarada de la}\\\text{incertidumbre}\end{gathered}. }$$
 
 []{#incertidumbre-no-significa-ignorancia-total}
 
@@ -6659,7 +6659,7 @@ de la escala observada y estimada; antes de aceptarlo conviene revisar unidades,
 
 La síntesis final es:
 
-$\boxed{\begin{gathered} \begin{gathered}\text{una medición informa con precisión}\\\text{sobre una pregunta delimitada;}\end{gathered}\\[2pt] \begin{gathered}\text{no convierte esa pregunta en una}\\\text{afirmación ilimitada sobre el sistema}\end{gathered}. \end{gathered}}$
+$$\boxed{\begin{gathered} \begin{gathered}\text{una medición informa con precisión}\\\text{sobre una pregunta delimitada;}\end{gathered}\\[2pt] \begin{gathered}\text{no convierte esa pregunta en una}\\\text{afirmación ilimitada sobre el sistema}\end{gathered}. \end{gathered}}$$
 
 []{#red-final-del-capítulo}
 
@@ -6699,7 +6699,7 @@ $$\text{resultado} + \text{estimación} + \text{robustez} + \text{alcance del mo
 
 La lección global puede resumirse en una sola regla:
 
-$\boxed{\begin{gathered} \begin{gathered}\text{la física experimental no elimina la}\\\text{incertidumbre;}\end{gathered}\\[2pt] \begin{gathered}\text{aprende a describir qué sabemos,}\\\text{cómo lo sabemos y hasta dónde llega}\\\text{esa afirmación}\end{gathered}. \end{gathered}}$
+$$\boxed{\begin{gathered} \begin{gathered}\text{la física experimental no elimina la}\\\text{incertidumbre;}\end{gathered}\\[2pt] \begin{gathered}\text{aprende a describir qué sabemos,}\\\text{cómo lo sabemos y hasta dónde llega}\\\text{esa afirmación}\end{gathered}. \end{gathered}}$$
 
 ### Transición al capítulo 4 {#fispm-c03-transiciuxf3n-a-fpm-i-04}
 
