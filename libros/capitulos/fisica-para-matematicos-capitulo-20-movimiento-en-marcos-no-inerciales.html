@@ -109,6 +109,52 @@ window.MathJax.startup.pageReady = async function () {
   });
 })();
 </script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -517,62 +563,61 @@ window.Quarto = {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#dos-orígenes-que-se-separan" id="toc-dos-orígenes-que-se-separan" class="nav-link active" data-scroll-target="#dos-orígenes-que-se-separan">§1. Dos orígenes que se separan</a>
+  <li><a href="#fispm-c20-dos-oruxedgenes-que-se-separan" id="toc-fispm-c20-dos-oruxedgenes-que-se-separan" class="nav-link active" data-scroll-target="#fispm-c20-dos-oruxedgenes-que-se-separan">1. Dos orígenes que se separan</a>
   <ul class="collapse">
-  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a></li>
+  <li><a href="#fispm-c20-ejercicios" id="toc-fispm-c20-ejercicios" class="nav-link" data-scroll-target="#fispm-c20-ejercicios">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#lo-que-mide-una-balanza-acelerada" id="toc-lo-que-mide-una-balanza-acelerada" class="nav-link" data-scroll-target="#lo-que-mide-una-balanza-acelerada">§2. Lo que mide una balanza acelerada</a>
+  <li><a href="#fispm-c20-lo-que-mide-una-balanza-acelerada" id="toc-fispm-c20-lo-que-mide-una-balanza-acelerada" class="nav-link" data-scroll-target="#fispm-c20-lo-que-mide-una-balanza-acelerada">2. Lo que mide una balanza acelerada</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-1" id="toc-ejercicios-1" class="nav-link" data-scroll-target="#ejercicios-1">Ejercicios</a></li>
+  <li><a href="#fispm-c20-ejercicios-1" id="toc-fispm-c20-ejercicios-1" class="nav-link" data-scroll-target="#fispm-c20-ejercicios-1">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#acompañar-la-caída" id="toc-acompañar-la-caída" class="nav-link" data-scroll-target="#acompañar-la-caída">§3. Acompañar la caída</a>
+  <li><a href="#fispm-c20-acompauxf1ar-la-cauxedda" id="toc-fispm-c20-acompauxf1ar-la-cauxedda" class="nav-link" data-scroll-target="#fispm-c20-acompauxf1ar-la-cauxedda">3. Acompañar la caída</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-2" id="toc-ejercicios-2" class="nav-link" data-scroll-target="#ejercicios-2">Ejercicios</a></li>
+  <li><a href="#fispm-c20-ejercicios-2" id="toc-fispm-c20-ejercicios-2" class="nav-link" data-scroll-target="#fispm-c20-ejercicios-2">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#seguir-unos-ejes-que-giran" id="toc-seguir-unos-ejes-que-giran" class="nav-link" data-scroll-target="#seguir-unos-ejes-que-giran">§4. Seguir unos ejes que giran</a>
+  <li><a href="#fispm-c20-seguir-unos-ejes-que-giran" id="toc-fispm-c20-seguir-unos-ejes-que-giran" class="nav-link" data-scroll-target="#fispm-c20-seguir-unos-ejes-que-giran">4. Seguir unos ejes que giran</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-3" id="toc-ejercicios-3" class="nav-link" data-scroll-target="#ejercicios-3">Ejercicios</a></li>
+  <li><a href="#fispm-c20-ejercicios-3" id="toc-fispm-c20-ejercicios-3" class="nav-link" data-scroll-target="#fispm-c20-ejercicios-3">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#la-derivada-de-un-vector-y-la-derivada-de-sus-componentes" id="toc-la-derivada-de-un-vector-y-la-derivada-de-sus-componentes" class="nav-link" data-scroll-target="#la-derivada-de-un-vector-y-la-derivada-de-sus-componentes">§5. La derivada de un vector y la derivada de sus componentes</a>
+  <li><a href="#fispm-c20-la-derivada-de-un-vector-y-la-derivada-de-sus-componentes" id="toc-fispm-c20-la-derivada-de-un-vector-y-la-derivada-de-sus-componentes" class="nav-link" data-scroll-target="#fispm-c20-la-derivada-de-un-vector-y-la-derivada-de-sus-componentes">5. La derivada de un vector y la derivada de sus componentes</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-4" id="toc-ejercicios-4" class="nav-link" data-scroll-target="#ejercicios-4">Ejercicios</a></li>
+  <li><a href="#fispm-c20-ejercicios-4" id="toc-fispm-c20-ejercicios-4" class="nav-link" data-scroll-target="#fispm-c20-ejercicios-4">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#qué-velocidad-llevaba-el-cuerpo-al-soltarlo" id="toc-qué-velocidad-llevaba-el-cuerpo-al-soltarlo" class="nav-link" data-scroll-target="#qué-velocidad-llevaba-el-cuerpo-al-soltarlo">§6. Qué velocidad llevaba el cuerpo al soltarlo</a>
+  <li><a href="#fispm-c20-quuxe9-velocidad-llevaba-el-cuerpo-al-soltarlo" id="toc-fispm-c20-quuxe9-velocidad-llevaba-el-cuerpo-al-soltarlo" class="nav-link" data-scroll-target="#fispm-c20-quuxe9-velocidad-llevaba-el-cuerpo-al-soltarlo">6. Qué velocidad llevaba el cuerpo al soltarlo</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-5" id="toc-ejercicios-5" class="nav-link" data-scroll-target="#ejercicios-5">Ejercicios</a></li>
+  <li><a href="#fispm-c20-ejercicios-5" id="toc-fispm-c20-ejercicios-5" class="nav-link" data-scroll-target="#fispm-c20-ejercicios-5">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#de-dónde-sale-el-factor-dos" id="toc-de-dónde-sale-el-factor-dos" class="nav-link" data-scroll-target="#de-dónde-sale-el-factor-dos">§7. De dónde sale el factor dos</a>
+  <li><a href="#fispm-c20-de-duxf3nde-sale-el-factor-dos" id="toc-fispm-c20-de-duxf3nde-sale-el-factor-dos" class="nav-link" data-scroll-target="#fispm-c20-de-duxf3nde-sale-el-factor-dos">7. De dónde sale el factor dos</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-6" id="toc-ejercicios-6" class="nav-link" data-scroll-target="#ejercicios-6">Ejercicios</a></li>
+  <li><a href="#fispm-c20-ejercicios-6" id="toc-fispm-c20-ejercicios-6" class="nav-link" data-scroll-target="#fispm-c20-ejercicios-6">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#cuatro-términos-y-sus-funciones" id="toc-cuatro-términos-y-sus-funciones" class="nav-link" data-scroll-target="#cuatro-términos-y-sus-funciones">§8. Cuatro términos y sus funciones</a>
+  <li><a href="#fispm-c20-cuatro-tuxe9rminos-y-sus-funciones" id="toc-fispm-c20-cuatro-tuxe9rminos-y-sus-funciones" class="nav-link" data-scroll-target="#fispm-c20-cuatro-tuxe9rminos-y-sus-funciones">8. Cuatro términos y sus funciones</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-7" id="toc-ejercicios-7" class="nav-link" data-scroll-target="#ejercicios-7">Ejercicios</a></li>
+  <li><a href="#fispm-c20-ejercicios-7" id="toc-fispm-c20-ejercicios-7" class="nav-link" data-scroll-target="#fispm-c20-ejercicios-7">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#una-recta-vista-desde-una-plataforma" id="toc-una-recta-vista-desde-una-plataforma" class="nav-link" data-scroll-target="#una-recta-vista-desde-una-plataforma">§9. Una recta vista desde una plataforma</a>
+  <li><a href="#fispm-c20-una-recta-vista-desde-una-plataforma" id="toc-fispm-c20-una-recta-vista-desde-una-plataforma" class="nav-link" data-scroll-target="#fispm-c20-una-recta-vista-desde-una-plataforma">9. Una recta vista desde una plataforma</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-8" id="toc-ejercicios-8" class="nav-link" data-scroll-target="#ejercicios-8">Ejercicios</a></li>
+  <li><a href="#fispm-c20-ejercicios-8" id="toc-fispm-c20-ejercicios-8" class="nav-link" data-scroll-target="#fispm-c20-ejercicios-8">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#una-guía-que-impone-el-giro" id="toc-una-guía-que-impone-el-giro" class="nav-link" data-scroll-target="#una-guía-que-impone-el-giro">§10. Una guía que impone el giro</a>
+  <li><a href="#fispm-c20-una-guuxeda-que-impone-el-giro" id="toc-fispm-c20-una-guuxeda-que-impone-el-giro" class="nav-link" data-scroll-target="#fispm-c20-una-guuxeda-que-impone-el-giro">10. Una guía que impone el giro</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-9" id="toc-ejercicios-9" class="nav-link" data-scroll-target="#ejercicios-9">Ejercicios</a></li>
+  <li><a href="#fispm-c20-ejercicios-9" id="toc-fispm-c20-ejercicios-9" class="nav-link" data-scroll-target="#fispm-c20-ejercicios-9">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#equilibrio-y-energía-en-una-rotación-uniforme" id="toc-equilibrio-y-energía-en-una-rotación-uniforme" class="nav-link" data-scroll-target="#equilibrio-y-energía-en-una-rotación-uniforme">§11. Equilibrio y energía en una rotación uniforme</a>
+  <li><a href="#fispm-c20-equilibrio-y-energuxeda-en-una-rotaciuxf3n-uniforme" id="toc-fispm-c20-equilibrio-y-energuxeda-en-una-rotaciuxf3n-uniforme" class="nav-link" data-scroll-target="#fispm-c20-equilibrio-y-energuxeda-en-una-rotaciuxf3n-uniforme">11. Equilibrio y energía en una rotación uniforme</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-10" id="toc-ejercicios-10" class="nav-link" data-scroll-target="#ejercicios-10">Ejercicios</a></li>
+  <li><a href="#fispm-c20-ejercicios-10" id="toc-fispm-c20-ejercicios-10" class="nav-link" data-scroll-target="#fispm-c20-ejercicios-10">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#un-laboratorio-que-gira-con-la-tierra" id="toc-un-laboratorio-que-gira-con-la-tierra" class="nav-link" data-scroll-target="#un-laboratorio-que-gira-con-la-tierra">§12. Un laboratorio que gira con la Tierra</a>
+  <li><a href="#fispm-c20-un-laboratorio-que-gira-con-la-tierra" id="toc-fispm-c20-un-laboratorio-que-gira-con-la-tierra" class="nav-link" data-scroll-target="#fispm-c20-un-laboratorio-que-gira-con-la-tierra">12. Un laboratorio que gira con la Tierra</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-11" id="toc-ejercicios-11" class="nav-link" data-scroll-target="#ejercicios-11">Ejercicios</a></li>
+  <li><a href="#fispm-c20-ejercicios-11" id="toc-fispm-c20-ejercicios-11" class="nav-link" data-scroll-target="#fispm-c20-ejercicios-11">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#dos-energías-para-la-misma-trayectoria" id="toc-dos-energías-para-la-misma-trayectoria" class="nav-link" data-scroll-target="#dos-energías-para-la-misma-trayectoria">§13. Dos energías para la misma trayectoria</a>
+  <li><a href="#fispm-c20-dos-energuxedas-para-la-misma-trayectoria" id="toc-fispm-c20-dos-energuxedas-para-la-misma-trayectoria" class="nav-link" data-scroll-target="#fispm-c20-dos-energuxedas-para-la-misma-trayectoria">13. Dos energías para la misma trayectoria</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-12" id="toc-ejercicios-12" class="nav-link" data-scroll-target="#ejercicios-12">Ejercicios</a></li>
+  <li><a href="#fispm-c20-ejercicios-12" id="toc-fispm-c20-ejercicios-12" class="nav-link" data-scroll-target="#fispm-c20-ejercicios-12">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#reconstruir-el-problema-físico" id="toc-reconstruir-el-problema-físico" class="nav-link" data-scroll-target="#reconstruir-el-problema-físico">§14. Reconstruir el problema físico</a>
+  <li><a href="#fispm-c20-reconstruir-el-problema-fuxedsico" id="toc-fispm-c20-reconstruir-el-problema-fuxedsico" class="nav-link" data-scroll-target="#fispm-c20-reconstruir-el-problema-fuxedsico">14. Reconstruir el problema físico</a>
   <ul class="collapse">
-  <li><a href="#problemas-de-integración" id="toc-problemas-de-integración" class="nav-link" data-scroll-target="#problemas-de-integración">Problemas de integración</a></li>
-  <li><a href="#notas-y-referencias" id="toc-notas-y-referencias" class="nav-link" data-scroll-target="#notas-y-referencias">Notas y referencias</a></li>
+  <li><a href="#fispm-c20-problemas-de-integraciuxf3n" id="toc-fispm-c20-problemas-de-integraciuxf3n" class="nav-link" data-scroll-target="#fispm-c20-problemas-de-integraciuxf3n">Problemas de integración</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -607,7 +652,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Fecha de última modificación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">15 de octubre de 2026</p>
+      <p class="date-modified">17 de octubre de 2026</p>
     </div>
   </div>
     
@@ -619,525 +664,496 @@ window.Quarto = {
 
 
 <p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-19-dispersion-clasica-y-reduccion-efectiva.html">Capítulo 19</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-21-cuerpo-rigido-cinematica-rotaciones-y-tensor-de-inercia.html">Capítulo 21</a></p>
+<p><span id="fispm-c20-movimiento-en-marcos-no-inerciales"></span></p>
 <p>Una pelota que rueda por el suelo de un tren parece cambiar de movimiento cuando el tren frena. Una persona sobre una plataforma giratoria ve curvarse una trayectoria que otro observador describe como recta. En ambos casos podemos registrar las posiciones con precisión, pero la segunda ley de Newton exige saber desde qué marco se han tomado las derivadas.</p>
 <p>El problema tiene una entrada concreta: conocemos la posición del origen móvil y la orientación de sus ejes, y queremos escribir la ecuación que seguirá un cuerpo en esas coordenadas. Si diferenciamos correctamente la transformación, los términos adicionales aparecen con sus signos y sus coeficientes. Esa derivación permitirá decidir qué efectos proceden de una interacción y cuáles proceden del movimiento del marco.</p>
 <p>Usaremos el tiempo común de la mecánica newtoniana, masas constantes positivas y coordenadas cartesianas ortonormales. El movimiento del marco se considera conocido. Cuando una guía o un motor sostengan ese movimiento, sus fuerzas y su potencia deberán incluirse en el problema físico. La descripción de un cuerpo rígido completo se desarrollará en el capítulo siguiente; aquí basta con seguir un origen y una base.</p>
+<p><span id="dos-orígenes-que-se-separan"></span></p>
 <p><span id="fispm-t1-c20-s01"></span></p>
 <p><span id="fpm-i-20-s01"></span></p>
-<section id="dos-orígenes-que-se-separan" class="level2">
-<h2 class="anchored" data-anchor-id="dos-orígenes-que-se-separan">§1. Dos orígenes que se separan</h2>
+<section id="fispm-c20-dos-oruxedgenes-que-se-separan" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c20-dos-oruxedgenes-que-se-separan">1. Dos orígenes que se separan</h2>
 <p>Imaginemos dos cámaras cuyos ejes permanecen paralelos. La primera usa un origen fijo en un marco inercial; la segunda se desplaza con el tren. Si la posición de su origen es <span class="math inline">\(\mathbf X(t)\)</span>, ambas asignan a una partícula posiciones relacionadas por <span class="math inline">\(\mathbf x(t)=\mathbf X(t)+\mathbf r(t)\)</span>. La resta de posiciones funciona aunque el tren acelere. La diferencia aparece al derivar.</p>
+<p><span id="fig:I-20-N01"></span></p>
+<figure id="fig-fpm-v04-i-20-n01" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/v04/I-20-N01.svg" class="lightbox" data-gallery="fpm-v04-c20"><img src="../../assets/books/fispm/v04/I-20-N01.svg" alt="Traslación de un marco. Diagrama del capítulo 20; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="340" height="221" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 20.1.</strong> La identidad <span class="math inline">\(r=R+r\prime\)</span> separa la posición del origen móvil y la posición relativa. Con bases paralelas, dos derivadas dan <span class="math inline">\(a=A+a\prime\)</span>. Véase §<a href="#fispm-c20-dos-oruxedgenes-que-se-separan">1</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c20-d0001"></span></p>
-<p><strong>Definición FPM-I-20-D01 — Marco de traslación.</strong> Un marco móvil sin rotación se especifica mediante un origen <span class="math inline">\(\mathbf X(t)\)</span> y unos ejes de orientación constante respecto del marco inercial. Su posición relativa es <span class="math inline">\(\mathbf r=\mathbf x-\mathbf X\)</span>. En esta sección expresamos todos los vectores en la misma base fija.</p>
+<p><strong>Definición 20.1 — Marco de traslación.</strong> Un marco móvil sin rotación se especifica mediante un origen <span class="math inline">\(\mathbf X(t)\)</span> y unos ejes de orientación constante respecto del marco inercial. Su posición relativa es <span class="math inline">\(\mathbf r=\mathbf x-\mathbf X\)</span>. En esta sección expresamos todos los vectores en la misma base fija.</p>
 <p><span id="fispm-t1-c20-p0001"></span></p>
-<p><strong>Proposición FPM-I-20-P01 — Transformación de velocidad y aceleración por traslación.</strong> Si <span class="math inline">\(\mathbf x\)</span> y <span class="math inline">\(\mathbf X\)</span> son de clase <span class="math inline">\(C^2\)</span>, entonces</p>
-<p><span class="math display">\[
-\dot{\mathbf r}=\dot{\mathbf x}-\dot{\mathbf X},
-\qquad \ddot{\mathbf r}=\ddot{\mathbf x}-\ddot{\mathbf X}.
-\]</span></p>
+<p><strong>Proposición 20.1 — Transformación de velocidad y aceleración por traslación.</strong> Si <span class="math inline">\(\mathbf x\)</span> y <span class="math inline">\(\mathbf X\)</span> son de clase <span class="math inline">\(C^2\)</span>, entonces</p>
+<p><span class="math display">\[\dot{\mathbf r}=\dot{\mathbf x}-\dot{\mathbf X}, \qquad \ddot{\mathbf r}=\ddot{\mathbf x}-\ddot{\mathbf X}.\]</span></p>
 <p><strong>Demostración.</strong> Diferenciar <span class="math inline">\(\mathbf r=\mathbf x-\mathbf X\)</span> una vez da la primera igualdad y una segunda vez da la segunda. La orientación constante permite derivar componentes sin añadir derivadas de la base. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c20-p0002"></span></p>
-<p><strong>Proposición FPM-I-20-P02 — Traslaciones que conservan la aceleración.</strong> En un intervalo conexo, las aceleraciones coinciden para toda trayectoria si y solo si <span class="math inline">\(\mathbf X(t)=\mathbf X_0+\mathbf V_0t\)</span>, con vectores constantes <span class="math inline">\(\mathbf X_0,\mathbf V_0\)</span>.</p>
-<p><strong>Demostración.</strong> P01 muestra que la coincidencia equivale a <span class="math inline">\(\ddot{\mathbf X}=0\)</span>. Integrar en el intervalo da una velocidad constante y después la expresión afín de <span class="math inline">\(\mathbf X\)</span>. Recíprocamente, una expresión afín tiene segunda derivada nula. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 20.2 — Traslaciones que conservan la aceleración.</strong> En un intervalo conexo, las aceleraciones coinciden para toda trayectoria si y solo si <span class="math inline">\(\mathbf X(t)=\mathbf X_0+\mathbf V_0t\)</span>, con vectores constantes <span class="math inline">\(\mathbf X_0,\mathbf V_0\)</span>.</p>
+<p><strong>Demostración.</strong> proposición 20.1 muestra que la coincidencia equivale a <span class="math inline">\(\ddot{\mathbf X}=0\)</span>. Integrar en el intervalo da una velocidad constante y después la expresión afín de <span class="math inline">\(\mathbf X\)</span>. Recíprocamente, una expresión afín tiene segunda derivada nula. <span class="math inline">\(\square\)</span></p>
 <p>Así se recupera la familia de marcos inerciales ligados por traslaciones uniformes. La velocidad depende del marco incluso dentro de esa familia; la aceleración coincide. Si la fuerza se escribe originalmente como función de posición, velocidad y tiempo, hay que transformar también sus argumentos. Una resistencia debida al aire, por ejemplo, depende de la velocidad respecto del aire. Cambiar el origen no hace que el aire adopte automáticamente la velocidad del tren.</p>
 <p><span id="fispm-t1-c20-mp0001"></span></p>
-<p><strong>Principio metodológico FPM-I-20-MP01.</strong> Escribe la transformación de posiciones y declara la base antes de derivar. La igualdad de aceleraciones requiere una hipótesis sobre el movimiento del marco.</p>
-<section id="ejercicios" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios">Ejercicios</h3>
+<p><strong>Principio metodológico 20.1.</strong> Escribe la transformación de posiciones y declara la base antes de derivar. La igualdad de aceleraciones requiere una hipótesis sobre el movimiento del marco.</p>
+<p><span id="ejercicios"></span></p>
+<section id="fispm-c20-ejercicios" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c20-ejercicios">Ejercicios</h3>
 <p><span id="fispm-t1-c20-e0001"></span></p>
-<p><strong>Ejercicio FPM-I-20-E01.</strong> Un tren tiene <span class="math inline">\(X(t)=V_0t+at^2/2\)</span> sobre un eje recto. Una partícula libre tiene <span class="math inline">\(x(t)=x_0+ut\)</span>. Encuentra su posición, velocidad y aceleración respecto del tren.</p>
+<p><span id="fispm-t1-c20-e0020"></span></p>
+<p><strong>Ejercicio 20.1.</strong> Un tren tiene <span class="math inline">\(X(t)=V_0t+at^2/2\)</span> sobre un eje recto. Una partícula libre tiene <span class="math inline">\(x(t)=x_0+ut\)</span>. Encuentra su posición, velocidad y aceleración respecto del tren.</p>
 <p><strong>Solución.</strong> Restar las posiciones da <span class="math inline">\(r=x_0+(u-V_0)t-at^2/2\)</span>. Por tanto <span class="math inline">\(\dot r=u-V_0-at\)</span> y <span class="math inline">\(\ddot r=-a\)</span>. La aceleración relativa se dirige contra la aceleración del tren. La fuerza física sobre la partícula sigue siendo cero en el modelo; la curvatura de <span class="math inline">\(r(t)\)</span> procede del origen elegido.</p>
 <p><span id="fispm-t1-c20-e0002"></span></p>
-<p><strong>Ejercicio FPM-I-20-E02.</strong> Dos observadores en traslación uniforme comparan la distancia y la velocidad relativa de dos partículas. Determina qué cantidades coinciden.</p>
+<p><strong>Ejercicio 20.2.</strong> Dos observadores en traslación uniforme comparan la distancia y la velocidad relativa de dos partículas. Determina qué cantidades coinciden.</p>
 <p><strong>Solución.</strong> Si <span class="math inline">\(\mathbf r_i=\mathbf x_i-\mathbf X\)</span>, entonces <span class="math inline">\(\mathbf r_1-\mathbf r_2=\mathbf x_1-\mathbf x_2\)</span> y <span class="math inline">\(\dot{\mathbf r}_1-\dot{\mathbf r}_2=\dot{\mathbf x}_1-\dot{\mathbf x}_2\)</span>. Coinciden el vector separación, su norma y la velocidad relativa. De hecho estas dos igualdades valen para cualquier traslación sin rotación, aunque las aceleraciones individuales cambien. El movimiento común del origen se cancela en las diferencias entre partículas.</p>
+<p><span id="lo-que-mide-una-balanza-acelerada"></span></p>
 <p><span id="fispm-t1-c20-s02"></span></p>
 <p><span id="fpm-i-20-s02"></span></p>
 </section>
 </section>
-<section id="lo-que-mide-una-balanza-acelerada" class="level2">
-<h2 class="anchored" data-anchor-id="lo-que-mide-una-balanza-acelerada">§2. Lo que mide una balanza acelerada</h2>
+<section id="fispm-c20-lo-que-mide-una-balanza-acelerada" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c20-lo-que-mide-una-balanza-acelerada">2. Lo que mide una balanza acelerada</h2>
 <p>Una balanza mide la fuerza que sostiene a una persona. En un ascensor esa fuerza puede cambiar aunque la masa y el campo gravitatorio permanezcan prácticamente constantes. Para calcularla podemos trabajar en el edificio o en la cabina; ambas descripciones deben dar la misma lectura del instrumento.</p>
 <p><span id="fispm-t1-c20-d0002"></span></p>
-<p><strong>Definición FPM-I-20-D02 — Término inercial de traslación.</strong> Para un origen de aceleración <span class="math inline">\(\mathbf A=\ddot{\mathbf X}\)</span> y masa <span class="math inline">\(m\)</span>, llamamos <span class="math inline">\(\mathbf F_{\mathrm{tr}}=-m\mathbf A\)</span> al término que acompaña a las fuerzas físicas cuando la segunda ley se escribe con la aceleración relativa.</p>
+<p><strong>Definición 20.2 — Término inercial de traslación.</strong> Para un origen de aceleración <span class="math inline">\(\mathbf A=\ddot{\mathbf X}\)</span> y masa <span class="math inline">\(m\)</span>, llamamos <span class="math inline">\(\mathbf F_{\mathrm{tr}}=-m\mathbf A\)</span> al término que acompaña a las fuerzas físicas cuando la segunda ley se escribe con la aceleración relativa.</p>
 <p><span id="fispm-t1-c20-p0003"></span></p>
-<p><strong>Proposición FPM-I-20-P03 — Segunda ley en una cabina acelerada.</strong> Si en el marco inercial <span class="math inline">\(m\ddot{\mathbf x}=\mathbf F\)</span>, en el marco de D01 se cumple</p>
-<p><span class="math display">\[
-m\ddot{\mathbf r}=\mathbf F-m\mathbf A.
-\]</span></p>
+<p><strong>Proposición 20.3 — Segunda ley en una cabina acelerada.</strong> Si en el marco inercial <span class="math inline">\(m\ddot{\mathbf x}=\mathbf F\)</span>, en el marco de la definición 20.1 se cumple</p>
+<p><span class="math display">\[m\ddot{\mathbf r}=\mathbf F-m\mathbf A.\]</span></p>
 <p>Para una persona quieta respecto de una cabina vertical, con eje positivo hacia arriba y <span class="math inline">\(\mathbf A=a\mathbf e_z\)</span>, la normal es <span class="math inline">\(N=m(g+a)\)</span> mientras el contacto pueda mantenerse.</p>
-<p><strong>Demostración.</strong> Sustituir P01 en la segunda ley da la primera fórmula. En la cabina, la aceleración relativa vertical de la persona es cero. Las fuerzas físicas son <span class="math inline">\(N\mathbf e_z-mg\mathbf e_z\)</span>, así que <span class="math inline">\(0=N-mg-ma\)</span>. Una superficie que solo empuja exige <span class="math inline">\(N\geq0\)</span>; si la expresión fuera negativa, la hipótesis de contacto quieto dejaría de ser válida. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> Sustituir proposición 20.1 en la segunda ley da la primera fórmula. En la cabina, la aceleración relativa vertical de la persona es cero. Las fuerzas físicas son <span class="math inline">\(N\mathbf e_z-mg\mathbf e_z\)</span>, así que <span class="math inline">\(0=N-mg-ma\)</span>. Una superficie que solo empuja exige <span class="math inline">\(N\geq0\)</span>; si la expresión fuera negativa, la hipótesis de contacto quieto dejaría de ser válida. <span class="math inline">\(\square\)</span></p>
 <p>La normal puede ser mayor que <span class="math inline">\(mg\)</span> al acelerar hacia arriba y menor al acelerar hacia abajo. Cuando <span class="math inline">\(a=-g\)</span>, una cabina en caída libre no necesita ejercer normal para acompañar la caída de la persona. Este resultado se refiere al modelo de gravedad uniforme y a la fase en que no intervienen otras fuerzas.</p>
 <p><span id="fispm-t1-c20-p0004"></span></p>
-<p><strong>Proposición FPM-I-20-P04 — Potencial de la traslación y su dependencia temporal.</strong> En ejes sin rotación, el término <span class="math inline">\(-m\mathbf A(t)\)</span> admite el potencial <span class="math inline">\(U_{\mathrm{tr}}(\mathbf r,t)=m\mathbf A(t)\cdot\mathbf r\)</span>. Si las fuerzas físicas derivan de un potencial relativo <span class="math inline">\(U(\mathbf r,t)\)</span>, entonces</p>
-<p><span class="math display">\[
-\frac d{dt}\left[\frac m2|\dot{\mathbf r}|^2+U+U_{\mathrm{tr}}\right]
-=\partial_tU+m\dot{\mathbf A}\cdot\mathbf r.
-\]</span></p>
-<p><strong>Demostración.</strong> El gradiente espacial de <span class="math inline">\(m\mathbf A\cdot\mathbf r\)</span> es <span class="math inline">\(m\mathbf A\)</span>. Multiplicar P03 escalarmente por <span class="math inline">\(\dot{\mathbf r}\)</span> y usar <span class="math inline">\(\mathbf F=-\nabla U\)</span> da <span class="math inline">\(\dot K=-\nabla U\cdot\dot{\mathbf r}-m\mathbf A\cdot\dot{\mathbf r}\)</span>. La regla de la cadena para ambos potenciales cancela esos términos y deja sus derivadas parciales temporales. <span class="math inline">\(\square\)</span></p>
-<p>La existencia de un potencial espacial no basta para conservar una energía: hace falta controlar su variación temporal. Además, un potencial estacionario del edificio puede volverse dependiente del tiempo al expresarse en coordenadas de la cabina. El potencial que aparece en P04 es el ya transformado.</p>
+<p><strong>Proposición 20.4 — Potencial de la traslación y su dependencia temporal.</strong> En ejes sin rotación, el término <span class="math inline">\(-m\mathbf A(t)\)</span> admite el potencial <span class="math inline">\(U_{\mathrm{tr}}(\mathbf r,t)=m\mathbf A(t)\cdot\mathbf r\)</span>. Si las fuerzas físicas derivan de un potencial relativo <span class="math inline">\(U(\mathbf r,t)\)</span>, entonces</p>
+<p><span class="math display">\[\frac d{dt}\left[\frac m2|\dot{\mathbf r}|^2+U+U_{\mathrm{tr}}\right] =\partial_tU+m\dot{\mathbf A}\cdot\mathbf r.\]</span></p>
+<p><strong>Demostración.</strong> El gradiente espacial de <span class="math inline">\(m\mathbf A\cdot\mathbf r\)</span> es <span class="math inline">\(m\mathbf A\)</span>. Multiplicar proposición 20.3 escalarmente por <span class="math inline">\(\dot{\mathbf r}\)</span> y usar <span class="math inline">\(\mathbf F=-\nabla U\)</span> da <span class="math inline">\(\dot K=-\nabla U\cdot\dot{\mathbf r}-m\mathbf A\cdot\dot{\mathbf r}\)</span>. La regla de la cadena para ambos potenciales cancela esos términos y deja sus derivadas parciales temporales. <span class="math inline">\(\square\)</span></p>
+<p>La existencia de un potencial espacial no basta para conservar una energía: hace falta controlar su variación temporal. Además, un potencial estacionario del edificio puede volverse dependiente del tiempo al expresarse en coordenadas de la cabina. El potencial que aparece en la proposición 20.4 es el ya transformado.</p>
 <p><span id="fispm-t1-c20-mp0002"></span></p>
-<p><strong>Principio metodológico FPM-I-20-MP02.</strong> Para un cuerpo apoyado, comprueba primero la condición de contacto. La lectura de una balanza es una fuerza de interacción, incluso cuando se calcula mediante una ecuación con términos inerciales.</p>
-<section id="ejercicios-1" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-1">Ejercicios</h3>
+<p><strong>Principio metodológico 20.2.</strong> Para un cuerpo apoyado, comprueba primero la condición de contacto. La lectura de una balanza es una fuerza de interacción, incluso cuando se calcula mediante una ecuación con términos inerciales.</p>
+<p><span id="ejercicios-1"></span></p>
+<section id="fispm-c20-ejercicios-1" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c20-ejercicios-1">Ejercicios</h3>
 <p><span id="fispm-t1-c20-e0003"></span></p>
-<p><strong>Ejercicio FPM-I-20-E03.</strong> Una cabina acelera hacia abajo con magnitud <span class="math inline">\(g/4\)</span>. Calcula la lectura de la balanza para una masa <span class="math inline">\(m\)</span> y decide qué sucede si la aceleración hacia abajo supera <span class="math inline">\(g\)</span>.</p>
-<p><strong>Solución.</strong> Con el eje hacia arriba, <span class="math inline">\(a=-g/4\)</span>, y P03 da <span class="math inline">\(N=3mg/4\)</span>. Si <span class="math inline">\(a&lt;-g\)</span>, la fórmula de reposo relativo daría <span class="math inline">\(N&lt;0\)</span>. El piso no puede tirar de la persona; sin una sujeción adicional, se pierde el contacto y debe resolverse el movimiento libre relativo en lugar de imponer <span class="math inline">\(\ddot r_z=0\)</span>.</p>
+<p><strong>Ejercicio 20.3.</strong> Una cabina acelera hacia abajo con magnitud <span class="math inline">\(g/4\)</span>. Calcula la lectura de la balanza para una masa <span class="math inline">\(m\)</span> y decide qué sucede si la aceleración hacia abajo supera <span class="math inline">\(g\)</span>.</p>
+<p><strong>Solución.</strong> Con el eje hacia arriba, <span class="math inline">\(a=-g/4\)</span>, y proposición 20.3 da <span class="math inline">\(N=3mg/4\)</span>. Si <span class="math inline">\(a&lt;-g\)</span>, la fórmula de reposo relativo daría <span class="math inline">\(N&lt;0\)</span>. El piso no puede tirar de la persona; sin una sujeción adicional, se pierde el contacto y debe resolverse el movimiento libre relativo en lugar de imponer <span class="math inline">\(\ddot r_z=0\)</span>.</p>
 <p><span id="fispm-t1-c20-e0004"></span></p>
-<p><strong>Ejercicio FPM-I-20-E04.</strong> Un resorte horizontal de constante <span class="math inline">\(k&gt;0\)</span> está sujeto a una cabina que acelera con <span class="math inline">\(A=a\)</span> constante. Calcula la posición de equilibrio de una masa <span class="math inline">\(m\)</span> y la energía relativa conservada.</p>
-<p><strong>Solución.</strong> Tomando <span class="math inline">\(r=0\)</span> en la longitud natural, la ecuación es <span class="math inline">\(m\ddot r=-kr-ma\)</span>. El equilibrio es <span class="math inline">\(r_*=-ma/k\)</span>. El potencial efectivo <span class="math inline">\(kr^2/2+mar\)</span> se escribe <span class="math inline">\(k(r+ma/k)^2/2-m^2a^2/(2k)\)</span>. Por P04, <span class="math inline">\(m\dot r^2/2+kr^2/2+mar\)</span> es constante. La curvatura positiva muestra una fuerza restauradora alrededor de <span class="math inline">\(r_*\)</span>; el desplazamiento opuesto a la aceleración tiene una interpretación directa en la cabina.</p>
+<p><strong>Ejercicio 20.4.</strong> Un resorte horizontal de constante <span class="math inline">\(k&gt;0\)</span> está sujeto a una cabina que acelera con <span class="math inline">\(A=a\)</span> constante. Calcula la posición de equilibrio de una masa <span class="math inline">\(m\)</span> y la energía relativa conservada.</p>
+<p><strong>Solución.</strong> Tomando <span class="math inline">\(r=0\)</span> en la longitud natural, la ecuación es <span class="math inline">\(m\ddot r=-kr-ma\)</span>. El equilibrio es <span class="math inline">\(r_*=-ma/k\)</span>. El potencial efectivo <span class="math inline">\(kr^2/2+mar\)</span> se escribe <span class="math inline">\(k(r+ma/k)^2/2-m^2a^2/(2k)\)</span>. Por proposición 20.4, <span class="math inline">\(m\dot r^2/2+kr^2/2+mar\)</span> es constante. La curvatura positiva muestra una fuerza restauradora alrededor de <span class="math inline">\(r_*\)</span>; el desplazamiento opuesto a la aceleración tiene una interpretación directa en la cabina.</p>
+<p><span id="acompañar-la-caída"></span></p>
 <p><span id="fispm-t1-c20-s03"></span></p>
 <p><span id="fpm-i-20-s03"></span></p>
 </section>
 </section>
-<section id="acompañar-la-caída" class="level2">
-<h2 class="anchored" data-anchor-id="acompañar-la-caída">§3. Acompañar la caída</h2>
+<section id="fispm-c20-acompauxf1ar-la-cauxedda" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c20-acompauxf1ar-la-cauxedda">3. Acompañar la caída</h2>
 <p>Elegir un origen que caiga con un cuerpo elimina la aceleración común debida a un campo uniforme. Esa elección explica por qué objetos próximos pueden parecer flotar juntos. También permite precisar el límite del argumento: un campo que cambia con la posición produce diferencias de aceleración que ninguna traslación común elimina.</p>
 <p><span id="fispm-t1-c20-p0005"></span></p>
-<p><strong>Proposición FPM-I-20-P05 — Campo relativo en un marco de caída libre.</strong> Si una partícula obedece <span class="math inline">\(\ddot{\mathbf x}=\mathbf g(\mathbf x,t)\)</span> y un origen sin rotación obedece <span class="math inline">\(\ddot{\mathbf X}=\mathbf g(\mathbf X,t)\)</span>, entonces</p>
-<p><span class="math display">\[
-\ddot{\mathbf r}=\mathbf g(\mathbf X+\mathbf r,t)-\mathbf g(\mathbf X,t).
-\]</span></p>
+<p><strong>Proposición 20.5 — Campo relativo en un marco de caída libre.</strong> Si una partícula obedece <span class="math inline">\(\ddot{\mathbf x}=\mathbf g(\mathbf x,t)\)</span> y un origen sin rotación obedece <span class="math inline">\(\ddot{\mathbf X}=\mathbf g(\mathbf X,t)\)</span>, entonces</p>
+<p><span class="math display">\[\ddot{\mathbf r}=\mathbf g(\mathbf X+\mathbf r,t)-\mathbf g(\mathbf X,t).\]</span></p>
 <p>Si el campo es espacialmente uniforme, la aceleración relativa es cero. Si es diferenciable espacialmente en <span class="math inline">\(\mathbf X\)</span>, su término local principal es <span class="math inline">\(D\mathbf g(\mathbf X,t)\mathbf r+o(|\mathbf r|)\)</span> a tiempo fijo.</p>
-<p><strong>Demostración.</strong> P01 resta las aceleraciones de partícula y origen, lo que da la igualdad exacta. Un campo uniforme toma el mismo valor en ambas posiciones. En el caso diferenciable, la definición de derivada espacial da la expansión de la diferencia. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> proposición 20.1 resta las aceleraciones de partícula y origen, lo que da la igualdad exacta. Un campo uniforme toma el mismo valor en ambas posiciones. En el caso diferenciable, la definición de derivada espacial da la expansión de la diferencia. <span class="math inline">\(\square\)</span></p>
 <p>Las diferencias descritas por el último término se llaman efectos de marea. El tensor derivada aparece aquí porque comparamos puntos próximos; no hace falta suponer que toda la región tenga un campo lineal. En un laboratorio pequeño y durante un intervalo adecuado, ignorar esas diferencias puede ser una aproximación útil. Extender esa aproximación a separaciones grandes exige otra justificación.</p>
 <p>La ausencia de normal en caída libre tampoco significa que la fuerza gravitatoria haya desaparecido del marco inercial. Lo que se anula en el modelo uniforme es la aceleración de un objeto respecto de un origen que recibe la misma aceleración. Las condiciones de preparación siguen importando: dos objetos con velocidades relativas iniciales distintas no permanecerán uno junto al otro.</p>
 <p><span id="fispm-t1-c20-mp0003"></span></p>
-<p><strong>Principio metodológico FPM-I-20-MP03.</strong> Al eliminar una aceleración común, conserva las diferencias espaciales del campo y las velocidades relativas iniciales. Una cancelación local no autoriza una equivalencia global de modelos.</p>
-<section id="ejercicios-2" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-2">Ejercicios</h3>
+<p><strong>Principio metodológico 20.3.</strong> Al eliminar una aceleración común, conserva las diferencias espaciales del campo y las velocidades relativas iniciales. Una cancelación local no autoriza una equivalencia global de modelos.</p>
+<p><span id="ejercicios-2"></span></p>
+<section id="fispm-c20-ejercicios-2" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c20-ejercicios-2">Ejercicios</h3>
 <p><span id="fispm-t1-c20-e0005"></span></p>
-<p><strong>Ejercicio FPM-I-20-E05.</strong> Dos cuerpos caen en un campo uniforme. En un instante su separación es <span class="math inline">\(\mathbf r_0\)</span> y su velocidad relativa <span class="math inline">\(\mathbf u_0\)</span>. Encuentra la separación posterior y la condición para que sea constante como vector.</p>
-<p><strong>Solución.</strong> P05 da <span class="math inline">\(\ddot{\mathbf r}=0\)</span>. Integrando con esos datos, <span class="math inline">\(\mathbf r(t)=\mathbf r_0+\mathbf u_0t\)</span>, si ese instante se llama cero. La separación vectorial es constante exactamente cuando <span class="math inline">\(\mathbf u_0=0\)</span>. Compartir aceleración no obliga a compartir velocidad.</p>
+<p><strong>Ejercicio 20.5.</strong> Dos cuerpos caen en un campo uniforme. En un instante su separación es <span class="math inline">\(\mathbf r_0\)</span> y su velocidad relativa <span class="math inline">\(\mathbf u_0\)</span>. Encuentra la separación posterior y la condición para que sea constante como vector.</p>
+<p><strong>Solución.</strong> proposición 20.5 da <span class="math inline">\(\ddot{\mathbf r}=0\)</span>. Integrando con esos datos, <span class="math inline">\(\mathbf r(t)=\mathbf r_0+\mathbf u_0t\)</span>, si ese instante se llama cero. La separación vectorial es constante exactamente cuando <span class="math inline">\(\mathbf u_0=0\)</span>. Compartir aceleración no obliga a compartir velocidad.</p>
 <p><span id="fispm-t1-c20-e0006"></span></p>
-<p><strong>Ejercicio FPM-I-20-E06.</strong> En una dimensión, el campo es <span class="math inline">\(g(x)=g_0+\gamma x\)</span>. Encuentra la ecuación exacta de separación para un origen en caída libre y describe el caso <span class="math inline">\(\gamma&gt;0\)</span> con datos <span class="math inline">\(r(0)=r_0\)</span>, <span class="math inline">\(\dot r(0)=0\)</span>.</p>
+<p><strong>Ejercicio 20.6.</strong> En una dimensión, el campo es <span class="math inline">\(g(x)=g_0+\gamma x\)</span>. Encuentra la ecuación exacta de separación para un origen en caída libre y describe el caso <span class="math inline">\(\gamma&gt;0\)</span> con datos <span class="math inline">\(r(0)=r_0\)</span>, <span class="math inline">\(\dot r(0)=0\)</span>.</p>
 <p><strong>Solución.</strong> La diferencia <span class="math inline">\(g(X+r)-g(X)\)</span> es <span class="math inline">\(\gamma r\)</span>, de modo que <span class="math inline">\(\ddot r=\gamma r\)</span>. Para <span class="math inline">\(\gamma&gt;0\)</span>, la solución es <span class="math inline">\(r(t)=r_0\cosh(\sqrt\gamma t)\)</span>, como se comprueba derivando dos veces y evaluando los datos. El término común <span class="math inline">\(g_0+\gamma X\)</span> desaparece; la separación crece por el gradiente del campo. Aquí <span class="math inline">\(\gamma\)</span> tiene dimensión <span class="math inline">\(T^{-2}\)</span>.</p>
+<p><span id="seguir-unos-ejes-que-giran"></span></p>
 <p><span id="fispm-t1-c20-s04"></span></p>
 <p><span id="fpm-i-20-s04"></span></p>
 </section>
 </section>
-<section id="seguir-unos-ejes-que-giran" class="level2">
-<h2 class="anchored" data-anchor-id="seguir-unos-ejes-que-giran">§4. Seguir unos ejes que giran</h2>
+<section id="fispm-c20-seguir-unos-ejes-que-giran" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c20-seguir-unos-ejes-que-giran">4. Seguir unos ejes que giran</h2>
 <p>En una plataforma giratoria, restar la posición del origen deja sin resolver la orientación de los ejes. Un vector puede conservar su dirección en el espacio y cambiar sus componentes sobre la plataforma. Necesitamos una escritura que separe ambos hechos sin presuponer un eje fijo de rotación.</p>
 <p><span id="fispm-t1-c20-d0003"></span></p>
-<p><strong>Definición FPM-I-20-D03 — Matriz de orientación.</strong> Sea <span class="math inline">\(R(t)\)</span> una matriz real <span class="math inline">\(3\times3\)</span> de clase <span class="math inline">\(C^2\)</span> con <span class="math inline">\(R^TR=I\)</span> y <span class="math inline">\(\det R=1\)</span>. Sus columnas son los ejes móviles expresados en el marco inercial. Si <span class="math inline">\(\mathbf r\)</span> contiene componentes móviles, el vector físico correspondiente tiene componentes inerciales <span class="math inline">\(R\mathbf r\)</span>. La posición completa es <span class="math inline">\(\mathbf x=\mathbf X+R\mathbf r\)</span>.</p>
-<p>Las condiciones de D03 dicen que los ejes siguen siendo ortonormales y conservan la orientación. La notación <span class="math inline">\(SO(3)\)</span> reúne esas matrices, pero en este capítulo solo usaremos sus identidades elementales y sus derivadas. La descripción global de rotaciones se retomará con el cuerpo rígido.</p>
+<p><strong>Definición 20.3 — Matriz de orientación.</strong> Sea <span class="math inline">\(R(t)\)</span> una matriz real <span class="math inline">\(3\times3\)</span> de clase <span class="math inline">\(C^2\)</span> con <span class="math inline">\(R^TR=I\)</span> y <span class="math inline">\(\det R=1\)</span>. Sus columnas son los ejes móviles expresados en el marco inercial. Si <span class="math inline">\(\mathbf r\)</span> contiene componentes móviles, el vector físico correspondiente tiene componentes inerciales <span class="math inline">\(R\mathbf r\)</span>. La posición completa es <span class="math inline">\(\mathbf x=\mathbf X+R\mathbf r\)</span>.</p>
+<p>Las condiciones de la definición 20.3 dicen que los ejes siguen siendo ortonormales y conservan la orientación. La notación <span class="math inline">\(SO(3)\)</span> reúne esas matrices, pero en este capítulo solo usaremos sus identidades elementales y sus derivadas. La descripción global de rotaciones se retomará con el cuerpo rígido.</p>
 <p><span id="fispm-t1-c20-p0006"></span></p>
-<p><strong>Proposición FPM-I-20-P06 — La derivada de una orientación contiene una matriz antisimétrica.</strong> La matriz <span class="math inline">\(W=R^T\dot R\)</span> satisface <span class="math inline">\(W^T=-W\)</span> y <span class="math inline">\(\dot R=RW\)</span>.</p>
+<p><strong>Proposición 20.6 — La derivada de una orientación contiene una matriz antisimétrica.</strong> La matriz <span class="math inline">\(W=R^T\dot R\)</span> satisface <span class="math inline">\(W^T=-W\)</span> y <span class="math inline">\(\dot R=RW\)</span>.</p>
 <p><strong>Demostración.</strong> Diferenciar <span class="math inline">\(R^TR=I\)</span> da <span class="math inline">\(\dot R^TR+R^T\dot R=0\)</span>. El primer término es <span class="math inline">\(W^T\)</span>, así que <span class="math inline">\(W^T+W=0\)</span>. Multiplicar <span class="math inline">\(W=R^T\dot R\)</span> por <span class="math inline">\(R\)</span> a la izquierda y usar <span class="math inline">\(RR^T=I\)</span> da <span class="math inline">\(\dot R=RW\)</span>. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c20-d0004"></span></p>
-<p><strong>Definición FPM-I-20-D04 — Velocidad angular en componentes móviles.</strong> El vector <span class="math inline">\(\boldsymbol\Omega=(\Omega_1,\Omega_2,\Omega_3)\)</span> se define mediante <span class="math inline">\(W\mathbf u=\boldsymbol\Omega\times\mathbf u\)</span> para todo <span class="math inline">\(\mathbf u\)</span>. Su vector en componentes inerciales es <span class="math inline">\(\boldsymbol\omega=R\boldsymbol\Omega\)</span>.</p>
+<p><strong>Definición 20.4 — Velocidad angular en componentes móviles.</strong> El vector <span class="math inline">\(\boldsymbol\Omega=(\Omega_1,\Omega_2,\Omega_3)\)</span> se define mediante <span class="math inline">\(W\mathbf u=\boldsymbol\Omega\times\mathbf u\)</span> para todo <span class="math inline">\(\mathbf u\)</span>. Su vector en componentes inerciales es <span class="math inline">\(\boldsymbol\omega=R\boldsymbol\Omega\)</span>.</p>
 <p><span id="fispm-t1-c20-p0007"></span></p>
-<p><strong>Proposición FPM-I-20-P07 — Existencia única de la velocidad angular.</strong> Toda matriz antisimétrica real <span class="math inline">\(3\times3\)</span> tiene exactamente la forma</p>
-<p><span class="math display">\[
-W=\begin{pmatrix}0&amp;-\Omega_3&amp;\Omega_2\\\Omega_3&amp;0&amp;-\Omega_1\\-\Omega_2&amp;\Omega_1&amp;0\end{pmatrix}.
-\]</span></p>
+<p><strong>Proposición 20.7 — Existencia única de la velocidad angular.</strong> Toda matriz antisimétrica real <span class="math inline">\(3\times3\)</span> tiene exactamente la forma</p>
+<p><span class="math display">\[W=\begin{pmatrix}0&amp;-\Omega_3&amp;\Omega_2\\\Omega_3&amp;0&amp;-\Omega_1\\-\Omega_2&amp;\Omega_1&amp;0\end{pmatrix}.\]</span></p>
 <p>Además <span class="math inline">\(\dot{\boldsymbol\omega}=R\dot{\boldsymbol\Omega}\)</span>.</p>
 <p><strong>Demostración.</strong> La antisimetría fija la diagonal en cero y determina las entradas inferiores a partir de las superiores. Elegir <span class="math inline">\(\Omega_1=-W_{23}\)</span>, <span class="math inline">\(\Omega_2=W_{13}\)</span> y <span class="math inline">\(\Omega_3=-W_{12}\)</span> produce la matriz indicada, y multiplicarla por <span class="math inline">\(\mathbf u\)</span> da el producto vectorial. Esas tres entradas prueban unicidad. Finalmente, <span class="math inline">\(\dot{\boldsymbol\omega}=\dot R\boldsymbol\Omega+R\dot{\boldsymbol\Omega}=R(W\boldsymbol\Omega+\dot{\boldsymbol\Omega})\)</span>. Como <span class="math inline">\(W\boldsymbol\Omega=\boldsymbol\Omega\times\boldsymbol\Omega=0\)</span>, queda la igualdad. <span class="math inline">\(\square\)</span></p>
 <p>La última fórmula permite hablar de aceleración angular sin confundir derivadas de componentes en bases distintas. El vector velocidad angular no necesita tener dirección constante. Tampoco se define diferenciando tres ángulos arbitrarios como si cada derivada fuera una componente: esa identificación requiere fórmulas adicionales.</p>
 <p><span id="fispm-t1-c20-mp0004"></span></p>
-<p><strong>Principio metodológico FPM-I-20-MP04.</strong> Declara qué matriz lleva cada conjunto de componentes al otro. Un producto vectorial solo puede reunir componentes expresadas en una misma base.</p>
-<section id="ejercicios-3" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-3">Ejercicios</h3>
+<p><strong>Principio metodológico 20.4.</strong> Declara qué matriz lleva cada conjunto de componentes al otro. Un producto vectorial solo puede reunir componentes expresadas en una misma base.</p>
+<p><span id="ejercicios-3"></span></p>
+<section id="fispm-c20-ejercicios-3" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c20-ejercicios-3">Ejercicios</h3>
 <p><span id="fispm-t1-c20-e0007"></span></p>
-<p><strong>Ejercicio FPM-I-20-E07.</strong> Para una rotación alrededor del eje <span class="math inline">\(z\)</span> de ángulo <span class="math inline">\(\phi(t)\)</span>, calcula <span class="math inline">\(R\)</span>, <span class="math inline">\(W\)</span> y <span class="math inline">\(\boldsymbol\Omega\)</span>.</p>
-<p><strong>Solución.</strong> La matriz es <span class="math inline">\(R=\begin{pmatrix}\cos\phi&amp;-\sin\phi&amp;0\\\sin\phi&amp;\cos\phi&amp;0\\0&amp;0&amp;1\end{pmatrix}\)</span>. Multiplicar <span class="math inline">\(R^T\dot R\)</span> da <span class="math inline">\(W=\dot\phi\begin{pmatrix}0&amp;-1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}\)</span>. Por D04, <span class="math inline">\(\boldsymbol\Omega=\dot\phi\mathbf e_z\)</span>. Para <span class="math inline">\(\dot\phi&gt;0\)</span>, un punto sobre el eje móvil <span class="math inline">\(x\)</span> gira hacia el eje móvil <span class="math inline">\(y\)</span> en la orientación positiva del plano.</p>
+<p><strong>Ejercicio 20.7.</strong> Para una rotación alrededor del eje <span class="math inline">\(z\)</span> de ángulo <span class="math inline">\(\phi(t)\)</span>, calcula <span class="math inline">\(R\)</span>, <span class="math inline">\(W\)</span> y <span class="math inline">\(\boldsymbol\Omega\)</span>.</p>
+<p><strong>Solución.</strong> La matriz es <span class="math inline">\(R=\begin{pmatrix}\cos\phi&amp;-\sin\phi&amp;0\\\sin\phi&amp;\cos\phi&amp;0\\0&amp;0&amp;1\end{pmatrix}\)</span>. Multiplicar <span class="math inline">\(R^T\dot R\)</span> da <span class="math inline">\(W=\dot\phi\begin{pmatrix}0&amp;-1&amp;0\\1&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}\)</span>. Por definición 20.4, <span class="math inline">\(\boldsymbol\Omega=\dot\phi\mathbf e_z\)</span>. Para <span class="math inline">\(\dot\phi&gt;0\)</span>, un punto sobre el eje móvil <span class="math inline">\(x\)</span> gira hacia el eje móvil <span class="math inline">\(y\)</span> en la orientación positiva del plano.</p>
 <p><span id="fispm-t1-c20-e0008"></span></p>
-<p><strong>Ejercicio FPM-I-20-E08.</strong> Un vector tiene componentes móviles constantes <span class="math inline">\(\mathbf u_0\)</span>. Calcula la derivada de su vector físico y decide cuándo es cero.</p>
+<p><strong>Ejercicio 20.8.</strong> Un vector tiene componentes móviles constantes <span class="math inline">\(\mathbf u_0\)</span>. Calcula la derivada de su vector físico y decide cuándo es cero.</p>
 <p><strong>Solución.</strong> Su vector físico es <span class="math inline">\(R\mathbf u_0\)</span>. La derivada es <span class="math inline">\(\dot R\mathbf u_0=R(\boldsymbol\Omega\times\mathbf u_0)\)</span>. Se anula exactamente cuando <span class="math inline">\(\boldsymbol\Omega\times\mathbf u_0=0\)</span>: en ese instante el vector es paralelo a la velocidad angular, o alguno de ambos es cero. Tener componentes móviles constantes no implica permanecer fijo respecto del marco inercial.</p>
+<p><span id="la-derivada-de-un-vector-y-la-derivada-de-sus-componentes"></span></p>
 <p><span id="fispm-t1-c20-s05"></span></p>
 <p><span id="fpm-i-20-s05"></span></p>
 </section>
 </section>
-<section id="la-derivada-de-un-vector-y-la-derivada-de-sus-componentes" class="level2">
-<h2 class="anchored" data-anchor-id="la-derivada-de-un-vector-y-la-derivada-de-sus-componentes">§5. La derivada de un vector y la derivada de sus componentes</h2>
+<section id="fispm-c20-la-derivada-de-un-vector-y-la-derivada-de-sus-componentes" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c20-la-derivada-de-un-vector-y-la-derivada-de-sus-componentes">5. La derivada de un vector y la derivada de sus componentes</h2>
 <p>El ejercicio anterior contiene el mecanismo de toda la transformación. Al diferenciar un vector escrito en una base móvil hay dos contribuciones: cambian sus componentes y cambia la base. Se pueden reunir en una única regla que usaremos tanto para la velocidad como para la aceleración.</p>
 <p><span id="fispm-t1-c20-d0005"></span></p>
-<p><strong>Definición FPM-I-20-D05 — Derivadas en los dos marcos.</strong> Si un vector físico tiene componentes inerciales <span class="math inline">\(\mathbf a_I=R\mathbf a\)</span>, el punto sobre <span class="math inline">\(\mathbf a\)</span> designa la derivada ordinaria de sus componentes móviles. La derivada física expresada en esa base es <span class="math inline">\(R^T\dot{\mathbf a}_I\)</span>. Estas operaciones actúan sobre el mismo vector, con distintas bases mantenidas fijas al diferenciar.</p>
+<p><strong>Definición 20.5 — Derivadas en los dos marcos.</strong> Si un vector físico tiene componentes inerciales <span class="math inline">\(\mathbf a_I=R\mathbf a\)</span>, el punto sobre <span class="math inline">\(\mathbf a\)</span> designa la derivada ordinaria de sus componentes móviles. La derivada física expresada en esa base es <span class="math inline">\(R^T\dot{\mathbf a}_I\)</span>. Estas operaciones actúan sobre el mismo vector, con distintas bases mantenidas fijas al diferenciar.</p>
 <p><span id="fispm-t1-c20-p0008"></span></p>
-<p><strong>Proposición FPM-I-20-P08 — Regla de transporte.</strong> Para <span class="math inline">\(R\)</span> de clase <span class="math inline">\(C^1\)</span> y <span class="math inline">\(\mathbf a\)</span> de clase <span class="math inline">\(C^1\)</span>,</p>
-<p><span class="math display">\[
-R^T\frac d{dt}(R\mathbf a)=\dot{\mathbf a}+\boldsymbol\Omega\times\mathbf a.
-\]</span></p>
+<p><strong>Proposición 20.8 — Regla de transporte.</strong> Para <span class="math inline">\(R\)</span> de clase <span class="math inline">\(C^1\)</span> y <span class="math inline">\(\mathbf a\)</span> de clase <span class="math inline">\(C^1\)</span>,</p>
+<p><span class="math display">\[R^T\frac d{dt}(R\mathbf a)=\dot{\mathbf a}+\boldsymbol\Omega\times\mathbf a.\]</span></p>
 <p><strong>Demostración.</strong> La regla del producto da <span class="math inline">\(d(R\mathbf a)/dt=\dot R\mathbf a+R\dot{\mathbf a}\)</span>. Multiplicar por <span class="math inline">\(R^T\)</span> transforma el primer término en <span class="math inline">\(W\mathbf a=\boldsymbol\Omega\times\mathbf a\)</span> y el segundo en <span class="math inline">\(\dot{\mathbf a}\)</span>. <span class="math inline">\(\square\)</span></p>
 <p>La regla se conoce también como teorema de transporte o de Coriolis. Su validez es cinemática: todavía no hemos usado una fuerza ni la segunda ley.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Por ejemplo, un vector fijo en el espacio tiene <span class="math inline">\(\dot{\mathbf a}=-\boldsymbol\Omega\times\mathbf a\)</span> en los ejes que giran. Un vector fijo en la plataforma tiene <span class="math inline">\(\dot{\mathbf a}=0\)</span>, pero su derivada física es <span class="math inline">\(R(\boldsymbol\Omega\times\mathbf a)\)</span>.</p>
 <p>El producto escalar no cambia al pasar de componentes móviles a inerciales: <span class="math inline">\((R\mathbf a)\cdot(R\mathbf b)=\mathbf a\cdot\mathbf b\)</span>. Al derivarlo, las dos contribuciones de la base se cancelan porque <span class="math inline">\((\boldsymbol\Omega\times\mathbf a)\cdot\mathbf b+\mathbf a\cdot(\boldsymbol\Omega\times\mathbf b)=0\)</span>. Por eso podemos calcular variaciones de normas con componentes móviles sin introducir un término extra para la norma misma. Esa cancelación será decisiva en el balance de energía.</p>
 <p><span id="fispm-t1-c20-mp0005"></span></p>
-<p><strong>Principio metodológico FPM-I-20-MP05.</strong> Aplica la regla de transporte al vector completo. Identifica primero cuál de sus componentes se está derivando y cuál es la base de la respuesta.</p>
-<section id="ejercicios-4" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-4">Ejercicios</h3>
+<p><strong>Principio metodológico 20.5.</strong> Aplica la regla de transporte al vector completo. Identifica primero cuál de sus componentes se está derivando y cuál es la base de la respuesta.</p>
+<p><span id="ejercicios-4"></span></p>
+<section id="fispm-c20-ejercicios-4" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c20-ejercicios-4">Ejercicios</h3>
 <p><span id="fispm-t1-c20-e0009"></span></p>
-<p><strong>Ejercicio FPM-I-20-E09.</strong> Un vector fijo en el espacio tiene al inicio componentes móviles <span class="math inline">\((a,0,0)\)</span>. Los ejes giran uniformemente alrededor de <span class="math inline">\(z\)</span> con rapidez <span class="math inline">\(\Omega&gt;0\)</span> y coinciden inicialmente con los fijos. Encuentra las componentes móviles posteriores.</p>
-<p><strong>Solución.</strong> El vector inercial permanece <span class="math inline">\((a,0,0)\)</span>. Multiplicar por <span class="math inline">\(R^T(t)\)</span> da <span class="math inline">\((a\cos\Omega t,-a\sin\Omega t,0)\)</span>. Su derivada es <span class="math inline">\(-\Omega\mathbf e_z\times\mathbf a\)</span>, como exige P08. El signo negativo expresa que, visto desde los ejes que giran positivamente, el vector fijo parece girar en sentido contrario.</p>
+<p><strong>Ejercicio 20.9.</strong> Un vector fijo en el espacio tiene al inicio componentes móviles <span class="math inline">\((a,0,0)\)</span>. Los ejes giran uniformemente alrededor de <span class="math inline">\(z\)</span> con rapidez <span class="math inline">\(\Omega&gt;0\)</span> y coinciden inicialmente con los fijos. Encuentra las componentes móviles posteriores.</p>
+<p><strong>Solución.</strong> El vector inercial permanece <span class="math inline">\((a,0,0)\)</span>. Multiplicar por <span class="math inline">\(R^T(t)\)</span> da <span class="math inline">\((a\cos\Omega t,-a\sin\Omega t,0)\)</span>. Su derivada es <span class="math inline">\(-\Omega\mathbf e_z\times\mathbf a\)</span>, como exige proposición 20.8. El signo negativo expresa que, visto desde los ejes que giran positivamente, el vector fijo parece girar en sentido contrario.</p>
 <p><span id="fispm-t1-c20-e0010"></span></p>
-<p><strong>Ejercicio FPM-I-20-E10.</strong> Usa P08 para demostrar que <span class="math inline">\(\mathbf a\cdot(\boldsymbol\Omega\times\mathbf a)=0\)</span> y que la rotación de la base no modifica la derivada de <span class="math inline">\(|\mathbf a|^2\)</span>.</p>
+<p><strong>Ejercicio 20.10.</strong> Usa proposición 20.8 para demostrar que <span class="math inline">\(\mathbf a\cdot(\boldsymbol\Omega\times\mathbf a)=0\)</span> y que la rotación de la base no modifica la derivada de <span class="math inline">\(|\mathbf a|^2\)</span>.</p>
 <p><strong>Solución.</strong> Un producto vectorial es perpendicular a sus dos factores, por lo que su producto escalar con <span class="math inline">\(\mathbf a\)</span> es cero. La derivada física de la norma al cuadrado es <span class="math inline">\(2\mathbf a_I\cdot\dot{\mathbf a}_I=2\mathbf a\cdot[\dot{\mathbf a}+\boldsymbol\Omega\times\mathbf a]=2\mathbf a\cdot\dot{\mathbf a}\)</span>. Coincide con diferenciar directamente <span class="math inline">\(|\mathbf a|^2\)</span>. La orientación variable puede cambiar dirección sin cambiar longitud.</p>
+<p><span id="qué-velocidad-llevaba-el-cuerpo-al-soltarlo"></span></p>
 <p><span id="fispm-t1-c20-s06"></span></p>
 <p><span id="fpm-i-20-s06"></span></p>
 </section>
 </section>
-<section id="qué-velocidad-llevaba-el-cuerpo-al-soltarlo" class="level2">
-<h2 class="anchored" data-anchor-id="qué-velocidad-llevaba-el-cuerpo-al-soltarlo">§6. Qué velocidad llevaba el cuerpo al soltarlo</h2>
+<section id="fispm-c20-quuxe9-velocidad-llevaba-el-cuerpo-al-soltarlo" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c20-quuxe9-velocidad-llevaba-el-cuerpo-al-soltarlo">6. Qué velocidad llevaba el cuerpo al soltarlo</h2>
 <p>Un cuerpo que se suelta desde una plataforma conserva inicialmente la velocidad que tenía en el marco inercial. Si antes permanecía quieto respecto de la plataforma, esa velocidad incluye el movimiento del origen y la rotación local. Confundir reposo relativo con reposo inercial cambia el problema desde sus datos iniciales.</p>
 <p><span id="fispm-t1-c20-p0009"></span></p>
-<p><strong>Proposición FPM-I-20-P09 — Transformación general de velocidad.</strong> Para <span class="math inline">\(\mathbf x=\mathbf X+R\mathbf r\)</span>,</p>
-<p><span class="math display">\[
-\dot{\mathbf x}=\dot{\mathbf X}+R(\dot{\mathbf r}+\boldsymbol\Omega\times\mathbf r).
-\]</span></p>
+<p><strong>Proposición 20.9 — Transformación general de velocidad.</strong> Para <span class="math inline">\(\mathbf x=\mathbf X+R\mathbf r\)</span>,</p>
+<p><span class="math display">\[\dot{\mathbf x}=\dot{\mathbf X}+R(\dot{\mathbf r}+\boldsymbol\Omega\times\mathbf r).\]</span></p>
 <p>En particular, la velocidad relativa inicial asociada a un dato inercial <span class="math inline">\(\mathbf v_0\)</span> es</p>
-<p><span class="math display">\[
-\dot{\mathbf r}_0=R_0^T(\mathbf v_0-\dot{\mathbf X}_0)-\boldsymbol\Omega_0\times\mathbf r_0.
-\]</span></p>
-<p><strong>Demostración.</strong> Diferenciar la transformación de posiciones y aplicar P08 a <span class="math inline">\(R\mathbf r\)</span> da la primera fórmula. Evaluarla en el instante inicial, multiplicar por <span class="math inline">\(R_0^T\)</span> y despejar <span class="math inline">\(\dot{\mathbf r}_0\)</span> da la segunda. <span class="math inline">\(\square\)</span></p>
+<p><span class="math display">\[\dot{\mathbf r}_0=R_0^T(\mathbf v_0-\dot{\mathbf X}_0)-\boldsymbol\Omega_0\times\mathbf r_0.\]</span></p>
+<p><strong>Demostración.</strong> Diferenciar la transformación de posiciones y aplicar proposición 20.8 a <span class="math inline">\(R\mathbf r\)</span> da la primera fórmula. Evaluarla en el instante inicial, multiplicar por <span class="math inline">\(R_0^T\)</span> y despejar <span class="math inline">\(\dot{\mathbf r}_0\)</span> da la segunda. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c20-p0010"></span></p>
-<p><strong>Proposición FPM-I-20-P10 — Velocidad de un punto fijado al marco.</strong> Si las componentes <span class="math inline">\(\mathbf r\)</span> de un punto son constantes, entonces <span class="math inline">\(\dot{\mathbf x}=\dot{\mathbf X}+R(\boldsymbol\Omega\times\mathbf r)\)</span>. Dos puntos fijados al marco cumplen</p>
-<p><span class="math display">\[
-\dot{\mathbf x}_1-\dot{\mathbf x}_2
-=\boldsymbol\omega\times(\mathbf x_1-\mathbf x_2).
-\]</span></p>
-<p><strong>Demostración.</strong> La primera igualdad es P09 con <span class="math inline">\(\dot{\mathbf r}=0\)</span>. Restar para dos puntos elimina <span class="math inline">\(\dot{\mathbf X}\)</span>. Las rotaciones propias preservan el producto vectorial, de modo que <span class="math inline">\(R(\boldsymbol\Omega\times\Delta\mathbf r)=(R\boldsymbol\Omega)\times(R\Delta\mathbf r)=\boldsymbol\omega\times\Delta\mathbf x\)</span>. Esta preservación se verifica mediante el producto triple: una matriz ortogonal de determinante uno conserva sus valores y, por tanto, el vector que representa cada producto vectorial. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 20.10 — Velocidad de un punto fijado al marco.</strong> Si las componentes <span class="math inline">\(\mathbf r\)</span> de un punto son constantes, entonces <span class="math inline">\(\dot{\mathbf x}=\dot{\mathbf X}+R(\boldsymbol\Omega\times\mathbf r)\)</span>. Dos puntos fijados al marco cumplen</p>
+<p><span class="math display">\[\dot{\mathbf x}_1-\dot{\mathbf x}_2 =\boldsymbol\omega\times(\mathbf x_1-\mathbf x_2).\]</span></p>
+<p><strong>Demostración.</strong> La primera igualdad es proposición 20.9 con <span class="math inline">\(\dot{\mathbf r}=0\)</span>. Restar para dos puntos elimina <span class="math inline">\(\dot{\mathbf X}\)</span>. Las rotaciones propias preservan el producto vectorial, de modo que <span class="math inline">\(R(\boldsymbol\Omega\times\Delta\mathbf r)=(R\boldsymbol\Omega)\times(R\Delta\mathbf r)=\boldsymbol\omega\times\Delta\mathbf x\)</span>. Esta preservación se verifica mediante el producto triple: una matriz ortogonal de determinante uno conserva sus valores y, por tanto, el vector que representa cada producto vectorial. <span class="math inline">\(\square\)</span></p>
 <p>La distancia entre esos dos puntos permanece constante, aunque sus velocidades puedan ser distintas. Esta fórmula anticipa la cinemática del cuerpo rígido sin añadir todavía una distribución de masa. Para una persona sobre una plataforma de eje fijo, cuanto mayor sea la distancia perpendicular al eje, mayor será la rapidez inercial debida a la rotación.</p>
 <p><span id="fispm-t1-c20-mp0006"></span></p>
-<p><strong>Principio metodológico FPM-I-20-MP06.</strong> Expresa los datos iniciales en el mismo marco que la ecuación a resolver. «Soltar desde el reposo» necesita identificar respecto de qué observador había reposo.</p>
-<section id="ejercicios-5" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-5">Ejercicios</h3>
+<p><strong>Principio metodológico 20.6.</strong> Expresa los datos iniciales en el mismo marco que la ecuación a resolver. «Soltar desde el reposo» necesita identificar respecto de qué observador había reposo.</p>
+<p><span id="ejercicios-5"></span></p>
+<section id="fispm-c20-ejercicios-5" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c20-ejercicios-5">Ejercicios</h3>
 <p><span id="fispm-t1-c20-e0011"></span></p>
-<p><strong>Ejercicio FPM-I-20-E11.</strong> Una plataforma de origen fijo gira con <span class="math inline">\(\boldsymbol\Omega=\Omega\mathbf e_z\)</span>. Un cuerpo está en <span class="math inline">\(\mathbf r_0=a\mathbf e_x\)</span>. Compara los datos relativos para un cuerpo inicialmente quieto en el espacio y otro inicialmente quieto sobre la plataforma.</p>
-<p><strong>Solución.</strong> Si <span class="math inline">\(R_0=I\)</span> y la velocidad inercial es cero, P09 da <span class="math inline">\(\dot{\mathbf r}_0=-\Omega a\mathbf e_y\)</span>. Si está quieto sobre la plataforma, <span class="math inline">\(\dot{\mathbf r}_0=0\)</span> y su velocidad inercial es <span class="math inline">\(\Omega a\mathbf e_y\)</span>. Las posiciones iniciales coinciden, pero las velocidades físicas y las trayectorias posteriores son diferentes.</p>
+<p><strong>Ejercicio 20.11.</strong> Una plataforma de origen fijo gira con <span class="math inline">\(\boldsymbol\Omega=\Omega\mathbf e_z\)</span>. Un cuerpo está en <span class="math inline">\(\mathbf r_0=a\mathbf e_x\)</span>. Compara los datos relativos para un cuerpo inicialmente quieto en el espacio y otro inicialmente quieto sobre la plataforma.</p>
+<p><strong>Solución.</strong> Si <span class="math inline">\(R_0=I\)</span> y la velocidad inercial es cero, proposición 20.9 da <span class="math inline">\(\dot{\mathbf r}_0=-\Omega a\mathbf e_y\)</span>. Si está quieto sobre la plataforma, <span class="math inline">\(\dot{\mathbf r}_0=0\)</span> y su velocidad inercial es <span class="math inline">\(\Omega a\mathbf e_y\)</span>. Las posiciones iniciales coinciden, pero las velocidades físicas y las trayectorias posteriores son diferentes.</p>
 <p><span id="fispm-t1-c20-e0012"></span></p>
-<p><strong>Ejercicio FPM-I-20-E12.</strong> Un origen se mueve con velocidad <span class="math inline">\(V\mathbf e_x\)</span> y el marco gira alrededor de <span class="math inline">\(z\)</span> con rapidez <span class="math inline">\(\Omega\)</span>. En un instante <span class="math inline">\(R=I\)</span>, una partícula está en <span class="math inline">\(a\mathbf e_y\)</span> y tiene velocidad relativa <span class="math inline">\(u\mathbf e_x\)</span>. Encuentra su velocidad inercial.</p>
-<p><strong>Solución.</strong> La contribución de rotación es <span class="math inline">\(\Omega\mathbf e_z\times a\mathbf e_y=-\Omega a\mathbf e_x\)</span>. P09 da <span class="math inline">\(\dot{\mathbf x}=(V+u-\Omega a)\mathbf e_x\)</span>. En particular, puede haber velocidad inercial cero con velocidad relativa distinta de cero. Las tres contribuciones se suman una vez expresadas en la misma base.</p>
+<p><strong>Ejercicio 20.12.</strong> Un origen se mueve con velocidad <span class="math inline">\(V\mathbf e_x\)</span> y el marco gira alrededor de <span class="math inline">\(z\)</span> con rapidez <span class="math inline">\(\Omega\)</span>. En un instante <span class="math inline">\(R=I\)</span>, una partícula está en <span class="math inline">\(a\mathbf e_y\)</span> y tiene velocidad relativa <span class="math inline">\(u\mathbf e_x\)</span>. Encuentra su velocidad inercial.</p>
+<p><strong>Solución.</strong> La contribución de rotación es <span class="math inline">\(\Omega\mathbf e_z\times a\mathbf e_y=-\Omega a\mathbf e_x\)</span>. Proposición 20.9 da <span class="math inline">\(\dot{\mathbf x}=(V+u-\Omega a)\mathbf e_x\)</span>. En particular, puede haber velocidad inercial cero con velocidad relativa distinta de cero. Las tres contribuciones se suman una vez expresadas en la misma base.</p>
+<p><span id="de-dónde-sale-el-factor-dos"></span></p>
 <p><span id="fispm-t1-c20-s07"></span></p>
 <p><span id="fpm-i-20-s07"></span></p>
 </section>
 </section>
-<section id="de-dónde-sale-el-factor-dos" class="level2">
-<h2 class="anchored" data-anchor-id="de-dónde-sale-el-factor-dos">§7. De dónde sale el factor dos</h2>
+<section id="fispm-c20-de-duxf3nde-sale-el-factor-dos" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c20-de-duxf3nde-sale-el-factor-dos">7. De dónde sale el factor dos</h2>
 <p>La velocidad relativa entra dos veces al diferenciar la velocidad física. Una contribución procede de la rotación de ese vector velocidad; la otra, del cambio de la posición que aparece en <span class="math inline">\(\boldsymbol\Omega\times\mathbf r\)</span>. Mantener ambas operaciones visibles evita perder el factor dos de Coriolis.</p>
+<p><span id="fig:I-20-N02"></span></p>
+<figure id="fig-fpm-v04-i-20-n02" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/v04/I-20-N02.svg" class="lightbox" data-gallery="fpm-v04-c20"><img src="../../assets/books/fispm/v04/I-20-N02.svg" alt="Sentido del término de Coriolis. Diagrama del capítulo 20; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="403" height="230" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 20.2.</strong> Si <span class="math inline">\(\Omega\)</span> sale del plano y <span class="math inline">\(v\prime\)</span> apunta a la derecha, <span class="math inline">\(-2m\Omega\times v\prime\)</span> apunta hacia abajo. La flecha discontinua es una velocidad; el término inercial no es una interacción nueva. Véase §<a href="#fispm-c20-de-duxf3nde-sale-el-factor-dos">7</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c20-p0011"></span></p>
-<p><strong>Proposición FPM-I-20-P11 — Transformación general de aceleración.</strong> Si <span class="math inline">\(\mathbf X,R,\mathbf r\)</span> son de clase <span class="math inline">\(C^2\)</span>, entonces</p>
-<p><span class="math display">\[
-\ddot{\mathbf x}=\ddot{\mathbf X}+R\left[
-\ddot{\mathbf r}+2\boldsymbol\Omega\times\dot{\mathbf r}
-+\dot{\boldsymbol\Omega}\times\mathbf r
-+\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r)\right].
-\]</span></p>
-<p><strong>Demostración.</strong> P09 escribe la velocidad como <span class="math inline">\(\dot{\mathbf X}+R\mathbf b\)</span>, con <span class="math inline">\(\mathbf b=\dot{\mathbf r}+\boldsymbol\Omega\times\mathbf r\)</span>. P08 da <span class="math inline">\(d(R\mathbf b)/dt=R(\dot{\mathbf b}+\boldsymbol\Omega\times\mathbf b)\)</span>. La derivada de <span class="math inline">\(\mathbf b\)</span> es <span class="math inline">\(\ddot{\mathbf r}+\dot{\boldsymbol\Omega}\times\mathbf r+\boldsymbol\Omega\times\dot{\mathbf r}\)</span>. El término de transporte añade <span class="math inline">\(\boldsymbol\Omega\times\dot{\mathbf r}+\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r)\)</span>. Agrupar las dos contribuciones iguales da el resultado. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 20.11 — Transformación general de aceleración.</strong> Si <span class="math inline">\(\mathbf X,R,\mathbf r\)</span> son de clase <span class="math inline">\(C^2\)</span>, entonces</p>
+<p><span class="math display">\[\ddot{\mathbf x}=\ddot{\mathbf X}+R\left[ \ddot{\mathbf r}+2\boldsymbol\Omega\times\dot{\mathbf r} +\dot{\boldsymbol\Omega}\times\mathbf r +\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r)\right].\]</span></p>
+<p><strong>Demostración.</strong> proposición 20.9 escribe la velocidad como <span class="math inline">\(\dot{\mathbf X}+R\mathbf b\)</span>, con <span class="math inline">\(\mathbf b=\dot{\mathbf r}+\boldsymbol\Omega\times\mathbf r\)</span>. Proposición 20.8 da <span class="math inline">\(d(R\mathbf b)/dt=R(\dot{\mathbf b}+\boldsymbol\Omega\times\mathbf b)\)</span>. La derivada de <span class="math inline">\(\mathbf b\)</span> es <span class="math inline">\(\ddot{\mathbf r}+\dot{\boldsymbol\Omega}\times\mathbf r+\boldsymbol\Omega\times\dot{\mathbf r}\)</span>. El término de transporte añade <span class="math inline">\(\boldsymbol\Omega\times\dot{\mathbf r}+\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r)\)</span>. Agrupar las dos contribuciones iguales da el resultado. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c20-p0012"></span></p>
-<p><strong>Proposición FPM-I-20-P12 — Segunda ley en componentes móviles.</strong> Definamos <span class="math inline">\(\mathbf A=R^T\ddot{\mathbf X}\)</span> y <span class="math inline">\(\mathbf F_R=R^T\mathbf F\)</span>, donde <span class="math inline">\(\mathbf F\)</span> es la suma de fuerzas físicas en componentes inerciales. Entonces <span class="math inline">\(m\ddot{\mathbf x}=\mathbf F\)</span> equivale a</p>
-<p><span class="math display">\[
-m\ddot{\mathbf r}=\mathbf F_R-m\mathbf A
--2m\boldsymbol\Omega\times\dot{\mathbf r}
--m\dot{\boldsymbol\Omega}\times\mathbf r
--m\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r).
-\]</span></p>
-<p><strong>Demostración.</strong> Multiplicar P11 por <span class="math inline">\(mR^T\)</span> y usar <span class="math inline">\(R^TR=I\)</span> da la suma de la aceleración del origen y las cuatro contribuciones móviles. Sustituir <span class="math inline">\(mR^T\ddot{\mathbf x}=\mathbf F_R\)</span> y despejar <span class="math inline">\(m\ddot{\mathbf r}\)</span> produce los signos indicados. Invertir estos pasos recupera la ecuación inercial, lo que prueba la equivalencia. <span class="math inline">\(\square\)</span></p>
-<p>Todos los productos vectoriales de P12 están escritos en ejes móviles. En particular <span class="math inline">\(\dot{\boldsymbol\Omega}\)</span> designa la derivada de sus componentes; P07 asegura que representa la aceleración angular física tras multiplicar por <span class="math inline">\(R\)</span>. La derivada de <span class="math inline">\(\mathbf A\)</span> no aparece en P12: la transformación de aceleración necesita la aceleración actual del origen, no su derivada.</p>
-<p>El término <span class="math inline">\(\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r)\)</span> en P11 apunta hacia el eje para una rotación de eje fijo. En P12 aparece con signo contrario y por ello apunta hacia afuera. Los nombres de aceleración centrípeta y fuerza centrífuga se refieren a lugares diferentes de estas dos igualdades.</p>
+<p><strong>Proposición 20.12 — Segunda ley en componentes móviles.</strong> Definamos <span class="math inline">\(\mathbf A=R^T\ddot{\mathbf X}\)</span> y <span class="math inline">\(\mathbf F_R=R^T\mathbf F\)</span>, donde <span class="math inline">\(\mathbf F\)</span> es la suma de fuerzas físicas en componentes inerciales. Entonces <span class="math inline">\(m\ddot{\mathbf x}=\mathbf F\)</span> equivale a</p>
+<p><span class="math display">\[m\ddot{\mathbf r}=\mathbf F_R-m\mathbf A -2m\boldsymbol\Omega\times\dot{\mathbf r} -m\dot{\boldsymbol\Omega}\times\mathbf r -m\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r).\]</span></p>
+<p><strong>Demostración.</strong> Multiplicar proposición 20.11 por <span class="math inline">\(mR^T\)</span> y usar <span class="math inline">\(R^TR=I\)</span> da la suma de la aceleración del origen y las cuatro contribuciones móviles. Sustituir <span class="math inline">\(mR^T\ddot{\mathbf x}=\mathbf F_R\)</span> y despejar <span class="math inline">\(m\ddot{\mathbf r}\)</span> produce los signos indicados. Invertir estos pasos recupera la ecuación inercial, lo que prueba la equivalencia. <span class="math inline">\(\square\)</span></p>
+<p>Todos los productos vectoriales de la proposición 20.12 están escritos en ejes móviles. En particular <span class="math inline">\(\dot{\boldsymbol\Omega}\)</span> designa la derivada de sus componentes; proposición 20.7 asegura que representa la aceleración angular física tras multiplicar por <span class="math inline">\(R\)</span>. La derivada de <span class="math inline">\(\mathbf A\)</span> no aparece en la proposición 20.12: la transformación de aceleración necesita la aceleración actual del origen, no su derivada.</p>
+<p>El término <span class="math inline">\(\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r)\)</span> en la proposición 20.11 apunta hacia el eje para una rotación de eje fijo. En proposición 20.12 aparece con signo contrario y por ello apunta hacia afuera. Los nombres de aceleración centrípeta y fuerza centrífuga se refieren a lugares diferentes de estas dos igualdades.</p>
 <p><span id="fispm-t1-c20-mp0007"></span></p>
-<p><strong>Principio metodológico FPM-I-20-MP07.</strong> Obtén los signos trasladando términos desde la transformación de aceleración. Comprueba el caso de un punto fijo en el marco y el caso sin rotación.</p>
-<section id="ejercicios-6" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-6">Ejercicios</h3>
+<p><strong>Principio metodológico 20.7.</strong> Obtén los signos trasladando términos desde la transformación de aceleración. Comprueba el caso de un punto fijo en el marco y el caso sin rotación.</p>
+<p><span id="ejercicios-6"></span></p>
+<section id="fispm-c20-ejercicios-6" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c20-ejercicios-6">Ejercicios</h3>
 <p><span id="fispm-t1-c20-e0013"></span></p>
-<p><strong>Ejercicio FPM-I-20-E13.</strong> Para origen fijo y rotación <span class="math inline">\(\boldsymbol\Omega=\Omega(t)\mathbf e_z\)</span>, escribe las componentes inerciales de la aceleración expresadas en la base móvil.</p>
-<p><strong>Solución.</strong> Los productos de P11 dan <span class="math inline">\(a_{I,x}^{(R)}=\ddot x-2\Omega\dot y-\dot\Omega y-\Omega^2x\)</span>, <span class="math inline">\(a_{I,y}^{(R)}=\ddot y+2\Omega\dot x+\dot\Omega x-\Omega^2y\)</span> y <span class="math inline">\(a_{I,z}^{(R)}=\ddot z\)</span>. Los superíndices recuerdan que son componentes en la base móvil de la aceleración física, no las segundas derivadas relativas. Para obtener componentes inerciales se multiplica el vector completo por <span class="math inline">\(R\)</span>.</p>
+<p><strong>Ejercicio 20.13.</strong> Para origen fijo y rotación <span class="math inline">\(\boldsymbol\Omega=\Omega(t)\mathbf e_z\)</span>, escribe las componentes inerciales de la aceleración expresadas en la base móvil.</p>
+<p><strong>Solución.</strong> Los productos de la proposición 20.11 dan <span class="math inline">\(a_{I,x}^{(R)}=\ddot x-2\Omega\dot y-\dot\Omega y-\Omega^2x\)</span>, <span class="math inline">\(a_{I,y}^{(R)}=\ddot y+2\Omega\dot x+\dot\Omega x-\Omega^2y\)</span> y <span class="math inline">\(a_{I,z}^{(R)}=\ddot z\)</span>. Los superíndices recuerdan que son componentes en la base móvil de la aceleración física, no las segundas derivadas relativas. Para obtener componentes inerciales se multiplica el vector completo por <span class="math inline">\(R\)</span>.</p>
 <p><span id="fispm-t1-c20-e0014"></span></p>
-<p><strong>Ejercicio FPM-I-20-E14.</strong> Un punto permanece en <span class="math inline">\(\mathbf r=a\mathbf e_x\)</span> sobre una plataforma con origen fijo y <span class="math inline">\(\Omega(t)\)</span> alrededor de <span class="math inline">\(z\)</span>. Encuentra la fuerza física necesaria para mantenerlo allí.</p>
-<p><strong>Solución.</strong> Como <span class="math inline">\(\dot{\mathbf r}=\ddot{\mathbf r}=0\)</span>, P11 da <span class="math inline">\(\mathbf F_R=m[-\Omega^2a\mathbf e_x+\dot\Omega a\mathbf e_y]\)</span>. Una componente centrípeta sostiene el giro y una tangencial cambia su rapidez. En P12 esas fuerzas se equilibran con los términos centrífugo y de Euler. Mantener al punto fijo en coordenadas móviles no implica que su fuerza física total sea cero.</p>
+<p><strong>Ejercicio 20.14.</strong> Un punto permanece en <span class="math inline">\(\mathbf r=a\mathbf e_x\)</span> sobre una plataforma con origen fijo y <span class="math inline">\(\Omega(t)\)</span> alrededor de <span class="math inline">\(z\)</span>. Encuentra la fuerza física necesaria para mantenerlo allí.</p>
+<p><strong>Solución.</strong> Como <span class="math inline">\(\dot{\mathbf r}=\ddot{\mathbf r}=0\)</span>, proposición 20.11 da <span class="math inline">\(\mathbf F_R=m[-\Omega^2a\mathbf e_x+\dot\Omega a\mathbf e_y]\)</span>. Una componente centrípeta sostiene el giro y una tangencial cambia su rapidez. En proposición 20.12 esas fuerzas se equilibran con los términos centrífugo y de Euler. Mantener al punto fijo en coordenadas móviles no implica que su fuerza física total sea cero.</p>
+<p><span id="cuatro-términos-y-sus-funciones"></span></p>
 <p><span id="fispm-t1-c20-s08"></span></p>
 <p><span id="fpm-i-20-s08"></span></p>
 </section>
 </section>
-<section id="cuatro-términos-y-sus-funciones" class="level2">
-<h2 class="anchored" data-anchor-id="cuatro-términos-y-sus-funciones">§8. Cuatro términos y sus funciones</h2>
+<section id="fispm-c20-cuatro-tuxe9rminos-y-sus-funciones" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c20-cuatro-tuxe9rminos-y-sus-funciones">8. Cuatro términos y sus funciones</h2>
 <p>La ecuación completa permite clasificar los efectos por los datos del marco que los originan. Esta clasificación ayuda a calcular, pero la condición que los distingue de las fuerzas físicas es su procedencia: se introducen al expresar la aceleración en un marco móvil. Las fuerzas del piso, de una cuerda o de un resorte siguen siendo interacciones entre cuerpos.</p>
+<p><span id="fig:I-20-R01"></span></p>
+<figure id="fig-fpm-v04-i-20-r01" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/v04/I-20-R01.svg" class="lightbox" data-gallery="fpm-v04-c20"><img src="../../assets/books/fispm/v04/I-20-R01.svg" alt="La dirección de Coriolis depende de la velocidad relativa. Diagrama del capítulo 20; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="340" height="278" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 20.3.</strong> Con <span class="math inline">\(\Omega\)</span> saliente y velocidad relativa hacia la derecha, <span class="math inline">\(-2m\Omega\times v^\prime\)</span> apunta hacia abajo. La velocidad discontinua es un dato cinemático; la flecha continua representa el término de fuerza en el marco que gira. Véase §<a href="#fispm-c20-cuatro-tuxe9rminos-y-sus-funciones">8</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c20-d0006"></span></p>
-<p><strong>Definición FPM-I-20-D06 — Términos inerciales del marco móvil.</strong> En la ecuación relativa llamaremos</p>
+<p><strong>Definición 20.6 — Términos inerciales del marco móvil.</strong> En la ecuación relativa llamaremos</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
 <thead>
 <tr class="header">
-<th>Término</th>
-<th>Expresión en componentes móviles</th>
+<th style="text-align: left;">Término</th>
+<th style="text-align: left;">Expresión en componentes móviles</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Traslación</td>
-<td><span class="math inline">\(\mathbf F_{\mathrm{tr}}=-m\mathbf A\)</span></td>
+<td style="text-align: left;">Traslación</td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf F_{\mathrm{tr}}=-m\mathbf A\)</span></td>
 </tr>
 <tr class="even">
-<td>Coriolis</td>
-<td><span class="math inline">\(\mathbf F_{\mathrm C}=-2m\boldsymbol\Omega\times\dot{\mathbf r}\)</span></td>
+<td style="text-align: left;">Coriolis</td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf F_{\mathrm C}=-2m\boldsymbol\Omega\times\dot{\mathbf r}\)</span></td>
 </tr>
 <tr class="odd">
-<td>Euler</td>
-<td><span class="math inline">\(\mathbf F_{\mathrm E}=-m\dot{\boldsymbol\Omega}\times\mathbf r\)</span></td>
+<td style="text-align: left;">Euler</td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf F_{\mathrm E}=-m\dot{\boldsymbol\Omega}\times\mathbf r\)</span></td>
 </tr>
 <tr class="even">
-<td>Centrífugo</td>
-<td><span class="math inline">\(\mathbf F_{\mathrm{cf}}=-m\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r)\)</span></td>
+<td style="text-align: left;">Centrífugo</td>
+<td style="text-align: left;"><span class="math inline">\(\mathbf F_{\mathrm{cf}}=-m\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r)\)</span></td>
 </tr>
 </tbody>
 </table>
 <p>Estos términos se llaman también fuerzas inerciales o ficticias. Actúan como términos de fuerza en la ecuación relativa; no asignan por sí mismos un segundo cuerpo con el que formar un par de acción y reacción. Si un motor hace girar una guía, sus interacciones y las reacciones transmitidas por ella deben calcularse además.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p><span id="fispm-t1-c20-p0013"></span></p>
-<p><strong>Proposición FPM-I-20-P13 — Coriolis no aporta potencia relativa.</strong> Para cualquier <span class="math inline">\(\boldsymbol\Omega(t)\)</span> y velocidad relativa,</p>
-<p><span class="math display">\[
-\mathbf F_{\mathrm C}\cdot\dot{\mathbf r}=0.
-\]</span></p>
+<p><strong>Proposición 20.13 — Coriolis no aporta potencia relativa.</strong> Para cualquier <span class="math inline">\(\boldsymbol\Omega(t)\)</span> y velocidad relativa,</p>
+<p><span class="math display">\[\mathbf F_{\mathrm C}\cdot\dot{\mathbf r}=0.\]</span></p>
 <p><strong>Demostración.</strong> El vector <span class="math inline">\(\boldsymbol\Omega\times\dot{\mathbf r}\)</span> es perpendicular a <span class="math inline">\(\dot{\mathbf r}\)</span>. Multiplicar por el coeficiente <span class="math inline">\(-2m\)</span> conserva esa perpendicularidad. <span class="math inline">\(\square\)</span></p>
 <p>Esta propiedad no implica que la rapidez relativa sea constante en toda situación. Las otras fuerzas pueden aportar potencia, y una trayectoria desviada puede visitar regiones diferentes del potencial. Tampoco equivale a una afirmación sobre trabajo medido en el marco inercial: allí la velocidad que se usa en el producto escalar es otra.</p>
 <p><span id="fispm-t1-c20-p0014"></span></p>
-<p><strong>Proposición FPM-I-20-P14 — Geometría y potencial centrífugos.</strong> Para <span class="math inline">\(\boldsymbol\Omega\ne0\)</span>, sea <span class="math inline">\(\mathbf r_\perp=\mathbf r-\boldsymbol\Omega(\boldsymbol\Omega\cdot\mathbf r)/|\boldsymbol\Omega|^2\)</span> la componente perpendicular al eje instantáneo. Entonces</p>
-<p><span class="math display">\[
-\mathbf F_{\mathrm{cf}}=m|\boldsymbol\Omega|^2\mathbf r_\perp
-=-\nabla U_{\mathrm{cf}},\qquad
-U_{\mathrm{cf}}=-\frac m2|\boldsymbol\Omega\times\mathbf r|^2.
-\]</span></p>
+<p><strong>Proposición 20.14 — Geometría y potencial centrífugos.</strong> Para <span class="math inline">\(\boldsymbol\Omega\ne0\)</span>, sea <span class="math inline">\(\mathbf r_\perp=\mathbf r-\boldsymbol\Omega(\boldsymbol\Omega\cdot\mathbf r)/|\boldsymbol\Omega|^2\)</span> la componente perpendicular al eje instantáneo. Entonces</p>
+<p><span class="math display">\[\mathbf F_{\mathrm{cf}}=m|\boldsymbol\Omega|^2\mathbf r_\perp =-\nabla U_{\mathrm{cf}},\qquad U_{\mathrm{cf}}=-\frac m2|\boldsymbol\Omega\times\mathbf r|^2.\]</span></p>
 <p>El potencial espacial indicado también vale para <span class="math inline">\(\boldsymbol\Omega=0\)</span>, cuando ambos lados son cero.</p>
 <p><strong>Demostración.</strong> La identidad del producto vectorial doble da <span class="math inline">\(\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r)=\boldsymbol\Omega(\boldsymbol\Omega\cdot\mathbf r)-|\boldsymbol\Omega|^2\mathbf r\)</span>. Cambiar el signo produce la expresión perpendicular. Además <span class="math inline">\(|\boldsymbol\Omega\times\mathbf r|^2=|\boldsymbol\Omega|^2|\mathbf r|^2-(\boldsymbol\Omega\cdot\mathbf r)^2\)</span>. Su gradiente respecto de <span class="math inline">\(\mathbf r\)</span> es <span class="math inline">\(2[|\boldsymbol\Omega|^2\mathbf r-(\boldsymbol\Omega\cdot\mathbf r)\boldsymbol\Omega]\)</span>; multiplicar por <span class="math inline">\(m/2\)</span> prueba la igualdad de fuerzas. <span class="math inline">\(\square\)</span></p>
 <p>El signo negativo del potencial refleja que la fuerza centrífuga apunta hacia radios perpendiculares mayores. Si <span class="math inline">\(\boldsymbol\Omega\)</span> cambia, ese potencial también cambia con el tiempo, y aparece además el término de Euler. Para conocer una energía conservada habrá que examinar todos esos términos, como haremos en §11.</p>
 <p><span id="fispm-t1-c20-mp0008"></span></p>
-<p><strong>Principio metodológico FPM-I-20-MP08.</strong> Distingue términos de ecuación y agentes físicos. En un balance de potencia usa la velocidad del marco correspondiente y revisa cada contribución por separado.</p>
-<section id="ejercicios-7" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-7">Ejercicios</h3>
+<p><strong>Principio metodológico 20.8.</strong> Distingue términos de ecuación y agentes físicos. En un balance de potencia usa la velocidad del marco correspondiente y revisa cada contribución por separado.</p>
+<p><span id="ejercicios-7"></span></p>
+<section id="fispm-c20-ejercicios-7" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c20-ejercicios-7">Ejercicios</h3>
 <p><span id="fispm-t1-c20-e0015"></span></p>
-<p><strong>Ejercicio FPM-I-20-E15.</strong> Para <span class="math inline">\(\boldsymbol\Omega=\Omega\mathbf e_z\)</span>, una partícula se mueve radialmente hacia afuera con velocidad relativa <span class="math inline">\(u\mathbf e_x\)</span> desde <span class="math inline">\(a\mathbf e_x\)</span>. Encuentra los términos de Coriolis y centrífugo.</p>
+<p><strong>Ejercicio 20.15.</strong> Para <span class="math inline">\(\boldsymbol\Omega=\Omega\mathbf e_z\)</span>, una partícula se mueve radialmente hacia afuera con velocidad relativa <span class="math inline">\(u\mathbf e_x\)</span> desde <span class="math inline">\(a\mathbf e_x\)</span>. Encuentra los términos de Coriolis y centrífugo.</p>
 <p><strong>Solución.</strong> Coriolis es <span class="math inline">\(-2m\Omega u\mathbf e_y\)</span> y el centrífugo es <span class="math inline">\(m\Omega^2a\mathbf e_x\)</span>. Para <span class="math inline">\(\Omega,u&gt;0\)</span>, la primera contribución desvía hacia el lado negativo de <span class="math inline">\(y\)</span>; la segunda apunta radialmente hacia afuera. La potencia de Coriolis es cero. La potencia centrífuga en ese instante es <span class="math inline">\(m\Omega^2au\)</span>.</p>
 <p><span id="fispm-t1-c20-e0016"></span></p>
-<p><strong>Ejercicio FPM-I-20-E16.</strong> Para la misma rotación de eje fijo, calcula la integral del término de Euler sobre una circunferencia de radio <span class="math inline">\(a\)</span> recorrida positivamente en el plano perpendicular, a tiempo fijo. Decide si puede proceder de un potencial escalar espacial monovaluado cuando <span class="math inline">\(\dot\Omega\ne0\)</span>.</p>
+<p><strong>Ejercicio 20.16.</strong> Para la misma rotación de eje fijo, calcula la integral del término de Euler sobre una circunferencia de radio <span class="math inline">\(a\)</span> recorrida positivamente en el plano perpendicular, a tiempo fijo. Decide si puede proceder de un potencial escalar espacial monovaluado cuando <span class="math inline">\(\dot\Omega\ne0\)</span>.</p>
 <p><strong>Solución.</strong> Con <span class="math inline">\(\mathbf r=a(\cos\varphi,\sin\varphi,0)\)</span>, el término de Euler es <span class="math inline">\(-m\dot\Omega a\mathbf e_\varphi\)</span> y <span class="math inline">\(d\mathbf r=a\mathbf e_\varphi d\varphi\)</span>. La circulación es <span class="math inline">\(-m\dot\Omega a^2\int_0^{2\pi}d\varphi=-2\pi m\dot\Omega a^2\)</span>. Un gradiente de un potencial monovaluado tendría circulación nula en esa curva cerrada. Si <span class="math inline">\(\dot\Omega\ne0\)</span>, el resultado excluye esa representación espacial en un dominio que contenga la circunferencia completa.</p>
+<p><span id="una-recta-vista-desde-una-plataforma"></span></p>
 <p><span id="fispm-t1-c20-s09"></span></p>
 <p><span id="fpm-i-20-s09"></span></p>
 </section>
 </section>
-<section id="una-recta-vista-desde-una-plataforma" class="level2">
-<h2 class="anchored" data-anchor-id="una-recta-vista-desde-una-plataforma">§9. Una recta vista desde una plataforma</h2>
+<section id="fispm-c20-una-recta-vista-desde-una-plataforma" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c20-una-recta-vista-desde-una-plataforma">9. Una recta vista desde una plataforma</h2>
 <p>Un ejemplo sin fuerzas permite poner a prueba la ecuación completa. En el marco inercial la trayectoria es una recta. En el marco que gira puede tener una forma complicada, pero conocemos de antemano una manera de obtenerla: transformar esa recta. Esa respuesta sirve para comprobar la ecuación y sus condiciones iniciales al mismo tiempo.</p>
 <p><span id="fispm-t1-c20-p0015"></span></p>
-<p><strong>Proposición FPM-I-20-P15 — Trayectoria libre en una rotación uniforme.</strong> Supongamos origen fijo, <span class="math inline">\(R(0)=I\)</span> y <span class="math inline">\(\boldsymbol\Omega=\Omega\mathbf e_z\)</span> constante. Una partícula libre con posición inicial <span class="math inline">\(\mathbf r_0\)</span> y velocidad inercial <span class="math inline">\(\mathbf v_0\)</span> tiene componentes móviles</p>
-<p><span class="math display">\[
-\mathbf r(t)=R(t)^T(\mathbf r_0+\mathbf v_0t).
-\]</span></p>
+<p><strong>Proposición 20.15 — Trayectoria libre en una rotación uniforme.</strong> Supongamos origen fijo, <span class="math inline">\(R(0)=I\)</span> y <span class="math inline">\(\boldsymbol\Omega=\Omega\mathbf e_z\)</span> constante. Una partícula libre con posición inicial <span class="math inline">\(\mathbf r_0\)</span> y velocidad inercial <span class="math inline">\(\mathbf v_0\)</span> tiene componentes móviles</p>
+<p><span class="math display">\[\mathbf r(t)=R(t)^T(\mathbf r_0+\mathbf v_0t).\]</span></p>
 <p>Su velocidad relativa inicial es <span class="math inline">\(\mathbf u_0=\mathbf v_0-\boldsymbol\Omega\times\mathbf r_0\)</span>.</p>
-<p><strong>Demostración.</strong> La solución inercial de <span class="math inline">\(\ddot{\mathbf x}=0\)</span> con esos datos es <span class="math inline">\(\mathbf x=\mathbf r_0+\mathbf v_0t\)</span>. La transformación inversa <span class="math inline">\(\mathbf r=R^T\mathbf x\)</span> da la fórmula. P09 evaluada al inicio da la velocidad relativa. Como P12 es equivalente a la ecuación inercial, la trayectoria satisface también la ecuación relativa con términos de Coriolis y centrífugo. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> La solución inercial de <span class="math inline">\(\ddot{\mathbf x}=0\)</span> con esos datos es <span class="math inline">\(\mathbf x=\mathbf r_0+\mathbf v_0t\)</span>. La transformación inversa <span class="math inline">\(\mathbf r=R^T\mathbf x\)</span> da la fórmula. Proposición 20.9 evaluada al inicio da la velocidad relativa. Como proposición 20.12 es equivalente a la ecuación inercial, la trayectoria satisface también la ecuación relativa con términos de Coriolis y centrífugo. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c20-p0016"></span></p>
-<p><strong>Proposición FPM-I-20-P16 — Aceleración inicial después de soltar.</strong> Si una partícula libre se libera desde reposo relativo en <span class="math inline">\(\mathbf r_0\)</span>, entonces</p>
-<p><span class="math display">\[
-\ddot{\mathbf r}(0)=-\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r_0).
-\]</span></p>
+<p><strong>Proposición 20.16 — Aceleración inicial después de soltar.</strong> Si una partícula libre se libera desde reposo relativo en <span class="math inline">\(\mathbf r_0\)</span>, entonces</p>
+<p><span class="math display">\[\ddot{\mathbf r}(0)=-\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r_0).\]</span></p>
 <p>Si estaba inicialmente quieta en el marco inercial, entonces</p>
-<p><span class="math display">\[
-\ddot{\mathbf r}(0)=\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r_0).
-\]</span></p>
-<p><strong>Demostración.</strong> En el primer caso <span class="math inline">\(\mathbf u_0=0\)</span>, por lo que P12 con fuerza cero deja solo el término centrífugo. En el segundo, <span class="math inline">\(\mathbf u_0=-\boldsymbol\Omega\times\mathbf r_0\)</span>. Sustituirlo en <span class="math inline">\(\ddot{\mathbf r}=-2\boldsymbol\Omega\times\dot{\mathbf r}-\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r)\)</span> produce dos veces el producto doble menos una vez ese producto, dejando la segunda fórmula. <span class="math inline">\(\square\)</span></p>
+<p><span class="math display">\[\ddot{\mathbf r}(0)=\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r_0).\]</span></p>
+<p><strong>Demostración.</strong> En el primer caso <span class="math inline">\(\mathbf u_0=0\)</span>, por lo que proposición 20.12 con fuerza cero deja solo el término centrífugo. En el segundo, <span class="math inline">\(\mathbf u_0=-\boldsymbol\Omega\times\mathbf r_0\)</span>. Sustituirlo en <span class="math inline">\(\ddot{\mathbf r}=-2\boldsymbol\Omega\times\dot{\mathbf r}-\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r)\)</span> produce dos veces el producto doble menos una vez ese producto, dejando la segunda fórmula. <span class="math inline">\(\square\)</span></p>
 <p>Los dos signos tienen una explicación geométrica. Un punto quieto en el espacio parece describir una circunferencia hacia atrás, con aceleración dirigida al eje. Un punto soltado desde la plataforma comienza con velocidad inercial tangencial; su recta de salida se separa del eje. El término centrífugo solo no representa cualquier trayectoria vista desde una plataforma: también hay que conocer la velocidad relativa que alimenta Coriolis.</p>
 <p><span id="fispm-t1-c20-mp0009"></span></p>
-<p><strong>Principio metodológico FPM-I-20-MP09.</strong> Comprueba la ecuación móvil transformando una solución inercial conocida. Compara los datos iniciales físicos antes de comparar los términos de aceleración.</p>
-<section id="ejercicios-8" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-8">Ejercicios</h3>
+<p><strong>Principio metodológico 20.9.</strong> Comprueba la ecuación móvil transformando una solución inercial conocida. Compara los datos iniciales físicos antes de comparar los términos de aceleración.</p>
+<p><span id="ejercicios-8"></span></p>
+<section id="fispm-c20-ejercicios-8" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c20-ejercicios-8">Ejercicios</h3>
 <p><span id="fispm-t1-c20-e0017"></span></p>
-<p><strong>Ejercicio FPM-I-20-E17.</strong> Una partícula se suelta desde reposo relativo en <span class="math inline">\(a\mathbf e_x\)</span> sobre una plataforma uniforme. Encuentra sus coordenadas móviles y su distancia al eje para <span class="math inline">\(t\geq0\)</span>.</p>
-<p><strong>Solución.</strong> Su velocidad inercial inicial es <span class="math inline">\(\Omega a\mathbf e_y\)</span>. Por P15, <span class="math inline">\(x=a\cos\Omega t+\Omega at\sin\Omega t\)</span> y <span class="math inline">\(y=-a\sin\Omega t+\Omega at\cos\Omega t\)</span>. La norma en el plano coincide con la de la recta inercial: <span class="math inline">\(\rho=a\sqrt{1+\Omega^2t^2}\)</span>. Para <span class="math inline">\(a&gt;0\)</span> crece después del instante inicial, aunque la aceleración física sea cero. Diferenciar al inicio da <span class="math inline">\(\dot x=\dot y=0\)</span> y <span class="math inline">\(\ddot x=\Omega^2a\)</span>, verificando P16.</p>
+<p><strong>Ejercicio 20.17.</strong> Una partícula se suelta desde reposo relativo en <span class="math inline">\(a\mathbf e_x\)</span> sobre una plataforma uniforme. Encuentra sus coordenadas móviles y su distancia al eje para <span class="math inline">\(t\geq0\)</span>.</p>
+<p><strong>Solución.</strong> Su velocidad inercial inicial es <span class="math inline">\(\Omega a\mathbf e_y\)</span>. Por proposición 20.15, <span class="math inline">\(x=a\cos\Omega t+\Omega at\sin\Omega t\)</span> y <span class="math inline">\(y=-a\sin\Omega t+\Omega at\cos\Omega t\)</span>. La norma en el plano coincide con la de la recta inercial: <span class="math inline">\(\rho=a\sqrt{1+\Omega^2t^2}\)</span>. Para <span class="math inline">\(a&gt;0\)</span> crece después del instante inicial, aunque la aceleración física sea cero. Diferenciar al inicio da <span class="math inline">\(\dot x=\dot y=0\)</span> y <span class="math inline">\(\ddot x=\Omega^2a\)</span>, verificando proposición 20.16.</p>
 <p><span id="fispm-t1-c20-e0018"></span></p>
-<p><strong>Ejercicio FPM-I-20-E18.</strong> Una partícula libre se lanza desde el origen con velocidad relativa <span class="math inline">\(u\mathbf e_x\)</span>. Encuentra la trayectoria móvil y su desarrollo hasta orden <span class="math inline">\(t^2\)</span>.</p>
-<p><strong>Solución.</strong> En el origen la velocidad de rotación es cero, así que la velocidad inercial inicial también es <span class="math inline">\(u\mathbf e_x\)</span>. P15 da <span class="math inline">\(x=ut\cos\Omega t\)</span>, <span class="math inline">\(y=-ut\sin\Omega t\)</span>. Por Taylor, <span class="math inline">\(x=ut+O(t^3)\)</span> y <span class="math inline">\(y=-u\Omega t^2+O(t^4)\)</span>. La aceleración transversal inicial es <span class="math inline">\(-2u\Omega\mathbf e_y\)</span>, igual a Coriolis; el término centrífugo inicial es cero porque la posición inicial es el origen.</p>
+<p><strong>Ejercicio 20.18.</strong> Una partícula libre se lanza desde el origen con velocidad relativa <span class="math inline">\(u\mathbf e_x\)</span>. Encuentra la trayectoria móvil y su desarrollo hasta orden <span class="math inline">\(t^2\)</span>.</p>
+<p><strong>Solución.</strong> En el origen la velocidad de rotación es cero, así que la velocidad inercial inicial también es <span class="math inline">\(u\mathbf e_x\)</span>. Proposición 20.15 da <span class="math inline">\(x=ut\cos\Omega t\)</span>, <span class="math inline">\(y=-ut\sin\Omega t\)</span>. Por Taylor, <span class="math inline">\(x=ut+O(t^3)\)</span> y <span class="math inline">\(y=-u\Omega t^2+O(t^4)\)</span>. La aceleración transversal inicial es <span class="math inline">\(-2u\Omega\mathbf e_y\)</span>, igual a Coriolis; el término centrífugo inicial es cero porque la posición inicial es el origen.</p>
+<p><span id="una-guía-que-impone-el-giro"></span></p>
 <p><span id="fispm-t1-c20-s10"></span></p>
 <p><span id="fpm-i-20-s10"></span></p>
 </section>
 </section>
-<section id="una-guía-que-impone-el-giro" class="level2">
-<h2 class="anchored" data-anchor-id="una-guía-que-impone-el-giro">§10. Una guía que impone el giro</h2>
+<section id="fispm-c20-una-guuxeda-que-impone-el-giro" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c20-una-guuxeda-que-impone-el-giro">10. Una guía que impone el giro</h2>
 <p>Si una cuenta se desliza por una varilla radial que gira, la trayectoria física deja de ser libre. La varilla impone que el ángulo de la cuenta acompañe su giro. Aunque la guía sea lisa, debe ejercer una reacción transversal para sostener esa condición. La palabra «sin fricción» elimina la fuerza longitudinal de rozamiento, pero conserva la reacción normal.</p>
 <p><span id="fispm-t1-c20-d0007"></span></p>
-<p><strong>Definición FPM-I-20-D07 — Guía radial lisa de giro prescrito.</strong> Consideramos una cuenta puntual sobre una recta horizontal que pasa por un origen fijo y gira con <span class="math inline">\(\Omega\)</span> constante alrededor de <span class="math inline">\(z\)</span>. La coordenada firmada sobre la guía es <span class="math inline">\(q\)</span>, por lo que sus componentes móviles son <span class="math inline">\(\mathbf r=q\mathbf e_x\)</span>. La guía ejerce una reacción perpendicular a ella; las fuerzas verticales se equilibran y no hay fuerza física longitudinal.</p>
+<p><strong>Definición 20.7 — Guía radial lisa de giro prescrito.</strong> Consideramos una cuenta puntual sobre una recta horizontal que pasa por un origen fijo y gira con <span class="math inline">\(\Omega\)</span> constante alrededor de <span class="math inline">\(z\)</span>. La coordenada firmada sobre la guía es <span class="math inline">\(q\)</span>, por lo que sus componentes móviles son <span class="math inline">\(\mathbf r=q\mathbf e_x\)</span>. La guía ejerce una reacción perpendicular a ella; las fuerzas verticales se equilibran y no hay fuerza física longitudinal.</p>
 <p><span id="fispm-t1-c20-p0017"></span></p>
-<p><strong>Proposición FPM-I-20-P17 — Movimiento longitudinal de la cuenta.</strong> Bajo D07,</p>
-<p><span class="math display">\[
-\ddot q=\Omega^2q.
-\]</span></p>
-<p>Para <span class="math inline">\(\Omega\ne0\)</span>, con <span class="math inline">\(\nu=|\Omega|\)</span>, la solución de datos <span class="math inline">\(q(0)=q_0\)</span>, <span class="math inline">\(\dot q(0)=u_0\)</span> es</p>
-<p><span class="math display">\[
-q(t)=q_0\cosh(\nu t)+\frac{u_0}{\nu}\sinh(\nu t).
-\]</span></p>
-<p><strong>Demostración.</strong> La componente longitudinal de P12 recibe <span class="math inline">\(m\Omega^2q\)</span> del término centrífugo. Coriolis es transversal, y la reacción también, de modo que <span class="math inline">\(m\ddot q=m\Omega^2q\)</span>. Las funciones <span class="math inline">\(\cosh\nu t\)</span> y <span class="math inline">\(\sinh\nu t\)</span> tienen segunda derivada <span class="math inline">\(\nu^2\)</span> veces sí mismas. Evaluar posición y derivada al inicio fija los coeficientes indicados. Para <span class="math inline">\(\Omega=0\)</span>, la solución es <span class="math inline">\(q=q_0+u_0t\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 20.17 — Movimiento longitudinal de la cuenta.</strong> Bajo definición 20.7,</p>
+<p><span class="math display">\[\ddot q=\Omega^2q.\]</span></p>
+<p>Para <span class="math inline">\(\Omega\ne0\)</span>, con <span class="math inline">\(\nu=|\Omega|\)</span>, la solución de datos <span class="math inline">\(q(0)=q_0\)</span>, <span class="math inline">\(\dot q(0)=u_0\)</span> es <span class="math inline">\(q(t)=q_0\cosh(\nu t)+\frac{u_0}{\nu}\sinh(\nu t).\)</span></p>
+<p><strong>Demostración.</strong> La componente longitudinal de la proposición 20.12 recibe <span class="math inline">\(m\Omega^2q\)</span> del término centrífugo. Coriolis es transversal, y la reacción también, de modo que <span class="math inline">\(m\ddot q=m\Omega^2q\)</span>. Las funciones <span class="math inline">\(\cosh\nu t\)</span> y <span class="math inline">\(\sinh\nu t\)</span> tienen segunda derivada <span class="math inline">\(\nu^2\)</span> veces sí mismas. Evaluar posición y derivada al inicio fija los coeficientes indicados. Para <span class="math inline">\(\Omega=0\)</span>, la solución es <span class="math inline">\(q=q_0+u_0t\)</span>. <span class="math inline">\(\square\)</span></p>
 <p>En una varilla de longitud finita, la fórmula vale hasta alcanzar un extremo o hasta que cambie alguna condición del vínculo. En una semirrecta también hay que especificar qué ocurre al llegar a <span class="math inline">\(q=0\)</span>. La solución firmada de la recta completa evita introducir inadvertidamente una continuación a través de un tope físico.</p>
 <p><span id="fispm-t1-c20-p0018"></span></p>
-<p><strong>Proposición FPM-I-20-P18 — Reacción y potencia de la guía móvil.</strong> En D07, la reacción horizontal es <span class="math inline">\(N_y=2m\Omega\dot q\)</span>. Su potencia inercial es</p>
-<p><span class="math display">\[
-\mathcal P=N_y\Omega q=2m\Omega^2q\dot q
-=\frac d{dt}\left[\frac m2(\dot q^2+\Omega^2q^2)\right].
-\]</span></p>
+<p><strong>Proposición 20.18 — Reacción y potencia de la guía móvil.</strong> En definición 20.7, la reacción horizontal es <span class="math inline">\(N_y=2m\Omega\dot q\)</span>. Su potencia inercial es</p>
+<p><span class="math display">\[\mathcal P=N_y\Omega q=2m\Omega^2q\dot q =\frac d{dt}\left[\frac m2(\dot q^2+\Omega^2q^2)\right].\]</span></p>
 <p>Su potencia relativa es cero.</p>
-<p><strong>Demostración.</strong> La componente transversal de P11 para <span class="math inline">\(\mathbf r=q\mathbf e_x\)</span> es <span class="math inline">\(2\Omega\dot q\)</span>, que requiere la reacción indicada. La velocidad física expresada en ejes móviles es <span class="math inline">\(\dot q\mathbf e_x+\Omega q\mathbf e_y\)</span>, por lo que el producto escalar con <span class="math inline">\(N_y\mathbf e_y\)</span> da la potencia inercial. Derivar la energía cinética indicada y usar P17 da <span class="math inline">\(m\dot q\Omega^2q+m\Omega^2q\dot q\)</span>, igual a esa potencia. En el marco móvil la velocidad es longitudinal, perpendicular a la reacción. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> La componente transversal de la proposición 20.11 para <span class="math inline">\(\mathbf r=q\mathbf e_x\)</span> es <span class="math inline">\(2\Omega\dot q\)</span>, que requiere la reacción indicada. La velocidad física expresada en ejes móviles es <span class="math inline">\(\dot q\mathbf e_x+\Omega q\mathbf e_y\)</span>, por lo que el producto escalar con <span class="math inline">\(N_y\mathbf e_y\)</span> da la potencia inercial. Derivar la energía cinética indicada y usar proposición 20.17 da <span class="math inline">\(m\dot q\Omega^2q+m\Omega^2q\dot q\)</span>, igual a esa potencia. En el marco móvil la velocidad es longitudinal, perpendicular a la reacción. <span class="math inline">\(\square\)</span></p>
 <p>El motor que mantiene el giro puede suministrar energía a la cuenta mediante la guía. Un vínculo ideal que no hace trabajo sobre desplazamientos relativos permitidos puede hacer trabajo en el marco inercial cuando su soporte se mueve. La diferencia se ve sin invocar todavía principios variacionales: basta con usar las dos velocidades en el producto escalar.</p>
 <p><span id="fispm-t1-c20-mp0010"></span></p>
-<p><strong>Principio metodológico FPM-I-20-MP10.</strong> Conserva las reacciones necesarias para imponer el vínculo. Comprueba su potencia con la velocidad física, además de su potencia relativa.</p>
-<section id="ejercicios-9" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-9">Ejercicios</h3>
+<p><strong>Principio metodológico 20.10.</strong> Conserva las reacciones necesarias para imponer el vínculo. Comprueba su potencia con la velocidad física, además de su potencia relativa.</p>
+<p><span id="ejercicios-9"></span></p>
+<section id="fispm-c20-ejercicios-9" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c20-ejercicios-9">Ejercicios</h3>
 <p><span id="fispm-t1-c20-e0019"></span></p>
-<p><strong>Ejercicio FPM-I-20-E19.</strong> Para <span class="math inline">\(q_0&gt;0\)</span>, <span class="math inline">\(u_0=0\)</span> y <span class="math inline">\(\Omega\ne0\)</span>, verifica que la energía relativa <span class="math inline">\(m\dot q^2/2-m\Omega^2q^2/2\)</span> es constante, y calcula la energía cinética inercial.</p>
-<p><strong>Solución.</strong> P17 da <span class="math inline">\(q=q_0\cosh\nu t\)</span> y <span class="math inline">\(\dot q=q_0\nu\sinh\nu t\)</span>. La energía relativa es <span class="math inline">\((m\nu^2q_0^2/2)(\sinh^2\nu t-\cosh^2\nu t)=-m\nu^2q_0^2/2\)</span>. La energía cinética inercial es <span class="math inline">\((m\nu^2q_0^2/2)(\sinh^2\nu t+\cosh^2\nu t)=(m\nu^2q_0^2/2)\cosh(2\nu t)\)</span>. Su crecimiento procede de la potencia de la guía, compatible con la conservación de la combinación relativa.</p>
-<p><span id="fispm-t1-c20-e0020"></span></p>
-<p><strong>Ejercicio FPM-I-20-E20.</strong> Añade a la guía radial un resorte ideal de fuerza longitudinal <span class="math inline">\(-kq\)</span>, con <span class="math inline">\(k&gt;0\)</span>. Determina cuándo el origen tiene movimiento longitudinal oscilatorio, lineal o exponencial.</p>
+<p><strong>Ejercicio 20.19.</strong> Para <span class="math inline">\(q_0&gt;0\)</span>, <span class="math inline">\(u_0=0\)</span> y <span class="math inline">\(\Omega\ne0\)</span>, verifica que la energía relativa <span class="math inline">\(m\dot q^2/2-m\Omega^2q^2/2\)</span> es constante, y calcula la energía cinética inercial.</p>
+<p><strong>Solución.</strong> proposición 20.17 da <span class="math inline">\(q=q_0\cosh\nu t\)</span> y <span class="math inline">\(\dot q=q_0\nu\sinh\nu t\)</span>. La energía relativa es <span class="math inline">\((m\nu^2q_0^2/2)(\sinh^2\nu t-\cosh^2\nu t)=-m\nu^2q_0^2/2\)</span>. La energía cinética inercial es <span class="math inline">\((m\nu^2q_0^2/2)(\sinh^2\nu t+\cosh^2\nu t)=(m\nu^2q_0^2/2)\cosh(2\nu t)\)</span>. Su crecimiento procede de la potencia de la guía, compatible con la conservación de la combinación relativa.</p>
+<p><strong>Ejercicio 20.20.</strong> Añade a la guía radial un resorte ideal de fuerza longitudinal <span class="math inline">\(-kq\)</span>, con <span class="math inline">\(k&gt;0\)</span>. Determina cuándo el origen tiene movimiento longitudinal oscilatorio, lineal o exponencial.</p>
 <p><strong>Solución.</strong> La ecuación se vuelve <span class="math inline">\(\ddot q+(k/m-\Omega^2)q=0\)</span>. Si <span class="math inline">\(k/m&gt;\Omega^2\)</span>, las soluciones son combinaciones de seno y coseno con frecuencia <span class="math inline">\(\sqrt{k/m-\Omega^2}\)</span>. Si hay igualdad, son <span class="math inline">\(q=q_0+u_0t\)</span>. Si <span class="math inline">\(k/m&lt;\Omega^2\)</span>, son combinaciones exponenciales con tasas <span class="math inline">\(\pm\sqrt{\Omega^2-k/m}\)</span>. Esta clasificación corresponde al grado longitudinal impuesto por la guía; retirar la guía cambia la ecuación y exige conservar los términos transversales.</p>
+<p><span id="equilibrio-y-energía-en-una-rotación-uniforme"></span></p>
 <p><span id="fispm-t1-c20-s11"></span></p>
 <p><span id="fpm-i-20-s11"></span></p>
 </section>
 </section>
-<section id="equilibrio-y-energía-en-una-rotación-uniforme" class="level2">
-<h2 class="anchored" data-anchor-id="equilibrio-y-energía-en-una-rotación-uniforme">§11. Equilibrio y energía en una rotación uniforme</h2>
-<p>Un cuerpo quieto sobre una plataforma tiene aceleración relativa cero. La fuerza física que necesita puede ser distinta de cero, como mostró E14. Cuando la rotación es uniforme y las fuerzas físicas conservativas son estacionarias en la plataforma, el potencial centrífugo permite formular tanto la condición de equilibrio como un balance de energía.</p>
+<section id="fispm-c20-equilibrio-y-energuxeda-en-una-rotaciuxf3n-uniforme" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c20-equilibrio-y-energuxeda-en-una-rotaciuxf3n-uniforme">11. Equilibrio y energía en una rotación uniforme</h2>
+<p>Un cuerpo quieto sobre una plataforma tiene aceleración relativa cero. La fuerza física que necesita puede ser distinta de cero, como mostró ejercicio 20.14. Cuando la rotación es uniforme y las fuerzas físicas conservativas son estacionarias en la plataforma, el potencial centrífugo permite formular tanto la condición de equilibrio como un balance de energía.</p>
+<p><span id="fig:I-20-N03"></span></p>
+<figure id="fig-fpm-v04-i-20-n03" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/v04/I-20-N03.svg" class="lightbox" data-gallery="fpm-v04-c20"><img src="../../assets/books/fispm/v04/I-20-N03.svg" alt="Potencial centrífugo. Diagrama del capítulo 20; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="412" height="240" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 20.4.</strong> Para rotación uniforme, el término centrífugo radial deriva de <span class="math inline">\(U_c=-m\Omega^2r^2/2\)</span>. Su pendiente negativa produce una contribución dirigida hacia afuera. Véase §<a href="#fispm-c20-equilibrio-y-energuxeda-en-una-rotaciuxf3n-uniforme">11</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c20-p0019"></span></p>
-<p><strong>Proposición FPM-I-20-P19 — Condición de equilibrio relativo.</strong> Supongamos origen fijo, <span class="math inline">\(\boldsymbol\Omega\)</span> constante y fuerza física en componentes móviles <span class="math inline">\(-\nabla U(\mathbf r)\)</span>, sin vínculos adicionales. Definamos</p>
-<p><span class="math display">\[
-U_{\mathrm{ef}}(\mathbf r)=U(\mathbf r)-\frac m2|\boldsymbol\Omega\times\mathbf r|^2.
-\]</span></p>
+<p><strong>Proposición 20.19 — Condición de equilibrio relativo.</strong> Supongamos origen fijo, <span class="math inline">\(\boldsymbol\Omega\)</span> constante y fuerza física en componentes móviles <span class="math inline">\(-\nabla U(\mathbf r)\)</span>, sin vínculos adicionales. Definamos</p>
+<p><span class="math display">\[U_{\mathrm{ef}}(\mathbf r)=U(\mathbf r)-\frac m2|\boldsymbol\Omega\times\mathbf r|^2.\]</span></p>
 <p>Una posición constante <span class="math inline">\(\mathbf r_*\)</span> es solución si y solo si <span class="math inline">\(\nabla U_{\mathrm{ef}}(\mathbf r_*)=0\)</span>.</p>
-<p><strong>Demostración.</strong> En una posición constante se anulan velocidad y aceleración relativas. Los términos de traslación y Euler son cero por hipótesis, y Coriolis se anula con la velocidad. P14 y P12 dejan <span class="math inline">\(0=-\nabla U_{\mathrm{ef}}(\mathbf r_*)\)</span>. Recíprocamente, si ese gradiente es cero, la trayectoria constante satisface todos los términos de la ecuación. <span class="math inline">\(\square\)</span></p>
-<p>Si hay vínculos, la reacción puede equilibrar componentes del gradiente que no se anulan. La condición de P19 debe entonces proyectarse sobre las direcciones permitidas, como hicimos con la guía radial. Por otra parte, la condición de equilibrio no decide por sí sola la estabilidad: una perturbación con velocidad relativa activa Coriolis.</p>
+<p><strong>Demostración.</strong> En una posición constante se anulan velocidad y aceleración relativas. Los términos de traslación y Euler son cero por hipótesis, y Coriolis se anula con la velocidad. Proposición 20.14 y proposición 20.12 dejan <span class="math inline">\(0=-\nabla U_{\mathrm{ef}}(\mathbf r_*)\)</span>. Recíprocamente, si ese gradiente es cero, la trayectoria constante satisface todos los términos de la ecuación. <span class="math inline">\(\square\)</span></p>
+<p>Si hay vínculos, la reacción puede equilibrar componentes del gradiente que no se anulan. La condición de la proposición 20.19 debe entonces proyectarse sobre las direcciones permitidas, como hicimos con la guía radial. Por otra parte, la condición de equilibrio no decide por sí sola la estabilidad: una perturbación con velocidad relativa activa Coriolis.</p>
 <p><span id="fispm-t1-c20-p0020"></span></p>
-<p><strong>Proposición FPM-I-20-P20 — Energía relativa y alcance temporal.</strong> Para origen fijo y fuerza física <span class="math inline">\(-\nabla U(\mathbf r,t)\)</span>, permitiendo <span class="math inline">\(\boldsymbol\Omega(t)\)</span>, sea</p>
-<p><span class="math display">\[
-\mathcal E_R=\frac m2|\dot{\mathbf r}|^2+U(\mathbf r,t)
--\frac m2|\boldsymbol\Omega\times\mathbf r|^2.
-\]</span></p>
+<p><strong>Proposición 20.20 — Energía relativa y alcance temporal.</strong> Para origen fijo y fuerza física <span class="math inline">\(-\nabla U(\mathbf r,t)\)</span>, permitiendo <span class="math inline">\(\boldsymbol\Omega(t)\)</span>, sea</p>
+<p><span class="math display">\[\mathcal E_R=\frac m2|\dot{\mathbf r}|^2+U(\mathbf r,t) -\frac m2|\boldsymbol\Omega\times\mathbf r|^2.\]</span></p>
 <p>Entonces</p>
-<p><span class="math display">\[
-\dot{\mathcal E}_R=\partial_tU
--m(\dot{\boldsymbol\Omega}\times\mathbf r)\cdot\dot{\mathbf r}
--m(\boldsymbol\Omega\times\mathbf r)\cdot(\dot{\boldsymbol\Omega}\times\mathbf r).
-\]</span></p>
+<p><span class="math display">\[\dot{\mathcal E}_R=\partial_tU -m(\dot{\boldsymbol\Omega}\times\mathbf r)\cdot\dot{\mathbf r} -m(\boldsymbol\Omega\times\mathbf r)\cdot(\dot{\boldsymbol\Omega}\times\mathbf r).\]</span></p>
 <p>En particular, <span class="math inline">\(\mathcal E_R\)</span> es constante si <span class="math inline">\(U\)</span> es estacionario y <span class="math inline">\(\boldsymbol\Omega\)</span> constante.</p>
-<p><strong>Demostración.</strong> Multiplicar P12 por <span class="math inline">\(\dot{\mathbf r}\)</span> elimina Coriolis por P13. El trabajo de la fuerza conservativa se cancela con la parte espacial de <span class="math inline">\(\dot U\)</span>, y el centrífugo con la parte espacial de la derivada de su potencial. Permanecen <span class="math inline">\(\partial_tU\)</span>, la potencia del término de Euler y la derivada temporal explícita del potencial centrífugo. Esta última es <span class="math inline">\(-m(\boldsymbol\Omega\times\mathbf r)\cdot(\dot{\boldsymbol\Omega}\times\mathbf r)\)</span>, que da la fórmula. <span class="math inline">\(\square\)</span></p>
-<p>Un mínimo estricto del potencial efectivo puede servir para controlar perturbaciones usando esta energía, bajo las hipótesis adecuadas del capítulo I13. Cuando el potencial no tiene un mínimo, el balance por sí solo no decide toda la estabilidad del sistema con términos de velocidad. E20 tiene un vínculo que deja una sola coordenada; su clasificación no se debe trasladar sin más a un oscilador libre en dos dimensiones.</p>
+<p><strong>Demostración.</strong> Multiplicar proposición 20.12 por <span class="math inline">\(\dot{\mathbf r}\)</span> elimina Coriolis por la proposición 20.13. El trabajo de la fuerza conservativa se cancela con la parte espacial de <span class="math inline">\(\dot U\)</span>, y el centrífugo con la parte espacial de la derivada de su potencial. Permanecen <span class="math inline">\(\partial_tU\)</span>, la potencia del término de Euler y la derivada temporal explícita del potencial centrífugo. Esta última es <span class="math inline">\(-m(\boldsymbol\Omega\times\mathbf r)\cdot(\dot{\boldsymbol\Omega}\times\mathbf r)\)</span>, que da la fórmula. <span class="math inline">\(\square\)</span></p>
+<p>Un mínimo estricto del potencial efectivo puede servir para controlar perturbaciones usando esta energía, bajo las hipótesis adecuadas del capítulo capítulo 13. Cuando el potencial no tiene un mínimo, el balance por sí solo no decide toda la estabilidad del sistema con términos de velocidad. Ejercicio 20.20 tiene un vínculo que deja una sola coordenada; su clasificación no se debe trasladar sin más a un oscilador libre en dos dimensiones.</p>
 <p><span id="fispm-t1-c20-mp0011"></span></p>
-<p><strong>Principio metodológico FPM-I-20-MP11.</strong> Separa equilibrio, conservación de energía y estabilidad. Cada conclusión usa hipótesis distintas; una fuerza dependiente de velocidad puede intervenir en la dinámica aunque su potencia sea cero.</p>
-<section id="ejercicios-10" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-10">Ejercicios</h3>
+<p><strong>Principio metodológico 20.11.</strong> Separa equilibrio, conservación de energía y estabilidad. Cada conclusión usa hipótesis distintas; una fuerza dependiente de velocidad puede intervenir en la dinámica aunque su potencia sea cero.</p>
+<p><span id="ejercicios-10"></span></p>
+<section id="fispm-c20-ejercicios-10" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c20-ejercicios-10">Ejercicios</h3>
 <p><span id="fispm-t1-c20-e0021"></span></p>
-<p><strong>Ejercicio FPM-I-20-E21.</strong> Un resorte isotrópico plano ejerce <span class="math inline">\(-k\mathbf r\)</span>, con <span class="math inline">\(k&gt;0\)</span>, sobre una masa sin guía. El origen es fijo y el marco gira uniformemente. Encuentra los equilibrios y decide si <span class="math inline">\(k&lt;m\Omega^2\)</span> implica una trayectoria física exponencial.</p>
+<p><strong>Ejercicio 20.21.</strong> Un resorte isotrópico plano ejerce <span class="math inline">\(-k\mathbf r\)</span>, con <span class="math inline">\(k&gt;0\)</span>, sobre una masa sin guía. El origen es fijo y el marco gira uniformemente. Encuentra los equilibrios y decide si <span class="math inline">\(k&lt;m\Omega^2\)</span> implica una trayectoria física exponencial.</p>
 <p><strong>Solución.</strong> En el plano, <span class="math inline">\(U_{\mathrm{ef}}=(k-m\Omega^2)|\mathbf r|^2/2\)</span>. Si <span class="math inline">\(k\ne m\Omega^2\)</span>, el único equilibrio relativo es el origen. Si hay igualdad, cualquier posición constante es solución: físicamente representa un giro circular con la frecuencia natural del resorte. Para decidir crecimiento, volvemos al marco inercial: <span class="math inline">\(m\ddot{\mathbf x}=-k\mathbf x\)</span>, cuyas soluciones son senos y cosenos con frecuencia <span class="math inline">\(\sqrt{k/m}\)</span>. Como <span class="math inline">\(R\)</span> conserva normas, las posiciones móviles también están acotadas para datos finitos. El potencial efectivo negativo cuando <span class="math inline">\(k&lt;m\Omega^2\)</span> no demuestra inestabilidad; omitir Coriolis produciría una ecuación diferente y una conclusión falsa.</p>
 <p><span id="fispm-t1-c20-e0022"></span></p>
-<p><strong>Ejercicio FPM-I-20-E22.</strong> Una partícula se mueve conservativamente en una rotación uniforme con <span class="math inline">\(\mathcal E_R=C\)</span>. Determina qué regiones son inaccesibles y qué información adicional hace falta para obtener la trayectoria.</p>
+<p><strong>Ejercicio 20.22.</strong> Una partícula se mueve conservativamente en una rotación uniforme con <span class="math inline">\(\mathcal E_R=C\)</span>. Determina qué regiones son inaccesibles y qué información adicional hace falta para obtener la trayectoria.</p>
 <p><strong>Solución.</strong> La identidad <span class="math inline">\(m|\dot{\mathbf r}|^2/2=C-U_{\mathrm{ef}}\)</span> exige <span class="math inline">\(U_{\mathrm{ef}}\leq C\)</span> a lo largo del movimiento. Una región con <span class="math inline">\(U_{\mathrm{ef}}&gt;C\)</span> no puede visitarse. En varios grados de libertad esa identidad fija una rapidez posible, pero no su dirección ni el efecto de Coriolis. Se necesitan la ecuación vectorial y datos completos de posición y velocidad. La región permitida por la energía puede contener puntos que una trayectoria particular nunca alcance.</p>
+<p><span id="un-laboratorio-que-gira-con-la-tierra"></span></p>
 <p><span id="fispm-t1-c20-s12"></span></p>
 <p><span id="fpm-i-20-s12"></span></p>
 </section>
 </section>
-<section id="un-laboratorio-que-gira-con-la-tierra" class="level2">
-<h2 class="anchored" data-anchor-id="un-laboratorio-que-gira-con-la-tierra">§12. Un laboratorio que gira con la Tierra</h2>
+<section id="fispm-c20-un-laboratorio-que-gira-con-la-tierra" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c20-un-laboratorio-que-gira-con-la-tierra">12. Un laboratorio que gira con la Tierra</h2>
 <p>En una experiencia terrestre, el movimiento de los ejes suele ser pequeño durante cada segundo y, sin embargo, acumular efectos medibles. Para fijar signos usemos un marco local con <span class="math inline">\(x\)</span> hacia el este, <span class="math inline">\(y\)</span> hacia el norte y <span class="math inline">\(z\)</span> hacia arriba. En un modelo esférico de Tierra, a latitud <span class="math inline">\(\lambda\)</span>, la velocidad angular tiene componentes</p>
-<p><span class="math display">\[
-\boldsymbol\Omega=(0,\Omega\cos\lambda,\Omega\sin\lambda),\qquad \Omega&gt;0.
-\]</span></p>
+<p><span class="math display">\[\boldsymbol\Omega=(0,\Omega\cos\lambda,\Omega\sin\lambda),\qquad \Omega&gt;0.\]</span></p>
 <p>La aceleración gravitatoria efectiva local incluye la aceleración del origen y el término centrífugo constante evaluados en el lugar. Aproximarla por <span class="math inline">\(-g\mathbf e_z\)</span> requiere ignorar sus variaciones sobre el tamaño de la experiencia. La vertical efectiva y la radial esférica difieren a orden <span class="math inline">\(\Omega^2\)</span>; en los cálculos de primer orden en <span class="math inline">\(\Omega\)</span> esa diferencia queda fuera del alcance retenido.</p>
 <p><span id="fispm-t1-c20-p0021"></span></p>
-<p><strong>Proposición FPM-I-20-P21 — Componentes locales de Coriolis.</strong> Para <span class="math inline">\(\dot{\mathbf r}=(u,v,w)\)</span> en esos ejes, la aceleración de Coriolis es</p>
-<p><span class="math display">\[
-\mathbf a_{\mathrm C}=\left(
-2\Omega\sin\lambda\,v-2\Omega\cos\lambda\,w,
--2\Omega\sin\lambda\,u,
-2\Omega\cos\lambda\,u\right).
-\]</span></p>
+<p><strong>Proposición 20.21 — Componentes locales de Coriolis.</strong> Para <span class="math inline">\(\dot{\mathbf r}=(u,v,w)\)</span> en esos ejes, la aceleración de Coriolis es</p>
+<p><span class="math display">\[\mathbf a_{\mathrm C}=\left( 2\Omega\sin\lambda\,v-2\Omega\cos\lambda\,w, -2\Omega\sin\lambda\,u, 2\Omega\cos\lambda\,u\right).\]</span></p>
 <p><strong>Demostración.</strong> Expandir el determinante del producto <span class="math inline">\(\boldsymbol\Omega\times(u,v,w)\)</span> da <span class="math inline">\((\Omega\cos\lambda\,w-\Omega\sin\lambda\,v,\Omega\sin\lambda\,u,-\Omega\cos\lambda\,u)\)</span>. Multiplicar por <span class="math inline">\(-2\)</span> produce las componentes. <span class="math inline">\(\square\)</span></p>
 <p>Para movimiento horizontal, la desviación horizontal es hacia la derecha de la velocidad en el hemisferio norte y hacia la izquierda en el sur. Una velocidad vertical activa la componente horizontal de <span class="math inline">\(\boldsymbol\Omega\)</span>, incluso en el ecuador. La fórmula de la «derecha» necesita, por tanto, declarar que se está hablando de la proyección horizontal de un movimiento horizontal.</p>
 <p><span id="fispm-t1-c20-p0022"></span></p>
-<p><strong>Proposición FPM-I-20-P22 — Desviación al caer, a primer orden.</strong> En gravedad efectiva local uniforme, ignorando resistencia del aire y variaciones espaciales del campo, una partícula soltada desde reposo terrestre a altura <span class="math inline">\(h\)</span> tiene, a primer orden en <span class="math inline">\(\Omega\)</span>,</p>
-<p><span class="math display">\[
-z(t)=h-\frac12gt^2,\qquad
-x(t)=\frac13\Omega\cos\lambda\,gt^3,
-\qquad y(t)=0.
-\]</span></p>
+<p><strong>Proposición 20.22 — Desviación al caer, a primer orden.</strong> En gravedad efectiva local uniforme, ignorando resistencia del aire y variaciones espaciales del campo, una partícula soltada desde reposo terrestre a altura <span class="math inline">\(h\)</span> tiene, a primer orden en <span class="math inline">\(\Omega\)</span>,</p>
+<p><span class="math display">\[z(t)=h-\frac12gt^2,\qquad x(t)=\frac13\Omega\cos\lambda\,gt^3, \qquad y(t)=0.\]</span></p>
 <p>El desplazamiento este al llegar al suelo es <span class="math inline">\(\Omega\cos\lambda\,g(2h/g)^{3/2}/3\)</span>. La aproximación requiere <span class="math inline">\(|\Omega t|\ll1\)</span> durante la caída y una región suficientemente pequeña para el modelo uniforme.</p>
-<p><strong>Demostración.</strong> La trayectoria de orden cero tiene <span class="math inline">\(u=v=0\)</span> y <span class="math inline">\(w=-gt\)</span>. Insertarla en P21 da <span class="math inline">\(\ddot x=2\Omega\cos\lambda\,gt\)</span> y <span class="math inline">\(\ddot y=\ddot z+g=0\)</span> a primer orden. Integrar con velocidad horizontal inicial cero y <span class="math inline">\(x(0)=y(0)=0\)</span> da las fórmulas. Los términos de Coriolis que dependen de las nuevas velocidades horizontales son de orden <span class="math inline">\(\Omega^2\)</span> para tiempos fijos y no se retienen. El tiempo de llegada de orden cero es <span class="math inline">\(t_f=\sqrt{2h/g}\)</span>; sustituirlo da la expresión final. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> La trayectoria de orden cero tiene <span class="math inline">\(u=v=0\)</span> y <span class="math inline">\(w=-gt\)</span>. Insertarla en la proposición 20.21 da <span class="math inline">\(\ddot x=2\Omega\cos\lambda\,gt\)</span> y <span class="math inline">\(\ddot y=\ddot z+g=0\)</span> a primer orden. Integrar con velocidad horizontal inicial cero y <span class="math inline">\(x(0)=y(0)=0\)</span> da las fórmulas. Los términos de Coriolis que dependen de las nuevas velocidades horizontales son de orden <span class="math inline">\(\Omega^2\)</span> para tiempos fijos y no se retienen. El tiempo de llegada de orden cero es <span class="math inline">\(t_f=\sqrt{2h/g}\)</span>; sustituirlo da la expresión final. <span class="math inline">\(\square\)</span></p>
 <p>La masa se cancela. En este modelo todos los cuerpos con la misma preparación comparten la desviación, mientras la resistencia del aire introduciría otras dependencias. La aproximación describe una consecuencia de rotación sobre una caída local; no incorpora vientos, geometría real del terreno ni gradientes gravitatorios.</p>
 <p>Para ver un efecto acumulado durante muchas oscilaciones, consideremos un péndulo largo de longitud <span class="math inline">\(l\)</span> y pequeña amplitud. Si su punto de suspensión permanece fijo al laboratorio, la tensión produce a primer orden la fuerza horizontal <span class="math inline">\(-mg(x,y)/l\)</span>. La componente vertical de Coriolis altera la tensión a orden <span class="math inline">\(\Omega\)</span> por la velocidad horizontal, pero al multiplicarla por la pequeña inclinación su corrección horizontal es de segundo orden en amplitud y queda fuera de la linealización. Definamos <span class="math inline">\(\omega_0^2=g/l\)</span> y <span class="math inline">\(f=\Omega\sin\lambda\)</span>.</p>
 <p><span id="fispm-t1-c20-p0023"></span></p>
-<p><strong>Proposición FPM-I-20-P23 — Precesión en el modelo lineal del péndulo de Foucault.</strong> En el modelo de pequeña amplitud que conserva Coriolis horizontal e ignora correcciones centrífugas espaciales de orden <span class="math inline">\(\Omega^2\)</span>, las ecuaciones son</p>
-<p><span class="math display">\[
-\ddot x+\omega_0^2x=2f\dot y,
-\qquad \ddot y+\omega_0^2y=-2f\dot x.
-\]</span></p>
+<p><strong>Proposición 20.23 — Precesión en el modelo lineal del péndulo de Foucault.</strong> En el modelo de pequeña amplitud que conserva Coriolis horizontal e ignora correcciones centrífugas espaciales de orden <span class="math inline">\(\Omega^2\)</span>, las ecuaciones son</p>
+<p><span class="math display">\[\ddot x+\omega_0^2x=2f\dot y, \qquad \ddot y+\omega_0^2y=-2f\dot x.\]</span></p>
 <p>Escribiendo <span class="math inline">\(s=x+iy\)</span> y <span class="math inline">\(s=e^{-ift}u\)</span>, se obtiene <span class="math inline">\(\ddot u+(\omega_0^2+f^2)u=0\)</span>. En particular, existe una familia de oscilaciones cuya dirección gira con tasa firmada <span class="math inline">\(-f\)</span> vista desde arriba.</p>
-<p><strong>Demostración.</strong> La fuerza restauradora y P21 para movimiento horizontal dan las dos ecuaciones reales. Sumarlas con coeficiente <span class="math inline">\(i\)</span> produce <span class="math inline">\(\ddot s+2if\dot s+\omega_0^2s=0\)</span>. Al sustituir <span class="math inline">\(s=e^{-ift}u\)</span>, los términos en <span class="math inline">\(\dot u\)</span> se cancelan y el coeficiente restante es <span class="math inline">\(\omega_0^2+f^2\)</span>. Elegir <span class="math inline">\(u=a\cos(\sqrt{\omega_0^2+f^2}\,t)\)</span> real da <span class="math inline">\(x=a\cos(ft)\cos(\sqrt{\omega_0^2+f^2}\,t)\)</span> e <span class="math inline">\(y=-a\sin(ft)\cos(\sqrt{\omega_0^2+f^2}\,t)\)</span>. La dirección de la oscilación rota con ángulo <span class="math inline">\(-ft\)</span>. <span class="math inline">\(\square\)</span></p>
-<p>La transformación resuelve exactamente el sistema reducido escrito en P23. El término <span class="math inline">\(f^2\)</span> de su frecuencia no debe interpretarse como una predicción física completa a segundo orden en la rotación, pues otros términos de ese orden se omitieron al construir el modelo. La precesión de primer orden es horaria en el norte, antihoraria en el sur y nula en el ecuador dentro de este modelo. La familia real elegida tiene <span class="math inline">\(\dot s(0)=-ifa\)</span>; un péndulo soltado desde reposo terrestre tiene otros coeficientes y una pequeña elipticidad en el sistema reducido. No todas las condiciones iniciales producen exactamente una línea que gira.</p>
-<p>El experimento de Foucault de 1851 hizo visible la rotación terrestre mediante un movimiento mecánico local.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Su interpretación exige un péndulo con libertad horizontal suficiente y una separación de escalas entre la oscilación y la rotación. Las oscilaciones sistemáticas, el amortiguamiento y la excitación se estudiarán en I23; aquí el ejemplo muestra cómo un término pequeño puede acumular un cambio de orientación.</p>
+<p><strong>Demostración.</strong> La fuerza restauradora y proposición 20.21 para movimiento horizontal dan las dos ecuaciones reales. Sumarlas con coeficiente <span class="math inline">\(i\)</span> produce <span class="math inline">\(\ddot s+2if\dot s+\omega_0^2s=0\)</span>. Al sustituir <span class="math inline">\(s=e^{-ift}u\)</span>, los términos en <span class="math inline">\(\dot u\)</span> se cancelan y el coeficiente restante es <span class="math inline">\(\omega_0^2+f^2\)</span>. Elegir <span class="math inline">\(u=a\cos(\sqrt{\omega_0^2+f^2}\,t)\)</span> real da <span class="math inline">\(x=a\cos(ft)\cos(\sqrt{\omega_0^2+f^2}\,t)\)</span> e <span class="math inline">\(y=-a\sin(ft)\cos(\sqrt{\omega_0^2+f^2}\,t)\)</span>. La dirección de la oscilación rota con ángulo <span class="math inline">\(-ft\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La transformación resuelve exactamente el sistema reducido escrito en la proposición 20.23. El término <span class="math inline">\(f^2\)</span> de su frecuencia no debe interpretarse como una predicción física completa a segundo orden en la rotación, pues otros términos de ese orden se omitieron al construir el modelo. La precesión de primer orden es horaria en el norte, antihoraria en el sur y nula en el ecuador dentro de este modelo. La familia real elegida tiene <span class="math inline">\(\dot s(0)=-ifa\)</span>; un péndulo soltado desde reposo terrestre tiene otros coeficientes y una pequeña elipticidad en el sistema reducido. No todas las condiciones iniciales producen exactamente una línea que gira.</p>
+<p>El experimento de Foucault de 1851 hizo visible la rotación terrestre mediante un movimiento mecánico local.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> Su interpretación exige un péndulo con libertad horizontal suficiente y una separación de escalas entre la oscilación y la rotación. Las oscilaciones sistemáticas, el amortiguamiento y la excitación se estudiarán en el capítulo 23; aquí el ejemplo muestra cómo un término pequeño puede acumular un cambio de orientación.</p>
 <p><span id="fispm-t1-c20-mp0012"></span></p>
-<p><strong>Principio metodológico FPM-I-20-MP12.</strong> En una aproximación terrestre, declara ejes, orden retenido y escalas. Resolver exactamente una ecuación aproximada no restaura los términos que se descartaron al formularla.</p>
-<section id="ejercicios-11" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-11">Ejercicios</h3>
+<p><strong>Principio metodológico 20.12.</strong> En una aproximación terrestre, declara ejes, orden retenido y escalas. Resolver exactamente una ecuación aproximada no restaura los términos que se descartaron al formularla.</p>
+<p><span id="ejercicios-11"></span></p>
+<section id="fispm-c20-ejercicios-11" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c20-ejercicios-11">Ejercicios</h3>
 <p><span id="fispm-t1-c20-e0023"></span></p>
-<p><strong>Ejercicio FPM-I-20-E23.</strong> En el hemisferio sur, una partícula se mueve horizontalmente hacia el norte. Determina la dirección de su aceleración horizontal de Coriolis y compárala con una caída vertical en el mismo lugar.</p>
-<p><strong>Solución.</strong> Para <span class="math inline">\(u=w=0\)</span>, <span class="math inline">\(v&gt;0\)</span>, P21 da <span class="math inline">\(a_x=2\Omega\sin\lambda\,v&lt;0\)</span>, hacia el oeste: es la izquierda de quien avanza al norte. En una caída, <span class="math inline">\(w&lt;0\)</span> y <span class="math inline">\(u=v=0\)</span>, por lo que <span class="math inline">\(a_x=-2\Omega\cos\lambda\,w&gt;0\)</span> para latitudes no polares, hacia el este. La regla izquierda para movimiento horizontal no determina el caso vertical.</p>
+<p><strong>Ejercicio 20.23.</strong> En el hemisferio sur, una partícula se mueve horizontalmente hacia el norte. Determina la dirección de su aceleración horizontal de Coriolis y compárala con una caída vertical en el mismo lugar.</p>
+<p><strong>Solución.</strong> Para <span class="math inline">\(u=w=0\)</span>, <span class="math inline">\(v&gt;0\)</span>, proposición 20.21 da <span class="math inline">\(a_x=2\Omega\sin\lambda\,v&lt;0\)</span>, hacia el oeste: es la izquierda de quien avanza al norte. En una caída, <span class="math inline">\(w&lt;0\)</span> y <span class="math inline">\(u=v=0\)</span>, por lo que <span class="math inline">\(a_x=-2\Omega\cos\lambda\,w&gt;0\)</span> para latitudes no polares, hacia el este. La regla izquierda para movimiento horizontal no determina el caso vertical.</p>
 <p><span id="fispm-t1-c20-e0024"></span></p>
-<p><strong>Ejercicio FPM-I-20-E24.</strong> Si <span class="math inline">\(T_\oplus=2\pi/\Omega\)</span> es el período de rotación del modelo terrestre, calcula el tiempo de una vuelta dirigida completa de la precesión a latitudes <span class="math inline">\(\lambda=\pm\pi/6\)</span> y en el ecuador.</p>
+<p><strong>Ejercicio 20.24.</strong> Si <span class="math inline">\(T_\oplus=2\pi/\Omega\)</span> es el período de rotación del modelo terrestre, calcula el tiempo de una vuelta dirigida completa de la precesión a latitudes <span class="math inline">\(\lambda=\pm\pi/6\)</span> y en el ecuador.</p>
 <p><strong>Solución.</strong> La magnitud de la tasa es <span class="math inline">\(|f|=\Omega|\sin\lambda|\)</span>. El período dirigido es <span class="math inline">\(2\pi/|f|=T_\oplus/|\sin\lambda|\)</span>. Para <span class="math inline">\(\pm\pi/6\)</span> vale <span class="math inline">\(2T_\oplus\)</span>, con sentidos opuestos en ambos hemisferios. En el ecuador <span class="math inline">\(f=0\)</span> y no hay una vuelta de precesión en este modelo. Una línea sin orientación vuelve a coincidir consigo misma después de media vuelta; el período pedido sigue una dirección para evitar esa ambigüedad.</p>
+<p><span id="dos-energías-para-la-misma-trayectoria"></span></p>
 <p><span id="fispm-t1-c20-s13"></span></p>
 <p><span id="fpm-i-20-s13"></span></p>
 </section>
 </section>
-<section id="dos-energías-para-la-misma-trayectoria" class="level2">
-<h2 class="anchored" data-anchor-id="dos-energías-para-la-misma-trayectoria">§13. Dos energías para la misma trayectoria</h2>
+<section id="fispm-c20-dos-energuxedas-para-la-misma-trayectoria" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c20-dos-energuxedas-para-la-misma-trayectoria">13. Dos energías para la misma trayectoria</h2>
 <p>La energía relativa conservada en §11 contiene un potencial centrífugo negativo. Para entender qué combina, comparemos con la energía y el momento angular inerciales cuando el origen es fijo. La identidad resultante explica por qué una guía que gira puede aumentar la energía física y conservar, al mismo tiempo, una combinación relativa.</p>
 <p><span id="fispm-t1-c20-d0008"></span></p>
-<p><strong>Definición FPM-I-20-D08 — Energía y momento angular en origen fijo.</strong> Sea <span class="math inline">\(\mathbf x=R\mathbf r\)</span>, con origen inercial fijo. Escribimos <span class="math inline">\(E_I=m|\dot{\mathbf x}|^2/2+U_I(\mathbf x,t)\)</span> y <span class="math inline">\(\mathbf L_I=\mathbf x\times m\dot{\mathbf x}\)</span>. El potencial móvil es <span class="math inline">\(U(\mathbf r,t)=U_I(R\mathbf r,t)\)</span>; no se presume que sea estacionario en ambos marcos.</p>
+<p><strong>Definición 20.8 — Energía y momento angular en origen fijo.</strong> Sea <span class="math inline">\(\mathbf x=R\mathbf r\)</span>, con origen inercial fijo. Escribimos <span class="math inline">\(E_I=m|\dot{\mathbf x}|^2/2+U_I(\mathbf x,t)\)</span> y <span class="math inline">\(\mathbf L_I=\mathbf x\times m\dot{\mathbf x}\)</span>. El potencial móvil es <span class="math inline">\(U(\mathbf r,t)=U_I(R\mathbf r,t)\)</span>; no se presume que sea estacionario en ambos marcos.</p>
 <p><span id="fispm-t1-c20-p0024"></span></p>
-<p><strong>Proposición FPM-I-20-P24 — Identidad entre energía relativa, energía inercial y momento angular.</strong> Bajo D08,</p>
-<p><span class="math display">\[
-\frac m2|\dot{\mathbf r}|^2+U(\mathbf r,t)
--\frac m2|\boldsymbol\Omega\times\mathbf r|^2
-=E_I-\boldsymbol\omega\cdot\mathbf L_I.
-\]</span></p>
-<p><strong>Demostración.</strong> P09 da <span class="math inline">\(\dot{\mathbf x}=R(\dot{\mathbf r}+\boldsymbol\Omega\times\mathbf r)\)</span>. Expandir su norma produce <span class="math inline">\(E_I=m|\dot{\mathbf r}|^2/2+m\dot{\mathbf r}\cdot(\boldsymbol\Omega\times\mathbf r)+m|\boldsymbol\Omega\times\mathbf r|^2/2+U\)</span>. Por otra parte, la invariancia de productos escalar y vectorial da <span class="math inline">\(\boldsymbol\omega\cdot\mathbf L_I=m\boldsymbol\Omega\cdot[\mathbf r\times(\dot{\mathbf r}+\boldsymbol\Omega\times\mathbf r)]=m(\boldsymbol\Omega\times\mathbf r)\cdot\dot{\mathbf r}+m|\boldsymbol\Omega\times\mathbf r|^2\)</span>. Restar cancela el término cruzado y deja la identidad. <span class="math inline">\(\square\)</span></p>
-<p>La identidad vale instantáneamente incluso si la rotación cambia. Para obtener una constante de movimiento se añaden las hipótesis de P20. Si el potencial gira uniformemente con el marco y es estacionario allí, la combinación es constante aunque ni <span class="math inline">\(E_I\)</span> ni la componente angular sean constantes por separado. Si además el potencial inercial es estacionario y simétrico alrededor del eje fijo de giro, las dos cantidades inerciales se conservan por sus balances conocidos, y la combinación también.</p>
-<p>Un origen que se traslada introduce términos adicionales en esta comparación. D08 declara origen fijo precisamente para no omitirlos. La masa de una plataforma y la energía de su motor tampoco están incluidas en la energía de una sola partícula; para estudiar el sistema completo habrá que ampliar el balance físico.</p>
+<p><strong>Proposición 20.24 — Identidad entre energía relativa, energía inercial y momento angular.</strong> Bajo definición 20.8,</p>
+<p><span class="math display">\[\frac m2|\dot{\mathbf r}|^2+U(\mathbf r,t) -\frac m2|\boldsymbol\Omega\times\mathbf r|^2 =E_I-\boldsymbol\omega\cdot\mathbf L_I.\]</span></p>
+<p><strong>Demostración.</strong> proposición 20.9 da <span class="math inline">\(\dot{\mathbf x}=R(\dot{\mathbf r}+\boldsymbol\Omega\times\mathbf r)\)</span>. Expandir su norma produce <span class="math inline">\(E_I=m|\dot{\mathbf r}|^2/2+m\dot{\mathbf r}\cdot(\boldsymbol\Omega\times\mathbf r)+m|\boldsymbol\Omega\times\mathbf r|^2/2+U\)</span>. Por otra parte, la invariancia de productos escalar y vectorial da <span class="math inline">\(\boldsymbol\omega\cdot\mathbf L_I=m\boldsymbol\Omega\cdot[\mathbf r\times(\dot{\mathbf r}+\boldsymbol\Omega\times\mathbf r)]=m(\boldsymbol\Omega\times\mathbf r)\cdot\dot{\mathbf r}+m|\boldsymbol\Omega\times\mathbf r|^2\)</span>. Restar cancela el término cruzado y deja la identidad. <span class="math inline">\(\square\)</span></p>
+<p>La identidad vale instantáneamente incluso si la rotación cambia. Para obtener una constante de movimiento se añaden las hipótesis de la proposición 20.20. Si el potencial gira uniformemente con el marco y es estacionario allí, la combinación es constante aunque ni <span class="math inline">\(E_I\)</span> ni la componente angular sean constantes por separado. Si además el potencial inercial es estacionario y simétrico alrededor del eje fijo de giro, las dos cantidades inerciales se conservan por sus balances conocidos, y la combinación también.</p>
+<p>Un origen que se traslada introduce términos adicionales en esta comparación. Definición 20.8 declara origen fijo precisamente para no omitirlos. La masa de una plataforma y la energía de su motor tampoco están incluidas en la energía de una sola partícula; para estudiar el sistema completo habrá que ampliar el balance físico.</p>
 <p><span id="fispm-t1-c20-mp0013"></span></p>
-<p><strong>Principio metodológico FPM-I-20-MP13.</strong> Antes de comparar energías, fija origen, marco y potencial transformado. Una identidad entre cantidades no demuestra su conservación sin hipótesis dinámicas adicionales.</p>
-<section id="ejercicios-12" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-12">Ejercicios</h3>
+<p><strong>Principio metodológico 20.13.</strong> Antes de comparar energías, fija origen, marco y potencial transformado. Una identidad entre cantidades no demuestra su conservación sin hipótesis dinámicas adicionales.</p>
+<p><span id="ejercicios-12"></span></p>
+<section id="fispm-c20-ejercicios-12" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c20-ejercicios-12">Ejercicios</h3>
 <p><span id="fispm-t1-c20-e0025"></span></p>
-<p><strong>Ejercicio FPM-I-20-E25.</strong> Para la cuenta de la guía radial lisa, calcula <span class="math inline">\(L_z\)</span> y comprueba P24 con <span class="math inline">\(U=0\)</span>.</p>
-<p><strong>Solución.</strong> La velocidad física en la base móvil es <span class="math inline">\(\dot q\mathbf e_x+\Omega q\mathbf e_y\)</span>, así que <span class="math inline">\(L_z=m\Omega q^2\)</span>. La energía cinética inercial es <span class="math inline">\(E_I=m(\dot q^2+\Omega^2q^2)/2\)</span>. Restar <span class="math inline">\(\Omega L_z\)</span> da <span class="math inline">\(m\dot q^2/2-m\Omega^2q^2/2\)</span>, la constante de E19 para sus datos particulares. La reacción tiene torque <span class="math inline">\(\tau_z=qN_y=2m\Omega q\dot q\)</span>, igual a <span class="math inline">\(\dot L_z\)</span>.</p>
+<p><strong>Ejercicio 20.25.</strong> Para la cuenta de la guía radial lisa, calcula <span class="math inline">\(L_z\)</span> y comprueba proposición 20.24 con <span class="math inline">\(U=0\)</span>.</p>
+<p><strong>Solución.</strong> La velocidad física en la base móvil es <span class="math inline">\(\dot q\mathbf e_x+\Omega q\mathbf e_y\)</span>, así que <span class="math inline">\(L_z=m\Omega q^2\)</span>. La energía cinética inercial es <span class="math inline">\(E_I=m(\dot q^2+\Omega^2q^2)/2\)</span>. Restar <span class="math inline">\(\Omega L_z\)</span> da <span class="math inline">\(m\dot q^2/2-m\Omega^2q^2/2\)</span>, la constante del ejercicio 20.19 para sus datos particulares. La reacción tiene torque <span class="math inline">\(\tau_z=qN_y=2m\Omega q\dot q\)</span>, igual a <span class="math inline">\(\dot L_z\)</span>.</p>
 <p><span id="fispm-t1-c20-e0026"></span></p>
-<p><strong>Ejercicio FPM-I-20-E26.</strong> En una rotación uniforme de eje fijo, supón que <span class="math inline">\(E_I-\Omega L_z\)</span> es constante mientras el cuerpo recibe un torque físico total <span class="math inline">\(\tau_z\)</span>. Determina la potencia de las fuerzas no incluidas en el potencial si el potencial inercial no tiene dependencia temporal explícita.</p>
+<p><strong>Ejercicio 20.26.</strong> En una rotación uniforme de eje fijo, supón que <span class="math inline">\(E_I-\Omega L_z\)</span> es constante mientras el cuerpo recibe un torque físico total <span class="math inline">\(\tau_z\)</span>. Determina la potencia de las fuerzas no incluidas en el potencial si el potencial inercial no tiene dependencia temporal explícita.</p>
 <p><strong>Solución.</strong> Derivar la constante da <span class="math inline">\(\dot E_I=\Omega\dot L_z=\Omega\tau_z\)</span>. Cuando el potencial no depende explícitamente del tiempo, <span class="math inline">\(\dot E_I\)</span> representa la potencia de las fuerzas físicas no incluidas en ese potencial. Es la potencia que debe suministrar el mecanismo que impone el giro en ejemplos como la guía. La potencia de todas las fuerzas físicas sería <span class="math inline">\(\dot K_I=\Omega\tau_z-dU_I/dt\)</span>. La hipótesis de la constante y la condición temporal del potencial deben comprobarse en el sistema concreto.</p>
+<p><span id="reconstruir-el-problema-físico"></span></p>
 <p><span id="fispm-t1-c20-s14"></span></p>
 <p><span id="fpm-i-20-s14"></span></p>
 </section>
 </section>
-<section id="reconstruir-el-problema-físico" class="level2">
-<h2 class="anchored" data-anchor-id="reconstruir-el-problema-físico">§14. Reconstruir el problema físico</h2>
+<section id="fispm-c20-reconstruir-el-problema-fuxedsico" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c20-reconstruir-el-problema-fuxedsico">14. Reconstruir el problema físico</h2>
 <p>Las ecuaciones móviles reúnen términos de posición, velocidad y tiempo. Esa mezcla puede sugerir que todos admiten un potencial o que todos pueden tratarse como fuerzas de contacto. Un último resultado permite delimitar la primera posibilidad y los problemas siguientes pondrán a prueba ambas interpretaciones.</p>
 <p><span id="fispm-t1-c20-p0025"></span></p>
-<p><strong>Proposición FPM-I-20-P25 — Coriolis no procede de un potencial escalar de posición.</strong> Si <span class="math inline">\(\boldsymbol\Omega(t)\ne0\)</span> en un instante y se permiten velocidades relativas arbitrarias en una misma posición, no existe una función escalar <span class="math inline">\(V(\mathbf r,t)\)</span> cuyo gradiente negativo reproduzca <span class="math inline">\(-2m\boldsymbol\Omega(t)\times\dot{\mathbf r}\)</span> para todas esas velocidades.</p>
+<p><strong>Proposición 20.25 — Coriolis no procede de un potencial escalar de posición.</strong> Si <span class="math inline">\(\boldsymbol\Omega(t)\ne0\)</span> en un instante y se permiten velocidades relativas arbitrarias en una misma posición, no existe una función escalar <span class="math inline">\(V(\mathbf r,t)\)</span> cuyo gradiente negativo reproduzca <span class="math inline">\(-2m\boldsymbol\Omega(t)\times\dot{\mathbf r}\)</span> para todas esas velocidades.</p>
 <p><strong>Demostración.</strong> A posición y tiempo fijos, <span class="math inline">\(-\nabla V\)</span> tiene un único valor independiente de la velocidad. Para velocidad cero, la fuerza de Coriolis es cero. Para una velocidad no paralela a <span class="math inline">\(\boldsymbol\Omega\)</span>, es distinta de cero. Una única función de posición y tiempo no puede producir ambos valores en el mismo punto. <span class="math inline">\(\square\)</span></p>
-<p>El enunciado se limita a potenciales escalares de posición. Más adelante el formalismo lagrangiano permitirá términos dependientes de velocidad; no hace falta anticiparlos para reconocer la limitación de P25. La potencia relativa nula de Coriolis proviene de una perpendicularidad, y esa propiedad no lo convierte en un gradiente espacial.</p>
+<p>El enunciado se limita a potenciales escalares de posición. Más adelante el formalismo lagrangiano permitirá términos dependientes de velocidad; no hace falta anticiparlos para reconocer la limitación de la proposición 20.25. La potencia relativa nula de Coriolis proviene de una perpendicularidad, y esa propiedad no lo convierte en un gradiente espacial.</p>
 <p><span id="fispm-t1-c20-mp0014"></span></p>
-<p><strong>Principio metodológico FPM-I-20-MP14.</strong> Comprueba una descripción móvil reconstruyendo posición, velocidad, fuerza y potencia inerciales. Una solución relativa correcta debe representar el mismo encuentro físico y las mismas condiciones de contacto.</p>
-<section id="problemas-de-integración" class="level3">
-<h3 class="anchored" data-anchor-id="problemas-de-integración">Problemas de integración</h3>
+<p><strong>Principio metodológico 20.14.</strong> Comprueba una descripción móvil reconstruyendo posición, velocidad, fuerza y potencia inerciales. Una solución relativa correcta debe representar el mismo encuentro físico y las mismas condiciones de contacto.</p>
+<p><span id="problemas-de-integración"></span></p>
+<section id="fispm-c20-problemas-de-integraciuxf3n" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c20-problemas-de-integraciuxf3n">Problemas de integración</h3>
 <p><span id="fispm-t1-c20-e0027"></span></p>
-<p><strong>Ejercicio FPM-I-20-E27.</strong> Un origen acelera uniformemente con <span class="math inline">\(\ddot{\mathbf X}=a\mathbf e_x\)</span> en ejes inerciales. Sus ejes giran con <span class="math inline">\(\Omega\)</span> constante alrededor de <span class="math inline">\(z\)</span> y <span class="math inline">\(R(0)=I\)</span>. Encuentra <span class="math inline">\(\mathbf A(t)\)</span> y escribe la ecuación relativa de una partícula libre. ¿Puede sustituirse <span class="math inline">\(\mathbf A\)</span> por el vector móvil constante <span class="math inline">\(a\mathbf e_x\)</span>?</p>
-<p><strong>Solución.</strong> La aceleración del origen es fija como vector inercial. Sus componentes móviles son <span class="math inline">\(\mathbf A=R^T(a\mathbf e_x)=a(\cos\Omega t,-\sin\Omega t,0)\)</span>. P12 da <span class="math inline">\(\ddot{\mathbf r}=-\mathbf A(t)-2\Omega\mathbf e_z\times\dot{\mathbf r}-\Omega^2\mathbf e_z\times(\mathbf e_z\times\mathbf r)\)</span>. Sustituir <span class="math inline">\(\mathbf A\)</span> por un vector móvil constante sería otro movimiento del origen: su aceleración física giraría con los ejes. La coincidencia en <span class="math inline">\(t=0\)</span> no preserva el problema para tiempos posteriores.</p>
+<p><strong>Ejercicio 20.27.</strong> Un origen acelera uniformemente con <span class="math inline">\(\ddot{\mathbf X}=a\mathbf e_x\)</span> en ejes inerciales. Sus ejes giran con <span class="math inline">\(\Omega\)</span> constante alrededor de <span class="math inline">\(z\)</span> y <span class="math inline">\(R(0)=I\)</span>. Encuentra <span class="math inline">\(\mathbf A(t)\)</span> y escribe la ecuación relativa de una partícula libre. ¿Puede sustituirse <span class="math inline">\(\mathbf A\)</span> por el vector móvil constante <span class="math inline">\(a\mathbf e_x\)</span>?</p>
+<p><strong>Solución.</strong> La aceleración del origen es fija como vector inercial. Sus componentes móviles son <span class="math inline">\(\mathbf A=R^T(a\mathbf e_x)=a(\cos\Omega t,-\sin\Omega t,0)\)</span>. Proposición 20.12 da <span class="math inline">\(\ddot{\mathbf r}=-\mathbf A(t)-2\Omega\mathbf e_z\times\dot{\mathbf r}-\Omega^2\mathbf e_z\times(\mathbf e_z\times\mathbf r)\)</span>. Sustituir <span class="math inline">\(\mathbf A\)</span> por un vector móvil constante sería otro movimiento del origen: su aceleración física giraría con los ejes. La coincidencia en <span class="math inline">\(t=0\)</span> no preserva el problema para tiempos posteriores.</p>
 <p><span id="fispm-t1-c20-e0028"></span></p>
-<p><strong>Ejercicio FPM-I-20-E28.</strong> Una partícula se mantiene fija a distancia <span class="math inline">\(a\)</span> del eje de una plataforma con origen fijo y rapidez angular variable <span class="math inline">\(\Omega(t)\)</span>. Calcula la potencia física y compárala con la potencia relativa.</p>
-<p><strong>Solución.</strong> E14 da <span class="math inline">\(\mathbf F_R=-m\Omega^2a\mathbf e_x+m\dot\Omega a\mathbf e_y\)</span>. Su velocidad física es <span class="math inline">\(\Omega a\mathbf e_y\)</span>, de modo que la potencia es <span class="math inline">\(m a^2\Omega\dot\Omega\)</span>. Coincide con <span class="math inline">\(d(m a^2\Omega^2/2)/dt\)</span>. Su velocidad relativa es cero y su potencia relativa también. La componente centrípeta no aporta potencia física en este movimiento; la tangencial cambia la rapidez. Si <span class="math inline">\(\Omega\dot\Omega&lt;0\)</span>, el mecanismo retira energía cinética.</p>
+<p><strong>Ejercicio 20.28.</strong> Una partícula se mantiene fija a distancia <span class="math inline">\(a\)</span> del eje de una plataforma con origen fijo y rapidez angular variable <span class="math inline">\(\Omega(t)\)</span>. Calcula la potencia física y compárala con la potencia relativa.</p>
+<p><strong>Solución.</strong> ejercicio 20.14 da <span class="math inline">\(\mathbf F_R=-m\Omega^2a\mathbf e_x+m\dot\Omega a\mathbf e_y\)</span>. Su velocidad física es <span class="math inline">\(\Omega a\mathbf e_y\)</span>, de modo que la potencia es <span class="math inline">\(m a^2\Omega\dot\Omega\)</span>. Coincide con <span class="math inline">\(d(m a^2\Omega^2/2)/dt\)</span>. Su velocidad relativa es cero y su potencia relativa también. La componente centrípeta no aporta potencia física en este movimiento; la tangencial cambia la rapidez. Si <span class="math inline">\(\Omega\dot\Omega&lt;0\)</span>, el mecanismo retira energía cinética.</p>
 <p><span id="fispm-t1-c20-e0029"></span></p>
-<p><strong>Ejercicio FPM-I-20-E29.</strong> En el sistema reducido del péndulo de P23, toma <span class="math inline">\(s(0)=a\)</span> real y <span class="math inline">\(\dot s(0)=0\)</span>. Encuentra la solución y distingue su preparación de la familia con <span class="math inline">\(u\)</span> real.</p>
-<p><strong>Solución.</strong> Con <span class="math inline">\(s=e^{-ift}u\)</span>, los datos son <span class="math inline">\(u(0)=a\)</span> y <span class="math inline">\(\dot u(0)=ifa\)</span>. Si <span class="math inline">\(\nu=\sqrt{\omega_0^2+f^2}\)</span>, la solución es <span class="math inline">\(s=e^{-ift}[a\cos\nu t+i(fa/\nu)\sin\nu t]\)</span>. En las coordenadas de <span class="math inline">\(u\)</span>, el movimiento describe una elipse de semiejes <span class="math inline">\(a\)</span> y <span class="math inline">\(|f|a/\nu\)</span>, en lugar de una línea exacta. Cuando <span class="math inline">\(|f|\ll\omega_0\)</span>, esa elipse es estrecha y su eje principal rota en el laboratorio con tasa <span class="math inline">\(-f\)</span>. La familia real de P23 requiere una pequeña velocidad transversal inicial <span class="math inline">\(\dot s(0)=-ifa\)</span>; no corresponde exactamente a soltar desde reposo terrestre.</p>
+<p><strong>Ejercicio 20.29.</strong> En el sistema reducido del péndulo de la proposición 20.23, toma <span class="math inline">\(s(0)=a\)</span> real y <span class="math inline">\(\dot s(0)=0\)</span>. Encuentra la solución y distingue su preparación de la familia con <span class="math inline">\(u\)</span> real.</p>
+<p><strong>Solución.</strong> Con <span class="math inline">\(s=e^{-ift}u\)</span>, los datos son <span class="math inline">\(u(0)=a\)</span> y <span class="math inline">\(\dot u(0)=ifa\)</span>. Si <span class="math inline">\(\nu=\sqrt{\omega_0^2+f^2}\)</span>, la solución es <span class="math inline">\(s=e^{-ift}[a\cos\nu t+i(fa/\nu)\sin\nu t]\)</span>. En las coordenadas de <span class="math inline">\(u\)</span>, el movimiento describe una elipse de semiejes <span class="math inline">\(a\)</span> y <span class="math inline">\(|f|a/\nu\)</span>, en lugar de una línea exacta. Cuando <span class="math inline">\(|f|\ll\omega_0\)</span>, esa elipse es estrecha y su eje principal rota en el laboratorio con tasa <span class="math inline">\(-f\)</span>. La familia real de la proposición 20.23 requiere una pequeña velocidad transversal inicial <span class="math inline">\(\dot s(0)=-ifa\)</span>; no corresponde exactamente a soltar desde reposo terrestre.</p>
 <p><span id="fispm-t1-c20-e0030"></span></p>
-<p><strong>Ejercicio FPM-I-20-E30.</strong> Revisa el argumento defectuoso: «Coriolis no hace trabajo, por lo tanto puede eliminarse de la ecuación sin cambiar la trayectoria». Localiza el error y construye una refutación con un cuerpo lanzado desde el origen de una plataforma uniforme.</p>
-<p><strong>Solución.</strong> La igualdad de potencia solo controla una contribución a la variación de la energía cinética relativa. Una fuerza perpendicular puede cambiar la dirección de la velocidad y, con ello, la trayectoria. E18 da para una partícula libre <span class="math inline">\(\mathbf r=ut(\cos\Omega t,-\sin\Omega t,0)\)</span>, cuya aceleración inicial es <span class="math inline">\(-2\Omega u\mathbf e_y\)</span>. Al borrar Coriolis, la ecuación restante tendría aceleración inicial cero porque el término centrífugo se anula en el origen. Ambas soluciones tendrían los mismos datos iniciales y aceleraciones iniciales distintas. Por tanto no representan la misma trayectoria. La reparación consiste en conservar Coriolis en la ecuación vectorial y usar su potencia nula únicamente en el balance escalar donde se ha demostrado.</p>
+<p><strong>Ejercicio 20.30.</strong> Revisa el argumento defectuoso: «Coriolis no hace trabajo, por lo tanto puede eliminarse de la ecuación sin cambiar la trayectoria». Localiza el error y construye una refutación con un cuerpo lanzado desde el origen de una plataforma uniforme.</p>
+<p><strong>Solución.</strong> La igualdad de potencia solo controla una contribución a la variación de la energía cinética relativa. Una fuerza perpendicular puede cambiar la dirección de la velocidad y, con ello, la trayectoria. Ejercicio 20.18 da para una partícula libre <span class="math inline">\(\mathbf r=ut(\cos\Omega t,-\sin\Omega t,0)\)</span>, cuya aceleración inicial es <span class="math inline">\(-2\Omega u\mathbf e_y\)</span>. Al borrar Coriolis, la ecuación restante tendría aceleración inicial cero porque el término centrífugo se anula en el origen. Ambas soluciones tendrían los mismos datos iniciales y aceleraciones iniciales distintas. Por tanto no representan la misma trayectoria. La reparación consiste en conservar Coriolis en la ecuación vectorial y usar su potencia nula únicamente en el balance escalar donde se ha demostrado.</p>
 <p>La base móvil ha permitido escribir las observaciones de una cabina, una plataforma y un laboratorio terrestre sin perder su relación con las leyes inerciales. En el cuerpo rígido la misma velocidad angular describirá simultáneamente muchos puntos. La nueva dificultad será reunir sus masas para calcular momento angular y energía: allí aparecerá el tensor de inercia.</p>
-</section>
-<section id="notas-y-referencias" class="level3">
-<h3 class="anchored" data-anchor-id="notas-y-referencias">Notas y referencias</h3>
-<hr>
-<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-19-dispersion-clasica-y-reduccion-efectiva.html">Capítulo 19</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-21-cuerpo-rigido-cinematica-rotaciones-y-tensor-de-inercia.html">Capítulo 21</a></p>
+<p><span id="fispm-c20-notas-y-referencias" data-label="fispm-c20-notas-y-referencias"></span></p>
 
 
 </section>

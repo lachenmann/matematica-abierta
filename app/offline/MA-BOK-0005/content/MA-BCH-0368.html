@@ -82,6 +82,52 @@ window.MathJax.startup.pageReady = async function () {
   });
 })();
 </script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
 
   
   <script src="../assets/mathjax-offline-speech.js"></script><script>(function(){const fontRoot=new URL("../assets/mathjax-newcm",location.href).href;window.MathJax=Object.assign(window.MathJax||{}, {loader:{paths:{"mathjax-newcm":fontRoot}},startup:{ready:function(){MathJax.startup.defaultReady();MathJax.startup.adaptor.createWorker=window.__maCreateSpeechWorker;},pageReady:window.MathJax.startup.pageReady},output:{fontPath:fontRoot},chtml:{fontURL:fontRoot+"/chtml/woff2",dynamicPrefix:fontRoot+"/chtml/dynamic"}});})();</script><script defer src="../assets/mathjax/tex-chtml.js"></script>
@@ -114,7 +160,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../assets/87b4f5e6a115d51d92f5ea1a.css">
-<link rel="stylesheet" href="../assets/af3335218e8c9cef34486d70.css">
+<link rel="stylesheet" href="../assets/2360bb7a7cd037ebd3e65b07.css">
 <style id="ma-reader-mode-v1-style">/* Reader contract: app readerMode.ts, ma-reader-mode-v1. */
 
 #quarto-header,
@@ -366,7 +412,7 @@ body.quarto-page-columns #quarto-content,
     <div>
     <div class="quarto-title-meta-heading">Fecha de última modificación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">15 de octubre de 2026</p>
+      <p class="date-modified">17 de octubre de 2026</p>
     </div>
   </div>
     
@@ -378,822 +424,448 @@ body.quarto-page-columns #quarto-content,
 
 
 <p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-27-simetrias-teorema-de-noether-y-leyes-de-conservacion.html">Capítulo 27</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-29-corchetes-de-poisson-y-estructura-simplectica-elemental.html">Capítulo 29</a></p>
+<p><span id="fispm-c28-mecuxe1nica-hamiltoniana"></span></p>
 <p>La mecánica lagrangiana describe el movimiento mediante posiciones y velocidades. Sus ecuaciones determinan las aceleraciones cuando la matriz de derivadas segundas respecto de las velocidades es invertible. Los momentos conjugados, introducidos al variar la acción, ofrecen entonces otra manera de especificar el mismo estado: podemos sustituir las velocidades por los momentos y escribir la evolución como un sistema de primer orden.</p>
-<p>Ese cambio organiza de forma especialmente clara las leyes de conservación de I27. Una coordenada cíclica conserva su momento; la invariancia temporal conserva una función de energía; ambas afirmaciones pasarán a leerse directamente en una única función, el hamiltoniano. La sustitución exige conservar la información del lagrangiano, controlar los dominios y distinguir los momentos de las velocidades multiplicadas por la masa.</p>
-<p>Construiremos primero esa sustitución mediante la transformada de Legendre. Después deduciremos las ecuaciones de Hamilton, estudiaremos ejemplos y recuperaremos una acción cuyas variables independientes son posiciones y momentos. Trabajaremos con un número finito de grados de libertad, coordenadas locales independientes y lagrangianos suaves. La estructura geométrica que hace compatibles las diferentes coordenadas del espacio de fases será el asunto central de I29.</p>
+<p>Ese cambio organiza de forma especialmente clara las leyes de conservación del capítulo 27. Una coordenada cíclica conserva su momento; la invariancia temporal conserva una función de energía; ambas afirmaciones pasarán a leerse directamente en una única función, el hamiltoniano. La sustitución exige conservar la información del lagrangiano, controlar los dominios y distinguir los momentos de las velocidades multiplicadas por la masa.</p>
+<p>Construiremos primero esa sustitución mediante la transformada de Legendre. Después deduciremos las ecuaciones de Hamilton, estudiaremos ejemplos y recuperaremos una acción cuyas variables independientes son posiciones y momentos. Trabajaremos con un número finito de grados de libertad, coordenadas locales independientes y lagrangianos suaves. La estructura geométrica que hace compatibles las diferentes coordenadas del espacio de fases será el asunto central del capítulo 29.</p>
+<p><span id="del-estado-mecánico-al-espacio-de-fases"></span></p>
 <p><span id="fispm-t1-c28-s01"></span></p>
 <p><span id="fpm-i-28-s01"></span></p>
-<section id="del-estado-mecánico-al-espacio-de-fases" class="level2">
-<h2 class="anchored" data-anchor-id="del-estado-mecánico-al-espacio-de-fases">§1. Del estado mecánico al espacio de fases</h2>
+<section id="fispm-c28-del-estado-mecuxe1nico-al-espacio-de-fases" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-del-estado-mecuxe1nico-al-espacio-de-fases">1. Del estado mecánico al espacio de fases</h2>
 <p>Para un oscilador, conocer la elongación no basta para predecir el movimiento: el cuerpo puede pasar por esa posición en sentidos opuestos. Un estado debe contener también información de velocidad. En una carta de un espacio de configuraciones <span class="math inline">\(Q\)</span> de dimensión <span class="math inline">\(n\)</span>, escribimos ese estado como <span class="math inline">\((q,v)\)</span>, con <span class="math inline">\(v=\dot q\)</span>.</p>
 <p>Un momento conjugado tiene componentes</p>
-<p><span class="math display">\[
-p_a(q,v,t)=\frac{\partial L}{\partial v^a}(q,v,t),\qquad a=1,\ldots,n.
-\]</span></p>
+<p><span class="math display">\[p_a(q,v,t)=\frac{\partial L}{\partial v^a}(q,v,t),\qquad a=1,\ldots,n.\]</span></p>
 <p>La pareja <span class="math inline">\((q,p)\)</span> puede servir como estado si permite reconstruir <span class="math inline">\(v\)</span>. El problema es algebraico en cada posición y tiempo; todavía no hemos resuelto ninguna ecuación diferencial.</p>
 <p><span id="fispm-t1-c28-d0001"></span></p>
-<p><strong>Definición FPM-I-28-D01 — Transformación de Legendre mecánica.</strong> La aplicación que sustituye las velocidades por los momentos es</p>
-<p><span class="math display">\[
-\mathbb FL_t:(q,v)\longmapsto(q,p),\qquad p=L_{,v}(q,v,t).
-\]</span></p>
+<p><strong>Definición 28.1 — Transformación de Legendre mecánica.</strong> La aplicación que sustituye las velocidades por los momentos es</p>
+<p><span class="math display">\[\mathbb FL_t:(q,v)\longmapsto(q,p),\qquad p=L_{,v}(q,v,t).\]</span></p>
 <p>Actúa sobre las velocidades manteniendo fijos <span class="math inline">\(q\)</span> y <span class="math inline">\(t\)</span>. Cuando el tiempo cambia, tenemos una familia de aplicaciones.</p>
 <p>¿Por qué escribir el momento con un índice inferior? Bajo un cambio de coordenadas independiente del tiempo <span class="math inline">\(q=f(Q)\)</span>, la regla de la cadena da</p>
-<p><span class="math display">\[
-P_i=\frac{\partial L}{\partial\dot Q^i}
-=\sum_a p_a\frac{\partial q^a}{\partial Q^i}.
-\]</span></p>
+<p><span class="math display">\[P_i=\frac{\partial L}{\partial\dot Q^i} =\sum_a p_a\frac{\partial q^a}{\partial Q^i}.\]</span></p>
 <p>Así se transforman las componentes de una forma lineal sobre los desplazamientos. La expresión <span class="math inline">\(\sum_a p_a\,\delta q^a\)</span> es independiente de la carta. Por eso el espacio natural de pares posición–momento es el fibrado cotangente <span class="math inline">\(T^*Q\)</span>.</p>
 <p><span id="fispm-t1-c28-d0002"></span></p>
-<p><strong>Definición FPM-I-28-D02 — Espacio de fases canónico.</strong> Es el espacio <span class="math inline">\(T^*Q\)</span> de posiciones y covectores momento. En una carta se representa mediante <span class="math inline">\((q^1,\ldots,q^n,p_1,\ldots,p_n)\)</span> y tiene dimensión <span class="math inline">\(2n\)</span>. Cuando el modelo depende del tiempo, éste se añade como parámetro de la evolución, sin contarlo entre esas <span class="math inline">\(2n\)</span> coordenadas.</p>
+<p><strong>Definición 28.2 — Espacio de fases canónico.</strong> Es el espacio <span class="math inline">\(T^*Q\)</span> de posiciones y covectores momento. En una carta se representa mediante <span class="math inline">\((q^1,\ldots,q^n,p_1,\ldots,p_n)\)</span> y tiene dimensión <span class="math inline">\(2n\)</span>. Cuando el modelo depende del tiempo, éste se añade como parámetro de la evolución, sin contarlo entre esas <span class="math inline">\(2n\)</span> coordenadas.</p>
 <p>Esta descripción ya distingue varios dominios. Para un péndulo, <span class="math inline">\(Q=S^1\)</span> y <span class="math inline">\(T^*Q\)</span> es un cilindro: el ángulo es periódico y su momento recorre una recta. Dibujar un plano con ángulo horizontal produce una representación repetida de ese cilindro, no posiciones físicas diferentes cada vez que añadimos <span class="math inline">\(2\pi\)</span>.</p>
+<p><span id="pendientes-y-transformada-de-legendre"></span></p>
 <p><span id="fispm-t1-c28-s02"></span></p>
 <p><span id="fpm-i-28-s02"></span></p>
 </section>
-<section id="pendientes-y-transformada-de-legendre" class="level2">
-<h2 class="anchored" data-anchor-id="pendientes-y-transformada-de-legendre">§2. Pendientes y transformada de Legendre</h2>
-<p>Consideremos primero una función real <span class="math inline">\(\ell(v)\)</span>. Su derivada <span class="math inline">\(p=\ell'(v)\)</span> asigna una pendiente a cada velocidad. Si podemos invertir esa relación en una región, definimos</p>
-<p><span class="math display">\[
-h(p)=p\,v(p)-\ell(v(p)).
-\]</span></p>
-<p>Al derivar, los términos que contienen <span class="math inline">\(v'(p)\)</span> se cancelan:</p>
-<p><span class="math display">\[
-h'(p)=v+p\,v'-\ell'(v)v'=v.
-\]</span></p>
-<p>La nueva función contiene la relación inversa. Para <span class="math inline">\(\ell(v)=mv^2/2\)</span>, con <span class="math inline">\(m&gt;0\)</span>, tenemos <span class="math inline">\(p=mv\)</span>, <span class="math inline">\(v=p/m\)</span> y <span class="math inline">\(h=p^2/(2m)\)</span>. Los factores físicos importan: <span class="math inline">\(p\)</span> tiene unidades de momento lineal y <span class="math inline">\(h\)</span> de energía, mientras que <span class="math inline">\(h'\)</span> tiene unidades de velocidad.</p>
+<section id="fispm-c28-pendientes-y-transformada-de-legendre" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-pendientes-y-transformada-de-legendre">2. Pendientes y transformada de Legendre</h2>
+<p>Consideremos primero una función real <span class="math inline">\(\ell(v)\)</span>. Su derivada <span class="math inline">\(p=\ell'(v)\)</span> asigna una pendiente a cada velocidad. Si podemos invertir esa relación en una región, definimos <span class="math inline">\(h(p)=p\,v(p)-\ell(v(p)).\)</span></p>
+<p><span id="fig:I-28-N01"></span></p>
+<figure id="fig-fpm-v04-i-28-n01" class="fpm-v04-panel figure">
+<p><a href="../assets/6275e6416d780b7aee6bf37c.svg" class="lightbox" data-gallery="fpm-v04-c28"><img src="../assets/6275e6416d780b7aee6bf37c.svg" alt="Pendiente y dualidad de Legendre. Diagrama del capítulo 28; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="381" height="241" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 28.1.</strong> Para <span class="math inline">\(L(v)=v^2/2\)</span>, la tangente en <span class="math inline">\(v=1\)</span> tiene pendiente <span class="math inline">\(p=1\)</span> y ordenada al origen <span class="math inline">\(-H=-1/2\)</span>. La transformada es <span class="math inline">\(H=pv-L=v^2/2\)</span> en ese punto. Véase §<a href="#fispm-c28-pendientes-y-transformada-de-legendre">2</a>.</p>
+</figcaption>
+</figure>
+<p>Al derivar, los términos que contienen <span class="math inline">\(v'(p)\)</span> se cancelan: <span class="math inline">\(h'(p)=v+p\,v'-\ell'(v)v'=v.\)</span> La nueva función contiene la relación inversa. Para <span class="math inline">\(\ell(v)=mv^2/2\)</span>, con <span class="math inline">\(m&gt;0\)</span>, tenemos <span class="math inline">\(p=mv\)</span>, <span class="math inline">\(v=p/m\)</span> y <span class="math inline">\(h=p^2/(2m)\)</span>. Los factores físicos importan: <span class="math inline">\(p\)</span> tiene unidades de momento lineal y <span class="math inline">\(h\)</span> de energía, mientras que <span class="math inline">\(h'\)</span> tiene unidades de velocidad.</p>
 <p><span id="fispm-t1-c28-p0001"></span></p>
-<p><strong>Proposición FPM-I-28-P01 — Inversión local en una variable.</strong> Si <span class="math inline">\(\ell\)</span> es <span class="math inline">\(C^2\)</span> y <span class="math inline">\(\ell''(v_0)\ne0\)</span>, existe una inversión local <span class="math inline">\(v=v(p)\)</span> cerca de <span class="math inline">\(p_0=\ell'(v_0)\)</span>. En ese entorno,</p>
-<p><span class="math display">\[
-h'(p)=v(p),\qquad h''(p)=\frac1{\ell''(v(p))}.
-\]</span></p>
+<p><strong>Proposición 28.1 — Inversión local en una variable.</strong> Si <span class="math inline">\(\ell\)</span> es <span class="math inline">\(C^2\)</span> y <span class="math inline">\(\ell''(v_0)\ne0\)</span>, existe una inversión local <span class="math inline">\(v=v(p)\)</span> cerca de <span class="math inline">\(p_0=\ell'(v_0)\)</span>. En ese entorno,</p>
+<p><span class="math display">\[h'(p)=v(p),\qquad h''(p)=\frac1{\ell''(v(p))}.\]</span></p>
 <p><strong>Demostración.</strong> El teorema de la función inversa se aplica a <span class="math inline">\(v\mapsto\ell'(v)\)</span>. La primera identidad se obtuvo por la regla de la cadena; derivarla y usar <span class="math inline">\(1=\ell''(v)v'\)</span> da la segunda. <span class="math inline">\(\square\)</span></p>
 <p>La condición local no exige convexidad. Para <span class="math inline">\(\ell=-v^2/2\)</span> obtenemos <span class="math inline">\(p=-v\)</span> y <span class="math inline">\(h=-p^2/2\)</span>: existe una transformación mecánica invertible, aunque el lagrangiano tenga curvatura negativa. La positividad cinética será una propiedad física de muchos modelos, no una condición lógica de toda transformación local.</p>
-<p>Otra construcción, usual en análisis convexo, define el conjugado por</p>
-<p><span class="math display">\[
-\ell^*(p)=\sup_v\{pv-\ell(v)\}.
-\]</span></p>
-<p>Esta fórmula selecciona máximos globales y puede producir valores infinitos. Coincide con la construcción anterior bajo hipótesis convexas apropiadas. No debemos usarla sin esas hipótesis para justificar cualquier cambio mecánico de variables.</p>
+<p>Otra construcción, usual en análisis convexo, define el conjugado por <span class="math inline">\(\ell^*(p)=\sup_v\{pv-\ell(v)\}.\)</span> Esta fórmula selecciona máximos globales y puede producir valores infinitos. Coincide con la construcción anterior bajo hipótesis convexas apropiadas. No debemos usarla sin esas hipótesis para justificar cualquier cambio mecánico de variables.</p>
+<p><span id="regularidad-local-y-dominios-globales"></span></p>
 <p><span id="fispm-t1-c28-s03"></span></p>
 <p><span id="fpm-i-28-s03"></span></p>
 </section>
-<section id="regularidad-local-y-dominios-globales" class="level2">
-<h2 class="anchored" data-anchor-id="regularidad-local-y-dominios-globales">§3. Regularidad local y dominios globales</h2>
+<section id="fispm-c28-regularidad-local-y-dominios-globales" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-regularidad-local-y-dominios-globales">3. Regularidad local y dominios globales</h2>
 <p><span id="fispm-t1-c28-d0003"></span></p>
-<p><strong>Definición FPM-I-28-D03 — Regularidad y regularidad global.</strong> Un lagrangiano es regular en una región si la matriz</p>
-<p><span class="math display">\[
-W_{ab}=\frac{\partial^2L}{\partial v^a\partial v^b}
-\]</span></p>
+<p><strong>Definición 28.3 — Regularidad y regularidad global.</strong> Un lagrangiano es regular en una región si la matriz</p>
+<p><span class="math display">\[W_{ab}=\frac{\partial^2L}{\partial v^a\partial v^b}\]</span></p>
 <p>es invertible en cada punto de ella. Diremos que su transformación de Legendre es globalmente invertible en los dominios especificados si constituye un difeomorfismo entre esos dominios; cuando esto ocurre en todas las fibras completas hacia sus duales, se suele llamar hiperrregular.</p>
 <p><span id="fispm-t1-c28-p0002"></span></p>
-<p><strong>Proposición FPM-I-28-P02 — Inversión por fibras.</strong> Si <span class="math inline">\(W(q_0,v_0,t_0)\)</span> es invertible, la relación <span class="math inline">\(p=L_{,v}(q,v,t)\)</span> determina una función local suave <span class="math inline">\(v=V(q,p,t)\)</span>, y</p>
-<p><span class="math display">\[
-\frac{\partial V^a}{\partial p_b}=(W^{-1})^{ab}.
-\]</span></p>
+<p><strong>Proposición 28.2 — Inversión por fibras.</strong> Si <span class="math inline">\(W(q_0,v_0,t_0)\)</span> es invertible, la relación <span class="math inline">\(p=L_{,v}(q,v,t)\)</span> determina una función local suave <span class="math inline">\(v=V(q,p,t)\)</span>, y</p>
+<p><span class="math display">\[\frac{\partial V^a}{\partial p_b}=(W^{-1})^{ab}.\]</span></p>
 <p><strong>Demostración.</strong> Aplicamos el teorema de la función implícita al sistema <span class="math inline">\(L_{,v}(q,v,t)-p=0\)</span>, cuya derivada respecto de <span class="math inline">\(v\)</span> es <span class="math inline">\(W\)</span>. Derivar el sistema respecto de <span class="math inline">\(p_b\)</span>, con <span class="math inline">\(q,t\)</span> fijos, da <span class="math inline">\(W_{ac}\,\partial V^c/\partial p_b=\delta_a{}^b\)</span>. <span class="math inline">\(\square\)</span></p>
 <p>Una matriz invertible en varios puntos no garantiza una única inversa global. Para</p>
-<p><span class="math display">\[
-\ell(v)=\frac{v^4}{4}-\frac{v^2}{2},\qquad p=v^3-v,
-\]</span></p>
+<p><span class="math display">\[\ell(v)=\frac{v^4}{4}-\frac{v^2}{2},\qquad p=v^3-v,\]</span></p>
 <p>el momento <span class="math inline">\(p=0\)</span> corresponde a <span class="math inline">\(v=-1,0,1\)</span>. Los tres puntos son regulares porque <span class="math inline">\(3v^2-1\)</span> vale respectivamente <span class="math inline">\(2,-1,2\)</span>. Cada uno admite su propia rama local; mezclarlas perdería la información de qué estado estamos describiendo.</p>
 <p>Incluso una función estrictamente convexa puede no generar todos los momentos. Si <span class="math inline">\(\ell(v)=e^v\)</span>, entonces <span class="math inline">\(p=e^v&gt;0\)</span>; su inversa <span class="math inline">\(v=\log p\)</span> sólo está definida para <span class="math inline">\(p&gt;0\)</span>. La regularidad debe acompañarse de un dominio declarado.</p>
 <p><span id="fispm-t1-c28-p0003"></span></p>
-<p><strong>Proposición FPM-I-28-P03 — Una condición suficiente global.</strong> Fijados <span class="math inline">\(q,t\)</span>, supongamos que <span class="math inline">\(L\)</span> está definida en toda <span class="math inline">\(\mathbb R^n\)</span>, su hessiana en velocidades es positiva definida y es superlineal:</p>
-<p><span class="math display">\[
-\frac{L(q,v,t)}{\|v\|}\longrightarrow+\infty
-\quad\text{cuando }\|v\|\longrightarrow\infty.
-\]</span></p>
+<p><strong>Proposición 28.3 — Una condición suficiente global.</strong> Fijados <span class="math inline">\(q,t\)</span>, supongamos que <span class="math inline">\(L\)</span> está definida en toda <span class="math inline">\(\mathbb R^n\)</span>, su hessiana en velocidades es positiva definida y es superlineal:</p>
+<p><span class="math display">\[\frac{L(q,v,t)}{\|v\|}\longrightarrow+\infty \quad\text{cuando }\|v\|\longrightarrow\infty.\]</span></p>
 <p>Entonces cada <span class="math inline">\(p\in\mathbb R^n\)</span> corresponde a una única velocidad. El valor <span class="math inline">\(p\cdot v-L\)</span> en ella es el conjugado convexo.</p>
 <p><strong>Demostración.</strong> La función <span class="math inline">\(L-p\cdot v\)</span> tiende a <span class="math inline">\(+\infty\)</span> en el infinito, por lo que alcanza un mínimo. La hessiana positiva definida implica convexidad estricta: al restringir a cualquier segmento no constante, la segunda derivada es positiva. El mínimo es único y satisface <span class="math inline">\(L_{,v}=p\)</span>. La regularidad proporciona una inversa suave alrededor de cada punto; la unicidad permite unir esas inversas. Cambiar el signo convierte ese mínimo en el máximo que define el conjugado. <span class="math inline">\(\square\)</span></p>
 <p>Esta proposición es suficiente, no necesaria. En coordenadas locales de una variedad, el dominio de velocidades considerado también puede estar restringido; la afirmación global se refiere a la fibra completa indicada en sus hipótesis.</p>
+<p><span id="construcción-del-hamiltoniano"></span></p>
 <p><span id="fispm-t1-c28-s04"></span></p>
 <p><span id="fpm-i-28-s04"></span></p>
 </section>
-<section id="construcción-del-hamiltoniano" class="level2">
-<h2 class="anchored" data-anchor-id="construcción-del-hamiltoniano">§4. Construcción del hamiltoniano</h2>
+<section id="fispm-c28-construcciuxf3n-del-hamiltoniano" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-construcciuxf3n-del-hamiltoniano">4. Construcción del hamiltoniano</h2>
 <p><span id="fispm-t1-c28-d0004"></span></p>
-<p><strong>Definición FPM-I-28-D04 — Hamiltoniano asociado a una rama regular.</strong> Si <span class="math inline">\(v=V(q,p,t)\)</span> es la inversa elegida, ponemos</p>
-<p><span class="math display">\[
-H(q,p,t)=\sum_a p_aV^a(q,p,t)-L(q,V(q,p,t),t).
-\]</span></p>
-<p>Es la función de energía de I26 escrita en las variables nuevas. Su interpretación como energía física depende del modelo y del marco de referencia.</p>
+<p><strong>Definición 28.4 — Hamiltoniano asociado a una rama regular.</strong> Si <span class="math inline">\(v=V(q,p,t)\)</span> es la inversa elegida, ponemos</p>
+<p><span class="math display">\[H(q,p,t)=\sum_a p_aV^a(q,p,t)-L(q,V(q,p,t),t).\]</span></p>
+<p>Es la función de energía del capítulo 26 escrita en las variables nuevas. Su interpretación como energía física depende del modelo y del marco de referencia.</p>
 <p><span id="fispm-t1-c28-p0004"></span></p>
-<p><strong>Proposición FPM-I-28-P04 — Identidad diferencial fundamental.</strong> Evaluando las derivadas de <span class="math inline">\(L\)</span> en <span class="math inline">\(v=V(q,p,t)\)</span>,</p>
-<p><span class="math display">\[
-dH=\sum_a V^a\,dp_a-\sum_a L_{,q^a}\,dq^a-L_{,t}\,dt.
-\]</span></p>
-<p>En particular,</p>
-<p><span class="math display">\[
-H_{,p_a}=V^a,\qquad H_{,q^a}=-L_{,q^a},\qquad H_{,t}=-L_{,t}.
-\]</span></p>
+<p><strong>Proposición 28.4 — Identidad diferencial fundamental.</strong> Evaluando las derivadas de <span class="math inline">\(L\)</span> en <span class="math inline">\(v=V(q,p,t)\)</span>,</p>
+<p><span class="math display">\[dH=\sum_a V^a\,dp_a-\sum_a L_{,q^a}\,dq^a-L_{,t}\,dt.\]</span></p>
+<p>En particular, <span class="math inline">\(H_{,p_a}=V^a,\qquad H_{,q^a}=-L_{,q^a},\qquad H_{,t}=-L_{,t}.\)</span></p>
 <p><strong>Demostración.</strong> Diferenciamos la definición sin omitir la dependencia de <span class="math inline">\(V\)</span>:</p>
-<p><span class="math display">\[
-dH=V^a dp_a+p_a dV^a-L_{,q^a}dq^a-L_{,v^a}dV^a-L_{,t}dt.
-\]</span></p>
+<p><span class="math display">\[dH=V^a dp_a+p_a dV^a-L_{,q^a}dq^a-L_{,v^a}dV^a-L_{,t}dt.\]</span></p>
 <p>Usamos suma sobre índices repetidos. Los términos en <span class="math inline">\(dV^a\)</span> se anulan porque <span class="math inline">\(L_{,v^a}=p_a\)</span>. Quedan las tres identidades. <span class="math inline">\(\square\)</span></p>
 <p>La cancelación es el centro del método. Al derivar <span class="math inline">\(H\)</span> respecto de <span class="math inline">\(q\)</span> mantenemos fijo <span class="math inline">\(p\)</span>; al derivar <span class="math inline">\(L\)</span> respecto de <span class="math inline">\(q\)</span> mantenemos fijo <span class="math inline">\(v\)</span>. La igualdad relaciona esos dos procedimientos después de efectuar la sustitución. Sustituir primero <span class="math inline">\(p=mv\)</span> y luego derivar manteniendo fija la variable equivocada produce ecuaciones distintas.</p>
-<p>También resulta</p>
-<p><span class="math display">\[
-H_{,p_ap_b}=(W^{-1})^{ab}.
-\]</span></p>
-<p>Así, la regularidad puede comprobarse desde cualquiera de las dos descripciones. La transformación inversa reconstruye <span class="math inline">\(L=p\cdot v-H\)</span> después de invertir <span class="math inline">\(v=H_{,p}\)</span>. Se recupera el lagrangiano inicial en la misma rama, sin una pérdida local de información.</p>
+<p>También resulta <span class="math inline">\(H_{,p_ap_b}=(W^{-1})^{ab}.\)</span> Así, la regularidad puede comprobarse desde cualquiera de las dos descripciones. La transformación inversa reconstruye <span class="math inline">\(L=p\cdot v-H\)</span> después de invertir <span class="math inline">\(v=H_{,p}\)</span>. Se recupera el lagrangiano inicial en la misma rama, sin una pérdida local de información.</p>
+<p><span id="las-ecuaciones-de-hamilton"></span></p>
 <p><span id="fispm-t1-c28-s05"></span></p>
 <p><span id="fpm-i-28-s05"></span></p>
 </section>
-<section id="las-ecuaciones-de-hamilton" class="level2">
-<h2 class="anchored" data-anchor-id="las-ecuaciones-de-hamilton">§5. Las ecuaciones de Hamilton</h2>
+<section id="fispm-c28-las-ecuaciones-de-hamilton" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-las-ecuaciones-de-hamilton">5. Las ecuaciones de Hamilton</h2>
 <p><span id="fispm-t1-c28-d0005"></span></p>
-<p><strong>Definición FPM-I-28-D05 — Ecuaciones canónicas de Hamilton.</strong> Son las <span class="math inline">\(2n\)</span> ecuaciones de primer orden</p>
-<p><span class="math display">\[
-\dot q^a=\frac{\partial H}{\partial p_a},\qquad
-\dot p_a=-\frac{\partial H}{\partial q^a}.
-\]</span></p>
+<p><strong>Definición 28.5 — Ecuaciones canónicas de Hamilton.</strong> Son las <span class="math inline">\(2n\)</span> ecuaciones de primer orden</p>
+<p><span class="math display">\[\dot q^a=\frac{\partial H}{\partial p_a},\qquad \dot p_a=-\frac{\partial H}{\partial q^a}.\]</span></p>
 <p><span id="fispm-t1-c28-p0005"></span></p>
-<p><strong>Proposición FPM-I-28-P05 — Equivalencia dinámica local.</strong> En una rama regular, las soluciones de Euler–Lagrange se corresponden con las soluciones de Hamilton mediante <span class="math inline">\(p=L_{,v}\)</span> y <span class="math inline">\(v=V(q,p,t)\)</span>, mientras permanezcan en los dominios de esa rama.</p>
+<p><strong>Proposición 28.5 — Equivalencia dinámica local.</strong> En una rama regular, las soluciones de Euler–Lagrange se corresponden con las soluciones de Hamilton mediante <span class="math inline">\(p=L_{,v}\)</span> y <span class="math inline">\(v=V(q,p,t)\)</span>, mientras permanezcan en los dominios de esa rama.</p>
 <p><strong>Demostración.</strong> Si <span class="math inline">\(q(t)\)</span> satisface Euler–Lagrange, definimos <span class="math inline">\(p(t)=L_{,v}(q,\dot q,t)\)</span>. La inversión da <span class="math inline">\(\dot q=V=H_{,p}\)</span>. Además <span class="math inline">\(\dot p=L_{,q}=-H_{,q}\)</span>. Recíprocamente, una solución canónica satisface <span class="math inline">\(\dot q=V\)</span>, de donde <span class="math inline">\(p=L_{,v}(q,\dot q,t)\)</span>; su segunda ecuación se convierte en <span class="math inline">\(dL_{,v}/dt=L_{,q}\)</span>. Ambas construcciones se invierten en la rama elegida. <span class="math inline">\(\square\)</span></p>
 <p>Los datos iniciales son <span class="math inline">\(q(t_0)=q_0\)</span>, <span class="math inline">\(p(t_0)=p_0\)</span>. Si <span class="math inline">\(H\)</span> es <span class="math inline">\(C^2\)</span> en una región abierta, el campo de las ecuaciones es localmente lipschitziano en <span class="math inline">\((q,p)\)</span> y el problema inicial tiene solución local única. La existencia para todo tiempo requiere más información: una trayectoria puede escapar de la región de coordenadas, alcanzar una singularidad física o crecer sin cota.</p>
 <p>Si hay fuerzas generalizadas adicionales <span class="math inline">\(\mathcal Q_a(q,v,t)\)</span>, la equivalencia anterior da</p>
-<p><span class="math display">\[
-\dot q^a=H_{,p_a},\qquad
-\dot p_a=-H_{,q^a}+\mathcal Q_a(q,V,t).
-\]</span></p>
+<p><span class="math display">\[\dot q^a=H_{,p_a},\qquad \dot p_a=-H_{,q^a}+\mathcal Q_a(q,V,t).\]</span></p>
 <p>La segunda ecuación incluye el término de fuerza; ya no es el sistema canónico del mismo <span class="math inline">\(H\)</span> por sí solo. Para un amortiguador <span class="math inline">\(\mathcal Q=-bv\)</span>, con <span class="math inline">\(H=p^2/(2m)+kq^2/2\)</span>, obtenemos <span class="math inline">\(\dot p=-kq-bp/m\)</span>. El momento sigue siendo una variable útil aunque la energía disminuya.</p>
+<p><span id="lagrangianos-cuadráticos-y-momentos-desplazados"></span></p>
 <p><span id="fispm-t1-c28-s06"></span></p>
 <p><span id="fpm-i-28-s06"></span></p>
 </section>
-<section id="lagrangianos-cuadráticos-y-momentos-desplazados" class="level2">
-<h2 class="anchored" data-anchor-id="lagrangianos-cuadráticos-y-momentos-desplazados">§6. Lagrangianos cuadráticos y momentos desplazados</h2>
-<p>Consideremos la familia de I26:</p>
-<p><span class="math display">\[
-L=\frac12v^{\mathsf T}G(q,t)v+a(q,t)^{\mathsf T}v+c(q,t)-V(q,t),
-\]</span></p>
-<p>con <span class="math inline">\(G\)</span> simétrica invertible. En los modelos cinéticos ordinarios es positiva definida. El término lineal modifica el momento:</p>
-<p><span class="math display">\[
-p=Gv+a,\qquad v=G^{-1}(p-a).
-\]</span></p>
+<section id="fispm-c28-lagrangianos-cuadruxe1ticos-y-momentos-desplazados" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-lagrangianos-cuadruxe1ticos-y-momentos-desplazados">6. Lagrangianos cuadráticos y momentos desplazados</h2>
+<p>Consideremos la familia del capítulo 26: <span class="math inline">\(L=\frac12v^{\mathsf T}G(q,t)v+a(q,t)^{\mathsf T}v+c(q,t)-V(q,t),\)</span></p>
+<p>con <span class="math inline">\(G\)</span> simétrica invertible. En los modelos cinéticos ordinarios es positiva definida. El término lineal modifica el momento: <span class="math inline">\(p=Gv+a,\qquad v=G^{-1}(p-a).\)</span></p>
+<p><span id="fig:I-28-R01"></span></p>
+<figure id="fig-fpm-v04-i-28-r01" class="fpm-v04-panel figure">
+<p><a href="../assets/73f83165ebb3661f9b840bcd.svg" class="lightbox" data-gallery="fpm-v04-c28"><img src="../assets/73f83165ebb3661f9b840bcd.svg" alt="El momento puede diferir de la masa por la velocidad. Diagrama del capítulo 28; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="381" height="231" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 28.2.</strong> Para <span class="math inline">\(L=v^2/2+a v-U\)</span>, el momento es <span class="math inline">\(p=v+a\)</span>. Las dos rectas comparan <span class="math inline">\(a=0\)</span> y <span class="math inline">\(a=1\)</span>. Invertir la relación exige conservar ese desplazamiento al construir <span class="math inline">\(H=(p-a)^2/2+U\)</span>. Véase §<a href="#fispm-c28-lagrangianos-cuadruxe1ticos-y-momentos-desplazados">6</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c28-p0006"></span></p>
-<p><strong>Proposición FPM-I-28-P06 — Hamiltoniano mecánico cuadrático.</strong> Para este lagrangiano,</p>
-<p><span class="math display">\[
-H=\frac12(p-a)^{\mathsf T}G^{-1}(p-a)+V-c.
-\]</span></p>
+<p><strong>Proposición 28.6 — Hamiltoniano mecánico cuadrático.</strong> Para este lagrangiano,</p>
+<p><span class="math display">\[H=\frac12(p-a)^{\mathsf T}G^{-1}(p-a)+V-c.\]</span></p>
 <p><strong>Demostración.</strong> Al restar <span class="math inline">\(L\)</span> de <span class="math inline">\(p^{\mathsf T}v=(Gv+a)^{\mathsf T}v\)</span>, el término lineal se cancela y queda <span class="math inline">\(v^{\mathsf T}Gv/2+V-c\)</span>. Sustituimos la velocidad inversa. <span class="math inline">\(\square\)</span></p>
 <p>Aunque <span class="math inline">\(a\)</span> desaparezca de la energía expresada en velocidades, reaparece en <span class="math inline">\(H(q,p,t)\)</span> porque determina qué velocidad corresponde a cada momento. Esa dependencia puede producir fuerzas que no realizan trabajo.</p>
 <p>En una dimensión, si <span class="math inline">\(L=m(q)v^2/2-V(q)\)</span> y <span class="math inline">\(m(q)&gt;0\)</span>,</p>
-<p><span class="math display">\[
-H=\frac{p^2}{2m(q)}+V(q),\qquad
-\dot q=\frac p{m(q)},\qquad
-\dot p=\frac{m'(q)p^2}{2m(q)^2}-V'(q).
-\]</span></p>
-<p>Sustituir <span class="math inline">\(p=m(q)\dot q\)</span> en la última ecuación da</p>
-<p><span class="math display">\[
-m(q)\ddot q+\frac12m'(q)\dot q^2+V'(q)=0.
-\]</span></p>
-<p>La derivada de la masa efectiva no representa necesariamente una masa material variable: puede provenir de la geometría de la coordenada. En todos los casos, derivar <span class="math inline">\(H\)</span> a momento fijo es lo que recupera el factor correcto.</p>
+<p><span class="math display">\[H=\frac{p^2}{2m(q)}+V(q),\qquad \dot q=\frac p{m(q)},\qquad \dot p=\frac{m'(q)p^2}{2m(q)^2}-V'(q).\]</span></p>
+<p>Sustituir <span class="math inline">\(p=m(q)\dot q\)</span> en la última ecuación da <span class="math inline">\(m(q)\ddot q+\frac12m'(q)\dot q^2+V'(q)=0.\)</span> La derivada de la masa efectiva no representa necesariamente una masa material variable: puede provenir de la geometría de la coordenada. En todos los casos, derivar <span class="math inline">\(H\)</span> a momento fijo es lo que recupera el factor correcto.</p>
+<p><span id="el-oscilador-y-sus-curvas-de-fase"></span></p>
 <p><span id="fispm-t1-c28-s07"></span></p>
 <p><span id="fpm-i-28-s07"></span></p>
 </section>
-<section id="el-oscilador-y-sus-curvas-de-fase" class="level2">
-<h2 class="anchored" data-anchor-id="el-oscilador-y-sus-curvas-de-fase">§7. El oscilador y sus curvas de fase</h2>
+<section id="fispm-c28-el-oscilador-y-sus-curvas-de-fase" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-el-oscilador-y-sus-curvas-de-fase">7. El oscilador y sus curvas de fase</h2>
 <p>Para <span class="math inline">\(m,k&gt;0\)</span>, escribimos <span class="math inline">\(\omega=\sqrt{k/m}\)</span> y</p>
-<p><span class="math display">\[
-H(q,p)=\frac{p^2}{2m}+\frac12m\omega^2q^2.
-\]</span></p>
+<p><span class="math display">\[H(q,p)=\frac{p^2}{2m}+\frac12m\omega^2q^2.\]</span></p>
 <p><span id="fispm-t1-c28-p0007"></span></p>
-<p><strong>Proposición FPM-I-28-P07 — Flujo del oscilador.</strong> Con datos iniciales <span class="math inline">\((q_0,p_0)\)</span> en <span class="math inline">\(t=0\)</span>,</p>
-<p><span class="math display">\[
-q(t)=q_0\cos\omega t+\frac{p_0}{m\omega}\sin\omega t,
-\]</span></p>
-<p><span class="math display">\[
-p(t)=p_0\cos\omega t-m\omega q_0\sin\omega t.
-\]</span></p>
+<p><strong>Proposición 28.7 — Flujo del oscilador.</strong> Con datos iniciales <span class="math inline">\((q_0,p_0)\)</span> en <span class="math inline">\(t=0\)</span>,</p>
+<p><span class="math display">\[q(t)=q_0\cos\omega t+\frac{p_0}{m\omega}\sin\omega t,\]</span></p>
+<p><span class="math display">\[p(t)=p_0\cos\omega t-m\omega q_0\sin\omega t.\]</span></p>
 <p>Las trayectorias no estacionarias son elipses de energía constante y período <span class="math inline">\(2\pi/\omega\)</span>.</p>
 <p><strong>Demostración.</strong> Derivar las dos expresiones verifica <span class="math inline">\(\dot q=p/m\)</span> y <span class="math inline">\(\dot p=-m\omega^2q\)</span>, además de los datos iniciales. La unicidad identifica esa solución. Sustituir en <span class="math inline">\(H\)</span> cancela los términos cruzados y conserva <span class="math inline">\(H(q_0,p_0)\)</span>. Para energía positiva el nivel es una elipse; en energía cero queda el origen. <span class="math inline">\(\square\)</span></p>
 <p>En las coordenadas reescaladas <span class="math inline">\(x=\sqrt{m\omega}\,q\)</span>, <span class="math inline">\(y=p/\sqrt{m\omega}\)</span>, las elipses se convierten en círculos y las ecuaciones son <span class="math inline">\(\dot x=\omega y\)</span>, <span class="math inline">\(\dot y=-\omega x\)</span>. Este reescalamiento deja visible el sentido horario de la evolución en el plano <span class="math inline">\((x,y)\)</span>.</p>
+<p><span id="fig:I-28-N02"></span></p>
+<figure id="fig-fpm-v04-i-28-n02" class="fpm-v04-panel figure">
+<p><a href="../assets/0cc674c30efdc02dccef8d8e.svg" class="lightbox" data-gallery="fpm-v04-c28"><img src="../assets/0cc674c30efdc02dccef8d8e.svg" alt="Niveles de Hamilton. Diagrama del capítulo 28; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="358" height="269" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 28.3.</strong> Con <span class="math inline">\(m=k=1\)</span>, <span class="math inline">\(H=(q^2+p^2)/2\)</span>. Las curvas de energía son círculos y el flujo gira en sentido horario: en <span class="math inline">\(q&gt;0,p=0\)</span>, <span class="math inline">\(\dot p=-q&lt;0\)</span>. Véase §<a href="#fispm-c28-el-oscilador-y-sus-curvas-de-fase">7</a>.</p>
+</figcaption>
+</figure>
 <p>En un sistema autónomo, dos órbitas distintas no pueden cruzarse en un estado regular: si pasan por el mismo punto, la unicidad, junto con una traslación del origen temporal, las hace partes de una misma órbita. Para un sistema dependiente del tiempo, la unicidad compara estados en el mismo instante. Las curvas proyectadas sobre <span class="math inline">\((q,p)\)</span> sí pueden encontrarse en tiempos diferentes, porque el campo que actúa en ese punto puede haber cambiado.</p>
 <p>Una curva de nivel no siempre determina toda la trayectoria. Con varios grados de libertad, un nivel regular de energía tiene dimensión <span class="math inline">\(2n-1\)</span>, mientras que una órbita sigue siendo una curva. La geometría tan completa del oscilador de un grado de libertad es un caso especialmente favorable.</p>
+<p><span id="el-péndulo-libraciones-rotaciones-y-separatriz"></span></p>
 <p><span id="fispm-t1-c28-s08"></span></p>
 <p><span id="fpm-i-28-s08"></span></p>
 </section>
-<section id="el-péndulo-libraciones-rotaciones-y-separatriz" class="level2">
-<h2 class="anchored" data-anchor-id="el-péndulo-libraciones-rotaciones-y-separatriz">§8. El péndulo: libraciones, rotaciones y separatriz</h2>
+<section id="fispm-c28-el-puxe9ndulo-libraciones-rotaciones-y-separatriz" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-el-puxe9ndulo-libraciones-rotaciones-y-separatriz">8. El péndulo: libraciones, rotaciones y separatriz</h2>
 <p>Sea <span class="math inline">\(I=m\ell^2\)</span> y <span class="math inline">\(A=mg\ell\)</span>. Con el mínimo de potencial en <span class="math inline">\(\theta=0\)</span>,</p>
-<p><span class="math display">\[
-H(\theta,p)=\frac{p^2}{2I}+A(1-\cos\theta),\qquad
-\dot\theta=\frac pI,\quad\dot p=-A\sin\theta.
-\]</span></p>
+<p><span class="math display">\[H(\theta,p)=\frac{p^2}{2I}+A(1-\cos\theta),\qquad \dot\theta=\frac pI,\quad\dot p=-A\sin\theta.\]</span></p>
 <p><span id="fispm-t1-c28-p0008"></span></p>
-<p><strong>Proposición FPM-I-28-P08 — Regímenes de energía del péndulo.</strong> Para <span class="math inline">\(0&lt;E&lt;2A\)</span>, el movimiento libra alrededor de la posición inferior. Para <span class="math inline">\(E&gt;2A\)</span>, gira con signo constante de <span class="math inline">\(p\)</span>. El nivel <span class="math inline">\(E=2A\)</span> contiene el equilibrio superior y las ramas que se aproximan a él asintóticamente.</p>
+<p><strong>Proposición 28.8 — Regímenes de energía del péndulo.</strong> Para <span class="math inline">\(0&lt;E&lt;2A\)</span>, el movimiento libra alrededor de la posición inferior. Para <span class="math inline">\(E&gt;2A\)</span>, gira con signo constante de <span class="math inline">\(p\)</span>. El nivel <span class="math inline">\(E=2A\)</span> contiene el equilibrio superior y las ramas que se aproximan a él asintóticamente.</p>
 <p><strong>Demostración.</strong> La conservación de <span class="math inline">\(H\)</span> exige</p>
-<p><span class="math display">\[
-p=\pm\sqrt{2I\,[E-A(1-\cos\theta)]}.
-\]</span></p>
-<p>Si <span class="math inline">\(0&lt;E&lt;2A\)</span>, hay dos puntos de retorno alrededor del mínimo, donde <span class="math inline">\(p=0\)</span> y el movimiento invierte su sentido. Si <span class="math inline">\(E&gt;2A\)</span>, la raíz nunca se anula; el signo del momento permanece fijo y el ángulo recorre el círculo. Para <span class="math inline">\(E=2A\)</span>, la raíz se anula en el máximo del potencial, <span class="math inline">\(\theta=\pi\)</span> módulo <span class="math inline">\(2\pi\)</span>. Cerca de éste, poniendo <span class="math inline">\(x=\theta-\pi\)</span>,</p>
-<p><span class="math display">\[
-E-A(1-\cos\theta)=\frac A2x^2+O(x^4).
-\]</span></p>
+<p><span class="math display">\[p=\pm\sqrt{2I\,[E-A(1-\cos\theta)]}.\]</span></p>
+<p>Si <span class="math inline">\(0&lt;E&lt;2A\)</span>, hay dos puntos de retorno alrededor del mínimo, donde <span class="math inline">\(p=0\)</span> y el movimiento invierte su sentido. Si <span class="math inline">\(E&gt;2A\)</span>, la raíz nunca se anula; el signo del momento permanece fijo y el ángulo recorre el círculo. Para <span class="math inline">\(E=2A\)</span>, la raíz se anula en el máximo del potencial, <span class="math inline">\(\theta=\pi\)</span> módulo <span class="math inline">\(2\pi\)</span>. Cerca de éste, poniendo <span class="math inline">\(x=\theta-\pi\)</span>, <span class="math inline">\(E-A(1-\cos\theta)=\frac A2x^2+O(x^4).\)</span></p>
+<p><span id="fig:I-28-N03"></span></p>
+<figure id="fig-fpm-v04-i-28-n03" class="fpm-v04-panel figure">
+<p><a href="../assets/dbb564b2840cf8136e0be4bd.svg" class="lightbox" data-gallery="fpm-v04-c28"><img src="../assets/dbb564b2840cf8136e0be4bd.svg" alt="Libración, separatriz y rotación. Diagrama del capítulo 28; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="469" height="331" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 28.4.</strong> Para <span class="math inline">\(H=p^2/2+1-\cos\theta\)</span>, se muestran <span class="math inline">\(E=0{,}5\)</span>, <span class="math inline">\(2\)</span> y <span class="math inline">\(2{,}6\)</span>. El nivel <span class="math inline">\(E=2\)</span> es la separatriz; las libraciones quedan debajo y las rotaciones encima. Los bordes angulares se identifican. Véase §<a href="#fispm-c28-el-puxe9ndulo-libraciones-rotaciones-y-separatriz">8</a>.</p>
+</figcaption>
+</figure>
 <p>Por tanto <span class="math inline">\(|\dot x|\sim\sqrt{A/I}\,|x|\)</span> y el tiempo requerido para alcanzar <span class="math inline">\(x=0\)</span> contiene una integral proporcional a <span class="math inline">\(\int dx/|x|\)</span>, que diverge. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c28-d0006"></span></p>
-<p><strong>Definición FPM-I-28-D06 — Separatriz del péndulo.</strong> Son las ramas no estacionarias del nivel crítico <span class="math inline">\(H=2A\)</span> que separan las regiones de libración y rotación; junto con el equilibrio superior forman el nivel separador completo.</p>
+<p><strong>Definición 28.6 — Separatriz del péndulo.</strong> Son las ramas no estacionarias del nivel crítico <span class="math inline">\(H=2A\)</span> que separan las regiones de libración y rotación; junto con el equilibrio superior forman el nivel separador completo.</p>
 <p>En el cilindro, ambas representaciones <span class="math inline">\(\theta=-\pi\)</span> y <span class="math inline">\(\theta=\pi\)</span> corresponden al mismo equilibrio. Una rama separatriz sale de él cuando <span class="math inline">\(t\to-\infty\)</span> y vuelve cuando <span class="math inline">\(t\to+\infty\)</span> después de rodear el cilindro. No alcanza el equilibrio en tiempo finito y luego decide abandonarlo: eso contradiría la unicidad.</p>
 <p>El período de libración es</p>
-<p><span class="math display">\[
-T(E)=2\sqrt{2I}\int_0^{\theta_{\max}}
-\frac{d\theta}{\sqrt{E-A(1-\cos\theta)}}.
-\]</span></p>
+<p><span class="math display">\[T(E)=2\sqrt{2I}\int_0^{\theta_{\max}} \frac{d\theta}{\sqrt{E-A(1-\cos\theta)}}.\]</span></p>
 <p>El factor cuatro de un cuarto de oscilación se ha combinado con <span class="math inline">\(\sqrt{I/2}\)</span> de la ecuación temporal. Cerca del mínimo recuperamos <span class="math inline">\(T\to2\pi\sqrt{I/A}\)</span>; cerca de la separatriz el período diverge. La conservación de energía permite describir esos regímenes sin exigir una fórmula elemental de <span class="math inline">\(\theta(t)\)</span>.</p>
+<p><span id="movimiento-central-y-coordenadas-polares"></span></p>
 <p><span id="fispm-t1-c28-s09"></span></p>
 <p><span id="fpm-i-28-s09"></span></p>
 </section>
-<section id="movimiento-central-y-coordenadas-polares" class="level2">
-<h2 class="anchored" data-anchor-id="movimiento-central-y-coordenadas-polares">§9. Movimiento central y coordenadas polares</h2>
-<p>En el plano, excluyendo el origen y usando una carta angular,</p>
-<p><span class="math display">\[
-L=\frac m2(\dot r^2+r^2\dot\theta^2)-V(r).
-\]</span></p>
-<p>Los momentos y el hamiltoniano son</p>
-<p><span class="math display">\[
-p_r=m\dot r,\qquad p_\theta=mr^2\dot\theta,\qquad
-H=\frac{p_r^2}{2m}+\frac{p_\theta^2}{2mr^2}+V(r).
-\]</span></p>
+<section id="fispm-c28-movimiento-central-y-coordenadas-polares" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-movimiento-central-y-coordenadas-polares">9. Movimiento central y coordenadas polares</h2>
+<p>En el plano, excluyendo el origen y usando una carta angular, <span class="math inline">\(L=\frac m2(\dot r^2+r^2\dot\theta^2)-V(r).\)</span> Los momentos y el hamiltoniano son</p>
+<p><span class="math display">\[p_r=m\dot r,\qquad p_\theta=mr^2\dot\theta,\qquad H=\frac{p_r^2}{2m}+\frac{p_\theta^2}{2mr^2}+V(r).\]</span></p>
 <p>Las ecuaciones completas resultan</p>
-<p><span class="math display">\[
-\dot r=\frac{p_r}m,\quad
-\dot\theta=\frac{p_\theta}{mr^2},\quad
-\dot p_r=\frac{p_\theta^2}{mr^3}-V'(r),\quad
-\dot p_\theta=0.
-\]</span></p>
-<p>El momento angular conservado de I27 aparece como el momento de una coordenada cíclica. Fijando su valor <span class="math inline">\(p_\theta=j\)</span>, el subsistema radial tiene energía</p>
-<p><span class="math display">\[
-H_j(r,p_r)=\frac{p_r^2}{2m}+V_{\mathrm{ef}}(r),\qquad
-V_{\mathrm{ef}}(r)=V(r)+\frac{j^2}{2mr^2}.
-\]</span></p>
+<p><span class="math display">\[\dot r=\frac{p_r}m,\quad \dot\theta=\frac{p_\theta}{mr^2},\quad \dot p_r=\frac{p_\theta^2}{mr^3}-V'(r),\quad \dot p_\theta=0.\]</span></p>
+<p>El momento angular conservado del capítulo 27 aparece como el momento de una coordenada cíclica. Fijando su valor <span class="math inline">\(p_\theta=j\)</span>, el subsistema radial tiene energía</p>
+<p><span class="math display">\[H_j(r,p_r)=\frac{p_r^2}{2m}+V_{\mathrm{ef}}(r),\qquad V_{\mathrm{ef}}(r)=V(r)+\frac{j^2}{2mr^2}.\]</span></p>
 <p><span id="fispm-t1-c28-p0009"></span></p>
-<p><strong>Proposición FPM-I-28-P09 — Reducción radial y reconstrucción.</strong> Una solución radial de <span class="math inline">\(H_j\)</span> con <span class="math inline">\(r&gt;0\)</span> determina una solución del sistema completo, una vez elegido <span class="math inline">\(\theta_0\)</span>, mediante</p>
-<p><span class="math display">\[
-\theta(t)=\theta_0+\int_{t_0}^t\frac{j}{m r(s)^2}\,ds,
-\qquad p_\theta(t)=j.
-\]</span></p>
+<p><strong>Proposición 28.9 — Reducción radial y reconstrucción.</strong> Una solución radial de <span class="math inline">\(H_j\)</span> con <span class="math inline">\(r&gt;0\)</span> determina una solución del sistema completo, una vez elegido <span class="math inline">\(\theta_0\)</span>, mediante</p>
+<p><span class="math display">\[\theta(t)=\theta_0+\int_{t_0}^t\frac{j}{m r(s)^2}\,ds, \qquad p_\theta(t)=j.\]</span></p>
 <p><strong>Demostración.</strong> Las ecuaciones de <span class="math inline">\(H_j\)</span> son exactamente las ecuaciones de <span class="math inline">\(r,p_r\)</span> del sistema completo sobre <span class="math inline">\(p_\theta=j\)</span>. La fórmula integral satisface la ecuación angular y el dato inicial; la constancia de <span class="math inline">\(j\)</span> satisface la última ecuación. Por sustitución se verifican las cuatro. <span class="math inline">\(\square\)</span></p>
 <p>Una órbita circular requiere <span class="math inline">\(V_{\mathrm{ef}}'(r_0)=0\)</span> y <span class="math inline">\(p_r=0\)</span>. Su estabilidad radial lineal depende de <span class="math inline">\(V_{\mathrm{ef}}''(r_0)\)</span>, como ya sugerían las pequeñas oscilaciones. La reducción conserva la información angular sólo si acompañamos el problema radial con la ecuación de reconstrucción. Suprimir el ángulo y olvidar esa ecuación impide recuperar la órbita física.</p>
 <p>La singularidad de las fórmulas en <span class="math inline">\(r=0\)</span> también exige interpretación. Las coordenadas polares dejan de ser una carta allí, aunque una trayectoria cartesiana pueda ser regular. Si además el potencial es singular en el origen, hay una dificultad física adicional que un cambio de coordenadas no elimina.</p>
+<p><span id="oscilaciones-acopladas-en-variables-canónicas"></span></p>
 <p><span id="fispm-t1-c28-s10"></span></p>
 <p><span id="fpm-i-28-s10"></span></p>
 </section>
-<section id="oscilaciones-acopladas-en-variables-canónicas" class="level2">
-<h2 class="anchored" data-anchor-id="oscilaciones-acopladas-en-variables-canónicas">§10. Oscilaciones acopladas en variables canónicas</h2>
+<section id="fispm-c28-oscilaciones-acopladas-en-variables-canuxf3nicas" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-oscilaciones-acopladas-en-variables-canuxf3nicas">10. Oscilaciones acopladas en variables canónicas</h2>
 <p>Para matrices constantes simétricas <span class="math inline">\(M&gt;0\)</span> y <span class="math inline">\(K\)</span>, tenemos</p>
-<p><span class="math display">\[
-L=\frac12\dot q^{\mathsf T}M\dot q-\frac12q^{\mathsf T}Kq,
-\qquad p=M\dot q,
-\]</span></p>
-<p><span class="math display">\[
-H=\frac12p^{\mathsf T}M^{-1}p+\frac12q^{\mathsf T}Kq.
-\]</span></p>
-<p>De I24 elegimos una base modal <span class="math inline">\(U\)</span> que satisface</p>
-<p><span class="math display">\[
-U^{\mathsf T}MU=\mathbf1,\qquad
-U^{\mathsf T}KU=\Lambda=\operatorname{diag}(\lambda_1,\ldots,\lambda_n).
-\]</span></p>
+<p><span class="math display">\[L=\frac12\dot q^{\mathsf T}M\dot q-\frac12q^{\mathsf T}Kq, \qquad p=M\dot q,\]</span></p>
+<p><span class="math display">\[H=\frac12p^{\mathsf T}M^{-1}p+\frac12q^{\mathsf T}Kq.\]</span></p>
+<p>De capítulo 24 elegimos una base modal <span class="math inline">\(U\)</span> que satisface</p>
+<p><span class="math display">\[U^{\mathsf T}MU=\mathbf1,\qquad U^{\mathsf T}KU=\Lambda=\operatorname{diag}(\lambda_1,\ldots,\lambda_n).\]</span></p>
 <p><span id="fispm-t1-c28-p0010"></span></p>
-<p><strong>Proposición FPM-I-28-P10 — Momentos de los modos normales.</strong> Bajo <span class="math inline">\(q=UQ\)</span>, los momentos adecuados son <span class="math inline">\(P=U^{\mathsf T}p\)</span>, de modo que <span class="math inline">\(p=U^{-\mathsf T}P=MU P\)</span>. En esas variables,</p>
-<p><span class="math display">\[
-H=\frac12P^{\mathsf T}P+\frac12Q^{\mathsf T}\Lambda Q,
-\qquad \dot Q_i=P_i,\quad\dot P_i=-\lambda_iQ_i.
-\]</span></p>
+<p><strong>Proposición 28.10 — Momentos de los modos normales.</strong> Bajo <span class="math inline">\(q=UQ\)</span>, los momentos adecuados son <span class="math inline">\(P=U^{\mathsf T}p\)</span>, de modo que <span class="math inline">\(p=U^{-\mathsf T}P=MU P\)</span>. En esas variables,</p>
+<p><span class="math display">\[H=\frac12P^{\mathsf T}P+\frac12Q^{\mathsf T}\Lambda Q, \qquad \dot Q_i=P_i,\quad\dot P_i=-\lambda_iQ_i.\]</span></p>
 <p><strong>Demostración.</strong> La regla de transformación de momentos de §1 da <span class="math inline">\(P=U^{\mathsf T}p\)</span>. De <span class="math inline">\(U^{\mathsf T}MU=\mathbf1\)</span> se sigue <span class="math inline">\(MU=U^{-\mathsf T}\)</span>; por tanto el término cinético se convierte en <span class="math inline">\(P^{\mathsf T}P/2\)</span>. El término potencial se transforma según la segunda identidad modal. Las ecuaciones se obtienen derivando el hamiltoniano resultante. <span class="math inline">\(\square\)</span></p>
-<p>Cambiar <span class="math inline">\(q\)</span> y <span class="math inline">\(p\)</span> con la misma matriz arbitraria no reproduce esta cuenta. La posición y el momento son variables duales: si <span class="math inline">\(q=UQ\)</span>, el emparejamiento <span class="math inline">\(p^{\mathsf T}dq\)</span> exige <span class="math inline">\(P=U^{\mathsf T}p\)</span>. En una base ortogonal euclídea algunos factores se simplifican, pero la normalización de I24 era respecto de <span class="math inline">\(M\)</span>.</p>
+<p>Cambiar <span class="math inline">\(q\)</span> y <span class="math inline">\(p\)</span> con la misma matriz arbitraria no reproduce esta cuenta. La posición y el momento son variables duales: si <span class="math inline">\(q=UQ\)</span>, el emparejamiento <span class="math inline">\(p^{\mathsf T}dq\)</span> exige <span class="math inline">\(P=U^{\mathsf T}p\)</span>. En una base ortogonal euclídea algunos factores se simplifican, pero la normalización del capítulo 24 era respecto de <span class="math inline">\(M\)</span>.</p>
 <p>Si <span class="math inline">\(\lambda_i&gt;0\)</span>, cada par <span class="math inline">\((Q_i,P_i)\)</span> es un oscilador de frecuencia <span class="math inline">\(\sqrt{\lambda_i}\)</span>. Si <span class="math inline">\(\lambda_i=0\)</span>, ese par describe una deriva libre. Si <span class="math inline">\(\lambda_i&lt;0\)</span>, aparecen soluciones exponenciales. La formulación hamiltoniana sigue siendo regular en los tres casos porque la inversión de velocidades depende de <span class="math inline">\(M\)</span>, no del signo de <span class="math inline">\(K\)</span>.</p>
+<p><span id="una-fuerza-giroscópica"></span></p>
 <p><span id="fispm-t1-c28-s11"></span></p>
 <p><span id="fpm-i-28-s11"></span></p>
 </section>
-<section id="una-fuerza-giroscópica" class="level2">
-<h2 class="anchored" data-anchor-id="una-fuerza-giroscópica">§11. Una fuerza giroscópica</h2>
+<section id="fispm-c28-una-fuerza-giroscuxf3pica" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-una-fuerza-giroscuxf3pica">11. Una fuerza giroscópica</h2>
 <p>Retomemos el modelo plano</p>
-<p><span class="math display">\[
-L=\frac m2(\dot x^2+\dot y^2)
-+\frac\gamma2(x\dot y-y\dot x)-V(x,y),\qquad m&gt;0.
-\]</span></p>
+<p><span class="math display">\[L=\frac m2(\dot x^2+\dot y^2) +\frac\gamma2(x\dot y-y\dot x)-V(x,y),\qquad m&gt;0.\]</span></p>
 <p>Aquí</p>
-<p><span class="math display">\[
-p_x=m\dot x-\frac\gamma2y,\qquad
-p_y=m\dot y+\frac\gamma2x.
-\]</span></p>
+<p><span class="math display">\[p_x=m\dot x-\frac\gamma2y,\qquad p_y=m\dot y+\frac\gamma2x.\]</span></p>
 <p><span id="fispm-t1-c28-p0011"></span></p>
-<p><strong>Proposición FPM-I-28-P11 — Hamiltoniano y fuerza giroscópica.</strong> El hamiltoniano es</p>
-<p><span class="math display">\[
-H=\frac1{2m}\left[\left(p_x+\frac\gamma2y\right)^2
-+\left(p_y-\frac\gamma2x\right)^2\right]+V(x,y).
-\]</span></p>
+<p><strong>Proposición 28.11 — Hamiltoniano y fuerza giroscópica.</strong> El hamiltoniano es</p>
+<p><span class="math display">\[H=\frac1{2m}\left[\left(p_x+\frac\gamma2y\right)^2 +\left(p_y-\frac\gamma2x\right)^2\right]+V(x,y).\]</span></p>
 <p>Sus ecuaciones implican</p>
-<p><span class="math display">\[
-m\ddot x=\gamma\dot y-V_{,x},\qquad
-m\ddot y=-\gamma\dot x-V_{,y}.
-\]</span></p>
+<p><span class="math display">\[m\ddot x=\gamma\dot y-V_{,x},\qquad m\ddot y=-\gamma\dot x-V_{,y}.\]</span></p>
 <p><strong>Demostración.</strong> La fórmula de §6 proporciona <span class="math inline">\(H\)</span>. Definiendo <span class="math inline">\(u=p_x+\gamma y/2\)</span> y <span class="math inline">\(w=p_y-\gamma x/2\)</span>, las primeras ecuaciones dan <span class="math inline">\(\dot x=u/m\)</span>, <span class="math inline">\(\dot y=w/m\)</span>. Las otras dos son</p>
-<p><span class="math display">\[
-\dot p_x=\frac\gamma{2m}w-V_{,x},\qquad
-\dot p_y=-\frac\gamma{2m}u-V_{,y}.
-\]</span></p>
+<p><span class="math display">\[\dot p_x=\frac\gamma{2m}w-V_{,x},\qquad \dot p_y=-\frac\gamma{2m}u-V_{,y}.\]</span></p>
 <p>Al derivar <span class="math inline">\(m\dot x=p_x+\gamma y/2\)</span> y <span class="math inline">\(m\dot y=p_y-\gamma x/2\)</span>, se suman las dos mitades de cada término giroscópico. Resultan las aceleraciones anunciadas. <span class="math inline">\(\square\)</span></p>
 <p>El vector de fuerza <span class="math inline">\(\gamma(\dot y,-\dot x)\)</span> es perpendicular a la velocidad. Para <span class="math inline">\(V\)</span> independiente del tiempo, la energía <span class="math inline">\(m(\dot x^2+\dot y^2)/2+V\)</span> se conserva. Esta energía coincide con <span class="math inline">\(H\)</span> evaluado en el estado correspondiente, pero <span class="math inline">\(p_x,p_y\)</span> no son las componentes del momento cinético <span class="math inline">\(m\dot q\)</span>.</p>
-<p>La distinción también afecta a las simetrías. Si <span class="math inline">\(V=V(\sqrt{x^2+y^2})\)</span>, el momento de rotaciones es</p>
-<p><span class="math display">\[
-J=xp_y-yp_x=m(x\dot y-y\dot x)+\frac\gamma2(x^2+y^2).
-\]</span></p>
-<p>Su conservación no obliga a conservar por separado el momento angular cinético. El término adicional compensa el torque de la fuerza giroscópica.</p>
+<p>La distinción también afecta a las simetrías. Si <span class="math inline">\(V=V(\sqrt{x^2+y^2})\)</span>, el momento de rotaciones es <span class="math inline">\(J=xp_y-yp_x=m(x\dot y-y\dot x)+\frac\gamma2(x^2+y^2).\)</span> Su conservación no obliga a conservar por separado el momento angular cinético. El término adicional compensa el torque de la fuerza giroscópica.</p>
+<p><span id="coordenadas-móviles-y-términos-de-borde"></span></p>
 <p><span id="fispm-t1-c28-s12"></span></p>
 <p><span id="fpm-i-28-s12"></span></p>
 </section>
-<section id="coordenadas-móviles-y-términos-de-borde" class="level2">
-<h2 class="anchored" data-anchor-id="coordenadas-móviles-y-términos-de-borde">§12. Coordenadas móviles y términos de borde</h2>
+<section id="fispm-c28-coordenadas-muxf3viles-y-tuxe9rminos-de-borde" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-coordenadas-muxf3viles-y-tuxe9rminos-de-borde">12. Coordenadas móviles y términos de borde</h2>
 <p>Sea <span class="math inline">\(q=f(Q,t)\)</span> un cambio puntual con jacobiana invertible <span class="math inline">\(J=\partial f/\partial Q\)</span>. Entonces <span class="math inline">\(\dot q=J\dot Q+f_{,t}\)</span>. Definimos el nuevo lagrangiano sustituyendo esta expresión y el nuevo momento <span class="math inline">\(P=J^{\mathsf T}p\)</span>.</p>
 <p><span id="fispm-t1-c28-p0012"></span></p>
-<p><strong>Proposición FPM-I-28-P12 — Hamiltoniano en coordenadas móviles.</strong> En las variables relacionadas por <span class="math inline">\(q=f(Q,t)\)</span> y <span class="math inline">\(p=J^{-\mathsf T}P\)</span>,</p>
-<p><span class="math display">\[
-K(Q,P,t)=H(q,p,t)-p^{\mathsf T}f_{,t}(Q,t).
-\]</span></p>
+<p><strong>Proposición 28.12 — Hamiltoniano en coordenadas móviles.</strong> En las variables relacionadas por <span class="math inline">\(q=f(Q,t)\)</span> y <span class="math inline">\(p=J^{-\mathsf T}P\)</span>,</p>
+<p><span class="math display">\[K(Q,P,t)=H(q,p,t)-p^{\mathsf T}f_{,t}(Q,t).\]</span></p>
 <p><strong>Demostración.</strong> Por definición,</p>
-<p><span class="math display">\[
-K=P^{\mathsf T}\dot Q-L
-=p^{\mathsf T}(\dot q-f_{,t})-L
-=H-p^{\mathsf T}f_{,t}.
-\]</span></p>
+<p><span class="math display">\[K=P^{\mathsf T}\dot Q-L =p^{\mathsf T}(\dot q-f_{,t})-L =H-p^{\mathsf T}f_{,t}.\]</span></p>
 <p>La transformación puntual conserva la regularidad porque la nueva hessiana es <span class="math inline">\(J^{\mathsf T}WJ\)</span>. Podemos aplicar la equivalencia de §5 al lagrangiano transformado. Sus ecuaciones de Hamilton describen las mismas curvas físicas expresadas en <span class="math inline">\(Q\)</span>. <span class="math inline">\(\square\)</span></p>
 <p>Para <span class="math inline">\(q=Q+b(t)\)</span>, un cuerpo libre tiene</p>
-<p><span class="math display">\[
-K=\frac{P^2}{2m}-P\dot b,\qquad
-\dot Q=\frac Pm-\dot b,\qquad \dot P=0.
-\]</span></p>
-<p>La aceleración de la coordenada es <span class="math inline">\(\ddot Q=-\ddot b\)</span>, aunque <span class="math inline">\(P\)</span> permanezca constante: el momento conjugado de este lagrangiano es <span class="math inline">\(m(\dot Q+\dot b)\)</span>.</p>
-<p>En una rotación plana uniforme <span class="math inline">\(q=R(\Omega t)Q\)</span>, el término <span class="math inline">\(p^{\mathsf T}f_{,t}\)</span> es <span class="math inline">\(\Omega J_z\)</span>. Para un potencial central estacionario,</p>
-<p><span class="math display">\[
-K=\frac{P^{\mathsf T}P}{2m}+V(|Q|)-\Omega(Q_xP_y-Q_yP_x).
-\]</span></p>
-<p>Así reaparece la combinación energía menos velocidad angular por momento angular que encontramos en I26. La función generadora de la evolución en un marco móvil puede diferir de la energía medida en el laboratorio.</p>
+<p><span class="math display">\[K=\frac{P^2}{2m}-P\dot b,\qquad \dot Q=\frac Pm-\dot b,\qquad \dot P=0.\]</span></p>
+<p>La aceleración de la coordenada es <span class="math inline">\(\ddot Q=-\ddot b\)</span>, aunque <span class="math inline">\(P\)</span> permanezca constante: el momento conjugado de este lagrangiano es <span class="math inline">\(m(\dot Q+\dot b)\)</span>. En una rotación plana uniforme <span class="math inline">\(q=R(\Omega t)Q\)</span>, el término <span class="math inline">\(p^{\mathsf T}f_{,t}\)</span> es <span class="math inline">\(\Omega J_z\)</span>. Para un potencial central estacionario, <span class="math inline">\(K=\frac{P^{\mathsf T}P}{2m}+V(|Q|)-\Omega(Q_xP_y-Q_yP_x).\)</span></p>
+<p>Así reaparece la combinación energía menos velocidad angular por momento angular que encontramos en el capítulo 26. La función generadora de la evolución en un marco móvil puede diferir de la energía medida en el laboratorio.</p>
 <p>Un segundo cambio procede de añadir una derivada total al lagrangiano.</p>
 <p><span id="fispm-t1-c28-p0013"></span></p>
-<p><strong>Proposición FPM-I-28-P13 — Cambio por un término de borde.</strong> Si</p>
-<p><span class="math display">\[
-\widetilde L=L+\frac{dG(q,t)}{dt},
-\]</span></p>
-<p>los momentos nuevos satisfacen <span class="math inline">\(P=p+G_{,q}\)</span> y el hamiltoniano nuevo es</p>
-<p><span class="math display">\[
-\widetilde H(q,P,t)=H(q,P-G_{,q},t)-G_{,t}.
-\]</span></p>
-<p>Las trayectorias de configuración permanecen iguales.</p>
+<p><strong>Proposición 28.13 — Cambio por un término de borde.</strong> Si</p>
+<p><span class="math display">\[\widetilde L=L+\frac{dG(q,t)}{dt},\]</span></p>
+<p>los momentos nuevos satisfacen <span class="math inline">\(P=p+G_{,q}\)</span> y el hamiltoniano nuevo es <span class="math inline">\(\widetilde H(q,P,t)=H(q,P-G_{,q},t)-G_{,t}.\)</span> Las trayectorias de configuración permanecen iguales.</p>
 <p><strong>Demostración.</strong> Como <span class="math inline">\(dG/dt=G_{,q}\cdot v+G_{,t}\)</span>, derivar respecto de <span class="math inline">\(v\)</span> da la relación de momentos. Entonces</p>
-<p><span class="math display">\[
-P\cdot v-\widetilde L=p\cdot v-L-G_{,t}.
-\]</span></p>
+<p><span class="math display">\[P\cdot v-\widetilde L=p\cdot v-L-G_{,t}.\]</span></p>
 <p>Sustituimos <span class="math inline">\(p=P-G_{,q}\)</span>. La acción lagrangiana cambia sólo en <span class="math inline">\(G(q(t_1),t_1)-G(q(t_0),t_0)\)</span>, que no modifica las ecuaciones con extremos de configuración fijos; la regularidad tampoco cambia. <span class="math inline">\(\square\)</span></p>
-<p>Esta fórmula muestra por qué no debemos comparar funciones hamiltonianas en variables cuyo significado ha cambiado sin efectuar también la sustitución del momento. Para la carga de Noether, la expresión de I27 pasa a ser <span class="math inline">\(J=p\cdot\xi-H\tau-F\)</span> en las variables canónicas. Bajo el término de borde, el desplazamiento de <span class="math inline">\(p\)</span>, el de <span class="math inline">\(H\)</span> y el del término <span class="math inline">\(F\)</span> se compensan.</p>
+<p>Esta fórmula muestra por qué no debemos comparar funciones hamiltonianas en variables cuyo significado ha cambiado sin efectuar también la sustitución del momento. Para la carga de Noether, la expresión del capítulo 27 pasa a ser <span class="math inline">\(J=p\cdot\xi-H\tau-F\)</span> en las variables canónicas. Bajo el término de borde, el desplazamiento de <span class="math inline">\(p\)</span>, el de <span class="math inline">\(H\)</span> y el del término <span class="math inline">\(F\)</span> se compensan.</p>
+<p><span id="la-acción-en-espacio-de-fases"></span></p>
 <p><span id="fispm-t1-c28-s13"></span></p>
 <p><span id="fpm-i-28-s13"></span></p>
 </section>
-<section id="la-acción-en-espacio-de-fases" class="level2">
-<h2 class="anchored" data-anchor-id="la-acción-en-espacio-de-fases">§13. La acción en espacio de fases</h2>
+<section id="fispm-c28-la-acciuxf3n-en-espacio-de-fases" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-la-acciuxf3n-en-espacio-de-fases">13. La acción en espacio de fases</h2>
 <p>Consideremos ahora <span class="math inline">\(q(t)\)</span> y <span class="math inline">\(p(t)\)</span> como curvas independientes y la acción</p>
-<p><span class="math display">\[
-\mathcal S[q,p]=\int_{t_0}^{t_1}
-\left(\sum_a p_a\dot q^a-H(q,p,t)\right)dt.
-\]</span></p>
+<p><span class="math display">\[\mathcal S[q,p]=\int_{t_0}^{t_1} \left(\sum_a p_a\dot q^a-H(q,p,t)\right)dt.\]</span></p>
 <p><span id="fispm-t1-c28-p0014"></span></p>
-<p><strong>Proposición FPM-I-28-P14 — Principio variacional de Hamilton en fases.</strong> Con los tiempos y las posiciones extremas fijos, la estacionariedad de <span class="math inline">\(\mathcal S\)</span> respecto de variaciones independientes de <span class="math inline">\(q,p\)</span> equivale a las ecuaciones canónicas. No se requiere fijar los momentos extremos para anular el término de borde.</p>
+<p><strong>Proposición 28.14 — Principio variacional de Hamilton en fases.</strong> Con los tiempos y las posiciones extremas fijos, la estacionariedad de <span class="math inline">\(\mathcal S\)</span> respecto de variaciones independientes de <span class="math inline">\(q,p\)</span> equivale a las ecuaciones canónicas. No se requiere fijar los momentos extremos para anular el término de borde.</p>
 <p><strong>Demostración.</strong> La primera variación es</p>
-<p><span class="math display">\[
-\delta\mathcal S=\int\left[
-\delta p_a(\dot q^a-H_{,p_a})+p_a\delta\dot q^a
--H_{,q^a}\delta q^a\right]dt.
-\]</span></p>
+<p><span class="math display">\[\delta\mathcal S=\int\left[ \delta p_a(\dot q^a-H_{,p_a})+p_a\delta\dot q^a -H_{,q^a}\delta q^a\right]dt.\]</span></p>
 <p>Integramos el término con <span class="math inline">\(\delta\dot q\)</span> por partes:</p>
-<p><span class="math display">\[
-\delta\mathcal S=[p_a\delta q^a]_{t_0}^{t_1}
-+\int\left[(\dot q^a-H_{,p_a})\delta p_a
-+(-\dot p_a-H_{,q^a})\delta q^a\right]dt.
-\]</span></p>
+<p><span class="math display">\[\delta\mathcal S=[p_a\delta q^a]_{t_0}^{t_1} +\int\left[(\dot q^a-H_{,p_a})\delta p_a +(-\dot p_a-H_{,q^a})\delta q^a\right]dt.\]</span></p>
 <p>El borde desaparece porque <span class="math inline">\(\delta q\)</span> se anula en los extremos. La independencia de las variaciones interiores y el lema fundamental dan ambas ecuaciones. Si se satisfacen, la misma identidad prueba la estacionariedad. <span class="math inline">\(\square\)</span></p>
 <p>Eliminar <span class="math inline">\(p\)</span> mediante la ecuación algebraica <span class="math inline">\(\dot q=H_{,p}\)</span> recupera <span class="math inline">\(p\cdot\dot q-H=L(q,\dot q,t)\)</span> en una rama regular. Las dos acciones están relacionadas por esa eliminación, aunque en el principio de fases se varían inicialmente <span class="math inline">\(q\)</span> y <span class="math inline">\(p\)</span> de manera independiente.</p>
 <p>Fijar posiciones en los extremos es una condición para la variación, no una garantía de que cualquier par de posiciones determine una única solución. El problema de contorno puede tener varias soluciones o ninguna. Por su parte, fijar arbitrariamente las <span class="math inline">\(2n\)</span> variables de fase en ambos extremos suele imponer demasiados datos a un sistema de primer orden. El problema inicial sigue consistiendo en dar un único estado <span class="math inline">\((q_0,p_0)\)</span> en un instante.</p>
+<p><span id="evolución-de-observables-y-alcance-del-formalismo"></span></p>
 <p><span id="fispm-t1-c28-s14"></span></p>
 <p><span id="fpm-i-28-s14"></span></p>
 </section>
-<section id="evolución-de-observables-y-alcance-del-formalismo" class="level2">
-<h2 class="anchored" data-anchor-id="evolución-de-observables-y-alcance-del-formalismo">§14. Evolución de observables y alcance del formalismo</h2>
+<section id="fispm-c28-evoluciuxf3n-de-observables-y-alcance-del-formalismo" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-evoluciuxf3n-de-observables-y-alcance-del-formalismo">14. Evolución de observables y alcance del formalismo</h2>
 <p>Un observable es aquí una función suave <span class="math inline">\(A(q,p,t)\)</span>. La regla de la cadena y las ecuaciones canónicas dan</p>
-<p><span class="math display">\[
-\frac{dA}{dt}=A_{,t}
-+\sum_a\left(A_{,q^a}H_{,p_a}-A_{,p_a}H_{,q^a}\right).
-\]</span></p>
+<p><span class="math display">\[\frac{dA}{dt}=A_{,t} +\sum_a\left(A_{,q^a}H_{,p_a}-A_{,p_a}H_{,q^a}\right).\]</span></p>
 <p><span id="fispm-t1-c28-p0015"></span></p>
-<p><strong>Proposición FPM-I-28-P15 — Balance hamiltoniano.</strong> En el sistema canónico,</p>
-<p><span class="math display">\[
-\frac{dH}{dt}=\frac{\partial H}{\partial t}.
-\]</span></p>
-<p>Si hay fuerzas adicionales <span class="math inline">\(\mathcal Q_a\)</span> como en §5,</p>
-<p><span class="math display">\[
-\frac{dH}{dt}=H_{,t}+\sum_a\dot q^a\mathcal Q_a.
-\]</span></p>
+<p><strong>Proposición 28.15 — Balance hamiltoniano.</strong> En el sistema canónico,</p>
+<p><span class="math display">\[\frac{dH}{dt}=\frac{\partial H}{\partial t}.\]</span></p>
+<p>Si hay fuerzas adicionales <span class="math inline">\(\mathcal Q_a\)</span> como en §5, <span class="math inline">\(\frac{dH}{dt}=H_{,t}+\sum_a\dot q^a\mathcal Q_a.\)</span></p>
 <p><strong>Demostración.</strong> Aplicamos la regla anterior a <span class="math inline">\(A=H\)</span>. Cada producto <span class="math inline">\(H_{,q^a}H_{,p_a}\)</span> se cancela con su opuesto. En el sistema forzado queda además <span class="math inline">\(H_{,p_a}\mathcal Q_a=\dot q^a\mathcal Q_a\)</span>. <span class="math inline">\(\square\)</span></p>
-<p>La ausencia de dependencia temporal explícita conserva <span class="math inline">\(H\)</span>. Una coordenada ausente conserva su momento porque <span class="math inline">\(\dot p_a=-H_{,q^a}=0\)</span>. Una integral puede depender explícitamente del tiempo: para la partícula libre, <span class="math inline">\(A=q-tp/m\)</span> conserva la posición extrapolada al instante cero. Las cargas de I27 tienen ahora esta misma condición diferencial de conservación.</p>
+<p>La ausencia de dependencia temporal explícita conserva <span class="math inline">\(H\)</span>. Una coordenada ausente conserva su momento porque <span class="math inline">\(\dot p_a=-H_{,q^a}=0\)</span>. Una integral puede depender explícitamente del tiempo: para la partícula libre, <span class="math inline">\(A=q-tp/m\)</span> conserva la posición extrapolada al instante cero. Las cargas del capítulo 27 tienen ahora esta misma condición diferencial de conservación.</p>
 <p>El paso a variables canónicas deja de ser una simple sustitución cuando el lagrangiano es degenerado. Si <span class="math inline">\(L(x,y,\dot x,\dot y)=m\dot x^2/2-V(x,y)\)</span>, encontramos <span class="math inline">\(p_x=m\dot x\)</span> y <span class="math inline">\(p_y=0\)</span> para cualquier <span class="math inline">\(\dot y\)</span>. No podemos reconstruir <span class="math inline">\(\dot y\)</span>. La ecuación de <span class="math inline">\(y\)</span> impone <span class="math inline">\(V_{,y}=0\)</span>, que es una condición adicional sobre las trayectorias. El tratamiento sistemático de restricciones exige un formalismo posterior; asignar sin justificación <span class="math inline">\(\dot y=p_y/m\)</span> cambiaría el modelo.</p>
 <p>También hay límites analíticos: en potenciales no suaves debemos revisar las hipótesis de unicidad y las derivaciones; en variedades necesitamos cartas compatibles; una rama local puede terminar donde la hessiana pierde rango. Las ecuaciones obtenidas no prometen soluciones globales por el hecho de estar escritas en primer orden.</p>
-<p>La expresión bilineal que ha aparecido en la evolución de <span class="math inline">\(A\)</span> será el punto de partida de I29. Allí estudiaremos los corchetes de Poisson, la forma simpléctica canónica y las transformaciones que conservan esta estructura. En este capítulo hemos establecido la equivalencia dinámica y variacional necesaria para dar a esa geometría un contenido mecánico preciso.</p>
+<p>La expresión bilineal que ha aparecido en la evolución de <span class="math inline">\(A\)</span> será el punto de partida del capítulo 29. Allí estudiaremos los corchetes de Poisson, la forma simpléctica canónica y las transformaciones que conservan esta estructura. En este capítulo hemos establecido la equivalencia dinámica y variacional necesaria para dar a esa geometría un contenido mecánico preciso.</p>
+<p><span id="ejercicios"></span></p>
 </section>
-<section id="ejercicios" class="level2">
-<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<section id="fispm-c28-ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-ejercicios">15. Ejercicios</h2>
 <p><span id="fispm-t1-c28-e0001"></span></p>
-<section id="fpm-i-28-e01-unidades-y-estado" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e01-unidades-y-estado">FPM-I-28-E01 — Unidades y estado</h3>
-<p>Para un oscilador traslacional, determine las unidades de <span class="math inline">\(p\)</span>, <span class="math inline">\(H\)</span> y <span class="math inline">\(H_{,p}\)</span>. Explique qué dato falta si sólo se conoce <span class="math inline">\(q\)</span>.</p>
-<p><span id="fispm-t1-c28-e0002"></span></p>
-</section>
-<section id="fpm-i-28-e02-una-pendiente-desplazada" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e02-una-pendiente-desplazada">FPM-I-28-E02 — Una pendiente desplazada</h3>
-<p>Transforme <span class="math inline">\(\ell(v)=mv^2/2+av+c\)</span>, con constantes <span class="math inline">\(m&gt;0,a,c\)</span>. Verifique las dos derivadas de P01.</p>
-<p><span id="fispm-t1-c28-e0003"></span></p>
-</section>
-<section id="fpm-i-28-e03-curvatura-negativa" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e03-curvatura-negativa">FPM-I-28-E03 — Curvatura negativa</h3>
-<p>Calcule la transformación mecánica de <span class="math inline">\(\ell=-v^2/2\)</span>. Determine su conjugado definido como supremo y compare ambos resultados.</p>
-<p><span id="fispm-t1-c28-e0004"></span></p>
-</section>
-<section id="fpm-i-28-e04-tres-ramas" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e04-tres-ramas">FPM-I-28-E04 — Tres ramas</h3>
-<p>Para <span class="math inline">\(\ell=v^4/4-v^2/2\)</span>, localice los puntos donde falla la regularidad. Calcule los valores del hamiltoniano de cada rama sobre <span class="math inline">\(p=0\)</span>.</p>
-<p><span id="fispm-t1-c28-e0005"></span></p>
-</section>
-<section id="fpm-i-28-e05-rango-del-momento" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e05-rango-del-momento">FPM-I-28-E05 — Rango del momento</h3>
-<p>Para <span class="math inline">\(\ell=e^v\)</span>, obtenga <span class="math inline">\(h(p)\)</span> en su dominio mecánico. Calcule además <span class="math inline">\(\ell^*(0)\)</span> y <span class="math inline">\(\ell^*(p)\)</span> para <span class="math inline">\(p&lt;0\)</span>.</p>
-<p><span id="fispm-t1-c28-e0006"></span></p>
-</section>
-<section id="fpm-i-28-e06-un-ejemplo-global-no-cuadrático" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e06-un-ejemplo-global-no-cuadrático">FPM-I-28-E06 — Un ejemplo global no cuadrático</h3>
-<p>Sea <span class="math inline">\(\ell(v)=v^2/2+v^4/4\)</span>. Pruebe que cada momento real determina una única velocidad y calcule <span class="math inline">\(h\)</span> paramétricamente en función de <span class="math inline">\(v\)</span>.</p>
-<p><span id="fispm-t1-c28-e0007"></span></p>
-</section>
-<section id="fpm-i-28-e07-transformación-inversa" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e07-transformación-inversa">FPM-I-28-E07 — Transformación inversa</h3>
-<p>Partiendo de <span class="math inline">\(H(q,p)=p^2/[2m(q)]+V(q)\)</span>, con <span class="math inline">\(m(q)&gt;0\)</span>, reconstruya <span class="math inline">\(L\)</span> y su ecuación de segundo orden.</p>
-<p><span id="fispm-t1-c28-e0008"></span></p>
-</section>
-<section id="fpm-i-28-e08-energía-con-resorte-variable" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e08-energía-con-resorte-variable">FPM-I-28-E08 — Energía con resorte variable</h3>
-<p>Sea <span class="math inline">\(L=m\dot q^2/2-k(t)q^2/2\)</span>. Halle <span class="math inline">\(H\)</span>, las ecuaciones y <span class="math inline">\(dH/dt\)</span>. Determine si <span class="math inline">\(H_{,t}=-L_{,t}\)</span> exige mantener fija la misma variable cinemática.</p>
-<p><span id="fispm-t1-c28-e0009"></span></p>
-</section>
-<section id="fpm-i-28-e09-amortiguamiento" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e09-amortiguamiento">FPM-I-28-E09 — Amortiguamiento</h3>
-<p>Para <span class="math inline">\(\mathcal Q=-b\dot q\)</span>, <span class="math inline">\(b&gt;0\)</span>, en un oscilador, deduzca la variación de energía. Determine en qué estados se anula instantáneamente.</p>
-<p><span id="fispm-t1-c28-e0010"></span></p>
-</section>
-<section id="fpm-i-28-e10-matriz-cinética" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e10-matriz-cinética">FPM-I-28-E10 — Matriz cinética</h3>
-<p>Sea <span class="math inline">\(L=\dot x^2+\dot x\dot y+\dot y^2-V(x,y)\)</span>. Halle los momentos, invierta la relación y obtenga <span class="math inline">\(H\)</span>.</p>
-<p><span id="fispm-t1-c28-e0011"></span></p>
-</section>
-<section id="fpm-i-28-e11-momento-afín" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e11-momento-afín">FPM-I-28-E11 — Momento afín</h3>
-<p>Para <span class="math inline">\(L=m\dot q^2/2+a(q)\dot q-V(q)\)</span>, construya <span class="math inline">\(H\)</span> y compruebe que la fuerza final es <span class="math inline">\(-V'(q)\)</span>.</p>
-<p><span id="fispm-t1-c28-e0012"></span></p>
-</section>
-<section id="fpm-i-28-e12-un-cuarto-de-período" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e12-un-cuarto-de-período">FPM-I-28-E12 — Un cuarto de período</h3>
-<p>Para el oscilador con <span class="math inline">\(m=2\)</span>, <span class="math inline">\(\omega=3\)</span>, <span class="math inline">\(q_0=1\)</span>, <span class="math inline">\(p_0=0\)</span>, determine el estado en <span class="math inline">\(t=\pi/6\)</span> y la energía. Indique el sentido de movimiento inicial.</p>
-<p><span id="fispm-t1-c28-e0013"></span></p>
-</section>
-<section id="fpm-i-28-e13-niveles-y-órbitas" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e13-niveles-y-órbitas">FPM-I-28-E13 — Niveles y órbitas</h3>
-<p>En dos osciladores independientes de frecuencia <span class="math inline">\(\omega\)</span>, pruebe que <span class="math inline">\(H=E&gt;0\)</span> no especifica una órbita única. Exhiba dos órbitas distintas en el mismo nivel.</p>
-<p><span id="fispm-t1-c28-e0014"></span></p>
-</section>
-<section id="fpm-i-28-e14-retorno-del-péndulo" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e14-retorno-del-péndulo">FPM-I-28-E14 — Retorno del péndulo</h3>
-<p>Si el péndulo tiene <span class="math inline">\(E=A\)</span>, encuentre sus ángulos de retorno. Calcule el momento cuando pasa por la posición inferior.</p>
-<p><span id="fispm-t1-c28-e0015"></span></p>
-</section>
-<section id="fpm-i-28-e15-separatriz-explícita" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e15-separatriz-explícita">FPM-I-28-E15 — Separatriz explícita</h3>
-<p>Verifique que <span class="math inline">\(\theta(t)=4\arctan(e^{\alpha t})-\pi\)</span>, con <span class="math inline">\(\alpha=\sqrt{A/I}\)</span> y <span class="math inline">\(p=I\dot\theta\)</span>, describe una rama del nivel <span class="math inline">\(H=2A\)</span>.</p>
-<p><span id="fispm-t1-c28-e0016"></span></p>
-</section>
-<section id="fpm-i-28-e16-cruces-con-tiempo-dependiente" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e16-cruces-con-tiempo-dependiente">FPM-I-28-E16 — Cruces con tiempo dependiente</h3>
-<p>Considere <span class="math inline">\(H(q,p,t)=tp\)</span>. Resuelva las ecuaciones y muestre que una curva proyectada puede pasar por el mismo estado en tiempos diferentes sin violar la unicidad.</p>
-<p><span id="fispm-t1-c28-e0017"></span></p>
-</section>
-<section id="fpm-i-28-e17-potencial-kepleriano" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e17-potencial-kepleriano">FPM-I-28-E17 — Potencial kepleriano</h3>
-<p>Para <span class="math inline">\(V(r)=-\kappa/r\)</span>, con <span class="math inline">\(\kappa&gt;0\)</span> y <span class="math inline">\(j\ne0\)</span>, halle el radio circular y la frecuencia de pequeñas oscilaciones radiales.</p>
-<p><span id="fispm-t1-c28-e0018"></span></p>
-</section>
-<section id="fpm-i-28-e18-reconstrucción-angular" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e18-reconstrucción-angular">FPM-I-28-E18 — Reconstrucción angular</h3>
-<p>En un movimiento central con <span class="math inline">\(j=0\)</span>, explique qué ocurre con el ángulo mientras <span class="math inline">\(r&gt;0\)</span>. ¿Puede usarse esa conclusión a través de <span class="math inline">\(r=0\)</span> sin más análisis?</p>
-<p><span id="fispm-t1-c28-e0019"></span></p>
-</section>
-<section id="fpm-i-28-e19-momento-modal" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e19-momento-modal">FPM-I-28-E19 — Momento modal</h3>
-<p>Suponga <span class="math inline">\(M=\operatorname{diag}(m_1,m_2)\)</span> y <span class="math inline">\(K=\operatorname{diag}(k_1,k_2)\)</span>, con masas positivas. Use <span class="math inline">\(U=\operatorname{diag}(m_1^{-1/2},m_2^{-1/2})\)</span> para escribir <span class="math inline">\(Q,P,H\)</span>.</p>
-<p><span id="fispm-t1-c28-e0020"></span></p>
-</section>
-<section id="fpm-i-28-e20-modo-de-frecuencia-cero" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e20-modo-de-frecuencia-cero">FPM-I-28-E20 — Modo de frecuencia cero</h3>
-<p>Resuelva las ecuaciones del hamiltoniano <span class="math inline">\(H=(P_1^2+P_2^2)/2+\omega^2Q_1^2/2\)</span>. Explique por qué la frecuencia cero no hace singular la transformación de Legendre.</p>
-<p><span id="fispm-t1-c28-e0021"></span></p>
-</section>
-<section id="fpm-i-28-e21-círculo-giroscópico" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e21-círculo-giroscópico">FPM-I-28-E21 — Círculo giroscópico</h3>
-<p>Con <span class="math inline">\(V=0\)</span>, <span class="math inline">\(\gamma\ne0\)</span>, en §11, encuentre dos constantes que describan el centro del movimiento y la frecuencia de giro de la velocidad.</p>
-<p><span id="fispm-t1-c28-e0022"></span></p>
-</section>
-<section id="fpm-i-28-e22-rotaciones-y-momento-cinético" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e22-rotaciones-y-momento-cinético">FPM-I-28-E22 — Rotaciones y momento cinético</h3>
-<p>Para el potencial central de §11, pruebe directamente la conservación de <span class="math inline">\(J=xp_y-yp_x\)</span> usando las aceleraciones.</p>
-<p><span id="fispm-t1-c28-e0023"></span></p>
-</section>
-<section id="fpm-i-28-e23-origen-acelerado" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e23-origen-acelerado">FPM-I-28-E23 — Origen acelerado</h3>
-<p>Para <span class="math inline">\(q=Q+at^2/2\)</span> y una partícula libre, calcule <span class="math inline">\(K\)</span>, sus ecuaciones y la aceleración de <span class="math inline">\(Q\)</span>. Distinga <span class="math inline">\(P\)</span> de <span class="math inline">\(m\dot Q\)</span>.</p>
-<p><span id="fispm-t1-c28-e0024"></span></p>
-</section>
-<section id="fpm-i-28-e24-marco-que-gira" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e24-marco-que-gira">FPM-I-28-E24 — Marco que gira</h3>
-<p>Deduzca de <span class="math inline">\(K=P^2/(2m)+m\omega_0^2Q^2/2-\Omega(Q_xP_y-Q_yP_x)\)</span> las ecuaciones de primer orden y elimine <span class="math inline">\(P\)</span>. Use la matriz <span class="math inline">\(S(Q_x,Q_y)=(-Q_y,Q_x)\)</span>.</p>
-<p><span id="fispm-t1-c28-e0025"></span></p>
-</section>
-<section id="fpm-i-28-e25-un-término-de-borde-temporal" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e25-un-término-de-borde-temporal">FPM-I-28-E25 — Un término de borde temporal</h3>
-<p>Añada <span class="math inline">\(dG/dt\)</span>, con <span class="math inline">\(G(q,t)=\beta tq^2/2\)</span>, al lagrangiano de una partícula libre. Halle <span class="math inline">\(P,\widetilde H\)</span> y compruebe la trayectoria libre.</p>
-<p><span id="fispm-t1-c28-e0026"></span></p>
-</section>
-<section id="fpm-i-28-e26-variación-en-fases" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e26-variación-en-fases">FPM-I-28-E26 — Variación en fases</h3>
-<p>Para <span class="math inline">\(H=p^2/(2m)+V(q)\)</span>, calcule la primera variación de <span class="math inline">\(\mathcal S\)</span>. Elimine <span class="math inline">\(p\)</span> y recupere la acción lagrangiana.</p>
-<p><span id="fispm-t1-c28-e0027"></span></p>
-</section>
-<section id="fpm-i-28-e27-un-problema-de-contorno" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e27-un-problema-de-contorno">FPM-I-28-E27 — Un problema de contorno</h3>
-<p>Para el oscilador de frecuencia <span class="math inline">\(\omega\)</span>, imponga <span class="math inline">\(q(0)=0\)</span> y <span class="math inline">\(q(T)=0\)</span>. Discuta la unicidad si <span class="math inline">\(\sin\omega T\ne0\)</span> y si <span class="math inline">\(T=\pi/\omega\)</span>.</p>
 <p><span id="fispm-t1-c28-e0028"></span></p>
-</section>
-<section id="fpm-i-28-e28-una-integral-temporal" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e28-una-integral-temporal">FPM-I-28-E28 — Una integral temporal</h3>
-<p>Compruebe que <span class="math inline">\(A=q-tp/m\)</span> se conserva para <span class="math inline">\(H=p^2/(2m)\)</span>. Identifique la carga del cambio galileano <span class="math inline">\(\xi=t\)</span> con término de borde <span class="math inline">\(F=mq\)</span>.</p>
+<p><strong>Ejercicio 28.1 — Unidades y estado.</strong> Para un oscilador traslacional, determine las unidades de <span class="math inline">\(p\)</span>, <span class="math inline">\(H\)</span> y <span class="math inline">\(H_{,p}\)</span>. Explique qué dato falta si sólo se conoce <span class="math inline">\(q\)</span>.</p>
+<p><span id="fispm-t1-c28-e0002"></span></p>
+<p><strong>Ejercicio 28.2 — Una pendiente desplazada.</strong> Transforme <span class="math inline">\(\ell(v)=mv^2/2+av+c\)</span>, con constantes <span class="math inline">\(m&gt;0,a,c\)</span>. Verifique las dos derivadas de la proposición 28.1.</p>
+<p><span id="fispm-t1-c28-e0003"></span></p>
+<p><strong>Ejercicio 28.3 — Curvatura negativa.</strong> Calcule la transformación mecánica de <span class="math inline">\(\ell=-v^2/2\)</span>. Determine su conjugado definido como supremo y compare ambos resultados.</p>
+<p><span id="fispm-t1-c28-e0004"></span></p>
+<p><strong>Ejercicio 28.4 — Tres ramas.</strong> Para <span class="math inline">\(\ell=v^4/4-v^2/2\)</span>, localice los puntos donde falla la regularidad. Calcule los valores del hamiltoniano de cada rama sobre <span class="math inline">\(p=0\)</span>.</p>
+<p><span id="fispm-t1-c28-e0005"></span></p>
+<p><strong>Ejercicio 28.5 — Rango del momento.</strong> Para <span class="math inline">\(\ell=e^v\)</span>, obtenga <span class="math inline">\(h(p)\)</span> en su dominio mecánico. Calcule además <span class="math inline">\(\ell^*(0)\)</span> y <span class="math inline">\(\ell^*(p)\)</span> para <span class="math inline">\(p&lt;0\)</span>.</p>
+<p><span id="fispm-t1-c28-e0006"></span></p>
+<p><strong>Ejercicio 28.6 — Un ejemplo global no cuadrático.</strong> Sea <span class="math inline">\(\ell(v)=v^2/2+v^4/4\)</span>. Pruebe que cada momento real determina una única velocidad y calcule <span class="math inline">\(h\)</span> paramétricamente en función de <span class="math inline">\(v\)</span>.</p>
+<p><span id="fispm-t1-c28-e0007"></span></p>
+<p><strong>Ejercicio 28.7 — Transformación inversa.</strong> Partiendo de <span class="math inline">\(H(q,p)=p^2/[2m(q)]+V(q)\)</span>, con <span class="math inline">\(m(q)&gt;0\)</span>, reconstruya <span class="math inline">\(L\)</span> y su ecuación de segundo orden.</p>
+<p><span id="fispm-t1-c28-e0008"></span></p>
+<p><strong>Ejercicio 28.8 — Energía con resorte variable.</strong> Sea <span class="math inline">\(L=m\dot q^2/2-k(t)q^2/2\)</span>. Halle <span class="math inline">\(H\)</span>, las ecuaciones y <span class="math inline">\(dH/dt\)</span>. Determine si <span class="math inline">\(H_{,t}=-L_{,t}\)</span> exige mantener fija la misma variable cinemática.</p>
+<p><span id="fispm-t1-c28-e0009"></span></p>
+<p><strong>Ejercicio 28.9 — Amortiguamiento.</strong> Para <span class="math inline">\(\mathcal Q=-b\dot q\)</span>, <span class="math inline">\(b&gt;0\)</span>, en un oscilador, deduzca la variación de energía. Determine en qué estados se anula instantáneamente.</p>
+<p><span id="fispm-t1-c28-e0010"></span></p>
+<p><strong>Ejercicio 28.10 — Matriz cinética.</strong> Sea <span class="math inline">\(L=\dot x^2+\dot x\dot y+\dot y^2-V(x,y)\)</span>. Halle los momentos, invierta la relación y obtenga <span class="math inline">\(H\)</span>.</p>
+<p><span id="fispm-t1-c28-e0011"></span></p>
+<p><strong>Ejercicio 28.11 — Momento afín.</strong> Para <span class="math inline">\(L=m\dot q^2/2+a(q)\dot q-V(q)\)</span>, construya <span class="math inline">\(H\)</span> y compruebe que la fuerza final es <span class="math inline">\(-V'(q)\)</span>.</p>
+<p><span id="fispm-t1-c28-e0012"></span></p>
+<p><strong>Ejercicio 28.12 — Un cuarto de período.</strong> Para el oscilador con <span class="math inline">\(m=2\)</span>, <span class="math inline">\(\omega=3\)</span>, <span class="math inline">\(q_0=1\)</span>, <span class="math inline">\(p_0=0\)</span>, determine el estado en <span class="math inline">\(t=\pi/6\)</span> y la energía. Indique el sentido de movimiento inicial.</p>
+<p><span id="fispm-t1-c28-e0013"></span></p>
+<p><strong>Ejercicio 28.13 — Niveles y órbitas.</strong> En dos osciladores independientes de frecuencia <span class="math inline">\(\omega\)</span>, pruebe que <span class="math inline">\(H=E&gt;0\)</span> no especifica una órbita única. Exhiba dos órbitas distintas en el mismo nivel.</p>
+<p><span id="fispm-t1-c28-e0014"></span></p>
+<p><strong>Ejercicio 28.14 — Retorno del péndulo.</strong> Si el péndulo tiene <span class="math inline">\(E=A\)</span>, encuentre sus ángulos de retorno. Calcule el momento cuando pasa por la posición inferior.</p>
+<p><span id="fispm-t1-c28-e0015"></span></p>
+<p><strong>Ejercicio 28.15 — Separatriz explícita.</strong> Verifique que <span class="math inline">\(\theta(t)=4\arctan(e^{\alpha t})-\pi\)</span>, con <span class="math inline">\(\alpha=\sqrt{A/I}\)</span> y <span class="math inline">\(p=I\dot\theta\)</span>, describe una rama del nivel <span class="math inline">\(H=2A\)</span>.</p>
+<p><span id="fispm-t1-c28-e0016"></span></p>
+<p><strong>Ejercicio 28.16 — Cruces con tiempo dependiente.</strong> Considere <span class="math inline">\(H(q,p,t)=tp\)</span>. Resuelva las ecuaciones y muestre que una curva proyectada puede pasar por el mismo estado en tiempos diferentes sin violar la unicidad.</p>
+<p><span id="fispm-t1-c28-e0017"></span></p>
+<p><strong>Ejercicio 28.17 — Potencial kepleriano.</strong> Para <span class="math inline">\(V(r)=-\kappa/r\)</span>, con <span class="math inline">\(\kappa&gt;0\)</span> y <span class="math inline">\(j\ne0\)</span>, halle el radio circular y la frecuencia de pequeñas oscilaciones radiales.</p>
+<p><span id="fispm-t1-c28-e0018"></span></p>
+<p><strong>Ejercicio 28.18 — Reconstrucción angular.</strong> En un movimiento central con <span class="math inline">\(j=0\)</span>, explique qué ocurre con el ángulo mientras <span class="math inline">\(r&gt;0\)</span>. ¿Puede usarse esa conclusión a través de <span class="math inline">\(r=0\)</span> sin más análisis?</p>
+<p><span id="fispm-t1-c28-e0019"></span></p>
+<p><strong>Ejercicio 28.19 — Momento modal.</strong> Suponga <span class="math inline">\(M=\operatorname{diag}(m_1,m_2)\)</span> y <span class="math inline">\(K=\operatorname{diag}(k_1,k_2)\)</span>, con masas positivas. Use <span class="math inline">\(U=\operatorname{diag}(m_1^{-1/2},m_2^{-1/2})\)</span> para escribir <span class="math inline">\(Q,P,H\)</span>.</p>
+<p><span id="fispm-t1-c28-e0020"></span></p>
+<p><strong>Ejercicio 28.20 — Modo de frecuencia cero.</strong> Resuelva las ecuaciones del hamiltoniano <span class="math inline">\(H=(P_1^2+P_2^2)/2+\omega^2Q_1^2/2\)</span>. Explique por qué la frecuencia cero no hace singular la transformación de Legendre.</p>
+<p><span id="fispm-t1-c28-e0021"></span></p>
+<p><strong>Ejercicio 28.21 — Círculo giroscópico.</strong> Con <span class="math inline">\(V=0\)</span>, <span class="math inline">\(\gamma\ne0\)</span>, en §11, encuentre dos constantes que describan el centro del movimiento y la frecuencia de giro de la velocidad.</p>
+<p><span id="fispm-t1-c28-e0022"></span></p>
+<p><strong>Ejercicio 28.22 — Rotaciones y momento cinético.</strong> Para el potencial central de §11, pruebe directamente la conservación de <span class="math inline">\(J=xp_y-yp_x\)</span> usando las aceleraciones.</p>
+<p><span id="fispm-t1-c28-e0023"></span></p>
+<p><strong>Ejercicio 28.23 — Origen acelerado.</strong> Para <span class="math inline">\(q=Q+at^2/2\)</span> y una partícula libre, calcule <span class="math inline">\(K\)</span>, sus ecuaciones y la aceleración de <span class="math inline">\(Q\)</span>. Distinga <span class="math inline">\(P\)</span> de <span class="math inline">\(m\dot Q\)</span>.</p>
+<p><span id="fispm-t1-c28-e0024"></span></p>
+<p><strong>Ejercicio 28.24 — Marco que gira.</strong> Deduzca de <span class="math inline">\(K=P^2/(2m)+m\omega_0^2Q^2/2-\Omega(Q_xP_y-Q_yP_x)\)</span> las ecuaciones de primer orden y elimine <span class="math inline">\(P\)</span>. Use la matriz <span class="math inline">\(S(Q_x,Q_y)=(-Q_y,Q_x)\)</span>.</p>
+<p><span id="fispm-t1-c28-e0025"></span></p>
+<p><strong>Ejercicio 28.25 — Un término de borde temporal.</strong> Añada <span class="math inline">\(dG/dt\)</span>, con <span class="math inline">\(G(q,t)=\beta tq^2/2\)</span>, al lagrangiano de una partícula libre. Halle <span class="math inline">\(P,\widetilde H\)</span> y compruebe la trayectoria libre.</p>
+<p><span id="fispm-t1-c28-e0026"></span></p>
+<p><strong>Ejercicio 28.26 — Variación en fases.</strong> Para <span class="math inline">\(H=p^2/(2m)+V(q)\)</span>, calcule la primera variación de <span class="math inline">\(\mathcal S\)</span>. Elimine <span class="math inline">\(p\)</span> y recupere la acción lagrangiana.</p>
+<p><span id="fispm-t1-c28-e0027"></span></p>
+<p><strong>Ejercicio 28.27 — Un problema de contorno.</strong> Para el oscilador de frecuencia <span class="math inline">\(\omega\)</span>, imponga <span class="math inline">\(q(0)=0\)</span> y <span class="math inline">\(q(T)=0\)</span>. Discuta la unicidad si <span class="math inline">\(\sin\omega T\ne0\)</span> y si <span class="math inline">\(T=\pi/\omega\)</span>.</p>
+<p><strong>Ejercicio 28.28 — Una integral temporal.</strong> Compruebe que <span class="math inline">\(A=q-tp/m\)</span> se conserva para <span class="math inline">\(H=p^2/(2m)\)</span>. Identifique la carga del cambio galileano <span class="math inline">\(\xi=t\)</span> con término de borde <span class="math inline">\(F=mq\)</span>.</p>
 <p><span id="fispm-t1-c28-e0029"></span></p>
-</section>
-<section id="fpm-i-28-e29-lagrangiano-degenerado" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e29-lagrangiano-degenerado">FPM-I-28-E29 — Lagrangiano degenerado</h3>
-<p>Para <span class="math inline">\(L=m\dot x^2/2-ky^2/2\)</span>, con <span class="math inline">\(m,k&gt;0\)</span>, determine momentos, ecuaciones de Euler–Lagrange y condiciones sobre <span class="math inline">\(y\)</span>. Explique por qué no hay una inversa de Legendre sobre todo el espacio de fases de dos coordenadas.</p>
+<p><strong>Ejercicio 28.29 — Lagrangiano degenerado.</strong> Para <span class="math inline">\(L=m\dot x^2/2-ky^2/2\)</span>, con <span class="math inline">\(m,k&gt;0\)</span>, determine momentos, ecuaciones de Euler–Lagrange y condiciones sobre <span class="math inline">\(y\)</span>. Explique por qué no hay una inversa de Legendre sobre todo el espacio de fases de dos coordenadas.</p>
 <p><span id="fispm-t1-c28-e0030"></span></p>
+<p><strong>Ejercicio 28.30 — Resorte transportado.</strong> Sea <span class="math inline">\(L=m\dot q^2/2-k(q-ut)^2/2\)</span>, con <span class="math inline">\(m,k&gt;0\)</span> y <span class="math inline">\(u\)</span> constante. Pase a <span class="math inline">\(Q=q-ut\)</span>, obtenga <span class="math inline">\(K\)</span> y una cantidad conservada expresada en <span class="math inline">\((q,p,t)\)</span>. Relaciónela con Noether para <span class="math inline">\(\tau=1\)</span>, <span class="math inline">\(\xi=u\)</span>.</p>
+<p><span id="soluciones"></span></p>
 </section>
-<section id="fpm-i-28-e30-resorte-transportado" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e30-resorte-transportado">FPM-I-28-E30 — Resorte transportado</h3>
-<p>Sea <span class="math inline">\(L=m\dot q^2/2-k(q-ut)^2/2\)</span>, con <span class="math inline">\(m,k&gt;0\)</span> y <span class="math inline">\(u\)</span> constante. Pase a <span class="math inline">\(Q=q-ut\)</span>, obtenga <span class="math inline">\(K\)</span> y una cantidad conservada expresada en <span class="math inline">\((q,p,t)\)</span>. Relaciónela con Noether para <span class="math inline">\(\tau=1\)</span>, <span class="math inline">\(\xi=u\)</span>.</p>
-</section>
-</section>
-<section id="soluciones" class="level2">
-<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
-<section id="fpm-i-28-e01" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e01">FPM-I-28-E01</h3>
-<p>Como <span class="math inline">\(L\)</span> tiene unidades de energía y <span class="math inline">\(v\)</span> de longitud por tiempo, <span class="math inline">\(p=L_{,v}\)</span> tiene unidades de masa por longitud dividida por tiempo. El producto <span class="math inline">\(pv\)</span> y <span class="math inline">\(H\)</span> tienen unidades de energía. La derivada <span class="math inline">\(H_{,p}\)</span> tiene unidades de velocidad. La posición sola no determina el sentido ni la rapidez del movimiento; falta una velocidad o, por regularidad, el momento equivalente. Dos estados con el mismo <span class="math inline">\(q\)</span> y momentos opuestos evolucionan de manera distinta salvo que ambos momentos sean cero.</p>
-</section>
-<section id="fpm-i-28-e02" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e02">FPM-I-28-E02</h3>
-<p>La relación es <span class="math inline">\(p=mv+a\)</span>, por lo que <span class="math inline">\(v=(p-a)/m\)</span>. Al formar <span class="math inline">\(pv-\ell\)</span>, obtenemos</p>
-<p><span class="math display">\[
-h(p)=\frac{(p-a)^2}{2m}-c.
-\]</span></p>
+<section id="fispm-c28-soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c28-soluciones">16. Soluciones</h2>
+<p><strong>Solución del ejercicio 28.1.</strong> Como <span class="math inline">\(L\)</span> tiene unidades de energía y <span class="math inline">\(v\)</span> de longitud por tiempo, <span class="math inline">\(p=L_{,v}\)</span> tiene unidades de masa por longitud dividida por tiempo. El producto <span class="math inline">\(pv\)</span> y <span class="math inline">\(H\)</span> tienen unidades de energía. La derivada <span class="math inline">\(H_{,p}\)</span> tiene unidades de velocidad. La posición sola no determina el sentido ni la rapidez del movimiento; falta una velocidad o, por regularidad, el momento equivalente. Dos estados con el mismo <span class="math inline">\(q\)</span> y momentos opuestos evolucionan de manera distinta salvo que ambos momentos sean cero.</p>
+<p><strong>Solución del ejercicio 28.2.</strong> La relación es <span class="math inline">\(p=mv+a\)</span>, por lo que <span class="math inline">\(v=(p-a)/m\)</span>. Al formar <span class="math inline">\(pv-\ell\)</span>, obtenemos</p>
+<p><span class="math display">\[h(p)=\frac{(p-a)^2}{2m}-c.\]</span></p>
 <p>Entonces <span class="math inline">\(h'=(p-a)/m=v\)</span> y <span class="math inline">\(h''=1/m=1/\ell''\)</span>. El desplazamiento del momento no altera la invertibilidad, pero sí la ubicación del mínimo de <span class="math inline">\(h\)</span> en el eje de momentos.</p>
-</section>
-<section id="fpm-i-28-e03" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e03">FPM-I-28-E03</h3>
-<p>La inversión mecánica da <span class="math inline">\(v=-p\)</span> y <span class="math inline">\(h=p(-p)+p^2/2=-p^2/2\)</span>. En cambio,</p>
-<p><span class="math display">\[
-\ell^*(p)=\sup_v\left(pv+\frac12v^2\right)=+\infty
-\]</span></p>
+<p><strong>Solución del ejercicio 28.3.</strong> La inversión mecánica da <span class="math inline">\(v=-p\)</span> y <span class="math inline">\(h=p(-p)+p^2/2=-p^2/2\)</span>. En cambio,</p>
+<p><span class="math display">\[\ell^*(p)=\sup_v\left(pv+\frac12v^2\right)=+\infty\]</span></p>
 <p>para todo <span class="math inline">\(p\)</span>, pues el término cuadrático positivo domina cuando <span class="math inline">\(|v|\to\infty\)</span>. El punto estacionario <span class="math inline">\(v=-p\)</span> es un mínimo de la expresión bajo el supremo. Por ello la transformación mecánica local y el conjugado convexo no coinciden en este ejemplo.</p>
-</section>
-<section id="fpm-i-28-e04" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e04">FPM-I-28-E04</h3>
-<p>Tenemos <span class="math inline">\(p=v^3-v\)</span> y <span class="math inline">\(W=3v^2-1\)</span>. La regularidad falla en <span class="math inline">\(v=\pm1/\sqrt3\)</span>. Sobre <span class="math inline">\(p=0\)</span>, las velocidades <span class="math inline">\(v=-1,0,1\)</span> dan <span class="math inline">\(h=-\ell(v)\)</span>: los valores son <span class="math inline">\(1/4,0,1/4\)</span>. Las ramas de velocidades opuestas tienen igual valor de <span class="math inline">\(h\)</span> en ese momento, pero distintas derivadas <span class="math inline">\(h'=v\)</span>. El valor escalar de la función no basta para identificarlas como una misma rama suave.</p>
-</section>
-<section id="fpm-i-28-e05" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e05">FPM-I-28-E05</h3>
-<p>Para <span class="math inline">\(p&gt;0\)</span>, la velocidad es <span class="math inline">\(\log p\)</span> y <span class="math inline">\(h=p\log p-p\)</span>. En <span class="math inline">\(p=0\)</span>, el supremo de <span class="math inline">\(-e^v\)</span> es <span class="math inline">\(0\)</span>, alcanzado sólo como límite <span class="math inline">\(v\to-\infty\)</span>. No corresponde a una velocidad finita. Si <span class="math inline">\(p&lt;0\)</span>, tomar <span class="math inline">\(v\to-\infty\)</span> hace <span class="math inline">\(pv-e^v\to+\infty\)</span>, por lo que el conjugado es infinito. El dominio donde el conjugado es finito incluye un punto de borde que no pertenece al rango de momentos de la transformación mecánica.</p>
-</section>
-<section id="fpm-i-28-e06" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e06">FPM-I-28-E06</h3>
-<p>La aplicación <span class="math inline">\(p(v)=v+v^3\)</span> tiene derivada <span class="math inline">\(1+3v^2&gt;0\)</span>, es estrictamente creciente y tiende a <span class="math inline">\(\pm\infty\)</span> en los extremos. Por continuidad, cada momento tiene una única preimagen. Además la hessiana nunca se anula, así que la inversa es suave. Paramétricamente,</p>
-<p><span class="math display">\[
-p=v+v^3,\qquad h=\frac12v^2+\frac34v^4.
-\]</span></p>
+<p><strong>Solución del ejercicio 28.4.</strong> Tenemos <span class="math inline">\(p=v^3-v\)</span> y <span class="math inline">\(W=3v^2-1\)</span>. La regularidad falla en <span class="math inline">\(v=\pm1/\sqrt3\)</span>. Sobre <span class="math inline">\(p=0\)</span>, las velocidades <span class="math inline">\(v=-1,0,1\)</span> dan <span class="math inline">\(h=-\ell(v)\)</span>: los valores son <span class="math inline">\(1/4,0,1/4\)</span>. Las ramas de velocidades opuestas tienen igual valor de <span class="math inline">\(h\)</span> en ese momento, pero distintas derivadas <span class="math inline">\(h'=v\)</span>. El valor escalar de la función no basta para identificarlas como una misma rama suave.</p>
+<p><strong>Solución del ejercicio 28.5.</strong> Para <span class="math inline">\(p&gt;0\)</span>, la velocidad es <span class="math inline">\(\log p\)</span> y <span class="math inline">\(h=p\log p-p\)</span>. En <span class="math inline">\(p=0\)</span>, el supremo de <span class="math inline">\(-e^v\)</span> es <span class="math inline">\(0\)</span>, alcanzado sólo como límite <span class="math inline">\(v\to-\infty\)</span>. No corresponde a una velocidad finita. Si <span class="math inline">\(p&lt;0\)</span>, tomar <span class="math inline">\(v\to-\infty\)</span> hace <span class="math inline">\(pv-e^v\to+\infty\)</span>, por lo que el conjugado es infinito. El dominio donde el conjugado es finito incluye un punto de borde que no pertenece al rango de momentos de la transformación mecánica.</p>
+<p><strong>Solución del ejercicio 28.6.</strong> La aplicación <span class="math inline">\(p(v)=v+v^3\)</span> tiene derivada <span class="math inline">\(1+3v^2&gt;0\)</span>, es estrictamente creciente y tiende a <span class="math inline">\(\pm\infty\)</span> en los extremos. Por continuidad, cada momento tiene una única preimagen. Además la hessiana nunca se anula, así que la inversa es suave. Paramétricamente,</p>
+<p><span class="math display">\[p=v+v^3,\qquad h=\frac12v^2+\frac34v^4.\]</span></p>
 <p>Derivar respecto de <span class="math inline">\(v\)</span> da <span class="math inline">\(dh/dv=v(1+3v^2)\)</span> y <span class="math inline">\(dp/dv=1+3v^2\)</span>, verificando <span class="math inline">\(dh/dp=v\)</span>. No necesitamos resolver la ecuación cúbica mediante radicales.</p>
-</section>
-<section id="fpm-i-28-e07" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e07">FPM-I-28-E07</h3>
-<p>La ecuación <span class="math inline">\(v=H_{,p}=p/m(q)\)</span> se invierte en <span class="math inline">\(p=m(q)v\)</span>. Entonces</p>
-<p><span class="math display">\[
-L=pv-H=\frac12m(q)v^2-V(q).
-\]</span></p>
-<p>Euler–Lagrange da <span class="math inline">\(d(m\dot q)/dt=m'\dot q^2/2-V'\)</span>. Al desarrollar el lado izquierdo y reunir términos,</p>
-<p><span class="math display">\[
-m\ddot q+\frac12m'\dot q^2+V'=0.
-\]</span></p>
-<p>Esta cuenta recupera también el resultado de §6 y muestra que las dos inversiones son compatibles.</p>
-</section>
-<section id="fpm-i-28-e08" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e08">FPM-I-28-E08</h3>
-<p>El momento es <span class="math inline">\(p=m\dot q\)</span> y</p>
-<p><span class="math display">\[
-H=\frac{p^2}{2m}+\frac12k(t)q^2,
-\qquad\dot q=p/m,\quad\dot p=-k(t)q.
-\]</span></p>
-<p>La derivada total es <span class="math inline">\(dH/dt=\dot k(t)q^2/2\)</span>. El cambio de rigidez puede aportar o retirar energía. La igualdad de derivadas parciales es <span class="math inline">\(H_{,t}|_{q,p}=-L_{,t}|_{q,v}\)</span> después de relacionar los estados. No exige mantener fija una misma variable cinemática en ambos lados; la cancelación de P04 justifica precisamente esa diferencia.</p>
-</section>
-<section id="fpm-i-28-e09" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e09">FPM-I-28-E09</h3>
-<p>Las ecuaciones son <span class="math inline">\(\dot q=p/m\)</span> y <span class="math inline">\(\dot p=-kq-bp/m\)</span>. Por la regla de la cadena,</p>
-<p><span class="math display">\[
-\dot H=kq\frac p m+\frac p m\left(-kq-\frac b m p\right)
-=-\frac b{m^2}p^2=-b\dot q^2.
-\]</span></p>
+<p><strong>Solución del ejercicio 28.7.</strong> La ecuación <span class="math inline">\(v=H_{,p}=p/m(q)\)</span> se invierte en <span class="math inline">\(p=m(q)v\)</span>. Entonces</p>
+<p><span class="math display">\[L=pv-H=\frac12m(q)v^2-V(q).\]</span></p>
+<p>Euler–Lagrange da <span class="math inline">\(d(m\dot q)/dt=m'\dot q^2/2-V'\)</span>. Al desarrollar el lado izquierdo y reunir términos, <span class="math inline">\(m\ddot q+\frac12m'\dot q^2+V'=0.\)</span> Esta cuenta recupera también el resultado de §6 y muestra que las dos inversiones son compatibles.</p>
+<p><strong>Solución del ejercicio 28.8.</strong> El momento es <span class="math inline">\(p=m\dot q\)</span> y</p>
+<p><span class="math display">\[H=\frac{p^2}{2m}+\frac12k(t)q^2, \qquad\dot q=p/m,\quad\dot p=-k(t)q.\]</span></p>
+<p>La derivada total es <span class="math inline">\(dH/dt=\dot k(t)q^2/2\)</span>. El cambio de rigidez puede aportar o retirar energía. La igualdad de derivadas parciales es <span class="math inline">\(H_{,t}|_{q,p}=-L_{,t}|_{q,v}\)</span> después de relacionar los estados. No exige mantener fija una misma variable cinemática en ambos lados; la cancelación de la proposición 28.4 justifica precisamente esa diferencia.</p>
+<p><strong>Solución del ejercicio 28.9.</strong> Las ecuaciones son <span class="math inline">\(\dot q=p/m\)</span> y <span class="math inline">\(\dot p=-kq-bp/m\)</span>. Por la regla de la cadena,</p>
+<p><span class="math display">\[\dot H=kq\frac p m+\frac p m\left(-kq-\frac b m p\right) =-\frac b{m^2}p^2=-b\dot q^2.\]</span></p>
 <p>Se anula instantáneamente cuando <span class="math inline">\(p=0\)</span>. Si <span class="math inline">\(q\ne0\)</span>, la fuerza del resorte vuelve a poner el cuerpo en movimiento; por ello una derivada nula en un instante no implica energía constante en un intervalo. Para <span class="math inline">\(k&gt;0\)</span>, sólo el equilibrio <span class="math inline">\(q=p=0\)</span> puede permanecer siempre en ese conjunto.</p>
-</section>
-<section id="fpm-i-28-e10" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e10">FPM-I-28-E10</h3>
-<p>Aquí <span class="math inline">\(G=\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span> y</p>
-<p><span class="math display">\[
-p_x=2\dot x+\dot y,\quad p_y=\dot x+2\dot y,
-\qquad G^{-1}=\frac13\begin{pmatrix}2&amp;-1\\-1&amp;2\end{pmatrix}.
-\]</span></p>
+<p><strong>Solución del ejercicio 28.10.</strong> Aquí <span class="math inline">\(G=\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span> y</p>
+<p><span class="math display">\[p_x=2\dot x+\dot y,\quad p_y=\dot x+2\dot y, \qquad G^{-1}=\frac13\begin{pmatrix}2&amp;-1\\-1&amp;2\end{pmatrix}.\]</span></p>
 <p>Por tanto <span class="math inline">\(\dot x=(2p_x-p_y)/3\)</span>, <span class="math inline">\(\dot y=(-p_x+2p_y)/3\)</span> y</p>
-<p><span class="math display">\[
-H=\frac13(p_x^2-p_xp_y+p_y^2)+V(x,y).
-\]</span></p>
+<p><span class="math display">\[H=\frac13(p_x^2-p_xp_y+p_y^2)+V(x,y).\]</span></p>
 <p>La matriz tiene autovalores <span class="math inline">\(1,3\)</span>, ambos positivos. La relación velocidad–momento es globalmente invertible en cada fibra y la energía cinética es positiva.</p>
-</section>
-<section id="fpm-i-28-e11" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e11">FPM-I-28-E11</h3>
-<p>El momento es <span class="math inline">\(p=m\dot q+a(q)\)</span> y <span class="math inline">\(H=(p-a(q))^2/(2m)+V(q)\)</span>. Las ecuaciones son</p>
-<p><span class="math display">\[
-\dot q=\frac{p-a}m,\qquad
-\dot p=a'\frac{p-a}m-V'.
-\]</span></p>
+<p><strong>Solución del ejercicio 28.11.</strong> El momento es <span class="math inline">\(p=m\dot q+a(q)\)</span> y <span class="math inline">\(H=(p-a(q))^2/(2m)+V(q)\)</span>. Las ecuaciones son</p>
+<p><span class="math display">\[\dot q=\frac{p-a}m,\qquad \dot p=a'\frac{p-a}m-V'.\]</span></p>
 <p>Al derivar <span class="math inline">\(m\dot q=p-a(q)\)</span>, obtenemos <span class="math inline">\(m\ddot q=\dot p-a'\dot q=-V'\)</span>. Localmente, si <span class="math inline">\(G'=a\)</span>, el término <span class="math inline">\(a(q)\dot q\)</span> es <span class="math inline">\(dG/dt\)</span>, lo que explica el desplazamiento de momento sin modificación de las trayectorias. Esta afirmación local no exige una primitiva global en un espacio de configuración con topología no trivial.</p>
-</section>
-<section id="fpm-i-28-e12" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e12">FPM-I-28-E12</h3>
-<p>El tiempo indicado satisface <span class="math inline">\(\omega t=\pi/2\)</span>. Por P07, <span class="math inline">\(q=0\)</span> y <span class="math inline">\(p=-m\omega=-6\)</span>. La energía inicial y final es <span class="math inline">\(m\omega^2/2=9\)</span>. Aunque la velocidad inicial sea cero, <span class="math inline">\(\dot p(0)=-m\omega^2q_0=-18\)</span>; inmediatamente después del instante inicial el cuerpo se mueve hacia <span class="math inline">\(q\)</span> decreciente. En el plano de fase parte del extremo derecho de la elipse y desciende.</p>
-</section>
-<section id="fpm-i-28-e13" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e13">FPM-I-28-E13</h3>
-<p>Con masas unitarias, tomemos <span class="math inline">\(H=(p_1^2+p_2^2+\omega^2q_1^2+\omega^2q_2^2)/2\)</span>. La órbita con <span class="math inline">\(q_2=p_2=0\)</span> y energía <span class="math inline">\(E\)</span> en el primer oscilador permanece en ese plano. Otra órbita con <span class="math inline">\(q_1=p_1=0\)</span> y la misma energía en el segundo permanece en el otro plano. No coinciden para <span class="math inline">\(E&gt;0\)</span>, pero ambas pertenecen a <span class="math inline">\(H=E\)</span>. Un único nivel contiene, por tanto, más información de estados que la necesaria para una órbita.</p>
-</section>
-<section id="fpm-i-28-e14" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e14">FPM-I-28-E14</h3>
-<p>En el retorno <span class="math inline">\(p=0\)</span>, de modo que <span class="math inline">\(A=A(1-\cos\theta)\)</span> y <span class="math inline">\(\cos\theta=0\)</span>. Los extremos alrededor de cero son <span class="math inline">\(\theta=\pm\pi/2\)</span>. En la posición inferior el potencial se anula y <span class="math inline">\(p^2/(2I)=A\)</span>; los pasos posibles tienen <span class="math inline">\(p=\pm\sqrt{2IA}\)</span>, según el sentido del movimiento. La misma elongación inferior se visita con dos momentos diferentes.</p>
-</section>
-<section id="fpm-i-28-e15" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e15">FPM-I-28-E15</h3>
-<p>Derivando la expresión propuesta,</p>
-<p><span class="math display">\[
-\dot\theta=\frac{4\alpha e^{\alpha t}}{1+e^{2\alpha t}}
-=2\alpha\,\operatorname{sech}(\alpha t),
-\qquad p=2I\alpha\,\operatorname{sech}(\alpha t).
-\]</span></p>
+<p><strong>Solución del ejercicio 28.12.</strong> El tiempo indicado satisface <span class="math inline">\(\omega t=\pi/2\)</span>. Por proposición 28.7, <span class="math inline">\(q=0\)</span> y <span class="math inline">\(p=-m\omega=-6\)</span>. La energía inicial y final es <span class="math inline">\(m\omega^2/2=9\)</span>. Aunque la velocidad inicial sea cero, <span class="math inline">\(\dot p(0)=-m\omega^2q_0=-18\)</span>; inmediatamente después del instante inicial el cuerpo se mueve hacia <span class="math inline">\(q\)</span> decreciente. En el plano de fase parte del extremo derecho de la elipse y desciende.</p>
+<p><strong>Solución del ejercicio 28.13.</strong> Con masas unitarias, tomemos <span class="math inline">\(H=(p_1^2+p_2^2+\omega^2q_1^2+\omega^2q_2^2)/2\)</span>. La órbita con <span class="math inline">\(q_2=p_2=0\)</span> y energía <span class="math inline">\(E\)</span> en el primer oscilador permanece en ese plano. Otra órbita con <span class="math inline">\(q_1=p_1=0\)</span> y la misma energía en el segundo permanece en el otro plano. No coinciden para <span class="math inline">\(E&gt;0\)</span>, pero ambas pertenecen a <span class="math inline">\(H=E\)</span>. Un único nivel contiene, por tanto, más información de estados que la necesaria para una órbita.</p>
+<p><strong>Solución del ejercicio 28.14.</strong> En el retorno <span class="math inline">\(p=0\)</span>, de modo que <span class="math inline">\(A=A(1-\cos\theta)\)</span> y <span class="math inline">\(\cos\theta=0\)</span>. Los extremos alrededor de cero son <span class="math inline">\(\theta=\pm\pi/2\)</span>. En la posición inferior el potencial se anula y <span class="math inline">\(p^2/(2I)=A\)</span>; los pasos posibles tienen <span class="math inline">\(p=\pm\sqrt{2IA}\)</span>, según el sentido del movimiento. La misma elongación inferior se visita con dos momentos diferentes.</p>
+<p><strong>Solución del ejercicio 28.15.</strong> Derivando la expresión propuesta,</p>
+<p><span class="math display">\[\dot\theta=\frac{4\alpha e^{\alpha t}}{1+e^{2\alpha t}} =2\alpha\,\operatorname{sech}(\alpha t), \qquad p=2I\alpha\,\operatorname{sech}(\alpha t).\]</span></p>
 <p>La identidad trigonométrica correspondiente es <span class="math inline">\(\cos\theta=2\operatorname{sech}^2(\alpha t)-1\)</span>. Así, la energía cinética vale <span class="math inline">\(2A\operatorname{sech}^2(\alpha t)\)</span> y la potencial <span class="math inline">\(2A[1-\operatorname{sech}^2(\alpha t)]\)</span>; su suma es <span class="math inline">\(2A\)</span>. Para tiempos finitos <span class="math inline">\(\dot\theta&gt;0\)</span>, y derivar esta igualdad de energía implica <span class="math inline">\(I\ddot\theta=-A\sin\theta\)</span>. Los límites son <span class="math inline">\(\theta\to-\pi\)</span> y <span class="math inline">\(\pi\)</span>, con <span class="math inline">\(p\to0\)</span>; en el cilindro corresponden al mismo equilibrio superior.</p>
-</section>
-<section id="fpm-i-28-e16" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e16">FPM-I-28-E16</h3>
-<p>Las ecuaciones son <span class="math inline">\(\dot q=t\)</span>, <span class="math inline">\(\dot p=0\)</span>, de donde <span class="math inline">\(q=C+t^2/2\)</span> y <span class="math inline">\(p=p_0\)</span>. Para cualquier <span class="math inline">\(s&gt;0\)</span>, los instantes <span class="math inline">\(-s\)</span> y <span class="math inline">\(s\)</span> tienen el mismo estado proyectado <span class="math inline">\((C+s^2/2,p_0)\)</span>. Las velocidades son entonces <span class="math inline">\(-s\)</span> y <span class="math inline">\(s\)</span>. La unicidad no se vulnera: el campo depende del tiempo y los puntos <span class="math inline">\((q,p,-s)\)</span> y <span class="math inline">\((q,p,s)\)</span> son distintos en el espacio que incluye el tiempo. Además, aquí <span class="math inline">\(H\)</span> no tiene hessiana invertible en <span class="math inline">\(p\)</span>; es un sistema canónico válido que no procede por la inversión regular descrita en §4.</p>
-</section>
-<section id="fpm-i-28-e17" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e17">FPM-I-28-E17</h3>
-<p>El potencial efectivo es <span class="math inline">\(V_{\mathrm{ef}}=-\kappa/r+j^2/(2mr^2)\)</span>. Su derivada se anula cuando <span class="math inline">\(\kappa/r_0^2=j^2/(mr_0^3)\)</span>, así que</p>
-<p><span class="math display">\[
-r_0=\frac{j^2}{m\kappa}.
-\]</span></p>
+<p><strong>Solución del ejercicio 28.16.</strong> Las ecuaciones son <span class="math inline">\(\dot q=t\)</span>, <span class="math inline">\(\dot p=0\)</span>, de donde <span class="math inline">\(q=C+t^2/2\)</span> y <span class="math inline">\(p=p_0\)</span>. Para cualquier <span class="math inline">\(s&gt;0\)</span>, los instantes <span class="math inline">\(-s\)</span> y <span class="math inline">\(s\)</span> tienen el mismo estado proyectado <span class="math inline">\((C+s^2/2,p_0)\)</span>. Las velocidades son entonces <span class="math inline">\(-s\)</span> y <span class="math inline">\(s\)</span>. La unicidad no se vulnera: el campo depende del tiempo y los puntos <span class="math inline">\((q,p,-s)\)</span> y <span class="math inline">\((q,p,s)\)</span> son distintos en el espacio que incluye el tiempo. Además, aquí <span class="math inline">\(H\)</span> no tiene hessiana invertible en <span class="math inline">\(p\)</span>; es un sistema canónico válido que no procede por la inversión regular descrita en §4.</p>
+<p><strong>Solución del ejercicio 28.17.</strong> El potencial efectivo es <span class="math inline">\(V_{\mathrm{ef}}=-\kappa/r+j^2/(2mr^2)\)</span>. Su derivada se anula cuando <span class="math inline">\(\kappa/r_0^2=j^2/(mr_0^3)\)</span>, así que</p>
+<p><span class="math display">\[r_0=\frac{j^2}{m\kappa}.\]</span></p>
 <p>La segunda derivada en ese radio es <span class="math inline">\(-2\kappa/r_0^3+3j^2/(mr_0^4)=\kappa/r_0^3&gt;0\)</span>. La ecuación lineal radial es <span class="math inline">\(m\delta\ddot r+V_{\mathrm{ef}}''(r_0)\delta r=0\)</span> y su frecuencia satisface <span class="math inline">\(\omega_r^2=\kappa/(mr_0^3)\)</span>. El signo positivo prueba la estabilidad radial lineal del círculo en ese nivel de momento angular.</p>
-</section>
-<section id="fpm-i-28-e18" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e18">FPM-I-28-E18</h3>
-<p>Mientras <span class="math inline">\(r&gt;0\)</span>, la reconstrucción da <span class="math inline">\(\dot\theta=j/(mr^2)=0\)</span>; el ángulo permanece constante y el movimiento sigue un rayo en cada tramo de esa carta. En <span class="math inline">\(r=0\)</span> el ángulo deja de estar definido. Una trayectoria cartesiana regular que atraviesa el origen puede continuar por el rayo opuesto, lo que cambia el representante polar en <span class="math inline">\(\pi\)</span>. Hay que analizar la solución en coordenadas válidas y comprobar también si el potencial admite ese paso.</p>
-</section>
-<section id="fpm-i-28-e19" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e19">FPM-I-28-E19</h3>
-<p>Como <span class="math inline">\(q=UQ\)</span>, tenemos <span class="math inline">\(Q_i=\sqrt{m_i}\,q_i\)</span>. La transformación dual exige <span class="math inline">\(P_i=p_i/\sqrt{m_i}\)</span>, no <span class="math inline">\(\sqrt{m_i}p_i\)</span>. Entonces</p>
-<p><span class="math display">\[
-H=\frac12\sum_{i=1}^2\left(P_i^2+\frac{k_i}{m_i}Q_i^2\right).
-\]</span></p>
+<p><strong>Solución del ejercicio 28.18.</strong> Mientras <span class="math inline">\(r&gt;0\)</span>, la reconstrucción da <span class="math inline">\(\dot\theta=j/(mr^2)=0\)</span>; el ángulo permanece constante y el movimiento sigue un rayo en cada tramo de esa carta. En <span class="math inline">\(r=0\)</span> el ángulo deja de estar definido. Una trayectoria cartesiana regular que atraviesa el origen puede continuar por el rayo opuesto, lo que cambia el representante polar en <span class="math inline">\(\pi\)</span>. Hay que analizar la solución en coordenadas válidas y comprobar también si el potencial admite ese paso.</p>
+<p><strong>Solución del ejercicio 28.19.</strong> Como <span class="math inline">\(q=UQ\)</span>, tenemos <span class="math inline">\(Q_i=\sqrt{m_i}\,q_i\)</span>. La transformación dual exige <span class="math inline">\(P_i=p_i/\sqrt{m_i}\)</span>, no <span class="math inline">\(\sqrt{m_i}p_i\)</span>. Entonces</p>
+<p><span class="math display">\[H=\frac12\sum_{i=1}^2\left(P_i^2+\frac{k_i}{m_i}Q_i^2\right).\]</span></p>
 <p>También <span class="math inline">\(P_i=\dot Q_i\)</span>. Las frecuencias reales corresponden a <span class="math inline">\(k_i&gt;0\)</span> y valen <span class="math inline">\(\sqrt{k_i/m_i}\)</span>. Si alguno de los <span class="math inline">\(k_i\)</span> no es positivo, cambia el régimen dinámico de ese modo, pero no la transformación de momentos.</p>
-</section>
-<section id="fpm-i-28-e20" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e20">FPM-I-28-E20</h3>
-<p>El primer par satisface</p>
-<p><span class="math display">\[
-Q_1(t)=Q_{10}\cos\omega t+\frac{P_{10}}\omega\sin\omega t,
-\quad P_1(t)=P_{10}\cos\omega t-\omega Q_{10}\sin\omega t.
-\]</span></p>
+<p><strong>Solución del ejercicio 28.20.</strong> El primer par satisface</p>
+<p><span class="math display">\[Q_1(t)=Q_{10}\cos\omega t+\frac{P_{10}}\omega\sin\omega t, \quad P_1(t)=P_{10}\cos\omega t-\omega Q_{10}\sin\omega t.\]</span></p>
 <p>El segundo satisface <span class="math inline">\(P_2(t)=P_{20}\)</span>, <span class="math inline">\(Q_2(t)=Q_{20}+P_{20}t\)</span>. La hessiana de <span class="math inline">\(H\)</span> respecto de <span class="math inline">\(P\)</span> es la identidad y la relación <span class="math inline">\(P=\dot Q\)</span> sigue siendo invertible. La frecuencia cero expresa la ausencia de una fuerza restauradora en esa dirección, no una degeneración de la energía cinética.</p>
-</section>
-<section id="fpm-i-28-e21" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e21">FPM-I-28-E21</h3>
-<p>De <span class="math inline">\(m\ddot x=\gamma\dot y\)</span> y <span class="math inline">\(m\ddot y=-\gamma\dot x\)</span> resulta</p>
-<p><span class="math display">\[
-C_x=x+\frac m\gamma\dot y,\qquad
-C_y=y-\frac m\gamma\dot x,
-\]</span></p>
+<p><strong>Solución del ejercicio 28.21.</strong> De <span class="math inline">\(m\ddot x=\gamma\dot y\)</span> y <span class="math inline">\(m\ddot y=-\gamma\dot x\)</span> resulta</p>
+<p><span class="math display">\[C_x=x+\frac m\gamma\dot y,\qquad C_y=y-\frac m\gamma\dot x,\]</span></p>
 <p>pues ambas derivadas se anulan. Las relaciones <span class="math inline">\(x-C_x=-(m/\gamma)\dot y\)</span>, <span class="math inline">\(y-C_y=(m/\gamma)\dot x\)</span> muestran que la distancia al centro es <span class="math inline">\(m|\dot q|/|\gamma|\)</span>, constante. La velocidad gira con frecuencia angular de magnitud <span class="math inline">\(|\gamma|/m\)</span> y sentido determinado por el signo de <span class="math inline">\(\gamma\)</span>. El caso de velocidad cero es el círculo reducido a un punto.</p>
-</section>
-<section id="fpm-i-28-e22" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e22">FPM-I-28-E22</h3>
-<p>La expresión en velocidades es <span class="math inline">\(J=m(x\dot y-y\dot x)+\gamma(x^2+y^2)/2\)</span>. Su derivada vale</p>
-<p><span class="math display">\[
-\dot J=m(x\ddot y-y\ddot x)+\gamma(x\dot x+y\dot y).
-\]</span></p>
+<p><strong>Solución del ejercicio 28.22.</strong> La expresión en velocidades es <span class="math inline">\(J=m(x\dot y-y\dot x)+\gamma(x^2+y^2)/2\)</span>. Su derivada vale</p>
+<p><span class="math display">\[\dot J=m(x\ddot y-y\ddot x)+\gamma(x\dot x+y\dot y).\]</span></p>
 <p>Al sustituir las aceleraciones, los términos giroscópicos producen <span class="math inline">\(-\gamma(x\dot x+y\dot y)\)</span> y se cancelan. Queda <span class="math inline">\(-xV_{,y}+yV_{,x}=0\)</span> porque el gradiente de un potencial central es radial. Se conserva el momento canónico de rotaciones, mientras que el momento cinético intercambia su valor con el término proporcional a <span class="math inline">\(r^2\)</span>.</p>
-</section>
-<section id="fpm-i-28-e23" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e23">FPM-I-28-E23</h3>
-<p>Tenemos <span class="math inline">\(P=p=m(\dot Q+at)\)</span> y</p>
-<p><span class="math display">\[
-K=\frac{P^2}{2m}-atP,\qquad
-\dot Q=\frac Pm-at,\quad\dot P=0.
-\]</span></p>
+<p><strong>Solución del ejercicio 28.23.</strong> Tenemos <span class="math inline">\(P=p=m(\dot Q+at)\)</span> y</p>
+<p><span class="math display">\[K=\frac{P^2}{2m}-atP,\qquad \dot Q=\frac Pm-at,\quad\dot P=0.\]</span></p>
 <p>Por tanto <span class="math inline">\(\ddot Q=-a\)</span>. El momento <span class="math inline">\(P\)</span> es el momento de laboratorio y difiere de <span class="math inline">\(m\dot Q\)</span> en <span class="math inline">\(mat\)</span>. La dependencia explícita de <span class="math inline">\(K\)</span> da <span class="math inline">\(\dot K=-aP\)</span>, compatible con la conservación de <span class="math inline">\(P\)</span>. No hay contradicción con la constancia de la energía libre en el laboratorio: <span class="math inline">\(K\)</span> incorpora el movimiento del sistema de coordenadas.</p>
-</section>
-<section id="fpm-i-28-e24" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e24">FPM-I-28-E24</h3>
-<p>Con <span class="math inline">\(S^{\mathsf T}=-S\)</span> y <span class="math inline">\(S^2=-\mathbf1\)</span>, el momento angular es <span class="math inline">\((SQ)\cdot P\)</span>. Derivar da</p>
-<p><span class="math display">\[
-\dot Q=\frac Pm-\Omega SQ,\qquad
-\dot P=-m\omega_0^2Q-\Omega SP.
-\]</span></p>
-<p>De la primera ecuación <span class="math inline">\(P=m(\dot Q+\Omega SQ)\)</span>. Al derivarla y usar la segunda,</p>
-<p><span class="math display">\[
-\ddot Q=-2\Omega S\dot Q+(\Omega^2-\omega_0^2)Q.
-\]</span></p>
-<p>El primer término es la aceleración de Coriolis en este plano; el término <span class="math inline">\(\Omega^2Q\)</span> es centrífugo. Ambos aparecen aunque el hamiltoniano sólo haya adquirido el término lineal <span class="math inline">\(-\Omega J_z\)</span>, porque también cambia la relación entre <span class="math inline">\(P\)</span> y <span class="math inline">\(\dot Q\)</span>.</p>
-</section>
-<section id="fpm-i-28-e25" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e25">FPM-I-28-E25</h3>
-<p>Aquí <span class="math inline">\(G_{,q}=\beta tq\)</span> y <span class="math inline">\(G_{,t}=\beta q^2/2\)</span>. Por P13,</p>
-<p><span class="math display">\[
-P=m\dot q+\beta tq,\qquad
-\widetilde H=\frac{(P-\beta tq)^2}{2m}-\frac\beta2q^2.
-\]</span></p>
+<p><strong>Solución del ejercicio 28.24.</strong> Con <span class="math inline">\(S^{\mathsf T}=-S\)</span> y <span class="math inline">\(S^2=-\mathbf1\)</span>, el momento angular es <span class="math inline">\((SQ)\cdot P\)</span>. Derivar da</p>
+<p><span class="math display">\[\dot Q=\frac Pm-\Omega SQ,\qquad \dot P=-m\omega_0^2Q-\Omega SP.\]</span></p>
+<p>De la primera ecuación <span class="math inline">\(P=m(\dot Q+\Omega SQ)\)</span>. Al derivarla y usar la segunda, <span class="math inline">\(\ddot Q=-2\Omega S\dot Q+(\Omega^2-\omega_0^2)Q.\)</span> El primer término es la aceleración de Coriolis en este plano; el término <span class="math inline">\(\Omega^2Q\)</span> es centrífugo. Ambos aparecen aunque el hamiltoniano sólo haya adquirido el término lineal <span class="math inline">\(-\Omega J_z\)</span>, porque también cambia la relación entre <span class="math inline">\(P\)</span> y <span class="math inline">\(\dot Q\)</span>.</p>
+<p><strong>Solución del ejercicio 28.25.</strong> Aquí <span class="math inline">\(G_{,q}=\beta tq\)</span> y <span class="math inline">\(G_{,t}=\beta q^2/2\)</span>. Por proposición 28.13,</p>
+<p><span class="math display">\[P=m\dot q+\beta tq,\qquad \widetilde H=\frac{(P-\beta tq)^2}{2m}-\frac\beta2q^2.\]</span></p>
 <p>Las ecuaciones son <span class="math inline">\(\dot q=(P-\beta tq)/m\)</span> y <span class="math inline">\(\dot P=\beta t\dot q+\beta q\)</span>. Derivar <span class="math inline">\(m\dot q=P-\beta tq\)</span> produce <span class="math inline">\(m\ddot q=\dot P-\beta q-\beta t\dot q=0\)</span>. Aunque la expresión de <span class="math inline">\(\widetilde H\)</span> depende del tiempo y de la posición, las curvas <span class="math inline">\(q=q_0+v_0t\)</span> son las de una partícula libre. La conservación de la energía física se expresa aquí mediante <span class="math inline">\((P-\beta tq)^2/(2m)\)</span>.</p>
-</section>
-<section id="fpm-i-28-e26" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e26">FPM-I-28-E26</h3>
-<p>La variación es</p>
-<p><span class="math display">\[
-\delta\mathcal S=[p\delta q]_{t_0}^{t_1}
-+\int\left[(\dot q-p/m)\delta p+(-\dot p-V')\delta q\right]dt.
-\]</span></p>
-<p>Con posiciones extremas fijas, la estacionariedad exige <span class="math inline">\(\dot q=p/m\)</span> y <span class="math inline">\(\dot p=-V'\)</span>. La primera relación permite eliminar el momento en la acción:</p>
-<p><span class="math display">\[
-p\dot q-\frac{p^2}{2m}-V
-=\frac m2\dot q^2-V.
-\]</span></p>
+<p><strong>Solución del ejercicio 28.26.</strong> La variación es</p>
+<p><span class="math display">\[\delta\mathcal S=[p\delta q]_{t_0}^{t_1} +\int\left[(\dot q-p/m)\delta p+(-\dot p-V')\delta q\right]dt.\]</span></p>
+<p>Con posiciones extremas fijas, la estacionariedad exige <span class="math inline">\(\dot q=p/m\)</span> y <span class="math inline">\(\dot p=-V'\)</span>. La primera relación permite eliminar el momento en la acción: <span class="math inline">\(p\dot q-\frac{p^2}{2m}-V =\frac m2\dot q^2-V.\)</span></p>
 <p>No se introduce una condición <span class="math inline">\(\delta p=0\)</span> en los extremos: el integrando no contiene <span class="math inline">\(\dot p\)</span>, y por ello no aparece un borde proporcional a esa variación.</p>
-</section>
-<section id="fpm-i-28-e27" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e27">FPM-I-28-E27</h3>
-<p>La condición inicial de posición reduce la solución general a <span class="math inline">\(q(t)=B\sin\omega t\)</span>. La condición final exige <span class="math inline">\(B\sin\omega T=0\)</span>. Si el seno no se anula, sólo existe <span class="math inline">\(B=0\)</span>, la solución de equilibrio. Si <span class="math inline">\(T=\pi/\omega\)</span>, cualquier <span class="math inline">\(B\)</span> satisface las posiciones extremas: hay infinitas soluciones con momentos iniciales <span class="math inline">\(p(0)=m\omega B\)</span>. Para cada uno de esos estados iniciales sigue habiendo una única solución. La falta de unicidad del problema de contorno es compatible con la unicidad del problema inicial.</p>
-</section>
-<section id="fpm-i-28-e28" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e28">FPM-I-28-E28</h3>
-<p>La regla de evolución da</p>
-<p><span class="math display">\[
-\frac{d}{dt}\left(q-\frac{tp}m\right)
-=-\frac pm+\frac pm-\frac tm\dot p=0.
-\]</span></p>
-<p>Para la transformación galileana <span class="math inline">\(\delta q=\varepsilon t\)</span>, <span class="math inline">\(\tau=0\)</span>, la variación infinitesimal de <span class="math inline">\(L=m\dot q^2/2\)</span> es <span class="math inline">\(m\dot q=D_t(mq)\)</span>. Por I27, la carga es <span class="math inline">\(J=pt-mq=-mA\)</span>. Es una constante que depende explícitamente del tiempo cuando se escribe como función sobre los estados. Su valor permite reconstruir la posición inicial de la partícula libre.</p>
-</section>
-<section id="fpm-i-28-e29" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e29">FPM-I-28-E29</h3>
-<p>Los momentos son <span class="math inline">\(p_x=m\dot x\)</span> y <span class="math inline">\(p_y=0\)</span>. Euler–Lagrange da <span class="math inline">\(m\ddot x=0\)</span> y <span class="math inline">\(ky=0\)</span>, de modo que toda solución tiene <span class="math inline">\(y=0\)</span> y, por diferenciación, <span class="math inline">\(\dot y=0\)</span>. La transformación de Legendre envía todas las velocidades <span class="math inline">\(\dot y\)</span> de un punto al mismo <span class="math inline">\(p_y=0\)</span>; su hessiana es <span class="math inline">\(\operatorname{diag}(m,0)\)</span>. No tiene inversa sobre un abierto de las cuatro variables <span class="math inline">\((x,y,p_x,p_y)\)</span>. Puede describirse el movimiento efectivo como una partícula libre en <span class="math inline">\(x\)</span> una vez establecidas las restricciones, pero no deducir dos pares canónicos independientes mediante la inversión regular de este capítulo.</p>
-</section>
-<section id="fpm-i-28-e30" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-28-e30">FPM-I-28-E30</h3>
-<p>En el laboratorio <span class="math inline">\(p=m\dot q\)</span> y <span class="math inline">\(H=p^2/(2m)+k(q-ut)^2/2\)</span>. El cambio <span class="math inline">\(q=Q+ut\)</span> tiene <span class="math inline">\(P=p\)</span> y</p>
-<p><span class="math display">\[
-K(Q,P)=\frac{P^2}{2m}+\frac k2Q^2-uP.
-\]</span></p>
+<p><strong>Solución del ejercicio 28.27.</strong> La condición inicial de posición reduce la solución general a <span class="math inline">\(q(t)=B\sin\omega t\)</span>. La condición final exige <span class="math inline">\(B\sin\omega T=0\)</span>. Si el seno no se anula, sólo existe <span class="math inline">\(B=0\)</span>, la solución de equilibrio. Si <span class="math inline">\(T=\pi/\omega\)</span>, cualquier <span class="math inline">\(B\)</span> satisface las posiciones extremas: hay infinitas soluciones con momentos iniciales <span class="math inline">\(p(0)=m\omega B\)</span>. Para cada uno de esos estados iniciales sigue habiendo una única solución. La falta de unicidad del problema de contorno es compatible con la unicidad del problema inicial.</p>
+<p><strong>Solución del ejercicio 28.28.</strong> La regla de evolución da</p>
+<p><span class="math display">\[\frac{d}{dt}\left(q-\frac{tp}m\right) =-\frac pm+\frac pm-\frac tm\dot p=0.\]</span></p>
+<p>Para la transformación galileana <span class="math inline">\(\delta q=\varepsilon t\)</span>, <span class="math inline">\(\tau=0\)</span>, la variación infinitesimal de <span class="math inline">\(L=m\dot q^2/2\)</span> es <span class="math inline">\(m\dot q=D_t(mq)\)</span>. Por capítulo 27, la carga es <span class="math inline">\(J=pt-mq=-mA\)</span>. Es una constante que depende explícitamente del tiempo cuando se escribe como función sobre los estados. Su valor permite reconstruir la posición inicial de la partícula libre.</p>
+<p><strong>Solución del ejercicio 28.29.</strong> Los momentos son <span class="math inline">\(p_x=m\dot x\)</span> y <span class="math inline">\(p_y=0\)</span>. Euler–Lagrange da <span class="math inline">\(m\ddot x=0\)</span> y <span class="math inline">\(ky=0\)</span>, de modo que toda solución tiene <span class="math inline">\(y=0\)</span> y, por diferenciación, <span class="math inline">\(\dot y=0\)</span>. La transformación de Legendre envía todas las velocidades <span class="math inline">\(\dot y\)</span> de un punto al mismo <span class="math inline">\(p_y=0\)</span>; su hessiana es <span class="math inline">\(\operatorname{diag}(m,0)\)</span>. No tiene inversa sobre un abierto de las cuatro variables <span class="math inline">\((x,y,p_x,p_y)\)</span>. Puede describirse el movimiento efectivo como una partícula libre en <span class="math inline">\(x\)</span> una vez establecidas las restricciones, pero no deducir dos pares canónicos independientes mediante la inversión regular de este capítulo.</p>
+<p><strong>Solución del ejercicio 28.30.</strong> En el laboratorio <span class="math inline">\(p=m\dot q\)</span> y <span class="math inline">\(H=p^2/(2m)+k(q-ut)^2/2\)</span>. El cambio <span class="math inline">\(q=Q+ut\)</span> tiene <span class="math inline">\(P=p\)</span> y</p>
+<p><span class="math display">\[K(Q,P)=\frac{P^2}{2m}+\frac k2Q^2-uP.\]</span></p>
 <p>Es autónomo; por ello conserva</p>
-<p><span class="math display">\[
-C=\frac{p^2}{2m}+\frac k2(q-ut)^2-up.
-\]</span></p>
+<p><span class="math display">\[C=\frac{p^2}{2m}+\frac k2(q-ut)^2-up.\]</span></p>
 <p>Completar el cuadrado da <span class="math inline">\(K=(P-mu)^2/(2m)+kQ^2/2-mu^2/2\)</span>. Las ecuaciones implican <span class="math inline">\(m\ddot Q=-kQ\)</span>, el oscilador visto desde el centro transportado. La transformación conjunta <span class="math inline">\(t\mapsto t+\varepsilon\)</span>, <span class="math inline">\(q\mapsto q+u\varepsilon\)</span> deja <span class="math inline">\(q-ut\)</span> y la velocidad invariantes; tiene <span class="math inline">\(\tau=1\)</span>, <span class="math inline">\(\xi=u\)</span> y <span class="math inline">\(F=0\)</span>. Su carga de Noether es <span class="math inline">\(J=up-H=-C\)</span>. La energía de laboratorio sola satisface <span class="math inline">\(\dot H=-ku(q-ut)\)</span> y generalmente cambia.</p>
+<p><span id="notas-y-lecturas"></span></p>
 </section>
-</section>
-<section id="notas-y-lecturas" class="level2">
-<h2 class="anchored" data-anchor-id="notas-y-lecturas">Notas y lecturas</h2>
-<p>El punto de entrada es I26: regularidad del lagrangiano, momentos conjugados y energía. I27 aporta la interpretación de las coordenadas cíclicas, la invariancia temporal y las cargas con términos de borde. I24 permite reconocer la diagonalización modal en §10. La equivalencia demostrada aquí es local siempre que la inversión de Legendre lo sea; cada afirmación global incluye sus hipótesis adicionales.</p>
-<p>Como lectura complementaria, David Tong, <em>Classical Dynamics</em>, <a href="https://www.damtp.cam.ac.uk/user/tong/dynamics/dynhtml/S4.html">capítulo 4, «The Hamiltonian Formalism»</a>, §§4.1.1–4.1.5, desarrolla la transformada de Legendre, las ecuaciones, los ejemplos, la energía y la acción en fases. Las demostraciones y los ejercicios de este capítulo están desarrollados en el propio texto. La distinción entre inversión mecánica local y conjugación convexa por supremo se ha explicitado en §§2–3 y E03–E06 para precisar el alcance de las hipótesis.</p>
-<p>En I29 estudiaremos la estructura que permite escribir de forma uniforme la evolución de todos los observables: los corchetes de Poisson y la forma simpléctica canónica. Las cuestiones de estabilidad global y caos corresponden a I30. El presente cierre comprende la redacción y la revisión matemática y editorial; no incluye maquetación ni revisión de una edición en PDF.</p>
-<hr>
-<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-27-simetrias-teorema-de-noether-y-leyes-de-conservacion.html">Capítulo 27</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-29-corchetes-de-poisson-y-estructura-simplectica-elemental.html">Capítulo 29</a></p>
+<section id="fispm-c28-notas-y-lecturas" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="fispm-c28-notas-y-lecturas">Notas y lecturas</h2>
+<p>El punto de entrada es capítulo 26: regularidad del lagrangiano, momentos conjugados y energía. El capítulo 27 aporta la interpretación de las coordenadas cíclicas, la invariancia temporal y las cargas con términos de borde. El capítulo 24 permite reconocer la diagonalización modal en §10. La equivalencia demostrada aquí es local siempre que la inversión de Legendre lo sea; cada afirmación global incluye sus hipótesis adicionales.</p>
+<p>Como lectura complementaria, David Tong, <em>Classical Dynamics</em>, <a href="https://www.damtp.cam.ac.uk/user/tong/dynamics/dynhtml/S4.html">capítulo 4, «The Hamiltonian Formalism»</a>, §§4.1.1–4.1.5, desarrolla la transformada de Legendre, las ecuaciones, los ejemplos, la energía y la acción en fases. Las demostraciones y los ejercicios de este capítulo están desarrollados en el propio texto. La distinción entre inversión mecánica local y conjugación convexa por supremo se ha explicitado en §§2–3 y ejercicios 28.3–28.6 para precisar el alcance de las hipótesis.</p>
+<p>En el capítulo 29 estudiaremos la estructura que permite escribir de forma uniforme la evolución de todos los observables: los corchetes de Poisson y la forma simpléctica canónica. Las cuestiones de estabilidad global y caos corresponden al capítulo 30.</p>
 
 
 </section>

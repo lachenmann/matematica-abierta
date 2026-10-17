@@ -109,6 +109,52 @@ window.MathJax.startup.pageReady = async function () {
   });
 })();
 </script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -517,87 +563,23 @@ window.Quarto = {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#las-posiciones-que-un-sistema-puede-adoptar" id="toc-las-posiciones-que-un-sistema-puede-adoptar" class="nav-link active" data-scroll-target="#las-posiciones-que-un-sistema-puede-adoptar">§1. Las posiciones que un sistema puede adoptar</a></li>
-  <li><a href="#desplazar-virtualmente-y-avanzar-en-el-tiempo" id="toc-desplazar-virtualmente-y-avanzar-en-el-tiempo" class="nav-link" data-scroll-target="#desplazar-virtualmente-y-avanzar-en-el-tiempo">§2. Desplazar virtualmente y avanzar en el tiempo</a></li>
-  <li><a href="#qué-se-supone-de-las-fuerzas-de-vínculo" id="toc-qué-se-supone-de-las-fuerzas-de-vínculo" class="nav-link" data-scroll-target="#qué-se-supone-de-las-fuerzas-de-vínculo">§3. Qué se supone de las fuerzas de vínculo</a></li>
-  <li><a href="#equilibrio-mediante-trabajo-virtual" id="toc-equilibrio-mediante-trabajo-virtual" class="nav-link" data-scroll-target="#equilibrio-mediante-trabajo-virtual">§4. Equilibrio mediante trabajo virtual</a></li>
-  <li><a href="#dalembert-proyectar-la-dinámica" id="toc-dalembert-proyectar-la-dinámica" class="nav-link" data-scroll-target="#dalembert-proyectar-la-dinámica">§5. D’Alembert: proyectar la dinámica</a></li>
-  <li><a href="#fuerzas-generalizadas-y-una-identidad-cinética" id="toc-fuerzas-generalizadas-y-una-identidad-cinética" class="nav-link" data-scroll-target="#fuerzas-generalizadas-y-una-identidad-cinética">§6. Fuerzas generalizadas y una identidad cinética</a></li>
-  <li><a href="#el-péndulo-con-soporte-fijo-y-móvil" id="toc-el-péndulo-con-soporte-fijo-y-móvil" class="nav-link" data-scroll-target="#el-péndulo-con-soporte-fijo-y-móvil">§7. El péndulo, con soporte fijo y móvil</a></li>
-  <li><a href="#una-función-cuyo-argumento-es-una-curva" id="toc-una-función-cuyo-argumento-es-una-curva" class="nav-link" data-scroll-target="#una-función-cuyo-argumento-es-una-curva">§8. Una función cuyo argumento es una curva</a></li>
-  <li><a href="#derivar-la-acción-e-integrar-por-partes" id="toc-derivar-la-acción-e-integrar-por-partes" class="nav-link" data-scroll-target="#derivar-la-acción-e-integrar-por-partes">§9. Derivar la acción e integrar por partes</a></li>
-  <li><a href="#por-qué-una-identidad-integral-determina-una-ecuación" id="toc-por-qué-una-identidad-integral-determina-una-ecuación" class="nav-link" data-scroll-target="#por-qué-una-identidad-integral-determina-una-ecuación">§10. Por qué una identidad integral determina una ecuación</a></li>
-  <li><a href="#el-principio-de-hamilton-y-su-equivalencia-mecánica" id="toc-el-principio-de-hamilton-y-su-equivalencia-mecánica" class="nav-link" data-scroll-target="#el-principio-de-hamilton-y-su-equivalencia-mecánica">§11. El principio de Hamilton y su equivalencia mecánica</a></li>
-  <li><a href="#el-oscilador-mínimo-degeneración-y-punto-de-silla" id="toc-el-oscilador-mínimo-degeneración-y-punto-de-silla" class="nav-link" data-scroll-target="#el-oscilador-mínimo-degeneración-y-punto-de-silla">§12. El oscilador: mínimo, degeneración y punto de silla</a></li>
-  <li><a href="#términos-de-borde-y-extremos-libres" id="toc-términos-de-borde-y-extremos-libres" class="nav-link" data-scroll-target="#términos-de-borde-y-extremos-libres">§13. Términos de borde y extremos libres</a></li>
-  <li><a href="#multiplicadores-y-límites-de-la-formulación" id="toc-multiplicadores-y-límites-de-la-formulación" class="nav-link" data-scroll-target="#multiplicadores-y-límites-de-la-formulación">§14. Multiplicadores y límites de la formulación</a></li>
-  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
-  <ul class="collapse">
-  <li><a href="#fpm-i-25-e01-contar-restricciones-independientes" id="toc-fpm-i-25-e01-contar-restricciones-independientes" class="nav-link" data-scroll-target="#fpm-i-25-e01-contar-restricciones-independientes">FPM-I-25-E01 — Contar restricciones independientes</a></li>
-  <li><a href="#fpm-i-25-e02-una-tangente-concreta" id="toc-fpm-i-25-e02-una-tangente-concreta" class="nav-link" data-scroll-target="#fpm-i-25-e02-una-tangente-concreta">FPM-I-25-E02 — Una tangente concreta</a></li>
-  <li><a href="#fpm-i-25-e03-vínculo-móvil-y-potencia" id="toc-fpm-i-25-e03-vínculo-móvil-y-potencia" class="nav-link" data-scroll-target="#fpm-i-25-e03-vínculo-móvil-y-potencia">FPM-I-25-E03 — Vínculo móvil y potencia</a></li>
-  <li><a href="#fpm-i-25-e04-cancelación-colectiva" id="toc-fpm-i-25-e04-cancelación-colectiva" class="nav-link" data-scroll-target="#fpm-i-25-e04-cancelación-colectiva">FPM-I-25-E04 — Cancelación colectiva</a></li>
-  <li><a href="#fpm-i-25-e05-rozamiento-en-una-guía" id="toc-fpm-i-25-e05-rozamiento-en-una-guía" class="nav-link" data-scroll-target="#fpm-i-25-e05-rozamiento-en-una-guía">FPM-I-25-E05 — Rozamiento en una guía</a></li>
-  <li><a href="#fpm-i-25-e06-equilibrio-sobre-un-plano" id="toc-fpm-i-25-e06-equilibrio-sobre-un-plano" class="nav-link" data-scroll-target="#fpm-i-25-e06-equilibrio-sobre-un-plano">FPM-I-25-E06 — Equilibrio sobre un plano</a></li>
-  <li><a href="#fpm-i-25-e07-equilibrio-y-estabilidad-del-péndulo" id="toc-fpm-i-25-e07-equilibrio-y-estabilidad-del-péndulo" class="nav-link" data-scroll-target="#fpm-i-25-e07-equilibrio-y-estabilidad-del-péndulo">FPM-I-25-E07 — Equilibrio y estabilidad del péndulo</a></li>
-  <li><a href="#fpm-i-25-e08-dalembert-con-una-sola-coordenada" id="toc-fpm-i-25-e08-dalembert-con-una-sola-coordenada" class="nav-link" data-scroll-target="#fpm-i-25-e08-dalembert-con-una-sola-coordenada">FPM-I-25-E08 — D’Alembert con una sola coordenada</a></li>
-  <li><a href="#fpm-i-25-e09-una-fuerza-horizontal" id="toc-fpm-i-25-e09-una-fuerza-horizontal" class="nav-link" data-scroll-target="#fpm-i-25-e09-una-fuerza-horizontal">FPM-I-25-E09 — Una fuerza horizontal</a></li>
-  <li><a href="#fpm-i-25-e10-coordenadas-polares" id="toc-fpm-i-25-e10-coordenadas-polares" class="nav-link" data-scroll-target="#fpm-i-25-e10-coordenadas-polares">FPM-I-25-E10 — Coordenadas polares</a></li>
-  <li><a href="#fpm-i-25-e11-soporte-con-aceleración-constante" id="toc-fpm-i-25-e11-soporte-con-aceleración-constante" class="nav-link" data-scroll-target="#fpm-i-25-e11-soporte-con-aceleración-constante">FPM-I-25-E11 — Soporte con aceleración constante</a></li>
-  <li><a href="#fpm-i-25-e12-reacción-que-entrega-energía" id="toc-fpm-i-25-e12-reacción-que-entrega-energía" class="nav-link" data-scroll-target="#fpm-i-25-e12-reacción-que-entrega-energía">FPM-I-25-E12 — Reacción que entrega energía</a></li>
-  <li><a href="#fpm-i-25-e13-partícula-libre-entre-dos-posiciones" id="toc-fpm-i-25-e13-partícula-libre-entre-dos-posiciones" class="nav-link" data-scroll-target="#fpm-i-25-e13-partícula-libre-entre-dos-posiciones">FPM-I-25-E13 — Partícula libre entre dos posiciones</a></li>
-  <li><a href="#fpm-i-25-e14-el-signo-del-potencial" id="toc-fpm-i-25-e14-el-signo-del-potencial" class="nav-link" data-scroll-target="#fpm-i-25-e14-el-signo-del-potencial">FPM-I-25-E14 — El signo del potencial</a></li>
-  <li><a href="#fpm-i-25-e15-una-prueba-aislada-no-basta" id="toc-fpm-i-25-e15-una-prueba-aislada-no-basta" class="nav-link" data-scroll-target="#fpm-i-25-e15-una-prueba-aislada-no-basta">FPM-I-25-E15 — Una prueba aislada no basta</a></li>
-  <li><a href="#fpm-i-25-e16-familia-exactamente-admisible" id="toc-fpm-i-25-e16-familia-exactamente-admisible" class="nav-link" data-scroll-target="#fpm-i-25-e16-familia-exactamente-admisible">FPM-I-25-E16 — Familia exactamente admisible</a></li>
-  <li><a href="#fpm-i-25-e17-primera-variación-del-oscilador" id="toc-fpm-i-25-e17-primera-variación-del-oscilador" class="nav-link" data-scroll-target="#fpm-i-25-e17-primera-variación-del-oscilador">FPM-I-25-E17 — Primera variación del oscilador</a></li>
-  <li><a href="#fpm-i-25-e18-muchas-trayectorias-con-los-mismos-extremos" id="toc-fpm-i-25-e18-muchas-trayectorias-con-los-mismos-extremos" class="nav-link" data-scroll-target="#fpm-i-25-e18-muchas-trayectorias-con-los-mismos-extremos">FPM-I-25-E18 — Muchas trayectorias con los mismos extremos</a></li>
-  <li><a href="#fpm-i-25-e19-un-problema-de-borde-sin-solución" id="toc-fpm-i-25-e19-un-problema-de-borde-sin-solución" class="nav-link" data-scroll-target="#fpm-i-25-e19-un-problema-de-borde-sin-solución">FPM-I-25-E19 — Un problema de borde sin solución</a></li>
-  <li><a href="#fpm-i-25-e20-dos-signos-arbitrariamente-cerca" id="toc-fpm-i-25-e20-dos-signos-arbitrariamente-cerca" class="nav-link" data-scroll-target="#fpm-i-25-e20-dos-signos-arbitrariamente-cerca">FPM-I-25-E20 — Dos signos arbitrariamente cerca</a></li>
-  <li><a href="#fpm-i-25-e21-igualdad-en-la-desigualdad-de-p12" id="toc-fpm-i-25-e21-igualdad-en-la-desigualdad-de-p12" class="nav-link" data-scroll-target="#fpm-i-25-e21-igualdad-en-la-desigualdad-de-p12">FPM-I-25-E21 — Igualdad en la desigualdad de P12</a></li>
-  <li><a href="#fpm-i-25-e22-gravedad-y-posiciones-finales" id="toc-fpm-i-25-e22-gravedad-y-posiciones-finales" class="nav-link" data-scroll-target="#fpm-i-25-e22-gravedad-y-posiciones-finales">FPM-I-25-E22 — Gravedad y posiciones finales</a></li>
-  <li><a href="#fpm-i-25-e23-una-derivada-total-explícita" id="toc-fpm-i-25-e23-una-derivada-total-explícita" class="nav-link" data-scroll-target="#fpm-i-25-e23-una-derivada-total-explícita">FPM-I-25-E23 — Una derivada total explícita</a></li>
-  <li><a href="#fpm-i-25-e24-coste-terminal-y-extremo-libre" id="toc-fpm-i-25-e24-coste-terminal-y-extremo-libre" class="nav-link" data-scroll-target="#fpm-i-25-e24-coste-terminal-y-extremo-libre">FPM-I-25-E24 — Coste terminal y extremo libre</a></li>
-  <li><a href="#fpm-i-25-e25-multiplicador-de-una-circunferencia" id="toc-fpm-i-25-e25-multiplicador-de-una-circunferencia" class="nav-link" data-scroll-target="#fpm-i-25-e25-multiplicador-de-una-circunferencia">FPM-I-25-E25 — Multiplicador de una circunferencia</a></li>
-  <li><a href="#fpm-i-25-e26-resistencia-mediante-trabajo-virtual" id="toc-fpm-i-25-e26-resistencia-mediante-trabajo-virtual" class="nav-link" data-scroll-target="#fpm-i-25-e26-resistencia-mediante-trabajo-virtual">FPM-I-25-E26 — Resistencia mediante trabajo virtual</a></li>
-  <li><a href="#fpm-i-25-e27-resorte-con-extremo-móvil" id="toc-fpm-i-25-e27-resorte-con-extremo-móvil" class="nav-link" data-scroll-target="#fpm-i-25-e27-resorte-con-extremo-móvil">FPM-I-25-E27 — Resorte con extremo móvil</a></li>
-  <li><a href="#fpm-i-25-e28-dos-clases-distintas-de-variación" id="toc-fpm-i-25-e28-dos-clases-distintas-de-variación" class="nav-link" data-scroll-target="#fpm-i-25-e28-dos-clases-distintas-de-variación">FPM-I-25-E28 — Dos clases distintas de variación</a></li>
-  <li><a href="#fpm-i-25-e29-una-restricción-singular" id="toc-fpm-i-25-e29-una-restricción-singular" class="nav-link" data-scroll-target="#fpm-i-25-e29-una-restricción-singular">FPM-I-25-E29 — Una restricción singular</a></li>
-  <li><a href="#fpm-i-25-e30-una-cuenta-sobre-una-parábola" id="toc-fpm-i-25-e30-una-cuenta-sobre-una-parábola" class="nav-link" data-scroll-target="#fpm-i-25-e30-una-cuenta-sobre-una-parábola">FPM-I-25-E30 — Una cuenta sobre una parábola</a></li>
-  </ul></li>
-  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
-  <ul class="collapse">
-  <li><a href="#fpm-i-25-e01" id="toc-fpm-i-25-e01" class="nav-link" data-scroll-target="#fpm-i-25-e01">FPM-I-25-E01</a></li>
-  <li><a href="#fpm-i-25-e02" id="toc-fpm-i-25-e02" class="nav-link" data-scroll-target="#fpm-i-25-e02">FPM-I-25-E02</a></li>
-  <li><a href="#fpm-i-25-e03" id="toc-fpm-i-25-e03" class="nav-link" data-scroll-target="#fpm-i-25-e03">FPM-I-25-E03</a></li>
-  <li><a href="#fpm-i-25-e04" id="toc-fpm-i-25-e04" class="nav-link" data-scroll-target="#fpm-i-25-e04">FPM-I-25-E04</a></li>
-  <li><a href="#fpm-i-25-e05" id="toc-fpm-i-25-e05" class="nav-link" data-scroll-target="#fpm-i-25-e05">FPM-I-25-E05</a></li>
-  <li><a href="#fpm-i-25-e06" id="toc-fpm-i-25-e06" class="nav-link" data-scroll-target="#fpm-i-25-e06">FPM-I-25-E06</a></li>
-  <li><a href="#fpm-i-25-e07" id="toc-fpm-i-25-e07" class="nav-link" data-scroll-target="#fpm-i-25-e07">FPM-I-25-E07</a></li>
-  <li><a href="#fpm-i-25-e08" id="toc-fpm-i-25-e08" class="nav-link" data-scroll-target="#fpm-i-25-e08">FPM-I-25-E08</a></li>
-  <li><a href="#fpm-i-25-e09" id="toc-fpm-i-25-e09" class="nav-link" data-scroll-target="#fpm-i-25-e09">FPM-I-25-E09</a></li>
-  <li><a href="#fpm-i-25-e10" id="toc-fpm-i-25-e10" class="nav-link" data-scroll-target="#fpm-i-25-e10">FPM-I-25-E10</a></li>
-  <li><a href="#fpm-i-25-e11" id="toc-fpm-i-25-e11" class="nav-link" data-scroll-target="#fpm-i-25-e11">FPM-I-25-E11</a></li>
-  <li><a href="#fpm-i-25-e12" id="toc-fpm-i-25-e12" class="nav-link" data-scroll-target="#fpm-i-25-e12">FPM-I-25-E12</a></li>
-  <li><a href="#fpm-i-25-e13" id="toc-fpm-i-25-e13" class="nav-link" data-scroll-target="#fpm-i-25-e13">FPM-I-25-E13</a></li>
-  <li><a href="#fpm-i-25-e14" id="toc-fpm-i-25-e14" class="nav-link" data-scroll-target="#fpm-i-25-e14">FPM-I-25-E14</a></li>
-  <li><a href="#fpm-i-25-e15" id="toc-fpm-i-25-e15" class="nav-link" data-scroll-target="#fpm-i-25-e15">FPM-I-25-E15</a></li>
-  <li><a href="#fpm-i-25-e16" id="toc-fpm-i-25-e16" class="nav-link" data-scroll-target="#fpm-i-25-e16">FPM-I-25-E16</a></li>
-  <li><a href="#fpm-i-25-e17" id="toc-fpm-i-25-e17" class="nav-link" data-scroll-target="#fpm-i-25-e17">FPM-I-25-E17</a></li>
-  <li><a href="#fpm-i-25-e18" id="toc-fpm-i-25-e18" class="nav-link" data-scroll-target="#fpm-i-25-e18">FPM-I-25-E18</a></li>
-  <li><a href="#fpm-i-25-e19" id="toc-fpm-i-25-e19" class="nav-link" data-scroll-target="#fpm-i-25-e19">FPM-I-25-E19</a></li>
-  <li><a href="#fpm-i-25-e20" id="toc-fpm-i-25-e20" class="nav-link" data-scroll-target="#fpm-i-25-e20">FPM-I-25-E20</a></li>
-  <li><a href="#fpm-i-25-e21" id="toc-fpm-i-25-e21" class="nav-link" data-scroll-target="#fpm-i-25-e21">FPM-I-25-E21</a></li>
-  <li><a href="#fpm-i-25-e22" id="toc-fpm-i-25-e22" class="nav-link" data-scroll-target="#fpm-i-25-e22">FPM-I-25-E22</a></li>
-  <li><a href="#fpm-i-25-e23" id="toc-fpm-i-25-e23" class="nav-link" data-scroll-target="#fpm-i-25-e23">FPM-I-25-E23</a></li>
-  <li><a href="#fpm-i-25-e24" id="toc-fpm-i-25-e24" class="nav-link" data-scroll-target="#fpm-i-25-e24">FPM-I-25-E24</a></li>
-  <li><a href="#fpm-i-25-e25" id="toc-fpm-i-25-e25" class="nav-link" data-scroll-target="#fpm-i-25-e25">FPM-I-25-E25</a></li>
-  <li><a href="#fpm-i-25-e26" id="toc-fpm-i-25-e26" class="nav-link" data-scroll-target="#fpm-i-25-e26">FPM-I-25-E26</a></li>
-  <li><a href="#fpm-i-25-e27" id="toc-fpm-i-25-e27" class="nav-link" data-scroll-target="#fpm-i-25-e27">FPM-I-25-E27</a></li>
-  <li><a href="#fpm-i-25-e28" id="toc-fpm-i-25-e28" class="nav-link" data-scroll-target="#fpm-i-25-e28">FPM-I-25-E28</a></li>
-  <li><a href="#fpm-i-25-e29" id="toc-fpm-i-25-e29" class="nav-link" data-scroll-target="#fpm-i-25-e29">FPM-I-25-E29</a></li>
-  <li><a href="#fpm-i-25-e30" id="toc-fpm-i-25-e30" class="nav-link" data-scroll-target="#fpm-i-25-e30">FPM-I-25-E30</a></li>
-  </ul></li>
-  <li><a href="#notas-y-lecturas" id="toc-notas-y-lecturas" class="nav-link" data-scroll-target="#notas-y-lecturas">Notas y lecturas</a></li>
+  <li><a href="#fispm-c25-las-posiciones-que-un-sistema-puede-adoptar" id="toc-fispm-c25-las-posiciones-que-un-sistema-puede-adoptar" class="nav-link active" data-scroll-target="#fispm-c25-las-posiciones-que-un-sistema-puede-adoptar">1. Las posiciones que un sistema puede adoptar</a></li>
+  <li><a href="#fispm-c25-desplazar-virtualmente-y-avanzar-en-el-tiempo" id="toc-fispm-c25-desplazar-virtualmente-y-avanzar-en-el-tiempo" class="nav-link" data-scroll-target="#fispm-c25-desplazar-virtualmente-y-avanzar-en-el-tiempo">2. Desplazar virtualmente y avanzar en el tiempo</a></li>
+  <li><a href="#fispm-c25-quuxe9-se-supone-de-las-fuerzas-de-vuxednculo" id="toc-fispm-c25-quuxe9-se-supone-de-las-fuerzas-de-vuxednculo" class="nav-link" data-scroll-target="#fispm-c25-quuxe9-se-supone-de-las-fuerzas-de-vuxednculo">3. Qué se supone de las fuerzas de vínculo</a></li>
+  <li><a href="#fispm-c25-equilibrio-mediante-trabajo-virtual" id="toc-fispm-c25-equilibrio-mediante-trabajo-virtual" class="nav-link" data-scroll-target="#fispm-c25-equilibrio-mediante-trabajo-virtual">4. Equilibrio mediante trabajo virtual</a></li>
+  <li><a href="#fispm-c25-dalembert-proyectar-la-dinuxe1mica" id="toc-fispm-c25-dalembert-proyectar-la-dinuxe1mica" class="nav-link" data-scroll-target="#fispm-c25-dalembert-proyectar-la-dinuxe1mica">5. D’Alembert: proyectar la dinámica</a></li>
+  <li><a href="#fispm-c25-fuerzas-generalizadas-y-una-identidad-cinuxe9tica" id="toc-fispm-c25-fuerzas-generalizadas-y-una-identidad-cinuxe9tica" class="nav-link" data-scroll-target="#fispm-c25-fuerzas-generalizadas-y-una-identidad-cinuxe9tica">6. Fuerzas generalizadas y una identidad cinética</a></li>
+  <li><a href="#fispm-c25-el-puxe9ndulo-con-soporte-fijo-y-muxf3vil" id="toc-fispm-c25-el-puxe9ndulo-con-soporte-fijo-y-muxf3vil" class="nav-link" data-scroll-target="#fispm-c25-el-puxe9ndulo-con-soporte-fijo-y-muxf3vil">7. El péndulo, con soporte fijo y móvil</a></li>
+  <li><a href="#fispm-c25-una-funciuxf3n-cuyo-argumento-es-una-curva" id="toc-fispm-c25-una-funciuxf3n-cuyo-argumento-es-una-curva" class="nav-link" data-scroll-target="#fispm-c25-una-funciuxf3n-cuyo-argumento-es-una-curva">8. Una función cuyo argumento es una curva</a></li>
+  <li><a href="#fispm-c25-derivar-la-acciuxf3n-e-integrar-por-partes" id="toc-fispm-c25-derivar-la-acciuxf3n-e-integrar-por-partes" class="nav-link" data-scroll-target="#fispm-c25-derivar-la-acciuxf3n-e-integrar-por-partes">9. Derivar la acción e integrar por partes</a></li>
+  <li><a href="#fispm-c25-por-quuxe9-una-identidad-integral-determina-una-ecuaciuxf3n" id="toc-fispm-c25-por-quuxe9-una-identidad-integral-determina-una-ecuaciuxf3n" class="nav-link" data-scroll-target="#fispm-c25-por-quuxe9-una-identidad-integral-determina-una-ecuaciuxf3n">10. Por qué una identidad integral determina una ecuación</a></li>
+  <li><a href="#fispm-c25-el-principio-de-hamilton-y-su-equivalencia-mecuxe1nica" id="toc-fispm-c25-el-principio-de-hamilton-y-su-equivalencia-mecuxe1nica" class="nav-link" data-scroll-target="#fispm-c25-el-principio-de-hamilton-y-su-equivalencia-mecuxe1nica">11. El principio de Hamilton y su equivalencia mecánica</a></li>
+  <li><a href="#fispm-c25-el-oscilador-muxednimo-degeneraciuxf3n-y-punto-de-silla" id="toc-fispm-c25-el-oscilador-muxednimo-degeneraciuxf3n-y-punto-de-silla" class="nav-link" data-scroll-target="#fispm-c25-el-oscilador-muxednimo-degeneraciuxf3n-y-punto-de-silla">12. El oscilador: mínimo, degeneración y punto de silla</a></li>
+  <li><a href="#fispm-c25-tuxe9rminos-de-borde-y-extremos-libres" id="toc-fispm-c25-tuxe9rminos-de-borde-y-extremos-libres" class="nav-link" data-scroll-target="#fispm-c25-tuxe9rminos-de-borde-y-extremos-libres">13. Términos de borde y extremos libres</a></li>
+  <li><a href="#fispm-c25-multiplicadores-y-luxedmites-de-la-formulaciuxf3n" id="toc-fispm-c25-multiplicadores-y-luxedmites-de-la-formulaciuxf3n" class="nav-link" data-scroll-target="#fispm-c25-multiplicadores-y-luxedmites-de-la-formulaciuxf3n">14. Multiplicadores y límites de la formulación</a></li>
+  <li><a href="#fispm-c25-ejercicios" id="toc-fispm-c25-ejercicios" class="nav-link" data-scroll-target="#fispm-c25-ejercicios">15. Ejercicios</a></li>
+  <li><a href="#fispm-c25-soluciones" id="toc-fispm-c25-soluciones" class="nav-link" data-scroll-target="#fispm-c25-soluciones">16. Soluciones</a></li>
+  <li><a href="#fispm-c25-notas-y-lecturas" id="toc-fispm-c25-notas-y-lecturas" class="nav-link" data-scroll-target="#fispm-c25-notas-y-lecturas">Notas y lecturas</a></li>
   </ul>
 </nav>
     </div>
@@ -631,7 +613,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Fecha de última modificación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">15 de octubre de 2026</p>
+      <p class="date-modified">17 de octubre de 2026</p>
     </div>
   </div>
     
@@ -643,668 +625,456 @@ window.Quarto = {
 
 
 <p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-24-oscilaciones-acopladas-y-modos-normales.html">Capítulo 24</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-26-mecanica-lagrangiana.html">Capítulo 26</a></p>
+<p><span id="fispm-c25-configuraciuxf3n-trabajo-virtual-y-principios-variacionales"></span></p>
 <p>Una cuenta ensartada en un alambre recibe una fuerza del alambre que mantiene su movimiento sobre la curva. Si queremos calcular esa reacción, necesitamos seguir su dirección y su magnitud. Si sólo queremos saber cómo avanza la cuenta, parte de ese cálculo puede resultar innecesaria: una proyección tangencial elimina la reacción de un alambre liso y deja la ecuación del movimiento permitido.</p>
 <p>Con varios cuerpos y restricciones, escoger una tangente en cada problema se vuelve incómodo. Una cuerda inextensible relaciona desplazamientos de masas diferentes; una articulación permite ciertos giros y excluye otros; un soporte móvil cambia con el tiempo las posiciones admisibles. Buscaremos una forma de proyectar Newton que respete esas relaciones desde el comienzo.</p>
 <p>El paso siguiente consistirá en comparar trayectorias completas. La derivada de una función compara valores próximos de una variable; la primera variación de una acción compara valores próximos de una trayectoria. Aprenderemos a efectuar esa comparación, a recuperar de ella las ecuaciones diferenciales y a precisar qué significa que la acción sea estacionaria. Los extremos espaciales y los tiempos de comparación formarán parte de los datos del problema.</p>
-<p>Se presuponen los vínculos elementales de I11, trabajo y energía de I12–I13, y las ecuaciones de movimiento desarrolladas hasta I24. Introduciremos el cálculo de variaciones necesario mediante familias de curvas, derivación bajo una integral e integración por partes. La mecánica lagrangiana de I26 empleará esta construcción para organizar sistemas más amplios.</p>
+<p>Se presuponen los vínculos elementales del capítulo 11, trabajo y energía del capítulo 12–I13, y las ecuaciones de movimiento desarrolladas hastal capítulo 24. Introduciremos el cálculo de variaciones necesario mediante familias de curvas, derivación bajo una integral e integración por partes. La mecánica lagrangiana del capítulo 26 empleará esta construcción para organizar sistemas más amplios.</p>
+<p><span id="las-posiciones-que-un-sistema-puede-adoptar"></span></p>
 <p><span id="fispm-t1-c25-s01"></span></p>
 <p><span id="fpm-i-25-s01"></span></p>
-<section id="las-posiciones-que-un-sistema-puede-adoptar" class="level2">
-<h2 class="anchored" data-anchor-id="las-posiciones-que-un-sistema-puede-adoptar">§1. Las posiciones que un sistema puede adoptar</h2>
+<section id="fispm-c25-las-posiciones-que-un-sistema-puede-adoptar" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-las-posiciones-que-un-sistema-puede-adoptar">1. Las posiciones que un sistema puede adoptar</h2>
 <p>Para <span class="math inline">\(N\)</span> partículas, reunamos sus posiciones cartesianas en <span class="math inline">\(r\in\mathbb R^{3N}\)</span>. Una restricción holónoma se expresa mediante ecuaciones <span class="math inline">\(g_\alpha(r,t)=0\)</span>, con <span class="math inline">\(\alpha=1,\ldots,s\)</span>. En un instante fijo, esas ecuaciones seleccionan las configuraciones admisibles.</p>
 <p><span id="fispm-t1-c25-d0001"></span></p>
-<p><strong>Definición FPM-I-25-D01 — Espacio local de configuraciones.</strong> Para un tiempo fijo <span class="math inline">\(t\)</span>, el conjunto de configuraciones es <span class="math inline">\(\mathcal C_t=\{r:g(r,t)=0\}\)</span>. En una región donde el Jacobiano respecto de <span class="math inline">\(r\)</span>, <span class="math inline">\(A=\partial g/\partial r\)</span>, tiene rango constante <span class="math inline">\(s\)</span>, unas coordenadas locales independientes <span class="math inline">\(q=(q^1,\ldots,q^n)\)</span>, con <span class="math inline">\(n=3N-s\)</span>, parametrizan el conjunto mediante <span class="math inline">\(r=R(q,t)\)</span>. Su matriz <span class="math inline">\(J=\partial R/\partial q\)</span> tiene rango <span class="math inline">\(n\)</span>.</p>
+<p><strong>Definición 25.1 — Espacio local de configuraciones.</strong> Para un tiempo fijo <span class="math inline">\(t\)</span>, el conjunto de configuraciones es <span class="math inline">\(\mathcal C_t=\{r:g(r,t)=0\}\)</span>. En una región donde el Jacobiano respecto de <span class="math inline">\(r\)</span>, <span class="math inline">\(A=\partial g/\partial r\)</span>, tiene rango constante <span class="math inline">\(s\)</span>, unas coordenadas locales independientes <span class="math inline">\(q=(q^1,\ldots,q^n)\)</span>, con <span class="math inline">\(n=3N-s\)</span>, parametrizan el conjunto mediante <span class="math inline">\(r=R(q,t)\)</span>. Su matriz <span class="math inline">\(J=\partial R/\partial q\)</span> tiene rango <span class="math inline">\(n\)</span>.</p>
 <p>El teorema de la función implícita justifica estas coordenadas en un entorno de cada configuración regular. Contar ecuaciones sólo es válido después de comprobar su independencia. Las ecuaciones <span class="math inline">\(x^2+y^2=\ell^2\)</span> y <span class="math inline">\(2x^2+2y^2=2\ell^2\)</span> describen una sola restricción, aunque se hayan escrito dos líneas.</p>
 <p>Una partícula plana sujeta a una circunferencia tiene un grado de libertad. Podemos usar <span class="math inline">\(x=\ell\sin\theta\)</span>, <span class="math inline">\(y=-\ell\cos\theta\)</span> en un intervalo angular apropiado. El ángulo describe localmente la posición; sus valores separados por <span class="math inline">\(2\pi\)</span> corresponden al mismo punto. Una coordenada útil no necesita convertirse en una identificación global del círculo con toda la recta.</p>
 <p><span id="fispm-t1-c25-p0001"></span></p>
-<p><strong>Proposición FPM-I-25-P01 — Direcciones permitidas en una configuración regular.</strong> Con el tiempo fijo, las direcciones tangentes admisibles satisfacen <span class="math inline">\(A\,\delta r=0\)</span>, y toda una de esas direcciones se escribe de manera única como <span class="math inline">\(\delta r=J\,\delta q\)</span> en la parametrización local elegida.</p>
+<p><strong>Proposición 25.1 — Direcciones permitidas en una configuración regular.</strong> Con el tiempo fijo, las direcciones tangentes admisibles satisfacen <span class="math inline">\(A\,\delta r=0\)</span>, y toda una de esas direcciones se escribe de manera única como <span class="math inline">\(\delta r=J\,\delta q\)</span> en la parametrización local elegida.</p>
 <p><strong>Demostración.</strong> Derivar <span class="math inline">\(g(R(q,t),t)=0\)</span> respecto de <span class="math inline">\(q\)</span> da <span class="math inline">\(AJ=0\)</span>, por lo que la imagen de <span class="math inline">\(J\)</span> está contenida en el núcleo de <span class="math inline">\(A\)</span>. El rango de <span class="math inline">\(A\)</span> es <span class="math inline">\(s\)</span> y la dimensión de su núcleo es <span class="math inline">\(3N-s=n\)</span>, igual al rango de <span class="math inline">\(J\)</span>. Ambos espacios coinciden. Como <span class="math inline">\(J\)</span> tiene columnas independientes, los coeficientes <span class="math inline">\(\delta q\)</span> de cada vector tangente son únicos. <span class="math inline">\(\square\)</span></p>
 <p>El estado mecánico necesita también velocidades. El espacio de configuraciones organiza dónde puede estar el sistema; la dinámica determina cómo cambia esa configuración y qué datos de velocidad son compatibles con ella.</p>
+<p><span id="desplazar-virtualmente-y-avanzar-en-el-tiempo"></span></p>
 <p><span id="fispm-t1-c25-s02"></span></p>
 <p><span id="fpm-i-25-s02"></span></p>
 </section>
-<section id="desplazar-virtualmente-y-avanzar-en-el-tiempo" class="level2">
-<h2 class="anchored" data-anchor-id="desplazar-virtualmente-y-avanzar-en-el-tiempo">§2. Desplazar virtualmente y avanzar en el tiempo</h2>
+<section id="fispm-c25-desplazar-virtualmente-y-avanzar-en-el-tiempo" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-desplazar-virtualmente-y-avanzar-en-el-tiempo">2. Desplazar virtualmente y avanzar en el tiempo</h2>
 <p><span id="fispm-t1-c25-d0002"></span></p>
-<p><strong>Definición FPM-I-25-D02 — Desplazamiento virtual.</strong> Un desplazamiento virtual es una variación infinitesimal de configuración a tiempo fijo, compatible con los vínculos: <span class="math inline">\(\delta r=J\delta q\)</span> y <span class="math inline">\(\delta t=0\)</span>. En componentes, <span class="math inline">\(\delta\mathbf r_i=\sum_a(\partial\mathbf r_i/\partial q^a)\delta q^a\)</span>.</p>
-<p>Para un movimiento real <span class="math inline">\(r(t)=R(q(t),t)\)</span>, en cambio,</p>
-<p><span class="math display">\[
-\dot r=J\dot q+R_t,
-\qquad A\dot r+g_t=0.
-\]</span></p>
-<p>El término <span class="math inline">\(R_t\)</span> describe el movimiento prescrito del soporte o de la geometría. No aparece en el desplazamiento virtual, porque al comparar configuraciones se mantiene fijo el instante.</p>
+<p><strong>Definición 25.2 — Desplazamiento virtual.</strong> Un desplazamiento virtual es una variación infinitesimal de configuración a tiempo fijo, compatible con los vínculos: <span class="math inline">\(\delta r=J\delta q\)</span> y <span class="math inline">\(\delta t=0\)</span>. En componentes, <span class="math inline">\(\delta\mathbf r_i=\sum_a(\partial\mathbf r_i/\partial q^a)\delta q^a\)</span>.</p>
+<p>Para un movimiento real <span class="math inline">\(r(t)=R(q(t),t)\)</span>, en cambio, <span class="math inline">\(\dot r=J\dot q+R_t, \qquad A\dot r+g_t=0.\)</span> El término <span class="math inline">\(R_t\)</span> describe el movimiento prescrito del soporte o de la geometría. No aparece en el desplazamiento virtual, porque al comparar configuraciones se mantiene fijo el instante.</p>
+<p><span id="fig:I-25-N01"></span></p>
+<figure id="fig-fpm-v04-i-25-n01" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/v04/I-25-N01.svg" class="lightbox" data-gallery="fpm-v04-c25"><img src="../../assets/books/fispm/v04/I-25-N01.svg" alt="Desplazamiento virtual. Diagrama del capítulo 25; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="340" height="294" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 25.1.</strong> Con tiempo fijo y longitud de péndulo fija, <span class="math inline">\(\delta r\)</span> es tangente al círculo. La tensión radial realiza trabajo virtual nulo; esta afirmación depende de la idealidad del vínculo. Véase §<a href="#fispm-c25-desplazar-virtualmente-y-avanzar-en-el-tiempo">2</a>.</p>
+</figcaption>
+</figure>
 <p>Una cuenta sobre una circunferencia cuyo radio <span class="math inline">\(\ell(t)\)</span> cambia ilustra la diferencia. Las variaciones virtuales son tangentes al círculo de ese instante. La velocidad real tiene además una componente radial <span class="math inline">\(\dot\ell\,\mathbf e_r\)</span>. Una reacción radial puede ser perpendicular a todo desplazamiento virtual y realizar trabajo durante el movimiento real.</p>
 <p><span id="fispm-t1-c25-p0002"></span></p>
-<p><strong>Proposición FPM-I-25-P02 — Diferencia de velocidades compatibles.</strong> En una configuración e instante dados, la diferencia entre dos velocidades que satisfacen los mismos vínculos móviles pertenece al espacio de desplazamientos virtuales. Una velocidad compatible individual no tiene por qué pertenecer a él.</p>
+<p><strong>Proposición 25.2 — Diferencia de velocidades compatibles.</strong> En una configuración e instante dados, la diferencia entre dos velocidades que satisfacen los mismos vínculos móviles pertenece al espacio de desplazamientos virtuales. Una velocidad compatible individual no tiene por qué pertenecer a él.</p>
 <p><strong>Demostración.</strong> Si <span class="math inline">\(Av_1+g_t=0\)</span> y <span class="math inline">\(Av_2+g_t=0\)</span>, restar da <span class="math inline">\(A(v_1-v_2)=0\)</span>. Pero <span class="math inline">\(Av_1=-g_t\)</span> puede ser distinto de cero. <span class="math inline">\(\square\)</span></p>
 <p>Las velocidades admisibles forman, en general, un espacio afín: comparten una componente impuesta por el vínculo y difieren en direcciones tangentes. Para vínculos independientes del tiempo, <span class="math inline">\(g_t=0\)</span> y esa distinción desaparece.</p>
+<p><span id="qué-se-supone-de-las-fuerzas-de-vínculo"></span></p>
 <p><span id="fispm-t1-c25-s03"></span></p>
 <p><span id="fpm-i-25-s03"></span></p>
 </section>
-<section id="qué-se-supone-de-las-fuerzas-de-vínculo" class="level2">
-<h2 class="anchored" data-anchor-id="qué-se-supone-de-las-fuerzas-de-vínculo">§3. Qué se supone de las fuerzas de vínculo</h2>
+<section id="fispm-c25-quuxe9-se-supone-de-las-fuerzas-de-vuxednculo" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-quuxe9-se-supone-de-las-fuerzas-de-vuxednculo">3. Qué se supone de las fuerzas de vínculo</h2>
 <p>Escribamos Newton como <span class="math inline">\(m_i\ddot{\mathbf r}_i=\mathbf F_i+\mathbf R_i\)</span>, separando las fuerzas aplicadas <span class="math inline">\(\mathbf F_i\)</span> y las reacciones de vínculo <span class="math inline">\(\mathbf R_i\)</span>. La clasificación depende del modelo: una fuerza que se prescribe explícitamente se conserva entre las aplicadas; una reacción desconocida se determina al exigir compatibilidad.</p>
+<p><span id="fig:I-25-R01"></span></p>
+<figure id="fig-fpm-v04-i-25-r01" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/v04/I-25-R01.svg" class="lightbox" data-gallery="fpm-v04-c25"><img src="../../assets/books/fispm/v04/I-25-R01.svg" alt="Desplazamiento virtual y reacción ideal. Diagrama del capítulo 25; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="340" height="367" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 25.2.</strong> En una guía circular fija y lisa, el desplazamiento virtual admisible es tangente y la reacción es normal. Su trabajo virtual es cero. Las flechas no describen dos fuerzas que se equilibren. Véase §<a href="#fispm-c25-quuxe9-se-supone-de-las-fuerzas-de-vuxednculo">3</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c25-d0003"></span></p>
-<p><strong>Definición FPM-I-25-D03 — Vínculo ideal.</strong> Un sistema de vínculos se llama ideal si sus reacciones satisfacen</p>
-<p><span class="math display">\[
-\sum_i\mathbf R_i\cdot\delta\mathbf r_i=0
-\]</span></p>
-<p>para todo desplazamiento virtual admisible. La igualdad es colectiva: no exige que cada producto individual sea cero.</p>
-<p>Una guía lisa ejerce una reacción normal a su tangente. Una cuerda ideal puede realizar trabajos virtuales individuales no nulos en sus extremos que se cancelan por la relación entre desplazamientos. El rozamiento de deslizamiento aporta, en general, trabajo virtual no nulo y debe permanecer entre las fuerzas que se proyectan.</p>
+<p><strong>Definición 25.3 — Vínculo ideal.</strong> Un sistema de vínculos se llama ideal si sus reacciones satisfacen</p>
+<p><span class="math display">\[\sum_i\mathbf R_i\cdot\delta\mathbf r_i=0\]</span></p>
+<p>para todo desplazamiento virtual admisible. La igualdad es colectiva: no exige que cada producto individual sea cero. Una guía lisa ejerce una reacción normal a su tangente. Una cuerda ideal puede realizar trabajos virtuales individuales no nulos en sus extremos que se cancelan por la relación entre desplazamientos. El rozamiento de deslizamiento aporta, en general, trabajo virtual no nulo y debe permanecer entre las fuerzas que se proyectan.</p>
 <p><span id="fispm-t1-c25-p0003"></span></p>
-<p><strong>Proposición FPM-I-25-P03 — Reacciones como normales a los vínculos.</strong> En una configuración regular, una reacción total <span class="math inline">\(R\)</span> es ideal si y sólo si existe una columna <span class="math inline">\(\lambda\in\mathbb R^s\)</span> tal que <span class="math inline">\(R=A^T\lambda\)</span>. Los coeficientes son únicos cuando las filas de <span class="math inline">\(A\)</span> son independientes.</p>
+<p><strong>Proposición 25.3 — Reacciones como normales a los vínculos.</strong> En una configuración regular, una reacción total <span class="math inline">\(R\)</span> es ideal si y sólo si existe una columna <span class="math inline">\(\lambda\in\mathbb R^s\)</span> tal que <span class="math inline">\(R=A^T\lambda\)</span>. Los coeficientes son únicos cuando las filas de <span class="math inline">\(A\)</span> son independientes.</p>
 <p><strong>Demostración.</strong> Si <span class="math inline">\(R=A^T\lambda\)</span>, entonces <span class="math inline">\(R\cdot\delta r=\lambda^TA\delta r=0\)</span>. Recíprocamente, idealidad significa que <span class="math inline">\(R\)</span> pertenece al complemento ortogonal de <span class="math inline">\(\ker A\)</span>. En álgebra lineal finita ese complemento es <span class="math inline">\(\operatorname{im}A^T\)</span>: la inclusión se obtiene del cálculo anterior y ambos espacios tienen dimensión <span class="math inline">\(s\)</span>. La independencia de las filas hace inyectiva a <span class="math inline">\(A^T\)</span>, lo que da unicidad. <span class="math inline">\(\square\)</span></p>
-<p>Para vínculos móviles, la potencia real de esa reacción es</p>
-<p><span class="math display">\[
-R\cdot\dot r=\lambda^TA\dot r=-\lambda^Tg_t.
-\]</span></p>
-<p>La idealidad permite eliminar reacciones en el trabajo virtual y no implica por sí sola potencia real nula. Tampoco las ecuaciones geométricas prueban que un contacto sea ideal: ésa es una hipótesis física que debe declararse.</p>
+<p>Para vínculos móviles, la potencia real de esa reacción es <span class="math inline">\(R\cdot\dot r=\lambda^TA\dot r=-\lambda^Tg_t.\)</span> La idealidad permite eliminar reacciones en el trabajo virtual y no implica por sí sola potencia real nula. Tampoco las ecuaciones geométricas prueban que un contacto sea ideal: ésa es una hipótesis física que debe declararse.</p>
+<p><span id="equilibrio-mediante-trabajo-virtual"></span></p>
 <p><span id="fispm-t1-c25-s04"></span></p>
 <p><span id="fpm-i-25-s04"></span></p>
 </section>
-<section id="equilibrio-mediante-trabajo-virtual" class="level2">
-<h2 class="anchored" data-anchor-id="equilibrio-mediante-trabajo-virtual">§4. Equilibrio mediante trabajo virtual</h2>
+<section id="fispm-c25-equilibrio-mediante-trabajo-virtual" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-equilibrio-mediante-trabajo-virtual">4. Equilibrio mediante trabajo virtual</h2>
 <p>Pensemos primero en una geometría fija, con contactos bilaterales ideales: el sistema puede desplazarse virtualmente en ambos sentidos de cada dirección tangente. En equilibrio, las fuerzas aplicadas se compensan con las reacciones.</p>
 <p><span id="fispm-t1-c25-p0004"></span></p>
-<p><strong>Proposición FPM-I-25-P04 — Criterio de equilibrio ideal.</strong> En una configuración regular de vínculos fijos, existe una reacción ideal que equilibra las fuerzas aplicadas si y sólo si</p>
-<p><span class="math display">\[
-\delta W=\sum_i\mathbf F_i\cdot\delta\mathbf r_i=0
-\]</span></p>
+<p><strong>Proposición 25.4 — Criterio de equilibrio ideal.</strong> En una configuración regular de vínculos fijos, existe una reacción ideal que equilibra las fuerzas aplicadas si y sólo si</p>
+<p><span class="math display">\[\delta W=\sum_i\mathbf F_i\cdot\delta\mathbf r_i=0\]</span></p>
 <p>para todo desplazamiento virtual. Esta condición garantiza compatibilidad algebraica con las reacciones ideales; si el modelo impone además límites de signo o magnitud a una reacción, hay que comprobarlos separadamente.</p>
-<p><strong>Demostración.</strong> Si <span class="math inline">\(F+R=0\)</span>, el trabajo virtual de <span class="math inline">\(F\)</span> es el opuesto del de <span class="math inline">\(R\)</span>, que se anula. A la inversa, si <span class="math inline">\(F\)</span> anula todas las tangentes, P03 permite escribir <span class="math inline">\(F=A^T\mu\)</span>. Escoger <span class="math inline">\(R=-A^T\mu\)</span> equilibra las fuerzas y es una reacción ideal. <span class="math inline">\(\square\)</span></p>
-<p>Si <span class="math inline">\(F=-\nabla V\)</span>, la condición es <span class="math inline">\(\delta V=0\)</span> sobre las configuraciones admisibles. Localmente se convierte en <span class="math inline">\(\partial V(R(q))/\partial q^a=0\)</span> para cada coordenada independiente. Los puntos críticos incluyen mínimos y máximos; decidir estabilidad requiere el análisis energético de I13.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(F+R=0\)</span>, el trabajo virtual de <span class="math inline">\(F\)</span> es el opuesto del de <span class="math inline">\(R\)</span>, que se anula. A la inversa, si <span class="math inline">\(F\)</span> anula todas las tangentes, proposición 25.3 permite escribir <span class="math inline">\(F=A^T\mu\)</span>. Escoger <span class="math inline">\(R=-A^T\mu\)</span> equilibra las fuerzas y es una reacción ideal. <span class="math inline">\(\square\)</span></p>
+<p>Si <span class="math inline">\(F=-\nabla V\)</span>, la condición es <span class="math inline">\(\delta V=0\)</span> sobre las configuraciones admisibles. Localmente se convierte en <span class="math inline">\(\partial V(R(q))/\partial q^a=0\)</span> para cada coordenada independiente. Los puntos críticos incluyen mínimos y máximos; decidir estabilidad requiere el análisis energético del capítulo 13.</p>
 <p>Para una masa que puede deslizar sin rozamiento sobre un plano inclinado, una fuerza normal desconocida no contribuye a <span class="math inline">\(\delta W\)</span>. La componente de gravedad tangencial sí lo hace. Si otra fuerza aplicada la compensa, hay equilibrio; si no, la cuenta inicia un movimiento. La eliminación de la normal conserva exactamente la información necesaria para esa decisión.</p>
+<p><span id="dalembert-proyectar-la-dinámica"></span></p>
 <p><span id="fispm-t1-c25-s05"></span></p>
 <p><span id="fpm-i-25-s05"></span></p>
 </section>
-<section id="dalembert-proyectar-la-dinámica" class="level2">
-<h2 class="anchored" data-anchor-id="dalembert-proyectar-la-dinámica">§5. D’Alembert: proyectar la dinámica</h2>
+<section id="fispm-c25-dalembert-proyectar-la-dinuxe1mica" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-dalembert-proyectar-la-dinuxe1mica">5. D’Alembert: proyectar la dinámica</h2>
 <p>Multipliquemos cada ecuación de Newton por un desplazamiento virtual admisible y sumemos. Las reacciones ideales desaparecen. El resultado tiene la misma forma de equilibrio si se incorpora el término <span class="math inline">\(-m_i\ddot{\mathbf r}_i\)</span>.</p>
 <p><span id="fispm-t1-c25-p0005"></span></p>
-<p><strong>Proposición FPM-I-25-P05 — Forma de d’Alembert.</strong> Una trayectoria compatible con vínculos ideales satisface</p>
-<p><span class="math display">\[
-\sum_i(\mathbf F_i-m_i\ddot{\mathbf r}_i)
-\cdot\delta\mathbf r_i=0
-\]</span></p>
-<p>para todo desplazamiento virtual admisible en cada instante. Recíprocamente, para una trayectoria compatible, esa identidad permite reconstruir una reacción ideal que completa Newton, bajo las hipótesis regulares y bilaterales de P03.</p>
-<p><strong>Demostración.</strong> Newton da <span class="math inline">\(\mathbf F_i-m_i\ddot{\mathbf r}_i=-\mathbf R_i\)</span>; el trabajo virtual colectivo se anula por idealidad. En sentido inverso, la identidad afirma que el vector <span class="math inline">\(m\ddot r-F\)</span> anula el espacio tangente. Por P03 puede escribirse <span class="math inline">\(A^T\lambda\)</span> y sirve como reacción ideal en Newton. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 25.5 — Forma de d’Alembert.</strong> Una trayectoria compatible con vínculos ideales satisface</p>
+<p><span class="math display">\[\sum_i(\mathbf F_i-m_i\ddot{\mathbf r}_i) \cdot\delta\mathbf r_i=0\]</span></p>
+<p>para todo desplazamiento virtual admisible en cada instante. Recíprocamente, para una trayectoria compatible, esa identidad permite reconstruir una reacción ideal que completa Newton, bajo las hipótesis regulares y bilaterales de la proposición 25.3.</p>
+<p><strong>Demostración.</strong> Newton da <span class="math inline">\(\mathbf F_i-m_i\ddot{\mathbf r}_i=-\mathbf R_i\)</span>; el trabajo virtual colectivo se anula por idealidad. En sentido inverso, la identidad afirma que el vector <span class="math inline">\(m\ddot r-F\)</span> anula el espacio tangente. Por proposición 25.3 puede escribirse <span class="math inline">\(A^T\lambda\)</span> y sirve como reacción ideal en Newton. <span class="math inline">\(\square\)</span></p>
 <p>La aceleración es la de la trayectoria real que se quiere determinar. El vector <span class="math inline">\(\delta r\)</span> sirve para probar su proyección en todas las direcciones permitidas. No es necesario identificar <span class="math inline">\(\delta r\)</span> con un desplazamiento que el sistema vaya a efectuar en un tiempo pequeño.</p>
 <p>La expresión de d’Alembert conserva las restricciones sobre el movimiento y elimina sus reacciones de las ecuaciones proyectadas. Si después necesitamos la tensión de una cuerda o la carga de un apoyo, se vuelve a Newton con la trayectoria ya calculada.</p>
+<p><span id="fuerzas-generalizadas-y-una-identidad-cinética"></span></p>
 <p><span id="fispm-t1-c25-s06"></span></p>
 <p><span id="fpm-i-25-s06"></span></p>
 </section>
-<section id="fuerzas-generalizadas-y-una-identidad-cinética" class="level2">
-<h2 class="anchored" data-anchor-id="fuerzas-generalizadas-y-una-identidad-cinética">§6. Fuerzas generalizadas y una identidad cinética</h2>
+<section id="fispm-c25-fuerzas-generalizadas-y-una-identidad-cinuxe9tica" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-fuerzas-generalizadas-y-una-identidad-cinuxe9tica">6. Fuerzas generalizadas y una identidad cinética</h2>
 <p>Sustituyendo <span class="math inline">\(\delta\mathbf r_i=\sum_a\mathbf r_{i,a}\delta q^a\)</span>, el trabajo de las fuerzas aplicadas se reorganiza como</p>
-<p><span class="math display">\[
-\delta W=\sum_a Q_a\delta q^a,
-\qquad Q_a=\sum_i\mathbf F_i\cdot\mathbf r_{i,a},
-\quad \mathbf r_{i,a}=\frac{\partial\mathbf r_i}{\partial q^a}.
-\]</span></p>
+<p><span class="math display">\[\delta W=\sum_a Q_a\delta q^a, \qquad Q_a=\sum_i\mathbf F_i\cdot\mathbf r_{i,a}, \quad \mathbf r_{i,a}=\frac{\partial\mathbf r_i}{\partial q^a}.\]</span></p>
 <p><span id="fispm-t1-c25-d0004"></span></p>
-<p><strong>Definición FPM-I-25-D04 — Fuerza generalizada.</strong> El coeficiente <span class="math inline">\(Q_a\)</span> es la fuerza generalizada conjugada a <span class="math inline">\(q^a\)</span>. Su producto <span class="math inline">\(Q_a\delta q^a\)</span> tiene unidades de energía. Para una coordenada de longitud suele ser una fuerza; para un ángulo puede ser un torque.</p>
+<p><strong>Definición 25.4 — Fuerza generalizada.</strong> El coeficiente <span class="math inline">\(Q_a\)</span> es la fuerza generalizada conjugada a <span class="math inline">\(q^a\)</span>. Su producto <span class="math inline">\(Q_a\delta q^a\)</span> tiene unidades de energía. Para una coordenada de longitud suele ser una fuerza; para un ángulo puede ser un torque.</p>
 <p>Sea <span class="math inline">\(T(q,\dot q,t)=\sum_i m_i|\dot{\mathbf r}_i|^2/2\)</span>, con <span class="math inline">\(\dot{\mathbf r}_i=\sum_a\mathbf r_{i,a}\dot q^a+\mathbf r_{i,t}\)</span>. Las masas se suponen constantes y las parametrizaciones suficientemente diferenciables.</p>
 <p><span id="fispm-t1-c25-p0006"></span></p>
-<p><strong>Proposición FPM-I-25-P06 — Identidad de proyección de la inercia.</strong> Se cumple</p>
-<p><span class="math display">\[
-\sum_i m_i\ddot{\mathbf r}_i\cdot\mathbf r_{i,a}
-=\frac{d}{dt}\frac{\partial T}{\partial\dot q^a}
--\frac{\partial T}{\partial q^a}.
-\]</span></p>
+<p><strong>Proposición 25.6 — Identidad de proyección de la inercia.</strong> Se cumple</p>
+<p><span class="math display">\[\sum_i m_i\ddot{\mathbf r}_i\cdot\mathbf r_{i,a} =\frac{d}{dt}\frac{\partial T}{\partial\dot q^a} -\frac{\partial T}{\partial q^a}.\]</span></p>
 <p><strong>Demostración.</strong> Como <span class="math inline">\(\partial\dot{\mathbf r}_i/\partial\dot q^a=\mathbf r_{i,a}\)</span>,</p>
-<p><span class="math display">\[
-\frac{\partial T}{\partial\dot q^a}
-=\sum_i m_i\dot{\mathbf r}_i\cdot\mathbf r_{i,a}.
-\]</span></p>
+<p><span class="math display">\[\frac{\partial T}{\partial\dot q^a} =\sum_i m_i\dot{\mathbf r}_i\cdot\mathbf r_{i,a}.\]</span></p>
 <p>Su derivada temporal es la suma buscada más <span class="math inline">\(\sum_i m_i\dot{\mathbf r}_i\cdot(d\mathbf r_{i,a}/dt)\)</span>. Por la regla de la cadena y la igualdad de derivadas mixtas,</p>
-<p><span class="math display">\[
-\frac{d\mathbf r_{i,a}}{dt}
-=\sum_b\mathbf r_{i,ab}\dot q^b+\mathbf r_{i,at}
-=\frac{\partial\dot{\mathbf r}_i}{\partial q^a},
-\]</span></p>
+<p><span class="math display">\[\frac{d\mathbf r_{i,a}}{dt} =\sum_b\mathbf r_{i,ab}\dot q^b+\mathbf r_{i,at} =\frac{\partial\dot{\mathbf r}_i}{\partial q^a},\]</span></p>
 <p>donde en la última derivada se mantienen fijas <span class="math inline">\(\dot q\)</span> y <span class="math inline">\(t\)</span>. El término adicional es, por tanto, <span class="math inline">\(\partial T/\partial q^a\)</span>. Restarlo prueba la identidad. <span class="math inline">\(\square\)</span></p>
 <p>La fórmula admite vínculos móviles. En ese caso <span class="math inline">\(T\)</span> puede contener términos lineales en <span class="math inline">\(\dot q\)</span> y términos independientes de <span class="math inline">\(\dot q\)</span>, además de los cuadráticos. Omitirlos porque no aparecen en un soporte fijo cambia la dinámica.</p>
 <p><span id="fispm-t1-c25-p0007"></span></p>
-<p><strong>Proposición FPM-I-25-P07 — Ecuaciones proyectadas.</strong> Para coordenadas independientes y vínculos ideales,</p>
-<p><span class="math display">\[
-\frac{d}{dt}\frac{\partial T}{\partial\dot q^a}
--\frac{\partial T}{\partial q^a}=Q_a.
-\]</span></p>
+<p><strong>Proposición 25.7 — Ecuaciones proyectadas.</strong> Para coordenadas independientes y vínculos ideales,</p>
+<p><span class="math display">\[\frac{d}{dt}\frac{\partial T}{\partial\dot q^a} -\frac{\partial T}{\partial q^a}=Q_a.\]</span></p>
 <p>Si las fuerzas aplicadas derivan de un potencial <span class="math inline">\(V(r,t)\)</span> sin dependencia de velocidades, entonces <span class="math inline">\(Q_a=-\partial V(q,t)/\partial q^a\)</span>. Con <span class="math inline">\(L=T-V\)</span>,</p>
-<p><span class="math display">\[
-\frac{d}{dt}\frac{\partial L}{\partial\dot q^a}
--\frac{\partial L}{\partial q^a}=0.
-\]</span></p>
-<p><strong>Demostración.</strong> Sustituimos D04 y P06 en P05. La suma de los coeficientes por <span class="math inline">\(\delta q^a\)</span> se anula para todo vector <span class="math inline">\(\delta q\)</span>, así que cada coeficiente es cero. Para el potencial, la regla de la cadena da <span class="math inline">\(\partial V/\partial q^a=\sum_i\nabla_iV\cdot\mathbf r_{i,a}=-Q_a\)</span>. Reagrupar los términos produce la ecuación para <span class="math inline">\(L\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><span class="math display">\[\frac{d}{dt}\frac{\partial L}{\partial\dot q^a} -\frac{\partial L}{\partial q^a}=0.\]</span></p>
+<p><strong>Demostración.</strong> Sustituimos definición 25.4 y proposición 25.6 en la proposición 25.5. La suma de los coeficientes por <span class="math inline">\(\delta q^a\)</span> se anula para todo vector <span class="math inline">\(\delta q\)</span>, así que cada coeficiente es cero. Para el potencial, la regla de la cadena da <span class="math inline">\(\partial V/\partial q^a=\sum_i\nabla_iV\cdot\mathbf r_{i,a}=-Q_a\)</span>. Reagrupar los términos produce la ecuación para <span class="math inline">\(L\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><span id="el-péndulo-con-soporte-fijo-y-móvil"></span></p>
 <p><span id="fispm-t1-c25-s07"></span></p>
 <p><span id="fpm-i-25-s07"></span></p>
 </section>
-<section id="el-péndulo-con-soporte-fijo-y-móvil" class="level2">
-<h2 class="anchored" data-anchor-id="el-péndulo-con-soporte-fijo-y-móvil">§7. El péndulo, con soporte fijo y móvil</h2>
+<section id="fispm-c25-el-puxe9ndulo-con-soporte-fijo-y-muxf3vil" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-el-puxe9ndulo-con-soporte-fijo-y-muxf3vil">7. El péndulo, con soporte fijo y móvil</h2>
 <p>Para un péndulo plano de longitud <span class="math inline">\(\ell\)</span>, con eje vertical positivo hacia arriba, escribimos <span class="math inline">\(\mathbf r=(\ell\sin\theta,-\ell\cos\theta)\)</span>. La derivada <span class="math inline">\(\mathbf r_{,\theta}=\ell(\cos\theta,\sin\theta)\)</span> es tangente. La gravedad <span class="math inline">\(\mathbf F=(0,-mg)\)</span> tiene fuerza generalizada <span class="math inline">\(Q_\theta=-mg\ell\sin\theta\)</span>. La tensión, radial, no contribuye.</p>
-<p>Como <span class="math inline">\(T=m\ell^2\dot\theta^2/2\)</span>, P07 da <span class="math inline">\(m\ell^2\ddot\theta=-mg\ell\sin\theta\)</span>. Se recupera la ecuación de I23 sin calcular primero la tensión. Con <span class="math inline">\(V=-mg\ell\cos\theta\)</span>, la misma ecuación se obtiene de <span class="math inline">\(L=T-V\)</span>.</p>
-<p>Si el soporte se mueve horizontalmente con posición prescrita <span class="math inline">\(a(t)\)</span>, la parametrización es</p>
-<p><span class="math display">\[
-\mathbf r=(a(t)+\ell\sin\theta,-\ell\cos\theta),
-\]</span></p>
+<p>Como <span class="math inline">\(T=m\ell^2\dot\theta^2/2\)</span>, proposición 25.7 da <span class="math inline">\(m\ell^2\ddot\theta=-mg\ell\sin\theta\)</span>. Se recupera la ecuación del capítulo 23 sin calcular primero la tensión. Con <span class="math inline">\(V=-mg\ell\cos\theta\)</span>, la misma ecuación se obtiene de <span class="math inline">\(L=T-V\)</span>.</p>
+<p>Si el soporte se mueve horizontalmente con posición prescrita <span class="math inline">\(a(t)\)</span>, la parametrización es <span class="math inline">\(\mathbf r=(a(t)+\ell\sin\theta,-\ell\cos\theta),\)</span></p>
 <p>y la energía cinética completa resulta</p>
-<p><span class="math display">\[
-T=\frac m2\dot a^2+m\ell\dot a\cos\theta\,\dot\theta
-+\frac{m\ell^2}{2}\dot\theta^2.
-\]</span></p>
-<p>En la identidad P06, derivar <span class="math inline">\(\partial T/\partial\dot\theta=m\ell\dot a\cos\theta+m\ell^2\dot\theta\)</span> produce un término <span class="math inline">\(-m\ell\dot a\sin\theta\dot\theta\)</span> que se cancela con <span class="math inline">\(\partial T/\partial\theta\)</span>. Queda</p>
-<p><span class="math display">\[
-m\ell^2\ddot\theta+m\ell\ddot a\cos\theta
-+mg\ell\sin\theta=0.
-\]</span></p>
+<p><span class="math display">\[T=\frac m2\dot a^2+m\ell\dot a\cos\theta\,\dot\theta +\frac{m\ell^2}{2}\dot\theta^2.\]</span></p>
+<p>En la identidad proposición 25.6, derivar <span class="math inline">\(\partial T/\partial\dot\theta=m\ell\dot a\cos\theta+m\ell^2\dot\theta\)</span> produce un término <span class="math inline">\(-m\ell\dot a\sin\theta\dot\theta\)</span> que se cancela con <span class="math inline">\(\partial T/\partial\theta\)</span>. Queda</p>
+<p><span class="math display">\[m\ell^2\ddot\theta+m\ell\ddot a\cos\theta +mg\ell\sin\theta=0.\]</span></p>
 <p>La aceleración del soporte actúa como excitación. Las variaciones virtuales siguen siendo tangentes en cada instante, pero la velocidad real contiene además <span class="math inline">\(\dot a\)</span> y la reacción puede intercambiar energía con el actuador del soporte. Las ecuaciones proyectadas y el balance energético responden a preguntas distintas que deben mantenerse compatibles.</p>
+<p><span id="una-función-cuyo-argumento-es-una-curva"></span></p>
 <p><span id="fispm-t1-c25-s08"></span></p>
 <p><span id="fpm-i-25-s08"></span></p>
 </section>
-<section id="una-función-cuyo-argumento-es-una-curva" class="level2">
-<h2 class="anchored" data-anchor-id="una-función-cuyo-argumento-es-una-curva">§8. Una función cuyo argumento es una curva</h2>
+<section id="fispm-c25-una-funciuxf3n-cuyo-argumento-es-una-curva" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-una-funciuxf3n-cuyo-argumento-es-una-curva">8. Una función cuyo argumento es una curva</h2>
 <p>Fijemos dos tiempos <span class="math inline">\(t_0&lt;t_1\)</span> y dos configuraciones en una carta local. Para comparar trayectorias, consideramos curvas <span class="math inline">\(q:[t_0,t_1]\to\mathbb R^n\)</span> que unen esas configuraciones. La función <span class="math inline">\(L(q,v,t)\)</span> asigna un valor a una posición, una velocidad y un instante. Su integral asigna un número a cada curva completa.</p>
+<p><span id="fig:I-25-N02"></span></p>
+<figure id="fig-fpm-v04-i-25-n02" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/v04/I-25-N02.svg" class="lightbox" data-gallery="fpm-v04-c25"><img src="../../assets/books/fispm/v04/I-25-N02.svg" alt="Familia de curvas admisibles. Diagrama del capítulo 25; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="360" height="257" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 25.3.</strong> Las curvas variadas comparten los extremos y difieren en su interior. La acción asigna un número a cada curva completa; la variación deriva esa asignación con respecto al parámetro de la familia. Véase §<a href="#fispm-c25-una-funciuxf3n-cuyo-argumento-es-una-curva">8</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c25-d0005"></span></p>
-<p><strong>Definición FPM-I-25-D05 — Funcional de acción.</strong> Para un lagrangiano <span class="math inline">\(L\)</span>, la acción de una trayectoria es</p>
-<p><span class="math display">\[
-S[q]=\int_{t_0}^{t_1}L(q(t),\dot q(t),t)\,dt.
-\]</span></p>
+<p><strong>Definición 25.5 — Funcional de acción.</strong> Para un lagrangiano <span class="math inline">\(L\)</span>, la acción de una trayectoria es</p>
+<p><span class="math display">\[S[q]=\int_{t_0}^{t_1}L(q(t),\dot q(t),t)\,dt.\]</span></p>
 <p>Un funcional es una aplicación cuyo argumento es, aquí, una función <span class="math inline">\(q(t)\)</span>. Para <span class="math inline">\(L=T-V\)</span>, la acción tiene unidades de energía multiplicada por tiempo, equivalentes al producto de momento lineal y longitud.</p>
 <p>Una trayectoria constante y otra que recorre un largo rodeo pueden unir los mismos extremos. Sus acciones dependen de las posiciones intermedias y de las velocidades con que se recorren. Tampoco se está comparando sólo la energía en los extremos: el integrando es <span class="math inline">\(T-V\)</span> y se acumula a lo largo del intervalo temporal fijo.</p>
 <p><span id="fispm-t1-c25-d0006"></span></p>
-<p><strong>Definición FPM-I-25-D06 — Variación y primera variación.</strong> Una familia de prueba local tiene la forma <span class="math inline">\(q_\varepsilon(t)=q(t)+\varepsilon\eta(t)\)</span>, con <span class="math inline">\(\eta\)</span> de clase <span class="math inline">\(C^1\)</span>. Para extremos fijos se exige <span class="math inline">\(\eta(t_0)=\eta(t_1)=0\)</span>. La primera variación en dirección <span class="math inline">\(\eta\)</span> es</p>
-<p><span class="math display">\[
-\delta S[q;\eta]=\left.\frac{d}{d\varepsilon}S[q_\varepsilon]\right|_{\varepsilon=0}.
-\]</span></p>
+<p><strong>Definición 25.6 — Variación y primera variación.</strong> Una familia de prueba local tiene la forma <span class="math inline">\(q_\varepsilon(t)=q(t)+\varepsilon\eta(t)\)</span>, con <span class="math inline">\(\eta\)</span> de clase <span class="math inline">\(C^1\)</span>. Para extremos fijos se exige <span class="math inline">\(\eta(t_0)=\eta(t_1)=0\)</span>. La primera variación en dirección <span class="math inline">\(\eta\)</span> es</p>
+<p><span class="math display">\[\delta S[q;\eta]=\left.\frac{d}{d\varepsilon}S[q_\varepsilon]\right|_{\varepsilon=0}.\]</span></p>
 <p>El parámetro <span class="math inline">\(\varepsilon\)</span> compara curvas. El tiempo <span class="math inline">\(t\)</span> indica en qué punto de cada curva se efectúa la comparación. Derivar la familia respecto de <span class="math inline">\(t\)</span> da <span class="math inline">\(\dot q_\varepsilon=\dot q+\varepsilon\dot\eta\)</span>, así que la variación de velocidad es la derivada temporal de la variación de posición. No se mantienen fijas las velocidades de los extremos salvo que se imponga una condición adicional.</p>
 <p>Para una parametrización curva, la familia física es <span class="math inline">\(r_\varepsilon(t)=R(q_\varepsilon(t),t)\)</span>. Satisface exactamente los vínculos para todo <span class="math inline">\(\varepsilon\)</span> pequeño. En cambio, <span class="math inline">\(r+\varepsilon\delta r\)</span> sólo es tangente al conjunto admisible y puede abandonarlo a segundo orden: una recta tangente a una circunferencia sale de ella. El cálculo se realiza en coordenadas que garantizan la admisibilidad de la familia completa.</p>
+<p><span id="derivar-la-acción-e-integrar-por-partes"></span></p>
 <p><span id="fispm-t1-c25-s09"></span></p>
 <p><span id="fpm-i-25-s09"></span></p>
 </section>
-<section id="derivar-la-acción-e-integrar-por-partes" class="level2">
-<h2 class="anchored" data-anchor-id="derivar-la-acción-e-integrar-por-partes">§9. Derivar la acción e integrar por partes</h2>
+<section id="fispm-c25-derivar-la-acciuxf3n-e-integrar-por-partes" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-derivar-la-acciuxf3n-e-integrar-por-partes">9. Derivar la acción e integrar por partes</h2>
 <p>Supongamos <span class="math inline">\(L\)</span> de clase <span class="math inline">\(C^2\)</span> en un entorno de la trayectoria y <span class="math inline">\(q\)</span> de clase <span class="math inline">\(C^2\)</span>. Tomamos variaciones suficientemente pequeñas para permanecer en ese entorno. El intervalo es compacto, por lo que las derivadas continuas del integrando están uniformemente controladas cerca de cada familia de prueba.</p>
 <p><span id="fispm-t1-c25-p0008"></span></p>
-<p><strong>Proposición FPM-I-25-P08 — Fórmula de primera variación.</strong> Con <span class="math inline">\(p_a=\partial L/\partial v^a\)</span>, evaluado a lo largo de la trayectoria,</p>
-<p><span class="math display">\[
-\delta S[q;\eta]
-=\left[\sum_a p_a\eta^a\right]_{t_0}^{t_1}
-+\int_{t_0}^{t_1}\sum_a\left(
-\frac{\partial L}{\partial q^a}-\frac{d p_a}{dt}
-\right)\eta^a\,dt.
-\]</span></p>
+<p><strong>Proposición 25.8 — Fórmula de primera variación.</strong> Con <span class="math inline">\(p_a=\partial L/\partial v^a\)</span>, evaluado a lo largo de la trayectoria,</p>
+<p><span class="math display">\[\delta S[q;\eta] =\left[\sum_a p_a\eta^a\right]_{t_0}^{t_1} +\int_{t_0}^{t_1}\sum_a\left( \frac{\partial L}{\partial q^a}-\frac{d p_a}{dt} \right)\eta^a\,dt.\]</span></p>
 <p><strong>Demostración.</strong> La regla de la cadena y la derivación bajo la integral dan</p>
-<p><span class="math display">\[
-\delta S=\int_{t_0}^{t_1}\sum_a\left(
-\frac{\partial L}{\partial q^a}\eta^a
-+\frac{\partial L}{\partial v^a}\dot\eta^a
-\right)dt.
-\]</span></p>
+<p><span class="math display">\[\delta S=\int_{t_0}^{t_1}\sum_a\left( \frac{\partial L}{\partial q^a}\eta^a +\frac{\partial L}{\partial v^a}\dot\eta^a \right)dt.\]</span></p>
 <p>En cada segundo término aplicamos integración por partes: <span class="math inline">\(\int p_a\dot\eta^a=[p_a\eta^a]-\int\dot p_a\eta^a\)</span>. Sumarlas produce la fórmula. La continuidad de las derivadas en un entorno compacto justifica intercambiar la derivación paramétrica con la integral. <span class="math inline">\(\square\)</span></p>
 <p>Con extremos fijos, el término de borde se anula porque <span class="math inline">\(\eta\)</span> vale cero allí. Ésta es la razón concreta de esa condición. Aunque la variación se anule en los extremos, su derivada puede ser no nula: las trayectorias de comparación pueden llegar a los mismos puntos con velocidades distintas.</p>
 <p>La integral restante contiene un coeficiente que sólo depende de la trayectoria y un factor de prueba <span class="math inline">\(\eta\)</span> que podemos elegir. Exigir que esa integral sea cero para todas las elecciones encierra mucha más información que comprobarla para una sola variación.</p>
+<p><span id="por-qué-una-identidad-integral-determina-una-ecuación"></span></p>
 <p><span id="fispm-t1-c25-s10"></span></p>
 <p><span id="fpm-i-25-s10"></span></p>
 </section>
-<section id="por-qué-una-identidad-integral-determina-una-ecuación" class="level2">
-<h2 class="anchored" data-anchor-id="por-qué-una-identidad-integral-determina-una-ecuación">§10. Por qué una identidad integral determina una ecuación</h2>
+<section id="fispm-c25-por-quuxe9-una-identidad-integral-determina-una-ecuaciuxf3n" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-por-quuxe9-una-identidad-integral-determina-una-ecuaciuxf3n">10. Por qué una identidad integral determina una ecuación</h2>
 <p><span id="fispm-t1-c25-p0009"></span></p>
-<p><strong>Proposición FPM-I-25-P09 — Lema fundamental de las variaciones.</strong> Sea <span class="math inline">\(f:[t_0,t_1]\to\mathbb R\)</span> continua. Si <span class="math inline">\(\int_{t_0}^{t_1}f(t)\eta(t)\,dt=0\)</span> para toda función <span class="math inline">\(C^1\)</span> de soporte compacto en <span class="math inline">\((t_0,t_1)\)</span>, entonces <span class="math inline">\(f(t)=0\)</span> en todo el intervalo. La afirmación se aplica componente por componente a funciones vectoriales.</p>
+<p><strong>Proposición 25.9 — Lema fundamental de las variaciones.</strong> Sea <span class="math inline">\(f:[t_0,t_1]\to\mathbb R\)</span> continua. Si <span class="math inline">\(\int_{t_0}^{t_1}f(t)\eta(t)\,dt=0\)</span> para toda función <span class="math inline">\(C^1\)</span> de soporte compacto en <span class="math inline">\((t_0,t_1)\)</span>, entonces <span class="math inline">\(f(t)=0\)</span> en todo el intervalo. La afirmación se aplica componente por componente a funciones vectoriales.</p>
 <p><strong>Demostración.</strong> Si <span class="math inline">\(f(t_*)&gt;0\)</span> en un punto interior, la continuidad proporciona un intervalo cerrado <span class="math inline">\([a,b]\subset(t_0,t_1)\)</span> donde <span class="math inline">\(f\)</span> es positiva. Elegimos <span class="math inline">\(\eta(t)=(t-a)^2(b-t)^2\)</span> dentro de <span class="math inline">\([a,b]\)</span> y cero fuera. Es <span class="math inline">\(C^1\)</span>, no negativa y positiva en <span class="math inline">\((a,b)\)</span>. Entonces <span class="math inline">\(\int f\eta&gt;0\)</span>, contradicción. Para <span class="math inline">\(f(t_*)&lt;0\)</span> el mismo argumento produce una integral negativa. Así <span class="math inline">\(f\)</span> se anula en el interior y, por continuidad, también en los extremos. Para un vector, se eligen pruebas con una única componente no nula. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c25-d0007"></span></p>
-<p><strong>Definición FPM-I-25-D07 — Trayectoria estacionaria.</strong> Una trayectoria es estacionaria para la acción y las condiciones de extremo especificadas si su primera variación es cero para toda variación admisible. La definición exige anulación del cambio de primer orden; no decide el signo de los cambios de segundo orden o superiores.</p>
+<p><strong>Definición 25.7 — Trayectoria estacionaria.</strong> Una trayectoria es estacionaria para la acción y las condiciones de extremo especificadas si su primera variación es cero para toda variación admisible. La definición exige anulación del cambio de primer orden; no decide el signo de los cambios de segundo orden o superiores.</p>
 <p><span id="fispm-t1-c25-p0010"></span></p>
-<p><strong>Proposición FPM-I-25-P10 — Ecuaciones de Euler–Lagrange.</strong> Bajo las hipótesis de P08, una curva <span class="math inline">\(q\)</span> con extremos fijos es estacionaria si y sólo si satisface, para cada <span class="math inline">\(a\)</span>,</p>
-<p><span class="math display">\[
-\frac{d}{dt}\frac{\partial L}{\partial\dot q^a}
--\frac{\partial L}{\partial q^a}=0.
-\]</span></p>
-<p><strong>Demostración.</strong> Si la curva es estacionaria, P08 sin término de borde da una integral nula contra todas las variaciones de extremos cero y, en particular, contra las de soporte compacto. El coeficiente es continuo. P09 obliga a que cada componente se anule, lo que da las ecuaciones. Recíprocamente, si se satisfacen las ecuaciones, el integrando de P08 es cero y el término de borde se anula por las condiciones de variación. Por tanto <span class="math inline">\(\delta S=0\)</span> para toda prueba admisible. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 25.10 — Ecuaciones de Euler–Lagrange.</strong> Bajo las hipótesis de la proposición 25.8, una curva <span class="math inline">\(q\)</span> con extremos fijos es estacionaria si y sólo si satisface, para cada <span class="math inline">\(a\)</span>,</p>
+<p><span class="math display">\[\frac{d}{dt}\frac{\partial L}{\partial\dot q^a} -\frac{\partial L}{\partial q^a}=0.\]</span></p>
+<p><strong>Demostración.</strong> Si la curva es estacionaria, proposición 25.8 sin término de borde da una integral nula contra todas las variaciones de extremos cero y, en particular, contra las de soporte compacto. El coeficiente es continuo. Proposición 25.9 obliga a que cada componente se anule, lo que da las ecuaciones. Recíprocamente, si se satisfacen las ecuaciones, el integrando de la proposición 25.8 es cero y el término de borde se anula por las condiciones de variación. Por tanto <span class="math inline">\(\delta S=0\)</span> para toda prueba admisible. <span class="math inline">\(\square\)</span></p>
 <p>El paso decisivo consiste en poder elegir variaciones localizadas en cualquier intervalo interior. Probar la identidad sólo para una colección pequeña de curvas, por ejemplo variaciones constantes o lineales, no autoriza a concluir las ecuaciones punto a punto.</p>
+<p><span id="el-principio-de-hamilton-y-su-equivalencia-mecánica"></span></p>
 <p><span id="fispm-t1-c25-s11"></span></p>
 <p><span id="fpm-i-25-s11"></span></p>
 </section>
-<section id="el-principio-de-hamilton-y-su-equivalencia-mecánica" class="level2">
-<h2 class="anchored" data-anchor-id="el-principio-de-hamilton-y-su-equivalencia-mecánica">§11. El principio de Hamilton y su equivalencia mecánica</h2>
+<section id="fispm-c25-el-principio-de-hamilton-y-su-equivalencia-mecuxe1nica" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-el-principio-de-hamilton-y-su-equivalencia-mecuxe1nica">11. El principio de Hamilton y su equivalencia mecánica</h2>
 <p><span id="fispm-t1-c25-p0011"></span></p>
-<p><strong>Proposición FPM-I-25-P11 — Acción estacionaria para vínculos holónomos ideales.</strong> Para masas constantes, fuerzas aplicadas derivadas de un potencial <span class="math inline">\(V(r,t)\)</span> y vínculos holónomos regulares ideales, la trayectoria mecánica en coordenadas independientes es estacionaria para</p>
-<p><span class="math display">\[
-S[q]=\int_{t_0}^{t_1}(T-V)\,dt
-\]</span></p>
-<p>respecto de variaciones con tiempos y configuraciones extremas fijos. Recíprocamente, toda trayectoria estacionaria compatible satisface Newton con alguna reacción ideal, en el sentido de P05.</p>
-<p><strong>Demostración.</strong> P07 transforma Newton proyectado en las ecuaciones de Euler–Lagrange de <span class="math inline">\(L=T-V\)</span>. P10 muestra que esas ecuaciones equivalen a estacionariedad. En sentido inverso, P10 y P06 recuperan la identidad de d’Alembert; P05 reconstruye las reacciones. Las coordenadas garantizan que los vínculos se cumplen durante toda la variación. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 25.11 — Acción estacionaria para vínculos holónomos ideales.</strong> Para masas constantes, fuerzas aplicadas derivadas de un potencial <span class="math inline">\(V(r,t)\)</span> y vínculos holónomos regulares ideales, la trayectoria mecánica en coordenadas independientes es estacionaria para</p>
+<p><span class="math display">\[S[q]=\int_{t_0}^{t_1}(T-V)\,dt\]</span></p>
+<p>respecto de variaciones con tiempos y configuraciones extremas fijos. Recíprocamente, toda trayectoria estacionaria compatible satisface Newton con alguna reacción ideal, en el sentido de la proposición 25.5.</p>
+<p><strong>Demostración.</strong> proposición 25.7 transforma Newton proyectado en las ecuaciones de Euler–Lagrange de <span class="math inline">\(L=T-V\)</span>. Proposición 25.10 muestra que esas ecuaciones equivalen a estacionariedad. En sentido inverso, proposición 25.10 y proposición 25.6 recuperan la identidad de d’Alembert; proposición 25.5 reconstruye las reacciones. Las coordenadas garantizan que los vínculos se cumplen durante toda la variación. <span class="math inline">\(\square\)</span></p>
 <p>Esta formulación recibe el nombre de principio de Hamilton. En el ámbito descrito se ha demostrado su equivalencia con la dinámica de Newton y las hipótesis de idealidad. Para modelos más generales, proponer una acción exige comprobar de nuevo qué ecuaciones y qué condiciones de borde produce.</p>
-<p>Una fuerza adicional no conservativa no desaparece de la proyección. Si tiene componentes generalizadas <span class="math inline">\(Q_a^{\mathrm{nc}}\)</span>, las ecuaciones son <span class="math inline">\(\dot p_a-\partial L/\partial q^a=Q_a^{\mathrm{nc}}\)</span>. La fórmula integral correspondiente es</p>
-<p><span class="math display">\[
-\delta S+\int_{t_0}^{t_1}\sum_a Q_a^{\mathrm{nc}}\eta^a\,dt=0.
-\]</span></p>
-<p>Se evalúan las fuerzas en la trayectoria considerada. Esta identidad de trabajo virtual no afirma que el término adicional sea la variación de otro funcional. Para la resistencia viscosa de I23 se recupera así la ecuación amortiguada sin atribuirle incorrectamente la acción conservativa del oscilador libre.</p>
+<p>Una fuerza adicional no conservativa no desaparece de la proyección. Si tiene componentes generalizadas <span class="math inline">\(Q_a^{\mathrm{nc}}\)</span>, las ecuaciones son <span class="math inline">\(\dot p_a-\partial L/\partial q^a=Q_a^{\mathrm{nc}}\)</span>. La fórmula integral correspondiente es <span class="math inline">\(\delta S+\int_{t_0}^{t_1}\sum_a Q_a^{\mathrm{nc}}\eta^a\,dt=0.\)</span></p>
+<p>Se evalúan las fuerzas en la trayectoria considerada. Esta identidad de trabajo virtual no afirma que el término adicional sea la variación de otro funcional. Para la resistencia viscosa del capítulo 23 se recupera así la ecuación amortiguada sin atribuirle incorrectamente la acción conservativa del oscilador libre.</p>
+<p><span id="el-oscilador-mínimo-degeneración-y-punto-de-silla"></span></p>
 <p><span id="fispm-t1-c25-s12"></span></p>
 <p><span id="fpm-i-25-s12"></span></p>
 </section>
-<section id="el-oscilador-mínimo-degeneración-y-punto-de-silla" class="level2">
-<h2 class="anchored" data-anchor-id="el-oscilador-mínimo-degeneración-y-punto-de-silla">§12. El oscilador: mínimo, degeneración y punto de silla</h2>
+<section id="fispm-c25-el-oscilador-muxednimo-degeneraciuxf3n-y-punto-de-silla" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-el-oscilador-muxednimo-degeneraciuxf3n-y-punto-de-silla">12. El oscilador: mínimo, degeneración y punto de silla</h2>
 <p>Tomemos <span class="math inline">\(L=m\dot q^2/2-m\omega^2q^2/2\)</span>, con <span class="math inline">\(m,\omega&gt;0\)</span>, en <span class="math inline">\([0,\tau]\)</span>. Su ecuación de Euler–Lagrange es <span class="math inline">\(\ddot q+\omega^2q=0\)</span>. Si <span class="math inline">\(q\)</span> la satisface y <span class="math inline">\(\eta\)</span> tiene extremos cero, expandir la acción da una identidad exacta:</p>
-<p><span class="math display">\[
-S[q+\varepsilon\eta]-S[q]
-=\frac{m\varepsilon^2}{2}\int_0^\tau
-(\dot\eta^2-\omega^2\eta^2)\,dt.
-\]</span></p>
+<p><span id="fig:I-25-N03"></span></p>
+<figure id="fig-fpm-v04-i-25-n03" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/v04/I-25-N03.svg" class="lightbox" data-gallery="fpm-v04-c25"><img src="../../assets/books/fispm/v04/I-25-N03.svg" alt="Signo de la segunda variación. Diagrama del capítulo 25; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="549" height="236" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 25.4.</strong> Para la variación <span class="math inline">\(\eta=\sin(\pi t/T)\)</span> del oscilador, el signo de la segunda variación es el de <span class="math inline">\((\pi/T)^2-\omega_0^2\)</span>. El modo pierde positividad en <span class="math inline">\(T\omega_0=\pi\)</span>. Véase §<a href="#fispm-c25-el-oscilador-muxednimo-degeneraciuxf3n-y-punto-de-silla">12</a>.</p>
+</figcaption>
+</figure>
+<p><span class="math display">\[S[q+\varepsilon\eta]-S[q] =\frac{m\varepsilon^2}{2}\int_0^\tau (\dot\eta^2-\omega^2\eta^2)\,dt.\]</span></p>
 <p>El término lineal se anula por estacionariedad y no hay términos de orden mayor, porque el lagrangiano es cuadrático.</p>
 <p><span id="fispm-t1-c25-p0012"></span></p>
-<p><strong>Proposición FPM-I-25-P12 — Clasificación variacional del oscilador.</strong> Cuando existe una trayectoria estacionaria con los extremos dados, su acción es un mínimo estricto si <span class="math inline">\(\tau&lt;\pi/\omega\)</span>, un mínimo no estricto si <span class="math inline">\(\tau=\pi/\omega\)</span>, y un punto de silla si <span class="math inline">\(\tau&gt;\pi/\omega\)</span>.</p>
+<p><strong>Proposición 25.12 — Clasificación variacional del oscilador.</strong> Cuando existe una trayectoria estacionaria con los extremos dados, su acción es un mínimo estricto si <span class="math inline">\(\tau&lt;\pi/\omega\)</span>, un mínimo no estricto si <span class="math inline">\(\tau=\pi/\omega\)</span>, y un punto de silla si <span class="math inline">\(\tau&gt;\pi/\omega\)</span>.</p>
 <p><strong>Demostración.</strong> Primero probamos la desigualdad</p>
-<p><span class="math display">\[
-\int_0^\tau\dot\eta^2\,dt
-\ge\left(\frac\pi\tau\right)^2\int_0^\tau\eta^2\,dt
-\]</span></p>
+<p><span class="math display">\[\int_0^\tau\dot\eta^2\,dt \ge\left(\frac\pi\tau\right)^2\int_0^\tau\eta^2\,dt\]</span></p>
 <p>para <span class="math inline">\(\eta\)</span> de clase <span class="math inline">\(C^1\)</span> con extremos cero. Pongamos <span class="math inline">\(\alpha=\pi/\tau\)</span> y expandamos el cuadrado <span class="math inline">\([\dot\eta-\alpha\cot(\alpha t)\eta]^2\)</span> en un intervalo interior <span class="math inline">\([h,\tau-h]\)</span>. La integración por partes del término cruzado da, al hacer <span class="math inline">\(h\to0\)</span>,</p>
-<p><span class="math display">\[
-\int_0^\tau[\dot\eta-\alpha\cot(\alpha t)\eta]^2dt
-=\int_0^\tau(\dot\eta^2-\alpha^2\eta^2)dt.
-\]</span></p>
+<p><span class="math display">\[\int_0^\tau[\dot\eta-\alpha\cot(\alpha t)\eta]^2dt =\int_0^\tau(\dot\eta^2-\alpha^2\eta^2)dt.\]</span></p>
 <p>Los términos de borde <span class="math inline">\(\alpha\cot(\alpha t)\eta^2\)</span> tienden a cero porque <span class="math inline">\(\eta(t)=O(t)\)</span> y <span class="math inline">\(\eta(t)=O(\tau-t)\)</span> en los extremos. El integrando del cuadrado es integrable: <span class="math inline">\(\eta\)</span> es <span class="math inline">\(C^1\)</span> y la singularidad de la cotangente queda compensada por esos ceros. Su no negatividad prueba la desigualdad.</p>
 <p>Si <span class="math inline">\(\tau&lt;\pi/\omega\)</span>, la diferencia exacta de acciones es positiva para toda <span class="math inline">\(\eta\ne0\)</span>, por la cota <span class="math inline">\([(\pi/\tau)^2-\omega^2]\int\eta^2&gt;0\)</span>. Si <span class="math inline">\(\tau=\pi/\omega\)</span>, es no negativa y se anula para <span class="math inline">\(\eta=\sin(\omega t)\)</span>: el mínimo no es estricto. Si <span class="math inline">\(\tau&gt;\pi/\omega\)</span>, la prueba <span class="math inline">\(\eta=\sin(\pi t/\tau)\)</span> da un cambio negativo. Una prueba <span class="math inline">\(\eta=\sin(n\pi t/\tau)\)</span> con <span class="math inline">\(n\pi/\tau&gt;\omega\)</span> da uno positivo. Multiplicar las pruebas por números arbitrariamente pequeños muestra ambos signos en cualquier entorno de la trayectoria. <span class="math inline">\(\square\)</span></p>
 <p>El intervalo temporal altera el carácter variacional de una misma ecuación física. La palabra «estacionaria» cubre todos esos casos y evita atribuir un mínimo allí donde el cálculo produce una silla.</p>
 <p><span id="fispm-t1-c25-p0013"></span></p>
-<p><strong>Proposición FPM-I-25-P13 — Extremos fijos y existencia en el oscilador.</strong> Para <span class="math inline">\(q(0)=q_0\)</span>, <span class="math inline">\(q(\tau)=q_1\)</span>, si <span class="math inline">\(\sin(\omega\tau)\ne0\)</span> existe una única trayectoria estacionaria. Si <span class="math inline">\(\omega\tau=n\pi\)</span>, con entero <span class="math inline">\(n\ge1\)</span>, existe una familia infinita cuando <span class="math inline">\(q_1=(-1)^nq_0\)</span> y ninguna cuando esa compatibilidad falla.</p>
-<p><strong>Demostración.</strong> Toda solución es <span class="math inline">\(q(t)=q_0\cos\omega t+B\sin\omega t\)</span>. La condición final exige <span class="math inline">\(q_1=q_0\cos\omega\tau+B\sin\omega\tau\)</span>. Si el seno no es cero, determina un único <span class="math inline">\(B\)</span>. Si lo es, la condición se reduce a la compatibilidad indicada y deja libre <span class="math inline">\(B\)</span> o resulta imposible. P10 identifica estas soluciones con las estacionarias. <span class="math inline">\(\square\)</span></p>
-<p>Los datos de posición y velocidad iniciales siguen determinando una solución única en todos los casos de I23. Es el problema con posiciones en dos tiempos diferentes el que puede perder existencia o unicidad. La formulación de Hamilton no obliga a que toda elección de extremos admita una trayectoria física que los una en el tiempo fijado.</p>
+<p><strong>Proposición 25.13 — Extremos fijos y existencia en el oscilador.</strong> Para <span class="math inline">\(q(0)=q_0\)</span>, <span class="math inline">\(q(\tau)=q_1\)</span>, si <span class="math inline">\(\sin(\omega\tau)\ne0\)</span> existe una única trayectoria estacionaria. Si <span class="math inline">\(\omega\tau=n\pi\)</span>, con entero <span class="math inline">\(n\ge1\)</span>, existe una familia infinita cuando <span class="math inline">\(q_1=(-1)^nq_0\)</span> y ninguna cuando esa compatibilidad falla.</p>
+<p><strong>Demostración.</strong> Toda solución es <span class="math inline">\(q(t)=q_0\cos\omega t+B\sin\omega t\)</span>. La condición final exige <span class="math inline">\(q_1=q_0\cos\omega\tau+B\sin\omega\tau\)</span>. Si el seno no es cero, determina un único <span class="math inline">\(B\)</span>. Si lo es, la condición se reduce a la compatibilidad indicada y deja libre <span class="math inline">\(B\)</span> o resulta imposible. Proposición 25.10 identifica estas soluciones con las estacionarias. <span class="math inline">\(\square\)</span></p>
+<p>Los datos de posición y velocidad iniciales siguen determinando una solución única en todos los casos del capítulo 23. Es el problema con posiciones en dos tiempos diferentes el que puede perder existencia o unicidad. La formulación de Hamilton no obliga a que toda elección de extremos admita una trayectoria física que los una en el tiempo fijado.</p>
+<p><span id="términos-de-borde-y-extremos-libres"></span></p>
 <p><span id="fispm-t1-c25-s13"></span></p>
 <p><span id="fpm-i-25-s13"></span></p>
 </section>
-<section id="términos-de-borde-y-extremos-libres" class="level2">
-<h2 class="anchored" data-anchor-id="términos-de-borde-y-extremos-libres">§13. Términos de borde y extremos libres</h2>
-<p>La integración por partes de P08 conserva información en los extremos. Puede eliminarse al fijar las configuraciones, o producir condiciones adicionales si algunas componentes quedan libres.</p>
+<section id="fispm-c25-tuxe9rminos-de-borde-y-extremos-libres" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-tuxe9rminos-de-borde-y-extremos-libres">13. Términos de borde y extremos libres</h2>
+<p>La integración por partes de la proposición 25.8 conserva información en los extremos. Puede eliminarse al fijar las configuraciones, o producir condiciones adicionales si algunas componentes quedan libres.</p>
 <p><span id="fispm-t1-c25-p0014"></span></p>
-<p><strong>Proposición FPM-I-25-P14 — Añadir una derivada total.</strong> Si <span class="math inline">\(G(q,t)\)</span> es suficientemente diferenciable y <span class="math inline">\(L'=L+dG/dt\)</span>, entonces <span class="math inline">\(S'[q]=S[q]+G(q(t_1),t_1)-G(q(t_0),t_0)\)</span>. Con tiempos y configuraciones extremas fijos, ambos funcionales tienen las mismas trayectorias estacionarias.</p>
+<p><strong>Proposición 25.14 — Añadir una derivada total.</strong> Si <span class="math inline">\(G(q,t)\)</span> es suficientemente diferenciable y <span class="math inline">\(L'=L+dG/dt\)</span>, entonces <span class="math inline">\(S'[q]=S[q]+G(q(t_1),t_1)-G(q(t_0),t_0)\)</span>. Con tiempos y configuraciones extremas fijos, ambos funcionales tienen las mismas trayectorias estacionarias.</p>
 <p><strong>Demostración.</strong> Sobre cada curva, <span class="math inline">\(dG/dt=G_q\dot q+G_t\)</span>. El teorema fundamental del cálculo da la diferencia de acciones. Los valores de borde son iguales para todas las curvas de comparación y su variación es cero. Por tanto las primeras variaciones coinciden. <span class="math inline">\(\square\)</span></p>
 <p>La afirmación concierne a las condiciones de extremo declaradas. Si una configuración extrema queda libre, el término añadido puede cambiar la condición natural correspondiente, aunque las ecuaciones interiores sigan siendo las mismas.</p>
 <p><span id="fispm-t1-c25-p0015"></span></p>
-<p><strong>Proposición FPM-I-25-P15 — Condición natural con tiempo final fijo.</strong> Si la posición inicial se fija y la posición final se deja completamente libre, manteniendo <span class="math inline">\(t_0,t_1\)</span> fijos y sin término terminal adicional, una curva estacionaria satisface Euler–Lagrange en el interior y</p>
-<p><span class="math display">\[
-p_a(t_1)=\frac{\partial L}{\partial\dot q^a}(t_1)=0
-\]</span></p>
+<p><strong>Proposición 25.15 — Condición natural con tiempo final fijo.</strong> Si la posición inicial se fija y la posición final se deja completamente libre, manteniendo <span class="math inline">\(t_0,t_1\)</span> fijos y sin término terminal adicional, una curva estacionaria satisface Euler–Lagrange en el interior y</p>
+<p><span class="math display">\[p_a(t_1)=\frac{\partial L}{\partial\dot q^a}(t_1)=0\]</span></p>
 <p>para toda componente final libre. Estas condiciones también son suficientes para la estacionariedad de primera variación.</p>
-<p><strong>Demostración.</strong> Las pruebas de soporte interior producen Euler–Lagrange por P09. Entonces P08 se reduce a <span class="math inline">\(\sum_a p_a(t_1)\eta^a(t_1)\)</span>, porque la variación inicial se anula. Cada componente final libre puede variarse independientemente, por lo que su coeficiente debe ser cero. Recíprocamente, la ecuación interior y esas condiciones anulan toda la primera variación. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> Las pruebas de soporte interior producen Euler–Lagrange por la proposición 25.9. Entonces proposición 25.8 se reduce a <span class="math inline">\(\sum_a p_a(t_1)\eta^a(t_1)\)</span>, porque la variación inicial se anula. Cada componente final libre puede variarse independientemente, por lo que su coeficiente debe ser cero. Recíprocamente, la ecuación interior y esas condiciones anulan toda la primera variación. <span class="math inline">\(\square\)</span></p>
 <p>Para una partícula libre, <span class="math inline">\(p=m\dot q\)</span>. Si parte de una posición fija y puede terminar en cualquier punto a un tiempo dado sin coste final, la solución estacionaria tiene velocidad cero. Cambiar el problema de borde cambia las trayectorias seleccionadas. Los extremos móviles en tiempo y las condiciones de transversalidad requieren otra ampliación; aquí los tiempos permanecen fijos.</p>
+<p><span id="multiplicadores-y-límites-de-la-formulación"></span></p>
 <p><span id="fispm-t1-c25-s14"></span></p>
 <p><span id="fpm-i-25-s14"></span></p>
 </section>
-<section id="multiplicadores-y-límites-de-la-formulación" class="level2">
-<h2 class="anchored" data-anchor-id="multiplicadores-y-límites-de-la-formulación">§14. Multiplicadores y límites de la formulación</h2>
+<section id="fispm-c25-multiplicadores-y-luxedmites-de-la-formulaciuxf3n" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-multiplicadores-y-luxedmites-de-la-formulaciuxf3n">14. Multiplicadores y límites de la formulación</h2>
 <p>A veces conviene conservar coordenadas cartesianas redundantes y añadir las restricciones a la acción. Sea <span class="math inline">\(A=\partial g/\partial r\)</span> de rango completo, y usemos <span class="math inline">\(L(r,\dot r,t)\)</span> antes de eliminar vínculos.</p>
 <p><span id="fispm-t1-c25-p0016"></span></p>
-<p><strong>Proposición FPM-I-25-P16 — Multiplicadores para vínculos holónomos regulares.</strong> Las trayectorias estacionarias de la acción restringida, con configuraciones extremas fijas y variaciones tangentes, satisfacen</p>
-<p><span class="math display">\[
-\frac{d}{dt}\frac{\partial L}{\partial\dot r}
--\frac{\partial L}{\partial r}=A^T\lambda(t),
-\qquad g(r,t)=0.
-\]</span></p>
+<p><strong>Proposición 25.16 — Multiplicadores para vínculos holónomos regulares.</strong> Las trayectorias estacionarias de la acción restringida, con configuraciones extremas fijas y variaciones tangentes, satisfacen</p>
+<p><span class="math display">\[\frac{d}{dt}\frac{\partial L}{\partial\dot r} -\frac{\partial L}{\partial r}=A^T\lambda(t), \qquad g(r,t)=0.\]</span></p>
 <p>Equivalentemente, son las ecuaciones de estacionariedad del funcional ampliado <span class="math inline">\(\int[L+\sum_\alpha\lambda_\alpha g_\alpha]dt\)</span>, variando <span class="math inline">\(r\)</span> y los multiplicadores independientemente, con extremos de <span class="math inline">\(r\)</span> fijos. Para el lagrangiano cartesiano natural, <span class="math inline">\(A^T\lambda\)</span> es la reacción ideal.</p>
-<p><strong>Demostración.</strong> La primera variación restringida es el negativo de la integral del residuo de Euler–Lagrange por una variación tangente. Usando una base local de tangentes y pruebas temporales de soporte interior, P09 obliga a que ese residuo sea normal al conjunto de configuraciones en cada instante. P03 lo escribe como <span class="math inline">\(A^T\lambda\)</span>. Recíprocamente, un residuo de esa forma tiene producto nulo con toda variación tangente. En el funcional ampliado, variar <span class="math inline">\(\lambda\)</span> impone <span class="math inline">\(g=0\)</span>; variar <span class="math inline">\(r\)</span> produce el residuo de <span class="math inline">\(L\)</span> menos <span class="math inline">\(A^T\lambda\)</span>, que debe anularse. Para <span class="math inline">\(L=\sum_i m_i|\dot{\mathbf r}_i|^2/2-V\)</span>, el residuo es <span class="math inline">\(m\ddot r+\nabla V=m\ddot r-F\)</span>, identificando la reacción. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> La primera variación restringida es el negativo de la integral del residuo de Euler–Lagrange por una variación tangente. Usando una base local de tangentes y pruebas temporales de soporte interior, proposición 25.9 obliga a que ese residuo sea normal al conjunto de configuraciones en cada instante. Proposición 25.3 lo escribe como <span class="math inline">\(A^T\lambda\)</span>. Recíprocamente, un residuo de esa forma tiene producto nulo con toda variación tangente. En el funcional ampliado, variar <span class="math inline">\(\lambda\)</span> impone <span class="math inline">\(g=0\)</span>; variar <span class="math inline">\(r\)</span> produce el residuo de <span class="math inline">\(L\)</span> menos <span class="math inline">\(A^T\lambda\)</span>, que debe anularse. Para <span class="math inline">\(L=\sum_i m_i|\dot{\mathbf r}_i|^2/2-V\)</span>, el residuo es <span class="math inline">\(m\ddot r+\nabla V=m\ddot r-F\)</span>, identificando la reacción. <span class="math inline">\(\square\)</span></p>
 <p>El signo del multiplicador depende de cómo se escriba el término añadido y de cómo se defina cada <span class="math inline">\(g_\alpha\)</span>. La fuerza <span class="math inline">\(A^T\lambda\)</span> es la combinación que tiene significado mecánico.</p>
-<p>Las restricciones no holónomas plantean una cuestión diferente. Para una relación de velocidades <span class="math inline">\(\dot z-x\dot y=0\)</span>, variar una familia de trayectorias que la satisfaga produce</p>
-<p><span class="math display">\[
-\dot\eta_z-x\dot\eta_y-\dot y\eta_x=0.
-\]</span></p>
-<p>En el modelo de d’Alembert asociado a esa restricción, se postulan desplazamientos virtuales con <span class="math inline">\(\eta_z-x\eta_y=0\)</span>. Derivar esta última condición produce <span class="math inline">\(\dot\eta_z-x\dot\eta_y-\dot x\eta_y=0\)</span>, distinta de la anterior en general. Por ello, extremar la acción entre curvas que satisfacen una restricción de velocidades y proyectar Newton con el modelo virtual correspondiente pueden dar ecuaciones diferentes. No trasladaremos P11 ni P16 a esos sistemas sin especificar el principio físico y las variaciones permitidas.</p>
+<p>Las restricciones no holónomas plantean una cuestión diferente. Para una relación de velocidades <span class="math inline">\(\dot z-x\dot y=0\)</span>, variar una familia de trayectorias que la satisfaga produce <span class="math inline">\(\dot\eta_z-x\dot\eta_y-\dot y\eta_x=0.\)</span></p>
+<p>En el modelo de d’Alembert asociado a esa restricción, se postulan desplazamientos virtuales con <span class="math inline">\(\eta_z-x\eta_y=0\)</span>. Derivar esta última condición produce <span class="math inline">\(\dot\eta_z-x\dot\eta_y-\dot x\eta_y=0\)</span>, distinta de la anterior en general. Por ello, extremar la acción entre curvas que satisfacen una restricción de velocidades y proyectar Newton con el modelo virtual correspondiente pueden dar ecuaciones diferentes. No trasladaremos proposición 25.11 ni proposición 25.16 a esos sistemas sin especificar el principio físico y las variaciones permitidas.</p>
 <p>También un contacto unilateral tiene desplazamientos permitidos de un solo lado en la frontera. Las igualdades bilaterales de este capítulo deben adaptarse a condiciones de contacto y a restricciones de signo sobre las reacciones. Una cuerda puede tensar sin empujar; una superficie puede sostener sin atraer. El cálculo de una reacción debe comprobar después que el régimen supuesto es físicamente posible.</p>
-<p>Con esas fronteras fijadas, la construcción queda disponible para I26: parametrizar configuraciones, escribir la energía cinética completa, identificar fuerzas y potencial, y obtener la dinámica mediante proyección o acción estacionaria. Cada paso conserva una hipótesis y una operación que pueden revisarse por separado.</p>
+<p>Con esas fronteras fijadas, la construcción queda disponible para el capítulo 26: parametrizar configuraciones, escribir la energía cinética completa, identificar fuerzas y potencial, y obtener la dinámica mediante proyección o acción estacionaria. Cada paso conserva una hipótesis y una operación que pueden revisarse por separado.</p>
+<p><span id="ejercicios"></span></p>
 </section>
-<section id="ejercicios" class="level2">
-<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<section id="fispm-c25-ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-ejercicios">15. Ejercicios</h2>
 <p><span id="fispm-t1-c25-e0001"></span></p>
-<section id="fpm-i-25-e01-contar-restricciones-independientes" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e01-contar-restricciones-independientes">FPM-I-25-E01 — Contar restricciones independientes</h3>
+<p><span id="fispm-t1-c25-e0025"></span></p>
+<p><strong>Ejercicio 25.1 — Contar restricciones independientes.</strong></p>
 <p>En <span class="math inline">\(\mathbb R^3\)</span>, considera <span class="math inline">\(g_1=x^2+y^2-\ell^2=0\)</span> y <span class="math inline">\(g_2=2x^2+2y^2-2\ell^2=0\)</span>, con <span class="math inline">\(\ell&gt;0\)</span>. Calcula el rango y la dimensión del conjunto de configuraciones. Propón coordenadas locales.</p>
 <p><span id="fispm-t1-c25-e0002"></span></p>
-</section>
-<section id="fpm-i-25-e02-una-tangente-concreta" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e02-una-tangente-concreta">FPM-I-25-E02 — Una tangente concreta</h3>
+<p><strong>Ejercicio 25.2 — Una tangente concreta.</strong></p>
 <p>Para <span class="math inline">\(r(\theta)=(\ell\sin\theta,-\ell\cos\theta)\)</span>, escribe <span class="math inline">\(\delta r\)</span> y comprueba que es perpendicular al radio. ¿Todo vector perpendicular al radio puede representarse así?</p>
 <p><span id="fispm-t1-c25-e0003"></span></p>
-</section>
-<section id="fpm-i-25-e03-vínculo-móvil-y-potencia" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e03-vínculo-móvil-y-potencia">FPM-I-25-E03 — Vínculo móvil y potencia</h3>
+<p><strong>Ejercicio 25.3 — Vínculo móvil y potencia.</strong></p>
 <p>Una cuenta permanece en una circunferencia de radio <span class="math inline">\(\ell(t)&gt;0\)</span> y recibe una reacción radial <span class="math inline">\(R_r\mathbf e_r\)</span>. Calcula su trabajo virtual y su potencia real. Explica cómo pueden diferir.</p>
 <p><span id="fispm-t1-c25-e0004"></span></p>
-</section>
-<section id="fpm-i-25-e04-cancelación-colectiva" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e04-cancelación-colectiva">FPM-I-25-E04 — Cancelación colectiva</h3>
+<p><strong>Ejercicio 25.4 — Cancelación colectiva.</strong></p>
 <p>Dos masas cuelgan de los extremos de una cuerda ideal sobre una polea ideal fija. Con posiciones verticales <span class="math inline">\(y_1,y_2\)</span> positivas hacia abajo, se cumple <span class="math inline">\(y_1+y_2=c\)</span>. Demuestra que la tensión total realiza trabajo virtual nulo, aunque cada término no lo haga.</p>
 <p><span id="fispm-t1-c25-e0005"></span></p>
-</section>
-<section id="fpm-i-25-e05-rozamiento-en-una-guía" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e05-rozamiento-en-una-guía">FPM-I-25-E05 — Rozamiento en una guía</h3>
+<p><strong>Ejercicio 25.5 — Rozamiento en una guía.</strong></p>
 <p>Una cuenta se desliza por una recta con resistencia <span class="math inline">\(-b\dot q\)</span> a lo largo de la guía. ¿Puede eliminarse esa fuerza junto con la reacción normal invocando idealidad? Escribe el trabajo virtual resistente.</p>
 <p><span id="fispm-t1-c25-e0006"></span></p>
-</section>
-<section id="fpm-i-25-e06-equilibrio-sobre-un-plano" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e06-equilibrio-sobre-un-plano">FPM-I-25-E06 — Equilibrio sobre un plano</h3>
+<p><strong>Ejercicio 25.6 — Equilibrio sobre un plano.</strong></p>
 <p>Una masa sobre un plano liso de ángulo <span class="math inline">\(0&lt;\alpha&lt;\pi/2\)</span> recibe una fuerza tangencial <span class="math inline">\(P\)</span> dirigida cuesta arriba. Usa trabajo virtual para hallar la condición de equilibrio y la reacción normal bajo gravedad uniforme.</p>
 <p><span id="fispm-t1-c25-e0007"></span></p>
-</section>
-<section id="fpm-i-25-e07-equilibrio-y-estabilidad-del-péndulo" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e07-equilibrio-y-estabilidad-del-péndulo">FPM-I-25-E07 — Equilibrio y estabilidad del péndulo</h3>
+<p><strong>Ejercicio 25.7 — Equilibrio y estabilidad del péndulo.</strong></p>
 <p>Con <span class="math inline">\(V(\theta)=-mg\ell\cos\theta\)</span>, determina las configuraciones de equilibrio y clasifícalas mediante el segundo orden del potencial. Se supone una barra rígida que permite completar toda la circunferencia.</p>
 <p><span id="fispm-t1-c25-e0008"></span></p>
-</section>
-<section id="fpm-i-25-e08-dalembert-con-una-sola-coordenada" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e08-dalembert-con-una-sola-coordenada">FPM-I-25-E08 — D’Alembert con una sola coordenada</h3>
-<p>Deduce la ecuación del péndulo fijo directamente de P05, calculando la proyección de la aceleración sobre <span class="math inline">\(r_{,\theta}\)</span>. Identifica el término centrípeto que desaparece.</p>
+<p><strong>Ejercicio 25.8 — D’Alembert con una sola coordenada.</strong></p>
+<p>Deduce la ecuación del péndulo fijo directamente de la proposición 25.5, calculando la proyección de la aceleración sobre <span class="math inline">\(r_{,\theta}\)</span>. Identifica el término centrípeto que desaparece.</p>
 <p><span id="fispm-t1-c25-e0009"></span></p>
-</section>
-<section id="fpm-i-25-e09-una-fuerza-horizontal" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e09-una-fuerza-horizontal">FPM-I-25-E09 — Una fuerza horizontal</h3>
+<p><strong>Ejercicio 25.9 — Una fuerza horizontal.</strong></p>
 <p>Añade al péndulo fijo una fuerza horizontal <span class="math inline">\(F(t)\)</span> sobre la masa. Calcula su fuerza generalizada y la nueva ecuación angular. Comprueba las unidades.</p>
 <p><span id="fispm-t1-c25-e0010"></span></p>
-</section>
-<section id="fpm-i-25-e10-coordenadas-polares" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e10-coordenadas-polares">FPM-I-25-E10 — Coordenadas polares</h3>
+<p><strong>Ejercicio 25.10 — Coordenadas polares.</strong></p>
 <p>Para una partícula plana con <span class="math inline">\(r=(\rho\cos\theta,\rho\sin\theta)\)</span>, <span class="math inline">\(\rho&gt;0\)</span>, escribe <span class="math inline">\(T\)</span> y las dos ecuaciones proyectadas para fuerzas generalizadas <span class="math inline">\(Q_\rho,Q_\theta\)</span>. Relaciónalas con la aceleración polar.</p>
 <p><span id="fispm-t1-c25-e0011"></span></p>
-</section>
-<section id="fpm-i-25-e11-soporte-con-aceleración-constante" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e11-soporte-con-aceleración-constante">FPM-I-25-E11 — Soporte con aceleración constante</h3>
+<p><strong>Ejercicio 25.11 — Soporte con aceleración constante.</strong></p>
 <p>En §7, supón <span class="math inline">\(\ddot a=A\)</span> constante. Busca una solución de ángulo constante con <span class="math inline">\(|\theta|&lt;\pi/2\)</span> y determina qué ocurre con la frecuencia de pequeñas oscilaciones alrededor de ella.</p>
 <p><span id="fispm-t1-c25-e0012"></span></p>
-</section>
-<section id="fpm-i-25-e12-reacción-que-entrega-energía" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e12-reacción-que-entrega-energía">FPM-I-25-E12 — Reacción que entrega energía</h3>
+<p><strong>Ejercicio 25.12 — Reacción que entrega energía.</strong></p>
 <p>Una guía vertical lisa prescribe <span class="math inline">\(x=a(t)\)</span> a una partícula libre de fuerza horizontal aplicada. Calcula la reacción horizontal y su potencia. Comprueba que coincide con la derivada de la energía cinética horizontal.</p>
 <p><span id="fispm-t1-c25-e0013"></span></p>
-</section>
-<section id="fpm-i-25-e13-partícula-libre-entre-dos-posiciones" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e13-partícula-libre-entre-dos-posiciones">FPM-I-25-E13 — Partícula libre entre dos posiciones</h3>
+<p><strong>Ejercicio 25.13 — Partícula libre entre dos posiciones.</strong></p>
 <p>Para <span class="math inline">\(L=m\dot q^2/2\)</span>, con <span class="math inline">\(q(0)=q_0\)</span>, <span class="math inline">\(q(\tau)=q_1\)</span>, demuestra que la recta uniforme es la única trayectoria estacionaria y que minimiza estrictamente la acción.</p>
 <p><span id="fispm-t1-c25-e0014"></span></p>
-</section>
-<section id="fpm-i-25-e14-el-signo-del-potencial" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e14-el-signo-del-potencial">FPM-I-25-E14 — El signo del potencial</h3>
+<p><strong>Ejercicio 25.14 — El signo del potencial.</strong></p>
 <p>Compara las ecuaciones producidas por <span class="math inline">\(L_-=m\dot q^2/2-kq^2/2\)</span> y <span class="math inline">\(L_+=m\dot q^2/2+kq^2/2\)</span>, con <span class="math inline">\(m,k&gt;0\)</span>. Explica por qué cambiar el signo altera el modelo físico.</p>
 <p><span id="fispm-t1-c25-e0015"></span></p>
-</section>
-<section id="fpm-i-25-e15-una-prueba-aislada-no-basta" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e15-una-prueba-aislada-no-basta">FPM-I-25-E15 — Una prueba aislada no basta</h3>
-<p>En <span class="math inline">\([0,1]\)</span>, toma <span class="math inline">\(f(t)=t-1/2\)</span> y <span class="math inline">\(\eta(t)=t(1-t)\)</span>. Demuestra que <span class="math inline">\(\int_0^1 f\eta\,dt=0\)</span> aunque <span class="math inline">\(f\)</span> no sea nula. Relaciónalo con la hipótesis «para toda variación» de P09.</p>
+<p><strong>Ejercicio 25.15 — Una prueba aislada no basta.</strong></p>
+<p>En <span class="math inline">\([0,1]\)</span>, toma <span class="math inline">\(f(t)=t-1/2\)</span> y <span class="math inline">\(\eta(t)=t(1-t)\)</span>. Demuestra que <span class="math inline">\(\int_0^1 f\eta\,dt=0\)</span> aunque <span class="math inline">\(f\)</span> no sea nula. Relaciónalo con la hipótesis «para toda variación» de la proposición 25.9.</p>
 <p><span id="fispm-t1-c25-e0016"></span></p>
-</section>
-<section id="fpm-i-25-e16-familia-exactamente-admisible" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e16-familia-exactamente-admisible">FPM-I-25-E16 — Familia exactamente admisible</h3>
-<p>Para la circunferencia de E02, compara <span class="math inline">\(r(\theta)+\varepsilon r_{,\theta}\eta\)</span> con <span class="math inline">\(r(\theta+\varepsilon\eta)\)</span>. Calcula la norma al cuadrado de la primera y explica por qué sólo la segunda respeta exactamente el vínculo.</p>
+<p><strong>Ejercicio 25.16 — Familia exactamente admisible.</strong></p>
+<p>Para la circunferencia del ejercicio 25.2, compara <span class="math inline">\(r(\theta)+\varepsilon r_{,\theta}\eta\)</span> con <span class="math inline">\(r(\theta+\varepsilon\eta)\)</span>. Calcula la norma al cuadrado de la primera y explica por qué sólo la segunda respeta exactamente el vínculo.</p>
 <p><span id="fispm-t1-c25-e0017"></span></p>
-</section>
-<section id="fpm-i-25-e17-primera-variación-del-oscilador" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e17-primera-variación-del-oscilador">FPM-I-25-E17 — Primera variación del oscilador</h3>
+<p><strong>Ejercicio 25.17 — Primera variación del oscilador.</strong></p>
 <p>Calcula <span class="math inline">\(\delta S\)</span> para <span class="math inline">\(L=m\dot q^2/2-kq^2/2\)</span> antes y después de integrar por partes. Separa el término de borde y la ecuación interior.</p>
 <p><span id="fispm-t1-c25-e0018"></span></p>
-</section>
-<section id="fpm-i-25-e18-muchas-trayectorias-con-los-mismos-extremos" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e18-muchas-trayectorias-con-los-mismos-extremos">FPM-I-25-E18 — Muchas trayectorias con los mismos extremos</h3>
+<p><strong>Ejercicio 25.18 — Muchas trayectorias con los mismos extremos.</strong></p>
 <p>Para el oscilador de frecuencia <span class="math inline">\(\omega\)</span>, impón <span class="math inline">\(q(0)=q(\pi/\omega)=0\)</span>. Halla todas las trayectorias estacionarias y calcula sus acciones.</p>
 <p><span id="fispm-t1-c25-e0019"></span></p>
-</section>
-<section id="fpm-i-25-e19-un-problema-de-borde-sin-solución" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e19-un-problema-de-borde-sin-solución">FPM-I-25-E19 — Un problema de borde sin solución</h3>
-<p>En el mismo intervalo de E18, exige <span class="math inline">\(q(0)=0\)</span> y <span class="math inline">\(q(\pi/\omega)=1\)</span>. Demuestra que no hay trayectoria estacionaria y explica por qué eso no contradice la existencia del problema inicial.</p>
+<p><strong>Ejercicio 25.19 — Un problema de borde sin solución.</strong></p>
+<p>En el mismo intervalo del ejercicio 25.18, exige <span class="math inline">\(q(0)=0\)</span> y <span class="math inline">\(q(\pi/\omega)=1\)</span>. Demuestra que no hay trayectoria estacionaria y explica por qué eso no contradice la existencia del problema inicial.</p>
 <p><span id="fispm-t1-c25-e0020"></span></p>
-</section>
-<section id="fpm-i-25-e20-dos-signos-arbitrariamente-cerca" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e20-dos-signos-arbitrariamente-cerca">FPM-I-25-E20 — Dos signos arbitrariamente cerca</h3>
+<p><strong>Ejercicio 25.20 — Dos signos arbitrariamente cerca.</strong></p>
 <p>Supón <span class="math inline">\(\tau=3\pi/(2\omega)\)</span> en la acción del oscilador. Encuentra dos variaciones de extremos cero que produzcan cambios de acción de signos opuestos y calcula sus coeficientes cuadráticos.</p>
 <p><span id="fispm-t1-c25-e0021"></span></p>
-</section>
-<section id="fpm-i-25-e21-igualdad-en-la-desigualdad-de-p12" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e21-igualdad-en-la-desigualdad-de-p12">FPM-I-25-E21 — Igualdad en la desigualdad de P12</h3>
-<p>Verifica que <span class="math inline">\(\eta(t)=c\sin(\pi t/\tau)\)</span> alcanza la igualdad en la desigualdad de P12. Justifica que son todas las funciones que la alcanzan.</p>
+<p><strong>Ejercicio 25.21 — Igualdad en la desigualdad de la proposición 25.12.</strong></p>
+<p>Verifica que <span class="math inline">\(\eta(t)=c\sin(\pi t/\tau)\)</span> alcanza la igualdad en la desigualdad de la proposición 25.12. Justifica que son todas las funciones que la alcanzan.</p>
 <p><span id="fispm-t1-c25-e0022"></span></p>
-</section>
-<section id="fpm-i-25-e22-gravedad-y-posiciones-finales" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e22-gravedad-y-posiciones-finales">FPM-I-25-E22 — Gravedad y posiciones finales</h3>
+<p><strong>Ejercicio 25.22 — Gravedad y posiciones finales.</strong></p>
 <p>Para una partícula vertical con eje positivo hacia arriba, <span class="math inline">\(L=m\dot y^2/2-mgy\)</span>. Encuentra la trayectoria estacionaria entre <span class="math inline">\(y(0)=y_0\)</span> y <span class="math inline">\(y(\tau)=y_1\)</span>. Demuestra que es un mínimo estricto de acción.</p>
 <p><span id="fispm-t1-c25-e0023"></span></p>
-</section>
-<section id="fpm-i-25-e23-una-derivada-total-explícita" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e23-una-derivada-total-explícita">FPM-I-25-E23 — Una derivada total explícita</h3>
+<p><strong>Ejercicio 25.23 — Una derivada total explícita.</strong></p>
 <p>Añade a un lagrangiano <span class="math inline">\(dG/dt\)</span> con <span class="math inline">\(G(q)=cq^2/2\)</span>. Calcula el término añadido, el cambio de acción y el cambio en <span class="math inline">\(p=\partial L/\partial\dot q\)</span>. ¿Cambian las ecuaciones interiores?</p>
 <p><span id="fispm-t1-c25-e0024"></span></p>
-</section>
-<section id="fpm-i-25-e24-coste-terminal-y-extremo-libre" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e24-coste-terminal-y-extremo-libre">FPM-I-25-E24 — Coste terminal y extremo libre</h3>
+<p><strong>Ejercicio 25.24 — Coste terminal y extremo libre.</strong></p>
 <p>Considera <span class="math inline">\(J[q]=\int_0^\tau m\dot q^2/2\,dt+\gamma q(\tau)^2/2\)</span>, con <span class="math inline">\(q(0)=q_0\)</span>, extremo final libre y <span class="math inline">\(\gamma\ge0\)</span>. Halla la condición natural y la trayectoria estacionaria. Aquí <span class="math inline">\(\gamma\)</span> tiene unidades de masa por tiempo.</p>
-<p><span id="fispm-t1-c25-e0025"></span></p>
-</section>
-<section id="fpm-i-25-e25-multiplicador-de-una-circunferencia" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e25-multiplicador-de-una-circunferencia">FPM-I-25-E25 — Multiplicador de una circunferencia</h3>
+<p><strong>Ejercicio 25.25 — Multiplicador de una circunferencia.</strong></p>
 <p>Una partícula sin fuerzas aplicadas se mueve uniformemente sobre una circunferencia fija de radio <span class="math inline">\(\ell\)</span>, con rapidez <span class="math inline">\(v\)</span>. Usa <span class="math inline">\(g(r)=|r|^2-\ell^2\)</span> para hallar el multiplicador y la reacción. Interpreta su signo.</p>
 <p><span id="fispm-t1-c25-e0026"></span></p>
-</section>
-<section id="fpm-i-25-e26-resistencia-mediante-trabajo-virtual" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e26-resistencia-mediante-trabajo-virtual">FPM-I-25-E26 — Resistencia mediante trabajo virtual</h3>
+<p><strong>Ejercicio 25.26 — Resistencia mediante trabajo virtual.</strong></p>
 <p>Para el oscilador con fuerza resistente <span class="math inline">\(Q^{\mathrm{nc}}=-b\dot q\)</span>, deduce de la identidad integral de §11 la ecuación amortiguada. Comprueba el balance energético.</p>
 <p><span id="fispm-t1-c25-e0027"></span></p>
-</section>
-<section id="fpm-i-25-e27-resorte-con-extremo-móvil" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e27-resorte-con-extremo-móvil">FPM-I-25-E27 — Resorte con extremo móvil</h3>
+<p><strong>Ejercicio 25.27 — Resorte con extremo móvil.</strong></p>
 <p>Una masa de posición absoluta <span class="math inline">\(q\)</span> tiene potencial <span class="math inline">\(V(q,t)=k[q-a(t)]^2/2\)</span>. Obtén su ecuación por Euler–Lagrange y transforma después a la coordenada relativa <span class="math inline">\(z=q-a(t)\)</span>.</p>
 <p><span id="fispm-t1-c25-e0028"></span></p>
-</section>
-<section id="fpm-i-25-e28-dos-clases-distintas-de-variación" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e28-dos-clases-distintas-de-variación">FPM-I-25-E28 — Dos clases distintas de variación</h3>
+<p><strong>Ejercicio 25.28 — Dos clases distintas de variación.</strong></p>
 <p>En la restricción <span class="math inline">\(\dot z-x\dot y=0\)</span>, considera la trayectoria <span class="math inline">\(x=t\)</span>, <span class="math inline">\(y=z=0\)</span> en <span class="math inline">\([0,1]\)</span>. Toma <span class="math inline">\(\eta_x=0\)</span>, <span class="math inline">\(\eta_y=t(1-t)\)</span> y <span class="math inline">\(\eta_z=t\eta_y\)</span>. Comprueba la condición virtual de d’Alembert y la condición obtenida al variar curvas admisibles. ¿Coinciden?</p>
 <p><span id="fispm-t1-c25-e0029"></span></p>
-</section>
-<section id="fpm-i-25-e29-una-restricción-singular" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e29-una-restricción-singular">FPM-I-25-E29 — Una restricción singular</h3>
-<p>Para <span class="math inline">\(g(x,y)=x^2+y^2=0\)</span>, calcula el Jacobiano en el origen y compara su núcleo con las direcciones de curvas que permanecen en el conjunto admisible. Explica qué hipótesis de P01 falla.</p>
+<p><strong>Ejercicio 25.29 — Una restricción singular.</strong></p>
+<p>Para <span class="math inline">\(g(x,y)=x^2+y^2=0\)</span>, calcula el Jacobiano en el origen y compara su núcleo con las direcciones de curvas que permanecen en el conjunto admisible. Explica qué hipótesis de la proposición 25.1 falla.</p>
 <p><span id="fispm-t1-c25-e0030"></span></p>
-</section>
-<section id="fpm-i-25-e30-una-cuenta-sobre-una-parábola" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e30-una-cuenta-sobre-una-parábola">FPM-I-25-E30 — Una cuenta sobre una parábola</h3>
+<p><strong>Ejercicio 25.30 — Una cuenta sobre una parábola.</strong></p>
 <p>Una cuenta de masa <span class="math inline">\(m\)</span> se mueve sin rozamiento sobre la guía fija <span class="math inline">\(y=a x^2\)</span>, con <span class="math inline">\(a&gt;0\)</span> y gravedad vertical. Usa <span class="math inline">\(q=x\)</span> para construir <span class="math inline">\(T,V,L\)</span>, obtener la ecuación de movimiento y hallar la frecuencia de pequeñas oscilaciones alrededor del vértice. Comprueba la ecuación mediante proyección de Newton.</p>
+<p><span id="soluciones"></span></p>
 </section>
-</section>
-<section id="soluciones" class="level2">
-<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
-<section id="fpm-i-25-e01" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e01">FPM-I-25-E01</h3>
+<section id="fispm-c25-soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c25-soluciones">16. Soluciones</h2>
+<p><strong>Solución del ejercicio 25.1.</strong></p>
 <p>Las filas del Jacobiano son <span class="math inline">\((2x,2y,0)\)</span> y <span class="math inline">\((4x,4y,0)\)</span>. Sobre el cilindro <span class="math inline">\(x^2+y^2=\ell^2\)</span>, la primera nunca es nula y la segunda es su doble, así que el rango es uno. Hay dos coordenadas independientes, no una: el ángulo alrededor del eje y la altura <span class="math inline">\(z\)</span>. Una parametrización local es <span class="math inline">\((\ell\cos\theta,\ell\sin\theta,z)\)</span>. La dimensión depende del rango efectivo, no del número de ecuaciones escritas.</p>
-</section>
-<section id="fpm-i-25-e02" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e02">FPM-I-25-E02</h3>
+<p><strong>Solución del ejercicio 25.2.</strong></p>
 <p>La variación es <span class="math inline">\(\delta r=\ell(\cos\theta,\sin\theta)\delta\theta\)</span>. Su producto con <span class="math inline">\(r\)</span> es <span class="math inline">\(\ell^2(\sin\theta\cos\theta-\cos\theta\sin\theta)\delta\theta=0\)</span>. En el plano, el complemento del radio no nulo tiene dimensión uno y <span class="math inline">\(r_{,\theta}\)</span> es un vector no nulo de ese espacio. Por tanto todo vector perpendicular al radio es un múltiplo suyo y determina un único <span class="math inline">\(\delta\theta\)</span> local.</p>
-</section>
-<section id="fpm-i-25-e03" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e03">FPM-I-25-E03</h3>
+<p><strong>Solución del ejercicio 25.3.</strong></p>
 <p>A tiempo fijo, <span class="math inline">\(\delta r=\ell\mathbf e_\theta\delta\theta\)</span>, de modo que <span class="math inline">\(R\cdot\delta r=0\)</span>. La velocidad real es <span class="math inline">\(\dot r=\dot\ell\mathbf e_r+\ell\dot\theta\mathbf e_\theta\)</span>. Así la potencia radial es <span class="math inline">\(R_r\dot\ell\)</span>. Puede ser positiva, negativa o nula según el sentido de la reacción y del cambio de radio. El movimiento prescrito del vínculo añade una componente que no pertenece a las variaciones de tiempo fijo.</p>
-</section>
-<section id="fpm-i-25-e04" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e04">FPM-I-25-E04</h3>
+<p><strong>Solución del ejercicio 25.4.</strong></p>
 <p>La cuerda inextensible impone <span class="math inline">\(\delta y_1+\delta y_2=0\)</span>. Con tensiones iguales <span class="math inline">\(T\)</span>, cada fuerza tiene componente <span class="math inline">\(-T\)</span> en su coordenada positiva hacia abajo. El trabajo virtual total es <span class="math inline">\(-T\delta y_1-T\delta y_2=0\)</span>. Si <span class="math inline">\(\delta y_1\ne0\)</span>, cada término es no nulo y se cancela con el otro. La igualdad de tensiones forma parte del modelo de cuerda y polea ideales.</p>
-</section>
-<section id="fpm-i-25-e05" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e05">FPM-I-25-E05</h3>
+<p><strong>Solución del ejercicio 25.5.</strong></p>
 <p>El desplazamiento virtual tangencial es <span class="math inline">\(\delta q\)</span> y la resistencia aporta <span class="math inline">\(\delta W_d=-b\dot q\,\delta q\)</span>. Para una velocidad no nula, esta expresión no se anula para todas las variaciones. La reacción normal de una guía lisa sí puede eliminarse, pero la resistencia debe permanecer en la fuerza generalizada. Confundir ambas fuerzas suprimiría la disipación y produciría una ecuación conservativa incorrecta.</p>
-</section>
-<section id="fpm-i-25-e06" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e06">FPM-I-25-E06</h3>
+<p><strong>Solución del ejercicio 25.6.</strong></p>
 <p>Tomamos una variación tangencial positiva cuesta arriba. El trabajo aplicado es <span class="math inline">\((P-mg\sin\alpha)\delta q\)</span>. Como <span class="math inline">\(\delta q\)</span> puede tener ambos signos, el equilibrio exige <span class="math inline">\(P=mg\sin\alpha\)</span>. La proyección normal de Newton en equilibrio da <span class="math inline">\(N=mg\cos\alpha\)</span>, positiva. La fuerza aplicada es tangencial y no modifica ese balance. La positividad comprueba que el plano puede sostener el contacto supuesto.</p>
-</section>
-<section id="fpm-i-25-e07" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e07">FPM-I-25-E07</h3>
+<p><strong>Solución del ejercicio 25.7.</strong></p>
 <p>La derivada es <span class="math inline">\(V'=mg\ell\sin\theta\)</span>, que se anula en <span class="math inline">\(\theta=n\pi\)</span>. En los puntos inferiores, <span class="math inline">\(\theta=2n\pi\)</span>, <span class="math inline">\(V''=mg\ell&gt;0\)</span>: hay mínimos no degenerados y estabilidad energética. En los superiores, <span class="math inline">\(\theta=(2n+1)\pi\)</span>, <span class="math inline">\(V''=-mg\ell&lt;0\)</span>: son máximos inestables. La barra permite reacciones radiales de ambos signos; una cuerda flexible exigiría comprobar además que su tensión no se haga negativa.</p>
-</section>
-<section id="fpm-i-25-e08" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e08">FPM-I-25-E08</h3>
+<p><strong>Solución del ejercicio 25.8.</strong></p>
 <p>La aceleración es <span class="math inline">\(\ddot r=\ell\ddot\theta\mathbf e_\theta-\ell\dot\theta^2\mathbf e_r\)</span>. Como <span class="math inline">\(r_{,\theta}=\ell\mathbf e_\theta\)</span>, su producto vale <span class="math inline">\(\ell^2\ddot\theta\)</span>. El término centrípeto es radial y su proyección tangencial es cero. D’Alembert queda <span class="math inline">\([-mg\ell\sin\theta-m\ell^2\ddot\theta]\delta\theta=0\)</span> para todo <span class="math inline">\(\delta\theta\)</span>. Por tanto <span class="math inline">\(\ddot\theta+(g/\ell)\sin\theta=0\)</span>.</p>
-</section>
-<section id="fpm-i-25-e09" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e09">FPM-I-25-E09</h3>
-<p>La fuerza horizontal es <span class="math inline">\((F(t),0)\)</span> y su fuerza generalizada es <span class="math inline">\(F(t)\ell\cos\theta\)</span>. Añadiendo gravedad,</p>
-<p><span class="math display">\[
-m\ell^2\ddot\theta=-mg\ell\sin\theta+F(t)\ell\cos\theta.
-\]</span></p>
-<p>Cada término tiene unidades de torque. La coordenada angular es adimensional y el producto de fuerza generalizada por variación angular tiene unidades de trabajo. El factor <span class="math inline">\(\cos\theta\)</span> es la proyección de la fuerza sobre la tangente y cambia al variar la configuración.</p>
-</section>
-<section id="fpm-i-25-e10" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e10">FPM-I-25-E10</h3>
-<p>La rapidez al cuadrado es <span class="math inline">\(\dot\rho^2+\rho^2\dot\theta^2\)</span>, por lo que <span class="math inline">\(T=m(\dot\rho^2+\rho^2\dot\theta^2)/2\)</span>. P07 produce</p>
-<p><span class="math display">\[
-m(\ddot\rho-\rho\dot\theta^2)=Q_\rho,
-\qquad
-m(\rho^2\ddot\theta+2\rho\dot\rho\dot\theta)=Q_\theta.
-\]</span></p>
+<p><strong>Solución del ejercicio 25.9.</strong></p>
+<p>La fuerza horizontal es <span class="math inline">\((F(t),0)\)</span> y su fuerza generalizada es <span class="math inline">\(F(t)\ell\cos\theta\)</span>. Añadiendo gravedad, <span class="math inline">\(m\ell^2\ddot\theta=-mg\ell\sin\theta+F(t)\ell\cos\theta.\)</span> Cada término tiene unidades de torque. La coordenada angular es adimensional y el producto de fuerza generalizada por variación angular tiene unidades de trabajo. El factor <span class="math inline">\(\cos\theta\)</span> es la proyección de la fuerza sobre la tangente y cambia al variar la configuración.</p>
+<p><strong>Solución del ejercicio 25.10.</strong></p>
+<p>La rapidez al cuadrado es <span class="math inline">\(\dot\rho^2+\rho^2\dot\theta^2\)</span>, por lo que <span class="math inline">\(T=m(\dot\rho^2+\rho^2\dot\theta^2)/2\)</span>. Proposición 25.7 produce</p>
+<p><span class="math display">\[m(\ddot\rho-\rho\dot\theta^2)=Q_\rho, \qquad m(\rho^2\ddot\theta+2\rho\dot\rho\dot\theta)=Q_\theta.\]</span></p>
 <p>Aquí <span class="math inline">\(Q_\rho=F_r\)</span> y <span class="math inline">\(Q_\theta=\rho F_\theta\)</span>. Dividir la segunda por <span class="math inline">\(\rho&gt;0\)</span> da la componente tangencial <span class="math inline">\(m(\rho\ddot\theta+2\dot\rho\dot\theta)=F_\theta\)</span>. La restricción <span class="math inline">\(\rho&gt;0\)</span> evita la singularidad de la carta polar en el origen.</p>
-</section>
-<section id="fpm-i-25-e11" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e11">FPM-I-25-E11</h3>
+<p><strong>Solución del ejercicio 25.11.</strong></p>
 <p>La ecuación para ángulo constante es <span class="math inline">\(A\cos\theta_*+g\sin\theta_*=0\)</span>. En el intervalo indicado, <span class="math inline">\(\tan\theta_*=-A/g\)</span>. Escribiendo <span class="math inline">\(G=\sqrt{g^2+A^2}\)</span>, se tiene <span class="math inline">\(\cos\theta_*=g/G\)</span> y <span class="math inline">\(\sin\theta_*=-A/G\)</span>. Para <span class="math inline">\(\theta=\theta_*+u\)</span>, el coeficiente lineal restaurador es <span class="math inline">\([g\cos\theta_*-A\sin\theta_*]/\ell=G/\ell\)</span>. Así la frecuencia angular de pequeñas oscilaciones es <span class="math inline">\(\sqrt{G/\ell}\)</span>. La aceleración del soporte modifica la dirección y el módulo de la gravedad efectiva en su marco.</p>
-</section>
-<section id="fpm-i-25-e12" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e12">FPM-I-25-E12</h3>
+<p><strong>Solución del ejercicio 25.12.</strong></p>
 <p>La coordenada horizontal satisface <span class="math inline">\(\ddot x=\ddot a\)</span>. Como no hay otra fuerza horizontal, <span class="math inline">\(R_x=m\ddot a\)</span>. La potencia de esa reacción es <span class="math inline">\(R_x\dot x=m\ddot a\dot a=d(m\dot a^2/2)/dt\)</span>. Las variaciones virtuales de la guía tienen <span class="math inline">\(\delta x=0\)</span>, por lo que el trabajo virtual horizontal sigue siendo cero. El actuador que mueve la guía aporta o retira energía según el signo de la potencia.</p>
-</section>
-<section id="fpm-i-25-e13" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e13">FPM-I-25-E13</h3>
+<p><strong>Solución del ejercicio 25.13.</strong></p>
 <p>Euler–Lagrange da <span class="math inline">\(\ddot q=0\)</span>. Los extremos fijan <span class="math inline">\(q_*(t)=q_0+(q_1-q_0)t/\tau\)</span>, única solución afín compatible. Para cualquier curva <span class="math inline">\(q=q_*+\eta\)</span> con extremos iguales,</p>
-<p><span class="math display">\[
-S[q]-S[q_*]=m\dot q_*\int_0^\tau\dot\eta\,dt
-+\frac m2\int_0^\tau\dot\eta^2dt
-=\frac m2\int_0^\tau\dot\eta^2dt.
-\]</span></p>
+<p><span class="math display">\[S[q]-S[q_*]=m\dot q_*\int_0^\tau\dot\eta\,dt +\frac m2\int_0^\tau\dot\eta^2dt =\frac m2\int_0^\tau\dot\eta^2dt.\]</span></p>
 <p>La integral es positiva salvo que <span class="math inline">\(\dot\eta=0\)</span> en todo el intervalo. Con extremos cero eso exige <span class="math inline">\(\eta=0\)</span>. Por tanto el mínimo es estricto entre las curvas admisibles.</p>
-</section>
-<section id="fpm-i-25-e14" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e14">FPM-I-25-E14</h3>
+<p><strong>Solución del ejercicio 25.14.</strong></p>
 <p>Para <span class="math inline">\(L_-\)</span>, <span class="math inline">\(\partial L_-/\partial q=-kq\)</span> y <span class="math inline">\(d(\partial L_-/\partial\dot q)/dt=m\ddot q\)</span>, así que <span class="math inline">\(m\ddot q+kq=0\)</span>. Para <span class="math inline">\(L_+\)</span> resulta <span class="math inline">\(m\ddot q-kq=0\)</span>, con soluciones exponenciales. El potencial físico del segundo lagrangiano natural es <span class="math inline">\(-kq^2/2\)</span>, que tiene un máximo en el origen. El signo cambia una fuerza restauradora por una fuerza que aleja del equilibrio; no es una convención inofensiva.</p>
-</section>
-<section id="fpm-i-25-e15" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e15">FPM-I-25-E15</h3>
-<p>Al sustituir <span class="math inline">\(u=1-t\)</span>, la función <span class="math inline">\(\eta\)</span> conserva su valor y <span class="math inline">\(f\)</span> cambia de signo. Por tanto la integral es igual a su opuesto y vale cero. Sin embargo, <span class="math inline">\(f(0)=-1/2\)</span> y <span class="math inline">\(f(1)=1/2\)</span>. Una prueba de simetría puede ocultar un coeficiente no nulo. P09 utiliza todas las pruebas localizadas; elegir una apoyada en un intervalo donde <span class="math inline">\(f&gt;0\)</span> daría una integral positiva y detectaría inmediatamente el fallo.</p>
-</section>
-<section id="fpm-i-25-e16" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e16">FPM-I-25-E16</h3>
+<p><strong>Solución del ejercicio 25.15.</strong></p>
+<p>Al sustituir <span class="math inline">\(u=1-t\)</span>, la función <span class="math inline">\(\eta\)</span> conserva su valor y <span class="math inline">\(f\)</span> cambia de signo. Por tanto la integral es igual a su opuesto y vale cero. Sin embargo, <span class="math inline">\(f(0)=-1/2\)</span> y <span class="math inline">\(f(1)=1/2\)</span>. Una prueba de simetría puede ocultar un coeficiente no nulo. Proposición 25.9 utiliza todas las pruebas localizadas; elegir una apoyada en un intervalo donde <span class="math inline">\(f&gt;0\)</span> daría una integral positiva y detectaría inmediatamente el fallo.</p>
+<p><strong>Solución del ejercicio 25.16.</strong></p>
 <p>Como <span class="math inline">\(|r|^2=|r_{,\theta}|^2=\ell^2\)</span> y <span class="math inline">\(r\cdot r_{,\theta}=0\)</span>,</p>
-<p><span class="math display">\[
-|r+\varepsilon r_{,\theta}\eta|^2
-=\ell^2+\varepsilon^2\ell^2\eta^2.
-\]</span></p>
+<p><span class="math display">\[|r+\varepsilon r_{,\theta}\eta|^2 =\ell^2+\varepsilon^2\ell^2\eta^2.\]</span></p>
 <p>La familia lineal cartesiana abandona la circunferencia para <span class="math inline">\(\varepsilon\eta\ne0\)</span>. En cambio, <span class="math inline">\(|r(\theta+\varepsilon\eta)|^2=\ell^2\)</span> exactamente. Sus derivadas respecto de <span class="math inline">\(\varepsilon\)</span> en cero coinciden, de modo que producen el mismo desplazamiento virtual de primer orden. La familia exacta contiene los términos de orden superior necesarios para permanecer en el vínculo.</p>
-</section>
-<section id="fpm-i-25-e17" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e17">FPM-I-25-E17</h3>
-<p>Antes de integrar por partes,</p>
-<p><span class="math display">\[
-\delta S=\int_0^\tau(m\dot q\dot\eta-kq\eta)dt.
-\]</span></p>
+<p><strong>Solución del ejercicio 25.17.</strong></p>
+<p>Antes de integrar por partes, <span class="math inline">\(\delta S=\int_0^\tau(m\dot q\dot\eta-kq\eta)dt.\)</span></p>
 <p>Después,</p>
-<p><span class="math display">\[
-\delta S=[m\dot q\eta]_0^\tau
--\int_0^\tau(m\ddot q+kq)\eta\,dt.
-\]</span></p>
+<p><span class="math display">\[\delta S=[m\dot q\eta]_0^\tau -\int_0^\tau(m\ddot q+kq)\eta\,dt.\]</span></p>
 <p>Con extremos fijos el primer término se anula. La arbitrariedad de <span class="math inline">\(\eta\)</span> obliga a <span class="math inline">\(m\ddot q+kq=0\)</span>. Mantener visibles el borde y el signo de la integral permite reutilizar el cálculo cuando cambian las condiciones extremas.</p>
-</section>
-<section id="fpm-i-25-e18" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e18">FPM-I-25-E18</h3>
-<p>Toda solución con posición inicial cero es <span class="math inline">\(q=B\sin\omega t\)</span>. En <span class="math inline">\(\tau=\pi/\omega\)</span>, el extremo final es cero para cualquier <span class="math inline">\(B\)</span>. Su lagrangiano es <span class="math inline">\(mB^2\omega^2(\cos^2\omega t-\sin^2\omega t)/2\)</span>, cuya integral en ese intervalo vale cero. Todas las acciones son iguales a cero. Por P12 son mínimos no estrictos; la dirección sinusoidal une una familia continua de trayectorias con la misma acción y los mismos extremos.</p>
-</section>
-<section id="fpm-i-25-e19" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e19">FPM-I-25-E19</h3>
-<p>Con <span class="math inline">\(q(0)=0\)</span>, la solución tiene forma <span class="math inline">\(B\sin\omega t\)</span> y necesariamente termina en cero a tiempo <span class="math inline">\(\pi/\omega\)</span>. No puede terminar en uno. P10 excluye entonces toda trayectoria estacionaria de clase <span class="math inline">\(C^2\)</span> con esos extremos. Para cualquier velocidad inicial existe una solución única, pero todas las que parten de posición cero regresan a esa posición en ese tiempo. El problema inicial existe; la posición final solicitada es incompatible con él.</p>
-</section>
-<section id="fpm-i-25-e20" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e20">FPM-I-25-E20</h3>
+<p><strong>Solución del ejercicio 25.18.</strong></p>
+<p>Toda solución con posición inicial cero es <span class="math inline">\(q=B\sin\omega t\)</span>. En <span class="math inline">\(\tau=\pi/\omega\)</span>, el extremo final es cero para cualquier <span class="math inline">\(B\)</span>. Su lagrangiano es <span class="math inline">\(mB^2\omega^2(\cos^2\omega t-\sin^2\omega t)/2\)</span>, cuya integral en ese intervalo vale cero. Todas las acciones son iguales a cero. Por proposición 25.12 son mínimos no estrictos; la dirección sinusoidal une una familia continua de trayectorias con la misma acción y los mismos extremos.</p>
+<p><strong>Solución del ejercicio 25.19.</strong></p>
+<p>Con <span class="math inline">\(q(0)=0\)</span>, la solución tiene forma <span class="math inline">\(B\sin\omega t\)</span> y necesariamente termina en cero a tiempo <span class="math inline">\(\pi/\omega\)</span>. No puede terminar en uno. Proposición 25.10 excluye entonces toda trayectoria estacionaria de clase <span class="math inline">\(C^2\)</span> con esos extremos. Para cualquier velocidad inicial existe una solución única, pero todas las que parten de posición cero regresan a esa posición en ese tiempo. El problema inicial existe; la posición final solicitada es incompatible con él.</p>
+<p><strong>Solución del ejercicio 25.20.</strong></p>
 <p>Tomamos <span class="math inline">\(\eta_1=\sin(\pi t/\tau)\)</span> y <span class="math inline">\(\eta_2=\sin(2\pi t/\tau)\)</span>. Para <span class="math inline">\(\eta_n\)</span>, la identidad exacta da</p>
-<p><span class="math display">\[
-S[q+\varepsilon\eta_n]-S[q]
-=\frac{m\varepsilon^2\tau}{4}
-\left[\left(\frac{n\pi}{\tau}\right)^2-\omega^2\right].
-\]</span></p>
+<p><span class="math display">\[S[q+\varepsilon\eta_n]-S[q] =\frac{m\varepsilon^2\tau}{4} \left[\left(\frac{n\pi}{\tau}\right)^2-\omega^2\right].\]</span></p>
 <p>Con <span class="math inline">\(\tau=3\pi/(2\omega)\)</span>, el corchete es <span class="math inline">\(-5\omega^2/9\)</span> para <span class="math inline">\(n=1\)</span> y <span class="math inline">\(7\omega^2/9\)</span> para <span class="math inline">\(n=2\)</span>. Por tanto los cambios son <span class="math inline">\(-5m\varepsilon^2\tau\omega^2/36\)</span> y <span class="math inline">\(7m\varepsilon^2\tau\omega^2/36\)</span>. Ambos signos persisten al hacer <span class="math inline">\(\varepsilon\)</span> tan pequeño como se quiera.</p>
-</section>
-<section id="fpm-i-25-e21" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e21">FPM-I-25-E21</h3>
-<p>La sustitución directa da <span class="math inline">\(\int\dot\eta^2=(\pi/\tau)^2\int\eta^2\)</span>, pues las integrales de seno y coseno al cuadrado son ambas <span class="math inline">\(\tau/2\)</span>. Para la necesidad, la identidad del cuadrado de P12 exige <span class="math inline">\(\dot\eta-\alpha\cot(\alpha t)\eta=0\)</span> en el interior: el integrando es no negativo y continuo allí. Esto equivale a <span class="math inline">\(d[\eta/\sin(\alpha t)]/dt=0\)</span>. El cociente es constante y <span class="math inline">\(\eta=c\sin(\alpha t)\)</span>; los extremos se satisfacen por continuidad.</p>
-</section>
-<section id="fpm-i-25-e22" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e22">FPM-I-25-E22</h3>
+<p><strong>Solución del ejercicio 25.21.</strong></p>
+<p>La sustitución directa da <span class="math inline">\(\int\dot\eta^2=(\pi/\tau)^2\int\eta^2\)</span>, pues las integrales de seno y coseno al cuadrado son ambas <span class="math inline">\(\tau/2\)</span>. Para la necesidad, la identidad del cuadrado de la proposición 25.12 exige <span class="math inline">\(\dot\eta-\alpha\cot(\alpha t)\eta=0\)</span> en el interior: el integrando es no negativo y continuo allí. Esto equivale a <span class="math inline">\(d[\eta/\sin(\alpha t)]/dt=0\)</span>. El cociente es constante y <span class="math inline">\(\eta=c\sin(\alpha t)\)</span>; los extremos se satisfacen por continuidad.</p>
+<p><strong>Solución del ejercicio 25.22.</strong></p>
 <p>La ecuación es <span class="math inline">\(\ddot y=-g\)</span>. Las posiciones extremas dan</p>
-<p><span class="math display">\[
-y_*(t)=y_0+\left(\frac{y_1-y_0}{\tau}+\frac{g\tau}{2}\right)t-\frac g2t^2.
-\]</span></p>
+<p><span class="math display">\[y_*(t)=y_0+\left(\frac{y_1-y_0}{\tau}+\frac{g\tau}{2}\right)t-\frac g2t^2.\]</span></p>
 <p>Para una perturbación <span class="math inline">\(\eta\)</span> de extremos cero, el término lineal en la acción se anula porque <span class="math inline">\(y_*\)</span> satisface Euler–Lagrange. El potencial es lineal, así que el cambio restante es <span class="math inline">\(m\int\dot\eta^2/2\)</span>, positivo salvo para <span class="math inline">\(\eta=0\)</span>. La aceleración gravitatoria modifica la trayectoria estacionaria, pero no la positividad de esa diferencia cuadrática.</p>
-</section>
-<section id="fpm-i-25-e23" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e23">FPM-I-25-E23</h3>
+<p><strong>Solución del ejercicio 25.23.</strong></p>
 <p>El término añadido es <span class="math inline">\(cq\dot q\)</span>. Su integral es <span class="math inline">\(c[q(\tau)^2-q(0)^2]/2\)</span>, constante para extremos fijos. El momento pasa de <span class="math inline">\(p\)</span> a <span class="math inline">\(p'=p+cq\)</span>. Su derivada añade <span class="math inline">\(c\dot q\)</span> y la derivada de <span class="math inline">\(L'\)</span> respecto de <span class="math inline">\(q\)</span> añade el mismo <span class="math inline">\(c\dot q\)</span>; se cancelan en Euler–Lagrange. El momento conjugado depende de esta elección de lagrangiano, mientras las ecuaciones interiores permanecen iguales.</p>
-</section>
-<section id="fpm-i-25-e24" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e24">FPM-I-25-E24</h3>
+<p><strong>Solución del ejercicio 25.24.</strong></p>
 <p>La primera variación interior produce <span class="math inline">\(\ddot q=0\)</span>. En el extremo final aparecen <span class="math inline">\(m\dot q(\tau)\eta(\tau)+\gamma q(\tau)\eta(\tau)\)</span>, de modo que la condición natural es <span class="math inline">\(m\dot q(\tau)+\gamma q(\tau)=0\)</span>. Escribiendo <span class="math inline">\(q=q_0+vt\)</span>,</p>
-<p><span class="math display">\[
-v=-\frac{\gamma q_0}{m+\gamma\tau},
-\qquad q(\tau)=\frac{m q_0}{m+\gamma\tau}.
-\]</span></p>
-<p>El denominador es positivo para <span class="math inline">\(m&gt;0\)</span>, <span class="math inline">\(\gamma\ge0\)</span>, por lo que la trayectoria es única. La condición <span class="math inline">\(p(\tau)=0\)</span> de P15 se modifica porque aquí sí existe un término terminal adicional.</p>
-</section>
-<section id="fpm-i-25-e25" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e25">FPM-I-25-E25</h3>
+<p><span class="math display">\[v=-\frac{\gamma q_0}{m+\gamma\tau}, \qquad q(\tau)=\frac{m q_0}{m+\gamma\tau}.\]</span></p>
+<p>El denominador es positivo para <span class="math inline">\(m&gt;0\)</span>, <span class="math inline">\(\gamma\ge0\)</span>, por lo que la trayectoria es única. La condición <span class="math inline">\(p(\tau)=0\)</span> de la proposición 25.15 se modifica porque aquí sí existe un término terminal adicional.</p>
+<p><strong>Solución del ejercicio 25.25.</strong></p>
 <p>El gradiente de <span class="math inline">\(g\)</span> es <span class="math inline">\(2r\)</span>. La aceleración circular uniforme es <span class="math inline">\(\ddot r=-(v^2/\ell^2)r\)</span>. La ecuación con multiplicador da <span class="math inline">\(m\ddot r=2\lambda r\)</span>, por lo que <span class="math inline">\(\lambda=-mv^2/(2\ell^2)\)</span>. Así <span class="math inline">\(R=2\lambda r=-mv^2r/\ell^2\)</span>, dirigida al centro. El signo negativo corresponde a haber escrito <span class="math inline">\(g=|r|^2-\ell^2\)</span> y <span class="math inline">\(L+\lambda g\)</span>; cambiar <span class="math inline">\(g\)</span> por su opuesto invertiría <span class="math inline">\(\lambda\)</span> sin cambiar la reacción.</p>
-</section>
-<section id="fpm-i-25-e26" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e26">FPM-I-25-E26</h3>
-<p>Por E17, con extremos fijos,</p>
-<p><span class="math display">\[
-\delta S+\int_0^\tau(-b\dot q)\eta\,dt
-=-\int_0^\tau(m\ddot q+kq+b\dot q)\eta\,dt.
-\]</span></p>
-<p>P09 da <span class="math inline">\(m\ddot q+b\dot q+kq=0\)</span>. Multiplicar por <span class="math inline">\(\dot q\)</span> muestra <span class="math inline">\(d(m\dot q^2/2+kq^2/2)/dt=-b\dot q^2\)</span>. La fuerza resistente aparece con el signo disipativo correcto; no procede de extremar sin más la acción conservativa.</p>
-</section>
-<section id="fpm-i-25-e27" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e27">FPM-I-25-E27</h3>
-<p>En coordenada absoluta, <span class="math inline">\(L=m\dot q^2/2-k[q-a(t)]^2/2\)</span> y Euler–Lagrange da <span class="math inline">\(m\ddot q+k[q-a(t)]=0\)</span>. Con <span class="math inline">\(q=z+a(t)\)</span> resulta</p>
-<p><span class="math display">\[
-m\ddot z+kz=-m\ddot a.
-\]</span></p>
-<p>El mismo resultado se obtiene sustituyendo primero en <span class="math inline">\(L\)</span>: la energía cinética se convierte en <span class="math inline">\(m(\dot z+\dot a)^2/2\)</span>. Su término cruzado es necesario para obtener la excitación <span class="math inline">\(-m\ddot a\)</span>. Eliminarlo sin compensación cambiaría la ecuación.</p>
-</section>
-<section id="fpm-i-25-e28" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e28">FPM-I-25-E28</h3>
-<p>La trayectoria cumple la restricción porque <span class="math inline">\(\dot y=\dot z=0\)</span>. La variación propuesta satisface <span class="math inline">\(\eta_z-x\eta_y=t\eta_y-t\eta_y=0\)</span>, así que pertenece a las direcciones virtuales postuladas por d’Alembert. Pero la condición linealizada de una familia de trayectorias admisibles da</p>
-<p><span class="math display">\[
-\dot\eta_z-t\dot\eta_y-0\eta_x=\eta_y=t(1-t),
-\]</span></p>
+<p><strong>Solución del ejercicio 25.26.</strong></p>
+<p>Por ejercicio 25.17, con extremos fijos,</p>
+<p><span class="math display">\[\delta S+\int_0^\tau(-b\dot q)\eta\,dt =-\int_0^\tau(m\ddot q+kq+b\dot q)\eta\,dt.\]</span></p>
+<p>Proposición 25.9 da <span class="math inline">\(m\ddot q+b\dot q+kq=0\)</span>. Multiplicar por <span class="math inline">\(\dot q\)</span> muestra <span class="math inline">\(d(m\dot q^2/2+kq^2/2)/dt=-b\dot q^2\)</span>. La fuerza resistente aparece con el signo disipativo correcto; no procede de extremar sin más la acción conservativa.</p>
+<p><strong>Solución del ejercicio 25.27.</strong></p>
+<p>En coordenada absoluta, <span class="math inline">\(L=m\dot q^2/2-k[q-a(t)]^2/2\)</span> y Euler–Lagrange da <span class="math inline">\(m\ddot q+k[q-a(t)]=0\)</span>. Con <span class="math inline">\(q=z+a(t)\)</span> resulta <span class="math inline">\(m\ddot z+kz=-m\ddot a.\)</span> El mismo resultado se obtiene sustituyendo primero en <span class="math inline">\(L\)</span>: la energía cinética se convierte en <span class="math inline">\(m(\dot z+\dot a)^2/2\)</span>. Su término cruzado es necesario para obtener la excitación <span class="math inline">\(-m\ddot a\)</span>. Eliminarlo sin compensación cambiaría la ecuación.</p>
+<p><strong>Solución del ejercicio 25.28.</strong></p>
+<p>La trayectoria cumple la restricción porque <span class="math inline">\(\dot y=\dot z=0\)</span>. La variación propuesta satisface <span class="math inline">\(\eta_z-x\eta_y=t\eta_y-t\eta_y=0\)</span>, así que pertenece a las direcciones virtuales postuladas por d’Alembert. Pero la condición linealizada de una familia de trayectorias admisibles da <span class="math inline">\(\dot\eta_z-t\dot\eta_y-0\eta_x=\eta_y=t(1-t),\)</span></p>
 <p>no nula en el interior. Por tanto esa variación virtual no es tangente a una familia que satisfaga la restricción de velocidades. Ambas elecciones de variaciones contienen información distinta; su confusión cambia el principio que se está aplicando.</p>
-</section>
-<section id="fpm-i-25-e29" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e29">FPM-I-25-E29</h3>
-<p>El Jacobiano en <span class="math inline">\((0,0)\)</span> es la fila nula, cuyo núcleo es todo <span class="math inline">\(\mathbb R^2\)</span>. Sin embargo, el conjunto admisible consta únicamente del origen. Toda curva que permanece en él es constante y tiene derivada cero, así que su único vector tangente es el nulo. La hipótesis de rango regular falla: el rango cae en el punto considerado y el núcleo del Jacobiano ya no describe las direcciones reales del conjunto. No se puede usar allí la cuenta de grados de libertad de P01.</p>
-</section>
-<section id="fpm-i-25-e30" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-25-e30">FPM-I-25-E30</h3>
+<p><strong>Solución del ejercicio 25.29.</strong></p>
+<p>El Jacobiano en <span class="math inline">\((0,0)\)</span> es la fila nula, cuyo núcleo es todo <span class="math inline">\(\mathbb R^2\)</span>. Sin embargo, el conjunto admisible consta únicamente del origen. Toda curva que permanece en él es constante y tiene derivada cero, así que su único vector tangente es el nulo. La hipótesis de rango regular falla: el rango cae en el punto considerado y el núcleo del Jacobiano ya no describe las direcciones reales del conjunto. No se puede usar allí la cuenta de grados de libertad de la proposición 25.1.</p>
+<p><strong>Solución del ejercicio 25.30.</strong></p>
 <p>La parametrización es <span class="math inline">\(r=(q,aq^2)\)</span> y su velocidad <span class="math inline">\(\dot r=(\dot q,2aq\dot q)\)</span>. Por tanto</p>
-<p><span class="math display">\[
-T=\frac m2(1+4a^2q^2)\dot q^2,
-\qquad V=mgaq^2,
-\qquad L=T-V.
-\]</span></p>
-<p>Se tiene <span class="math inline">\(\partial L/\partial\dot q=m(1+4a^2q^2)\dot q\)</span>. Su derivada temporal es <span class="math inline">\(m(1+4a^2q^2)\ddot q+8ma^2q\dot q^2\)</span>, mientras <span class="math inline">\(\partial L/\partial q=4ma^2q\dot q^2-2mgaq\)</span>. Así</p>
-<p><span class="math display">\[
-m(1+4a^2q^2)\ddot q+4ma^2q\dot q^2+2mgaq=0.
-\]</span></p>
+<p><span class="math display">\[T=\frac m2(1+4a^2q^2)\dot q^2, \qquad V=mgaq^2, \qquad L=T-V.\]</span></p>
+<p>Se tiene <span class="math inline">\(\partial L/\partial\dot q=m(1+4a^2q^2)\dot q\)</span>. Su derivada temporal es <span class="math inline">\(m(1+4a^2q^2)\ddot q+8ma^2q\dot q^2\)</span>, mientras <span class="math inline">\(\partial L/\partial q=4ma^2q\dot q^2-2mgaq\)</span>. Así <span class="math inline">\(m(1+4a^2q^2)\ddot q+4ma^2q\dot q^2+2mgaq=0.\)</span></p>
 <p>Para comprobarla con Newton, <span class="math inline">\(r_{,q}=(1,2aq)\)</span> y <span class="math inline">\(\ddot r=(\ddot q,2a\dot q^2+2aq\ddot q)\)</span>. Su producto vale <span class="math inline">\((1+4a^2q^2)\ddot q+4a^2q\dot q^2\)</span>. La gravedad proyectada da <span class="math inline">\(-2mgaq\)</span> y la reacción normal se elimina, reproduciendo la ecuación. Cerca del vértice, los términos lineales son <span class="math inline">\(m\ddot q+2mgaq=0\)</span>, con frecuencia angular <span class="math inline">\(\sqrt{2ga}\)</span>. Como <span class="math inline">\(a\)</span> tiene unidades de longitud inversa, <span class="math inline">\(ga\)</span> tiene unidades de tiempo inverso al cuadrado.</p>
+<p><span id="notas-y-lecturas"></span></p>
 </section>
-</section>
-<section id="notas-y-lecturas" class="level2">
-<h2 class="anchored" data-anchor-id="notas-y-lecturas">Notas y lecturas</h2>
+<section id="fispm-c25-notas-y-lecturas" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="fispm-c25-notas-y-lecturas">Notas y lecturas</h2>
 <ol type="1">
-<li>La formulación mediante acción y coordenadas puede contrastarse con David Tong, <em>Classical Dynamics</em>, capítulo 2, §§2.1–2.3, en los apuntes oficiales de University of Cambridge. <a href="https://www.damtp.cam.ac.uk/user/tong/dynamics/dynhtml/S2.html">Capítulo en línea</a>. Aquí se conservan explícitamente las condiciones de regularidad, las variaciones admisibles y los términos de borde que intervienen en las demostraciones.</li>
-<li>La expresión «principio de mínima acción» suele utilizarse como denominación histórica. En este capítulo el enunciado matemático es de acción estacionaria. P12 muestra con un cálculo completo que el oscilador puede tener un mínimo o un punto de silla según el intervalo temporal.</li>
-<li>El principio de Hamilton formulado aquí fija los tiempos extremos y permite variar las curvas entre configuraciones extremas dadas. Otros principios variacionales de la mecánica pueden fijar energía, variar tiempos o imponer condiciones de frontera diferentes. Sus clases de comparación deben declararse antes de identificarlos entre sí.</li>
+<li><p>La formulación mediante acción y coordenadas puede contrastarse con David Tong, <em>Classical Dynamics</em>, capítulo 2, §§2.1–2.3, en los apuntes oficiales de University of Cambridge. <a href="https://www.damtp.cam.ac.uk/user/tong/dynamics/dynhtml/S2.html">Capítulo en línea</a>. Aquí se conservan explícitamente las condiciones de regularidad, las variaciones admisibles y los términos de borde que intervienen en las demostraciones.</p></li>
+<li><p>La expresión «principio de mínima acción» suele utilizarse como denominación histórica. En este capítulo el enunciado matemático es de acción estacionaria. Proposición 25.12 muestra con un cálculo completo que el oscilador puede tener un mínimo o un punto de silla según el intervalo temporal.</p></li>
+<li><p>El principio de Hamilton formulado aquí fija los tiempos extremos y permite variar las curvas entre configuraciones extremas dadas. Otros principios variacionales de la mecánica pueden fijar energía, variar tiempos o imponer condiciones de frontera diferentes. Sus clases de comparación deben declararse antes de identificarlos entre sí.</p></li>
 </ol>
-<hr>
-<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-24-oscilaciones-acopladas-y-modos-normales.html">Capítulo 24</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-26-mecanica-lagrangiana.html">Capítulo 26</a></p>
 
 
 </section>

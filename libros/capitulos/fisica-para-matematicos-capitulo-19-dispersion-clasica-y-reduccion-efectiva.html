@@ -109,6 +109,52 @@ window.MathJax.startup.pageReady = async function () {
   });
 })();
 </script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
@@ -517,62 +563,61 @@ window.Quarto = {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#preparar-un-encuentro-y-medir-su-resultado" id="toc-preparar-un-encuentro-y-medir-su-resultado" class="nav-link active" data-scroll-target="#preparar-un-encuentro-y-medir-su-resultado">§1 — Preparar un encuentro y medir su resultado</a>
+  <li><a href="#fispm-c19-preparar-un-encuentro-y-medir-su-resultado" id="toc-fispm-c19-preparar-un-encuentro-y-medir-su-resultado" class="nav-link active" data-scroll-target="#fispm-c19-preparar-un-encuentro-y-medir-su-resultado">1. Preparar un encuentro y medir su resultado</a>
   <ul class="collapse">
-  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a></li>
+  <li><a href="#fispm-c19-ejercicios" id="toc-fispm-c19-ejercicios" class="nav-link" data-scroll-target="#fispm-c19-ejercicios">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#reducción-radial-y-ángulo-de-salida" id="toc-reducción-radial-y-ángulo-de-salida" class="nav-link" data-scroll-target="#reducción-radial-y-ángulo-de-salida">§2 — Reducción radial y ángulo de salida</a>
+  <li><a href="#fispm-c19-reducciuxf3n-radial-y-uxe1ngulo-de-salida" id="toc-fispm-c19-reducciuxf3n-radial-y-uxe1ngulo-de-salida" class="nav-link" data-scroll-target="#fispm-c19-reducciuxf3n-radial-y-uxe1ngulo-de-salida">2. Reducción radial y ángulo de salida</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-1" id="toc-ejercicios-1" class="nav-link" data-scroll-target="#ejercicios-1">Ejercicios</a></li>
+  <li><a href="#fispm-c19-ejercicios-1" id="toc-fispm-c19-ejercicios-1" class="nav-link" data-scroll-target="#fispm-c19-ejercicios-1">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#controlar-una-integral-con-un-extremo-singular" id="toc-controlar-una-integral-con-un-extremo-singular" class="nav-link" data-scroll-target="#controlar-una-integral-con-un-extremo-singular">§3 — Controlar una integral con un extremo singular</a>
+  <li><a href="#fispm-c19-controlar-una-integral-con-un-extremo-singular" id="toc-fispm-c19-controlar-una-integral-con-un-extremo-singular" class="nav-link" data-scroll-target="#fispm-c19-controlar-una-integral-con-un-extremo-singular">3. Controlar una integral con un extremo singular</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-2" id="toc-ejercicios-2" class="nav-link" data-scroll-target="#ejercicios-2">Ejercicios</a></li>
+  <li><a href="#fispm-c19-ejercicios-2" id="toc-fispm-c19-ejercicios-2" class="nav-link" data-scroll-target="#fispm-c19-ejercicios-2">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#la-ley-inversa-del-radio-como-ejemplo-exacto" id="toc-la-ley-inversa-del-radio-como-ejemplo-exacto" class="nav-link" data-scroll-target="#la-ley-inversa-del-radio-como-ejemplo-exacto">§4 — La ley inversa del radio como ejemplo exacto</a>
+  <li><a href="#fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto" id="toc-fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto" class="nav-link" data-scroll-target="#fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto">4. La ley inversa del radio como ejemplo exacto</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-3" id="toc-ejercicios-3" class="nav-link" data-scroll-target="#ejercicios-3">Ejercicios</a></li>
+  <li><a href="#fispm-c19-ejercicios-3" id="toc-fispm-c19-ejercicios-3" class="nav-link" data-scroll-target="#fispm-c19-ejercicios-3">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#máxima-aproximación-y-encuentro-con-una-superficie" id="toc-máxima-aproximación-y-encuentro-con-una-superficie" class="nav-link" data-scroll-target="#máxima-aproximación-y-encuentro-con-una-superficie">§5 — Máxima aproximación y encuentro con una superficie</a>
+  <li><a href="#fispm-c19-muxe1xima-aproximaciuxf3n-y-encuentro-con-una-superficie" id="toc-fispm-c19-muxe1xima-aproximaciuxf3n-y-encuentro-con-una-superficie" class="nav-link" data-scroll-target="#fispm-c19-muxe1xima-aproximaciuxf3n-y-encuentro-con-una-superficie">5. Máxima aproximación y encuentro con una superficie</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-4" id="toc-ejercicios-4" class="nav-link" data-scroll-target="#ejercicios-4">Ejercicios</a></li>
+  <li><a href="#fispm-c19-ejercicios-4" id="toc-fispm-c19-ejercicios-4" class="nav-link" data-scroll-target="#fispm-c19-ejercicios-4">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#sección-eficaz-como-área-de-preparación" id="toc-sección-eficaz-como-área-de-preparación" class="nav-link" data-scroll-target="#sección-eficaz-como-área-de-preparación">§6 — Sección eficaz como área de preparación</a>
+  <li><a href="#fispm-c19-secciuxf3n-eficaz-como-uxe1rea-de-preparaciuxf3n" id="toc-fispm-c19-secciuxf3n-eficaz-como-uxe1rea-de-preparaciuxf3n" class="nav-link" data-scroll-target="#fispm-c19-secciuxf3n-eficaz-como-uxe1rea-de-preparaciuxf3n">6. Sección eficaz como área de preparación</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-5" id="toc-ejercicios-5" class="nav-link" data-scroll-target="#ejercicios-5">Ejercicios</a></li>
+  <li><a href="#fispm-c19-ejercicios-5" id="toc-fispm-c19-ejercicios-5" class="nav-link" data-scroll-target="#fispm-c19-ejercicios-5">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#la-distribución-angular-y-sus-ramas" id="toc-la-distribución-angular-y-sus-ramas" class="nav-link" data-scroll-target="#la-distribución-angular-y-sus-ramas">§7 — La distribución angular y sus ramas</a>
+  <li><a href="#fispm-c19-la-distribuciuxf3n-angular-y-sus-ramas" id="toc-fispm-c19-la-distribuciuxf3n-angular-y-sus-ramas" class="nav-link" data-scroll-target="#fispm-c19-la-distribuciuxf3n-angular-y-sus-ramas">7. La distribución angular y sus ramas</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-6" id="toc-ejercicios-6" class="nav-link" data-scroll-target="#ejercicios-6">Ejercicios</a></li>
+  <li><a href="#fispm-c19-ejercicios-6" id="toc-fispm-c19-ejercicios-6" class="nav-link" data-scroll-target="#fispm-c19-ejercicios-6">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#sección-inversa-del-radio-y-resolución-angular" id="toc-sección-inversa-del-radio-y-resolución-angular" class="nav-link" data-scroll-target="#sección-inversa-del-radio-y-resolución-angular">§8 — Sección inversa del radio y resolución angular</a>
+  <li><a href="#fispm-c19-secciuxf3n-inversa-del-radio-y-resoluciuxf3n-angular" id="toc-fispm-c19-secciuxf3n-inversa-del-radio-y-resoluciuxf3n-angular" class="nav-link" data-scroll-target="#fispm-c19-secciuxf3n-inversa-del-radio-y-resoluciuxf3n-angular">8. Sección inversa del radio y resolución angular</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-7" id="toc-ejercicios-7" class="nav-link" data-scroll-target="#ejercicios-7">Ejercicios</a></li>
+  <li><a href="#fispm-c19-ejercicios-7" id="toc-fispm-c19-ejercicios-7" class="nav-link" data-scroll-target="#fispm-c19-ejercicios-7">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#una-esfera-que-devuelve-la-partícula" id="toc-una-esfera-que-devuelve-la-partícula" class="nav-link" data-scroll-target="#una-esfera-que-devuelve-la-partícula">§9. Una esfera que devuelve la partícula</a>
+  <li><a href="#fispm-c19-una-esfera-que-devuelve-la-partuxedcula" id="toc-fispm-c19-una-esfera-que-devuelve-la-partuxedcula" class="nav-link" data-scroll-target="#fispm-c19-una-esfera-que-devuelve-la-partuxedcula">9. Una esfera que devuelve la partícula</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-8" id="toc-ejercicios-8" class="nav-link" data-scroll-target="#ejercicios-8">Ejercicios</a></li>
+  <li><a href="#fispm-c19-ejercicios-8" id="toc-fispm-c19-ejercicios-8" class="nav-link" data-scroll-target="#fispm-c19-ejercicios-8">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#varias-preparaciones-una-dirección" id="toc-varias-preparaciones-una-dirección" class="nav-link" data-scroll-target="#varias-preparaciones-una-dirección">§10. Varias preparaciones, una dirección</a>
+  <li><a href="#fispm-c19-varias-preparaciones-una-direcciuxf3n" id="toc-fispm-c19-varias-preparaciones-una-direcciuxf3n" class="nav-link" data-scroll-target="#fispm-c19-varias-preparaciones-una-direcciuxf3n">10. Varias preparaciones, una dirección</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-9" id="toc-ejercicios-9" class="nav-link" data-scroll-target="#ejercicios-9">Ejercicios</a></li>
+  <li><a href="#fispm-c19-ejercicios-9" id="toc-fispm-c19-ejercicios-9" class="nav-link" data-scroll-target="#fispm-c19-ejercicios-9">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#cuánto-basta-con-integrar-sobre-una-recta" id="toc-cuánto-basta-con-integrar-sobre-una-recta" class="nav-link" data-scroll-target="#cuánto-basta-con-integrar-sobre-una-recta">§11. Cuánto basta con integrar sobre una recta</a>
+  <li><a href="#fispm-c19-cuuxe1nto-basta-con-integrar-sobre-una-recta" id="toc-fispm-c19-cuuxe1nto-basta-con-integrar-sobre-una-recta" class="nav-link" data-scroll-target="#fispm-c19-cuuxe1nto-basta-con-integrar-sobre-una-recta">11. Cuánto basta con integrar sobre una recta</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-10" id="toc-ejercicios-10" class="nav-link" data-scroll-target="#ejercicios-10">Ejercicios</a></li>
+  <li><a href="#fispm-c19-ejercicios-10" id="toc-fispm-c19-ejercicios-10" class="nav-link" data-scroll-target="#fispm-c19-ejercicios-10">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#el-detector-vive-en-el-laboratorio" id="toc-el-detector-vive-en-el-laboratorio" class="nav-link" data-scroll-target="#el-detector-vive-en-el-laboratorio">§12. El detector vive en el laboratorio</a>
+  <li><a href="#fispm-c19-el-detector-vive-en-el-laboratorio" id="toc-fispm-c19-el-detector-vive-en-el-laboratorio" class="nav-link" data-scroll-target="#fispm-c19-el-detector-vive-en-el-laboratorio">12. El detector vive en el laboratorio</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-11" id="toc-ejercicios-11" class="nav-link" data-scroll-target="#ejercicios-11">Ejercicios</a></li>
+  <li><a href="#fispm-c19-ejercicios-11" id="toc-fispm-c19-ejercicios-11" class="nav-link" data-scroll-target="#fispm-c19-ejercicios-11">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#de-un-área-a-una-cuenta-de-eventos" id="toc-de-un-área-a-una-cuenta-de-eventos" class="nav-link" data-scroll-target="#de-un-área-a-una-cuenta-de-eventos">§13. De un área a una cuenta de eventos</a>
+  <li><a href="#fispm-c19-de-un-uxe1rea-a-una-cuenta-de-eventos" id="toc-fispm-c19-de-un-uxe1rea-a-una-cuenta-de-eventos" class="nav-link" data-scroll-target="#fispm-c19-de-un-uxe1rea-a-una-cuenta-de-eventos">13. De un área a una cuenta de eventos</a>
   <ul class="collapse">
-  <li><a href="#ejercicios-12" id="toc-ejercicios-12" class="nav-link" data-scroll-target="#ejercicios-12">Ejercicios</a></li>
+  <li><a href="#fispm-c19-ejercicios-12" id="toc-fispm-c19-ejercicios-12" class="nav-link" data-scroll-target="#fispm-c19-ejercicios-12">Ejercicios</a></li>
   </ul></li>
-  <li><a href="#qué-puede-recuperarse-de-la-dispersión" id="toc-qué-puede-recuperarse-de-la-dispersión" class="nav-link" data-scroll-target="#qué-puede-recuperarse-de-la-dispersión">§14. Qué puede recuperarse de la dispersión</a>
+  <li><a href="#fispm-c19-quuxe9-puede-recuperarse-de-la-dispersiuxf3n" id="toc-fispm-c19-quuxe9-puede-recuperarse-de-la-dispersiuxf3n" class="nav-link" data-scroll-target="#fispm-c19-quuxe9-puede-recuperarse-de-la-dispersiuxf3n">14. Qué puede recuperarse de la dispersión</a>
   <ul class="collapse">
-  <li><a href="#problemas-de-integración" id="toc-problemas-de-integración" class="nav-link" data-scroll-target="#problemas-de-integración">Problemas de integración</a></li>
-  <li><a href="#notas-y-referencias" id="toc-notas-y-referencias" class="nav-link" data-scroll-target="#notas-y-referencias">Notas y referencias</a></li>
+  <li><a href="#fispm-c19-problemas-de-integraciuxf3n" id="toc-fispm-c19-problemas-de-integraciuxf3n" class="nav-link" data-scroll-target="#fispm-c19-problemas-de-integraciuxf3n">Problemas de integración</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -607,7 +652,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Fecha de última modificación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">15 de octubre de 2026</p>
+      <p class="date-modified">17 de octubre de 2026</p>
     </div>
   </div>
     
@@ -619,515 +664,473 @@ window.Quarto = {
 
 
 <p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-18-orbitas-de-kepler.html">Capítulo 18</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-20-movimiento-en-marcos-no-inerciales.html">Capítulo 20</a></p>
+<p><span id="fispm-c19-dispersiuxf3n-cluxe1sica-y-reducciuxf3n-efectiva"></span></p>
 <p>Una órbita abierta describe un encuentro: dos cuerpos se aproximan, interactúan y vuelven a separarse. Para comparar encuentros diferentes, necesitamos datos que puedan prepararse lejos de la interacción y resultados que puedan medirse después. La rapidez de entrada y el desplazamiento lateral de la aproximación fijan el estado relativo; el cambio de dirección de salida ofrece una primera medida del efecto de la fuerza.</p>
 <p>El movimiento de una sola trayectoria todavía no responde cuántas partículas llegará a ver un detector. Un haz contiene muchos desplazamientos laterales distintos. La sección eficaz conecta esa distribución de preparaciones con una distribución de resultados. Su cálculo reúne dinámica, geometría y una transformación de variables cuya orientación y ramas deben controlarse.</p>
 <p>Trabajaremos con interacciones centrales conservativas y un potencial de energía relativa <span class="math inline">\(U(r)\)</span> que tiende a cero en el infinito. Las masas son positivas constantes y la masa reducida es <span class="math inline">\(\mu\)</span>. Supondremos que existen velocidades asintóticas de entrada y salida cuando hablemos de dispersión. Los encuentros capturados, los contactos y las singularidades se tratarán por separado. La dinámica principal será clásica y no relativista; la relación posterior con dispersión cuántica conservará su propio régimen.</p>
+<p><span id="preparar-un-encuentro-y-medir-su-resultado"></span></p>
 <p><span id="fispm-t1-c19-s01"></span></p>
 <p><span id="fpm-i-19-s01"></span></p>
-<section id="preparar-un-encuentro-y-medir-su-resultado" class="level2">
-<h2 class="anchored" data-anchor-id="preparar-un-encuentro-y-medir-su-resultado">§1 — Preparar un encuentro y medir su resultado</h2>
+<section id="fispm-c19-preparar-un-encuentro-y-medir-su-resultado" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c19-preparar-un-encuentro-y-medir-su-resultado">1. Preparar un encuentro y medir su resultado</h2>
 <p>Desde lejos, el encuentro puede caracterizarse por una rapidez relativa <span class="math inline">\(v_\infty&gt;0\)</span> y por cuánto se aparta la aproximación de una colisión frontal. El punto de referencia es el origen de la coordenada relativa, no necesariamente un cuerpo inmóvil en el laboratorio.</p>
+<p><span id="fig:I-19-N01"></span></p>
+<figure id="fig-fpm-v04-i-19-n01" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/v04/I-19-N01.svg" class="lightbox" data-gallery="fpm-v04-c19"><img src="../../assets/books/fispm/v04/I-19-N01.svg" alt="Parámetro de impacto. Diagrama del capítulo 19; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="434" height="252" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 19.1.</strong> El parámetro <span class="math inline">\(b\)</span> es la separación perpendicular entre la recta asintótica incidente y el centro. La curva de salida es un esquema de desviación repulsiva; no pretende ser una solución cuantitativa. Véase §<a href="#fispm-c19-preparar-un-encuentro-y-medir-su-resultado">1</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c19-d0001"></span></p>
-<p><strong>Definición FPM-I-19-D01 — Datos asintóticos y parámetro de impacto.</strong> Para un encuentro relativo conservativo, sean <span class="math inline">\(\mathbf w_-\)</span> y <span class="math inline">\(\mathbf w_+\)</span> los límites de la velocidad antes y después, de magnitud <span class="math inline">\(v_\infty\)</span>. Definimos</p>
-<p><span class="math display">\[
-E=\frac12\mu v_\infty^2&gt;0,\qquad
-b=\frac{L}{\mu v_\infty}\geq0,
-\]</span></p>
-<p>donde <span class="math inline">\(L=|\mathbf q\times\mu\dot{\mathbf q}|\)</span>. Cuando hay una línea asintótica entrante bien definida, <span class="math inline">\(b\)</span> es su distancia perpendicular al origen.</p>
-<p>La definición mediante <span class="math inline">\(L\)</span> evita exigir una aproximación temporal demasiado fuerte. En interacciones de largo alcance, la posición puede acumular una corrección longitudinal que crece lentamente, aunque la velocidad tenga límite y la trayectoria posea una dirección asintótica. No supondremos automáticamente <span class="math inline">\(\mathbf q(t)=\mathbf w_-t+\mathbf b+o(1)\)</span> en todos los potenciales.</p>
+<p><strong>Definición 19.1 — Datos asintóticos y parámetro de impacto.</strong> Para un encuentro relativo conservativo, sean <span class="math inline">\(\mathbf w_-\)</span> y <span class="math inline">\(\mathbf w_+\)</span> los límites de la velocidad antes y después, de magnitud <span class="math inline">\(v_\infty\)</span>. Definimos</p>
+<p><span class="math display">\[E=\frac12\mu v_\infty^2&gt;0,\qquad b=\frac{L}{\mu v_\infty}\geq0,\]</span></p>
+<p>donde <span class="math inline">\(L=|\mathbf q\times\mu\dot{\mathbf q}|\)</span>. Cuando hay una línea asintótica entrante bien definida, <span class="math inline">\(b\)</span> es su distancia perpendicular al origen. La definición mediante <span class="math inline">\(L\)</span> evita exigir una aproximación temporal demasiado fuerte. En interacciones de largo alcance, la posición puede acumular una corrección longitudinal que crece lentamente, aunque la velocidad tenga límite y la trayectoria posea una dirección asintótica. No supondremos automáticamente <span class="math inline">\(\mathbf q(t)=\mathbf w_-t+\mathbf b+o(1)\)</span> en todos los potenciales.</p>
 <p><span id="fispm-t1-c19-p0001"></span></p>
-<p><strong>Proposición FPM-I-19-P01 — Igualdad de rapideces asintóticas.</strong> Si el encuentro retorna al infinito bajo un potencial autónomo con <span class="math inline">\(U(\infty)=0\)</span>, sus rapideces relativas de entrada y salida son iguales.</p>
+<p><strong>Proposición 19.1 — Igualdad de rapideces asintóticas.</strong> Si el encuentro retorna al infinito bajo un potencial autónomo con <span class="math inline">\(U(\infty)=0\)</span>, sus rapideces relativas de entrada y salida son iguales.</p>
 <p><strong>Demostración.</strong> La energía conservada es <span class="math inline">\(E=\mu|\mathbf w|^2/2+U(r)\)</span>. En cada extremo con <span class="math inline">\(r\to\infty\)</span>, el potencial tiende a cero y deja <span class="math inline">\(E=\mu|\mathbf w_\pm|^2/2\)</span>. Ambas magnitudes son <span class="math inline">\(\sqrt{2E/\mu}\)</span>. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c19-d0002"></span></p>
-<p><strong>Definición FPM-I-19-D02 — Ángulo observado de dispersión.</strong></p>
-<p><span class="math display">\[
-\chi=\arccos\left(\frac{\mathbf w_-\cdot\mathbf w_+}{v_\infty^2}\right),
-\qquad 0\leq\chi\leq\pi.
-\]</span></p>
+<p><strong>Definición 19.2 — Ángulo observado de dispersión.</strong></p>
+<p><span class="math display">\[\chi=\arccos\left(\frac{\mathbf w_-\cdot\mathbf w_+}{v_\infty^2}\right), \qquad 0\leq\chi\leq\pi.\]</span></p>
 <p>Es el ángulo entre velocidades, no entre los vectores posición lejanos. No conserva por sí solo el sentido lateral de la desviación ni el número de vueltas durante la interacción.</p>
 <p><span id="fispm-t1-c19-mp0001"></span></p>
-<p><strong>Principio metodológico FPM-I-19-MP01.</strong> Declara qué velocidades son relativas y qué dirección mide el ángulo. Separa rapidez asintótica, parámetro de impacto y orientación lateral.</p>
-<section id="ejercicios" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios">Ejercicios</h3>
+<p><strong>Principio metodológico 19.1.</strong> Declara qué velocidades son relativas y qué dirección mide el ángulo. Separa rapidez asintótica, parámetro de impacto y orientación lateral.</p>
+<p><span id="ejercicios"></span></p>
+<section id="fispm-c19-ejercicios" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c19-ejercicios">Ejercicios</h3>
 <p><span id="fispm-t1-c19-e0001"></span></p>
-<p><strong>Ejercicio FPM-I-19-E01.</strong> En un movimiento libre, <span class="math inline">\(\mathbf q(t)=vt\,\mathbf e_x+b\,\mathbf e_y\)</span>, con <span class="math inline">\(v,b&gt;0\)</span>. Calcula <span class="math inline">\(E,L\)</span> y el ángulo de dispersión.</p>
-<p><strong>Solución.</strong> La velocidad es <span class="math inline">\(v\mathbf e_x\)</span> y <span class="math inline">\(E=\mu v^2/2\)</span>. El momento angular es <span class="math inline">\(-\mu bv\,\mathbf e_z\)</span>, así que su magnitud es <span class="math inline">\(L=\mu bv\)</span> y D01 recupera el parámetro <span class="math inline">\(b\)</span>. La velocidad de salida coincide con la de entrada, por lo que <span class="math inline">\(\chi=0\)</span>. Los vectores posición al principio y al final apuntan en sentidos aproximadamente opuestos; usar su ángulo habría dado un resultado incorrecto.</p>
+<p><span id="fispm-t1-c19-e0019"></span></p>
+<p><strong>Ejercicio 19.1.</strong> En un movimiento libre, <span class="math inline">\(\mathbf q(t)=vt\,\mathbf e_x+b\,\mathbf e_y\)</span>, con <span class="math inline">\(v,b&gt;0\)</span>. Calcula <span class="math inline">\(E,L\)</span> y el ángulo de dispersión.</p>
+<p><strong>Solución.</strong> La velocidad es <span class="math inline">\(v\mathbf e_x\)</span> y <span class="math inline">\(E=\mu v^2/2\)</span>. El momento angular es <span class="math inline">\(-\mu bv\,\mathbf e_z\)</span>, así que su magnitud es <span class="math inline">\(L=\mu bv\)</span> y definición 19.1 recupera el parámetro <span class="math inline">\(b\)</span>. La velocidad de salida coincide con la de entrada, por lo que <span class="math inline">\(\chi=0\)</span>. Los vectores posición al principio y al final apuntan en sentidos aproximadamente opuestos; usar su ángulo habría dado un resultado incorrecto.</p>
 <p><span id="fispm-t1-c19-e0002"></span></p>
-<p><strong>Ejercicio FPM-I-19-E02.</strong> Un encuentro conserva <span class="math inline">\(E\)</span> y termina con rapidez relativa de salida distinta de <span class="math inline">\(\sqrt{2E/\mu}\)</span> a un radio finito <span class="math inline">\(R\)</span>. ¿Eso contradice P01?</p>
-<p><strong>Solución.</strong> No necesariamente. A radio finito, <span class="math inline">\(|\mathbf w(R)|^2=2[E-U(R)]/\mu\)</span>. P01 compara los límites donde <span class="math inline">\(U\)</span> tiende a cero. Si el detector mide antes de que el potencial sea despreciable, hay que incluir esa diferencia. Una desigualdad entre las rapideces realmente asintóticas requeriría revisar conservación, potencial o canales de energía adicionales.</p>
+<p><strong>Ejercicio 19.2.</strong> Un encuentro conserva <span class="math inline">\(E\)</span> y termina con rapidez relativa de salida distinta de <span class="math inline">\(\sqrt{2E/\mu}\)</span> a un radio finito <span class="math inline">\(R\)</span>. ¿Eso contradice proposición 19.1?</p>
+<p><strong>Solución.</strong> No necesariamente. A radio finito, <span class="math inline">\(|\mathbf w(R)|^2=2[E-U(R)]/\mu\)</span>. Proposición 19.1 compara los límites donde <span class="math inline">\(U\)</span> tiende a cero. Si el detector mide antes de que el potencial sea despreciable, hay que incluir esa diferencia. Una desigualdad entre las rapideces realmente asintóticas requeriría revisar conservación, potencial o canales de energía adicionales.</p>
+<p><span id="reducción-radial-y-ángulo-de-salida"></span></p>
 <p><span id="fispm-t1-c19-s02"></span></p>
 <p><span id="fpm-i-19-s02"></span></p>
 </section>
 </section>
-<section id="reducción-radial-y-ángulo-de-salida" class="level2">
-<h2 class="anchored" data-anchor-id="reducción-radial-y-ángulo-de-salida">§2 — Reducción radial y ángulo de salida</h2>
-<p>El potencial efectivo de I-17 permite encontrar hasta dónde se acerca una trayectoria entrante. Luego una integral angular determina cuánto gira el vector separación durante el encuentro.</p>
+<section id="fispm-c19-reducciuxf3n-radial-y-uxe1ngulo-de-salida" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c19-reducciuxf3n-radial-y-uxe1ngulo-de-salida">2. Reducción radial y ángulo de salida</h2>
+<p>El potencial efectivo del capítulo 17 permite encontrar hasta dónde se acerca una trayectoria entrante. Luego una integral angular determina cuánto gira el vector separación durante el encuentro.</p>
 <p><span id="fispm-t1-c19-d0003"></span></p>
-<p><strong>Definición FPM-I-19-D03 — Función radial normalizada.</strong> Para <span class="math inline">\(b&gt;0\)</span>,</p>
-<p><span class="math display">\[
-Q(r)=1-\frac{b^2}{r^2}-\frac{U(r)}{E}.
-\]</span></p>
+<p><strong>Definición 19.3 — Función radial normalizada.</strong> Para <span class="math inline">\(b&gt;0\)</span>,</p>
+<p><span class="math display">\[Q(r)=1-\frac{b^2}{r^2}-\frac{U(r)}{E}.\]</span></p>
 <p>La ecuación energética da <span class="math inline">\(\dot r^2=v_\infty^2Q(r)\)</span>. Llamamos <span class="math inline">\(r_{\min}&gt;0\)</span> al primer radio de retorno accesible desde el infinito; bajo las hipótesis siguientes es la mayor raíz relevante que limita la componente exterior admisible.</p>
 <p><span id="fispm-t1-c19-p0002"></span></p>
-<p><strong>Proposición FPM-I-19-P02 — Integral de medio encuentro.</strong> Supongamos una raíz simple <span class="math inline">\(Q(r_{\min})=0\)</span>, con <span class="math inline">\(Q(r)&gt;0\)</span> para todo <span class="math inline">\(r&gt;r_{\min}\)</span>, y un potencial regular en ese intervalo que tiende a cero. El ángulo entre el periastro y cada dirección radial asintótica es</p>
-<p><span class="math display">\[
-\Phi(b)=\int_{r_{\min}}^\infty
-\frac{b\,dr}{r^2\sqrt{Q(r)}}.
-\]</span></p>
+<p><strong>Proposición 19.2 — Integral de medio encuentro.</strong> Supongamos una raíz simple <span class="math inline">\(Q(r_{\min})=0\)</span>, con <span class="math inline">\(Q(r)&gt;0\)</span> para todo <span class="math inline">\(r&gt;r_{\min}\)</span>, y un potencial regular en ese intervalo que tiende a cero. El ángulo entre el periastro y cada dirección radial asintótica es</p>
+<p><span class="math display">\[\Phi(b)=\int_{r_{\min}}^\infty \frac{b\,dr}{r^2\sqrt{Q(r)}}.\]</span></p>
 <p>El vector separación gira un ángulo total <span class="math inline">\(2\Phi\)</span>.</p>
-<p><strong>Demostración.</strong> La velocidad angular positiva en el plano orientado es <span class="math inline">\(\dot\theta=L/(\mu r^2)=bv_\infty/r^2\)</span>. Dividirla por la rapidez radial saliente <span class="math inline">\(v_\infty\sqrt Q\)</span> da el integrando. La fuerza autónoma conserva el mismo problema radial en entrada y salida, de modo que ambos tramos aportan igual ángulo. La raíz simple hace integrable el extremo inferior, como se mostró en I-17; en el infinito, <span class="math inline">\(Q\to1\)</span> y el integrando es comparable a <span class="math inline">\(b/r^2\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> La velocidad angular positiva en el plano orientado es <span class="math inline">\(\dot\theta=L/(\mu r^2)=bv_\infty/r^2\)</span>. Dividirla por la rapidez radial saliente <span class="math inline">\(v_\infty\sqrt Q\)</span> da el integrando. La fuerza autónoma conserva el mismo problema radial en entrada y salida, de modo que ambos tramos aportan igual ángulo. La raíz simple hace integrable el extremo inferior, como se mostró en el capítulo 17; en el infinito, <span class="math inline">\(Q\to1\)</span> y el integrando es comparable a <span class="math inline">\(b/r^2\)</span>. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c19-p0003"></span></p>
-<p><strong>Proposición FPM-I-19-P03 — De giro radial a desviación.</strong> Definamos el ángulo de desviación con signo por la convención</p>
-<p><span class="math display">\[
-\delta=\pi-2\Phi.
-\]</span></p>
+<p><strong>Proposición 19.3 — De giro radial a desviación.</strong> Definamos el ángulo de desviación con signo por la convención</p>
+<p><span class="math display">\[\delta=\pi-2\Phi.\]</span></p>
 <p>El ángulo principal observado es <span class="math inline">\(\chi=\arccos(\cos\delta)\)</span>. Cuando <span class="math inline">\(-\pi\leq\delta\leq\pi\)</span>, se reduce a <span class="math inline">\(\chi=|\delta|\)</span>.</p>
-<p><strong>Demostración.</strong> En la entrada lejana, la velocidad apunta en sentido opuesto al vector radial; en la salida, en el mismo sentido. Por tanto el cambio de dirección entre velocidades difiere en <span class="math inline">\(\pi\)</span> del giro radial total. La convención indicada escoge su signo opuesto. El producto de las direcciones depende del coseno de esa diferencia y D02 da la expresión principal. En el intervalo de una desviación sin vueltas adicionales, el ángulo principal es el valor absoluto. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> En la entrada lejana, la velocidad apunta en sentido opuesto al vector radial; en la salida, en el mismo sentido. Por tanto el cambio de dirección entre velocidades difiere en <span class="math inline">\(\pi\)</span> del giro radial total. La convención indicada escoge su signo opuesto. El producto de las direcciones depende del coseno de esa diferencia y definición 19.2 da la expresión principal. En el intervalo de una desviación sin vueltas adicionales, el ángulo principal es el valor absoluto. <span class="math inline">\(\square\)</span></p>
 <p>Una desviación repulsiva simple tiene <span class="math inline">\(\Phi&lt;\pi/2\)</span> y <span class="math inline">\(\delta&gt;0\)</span>; una atractiva simple puede tener <span class="math inline">\(\Phi&gt;\pi/2\)</span> y <span class="math inline">\(\delta&lt;0\)</span>. Cuando hay giro adicional o acercamiento a una órbita inestable, el ángulo sin reducir puede salir de ese intervalo. El ángulo del detector sigue entre cero y <span class="math inline">\(\pi\)</span> y pierde información de vueltas.</p>
 <p><span id="fispm-t1-c19-mp0002"></span></p>
-<p><strong>Principio metodológico FPM-I-19-MP02.</strong> Selecciona la raíz accesible desde el infinito y conserva el ángulo con signo antes de reducirlo al ángulo observado. Las otras raíces pueden pertenecer a regiones que la trayectoria no visita.</p>
-<section id="ejercicios-1" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-1">Ejercicios</h3>
+<p><strong>Principio metodológico 19.2.</strong> Selecciona la raíz accesible desde el infinito y conserva el ángulo con signo antes de reducirlo al ángulo observado. Las otras raíces pueden pertenecer a regiones que la trayectoria no visita.</p>
+<p><span id="ejercicios-1"></span></p>
+<section id="fispm-c19-ejercicios-1" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c19-ejercicios-1">Ejercicios</h3>
 <p><span id="fispm-t1-c19-e0003"></span></p>
-<p><strong>Ejercicio FPM-I-19-E03.</strong> Para <span class="math inline">\(U=0\)</span> y <span class="math inline">\(b&gt;0\)</span>, evalúa <span class="math inline">\(\Phi\)</span> y verifica el resultado libre.</p>
+<p><strong>Ejercicio 19.3.</strong> Para <span class="math inline">\(U=0\)</span> y <span class="math inline">\(b&gt;0\)</span>, evalúa <span class="math inline">\(\Phi\)</span> y verifica el resultado libre.</p>
 <p><strong>Solución.</strong> La raíz exterior es <span class="math inline">\(r_{\min}=b\)</span>. La sustitución <span class="math inline">\(s=b/r\)</span> da <span class="math inline">\(\Phi=\int_0^1 ds/\sqrt{1-s^2}=\pi/2\)</span>. Entonces <span class="math inline">\(\delta=0\)</span> y <span class="math inline">\(\chi=0\)</span>. El radio mínimo es el parámetro de impacto sólo en este caso libre.</p>
 <p><span id="fispm-t1-c19-e0004"></span></p>
-<p><strong>Ejercicio FPM-I-19-E04.</strong> Un cálculo produce <span class="math inline">\(\Phi=5\pi/4\)</span>. Encuentra <span class="math inline">\(\delta\)</span> y <span class="math inline">\(\chi\)</span>. ¿El detector conserva todo el giro calculado?</p>
+<p><strong>Ejercicio 19.4.</strong> Un cálculo produce <span class="math inline">\(\Phi=5\pi/4\)</span>. Encuentra <span class="math inline">\(\delta\)</span> y <span class="math inline">\(\chi\)</span>. ¿El detector conserva todo el giro calculado?</p>
 <p><strong>Solución.</strong> <span class="math inline">\(\delta=\pi-2(5\pi/4)=-3\pi/2\)</span>. El ángulo principal es <span class="math inline">\(\arccos(\cos(-3\pi/2))=\pi/2\)</span>. El giro radial total fue <span class="math inline">\(5\pi/2\)</span>; el detector que sólo registra el ángulo entre velocidades entrega <span class="math inline">\(90^\circ\)</span> y no distingue por sí mismo el giro adicional.</p>
+<p><span id="controlar-una-integral-con-un-extremo-singular"></span></p>
 <p><span id="fispm-t1-c19-s03"></span></p>
 <p><span id="fpm-i-19-s03"></span></p>
 </section>
 </section>
-<section id="controlar-una-integral-con-un-extremo-singular" class="level2">
-<h2 class="anchored" data-anchor-id="controlar-una-integral-con-un-extremo-singular">§3 — Controlar una integral con un extremo singular</h2>
-<p>El integrando de P02 diverge en el radio de retorno, aunque su integral sea finita. Esa diferencia importa para un cálculo numérico: evaluar directamente muy cerca de la raíz puede amplificar errores de redondeo o de localización.</p>
+<section id="fispm-c19-controlar-una-integral-con-un-extremo-singular" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c19-controlar-una-integral-con-un-extremo-singular">3. Controlar una integral con un extremo singular</h2>
+<p>El integrando de la proposición 19.2 diverge en el radio de retorno, aunque su integral sea finita. Esa diferencia importa para un cálculo numérico: evaluar directamente muy cerca de la raíz puede amplificar errores de redondeo o de localización.</p>
 <p><span id="fispm-t1-c19-p0004"></span></p>
-<p><strong>Proposición FPM-I-19-P04 — Regularización de una raíz simple.</strong> Si <span class="math inline">\(Q'(r_{\min})&gt;0\)</span> y <span class="math inline">\(Q\)</span> es diferenciable allí, la sustitución <span class="math inline">\(r=r_{\min}+s^2\)</span> transforma la integral cercana en un integrando con límite finito</p>
-<p><span class="math display">\[
-\lim_{s\to0^+}
-\frac{2bs}{(r_{\min}+s^2)^2\sqrt{Q(r_{\min}+s^2)}}
-=\frac{2b}{r_{\min}^2\sqrt{Q'(r_{\min})}}.
-\]</span></p>
+<p><strong>Proposición 19.4 — Regularización de una raíz simple.</strong> Si <span class="math inline">\(Q'(r_{\min})&gt;0\)</span> y <span class="math inline">\(Q\)</span> es diferenciable allí, la sustitución <span class="math inline">\(r=r_{\min}+s^2\)</span> transforma la integral cercana en un integrando con límite finito</p>
+<p><span class="math display">\[\lim_{s\to0^+} \frac{2bs}{(r_{\min}+s^2)^2\sqrt{Q(r_{\min}+s^2)}} =\frac{2b}{r_{\min}^2\sqrt{Q'(r_{\min})}}.\]</span></p>
 <p><strong>Demostración.</strong> Diferenciabilidad da <span class="math inline">\(Q(r_{\min}+s^2)=Q'(r_{\min})s^2+o(s^2)\)</span>. Para <span class="math inline">\(s&gt;0\)</span>, la raíz del denominador es <span class="math inline">\(s\sqrt{Q'(r_{\min})+o(1)}\)</span>. El factor <span class="math inline">\(s\)</span> se cancela con el jacobiano <span class="math inline">\(dr=2s\,ds\)</span>, dejando el límite. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c19-p0005"></span></p>
-<p><strong>Proposición FPM-I-19-P05 — Cota del tramo lejano.</strong> Si <span class="math inline">\(Q(r)\geq c&gt;0\)</span> para <span class="math inline">\(r\geq R\)</span>, el ángulo omitido al truncar la integral allí satisface</p>
-<p><span class="math display">\[
-0\leq\int_R^\infty\frac{b\,dr}{r^2\sqrt{Q(r)}}
-\leq\frac{b}{R\sqrt c}.
-\]</span></p>
+<p><strong>Proposición 19.5 — Cota del tramo lejano.</strong> Si <span class="math inline">\(Q(r)\geq c&gt;0\)</span> para <span class="math inline">\(r\geq R\)</span>, el ángulo omitido al truncar la integral allí satisface</p>
+<p><span class="math display">\[0\leq\int_R^\infty\frac{b\,dr}{r^2\sqrt{Q(r)}} \leq\frac{b}{R\sqrt c}.\]</span></p>
 <p><strong>Demostración.</strong> Sustituir la cota inferior de <span class="math inline">\(Q\)</span> acota el integrando por <span class="math inline">\(b/(r^2\sqrt c)\)</span>. Su integral de <span class="math inline">\(R\)</span> al infinito vale <span class="math inline">\(b/(R\sqrt c)\)</span>. <span class="math inline">\(\square\)</span></p>
-<p>Esta cota es para <span class="math inline">\(\Phi\)</span>; el correspondiente error en <span class="math inline">\(\delta\)</span> es como máximo el doble. Se suma al error de la raíz y de la integración. Si el retorno es doble o se acerca a serlo, P04 deja de ofrecer un límite finito uniforme y pueden aparecer tiempos y ángulos muy grandes. En ese caso hay que revisar la estructura del potencial, no sólo aumentar una malla.</p>
+<p>Esta cota es para <span class="math inline">\(\Phi\)</span>; el correspondiente error en <span class="math inline">\(\delta\)</span> es como máximo el doble. Se suma al error de la raíz y de la integración. Si el retorno es doble o se acerca a serlo, proposición 19.4 deja de ofrecer un límite finito uniforme y pueden aparecer tiempos y ángulos muy grandes. En ese caso hay que revisar la estructura del potencial, no sólo aumentar una malla.</p>
 <p><span id="fispm-t1-c19-mp0003"></span></p>
-<p><strong>Principio metodológico FPM-I-19-MP03.</strong> Separa error de localización del retorno, error de cuadratura y cola lejana. Usa una transformación que respete el orden de la raíz.</p>
-<section id="ejercicios-2" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-2">Ejercicios</h3>
+<p><strong>Principio metodológico 19.3.</strong> Separa error de localización del retorno, error de cuadratura y cola lejana. Usa una transformación que respete el orden de la raíz.</p>
+<p><span id="ejercicios-2"></span></p>
+<section id="fispm-c19-ejercicios-2" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c19-ejercicios-2">Ejercicios</h3>
 <p><span id="fispm-t1-c19-e0005"></span></p>
-<p><strong>Ejercicio FPM-I-19-E05.</strong> Una integración se corta en <span class="math inline">\(R=100b\)</span> y se ha demostrado <span class="math inline">\(Q\geq1/2\)</span> desde allí. Acota el error en <span class="math inline">\(\Phi\)</span> y en <span class="math inline">\(\delta\)</span> debido sólo al corte.</p>
-<p><strong>Solución.</strong> P05 da error de <span class="math inline">\(\Phi\)</span> no mayor que <span class="math inline">\(1/(100\sqrt{1/2})=\sqrt2/100\simeq0,01414\)</span> radianes. Para <span class="math inline">\(\delta=\pi-2\Phi\)</span>, la cota es aproximadamente <span class="math inline">\(0,02828\)</span> radianes. Es una cota absoluta de la cola; no incluye los otros errores del cálculo.</p>
+<p><strong>Ejercicio 19.5.</strong> Una integración se corta en <span class="math inline">\(R=100b\)</span> y se ha demostrado <span class="math inline">\(Q\geq1/2\)</span> desde allí. Acota el error en <span class="math inline">\(\Phi\)</span> y en <span class="math inline">\(\delta\)</span> debido sólo al corte.</p>
+<p><strong>Solución.</strong> proposición 19.5 da error de <span class="math inline">\(\Phi\)</span> no mayor que <span class="math inline">\(1/(100\sqrt{1/2})=\sqrt2/100\simeq0,01414\)</span> radianes. Para <span class="math inline">\(\delta=\pi-2\Phi\)</span>, la cota es aproximadamente <span class="math inline">\(0,02828\)</span> radianes. Es una cota absoluta de la cola; no incluye los otros errores del cálculo.</p>
 <p><span id="fispm-t1-c19-e0006"></span></p>
-<p><strong>Ejercicio FPM-I-19-E06.</strong> Cerca de una raíz, <span class="math inline">\(Q(r)\)</span> se comporta como <span class="math inline">\(C(r-r_*)^2\)</span> en el lado exterior, con <span class="math inline">\(C&gt;0\)</span>. ¿La sustitución de P04 produce un extremo regular?</p>
+<p><strong>Ejercicio 19.6.</strong> Cerca de una raíz, <span class="math inline">\(Q(r)\)</span> se comporta como <span class="math inline">\(C(r-r_*)^2\)</span> en el lado exterior, con <span class="math inline">\(C&gt;0\)</span>. ¿La sustitución de la proposición 19.4 produce un extremo regular?</p>
 <p><strong>Solución.</strong> Con <span class="math inline">\(r-r_*=s^2\)</span>, <span class="math inline">\(\sqrt Q\)</span> se comporta como <span class="math inline">\(\sqrt C\,s^2\)</span>. El jacobiano sólo aporta <span class="math inline">\(2s\)</span>, de modo que el integrando se comporta como una constante por <span class="math inline">\(1/s\)</span> y la integral diverge. La raíz doble puede representar aproximación asintótica con giro creciente. No es el mismo caso que una raíz simple de retorno.</p>
+<p><span id="la-ley-inversa-del-radio-como-ejemplo-exacto"></span></p>
 <p><span id="fispm-t1-c19-s04"></span></p>
 <p><span id="fpm-i-19-s04"></span></p>
 </section>
 </section>
-<section id="la-ley-inversa-del-radio-como-ejemplo-exacto" class="level2">
-<h2 class="anchored" data-anchor-id="la-ley-inversa-del-radio-como-ejemplo-exacto">§4 — La ley inversa del radio como ejemplo exacto</h2>
+<section id="fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto">4. La ley inversa del radio como ejemplo exacto</h2>
 <p>El potencial <span class="math inline">\(U=\pm\kappa/r\)</span>, con <span class="math inline">\(\kappa&gt;0\)</span>, ofrece un encuentro cuya desviación puede obtenerse sin integrar numéricamente. El signo positivo es repulsivo y el negativo atractivo. El caso atractivo incluye la gravitación del par con <span class="math inline">\(\kappa=Gm_1m_2\)</span>; el repulsivo puede modelar una interacción electrostática entre cargas de igual signo.</p>
+<p><span id="fig:I-19-R01"></span></p>
+<figure id="fig-fpm-v04-i-19-r01" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/v04/I-19-R01.svg" class="lightbox" data-gallery="fpm-v04-c19"><img src="../../assets/books/fispm/v04/I-19-R01.svg" alt="Ángulo y parámetro de impacto. Diagrama del capítulo 19; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="438" height="253" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 19.2.</strong> En dispersión por una fuerza inversa del cuadrado, <span class="math inline">\(b=a\cot(\chi/2)\)</span>, con <span class="math inline">\(a&gt;0\)</span> fijado por el acoplamiento y la energía lejana. Los encuentros de mayor parámetro de impacto producen menor desviación, bajo las hipótesis de esa ley. Véase §<a href="#fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto">4</a>.</p>
+</figcaption>
+</figure>
+<p><span id="fig:I-19-N03"></span></p>
+<figure id="fig-fpm-v04-i-19-n03" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/v04/I-19-N03.svg" class="lightbox" data-gallery="fpm-v04-c19"><img src="../../assets/books/fispm/v04/I-19-N03.svg" alt="Ángulo y parámetro de impacto. Diagrama del capítulo 19; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="432" height="246" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 19.3.</strong> Para la dispersión coulombiana repulsiva, en unidades con <span class="math inline">\(\kappa/(\mu v_\infty^2)=1\)</span>, <span class="math inline">\(\chi=2\arctan(1/b)\)</span>. Los encuentros más lejanos se desvían menos. Véase §<a href="#fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto">4</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c19-d0004"></span></p>
-<p><strong>Definición FPM-I-19-D04 — Longitud de interacción.</strong></p>
-<p><span class="math display">\[
-\ell=\frac{\kappa}{\mu v_\infty^2}
-=\frac{\kappa}{2E}&gt;0.
-\]</span></p>
+<p><strong>Definición 19.4 — Longitud de interacción.</strong></p>
+<p><span class="math display">\[\ell=\frac{\kappa}{\mu v_\infty^2} =\frac{\kappa}{2E}&gt;0.\]</span></p>
 <p>Su comparación con <span class="math inline">\(b\)</span> mide la intensidad de la desviación del encuentro.</p>
 <p><span id="fispm-t1-c19-p0006"></span></p>
-<p><strong>Proposición FPM-I-19-P06 — Desviación inversa del radio.</strong> Para <span class="math inline">\(b&gt;0\)</span>, ambos signos del potencial dan</p>
-<p><span class="math display">\[
-\chi=2\arctan\left(\frac{\ell}{b}\right),
-\qquad
-b=\ell\cot(\chi/2).
-\]</span></p>
-<p>Con la convención de P03, <span class="math inline">\(\delta=+\chi\)</span> para repulsión y <span class="math inline">\(\delta=-\chi\)</span> para atracción.</p>
-<p><strong>Demostración.</strong> La órbita tiene excentricidad <span class="math inline">\(e=\sqrt{1+b^2/\ell^2}&gt;1\)</span>. Para atracción, la hipérbola de I-18 tiene <span class="math inline">\(\Phi=\arccos(-1/e)\)</span>. Para repulsión, Binet da <span class="math inline">\(r=p/(e\cos\theta-1)\)</span>, con <span class="math inline">\(p=L^2/(\mu\kappa)\)</span> y raíz angular lejana <span class="math inline">\(\Phi=\arccos(1/e)\)</span>. La relación de <span class="math inline">\(e\)</span> procede de energía y momento, o de sustituir la solución de Binet en la energía. P03 produce respectivamente desviaciones de magnitud <span class="math inline">\(2\arcsin(1/e)\)</span>. Como <span class="math inline">\(1/e=\ell/\sqrt{b^2+\ell^2}\)</span>, ese ángulo es <span class="math inline">\(2\arctan(\ell/b)\)</span> para valores positivos. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 19.6 — Desviación inversa del radio.</strong> Para <span class="math inline">\(b&gt;0\)</span>, ambos signos del potencial dan</p>
+<p><span class="math display">\[\chi=2\arctan\left(\frac{\ell}{b}\right), \qquad b=\ell\cot(\chi/2).\]</span></p>
+<p>Con la convención de la proposición 19.3, <span class="math inline">\(\delta=+\chi\)</span> para repulsión y <span class="math inline">\(\delta=-\chi\)</span> para atracción.</p>
+<p><strong>Demostración.</strong> La órbita tiene excentricidad <span class="math inline">\(e=\sqrt{1+b^2/\ell^2}&gt;1\)</span>. Para atracción, la hipérbola del capítulo 18 tiene <span class="math inline">\(\Phi=\arccos(-1/e)\)</span>. Para repulsión, Binet da <span class="math inline">\(r=p/(e\cos\theta-1)\)</span>, con <span class="math inline">\(p=L^2/(\mu\kappa)\)</span> y raíz angular lejana <span class="math inline">\(\Phi=\arccos(1/e)\)</span>. La relación de <span class="math inline">\(e\)</span> procede de energía y momento, o de sustituir la solución de Binet en la energía. Proposición 19.3 produce respectivamente desviaciones de magnitud <span class="math inline">\(2\arcsin(1/e)\)</span>. Como <span class="math inline">\(1/e=\ell/\sqrt{b^2+\ell^2}\)</span>, ese ángulo es <span class="math inline">\(2\arctan(\ell/b)\)</span> para valores positivos. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c19-p0007"></span></p>
-<p><strong>Proposición FPM-I-19-P07 — Cambio de momento relativo.</strong></p>
-<p><span class="math display">\[
-|\Delta\mathbf p_{\mathrm{rel}}|
-=2\mu v_\infty\sin(\chi/2)
-=\frac{2\mu v_\infty\ell}{\sqrt{b^2+\ell^2}}.
-\]</span></p>
-<p><strong>Demostración.</strong> Los momentos de entrada y salida tienen igual magnitud <span class="math inline">\(\mu v_\infty\)</span> y forman ángulo <span class="math inline">\(\chi\)</span>. El cuadrado de su diferencia es <span class="math inline">\(2\mu^2v_\infty^2(1-\cos\chi)=4\mu^2v_\infty^2\sin^2(\chi/2)\)</span>. La ley de P06 da la segunda expresión. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 19.7 — Cambio de momento relativo.</strong></p>
+<p><span class="math display">\[|\Delta\mathbf p_{\mathrm{rel}}| =2\mu v_\infty\sin(\chi/2) =\frac{2\mu v_\infty\ell}{\sqrt{b^2+\ell^2}}.\]</span></p>
+<p><strong>Demostración.</strong> Los momentos de entrada y salida tienen igual magnitud <span class="math inline">\(\mu v_\infty\)</span> y forman ángulo <span class="math inline">\(\chi\)</span>. El cuadrado de su diferencia es <span class="math inline">\(2\mu^2v_\infty^2(1-\cos\chi)=4\mu^2v_\infty^2\sin^2(\chi/2)\)</span>. La ley de la proposición 19.6 da la segunda expresión. <span class="math inline">\(\square\)</span></p>
 <p>Las magnitudes de desviación coinciden para ambas interacciones, pero los lados de salida son diferentes. Una distribución angular que no registre orientación respecto del desplazamiento lateral puede ocultar el signo de la fuerza. En adelante ese hecho reaparecerá al calcular secciones eficaces.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p><span id="fispm-t1-c19-mp0004"></span></p>
-<p><strong>Principio metodológico FPM-I-19-MP04.</strong> Conserva el signo de la interacción y distingue desviación lateral de su magnitud. El mismo ángulo principal no prueba el mismo mecanismo físico.</p>
-<section id="ejercicios-3" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-3">Ejercicios</h3>
+<p><strong>Principio metodológico 19.4.</strong> Conserva el signo de la interacción y distingue desviación lateral de su magnitud. El mismo ángulo principal no prueba el mismo mecanismo físico.</p>
+<p><span id="ejercicios-3"></span></p>
+<section id="fispm-c19-ejercicios-3" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c19-ejercicios-3">Ejercicios</h3>
 <p><span id="fispm-t1-c19-e0007"></span></p>
-<p><strong>Ejercicio FPM-I-19-E07.</strong> Para un encuentro inverso del radio con <span class="math inline">\(b=\ell\)</span>, calcula la desviación y el cambio de momento relativo.</p>
-<p><strong>Solución.</strong> <span class="math inline">\(\chi=2\arctan1=\pi/2\)</span>. P07 da <span class="math inline">\(|\Delta\mathbf p_{\mathrm{rel}}|=\sqrt2\,\mu v_\infty\)</span>. La desviación con signo es positiva en repulsión y negativa en atracción bajo la convención fijada.</p>
+<p><strong>Ejercicio 19.7.</strong> Para un encuentro inverso del radio con <span class="math inline">\(b=\ell\)</span>, calcula la desviación y el cambio de momento relativo.</p>
+<p><strong>Solución.</strong> <span class="math inline">\(\chi=2\arctan1=\pi/2\)</span>. Proposición 19.7 da <span class="math inline">\(|\Delta\mathbf p_{\mathrm{rel}}|=\sqrt2\,\mu v_\infty\)</span>. La desviación con signo es positiva en repulsión y negativa en atracción bajo la convención fijada.</p>
 <p><span id="fispm-t1-c19-e0008"></span></p>
-<p><strong>Ejercicio FPM-I-19-E08.</strong> Mantén <span class="math inline">\(b,\kappa,\mu\)</span> y duplica <span class="math inline">\(v_\infty\)</span>. ¿La desviación se divide exactamente por cuatro?</p>
+<p><strong>Ejercicio 19.8.</strong> Mantén <span class="math inline">\(b,\kappa,\mu\)</span> y duplica <span class="math inline">\(v_\infty\)</span>. ¿La desviación se divide exactamente por cuatro?</p>
 <p><strong>Solución.</strong> La longitud <span class="math inline">\(\ell\)</span> se divide por cuatro y la nueva desviación es <span class="math inline">\(\chi_{\mathrm{nueva}}=2\arctan[\ell/(4b)]\)</span>. No es en general la cuarta parte de <span class="math inline">\(2\arctan(\ell/b)\)</span>. La proporcionalidad aparece como aproximación cuando <span class="math inline">\(\ell/b\ll1\)</span>, porque entonces <span class="math inline">\(\arctan x\simeq x\)</span>. El cambio de escala de la fuerza no debe confundirse con una linealidad exacta del ángulo.</p>
+<p><span id="máxima-aproximación-y-encuentro-con-una-superficie"></span></p>
 <p><span id="fispm-t1-c19-s05"></span></p>
 <p><span id="fpm-i-19-s05"></span></p>
 </section>
 </section>
-<section id="máxima-aproximación-y-encuentro-con-una-superficie" class="level2">
-<h2 class="anchored" data-anchor-id="máxima-aproximación-y-encuentro-con-una-superficie">§5 — Máxima aproximación y encuentro con una superficie</h2>
+<section id="fispm-c19-muxe1xima-aproximaciuxf3n-y-encuentro-con-una-superficie" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c19-muxe1xima-aproximaciuxf3n-y-encuentro-con-una-superficie">5. Máxima aproximación y encuentro con una superficie</h2>
 <p>El parámetro de impacto se define lejos del encuentro. La fuerza puede acercar la trayectoria a la región central o alejarla de ella. Por eso no se identifica en general con la distancia mínima ni con la condición geométrica de contacto.</p>
 <p><span id="fispm-t1-c19-p0008"></span></p>
-<p><strong>Proposición FPM-I-19-P08 — Radios mínimos inversos del radio.</strong> Para <span class="math inline">\(b&gt;0\)</span>,</p>
-<p><span class="math display">\[
-r_{\min}^{\mathrm{rep}}=\ell+\sqrt{\ell^2+b^2},
-\qquad
-r_{\min}^{\mathrm{atr}}=-\ell+\sqrt{\ell^2+b^2}.
-\]</span></p>
+<p><strong>Proposición 19.8 — Radios mínimos inversos del radio.</strong> Para <span class="math inline">\(b&gt;0\)</span>,</p>
+<p><span class="math display">\[r_{\min}^{\mathrm{rep}}=\ell+\sqrt{\ell^2+b^2}, \qquad r_{\min}^{\mathrm{atr}}=-\ell+\sqrt{\ell^2+b^2}.\]</span></p>
 <p><strong>Demostración.</strong> En el retorno, <span class="math inline">\(E=L^2/(2\mu r^2)\pm\kappa/r\)</span>. Usar <span class="math inline">\(L=\mu v_\infty b\)</span> y <span class="math inline">\(E=\mu v_\infty^2/2\)</span> da <span class="math inline">\(r^2\mp2\ell r-b^2=0\)</span>. La raíz positiva es la indicada para cada signo. <span class="math inline">\(\square\)</span></p>
 <p>La repulsión aumenta la máxima distancia de acercamiento respecto de <span class="math inline">\(b\)</span>, mientras la atracción la reduce. En el límite <span class="math inline">\(b\to0\)</span>, la repulsión tiene retorno radial en <span class="math inline">\(2\ell\)</span>; la atracción puntual lleva hacia la singularidad. La fórmula angular del encuentro no debe convertir esa coincidencia singular en una dispersión saliente bien definida.</p>
 <p><span id="fispm-t1-c19-p0009"></span></p>
-<p><strong>Proposición FPM-I-19-P09 — Condición para alcanzar un radio absorbente.</strong> Supongamos que una trayectoria que llega a <span class="math inline">\(r=R&gt;0\)</span> se absorbe o cambia de canal por un mecanismo declarado. Para el potencial atractivo <span class="math inline">\(-\kappa/r\)</span>, los impactos que alcanzan ese radio cumplen</p>
-<p><span class="math display">\[
-b^2\leq R^2+2\ell R.
-\]</span></p>
+<p><strong>Proposición 19.9 — Condición para alcanzar un radio absorbente.</strong> Supongamos que una trayectoria que llega a <span class="math inline">\(r=R&gt;0\)</span> se absorbe o cambia de canal por un mecanismo declarado. Para el potencial atractivo <span class="math inline">\(-\kappa/r\)</span>, los impactos que alcanzan ese radio cumplen</p>
+<p><span class="math display">\[b^2\leq R^2+2\ell R.\]</span></p>
 <p>Para el repulsivo <span class="math inline">\(+\kappa/r\)</span>, cumplen <span class="math inline">\(b^2\leq R^2-2\ell R\)</span>, si el miembro derecho es no negativo; si es negativo, ninguno llega.</p>
-<p><strong>Demostración.</strong> Las expresiones de P08 son crecientes en <span class="math inline">\(b\)</span>. Imponer <span class="math inline">\(r_{\min}\leq R\)</span> y despejar produce cada desigualdad. Equivale a que el estado exterior alcance <span class="math inline">\(R\)</span> con velocidad radial real, sin un retorno previo. El caso radial se interpreta directamente con la energía, no mediante un plano orbital indeterminado. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> Las expresiones de la proposición 19.8 son crecientes en <span class="math inline">\(b\)</span>. Imponer <span class="math inline">\(r_{\min}\leq R\)</span> y despejar produce cada desigualdad. Equivale a que el estado exterior alcance <span class="math inline">\(R\)</span> con velocidad radial real, sin un retorno previo. El caso radial se interpreta directamente con la energía, no mediante un plano orbital indeterminado. <span class="math inline">\(\square\)</span></p>
 <p>La ley central conservativa, por sí sola, no captura una trayectoria que llega del infinito y vuelve a salir bajo sus hipótesis. Para llamar captura a alcanzar <span class="math inline">\(R\)</span> hace falta el mecanismo que absorbe o disipa allí. En un encuentro de cuerpos extensos, <span class="math inline">\(R\)</span> puede ser la suma de sus radios de contacto; la dinámica posterior pertenece a otro modelo.</p>
 <p><span id="fispm-t1-c19-mp0005"></span></p>
-<p><strong>Principio metodológico FPM-I-19-MP05.</strong> Separa la aproximación determinada por la fuerza del mecanismo de contacto o captura. Declara el radio y el cambio de modelo al alcanzarlo.</p>
-<section id="ejercicios-4" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-4">Ejercicios</h3>
+<p><strong>Principio metodológico 19.5.</strong> Separa la aproximación determinada por la fuerza del mecanismo de contacto o captura. Declara el radio y el cambio de modelo al alcanzarlo.</p>
+<p><span id="ejercicios-4"></span></p>
+<section id="fispm-c19-ejercicios-4" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c19-ejercicios-4">Ejercicios</h3>
 <p><span id="fispm-t1-c19-e0009"></span></p>
-<p><strong>Ejercicio FPM-I-19-E09.</strong> Para <span class="math inline">\(b=2\ell\)</span>, compara los radios mínimos atractivo, repulsivo y libre.</p>
+<p><strong>Ejercicio 19.9.</strong> Para <span class="math inline">\(b=2\ell\)</span>, compara los radios mínimos atractivo, repulsivo y libre.</p>
 <p><strong>Solución.</strong> Los valores son <span class="math inline">\((\sqrt5-1)\ell\)</span>, <span class="math inline">\((\sqrt5+1)\ell\)</span> y <span class="math inline">\(2\ell\)</span>. Aproximadamente son <span class="math inline">\(1,236\ell\)</span>, <span class="math inline">\(3,236\ell\)</span> y <span class="math inline">\(2\ell\)</span>. La misma preparación lejana puede alcanzar distancias centrales muy distintas bajo fuerzas de sentidos opuestos, aunque sus ángulos principales de dispersión coincidan en el ejemplo inverso del radio.</p>
 <p><span id="fispm-t1-c19-e0010"></span></p>
-<p><strong>Ejercicio FPM-I-19-E10.</strong> Para una interacción atractiva con <span class="math inline">\(\ell=R\)</span>, encuentra el radio máximo de impacto que alcanza la superficie <span class="math inline">\(R\)</span>. Compara con el límite geométrico sin fuerza.</p>
-<p><strong>Solución.</strong> P09 da <span class="math inline">\(b_{\max}=\sqrt{R^2+2R^2}=\sqrt3\,R\)</span>. Sin interacción, sólo llegan los impactos con <span class="math inline">\(b\leq R\)</span>. La atracción enfoca también preparaciones que pasarían fuera de la superficie en un movimiento libre.</p>
+<p><strong>Ejercicio 19.10.</strong> Para una interacción atractiva con <span class="math inline">\(\ell=R\)</span>, encuentra el radio máximo de impacto que alcanza la superficie <span class="math inline">\(R\)</span>. Compara con el límite geométrico sin fuerza.</p>
+<p><strong>Solución.</strong> proposición 19.9 da <span class="math inline">\(b_{\max}=\sqrt{R^2+2R^2}=\sqrt3\,R\)</span>. Sin interacción, sólo llegan los impactos con <span class="math inline">\(b\leq R\)</span>. La atracción enfoca también preparaciones que pasarían fuera de la superficie en un movimiento libre.</p>
+<p><span id="sección-eficaz-como-área-de-preparación"></span></p>
 <p><span id="fispm-t1-c19-s06"></span></p>
 <p><span id="fpm-i-19-s06"></span></p>
 </section>
 </section>
-<section id="sección-eficaz-como-área-de-preparación" class="level2">
-<h2 class="anchored" data-anchor-id="sección-eficaz-como-área-de-preparación">§6 — Sección eficaz como área de preparación</h2>
+<section id="fispm-c19-secciuxf3n-eficaz-como-uxe1rea-de-preparaciuxf3n" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c19-secciuxf3n-eficaz-como-uxe1rea-de-preparaciuxf3n">6. Sección eficaz como área de preparación</h2>
 <p>Un haz uniforme prepara distintos parámetros de impacto con una distribución proporcional al área transversal. La sección eficaz de un resultado cuenta cuánta área de esa preparación lo produce. No tiene por qué coincidir con el tamaño geométrico del objeto: una fuerza puede enfocar trayectorias o desviarlas antes del contacto.</p>
+<p><span id="fig:I-19-N02"></span></p>
+<figure id="fig-fpm-v04-i-19-n02" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/v04/I-19-N02.svg" class="lightbox" data-gallery="fpm-v04-c19"><img src="../../assets/books/fispm/v04/I-19-N02.svg" alt="Área de preparación. Diagrama del capítulo 19; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="340" height="425" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 19.4.</strong> En una preparación axialmente simétrica, un anillo de radios <span class="math inline">\(b,b+db\)</span> tiene área diferencial <span class="math inline">\(d\sigma=2\pi b\,db\)</span>. Es un área del haz incidente, no una superficie de la trayectoria. Véase §<a href="#fispm-c19-secciuxf3n-eficaz-como-uxe1rea-de-preparaciuxf3n">6</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c19-d0005"></span></p>
-<p><strong>Definición FPM-I-19-D05 — Sección eficaz de un conjunto de resultados.</strong> Para un haz uniforme de rapidez fijada y una interacción dada, sea <span class="math inline">\(\mathcal B\)</span> el conjunto de vectores de impacto que producen el resultado seleccionado. Definimos</p>
-<p><span class="math display">\[
-\sigma(\mathcal B)=\int_{\mathcal B}d^2b.
-\]</span></p>
+<p><strong>Definición 19.5 — Sección eficaz de un conjunto de resultados.</strong> Para un haz uniforme de rapidez fijada y una interacción dada, sea <span class="math inline">\(\mathcal B\)</span> el conjunto de vectores de impacto que producen el resultado seleccionado. Definimos</p>
+<p><span class="math display">\[\sigma(\mathcal B)=\int_{\mathcal B}d^2b.\]</span></p>
 <p>Tiene unidades de área. Si la selección es simétrica alrededor del eje entrante y corresponde a impactos entre <span class="math inline">\(b_a\)</span> y <span class="math inline">\(b_b\)</span>, su sección es <span class="math inline">\(\pi(b_b^2-b_a^2)\)</span>. El elemento anular es <span class="math inline">\(d\sigma=2\pi b\,db\)</span>.</p>
 <p><span id="fispm-t1-c19-p0010"></span></p>
-<p><strong>Proposición FPM-I-19-P10 — Flujo y tasa de eventos.</strong> Para un blanco aislado ideal y flujo incidente uniforme <span class="math inline">\(j\)</span> de partículas por área y tiempo, la tasa esperada del resultado es <span class="math inline">\(\dot N=j\sigma\)</span>. Si un haz finito uniforme de área <span class="math inline">\(A\)</span> contiene íntegramente la región de impactos del resultado, la fracción de partículas que lo producen es <span class="math inline">\(\sigma/A\)</span>.</p>
+<p><strong>Proposición 19.10 — Flujo y tasa de eventos.</strong> Para un blanco aislado ideal y flujo incidente uniforme <span class="math inline">\(j\)</span> de partículas por área y tiempo, la tasa esperada del resultado es <span class="math inline">\(\dot N=j\sigma\)</span>. Si un haz finito uniforme de área <span class="math inline">\(A\)</span> contiene íntegramente la región de impactos del resultado, la fracción de partículas que lo producen es <span class="math inline">\(\sigma/A\)</span>.</p>
 <p><strong>Demostración.</strong> Un área transversal <span class="math inline">\(d^2b\)</span> recibe <span class="math inline">\(j\,d^2b\)</span> partículas por tiempo. Integrar sobre la región seleccionada da <span class="math inline">\(j\sigma\)</span>. El haz completo recibe <span class="math inline">\(jA\)</span>, por lo que dividir ambas tasas produce la fracción. <span class="math inline">\(\square\)</span></p>
 <p>La hipótesis de inclusión importa. Para un haz estrecho que no cubre toda la región seleccionada, se integra sólo la intersección. Si el flujo varía con la posición, la tasa es <span class="math inline">\(\int_{\mathcal B}j(\mathbf b)\,d^2b\)</span> y no un producto con un único valor arbitrario de flujo.</p>
-<p>P09 y D05 dan, para una superficie absorbente en el campo atractivo, <span class="math inline">\(\sigma_{\mathrm{cap}}=\pi R^2(1+2\ell/R)\)</span>. El área excede <span class="math inline">\(\pi R^2\)</span> por enfoque. Para repulsión es <span class="math inline">\(\pi\max(R^2-2\ell R,0)\)</span>. Estas secciones pertenecen al canal de alcanzar la superficie, no al de salida elástica desde ella.</p>
+<p>Proposición 19.9 y definición 19.5 dan, para una superficie absorbente en el campo atractivo, <span class="math inline">\(\sigma_{\mathrm{cap}}=\pi R^2(1+2\ell/R)\)</span>. El área excede <span class="math inline">\(\pi R^2\)</span> por enfoque. Para repulsión es <span class="math inline">\(\pi\max(R^2-2\ell R,0)\)</span>. Estas secciones pertenecen al canal de alcanzar la superficie, no al de salida elástica desde ella.</p>
 <p><span id="fispm-t1-c19-mp0006"></span></p>
-<p><strong>Principio metodológico FPM-I-19-MP06.</strong> Define el resultado contado y la distribución de preparación. Convierte áreas en probabilidades sólo después de normalizar el haz pertinente.</p>
-<section id="ejercicios-5" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-5">Ejercicios</h3>
+<p><strong>Principio metodológico 19.6.</strong> Define el resultado contado y la distribución de preparación. Convierte áreas en probabilidades sólo después de normalizar el haz pertinente.</p>
+<p><span id="ejercicios-5"></span></p>
+<section id="fispm-c19-ejercicios-5" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c19-ejercicios-5">Ejercicios</h3>
 <p><span id="fispm-t1-c19-e0011"></span></p>
-<p><strong>Ejercicio FPM-I-19-E11.</strong> Un haz uniforme de área <span class="math inline">\(100\,\mathrm{mm^2}\)</span> cubre una región de impactos seleccionados de sección <span class="math inline">\(5\,\mathrm{mm^2}\)</span>. Calcula la fracción de eventos. ¿Qué cambia si esa región queda parcialmente fuera del haz?</p>
+<p><strong>Ejercicio 19.11.</strong> Un haz uniforme de área <span class="math inline">\(100\,\mathrm{mm^2}\)</span> cubre una región de impactos seleccionados de sección <span class="math inline">\(5\,\mathrm{mm^2}\)</span>. Calcula la fracción de eventos. ¿Qué cambia si esa región queda parcialmente fuera del haz?</p>
 <p><strong>Solución.</strong> Bajo inclusión completa, la fracción es <span class="math inline">\(5/100=0,05\)</span>, un <span class="math inline">\(5\%\)</span>. Si parte de la región queda fuera, el numerador es su área de intersección con el haz y la fracción disminuye. La sección propia de la interacción sigue siendo <span class="math inline">\(5\,\mathrm{mm^2}\)</span>; cambió la preparación experimental que la ilumina.</p>
 <p><span id="fispm-t1-c19-e0012"></span></p>
-<p><strong>Ejercicio FPM-I-19-E12.</strong> En un modelo de blanco aislado, <span class="math inline">\(j=10^4\,\mathrm{m^{-2}s^{-1}}\)</span> y la sección del resultado es <span class="math inline">\(2\times10^{-6}\,\mathrm{m^2}\)</span>. Calcula la tasa y el número esperado durante <span class="math inline">\(100\,\mathrm s\)</span>.</p>
+<p><strong>Ejercicio 19.12.</strong> En un modelo de blanco aislado, <span class="math inline">\(j=10^4\,\mathrm{m^{-2}s^{-1}}\)</span> y la sección del resultado es <span class="math inline">\(2\times10^{-6}\,\mathrm{m^2}\)</span>. Calcula la tasa y el número esperado durante <span class="math inline">\(100\,\mathrm s\)</span>.</p>
 <p><strong>Solución.</strong> La tasa es <span class="math inline">\(j\sigma=0,02\,\mathrm{s^{-1}}\)</span>. Durante el intervalo, el número esperado es <span class="math inline">\(2\)</span>. Es una media del modelo de preparación, no la afirmación de que cada repetición del experimento arroje exactamente dos eventos.</p>
+<p><span id="la-distribución-angular-y-sus-ramas"></span></p>
 <p><span id="fispm-t1-c19-s07"></span></p>
 <p><span id="fpm-i-19-s07"></span></p>
 </section>
 </section>
-<section id="la-distribución-angular-y-sus-ramas" class="level2">
-<h2 class="anchored" data-anchor-id="la-distribución-angular-y-sus-ramas">§7 — La distribución angular y sus ramas</h2>
+<section id="fispm-c19-la-distribuciuxf3n-angular-y-sus-ramas" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c19-la-distribuciuxf3n-angular-y-sus-ramas">7. La distribución angular y sus ramas</h2>
 <p>Para calcular cuántas partículas salen por un ángulo dado, transformamos el área de impactos en un área de direcciones. El ángulo sólido mide esa segunda área en la esfera unitaria.</p>
 <p><span id="fispm-t1-c19-d0006"></span></p>
-<p><strong>Definición FPM-I-19-D06 — Ángulo sólido y sección diferencial.</strong> En coordenadas de dirección <span class="math inline">\(\chi,\varphi\)</span>,</p>
-<p><span class="math display">\[
-d\Omega=\sin\chi\,d\chi\,d\varphi.
-\]</span></p>
+<p><strong>Definición 19.6 — Ángulo sólido y sección diferencial.</strong> En coordenadas de dirección <span class="math inline">\(\chi,\varphi\)</span>,</p>
+<p><span class="math display">\[d\Omega=\sin\chi\,d\chi\,d\varphi.\]</span></p>
 <p>La sección diferencial <span class="math inline">\(d\sigma/d\Omega\)</span> se define de modo que <span class="math inline">\(d\sigma=(d\sigma/d\Omega)\,d\Omega\)</span>. Usamos esta normalización estándar, sin un factor adicional <span class="math inline">\(4\pi\)</span>. Su unidad es área por estereorradián.</p>
 <p>La fórmula del ángulo sólido procede de una franja sobre la esfera unitaria: el arco meridiano tiene longitud <span class="math inline">\(d\chi\)</span> y el arco paralelo <span class="math inline">\(\sin\chi\,d\varphi\)</span>. La simetría central hace uniforme el azimut de salida para un haz sin preferencia azimutal.</p>
 <p><span id="fispm-t1-c19-p0011"></span></p>
-<p><strong>Proposición FPM-I-19-P11 — Una rama angular regular.</strong> Si <span class="math inline">\(b\mapsto\chi(b)\)</span> es invertible y diferenciable en una rama con <span class="math inline">\(0&lt;\chi&lt;\pi\)</span> y derivada no nula,</p>
-<p><span class="math display">\[
-\frac{d\sigma}{d\Omega}
-=\frac{b}{\sin\chi}\left|\frac{db}{d\chi}\right|.
-\]</span></p>
+<p><strong>Proposición 19.11 — Una rama angular regular.</strong> Si <span class="math inline">\(b\mapsto\chi(b)\)</span> es invertible y diferenciable en una rama con <span class="math inline">\(0&lt;\chi&lt;\pi\)</span> y derivada no nula,</p>
+<p><span class="math display">\[\frac{d\sigma}{d\Omega} =\frac{b}{\sin\chi}\left|\frac{db}{d\chi}\right|.\]</span></p>
 <p><strong>Demostración.</strong> El anillo de impactos aporta <span class="math inline">\(2\pi b\,|db|\)</span>. Las direcciones de salida en la franja aportan <span class="math inline">\(2\pi\sin\chi\,|d\chi|\)</span>. Dividir y usar el cambio de variable da la expresión. El valor absoluto conserva el área cuando el ángulo decrece al aumentar el impacto. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c19-p0012"></span></p>
-<p><strong>Proposición FPM-I-19-P12 — Suma de ramas.</strong> Si un mismo ángulo regular recibe contribuciones de varias ramas disjuntas de impacto, entonces</p>
-<p><span class="math display">\[
-\frac{d\sigma}{d\Omega}
-=\sum_j\frac{b_j(\chi)}{\sin\chi}
-\left|\frac{db_j}{d\chi}\right|.
-\]</span></p>
-<p><strong>Demostración.</strong> Cada rama representa una región distinta de preparación y aporta el área de P11. Las áreas de regiones disjuntas se suman, aunque sus direcciones de salida coincidan. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 19.12 — Suma de ramas.</strong> Si un mismo ángulo regular recibe contribuciones de varias ramas disjuntas de impacto, entonces</p>
+<p><span class="math display">\[\frac{d\sigma}{d\Omega} =\sum_j\frac{b_j(\chi)}{\sin\chi} \left|\frac{db_j}{d\chi}\right|.\]</span></p>
+<p><strong>Demostración.</strong> Cada rama representa una región distinta de preparación y aporta el área de la proposición 19.11. Las áreas de regiones disjuntas se suman, aunque sus direcciones de salida coincidan. <span class="math inline">\(\square\)</span></p>
 <p>En los ejes <span class="math inline">\(\chi=0,\pi\)</span>, o en puntos donde la derivada angular se anula, la fórmula requiere límites o una integración por intervalos. También puede existir una contribución concentrada exactamente en la dirección de entrada, como ocurre con impactos libres fuera de una interacción de alcance finito. Esa contribución no se representa mediante una densidad ordinaria finita.</p>
 <p><span id="fispm-t1-c19-mp0007"></span></p>
-<p><strong>Principio metodológico FPM-I-19-MP07.</strong> Mantén valores absolutos, suma ramas y calcula intervalos finitos cerca de singularidades. Una densidad angular no reemplaza una medida concentrada en una dirección.</p>
-<section id="ejercicios-6" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-6">Ejercicios</h3>
+<p><strong>Principio metodológico 19.7.</strong> Mantén valores absolutos, suma ramas y calcula intervalos finitos cerca de singularidades. Una densidad angular no reemplaza una medida concentrada en una dirección.</p>
+<p><span id="ejercicios-6"></span></p>
+<section id="fispm-c19-ejercicios-6" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c19-ejercicios-6">Ejercicios</h3>
 <p><span id="fispm-t1-c19-e0013"></span></p>
-<p><strong>Ejercicio FPM-I-19-E13.</strong> Una rama tiene <span class="math inline">\(b(\chi)=\ell\cot(\chi/2)\)</span>. Calcula <span class="math inline">\(db/d\chi\)</span> y explica por qué no puede usarse su signo directamente como sección.</p>
-<p><strong>Solución.</strong> La derivada es <span class="math inline">\(-(\ell/2)\csc^2(\chi/2)\)</span>, negativa. Un ángulo mayor corresponde a un impacto menor. El elemento de área debe ser no negativo; P11 usa el valor absoluto. Sin él se obtendría una sección diferencial negativa, que no puede contar una región de preparación.</p>
+<p><strong>Ejercicio 19.13.</strong> Una rama tiene <span class="math inline">\(b(\chi)=\ell\cot(\chi/2)\)</span>. Calcula <span class="math inline">\(db/d\chi\)</span> y explica por qué no puede usarse su signo directamente como sección.</p>
+<p><strong>Solución.</strong> La derivada es <span class="math inline">\(-(\ell/2)\csc^2(\chi/2)\)</span>, negativa. Un ángulo mayor corresponde a un impacto menor. El elemento de área debe ser no negativo; proposición 19.11 usa el valor absoluto. Sin él se obtendría una sección diferencial negativa, que no puede contar una región de preparación.</p>
 <p><span id="fispm-t1-c19-e0014"></span></p>
-<p><strong>Ejercicio FPM-I-19-E14.</strong> En una franja angular interior, dos ramas disjuntas tienen <span class="math inline">\(b_1=a\chi\)</span> y <span class="math inline">\(b_2=c+a\chi\)</span>, con <span class="math inline">\(a,c&gt;0\)</span>. Calcula la sección diferencial de esa franja. La relación es un ejemplo local de cambio de variables, sin atribuirle una ley de fuerza específica.</p>
-<p><strong>Solución.</strong> Ambas derivadas tienen magnitud <span class="math inline">\(a\)</span>. P12 da <span class="math inline">\(d\sigma/d\Omega=[a(a\chi)+a(c+a\chi)]/\sin\chi
-=(ac+2a^2\chi)/\sin\chi\)</span>. Las dos áreas suman, no se cancelan. Que las ramas sean disjuntas significa que los intervalos de impacto seleccionados no se superponen en el dominio local considerado.</p>
+<p><strong>Ejercicio 19.14.</strong> En una franja angular interior, dos ramas disjuntas tienen <span class="math inline">\(b_1=a\chi\)</span> y <span class="math inline">\(b_2=c+a\chi\)</span>, con <span class="math inline">\(a,c&gt;0\)</span>. Calcula la sección diferencial de esa franja. La relación es un ejemplo local de cambio de variables, sin atribuirle una ley de fuerza específica.</p>
+<p><strong>Solución.</strong> Ambas derivadas tienen magnitud <span class="math inline">\(a\)</span>. Proposición 19.12 da <span class="math inline">\(d\sigma/d\Omega=[a(a\chi)+a(c+a\chi)]/\sin\chi =(ac+2a^2\chi)/\sin\chi\)</span>. Las dos áreas suman, no se cancelan. Que las ramas sean disjuntas significa que los intervalos de impacto seleccionados no se superponen en el dominio local considerado.</p>
+<p><span id="sección-inversa-del-radio-y-resolución-angular"></span></p>
 <p><span id="fispm-t1-c19-s08"></span></p>
 <p><span id="fpm-i-19-s08"></span></p>
 </section>
 </section>
-<section id="sección-inversa-del-radio-y-resolución-angular" class="level2">
-<h2 class="anchored" data-anchor-id="sección-inversa-del-radio-y-resolución-angular">§8 — Sección inversa del radio y resolución angular</h2>
+<section id="fispm-c19-secciuxf3n-inversa-del-radio-y-resoluciuxf3n-angular" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c19-secciuxf3n-inversa-del-radio-y-resoluciuxf3n-angular">8. Sección inversa del radio y resolución angular</h2>
 <p>La ley exacta de §4 permite calcular una distribución angular completa. El resultado muestra cómo un alcance largo afecta a los eventos de desviación pequeña.</p>
 <p><span id="fispm-t1-c19-p0013"></span></p>
-<p><strong>Proposición FPM-I-19-P13 — Sección diferencial inversa del radio.</strong> Para <span class="math inline">\(U=\pm\kappa/r\)</span> sin canal absorbente y <span class="math inline">\(0&lt;\chi&lt;\pi\)</span>,</p>
-<p><span class="math display">\[
-\frac{d\sigma}{d\Omega}
-=\frac{\ell^2}{4\sin^4(\chi/2)}
-=\left(\frac{\kappa}{4E}\right)^2
-\frac1{\sin^4(\chi/2)}.
-\]</span></p>
-<p><strong>Demostración.</strong> P06 da <span class="math inline">\(b=\ell\cot(\chi/2)\)</span> y E13 su derivada. Sustituir en P11 y usar <span class="math inline">\(\sin\chi=2\sin(\chi/2)\cos(\chi/2)\)</span> cancela el coseno y deja <span class="math inline">\(\ell^2/[4\sin^4(\chi/2)]\)</span>. D04 da la segunda expresión. El posible caso puntual <span class="math inline">\(b=0\)</span> no cambia una sección como área. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 19.13 — Sección diferencial inversa del radio.</strong> Para <span class="math inline">\(U=\pm\kappa/r\)</span> sin canal absorbente y <span class="math inline">\(0&lt;\chi&lt;\pi\)</span>,</p>
+<p><span class="math display">\[\frac{d\sigma}{d\Omega} =\frac{\ell^2}{4\sin^4(\chi/2)} =\left(\frac{\kappa}{4E}\right)^2 \frac1{\sin^4(\chi/2)}.\]</span></p>
+<p><strong>Demostración.</strong> proposición 19.6 da <span class="math inline">\(b=\ell\cot(\chi/2)\)</span> y ejercicio 19.13 su derivada. Sustituir en la proposición 19.11 y usar <span class="math inline">\(\sin\chi=2\sin(\chi/2)\cos(\chi/2)\)</span> cancela el coseno y deja <span class="math inline">\(\ell^2/[4\sin^4(\chi/2)]\)</span>. Definición 19.4 da la segunda expresión. El posible caso puntual <span class="math inline">\(b=0\)</span> no cambia una sección como área. <span class="math inline">\(\square\)</span></p>
 <p>En el modelo electrostático repulsivo, esta forma es la ley de Rutherford con el coeficiente de interacción pertinente. Aquí se ha derivado como una ley clásica de un potencial, con energía relativa y masa reducida explícitas. No se presupone que un blanco móvil pueda tratarse siempre como inmóvil.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p><span id="fispm-t1-c19-p0014"></span></p>
-<p><strong>Proposición FPM-I-19-P14 — Sección por encima de un umbral angular.</strong> Para <span class="math inline">\(0&lt;\chi_0&lt;\pi\)</span>,</p>
-<p><span class="math display">\[
-\sigma(\chi\geq\chi_0)
-=\pi\ell^2\cot^2(\chi_0/2).
-\]</span></p>
+<p><strong>Proposición 19.14 — Sección por encima de un umbral angular.</strong> Para <span class="math inline">\(0&lt;\chi_0&lt;\pi\)</span>,</p>
+<p><span class="math display">\[\sigma(\chi\geq\chi_0) =\pi\ell^2\cot^2(\chi_0/2).\]</span></p>
 <p>Tiende a infinito cuando <span class="math inline">\(\chi_0\to0^+\)</span>.</p>
-<p><strong>Demostración.</strong> La ley de P06 es decreciente: la condición angular equivale al disco de impactos <span class="math inline">\(b\leq\ell\cot(\chi_0/2)\)</span>. Su área da la expresión. Como <span class="math inline">\(\cot(\chi_0/2)\sim2/\chi_0\)</span>, el área crece como <span class="math inline">\(4\pi\ell^2/\chi_0^2\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> La ley de la proposición 19.6 es decreciente: la condición angular equivale al disco de impactos <span class="math inline">\(b\leq\ell\cot(\chi_0/2)\)</span>. Su área da la expresión. Como <span class="math inline">\(\cot(\chi_0/2)\sim2/\chi_0\)</span>, el área crece como <span class="math inline">\(4\pi\ell^2/\chi_0^2\)</span>. <span class="math inline">\(\square\)</span></p>
 <p>La divergencia significa que el modelo de alcance infinito desvía, aunque muy poco, preparaciones a impactos arbitrariamente grandes. Un detector con umbral positivo mide una sección finita. Una interacción apantallada o un haz finito exige otra selección de eventos y puede modificar el comportamiento frontal.</p>
 <p><span id="fispm-t1-c19-mp0008"></span></p>
-<p><strong>Principio metodológico FPM-I-19-MP08.</strong> Declara la resolución angular y el canal antes de integrar una sección. Una divergencia frontal del modelo no implica un número infinito de eventos en un haz finito.</p>
-<section id="ejercicios-7" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-7">Ejercicios</h3>
+<p><strong>Principio metodológico 19.8.</strong> Declara la resolución angular y el canal antes de integrar una sección. Una divergencia frontal del modelo no implica un número infinito de eventos en un haz finito.</p>
+<p><span id="ejercicios-7"></span></p>
+<section id="fispm-c19-ejercicios-7" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c19-ejercicios-7">Ejercicios</h3>
 <p><span id="fispm-t1-c19-e0015"></span></p>
-<p><strong>Ejercicio FPM-I-19-E15.</strong> Encuentra la sección de eventos con <span class="math inline">\(\chi\geq\pi/2\)</span> en el potencial inverso del radio y compara con <span class="math inline">\(\chi\geq\pi/3\)</span>.</p>
+<p><strong>Ejercicio 19.15.</strong> Encuentra la sección de eventos con <span class="math inline">\(\chi\geq\pi/2\)</span> en el potencial inverso del radio y compara con <span class="math inline">\(\chi\geq\pi/3\)</span>.</p>
 <p><strong>Solución.</strong> Para el primer umbral, <span class="math inline">\(\cot(\pi/4)=1\)</span> y la sección es <span class="math inline">\(\pi\ell^2\)</span>. Para el segundo, <span class="math inline">\(\cot(\pi/6)=\sqrt3\)</span> y la sección es <span class="math inline">\(3\pi\ell^2\)</span>. Bajar el umbral incluye más impactos lejanos.</p>
 <p><span id="fispm-t1-c19-e0016"></span></p>
-<p><strong>Ejercicio FPM-I-19-E16.</strong> Mantén <span class="math inline">\(\kappa\)</span> y el ángulo de observación, pero duplica la energía relativa <span class="math inline">\(E\)</span>. Compara las secciones diferenciales.</p>
-<p><strong>Solución.</strong> P13 es proporcional a <span class="math inline">\(E^{-2}\)</span>, por lo que la nueva sección es la cuarta parte. Esta proporcionalidad es exacta en el modelo inverso del radio a ángulo fijo. No equivale a afirmar que el ángulo a impacto fijo dependa linealmente de la energía.</p>
+<p><strong>Ejercicio 19.16.</strong> Mantén <span class="math inline">\(\kappa\)</span> y el ángulo de observación, pero duplica la energía relativa <span class="math inline">\(E\)</span>. Compara las secciones diferenciales.</p>
+<p><strong>Solución.</strong> proposición 19.13 es proporcional a <span class="math inline">\(E^{-2}\)</span>, por lo que la nueva sección es la cuarta parte. Esta proporcionalidad es exacta en el modelo inverso del radio a ángulo fijo. No equivale a afirmar que el ángulo a impacto fijo dependa linealmente de la energía.</p>
+<p><span id="una-esfera-que-devuelve-la-partícula"></span></p>
 <p><span id="fispm-t1-c19-s09"></span></p>
 <p><span id="fpm-i-19-s09"></span></p>
 </section>
 </section>
-<section id="una-esfera-que-devuelve-la-partícula" class="level2">
-<h2 class="anchored" data-anchor-id="una-esfera-que-devuelve-la-partícula">§9. Una esfera que devuelve la partícula</h2>
+<section id="fispm-c19-una-esfera-que-devuelve-la-partuxedcula" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c19-una-esfera-que-devuelve-la-partuxedcula">9. Una esfera que devuelve la partícula</h2>
 <p>Hasta ahora el acercamiento terminaba en un punto de retorno suave o en una superficie absorbente. Una superficie rígida plantea otra regla. Consideremos el movimiento relativo alrededor de una esfera impenetrable de radio <span class="math inline">\(a\)</span>. Fuera de ella no hay fuerza; en el contacto la velocidad se refleja de manera especular. Este modelo describe una esfera fija o una interacción relativa elástica entre dos cuerpos cuyo radio de contacto es <span class="math inline">\(a\)</span>.</p>
 <p><span id="fispm-t1-c19-d0007"></span></p>
-<p><strong>Definición FPM-I-19-D07 — Reflexión especular.</strong> Si <span class="math inline">\(\mathbf n\)</span> es la normal exterior unitaria en el contacto, la regla es</p>
-<p><span class="math display">\[
-\mathbf w_+=\mathbf w_--2(\mathbf w_-\cdot\mathbf n)\mathbf n.
-\]</span></p>
+<p><strong>Definición 19.7 — Reflexión especular.</strong> Si <span class="math inline">\(\mathbf n\)</span> es la normal exterior unitaria en el contacto, la regla es</p>
+<p><span class="math display">\[\mathbf w_+=\mathbf w_--2(\mathbf w_-\cdot\mathbf n)\mathbf n.\]</span></p>
 <p>Conserva la componente tangencial, invierte la normal y conserva la rapidez. La superficie suministra un impulso; la ecuación diferencial libre solo describe los tramos anterior y posterior.</p>
 <p><span id="fispm-t1-c19-p0015"></span></p>
-<p><strong>Proposición FPM-I-19-P15 — Ley angular de la esfera rígida.</strong> Para <span class="math inline">\(0\leq b\leq a\)</span>, el ángulo de dispersión satisface</p>
-<p><span class="math display">\[
-\chi=\pi-2\arcsin(b/a),\qquad b=a\cos(\chi/2).
-\]</span></p>
+<p><strong>Proposición 19.15 — Ley angular de la esfera rígida.</strong> Para <span class="math inline">\(0\leq b\leq a\)</span>, el ángulo de dispersión satisface</p>
+<p><span class="math display">\[\chi=\pi-2\arcsin(b/a),\qquad b=a\cos(\chi/2).\]</span></p>
 <p><strong>Demostración.</strong> Tomemos <span class="math inline">\(\mathbf w_-=v_\infty\mathbf e_x\)</span> y la recta incidente <span class="math inline">\(y=b\)</span>. El contacto ocurre en <span class="math inline">\((-\sqrt{a^2-b^2},b)\)</span>, de modo que <span class="math inline">\(\mathbf n=(-\sqrt{1-b^2/a^2},b/a)\)</span>. La regla de reflexión da <span class="math inline">\(\mathbf w_-\cdot\mathbf w_+/v_\infty^2=2b^2/a^2-1\)</span>. En el intervalo <span class="math inline">\(0\leq b/a\leq1\)</span>, esta cantidad es <span class="math inline">\(\cos(\pi-2\arcsin(b/a))\)</span>. La definición del ángulo principal prueba ambas expresiones. El contacto rasante puede entenderse como límite; su conjunto tiene área nula. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c19-p0016"></span></p>
-<p><strong>Proposición FPM-I-19-P16 — Sección diferencial constante.</strong> Para <span class="math inline">\(0&lt;\chi&lt;\pi\)</span>, la esfera rígida tiene</p>
-<p><span class="math display">\[
-\frac{d\sigma}{d\Omega}=\frac{a^2}{4},\qquad \sigma_{\mathrm{contacto}}=\pi a^2.
-\]</span></p>
-<p><strong>Demostración.</strong> Derivar <span class="math inline">\(b=a\cos(\chi/2)\)</span> da <span class="math inline">\(|db/d\chi|=(a/2)\sin(\chi/2)\)</span>. P11 y la identidad del seno doble dan <span class="math inline">\(a^2/4\)</span>. Su integral sobre la esfera de direcciones es <span class="math inline">\((a^2/4)4\pi=\pi a^2\)</span>, igual al área del disco de impactos que toca la superficie. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 19.16 — Sección diferencial constante.</strong> Para <span class="math inline">\(0&lt;\chi&lt;\pi\)</span>, la esfera rígida tiene</p>
+<p><span class="math display">\[\frac{d\sigma}{d\Omega}=\frac{a^2}{4},\qquad \sigma_{\mathrm{contacto}}=\pi a^2.\]</span></p>
+<p><strong>Demostración.</strong> Derivar <span class="math inline">\(b=a\cos(\chi/2)\)</span> da <span class="math inline">\(|db/d\chi|=(a/2)\sin(\chi/2)\)</span>. Proposición 19.11 y la identidad del seno doble dan <span class="math inline">\(a^2/4\)</span>. Su integral sobre la esfera de direcciones es <span class="math inline">\((a^2/4)4\pi=\pi a^2\)</span>, igual al área del disco de impactos que toca la superficie. <span class="math inline">\(\square\)</span></p>
 <p>Una densidad constante por unidad de ángulo sólido produce más eventos por unidad de <span class="math inline">\(\chi\)</span> cerca del ecuador angular, porque allí <span class="math inline">\(2\pi\sin\chi\)</span> es mayor. La palabra «uniforme» requiere especificar la medida. Para <span class="math inline">\(b&gt;a\)</span> la dirección no cambia. Si un haz finito incluye esos impactos, el canal transmitido contiene una contribución concentrada en la dirección frontal. Esa contribución no se obtiene prolongando la densidad constante hasta describir todo el haz.</p>
 <p><span id="fispm-t1-c19-mp0009"></span></p>
-<p><strong>Principio metodológico FPM-I-19-MP09.</strong> Una condición de contacto pertenece al modelo. Escríbela antes de calcular la trayectoria o la sección del canal que produce.</p>
-<section id="ejercicios-8" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-8">Ejercicios</h3>
+<p><strong>Principio metodológico 19.9.</strong> Una condición de contacto pertenece al modelo. Escríbela antes de calcular la trayectoria o la sección del canal que produce.</p>
+<p><span id="ejercicios-8"></span></p>
+<section id="fispm-c19-ejercicios-8" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c19-ejercicios-8">Ejercicios</h3>
 <p><span id="fispm-t1-c19-e0017"></span></p>
-<p><strong>Ejercicio FPM-I-19-E17.</strong> Calcula la fracción de contactos con <span class="math inline">\(\chi\geq\pi/2\)</span> para un haz uniforme.</p>
+<p><strong>Ejercicio 19.17.</strong> Calcula la fracción de contactos con <span class="math inline">\(\chi\geq\pi/2\)</span> para un haz uniforme.</p>
 <p><strong>Solución.</strong> La condición equivale a <span class="math inline">\(b\leq a/\sqrt2\)</span>. Su área es <span class="math inline">\(\pi a^2/2\)</span>, y dividir por <span class="math inline">\(\pi a^2\)</span> da <span class="math inline">\(1/2\)</span>. También se obtiene integrando la densidad constante sobre un hemisferio de direcciones, de área angular <span class="math inline">\(2\pi\)</span>.</p>
 <p><span id="fispm-t1-c19-e0018"></span></p>
-<p><strong>Ejercicio FPM-I-19-E18.</strong> Un haz uniforme ocupa un disco de radio <span class="math inline">\(B&gt;a\)</span>. Describe la probabilidad de transmisión sin cambio de dirección y la densidad angular de los eventos reflejados.</p>
+<p><strong>Ejercicio 19.18.</strong> Un haz uniforme ocupa un disco de radio <span class="math inline">\(B&gt;a\)</span>. Describe la probabilidad de transmisión sin cambio de dirección y la densidad angular de los eventos reflejados.</p>
 <p><strong>Solución.</strong> El anillo <span class="math inline">\(a&lt;b\leq B\)</span> tiene probabilidad <span class="math inline">\(1-a^2/B^2\)</span> y se concentra en la dirección incidente. Los contactos tienen probabilidad <span class="math inline">\(a^2/B^2\)</span>. Su densidad de probabilidad por unidad de ángulo sólido es <span class="math inline">\(a^2/(4\pi B^2)\)</span>; al integrarla se recupera <span class="math inline">\(a^2/B^2\)</span>. Condicionada a que haya contacto, la densidad es <span class="math inline">\(1/(4\pi)\)</span>. Las tres cantidades tienen normalizaciones distintas y responden a preguntas distintas.</p>
+<p><span id="varias-preparaciones-una-dirección"></span></p>
 <p><span id="fispm-t1-c19-s10"></span></p>
 <p><span id="fpm-i-19-s10"></span></p>
 </section>
 </section>
-<section id="varias-preparaciones-una-dirección" class="level2">
-<h2 class="anchored" data-anchor-id="varias-preparaciones-una-dirección">§10. Varias preparaciones, una dirección</h2>
-<p>La ley inversa del radio es monótona. Una interacción con zonas atractivas y repulsivas puede producir una función angular que primero crezca y después decrezca. Entonces una dirección recibe eventos procedentes de impactos distintos. P12 permite sumarlos cuando las ramas son regulares. Falta examinar el punto donde dejan de serlo.</p>
+<section id="fispm-c19-varias-preparaciones-una-direcciuxf3n" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c19-varias-preparaciones-una-direcciuxf3n">10. Varias preparaciones, una dirección</h2>
+<p>La ley inversa del radio es monótona. Una interacción con zonas atractivas y repulsivas puede producir una función angular que primero crezca y después decrezca. Entonces una dirección recibe eventos procedentes de impactos distintos. Proposición 19.12 permite sumarlos cuando las ramas son regulares. Falta examinar el punto donde dejan de serlo.</p>
 <p><span id="fispm-t1-c19-d0008"></span></p>
-<p><strong>Definición FPM-I-19-D08 — Punto crítico angular simple.</strong> Sea <span class="math inline">\(\chi(b)\)</span> una función de clase <span class="math inline">\(C^3\)</span> cerca de <span class="math inline">\(b_c&gt;0\)</span>, con <span class="math inline">\(0&lt;\chi_c=\chi(b_c)&lt;\pi\)</span>. Llamaremos crítico simple al caso <span class="math inline">\(\chi'(b_c)=0\)</span> y <span class="math inline">\(\chi''(b_c)=c\ne0\)</span>.</p>
+<p><strong>Definición 19.8 — Punto crítico angular simple.</strong> Sea <span class="math inline">\(\chi(b)\)</span> una función de clase <span class="math inline">\(C^3\)</span> cerca de <span class="math inline">\(b_c&gt;0\)</span>, con <span class="math inline">\(0&lt;\chi_c=\chi(b_c)&lt;\pi\)</span>. Llamaremos crítico simple al caso <span class="math inline">\(\chi'(b_c)=0\)</span> y <span class="math inline">\(\chi''(b_c)=c\ne0\)</span>.</p>
 <p><span id="fispm-t1-c19-p0017"></span></p>
-<p><strong>Proposición FPM-I-19-P17 — Concentración integrable cerca de un extremo angular.</strong> En el lado angular donde existen las dos ramas próximas a <span class="math inline">\(b_c\)</span>, su contribución conjunta satisface</p>
-<p><span class="math display">\[
-\frac{d\sigma}{d\Omega}\sim
-\frac{\sqrt2\,b_c}{\sin\chi_c\sqrt{|c|}}
-\frac1{\sqrt{|\chi-\chi_c|}}.
-\]</span></p>
+<p><strong>Proposición 19.17 — Concentración integrable cerca de un extremo angular.</strong> En el lado angular donde existen las dos ramas próximas a <span class="math inline">\(b_c\)</span>, su contribución conjunta satisface</p>
+<p><span class="math display">\[\frac{d\sigma}{d\Omega}\sim \frac{\sqrt2\,b_c}{\sin\chi_c\sqrt{|c|}} \frac1{\sqrt{|\chi-\chi_c|}}.\]</span></p>
 <p>La sección de un intervalo angular finito alrededor de ese extremo es finita.</p>
 <p><strong>Demostración.</strong> Taylor da <span class="math inline">\(\chi-\chi_c=(c/2)(b-b_c)^2+O((b-b_c)^3)\)</span>. En el lado con <span class="math inline">\(c(\chi-\chi_c)&gt;0\)</span> hay dos soluciones locales, con <span class="math inline">\(b-b_c\sim\pm\sqrt{2|\chi-\chi_c|/|c|}\)</span>. Además <span class="math inline">\(\chi'(b)=c(b-b_c)+O((b-b_c)^2)\)</span>, de donde cada <span class="math inline">\(|db/d\chi|\sim[2|c||\chi-\chi_c|]^{-1/2}\)</span>. Cada rama aporta <span class="math inline">\(b_c/\sin\chi_c\)</span> por ese factor; sumar las dos prueba el coeficiente. Para integrar en dirección se multiplica por <span class="math inline">\(2\pi\sin\chi\,d\chi\)</span>. El seno permanece acotado y separado de cero localmente, y <span class="math inline">\(\int_0^\varepsilon x^{-1/2}dx=2\sqrt\varepsilon\)</span>. <span class="math inline">\(\square\)</span></p>
 <p>Esta concentración recibe habitualmente el nombre de arcoíris clásico. El término describe una acumulación de preparaciones en direcciones vecinas. La densidad ideal puede divergir mientras cada detector de apertura finita registra una cantidad finita. La proposición es local: otras ramas, si las hay, deben añadirse.</p>
 <p>Hay otra singularidad distinta. Si la raíz radial accesible se vuelve doble, la integral de <span class="math inline">\(\Phi\)</span> puede crecer sin límite. Cerca de la raíz, un factor <span class="math inline">\(Q(r)\sim C(r-r_c)^2\)</span>, con <span class="math inline">\(C&gt;0\)</span>, produce una integral proporcional a <span class="math inline">\(\int dr/|r-r_c|\)</span>. La trayectoria se demora cerca de una órbita circular inestable y puede dar muchas vueltas. El ángulo principal sigue perteneciendo a <span class="math inline">\([0,\pi]\)</span>, aunque <span class="math inline">\(\pi-2\Phi\)</span> ya no esté entre <span class="math inline">\(-\pi\)</span> y <span class="math inline">\(\pi\)</span>. La demora y las vueltas no establecen por sí solas captura; hay que examinar el canal y la continuación del movimiento.</p>
 <p><span id="fispm-t1-c19-mp0010"></span></p>
-<p><strong>Principio metodológico FPM-I-19-MP10.</strong> Ante una densidad singular, vuelve al área de preparaciones y calcula un intervalo observable. Distingue un extremo de la función angular de una raíz múltiple en la dinámica radial.</p>
-<section id="ejercicios-9" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-9">Ejercicios</h3>
-<p><span id="fispm-t1-c19-e0019"></span></p>
-<p><strong>Ejercicio FPM-I-19-E19.</strong> Supón localmente <span class="math inline">\(\chi=\chi_c+A(b-b_c)^2\)</span>, con <span class="math inline">\(A&gt;0\)</span>. Calcula la sección del intervalo <span class="math inline">\(\chi_c\leq\chi\leq\chi_c+\varepsilon\)</span>, contando ambas ramas y suponiendo <span class="math inline">\(\sqrt{\varepsilon/A}&lt;b_c\)</span>.</p>
-<p><strong>Solución.</strong> El conjunto de impactos es <span class="math inline">\(b_c-d\leq b\leq b_c+d\)</span>, donde <span class="math inline">\(d=\sqrt{\varepsilon/A}\)</span>. Su área es <span class="math inline">\(\pi[(b_c+d)^2-(b_c-d)^2]=4\pi b_c\sqrt{\varepsilon/A}\)</span>. El crecimiento es proporcional a <span class="math inline">\(\sqrt\varepsilon\)</span>. Derivar esta sección respecto del límite superior produce una densidad angular integrada en azimut proporcional a <span class="math inline">\(\varepsilon^{-1/2}\)</span>, coherente con P17 porque <span class="math inline">\(c=2A\)</span>.</p>
+<p><strong>Principio metodológico 19.10.</strong> Ante una densidad singular, vuelve al área de preparaciones y calcula un intervalo observable. Distingue un extremo de la función angular de una raíz múltiple en la dinámica radial.</p>
+<p><span id="ejercicios-9"></span></p>
+<section id="fispm-c19-ejercicios-9" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c19-ejercicios-9">Ejercicios</h3>
+<p><strong>Ejercicio 19.19.</strong> Supón localmente <span class="math inline">\(\chi=\chi_c+A(b-b_c)^2\)</span>, con <span class="math inline">\(A&gt;0\)</span>. Calcula la sección del intervalo <span class="math inline">\(\chi_c\leq\chi\leq\chi_c+\varepsilon\)</span>, contando ambas ramas y suponiendo <span class="math inline">\(\sqrt{\varepsilon/A}&lt;b_c\)</span>.</p>
+<p><strong>Solución.</strong> El conjunto de impactos es <span class="math inline">\(b_c-d\leq b\leq b_c+d\)</span>, donde <span class="math inline">\(d=\sqrt{\varepsilon/A}\)</span>. Su área es <span class="math inline">\(\pi[(b_c+d)^2-(b_c-d)^2]=4\pi b_c\sqrt{\varepsilon/A}\)</span>. El crecimiento es proporcional a <span class="math inline">\(\sqrt\varepsilon\)</span>. Derivar esta sección respecto del límite superior produce una densidad angular integrada en azimut proporcional a <span class="math inline">\(\varepsilon^{-1/2}\)</span>, coherente con la proposición 19.17 porque <span class="math inline">\(c=2A\)</span>.</p>
 <p><span id="fispm-t1-c19-e0020"></span></p>
-<p><strong>Ejercicio FPM-I-19-E20.</strong> Una trayectoria tiene <span class="math inline">\(\Phi=5\pi/3\)</span>. Calcula el ángulo observado y decide si puede usarse <span class="math inline">\(\chi=|\pi-2\Phi|\)</span>.</p>
+<p><strong>Ejercicio 19.20.</strong> Una trayectoria tiene <span class="math inline">\(\Phi=5\pi/3\)</span>. Calcula el ángulo observado y decide si puede usarse <span class="math inline">\(\chi=|\pi-2\Phi|\)</span>.</p>
 <p><strong>Solución.</strong> El giro firmado definido en §2 es <span class="math inline">\(\delta=-7\pi/3\)</span>. Por tanto <span class="math inline">\(\cos\delta=1/2\)</span> y <span class="math inline">\(\chi=\arccos(1/2)=\pi/3\)</span>. El valor absoluto sería <span class="math inline">\(7\pi/3\)</span>, fuera del intervalo de los ángulos principales. Para recuperar una dirección hay que conservar la periodicidad, además de la información dinámica sobre las vueltas.</p>
+<p><span id="cuánto-basta-con-integrar-sobre-una-recta"></span></p>
 <p><span id="fispm-t1-c19-s11"></span></p>
 <p><span id="fpm-i-19-s11"></span></p>
 </section>
 </section>
-<section id="cuánto-basta-con-integrar-sobre-una-recta" class="level2">
-<h2 class="anchored" data-anchor-id="cuánto-basta-con-integrar-sobre-una-recta">§11. Cuánto basta con integrar sobre una recta</h2>
+<section id="fispm-c19-cuuxe1nto-basta-con-integrar-sobre-una-recta" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c19-cuuxe1nto-basta-con-integrar-sobre-una-recta">11. Cuánto basta con integrar sobre una recta</h2>
 <p>Para impactos grandes, la interacción puede cambiar poco la velocidad. En ese régimen se intenta calcular el impulso sobre la trayectoria libre. La propuesta necesita una comprobación posterior: si la corrección resulta grande, la trayectoria usada para calcularla deja de ser una referencia adecuada.</p>
 <p><span id="fispm-t1-c19-p0018"></span></p>
-<p><strong>Proposición FPM-I-19-P18 — Impulso transversal en la aproximación rectilínea.</strong> Sea una fuerza relativa central <span class="math inline">\(\mathbf F=f(r)\mathbf q/r\)</span>, donde <span class="math inline">\(f&gt;0\)</span> significa repulsión. Al sustituir <span class="math inline">\(\mathbf q_0(t)=(v_\infty t,b,0)\)</span>, con <span class="math inline">\(b&gt;0\)</span>, el impulso transversal por unidad de masa reducida es</p>
-<p><span class="math display">\[
-\Delta w_y^{(0)}=\frac b\mu\int_{-\infty}^{\infty}
-\frac{f(\sqrt{v_\infty^2t^2+b^2})}{\sqrt{v_\infty^2t^2+b^2}}\,dt,
-\]</span></p>
+<p><strong>Proposición 19.18 — Impulso transversal en la aproximación rectilínea.</strong> Sea una fuerza relativa central <span class="math inline">\(\mathbf F=f(r)\mathbf q/r\)</span>, donde <span class="math inline">\(f&gt;0\)</span> significa repulsión. Al sustituir <span class="math inline">\(\mathbf q_0(t)=(v_\infty t,b,0)\)</span>, con <span class="math inline">\(b&gt;0\)</span>, el impulso transversal por unidad de masa reducida es</p>
+<p><span class="math display">\[\Delta w_y^{(0)}=\frac b\mu\int_{-\infty}^{\infty} \frac{f(\sqrt{v_\infty^2t^2+b^2})}{\sqrt{v_\infty^2t^2+b^2}}\,dt,\]</span></p>
 <p>si la integral converge. Para <span class="math inline">\(f(r)=\pm\kappa/r^2\)</span> vale <span class="math inline">\(\Delta w_y^{(0)}/v_\infty=\pm2\ell/b\)</span>.</p>
 <p><strong>Demostración.</strong> La componente transversal de <span class="math inline">\(\mu\dot{\mathbf w}=\mathbf F\)</span> evaluada sobre <span class="math inline">\(\mathbf q_0\)</span> es <span class="math inline">\(b f(r)/(\mu r)\)</span>. Integrar da la primera fórmula. Para la fuerza inversa del cuadrado, sustituir <span class="math inline">\(u=v_\infty t/b\)</span> deja <span class="math inline">\(\pm\kappa/(\mu b v_\infty)\int_{-\infty}^{\infty}(1+u^2)^{-3/2}du\)</span>. Una primitiva es <span class="math inline">\(u/\sqrt{1+u^2}\)</span>, cuyos límites difieren en dos. Dividir por <span class="math inline">\(v_\infty\)</span> y usar la definición de <span class="math inline">\(\ell\)</span> prueba el resultado. <span class="math inline">\(\square\)</span></p>
 <p>Esta proposición calcula exactamente una integral sobre una recta elegida. La identificación de su resultado con la desviación real es una aproximación adicional. Para desviaciones pequeñas, el cambio transversal dividido por la rapidez coincide con el ángulo firmado al primer orden. En el ejemplo inverso del radio podemos contrastarlo con la respuesta exacta.</p>
 <p><span id="fispm-t1-c19-p0019"></span></p>
-<p><strong>Proposición FPM-I-19-P19 — Error angular del primer término.</strong> Para <span class="math inline">\(x=\ell/b\geq0\)</span>, el ángulo exacto <span class="math inline">\(\chi=2\arctan x\)</span> cumple</p>
-<p><span class="math display">\[
-0\leq2x-\chi\leq\frac23x^3.
-\]</span></p>
+<p><strong>Proposición 19.19 — Error angular del primer término.</strong> Para <span class="math inline">\(x=\ell/b\geq0\)</span>, el ángulo exacto <span class="math inline">\(\chi=2\arctan x\)</span> cumple</p>
+<p><span class="math display">\[0\leq2x-\chi\leq\frac23x^3.\]</span></p>
 <p><strong>Demostración.</strong> La diferencia es <span class="math inline">\(2\int_0^x[1-(1+u^2)^{-1}]du=2\int_0^x u^2/(1+u^2)du\)</span>. El integrando está entre cero y <span class="math inline">\(u^2\)</span>. Integrar esas cotas prueba el enunciado. <span class="math inline">\(\square\)</span></p>
 <p>En particular, cuando <span class="math inline">\(x\)</span> es pequeño, el error relativo respecto de la predicción <span class="math inline">\(2x\)</span> es a lo sumo <span class="math inline">\(x^2/3\)</span>. Esa cota corresponde a este potencial y a esta fórmula angular; no proporciona automáticamente una cota de error para cualquier fuerza o para toda la trayectoria.</p>
 <p><span id="fispm-t1-c19-mp0011"></span></p>
-<p><strong>Principio metodológico FPM-I-19-MP11.</strong> Expresa el parámetro pequeño como una razón adimensional y contrasta la aproximación con una cantidad observable. Indica qué error se ha acotado.</p>
-<section id="ejercicios-10" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-10">Ejercicios</h3>
+<p><strong>Principio metodológico 19.11.</strong> Expresa el parámetro pequeño como una razón adimensional y contrasta la aproximación con una cantidad observable. Indica qué error se ha acotado.</p>
+<p><span id="ejercicios-10"></span></p>
+<section id="fispm-c19-ejercicios-10" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c19-ejercicios-10">Ejercicios</h3>
 <p><span id="fispm-t1-c19-e0021"></span></p>
-<p><strong>Ejercicio FPM-I-19-E21.</strong> Si <span class="math inline">\(b=10\ell\)</span>, acota el error de la aproximación <span class="math inline">\(\chi\approx2\ell/b\)</span>.</p>
+<p><strong>Ejercicio 19.21.</strong> Si <span class="math inline">\(b=10\ell\)</span>, acota el error de la aproximación <span class="math inline">\(\chi\approx2\ell/b\)</span>.</p>
 <p><strong>Solución.</strong> Aquí <span class="math inline">\(x=0.1\)</span>. La predicción es <span class="math inline">\(0.2\)</span> radianes y su exceso sobre el valor exacto está entre cero y <span class="math inline">\(2(0.1)^3/3=1/1500\)</span> radianes. Respecto de <span class="math inline">\(0.2\)</span>, el error es como máximo <span class="math inline">\(1/300\)</span>, aproximadamente <span class="math inline">\(0.33\%\)</span>.</p>
 <p><span id="fispm-t1-c19-e0022"></span></p>
-<p><strong>Ejercicio FPM-I-19-E22.</strong> Evalúa el impulso rectilíneo para <span class="math inline">\(f(r)=C/r^3\)</span> y formula una condición de pequeña desviación.</p>
-<p><strong>Solución.</strong> P18 da <span class="math inline">\(\Delta w_y^{(0)}=Cb\mu^{-1}\int dt/(v_\infty^2t^2+b^2)^2\)</span>. Con <span class="math inline">\(u=v_\infty t/b\)</span>, resulta <span class="math inline">\(C/(\mu v_\infty b^2)\int du/(1+u^2)^2\)</span>. La sustitución <span class="math inline">\(u=\tan s\)</span> transforma la integral en <span class="math inline">\(\int_{-\pi/2}^{\pi/2}\cos^2s\,ds=\pi/2\)</span>. Por tanto <span class="math inline">\(\Delta w_y^{(0)}/v_\infty=\pi C/(2\mu v_\infty^2b^2)\)</span>. Su magnitud debe ser mucho menor que uno. Es una comprobación necesaria para la aproximación propuesta; por sí sola no demuestra una estimación uniforme del error de trayectoria.</p>
+<p><strong>Ejercicio 19.22.</strong> Evalúa el impulso rectilíneo para <span class="math inline">\(f(r)=C/r^3\)</span> y formula una condición de pequeña desviación.</p>
+<p><strong>Solución.</strong> proposición 19.18 da <span class="math inline">\(\Delta w_y^{(0)}=Cb\mu^{-1}\int dt/(v_\infty^2t^2+b^2)^2\)</span>. Con <span class="math inline">\(u=v_\infty t/b\)</span>, resulta <span class="math inline">\(C/(\mu v_\infty b^2)\int du/(1+u^2)^2\)</span>. La sustitución <span class="math inline">\(u=\tan s\)</span> transforma la integral en <span class="math inline">\(\int_{-\pi/2}^{\pi/2}\cos^2s\,ds=\pi/2\)</span>. Por tanto <span class="math inline">\(\Delta w_y^{(0)}/v_\infty=\pi C/(2\mu v_\infty^2b^2)\)</span>. Su magnitud debe ser mucho menor que uno. Es una comprobación necesaria para la aproximación propuesta; por sí sola no demuestra una estimación uniforme del error de trayectoria.</p>
+<p><span id="el-detector-vive-en-el-laboratorio"></span></p>
 <p><span id="fispm-t1-c19-s12"></span></p>
 <p><span id="fpm-i-19-s12"></span></p>
 </section>
 </section>
-<section id="el-detector-vive-en-el-laboratorio" class="level2">
-<h2 class="anchored" data-anchor-id="el-detector-vive-en-el-laboratorio">§12. El detector vive en el laboratorio</h2>
+<section id="fispm-c19-el-detector-vive-en-el-laboratorio" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c19-el-detector-vive-en-el-laboratorio">12. El detector vive en el laboratorio</h2>
 <p>La reducción radial usa la velocidad relativa. Un detector puede medir la velocidad de un solo cuerpo en un marco donde el otro estaba inicialmente en reposo. Traducir ambas descripciones es parte del problema físico.</p>
 <p>Tomemos masas <span class="math inline">\(m_1,m_2&gt;0\)</span>, <span class="math inline">\(M=m_1+m_2\)</span>, proyectil incidente con velocidad <span class="math inline">\(v\mathbf e_x\)</span> y blanco inicialmente quieto. Supondremos un encuentro elástico, con energía potencial tendiendo al mismo valor cero antes y después. Entonces <span class="math inline">\(\mathbf V=(m_1/M)v\mathbf e_x\)</span>, <span class="math inline">\(\mathbf w_-=v\mathbf e_x\)</span> y, eligiendo el lado positivo del plano de dispersión, <span class="math inline">\(\mathbf w_+=v(\cos\chi\mathbf e_x+\sin\chi\mathbf e_y)\)</span>.</p>
 <p><span id="fispm-t1-c19-p0020"></span></p>
-<p><strong>Proposición FPM-I-19-P20 — Transformación cinemática al laboratorio.</strong> Las velocidades finales son</p>
-<p><span class="math display">\[
-\mathbf v_{1+}=\frac vM[(m_1+m_2\cos\chi)\mathbf e_x+m_2\sin\chi\mathbf e_y],
-\]</span></p>
-<p><span class="math display">\[
-\mathbf v_{2+}=\frac{m_1v}{M}[(1-\cos\chi)\mathbf e_x-\sin\chi\mathbf e_y].
-\]</span></p>
-<p>Si la velocidad del proyectil no se anula, su ángulo de laboratorio es</p>
-<p><span class="math display">\[
-\theta=\operatorname{atan2}(m_2\sin\chi,m_1+m_2\cos\chi)\in[0,\pi].
-\]</span></p>
+<p><strong>Proposición 19.20 — Transformación cinemática al laboratorio.</strong> Las velocidades finales son</p>
+<p><span class="math display">\[\mathbf v_{1+}=\frac vM[(m_1+m_2\cos\chi)\mathbf e_x+m_2\sin\chi\mathbf e_y],\]</span></p>
+<p><span class="math display">\[\mathbf v_{2+}=\frac{m_1v}{M}[(1-\cos\chi)\mathbf e_x-\sin\chi\mathbf e_y].\]</span></p>
+<p>Si la velocidad del proyectil no se anula, su ángulo de laboratorio es <span class="math inline">\(\theta=\operatorname{atan2}(m_2\sin\chi,m_1+m_2\cos\chi)\in[0,\pi].\)</span></p>
 <p><strong>Demostración.</strong> La descomposición de dos cuerpos es <span class="math inline">\(\mathbf v_1=\mathbf V+(m_2/M)\mathbf w\)</span> y <span class="math inline">\(\mathbf v_2=\mathbf V-(m_1/M)\mathbf w\)</span>. Sustituir <span class="math inline">\(\mathbf w_+\)</span> da las fórmulas. El ángulo se determina por ambas componentes, que es precisamente la información preservada por <span class="math inline">\(\operatorname{atan2}\)</span>. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c19-p0021"></span></p>
-<p><strong>Proposición FPM-I-19-P21 — Reparto de energía y masas iguales.</strong> Respecto de la energía incidente <span class="math inline">\(K_{\mathrm{in}}=m_1v^2/2\)</span>, la energía final del blanco satisface</p>
-<p><span class="math display">\[
-\frac{K_{2+}}{K_{\mathrm{in}}}=\frac{4m_1m_2}{M^2}\sin^2(\chi/2).
-\]</span></p>
+<p><strong>Proposición 19.21 — Reparto de energía y masas iguales.</strong> Respecto de la energía incidente <span class="math inline">\(K_{\mathrm{in}}=m_1v^2/2\)</span>, la energía final del blanco satisface</p>
+<p><span class="math display">\[\frac{K_{2+}}{K_{\mathrm{in}}}=\frac{4m_1m_2}{M^2}\sin^2(\chi/2).\]</span></p>
 <p>Para <span class="math inline">\(m_1=m_2\)</span> y <span class="math inline">\(0\leq\chi&lt;\pi\)</span>, se cumple <span class="math inline">\(\theta=\chi/2\)</span> y <span class="math inline">\(|\mathbf v_{1+}|=v\cos(\chi/2)\)</span>. Si <span class="math inline">\(\chi=\pi\)</span>, el proyectil queda quieto y su dirección final no está definida.</p>
-<p><strong>Demostración.</strong> La norma al cuadrado de la velocidad del blanco en P20 es <span class="math inline">\((m_1v/M)^2[(1-\cos\chi)^2+\sin^2\chi]=4(m_1v/M)^2\sin^2(\chi/2)\)</span>. Multiplicar por <span class="math inline">\(m_2/2\)</span> y dividir por <span class="math inline">\(K_{\mathrm{in}}\)</span> prueba la fracción. Para masas iguales, la velocidad del proyectil es <span class="math inline">\(v\cos(\chi/2)[\cos(\chi/2)\mathbf e_x+\sin(\chi/2)\mathbf e_y]\)</span>. Sus consecuencias incluyen la excepción en <span class="math inline">\(\chi=\pi\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> La norma al cuadrado de la velocidad del blanco en la proposición 19.20 es <span class="math inline">\((m_1v/M)^2[(1-\cos\chi)^2+\sin^2\chi]=4(m_1v/M)^2\sin^2(\chi/2)\)</span>. Multiplicar por <span class="math inline">\(m_2/2\)</span> y dividir por <span class="math inline">\(K_{\mathrm{in}}\)</span> prueba la fracción. Para masas iguales, la velocidad del proyectil es <span class="math inline">\(v\cos(\chi/2)[\cos(\chi/2)\mathbf e_x+\sin(\chi/2)\mathbf e_y]\)</span>. Sus consecuencias incluyen la excepción en <span class="math inline">\(\chi=\pi\)</span>. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c19-p0022"></span></p>
-<p><strong>Proposición FPM-I-19-P22 — Límite angular para un proyectil más pesado.</strong> Si <span class="math inline">\(m_1&gt;m_2\)</span>, el ángulo de laboratorio alcanza un máximo</p>
-<p><span class="math display">\[
-\theta_{\max}=\arcsin(m_2/m_1).
-\]</span></p>
+<p><strong>Proposición 19.22 — Límite angular para un proyectil más pesado.</strong> Si <span class="math inline">\(m_1&gt;m_2\)</span>, el ángulo de laboratorio alcanza un máximo</p>
+<p><span class="math display">\[\theta_{\max}=\arcsin(m_2/m_1).\]</span></p>
 <p>Cada ángulo estrictamente entre cero y ese máximo proviene de dos ángulos relativos distintos.</p>
-<p><strong>Demostración.</strong> La componente longitudinal es siempre positiva. Derivar el ángulo de P20 da</p>
-<p><span class="math display">\[
-\frac{d\theta}{d\chi}=
-\frac{m_2(m_1\cos\chi+m_2)}{m_1^2+m_2^2+2m_1m_2\cos\chi}.
-\]</span></p>
-<p>El denominador es positivo y el numerador se anula una sola vez, en <span class="math inline">\(\cos\chi=-m_2/m_1\)</span>. Antes es positivo y después negativo. La función comienza y termina en cero, así que cada valor interior tiene una preimagen en cada tramo monótono. Sustituir el coseno crítico en las componentes de P20 da <span class="math inline">\(\sin\theta_{\max}=m_2/m_1\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> La componente longitudinal es siempre positiva. Derivar el ángulo de la proposición 19.20 da</p>
+<p><span class="math display">\[\frac{d\theta}{d\chi}= \frac{m_2(m_1\cos\chi+m_2)}{m_1^2+m_2^2+2m_1m_2\cos\chi}.\]</span></p>
+<p>El denominador es positivo y el numerador se anula una sola vez, en <span class="math inline">\(\cos\chi=-m_2/m_1\)</span>. Antes es positivo y después negativo. La función comienza y termina en cero, así que cada valor interior tiene una preimagen en cada tramo monótono. Sustituir el coseno crítico en las componentes de la proposición 19.20 da <span class="math inline">\(\sin\theta_{\max}=m_2/m_1\)</span>. <span class="math inline">\(\square\)</span></p>
 <p>Si <span class="math inline">\(m_1&lt;m_2\)</span>, el proyectil puede salir hacia atrás: en <span class="math inline">\(\chi=\pi\)</span> su componente longitudinal es negativa. Escribir solamente una tangente borraría esa información. También hay que transformar la medida angular cuando se transforma una sección. En una rama regular axial, <span class="math inline">\(\sin\chi\,d\chi\,d\varphi\)</span> pasa a <span class="math inline">\(\sin\theta\,d\theta\,d\varphi\)</span>; las distintas preimágenes deben sumarse. La conservación de energía relativa no hace coincidir los ángulos de ambos marcos.</p>
 <p><span id="fispm-t1-c19-mp0012"></span></p>
-<p><strong>Principio metodológico FPM-I-19-MP12.</strong> Identifica el cuerpo observado y el marco del detector. Transforma primero velocidades; después transforma ángulos y medidas, manteniendo las ramas.</p>
-<section id="ejercicios-11" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-11">Ejercicios</h3>
+<p><strong>Principio metodológico 19.12.</strong> Identifica el cuerpo observado y el marco del detector. Transforma primero velocidades; después transforma ángulos y medidas, manteniendo las ramas.</p>
+<p><span id="ejercicios-11"></span></p>
+<section id="fispm-c19-ejercicios-11" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c19-ejercicios-11">Ejercicios</h3>
 <p><span id="fispm-t1-c19-e0023"></span></p>
-<p><strong>Ejercicio FPM-I-19-E23.</strong> Para masas iguales, expresa la sección diferencial de la esfera rígida en el laboratorio para el proyectil.</p>
-<p><strong>Solución.</strong> P21 da <span class="math inline">\(\chi=2\theta\)</span>, con <span class="math inline">\(0&lt;\theta&lt;\pi/2\)</span>. El azimut se conserva y el cociente angular es <span class="math inline">\(\sin(2\theta)2/\sin\theta=4\cos\theta\)</span>. Multiplicar la densidad relativa <span class="math inline">\(a^2/4\)</span> da <span class="math inline">\(d\sigma/d\Omega_{\mathrm{lab}}=a^2\cos\theta\)</span>. Su integral es <span class="math inline">\(2\pi a^2\int_0^{\pi/2}\cos\theta\sin\theta\,d\theta=\pi a^2\)</span>. El evento extremo de proyectil quieto tiene área nula y no recibe una dirección artificial.</p>
+<p><strong>Ejercicio 19.23.</strong> Para masas iguales, expresa la sección diferencial de la esfera rígida en el laboratorio para el proyectil.</p>
+<p><strong>Solución.</strong> proposición 19.21 da <span class="math inline">\(\chi=2\theta\)</span>, con <span class="math inline">\(0&lt;\theta&lt;\pi/2\)</span>. El azimut se conserva y el cociente angular es <span class="math inline">\(\sin(2\theta)2/\sin\theta=4\cos\theta\)</span>. Multiplicar la densidad relativa <span class="math inline">\(a^2/4\)</span> da <span class="math inline">\(d\sigma/d\Omega_{\mathrm{lab}}=a^2\cos\theta\)</span>. Su integral es <span class="math inline">\(2\pi a^2\int_0^{\pi/2}\cos\theta\sin\theta\,d\theta=\pi a^2\)</span>. El evento extremo de proyectil quieto tiene área nula y no recibe una dirección artificial.</p>
 <p><span id="fispm-t1-c19-e0024"></span></p>
-<p><strong>Ejercicio FPM-I-19-E24.</strong> Sea <span class="math inline">\(m_1=3m_2\)</span>. Calcula el máximo ángulo del proyectil y la mayor fracción de energía transferible al blanco.</p>
-<p><strong>Solución.</strong> P22 da <span class="math inline">\(\theta_{\max}=\arcsin(1/3)\)</span>, aproximadamente <span class="math inline">\(19.47^\circ\)</span>. P21 da un coeficiente máximo <span class="math inline">\(4(3)/(4^2)=3/4\)</span>, alcanzado en <span class="math inline">\(\chi=\pi\)</span>. En ese encuentro frontal el proyectil sigue hacia delante y el blanco recibe el <span class="math inline">\(75\%\)</span> de la energía incidente. El máximo de transferencia y el máximo angular corresponden a preparaciones diferentes.</p>
+<p><strong>Ejercicio 19.24.</strong> Sea <span class="math inline">\(m_1=3m_2\)</span>. Calcula el máximo ángulo del proyectil y la mayor fracción de energía transferible al blanco.</p>
+<p><strong>Solución.</strong> proposición 19.22 da <span class="math inline">\(\theta_{\max}=\arcsin(1/3)\)</span>, aproximadamente <span class="math inline">\(19.47^\circ\)</span>. Proposición 19.21 da un coeficiente máximo <span class="math inline">\(4(3)/(4^2)=3/4\)</span>, alcanzado en <span class="math inline">\(\chi=\pi\)</span>. En ese encuentro frontal el proyectil sigue hacia delante y el blanco recibe el <span class="math inline">\(75\%\)</span> de la energía incidente. El máximo de transferencia y el máximo angular corresponden a preparaciones diferentes.</p>
+<p><span id="de-un-área-a-una-cuenta-de-eventos"></span></p>
 <p><span id="fispm-t1-c19-s13"></span></p>
 <p><span id="fpm-i-19-s13"></span></p>
 </section>
 </section>
-<section id="de-un-área-a-una-cuenta-de-eventos" class="level2">
-<h2 class="anchored" data-anchor-id="de-un-área-a-una-cuenta-de-eventos">§13. De un área a una cuenta de eventos</h2>
+<section id="fispm-c19-de-un-uxe1rea-a-una-cuenta-de-eventos" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c19-de-un-uxe1rea-a-una-cuenta-de-eventos">13. De un área a una cuenta de eventos</h2>
 <p>Una sección es una propiedad del encuentro y del evento seleccionado. Una cuenta experimental combina esa sección con un flujo, una cantidad de centros y una respuesta instrumental. Mezclar esas cantidades dificulta comparar experimentos.</p>
 <p><span id="fispm-t1-c19-p0023"></span></p>
-<p><strong>Proposición FPM-I-19-P23 — Cuenta con aceptación angular.</strong> Sean <span class="math inline">\(N\)</span> centros independientes expuestos al mismo flujo uniforme <span class="math inline">\(j\)</span>, sin atenuación ni encuentros múltiples relevantes. Sea <span class="math inline">\(0\leq\eta(\Omega)\leq1\)</span> la probabilidad de registrar un evento en la dirección <span class="math inline">\(\Omega\)</span>, y sea <span class="math inline">\(D\)</span> la región angular aceptada. Si el canal tiene densidad angular, la tasa media registrada es</p>
-<p><span class="math display">\[
-\dot N_{\mathrm{reg}}=jN\int_D\eta(\Omega)\frac{d\sigma}{d\Omega}\,d\Omega.
-\]</span></p>
+<p><strong>Proposición 19.23 — Cuenta con aceptación angular.</strong> Sean <span class="math inline">\(N\)</span> centros independientes expuestos al mismo flujo uniforme <span class="math inline">\(j\)</span>, sin atenuación ni encuentros múltiples relevantes. Sea <span class="math inline">\(0\leq\eta(\Omega)\leq1\)</span> la probabilidad de registrar un evento en la dirección <span class="math inline">\(\Omega\)</span>, y sea <span class="math inline">\(D\)</span> la región angular aceptada. Si el canal tiene densidad angular, la tasa media registrada es</p>
+<p><span class="math display">\[\dot N_{\mathrm{reg}}=jN\int_D\eta(\Omega)\frac{d\sigma}{d\Omega}\,d\Omega.\]</span></p>
 <p><strong>Demostración.</strong> Para un centro, el área de preparaciones que llega a un elemento angular tiene medida <span class="math inline">\(d\sigma\)</span>. El flujo produce tasa <span class="math inline">\(j\,d\sigma\)</span>. Registrar cada evento con probabilidad <span class="math inline">\(\eta\)</span> multiplica su tasa media por ese factor. Integrar sobre <span class="math inline">\(D\)</span> y sumar las <span class="math inline">\(N\)</span> contribuciones independientes da la expresión. Si existe una contribución concentrada, se integra respecto de la medida <span class="math inline">\(d\sigma\)</span> completa en lugar de usar solo su densidad. <span class="math inline">\(\square\)</span></p>
 <p>Un blanco de densidad superficial <span class="math inline">\(n_s\)</span> se aproxima a ese régimen cuando la probabilidad de interacción pertinente es pequeña. La combinación <span class="math inline">\(n_s\sigma\)</span> es adimensional; exigir <span class="math inline">\(n_s\sigma\ll1\)</span> sirve como criterio de dilución para un canal de sección finita. Con fuerzas de largo alcance hace falta especificar qué interacción cuenta y cómo se controla la acumulación de desviaciones pequeñas. Un umbral de detección no elimina automáticamente las otras interacciones del movimiento real.</p>
 <p>La física cuántica retomará estas preguntas con otra descripción del estado incidente y de la amplitud de salida. La escala <span class="math inline">\(\hbar/(\mu v_\infty)\)</span> tiene dimensiones de longitud; compararla con las escalas espaciales de la interacción ayuda a plantear cuándo cabe esperar una descripción clásica. Esa comparación es orientativa y no constituye una garantía universal: la coherencia, las condiciones de preparación y la resolución también importan. En el modelo clásico sumamos áreas de preparaciones disjuntas. Más adelante habrá que examinar cuándo las alternativas cuánticas exigen sumar amplitudes antes de obtener probabilidades. El presente capítulo proporciona las magnitudes geométricas con las que se hará esa comparación.</p>
 <p><span id="fispm-t1-c19-mp0013"></span></p>
-<p><strong>Principio metodológico FPM-I-19-MP13.</strong> Separa sección, flujo y eficiencia. Expresa el dominio angular aceptado y las hipótesis de encuentro único antes de convertir una ley de dispersión en una cuenta.</p>
-<section id="ejercicios-12" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-12">Ejercicios</h3>
+<p><strong>Principio metodológico 19.13.</strong> Separa sección, flujo y eficiencia. Expresa el dominio angular aceptado y las hipótesis de encuentro único antes de convertir una ley de dispersión en una cuenta.</p>
+<p><span id="ejercicios-12"></span></p>
+<section id="fispm-c19-ejercicios-12" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c19-ejercicios-12">Ejercicios</h3>
 <p><span id="fispm-t1-c19-e0025"></span></p>
-<p><strong>Ejercicio FPM-I-19-E25.</strong> Para una esfera rígida, un detector cubre <span class="math inline">\(\chi_1\leq\chi\leq\chi_2\)</span>, todo el azimut, y tiene eficiencia constante <span class="math inline">\(\eta_0\)</span>. Calcula su tasa para <span class="math inline">\(N\)</span> centros.</p>
+<p><strong>Ejercicio 19.25.</strong> Para una esfera rígida, un detector cubre <span class="math inline">\(\chi_1\leq\chi\leq\chi_2\)</span>, todo el azimut, y tiene eficiencia constante <span class="math inline">\(\eta_0\)</span>. Calcula su tasa para <span class="math inline">\(N\)</span> centros.</p>
 <p><strong>Solución.</strong> La integral angular es <span class="math inline">\((a^2/4)2\pi\int_{\chi_1}^{\chi_2}\sin\chi\,d\chi=(\pi a^2/2)(\cos\chi_1-\cos\chi_2)\)</span>. Por tanto la tasa es <span class="math inline">\(jN\eta_0(\pi a^2/2)(\cos\chi_1-\cos\chi_2)\)</span>. Para el intervalo completo y eficiencia uno se recupera <span class="math inline">\(jN\pi a^2\)</span>. La fórmula supone el marco relativo o un blanco fijo; para un detector de laboratorio con blanco móvil se requiere §12.</p>
 <p><span id="fispm-t1-c19-e0026"></span></p>
-<p><strong>Ejercicio FPM-I-19-E26.</strong> Comprueba las dimensiones de P23 y determina qué producto puede medirse si solo se conoce la cuenta y la apertura, pero se desconocen <span class="math inline">\(j\)</span> y <span class="math inline">\(N\)</span>.</p>
+<p><strong>Ejercicio 19.26.</strong> Comprueba las dimensiones de la proposición 19.23 y determina qué producto puede medirse si solo se conoce la cuenta y la apertura, pero se desconocen <span class="math inline">\(j\)</span> y <span class="math inline">\(N\)</span>.</p>
 <p><strong>Solución.</strong> <span class="math inline">\(d\Omega\)</span> es adimensional, <span class="math inline">\(d\sigma/d\Omega\)</span> tiene dimensión de área, <span class="math inline">\(j\)</span> de inversa de área y tiempo, y <span class="math inline">\(N,\eta\)</span> son adimensionales. La tasa tiene dimensión <span class="math inline">\(T^{-1}\)</span>. Si la forma angular de la sección es conocida salvo un coeficiente <span class="math inline">\(C\)</span>, la cuenta determina <span class="math inline">\(jNC\)</span> multiplicado por la aceptación y eficiencia conocidas. No determina separadamente <span class="math inline">\(C\)</span>, <span class="math inline">\(j\)</span> y <span class="math inline">\(N\)</span>. Hace falta una calibración independiente para inferir una sección absoluta.</p>
+<p><span id="qué-puede-recuperarse-de-la-dispersión"></span></p>
 <p><span id="fispm-t1-c19-s14"></span></p>
 <p><span id="fpm-i-19-s14"></span></p>
 </section>
 </section>
-<section id="qué-puede-recuperarse-de-la-dispersión" class="level2">
-<h2 class="anchored" data-anchor-id="qué-puede-recuperarse-de-la-dispersión">§14. Qué puede recuperarse de la dispersión</h2>
+<section id="fispm-c19-quuxe9-puede-recuperarse-de-la-dispersiuxf3n" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c19-quuxe9-puede-recuperarse-de-la-dispersiuxf3n">14. Qué puede recuperarse de la dispersión</h2>
 <p>Empezamos preparando una distancia transversal y terminamos midiendo una dirección. Entre ambas hay una dinámica radial, un cambio de variables y una selección instrumental. Se puede recorrer parte de ese camino en sentido inverso, siempre que la estructura de las ramas sea conocida.</p>
 <p><span id="fispm-t1-c19-p0024"></span></p>
-<p><strong>Proposición FPM-I-19-P24 — Recuperación de una ley monótona desde su sección.</strong> Supongamos que <span class="math inline">\(\chi(b)\)</span> es estrictamente decreciente, que su imagen es <span class="math inline">\((0,\pi)\)</span>, que <span class="math inline">\(b(\chi)\to0\)</span> cuando <span class="math inline">\(\chi\to\pi\)</span>, y que hay una sola rama regular. Entonces</p>
-<p><span class="math display">\[
-b(\chi)^2=2\int_\chi^\pi
-\frac{d\sigma}{d\Omega}(u)\sin u\,du.
-\]</span></p>
-<p><strong>Demostración.</strong> P11 y <span class="math inline">\(b'&lt;0\)</span> dan <span class="math inline">\(d\sigma/d\Omega=-bb'/\sin\chi\)</span>. Así <span class="math inline">\((b^2)'=-2(d\sigma/d\Omega)\sin\chi\)</span>. Integrar de <span class="math inline">\(\chi\)</span> a <span class="math inline">\(\pi\)</span> y usar el límite nulo prueba la fórmula, también como integral impropia cuando sea necesario. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 19.24 — Recuperación de una ley monótona desde su sección.</strong> Supongamos que <span class="math inline">\(\chi(b)\)</span> es estrictamente decreciente, que su imagen es <span class="math inline">\((0,\pi)\)</span>, que <span class="math inline">\(b(\chi)\to0\)</span> cuando <span class="math inline">\(\chi\to\pi\)</span>, y que hay una sola rama regular. Entonces</p>
+<p><span class="math display">\[b(\chi)^2=2\int_\chi^\pi \frac{d\sigma}{d\Omega}(u)\sin u\,du.\]</span></p>
+<p><strong>Demostración.</strong> proposición 19.11 y <span class="math inline">\(b'&lt;0\)</span> dan <span class="math inline">\(d\sigma/d\Omega=-bb'/\sin\chi\)</span>. Así <span class="math inline">\((b^2)'=-2(d\sigma/d\Omega)\sin\chi\)</span>. Integrar de <span class="math inline">\(\chi\)</span> a <span class="math inline">\(\pi\)</span> y usar el límite nulo prueba la fórmula, también como integral impropia cuando sea necesario. <span class="math inline">\(\square\)</span></p>
 <p>Recuperar <span class="math inline">\(b(\chi)\)</span> no equivale todavía a recuperar un potencial único. Esa segunda pregunta requiere hipótesis sobre la interacción, datos de energía y un análisis inverso adicional. Si se suman varias ramas, la sección sola tampoco indica cuál contribución pertenece a cada una.</p>
 <p><span id="fispm-t1-c19-p0025"></span></p>
-<p><strong>Proposición FPM-I-19-P25 — Intercambio de energía en un marco inercial general.</strong> En un encuentro elástico de dos cuerpos, sea <span class="math inline">\(\Delta\mathbf w=\mathbf w_+-\mathbf w_-\)</span> y sea <span class="math inline">\(\mathbf V\)</span> la velocidad constante del centro de masas en el marco elegido. Entonces</p>
-<p><span class="math display">\[
-\Delta K_1=\mu\mathbf V\cdot\Delta\mathbf w,
-\qquad \Delta K_2=-\mu\mathbf V\cdot\Delta\mathbf w.
-\]</span></p>
+<p><strong>Proposición 19.25 — Intercambio de energía en un marco inercial general.</strong> En un encuentro elástico de dos cuerpos, sea <span class="math inline">\(\Delta\mathbf w=\mathbf w_+-\mathbf w_-\)</span> y sea <span class="math inline">\(\mathbf V\)</span> la velocidad constante del centro de masas en el marco elegido. Entonces</p>
+<p><span class="math display">\[\Delta K_1=\mu\mathbf V\cdot\Delta\mathbf w, \qquad \Delta K_2=-\mu\mathbf V\cdot\Delta\mathbf w.\]</span></p>
 <p><strong>Demostración.</strong> Escribamos <span class="math inline">\(\mathbf v_1=\mathbf V+(m_2/M)\mathbf w\)</span>. Al restar las normas al cuadrado antes y después, el término <span class="math inline">\(|\mathbf V|^2\)</span> se cancela y el término proporcional a <span class="math inline">\(|\mathbf w|^2\)</span> también, porque el encuentro es elástico. Queda <span class="math inline">\(\Delta K_1=m_1(m_2/M)\mathbf V\cdot\Delta\mathbf w=\mu\mathbf V\cdot\Delta\mathbf w\)</span>. La descomposición del segundo cuerpo cambia el signo del término cruzado y da la segunda igualdad. <span class="math inline">\(\square\)</span></p>
 <p>En el marco del centro de masas, <span class="math inline">\(\mathbf V=0\)</span> y cada rapidez asintótica permanece igual. En otros marcos puede haber transferencia entre las energías cinéticas individuales. La suma se conserva en todos ellos. El mismo encuentro ofrece así un ángulo relativo útil para reducir la dinámica y unas energías de laboratorio útiles para describir lo que recibe cada cuerpo.</p>
 <p><span id="fispm-t1-c19-mp0014"></span></p>
-<p><strong>Principio metodológico FPM-I-19-MP14.</strong> Al interpretar datos, explicita qué información se pierde en cada paso: orientación, número de vueltas, identidad de rama, eficiencia o marco. Una inversión solo puede recuperar lo que sus hipótesis vuelven identificable.</p>
-<section id="problemas-de-integración" class="level3">
-<h3 class="anchored" data-anchor-id="problemas-de-integración">Problemas de integración</h3>
+<p><strong>Principio metodológico 19.14.</strong> Al interpretar datos, explicita qué información se pierde en cada paso: orientación, número de vueltas, identidad de rama, eficiencia o marco. Una inversión solo puede recuperar lo que sus hipótesis vuelven identificable.</p>
+<p><span id="problemas-de-integración"></span></p>
+<section id="fispm-c19-problemas-de-integraciuxf3n" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c19-problemas-de-integraciuxf3n">Problemas de integración</h3>
 <p><span id="fispm-t1-c19-e0027"></span></p>
-<p><strong>Ejercicio FPM-I-19-E27.</strong> Aplica P24 a una sección constante <span class="math inline">\(C&gt;0\)</span> y determina la ley angular y el radio de contacto equivalente.</p>
-<p><strong>Solución.</strong> La integral da <span class="math inline">\(b^2=2C(1+\cos\chi)=4C\cos^2(\chi/2)\)</span>. Como <span class="math inline">\(b\geq0\)</span>, <span class="math inline">\(b=2\sqrt C\cos(\chi/2)\)</span>. Coincide con la esfera rígida de radio <span class="math inline">\(a=2\sqrt C\)</span>. La sección total es <span class="math inline">\(4\pi C=\pi a^2\)</span>. Esto recupera una ley de preparación y salida dentro de las hipótesis de P24; no prueba que cualquier sistema con esa sección deba tener una superficie material rígida.</p>
+<p><strong>Ejercicio 19.27.</strong> Aplica proposición 19.24 a una sección constante <span class="math inline">\(C&gt;0\)</span> y determina la ley angular y el radio de contacto equivalente.</p>
+<p><strong>Solución.</strong> La integral da <span class="math inline">\(b^2=2C(1+\cos\chi)=4C\cos^2(\chi/2)\)</span>. Como <span class="math inline">\(b\geq0\)</span>, <span class="math inline">\(b=2\sqrt C\cos(\chi/2)\)</span>. Coincide con la esfera rígida de radio <span class="math inline">\(a=2\sqrt C\)</span>. La sección total es <span class="math inline">\(4\pi C=\pi a^2\)</span>. Esto recupera una ley de preparación y salida dentro de las hipótesis de la proposición 19.24; no prueba que cualquier sistema con esa sección deba tener una superficie material rígida.</p>
 <p><span id="fispm-t1-c19-e0028"></span></p>
-<p><strong>Ejercicio FPM-I-19-E28.</strong> Para atracción <span class="math inline">\(U=-\kappa/r\)</span> y superficie absorbente de radio <span class="math inline">\(R\)</span>, calcula la sección de trayectorias que regresan al infinito con <span class="math inline">\(\chi\geq\chi_0\)</span>, donde <span class="math inline">\(0&lt;\chi_0&lt;\pi\)</span>. Define <span class="math inline">\(B=\ell\cot(\chi_0/2)\)</span> y <span class="math inline">\(b_c=\sqrt{R^2+2\ell R}\)</span>.</p>
+<p><strong>Ejercicio 19.28.</strong> Para atracción <span class="math inline">\(U=-\kappa/r\)</span> y superficie absorbente de radio <span class="math inline">\(R\)</span>, calcula la sección de trayectorias que regresan al infinito con <span class="math inline">\(\chi\geq\chi_0\)</span>, donde <span class="math inline">\(0&lt;\chi_0&lt;\pi\)</span>. Define <span class="math inline">\(B=\ell\cot(\chi_0/2)\)</span> y <span class="math inline">\(b_c=\sqrt{R^2+2\ell R}\)</span>.</p>
 <p><strong>Solución.</strong> La condición angular de las trayectorias conservativas es <span class="math inline">\(b\leq B\)</span>. La superficie absorbe los impactos <span class="math inline">\(b\leq b_c\)</span>, con la convención de incluir el contacto. Las trayectorias de regreso aceptadas forman <span class="math inline">\(b_c&lt;b\leq B\)</span> si <span class="math inline">\(B&gt;b_c\)</span>. Por tanto <span class="math inline">\(\sigma_{\mathrm{regreso}}=\pi\max(B^2-b_c^2,0)\)</span>. No se puede asignar la ley de salida de la hipérbola a una trayectoria truncada por absorción. Los extremos puntuales no alteran el área.</p>
 <p><span id="fispm-t1-c19-e0029"></span></p>
-<p><strong>Ejercicio FPM-I-19-E29.</strong> Un blanco inicialmente quieto tiene masa <span class="math inline">\(m_2=2m_1\)</span>. En un encuentro de ángulo relativo <span class="math inline">\(\chi=2\pi/3\)</span>, calcula ambas velocidades finales, el ángulo del proyectil y las fracciones de energía.</p>
-<p><strong>Solución.</strong> P20 da <span class="math inline">\(\mathbf v_{1+}=(v/\sqrt3)\mathbf e_y\)</span> y <span class="math inline">\(\mathbf v_{2+}=(v/2)\mathbf e_x-(v\sqrt3/6)\mathbf e_y\)</span>. El proyectil sale a <span class="math inline">\(\theta=\pi/2\)</span> y conserva la fracción <span class="math inline">\(1/3\)</span> de su energía inicial. La norma al cuadrado de la velocidad del blanco es <span class="math inline">\(v^2/3\)</span>, pero su masa es doble; recibe la fracción <span class="math inline">\(2/3\)</span>. El momento final es <span class="math inline">\(m_1\mathbf v_{1+}+2m_1\mathbf v_{2+}=m_1v\mathbf e_x\)</span>, y ambas energías suman la incidente. Usar la energía relativa como si fuera toda la energía del laboratorio habría omitido el movimiento del centro de masas.</p>
+<p><strong>Ejercicio 19.29.</strong> Un blanco inicialmente quieto tiene masa <span class="math inline">\(m_2=2m_1\)</span>. En un encuentro de ángulo relativo <span class="math inline">\(\chi=2\pi/3\)</span>, calcula ambas velocidades finales, el ángulo del proyectil y las fracciones de energía.</p>
+<p><strong>Solución.</strong> proposición 19.20 da <span class="math inline">\(\mathbf v_{1+}=(v/\sqrt3)\mathbf e_y\)</span> y <span class="math inline">\(\mathbf v_{2+}=(v/2)\mathbf e_x-(v\sqrt3/6)\mathbf e_y\)</span>. El proyectil sale a <span class="math inline">\(\theta=\pi/2\)</span> y conserva la fracción <span class="math inline">\(1/3\)</span> de su energía inicial. La norma al cuadrado de la velocidad del blanco es <span class="math inline">\(v^2/3\)</span>, pero su masa es doble; recibe la fracción <span class="math inline">\(2/3\)</span>. El momento final es <span class="math inline">\(m_1\mathbf v_{1+}+2m_1\mathbf v_{2+}=m_1v\mathbf e_x\)</span>, y ambas energías suman la incidente. Usar la energía relativa como si fuera toda la energía del laboratorio habría omitido el movimiento del centro de masas.</p>
 <p><span id="fispm-t1-c19-e0030"></span></p>
-<p><strong>Ejercicio FPM-I-19-E30.</strong> Considera dos encuentros elásticos con el mismo <span class="math inline">\(\Delta\mathbf w\)</span> en marcos relacionados por una velocidad constante <span class="math inline">\(\mathbf u\)</span>, de modo que <span class="math inline">\(\mathbf V'=\mathbf V-\mathbf u\)</span>. Determina el cambio de la transferencia cinética del primer cuerpo y relaciónalo con su cambio de momento.</p>
-<p><strong>Solución.</strong> P25 da <span class="math inline">\(\Delta K_1'=\Delta K_1-\mu\mathbf u\cdot\Delta\mathbf w\)</span>. La descomposición de velocidades implica <span class="math inline">\(\Delta\mathbf p_1=m_1(m_2/M)\Delta\mathbf w=\mu\Delta\mathbf w\)</span>. Por tanto <span class="math inline">\(\Delta K_1'=\Delta K_1-\mathbf u\cdot\Delta\mathbf p_1\)</span>. Para el segundo cuerpo el cambio es opuesto, porque <span class="math inline">\(\Delta\mathbf p_2=-\Delta\mathbf p_1\)</span>. La transferencia individual depende del marco; la conservación de la suma es consistente con esa transformación.</p>
+<p><strong>Ejercicio 19.30.</strong> Considera dos encuentros elásticos con el mismo <span class="math inline">\(\Delta\mathbf w\)</span> en marcos relacionados por una velocidad constante <span class="math inline">\(\mathbf u\)</span>, de modo que <span class="math inline">\(\mathbf V'=\mathbf V-\mathbf u\)</span>. Determina el cambio de la transferencia cinética del primer cuerpo y relaciónalo con su cambio de momento.</p>
+<p><strong>Solución.</strong> proposición 19.25 da <span class="math inline">\(\Delta K_1'=\Delta K_1-\mu\mathbf u\cdot\Delta\mathbf w\)</span>. La descomposición de velocidades implica <span class="math inline">\(\Delta\mathbf p_1=m_1(m_2/M)\Delta\mathbf w=\mu\Delta\mathbf w\)</span>. Por tanto <span class="math inline">\(\Delta K_1'=\Delta K_1-\mathbf u\cdot\Delta\mathbf p_1\)</span>. Para el segundo cuerpo el cambio es opuesto, porque <span class="math inline">\(\Delta\mathbf p_2=-\Delta\mathbf p_1\)</span>. La transferencia individual depende del marco; la conservación de la suma es consistente con esa transformación.</p>
 <p>La preparación de un encuentro ha permitido enlazar conservación, reducción radial y geometría de medidas. Para pasar al siguiente capítulo cambiaremos una hipótesis que aquí sostuvo toda la descripción: el marco desde el que escribimos las ecuaciones. Un observador acelerado o en rotación introduce términos que deben derivarse de la transformación cinemática antes de interpretarse como fuerzas.</p>
-</section>
-<section id="notas-y-referencias" class="level3">
-<h3 class="anchored" data-anchor-id="notas-y-referencias">Notas y referencias</h3>
-<hr>
-<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-18-orbitas-de-kepler.html">Capítulo 18</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-20-movimiento-en-marcos-no-inerciales.html">Capítulo 20</a></p>
+<p><span id="fispm-c19-notas-y-referencias" data-label="fispm-c19-notas-y-referencias"></span></p>
 
 
 </section>
@@ -1137,7 +1140,7 @@ b(\chi)^2=2\int_\chi^\pi
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
 
 <ol>
-<li id="fn1"><p>La derivación de la dispersión inversa del radio se desarrolla aquí a partir de la reducción de dos cuerpos y la ecuación de Binet del capítulo I18. Como contraste de convenciones físicas: MIT OpenCourseWare, <em>Introduction to Applied Nuclear Physics</em>, capítulo 8, apartado de dispersión de Rutherford, https://ocw.mit.edu/courses/22-02-introduction-to-applied-nuclear-physics-spring-2012/f06e26889dd2332f1664a2df42e00ed4_MIT22_02S12_lec_ch8.pdf . Se emplean en este capítulo la energía relativa y la medida geométrica ordinaria de ángulo sólido.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>La derivación de la dispersión inversa del radio se desarrolla aquí a partir de la reducción de dos cuerpos y la ecuación de Binet del capítulo capítulo 18. Como contraste de convenciones físicas: MIT OpenCourseWare, <em>Introduction to Applied Nuclear Physics</em>, capítulo 8, apartado de dispersión de Rutherford, https://ocw.mit.edu/courses/22-02-introduction-to-applied-nuclear-physics-spring-2012/f06e26889dd2332f1664a2df42e00ed4_MIT22_02S12_lec_ch8.pdf . Se emplean en este capítulo la energía relativa y la medida geométrica ordinaria de ángulo sólido.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>MIT OpenCourseWare, <em>Experimental Physics I &amp; II</em>, guía experimental de dispersión de Rutherford, https://ocw.mit.edu/courses/8-13-14-experimental-physics-i-ii-junior-lab-fall-2016-spring-2017/f83bb6ada6c56da065d372126fff731c_MIT8_13-14F16-S17exp15.pdf . Las demostraciones y ejercicios presentes son desarrollos propios; la referencia proporciona contexto experimental para distinguir ley angular, aceptación y cuenta.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->

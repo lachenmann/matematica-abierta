@@ -82,6 +82,52 @@ window.MathJax.startup.pageReady = async function () {
   });
 })();
 </script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
 
   
   <script src="../assets/mathjax-offline-speech.js"></script><script>(function(){const fontRoot=new URL("../assets/mathjax-newcm",location.href).href;window.MathJax=Object.assign(window.MathJax||{}, {loader:{paths:{"mathjax-newcm":fontRoot}},startup:{ready:function(){MathJax.startup.defaultReady();MathJax.startup.adaptor.createWorker=window.__maCreateSpeechWorker;},pageReady:window.MathJax.startup.pageReady},output:{fontPath:fontRoot},chtml:{fontURL:fontRoot+"/chtml/woff2",dynamicPrefix:fontRoot+"/chtml/dynamic"}});})();</script><script defer src="../assets/mathjax/tex-chtml.js"></script>
@@ -114,7 +160,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../assets/87b4f5e6a115d51d92f5ea1a.css">
-<link rel="stylesheet" href="../assets/af3335218e8c9cef34486d70.css">
+<link rel="stylesheet" href="../assets/2360bb7a7cd037ebd3e65b07.css">
 <style id="ma-reader-mode-v1-style">/* Reader contract: app readerMode.ts, ma-reader-mode-v1. */
 
 #quarto-header,
@@ -366,7 +412,7 @@ body.quarto-page-columns #quarto-content,
     <div>
     <div class="quarto-title-meta-heading">Fecha de última modificación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">15 de octubre de 2026</p>
+      <p class="date-modified">17 de octubre de 2026</p>
     </div>
   </div>
     
@@ -378,519 +424,479 @@ body.quarto-page-columns #quarto-content,
 
 
 <p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-21-cuerpo-rigido-cinematica-rotaciones-y-tensor-de-inercia.html">Capítulo 21</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-23-oscilaciones-lineales.html">Capítulo 23</a></p>
-<p>Un cuerpo que gira puede conservar su momento angular mientras cambia la dirección de su velocidad angular. Una rueda sostenida por un eje necesita reacciones que no se ven en el balance escalar del motor. Un trompo inclinado puede mantener una inclinación constante o variar entre dos alturas. Para distinguir estos movimientos hay que reunir la distribución de masa de I21 con el balance de torque.</p>
+<p><span id="fispm-c22-cuerpo-ruxedgido-dinuxe1mica"></span></p>
+<p>Un cuerpo que gira puede conservar su momento angular mientras cambia la dirección de su velocidad angular. Una rueda sostenida por un eje necesita reacciones que no se ven en el balance escalar del motor. Un trompo inclinado puede mantener una inclinación constante o variar entre dos alturas. Para distinguir estos movimientos hay que reunir la distribución de masa del capítulo 21 con el balance de torque.</p>
 <p>La dificultad principal aparece al escoger los ejes. En el espacio, la derivada del momento angular es el torque. En ejes fijados al cuerpo, el tensor permanece constante, pero la derivada de sus componentes incluye el transporte de la base. Las ecuaciones de Euler nacen de escribir coherentemente ambos hechos. Sus términos cruzados contienen buena parte de la dinámica que una fórmula de un solo eje deja fuera.</p>
-<p>Supondremos masas constantes, rigidez ideal, tensor definido positivo y fuerzas cuyo torque interno total se cancela. Un sistema discreto de fuerzas internas centrales por parejas satisface esa última condición. Los momentos principales serán positivos; las distribuciones degeneradas de I21 necesitan un tratamiento separado cuando una ecuación requiera dividir por un momento nulo. El giro se estudia respecto del centro de masa o de un punto corporal fijo en un marco inercial, según se declare.</p>
+<p>Supondremos masas constantes, rigidez ideal, tensor definido positivo y fuerzas cuyo torque interno total se cancela. Un sistema discreto de fuerzas internas centrales por parejas satisface esa última condición. Los momentos principales serán positivos; las distribuciones degeneradas del capítulo 21 necesitan un tratamiento separado cuando una ecuación requiera dividir por un momento nulo. El giro se estudia respecto del centro de masa o de un punto corporal fijo en un marco inercial, según se declare.</p>
+<p><span id="escoger-el-punto-antes-de-derivar-el-momento"></span></p>
 <p><span id="fispm-t1-c22-s01"></span></p>
 <p><span id="fpm-i-22-s01"></span></p>
-<section id="escoger-el-punto-antes-de-derivar-el-momento" class="level2">
-<h2 class="anchored" data-anchor-id="escoger-el-punto-antes-de-derivar-el-momento">§1. Escoger el punto antes de derivar el momento</h2>
+<section id="fispm-c22-escoger-el-punto-antes-de-derivar-el-momento" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c22-escoger-el-punto-antes-de-derivar-el-momento">1. Escoger el punto antes de derivar el momento</h2>
 <p>El momento angular depende del punto sobre el que se calcula. Para el cuerpo libre, el centro de masa separa el movimiento interno. Para un trompo sujeto, el pivote fijo permite incluir la gravedad y eliminar del torque la reacción aplicada en ese punto. Estas dos elecciones tienen justificaciones distintas.</p>
 <p><span id="fispm-t1-c22-d0001"></span></p>
-<p><strong>Definición FPM-I-22-D01 — Torque externo sobre el centro o el pivote.</strong> Escribimos <span class="math inline">\(\boldsymbol\tau_C=\sum_i(\mathbf x_i-\mathbf C)\times\mathbf F_i^{\mathrm{ext}}\)</span> para el centro de masa. Sobre un pivote <span class="math inline">\(O\)</span>, el torque es <span class="math inline">\(\boldsymbol\tau_O=\sum_i(\mathbf x_i-O)\times\mathbf F_i^{\mathrm{ext}}\)</span>. Una fuerza aplicada exactamente en el punto elegido tiene brazo nulo; un par de fuerzas puede conservar torque aunque la fuerza neta sea cero.</p>
+<p><strong>Definición 22.1 — Torque externo sobre el centro o el pivote.</strong> Escribimos <span class="math inline">\(\boldsymbol\tau_C=\sum_i(\mathbf x_i-\mathbf C)\times\mathbf F_i^{\mathrm{ext}}\)</span> para el centro de masa. Sobre un pivote <span class="math inline">\(O\)</span>, el torque es <span class="math inline">\(\boldsymbol\tau_O=\sum_i(\mathbf x_i-O)\times\mathbf F_i^{\mathrm{ext}}\)</span>. Una fuerza aplicada exactamente en el punto elegido tiene brazo nulo; un par de fuerzas puede conservar torque aunque la fuerza neta sea cero.</p>
 <p><span id="fispm-t1-c22-p0001"></span></p>
-<p><strong>Proposición FPM-I-22-P01 — Balance del momento interno central.</strong> Para un cuerpo de masa constante, cuyo torque interno total es cero,</p>
-<p><span class="math display">\[
-\frac{d\mathbf H_C}{dt}=\boldsymbol\tau_C,
-\qquad \mathbf H_C=\int(\mathbf x-\mathbf C)\times(\mathbf v-\mathbf V)dm.
-\]</span></p>
+<p><strong>Proposición 22.1 — Balance del momento interno central.</strong> Para un cuerpo de masa constante, cuyo torque interno total es cero,</p>
+<p><span class="math display">\[\frac{d\mathbf H_C}{dt}=\boldsymbol\tau_C, \qquad \mathbf H_C=\int(\mathbf x-\mathbf C)\times(\mathbf v-\mathbf V)dm.\]</span></p>
 <p>La derivada de la izquierda se toma en el marco inercial.</p>
 <p><strong>Demostración.</strong> En un sistema discreto, pongamos <span class="math inline">\(\mathbf r_i=\mathbf x_i-\mathbf C\)</span>. Derivar cada producto da <span class="math inline">\(\dot{\mathbf r}_i\times m_i\dot{\mathbf r}_i=0\)</span> y <span class="math inline">\(\mathbf r_i\times m_i(\mathbf a_i-\ddot{\mathbf C})\)</span>. El término con <span class="math inline">\(\ddot{\mathbf C}\)</span> se anula al sumar porque <span class="math inline">\(\sum_i m_i\mathbf r_i=0\)</span>. Las aceleraciones restantes se sustituyen mediante Newton. Los torques internos se cancelan por hipótesis y queda el externo. Para una distribución continua suficientemente regular, el mismo balance se formula con la integral de fuerzas y los torques internos netos; requiere las hipótesis de intercambio de derivada e integral o su balance integral equivalente. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c22-p0002"></span></p>
-<p><strong>Proposición FPM-I-22-P02 — Balance sobre un punto corporal fijo.</strong> Si un punto corporal <span class="math inline">\(O\)</span> permanece fijo en el marco inercial, entonces</p>
-<p><span class="math display">\[
-\frac{d\mathbf L_O}{dt}=\boldsymbol\tau_O,
-\qquad \mathbf L_O=I_O(t)\boldsymbol\omega.
-\]</span></p>
+<p><strong>Proposición 22.2 — Balance sobre un punto corporal fijo.</strong> Si un punto corporal <span class="math inline">\(O\)</span> permanece fijo en el marco inercial, entonces</p>
+<p><span class="math display">\[\frac{d\mathbf L_O}{dt}=\boldsymbol\tau_O, \qquad \mathbf L_O=I_O(t)\boldsymbol\omega.\]</span></p>
 <p>Una reacción puntual en <span class="math inline">\(O\)</span> no contribuye al torque sobre <span class="math inline">\(O\)</span>.</p>
-<p><strong>Demostración.</strong> Con <span class="math inline">\(O\)</span> fijo, derivar <span class="math inline">\(\int(\mathbf x-O)\times\mathbf v\,dm\)</span> deja <span class="math inline">\(\int(\mathbf x-O)\times\mathbf a\,dm\)</span>, porque <span class="math inline">\(\mathbf v\times\mathbf v=0\)</span>. El balance de fuerzas y la cancelación interna dan el torque externo. La velocidad de un punto del cuerpo es <span class="math inline">\(\boldsymbol\omega\times(\mathbf x-O)\)</span>; la identidad de producto triple usada en I21 convierte la integral en <span class="math inline">\(I_O\boldsymbol\omega\)</span>. Una fuerza en <span class="math inline">\(O\)</span> tiene brazo cero. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> Con <span class="math inline">\(O\)</span> fijo, derivar <span class="math inline">\(\int(\mathbf x-O)\times\mathbf v\,dm\)</span> deja <span class="math inline">\(\int(\mathbf x-O)\times\mathbf a\,dm\)</span>, porque <span class="math inline">\(\mathbf v\times\mathbf v=0\)</span>. El balance de fuerzas y la cancelación interna dan el torque externo. La velocidad de un punto del cuerpo es <span class="math inline">\(\boldsymbol\omega\times(\mathbf x-O)\)</span>; la identidad de producto triple usada en el capítulo 21 convierte la integral en <span class="math inline">\(I_O\boldsymbol\omega\)</span>. Una fuerza en <span class="math inline">\(O\)</span> tiene brazo cero. <span class="math inline">\(\square\)</span></p>
 <p>Un punto que está instantáneamente quieto no cumple necesariamente la hipótesis de pivote fijo durante un intervalo. El contacto de una rueda que rueda exige atender al cambio de punto y a su aceleración. Tampoco un cojinete real se reduce siempre a una fuerza puntual: un soporte puede ejercer un par, y ese torque debe conservarse si el modelo lo incluye.</p>
 <p><span id="fispm-t1-c22-mp0001"></span></p>
-<p><strong>Principio metodológico FPM-I-22-MP01.</strong> Declara el punto del balance y las reacciones que elimina. La aceleración del centro de masa y la fijación de un pivote justifican simplificaciones diferentes.</p>
-<section id="ejercicios" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios">Ejercicios</h3>
+<p><strong>Principio metodológico 22.1.</strong> Declara el punto del balance y las reacciones que elimina. La aceleración del centro de masa y la fijación de un pivote justifican simplificaciones diferentes.</p>
+<p><span id="ejercicios"></span></p>
+<section id="fispm-c22-ejercicios" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c22-ejercicios">Ejercicios</h3>
 <p><span id="fispm-t1-c22-e0001"></span></p>
-<p><strong>Ejercicio FPM-I-22-E01.</strong> Dos fuerzas opuestas <span class="math inline">\(\pm F\mathbf e_y\)</span> se aplican en puntos situados a <span class="math inline">\(\pm a\mathbf e_x\)</span> respecto del centro. Calcula fuerza neta y torque.</p>
+<p><span id="fispm-t1-c22-e0022"></span></p>
+<p><strong>Ejercicio 22.1.</strong> Dos fuerzas opuestas <span class="math inline">\(\pm F\mathbf e_y\)</span> se aplican en puntos situados a <span class="math inline">\(\pm a\mathbf e_x\)</span> respecto del centro. Calcula fuerza neta y torque.</p>
 <p><strong>Solución.</strong> La fuerza neta es cero. El torque del punto positivo es <span class="math inline">\(aF\mathbf e_z\)</span> y el del negativo también, porque cambian simultáneamente brazo y fuerza. El torque total es <span class="math inline">\(2aF\mathbf e_z\)</span>. El centro no recibe aceleración por ese par, pero el momento interno puede cambiar.</p>
 <p><span id="fispm-t1-c22-e0002"></span></p>
-<p><strong>Ejercicio FPM-I-22-E02.</strong> Una masa rígidamente distribuida tiene centro <span class="math inline">\(G=O+l\mathbf n\)</span> y está sujeta a un pivote fijo <span class="math inline">\(O\)</span>. Un campo gravitatorio uniforme ejerce gravedad <span class="math inline">\(-Mg\mathbf e_z\)</span>. Encuentra su torque y explica qué datos no determina este cálculo.</p>
+<p><strong>Ejercicio 22.2.</strong> Una masa rígidamente distribuida tiene centro <span class="math inline">\(G=O+l\mathbf n\)</span> y está sujeta a un pivote fijo <span class="math inline">\(O\)</span>. Un campo gravitatorio uniforme ejerce gravedad <span class="math inline">\(-Mg\mathbf e_z\)</span>. Encuentra su torque y explica qué datos no determina este cálculo.</p>
 <p><strong>Solución.</strong> La gravedad total actúa para el torque como <span class="math inline">\(-Mg\mathbf e_z\)</span> en el centro, de modo que <span class="math inline">\(\boldsymbol\tau_O=-Mgl\mathbf n\times\mathbf e_z=Mgl\mathbf e_z\times\mathbf n\)</span>. El pivote puntual no añade torque sobre sí mismo. El cálculo no determina por sí solo la reacción del soporte; para ella hacen falta la aceleración del centro y el balance de fuerza neta. También hace falta el tensor sobre <span class="math inline">\(O\)</span> para obtener la evolución angular.</p>
+<p><span id="derivar-en-ejes-que-giran-con-el-cuerpo"></span></p>
 <p><span id="fispm-t1-c22-s02"></span></p>
 <p><span id="fpm-i-22-s02"></span></p>
 </section>
 </section>
-<section id="derivar-en-ejes-que-giran-con-el-cuerpo" class="level2">
-<h2 class="anchored" data-anchor-id="derivar-en-ejes-que-giran-con-el-cuerpo">§2. Derivar en ejes que giran con el cuerpo</h2>
+<section id="fispm-c22-derivar-en-ejes-que-giran-con-el-cuerpo" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c22-derivar-en-ejes-que-giran-con-el-cuerpo">2. Derivar en ejes que giran con el cuerpo</h2>
 <p>Sea <span class="math inline">\(I\)</span> la matriz corporal constante del tensor sobre el punto del balance. El momento corporal es <span class="math inline">\(I\boldsymbol\Omega\)</span>, mientras el momento físico es <span class="math inline">\(R I\boldsymbol\Omega\)</span>. La derivada de ese producto debe conservar el término de transporte, incluso si el tensor corporal es diagonal.</p>
 <p><span id="fispm-t1-c22-d0002"></span></p>
-<p><strong>Definición FPM-I-22-D02 — Estado angular y torque corporal.</strong> El estado angular se describe mediante <span class="math inline">\(R(t)\in SO(3)\)</span> y <span class="math inline">\(\boldsymbol\Omega(t)\)</span>, con <span class="math inline">\(\dot R=R[\boldsymbol\Omega]_\times\)</span>. El torque corporal es <span class="math inline">\(\mathbf T=R^T\boldsymbol\tau\)</span>. La matriz <span class="math inline">\(I\)</span> se calcula sobre el centro de masa en P01 o sobre el pivote fijo en P02.</p>
+<p><strong>Definición 22.2 — Estado angular y torque corporal.</strong> El estado angular se describe mediante <span class="math inline">\(R(t)\in SO(3)\)</span> y <span class="math inline">\(\boldsymbol\Omega(t)\)</span>, con <span class="math inline">\(\dot R=R[\boldsymbol\Omega]_\times\)</span>. El torque corporal es <span class="math inline">\(\mathbf T=R^T\boldsymbol\tau\)</span>. La matriz <span class="math inline">\(I\)</span> se calcula sobre el centro de masa en la proposición 22.1 o sobre el pivote fijo en la proposición 22.2.</p>
 <p><span id="fispm-t1-c22-p0003"></span></p>
-<p><strong>Proposición FPM-I-22-P03 — Ecuación vectorial de Euler.</strong> En cualquiera de esos dos casos,</p>
-<p><span class="math display">\[
-I\dot{\boldsymbol\Omega}+\boldsymbol\Omega\times(I\boldsymbol\Omega)=\mathbf T.
-\]</span></p>
-<p><strong>Demostración.</strong> El balance inercial es <span class="math inline">\(d(RI\boldsymbol\Omega)/dt=\boldsymbol\tau\)</span>. La regla de transporte de I20 da <span class="math inline">\(R[I\dot{\boldsymbol\Omega}+\boldsymbol\Omega\times(I\boldsymbol\Omega)]\)</span>, porque <span class="math inline">\(I\)</span> es constante en el cuerpo. Multiplicar por <span class="math inline">\(R^T\)</span> produce la ecuación. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 22.3 — Ecuación vectorial de Euler.</strong> En cualquiera de esos dos casos,</p>
+<p><span class="math display">\[I\dot{\boldsymbol\Omega}+\boldsymbol\Omega\times(I\boldsymbol\Omega)=\mathbf T.\]</span></p>
+<p><strong>Demostración.</strong> El balance inercial es <span class="math inline">\(d(RI\boldsymbol\Omega)/dt=\boldsymbol\tau\)</span>. La regla de transporte del capítulo 20 da <span class="math inline">\(R[I\dot{\boldsymbol\Omega}+\boldsymbol\Omega\times(I\boldsymbol\Omega)]\)</span>, porque <span class="math inline">\(I\)</span> es constante en el cuerpo. Multiplicar por <span class="math inline">\(R^T\)</span> produce la ecuación. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c22-p0004"></span></p>
-<p><strong>Proposición FPM-I-22-P04 — Componentes en una base principal.</strong> Si <span class="math inline">\(I=\operatorname{diag}(J_1,J_2,J_3)\)</span>, las ecuaciones son</p>
-<p><span class="math display">\[
-\begin{aligned}
-J_1\dot\Omega_1+(J_3-J_2)\Omega_2\Omega_3&amp;=T_1,\\
-J_2\dot\Omega_2+(J_1-J_3)\Omega_3\Omega_1&amp;=T_2,\\
-J_3\dot\Omega_3+(J_2-J_1)\Omega_1\Omega_2&amp;=T_3.
-\end{aligned}
-\]</span></p>
-<p><strong>Demostración.</strong> El producto <span class="math inline">\(I\boldsymbol\Omega\)</span> tiene componentes <span class="math inline">\(J_i\Omega_i\)</span>. La primera componente de <span class="math inline">\(\boldsymbol\Omega\times I\boldsymbol\Omega\)</span> es <span class="math inline">\(\Omega_2J_3\Omega_3-\Omega_3J_2\Omega_2=(J_3-J_2)\Omega_2\Omega_3\)</span>. Las otras resultan por las permutaciones cíclicas que conservan la orientación del producto vectorial. Sustituir en P03 da las tres igualdades. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 22.4 — Componentes en una base principal.</strong> Si <span class="math inline">\(I=\operatorname{diag}(J_1,J_2,J_3)\)</span>, las ecuaciones son</p>
+<p><span class="math display">\[\begin{aligned} J_1\dot\Omega_1+(J_3-J_2)\Omega_2\Omega_3&amp;=T_1,\\ J_2\dot\Omega_2+(J_1-J_3)\Omega_3\Omega_1&amp;=T_2,\\ J_3\dot\Omega_3+(J_2-J_1)\Omega_1\Omega_2&amp;=T_3. \end{aligned}\]</span></p>
+<p><strong>Demostración.</strong> El producto <span class="math inline">\(I\boldsymbol\Omega\)</span> tiene componentes <span class="math inline">\(J_i\Omega_i\)</span>. La primera componente de <span class="math inline">\(\boldsymbol\Omega\times I\boldsymbol\Omega\)</span> es <span class="math inline">\(\Omega_2J_3\Omega_3-\Omega_3J_2\Omega_2=(J_3-J_2)\Omega_2\Omega_3\)</span>. Las otras resultan por las permutaciones cíclicas que conservan la orientación del producto vectorial. Sustituir en la proposición 22.3 da las tres igualdades. <span class="math inline">\(\square\)</span></p>
 <p>Resolver esas ecuaciones da las componentes corporales de la velocidad angular. Para reconstruir la orientación hay que integrar además <span class="math inline">\(\dot R=R[\boldsymbol\Omega]_\times\)</span> con una orientación inicial. El mismo historial corporal puede corresponder a orientaciones espaciales diferentes si se cambia ese dato inicial. En particular, un vector angular que cambia en el cuerpo puede estar asociado a un momento físico constante.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p><span id="fispm-t1-c22-mp0002"></span></p>
-<p><strong>Principio metodológico FPM-I-22-MP02.</strong> Conserva el transporte de la base al derivar el momento. Después de resolver Euler, reconstruye la orientación con sus propios datos iniciales.</p>
-<section id="ejercicios-1" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-1">Ejercicios</h3>
+<p><strong>Principio metodológico 22.2.</strong> Conserva el transporte de la base al derivar el momento. Después de resolver Euler, reconstruye la orientación con sus propios datos iniciales.</p>
+<p><span id="ejercicios-1"></span></p>
+<section id="fispm-c22-ejercicios-1" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c22-ejercicios-1">Ejercicios</h3>
 <p><span id="fispm-t1-c22-e0003"></span></p>
-<p><strong>Ejercicio FPM-I-22-E03.</strong> Si <span class="math inline">\(J_1=J_2=J_3=J&gt;0\)</span>, escribe Euler y resuelve el caso de torque corporal constante <span class="math inline">\(\mathbf T_0\)</span>.</p>
+<p><strong>Ejercicio 22.3.</strong> Si <span class="math inline">\(J_1=J_2=J_3=J&gt;0\)</span>, escribe Euler y resuelve el caso de torque corporal constante <span class="math inline">\(\mathbf T_0\)</span>.</p>
 <p><strong>Solución.</strong> Como <span class="math inline">\(I\boldsymbol\Omega=J\boldsymbol\Omega\)</span>, el producto cruzado se anula y <span class="math inline">\(J\dot{\boldsymbol\Omega}=\mathbf T_0\)</span>. Así <span class="math inline">\(\boldsymbol\Omega(t)=\boldsymbol\Omega(0)+t\mathbf T_0/J\)</span>. «Torque corporal constante» prescribe un vector unido a los ejes del cuerpo; su vector inercial es <span class="math inline">\(R(t)\mathbf T_0\)</span> y puede variar. La orientación se obtiene resolviendo la ecuación de <span class="math inline">\(R\)</span> con esta velocidad angular.</p>
 <p><span id="fispm-t1-c22-e0004"></span></p>
-<p><strong>Ejercicio FPM-I-22-E04.</strong> Para momentos <span class="math inline">\((2J,3J,4J)\)</span>, torque cero y <span class="math inline">\(\boldsymbol\Omega(0)=(u,u,0)\)</span>, calcula la aceleración angular corporal inicial.</p>
-<p><strong>Solución.</strong> P04 da <span class="math inline">\(\dot\Omega_1(0)=\dot\Omega_2(0)=0\)</span> porque contienen <span class="math inline">\(\Omega_3\)</span>. La tercera es <span class="math inline">\(\dot\Omega_3(0)=-(3J-2J)u^2/(4J)=-u^2/4\)</span>. Aparece una tercera componente aunque inicialmente fuera cero. La conservación del momento inercial no impone conservación de cada componente corporal.</p>
+<p><strong>Ejercicio 22.4.</strong> Para momentos <span class="math inline">\((2J,3J,4J)\)</span>, torque cero y <span class="math inline">\(\boldsymbol\Omega(0)=(u,u,0)\)</span>, calcula la aceleración angular corporal inicial.</p>
+<p><strong>Solución.</strong> proposición 22.4 da <span class="math inline">\(\dot\Omega_1(0)=\dot\Omega_2(0)=0\)</span> porque contienen <span class="math inline">\(\Omega_3\)</span>. La tercera es <span class="math inline">\(\dot\Omega_3(0)=-(3J-2J)u^2/(4J)=-u^2/4\)</span>. Aparece una tercera componente aunque inicialmente fuera cero. La conservación del momento inercial no impone conservación de cada componente corporal.</p>
+<p><span id="torque-y-potencia-responden-a-preguntas-distintas"></span></p>
 <p><span id="fispm-t1-c22-s03"></span></p>
 <p><span id="fpm-i-22-s03"></span></p>
 </section>
 </section>
-<section id="torque-y-potencia-responden-a-preguntas-distintas" class="level2">
-<h2 class="anchored" data-anchor-id="torque-y-potencia-responden-a-preguntas-distintas">§3. Torque y potencia responden a preguntas distintas</h2>
+<section id="fispm-c22-torque-y-potencia-responden-a-preguntas-distintas" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c22-torque-y-potencia-responden-a-preguntas-distintas">3. Torque y potencia responden a preguntas distintas</h2>
 <p>Un torque perpendicular a la velocidad angular puede cambiar el momento sin aportar potencia de giro. Los cojinetes de un eje impuesto ofrecen un ejemplo: pueden sostener torques transversales que cambian la dirección del momento, mientras el motor controla la componente axial que cambia la energía.</p>
+<p><span id="fig:I-22-N01"></span></p>
+<figure id="fig-fpm-v04-i-22-n01" class="fpm-v04-panel figure">
+<p><a href="../assets/5d959c81a4d9503a32746a64.svg" class="lightbox" data-gallery="fpm-v04-c22"><img src="../assets/5d959c81a4d9503a32746a64.svg" alt="Torque sin potencia instantánea. Diagrama del capítulo 22; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="340" height="398" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 22.1.</strong> Un torque perpendicular a <span class="math inline">\(\omega\)</span> cambia el momento angular y tiene potencia instantánea nula. La velocidad angular se dibuja discontinua para distinguirla del torque. Véase §<a href="#fispm-c22-torque-y-potencia-responden-a-preguntas-distintas">3</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c22-p0005"></span></p>
-<p><strong>Proposición FPM-I-22-P05 — Potencia del torque.</strong> Para <span class="math inline">\(K_{\mathrm{rot}}=\boldsymbol\Omega^TI\boldsymbol\Omega/2\)</span>,</p>
-<p><span class="math display">\[
-\dot K_{\mathrm{rot}}=\mathbf T\cdot\boldsymbol\Omega
-=\boldsymbol\tau\cdot\boldsymbol\omega.
-\]</span></p>
+<p><strong>Proposición 22.5 — Potencia del torque.</strong> Para <span class="math inline">\(K_{\mathrm{rot}}=\boldsymbol\Omega^TI\boldsymbol\Omega/2\)</span>,</p>
+<p><span class="math display">\[\dot K_{\mathrm{rot}}=\mathbf T\cdot\boldsymbol\Omega =\boldsymbol\tau\cdot\boldsymbol\omega.\]</span></p>
 <p>En un pivote fijo, esta es la potencia cinética total; en el centro de masa es la potencia de la parte interna de giro.</p>
-<p><strong>Demostración.</strong> La simetría y constancia corporal de <span class="math inline">\(I\)</span> dan <span class="math inline">\(\dot K_{\mathrm{rot}}=\boldsymbol\Omega\cdot I\dot{\boldsymbol\Omega}\)</span>. Multiplicar P03 por <span class="math inline">\(\boldsymbol\Omega\)</span> elimina el término cruzado por perpendicularidad. La rotación <span class="math inline">\(R\)</span> conserva el producto escalar y da la segunda expresión. La identificación de energía total o interna sigue de las descomposiciones de I21. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> La simetría y constancia corporal de <span class="math inline">\(I\)</span> dan <span class="math inline">\(\dot K_{\mathrm{rot}}=\boldsymbol\Omega\cdot I\dot{\boldsymbol\Omega}\)</span>. Multiplicar proposición 22.3 por <span class="math inline">\(\boldsymbol\Omega\)</span> elimina el término cruzado por perpendicularidad. La rotación <span class="math inline">\(R\)</span> conserva el producto escalar y da la segunda expresión. La identificación de energía total o interna sigue de las descomposiciones del capítulo 21. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c22-p0006"></span></p>
-<p><strong>Proposición FPM-I-22-P06 — Balance axial bajo un eje fijo impuesto.</strong> Si un cuerpo gira con <span class="math inline">\(\boldsymbol\Omega=\omega(t)\mathbf n\)</span> sobre un eje corporal unitario que permanece fijo en el espacio, su momento escalar axial es <span class="math inline">\(J_n=\mathbf n^TI\mathbf n\)</span> y</p>
-<p><span class="math display">\[
-\boldsymbol\tau\cdot(R\mathbf n)=J_n\dot\omega.
-\]</span></p>
+<p><strong>Proposición 22.6 — Balance axial bajo un eje fijo impuesto.</strong> Si un cuerpo gira con <span class="math inline">\(\boldsymbol\Omega=\omega(t)\mathbf n\)</span> sobre un eje corporal unitario que permanece fijo en el espacio, su momento escalar axial es <span class="math inline">\(J_n=\mathbf n^TI\mathbf n\)</span> y</p>
+<p><span class="math display">\[\boldsymbol\tau\cdot(R\mathbf n)=J_n\dot\omega.\]</span></p>
 <p>El torque corporal completo requerido es <span class="math inline">\(\mathbf T=\dot\omega I\mathbf n+\omega^2\mathbf n\times(I\mathbf n)\)</span>.</p>
-<p><strong>Demostración.</strong> Sustituir <span class="math inline">\(\boldsymbol\Omega=\omega\mathbf n\)</span> en P03 da la fórmula vectorial. Multiplicarla por <span class="math inline">\(\mathbf n\)</span> elimina el producto cruzado y deja <span class="math inline">\(J_n\dot\omega\)</span>. Transformar ambos vectores a la base inercial conserva esa proyección. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> Sustituir <span class="math inline">\(\boldsymbol\Omega=\omega\mathbf n\)</span> en la proposición 22.3 da la fórmula vectorial. Multiplicarla por <span class="math inline">\(\mathbf n\)</span> elimina el producto cruzado y deja <span class="math inline">\(J_n\dot\omega\)</span>. Transformar ambos vectores a la base inercial conserva esa proyección. <span class="math inline">\(\square\)</span></p>
 <p>Si <span class="math inline">\(\mathbf n\)</span> no es principal, incluso una rapidez constante puede requerir torque transversal. El balance escalar axial no lo calcula. La condición de eje fijo impone restricciones al cuerpo y sus reacciones completan el balance vectorial. Esta diferencia será importante al interpretar una rueda equilibrada sobre cojinetes.</p>
 <p><span id="fispm-t1-c22-mp0003"></span></p>
-<p><strong>Principio metodológico FPM-I-22-MP03.</strong> Usa potencia para cambios de energía y el balance vectorial para cambios de momento. La proyección axial no elimina los torques de los soportes.</p>
-<section id="ejercicios-2" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-2">Ejercicios</h3>
+<p><strong>Principio metodológico 22.3.</strong> Usa potencia para cambios de energía y el balance vectorial para cambios de momento. La proyección axial no elimina los torques de los soportes.</p>
+<p><span id="ejercicios-2"></span></p>
+<section id="fispm-c22-ejercicios-2" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c22-ejercicios-2">Ejercicios</h3>
 <p><span id="fispm-t1-c22-e0005"></span></p>
-<p><strong>Ejercicio FPM-I-22-E05.</strong> Un cuerpo tiene <span class="math inline">\(I=\operatorname{diag}(2J,3J,4J)\)</span> y gira uniformemente con <span class="math inline">\(\boldsymbol\Omega=(u,u,0)\)</span>. Encuentra el torque necesario y su potencia.</p>
-<p><strong>Solución.</strong> Como las componentes angulares son constantes, P03 da <span class="math inline">\(\mathbf T=\boldsymbol\Omega\times I\boldsymbol\Omega=Ju^2\mathbf e_3\)</span>. Su producto escalar con <span class="math inline">\((u,u,0)\)</span> es cero. El momento físico cambia de dirección por la rotación del cuerpo, aunque su energía de giro permanezca constante. Omitir este torque convertiría el movimiento impuesto en el giro libre diferente de E04.</p>
+<p><strong>Ejercicio 22.5.</strong> Un cuerpo tiene <span class="math inline">\(I=\operatorname{diag}(2J,3J,4J)\)</span> y gira uniformemente con <span class="math inline">\(\boldsymbol\Omega=(u,u,0)\)</span>. Encuentra el torque necesario y su potencia.</p>
+<p><strong>Solución.</strong> Como las componentes angulares son constantes, proposición 22.3 da <span class="math inline">\(\mathbf T=\boldsymbol\Omega\times I\boldsymbol\Omega=Ju^2\mathbf e_3\)</span>. Su producto escalar con <span class="math inline">\((u,u,0)\)</span> es cero. El momento físico cambia de dirección por la rotación del cuerpo, aunque su energía de giro permanezca constante. Omitir este torque convertiría el movimiento impuesto en el giro libre diferente del ejercicio 22.4.</p>
 <p><span id="fispm-t1-c22-e0006"></span></p>
-<p><strong>Ejercicio FPM-I-22-E06.</strong> Un rotor gira sobre un eje principal de momento <span class="math inline">\(J\)</span>. Recibe torque axial <span class="math inline">\(T(t)=T_0t/t_0\)</span>, con <span class="math inline">\(t_0&gt;0\)</span>, y parte de reposo. Encuentra rapidez y trabajo hasta tiempo <span class="math inline">\(t_0\)</span>.</p>
+<p><strong>Ejercicio 22.6.</strong> Un rotor gira sobre un eje principal de momento <span class="math inline">\(J\)</span>. Recibe torque axial <span class="math inline">\(T(t)=T_0t/t_0\)</span>, con <span class="math inline">\(t_0&gt;0\)</span>, y parte de reposo. Encuentra rapidez y trabajo hasta tiempo <span class="math inline">\(t_0\)</span>.</p>
 <p><strong>Solución.</strong> El balance es <span class="math inline">\(J\dot\omega=T_0t/t_0\)</span>, por lo que <span class="math inline">\(\omega(t)=T_0t^2/(2Jt_0)\)</span>. En <span class="math inline">\(t_0\)</span>, la energía es <span class="math inline">\(J[T_0t_0/(2J)]^2/2=T_0^2t_0^2/(8J)\)</span>. La integral de potencia <span class="math inline">\(\int_0^{t_0}T(t)\omega(t)dt\)</span> da <span class="math inline">\([T_0^2/(2Jt_0^2)]\int_0^{t_0}t^3dt\)</span>, que coincide con esa energía.</p>
+<p><span id="lo-que-conserva-un-giro-sin-torque"></span></p>
 <p><span id="fispm-t1-c22-s04"></span></p>
 <p><span id="fpm-i-22-s04"></span></p>
 </section>
 </section>
-<section id="lo-que-conserva-un-giro-sin-torque" class="level2">
-<h2 class="anchored" data-anchor-id="lo-que-conserva-un-giro-sin-torque">§4. Lo que conserva un giro sin torque</h2>
+<section id="fispm-c22-lo-que-conserva-un-giro-sin-torque" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c22-lo-que-conserva-un-giro-sin-torque">4. Lo que conserva un giro sin torque</h2>
 <p>Antes de resolver una trayectoria libre conviene identificar sus constantes. En el marco inercial el momento angular no cambia. En el cuerpo puede moverse sobre la intersección de una esfera de momento y una superficie de energía. Esa geometría limitará las perturbaciones de ciertos giros.</p>
 <p><span id="fispm-t1-c22-d0003"></span></p>
-<p><strong>Definición FPM-I-22-D03 — Giro libre.</strong> Llamaremos libre al giro con torque externo nulo sobre el punto del balance. No se exige que la fuerza externa neta sobre el centro de masa sea cero: un campo uniforme aplicado en el centro puede trasladarlo sin añadir torque central.</p>
+<p><strong>Definición 22.3 — Giro libre.</strong> Llamaremos libre al giro con torque externo nulo sobre el punto del balance. No se exige que la fuerza externa neta sobre el centro de masa sea cero: un campo uniforme aplicado en el centro puede trasladarlo sin añadir torque central.</p>
 <p><span id="fispm-t1-c22-p0007"></span></p>
-<p><strong>Proposición FPM-I-22-P07 — Invariantes del giro libre.</strong> Para torque cero se conservan</p>
-<p><span class="math display">\[
-K=\frac12\sum_iJ_i\Omega_i^2,
-\qquad H^2=\sum_iJ_i^2\Omega_i^2.
-\]</span></p>
+<p><strong>Proposición 22.7 — Invariantes del giro libre.</strong> Para torque cero se conservan</p>
+<p><span class="math display">\[K=\frac12\sum_iJ_i\Omega_i^2, \qquad H^2=\sum_iJ_i^2\Omega_i^2.\]</span></p>
 <p>El vector inercial <span class="math inline">\(\mathbf H=RI\boldsymbol\Omega\)</span> es constante.</p>
-<p><strong>Demostración.</strong> P05 con torque cero da <span class="math inline">\(\dot K=0\)</span>. Escribamos <span class="math inline">\(\mathbf h=I\boldsymbol\Omega\)</span>. P03 da <span class="math inline">\(\dot{\mathbf h}=-\boldsymbol\Omega\times\mathbf h=\mathbf h\times I^{-1}\mathbf h\)</span>, de modo que <span class="math inline">\(d|\mathbf h|^2/dt=2\mathbf h\cdot(\mathbf h\times I^{-1}\mathbf h)=0\)</span>. La norma es la misma en ambas bases. Aplicar la regla de transporte a <span class="math inline">\(R\mathbf h\)</span> da derivada cero, que prueba la constancia del vector espacial. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> proposición 22.5 con torque cero da <span class="math inline">\(\dot K=0\)</span>. Escribamos <span class="math inline">\(\mathbf h=I\boldsymbol\Omega\)</span>. Proposición 22.3 da <span class="math inline">\(\dot{\mathbf h}=-\boldsymbol\Omega\times\mathbf h=\mathbf h\times I^{-1}\mathbf h\)</span>, de modo que <span class="math inline">\(d|\mathbf h|^2/dt=2\mathbf h\cdot(\mathbf h\times I^{-1}\mathbf h)=0\)</span>. La norma es la misma en ambas bases. Aplicar la regla de transporte a <span class="math inline">\(R\mathbf h\)</span> da derivada cero, que prueba la constancia del vector espacial. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c22-p0008"></span></p>
-<p><strong>Proposición FPM-I-22-P08 — Existencia global del giro libre con inercia positiva.</strong> Para momentos principales positivos, cualquier dato angular inicial finito tiene una solución única de Euler para todos los tiempos. La orientación también se reconstruye globalmente a partir de <span class="math inline">\(R(0)\in SO(3)\)</span>.</p>
-<p><strong>Demostración.</strong> Euler con torque cero tiene un campo polinómico suave en <span class="math inline">\(\boldsymbol\Omega\)</span>, por lo que el teorema local de existencia y unicidad para ecuaciones diferenciales produce una solución. P07 y <span class="math inline">\(J_{\min}&gt;0\)</span> dan <span class="math inline">\(|\boldsymbol\Omega(t)|^2\leq2K/J_{\min}\)</span>. El campo y su derivada están acotados sobre una bola que contiene toda la solución. Si hubiera un extremo temporal finito, la velocidad de <span class="math inline">\(\boldsymbol\Omega\)</span> acotada haría que sus valores fueran de Cauchy al acercarse a ese extremo; tendrían un límite dentro de la bola. La solución local desde ese límite prolongaría la anterior por unicidad, contradiciendo maximalidad. Lo mismo vale hacia tiempos negativos.</p>
+<p><strong>Proposición 22.8 — Existencia global del giro libre con inercia positiva.</strong> Para momentos principales positivos, cualquier dato angular inicial finito tiene una solución única de Euler para todos los tiempos. La orientación también se reconstruye globalmente a partir de <span class="math inline">\(R(0)\in SO(3)\)</span>.</p>
+<p><strong>Demostración.</strong> Euler con torque cero tiene un campo polinómico suave en <span class="math inline">\(\boldsymbol\Omega\)</span>, por lo que el teorema local de existencia y unicidad para ecuaciones diferenciales produce una solución. Proposición 22.7 y <span class="math inline">\(J_{\min}&gt;0\)</span> dan <span class="math inline">\(|\boldsymbol\Omega(t)|^2\leq2K/J_{\min}\)</span>. El campo y su derivada están acotados sobre una bola que contiene toda la solución. Si hubiera un extremo temporal finito, la velocidad de <span class="math inline">\(\boldsymbol\Omega\)</span> acotada haría que sus valores fueran de Cauchy al acercarse a ese extremo; tendrían un límite dentro de la bola. La solución local desde ese límite prolongaría la anterior por unicidad, contradiciendo maximalidad. Lo mismo vale hacia tiempos negativos.</p>
 <p>La ecuación de <span class="math inline">\(R\)</span> es lineal en sus entradas con coeficientes continuos globales y acotados en intervalos finitos. Conserva <span class="math inline">\(RR^T=I\)</span>, porque su derivada usa una matriz antisimétrica, y conserva el determinante positivo por continuidad. Sus entradas permanecen acotadas y se prolongan con el mismo argumento. <span class="math inline">\(\square\)</span></p>
 <p>Los invariantes no determinan por sí solos en qué sentido se recorre una intersección ni cómo se orienta el cuerpo en el espacio. Dan controles globales que acompañan la ecuación. Cerca de un giro principal, esos controles pueden demostrar estabilidad sin resolver toda la trayectoria.</p>
 <p><span id="fispm-t1-c22-mp0004"></span></p>
-<p><strong>Principio metodológico FPM-I-22-MP04.</strong> Encuentra las constantes antes de aproximar el movimiento. Usa sus cotas para controlar tanto el dominio temporal como el alcance de una perturbación.</p>
-<section id="ejercicios-3" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-3">Ejercicios</h3>
+<p><strong>Principio metodológico 22.4.</strong> Encuentra las constantes antes de aproximar el movimiento. Usa sus cotas para controlar tanto el dominio temporal como el alcance de una perturbación.</p>
+<p><span id="ejercicios-3"></span></p>
+<section id="fispm-c22-ejercicios-3" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c22-ejercicios-3">Ejercicios</h3>
 <p><span id="fispm-t1-c22-e0007"></span></p>
-<p><strong>Ejercicio FPM-I-22-E07.</strong> Con momentos <span class="math inline">\((2J,3J,4J)\)</span> y datos <span class="math inline">\((u,u,0)\)</span>, calcula energía y norma del momento; acota la rapidez angular posterior.</p>
-<p><strong>Solución.</strong> La energía es <span class="math inline">\(5Ju^2/2\)</span> y <span class="math inline">\(H^2=13J^2u^2\)</span>. Como <span class="math inline">\(J_{\min}=2J\)</span>, P08 da <span class="math inline">\(|\boldsymbol\Omega|^2\leq5u^2/2\)</span>. La rapidez inicial al cuadrado es <span class="math inline">\(2u^2\)</span>, pero no se presume que permanezca igual; las cantidades conservadas ponderan sus componentes de dos maneras diferentes.</p>
+<p><strong>Ejercicio 22.7.</strong> Con momentos <span class="math inline">\((2J,3J,4J)\)</span> y datos <span class="math inline">\((u,u,0)\)</span>, calcula energía y norma del momento; acota la rapidez angular posterior.</p>
+<p><strong>Solución.</strong> La energía es <span class="math inline">\(5Ju^2/2\)</span> y <span class="math inline">\(H^2=13J^2u^2\)</span>. Como <span class="math inline">\(J_{\min}=2J\)</span>, proposición 22.8 da <span class="math inline">\(|\boldsymbol\Omega|^2\leq5u^2/2\)</span>. La rapidez inicial al cuadrado es <span class="math inline">\(2u^2\)</span>, pero no se presume que permanezca igual; las cantidades conservadas ponderan sus componentes de dos maneras diferentes.</p>
 <p><span id="fispm-t1-c22-e0008"></span></p>
-<p><strong>Ejercicio FPM-I-22-E08.</strong> Un cálculo aproximado de giro libre produce una pequeña deriva de <span class="math inline">\(K\)</span> y de <span class="math inline">\(H^2\)</span>. ¿Qué puede concluirse sobre su exactitud y qué comprobación adicional exige la orientación?</p>
-<p><strong>Solución.</strong> La deriva contradice la solución exacta de P07 y mide un error del cálculo o una fuerza no incorporada al modelo. Conservar aproximadamente ambos invariantes es una comprobación necesaria útil, pero no suficiente para la trayectoria: pueden recorrerse incorrectamente las superficies comunes. La orientación debe satisfacer además <span class="math inline">\(\dot R=R[\boldsymbol\Omega]_\times\)</span> y permanecer ortogonal de determinante uno. También debe verificarse que <span class="math inline">\(RI\boldsymbol\Omega\)</span> conserve el vector inicial, no solo su norma.</p>
+<p><strong>Ejercicio 22.8.</strong> Un cálculo aproximado de giro libre produce una pequeña deriva de <span class="math inline">\(K\)</span> y de <span class="math inline">\(H^2\)</span>. ¿Qué puede concluirse sobre su exactitud y qué comprobación adicional exige la orientación?</p>
+<p><strong>Solución.</strong> La deriva contradice la solución exacta de la proposición 22.7 y mide un error del cálculo o una fuerza no incorporada al modelo. Conservar aproximadamente ambos invariantes es una comprobación necesaria útil, pero no suficiente para la trayectoria: pueden recorrerse incorrectamente las superficies comunes. La orientación debe satisfacer además <span class="math inline">\(\dot R=R[\boldsymbol\Omega]_\times\)</span> y permanecer ortogonal de determinante uno. También debe verificarse que <span class="math inline">\(RI\boldsymbol\Omega\)</span> conserve el vector inicial, no solo su norma.</p>
+<p><span id="perturbar-un-giro-principal"></span></p>
 <p><span id="fispm-t1-c22-s05"></span></p>
 <p><span id="fpm-i-22-s05"></span></p>
 </section>
 </section>
-<section id="perturbar-un-giro-principal" class="level2">
-<h2 class="anchored" data-anchor-id="perturbar-un-giro-principal">§5. Perturbar un giro principal</h2>
+<section id="fispm-c22-perturbar-un-giro-principal" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c22-perturbar-un-giro-principal">5. Perturbar un giro principal</h2>
 <p>Un giro uniforme sobre un eje principal tiene componentes corporales constantes. Primero linealizaremos Euler para observar qué sucede al apartarse un poco de él. La aproximación descubre oscilaciones o crecimiento local, pero la estabilidad del sistema completo necesita una justificación adicional.</p>
+<p><span id="fig:I-22-N02"></span></p>
+<figure id="fig-fpm-v04-i-22-n02" class="fpm-v04-panel figure">
+<p><a href="../assets/4a970f894a901a51d305ea56.svg" class="lightbox" data-gallery="fpm-v04-c22"><img src="../assets/4a970f894a901a51d305ea56.svg" alt="Perturbaciones de un giro principal. Diagrama del capítulo 22; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="411" height="254" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 22.2.</strong> Para <span class="math inline">\(I_1&lt;I_2&lt;I_3\)</span>, el giro alrededor del eje intermedio admite modos lineales crecientes y decrecientes <span class="math inline">\(e^{\pm\lambda t}\)</span>. La figura usa <span class="math inline">\(\lambda=1\)</span>; los extremos principal menor y mayor tienen modos oscilatorios. Véase §<a href="#fispm-c22-perturbar-un-giro-principal">5</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c22-p0009"></span></p>
-<p><strong>Proposición FPM-I-22-P09 — Giros estacionarios libres.</strong> Una velocidad angular corporal constante <span class="math inline">\(\boldsymbol\Omega_*\)</span> es solución libre si y solo si <span class="math inline">\(\boldsymbol\Omega_*\times I\boldsymbol\Omega_*=0\)</span>. Para un vector no nulo, esto equivale a pertenecer a un espacio propio de <span class="math inline">\(I\)</span>. Con tres momentos distintos, los giros no nulos estacionarios son exactamente los giros sobre las tres rectas principales.</p>
-<p><strong>Demostración.</strong> P03 con torque cero y derivada angular cero da la condición cruzada. Para un vector no nulo, anularla significa que <span class="math inline">\(I\boldsymbol\Omega_*=\lambda\boldsymbol\Omega_*\)</span> para algún escalar. En una base principal con valores distintos, componentes no nulas sobre autovalores diferentes no pueden satisfacer esa igualdad. El vector cero también es solución. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 22.9 — Giros estacionarios libres.</strong> Una velocidad angular corporal constante <span class="math inline">\(\boldsymbol\Omega_*\)</span> es solución libre si y solo si <span class="math inline">\(\boldsymbol\Omega_*\times I\boldsymbol\Omega_*=0\)</span>. Para un vector no nulo, esto equivale a pertenecer a un espacio propio de <span class="math inline">\(I\)</span>. Con tres momentos distintos, los giros no nulos estacionarios son exactamente los giros sobre las tres rectas principales.</p>
+<p><strong>Demostración.</strong> proposición 22.3 con torque cero y derivada angular cero da la condición cruzada. Para un vector no nulo, anularla significa que <span class="math inline">\(I\boldsymbol\Omega_*=\lambda\boldsymbol\Omega_*\)</span> para algún escalar. En una base principal con valores distintos, componentes no nulas sobre autovalores diferentes no pueden satisfacer esa igualdad. El vector cero también es solución. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c22-p0010"></span></p>
-<p><strong>Proposición FPM-I-22-P10 — Perturbaciones lineales transversales.</strong> Sea <span class="math inline">\(\boldsymbol\Omega_*=u\mathbf e_i\)</span>, con <span class="math inline">\(u\ne0\)</span>, y sean <span class="math inline">\((i,j,k)\)</span> índices cíclicos. Al primer orden,</p>
-<p><span class="math display">\[
-\dot\eta_j=\frac{J_k-J_i}{J_j}u\eta_k,
-\qquad \dot\eta_k=\frac{J_i-J_j}{J_k}u\eta_j,
-\]</span></p>
+<p><strong>Proposición 22.10 — Perturbaciones lineales transversales.</strong> Sea <span class="math inline">\(\boldsymbol\Omega_*=u\mathbf e_i\)</span>, con <span class="math inline">\(u\ne0\)</span>, y sean <span class="math inline">\((i,j,k)\)</span> índices cíclicos. Al primer orden,</p>
+<p><span class="math display">\[\dot\eta_j=\frac{J_k-J_i}{J_j}u\eta_k, \qquad \dot\eta_k=\frac{J_i-J_j}{J_k}u\eta_j,\]</span></p>
 <p>y por tanto</p>
-<p><span class="math display">\[
-\ddot\eta_j=\frac{(J_k-J_i)(J_i-J_j)}{J_jJ_k}u^2\eta_j.
-\]</span></p>
+<p><span class="math display">\[\ddot\eta_j=\frac{(J_k-J_i)(J_i-J_j)}{J_jJ_k}u^2\eta_j.\]</span></p>
 <p>Para <span class="math inline">\(J_1&lt;J_2&lt;J_3\)</span>, el coeficiente es negativo en los ejes extremos y positivo en el intermedio. La perturbación longitudinal es constante a primer orden.</p>
-<p><strong>Demostración.</strong> Sustituir <span class="math inline">\(\Omega_i=u+\eta_i\)</span>, <span class="math inline">\(\Omega_j=\eta_j\)</span> y <span class="math inline">\(\Omega_k=\eta_k\)</span> en P04. La ecuación longitudinal contiene un producto de dos perturbaciones y no contribuye al primer orden. En las otras, sustituir <span class="math inline">\(\Omega_i\)</span> por <span class="math inline">\(u\)</span> deja las igualdades. Diferenciar la primera y usar la segunda da el coeficiente. Para el momento mínimo o máximo, sus factores tienen signos opuestos; para el intermedio, tienen el mismo signo. <span class="math inline">\(\square\)</span></p>
-<p>Un coeficiente negativo produce oscilaciones transversales; uno positivo admite una solución creciente exponencial. Cuando la perturbación se vuelve apreciable, los términos omitidos pueden cambiar la trayectoria. P08 impide que la velocidad angular libre exacta diverja desde energía finita. La inestabilidad puede consistir en una gran reorientación corporal con todas las magnitudes acotadas.</p>
+<p><strong>Demostración.</strong> Sustituir <span class="math inline">\(\Omega_i=u+\eta_i\)</span>, <span class="math inline">\(\Omega_j=\eta_j\)</span> y <span class="math inline">\(\Omega_k=\eta_k\)</span> en la proposición 22.4. La ecuación longitudinal contiene un producto de dos perturbaciones y no contribuye al primer orden. En las otras, sustituir <span class="math inline">\(\Omega_i\)</span> por <span class="math inline">\(u\)</span> deja las igualdades. Diferenciar la primera y usar la segunda da el coeficiente. Para el momento mínimo o máximo, sus factores tienen signos opuestos; para el intermedio, tienen el mismo signo. <span class="math inline">\(\square\)</span></p>
+<p>Un coeficiente negativo produce oscilaciones transversales; uno positivo admite una solución creciente exponencial. Cuando la perturbación se vuelve apreciable, los términos omitidos pueden cambiar la trayectoria. Proposición 22.8 impide que la velocidad angular libre exacta diverja desde energía finita. La inestabilidad puede consistir en una gran reorientación corporal con todas las magnitudes acotadas.</p>
 <p><span id="fispm-t1-c22-mp0005"></span></p>
-<p><strong>Principio metodológico FPM-I-22-MP05.</strong> Identifica el orden descartado al linealizar. Una tasa de crecimiento local no implica crecimiento exponencial ilimitado de la solución exacta.</p>
-<section id="ejercicios-4" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-4">Ejercicios</h3>
+<p><strong>Principio metodológico 22.5.</strong> Identifica el orden descartado al linealizar. Una tasa de crecimiento local no implica crecimiento exponencial ilimitado de la solución exacta.</p>
+<p><span id="ejercicios-4"></span></p>
+<section id="fispm-c22-ejercicios-4" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c22-ejercicios-4">Ejercicios</h3>
 <p><span id="fispm-t1-c22-e0009"></span></p>
-<p><strong>Ejercicio FPM-I-22-E09.</strong> Para momentos <span class="math inline">\(2J,3J,4J\)</span>, calcula la frecuencia lineal alrededor del eje de <span class="math inline">\(2J\)</span> y la tasa de crecimiento alrededor del de <span class="math inline">\(3J\)</span>, a rapidez <span class="math inline">\(u\)</span>.</p>
+<p><strong>Ejercicio 22.9.</strong> Para momentos <span class="math inline">\(2J,3J,4J\)</span>, calcula la frecuencia lineal alrededor del eje de <span class="math inline">\(2J\)</span> y la tasa de crecimiento alrededor del de <span class="math inline">\(3J\)</span>, a rapidez <span class="math inline">\(u\)</span>.</p>
 <p><strong>Solución.</strong> En el primer eje, el coeficiente es <span class="math inline">\((4J-2J)(2J-3J)u^2/[(3J)(4J)]=-u^2/6\)</span>, y la frecuencia es <span class="math inline">\(|u|/\sqrt6\)</span>. En el segundo, los índices cíclicos son <span class="math inline">\((2,3,1)\)</span>; el coeficiente es <span class="math inline">\((2J-3J)(3J-4J)u^2/[(4J)(2J)]=u^2/8\)</span>, con tasa <span class="math inline">\(|u|/\sqrt8\)</span>. Son resultados para perturbaciones pequeñas en componentes corporales.</p>
 <p><span id="fispm-t1-c22-e0010"></span></p>
-<p><strong>Ejercicio FPM-I-22-E10.</strong> ¿Qué falla si se clasifica un cuerpo con <span class="math inline">\(J_1=J_2\ne J_3\)</span> como si tuviera tres momentos estrictamente ordenados?</p>
+<p><strong>Ejercicio 22.10.</strong> ¿Qué falla si se clasifica un cuerpo con <span class="math inline">\(J_1=J_2\ne J_3\)</span> como si tuviera tres momentos estrictamente ordenados?</p>
 <p><strong>Solución.</strong> Para giros en el plano propio de los momentos iguales, un factor del coeficiente se anula. Desaparece la separación estricta entre oscilaciones de frecuencia no nula y exponentes reales no nulos. Hay además una familia de direcciones estacionarias en ese plano. El caso simétrico requiere sus ecuaciones exactas, desarrolladas en §7.</p>
+<p><span id="estabilidad-fuera-de-la-linealización"></span></p>
 <p><span id="fispm-t1-c22-s06"></span></p>
 <p><span id="fpm-i-22-s06"></span></p>
 </section>
 </section>
-<section id="estabilidad-fuera-de-la-linealización" class="level2">
-<h2 class="anchored" data-anchor-id="estabilidad-fuera-de-la-linealización">§6. Estabilidad fuera de la linealización</h2>
+<section id="fispm-c22-estabilidad-fuera-de-la-linealizaciuxf3n" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c22-estabilidad-fuera-de-la-linealizaciuxf3n">6. Estabilidad fuera de la linealización</h2>
 <p>Las constantes permiten reforzar el resultado de los ejes extremos. Una combinación positiva que mida componentes transversales impide que una preparación cercana se aleje mucho. Para el intermedio construiremos una trayectoria exacta que empieza arbitrariamente cerca y alcanza una distancia fija.</p>
 <p><span id="fispm-t1-c22-d0004"></span></p>
-<p><strong>Definición FPM-I-22-D04 — Estabilidad angular corporal.</strong> Una solución estacionaria <span class="math inline">\(\boldsymbol\Omega_*\)</span> es estable en el sentido de Lyapunov si para cada <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(\delta&gt;0\)</span> tal que <span class="math inline">\(|\boldsymbol\Omega(0)-\boldsymbol\Omega_*|&lt;\delta\)</span> implica <span class="math inline">\(|\boldsymbol\Omega(t)-\boldsymbol\Omega_*|&lt;\varepsilon\)</span> para todo <span class="math inline">\(t\geq0\)</span>. Aquí se comparan velocidades angulares corporales; la orientación y su fase espacial son variables adicionales.</p>
+<p><strong>Definición 22.4 — Estabilidad angular corporal.</strong> Una solución estacionaria <span class="math inline">\(\boldsymbol\Omega_*\)</span> es estable en el sentido de Lyapunov si para cada <span class="math inline">\(\varepsilon&gt;0\)</span> existe <span class="math inline">\(\delta&gt;0\)</span> tal que <span class="math inline">\(|\boldsymbol\Omega(0)-\boldsymbol\Omega_*|&lt;\delta\)</span> implica <span class="math inline">\(|\boldsymbol\Omega(t)-\boldsymbol\Omega_*|&lt;\varepsilon\)</span> para todo <span class="math inline">\(t\geq0\)</span>. Aquí se comparan velocidades angulares corporales; la orientación y su fase espacial son variables adicionales.</p>
 <p><span id="fispm-t1-c22-p0011"></span></p>
-<p><strong>Proposición FPM-I-22-P11 — Estabilidad no lineal de los giros extremos.</strong> Para <span class="math inline">\(0&lt;J_1&lt;J_2&lt;J_3\)</span>, todos los giros libres no nulos sobre los ejes de <span class="math inline">\(J_1\)</span> y <span class="math inline">\(J_3\)</span> son estables según D04.</p>
+<p><strong>Proposición 22.11 — Estabilidad no lineal de los giros extremos.</strong> Para <span class="math inline">\(0&lt;J_1&lt;J_2&lt;J_3\)</span>, todos los giros libres no nulos sobre los ejes de <span class="math inline">\(J_1\)</span> y <span class="math inline">\(J_3\)</span> son estables según la definición 22.4.</p>
 <p><strong>Demostración.</strong> Usemos <span class="math inline">\(h_i=J_i\Omega_i\)</span> y <span class="math inline">\(a_i=1/J_i\)</span>, con <span class="math inline">\(a_1&gt;a_2&gt;a_3\)</span>. Para el primer eje, la combinación conservada</p>
-<p><span class="math display">\[
-F_1=a_1H^2-2K=(a_1-a_2)h_2^2+(a_1-a_3)h_3^2
-\]</span></p>
+<p><span class="math display">\[F_1=a_1H^2-2K=(a_1-a_2)h_2^2+(a_1-a_3)h_3^2\]</span></p>
 <p>controla las componentes transversales: <span class="math inline">\(h_2^2+h_3^2\leq F_1/c_1\)</span>, donde <span class="math inline">\(c_1=\min(a_1-a_2,a_1-a_3)&gt;0\)</span>. Cerca de <span class="math inline">\(\mathbf h_*=h_*\mathbf e_1\)</span>, con <span class="math inline">\(h_*\ne0\)</span>, la continuidad de <span class="math inline">\(F_1\)</span> hace esa cota arbitrariamente pequeña. La continuidad del otro invariante, <span class="math inline">\(H^2\)</span>, mantiene su valor cerca de <span class="math inline">\(h_*^2\)</span>. La igualdad <span class="math inline">\(h_1^2=H^2-h_2^2-h_3^2\)</span> mantiene entonces <span class="math inline">\(|h_1|\)</span> cerca de <span class="math inline">\(|h_*|\)</span>. Para datos suficientemente próximos, la norma queda separada de cero y la cota transversal impide que <span class="math inline">\(h_1\)</span> se anule. Su signo sigue siendo el de <span class="math inline">\(h_*\)</span>. Estas cotas, uniformes en tiempo, mantienen el vector completo tan próximo a <span class="math inline">\(\mathbf h_*\)</span> como se quiera.</p>
 <p>Para el tercer eje se usa <span class="math inline">\(F_3=2K-a_3H^2=(a_1-a_3)h_1^2+(a_2-a_3)h_2^2\)</span>, con el mismo control positivo transversal y el mismo argumento de norma y signo. La transformación invertible <span class="math inline">\(\boldsymbol\Omega=I^{-1}\mathbf h\)</span> transporta ambas conclusiones a la norma angular. <span class="math inline">\(\square\)</span></p>
 <p>La prueba permite pequeñas variaciones de energía y norma de momento iniciales. No demuestra atracción hacia el giro estacionario. Dos giros próximos pueden acumular una diferencia de fase espacial durante mucho tiempo, aunque sus velocidades angulares corporales sigan cercanas.</p>
 <p><span id="fispm-t1-c22-p0012"></span></p>
-<p><strong>Proposición FPM-I-22-P12 — Inestabilidad exacta del giro intermedio.</strong> Bajo las mismas desigualdades estrictas, un giro libre no nulo sobre el eje de <span class="math inline">\(J_2\)</span> es inestable según D04.</p>
+<p><strong>Proposición 22.12 — Inestabilidad exacta del giro intermedio.</strong> Bajo las mismas desigualdades estrictas, un giro libre no nulo sobre el eje de <span class="math inline">\(J_2\)</span> es inestable según la definición 22.4.</p>
 <p><strong>Demostración.</strong> Sea <span class="math inline">\(H&gt;0\)</span> la magnitud del momento del giro positivo. Pongamos <span class="math inline">\(\alpha=a_1-a_2&gt;0\)</span>, <span class="math inline">\(\beta=a_2-a_3&gt;0\)</span> y <span class="math inline">\(\gamma=H\sqrt{\alpha\beta}\)</span>. Una solución exacta de <span class="math inline">\(\dot{\mathbf h}=\mathbf h\times I^{-1}\mathbf h\)</span> es</p>
-<p><span class="math display">\[
-\begin{aligned}
-h_1(t)&amp;=H\sqrt{\frac\beta{\alpha+\beta}}\,\operatorname{sech}(\gamma t),\\
-h_2(t)&amp;=-H\tanh(\gamma t),\\
-h_3(t)&amp;=-H\sqrt{\frac\alpha{\alpha+\beta}}\,\operatorname{sech}(\gamma t).
-\end{aligned}
-\]</span></p>
+<p><span class="math display">\[\begin{aligned} h_1(t)&amp;=H\sqrt{\frac\beta{\alpha+\beta}}\,\operatorname{sech}(\gamma t),\\ h_2(t)&amp;=-H\tanh(\gamma t),\\ h_3(t)&amp;=-H\sqrt{\frac\alpha{\alpha+\beta}}\,\operatorname{sech}(\gamma t). \end{aligned}\]</span></p>
 <p>Las ecuaciones son <span class="math inline">\(\dot h_1=-\beta h_2h_3\)</span>, <span class="math inline">\(\dot h_2=(\alpha+\beta)h_3h_1\)</span> y <span class="math inline">\(\dot h_3=-\alpha h_1h_2\)</span>. Sustituir las fórmulas y usar las derivadas <span class="math inline">\(\tanh'=\operatorname{sech}^2\)</span> y <span class="math inline">\(\operatorname{sech}'=-\operatorname{sech}\tanh\)</span> verifica las tres con el valor de <span class="math inline">\(\gamma\)</span> indicado.</p>
 <p>Cuando <span class="math inline">\(t\to-\infty\)</span>, la solución tiende a <span class="math inline">\(H\mathbf e_2\)</span>. En <span class="math inline">\(t=0\)</span>, tiene <span class="math inline">\(h_2=0\)</span> y norma transversal <span class="math inline">\(H\)</span>, por lo que está a distancia fija positiva de ese giro. Escoger datos en <span class="math inline">\(t=-T\)</span> permite empezar arbitrariamente cerca y esperar un tiempo <span class="math inline">\(T\)</span> para llegar al punto alejado. La autonomía permite llamar cero al instante inicial elegido. Esto contradice estabilidad. Cambiar simultáneamente dos signos conserva las ecuaciones y prueba también el caso del giro negativo. Volver a <span class="math inline">\(\boldsymbol\Omega=I^{-1}\mathbf h\)</span> conserva una separación positiva. <span class="math inline">\(\square\)</span></p>
 <p>La trayectoria conserva <span class="math inline">\(H^2\)</span> y <span class="math inline">\(K=a_2H^2/2\)</span>. Se acerca a giros intermedios opuestos en sus extremos temporales y nunca diverge en rapidez. Esta distinción entre magnitudes conservadas y dirección corporal cambiante explica la vuelta inesperada de un objeto lanzado casi sobre su eje intermedio.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p><span id="fispm-t1-c22-mp0006"></span></p>
-<p><strong>Principio metodológico FPM-I-22-MP06.</strong> Especifica la variable cuya estabilidad demuestras. Refuerza una linealización mediante un control positivo conservado o una trayectoria exacta que pruebe separación.</p>
-<section id="ejercicios-5" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-5">Ejercicios</h3>
+<p><strong>Principio metodológico 22.6.</strong> Especifica la variable cuya estabilidad demuestras. Refuerza una linealización mediante un control positivo conservado o una trayectoria exacta que pruebe separación.</p>
+<p><span id="ejercicios-5"></span></p>
+<section id="fispm-c22-ejercicios-5" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c22-ejercicios-5">Ejercicios</h3>
 <p><span id="fispm-t1-c22-e0011"></span></p>
-<p><strong>Ejercicio FPM-I-22-E11.</strong> Para <span class="math inline">\(J_1=2J\)</span>, <span class="math inline">\(J_2=3J\)</span>, <span class="math inline">\(J_3=4J\)</span>, escribe <span class="math inline">\(F_1\)</span> y una cota de <span class="math inline">\(h_2^2+h_3^2\)</span>.</p>
+<p><strong>Ejercicio 22.11.</strong> Para <span class="math inline">\(J_1=2J\)</span>, <span class="math inline">\(J_2=3J\)</span>, <span class="math inline">\(J_3=4J\)</span>, escribe <span class="math inline">\(F_1\)</span> y una cota de <span class="math inline">\(h_2^2+h_3^2\)</span>.</p>
 <p><strong>Solución.</strong> Los coeficientes son <span class="math inline">\(a_1=1/(2J)\)</span>, <span class="math inline">\(a_2=1/(3J)\)</span>, <span class="math inline">\(a_3=1/(4J)\)</span>. Resulta <span class="math inline">\(F_1=h_2^2/(6J)+h_3^2/(4J)\)</span>, y el mínimo coeficiente es <span class="math inline">\(1/(6J)\)</span>. Por tanto <span class="math inline">\(h_2^2+h_3^2\leq6JF_1\)</span>. El lado derecho se conserva y controla la desviación transversal exacta.</p>
 <p><span id="fispm-t1-c22-e0012"></span></p>
-<p><strong>Ejercicio FPM-I-22-E12.</strong> Verifica la norma de la solución de P12 y expresa su tasa <span class="math inline">\(\gamma\)</span> mediante la rapidez intermedia <span class="math inline">\(u=H/J_2\)</span>.</p>
+<p><strong>Ejercicio 22.12.</strong> Verifica la norma de la solución de la proposición 22.12 y expresa su tasa <span class="math inline">\(\gamma\)</span> mediante la rapidez intermedia <span class="math inline">\(u=H/J_2\)</span>.</p>
 <p><strong>Solución.</strong> Los cuadrados transversales suman <span class="math inline">\(H^2\operatorname{sech}^2(\gamma t)\)</span> y el axial es <span class="math inline">\(H^2\tanh^2(\gamma t)\)</span>. La suma es <span class="math inline">\(H^2\)</span>. Además <span class="math inline">\(\gamma=|u|\sqrt{(J_2-J_1)(J_3-J_2)/(J_1J_3)}\)</span>. Coincide con la tasa creciente de la linealización, aunque la trayectoria exacta se mantenga acotada.</p>
+<p><span id="dos-tasas-de-precesión-para-un-cuerpo-simétrico-libre"></span></p>
 <p><span id="fispm-t1-c22-s07"></span></p>
 <p><span id="fpm-i-22-s07"></span></p>
 </section>
 </section>
-<section id="dos-tasas-de-precesión-para-un-cuerpo-simétrico-libre" class="level2">
-<h2 class="anchored" data-anchor-id="dos-tasas-de-precesión-para-un-cuerpo-simétrico-libre">§7. Dos tasas de precesión para un cuerpo simétrico libre</h2>
+<section id="fispm-c22-dos-tasas-de-precesiuxf3n-para-un-cuerpo-simuxe9trico-libre" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c22-dos-tasas-de-precesiuxf3n-para-un-cuerpo-simuxe9trico-libre">7. Dos tasas de precesión para un cuerpo simétrico libre</h2>
 <p>Con dos momentos iguales, Euler admite una solución explícita. La velocidad angular gira en ejes corporales mientras el eje material describe en el espacio un cono alrededor del momento constante. Las tasas corresponden a observadores y ejes diferentes.</p>
 <p><span id="fispm-t1-c22-d0005"></span></p>
-<p><strong>Definición FPM-I-22-D05 — Cuerpo dinámicamente simétrico.</strong> Usaremos <span class="math inline">\(I=\operatorname{diag}(A,A,C)\)</span> con <span class="math inline">\(A,C&gt;0\)</span>. La simetría del tensor basta para estas ecuaciones, aunque la forma material pueda tener menos simetrías. El eje físico asociado a <span class="math inline">\(\mathbf e_3\)</span> es <span class="math inline">\(\mathbf n=R\mathbf e_3\)</span>.</p>
+<p><strong>Definición 22.5 — Cuerpo dinámicamente simétrico.</strong> Usaremos <span class="math inline">\(I=\operatorname{diag}(A,A,C)\)</span> con <span class="math inline">\(A,C&gt;0\)</span>. La simetría del tensor basta para estas ecuaciones, aunque la forma material pueda tener menos simetrías. El eje físico asociado a <span class="math inline">\(\mathbf e_3\)</span> es <span class="math inline">\(\mathbf n=R\mathbf e_3\)</span>.</p>
 <p><span id="fispm-t1-c22-p0013"></span></p>
-<p><strong>Proposición FPM-I-22-P13 — Solución corporal simétrica libre.</strong> Con torque cero, <span class="math inline">\(\Omega_3=s\)</span> es constante. Si <span class="math inline">\(\eta=\Omega_1+i\Omega_2\)</span> y <span class="math inline">\(\gamma_B=(C-A)s/A\)</span>, entonces</p>
-<p><span class="math display">\[
-\eta(t)=\eta(0)e^{i\gamma_Bt}.
-\]</span></p>
+<p><strong>Proposición 22.13 — Solución corporal simétrica libre.</strong> Con torque cero, <span class="math inline">\(\Omega_3=s\)</span> es constante. Si <span class="math inline">\(\eta=\Omega_1+i\Omega_2\)</span> y <span class="math inline">\(\gamma_B=(C-A)s/A\)</span>, entonces</p>
+<p><span class="math display">\[\eta(t)=\eta(0)e^{i\gamma_Bt}.\]</span></p>
 <p><strong>Demostración.</strong> La tercera ecuación tiene término cruzado cero y da <span class="math inline">\(C\dot\Omega_3=0\)</span>. Las otras son <span class="math inline">\(\dot\Omega_1=-\gamma_B\Omega_2\)</span> y <span class="math inline">\(\dot\Omega_2=\gamma_B\Omega_1\)</span>. Reunirlas da <span class="math inline">\(\dot\eta=i\gamma_B\eta\)</span>, y la exponencial cumple esta ecuación y el dato inicial. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c22-p0014"></span></p>
-<p><strong>Proposición FPM-I-22-P14 — Precesión espacial del eje simétrico.</strong> En ese giro,</p>
-<p><span class="math display">\[
-\dot{\mathbf n}=\frac{\mathbf H}{A}\times\mathbf n,
-\qquad \mathbf H\cdot\mathbf n=Cs.
-\]</span></p>
+<p><strong>Proposición 22.14 — Precesión espacial del eje simétrico.</strong> En ese giro,</p>
+<p><span class="math display">\[\dot{\mathbf n}=\frac{\mathbf H}{A}\times\mathbf n, \qquad \mathbf H\cdot\mathbf n=Cs.\]</span></p>
 <p>Si <span class="math inline">\(H&gt;0\)</span>, el eje conserva su ángulo con el momento constante y precesa alrededor de él con tasa <span class="math inline">\(H/A\)</span>, salvo el caso paralelo en que no describe un cono no trivial.</p>
 <p><strong>Demostración.</strong> La relación tensorial es <span class="math inline">\(\mathbf H=A\boldsymbol\omega+(C-A)s\mathbf n\)</span>, con <span class="math inline">\(s=\boldsymbol\omega\cdot\mathbf n\)</span>. Despejar <span class="math inline">\(\boldsymbol\omega\)</span> y usar <span class="math inline">\(\dot{\mathbf n}=\boldsymbol\omega\times\mathbf n\)</span> elimina el término paralelo a <span class="math inline">\(\mathbf n\)</span>. El producto escalar con <span class="math inline">\(\mathbf n\)</span> da <span class="math inline">\(Cs\)</span>. Puesto que <span class="math inline">\(\mathbf H\)</span> es constante, la ecuación obtenida es la de un vector que gira alrededor de <span class="math inline">\(\mathbf H/A\)</span>. <span class="math inline">\(\square\)</span></p>
 <p>La tasa corporal puede ser negativa y se anula para <span class="math inline">\(A=C\)</span>. La espacial usa otro eje. En un cuerpo de inercia esférica, la velocidad angular es constante en ambas bases, pero un eje material no paralelo sigue girando alrededor de ella. Cuando los tres momentos coinciden, escoger el tercer eje es una convención adicional.</p>
 <p><span id="fispm-t1-c22-mp0007"></span></p>
-<p><strong>Principio metodológico FPM-I-22-MP07.</strong> Acompaña cada tasa con su eje y observador. Separa la variación de componentes corporales del movimiento espacial de un eje material.</p>
-<section id="ejercicios-6" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-6">Ejercicios</h3>
+<p><strong>Principio metodológico 22.7.</strong> Acompaña cada tasa con su eje y observador. Separa la variación de componentes corporales del movimiento espacial de un eje material.</p>
+<p><span id="ejercicios-6"></span></p>
+<section id="fispm-c22-ejercicios-6" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c22-ejercicios-6">Ejercicios</h3>
 <p><span id="fispm-t1-c22-e0013"></span></p>
-<p><strong>Ejercicio FPM-I-22-E13.</strong> Para <span class="math inline">\(A=2J\)</span>, <span class="math inline">\(C=3J\)</span> y datos <span class="math inline">\((u,0,s)\)</span>, encuentra componentes corporales y ángulo del eje con <span class="math inline">\(\mathbf H\)</span>.</p>
-<p><strong>Solución.</strong> P13 da <span class="math inline">\(\Omega_1=u\cos(st/2)\)</span>, <span class="math inline">\(\Omega_2=u\sin(st/2)\)</span> y <span class="math inline">\(\Omega_3=s\)</span>. El momento tiene magnitud <span class="math inline">\(H=J\sqrt{4u^2+9s^2}\)</span>. Para <span class="math inline">\(H&gt;0\)</span>, <span class="math inline">\(\cos\theta=3s/\sqrt{4u^2+9s^2}\)</span> y la tasa espacial es <span class="math inline">\(H/(2J)\)</span>, generalmente distinta de <span class="math inline">\(s/2\)</span>.</p>
+<p><strong>Ejercicio 22.13.</strong> Para <span class="math inline">\(A=2J\)</span>, <span class="math inline">\(C=3J\)</span> y datos <span class="math inline">\((u,0,s)\)</span>, encuentra componentes corporales y ángulo del eje con <span class="math inline">\(\mathbf H\)</span>.</p>
+<p><strong>Solución.</strong> proposición 22.13 da <span class="math inline">\(\Omega_1=u\cos(st/2)\)</span>, <span class="math inline">\(\Omega_2=u\sin(st/2)\)</span> y <span class="math inline">\(\Omega_3=s\)</span>. El momento tiene magnitud <span class="math inline">\(H=J\sqrt{4u^2+9s^2}\)</span>. Para <span class="math inline">\(H&gt;0\)</span>, <span class="math inline">\(\cos\theta=3s/\sqrt{4u^2+9s^2}\)</span> y la tasa espacial es <span class="math inline">\(H/(2J)\)</span>, generalmente distinta de <span class="math inline">\(s/2\)</span>.</p>
 <p><span id="fispm-t1-c22-e0014"></span></p>
-<p><strong>Ejercicio FPM-I-22-E14.</strong> Si <span class="math inline">\(s=0\)</span>, <span class="math inline">\(A\ne C\)</span> y <span class="math inline">\(\eta(0)\ne0\)</span>, ¿qué hace la velocidad angular en el cuerpo y el eje material en el espacio?</p>
+<p><strong>Ejercicio 22.14.</strong> Si <span class="math inline">\(s=0\)</span>, <span class="math inline">\(A\ne C\)</span> y <span class="math inline">\(\eta(0)\ne0\)</span>, ¿qué hace la velocidad angular en el cuerpo y el eje material en el espacio?</p>
 <p><strong>Solución.</strong> Como <span class="math inline">\(\gamma_B=0\)</span>, las componentes angulares son constantes en el plano principal doble. El momento es <span class="math inline">\(A\boldsymbol\omega\)</span> y es perpendicular a <span class="math inline">\(\mathbf n\)</span>. El eje material gira alrededor de él con tasa <span class="math inline">\(H/A=|\boldsymbol\Omega|\)</span>. La constancia de un vector corporal no mantiene quietos todos los ejes materiales.</p>
+<p><span id="mantener-un-giro-cuesta-un-torque-concreto"></span></p>
 <p><span id="fispm-t1-c22-s08"></span></p>
 <p><span id="fpm-i-22-s08"></span></p>
 </section>
 </section>
-<section id="mantener-un-giro-cuesta-un-torque-concreto" class="level2">
-<h2 class="anchored" data-anchor-id="mantener-un-giro-cuesta-un-torque-concreto">§8. Mantener un giro cuesta un torque concreto</h2>
+<section id="fispm-c22-mantener-un-giro-cuesta-un-torque-concreto" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c22-mantener-un-giro-cuesta-un-torque-concreto">8. Mantener un giro cuesta un torque concreto</h2>
 <p>Podemos recorrer Euler en sentido inverso: una velocidad angular prescrita permite calcular el torque que la sostiene. Esta operación distingue la reorientación impuesta por los soportes del giro libre que aparece al retirarlos.</p>
 <p><span id="fispm-t1-c22-p0015"></span></p>
-<p><strong>Proposición FPM-I-22-P15 — Torque del giro uniforme impuesto.</strong> Para <span class="math inline">\(\boldsymbol\Omega=\boldsymbol\Omega_0\)</span> constante, el torque requerido es</p>
-<p><span class="math display">\[
-\mathbf T=\boldsymbol\Omega_0\times I\boldsymbol\Omega_0.
-\]</span></p>
+<p><strong>Proposición 22.15 — Torque del giro uniforme impuesto.</strong> Para <span class="math inline">\(\boldsymbol\Omega=\boldsymbol\Omega_0\)</span> constante, el torque requerido es</p>
+<p><span class="math display">\[\mathbf T=\boldsymbol\Omega_0\times I\boldsymbol\Omega_0.\]</span></p>
 <p>Su potencia es cero y se anula para velocidad cero o una dirección principal. Además,</p>
-<p><span class="math display">\[
-|\mathbf T|^2=|\boldsymbol\Omega_0|^2|I\boldsymbol\Omega_0|^2-(\boldsymbol\Omega_0\cdot I\boldsymbol\Omega_0)^2.
-\]</span></p>
-<p><strong>Demostración.</strong> P03 con derivada cero da el torque. Su perpendicularidad a <span class="math inline">\(\boldsymbol\Omega_0\)</span> anula la potencia por P05, y P09 caracteriza su anulación. La identidad de norma del producto vectorial da la expresión cuadrática del torque. <span class="math inline">\(\square\)</span></p>
+<p><span class="math display">\[|\mathbf T|^2=|\boldsymbol\Omega_0|^2|I\boldsymbol\Omega_0|^2-(\boldsymbol\Omega_0\cdot I\boldsymbol\Omega_0)^2.\]</span></p>
+<p><strong>Demostración.</strong> proposición 22.3 con derivada cero da el torque. Su perpendicularidad a <span class="math inline">\(\boldsymbol\Omega_0\)</span> anula la potencia por la proposición 22.5, y proposición 22.9 caracteriza su anulación. La identidad de norma del producto vectorial da la expresión cuadrática del torque. <span class="math inline">\(\square\)</span></p>
 <p>Una potencia nula puede coexistir con esfuerzos en los cojinetes. Euler fija el torque resultante; distribuir las fuerzas entre soportes requiere conocer su geometría y sus restricciones.</p>
 <p><span id="fispm-t1-c22-p0016"></span></p>
-<p><strong>Proposición FPM-I-22-P16 — Rotor axial con resistencia viscosa.</strong> Sobre un eje principal fijo de momento <span class="math inline">\(J\)</span>, con torque motor constante <span class="math inline">\(T_0\)</span> y resistencia <span class="math inline">\(-\kappa\omega\)</span>, <span class="math inline">\(\kappa&gt;0\)</span>, la rapidez firmada es</p>
-<p><span class="math display">\[
-\omega(t)=\frac{T_0}{\kappa}
-+\left(\omega(0)-\frac{T_0}{\kappa}\right)e^{-\kappa t/J}.
-\]</span></p>
+<p><strong>Proposición 22.16 — Rotor axial con resistencia viscosa.</strong> Sobre un eje principal fijo de momento <span class="math inline">\(J\)</span>, con torque motor constante <span class="math inline">\(T_0\)</span> y resistencia <span class="math inline">\(-\kappa\omega\)</span>, <span class="math inline">\(\kappa&gt;0\)</span>, la rapidez firmada es</p>
+<p><span class="math display">\[\omega(t)=\frac{T_0}{\kappa} +\left(\omega(0)-\frac{T_0}{\kappa}\right)e^{-\kappa t/J}.\]</span></p>
 <p>Su energía cumple <span class="math inline">\(d(J\omega^2/2)/dt=T_0\omega-\kappa\omega^2\)</span>.</p>
 <p><strong>Demostración.</strong> El balance axial es <span class="math inline">\(J\dot\omega=T_0-\kappa\omega\)</span>. Restar el equilibrio <span class="math inline">\(T_0/\kappa\)</span> deja una ecuación de tasa <span class="math inline">\(-\kappa/J\)</span>, cuya exponencial satisface el dato. Multiplicar el balance por <span class="math inline">\(\omega\)</span> da la igualdad energética. <span class="math inline">\(\square\)</span></p>
 <p>En régimen estacionario, el motor sigue suministrando energía y la resistencia la disipa con igual potencia. El modelo contiene un eje impuesto y una ley resistente declarada; retirar los soportes exige resolver de nuevo el movimiento vectorial completo.</p>
 <p><span id="fispm-t1-c22-mp0008"></span></p>
-<p><strong>Principio metodológico FPM-I-22-MP08.</strong> Calcula el torque de una trayectoria impuesta y separa potencia motora, disipación y reacciones de orientación.</p>
-<section id="ejercicios-7" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-7">Ejercicios</h3>
+<p><strong>Principio metodológico 22.8.</strong> Calcula el torque de una trayectoria impuesta y separa potencia motora, disipación y reacciones de orientación.</p>
+<p><span id="ejercicios-7"></span></p>
+<section id="fispm-c22-ejercicios-7" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c22-ejercicios-7">Ejercicios</h3>
 <p><span id="fispm-t1-c22-e0015"></span></p>
-<p><strong>Ejercicio FPM-I-22-E15.</strong> Para <span class="math inline">\(I=\operatorname{diag}(2J,3J,4J)\)</span> y <span class="math inline">\(\boldsymbol\Omega=(u,u,u)\)</span> constante, calcula el torque corporal.</p>
-<p><strong>Solución.</strong> P15 da <span class="math inline">\(\mathbf T=Ju^2(1,-2,1)\)</span>. Su producto con la velocidad es <span class="math inline">\(Ju^3(1-2+1)=0\)</span>. Retirar este torque activa las derivadas de Euler aunque el balance energético del giro impuesto fuera estacionario.</p>
+<p><strong>Ejercicio 22.15.</strong> Para <span class="math inline">\(I=\operatorname{diag}(2J,3J,4J)\)</span> y <span class="math inline">\(\boldsymbol\Omega=(u,u,u)\)</span> constante, calcula el torque corporal.</p>
+<p><strong>Solución.</strong> proposición 22.15 da <span class="math inline">\(\mathbf T=Ju^2(1,-2,1)\)</span>. Su producto con la velocidad es <span class="math inline">\(Ju^3(1-2+1)=0\)</span>. Retirar este torque activa las derivadas de Euler aunque el balance energético del giro impuesto fuera estacionario.</p>
 <p><span id="fispm-t1-c22-e0016"></span></p>
-<p><strong>Ejercicio FPM-I-22-E16.</strong> El rotor de P16 parte de reposo con <span class="math inline">\(T_0&gt;0\)</span>. Encuentra cuándo alcanza el <span class="math inline">\(90\%\)</span> de la rapidez estacionaria y la potencia motora límite.</p>
+<p><strong>Ejercicio 22.16.</strong> El rotor de la proposición 22.16 parte de reposo con <span class="math inline">\(T_0&gt;0\)</span>. Encuentra cuándo alcanza el <span class="math inline">\(90\%\)</span> de la rapidez estacionaria y la potencia motora límite.</p>
 <p><strong>Solución.</strong> Su rapidez es <span class="math inline">\((T_0/\kappa)(1-e^{-\kappa t/J})\)</span>. Igualar a <span class="math inline">\(0.9T_0/\kappa\)</span> da <span class="math inline">\(t=(J/\kappa)\log10\)</span>. La potencia límite es <span class="math inline">\(T_0^2/\kappa\)</span>, igual a la disipada. La energía cinética deja de crecer mientras continúa la transferencia motor-resistencia.</p>
+<p><span id="el-trompo-pesado-y-su-punto-de-apoyo"></span></p>
 <p><span id="fispm-t1-c22-s09"></span></p>
 <p><span id="fpm-i-22-s09"></span></p>
 </section>
 </section>
-<section id="el-trompo-pesado-y-su-punto-de-apoyo" class="level2">
-<h2 class="anchored" data-anchor-id="el-trompo-pesado-y-su-punto-de-apoyo">§9. El trompo pesado y su punto de apoyo</h2>
+<section id="fispm-c22-el-trompo-pesado-y-su-punto-de-apoyo" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c22-el-trompo-pesado-y-su-punto-de-apoyo">9. El trompo pesado y su punto de apoyo</h2>
 <p>Un trompo sujeto por un pivote fijo tiene fuerzas exteriores incluso cuando gira sin rozamiento. La gravedad añade torque y el pivote suministra la fuerza necesaria para mover el centro de masa sobre una esfera. Calcular el torque sobre el pivote elimina la reacción puntual de esa ecuación, pero conserva la gravedad.</p>
+<p><span id="fig:I-22-N03"></span></p>
+<figure id="fig-fpm-v04-i-22-n03" class="fpm-v04-panel figure">
+<p><a href="../assets/9b6131ade28baca490a9978d.svg" class="lightbox" data-gallery="fpm-v04-c22"><img src="../assets/9b6131ade28baca490a9978d.svg" alt="Peso y brazo del trompo. Diagrama del capítulo 22; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="340" height="360" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 22.3.</strong> El peso aplicado en el centro de masa produce respecto del apoyo un torque de módulo <span class="math inline">\(Mg\ell\sin\theta\)</span>. La reacción del apoyo tiene brazo nulo respecto de ese mismo punto. Véase §<a href="#fispm-c22-el-trompo-pesado-y-su-punto-de-apoyo">9</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c22-d0006"></span></p>
-<p><strong>Definición FPM-I-22-D06 — Trompo simétrico pesado de pivote fijo.</strong> El pivote <span class="math inline">\(O\)</span> permanece fijo en un marco inercial y no ejerce un par adicional. El centro de masa está en <span class="math inline">\(G=O+l\mathbf n\)</span>, con <span class="math inline">\(l&gt;0\)</span>, y la gravedad es <span class="math inline">\(-Mg\mathbf e_z\)</span>, con <span class="math inline">\(g&gt;0\)</span>. El tensor sobre <span class="math inline">\(O\)</span> es <span class="math inline">\(\operatorname{diag}(A,A,C)\)</span>, con momentos positivos. Escribimos <span class="math inline">\(k=Mgl\)</span> y elegimos potencial <span class="math inline">\(U=k\mathbf n\cdot\mathbf e_z\)</span>.</p>
-<p>Los momentos de D06 se calculan sobre el pivote. Si una tabla ofrece los momentos centrales, el teorema de ejes paralelos de I21 debe trasladarlos antes de usarlos. La altura del centro es <span class="math inline">\(l\cos\theta\)</span>, de modo que el potencial aumenta al levantar el eje hacia la vertical superior.</p>
+<p><strong>Definición 22.6 — Trompo simétrico pesado de pivote fijo.</strong> El pivote <span class="math inline">\(O\)</span> permanece fijo en un marco inercial y no ejerce un par adicional. El centro de masa está en <span class="math inline">\(G=O+l\mathbf n\)</span>, con <span class="math inline">\(l&gt;0\)</span>, y la gravedad es <span class="math inline">\(-Mg\mathbf e_z\)</span>, con <span class="math inline">\(g&gt;0\)</span>. El tensor sobre <span class="math inline">\(O\)</span> es <span class="math inline">\(\operatorname{diag}(A,A,C)\)</span>, con momentos positivos. Escribimos <span class="math inline">\(k=Mgl\)</span> y elegimos potencial <span class="math inline">\(U=k\mathbf n\cdot\mathbf e_z\)</span>.</p>
+<p>Los momentos de la definición 22.6 se calculan sobre el pivote. Si una tabla ofrece los momentos centrales, el teorema de ejes paralelos del capítulo 21 debe trasladarlos antes de usarlos. La altura del centro es <span class="math inline">\(l\cos\theta\)</span>, de modo que el potencial aumenta al levantar el eje hacia la vertical superior.</p>
 <p><span id="fispm-t1-c22-p0017"></span></p>
-<p><strong>Proposición FPM-I-22-P17 — Ecuaciones vectoriales del trompo.</strong> Sea <span class="math inline">\(s=\boldsymbol\omega\cdot\mathbf n\)</span>. Entonces</p>
-<p><span class="math display">\[
-\mathbf H=A\boldsymbol\omega+(C-A)s\mathbf n,
-\qquad \dot{\mathbf H}=k\mathbf e_z\times\mathbf n,
-\qquad \dot{\mathbf n}=\boldsymbol\omega\times\mathbf n.
-\]</span></p>
-<p><strong>Demostración.</strong> El tensor de simetría axial, expresado en el espacio, es <span class="math inline">\(A\mathbf1+(C-A)\mathbf n\mathbf n^T\)</span>. Aplicarlo a <span class="math inline">\(\boldsymbol\omega\)</span> da el momento. La fuerza gravitatoria produce torque <span class="math inline">\(l\mathbf n\times(-Mg\mathbf e_z)=k\mathbf e_z\times\mathbf n\)</span>. P02 y el transporte del eje material dan las dos derivadas. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 22.17 — Ecuaciones vectoriales del trompo.</strong> Sea <span class="math inline">\(s=\boldsymbol\omega\cdot\mathbf n\)</span>. Entonces</p>
+<p><span class="math display">\[\mathbf H=A\boldsymbol\omega+(C-A)s\mathbf n, \qquad \dot{\mathbf H}=k\mathbf e_z\times\mathbf n, \qquad \dot{\mathbf n}=\boldsymbol\omega\times\mathbf n.\]</span></p>
+<p><strong>Demostración.</strong> El tensor de simetría axial, expresado en el espacio, es <span class="math inline">\(A\mathbf1+(C-A)\mathbf n\mathbf n^T\)</span>. Aplicarlo a <span class="math inline">\(\boldsymbol\omega\)</span> da el momento. La fuerza gravitatoria produce torque <span class="math inline">\(l\mathbf n\times(-Mg\mathbf e_z)=k\mathbf e_z\times\mathbf n\)</span>. Proposición 22.2 y el transporte del eje material dan las dos derivadas. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c22-p0018"></span></p>
-<p><strong>Proposición FPM-I-22-P18 — Tres constantes del trompo ideal.</strong> En el modelo de D06 se conservan</p>
-<p><span class="math display">\[
-a=\mathbf H\cdot\mathbf e_z,
-\qquad b=\mathbf H\cdot\mathbf n=Cs,
-\qquad E=K+k\mathbf n\cdot\mathbf e_z.
-\]</span></p>
-<p><strong>Demostración.</strong> El torque es perpendicular a <span class="math inline">\(\mathbf e_z\)</span>, de modo que <span class="math inline">\(\dot a=0\)</span>. Para <span class="math inline">\(b\)</span>, la regla del producto da <span class="math inline">\(\dot b=\boldsymbol\tau\cdot\mathbf n+\mathbf H\cdot\dot{\mathbf n}\)</span>. El primero es cero y el segundo también, pues <span class="math inline">\(\mathbf H\)</span> es combinación de <span class="math inline">\(\boldsymbol\omega\)</span> y <span class="math inline">\(\mathbf n\)</span>, mientras <span class="math inline">\(\dot{\mathbf n}=\boldsymbol\omega\times\mathbf n\)</span>. La relación <span class="math inline">\(b=Cs\)</span> sigue de P17. Por P05, <span class="math inline">\(\dot K=k(\mathbf e_z\times\mathbf n)\cdot\boldsymbol\omega=-k\mathbf e_z\cdot\dot{\mathbf n}\)</span>, que se cancela con la derivada del potencial. La reacción del pivote fijo no aporta potencia y el modelo no contiene disipación. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 22.18 — Tres constantes del trompo ideal.</strong> En el modelo de la definición 22.6 se conservan</p>
+<p><span class="math display">\[a=\mathbf H\cdot\mathbf e_z, \qquad b=\mathbf H\cdot\mathbf n=Cs, \qquad E=K+k\mathbf n\cdot\mathbf e_z.\]</span></p>
+<p><strong>Demostración.</strong> El torque es perpendicular a <span class="math inline">\(\mathbf e_z\)</span>, de modo que <span class="math inline">\(\dot a=0\)</span>. Para <span class="math inline">\(b\)</span>, la regla del producto da <span class="math inline">\(\dot b=\boldsymbol\tau\cdot\mathbf n+\mathbf H\cdot\dot{\mathbf n}\)</span>. El primero es cero y el segundo también, pues <span class="math inline">\(\mathbf H\)</span> es combinación de <span class="math inline">\(\boldsymbol\omega\)</span> y <span class="math inline">\(\mathbf n\)</span>, mientras <span class="math inline">\(\dot{\mathbf n}=\boldsymbol\omega\times\mathbf n\)</span>. La relación <span class="math inline">\(b=Cs\)</span> sigue de la proposición 22.17. Por proposición 22.5, <span class="math inline">\(\dot K=k(\mathbf e_z\times\mathbf n)\cdot\boldsymbol\omega=-k\mathbf e_z\cdot\dot{\mathbf n}\)</span>, que se cancela con la derivada del potencial. La reacción del pivote fijo no aporta potencia y el modelo no contiene disipación. <span class="math inline">\(\square\)</span></p>
 <p>El momento vectorial completo ya no es constante, pero sí sus dos proyecciones indicadas. Una se mide sobre un eje espacial fijo y otra sobre un eje corporal móvil. La conservación de esta última depende de la simetría del tensor y de que el torque no tenga componente axial; no se debe extender a cualquier cuerpo inclinado.</p>
 <p><span id="fispm-t1-c22-mp0009"></span></p>
-<p><strong>Principio metodológico FPM-I-22-MP09.</strong> Calcula la inercia sobre el pivote y declara qué esfuerzos puede transmitir. Distingue las proyecciones conservadas del vector de momento completo.</p>
-<section id="ejercicios-8" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-8">Ejercicios</h3>
+<p><strong>Principio metodológico 22.9.</strong> Calcula la inercia sobre el pivote y declara qué esfuerzos puede transmitir. Distingue las proyecciones conservadas del vector de momento completo.</p>
+<p><span id="ejercicios-8"></span></p>
+<section id="fispm-c22-ejercicios-8" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c22-ejercicios-8">Ejercicios</h3>
 <p><span id="fispm-t1-c22-e0017"></span></p>
-<p><strong>Ejercicio FPM-I-22-E17.</strong> Una esfera maciza de radio <span class="math inline">\(r\)</span>, masa <span class="math inline">\(M\)</span> y centro a distancia <span class="math inline">\(l\)</span> del pivote se mueve como un cuerpo de D06. Encuentra <span class="math inline">\(A\)</span> y <span class="math inline">\(C\)</span> tomando el eje del centro como tercer eje.</p>
-<p><strong>Solución.</strong> El tensor central es <span class="math inline">\(2Mr^2\mathbf1/5\)</span>. El desplazamiento al pivote es axial, así que I21 añade <span class="math inline">\(Ml^2\)</span> a los dos momentos transversales y cero al axial. Por tanto <span class="math inline">\(A=2Mr^2/5+Ml^2\)</span> y <span class="math inline">\(C=2Mr^2/5\)</span>. El soporte se idealiza sin masa adicional ni torque de par; cualquier soporte con masa debe incorporarse al tensor.</p>
+<p><strong>Ejercicio 22.17.</strong> Una esfera maciza de radio <span class="math inline">\(r\)</span>, masa <span class="math inline">\(M\)</span> y centro a distancia <span class="math inline">\(l\)</span> del pivote se mueve como un cuerpo de la definición 22.6. Encuentra <span class="math inline">\(A\)</span> y <span class="math inline">\(C\)</span> tomando el eje del centro como tercer eje.</p>
+<p><strong>Solución.</strong> El tensor central es <span class="math inline">\(2Mr^2\mathbf1/5\)</span>. El desplazamiento al pivote es axial, así que capítulo 21 añade <span class="math inline">\(Ml^2\)</span> a los dos momentos transversales y cero al axial. Por tanto <span class="math inline">\(A=2Mr^2/5+Ml^2\)</span> y <span class="math inline">\(C=2Mr^2/5\)</span>. El soporte se idealiza sin masa adicional ni torque de par; cualquier soporte con masa debe incorporarse al tensor.</p>
 <p><span id="fispm-t1-c22-e0018"></span></p>
-<p><strong>Ejercicio FPM-I-22-E18.</strong> El eje del trompo es inicialmente horizontal y su velocidad angular es <span class="math inline">\(s\mathbf n\)</span>. Encuentra <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(E\)</span> y el torque inicial.</p>
+<p><strong>Ejercicio 22.18.</strong> El eje del trompo es inicialmente horizontal y su velocidad angular es <span class="math inline">\(s\mathbf n\)</span>. Encuentra <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(E\)</span> y el torque inicial.</p>
 <p><strong>Solución.</strong> El momento es <span class="math inline">\(Cs\mathbf n\)</span>, con <span class="math inline">\(a=0\)</span> por horizontalidad y <span class="math inline">\(b=Cs\)</span>. La energía es <span class="math inline">\(Cs^2/2\)</span> porque el potencial inicial es cero. El torque tiene magnitud <span class="math inline">\(k\)</span> y dirección <span class="math inline">\(\mathbf e_z\times\mathbf n\)</span>. Aunque el eje no tenga inicialmente velocidad de inclinación o precesión, ese torque cambia inmediatamente el momento; la preparación no garantiza una precesión uniforme.</p>
+<p><span id="separar-inclinación-azimut-y-giro-axial"></span></p>
 <p><span id="fispm-t1-c22-s10"></span></p>
 <p><span id="fpm-i-22-s10"></span></p>
 </section>
 </section>
-<section id="separar-inclinación-azimut-y-giro-axial" class="level2">
-<h2 class="anchored" data-anchor-id="separar-inclinación-azimut-y-giro-axial">§10. Separar inclinación, azimut y giro axial</h2>
-<p>La dirección del eje necesita dos ángulos. La orientación del material alrededor de ese eje necesita un tercero. La velocidad axial recibe contribuciones del giro propio y del movimiento del eje, tal como anticipó la composición de rotaciones en I21.</p>
+<section id="fispm-c22-separar-inclinaciuxf3n-azimut-y-giro-axial" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c22-separar-inclinaciuxf3n-azimut-y-giro-axial">10. Separar inclinación, azimut y giro axial</h2>
+<p>La dirección del eje necesita dos ángulos. La orientación del material alrededor de ese eje necesita un tercero. La velocidad axial recibe contribuciones del giro propio y del movimiento del eje, tal como anticipó la composición de rotaciones en el capítulo 21.</p>
 <p><span id="fispm-t1-c22-d0007"></span></p>
-<p><strong>Definición FPM-I-22-D07 — Ángulos del trompo en un dominio no polar.</strong> Para <span class="math inline">\(0&lt;\theta&lt;\pi\)</span>, escribimos</p>
-<p><span class="math display">\[
-\mathbf n=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta).
-\]</span></p>
+<p><strong>Definición 22.7 — Ángulos del trompo en un dominio no polar.</strong> Para <span class="math inline">\(0&lt;\theta&lt;\pi\)</span>, escribimos</p>
+<p><span class="math display">\[\mathbf n=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta).\]</span></p>
 <p>La inclinación es <span class="math inline">\(\theta\)</span>, el azimut de precesión <span class="math inline">\(\phi\)</span> y el giro restante del cuerpo <span class="math inline">\(\psi\)</span>, con convención <span class="math inline">\(R=R_z(\phi)R_y(\theta)R_z(\psi)\)</span>. El giro axial físico es <span class="math inline">\(s=\boldsymbol\omega\cdot\mathbf n\)</span>.</p>
 <p><span id="fispm-t1-c22-p0019"></span></p>
-<p><strong>Proposición FPM-I-22-P19 — Velocidades y energía en esos ángulos.</strong> Con la convención anterior,</p>
-<p><span class="math display">\[
-s=\dot\psi+\dot\phi\cos\theta,
-\qquad K=\frac A2(\dot\theta^2+\dot\phi^2\sin^2\theta)+\frac C2s^2,
-\]</span></p>
+<p><strong>Proposición 22.19 — Velocidades y energía en esos ángulos.</strong> Con la convención anterior,</p>
+<p><span class="math display">\[s=\dot\psi+\dot\phi\cos\theta, \qquad K=\frac A2(\dot\theta^2+\dot\phi^2\sin^2\theta)+\frac C2s^2,\]</span></p>
 <p>y <span class="math inline">\(a=A\dot\phi\sin^2\theta+b\cos\theta\)</span>.</p>
-<p><strong>Demostración.</strong> La composición de I21 da <span class="math inline">\(\boldsymbol\omega=\dot\phi\mathbf e_z+\dot\theta\mathbf e_\phi+\dot\psi\mathbf n\)</span>, donde <span class="math inline">\(\mathbf e_\phi=(-\sin\phi,\cos\phi,0)\)</span>. Su proyección axial es la primera fórmula. Si <span class="math inline">\(\mathbf e_\theta=(\cos\theta\cos\phi,\cos\theta\sin\phi,-\sin\theta)\)</span>, entonces <span class="math inline">\(\boldsymbol\omega=s\mathbf n+\dot\theta\mathbf e_\phi-\dot\phi\sin\theta\mathbf e_\theta\)</span>. Las tres direcciones son ortonormales; el tensor tiene momento <span class="math inline">\(C\)</span> en la axial y <span class="math inline">\(A\)</span> en las otras. La forma cuadrática da la energía. Por P17, <span class="math inline">\(\mathbf H=b\mathbf n+A\dot\theta\mathbf e_\phi-A\dot\phi\sin\theta\mathbf e_\theta\)</span>. Multiplicar por <span class="math inline">\(\mathbf e_z\)</span> usa <span class="math inline">\(\mathbf e_\theta\cdot\mathbf e_z=-\sin\theta\)</span> y da la expresión de <span class="math inline">\(a\)</span>. <span class="math inline">\(\square\)</span></p>
+<p><strong>Demostración.</strong> La composición del capítulo 21 da <span class="math inline">\(\boldsymbol\omega=\dot\phi\mathbf e_z+\dot\theta\mathbf e_\phi+\dot\psi\mathbf n\)</span>, donde <span class="math inline">\(\mathbf e_\phi=(-\sin\phi,\cos\phi,0)\)</span>. Su proyección axial es la primera fórmula. Si <span class="math inline">\(\mathbf e_\theta=(\cos\theta\cos\phi,\cos\theta\sin\phi,-\sin\theta)\)</span>, entonces <span class="math inline">\(\boldsymbol\omega=s\mathbf n+\dot\theta\mathbf e_\phi-\dot\phi\sin\theta\mathbf e_\theta\)</span>. Las tres direcciones son ortonormales; el tensor tiene momento <span class="math inline">\(C\)</span> en la axial y <span class="math inline">\(A\)</span> en las otras. La forma cuadrática da la energía. Por proposición 22.17, <span class="math inline">\(\mathbf H=b\mathbf n+A\dot\theta\mathbf e_\phi-A\dot\phi\sin\theta\mathbf e_\theta\)</span>. Multiplicar por <span class="math inline">\(\mathbf e_z\)</span> usa <span class="math inline">\(\mathbf e_\theta\cdot\mathbf e_z=-\sin\theta\)</span> y da la expresión de <span class="math inline">\(a\)</span>. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c22-p0020"></span></p>
-<p><strong>Proposición FPM-I-22-P20 — Reducción escalar de la inclinación.</strong> Para los valores conservados <span class="math inline">\(a,b\)</span>, sea <span class="math inline">\(E'=E-b^2/(2C)\)</span>. En <span class="math inline">\(0&lt;\theta&lt;\pi\)</span>,</p>
-<p><span class="math display">\[
-\dot\phi=\frac{a-b\cos\theta}{A\sin^2\theta},
-\qquad \frac A2\dot\theta^2+V_{\mathrm{ef}}(\theta)=E',
-\]</span></p>
+<p><strong>Proposición 22.20 — Reducción escalar de la inclinación.</strong> Para los valores conservados <span class="math inline">\(a,b\)</span>, sea <span class="math inline">\(E'=E-b^2/(2C)\)</span>. En <span class="math inline">\(0&lt;\theta&lt;\pi\)</span>,</p>
+<p><span class="math display">\[\dot\phi=\frac{a-b\cos\theta}{A\sin^2\theta}, \qquad \frac A2\dot\theta^2+V_{\mathrm{ef}}(\theta)=E',\]</span></p>
 <p>con</p>
-<p><span class="math display">\[
-V_{\mathrm{ef}}(\theta)=
-\frac{(a-b\cos\theta)^2}{2A\sin^2\theta}+k\cos\theta.
-\]</span></p>
-<p><strong>Demostración.</strong> Despejar <span class="math inline">\(\dot\phi\)</span> en P19 exige <span class="math inline">\(\sin\theta\ne0\)</span>, que es la restricción indicada. Sustituirlo en <span class="math inline">\(K+U=E\)</span> y usar <span class="math inline">\(s=b/C\)</span> produce el potencial y la constante reducida. <span class="math inline">\(\square\)</span></p>
+<p><span class="math display">\[V_{\mathrm{ef}}(\theta)= \frac{(a-b\cos\theta)^2}{2A\sin^2\theta}+k\cos\theta.\]</span></p>
+<p><strong>Demostración.</strong> Despejar <span class="math inline">\(\dot\phi\)</span> en la proposición 22.19 exige <span class="math inline">\(\sin\theta\ne0\)</span>, que es la restricción indicada. Sustituirlo en <span class="math inline">\(K+U=E\)</span> y usar <span class="math inline">\(s=b/C\)</span> produce el potencial y la constante reducida. <span class="math inline">\(\square\)</span></p>
 <p>Cuando <span class="math inline">\(E'&gt;V_{\mathrm{ef}}\)</span> en un tramo de inclinación monótona, el tiempo se obtiene integrando <span class="math inline">\(dt=\pm\sqrt{A/2}\,d\theta/\sqrt{E'-V_{\mathrm{ef}}(\theta)}\)</span>. Al llegar a un retorno hay que escoger la continuación consistente con la ecuación dinámica. Una energía igual al potencial no prueba por sí sola que el eje vaya a permanecer inmóvil: el gradiente decide si ese punto es un equilibrio.</p>
 <p>En los polos, los ángulos pierden su significado separado. Si <span class="math inline">\(a\ne b\)</span>, el primer término diverge al acercarse a <span class="math inline">\(\theta=0\)</span> y una trayectoria de energía finita no llega allí. Si <span class="math inline">\(a=b\)</span>, la singularidad puede cancelarse; se estudiará por un límite o con variables vectoriales, conservando las condiciones iniciales.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <p><span id="fispm-t1-c22-mp0010"></span></p>
-<p><strong>Principio metodológico FPM-I-22-MP10.</strong> Distingue giro axial físico y derivada del tercer ángulo. Controla el dominio de los ángulos y las cancelaciones antes de usar una cuadratura.</p>
-<section id="ejercicios-9" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-9">Ejercicios</h3>
+<p><strong>Principio metodológico 22.10.</strong> Distingue giro axial físico y derivada del tercer ángulo. Controla el dominio de los ángulos y las cancelaciones antes de usar una cuadratura.</p>
+<p><span id="ejercicios-9"></span></p>
+<section id="fispm-c22-ejercicios-9" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c22-ejercicios-9">Ejercicios</h3>
 <p><span id="fispm-t1-c22-e0019"></span></p>
-<p><strong>Ejercicio FPM-I-22-E19.</strong> En una precesión de inclinación <span class="math inline">\(\theta=\pi/3\)</span>, el azimut tiene tasa <span class="math inline">\(p\)</span> y el giro axial es <span class="math inline">\(s\)</span>. Encuentra <span class="math inline">\(\dot\psi\)</span> y la energía cinética.</p>
-<p><strong>Solución.</strong> P19 da <span class="math inline">\(\dot\psi=s-p/2\)</span>. La energía es <span class="math inline">\(3Ap^2/8+Cs^2/2\)</span>, porque <span class="math inline">\(\dot\theta=0\)</span> y <span class="math inline">\(\sin^2(\pi/3)=3/4\)</span>. Identificar <span class="math inline">\(s\)</span> con <span class="math inline">\(\dot\psi\)</span> omitiría la contribución de la precesión y cambiaría la energía axial.</p>
+<p><strong>Ejercicio 22.19.</strong> En una precesión de inclinación <span class="math inline">\(\theta=\pi/3\)</span>, el azimut tiene tasa <span class="math inline">\(p\)</span> y el giro axial es <span class="math inline">\(s\)</span>. Encuentra <span class="math inline">\(\dot\psi\)</span> y la energía cinética.</p>
+<p><strong>Solución.</strong> proposición 22.19 da <span class="math inline">\(\dot\psi=s-p/2\)</span>. La energía es <span class="math inline">\(3Ap^2/8+Cs^2/2\)</span>, porque <span class="math inline">\(\dot\theta=0\)</span> y <span class="math inline">\(\sin^2(\pi/3)=3/4\)</span>. Identificar <span class="math inline">\(s\)</span> con <span class="math inline">\(\dot\psi\)</span> omitiría la contribución de la precesión y cambiaría la energía axial.</p>
 <p><span id="fispm-t1-c22-e0020"></span></p>
-<p><strong>Ejercicio FPM-I-22-E20.</strong> Para <span class="math inline">\(b\ne0\)</span>, determina las condiciones que cancelan la barrera angular en el polo superior y en el inferior. ¿Puede una misma elección de <span class="math inline">\(a\)</span> cancelar ambas?</p>
+<p><strong>Ejercicio 22.20.</strong> Para <span class="math inline">\(b\ne0\)</span>, determina las condiciones que cancelan la barrera angular en el polo superior y en el inferior. ¿Puede una misma elección de <span class="math inline">\(a\)</span> cancelar ambas?</p>
 <p><strong>Solución.</strong> Arriba se requiere <span class="math inline">\(a=b\)</span>, pues el numerador tiende a <span class="math inline">\((a-b)^2\)</span>. Abajo se requiere <span class="math inline">\(a=-b\)</span>. Con <span class="math inline">\(b\ne0\)</span>, no pueden cumplirse simultáneamente. La gravedad añade un término acotado y no cancela una barrera divergente. Si <span class="math inline">\(b=0\)</span> y <span class="math inline">\(a=0\)</span>, ambos cocientes admiten una extensión nula y los polos requieren otra parametrización.</p>
+<p><span id="cuándo-existe-una-precesión-regular"></span></p>
 <p><span id="fispm-t1-c22-s11"></span></p>
 <p><span id="fpm-i-22-s11"></span></p>
 </section>
 </section>
-<section id="cuándo-existe-una-precesión-regular" class="level2">
-<h2 class="anchored" data-anchor-id="cuándo-existe-una-precesión-regular">§11. Cuándo existe una precesión regular</h2>
+<section id="fispm-c22-cuuxe1ndo-existe-una-precesiuxf3n-regular" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c22-cuuxe1ndo-existe-una-precesiuxf3n-regular">11. Cuándo existe una precesión regular</h2>
 <p>Una inclinación constante puede sostenerse si el cambio del momento causado por la precesión coincide con el torque gravitatorio. El cálculo vectorial permite obtener la condición sin adelantar el formalismo lagrangiano.</p>
+<p><span id="fig:I-22-R01"></span></p>
+<figure id="fig-fpm-v04-i-22-r01" class="fpm-v04-panel figure">
+<p><a href="../assets/3c2f1dba324c905aaaf13e1d.svg" class="lightbox" data-gallery="fpm-v04-c22"><img src="../assets/3c2f1dba324c905aaaf13e1d.svg" alt="El torque puede cambiar la dirección del momento. Diagrama del capítulo 22; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="340" height="468" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 22.4.</strong> Cuando el torque es perpendicular al momento angular, el cambio de primer orden altera su dirección sin alterar su módulo. El dibujo es una construcción diferencial; no identifica por sí solo las tasas de precesión de un trompo. Véase §<a href="#fispm-c22-cuuxe1ndo-existe-una-precesiuxf3n-regular">11</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c22-p0021"></span></p>
-<p><strong>Proposición FPM-I-22-P21 — Condición exacta de precesión uniforme.</strong> Para <span class="math inline">\(0&lt;\theta&lt;\pi\)</span>, giro axial constante <span class="math inline">\(s=b/C\)</span> y tasa azimutal constante <span class="math inline">\(p\)</span>, una precesión regular del trompo satisface, y puede construirse cuando satisface,</p>
-<p><span class="math display">\[
-A\cos\theta\,p^2-bp+k=0.
-\]</span></p>
-<p><strong>Demostración.</strong> Con <span class="math inline">\(\dot\theta=0\)</span>, la velocidad es <span class="math inline">\(\boldsymbol\omega=p\mathbf e_z+(s-p\cos\theta)\mathbf n\)</span>. Por P17, <span class="math inline">\(\mathbf H=Ap\mathbf e_z+(b-Ap\cos\theta)\mathbf n\)</span>. Su derivada es <span class="math inline">\((b-Ap\cos\theta)p\mathbf e_z\times\mathbf n\)</span>. Igualarla al torque <span class="math inline">\(k\mathbf e_z\times\mathbf n\)</span>, no nulo en el dominio indicado, da la condición. Recíprocamente, eligiendo <span class="math inline">\(\phi=pt+\phi_0\)</span>, <span class="math inline">\(\theta\)</span> constante y <span class="math inline">\(\dot\psi=s-p\cos\theta\)</span>, se reconstruye una orientación con esa velocidad. La misma identidad verifica el balance vectorial completo. <span class="math inline">\(\square\)</span></p>
+<p><strong>Proposición 22.21 — Condición exacta de precesión uniforme.</strong> Para <span class="math inline">\(0&lt;\theta&lt;\pi\)</span>, giro axial constante <span class="math inline">\(s=b/C\)</span> y tasa azimutal constante <span class="math inline">\(p\)</span>, una precesión regular del trompo satisface, y puede construirse cuando satisface,</p>
+<p><span class="math display">\[A\cos\theta\,p^2-bp+k=0.\]</span></p>
+<p><strong>Demostración.</strong> Con <span class="math inline">\(\dot\theta=0\)</span>, la velocidad es <span class="math inline">\(\boldsymbol\omega=p\mathbf e_z+(s-p\cos\theta)\mathbf n\)</span>. Por proposición 22.17, <span class="math inline">\(\mathbf H=Ap\mathbf e_z+(b-Ap\cos\theta)\mathbf n\)</span>. Su derivada es <span class="math inline">\((b-Ap\cos\theta)p\mathbf e_z\times\mathbf n\)</span>. Igualarla al torque <span class="math inline">\(k\mathbf e_z\times\mathbf n\)</span>, no nulo en el dominio indicado, da la condición. Recíprocamente, eligiendo <span class="math inline">\(\phi=pt+\phi_0\)</span>, <span class="math inline">\(\theta\)</span> constante y <span class="math inline">\(\dot\psi=s-p\cos\theta\)</span>, se reconstruye una orientación con esa velocidad. La misma identidad verifica el balance vectorial completo. <span class="math inline">\(\square\)</span></p>
 <p>La constante vertical compatible con esta solución es <span class="math inline">\(a=Ap\sin^2\theta+b\cos\theta\)</span>. Por eso una preparación con valores arbitrarios de <span class="math inline">\(a,b\)</span> y energía no garantiza la precesión elegida. Dos raíces de la ecuación a inclinación y giro axial fijados tienen, en general, distintos valores de <span class="math inline">\(a\)</span> y de energía.</p>
 <p><span id="fispm-t1-c22-p0022"></span></p>
-<p><strong>Proposición FPM-I-22-P22 — Ramas lenta y rápida y error de la aproximación.</strong> Supongamos <span class="math inline">\(b&gt;0\)</span>, <span class="math inline">\(\cos\theta=c&gt;0\)</span> y <span class="math inline">\(b^2\geq4Akc\)</span>. Las tasas posibles son</p>
-<p><span class="math display">\[
-p_\pm=\frac{b\pm\sqrt{b^2-4Akc}}{2Ac},
-\qquad p_- =\frac{2k}{b+\sqrt{b^2-4Akc}}.
-\]</span></p>
+<p><strong>Proposición 22.22 — Ramas lenta y rápida y error de la aproximación.</strong> Supongamos <span class="math inline">\(b&gt;0\)</span>, <span class="math inline">\(\cos\theta=c&gt;0\)</span> y <span class="math inline">\(b^2\geq4Akc\)</span>. Las tasas posibles son</p>
+<p><span class="math display">\[p_\pm=\frac{b\pm\sqrt{b^2-4Akc}}{2Ac}, \qquad p_- =\frac{2k}{b+\sqrt{b^2-4Akc}}.\]</span></p>
 <p>Si <span class="math inline">\(\varepsilon=4Akc/b^2\leq1\)</span>, el error relativo de aproximar la rama lenta por <span class="math inline">\(k/b\)</span>, medido respecto de <span class="math inline">\(k/b\)</span>, es</p>
-<p><span class="math display">\[
-0\leq\frac{p_-}{k/b}-1
-=\frac{1-\sqrt{1-\varepsilon}}{1+\sqrt{1-\varepsilon}}
-=\frac{\varepsilon}{(1+\sqrt{1-\varepsilon})^2}
-\leq\varepsilon.
-\]</span></p>
-<p><strong>Demostración.</strong> Resolver la cuadrática de P21 da las raíces. Multiplicar numerador y denominador de la raíz con signo menos por la expresión conjugada da su forma racionalizada. Dividir por <span class="math inline">\(k/b\)</span> y escribir la raíz como <span class="math inline">\(b\sqrt{1-\varepsilon}\)</span> produce las igualdades. El denominador final es al menos uno, que prueba la cota. <span class="math inline">\(\square\)</span></p>
-<p>Para <span class="math inline">\(\varepsilon\ll1\)</span>, la rama lenta tiene tasa cercana a <span class="math inline">\(k/b=Mgl/(Cs)\)</span>. La rápida se aproxima a <span class="math inline">\(b/(Ac)\)</span>; pertenece a otra preparación y no se obtiene suponiendo que el momento está casi alineado con el eje. En el caso horizontal, <span class="math inline">\(c=0\)</span> y la ecuación se vuelve lineal: <span class="math inline">\(p=k/b\)</span> para <span class="math inline">\(b\ne0\)</span>. Con <span class="math inline">\(c&lt;0\)</span>, las raíces y sus signos requieren leer la cuadrática sin aplicar las hipótesis de P22.</p>
+<p><span class="math display">\[0\leq\frac{p_-}{k/b}-1 =\frac{1-\sqrt{1-\varepsilon}}{1+\sqrt{1-\varepsilon}} =\frac{\varepsilon}{(1+\sqrt{1-\varepsilon})^2} \leq\varepsilon.\]</span></p>
+<p><strong>Demostración.</strong> Resolver la cuadrática de la proposición 22.21 da las raíces. Multiplicar numerador y denominador de la raíz con signo menos por la expresión conjugada da su forma racionalizada. Dividir por <span class="math inline">\(k/b\)</span> y escribir la raíz como <span class="math inline">\(b\sqrt{1-\varepsilon}\)</span> produce las igualdades. El denominador final es al menos uno, que prueba la cota. <span class="math inline">\(\square\)</span></p>
+<p>Para <span class="math inline">\(\varepsilon\ll1\)</span>, la rama lenta tiene tasa cercana a <span class="math inline">\(k/b=Mgl/(Cs)\)</span>. La rápida se aproxima a <span class="math inline">\(b/(Ac)\)</span>; pertenece a otra preparación y no se obtiene suponiendo que el momento está casi alineado con el eje. En el caso horizontal, <span class="math inline">\(c=0\)</span> y la ecuación se vuelve lineal: <span class="math inline">\(p=k/b\)</span> para <span class="math inline">\(b\ne0\)</span>. Con <span class="math inline">\(c&lt;0\)</span>, las raíces y sus signos requieren leer la cuadrática sin aplicar las hipótesis de la proposición 22.22.</p>
 <p><span id="fispm-t1-c22-mp0011"></span></p>
-<p><strong>Principio metodológico FPM-I-22-MP11.</strong> Comprueba existencia de la precesión y compatibilidad con las constantes preparadas. Identifica la rama y el parámetro pequeño antes de usar una tasa aproximada.</p>
-<section id="ejercicios-10" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-10">Ejercicios</h3>
+<p><strong>Principio metodológico 22.11.</strong> Comprueba existencia de la precesión y compatibilidad con las constantes preparadas. Identifica la rama y el parámetro pequeño antes de usar una tasa aproximada.</p>
+<p><span id="ejercicios-10"></span></p>
+<section id="fispm-c22-ejercicios-10" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c22-ejercicios-10">Ejercicios</h3>
 <p><span id="fispm-t1-c22-e0021"></span></p>
-<p><strong>Ejercicio FPM-I-22-E21.</strong> Usa unidades coherentes en las que <span class="math inline">\(A=1\)</span>, <span class="math inline">\(k=1\)</span>, <span class="math inline">\(b=3\)</span> y <span class="math inline">\(\cos\theta=1/2\)</span>. Calcula ambas tasas y el error de la aproximación lenta.</p>
-<p><strong>Solución.</strong> La ecuación es <span class="math inline">\(p^2/2-3p+1=0\)</span>, por lo que <span class="math inline">\(p_\pm=3\pm\sqrt7\)</span>. La lenta vale aproximadamente <span class="math inline">\(0.35425\)</span>, frente a <span class="math inline">\(k/b=1/3\)</span>. El exceso relativo es <span class="math inline">\(3(3-\sqrt7)-1\approx0.06275\)</span>, menor que <span class="math inline">\(\varepsilon=2/9\)</span>. Las dos tasas corresponden a diferentes valores de <span class="math inline">\(a\)</span> según P19.</p>
-<p><span id="fispm-t1-c22-e0022"></span></p>
-<p><strong>Ejercicio FPM-I-22-E22.</strong> Para <span class="math inline">\(b&gt;0\)</span>, <span class="math inline">\(k&gt;0\)</span> y <span class="math inline">\(\theta=\pi/2\)</span>, encuentra la tasa regular y los valores de <span class="math inline">\(a\)</span> y <span class="math inline">\(E\)</span>.</p>
-<p><strong>Solución.</strong> P21 da <span class="math inline">\(p=k/b\)</span>. Como <span class="math inline">\(\cos\theta=0\)</span> y <span class="math inline">\(\sin\theta=1\)</span>, <span class="math inline">\(a=Ap=Ak/b\)</span>. La energía es <span class="math inline">\(E=Ap^2/2+b^2/(2C)\)</span>, pues el potencial es cero. La preparación horizontal de E18 tenía <span class="math inline">\(a=0\)</span>, así que no es este movimiento regular salvo que el torque gravitatorio fuera cero, excluido aquí.</p>
+<p><strong>Ejercicio 22.21.</strong> Usa unidades coherentes en las que <span class="math inline">\(A=1\)</span>, <span class="math inline">\(k=1\)</span>, <span class="math inline">\(b=3\)</span> y <span class="math inline">\(\cos\theta=1/2\)</span>. Calcula ambas tasas y el error de la aproximación lenta.</p>
+<p><strong>Solución.</strong> La ecuación es <span class="math inline">\(p^2/2-3p+1=0\)</span>, por lo que <span class="math inline">\(p_\pm=3\pm\sqrt7\)</span>. La lenta vale aproximadamente <span class="math inline">\(0.35425\)</span>, frente a <span class="math inline">\(k/b=1/3\)</span>. El exceso relativo es <span class="math inline">\(3(3-\sqrt7)-1\approx0.06275\)</span>, menor que <span class="math inline">\(\varepsilon=2/9\)</span>. Las dos tasas corresponden a diferentes valores de <span class="math inline">\(a\)</span> según la proposición 22.19.</p>
+<p><strong>Ejercicio 22.22.</strong> Para <span class="math inline">\(b&gt;0\)</span>, <span class="math inline">\(k&gt;0\)</span> y <span class="math inline">\(\theta=\pi/2\)</span>, encuentra la tasa regular y los valores de <span class="math inline">\(a\)</span> y <span class="math inline">\(E\)</span>.</p>
+<p><strong>Solución.</strong> proposición 22.21 da <span class="math inline">\(p=k/b\)</span>. Como <span class="math inline">\(\cos\theta=0\)</span> y <span class="math inline">\(\sin\theta=1\)</span>, <span class="math inline">\(a=Ap=Ak/b\)</span>. La energía es <span class="math inline">\(E=Ap^2/2+b^2/(2C)\)</span>, pues el potencial es cero. La preparación horizontal del ejercicio 22.18 tenía <span class="math inline">\(a=0\)</span>, así que no es este movimiento regular salvo que el torque gravitatorio fuera cero, excluido aquí.</p>
+<p><span id="la-nutación-y-los-retornos-de-la-inclinación"></span></p>
 <p><span id="fispm-t1-c22-s12"></span></p>
 <p><span id="fpm-i-22-s12"></span></p>
 </section>
 </section>
-<section id="la-nutación-y-los-retornos-de-la-inclinación" class="level2">
-<h2 class="anchored" data-anchor-id="la-nutación-y-los-retornos-de-la-inclinación">§12. La nutación y los retornos de la inclinación</h2>
+<section id="fispm-c22-la-nutaciuxf3n-y-los-retornos-de-la-inclinaciuxf3n" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c22-la-nutaciuxf3n-y-los-retornos-de-la-inclinaciuxf3n">12. La nutación y los retornos de la inclinación</h2>
 <p>Una preparación que no cumple la precesión regular puede producir cambios de inclinación. Las constantes reducen su estudio a una coordenada, pero el potencial efectivo debe acompañarse de la ecuación de segundo orden para decidir qué ocurre en los retornos.</p>
 <p><span id="fispm-t1-c22-p0023"></span></p>
-<p><strong>Proposición FPM-I-22-P23 — Ecuación de nutación y oscilaciones locales.</strong> En el dominio angular de D07, poniendo <span class="math inline">\(p=\dot\phi\)</span>,</p>
-<p><span class="math display">\[
-A\ddot\theta=\sin\theta(Ap^2\cos\theta-bp+k)
-=-V_{\mathrm{ef}}'(\theta),
-\]</span></p>
+<p><strong>Proposición 22.23 — Ecuación de nutación y oscilaciones locales.</strong> En el dominio angular de la definición 22.7, poniendo <span class="math inline">\(p=\dot\phi\)</span>,</p>
+<p><span class="math display">\[A\ddot\theta=\sin\theta(Ap^2\cos\theta-bp+k) =-V_{\mathrm{ef}}'(\theta),\]</span></p>
 <p>con <span class="math inline">\(a,b\)</span> fijos al derivar el potencial. Si <span class="math inline">\(\theta_*\)</span> es un punto crítico interior y <span class="math inline">\(V_{\mathrm{ef}}''(\theta_*)&gt;0\)</span>, la perturbación lineal de inclinación tiene frecuencia</p>
-<p><span class="math display">\[
-\nu=\sqrt{V_{\mathrm{ef}}''(\theta_*)/A}.
-\]</span></p>
-<p><strong>Demostración.</strong> P19 escribe <span class="math inline">\(\mathbf H=b\mathbf n+A\dot\theta\mathbf e_\phi-Ap\sin\theta\mathbf e_\theta\)</span>. Al derivar, usamos <span class="math inline">\(\dot{\mathbf n}=\dot\theta\mathbf e_\theta+p\sin\theta\mathbf e_\phi\)</span> y <span class="math inline">\(\dot{\mathbf e}_\theta=-\dot\theta\mathbf n+p\cos\theta\mathbf e_\phi\)</span>. La derivada de <span class="math inline">\(\mathbf e_\phi\)</span> no tiene componente sobre sí misma. La componente de <span class="math inline">\(\dot{\mathbf H}\)</span> sobre <span class="math inline">\(\mathbf e_\phi\)</span> es así <span class="math inline">\(bp\sin\theta+A\ddot\theta-Ap^2\sin\theta\cos\theta\)</span>. El torque sobre esa dirección es <span class="math inline">\(k\sin\theta\)</span>, lo que da la primera igualdad. Para la segunda, derivar el cociente de P20 y sustituir <span class="math inline">\(p=(a-b\cos\theta)/(A\sin^2\theta)\)</span> produce <span class="math inline">\(-V_{\mathrm{ef}}'=\sin\theta(Ap^2\cos\theta-bp+k)\)</span>. Por último, escribir <span class="math inline">\(\theta=\theta_*+\eta\)</span> y expandir la derivada del potencial al primer orden da <span class="math inline">\(A\ddot\eta=-V_{\mathrm{ef}}''(\theta_*)\eta\)</span>, cuya solución es una combinación de seno y coseno a la frecuencia indicada. <span class="math inline">\(\square\)</span></p>
+<p><span class="math display">\[\nu=\sqrt{V_{\mathrm{ef}}''(\theta_*)/A}.\]</span></p>
+<p><strong>Demostración.</strong> proposición 22.19 escribe <span class="math inline">\(\mathbf H=b\mathbf n+A\dot\theta\mathbf e_\phi-Ap\sin\theta\mathbf e_\theta\)</span>. Al derivar, usamos <span class="math inline">\(\dot{\mathbf n}=\dot\theta\mathbf e_\theta+p\sin\theta\mathbf e_\phi\)</span> y <span class="math inline">\(\dot{\mathbf e}_\theta=-\dot\theta\mathbf n+p\cos\theta\mathbf e_\phi\)</span>. La derivada de <span class="math inline">\(\mathbf e_\phi\)</span> no tiene componente sobre sí misma. La componente de <span class="math inline">\(\dot{\mathbf H}\)</span> sobre <span class="math inline">\(\mathbf e_\phi\)</span> es así <span class="math inline">\(bp\sin\theta+A\ddot\theta-Ap^2\sin\theta\cos\theta\)</span>. El torque sobre esa dirección es <span class="math inline">\(k\sin\theta\)</span>, lo que da la primera igualdad. Para la segunda, derivar el cociente de la proposición 22.20 y sustituir <span class="math inline">\(p=(a-b\cos\theta)/(A\sin^2\theta)\)</span> produce <span class="math inline">\(-V_{\mathrm{ef}}'=\sin\theta(Ap^2\cos\theta-bp+k)\)</span>. Por último, escribir <span class="math inline">\(\theta=\theta_*+\eta\)</span> y expandir la derivada del potencial al primer orden da <span class="math inline">\(A\ddot\eta=-V_{\mathrm{ef}}''(\theta_*)\eta\)</span>, cuya solución es una combinación de seno y coseno a la frecuencia indicada. <span class="math inline">\(\square\)</span></p>
 <p>Una energía ligeramente superior a un mínimo estricto admite retornos próximos y controla la inclinación mediante la barrera de potencial. Esto es estabilidad del movimiento reducido de inclinación con sus constantes, no atracción ni estabilidad automática de todas las fases angulares. Un retorno simple tiene <span class="math inline">\(V_{\mathrm{ef}}'\ne0\)</span> y aceleración no nula: el movimiento invierte su sentido. Un punto crítico con energía exactamente igual puede corresponder a precesión regular, o a un límite que requiera analizar cómo se alcanza.</p>
 <p>Si dos retornos interiores simples <span class="math inline">\(\theta_-&lt;\theta_+\)</span> delimitan un intervalo accesible sin singularidades, el período de nutación es</p>
-<p><span class="math display">\[
-T_\theta=\sqrt{2A}\int_{\theta_-}^{\theta_+}
-\frac{d\theta}{\sqrt{E'-V_{\mathrm{ef}}(\theta)}}.
-\]</span></p>
+<p><span class="math display">\[T_\theta=\sqrt{2A}\int_{\theta_-}^{\theta_+} \frac{d\theta}{\sqrt{E'-V_{\mathrm{ef}}(\theta)}}.\]</span></p>
 <p>Es el doble del tiempo de una travesía. La singularidad inversa de raíz en un retorno simple es integrable; una raíz doble puede introducir una demora ilimitada. Esa distinción es la misma que apareció en las cuadraturas orbitales, aunque aquí la coordenada reducida sea una inclinación.</p>
 <p><span id="fispm-t1-c22-mp0012"></span></p>
-<p><strong>Principio metodológico FPM-I-22-MP12.</strong> Usa la ecuación de segundo orden en los retornos. Distingue la solución reducida y sus fases, y controla la multiplicidad de las raíces al calcular períodos.</p>
-<section id="ejercicios-11" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-11">Ejercicios</h3>
+<p><strong>Principio metodológico 22.12.</strong> Usa la ecuación de segundo orden en los retornos. Distingue la solución reducida y sus fases, y controla la multiplicidad de las raíces al calcular períodos.</p>
+<p><span id="ejercicios-11"></span></p>
+<section id="fispm-c22-ejercicios-11" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c22-ejercicios-11">Ejercicios</h3>
 <p><span id="fispm-t1-c22-e0023"></span></p>
-<p><strong>Ejercicio FPM-I-22-E23.</strong> En una precesión regular horizontal, <span class="math inline">\(a=Ak/b\)</span>, con <span class="math inline">\(b\ne0\)</span>. Calcula <span class="math inline">\(V_{\mathrm{ef}}''(\pi/2)\)</span> y la frecuencia local de nutación.</p>
+<p><strong>Ejercicio 22.23.</strong> En una precesión regular horizontal, <span class="math inline">\(a=Ak/b\)</span>, con <span class="math inline">\(b\ne0\)</span>. Calcula <span class="math inline">\(V_{\mathrm{ef}}''(\pi/2)\)</span> y la frecuencia local de nutación.</p>
 <p><strong>Solución.</strong> Para <span class="math inline">\(N=a-b\cos\theta\)</span>, la derivada es <span class="math inline">\(V'=Nb/(A\sin\theta)-N^2\cos\theta/(A\sin^3\theta)-k\sin\theta\)</span>. Su derivada en <span class="math inline">\(\pi/2\)</span> vale <span class="math inline">\((a^2+b^2)/A\)</span>: el primer término aporta <span class="math inline">\(b^2/A\)</span>, el segundo <span class="math inline">\(a^2/A\)</span> y el tercero cero. Así <span class="math inline">\(\nu^2=(a^2+b^2)/A^2=b^2/A^2+(k/b)^2\)</span>. Es positiva. La conclusión se refiere a la inclinación con los valores <span class="math inline">\(a,b\)</span> de esta precesión.</p>
 <p><span id="fispm-t1-c22-e0024"></span></p>
-<p><strong>Ejercicio FPM-I-22-E24.</strong> Cerca de un mínimo, sustituye <span class="math inline">\(V_{\mathrm{ef}}\)</span> por <span class="math inline">\(V_*+\mu(\theta-\theta_*)^2/2\)</span>, con <span class="math inline">\(\mu&gt;0\)</span>. Calcula el período mediante la cuadratura anterior.</p>
+<p><strong>Ejercicio 22.24.</strong> Cerca de un mínimo, sustituye <span class="math inline">\(V_{\mathrm{ef}}\)</span> por <span class="math inline">\(V_*+\mu(\theta-\theta_*)^2/2\)</span>, con <span class="math inline">\(\mu&gt;0\)</span>. Calcula el período mediante la cuadratura anterior.</p>
 <p><strong>Solución.</strong> Si <span class="math inline">\(E'-V_*=\Delta&gt;0\)</span>, los retornos son <span class="math inline">\(\theta_*\pm d\)</span>, con <span class="math inline">\(d=\sqrt{2\Delta/\mu}\)</span>. Sustituir <span class="math inline">\(\theta-\theta_*=d\sin u\)</span> reduce la integral entre retornos a <span class="math inline">\(\pi\sqrt{2/\mu}\)</span>. Multiplicar por <span class="math inline">\(\sqrt{2A}\)</span> da <span class="math inline">\(T=2\pi\sqrt{A/\mu}=2\pi/\nu\)</span>. La independencia de amplitud es exacta para el potencial cuadrático sustituto y una aproximación local para el potencial original.</p>
+<p><span id="el-trompo-vertical-y-el-umbral-de-giro"></span></p>
 <p><span id="fispm-t1-c22-s13"></span></p>
 <p><span id="fpm-i-22-s13"></span></p>
 </section>
 </section>
-<section id="el-trompo-vertical-y-el-umbral-de-giro" class="level2">
-<h2 class="anchored" data-anchor-id="el-trompo-vertical-y-el-umbral-de-giro">§13. El trompo vertical y el umbral de giro</h2>
+<section id="fispm-c22-el-trompo-vertical-y-el-umbral-de-giro" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c22-el-trompo-vertical-y-el-umbral-de-giro">13. El trompo vertical y el umbral de giro</h2>
 <p>Con el eje hacia arriba, la gravedad tiene torque nulo en la configuración exacta. La cuestión de estabilidad aparece al inclinarlo un poco. El giro axial introduce términos de velocidad capaces de modificar la respuesta a esa perturbación.</p>
 <p><span id="fispm-t1-c22-p0024"></span></p>
-<p><strong>Proposición FPM-I-22-P24 — Umbral lineal de inclinación del trompo vertical superior.</strong> En D06, considérese <span class="math inline">\(\mathbf n=\mathbf e_z\)</span> y giro axial constante <span class="math inline">\(s\)</span>, con <span class="math inline">\(b=Cs\)</span>. La perturbación transversal compleja <span class="math inline">\(z=\xi_x+i\xi_y\)</span> satisface al primer orden</p>
-<p><span class="math display">\[
-A\ddot z-ib\dot z-kz=0.
-\]</span></p>
+<p><strong>Proposición 22.24 — Umbral lineal de inclinación del trompo vertical superior.</strong> En definición 22.6, considérese <span class="math inline">\(\mathbf n=\mathbf e_z\)</span> y giro axial constante <span class="math inline">\(s\)</span>, con <span class="math inline">\(b=Cs\)</span>. La perturbación transversal compleja <span class="math inline">\(z=\xi_x+i\xi_y\)</span> satisface al primer orden</p>
+<p><span class="math display">\[A\ddot z-ib\dot z-kz=0.\]</span></p>
 <p>Si <span class="math inline">\(b^2&gt;4Ak\)</span>, todas sus soluciones permanecen acotadas. Si <span class="math inline">\(b^2&lt;4Ak\)</span>, existe una solución creciente exponencial. En <span class="math inline">\(b^2=4Ak\)</span>, la ecuación lineal admite crecimiento proporcional al tiempo y no proporciona una clasificación no lineal por sí sola.</p>
 <p><strong>Demostración.</strong> La identidad exacta <span class="math inline">\(\mathbf H=b\mathbf n+A\mathbf n\times\dot{\mathbf n}\)</span> sigue de <span class="math inline">\(\boldsymbol\omega=\mathbf n\times\dot{\mathbf n}+s\mathbf n\)</span>. Escribamos <span class="math inline">\(\mathbf n=\mathbf e_z+\boldsymbol\xi\)</span> al primer orden, con <span class="math inline">\(\boldsymbol\xi\perp\mathbf e_z\)</span>. La derivada del momento es <span class="math inline">\(b\dot{\boldsymbol\xi}+A\mathbf e_z\times\ddot{\boldsymbol\xi}\)</span> y el torque <span class="math inline">\(k\mathbf e_z\times\boldsymbol\xi\)</span>. Multiplicar transversalmente por <span class="math inline">\(-\mathbf e_z\times\)</span> da <span class="math inline">\(A\ddot{\boldsymbol\xi}-b\mathbf e_z\times\dot{\boldsymbol\xi}-k\boldsymbol\xi=0\)</span>. El producto con <span class="math inline">\(\mathbf e_z\)</span> equivale a multiplicar <span class="math inline">\(z\)</span> por <span class="math inline">\(i\)</span>, dando la ecuación compleja.</p>
 <p>Para <span class="math inline">\(z=e^{i\nu t}\)</span>, la ecuación exige <span class="math inline">\(A\nu^2-b\nu+k=0\)</span>. Con discriminante positivo, las dos frecuencias son reales distintas, y la solución general combina dos exponenciales de módulo uno. Con discriminante negativo, una frecuencia tiene parte imaginaria que produce crecimiento real. Con discriminante cero, la raíz es doble y la solución es <span class="math inline">\((c_1+c_2t)e^{ibt/(2A)}\)</span>. <span class="math inline">\(\square\)</span></p>
 <p>El umbral involucra el momento transversal sobre el pivote y el momento axial <span class="math inline">\(b\)</span>, no solo la masa o la rapidez de un punto del borde. La acotación lineal superior no describe amortiguamiento: el trompo ideal no converge hacia la vertical.</p>
-<p>El potencial reducido ayuda a reconocer el cambio. En el sector <span class="math inline">\(a=b\)</span>, el cociente de P20 se extiende cerca del polo como</p>
-<p><span class="math display">\[
-V_{\mathrm{ef}}(\theta)=\frac{b^2}{2A}\tan^2(\theta/2)+k\cos\theta
-=k+\left(\frac{b^2}{8A}-\frac k2\right)\theta^2+O(\theta^4).
-\]</span></p>
+<p>El potencial reducido ayuda a reconocer el cambio. En el sector <span class="math inline">\(a=b\)</span>, el cociente de la proposición 22.20 se extiende cerca del polo como</p>
+<p><span class="math display">\[V_{\mathrm{ef}}(\theta)=\frac{b^2}{2A}\tan^2(\theta/2)+k\cos\theta =k+\left(\frac{b^2}{8A}-\frac k2\right)\theta^2+O(\theta^4).\]</span></p>
 <p>Su término cuadrático cambia en el mismo umbral. Exactamente allí, los órdenes superiores y las condiciones del sector necesitan examen propio; una raíz doble de la linealización no debe convertirse en una afirmación general de estabilidad o inestabilidad del sistema completo.</p>
 <p><span id="fispm-t1-c22-mp0013"></span></p>
-<p><strong>Principio metodológico FPM-I-22-MP13.</strong> Separa el umbral del modelo lineal de una conclusión no lineal, especialmente en la igualdad crítica. Conserva el punto sobre el que se calculan las inercias.</p>
-<section id="ejercicios-12" class="level3">
-<h3 class="anchored" data-anchor-id="ejercicios-12">Ejercicios</h3>
+<p><strong>Principio metodológico 22.13.</strong> Separa el umbral del modelo lineal de una conclusión no lineal, especialmente en la igualdad crítica. Conserva el punto sobre el que se calculan las inercias.</p>
+<p><span id="ejercicios-12"></span></p>
+<section id="fispm-c22-ejercicios-12" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c22-ejercicios-12">Ejercicios</h3>
 <p><span id="fispm-t1-c22-e0025"></span></p>
-<p><strong>Ejercicio FPM-I-22-E25.</strong> Encuentra la condición sobre <span class="math inline">\(|s|\)</span> para el régimen lineal acotado del trompo vertical y describe qué cambia al duplicar <span class="math inline">\(|s|\)</span>.</p>
+<p><strong>Ejercicio 22.25.</strong> Encuentra la condición sobre <span class="math inline">\(|s|\)</span> para el régimen lineal acotado del trompo vertical y describe qué cambia al duplicar <span class="math inline">\(|s|\)</span>.</p>
 <p><strong>Solución.</strong> Como <span class="math inline">\(b=Cs\)</span>, se requiere <span class="math inline">\(|s|&gt;2\sqrt{Ak}/C\)</span>. Duplicar la rapidez multiplica <span class="math inline">\(b^2\)</span> por cuatro, mientras <span class="math inline">\(4Ak\)</span> permanece igual si el cuerpo y la gravedad no cambian. Puede llevar una preparación del régimen exponencial al acotado, pero no introduce disipación ni hace que cualquier orientación inicial llegue a ser vertical.</p>
 <p><span id="fispm-t1-c22-e0026"></span></p>
-<p><strong>Ejercicio FPM-I-22-E26.</strong> En unidades coherentes, toma <span class="math inline">\(A=1\)</span>, <span class="math inline">\(k=1\)</span>. Calcula las frecuencias lineales para <span class="math inline">\(b=3\)</span> y describe el caso <span class="math inline">\(b=2\)</span>.</p>
+<p><strong>Ejercicio 22.26.</strong> En unidades coherentes, toma <span class="math inline">\(A=1\)</span>, <span class="math inline">\(k=1\)</span>. Calcula las frecuencias lineales para <span class="math inline">\(b=3\)</span> y describe el caso <span class="math inline">\(b=2\)</span>.</p>
 <p><strong>Solución.</strong> Para <span class="math inline">\(b=3\)</span>, las frecuencias son <span class="math inline">\((3\pm\sqrt5)/2\)</span>, reales distintas. La perturbación es una combinación acotada de dos giros transversales. Para <span class="math inline">\(b=2\)</span>, la frecuencia doble es uno y <span class="math inline">\(z=(c_1+c_2t)e^{it}\)</span>. Los datos que producen <span class="math inline">\(c_2\ne0\)</span> generan crecimiento lineal en esa aproximación; los términos no lineales deciden su evolución cuando deja de ser pequeña.</p>
+<p><span id="disipación-y-alcance-de-un-balance-decreciente"></span></p>
 <p><span id="fispm-t1-c22-s14"></span></p>
 <p><span id="fpm-i-22-s14"></span></p>
 </section>
 </section>
-<section id="disipación-y-alcance-de-un-balance-decreciente" class="level2">
-<h2 class="anchored" data-anchor-id="disipación-y-alcance-de-un-balance-decreciente">§14. Disipación y alcance de un balance decreciente</h2>
+<section id="fispm-c22-disipaciuxf3n-y-alcance-de-un-balance-decreciente" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c22-disipaciuxf3n-y-alcance-de-un-balance-decreciente">14. Disipación y alcance de un balance decreciente</h2>
 <p>La conservación ideal ha explicado los giros libres y el trompo sostenido. Un torque resistente rompe parte de esas constantes. La energía puede seguir proporcionando control, aunque una función decreciente no determine por sí sola el estado final.</p>
 <p><span id="fispm-t1-c22-d0008"></span></p>
-<p><strong>Definición FPM-I-22-D08 — Resistencia angular viscosa.</strong> En un cuerpo con pivote fijo añadimos un torque corporal <span class="math inline">\(\mathbf T_d=-D\boldsymbol\Omega\)</span>, donde <span class="math inline">\(D\)</span> es una matriz simétrica semidefinida positiva. Puede representar resistencia anisótropa. El pivote continúa sin aportar un par ni potencia adicional.</p>
+<p><strong>Definición 22.8 — Resistencia angular viscosa.</strong> En un cuerpo con pivote fijo añadimos un torque corporal <span class="math inline">\(\mathbf T_d=-D\boldsymbol\Omega\)</span>, donde <span class="math inline">\(D\)</span> es una matriz simétrica semidefinida positiva. Puede representar resistencia anisótropa. El pivote continúa sin aportar un par ni potencia adicional.</p>
 <p><span id="fispm-t1-c22-p0025"></span></p>
-<p><strong>Proposición FPM-I-22-P25 — Energía disipada del trompo.</strong> Para D06 y D08,</p>
-<p><span class="math display">\[
-\dot E=-\boldsymbol\Omega^TD\boldsymbol\Omega\leq0.
-\]</span></p>
+<p><strong>Proposición 22.25 — Energía disipada del trompo.</strong> Para definición 22.6 y definición 22.8,</p>
+<p><span class="math display">\[\dot E=-\boldsymbol\Omega^TD\boldsymbol\Omega\leq0.\]</span></p>
 <p>Si <span class="math inline">\(D\geq d\mathbf1\)</span> con <span class="math inline">\(d&gt;0\)</span>, la solución se prolonga para todos los tiempos positivos y</p>
-<p><span class="math display">\[
-\int_0^\infty|\boldsymbol\Omega(t)|^2dt\leq\frac{E(0)+k}{d}.
-\]</span></p>
-<p><strong>Demostración.</strong> P05 da la potencia de los torques gravitatorio y resistente. La primera se cancela con la derivada del potencial como en P18, dejando la forma negativa indicada. El potencial está entre <span class="math inline">\(-k\)</span> y <span class="math inline">\(k\)</span>, de modo que <span class="math inline">\(K\leq E(0)+k\)</span> y la inercia positiva acota <span class="math inline">\(\boldsymbol\Omega\)</span>. La orientación permanece en <span class="math inline">\(SO(3)\)</span> y los torques gravitatorio y viscoso son suaves y acotados sobre el conjunto alcanzado. El argumento de continuación de P08 permite prolongar el movimiento. Integrar hasta <span class="math inline">\(T\)</span> da <span class="math inline">\(d\int_0^T|\boldsymbol\Omega|^2dt\leq E(0)-E(T)\leq E(0)+k\)</span>. El límite monótono al crecer <span class="math inline">\(T\)</span> da la desigualdad impropia. <span class="math inline">\(\square\)</span></p>
-<p>El cálculo no demuestra, por sí solo, convergencia de toda la orientación ni determina qué equilibrio se alcanza. Esa conclusión necesita estudiar el conjunto de movimiento y las condiciones bajo las que se anula la disipación. Tampoco las dos proyecciones <span class="math inline">\(a,b\)</span> de P18 siguen conservadas en general: el nuevo torque puede tener componente vertical o axial. En una matriz semidefinida, algunas direcciones pueden permanecer sin resistencia.</p>
+<p><span class="math display">\[\int_0^\infty|\boldsymbol\Omega(t)|^2dt\leq\frac{E(0)+k}{d}.\]</span></p>
+<p><strong>Demostración.</strong> proposición 22.5 da la potencia de los torques gravitatorio y resistente. La primera se cancela con la derivada del potencial como en la proposición 22.18, dejando la forma negativa indicada. El potencial está entre <span class="math inline">\(-k\)</span> y <span class="math inline">\(k\)</span>, de modo que <span class="math inline">\(K\leq E(0)+k\)</span> y la inercia positiva acota <span class="math inline">\(\boldsymbol\Omega\)</span>. La orientación permanece en <span class="math inline">\(SO(3)\)</span> y los torques gravitatorio y viscoso son suaves y acotados sobre el conjunto alcanzado. El argumento de continuación de la proposición 22.8 permite prolongar el movimiento. Integrar hasta <span class="math inline">\(T\)</span> da <span class="math inline">\(d\int_0^T|\boldsymbol\Omega|^2dt\leq E(0)-E(T)\leq E(0)+k\)</span>. El límite monótono al crecer <span class="math inline">\(T\)</span> da la desigualdad impropia. <span class="math inline">\(\square\)</span></p>
+<p>El cálculo no demuestra, por sí solo, convergencia de toda la orientación ni determina qué equilibrio se alcanza. Esa conclusión necesita estudiar el conjunto de movimiento y las condiciones bajo las que se anula la disipación. Tampoco las dos proyecciones <span class="math inline">\(a,b\)</span> de la proposición 22.18 siguen conservadas en general: el nuevo torque puede tener componente vertical o axial. En una matriz semidefinida, algunas direcciones pueden permanecer sin resistencia.</p>
 <p><span id="fispm-t1-c22-mp0014"></span></p>
-<p><strong>Principio metodológico FPM-I-22-MP14.</strong> Revisa qué constantes sobreviven al añadir un torque. Una cota de energía decreciente exige un argumento adicional antes de convertirse en una conclusión de convergencia.</p>
-<section id="problemas-de-integración" class="level3">
-<h3 class="anchored" data-anchor-id="problemas-de-integración">Problemas de integración</h3>
+<p><strong>Principio metodológico 22.14.</strong> Revisa qué constantes sobreviven al añadir un torque. Una cota de energía decreciente exige un argumento adicional antes de convertirse en una conclusión de convergencia.</p>
+<p><span id="problemas-de-integración"></span></p>
+<section id="fispm-c22-problemas-de-integraciuxf3n" class="level3">
+<h3 class="anchored" data-anchor-id="fispm-c22-problemas-de-integraciuxf3n">Problemas de integración</h3>
 <p><span id="fispm-t1-c22-e0027"></span></p>
-<p><strong>Ejercicio FPM-I-22-E27.</strong> Un cuerpo tiene tensor principal <span class="math inline">\(\operatorname{diag}(2J,3J,4J)\)</span> y velocidad corporal <span class="math inline">\((u,u,0)\)</span>, con <span class="math inline">\(u\ne0\)</span>. Un torque instantáneo es <span class="math inline">\((3T,-2T,0)\)</span>. Comprueba que puede ser perpendicular al momento y tener potencia no nula.</p>
+<p><strong>Ejercicio 22.27.</strong> Un cuerpo tiene tensor principal <span class="math inline">\(\operatorname{diag}(2J,3J,4J)\)</span> y velocidad corporal <span class="math inline">\((u,u,0)\)</span>, con <span class="math inline">\(u\ne0\)</span>. Un torque instantáneo es <span class="math inline">\((3T,-2T,0)\)</span>. Comprueba que puede ser perpendicular al momento y tener potencia no nula.</p>
 <p><strong>Solución.</strong> El momento corporal es <span class="math inline">\((2Ju,3Ju,0)\)</span>. Su producto con el torque es <span class="math inline">\(6JTu-6JTu=0\)</span>, por lo que la norma del momento no cambia instantáneamente. El producto del torque con la velocidad es <span class="math inline">\(Tu\)</span>, distinto de cero si <span class="math inline">\(T\ne0\)</span>. La energía sí cambia. Una perpendicularidad al momento no equivale a perpendicularidad a la velocidad angular cuando ambos vectores no son colineales.</p>
 <p><span id="fispm-t1-c22-e0028"></span></p>
-<p><strong>Ejercicio FPM-I-22-E28.</strong> Un trompo ideal parte con eje horizontal <span class="math inline">\(\mathbf n=\mathbf e_x\)</span> y velocidad angular puramente axial. Calcula la aceleración inicial del eje y explica por qué ese giro inicial no garantiza una precesión regular inmediata.</p>
+<p><strong>Ejercicio 22.28.</strong> Un trompo ideal parte con eje horizontal <span class="math inline">\(\mathbf n=\mathbf e_x\)</span> y velocidad angular puramente axial. Calcula la aceleración inicial del eje y explica por qué ese giro inicial no garantiza una precesión regular inmediata.</p>
 <p><strong>Solución.</strong> Inicialmente <span class="math inline">\(\dot{\mathbf n}=\boldsymbol\omega\times\mathbf n=0\)</span>. Derivar <span class="math inline">\(\mathbf H=b\mathbf n+A\mathbf n\times\dot{\mathbf n}\)</span> deja entonces <span class="math inline">\(\dot{\mathbf H}=A\mathbf e_x\times\ddot{\mathbf n}\)</span>. El torque es <span class="math inline">\(k\mathbf e_y\)</span>. Además <span class="math inline">\(\ddot{\mathbf n}\cdot\mathbf n=-|\dot{\mathbf n}|^2=0\)</span>. Resolver da <span class="math inline">\(\ddot{\mathbf n}=-(k/A)\mathbf e_z\)</span>, hacia abajo. La rapidez axial no aparece en esa aceleración inicial. La precesión horizontal regular requiere una velocidad inicial de eje no nula y el valor <span class="math inline">\(a=Ak/b\)</span>, mientras esta preparación tiene <span class="math inline">\(a=0\)</span>.</p>
 <p><span id="fispm-t1-c22-e0029"></span></p>
-<p><strong>Ejercicio FPM-I-22-E29.</strong> En la trayectoria exacta de P12, empieza en un instante negativo con fracción transversal <span class="math inline">\(\sqrt{h_1^2+h_3^2}/H=\varepsilon\)</span>, donde <span class="math inline">\(0&lt;\varepsilon&lt;1\)</span>. Calcula el tiempo hasta <span class="math inline">\(h_2=0\)</span> y su comportamiento al hacer pequeña la preparación transversal.</p>
-<p><strong>Solución.</strong> La fracción es <span class="math inline">\(\operatorname{sech}(\gamma t)\)</span>. Si el inicio es <span class="math inline">\(t=-T\)</span>, entonces <span class="math inline">\(\cosh(\gamma T)=1/\varepsilon\)</span>. Por tanto <span class="math inline">\(T=\gamma^{-1}\log[(1+\sqrt{1-\varepsilon^2})/\varepsilon]\)</span>. Para <span class="math inline">\(\varepsilon\to0\)</span>, es asintótico a <span class="math inline">\(\gamma^{-1}\log(2/\varepsilon)\)</span>. Una preparación mucho más próxima retrasa la gran reorientación con una escala logarítmica, pero no elimina la inestabilidad de D04. La norma de momento sigue siendo <span class="math inline">\(H\)</span> durante toda la trayectoria.</p>
+<p><strong>Ejercicio 22.29.</strong> En la trayectoria exacta de la proposición 22.12, empieza en un instante negativo con fracción transversal <span class="math inline">\(\sqrt{h_1^2+h_3^2}/H=\varepsilon\)</span>, donde <span class="math inline">\(0&lt;\varepsilon&lt;1\)</span>. Calcula el tiempo hasta <span class="math inline">\(h_2=0\)</span> y su comportamiento al hacer pequeña la preparación transversal.</p>
+<p><strong>Solución.</strong> La fracción es <span class="math inline">\(\operatorname{sech}(\gamma t)\)</span>. Si el inicio es <span class="math inline">\(t=-T\)</span>, entonces <span class="math inline">\(\cosh(\gamma T)=1/\varepsilon\)</span>. Por tanto <span class="math inline">\(T=\gamma^{-1}\log[(1+\sqrt{1-\varepsilon^2})/\varepsilon]\)</span>. Para <span class="math inline">\(\varepsilon\to0\)</span>, es asintótico a <span class="math inline">\(\gamma^{-1}\log(2/\varepsilon)\)</span>. Una preparación mucho más próxima retrasa la gran reorientación con una escala logarítmica, pero no elimina la inestabilidad de la definición 22.4. La norma de momento sigue siendo <span class="math inline">\(H\)</span> durante toda la trayectoria.</p>
 <p><span id="fispm-t1-c22-e0030"></span></p>
-<p><strong>Ejercicio FPM-I-22-E30.</strong> Revisa el argumento defectuoso: «Sin torque, la velocidad angular tiene componentes constantes porque el momento angular es constante». Localiza el paso ilegítimo y da un contraejemplo exacto.</p>
-<p><strong>Solución.</strong> La constancia del momento se refiere al vector inercial. Su relación con la velocidad usa un tensor cuya matriz espacial puede cambiar al girar el cuerpo. En ejes corporales el tensor es constante, pero la derivada del momento incluye transporte. Para <span class="math inline">\(I=\operatorname{diag}(2J,2J,3J)\)</span>, <span class="math inline">\(s\ne0\)</span> y datos <span class="math inline">\((u,0,s)\)</span> con <span class="math inline">\(u\ne0\)</span>, P13 da <span class="math inline">\((u\cos(st/2),u\sin(st/2),s)\)</span>: las primeras dos componentes cambian aunque el torque sea cero. La reparación es conservar <span class="math inline">\(I\dot{\boldsymbol\Omega}+\boldsymbol\Omega\times I\boldsymbol\Omega=0\)</span> y distinguir el vector inercial de sus componentes corporales. La velocidad constante es un caso especial caracterizado por P09.</p>
-<p>El balance de torque ha hecho visible cómo una base móvil y una distribución fija producen una dinámica no lineal. Las pequeñas perturbaciones han llevado también a ecuaciones oscilatorias y a escalas de amortiguamiento. En I23 estudiaremos esas oscilaciones como tema propio, comenzando por una fuerza restauradora y siguiendo la relación entre fase, energía y respuesta a una excitación.</p>
-</section>
-<section id="notas-y-referencias" class="level3">
-<h3 class="anchored" data-anchor-id="notas-y-referencias">Notas y referencias</h3>
-<hr>
-<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-21-cuerpo-rigido-cinematica-rotaciones-y-tensor-de-inercia.html">Capítulo 21</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-23-oscilaciones-lineales.html">Capítulo 23</a></p>
+<p><strong>Ejercicio 22.30.</strong> Revisa el argumento defectuoso: «Sin torque, la velocidad angular tiene componentes constantes porque el momento angular es constante». Localiza el paso ilegítimo y da un contraejemplo exacto.</p>
+<p><strong>Solución.</strong> La constancia del momento se refiere al vector inercial. Su relación con la velocidad usa un tensor cuya matriz espacial puede cambiar al girar el cuerpo. En ejes corporales el tensor es constante, pero la derivada del momento incluye transporte. Para <span class="math inline">\(I=\operatorname{diag}(2J,2J,3J)\)</span>, <span class="math inline">\(s\ne0\)</span> y datos <span class="math inline">\((u,0,s)\)</span> con <span class="math inline">\(u\ne0\)</span>, proposición 22.13 da <span class="math inline">\((u\cos(st/2),u\sin(st/2),s)\)</span>: las primeras dos componentes cambian aunque el torque sea cero. La reparación es conservar <span class="math inline">\(I\dot{\boldsymbol\Omega}+\boldsymbol\Omega\times I\boldsymbol\Omega=0\)</span> y distinguir el vector inercial de sus componentes corporales. La velocidad constante es un caso especial caracterizado por la proposición 22.9.</p>
+<p>El balance de torque ha hecho visible cómo una base móvil y una distribución fija producen una dinámica no lineal. Las pequeñas perturbaciones han llevado también a ecuaciones oscilatorias y a escalas de amortiguamiento. En el capítulo 23 estudiaremos esas oscilaciones como tema propio, comenzando por una fuerza restauradora y siguiendo la relación entre fase, energía y respuesta a una excitación.</p>
+<p><span id="fispm-c22-notas-y-referencias" data-label="fispm-c22-notas-y-referencias"></span></p>
 
 
 </section>
@@ -900,9 +906,9 @@ V_{\mathrm{ef}}(\theta)=\frac{b^2}{2A}\tan^2(\theta/2)+k\cos\theta
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
 
 <ol>
-<li id="fn1"><p>MIT OpenCourseWare, <em>8.09 Classical Mechanics III</em>, capítulo 2, <em>Rigid Body Dynamics</em>, §2.4, ecuaciones 2.69–2.73: https://ocw.mit.edu/courses/8-09-classical-mechanics-iii-fall-2014/6fe39e8d5ce4ce746ca256dfea665eda_MIT8_09F14_Chapter_2.pdf . Contraste del transporte de momento y componentes de Euler. La derivación aquí usa directamente los balances de I15 y la base de I20.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Michael Birse, University of Manchester, <em>Advanced Dynamics</em>, «Stability of free rotation»: https://www.theory.physics.manchester.ac.uk/~mikeb/lecture/pc167/rigidbody/stability.html . Contraste de signos de la linealización. Las pruebas no lineales de P11–P12 se desarrollan aquí mediante invariantes y una solución exacta; se distingue su alcance de la clasificación lineal. Para las tasas del cuerpo simétrico: «The symmetric top», https://www.theory.physics.manchester.ac.uk/~mikeb/lecture/pc167/rigidbody/top.html .<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>MIT OpenCourseWare, <em>16.07 Dynamics</em>, Lecture L30, <em>3D Rigid Body Dynamics: Tops and Gyroscopes</em>: https://ocw.mit.edu/courses/16-07-dynamics-fall-2009/99f271d601bb3d9d04e8b8ce0c73cb7a_MIT16_07F09_Lec30.pdf ; David Tong, University of Cambridge, <em>Dynamics and Relativity</em>, «The Motion of Rigid Bodies»: https://www.damtp.cam.ac.uk/user/tong/dynamics/dynhtml/S3.html . Contraste de trompo pesado y precesión. La reducción presente se obtiene por cinemática y balances de Newton, conservando el formalismo variacional para capítulos posteriores.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>MIT OpenCourseWare, <em>8.09 Classical Mechanics III</em>, capítulo 2, <em>Rigid Body Dynamics</em>, §2.4, ecuaciones 2.69–2.73: https://ocw.mit.edu/courses/8-09-classical-mechanics-iii-fall-2014/6fe39e8d5ce4ce746ca256dfea665eda_MIT8_09F14_Chapter_2.pdf . Contraste del transporte de momento y componentes de Euler. La derivación aquí usa directamente los balances del capítulo 15 y la base del capítulo 20.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Michael Birse, University of Manchester, <em>Advanced Dynamics</em>, «Stability of free rotation»: https://www.theory.physics.manchester.ac.uk/~mikeb/lecture/pc167/rigidbody/stability.html . Contraste de signos de la linealización. Las pruebas no lineales de las proposiciones 22.11–22.12 se desarrollan aquí mediante invariantes y una solución exacta; se distingue su alcance de la clasificación lineal. Para las tasas del cuerpo simétrico: «The symmetric top», https://www.theory.physics.manchester.ac.uk/~mikeb/lecture/pc167/rigidbody/top.html .<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>MIT OpenCourseWare, <em>16.07 Dynamics</em>, Lecture L30, <em>3D Rigid Body Dynamics: Tops and Gyroscopes</em>: <a href="https://ocw.mit.edu/courses/16-07-dynamics-fall-2009/99f271d601bb3d9d04e8b8ce0c73cb7a_MIT16_07F09_Lec30.pdf" class="uri">https://ocw.mit.edu/courses/16-07-dynamics-fall-2009/99f271d601bb3d9d04e8b8ce0c73cb7a_MIT16_07F09_Lec30.pdf</a> ; David Tong, University of Cambridge, <em>Dynamics and Relativity</em>, «The Motion of Rigid Bodies»: https://www.damtp.cam.ac.uk/user/tong/dynamics/dynhtml/S3.html . Contraste de trompo pesado y precesión. La reducción presente se obtiene por cinemática y balances de Newton, conservando el formalismo variacional para capítulos posteriores.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main></div><script>
 (() => {

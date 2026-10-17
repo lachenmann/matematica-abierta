@@ -82,6 +82,52 @@ window.MathJax.startup.pageReady = async function () {
   });
 })();
 </script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
 
   
   <script src="../assets/mathjax-offline-speech.js"></script><script>(function(){const fontRoot=new URL("../assets/mathjax-newcm",location.href).href;window.MathJax=Object.assign(window.MathJax||{}, {loader:{paths:{"mathjax-newcm":fontRoot}},startup:{ready:function(){MathJax.startup.defaultReady();MathJax.startup.adaptor.createWorker=window.__maCreateSpeechWorker;},pageReady:window.MathJax.startup.pageReady},output:{fontPath:fontRoot},chtml:{fontURL:fontRoot+"/chtml/woff2",dynamicPrefix:fontRoot+"/chtml/dynamic"}});})();</script><script defer src="../assets/mathjax/tex-chtml.js"></script>
@@ -114,7 +160,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../assets/87b4f5e6a115d51d92f5ea1a.css">
-<link rel="stylesheet" href="../assets/af3335218e8c9cef34486d70.css">
+<link rel="stylesheet" href="../assets/2360bb7a7cd037ebd3e65b07.css">
 <style id="ma-reader-mode-v1-style">/* Reader contract: app readerMode.ts, ma-reader-mode-v1. */
 
 #quarto-header,
@@ -366,7 +412,7 @@ body.quarto-page-columns #quarto-content,
     <div>
     <div class="quarto-title-meta-heading">Fecha de última modificación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">15 de octubre de 2026</p>
+      <p class="date-modified">17 de octubre de 2026</p>
     </div>
   </div>
     
@@ -378,667 +424,447 @@ body.quarto-page-columns #quarto-content,
 
 
 <p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-22-cuerpo-rigido-dinamica.html">Capítulo 22</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-24-oscilaciones-acopladas-y-modos-normales.html">Capítulo 24</a></p>
+<p><span id="fispm-c23-oscilaciones-lineales"></span></p>
 <p>Desplacemos una masa unida a un resorte y soltémosla. Al principio la fuerza la acelera hacia el equilibrio; al llegar allí, la fuerza se anula, pero la masa ya tiene velocidad. La inercia la lleva al otro lado. El regreso comienza cuando el resorte ha detenido ese movimiento y vuelve a acelerarla en sentido contrario. La posición de equilibrio organiza el movimiento sin convertirse por ello en su destino.</p>
 <p>La misma alternancia aparece en un péndulo de pequeña amplitud, en una barra que gira sobre un apoyo y en las vibraciones de un instrumento. Las fuerzas y las variables pueden ser diferentes. Cerca de un equilibrio estable no degenerado, una aproximación de primer orden conduce a una ecuación común. Su sencillez permite estudiar con precisión qué información aportan la amplitud, la fase, la energía y el tiempo de decaimiento.</p>
 <p>El modelo también muestra cómo una fuerza pequeña puede sostener un movimiento considerable. Para comprenderlo habrá que seguir el trabajo de esa fuerza durante cada ciclo. La resonancia adquiere entonces un significado concreto que depende de lo que se mida: desplazamiento, velocidad o potencia transferida.</p>
-<p>Usaremos las leyes de Newton y el estudio de potencial y estabilidad de I10 e I13. Se presupone derivación, integración y ecuaciones diferenciales lineales elementales; las soluciones centrales se obtendrán y comprobarán aquí. Todos los modelos tendrán un solo grado de libertad. El acoplamiento entre varios osciladores corresponde a I24.</p>
+<p>Usaremos las leyes de Newton y el estudio de potencial y estabilidad del capítulo 10 e capítulo 13. Se presupone derivación, integración y ecuaciones diferenciales lineales elementales; las soluciones centrales se obtendrán y comprobarán aquí. Todos los modelos tendrán un solo grado de libertad. El acoplamiento entre varios osciladores corresponde al capítulo 24.</p>
+<p><span id="la-fuerza-cerca-del-equilibrio"></span></p>
 <p><span id="fispm-t1-c23-s01"></span></p>
 <p><span id="fpm-i-23-s01"></span></p>
-<section id="la-fuerza-cerca-del-equilibrio" class="level2">
-<h2 class="anchored" data-anchor-id="la-fuerza-cerca-del-equilibrio">§1. La fuerza cerca del equilibrio</h2>
+<section id="fispm-c23-la-fuerza-cerca-del-equilibrio" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-la-fuerza-cerca-del-equilibrio">1. La fuerza cerca del equilibrio</h2>
 <p>Sea <span class="math inline">\(q\)</span> una coordenada cartesiana para una partícula de masa constante <span class="math inline">\(m&gt;0\)</span>. En ausencia de otras fuerzas, su ecuación es <span class="math inline">\(m\ddot q=-U'(q)\)</span>. Un equilibrio <span class="math inline">\(q_*\)</span> satisface <span class="math inline">\(U'(q_*)=0\)</span>. Escribir <span class="math inline">\(x=q-q_*\)</span> permite medir las desviaciones desde ese punto.</p>
-<p>Supongamos que <span class="math inline">\(U\)</span> es tres veces continuamente diferenciable en un entorno del equilibrio y que <span class="math inline">\(k=U''(q_*)&gt;0\)</span>. Taylor da</p>
-<p><span class="math display">\[
-U'(q_*+x)=kx+R(x),\qquad |R(x)|\le C|x|^2
-\]</span></p>
-<p>en un intervalo suficientemente pequeño. La fuerza principal es proporcional al desplazamiento y tiene signo opuesto. Si se retiene ese término, queda</p>
-<p><span class="math display">\[
-m\ddot x+kx=0.
-\]</span></p>
+<p><span id="fig:I-23-N01"></span></p>
+<figure id="fig-fpm-v04-i-23-n01" class="fpm-v04-panel figure">
+<p><a href="../assets/ff6420379c4c17028fab13b9.svg" class="lightbox" data-gallery="fpm-v04-c23"><img src="../assets/ff6420379c4c17028fab13b9.svg" alt="Oscilador masa--resorte. Diagrama del capítulo 23; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="356" height="145" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 23.1.</strong> El desplazamiento se mide desde el equilibrio. Para <span class="math inline">\(x&gt;0\)</span>, la fuerza elástica es negativa: <span class="math inline">\(m\ddot x=-kx\)</span>. El plano es liso y las fuerzas verticales se compensan. Véase §<a href="#fispm-c23-la-fuerza-cerca-del-equilibrio">1</a>.</p>
+</figcaption>
+</figure>
+<p>Supongamos que <span class="math inline">\(U\)</span> es tres veces continuamente diferenciable en un entorno del equilibrio y que <span class="math inline">\(k=U''(q_*)&gt;0\)</span>. Taylor da <span class="math inline">\(U'(q_*+x)=kx+R(x),\qquad |R(x)|\le C|x|^2\)</span></p>
+<p>en un intervalo suficientemente pequeño. La fuerza principal es proporcional al desplazamiento y tiene signo opuesto. Si se retiene ese término, queda <span class="math inline">\(m\ddot x+kx=0.\)</span></p>
 <p><span id="fispm-t1-c23-d0001"></span></p>
-<p><strong>Definición FPM-I-23-D01 — Oscilador armónico y frecuencia natural.</strong> Un oscilador armónico de un grado de libertad satisface la ecuación anterior, con <span class="math inline">\(m,k&gt;0\)</span> constantes. Su frecuencia angular natural es <span class="math inline">\(\omega_0=\sqrt{k/m}\)</span>, su período es <span class="math inline">\(T_0=2\pi/\omega_0\)</span> y su frecuencia ordinaria es <span class="math inline">\(f_0=1/T_0\)</span>. Los radianes se consideran adimensionales; <span class="math inline">\(\omega_0\)</span> se expresa en <span class="math inline">\(\mathrm{s}^{-1}\)</span> y <span class="math inline">\(f_0\)</span> en hertz.</p>
+<p><strong>Definición 23.1 — Oscilador armónico y frecuencia natural.</strong> Un oscilador armónico de un grado de libertad satisface la ecuación anterior, con <span class="math inline">\(m,k&gt;0\)</span> constantes. Su frecuencia angular natural es <span class="math inline">\(\omega_0=\sqrt{k/m}\)</span>, su período es <span class="math inline">\(T_0=2\pi/\omega_0\)</span> y su frecuencia ordinaria es <span class="math inline">\(f_0=1/T_0\)</span>. Los radianes se consideran adimensionales; <span class="math inline">\(\omega_0\)</span> se expresa en <span class="math inline">\(\mathrm{s}^{-1}\)</span> y <span class="math inline">\(f_0\)</span> en hertz.</p>
 <p><span id="fispm-t1-c23-p0001"></span></p>
-<p><strong>Proposición FPM-I-23-P01 — Orden del error de fuerza.</strong> Bajo las hipótesis anteriores, la diferencia entre la aceleración exacta y la aceleración armónica, evaluadas en una misma posición <span class="math inline">\(x\)</span>, tiene módulo a lo sumo <span class="math inline">\((C/m)|x|^2\)</span>. Para <span class="math inline">\(x\ne0\)</span>, el cociente entre el error de fuerza y <span class="math inline">\(k|x|\)</span> es a lo sumo <span class="math inline">\(C|x|/k\)</span>.</p>
+<p><strong>Proposición 23.1 — Orden del error de fuerza.</strong> Bajo las hipótesis anteriores, la diferencia entre la aceleración exacta y la aceleración armónica, evaluadas en una misma posición <span class="math inline">\(x\)</span>, tiene módulo a lo sumo <span class="math inline">\((C/m)|x|^2\)</span>. Para <span class="math inline">\(x\ne0\)</span>, el cociente entre el error de fuerza y <span class="math inline">\(k|x|\)</span> es a lo sumo <span class="math inline">\(C|x|/k\)</span>.</p>
 <p><strong>Demostración.</strong> La ecuación exacta es <span class="math inline">\(\ddot x=-kx/m-R(x)/m\)</span>. Restar <span class="math inline">\(-kx/m\)</span> y aplicar la cota del resto prueba la primera afirmación. Dividir <span class="math inline">\(|R(x)|\le C|x|^2\)</span> por <span class="math inline">\(k|x|\)</span> prueba la segunda. <span class="math inline">\(\square\)</span></p>
 <p>La cota compara fuerzas en una posición. Para deducir una aproximación de trayectorias en un intervalo temporal hay que controlar también la acumulación del error. Dos movimientos muy próximos durante varios períodos pueden perder sincronía mucho después. Esa distinción será especialmente importante para el péndulo.</p>
-<p>Cuando <span class="math inline">\(U''(q_*)=0\)</span>, el argumento no produce un resorte de rigidez positiva. El potencial <span class="math inline">\(U(x)=\lambda x^4/4\)</span>, con <span class="math inline">\(\lambda&gt;0\)</span>, tiene un mínimo estricto y movimientos oscilatorios, pero la ecuación <span class="math inline">\(m\ddot x=-\lambda x^3\)</span> conserva su carácter no lineal por pequeña que sea la amplitud. La estabilidad de I13 admite más casos que el oscilador armónico.</p>
+<p>Cuando <span class="math inline">\(U''(q_*)=0\)</span>, el argumento no produce un resorte de rigidez positiva. El potencial <span class="math inline">\(U(x)=\lambda x^4/4\)</span>, con <span class="math inline">\(\lambda&gt;0\)</span>, tiene un mínimo estricto y movimientos oscilatorios, pero la ecuación <span class="math inline">\(m\ddot x=-\lambda x^3\)</span> conserva su carácter no lineal por pequeña que sea la amplitud. La estabilidad del capítulo 13 admite más casos que el oscilador armónico.</p>
+<p><span id="resolver-el-problema-inicial"></span></p>
 <p><span id="fispm-t1-c23-s02"></span></p>
 <p><span id="fpm-i-23-s02"></span></p>
 </section>
-<section id="resolver-el-problema-inicial" class="level2">
-<h2 class="anchored" data-anchor-id="resolver-el-problema-inicial">§2. Resolver el problema inicial</h2>
+<section id="fispm-c23-resolver-el-problema-inicial" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-resolver-el-problema-inicial">2. Resolver el problema inicial</h2>
 <p>La ecuación normalizada es <span class="math inline">\(\ddot x+\omega_0^2x=0\)</span>. Derivar dos veces un seno o un coseno devuelve la misma función multiplicada por <span class="math inline">\(-\omega_0^2\)</span>. Esto sugiere buscar la solución en el espacio generado por ambas funciones.</p>
 <p><span id="fispm-t1-c23-p0002"></span></p>
-<p><strong>Proposición FPM-I-23-P02 — Solución inicial única.</strong> Para cualesquiera datos reales <span class="math inline">\(x(0)=x_0\)</span> y <span class="math inline">\(\dot x(0)=v_0\)</span>, la solución es</p>
-<p><span class="math display">\[
-x(t)=x_0\cos(\omega_0t)+\frac{v_0}{\omega_0}\sin(\omega_0t).
-\]</span></p>
+<p><strong>Proposición 23.2 — Solución inicial única.</strong> Para cualesquiera datos reales <span class="math inline">\(x(0)=x_0\)</span> y <span class="math inline">\(\dot x(0)=v_0\)</span>, la solución es</p>
+<p><span class="math display">\[x(t)=x_0\cos(\omega_0t)+\frac{v_0}{\omega_0}\sin(\omega_0t).\]</span></p>
 <p><strong>Demostración.</strong> La sustitución verifica la ecuación y los datos. Para probar unicidad sin dar por completa nuestra búsqueda trigonométrica, restemos dos soluciones con esos mismos datos. Su diferencia <span class="math inline">\(z\)</span> satisface <span class="math inline">\(\ddot z+\omega_0^2z=0\)</span> y <span class="math inline">\(z(0)=\dot z(0)=0\)</span>. Al derivar,</p>
-<p><span class="math display">\[
-\frac{d}{dt}(\dot z^2+\omega_0^2z^2)
-=2\dot z(\ddot z+\omega_0^2z)=0.
-\]</span></p>
+<p><span class="math display">\[\frac{d}{dt}(\dot z^2+\omega_0^2z^2) =2\dot z(\ddot z+\omega_0^2z)=0.\]</span></p>
 <p>La expresión es constante e inicialmente nula. Sus dos sumandos son no negativos, de modo que <span class="math inline">\(z=\dot z=0\)</span> para todo <span class="math inline">\(t\)</span>. <span class="math inline">\(\square\)</span></p>
 <p>El dato de velocidad tiene tanta importancia como el de posición. Una masa situada en el equilibrio puede permanecer allí o atravesarlo con cualquier rapidez inicial. La ecuación de segundo orden necesita ambos datos porque describe un estado formado por posición y velocidad.</p>
-<p>Por ejemplo, para <span class="math inline">\(m=0{,}50\,\mathrm{kg}\)</span> y <span class="math inline">\(k=8\,\mathrm{N/m}\)</span> resulta <span class="math inline">\(\omega_0=4\,\mathrm{s}^{-1}\)</span>. Con <span class="math inline">\(x_0=0{,}03\,\mathrm m\)</span> y <span class="math inline">\(v_0=0{,}16\,\mathrm{m/s}\)</span>,</p>
-<p><span class="math display">\[
-x(t)=0{,}03\cos(4t)+0{,}04\sin(4t)\quad\text{metros},
-\]</span></p>
+<p>Por ejemplo, para <span class="math inline">\(m=0{,}50\,\mathrm{kg}\)</span> y <span class="math inline">\(k=8\,\mathrm{N/m}\)</span> resulta <span class="math inline">\(\omega_0=4\,\mathrm{s}^{-1}\)</span>. Con <span class="math inline">\(x_0=0{,}03\,\mathrm m\)</span> y <span class="math inline">\(v_0=0{,}16\,\mathrm{m/s}\)</span>, <span class="math inline">\(x(t)=0{,}03\cos(4t)+0{,}04\sin(4t)\quad\text{metros},\)</span></p>
 <p>donde el valor numérico de <span class="math inline">\(t\)</span> se introduce en segundos. La rapidez inicial positiva hace crecer la posición durante un primer intervalo, aunque el resorte ya tire hacia el equilibrio.</p>
+<p><span id="amplitud-y-fase"></span></p>
 <p><span id="fispm-t1-c23-s03"></span></p>
 <p><span id="fpm-i-23-s03"></span></p>
 </section>
-<section id="amplitud-y-fase" class="level2">
-<h2 class="anchored" data-anchor-id="amplitud-y-fase">§3. Amplitud y fase</h2>
+<section id="fispm-c23-amplitud-y-fase" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-amplitud-y-fase">3. Amplitud y fase</h2>
 <p>Los dos coeficientes de la solución contienen información que puede reorganizarse geométricamente. Pongamos</p>
-<p><span class="math display">\[
-A=\sqrt{x_0^2+(v_0/\omega_0)^2}.
-\]</span></p>
+<p><span class="math display">\[A=\sqrt{x_0^2+(v_0/\omega_0)^2}.\]</span></p>
 <p>Para <span class="math inline">\(A&gt;0\)</span> existe un ángulo <span class="math inline">\(\phi\)</span>, determinado módulo <span class="math inline">\(2\pi\)</span>, tal que <span class="math inline">\(x_0=A\cos\phi\)</span> y <span class="math inline">\(v_0=-A\omega_0\sin\phi\)</span>. La fórmula de adición del coseno transforma la solución en <span class="math inline">\(x(t)=A\cos(\omega_0t+\phi)\)</span>.</p>
 <p><span id="fispm-t1-c23-d0002"></span></p>
-<p><strong>Definición FPM-I-23-D02 — Amplitud y fase.</strong> En una solución armónica no nula escrita como <span class="math inline">\(x(t)=A\cos(\omega_0t+\phi)\)</span>, con <span class="math inline">\(A&gt;0\)</span>, la amplitud es <span class="math inline">\(A\)</span> y la fase es <span class="math inline">\(\omega_0t+\phi\)</span> módulo <span class="math inline">\(2\pi\)</span>. Para la solución nula fijamos <span class="math inline">\(A=0\)</span>; su fase carece de determinación física.</p>
-<p>La fase inicial se calcula con los dos signos,</p>
-<p><span class="math display">\[
-\phi=\operatorname{atan2}(-v_0/\omega_0,x_0).
-\]</span></p>
-<p>La función <span class="math inline">\(\operatorname{atan2}(y,x)\)</span> designa el argumento del vector <span class="math inline">\((x,y)\)</span> en un intervalo de longitud <span class="math inline">\(2\pi\)</span>. Usar únicamente la tangente pierde la distinción entre cuadrantes y puede invertir el sentido inicial del movimiento.</p>
+<p><strong>Definición 23.2 — Amplitud y fase.</strong> En una solución armónica no nula escrita como <span class="math inline">\(x(t)=A\cos(\omega_0t+\phi)\)</span>, con <span class="math inline">\(A&gt;0\)</span>, la amplitud es <span class="math inline">\(A\)</span> y la fase es <span class="math inline">\(\omega_0t+\phi\)</span> módulo <span class="math inline">\(2\pi\)</span>. Para la solución nula fijamos <span class="math inline">\(A=0\)</span>; su fase carece de determinación física.</p>
+<p>La fase inicial se calcula con los dos signos, <span class="math inline">\(\phi=\operatorname{atan2}(-v_0/\omega_0,x_0).\)</span> La función <span class="math inline">\(\operatorname{atan2}(y,x)\)</span> designa el argumento del vector <span class="math inline">\((x,y)\)</span> en un intervalo de longitud <span class="math inline">\(2\pi\)</span>. Usar únicamente la tangente pierde la distinción entre cuadrantes y puede invertir el sentido inicial del movimiento.</p>
 <p><span id="fispm-t1-c23-p0003"></span></p>
-<p><strong>Proposición FPM-I-23-P03 — Cambio del origen temporal.</strong> Si <span class="math inline">\(t=t'+t_*\)</span>, la amplitud y la frecuencia permanecen iguales y la fase inicial pasa de <span class="math inline">\(\phi\)</span> a <span class="math inline">\(\phi+\omega_0t_*\)</span>, módulo <span class="math inline">\(2\pi\)</span>.</p>
+<p><strong>Proposición 23.3 — Cambio del origen temporal.</strong> Si <span class="math inline">\(t=t'+t_*\)</span>, la amplitud y la frecuencia permanecen iguales y la fase inicial pasa de <span class="math inline">\(\phi\)</span> a <span class="math inline">\(\phi+\omega_0t_*\)</span>, módulo <span class="math inline">\(2\pi\)</span>.</p>
 <p><strong>Demostración.</strong> Sustituir <span class="math inline">\(t'+t_*\)</span> en <span class="math inline">\(A\cos(\omega_0t+\phi)\)</span> produce directamente la expresión indicada. <span class="math inline">\(\square\)</span></p>
 <p>Por tanto, una fase aislada depende del reloj elegido. La diferencia de fase entre dos movimientos de la misma frecuencia, observados con el mismo reloj, permanece constante. Una diferencia de <span class="math inline">\(\pi\)</span> corresponde a desplazamientos opuestos; una diferencia de <span class="math inline">\(\pi/2\)</span> sitúa el máximo de uno en un cruce por el equilibrio del otro.</p>
+<p><span id="energía-y-geometría-del-estado"></span></p>
 <p><span id="fispm-t1-c23-s04"></span></p>
 <p><span id="fpm-i-23-s04"></span></p>
 </section>
-<section id="energía-y-geometría-del-estado" class="level2">
-<h2 class="anchored" data-anchor-id="energía-y-geometría-del-estado">§4. Energía y geometría del estado</h2>
-<p>La energía del oscilador, tomando cero de potencial en el equilibrio, es</p>
-<p><span class="math display">\[
-E=\frac12m\dot x^2+\frac12kx^2.
-\]</span></p>
+<section id="fispm-c23-energuxeda-y-geometruxeda-del-estado" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-energuxeda-y-geometruxeda-del-estado">4. Energía y geometría del estado</h2>
+<p>La energía del oscilador, tomando cero de potencial en el equilibrio, es <span class="math inline">\(E=\frac12m\dot x^2+\frac12kx^2.\)</span></p>
 <p><span id="fispm-t1-c23-p0004"></span></p>
-<p><strong>Proposición FPM-I-23-P04 — Conservación y amplitud energética.</strong> La energía permanece constante y vale <span class="math inline">\(E=kA^2/2\)</span>. Si <span class="math inline">\(A&gt;0\)</span>, la curva recorrida en el plano <span class="math inline">\((x,v)\)</span> es la elipse</p>
-<p><span class="math display">\[
-\frac{x^2}{A^2}+\frac{v^2}{\omega_0^2A^2}=1.
-\]</span></p>
+<p><strong>Proposición 23.4 — Conservación y amplitud energética.</strong> La energía permanece constante y vale <span class="math inline">\(E=kA^2/2\)</span>. Si <span class="math inline">\(A&gt;0\)</span>, la curva recorrida en el plano <span class="math inline">\((x,v)\)</span> es la elipse</p>
+<p><span class="math display">\[\frac{x^2}{A^2}+\frac{v^2}{\omega_0^2A^2}=1.\]</span></p>
 <p><strong>Demostración.</strong> Derivar <span class="math inline">\(E\)</span> da <span class="math inline">\(\dot E=\dot x(m\ddot x+kx)=0\)</span>. Sustituir <span class="math inline">\(x=A\cos\theta\)</span> y <span class="math inline">\(v=-A\omega_0\sin\theta\)</span>, con <span class="math inline">\(\theta=\omega_0t+\phi\)</span>, da <span class="math inline">\(E=kA^2(\cos^2\theta+\sin^2\theta)/2=kA^2/2\)</span>. Dividir la identidad energética por ese valor produce la ecuación de la elipse. <span class="math inline">\(\square\)</span></p>
 <p>En un extremo <span class="math inline">\(x=\pm A\)</span> la velocidad es cero. En el equilibrio <span class="math inline">\(x=0\)</span> la rapidez es máxima: <span class="math inline">\(|v|=\omega_0A\)</span>. La energía permite obtener esos valores sin averiguar en qué instante se alcanzan.</p>
 <p><span id="fispm-t1-c23-p0005"></span></p>
-<p><strong>Proposición FPM-I-23-P05 — Promedios en un ciclo.</strong> En cualquier intervalo de longitud <span class="math inline">\(T_0\)</span>, las energías cinética y potencial medias son ambas <span class="math inline">\(E/2\)</span>.</p>
+<p><strong>Proposición 23.5 — Promedios en un ciclo.</strong> En cualquier intervalo de longitud <span class="math inline">\(T_0\)</span>, las energías cinética y potencial medias son ambas <span class="math inline">\(E/2\)</span>.</p>
 <p><strong>Demostración.</strong> Las dos energías son <span class="math inline">\(E\sin^2\theta\)</span> y <span class="math inline">\(E\cos^2\theta\)</span>. Durante un ciclo, <span class="math inline">\(\theta\)</span> recorre un intervalo de longitud <span class="math inline">\(2\pi\)</span>. Las identidades <span class="math inline">\(\sin^2\theta=(1-\cos2\theta)/2\)</span> y <span class="math inline">\(\cos^2\theta=(1+\cos2\theta)/2\)</span> muestran que ambas medias valen <span class="math inline">\(1/2\)</span>. <span class="math inline">\(\square\)</span></p>
 <p>En las coordenadas <span class="math inline">\((x,v/\omega_0)\)</span> la elipse se convierte en un círculo. El punto de estado gira uniformemente en sentido horario, pues en <span class="math inline">\((A,0)\)</span> la aceleración es negativa. Un único valor de posición, en cambio, suele corresponder a dos estados: uno que avanza y otro que regresa.</p>
+<p><span id="qué-conserva-la-aproximación-armónica"></span></p>
 <p><span id="fispm-t1-c23-s05"></span></p>
 <p><span id="fpm-i-23-s05"></span></p>
 </section>
-<section id="qué-conserva-la-aproximación-armónica" class="level2">
-<h2 class="anchored" data-anchor-id="qué-conserva-la-aproximación-armónica">§5. Qué conserva la aproximación armónica</h2>
+<section id="fispm-c23-quuxe9-conserva-la-aproximaciuxf3n-armuxf3nica" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-quuxe9-conserva-la-aproximaciuxf3n-armuxf3nica">5. Qué conserva la aproximación armónica</h2>
 <p>En un resorte vertical ideal, con eje positivo hacia abajo, la ecuación es <span class="math inline">\(m\ddot q=mg-kq\)</span>, donde <span class="math inline">\(q\)</span> mide el alargamiento desde la longitud natural. El equilibrio se encuentra en <span class="math inline">\(q_*=mg/k\)</span>. Al escribir <span class="math inline">\(x=q-q_*\)</span> queda exactamente <span class="math inline">\(m\ddot x=-kx\)</span>. La gravedad uniforme desplaza el equilibrio; el coeficiente de la desviación sigue siendo <span class="math inline">\(k\)</span>.</p>
-<p>Para un péndulo simple de longitud <span class="math inline">\(\ell\)</span>, el balance tangencial da</p>
-<p><span class="math display">\[
-\ddot\theta+\frac g\ell\sin\theta=0.
-\]</span></p>
-<p>Como <span class="math inline">\(|\sin\theta-\theta|\le |\theta|^3/6\)</span>, la aproximación de pequeña amplitud es <span class="math inline">\(\ddot\theta+(g/\ell)\theta=0\)</span>, con frecuencia <span class="math inline">\(\sqrt{g/\ell}\)</span>. La variable es angular; el papel de masa inercial lo cumple <span class="math inline">\(m\ell^2\)</span> si escribimos el balance de torque, y la rigidez angular vale <span class="math inline">\(mg\ell\)</span>.</p>
+<p>Para un péndulo simple de longitud <span class="math inline">\(\ell\)</span>, el balance tangencial da <span class="math inline">\(\ddot\theta+\frac g\ell\sin\theta=0.\)</span> Como <span class="math inline">\(|\sin\theta-\theta|\le |\theta|^3/6\)</span>, la aproximación de pequeña amplitud es <span class="math inline">\(\ddot\theta+(g/\ell)\theta=0\)</span>, con frecuencia <span class="math inline">\(\sqrt{g/\ell}\)</span>. La variable es angular; el papel de masa inercial lo cumple <span class="math inline">\(m\ell^2\)</span> si escribimos el balance de torque, y la rigidez angular vale <span class="math inline">\(mg\ell\)</span>.</p>
 <p><span id="fispm-t1-c23-p0006"></span></p>
-<p><strong>Proposición FPM-I-23-P06 — Período exacto del péndulo y primer error.</strong> Para una oscilación del péndulo ideal con amplitud <span class="math inline">\(0&lt;\alpha&lt;\pi\)</span>,</p>
-<p><span class="math display">\[
-T(\alpha)=4\sqrt{\frac\ell g}\int_0^{\pi/2}
-\frac{d\psi}{\sqrt{1-\sin^2(\alpha/2)\sin^2\psi}}.
-\]</span></p>
+<p><strong>Proposición 23.6 — Período exacto del péndulo y primer error.</strong> Para una oscilación del péndulo ideal con amplitud <span class="math inline">\(0&lt;\alpha&lt;\pi\)</span>,</p>
+<p><span class="math display">\[T(\alpha)=4\sqrt{\frac\ell g}\int_0^{\pi/2} \frac{d\psi}{\sqrt{1-\sin^2(\alpha/2)\sin^2\psi}}.\]</span></p>
 <p>Cuando <span class="math inline">\(\alpha\to0\)</span>, <span class="math inline">\(T(\alpha)=T_0[1+\alpha^2/16+O(\alpha^4)]\)</span>, donde <span class="math inline">\(T_0=2\pi\sqrt{\ell/g}\)</span> y <span class="math inline">\(\alpha\)</span> se mide en radianes.</p>
 <p><strong>Demostración.</strong> La energía en el extremo es <span class="math inline">\(mg\ell(1-\cos\alpha)\)</span>. Igualarla a <span class="math inline">\(m\ell^2\dot\theta^2/2+mg\ell(1-\cos\theta)\)</span> da</p>
-<p><span class="math display">\[
-\dot\theta^2=\frac{2g}{\ell}(\cos\theta-\cos\alpha).
-\]</span></p>
+<p><span class="math display">\[\dot\theta^2=\frac{2g}{\ell}(\cos\theta-\cos\alpha).\]</span></p>
 <p>Un cuarto del período es la integral temporal entre <span class="math inline">\(0\)</span> y <span class="math inline">\(\alpha\)</span>. La sustitución <span class="math inline">\(\sin(\theta/2)=s\sin\psi\)</span>, con <span class="math inline">\(s=\sin(\alpha/2)\)</span>, transforma esa integral en la anunciada. Para <span class="math inline">\(s\)</span> pequeño, Taylor, uniformemente para <span class="math inline">\(0\le\psi\le\pi/2\)</span>, da <span class="math inline">\((1-s^2\sin^2\psi)^{-1/2}=1+s^2\sin^2\psi/2+O(s^4)\)</span>. Integrar y usar <span class="math inline">\(s^2=\alpha^2/4+O(\alpha^4)\)</span> produce el coeficiente <span class="math inline">\(1/16\)</span>. <span class="math inline">\(\square\)</span></p>
 <p>El período real es mayor que <span class="math inline">\(T_0\)</span>: el integrando exacto es mayor que uno en el interior. La diferencia de período es pequeña para amplitudes pequeñas, pero se repite en cada ciclo y termina produciendo un desfase apreciable. La aproximación de fuerza y su duración útil son dos cuestiones relacionadas que conviene medir por separado.</p>
+<p><span id="una-fuerza-que-disipa-energía"></span></p>
 <p><span id="fispm-t1-c23-s06"></span></p>
 <p><span id="fpm-i-23-s06"></span></p>
 </section>
-<section id="una-fuerza-que-disipa-energía" class="level2">
-<h2 class="anchored" data-anchor-id="una-fuerza-que-disipa-energía">§6. Una fuerza que disipa energía</h2>
-<p>Un movimiento real suele perder energía mecánica. En un régimen en que la fuerza resistente es aproximadamente proporcional a la velocidad respecto del medio, escribimos <span class="math inline">\(F_d=-b\dot x\)</span>, con <span class="math inline">\(b\ge0\)</span>. El medio y el soporte del resorte se suponen en reposo en el marco usado. La ecuación libre es</p>
-<p><span class="math display">\[
-m\ddot x+b\dot x+kx=0.
-\]</span></p>
+<section id="fispm-c23-una-fuerza-que-disipa-energuxeda" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-una-fuerza-que-disipa-energuxeda">6. Una fuerza que disipa energía</h2>
+<p>Un movimiento real suele perder energía mecánica. En un régimen en que la fuerza resistente es aproximadamente proporcional a la velocidad respecto del medio, escribimos <span class="math inline">\(F_d=-b\dot x\)</span>, con <span class="math inline">\(b\ge0\)</span>. El medio y el soporte del resorte se suponen en reposo en el marco usado. La ecuación libre es <span class="math inline">\(m\ddot x+b\dot x+kx=0.\)</span></p>
 <p><span id="fispm-t1-c23-d0003"></span></p>
-<p><strong>Definición FPM-I-23-D03 — Parámetros de amortiguamiento.</strong> Definimos <span class="math inline">\(\beta=b/(2m)\)</span> y <span class="math inline">\(\omega_0=\sqrt{k/m}\)</span>. El sistema es subamortiguado si <span class="math inline">\(0&lt;\beta&lt;\omega_0\)</span>, críticamente amortiguado si <span class="math inline">\(\beta=\omega_0\)</span> y sobreamortiguado si <span class="math inline">\(\beta&gt;\omega_0\)</span>. El caso <span class="math inline">\(\beta=0\)</span> es el oscilador conservativo.</p>
+<p><strong>Definición 23.3 — Parámetros de amortiguamiento.</strong> Definimos <span class="math inline">\(\beta=b/(2m)\)</span> y <span class="math inline">\(\omega_0=\sqrt{k/m}\)</span>. El sistema es subamortiguado si <span class="math inline">\(0&lt;\beta&lt;\omega_0\)</span>, críticamente amortiguado si <span class="math inline">\(\beta=\omega_0\)</span> y sobreamortiguado si <span class="math inline">\(\beta&gt;\omega_0\)</span>. El caso <span class="math inline">\(\beta=0\)</span> es el oscilador conservativo.</p>
 <p><span id="fispm-t1-c23-p0007"></span></p>
-<p><strong>Proposición FPM-I-23-P07 — Balance disipativo.</strong> Para el oscilador libre con resistencia viscosa,</p>
-<p><span class="math display">\[
-\dot E=-b\dot x^2,\qquad
-E(t)+\int_0^t b\dot x(s)^2\,ds=E(0)\quad(t\ge0).
-\]</span></p>
+<p><strong>Proposición 23.7 — Balance disipativo.</strong> Para el oscilador libre con resistencia viscosa,</p>
+<p><span class="math display">\[\dot E=-b\dot x^2,\qquad E(t)+\int_0^t b\dot x(s)^2\,ds=E(0)\quad(t\ge0).\]</span></p>
 <p><strong>Demostración.</strong> Derivar <span class="math inline">\(E\)</span> y sustituir la ecuación deja <span class="math inline">\(\dot x(-b\dot x)\)</span>. Integrar entre <span class="math inline">\(0\)</span> y <span class="math inline">\(t\)</span> prueba el balance. <span class="math inline">\(\square\)</span></p>
 <p>La energía es no creciente. Eso todavía no demuestra por sí solo que <span class="math inline">\(x\)</span> tienda al equilibrio: una función no creciente puede tender a un valor positivo. Las soluciones explícitas permitirán resolver esa pregunta. También conviene observar que <span class="math inline">\(\dot E=0\)</span> en cada instante de retorno, donde <span class="math inline">\(\dot x=0\)</span>. La energía no necesita decrecer a una tasa estrictamente negativa en todos los instantes para perderse a lo largo del movimiento.</p>
 <p>La ley viscosa es una hipótesis de modelo. El rozamiento seco depende del signo de la velocidad y requiere otro tratamiento cerca del reposo. Sustituir uno por otro cambia tanto las soluciones como la manera en que se detiene el sistema.</p>
+<p><span id="los-tres-regímenes-de-retorno"></span></p>
 <p><span id="fispm-t1-c23-s07"></span></p>
 <p><span id="fpm-i-23-s07"></span></p>
 </section>
-<section id="los-tres-regímenes-de-retorno" class="level2">
-<h2 class="anchored" data-anchor-id="los-tres-regímenes-de-retorno">§7. Los tres regímenes de retorno</h2>
+<section id="fispm-c23-los-tres-reguxedmenes-de-retorno" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-los-tres-reguxedmenes-de-retorno">7. Los tres regímenes de retorno</h2>
 <p>Buscamos soluciones <span class="math inline">\(x=e^{rt}\)</span>. Al sustituir, aparece <span class="math inline">\(r^2+2\beta r+\omega_0^2=0\)</span>. El discriminante decide la forma del movimiento.</p>
 <p><span id="fispm-t1-c23-p0008"></span></p>
-<p><strong>Proposición FPM-I-23-P08 — Soluciones libres amortiguadas.</strong> Con datos iniciales <span class="math inline">\(x_0,v_0\)</span>:</p>
+<p><strong>Proposición 23.8 — Soluciones libres amortiguadas.</strong> Con datos iniciales <span class="math inline">\(x_0,v_0\)</span>:</p>
 <p>Si <span class="math inline">\(0\le\beta&lt;\omega_0\)</span> y <span class="math inline">\(\omega_d=\sqrt{\omega_0^2-\beta^2}\)</span>,</p>
-<p><span class="math display">\[
-x(t)=e^{-\beta t}\left[x_0\cos(\omega_dt)
-+\frac{v_0+\beta x_0}{\omega_d}\sin(\omega_dt)\right].
-\]</span></p>
-<p>Si <span class="math inline">\(\beta=\omega_0\)</span>,</p>
-<p><span class="math display">\[
-x(t)=e^{-\beta t}[x_0+(v_0+\beta x_0)t].
-\]</span></p>
-<p>Si <span class="math inline">\(\beta&gt;\omega_0\)</span> y <span class="math inline">\(\gamma=\sqrt{\beta^2-\omega_0^2}\)</span>,</p>
-<p><span class="math display">\[
-x(t)=e^{-\beta t}\left[x_0\cosh(\gamma t)
-+\frac{v_0+\beta x_0}{\gamma}\sinh(\gamma t)\right].
-\]</span></p>
+<p><span class="math display">\[x(t)=e^{-\beta t}\left[x_0\cos(\omega_dt) +\frac{v_0+\beta x_0}{\omega_d}\sin(\omega_dt)\right].\]</span></p>
+<p>Si <span class="math inline">\(\beta=\omega_0\)</span>, <span class="math inline">\(x(t)=e^{-\beta t}[x_0+(v_0+\beta x_0)t].\)</span> Si <span class="math inline">\(\beta&gt;\omega_0\)</span> y <span class="math inline">\(\gamma=\sqrt{\beta^2-\omega_0^2}\)</span>,</p>
+<p><span class="math display">\[x(t)=e^{-\beta t}\left[x_0\cosh(\gamma t) +\frac{v_0+\beta x_0}{\gamma}\sinh(\gamma t)\right].\]</span></p>
 <p><strong>Demostración.</strong> La sustitución <span class="math inline">\(x=e^{-\beta t}y\)</span> reduce la ecuación a <span class="math inline">\(\ddot y+(\omega_0^2-\beta^2)y=0\)</span>, con <span class="math inline">\(y(0)=x_0\)</span> y <span class="math inline">\(\dot y(0)=v_0+\beta x_0\)</span>. Según el signo del coeficiente, se resuelve con senos y cosenos, funciones afines o exponenciales reales. Las expresiones satisfacen los datos. La unicidad se prueba con el balance energético aplicado a la diferencia de dos soluciones de datos iguales: su energía empieza en cero y no puede aumentar ni hacerse negativa. <span class="math inline">\(\square\)</span></p>
 <p>En el caso subamortiguado, cualquier solución no nula cambia de signo repetidamente. Su parte trigonométrica conserva un período <span class="math inline">\(T_d=2\pi/\omega_d\)</span>, aunque la solución completa ya no es periódica.</p>
+<p><span id="fig:I-23-N02"></span></p>
+<figure id="fig-fpm-v04-i-23-n02" class="fpm-v04-panel figure">
+<p><a href="../assets/76e8d0217d3ad721a97a76d9.svg" class="lightbox" data-gallery="fpm-v04-c23"><img src="../assets/76e8d0217d3ad721a97a76d9.svg" alt="Retorno amortiguado. Diagrama del capítulo 23; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="429" height="239" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 23.2.</strong> Con <span class="math inline">\(x(0)=1\)</span>, <span class="math inline">\(\dot x(0)=0\)</span> y <span class="math inline">\(\omega_0=1\)</span>, se comparan <span class="math inline">\(\beta=0{,}3\)</span> (continua), <span class="math inline">\(1\)</span> (discontinua) y <span class="math inline">\(1{,}5\)</span> (punteada) en <span class="math inline">\(\ddot x+2\beta\dot x+x=0\)</span>. Sólo el primero cruza repetidamente el equilibrio. Véase §<a href="#fispm-c23-los-tres-reguxedmenes-de-retorno">7</a>.</p>
+</figcaption>
+</figure>
 <p>En los casos crítico y sobreamortiguado puede haber un cruce por el equilibrio, según los datos iniciales. Lo que desaparece es la sucesión indefinida de cruces. Para comprobarlo, en el caso crítico basta estudiar el signo del factor afín. En el sobreamortiguado, escribir <span class="math inline">\(x=c_+e^{r_+t}+c_-e^{r_-t}\)</span>, con <span class="math inline">\(r_+&gt;r_-\)</span>, muestra que la ecuación <span class="math inline">\(x=0\)</span> equivale a <span class="math inline">\(c_+e^{(r_+-r_-)t}+c_-=0\)</span>, con a lo sumo una solución si el movimiento no es nulo.</p>
 <p><span id="fispm-t1-c23-p0009"></span></p>
-<p><strong>Proposición FPM-I-23-P09 — Atracción del equilibrio y cola lenta.</strong> Si <span class="math inline">\(\beta&gt;0\)</span>, todas las soluciones libres satisfacen <span class="math inline">\((x(t),\dot x(t))\to(0,0)\)</span> cuando <span class="math inline">\(t\to\infty\)</span>. En el régimen sobreamortiguado, la tasa exponencial más lenta es</p>
-<p><span class="math display">\[
-r_+=-\beta+\sqrt{\beta^2-\omega_0^2}
-=-\frac{\omega_0^2}{\beta+\sqrt{\beta^2-\omega_0^2}}.
-\]</span></p>
+<p><strong>Proposición 23.9 — Atracción del equilibrio y cola lenta.</strong> Si <span class="math inline">\(\beta&gt;0\)</span>, todas las soluciones libres satisfacen <span class="math inline">\((x(t),\dot x(t))\to(0,0)\)</span> cuando <span class="math inline">\(t\to\infty\)</span>. En el régimen sobreamortiguado, la tasa exponencial más lenta es</p>
+<p><span class="math display">\[r_+=-\beta+\sqrt{\beta^2-\omega_0^2} =-\frac{\omega_0^2}{\beta+\sqrt{\beta^2-\omega_0^2}}.\]</span></p>
 <p><strong>Demostración.</strong> En el régimen subamortiguado, la exponencial decreciente multiplica funciones acotadas. En el crítico, tanto <span class="math inline">\(e^{-\beta t}\)</span> como <span class="math inline">\(te^{-\beta t}\)</span> y sus derivadas tienden a cero. En el sobreamortiguado las dos raíces son negativas porque <span class="math inline">\(\sqrt{\beta^2-\omega_0^2}&lt;\beta\)</span>. La identidad para <span class="math inline">\(r_+\)</span> se obtiene racionalizando. <span class="math inline">\(\square\)</span></p>
 <p>Cuando <span class="math inline">\(\beta\)</span> es muy grande, <span class="math inline">\(r_+\sim-\omega_0^2/(2\beta)=-k/b\)</span>. Una resistencia enorme puede hacer muy lento el retorno. La frase «más amortiguamiento, retorno más rápido» falla en ese régimen. La tasa lenta aparece salvo que los datos anulen exactamente su coeficiente.</p>
+<p><span id="medir-el-decaimiento"></span></p>
 <p><span id="fispm-t1-c23-s08"></span></p>
 <p><span id="fpm-i-23-s08"></span></p>
 </section>
-<section id="medir-el-decaimiento" class="level2">
-<h2 class="anchored" data-anchor-id="medir-el-decaimiento">§8. Medir el decaimiento</h2>
+<section id="fispm-c23-medir-el-decaimiento" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-medir-el-decaimiento">8. Medir el decaimiento</h2>
 <p>En el régimen subamortiguado podemos escribir <span class="math inline">\(x=A_de^{-\beta t}\cos(\omega_dt+\phi_d)\)</span>. El factor <span class="math inline">\(A_de^{-\beta t}\)</span> es una envolvente: la curva permanece entre sus valores positivo y negativo. Los extremos reales no ocurren exactamente cuando el coseno vale <span class="math inline">\(\pm1\)</span>, porque también varía la exponencial.</p>
 <p>Al derivar, la condición de extremo es <span class="math inline">\(\beta\cos\theta+\omega_d\sin\theta=0\)</span>. Los máximos positivos consecutivos tienen la misma fase módulo <span class="math inline">\(2\pi\)</span>, por lo que están separados por <span class="math inline">\(T_d\)</span>.</p>
 <p><span id="fispm-t1-c23-d0004"></span></p>
-<p><strong>Definición FPM-I-23-D04 — Decremento logarítmico y factor de calidad.</strong> Para máximos positivos consecutivos <span class="math inline">\(X_n,X_{n+1}\)</span>, definimos <span class="math inline">\(\delta=\log(X_n/X_{n+1})\)</span>. Para <span class="math inline">\(\beta&gt;0\)</span>, adoptamos el factor de calidad del modelo <span class="math inline">\(Q=\omega_0/(2\beta)=m\omega_0/b\)</span>.</p>
+<p><strong>Definición 23.4 — Decremento logarítmico y factor de calidad.</strong> Para máximos positivos consecutivos <span class="math inline">\(X_n,X_{n+1}\)</span>, definimos <span class="math inline">\(\delta=\log(X_n/X_{n+1})\)</span>. Para <span class="math inline">\(\beta&gt;0\)</span>, adoptamos el factor de calidad del modelo <span class="math inline">\(Q=\omega_0/(2\beta)=m\omega_0/b\)</span>.</p>
 <p><span id="fispm-t1-c23-p0010"></span></p>
-<p><strong>Proposición FPM-I-23-P10 — Medición por máximos.</strong> En el régimen subamortiguado,</p>
-<p><span class="math display">\[
-\delta=\beta T_d,\qquad
-\omega_0=\sqrt{\omega_d^2+\beta^2},\qquad
-Q=\frac{\sqrt{4\pi^2+\delta^2}}{2\delta}.
-\]</span></p>
+<p><strong>Proposición 23.10 — Medición por máximos.</strong> En el régimen subamortiguado,</p>
+<p><span class="math display">\[\delta=\beta T_d,\qquad \omega_0=\sqrt{\omega_d^2+\beta^2},\qquad Q=\frac{\sqrt{4\pi^2+\delta^2}}{2\delta}.\]</span></p>
 <p><strong>Demostración.</strong> La parte trigonométrica toma el mismo valor en dos máximos positivos consecutivos. Su cociente es por ello <span class="math inline">\(e^{\beta T_d}\)</span>, y el logaritmo da la primera igualdad. La definición de <span class="math inline">\(\omega_d\)</span> da la segunda. Sustituir <span class="math inline">\(\omega_d=2\pi/T_d\)</span> y <span class="math inline">\(\beta=\delta/T_d\)</span> en <span class="math inline">\(Q\)</span> prueba la tercera. <span class="math inline">\(\square\)</span></p>
 <p>Para <span class="math inline">\(\delta\ll1\)</span>, <span class="math inline">\(Q\simeq\pi/\delta\)</span>. Esta última relación es aproximada. Tampoco la energía instantánea es, en general, una exponencial pura: <span class="math inline">\(E\)</span> contiene factores periódicos además de <span class="math inline">\(e^{-2\beta t}\)</span>. Sí se cumple exactamente</p>
-<p><span class="math display">\[
-E(t+T_d)=e^{-2\beta T_d}E(t),
-\]</span></p>
+<p><span class="math display">\[E(t+T_d)=e^{-2\beta T_d}E(t),\]</span></p>
 <p>pues tanto posición como velocidad se multiplican por <span class="math inline">\(e^{-\beta T_d}\)</span> al avanzar un ciclo de la parte oscilatoria.</p>
+<p><span id="una-fuerza-aplicada-y-la-respuesta-causal"></span></p>
 <p><span id="fispm-t1-c23-s09"></span></p>
 <p><span id="fpm-i-23-s09"></span></p>
 </section>
-<section id="una-fuerza-aplicada-y-la-respuesta-causal" class="level2">
-<h2 class="anchored" data-anchor-id="una-fuerza-aplicada-y-la-respuesta-causal">§9. Una fuerza aplicada y la respuesta causal</h2>
-<p>Incorporemos una fuerza exterior prescrita <span class="math inline">\(F(t)\)</span>:</p>
-<p><span class="math display">\[
-m\ddot x+b\dot x+kx=F(t).
-\]</span></p>
-<p>La ecuación es lineal. Si <span class="math inline">\(x_1,x_2\)</span> responden a <span class="math inline">\(F_1,F_2\)</span>, entonces <span class="math inline">\(a_1x_1+a_2x_2\)</span> responde a <span class="math inline">\(a_1F_1+a_2F_2\)</span>. Para sumar respuestas con condiciones iniciales hay que sumar también esos datos. Cuando se busca la respuesta de reposo, todas las contribuciones se toman con datos nulos.</p>
+<section id="fispm-c23-una-fuerza-aplicada-y-la-respuesta-causal" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-una-fuerza-aplicada-y-la-respuesta-causal">9. Una fuerza aplicada y la respuesta causal</h2>
+<p>Incorporemos una fuerza exterior prescrita <span class="math inline">\(F(t)\)</span>: <span class="math inline">\(m\ddot x+b\dot x+kx=F(t).\)</span> La ecuación es lineal. Si <span class="math inline">\(x_1,x_2\)</span> responden a <span class="math inline">\(F_1,F_2\)</span>, entonces <span class="math inline">\(a_1x_1+a_2x_2\)</span> responde a <span class="math inline">\(a_1F_1+a_2F_2\)</span>. Para sumar respuestas con condiciones iniciales hay que sumar también esos datos. Cuando se busca la respuesta de reposo, todas las contribuciones se toman con datos nulos.</p>
 <p><span id="fispm-t1-c23-p0011"></span></p>
-<p><strong>Proposición FPM-I-23-P11 — Fórmula de respuesta para datos nulos.</strong> Sea <span class="math inline">\(F\)</span> continua y <span class="math inline">\(h\)</span> la solución homogénea con <span class="math inline">\(h(0)=0\)</span>, <span class="math inline">\(\dot h(0)=1\)</span>. Entonces</p>
-<p><span class="math display">\[
-x(t)=\frac1m\int_0^t h(t-s)F(s)\,ds
-\]</span></p>
+<p><strong>Proposición 23.11 — Fórmula de respuesta para datos nulos.</strong> Sea <span class="math inline">\(F\)</span> continua y <span class="math inline">\(h\)</span> la solución homogénea con <span class="math inline">\(h(0)=0\)</span>, <span class="math inline">\(\dot h(0)=1\)</span>. Entonces</p>
+<p><span class="math display">\[x(t)=\frac1m\int_0^t h(t-s)F(s)\,ds\]</span></p>
 <p>es la solución con <span class="math inline">\(x(0)=\dot x(0)=0\)</span>. En el régimen subamortiguado, <span class="math inline">\(h(t)=e^{-\beta t}\sin(\omega_dt)/\omega_d\)</span> para <span class="math inline">\(t\ge0\)</span>.</p>
 <p><strong>Demostración.</strong> Derivar la integral una vez no añade término de borde porque <span class="math inline">\(h(0)=0\)</span>. Derivarla otra vez añade <span class="math inline">\(\dot h(0)F(t)/m=F(t)/m\)</span>. En <span class="math inline">\(\ddot x+2\beta\dot x+\omega_0^2x\)</span>, los términos integrales se anulan por la ecuación de <span class="math inline">\(h\)</span>. Los datos iniciales son nulos. La unicidad ya probada para diferencias homogéneas completa el argumento. <span class="math inline">\(\square\)</span></p>
 <p>La integral acumula respuestas a fuerzas pasadas. En el instante <span class="math inline">\(t\)</span> sólo usa valores de <span class="math inline">\(F(s)\)</span> con <span class="math inline">\(s\le t\)</span>. Esta causalidad resulta especialmente útil para una fuerza que se enciende, se apaga o actúa durante un intervalo corto. En los regímenes crítico y sobreamortiguado, las mismas ideas se aplican con <span class="math inline">\(h(t)=te^{-\beta t}\)</span> y <span class="math inline">\(h(t)=e^{-\beta t}\sinh(\gamma t)/\gamma\)</span>, respectivamente.</p>
 <p>Una fuerza continua por tramos también admite esta fórmula, interpretando las derivadas en cada tramo y manteniendo continuas posición y velocidad en los saltos finitos de la fuerza.</p>
+<p><span id="fuerza-sinusoidal-y-desfase"></span></p>
 <p><span id="fispm-t1-c23-s10"></span></p>
 <p><span id="fpm-i-23-s10"></span></p>
 </section>
-<section id="fuerza-sinusoidal-y-desfase" class="level2">
-<h2 class="anchored" data-anchor-id="fuerza-sinusoidal-y-desfase">§10. Fuerza sinusoidal y desfase</h2>
-<p>Supongamos <span class="math inline">\(F(t)=F_0\cos(\Omega t)\)</span>, con <span class="math inline">\(F_0&gt;0\)</span>, <span class="math inline">\(\Omega&gt;0\)</span> y <span class="math inline">\(b&gt;0\)</span>. Buscamos una solución particular de la misma frecuencia,</p>
-<p><span class="math display">\[
-x_s(t)=a\cos(\Omega t)+c\sin(\Omega t).
-\]</span></p>
-<p>Sustituir y agrupar senos y cosenos da, poniendo <span class="math inline">\(d=k-m\Omega^2\)</span>,</p>
-<p><span class="math display">\[
-da+b\Omega c=F_0,\qquad dc-b\Omega a=0.
-\]</span></p>
-<p>El determinante <span class="math inline">\(D=d^2+b^2\Omega^2\)</span> es positivo. Así,</p>
-<p><span class="math display">\[
-a=\frac{F_0d}{D},\qquad c=\frac{F_0b\Omega}{D}.
-\]</span></p>
+<section id="fispm-c23-fuerza-sinusoidal-y-desfase" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-fuerza-sinusoidal-y-desfase">10. Fuerza sinusoidal y desfase</h2>
+<p>Supongamos <span class="math inline">\(F(t)=F_0\cos(\Omega t)\)</span>, con <span class="math inline">\(F_0&gt;0\)</span>, <span class="math inline">\(\Omega&gt;0\)</span> y <span class="math inline">\(b&gt;0\)</span>. Buscamos una solución particular de la misma frecuencia, <span class="math inline">\(x_s(t)=a\cos(\Omega t)+c\sin(\Omega t).\)</span> Sustituir y agrupar senos y cosenos da, poniendo <span class="math inline">\(d=k-m\Omega^2\)</span>, <span class="math inline">\(da+b\Omega c=F_0,\qquad dc-b\Omega a=0.\)</span></p>
+<p><span id="fig:I-23-R01"></span></p>
+<figure id="fig-fpm-v04-i-23-r01" class="fpm-v04-panel figure">
+<p><a href="../assets/fe85801ca87b7f8872c3c9a9.svg" class="lightbox" data-gallery="fpm-v04-c23"><img src="../assets/fe85801ca87b7f8872c3c9a9.svg" alt="El desfase atraviesa un cuarto de período. Diagrama del capítulo 23; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="431" height="247" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 23.3.</strong> Para <span class="math inline">\(\ddot x+0{,}4\dot x+x=F_0\cos\Omega t\)</span>, la fase estacionaria satisface <span class="math inline">\(\delta=\operatorname{atan2}(0{,}4\Omega,1-\Omega^2)\)</span>. En <span class="math inline">\(\Omega=1\)</span>, la respuesta se retrasa <span class="math inline">\(\pi/2\)</span> respecto de la fuerza. Véase §<a href="#fispm-c23-fuerza-sinusoidal-y-desfase">10</a>.</p>
+</figcaption>
+</figure>
+<p>El determinante <span class="math inline">\(D=d^2+b^2\Omega^2\)</span> es positivo. Así, <span class="math inline">\(a=\frac{F_0d}{D},\qquad c=\frac{F_0b\Omega}{D}.\)</span></p>
 <p><span id="fispm-t1-c23-d0005"></span></p>
-<p><strong>Definición FPM-I-23-D05 — Respuesta estacionaria y susceptibilidad.</strong> La respuesta sinusoidal estacionaria es <span class="math inline">\(x_s=A(\Omega)\cos(\Omega t-\vartheta)\)</span>, donde</p>
-<p><span class="math display">\[
-A(\Omega)=\frac{F_0}{\sqrt{(k-m\Omega^2)^2+b^2\Omega^2}},
-\qquad
-\vartheta=\operatorname{atan2}(b\Omega,k-m\Omega^2)\in(0,\pi).
-\]</span></p>
+<p><strong>Definición 23.5 — Respuesta estacionaria y susceptibilidad.</strong> La respuesta sinusoidal estacionaria es <span class="math inline">\(x_s=A(\Omega)\cos(\Omega t-\vartheta)\)</span>, donde</p>
+<p><span class="math display">\[A(\Omega)=\frac{F_0}{\sqrt{(k-m\Omega^2)^2+b^2\Omega^2}}, \qquad \vartheta=\operatorname{atan2}(b\Omega,k-m\Omega^2)\in(0,\pi).\]</span></p>
 <p>Con la convención compleja <span class="math inline">\(F(t)=\operatorname{Re}(F_0e^{i\Omega t})\)</span>, la susceptibilidad es <span class="math inline">\(\chi(\Omega)=(k-m\Omega^2+ib\Omega)^{-1}\)</span>, de modo que <span class="math inline">\(x_s=\operatorname{Re}(\chi F_0e^{i\Omega t})\)</span>.</p>
 <p><span id="fispm-t1-c23-p0012"></span></p>
-<p><strong>Proposición FPM-I-23-P12 — Pérdida de memoria inicial.</strong> Para <span class="math inline">\(b&gt;0\)</span>, toda solución con la fuerza sinusoidal indicada satisface <span class="math inline">\(x(t)-x_s(t)\to0\)</span> y <span class="math inline">\(\dot x(t)-\dot x_s(t)\to0\)</span>.</p>
-<p><strong>Demostración.</strong> La diferencia satisface la ecuación homogénea amortiguada. P09 asegura su decaimiento para cualesquiera datos iniciales. <span class="math inline">\(\square\)</span></p>
-<p>«Estacionaria» significa aquí que el patrón de respuesta se repite y ya no depende de cómo se inició el movimiento. La masa continúa moviéndose y disipando energía.</p>
-<p>Cuando <span class="math inline">\(\Omega\)</span> es pequeña, <span class="math inline">\(A\to F_0/k\)</span> y <span class="math inline">\(\vartheta\to0\)</span>: el resorte sigue casi estáticamente la fuerza. Cuando <span class="math inline">\(\Omega\)</span> es muy grande, <span class="math inline">\(A\sim F_0/(m\Omega^2)\)</span> y <span class="math inline">\(\vartheta\to\pi\)</span>: domina la aceleración. En <span class="math inline">\(\Omega=\omega_0\)</span>, la fase es <span class="math inline">\(\pi/2\)</span>. Entonces la velocidad, derivada de <span class="math inline">\(A\sin(\omega_0t)\)</span>, está en fase con la fuerza.</p>
+<p><strong>Proposición 23.12 — Pérdida de memoria inicial.</strong> Para <span class="math inline">\(b&gt;0\)</span>, toda solución con la fuerza sinusoidal indicada satisface <span class="math inline">\(x(t)-x_s(t)\to0\)</span> y <span class="math inline">\(\dot x(t)-\dot x_s(t)\to0\)</span>.</p>
+<p><strong>Demostración.</strong> La diferencia satisface la ecuación homogénea amortiguada. Proposición 23.9 asegura su decaimiento para cualesquiera datos iniciales. <span class="math inline">\(\square\)</span></p>
+<p>«Estacionaria» significa aquí que el patrón de respuesta se repite y ya no depende de cómo se inició el movimiento. La masa continúa moviéndose y disipando energía. Cuando <span class="math inline">\(\Omega\)</span> es pequeña, <span class="math inline">\(A\to F_0/k\)</span> y <span class="math inline">\(\vartheta\to0\)</span>: el resorte sigue casi estáticamente la fuerza. Cuando <span class="math inline">\(\Omega\)</span> es muy grande, <span class="math inline">\(A\sim F_0/(m\Omega^2)\)</span> y <span class="math inline">\(\vartheta\to\pi\)</span>: domina la aceleración. En <span class="math inline">\(\Omega=\omega_0\)</span>, la fase es <span class="math inline">\(\pi/2\)</span>. Entonces la velocidad, derivada de <span class="math inline">\(A\sin(\omega_0t)\)</span>, está en fase con la fuerza.</p>
+<p><span id="qué-frecuencia-maximiza-el-desplazamiento"></span></p>
 <p><span id="fispm-t1-c23-s11"></span></p>
 <p><span id="fpm-i-23-s11"></span></p>
 </section>
-<section id="qué-frecuencia-maximiza-el-desplazamiento" class="level2">
-<h2 class="anchored" data-anchor-id="qué-frecuencia-maximiza-el-desplazamiento">§11. Qué frecuencia maximiza el desplazamiento</h2>
+<section id="fispm-c23-quuxe9-frecuencia-maximiza-el-desplazamiento" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-quuxe9-frecuencia-maximiza-el-desplazamiento">11. Qué frecuencia maximiza el desplazamiento</h2>
 <p>La amplitud depende de <span class="math inline">\(\Omega\)</span>. Para compararla entre frecuencias fijaremos <span class="math inline">\(m,k,b\)</span> y la amplitud de fuerza <span class="math inline">\(F_0\)</span>. Esta última condición importa: si el mecanismo cambia la fuerza al variar la frecuencia, cambia también el problema de optimización.</p>
+<p><span id="fig:I-23-N03"></span></p>
+<figure id="fig-fpm-v04-i-23-n03" class="fpm-v04-panel figure">
+<p><a href="../assets/063563ac2c6898deefcd006e.svg" class="lightbox" data-gallery="fpm-v04-c23"><img src="../assets/063563ac2c6898deefcd006e.svg" alt="Resonancia de desplazamiento. Diagrama del capítulo 23; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="445" height="254" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><strong>Figura 23.4.</strong> Con <span class="math inline">\(\omega_0=1\)</span> y <span class="math inline">\(\beta=0{,}2\)</span>, la amplitud estacionaria normalizada es <span class="math inline">\([(1-\omega^2)^2+0{,}16\omega^2]^{-1/2}\)</span>. Su máximo ocurre en <span class="math inline">\(\omega=\sqrt{0{,}92}\)</span>, por debajo de la frecuencia natural. Véase §<a href="#fispm-c23-quuxe9-frecuencia-maximiza-el-desplazamiento">11</a>.</p>
+</figcaption>
+</figure>
 <p><span id="fispm-t1-c23-p0013"></span></p>
-<p><strong>Proposición FPM-I-23-P13 — Pico de desplazamiento.</strong> Si <span class="math inline">\(0&lt;\beta&lt;\omega_0/\sqrt2\)</span>, la amplitud estacionaria tiene un máximo único para <span class="math inline">\(\Omega&gt;0\)</span> en</p>
-<p><span class="math display">\[
-\Omega_r=\sqrt{\omega_0^2-2\beta^2},\qquad
-A(\Omega_r)=\frac{F_0}{2m\beta\sqrt{\omega_0^2-\beta^2}}.
-\]</span></p>
+<p><strong>Proposición 23.13 — Pico de desplazamiento.</strong> Si <span class="math inline">\(0&lt;\beta&lt;\omega_0/\sqrt2\)</span>, la amplitud estacionaria tiene un máximo único para <span class="math inline">\(\Omega&gt;0\)</span> en</p>
+<p><span class="math display">\[\Omega_r=\sqrt{\omega_0^2-2\beta^2},\qquad A(\Omega_r)=\frac{F_0}{2m\beta\sqrt{\omega_0^2-\beta^2}}.\]</span></p>
 <p>Si <span class="math inline">\(\beta\ge\omega_0/\sqrt2\)</span>, la amplitud decrece estrictamente para <span class="math inline">\(\Omega&gt;0\)</span> y su supremo es el valor estático <span class="math inline">\(F_0/k\)</span> cuando <span class="math inline">\(\Omega\to0\)</span>.</p>
 <p><strong>Demostración.</strong> Maximizar <span class="math inline">\(A\)</span> equivale a minimizar</p>
-<p><span class="math display">\[
-H(\Omega)=(\omega_0^2-\Omega^2)^2+4\beta^2\Omega^2.
-\]</span></p>
-<p>Con <span class="math inline">\(u=\Omega^2\ge0\)</span>,</p>
-<p><span class="math display">\[
-H=u^2+(4\beta^2-2\omega_0^2)u+\omega_0^4.
-\]</span></p>
+<p><span class="math display">\[H(\Omega)=(\omega_0^2-\Omega^2)^2+4\beta^2\Omega^2.\]</span></p>
+<p>Con <span class="math inline">\(u=\Omega^2\ge0\)</span>, <span class="math inline">\(H=u^2+(4\beta^2-2\omega_0^2)u+\omega_0^4.\)</span></p>
 <p>Es una parábola estrictamente convexa cuyo vértice está en <span class="math inline">\(u=\omega_0^2-2\beta^2\)</span>. Si ese valor es positivo, da el mínimo interior; sustituirlo produce <span class="math inline">\(H=4\beta^2(\omega_0^2-\beta^2)\)</span> y la amplitud anunciada. Si es no positivo, <span class="math inline">\(H\)</span> aumenta estrictamente con <span class="math inline">\(u&gt;0\)</span>. <span class="math inline">\(\square\)</span></p>
 <p>La frecuencia natural <span class="math inline">\(\omega_0\)</span>, la frecuencia libre amortiguada <span class="math inline">\(\omega_d\)</span> y la frecuencia del pico <span class="math inline">\(\Omega_r\)</span> son distintas. Para amortiguamiento débil se aproximan, lo que explica que una descripción poco precisa pueda confundirlas sin que un experimento elemental lo revele. Hay incluso sistemas subamortiguados, con <span class="math inline">\(\omega_0/\sqrt2\le\beta&lt;\omega_0\)</span>, cuya respuesta libre oscila y cuya curva de desplazamiento carece de un pico interior.</p>
+<p><span id="trabajo-por-ciclo-y-resonancia-de-potencia"></span></p>
 <p><span id="fispm-t1-c23-s12"></span></p>
 <p><span id="fpm-i-23-s12"></span></p>
 </section>
-<section id="trabajo-por-ciclo-y-resonancia-de-potencia" class="level2">
-<h2 class="anchored" data-anchor-id="trabajo-por-ciclo-y-resonancia-de-potencia">§12. Trabajo por ciclo y resonancia de potencia</h2>
-<p>El balance energético con fuerza exterior es</p>
-<p><span class="math display">\[
-\dot E=F(t)\dot x-b\dot x^2.
-\]</span></p>
-<p>En régimen estacionario, la energía recupera su valor después de un período <span class="math inline">\(T_\Omega=2\pi/\Omega\)</span>. Promediar el balance da <span class="math inline">\(\langle F\dot x_s\rangle=b\langle\dot x_s^2\rangle\)</span>. La potencia que entrega la fuerza compensa exactamente la disipación media.</p>
+<section id="fispm-c23-trabajo-por-ciclo-y-resonancia-de-potencia" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-trabajo-por-ciclo-y-resonancia-de-potencia">12. Trabajo por ciclo y resonancia de potencia</h2>
+<p>El balance energético con fuerza exterior es <span class="math inline">\(\dot E=F(t)\dot x-b\dot x^2.\)</span> En régimen estacionario, la energía recupera su valor después de un período <span class="math inline">\(T_\Omega=2\pi/\Omega\)</span>. Promediar el balance da <span class="math inline">\(\langle F\dot x_s\rangle=b\langle\dot x_s^2\rangle\)</span>. La potencia que entrega la fuerza compensa exactamente la disipación media.</p>
 <p><span id="fispm-t1-c23-p0014"></span></p>
-<p><strong>Proposición FPM-I-23-P14 — Potencia media y máximo.</strong> Con <span class="math inline">\(b&gt;0\)</span> y <span class="math inline">\(F_0\)</span> fijo,</p>
-<p><span class="math display">\[
-\overline P(\Omega)
-=\frac12b\Omega^2 A(\Omega)^2
-=\frac{F_0^2b\Omega^2}{2[(k-m\Omega^2)^2+b^2\Omega^2]}.
-\]</span></p>
+<p><strong>Proposición 23.14 — Potencia media y máximo.</strong> Con <span class="math inline">\(b&gt;0\)</span> y <span class="math inline">\(F_0\)</span> fijo,</p>
+<p><span class="math display">\[\overline P(\Omega) =\frac12b\Omega^2 A(\Omega)^2 =\frac{F_0^2b\Omega^2}{2[(k-m\Omega^2)^2+b^2\Omega^2]}.\]</span></p>
 <p>Para <span class="math inline">\(\Omega&gt;0\)</span> su máximo único se alcanza en <span class="math inline">\(\Omega=\omega_0\)</span> y vale <span class="math inline">\(F_0^2/(2b)\)</span>.</p>
 <p><strong>Demostración.</strong> La media de <span class="math inline">\(\dot x_s^2=\Omega^2 A^2\sin^2(\Omega t-\vartheta)\)</span> es <span class="math inline">\(\Omega^2A^2/2\)</span>. Para localizar el máximo, divídase numerador y denominador por <span class="math inline">\(\Omega^2\)</span>:</p>
-<p><span class="math display">\[
-\overline P=\frac{F_0^2b}{2[(k/\Omega-m\Omega)^2+b^2]}.
-\]</span></p>
+<p><span class="math display">\[\overline P=\frac{F_0^2b}{2[(k/\Omega-m\Omega)^2+b^2]}.\]</span></p>
 <p>El denominador es mínimo exactamente cuando <span class="math inline">\(k/\Omega=m\Omega\)</span>, es decir, cuando <span class="math inline">\(\Omega=\sqrt{k/m}\)</span>. <span class="math inline">\(\square\)</span></p>
 <p><span id="fispm-t1-c23-d0006"></span></p>
-<p><strong>Definición FPM-I-23-D06 — Anchura de media potencia.</strong> Sean <span class="math inline">\(\Omega_-&lt;\omega_0&lt;\Omega_+\)</span> las frecuencias positivas donde <span class="math inline">\(\overline P\)</span> es la mitad de su máximo. Definimos <span class="math inline">\(\Delta\Omega=\Omega_+-\Omega_-\)</span>.</p>
+<p><strong>Definición 23.6 — Anchura de media potencia.</strong> Sean <span class="math inline">\(\Omega_-&lt;\omega_0&lt;\Omega_+\)</span> las frecuencias positivas donde <span class="math inline">\(\overline P\)</span> es la mitad de su máximo. Definimos <span class="math inline">\(\Delta\Omega=\Omega_+-\Omega_-\)</span>.</p>
 <p><span id="fispm-t1-c23-p0015"></span></p>
-<p><strong>Proposición FPM-I-23-P15 — Anchura exacta del modelo viscoso.</strong> Se cumple</p>
-<p><span class="math display">\[
-\Omega_\pm=\sqrt{\omega_0^2+\beta^2}\pm\beta,
-\qquad \Delta\Omega=2\beta,
-\qquad Q=\frac{\omega_0}{\Delta\Omega}.
-\]</span></p>
+<p><strong>Proposición 23.15 — Anchura exacta del modelo viscoso.</strong> Se cumple</p>
+<p><span class="math display">\[\Omega_\pm=\sqrt{\omega_0^2+\beta^2}\pm\beta, \qquad \Delta\Omega=2\beta, \qquad Q=\frac{\omega_0}{\Delta\Omega}.\]</span></p>
 <p><strong>Demostración.</strong> La condición de media potencia equivale a <span class="math inline">\((k-m\Omega^2)^2=b^2\Omega^2\)</span>, o <span class="math inline">\(|\omega_0^2-\Omega^2|=2\beta\Omega\)</span>. Resolver las dos cuadráticas y tomar sus raíces positivas da los valores indicados. Restarlos produce <span class="math inline">\(2\beta\)</span> y la definición de <span class="math inline">\(Q\)</span> completa la prueba. <span class="math inline">\(\square\)</span></p>
 <p>La igualdad para la anchura es exacta para esta potencia, este amortiguamiento viscoso y esta fuerza de amplitud fija. Si se usa el cuadrado del desplazamiento para definir otra anchura, hay que repetir el cálculo. En un oscilador de calidad alta las curvas se parecen mucho cerca del pico, pero ese parecido no vuelve intercambiables sus definiciones.</p>
+<p><span id="resonancia-sin-disipación-y-batidos"></span></p>
 <p><span id="fispm-t1-c23-s13"></span></p>
 <p><span id="fpm-i-23-s13"></span></p>
 </section>
-<section id="resonancia-sin-disipación-y-batidos" class="level2">
-<h2 class="anchored" data-anchor-id="resonancia-sin-disipación-y-batidos">§13. Resonancia sin disipación y batidos</h2>
+<section id="fispm-c23-resonancia-sin-disipaciuxf3n-y-batidos" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-resonancia-sin-disipaciuxf3n-y-batidos">13. Resonancia sin disipación y batidos</h2>
 <p>Para <span class="math inline">\(b=0\)</span> desaparece el mecanismo que borra las condiciones iniciales. Si <span class="math inline">\(\Omega\ne\omega_0\)</span>, todavía existe una solución particular sinusoidal, pero el movimiento libre que se le añade permanece indefinidamente. Ya no se obtiene una respuesta única atrayente.</p>
 <p><span id="fispm-t1-c23-p0016"></span></p>
-<p><strong>Proposición FPM-I-23-P16 — Forzamiento sin disipación desde el reposo.</strong> Con <span class="math inline">\(b=0\)</span>, <span class="math inline">\(x(0)=\dot x(0)=0\)</span> y <span class="math inline">\(F=F_0\cos(\Omega t)\)</span>,</p>
-<p><span class="math display">\[
-x(t)=\frac{F_0}{m(\omega_0^2-\Omega^2)}
-[\cos(\Omega t)-\cos(\omega_0t)]\quad(\Omega\ne\omega_0).
-\]</span></p>
-<p>En resonancia exacta,</p>
-<p><span class="math display">\[
-x(t)=\frac{F_0}{2m\omega_0}t\sin(\omega_0t).
-\]</span></p>
+<p><strong>Proposición 23.16 — Forzamiento sin disipación desde el reposo.</strong> Con <span class="math inline">\(b=0\)</span>, <span class="math inline">\(x(0)=\dot x(0)=0\)</span> y <span class="math inline">\(F=F_0\cos(\Omega t)\)</span>,</p>
+<p><span class="math display">\[x(t)=\frac{F_0}{m(\omega_0^2-\Omega^2)} [\cos(\Omega t)-\cos(\omega_0t)]\quad(\Omega\ne\omega_0).\]</span></p>
+<p>En resonancia exacta, <span class="math inline">\(x(t)=\frac{F_0}{2m\omega_0}t\sin(\omega_0t).\)</span></p>
 <p><strong>Demostración.</strong> Fuera de resonancia, el primer coseno, con su coeficiente, resuelve la ecuación forzada; el segundo cancela la posición inicial sin alterar la fuerza y ambas derivadas iniciales son cero. En resonancia, derivar dos veces <span class="math inline">\(t\sin(\omega_0t)\)</span> da</p>
-<p><span class="math display">\[
-\left(\frac{d^2}{dt^2}+\omega_0^2\right)
-[t\sin(\omega_0t)]=2\omega_0\cos(\omega_0t).
-\]</span></p>
+<p><span class="math display">\[\left(\frac{d^2}{dt^2}+\omega_0^2\right) [t\sin(\omega_0t)]=2\omega_0\cos(\omega_0t).\]</span></p>
 <p>La expresión propuesta satisface la ecuación y los datos. La unicidad prueba ambas fórmulas. <span class="math inline">\(\square\)</span></p>
 <p>Para frecuencias cercanas, la identidad</p>
-<p><span class="math display">\[
-\cos(\Omega t)-\cos(\omega_0t)
-=-2\sin\left(\frac{\Omega+\omega_0}{2}t\right)
-\sin\left(\frac{\Omega-\omega_0}{2}t\right)
-\]</span></p>
+<p><span class="math display">\[\cos(\Omega t)-\cos(\omega_0t) =-2\sin\left(\frac{\Omega+\omega_0}{2}t\right) \sin\left(\frac{\Omega-\omega_0}{2}t\right)\]</span></p>
 <p>separa una oscilación rápida de una modulación lenta. Los máximos del módulo de la envolvente están separados por <span class="math inline">\(2\pi/|\Omega-\omega_0|\)</span>: ése es el período de batido. El signo de la envolvente alterna, lo que equivale a un cambio de fase de <span class="math inline">\(\pi\)</span> de la oscilación rápida.</p>
 <p>La fórmula resonante también se recupera tomando <span class="math inline">\(\Omega\to\omega_0\)</span> en la solución de reposo para cada tiempo fijo. Su crecimiento proporcional a <span class="math inline">\(t\)</span> permanece dentro de un modelo ideal de resorte lineal y fuerza prescrita. Un aparato físico termina encontrando disipación, no linealidad, límites del actuador o una amplitud incompatible con la aproximación inicial.</p>
+<p><span id="reconstruir-el-modelo-y-reconocer-sus-límites"></span></p>
 <p><span id="fispm-t1-c23-s14"></span></p>
 <p><span id="fpm-i-23-s14"></span></p>
 </section>
-<section id="reconstruir-el-modelo-y-reconocer-sus-límites" class="level2">
-<h2 class="anchored" data-anchor-id="reconstruir-el-modelo-y-reconocer-sus-límites">§14. Reconstruir el modelo y reconocer sus límites</h2>
+<section id="fispm-c23-reconstruir-el-modelo-y-reconocer-sus-luxedmites" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-reconstruir-el-modelo-y-reconocer-sus-luxedmites">14. Reconstruir el modelo y reconocer sus límites</h2>
 <p>Un registro de posición puede revelar varios parámetros. La oscilación libre permite medir <span class="math inline">\(T_d\)</span> y <span class="math inline">\(\delta\)</span>; de ellos se obtienen <span class="math inline">\(\beta\)</span> y <span class="math inline">\(\omega_0\)</span>. Todavía falta una escala de masa para separar <span class="math inline">\(m\)</span>, <span class="math inline">\(k\)</span> y <span class="math inline">\(b\)</span>: multiplicar los tres por una misma constante deja inalterada la ecuación libre normalizada.</p>
 <p>Una fuerza estática conocida aporta otra observación. Si produce un desplazamiento de equilibrio <span class="math inline">\(x_s\ne0\)</span>, entonces <span class="math inline">\(k=F_s/x_s\)</span>. Después <span class="math inline">\(m=k/\omega_0^2\)</span> y <span class="math inline">\(b=2m\beta\)</span>. Cada medición resuelve una indeterminación distinta. Ajustar una curva sin examinar qué parámetros pueden identificarse puede dar una precisión numérica engañosa.</p>
-<p>También la excitación necesita una descripción correcta. Si el extremo del resorte se mueve con posición prescrita <span class="math inline">\(y(t)\)</span> y la resistencia viscosa actúa respecto de ese mismo soporte, el balance es</p>
-<p><span class="math display">\[
-m\ddot x=-k(x-y)-b(\dot x-\dot y).
-\]</span></p>
-<p>Con la coordenada relativa <span class="math inline">\(z=x-y\)</span>,</p>
-<p><span class="math display">\[
-m\ddot z+b\dot z+kz=-m\ddot y.
-\]</span></p>
-<p>Para <span class="math inline">\(y=Y\cos(\Omega t)\)</span>, la amplitud de la fuerza equivalente es <span class="math inline">\(m\Omega^2Y\)</span>. Aunque la amplitud del soporte permanezca fija, la fuerza equivalente crece con la frecuencia. Las conclusiones de P13, formuladas con <span class="math inline">\(F_0\)</span> fijo, deben adaptarse antes de usarse en este experimento.</p>
+<p>También la excitación necesita una descripción correcta. Si el extremo del resorte se mueve con posición prescrita <span class="math inline">\(y(t)\)</span> y la resistencia viscosa actúa respecto de ese mismo soporte, el balance es <span class="math inline">\(m\ddot x=-k(x-y)-b(\dot x-\dot y).\)</span></p>
+<p>Con la coordenada relativa <span class="math inline">\(z=x-y\)</span>, <span class="math inline">\(m\ddot z+b\dot z+kz=-m\ddot y.\)</span> Para <span class="math inline">\(y=Y\cos(\Omega t)\)</span>, la amplitud de la fuerza equivalente es <span class="math inline">\(m\Omega^2Y\)</span>. Aunque la amplitud del soporte permanezca fija, la fuerza equivalente crece con la frecuencia. Las conclusiones de la proposición 23.13, formuladas con <span class="math inline">\(F_0\)</span> fijo, deben adaptarse antes de usarse en este experimento.</p>
 <p>La energía proporciona un control transversal: una resistencia viscosa pasiva siempre aporta <span class="math inline">\(-b\dot x^2\)</span> en el marco en que se ha definido esa resistencia. Un signo contrario señalaría un mecanismo activo o un error en el balance. La fase ofrece otro control: la velocidad estacionaria está en fase con la fuerza en la frecuencia de máxima potencia. Un ajuste que contradiga simultáneamente estos balances exige revisar convenciones y modelo.</p>
-<p>En I24, cada masa sentirá fuerzas que dependen también de las posiciones de las otras. Encontrar movimientos en que todas oscilen con una frecuencia común permitirá recuperar ecuaciones escalares como las de este capítulo. La amplitud y la fase pasarán a describir la organización del movimiento colectivo.</p>
+<p>En el capítulo 24, cada masa sentirá fuerzas que dependen también de las posiciones de las otras. Encontrar movimientos en que todas oscilen con una frecuencia común permitirá recuperar ecuaciones escalares como las de este capítulo. La amplitud y la fase pasarán a describir la organización del movimiento colectivo.</p>
+<p><span id="ejercicios"></span></p>
 </section>
-<section id="ejercicios" class="level2">
-<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<section id="fispm-c23-ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-ejercicios">15. Ejercicios</h2>
 <p><span id="fispm-t1-c23-e0001"></span></p>
-<section id="fpm-i-23-e01-del-resorte-al-período" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e01-del-resorte-al-período">FPM-I-23-E01 — Del resorte al período</h3>
+<p><span id="fispm-t1-c23-e0023"></span></p>
+<p><strong>Ejercicio 23.1 — Del resorte al período.</strong></p>
 <p>Una masa de <span class="math inline">\(2\,\mathrm{kg}\)</span> está unida a un resorte de <span class="math inline">\(18\,\mathrm{N/m}\)</span>. Halla frecuencia angular, frecuencia ordinaria y período. Explica qué cambia si la amplitud se duplica en el modelo ideal.</p>
 <p><span id="fispm-t1-c23-e0002"></span></p>
-</section>
-<section id="fpm-i-23-e02-datos-con-velocidad" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e02-datos-con-velocidad">FPM-I-23-E02 — Datos con velocidad</h3>
+<p><strong>Ejercicio 23.2 — Datos con velocidad.</strong></p>
 <p>Resuelve <span class="math inline">\(\ddot x+9x=0\)</span> con <span class="math inline">\(x(0)=2\)</span> y <span class="math inline">\(\dot x(0)=-3\)</span>. Da amplitud y fase con la convención del capítulo.</p>
 <p><span id="fispm-t1-c23-e0003"></span></p>
-</section>
-<section id="fpm-i-23-e03-la-posición-no-determina-el-estado" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e03-la-posición-no-determina-el-estado">FPM-I-23-E03 — La posición no determina el estado</h3>
+<p><strong>Ejercicio 23.3 — La posición no determina el estado.</strong></p>
 <p>Construye dos soluciones armónicas de frecuencia <span class="math inline">\(\omega_0\)</span> que pasen por <span class="math inline">\(x=0\)</span> en <span class="math inline">\(t=0\)</span> con velocidades opuestas no nulas. Compara sus energías y fases.</p>
 <p><span id="fispm-t1-c23-e0004"></span></p>
-</section>
-<section id="fpm-i-23-e04-cambiar-de-reloj" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e04-cambiar-de-reloj">FPM-I-23-E04 — Cambiar de reloj</h3>
+<p><strong>Ejercicio 23.4 — Cambiar de reloj.</strong></p>
 <p>Para <span class="math inline">\(x(t)=A\cos(\omega_0t+\phi)\)</span>, con <span class="math inline">\(A&gt;0\)</span>, escoge un nuevo origen temporal en un máximo positivo. Escribe la solución con el nuevo reloj.</p>
 <p><span id="fispm-t1-c23-e0005"></span></p>
-</section>
-<section id="fpm-i-23-e05-energía-y-extremos" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e05-energía-y-extremos">FPM-I-23-E05 — Energía y extremos</h3>
+<p><strong>Ejercicio 23.5 — Energía y extremos.</strong></p>
 <p>Un oscilador tiene <span class="math inline">\(m=1\,\mathrm{kg}\)</span>, <span class="math inline">\(k=25\,\mathrm{N/m}\)</span> y <span class="math inline">\(E=0{,}50\,\mathrm J\)</span>. Halla su amplitud y su rapidez máxima.</p>
 <p><span id="fispm-t1-c23-e0006"></span></p>
-</section>
-<section id="fpm-i-23-e06-un-cociente-que-exige-cuidado" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e06-un-cociente-que-exige-cuidado">FPM-I-23-E06 — Un cociente que exige cuidado</h3>
+<p><strong>Ejercicio 23.6 — Un cociente que exige cuidado.</strong></p>
 <p>Un argumento divide <span class="math inline">\(m\ddot x=-kx\)</span> por <span class="math inline">\(\dot x\)</span> para obtener una ecuación energética. Diagnostica el problema y construye una prueba válida incluso en los extremos.</p>
 <p><span id="fispm-t1-c23-e0007"></span></p>
-</section>
-<section id="fpm-i-23-e07-cambio-del-equilibrio-vertical" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e07-cambio-del-equilibrio-vertical">FPM-I-23-E07 — Cambio del equilibrio vertical</h3>
+<p><strong>Ejercicio 23.7 — Cambio del equilibrio vertical.</strong></p>
 <p>Un resorte vertical ideal soporta una masa <span class="math inline">\(m\)</span> y después otra de masa <span class="math inline">\(4m\)</span>. Compara los alargamientos de equilibrio y los períodos, suponiendo que sigue siendo válida la ley de Hooke.</p>
 <p><span id="fispm-t1-c23-e0008"></span></p>
-</section>
-<section id="fpm-i-23-e08-equilibrio-degenerado" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e08-equilibrio-degenerado">FPM-I-23-E08 — Equilibrio degenerado</h3>
+<p><strong>Ejercicio 23.8 — Equilibrio degenerado.</strong></p>
 <p>Para <span class="math inline">\(m\ddot x=-\lambda x^3\)</span>, con <span class="math inline">\(\lambda&gt;0\)</span>, una oscilación tiene amplitud <span class="math inline">\(A&gt;0\)</span>. Deduce mediante energía que su período es proporcional a <span class="math inline">\(1/A\)</span>.</p>
 <p><span id="fispm-t1-c23-e0009"></span></p>
-</section>
-<section id="fpm-i-23-e09-error-del-período-del-péndulo" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e09-error-del-período-del-péndulo">FPM-I-23-E09 — Error del período del péndulo</h3>
-<p>Usa P06 para estimar la corrección relativa del período a una amplitud de <span class="math inline">\(0{,}20\)</span> radianes. Distingue estimación asintótica y cota rigurosa.</p>
+<p><strong>Ejercicio 23.9 — Error del período del péndulo.</strong></p>
+<p>Usa proposición 23.6 para estimar la corrección relativa del período a una amplitud de <span class="math inline">\(0{,}20\)</span> radianes. Distingue estimación asintótica y cota rigurosa.</p>
 <p><span id="fispm-t1-c23-e0010"></span></p>
-</section>
-<section id="fpm-i-23-e10-clasificación-dimensional" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e10-clasificación-dimensional">FPM-I-23-E10 — Clasificación dimensional</h3>
+<p><strong>Ejercicio 23.10 — Clasificación dimensional.</strong></p>
 <p>Sean <span class="math inline">\(m=1\,\mathrm{kg}\)</span> y <span class="math inline">\(k=9\,\mathrm{N/m}\)</span>. Clasifica los casos <span class="math inline">\(b=2\)</span>, <span class="math inline">\(6\)</span> y <span class="math inline">\(10\,\mathrm{kg/s}\)</span> y calcula las frecuencias o raíces relevantes.</p>
 <p><span id="fispm-t1-c23-e0011"></span></p>
-</section>
-<section id="fpm-i-23-e11-subamortiguado-desde-un-extremo" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e11-subamortiguado-desde-un-extremo">FPM-I-23-E11 — Subamortiguado desde un extremo</h3>
+<p><strong>Ejercicio 23.11 — Subamortiguado desde un extremo.</strong></p>
 <p>Resuelve <span class="math inline">\(\ddot x+2\dot x+5x=0\)</span> con <span class="math inline">\(x(0)=1\)</span>, <span class="math inline">\(\dot x(0)=0\)</span>. Explica por qué el coeficiente del seno no es cero.</p>
 <p><span id="fispm-t1-c23-e0012"></span></p>
-</section>
-<section id="fpm-i-23-e12-cruce-en-el-régimen-crítico" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e12-cruce-en-el-régimen-crítico">FPM-I-23-E12 — Cruce en el régimen crítico</h3>
+<p><strong>Ejercicio 23.12 — Cruce en el régimen crítico.</strong></p>
 <p>Para <span class="math inline">\(\ddot x+4\dot x+4x=0\)</span>, <span class="math inline">\(x(0)=1\)</span>, determina qué velocidades iniciales producen un cruce por el equilibrio en un tiempo positivo.</p>
 <p><span id="fispm-t1-c23-e0013"></span></p>
-</section>
-<section id="fpm-i-23-e13-modo-lento-ausente" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e13-modo-lento-ausente">FPM-I-23-E13 — Modo lento ausente</h3>
+<p><strong>Ejercicio 23.13 — Modo lento ausente.</strong></p>
 <p>En <span class="math inline">\(\ddot x+6\dot x+5x=0\)</span>, encuentra la relación entre <span class="math inline">\(x_0\)</span> y <span class="math inline">\(v_0\)</span> que elimina el modo más lento. Resuelve para <span class="math inline">\(x_0=1\)</span> bajo esa condición.</p>
 <p><span id="fispm-t1-c23-e0014"></span></p>
-</section>
-<section id="fpm-i-23-e14-inferir-amortiguamiento" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e14-inferir-amortiguamiento">FPM-I-23-E14 — Inferir amortiguamiento</h3>
+<p><strong>Ejercicio 23.14 — Inferir amortiguamiento.</strong></p>
 <p>Los máximos positivos de una oscilación están separados por <span class="math inline">\(2\,\mathrm s\)</span> y cada uno vale el <span class="math inline">\(80\%\)</span> del anterior. Calcula <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\omega_d\)</span>, <span class="math inline">\(\omega_0\)</span> y <span class="math inline">\(Q\)</span>.</p>
 <p><span id="fispm-t1-c23-e0015"></span></p>
-</section>
-<section id="fpm-i-23-e15-energía-exponencial-exacta" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e15-energía-exponencial-exacta">FPM-I-23-E15 — ¿Energía exponencial exacta?</h3>
+<p><strong>Ejercicio 23.15 — ¿Energía exponencial exacta?.</strong></p>
 <p>Refuta la afirmación de que toda energía libre subamortiguada satisface <span class="math inline">\(E(t)=E(0)e^{-2\beta t}\)</span>. Usa datos de reposo con desplazamiento no nulo.</p>
 <p><span id="fispm-t1-c23-e0016"></span></p>
-</section>
-<section id="fpm-i-23-e16-encendido-de-una-fuerza-constante" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e16-encendido-de-una-fuerza-constante">FPM-I-23-E16 — Encendido de una fuerza constante</h3>
+<p><strong>Ejercicio 23.16 — Encendido de una fuerza constante.</strong></p>
 <p>Un oscilador subamortiguado parte del reposo en el equilibrio. A partir de <span class="math inline">\(t=0\)</span> actúa una fuerza constante <span class="math inline">\(F_s\)</span>. Halla <span class="math inline">\(x(t)\)</span> y su límite.</p>
 <p><span id="fispm-t1-c23-e0017"></span></p>
-</section>
-<section id="fpm-i-23-e17-impulso-ideal" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e17-impulso-ideal">FPM-I-23-E17 — Impulso ideal</h3>
+<p><strong>Ejercicio 23.17 — Impulso ideal.</strong></p>
 <p>Un impulso de magnitud algebraica <span class="math inline">\(J\)</span> actúa en <span class="math inline">\(t=0\)</span> sobre un oscilador en reposo. Modela su efecto como un salto de velocidad <span class="math inline">\(J/m\)</span> y escribe la respuesta subamortiguada posterior. Calcula la energía inmediatamente después.</p>
 <p><span id="fispm-t1-c23-e0018"></span></p>
-</section>
-<section id="fpm-i-23-e18-pulso-de-duración-finita" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e18-pulso-de-duración-finita">FPM-I-23-E18 — Pulso de duración finita</h3>
-<p>Con los datos de E16, la fuerza se apaga en <span class="math inline">\(t=\tau&gt;0\)</span>. Expresa la respuesta completa usando la respuesta al escalón unitario de fuerza y justifica la continuidad en <span class="math inline">\(\tau\)</span>.</p>
+<p><strong>Ejercicio 23.18 — Pulso de duración finita.</strong></p>
+<p>Con los datos del ejercicio 23.16, la fuerza se apaga en <span class="math inline">\(t=\tau&gt;0\)</span>. Expresa la respuesta completa usando la respuesta al escalón unitario de fuerza y justifica la continuidad en <span class="math inline">\(\tau\)</span>.</p>
 <p><span id="fispm-t1-c23-e0019"></span></p>
-</section>
-<section id="fpm-i-23-e19-resolver-amplitud-y-fase" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e19-resolver-amplitud-y-fase">FPM-I-23-E19 — Resolver amplitud y fase</h3>
+<p><strong>Ejercicio 23.19 — Resolver amplitud y fase.</strong></p>
 <p>Para <span class="math inline">\(m=1\)</span>, <span class="math inline">\(k=9\)</span>, <span class="math inline">\(b=2\)</span>, <span class="math inline">\(F_0=4\)</span> y <span class="math inline">\(\Omega=2\)</span> en unidades coherentes, calcula la respuesta estacionaria y su desfase.</p>
 <p><span id="fispm-t1-c23-e0020"></span></p>
-</section>
-<section id="fpm-i-23-e20-una-tangente-insuficiente" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e20-una-tangente-insuficiente">FPM-I-23-E20 — Una tangente insuficiente</h3>
-<p>En el sistema de E19 usa <span class="math inline">\(\Omega=4\)</span>. Explica qué error produce escoger la fase con la función <span class="math inline">\(\arctan\)</span> de un solo argumento.</p>
+<p><strong>Ejercicio 23.20 — Una tangente insuficiente.</strong></p>
+<p>En el sistema del ejercicio 23.19 usa <span class="math inline">\(\Omega=4\)</span>. Explica qué error produce escoger la fase con la función <span class="math inline">\(\arctan\)</span> de un solo argumento.</p>
 <p><span id="fispm-t1-c23-e0021"></span></p>
-</section>
-<section id="fpm-i-23-e21-oscilar-sin-pico-de-desplazamiento" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e21-oscilar-sin-pico-de-desplazamiento">FPM-I-23-E21 — Oscilar sin pico de desplazamiento</h3>
+<p><strong>Ejercicio 23.21 — Oscilar sin pico de desplazamiento.</strong></p>
 <p>Construye un sistema libre subamortiguado cuya amplitud estacionaria decrezca para toda <span class="math inline">\(\Omega&gt;0\)</span> con <span class="math inline">\(F_0\)</span> fijo. Justifica ambas propiedades.</p>
 <p><span id="fispm-t1-c23-e0022"></span></p>
-</section>
-<section id="fpm-i-23-e22-tres-frecuencias" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e22-tres-frecuencias">FPM-I-23-E22 — Tres frecuencias</h3>
+<p><strong>Ejercicio 23.22 — Tres frecuencias.</strong></p>
 <p>Para <span class="math inline">\(\omega_0=5\,\mathrm{s}^{-1}\)</span> y <span class="math inline">\(\beta=1\,\mathrm{s}^{-1}\)</span>, ordena y calcula la frecuencia libre amortiguada, la de máximo desplazamiento y la de máxima potencia.</p>
-<p><span id="fispm-t1-c23-e0023"></span></p>
-</section>
-<section id="fpm-i-23-e23-energía-por-ciclo" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e23-energía-por-ciclo">FPM-I-23-E23 — Energía por ciclo</h3>
+<p><strong>Ejercicio 23.23 — Energía por ciclo.</strong></p>
 <p>Demuestra que el trabajo de la fuerza en un ciclo estacionario es <span class="math inline">\(W=\pi b\Omega A^2\)</span>. Calcula su valor en <span class="math inline">\(\Omega=\omega_0\)</span>.</p>
 <p><span id="fispm-t1-c23-e0024"></span></p>
-</section>
-<section id="fpm-i-23-e24-frecuencias-de-media-potencia" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e24-frecuencias-de-media-potencia">FPM-I-23-E24 — Frecuencias de media potencia</h3>
+<p><strong>Ejercicio 23.24 — Frecuencias de media potencia.</strong></p>
 <p>Para <span class="math inline">\(\omega_0=10\)</span> y <span class="math inline">\(\beta=1\)</span> en unidades coherentes, calcula <span class="math inline">\(\Omega_-\)</span>, <span class="math inline">\(\Omega_+\)</span> y su media geométrica. ¿Está <span class="math inline">\(\omega_0\)</span> en el punto medio aritmético?</p>
 <p><span id="fispm-t1-c23-e0025"></span></p>
-</section>
-<section id="fpm-i-23-e25-resonancia-de-reposo" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e25-resonancia-de-reposo">FPM-I-23-E25 — Resonancia de reposo</h3>
-<p>Comprueba directamente la solución resonante de P16 y calcula su energía en los instantes <span class="math inline">\(t_n=n\pi/\omega_0\)</span>, para enteros <span class="math inline">\(n\ge0\)</span>.</p>
+<p><strong>Ejercicio 23.25 — Resonancia de reposo.</strong></p>
+<p>Comprueba directamente la solución resonante de la proposición 23.16 y calcula su energía en los instantes <span class="math inline">\(t_n=n\pi/\omega_0\)</span>, para enteros <span class="math inline">\(n\ge0\)</span>.</p>
 <p><span id="fispm-t1-c23-e0026"></span></p>
-</section>
-<section id="fpm-i-23-e26-batidos-audibles" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e26-batidos-audibles">FPM-I-23-E26 — Batidos audibles</h3>
+<p><strong>Ejercicio 23.26 — Batidos audibles.</strong></p>
 <p>Dos oscilaciones de igual amplitud tienen frecuencias ordinarias <span class="math inline">\(440\)</span> y <span class="math inline">\(442\,\mathrm{Hz}\)</span>. Escribe su suma como producto y determina la frecuencia de los máximos del módulo de la envolvente.</p>
 <p><span id="fispm-t1-c23-e0027"></span></p>
-</section>
-<section id="fpm-i-23-e27-identificación-incompleta" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e27-identificación-incompleta">FPM-I-23-E27 — Identificación incompleta</h3>
+<p><strong>Ejercicio 23.27 — Identificación incompleta.</strong></p>
 <p>Demuestra que observar una trayectoria libre, aun exactamente y durante un intervalo arbitrariamente largo, no basta en general para identificar por separado <span class="math inline">\(m\)</span>, <span class="math inline">\(b\)</span> y <span class="math inline">\(k\)</span>.</p>
 <p><span id="fispm-t1-c23-e0028"></span></p>
-</section>
-<section id="fpm-i-23-e28-identificación-con-dato-estático" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e28-identificación-con-dato-estático">FPM-I-23-E28 — Identificación con dato estático</h3>
+<p><strong>Ejercicio 23.28 — Identificación con dato estático.</strong></p>
 <p>Se miden <span class="math inline">\(\beta=0{,}5\,\mathrm{s}^{-1}\)</span> y <span class="math inline">\(\omega_d=\sqrt{15{,}75}\,\mathrm{s}^{-1}\)</span>. Una fuerza estática de <span class="math inline">\(8\,\mathrm N\)</span> desplaza el equilibrio <span class="math inline">\(0{,}02\,\mathrm m\)</span>. Halla <span class="math inline">\(m\)</span>, <span class="math inline">\(k\)</span>, <span class="math inline">\(b\)</span> y <span class="math inline">\(Q\)</span>.</p>
 <p><span id="fispm-t1-c23-e0029"></span></p>
-</section>
-<section id="fpm-i-23-e29-excitación-por-el-soporte" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e29-excitación-por-el-soporte">FPM-I-23-E29 — Excitación por el soporte</h3>
+<p><strong>Ejercicio 23.29 — Excitación por el soporte.</strong></p>
 <p>Para el modelo de soporte móvil de §14, con <span class="math inline">\(y=Y\cos(\Omega t)\)</span> y <span class="math inline">\(b&gt;0\)</span>, encuentra la amplitud estacionaria relativa <span class="math inline">\(Z\)</span> y sus límites cuando <span class="math inline">\(\Omega\to0\)</span> y <span class="math inline">\(\Omega\to\infty\)</span>.</p>
 <p><span id="fispm-t1-c23-e0030"></span></p>
-</section>
-<section id="fpm-i-23-e30-estabilidad-sin-pérdida-de-energía" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e30-estabilidad-sin-pérdida-de-energía">FPM-I-23-E30 — Estabilidad sin pérdida de energía</h3>
+<p><strong>Ejercicio 23.30 — Estabilidad sin pérdida de energía.</strong></p>
 <p>Demuestra que el equilibrio del oscilador libre sin disipación es estable en el plano posición-velocidad, pero no es asintóticamente estable. Usa la distancia escalada <span class="math inline">\(r(x,v)=\sqrt{x^2+(v/\omega_0)^2}\)</span> y explica su relación con la distancia euclídea.</p>
+<p><span id="soluciones"></span></p>
 </section>
-</section>
-<section id="soluciones" class="level2">
-<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
-<section id="fpm-i-23-e01" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e01">FPM-I-23-E01</h3>
+<section id="fispm-c23-soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="fispm-c23-soluciones">16. Soluciones</h2>
+<p><strong>Solución del ejercicio 23.1.</strong></p>
 <p>Dividir la rigidez por la masa da <span class="math inline">\(\omega_0^2=9\,\mathrm{s}^{-2}\)</span>. Por tanto <span class="math inline">\(\omega_0=3\,\mathrm{s}^{-1}\)</span>, <span class="math inline">\(T_0=2\pi/3\,\mathrm s\)</span> y <span class="math inline">\(f_0=3/(2\pi)\,\mathrm{Hz}\)</span>. La ecuación lineal no contiene la amplitud en su frecuencia. Duplicar <span class="math inline">\(A\)</span> deja <span class="math inline">\(T_0\)</span> igual y multiplica por cuatro la energía <span class="math inline">\(kA^2/2\)</span>. Esta conclusión exige conservar el modelo de resorte ideal.</p>
-</section>
-<section id="fpm-i-23-e02" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e02">FPM-I-23-E02</h3>
-<p>P02 da <span class="math inline">\(x=2\cos3t-\sin3t\)</span>. Comparando con <span class="math inline">\(A\cos(3t+\phi)\)</span>, obtenemos <span class="math inline">\(A=\sqrt5\)</span>, <span class="math inline">\(\cos\phi=2/\sqrt5\)</span> y <span class="math inline">\(\sin\phi=1/\sqrt5\)</span>. Puede elegirse <span class="math inline">\(\phi=\arctan(1/2)\)</span>, en el primer cuadrante. La derivada inicial es <span class="math inline">\(-3A\sin\phi=-3\)</span>, lo que verifica el signo.</p>
-</section>
-<section id="fpm-i-23-e03" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e03">FPM-I-23-E03</h3>
+<p><strong>Solución del ejercicio 23.2.</strong></p>
+<p>Proposición 23.2 da <span class="math inline">\(x=2\cos3t-\sin3t\)</span>. Comparando con <span class="math inline">\(A\cos(3t+\phi)\)</span>, obtenemos <span class="math inline">\(A=\sqrt5\)</span>, <span class="math inline">\(\cos\phi=2/\sqrt5\)</span> y <span class="math inline">\(\sin\phi=1/\sqrt5\)</span>. Puede elegirse <span class="math inline">\(\phi=\arctan(1/2)\)</span>, en el primer cuadrante. La derivada inicial es <span class="math inline">\(-3A\sin\phi=-3\)</span>, lo que verifica el signo.</p>
+<p><strong>Solución del ejercicio 23.3.</strong></p>
 <p>Para cualquier <span class="math inline">\(V&gt;0\)</span>, tomemos <span class="math inline">\(x_\pm(t)=\pm(V/\omega_0)\sin(\omega_0t)\)</span>. Sus velocidades iniciales son <span class="math inline">\(\pm V\)</span> y ambas energías valen <span class="math inline">\(mV^2/2\)</span>. Con amplitudes positivas, las fases son <span class="math inline">\(-\pi/2\)</span> y <span class="math inline">\(\pi/2\)</span> módulo <span class="math inline">\(2\pi\)</span>. Los estados son distintos aunque compartan posición y energía; sus puntos en la elipse energética están en lados opuestos del eje de posición.</p>
-</section>
-<section id="fpm-i-23-e04" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e04">FPM-I-23-E04</h3>
+<p><strong>Solución del ejercicio 23.4.</strong></p>
 <p>Escogemos <span class="math inline">\(t_*=(2\pi n-\phi)/\omega_0\)</span> para algún entero <span class="math inline">\(n\)</span>. Con <span class="math inline">\(t'=t-t_*\)</span> resulta <span class="math inline">\(x=A\cos(\omega_0t'+2\pi n)=A\cos(\omega_0t')\)</span>. La velocidad en <span class="math inline">\(t'=0\)</span> es cero y la aceleración es negativa, de modo que se trata de un máximo positivo. La elección de <span class="math inline">\(n\)</span> sólo selecciona cuál de esos máximos inicia el reloj.</p>
-</section>
-<section id="fpm-i-23-e05" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e05">FPM-I-23-E05</h3>
+<p><strong>Solución del ejercicio 23.5.</strong></p>
 <p>En el extremo toda la energía es potencial: <span class="math inline">\(A=\sqrt{2E/k}=0{,}20\,\mathrm m\)</span>. En el equilibrio toda es cinética: <span class="math inline">\(v_{\max}=\sqrt{2E/m}=1\,\mathrm{m/s}\)</span>. Coincide con <span class="math inline">\(\omega_0A=5\cdot0{,}20\)</span>. Las dos vías sirven como comprobación mutua.</p>
-</section>
-<section id="fpm-i-23-e06" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e06">FPM-I-23-E06</h3>
+<p><strong>Solución del ejercicio 23.6.</strong></p>
 <p>La división no está definida en los puntos donde <span class="math inline">\(\dot x=0\)</span>, incluidos los extremos de toda oscilación no trivial. La prueba global consiste en multiplicar la ecuación por <span class="math inline">\(\dot x\)</span>, sin dividir: <span class="math inline">\(m\ddot x\dot x+kx\dot x=0\)</span>. El lado izquierdo es la derivada de <span class="math inline">\(m\dot x^2/2+kx^2/2\)</span>. Así la energía se conserva en todo el intervalo, también donde ambos productos se anulan.</p>
-</section>
-<section id="fpm-i-23-e07" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e07">FPM-I-23-E07</h3>
+<p><strong>Solución del ejercicio 23.7.</strong></p>
 <p>El equilibrio satisface <span class="math inline">\(kq_*=mg\)</span>, por lo que cuadruplicar la masa cuadruplica el alargamiento. La frecuencia pasa de <span class="math inline">\(\sqrt{k/m}\)</span> a <span class="math inline">\(\sqrt{k/(4m)}=\omega_0/2\)</span>; el período se duplica. La gravedad no cambia la frecuencia para una masa dada en este modelo, pero cambiar la masa modifica tanto equilibrio como inercia.</p>
-</section>
-<section id="fpm-i-23-e08" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e08">FPM-I-23-E08</h3>
+<p><strong>Solución del ejercicio 23.8.</strong></p>
 <p>La energía es <span class="math inline">\(m\dot x^2/2+\lambda x^4/4=\lambda A^4/4\)</span>. En un cuarto del ciclo,</p>
-<p><span class="math display">\[
-\frac T4=\sqrt{\frac{2m}{\lambda}}\int_0^A
-\frac{dx}{\sqrt{A^4-x^4}}
-=\frac1A\sqrt{\frac{2m}{\lambda}}\int_0^1\frac{du}{\sqrt{1-u^4}}.
-\]</span></p>
+<p><span class="math display">\[\frac T4=\sqrt{\frac{2m}{\lambda}}\int_0^A \frac{dx}{\sqrt{A^4-x^4}} =\frac1A\sqrt{\frac{2m}{\lambda}}\int_0^1\frac{du}{\sqrt{1-u^4}}.\]</span></p>
 <p>La sustitución fue <span class="math inline">\(x=Au\)</span>. La integral es finita: cerca de <span class="math inline">\(u=1\)</span>, <span class="math inline">\(1-u^4\)</span> tiene un cero simple, por lo que la singularidad es del tipo <span class="math inline">\((1-u)^{-1/2}\)</span>, integrable. El factor restante no depende de <span class="math inline">\(A\)</span>. Por tanto <span class="math inline">\(T\)</span> es proporcional a <span class="math inline">\(1/A\)</span> y diverge cuando la amplitud tiende a cero. Un mínimo estable degenerado puede tener una dependencia de amplitud muy distinta de la armónica.</p>
-</section>
-<section id="fpm-i-23-e09" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e09">FPM-I-23-E09</h3>
-<p>El primer término relativo es <span class="math inline">\(\alpha^2/16=0{,}04/16=0{,}0025\)</span>, es decir, aproximadamente <span class="math inline">\(0{,}25\%\)</span>. P06 deja un resto <span class="math inline">\(O(\alpha^4)\)</span> sin dar una constante numérica explícita. Por ello el resultado es una estimación asintótica; no autoriza afirmar que el error exacto sea menor que <span class="math inline">\(0{,}25\%\)</span>. De hecho, los términos positivos de orden superior hacen que la corrección exacta supere ligeramente ese primer término.</p>
-</section>
-<section id="fpm-i-23-e10" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e10">FPM-I-23-E10</h3>
+<p><strong>Solución del ejercicio 23.9.</strong></p>
+<p>El primer término relativo es <span class="math inline">\(\alpha^2/16=0{,}04/16=0{,}0025\)</span>, es decir, aproximadamente <span class="math inline">\(0{,}25\%\)</span>. Proposición 23.6 deja un resto <span class="math inline">\(O(\alpha^4)\)</span> sin dar una constante numérica explícita. Por ello el resultado es una estimación asintótica; no autoriza afirmar que el error exacto sea menor que <span class="math inline">\(0{,}25\%\)</span>. De hecho, los términos positivos de orden superior hacen que la corrección exacta supere ligeramente ese primer término.</p>
+<p><strong>Solución del ejercicio 23.10.</strong></p>
 <p>La frecuencia natural es <span class="math inline">\(3\,\mathrm{s}^{-1}\)</span>. Para <span class="math inline">\(b=2\)</span>, <span class="math inline">\(\beta=1\)</span> y <span class="math inline">\(\omega_d=\sqrt8\,\mathrm{s}^{-1}\)</span>: caso subamortiguado. Para <span class="math inline">\(b=6\)</span>, <span class="math inline">\(\beta=3=\omega_0\)</span>: caso crítico y raíz doble <span class="math inline">\(-3\,\mathrm{s}^{-1}\)</span>. Para <span class="math inline">\(b=10\)</span>, <span class="math inline">\(\beta=5\)</span> y <span class="math inline">\(\gamma=4\)</span>: caso sobreamortiguado con raíces <span class="math inline">\(-1\)</span> y <span class="math inline">\(-9\,\mathrm{s}^{-1}\)</span>. El parámetro que se compara con <span class="math inline">\(\omega_0\)</span> es <span class="math inline">\(b/(2m)\)</span>; comparar directamente <span class="math inline">\(b\)</span> con una frecuencia sería dimensionalmente incorrecto.</p>
-</section>
-<section id="fpm-i-23-e11" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e11">FPM-I-23-E11</h3>
+<p><strong>Solución del ejercicio 23.11.</strong></p>
 <p>Aquí <span class="math inline">\(\beta=1\)</span>, <span class="math inline">\(\omega_0=\sqrt5\)</span> y <span class="math inline">\(\omega_d=2\)</span>. La solución es <span class="math inline">\(x=e^{-t}(\cos2t+\tfrac12\sin2t)\)</span>. Al derivarla en cero aparece <span class="math inline">\(-1+2(1/2)=0\)</span>. Si se omitiera el seno, la derivada de la envolvente produciría una velocidad inicial <span class="math inline">\(-1\)</span>. La condición de reposo debe imponerse a la solución completa.</p>
-</section>
-<section id="fpm-i-23-e12" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e12">FPM-I-23-E12</h3>
+<p><strong>Solución del ejercicio 23.12.</strong></p>
 <p>La solución crítica es <span class="math inline">\(x=e^{-2t}[1+(v_0+2)t]\)</span>. La exponencial siempre es positiva, de modo que un cero positivo exige <span class="math inline">\(v_0+2&lt;0\)</span>. Por tanto el cruce ocurre exactamente para <span class="math inline">\(v_0&lt;-2\)</span>, en <span class="math inline">\(t_*=-1/(v_0+2)\)</span>. Si <span class="math inline">\(v_0=-2\)</span>, el movimiento es <span class="math inline">\(e^{-2t}&gt;0\)</span>; si <span class="math inline">\(v_0&gt;-2\)</span>, el factor afín permanece positivo para <span class="math inline">\(t\ge0\)</span>.</p>
-</section>
-<section id="fpm-i-23-e13" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e13">FPM-I-23-E13</h3>
+<p><strong>Solución del ejercicio 23.13.</strong></p>
 <p>Las raíces son <span class="math inline">\(-1\)</span> y <span class="math inline">\(-5\)</span>, por lo que <span class="math inline">\(x=ce^{-t}+de^{-5t}\)</span>. Los datos satisfacen <span class="math inline">\(c+d=x_0\)</span> y <span class="math inline">\(-c-5d=v_0\)</span>. Para eliminar el modo lento se requiere <span class="math inline">\(c=0\)</span>, equivalente a <span class="math inline">\(v_0=-5x_0\)</span>. Con <span class="math inline">\(x_0=1\)</span>, resulta <span class="math inline">\(x=e^{-5t}\)</span>. Una perturbación de esa relación reintroduce el modo <span class="math inline">\(e^{-t}\)</span> y cambia el comportamiento dominante a tiempos largos.</p>
-</section>
-<section id="fpm-i-23-e14" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e14">FPM-I-23-E14</h3>
+<p><strong>Solución del ejercicio 23.14.</strong></p>
 <p>El decremento es <span class="math inline">\(\delta=\log(1/0{,}8)=\log1{,}25\approx0{,}22314\)</span>. Entonces <span class="math inline">\(\beta=\delta/2\approx0{,}11157\,\mathrm{s}^{-1}\)</span> y <span class="math inline">\(\omega_d=2\pi/2=\pi\,\mathrm{s}^{-1}\)</span>. Reconstruimos <span class="math inline">\(\omega_0=\sqrt{\pi^2+\beta^2}\approx3{,}14357\,\mathrm{s}^{-1}\)</span>. Finalmente <span class="math inline">\(Q=\omega_0/(2\beta)\approx14{,}09\)</span>. La medición usa máximos del mismo signo; tomar extremos alternos cambiaría el intervalo y el decremento.</p>
-</section>
-<section id="fpm-i-23-e15" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e15">FPM-I-23-E15</h3>
+<p><strong>Solución del ejercicio 23.15.</strong></p>
 <p>Con <span class="math inline">\(x_0\ne0\)</span> y <span class="math inline">\(v_0=0\)</span>, la energía inicial es positiva y el balance exacto da <span class="math inline">\(\dot E(0)=-bv_0^2=0\)</span>. La fórmula propuesta implicaría <span class="math inline">\(\dot E(0)=-2\beta E(0)&lt;0\)</span> si <span class="math inline">\(\beta&gt;0\)</span>, contradicción. La relación exponencial es exacta al comparar estados separados por <span class="math inline">\(T_d\)</span> y sirve como descripción de envolvente; no es la ley instantánea general de la energía.</p>
-</section>
-<section id="fpm-i-23-e16" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e16">FPM-I-23-E16</h3>
-<p>El nuevo equilibrio es <span class="math inline">\(x_s=F_s/k\)</span>. La desviación <span class="math inline">\(u=x-x_s\)</span> satisface la ecuación homogénea con <span class="math inline">\(u(0)=-x_s\)</span> y <span class="math inline">\(\dot u(0)=0\)</span>. Por P08,</p>
-<p><span class="math display">\[
-x(t)=\frac{F_s}{k}\left[1-e^{-\beta t}
-\left(\cos\omega_dt+\frac\beta{\omega_d}\sin\omega_dt\right)\right].
-\]</span></p>
+<p><strong>Solución del ejercicio 23.16.</strong></p>
+<p>El nuevo equilibrio es <span class="math inline">\(x_s=F_s/k\)</span>. La desviación <span class="math inline">\(u=x-x_s\)</span> satisface la ecuación homogénea con <span class="math inline">\(u(0)=-x_s\)</span> y <span class="math inline">\(\dot u(0)=0\)</span>. Por proposición 23.8,</p>
+<p><span class="math display">\[x(t)=\frac{F_s}{k}\left[1-e^{-\beta t} \left(\cos\omega_dt+\frac\beta{\omega_d}\sin\omega_dt\right)\right].\]</span></p>
 <p>Si <span class="math inline">\(\beta&gt;0\)</span>, el término transitorio tiende a cero y <span class="math inline">\(x\to F_s/k\)</span>. Para <span class="math inline">\(\beta=0\)</span>, la misma fórmula da <span class="math inline">\(x=(F_s/k)(1-\cos\omega_0t)\)</span>, que no converge: el equilibrio se desplaza, pero no hay disipación que atraiga el movimiento hacia él.</p>
-</section>
-<section id="fpm-i-23-e17" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e17">FPM-I-23-E17</h3>
-<p>Integrar el balance de momento durante un impulso ideal da <span class="math inline">\(m[v(0^+)-v(0^-)]=J\)</span>. La posición sigue siendo cero y <span class="math inline">\(v(0^+)=J/m\)</span>. Por P08,</p>
-<p><span class="math display">\[
-x(t)=\frac{J}{m\omega_d}e^{-\beta t}\sin(\omega_dt),\qquad t&gt;0.
-\]</span></p>
+<p><strong>Solución del ejercicio 23.17.</strong></p>
+<p>Integrar el balance de momento durante un impulso ideal da <span class="math inline">\(m[v(0^+)-v(0^-)]=J\)</span>. La posición sigue siendo cero y <span class="math inline">\(v(0^+)=J/m\)</span>. Por proposición 23.8, <span class="math inline">\(x(t)=\frac{J}{m\omega_d}e^{-\beta t}\sin(\omega_dt),\qquad t&gt;0.\)</span></p>
 <p>La energía inicial posterior es <span class="math inline">\(J^2/(2m)\)</span>. Este modelo concentra el impulso en un intervalo cuya duración se desprecia frente al período y al tiempo de amortiguamiento; la evolución posterior vuelve a ser libre.</p>
-</section>
-<section id="fpm-i-23-e18" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e18">FPM-I-23-E18</h3>
-<p>Sea <span class="math inline">\(S(t)\)</span> la expresión de E16 con <span class="math inline">\(F_s=1\)</span>, para <span class="math inline">\(t\ge0\)</span>, y fijemos <span class="math inline">\(S(t)=0\)</span> para <span class="math inline">\(t&lt;0\)</span>. Entonces <span class="math inline">\(x(t)=F_s[S(t)-S(t-\tau)]\)</span>. El primer término enciende la fuerza; el segundo añade un escalón opuesto cuando se apaga. Como <span class="math inline">\(S(0)=S'(0)=0\)</span>, introducir el segundo término en <span class="math inline">\(\tau\)</span> no genera saltos de posición ni de velocidad. La aceleración sí cambia en una cantidad <span class="math inline">\(-F_s/m\)</span>, coherente con el salto de la fuerza.</p>
-</section>
-<section id="fpm-i-23-e19" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e19">FPM-I-23-E19</h3>
+<p><strong>Solución del ejercicio 23.18.</strong></p>
+<p>Sea <span class="math inline">\(S(t)\)</span> la expresión del ejercicio 23.16 con <span class="math inline">\(F_s=1\)</span>, para <span class="math inline">\(t\ge0\)</span>, y fijemos <span class="math inline">\(S(t)=0\)</span> para <span class="math inline">\(t&lt;0\)</span>. Entonces <span class="math inline">\(x(t)=F_s[S(t)-S(t-\tau)]\)</span>. El primer término enciende la fuerza; el segundo añade un escalón opuesto cuando se apaga. Como <span class="math inline">\(S(0)=S'(0)=0\)</span>, introducir el segundo término en <span class="math inline">\(\tau\)</span> no genera saltos de posición ni de velocidad. La aceleración sí cambia en una cantidad <span class="math inline">\(-F_s/m\)</span>, coherente con el salto de la fuerza.</p>
+<p><strong>Solución del ejercicio 23.19.</strong></p>
 <p>Tenemos <span class="math inline">\(d=9-4=5\)</span>, <span class="math inline">\(b\Omega=4\)</span> y <span class="math inline">\(D=41\)</span>. Así</p>
-<p><span class="math display">\[
-x_s=\frac{20}{41}\cos2t+\frac{16}{41}\sin2t,
-\qquad A=\frac4{\sqrt{41}},\quad
-\vartheta=\arctan(4/5)\approx0{,}67474.
-\]</span></p>
+<p><span class="math display">\[x_s=\frac{20}{41}\cos2t+\frac{16}{41}\sin2t, \qquad A=\frac4{\sqrt{41}},\quad \vartheta=\arctan(4/5)\approx0{,}67474.\]</span></p>
 <p>La fase está en el primer cuadrante porque ambos componentes que la definen son positivos. Reagrupar como <span class="math inline">\(A\cos(2t-\vartheta)\)</span> reproduce los dos coeficientes y verifica la convención de retraso.</p>
-</section>
-<section id="fpm-i-23-e20" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e20">FPM-I-23-E20</h3>
+<p><strong>Solución del ejercicio 23.20.</strong></p>
 <p>Con <span class="math inline">\(\Omega=4\)</span>, <span class="math inline">\(d=9-16=-7\)</span> y <span class="math inline">\(b\Omega=8\)</span>. La fase correcta es <span class="math inline">\(\vartheta=\operatorname{atan2}(8,-7)\approx2{,}28963\)</span> radianes, en el segundo cuadrante. Usar <span class="math inline">\(\arctan(8/(-7))\)</span> devuelve un ángulo negativo, separado del correcto por <span class="math inline">\(\pi\)</span>. Con amplitud positiva invertiría el signo de toda la respuesta particular. Debe usarse la información de los dos componentes, no sólo su cociente.</p>
-</section>
-<section id="fpm-i-23-e21" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e21">FPM-I-23-E21</h3>
-<p>Tomemos <span class="math inline">\(m=k=1\)</span> y <span class="math inline">\(b=\sqrt3\)</span>, de modo que <span class="math inline">\(\omega_0=1\)</span> y <span class="math inline">\(\beta=\sqrt3/2\)</span>. Como <span class="math inline">\(\beta&lt;1\)</span>, la frecuencia libre amortiguada es <span class="math inline">\(\omega_d=1/2\)</span> y las soluciones libres no nulas oscilan. Pero <span class="math inline">\(\beta&gt;1/\sqrt2\)</span>, así que P13 prueba que la amplitud forzada decrece para toda frecuencia positiva. La oscilación libre y el pico de desplazamiento son propiedades diferentes.</p>
-</section>
-<section id="fpm-i-23-e22" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e22">FPM-I-23-E22</h3>
+<p><strong>Solución del ejercicio 23.21.</strong></p>
+<p>Tomemos <span class="math inline">\(m=k=1\)</span> y <span class="math inline">\(b=\sqrt3\)</span>, de modo que <span class="math inline">\(\omega_0=1\)</span> y <span class="math inline">\(\beta=\sqrt3/2\)</span>. Como <span class="math inline">\(\beta&lt;1\)</span>, la frecuencia libre amortiguada es <span class="math inline">\(\omega_d=1/2\)</span> y las soluciones libres no nulas oscilan. Pero <span class="math inline">\(\beta&gt;1/\sqrt2\)</span>, así que proposición 23.13 prueba que la amplitud forzada decrece para toda frecuencia positiva. La oscilación libre y el pico de desplazamiento son propiedades diferentes.</p>
+<p><strong>Solución del ejercicio 23.22.</strong></p>
 <p>La frecuencia del pico de desplazamiento es <span class="math inline">\(\sqrt{25-2}=\sqrt{23}\approx4{,}79583\)</span>. La frecuencia libre amortiguada es <span class="math inline">\(\sqrt{25-1}=\sqrt{24}\approx4{,}89898\)</span>. La de máxima potencia es <span class="math inline">\(\omega_0=5\)</span>, todas en <span class="math inline">\(\mathrm{s}^{-1}\)</span>. Por tanto <span class="math inline">\(\Omega_r&lt;\omega_d&lt;\omega_0\)</span>. Las tres se acercan cuando <span class="math inline">\(\beta/\omega_0\)</span> tiende a cero.</p>
-</section>
-<section id="fpm-i-23-e23" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e23">FPM-I-23-E23</h3>
-<p>En régimen estacionario, el trabajo por ciclo es la potencia media multiplicada por <span class="math inline">\(T_\Omega\)</span>. P14 da <span class="math inline">\(W=(b\Omega^2A^2/2)(2\pi/\Omega)=\pi b\Omega A^2\)</span>. En <span class="math inline">\(\Omega=\omega_0\)</span>, la amplitud es <span class="math inline">\(F_0/(b\omega_0)\)</span> y por tanto <span class="math inline">\(W=\pi F_0^2/(b\omega_0)\)</span>. Coincide con la energía disipada durante ese ciclo, porque la energía almacenada vuelve al mismo valor.</p>
-</section>
-<section id="fpm-i-23-e24" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e24">FPM-I-23-E24</h3>
+<p><strong>Solución del ejercicio 23.23.</strong></p>
+<p>En régimen estacionario, el trabajo por ciclo es la potencia media multiplicada por <span class="math inline">\(T_\Omega\)</span>. Proposición 23.14 da <span class="math inline">\(W=(b\Omega^2A^2/2)(2\pi/\Omega)=\pi b\Omega A^2\)</span>. En <span class="math inline">\(\Omega=\omega_0\)</span>, la amplitud es <span class="math inline">\(F_0/(b\omega_0)\)</span> y por tanto <span class="math inline">\(W=\pi F_0^2/(b\omega_0)\)</span>. Coincide con la energía disipada durante ese ciclo, porque la energía almacenada vuelve al mismo valor.</p>
+<p><strong>Solución del ejercicio 23.24.</strong></p>
 <p>Las frecuencias son <span class="math inline">\(\sqrt{101}-1\approx9{,}04988\)</span> y <span class="math inline">\(\sqrt{101}+1\approx11{,}04988\)</span>. Su producto es <span class="math inline">\(101-1=100\)</span>, de modo que su media geométrica es <span class="math inline">\(10=\omega_0\)</span>. Su media aritmética es <span class="math inline">\(\sqrt{101}&gt;10\)</span>. Los extremos de media potencia tienen separación exacta <span class="math inline">\(2\beta\)</span>, pero no están dispuestos simétricamente alrededor de <span class="math inline">\(\omega_0\)</span> en una escala lineal.</p>
-</section>
-<section id="fpm-i-23-e25" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e25">FPM-I-23-E25</h3>
+<p><strong>Solución del ejercicio 23.25.</strong></p>
 <p>Sea <span class="math inline">\(c=F_0/(2m\omega_0)\)</span>. Derivar <span class="math inline">\(x=ct\sin\omega_0t\)</span> da <span class="math inline">\(\dot x=c\sin\omega_0t+c\omega_0t\cos\omega_0t\)</span> y <span class="math inline">\(\ddot x=2c\omega_0\cos\omega_0t-c\omega_0^2t\sin\omega_0t\)</span>. Así <span class="math inline">\(m\ddot x+kx=F_0\cos\omega_0t\)</span> y los datos son cero. En <span class="math inline">\(t_n\)</span>, <span class="math inline">\(x=0\)</span> y <span class="math inline">\(\dot x=c\omega_0t_n(-1)^n\)</span>, por lo que</p>
-<p><span class="math display">\[
-E(t_n)=\frac{F_0^2t_n^2}{8m}.
-\]</span></p>
+<p><span class="math display">\[E(t_n)=\frac{F_0^2t_n^2}{8m}.\]</span></p>
 <p>Esta sucesión exhibe el crecimiento cuadrático energético del modelo resonante sin disipación.</p>
-</section>
-<section id="fpm-i-23-e26" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e26">FPM-I-23-E26</h3>
+<p><strong>Solución del ejercicio 23.26.</strong></p>
 <p>La suma es</p>
-<p><span class="math display">\[
-A\cos(2\pi440t)+A\cos(2\pi442t)
-=2A\cos(2\pi t)\cos(2\pi441t).
-\]</span></p>
+<p><span class="math display">\[A\cos(2\pi440t)+A\cos(2\pi442t) =2A\cos(2\pi t)\cos(2\pi441t).\]</span></p>
 <p>El módulo de la envolvente <span class="math inline">\(2A|\cos2\pi t|\)</span> tiene máximos separados por <span class="math inline">\(0{,}5\,\mathrm s\)</span>, por lo que la frecuencia de batido es <span class="math inline">\(2\,\mathrm{Hz}\)</span>. El factor firmado <span class="math inline">\(\cos2\pi t\)</span> tiene período de un segundo; su signo negativo representa una inversión de fase de la oscilación rápida, no una amplitud física negativa.</p>
-</section>
-<section id="fpm-i-23-e27" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e27">FPM-I-23-E27</h3>
+<p><strong>Solución del ejercicio 23.27.</strong></p>
 <p>Si <span class="math inline">\(m\ddot x+b\dot x+kx=0\)</span>, entonces para todo <span class="math inline">\(c&gt;0\)</span> también <span class="math inline">\((cm)\ddot x+(cb)\dot x+(ck)x=0\)</span>. Los mismos datos iniciales producen la misma trayectoria en una familia infinita de ternas físicas. En el mejor caso la observación determina las razones <span class="math inline">\(b/m\)</span> y <span class="math inline">\(k/m\)</span>, pero no una escala común. Algunas trayectorias especiales pueden ofrecer aún menos información; la solución nula, por ejemplo, es compatible con cualquier terna positiva.</p>
-</section>
-<section id="fpm-i-23-e28" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e28">FPM-I-23-E28</h3>
-<p>Se obtiene <span class="math inline">\(\omega_0^2=\omega_d^2+\beta^2=15{,}75+0{,}25=16\,\mathrm{s}^{-2}\)</span>. El dato estático da <span class="math inline">\(k=8/0{,}02=400\,\mathrm{N/m}\)</span>. Después <span class="math inline">\(m=k/\omega_0^2=25\,\mathrm{kg}\)</span> y <span class="math inline">\(b=2m\beta=25\,\mathrm{kg/s}\)</span>. Por último <span class="math inline">\(Q=\omega_0/(2\beta)=4\)</span>. La fuerza estática proporciona la escala de rigidez que faltaba en E27.</p>
-</section>
-<section id="fpm-i-23-e29" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e29">FPM-I-23-E29</h3>
-<p>La fuerza equivalente de la ecuación relativa es <span class="math inline">\(m\Omega^2Y\cos\Omega t\)</span>. Aplicando §10,</p>
-<p><span class="math display">\[
-\frac ZY=\frac{m\Omega^2}{\sqrt{(k-m\Omega^2)^2+b^2\Omega^2}}.
-\]</span></p>
+<p><strong>Solución del ejercicio 23.28.</strong></p>
+<p>Se obtiene <span class="math inline">\(\omega_0^2=\omega_d^2+\beta^2=15{,}75+0{,}25=16\,\mathrm{s}^{-2}\)</span>. El dato estático da <span class="math inline">\(k=8/0{,}02=400\,\mathrm{N/m}\)</span>. Después <span class="math inline">\(m=k/\omega_0^2=25\,\mathrm{kg}\)</span> y <span class="math inline">\(b=2m\beta=25\,\mathrm{kg/s}\)</span>. Por último <span class="math inline">\(Q=\omega_0/(2\beta)=4\)</span>. La fuerza estática proporciona la escala de rigidez que faltaba en el ejercicio 23.27.</p>
+<p><strong>Solución del ejercicio 23.29.</strong></p>
+<p>La fuerza equivalente de la ecuación relativa es <span class="math inline">\(m\Omega^2Y\cos\Omega t\)</span>. Aplicando §10, <span class="math inline">\(\frac ZY=\frac{m\Omega^2}{\sqrt{(k-m\Omega^2)^2+b^2\Omega^2}}.\)</span></p>
 <p>Para <span class="math inline">\(\Omega\to0\)</span>, <span class="math inline">\(Z/Y\sim m\Omega^2/k\to0\)</span>: el desplazamiento relativo es pequeño y la masa sigue aproximadamente al soporte. Para <span class="math inline">\(\Omega\to\infty\)</span>, dividir por <span class="math inline">\(m\Omega^2\)</span> muestra que <span class="math inline">\(Z/Y\to1\)</span>. En ese límite la coordenada relativa tiene fase próxima a <span class="math inline">\(\pi\)</span> respecto de <span class="math inline">\(y\)</span>, de modo que <span class="math inline">\(z\simeq-y\)</span> y la posición absoluta <span class="math inline">\(x=y+z\)</span> es pequeña. Las amplitudes relativas y absolutas expresan observaciones distintas.</p>
+<p><strong>Solución del ejercicio 23.30.</strong></p>
+<p>Proposición 23.4 implica que <span class="math inline">\(r(x(t),v(t))\)</span> es constante. Para cualquier <span class="math inline">\(\varepsilon&gt;0\)</span>, un estado con <span class="math inline">\(r(x_0,v_0)&lt;\varepsilon\)</span> permanece dentro de esa misma bola escalada para todo tiempo: el equilibrio es estable. Pero un estado inicial no nulo tiene <span class="math inline">\(r&gt;0\)</span> constante y no converge al origen, de modo que falta atracción y el equilibrio no es asintóticamente estable. Después de fijar unidades para ambos ejes, la norma escalada y la euclídea satisfacen cotas de la forma <span class="math inline">\(c\|(x,v)\|\le r(x,v)\le C\|(x,v)\|\)</span>, con <span class="math inline">\(c,C&gt;0\)</span>, porque el cambio <span class="math inline">\((x,v)\mapsto(x,v/\omega_0)\)</span> es lineal e invertible. Por ello expresan la misma noción local de estabilidad. La conservación energética justifica permanencia cerca del equilibrio; la disipación de la proposición 23.9 añade convergencia.</p>
+<p><span id="notas-y-lecturas"></span></p>
 </section>
-<section id="fpm-i-23-e30" class="level3">
-<h3 class="anchored" data-anchor-id="fpm-i-23-e30">FPM-I-23-E30</h3>
-<p>P04 implica que <span class="math inline">\(r(x(t),v(t))\)</span> es constante. Para cualquier <span class="math inline">\(\varepsilon&gt;0\)</span>, un estado con <span class="math inline">\(r(x_0,v_0)&lt;\varepsilon\)</span> permanece dentro de esa misma bola escalada para todo tiempo: el equilibrio es estable. Pero un estado inicial no nulo tiene <span class="math inline">\(r&gt;0\)</span> constante y no converge al origen, de modo que falta atracción y el equilibrio no es asintóticamente estable. Después de fijar unidades para ambos ejes, la norma escalada y la euclídea satisfacen cotas de la forma <span class="math inline">\(c\|(x,v)\|\le r(x,v)\le C\|(x,v)\|\)</span>, con <span class="math inline">\(c,C&gt;0\)</span>, porque el cambio <span class="math inline">\((x,v)\mapsto(x,v/\omega_0)\)</span> es lineal e invertible. Por ello expresan la misma noción local de estabilidad. La conservación energética justifica permanencia cerca del equilibrio; la disipación de P09 añade convergencia.</p>
-</section>
-</section>
-<section id="notas-y-lecturas" class="level2">
-<h2 class="anchored" data-anchor-id="notas-y-lecturas">Notas y lecturas</h2>
+<section id="fispm-c23-notas-y-lecturas" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="fispm-c23-notas-y-lecturas">Notas y lecturas</h2>
 <ol type="1">
-<li>La distinción entre fuerza de rozamiento seco y resistencia proporcional a la velocidad puede contrastarse en David Tong, <em>Dynamics and Relativity</em>, §§2.5.1–2.5.3, pp.&nbsp;impresas 31–34. En §2.5.3, su coeficiente de fuerza resistente se denota por <span class="math inline">\(\gamma\)</span> y su tasa de amortiguamiento por <span class="math inline">\(\alpha\)</span>. Aquí corresponden a <span class="math inline">\(b\)</span> y <span class="math inline">\(\beta\)</span>. <a href="https://www.damtp.cam.ac.uk/user/tong/relativity/dynrel.pdf">Texto del autor, University of Cambridge</a>.</li>
-<li>Para acompañar el estudio de transitorios y respuesta sinusoidal, el curso de Yen-Jie Lee, <em>Physics III: Vibrations and Waves</em>, MIT OpenCourseWare, otoño de 2016, ofrece la lección 3, «Driven Oscillators, Transient Phenomena, Resonance», con materiales de lectura y demostraciones. <a href="https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-3/">Página de la lección</a>. Las demostraciones, la secuencia y los ejercicios de este capítulo se desarrollan en el propio texto; estas lecturas permiten ampliar el estudio.</li>
-<li>El factor <span class="math inline">\(Q\)</span> se ha definido aquí mediante los coeficientes de la ecuación. Su identificación con <span class="math inline">\(\omega_0/\Delta\Omega\)</span> se demuestra en P15 para la potencia media y fuerza de amplitud fija. Las interpretaciones mediante pérdida relativa de energía por ciclo requieren distinguir una pérdida finita de su aproximación de amortiguamiento débil.</li>
+<li><p>La distinción entre fuerza de rozamiento seco y resistencia proporcional a la velocidad puede contrastarse en David Tong, <em>Dynamics and Relativity</em>, §§2.5.1–2.5.3, pp.&nbsp;impresas 31–34. En §2.5.3, su coeficiente de fuerza resistente se denota por <span class="math inline">\(\gamma\)</span> y su tasa de amortiguamiento por <span class="math inline">\(\alpha\)</span>. Aquí corresponden a <span class="math inline">\(b\)</span> y <span class="math inline">\(\beta\)</span>. <a href="https://www.damtp.cam.ac.uk/user/tong/relativity/dynrel.pdf">Texto del autor, University of Cambridge</a>.</p></li>
+<li><p>Para acompañar el estudio de transitorios y respuesta sinusoidal, el curso de Yen-Jie Lee, <em>Physics III: Vibrations and Waves</em>, MIT OpenCourseWare, otoño de 2016, ofrece la lección 3, «Driven Oscillators, Transient Phenomena, Resonance», con materiales de lectura y demostraciones. <a href="https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-3/">Página de la lección</a>. Las demostraciones, la secuencia y los ejercicios de este capítulo se desarrollan en el propio texto; estas lecturas permiten ampliar el estudio.</p></li>
+<li><p>El factor <span class="math inline">\(Q\)</span> se ha definido aquí mediante los coeficientes de la ecuación. Su identificación con <span class="math inline">\(\omega_0/\Delta\Omega\)</span> se demuestra en la proposición 23.15 para la potencia media y fuerza de amplitud fija. Las interpretaciones mediante pérdida relativa de energía por ciclo requieren distinguir una pérdida finita de su aproximación de amortiguamiento débil.</p></li>
 </ol>
-<hr>
-<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-22-cuerpo-rigido-dinamica.html">Capítulo 22</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-24-oscilaciones-acopladas-y-modos-normales.html">Capítulo 24</a></p>
 
 
 </section>
