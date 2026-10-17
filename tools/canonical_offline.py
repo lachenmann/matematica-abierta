@@ -269,7 +269,10 @@ class CanonicalAssets:
             if not url:
                 return tag
             return tag.replace(url, escape(self.resource(unescape(url), base), quote=True))
-        main = re.sub(r"<(?:img|a)\b[^>]*>", image_resource, main, flags=re.I)
+        # A mathematical inequality may contain ">" inside a quoted alt/title.
+        # Match the complete start tag before parsing and remapping its URL.
+        main = re.sub(r"""<(?:img|a)\b(?:[^>"']|"[^"]*"|'[^']*')*>""",
+                      image_resource, main, flags=re.I)
         lightbox_setup = [m.group(0) for m in _SCRIPT_RE.finditer(text)
                           if m.group(2).lstrip().startswith("var lightboxQuarto = GLightbox(")]
         if len(lightbox_setup) > 1:
