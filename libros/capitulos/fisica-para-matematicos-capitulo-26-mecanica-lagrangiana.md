@@ -197,7 +197,17 @@ Sean dos masas puntuales $m_1,m_2>0$, barras rígidas sin masa de longitudes $\e
 
 []{#fig:I-26-N01}
 
-![**Figura 26.1.** Los dos ángulos se miden respecto de la vertical descendente. La segunda masa depende de ambos: $x_2=\ell_1\sin\theta_1+\ell_2\sin\theta_2$, $y_2=-\ell_1\cos\theta_1-\ell_2\cos\theta_2$. Véase §[26.6](#fispm-c26-el-puxe9ndulo-doble-y-su-matriz-de-aceleraciones).](/assets/books/fispm/v04/I-26-N01.svg "fig:"){.fpm-v04-figure fig-alt="Coordenadas del péndulo doble" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-26-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-26-N01.svg" class="lightbox" data-gallery="fpm-v04-c26"><img src="/assets/books/fispm/v04/I-26-N01.svg" alt="Coordenadas del péndulo doble. Diagrama del capítulo 26; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="358" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 26.1.** Los dos ángulos se miden respecto de la vertical descendente. La segunda masa depende de ambos: $x_2=\ell_1\sin\theta_1+\ell_2\sin\theta_2$, $y_2=-\ell_1\cos\theta_1-\ell_2\cos\theta_2$. Véase §[26.6](#fispm-c26-el-puxe9ndulo-doble-y-su-matriz-de-aceleraciones).
+
+</figcaption>
+
+</figure>
 
 $$\mathbf r_1=(\ell_1\sin\theta_1,-\ell_1\cos\theta_1), \qquad \mathbf r_2=\mathbf r_1+(\ell_2\sin\theta_2,-\ell_2\cos\theta_2).$$
 
@@ -237,11 +247,31 @@ Un carro de masa $M>0$ puede moverse horizontalmente y sostiene un péndulo de m
 
 []{#fig:I-26-R01}
 
-![**Figura 26.2.** Para un péndulo sobre un carro, la posición de la masa es $(X+\ell\sin\theta,-\ell\cos\theta)$. Al derivarla aparece un término cinético cruzado proporcional a $\dot X\dot\theta\cos\theta$. Las coordenadas no generan energías cinéticas independientes. Véase §[26.7](#fispm-c26-un-apoyo-que-tambiuxe9n-es-una-incuxf3gnita).](/assets/books/fispm/v04/I-26-R01.svg "fig:"){.fpm-v04-figure fig-alt="El apoyo móvil acopla las coordenadas" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-26-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-26-R01.svg" class="lightbox" data-gallery="fpm-v04-c26"><img src="/assets/books/fispm/v04/I-26-R01.svg" alt="El apoyo móvil acopla las coordenadas. Diagrama del capítulo 26; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="264" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 26.2.** Para un péndulo sobre un carro, la posición de la masa es $(X+\ell\sin\theta,-\ell\cos\theta)$. Al derivarla aparece un término cinético cruzado proporcional a $\dot X\dot\theta\cos\theta$. Las coordenadas no generan energías cinéticas independientes. Véase §[26.7](#fispm-c26-un-apoyo-que-tambiuxe9n-es-una-incuxf3gnita).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-26-N02}
 
-![**Figura 26.3.** La posición del péndulo combina el desplazamiento del carro y su ángulo: $x=X+\ell\sin\theta$. Si el carro es libre, $X$ es una coordenada dinámica y no un dato prescrito. Véase §[26.7](#fispm-c26-un-apoyo-que-tambiuxe9n-es-una-incuxf3gnita).](/assets/books/fispm/v04/I-26-N02.svg "fig:"){.fpm-v04-figure fig-alt="Apoyo como incógnita" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-26-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-26-N02.svg" class="lightbox" data-gallery="fpm-v04-c26"><img src="/assets/books/fispm/v04/I-26-N02.svg" alt="Apoyo como incógnita. Diagrama del capítulo 26; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="270" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 26.3.** La posición del péndulo combina el desplazamiento del carro y su ángulo: $x=X+\ell\sin\theta$. Si el carro es libre, $X$ es una coordenada dinámica y no un dato prescrito. Véase §[26.7](#fispm-c26-un-apoyo-que-tambiuxe9n-es-una-incuxf3gnita).
+
+</figcaption>
+
+</figure>
 
 $$T=\frac12(M+m)\dot x^2+m\ell\cos\theta\dot x\dot\theta +\frac12m\ell^2\dot\theta^2, \qquad V=-mg\ell\cos\theta.$$
 
@@ -275,7 +305,17 @@ Un aro vertical de radio $\ell$ gira alrededor de su diámetro vertical con velo
 
 []{#fig:I-26-N03}
 
-![**Figura 26.4.** Para una guía que gira con ángulo prescrito $\Omega t$, la cuenta tiene posición $(r\cos\Omega t,r\sin\Omega t)$. La coordenada radial es dinámica y la orientación viene impuesta por el motor. Véase §[26.8](#fispm-c26-una-guuxeda-que-gira-mediante-un-motor).](/assets/books/fispm/v04/I-26-N03.svg "fig:"){.fpm-v04-figure fig-alt="Coordenada en guía motorizada" width="341px" fig-cap=""}
+<figure id="fig-fpm-v04-i-26-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-26-N03.svg" class="lightbox" data-gallery="fpm-v04-c26"><img src="/assets/books/fispm/v04/I-26-N03.svg" alt="Coordenada en guía motorizada. Diagrama del capítulo 26; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="341" height="223" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 26.4.** Para una guía que gira con ángulo prescrito $\Omega t$, la cuenta tiene posición $(r\cos\Omega t,r\sin\Omega t)$. La coordenada radial es dinámica y la orientación viene impuesta por el motor. Véase §[26.8](#fispm-c26-una-guuxeda-que-gira-mediante-un-motor).
+
+</figcaption>
+
+</figure>
 
 $$\mathbf r=(\ell\sin\theta\cos\Omega t, \ell\sin\theta\sin\Omega t,-\ell\cos\theta).$$
 

@@ -165,7 +165,17 @@ Tomar el producto escalar de $\mathbf e$ con la dirección radial permite leer d
 
 []{#fig:I-18-N02}
 
-![**Figura 18.1.** Con el mismo semilado recto $p=1$, se comparan $e=1/2$ (continua), $e=1$ (discontinua) y $e=3/2$ (punteada). Las ramas abiertas se muestran sólo dentro de un intervalo angular admisible. Véase §[18.3](#fispm-c18-la-ecuaciuxf3n-orbital).](/assets/books/fispm/v04/I-18-N02.svg "fig:"){.fpm-v04-figure fig-alt="Tres regímenes de una cónica" width="371px" fig-cap=""}
+<figure id="fig-fpm-v04-i-18-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-18-N02.svg" class="lightbox" data-gallery="fpm-v04-c18"><img src="/assets/books/fispm/v04/I-18-N02.svg" alt="Tres regímenes de una cónica. Diagrama del capítulo 18; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="371" height="332" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 18.1.** Con el mismo semilado recto $p=1$, se comparan $e=1/2$ (continua), $e=1$ (discontinua) y $e=3/2$ (punteada). Las ramas abiertas se muestran sólo dentro de un intervalo angular admisible. Véase §[18.3](#fispm-c18-la-ecuaciuxf3n-orbital).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c18-d0003}
 
@@ -215,7 +225,17 @@ Para $0\leq e<1$, completar el cuadrado convierte la ecuación orbital en la for
 
 []{#fig:I-18-N01}
 
-![**Figura 18.2.** La órbita $x=2\cos E-1$, $y=\sqrt3\sin E$ tiene semiejes $2,\sqrt3$ y un foco en el origen. El centro geométrico está en $(-1,0)$; no coincide con el centro de fuerza. Véase §[18.4](#fispm-c18-la-elipse-y-sus-focos).](/assets/books/fispm/v04/I-18-N01.svg "fig:"){.fpm-v04-figure fig-alt="El centro y el foco" width="404px" fig-cap=""}
+<figure id="fig-fpm-v04-i-18-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-18-N01.svg" class="lightbox" data-gallery="fpm-v04-c18"><img src="/assets/books/fispm/v04/I-18-N01.svg" alt="El centro y el foco. Diagrama del capítulo 18; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="404" height="308" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 18.2.** La órbita $x=2\cos E-1$, $y=\sqrt3\sin E$ tiene semiejes $2,\sqrt3$ y un foco en el origen. El centro geométrico está en $(-1,0)$; no coincide con el centro de fuerza. Véase §[18.4](#fispm-c18-la-elipse-y-sus-focos).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c18-d0004}
 
@@ -437,7 +457,17 @@ La conservación angular implica una velocidad areolar constante. Para una elips
 
 []{#fig:I-18-R01}
 
-![**Figura 18.3.** En una órbita kepleriana, el radio desde el foco gravitatorio barre áreas iguales en tiempos iguales. El foco no coincide con el centro geométrico de una elipse excéntrica. Los dos radios señalan un sector, sin asignarle aquí una duración numérica. Véase §[18.8](#fispm-c18-uxe1rea-y-peruxedodo-las-leyes-de-kepler).](/assets/books/fispm/v04/I-18-R01.svg "fig:"){.fpm-v04-figure fig-alt="La ley de áreas se refiere al foco de fuerza" width="430px" fig-cap=""}
+<figure id="fig-fpm-v04-i-18-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-18-R01.svg" class="lightbox" data-gallery="fpm-v04-c18"><img src="/assets/books/fispm/v04/I-18-R01.svg" alt="La ley de áreas se refiere al foco de fuerza. Diagrama del capítulo 18; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="430" height="285" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 18.3.** En una órbita kepleriana, el radio desde el foco gravitatorio barre áreas iguales en tiempos iguales. El foco no coincide con el centro geométrico de una elipse excéntrica. Los dos radios señalan un sector, sin asignarle aquí una duración numérica. Véase §[18.8](#fispm-c18-uxe1rea-y-peruxedodo-las-leyes-de-kepler).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c18-p0012}
 
@@ -553,7 +583,17 @@ La función $u-e\sin u$ no se invierte en general mediante una combinación elem
 
 []{#fig:I-18-N03}
 
-![**Figura 18.4.** Para $e=1/2$, $M=E-\tfrac12\sin E$ es estrictamente creciente: $dM/dE\ge1/2$. La recta discontinua $M=E$ permite ver la diferencia entre anomalía media y excéntrica. Véase §[18.10](#fispm-c18-resolver-la-ecuaciuxf3n-de-kepler-con-control-del-error).](/assets/books/fispm/v04/I-18-N03.svg "fig:"){.fpm-v04-figure fig-alt="Tiempo y anomalía" width="428px" fig-cap=""}
+<figure id="fig-fpm-v04-i-18-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-18-N03.svg" class="lightbox" data-gallery="fpm-v04-c18"><img src="/assets/books/fispm/v04/I-18-N03.svg" alt="Tiempo y anomalía. Diagrama del capítulo 18; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="428" height="247" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 18.4.** Para $e=1/2$, $M=E-\tfrac12\sin E$ es estrictamente creciente: $dM/dE\ge1/2$. La recta discontinua $M=E$ permite ver la diferencia entre anomalía media y excéntrica. Véase §[18.10](#fispm-c18-resolver-la-ecuaciuxf3n-de-kepler-con-control-del-error).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c18-p0016}
 

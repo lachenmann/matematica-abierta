@@ -51,7 +51,17 @@ Desde lejos, el encuentro puede caracterizarse por una rapidez relativa $v_\inft
 
 []{#fig:I-19-N01}
 
-![**Figura 19.1.** El parámetro $b$ es la separación perpendicular entre la recta asintótica incidente y el centro. La curva de salida es un esquema de desviación repulsiva; no pretende ser una solución cuantitativa. Véase §[19.1](#fispm-c19-preparar-un-encuentro-y-medir-su-resultado).](/assets/books/fispm/v04/I-19-N01.svg "fig:"){.fpm-v04-figure fig-alt="Parámetro de impacto" width="434px" fig-cap=""}
+<figure id="fig-fpm-v04-i-19-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-19-N01.svg" class="lightbox" data-gallery="fpm-v04-c19"><img src="/assets/books/fispm/v04/I-19-N01.svg" alt="Parámetro de impacto. Diagrama del capítulo 19; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="434" height="252" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 19.1.** El parámetro $b$ es la separación perpendicular entre la recta asintótica incidente y el centro. La curva de salida es un esquema de desviación repulsiva; no pretende ser una solución cuantitativa. Véase §[19.1](#fispm-c19-preparar-un-encuentro-y-medir-su-resultado).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c19-d0001}
 
@@ -217,11 +227,31 @@ El potencial $U=\pm\kappa/r$, con $\kappa>0$, ofrece un encuentro cuya desviaci�
 
 []{#fig:I-19-R01}
 
-![**Figura 19.2.** En dispersión por una fuerza inversa del cuadrado, $b=a\cot(\chi/2)$, con $a>0$ fijado por el acoplamiento y la energía lejana. Los encuentros de mayor parámetro de impacto producen menor desviación, bajo las hipótesis de esa ley. Véase §[19.4](#fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto).](/assets/books/fispm/v04/I-19-R01.svg "fig:"){.fpm-v04-figure fig-alt="Ángulo y parámetro de impacto" width="438px" fig-cap=""}
+<figure id="fig-fpm-v04-i-19-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-19-R01.svg" class="lightbox" data-gallery="fpm-v04-c19"><img src="/assets/books/fispm/v04/I-19-R01.svg" alt="Ángulo y parámetro de impacto. Diagrama del capítulo 19; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="438" height="253" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 19.2.** En dispersión por una fuerza inversa del cuadrado, $b=a\cot(\chi/2)$, con $a>0$ fijado por el acoplamiento y la energía lejana. Los encuentros de mayor parámetro de impacto producen menor desviación, bajo las hipótesis de esa ley. Véase §[19.4](#fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-19-N03}
 
-![**Figura 19.3.** Para la dispersión coulombiana repulsiva, en unidades con $\kappa/(\mu v_\infty^2)=1$, $\chi=2\arctan(1/b)$. Los encuentros más lejanos se desvían menos. Véase §[19.4](#fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto).](/assets/books/fispm/v04/I-19-N03.svg "fig:"){.fpm-v04-figure fig-alt="Ángulo y parámetro de impacto" width="432px" fig-cap=""}
+<figure id="fig-fpm-v04-i-19-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-19-N03.svg" class="lightbox" data-gallery="fpm-v04-c19"><img src="/assets/books/fispm/v04/I-19-N03.svg" alt="Ángulo y parámetro de impacto. Diagrama del capítulo 19; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="432" height="246" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 19.3.** Para la dispersión coulombiana repulsiva, en unidades con $\kappa/(\mu v_\infty^2)=1$, $\chi=2\arctan(1/b)$. Los encuentros más lejanos se desvían menos. Véase §[19.4](#fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c19-d0004}
 
@@ -335,7 +365,17 @@ Un haz uniforme prepara distintos parámetros de impacto con una distribución p
 
 []{#fig:I-19-N02}
 
-![**Figura 19.4.** En una preparación axialmente simétrica, un anillo de radios $b,b+db$ tiene área diferencial $d\sigma=2\pi b\,db$. Es un área del haz incidente, no una superficie de la trayectoria. Véase §[19.6](#fispm-c19-secciuxf3n-eficaz-como-uxe1rea-de-preparaciuxf3n).](/assets/books/fispm/v04/I-19-N02.svg "fig:"){.fpm-v04-figure fig-alt="Área de preparación" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-19-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-19-N02.svg" class="lightbox" data-gallery="fpm-v04-c19"><img src="/assets/books/fispm/v04/I-19-N02.svg" alt="Área de preparación. Diagrama del capítulo 19; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="425" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 19.4.** En una preparación axialmente simétrica, un anillo de radios $b,b+db$ tiene área diferencial $d\sigma=2\pi b\,db$. Es un área del haz incidente, no una superficie de la trayectoria. Véase §[19.6](#fispm-c19-secciuxf3n-eficaz-como-uxe1rea-de-preparaciuxf3n).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c19-d0005}
 

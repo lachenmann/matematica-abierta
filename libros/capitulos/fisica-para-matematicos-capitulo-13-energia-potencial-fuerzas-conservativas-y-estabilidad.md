@@ -215,7 +215,17 @@ Un campo potencial realiza el mismo trabajo sobre todos los caminos que comparte
 
 []{#fig:I-13-N02}
 
-![**Figura 13.1.** Para $F=-\nabla U$, los dos caminos con extremos $a,b$ dan $W=U(a)-U(b)$. La igualdad requiere un potencial definido en el dominio considerado. Véase §[13.4](#fispm-c13-independencia-del-camino-y-circulaciuxf3n).](/assets/books/fispm/v04/I-13-N02.svg "fig:"){.fpm-v04-figure fig-alt="Dos caminos, un trabajo" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-13-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-13-N02.svg" class="lightbox" data-gallery="fpm-v04-c13"><img src="/assets/books/fispm/v04/I-13-N02.svg" alt="Dos caminos, un trabajo. Diagrama del capítulo 13; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="332" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 13.1.** Para $F=-\nabla U$, los dos caminos con extremos $a,b$ dan $W=U(a)-U(b)$. La igualdad requiere un potencial definido en el dominio considerado. Véase §[13.4](#fispm-c13-independencia-del-camino-y-circulaciuxf3n).
+
+</figcaption>
+
+</figure>
 
 Tomemos un abierto $\Omega\subset\mathbb R^d$ conectado por caminos $C^1$ por tramos y un campo continuo $\mathbf F$. Cada curva considerada queda íntegramente dentro de $\Omega$. La integral conserva la orientación; invertirla cambia el signo, y concatenar recorridos suma sus trabajos, como se probó en el capítulo 12.
 
@@ -347,11 +357,31 @@ La información diferencial describe el campo cerca de cada punto ordinario. Una
 
 []{#fig:I-13-R02}
 
-![**Figura 13.2.** En $\mathbb R^2\setminus\{0\}$, el campo $F=(-y,x)/(x^2+y^2)$ tiene rotacional nulo localmente y circulación $2\pi$ en un círculo positivo. No admite allí un potencial escalar global monovaluado. Véase §[13.6](#fispm-c13-obstrucciones-globales-y-dominios-perforados).](/assets/books/fispm/v04/I-13-R02.svg "fig:"){.fpm-v04-figure fig-alt="El dominio perforado conserva una obstrucción" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-13-r02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-13-R02.svg" class="lightbox" data-gallery="fpm-v04-c13"><img src="/assets/books/fispm/v04/I-13-R02.svg" alt="El dominio perforado conserva una obstrucción. Diagrama del capítulo 13; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="399" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 13.2.** En $\mathbb R^2\setminus\{0\}$, el campo $F=(-y,x)/(x^2+y^2)$ tiene rotacional nulo localmente y circulación $2\pi$ en un círculo positivo. No admite allí un potencial escalar global monovaluado. Véase §[13.6](#fispm-c13-obstrucciones-globales-y-dominios-perforados).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-13-N03}
 
-![**Figura 13.3.** El campo $F=(-y,x)/(x^2+y^2)$ tiene circulación $2\pi$ sobre un círculo orientado positivamente. Su rotacional local nulo fuera del origen no basta para producir un potencial global. Véase §[13.6](#fispm-c13-obstrucciones-globales-y-dominios-perforados).](/assets/books/fispm/v04/I-13-N03.svg "fig:"){.fpm-v04-figure fig-alt="Un dominio con agujero" width="350px" fig-cap=""}
+<figure id="fig-fpm-v04-i-13-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-13-N03.svg" class="lightbox" data-gallery="fpm-v04-c13"><img src="/assets/books/fispm/v04/I-13-N03.svg" alt="Un dominio con agujero. Diagrama del capítulo 13; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="350" height="302" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 13.3.** El campo $F=(-y,x)/(x^2+y^2)$ tiene circulación $2\pi$ sobre un círculo orientado positivamente. Su rotacional local nulo fuera del origen no basta para producir un potencial global. Véase §[13.6](#fispm-c13-obstrucciones-globales-y-dominios-perforados).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c13-d0006}
 
@@ -531,7 +561,17 @@ Una vez acreditada la conservación de $E=K+U$, el potencial permite excluir pos
 
 []{#fig:I-13-N01}
 
-![**Figura 13.4.** En el ejemplo normalizado $U=(x^2-1)^2$, la energía $E=1/2$ (discontinua) deja dos regiones permitidas separadas por una barrera. Sólo donde $U\le E$ puede ser no negativa la energía cinética. Véase §[13.9](#fispm-c13-paisajes-de-energuxeda-y-regiones-accesibles).](/assets/books/fispm/v04/I-13-N01.svg "fig:"){.fpm-v04-figure fig-alt="Regiones accesibles" width="391px" fig-cap=""}
+<figure id="fig-fpm-v04-i-13-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-13-N01.svg" class="lightbox" data-gallery="fpm-v04-c13"><img src="/assets/books/fispm/v04/I-13-N01.svg" alt="Regiones accesibles. Diagrama del capítulo 13; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="391" height="251" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 13.4.** En el ejemplo normalizado $U=(x^2-1)^2$, la energía $E=1/2$ (discontinua) deja dos regiones permitidas separadas por una barrera. Sólo donde $U\le E$ puede ser no negativa la energía cinética. Véase §[13.9](#fispm-c13-paisajes-de-energuxeda-y-regiones-accesibles).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c13-d0009}
 
@@ -663,7 +703,17 @@ Un mínimo del potencial rodea el equilibrio con una barrera energética. Datos 
 
 []{#fig:I-13-R01}
 
-![**Figura 13.5.** Para $U=2x^2/5$, la fuerza es $F=-4x/5$. A ambos lados del mínimo apunta hacia el origen. Con masa positiva, la energía conserva las perturbaciones pequeñas dentro de niveles cercanos. Véase §[13.11](#fispm-c13-extremos-no-degenerados-en-una-dimensiuxf3n).](/assets/books/fispm/v04/I-13-R01.svg "fig:"){.fpm-v04-figure fig-alt="La fuerza apunta hacia un mínimo cuadrático" width="360px" fig-cap=""}
+<figure id="fig-fpm-v04-i-13-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-13-R01.svg" class="lightbox" data-gallery="fpm-v04-c13"><img src="/assets/books/fispm/v04/I-13-R01.svg" alt="La fuerza apunta hacia un mínimo cuadrático. Diagrama del capítulo 13; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="360" height="252" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 13.5.** Para $U=2x^2/5$, la fuerza es $F=-4x/5$. A ambos lados del mínimo apunta hacia el origen. Con masa positiva, la energía conserva las perturbaciones pequeñas dentro de niveles cercanos. Véase §[13.11](#fispm-c13-extremos-no-degenerados-en-una-dimensiuxf3n).
+
+</figcaption>
+
+</figure>
 
 Trabajaremos con $m\ddot x=-U'(x)$, $U\in C^2(I)$, en un intervalo abierto. La regularidad asegura unicidad local y permite prolongar soluciones que permanecen en un compacto del espacio de estados dentro del dominio. La masa y el marco son los usados en la definición 13.11.
 

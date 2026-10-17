@@ -49,7 +49,17 @@ Dos personas describen el mismo objeto. Una coloca el origen de una regla en el 
 
 []{#fig:I-04-N01}
 
-![**Figura 4.1.** Los puntos son extremos y las flechas son desplazamientos: $\overrightarrow{PQ}+\overrightarrow{QR}=\overrightarrow{PR}$. La identidad no requiere elegir un origen. Véase §[4.1](#fispm-c04-un-punto-no-es-un-vector).](/assets/books/fispm/v04/I-04-N01.svg "fig:"){.fpm-v04-figure fig-alt="Composición de desplazamientos" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-04-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-04-N01.svg" class="lightbox" data-gallery="fpm-v04-c04"><img src="/assets/books/fispm/v04/I-04-N01.svg" alt="Composición de desplazamientos. Diagrama del capítulo 4; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="275" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 4.1.** Los puntos son extremos y las flechas son desplazamientos: $\overrightarrow{PQ}+\overrightarrow{QR}=\overrightarrow{PR}$. La identidad no requiere elegir un origen. Véase §[4.1](#fispm-c04-un-punto-no-es-un-vector).
+
+</figcaption>
+
+</figure>
 
 - el **punto** $P$ donde se encuentra el objeto;
 
@@ -257,7 +267,17 @@ Dos marcas físicas ocupan puntos $P,Q\in\mathcal E$. Para indicar una marca int
 
 []{#fig:I-04-R01}
 
-![**Figura 4.2.** Si $u=\overrightarrow{AB}$ y $v=\overrightarrow{BC}$, entonces $u+v=\overrightarrow{AC}$. El paralelogramo compara la composición de desplazamientos con su representación vectorial. Véase §[4.2](#fispm-c04-la-estructura-afuxedn-de-los-desplazamientos).](/assets/books/fispm/v04/I-04-R01.svg "fig:"){.fpm-v04-figure fig-alt="La composición de desplazamientos" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-04-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-04-R01.svg" class="lightbox" data-gallery="fpm-v04-c04"><img src="/assets/books/fispm/v04/I-04-R01.svg" alt="La composición de desplazamientos. Diagrama del capítulo 4; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="290" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 4.2.** Si $u=\overrightarrow{AB}$ y $v=\overrightarrow{BC}$, entonces $u+v=\overrightarrow{AC}$. El paralelogramo compara la composición de desplazamientos con su representación vectorial. Véase §[4.2](#fispm-c04-la-estructura-afuxedn-de-los-desplazamientos).
+
+</figcaption>
+
+</figure>
 
 []{#recuperar-la-estructura-disponible-trasladar-restar-componer}
 
@@ -1371,11 +1391,31 @@ Una fuerza, un desplazamiento o cualquier otro vector puede compararse con una d
 
 []{#fig:I-04-R02}
 
-![**Figura 4.3.** La proyección ortogonal sobre el eje horizontal es $v_\parallel=(v\cdot e_1)e_1$. El residuo perpendicular no desaparece del vector: $v=v_\parallel+v_\perp$. Véase §[4.6](#fispm-c04-proyecciones-uxe1ngulos-y-geometruxeda-de-componentes).](/assets/books/fispm/v04/I-04-R02.svg "fig:"){.fpm-v04-figure fig-alt="Proyectar conserva una componente" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-04-r02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-04-R02.svg" class="lightbox" data-gallery="fpm-v04-c04"><img src="/assets/books/fispm/v04/I-04-R02.svg" alt="Proyectar conserva una componente. Diagrama del capítulo 4; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="285" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 4.3.** La proyección ortogonal sobre el eje horizontal es $v_\parallel=(v\cdot e_1)e_1$. El residuo perpendicular no desaparece del vector: $v=v_\parallel+v_\perp$. Véase §[4.6](#fispm-c04-proyecciones-uxe1ngulos-y-geometruxeda-de-componentes).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-04-N02}
 
-![**Figura 4.4.** En una base ortonormal, $v=v_1e_1+v_2e_2$ y $v_i=v\cdot e_i$. Las líneas discontinuas sitúan las componentes; no son fuerzas adicionales. Véase §[4.6](#fispm-c04-proyecciones-uxe1ngulos-y-geometruxeda-de-componentes).](/assets/books/fispm/v04/I-04-N02.svg "fig:"){.fpm-v04-figure fig-alt="Proyectar un vector" width="373px" fig-cap=""}
+<figure id="fig-fpm-v04-i-04-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-04-N02.svg" class="lightbox" data-gallery="fpm-v04-c04"><img src="/assets/books/fispm/v04/I-04-N02.svg" alt="Proyectar un vector. Diagrama del capítulo 4; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="373" height="289" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 4.4.** En una base ortonormal, $v=v_1e_1+v_2e_2$ y $v_i=v\cdot e_i$. Las líneas discontinuas sitúan las componentes; no son fuerzas adicionales. Véase §[4.6](#fispm-c04-proyecciones-uxe1ngulos-y-geometruxeda-de-componentes).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-c04-definir-ortogonalidad label="fispm-c04-definir-ortogonalidad"}
 
@@ -2983,7 +3023,17 @@ En dimensión tres aparece una posibilidad especial: podemos buscar un tercer ve
 
 []{#fig:I-04-R03}
 
-![**Figura 4.5.** En una base ortonormal positivamente orientada, $e_1\times e_2=e_3$. El punto dentro del círculo indica una dirección que sale del papel; invertir los factores invierte ese vector. Véase §[4.9](#fispm-c04-producto-vectorial-en-dimensiuxf3n-tres).](/assets/books/fispm/v04/I-04-R03.svg "fig:"){.fpm-v04-figure fig-alt="El orden fija la orientación" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-04-r03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-04-R03.svg" class="lightbox" data-gallery="fpm-v04-c04"><img src="/assets/books/fispm/v04/I-04-R03.svg" alt="El orden fija la orientación. Diagrama del capítulo 4; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="283" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 4.5.** En una base ortonormal positivamente orientada, $e_1\times e_2=e_3$. El punto dentro del círculo indica una dirección que sale del papel; invertir los factores invierte ese vector. Véase §[4.9](#fispm-c04-producto-vectorial-en-dimensiuxf3n-tres).
+
+</figcaption>
+
+</figure>
 
 1.  hay dos sentidos opuestos en la recta perpendicular al plano;
 
@@ -3637,7 +3687,17 @@ Sus columnas son, por tanto, los vectores de la **base nueva** $B'$ expresados e
 
 []{#fig:I-04-N03}
 
-![**Figura 4.6.** La base prima se gira un ángulo $\theta$ positivo. Las coordenadas de un mismo vector se transforman por la rotación inversa; el vector geométrico permanece fijo. Véase §[4.10](#fispm-c04-cambios-de-base-y-coordenadas-vectoriales).](/assets/books/fispm/v04/I-04-N03.svg "fig:"){.fpm-v04-figure fig-alt="Dos bases en el mismo plano" width="344px" fig-cap=""}
+<figure id="fig-fpm-v04-i-04-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-04-N03.svg" class="lightbox" data-gallery="fpm-v04-c04"><img src="/assets/books/fispm/v04/I-04-N03.svg" alt="Dos bases en el mismo plano. Diagrama del capítulo 4; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="344" height="264" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 4.6.** La base prima se gira un ángulo $\theta$ positivo. Las coordenadas de un mismo vector se transforman por la rotación inversa; el vector geométrico permanece fijo. Véase §[4.10](#fispm-c04-cambios-de-base-y-coordenadas-vectoriales).
+
+</figcaption>
+
+</figure>
 
 $$S:=S_{B\leftarrow B'}.$$
 
@@ -4313,7 +4373,17 @@ puede cambiar longitudes, ángulos y volúmenes. Pero hay transformaciones espec
 
 []{#fig:I-04-R05}
 
-![**Figura 4.7.** La reflexión $S(x,y)=(-x,y)$ conserva longitudes y ángulos y tiene determinante $-1$. Por ello no es una rotación propia del plano. Véase §[4.11](#fispm-c04-rotaciones-reflexiones-e-isometruxedas).](/assets/books/fispm/v04/I-04-R05.svg "fig:"){.fpm-v04-figure fig-alt="Una isometría puede invertir la orientación" width="342px" fig-cap=""}
+<figure id="fig-fpm-v04-i-04-r05" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-04-R05.svg" class="lightbox" data-gallery="fpm-v04-c04"><img src="/assets/books/fispm/v04/I-04-R05.svg" alt="Una isometría puede invertir la orientación. Diagrama del capítulo 4; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="342" height="281" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 4.7.** La reflexión $S(x,y)=(-x,y)$ conserva longitudes y ángulos y tiene determinante $-1$. Por ello no es una rotación propia del plano. Véase §[4.11](#fispm-c04-rotaciones-reflexiones-e-isometruxedas).
+
+</figcaption>
+
+</figure>
 
 para todo $v\in V$. Como $T$ es lineal,
 
@@ -5295,7 +5365,17 @@ la transformación de coordenadas de puntos no es lineal: $\Phi_{F'\leftarrow F}
 
 []{#fig:I-04-R04}
 
-![**Figura 4.8.** Para orígenes separados por $a=\overrightarrow{OO^\prime}$ y bases iguales, los vectores de posición cumplen $r=a+r^\prime$. El punto físico y las diferencias entre puntos permanecen iguales. Véase §[4.12](#fispm-c04-cambios-de-origen-y-de-marco-geomuxe9trico).](/assets/books/fispm/v04/I-04-R04.svg "fig:"){.fpm-v04-figure fig-alt="Una traslación cambia la posición representada" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-04-r04" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-04-R04.svg" class="lightbox" data-gallery="fpm-v04-c04"><img src="/assets/books/fispm/v04/I-04-R04.svg" alt="Una traslación cambia la posición representada. Diagrama del capítulo 4; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="289" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 4.8.** Para orígenes separados por $a=\overrightarrow{OO^\prime}$ y bases iguales, los vectores de posición cumplen $r=a+r^\prime$. El punto físico y las diferencias entre puntos permanecen iguales. Véase §[4.12](#fispm-c04-cambios-de-origen-y-de-marco-geomuxe9trico).
+
+</figcaption>
+
+</figure>
 
 la ley se reduce al cambio lineal de base: $x_{F'}(P)=S^{-1}x_F(P).$
 

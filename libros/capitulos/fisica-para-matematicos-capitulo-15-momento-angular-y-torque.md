@@ -103,11 +103,31 @@ Para abrir una puerta podemos aumentar la fuerza o alejarnos de las bisagras. Ta
 
 []{#fig:I-15-R01}
 
-![**Figura 15.1.** La fuerza vertical tiene torque $\tau_z=dF$ respecto del origen. El brazo $d$ es la distancia perpendicular a su línea de acción, no la distancia desde el origen hasta el punto de aplicación. Véase §[15.2](#fispm-c15-torque-y-lugar-de-aplicaciuxf3n).](/assets/books/fispm/v04/I-15-R01.svg "fig:"){.fpm-v04-figure fig-alt="El brazo es la distancia a la línea de acción" width="343px" fig-cap=""}
+<figure id="fig-fpm-v04-i-15-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-15-R01.svg" class="lightbox" data-gallery="fpm-v04-c15"><img src="/assets/books/fispm/v04/I-15-R01.svg" alt="El brazo es la distancia a la línea de acción. Diagrama del capítulo 15; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="343" height="315" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 15.1.** La fuerza vertical tiene torque $\tau_z=dF$ respecto del origen. El brazo $d$ es la distancia perpendicular a su línea de acción, no la distancia desde el origen hasta el punto de aplicación. Véase §[15.2](#fispm-c15-torque-y-lugar-de-aplicaciuxf3n).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-15-N01}
 
-![**Figura 15.2.** Una fuerza hacia arriba aplicada a la derecha de $O$ produce torque positivo, saliente del plano. El vector de posición y la fuerza cumplen $\tau_O=r\times F$. Véase §[15.2](#fispm-c15-torque-y-lugar-de-aplicaciuxf3n).](/assets/books/fispm/v04/I-15-N01.svg "fig:"){.fpm-v04-figure fig-alt="Brazo de palanca" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-15-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-15-N01.svg" class="lightbox" data-gallery="fpm-v04-c15"><img src="/assets/books/fispm/v04/I-15-N01.svg" alt="Brazo de palanca. Diagrama del capítulo 15; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="223" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 15.2.** Una fuerza hacia arriba aplicada a la derecha de $O$ produce torque positivo, saliente del plano. El vector de posición y la fuerza cumplen $\tau_O=r\times F$. Véase §[15.2](#fispm-c15-torque-y-lugar-de-aplicaciuxf3n).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c15-d0002}
 
@@ -583,7 +603,17 @@ La relación $\rho^2\dot\theta=\text{constante}$ tiene una lectura geométrica: 
 
 []{#fig:I-15-N02}
 
-![**Figura 15.3.** La tasa de área barrida por el vector relativo es $\dot A=\ell/(2\mu)$. Si el torque respecto del centro es nulo, esa tasa firmada es constante. Véase §[15.10](#fispm-c15-el-uxe1rea-que-barre-una-direcciuxf3n).](/assets/books/fispm/v04/I-15-N02.svg "fig:"){.fpm-v04-figure fig-alt="Área y momento angular" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-15-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-15-N02.svg" class="lightbox" data-gallery="fpm-v04-c15"><img src="/assets/books/fispm/v04/I-15-N02.svg" alt="Área y momento angular. Diagrama del capítulo 15; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="240" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 15.3.** La tasa de área barrida por el vector relativo es $\dot A=\ell/(2\mu)$. Si el torque respecto del centro es nulo, esa tasa firmada es constante. Véase §[15.10](#fispm-c15-el-uxe1rea-que-barre-una-direcciuxf3n).
+
+</figcaption>
+
+</figure>
 
 Para un pequeño cambio de ángulo, el área de un sector circular de radio $\rho$ es $\rho^2\,d\theta/2$. Si el radio cambia durante el movimiento, usamos esa relación local e integramos. La orientación cuenta: un giro antihorario contribuye con signo positivo; uno horario, con signo negativo.
 
@@ -651,7 +681,17 @@ La conservación angular responde a la dirección de la fuerza respecto de un pu
 
 []{#fig:I-15-N03}
 
-![**Figura 15.4.** Una fuerza radial tiene torque nulo respecto del centro porque es paralela a $r$. Puede cambiar la rapidez radial aunque conserve el momento angular. Véase §[15.11](#fispm-c15-fuerza-radial-torque-y-energuxeda).](/assets/books/fispm/v04/I-15-N03.svg "fig:"){.fpm-v04-figure fig-alt="Fuerza central y torque" width="369px" fig-cap=""}
+<figure id="fig-fpm-v04-i-15-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-15-N03.svg" class="lightbox" data-gallery="fpm-v04-c15"><img src="/assets/books/fispm/v04/I-15-N03.svg" alt="Fuerza central y torque. Diagrama del capítulo 15; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="369" height="268" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 15.4.** Una fuerza radial tiene torque nulo respecto del centro porque es paralela a $r$. Puede cambiar la rapidez radial aunque conserve el momento angular. Véase §[15.11](#fispm-c15-fuerza-radial-torque-y-energuxeda).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c15-p0019}
 

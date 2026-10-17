@@ -53,7 +53,17 @@ Sean dos masas iguales $m>0$ sobre una guía horizontal sin rozamiento. Cada una
 
 []{#fig:I-24-N01}
 
-![**Figura 24.1.** Dos masas iguales unidas por tres resortes iguales tienen matriz de rigidez $k\left(\begin{smallmatrix}2&-1\\-1&2\end{smallmatrix}\right)$. Las posiciones se miden desde el equilibrio. Véase §[24.1](#fispm-c24-un-aparato-con-dos-movimientos-simples).](/assets/books/fispm/v04/I-24-N01.svg "fig:"){.fpm-v04-figure fig-alt="Dos masas y tres resortes" width="414px" fig-cap=""}
+<figure id="fig-fpm-v04-i-24-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-24-N01.svg" class="lightbox" data-gallery="fpm-v04-c24"><img src="/assets/books/fispm/v04/I-24-N01.svg" alt="Dos masas y tres resortes. Diagrama del capítulo 24; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="414" height="126" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 24.1.** Dos masas iguales unidas por tres resortes iguales tienen matriz de rigidez $k\left(\begin{smallmatrix}2&-1\\-1&2\end{smallmatrix}\right)$. Las posiciones se miden desde el equilibrio. Véase §[24.1](#fispm-c24-un-aparato-con-dos-movimientos-simples).
+
+</figcaption>
+
+</figure>
 
 La fuerza de ese resorte sobre la primera masa vale $\kappa(x_2-x_1)$ y sobre la segunda tiene signo opuesto. Los balances son
 
@@ -99,7 +109,17 @@ La masa inicialmente quieta empieza a moverse porque el resorte intermedio trans
 
 []{#fig:I-24-N03}
 
-![**Figura 24.2.** Al soltar sólo la primera masa, con $m=k=1$ y velocidades nulas, $x_1=(\cos t+\cos\sqrt3t)/2$ y $x_2=(\cos t-\cos\sqrt3t)/2$. Continua: primera masa; discontinua: segunda. Véase §[24.2](#fispm-c24-soltar-una-sola-masa).](/assets/books/fispm/v04/I-24-N03.svg "fig:"){.fpm-v04-figure fig-alt="Superposición modal" width="399px" fig-cap=""}
+<figure id="fig-fpm-v04-i-24-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-24-N03.svg" class="lightbox" data-gallery="fpm-v04-c24"><img src="/assets/books/fispm/v04/I-24-N03.svg" alt="Superposición modal. Diagrama del capítulo 24; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="399" height="232" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 24.2.** Al soltar sólo la primera masa, con $m=k=1$ y velocidades nulas, $x_1=(\cos t+\cos\sqrt3t)/2$ y $x_2=(\cos t-\cos\sqrt3t)/2$. Continua: primera masa; discontinua: segunda. Véase §[24.2](#fispm-c24-soltar-una-sola-masa).
+
+</figcaption>
+
+</figure>
 
 $$x_1=A\cos(\bar\omega t)\cos(\Delta t/2), \qquad x_2=A\sin(\bar\omega t)\sin(\Delta t/2).$$
 
@@ -235,7 +255,17 @@ Un estado inicial puramente modal exige que tanto $x_0$ como $v_0$ pertenezcan a
 
 []{#fig:I-24-N02}
 
-![**Figura 24.3.** El modo en fase tiene $\omega_+^2=k/m$; el modo en oposición, $\omega_-^2=3k/m$. El signo global del autovector es arbitrario. Las flechas son desplazamientos modales. Véase §[24.6](#fispm-c24-desacoplar-la-evoluciuxf3n-y-sus-datos).](/assets/books/fispm/v04/I-24-N02.svg "fig:"){.fpm-v04-figure fig-alt="Formas de los modos" width="342px" fig-cap=""}
+<figure id="fig-fpm-v04-i-24-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-24-N02.svg" class="lightbox" data-gallery="fpm-v04-c24"><img src="/assets/books/fispm/v04/I-24-N02.svg" alt="Formas de los modos. Diagrama del capítulo 24; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="342" height="194" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 24.3.** El modo en fase tiene $\omega_+^2=k/m$; el modo en oposición, $\omega_-^2=3k/m$. El signo global del autovector es arbitrario. Las flechas son desplazamientos modales. Véase §[24.6](#fispm-c24-desacoplar-la-evoluciuxf3n-y-sus-datos).
+
+</figcaption>
+
+</figure>
 
 []{#qué-cambia-cuando-las-masas-son-diferentes}
 
@@ -359,7 +389,17 @@ En un sistema libre conservativo las energías modales permanecen constantes. Au
 
 []{#fig:I-24-R01}
 
-![**Figura 24.4.** En un esquema de batidos, dos contribuciones locales pueden intercambiarse como $\cos^2(u/2)$ y $\sin^2(u/2)$ mientras su suma permanece uno. Es una ilustración normalizada del intercambio; no identifica cada curva con la energía modal conservada del sistema general. Véase §[24.11](#fispm-c24-energuxeda-de-los-modos-y-energuxeda-de-las-masas).](/assets/books/fispm/v04/I-24-R01.svg "fig:"){.fpm-v04-figure fig-alt="Intercambio local y conservación modal" width="405px" fig-cap=""}
+<figure id="fig-fpm-v04-i-24-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-24-R01.svg" class="lightbox" data-gallery="fpm-v04-c24"><img src="/assets/books/fispm/v04/I-24-R01.svg" alt="Intercambio local y conservación modal. Diagrama del capítulo 24; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="405" height="248" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 24.4.** En un esquema de batidos, dos contribuciones locales pueden intercambiarse como $\cos^2(u/2)$ y $\sin^2(u/2)$ mientras su suma permanece uno. Es una ilustración normalizada del intercambio; no identifica cada curva con la energía modal conservada del sistema general. Véase §[24.11](#fispm-c24-energuxeda-de-los-modos-y-energuxeda-de-las-masas).
+
+</figcaption>
+
+</figure>
 
 Para las dos masas de §1, pongamos $d=x_2-x_1$ y repartamos por mitades la energía del resorte intermedio:
 

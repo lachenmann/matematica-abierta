@@ -51,7 +51,17 @@ Si dejamos caer dos cuerpos de masas distintas desde una misma altura, la fuerza
 
 []{#fig:I-16-N01}
 
-![**Figura 16.1.** Las dos fuerzas gravitatorias son opuestas y tienen módulo $GMm/r^2$. Dividir cada fuerza por la masa del cuerpo correspondiente da las dos aceleraciones. Véase §[16.1](#fispm-c16-una-ley-entre-masas).](/assets/books/fispm/v04/I-16-N01.svg "fig:"){.fpm-v04-figure fig-alt="Interacción gravitatoria" width="489px" fig-cap=""}
+<figure id="fig-fpm-v04-i-16-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-16-N01.svg" class="lightbox" data-gallery="fpm-v04-c16"><img src="/assets/books/fispm/v04/I-16-N01.svg" alt="Interacción gravitatoria. Diagrama del capítulo 16; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="489" height="147" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 16.1.** Las dos fuerzas gravitatorias son opuestas y tienen módulo $GMm/r^2$. Dividir cada fuerza por la masa del cuerpo correspondiente da las dos aceleraciones. Véase §[16.1](#fispm-c16-una-ley-entre-masas).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c16-d0001}
 
@@ -515,7 +525,17 @@ Para aplicar la ley puntual a un planeta hay que justificar la sustitución de u
 
 []{#fig:I-16-R01}
 
-![**Figura 16.2.** Una cáscara esférica homogénea infinitamente delgada produce campo nulo dentro y magnitud $GM/r^2$ fuera. La gráfica muestra los límites a cada lado; el campo sobre la superficie singular necesita una convención aparte. Véase §[16.9](#fispm-c16-una-cuxe1scara-esfuxe9rica).](/assets/books/fispm/v04/I-16-R01.svg "fig:"){.fpm-v04-figure fig-alt="El campo cambia al cruzar una cáscara ideal" width="458px" fig-cap=""}
+<figure id="fig-fpm-v04-i-16-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-16-R01.svg" class="lightbox" data-gallery="fpm-v04-c16"><img src="/assets/books/fispm/v04/I-16-R01.svg" alt="El campo cambia al cruzar una cáscara ideal. Diagrama del capítulo 16; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="458" height="267" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 16.2.** Una cáscara esférica homogénea infinitamente delgada produce campo nulo dentro y magnitud $GM/r^2$ fuera. La gráfica muestra los límites a cada lado; el campo sobre la superficie singular necesita una convención aparte. Véase §[16.9](#fispm-c16-una-cuxe1scara-esfuxe9rica).
+
+</figcaption>
+
+</figure>
 
 Calcular directamente las fuerzas exige proyectar cada atracción. El potencial simplifica el problema porque suma escalares. Una vez obtenido, lo derivaremos para recuperar el campo.
 
@@ -589,7 +609,17 @@ Una distribución esférica puede construirse por capas concéntricas. Las capas
 
 []{#fig:I-16-N02}
 
-![**Figura 16.3.** Para una esfera uniforme de radio $R$, el módulo normalizado es $g/(GM/R^2)=r/R$ dentro y $(R/r)^2$ fuera. El campo es continuo en la superficie y se anula en el centro. Véase §[16.10](#fispm-c16-del-conjunto-de-capas-al-interior-de-una-esfera).](/assets/books/fispm/v04/I-16-N02.svg "fig:"){.fpm-v04-figure fig-alt="Campo de una esfera homogénea" width="449px" fig-cap=""}
+<figure id="fig-fpm-v04-i-16-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-16-N02.svg" class="lightbox" data-gallery="fpm-v04-c16"><img src="/assets/books/fispm/v04/I-16-N02.svg" alt="Campo de una esfera homogénea. Diagrama del capítulo 16; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="449" height="255" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 16.3.** Para una esfera uniforme de radio $R$, el módulo normalizado es $g/(GM/R^2)=r/R$ dentro y $(R/r)^2$ fuera. El campo es continuo en la superficie y se anula en el centro. Véase §[16.10](#fispm-c16-del-conjunto-de-capas-al-interior-de-una-esfera).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c16-d0008}
 
@@ -715,7 +745,17 @@ Dos partículas cercanas pueden caer casi juntas y, sin embargo, cambiar su sepa
 
 []{#fig:I-16-N03}
 
-![**Figura 16.4.** En la aproximación lineal alrededor de una separación radial $R$, la aceleración relativa estira en dirección radial y comprime en dirección transversal. Se ha restado la aceleración del centro. Véase §[16.12](#fispm-c16-la-variaciuxf3n-espacial-que-produce-mareas).](/assets/books/fispm/v04/I-16-N03.svg "fig:"){.fpm-v04-figure fig-alt="Gradiente de gravedad" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-16-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-16-N03.svg" class="lightbox" data-gallery="fpm-v04-c16"><img src="/assets/books/fispm/v04/I-16-N03.svg" alt="Gradiente de gravedad. Diagrama del capítulo 16; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="255" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 16.4.** En la aproximación lineal alrededor de una separación radial $R$, la aceleración relativa estira en dirección radial y comprime en dirección transversal. Se ha restado la aceleración del centro. Véase §[16.12](#fispm-c16-la-variaciuxf3n-espacial-que-produce-mareas).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c16-d0009}
 

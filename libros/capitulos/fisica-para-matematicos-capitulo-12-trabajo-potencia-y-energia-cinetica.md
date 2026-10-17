@@ -47,7 +47,17 @@ Empujar un cuerpo no produce el mismo efecto sobre su rapidez en cualquier direc
 
 []{#fig:I-12-N01}
 
-![**Figura 12.1.** Sólo la componente paralela al desplazamiento contribuye al trabajo de una fuerza constante. La flecha discontinua es un desplazamiento y no una fuerza adicional. Véase §[12.1](#fispm-c12-fuerza-desplazamiento-y-trabajo-constante).](/assets/books/fispm/v04/I-12-N01.svg "fig:"){.fpm-v04-figure fig-alt="Trabajo y proyección" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-12-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-12-N01.svg" class="lightbox" data-gallery="fpm-v04-c12"><img src="/assets/books/fispm/v04/I-12-N01.svg" alt="Trabajo y proyección. Diagrama del capítulo 12; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="299" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 12.1.** Sólo la componente paralela al desplazamiento contribuye al trabajo de una fuerza constante. La flecha discontinua es un desplazamiento y no una fuerza adicional. Véase §[12.1](#fispm-c12-fuerza-desplazamiento-y-trabajo-constante).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c12-d0001}
 
@@ -111,11 +121,31 @@ Cuando la fuerza cambia a lo largo de una línea, una sola multiplicación no in
 
 []{#fig:I-12-R01}
 
-![**Figura 12.2.** Con $F(x)=1+x$ y desplazamiento desde $0$ hasta $2$, el trabajo normalizado vale $\int_0^2(1+x)\,dx=4$. Invertir el sentido de integración cambia su signo. Véase §[12.2](#fispm-c12-trabajo-de-una-fuerza-variable-en-una-dimensiuxf3n).](/assets/books/fispm/v04/I-12-R01.svg "fig:"){.fpm-v04-figure fig-alt="El trabajo es un área firmada" width="403px" fig-cap=""}
+<figure id="fig-fpm-v04-i-12-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-12-R01.svg" class="lightbox" data-gallery="fpm-v04-c12"><img src="/assets/books/fispm/v04/I-12-R01.svg" alt="El trabajo es un área firmada. Diagrama del capítulo 12; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="403" height="353" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 12.2.** Con $F(x)=1+x$ y desplazamiento desde $0$ hasta $2$, el trabajo normalizado vale $\int_0^2(1+x)\,dx=4$. Invertir el sentido de integración cambia su signo. Véase §[12.2](#fispm-c12-trabajo-de-una-fuerza-variable-en-una-dimensiuxf3n).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-12-N02}
 
-![**Figura 12.3.** Para $F(x)=kx$ y $0\le x\le a$, el área bajo la gráfica es $ka^2/2$. Los ejes normalizados son $x/a$ y $F/(ka)$. Véase §[12.2](#fispm-c12-trabajo-de-una-fuerza-variable-en-una-dimensiuxf3n).](/assets/books/fispm/v04/I-12-N02.svg "fig:"){.fpm-v04-figure fig-alt="Trabajo como integral" width="423px" fig-cap=""}
+<figure id="fig-fpm-v04-i-12-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-12-N02.svg" class="lightbox" data-gallery="fpm-v04-c12"><img src="/assets/books/fispm/v04/I-12-N02.svg" alt="Trabajo como integral. Diagrama del capítulo 12; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="423" height="253" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 12.3.** Para $F(x)=kx$ y $0\le x\le a$, el área bajo la gráfica es $ka^2/2$. Los ejes normalizados son $x/a$ y $F/(ka)$. Véase §[12.2](#fispm-c12-trabajo-de-una-fuerza-variable-en-una-dimensiuxf3n).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c12-d0002}
 
@@ -405,7 +435,17 @@ Dos procesos pueden realizar el mismo trabajo y requerir tiempos distintos. La p
 
 []{#fig:I-12-N03}
 
-![**Figura 12.4.** Una fuerza constante paralela al movimiento produce $v=Ft/m$ desde el reposo y potencia $P=F^2t/m$. El trabajo acumulado es el área bajo esta recta. Véase §[12.7](#fispm-c12-potencia-media-e-instantuxe1nea).](/assets/books/fispm/v04/I-12-N03.svg "fig:"){.fpm-v04-figure fig-alt="Potencia instantánea" width="446px" fig-cap=""}
+<figure id="fig-fpm-v04-i-12-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-12-N03.svg" class="lightbox" data-gallery="fpm-v04-c12"><img src="/assets/books/fispm/v04/I-12-N03.svg" alt="Potencia instantánea. Diagrama del capítulo 12; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="446" height="255" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 12.4.** Una fuerza constante paralela al movimiento produce $v=Ft/m$ desde el reposo y potencia $P=F^2t/m$. El trabajo acumulado es el área bajo esta recta. Véase §[12.7](#fispm-c12-potencia-media-e-instantuxe1nea).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c12-d0007}
 
@@ -653,7 +693,17 @@ En el capítulo 11 distinguimos la condición geométrica de un vínculo y la fu
 
 []{#fig:I-12-R02}
 
-![**Figura 12.5.** Una fuerza de vínculo tiene potencia $F\cdot v$ evaluada en el punto sobre el cuerpo. Cuando su punto de aplicación se mueve en la dirección de la fuerza, esa potencia puede ser positiva. No basta invocar idealidad para imponer trabajo nulo. Véase §[12.11](#fispm-c12-trabajo-de-vuxednculos-fijos-y-muxf3viles).](/assets/books/fispm/v04/I-12-R02.svg "fig:"){.fpm-v04-figure fig-alt="Un vínculo móvil puede suministrar energía" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-12-r02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-12-R02.svg" class="lightbox" data-gallery="fpm-v04-c12"><img src="/assets/books/fispm/v04/I-12-R02.svg" alt="Un vínculo móvil puede suministrar energía. Diagrama del capítulo 12; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="162" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 12.5.** Una fuerza de vínculo tiene potencia $F\cdot v$ evaluada en el punto sobre el cuerpo. Cuando su punto de aplicación se mueve en la dirección de la fuerza, esa potencia puede ser positiva. No basta invocar idealidad para imponer trabajo nulo. Véase §[12.11](#fispm-c12-trabajo-de-vuxednculos-fijos-y-muxf3viles).
+
+</figcaption>
+
+</figure>
 
 La palabra «lisa» elimina la componente tangencial de contacto en el modelo ideal. No elimina la reacción normal ni garantiza trabajo nulo en todos los marcos. Tampoco la palabra «restricción» determina por sí sola la potencia. Necesitamos conocer la velocidad efectiva del receptor y cómo se mueve el soporte.
 

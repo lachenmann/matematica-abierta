@@ -157,7 +157,17 @@ Dos carros reciben una intervención reproducible y sus aceleraciones iniciales 
 
 []{#fig:I-09-N01}
 
-![**Figura 9.1.** Una misma fuerza sobre dos cuerpos separados de masas $m$ y $2m$ produce aceleraciones en razón dos a uno. Cada dibujo contiene la única fuerza externa supuesta. Véase §[9.3](#fispm-c09-masa-inercial-y-comparaciuxf3n-de-respuestas).](/assets/books/fispm/v04/I-09-N01.svg "fig:"){.fpm-v04-figure fig-alt="Masa y respuesta" width="523px" fig-cap=""}
+<figure id="fig-fpm-v04-i-09-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-09-N01.svg" class="lightbox" data-gallery="fpm-v04-c09"><img src="/assets/books/fispm/v04/I-09-N01.svg" alt="Masa y respuesta. Diagrama del capítulo 9; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="523" height="228" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 9.1.** Una misma fuerza sobre dos cuerpos separados de masas $m$ y $2m$ produce aceleraciones en razón dos a uno. Cada dibujo contiene la única fuerza externa supuesta. Véase §[9.3](#fispm-c09-masa-inercial-y-comparaciuxf3n-de-respuestas).
+
+</figcaption>
+
+</figure>
 
 La comparación exige declarar qué significa repetir la intervención. Podemos usar un dispositivo cuya configuración inicial y respuesta hayan sido contrastadas con un cuerpo de referencia. La reproducibilidad no se demuestra con una ecuación de Newton; es una hipótesis experimental sujeta a comprobación. Importan, por ejemplo, cambios del dispositivo, interacciones residuales y diferencias de configuración.
 
@@ -353,11 +363,31 @@ Si dos cuerpos interactúan, la descripción de uno solo deja fuera una parte de
 
 []{#fig:I-09-R01}
 
-![**Figura 9.2.** Las fuerzas internas $f$ y $-f$ se cancelan al sumar los balances de $A$ y $B$. La fuerza externa queda en $\dot P=F_{\rm ext}$. La frontera discontinua declara qué cuerpos se han incluido; cada balance individual conserva su fuerza interna. Véase §[9.7](#fispm-c09-tercera-ley-y-parejas-de-interacciuxf3n).](/assets/books/fispm/v04/I-09-R01.svg "fig:"){.fpm-v04-figure fig-alt="La pareja actúa sobre cuerpos distintos" width="403px" fig-cap=""}
+<figure id="fig-fpm-v04-i-09-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-09-R01.svg" class="lightbox" data-gallery="fpm-v04-c09"><img src="/assets/books/fispm/v04/I-09-R01.svg" alt="La pareja actúa sobre cuerpos distintos. Diagrama del capítulo 9; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="403" height="168" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 9.2.** Las fuerzas internas $f$ y $-f$ se cancelan al sumar los balances de $A$ y $B$. La fuerza externa queda en $\dot P=F_{\rm ext}$. La frontera discontinua declara qué cuerpos se han incluido; cada balance individual conserva su fuerza interna. Véase §[9.7](#fispm-c09-tercera-ley-y-parejas-de-interacciuxf3n).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-09-N02}
 
-![**Figura 9.3.** Las fuerzas de la pareja actúan sobre cuerpos distintos y son opuestas. No se cancelan en el balance de cada cuerpo por separado; sí en el del sistema $A+B$. Véase §[9.7](#fispm-c09-tercera-ley-y-parejas-de-interacciuxf3n).](/assets/books/fispm/v04/I-09-N02.svg "fig:"){.fpm-v04-figure fig-alt="Pareja de interacción" width="356px" fig-cap=""}
+<figure id="fig-fpm-v04-i-09-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-09-N02.svg" class="lightbox" data-gallery="fpm-v04-c09"><img src="/assets/books/fispm/v04/I-09-N02.svg" alt="Pareja de interacción. Diagrama del capítulo 9; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="356" height="179" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 9.3.** Las fuerzas de la pareja actúan sobre cuerpos distintos y son opuestas. No se cancelan en el balance de cada cuerpo por separado; sí en el del sistema $A+B$. Véase §[9.7](#fispm-c09-tercera-ley-y-parejas-de-interacciuxf3n).
+
+</figcaption>
+
+</figure>
 
 **Tercera ley $[POST]$.** Para una interacción por pares entre partículas $A$ y $B$, admitida en este modelo y evaluada en un mismo instante del tiempo clásico, $$\mathbf F_{A\leftarrow B}(t)=-\mathbf F_{B\leftarrow A}(t).$$ La igualdad expresa una relación física entre dos contribuciones. No se deduce de la definición de fuerza resultante ni de la segunda ley aplicada a un cuerpo. «Acción» y «reacción» son nombres tradicionales para la pareja; no indican que una fuerza se produzca después de la otra.
 
@@ -411,7 +441,17 @@ Cuando una fuerza depende de la posición o de la velocidad, la ecuación de New
 
 []{#fig:I-09-R02}
 
-![**Figura 9.4.** En el movimiento libre, cada recta horizontal del plano $(x,v)$ conserva una velocidad. Conocer sólo $x$ deja muchos estados posibles; especificar $(x_0,v_0)$ selecciona una trayectoria del sistema de primer orden. Véase §[9.8](#fispm-c09-estado-ecuaciuxf3n-de-movimiento-y-datos-iniciales).](/assets/books/fispm/v04/I-09-R02.svg "fig:"){.fpm-v04-figure fig-alt="El estado incluye posición y velocidad" width="343px" fig-cap=""}
+<figure id="fig-fpm-v04-i-09-r02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-09-R02.svg" class="lightbox" data-gallery="fpm-v04-c09"><img src="/assets/books/fispm/v04/I-09-R02.svg" alt="El estado incluye posición y velocidad. Diagrama del capítulo 9; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="343" height="265" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 9.4.** En el movimiento libre, cada recta horizontal del plano $(x,v)$ conserva una velocidad. Conocer sólo $x$ deja muchos estados posibles; especificar $(x_0,v_0)$ selecciona una trayectoria del sistema de primer orden. Véase §[9.8](#fispm-c09-estado-ecuaciuxf3n-de-movimiento-y-datos-iniciales).
+
+</figcaption>
+
+</figure>
 
 El estado instantáneo de una partícula no se reduce a su posición. Dos cuerpos pueden pasar por el mismo punto con velocidades distintas y seguir historias diferentes bajo una misma ley de fuerza. En la formulación de segundo orden aparecen dos datos vectoriales; podemos reunirlos en una sola variable de estado para escribir una ecuación de primer orden.
 
@@ -583,7 +623,17 @@ La primera ley admite una familia de marcos inerciales relacionados por traslaci
 
 []{#fig:I-09-N03}
 
-![**Figura 9.5.** Para un movimiento uniforme $X=2u$, el marco que avanza con velocidad normalizada uno mide $X\prime=u$. Las pendientes cambian; la aceleración es cero en ambos marcos. Véase §[9.11](#fispm-c09-cambios-galileanos-y-covariancia-del-modelo).](/assets/books/fispm/v04/I-09-N03.svg "fig:"){.fpm-v04-figure fig-alt="Cambiar de observador" width="395px" fig-cap=""}
+<figure id="fig-fpm-v04-i-09-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-09-N03.svg" class="lightbox" data-gallery="fpm-v04-c09"><img src="/assets/books/fispm/v04/I-09-N03.svg" alt="Cambiar de observador. Diagrama del capítulo 9; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="395" height="252" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 9.5.** Para un movimiento uniforme $X=2u$, el marco que avanza con velocidad normalizada uno mide $X\prime=u$. Las pendientes cambian; la aceleración es cero en ambos marcos. Véase §[9.11](#fispm-c09-cambios-galileanos-y-covariancia-del-modelo).
+
+</figcaption>
+
+</figure>
 
 Sea un cambio de coordenadas con reloj común, $$\mathbf r=\mathbf c_0+(t-t_0)\mathbf u+Q\mathbf y,$$ donde $Q$ es ortogonal constante y $\mathbf u$ constante. El vector $\mathbf y$ contiene las coordenadas de posición en el nuevo marco. Si denotamos $\mathbf w=\mathbf y'$, entonces $\mathbf v=\mathbf u+Q\mathbf w$ y $\mathbf a=Q\mathbf y''$. Aquí $\mathbf w$ es una velocidad física, distinta del estado normalizado $w$ sin negrita de §§9--10.
 

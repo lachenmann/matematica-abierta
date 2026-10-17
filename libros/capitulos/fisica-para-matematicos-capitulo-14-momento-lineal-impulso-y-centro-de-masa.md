@@ -101,7 +101,17 @@ Una fuerza puede variar mucho durante un contacto breve. Si buscamos el cambio d
 
 []{#fig:I-14-N02}
 
-![**Figura 14.1.** Un pulso triangular de duración $2T$ y altura $F_0$ tiene impulso $F_0T$. Su fuerza media es $F_0/2$; el área, y no la altura máxima por sí sola, determina el cambio de momento. Véase §[14.2](#fispm-c14-impulso-y-fuerza-media).](/assets/books/fispm/v04/I-14-N02.svg "fig:"){.fpm-v04-figure fig-alt="Impulso de un pulso" width="424px" fig-cap=""}
+<figure id="fig-fpm-v04-i-14-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-14-N02.svg" class="lightbox" data-gallery="fpm-v04-c14"><img src="/assets/books/fispm/v04/I-14-N02.svg" alt="Impulso de un pulso. Diagrama del capítulo 14; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="424" height="253" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 14.1.** Un pulso triangular de duración $2T$ y altura $F_0$ tiene impulso $F_0T$. Su fuerza media es $F_0/2$; el área, y no la altura máxima por sí sola, determina el cambio de momento. Véase §[14.2](#fispm-c14-impulso-y-fuerza-media).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c14-d0002}
 
@@ -263,7 +273,17 @@ La suma de momentos combina velocidades, pero todavía no identifica una posici�
 
 []{#fig:I-14-N01}
 
-![**Figura 14.2.** El centro de masa divide la separación en razón inversa a las masas. Con masas $m$ y $3m$, se sitúa a un cuarto de la distancia desde la masa mayor. Véase §[14.5](#fispm-c14-centro-de-masa-como-promedio-afuxedn).](/assets/books/fispm/v04/I-14-N01.svg "fig:"){.fpm-v04-figure fig-alt="Promedio afín ponderado" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-14-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-14-N01.svg" class="lightbox" data-gallery="fpm-v04-c14"><img src="/assets/books/fispm/v04/I-14-N01.svg" alt="Promedio afín ponderado. Diagrama del capítulo 14; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="160" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 14.2.** El centro de masa divide la separación en razón inversa a las masas. Con masas $m$ y $3m$, se sitúa a un cuarto de la distancia desde la masa mayor. Véase §[14.5](#fispm-c14-centro-de-masa-como-promedio-afuxedn).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c14-d0005}
 
@@ -535,11 +555,31 @@ En una línea, conservar momento ofrece una ecuación para dos velocidades final
 
 []{#fig:I-14-R01}
 
-![**Figura 14.3.** En una colisión elástica frontal de dos masas iguales, la masa incidente se detiene y la inicialmente quieta adquiere su velocidad. Se conservan momento y energía cinética; las viñetas comparan velocidades, con separaciones esquemáticas, sin resolver la fuerza de contacto. Véase §[14.10](#fispm-c14-colisiones-eluxe1sticas-en-una-dimensiuxf3n).](/assets/books/fispm/v04/I-14-R01.svg "fig:"){.fpm-v04-figure fig-alt="Una colisión intercambia velocidades iguales" width="343px" fig-cap=""}
+<figure id="fig-fpm-v04-i-14-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-14-R01.svg" class="lightbox" data-gallery="fpm-v04-c14"><img src="/assets/books/fispm/v04/I-14-R01.svg" alt="Una colisión intercambia velocidades iguales. Diagrama del capítulo 14; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="343" height="341" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 14.3.** En una colisión elástica frontal de dos masas iguales, la masa incidente se detiene y la inicialmente quieta adquiere su velocidad. Se conservan momento y energía cinética; las viñetas comparan velocidades, con separaciones esquemáticas, sin resolver la fuerza de contacto. Véase §[14.10](#fispm-c14-colisiones-eluxe1sticas-en-una-dimensiuxf3n).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-14-N03}
 
-![**Figura 14.4.** En un choque elástico unidimensional de masas iguales, con la segunda inicialmente en reposo, las velocidades se intercambian. Se conservan momento lineal y energía cinética. Véase §[14.10](#fispm-c14-colisiones-eluxe1sticas-en-una-dimensiuxf3n).](/assets/books/fispm/v04/I-14-N03.svg "fig:"){.fpm-v04-figure fig-alt="Choque de masas iguales" width="415px" fig-cap=""}
+<figure id="fig-fpm-v04-i-14-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-14-N03.svg" class="lightbox" data-gallery="fpm-v04-c14"><img src="/assets/books/fispm/v04/I-14-N03.svg" alt="Choque de masas iguales. Diagrama del capítulo 14; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="415" height="181" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 14.4.** En un choque elástico unidimensional de masas iguales, con la segunda inicialmente en reposo, las velocidades se intercambian. Se conservan momento lineal y energía cinética. Véase §[14.10](#fispm-c14-colisiones-eluxe1sticas-en-una-dimensiuxf3n).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c14-d0010}
 

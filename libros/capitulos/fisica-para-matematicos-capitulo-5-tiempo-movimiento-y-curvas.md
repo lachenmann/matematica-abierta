@@ -1023,7 +1023,17 @@ Esta cantidad compara dos posiciones separadas por un intervalo temporal finito.
 
 []{#fig:I-05-N02}
 
-![**Figura 5.1.** Para la parábola $Y=X^2/3$, la secante une dos instantes y la tangente tiene pendiente $2X/3$. En $X=1{,}5$, esa pendiente vale uno. Véase §[5.5](#fispm-c05-velocidad-instantuxe1nea-como-derivada-de-una-curva-afuxedn).](/assets/books/fispm/v04/I-05-N02.svg "fig:"){.fpm-v04-figure fig-alt="De la secante a la tangente" width="350px" fig-cap=""}
+<figure id="fig-fpm-v04-i-05-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-05-N02.svg" class="lightbox" data-gallery="fpm-v04-c05"><img src="/assets/books/fispm/v04/I-05-N02.svg" alt="De la secante a la tangente. Diagrama del capítulo 5; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="350" height="268" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 5.1.** Para la parábola $Y=X^2/3$, la secante une dos instantes y la tangente tiene pendiente $2X/3$. En $X=1{,}5$, esa pendiente vale uno. Véase §[5.5](#fispm-c05-velocidad-instantuxe1nea-como-derivada-de-una-curva-afuxedn).
+
+</figcaption>
+
+</figure>
 
 La pregunta instantánea no consiste en «poner $h=0$», porque entonces el cociente dejaría de estar definido. Consiste en estudiar si estos vectores se aproximan a un único vector cuando $h\to0$.
 
@@ -1431,7 +1441,17 @@ cuando la velocidad existe. Así, en un instante con velocidad no nula, los vect
 
 []{#fig:I-05-R02}
 
-![**Figura 5.2.** La curva $r(u)=(u^3,u^2)$ tiene $r^\prime(0)=0$. La fórmula del vector tangente unitario $r^\prime/\lVert r^\prime\rVert$ no está definida allí. El ejemplo obliga a comprobar regularidad antes de usar esa expresión. Véase §[5.6](#fispm-c05-tangente-regularidad-e-instantes-de-reposo).](/assets/books/fispm/v04/I-05-R02.svg "fig:"){.fpm-v04-figure fig-alt="Un instante singular del parámetro" width="347px" fig-cap=""}
+<figure id="fig-fpm-v04-i-05-r02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-05-R02.svg" class="lightbox" data-gallery="fpm-v04-c05"><img src="/assets/books/fispm/v04/I-05-R02.svg" alt="Un instante singular del parámetro. Diagrama del capítulo 5; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="347" height="276" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 5.2.** La curva $r(u)=(u^3,u^2)$ tiene $r^\prime(0)=0$. La fórmula del vector tangente unitario $r^\prime/\lVert r^\prime\rVert$ no está definida allí. El ejemplo obliga a comprobar regularidad antes de usar esa expresión. Véase §[5.6](#fispm-c05-tangente-regularidad-e-instantes-de-reposo).
+
+</figcaption>
+
+</figure>
 
 Activación Si dos vectores directores difieren sólo por un factor escalar no nulo, ¿describen rectas diferentes o la misma recta? ¿Qué información conserva entonces la recta y qué información del movimiento pierde?
 
@@ -1793,7 +1813,17 @@ Pero la velocidad misma puede cambiar con el tiempo. Dos movimientos pueden pose
 
 []{#fig:I-05-R01}
 
-![**Figura 5.3.** Para $r(u)=(u,u^2/5)$, la velocidad es $(1,2u/5)$ y la aceleración es $(0,2/5)$. La aceleración no tiene por qué ser paralela a la trayectoria ni a la velocidad. Véase §[5.7](#fispm-c05-aceleraciuxf3n-como-segunda-derivada).](/assets/books/fispm/v04/I-05-R01.svg "fig:"){.fpm-v04-figure fig-alt="Velocidad tangente y aceleración" width="343px" fig-cap=""}
+<figure id="fig-fpm-v04-i-05-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-05-R01.svg" class="lightbox" data-gallery="fpm-v04-c05"><img src="/assets/books/fispm/v04/I-05-R01.svg" alt="Velocidad tangente y aceleración. Diagrama del capítulo 5; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="343" height="283" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 5.3.** Para $r(u)=(u,u^2/5)$, la velocidad es $(1,2u/5)$ y la aceleración es $(0,2/5)$. La aceleración no tiene por qué ser paralela a la trayectoria ni a la velocidad. Véase §[5.7](#fispm-c05-aceleraciuxf3n-como-segunda-derivada).
+
+</figcaption>
+
+</figure>
 
 $$\boxed{ \text{¿cómo cambia instantáneamente el vector velocidad?} }$$
 
@@ -2133,7 +2163,17 @@ Activación Si dos columnas numéricas diferentes representan el mismo vector en
 
 []{#fig:I-05-R05}
 
-![**Figura 5.4.** Entre marcos de igual base y orígenes separados por una constante, las posiciones difieren en esa constante. Derivarla da cero y las velocidades representadas coinciden. El dibujo compara vectores de posición, no dos fuerzas. Véase §[5.8](#fispm-c05-marcos-fijos-y-covariancia-de-las-derivadas).](/assets/books/fispm/v04/I-05-R05.svg "fig:"){.fpm-v04-figure fig-alt="Trasladar la descripción conserva la velocidad" width="343px" fig-cap=""}
+<figure id="fig-fpm-v04-i-05-r05" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-05-R05.svg" class="lightbox" data-gallery="fpm-v04-c05"><img src="/assets/books/fispm/v04/I-05-R05.svg" alt="Trasladar la descripción conserva la velocidad. Diagrama del capítulo 5; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="343" height="257" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 5.4.** Entre marcos de igual base y orígenes separados por una constante, las posiciones difieren en esa constante. Derivarla da cero y las velocidades representadas coinciden. El dibujo compara vectores de posición, no dos fuerzas. Véase §[5.8](#fispm-c05-marcos-fijos-y-covariancia-de-las-derivadas).
+
+</figcaption>
+
+</figure>
 
 []{#recordatorio-la-ley-afín-para-las-posiciones}
 
@@ -2609,7 +2649,17 @@ El punto espacial no se obtiene mediante una transformación del espacio: seguim
 
 []{#fig:I-05-R03}
 
-![**Figura 5.5.** Las leyes $s=u$ y $s=u^2$ recorren el mismo intervalo con velocidades distintas. Bajo un cambio $s=\phi(u)$, la derivada de $r(\phi(u))$ contiene el factor $\phi^\prime(u)$. En $u=0$, el segundo reloj deja de ser regular. Véase §[5.9](#fispm-c05-reparametrizaciuxf3n-y-regla-de-la-cadena).](/assets/books/fispm/v04/I-05-R03.svg "fig:"){.fpm-v04-figure fig-alt="Dos relojes y una regla de derivación" width="403px" fig-cap=""}
+<figure id="fig-fpm-v04-i-05-r03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-05-R03.svg" class="lightbox" data-gallery="fpm-v04-c05"><img src="/assets/books/fispm/v04/I-05-R03.svg" alt="Dos relojes y una regla de derivación. Diagrama del capítulo 5; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="403" height="242" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 5.5.** Las leyes $s=u$ y $s=u^2$ recorren el mismo intervalo con velocidades distintas. Bajo un cambio $s=\phi(u)$, la derivada de $r(\phi(u))$ contiene el factor $\phi^\prime(u)$. En $u=0$, el segundo reloj deja de ser regular. Véase §[5.9](#fispm-c05-reparametrizaciuxf3n-y-regla-de-la-cadena).
+
+</figcaption>
+
+</figure>
 
 $$\boxed{ \text{¿qué propiedades cambian cuando cambiamos el parámetro de una curva?} }$$
 
@@ -3195,7 +3245,17 @@ Dos curvas pueden dibujar exactamente la misma figura en el espacio y, sin embar
 
 []{#fig:I-05-N01}
 
-![**Figura 5.6.** En $0\le u\le1$, las leyes $X_A=u$ y $X_B=u^2$ recorren el mismo segmento. En $u=1/2$ ocupan lugares distintos, y sus velocidades iniciales también difieren. Véase §[5.10](#fispm-c05-la-misma-trayectoria-no-significa-el-mismo-movimiento).](/assets/books/fispm/v04/I-05-N01.svg "fig:"){.fpm-v04-figure fig-alt="Una imagen, dos relojes" width="395px" fig-cap=""}
+<figure id="fig-fpm-v04-i-05-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-05-N01.svg" class="lightbox" data-gallery="fpm-v04-c05"><img src="/assets/books/fispm/v04/I-05-N01.svg" alt="Una imagen, dos relojes. Diagrama del capítulo 5; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="395" height="247" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 5.6.** En $0\le u\le1$, las leyes $X_A=u$ y $X_B=u^2$ recorren el mismo segmento. En $u=1/2$ ocupan lugares distintos, y sus velocidades iniciales también difieren. Véase §[5.10](#fispm-c05-la-misma-trayectoria-no-significa-el-mismo-movimiento).
+
+</figcaption>
+
+</figure>
 
 Activación Si sólo conocemos la figura trazada por un movimiento, ¿podemos reconstruir en qué instante se ocupó cada punto? ¿Podemos reconstruir su velocidad?
 
@@ -4019,7 +4079,17 @@ Pero esta cantidad depende de la partición elegida. Una partición gruesa puede
 
 []{#fig:I-05-N03}
 
-![**Figura 5.7.** Una semicircunferencia de radio $R$ tiene longitud $\pi R$. El desplazamiento une sus extremos y tiene norma $2R$; ambas cantidades miden objetos distintos. Véase §[5.12](#fispm-c05-longitud-geomuxe9trica-de-una-curva).](/assets/books/fispm/v04/I-05-N03.svg "fig:"){.fpm-v04-figure fig-alt="Camino y desplazamiento" width="352px" fig-cap=""}
+<figure id="fig-fpm-v04-i-05-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-05-N03.svg" class="lightbox" data-gallery="fpm-v04-c05"><img src="/assets/books/fispm/v04/I-05-N03.svg" alt="Camino y desplazamiento. Diagrama del capítulo 5; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="352" height="231" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 5.7.** Una semicircunferencia de radio $R$ tiene longitud $\pi R$. El desplazamiento une sus extremos y tiene norma $2R$; ambas cantidades miden objetos distintos. Véase §[5.12](#fispm-c05-longitud-geomuxe9trica-de-una-curva).
+
+</figcaption>
+
+</figure>
 
 $$\boxed{ \text{¿cómo extraer una longitud de la curva que no dependa de una partición concreta?} }$$
 
@@ -4591,7 +4661,17 @@ es de clase $C^1$. En un intervalo cerrado usamos la misma convención de §9: l
 
 []{#fig:I-05-R04}
 
-![**Figura 5.8.** Las cuerdas de una partición aproximan la longitud de una curva regular. El límite es $\int\lVert r^\prime(u)\rVert\,du$; la norma se integra antes de confundirla con el desplazamiento entre extremos. Véase §[5.13](#fispm-c05-fuxf3rmula-de-longitud-de-arco-y-paruxe1metro-natural).](/assets/books/fispm/v04/I-05-R04.svg "fig:"){.fpm-v04-figure fig-alt="Longitud como límite de cuerdas" width="343px" fig-cap=""}
+<figure id="fig-fpm-v04-i-05-r04" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-05-R04.svg" class="lightbox" data-gallery="fpm-v04-c05"><img src="/assets/books/fispm/v04/I-05-R04.svg" alt="Longitud como límite de cuerdas. Diagrama del capítulo 5; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="343" height="283" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 5.8.** Las cuerdas de una partición aproximan la longitud de una curva regular. El límite es $\int\lVert r^\prime(u)\rVert\,du$; la norma se integra antes de confundirla con el desplazamiento entre extremos. Véase §[5.13](#fispm-c05-fuxf3rmula-de-longitud-de-arco-y-paruxe1metro-natural).
+
+</figcaption>
+
+</figure>
 
 Como $v$ es continua, la rapidez
 

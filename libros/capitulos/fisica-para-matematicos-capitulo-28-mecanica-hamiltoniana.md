@@ -87,7 +87,17 @@ Consideremos primero una función real $\ell(v)$. Su derivada $p=\ell'(v)$ asign
 
 []{#fig:I-28-N01}
 
-![**Figura 28.1.** Para $L(v)=v^2/2$, la tangente en $v=1$ tiene pendiente $p=1$ y ordenada al origen $-H=-1/2$. La transformada es $H=pv-L=v^2/2$ en ese punto. Véase §[28.2](#fispm-c28-pendientes-y-transformada-de-legendre).](/assets/books/fispm/v04/I-28-N01.svg "fig:"){.fpm-v04-figure fig-alt="Pendiente y dualidad de Legendre" width="381px" fig-cap=""}
+<figure id="fig-fpm-v04-i-28-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-28-N01.svg" class="lightbox" data-gallery="fpm-v04-c28"><img src="/assets/books/fispm/v04/I-28-N01.svg" alt="Pendiente y dualidad de Legendre. Diagrama del capítulo 28; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="381" height="241" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 28.1.** Para $L(v)=v^2/2$, la tangente en $v=1$ tiene pendiente $p=1$ y ordenada al origen $-H=-1/2$. La transformada es $H=pv-L=v^2/2$ en ese punto. Véase §[28.2](#fispm-c28-pendientes-y-transformada-de-legendre).
+
+</figcaption>
+
+</figure>
 
 Al derivar, los términos que contienen $v'(p)$ se cancelan: $h'(p)=v+p\,v'-\ell'(v)v'=v.$ La nueva función contiene la relación inversa. Para $\ell(v)=mv^2/2$, con $m>0$, tenemos $p=mv$, $v=p/m$ y $h=p^2/(2m)$. Los factores físicos importan: $p$ tiene unidades de momento lineal y $h$ de energía, mientras que $h'$ tiene unidades de velocidad.
 
@@ -223,7 +233,17 @@ con $G$ simétrica invertible. En los modelos cinéticos ordinarios es positiva 
 
 []{#fig:I-28-R01}
 
-![**Figura 28.2.** Para $L=v^2/2+a v-U$, el momento es $p=v+a$. Las dos rectas comparan $a=0$ y $a=1$. Invertir la relación exige conservar ese desplazamiento al construir $H=(p-a)^2/2+U$. Véase §[28.6](#fispm-c28-lagrangianos-cuadruxe1ticos-y-momentos-desplazados).](/assets/books/fispm/v04/I-28-R01.svg "fig:"){.fpm-v04-figure fig-alt="El momento puede diferir de la masa por la velocidad" width="381px" fig-cap=""}
+<figure id="fig-fpm-v04-i-28-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-28-R01.svg" class="lightbox" data-gallery="fpm-v04-c28"><img src="/assets/books/fispm/v04/I-28-R01.svg" alt="El momento puede diferir de la masa por la velocidad. Diagrama del capítulo 28; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="381" height="231" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 28.2.** Para $L=v^2/2+a v-U$, el momento es $p=v+a$. Las dos rectas comparan $a=0$ y $a=1$. Invertir la relación exige conservar ese desplazamiento al construir $H=(p-a)^2/2+U$. Véase §[28.6](#fispm-c28-lagrangianos-cuadruxe1ticos-y-momentos-desplazados).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c28-p0006}
 
@@ -269,7 +289,17 @@ En las coordenadas reescaladas $x=\sqrt{m\omega}\,q$, $y=p/\sqrt{m\omega}$, las 
 
 []{#fig:I-28-N02}
 
-![**Figura 28.3.** Con $m=k=1$, $H=(q^2+p^2)/2$. Las curvas de energía son círculos y el flujo gira en sentido horario: en $q>0,p=0$, $\dot p=-q<0$. Véase §[28.7](#fispm-c28-el-oscilador-y-sus-curvas-de-fase).](/assets/books/fispm/v04/I-28-N02.svg "fig:"){.fpm-v04-figure fig-alt="Niveles de Hamilton" width="358px" fig-cap=""}
+<figure id="fig-fpm-v04-i-28-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-28-N02.svg" class="lightbox" data-gallery="fpm-v04-c28"><img src="/assets/books/fispm/v04/I-28-N02.svg" alt="Niveles de Hamilton. Diagrama del capítulo 28; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="358" height="269" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 28.3.** Con $m=k=1$, $H=(q^2+p^2)/2$. Las curvas de energía son círculos y el flujo gira en sentido horario: en $q>0,p=0$, $\dot p=-q<0$. Véase §[28.7](#fispm-c28-el-oscilador-y-sus-curvas-de-fase).
+
+</figcaption>
+
+</figure>
 
 En un sistema autónomo, dos órbitas distintas no pueden cruzarse en un estado regular: si pasan por el mismo punto, la unicidad, junto con una traslación del origen temporal, las hace partes de una misma órbita. Para un sistema dependiente del tiempo, la unicidad compara estados en el mismo instante. Las curvas proyectadas sobre $(q,p)$ sí pueden encontrarse en tiempos diferentes, porque el campo que actúa en ese punto puede haber cambiado.
 
@@ -299,7 +329,17 @@ Si $0<E<2A$, hay dos puntos de retorno alrededor del mínimo, donde $p=0$ y el m
 
 []{#fig:I-28-N03}
 
-![**Figura 28.4.** Para $H=p^2/2+1-\cos\theta$, se muestran $E=0{,}5$, $2$ y $2{,}6$. El nivel $E=2$ es la separatriz; las libraciones quedan debajo y las rotaciones encima. Los bordes angulares se identifican. Véase §[28.8](#fispm-c28-el-puxe9ndulo-libraciones-rotaciones-y-separatriz).](/assets/books/fispm/v04/I-28-N03.svg "fig:"){.fpm-v04-figure fig-alt="Libración, separatriz y rotación" width="469px" fig-cap=""}
+<figure id="fig-fpm-v04-i-28-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-28-N03.svg" class="lightbox" data-gallery="fpm-v04-c28"><img src="/assets/books/fispm/v04/I-28-N03.svg" alt="Libración, separatriz y rotación. Diagrama del capítulo 28; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="469" height="331" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 28.4.** Para $H=p^2/2+1-\cos\theta$, se muestran $E=0{,}5$, $2$ y $2{,}6$. El nivel $E=2$ es la separatriz; las libraciones quedan debajo y las rotaciones encima. Los bordes angulares se identifican. Véase §[28.8](#fispm-c28-el-puxe9ndulo-libraciones-rotaciones-y-separatriz).
+
+</figcaption>
+
+</figure>
 
 Por tanto $|\dot x|\sim\sqrt{A/I}\,|x|$ y el tiempo requerido para alcanzar $x=0$ contiene una integral proporcional a $\int dx/|x|$, que diverge. $\square$
 

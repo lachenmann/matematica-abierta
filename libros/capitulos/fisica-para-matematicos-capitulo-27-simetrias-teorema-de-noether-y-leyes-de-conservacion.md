@@ -53,7 +53,17 @@ Escribimos $p_a=\partial L/\partial\dot q^a$ y $\mathcal E_a=\dot p_a-\partial L
 
 []{#fig:I-27-N01}
 
-![**Figura 27.1.** Si $L$ no depende de una coordenada $q$, las traslaciones en esa coordenada son simetrías y el momento conjugado se conserva. La afirmación se refiere al lagrangiano y a sus hipótesis de regularidad. Véase §[27.1](#fispm-c27-una-coordenada-ausente-y-un-momento-constante).](/assets/books/fispm/v04/I-27-N01.svg "fig:"){.fpm-v04-figure fig-alt="Coordenada cíclica" width="358px" fig-cap=""}
+<figure id="fig-fpm-v04-i-27-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-27-N01.svg" class="lightbox" data-gallery="fpm-v04-c27"><img src="/assets/books/fispm/v04/I-27-N01.svg" alt="Coordenada cíclica. Diagrama del capítulo 27; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="358" height="191" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 27.1.** Si $L$ no depende de una coordenada $q$, las traslaciones en esa coordenada son simetrías y el momento conjugado se conserva. La afirmación se refiere al lagrangiano y a sus hipótesis de regularidad. Véase §[27.1](#fispm-c27-una-coordenada-ausente-y-un-momento-constante).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c27-d0001}
 
@@ -233,7 +243,17 @@ Un potencial que depende sólo de diferencias de posiciones cumple esa invarianc
 
 []{#fig:I-27-R01}
 
-![**Figura 27.2.** En el lagrangiano libre $L=m\dot x^2/2$, trasladar la posición por una constante conserva la acción y genera otra historia de igual velocidad. La carga de Noether asociada es el momento $p=m\dot x$. Véase §[27.6](#fispm-c27-traslaciones-y-momento-lineal).](/assets/books/fispm/v04/I-27-R01.svg "fig:"){.fpm-v04-figure fig-alt="Una simetría transforma soluciones completas" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-27-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-27-R01.svg" class="lightbox" data-gallery="fpm-v04-c27"><img src="/assets/books/fispm/v04/I-27-R01.svg" alt="Una simetría transforma soluciones completas. Diagrama del capítulo 27; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="255" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 27.2.** En el lagrangiano libre $L=m\dot x^2/2$, trasladar la posición por una constante conserva la acción y genera otra historia de igual velocidad. La carga de Noether asociada es el momento $p=m\dot x$. Véase §[27.6](#fispm-c27-traslaciones-y-momento-lineal).
+
+</figcaption>
+
+</figure>
 
 []{#rotaciones-y-momento-angular}
 
@@ -247,7 +267,17 @@ Una rotación infinitesimal alrededor de un eje unitario $\mathbf n$ cambia cada
 
 []{#fig:I-27-N02}
 
-![**Figura 27.3.** Una rotación infinitesimal desplaza tangencialmente cada punto. Para un potencial central, la fuerza es radial y su trabajo virtual rotacional es cero; la carga correspondiente es el momento angular. Véase §[27.7](#fispm-c27-rotaciones-y-momento-angular).](/assets/books/fispm/v04/I-27-N02.svg "fig:"){.fpm-v04-figure fig-alt="Variación de rotación" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-27-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-27-N02.svg" class="lightbox" data-gallery="fpm-v04-c27"><img src="/assets/books/fispm/v04/I-27-N02.svg" alt="Variación de rotación. Diagrama del capítulo 27; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="367" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 27.3.** Una rotación infinitesimal desplaza tangencialmente cada punto. Para un potencial central, la fuerza es radial y su trabajo virtual rotacional es cero; la carga correspondiente es el momento angular. Véase §[27.7](#fispm-c27-rotaciones-y-momento-angular).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c27-p0007}
 
@@ -277,7 +307,17 @@ Si el lagrangiano no depende explícitamente del tiempo, trasladar el reloj medi
 
 []{#fig:I-27-N03}
 
-![**Figura 27.4.** En el oscilador autónomo normalizado, $K=\tfrac12\sin^2u$ (continua), $U=\tfrac12\cos^2u$ (discontinua) y $E=1/2$ (punteada). La invariancia temporal conserva la suma, no cada término. Véase §[27.8](#fispm-c27-traslaciones-temporales-y-energuxeda).](/assets/books/fispm/v04/I-27-N03.svg "fig:"){.fpm-v04-figure fig-alt="Autonomía y energía" width="404px" fig-cap=""}
+<figure id="fig-fpm-v04-i-27-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-27-N03.svg" class="lightbox" data-gallery="fpm-v04-c27"><img src="/assets/books/fispm/v04/I-27-N03.svg" alt="Autonomía y energía. Diagrama del capítulo 27; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="404" height="251" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 27.4.** En el oscilador autónomo normalizado, $K=\tfrac12\sin^2u$ (continua), $U=\tfrac12\cos^2u$ (discontinua) y $E=1/2$ (punteada). La invariancia temporal conserva la suma, no cada término. Véase §[27.8](#fispm-c27-traslaciones-temporales-y-energuxeda).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c27-p0008}
 

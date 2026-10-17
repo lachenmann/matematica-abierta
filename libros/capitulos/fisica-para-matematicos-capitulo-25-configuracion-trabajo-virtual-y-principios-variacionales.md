@@ -83,7 +83,17 @@ Para un movimiento real $r(t)=R(q(t),t)$, en cambio, $\dot r=J\dot q+R_t, \qquad
 
 []{#fig:I-25-N01}
 
-![**Figura 25.1.** Con tiempo fijo y longitud de péndulo fija, $\delta r$ es tangente al círculo. La tensión radial realiza trabajo virtual nulo; esta afirmación depende de la idealidad del vínculo. Véase §[25.2](#fispm-c25-desplazar-virtualmente-y-avanzar-en-el-tiempo).](/assets/books/fispm/v04/I-25-N01.svg "fig:"){.fpm-v04-figure fig-alt="Desplazamiento virtual" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-25-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-25-N01.svg" class="lightbox" data-gallery="fpm-v04-c25"><img src="/assets/books/fispm/v04/I-25-N01.svg" alt="Desplazamiento virtual. Diagrama del capítulo 25; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="294" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 25.1.** Con tiempo fijo y longitud de péndulo fija, $\delta r$ es tangente al círculo. La tensión radial realiza trabajo virtual nulo; esta afirmación depende de la idealidad del vínculo. Véase §[25.2](#fispm-c25-desplazar-virtualmente-y-avanzar-en-el-tiempo).
+
+</figcaption>
+
+</figure>
 
 Una cuenta sobre una circunferencia cuyo radio $\ell(t)$ cambia ilustra la diferencia. Las variaciones virtuales son tangentes al círculo de ese instante. La velocidad real tiene además una componente radial $\dot\ell\,\mathbf e_r$. Una reacción radial puede ser perpendicular a todo desplazamiento virtual y realizar trabajo durante el movimiento real.
 
@@ -107,7 +117,17 @@ Escribamos Newton como $m_i\ddot{\mathbf r}_i=\mathbf F_i+\mathbf R_i$, separand
 
 []{#fig:I-25-R01}
 
-![**Figura 25.2.** En una guía circular fija y lisa, el desplazamiento virtual admisible es tangente y la reacción es normal. Su trabajo virtual es cero. Las flechas no describen dos fuerzas que se equilibren. Véase §[25.3](#fispm-c25-quuxe9-se-supone-de-las-fuerzas-de-vuxednculo).](/assets/books/fispm/v04/I-25-R01.svg "fig:"){.fpm-v04-figure fig-alt="Desplazamiento virtual y reacción ideal" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-25-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-25-R01.svg" class="lightbox" data-gallery="fpm-v04-c25"><img src="/assets/books/fispm/v04/I-25-R01.svg" alt="Desplazamiento virtual y reacción ideal. Diagrama del capítulo 25; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="367" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 25.2.** En una guía circular fija y lisa, el desplazamiento virtual admisible es tangente y la reacción es normal. Su trabajo virtual es cero. Las flechas no describen dos fuerzas que se equilibren. Véase §[25.3](#fispm-c25-quuxe9-se-supone-de-las-fuerzas-de-vuxednculo).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c25-d0003}
 
@@ -257,7 +277,17 @@ Fijemos dos tiempos $t_0<t_1$ y dos configuraciones en una carta local. Para com
 
 []{#fig:I-25-N02}
 
-![**Figura 25.3.** Las curvas variadas comparten los extremos y difieren en su interior. La acción asigna un número a cada curva completa; la variación deriva esa asignación con respecto al parámetro de la familia. Véase §[25.8](#fispm-c25-una-funciuxf3n-cuyo-argumento-es-una-curva).](/assets/books/fispm/v04/I-25-N02.svg "fig:"){.fpm-v04-figure fig-alt="Familia de curvas admisibles" width="360px" fig-cap=""}
+<figure id="fig-fpm-v04-i-25-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-25-N02.svg" class="lightbox" data-gallery="fpm-v04-c25"><img src="/assets/books/fispm/v04/I-25-N02.svg" alt="Familia de curvas admisibles. Diagrama del capítulo 25; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="360" height="257" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 25.3.** Las curvas variadas comparten los extremos y difieren en su interior. La acción asigna un número a cada curva completa; la variación deriva esa asignación con respecto al parámetro de la familia. Véase §[25.8](#fispm-c25-una-funciuxf3n-cuyo-argumento-es-una-curva).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c25-d0005}
 
@@ -369,7 +399,17 @@ Tomemos $L=m\dot q^2/2-m\omega^2q^2/2$, con $m,\omega>0$, en $[0,\tau]$. Su ecua
 
 []{#fig:I-25-N03}
 
-![**Figura 25.4.** Para la variación $\eta=\sin(\pi t/T)$ del oscilador, el signo de la segunda variación es el de $(\pi/T)^2-\omega_0^2$. El modo pierde positividad en $T\omega_0=\pi$. Véase §[25.12](#fispm-c25-el-oscilador-muxednimo-degeneraciuxf3n-y-punto-de-silla).](/assets/books/fispm/v04/I-25-N03.svg "fig:"){.fpm-v04-figure fig-alt="Signo de la segunda variación" width="549px" fig-cap=""}
+<figure id="fig-fpm-v04-i-25-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-25-N03.svg" class="lightbox" data-gallery="fpm-v04-c25"><img src="/assets/books/fispm/v04/I-25-N03.svg" alt="Signo de la segunda variación. Diagrama del capítulo 25; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="549" height="236" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 25.4.** Para la variación $\eta=\sin(\pi t/T)$ del oscilador, el signo de la segunda variación es el de $(\pi/T)^2-\omega_0^2$. El modo pierde positividad en $T\omega_0=\pi$. Véase §[25.12](#fispm-c25-el-oscilador-muxednimo-degeneraciuxf3n-y-punto-de-silla).
+
+</figcaption>
+
+</figure>
 
 $$S[q+\varepsilon\eta]-S[q] =\frac{m\varepsilon^2}{2}\int_0^\tau (\dot\eta^2-\omega^2\eta^2)\,dt.$$
 

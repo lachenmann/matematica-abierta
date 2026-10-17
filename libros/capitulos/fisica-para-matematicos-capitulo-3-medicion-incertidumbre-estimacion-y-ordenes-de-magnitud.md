@@ -455,7 +455,17 @@ La coincidencia de las pantallas no basta para concluir que los dos sistemas de 
 
 []{#fig:I-03-R01}
 
-![**Figura 3.1.** Las marcas vecinas están separadas por $\Delta$. La posición entre marcas exige un procedimiento de lectura y una evaluación de incertidumbre; la resolución no determina por sí sola toda la incertidumbre de la medición. Véase §[3.2](#fispm-c03-instrumentos-escalas-y-resoluciuxf3n).](/assets/books/fispm/v04/I-03-R01.svg "fig:"){.fpm-v04-figure fig-alt="La resolución delimita la lectura" width="362px" fig-cap=""}
+<figure id="fig-fpm-v04-i-03-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-03-R01.svg" class="lightbox" data-gallery="fpm-v04-c03"><img src="/assets/books/fispm/v04/I-03-R01.svg" alt="La resolución delimita la lectura. Diagrama del capítulo 3; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="362" height="152" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 3.1.** Las marcas vecinas están separadas por $\Delta$. La posición entre marcas exige un procedimiento de lectura y una evaluación de incertidumbre; la resolución no determina por sí sola toda la incertidumbre de la medición. Véase §[3.2](#fispm-c03-instrumentos-escalas-y-resoluciuxf3n).
+
+</figcaption>
+
+</figure>
 
 Este capítulo necesita, por tanto, separar varias preguntas:
 
@@ -1501,7 +1511,17 @@ No significa necesariamente que alguien haya trabajado mal. El sistema puede hab
 
 []{#fig:I-03-R02}
 
-![**Figura 3.2.** Dos distribuciones de igual anchura pueden estar centradas en lugares diferentes. La curva discontinua representa una serie desplazada respecto de la referencia. La anchura ilustra dispersión; el desplazamiento de su centro ilustra sesgo. Véase §[3.4](#fispm-c03-error-sesgo-e-incertidumbre).](/assets/books/fispm/v04/I-03-R02.svg "fig:"){.fpm-v04-figure fig-alt="Dispersión y sesgo responden a preguntas distintas" width="426px" fig-cap=""}
+<figure id="fig-fpm-v04-i-03-r02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-03-R02.svg" class="lightbox" data-gallery="fpm-v04-c03"><img src="/assets/books/fispm/v04/I-03-R02.svg" alt="Dispersión y sesgo responden a preguntas distintas. Diagrama del capítulo 3; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="426" height="248" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 3.2.** Dos distribuciones de igual anchura pueden estar centradas en lugares diferentes. La curva discontinua representa una serie desplazada respecto de la referencia. La anchura ilustra dispersión; el desplazamiento de su centro ilustra sesgo. Véase §[3.4](#fispm-c03-error-sesgo-e-incertidumbre).
+
+</figcaption>
+
+</figure>
 
 Por eso debemos separar desde el comienzo:
 
@@ -2461,7 +2481,17 @@ La pregunta está mal planteada si todavía no hemos declarado **cómo se relaci
 
 []{#fig:I-03-N02}
 
-![**Figura 3.3.** Los contornos normalizados $X^2+Y^2=1$ (continuo) y $X^2-1{,}2XY+Y^2=0{,}64$ (discontinuo) corresponden a matrices de covarianza con correlaciones $0$ y $0{,}6$. Aquí $X=\delta x/u_x$ e $Y=\delta y/u_y$. No se les asigna un nivel de confianza. Véase §[3.6](#fispm-c03-combinaciuxf3n-de-incertidumbres).](/assets/books/fispm/v04/I-03-N02.svg "fig:"){.fpm-v04-figure fig-alt="Correlación y combinación" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-03-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-03-N02.svg" class="lightbox" data-gallery="fpm-v04-c03"><img src="/assets/books/fispm/v04/I-03-N02.svg" alt="Correlación y combinación. Diagrama del capítulo 3; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="335" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 3.3.** Los contornos normalizados $X^2+Y^2=1$ (continuo) y $X^2-1{,}2XY+Y^2=0{,}64$ (discontinuo) corresponden a matrices de covarianza con correlaciones $0$ y $0{,}6$. Aquí $X=\delta x/u_x$ e $Y=\delta y/u_y$. No se les asigna un nivel de confianza. Véase §[3.6](#fispm-c03-combinaciuxf3n-de-incertidumbres).
+
+</figcaption>
+
+</figure>
 
 **Principio 3.6 --- La ausencia de correlación es una hipótesis del modelo** Las incertidumbres estándar pueden combinarse cuadráticamente sólo cuando las hipótesis que justifican esa combinación están declaradas. En particular, tratar dos entradas como no correlacionadas no es un automatismo: debe estar justificado por el diseño de la medición, la procedencia de los datos o el modelo adoptado.
 
@@ -2939,11 +2969,31 @@ Por tanto, la derivada no aparece aquí como un procedimiento formal aislado. Ap
 
 []{#fig:I-03-R03}
 
-![**Figura 3.4.** Para datos simétricos $x=\pm a$, la media de $x$ es cero y la de $x^2$ vale $a^2$. Transformar la media y promediar los valores transformados son operaciones distintas. La derivada nula en el origen no elimina esta variación de segundo orden. Véase §[3.7](#fispm-c03-propagaciuxf3n-mediante-linealizaciuxf3n).](/assets/books/fispm/v04/I-03-R03.svg "fig:"){.fpm-v04-figure fig-alt="Una transformación no lineal cambia los promedios" width="383px" fig-cap=""}
+<figure id="fig-fpm-v04-i-03-r03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-03-R03.svg" class="lightbox" data-gallery="fpm-v04-c03"><img src="/assets/books/fispm/v04/I-03-R03.svg" alt="Una transformación no lineal cambia los promedios. Diagrama del capítulo 3; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="383" height="250" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 3.4.** Para datos simétricos $x=\pm a$, la media de $x$ es cero y la de $x^2$ vale $a^2$. Transformar la media y promediar los valores transformados son operaciones distintas. La derivada nula en el origen no elimina esta variación de segundo orden. Véase §[3.7](#fispm-c03-propagaciuxf3n-mediante-linealizaciuxf3n).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-03-N03}
 
-![**Figura 3.5.** Para $y=x^2$, alrededor de $x_0=1$, la tangente $y=1+2(x-1)$ aproxima la función. El residuo exacto es $(x-1)^2$; la propagación lineal requiere una banda suficientemente pequeña. Véase §[3.7](#fispm-c03-propagaciuxf3n-mediante-linealizaciuxf3n).](/assets/books/fispm/v04/I-03-N03.svg "fig:"){.fpm-v04-figure fig-alt="Linealizar una medición" width="550px" fig-cap=""}
+<figure id="fig-fpm-v04-i-03-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-03-N03.svg" class="lightbox" data-gallery="fpm-v04-c03"><img src="/assets/books/fispm/v04/I-03-N03.svg" alt="Linealizar una medición. Diagrama del capítulo 3; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="550" height="246" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 3.5.** Para $y=x^2$, alrededor de $x_0=1$, la tangente $y=1+2(x-1)$ aproxima la función. El residuo exacto es $(x-1)^2$; la propagación lineal requiere una banda suficientemente pequeña. Véase §[3.7](#fispm-c03-propagaciuxf3n-mediante-linealizaciuxf3n).
+
+</figcaption>
+
+</figure>
 
 **Principio 3.7 --- Propagar incertidumbre exige propagar también el modelo** Una incertidumbre no se transporta desde las entradas a la salida mediante una regla independiente de la relación física utilizada. Debemos propagar las variaciones a través del modelo de medición y declarar el régimen en el cual su aproximación local es adecuada.
 
@@ -3472,11 +3522,31 @@ La GUM recomienda precisamente evitar un número excesivo de dígitos en la esti
 
 []{#fig:I-03-R04}
 
-![**Figura 3.6.** Un intervalo $X\in[1/2,3/2]$ se transforma bajo $Y=1/X$ en $Y\in[2/3,2]$. Sus extremos quedan a distancias diferentes de $Y(1)=1$. El ejemplo es un intervalo de valores admisibles, sin asignación de probabilidad. Véase §[3.8](#fispm-c03-cuxf3mo-se-reporta-un-resultado).](/assets/books/fispm/v04/I-03-R04.svg "fig:"){.fpm-v04-figure fig-alt="La transformación puede volver asimétrico un intervalo" width="461px" fig-cap=""}
+<figure id="fig-fpm-v04-i-03-r04" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-03-R04.svg" class="lightbox" data-gallery="fpm-v04-c03"><img src="/assets/books/fispm/v04/I-03-R04.svg" alt="La transformación puede volver asimétrico un intervalo. Diagrama del capítulo 3; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="461" height="247" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 3.6.** Un intervalo $X\in[1/2,3/2]$ se transforma bajo $Y=1/X$ en $Y\in[2/3,2]$. Sus extremos quedan a distancias diferentes de $Y(1)=1$. El ejemplo es un intervalo de valores admisibles, sin asignación de probabilidad. Véase §[3.8](#fispm-c03-cuxf3mo-se-reporta-un-resultado).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-03-N01}
 
-![**Figura 3.7.** El punto es la estimación y el segmento representa el intervalo declarado. La superposición de bandas no prueba por sí sola igualdad de los valores verdaderos. Véase §[3.8](#fispm-c03-cuxf3mo-se-reporta-un-resultado).](/assets/books/fispm/v04/I-03-N01.svg "fig:"){.fpm-v04-figure fig-alt="Valores e intervalos" width="395px" fig-cap=""}
+<figure id="fig-fpm-v04-i-03-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-03-N01.svg" class="lightbox" data-gallery="fpm-v04-c03"><img src="/assets/books/fispm/v04/I-03-N01.svg" alt="Valores e intervalos. Diagrama del capítulo 3; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="395" height="167" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 3.7.** El punto es la estimación y el segmento representa el intervalo declarado. La superposición de bandas no prueba por sí sola igualdad de los valores verdaderos. Véase §[3.8](#fispm-c03-cuxf3mo-se-reporta-un-resultado).
+
+</figcaption>
+
+</figure>
 
 []{#dos-niveles-de-incertidumbre-que-no-deben-confundirse}
 
@@ -3978,7 +4048,17 @@ En ambos casos la incertidumbre estándar absoluta es la misma: $0.1\,\mathrm{cm
 
 []{#fig:I-03-R05}
 
-![**Figura 3.8.** Los dos intervalos dibujados se solapan. Ese hecho geométrico no equivale por sí solo a una prueba de compatibilidad estadística: hacen falta el significado de las barras, las correlaciones y el criterio declarado. Véase §[3.9](#fispm-c03-incertidumbre-relativa-y-comparaciuxf3n-de-escalas).](/assets/books/fispm/v04/I-03-R05.svg "fig:"){.fpm-v04-figure fig-alt="Comparar intervalos exige una regla" width="550px" fig-cap=""}
+<figure id="fig-fpm-v04-i-03-r05" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-03-R05.svg" class="lightbox" data-gallery="fpm-v04-c03"><img src="/assets/books/fispm/v04/I-03-R05.svg" alt="Comparar intervalos exige una regla. Diagrama del capítulo 3; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="550" height="193" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 3.8.** Los dos intervalos dibujados se solapan. Ese hecho geométrico no equivale por sí solo a una prueba de compatibilidad estadística: hacen falta el significado de las barras, las correlaciones y el criterio declarado. Véase §[3.9](#fispm-c03-incertidumbre-relativa-y-comparaciuxf3n-de-escalas).
+
+</figcaption>
+
+</figure>
 
 $$u(L_1) \quad\text{frente a}\quad u(L_2),$$
 

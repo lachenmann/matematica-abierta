@@ -215,7 +215,17 @@ Los puntos materiales tienen coordenadas corporales constantes. Al derivar $\mat
 
 []{#fig:I-21-N01}
 
-![**Figura 21.1.** La diferencia de velocidades de dos puntos de un rígido es perpendicular a su separación. El esquema muestra $\omega$ saliente del plano y un punto $A$ instantáneamente fijo. Véase §[21.4](#fispm-c21-todos-los-puntos-comparten-una-ley-de-velocidades).](/assets/books/fispm/v04/I-21-N01.svg "fig:"){.fpm-v04-figure fig-alt="Velocidades en un rígido" width="351px" fig-cap=""}
+<figure id="fig-fpm-v04-i-21-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-21-N01.svg" class="lightbox" data-gallery="fpm-v04-c21"><img src="/assets/books/fispm/v04/I-21-N01.svg" alt="Velocidades en un rígido. Diagrama del capítulo 21; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="351" height="199" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 21.1.** La diferencia de velocidades de dos puntos de un rígido es perpendicular a su separación. El esquema muestra $\omega$ saliente del plano y un punto $A$ instantáneamente fijo. Véase §[21.4](#fispm-c21-todos-los-puntos-comparten-una-ley-de-velocidades).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c21-p0007}
 
@@ -271,7 +281,17 @@ En ejercicio 21.7 apareció un punto con velocidad cero mientras el resto del cu
 
 []{#fig:I-21-R01}
 
-![**Figura 21.2.** Una rueda que avanza hacia la derecha sin deslizar tiene velocidad nula en el contacto instantáneo y velocidad $2V_C$ en el punto superior. La condición es $V_C=R|\omega|$, con giro horario. Véase §[21.5](#fispm-c21-el-eje-instantuxe1neo-puede-moverse).](/assets/books/fispm/v04/I-21-R01.svg "fig:"){.fpm-v04-figure fig-alt="Velocidades en rodadura sin deslizamiento" width="346px" fig-cap=""}
+<figure id="fig-fpm-v04-i-21-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-21-R01.svg" class="lightbox" data-gallery="fpm-v04-c21"><img src="/assets/books/fispm/v04/I-21-R01.svg" alt="Velocidades en rodadura sin deslizamiento. Diagrama del capítulo 21; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="346" height="217" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 21.2.** Una rueda que avanza hacia la derecha sin deslizar tiene velocidad nula en el contacto instantáneo y velocidad $2V_C$ en el punto superior. La condición es $V_C=R|\omega|$, con giro horario. Véase §[21.5](#fispm-c21-el-eje-instantuxe1neo-puede-moverse).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c21-p0009}
 
@@ -399,7 +419,17 @@ Para una partícula, el momento angular combina posición y velocidad. Al sumar 
 
 []{#fig:I-21-N03}
 
-![**Figura 21.3.** Con momentos principales $I_1=1$, $I_2=2$ y componentes normalizadas $\omega=(1{,}5,1)$, resulta $L=(1{,}5,2)$. Fuera de un eje principal, $L$ y $\omega$ pueden no ser paralelos. Véase §[21.7](#fispm-c21-el-momento-angular-puede-apuntar-hacia-otro-lado).](/assets/books/fispm/v04/I-21-N03.svg "fig:"){.fpm-v04-figure fig-alt="Inercia y dirección de momento" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-21-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-21-N03.svg" class="lightbox" data-gallery="fpm-v04-c21"><img src="/assets/books/fispm/v04/I-21-N03.svg" alt="Inercia y dirección de momento. Diagrama del capítulo 21; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="343" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 21.3.** Con momentos principales $I_1=1$, $I_2=2$ y componentes normalizadas $\omega=(1{,}5,1)$, resulta $L=(1{,}5,2)$. Fuera de un eje principal, $L$ y $\omega$ pueden no ser paralelos. Véase §[21.7](#fispm-c21-el-momento-angular-puede-apuntar-hacia-otro-lado).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c21-p0013}
 
@@ -663,7 +693,17 @@ Hasta aquí los cambios de base conservaron el punto de referencia. Mover el pun
 
 []{#fig:I-21-N02}
 
-![**Figura 21.4.** Para una misma dirección de giro, desplazar el eje una distancia perpendicular $d$ desde el centro de masa añade $Md^2$ al momento de inercia. Véase §[21.12](#fispm-c21-cambiar-el-punto-conservar-la-direcciuxf3n-del-eje).](/assets/books/fispm/v04/I-21-N02.svg "fig:"){.fpm-v04-figure fig-alt="Ejes paralelos" width="345px" fig-cap=""}
+<figure id="fig-fpm-v04-i-21-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-21-N02.svg" class="lightbox" data-gallery="fpm-v04-c21"><img src="/assets/books/fispm/v04/I-21-N02.svg" alt="Ejes paralelos. Diagrama del capítulo 21; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="345" height="312" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 21.4.** Para una misma dirección de giro, desplazar el eje una distancia perpendicular $d$ desde el centro de masa añade $Md^2$ al momento de inercia. Véase §[21.12](#fispm-c21-cambiar-el-punto-conservar-la-direcciuxf3n-del-eje).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c21-d0008}
 

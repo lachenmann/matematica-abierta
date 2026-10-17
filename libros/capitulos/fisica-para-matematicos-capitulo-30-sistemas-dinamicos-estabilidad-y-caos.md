@@ -57,7 +57,17 @@ Denotamos por $\Phi_t(z_0)$ la solución que parte de $z_0$ en tiempo cero. La u
 
 []{#fig:I-30-N02}
 
-![**Figura 30.1.** Para $\dot x=x(1-x)$, dos datos $x_0=1/4$ y $1/2$ generan curvas $x(t)=[1+(x_0^{-1}-1)e^{-t}]^{-1}$. No se cruzan: la unicidad conserva el orden de los datos. Véase §[30.1](#fispm-c30-ecuaciones-flujos-y-retratos-de-fase).](/assets/books/fispm/v04/I-30-N02.svg "fig:"){.fpm-v04-figure fig-alt="Orden de soluciones escalares" width="399px" fig-cap=""}
+<figure id="fig-fpm-v04-i-30-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-30-N02.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/I-30-N02.svg" alt="Orden de soluciones escalares. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="399" height="242" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.1.** Para $\dot x=x(1-x)$, dos datos $x_0=1/4$ y $1/2$ generan curvas $x(t)=[1+(x_0^{-1}-1)e^{-t}]^{-1}$. No se cruzan: la unicidad conserva el orden de los datos. Véase §[30.1](#fispm-c30-ecuaciones-flujos-y-retratos-de-fase).
+
+</figcaption>
+
+</figure>
 
 El **retrato de fase** reúne las órbitas, los equilibrios y sus sentidos de recorrido. En una ecuación escalar basta marcar sobre una recta dónde $f$ es positiva o negativa. En dos dimensiones aparecen curvas, ciclos y separatrices. La curva geométrica no registra por sí sola cuánto tarda el sistema en recorrerla.
 
@@ -103,19 +113,49 @@ Por ejemplo, $\dot x=-x^3$ tiene derivada cero en el origen y aun así es asint�
 
 []{#fig:FPM-I-30-F01}
 
-![**Figura 30.2.** Los signos de f fijan el sentido del movimiento. Los ceros ±1 atraen y el cero central repele. La gráfica y la recta de fase describen objetos distintos.](/assets/books/fispm/v04/FPM-I-30-F01.svg "fig:"){.fpm-v04-figure fig-alt="Original: Los signos de f fijan el sentido del movimiento. Los ceros ±1 atraen y el cero central rep" width="576px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F01.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F01.svg" alt="Los signos de f fijan el sentido del movimiento. Los ceros ±1 atraen y el cero central rep. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="576" height="432" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.2.** Los signos de f fijan el sentido del movimiento. Los ceros ±1 atraen y el cero central repele. La gráfica y la recta de fase describen objetos distintos.
+
+</figcaption>
+
+</figure>
 
 []{#fig-fispm-c30-f02}
 
 []{#fig:FPM-I-30-F02}
 
-![**Figura 30.3.** Una perturbación cambia el círculo recorrido, pero su distancia al origen permanece constante. Estabilidad no implica convergencia al equilibrio.](/assets/books/fispm/v04/FPM-I-30-F02.svg "fig:"){.fpm-v04-figure fig-alt="Original: Una perturbación cambia el círculo recorrido, pero su distancia al origen permanece consta" width="516px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F02.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F02.svg" alt="Una perturbación cambia el círculo recorrido, pero su distancia al origen permanece consta. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="516" height="486" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.3.** Una perturbación cambia el círculo recorrido, pero su distancia al origen permanece constante. Estabilidad no implica convergencia al equilibrio.
+
+</figcaption>
+
+</figure>
 
 []{#fig-fispm-c30-f04}
 
 []{#fig:FPM-I-30-F04}
 
-![**Figura 30.4.** Ambas soluciones tienden a cero, pero sus tasas son distintas. Una ventana temporal finita no prueba el comportamiento asintótico; ejercicio 30.3 lo establece analíticamente.](/assets/books/fispm/v04/FPM-I-30-F04.svg "fig:"){.fpm-v04-figure fig-alt="Original: Ambas soluciones tienden a cero, pero sus tasas son distintas. Una ventana temporal finita" width="576px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f04" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F04.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F04.svg" alt="Ambas soluciones tienden a cero, pero sus tasas son distintas. Una ventana temporal finita. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="576" height="432" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.4.** Ambas soluciones tienden a cero, pero sus tasas son distintas. Una ventana temporal finita no prueba el comportamiento asintótico; ejercicio 30.3 lo establece analíticamente.
+
+</figcaption>
+
+</figure>
 
 []{#la-información-que-contiene-la-linealización}
 
@@ -259,7 +299,17 @@ Este resultado justifica una conclusión no lineal a partir de la matriz. Si apa
 
 []{#fig:FPM-I-30-F12}
 
-![**Figura 30.5.** Para $A=\begin{pmatrix}-1&1\\0&-1\end{pmatrix}$, la matriz $P$ del ejercicio 30.7 da $\dot V=-(x^2+y^2)$. La elipse $V=0{,}15$ queda dentro de la bola unitaria y contiene la bola de radio $0{,}3$. Los datos de esta última quedan atrapados en el subnivel. Las coordenadas y el tiempo están normalizados.](/assets/books/fispm/v04/FPM-I-30-F12.svg "fig:"){.fpm-v04-figure fig-alt="Original: Para \\(A=\\begin{pmatrix}-1&1\\\\0&-1\\end{pmatrix}\\), la matriz \\(P\\) de ejercicio 30.7 da \\(" width="516px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f12" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F12.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F12.svg" alt="Para \(A=\begin{pmatrix}-1&amp;1\\0&amp;-1\end{pmatrix}\), la matriz \(P\) de ejercicio 30.7 da \(. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="516" height="486" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.5.** Para $A=\begin{pmatrix}-1&1\\0&-1\end{pmatrix}$, la matriz $P$ del ejercicio 30.7 da $\dot V=-(x^2+y^2)$. La elipse $V=0{,}15$ queda dentro de la bola unitaria y contiene la bola de radio $0{,}3$. Los datos de esta última quedan atrapados en el subnivel. Las coordenadas y el tiempo están normalizados.
+
+</figcaption>
+
+</figure>
 
 []{#energía-péndulo-y-ausencia-de-atracción-hamiltoniana}
 
@@ -295,13 +345,33 @@ La proposición permite convergencia sobre conjuntos de dimensión menor, como u
 
 []{#fig:FPM-I-30-F03}
 
-![**Figura 30.6.** Las trayectorias del eje estable convergen al origen, pero los datos transversales se alejan. Este conjunto excepcional no convierte la silla en un atractor de un abierto.](/assets/books/fispm/v04/FPM-I-30-F03.svg "fig:"){.fpm-v04-figure fig-alt="Original: Las trayectorias del eje estable convergen al origen, pero los datos transversales se alej" width="516px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F03.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F03.svg" alt="Las trayectorias del eje estable convergen al origen, pero los datos transversales se alej. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="516" height="486" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.6.** Las trayectorias del eje estable convergen al origen, pero los datos transversales se alejan. Este conjunto excepcional no convierte la silla en un atractor de un abierto.
+
+</figcaption>
+
+</figure>
 
 []{#fig-fispm-c30-f05}
 
 []{#fig:FPM-I-30-F05}
 
-![**Figura 30.7.** Por debajo de E/A=2 hay libraciones; por encima, rotaciones. El nivel rojo contiene la separatriz. Los extremos izquierdo y derecho pertenecen al mismo cilindro de fases.](/assets/books/fispm/v04/FPM-I-30-F05.svg "fig:"){.fpm-v04-figure fig-alt="Original: Por debajo de E/A=2 hay libraciones; por encima, rotaciones. El nivel rojo contiene la sep" width="576px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f05" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F05.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F05.svg" alt="Por debajo de E/A=2 hay libraciones; por encima, rotaciones. El nivel rojo contiene la sep. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="576" height="432" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.7.** Por debajo de E/A=2 hay libraciones; por encima, rotaciones. El nivel rojo contiene la separatriz. Los extremos izquierdo y derecho pertenecen al mismo cilindro de fases.
+
+</figcaption>
+
+</figure>
 
 []{#retratos-locales-y-términos-que-la-matriz-no-ve}
 
@@ -327,7 +397,17 @@ También debemos distinguir las órbitas de su parametrización. Multiplicar un 
 
 []{#fig:FPM-I-30-F18}
 
-![**Figura 30.8.** Para la familia de §6, $r(t)=r_0/\sqrt{1-2\sigma r_0^2t}$ y $\theta(t)=\theta_0+t$. Se comparan los mismos datos $r_0=0{,}65$ en $0\le t\le1$, con coordenadas y tiempo normalizados. Las tres linealizaciones son la matriz de giro, pero los términos cúbicos producen atracción, centro o repulsión. Para $\sigma=1$ la fórmula sólo existe antes de $1/(2r_0^2)=200/169$; la figura termina antes de ese escape. La clasificación asintótica se demuestra en el ejercicio 30.9, fuera de la ventana finita dibujada.](/assets/books/fispm/v04/FPM-I-30-F18.svg "fig:"){.fpm-v04-figure fig-alt="Original: Para la familia de §6, \\(r(t)=r_0/\\sqrt{1-2\\sigma r_0^2t}\\) y \\(\\theta(t)=\\theta_0+t\\). Se" width="576px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f18" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F18.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F18.svg" alt="Para la familia de §6, \(r(t)=r_0/\sqrt{1-2\sigma r_0^2t}\) y \(\theta(t)=\theta_0+t\). Se. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="576" height="423" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.8.** Para la familia de §6, $r(t)=r_0/\sqrt{1-2\sigma r_0^2t}$ y $\theta(t)=\theta_0+t$. Se comparan los mismos datos $r_0=0{,}65$ en $0\le t\le1$, con coordenadas y tiempo normalizados. Las tres linealizaciones son la matriz de giro, pero los términos cúbicos producen atracción, centro o repulsión. Para $\sigma=1$ la fórmula sólo existe antes de $1/(2r_0^2)=200/169$; la figura termina antes de ese escape. La clasificación asintótica se demuestra en el ejercicio 30.9, fuera de la ventana finita dibujada.
+
+</figcaption>
+
+</figure>
 
 []{#órbitas-periódicas-y-ciclos-límite}
 
@@ -401,7 +481,17 @@ Para comprobar la última igualdad, escribimos $F=(-y,x)+a(r)(x,y)$, con $a(r)=r
 
 []{#fig:FPM-I-30-F16}
 
-![**Figura 30.9.** El campo del contraejemplo tiene divergencia $-1/r$ en la corona. Las flechas muestran el sentido del campo y la circunferencia azul es periódica. La región sombreada no pertenece al dominio; por eso no puede aplicarse Green al disco que encierra la órbita. Coordenadas y tiempo normalizados.](/assets/books/fispm/v04/FPM-I-30-F16.svg "fig:"){.fpm-v04-figure fig-alt="Original: El campo del contraejemplo tiene divergencia \\(-1/r\\) en la corona. Las flechas muestran e" width="516px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f16" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F16.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F16.svg" alt="El campo del contraejemplo tiene divergencia \(-1/r\) en la corona. Las flechas muestran e. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="516" height="486" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.9.** El campo del contraejemplo tiene divergencia $-1/r$ en la corona. Las flechas muestran el sentido del campo y la circunferencia azul es periódica. La región sombreada no pertenece al dominio; por eso no puede aplicarse Green al disco que encierra la órbita. Coordenadas y tiempo normalizados.
+
+</figcaption>
+
+</figure>
 
 Para el oscilador amortiguado, la divergencia constante negativa impide ciclos en el plano completo. En el ejemplo de la proposición 30.7 es $2-4r^2$ y cambia de signo; la proposición no prohíbe el ciclo. El dominio y el signo son hipótesis esenciales del argumento.
 
@@ -409,7 +499,17 @@ Para el oscilador amortiguado, la divergencia constante negativa impide ciclos e
 
 []{#fig:FPM-I-30-F06}
 
-![**Figura 30.10.** Las trayectorias se aproximan a la circunferencia roja y mantienen su fase inicial. Se representa atracción orbital, no convergencia hacia un mismo punto del ciclo.](/assets/books/fispm/v04/FPM-I-30-F06.svg "fig:"){.fpm-v04-figure fig-alt="Original: Las trayectorias se aproximan a la circunferencia roja y mantienen su fase inicial. Se rep" width="516px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f06" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F06.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F06.svg" alt="Las trayectorias se aproximan a la circunferencia roja y mantienen su fase inicial. Se rep. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="516" height="486" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.10.** Las trayectorias se aproximan a la circunferencia roja y mantienen su fase inicial. Se representa atracción orbital, no convergencia hacia un mismo punto del ciclo.
+
+</figcaption>
+
+</figure>
 
 []{#observar-el-movimiento-a-intervalos}
 
@@ -431,7 +531,17 @@ La transversalidad significa que el campo cruza la sección en lugar de ser tang
 
 []{#fig:FPM-I-30-F13}
 
-![**Figura 30.11.** En el campo de la proposición 30.7, la sección es $\{(x,0):x>0\}$ y el ángulo crece a velocidad uno. El primer retorno ocurre en tiempo $2\pi$ y envía el radio $1/4$ a $(1+15e^{-4\pi})^{-1/2}$. El círculo rojo es la órbita límite; el mapa de retorno actúa sobre una sección de dimensión uno.](/assets/books/fispm/v04/FPM-I-30-F13.svg "fig:"){.fpm-v04-figure fig-alt="Original: En el campo de proposición 30.7, la sección es \\(\\{(x,0):x>0\\}\\) y el ángulo crece a veloc" width="516px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f13" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F13.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F13.svg" alt="En el campo de proposición 30.7, la sección es \(\{(x,0):x&gt;0\}\) y el ángulo crece a veloc. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="516" height="486" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.11.** En el campo de la proposición 30.7, la sección es $\{(x,0):x>0\}$ y el ángulo crece a velocidad uno. El primer retorno ocurre en tiempo $2\pi$ y envía el radio $1/4$ a $(1+15e^{-4\pi})^{-1/2}$. El círculo rojo es la órbita límite; el mapa de retorno actúa sobre una sección de dimensión uno.
+
+</figcaption>
+
+</figure>
 
 Para una ecuación con fuerza periódica de período $T$, otro mapa útil observa siempre la misma fase de la fuerza: $F(z_0)=\Phi_{T,0}(z_0).$ La periodicidad del campo permite repetir esa misma aplicación. Una solución que se repite después de un período de la fuerza es un punto fijo; una de período mínimo $kT$ produce un ciclo de $k$ puntos.
 
@@ -457,7 +567,17 @@ Con $\gamma=0$ el mapa conserva áreas; con $\gamma>0$ las contrae. La ecuación
 
 []{#fig:FPM-I-30-F14}
 
-![**Figura 30.12.** Cada punto azul corresponde a la misma fase de la fuerza; el rojo es el dato inicial. El gris muestra sólo los primeros dos períodos del movimiento continuo. Las observaciones forman un mapa de dimensión dos y no son las intersecciones con la sección de la figura anterior. La simulación es ilustrativa: no acredita caos ni convergencia asintótica.](/assets/books/fispm/v04/FPM-I-30-F14.svg "fig:"){.fpm-v04-figure fig-alt="Original: Cada punto azul corresponde a la misma fase de la fuerza; el rojo es el dato inicial. El g" width="516px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f14" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F14.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F14.svg" alt="Cada punto azul corresponde a la misma fase de la fuerza; el rojo es el dato inicial. El g. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="516" height="486" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.12.** Cada punto azul corresponde a la misma fase de la fuerza; el rojo es el dato inicial. El gris muestra sólo los primeros dos períodos del movimiento continuo. Las observaciones forman un mapa de dimensión dos y no son las intersecciones con la sección de la figura anterior. La simulación es ilustrativa: no acredita caos ni convergencia asintótica.
+
+</figcaption>
+
+</figure>
 
 No todo mapa procede de un flujo invertible. Los mapas de intervalo que estudiaremos pueden enviar dos puntos distintos al mismo estado. Su utilidad conceptual y su posible origen como modelos reducidos no requieren identificarlos con la evolución exacta e invertible del estado completo de un sistema mecánico.
 
@@ -483,7 +603,17 @@ La vecindad se conserva y, al iterar, la distancia queda acotada por $c^n|x_0-x_
 
 []{#fig:I-30-N01}
 
-![**Figura 30.13.** El mapa $x_{n+1}=-x_n/2$ tiene multiplicador $-1/2$. Desde $x_0=1$, las iteraciones alternan de signo y convergen a cero: $x_n=(-1/2)^n$. La alternancia no implica inestabilidad. Véase §[30.9](#fispm-c30-estabilidad-de-puntos-fijos-de-un-mapa).](/assets/books/fispm/v04/I-30-N01.svg "fig:"){.fpm-v04-figure fig-alt="Contracción con alternancia" width="574px" fig-cap=""}
+<figure id="fig-fpm-v04-i-30-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-30-N01.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/I-30-N01.svg" alt="Contracción con alternancia. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="574" height="174" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.13.** El mapa $x_{n+1}=-x_n/2$ tiene multiplicador $-1/2$. Desde $x_0=1$, las iteraciones alternan de signo y convergen a cero: $x_n=(-1/2)^n$. La alternancia no implica inestabilidad. Véase §[30.9](#fispm-c30-estabilidad-de-puntos-fijos-de-un-mapa).
+
+</figcaption>
+
+</figure>
 
 Cuando $F'(x_*)<0$, los errores cambian de lado al iterar; ese cambio de signo no impide atracción si su magnitud se reduce. Los casos $F'=1$ o $F'=-1$ requieren términos adicionales.
 
@@ -537,7 +667,17 @@ Al pasar por $r=3$, el ciclo se separa del fijo positivo y éste pasa a tener de
 
 []{#fig:FPM-I-30-F07}
 
-![**Figura 30.14.** Las dos nuevas ramas se intercambian bajo una iteración. Su multiplicador tiene módulo menor que uno entre 3 y 1+√6. Los círculos huecos indican valores no clasificados aquí por el criterio estricto. Este dibujo no afirma una cascada infinita ni caos para todos los parámetros posteriores.](/assets/books/fispm/v04/FPM-I-30-F07.svg "fig:"){.fpm-v04-figure fig-alt="Original: Las dos nuevas ramas se intercambian bajo una iteración. Su multiplicador tiene módulo men" width="576px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f07" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F07.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F07.svg" alt="Las dos nuevas ramas se intercambian bajo una iteración. Su multiplicador tiene módulo men. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="576" height="432" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.14.** Las dos nuevas ramas se intercambian bajo una iteración. Su multiplicador tiene módulo menor que uno entre 3 y 1+√6. Los círculos huecos indican valores no clasificados aquí por el criterio estricto. Este dibujo no afirma una cascada infinita ni caos para todos los parámetros posteriores.
+
+</figcaption>
+
+</figure>
 
 []{#sensibilidad-y-exponentes-de-crecimiento}
 
@@ -583,7 +723,17 @@ Es una estimación dentro del régimen de crecimiento considerado. La separació
 
 []{#fig:FPM-I-30-F15}
 
-![**Figura 30.15.** La ley aproximada de crecimiento de §11 se representa en escala logarítmica. La recta azul parte de un error $10^{-6}$ y la ocre de su mitad. Los horizontes estimados son $57{,}5646$ y $61{,}0304$ en la unidad temporal usada. Reducir el error a la mitad añade $\log(2)/0{,}2$ al horizonte. Las rectas muestran la consecuencia de la hipótesis exponencial; su prolongación no prueba que un sistema físico conserve esa tasa ni describe la saturación del error.](/assets/books/fispm/v04/FPM-I-30-F15.svg "fig:"){.fpm-v04-figure fig-alt="Original: La ley aproximada de crecimiento de §11 se representa en escala logarítmica. La recta azul" width="576px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f15" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F15.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F15.svg" alt="La ley aproximada de crecimiento de §11 se representa en escala logarítmica. La recta azul. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="576" height="432" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.15.** La ley aproximada de crecimiento de §11 se representa en escala logarítmica. La recta azul parte de un error $10^{-6}$ y la ocre de su mitad. Los horizontes estimados son $57{,}5646$ y $61{,}0304$ en la unidad temporal usada. Reducir el error a la mitad añade $\log(2)/0{,}2$ al horizonte. Las rectas muestran la consecuencia de la hipótesis exponencial; su prolongación no prueba que un sistema físico conserve esa tasa ni describe la saturación del error.
+
+</figcaption>
+
+</figure>
 
 La silla $\dot q=\lambda q$, $\dot p=-\lambda p$ tiene exponente positivo en una dirección. Sus trayectorias genéricas escapan de vecindades y no producen por ese solo hecho una dinámica caótica recurrente en un compacto. Incluso una órbita periódica repulsora puede tener un exponente positivo. Para dar una afirmación de caos fijaremos una definición y probaremos sus requisitos.
 
@@ -629,7 +779,17 @@ La demostración combina expansión con un retorno de las imágenes a toda la re
 
 []{#fig:FPM-I-30-F08}
 
-![**Figura 30.16.** La rama roja realiza el caso del ejercicio 30.26. La demostración de densidad periódica usa ramas de orden arbitrario; mostrar sólo el cuarto iterado no reemplaza ese argumento.](/assets/books/fispm/v04/FPM-I-30-F08.svg "fig:"){.fpm-v04-figure fig-alt="Original: La rama roja realiza el caso de ejercicio 30.26. La demostración de densidad periódica usa" width="576px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f08" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F08.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F08.svg" alt="La rama roja realiza el caso de ejercicio 30.26. La demostración de densidad periódica usa. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="576" height="432" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.16.** La rama roja realiza el caso del ejercicio 30.26. La demostración de densidad periódica usa ramas de orden arbitrario; mostrar sólo el cuarto iterado no reemplaza ese argumento.
+
+</figcaption>
+
+</figure>
 
 []{#el-mapa-logístico-y-el-cálculo-finito}
 
@@ -669,13 +829,33 @@ Una simulación larga no resuelve por sí sola ese problema. Debemos comparar pr
 
 []{#fig:FPM-I-30-F09}
 
-![**Figura 30.17.** h transforma órbitas completas, no sólo los fijos destacados. Sus derivadas se anulan en los extremos; la conjugación no transporta automáticamente los valores numéricos de los exponentes de Lyapunov.](/assets/books/fispm/v04/FPM-I-30-F09.svg "fig:"){.fpm-v04-figure fig-alt="Original: h transforma órbitas completas, no sólo los fijos destacados. Sus derivadas se anulan en l" width="576px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f09" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F09.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F09.svg" alt="h transforma órbitas completas, no sólo los fijos destacados. Sus derivadas se anulan en l. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="576" height="432" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.17.** h transforma órbitas completas, no sólo los fijos destacados. Sus derivadas se anulan en los extremos; la conjugación no transporta automáticamente los valores numéricos de los exponentes de Lyapunov.
+
+</figcaption>
+
+</figure>
 
 []{#fig-fispm-c30-f10}
 
 []{#fig:FPM-I-30-F10}
 
-![**Figura 30.18.** El dato 3/8 es eventualmente fijo, no periódico. La caída de datos diádicos en cero ilustra una limitación de la representación binaria finita, compatible con el caos del mapa sobre los reales.](/assets/books/fispm/v04/FPM-I-30-F10.svg "fig:"){.fpm-v04-figure fig-alt="Original: El dato 3/8 es eventualmente fijo, no periódico. La caída de datos diádicos en cero ilustr" width="576px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f10" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F10.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F10.svg" alt="El dato 3/8 es eventualmente fijo, no periódico. La caída de datos diádicos en cero ilustr. Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="576" height="432" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.18.** El dato 3/8 es eventualmente fijo, no periódico. La caída de datos diádicos en cero ilustra una limitación de la representación binaria finita, compatible con el caos del mapa sobre los reales.
+
+</figcaption>
+
+</figure>
 
 []{#mapas-mecánicos-y-alcance-de-la-predicción}
 
@@ -713,7 +893,17 @@ El paso a muchos grados de libertad añadirá una dificultad nueva: describir el
 
 []{#fig:FPM-I-30-F11}
 
-![**Figura 30.19.** El impulso deforma el rectángulo y el vuelo lo cizalla. La conservación de área se prueba mediante det DF=1; esta figura de un paso no atribuye caos a las órbitas.](/assets/books/fispm/v04/FPM-I-30-F11.svg "fig:"){.fpm-v04-figure fig-alt="Original: El impulso deforma el rectángulo y el vuelo lo cizalla. La conservación de área se prueba " width="576px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f11" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F11.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F11.svg" alt="El impulso deforma el rectángulo y el vuelo lo cizalla. La conservación de área se prueba . Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="576" height="432" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.19.** El impulso deforma el rectángulo y el vuelo lo cizalla. La conservación de área se prueba mediante det DF=1; esta figura de un paso no atribuye caos a las órbitas.
+
+</figcaption>
+
+</figure>
 
 []{#complemento-jordan-green}
 
@@ -787,7 +977,17 @@ Fuera de un disco grande que contiene $\Gamma$, el plano es conexo por caminos. 
 
 []{#fig:FPM-I-30-F17}
 
-![**Figura 30.20.** En la circunferencia, el lado izquierdo del recorrido está dentro. Los valores uno y cero no pueden cambiar a lo largo de un camino que evite la curva. La prueba construye esa misma separación para cualquier curva simple y regular de clase $C^2$; no supone que su interior sea convexo.](/assets/books/fispm/v04/FPM-I-30-F17.svg "fig:"){.fpm-v04-figure fig-alt="Original: En la circunferencia, el lado izquierdo del recorrido está dentro. Los valores uno y cero " width="516px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-30-f17" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-30-F17.svg" class="lightbox" data-gallery="fpm-v04-c30"><img src="/assets/books/fispm/v04/FPM-I-30-F17.svg" alt="En la circunferencia, el lado izquierdo del recorrido está dentro. Los valores uno y cero . Diagrama del capítulo 30; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="516" height="486" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 30.20.** En la circunferencia, el lado izquierdo del recorrido está dentro. Los valores uno y cero no pueden cambiar a lo largo de un camino que evite la curva. La prueba construye esa misma separación para cualquier curva simple y regular de clase $C^2$; no supone que su interior sea convexo.
+
+</figcaption>
+
+</figure>
 
 Falta comprobar la afirmación relativa a $U$. El número de vueltas también se conserva durante una deformación continua de lazos que evite el punto $a$. Para verlo sin derivar la deformación, usamos los ángulos continuos de antes. Dos lazos cuyas direcciones respecto de $a$ estén uniformemente próximas tienen una diferencia angular continua elegida en $(-\pi,\pi)$; esa diferencia tiene el mismo valor al principio y al final del parámetro, por lo que los dos lazos dan el mismo entero. La continuidad uniforme de las direcciones respecto de $a$ durante una deformación sobre el cuadrado compacto permite dividirla en un número finito de pasos de esta clase. Así se conserva el entero incluso si los lazos intermedios no son diferenciables.
 

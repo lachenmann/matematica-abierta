@@ -51,7 +51,17 @@ Si ambos cuerpos reciben velocidades iniciales, parte de ellas puede describir u
 
 []{#fig:I-17-N01}
 
-![**Figura 17.1.** El movimiento se reconstruye a partir de $R$ y $r$: $r_1=R-(m_2/M)r$ y $r_2=R+(m_1/M)r$, con $M=m_1+m_2$. El esquema muestra el caso de masas iguales. Véase §[17.1](#fispm-c17-separar-dos-movimientos-sin-perder-las-partuxedculas).](/assets/books/fispm/v04/I-17-N01.svg "fig:"){.fpm-v04-figure fig-alt="Centro y separación" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-17-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-17-N01.svg" class="lightbox" data-gallery="fpm-v04-c17"><img src="/assets/books/fispm/v04/I-17-N01.svg" alt="Centro y separación. Diagrama del capítulo 17; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="161" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 17.1.** El movimiento se reconstruye a partir de $R$ y $r$: $r_1=R-(m_2/M)r$ y $r_2=R+(m_1/M)r$, con $M=m_1+m_2$. El esquema muestra el caso de masas iguales. Véase §[17.1](#fispm-c17-separar-dos-movimientos-sin-perder-las-partuxedculas).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c17-d0001}
 
@@ -273,7 +283,17 @@ La conservación angular permite reemplazar la velocidad angular por $L/(\mu r^2
 
 []{#fig:I-17-N02}
 
-![**Figura 17.2.** En el ejemplo reducido $U_{\rm ef}=1/(2r^2)-1/r$, el mínimo está en $r=1$. El nivel $E=-0{,}3$ corta la curva en dos radios de retorno y deja un intervalo accesible entre ellos. Véase §[17.5](#fispm-c17-el-potencial-efectivo).](/assets/books/fispm/v04/I-17-N02.svg "fig:"){.fpm-v04-figure fig-alt="Barrera centrífuga" width="441px" fig-cap=""}
+<figure id="fig-fpm-v04-i-17-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-17-N02.svg" class="lightbox" data-gallery="fpm-v04-c17"><img src="/assets/books/fispm/v04/I-17-N02.svg" alt="Barrera centrífuga. Diagrama del capítulo 17; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="441" height="237" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 17.2.** En el ejemplo reducido $U_{\rm ef}=1/(2r^2)-1/r$, el mínimo está en $r=1$. El nivel $E=-0{,}3$ corta la curva en dos radios de retorno y deja un intervalo accesible entre ellos. Véase §[17.5](#fispm-c17-el-potencial-efectivo).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c17-d0004}
 
@@ -337,7 +357,17 @@ Cuando conocemos $E$ y $L$, el cambio de radio puede expresarse por una integral
 
 []{#fig:I-17-R01}
 
-![**Figura 17.3.** En el modelo $U_{\rm ef}=1/(2r^2)-1/r$, una energía $E=-1/4$ admite movimiento entre dos radios $r=2\pm\sqrt2$. La velocidad radial se anula allí; la componente angular puede permanecer distinta de cero. Véase §[17.6](#fispm-c17-cuadraturas-y-puntos-de-retorno).](/assets/books/fispm/v04/I-17-R01.svg "fig:"){.fpm-v04-figure fig-alt="Los retornos se leen sobre el potencial efectivo" width="437px" fig-cap=""}
+<figure id="fig-fpm-v04-i-17-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-17-R01.svg" class="lightbox" data-gallery="fpm-v04-c17"><img src="/assets/books/fispm/v04/I-17-R01.svg" alt="Los retornos se leen sobre el potencial efectivo. Diagrama del capítulo 17; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="437" height="237" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 17.3.** En el modelo $U_{\rm ef}=1/(2r^2)-1/r$, una energía $E=-1/4$ admite movimiento entre dos radios $r=2\pm\sqrt2$. La velocidad radial se anula allí; la componente angular puede permanecer distinta de cero. Véase §[17.6](#fispm-c17-cuadraturas-y-puntos-de-retorno).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c17-d0005}
 
@@ -497,7 +527,17 @@ Una perturbación radial pequeña de una órbita circular estable hace que el ra
 
 []{#fig:I-17-N03}
 
-![**Figura 17.4.** Para el oscilador central isotrópico, $x=2\cos u$, $y=\sin u$ forma una elipse centrada en el origen de fuerza. Un período radial corresponde a medio período orbital. Véase §[17.9](#fispm-c17-dos-frecuencias-pruxf3ximas-a-una-uxf3rbita-circular).](/assets/books/fispm/v04/I-17-N03.svg "fig:"){.fpm-v04-figure fig-alt="Frecuencias y cierre orbital" width="348px" fig-cap=""}
+<figure id="fig-fpm-v04-i-17-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-17-N03.svg" class="lightbox" data-gallery="fpm-v04-c17"><img src="/assets/books/fispm/v04/I-17-N03.svg" alt="Frecuencias y cierre orbital. Diagrama del capítulo 17; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="348" height="227" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 17.4.** Para el oscilador central isotrópico, $x=2\cos u$, $y=\sin u$ forma una elipse centrada en el origen de fuerza. Un período radial corresponde a medio período orbital. Véase §[17.9](#fispm-c17-dos-frecuencias-pruxf3ximas-a-una-uxf3rbita-circular).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c17-d0006}
 

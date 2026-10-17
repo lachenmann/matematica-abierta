@@ -97,7 +97,7 @@ La prueba explica por qué importa la escala común. Si las cotas fueran $\alpha
 
 La distancia inicial ofrece ya una aproximación controlada, pero todavía deja abierta la elección de $L$ como referencia. Esa elección pertenece al problema físico y determina qué cociente habrá que observar.
 
-Referencia interna utilizada: [capítulo 3, §12](#fispm-c03-robustez-cotas-y-estimaciuxf3n-por-caminos-independientes). El ejemplo y la proposición son construcciones propias.
+Referencia interna utilizada: [capítulo 3, §12](fisica-para-matematicos-capitulo-3-medicion-incertidumbre-estimacion-y-ordenes-de-magnitud.md#fispm-c03-robustez-cotas-y-estimaciuxf3n-por-caminos-independientes). El ejemplo y la proposición son construcciones propias.
 
 []{#fispm-t1-c06-s02}
 
@@ -157,7 +157,7 @@ Para mantener separadas las operaciones, una relación normalizada se escribirá
 
 **Solución.** Las nuevas coordenadas satisfacen $y'=y/c$ y $\widetilde y'=\widetilde y/c$. Por tanto, $|y'-\widetilde y'|=|y-\widetilde y|/c$. El número que expresa el error sobre la referencia escogida cambia. Si $q\ne0$, dividir por $|y'|=|y|/c$ recupera el mismo error relativo. Si $q=0$, esa comparación relativa no está definida, aunque ambos errores referidos a escala sí lo estén. Elegir una escala mayor puede hacer pequeño el número normalizado; no mejora la aproximación.
 
-Referencia interna utilizada: [capítulo 2, §9](#fispm-c02-escalas-caracteruxedsticas-y-uxf3rdenes-de-magnitud) y [capítulo 2, §10](#fispm-c02-adimensionalizaciuxf3n-e-inferencia-dimensional). No se reconstruye la teoría dimensional ni Buckingham.
+Referencia interna utilizada: [capítulo 2, §9](fisica-para-matematicos-capitulo-2-magnitudes-unidades-y-analisis-dimensional.md#fispm-c02-escalas-caracteruxedsticas-y-uxf3rdenes-de-magnitud) y [capítulo 2, §10](fisica-para-matematicos-capitulo-2-magnitudes-unidades-y-analisis-dimensional.md#fispm-c02-adimensionalizaciuxf3n-e-inferencia-dimensional). No se reconstruye la teoría dimensional ni Buckingham.
 
 []{#parámetros-adimensionales-y-definición-de-régimen}
 
@@ -281,7 +281,7 @@ La advertencia tiene una interpretación geométrica inmediata. En la distancia 
 
 **Solución.** El incremento exacto es $\varepsilon$ y el aproximado es cero. El error relativo es $|\varepsilon-0|/\varepsilon=1$, aunque el error respecto a la escala $1$ sea $\varepsilon$. La primera conclusión confunde las dos observables. En el segundo caso, la razón es $\varepsilon x$. Para $x=1/\varepsilon$ vale $1$; para $x=1/\varepsilon^2$ vale $1/\varepsilon$ y aumenta sin cota al disminuir el parámetro. El coeficiente pequeño no justifica la eliminación. Una reparación posible es declarar un dominio $0<x\le X$ con $X$ fijo y exigir $\varepsilon X$ menor que la tolerancia.
 
-Referencias internas utilizadas: [capítulo 2, §9](#fispm-c02-escalas-caracteruxedsticas-y-uxf3rdenes-de-magnitud) y [capítulo 3, §10](#fispm-c03-estimaciuxf3n-fuxedsica-y-uxf3rdenes-de-magnitud). Las definiciones comparativas y proposición 6.3 se construyen localmente.
+Referencias internas utilizadas: [capítulo 2, §9](fisica-para-matematicos-capitulo-2-magnitudes-unidades-y-analisis-dimensional.md#fispm-c02-escalas-caracteruxedsticas-y-uxf3rdenes-de-magnitud) y [capítulo 3, §10](fisica-para-matematicos-capitulo-3-medicion-incertidumbre-estimacion-y-ordenes-de-magnitud.md#fispm-c03-estimaciuxf3n-fuxedsica-y-uxf3rdenes-de-magnitud). Las definiciones comparativas y proposición 6.3 se construyen localmente.
 
 []{#términos-dominantes-y-balance-dominante}
 
@@ -295,7 +295,17 @@ La relación normalizada $y+\varepsilon y^2=a$, con $a,\varepsilon>0$ y $y\ge0$,
 
 []{#fig:I-06-R03}
 
-![**Figura 6.1.** Los términos $u$ y $\varepsilon u^2$, con $\varepsilon=0{,}1$, son iguales en $u=10$. El segundo es pequeño respecto del primero sólo si $\varepsilon u\ll1$, aunque $\varepsilon$ sea pequeño. Véase §[6.5](#fispm-c06-tuxe9rminos-dominantes-y-balance-dominante).](/assets/books/fispm/v04/I-06-R03.svg "fig:"){.fpm-v04-figure fig-alt="El término dominante puede cambiar" width="408px" fig-cap=""}
+<figure id="fig-fpm-v04-i-06-r03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-06-R03.svg" class="lightbox" data-gallery="fpm-v04-c06"><img src="/assets/books/fispm/v04/I-06-R03.svg" alt="El término dominante puede cambiar. Diagrama del capítulo 6; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="408" height="246" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 6.1.** Los términos $u$ y $\varepsilon u^2$, con $\varepsilon=0{,}1$, son iguales en $u=10$. El segundo es pequeño respecto del primero sólo si $\varepsilon u\ll1$, aunque $\varepsilon$ sea pequeño. Véase §[6.5](#fispm-c06-tuxe9rminos-dominantes-y-balance-dominante).
+
+</figcaption>
+
+</figure>
 
 Para el primer candidato, la razón cuadrático/lineal vale $\varepsilon a$. Para el segundo, la razón lineal/cuadrático vale $1/\sqrt{\varepsilon a}$. Las dos reducciones proponen regímenes diferentes de la misma relación. La combinación $\eta=\varepsilon a$ decide cuál de las comparaciones puede hacerse pequeña. Un parámetro $\varepsilon$ diminuto no impide que $\eta$ sea grande si la entrada $a$ aumenta lo suficiente.
 
@@ -363,7 +373,17 @@ Un candidato puede satisfacer casi una ecuación y aun así estar lejos de su so
 
 []{#fig:I-06-N02}
 
-![**Figura 6.2.** En $0\le x\le1$, $0\le x-\sin x\le x^3/6$. La curva continua es el error y la discontinua su cota; aquí ambos se calculan con el mismo argumento adimensional. Véase §[6.6](#fispm-c06-error-residuo-y-calidad-de-una-aproximaciuxf3n).](/assets/books/fispm/v04/I-06-N02.svg "fig:"){.fpm-v04-figure fig-alt="Cota de un residuo" width="408px" fig-cap=""}
+<figure id="fig-fpm-v04-i-06-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-06-N02.svg" class="lightbox" data-gallery="fpm-v04-c06"><img src="/assets/books/fispm/v04/I-06-N02.svg" alt="Cota de un residuo. Diagrama del capítulo 6; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="408" height="253" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 6.2.** En $0\le x\le1$, $0\le x-\sin x\le x^3/6$. La curva continua es el error y la discontinua su cota; aquí ambos se calculan con el mismo argumento adimensional. Véase §[6.6](#fispm-c06-error-residuo-y-calidad-de-una-aproximaciuxf3n).
+
+</figcaption>
+
+</figure>
 
 Si la distancia exacta del modelo geométrico es $d$ y se utiliza $\widetilde d$, el defecto $|\widetilde d-d|$ compara distancias. Si la relación que define $d$ se escribe como $d^2-L^2-h^2=0$, sustituir $\widetilde d$ produce $\widetilde d^2-L^2-h^2$, una cantidad con dimensiones de longitud al cuadrado. Ambos defectos pueden relacionarse, pero no tienen el mismo tipo ni se comparan directamente mediante sus valores numéricos.
 
@@ -431,7 +451,7 @@ Si se reemplaza $F$ por $\widehat F=\delta F$, con $\delta>0$, el residuo pasa a
 
 **Solución.** $F(1)=0$ y $F'(y)=1+2y>0$ en el interior; la raíz es única porque $F$ es estrictamente creciente. En todo el intervalo puede emplearse la pendiente mínima $m=1$. El residuo del candidato es $1.01+(1.01)^2-2=0.0301$, así que proposición 6.5 garantiza un error no mayor que $0.0301$. El error exacto es $|1.01-1|=0.01$, que cumple la cota. La estimación usó la pendiente mínima del intervalo completo, inferior a las pendientes próximas a la raíz. Conserva una garantía más amplia a costa de precisión; no afirma que el error efectivo sea $0.0301$.
 
-Referencias utilizadas: [capítulo 3, §12](#fispm-c03-robustez-cotas-y-estimaciuxf3n-por-caminos-independientes) para cotas declaradas. La cota del residuo se demuestra mediante el teorema del valor medio.
+Referencias utilizadas: [capítulo 3, §12](fisica-para-matematicos-capitulo-3-medicion-incertidumbre-estimacion-y-ordenes-de-magnitud.md#fispm-c03-robustez-cotas-y-estimaciuxf3n-por-caminos-independientes) para cotas declaradas. La cota del residuo se demuestra mediante el teorema del valor medio.
 
 []{#linealización-alrededor-de-un-estado-de-referencia}
 
@@ -445,7 +465,17 @@ Una función puede resultar complicada en un intervalo amplio y tener una descri
 
 []{#fig:I-06-N01}
 
-![**Figura 6.3.** La curva $\sin x$ y su tangente $x$ se comparan en $|x|\le1$, con ángulo en radianes. La proximidad es local: no convierte ambas funciones en idénticas. Véase §[6.7](#fispm-c06-linealizaciuxf3n-alrededor-de-un-estado-de-referencia).](/assets/books/fispm/v04/I-06-N01.svg "fig:"){.fpm-v04-figure fig-alt="Aproximación angular" width="383px" fig-cap=""}
+<figure id="fig-fpm-v04-i-06-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-06-N01.svg" class="lightbox" data-gallery="fpm-v04-c06"><img src="/assets/books/fispm/v04/I-06-N01.svg" alt="Aproximación angular. Diagrama del capítulo 6; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="383" height="231" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 6.3.** La curva $\sin x$ y su tangente $x$ se comparan en $|x|\le1$, con ángulo en radianes. La proximidad es local: no convierte ambas funciones en idénticas. Véase §[6.7](#fispm-c06-linealizaciuxf3n-alrededor-de-un-estado-de-referencia).
+
+</figcaption>
+
+</figure>
 
 Para la distancia $f(h)=\sqrt{L^2+h^2}$, con $L>0$, el punto base $h=0$ tiene valor $L$ y pendiente cero. Su aproximación de primer orden será constante. En cambio, cerca de una altura base $h=L$, la pendiente no es cero y la descripción local conserva una variación proporcional al incremento. La función es la misma; cambia el estado alrededor del que se pregunta.
 
@@ -515,7 +545,17 @@ La derivada seleccionó una aproximación de primer orden, pero una aplicación 
 
 []{#fig:I-06-R02}
 
-![**Figura 6.4.** En $|x|\le1$, el resto de $e^x\approx1+x$ satisface $|e^x-1-x|\le(e/2)x^2$. La cota discontinua usa el máximo de la segunda derivada en ese intervalo. Véase §[6.8](#fispm-c06-resto-de-taylor-y-dominio-local-de-la-linealizaciuxf3n).](/assets/books/fispm/v04/I-06-R02.svg "fig:"){.fpm-v04-figure fig-alt="Una cota necesita su dominio" width="383px" fig-cap=""}
+<figure id="fig-fpm-v04-i-06-r02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-06-R02.svg" class="lightbox" data-gallery="fpm-v04-c06"><img src="/assets/books/fispm/v04/I-06-R02.svg" alt="Una cota necesita su dominio. Diagrama del capítulo 6; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="383" height="250" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 6.4.** En $|x|\le1$, el resto de $e^x\approx1+x$ satisface $|e^x-1-x|\le(e/2)x^2$. La cota discontinua usa el máximo de la segunda derivada en ese intervalo. Véase §[6.8](#fispm-c06-resto-de-taylor-y-dominio-local-de-la-linealizaciuxf3n).
+
+</figcaption>
+
+</figure>
 
 Si la segunda derivada es grande, la pendiente cambia rápidamente y el intervalo certificado puede ser pequeño. Si la segunda derivada está acotada, la pérdida acumulada al reemplazar las pendientes cercanas por la pendiente base puede estimarse integrando una cota. La interpretación geométrica es la separación entre la gráfica y su recta tangente.
 
@@ -665,7 +705,17 @@ Poner un parámetro igual a cero puede simplificar una relación y conservar una
 
 []{#fig:I-06-R01}
 
-![**Figura 6.5.** La familia $y_\varepsilon=e^{-x/\varepsilon}$ converge a cero para cada $x>0$ y conserva $y_\varepsilon(0)=1$. La gráfica usa $\varepsilon=0{,}1$: la aproximación exterior $y=0$ no es uniforme en $[0,1]$. Véase §[6.10](#fispm-c06-luxedmite-regular-y-seuxf1al-elemental-de-singularidad).](/assets/books/fispm/v04/I-06-R01.svg "fig:"){.fpm-v04-figure fig-alt="Un límite puede fallar cerca de una frontera" width="403px" fig-cap=""}
+<figure id="fig-fpm-v04-i-06-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-06-R01.svg" class="lightbox" data-gallery="fpm-v04-c06"><img src="/assets/books/fispm/v04/I-06-R01.svg" alt="Un límite puede fallar cerca de una frontera. Diagrama del capítulo 6; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="403" height="246" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 6.5.** La familia $y_\varepsilon=e^{-x/\varepsilon}$ converge a cero para cada $x>0$ y conserva $y_\varepsilon(0)=1$. La gráfica usa $\varepsilon=0{,}1$: la aproximación exterior $y=0$ no es uniforme en $[0,1]$. Véase §[6.10](#fispm-c06-luxedmite-regular-y-seuxf1al-elemental-de-singularidad).
+
+</figcaption>
+
+</figure>
 
 El diagnóstico debe relacionarse con la pregunta. Conservar una rama positiva cerca de un valor finito no exige preservar todas las raíces reales de la ecuación. Una aproximación uniforme en un intervalo alejado de cero tampoco necesita ser uniforme en un intervalo que lo incluye. Declarar la rama y el dominio evita convertir un éxito local en una conclusión sobre todo el modelo.
 
@@ -731,7 +781,17 @@ Una reducción puede estar bien resuelta y mal aplicada. En §5, omitir el térm
 
 []{#fig:I-06-R04}
 
-![**Figura 6.6.** Un residuo modelo $\varepsilon u^2$ debe compararse con una tolerancia declarada a lo largo de la solución. Aquí $\varepsilon=0{,}03$ y la línea discontinua vale $0{,}2$; el umbral se alcanza en $u=\sqrt{20/3}$. Véase §[6.11](#fispm-c06-coherencia-a-posteriori-de-los-tuxe9rminos-despreciados).](/assets/books/fispm/v04/I-06-R04.svg "fig:"){.fpm-v04-figure fig-alt="Comprobar el tamaño después de resolver" width="349px" fig-cap=""}
+<figure id="fig-fpm-v04-i-06-r04" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-06-R04.svg" class="lightbox" data-gallery="fpm-v04-c06"><img src="/assets/books/fispm/v04/I-06-R04.svg" alt="Comprobar el tamaño después de resolver. Diagrama del capítulo 6; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="349" height="222" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 6.6.** Un residuo modelo $\varepsilon u^2$ debe compararse con una tolerancia declarada a lo largo de la solución. Aquí $\varepsilon=0{,}03$ y la línea discontinua vale $0{,}2$; el umbral se alcanza en $u=\sqrt{20/3}$. Véase §[6.11](#fispm-c06-coherencia-a-posteriori-de-los-tuxe9rminos-despreciados).
+
+</figcaption>
+
+</figure>
 
 La comprobación es a posteriori porque utiliza la respuesta obtenida. No debe confundirse con elegir después una hipótesis que encubra el fallo: la comparación que se comprobará se declara antes de resolver. La respuesta puede confirmar la hipótesis, delimitarla o rechazarla.
 
@@ -787,7 +847,7 @@ La autoconsistencia no evalúa toda la adecuación física del modelo original. 
 
 **Solución.** El candidato satisface $0.01(10)^2=1$. En la relación completa, el término lineal omitido vale $10$ y el cuadrático conservado vale $1$, por lo que su razón es $10$, incompatible con la pequeñez requerida. Proposición 6.11 da $0<y_\ast<1$. Como $10>y_\ast$, el error relativo es $(10-y_\ast)/y_\ast=10/y_\ast-1>9$. Resolver una ecuación reducida no valida haber despreciado el término que domina sobre su propia respuesta.
 
-Referencias: Hinch, *Perturbation Methods* (1991), cap. 1, §§1.1--1.2, pp. 1--7, y [capítulo 3, §12](#fispm-c03-robustez-cotas-y-estimaciuxf3n-por-caminos-independientes).
+Referencias: Hinch, *Perturbation Methods* (1991), cap. 1, §§1.1--1.2, pp. 1--7, y [capítulo 3, §12](fisica-para-matematicos-capitulo-3-medicion-incertidumbre-estimacion-y-ordenes-de-magnitud.md#fispm-c03-robustez-cotas-y-estimaciuxf3n-por-caminos-independientes).
 
 []{#regímenes-múltiples-cruces-y-ruptura-de-aproximaciones}
 
@@ -801,7 +861,17 @@ Los dos candidatos de §5 responden a zonas distintas de la entrada normalizada.
 
 []{#fig:I-06-N03}
 
-![**Figura 6.7.** Si el error normalizado crece como $\varepsilon u$, con $\varepsilon=0{,}05$, alcanza la tolerancia $0{,}2$ en $u=4$. Un parámetro pequeño no garantiza precisión para tiempos arbitrarios. Véase §[6.12](#fispm-c06-reguxedmenes-muxfaltiples-cruces-y-ruptura-de-aproximaciones).](/assets/books/fispm/v04/I-06-N03.svg "fig:"){.fpm-v04-figure fig-alt="Acumulación secular" width="403px" fig-cap=""}
+<figure id="fig-fpm-v04-i-06-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-06-N03.svg" class="lightbox" data-gallery="fpm-v04-c06"><img src="/assets/books/fispm/v04/I-06-N03.svg" alt="Acumulación secular. Diagrama del capítulo 6; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="403" height="242" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 6.7.** Si el error normalizado crece como $\varepsilon u$, con $\varepsilon=0{,}05$, alcanza la tolerancia $0{,}2$ en $u=4$. Un parámetro pequeño no garantiza precisión para tiempos arbitrarios. Véase §[6.12](#fispm-c06-reguxedmenes-muxfaltiples-cruces-y-ruptura-de-aproximaciones).
+
+</figcaption>
+
+</figure>
 
 El cruce no se fija por una cifra universal de $\varepsilon$. La razón que decide es $\eta$, y el criterio de precisión puede delimitar regiones más estrechas que la comparación cualitativa. Saber que dos términos son comparables no equivale a saber que una de las reducciones tenga un error de diez por ciento.
 
@@ -857,7 +927,7 @@ Para otros datos, una región excluida por una cota suficiente puede contener pu
 
 **Solución.** La receta conservadora da $\eta\le0.1$ para el candidato lineal y $\eta\ge121$ para el cuadrático. No hay solapamiento; $0.1<\eta<121$ queda fuera de esas garantías. La cota más fuerte amplía el dominio cuadrático a $\eta\ge100$, pero todavía deja un intervalo sin garantía entre $0.1$ y $100$. Ninguno de los intervalos excluidos constituye por sí solo una región completa de fallo. Para $\eta=1$, el cálculo desarrollado antes del ejercicio da error relativo aproximadamente $0.618$ para ambos candidatos, superior a $0.1$: ese punto sí está rechazado por comparación efectiva. La ausencia de garantía y el error demostrado se registran como conclusiones distintas.
 
-Referencias internas: [capítulo 2, §9](#fispm-c02-escalas-caracteruxedsticas-y-uxf3rdenes-de-magnitud) y sus escalas normalizadas; controles propios proposiciones 6.11--6.12. No se introduce una teoría de empalme de aproximaciones.
+Referencias internas: [capítulo 2, §9](fisica-para-matematicos-capitulo-2-magnitudes-unidades-y-analisis-dimensional.md#fispm-c02-escalas-caracteruxedsticas-y-uxf3rdenes-de-magnitud) y sus escalas normalizadas; controles propios proposiciones 6.11--6.12. No se introduce una teoría de empalme de aproximaciones.
 
 []{#jerarquías-de-modelos-y-descripción-efectiva}
 
@@ -911,7 +981,7 @@ El presupuesto permite distribuir precisión cuando las contribuciones sí son c
 
 **Solución.** Con las dos cotas deterministas, proposición 6.13 da $|q_{\mathrm{obj}}-q_{\mathrm R}|\le0.05S$. Los modelos y el objetivo comparten dominio, escala y observable; sin esa correspondencia no sería legítimo sumar los defectos. Si falta la primera cota, sólo permanece la garantía de reducción $|q_{\mathrm M}-q_{\mathrm R}|\le0.03S$: no se obtiene una cota total respecto al objetivo. Si $0.02S$ es una incertidumbre estándar, no se ha dado la hipótesis determinista que requiere proposición 6.13. Habría que especificar el modelo de medición y la interpretación estadística apropiada antes de formular una afirmación probabilística; el número por sí solo no garantiza que toda discrepancia física sea menor que $0.02S$.
 
-Referencias internas utilizadas: [capítulo 3, §14](#fispm-c03-quuxe9-puede-y-quuxe9-no-puede-decir-una-mediciuxf3n) y [capítulo 1, §11](#fispm-c01-dominio-de-validez-y-teoruxedas-efectivas). El presupuesto y la jerarquía son construcciones propias sobre los controles del capítulo.
+Referencias internas utilizadas: [capítulo 3, §14](fisica-para-matematicos-capitulo-3-medicion-incertidumbre-estimacion-y-ordenes-de-magnitud.md#fispm-c03-quuxe9-puede-y-quuxe9-no-puede-decir-una-mediciuxf3n) y [capítulo 1, §11](fisica-para-matematicos-capitulo-1-teorias-fisicas-fenomenos-modelos-y-leyes.md#fispm-c01-dominio-de-validez-y-teoruxedas-efectivas). El presupuesto y la jerarquía son construcciones propias sobre los controles del capítulo.
 
 []{#protocolo-de-aproximación-controlada}
 
@@ -1009,11 +1079,11 @@ Una fórmula aproximada expresa una decisión sobre qué información conservar.
 
 ### 6.14.3. Canon interno citado {#fispm-c06-canon-interno-citado}
 
-- *Física para matemáticos*, Tomo I, capítulo 1, «Teorías físicas: fenómenos, modelos y leyes». [capítulo 1](#fispm-c01-teoruxedas-fuxedsicas-fenuxf3menos-modelos-y-leyes). Localizador utilizado: §11, «Dominio de validez y teorías efectivas», citado en §13.
+- *Física para matemáticos*, Tomo I, capítulo 1, «Teorías físicas: fenómenos, modelos y leyes». [capítulo 1](fisica-para-matematicos-capitulo-1-teorias-fisicas-fenomenos-modelos-y-leyes.md#fispm-c01-teoruxedas-fuxedsicas-fenuxf3menos-modelos-y-leyes). Localizador utilizado: §11, «Dominio de validez y teorías efectivas», citado en §13.
 
-- *Física para matemáticos*, Tomo I, capítulo 2, «Magnitudes, unidades y análisis dimensional». [capítulo 2](#fispm-c02-magnitudes-unidades-y-anuxe1lisis-dimensional). Localizadores utilizados: §§9--10, citados en §§2, 4 y 12.
+- *Física para matemáticos*, Tomo I, capítulo 2, «Magnitudes, unidades y análisis dimensional». [capítulo 2](fisica-para-matematicos-capitulo-2-magnitudes-unidades-y-analisis-dimensional.md#fispm-c02-magnitudes-unidades-y-anuxe1lisis-dimensional). Localizadores utilizados: §§9--10, citados en §§2, 4 y 12.
 
-- *Física para matemáticos*, Tomo I, capítulo 3, «Medición, incertidumbre, estimación y órdenes de magnitud». [capítulo 3](#fispm-c03-mediciuxf3n-incertidumbre-estimaciuxf3n-y-uxf3rdenes-de-magnitud). Localizadores utilizados: §§10, 12 y 14, citados en §§1, 4, 6, 11 y 13.
+- *Física para matemáticos*, Tomo I, capítulo 3, «Medición, incertidumbre, estimación y órdenes de magnitud». [capítulo 3](fisica-para-matematicos-capitulo-3-medicion-incertidumbre-estimacion-y-ordenes-de-magnitud.md#fispm-c03-mediciuxf3n-incertidumbre-estimaciuxf3n-y-uxf3rdenes-de-magnitud). Localizadores utilizados: §§10, 12 y 14, citados en §§1, 4, 6, 11 y 13.
 
 []{#obras-externas-citadas}
 

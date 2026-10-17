@@ -145,7 +145,17 @@ Un cuerpo liberado cerca del suelo suele acelerar hacia abajo. Para describir es
 
 []{#fig:I-10-N01}
 
-![**Figura 10.1.** Partícula en caída libre en el campo uniforme: la única fuerza es el peso $P=mg$ hacia abajo. La ausencia de apoyo significa $N=0$, aunque la partícula se aproxime al suelo. Véase §[10.3](#fispm-c10-gravedad-uniforme-y-peso).](/assets/books/fispm/v04/I-10-N01.svg "fig:"){.fpm-v04-figure fig-alt="Caída sin contacto" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-10-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-10-N01.svg" class="lightbox" data-gallery="fpm-v04-c10"><img src="/assets/books/fispm/v04/I-10-N01.svg" alt="Caída sin contacto. Diagrama del capítulo 10; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="450" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 10.1.** Partícula en caída libre en el campo uniforme: la única fuerza es el peso $P=mg$ hacia abajo. La ausencia de apoyo significa $N=0$, aunque la partícula se aproxime al suelo. Véase §[10.3](#fispm-c10-gravedad-uniforme-y-peso).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c10-d0003}
 
@@ -199,7 +209,17 @@ Una superficie puede impedir que un cuerpo la atraviese sin sujetarlo a ella. Es
 
 []{#fig:I-10-R01}
 
-![**Figura 10.2.** Para un contacto unilateral ideal no adhesivo, la separación y la normal satisfacen $h\ge0$, $N\ge0$ y $hN=0$. Los estados admisibles están sobre los ejes: contacto con reacción o separación sin reacción. Véase §[10.4](#fispm-c10-contacto-normal-y-unilateralidad).](/assets/books/fispm/v04/I-10-R01.svg "fig:"){.fpm-v04-figure fig-alt="La normal no puede tirar del cuerpo" width="424px" fig-cap=""}
+<figure id="fig-fpm-v04-i-10-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-10-R01.svg" class="lightbox" data-gallery="fpm-v04-c10"><img src="/assets/books/fispm/v04/I-10-R01.svg" alt="La normal no puede tirar del cuerpo. Diagrama del capítulo 10; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="424" height="223" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 10.2.** Para un contacto unilateral ideal no adhesivo, la separación y la normal satisfacen $h\ge0$, $N\ge0$ y $hN=0$. Los estados admisibles están sobre los ejes: contacto con reacción o separación sin reacción. Véase §[10.4](#fispm-c10-contacto-normal-y-unilateralidad).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c10-d0005}
 
@@ -285,7 +305,17 @@ Consideremos ahora una superficie horizontal fija y lisa. Una fuerza aplicada de
 
 []{#fig:FPM-I-10_DCL_01_v01}
 
-![**Figura 10.3.** Fuerzas sobre el cuerpo: normal hacia arriba, peso hacia abajo y fuerza aplicada oblicua. Las longitudes de las flechas son esquemáticas; no representan magnitudes medidas.](/assets/books/fispm/v04/FPM-I-10_DCL_01_v01.svg "fig:"){.fpm-v04-figure fig-alt="Original: Fuerzas sobre el cuerpo: normal hacia arriba, peso hacia abajo y fuerza aplicada" width="612px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-10-dcl-01-v01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-10_DCL_01_v01.svg" class="lightbox" data-gallery="fpm-v04-c10"><img src="/assets/books/fispm/v04/FPM-I-10_DCL_01_v01.svg" alt="Fuerzas sobre el cuerpo: normal hacia arriba, peso hacia abajo y fuerza aplicada. Diagrama del capítulo 10; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="612" height="428" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 10.3.** Fuerzas sobre el cuerpo: normal hacia arriba, peso hacia abajo y fuerza aplicada oblicua. Las longitudes de las flechas son esquemáticas; no representan magnitudes medidas.
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c10-p0006}
 
@@ -341,7 +371,17 @@ Estas dos componentes reemplazan la representación vertical para el cálculo; n
 
 []{#fig:FPM-I-10_DCL_02_v01}
 
-![**Figura 10.4.** Sobre el cuerpo actúan peso y normal. Las flechas grises indican la base y no son fuerzas. La inclinación dibujada es representativa; las fórmulas usan el ángulo declarado en cada problema.](/assets/books/fispm/v04/FPM-I-10_DCL_02_v01.svg "fig:"){.fpm-v04-figure fig-alt="Original: Sobre el cuerpo actúan peso y normal. Las flechas grises indican la base y no so" width="612px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-10-dcl-02-v01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-10_DCL_02_v01.svg" class="lightbox" data-gallery="fpm-v04-c10"><img src="/assets/books/fispm/v04/FPM-I-10_DCL_02_v01.svg" alt="Sobre el cuerpo actúan peso y normal. Las flechas grises indican la base y no so. Diagrama del capítulo 10; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="612" height="453" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 10.4.** Sobre el cuerpo actúan peso y normal. Las flechas grises indican la base y no son fuerzas. La inclinación dibujada es representativa; las fórmulas usan el ángulo declarado en cada problema.
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c10-p0007}
 
@@ -391,7 +431,17 @@ Una cuerda permite transmitir una tracción entre cuerpos separados. Para incorp
 
 []{#fig:I-10-N06}
 
-![**Figura 10.5.** Sobre una masa colgante actúan tensión hacia la cuerda y peso hacia abajo. La ecuación vertical es $T-mg=ma_y$; sólo si $a_y=0$ resulta $T=mg$. Véase §[10.7](#fispm-c10-tensiuxf3n-e-idealizaciuxf3n-de-la-cuerda).](/assets/books/fispm/v04/I-10-N06.svg "fig:"){.fpm-v04-figure fig-alt="Cuerpo suspendido" width="360px" fig-cap=""}
+<figure id="fig-fpm-v04-i-10-n06" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-10-N06.svg" class="lightbox" data-gallery="fpm-v04-c10"><img src="/assets/books/fispm/v04/I-10-N06.svg" alt="Cuerpo suspendido. Diagrama del capítulo 10; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="360" height="284" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 10.5.** Sobre una masa colgante actúan tensión hacia la cuerda y peso hacia abajo. La ecuación vertical es $T-mg=ma_y$; sólo si $a_y=0$ resulta $T=mg$. Véase §[10.7](#fispm-c10-tensiuxf3n-e-idealizaciuxf3n-de-la-cuerda).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c10-d0007}
 
@@ -455,7 +505,17 @@ Consideremos dos cuerpos sobre una superficie horizontal lisa y fija. El cuerpo 
 
 []{#fig:FPM-I-10_DCL_03_v01}
 
-![**Figura 10.6.** Diagramas separados: sobre $B$, la cuerda tira hacia la derecha; sobre $A$, hacia la izquierda. Cada cuerpo recibe además su propio peso y normal. Las dos fuerzas rotuladas $T$ tienen receptores distintos y no forman entre sí una pareja de tercera ley.](/assets/books/fispm/v04/FPM-I-10_DCL_03_v01.svg "fig:"){.fpm-v04-figure fig-alt="Original: Diagramas separados: sobre \\(B\\), la cuerda tira hacia la derecha; sobre \\(A\\), " width="612px" fig-cap=""}
+<figure id="fig-fpm-v04-fpm-i-10-dcl-03-v01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/FPM-I-10_DCL_03_v01.svg" class="lightbox" data-gallery="fpm-v04-c10"><img src="/assets/books/fispm/v04/FPM-I-10_DCL_03_v01.svg" alt="Diagramas separados: sobre \(B\), la cuerda tira hacia la derecha; sobre \(A\), . Diagrama del capítulo 10; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="612" height="268" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 10.6.** Diagramas separados: sobre $B$, la cuerda tira hacia la derecha; sobre $A$, hacia la izquierda. Cada cuerpo recibe además su propio peso y normal. Las dos fuerzas rotuladas $T$ tienen receptores distintos y no forman entre sí una pareja de tercera ley.
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c10-p0009}
 
@@ -523,7 +583,17 @@ Empujar suavemente un cuerpo apoyado puede no producir movimiento relativo respe
 
 []{#fig:I-10-N02}
 
-![**Figura 10.7.** En un soporte horizontal, bajo un empuje $F$ y sin aceleración, $f_s=F$ y $N=mg$. Esta rama requiere $F\le\mu_s mg$; $f_s$ no vale siempre su máximo. Véase §[10.9](#fispm-c10-fricciuxf3n-estuxe1tica-y-admisibilidad).](/assets/books/fispm/v04/I-10-N02.svg "fig:"){.fpm-v04-figure fig-alt="Rozamiento estático" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-10-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-10-N02.svg" class="lightbox" data-gallery="fpm-v04-c10"><img src="/assets/books/fispm/v04/I-10-N02.svg" alt="Rozamiento estático. Diagrama del capítulo 10; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="349" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 10.7.** En un soporte horizontal, bajo un empuje $F$ y sin aceleración, $f_s=F$ y $N=mg$. Esta rama requiere $F\le\mu_s mg$; $f_s$ no vale siempre su máximo. Véase §[10.9](#fispm-c10-fricciuxf3n-estuxe1tica-y-admisibilidad).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c10-d0009}
 
@@ -595,7 +665,17 @@ Una vez que las superficies deslizan entre sí, el modelo más sencillo asigna u
 
 []{#fig:I-10-N03}
 
-![**Figura 10.8.** Para una caja que desliza cuesta arriba en un plano a $30^\circ$, la normal es perpendicular al plano y $f_k$ apunta cuesta abajo. El peso permanece vertical; sus proyecciones no son fuerzas nuevas. Véase §[10.10](#fispm-c10-fricciuxf3n-cinuxe9tica-y-cambio-de-ruxe9gimen).](/assets/books/fispm/v04/I-10-N03.svg "fig:"){.fpm-v04-figure fig-alt="DCL en plano inclinado" width="418px" fig-cap=""}
+<figure id="fig-fpm-v04-i-10-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-10-N03.svg" class="lightbox" data-gallery="fpm-v04-c10"><img src="/assets/books/fispm/v04/I-10-N03.svg" alt="DCL en plano inclinado. Diagrama del capítulo 10; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="418" height="315" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 10.8.** Para una caja que desliza cuesta arriba en un plano a $30^\circ$, la normal es perpendicular al plano y $f_k$ apunta cuesta abajo. El peso permanece vertical; sus proyecciones no son fuerzas nuevas. Véase §[10.10](#fispm-c10-fricciuxf3n-cinuxe9tica-y-cambio-de-ruxe9gimen).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c10-d0010}
 
@@ -659,7 +739,17 @@ Volvamos al plano fijo de §6, con base $e_t$ cuesta arriba y $e_n$ hacia afuera
 
 []{#fig:I-10-R02}
 
-![**Figura 10.9.** Para $\mu_s=1/2$, la cuña representa $|f_s|\le N/2$ y $N\ge0$. En el interior la fricción se ajusta al equilibrio; la frontera corresponde al umbral del modelo de Coulomb. Véase §[10.11](#fispm-c10-plano-inclinado-y-umbrales-de-deslizamiento).](/assets/books/fispm/v04/I-10-R02.svg "fig:"){.fpm-v04-figure fig-alt="La fricción estática tiene un conjunto admisible" width="342px" fig-cap=""}
+<figure id="fig-fpm-v04-i-10-r02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-10-R02.svg" class="lightbox" data-gallery="fpm-v04-c10"><img src="/assets/books/fispm/v04/I-10-R02.svg" alt="La fricción estática tiene un conjunto admisible. Diagrama del capítulo 10; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="342" height="275" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 10.9.** Para $\mu_s=1/2$, la cuña representa $|f_s|\le N/2$ y $N\ge0$. En el interior la fricción se ajusta al equilibrio; la frontera corresponde al umbral del modelo de Coulomb. Véase §[10.11](#fispm-c10-plano-inclinado-y-umbrales-de-deslizamiento).
+
+</figcaption>
+
+</figure>
 
 La ecuación sirve para ambos regímenes; lo que cambia es la ley y la condición de movimiento usada para encontrar $f$.[^8]
 
@@ -755,7 +845,17 @@ Un cuerpo que se mueve en un fluido puede recibir una fuerza que depende de su m
 
 []{#fig:I-10-N05}
 
-![**Figura 10.10.** Durante la caída con $v_y<0$, la fuerza $-bv_y e_y$ se opone a la velocidad. Al alcanzar $|v_y|=mg/b$ se equilibran ambas fuerzas; antes de ese límite sus módulos pueden diferir. Véase §[10.12](#fispm-c10-resistencia-lineal-y-cuadruxe1tica).](/assets/books/fispm/v04/I-10-N05.svg "fig:"){.fpm-v04-figure fig-alt="Resistencia y peso" width="354px" fig-cap=""}
+<figure id="fig-fpm-v04-i-10-n05" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-10-N05.svg" class="lightbox" data-gallery="fpm-v04-c10"><img src="/assets/books/fispm/v04/I-10-N05.svg" alt="Resistencia y peso. Diagrama del capítulo 10; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="354" height="343" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 10.10.** Durante la caída con $v_y<0$, la fuerza $-bv_y e_y$ se opone a la velocidad. Al alcanzar $|v_y|=mg/b$ se equilibran ambas fuerzas; antes de ese límite sus módulos pueden diferir. Véase §[10.12](#fispm-c10-resistencia-lineal-y-cuadruxe1tica).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c10-d0011}
 
@@ -847,7 +947,17 @@ Un resorte puede ejercer una fuerza que depende de cuánto se aparta de su longi
 
 []{#fig:I-10-N04}
 
-![**Figura 10.11.** El resorte está extendido hacia la derecha respecto del equilibrio $x=0$. Su fuerza sobre la masa apunta hacia la izquierda. En una mesa lisa, peso y normal se compensan verticalmente. Véase §[10.13](#fispm-c10-resortes-y-ley-de-hooke).](/assets/books/fispm/v04/I-10-N04.svg "fig:"){.fpm-v04-figure fig-alt="Fuerza restauradora" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-10-n04" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-10-N04.svg" class="lightbox" data-gallery="fpm-v04-c10"><img src="/assets/books/fispm/v04/I-10-N04.svg" alt="Fuerza restauradora. Diagrama del capítulo 10; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="226" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 10.11.** El resorte está extendido hacia la derecha respecto del equilibrio $x=0$. Su fuerza sobre la masa apunta hacia la izquierda. En una mesa lisa, peso y normal se compensan verticalmente. Véase §[10.13](#fispm-c10-resortes-y-ley-de-hooke).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c10-d0013}
 

@@ -103,7 +103,7 @@ Para escribir ejemplos con dimensiones compatibles, elegimos $L>0$ y $T>0$, y po
 
 **Solución.** Ambas imágenes son el arco $Y=X^2$, $0\le X\le1$. En A, $X=u$; en B, $X=u^2$, que recorre el mismo intervalo. Sus velocidades normalizadas son $e_1+2u e_2$ y $2u e_1+4u^3e_2$, diferentes en general. En $u=0$, A tiene velocidad $e_1$ y B velocidad nula, entendiendo en el extremo la derivada unilateral o la extensión suave de la ley. Compartir imagen no equivale a compartir historia temporal. En cada instante hay que comparar las componentes simultáneas, no sólo su relación espacial.
 
-La estructura se apoya en [capítulo 4](#fispm-c04-espacio-eucluxeddeo-vectores-y-marcos-de-referencia) y [capítulo 5](#fispm-c05-tiempo-movimiento-y-curvas), §§3--8. Shankar, cap. 2, §§2.2--2.5, sirve de contraste para la diferencia entre trayectoria espacial y gráficas temporales.[^1]
+La estructura se apoya en [capítulo 4](fisica-para-matematicos-capitulo-4-espacio-euclideo-vectores-y-marcos-de-referencia.md#fispm-c04-espacio-eucluxeddeo-vectores-y-marcos-de-referencia) y [capítulo 5](fisica-para-matematicos-capitulo-5-tiempo-movimiento-y-curvas.md#fispm-c05-tiempo-movimiento-y-curvas), §§3--8. Shankar, cap. 2, §§2.2--2.5, sirve de contraste para la diferencia entre trayectoria espacial y gráficas temporales.[^1]
 
 []{#reconstrucción-desde-velocidad-y-aceleración}
 
@@ -159,7 +159,7 @@ Si $\mathbf a(t)=\mathbf a_0$, la integral del núcleo $t-s$ da $$P(t)=P_0+\tau\
 
 **Solución.** Para cada vector unitario $n$, proposición 8.2 produce $P(t)=P_0+ctn$. Todos esos movimientos cumplen la misma rapidez inicial y aceleración nula. Recíprocamente, cualquier historia compatible tiene velocidad constante $\mathbf v_0$ de norma $c$, por lo que puede escribirse $cn$ con $n$ unitario. La familia está parametrizada por las direcciones del círculo unitario. Si $c=0$, el único vector de norma cero es el nulo y la historia queda determinada: $P(t)=P_0$. La insuficiencia de una rapidez como dato desaparece en este caso particular.
 
-La reconstrucción extiende [capítulo 7](#fispm-c07-cinemuxe1tica-en-una-dimensiuxf3n), §§6--9. Kleppner--Kolenkow §1.7 controla la integración temporal; la existencia y unicidad se prueban aquí por componentes.[^2]
+La reconstrucción extiende [capítulo 7](fisica-para-matematicos-capitulo-7-cinematica-en-una-dimension.md#fispm-c07-cinemuxe1tica-en-una-dimensiuxf3n), §§6--9. Kleppner--Kolenkow §1.7 controla la integración temporal; la existencia y unicidad se prueban aquí por componentes.[^2]
 
 []{#rapidez-dirección-y-geometría-del-movimiento}
 
@@ -229,11 +229,31 @@ Una pelota sale de una plataforma y avanza mientras cambia su altura. La pregunt
 
 []{#fig:I-08-R01}
 
-![**Figura 8.1.** En el tiro ideal $r(t)=(t,2t-t^2/2)$, la altura máxima es $2$ en $t=2$. El retorno al nivel inicial ocurre en $t=4$, con alcance $4$. El segmento discontinuo mide altura y las coordenadas están normalizadas. Véase §[8.4](#fispm-c08-tiro-parabuxf3lico-como-modelo-cinemuxe1tico).](/assets/books/fispm/v04/I-08-R01.svg "fig:"){.fpm-v04-figure fig-alt="La aceleración permanece vertical" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-08-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-08-R01.svg" class="lightbox" data-gallery="fpm-v04-c08"><img src="/assets/books/fispm/v04/I-08-R01.svg" alt="La aceleración permanece vertical. Diagrama del capítulo 8; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="281" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 8.1.** En el tiro ideal $r(t)=(t,2t-t^2/2)$, la altura máxima es $2$ en $t=2$. El retorno al nivel inicial ocurre en $t=4$, con alcance $4$. El segmento discontinuo mide altura y las coordenadas están normalizadas. Véase §[8.4](#fispm-c08-tiro-parabuxf3lico-como-modelo-cinemuxe1tico).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-08-N01}
 
-![**Figura 8.2.** Sin resistencia, $X=u$ y $Y=2u-u^2/2$ entre lanzamiento y retorno al nivel inicial. En el ápice $u=2$, la velocidad es horizontal y la aceleración sigue apuntando hacia abajo. Las flechas son cinemáticas. Véase §[8.4](#fispm-c08-tiro-parabuxf3lico-como-modelo-cinemuxe1tico).](/assets/books/fispm/v04/I-08-N01.svg "fig:"){.fpm-v04-figure fig-alt="Proyectil y aceleración" width="368px" fig-cap=""}
+<figure id="fig-fpm-v04-i-08-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-08-N01.svg" class="lightbox" data-gallery="fpm-v04-c08"><img src="/assets/books/fispm/v04/I-08-N01.svg" alt="Proyectil y aceleración. Diagrama del capítulo 8; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="368" height="268" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 8.2.** Sin resistencia, $X=u$ y $Y=2u-u^2/2$ entre lanzamiento y retorno al nivel inicial. En el ápice $u=2$, la velocidad es horizontal y la aceleración sigue apuntando hacia abajo. Las flechas son cinemáticas. Véase §[8.4](#fispm-c08-tiro-parabuxf3lico-como-modelo-cinemuxe1tico).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c08-d0004}
 
@@ -397,11 +417,31 @@ Un movimiento próximo a un centro fijo puede resultar más sencillo si registra
 
 []{#fig:I-08-R02}
 
-![**Figura 8.3.** La base ortonormal polar gira con el ángulo: $\dot e_r=\dot\theta e_\theta$ y $\dot e_\theta=-\dot\theta e_r$. Las flechas muestran sus direcciones; su longitud es esquemática. Véase §[8.7](#fispm-c08-coordenadas-polares-y-direcciones-variables).](/assets/books/fispm/v04/I-08-R02.svg "fig:"){.fpm-v04-figure fig-alt="La base polar también se deriva" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-08-r02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-08-R02.svg" class="lightbox" data-gallery="fpm-v04-c08"><img src="/assets/books/fispm/v04/I-08-R02.svg" alt="La base polar también se deriva. Diagrama del capítulo 8; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="343" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 8.3.** La base ortonormal polar gira con el ángulo: $\dot e_r=\dot\theta e_\theta$ y $\dot e_\theta=-\dot\theta e_r$. Las flechas muestran sus direcciones; su longitud es esquemática. Véase §[8.7](#fispm-c08-coordenadas-polares-y-direcciones-variables).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-08-N02}
 
-![**Figura 8.4.** En el punto de ángulo $\theta$, $e_r$ es radial y $e_\theta$ apunta hacia el incremento de $\theta$. Las dos direcciones giran con el punto; sus derivadas aportan términos a la aceleración. Véase §[8.7](#fispm-c08-coordenadas-polares-y-direcciones-variables).](/assets/books/fispm/v04/I-08-N02.svg "fig:"){.fpm-v04-figure fig-alt="Base polar local" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-08-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-08-N02.svg" class="lightbox" data-gallery="fpm-v04-c08"><img src="/assets/books/fispm/v04/I-08-N02.svg" alt="Base polar local. Diagrama del capítulo 8; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="303" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 8.4.** En el punto de ángulo $\theta$, $e_r$ es radial y $e_\theta$ apunta hacia el incremento de $\theta$. Las dos direcciones giran con el punto; sus derivadas aportan términos a la aceleración. Véase §[8.7](#fispm-c08-coordenadas-polares-y-direcciones-variables).
+
+</figcaption>
+
+</figure>
 
 Fijamos un plano orientado con origen $O$ y base ortonormal $(e_x,e_y)$. Para un punto distinto de $O$, la distancia $\rho>0$ es única, mientras que el ángulo representa una dirección y se determina módulo $2\pi$.
 
@@ -529,7 +569,17 @@ Un objeto recorre una pista circular. Conocer el radio y el tiempo de una vuelta
 
 []{#fig:I-08-N03}
 
-![**Figura 8.5.** En el movimiento circular uniforme, la velocidad es tangente y la aceleración es centrípeta. Las flechas representan $v$ y $a$, no un diagrama de fuerzas. Véase §[8.9](#fispm-c08-movimiento-circular-uniforme-y-no-uniforme).](/assets/books/fispm/v04/I-08-N03.svg "fig:"){.fpm-v04-figure fig-alt="Rapidez constante y aceleración" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-08-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-08-N03.svg" class="lightbox" data-gallery="fpm-v04-c08"><img src="/assets/books/fispm/v04/I-08-N03.svg" alt="Rapidez constante y aceleración. Diagrama del capítulo 8; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="373" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 8.5.** En el movimiento circular uniforme, la velocidad es tangente y la aceleración es centrípeta. Las flechas representan $v$ y $a$, no un diagrama de fuerzas. Véase §[8.9](#fispm-c08-movimiento-circular-uniforme-y-no-uniforme).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c08-d0007}
 
@@ -823,7 +873,7 @@ Un mismo defecto angular puede producir un defecto de longitud mayor para objeto
 
 El cálculo controla una posición reconstruida por integración; no declara que sea idéntica a una expresión obtenida simplemente congelando los ejes. Tampoco una cota de la función defecto controla su derivada: para acotar el defecto de aceleración se necesitan límites sobre $\omega'$, $\mathbf y'$ y los demás factores al derivar. Una función pequeña puede cambiar rápidamente. La reducción queda justificada sólo para las observables que efectivamente se acotaron.
 
-Las nociones de error, resto y dominio certificado proceden de [capítulo 6](#fispm-c06-modelos-aproximaciones-escalas-y-linealizaciuxf3n), §§6, 8 y 14. Proposición 8.15 y proposición 8.16 construyen aquí las extensiones vectoriales y de marco necesarias.
+Las nociones de error, resto y dominio certificado proceden de [capítulo 6](fisica-para-matematicos-capitulo-6-modelos-aproximaciones-escalas-y-linealizacion.md#fispm-c06-modelos-aproximaciones-escalas-y-linealizaciuxf3n), §§6, 8 y 14. Proposición 8.15 y proposición 8.16 construyen aquí las extensiones vectoriales y de marco necesarias.
 
 []{#reconstrucción-y-auditoría-de-una-historia-completa}
 

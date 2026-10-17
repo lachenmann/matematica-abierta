@@ -51,7 +51,17 @@ Imaginemos dos cámaras cuyos ejes permanecen paralelos. La primera usa un orige
 
 []{#fig:I-20-N01}
 
-![**Figura 20.1.** La identidad $r=R+r\prime$ separa la posición del origen móvil y la posición relativa. Con bases paralelas, dos derivadas dan $a=A+a\prime$. Véase §[20.1](#fispm-c20-dos-oruxedgenes-que-se-separan).](/assets/books/fispm/v04/I-20-N01.svg "fig:"){.fpm-v04-figure fig-alt="Traslación de un marco" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-20-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-20-N01.svg" class="lightbox" data-gallery="fpm-v04-c20"><img src="/assets/books/fispm/v04/I-20-N01.svg" alt="Traslación de un marco. Diagrama del capítulo 20; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="221" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 20.1.** La identidad $r=R+r\prime$ separa la posición del origen móvil y la posición relativa. Con bases paralelas, dos derivadas dan $a=A+a\prime$. Véase §[20.1](#fispm-c20-dos-oruxedgenes-que-se-separan).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c20-d0001}
 
@@ -363,7 +373,17 @@ La velocidad relativa entra dos veces al diferenciar la velocidad física. Una c
 
 []{#fig:I-20-N02}
 
-![**Figura 20.2.** Si $\Omega$ sale del plano y $v\prime$ apunta a la derecha, $-2m\Omega\times v\prime$ apunta hacia abajo. La flecha discontinua es una velocidad; el término inercial no es una interacción nueva. Véase §[20.7](#fispm-c20-de-duxf3nde-sale-el-factor-dos).](/assets/books/fispm/v04/I-20-N02.svg "fig:"){.fpm-v04-figure fig-alt="Sentido del término de Coriolis" width="403px" fig-cap=""}
+<figure id="fig-fpm-v04-i-20-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-20-N02.svg" class="lightbox" data-gallery="fpm-v04-c20"><img src="/assets/books/fispm/v04/I-20-N02.svg" alt="Sentido del término de Coriolis. Diagrama del capítulo 20; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="403" height="230" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 20.2.** Si $\Omega$ sale del plano y $v\prime$ apunta a la derecha, $-2m\Omega\times v\prime$ apunta hacia abajo. La flecha discontinua es una velocidad; el término inercial no es una interacción nueva. Véase §[20.7](#fispm-c20-de-duxf3nde-sale-el-factor-dos).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c20-p0011}
 
@@ -417,7 +437,17 @@ La ecuación completa permite clasificar los efectos por los datos del marco que
 
 []{#fig:I-20-R01}
 
-![**Figura 20.3.** Con $\Omega$ saliente y velocidad relativa hacia la derecha, $-2m\Omega\times v^\prime$ apunta hacia abajo. La velocidad discontinua es un dato cinemático; la flecha continua representa el término de fuerza en el marco que gira. Véase §[20.8](#fispm-c20-cuatro-tuxe9rminos-y-sus-funciones).](/assets/books/fispm/v04/I-20-R01.svg "fig:"){.fpm-v04-figure fig-alt="La dirección de Coriolis depende de la velocidad relativa" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-20-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-20-R01.svg" class="lightbox" data-gallery="fpm-v04-c20"><img src="/assets/books/fispm/v04/I-20-R01.svg" alt="La dirección de Coriolis depende de la velocidad relativa. Diagrama del capítulo 20; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="278" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 20.3.** Con $\Omega$ saliente y velocidad relativa hacia la derecha, $-2m\Omega\times v^\prime$ apunta hacia abajo. La velocidad discontinua es un dato cinemático; la flecha continua representa el término de fuerza en el marco que gira. Véase §[20.8](#fispm-c20-cuatro-tuxe9rminos-y-sus-funciones).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c20-d0006}
 
@@ -596,7 +626,17 @@ Un cuerpo quieto sobre una plataforma tiene aceleración relativa cero. La fuerz
 
 []{#fig:I-20-N03}
 
-![**Figura 20.4.** Para rotación uniforme, el término centrífugo radial deriva de $U_c=-m\Omega^2r^2/2$. Su pendiente negativa produce una contribución dirigida hacia afuera. Véase §[20.11](#fispm-c20-equilibrio-y-energuxeda-en-una-rotaciuxf3n-uniforme).](/assets/books/fispm/v04/I-20-N03.svg "fig:"){.fpm-v04-figure fig-alt="Potencial centrífugo" width="412px" fig-cap=""}
+<figure id="fig-fpm-v04-i-20-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-20-N03.svg" class="lightbox" data-gallery="fpm-v04-c20"><img src="/assets/books/fispm/v04/I-20-N03.svg" alt="Potencial centrífugo. Diagrama del capítulo 20; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="412" height="240" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 20.4.** Para rotación uniforme, el término centrífugo radial deriva de $U_c=-m\Omega^2r^2/2$. Su pendiente negativa produce una contribución dirigida hacia afuera. Véase §[20.11](#fispm-c20-equilibrio-y-energuxeda-en-una-rotaciuxf3n-uniforme).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c20-p0019}
 

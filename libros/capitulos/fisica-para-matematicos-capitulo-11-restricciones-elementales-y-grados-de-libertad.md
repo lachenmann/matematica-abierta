@@ -259,7 +259,17 @@ Estar en una posición admisible no garantiza que cualquier velocidad permita co
 
 []{#fig:I-11-N03}
 
-![**Figura 11.1.** En una circunferencia fija, la velocidad es tangente y la componente normal de aceleración apunta al centro. No debe imponerse aceleración normal nula. Estas flechas son cinemáticas. Véase §[11.5](#fispm-c11-compatibilidad-de-velocidades-y-aceleraciones).](/assets/books/fispm/v04/I-11-N03.svg "fig:"){.fpm-v04-figure fig-alt="Vínculo curvo y aceleración" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-11-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-11-N03.svg" class="lightbox" data-gallery="fpm-v04-c11"><img src="/assets/books/fispm/v04/I-11-N03.svg" alt="Vínculo curvo y aceleración. Diagrama del capítulo 11; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="348" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 11.1.** En una circunferencia fija, la velocidad es tangente y la componente normal de aceleración apunta al centro. No debe imponerse aceleración normal nula. Estas flechas son cinemáticas. Véase §[11.5](#fispm-c11-compatibilidad-de-velocidades-y-aceleraciones).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c11-d0005}
 
@@ -321,7 +331,17 @@ Una restricción activa debe coexistir con Newton. Si el cuerpo recibe una fuerz
 
 []{#fig:I-11-R02}
 
-![**Figura 11.2.** Una partícula en una guía circular fija y lisa puede tener reacción normal centrípeta, perpendicular a su velocidad. Si esa reacción es la única fuerza, su potencia es cero aunque cambie la dirección del movimiento. Véase §[11.6](#fispm-c11-fuerzas-de-vuxednculo-y-guuxedas-lisas).](/assets/books/fispm/v04/I-11-R02.svg "fig:"){.fpm-v04-figure fig-alt="La guía puede cambiar la dirección sin cambiar la rapidez" width="353px" fig-cap=""}
+<figure id="fig-fpm-v04-i-11-r02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-11-R02.svg" class="lightbox" data-gallery="fpm-v04-c11"><img src="/assets/books/fispm/v04/I-11-R02.svg" alt="La guía puede cambiar la dirección sin cambiar la rapidez. Diagrama del capítulo 11; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="353" height="327" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 11.2.** Una partícula en una guía circular fija y lisa puede tener reacción normal centrípeta, perpendicular a su velocidad. Si esa reacción es la única fuerza, su potencia es cero aunque cambie la dirección del movimiento. Véase §[11.6](#fispm-c11-fuerzas-de-vuxednculo-y-guuxedas-lisas).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c11-d0007}
 
@@ -385,11 +405,31 @@ Una cuerda tensa de longitud constante relaciona posiciones antes de relacionar 
 
 []{#fig:I-11-R01}
 
-![**Figura 11.3.** Con $m_1>m_2$, la máquina de Atwood ideal tiene una tensión común y aceleraciones opuestas. Los diagramas corresponden a cada masa por separado: $m_1g>T>m_2g$. La polea y la cuerda no se incluyen dentro de esos cuerpos. Véase §[11.7](#fispm-c11-cuerda-sobre-una-polea-fija).](/assets/books/fispm/v04/I-11-R01.svg "fig:"){.fpm-v04-figure fig-alt="Dos DCL y una restricción" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-11-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-11-R01.svg" class="lightbox" data-gallery="fpm-v04-c11"><img src="/assets/books/fispm/v04/I-11-R01.svg" alt="Dos DCL y una restricción. Diagrama del capítulo 11; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="315" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 11.3.** Con $m_1>m_2$, la máquina de Atwood ideal tiene una tensión común y aceleraciones opuestas. Los diagramas corresponden a cada masa por separado: $m_1g>T>m_2g$. La polea y la cuerda no se incluyen dentro de esos cuerpos. Véase §[11.7](#fispm-c11-cuerda-sobre-una-polea-fija).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-11-N01}
 
-![**Figura 11.4.** Ambas coordenadas crecen hacia abajo. La cuerda inextensible impone $y_1+y_2=\mathrm{constante}$, y por tanto $a_1+a_2=0$. Esta relación proviene de la geometría, no de la tercera ley. Véase §[11.7](#fispm-c11-cuerda-sobre-una-polea-fija).](/assets/books/fispm/v04/I-11-N01.svg "fig:"){.fpm-v04-figure fig-alt="Geometría de Atwood" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-11-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-11-N01.svg" class="lightbox" data-gallery="fpm-v04-c11"><img src="/assets/books/fispm/v04/I-11-N01.svg" alt="Geometría de Atwood. Diagrama del capítulo 11; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="378" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 11.4.** Ambas coordenadas crecen hacia abajo. La cuerda inextensible impone $y_1+y_2=\mathrm{constante}$, y por tanto $a_1+a_2=0$. Esta relación proviene de la geometría, no de la tercera ley. Véase §[11.7](#fispm-c11-cuerda-sobre-una-polea-fija).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c11-d0009}
 
@@ -459,7 +499,17 @@ Consideremos una cuerda con un extremo fijo en el soporte superior. Desde allí 
 
 []{#fig:I-11-N02}
 
-![**Figura 11.5.** En una polea móvil ideal, los dos ramales ejercen una resultante ascendente $2T$ sobre el conjunto polea--carga. Si el extremo libre se mueve con coordenada descendente $y_1$ y la polea con $y_2$, $y_1+2y_2$ es constante. Véase §[11.8](#fispm-c11-polea-muxf3vil-y-factores-geomuxe9tricos).](/assets/books/fispm/v04/I-11-N02.svg "fig:"){.fpm-v04-figure fig-alt="Dos ramales y un vínculo" width="395px" fig-cap=""}
+<figure id="fig-fpm-v04-i-11-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-11-N02.svg" class="lightbox" data-gallery="fpm-v04-c11"><img src="/assets/books/fispm/v04/I-11-N02.svg" alt="Dos ramales y un vínculo. Diagrama del capítulo 11; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="395" height="268" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 11.5.** En una polea móvil ideal, los dos ramales ejercen una resultante ascendente $2T$ sobre el conjunto polea--carga. Si el extremo libre se mueve con coordenada descendente $y_1$ y la polea con $y_2$, $y_1+2y_2$ es constante. Véase §[11.8](#fispm-c11-polea-muxf3vil-y-factores-geomuxe9tricos).
+
+</figcaption>
+
+</figure>
 
 Esta descripción permite reconstruir la longitud sin necesitar adivinar una razón de velocidades. Si el centro de la polea móvil baja, se alargan dos tramos de cuerda. Para conservar la longitud, el tramo que llega a $m_1$ debe acortarse el doble. Los arcos constantes no contribuyen a la derivada, pero las dos ramas variables de la polea móvil sí.
 
@@ -599,7 +649,17 @@ Una cuña que desliza sobre una mesa muestra por qué una aceleración relativa 
 
 []{#fig:I-11-N04}
 
-![**Figura 11.6.** Si $X$ sitúa el pie izquierdo de la cuña y $s$ mide la distancia del bloque cuesta arriba, $x=X+s\cos\alpha$ e $y=s\sin\alpha$. La posición horizontal mezcla ambas coordenadas. Véase §[11.10](#fispm-c11-cuuxf1a-muxf3vil-y-geometruxeda-compartida).](/assets/books/fispm/v04/I-11-N04.svg "fig:"){.fpm-v04-figure fig-alt="Coordenadas compartidas de una cuña" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-11-n04" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-11-N04.svg" class="lightbox" data-gallery="fpm-v04-c11"><img src="/assets/books/fispm/v04/I-11-N04.svg" alt="Coordenadas compartidas de una cuña. Diagrama del capítulo 11; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="308" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 11.6.** Si $X$ sitúa el pie izquierdo de la cuña y $s$ mide la distancia del bloque cuesta arriba, $x=X+s\cos\alpha$ e $y=s\sin\alpha$. La posición horizontal mezcla ambas coordenadas. Véase §[11.10](#fispm-c11-cuuxf1a-muxf3vil-y-geometruxeda-compartida).
+
+</figcaption>
+
+</figure>
 
 Sea la pendiente ascendente hacia la derecha, con $0<\theta<\pi/2$. La cuña tiene masa $M>0$ y posición horizontal $X$. Un cuerpo de masa $m>0$ desliza sin fricción sobre su plano. Elegimos
 
@@ -677,7 +737,17 @@ Una cuerda tensa puede restringir una masa a una circunferencia sin imponer rapi
 
 []{#fig:I-11-N05}
 
-![**Figura 11.7.** Sobre la masa del péndulo actúan peso y tensión. La tensión apunta al soporte; la componente radial de Newton contiene $mv^2/\ell$, aunque la longitud sea constante. Véase §[11.11](#fispm-c11-puxe9ndulo-y-reacciuxf3n-en-un-vuxednculo-curvo).](/assets/books/fispm/v04/I-11-N05.svg "fig:"){.fpm-v04-figure fig-alt="Fuerzas del péndulo" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-11-n05" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-11-N05.svg" class="lightbox" data-gallery="fpm-v04-c11"><img src="/assets/books/fispm/v04/I-11-N05.svg" alt="Fuerzas del péndulo. Diagrama del capítulo 11; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="543" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 11.7.** Sobre la masa del péndulo actúan peso y tensión. La tensión apunta al soporte; la componente radial de Newton contiene $mv^2/\ell$, aunque la longitud sea constante. Véase §[11.11](#fispm-c11-puxe9ndulo-y-reacciuxf3n-en-un-vuxednculo-curvo).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c11-d0013}
 

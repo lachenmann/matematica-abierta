@@ -293,7 +293,17 @@ Sea $\Phi_{t,t_0}$ la aplicación que lleva un estado inicial en $t_0$ al estado
 
 []{#fig:I-29-N02}
 
-![**Figura 29.1.** La cizalla $Q=q$, $P=p+q$ transforma un cuadrado en un paralelogramo de igual área. El desplazamiento de momento es el gradiente de $G(q)=q^2/2$. Véase §[29.8](#fispm-c29-el-flujo-preserva-la-forma-simpluxe9ctica).](/assets/books/fispm/v04/I-29-N02.svg "fig:"){.fpm-v04-figure fig-alt="Cizalla y forma de fase" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-29-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-29-N02.svg" class="lightbox" data-gallery="fpm-v04-c29"><img src="/assets/books/fispm/v04/I-29-N02.svg" alt="Cizalla y forma de fase. Diagrama del capítulo 29; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="275" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 29.1.** La cizalla $Q=q$, $P=p+q$ transforma un cuadrado en un paralelogramo de igual área. El desplazamiento de momento es el gradiente de $G(q)=q^2/2$. Véase §[29.8](#fispm-c29-el-flujo-preserva-la-forma-simpluxe9ctica).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c29-p0008}
 
@@ -347,7 +357,17 @@ Por tanto la preservación de todos los corchetes equivale a $M\mathbb JM^{\math
 
 []{#fig:I-29-R01}
 
-![**Figura 29.2.** El cambio $Q=q$, $P=2p$ duplica el área y satisface $\{Q,P\}=2$. No es canónico con la forma estándar. Los rectángulos están desplazados en la página para facilitar su comparación. Véase §[29.9](#fispm-c29-quuxe9-significa-que-unas-variables-sean-canuxf3nicas).](/assets/books/fispm/v04/I-29-R01.svg "fig:"){.fpm-v04-figure fig-alt="El determinante detecta un cambio no canónico en el plano" width="341px" fig-cap=""}
+<figure id="fig-fpm-v04-i-29-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-29-R01.svg" class="lightbox" data-gallery="fpm-v04-c29"><img src="/assets/books/fispm/v04/I-29-R01.svg" alt="El determinante detecta un cambio no canónico en el plano. Diagrama del capítulo 29; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="341" height="270" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 29.2.** El cambio $Q=q$, $P=2p$ duplica el área y satisface $\{Q,P\}=2$. No es canónico con la forma estándar. Los rectángulos están desplazados en la página para facilitar su comparación. Véase §[29.9](#fispm-c29-quuxe9-significa-que-unas-variables-sean-canuxf3nicas).
+
+</figcaption>
+
+</figure>
 
 La hipótesis temporal de la última frase es necesaria. Si $\Psi$ depende de $t$, al derivar $Z=\Psi(z,t)$ aparece además $\partial_t\Psi$. La condición simpléctica a cada tiempo no elimina ese término. El capítulo 28 proporcionó la corrección explícita para coordenadas móviles y términos de borde; la misma precaución rige en cambios canónicos temporales más generales.
 
@@ -375,7 +395,17 @@ El reescalamiento $Q=cq$, $P=p/c$, con $c\ne0$, preserva el corchete. Cambiar am
 
 []{#fig:I-29-N01}
 
-![**Figura 29.3.** La transformación $Q=2q$, $P=p/2$ duplica el ancho y divide la altura por dos. Preserva $dq\wedge dp$ y el corchete $\{Q,P\}=1$. Los rectángulos se han separado para compararlos. Véase §[29.10](#fispm-c29-cambios-de-variables-que-conviene-reconocer).](/assets/books/fispm/v04/I-29-N01.svg "fig:"){.fpm-v04-figure fig-alt="Escala canónica" width="349px" fig-cap=""}
+<figure id="fig-fpm-v04-i-29-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-29-N01.svg" class="lightbox" data-gallery="fpm-v04-c29"><img src="/assets/books/fispm/v04/I-29-N01.svg" alt="Escala canónica. Diagrama del capítulo 29; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="349" height="220" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 29.3.** La transformación $Q=2q$, $P=p/2$ duplica el ancho y divide la altura por dos. Preserva $dq\wedge dp$ y el corchete $\{Q,P\}=1$. Los rectángulos se han separado para compararlos. Véase §[29.10](#fispm-c29-cambios-de-variables-que-conviene-reconocer).
+
+</figcaption>
+
+</figure>
 
 En el plano sin el origen, el cambio polar tiene
 
@@ -489,7 +519,17 @@ El área encerrada por la elipse es $2\pi E/\omega$. La acción expresa esa áre
 
 []{#fig:I-29-N03}
 
-![**Figura 29.4.** Con $m=\omega=1$, el área encerrada es $2\pi J$. La convención $q=\sqrt{2J}\cos\phi$, $p=-\sqrt{2J}\sin\phi$ hace crecer $\phi$ con el flujo horario. El origen $J=0$ exige otra carta. Véase §[29.13](#fispm-c29-el-oscilador-en-coordenadas-de-acciuxf3n-y-uxe1ngulo).](/assets/books/fispm/v04/I-29-N03.svg "fig:"){.fpm-v04-figure fig-alt="Acción y ángulo del oscilador" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-29-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-29-N03.svg" class="lightbox" data-gallery="fpm-v04-c29"><img src="/assets/books/fispm/v04/I-29-N03.svg" alt="Acción y ángulo del oscilador. Diagrama del capítulo 29; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="362" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 29.4.** Con $m=\omega=1$, el área encerrada es $2\pi J$. La convención $q=\sqrt{2J}\cos\phi$, $p=-\sqrt{2J}\sin\phi$ hace crecer $\phi$ con el flujo horario. El origen $J=0$ exige otra carta. Véase §[29.13](#fispm-c29-el-oscilador-en-coordenadas-de-acciuxf3n-y-uxe1ngulo).
+
+</figcaption>
+
+</figure>
 
 En una familia de osciladores desacoplados podemos aplicar la construcción a cada modo de frecuencia positiva. La extensión de estas ideas a sistemas integrables generales exige hipótesis sobre independencia de integrales, compacidad y regularidad de niveles que no se deducen de disponer de una sola cantidad conservada.
 

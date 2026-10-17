@@ -53,7 +53,17 @@ Sea $q$ una coordenada cartesiana para una partícula de masa constante $m>0$. E
 
 []{#fig:I-23-N01}
 
-![**Figura 23.1.** El desplazamiento se mide desde el equilibrio. Para $x>0$, la fuerza elástica es negativa: $m\ddot x=-kx$. El plano es liso y las fuerzas verticales se compensan. Véase §[23.1](#fispm-c23-la-fuerza-cerca-del-equilibrio).](/assets/books/fispm/v04/I-23-N01.svg "fig:"){.fpm-v04-figure fig-alt="Oscilador masa--resorte" width="356px" fig-cap=""}
+<figure id="fig-fpm-v04-i-23-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-23-N01.svg" class="lightbox" data-gallery="fpm-v04-c23"><img src="/assets/books/fispm/v04/I-23-N01.svg" alt="Oscilador masa--resorte. Diagrama del capítulo 23; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="356" height="145" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 23.1.** El desplazamiento se mide desde el equilibrio. Para $x>0$, la fuerza elástica es negativa: $m\ddot x=-kx$. El plano es liso y las fuerzas verticales se compensan. Véase §[23.1](#fispm-c23-la-fuerza-cerca-del-equilibrio).
+
+</figcaption>
+
+</figure>
 
 Supongamos que $U$ es tres veces continuamente diferenciable en un entorno del equilibrio y que $k=U''(q_*)>0$. Taylor da $U'(q_*+x)=kx+R(x),\qquad |R(x)|\le C|x|^2$
 
@@ -239,7 +249,17 @@ En el caso subamortiguado, cualquier solución no nula cambia de signo repetidam
 
 []{#fig:I-23-N02}
 
-![**Figura 23.2.** Con $x(0)=1$, $\dot x(0)=0$ y $\omega_0=1$, se comparan $\beta=0{,}3$ (continua), $1$ (discontinua) y $1{,}5$ (punteada) en $\ddot x+2\beta\dot x+x=0$. Sólo el primero cruza repetidamente el equilibrio. Véase §[23.7](#fispm-c23-los-tres-reguxedmenes-de-retorno).](/assets/books/fispm/v04/I-23-N02.svg "fig:"){.fpm-v04-figure fig-alt="Retorno amortiguado" width="429px" fig-cap=""}
+<figure id="fig-fpm-v04-i-23-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-23-N02.svg" class="lightbox" data-gallery="fpm-v04-c23"><img src="/assets/books/fispm/v04/I-23-N02.svg" alt="Retorno amortiguado. Diagrama del capítulo 23; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="429" height="239" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 23.2.** Con $x(0)=1$, $\dot x(0)=0$ y $\omega_0=1$, se comparan $\beta=0{,}3$ (continua), $1$ (discontinua) y $1{,}5$ (punteada) en $\ddot x+2\beta\dot x+x=0$. Sólo el primero cruza repetidamente el equilibrio. Véase §[23.7](#fispm-c23-los-tres-reguxedmenes-de-retorno).
+
+</figcaption>
+
+</figure>
 
 En los casos crítico y sobreamortiguado puede haber un cruce por el equilibrio, según los datos iniciales. Lo que desaparece es la sucesión indefinida de cruces. Para comprobarlo, en el caso crítico basta estudiar el signo del factor afín. En el sobreamortiguado, escribir $x=c_+e^{r_+t}+c_-e^{r_-t}$, con $r_+>r_-$, muestra que la ecuación $x=0$ equivale a $c_+e^{(r_+-r_-)t}+c_-=0$, con a lo sumo una solución si el movimiento no es nulo.
 
@@ -319,7 +339,17 @@ Supongamos $F(t)=F_0\cos(\Omega t)$, con $F_0>0$, $\Omega>0$ y $b>0$. Buscamos u
 
 []{#fig:I-23-R01}
 
-![**Figura 23.3.** Para $\ddot x+0{,}4\dot x+x=F_0\cos\Omega t$, la fase estacionaria satisface $\delta=\operatorname{atan2}(0{,}4\Omega,1-\Omega^2)$. En $\Omega=1$, la respuesta se retrasa $\pi/2$ respecto de la fuerza. Véase §[23.10](#fispm-c23-fuerza-sinusoidal-y-desfase).](/assets/books/fispm/v04/I-23-R01.svg "fig:"){.fpm-v04-figure fig-alt="El desfase atraviesa un cuarto de período" width="431px" fig-cap=""}
+<figure id="fig-fpm-v04-i-23-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-23-R01.svg" class="lightbox" data-gallery="fpm-v04-c23"><img src="/assets/books/fispm/v04/I-23-R01.svg" alt="El desfase atraviesa un cuarto de período. Diagrama del capítulo 23; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="431" height="247" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 23.3.** Para $\ddot x+0{,}4\dot x+x=F_0\cos\Omega t$, la fase estacionaria satisface $\delta=\operatorname{atan2}(0{,}4\Omega,1-\Omega^2)$. En $\Omega=1$, la respuesta se retrasa $\pi/2$ respecto de la fuerza. Véase §[23.10](#fispm-c23-fuerza-sinusoidal-y-desfase).
+
+</figcaption>
+
+</figure>
 
 El determinante $D=d^2+b^2\Omega^2$ es positivo. Así, $a=\frac{F_0d}{D},\qquad c=\frac{F_0b\Omega}{D}.$
 
@@ -351,7 +381,17 @@ La amplitud depende de $\Omega$. Para compararla entre frecuencias fijaremos $m,
 
 []{#fig:I-23-N03}
 
-![**Figura 23.4.** Con $\omega_0=1$ y $\beta=0{,}2$, la amplitud estacionaria normalizada es $[(1-\omega^2)^2+0{,}16\omega^2]^{-1/2}$. Su máximo ocurre en $\omega=\sqrt{0{,}92}$, por debajo de la frecuencia natural. Véase §[23.11](#fispm-c23-quuxe9-frecuencia-maximiza-el-desplazamiento).](/assets/books/fispm/v04/I-23-N03.svg "fig:"){.fpm-v04-figure fig-alt="Resonancia de desplazamiento" width="445px" fig-cap=""}
+<figure id="fig-fpm-v04-i-23-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-23-N03.svg" class="lightbox" data-gallery="fpm-v04-c23"><img src="/assets/books/fispm/v04/I-23-N03.svg" alt="Resonancia de desplazamiento. Diagrama del capítulo 23; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="445" height="254" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 23.4.** Con $\omega_0=1$ y $\beta=0{,}2$, la amplitud estacionaria normalizada es $[(1-\omega^2)^2+0{,}16\omega^2]^{-1/2}$. Su máximo ocurre en $\omega=\sqrt{0{,}92}$, por debajo de la frecuencia natural. Véase §[23.11](#fispm-c23-quuxe9-frecuencia-maximiza-el-desplazamiento).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c23-p0013}
 

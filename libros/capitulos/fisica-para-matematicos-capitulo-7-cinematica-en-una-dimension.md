@@ -93,7 +93,7 @@ Las dimensiones de las componentes son $[x]=L$, $[v]=L/T$ y $[a]=L/T^2$. Derivar
 
 Los polinomios son útiles para explorar movimientos, pero sus términos deben tener dimensiones compatibles. Para evitar expresiones como una suma de tiempo y tiempo al cuadrado sin coeficientes apropiados, elegimos escalas $T>0$ y $L>0$, y referencias fijas $t_0,x_*$. Escribimos $u=(t-t_0)/T$ y $x(t)=x_*+LX(u)$, donde $u$ y $X$ son adimensionales. Así se reutiliza la adimensionalización del capítulo 2, sin volver a desarrollar su teoría.
 
-La regla de la cadena da $v(t)=(L/T)X'(u)$ y $a(t)=(L/T^2)X''(u)$. Denotaremos $V(u)=X'(u)$ y $A(u)=V'(u)$ a las componentes normalizadas. Las primas en $X,V$ se refieren a $u$; las primas en $x$ se refieren a $t$. Las escalas permiten recuperar las magnitudes físicas después del cálculo. La interfaz dimensional procede de [capítulo 2](#fispm-c02-magnitudes-unidades-y-anuxe1lisis-dimensional), §§9--10.
+La regla de la cadena da $v(t)=(L/T)X'(u)$ y $a(t)=(L/T^2)X''(u)$. Denotaremos $V(u)=X'(u)$ y $A(u)=V'(u)$ a las componentes normalizadas. Las primas en $X,V$ se refieren a $u$; las primas en $x$ se refieren a $t$. Las escalas permiten recuperar las magnitudes físicas después del cálculo. La interfaz dimensional procede de [capítulo 2](fisica-para-matematicos-capitulo-2-magnitudes-unidades-y-analisis-dimensional.md#fispm-c02-magnitudes-unidades-y-anuxe1lisis-dimensional), §§9--10.
 
 Por ejemplo, la ley $X(u)=1+u^2$ representa $x(t)=x_*+L\bigl(1+((t-t_0)/T)^2\bigr)$. Su velocidad es $(2L/T)u$, no simplemente $2u$ con unidades de velocidad omitidas. Para $u<0$ el móvil se desplaza en el sentido negativo; para $u>0$, en el positivo. La posición puede permanecer al lado positivo del origen durante ambos tramos: posición positiva y velocidad positiva son afirmaciones distintas.
 
@@ -121,7 +121,7 @@ La componente física nueva de velocidad es $(L/T)Y'(u)=-L/T$ y la de aceleraci�
 
 En $u=-1$ y $u=1$ la coordenada es cero, por lo que el desplazamiento entre extremos es el vector nulo. Durante la historia, en cambio, $X(0)=1$: el móvil alcanza una posición distinta antes de regresar. La coincidencia de extremos no prueba reposo durante el intervalo. El sentido de ida y regreso se reconoce en el signo de $V(u)=-2u$.
 
-La representación en una recta fija importa las distinciones geométricas de [capítulo 5, §3](#fispm-c05-posiciuxf3n-relativa-y-coordenadas-de-una-curva) y su derivación de velocidad y aceleración en §§5--7. Una vez fijados los datos que dan significado a $x(t)$, podemos leer su gráfica temporal.
+La representación en una recta fija importa las distinciones geométricas de [capítulo 5, §3](fisica-para-matematicos-capitulo-5-tiempo-movimiento-y-curvas.md#fispm-c05-posiciuxf3n-relativa-y-coordenadas-de-una-curva) y su derivación de velocidad y aceleración en §§5--7. Una vez fijados los datos que dan significado a $x(t)$, podemos leer su gráfica temporal.
 
 []{#leer-la-gráfica-de-posición}
 
@@ -394,7 +394,17 @@ Un móvil sale de una marca del riel, alcanza otra y regresa a la primera. El de
 
 []{#fig:I-07-N02}
 
-![**Figura 7.1.** Con $V=1-u$ entre $u=0$ y $2$, las áreas positiva y negativa se cancelan: $\Delta X=0$. La distancia normalizada suma sus módulos y vale uno. Véase §[7.5](#fispm-c07-desplazamiento-distancia-y-uxe1reas-firmadas).](/assets/books/fispm/v04/I-07-N02.svg "fig:"){.fpm-v04-figure fig-alt="Área firmada bajo la velocidad" width="403px" fig-cap=""}
+<figure id="fig-fpm-v04-i-07-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-07-N02.svg" class="lightbox" data-gallery="fpm-v04-c07"><img src="/assets/books/fispm/v04/I-07-N02.svg" alt="Área firmada bajo la velocidad. Diagrama del capítulo 7; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="403" height="232" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 7.1.** Con $V=1-u$ entre $u=0$ y $2$, las áreas positiva y negativa se cancelan: $\Delta X=0$. La distancia normalizada suma sus módulos y vale uno. Véase §[7.5](#fispm-c07-desplazamiento-distancia-y-uxe1reas-firmadas).
+
+</figcaption>
+
+</figure>
 
 En esta sección $x$ es de clase $C^1$ sobre $[\alpha,\beta]$, con $\alpha<\beta$. En un intervalo cerrado, esta regularidad significa que la derivada interior se extiende continuamente hasta los extremos, donde se interpreta lateralmente. Es la convención del capítulo 5. Escribimos $v=x'$ y mantenemos fijos $O,e$ en $P(t)=O+x(t)e$.
 
@@ -402,7 +412,7 @@ En esta sección $x$ es de clase $C^1$ sobre $[\alpha,\beta]$, con $\alpha<\beta
 
 ### 7.5.1. Dos cantidades sobre el mismo intervalo {#fispm-c07-dos-cantidades-sobre-el-mismo-intervalo}
 
-La componente del desplazamiento es $\Delta x=x(\beta)-x(\alpha)$; el vector completo es $\Delta x\,e$. La distancia recorrida es la longitud geométrica de esta historia temporal, no sólo la distancia entre sus extremos. Denotaremos ese recorrido por $d_{\mathrm{rec}}$. Su definición y su fórmula integral ya están disponibles en [capítulo 5, §13](#fispm-c05-fuxf3rmula-de-longitud-de-arco-y-paruxe1metro-natural), proposición 7.28.
+La componente del desplazamiento es $\Delta x=x(\beta)-x(\alpha)$; el vector completo es $\Delta x\,e$. La distancia recorrida es la longitud geométrica de esta historia temporal, no sólo la distancia entre sus extremos. Denotaremos ese recorrido por $d_{\mathrm{rec}}$. Su definición y su fórmula integral ya están disponibles en [capítulo 5, §13](fisica-para-matematicos-capitulo-5-tiempo-movimiento-y-curvas.md#fispm-c05-fuxf3rmula-de-longitud-de-arco-y-paruxe1metro-natural), proposición 7.28.
 
 Una suma de términos $v(t_i)\Delta t_i$ conserva el signo de cada contribución. Si en lugar de $v$ usamos $|v|$, todas las contribuciones son no negativas. Bajo la hipótesis de continuidad, ambas sumas tienen límites integrales; la diferencia entre ellas persiste por mucho que se refine la partición.
 
@@ -682,7 +692,17 @@ Un móvil puede aumentar su componente de velocidad en la misma cantidad durante
 
 []{#fig:I-07-N01}
 
-![**Figura 7.2.** Para $X=u^2/2$ en $0\le u\le2$, la línea continua representa $X$, la discontinua $V=u$ y la punteada $A=1$. Son magnitudes normalizadas distintas, ligadas por derivación. Véase §[7.9](#fispm-c07-aceleraciuxf3n-constante).](/assets/books/fispm/v04/I-07-N01.svg "fig:"){.fpm-v04-figure fig-alt="Tres lecturas de una historia" width="404px" fig-cap=""}
+<figure id="fig-fpm-v04-i-07-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-07-N01.svg" class="lightbox" data-gallery="fpm-v04-c07"><img src="/assets/books/fispm/v04/I-07-N01.svg" alt="Tres lecturas de una historia. Diagrama del capítulo 7; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="404" height="252" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 7.2.** Para $X=u^2/2$ en $0\le u\le2$, la línea continua representa $X$, la discontinua $V=u$ y la punteada $A=1$. Son magnitudes normalizadas distintas, ligadas por derivación. Véase §[7.9](#fispm-c07-aceleraciuxf3n-constante).
+
+</figcaption>
+
+</figure>
 
 Esa forma temporal es una consecuencia de la aceleración prescrita. No explica qué la produce ni garantiza que el dato constante continúe siendo válido fuera del intervalo considerado. Mantendremos separados el cálculo bajo la hipótesis y el dominio donde se adopta esa hipótesis.
 
@@ -764,7 +784,17 @@ Una descripción puede prescribir aceleración constante durante una parte del r
 
 []{#fig:I-07-R01}
 
-![**Figura 7.3.** La ley $v=1$ hasta $t=1$ y $v=2-t$ después es continua. La aceleración cambia de $0$ a $-1$ en el empalme y no tiene allí un valor clásico único. No hay salto de posición ni impulso requerido por un salto de velocidad. Véase §[7.10](#fispm-c07-historias-definidas-por-tramos).](/assets/books/fispm/v04/I-07-R01.svg "fig:"){.fpm-v04-figure fig-alt="Una velocidad continua con cambio de aceleración" width="407px" fig-cap=""}
+<figure id="fig-fpm-v04-i-07-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-07-R01.svg" class="lightbox" data-gallery="fpm-v04-c07"><img src="/assets/books/fispm/v04/I-07-R01.svg" alt="Una velocidad continua con cambio de aceleración. Diagrama del capítulo 7; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="407" height="227" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 7.3.** La ley $v=1$ hasta $t=1$ y $v=2-t$ después es continua. La aceleración cambia de $0$ a $-1$ en el empalme y no tiene allí un valor clásico único. No hay salto de posición ni impulso requerido por un salto de velocidad. Véase §[7.10](#fispm-c07-historias-definidas-por-tramos).
+
+</figcaption>
+
+</figure>
 
 Los valores finales de un tramo se convierten en datos del siguiente. Esa transferencia evita reiniciar artificialmente posición y reloj cada vez que cambia la fórmula.
 
@@ -856,7 +886,17 @@ Conocer una ley temporal permite preguntar cuándo el móvil alcanza una marca d
 
 []{#fig:I-07-N03}
 
-![**Figura 7.4.** La ley $X=2u-u^2/2$ alcanza un máximo en $u=2$, donde $V=0$ y $A=-1$. La continuación después del evento invierte el sentido; imponer detención permanente sería otro modelo. Véase §[7.11](#fispm-c07-eventos-encuentros-y-admisibilidad).](/assets/books/fispm/v04/I-07-N03.svg "fig:"){.fpm-v04-figure fig-alt="Evento de detención" width="403px" fig-cap=""}
+<figure id="fig-fpm-v04-i-07-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-07-N03.svg" class="lightbox" data-gallery="fpm-v04-c07"><img src="/assets/books/fispm/v04/I-07-N03.svg" alt="Evento de detención. Diagrama del capítulo 7; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="403" height="247" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 7.4.** La ley $X=2u-u^2/2$ alcanza un máximo en $u=2$, donde $V=0$ y $A=-1$. La continuación después del evento invierte el sentido; imponer detención permanente sería otro modelo. Véase §[7.11](#fispm-c07-eventos-encuentros-y-admisibilidad).
+
+</figcaption>
+
+</figure>
 
 Un encuentro requiere además comparar dos posiciones en un mismo instante, marco y reloj. Que dos móviles recorran alguna vez la misma marca no significa que se encuentren: pueden llegar en tiempos diferentes.
 
@@ -934,7 +974,17 @@ Hasta aquí hemos partido de una ley de velocidad o aceleración y de los datos 
 
 []{#fig:I-07-R02}
 
-![**Figura 7.5.** Las historias $x=t$ y $x=1+t$ comparten velocidad y aceleración. Para seleccionar una de ellas hace falta un dato de posición. Todas las variables del ejemplo están normalizadas. Véase §[7.12](#fispm-c07-problemas-inversos-e-informaciuxf3n-faltante).](/assets/books/fispm/v04/I-07-R02.svg "fig:"){.fpm-v04-figure fig-alt="La velocidad no determina el origen de posición" width="399px" fig-cap=""}
+<figure id="fig-fpm-v04-i-07-r02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-07-R02.svg" class="lightbox" data-gallery="fpm-v04-c07"><img src="/assets/books/fispm/v04/I-07-R02.svg" alt="La velocidad no determina el origen de posición. Diagrama del capítulo 7; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="399" height="242" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 7.5.** Las historias $x=t$ y $x=1+t$ comparten velocidad y aceleración. Para seleccionar una de ellas hace falta un dato de posición. Todas las variables del ejemplo están normalizadas. Véase §[7.12](#fispm-c07-problemas-inversos-e-informaciuxf3n-faltante).
+
+</figcaption>
+
+</figure>
 
 Tres posiciones pueden fijar los coeficientes de un polinomio cuadrático. Sin embargo, entre las marcas temporales hay una infinidad de historias suaves que pasan por los mismos puntos. Para distinguir ambas afirmaciones hace falta declarar primero la clase de historias admisibles.
 
@@ -1080,7 +1130,7 @@ Para $M>0$ y tolerancia $\tau L$, el intervalo suficiente tiene duración no may
 
 Controlar posición no certifica automáticamente los tiempos de todos sus eventos. Una perturbación pequeña puede eliminar una raíz tangencial: $X(u)=u^2$ alcanza cero en $[-1,1]$, mientras que $\widetilde X(u)=u^2+\eta$, con $\eta>0$, no lo alcanza, aunque su error uniforme de posición sea $\eta$. Una conclusión sobre eventos requiere condiciones adicionales; los presupuestos presentes responden a una tolerancia de posición.
 
-Referencia interna: [capítulo 6](#fispm-c06-modelos-aproximaciones-escalas-y-linealizaciuxf3n), §6, error frente a residuo; §§7--8, aproximación afín y cota cuadrática del resto.
+Referencia interna: [capítulo 6](fisica-para-matematicos-capitulo-6-modelos-aproximaciones-escalas-y-linealizacion.md#fispm-c06-modelos-aproximaciones-escalas-y-linealizaciuxf3n), §6, error frente a residuo; §§7--8, aproximación afín y cota cuadrática del resto.
 
 []{#ejercicios-11}
 
@@ -1134,7 +1184,7 @@ No es necesario recalcular una derivación ya probada. Proposición 7.6 puede ju
 
 **Principio metodológico 7.10 --- Entregar una historia con hipótesis y control.** La conclusión cinemática acompaña la ley temporal con su dominio, datos y condiciones de uso. Una aproximación se entrega con la observable controlada y la evidencia que certifica su intervalo.
 
-Referencia interna: [capítulo 6](#fispm-c06-modelos-aproximaciones-escalas-y-linealizaciuxf3n), §14, ficha de aproximación controlada. Las siguientes síntesis y sus soluciones son propias.
+Referencia interna: [capítulo 6](fisica-para-matematicos-capitulo-6-modelos-aproximaciones-escalas-y-linealizacion.md#fispm-c06-modelos-aproximaciones-escalas-y-linealizaciuxf3n), §14, ficha de aproximación controlada. Las siguientes síntesis y sus soluciones son propias.
 
 []{#ejercicios-de-síntesis}
 
@@ -1200,11 +1250,11 @@ La ficha permite comprobar cada conclusión desde el modelo declarado: derivar v
 
 ### 7.14.3. Canon interno citado {#fispm-c07-canon-interno-citado}
 
-- *Física para matemáticos*, Tomo I, capítulo 2, «Magnitudes, unidades y análisis dimensional». [capítulo 2](#fispm-c02-magnitudes-unidades-y-anuxe1lisis-dimensional). Localizadores usados: §§9--10, interfaz de escalas y adimensionalización citada en §1.
+- *Física para matemáticos*, Tomo I, capítulo 2, «Magnitudes, unidades y análisis dimensional». [capítulo 2](fisica-para-matematicos-capitulo-2-magnitudes-unidades-y-analisis-dimensional.md#fispm-c02-magnitudes-unidades-y-anuxe1lisis-dimensional). Localizadores usados: §§9--10, interfaz de escalas y adimensionalización citada en §1.
 
-- *Física para matemáticos*, Tomo I, capítulo 5, «Tiempo, movimiento y curvas». [capítulo 5](#fispm-c05-tiempo-movimiento-y-curvas). Localizadores usados: §3, representación de posición y coordenadas, y §§5--7, velocidad, regularidad/reposo y aceleración, citados en §1 y aplicados en §§2--4; §13 proposición 7.28, fórmula de longitud citada y aplicada en §5.
+- *Física para matemáticos*, Tomo I, capítulo 5, «Tiempo, movimiento y curvas». [capítulo 5](fisica-para-matematicos-capitulo-5-tiempo-movimiento-y-curvas.md#fispm-c05-tiempo-movimiento-y-curvas). Localizadores usados: §3, representación de posición y coordenadas, y §§5--7, velocidad, regularidad/reposo y aceleración, citados en §1 y aplicados en §§2--4; §13 proposición 7.28, fórmula de longitud citada y aplicada en §5.
 
-- *Física para matemáticos*, Tomo I, capítulo 6, «Modelos, aproximaciones, escalas y linealización». [capítulo 6](#fispm-c06-modelos-aproximaciones-escalas-y-linealizaciuxf3n). Localizadores usados: §6, diferencia entre error y residuo, y §§7--8, linealización univariada y cota del resto, citados en §13; §14, ficha de aproximación controlada, citada y especializada en §14.
+- *Física para matemáticos*, Tomo I, capítulo 6, «Modelos, aproximaciones, escalas y linealización». [capítulo 6](fisica-para-matematicos-capitulo-6-modelos-aproximaciones-escalas-y-linealizacion.md#fispm-c06-modelos-aproximaciones-escalas-y-linealizaciuxf3n). Localizadores usados: §6, diferencia entre error y residuo, y §§7--8, linealización univariada y cota del resto, citados en §13; §14, ficha de aproximación controlada, citada y especializada en §14.
 
 []{#obra-externa-citada}
 

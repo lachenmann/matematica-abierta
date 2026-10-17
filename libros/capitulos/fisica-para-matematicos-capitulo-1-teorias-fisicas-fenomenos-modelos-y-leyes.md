@@ -49,7 +49,17 @@ Supongamos que frente a nosotros cuelga una pequeña esfera metálica de un hilo
 
 []{#fig:I-01-R01}
 
-![**Figura 1.1.** Una curva de posición contiene una historia cinemática. La tangente expresa velocidad; para explicar por qué cambia hacen falta interacciones y un modelo dinámico. El ejemplo usa $x=t^2/4{,}5$ en unidades normalizadas. Véase §[1.1](#fispm-c01-una-pregunta-fuxedsica-no-es-todavuxeda-una-ecuaciuxf3n).](/assets/books/fispm/v04/I-01-R01.svg "fig:"){.fpm-v04-figure fig-alt="Historia, estado y pregunta física" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-01-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-01-R01.svg" class="lightbox" data-gallery="fpm-v04-c01"><img src="/assets/books/fispm/v04/I-01-R01.svg" alt="Historia, estado y pregunta física. Diagrama del capítulo 1; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="306" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 1.1.** Una curva de posición contiene una historia cinemática. La tangente expresa velocidad; para explicar por qué cambia hacen falta interacciones y un modelo dinámico. El ejemplo usa $x=t^2/4{,}5$ en unidades normalizadas. Véase §[1.1](#fispm-c01-una-pregunta-fuxedsica-no-es-todavuxeda-una-ecuaciuxf3n).
+
+</figcaption>
+
+</figure>
 
 La pregunta parece inmediata:
 
@@ -1384,7 +1394,17 @@ En las dos secciones anteriores hemos usado varias veces la palabra **sistema**.
 
 []{#fig:I-01-N01}
 
-![**Figura 1.2.** La frontera selecciona las variables del sistema y los intercambios con su entorno; cambiarla cambia el balance que habrá que formular. Véase §[1.3](#fispm-c01-sistema-entorno-estado-y-observables).](/assets/books/fispm/v04/I-01-N01.svg "fig:"){.fpm-v04-figure fig-alt="Frontera del sistema" width="374px" fig-cap=""}
+<figure id="fig-fpm-v04-i-01-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-01-N01.svg" class="lightbox" data-gallery="fpm-v04-c01"><img src="/assets/books/fispm/v04/I-01-N01.svg" alt="Frontera del sistema. Diagrama del capítulo 1; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="374" height="176" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 1.2.** La frontera selecciona las variables del sistema y los intercambios con su entorno; cambiarla cambia el balance que habrá que formular. Véase §[1.3](#fispm-c01-sistema-entorno-estado-y-observables).
+
+</figcaption>
+
+</figure>
 
 Frente a nosotros hay una esfera, un hilo, un soporte, aire, una mesa, un edificio y la Tierra. Todo ello forma parte de una única realidad física continua. Sin embargo, para construir un problema no intentamos describir simultáneamente el universo completo. Seleccionamos una parte.
 
@@ -1899,7 +1919,17 @@ En las secciones anteriores hemos construido modelos seleccionando sistemas, var
 
 []{#fig:I-01-R02}
 
-![**Figura 1.3.** Las expresiones normalizadas $e^{-u}$ y $1-u$ comparten valor y derivada en $u=0$. La segunda sirve localmente y se vuelve negativa para $u>1$; esa extrapolación puede contrariar el significado físico de una cantidad positiva. Véase §[1.4](#fispm-c01-idealizaciuxf3n-abstracciuxf3n-y-aproximaciuxf3n).](/assets/books/fispm/v04/I-01-R02.svg "fig:"){.fpm-v04-figure fig-alt="Modelo exacto y aproximación local" width="403px" fig-cap=""}
+<figure id="fig-fpm-v04-i-01-r02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-01-R02.svg" class="lightbox" data-gallery="fpm-v04-c01"><img src="/assets/books/fispm/v04/I-01-R02.svg" alt="Modelo exacto y aproximación local. Diagrama del capítulo 1; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="403" height="231" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 1.3.** Las expresiones normalizadas $e^{-u}$ y $1-u$ comparten valor y derivada en $u=0$. La segunda sirve localmente y se vuelve negativa para $u>1$; esa extrapolación puede contrariar el significado físico de una cantidad positiva. Véase §[1.4](#fispm-c01-idealizaciuxf3n-abstracciuxf3n-y-aproximaciuxf3n).
+
+</figcaption>
+
+</figure>
 
 Cuando decimos que una esfera se representa mediante un punto, que ignoramos el color de una pelota o que reemplazamos una expresión por otra numéricamente cercana, estamos haciendo cosas conceptualmente distintas.
 
@@ -2470,7 +2500,17 @@ Como objeto matemático, podemos estudiarla sin saber nada de física. Podemos p
 
 []{#fig:I-01-N02}
 
-![**Figura 1.4.** La aplicación de observación vincula el estado matemático con una cantidad medible. Un mismo observable puede tomar igual valor en estados distintos. Véase §[1.5](#fispm-c01-de-la-representaciuxf3n-fuxedsica-al-objeto-matemuxe1tico).](/assets/books/fispm/v04/I-01-N02.svg "fig:"){.fpm-v04-figure fig-alt="Estado y medición" width="390px" fig-cap=""}
+<figure id="fig-fpm-v04-i-01-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-01-N02.svg" class="lightbox" data-gallery="fpm-v04-c01"><img src="/assets/books/fispm/v04/I-01-N02.svg" alt="Estado y medición. Diagrama del capítulo 1; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="390" height="122" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 1.4.** La aplicación de observación vincula el estado matemático con una cantidad medible. Un mismo observable puede tomar igual valor en estados distintos. Véase §[1.5](#fispm-c01-de-la-representaciuxf3n-fuxedsica-al-objeto-matemuxe1tico).
+
+</figcaption>
+
+</figure>
 
 La misma ecuación podría aparecer para describir una restricción geométrica, una trayectoria idealizada, dos componentes de una cantidad, una relación entre magnitudes reescaladas o un problema puramente matemático sin interpretación física. La sintaxis no determina la semántica.
 
@@ -5014,7 +5054,17 @@ Entre dos puntos observados, o fuera del intervalo observado, quedan infinitas p
 
 []{#fig:I-01-N03}
 
-![**Figura 1.5.** Las curvas $y=x$ (continua) y $y=x+x(x-1)(x-2)/3$ (discontinua) coinciden en $x=0,1,2$. Los tres datos no fijan la interpolación entre ellos. Véase §[1.9](#fispm-c01-datos-finitos-no-determinan-una-ley-uxfanica).](/assets/books/fispm/v04/I-01-N03.svg "fig:"){.fpm-v04-figure fig-alt="Datos y leyes compatibles" width="395px" fig-cap=""}
+<figure id="fig-fpm-v04-i-01-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-01-N03.svg" class="lightbox" data-gallery="fpm-v04-c01"><img src="/assets/books/fispm/v04/I-01-N03.svg" alt="Datos y leyes compatibles. Diagrama del capítulo 1; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="395" height="246" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 1.5.** Las curvas $y=x$ (continua) y $y=x+x(x-1)(x-2)/3$ (discontinua) coinciden en $x=0,1,2$. Los tres datos no fijan la interpolación entre ellos. Véase §[1.9](#fispm-c01-datos-finitos-no-determinan-una-ley-uxfanica).
+
+</figcaption>
+
+</figure>
 
 ### 1.9.2. Compatibilidad no es unicidad {#fispm-c01-compatibilidad-no-es-unicidad}
 
@@ -5844,7 +5894,17 @@ Antes de medir algo nuevo debemos decidir **qué** medir. Si dos modelos coincid
 
 []{#fig:I-01-R03}
 
-![**Figura 1.6.** El residuo es la diferencia entre la observación y la predicción. Un patrón oscilatorio persistente puede señalar estructura que el modelo no representa. La curva es un esquema de diagnóstico, no una prueba estadística de rechazo. Véase §[1.10](#fispm-c01-cuxf3mo-se-elige-entre-modelos-compatibles-con-los-datos).](/assets/books/fispm/v04/I-01-R03.svg "fig:"){.fpm-v04-figure fig-alt="Los residuos conservan información" width="343px" fig-cap=""}
+<figure id="fig-fpm-v04-i-01-r03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-01-R03.svg" class="lightbox" data-gallery="fpm-v04-c01"><img src="/assets/books/fispm/v04/I-01-R03.svg" alt="Los residuos conservan información. Diagrama del capítulo 1; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="343" height="206" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 1.6.** El residuo es la diferencia entre la observación y la predicción. Un patrón oscilatorio persistente puede señalar estructura que el modelo no representa. La curva es un esquema de diagnóstico, no una prueba estadística de rechazo. Véase §[1.10](#fispm-c01-cuxf3mo-se-elige-entre-modelos-compatibles-con-los-datos).
+
+</figcaption>
+
+</figure>
 
 La selección de modelos exige combinar:
 
@@ -6579,7 +6639,17 @@ Puede incluso ocurrir que el problema matemático asociado tenga una solución e
 
 []{#fig:I-01-R04}
 
-![**Figura 1.7.** Las condiciones de régimen seleccionan una parte del espacio de parámetros. Extender una fórmula fuera de esa región exige una justificación nueva. La frontera vertical es esquemática y no representa un umbral universal. Véase §[1.11](#fispm-c01-dominio-de-validez-y-teoruxedas-efectivas).](/assets/books/fispm/v04/I-01-R04.svg "fig:"){.fpm-v04-figure fig-alt="El dominio pertenece al modelo" width="341px" fig-cap=""}
+<figure id="fig-fpm-v04-i-01-r04" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-01-R04.svg" class="lightbox" data-gallery="fpm-v04-c01"><img src="/assets/books/fispm/v04/I-01-R04.svg" alt="El dominio pertenece al modelo. Diagrama del capítulo 1; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="341" height="246" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 1.7.** Las condiciones de régimen seleccionan una parte del espacio de parámetros. Extender una fórmula fuera de esa región exige una justificación nueva. La frontera vertical es esquemática y no representa un umbral universal. Véase §[1.11](#fispm-c01-dominio-de-validez-y-teoruxedas-efectivas).
+
+</figcaption>
+
+</figure>
 
 Esta es una de las diferencias más importantes entre:
 
@@ -7301,7 +7371,17 @@ La predicción depende de un **paquete de premisas**. Por eso un fallo predictiv
 
 []{#fig:I-01-R05}
 
-![**Figura 1.8.** Una discrepancia motiva revisar hipótesis, condiciones iniciales y procedimiento de observación. El esquema no adjudica por sí solo el fallo a una ley fundamental. Véase §[1.12](#fispm-c01-cuando-una-predicciuxf3n-falla-luxf3gica-de-revisiuxf3n).](/assets/books/fispm/v04/I-01-R05.svg "fig:"){.fpm-v04-figure fig-alt="El contraste puede revisar varias piezas" width="389px" fig-cap=""}
+<figure id="fig-fpm-v04-i-01-r05" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-01-R05.svg" class="lightbox" data-gallery="fpm-v04-c01"><img src="/assets/books/fispm/v04/I-01-R05.svg" alt="El contraste puede revisar varias piezas. Diagrama del capítulo 1; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="389" height="121" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 1.8.** Una discrepancia motiva revisar hipótesis, condiciones iniciales y procedimiento de observación. El esquema no adjudica por sí solo el fallo a una ley fundamental. Véase §[1.12](#fispm-c01-cuando-una-predicciuxf3n-falla-luxf3gica-de-revisiuxf3n).
+
+</figcaption>
+
+</figure>
 
 ### 1.12.2. El paquete predictivo {#fispm-c01-el-paquete-predictivo}
 
@@ -7817,7 +7897,17 @@ Esta es quizá la distinción más importante del capítulo completo. Supongamos
 
 []{#fig:I-01-R06}
 
-![**Figura 1.9.** La igualdad $y=u^2$ define exactamente la curva dibujada. Su uso como ley de un fenómeno requiere declarar qué representan $u$ e $y$, cómo se miden y dónde se ha contrastado la relación. Véase §[1.13](#fispm-c01-exactitud-matemuxe1tica-y-adecuaciuxf3n-fuxedsica).](/assets/books/fispm/v04/I-01-R06.svg "fig:"){.fpm-v04-figure fig-alt="Exactitud interna y significado físico" width="403px" fig-cap=""}
+<figure id="fig-fpm-v04-i-01-r06" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-01-R06.svg" class="lightbox" data-gallery="fpm-v04-c01"><img src="/assets/books/fispm/v04/I-01-R06.svg" alt="Exactitud interna y significado físico. Diagrama del capítulo 1; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="403" height="246" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 1.9.** La igualdad $y=u^2$ define exactamente la curva dibujada. Su uso como ley de un fenómeno requiere declarar qué representan $u$ e $y$, cómo se miden y dónde se ha contrastado la relación. Véase §[1.13](#fispm-c01-exactitud-matemuxe1tica-y-adecuaciuxf3n-fuxedsica).
+
+</figcaption>
+
+</figure>
 
 Pero esto no establece todavía que:
 

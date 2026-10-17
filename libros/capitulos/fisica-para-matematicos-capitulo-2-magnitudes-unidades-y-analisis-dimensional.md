@@ -609,11 +609,31 @@ Podemos preguntar cuál longitud es mayor, calcular su diferencia o formar, cuan
 
 []{#fig:I-02-R01}
 
-![**Figura 2.1.** Cambiar de metros a centímetros multiplica por cien el valor numérico y divide por cien la unidad empleada. El segmento físico representado permanece igual: $2\,\mathrm m=200\,\mathrm{cm}$. Véase §[2.2](#fispm-c02-magnitudes-clases-de-magnitudes-y-referencias).](/assets/books/fispm/v04/I-02-R01.svg "fig:"){.fpm-v04-figure fig-alt="Magnitud y representación numérica" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-02-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-02-R01.svg" class="lightbox" data-gallery="fpm-v04-c02"><img src="/assets/books/fispm/v04/I-02-R01.svg" alt="Magnitud y representación numérica. Diagrama del capítulo 2; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="168" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 2.1.** Cambiar de metros a centímetros multiplica por cien el valor numérico y divide por cien la unidad empleada. El segmento físico representado permanece igual: $2\,\mathrm m=200\,\mathrm{cm}$. Véase §[2.2](#fispm-c02-magnitudes-clases-de-magnitudes-y-referencias).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-02-N01}
 
-![**Figura 2.2.** La longitud permanece fija al cambiar la unidad. Cada centímetro contiene diez milímetros; el valor numérico se multiplica por diez. Véase §[2.2](#fispm-c02-magnitudes-clases-de-magnitudes-y-referencias).](/assets/books/fispm/v04/I-02-N01.svg "fig:"){.fpm-v04-figure fig-alt="Magnitud y unidad" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-02-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-02-N01.svg" class="lightbox" data-gallery="fpm-v04-c02"><img src="/assets/books/fispm/v04/I-02-N01.svg" alt="Magnitud y unidad. Diagrama del capítulo 2; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="154" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 2.2.** La longitud permanece fija al cambiar la unidad. Cada centímetro contiene diez milímetros; el valor numérico se multiplica por diez. Véase §[2.2](#fispm-c02-magnitudes-clases-de-magnitudes-y-referencias).
+
+</figcaption>
+
+</figure>
 
 y
 
@@ -2549,7 +2569,17 @@ La unidad especifica una referencia concreta de medida. La dimensión registra c
 
 []{#fig:I-02-R02}
 
-![**Figura 2.3.** Para un péndulo ideal, el análisis de dimensiones permite escribir $T=\sqrt{\ell/g}\,\Phi(\theta_0)$. No determina la función de la amplitud. En oscilaciones pequeñas, la dinámica da $\Phi(0)=2\pi$. Véase §[2.5](#fispm-c02-dimensiuxf3n-fuxedsica).](/assets/books/fispm/v04/I-02-R02.svg "fig:"){.fpm-v04-figure fig-alt="La dimensión fija una escala, no una función" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-02-r02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-02-R02.svg" class="lightbox" data-gallery="fpm-v04-c02"><img src="/assets/books/fispm/v04/I-02-R02.svg" alt="La dimensión fija una escala, no una función. Diagrama del capítulo 2; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="177" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 2.3.** Para un péndulo ideal, el análisis de dimensiones permite escribir $T=\sqrt{\ell/g}\,\Phi(\theta_0)$. No determina la función de la amplitud. En oscilaciones pequeñas, la dinámica da $\Phi(0)=2\pi$. Véase §[2.5](#fispm-c02-dimensiuxf3n-fuxedsica).
+
+</figcaption>
+
+</figure>
 
 y
 
@@ -3263,7 +3293,17 @@ En §5 vimos que una magnitud conserva su dimensión cuando cambiamos las unidad
 
 []{#fig:I-02-N02}
 
-![**Figura 2.4.** La posición, su primera derivada y su segunda derivada pertenecen a clases dimensionales distintas. Una suma exige homogeneidad de sus términos. Véase §[2.6](#fispm-c02-homogeneidad-dimensional).](/assets/books/fispm/v04/I-02-N02.svg "fig:"){.fpm-v04-figure fig-alt="Dimensiones de las derivadas" width="535px" fig-cap=""}
+<figure id="fig-fpm-v04-i-02-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-02-N02.svg" class="lightbox" data-gallery="fpm-v04-c02"><img src="/assets/books/fispm/v04/I-02-N02.svg" alt="Dimensiones de las derivadas. Diagrama del capítulo 2; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="535" height="111" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 2.4.** La posición, su primera derivada y su segunda derivada pertenecen a clases dimensionales distintas. Una suma exige homogeneidad de sus términos. Véase §[2.6](#fispm-c02-homogeneidad-dimensional).
+
+</figcaption>
+
+</figure>
 
 Por ejemplo, $[v]=LT^{-1}$
 
@@ -5011,7 +5051,17 @@ El VIM conserva históricamente el término «cantidad adimensional», pero reco
 
 []{#fig:I-02-R04}
 
-![**Figura 2.5.** En radianes, $\theta=s/R$. Un arco de longitud igual al radio determina un radián. Ser una razón de longitudes no vuelve intercambiables el ángulo y cualquier otra cantidad de dimensión uno. Véase §[2.8](#fispm-c02-cantidades-de-dimensiuxf3n-uno).](/assets/books/fispm/v04/I-02-R04.svg "fig:"){.fpm-v04-figure fig-alt="El ángulo como razón geométrica" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-02-r04" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-02-R04.svg" class="lightbox" data-gallery="fpm-v04-c02"><img src="/assets/books/fispm/v04/I-02-R04.svg" alt="El ángulo como razón geométrica. Diagrama del capítulo 2; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="334" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 2.5.** En radianes, $\theta=s/R$. Un arco de longitud igual al radio determina un radián. Ser una razón de longitudes no vuelve intercambiables el ángulo y cualquier otra cantidad de dimensión uno. Véase §[2.8](#fispm-c02-cantidades-de-dimensiuxf3n-uno).
+
+</figcaption>
+
+</figure>
 
 []{#precisar-cantidad-de-dimensión-uno}
 
@@ -5939,7 +5989,17 @@ No siempre podemos absorber todos los parámetros. Si una relación contiene var
 
 []{#fig:I-02-R05}
 
-![**Figura 2.6.** Si $L=L_*\lambda$, una familia de áreas semejantes satisface $A/A_*=\lambda^2$. Ambas razones son adimensionales; su interpretación conserva las referencias físicas $L_*$ y $A_*$. Véase §[2.10](#fispm-c02-adimensionalizaciuxf3n-e-inferencia-dimensional).](/assets/books/fispm/v04/I-02-R05.svg "fig:"){.fpm-v04-figure fig-alt="Comparar usando referencias declaradas" width="403px" fig-cap=""}
+<figure id="fig-fpm-v04-i-02-r05" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-02-R05.svg" class="lightbox" data-gallery="fpm-v04-c02"><img src="/assets/books/fispm/v04/I-02-R05.svg" alt="Comparar usando referencias declaradas. Diagrama del capítulo 2; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="403" height="250" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 2.6.** Si $L=L_*\lambda$, una familia de áreas semejantes satisface $A/A_*=\lambda^2$. Ambas razones son adimensionales; su interpretación conserva las referencias físicas $L_*$ y $A_*$. Véase §[2.10](#fispm-c02-adimensionalizaciuxf3n-e-inferencia-dimensional).
+
+</figcaption>
+
+</figure>
 
 o combinaciones más complejas.
 
@@ -6639,11 +6699,31 @@ en cualquier problema. Por ejemplo, en una transformación podríamos duplicar e
 
 []{#fig:I-02-R03}
 
-![**Figura 2.7.** En figuras semejantes, duplicar todas las longitudes multiplica el área por cuatro y el volumen por ocho. La comparación exige conservar la forma; el dibujo ilustra la relación de áreas. Véase §[2.11](#fispm-c02-semejanza-escalamiento-y-cambio-de-escala).](/assets/books/fispm/v04/I-02-R03.svg "fig:"){.fpm-v04-figure fig-alt="La escala lineal no es la escala de área" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-02-r03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-02-R03.svg" class="lightbox" data-gallery="fpm-v04-c02"><img src="/assets/books/fispm/v04/I-02-R03.svg" alt="La escala lineal no es la escala de área. Diagrama del capítulo 2; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="292" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 2.7.** En figuras semejantes, duplicar todas las longitudes multiplica el área por cuatro y el volumen por ocho. La comparación exige conservar la forma; el dibujo ilustra la relación de áreas. Véase §[2.11](#fispm-c02-semejanza-escalamiento-y-cambio-de-escala).
+
+</figcaption>
+
+</figure>
 
 []{#fig:I-02-N03}
 
-![**Figura 2.8.** Para el péndulo ideal a pequeña amplitud y $g$ fijo, $T/T_0=\sqrt{L/L_0}$. Duplicar la longitud multiplica el período por $\sqrt2$, dentro de ese régimen. Véase §[2.11](#fispm-c02-semejanza-escalamiento-y-cambio-de-escala).](/assets/books/fispm/v04/I-02-N03.svg "fig:"){.fpm-v04-figure fig-alt="Escalamiento del péndulo" width="450px" fig-cap=""}
+<figure id="fig-fpm-v04-i-02-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-02-N03.svg" class="lightbox" data-gallery="fpm-v04-c02"><img src="/assets/books/fispm/v04/I-02-N03.svg" alt="Escalamiento del péndulo. Diagrama del capítulo 2; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="450" height="253" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 2.8.** Para el péndulo ideal a pequeña amplitud y $g$ fijo, $T/T_0=\sqrt{L/L_0}$. Duplicar la longitud multiplica el período por $\sqrt2$, dentro de ese régimen. Véase §[2.11](#fispm-c02-semejanza-escalamiento-y-cambio-de-escala).
+
+</figcaption>
+
+</figure>
 
 Por tanto,
 
@@ -7277,7 +7357,17 @@ El teorema $\Pi$ de Buckingham responde, bajo hipótesis precisas:[^35]
 
 []{#fig:I-02-R06}
 
-![**Figura 2.9.** Con las magnitudes $v$, $g$ y $\ell$, la combinación $\Pi=v/\sqrt{g\ell}$ tiene dimensión uno. El control dimensional no fija su valor ni garantiza que esas tres magnitudes describan por completo el fenómeno. Véase §[2.12](#fispm-c02-el-teorema-ux3c0-de-buckingham).](/assets/books/fispm/v04/I-02-R06.svg "fig:"){.fpm-v04-figure fig-alt="Un grupo adimensional explícito" width="351px" fig-cap=""}
+<figure id="fig-fpm-v04-i-02-r06" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-02-R06.svg" class="lightbox" data-gallery="fpm-v04-c02"><img src="/assets/books/fispm/v04/I-02-R06.svg" alt="Un grupo adimensional explícito. Diagrama del capítulo 2; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="351" height="204" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 2.9.** Con las magnitudes $v$, $g$ y $\ell$, la combinación $\Pi=v/\sqrt{g\ell}$ tiene dimensión uno. El control dimensional no fija su valor ni garantiza que esas tres magnitudes describan por completo el fenómeno. Véase §[2.12](#fispm-c02-el-teorema-ux3c0-de-buckingham).
+
+</figcaption>
+
+</figure>
 
 $$\boxed{ n-r, }$$
 

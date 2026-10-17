@@ -161,7 +161,17 @@ Un torque perpendicular a la velocidad angular puede cambiar el momento sin apor
 
 []{#fig:I-22-N01}
 
-![**Figura 22.1.** Un torque perpendicular a $\omega$ cambia el momento angular y tiene potencia instantánea nula. La velocidad angular se dibuja discontinua para distinguirla del torque. Véase §[22.3](#fispm-c22-torque-y-potencia-responden-a-preguntas-distintas).](/assets/books/fispm/v04/I-22-N01.svg "fig:"){.fpm-v04-figure fig-alt="Torque sin potencia instantánea" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-22-n01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-22-N01.svg" class="lightbox" data-gallery="fpm-v04-c22"><img src="/assets/books/fispm/v04/I-22-N01.svg" alt="Torque sin potencia instantánea. Diagrama del capítulo 22; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="398" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 22.1.** Un torque perpendicular a $\omega$ cambia el momento angular y tiene potencia instantánea nula. La velocidad angular se dibuja discontinua para distinguirla del torque. Véase §[22.3](#fispm-c22-torque-y-potencia-responden-a-preguntas-distintas).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c22-p0005}
 
@@ -271,7 +281,17 @@ Un giro uniforme sobre un eje principal tiene componentes corporales constantes.
 
 []{#fig:I-22-N02}
 
-![**Figura 22.2.** Para $I_1<I_2<I_3$, el giro alrededor del eje intermedio admite modos lineales crecientes y decrecientes $e^{\pm\lambda t}$. La figura usa $\lambda=1$; los extremos principal menor y mayor tienen modos oscilatorios. Véase §[22.5](#fispm-c22-perturbar-un-giro-principal).](/assets/books/fispm/v04/I-22-N02.svg "fig:"){.fpm-v04-figure fig-alt="Perturbaciones de un giro principal" width="411px" fig-cap=""}
+<figure id="fig-fpm-v04-i-22-n02" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-22-N02.svg" class="lightbox" data-gallery="fpm-v04-c22"><img src="/assets/books/fispm/v04/I-22-N02.svg" alt="Perturbaciones de un giro principal. Diagrama del capítulo 22; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="411" height="254" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 22.2.** Para $I_1<I_2<I_3$, el giro alrededor del eje intermedio admite modos lineales crecientes y decrecientes $e^{\pm\lambda t}$. La figura usa $\lambda=1$; los extremos principal menor y mayor tienen modos oscilatorios. Véase §[22.5](#fispm-c22-perturbar-un-giro-principal).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c22-p0009}
 
@@ -499,7 +519,17 @@ Un trompo sujeto por un pivote fijo tiene fuerzas exteriores incluso cuando gira
 
 []{#fig:I-22-N03}
 
-![**Figura 22.3.** El peso aplicado en el centro de masa produce respecto del apoyo un torque de módulo $Mg\ell\sin\theta$. La reacción del apoyo tiene brazo nulo respecto de ese mismo punto. Véase §[22.9](#fispm-c22-el-trompo-pesado-y-su-punto-de-apoyo).](/assets/books/fispm/v04/I-22-N03.svg "fig:"){.fpm-v04-figure fig-alt="Peso y brazo del trompo" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-22-n03" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-22-N03.svg" class="lightbox" data-gallery="fpm-v04-c22"><img src="/assets/books/fispm/v04/I-22-N03.svg" alt="Peso y brazo del trompo. Diagrama del capítulo 22; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="360" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 22.3.** El peso aplicado en el centro de masa produce respecto del apoyo un torque de módulo $Mg\ell\sin\theta$. La reacción del apoyo tiene brazo nulo respecto de ese mismo punto. Véase §[22.9](#fispm-c22-el-trompo-pesado-y-su-punto-de-apoyo).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c22-d0006}
 
@@ -621,7 +651,17 @@ Una inclinación constante puede sostenerse si el cambio del momento causado por
 
 []{#fig:I-22-R01}
 
-![**Figura 22.4.** Cuando el torque es perpendicular al momento angular, el cambio de primer orden altera su dirección sin alterar su módulo. El dibujo es una construcción diferencial; no identifica por sí solo las tasas de precesión de un trompo. Véase §[22.11](#fispm-c22-cuuxe1ndo-existe-una-precesiuxf3n-regular).](/assets/books/fispm/v04/I-22-R01.svg "fig:"){.fpm-v04-figure fig-alt="El torque puede cambiar la dirección del momento" width="340px" fig-cap=""}
+<figure id="fig-fpm-v04-i-22-r01" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/v04/I-22-R01.svg" class="lightbox" data-gallery="fpm-v04-c22"><img src="/assets/books/fispm/v04/I-22-R01.svg" alt="El torque puede cambiar la dirección del momento. Diagrama del capítulo 22; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid" width="340" height="468" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
+**Figura 22.4.** Cuando el torque es perpendicular al momento angular, el cambio de primer orden altera su dirección sin alterar su módulo. El dibujo es una construcción diferencial; no identifica por sí solo las tasas de precesión de un trompo. Véase §[22.11](#fispm-c22-cuuxe1ndo-existe-una-precesiuxf3n-regular).
+
+</figcaption>
+
+</figure>
 
 []{#fispm-t1-c22-p0021}
 
