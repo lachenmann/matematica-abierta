@@ -12,7 +12,8 @@ images = set()
 all_ids = []
 for path in list(root.rglob('*.md')) + list(root.rglob('*.qmd')):
     if '.git' not in path.parts and not any(p.startswith('_site') for p in path.parts):
-        all_ids += re.findall(r'^content-id: (MA-\w+-\d+)', path.read_text(), re.M)
+            # Compare complete public identities, including suffixes such as -HIST.
+        all_ids += re.findall(r'^content-id: (MA-\w+-\d+(?:-[A-Za-z0-9]+)*)\s*$', path.read_text(), re.M)
 assert len(all_ids) == len(set(all_ids)), 'duplicate public content ID'
 for row in rows:
     path = root/row['path']
