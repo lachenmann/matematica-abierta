@@ -1,5 +1,5 @@
 """Check the FISPM source contract and the actual thirty rendered chapters."""
-import argparse,collections,json,re
+import argparse,collections,hashlib,json,re
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote,urlsplit
@@ -49,5 +49,15 @@ def main():
     target=(site/u.path.lstrip('/') if u.path.startswith('/') else p.parent/unquote(u.path)).resolve() if u.path else p
     if target in pages and u.fragment:assert unquote(u.fragment) in pages[target].ids,(p.name,href)
   assert sum(sum('/assets/books/fispm/' in im.get('src','') for im in p.images) for p in pages.values())==data['figure_count']
+  # Original image URLs remain downloadable after their v04 replacements.
+  legacy=[]
+  for record in (ROOT/'data/ma-fig-manifests').glob('*.json'):
+   figure=json.loads(record.read_text(encoding='utf-8'))
+   if figure.get('figure_id','').startswith('MA-FIG-FISPM-'):
+    legacy.append(figure)
+    path=site/figure['outputs']['web_svg']
+    assert path.is_file(),('missing historical illustration URL',path)
+    assert hashlib.sha256(path.read_bytes()).hexdigest()==figure['output_sha256']['web_svg'],('historical illustration bytes changed',path)
+  assert len(legacy)==21,('original illustration inventory',len(legacy))
  print('FISPM Tome I: PASS — 30 sources'+(' and 30 rendered chapters, declared figures, local links and canonical CSS' if args.site_dir else ''))
 if __name__=='__main__':main()
