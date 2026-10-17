@@ -35,7 +35,7 @@ number-sections: false
 
 []{#prerrequisitos-y-propósito}
 
-## 8.0. Prerrequisitos y propósito {#fispm-c08-prerrequisitos-y-propuxf3sito .unnumbered}
+## Prerrequisitos y propósito {#fispm-c08-prerrequisitos-y-propuxf3sito .unnumbered}
 
 Se utilizan la geometría afín euclídea del capítulo 4, las derivadas y la longitud de curvas del capítulo 5, el control de aproximaciones del capítulo 6 y las reconstrucciones y eventos del capítulo 7. La matemática requerida es M2--M3: vectores, producto escalar, trigonometría, derivadas e integrales de una variable. Las aceleraciones se prescriben como datos del modelo; su explicación mediante fuerzas pertenece al capítulo 9.
 
@@ -47,7 +47,7 @@ El capítulo estudia historias vectoriales, reconstrucción con datos iniciales,
 
 []{#fpm-i-08-s01}
 
-## 8.1. Historia vectorial y componentes en un marco fijo {#fispm-c08-historia-vectorial-y-componentes-en-un-marco-fijo}
+## 1. Historia vectorial y componentes en un marco fijo {#fispm-c08-historia-vectorial-y-componentes-en-un-marco-fijo}
 
 Una cámara registra el recorrido de un objeto sobre una mesa. Cada imagen proporciona dos coordenadas, pero ninguna de las dos series por separado describe el movimiento completo. Si la coordenada horizontal crece mientras la vertical disminuye, el objeto se desplaza en una dirección oblicua; si ambas regresan a sus valores iniciales, vuelve al punto de partida. Las coordenadas deben leerse juntas y en el mismo instante.
 
@@ -55,7 +55,7 @@ El capítulo 7 convirtió un movimiento sobre una recta fija en una función esc
 
 []{#representar-una-historia}
 
-### 8.1.1. Representar una historia {#fispm-c08-representar-una-historia}
+### Representar una historia {#fispm-c08-representar-una-historia}
 
 Sea $\mathcal E$ un espacio afín euclídeo de dimensión $d=2$ o $3$, con espacio vectorial de desplazamientos $V$. Fijamos un origen $O$ y una base ortonormal $B=(e_1,\ldots,e_d)$. El reloj es común a todas las componentes; su lectura $t$ pertenece a un intervalo no degenerado $I$. El marco $F=(O,B)$ permanece fijo durante esta primera parte.
 
@@ -75,7 +75,7 @@ La hipótesis de base fija merece conservarse en la memoria. Si $e_i$ dependiera
 
 []{#dos-gráficas-temporales-y-una-trayectoria}
 
-### 8.1.2. Dos gráficas temporales y una trayectoria {#fispm-c08-dos-gruxe1ficas-temporales-y-una-trayectoria}
+### Dos gráficas temporales y una trayectoria {#fispm-c08-dos-gruxe1ficas-temporales-y-una-trayectoria}
 
 En un plano, las gráficas de $x(t)$ y $y(t)$ viven en planos tiempo--coordenada. La trayectoria, en cambio, es la imagen del mapa $t\mapsto(x(t),y(t))$ en el plano espacial. La pendiente $dy/dx$ de esa imagen, cuando se puede definir mediante $x'(t)\ne0$, es $y'(t)/x'(t)$: no es ninguna de las dos componentes de velocidad. Es un cociente adimensional que informa una dirección local.
 
@@ -87,7 +87,7 @@ Para escribir ejemplos con dimensiones compatibles, elegimos $L>0$ y $T>0$, y po
 
 []{#ejercicios}
 
-### 8.1.3. Ejercicios {#fispm-c08-ejercicios}
+### Ejercicios {#fispm-c08-ejercicios}
 
 []{#fispm-t1-c08-e0001}
 
@@ -111,7 +111,7 @@ La estructura se apoya en [capítulo 4](fisica-para-matematicos-capitulo-4-espac
 
 []{#fpm-i-08-s02}
 
-## 8.2. Reconstrucción desde velocidad y aceleración {#fispm-c08-reconstrucciuxf3n-desde-velocidad-y-aceleraciuxf3n}
+## 2. Reconstrucción desde velocidad y aceleración {#fispm-c08-reconstrucciuxf3n-desde-velocidad-y-aceleraciuxf3n}
 
 Supongamos que un instrumento proporciona las dos componentes de velocidad en función del tiempo. Podemos integrar cada registro, pero la integración deja dos constantes: una por coordenada. Juntas forman un vector inicial. Una velocidad prescribe desplazamientos entre instantes y deja abierta la posición de la historia en el espacio.
 
@@ -135,7 +135,7 @@ La prueba muestra dos tareas diferentes: construir una historia que cumple las c
 
 []{#el-caso-constante-y-el-plano-que-contiene-la-historia}
 
-### 8.2.1. El caso constante y el plano que contiene la historia {#fispm-c08-el-caso-constante-y-el-plano-que-contiene-la-historia}
+### El caso constante y el plano que contiene la historia {#fispm-c08-el-caso-constante-y-el-plano-que-contiene-la-historia}
 
 Si $\mathbf a(t)=\mathbf a_0$, la integral del núcleo $t-s$ da $$P(t)=P_0+\tau\mathbf v_0+\tfrac12\tau^2\mathbf a_0, \qquad \mathbf v(t)=\mathbf v_0+\tau\mathbf a_0, \qquad \tau=t-t_0.$$ La historia permanece en el subespacio afín $P_0+\operatorname{span}\{\mathbf v_0,\mathbf a_0\}$. En tres dimensiones, por tanto, una aceleración vectorial constante no produce una curva espacial arbitraria: la imagen está en un plano, una recta o un punto según el rango de los datos. Si los dos vectores son linealmente independientes, la imagen es una parábola en ese plano; si son dependientes, el movimiento es rectilíneo. La componente perpendicular a ambos nunca aparece en la fórmula.
 
@@ -145,7 +145,7 @@ Si $\mathbf a(t)=\mathbf a_0$, la integral del núcleo $t-s$ da $$P(t)=P_0+\tau\
 
 []{#ejercicios-1}
 
-### 8.2.2. Ejercicios {#fispm-c08-ejercicios-1}
+### Ejercicios {#fispm-c08-ejercicios-1}
 
 []{#fispm-t1-c08-e0003}
 
@@ -167,7 +167,7 @@ La reconstrucción extiende [capítulo 7](fisica-para-matematicos-capitulo-7-cin
 
 []{#fpm-i-08-s03}
 
-## 8.3. Rapidez, dirección y geometría del movimiento {#fispm-c08-rapidez-direcciuxf3n-y-geometruxeda-del-movimiento}
+## 3. Rapidez, dirección y geometría del movimiento {#fispm-c08-rapidez-direcciuxf3n-y-geometruxeda-del-movimiento}
 
 En una curva cerrada, un objeto puede avanzar a rapidez constante y regresar al inicio. Su velocidad no permanece constante: apunta en direcciones distintas durante el recorrido. La idea escalar del capítulo 7, según la cual el cambio se reconoce en una componente firmada, necesita ahora separar la norma y la dirección del vector.
 
@@ -193,7 +193,7 @@ Si deseamos medir cuánto gira la dirección por longitud recorrida, capítulo 5
 
 []{#longitud-y-desplazamiento}
 
-### 8.3.1. Longitud y desplazamiento {#fispm-c08-longitud-y-desplazamiento}
+### Longitud y desplazamiento {#fispm-c08-longitud-y-desplazamiento}
 
 Para $\mathbf r\in C^1([a,b],V)$, la distancia recorrida es $\ell=\int_a^b q(t)\,dt$, por la fórmula de longitud del capítulo 5. Como $\mathbf r(b)-\mathbf r(a)=\int_a^b\mathbf v(t)\,dt$, se tiene $\|\mathbf r(b)-\mathbf r(a)\|\le\ell$. Podemos ver esta desigualdad sin suponer una dirección fija: si el desplazamiento $D$ no es nulo, su vector unitario $m=D/\|D\|$ cumple $\|D\|=\int m\cdot\mathbf v\le\int\|\mathbf v\|$. Si $D=0$, la desigualdad es inmediata.
 
@@ -201,7 +201,7 @@ En el caso $D\ne0$, la igualdad exige que la función continua no negativa $q-m\
 
 []{#ejercicios-2}
 
-### 8.3.2. Ejercicios {#fispm-c08-ejercicios-2}
+### Ejercicios {#fispm-c08-ejercicios-2}
 
 []{#fispm-t1-c08-e0005}
 
@@ -223,7 +223,7 @@ La distinción está anticipada por Shankar §2.6 y Kleppner--Kolenkow §1.8. Aq
 
 []{#fpm-i-08-s04}
 
-## 8.4. Tiro parabólico como modelo cinemático {#fispm-c08-tiro-parabuxf3lico-como-modelo-cinemuxe1tico}
+## 4. Tiro parabólico como modelo cinemático {#fispm-c08-tiro-parabuxf3lico-como-modelo-cinemuxe1tico}
 
 Una pelota sale de una plataforma y avanza mientras cambia su altura. La pregunta puede ser dónde tocará un suelo horizontal, cuánto tiempo estará en vuelo o qué velocidad debe tener para pasar por un punto. Antes de integrar debemos especificar qué descripción adoptamos: la fórmula parabólica no se obtiene de la palabra «pelota».
 
@@ -235,7 +235,7 @@ Una pelota sale de una plataforma y avanza mientras cambia su altura. La pregunt
 
 <figcaption>
 
-**Figura 8.1.** En el tiro ideal $r(t)=(t,2t-t^2/2)$, la altura máxima es $2$ en $t=2$. El retorno al nivel inicial ocurre en $t=4$, con alcance $4$. El segmento discontinuo mide altura y las coordenadas están normalizadas. Véase §[8.4](#fispm-c08-tiro-parabuxf3lico-como-modelo-cinemuxe1tico).
+**Figura 8.1.** En el tiro ideal $r(t)=(t,2t-t^2/2)$, la altura máxima es $2$ en $t=2$. El retorno al nivel inicial ocurre en $t=4$, con alcance $4$. El segmento discontinuo mide altura y las coordenadas están normalizadas. Véase §[4](#fispm-c08-tiro-parabuxf3lico-como-modelo-cinemuxe1tico).
 
 </figcaption>
 
@@ -249,7 +249,7 @@ Una pelota sale de una plataforma y avanza mientras cambia su altura. La pregunt
 
 <figcaption>
 
-**Figura 8.2.** Sin resistencia, $X=u$ y $Y=2u-u^2/2$ entre lanzamiento y retorno al nivel inicial. En el ápice $u=2$, la velocidad es horizontal y la aceleración sigue apuntando hacia abajo. Las flechas son cinemáticas. Véase §[8.4](#fispm-c08-tiro-parabuxf3lico-como-modelo-cinemuxe1tico).
+**Figura 8.2.** Sin resistencia, $X=u$ y $Y=2u-u^2/2$ entre lanzamiento y retorno al nivel inicial. En el ápice $u=2$, la velocidad es horizontal y la aceleración sigue apuntando hacia abajo. Las flechas son cinemáticas. Véase §[4](#fispm-c08-tiro-parabuxf3lico-como-modelo-cinemuxe1tico).
 
 </figcaption>
 
@@ -273,7 +273,7 @@ La ecuación parabólica es una consecuencia matemática exacta `[``MATH``]` de 
 
 []{#qué-significa-separar-las-componentes}
 
-### 8.4.1. Qué significa separar las componentes {#fispm-c08-quuxe9-significa-separar-las-componentes}
+### Qué significa separar las componentes {#fispm-c08-quuxe9-significa-separar-las-componentes}
 
 La ecuación horizontal tiene aceleración cero y la vertical tiene aceleración $-g$. Esa separación es matemática porque el modelo prescribe componentes desacopladas. Ambas comparten el tiempo; cuando ocurre un evento vertical, la posición horizontal debe evaluarse en ese mismo instante. La frase «el movimiento horizontal no influye en el vertical» está limitada a estas premisas. Una aceleración que dependiera de la velocidad completa o de la posición podría destruir esa separación.
 
@@ -283,7 +283,7 @@ La ecuación horizontal tiene aceleración cero y la vertical tiene aceleración
 
 []{#ejercicios-3}
 
-### 8.4.2. Ejercicios {#fispm-c08-ejercicios-3}
+### Ejercicios {#fispm-c08-ejercicios-3}
 
 []{#fispm-t1-c08-e0007}
 
@@ -303,7 +303,7 @@ Shankar, cap. 2, §2.7, pp. 32--35, controla la separación de componentes y el
 
 []{#fpm-i-08-s05}
 
-## 8.5. Eventos, altura y alcance {#fispm-c08-eventos-altura-y-alcance}
+## 5. Eventos, altura y alcance {#fispm-c08-eventos-altura-y-alcance}
 
 La prolongación algebraica de una parábola sigue existiendo después de tocar el suelo. El modelo de vuelo termina allí: la colisión modifica la historia y requiere otro tratamiento. Por eso encontrar una raíz no basta; debemos decidir qué raíz corresponde al evento y qué intervalo queda físicamente admitido.
 
@@ -327,7 +327,7 @@ El vértice de la parábola prolongada podría estar en tiempo negativo cuando $
 
 []{#alcance-a-igual-altura}
 
-### 8.5.1. Alcance a igual altura {#fispm-c08-alcance-a-igual-altura}
+### Alcance a igual altura {#fispm-c08-alcance-a-igual-altura}
 
 []{#fispm-t1-c08-p0006}
 
@@ -343,7 +343,7 @@ El ángulo de cuarenta y cinco grados depende de comparar alcances con la misma 
 
 []{#ejercicios-4}
 
-### 8.5.2. Ejercicios {#fispm-c08-ejercicios-4}
+### Ejercicios {#fispm-c08-ejercicios-4}
 
 []{#fispm-t1-c08-e0009}
 
@@ -363,7 +363,7 @@ El ángulo de cuarenta y cinco grados depende de comparar alcances con la misma 
 
 []{#fpm-i-08-s06}
 
-## 8.6. Diseñar un lanzamiento y reconocer información faltante {#fispm-c08-diseuxf1ar-un-lanzamiento-y-reconocer-informaciuxf3n-faltante}
+## 6. Diseñar un lanzamiento y reconocer información faltante {#fispm-c08-diseuxf1ar-un-lanzamiento-y-reconocer-informaciuxf3n-faltante}
 
 Hasta ahora fijamos la velocidad inicial y calculamos lo que ocurriría. El problema inverso pide qué velocidad permitiría un evento deseado. La inversión tiene que conservar los datos que se conocen: alcanzar un punto no determina por sí solo la duración ni la rapidez del lanzamiento.
 
@@ -379,7 +379,7 @@ La prueba transforma una búsqueda de velocidades en una búsqueda de tiempos. N
 
 []{#rapidez-fijada-y-dos-posibilidades}
 
-### 8.6.1. Rapidez fijada y dos posibilidades {#fispm-c08-rapidez-fijada-y-dos-posibilidades}
+### Rapidez fijada y dos posibilidades {#fispm-c08-rapidez-fijada-y-dos-posibilidades}
 
 Si la rapidez disponible es $c$, la igualdad anterior produce una ecuación para $z=\tau^2$: $$\frac{g^2}{4}z^2+(gH-c^2)z+(d^2+H^2)=0.$$ Para $c=c_{\min}$ hay una raíz positiva doble y un lanzamiento. Para $c>c_{\min}$ hay dos raíces positivas distintas: el discriminante es positivo porque $c^2-gH>g\sqrt{d^2+H^2}$; la suma y el producto de las raíces son positivos. Sus raíces cuadradas proporcionan dos tiempos y dos velocidades iniciales. Para $c<c_{\min}$ no hay tiempo admisible, por la proposición 8.7. Esta clasificación incluye objetivos altos y bajos, sin dividir por una componente vertical que pudiera anularse.
 
@@ -389,7 +389,7 @@ Si la rapidez disponible es $c$, la igualdad anterior produce una ecuación para
 
 []{#ejercicios-5}
 
-### 8.6.2. Ejercicios {#fispm-c08-ejercicios-5}
+### Ejercicios {#fispm-c08-ejercicios-5}
 
 []{#fispm-t1-c08-e0011}
 
@@ -411,7 +411,7 @@ Para cada elección, $X(s)=s/u_\pm$ y $Y(s)=u_\pm s-s^2$ en tiempo normalizado $
 
 []{#fpm-i-08-s07}
 
-## 8.7. Coordenadas polares y direcciones variables {#fispm-c08-coordenadas-polares-y-direcciones-variables}
+## 7. Coordenadas polares y direcciones variables {#fispm-c08-coordenadas-polares-y-direcciones-variables}
 
 Un movimiento próximo a un centro fijo puede resultar más sencillo si registramos distancia al centro y ángulo. Para una circunferencia centrada en ese punto, la distancia no cambia y el ángulo contiene toda la evolución. Sin embargo, que una coordenada sea constante no significa que el vector de posición lo sea: su dirección puede variar.
 
@@ -423,7 +423,7 @@ Un movimiento próximo a un centro fijo puede resultar más sencillo si registra
 
 <figcaption>
 
-**Figura 8.3.** La base ortonormal polar gira con el ángulo: $\dot e_r=\dot\theta e_\theta$ y $\dot e_\theta=-\dot\theta e_r$. Las flechas muestran sus direcciones; su longitud es esquemática. Véase §[8.7](#fispm-c08-coordenadas-polares-y-direcciones-variables).
+**Figura 8.3.** La base ortonormal polar gira con el ángulo: $\dot e_r=\dot\theta e_\theta$ y $\dot e_\theta=-\dot\theta e_r$. Las flechas muestran sus direcciones; su longitud es esquemática. Véase §[7](#fispm-c08-coordenadas-polares-y-direcciones-variables).
 
 </figcaption>
 
@@ -437,7 +437,7 @@ Un movimiento próximo a un centro fijo puede resultar más sencillo si registra
 
 <figcaption>
 
-**Figura 8.4.** En el punto de ángulo $\theta$, $e_r$ es radial y $e_\theta$ apunta hacia el incremento de $\theta$. Las dos direcciones giran con el punto; sus derivadas aportan términos a la aceleración. Véase §[8.7](#fispm-c08-coordenadas-polares-y-direcciones-variables).
+**Figura 8.4.** En el punto de ángulo $\theta$, $e_r$ es radial y $e_\theta$ apunta hacia el incremento de $\theta$. Las dos direcciones giran con el punto; sus derivadas aportan términos a la aceleración. Véase §[7](#fispm-c08-coordenadas-polares-y-direcciones-variables).
 
 </figcaption>
 
@@ -453,7 +453,7 @@ El cambio de coordenadas es $x=\rho\cos\theta$, $y=\rho\sin\theta$. La distancia
 
 []{#una-base-ligada-a-la-posición}
 
-### 8.7.1. Una base ligada a la posición {#fispm-c08-una-base-ligada-a-la-posiciuxf3n}
+### Una base ligada a la posición {#fispm-c08-una-base-ligada-a-la-posiciuxf3n}
 
 En cada instante, $(e_r,e_\theta)$ es una base ortonormal del mismo plano. Directamente, $e_r\cdot e_r=e_\theta\cdot e_\theta=1$ y $e_r\cdot e_\theta=0$, por las identidades trigonométricas. Las componentes de un vector $\mathbf b$ en esa base son $b_r=\mathbf b\cdot e_r$ y $b_\theta=\mathbf b\cdot e_\theta$. Para comparar componentes tomadas en instantes diferentes, debemos recordar que sus direcciones pueden ser diferentes.
 
@@ -473,7 +473,7 @@ La primera identidad expresa que el cambio de un vector unitario es perpendicula
 
 []{#el-origen-y-el-corte-angular}
 
-### 8.7.2. El origen y el corte angular {#fispm-c08-el-origen-y-el-corte-angular}
+### El origen y el corte angular {#fispm-c08-el-origen-y-el-corte-angular}
 
 En $\rho=0$ cualquier ángulo produce el mismo punto. La dirección radial deja de estar determinada por la posición; no es una singularidad necesaria del movimiento físico. Por ejemplo, la ley cartesiana $\mathbf r(t)=ct e_x$, con $c>0$, atraviesa el origen suavemente. Su distancia es $c|t|$, no diferenciable en cero, y la dirección radial cambia de $-e_x$ a $e_x$. La descripción cartesiana sigue siendo regular mientras la descripción polar ligada a la posición pierde regularidad.
 
@@ -481,7 +481,7 @@ Un salto de $2\pi$ en una lectura principal del ángulo tampoco prueba un salto 
 
 []{#ejercicios-6}
 
-### 8.7.3. Ejercicios {#fispm-c08-ejercicios-6}
+### Ejercicios {#fispm-c08-ejercicios-6}
 
 []{#fispm-t1-c08-e0013}
 
@@ -503,7 +503,7 @@ Kleppner--Kolenkow §1.9, pp. 27--33, controla el cambio a direcciones polares.
 
 []{#fpm-i-08-s08}
 
-## 8.8. Velocidad y aceleración en coordenadas polares {#fispm-c08-velocidad-y-aceleraciuxf3n-en-coordenadas-polares}
+## 8. Velocidad y aceleración en coordenadas polares {#fispm-c08-velocidad-y-aceleraciuxf3n-en-coordenadas-polares}
 
 En una historia polar, $\rho'$ informa cuánto cambia la distancia al origen. No mide toda la rapidez: un objeto puede mantener esa distancia y moverse alrededor del origen. El término que falta debe proceder de la dirección $e_r$, que ahora cambia con el ángulo.
 
@@ -517,7 +517,7 @@ La componente radial de la aceleración es $a_r=\rho''-\rho(\theta')^2$, y la an
 
 []{#interpretar-los-términos-sin-introducir-fuerzas}
 
-### 8.8.1. Interpretar los términos sin introducir fuerzas {#fispm-c08-interpretar-los-tuxe9rminos-sin-introducir-fuerzas}
+### Interpretar los términos sin introducir fuerzas {#fispm-c08-interpretar-los-tuxe9rminos-sin-introducir-fuerzas}
 
 Si $\theta$ es constante, la dirección radial también lo es y el movimiento se reduce a una recta: $\mathbf v=\rho'e_r$, $\mathbf a=\rho''e_r$. Si $\rho=b>0$ es constante, la velocidad es $b\theta'e_\theta$ y la aceleración $-b(\theta')^2e_r+b\theta''e_\theta$. El primer término apunta hacia el centro y mide el cambio de dirección; el segundo responde al cambio de velocidad angular. Estos son resultados cinemáticos, sin identificar una fuerza que los produzca.
 
@@ -529,7 +529,7 @@ La dirección $e_\theta$ es perpendicular a la radial. Sólo en un movimiento de
 
 []{#una-recta-vista-desde-coordenadas-polares}
 
-### 8.8.2. Una recta vista desde coordenadas polares {#fispm-c08-una-recta-vista-desde-coordenadas-polares}
+### Una recta vista desde coordenadas polares {#fispm-c08-una-recta-vista-desde-coordenadas-polares}
 
 La ley cartesiana $\mathbf r(t)=ct e_x+b e_y$, con $b,c>0$, tiene velocidad constante $ce_x$ y aceleración cero. En tiempo $t\in\mathbb R$, su distancia es $\rho=\sqrt{c^2t^2+b^2}$. Una elección continua de ángulo en $(0,\pi)$ cumple $\theta'=-bc/(c^2t^2+b^2)$. Así, $\rho''=b^2c^2/\rho^3>0$, aunque el vector aceleración sea nulo.
 
@@ -537,7 +537,7 @@ Proposición 8.9 resuelve la aparente contradicción: $\rho(\theta')^2=b^2c^2/\r
 
 []{#ejercicios-7}
 
-### 8.8.3. Ejercicios {#fispm-c08-ejercicios-7}
+### Ejercicios {#fispm-c08-ejercicios-7}
 
 []{#fispm-t1-c08-e0015}
 
@@ -563,7 +563,7 @@ La fórmula y sus términos se contrastaron con Kleppner--Kolenkow §1.9, pp. 3
 
 []{#fpm-i-08-s09}
 
-## 8.9. Movimiento circular uniforme y no uniforme {#fispm-c08-movimiento-circular-uniforme-y-no-uniforme}
+## 9. Movimiento circular uniforme y no uniforme {#fispm-c08-movimiento-circular-uniforme-y-no-uniforme}
 
 Un objeto recorre una pista circular. Conocer el radio y el tiempo de una vuelta no indica, por sí solo, cómo se distribuye su rapidez durante esa vuelta. Puede avanzar lentamente en un sector y más rápido en otro; también puede detenerse o cambiar de sentido. La circunferencia describe la imagen espacial, mientras que la función angular conserva la historia temporal.
 
@@ -575,7 +575,7 @@ Un objeto recorre una pista circular. Conocer el radio y el tiempo de una vuelta
 
 <figcaption>
 
-**Figura 8.5.** En el movimiento circular uniforme, la velocidad es tangente y la aceleración es centrípeta. Las flechas representan $v$ y $a$, no un diagrama de fuerzas. Véase §[8.9](#fispm-c08-movimiento-circular-uniforme-y-no-uniforme).
+**Figura 8.5.** En el movimiento circular uniforme, la velocidad es tangente y la aceleración es centrípeta. Las flechas representan $v$ y $a$, no un diagrama de fuerzas. Véase §[9](#fispm-c08-movimiento-circular-uniforme-y-no-uniforme).
 
 </figcaption>
 
@@ -605,7 +605,7 @@ Si $\omega$ se anula en un instante, las fórmulas vectoriales siguen siendo vá
 
 []{#ejercicios-8}
 
-### 8.9.1. Ejercicios {#fispm-c08-ejercicios-8}
+### Ejercicios {#fispm-c08-ejercicios-8}
 
 []{#fispm-t1-c08-e0017}
 
@@ -627,7 +627,7 @@ El tratamiento usa la interfaz polar ya demostrada. Shankar §2.6 y Kleppner--Ko
 
 []{#fpm-i-08-s10}
 
-## 8.10. Marcos con origen en traslación {#fispm-c08-marcos-con-origen-en-traslaciuxf3n}
+## 10. Marcos con origen en traslación {#fispm-c08-marcos-con-origen-en-traslaciuxf3n}
 
 Una persona observa un objeto desde una plataforma que se desplaza. Aunque sus ejes permanezcan paralelos a los del suelo, la coordenada que registra es una posición respecto de un origen móvil. Derivar esa coordenada mide el cambio relativo a la plataforma, y no necesariamente la velocidad descrita desde el origen fijo.
 
@@ -649,7 +649,7 @@ El resultado es cinemático. La igualdad de aceleraciones bajo traslación unifo
 
 []{#reposo-y-rapidez-en-dos-descripciones}
 
-### 8.10.1. Reposo y rapidez en dos descripciones {#fispm-c08-reposo-y-rapidez-en-dos-descripciones}
+### Reposo y rapidez en dos descripciones {#fispm-c08-reposo-y-rapidez-en-dos-descripciones}
 
 Si $\mathbf y$ es constante, el objeto permanece fijo respecto de la plataforma y su velocidad en el marco fijo es $\mathbf c'$. Si $\mathbf r$ es constante, su velocidad relativa es $-\mathbf c'$. La palabra «reposo» necesita un marco. Lo mismo ocurre con la rapidez: $\|\mathbf v-\mathbf U\|$ no suele ser $\|\mathbf v\|-\|\mathbf U\|$, pues la norma depende de la dirección de ambos vectores.
 
@@ -661,7 +661,7 @@ La aceleración puede coincidir y las velocidades diferir. Por ejemplo, un objet
 
 []{#ejercicios-9}
 
-### 8.10.2. Ejercicios {#fispm-c08-ejercicios-9}
+### Ejercicios {#fispm-c08-ejercicios-9}
 
 []{#fispm-t1-c08-e0019}
 
@@ -683,7 +683,7 @@ Kleppner--Kolenkow §8.2 permite contrastar la resta de velocidades y aceleracio
 
 []{#fpm-i-08-s11}
 
-## 8.11. Marcos planos con ejes en rotación {#fispm-c08-marcos-planos-con-ejes-en-rotaciuxf3n}
+## 11. Marcos planos con ejes en rotación {#fispm-c08-marcos-planos-con-ejes-en-rotaciuxf3n}
 
 Una cámara puede desplazarse y girar al mismo tiempo. Ahora un objeto que conserva sus coordenadas en la imagen no mantiene necesariamente un vector constante respecto del suelo: los ejes de la cámara cambian de dirección. La composición de velocidades necesita reconocer ese giro además del movimiento del origen.
 
@@ -709,7 +709,7 @@ El término $2\omega QJ\mathbf y'$ suele denominarse aceleración de Coriolis en
 
 []{#qué-cambia-respecto-de-las-coordenadas-polares}
 
-### 8.11.1. Qué cambia respecto de las coordenadas polares {#fispm-c08-quuxe9-cambia-respecto-de-las-coordenadas-polares}
+### Qué cambia respecto de las coordenadas polares {#fispm-c08-quuxe9-cambia-respecto-de-las-coordenadas-polares}
 
 En §8, la dirección radial se eligió desde la posición del objeto y el ángulo era el de esa posición. En definición 8.9, el ángulo $\varphi$ pertenece al marco y se prescribe independientemente de dónde esté el objeto. Las coordenadas $\xi_1,\xi_2$ pueden cambiar ambas, y el objeto puede cruzar el origen del marco sin singularidad de esta representación cartesiana móvil.
 
@@ -721,7 +721,7 @@ Proposición 8.9 se recupera como una elección particular: si $\mathbf c=0$, $\
 
 []{#ejercicios-10}
 
-### 8.11.2. Ejercicios {#fispm-c08-ejercicios-10}
+### Ejercicios {#fispm-c08-ejercicios-10}
 
 []{#fispm-t1-c08-e0021}
 
@@ -749,7 +749,7 @@ Kleppner--Kolenkow §8.5, pp. 356--359, controla las derivadas de direcciones g
 
 []{#fpm-i-08-s12}
 
-## 8.12. Composición de movimientos y encuentros {#fispm-c08-composiciuxf3n-de-movimientos-y-encuentros}
+## 12. Composición de movimientos y encuentros {#fispm-c08-composiciuxf3n-de-movimientos-y-encuentros}
 
 Una persona camina sobre una plataforma que, a su vez, se mueve respecto del suelo. La descripción combina dos relaciones de posición. Si una de ellas utiliza ejes giratorios, sus números deben transformarse antes de sumarlos: una componente horizontal de la plataforma no es automáticamente una componente horizontal del suelo.
 
@@ -765,7 +765,7 @@ Para dos traslaciones sin giro, proposición 8.13 reduce a $\mathbf r=\mathbf c_
 
 []{#encuentros-como-igualdades-simultáneas}
 
-### 8.12.1. Encuentros como igualdades simultáneas {#fispm-c08-encuentros-como-igualdades-simultuxe1neas}
+### Encuentros como igualdades simultáneas {#fispm-c08-encuentros-como-igualdades-simultuxe1neas}
 
 Sean $P_A,P_B$ dos historias en un dominio temporal común $I$. El conjunto de tiempos de encuentro es $E=\{t\in I:P_A(t)=P_B(t)\}$. Dos curvas espaciales pueden cruzarse en un punto y no tener un encuentro, si cada objeto pasa por allí en tiempos distintos.
 
@@ -783,7 +783,7 @@ El encuentro es el mismo evento físico en ambas descripciones. La conclusión n
 
 []{#ejercicios-11}
 
-### 8.12.2. Ejercicios {#fispm-c08-ejercicios-11}
+### Ejercicios {#fispm-c08-ejercicios-11}
 
 []{#fispm-t1-c08-e0024}
 
@@ -803,7 +803,7 @@ El encuentro es el mismo evento físico en ambas descripciones. La conclusión n
 
 []{#fpm-i-08-s13}
 
-## 8.13. Aproximaciones vectoriales y horizonte de validez {#fispm-c08-aproximaciones-vectoriales-y-horizonte-de-validez}
+## 13. Aproximaciones vectoriales y horizonte de validez {#fispm-c08-aproximaciones-vectoriales-y-horizonte-de-validez}
 
 Una ley cinemática puede omitir una pequeña contribución a la aceleración y aun así acumular un defecto de posición apreciable durante un vuelo largo. La evaluación de la reducción necesita la observable y el intervalo: un error pequeño en aceleración no es directamente un error pequeño en posición.
 
@@ -831,7 +831,7 @@ Con proposición 8.15 basta imponer $\delta_r+\delta_vH+AH^2/2\le\varepsilon S$.
 
 []{#errores-de-representación-del-marco}
 
-### 8.13.1. Errores de representación del marco {#fispm-c08-errores-de-representaciuxf3n-del-marco}
+### Errores de representación del marco {#fispm-c08-errores-de-representaciuxf3n-del-marco}
 
 Un instrumento puede conocer imperfectamente su origen y orientación. Entonces hay que separar el defecto de las coordenadas del defecto de la transformación que las coloca en el espacio.
 
@@ -851,7 +851,7 @@ Un mismo defecto angular puede producir un defecto de longitud mayor para objeto
 
 []{#ejercicios-12}
 
-### 8.13.2. Ejercicios {#fispm-c08-ejercicios-12}
+### Ejercicios {#fispm-c08-ejercicios-12}
 
 []{#fispm-t1-c08-e0026}
 
@@ -881,13 +881,13 @@ Las nociones de error, resto y dominio certificado proceden de [capítulo 6](fis
 
 []{#fpm-i-08-s14}
 
-## 8.14. Reconstrucción y auditoría de una historia completa {#fispm-c08-reconstrucciuxf3n-y-auditoruxeda-de-una-historia-completa}
+## 14. Reconstrucción y auditoría de una historia completa {#fispm-c08-reconstrucciuxf3n-y-auditoruxeda-de-una-historia-completa}
 
 La descripción de un movimiento debe permitir pasar de los datos al evento sin cambiar inadvertidamente de marco, reloj o modelo. El capítulo ofrece tres representaciones con funciones diferentes: coordenadas cartesianas fijas, coordenadas polares ligadas a un centro y coordenadas cartesianas de un marco móvil. La elección depende de la pregunta; ninguna representación releva de conservar sus condiciones.
 
 []{#cómo-organizar-una-reconstrucción}
 
-### 8.14.1. Cómo organizar una reconstrucción {#fispm-c08-cuxf3mo-organizar-una-reconstrucciuxf3n}
+### Cómo organizar una reconstrucción {#fispm-c08-cuxf3mo-organizar-una-reconstrucciuxf3n}
 
 Primero se identifica qué se conoce. Una posición temporal completa permite derivar; una velocidad necesita una posición inicial para reconstruir; una aceleración necesita posición y velocidad iniciales. Una rapidez inicial sin dirección suele dejar una familia. Un punto objetivo puede seleccionar varias historias, dependiendo de si se fija también rapidez o tiempo.
 
@@ -903,7 +903,7 @@ Finalmente se interpreta la precisión. Una fórmula exacta del modelo puede omi
 
 []{#ejercicios-de-integración}
 
-### 8.14.2. Ejercicios de integración {#fispm-c08-ejercicios-de-integraciuxf3n}
+### Ejercicios de integración {#fispm-c08-ejercicios-de-integraciuxf3n}
 
 []{#fispm-t1-c08-e0029}
 
@@ -933,7 +933,7 @@ En el evento real, $|X(u_f)-3u_f|\le0{,}01u_f^2$ y $|u_f-2|<0{,}02$. La desigual
 
 []{#lo-que-queda-preparado-para-la-dinámica}
 
-### 8.14.3. Lo que queda preparado para la dinámica {#fispm-c08-lo-que-queda-preparado-para-la-dinuxe1mica}
+### Lo que queda preparado para la dinámica {#fispm-c08-lo-que-queda-preparado-para-la-dinuxe1mica}
 
 La cinemática ha establecido cómo describir una historia, reconstruirla de datos prescritos, transformarla entre marcos y controlar determinadas reducciones. Los términos de aceleración que aparecen en una base móvil ya tienen una explicación geométrica. La pregunta siguiente será qué interacciones y principios físicos determinan la aceleración, y en qué marcos se formulan esas leyes. Esa nueva tarea necesita las distinciones construidas aquí, pero no estaba contenida en derivar dos veces una posición.
 

@@ -39,11 +39,11 @@ number-sections: false
 
 []{#fpm-i-01-s01}
 
-## 1.1. Una pregunta física no es todavía una ecuación {#fispm-c01-una-pregunta-fuxedsica-no-es-todavuxeda-una-ecuaciuxf3n}
+## 1. Una pregunta física no es todavía una ecuación {#fispm-c01-una-pregunta-fuxedsica-no-es-todavuxeda-una-ecuaciuxf3n}
 
 []{#el-primer-problema}
 
-### 1.1.1. El primer problema {#fispm-c01-el-primer-problema}
+### El primer problema {#fispm-c01-el-primer-problema}
 
 Supongamos que frente a nosotros cuelga una pequeña esfera metálica de un hilo. La apartamos de la vertical y la soltamos. La esfera va hacia un lado, regresa, atraviesa la posición central, sube por el otro lado, vuelve otra vez y continúa oscilando.
 
@@ -55,7 +55,7 @@ Supongamos que frente a nosotros cuelga una pequeña esfera metálica de un hilo
 
 <figcaption>
 
-**Figura 1.1.** Una curva de posición contiene una historia cinemática. La tangente expresa velocidad; para explicar por qué cambia hacen falta interacciones y un modelo dinámico. El ejemplo usa $x=t^2/4{,}5$ en unidades normalizadas. Véase §[1.1](#fispm-c01-una-pregunta-fuxedsica-no-es-todavuxeda-una-ecuaciuxf3n).
+**Figura 1.1.** Una curva de posición contiene una historia cinemática. La tangente expresa velocidad; para explicar por qué cambia hacen falta interacciones y un modelo dinámico. El ejemplo usa $x=t^2/4{,}5$ en unidades normalizadas. Véase §[1](#fispm-c01-una-pregunta-fuxedsica-no-es-todavuxeda-una-ecuaciuxf3n).
 
 </figcaption>
 
@@ -101,7 +101,7 @@ Este será nuestro punto de partida:
 
 No se trata de una precaución filosófica externa a la física. Es una parte del trabajo físico mismo.
 
-### 1.1.2. El objeto real contiene más física que nuestro primer modelo {#fispm-c01-el-objeto-real-contiene-muxe1s-fuxedsica-que-nuestro-primer-modelo}
+### El objeto real contiene más física que nuestro primer modelo {#fispm-c01-el-objeto-real-contiene-muxe1s-fuxedsica-que-nuestro-primer-modelo}
 
 Observemos con mayor cuidado el péndulo que tenemos delante. La esfera no es un punto: posee radio, densidad, rugosidad y distribución de masa. El hilo tampoco es una línea geométrica: tiene masa, grosor, elasticidad y puede torcerse. El punto de suspensión puede ceder o vibrar. El aire ejerce fuerzas sobre el conjunto. La Tierra gira. El campo gravitatorio no es perfectamente uniforme. El laboratorio vibra. La esfera intercambia calor con el ambiente. El dispositivo utilizado para medir el tiempo tiene resolución finita.
 
@@ -115,19 +115,19 @@ La palabra importante es **de acuerdo con una pregunta**. La masa del hilo puede
 
 No existen, por tanto, detalles «irrelevantes en sí mismos». Hay detalles irrelevantes **para una pregunta y dentro de una precisión determinada**.
 
-### 1.1.3. Una escalera de representaciones {#fispm-c01-una-escalera-de-representaciones}
+### Una escalera de representaciones {#fispm-c01-una-escalera-de-representaciones}
 
 Podemos ordenar varias descripciones posibles del mismo dispositivo.
 
 []{#nivel-a-el-péndulo-real}
 
-#### 1.1.3.1. Nivel A --- El péndulo real {#fispm-c01-nivel-a-el-puxe9ndulo-real}
+#### Nivel A --- El péndulo real {#fispm-c01-nivel-a-el-puxe9ndulo-real}
 
 Tenemos un cuerpo extendido suspendido de un hilo real, dentro de aire, unido a un soporte real, en un laboratorio situado sobre una Tierra real. Esta descripción es físicamente rica, pero todavía demasiado abierta para calcular o predecir algo concreto.
 
 []{#nivel-b-selección-del-sistema}
 
-#### 1.1.3.2. Nivel B --- Selección del sistema {#fispm-c01-nivel-b-selecciuxf3n-del-sistema}
+#### Nivel B --- Selección del sistema {#fispm-c01-nivel-b-selecciuxf3n-del-sistema}
 
 Decidimos estudiar principalmente:
 
@@ -143,7 +143,7 @@ Todavía no hemos convertido el sistema en un objeto matemático. Solo hemos tra
 
 []{#nivel-c-idealización-geométrica}
 
-#### 1.1.3.3. Nivel C --- Idealización geométrica {#fispm-c01-nivel-c-idealizaciuxf3n-geomuxe9trica}
+#### Nivel C --- Idealización geométrica {#fispm-c01-nivel-c-idealizaciuxf3n-geomuxe9trica}
 
 Representamos la esfera por un punto y el hilo por un segmento de longitud fija.
 
@@ -157,7 +157,7 @@ El objeto matemático que aparece no existe literalmente en el laboratorio. No h
 
 []{#nivel-d-omisión-de-disipación}
 
-#### 1.1.3.4. Nivel D --- Omisión de disipación {#fispm-c01-nivel-d-omisiuxf3n-de-disipaciuxf3n}
+#### Nivel D --- Omisión de disipación {#fispm-c01-nivel-d-omisiuxf3n-de-disipaciuxf3n}
 
 Decidimos ignorar, en una primera descripción, la pérdida de energía asociada al aire y a la fricción del soporte.
 
@@ -167,7 +167,7 @@ No estamos diciendo que esas pérdidas sean cero en el mundo. Estamos diciendo:
 
 []{#nivel-e-modelo-ulterior-de-pequeñas-oscilaciones}
 
-#### 1.1.3.5. Nivel E --- Modelo ulterior de pequeñas oscilaciones {#fispm-c01-nivel-e-modelo-ulterior-de-pequeuxf1as-oscilaciones}
+#### Nivel E --- Modelo ulterior de pequeñas oscilaciones {#fispm-c01-nivel-e-modelo-ulterior-de-pequeuxf1as-oscilaciones}
 
 En un capítulo posterior podremos hacer una aproximación adicional válida bajo condiciones específicas para simplificar todavía más el modelo. Pero no debemos saltar a ella ahora. Primero tendremos que aprender qué significa justificar una aproximación y cómo se especifica su régimen de validez.
 
@@ -175,7 +175,7 @@ La secuencia conceptual es, por tanto,
 
 $$\begin{gathered} \text{objeto real} \longrightarrow \text{sistema seleccionado}\\[2pt]\Downarrow\\[2pt]\text{idealización} \longrightarrow \text{modelo}\\[2pt]\Downarrow\\[2pt]\text{aproximaciones adicionales}. \end{gathered}$$ No todos estos pasos son matemáticos. Algunos son decisiones físicas acerca de qué aspectos del mundo vamos a representar.
 
-### 1.1.4. Primera distinción fundamental: sistema real y objeto matemático {#fispm-c01-primera-distinciuxf3n-fundamental-sistema-real-y-objeto-matemuxe1tico}
+### Primera distinción fundamental: sistema real y objeto matemático {#fispm-c01-primera-distinciuxf3n-fundamental-sistema-real-y-objeto-matemuxe1tico}
 
 Consideremos una esfera de acero que cuelga de un hilo. La esfera que tocamos pertenece al mundo físico. Podemos pesarla, calentarla, rayarla o reemplazarla.
 
@@ -191,7 +191,7 @@ La expresión «elegimos» es deliberada. La frontera de un sistema no siempre v
 
 La representación no es simplemente una traducción de palabras a símbolos. Implica una correspondencia. Si escribimos un símbolo $x$, todavía no hemos hecho física. Necesitamos saber **qué representa $x$** y mediante qué procedimiento podría relacionarse con una observación.
 
-### 1.1.5. El problema del mapa {#fispm-c01-el-problema-del-mapa}
+### El problema del mapa {#fispm-c01-el-problema-del-mapa}
 
 Hay una manera útil de pensar la relación entre realidad y modelo. Un mapa de una ciudad no reproduce la ciudad. No contiene los mismos edificios, personas, sonidos, temperaturas ni materiales. Contiene líneas, nombres, símbolos y escalas.
 
@@ -219,19 +219,19 @@ La Tierra puede ser representada como:
 
 Ninguna de esas representaciones agota lo que la Tierra es. El modelo adecuado depende de la pregunta, de la escala y de la precisión exigida.
 
-### 1.1.6. ¿Podemos incluir todo? {#fispm-c01-podemos-incluir-todo}
+### ¿Podemos incluir todo? {#fispm-c01-podemos-incluir-todo}
 
 Podría parecer que la solución más rigurosa consiste simplemente en introducir un modelo cada vez más detallado hasta incluir «todo lo importante». Pero esta idea contiene varios problemas.
 
 []{#no-sabemos-de-antemano-qué-es-todo-lo-importante}
 
-### 1.1.7. No sabemos de antemano qué es «todo lo importante» {#fispm-c01-no-sabemos-de-antemano-quuxe9-es-todo-lo-importante}
+### No sabemos de antemano qué es «todo lo importante» {#fispm-c01-no-sabemos-de-antemano-quuxe9-es-todo-lo-importante}
 
 Precisamente uno de los objetivos de un experimento puede ser descubrir que un efecto considerado insignificante no lo era.
 
 []{#un-modelo-más-complejo-no-es-automáticamente-mejor}
 
-### 1.1.8. Un modelo más complejo no es automáticamente mejor {#fispm-c01-un-modelo-muxe1s-complejo-no-es-automuxe1ticamente-mejor}
+### Un modelo más complejo no es automáticamente mejor {#fispm-c01-un-modelo-muxe1s-complejo-no-es-automuxe1ticamente-mejor}
 
 Añadir parámetros y mecanismos puede permitir describir más detalles, pero también puede:
 
@@ -247,13 +247,13 @@ Añadir parámetros y mecanismos puede permitir describir más detalles, pero ta
 
 []{#la-pregunta-puede-no-necesitar-esa-complejidad}
 
-### 1.1.9. La pregunta puede no necesitar esa complejidad {#fispm-c01-la-pregunta-puede-no-necesitar-esa-complejidad}
+### La pregunta puede no necesitar esa complejidad {#fispm-c01-la-pregunta-puede-no-necesitar-esa-complejidad}
 
 Si queremos saber aproximadamente cuánto tarda un péndulo en completar una oscilación, modelar el intercambio térmico de la esfera con el aire puede aportar una precisión completamente irrelevante.
 
 []{#un-ejemplo-extremo-la-esfera-perfectamente-rígida}
 
-### 1.1.10. Un ejemplo extremo: la esfera perfectamente rígida {#fispm-c01-un-ejemplo-extremo-la-esfera-perfectamente-ruxedgida}
+### Un ejemplo extremo: la esfera perfectamente rígida {#fispm-c01-un-ejemplo-extremo-la-esfera-perfectamente-ruxedgida}
 
 Imaginemos que en un modelo llamamos «rígida» a una esfera.
 
@@ -287,13 +287,13 @@ La física trabaja continuamente con objetos que no existen literalmente:
 
 Su utilidad no depende de que existan exactamente, sino de que exista un **régimen** en el cual proporcionen una representación adecuada para determinadas preguntas. Más adelante aprenderemos a expresar cuantitativamente algunos de esos regímenes.
 
-### 1.1.11. Preguntas diferentes, modelos diferentes {#fispm-c01-preguntas-diferentes-modelos-diferentes}
+### Preguntas diferentes, modelos diferentes {#fispm-c01-preguntas-diferentes-modelos-diferentes}
 
 Volvamos al péndulo.
 
 []{#pregunta-1}
 
-#### 1.1.11.1. Pregunta 1 {#fispm-c01-pregunta-1}
+#### Pregunta 1 {#fispm-c01-pregunta-1}
 
 **¿El cuerpo vuelve aproximadamente al mismo lugar después de ir hacia un lado y hacia el otro?**
 
@@ -301,7 +301,7 @@ Tal vez baste una descripción geométrica muy elemental.
 
 []{#pregunta-2}
 
-#### 1.1.11.2. Pregunta 2 {#fispm-c01-pregunta-2}
+#### Pregunta 2 {#fispm-c01-pregunta-2}
 
 **¿Cuánto tarda en completar una oscilación?**
 
@@ -309,7 +309,7 @@ Necesitaremos representar el tiempo y ciertas propiedades del sistema.
 
 []{#pregunta-3}
 
-#### 1.1.11.3. Pregunta 3 {#fispm-c01-pregunta-3}
+#### Pregunta 3 {#fispm-c01-pregunta-3}
 
 **¿Disminuye la amplitud?**
 
@@ -317,7 +317,7 @@ Ya no podemos ignorar indefinidamente los mecanismos de disipación.
 
 []{#pregunta-4}
 
-#### 1.1.11.4. Pregunta 4 {#fispm-c01-pregunta-4}
+#### Pregunta 4 {#fispm-c01-pregunta-4}
 
 **¿El plano de oscilación cambia lentamente durante muchas horas?**
 
@@ -325,7 +325,7 @@ La rotación terrestre, irrelevante para una pregunta elemental, puede volverse 
 
 []{#pregunta-5}
 
-#### 1.1.11.5. Pregunta 5 {#fispm-c01-pregunta-5}
+#### Pregunta 5 {#fispm-c01-pregunta-5}
 
 **¿Cómo cambia el comportamiento si el soporte se mueve?**
 
@@ -333,7 +333,7 @@ La frontera misma del sistema puede requerir una reformulación. La lección no 
 
 **Principio 1.2 --- Adecuación relativa a una pregunta** Un modelo físico debe evaluarse en relación con las preguntas que pretende responder, las escalas relevantes y la precisión exigida.
 
-### 1.1.12. Lo que una ecuación no nos dice por sí sola {#fispm-c01-lo-que-una-ecuaciuxf3n-no-nos-dice-por-suxed-sola}
+### Lo que una ecuación no nos dice por sí sola {#fispm-c01-lo-que-una-ecuaciuxf3n-no-nos-dice-por-suxed-sola}
 
 Supongamos que más adelante encontramos una expresión matemática
 
@@ -373,7 +373,7 @@ Preguntaremos siempre:
 
 Más adelante introduciremos una notación editorial para distinguir definiciones, leyes, postulados, hipótesis de modelo, aproximaciones, condiciones y consecuencias matemáticas.
 
-### 1.1.13. Un entrenamiento especialmente importante para matemáticos {#fispm-c01-un-entrenamiento-especialmente-importante-para-matemuxe1ticos}
+### Un entrenamiento especialmente importante para matemáticos {#fispm-c01-un-entrenamiento-especialmente-importante-para-matemuxe1ticos}
 
 Quien estudia matemáticas aprende, con razón, a exigir definiciones claras, hipótesis explícitas y demostraciones correctas. En una proposición matemática, una vez fijados los objetos y las hipótesis, la tarea central es determinar qué se deduce lógicamente de ellos.
 
@@ -389,7 +389,7 @@ $$\text{mundo físico} \longrightarrow \boxed{\text{elección del modelo}} \long
 
 Este será uno de los hábitos centrales de *Física para matemáticos*.
 
-### 1.1.14. Ejemplo desarrollado 1 --- ¿Qué debemos ignorar? {#fispm-c01-ejemplo-desarrollado-1-quuxe9-debemos-ignorar}
+### Ejemplo desarrollado 1 --- ¿Qué debemos ignorar? {#fispm-c01-ejemplo-desarrollado-1-quuxe9-debemos-ignorar}
 
 Consideremos este problema:
 
@@ -412,31 +412,31 @@ La columna importante es la segunda: **no debemos confundir «lo ignoro en este 
 
 []{#paso-1-formulamos-la-pregunta}
 
-#### 1.1.14.1. Paso 1 --- Formulamos la pregunta {#fispm-c01-paso-1-formulamos-la-pregunta}
+#### Paso 1 --- Formulamos la pregunta {#fispm-c01-paso-1-formulamos-la-pregunta}
 
 Queremos comparar tiempos de oscilación.
 
 []{#paso-2-elegimos-variables-observables}
 
-#### 1.1.14.2. Paso 2 --- Elegimos variables observables {#fispm-c01-paso-2-elegimos-variables-observables}
+#### Paso 2 --- Elegimos variables observables {#fispm-c01-paso-2-elegimos-variables-observables}
 
 Necesitamos, como mínimo, un procedimiento para identificar comienzo y final de una oscilación y un procedimiento para medir tiempo.
 
 []{#paso-3-elegimos-una-primera-representación}
 
-#### 1.1.14.3. Paso 3 --- Elegimos una primera representación {#fispm-c01-paso-3-elegimos-una-primera-representaciuxf3n}
+#### Paso 3 --- Elegimos una primera representación {#fispm-c01-paso-3-elegimos-una-primera-representaciuxf3n}
 
 Tratamos provisionalmente el cuerpo como concentrado en una posición y el hilo como de longitud fija.
 
 []{#paso-4-registramos-omisiones}
 
-#### 1.1.14.4. Paso 4 --- Registramos omisiones {#fispm-c01-paso-4-registramos-omisiones}
+#### Paso 4 --- Registramos omisiones {#fispm-c01-paso-4-registramos-omisiones}
 
 Aire, deformación del soporte, masa del hilo y otros efectos quedan fuera de la primera descripción.
 
 []{#paso-5-dejamos-abierta-la-revisión}
 
-#### 1.1.14.5. Paso 5 --- Dejamos abierta la revisión {#fispm-c01-paso-5-dejamos-abierta-la-revisiuxf3n}
+#### Paso 5 --- Dejamos abierta la revisión {#fispm-c01-paso-5-dejamos-abierta-la-revisiuxf3n}
 
 Si las observaciones no concuerdan con la precisión buscada, las omisiones se convierten en candidatas a revisión.
 
@@ -444,31 +444,31 @@ Este es el patrón que repetiremos muchas veces:
 
 $$\boxed{ \text{pregunta} \to \text{selección} \to \text{modelo} \to \text{predicción} \to \text{contraste} \to \text{revisión} }$$
 
-### 1.1.15. Ejemplo desarrollado 2 --- La Tierra no tiene un único modelo {#fispm-c01-ejemplo-desarrollado-2-la-tierra-no-tiene-un-uxfanico-modelo}
+### Ejemplo desarrollado 2 --- La Tierra no tiene un único modelo {#fispm-c01-ejemplo-desarrollado-2-la-tierra-no-tiene-un-uxfanico-modelo}
 
 La afirmación «modelaremos la Tierra» está incompleta.
 
 []{#caso-a-una-cancha-de-fútbol}
 
-#### 1.1.15.1. Caso A --- Una cancha de fútbol {#fispm-c01-caso-a-una-cancha-de-fuxfatbol}
+#### Caso A --- Una cancha de fútbol {#fispm-c01-caso-a-una-cancha-de-fuxfatbol}
 
 Si queremos describir posiciones sobre una cancha, podemos usar un plano. La curvatura terrestre no tiene relevancia práctica para esa tarea.
 
 []{#caso-b-una-ruta-aérea-transcontinental}
 
-#### 1.1.15.2. Caso B --- Una ruta aérea transcontinental {#fispm-c01-caso-b-una-ruta-auxe9rea-transcontinental}
+#### Caso B --- Una ruta aérea transcontinental {#fispm-c01-caso-b-una-ruta-auxe9rea-transcontinental}
 
 Ahora la geometría global importa. Un modelo plano puede distorsionar distancias y trayectorias.
 
 []{#caso-c-el-movimiento-de-un-satélite-lejano}
 
-#### 1.1.15.3. Caso C --- El movimiento de un satélite lejano {#fispm-c01-caso-c-el-movimiento-de-un-satuxe9lite-lejano}
+#### Caso C --- El movimiento de un satélite lejano {#fispm-c01-caso-c-el-movimiento-de-un-satuxe9lite-lejano}
 
 Para ciertos cálculos iniciales, la Tierra puede representarse aproximadamente por una masa concentrada en un punto.
 
 []{#caso-d-distribución-de-gravedad-en-la-superficie}
 
-#### 1.1.15.4. Caso D --- Distribución de gravedad en la superficie {#fispm-c01-caso-d-distribuciuxf3n-de-gravedad-en-la-superficie}
+#### Caso D --- Distribución de gravedad en la superficie {#fispm-c01-caso-d-distribuciuxf3n-de-gravedad-en-la-superficie}
 
 La forma real, la rotación y la distribución de masa pueden importar.
 
@@ -476,7 +476,7 @@ La secuencia enseña algo general:
 
 $$\boxed{ \text{mismo objeto físico} \not\Rightarrow \text{mismo modelo para toda pregunta} }$$
 
-### 1.1.16. Primer protocolo de lectura {#fispm-c01-primer-protocolo-de-lectura}
+### Primer protocolo de lectura {#fispm-c01-primer-protocolo-de-lectura}
 
 Desde este momento, ante cualquier problema físico, comenzaremos con cinco preguntas.
 
@@ -484,7 +484,7 @@ Desde este momento, ante cualquier problema físico, comenzaremos con cinco preg
 
 Todavía faltan elementos ---unidades, escalas, parámetros, condiciones y dominio de validez cuantitativo--- que añadiremos en capítulos posteriores.
 
-### 1.1.17. Ejercicios de §1 {#fispm-c01-ejercicios-de-1}
+### Ejercicios de §1 {#fispm-c01-ejercicios-de-1}
 
 []{#fispm-t1-c01-e0001}
 
@@ -582,7 +582,7 @@ Faltan, por ejemplo:
 
 Incluso el significado de «posición» requiere una regla de reconstrucción a partir de la imagen.
 
-### 1.1.18. Cierre de la sección {#fispm-c01-cierre-de-la-secciuxf3n}
+### Cierre de la sección {#fispm-c01-cierre-de-la-secciuxf3n}
 
 Todavía no hemos escrito la ecuación de un péndulo.
 
@@ -618,11 +618,11 @@ $$\boxed{\text{¿cómo se conecta esa representación con una observación?}}$$
 
 []{#fpm-i-01-s02}
 
-## 1.2. Fenómeno, observación y experimento {#fispm-c01-fenuxf3meno-observaciuxf3n-y-experimento}
+## 2. Fenómeno, observación y experimento {#fispm-c01-fenuxf3meno-observaciuxf3n-y-experimento}
 
 []{#ver-no-es-todavía-medir}
 
-### 1.2.1. Ver no es todavía medir {#fispm-c01-ver-no-es-todavuxeda-medir}
+### Ver no es todavía medir {#fispm-c01-ver-no-es-todavuxeda-medir}
 
 Volvamos al péndulo.
 
@@ -656,7 +656,7 @@ Esta es la segunda idea rectora del capítulo:
 
 No basta con que aparezca un número en una ecuación. Debemos saber qué procedimiento físico produciría el número correspondiente.
 
-### 1.2.2. Fenómeno {#fispm-c01-fenuxf3meno}
+### Fenómeno {#fispm-c01-fenuxf3meno}
 
 Usaremos la palabra **fenómeno** de manera amplia pero operativa.
 
@@ -690,7 +690,7 @@ o transiciones:
 
 La selección del fenómeno ya contiene una pregunta implícita: de todo lo que ocurre, decidimos prestar atención a cierta estructura.
 
-### 1.2.3. Observación {#fispm-c01-observaciuxf3n}
+### Observación {#fispm-c01-observaciuxf3n}
 
 Consideremos dos afirmaciones:
 
@@ -718,7 +718,7 @@ No resolveremos todavía todos estos problemas. El objetivo del capítulo 3 ser�
 
 La expresión **mediante un procedimiento especificado** es esencial. Una observación física no es únicamente una sensación privada. Debe existir alguna regla suficientemente clara para que podamos preguntar si dos procedimientos registran lo mismo o si producen resultados comparables.
 
-### 1.2.4. Del fenómeno al dato {#fispm-c01-del-fenuxf3meno-al-dato}
+### Del fenómeno al dato {#fispm-c01-del-fenuxf3meno-al-dato}
 
 Supongamos que queremos medir el tiempo de una oscilación.
 
@@ -750,7 +750,7 @@ $$[\mathrm{DEF}]\qquad T:=t_{\mathrm{f}}-t_{\mathrm{i}}.$$ Esta ecuación no es 
 
 Aún no hemos afirmado que $T$ sea constante, que dependa de la longitud o que obedezca alguna ley. Esto muestra por qué dos ecuaciones algebraicamente similares pueden tener papeles físicos muy distintos.
 
-### 1.2.5. Observable y procedimiento {#fispm-c01-observable-y-procedimiento}
+### Observable y procedimiento {#fispm-c01-observable-y-procedimiento}
 
 En física se habla con frecuencia de **observables**. La noción adquirirá significados técnicos diferentes en teorías posteriores, especialmente en mecánica cuántica. Aquí necesitamos solamente una versión inicial.
 
@@ -774,7 +774,7 @@ No siempre «leemos directamente» una propiedad de la naturaleza. Muchas veces 
 
 $$\text{sistema} \to \text{interacción con instrumento} \to \text{señal} \to \text{procesamiento} \to \text{valor registrado}.$$ Por ejemplo, una cámara digital no entrega «posición» en metros. Produce datos en una matriz de detectores. Para convertirlos en posiciones físicas necesitamos calibración, geometría y convenciones.
 
-### 1.2.6. Microcaso: una pelota que cae {#fispm-c01-microcaso-una-pelota-que-cae}
+### Microcaso: una pelota que cae {#fispm-c01-microcaso-una-pelota-que-cae}
 
 Queremos estudiar la caída de una pelota.
 
@@ -782,19 +782,19 @@ Parece obvio qué observar: «la altura». Pero debemos construirla.
 
 []{#opción-a-marcas-sobre-una-pared}
 
-#### 1.2.6.1. Opción A --- Marcas sobre una pared {#fispm-c01-opciuxf3n-a-marcas-sobre-una-pared}
+#### Opción A --- Marcas sobre una pared {#fispm-c01-opciuxf3n-a-marcas-sobre-una-pared}
 
 Colocamos referencias de altura y registramos visualmente la posición.
 
 []{#opción-b-video}
 
-#### 1.2.6.2. Opción B --- Video {#fispm-c01-opciuxf3n-b-video}
+#### Opción B --- Video {#fispm-c01-opciuxf3n-b-video}
 
 Filmamos la caída y relacionamos píxeles con una escala física.
 
 []{#opción-c-barreras-ópticas}
 
-#### 1.2.6.3. Opción C --- Barreras ópticas {#fispm-c01-opciuxf3n-c-barreras-uxf3pticas}
+#### Opción C --- Barreras ópticas {#fispm-c01-opciuxf3n-c-barreras-uxf3pticas}
 
 Colocamos sensores a alturas determinadas y registramos los instantes de paso.
 
@@ -812,7 +812,7 @@ Esto tiene consecuencias:
 
 La variable matemática «altura» no llega al experimento sin mediación.
 
-### 1.2.7. ¿Qué observar en la caída? {#fispm-c01-quuxe9-observar-en-la-cauxedda}
+### ¿Qué observar en la caída? {#fispm-c01-quuxe9-observar-en-la-cauxedda}
 
 Imaginemos ahora que soltamos dos hojas de papel, una extendida y otra arrugada.
 
@@ -846,7 +846,7 @@ El experimento necesita entonces distinguir hipótesis.
 
 Esto nos lleva a una idea más fuerte que la mera observación.
 
-### 1.2.8. Experimento {#fispm-c01-experimento}
+### Experimento {#fispm-c01-experimento}
 
 **Definición operativa 1.6 --- Experimento** Un **experimento** es una disposición o intervención controlada diseñada para producir observaciones que permitan estimar cantidades, comparar comportamientos o discriminar entre hipótesis.
 
@@ -864,7 +864,7 @@ Significa que intentamos:
 
 Un experimento no es simplemente «hacer algo y mirar qué ocurre».
 
-### 1.2.9. Ejemplo desarrollado 3 --- Diseñar una comparación {#fispm-c01-ejemplo-desarrollado-3-diseuxf1ar-una-comparaciuxf3n}
+### Ejemplo desarrollado 3 --- Diseñar una comparación {#fispm-c01-ejemplo-desarrollado-3-diseuxf1ar-una-comparaciuxf3n}
 
 Pregunta:
 
@@ -874,13 +874,13 @@ No responderemos todavía con una fórmula. Diseñaremos el razonamiento experim
 
 []{#paso-1-identificar-lo-que-variaremos}
 
-#### 1.2.9.1. Paso 1 --- Identificar lo que variaremos {#fispm-c01-paso-1-identificar-lo-que-variaremos}
+#### Paso 1 --- Identificar lo que variaremos {#fispm-c01-paso-1-identificar-lo-que-variaremos}
 
 Variamos la posición inicial del cuerpo.
 
 []{#paso-2-identificar-lo-que-intentaremos-mantener-fijo}
 
-#### 1.2.9.2. Paso 2 --- Identificar lo que intentaremos mantener fijo {#fispm-c01-paso-2-identificar-lo-que-intentaremos-mantener-fijo}
+#### Paso 2 --- Identificar lo que intentaremos mantener fijo {#fispm-c01-paso-2-identificar-lo-que-intentaremos-mantener-fijo}
 
 - mismo péndulo;
 
@@ -894,13 +894,13 @@ Variamos la posición inicial del cuerpo.
 
 []{#paso-3-definir-grupos-de-observaciones}
 
-#### 1.2.9.3. Paso 3 --- Definir grupos de observaciones {#fispm-c01-paso-3-definir-grupos-de-observaciones}
+#### Paso 3 --- Definir grupos de observaciones {#fispm-c01-paso-3-definir-grupos-de-observaciones}
 
 Realizamos varias mediciones para distintas amplitudes iniciales.
 
 []{#paso-4-evitar-una-conclusión-prematura}
 
-#### 1.2.9.4. Paso 4 --- Evitar una conclusión prematura {#fispm-c01-paso-4-evitar-una-conclusiuxf3n-prematura}
+#### Paso 4 --- Evitar una conclusión prematura {#fispm-c01-paso-4-evitar-una-conclusiuxf3n-prematura}
 
 Si obtenemos valores diferentes, todavía debemos preguntar:
 
@@ -914,7 +914,7 @@ Si obtenemos valores diferentes, todavía debemos preguntar:
 
 Estas preguntas pertenecen a la estructura experimental, no a la solución matemática de una ecuación.
 
-### 1.2.10. Observación y teoría no son mundos aislados {#fispm-c01-observaciuxf3n-y-teoruxeda-no-son-mundos-aislados}
+### Observación y teoría no son mundos aislados {#fispm-c01-observaciuxf3n-y-teoruxeda-no-son-mundos-aislados}
 
 Podría parecer que primero existen «datos puros» y después una teoría se limita a explicarlos. La situación real es más sutil.
 
@@ -942,7 +942,7 @@ $$[\mathrm{OBS}]$$ «La coordenada registrada de la esfera se obtiene convirtien
 
 No es todavía una ecuación universal; es una **regla de conexión** entre aparato y modelo.
 
-### 1.2.11. Repetición: ¿por qué medir más de una vez? {#fispm-c01-repeticiuxf3n-por-quuxe9-medir-muxe1s-de-una-vez}
+### Repetición: ¿por qué medir más de una vez? {#fispm-c01-repeticiuxf3n-por-quuxe9-medir-muxe1s-de-una-vez}
 
 Si repetimos un procedimiento aparentemente idéntico, rara vez obtenemos resultados numéricamente idénticos con precisión ilimitada.
 
@@ -968,19 +968,19 @@ Pero sí fijaremos una norma:
 
 **Principio 1.4 --- Una observación aislada no caracteriza por sí sola la estabilidad de un procedimiento** Cuando la pregunta exige comparar o estimar una magnitud, debemos considerar si el resultado persiste al repetir el procedimiento bajo condiciones declaradas.
 
-### 1.2.12. Repetibilidad y reproducibilidad: primera aproximación {#fispm-c01-repetibilidad-y-reproducibilidad-primera-aproximaciuxf3n}
+### Repetibilidad y reproducibilidad: primera aproximación {#fispm-c01-repetibilidad-y-reproducibilidad-primera-aproximaciuxf3n}
 
 Usaremos dos palabras de manera preliminar.
 
 []{#repetibilidad}
 
-#### 1.2.12.1. Repetibilidad {#fispm-c01-repetibilidad}
+#### Repetibilidad {#fispm-c01-repetibilidad}
 
 Preguntamos si un procedimiento produce resultados compatibles cuando se repite bajo condiciones tan semejantes como sea posible.
 
 []{#reproducibilidad}
 
-#### 1.2.12.2. Reproducibilidad {#fispm-c01-reproducibilidad}
+#### Reproducibilidad {#fispm-c01-reproducibilidad}
 
 Preguntamos si el resultado se mantiene cuando cambia razonablemente el realizador, el instrumento, el laboratorio o alguna parte del procedimiento, según el tipo de afirmación que se quiere sostener.
 
@@ -990,7 +990,7 @@ No fijaremos todavía definiciones metrológicas internacionales precisas. Nos b
 
 - reproducir pone a prueba si el resultado sobrevive a cambios controlados del contexto experimental.
 
-### 1.2.13. Un dato necesita contexto {#fispm-c01-un-dato-necesita-contexto}
+### Un dato necesita contexto {#fispm-c01-un-dato-necesita-contexto}
 
 Supongamos que encontramos escrito:
 
@@ -1022,7 +1022,7 @@ $$T=2.01\ \mathrm{s}$$ sigue siendo insuficiente para muchas preguntas.
 
 La física no opera con números desnudos, sino con resultados insertos en procedimientos y modelos.
 
-### 1.2.14. El papel del instrumento {#fispm-c01-el-papel-del-instrumento}
+### El papel del instrumento {#fispm-c01-el-papel-del-instrumento}
 
 Un instrumento físico es también un sistema físico. Un reloj puede atrasarse. Una regla se expande térmicamente. Un sensor tiene umbral. Una cámara posee distorsión. Un detector puede dejar de registrar ciertos eventos.
 
@@ -1034,7 +1034,7 @@ Aquí solo sembramos el hábito:
 
 > **¿Qué interacción física convierte la propiedad que quiero conocer en la señal que efectivamente registro?**
 
-### 1.2.15. Ejemplo desarrollado 4 --- Medir el período sin cronómetro perfecto {#fispm-c01-ejemplo-desarrollado-4-medir-el-peruxedodo-sin-cronuxf3metro-perfecto}
+### Ejemplo desarrollado 4 --- Medir el período sin cronómetro perfecto {#fispm-c01-ejemplo-desarrollado-4-medir-el-peruxedodo-sin-cronuxf3metro-perfecto}
 
 Imaginemos que nuestro cronómetro tiene una resolución limitada. En vez de medir una sola oscilación, podemos medir el tiempo de diez oscilaciones y luego dividir por diez. Si el tiempo total registrado es $T_{10}$, definimos
 
@@ -1048,7 +1048,7 @@ Lo importante ahora es metodológico:
 
 La medición no es una ventana transparente e indiferente.
 
-### 1.2.16. Experimentos que discriminan hipótesis {#fispm-c01-experimentos-que-discriminan-hipuxf3tesis}
+### Experimentos que discriminan hipótesis {#fispm-c01-experimentos-que-discriminan-hipuxf3tesis}
 
 Supongamos que dos explicaciones predicen lo mismo para todas las situaciones que hemos observado.
 
@@ -1062,7 +1062,7 @@ $$\boxed{ \text{diseñar condiciones en las que hipótesis rivales produzcan con
 
 Pero cuando sí es posible, el buen experimento no se limita a acumular datos: **busca información que discrimine**.
 
-### 1.2.17. Ejemplo desarrollado 5 --- Dos hipótesis sobre hojas de papel {#fispm-c01-ejemplo-desarrollado-5-dos-hipuxf3tesis-sobre-hojas-de-papel}
+### Ejemplo desarrollado 5 --- Dos hipótesis sobre hojas de papel {#fispm-c01-ejemplo-desarrollado-5-dos-hipuxf3tesis-sobre-hojas-de-papel}
 
 Consideremos:
 
@@ -1074,23 +1074,23 @@ Diseñemos comparaciones.
 
 []{#experimento-1}
 
-#### 1.2.17.1. Experimento 1 {#fispm-c01-experimento-1}
+#### Experimento 1 {#fispm-c01-experimento-1}
 
 Una hoja extendida frente a la misma hoja arrugada. La masa prácticamente no cambia; la forma sí. Si los tiempos cambian mucho, la comparación proporciona evidencia contra una explicación puramente basada en la masa.
 
 []{#experimento-2}
 
-#### 1.2.17.2. Experimento 2 {#fispm-c01-experimento-2}
+#### Experimento 2 {#fispm-c01-experimento-2}
 
 Dos objetos de distinta masa pero formas muy semejantes. Ahora variamos masa manteniendo aproximadamente la geometría.
 
 []{#experimento-3}
 
-#### 1.2.17.3. Experimento 3 {#fispm-c01-experimento-3}
+#### Experimento 3 {#fispm-c01-experimento-3}
 
 Repetir en un entorno con mucho menos aire. La diferencia entre ciertos comportamientos puede reducirse. No estamos derivando todavía una teoría de la caída. Estamos aprendiendo a **separar variables mediante diseño experimental**.
 
-### 1.2.18. Control y comparación {#fispm-c01-control-y-comparaciuxf3n}
+### Control y comparación {#fispm-c01-control-y-comparaciuxf3n}
 
 La palabra «control» tiene varios usos en ciencia. Aquí la utilizaremos informalmente para cualquier disposición que nos ayude a atribuir diferencias observadas a un cambio específico. Si modificamos simultáneamente diez aspectos de un experimento y el resultado cambia, será difícil saber cuál produjo el efecto.
 
@@ -1100,7 +1100,7 @@ $$\text{cambiar lo que queremos estudiar} \quad\text{y}\quad \text{mantener el r
 
 Esta frase ---**no dominan el efecto**--- anticipa el lenguaje de escalas que aprenderemos después.
 
-### 1.2.19. Una observación negativa también necesita procedimiento {#fispm-c01-una-observaciuxf3n-negativa-tambiuxe9n-necesita-procedimiento}
+### Una observación negativa también necesita procedimiento {#fispm-c01-una-observaciuxf3n-negativa-tambiuxe9n-necesita-procedimiento}
 
 Supongamos que afirmamos:
 
@@ -1116,7 +1116,7 @@ Una afirmación negativa debería leerse como:
 
 Esta forma de hablar evita convertir limitaciones instrumentales en afirmaciones ontológicas. El principio será importante en toda la física experimental.
 
-### 1.2.20. Predicción observable y predicción matemática {#fispm-c01-predicciuxf3n-observable-y-predicciuxf3n-matemuxe1tica}
+### Predicción observable y predicción matemática {#fispm-c01-predicciuxf3n-observable-y-predicciuxf3n-matemuxe1tica}
 
 Imaginemos que un modelo produce exactamente el número
 
@@ -1132,37 +1132,37 @@ $$\text{precisión matemática} \not\Rightarrow \text{precisión experimental}.$
 
 un experimento muy preciso puede revelar que un modelo matemáticamente elegante es físicamente insuficiente.
 
-### 1.2.21. El péndulo como experimento {#fispm-c01-el-puxe9ndulo-como-experimento}
+### El péndulo como experimento {#fispm-c01-el-puxe9ndulo-como-experimento}
 
 Construyamos una ficha experimental mínima.
 
 []{#sistema}
 
-#### 1.2.21.1. Sistema {#fispm-c01-sistema}
+#### Sistema {#fispm-c01-sistema}
 
 Esfera suspendida por un hilo de un soporte.
 
 []{#fenómeno}
 
-#### 1.2.21.2. Fenómeno {#fispm-c01-fenuxf3meno-1}
+#### Fenómeno {#fispm-c01-fenuxf3meno-1}
 
 Oscilación después de separar la esfera de su posición de equilibrio aparente.
 
 []{#pregunta}
 
-#### 1.2.21.3. Pregunta {#fispm-c01-pregunta}
+#### Pregunta {#fispm-c01-pregunta}
 
 ¿Cómo varía el tiempo de oscilación al modificar una condición determinada?
 
 []{#observable-principal}
 
-#### 1.2.21.4. Observable principal {#fispm-c01-observable-principal}
+#### Observable principal {#fispm-c01-observable-principal}
 
 Intervalo temporal asociado a una oscilación según un procedimiento definido.
 
 []{#procedimiento}
 
-#### 1.2.21.5. Procedimiento {#fispm-c01-procedimiento}
+#### Procedimiento {#fispm-c01-procedimiento}
 
 1.  fijar una marca de referencia;
 
@@ -1176,7 +1176,7 @@ Intervalo temporal asociado a una oscilación según un procedimiento definido.
 
 []{#variables-que-podemos-modificar}
 
-#### 1.2.21.6. Variables que podemos modificar {#fispm-c01-variables-que-podemos-modificar}
+#### Variables que podemos modificar {#fispm-c01-variables-que-podemos-modificar}
 
 - longitud;
 
@@ -1190,7 +1190,7 @@ Intervalo temporal asociado a una oscilación según un procedimiento definido.
 
 []{#condiciones-que-intentamos-controlar}
 
-#### 1.2.21.7. Condiciones que intentamos controlar {#fispm-c01-condiciones-que-intentamos-controlar}
+#### Condiciones que intentamos controlar {#fispm-c01-condiciones-que-intentamos-controlar}
 
 - soporte;
 
@@ -1204,7 +1204,7 @@ Intervalo temporal asociado a una oscilación según un procedimiento definido.
 
 Todavía no sabemos qué variables **deben** aparecer en la ley. Precisamente el experimento puede ayudarnos a descubrirlo.
 
-### 1.2.22. De la observación al modelo y del modelo a la observación {#fispm-c01-de-la-observaciuxf3n-al-modelo-y-del-modelo-a-la-observaciuxf3n}
+### De la observación al modelo y del modelo a la observación {#fispm-c01-de-la-observaciuxf3n-al-modelo-y-del-modelo-a-la-observaciuxf3n}
 
 La relación entre teoría y experimento no es una flecha única.
 
@@ -1226,7 +1226,7 @@ $$\boxed{ \text{observación} \to \text{modelo} \to \text{predicción} \to \text
 
 Este ciclo será más importante que cualquier fórmula aislada del libro.
 
-### 1.2.23. Ejercicios de §2 {#fispm-c01-ejercicios-de-2}
+### Ejercicios de §2 {#fispm-c01-ejercicios-de-2}
 
 []{#fispm-t1-c01-e0005}
 
@@ -1352,7 +1352,7 @@ Una estrategia:
 
 Todavía no podemos decidir aquí qué diferencia cuenta como «apreciable» en sentido metrológico riguroso; eso requerirá incertidumbre y escalas.
 
-### 1.2.24. Síntesis de §1--§2 {#fispm-c01-suxedntesis-de-12}
+### Síntesis de §1--§2 {#fispm-c01-suxedntesis-de-12}
 
 Ya podemos describir una primera parte del trabajo físico.
 
@@ -1376,7 +1376,7 @@ $$\boxed{ \text{fenómeno} \to \text{pregunta} \to \text{sistema} \to \text{repr
 
 ¿Cómo distinguimos **estado**, **parámetro** y **observable**?
 
-Ése será el objeto de la sección siguiente (§[1.3](#fispm-c01-sistema-entorno-estado-y-observables)).
+Ése será el objeto de la sección siguiente (§[3](#fispm-c01-sistema-entorno-estado-y-observables)).
 
 []{#sistema-entorno-estado-y-observables}
 
@@ -1384,11 +1384,11 @@ $$\boxed{ \text{fenómeno} \to \text{pregunta} \to \text{sistema} \to \text{repr
 
 []{#fpm-i-01-s03}
 
-## 1.3. Sistema, entorno, estado y observables {#fispm-c01-sistema-entorno-estado-y-observables}
+## 3. Sistema, entorno, estado y observables {#fispm-c01-sistema-entorno-estado-y-observables}
 
 []{#elegir-el-sistema-es-trazar-una-frontera}
 
-### 1.3.1. Elegir el sistema es trazar una frontera {#fispm-c01-elegir-el-sistema-es-trazar-una-frontera}
+### Elegir el sistema es trazar una frontera {#fispm-c01-elegir-el-sistema-es-trazar-una-frontera}
 
 En las dos secciones anteriores hemos usado varias veces la palabra **sistema**. Ahora necesitamos precisar qué trabajo realiza ese concepto. Volvamos al péndulo.
 
@@ -1400,7 +1400,7 @@ En las dos secciones anteriores hemos usado varias veces la palabra **sistema**.
 
 <figcaption>
 
-**Figura 1.2.** La frontera selecciona las variables del sistema y los intercambios con su entorno; cambiarla cambia el balance que habrá que formular. Véase §[1.3](#fispm-c01-sistema-entorno-estado-y-observables).
+**Figura 1.2.** La frontera selecciona las variables del sistema y los intercambios con su entorno; cambiarla cambia el balance que habrá que formular. Véase §[3](#fispm-c01-sistema-entorno-estado-y-observables).
 
 </figcaption>
 
@@ -1438,7 +1438,7 @@ Si estudiamos la temperatura de una taza de café, podríamos tomar como sistema
 
 La frontera del sistema es, en primer lugar, una **decisión de modelización**.
 
-### 1.3.2. La frontera no separa «lo real» de «lo irreal» {#fispm-c01-la-frontera-no-separa-lo-real-de-lo-irreal}
+### La frontera no separa «lo real» de «lo irreal» {#fispm-c01-la-frontera-no-separa-lo-real-de-lo-irreal}
 
 Cuando dejamos el aire fuera del sistema del péndulo, el aire no deja de existir. Cuando modelamos la Tierra como parte del entorno, la gravedad no desaparece. Esto parece obvio, pero evita un error frecuente: interpretar la frontera del modelo como una frontera ontológica.
 
@@ -1454,25 +1454,25 @@ Por ahora basta distinguir dos operaciones:
 
 - **externalizar** un componente significa no seguir todos sus detalles internos, aunque podamos representar algunos de sus efectos.
 
-### 1.3.3. Tres fronteras para el mismo péndulo {#fispm-c01-tres-fronteras-para-el-mismo-puxe9ndulo}
+### Tres fronteras para el mismo péndulo {#fispm-c01-tres-fronteras-para-el-mismo-puxe9ndulo}
 
 Consideremos tres elecciones.
 
 []{#modelo-a-la-esfera-como-sistema}
 
-#### 1.3.3.1. Modelo A --- La esfera como sistema {#fispm-c01-modelo-a-la-esfera-como-sistema}
+#### Modelo A --- La esfera como sistema {#fispm-c01-modelo-a-la-esfera-como-sistema}
 
 El hilo, el soporte, el aire y la Tierra pertenecen al entorno. Este modelo puede ser útil si nuestro interés está concentrado en la trayectoria de la esfera y representamos los demás efectos de forma externa.
 
 []{#modelo-b-esfera-hilo-como-sistema}
 
-#### 1.3.3.2. Modelo B --- Esfera + hilo como sistema {#fispm-c01-modelo-b-esfera-hilo-como-sistema}
+#### Modelo B --- Esfera + hilo como sistema {#fispm-c01-modelo-b-esfera-hilo-como-sistema}
 
 Ahora la tensión, deformación o movimiento del hilo pueden convertirse en parte explícita de la descripción.
 
 []{#modelo-c-esfera-hilo-tierra-como-sistema}
 
-#### 1.3.3.3. Modelo C --- Esfera + hilo + Tierra como sistema {#fispm-c01-modelo-c-esfera-hilo-tierra-como-sistema}
+#### Modelo C --- Esfera + hilo + Tierra como sistema {#fispm-c01-modelo-c-esfera-hilo-tierra-como-sistema}
 
 Esta elección puede ser útil si nos interesa contabilizar intercambios internos entre el cuerpo suspendido y la Tierra en una descripción más global. Las tres fronteras son legítimas. No existe una regla general según la cual «el sistema más grande sea el más correcto».
 
@@ -1480,7 +1480,7 @@ Esta elección puede ser útil si nos interesa contabilizar intercambios interno
 
 Esta es una forma temprana del principio de **modelo mínimo suficiente** que usaremos repetidamente.
 
-### 1.3.4. ¿Qué significa conocer el estado de un sistema? {#fispm-c01-quuxe9-significa-conocer-el-estado-de-un-sistema}
+### ¿Qué significa conocer el estado de un sistema? {#fispm-c01-quuxe9-significa-conocer-el-estado-de-un-sistema}
 
 Supongamos que vemos un péndulo en una fotografía. La esfera aparece a la derecha de la vertical.
 
@@ -1502,7 +1502,7 @@ Hay dos palabras que no debemos omitir:
 
 $$\boxed{\text{dado un modelo}}$$ La noción de estado no se define independientemente de la teoría.
 
-### 1.3.5. El estado es relativo al nivel de descripción {#fispm-c01-el-estado-es-relativo-al-nivel-de-descripciuxf3n}
+### El estado es relativo al nivel de descripción {#fispm-c01-el-estado-es-relativo-al-nivel-de-descripciuxf3n}
 
 Consideremos un gas dentro de un recipiente.
 
@@ -1516,7 +1516,7 @@ En un modelo de partícula puntual, su orientación puede no formar parte del es
 
 Por tanto, preguntar simplemente «¿cuál es el estado real del objeto?» sin especificar una teoría o nivel de descripción puede ser demasiado ambiguo para nuestro propósito.
 
-### 1.3.6. Espacio de estados: primera aparición {#fispm-c01-espacio-de-estados-primera-apariciuxf3n}
+### Espacio de estados: primera aparición {#fispm-c01-espacio-de-estados-primera-apariciuxf3n}
 
 El lector matemático reconocerá inmediatamente una estructura útil. Si llamamos $\mathcal S$ al conjunto de todos los estados admitidos por un modelo, podemos escribir
 
@@ -1538,7 +1538,7 @@ $$\mathcal S=\{\text{estados permitidos por el modelo}\}.$$ En capítulos poster
 
 No debemos confundirlos de antemano.
 
-### 1.3.7. Variable: una palabra demasiado amplia {#fispm-c01-variable-una-palabra-demasiado-amplia}
+### Variable: una palabra demasiado amplia {#fispm-c01-variable-una-palabra-demasiado-amplia}
 
 En física usamos constantemente la palabra **variable**.
 
@@ -1564,7 +1564,7 @@ $$q:\mathcal S\to V,$$ donde $V$ es el conjunto de valores posibles.
 
 Esta escritura no afirma todavía que toda variable física sea una función ordinaria en todas las teorías. Es una plantilla apropiada para los modelos clásicos elementales que comenzaremos a estudiar.
 
-### 1.3.8. Parámetro: fijo dentro del problema, variable entre modelos o realizaciones {#fispm-c01-paruxe1metro-fijo-dentro-del-problema-variable-entre-modelos-o-realizaciones}
+### Parámetro: fijo dentro del problema, variable entre modelos o realizaciones {#fispm-c01-paruxe1metro-fijo-dentro-del-problema-variable-entre-modelos-o-realizaciones}
 
 Consideremos un péndulo idealizado de longitud $\ell$. En un experimento concreto podemos fijar $\ell=1\,\mathrm{m}$ y estudiar cómo cambia el estado del péndulo con el tiempo. Entonces $\ell$ funciona como un **parámetro** del modelo, no como una variable que necesitemos actualizar para describir cada instante.
 
@@ -1580,25 +1580,25 @@ $$\text{variable}=\text{cambia realmente},\qquad \text{parámetro}=\text{no camb
 
 La longitud de una barra puede tratarse como parámetro en un problema y convertirse en variable de estado en otro problema donde estudiamos su dilatación.
 
-### 1.3.9. La misma magnitud puede cambiar de papel {#fispm-c01-la-misma-magnitud-puede-cambiar-de-papel}
+### La misma magnitud puede cambiar de papel {#fispm-c01-la-misma-magnitud-puede-cambiar-de-papel}
 
 Este punto merece un ejemplo explícito.
 
 []{#problema-a-péndulo-de-longitud-fija}
 
-#### 1.3.9.1. Problema A --- Péndulo de longitud fija {#fispm-c01-problema-a-puxe9ndulo-de-longitud-fija}
+#### Problema A --- Péndulo de longitud fija {#fispm-c01-problema-a-puxe9ndulo-de-longitud-fija}
 
 La longitud $\ell$ se mide antes del experimento y se mantiene fija.
 
 Rol: $\ell \quad \text{parámetro}.$
 
-#### 1.3.9.2. Problema B --- Hilo elástico {#fispm-c01-problema-b-hilo-eluxe1stico}
+#### Problema B --- Hilo elástico {#fispm-c01-problema-b-hilo-eluxe1stico}
 
 Ahora la longitud puede cambiar durante el movimiento.
 
 Rol: $\ell \quad \text{variable de estado}.$
 
-#### 1.3.9.3. Problema C --- Calibración de una regla {#fispm-c01-problema-c-calibraciuxf3n-de-una-regla}
+#### Problema C --- Calibración de una regla {#fispm-c01-problema-c-calibraciuxf3n-de-una-regla}
 
 La longitud del objeto puede ser precisamente la cantidad que queremos inferir de una observación.
 
@@ -1608,7 +1608,7 @@ $$\ell \quad \text{cantidad observada o estimada}.$$ La magnitud física no llev
 
 **Principio 1.6 --- Los roles pertenecen al modelo** «Variable», «parámetro», «observable» y «dato de control» describen el papel que una cantidad cumple dentro de una modelización o experimento; una misma magnitud puede desempeñar papeles distintos en problemas diferentes.
 
-### 1.3.10. Observable: ahora podemos precisar la definición {#fispm-c01-observable-ahora-podemos-precisar-la-definiciuxf3n}
+### Observable: ahora podemos precisar la definición {#fispm-c01-observable-ahora-podemos-precisar-la-definiciuxf3n}
 
 En §2 dijimos que un observable es una propiedad que el modelo conecta con un procedimiento de observación o medición. Ahora podemos expresarlo matemáticamente en el caso clásico elemental. Si el sistema está en un estado $s\in\mathcal S$, un observable puede representarse por una función
 
@@ -1624,7 +1624,7 @@ $$O(s) \quad\longleftrightarrow\quad \text{procedimiento experimental}.$$ Por ta
 
 $$\boxed{ \text{estructura matemática} + \text{interpretación operacional} }.$$ En mecánica cuántica esta descripción mediante funciones ordinarias sobre estados dejará de ser adecuada y la noción de observable adquirirá una estructura distinta. No adelantaremos esa teoría, pero evitaremos construir una definición que después debamos deshacer.
 
-### 1.3.11. Estado y observable tampoco son lo mismo {#fispm-c01-estado-y-observable-tampoco-son-lo-mismo}
+### Estado y observable tampoco son lo mismo {#fispm-c01-estado-y-observable-tampoco-son-lo-mismo}
 
 Supongamos que un modelo necesita dos variables para especificar el estado:
 
@@ -1642,37 +1642,37 @@ $$\boxed{ \text{un valor observable no tiene por qué determinar el estado} }.$$
 
 Más adelante aparecerá bajo formas mucho más sofisticadas.
 
-### 1.3.12. Ejemplo desarrollado 6 --- La Tierra bajo cinco preguntas {#fispm-c01-ejemplo-desarrollado-6-la-tierra-bajo-cinco-preguntas}
+### Ejemplo desarrollado 6 --- La Tierra bajo cinco preguntas {#fispm-c01-ejemplo-desarrollado-6-la-tierra-bajo-cinco-preguntas}
 
 La Tierra ofrece un excelente laboratorio conceptual porque el mismo objeto admite modelos radicalmente distintos.
 
 []{#pregunta-a-dónde-está-una-persona-dentro-de-una-habitación}
 
-#### 1.3.12.1. Pregunta A --- ¿Dónde está una persona dentro de una habitación? {#fispm-c01-pregunta-a-duxf3nde-estuxe1-una-persona-dentro-de-una-habitaciuxf3n}
+#### Pregunta A --- ¿Dónde está una persona dentro de una habitación? {#fispm-c01-pregunta-a-duxf3nde-estuxe1-una-persona-dentro-de-una-habitaciuxf3n}
 
 Podemos tratar el suelo local como un plano. La curvatura global de la Tierra queda fuera del modelo.
 
 []{#pregunta-b-cuál-es-una-ruta-aproximada-entre-ciudades-lejanas}
 
-#### 1.3.12.2. Pregunta B --- ¿Cuál es una ruta aproximada entre ciudades lejanas? {#fispm-c01-pregunta-b-cuuxe1l-es-una-ruta-aproximada-entre-ciudades-lejanas}
+#### Pregunta B --- ¿Cuál es una ruta aproximada entre ciudades lejanas? {#fispm-c01-pregunta-b-cuuxe1l-es-una-ruta-aproximada-entre-ciudades-lejanas}
 
 La geometría esférica se vuelve relevante.
 
 []{#pregunta-c-cuál-es-la-forma-de-referencia-necesaria-para-geodesia-precisa}
 
-#### 1.3.12.3. Pregunta C --- ¿Cuál es la forma de referencia necesaria para geodesia precisa? {#fispm-c01-pregunta-c-cuuxe1l-es-la-forma-de-referencia-necesaria-para-geodesia-precisa}
+#### Pregunta C --- ¿Cuál es la forma de referencia necesaria para geodesia precisa? {#fispm-c01-pregunta-c-cuuxe1l-es-la-forma-de-referencia-necesaria-para-geodesia-precisa}
 
 Una esfera perfecta puede no bastar; entran modelos más refinados como el geoide y el elipsoide de referencia.
 
 []{#pregunta-d-cómo-describimos-ciertos-efectos-de-la-rotación-terrestre}
 
-#### 1.3.12.4. Pregunta D --- ¿Cómo describimos ciertos efectos de la rotación terrestre? {#fispm-c01-pregunta-d-cuxf3mo-describimos-ciertos-efectos-de-la-rotaciuxf3n-terrestre}
+#### Pregunta D --- ¿Cómo describimos ciertos efectos de la rotación terrestre? {#fispm-c01-pregunta-d-cuxf3mo-describimos-ciertos-efectos-de-la-rotaciuxf3n-terrestre}
 
 La Tierra debe poseer orientación y movimiento de rotación; un simple punto deja de contener la información necesaria.
 
 []{#pregunta-e-cómo-aproximamos-su-influencia-gravitatoria-sobre-un-objeto-muy-lejano}
 
-#### 1.3.12.5. Pregunta E --- ¿Cómo aproximamos su influencia gravitatoria sobre un objeto muy lejano? {#fispm-c01-pregunta-e-cuxf3mo-aproximamos-su-influencia-gravitatoria-sobre-un-objeto-muy-lejano}
+#### Pregunta E --- ¿Cómo aproximamos su influencia gravitatoria sobre un objeto muy lejano? {#fispm-c01-pregunta-e-cuxf3mo-aproximamos-su-influencia-gravitatoria-sobre-un-objeto-muy-lejano}
 
 En ciertas circunstancias puede bastar un modelo de masa concentrada.
 
@@ -1688,7 +1688,7 @@ Podemos resumir:
 
 El cambio de modelo cambia también qué entendemos por **estado** de la Tierra. Una masa puntual necesita mucha menos información que un cuerpo extenso en rotación.
 
-### 1.3.13. Ejemplo desarrollado 7 --- Una habitación y su temperatura {#fispm-c01-ejemplo-desarrollado-7-una-habitaciuxf3n-y-su-temperatura}
+### Ejemplo desarrollado 7 --- Una habitación y su temperatura {#fispm-c01-ejemplo-desarrollado-7-una-habitaciuxf3n-y-su-temperatura}
 
 Consideremos la pregunta:
 
@@ -1698,23 +1698,23 @@ Podemos elegir varios sistemas.
 
 []{#sistema-1-el-aire-de-la-habitación}
 
-#### 1.3.13.1. Sistema 1 --- El aire de la habitación {#fispm-c01-sistema-1-el-aire-de-la-habitaciuxf3n}
+#### Sistema 1 --- El aire de la habitación {#fispm-c01-sistema-1-el-aire-de-la-habitaciuxf3n}
 
 Paredes, ventanas, calefactor y exterior pertenecen al entorno.
 
 []{#sistema-2-aire-paredes-muebles}
 
-#### 1.3.13.2. Sistema 2 --- Aire + paredes + muebles {#fispm-c01-sistema-2-aire-paredes-muebles}
+#### Sistema 2 --- Aire + paredes + muebles {#fispm-c01-sistema-2-aire-paredes-muebles}
 
 Ahora parte del almacenamiento de energía térmica queda dentro de la frontera.
 
 []{#sistema-3-habitación-calefactor}
 
-#### 1.3.13.3. Sistema 3 --- Habitación + calefactor {#fispm-c01-sistema-3-habitaciuxf3n-calefactor}
+#### Sistema 3 --- Habitación + calefactor {#fispm-c01-sistema-3-habitaciuxf3n-calefactor}
 
 El mecanismo de producción y transferencia de energía puede representarse con mayor detalle. Una variable que en un modelo era externa puede convertirse en variable interna al ampliar el sistema. La frontera reorganiza la descripción.
 
-### 1.3.14. Ejemplo desarrollado 8 --- ¿Parámetro u observable? {#fispm-c01-ejemplo-desarrollado-8-paruxe1metro-u-observable}
+### Ejemplo desarrollado 8 --- ¿Parámetro u observable? {#fispm-c01-ejemplo-desarrollado-8-paruxe1metro-u-observable}
 
 Supongamos un bloque cuya masa $m$ ha sido medida antes de comenzar un experimento.
 
@@ -1740,7 +1740,7 @@ Debemos distinguir:
 
 Esta triple distinción será útil en todo el libro.
 
-### 1.3.15. Una ficha mínima de sistema {#fispm-c01-una-ficha-muxednima-de-sistema}
+### Una ficha mínima de sistema {#fispm-c01-una-ficha-muxednima-de-sistema}
 
 Desde ahora podremos construir una ficha preliminar:
 
@@ -1764,7 +1764,7 @@ En capítulos posteriores añadiremos:
 
 - dominios de validez.
 
-### 1.3.16. Ejercicios de §3 {#fispm-c01-ejercicios-de-3}
+### Ejercicios de §3 {#fispm-c01-ejercicios-de-3}
 
 []{#fispm-t1-c01-e0011}
 
@@ -1887,7 +1887,7 @@ $$\boxed{\text{mismo dato observable}\not\Rightarrow\text{mismo estado}}$$ a men
 
 []{#síntesis}
 
-### 1.3.17. Síntesis {#fispm-c01-suxedntesis}
+### Síntesis {#fispm-c01-suxedntesis}
 
 La frontera de un sistema, su estado y sus observables no vienen determinados por el objeto material considerado aisladamente. Dependen de la pregunta y del modelo. Hemos construido ahora la cadena
 
@@ -1909,11 +1909,11 @@ $$\boxed{ \text{abstracción} \neq \text{idealización} \neq \text{aproximación
 
 []{#fpm-i-01-s04}
 
-## 1.4. Idealización, abstracción y aproximación {#fispm-c01-idealizaciuxf3n-abstracciuxf3n-y-aproximaciuxf3n}
+## 4. Idealización, abstracción y aproximación {#fispm-c01-idealizaciuxf3n-abstracciuxf3n-y-aproximaciuxf3n}
 
 []{#tres-operaciones-que-no-debemos-confundir}
 
-### 1.4.1. Tres operaciones que no debemos confundir {#fispm-c01-tres-operaciones-que-no-debemos-confundir}
+### Tres operaciones que no debemos confundir {#fispm-c01-tres-operaciones-que-no-debemos-confundir}
 
 En las secciones anteriores hemos construido modelos seleccionando sistemas, variables, parámetros y observables. Para hacerlo hemos simplificado. Pero **simplificar** no nombra una sola operación.
 
@@ -1925,7 +1925,7 @@ En las secciones anteriores hemos construido modelos seleccionando sistemas, var
 
 <figcaption>
 
-**Figura 1.3.** Las expresiones normalizadas $e^{-u}$ y $1-u$ comparten valor y derivada en $u=0$. La segunda sirve localmente y se vuelve negativa para $u>1$; esa extrapolación puede contrariar el significado físico de una cantidad positiva. Véase §[1.4](#fispm-c01-idealizaciuxf3n-abstracciuxf3n-y-aproximaciuxf3n).
+**Figura 1.3.** Las expresiones normalizadas $e^{-u}$ y $1-u$ comparten valor y derivada en $u=0$. La segunda sirve localmente y se vuelve negativa para $u>1$; esa extrapolación puede contrariar el significado físico de una cantidad positiva. Véase §[4](#fispm-c01-idealizaciuxf3n-abstracciuxf3n-y-aproximaciuxf3n).
 
 </figcaption>
 
@@ -1948,7 +1948,7 @@ $$\boxed{ \text{abstracción} \neq \text{idealización} \neq \text{aproximación
 
 Estas tres preguntas reaparecerán durante los cuatro tomos.
 
-### 1.4.2. Abstracción: conservar estructura y olvidar particulares {#fispm-c01-abstracciuxf3n-conservar-estructura-y-olvidar-particulares}
+### Abstracción: conservar estructura y olvidar particulares {#fispm-c01-abstracciuxf3n-conservar-estructura-y-olvidar-particulares}
 
 Consideremos tres objetos:
 
@@ -1968,7 +1968,7 @@ En forma esquemática:
 
 $$\text{sistema concreto} \longrightarrow \text{estructura seleccionada}.$$ La flecha pierde información deliberadamente.
 
-### 1.4.3. Abstracción no significa falsificación {#fispm-c01-abstracciuxf3n-no-significa-falsificaciuxf3n}
+### Abstracción no significa falsificación {#fispm-c01-abstracciuxf3n-no-significa-falsificaciuxf3n}
 
 Un mapa vial omite la composición química del asfalto. Esa omisión no convierte al mapa en falso. Una lista de temperaturas de una ciudad omite la forma de cada edificio. Tampoco por ello es falsa.
 
@@ -1982,7 +1982,7 @@ No toda pérdida es aceptable. Si queremos estudiar cómo gira un cuerpo rígido
 
 **Principio 1.7 --- Una abstracción es adecuada si conserva las distinciones relevantes para la pregunta** Omitir información es legítimo solo en la medida en que las distinciones eliminadas no sean necesarias para las predicciones, comparaciones o explicaciones que el modelo pretende realizar.
 
-### 1.4.4. Idealización: introducir un objeto que no existe exactamente {#fispm-c01-idealizaciuxf3n-introducir-un-objeto-que-no-existe-exactamente}
+### Idealización: introducir un objeto que no existe exactamente {#fispm-c01-idealizaciuxf3n-introducir-un-objeto-que-no-existe-exactamente}
 
 La idealización hace algo más fuerte.
 
@@ -2016,7 +2016,7 @@ La marca conceptual es:
 
 $$\boxed{\text{«exacto en el modelo» no significa «exacto en el mundo».}}$$
 
-### 1.4.5. Una idealización puede ser excelente sin ser literalmente realizable {#fispm-c01-una-idealizaciuxf3n-puede-ser-excelente-sin-ser-literalmente-realizable}
+### Una idealización puede ser excelente sin ser literalmente realizable {#fispm-c01-una-idealizaciuxf3n-puede-ser-excelente-sin-ser-literalmente-realizable}
 
 Supongamos que modelamos una esfera pequeña como partícula puntual. Si la pregunta concierne a una trayectoria cuya escala espacial es enorme comparada con el tamaño de la esfera, la estructura interna puede tener un efecto despreciable sobre la cantidad que queremos calcular.
 
@@ -2034,13 +2034,13 @@ Pero si preguntamos por:
 
 la extensión espacial deja de ser irrelevante. La misma idealización puede pasar de buena a mala sin que el objeto físico haya cambiado. Ha cambiado la **pregunta**.
 
-### 1.4.6. Idealización y abstracción: diferencia mediante un mismo cuerpo {#fispm-c01-idealizaciuxf3n-y-abstracciuxf3n-diferencia-mediante-un-mismo-cuerpo}
+### Idealización y abstracción: diferencia mediante un mismo cuerpo {#fispm-c01-idealizaciuxf3n-y-abstracciuxf3n-diferencia-mediante-un-mismo-cuerpo}
 
 Tomemos una pelota real.
 
 []{#abstracción}
 
-#### 1.4.6.1. Abstracción {#fispm-c01-abstracciuxf3n}
+#### Abstracción {#fispm-c01-abstracciuxf3n}
 
 Decidimos no registrar su color. La pelota del modelo todavía puede conservar tamaño, masa y forma.
 
@@ -2050,7 +2050,7 @@ $$\text{color}=0.$$ Simplemente no hay una variable «color» en nuestra descrip
 
 []{#idealización}
 
-#### 1.4.6.2. Idealización {#fispm-c01-idealizaciuxf3n}
+#### Idealización {#fispm-c01-idealizaciuxf3n}
 
 Representamos la pelota como un punto.
 
@@ -2064,7 +2064,7 @@ $$\boxed{ \text{abstracción}=\text{no representar cierta información} }$$ mien
 
 $$\boxed{ \text{idealización}=\text{representar mediante una condición simplificada tratada como exacta}. }$$ La frontera entre ambas puede depender del formalismo, pero la distinción es metodológicamente útil.
 
-### 1.4.7. Aproximación: reemplazar por algo cercano {#fispm-c01-aproximaciuxf3n-reemplazar-por-algo-cercano}
+### Aproximación: reemplazar por algo cercano {#fispm-c01-aproximaciuxf3n-reemplazar-por-algo-cercano}
 
 Pasemos ahora a una operación diferente.
 
@@ -2082,7 +2082,7 @@ Hemos reemplazado una expresión por otra que esperamos que sea **cercana** en c
 
 La palabra decisiva es **diferencia**. Una aproximación exige, al menos conceptualmente, alguna manera de comparar.
 
-### 1.4.8. Primera aproximación controlada sin cálculo {#fispm-c01-primera-aproximaciuxf3n-controlada-sin-cuxe1lculo}
+### Primera aproximación controlada sin cálculo {#fispm-c01-primera-aproximaciuxf3n-controlada-sin-cuxe1lculo}
 
 Consideremos la identidad exacta
 
@@ -2106,7 +2106,7 @@ No necesitamos todavía series de Taylor para comprender la idea.
 
 **Principio 1.8 --- Una aproximación debe hacer visible qué se omite** Siempre que sea posible, registraremos la cantidad o término despreciado y explicaremos por qué es pequeño respecto de la escala relevante.
 
-### 1.4.9. «Pequeño» no es una propiedad absoluta {#fispm-c01-pequeuxf1o-no-es-una-propiedad-absoluta}
+### «Pequeño» no es una propiedad absoluta {#fispm-c01-pequeuxf1o-no-es-una-propiedad-absoluta}
 
 Supongamos que alguien afirma:
 
@@ -2124,7 +2124,7 @@ $$\boxed{ \text{pequeño} = \text{pequeño respecto de una escala relevante}. }$
 
 > ¿poco efecto sobre qué magnitud, durante qué intervalo y con qué precisión?
 
-### 1.4.10. Aproximación no significa simplemente redondeo {#fispm-c01-aproximaciuxf3n-no-significa-simplemente-redondeo}
+### Aproximación no significa simplemente redondeo {#fispm-c01-aproximaciuxf3n-no-significa-simplemente-redondeo}
 
 Si
 
@@ -2148,13 +2148,13 @@ Podemos:
 
 Algunas de estas operaciones se combinan con idealizaciones. Por eso debemos registrar el nivel exacto en que ocurre la simplificación.
 
-### 1.4.11. El péndulo: una escalera de operaciones distintas {#fispm-c01-el-puxe9ndulo-una-escalera-de-operaciones-distintas}
+### El péndulo: una escalera de operaciones distintas {#fispm-c01-el-puxe9ndulo-una-escalera-de-operaciones-distintas}
 
 Volvamos a nuestro caso conductor.
 
 []{#paso-1-no-registrar-el-color-del-cuerpo}
 
-#### 1.4.11.1. Paso 1 --- No registrar el color del cuerpo {#fispm-c01-paso-1-no-registrar-el-color-del-cuerpo}
+#### Paso 1 --- No registrar el color del cuerpo {#fispm-c01-paso-1-no-registrar-el-color-del-cuerpo}
 
 **Tipo:** abstracción.
 
@@ -2162,7 +2162,7 @@ El color queda fuera de las variables del modelo.
 
 []{#paso-2-representar-el-cuerpo-como-masa-puntual}
 
-#### 1.4.11.2. Paso 2 --- Representar el cuerpo como masa puntual {#fispm-c01-paso-2-representar-el-cuerpo-como-masa-puntual}
+#### Paso 2 --- Representar el cuerpo como masa puntual {#fispm-c01-paso-2-representar-el-cuerpo-como-masa-puntual}
 
 **Tipo:** idealización.
 
@@ -2170,7 +2170,7 @@ La extensión espacial se hace exactamente nula dentro del modelo.
 
 []{#paso-3-representar-el-hilo-como-inextensible-y-sin-masa}
 
-#### 1.4.11.3. Paso 3 --- Representar el hilo como inextensible y sin masa {#fispm-c01-paso-3-representar-el-hilo-como-inextensible-y-sin-masa}
+#### Paso 3 --- Representar el hilo como inextensible y sin masa {#fispm-c01-paso-3-representar-el-hilo-como-inextensible-y-sin-masa}
 
 **Tipo:** idealización.
 
@@ -2178,7 +2178,7 @@ No estamos diciendo que el hilo real tenga literalmente esas propiedades.
 
 []{#paso-4-ignorar-la-resistencia-del-aire}
 
-#### 1.4.11.4. Paso 4 --- Ignorar la resistencia del aire {#fispm-c01-paso-4-ignorar-la-resistencia-del-aire}
+#### Paso 4 --- Ignorar la resistencia del aire {#fispm-c01-paso-4-ignorar-la-resistencia-del-aire}
 
 Puede formularse de dos maneras distintas:
 
@@ -2190,13 +2190,13 @@ La misma frase coloquial ---«despreciamos el aire»--- puede esconder operacion
 
 []{#paso-5-reemplazar-una-relación-angular-por-una-relación-más-simple-para-ángulos-pequeños}
 
-#### 1.4.11.5. Paso 5 --- Reemplazar una relación angular por una relación más simple para ángulos pequeños {#fispm-c01-paso-5-reemplazar-una-relaciuxf3n-angular-por-una-relaciuxf3n-muxe1s-simple-para-uxe1ngulos-pequeuxf1os}
+#### Paso 5 --- Reemplazar una relación angular por una relación más simple para ángulos pequeños {#fispm-c01-paso-5-reemplazar-una-relaciuxf3n-angular-por-una-relaciuxf3n-muxe1s-simple-para-uxe1ngulos-pequeuxf1os}
 
 **Tipo:** aproximación.
 
 No la utilizaremos todavía. La estudiaremos de manera controlada en el capítulo 6. Esta escalera muestra por qué no basta escribir «hacemos las aproximaciones usuales».
 
-### 1.4.12. La etiqueta `[``MOD``]` y la etiqueta `[``APPROX``]` {#fispm-c01-la-etiqueta-mod-y-la-etiqueta-approx}
+### La etiqueta `[``MOD``]` y la etiqueta `[``APPROX``]` {#fispm-c01-la-etiqueta-mod-y-la-etiqueta-approx}
 
 El protocolo global de este libro distingue:
 
@@ -2212,7 +2212,7 @@ En cambio:
 
 Aquí existe una diferencia explícita entre dos expresiones.
 
-### 1.4.13. Una aproximación debe tener régimen {#fispm-c01-una-aproximaciuxf3n-debe-tener-ruxe9gimen}
+### Una aproximación debe tener régimen {#fispm-c01-una-aproximaciuxf3n-debe-tener-ruxe9gimen}
 
 La expresión
 
@@ -2236,19 +2236,19 @@ Todavía no sabemos formular regímenes de manera sistemática.
 
 Eso será tarea del capítulo 6.
 
-### 1.4.14. «Suficientemente pequeño» depende de la pregunta {#fispm-c01-suficientemente-pequeuxf1o-depende-de-la-pregunta}
+### «Suficientemente pequeño» depende de la pregunta {#fispm-c01-suficientemente-pequeuxf1o-depende-de-la-pregunta}
 
 Imaginemos dos usos de una misma predicción.
 
 []{#uso-a-demostración-de-aula}
 
-#### 1.4.14.1. Uso A --- Demostración de aula {#fispm-c01-uso-a-demostraciuxf3n-de-aula}
+#### Uso A --- Demostración de aula {#fispm-c01-uso-a-demostraciuxf3n-de-aula}
 
 Queremos distinguir si un tiempo es aproximadamente de uno o de diez segundos. Un error de unas pocas centésimas puede ser irrelevante.
 
 []{#uso-b-instrumento-de-precisión}
 
-#### 1.4.14.2. Uso B --- Instrumento de precisión {#fispm-c01-uso-b-instrumento-de-precisiuxf3n}
+#### Uso B --- Instrumento de precisión {#fispm-c01-uso-b-instrumento-de-precisiuxf3n}
 
 Queremos detectar una variación relativa de una parte en cien mil. El mismo error puede arruinar completamente el experimento.
 
@@ -2256,7 +2256,7 @@ Por tanto:
 
 $$\boxed{ \text{validez práctica} = \text{error} + \text{precisión requerida} + \text{pregunta}. }$$ No existe una tolerancia universal para todas las aplicaciones.
 
-### 1.4.15. El peligro contrario: aproximar demasiado pronto {#fispm-c01-el-peligro-contrario-aproximar-demasiado-pronto}
+### El peligro contrario: aproximar demasiado pronto {#fispm-c01-el-peligro-contrario-aproximar-demasiado-pronto}
 
 Las aproximaciones son útiles, pero pueden destruir precisamente el fenómeno que queremos estudiar.
 
@@ -2266,7 +2266,7 @@ Por tanto:
 
 $$\boxed{ \text{término pequeño} \not\Rightarrow \text{efecto siempre despreciable}. }$$ Necesitamos conocer cómo entra ese término en la estructura completa del problema.
 
-### 1.4.16. Ejemplo: la rotación terrestre en un péndulo {#fispm-c01-ejemplo-la-rotaciuxf3n-terrestre-en-un-puxe9ndulo}
+### Ejemplo: la rotación terrestre en un péndulo {#fispm-c01-ejemplo-la-rotaciuxf3n-terrestre-en-un-puxe9ndulo}
 
 Durante unas pocas oscilaciones ordinarias, ciertos efectos asociados con la rotación terrestre pueden resultar irrelevantes para una pregunta elemental sobre el período. Pero si preguntamos por una modificación lenta del plano de oscilación durante muchas horas, precisamente esos efectos pueden convertirse en el fenómeno central.
 
@@ -2280,7 +2280,7 @@ Lo que parecía una corrección pequeña deja de ser despreciable porque:
 
 Esta observación preparará nuestros estudios de sistemas no inerciales mucho más adelante.
 
-### 1.4.17. Modelo mínimo suficiente {#fispm-c01-modelo-muxednimo-suficiente}
+### Modelo mínimo suficiente {#fispm-c01-modelo-muxednimo-suficiente}
 
 Podemos formular una regla de trabajo:
 
@@ -2288,13 +2288,13 @@ Podemos formular una regla de trabajo:
 
 No es una ley universal de la ciencia. Es una estrategia pedagógica y metodológica. Un modelo más rico se justifica cuando el modelo mínimo deja de responder la pregunta o cuando buscamos fenómenos nuevos.
 
-### 1.4.18. Ejemplo desarrollado 9 --- Clasificar una simplificación {#fispm-c01-ejemplo-desarrollado-9-clasificar-una-simplificaciuxf3n}
+### Ejemplo desarrollado 9 --- Clasificar una simplificación {#fispm-c01-ejemplo-desarrollado-9-clasificar-una-simplificaciuxf3n}
 
 Consideremos cuatro frases.
 
 []{#a}
 
-#### 1.4.18.1. A {#fispm-c01-a}
+#### A {#fispm-c01-a}
 
 «No registraremos el color del proyectil.»
 
@@ -2304,7 +2304,7 @@ No se introduce la afirmación «el proyectil carece de color». El color queda 
 
 []{#b}
 
-#### 1.4.18.2. B {#fispm-c01-b}
+#### B {#fispm-c01-b}
 
 «El proyectil se tratará como una partícula puntual.»
 
@@ -2314,7 +2314,7 @@ Se sustituye el cuerpo extendido por un objeto de extensión nula.
 
 []{#c}
 
-#### 1.4.18.3. C {#fispm-c01-c}
+#### C {#fispm-c01-c}
 
 «La resistencia del aire se toma exactamente igual a cero.»
 
@@ -2322,7 +2322,7 @@ Se sustituye el cuerpo extendido por un objeto de extensión nula.
 
 []{#d}
 
-#### 1.4.18.4. D {#fispm-c01-d}
+#### D {#fispm-c01-d}
 
 «La resistencia del aire produce una corrección menor que la precisión que buscamos y por eso omitiremos su contribución.»
 
@@ -2330,7 +2330,7 @@ Se sustituye el cuerpo extendido por un objeto de extensión nula.
 
 Las frases C y D pueden conducir a ecuaciones semejantes, pero su **estatus epistemológico** es diferente.
 
-### 1.4.19. Ejemplo desarrollado 10 --- El término cuadrático {#fispm-c01-ejemplo-desarrollado-10-el-tuxe9rmino-cuadruxe1tico}
+### Ejemplo desarrollado 10 --- El término cuadrático {#fispm-c01-ejemplo-desarrollado-10-el-tuxe9rmino-cuadruxe1tico}
 
 Sea
 
@@ -2338,17 +2338,17 @@ $$Q(\varepsilon)=1-2\varepsilon+\varepsilon^2.$$ Queremos sustituirlo por
 
 $$Q_1(\varepsilon)=1-2\varepsilon.$$
 
-#### 1.4.19.1. Paso 1 --- Diferencia exacta {#fispm-c01-paso-1-diferencia-exacta}
+#### Paso 1 --- Diferencia exacta {#fispm-c01-paso-1-diferencia-exacta}
 
 $$Q(\varepsilon)-Q_1(\varepsilon) = \varepsilon^2.$$
 
-#### 1.4.19.2. Paso 2 --- Comparación con el término lineal {#fispm-c01-paso-2-comparaciuxf3n-con-el-tuxe9rmino-lineal}
+#### Paso 2 --- Comparación con el término lineal {#fispm-c01-paso-2-comparaciuxf3n-con-el-tuxe9rmino-lineal}
 
 Para $\varepsilon\neq0$,
 
 $$\frac{|\varepsilon^2|}{|2\varepsilon|} = \frac{|\varepsilon|}{2}.$$
 
-#### 1.4.19.3. Paso 3 --- Casos {#fispm-c01-paso-3-casos}
+#### Paso 3 --- Casos {#fispm-c01-paso-3-casos}
 
 Si
 
@@ -2362,11 +2362,11 @@ $$\frac{|\varepsilon^2|}{|2\varepsilon|} = \frac12.$$ La omisión que era peque�
 
 []{#conclusión}
 
-#### 1.4.19.4. Conclusión {#fispm-c01-conclusiuxf3n}
+#### Conclusión {#fispm-c01-conclusiuxf3n}
 
 No existe «la aproximación» sin su régimen.
 
-### 1.4.20. Ejercicios de §4 {#fispm-c01-ejercicios-de-4}
+### Ejercicios de §4 {#fispm-c01-ejercicios-de-4}
 
 []{#fispm-t1-c01-e0015}
 
@@ -2468,7 +2468,7 @@ Pasar a un modelo más rico se justificaría si observamos, por ejemplo:
 
 El criterio es **suficiencia para la pregunta**, no cantidad de detalles.
 
-### 1.4.21. Síntesis {#fispm-c01-suxedntesis-1}
+### Síntesis {#fispm-c01-suxedntesis-1}
 
 Ahora podemos distinguir tres maneras de simplificar.
 
@@ -2480,7 +2480,7 @@ Hasta ahora hemos hablado de sistemas, estados, variables y simplificaciones.
 
 Debemos reunir todo eso en una plantilla matemática suficientemente precisa para leer un modelo sin confundir el formalismo con su interpretación.
 
-Entraremos entonces en el §[1.5](#fispm-c01-de-la-representaciuxf3n-fuxedsica-al-objeto-matemuxe1tico).
+Entraremos entonces en el §[5](#fispm-c01-de-la-representaciuxf3n-fuxedsica-al-objeto-matemuxe1tico).
 
 []{#de-la-representación-física-al-objeto-matemático}
 
@@ -2488,11 +2488,11 @@ Entraremos entonces en el §[1.5](#fispm-c01-de-la-representaciuxf3n-fuxedsica-a
 
 []{#fpm-i-01-s05}
 
-## 1.5. De la representación física al objeto matemático {#fispm-c01-de-la-representaciuxf3n-fuxedsica-al-objeto-matemuxe1tico}
+## 5. De la representación física al objeto matemático {#fispm-c01-de-la-representaciuxf3n-fuxedsica-al-objeto-matemuxe1tico}
 
 []{#el-símbolo-no-trae-consigo-su-significado-físico}
 
-### 1.5.1. El símbolo no trae consigo su significado físico {#fispm-c01-el-suxedmbolo-no-trae-consigo-su-significado-fuxedsico}
+### El símbolo no trae consigo su significado físico {#fispm-c01-el-suxedmbolo-no-trae-consigo-su-significado-fuxedsico}
 
 Supongamos que encontramos escrita la ecuación $x^2+y^2=L^2.$
 
@@ -2506,7 +2506,7 @@ Como objeto matemático, podemos estudiarla sin saber nada de física. Podemos p
 
 <figcaption>
 
-**Figura 1.4.** La aplicación de observación vincula el estado matemático con una cantidad medible. Un mismo observable puede tomar igual valor en estados distintos. Véase §[1.5](#fispm-c01-de-la-representaciuxf3n-fuxedsica-al-objeto-matemuxe1tico).
+**Figura 1.4.** La aplicación de observación vincula el estado matemático con una cantidad medible. Un mismo observable puede tomar igual valor en estados distintos. Véase §[5](#fispm-c01-de-la-representaciuxf3n-fuxedsica-al-objeto-matemuxe1tico).
 
 </figcaption>
 
@@ -2520,19 +2520,19 @@ Este es el punto de partida de la sección. Un matemático puede manipular corre
 
 []{#dos-tareas-diferentes}
 
-### 1.5.2. Dos tareas diferentes {#fispm-c01-dos-tareas-diferentes}
+### Dos tareas diferentes {#fispm-c01-dos-tareas-diferentes}
 
 Cuando construimos un modelo físico realizamos al menos dos tareas.
 
 []{#tarea-matemática}
 
-#### 1.5.2.1. Tarea matemática {#fispm-c01-tarea-matemuxe1tica}
+#### Tarea matemática {#fispm-c01-tarea-matemuxe1tica}
 
 Elegimos objetos como conjuntos, números, funciones, relaciones, espacios, ecuaciones y parámetros.
 
 []{#tarea-física}
 
-#### 1.5.2.2. Tarea física {#fispm-c01-tarea-fuxedsica}
+#### Tarea física {#fispm-c01-tarea-fuxedsica}
 
 Decidimos qué sistema representa cada objeto, qué magnitud corresponde a cada símbolo, qué procedimientos conectan ciertos símbolos con observaciones, qué hipótesis permiten usar esas relaciones y en qué régimen esperamos que el modelo sea adecuado. Estas tareas se necesitan mutuamente, pero no son idénticas.
 
@@ -2542,7 +2542,7 @@ La matemática organiza la estructura. La física asigna significado y la conect
 
 []{#el-diccionario-de-interpretación}
 
-### 1.5.3. El diccionario de interpretación {#fispm-c01-el-diccionario-de-interpretaciuxf3n}
+### El diccionario de interpretación {#fispm-c01-el-diccionario-de-interpretaciuxf3n}
 
 Usaremos la expresión **diccionario de interpretación** para referirnos al conjunto de correspondencias que explican cómo leer físicamente el formalismo.
 
@@ -2564,7 +2564,7 @@ No debemos imaginar necesariamente este diccionario como una única función mat
 
 []{#representar-no-significa-copiar}
 
-### 1.5.4. Representar no significa copiar {#fispm-c01-representar-no-significa-copiar}
+### Representar no significa copiar {#fispm-c01-representar-no-significa-copiar}
 
 Una representación matemática no es una réplica del sistema físico. El número
 
@@ -2586,7 +2586,7 @@ $$\boxed{ \text{objeto físico} \neq \text{objeto matemático que lo representa}
 
 []{#una-representación-puede-perder-información}
 
-### 1.5.5. Una representación puede perder información {#fispm-c01-una-representaciuxf3n-puede-perder-informaciuxf3n}
+### Una representación puede perder información {#fispm-c01-una-representaciuxf3n-puede-perder-informaciuxf3n}
 
 En §4 vimos que toda abstracción puede omitir estructura. La representación matemática hereda esa selección. Si modelamos un cuerpo por un punto,
 
@@ -2598,7 +2598,7 @@ Una representación útil puede olvidar precisamente aquello que no necesitamos.
 
 []{#una-representación-puede-introducir-estructura-adicional}
 
-### 1.5.6. Una representación puede introducir estructura adicional {#fispm-c01-una-representaciuxf3n-puede-introducir-estructura-adicional}
+### Una representación puede introducir estructura adicional {#fispm-c01-una-representaciuxf3n-puede-introducir-estructura-adicional}
 
 También puede ocurrir lo contrario. Al elegir coordenadas, bases, parámetros o variables auxiliares podemos introducir estructura matemática que no corresponde directamente a una propiedad física independiente. Por ejemplo, dos descripciones matemáticas distintas pueden representar la misma situación física.
 
@@ -2612,7 +2612,7 @@ La cuestión «¿qué parte del formalismo representa algo físicamente distingu
 
 []{#una-plantilla-mínima-de-lectura}
 
-### 1.5.7. Una plantilla mínima de lectura {#fispm-c01-una-plantilla-muxednima-de-lectura}
+### Una plantilla mínima de lectura {#fispm-c01-una-plantilla-muxednima-de-lectura}
 
 Necesitamos ahora una manera compacta de preguntar qué contiene un modelo.
 
@@ -2628,7 +2628,7 @@ No afirmamos que toda teoría física pueda o deba reducirse literalmente a una 
 
 []{#mathcal-s-estados-admitidos}
 
-### 1.5.8. $\mathcal S$: estados admitidos {#fispm-c01-mathcal-s-estados-admitidos}
+### $\mathcal S$: estados admitidos {#fispm-c01-mathcal-s-estados-admitidos}
 
 Ya introdujimos el espacio de estados en §3.
 
@@ -2650,7 +2650,7 @@ no es admisible cuando $L\neq0$. Por tanto, especificar variables no basta. Debe
 
 []{#x-variables-y-observables-modelados}
 
-### 1.5.9. $X$: variables y observables modelados {#fispm-c01-x-variables-y-observables-modelados}
+### $X$: variables y observables modelados {#fispm-c01-x-variables-y-observables-modelados}
 
 Usaremos $X$ como símbolo colectivo para la familia de cantidades que el modelo emplea para describir o interrogar el sistema. Puede incluir variables de estado, observables, variables de control y cantidades derivadas. No exigiremos que todos estos objetos tengan la misma estructura matemática.
 
@@ -2662,7 +2662,7 @@ En teorías posteriores esta representación tendrá que modificarse. Por eso $X
 
 []{#theta-parámetros}
 
-### 1.5.10. $\theta$: parámetros {#fispm-c01-theta-paruxe1metros}
+### $\theta$: parámetros {#fispm-c01-theta-paruxe1metros}
 
 Escribiremos esquemáticamente
 
@@ -2680,7 +2680,7 @@ como parámetros que caracterizan la familia o que se consideran fijos durante e
 
 []{#mathcal-l-leyes-y-relaciones-del-modelo}
 
-### 1.5.11. $\mathcal L$: leyes y relaciones del modelo {#fispm-c01-mathcal-l-leyes-y-relaciones-del-modelo}
+### $\mathcal L$: leyes y relaciones del modelo {#fispm-c01-mathcal-l-leyes-y-relaciones-del-modelo}
 
 El símbolo
 
@@ -2698,7 +2698,7 @@ como si todas las ecuaciones tuvieran el mismo origen epistemológico. La secci�
 
 []{#i-condiciones-iniciales}
 
-### 1.5.12. $I$: condiciones iniciales {#fispm-c01-i-condiciones-iniciales}
+### $I$: condiciones iniciales {#fispm-c01-i-condiciones-iniciales}
 
 Muchos modelos dinámicos necesitan especificar una condición del sistema en un instante elegido como inicial. Representaremos ese bloque mediante
 
@@ -2712,7 +2712,7 @@ la forma algebraica no nos dice si se trata de un dato experimental, una elecci�
 
 []{#b-condiciones-de-frontera}
 
-### 1.5.13. $B$: condiciones de frontera {#fispm-c01-b-condiciones-de-frontera}
+### $B$: condiciones de frontera {#fispm-c01-b-condiciones-de-frontera}
 
 En problemas extendidos espacialmente puede ser necesario especificar qué ocurre en una frontera.
 
@@ -2732,7 +2732,7 @@ suele contener más información que la ley aislada.
 
 []{#mathcal-r-régimen-de-validez}
 
-### 1.5.14. $\mathcal R$: régimen de validez {#fispm-c01-mathcal-r-ruxe9gimen-de-validez}
+### $\mathcal R$: régimen de validez {#fispm-c01-mathcal-r-ruxe9gimen-de-validez}
 
 El componente
 
@@ -2746,7 +2746,7 @@ Por ahora queremos que ningún modelo aparezca como si afirmara:
 
 []{#la-tupla-no-contiene-todavía-toda-la-semántica}
 
-### 1.5.15. La tupla no contiene todavía toda la semántica {#fispm-c01-la-tupla-no-contiene-todavuxeda-toda-la-semuxe1ntica}
+### La tupla no contiene todavía toda la semántica {#fispm-c01-la-tupla-no-contiene-todavuxeda-toda-la-semuxe1ntica}
 
 La plantilla
 
@@ -2776,7 +2776,7 @@ Esto incorpora una consecuencia de §2: una teoría física necesita conexiones 
 
 []{#un-modelo-puede-estar-incompleto}
 
-### 1.5.16. Un modelo puede estar incompleto {#fispm-c01-un-modelo-puede-estar-incompleto}
+### Un modelo puede estar incompleto {#fispm-c01-un-modelo-puede-estar-incompleto}
 
 También debemos distinguir
 
@@ -2792,7 +2792,7 @@ Supongamos que queremos predecir la evolución de un sistema y conocemos su espa
 
 []{#ejemplo-desarrollado-11-un-sistema-físico-de-dos-estados}
 
-### 1.5.17. Ejemplo desarrollado 11 --- Un sistema físico de dos estados {#fispm-c01-ejemplo-desarrollado-11-un-sistema-fuxedsico-de-dos-estados}
+### Ejemplo desarrollado 11 --- Un sistema físico de dos estados {#fispm-c01-ejemplo-desarrollado-11-un-sistema-fuxedsico-de-dos-estados}
 
 Construyamos un modelo deliberadamente sencillo.
 
@@ -2820,7 +2820,7 @@ puede modelar innumerables sistemas distintos. El conjunto por sí solo no espec
 
 []{#ejemplo-desarrollado-12-esqueleto-del-modelo-del-péndulo}
 
-### 1.5.18. Ejemplo desarrollado 12 --- Esqueleto del modelo del péndulo {#fispm-c01-ejemplo-desarrollado-12-esqueleto-del-modelo-del-puxe9ndulo}
+### Ejemplo desarrollado 12 --- Esqueleto del modelo del péndulo {#fispm-c01-ejemplo-desarrollado-12-esqueleto-del-modelo-del-puxe9ndulo}
 
 Volvamos al péndulo, pero sin escribir todavía su ecuación de movimiento.
 
@@ -2828,13 +2828,13 @@ Podemos preparar una ficha.
 
 []{#sistema-físico}
 
-#### 1.5.18.1. Sistema físico {#fispm-c01-sistema-fuxedsico}
+#### Sistema físico {#fispm-c01-sistema-fuxedsico}
 
 Una pequeña esfera suspendida mediante un hilo.
 
 []{#mathcal-s}
 
-#### 1.5.18.2. $\mathcal S$ {#fispm-c01-mathcal-s}
+#### $\mathcal S$ {#fispm-c01-mathcal-s}
 
 Estados admitidos por la idealización elegida.
 
@@ -2842,49 +2842,49 @@ No los parametrizaremos técnicamente todavía.
 
 []{#x}
 
-#### 1.5.18.3. $X$ {#fispm-c01-x}
+#### $X$ {#fispm-c01-x}
 
 Cantidades que deseamos representar, por ejemplo la posición angular, información sobre el movimiento y el tiempo de oscilación como observable derivado. Las definiciones precisas se darán en capítulos posteriores.
 
 []{#theta}
 
-#### 1.5.18.4. $\theta$ {#fispm-c01-theta}
+#### $\theta$ {#fispm-c01-theta}
 
 Parámetros como la longitud del hilo y otras propiedades que el modelo trate como fijas.
 
 []{#mathcal-l}
 
-#### 1.5.18.5. $\mathcal L$ {#fispm-c01-mathcal-l}
+#### $\mathcal L$ {#fispm-c01-mathcal-l}
 
 Todavía no especificado. La ley dinámica aparecerá después de desarrollar la mecánica necesaria.
 
 []{#i}
 
-#### 1.5.18.6. $I$ {#fispm-c01-i}
+#### $I$ {#fispm-c01-i}
 
 Condición inicial: cómo se prepara el péndulo al comenzar el experimento.
 
 []{#b-1}
 
-#### 1.5.18.7. $B$ {#fispm-c01-b-1}
+#### $B$ {#fispm-c01-b-1}
 
 No necesitamos aquí una condición de frontera espacial independiente.
 
 []{#mathcal-r}
 
-#### 1.5.18.8. $\mathcal R$ {#fispm-c01-mathcal-r}
+#### $\mathcal R$ {#fispm-c01-mathcal-r}
 
 Régimen en el cual las idealizaciones adoptadas sean adecuadas.
 
 []{#mathfrak-i_mathcal-m}
 
-#### 1.5.18.9. $\mathfrak I_{\mathcal M}$ {#fispm-c01-mathfrak-i_mathcal-m}
+#### $\mathfrak I_{\mathcal M}$ {#fispm-c01-mathfrak-i_mathcal-m}
 
 Reglas que explican qué representa la posición angular, cómo se identifica experimentalmente una oscilación y cómo se mide el tiempo correspondiente. La ficha es útil precisamente porque muestra qué sabemos y qué **todavía falta**.
 
 []{#ejemplo-desarrollado-13-una-ecuación-dos-modelos}
 
-### 1.5.19. Ejemplo desarrollado 13 --- Una ecuación, dos modelos {#fispm-c01-ejemplo-desarrollado-13-una-ecuaciuxf3n-dos-modelos}
+### Ejemplo desarrollado 13 --- Una ecuación, dos modelos {#fispm-c01-ejemplo-desarrollado-13-una-ecuaciuxf3n-dos-modelos}
 
 Consideremos
 
@@ -2892,7 +2892,7 @@ $$x+y=1.$$
 
 []{#modelo-a-dos-fracciones-de-composición}
 
-#### 1.5.19.1. Modelo A --- Dos fracciones de composición {#fispm-c01-modelo-a-dos-fracciones-de-composiciuxf3n}
+#### Modelo A --- Dos fracciones de composición {#fispm-c01-modelo-a-dos-fracciones-de-composiciuxf3n}
 
 Interpretamos
 
@@ -2904,7 +2904,7 @@ La ecuación expresa que el modelo solo admite esos dos componentes y que las fr
 
 []{#modelo-b-distribución-idealizada-de-un-recurso}
 
-#### 1.5.19.2. Modelo B --- Distribución idealizada de un recurso {#fispm-c01-modelo-b-distribuciuxf3n-idealizada-de-un-recurso}
+#### Modelo B --- Distribución idealizada de un recurso {#fispm-c01-modelo-b-distribuciuxf3n-idealizada-de-un-recurso}
 
 Interpretamos
 
@@ -2950,25 +2950,25 @@ Una ficha posible es la siguiente.
 
 []{#sistema-físico-1}
 
-#### 1.5.19.3. Sistema físico {#fispm-c01-sistema-fuxedsico-1}
+#### Sistema físico {#fispm-c01-sistema-fuxedsico-1}
 
 El depósito y el mecanismo relevante para decidir si el sensor lo clasifica como vacío o lleno.
 
 []{#pregunta-6}
 
-#### 1.5.19.4. Pregunta {#fispm-c01-pregunta-6}
+#### Pregunta {#fispm-c01-pregunta-6}
 
 Determinar cuál de los dos estados registra el sensor.
 
 []{#espacio-de-estados}
 
-#### 1.5.19.5. Espacio de estados {#fispm-c01-espacio-de-estados}
+#### Espacio de estados {#fispm-c01-espacio-de-estados}
 
 $$\mathcal S=\{0,1\}.$$
 
 []{#diccionario-de-estados}
 
-#### 1.5.19.6. Diccionario de estados {#fispm-c01-diccionario-de-estados}
+#### Diccionario de estados {#fispm-c01-diccionario-de-estados}
 
 $$0\longleftrightarrow \text{vacío según el criterio del sensor},$$
 
@@ -2978,7 +2978,7 @@ Es importante añadir «según el criterio del sensor»: un depósito real puede
 
 []{#variablesobservables}
 
-#### 1.5.19.7. Variables/observables {#fispm-c01-variablesobservables}
+#### Variables/observables {#fispm-c01-variablesobservables}
 
 Podemos tomar
 
@@ -2990,7 +2990,7 @@ $$O:\mathcal S\to\{0,1\}, \qquad O(s)=s.$$
 
 []{#parámetros}
 
-#### 1.5.19.8. Parámetros {#fispm-c01-paruxe1metros}
+#### Parámetros {#fispm-c01-paruxe1metros}
 
 Si el sensor utiliza un umbral fijo para decidir la clasificación, ese umbral puede formar parte de
 
@@ -3000,37 +3000,37 @@ No necesitamos asignarle un valor numérico concreto.
 
 []{#leyes-o-relaciones}
 
-#### 1.5.19.9. Leyes o relaciones {#fispm-c01-leyes-o-relaciones}
+#### Leyes o relaciones {#fispm-c01-leyes-o-relaciones}
 
 Para la pregunta instantánea no necesitamos especificar una ley dinámica. Por tanto, $\mathcal L$ puede quedar sin componente dinámico relevante para esta tarea. Esto no significa que el depósito real carezca de dinámica.
 
 []{#condición-inicial}
 
-#### 1.5.19.10. Condición inicial {#fispm-c01-condiciuxf3n-inicial}
+#### Condición inicial {#fispm-c01-condiciuxf3n-inicial}
 
 No es necesaria si solo preguntamos por el estado registrado en el instante actual.
 
 []{#condiciones-de-frontera}
 
-#### 1.5.19.11. Condiciones de frontera {#fispm-c01-condiciones-de-frontera}
+#### Condiciones de frontera {#fispm-c01-condiciones-de-frontera}
 
 No se requieren para este modelo binario elemental.
 
 []{#régimen-de-validez}
 
-#### 1.5.19.12. Régimen de validez {#fispm-c01-ruxe9gimen-de-validez}
+#### Régimen de validez {#fispm-c01-ruxe9gimen-de-validez}
 
 El modelo sirve únicamente para preguntas cuya respuesta dependa de la clasificación binaria y no de la cantidad exacta de contenido.
 
 []{#diccionario-de-interpretación}
 
-#### 1.5.19.13. Diccionario de interpretación {#fispm-c01-diccionario-de-interpretaciuxf3n}
+#### Diccionario de interpretación {#fispm-c01-diccionario-de-interpretaciuxf3n}
 
 $\mathfrak I_{\mathcal M}$ debe incluir qué significa «vacío», qué significa «lleno», cómo funciona la regla de clasificación del sensor y qué señal corresponde a $0$ y cuál a $1$.
 
 []{#información-omitida}
 
-#### 1.5.19.14. Información omitida {#fispm-c01-informaciuxf3n-omitida}
+#### Información omitida {#fispm-c01-informaciuxf3n-omitida}
 
 El modelo elimina, entre otras cosas, todos los niveles intermedios, la forma de la superficie del contenido, temperatura, presión, composición y la dinámica de llenado o vaciado.
 
@@ -3040,7 +3040,7 @@ $$\boxed{ \text{\parbox{.66\linewidth}{\centering un modelo puede ser suficiente
 
 La suficiencia depende de la tarea.
 
-### 1.5.20. Síntesis {#fispm-c01-suxedntesis-2}
+### Síntesis {#fispm-c01-suxedntesis-2}
 
 Ya podemos distinguir cuatro niveles:
 
@@ -3064,7 +3064,7 @@ Ahora podemos abordar el problema que hemos aplazado deliberadamente. Dentro de 
 
 La forma algebraica no permite distinguirlas.
 
-Este será el objeto de (§[1.6](#fispm-c01-el-estatus-de-una-ecuaciuxf3n)).
+Este será el objeto de (§[6](#fispm-c01-el-estatus-de-una-ecuaciuxf3n)).
 
 []{#el-estatus-de-una-ecuación}
 
@@ -3072,11 +3072,11 @@ Este será el objeto de (§[1.6](#fispm-c01-el-estatus-de-una-ecuaciuxf3n)).
 
 []{#fpm-i-01-s06}
 
-## 1.6. El estatus de una ecuación {#fispm-c01-el-estatus-de-una-ecuaciuxf3n}
+## 6. El estatus de una ecuación {#fispm-c01-el-estatus-de-una-ecuaciuxf3n}
 
 []{#la-misma-fórmula-puede-cumplir-funciones-distintas}
 
-### 1.6.1. La misma fórmula puede cumplir funciones distintas {#fispm-c01-la-misma-fuxf3rmula-puede-cumplir-funciones-distintas}
+### La misma fórmula puede cumplir funciones distintas {#fispm-c01-la-misma-fuxf3rmula-puede-cumplir-funciones-distintas}
 
 Consideremos la fórmula
 
@@ -3086,7 +3086,7 @@ Pero dentro de distintos contextos puede desempeñar papeles muy diferentes.
 
 []{#contexto-a-definición}
 
-#### 1.6.1.1. Contexto A --- Definición {#fispm-c01-contexto-a-definiciuxf3n}
+#### Contexto A --- Definición {#fispm-c01-contexto-a-definiciuxf3n}
 
 Podemos decidir definir una nueva cantidad $y$ mediante
 
@@ -3096,7 +3096,7 @@ Su estatus es:
 
 $$[\mathrm{DEF}].$$
 
-#### 1.6.1.2. Contexto B --- Regularidad empírica {#fispm-c01-contexto-b-regularidad-empuxedrica}
+#### Contexto B --- Regularidad empírica {#fispm-c01-contexto-b-regularidad-empuxedrica}
 
 Podemos medir dos magnitudes $x$ e $y$ y descubrir que, dentro de cierto intervalo experimental,
 
@@ -3104,7 +3104,7 @@ $$y\approx kx.$$ Ahora la relación resume un patrón observado.
 
 Su respaldo depende de datos. Su estatus puede ser: $[\mathrm{EMP}].$
 
-#### 1.6.1.3. Contexto C --- Hipótesis de modelo {#fispm-c01-contexto-c-hipuxf3tesis-de-modelo}
+#### Contexto C --- Hipótesis de modelo {#fispm-c01-contexto-c-hipuxf3tesis-de-modelo}
 
 Podemos construir deliberadamente un modelo en el que supongamos que dos cantidades obedecen exactamente
 
@@ -3112,7 +3112,7 @@ $$y=kx,$$ aunque sepamos que el sistema real solo se comporta así aproximadamen
 
 Entonces tenemos: $[\mathrm{MOD}].$
 
-#### 1.6.1.4. Contexto D --- Consecuencia matemática {#fispm-c01-contexto-d-consecuencia-matemuxe1tica}
+#### Contexto D --- Consecuencia matemática {#fispm-c01-contexto-d-consecuencia-matemuxe1tica}
 
 Podemos partir de premisas anteriores y demostrar algebraicamente que
 
@@ -3130,7 +3130,7 @@ $$\boxed{ \text{estatus físico} \not= \text{forma algebraica} }$$ Esta es la re
 
 La palabra **dentro** es esencial. Una expresión puede cambiar de estatus cuando cambia el contexto. No clasificamos fórmulas por su aspecto, sino **afirmaciones situadas**.
 
-### 1.6.2. Las nueve etiquetas canónicas {#fispm-c01-las-nueve-etiquetas-canuxf3nicas}
+### Las nueve etiquetas canónicas {#fispm-c01-las-nueve-etiquetas-canuxf3nicas}
 
 Usaremos las siguientes etiquetas:
 
@@ -3150,7 +3150,7 @@ No todas aparecerán en todos los problemas. Pero cuando una relación important
 
 []{#def-emp-y-post}
 
-#### 1.6.2.1. `[``DEF``]`, `[``EMP``]` y `[``POST``]` {#fispm-c01-def-emp-y-post}
+#### `[``DEF``]`, `[``EMP``]` y `[``POST``]` {#fispm-c01-def-emp-y-post}
 
 Una definición fija significado. Por ejemplo, si dos instantes registrados son $t_i$ y $t_f$, podemos definir
 
@@ -3200,7 +3200,7 @@ La teoría no «demuestra» $P$ usando sus propias consecuencias. Su justificaci
 
 > ¿esta afirmación funciona como una premisa estructural del marco teórico?
 
-#### 1.6.2.2. `[``MOD``]` y `[``APPROX``]` {#fispm-c01-mod-y-approx}
+#### `[``MOD``]` y `[``APPROX``]` {#fispm-c01-mod-y-approx}
 
 En §4 vimos ejemplos:
 
@@ -3268,7 +3268,7 @@ $$[\mathrm{APPROX}] \qquad D\approx0.$$ La ecuación simplificada puede ser la m
 
 El razonamiento físico no.
 
-#### 1.6.2.3. `[``IC``]`, `[``BC``]`, `[``MATH``]` y `[``OBS``]` {#fispm-c01-ic-bc-math-y-obs}
+#### `[``IC``]`, `[``BC``]`, `[``MATH``]` y `[``OBS``]` {#fispm-c01-ic-bc-math-y-obs}
 
 Una condición inicial especifica información del estado en un instante elegido como inicial.
 
@@ -3336,7 +3336,7 @@ La regla que convierte señal instrumental en valor físico no es automáticamen
 
 > ¿esta relación nos dice cómo evoluciona el sistema o cómo obtenemos un dato sobre él?
 
-### 1.6.3. Leer una derivación como una cadena de estatus {#fispm-c01-leer-una-derivaciuxf3n-como-una-cadena-de-estatus}
+### Leer una derivación como una cadena de estatus {#fispm-c01-leer-una-derivaciuxf3n-como-una-cadena-de-estatus}
 
 Construyamos una cadena deliberadamente elemental.
 
@@ -3344,11 +3344,11 @@ Supongamos que registramos dos instantes $t_i$ y $t_f$.
 
 []{#paso-1-definición}
 
-#### 1.6.3.1. Paso 1 --- Definición {#fispm-c01-paso-1-definiciuxf3n}
+#### Paso 1 --- Definición {#fispm-c01-paso-1-definiciuxf3n}
 
 $$[\mathrm{DEF}] \qquad \Delta t:=t_f-t_i.$$
 
-#### 1.6.3.2. Paso 2 --- Observación {#fispm-c01-paso-2-observaciuxf3n}
+#### Paso 2 --- Observación {#fispm-c01-paso-2-observaciuxf3n}
 
 El aparato produce lecturas:
 
@@ -3356,7 +3356,7 @@ $$[\mathrm{OBS}] \qquad t_i=2.0, \qquad t_f=5.0.$$ No discutimos todavía incert
 
 []{#paso-3-consecuencia-matemática}
 
-#### 1.6.3.3. Paso 3 --- Consecuencia matemática {#fispm-c01-paso-3-consecuencia-matemuxe1tica}
+#### Paso 3 --- Consecuencia matemática {#fispm-c01-paso-3-consecuencia-matemuxe1tica}
 
 Sustituimos:
 
@@ -3406,7 +3406,7 @@ Nuestro protocolo hace visibles esas entradas. Cuando una ecuación sea ambigua,
 
 []{#pregunta-1-1}
 
-#### 1.6.3.4. Pregunta 1 {#fispm-c01-pregunta-1-1}
+#### Pregunta 1 {#fispm-c01-pregunta-1-1}
 
 ¿Está fijando significado?
 
@@ -3414,13 +3414,13 @@ Sí:
 
 $$[\mathrm{DEF}].$$
 
-#### 1.6.3.5. Pregunta 2 {#fispm-c01-pregunta-2-1}
+#### Pregunta 2 {#fispm-c01-pregunta-2-1}
 
 ¿Conecta el formalismo con un procedimiento de medida?
 
 Sí: $[\mathrm{OBS}].$
 
-#### 1.6.3.6. Pregunta 3 {#fispm-c01-pregunta-3-1}
+#### Pregunta 3 {#fispm-c01-pregunta-3-1}
 
 ¿Es una condición particular de preparación o de borde?
 
@@ -3430,7 +3430,7 @@ $$[\mathrm{IC}].$$ Frontera:
 
 $$[\mathrm{BC}].$$
 
-#### 1.6.3.7. Pregunta 4 {#fispm-c01-pregunta-4-1}
+#### Pregunta 4 {#fispm-c01-pregunta-4-1}
 
 ¿Introduce una simplificación del sistema real?
 
@@ -3440,19 +3440,19 @@ $$[\mathrm{MOD}].$$ Como reemplazo cercano:
 
 $$[\mathrm{APPROX}].$$
 
-#### 1.6.3.8. Pregunta 5 {#fispm-c01-pregunta-5-1}
+#### Pregunta 5 {#fispm-c01-pregunta-5-1}
 
 ¿Funciona como premisa estructural de la teoría?
 
 $$[\mathrm{POST}].$$
 
-#### 1.6.3.9. Pregunta 6 {#fispm-c01-pregunta-6-1}
+#### Pregunta 6 {#fispm-c01-pregunta-6-1}
 
 ¿Su respaldo es primordialmente empírico?
 
 $$[\mathrm{EMP}].$$
 
-#### 1.6.3.10. Pregunta 7 {#fispm-c01-pregunta-7}
+#### Pregunta 7 {#fispm-c01-pregunta-7}
 
 ¿Se sigue lógicamente de premisas ya declaradas?
 
@@ -3488,7 +3488,7 @@ En §9 demostraremos que un conjunto finito de datos puede ser compatible con in
 
 []{#ejercicios}
 
-### 1.6.4. Ejercicios {#fispm-c01-ejercicios}
+### Ejercicios {#fispm-c01-ejercicios}
 
 []{#fispm-t1-c01-e0019}
 
@@ -3616,7 +3616,7 @@ En términos de §5:
 
 $$\boxed{ \text{\parbox{.66\linewidth}{\centering la sintaxis pertenece al núcleo formal; el estatus exige también el diccionario de interpretación y la historia lógica del argumento}}. }$$
 
-### 1.6.5. Síntesis {#fispm-c01-suxedntesis-3}
+### Síntesis {#fispm-c01-suxedntesis-3}
 
 A partir de ahora no leeremos una ecuación física como una entidad homogénea.
 
@@ -3632,7 +3632,7 @@ Con esta herramienta ya podemos abordar una distinción más macroscópica.
 
 ¿Qué diferencia hay entre una **ley**, un **modelo** y una **teoría**?
 
-Ése será el objeto de (§[1.7](#fispm-c01-ley-modelo-y-teoruxeda)).
+Ése será el objeto de (§[7](#fispm-c01-ley-modelo-y-teoruxeda)).
 
 []{#ley-modelo-y-teoría}
 
@@ -3640,11 +3640,11 @@ Con esta herramienta ya podemos abordar una distinción más macroscópica.
 
 []{#fpm-i-01-s07}
 
-## 1.7. Ley, modelo y teoría {#fispm-c01-ley-modelo-y-teoruxeda}
+## 7. Ley, modelo y teoría {#fispm-c01-ley-modelo-y-teoruxeda}
 
 []{#tres-niveles-de-organización}
 
-### 1.7.1. Tres niveles de organización {#fispm-c01-tres-niveles-de-organizaciuxf3n}
+### Tres niveles de organización {#fispm-c01-tres-niveles-de-organizaciuxf3n}
 
 En física encontramos continuamente expresiones como:
 
@@ -3676,7 +3676,7 @@ $$\text{ley}\subset\text{modelo}\subset\text{teoría}$$
 
 como si cada palabra designara simplemente un conjunto matemático contenido en otro. La relación es **funcional**: una teoría puede contener o motivar leyes, y sus principios permiten construir modelos; un modelo puede emplear leyes y postulados, pero además necesita sistema, interpretación, parámetros, condiciones, idealizaciones y régimen de validez.
 
-#### 1.7.1.1. Ley física {#fispm-c01-ley-fuxedsica}
+#### Ley física {#fispm-c01-ley-fuxedsica}
 
 **Definición operativa 1.19 --- Ley física** Llamaremos **ley física**, en sentido operativo, a una relación, regularidad o principio que expresa una estructura estable del comportamiento físico dentro de un dominio declarado y que puede emplearse como parte de la descripción o predicción de una clase de fenómenos.
 
@@ -3724,7 +3724,7 @@ $$\boxed{ \text{ley física utilizada} + \text{régimen de aplicación} }$$
 
 Una relación válida para cierto tipo de sistema, intervalo de variables o escala no queda desacreditada simplemente porque exista un régimen donde deje de funcionar. Lo correcto es especificar **dónde** y **para qué** se utiliza. Esta idea se desarrollará sistemáticamente en §11.
 
-#### 1.7.1.2. Modelo físico {#fispm-c01-modelo-fuxedsico}
+#### Modelo físico {#fispm-c01-modelo-fuxedsico}
 
 En §5 construimos la plantilla formal
 
@@ -3770,7 +3770,7 @@ La multiplicidad de modelos no es necesariamente una deficiencia.
 
 Puede reflejar el hecho de que distintas preguntas seleccionan estructuras distintas.
 
-#### 1.7.1.3. Teoría física {#fispm-c01-teoruxeda-fuxedsica}
+#### Teoría física {#fispm-c01-teoruxeda-fuxedsica}
 
 Una teoría física debe permitir algo más general que describir una única realización.
 
@@ -3820,7 +3820,7 @@ $$\boxed{ \text{unidad teórica} \neq \text{uniformidad superficial de las ecuac
 
 La unidad puede encontrarse en principios, simetrías, estructuras o reglas de construcción.
 
-### 1.7.2. Cómo se relacionan sin confundirse {#fispm-c01-cuxf3mo-se-relacionan-sin-confundirse}
+### Cómo se relacionan sin confundirse {#fispm-c01-cuxf3mo-se-relacionan-sin-confundirse}
 
 Una ley puede ser ingrediente de un modelo; un modelo representa un sistema o una clase de sistemas; una teoría organiza familias de modelos mediante principios, estructuras y reglas de interpretación. Esta relación es funcional, no una inclusión conjuntista literal.
 
@@ -3854,19 +3854,19 @@ $$\boxed{ \text{una ley puede ser un ingrediente de un modelo, pero no sustituye
 
 []{#nivel-1-teoría}
 
-#### 1.7.2.1. Nivel 1 --- Teoría {#fispm-c01-nivel-1-teoruxeda}
+#### Nivel 1 --- Teoría {#fispm-c01-nivel-1-teoruxeda}
 
 Proporciona una arquitectura general.
 
 []{#nivel-2-modelo}
 
-#### 1.7.2.2. Nivel 2 --- Modelo {#fispm-c01-nivel-2-modelo}
+#### Nivel 2 --- Modelo {#fispm-c01-nivel-2-modelo}
 
 Selecciona una clase concreta de sistemas, variables, parámetros, hipótesis y condiciones.
 
 []{#nivel-3-realización}
 
-#### 1.7.2.3. Nivel 3 --- Realización {#fispm-c01-nivel-3-realizaciuxf3n}
+#### Nivel 3 --- Realización {#fispm-c01-nivel-3-realizaciuxf3n}
 
 Fija valores o datos particulares.
 
@@ -3880,13 +3880,13 @@ $$\text{predicciones del modelo} \longleftrightarrow [\mathrm{OBS}] \longleftrig
 
 []{#sistema-físico-2}
 
-#### 1.7.2.4. Sistema físico {#fispm-c01-sistema-fuxedsico-2}
+#### Sistema físico {#fispm-c01-sistema-fuxedsico-2}
 
 Esfera, hilo y entorno seleccionado.
 
 []{#modelo}
 
-#### 1.7.2.5. Modelo {#fispm-c01-modelo}
+#### Modelo {#fispm-c01-modelo}
 
 Decidimos:
 
@@ -3908,7 +3908,7 @@ Decidimos:
 
 []{#teoría}
 
-#### 1.7.2.6. Teoría {#fispm-c01-teoruxeda}
+#### Teoría {#fispm-c01-teoruxeda}
 
 Más adelante introduciremos un marco mecánico general que proporcionará principios para construir la dinámica de muchos sistemas distintos, no solo de este péndulo.
 
@@ -4022,7 +4022,7 @@ Así, la relación entre teoría y matemática es bidireccional:
 
 $$\text{estructura física} \longrightarrow \text{formalismo matemático} \longrightarrow \text{nueva comprensión física}.$$
 
-### 1.7.3. Matriz de lectura {#fispm-c01-matriz-de-lectura}
+### Matriz de lectura {#fispm-c01-matriz-de-lectura}
 
   Pregunta                                     Ley                                     Modelo                                                          Teoría
   -------------------------------------------- --------------------------------------- --------------------------------------------------------------- ------------------------------------------
@@ -4163,7 +4163,7 @@ Depende de la función:
 
 $$\boxed{ \text{ley}:\text{ relación}; \qquad \text{modelo}:\text{ representación situada}; \qquad \text{teoría}:\text{ marco organizador}. }$$
 
-### 1.7.4. Síntesis {#fispm-c01-suxedntesis-4}
+### Síntesis {#fispm-c01-suxedntesis-4}
 
 Podemos resumir la arquitectura así:
 
@@ -4183,7 +4183,7 @@ Una vez fijados teoría, modelo y condiciones, ¿qué significa **predecir**?
 
 ¿Es lo mismo ajustar datos, reconstruir el pasado, predecir una observación nueva y explicar un fenómeno?
 
-Este será el objeto de (§[1.8](#fispm-c01-predicciuxf3n-retrodicciuxf3n-y-explicaciuxf3n)).
+Este será el objeto de (§[8](#fispm-c01-predicciuxf3n-retrodicciuxf3n-y-explicaciuxf3n)).
 
 []{#predicción-retrodicción-y-explicación}
 
@@ -4191,11 +4191,11 @@ Este será el objeto de (§[1.8](#fispm-c01-predicciuxf3n-retrodicciuxf3n-y-expl
 
 []{#fpm-i-01-s08}
 
-## 1.8. Predicción, retrodicción y explicación {#fispm-c01-predicciuxf3n-retrodicciuxf3n-y-explicaciuxf3n}
+## 8. Predicción, retrodicción y explicación {#fispm-c01-predicciuxf3n-retrodicciuxf3n-y-explicaciuxf3n}
 
 []{#ajustar-y-predecir-no-son-la-misma-operación}
 
-### 1.8.1. Ajustar y predecir no son la misma operación {#fispm-c01-ajustar-y-predecir-no-son-la-misma-operaciuxf3n}
+### Ajustar y predecir no son la misma operación {#fispm-c01-ajustar-y-predecir-no-son-la-misma-operaciuxf3n}
 
 En §7 construimos la cadena
 
@@ -4309,19 +4309,19 @@ $$y=kx.$$
 
 []{#paso-1-dato-de-ajuste}
 
-#### 1.8.1.1. Paso 1 --- Dato de ajuste {#fispm-c01-paso-1-dato-de-ajuste}
+#### Paso 1 --- Dato de ajuste {#fispm-c01-paso-1-dato-de-ajuste}
 
 Observamos: $x_1=2, \qquad y_1=6.$
 
 []{#paso-2-ajuste}
 
-#### 1.8.1.2. Paso 2 --- Ajuste {#fispm-c01-paso-2-ajuste}
+#### Paso 2 --- Ajuste {#fispm-c01-paso-2-ajuste}
 
 Fijamos: $k=3.$
 
 []{#paso-3-nuevo-caso}
 
-#### 1.8.1.3. Paso 3 --- Nuevo caso {#fispm-c01-paso-3-nuevo-caso}
+#### Paso 3 --- Nuevo caso {#fispm-c01-paso-3-nuevo-caso}
 
 Antes de observar el resultado para
 
@@ -4333,7 +4333,7 @@ $$[\mathrm{MATH}] \qquad y_{2,\mathrm{pred}}=3\cdot5=15.$$
 
 []{#paso-4-observación-nueva}
 
-#### 1.8.1.4. Paso 4 --- Observación nueva {#fispm-c01-paso-4-observaciuxf3n-nueva}
+#### Paso 4 --- Observación nueva {#fispm-c01-paso-4-observaciuxf3n-nueva}
 
 Realizamos el procedimiento experimental y obtenemos cierto
 
@@ -4443,7 +4443,7 @@ Una extrapolación puede poner a prueba una estructura de manera particularmente
 
 $$\mathcal R.$$
 
-### 1.8.2. Retrodicción {#fispm-c01-retrodicciuxf3n}
+### Retrodicción {#fispm-c01-retrodicciuxf3n}
 
 A veces conocemos información actual y queremos reconstruir un estado anterior.
 
@@ -4531,7 +4531,7 @@ Si posteriormente encontramos un registro independiente de ese pasado ---un arch
 
 También puede depender de que alcance información **no utilizada para producirla**.
 
-### 1.8.3. Explicación {#fispm-c01-explicaciuxf3n}
+### Explicación {#fispm-c01-explicaciuxf3n}
 
 Ahora aparece una cuarta palabra.
 
@@ -4609,19 +4609,19 @@ No todas las explicaciones físicas tienen la misma forma.
 
 []{#explicación-causal-o-mecanística}
 
-#### 1.8.3.1. Explicación causal o mecanística {#fispm-c01-explicaciuxf3n-causal-o-mecanuxedstica}
+#### Explicación causal o mecanística {#fispm-c01-explicaciuxf3n-causal-o-mecanuxedstica}
 
 Identifica una cadena de interacciones o procesos.
 
 []{#explicación-estructural}
 
-#### 1.8.3.2. Explicación estructural {#fispm-c01-explicaciuxf3n-estructural}
+#### Explicación estructural {#fispm-c01-explicaciuxf3n-estructural}
 
 Muestra que un resultado está obligado por cierta geometría, restricción, invariancia o estructura matemática.
 
 []{#explicación-por-unificación}
 
-#### 1.8.3.3. Explicación por unificación {#fispm-c01-explicaciuxf3n-por-unificaciuxf3n}
+#### Explicación por unificación {#fispm-c01-explicaciuxf3n-por-unificaciuxf3n}
 
 Muestra que fenómenos aparentemente distintos son casos de un mismo principio.
 
@@ -4658,25 +4658,25 @@ Mientras no encontremos una observación capaz de distinguirlas, los datos no se
 
 []{#caso-a}
 
-#### 1.8.3.4. Caso A {#fispm-c01-caso-a}
+#### Caso A {#fispm-c01-caso-a}
 
 Un modelo predice observaciones nuevas y muestra qué estructura las produce.
 
 []{#caso-b}
 
-#### 1.8.3.5. Caso B {#fispm-c01-caso-b}
+#### Caso B {#fispm-c01-caso-b}
 
 Un modelo entrega resultados precisos, pero su mecanismo físico permanece poco transparente.
 
 []{#caso-c}
 
-#### 1.8.3.6. Caso C {#fispm-c01-caso-c}
+#### Caso C {#fispm-c01-caso-c}
 
 Una hipótesis ofrece una explicación plausible, pero todavía no produce predicciones suficientemente precisas.
 
 []{#caso-d}
 
-#### 1.8.3.7. Caso D {#fispm-c01-caso-d}
+#### Caso D {#fispm-c01-caso-d}
 
 Una fórmula flexible reproduce datos conocidos sin revelar por qué el fenómeno ocurre. La ciencia intenta, idealmente, mejorar simultáneamente capacidad predictiva y comprensión.
 
@@ -4704,7 +4704,7 @@ La idea es:
 
 $$\boxed{ \text{una buena explicación abre nuevas preguntas contrastables}. }$$
 
-### 1.8.4. Separar construcción y contraste {#fispm-c01-separar-construcciuxf3n-y-contraste}
+### Separar construcción y contraste {#fispm-c01-separar-construcciuxf3n-y-contraste}
 
 Recordemos:
 
@@ -4718,7 +4718,7 @@ Podemos situar nuestras nuevas operaciones.
 
 []{#ajuste}
 
-#### 1.8.4.1. Ajuste {#fispm-c01-ajuste}
+#### Ajuste {#fispm-c01-ajuste}
 
 Usa observaciones para fijar parte de: $\theta,\quad I,\quad \mathcal L$
 
@@ -4726,19 +4726,19 @@ o incluso elecciones de estructura.
 
 []{#predicción}
 
-#### 1.8.4.2. Predicción {#fispm-c01-predicciuxf3n}
+#### Predicción {#fispm-c01-predicciuxf3n}
 
 Con el modelo ya fijado, deriva consecuencias para casos no utilizados en ese ajuste.
 
 []{#retrodicción}
 
-#### 1.8.4.3. Retrodicción {#fispm-c01-retrodicciuxf3n-1}
+#### Retrodicción {#fispm-c01-retrodicciuxf3n-1}
 
 Busca estados o condiciones anteriores compatibles con datos posteriores.
 
 []{#explicación}
 
-#### 1.8.4.4. Explicación {#fispm-c01-explicaciuxf3n-1}
+#### Explicación {#fispm-c01-explicaciuxf3n-1}
 
 Identifica qué componentes de
 
@@ -4752,7 +4752,7 @@ son responsables de la forma del fenómeno. Podemos representar un buen procedim
 
 []{#datos-de-construcción}
 
-#### 1.8.4.5. Datos de construcción {#fispm-c01-datos-de-construcciuxf3n}
+#### Datos de construcción {#fispm-c01-datos-de-construcciuxf3n}
 
 $$D_{\mathrm{ajuste}}.$$
 
@@ -4760,7 +4760,7 @@ Se usan para elegir parámetros o estructura.
 
 []{#datos-de-contraste}
 
-#### 1.8.4.6. Datos de contraste {#fispm-c01-datos-de-contraste}
+#### Datos de contraste {#fispm-c01-datos-de-contraste}
 
 $$D_{\mathrm{nuevo}}.$$
 
@@ -4986,7 +4986,7 @@ La conclusión correcta es:
 
 $$\boxed{ \text{ajustar} \neq \text{predecir} \neq \text{explicar}. }$$
 
-### 1.8.5. Síntesis {#fispm-c01-suxedntesis-5}
+### Síntesis {#fispm-c01-suxedntesis-5}
 
 Ya podemos distinguir cuatro operaciones.
 
@@ -5016,7 +5016,7 @@ Si observamos una colección finita de datos y encontramos una función que pasa
 
 La respuesta matemática será no. En la sección siguiente lo demostraremos.
 
-Entramos así en el §[1.9](#fispm-c01-datos-finitos-no-determinan-una-ley-uxfanica).
+Entramos así en el §[9](#fispm-c01-datos-finitos-no-determinan-una-ley-uxfanica).
 
 []{#datos-finitos-no-determinan-una-ley-única}
 
@@ -5024,11 +5024,11 @@ Entramos así en el §[1.9](#fispm-c01-datos-finitos-no-determinan-una-ley-uxfan
 
 []{#fpm-i-01-s09}
 
-## 1.9. Datos finitos no determinan una ley única {#fispm-c01-datos-finitos-no-determinan-una-ley-uxfanica}
+## 9. Datos finitos no determinan una ley única {#fispm-c01-datos-finitos-no-determinan-una-ley-uxfanica}
 
 []{#una-tabla-no-trae-escrita-su-ley}
 
-### 1.9.1. Una tabla no trae escrita su ley {#fispm-c01-una-tabla-no-trae-escrita-su-ley}
+### Una tabla no trae escrita su ley {#fispm-c01-una-tabla-no-trae-escrita-su-ley}
 
 Supongamos que realizamos un experimento y obtenemos los pares
 
@@ -5060,19 +5060,19 @@ Entre dos puntos observados, o fuera del intervalo observado, quedan infinitas p
 
 <figcaption>
 
-**Figura 1.5.** Las curvas $y=x$ (continua) y $y=x+x(x-1)(x-2)/3$ (discontinua) coinciden en $x=0,1,2$. Los tres datos no fijan la interpolación entre ellos. Véase §[1.9](#fispm-c01-datos-finitos-no-determinan-una-ley-uxfanica).
+**Figura 1.5.** Las curvas $y=x$ (continua) y $y=x+x(x-1)(x-2)/3$ (discontinua) coinciden en $x=0,1,2$. Los tres datos no fijan la interpolación entre ellos. Véase §[9](#fispm-c01-datos-finitos-no-determinan-una-ley-uxfanica).
 
 </figcaption>
 
 </figure>
 
-### 1.9.2. Compatibilidad no es unicidad {#fispm-c01-compatibilidad-no-es-unicidad}
+### Compatibilidad no es unicidad {#fispm-c01-compatibilidad-no-es-unicidad}
 
 Conviene separar dos afirmaciones.
 
 []{#afirmación-a}
 
-#### 1.9.2.1. Afirmación A {#fispm-c01-afirmaciuxf3n-a}
+#### Afirmación A {#fispm-c01-afirmaciuxf3n-a}
 
 La función $f$ es **compatible** con los datos: $f(x_i)=y_i$
 
@@ -5080,7 +5080,7 @@ para todos los $i$.
 
 []{#afirmación-b}
 
-#### 1.9.2.2. Afirmación B {#fispm-c01-afirmaciuxf3n-b}
+#### Afirmación B {#fispm-c01-afirmaciuxf3n-b}
 
 La función $f$ es la **única** función compatible con los datos. La primera no implica la segunda.
 
@@ -5090,7 +5090,7 @@ $$\boxed{ f(x_i)=y_i\ \text{para todos los datos} \not\Rightarrow f\ \text{es la
 
 El salto de compatibilidad a unicidad necesita hipótesis adicionales.
 
-### 1.9.3. Dos puntos: la intuición geométrica más simple {#fispm-c01-dos-puntos-la-intuiciuxf3n-geomuxe9trica-muxe1s-simple}
+### Dos puntos: la intuición geométrica más simple {#fispm-c01-dos-puntos-la-intuiciuxf3n-geomuxe9trica-muxe1s-simple}
 
 Tomemos dos observaciones: $(0,0), \qquad (1,1).$ La función
 
@@ -5118,7 +5118,7 @@ $$x=\frac12.$$
 
 Así aparecen muchas continuaciones posibles de la misma evidencia finita.
 
-### 1.9.4. El truco algebraico {#fispm-c01-el-truco-algebraico}
+### El truco algebraico {#fispm-c01-el-truco-algebraico}
 
 ¿Qué hizo funcionar el ejemplo?
 
@@ -5140,7 +5140,7 @@ mediante $p(x)+c\,x(x-1)$
 
 no altera ninguno de los datos. La idea general será construir un polinomio que se anule en todos los valores observados.
 
-### 1.9.5. El polinomio que desaparece en los datos {#fispm-c01-el-polinomio-que-desaparece-en-los-datos}
+### El polinomio que desaparece en los datos {#fispm-c01-el-polinomio-que-desaparece-en-los-datos}
 
 Sean
 
@@ -5160,7 +5160,7 @@ $$j=1,\ldots,n.$$
 
 Esta es toda la idea algebraica que necesitaremos.
 
-### 1.9.6. Primera proposición formal del capítulo {#fispm-c01-primera-proposiciuxf3n-formal-del-capuxedtulo}
+### Primera proposición formal del capítulo {#fispm-c01-primera-proposiciuxf3n-formal-del-capuxedtulo}
 
 **1.1 --- Datos finitos no determinan una ley polinómica única**
 
@@ -5194,11 +5194,11 @@ Además, si $c_1\neq c_2$, entonces $p_{c_1}\neq p_{c_2}.$ Por tanto, una vez qu
 
 []{#fispm-t1-c01-p0001}
 
-### 1.9.7. Demostración de 1.1 {#fispm-c01-demostraciuxf3n-de-1.1}
+### Demostración de 1.1 {#fispm-c01-demostraciuxf3n-de-1.1}
 
 []{#paso-1-fijar-uno-de-los-datos}
 
-#### 1.9.7.1. Paso 1 --- Fijar uno de los datos {#fispm-c01-paso-1-fijar-uno-de-los-datos}
+#### Paso 1 --- Fijar uno de los datos {#fispm-c01-paso-1-fijar-uno-de-los-datos}
 
 Sea
 
@@ -5212,13 +5212,13 @@ Por definición: $p_c(x_j) = p(x_j) + c\prod_{i=1}^{n}(x_j-x_i).$
 
 []{#paso-2-usar-el-dato-conocido}
 
-#### 1.9.7.2. Paso 2 --- Usar el dato conocido {#fispm-c01-paso-2-usar-el-dato-conocido}
+#### Paso 2 --- Usar el dato conocido {#fispm-c01-paso-2-usar-el-dato-conocido}
 
 Como $p$ es compatible con los datos, $p(x_j)=y_j.$ Por tanto: $p_c(x_j) = y_j + c\prod_{i=1}^{n}(x_j-x_i).$
 
 []{#paso-3-detectar-el-factor-nulo}
 
-#### 1.9.7.3. Paso 3 --- Detectar el factor nulo {#fispm-c01-paso-3-detectar-el-factor-nulo}
+#### Paso 3 --- Detectar el factor nulo {#fispm-c01-paso-3-detectar-el-factor-nulo}
 
 En el producto aparece el factor
 
@@ -5234,7 +5234,7 @@ $$\boxed{ p_c(x_i)=y_i \quad \text{para todo }i=1,\ldots,n. }$$
 
 []{#paso-4-mostrar-que-la-familia-contiene-polinomios-distintos}
 
-#### 1.9.7.4. Paso 4 --- Mostrar que la familia contiene polinomios distintos {#fispm-c01-paso-4-mostrar-que-la-familia-contiene-polinomios-distintos}
+#### Paso 4 --- Mostrar que la familia contiene polinomios distintos {#fispm-c01-paso-4-mostrar-que-la-familia-contiene-polinomios-distintos}
 
 Sean
 
@@ -5256,7 +5256,7 @@ Finalmente, como existen infinitos números reales $c$, obtenemos infinitos poli
 
 $$\boxed{\text{QED}}$$
 
-### 1.9.8. Qué se demostró exactamente {#fispm-c01-quuxe9-se-demostruxf3-exactamente}
+### Qué se demostró exactamente {#fispm-c01-quuxe9-se-demostruxf3-exactamente}
 
 La proposición **no** dice que cualquier polinomio pase por los datos.
 
@@ -5276,7 +5276,7 @@ $$\boxed{ \text{ajuste conocido} + \text{término invisible en los datos} = \tex
 
 Ésa es la idea que debemos conservar.
 
-### 1.9.9. La demostración es matemática; la conclusión física necesita interpretación {#fispm-c01-la-demostraciuxf3n-es-matemuxe1tica-la-conclusiuxf3n-fuxedsica-necesita-interpretaciuxf3n}
+### La demostración es matemática; la conclusión física necesita interpretación {#fispm-c01-la-demostraciuxf3n-es-matemuxe1tica-la-conclusiuxf3n-fuxedsica-necesita-interpretaciuxf3n}
 
 `1.1` es una proposición matemática. Su estatus es: $[\mathrm{MATH}].$
 
@@ -5296,7 +5296,7 @@ La inferencia física será:
 
 $$\boxed{ \text{ajuste exacto a datos finitos} \not\Rightarrow \text{identificación lógica de una ley única}. }$$
 
-### 1.9.10. El papel de las hipótesis adicionales {#fispm-c01-el-papel-de-las-hipuxf3tesis-adicionales}
+### El papel de las hipótesis adicionales {#fispm-c01-el-papel-de-las-hipuxf3tesis-adicionales}
 
 ¿Cómo puede la física elegir entre funciones compatibles?
 
@@ -5330,7 +5330,7 @@ También preguntamos:
 
 Este será precisamente el tema de §10.
 
-### 1.9.11. Si restringimos la clase, la situación puede cambiar {#fispm-c01-si-restringimos-la-clase-la-situaciuxf3n-puede-cambiar}
+### Si restringimos la clase, la situación puede cambiar {#fispm-c01-si-restringimos-la-clase-la-situaciuxf3n-puede-cambiar}
 
 Supongamos que tenemos los dos puntos
 
@@ -5354,7 +5354,7 @@ Por tanto, cuando un conjunto de datos parece «determinar» una ley debemos pre
 
 > **¿dentro de qué clase de modelos?**
 
-### 1.9.12. Ajuste perfecto y complejidad {#fispm-c01-ajuste-perfecto-y-complejidad}
+### Ajuste perfecto y complejidad {#fispm-c01-ajuste-perfecto-y-complejidad}
 
 Imaginemos cien datos experimentales. Una función muy flexible podría construirse para pasar exactamente por todos ellos.
 
@@ -5382,7 +5382,7 @@ Solo fijaremos la diferencia lógica:
 
 $$\boxed{ \text{capacidad de reproducir datos} \neq \text{calidad física automática del modelo}. }$$
 
-### 1.9.13. Volver a §8: ajuste frente a predicción {#fispm-c01-volver-a-8-ajuste-frente-a-predicciuxf3n}
+### Volver a §8: ajuste frente a predicción {#fispm-c01-volver-a-8-ajuste-frente-a-predicciuxf3n}
 
 La proposición explica por qué principio 1.13 era necesaria.
 
@@ -5400,7 +5400,7 @@ Como ningún factor es necesariamente cero, el resultado depende de $c$.
 
 Distintos modelos compatibles con los mismos datos pueden producir predicciones diferentes. Por eso un nuevo experimento puede ser discriminante.
 
-### 1.9.14. Ejemplo desarrollado 14 --- Dos datos, infinitas predicciones {#fispm-c01-ejemplo-desarrollado-14-dos-datos-infinitas-predicciones}
+### Ejemplo desarrollado 14 --- Dos datos, infinitas predicciones {#fispm-c01-ejemplo-desarrollado-14-dos-datos-infinitas-predicciones}
 
 Retomemos: $(0,0), \qquad (1,1).$ La familia es: $p_c(x) = x+c\,x(x-1).$
 
@@ -5426,7 +5426,7 @@ Por tanto:
 
 $$\boxed{ \text{nuevo dato} \longrightarrow \text{posible discriminación entre modelos}. }$$
 
-### 1.9.15. Un dato nuevo elimina modelos, pero no necesariamente deja uno solo {#fispm-c01-un-dato-nuevo-elimina-modelos-pero-no-necesariamente-deja-uno-solo}
+### Un dato nuevo elimina modelos, pero no necesariamente deja uno solo {#fispm-c01-un-dato-nuevo-elimina-modelos-pero-no-necesariamente-deja-uno-solo}
 
 Supongamos que el nuevo experimento produce: $(2,4).$
 
@@ -5446,7 +5446,7 @@ Por tanto:
 
 $$\boxed{ \text{más datos restringen} \neq \text{datos finitos garantizan unicidad absoluta}. }$$
 
-### 1.9.16. Tres datos y la misma construcción {#fispm-c01-tres-datos-y-la-misma-construcciuxf3n}
+### Tres datos y la misma construcción {#fispm-c01-tres-datos-y-la-misma-construcciuxf3n}
 
 Supongamos ahora: $(0,0), \qquad (1,1), \qquad (2,4).$ El polinomio
 
@@ -5472,7 +5472,7 @@ obtenemos: $p_c(3) = 9+6c.$
 
 Así, los tres datos tampoco fijan una predicción única para $x=3$.
 
-### 1.9.17. Lo que los datos sí hacen {#fispm-c01-lo-que-los-datos-suxed-hacen}
+### Lo que los datos sí hacen {#fispm-c01-lo-que-los-datos-suxed-hacen}
 
 No debemos ir al extremo contrario.
 
@@ -5500,7 +5500,7 @@ Es:
 
 > «Los datos no seleccionan una ley sin ayuda de hipótesis, estructura y nuevas pruebas».
 
-### 1.9.18. La subdeterminación es concreta, no retórica {#fispm-c01-la-subdeterminaciuxf3n-es-concreta-no-retuxf3rica}
+### La subdeterminación es concreta, no retórica {#fispm-c01-la-subdeterminaciuxf3n-es-concreta-no-retuxf3rica}
 
 La palabra **subdeterminación** se utiliza en filosofía de la ciencia para problemas mucho más generales. No necesitamos adoptarla aquí como término técnico. Nuestro resultado es completamente concreto: $\{(x_i,y_i)\}_{i=1}^{n}$
 
@@ -5510,7 +5510,7 @@ No estamos formulando una tesis metafísica.
 
 Estamos exhibiendo las funciones.
 
-### 1.9.19. El papel del matemático {#fispm-c01-el-papel-del-matemuxe1tico}
+### El papel del matemático {#fispm-c01-el-papel-del-matemuxe1tico}
 
 Para un lector matemático aparece una lección importante. La demostración de la proposición 1.1 es sencilla. La dificultad física comienza después.
 
@@ -5546,7 +5546,7 @@ El teorema no reemplaza esas decisiones.
 
 Las hace necesarias de manera explícita.
 
-### 1.9.20. El planteamiento correcto del problema {#fispm-c01-el-planteamiento-correcto-del-problema}
+### El planteamiento correcto del problema {#fispm-c01-el-planteamiento-correcto-del-problema}
 
 Arnold insiste en que una contribución matemática esencial a las ciencias naturales ocurre antes del cálculo rutinario: al formular correctamente la pregunta y elegir el modelo apropiado.[^4]
 
@@ -5558,7 +5558,7 @@ $$\boxed{ \text{datos} + \text{elección de modelo} \longrightarrow \text{predic
 
 La elección de modelo no es una operación puramente mecánica escondida dentro del álgebra.
 
-### 1.9.21. Principio metodológico {#fispm-c01-principio-metodoluxf3gico}
+### Principio metodológico {#fispm-c01-principio-metodoluxf3gico}
 
 **Principio 1.15 --- Ajuste exacto no implica identificación única** Que un modelo reproduzca exactamente un conjunto finito de datos no basta para identificarlo como la única ley compatible. La selección requiere restricciones adicionales, estructura física o nuevas observaciones capaces de discriminar entre alternativas.
 
@@ -5566,11 +5566,11 @@ Este principio no añade contenido al teorema.
 
 Registra su consecuencia metodológica para el resto del libro.
 
-### 1.9.22. Qué no demuestra proposición 1.1 {#fispm-c01-quuxe9-no-demuestra-p01}
+### Qué no demuestra proposición 1.1 {#fispm-c01-quuxe9-no-demuestra-p01}
 
 Conviene cerrar varias interpretaciones incorrectas.
 
-#### 1.9.22.1. proposición 1.1 no demuestra que todas las teorías sean igualmente buenas {#fispm-c01-p01-no-demuestra-que-todas-las-teoruxedas-sean-igualmente-buenas}
+#### proposición 1.1 no demuestra que todas las teorías sean igualmente buenas {#fispm-c01-p01-no-demuestra-que-todas-las-teoruxedas-sean-igualmente-buenas}
 
 Los modelos pueden diferir en:
 
@@ -5588,19 +5588,19 @@ Los modelos pueden diferir en:
 
 - adecuación física.
 
-#### 1.9.22.2. proposición 1.1 no demuestra que nunca haya unicidad {#fispm-c01-p01-no-demuestra-que-nunca-haya-unicidad}
+#### proposición 1.1 no demuestra que nunca haya unicidad {#fispm-c01-p01-no-demuestra-que-nunca-haya-unicidad}
 
 Puede haber unicidad **dentro de una clase restringida**.
 
-#### 1.9.22.3. proposición 1.1 no demuestra que la predicción sea imposible {#fispm-c01-p01-no-demuestra-que-la-predicciuxf3n-sea-imposible}
+#### proposición 1.1 no demuestra que la predicción sea imposible {#fispm-c01-p01-no-demuestra-que-la-predicciuxf3n-sea-imposible}
 
 Precisamente las distintas predicciones permiten diseñar experimentos discriminantes.
 
-#### 1.9.22.4. proposición 1.1 no demuestra que la matemática sea insuficiente {#fispm-c01-p01-no-demuestra-que-la-matemuxe1tica-sea-insuficiente}
+#### proposición 1.1 no demuestra que la matemática sea insuficiente {#fispm-c01-p01-no-demuestra-que-la-matemuxe1tica-sea-insuficiente}
 
 La matemática es la que hace visible la no unicidad. Lo que no puede hacer, sin premisas adicionales, es inventar qué estructura física debemos imponer.
 
-### 1.9.23. De la no unicidad al diseño experimental {#fispm-c01-de-la-no-unicidad-al-diseuxf1o-experimental}
+### De la no unicidad al diseño experimental {#fispm-c01-de-la-no-unicidad-al-diseuxf1o-experimental}
 
 Supongamos que dos candidatos:
 
@@ -5622,7 +5622,7 @@ No basta saber que existen muchos modelos.
 
 Debemos aprender **cómo elegir dónde mirar** para separarlos.
 
-### 1.9.24. Ejercicios de §9 {#fispm-c01-ejercicios-de-9}
+### Ejercicios de §9 {#fispm-c01-ejercicios-de-9}
 
 []{#fispm-t1-c01-e0023}
 
@@ -5672,7 +5672,7 @@ Considera los datos: $(0,1), \qquad (1,2).$
 
 []{#polinomio-lineal}
 
-#### 1.9.24.0. 1. Polinomio lineal {#fispm-c01-polinomio-lineal .unnumbered}
+#### 1. Polinomio lineal {#fispm-c01-polinomio-lineal .unnumbered}
 
 La recta: $p(x)=x+1$
 
@@ -5684,13 +5684,13 @@ $$p(1)=2.$$
 
 []{#familia}
 
-#### 1.9.24.0. 2. Familia {#fispm-c01-familia .unnumbered}
+#### 2. Familia {#fispm-c01-familia .unnumbered}
 
 El factor que se anula en los puntos observados es: $x(x-1).$ Por tanto: $p_c(x) = x+1+c\,x(x-1).$ Para $x=0$: $p_c(0)=1.$ Para $x=1$: $p_c(1)=2.$
 
 []{#predicción-en-x2}
 
-#### 1.9.24.1. 3. Predicción en $x=2$ {#fispm-c01-predicciuxf3n-en-x2}
+#### 3. Predicción en $x=2$ {#fispm-c01-predicciuxf3n-en-x2}
 
 Tenemos: $p_c(2) = 3+2c.$
 
@@ -5704,7 +5704,7 @@ $$p_{-1}(2)=1.$$
 
 []{#interpretación}
 
-#### 1.9.24.1. 4. Interpretación {#fispm-c01-interpretaciuxf3n .unnumbered}
+#### 4. Interpretación {#fispm-c01-interpretaciuxf3n .unnumbered}
 
 Los datos originales no distinguen entre estas funciones. Pero un nuevo dato en $x=2$ podría hacerlo.
 
@@ -5738,19 +5738,19 @@ $$p_c(x) = p(x)+c\,x(x-1)(x-2).$$
 
 []{#verificación}
 
-#### 1.9.24.1. 1. Verificación {#fispm-c01-verificaciuxf3n .unnumbered}
+#### 1. Verificación {#fispm-c01-verificaciuxf3n .unnumbered}
 
 Para $x=0$: $p(0)=1.$ Para $x=1$: $p(1)=1-1+1=1.$ Para $x=2$: $p(2)=4-2+1=3.$ Por tanto, $p$ reproduce los tres datos.
 
 []{#familia-1}
 
-#### 1.9.24.1. 2. Familia {#fispm-c01-familia-1 .unnumbered}
+#### 2. Familia {#fispm-c01-familia-1 .unnumbered}
 
 Definimos: $p_c(x) = x^2-x+1 + c\,x(x-1)(x-2).$
 
 []{#conservación-de-los-datos}
 
-#### 1.9.24.1. 3. Conservación de los datos {#fispm-c01-conservaciuxf3n-de-los-datos .unnumbered}
+#### 3. Conservación de los datos {#fispm-c01-conservaciuxf3n-de-los-datos .unnumbered}
 
 En $x=0$, el factor $x$ es cero. En $x=1$, el factor $(x-1)$ es cero. En $x=2$, el factor $(x-2)$ es cero.
 
@@ -5766,7 +5766,7 @@ para todo $c$.
 
 []{#valor-en-x3}
 
-#### 1.9.24.2. 4. Valor en $x=3$ {#fispm-c01-valor-en-x3}
+#### 4. Valor en $x=3$ {#fispm-c01-valor-en-x3}
 
 Tenemos: $p(3) = 9-3+1 = 7.$
 
@@ -5776,7 +5776,7 @@ Luego: $p_c(3) = 7+6c.$
 
 []{#nuevo-dato}
 
-#### 1.9.24.2. 5. Nuevo dato {#fispm-c01-nuevo-dato .unnumbered}
+#### 5. Nuevo dato {#fispm-c01-nuevo-dato .unnumbered}
 
 Si observamos: $p_c(3)=7,$
 
@@ -5792,7 +5792,7 @@ Dentro de esta familia queda seleccionado el polinomio: $p(x)=x^2-x+1.$
 
 []{#por-qué-no-hay-unicidad-absoluta}
 
-#### 1.9.24.2. 6. Por qué no hay unicidad absoluta {#fispm-c01-por-quuxe9-no-hay-unicidad-absoluta .unnumbered}
+#### 6. Por qué no hay unicidad absoluta {#fispm-c01-por-quuxe9-no-hay-unicidad-absoluta .unnumbered}
 
 Ahora tenemos cuatro datos.
 
@@ -5806,7 +5806,7 @@ pero no:
 
 $$\boxed{ \text{evidencia finita} \Rightarrow \text{unicidad entre todas las funciones}. }$$
 
-### 1.9.25. Síntesis {#fispm-c01-suxedntesis-6}
+### Síntesis {#fispm-c01-suxedntesis-6}
 
 La primera proposición formal del capítulo establece:
 
@@ -5852,7 +5852,7 @@ Necesitamos criterios físicos y matemáticos:
 
 - experimentos discriminantes.
 
-Ése será el objeto de (§[1.10](#fispm-c01-cuxf3mo-se-elige-entre-modelos-compatibles-con-los-datos)).
+Ése será el objeto de (§[10](#fispm-c01-cuxf3mo-se-elige-entre-modelos-compatibles-con-los-datos)).
 
 []{#cómo-se-elige-entre-modelos-compatibles-con-los-datos}
 
@@ -5860,11 +5860,11 @@ Necesitamos criterios físicos y matemáticos:
 
 []{#fpm-i-01-s10}
 
-## 1.10. Cómo se elige entre modelos compatibles con los datos {#fispm-c01-cuxf3mo-se-elige-entre-modelos-compatibles-con-los-datos}
+## 10. Cómo se elige entre modelos compatibles con los datos {#fispm-c01-cuxf3mo-se-elige-entre-modelos-compatibles-con-los-datos}
 
 []{#después-de-la-no-unicidad}
 
-### 1.10.1. Después de la no unicidad {#fispm-c01-despuuxe9s-de-la-no-unicidad}
+### Después de la no unicidad {#fispm-c01-despuuxe9s-de-la-no-unicidad}
 
 En §9 demostramos que, si un polinomio $p$ reproduce una colección finita de datos
 
@@ -5900,7 +5900,7 @@ Antes de medir algo nuevo debemos decidir **qué** medir. Si dos modelos coincid
 
 <figcaption>
 
-**Figura 1.6.** El residuo es la diferencia entre la observación y la predicción. Un patrón oscilatorio persistente puede señalar estructura que el modelo no representa. La curva es un esquema de diagnóstico, no una prueba estadística de rechazo. Véase §[1.10](#fispm-c01-cuxf3mo-se-elige-entre-modelos-compatibles-con-los-datos).
+**Figura 1.6.** El residuo es la diferencia entre la observación y la predicción. Un patrón oscilatorio persistente puede señalar estructura que el modelo no representa. La curva es un esquema de diagnóstico, no una prueba estadística de rechazo. Véase §[10](#fispm-c01-cuxf3mo-se-elige-entre-modelos-compatibles-con-los-datos).
 
 </figcaption>
 
@@ -5978,13 +5978,13 @@ Por tanto:
 
 **Principio 1.16 --- La preferencia entre modelos es relativa a la tarea** Comparar modelos exige declarar la pregunta, la evidencia y el régimen. Una preferencia metodológica no constituye un orden absoluto entre modelos independiente de su uso.
 
-### 1.10.2. Tres capas de comparación {#fispm-c01-tres-capas-de-comparaciuxf3n}
+### Tres capas de comparación {#fispm-c01-tres-capas-de-comparaciuxf3n}
 
 La comparación entre modelos puede organizarse en tres capas.
 
 []{#coherencia-mínima}
 
-#### 1.10.2.1. Coherencia mínima {#fispm-c01-coherencia-muxednima}
+#### Coherencia mínima {#fispm-c01-coherencia-muxednima}
 
 Antes de comparar virtudes, debemos eliminar candidatos que fallan requisitos básicos.
 
@@ -6018,7 +6018,7 @@ Los símbolos que se comparan con datos deben tener una interpretación y una co
 
 No debemos juzgar un modelo usando una condición que él mismo no pretende describir sin antes preguntar si estamos extendiéndolo legítimamente. Estos filtros no garantizan que el modelo sea correcto. Solo impiden mantener candidatos que ya fallan requisitos elementales.
 
-#### 1.10.2.2. Adecuación y estructura {#fispm-c01-adecuaciuxf3n-y-estructura}
+#### Adecuación y estructura {#fispm-c01-adecuaciuxf3n-y-estructura}
 
 Una vez superados los filtros mínimos, pueden importar varios criterios que no forman un algoritmo universal:
 
@@ -6111,7 +6111,7 @@ debe ser suficientemente explícito. Y en términos de §6: $[\mathrm{OBS}]$
 
 debe conectar la cantidad con un procedimiento. Un modelo cuyas predicciones no poseen ninguna conexión observacional accesible puede seguir teniendo interés teórico. Pero no podemos contar esas predicciones como contrastes experimentales realizados.
 
-#### 1.10.2.3. Fecundidad predictiva {#fispm-c01-fecundidad-predictiva}
+#### Fecundidad predictiva {#fispm-c01-fecundidad-predictiva}
 
 El criterio más fuerte aparece cuando los modelos, compatibles con los datos actuales, divergen en una situación todavía no observada. Volvamos a §9. Supongamos: $f(x_i)=g(x_i)$
 
@@ -6141,7 +6141,7 @@ El principio contiene tres restricciones:
 
 Una diferencia puramente formal que no puede medirse no basta todavía.
 
-### 1.10.3. Diseñar una prueba discriminante {#fispm-c01-diseuxf1ar-una-prueba-discriminante}
+### Diseñar una prueba discriminante {#fispm-c01-diseuxf1ar-una-prueba-discriminante}
 
 En §9 vimos los datos: $(0,0), \qquad (1,1).$
 
@@ -6223,7 +6223,7 @@ La investigación puede proceder por sucesivas particiones de la familia de mode
 
 []{#primera-prueba}
 
-#### 1.10.3.1. Primera prueba {#fispm-c01-primera-prueba}
+#### Primera prueba {#fispm-c01-primera-prueba}
 
 Elegimos una condición $C_1$ donde:
 
@@ -6233,7 +6233,7 @@ predice algo diferente de: $M_2,\ M_3.$ El resultado descarta o debilita $M_1$.
 
 []{#segunda-prueba}
 
-#### 1.10.3.2. Segunda prueba {#fispm-c01-segunda-prueba}
+#### Segunda prueba {#fispm-c01-segunda-prueba}
 
 Ahora buscamos una condición $C_2$ donde:
 
@@ -6299,7 +6299,7 @@ Consideremos dos candidatos.
 
 []{#modelo-a}
 
-#### 1.10.3.3. Modelo A {#fispm-c01-modelo-a}
+#### Modelo A {#fispm-c01-modelo-a}
 
 - muy simple;
 
@@ -6309,7 +6309,7 @@ Consideremos dos candidatos.
 
 []{#modelo-b}
 
-#### 1.10.3.4. Modelo B {#fispm-c01-modelo-b}
+#### Modelo B {#fispm-c01-modelo-b}
 
 - más complejo;
 
@@ -6361,7 +6361,7 @@ Podemos organizar los criterios en tres grupos.
 
 []{#coherencia}
 
-#### 1.10.3.4. 1. Coherencia {#fispm-c01-coherencia .unnumbered}
+#### 1. Coherencia {#fispm-c01-coherencia .unnumbered}
 
 Preguntas:
 
@@ -6373,7 +6373,7 @@ Preguntas:
 
 []{#adecuación}
 
-#### 1.10.3.4. 2. Adecuación {#fispm-c01-adecuaciuxf3n .unnumbered}
+#### 2. Adecuación {#fispm-c01-adecuaciuxf3n .unnumbered}
 
 Preguntas:
 
@@ -6385,7 +6385,7 @@ Preguntas:
 
 []{#fecundidad}
 
-#### 1.10.3.4. 3. Fecundidad {#fispm-c01-fecundidad .unnumbered}
+#### 3. Fecundidad {#fispm-c01-fecundidad .unnumbered}
 
 Preguntas:
 
@@ -6573,7 +6573,7 @@ Entre otros, podríamos examinar:
 
 La selección no termina con un único dato.
 
-### 1.10.4. Síntesis {#fispm-c01-suxedntesis-7}
+### Síntesis {#fispm-c01-suxedntesis-7}
 
 §9 estableció:
 
@@ -6615,7 +6615,7 @@ Incluso después de elegir un modelo razonable debemos saber:
 
 > ¿hasta dónde podemos confiar en él?
 
-Ése será el objeto de (§[1.11](#fispm-c01-dominio-de-validez-y-teoruxedas-efectivas)).
+Ése será el objeto de (§[11](#fispm-c01-dominio-de-validez-y-teoruxedas-efectivas)).
 
 []{#dominio-de-validez-y-teorías-efectivas}
 
@@ -6623,11 +6623,11 @@ Incluso después de elegir un modelo razonable debemos saber:
 
 []{#fpm-i-01-s11}
 
-## 1.11. Dominio de validez y teorías efectivas {#fispm-c01-dominio-de-validez-y-teoruxedas-efectivas}
+## 11. Dominio de validez y teorías efectivas {#fispm-c01-dominio-de-validez-y-teoruxedas-efectivas}
 
 []{#dominio-matemático-y-dominio-físico}
 
-### 1.11.1. Dominio matemático y dominio físico {#fispm-c01-dominio-matemuxe1tico-y-dominio-fuxedsico}
+### Dominio matemático y dominio físico {#fispm-c01-dominio-matemuxe1tico-y-dominio-fuxedsico}
 
 Supongamos que un modelo contiene una relación matemática
 
@@ -6645,7 +6645,7 @@ Puede incluso ocurrir que el problema matemático asociado tenga una solución e
 
 <figcaption>
 
-**Figura 1.7.** Las condiciones de régimen seleccionan una parte del espacio de parámetros. Extender una fórmula fuera de esa región exige una justificación nueva. La frontera vertical es esquemática y no representa un umbral universal. Véase §[1.11](#fispm-c01-dominio-de-validez-y-teoruxedas-efectivas).
+**Figura 1.7.** Las condiciones de régimen seleccionan una parte del espacio de parámetros. Extender una fórmula fuera de esa región exige una justificación nueva. La frontera vertical es esquemática y no representa un umbral universal. Véase §[11](#fispm-c01-dominio-de-validez-y-teoruxedas-efectivas).
 
 </figcaption>
 
@@ -6757,7 +6757,7 @@ $$\boxed{ \text{una relación puede ser excelente en un régimen y equivocada fu
 
 Eso no convierte en inútil la relación aproximada. La convierte en una herramienta con dominio declarado.
 
-### 1.11.2. Descripciones efectivas {#fispm-c01-descripciones-efectivas}
+### Descripciones efectivas {#fispm-c01-descripciones-efectivas}
 
 Una descripción puede ser excelente dentro de un régimen sin pretender ser fundamental ni universal. Supongamos que una teoría $T_2$ describe un dominio más amplio que una teoría anterior $T_1$.
 
@@ -6797,25 +6797,25 @@ Aquí fijamos solamente esta noción operativa. Sin desarrollar todavía sus teo
 
 []{#un-cuerpo-como-partícula-puntual}
 
-#### 1.11.2.1. Un cuerpo como partícula puntual {#fispm-c01-un-cuerpo-como-partuxedcula-puntual}
+#### Un cuerpo como partícula puntual {#fispm-c01-un-cuerpo-como-partuxedcula-puntual}
 
 La extensión interna del objeto se omite cuando no afecta a la pregunta.
 
 []{#un-fluido-como-medio-continuo}
 
-#### 1.11.2.2. Un fluido como medio continuo {#fispm-c01-un-fluido-como-medio-continuo}
+#### Un fluido como medio continuo {#fispm-c01-un-fluido-como-medio-continuo}
 
 La estructura molecular puede quedar fuera de la descripción cuando interesan variables macroscópicas.
 
 []{#la-óptica-de-rayos}
 
-#### 1.11.2.3. La óptica de rayos {#fispm-c01-la-uxf3ptica-de-rayos}
+#### La óptica de rayos {#fispm-c01-la-uxf3ptica-de-rayos}
 
 Una descripción mediante rayos puede ser extraordinariamente útil cuando la estructura ondulatoria relevante no se resuelve en la pregunta.
 
 []{#mecánica-clásica-a-velocidades-ordinarias}
 
-#### 1.11.2.4. Mecánica clásica a velocidades ordinarias {#fispm-c01-mecuxe1nica-cluxe1sica-a-velocidades-ordinarias}
+#### Mecánica clásica a velocidades ordinarias {#fispm-c01-mecuxe1nica-cluxe1sica-a-velocidades-ordinarias}
 
 Puede proporcionar predicciones excelentes sin incorporar toda la estructura relativista.
 
@@ -6885,7 +6885,7 @@ Este principio no autoriza a ignorar teorías más amplias.
 
 Obliga a comparar niveles de descripción con la tarea.
 
-### 1.11.3. Escala, control y recuperación de límites {#fispm-c01-escala-control-y-recuperaciuxf3n-de-luxedmites}
+### Escala, control y recuperación de límites {#fispm-c01-escala-control-y-recuperaciuxf3n-de-luxedmites}
 
 La palabra **escala** aparecerá continuamente en física. Una estructura puede ser visible en una escala y prácticamente irrelevante en otra. Imaginemos dos longitudes: $\ell$
 
@@ -7025,7 +7025,7 @@ Tenemos:
 
 []{#modelo-a-1}
 
-#### 1.11.3.1. Modelo A {#fispm-c01-modelo-a-1}
+#### Modelo A {#fispm-c01-modelo-a-1}
 
 - error esperado menor que:
 
@@ -7035,7 +7035,7 @@ $$0.1\%;$$
 
 []{#modelo-b-1}
 
-#### 1.11.3.2. Modelo B {#fispm-c01-modelo-b-1}
+#### Modelo B {#fispm-c01-modelo-b-1}
 
 - error esperado muchísimo menor;
 
@@ -7075,7 +7075,7 @@ Esto refuerza:
 
 $$\boxed{ \mathcal R \text{ depende también del criterio de adecuación exigido}. }$$ **Ficha FPM --- Validez y descripción efectiva** 1. **Pregunta:** ¿qué queremos predecir o explicar? 2. **Modelo:** ¿qué descripción estamos usando? 3. **Régimen:** ¿qué condiciones forman $\mathcal R$? 4. **Escalas:** ¿qué comparaciones hacen pequeños o irrelevantes ciertos efectos? 5. **Idealizaciones:** ¿qué se ha omitido exactamente? 6. **Aproximaciones:** ¿qué término o efecto se ha reemplazado o despreciado? 7. **Control:** ¿qué parámetro o condición vigila la aproximación? 8. **Precisión:** ¿qué error es aceptable para la tarea? 9. **Observables:** ¿el instrumento puede detectar la diferencia entre modelos? 10. **Fallo esperado:** ¿qué señal indicaría salida de régimen? 11. **Descripción más amplia:** ¿qué modelo o teoría debería usarse entonces? 12. **Estatus:** ¿el cálculo es exacto dentro de un modelo aproximado?
 
-### 1.11.4. Ejercicios {#fispm-c01-ejercicios-1}
+### Ejercicios {#fispm-c01-ejercicios-1}
 
 []{#fispm-t1-c01-e0027}
 
@@ -7285,7 +7285,7 @@ $$\boxed{ \text{descripciones distintas} \longleftrightarrow \text{regímenes y 
 
 no una cadena literal de inclusión de conjuntos.
 
-### 1.11.5. Síntesis {#fispm-c01-suxedntesis-8}
+### Síntesis {#fispm-c01-suxedntesis-8}
 
 Esta sección incorpora definitivamente el régimen: $\mathcal R$
 
@@ -7325,7 +7325,7 @@ Cuando una predicción contradice una observación, debemos evitar el salto:
 
 Una predicción depende de teoría, modelo, condiciones, aproximaciones y reglas de observación.
 
-La lógica de esa revisión será el objeto de (§[1.12](#fispm-c01-cuando-una-predicciuxf3n-falla-luxf3gica-de-revisiuxf3n)).
+La lógica de esa revisión será el objeto de (§[12](#fispm-c01-cuando-una-predicciuxf3n-falla-luxf3gica-de-revisiuxf3n)).
 
 []{#cuando-una-predicción-falla-lógica-de-revisión}
 
@@ -7333,11 +7333,11 @@ La lógica de esa revisión será el objeto de (§[1.12](#fispm-c01-cuando-una-p
 
 []{#fpm-i-01-s12}
 
-## 1.12. Cuando una predicción falla: lógica de revisión {#fispm-c01-cuando-una-predicciuxf3n-falla-luxf3gica-de-revisiuxf3n}
+## 12. Cuando una predicción falla: lógica de revisión {#fispm-c01-cuando-una-predicciuxf3n-falla-luxf3gica-de-revisiuxf3n}
 
 []{#el-error-más-tentador}
 
-### 1.12.1. El error más tentador {#fispm-c01-el-error-muxe1s-tentador}
+### El error más tentador {#fispm-c01-el-error-muxe1s-tentador}
 
 Supongamos que una teoría, junto con un modelo concreto, produce una predicción:
 
@@ -7377,13 +7377,13 @@ La predicción depende de un **paquete de premisas**. Por eso un fallo predictiv
 
 <figcaption>
 
-**Figura 1.8.** Una discrepancia motiva revisar hipótesis, condiciones iniciales y procedimiento de observación. El esquema no adjudica por sí solo el fallo a una ley fundamental. Véase §[1.12](#fispm-c01-cuando-una-predicciuxf3n-falla-luxf3gica-de-revisiuxf3n).
+**Figura 1.8.** Una discrepancia motiva revisar hipótesis, condiciones iniciales y procedimiento de observación. El esquema no adjudica por sí solo el fallo a una ley fundamental. Véase §[12](#fispm-c01-cuando-una-predicciuxf3n-falla-luxf3gica-de-revisiuxf3n).
 
 </figcaption>
 
 </figure>
 
-### 1.12.2. El paquete predictivo {#fispm-c01-el-paquete-predictivo}
+### El paquete predictivo {#fispm-c01-el-paquete-predictivo}
 
 Para hacer visible la lógica, comprimiremos temporalmente las premisas en cuatro grupos.
 
@@ -7413,7 +7413,7 @@ que usamos para el modelo físico completo.
 
 En nuestra notación esquemática: $\Pi = H\land I\land A\land M.$
 
-### 1.12.3. La estructura lógica de una predicción {#fispm-c01-la-estructura-luxf3gica-de-una-predicciuxf3n}
+### La estructura lógica de una predicción {#fispm-c01-la-estructura-luxf3gica-de-una-predicciuxf3n}
 
 Una derivación física puede representarse esquemáticamente como: $(H\land I\land A\land M)\to P.$ Esta fórmula no significa que toda teoría física real pueda reducirse literalmente a cuatro proposiciones simples. Es un **esqueleto lógico**. La utilidad del esquema consiste en impedir que olvidemos que $P$ depende de más de una premisa.
 
@@ -7423,7 +7423,7 @@ $$[\mathrm{POST}], \quad [\mathrm{EMP}], \quad [\mathrm{MOD}], \quad [\mathrm{AP
 
 antes de llegar a las consecuencias: $[\mathrm{MATH}].$
 
-### 1.12.4. La parte matemática empieza después de declarar las premisas {#fispm-c01-la-parte-matemuxe1tica-empieza-despuuxe9s-de-declarar-las-premisas}
+### La parte matemática empieza después de declarar las premisas {#fispm-c01-la-parte-matemuxe1tica-empieza-despuuxe9s-de-declarar-las-premisas}
 
 El protocolo FPM establece:
 
@@ -7443,7 +7443,7 @@ $$\boxed{ P\ \text{es una verdad matemática independiente del mundo}. }$$
 
 La consecuencia es exacta **relativamente a las premisas**.
 
-### 1.12.5. El modus tollens elemental {#fispm-c01-el-modus-tollens-elemental}
+### El modus tollens elemental {#fispm-c01-el-modus-tollens-elemental}
 
 Recordemos la forma lógica: $Q\to P.$ Si además sabemos: $\neg P,$
 
@@ -7457,7 +7457,7 @@ En nuestro caso: $Q = H\land I\land A\land M.$
 
 Entonces el resultado será inmediato. Pero sus consecuencias físicas merecen una lectura cuidadosa.
 
-### 1.12.6. Segunda proposición formal del capítulo {#fispm-c01-segunda-proposiciuxf3n-formal-del-capuxedtulo}
+### Segunda proposición formal del capítulo {#fispm-c01-segunda-proposiciuxf3n-formal-del-capuxedtulo}
 
 **1.2 --- Lógica de revisión de un paquete predictivo**
 
@@ -7473,7 +7473,7 @@ Equivalentemente, por las leyes de De Morgan: $\neg H \lor \neg I \lor \neg A \l
 
 []{#fispm-t1-c01-p0002}
 
-### 1.12.7. Demostración de 1.2 {#fispm-c01-demostraciuxf3n-de-1.2}
+### Demostración de 1.2 {#fispm-c01-demostraciuxf3n-de-1.2}
 
 Definamos: $Q = H\land I\land A\land M.$ La primera hipótesis se convierte en: $Q\to P.$ La segunda hipótesis es: $\neg P.$ Por modus tollens: $\neg Q.$ Sustituyendo nuevamente la definición de $Q$: $\neg(H\land I\land A\land M).$
 
@@ -7489,7 +7489,7 @@ Esto demuestra la proposición.
 
 $$\boxed{\text{QED}}$$
 
-### 1.12.8. Qué demuestra realmente proposición 1.2 {#fispm-c01-quuxe9-demuestra-realmente-p02}
+### Qué demuestra realmente proposición 1.2 {#fispm-c01-quuxe9-demuestra-realmente-p02}
 
 La conclusión es una **disyunción**: $\neg H \lor \neg I \lor \neg A \lor \neg M.$
 
@@ -7505,7 +7505,7 @@ y:
 
 $$\boxed{ \text{diagnóstico de la causa}. }$$
 
-### 1.12.9. El teorema no decide por nosotros {#fispm-c01-el-teorema-no-decide-por-nosotros}
+### El teorema no decide por nosotros {#fispm-c01-el-teorema-no-decide-por-nosotros}
 
 El matemático podría sentir cierta frustración.
 
@@ -7517,7 +7517,7 @@ a una afirmación como: $\neg A$
 
 necesitamos información adicional que descarte las demás alternativas. Por ejemplo, podríamos comprobar independientemente: $H, \qquad I, \qquad M.$ Entonces la disyunción obligaría a: $\neg A.$ El diagnóstico requiere **nuevas premisas**.
 
-### 1.12.10. La discrepancia observacional también es una premisa {#fispm-c01-la-discrepancia-observacional-tambiuxe9n-es-una-premisa}
+### La discrepancia observacional también es una premisa {#fispm-c01-la-discrepancia-observacional-tambiuxe9n-es-una-premisa}
 
 Hemos escrito: $\neg P.$ Pero en un experimento real rara vez recibimos una proposición booleana directamente de la naturaleza.
 
@@ -7545,35 +7545,35 @@ $$\boxed{ \text{establecer }\neg P \text{ también requiere una cadena observaci
 
 Por eso $M$ forma parte del paquete.
 
-### 1.12.11. Ejemplo desarrollado 15 --- El cronómetro {#fispm-c01-ejemplo-desarrollado-15-el-cronuxf3metro}
+### Ejemplo desarrollado 15 --- El cronómetro {#fispm-c01-ejemplo-desarrollado-15-el-cronuxf3metro}
 
 Supongamos que un modelo de cierto sistema predice un tiempo: $T_{\mathrm{pred}}.$ La medición produce un valor incompatible con esa predicción. Podemos organizar las posibilidades.
 
 []{#h-estructura-física}
 
-#### 1.12.11.1. $H$ --- Estructura física {#fispm-c01-h-estructura-fuxedsica}
+#### $H$ --- Estructura física {#fispm-c01-h-estructura-fuxedsica}
 
 Tal vez alguna relación física utilizada no sea adecuada para el fenómeno.
 
 []{#i-condiciones}
 
-#### 1.12.11.2. $I$ --- Condiciones {#fispm-c01-i-condiciones}
+#### $I$ --- Condiciones {#fispm-c01-i-condiciones}
 
 Tal vez el estado inicial real no fue el que creíamos.
 
 []{#a-aproximaciones}
 
-#### 1.12.11.3. $A$ --- Aproximaciones {#fispm-c01-a-aproximaciones}
+#### $A$ --- Aproximaciones {#fispm-c01-a-aproximaciones}
 
 Tal vez un efecto despreciado se volvió relevante.
 
 []{#m-medición}
 
-#### 1.12.11.4. $M$ --- Medición {#fispm-c01-m-mediciuxf3n}
+#### $M$ --- Medición {#fispm-c01-m-mediciuxf3n}
 
 Tal vez el cronómetro, la calibración o el procedimiento de detección introdujeron un problema. El resultado experimental, por sí solo, no selecciona una de estas cuatro explicaciones.
 
-### 1.12.12. Un fallo puede localizarse mediante pruebas auxiliares {#fispm-c01-un-fallo-puede-localizarse-mediante-pruebas-auxiliares}
+### Un fallo puede localizarse mediante pruebas auxiliares {#fispm-c01-un-fallo-puede-localizarse-mediante-pruebas-auxiliares}
 
 La ambigüedad no significa que el diagnóstico sea imposible.
 
@@ -7585,29 +7585,29 @@ Por ejemplo:
 
 []{#prueba-de-i}
 
-#### 1.12.12.1. Prueba de $I$ {#fispm-c01-prueba-de-i}
+#### Prueba de $I$ {#fispm-c01-prueba-de-i}
 
 Repetir el experimento con una preparación mejor controlada.
 
 []{#prueba-de-m}
 
-#### 1.12.12.2. Prueba de $M$ {#fispm-c01-prueba-de-m}
+#### Prueba de $M$ {#fispm-c01-prueba-de-m}
 
 Calibrar el instrumento mediante un patrón independiente.
 
 []{#prueba-de-a}
 
-#### 1.12.12.3. Prueba de $A$ {#fispm-c01-prueba-de-a}
+#### Prueba de $A$ {#fispm-c01-prueba-de-a}
 
 Cambiar deliberadamente la escala o condición que controla la aproximación.
 
 []{#prueba-de-h}
 
-#### 1.12.12.4. Prueba de $H$ {#fispm-c01-prueba-de-h}
+#### Prueba de $H$ {#fispm-c01-prueba-de-h}
 
 Buscar otra predicción que dependa de la misma hipótesis pero no de las mismas aproximaciones. La revisión se convierte así en un problema de **discriminación entre causas posibles**, análogo a §10.
 
-### 1.12.13. El experimento discriminante reaparece {#fispm-c01-el-experimento-discriminante-reaparece}
+### El experimento discriminante reaparece {#fispm-c01-el-experimento-discriminante-reaparece}
 
 En §10 definimos un experimento discriminante entre modelos. Ahora podemos extender la idea conceptualmente.
 
@@ -7623,13 +7623,13 @@ $$\text{prueba auxiliar} \longrightarrow \begin{cases} \text{resultado compatibl
 
 El diagnóstico es una nueva tarea de modelización.
 
-### 1.12.14. Principio metodológico de auditoría {#fispm-c01-principio-metodoluxf3gico-de-auditoruxeda}
+### Principio metodológico de auditoría {#fispm-c01-principio-metodoluxf3gico-de-auditoruxeda}
 
 **Principio 1.20 --- Un fallo predictivo exige auditoría, no culpable automático** Si una predicción fiable contradice una observación fiable, debe revisarse el paquete de premisas que produjo la predicción. La discrepancia, por sí sola, no identifica cuál hipótesis, condición, aproximación o regla de observación es responsable.
 
 Este principio es la lectura metodológica directa de la proposición 1.2.
 
-### 1.12.15. Qué ocurre con una solución físicamente absurda {#fispm-c01-quuxe9-ocurre-con-una-soluciuxf3n-fuxedsicamente-absurda}
+### Qué ocurre con una solución físicamente absurda {#fispm-c01-quuxe9-ocurre-con-una-soluciuxf3n-fuxedsicamente-absurda}
 
 A veces el problema aparece incluso antes de realizar el experimento. Una derivación matemática produce una solución que contradice una restricción física declarada.
 
@@ -7651,7 +7651,7 @@ Debemos preguntar:
 
 Una solución puede ser matemáticamente válida para la ecuación y físicamente inadmisible para el modelo completo. Este punto prepara §13.
 
-### 1.12.16. Ficha FPM de auditoría de una predicción fallida {#fispm-c01-ficha-fpm-de-auditoruxeda-de-una-predicciuxf3n-fallida}
+### Ficha FPM de auditoría de una predicción fallida {#fispm-c01-ficha-fpm-de-auditoruxeda-de-una-predicciuxf3n-fallida}
 
 []{#fispm-t1-c01-e0029}
 
@@ -7731,7 +7731,7 @@ Se ha demostrado que: $(H\land I\land A\land M)\to P.$ Una observación fiable e
 
 []{#conclusión-mínima}
 
-#### 1.12.16.0. 1. Conclusión mínima {#fispm-c01-conclusiuxf3n-muxednima .unnumbered}
+#### 1. Conclusión mínima {#fispm-c01-conclusiuxf3n-muxednima .unnumbered}
 
 Tenemos: $(H\land I\land A\land M)\to P$
 
@@ -7741,7 +7741,7 @@ Por modus tollens:
 
 $$\boxed{ \neg(H\land I\land A\land M). }$$
 
-#### 1.12.16.0. 2. De Morgan {#fispm-c01-de-morgan .unnumbered}
+#### 2. De Morgan {#fispm-c01-de-morgan .unnumbered}
 
 Aplicamos: $\neg(X\land Y) \equiv \neg X\lor\neg Y.$
 
@@ -7749,7 +7749,7 @@ Extendida a las cuatro premisas:
 
 $$\boxed{ \neg H \lor \neg I \lor \neg A \lor \neg M. }$$
 
-#### 1.12.16.1. 3. Confirmación de $I$ {#fispm-c01-confirmaciuxf3n-de-i}
+#### 3. Confirmación de $I$ {#fispm-c01-confirmaciuxf3n-de-i}
 
 La evidencia independiente autoriza mantener:
 
@@ -7757,7 +7757,7 @@ $$I.$$
 
 Por tanto, dentro del diagnóstico actual podemos eliminar: $\neg I.$ La disyunción se reduce informativamente a: $\neg H \lor \neg A \lor \neg M.$
 
-#### 1.12.16.2. 4. Confirmación de $M$ {#fispm-c01-confirmaciuxf3n-de-m}
+#### 4. Confirmación de $M$ {#fispm-c01-confirmaciuxf3n-de-m}
 
 La calibración independiente autoriza mantener:
 
@@ -7765,11 +7765,11 @@ $$M.$$
 
 La disyunción restante es: $\neg H \lor \neg A.$
 
-#### 1.12.16.2. 5. La aproximación está fuera de régimen {#fispm-c01-la-aproximaciuxf3n-estuxe1-fuera-de-ruxe9gimen .unnumbered}
+#### 5. La aproximación está fuera de régimen {#fispm-c01-la-aproximaciuxf3n-estuxe1-fuera-de-ruxe9gimen .unnumbered}
 
 La nueva prueba proporciona evidencia específica para: $\neg A.$ Ahora tenemos una causa concreta capaz de explicar la discrepancia.
 
-#### 1.12.16.2. 6. Revisión justificada {#fispm-c01-revisiuxf3n-justificada .unnumbered}
+#### 6. Revisión justificada {#fispm-c01-revisiuxf3n-justificada .unnumbered}
 
 La revisión directamente justificada es:
 
@@ -7779,7 +7779,7 @@ En símbolos, la evidencia favorece:
 
 $$\boxed{\neg A}.$$
 
-#### 1.12.16.3. 7. ¿Implica esto $\neg H$? {#fispm-c01-implica-esto-neg-h}
+#### 7. ¿Implica esto $\neg H$? {#fispm-c01-implica-esto-neg-h}
 
 No. La disyunción: $\neg H\lor\neg A$
 
@@ -7793,7 +7793,7 @@ $$H.$$
 
 La relación física central puede continuar siendo adecuada.
 
-#### 1.12.16.3. 8. Error del salto directo {#fispm-c01-error-del-salto-directo .unnumbered}
+#### 8. Error del salto directo {#fispm-c01-error-del-salto-directo .unnumbered}
 
 Si hubiéramos inferido inmediatamente: $\neg P \Longrightarrow \neg H,$
 
@@ -7811,7 +7811,7 @@ La lección es:
 
 $$\boxed{ \text{fallo predictivo} \neq \text{identificación automática de la causa}. }$$
 
-### 1.12.17. Síntesis {#fispm-c01-suxedntesis-9}
+### Síntesis {#fispm-c01-suxedntesis-9}
 
 La segunda proposición formal del capítulo es:
 
@@ -7851,7 +7851,7 @@ La tarea física comienza entonces de nuevo:
 
 La sección siguiente afinará una distinción que ya ha aparecido varias veces. Una solución puede ser matemáticamente exacta y, sin embargo, describir mal el mundo. Una aproximación puede ser matemáticamente inexacta y, sin embargo, describirlo extraordinariamente bien en su régimen.
 
-Entramos así en el §[1.13](#fispm-c01-exactitud-matemuxe1tica-y-adecuaciuxf3n-fuxedsica).
+Entramos así en el §[13](#fispm-c01-exactitud-matemuxe1tica-y-adecuaciuxf3n-fuxedsica).
 
 []{#exactitud-matemática-y-adecuación-física}
 
@@ -7859,11 +7859,11 @@ Entramos así en el §[1.13](#fispm-c01-exactitud-matemuxe1tica-y-adecuaciuxf3n-
 
 []{#fpm-i-01-s13}
 
-## 1.13. Exactitud matemática y adecuación física {#fispm-c01-exactitud-matemuxe1tica-y-adecuaciuxf3n-fuxedsica}
+## 13. Exactitud matemática y adecuación física {#fispm-c01-exactitud-matemuxe1tica-y-adecuaciuxf3n-fuxedsica}
 
 []{#dos-evaluaciones-que-no-deben-confundirse}
 
-### 1.13.1. Dos evaluaciones que no deben confundirse {#fispm-c01-dos-evaluaciones-que-no-deben-confundirse}
+### Dos evaluaciones que no deben confundirse {#fispm-c01-dos-evaluaciones-que-no-deben-confundirse}
 
 A lo largo del capítulo hemos usado expresiones como:
 
@@ -7903,7 +7903,7 @@ Esta es quizá la distinción más importante del capítulo completo. Supongamos
 
 <figcaption>
 
-**Figura 1.9.** La igualdad $y=u^2$ define exactamente la curva dibujada. Su uso como ley de un fenómeno requiere declarar qué representan $u$ e $y$, cómo se miden y dónde se ha contrastado la relación. Véase §[1.13](#fispm-c01-exactitud-matemuxe1tica-y-adecuaciuxf3n-fuxedsica).
+**Figura 1.9.** La igualdad $y=u^2$ define exactamente la curva dibujada. Su uso como ley de un fenómeno requiere declarar qué representan $u$ e $y$, cómo se miden y dónde se ha contrastado la relación. Véase §[13](#fispm-c01-exactitud-matemuxe1tica-y-adecuaciuxf3n-fuxedsica).
 
 </figcaption>
 
@@ -8034,19 +8034,19 @@ Por eso:
 
 $$\boxed{ \text{más detalle} \neq \text{más adecuación automática}. }$$
 
-### 1.13.2. Exactitud de la solución y calidad del modelo {#fispm-c01-exactitud-de-la-soluciuxf3n-y-calidad-del-modelo}
+### Exactitud de la solución y calidad del modelo {#fispm-c01-exactitud-de-la-soluciuxf3n-y-calidad-del-modelo}
 
 Supongamos que tenemos dos opciones.
 
 []{#modelo-a-2}
 
-#### 1.13.2.1. Modelo A {#fispm-c01-modelo-a-2}
+#### Modelo A {#fispm-c01-modelo-a-2}
 
 Representa muy pobremente el sistema real, pero podemos resolverlo exactamente.
 
 []{#modelo-b-2}
 
-#### 1.13.2.2. Modelo B {#fispm-c01-modelo-b-2}
+#### Modelo B {#fispm-c01-modelo-b-2}
 
 Representa mejor el fenómeno relevante, aunque para obtener una predicción usemos una aproximación controlada.
 
@@ -8072,7 +8072,7 @@ $$\boxed{ \text{resultado matemáticamente aproximado} \not\Rightarrow \text{des
 
 []{#aproximación-en-la-construcción-del-modelo}
 
-#### 1.13.2.3. Aproximación en la construcción del modelo {#fispm-c01-aproximaciuxf3n-en-la-construcciuxf3n-del-modelo}
+#### Aproximación en la construcción del modelo {#fispm-c01-aproximaciuxf3n-en-la-construcciuxf3n-del-modelo}
 
 Por ejemplo:
 
@@ -8080,7 +8080,7 @@ $$[\mathrm{MOD}] \qquad \text{objeto real} \mapsto \text{partícula puntual}.$$
 
 []{#aproximación-en-la-resolución-matemática}
 
-#### 1.13.2.4. Aproximación en la resolución matemática {#fispm-c01-aproximaciuxf3n-en-la-resoluciuxf3n-matemuxe1tica}
+#### Aproximación en la resolución matemática {#fispm-c01-aproximaciuxf3n-en-la-resoluciuxf3n-matemuxe1tica}
 
 Incluso después de fijar un modelo, puede resultar difícil obtener su solución exacta y empleamos: $[\mathrm{APPROX}].$ Así tenemos cuatro combinaciones conceptuales.
 
@@ -8263,7 +8263,7 @@ $$\boxed{ \text{distinguibilidad matemática} \not\Rightarrow \text{distinguibil
 
 La exactitud del formalismo no puede sustituir la resolución del experimento.
 
-### 1.13.3. Dos principios permanentes {#fispm-c01-dos-principios-permanentes}
+### Dos principios permanentes {#fispm-c01-dos-principios-permanentes}
 
 **Principio 1.21 --- La exactitud matemática no repara una representación física inadecuada** Una derivación exacta puede garantizar que la conclusión se sigue de las premisas del modelo; no puede garantizar por sí sola que esas premisas representen adecuadamente el sistema real, la pregunta o el régimen considerado.
 
@@ -8297,7 +8297,7 @@ La sintaxis matemática también debe reflejar la epistemología del argumento. 
 
 []{#lista-de-control}
 
-#### 1.13.3.1. Lista de control {#fispm-c01-lista-de-control}
+#### Lista de control {#fispm-c01-lista-de-control}
 
 Cada vez que obtengamos un resultado, seguiremos este orden.
 
@@ -8487,7 +8487,7 @@ La solución completa muestra:
 
 $$\boxed{ \text{\parbox{.66\linewidth}{\centering una matemática impecable puede revelar precisamente que el modelo físico necesita revisión}}. }$$
 
-### 1.13.4. Síntesis {#fispm-c01-suxedntesis-10}
+### Síntesis {#fispm-c01-suxedntesis-10}
 
 La sección completa puede comprimirse en una pregunta doble:
 
@@ -8505,11 +8505,11 @@ Responder afirmativamente a la primera no resuelve la segunda. Una aproximación
 
 []{#fpm-i-01-s14}
 
-## 1.14. Cómo leer el resto de Física para matemáticos {#fispm-c01-cuxf3mo-leer-el-resto-de-fuxedsica-para-matemuxe1ticos}
+## 14. Cómo leer el resto de Física para matemáticos {#fispm-c01-cuxf3mo-leer-el-resto-de-fuxedsica-para-matemuxe1ticos}
 
 []{#este-capítulo-no-era-un-prólogo}
 
-### 1.14.1. Este capítulo no era un prólogo {#fispm-c01-este-capuxedtulo-no-era-un-pruxf3logo}
+### Este capítulo no era un prólogo {#fispm-c01-este-capuxedtulo-no-era-un-pruxf3logo}
 
 Podría parecer que hemos dedicado demasiadas páginas a hablar de física antes de empezar a «hacer física». Pero el objetivo de este capítulo nunca fue retrasar las ecuaciones. Fue aprender a leerlas.
 
@@ -8555,7 +8555,7 @@ No leeremos la física como una simple aplicación posterior de matemáticas ya 
 
 La física plantea problemas que exigen estructuras matemáticas. La matemática reorganiza la comprensión física y permite descubrir consecuencias que no eran visibles al comienzo.
 
-### 1.14.2. El protocolo permanente FPM {#fispm-c01-el-protocolo-permanente-fpm}
+### El protocolo permanente FPM {#fispm-c01-el-protocolo-permanente-fpm}
 
 En vez de repetir por separado cada una de las quince preguntas desarrolladas a lo largo del capítulo, las reuniremos desde ahora en un único protocolo acumulativo. Podemos condensar todo el capítulo en una secuencia.
 
@@ -8601,7 +8601,7 @@ Esta secuencia no será una plantilla rígida.
 
 No todos los problemas necesitan doce apartados explícitos. Pero todos los pasos relevantes deben poder reconstruirse.
 
-### 1.14.3. Cómo se usará el protocolo en el resto del tratado {#fispm-c01-cuxf3mo-se-usaruxe1-el-protocolo-en-el-resto-del-tratado}
+### Cómo se usará el protocolo en el resto del tratado {#fispm-c01-cuxf3mo-se-usaruxe1-el-protocolo-en-el-resto-del-tratado}
 
 Cuando una teoría física requiera una herramienta matemática todavía no disponible, no la utilizaremos silenciosamente.
 
@@ -8683,13 +8683,13 @@ La solución completa no consistirá solamente en producir el resultado final.
 
 Deberá hacer visible qué tipo de razonamiento exige el problema.
 
-### 1.14.4. Señales de alarma {#fispm-c01-seuxf1ales-de-alarma}
+### Señales de alarma {#fispm-c01-seuxf1ales-de-alarma}
 
 A lo largo del libro convendrá detenerse cuando aparezca alguna de estas situaciones:
 
 []{#una-ecuación-sin-interpretación}
 
-#### 1.14.4.0. 1. Una ecuación sin interpretación {#fispm-c01-una-ecuaciuxf3n-sin-interpretaciuxf3n .unnumbered}
+#### 1. Una ecuación sin interpretación {#fispm-c01-una-ecuaciuxf3n-sin-interpretaciuxf3n .unnumbered}
 
 Preguntar:
 
@@ -8697,7 +8697,7 @@ Preguntar:
 
 []{#una-aproximación-sin-régimen}
 
-#### 1.14.4.0. 2. Una aproximación sin régimen {#fispm-c01-una-aproximaciuxf3n-sin-ruxe9gimen .unnumbered}
+#### 2. Una aproximación sin régimen {#fispm-c01-una-aproximaciuxf3n-sin-ruxe9gimen .unnumbered}
 
 Preguntar:
 
@@ -8705,7 +8705,7 @@ Preguntar:
 
 []{#una-idealización-sin-omisión-declarada}
 
-#### 1.14.4.0. 3. Una idealización sin omisión declarada {#fispm-c01-una-idealizaciuxf3n-sin-omisiuxf3n-declarada .unnumbered}
+#### 3. Una idealización sin omisión declarada {#fispm-c01-una-idealizaciuxf3n-sin-omisiuxf3n-declarada .unnumbered}
 
 Preguntar:
 
@@ -8713,7 +8713,7 @@ Preguntar:
 
 []{#una-predicción-sin-procedimiento-observacional}
 
-#### 1.14.4.0. 4. Una predicción sin procedimiento observacional {#fispm-c01-una-predicciuxf3n-sin-procedimiento-observacional .unnumbered}
+#### 4. Una predicción sin procedimiento observacional {#fispm-c01-una-predicciuxf3n-sin-procedimiento-observacional .unnumbered}
 
 Preguntar:
 
@@ -8721,7 +8721,7 @@ Preguntar:
 
 []{#una-solución-matemáticamente-válida-pero-extraña-físicamente}
 
-#### 1.14.4.0. 5. Una solución matemáticamente válida pero extraña físicamente {#fispm-c01-una-soluciuxf3n-matemuxe1ticamente-vuxe1lida-pero-extrauxf1a-fuxedsicamente .unnumbered}
+#### 5. Una solución matemáticamente válida pero extraña físicamente {#fispm-c01-una-soluciuxf3n-matemuxe1ticamente-vuxe1lida-pero-extrauxf1a-fuxedsicamente .unnumbered}
 
 Preguntar:
 
@@ -8729,7 +8729,7 @@ Preguntar:
 
 []{#un-desacuerdo-experimental}
 
-#### 1.14.4.0. 6. Un desacuerdo experimental {#fispm-c01-un-desacuerdo-experimental .unnumbered}
+#### 6. Un desacuerdo experimental {#fispm-c01-un-desacuerdo-experimental .unnumbered}
 
 Preguntar:
 
@@ -8737,7 +8737,7 @@ Preguntar:
 
 []{#una-teoría-más-avanzada-que-reemplaza-otra}
 
-#### 1.14.4.0. 7. Una teoría más avanzada que «reemplaza» otra {#fispm-c01-una-teoruxeda-muxe1s-avanzada-que-reemplaza-otra .unnumbered}
+#### 7. Una teoría más avanzada que «reemplaza» otra {#fispm-c01-una-teoruxeda-muxe1s-avanzada-que-reemplaza-otra .unnumbered}
 
 Preguntar:
 
@@ -8745,7 +8745,7 @@ Preguntar:
 
 []{#una-fórmula-muy-elegante}
 
-#### 1.14.4.0. 8. Una fórmula muy elegante {#fispm-c01-una-fuxf3rmula-muy-elegante .unnumbered}
+#### 8. Una fórmula muy elegante {#fispm-c01-una-fuxf3rmula-muy-elegante .unnumbered}
 
 Preguntar:
 
@@ -8755,7 +8755,7 @@ Estas preguntas no son obstáculos.
 
 Son el método.
 
-### 1.14.5. Principio final del capítulo {#fispm-c01-principio-final-del-capuxedtulo}
+### Principio final del capítulo {#fispm-c01-principio-final-del-capuxedtulo}
 
 **Principio 1.23 --- Ningún cálculo físico se cierra al obtener un número** Un cálculo físico termina solamente cuando el resultado ha sido interpretado respecto del sistema, las premisas, el estatus de las relaciones, el régimen de validez, las restricciones físicas y la conexión observacional pertinentes.
 
@@ -9069,7 +9069,7 @@ $$\boxed{ (\mathcal M,\mathfrak I_{\mathcal M}). }$$
 
 El ejercicio ha recorrido prácticamente todo el protocolo del capítulo.
 
-### 1.14.6. Cierre {#fispm-c01-cierre}
+### Cierre {#fispm-c01-cierre}
 
 Empezamos con una pregunta:
 
@@ -9123,7 +9123,7 @@ La pregunta seguirá siendo la misma:
 
 []{#referencias-del-capítulo}
 
-## 1.14. Referencias del capítulo {#fispm-c01-referencias-del-capuxedtulo .unnumbered}
+## Referencias del capítulo {#fispm-c01-referencias-del-capuxedtulo .unnumbered}
 
 Las fuentes siguientes cumplen dos funciones distintas. Algunas sustentan atribuciones explícitas o ejemplos identificables del capítulo; otras actuaron como **fuentes de control** para el enfoque y la arquitectura, sin que el texto reproduzca su secuencia ni su prosa. Las formulaciones matemáticas proposición 1.1 y proposición 1.2 y el protocolo de lectura FPM son desarrollos propios de este tratado.
 

@@ -47,7 +47,7 @@ Trabajaremos con lagrangianos de primer orden $L(q,\dot q,t)$ suficientemente di
 
 []{#fpm-i-27-s01}
 
-## 27.1. Una coordenada ausente y un momento constante {#fispm-c27-una-coordenada-ausente-y-un-momento-constante}
+## 1. Una coordenada ausente y un momento constante {#fispm-c27-una-coordenada-ausente-y-un-momento-constante}
 
 Escribimos $p_a=\partial L/\partial\dot q^a$ y $\mathcal E_a=\dot p_a-\partial L/\partial q^a$. Sin fuerzas adicionales, Euler--Lagrange exige $\mathcal E_a=0$.
 
@@ -59,7 +59,7 @@ Escribimos $p_a=\partial L/\partial\dot q^a$ y $\mathcal E_a=\dot p_a-\partial L
 
 <figcaption>
 
-**Figura 27.1.** Si $L$ no depende de una coordenada $q$, las traslaciones en esa coordenada son simetrías y el momento conjugado se conserva. La afirmación se refiere al lagrangiano y a sus hipótesis de regularidad. Véase §[27.1](#fispm-c27-una-coordenada-ausente-y-un-momento-constante).
+**Figura 27.1.** Si $L$ no depende de una coordenada $q$, las traslaciones en esa coordenada son simetrías y el momento conjugado se conserva. La afirmación se refiere al lagrangiano y a sus hipótesis de regularidad. Véase §[1](#fispm-c27-una-coordenada-ausente-y-un-momento-constante).
 
 </figcaption>
 
@@ -89,7 +89,7 @@ Tampoco basta con que una derivada se anule en un punto: $\partial L/\partial q=
 
 []{#fpm-i-27-s02}
 
-## 27.2. Transformaciones continuas a tiempo fijo {#fispm-c27-transformaciones-continuas-a-tiempo-fijo}
+## 2. Transformaciones continuas a tiempo fijo {#fispm-c27-transformaciones-continuas-a-tiempo-fijo}
 
 Sea $q\mapsto\Phi_\varepsilon(q,t)$ una familia suave, localmente invertible, con $\Phi_0(q,t)=q$. Su generador es
 
@@ -123,7 +123,7 @@ Una traslación $q^a\mapsto q^a+\varepsilon$ tiene generador constante en esa co
 
 []{#fpm-i-27-s03}
 
-## 27.3. Cuando la acción cambia sólo en el borde {#fispm-c27-cuando-la-acciuxf3n-cambia-suxf3lo-en-el-borde}
+## 3. Cuando la acción cambia sólo en el borde {#fispm-c27-cuando-la-acciuxf3n-cambia-suxf3lo-en-el-borde}
 
 Los lagrangianos del capítulo 26 podían modificarse mediante una derivada total sin cambiar las trayectorias de borde fijo. Esa libertad debe entrar en la definición de simetría.
 
@@ -151,7 +151,7 @@ El término $F$ se puede cambiar por una constante sin alterar su derivada. Eso 
 
 []{#fpm-i-27-s04}
 
-## 27.4. Comparar también los tiempos {#fispm-c27-comparar-tambiuxe9n-los-tiempos}
+## 4. Comparar también los tiempos {#fispm-c27-comparar-tambiuxe9n-los-tiempos}
 
 Para incluir las traslaciones temporales consideramos transformaciones locales del espacio de coordenadas y tiempo:
 
@@ -187,7 +187,7 @@ El término $L D_t\tau$ proviene del elemento de integración y no puede omitirs
 
 []{#fpm-i-27-s05}
 
-## 27.5. El primer teorema de Noether {#fispm-c27-el-primer-teorema-de-noether}
+## 5. El primer teorema de Noether {#fispm-c27-el-primer-teorema-de-noether}
 
 []{#fispm-t1-c27-d0006}
 
@@ -225,7 +225,7 @@ El teorema también es local. Una coordenada angular, una carta singular o una f
 
 []{#fpm-i-27-s06}
 
-## 27.6. Traslaciones y momento lineal {#fispm-c27-traslaciones-y-momento-lineal}
+## 6. Traslaciones y momento lineal {#fispm-c27-traslaciones-y-momento-lineal}
 
 Consideremos $N$ partículas sin vínculos externos que fijen una posición absoluta, con
 
@@ -249,7 +249,7 @@ Un potencial que depende sólo de diferencias de posiciones cumple esa invarianc
 
 <figcaption>
 
-**Figura 27.2.** En el lagrangiano libre $L=m\dot x^2/2$, trasladar la posición por una constante conserva la acción y genera otra historia de igual velocidad. La carga de Noether asociada es el momento $p=m\dot x$. Véase §[27.6](#fispm-c27-traslaciones-y-momento-lineal).
+**Figura 27.2.** En el lagrangiano libre $L=m\dot x^2/2$, trasladar la posición por una constante conserva la acción y genera otra historia de igual velocidad. La carga de Noether asociada es el momento $p=m\dot x$. Véase §[6](#fispm-c27-traslaciones-y-momento-lineal).
 
 </figcaption>
 
@@ -261,7 +261,7 @@ Un potencial que depende sólo de diferencias de posiciones cumple esa invarianc
 
 []{#fpm-i-27-s07}
 
-## 27.7. Rotaciones y momento angular {#fispm-c27-rotaciones-y-momento-angular}
+## 7. Rotaciones y momento angular {#fispm-c27-rotaciones-y-momento-angular}
 
 Una rotación infinitesimal alrededor de un eje unitario $\mathbf n$ cambia cada posición en $\xi_i=\mathbf n\times\mathbf r_i$. También cambia su velocidad en $\mathbf n\times\dot{\mathbf r}_i$. El producto de una velocidad consigo misma no varía a primer orden porque es perpendicular a ese cambio.
 
@@ -273,7 +273,7 @@ Una rotación infinitesimal alrededor de un eje unitario $\mathbf n$ cambia cada
 
 <figcaption>
 
-**Figura 27.3.** Una rotación infinitesimal desplaza tangencialmente cada punto. Para un potencial central, la fuerza es radial y su trabajo virtual rotacional es cero; la carga correspondiente es el momento angular. Véase §[27.7](#fispm-c27-rotaciones-y-momento-angular).
+**Figura 27.3.** Una rotación infinitesimal desplaza tangencialmente cada punto. Para un potencial central, la fuerza es radial y su trabajo virtual rotacional es cero; la carga correspondiente es el momento angular. Véase §[7](#fispm-c27-rotaciones-y-momento-angular).
 
 </figcaption>
 
@@ -301,7 +301,7 @@ La fórmula simple de la proposición 27.7 usa momentos cartesianos $m_i\dot{\ma
 
 []{#fpm-i-27-s08}
 
-## 27.8. Traslaciones temporales y energía {#fispm-c27-traslaciones-temporales-y-energuxeda}
+## 8. Traslaciones temporales y energía {#fispm-c27-traslaciones-temporales-y-energuxeda}
 
 Si el lagrangiano no depende explícitamente del tiempo, trasladar el reloj mediante $t_\varepsilon=t+\varepsilon$ y conservar las posiciones sobre el punto transformado produce $\tau=1$, $\xi=0$. La velocidad transformada no cambia, pero la variación comparada en un mismo tiempo es $\eta=-\dot q$.
 
@@ -313,7 +313,7 @@ Si el lagrangiano no depende explícitamente del tiempo, trasladar el reloj medi
 
 <figcaption>
 
-**Figura 27.4.** En el oscilador autónomo normalizado, $K=\tfrac12\sin^2u$ (continua), $U=\tfrac12\cos^2u$ (discontinua) y $E=1/2$ (punteada). La invariancia temporal conserva la suma, no cada término. Véase §[27.8](#fispm-c27-traslaciones-temporales-y-energuxeda).
+**Figura 27.4.** En el oscilador autónomo normalizado, $K=\tfrac12\sin^2u$ (continua), $U=\tfrac12\cos^2u$ (discontinua) y $E=1/2$ (punteada). La invariancia temporal conserva la suma, no cada término. Véase §[8](#fispm-c27-traslaciones-temporales-y-energuxeda).
 
 </figcaption>
 
@@ -337,7 +337,7 @@ La simetría temporal desplaza también los tiempos y las configuraciones extrem
 
 []{#fpm-i-27-s09}
 
-## 27.9. Boosts de Galileo y movimiento del centro de masa {#fispm-c27-boosts-de-galileo-y-movimiento-del-centro-de-masa}
+## 9. Boosts de Galileo y movimiento del centro de masa {#fispm-c27-boosts-de-galileo-y-movimiento-del-centro-de-masa}
 
 Para un sistema libre de partículas con potencial dependiente de diferencias de posiciones, un cambio común de velocidad se expresa como $\mathbf r_i\mapsto\mathbf r_i+\varepsilon t\mathbf n$. El potencial permanece igual, pero la energía cinética cambia.
 
@@ -361,7 +361,7 @@ El signo de $t\mathbf P-M\mathbf C$ corresponde a haber elegido $\xi_i=t\mathbf 
 
 []{#fpm-i-27-s10}
 
-## 27.10. Momentos conjugados y cargas corregidas {#fispm-c27-momentos-conjugados-y-cargas-corregidas}
+## 10. Momentos conjugados y cargas corregidas {#fispm-c27-momentos-conjugados-y-cargas-corregidas}
 
 Retomemos el modelo giroscópico plano del capítulo 26 sin potencial:
 
@@ -391,7 +391,7 @@ Para $\gamma\ne0$, las constantes $K_x,K_y$ localizan el centro de la trayectori
 
 []{#fpm-i-27-s11}
 
-## 27.11. Una simetría que combina tiempo y rotación {#fispm-c27-una-simetruxeda-que-combina-tiempo-y-rotaciuxf3n}
+## 11. Una simetría que combina tiempo y rotación {#fispm-c27-una-simetruxeda-que-combina-tiempo-y-rotaciuxf3n}
 
 Consideremos una partícula plana con
 
@@ -419,7 +419,7 @@ Esta relación explica también la integral reducida del aro giratorio del capí
 
 []{#fpm-i-27-s12}
 
-## 27.12. Fuerzas externas y ruptura de una simetría {#fispm-c27-fuerzas-externas-y-ruptura-de-una-simetruxeda}
+## 12. Fuerzas externas y ruptura de una simetría {#fispm-c27-fuerzas-externas-y-ruptura-de-una-simetruxeda}
 
 La identidad de la proposición 27.5 sigue siendo válida aunque una transformación no sea simetría. Pongamos
 
@@ -451,7 +451,7 @@ La resistencia $\mathbf F=-b\dot{\mathbf r}$ en un potencial central es compatib
 
 []{#fpm-i-27-s13}
 
-## 27.13. Lo que una simetría de ecuaciones no garantiza {#fispm-c27-lo-que-una-simetruxeda-de-ecuaciones-no-garantiza}
+## 13. Lo que una simetría de ecuaciones no garantiza {#fispm-c27-lo-que-una-simetruxeda-de-ecuaciones-no-garantiza}
 
 []{#fispm-t1-c27-p0013}
 
@@ -483,7 +483,7 @@ La expresión de un momento conjugado puede cambiar mientras la carga completa p
 
 []{#fpm-i-27-s14}
 
-## 27.14. Dependencia entre cargas y reconstrucción del movimiento {#fispm-c27-dependencia-entre-cargas-y-reconstrucciuxf3n-del-movimiento}
+## 14. Dependencia entre cargas y reconstrucción del movimiento {#fispm-c27-dependencia-entre-cargas-y-reconstrucciuxf3n-del-movimiento}
 
 El teorema asocia una carga a cada generador variacional, pero no afirma que todas las cargas resultantes sean funcionalmente independientes. Tampoco exige que los generadores sean transformaciones espaciales constantes.
 
@@ -509,7 +509,7 @@ El capítulo 28 reorganizará la dinámica usando posiciones y momentos como var
 
 []{#ejercicios}
 
-## 27.15. Ejercicios {#fispm-c27-ejercicios}
+## 15. Ejercicios {#fispm-c27-ejercicios}
 
 []{#fispm-t1-c27-e0001}
 
@@ -693,7 +693,7 @@ Un potencial cuadrático gira con velocidad prescrita $\Omega$. Define $X=x\cos\
 
 []{#soluciones}
 
-## 27.16. Soluciones {#fispm-c27-soluciones}
+## 16. Soluciones {#fispm-c27-soluciones}
 
 **Solución del ejercicio 27.1.**
 
@@ -843,7 +843,7 @@ Por otro lado, $H_z=m[X\dot Y-Y\dot X+\Omega(X^2+Y^2)]$. Expandir la energía ci
 
 []{#notas-y-lecturas}
 
-## 27.16. Notas y lecturas {#fispm-c27-notas-y-lecturas .unnumbered}
+## Notas y lecturas {#fispm-c27-notas-y-lecturas .unnumbered}
 
 1.  La forma de Noether a tiempo fijo, las coordenadas cíclicas y las aplicaciones a traslaciones y rotaciones pueden contrastarse con David Tong, *Classical Dynamics*, §2.4, en los apuntes oficiales de University of Cambridge. [Texto del capítulo](https://www.damtp.cam.ac.uk/user/tong/dynamics/dynhtml/S2.html). La extensión con transformación temporal y borde se demuestra aquí mediante la identidad proposición 27.5.
 

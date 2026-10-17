@@ -45,7 +45,7 @@ Supondremos masas constantes, rigidez ideal, tensor definido positivo y fuerzas 
 
 []{#fpm-i-22-s01}
 
-## 22.1. Escoger el punto antes de derivar el momento {#fispm-c22-escoger-el-punto-antes-de-derivar-el-momento}
+## 1. Escoger el punto antes de derivar el momento {#fispm-c22-escoger-el-punto-antes-de-derivar-el-momento}
 
 El momento angular depende del punto sobre el que se calcula. Para el cuerpo libre, el centro de masa separa el movimiento interno. Para un trompo sujeto, el pivote fijo permite incluir la gravedad y eliminar del torque la reacción aplicada en ese punto. Estas dos elecciones tienen justificaciones distintas.
 
@@ -81,7 +81,7 @@ Un punto que está instantáneamente quieto no cumple necesariamente la hipótes
 
 []{#ejercicios}
 
-### 22.1.1. Ejercicios {#fispm-c22-ejercicios}
+### Ejercicios {#fispm-c22-ejercicios}
 
 []{#fispm-t1-c22-e0001}
 
@@ -103,7 +103,7 @@ Un punto que está instantáneamente quieto no cumple necesariamente la hipótes
 
 []{#fpm-i-22-s02}
 
-## 22.2. Derivar en ejes que giran con el cuerpo {#fispm-c22-derivar-en-ejes-que-giran-con-el-cuerpo}
+## 2. Derivar en ejes que giran con el cuerpo {#fispm-c22-derivar-en-ejes-que-giran-con-el-cuerpo}
 
 Sea $I$ la matriz corporal constante del tensor sobre el punto del balance. El momento corporal es $I\boldsymbol\Omega$, mientras el momento físico es $R I\boldsymbol\Omega$. La derivada de ese producto debe conservar el término de transporte, incluso si el tensor corporal es diagonal.
 
@@ -135,7 +135,7 @@ Resolver esas ecuaciones da las componentes corporales de la velocidad angular. 
 
 []{#ejercicios-1}
 
-### 22.2.1. Ejercicios {#fispm-c22-ejercicios-1}
+### Ejercicios {#fispm-c22-ejercicios-1}
 
 []{#fispm-t1-c22-e0003}
 
@@ -155,7 +155,7 @@ Resolver esas ecuaciones da las componentes corporales de la velocidad angular. 
 
 []{#fpm-i-22-s03}
 
-## 22.3. Torque y potencia responden a preguntas distintas {#fispm-c22-torque-y-potencia-responden-a-preguntas-distintas}
+## 3. Torque y potencia responden a preguntas distintas {#fispm-c22-torque-y-potencia-responden-a-preguntas-distintas}
 
 Un torque perpendicular a la velocidad angular puede cambiar el momento sin aportar potencia de giro. Los cojinetes de un eje impuesto ofrecen un ejemplo: pueden sostener torques transversales que cambian la dirección del momento, mientras el motor controla la componente axial que cambia la energía.
 
@@ -167,7 +167,7 @@ Un torque perpendicular a la velocidad angular puede cambiar el momento sin apor
 
 <figcaption>
 
-**Figura 22.1.** Un torque perpendicular a $\omega$ cambia el momento angular y tiene potencia instantánea nula. La velocidad angular se dibuja discontinua para distinguirla del torque. Véase §[22.3](#fispm-c22-torque-y-potencia-responden-a-preguntas-distintas).
+**Figura 22.1.** Un torque perpendicular a $\omega$ cambia el momento angular y tiene potencia instantánea nula. La velocidad angular se dibuja discontinua para distinguirla del torque. Véase §[3](#fispm-c22-torque-y-potencia-responden-a-preguntas-distintas).
 
 </figcaption>
 
@@ -201,7 +201,7 @@ Si $\mathbf n$ no es principal, incluso una rapidez constante puede requerir tor
 
 []{#ejercicios-2}
 
-### 22.3.1. Ejercicios {#fispm-c22-ejercicios-2}
+### Ejercicios {#fispm-c22-ejercicios-2}
 
 []{#fispm-t1-c22-e0005}
 
@@ -221,7 +221,7 @@ Si $\mathbf n$ no es principal, incluso una rapidez constante puede requerir tor
 
 []{#fpm-i-22-s04}
 
-## 22.4. Lo que conserva un giro sin torque {#fispm-c22-lo-que-conserva-un-giro-sin-torque}
+## 4. Lo que conserva un giro sin torque {#fispm-c22-lo-que-conserva-un-giro-sin-torque}
 
 Antes de resolver una trayectoria libre conviene identificar sus constantes. En el marco inercial el momento angular no cambia. En el cuerpo puede moverse sobre la intersección de una esfera de momento y una superficie de energía. Esa geometría limitará las perturbaciones de ciertos giros.
 
@@ -255,7 +255,7 @@ Los invariantes no determinan por sí solos en qué sentido se recorre una inter
 
 []{#ejercicios-3}
 
-### 22.4.1. Ejercicios {#fispm-c22-ejercicios-3}
+### Ejercicios {#fispm-c22-ejercicios-3}
 
 []{#fispm-t1-c22-e0007}
 
@@ -275,7 +275,7 @@ Los invariantes no determinan por sí solos en qué sentido se recorre una inter
 
 []{#fpm-i-22-s05}
 
-## 22.5. Perturbar un giro principal {#fispm-c22-perturbar-un-giro-principal}
+## 5. Perturbar un giro principal {#fispm-c22-perturbar-un-giro-principal}
 
 Un giro uniforme sobre un eje principal tiene componentes corporales constantes. Primero linealizaremos Euler para observar qué sucede al apartarse un poco de él. La aproximación descubre oscilaciones o crecimiento local, pero la estabilidad del sistema completo necesita una justificación adicional.
 
@@ -287,7 +287,7 @@ Un giro uniforme sobre un eje principal tiene componentes corporales constantes.
 
 <figcaption>
 
-**Figura 22.2.** Para $I_1<I_2<I_3$, el giro alrededor del eje intermedio admite modos lineales crecientes y decrecientes $e^{\pm\lambda t}$. La figura usa $\lambda=1$; los extremos principal menor y mayor tienen modos oscilatorios. Véase §[22.5](#fispm-c22-perturbar-un-giro-principal).
+**Figura 22.2.** Para $I_1<I_2<I_3$, el giro alrededor del eje intermedio admite modos lineales crecientes y decrecientes $e^{\pm\lambda t}$. La figura usa $\lambda=1$; los extremos principal menor y mayor tienen modos oscilatorios. Véase §[5](#fispm-c22-perturbar-un-giro-principal).
 
 </figcaption>
 
@@ -321,7 +321,7 @@ Un coeficiente negativo produce oscilaciones transversales; uno positivo admite 
 
 []{#ejercicios-4}
 
-### 22.5.1. Ejercicios {#fispm-c22-ejercicios-4}
+### Ejercicios {#fispm-c22-ejercicios-4}
 
 []{#fispm-t1-c22-e0009}
 
@@ -341,7 +341,7 @@ Un coeficiente negativo produce oscilaciones transversales; uno positivo admite 
 
 []{#fpm-i-22-s06}
 
-## 22.6. Estabilidad fuera de la linealización {#fispm-c22-estabilidad-fuera-de-la-linealizaciuxf3n}
+## 6. Estabilidad fuera de la linealización {#fispm-c22-estabilidad-fuera-de-la-linealizaciuxf3n}
 
 Las constantes permiten reforzar el resultado de los ejes extremos. Una combinación positiva que mida componentes transversales impide que una preparación cercana se aleje mucho. Para el intermedio construiremos una trayectoria exacta que empieza arbitrariamente cerca y alcanza una distancia fija.
 
@@ -383,7 +383,7 @@ La trayectoria conserva $H^2$ y $K=a_2H^2/2$. Se acerca a giros intermedios opue
 
 []{#ejercicios-5}
 
-### 22.6.1. Ejercicios {#fispm-c22-ejercicios-5}
+### Ejercicios {#fispm-c22-ejercicios-5}
 
 []{#fispm-t1-c22-e0011}
 
@@ -403,7 +403,7 @@ La trayectoria conserva $H^2$ y $K=a_2H^2/2$. Se acerca a giros intermedios opue
 
 []{#fpm-i-22-s07}
 
-## 22.7. Dos tasas de precesión para un cuerpo simétrico libre {#fispm-c22-dos-tasas-de-precesiuxf3n-para-un-cuerpo-simuxe9trico-libre}
+## 7. Dos tasas de precesión para un cuerpo simétrico libre {#fispm-c22-dos-tasas-de-precesiuxf3n-para-un-cuerpo-simuxe9trico-libre}
 
 Con dos momentos iguales, Euler admite una solución explícita. La velocidad angular gira en ejes corporales mientras el eje material describe en el espacio un cono alrededor del momento constante. Las tasas corresponden a observadores y ejes diferentes.
 
@@ -437,7 +437,7 @@ La tasa corporal puede ser negativa y se anula para $A=C$. La espacial usa otro 
 
 []{#ejercicios-6}
 
-### 22.7.1. Ejercicios {#fispm-c22-ejercicios-6}
+### Ejercicios {#fispm-c22-ejercicios-6}
 
 []{#fispm-t1-c22-e0013}
 
@@ -457,7 +457,7 @@ La tasa corporal puede ser negativa y se anula para $A=C$. La espacial usa otro 
 
 []{#fpm-i-22-s08}
 
-## 22.8. Mantener un giro cuesta un torque concreto {#fispm-c22-mantener-un-giro-cuesta-un-torque-concreto}
+## 8. Mantener un giro cuesta un torque concreto {#fispm-c22-mantener-un-giro-cuesta-un-torque-concreto}
 
 Podemos recorrer Euler en sentido inverso: una velocidad angular prescrita permite calcular el torque que la sostiene. Esta operación distingue la reorientación impuesta por los soportes del giro libre que aparece al retirarlos.
 
@@ -493,7 +493,7 @@ En régimen estacionario, el motor sigue suministrando energía y la resistencia
 
 []{#ejercicios-7}
 
-### 22.8.1. Ejercicios {#fispm-c22-ejercicios-7}
+### Ejercicios {#fispm-c22-ejercicios-7}
 
 []{#fispm-t1-c22-e0015}
 
@@ -513,7 +513,7 @@ En régimen estacionario, el motor sigue suministrando energía y la resistencia
 
 []{#fpm-i-22-s09}
 
-## 22.9. El trompo pesado y su punto de apoyo {#fispm-c22-el-trompo-pesado-y-su-punto-de-apoyo}
+## 9. El trompo pesado y su punto de apoyo {#fispm-c22-el-trompo-pesado-y-su-punto-de-apoyo}
 
 Un trompo sujeto por un pivote fijo tiene fuerzas exteriores incluso cuando gira sin rozamiento. La gravedad añade torque y el pivote suministra la fuerza necesaria para mover el centro de masa sobre una esfera. Calcular el torque sobre el pivote elimina la reacción puntual de esa ecuación, pero conserva la gravedad.
 
@@ -525,7 +525,7 @@ Un trompo sujeto por un pivote fijo tiene fuerzas exteriores incluso cuando gira
 
 <figcaption>
 
-**Figura 22.3.** El peso aplicado en el centro de masa produce respecto del apoyo un torque de módulo $Mg\ell\sin\theta$. La reacción del apoyo tiene brazo nulo respecto de ese mismo punto. Véase §[22.9](#fispm-c22-el-trompo-pesado-y-su-punto-de-apoyo).
+**Figura 22.3.** El peso aplicado en el centro de masa produce respecto del apoyo un torque de módulo $Mg\ell\sin\theta$. La reacción del apoyo tiene brazo nulo respecto de ese mismo punto. Véase §[9](#fispm-c22-el-trompo-pesado-y-su-punto-de-apoyo).
 
 </figcaption>
 
@@ -561,7 +561,7 @@ El momento vectorial completo ya no es constante, pero sí sus dos proyecciones 
 
 []{#ejercicios-8}
 
-### 22.9.1. Ejercicios {#fispm-c22-ejercicios-8}
+### Ejercicios {#fispm-c22-ejercicios-8}
 
 []{#fispm-t1-c22-e0017}
 
@@ -581,7 +581,7 @@ El momento vectorial completo ya no es constante, pero sí sus dos proyecciones 
 
 []{#fpm-i-22-s10}
 
-## 22.10. Separar inclinación, azimut y giro axial {#fispm-c22-separar-inclinaciuxf3n-azimut-y-giro-axial}
+## 10. Separar inclinación, azimut y giro axial {#fispm-c22-separar-inclinaciuxf3n-azimut-y-giro-axial}
 
 La dirección del eje necesita dos ángulos. La orientación del material alrededor de ese eje necesita un tercero. La velocidad axial recibe contribuciones del giro propio y del movimiento del eje, tal como anticipó la composición de rotaciones en el capítulo 21.
 
@@ -625,7 +625,7 @@ En los polos, los ángulos pierden su significado separado. Si $a\ne b$, el prim
 
 []{#ejercicios-9}
 
-### 22.10.1. Ejercicios {#fispm-c22-ejercicios-9}
+### Ejercicios {#fispm-c22-ejercicios-9}
 
 []{#fispm-t1-c22-e0019}
 
@@ -645,7 +645,7 @@ En los polos, los ángulos pierden su significado separado. Si $a\ne b$, el prim
 
 []{#fpm-i-22-s11}
 
-## 22.11. Cuándo existe una precesión regular {#fispm-c22-cuuxe1ndo-existe-una-precesiuxf3n-regular}
+## 11. Cuándo existe una precesión regular {#fispm-c22-cuuxe1ndo-existe-una-precesiuxf3n-regular}
 
 Una inclinación constante puede sostenerse si el cambio del momento causado por la precesión coincide con el torque gravitatorio. El cálculo vectorial permite obtener la condición sin adelantar el formalismo lagrangiano.
 
@@ -657,7 +657,7 @@ Una inclinación constante puede sostenerse si el cambio del momento causado por
 
 <figcaption>
 
-**Figura 22.4.** Cuando el torque es perpendicular al momento angular, el cambio de primer orden altera su dirección sin alterar su módulo. El dibujo es una construcción diferencial; no identifica por sí solo las tasas de precesión de un trompo. Véase §[22.11](#fispm-c22-cuuxe1ndo-existe-una-precesiuxf3n-regular).
+**Figura 22.4.** Cuando el torque es perpendicular al momento angular, el cambio de primer orden altera su dirección sin alterar su módulo. El dibujo es una construcción diferencial; no identifica por sí solo las tasas de precesión de un trompo. Véase §[11](#fispm-c22-cuuxe1ndo-existe-una-precesiuxf3n-regular).
 
 </figcaption>
 
@@ -693,7 +693,7 @@ Para $\varepsilon\ll1$, la rama lenta tiene tasa cercana a $k/b=Mgl/(Cs)$. La r�
 
 []{#ejercicios-10}
 
-### 22.11.1. Ejercicios {#fispm-c22-ejercicios-10}
+### Ejercicios {#fispm-c22-ejercicios-10}
 
 []{#fispm-t1-c22-e0021}
 
@@ -711,7 +711,7 @@ Para $\varepsilon\ll1$, la rama lenta tiene tasa cercana a $k/b=Mgl/(Cs)$. La r�
 
 []{#fpm-i-22-s12}
 
-## 22.12. La nutación y los retornos de la inclinación {#fispm-c22-la-nutaciuxf3n-y-los-retornos-de-la-inclinaciuxf3n}
+## 12. La nutación y los retornos de la inclinación {#fispm-c22-la-nutaciuxf3n-y-los-retornos-de-la-inclinaciuxf3n}
 
 Una preparación que no cumple la precesión regular puede producir cambios de inclinación. Las constantes reducen su estudio a una coordenada, pero el potencial efectivo debe acompañarse de la ecuación de segundo orden para decidir qué ocurre en los retornos.
 
@@ -741,7 +741,7 @@ Es el doble del tiempo de una travesía. La singularidad inversa de raíz en un 
 
 []{#ejercicios-11}
 
-### 22.12.1. Ejercicios {#fispm-c22-ejercicios-11}
+### Ejercicios {#fispm-c22-ejercicios-11}
 
 []{#fispm-t1-c22-e0023}
 
@@ -761,7 +761,7 @@ Es el doble del tiempo de una travesía. La singularidad inversa de raíz en un 
 
 []{#fpm-i-22-s13}
 
-## 22.13. El trompo vertical y el umbral de giro {#fispm-c22-el-trompo-vertical-y-el-umbral-de-giro}
+## 13. El trompo vertical y el umbral de giro {#fispm-c22-el-trompo-vertical-y-el-umbral-de-giro}
 
 Con el eje hacia arriba, la gravedad tiene torque nulo en la configuración exacta. La cuestión de estabilidad aparece al inclinarlo un poco. El giro axial introduce términos de velocidad capaces de modificar la respuesta a esa perturbación.
 
@@ -791,7 +791,7 @@ Su término cuadrático cambia en el mismo umbral. Exactamente allí, los órden
 
 []{#ejercicios-12}
 
-### 22.13.1. Ejercicios {#fispm-c22-ejercicios-12}
+### Ejercicios {#fispm-c22-ejercicios-12}
 
 []{#fispm-t1-c22-e0025}
 
@@ -811,7 +811,7 @@ Su término cuadrático cambia en el mismo umbral. Exactamente allí, los órden
 
 []{#fpm-i-22-s14}
 
-## 22.14. Disipación y alcance de un balance decreciente {#fispm-c22-disipaciuxf3n-y-alcance-de-un-balance-decreciente}
+## 14. Disipación y alcance de un balance decreciente {#fispm-c22-disipaciuxf3n-y-alcance-de-un-balance-decreciente}
 
 La conservación ideal ha explicado los giros libres y el trompo sostenido. Un torque resistente rompe parte de esas constantes. La energía puede seguir proporcionando control, aunque una función decreciente no determine por sí sola el estado final.
 
@@ -839,7 +839,7 @@ El cálculo no demuestra, por sí solo, convergencia de toda la orientación ni 
 
 []{#problemas-de-integración}
 
-### 22.14.1. Problemas de integración {#fispm-c22-problemas-de-integraciuxf3n}
+### Problemas de integración {#fispm-c22-problemas-de-integraciuxf3n}
 
 []{#fispm-t1-c22-e0027}
 

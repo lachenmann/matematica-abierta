@@ -41,7 +41,7 @@ Este capítulo estudia balances vectoriales de momento para partículas y sistem
 
 []{#fpm-i-14-s01}
 
-## 14.1. Momento lineal de una partícula {#fispm-c14-momento-lineal-de-una-partuxedcula}
+## 1. Momento lineal de una partícula {#fispm-c14-momento-lineal-de-una-partuxedcula}
 
 El balance de energía cinética compara rapidez y trabajo. Para conservar información direccional conviene introducir una magnitud vectorial que relaciona masa y velocidad: el momento lineal. Su variación se obtiene directamente de Newton y permitirá después sumar las ecuaciones de muchas partículas sin reconstruir primero sus interacciones.[^1]
 
@@ -73,7 +73,7 @@ Si una descripción hace variar la masa que pertenece al objeto elegido, derivar
 
 []{#ejercicios}
 
-### 14.1.1. Ejercicios {#fispm-c14-ejercicios}
+### Ejercicios {#fispm-c14-ejercicios}
 
 []{#fispm-t1-c14-e0001}
 
@@ -95,7 +95,7 @@ Si una descripción hace variar la masa que pertenece al objeto elegido, derivar
 
 []{#fpm-i-14-s02}
 
-## 14.2. Impulso y fuerza media {#fispm-c14-impulso-y-fuerza-media}
+## 2. Impulso y fuerza media {#fispm-c14-impulso-y-fuerza-media}
 
 Una fuerza puede variar mucho durante un contacto breve. Si buscamos el cambio de momento entre dos instantes, basta su integral temporal. Esa magnitud se llama impulso y se define también para fuerzas suaves que actúan durante largo tiempo: no presupone un golpe instantáneo ni una discontinuidad de velocidad.[^2]
 
@@ -107,7 +107,7 @@ Una fuerza puede variar mucho durante un contacto breve. Si buscamos el cambio d
 
 <figcaption>
 
-**Figura 14.1.** Un pulso triangular de duración $2T$ y altura $F_0$ tiene impulso $F_0T$. Su fuerza media es $F_0/2$; el área, y no la altura máxima por sí sola, determina el cambio de momento. Véase §[14.2](#fispm-c14-impulso-y-fuerza-media).
+**Figura 14.1.** Un pulso triangular de duración $2T$ y altura $F_0$ tiene impulso $F_0T$. Su fuerza media es $F_0/2$; el área, y no la altura máxima por sí sola, determina el cambio de momento. Véase §[2](#fispm-c14-impulso-y-fuerza-media).
 
 </figcaption>
 
@@ -147,7 +147,7 @@ Para un impulso fijo, alargar la duración reduce el módulo de la fuerza media.
 
 []{#ejercicios-1}
 
-### 14.2.1. Ejercicios {#fispm-c14-ejercicios-1}
+### Ejercicios {#fispm-c14-ejercicios-1}
 
 []{#fispm-t1-c14-e0003}
 
@@ -167,7 +167,7 @@ Para un impulso fijo, alargar la duración reduce el módulo de la fuerza media.
 
 []{#fpm-i-14-s03}
 
-## 14.3. Momento de un sistema material {#fispm-c14-momento-de-un-sistema-material}
+## 3. Momento de un sistema material {#fispm-c14-momento-de-un-sistema-material}
 
 Para sumar las ecuaciones de partículas hay que fijar cuáles pertenecen al sistema. La elección puede ser amplia o estrecha, pero debe mantenerse durante el intervalo. Una interacción entre miembros cuenta como interna; la misma fuerza pasa a ser externa si uno de los cuerpos queda fuera. La cancelación interna es una consecuencia de la tercera ley dentro del modelo elegido.[^3]
 
@@ -199,7 +199,7 @@ La tercera ley es una hipótesis del modelo de partículas e interacciones. Si u
 
 []{#ejercicios-2}
 
-### 14.3.1. Ejercicios {#fispm-c14-ejercicios-2}
+### Ejercicios {#fispm-c14-ejercicios-2}
 
 []{#fispm-t1-c14-e0005}
 
@@ -219,7 +219,7 @@ La tercera ley es una hipótesis del modelo de partículas e interacciones. Si u
 
 []{#fpm-i-14-s04}
 
-## 14.4. Conservación y componentes {#fispm-c14-conservaciuxf3n-y-componentes}
+## 4. Conservación y componentes {#fispm-c14-conservaciuxf3n-y-componentes}
 
 Una resultante externa nula mantiene constante el momento total. Una resultante con una componente nula conserva sólo la componente correspondiente. Y un impulso total nulo entre dos instantes garantiza igualdad de los momentos extremos, sin afirmar que el momento se mantuvo constante entre ellos. Conviene separar esos tres enunciados antes de usar una ley de conservación.[^4]
 
@@ -247,7 +247,7 @@ Elegir sólo el objeto expulsado hace externa la fuerza del dispositivo. Elegir 
 
 []{#ejercicios-3}
 
-### 14.4.1. Ejercicios {#fispm-c14-ejercicios-3}
+### Ejercicios {#fispm-c14-ejercicios-3}
 
 []{#fispm-t1-c14-e0007}
 
@@ -267,7 +267,7 @@ Elegir sólo el objeto expulsado hace externa la fuerza del dispositivo. Elegir 
 
 []{#fpm-i-14-s05}
 
-## 14.5. Centro de masa como promedio afín {#fispm-c14-centro-de-masa-como-promedio-afuxedn}
+## 5. Centro de masa como promedio afín {#fispm-c14-centro-de-masa-como-promedio-afuxedn}
 
 La suma de momentos combina velocidades, pero todavía no identifica una posición colectiva. Para masas constantes, el mismo promedio que aparece en el momento total define un punto cuya derivada reproduce esa suma. Este punto es el centro de masa. Su construcción pertenece primero a la geometría: puede definirse para cualquier configuración, sin conocer las fuerzas ni afirmar que allí exista una partícula.[^5]
 
@@ -279,7 +279,7 @@ La suma de momentos combina velocidades, pero todavía no identifica una posici�
 
 <figcaption>
 
-**Figura 14.2.** El centro de masa divide la separación en razón inversa a las masas. Con masas $m$ y $3m$, se sitúa a un cuarto de la distancia desde la masa mayor. Véase §[14.5](#fispm-c14-centro-de-masa-como-promedio-afuxedn).
+**Figura 14.2.** El centro de masa divide la separación en razón inversa a las masas. Con masas $m$ y $3m$, se sitúa a un cuarto de la distancia desde la masa mayor. Véase §[5](#fispm-c14-centro-de-masa-como-promedio-afuxedn).
 
 </figcaption>
 
@@ -315,7 +315,7 @@ Pertenecer al envolvente convexo no significa pertenecer al material. Dos masas 
 
 []{#ejercicios-4}
 
-### 14.5.1. Ejercicios {#fispm-c14-ejercicios-4}
+### Ejercicios {#fispm-c14-ejercicios-4}
 
 []{#fispm-t1-c14-e0009}
 
@@ -335,7 +335,7 @@ Pertenecer al envolvente convexo no significa pertenecer al material. Dos masas 
 
 []{#fpm-i-14-s06}
 
-## 14.6. Dinámica del centro de masa {#fispm-c14-dinuxe1mica-del-centro-de-masa}
+## 6. Dinámica del centro de masa {#fispm-c14-dinuxe1mica-del-centro-de-masa}
 
 El centro de masa se definió sin dinámica. Ahora su utilidad se obtiene al diferenciar el promedio: como las masas y la lista de miembros son constantes, las derivadas pasan a las posiciones. El resultado conecta la suma de Newton con una ecuación para un solo punto. Esa ecuación gobierna el movimiento colectivo y deja pendiente el movimiento de cada miembro alrededor de ese punto.[^6]
 
@@ -359,7 +359,7 @@ En un campo no uniforme, $\sum_i m_i\mathbf g(\mathbf r_i)$ no es en general $M\
 
 []{#ejercicios-5}
 
-### 14.6.1. Ejercicios {#fispm-c14-ejercicios-5}
+### Ejercicios {#fispm-c14-ejercicios-5}
 
 []{#fispm-t1-c14-e0011}
 
@@ -381,7 +381,7 @@ El impulso externo puede escribirse también como $M\Delta\dot{\mathbf R}$. Esto
 
 []{#fpm-i-14-s07}
 
-## 14.7. Marco del centro de masa y energía cinética {#fispm-c14-marco-del-centro-de-masa-y-energuxeda-cinuxe9tica}
+## 7. Marco del centro de masa y energía cinética {#fispm-c14-marco-del-centro-de-masa-y-energuxeda-cinuxe9tica}
 
 El centro reúne el movimiento colectivo. Para estudiar qué queda al retirarlo, escribimos $\mathbf V=\dot{\mathbf R}$ y $\mathbf u_i=\mathbf v_i-\mathbf V$. Estas velocidades relativas satisfacen $\sum_i m_i\mathbf u_i=\mathbf P-M\mathbf V=0$ por la proposición 14.9. La igualdad es instantánea y algebraica; no requiere que el centro se mueva uniformemente. Su interpretación como cambio entre marcos inerciales sí requiere una condición adicional.[^7]
 
@@ -415,7 +415,7 @@ La cantidad $K_{\mathrm{rel}}$ es invariante bajo cambios galileanos: tanto $\ma
 
 []{#ejercicios-6}
 
-### 14.7.1. Ejercicios {#fispm-c14-ejercicios-6}
+### Ejercicios {#fispm-c14-ejercicios-6}
 
 []{#fispm-t1-c14-e0013}
 
@@ -433,7 +433,7 @@ La cantidad $K_{\mathrm{rel}}$ es invariante bajo cambios galileanos: tanto $\ma
 
 []{#fpm-i-14-s08}
 
-## 14.8. Dos partículas y movimiento relativo {#fispm-c14-dos-partuxedculas-y-movimiento-relativo}
+## 8. Dos partículas y movimiento relativo {#fispm-c14-dos-partuxedculas-y-movimiento-relativo}
 
 Para dos miembros, una posición colectiva y una separación contienen toda la información posicional. La transformación permite conservar el balance del conjunto mientras se estudia la interacción en una ecuación relativa. La masa que aparece en esta segunda ecuación se obtiene al restar aceleraciones, no al retirar físicamente una parte de la masa total.[^8]
 
@@ -471,7 +471,7 @@ La masa reducida es menor que cada masa individual. Para masas iguales vale $m/2
 
 []{#ejercicios-7}
 
-### 14.8.1. Ejercicios {#fispm-c14-ejercicios-7}
+### Ejercicios {#fispm-c14-ejercicios-7}
 
 []{#fispm-t1-c14-e0015}
 
@@ -493,7 +493,7 @@ Las secciones siguientes usan estas herramientas para colisiones: decidir el sis
 
 []{#fpm-i-14-s09}
 
-## 14.9. Modelos de colisión y aislamiento impulsivo {#fispm-c14-modelos-de-colisiuxf3n-y-aislamiento-impulsivo}
+## 9. Modelos de colisión y aislamiento impulsivo {#fispm-c14-modelos-de-colisiuxf3n-y-aislamiento-impulsivo}
 
 Una colisión se describe comparando estados anteriores y posteriores a una interacción. No exige suponer que el contacto dura exactamente cero: elegimos un intervalo que contiene la interacción relevante y declaramos qué fuerzas actúan allí. Las velocidades de entrada y salida son datos de sus extremos, medidos en un mismo marco inercial. Si la interacción sigue almacenando energía en el estado final, tampoco puede identificarse automáticamente el cambio cinético con una pérdida definitiva.[^9]
 
@@ -529,7 +529,7 @@ La identidad permite comparar pérdidas cinéticas en marcos distintos cuando el
 
 []{#ejercicios-8}
 
-### 14.9.1. Ejercicios {#fispm-c14-ejercicios-8}
+### Ejercicios {#fispm-c14-ejercicios-8}
 
 []{#fispm-t1-c14-e0017}
 
@@ -549,7 +549,7 @@ La identidad permite comparar pérdidas cinéticas en marcos distintos cuando el
 
 []{#fpm-i-14-s10}
 
-## 14.10. Colisiones elásticas en una dimensión {#fispm-c14-colisiones-eluxe1sticas-en-una-dimensiuxf3n}
+## 10. Colisiones elásticas en una dimensión {#fispm-c14-colisiones-eluxe1sticas-en-una-dimensiuxf3n}
 
 En una línea, conservar momento ofrece una ecuación para dos velocidades finales. Una segunda condición puede obtenerse si el modelo afirma igualdad de la energía cinética entre los estados elegidos. Esa condición no proviene de tercera ley: debe justificarse mediante la interacción y sus estados o adoptarse explícitamente como idealización de la colisión.[^10]
 
@@ -561,7 +561,7 @@ En una línea, conservar momento ofrece una ecuación para dos velocidades final
 
 <figcaption>
 
-**Figura 14.3.** En una colisión elástica frontal de dos masas iguales, la masa incidente se detiene y la inicialmente quieta adquiere su velocidad. Se conservan momento y energía cinética; las viñetas comparan velocidades, con separaciones esquemáticas, sin resolver la fuerza de contacto. Véase §[14.10](#fispm-c14-colisiones-eluxe1sticas-en-una-dimensiuxf3n).
+**Figura 14.3.** En una colisión elástica frontal de dos masas iguales, la masa incidente se detiene y la inicialmente quieta adquiere su velocidad. Se conservan momento y energía cinética; las viñetas comparan velocidades, con separaciones esquemáticas, sin resolver la fuerza de contacto. Véase §[10](#fispm-c14-colisiones-eluxe1sticas-en-una-dimensiuxf3n).
 
 </figcaption>
 
@@ -575,7 +575,7 @@ En una línea, conservar momento ofrece una ecuación para dos velocidades final
 
 <figcaption>
 
-**Figura 14.4.** En un choque elástico unidimensional de masas iguales, con la segunda inicialmente en reposo, las velocidades se intercambian. Se conservan momento lineal y energía cinética. Véase §[14.10](#fispm-c14-colisiones-eluxe1sticas-en-una-dimensiuxf3n).
+**Figura 14.4.** En un choque elástico unidimensional de masas iguales, con la segunda inicialmente en reposo, las velocidades se intercambian. Se conservan momento lineal y energía cinética. Véase §[10](#fispm-c14-colisiones-eluxe1sticas-en-una-dimensiuxf3n).
 
 </figcaption>
 
@@ -611,7 +611,7 @@ Para masas iguales se intercambian las velocidades. Eso no exige que se intercam
 
 []{#ejercicios-9}
 
-### 14.10.1. Ejercicios {#fispm-c14-ejercicios-9}
+### Ejercicios {#fispm-c14-ejercicios-9}
 
 []{#fispm-t1-c14-e0019}
 
@@ -637,7 +637,7 @@ Para masas iguales se intercambian las velocidades. Eso no exige que se intercam
 
 []{#fpm-i-14-s11}
 
-## 14.11. Unión y colisiones inelásticas {#fispm-c14-uniuxf3n-y-colisiones-ineluxe1sticas}
+## 11. Unión y colisiones inelásticas {#fispm-c14-uniuxf3n-y-colisiones-ineluxe1sticas}
 
 Conservar momento no obliga a conservar energía cinética. Si los dos miembros terminan con la misma velocidad, el balance de momento basta para determinarla, mientras la separación cinética muestra cuánto movimiento relativo ha desaparecido. Se trata de una condición final del modelo, distinta de la elasticidad y también distinta de conservar la energía total con todos sus modos internos.[^11]
 
@@ -675,7 +675,7 @@ Cuando $Q>0$, el balance traslacional no decide qué parte pasó a energía inte
 
 []{#ejercicios-10}
 
-### 14.11.1. Ejercicios {#fispm-c14-ejercicios-10}
+### Ejercicios {#fispm-c14-ejercicios-10}
 
 []{#fispm-t1-c14-e0022}
 
@@ -695,7 +695,7 @@ Cuando $Q>0$, el balance traslacional no decide qué parte pasó a energía inte
 
 []{#fpm-i-14-s12}
 
-## 14.12. Restitución y colisiones vectoriales {#fispm-c14-restituciuxf3n-y-colisiones-vectoriales}
+## 12. Restitución y colisiones vectoriales {#fispm-c14-restituciuxf3n-y-colisiones-vectoriales}
 
 Entre el choque elástico y la unión puede introducirse una regla para la velocidad relativa de salida. En una línea esa regla cierra el balance de momento. En varias dimensiones debe señalar además qué componente modifica y qué ocurre con las demás. El coeficiente de restitución describe una relación entre estados extremos; no reconstruye la fuerza de contacto ni su duración.[^12]
 
@@ -741,7 +741,7 @@ Sin normal conocida, momento y elasticidad tampoco determinan por sí solos las 
 
 []{#ejercicios-11}
 
-### 14.12.1. Ejercicios {#fispm-c14-ejercicios-11}
+### Ejercicios {#fispm-c14-ejercicios-11}
 
 []{#fispm-t1-c14-e0024}
 
@@ -767,7 +767,7 @@ Sin normal conocida, momento y elasticidad tampoco determinan por sí solos las 
 
 []{#fpm-i-14-s13}
 
-## 14.13. Sistemas abiertos y transferencia de masa {#fispm-c14-sistemas-abiertos-y-transferencia-de-masa}
+## 13. Sistemas abiertos y transferencia de masa {#fispm-c14-sistemas-abiertos-y-transferencia-de-masa}
 
 Proposición 14.4 suma Newton para una lista fija de miembros. Un cuerpo que incorpora o expulsa materia no conserva esa lista. La derivada de su momento puede calcularse, pero ya no coincide por sí sola con la fuerza externa: la materia que cruza lleva momento. Para obtener el balance elegimos, durante un intervalo pequeño, un conjunto material que incluye el cuerpo y las parcelas transferidas. Sólo después pasamos a la descripción abierta.[^13]
 
@@ -811,7 +811,7 @@ Si la masa sale con la misma velocidad del cuerpo, $\mathbf w_{\mathrm{out}}=\ma
 
 []{#ejercicios-12}
 
-### 14.13.1. Ejercicios {#fispm-c14-ejercicios-12}
+### Ejercicios {#fispm-c14-ejercicios-12}
 
 []{#fispm-t1-c14-e0027}
 
@@ -831,7 +831,7 @@ Si la masa sale con la misma velocidad del cuerpo, $\mathbf w_{\mathrm{out}}=\ma
 
 []{#fpm-i-14-s14}
 
-## 14.14. Síntesis del método {#fispm-c14-suxedntesis-del-muxe9todo}
+## 14. Síntesis del método {#fispm-c14-suxedntesis-del-muxe9todo}
 
 El balance de momento compara una suma vectorial y un impulso externo. El centro de masa convierte esa suma en una velocidad colectiva. La energía cinética añade información sobre el movimiento relativo, pero su cambio requiere conocer el modelo de interacción y las transferencias energéticas. En una colisión, estos tres elementos se combinan sin intercambiar sus hipótesis; en un sistema abierto se añade el momento transportado por la materia.[^14]
 
@@ -865,7 +865,7 @@ En todos los casos los datos iniciales deben pertenecer al mismo marco. La veloc
 
 []{#ejercicios-13}
 
-### 14.14.1. Ejercicios {#fispm-c14-ejercicios-13}
+### Ejercicios {#fispm-c14-ejercicios-13}
 
 []{#fispm-t1-c14-e0029}
 

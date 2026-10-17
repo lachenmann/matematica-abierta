@@ -45,7 +45,7 @@ Trabajaremos en un marco inercial, con masas positivas constantes, velocidades n
 
 []{#fpm-i-16-s01}
 
-## 16.1. Una ley entre masas {#fispm-c16-una-ley-entre-masas}
+## 1. Una ley entre masas {#fispm-c16-una-ley-entre-masas}
 
 Si dejamos caer dos cuerpos de masas distintas desde una misma altura, la fuerza gravitatoria puede ser diferente aunque sus aceleraciones sean iguales. La diferencia se comprende al usar Newton: una fuerza proporcional a la masa acelera una inercia proporcional a esa misma masa. La igualdad de aceleraciones presupone, además, que los cuerpos comparados se encuentran en el mismo campo y que las otras fuerzas se han controlado.
 
@@ -57,7 +57,7 @@ Si dejamos caer dos cuerpos de masas distintas desde una misma altura, la fuerza
 
 <figcaption>
 
-**Figura 16.1.** Las dos fuerzas gravitatorias son opuestas y tienen módulo $GMm/r^2$. Dividir cada fuerza por la masa del cuerpo correspondiente da las dos aceleraciones. Véase §[16.1](#fispm-c16-una-ley-entre-masas).
+**Figura 16.1.** Las dos fuerzas gravitatorias son opuestas y tienen módulo $GMm/r^2$. Dividir cada fuerza por la masa del cuerpo correspondiente da las dos aceleraciones. Véase §[1](#fispm-c16-una-ley-entre-masas).
 
 </figcaption>
 
@@ -95,7 +95,7 @@ La aceleración de 1 no contiene su propia masa, pero la de 2 sí cambia si modi
 
 []{#ejercicios}
 
-### 16.1.1. Ejercicios {#fispm-c16-ejercicios}
+### Ejercicios {#fispm-c16-ejercicios}
 
 []{#fispm-t1-c16-e0001}
 
@@ -117,7 +117,7 @@ La aceleración de 1 no contiene su propia masa, pero la de 2 sí cambia si modi
 
 []{#fpm-i-16-s02}
 
-## 16.2. Dirección, unidades y escala {#fispm-c16-direcciuxf3n-unidades-y-escala}
+## 2. Dirección, unidades y escala {#fispm-c16-direcciuxf3n-unidades-y-escala}
 
 La forma vectorial de la ley elimina una ambigüedad frecuente. Si escribimos sólo $Gm_1m_2/q^2$, tenemos la magnitud positiva de la fuerza. Para obtener sus componentes hay que multiplicar por una dirección y fijar el sentido atractivo.
 
@@ -151,7 +151,7 @@ La singularidad cuando $q\to0$ exige otro cuidado: dos objetos extensos no conti
 
 []{#ejercicios-1}
 
-### 16.2.1. Ejercicios {#fispm-c16-ejercicios-1}
+### Ejercicios {#fispm-c16-ejercicios-1}
 
 []{#fispm-t1-c16-e0003}
 
@@ -171,7 +171,7 @@ La singularidad cuando $q\to0$ exige otro cuidado: dos objetos extensos no conti
 
 []{#fpm-i-16-s03}
 
-## 16.3. De una fuerza a un campo {#fispm-c16-de-una-fuerza-a-un-campo}
+## 3. De una fuerza a un campo {#fispm-c16-de-una-fuerza-a-un-campo}
 
 Para estudiar el movimiento de distintas partículas alrededor de una misma distribución de masa, resulta cómodo separar lo que pertenece a la fuente de lo que pertenece a la partícula atraída. La fuerza contiene ambas masas; dividir por la masa de prueba deja una función del lugar.
 
@@ -203,7 +203,7 @@ Conocer una trayectoria en un solo lugar tampoco permite conocer de inmediato to
 
 []{#ejercicios-2}
 
-### 16.3.1. Ejercicios {#fispm-c16-ejercicios-2}
+### Ejercicios {#fispm-c16-ejercicios-2}
 
 []{#fispm-t1-c16-e0005}
 
@@ -223,7 +223,7 @@ Conocer una trayectoria en un solo lugar tampoco permite conocer de inmediato to
 
 []{#fpm-i-16-s04}
 
-## 16.4. Superposición y cancelación {#fispm-c16-superposiciuxf3n-y-cancelaciuxf3n}
+## 4. Superposición y cancelación {#fispm-c16-superposiciuxf3n-y-cancelaciuxf3n}
 
 Con dos fuentes hay que sumar dos vectores. Una masa puede atraer hacia la izquierda y otra hacia la derecha; las magnitudes por separado no dicen cuál será el movimiento resultante. En una configuración con simetría pueden desaparecer ciertas componentes y reforzarse otras.
 
@@ -261,7 +261,7 @@ El campo nulo no convierte ese punto en un lugar donde todas las contribuciones 
 
 []{#ejercicios-3}
 
-### 16.4.1. Ejercicios {#fispm-c16-ejercicios-3}
+### Ejercicios {#fispm-c16-ejercicios-3}
 
 []{#fispm-t1-c16-e0007}
 
@@ -281,7 +281,7 @@ El campo nulo no convierte ese punto en un lugar donde todas las contribuciones 
 
 []{#fpm-i-16-s05}
 
-## 16.5. Potencial: guardar el trabajo en una función {#fispm-c16-potencial-guardar-el-trabajo-en-una-funciuxf3n}
+## 5. Potencial: guardar el trabajo en una función {#fispm-c16-potencial-guardar-el-trabajo-en-una-funciuxf3n}
 
 Una fuerza puede cambiar de dirección a lo largo del camino. Integrar sus componentes para cada desplazamiento es posible, pero un campo conservativo permite organizar el cálculo de otra manera: asociamos a cada posición una función cuya diferencia determina el trabajo. El capítulo capítulo 13 construyó esa relación; para la gravitación podemos obtener la función explícitamente.
 
@@ -323,7 +323,7 @@ Los potenciales se suman como escalares y los campos como vectores. Esta diferen
 
 []{#ejercicios-4}
 
-### 16.5.1. Ejercicios {#fispm-c16-ejercicios-4}
+### Ejercicios {#fispm-c16-ejercicios-4}
 
 []{#fispm-t1-c16-e0009}
 
@@ -343,7 +343,7 @@ Los potenciales se suman como escalares y los campos como vectores. Esta diferen
 
 []{#fpm-i-16-s06}
 
-## 16.6. Trabajo y energía en un campo fijo {#fispm-c16-trabajo-y-energuxeda-en-un-campo-fijo}
+## 6. Trabajo y energía en un campo fijo {#fispm-c16-trabajo-y-energuxeda-en-un-campo-fijo}
 
 Si las fuentes permanecen fijas, su potencial no depende explícitamente del tiempo. Una partícula puede recorrer un camino curvo, acercarse y volver a alejarse; la diferencia de potencial continúa determinando el trabajo gravitatorio.
 
@@ -381,7 +381,7 @@ En el caso límite, la rapidez tiende a cero cuando el radio tiende a infinito. 
 
 []{#ejercicios-5}
 
-### 16.6.1. Ejercicios {#fispm-c16-ejercicios-5}
+### Ejercicios {#fispm-c16-ejercicios-5}
 
 []{#fispm-t1-c16-e0011}
 
@@ -401,7 +401,7 @@ En el caso límite, la rapidez tiende a cero cuando el radio tiende a infinito. 
 
 []{#fpm-i-16-s07}
 
-## 16.7. Un sistema gravitatorio: energía sin contar dos veces {#fispm-c16-un-sistema-gravitatorio-energuxeda-sin-contar-dos-veces}
+## 7. Un sistema gravitatorio: energía sin contar dos veces {#fispm-c16-un-sistema-gravitatorio-energuxeda-sin-contar-dos-veces}
 
 Cuando las fuentes también se mueven, ya no podemos tratar a todas como un campo fijo externo. La energía pertenece al sistema de partículas y a sus interacciones. Cada par aporta una sola energía potencial compartida.
 
@@ -445,7 +445,7 @@ La energía total puede conservarse mientras cada partícula cambia su energía 
 
 []{#ejercicios-6}
 
-### 16.7.1. Ejercicios {#fispm-c16-ejercicios-6}
+### Ejercicios {#fispm-c16-ejercicios-6}
 
 []{#fispm-t1-c16-e0013}
 
@@ -465,7 +465,7 @@ La energía total puede conservarse mientras cada partícula cambia su energía 
 
 []{#fpm-i-16-s08}
 
-## 16.8. Qué se aproxima al fijar una fuente {#fispm-c16-quuxe9-se-aproxima-al-fijar-una-fuente}
+## 8. Qué se aproxima al fijar una fuente {#fispm-c16-quuxe9-se-aproxima-al-fijar-una-fuente}
 
 La ley del par hace que ambos cuerpos se aceleren. En muchos problemas una masa es tan grande comparada con la otra que su movimiento adicional parece despreciable. Esa observación necesita convertirse en una comparación concreta: pequeño respecto de qué distancia y durante cuánto tiempo.
 
@@ -501,7 +501,7 @@ Si la fuente parte en reposo, proposición 16.15 controla su distancia a la posi
 
 []{#ejercicios-7}
 
-### 16.8.1. Ejercicios {#fispm-c16-ejercicios-7}
+### Ejercicios {#fispm-c16-ejercicios-7}
 
 []{#fispm-t1-c16-e0015}
 
@@ -519,7 +519,7 @@ Si la fuente parte en reposo, proposición 16.15 controla su distancia a la posi
 
 []{#fpm-i-16-s09}
 
-## 16.9. Una cáscara esférica {#fispm-c16-una-cuxe1scara-esfuxe9rica}
+## 9. Una cáscara esférica {#fispm-c16-una-cuxe1scara-esfuxe9rica}
 
 Para aplicar la ley puntual a un planeta hay que justificar la sustitución de una distribución extensa por una masa en su centro. La simetría esférica hace posible esa equivalencia para puntos exteriores. En el interior de una cáscara uniforme ocurre algo más sorprendente: sus contribuciones al campo se cancelan en todos los puntos, no sólo en el centro.
 
@@ -531,7 +531,7 @@ Para aplicar la ley puntual a un planeta hay que justificar la sustitución de u
 
 <figcaption>
 
-**Figura 16.2.** Una cáscara esférica homogénea infinitamente delgada produce campo nulo dentro y magnitud $GM/r^2$ fuera. La gráfica muestra los límites a cada lado; el campo sobre la superficie singular necesita una convención aparte. Véase §[16.9](#fispm-c16-una-cuxe1scara-esfuxe9rica).
+**Figura 16.2.** Una cáscara esférica homogénea infinitamente delgada produce campo nulo dentro y magnitud $GM/r^2$ fuera. La gráfica muestra los límites a cada lado; el campo sobre la superficie singular necesita una convención aparte. Véase §[9](#fispm-c16-una-cuxe1scara-esfuxe9rica).
 
 </figcaption>
 
@@ -583,7 +583,7 @@ La cancelación interior combina distancia y cantidad de masa en distintas direc
 
 []{#ejercicios-8}
 
-### 16.9.1. Ejercicios {#fispm-c16-ejercicios-8}
+### Ejercicios {#fispm-c16-ejercicios-8}
 
 []{#fispm-t1-c16-e0017}
 
@@ -603,7 +603,7 @@ La cancelación interior combina distancia y cantidad de masa en distintas direc
 
 []{#fpm-i-16-s10}
 
-## 16.10. Del conjunto de capas al interior de una esfera {#fispm-c16-del-conjunto-de-capas-al-interior-de-una-esfera}
+## 10. Del conjunto de capas al interior de una esfera {#fispm-c16-del-conjunto-de-capas-al-interior-de-una-esfera}
 
 Una distribución esférica puede construirse por capas concéntricas. Las capas interiores al punto de observación actúan como masas situadas en el centro; las exteriores tienen campo cero allí. El campo depende sólo de la masa encerrada, aunque el potencial recibe contribuciones de todas las capas.
 
@@ -615,7 +615,7 @@ Una distribución esférica puede construirse por capas concéntricas. Las capas
 
 <figcaption>
 
-**Figura 16.3.** Para una esfera uniforme de radio $R$, el módulo normalizado es $g/(GM/R^2)=r/R$ dentro y $(R/r)^2$ fuera. El campo es continuo en la superficie y se anula en el centro. Véase §[16.10](#fispm-c16-del-conjunto-de-capas-al-interior-de-una-esfera).
+**Figura 16.3.** Para una esfera uniforme de radio $R$, el módulo normalizado es $g/(GM/R^2)=r/R$ dentro y $(R/r)^2$ fuera. El campo es continuo en la superficie y se anula en el centro. Véase §[10](#fispm-c16-del-conjunto-de-capas-al-interior-de-una-esfera).
 
 </figcaption>
 
@@ -661,7 +661,7 @@ El campo interno lineal produce una fuerza restauradora sobre una partícula que
 
 []{#ejercicios-9}
 
-### 16.10.1. Ejercicios {#fispm-c16-ejercicios-9}
+### Ejercicios {#fispm-c16-ejercicios-9}
 
 []{#fispm-t1-c16-e0019}
 
@@ -681,7 +681,7 @@ El campo interno lineal produce una fuerza restauradora sobre una partícula que
 
 []{#fpm-i-16-s11}
 
-## 16.11. Cuándo sirve una gravedad uniforme {#fispm-c16-cuuxe1ndo-sirve-una-gravedad-uniforme}
+## 11. Cuándo sirve una gravedad uniforme {#fispm-c16-cuuxe1ndo-sirve-una-gravedad-uniforme}
 
 Cerca de la superficie de un cuerpo esférico, una distancia de unos metros puede ser pequeña comparada con el radio del cuerpo. El campo cambia poco en ese recorrido y el potencial admite una aproximación lineal. Esa es la conexión entre la ley de gravitación y la expresión $mgh$ utilizada en problemas locales.
 
@@ -719,7 +719,7 @@ Tampoco se confunde este campo con la aceleración efectiva de un laboratorio qu
 
 []{#ejercicios-10}
 
-### 16.11.1. Ejercicios {#fispm-c16-ejercicios-10}
+### Ejercicios {#fispm-c16-ejercicios-10}
 
 []{#fispm-t1-c16-e0021}
 
@@ -739,7 +739,7 @@ Tampoco se confunde este campo con la aceleración efectiva de un laboratorio qu
 
 []{#fpm-i-16-s12}
 
-## 16.12. La variación espacial que produce mareas {#fispm-c16-la-variaciuxf3n-espacial-que-produce-mareas}
+## 12. La variación espacial que produce mareas {#fispm-c16-la-variaciuxf3n-espacial-que-produce-mareas}
 
 Dos partículas cercanas pueden caer casi juntas y, sin embargo, cambiar su separación. La aceleración común no modifica directamente esa separación; la diferencia entre los campos que reciben sí lo hace. Esta variación espacial es la base del efecto de marea en un modelo gravitatorio.
 
@@ -751,7 +751,7 @@ Dos partículas cercanas pueden caer casi juntas y, sin embargo, cambiar su sepa
 
 <figcaption>
 
-**Figura 16.4.** En la aproximación lineal alrededor de una separación radial $R$, la aceleración relativa estira en dirección radial y comprime en dirección transversal. Se ha restado la aceleración del centro. Véase §[16.12](#fispm-c16-la-variaciuxf3n-espacial-que-produce-mareas).
+**Figura 16.4.** En la aproximación lineal alrededor de una separación radial $R$, la aceleración relativa estira en dirección radial y comprime en dirección transversal. Se ha restado la aceleración del centro. Véase §[12](#fispm-c16-la-variaciuxf3n-espacial-que-produce-mareas).
 
 </figcaption>
 
@@ -793,7 +793,7 @@ La aproximación lineal de la proposición 16.22 tiene sentido para separaciones
 
 []{#ejercicios-11}
 
-### 16.12.1. Ejercicios {#fispm-c16-ejercicios-11}
+### Ejercicios {#fispm-c16-ejercicios-11}
 
 []{#fispm-t1-c16-e0023}
 
@@ -819,7 +819,7 @@ La aproximación lineal de la proposición 16.22 tiene sentido para separaciones
 
 []{#fpm-i-16-s13}
 
-## 16.13. Qué puede inferirse de una medición {#fispm-c16-quuxe9-puede-inferirse-de-una-mediciuxf3n}
+## 13. Qué puede inferirse de una medición {#fispm-c16-quuxe9-puede-inferirse-de-una-mediciuxf3n}
 
 Medir un campo y despejar una masa parece inmediato. El resultado sólo tiene ese significado si la geometría y las otras fuentes están suficientemente controladas. Para un observador exterior a una distribución esférica, el campo determina su masa total; dentro determina la masa encerrada.
 
@@ -845,7 +845,7 @@ Otra limitación es la falta de unicidad de la distribución interior. Todas las
 
 []{#ejercicios-12}
 
-### 16.13.1. Ejercicios {#fispm-c16-ejercicios-12}
+### Ejercicios {#fispm-c16-ejercicios-12}
 
 []{#fispm-t1-c16-e0026}
 
@@ -871,7 +871,7 @@ Otra limitación es la falta de unicidad de la distribución interior. Todas las
 
 []{#fpm-i-16-s14}
 
-## 16.14. Conectar la distribución con el movimiento {#fispm-c16-conectar-la-distribuciuxf3n-con-el-movimiento}
+## 14. Conectar la distribución con el movimiento {#fispm-c16-conectar-la-distribuciuxf3n-con-el-movimiento}
 
 La ley puntual, la superposición y la simetría permiten avanzar desde una distribución de masa hasta un campo. El potencial añade una vía de cálculo de trabajo y energía. Para una distribución esférica, el exterior se reduce a una masa central; dentro, la masa encerrada y las capas externas cumplen funciones diferentes. Esa distinción delimita qué puede aprenderse de una observación y qué se necesita para predecir un movimiento.
 
@@ -900,7 +900,7 @@ Para cerrar un cálculo conviene identificar qué clase de resultado se obtuvo:
 
 []{#ejercicios-13}
 
-### 16.14.1. Ejercicios {#fispm-c16-ejercicios-13}
+### Ejercicios {#fispm-c16-ejercicios-13}
 
 []{#fispm-t1-c16-e0029}
 

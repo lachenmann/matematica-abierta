@@ -43,7 +43,7 @@ El capítulo anterior reunió las velocidades en una suma ponderada por las masa
 
 []{#fpm-i-15-s01}
 
-## 15.1. Qué información conserva el momento angular {#fispm-c15-quuxe9-informaciuxf3n-conserva-el-momento-angular}
+## 1. Qué información conserva el momento angular {#fispm-c15-quuxe9-informaciuxf3n-conserva-el-momento-angular}
 
 Imaginemos una partícula que cruza una mesa de izquierda a derecha con velocidad constante. Tomamos un punto de referencia en la mesa. Si la trayectoria pasa por ese punto, el movimiento es enteramente radial en cada instante distinto del cruce. Si pasa a cierta distancia, la dirección que une el punto con la partícula va girando. En ambos casos el momento lineal puede ser el mismo; cambia la relación entre posición y movimiento.
 
@@ -75,7 +75,7 @@ La recta usada en la proposición 15.1 es instantánea. Sólo coincide con una t
 
 []{#ejercicios}
 
-### 15.1.1. Ejercicios {#fispm-c15-ejercicios}
+### Ejercicios {#fispm-c15-ejercicios}
 
 []{#fispm-t1-c15-e0001}
 
@@ -97,7 +97,7 @@ La recta usada en la proposición 15.1 es instantánea. Sólo coincide con una t
 
 []{#fpm-i-15-s02}
 
-## 15.2. Torque y lugar de aplicación {#fispm-c15-torque-y-lugar-de-aplicaciuxf3n}
+## 2. Torque y lugar de aplicación {#fispm-c15-torque-y-lugar-de-aplicaciuxf3n}
 
 Para abrir una puerta podemos aumentar la fuerza o alejarnos de las bisagras. También podemos cambiar la dirección del empuje. Empujar hacia la bisagra aprovecha poco la fuerza para girar; empujar perpendicularmente a la puerta aprovecha todo su brazo. El producto vectorial reúne esas variaciones.
 
@@ -109,7 +109,7 @@ Para abrir una puerta podemos aumentar la fuerza o alejarnos de las bisagras. Ta
 
 <figcaption>
 
-**Figura 15.1.** La fuerza vertical tiene torque $\tau_z=dF$ respecto del origen. El brazo $d$ es la distancia perpendicular a su línea de acción, no la distancia desde el origen hasta el punto de aplicación. Véase §[15.2](#fispm-c15-torque-y-lugar-de-aplicaciuxf3n).
+**Figura 15.1.** La fuerza vertical tiene torque $\tau_z=dF$ respecto del origen. El brazo $d$ es la distancia perpendicular a su línea de acción, no la distancia desde el origen hasta el punto de aplicación. Véase §[2](#fispm-c15-torque-y-lugar-de-aplicaciuxf3n).
 
 </figcaption>
 
@@ -123,7 +123,7 @@ Para abrir una puerta podemos aumentar la fuerza o alejarnos de las bisagras. Ta
 
 <figcaption>
 
-**Figura 15.2.** Una fuerza hacia arriba aplicada a la derecha de $O$ produce torque positivo, saliente del plano. El vector de posición y la fuerza cumplen $\tau_O=r\times F$. Véase §[15.2](#fispm-c15-torque-y-lugar-de-aplicaciuxf3n).
+**Figura 15.2.** Una fuerza hacia arriba aplicada a la derecha de $O$ produce torque positivo, saliente del plano. El vector de posición y la fuerza cumplen $\tau_O=r\times F$. Véase §[2](#fispm-c15-torque-y-lugar-de-aplicaciuxf3n).
 
 </figcaption>
 
@@ -159,7 +159,7 @@ En SI corresponden a $\mathrm{kg\,m^2\,s^{-1}}$ y $\mathrm{N\,m}$. Torque y ener
 
 []{#ejercicios-1}
 
-### 15.2.1. Ejercicios {#fispm-c15-ejercicios-1}
+### Ejercicios {#fispm-c15-ejercicios-1}
 
 []{#fispm-t1-c15-e0003}
 
@@ -179,7 +179,7 @@ En SI corresponden a $\mathrm{kg\,m^2\,s^{-1}}$ y $\mathrm{N\,m}$. Torque y ener
 
 []{#fpm-i-15-s03}
 
-## 15.3. El balance para una partícula {#fispm-c15-el-balance-para-una-partuxedcula}
+## 3. El balance para una partícula {#fispm-c15-el-balance-para-una-partuxedcula}
 
 Ya tenemos dos definiciones. La ley de Newton permite conectarlas. Para derivar respecto del tiempo hay que controlar qué hace el punto de referencia: el vector que une dos puntos cambia por el movimiento de ambos.
 
@@ -215,7 +215,7 @@ Que el torque sea cero respecto de un punto móvil no basta para conservar $\mat
 
 []{#ejercicios-2}
 
-### 15.3.1. Ejercicios {#fispm-c15-ejercicios-2}
+### Ejercicios {#fispm-c15-ejercicios-2}
 
 []{#fispm-t1-c15-e0005}
 
@@ -235,7 +235,7 @@ Que el torque sea cero respecto de un punto móvil no basta para conservar $\mat
 
 []{#fpm-i-15-s04}
 
-## 15.4. Cambiar el punto de referencia {#fispm-c15-cambiar-el-punto-de-referencia}
+## 4. Cambiar el punto de referencia {#fispm-c15-cambiar-el-punto-de-referencia}
 
 La dependencia respecto de un punto puede parecer incómoda, pero tiene una regla simple. Conviene conocerla para escoger una referencia que elimine torques desconocidos o haga transparente una conservación.
 
@@ -275,7 +275,7 @@ Estas reglas también conectan los balances. Si $A$ y $B$ son fijos y $\dot{\mat
 
 []{#ejercicios-3}
 
-### 15.4.1. Ejercicios {#fispm-c15-ejercicios-3}
+### Ejercicios {#fispm-c15-ejercicios-3}
 
 []{#fispm-t1-c15-e0007}
 
@@ -295,7 +295,7 @@ Estas reglas también conectan los balances. Si $A$ y $B$ son fijos y $\dot{\mat
 
 []{#fpm-i-15-s05}
 
-## 15.5. Fuerzas internas: qué debe cancelarse {#fispm-c15-fuerzas-internas-quuxe9-debe-cancelarse}
+## 5. Fuerzas internas: qué debe cancelarse {#fispm-c15-fuerzas-internas-quuxe9-debe-cancelarse}
 
 Al sumar las ecuaciones de Newton en el capítulo anterior, dos fuerzas internas iguales y opuestas desaparecían. Para el momento angular la suma conserva además los lugares donde actúan. Esta diferencia obliga a revisar la hipótesis de interacción.
 
@@ -341,7 +341,7 @@ Podemos construir un modelo de dos partículas en $(a,0,0)$ y $(-a,0,0)$ con fue
 
 []{#ejercicios-4}
 
-### 15.5.1. Ejercicios {#fispm-c15-ejercicios-4}
+### Ejercicios {#fispm-c15-ejercicios-4}
 
 []{#fispm-t1-c15-e0009}
 
@@ -361,7 +361,7 @@ Podemos construir un modelo de dos partículas en $(a,0,0)$ y $(-a,0,0)$ con fue
 
 []{#fpm-i-15-s06}
 
-## 15.6. Balance, conservación e impulso angular {#fispm-c15-balance-conservaciuxf3n-e-impulso-angular}
+## 6. Balance, conservación e impulso angular {#fispm-c15-balance-conservaciuxf3n-e-impulso-angular}
 
 Con las hipótesis ya separadas, el balance de un sistema puede escribirse sin omisiones.
 
@@ -401,7 +401,7 @@ Una medición experimental puede reconstruir las posiciones y velocidades de las
 
 []{#ejercicios-5}
 
-### 15.6.1. Ejercicios {#fispm-c15-ejercicios-5}
+### Ejercicios {#fispm-c15-ejercicios-5}
 
 []{#fispm-t1-c15-e0011}
 
@@ -421,7 +421,7 @@ Una medición experimental puede reconstruir las posiciones y velocidades de las
 
 []{#fpm-i-15-s07}
 
-## 15.7. Separar traslación y movimiento interno {#fispm-c15-separar-traslaciuxf3n-y-movimiento-interno}
+## 7. Separar traslación y movimiento interno {#fispm-c15-separar-traslaciuxf3n-y-movimiento-interno}
 
 El centro de masa reúne la traslación del sistema. Para separar el momento angular ligado a esa traslación del momento angular interno hay que introducir posiciones y velocidades relativas al mismo centro.
 
@@ -463,7 +463,7 @@ El balance angular en el centro es válido incluso cuando el centro acelera. La 
 
 []{#ejercicios-6}
 
-### 15.7.1. Ejercicios {#fispm-c15-ejercicios-6}
+### Ejercicios {#fispm-c15-ejercicios-6}
 
 []{#fispm-t1-c15-e0013}
 
@@ -483,7 +483,7 @@ El balance angular en el centro es válido incluso cuando el centro acelera. La 
 
 []{#fpm-i-15-s08}
 
-## 15.8. Dos partículas y el alcance del balance {#fispm-c15-dos-partuxedculas-y-el-alcance-del-balance}
+## 8. Dos partículas y el alcance del balance {#fispm-c15-dos-partuxedculas-y-el-alcance-del-balance}
 
 La coordenada relativa del capítulo anterior permite escribir el momento angular interno de un par como si una sola masa describiera su separación. Esa reducción prepara el estudio de fuerzas centrales, pero todavía no determina una órbita.
 
@@ -515,7 +515,7 @@ Para un par aislado con interacciones centrales, el centro se traslada uniformem
 
 []{#ejercicios-7}
 
-### 15.8.1. Ejercicios {#fispm-c15-ejercicios-7}
+### Ejercicios {#fispm-c15-ejercicios-7}
 
 **Ejercicio 15.15.** Sean $m_1=m$ y $m_2=3m$. En cierto instante, $\mathbf q=a\mathbf e_x$ y $\dot{\mathbf q}=w\mathbf e_x+u\mathbf e_y$, con $a>0$. Calcula el momento angular interno y la energía cinética relativa. ¿El primero determina la segunda?
 
@@ -533,7 +533,7 @@ Para un par aislado con interacciones centrales, el centro se traslada uniformem
 
 []{#fpm-i-15-s09}
 
-## 15.9. Leer un movimiento en coordenadas polares {#fispm-c15-leer-un-movimiento-en-coordenadas-polares}
+## 9. Leer un movimiento en coordenadas polares {#fispm-c15-leer-un-movimiento-en-coordenadas-polares}
 
 Un momento angular constante puede acompañar una velocidad angular variable. El ejemplo rectilíneo de §1 ya lo mostró. Para comprender la relación conviene separar dos cambios que se mezclan en las coordenadas cartesianas: la distancia al punto de referencia y la dirección desde la que se ve la partícula.
 
@@ -577,7 +577,7 @@ Una fuerza radial puede hacer que $\rho$ cambie y, con ello, que cambie $\dot\th
 
 []{#ejercicios-8}
 
-### 15.9.1. Ejercicios {#fispm-c15-ejercicios-8}
+### Ejercicios {#fispm-c15-ejercicios-8}
 
 []{#fispm-t1-c15-e0017}
 
@@ -597,7 +597,7 @@ Una fuerza radial puede hacer que $\rho$ cambie y, con ello, que cambie $\dot\th
 
 []{#fpm-i-15-s10}
 
-## 15.10. El área que barre una dirección {#fispm-c15-el-uxe1rea-que-barre-una-direcciuxf3n}
+## 10. El área que barre una dirección {#fispm-c15-el-uxe1rea-que-barre-una-direcciuxf3n}
 
 La relación $\rho^2\dot\theta=\text{constante}$ tiene una lectura geométrica: el segmento que une el origen con la partícula barre áreas iguales en tiempos iguales. Podemos obtenerla sin conocer la forma de la trayectoria.
 
@@ -609,7 +609,7 @@ La relación $\rho^2\dot\theta=\text{constante}$ tiene una lectura geométrica: 
 
 <figcaption>
 
-**Figura 15.3.** La tasa de área barrida por el vector relativo es $\dot A=\ell/(2\mu)$. Si el torque respecto del centro es nulo, esa tasa firmada es constante. Véase §[15.10](#fispm-c15-el-uxe1rea-que-barre-una-direcciuxf3n).
+**Figura 15.3.** La tasa de área barrida por el vector relativo es $\dot A=\ell/(2\mu)$. Si el torque respecto del centro es nulo, esa tasa firmada es constante. Véase §[10](#fispm-c15-el-uxe1rea-que-barre-una-direcciuxf3n).
 
 </figcaption>
 
@@ -655,7 +655,7 @@ La ley de áreas aparecerá de nuevo al estudiar las órbitas de Kepler. Aquí t
 
 []{#ejercicios-9}
 
-### 15.10.1. Ejercicios {#fispm-c15-ejercicios-9}
+### Ejercicios {#fispm-c15-ejercicios-9}
 
 []{#fispm-t1-c15-e0019}
 
@@ -675,7 +675,7 @@ La ley de áreas aparecerá de nuevo al estudiar las órbitas de Kepler. Aquí t
 
 []{#fpm-i-15-s11}
 
-## 15.11. Fuerza radial, torque y energía {#fispm-c15-fuerza-radial-torque-y-energuxeda}
+## 11. Fuerza radial, torque y energía {#fispm-c15-fuerza-radial-torque-y-energuxeda}
 
 La conservación angular responde a la dirección de la fuerza respecto de un punto. La energía requiere conocer además su trabajo. Una fuerza radial tiene torque cero, pero puede realizar trabajo cuando cambia el radio.
 
@@ -687,7 +687,7 @@ La conservación angular responde a la dirección de la fuerza respecto de un pu
 
 <figcaption>
 
-**Figura 15.4.** Una fuerza radial tiene torque nulo respecto del centro porque es paralela a $r$. Puede cambiar la rapidez radial aunque conserve el momento angular. Véase §[15.11](#fispm-c15-fuerza-radial-torque-y-energuxeda).
+**Figura 15.4.** Una fuerza radial tiene torque nulo respecto del centro porque es paralela a $r$. Puede cambiar la rapidez radial aunque conserve el momento angular. Véase §[11](#fispm-c15-fuerza-radial-torque-y-energuxeda).
 
 </figcaption>
 
@@ -729,7 +729,7 @@ Agregar a $U$ una función arbitraria $c(t)$ conserva la fuerza, pero modifica t
 
 []{#ejercicios-10}
 
-### 15.11.1. Ejercicios {#fispm-c15-ejercicios-10}
+### Ejercicios {#fispm-c15-ejercicios-10}
 
 []{#fispm-t1-c15-e0021}
 
@@ -749,7 +749,7 @@ Agregar a $U$ una función arbitraria $c(t)$ conserva la fuerza, pero modifica t
 
 []{#fpm-i-15-s12}
 
-## 15.12. Impulsos y posición durante el contacto {#fispm-c15-impulsos-y-posiciuxf3n-durante-el-contacto}
+## 12. Impulsos y posición durante el contacto {#fispm-c15-impulsos-y-posiciuxf3n-durante-el-contacto}
 
 Una fuerza muy intensa durante un tiempo breve puede producir un cambio importante de momento. El balance angular sigue siendo una integral de torque. Para reducirla al producto de una posición por un impulso necesitamos controlar cuánto se movió el punto de aplicación.
 
@@ -799,7 +799,7 @@ Ni proposición 15.21 ni proposición 15.22 suministran una ley de restitución 
 
 []{#ejercicios-11}
 
-### 15.12.1. Ejercicios {#fispm-c15-ejercicios-11}
+### Ejercicios {#fispm-c15-ejercicios-11}
 
 []{#fispm-t1-c15-e0023}
 
@@ -831,7 +831,7 @@ Ni proposición 15.21 ni proposición 15.22 suministran una ley de restitución 
 
 []{#fpm-i-15-s13}
 
-## 15.13. Reconstruir y poner a prueba una inferencia {#fispm-c15-reconstruir-y-poner-a-prueba-una-inferencia}
+## 13. Reconstruir y poner a prueba una inferencia {#fispm-c15-reconstruir-y-poner-a-prueba-una-inferencia}
 
 Los balances se vuelven más útiles cuando se utilizan para comprobar una descripción concreta. Si conocemos una trayectoria, podemos reconstruir la fuerza exigida por Newton y contrastar su torque con la variación angular. Ese procedimiento también revela lo que una observación incompleta deja indeterminado.
 
@@ -859,7 +859,7 @@ En un problema directo se da la fuerza y se busca el movimiento. En uno inverso 
 
 []{#ejercicios-12}
 
-### 15.13.1. Ejercicios {#fispm-c15-ejercicios-12}
+### Ejercicios {#fispm-c15-ejercicios-12}
 
 []{#fispm-t1-c15-e0027}
 
@@ -879,7 +879,7 @@ En un problema directo se da la fuerza y se busca el movimiento. En uno inverso 
 
 []{#fpm-i-15-s14}
 
-## 15.14. Elegir el balance que responde al problema {#fispm-c15-elegir-el-balance-que-responde-al-problema}
+## 14. Elegir el balance que responde al problema {#fispm-c15-elegir-el-balance-que-responde-al-problema}
 
 La descripción angular empieza por un punto de referencia. Una vez fijado, las posiciones y momentos dan una cantidad que podemos calcular en cada estado. La ecuación dinámica relaciona su cambio con los torques y, cuando el punto se mueve, con el término de transporte. El centro de masa ofrece una elección particularmente fértil porque separa la traslación colectiva del movimiento interno y cancela ese transporte para masas constantes.
 
@@ -920,7 +920,7 @@ Al resolver un problema pueden organizarse las comprobaciones así:
 
 []{#ejercicios-13}
 
-### 15.14.1. Ejercicios {#fispm-c15-ejercicios-13}
+### Ejercicios {#fispm-c15-ejercicios-13}
 
 []{#fispm-t1-c15-e0029}
 

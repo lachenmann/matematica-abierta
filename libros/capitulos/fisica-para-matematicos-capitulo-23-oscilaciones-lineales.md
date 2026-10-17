@@ -47,7 +47,7 @@ Usaremos las leyes de Newton y el estudio de potencial y estabilidad del capítu
 
 []{#fpm-i-23-s01}
 
-## 23.1. La fuerza cerca del equilibrio {#fispm-c23-la-fuerza-cerca-del-equilibrio}
+## 1. La fuerza cerca del equilibrio {#fispm-c23-la-fuerza-cerca-del-equilibrio}
 
 Sea $q$ una coordenada cartesiana para una partícula de masa constante $m>0$. En ausencia de otras fuerzas, su ecuación es $m\ddot q=-U'(q)$. Un equilibrio $q_*$ satisface $U'(q_*)=0$. Escribir $x=q-q_*$ permite medir las desviaciones desde ese punto.
 
@@ -59,7 +59,7 @@ Sea $q$ una coordenada cartesiana para una partícula de masa constante $m>0$. E
 
 <figcaption>
 
-**Figura 23.1.** El desplazamiento se mide desde el equilibrio. Para $x>0$, la fuerza elástica es negativa: $m\ddot x=-kx$. El plano es liso y las fuerzas verticales se compensan. Véase §[23.1](#fispm-c23-la-fuerza-cerca-del-equilibrio).
+**Figura 23.1.** El desplazamiento se mide desde el equilibrio. Para $x>0$, la fuerza elástica es negativa: $m\ddot x=-kx$. El plano es liso y las fuerzas verticales se compensan. Véase §[1](#fispm-c23-la-fuerza-cerca-del-equilibrio).
 
 </figcaption>
 
@@ -89,7 +89,7 @@ Cuando $U''(q_*)=0$, el argumento no produce un resorte de rigidez positiva. El 
 
 []{#fpm-i-23-s02}
 
-## 23.2. Resolver el problema inicial {#fispm-c23-resolver-el-problema-inicial}
+## 2. Resolver el problema inicial {#fispm-c23-resolver-el-problema-inicial}
 
 La ecuación normalizada es $\ddot x+\omega_0^2x=0$. Derivar dos veces un seno o un coseno devuelve la misma función multiplicada por $-\omega_0^2$. Esto sugiere buscar la solución en el espacio generado por ambas funciones.
 
@@ -117,7 +117,7 @@ donde el valor numérico de $t$ se introduce en segundos. La rapidez inicial pos
 
 []{#fpm-i-23-s03}
 
-## 23.3. Amplitud y fase {#fispm-c23-amplitud-y-fase}
+## 3. Amplitud y fase {#fispm-c23-amplitud-y-fase}
 
 Los dos coeficientes de la solución contienen información que puede reorganizarse geométricamente. Pongamos
 
@@ -145,7 +145,7 @@ Por tanto, una fase aislada depende del reloj elegido. La diferencia de fase ent
 
 []{#fpm-i-23-s04}
 
-## 23.4. Energía y geometría del estado {#fispm-c23-energuxeda-y-geometruxeda-del-estado}
+## 4. Energía y geometría del estado {#fispm-c23-energuxeda-y-geometruxeda-del-estado}
 
 La energía del oscilador, tomando cero de potencial en el equilibrio, es $E=\frac12m\dot x^2+\frac12kx^2.$
 
@@ -173,7 +173,7 @@ En las coordenadas $(x,v/\omega_0)$ la elipse se convierte en un círculo. El pu
 
 []{#fpm-i-23-s05}
 
-## 23.5. Qué conserva la aproximación armónica {#fispm-c23-quuxe9-conserva-la-aproximaciuxf3n-armuxf3nica}
+## 5. Qué conserva la aproximación armónica {#fispm-c23-quuxe9-conserva-la-aproximaciuxf3n-armuxf3nica}
 
 En un resorte vertical ideal, con eje positivo hacia abajo, la ecuación es $m\ddot q=mg-kq$, donde $q$ mide el alargamiento desde la longitud natural. El equilibrio se encuentra en $q_*=mg/k$. Al escribir $x=q-q_*$ queda exactamente $m\ddot x=-kx$. La gravedad uniforme desplaza el equilibrio; el coeficiente de la desviación sigue siendo $k$.
 
@@ -201,7 +201,7 @@ El período real es mayor que $T_0$: el integrando exacto es mayor que uno en el
 
 []{#fpm-i-23-s06}
 
-## 23.6. Una fuerza que disipa energía {#fispm-c23-una-fuerza-que-disipa-energuxeda}
+## 6. Una fuerza que disipa energía {#fispm-c23-una-fuerza-que-disipa-energuxeda}
 
 Un movimiento real suele perder energía mecánica. En un régimen en que la fuerza resistente es aproximadamente proporcional a la velocidad respecto del medio, escribimos $F_d=-b\dot x$, con $b\ge0$. El medio y el soporte del resorte se suponen en reposo en el marco usado. La ecuación libre es $m\ddot x+b\dot x+kx=0.$
 
@@ -227,7 +227,7 @@ La ley viscosa es una hipótesis de modelo. El rozamiento seco depende del signo
 
 []{#fpm-i-23-s07}
 
-## 23.7. Los tres regímenes de retorno {#fispm-c23-los-tres-reguxedmenes-de-retorno}
+## 7. Los tres regímenes de retorno {#fispm-c23-los-tres-reguxedmenes-de-retorno}
 
 Buscamos soluciones $x=e^{rt}$. Al sustituir, aparece $r^2+2\beta r+\omega_0^2=0$. El discriminante decide la forma del movimiento.
 
@@ -255,7 +255,7 @@ En el caso subamortiguado, cualquier solución no nula cambia de signo repetidam
 
 <figcaption>
 
-**Figura 23.2.** Con $x(0)=1$, $\dot x(0)=0$ y $\omega_0=1$, se comparan $\beta=0{,}3$ (continua), $1$ (discontinua) y $1{,}5$ (punteada) en $\ddot x+2\beta\dot x+x=0$. Sólo el primero cruza repetidamente el equilibrio. Véase §[23.7](#fispm-c23-los-tres-reguxedmenes-de-retorno).
+**Figura 23.2.** Con $x(0)=1$, $\dot x(0)=0$ y $\omega_0=1$, se comparan $\beta=0{,}3$ (continua), $1$ (discontinua) y $1{,}5$ (punteada) en $\ddot x+2\beta\dot x+x=0$. Sólo el primero cruza repetidamente el equilibrio. Véase §[7](#fispm-c23-los-tres-reguxedmenes-de-retorno).
 
 </figcaption>
 
@@ -279,7 +279,7 @@ Cuando $\beta$ es muy grande, $r_+\sim-\omega_0^2/(2\beta)=-k/b$. Una resistenci
 
 []{#fpm-i-23-s08}
 
-## 23.8. Medir el decaimiento {#fispm-c23-medir-el-decaimiento}
+## 8. Medir el decaimiento {#fispm-c23-medir-el-decaimiento}
 
 En el régimen subamortiguado podemos escribir $x=A_de^{-\beta t}\cos(\omega_dt+\phi_d)$. El factor $A_de^{-\beta t}$ es una envolvente: la curva permanece entre sus valores positivo y negativo. Los extremos reales no ocurren exactamente cuando el coseno vale $\pm1$, porque también varía la exponencial.
 
@@ -309,7 +309,7 @@ pues tanto posición como velocidad se multiplican por $e^{-\beta T_d}$ al avanz
 
 []{#fpm-i-23-s09}
 
-## 23.9. Una fuerza aplicada y la respuesta causal {#fispm-c23-una-fuerza-aplicada-y-la-respuesta-causal}
+## 9. Una fuerza aplicada y la respuesta causal {#fispm-c23-una-fuerza-aplicada-y-la-respuesta-causal}
 
 Incorporemos una fuerza exterior prescrita $F(t)$: $m\ddot x+b\dot x+kx=F(t).$ La ecuación es lineal. Si $x_1,x_2$ responden a $F_1,F_2$, entonces $a_1x_1+a_2x_2$ responde a $a_1F_1+a_2F_2$. Para sumar respuestas con condiciones iniciales hay que sumar también esos datos. Cuando se busca la respuesta de reposo, todas las contribuciones se toman con datos nulos.
 
@@ -333,7 +333,7 @@ Una fuerza continua por tramos también admite esta fórmula, interpretando las 
 
 []{#fpm-i-23-s10}
 
-## 23.10. Fuerza sinusoidal y desfase {#fispm-c23-fuerza-sinusoidal-y-desfase}
+## 10. Fuerza sinusoidal y desfase {#fispm-c23-fuerza-sinusoidal-y-desfase}
 
 Supongamos $F(t)=F_0\cos(\Omega t)$, con $F_0>0$, $\Omega>0$ y $b>0$. Buscamos una solución particular de la misma frecuencia, $x_s(t)=a\cos(\Omega t)+c\sin(\Omega t).$ Sustituir y agrupar senos y cosenos da, poniendo $d=k-m\Omega^2$, $da+b\Omega c=F_0,\qquad dc-b\Omega a=0.$
 
@@ -345,7 +345,7 @@ Supongamos $F(t)=F_0\cos(\Omega t)$, con $F_0>0$, $\Omega>0$ y $b>0$. Buscamos u
 
 <figcaption>
 
-**Figura 23.3.** Para $\ddot x+0{,}4\dot x+x=F_0\cos\Omega t$, la fase estacionaria satisface $\delta=\operatorname{atan2}(0{,}4\Omega,1-\Omega^2)$. En $\Omega=1$, la respuesta se retrasa $\pi/2$ respecto de la fuerza. Véase §[23.10](#fispm-c23-fuerza-sinusoidal-y-desfase).
+**Figura 23.3.** Para $\ddot x+0{,}4\dot x+x=F_0\cos\Omega t$, la fase estacionaria satisface $\delta=\operatorname{atan2}(0{,}4\Omega,1-\Omega^2)$. En $\Omega=1$, la respuesta se retrasa $\pi/2$ respecto de la fuerza. Véase §[10](#fispm-c23-fuerza-sinusoidal-y-desfase).
 
 </figcaption>
 
@@ -375,7 +375,7 @@ Con la convención compleja $F(t)=\operatorname{Re}(F_0e^{i\Omega t})$, la susce
 
 []{#fpm-i-23-s11}
 
-## 23.11. Qué frecuencia maximiza el desplazamiento {#fispm-c23-quuxe9-frecuencia-maximiza-el-desplazamiento}
+## 11. Qué frecuencia maximiza el desplazamiento {#fispm-c23-quuxe9-frecuencia-maximiza-el-desplazamiento}
 
 La amplitud depende de $\Omega$. Para compararla entre frecuencias fijaremos $m,k,b$ y la amplitud de fuerza $F_0$. Esta última condición importa: si el mecanismo cambia la fuerza al variar la frecuencia, cambia también el problema de optimización.
 
@@ -387,7 +387,7 @@ La amplitud depende de $\Omega$. Para compararla entre frecuencias fijaremos $m,
 
 <figcaption>
 
-**Figura 23.4.** Con $\omega_0=1$ y $\beta=0{,}2$, la amplitud estacionaria normalizada es $[(1-\omega^2)^2+0{,}16\omega^2]^{-1/2}$. Su máximo ocurre en $\omega=\sqrt{0{,}92}$, por debajo de la frecuencia natural. Véase §[23.11](#fispm-c23-quuxe9-frecuencia-maximiza-el-desplazamiento).
+**Figura 23.4.** Con $\omega_0=1$ y $\beta=0{,}2$, la amplitud estacionaria normalizada es $[(1-\omega^2)^2+0{,}16\omega^2]^{-1/2}$. Su máximo ocurre en $\omega=\sqrt{0{,}92}$, por debajo de la frecuencia natural. Véase §[11](#fispm-c23-quuxe9-frecuencia-maximiza-el-desplazamiento).
 
 </figcaption>
 
@@ -417,7 +417,7 @@ La frecuencia natural $\omega_0$, la frecuencia libre amortiguada $\omega_d$ y l
 
 []{#fpm-i-23-s12}
 
-## 23.12. Trabajo por ciclo y resonancia de potencia {#fispm-c23-trabajo-por-ciclo-y-resonancia-de-potencia}
+## 12. Trabajo por ciclo y resonancia de potencia {#fispm-c23-trabajo-por-ciclo-y-resonancia-de-potencia}
 
 El balance energético con fuerza exterior es $\dot E=F(t)\dot x-b\dot x^2.$ En régimen estacionario, la energía recupera su valor después de un período $T_\Omega=2\pi/\Omega$. Promediar el balance da $\langle F\dot x_s\rangle=b\langle\dot x_s^2\rangle$. La potencia que entrega la fuerza compensa exactamente la disipación media.
 
@@ -455,7 +455,7 @@ La igualdad para la anchura es exacta para esta potencia, este amortiguamiento v
 
 []{#fpm-i-23-s13}
 
-## 23.13. Resonancia sin disipación y batidos {#fispm-c23-resonancia-sin-disipaciuxf3n-y-batidos}
+## 13. Resonancia sin disipación y batidos {#fispm-c23-resonancia-sin-disipaciuxf3n-y-batidos}
 
 Para $b=0$ desaparece el mecanismo que borra las condiciones iniciales. Si $\Omega\ne\omega_0$, todavía existe una solución particular sinusoidal, pero el movimiento libre que se le añade permanece indefinidamente. Ya no se obtiene una respuesta única atrayente.
 
@@ -487,7 +487,7 @@ La fórmula resonante también se recupera tomando $\Omega\to\omega_0$ en la sol
 
 []{#fpm-i-23-s14}
 
-## 23.14. Reconstruir el modelo y reconocer sus límites {#fispm-c23-reconstruir-el-modelo-y-reconocer-sus-luxedmites}
+## 14. Reconstruir el modelo y reconocer sus límites {#fispm-c23-reconstruir-el-modelo-y-reconocer-sus-luxedmites}
 
 Un registro de posición puede revelar varios parámetros. La oscilación libre permite medir $T_d$ y $\delta$; de ellos se obtienen $\beta$ y $\omega_0$. Todavía falta una escala de masa para separar $m$, $k$ y $b$: multiplicar los tres por una misma constante deja inalterada la ecuación libre normalizada.
 
@@ -503,7 +503,7 @@ En el capítulo 24, cada masa sentirá fuerzas que dependen también de las posi
 
 []{#ejercicios}
 
-## 23.15. Ejercicios {#fispm-c23-ejercicios}
+## 15. Ejercicios {#fispm-c23-ejercicios}
 
 []{#fispm-t1-c23-e0001}
 
@@ -687,7 +687,7 @@ Demuestra que el equilibrio del oscilador libre sin disipación es estable en el
 
 []{#soluciones}
 
-## 23.16. Soluciones {#fispm-c23-soluciones}
+## 16. Soluciones {#fispm-c23-soluciones}
 
 **Solución del ejercicio 23.1.**
 
@@ -835,7 +835,7 @@ Proposición 23.4 implica que $r(x(t),v(t))$ es constante. Para cualquier $\vare
 
 []{#notas-y-lecturas}
 
-## 23.16. Notas y lecturas {#fispm-c23-notas-y-lecturas .unnumbered}
+## Notas y lecturas {#fispm-c23-notas-y-lecturas .unnumbered}
 
 1.  La distinción entre fuerza de rozamiento seco y resistencia proporcional a la velocidad puede contrastarse en David Tong, *Dynamics and Relativity*, §§2.5.1--2.5.3, pp. impresas 31--34. En §2.5.3, su coeficiente de fuerza resistente se denota por $\gamma$ y su tasa de amortiguamiento por $\alpha$. Aquí corresponden a $b$ y $\beta$. [Texto del autor, University of Cambridge](https://www.damtp.cam.ac.uk/user/tong/relativity/dynrel.pdf).
 

@@ -45,7 +45,7 @@ Trabajaremos con interacciones centrales conservativas y un potencial de energí
 
 []{#fpm-i-19-s01}
 
-## 19.1. Preparar un encuentro y medir su resultado {#fispm-c19-preparar-un-encuentro-y-medir-su-resultado}
+## 1. Preparar un encuentro y medir su resultado {#fispm-c19-preparar-un-encuentro-y-medir-su-resultado}
 
 Desde lejos, el encuentro puede caracterizarse por una rapidez relativa $v_\infty>0$ y por cuánto se aparta la aproximación de una colisión frontal. El punto de referencia es el origen de la coordenada relativa, no necesariamente un cuerpo inmóvil en el laboratorio.
 
@@ -57,7 +57,7 @@ Desde lejos, el encuentro puede caracterizarse por una rapidez relativa $v_\inft
 
 <figcaption>
 
-**Figura 19.1.** El parámetro $b$ es la separación perpendicular entre la recta asintótica incidente y el centro. La curva de salida es un esquema de desviación repulsiva; no pretende ser una solución cuantitativa. Véase §[19.1](#fispm-c19-preparar-un-encuentro-y-medir-su-resultado).
+**Figura 19.1.** El parámetro $b$ es la separación perpendicular entre la recta asintótica incidente y el centro. La curva de salida es un esquema de desviación repulsiva; no pretende ser una solución cuantitativa. Véase §[1](#fispm-c19-preparar-un-encuentro-y-medir-su-resultado).
 
 </figcaption>
 
@@ -91,7 +91,7 @@ Es el ángulo entre velocidades, no entre los vectores posición lejanos. No con
 
 []{#ejercicios}
 
-### 19.1.1. Ejercicios {#fispm-c19-ejercicios}
+### Ejercicios {#fispm-c19-ejercicios}
 
 []{#fispm-t1-c19-e0001}
 
@@ -113,7 +113,7 @@ Es el ángulo entre velocidades, no entre los vectores posición lejanos. No con
 
 []{#fpm-i-19-s02}
 
-## 19.2. Reducción radial y ángulo de salida {#fispm-c19-reducciuxf3n-radial-y-uxe1ngulo-de-salida}
+## 2. Reducción radial y ángulo de salida {#fispm-c19-reducciuxf3n-radial-y-uxe1ngulo-de-salida}
 
 El potencial efectivo del capítulo 17 permite encontrar hasta dónde se acerca una trayectoria entrante. Luego una integral angular determina cuánto gira el vector separación durante el encuentro.
 
@@ -153,7 +153,7 @@ Una desviación repulsiva simple tiene $\Phi<\pi/2$ y $\delta>0$; una atractiva 
 
 []{#ejercicios-1}
 
-### 19.2.1. Ejercicios {#fispm-c19-ejercicios-1}
+### Ejercicios {#fispm-c19-ejercicios-1}
 
 []{#fispm-t1-c19-e0003}
 
@@ -173,7 +173,7 @@ Una desviación repulsiva simple tiene $\Phi<\pi/2$ y $\delta>0$; una atractiva 
 
 []{#fpm-i-19-s03}
 
-## 19.3. Controlar una integral con un extremo singular {#fispm-c19-controlar-una-integral-con-un-extremo-singular}
+## 3. Controlar una integral con un extremo singular {#fispm-c19-controlar-una-integral-con-un-extremo-singular}
 
 El integrando de la proposición 19.2 diverge en el radio de retorno, aunque su integral sea finita. Esa diferencia importa para un cálculo numérico: evaluar directamente muy cerca de la raíz puede amplificar errores de redondeo o de localización.
 
@@ -201,7 +201,7 @@ Esta cota es para $\Phi$; el correspondiente error en $\delta$ es como máximo e
 
 []{#ejercicios-2}
 
-### 19.3.1. Ejercicios {#fispm-c19-ejercicios-2}
+### Ejercicios {#fispm-c19-ejercicios-2}
 
 []{#fispm-t1-c19-e0005}
 
@@ -221,7 +221,7 @@ Esta cota es para $\Phi$; el correspondiente error en $\delta$ es como máximo e
 
 []{#fpm-i-19-s04}
 
-## 19.4. La ley inversa del radio como ejemplo exacto {#fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto}
+## 4. La ley inversa del radio como ejemplo exacto {#fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto}
 
 El potencial $U=\pm\kappa/r$, con $\kappa>0$, ofrece un encuentro cuya desviación puede obtenerse sin integrar numéricamente. El signo positivo es repulsivo y el negativo atractivo. El caso atractivo incluye la gravitación del par con $\kappa=Gm_1m_2$; el repulsivo puede modelar una interacción electrostática entre cargas de igual signo.
 
@@ -233,7 +233,7 @@ El potencial $U=\pm\kappa/r$, con $\kappa>0$, ofrece un encuentro cuya desviaci�
 
 <figcaption>
 
-**Figura 19.2.** En dispersión por una fuerza inversa del cuadrado, $b=a\cot(\chi/2)$, con $a>0$ fijado por el acoplamiento y la energía lejana. Los encuentros de mayor parámetro de impacto producen menor desviación, bajo las hipótesis de esa ley. Véase §[19.4](#fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto).
+**Figura 19.2.** En dispersión por una fuerza inversa del cuadrado, $b=a\cot(\chi/2)$, con $a>0$ fijado por el acoplamiento y la energía lejana. Los encuentros de mayor parámetro de impacto producen menor desviación, bajo las hipótesis de esa ley. Véase §[4](#fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto).
 
 </figcaption>
 
@@ -247,7 +247,7 @@ El potencial $U=\pm\kappa/r$, con $\kappa>0$, ofrece un encuentro cuya desviaci�
 
 <figcaption>
 
-**Figura 19.3.** Para la dispersión coulombiana repulsiva, en unidades con $\kappa/(\mu v_\infty^2)=1$, $\chi=2\arctan(1/b)$. Los encuentros más lejanos se desvían menos. Véase §[19.4](#fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto).
+**Figura 19.3.** Para la dispersión coulombiana repulsiva, en unidades con $\kappa/(\mu v_\infty^2)=1$, $\chi=2\arctan(1/b)$. Los encuentros más lejanos se desvían menos. Véase §[4](#fispm-c19-la-ley-inversa-del-radio-como-ejemplo-exacto).
 
 </figcaption>
 
@@ -287,7 +287,7 @@ Las magnitudes de desviación coinciden para ambas interacciones, pero los lados
 
 []{#ejercicios-3}
 
-### 19.4.1. Ejercicios {#fispm-c19-ejercicios-3}
+### Ejercicios {#fispm-c19-ejercicios-3}
 
 []{#fispm-t1-c19-e0007}
 
@@ -307,7 +307,7 @@ Las magnitudes de desviación coinciden para ambas interacciones, pero los lados
 
 []{#fpm-i-19-s05}
 
-## 19.5. Máxima aproximación y encuentro con una superficie {#fispm-c19-muxe1xima-aproximaciuxf3n-y-encuentro-con-una-superficie}
+## 5. Máxima aproximación y encuentro con una superficie {#fispm-c19-muxe1xima-aproximaciuxf3n-y-encuentro-con-una-superficie}
 
 El parámetro de impacto se define lejos del encuentro. La fuerza puede acercar la trayectoria a la región central o alejarla de ella. Por eso no se identifica en general con la distancia mínima ni con la condición geométrica de contacto.
 
@@ -339,7 +339,7 @@ La ley central conservativa, por sí sola, no captura una trayectoria que llega 
 
 []{#ejercicios-4}
 
-### 19.5.1. Ejercicios {#fispm-c19-ejercicios-4}
+### Ejercicios {#fispm-c19-ejercicios-4}
 
 []{#fispm-t1-c19-e0009}
 
@@ -359,7 +359,7 @@ La ley central conservativa, por sí sola, no captura una trayectoria que llega 
 
 []{#fpm-i-19-s06}
 
-## 19.6. Sección eficaz como área de preparación {#fispm-c19-secciuxf3n-eficaz-como-uxe1rea-de-preparaciuxf3n}
+## 6. Sección eficaz como área de preparación {#fispm-c19-secciuxf3n-eficaz-como-uxe1rea-de-preparaciuxf3n}
 
 Un haz uniforme prepara distintos parámetros de impacto con una distribución proporcional al área transversal. La sección eficaz de un resultado cuenta cuánta área de esa preparación lo produce. No tiene por qué coincidir con el tamaño geométrico del objeto: una fuerza puede enfocar trayectorias o desviarlas antes del contacto.
 
@@ -371,7 +371,7 @@ Un haz uniforme prepara distintos parámetros de impacto con una distribución p
 
 <figcaption>
 
-**Figura 19.4.** En una preparación axialmente simétrica, un anillo de radios $b,b+db$ tiene área diferencial $d\sigma=2\pi b\,db$. Es un área del haz incidente, no una superficie de la trayectoria. Véase §[19.6](#fispm-c19-secciuxf3n-eficaz-como-uxe1rea-de-preparaciuxf3n).
+**Figura 19.4.** En una preparación axialmente simétrica, un anillo de radios $b,b+db$ tiene área diferencial $d\sigma=2\pi b\,db$. Es un área del haz incidente, no una superficie de la trayectoria. Véase §[6](#fispm-c19-secciuxf3n-eficaz-como-uxe1rea-de-preparaciuxf3n).
 
 </figcaption>
 
@@ -401,7 +401,7 @@ Proposición 19.9 y definición 19.5 dan, para una superficie absorbente en el c
 
 []{#ejercicios-5}
 
-### 19.6.1. Ejercicios {#fispm-c19-ejercicios-5}
+### Ejercicios {#fispm-c19-ejercicios-5}
 
 []{#fispm-t1-c19-e0011}
 
@@ -421,7 +421,7 @@ Proposición 19.9 y definición 19.5 dan, para una superficie absorbente en el c
 
 []{#fpm-i-19-s07}
 
-## 19.7. La distribución angular y sus ramas {#fispm-c19-la-distribuciuxf3n-angular-y-sus-ramas}
+## 7. La distribución angular y sus ramas {#fispm-c19-la-distribuciuxf3n-angular-y-sus-ramas}
 
 Para calcular cuántas partículas salen por un ángulo dado, transformamos el área de impactos en un área de direcciones. El ángulo sólido mide esa segunda área en la esfera unitaria.
 
@@ -459,7 +459,7 @@ En los ejes $\chi=0,\pi$, o en puntos donde la derivada angular se anula, la fó
 
 []{#ejercicios-6}
 
-### 19.7.1. Ejercicios {#fispm-c19-ejercicios-6}
+### Ejercicios {#fispm-c19-ejercicios-6}
 
 []{#fispm-t1-c19-e0013}
 
@@ -479,7 +479,7 @@ En los ejes $\chi=0,\pi$, o en puntos donde la derivada angular se anula, la fó
 
 []{#fpm-i-19-s08}
 
-## 19.8. Sección inversa del radio y resolución angular {#fispm-c19-secciuxf3n-inversa-del-radio-y-resoluciuxf3n-angular}
+## 8. Sección inversa del radio y resolución angular {#fispm-c19-secciuxf3n-inversa-del-radio-y-resoluciuxf3n-angular}
 
 La ley exacta de §4 permite calcular una distribución angular completa. El resultado muestra cómo un alcance largo afecta a los eventos de desviación pequeña.
 
@@ -511,7 +511,7 @@ La divergencia significa que el modelo de alcance infinito desvía, aunque muy p
 
 []{#ejercicios-7}
 
-### 19.8.1. Ejercicios {#fispm-c19-ejercicios-7}
+### Ejercicios {#fispm-c19-ejercicios-7}
 
 []{#fispm-t1-c19-e0015}
 
@@ -531,7 +531,7 @@ La divergencia significa que el modelo de alcance infinito desvía, aunque muy p
 
 []{#fpm-i-19-s09}
 
-## 19.9. Una esfera que devuelve la partícula {#fispm-c19-una-esfera-que-devuelve-la-partuxedcula}
+## 9. Una esfera que devuelve la partícula {#fispm-c19-una-esfera-que-devuelve-la-partuxedcula}
 
 Hasta ahora el acercamiento terminaba en un punto de retorno suave o en una superficie absorbente. Una superficie rígida plantea otra regla. Consideremos el movimiento relativo alrededor de una esfera impenetrable de radio $a$. Fuera de ella no hay fuerza; en el contacto la velocidad se refleja de manera especular. Este modelo describe una esfera fija o una interacción relativa elástica entre dos cuerpos cuyo radio de contacto es $a$.
 
@@ -567,7 +567,7 @@ Una densidad constante por unidad de ángulo sólido produce más eventos por un
 
 []{#ejercicios-8}
 
-### 19.9.1. Ejercicios {#fispm-c19-ejercicios-8}
+### Ejercicios {#fispm-c19-ejercicios-8}
 
 []{#fispm-t1-c19-e0017}
 
@@ -587,7 +587,7 @@ Una densidad constante por unidad de ángulo sólido produce más eventos por un
 
 []{#fpm-i-19-s10}
 
-## 19.10. Varias preparaciones, una dirección {#fispm-c19-varias-preparaciones-una-direcciuxf3n}
+## 10. Varias preparaciones, una dirección {#fispm-c19-varias-preparaciones-una-direcciuxf3n}
 
 La ley inversa del radio es monótona. Una interacción con zonas atractivas y repulsivas puede producir una función angular que primero crezca y después decrezca. Entonces una dirección recibe eventos procedentes de impactos distintos. Proposición 19.12 permite sumarlos cuando las ramas son regulares. Falta examinar el punto donde dejan de serlo.
 
@@ -615,7 +615,7 @@ Hay otra singularidad distinta. Si la raíz radial accesible se vuelve doble, la
 
 []{#ejercicios-9}
 
-### 19.10.1. Ejercicios {#fispm-c19-ejercicios-9}
+### Ejercicios {#fispm-c19-ejercicios-9}
 
 **Ejercicio 19.19.** Supón localmente $\chi=\chi_c+A(b-b_c)^2$, con $A>0$. Calcula la sección del intervalo $\chi_c\leq\chi\leq\chi_c+\varepsilon$, contando ambas ramas y suponiendo $\sqrt{\varepsilon/A}<b_c$.
 
@@ -633,7 +633,7 @@ Hay otra singularidad distinta. Si la raíz radial accesible se vuelve doble, la
 
 []{#fpm-i-19-s11}
 
-## 19.11. Cuánto basta con integrar sobre una recta {#fispm-c19-cuuxe1nto-basta-con-integrar-sobre-una-recta}
+## 11. Cuánto basta con integrar sobre una recta {#fispm-c19-cuuxe1nto-basta-con-integrar-sobre-una-recta}
 
 Para impactos grandes, la interacción puede cambiar poco la velocidad. En ese régimen se intenta calcular el impulso sobre la trayectoria libre. La propuesta necesita una comprobación posterior: si la corrección resulta grande, la trayectoria usada para calcularla deja de ser una referencia adecuada.
 
@@ -665,7 +665,7 @@ En particular, cuando $x$ es pequeño, el error relativo respecto de la predicci
 
 []{#ejercicios-10}
 
-### 19.11.1. Ejercicios {#fispm-c19-ejercicios-10}
+### Ejercicios {#fispm-c19-ejercicios-10}
 
 []{#fispm-t1-c19-e0021}
 
@@ -685,7 +685,7 @@ En particular, cuando $x$ es pequeño, el error relativo respecto de la predicci
 
 []{#fpm-i-19-s12}
 
-## 19.12. El detector vive en el laboratorio {#fispm-c19-el-detector-vive-en-el-laboratorio}
+## 12. El detector vive en el laboratorio {#fispm-c19-el-detector-vive-en-el-laboratorio}
 
 La reducción radial usa la velocidad relativa. Un detector puede medir la velocidad de un solo cuerpo en un marco donde el otro estaba inicialmente en reposo. Traducir ambas descripciones es parte del problema físico.
 
@@ -735,7 +735,7 @@ Si $m_1<m_2$, el proyectil puede salir hacia atrás: en $\chi=\pi$ su componente
 
 []{#ejercicios-11}
 
-### 19.12.1. Ejercicios {#fispm-c19-ejercicios-11}
+### Ejercicios {#fispm-c19-ejercicios-11}
 
 []{#fispm-t1-c19-e0023}
 
@@ -755,7 +755,7 @@ Si $m_1<m_2$, el proyectil puede salir hacia atrás: en $\chi=\pi$ su componente
 
 []{#fpm-i-19-s13}
 
-## 19.13. De un área a una cuenta de eventos {#fispm-c19-de-un-uxe1rea-a-una-cuenta-de-eventos}
+## 13. De un área a una cuenta de eventos {#fispm-c19-de-un-uxe1rea-a-una-cuenta-de-eventos}
 
 Una sección es una propiedad del encuentro y del evento seleccionado. Una cuenta experimental combina esa sección con un flujo, una cantidad de centros y una respuesta instrumental. Mezclar esas cantidades dificulta comparar experimentos.
 
@@ -777,7 +777,7 @@ La física cuántica retomará estas preguntas con otra descripción del estado 
 
 []{#ejercicios-12}
 
-### 19.13.1. Ejercicios {#fispm-c19-ejercicios-12}
+### Ejercicios {#fispm-c19-ejercicios-12}
 
 []{#fispm-t1-c19-e0025}
 
@@ -797,7 +797,7 @@ La física cuántica retomará estas preguntas con otra descripción del estado 
 
 []{#fpm-i-19-s14}
 
-## 19.14. Qué puede recuperarse de la dispersión {#fispm-c19-quuxe9-puede-recuperarse-de-la-dispersiuxf3n}
+## 14. Qué puede recuperarse de la dispersión {#fispm-c19-quuxe9-puede-recuperarse-de-la-dispersiuxf3n}
 
 Empezamos preparando una distancia transversal y terminamos midiendo una dirección. Entre ambas hay una dinámica radial, un cambio de variables y una selección instrumental. Se puede recorrer parte de ese camino en sentido inverso, siempre que la estructura de las ramas sea conocida.
 
@@ -827,7 +827,7 @@ En el marco del centro de masas, $\mathbf V=0$ y cada rapidez asintótica perman
 
 []{#problemas-de-integración}
 
-### 19.14.1. Problemas de integración {#fispm-c19-problemas-de-integraciuxf3n}
+### Problemas de integración {#fispm-c19-problemas-de-integraciuxf3n}
 
 []{#fispm-t1-c19-e0027}
 

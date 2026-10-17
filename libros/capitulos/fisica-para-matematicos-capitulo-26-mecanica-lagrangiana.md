@@ -47,7 +47,7 @@ Se presuponen la construcción variacional del capítulo 25, el álgebra lineal 
 
 []{#fpm-i-26-s01}
 
-## 26.1. Construir el modelo antes de derivar {#fispm-c26-construir-el-modelo-antes-de-derivar}
+## 1. Construir el modelo antes de derivar {#fispm-c26-construir-el-modelo-antes-de-derivar}
 
 Sean $q=(q^1,\ldots,q^n)$ coordenadas locales independientes de un sistema de partículas con vínculos holónomos regulares. Sus posiciones son $\mathbf r_i=\mathbf R_i(q,t)$ y sus velocidades
 
@@ -77,7 +77,7 @@ La fórmula no determina por sí sola si un contacto es ideal, una cuerda está 
 
 []{#fpm-i-26-s02}
 
-## 26.2. La matriz cinética que se esconde en las velocidades {#fispm-c26-la-matriz-cinuxe9tica-que-se-esconde-en-las-velocidades}
+## 2. La matriz cinética que se esconde en las velocidades {#fispm-c26-la-matriz-cinuxe9tica-que-se-esconde-en-las-velocidades}
 
 Al expandir las velocidades cartesianas aparece
 
@@ -111,7 +111,7 @@ El momento conjugado no es siempre una componente cartesiana del momento lineal.
 
 []{#fpm-i-26-s03}
 
-## 26.3. Cuándo las ecuaciones determinan las aceleraciones {#fispm-c26-cuuxe1ndo-las-ecuaciones-determinan-las-aceleraciones}
+## 3. Cuándo las ecuaciones determinan las aceleraciones {#fispm-c26-cuuxe1ndo-las-ecuaciones-determinan-las-aceleraciones}
 
 Para un lagrangiano general diferenciable, derivar $\partial L/\partial\dot q^a$ produce términos proporcionales a las aceleraciones. Su matriz de coeficientes es el Hessiano respecto de las velocidades.
 
@@ -145,7 +145,7 @@ Esta expresión se obtiene derivando el término cuadrático y agrupando los pro
 
 []{#fpm-i-26-s04}
 
-## 26.4. Cambiar coordenadas sin cambiar la dinámica {#fispm-c26-cambiar-coordenadas-sin-cambiar-la-dinuxe1mica}
+## 4. Cambiar coordenadas sin cambiar la dinámica {#fispm-c26-cambiar-coordenadas-sin-cambiar-la-dinuxe1mica}
 
 Sea $q=f(Q,t)$ un cambio local invertible, con Jacobiano $J^a{}_{\alpha}=\partial f^a/\partial Q^\alpha$. Las velocidades se transforman como $\dot q=J\dot Q+f_t$. El nuevo lagrangiano se obtiene sustituyendo ambos argumentos:
 
@@ -169,7 +169,7 @@ La transformación temporal permite trabajar en una referencia móvil, siempre q
 
 []{#fpm-i-26-s05}
 
-## 26.5. Recuperar Newton en coordenadas polares {#fispm-c26-recuperar-newton-en-coordenadas-polares}
+## 5. Recuperar Newton en coordenadas polares {#fispm-c26-recuperar-newton-en-coordenadas-polares}
 
 Para una partícula plana, con $r>0$ y potencial central $V(r)$, $L=\frac m2(\dot r^2+r^2\dot\theta^2)-V(r).$
 
@@ -191,7 +191,7 @@ El momento conjugado angular coincide aquí con el momento angular sobre el orig
 
 []{#fpm-i-26-s06}
 
-## 26.6. El péndulo doble y su matriz de aceleraciones {#fispm-c26-el-puxe9ndulo-doble-y-su-matriz-de-aceleraciones}
+## 6. El péndulo doble y su matriz de aceleraciones {#fispm-c26-el-puxe9ndulo-doble-y-su-matriz-de-aceleraciones}
 
 Sean dos masas puntuales $m_1,m_2>0$, barras rígidas sin masa de longitudes $\ell_1,\ell_2>0$ y un apoyo fijo. Los ángulos $\theta_1,\theta_2$ se miden desde la vertical descendente y son absolutos, no relativos entre las barras. Las posiciones son
 
@@ -203,7 +203,7 @@ Sean dos masas puntuales $m_1,m_2>0$, barras rígidas sin masa de longitudes $\e
 
 <figcaption>
 
-**Figura 26.1.** Los dos ángulos se miden respecto de la vertical descendente. La segunda masa depende de ambos: $x_2=\ell_1\sin\theta_1+\ell_2\sin\theta_2$, $y_2=-\ell_1\cos\theta_1-\ell_2\cos\theta_2$. Véase §[26.6](#fispm-c26-el-puxe9ndulo-doble-y-su-matriz-de-aceleraciones).
+**Figura 26.1.** Los dos ángulos se miden respecto de la vertical descendente. La segunda masa depende de ambos: $x_2=\ell_1\sin\theta_1+\ell_2\sin\theta_2$, $y_2=-\ell_1\cos\theta_1-\ell_2\cos\theta_2$. Véase §[6](#fispm-c26-el-puxe9ndulo-doble-y-su-matriz-de-aceleraciones).
 
 </figcaption>
 
@@ -241,7 +241,7 @@ Las dos aceleraciones deben despejarse juntas. Tratar el término $B\ddot\theta_
 
 []{#fpm-i-26-s07}
 
-## 26.7. Un apoyo que también es una incógnita {#fispm-c26-un-apoyo-que-tambiuxe9n-es-una-incuxf3gnita}
+## 7. Un apoyo que también es una incógnita {#fispm-c26-un-apoyo-que-tambiuxe9n-es-una-incuxf3gnita}
 
 Un carro de masa $M>0$ puede moverse horizontalmente y sostiene un péndulo de masa $m>0$ y longitud $\ell$. Sus coordenadas son la posición $x$ del carro y el ángulo $\theta$ desde abajo. La masa suspendida tiene posición $(x+\ell\sin\theta,-\ell\cos\theta)$.
 
@@ -253,7 +253,7 @@ Un carro de masa $M>0$ puede moverse horizontalmente y sostiene un péndulo de m
 
 <figcaption>
 
-**Figura 26.2.** Para un péndulo sobre un carro, la posición de la masa es $(X+\ell\sin\theta,-\ell\cos\theta)$. Al derivarla aparece un término cinético cruzado proporcional a $\dot X\dot\theta\cos\theta$. Las coordenadas no generan energías cinéticas independientes. Véase §[26.7](#fispm-c26-un-apoyo-que-tambiuxe9n-es-una-incuxf3gnita).
+**Figura 26.2.** Para un péndulo sobre un carro, la posición de la masa es $(X+\ell\sin\theta,-\ell\cos\theta)$. Al derivarla aparece un término cinético cruzado proporcional a $\dot X\dot\theta\cos\theta$. Las coordenadas no generan energías cinéticas independientes. Véase §[7](#fispm-c26-un-apoyo-que-tambiuxe9n-es-una-incuxf3gnita).
 
 </figcaption>
 
@@ -267,7 +267,7 @@ Un carro de masa $M>0$ puede moverse horizontalmente y sostiene un péndulo de m
 
 <figcaption>
 
-**Figura 26.3.** La posición del péndulo combina el desplazamiento del carro y su ángulo: $x=X+\ell\sin\theta$. Si el carro es libre, $X$ es una coordenada dinámica y no un dato prescrito. Véase §[26.7](#fispm-c26-un-apoyo-que-tambiuxe9n-es-una-incuxf3gnita).
+**Figura 26.3.** La posición del péndulo combina el desplazamiento del carro y su ángulo: $x=X+\ell\sin\theta$. Si el carro es libre, $X$ es una coordenada dinámica y no un dato prescrito. Véase §[7](#fispm-c26-un-apoyo-que-tambiuxe9n-es-una-incuxf3gnita).
 
 </figcaption>
 
@@ -299,7 +299,7 @@ Además hay un movimiento de traslación común de frecuencia cero. La frecuenci
 
 []{#fpm-i-26-s08}
 
-## 26.8. Una guía que gira mediante un motor {#fispm-c26-una-guuxeda-que-gira-mediante-un-motor}
+## 8. Una guía que gira mediante un motor {#fispm-c26-una-guuxeda-que-gira-mediante-un-motor}
 
 Un aro vertical de radio $\ell$ gira alrededor de su diámetro vertical con velocidad angular prescrita $\Omega$. Una cuenta de masa $m$ se desliza sin rozamiento. Con $\theta$ medido desde el punto inferior, su posición inercial es
 
@@ -311,7 +311,7 @@ Un aro vertical de radio $\ell$ gira alrededor de su diámetro vertical con velo
 
 <figcaption>
 
-**Figura 26.4.** Para una guía que gira con ángulo prescrito $\Omega t$, la cuenta tiene posición $(r\cos\Omega t,r\sin\Omega t)$. La coordenada radial es dinámica y la orientación viene impuesta por el motor. Véase §[26.8](#fispm-c26-una-guuxeda-que-gira-mediante-un-motor).
+**Figura 26.4.** Para una guía que gira con ángulo prescrito $\Omega t$, la cuenta tiene posición $(r\cos\Omega t,r\sin\Omega t)$. La coordenada radial es dinámica y la orientación viene impuesta por el motor. Véase §[8](#fispm-c26-una-guuxeda-que-gira-mediante-un-motor).
 
 </figcaption>
 
@@ -351,7 +351,7 @@ La función $V_{\mathrm{ef}}=-m\ell^2\Omega^2\sin^2\theta/2-mg\ell\cos\theta$ pe
 
 []{#fpm-i-26-s09}
 
-## 26.9. La función de energía del lagrangiano {#fispm-c26-la-funciuxf3n-de-energuxeda-del-lagrangiano}
+## 9. La función de energía del lagrangiano {#fispm-c26-la-funciuxf3n-de-energuxeda-del-lagrangiano}
 
 []{#fispm-t1-c26-d0004}
 
@@ -391,7 +391,7 @@ En un sistema de geometría fija con potencial explícitamente temporal, proposi
 
 []{#fpm-i-26-s10}
 
-## 26.10. Fuerzas resistentes dentro del método {#fispm-c26-fuerzas-resistentes-dentro-del-muxe9todo}
+## 10. Fuerzas resistentes dentro del método {#fispm-c26-fuerzas-resistentes-dentro-del-muxe9todo}
 
 Las fuerzas que realizan trabajo virtual no nulo deben conservarse en $Q_a$. Para la resistencia lineal pasiva es útil agruparlas en una función cuadrática de velocidades.
 
@@ -419,7 +419,7 @@ No se obtiene esta fuerza sustituyendo $L$ por $L-\mathcal D$ en la acción ordi
 
 []{#fpm-i-26-s11}
 
-## 26.11. Recuperar tensiones y comprobar contactos {#fispm-c26-recuperar-tensiones-y-comprobar-contactos}
+## 11. Recuperar tensiones y comprobar contactos {#fispm-c26-recuperar-tensiones-y-comprobar-contactos}
 
 Las coordenadas independientes eliminan reacciones de las ecuaciones proyectadas, pero dejan disponible Newton para recuperarlas. Para una partícula sobre una esfera fija de radio $\ell$, usemos $g(\mathbf r)=|\mathbf r|^2-\ell^2=0$. Una reacción ideal tiene forma $\mathbf R=2\lambda\mathbf r$.
 
@@ -441,7 +441,7 @@ Si el vínculo es una barra articulada ideal, una reacción de cualquier signo p
 
 []{#fpm-i-26-s12}
 
-## 26.12. Términos lineales que producen fuerzas giroscópicas {#fispm-c26-tuxe9rminos-lineales-que-producen-fuerzas-giroscuxf3picas}
+## 12. Términos lineales que producen fuerzas giroscópicas {#fispm-c26-tuxe9rminos-lineales-que-producen-fuerzas-giroscuxf3picas}
 
 Los términos lineales en velocidades no siempre provienen de soportes móviles ni son siempre eliminables mediante una derivada total. Consideremos el modelo plano
 
@@ -469,7 +469,7 @@ Para eliminar el término lineal mediante $dG/dt$ necesitaríamos $G_x=-\gamma y
 
 []{#fpm-i-26-s13}
 
-## 26.13. Distintas expresiones para las mismas ecuaciones {#fispm-c26-distintas-expresiones-para-las-mismas-ecuaciones}
+## 13. Distintas expresiones para las mismas ecuaciones {#fispm-c26-distintas-expresiones-para-las-mismas-ecuaciones}
 
 []{#fispm-t1-c26-d0006}
 
@@ -495,7 +495,7 @@ El factor constante negativo conserva las curvas estacionarias y puede invertir 
 
 []{#fpm-i-26-s14}
 
-## 26.14. Recuperar los modos normales desde el lagrangiano {#fispm-c26-recuperar-los-modos-normales-desde-el-lagrangiano}
+## 14. Recuperar los modos normales desde el lagrangiano {#fispm-c26-recuperar-los-modos-normales-desde-el-lagrangiano}
 
 Sea un sistema fijo con lagrangiano natural $L=\dot q^TG(q)\dot q/2-V(q)$ y equilibrio $q_*$ con $\nabla V(q_*)=0$. Supongamos $G$ suficientemente diferenciable y definida positiva, y $V$ de clase $C^3$ cerca de ese punto.
 
@@ -519,7 +519,7 @@ La matriz cinética positiva asegura que las aceleraciones locales estén determ
 
 []{#ejercicios}
 
-## 26.15. Ejercicios {#fispm-c26-ejercicios}
+## 15. Ejercicios {#fispm-c26-ejercicios}
 
 []{#fispm-t1-c26-e0001}
 
@@ -703,7 +703,7 @@ Añade al carro de §7 una fuerza $F(t)$ y resistencia horizontal $-b\dot x$, co
 
 []{#soluciones}
 
-## 26.16. Soluciones {#fispm-c26-soluciones}
+## 16. Soluciones {#fispm-c26-soluciones}
 
 **Solución del ejercicio 26.1.**
 
@@ -887,7 +887,7 @@ El primer término es la potencia externa aplicada al carro y el segundo la pér
 
 []{#notas-y-lecturas}
 
-## 26.16. Notas y lecturas {#fispm-c26-notas-y-lecturas .unnumbered}
+## Notas y lecturas {#fispm-c26-notas-y-lecturas .unnumbered}
 
 1.  David Tong, *Classical Dynamics*, capítulo 2, §§2.2, 2.3, 2.5.1--2.5.2 y 2.6, ofrece material complementario sobre cambios de coordenadas, restricciones, aro giratorio, péndulo doble y pequeñas oscilaciones. [Texto oficial de University of Cambridge](https://www.damtp.cam.ac.uk/user/tong/dynamics/dynhtml/S2.html). Los ángulos y signos deben compararse con las convenciones explícitas de cada ejemplo.
 

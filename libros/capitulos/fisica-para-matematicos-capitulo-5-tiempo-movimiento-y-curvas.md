@@ -39,11 +39,11 @@ number-sections: false
 
 []{#fpm-i-05-s01}
 
-## 5.1. De una localización a una historia temporal {#fispm-c05-de-una-localizaciuxf3n-a-una-historia-temporal}
+## 1. De una localización a una historia temporal {#fispm-c05-de-una-localizaciuxf3n-a-una-historia-temporal}
 
 []{#el-problema-que-deja-abierto-una-posición-aislada}
 
-### 5.1.1. El problema que deja abierto una posición aislada {#fispm-c05-el-problema-que-deja-abierto-una-posiciuxf3n-aislada}
+### El problema que deja abierto una posición aislada {#fispm-c05-el-problema-que-deja-abierto-una-posiciuxf3n-aislada}
 
 El capítulo 4 construyó el aparato necesario para responder una pregunta estática: **¿dónde está un punto físico y cómo cambia su descripción al cambiar de marco?** Una vez fijado un marco espacial $F$, una ocurrencia puede registrarse mediante una lectura temporal $t$ y unas coordenadas espaciales $x_F(P)$. Pero un registro aislado no describe movimiento. Saber que un objeto estaba en el punto $P_0$ cuando el reloj marcaba $t_0$ sólo proporciona una localización asociada a un instante. Incluso dos registros,
 
@@ -55,7 +55,7 @@ Activación Si una cámara registra un objeto a las 12:00 en un punto $P_0$ y a 
 
 []{#tiempo-y-posición-son-datos-de-tipos-distintos}
 
-### 5.1.2. Tiempo y posición son datos de tipos distintos {#fispm-c05-tiempo-y-posiciuxf3n-son-datos-de-tipos-distintos}
+### Tiempo y posición son datos de tipos distintos {#fispm-c05-tiempo-y-posiciuxf3n-son-datos-de-tipos-distintos}
 
 En el marco clásico adoptado en este tomo, una lectura temporal se representa por un número real
 
@@ -93,7 +93,7 @@ La primera componente no cambia por elegir otro marco **espacial** fijo dentro d
 
 []{#principio-metodológico-un-registro-no-es-una-historia}
 
-### 5.1.3. Principio metodológico: un registro no es una historia {#fispm-c05-principio-metodoluxf3gico-un-registro-no-es-una-historia}
+### Principio metodológico: un registro no es una historia {#fispm-c05-principio-metodoluxf3gico-un-registro-no-es-una-historia}
 
 **Principio metodológico 5.1 --- Una lectura temporal no es todavía una ley de movimiento** Un dato $(t,P)$ ---o su representación $(t,x_F(P))$--- localiza una ocurrencia. Para describir movimiento se necesitará una regla que asigne posiciones a una colección de valores del parámetro temporal; esa regla se definirá formalmente en §2.
 
@@ -103,7 +103,7 @@ puede constituir un conjunto de datos experimentales, pero no determina automát
 
 []{#reconstruir-el-evento-desde-sus-coordenadas}
 
-### 5.1.4. Reconstruir el evento desde sus coordenadas {#fispm-c05-reconstruir-el-evento-desde-sus-coordenadas}
+### Reconstruir el evento desde sus coordenadas {#fispm-c05-reconstruir-el-evento-desde-sus-coordenadas}
 
 Recordemos 4.8: una vez fijado un marco $F=(O,B)$, la aplicación de coordenadas espaciales
 
@@ -127,7 +127,7 @@ que satisface $x_F(P)=y$. Así, el registro $(t,y)$ determina exactamente un ún
 
 []{#balance-del-primer-tramo}
 
-### 5.1.5. Balance del primer tramo {#fispm-c05-balance-del-primer-tramo}
+### Balance del primer tramo {#fispm-c05-balance-del-primer-tramo}
 
 Hasta aquí hemos añadido tiempo sin introducir todavía cinemática diferencial:
 
@@ -137,7 +137,7 @@ Todavía no hemos definido trayectoria, velocidad ni aceleración. El siguiente 
 
 []{#varios-registros-siguen-siendo-sólo-una-muestra}
 
-### 5.1.6. Varios registros siguen siendo sólo una muestra {#fispm-c05-varios-registros-siguen-siendo-suxf3lo-una-muestra}
+### Varios registros siguen siendo sólo una muestra {#fispm-c05-varios-registros-siguen-siendo-suxf3lo-una-muestra}
 
 Supongamos que observamos el mismo objeto en una sucesión finita de lecturas temporales: $(t_0,P_0),\; (t_1,P_1),\; \dots,\; (t_n,P_n),$
 
@@ -149,7 +149,7 @@ La escritura coordenada facilita cálculos e interpolaciones, pero no elimina la
 
 []{#un-ejemplo-de-subdeterminación}
 
-### 5.1.7. Un ejemplo de subdeterminación {#fispm-c05-un-ejemplo-de-subdeterminaciuxf3n}
+### Un ejemplo de subdeterminación {#fispm-c05-un-ejemplo-de-subdeterminaciuxf3n}
 
 Para no ocultar unidades dentro de un polinomio, fijemos una escala temporal $T_*>0$ y una escala de longitud $L_*>0$, y trabajemos sólo en este ejemplo con las variables adimensionales
 
@@ -177,7 +177,7 @@ $$\xi_\lambda(\tau) = \xi_0(\tau) + \lambda\prod_{k=0}^{n}(\tau-\tau_k)$$
 
 reproduce los mismos datos para cualquier constante adimensional $\lambda$, aunque las reglas sean diferentes cuando $\lambda\ne0$. Esto no significa que todas las reglas sean físicamente igualmente buenas. Significa algo más elemental: **la elección de una historia requiere información o supuestos que no están contenidos en una lista finita de registros**.
 
-### 5.1.7. Auditoría de tipos de un registro temporal {#fispm-c05-e001-auditoruxeda-de-tipos-de-un-registro-temporal .unnumbered}
+### Auditoría de tipos de un registro temporal {#fispm-c05-e001-auditoruxeda-de-tipos-de-un-registro-temporal .unnumbered}
 
 **Ejercicio 5.1 · Diagnóstico y tipado** En un marco espacial fijo $F$, un registro experimental entrega $t_0$, un punto $P_0$ y sus coordenadas $x_F(P_0)$. Clasifica los objetos
 
@@ -195,7 +195,7 @@ $$(t_0,P_0)\in I\times\mathcal E, \qquad \bigl(t_0,x_F(P_0)\bigr)\in I\times\mat
 
 El primer par es el evento clásico localizado de la definición 5.1; el segundo es su representación numérica en el marco $F$. Que $I\times\mathbb R^3$ sea un subconjunto de $\mathbb R\times\mathbb R^3$ y pueda representarse mediante cuatro números reales no introduce por sí solo una estructura física de espacio-tiempo. En este capítulo no se ha definido una métrica espacio-temporal, una ley de transformación que mezcle tiempo y espacio ni una interpretación vectorial del evento. Tratar automáticamente esos cuatro números como un vector físico añadiría estructura no autorizada por las definiciones vigentes.
 
-### 5.1.7. Los datos discretos no fijan una historia única {#fispm-c05-e002-los-datos-discretos-no-fijan-una-historia-uxfanica .unnumbered}
+### Los datos discretos no fijan una historia única {#fispm-c05-e002-los-datos-discretos-no-fijan-una-historia-uxfanica .unnumbered}
 
 **Ejercicio 5.2 · Contraejemplo y modelización** Se fijan escalas $T_*>0$ y $L_*>0$ y se usan las variables adimensionales $\tau=t/T_*$ y $\xi=x/L_*$. En un eje de un marco fijo se registran exactamente los datos
 
@@ -219,7 +219,7 @@ Así, los mismos datos discretos son compatibles con historias intermedias difer
 
 []{#cierre-conceptual-del-registro-a-la-regla-temporal}
 
-### 5.1.8. Cierre conceptual: del registro a la regla temporal {#fispm-c05-cierre-conceptual-del-registro-a-la-regla-temporal}
+### Cierre conceptual: del registro a la regla temporal {#fispm-c05-cierre-conceptual-del-registro-a-la-regla-temporal}
 
 La progresión de esta sección puede resumirse así:
 
@@ -233,11 +233,11 @@ Un evento individual puede reconstruirse desde sus coordenadas en un marco fijo,
 
 []{#fpm-i-05-s02}
 
-## 5.2. Movimiento parametrizado y trayectoria geométrica {#fispm-c05-movimiento-parametrizado-y-trayectoria-geomuxe9trica}
+## 2. Movimiento parametrizado y trayectoria geométrica {#fispm-c05-movimiento-parametrizado-y-trayectoria-geomuxe9trica}
 
 []{#de-una-muestra-de-eventos-a-una-regla-temporal}
 
-### 5.2.1. De una muestra de eventos a una regla temporal {#fispm-c05-de-una-muestra-de-eventos-a-una-regla-temporal}
+### De una muestra de eventos a una regla temporal {#fispm-c05-de-una-muestra-de-eventos-a-una-regla-temporal}
 
 En §1 vimos que una colección finita de registros
 
@@ -253,7 +253,7 @@ Activación ¿Qué información contiene una regla $t\mapsto P(t)$ que no contie
 
 []{#definir-movimiento-parametrizado}
 
-### 5.2.2. Definir: movimiento parametrizado {#fispm-c05-definir-movimiento-parametrizado}
+### Definir: movimiento parametrizado {#fispm-c05-definir-movimiento-parametrizado}
 
 **Definición 5.2 --- Movimiento parametrizado de un punto material** Sea $I\subseteq\mathbb R$ un intervalo. Un **movimiento parametrizado de un punto material** es una aplicación
 
@@ -267,7 +267,7 @@ Punto material El término *punto material* indica la idealización en la que s�
 
 []{#definir-trayectoria-geométrica}
 
-### 5.2.3. Definir: trayectoria geométrica {#fispm-c05-definir-trayectoria-geomuxe9trica}
+### Definir: trayectoria geométrica {#fispm-c05-definir-trayectoria-geomuxe9trica}
 
 A partir de una aplicación $P:I\to\mathcal E$ podemos olvidar qué tiempo corresponde a cada posición y conservar únicamente el conjunto de puntos visitados. Esa operación produce la imagen de $P$.
 
@@ -285,7 +285,7 @@ es un **conjunto de puntos**. La trayectoria conserva dónde pasó el movimiento
 
 []{#principio-metodológico-aplicación-imagen-y-parámetro}
 
-### 5.2.4. Principio metodológico: aplicación, imagen y parámetro {#fispm-c05-principio-metodoluxf3gico-aplicaciuxf3n-imagen-y-paruxe1metro}
+### Principio metodológico: aplicación, imagen y parámetro {#fispm-c05-principio-metodoluxf3gico-aplicaciuxf3n-imagen-y-paruxe1metro}
 
 **Principio metodológico 5.2 --- Separar aplicación, imagen y parámetro** Al analizar una curva, distinguir siempre: el parámetro y su dominio, la aplicación $P$ que asigna puntos y la imagen geométrica $\Gamma_P=P(I)$. Una curva parametrizada contiene más información que su trayectoria.
 
@@ -293,7 +293,7 @@ Esta regla evita una identificación muy común: dibujar una curva en el espacio
 
 []{#una-misma-imagen-puede-provenir-de-reglas-distintas}
 
-### 5.2.5. Una misma imagen puede provenir de reglas distintas {#fispm-c05-una-misma-imagen-puede-provenir-de-reglas-distintas}
+### Una misma imagen puede provenir de reglas distintas {#fispm-c05-una-misma-imagen-puede-provenir-de-reglas-distintas}
 
 Sean $A,B\in\mathcal E$, con $A\ne B$, y fijemos una escala temporal $T>0$. En $I=[0,T]$ consideremos
 
@@ -315,7 +315,7 @@ Todavía no necesitamos hablar de velocidad para distinguirlas: basta observar q
 
 []{#balance-del-primer-tramo-1}
 
-### 5.2.6. Balance del primer tramo {#fispm-c05-balance-del-primer-tramo-1}
+### Balance del primer tramo {#fispm-c05-balance-del-primer-tramo-1}
 
 El paso conceptual de esta sección es
 
@@ -325,7 +325,7 @@ pero la flecha no puede invertirse de manera única: conocer sólo la imagen no 
 
 []{#la-imagen-tampoco-conserva-el-orden-temporal}
 
-### 5.2.7. La imagen tampoco conserva el orden temporal {#fispm-c05-la-imagen-tampoco-conserva-el-orden-temporal}
+### La imagen tampoco conserva el orden temporal {#fispm-c05-la-imagen-tampoco-conserva-el-orden-temporal}
 
 La pérdida de información al pasar de $P$ a $\Gamma_P$ no consiste sólo en olvidar *en qué instante* se visita cada punto. También puede perderse el **orden** en que se recorren los puntos de la imagen. Sean $A,B\in\mathcal E$, $A\ne B$, y fijemos una escala temporal $T>0$. En el intervalo $I=[0,T]$ consideremos
 
@@ -345,7 +345,7 @@ La trayectoria geométrica no contiene ninguna marca que permita decidir cuál d
 
 []{#una-trayectoria-puede-recorrerse-más-de-una-vez}
 
-### 5.2.8. Una trayectoria puede recorrerse más de una vez {#fispm-c05-una-trayectoria-puede-recorrerse-muxe1s-de-una-vez}
+### Una trayectoria puede recorrerse más de una vez {#fispm-c05-una-trayectoria-puede-recorrerse-muxe1s-de-una-vez}
 
 Una aplicación tampoco tiene por qué ser inyectiva. El mismo punto de la trayectoria puede corresponder a varios valores del parámetro temporal. Fijemos otra vez $A\ne B$ y una escala $T>0$. Definamos $R:[0,2T]\to\mathcal E$ por
 
@@ -361,7 +361,7 @@ aparece en dos tiempos distintos: $t_1=sT, \qquad t_2=(2-s)T.$
 
 Además, $R(0)=R(2T)=A, \qquad R(T)=B.$ Por tanto, conocer $\Gamma_R$ no permite saber cuántas veces se visitó un punto ni cuáles fueron los valores temporales correspondientes. Lectura de una parametrización no inyectiva Si $P(t_1)=P(t_2)$ con $t_1\ne t_2$, no concluyas que «el tiempo se repite». Lo que se repite es la **posición espacial** asignada por la aplicación; los dos valores del parámetro siguen siendo distintos.
 
-### 5.2.8. Misma imagen, orden temporal distinto {#fispm-c05-e003-misma-imagen-orden-temporal-distinto .unnumbered}
+### Misma imagen, orden temporal distinto {#fispm-c05-e003-misma-imagen-orden-temporal-distinto .unnumbered}
 
 **Ejercicio 5.3 · Representación y contraejemplo** Sean $A,B\in\mathcal E$, $A\ne B$, y $T>0$. En $I=[0,T]$ se definen
 
@@ -389,7 +389,7 @@ $$Q(0)=B,\qquad Q(T)=A.$$
 
 La trayectoria común conserva el conjunto de puntos visitados, pero no indica cuál se visita primero ni qué lectura temporal corresponde a cada punto. El ejemplo demuestra directamente que una misma imagen geométrica puede admitir parametrizaciones con órdenes temporales opuestos.
 
-### 5.2.8. Recorrido repetido y multiplicidad de paso {#fispm-c05-e004-recorrido-repetido-y-multiplicidad-de-paso .unnumbered}
+### Recorrido repetido y multiplicidad de paso {#fispm-c05-e004-recorrido-repetido-y-multiplicidad-de-paso .unnumbered}
 
 **Ejercicio 5.4 · Tipado y lectura geométrica** Sean $A,B\in\mathcal E$, $A\ne B$, $T>0$, y sea $R:[0,2T]\to\mathcal E$ la aplicación
 
@@ -415,7 +415,7 @@ Como $s\in(0,1)$, estos dos tiempos son distintos y pertenecen respectivamente a
 
 []{#cierre-conceptual-qué-se-pierde-al-olvidar-la-parametrización}
 
-### 5.2.9. Cierre conceptual: qué se pierde al olvidar la parametrización {#fispm-c05-cierre-conceptual-quuxe9-se-pierde-al-olvidar-la-parametrizaciuxf3n}
+### Cierre conceptual: qué se pierde al olvidar la parametrización {#fispm-c05-cierre-conceptual-quuxe9-se-pierde-al-olvidar-la-parametrizaciuxf3n}
 
 La relación entre movimiento y trayectoria puede resumirse así:
 
@@ -437,11 +437,11 @@ Por eso la trayectoria geométrica no debe identificarse con el movimiento param
 
 []{#fpm-i-05-s03}
 
-## 5.3. Posición relativa y coordenadas de una curva {#fispm-c05-posiciuxf3n-relativa-y-coordenadas-de-una-curva}
+## 3. Posición relativa y coordenadas de una curva {#fispm-c05-posiciuxf3n-relativa-y-coordenadas-de-una-curva}
 
 []{#un-movimiento-tres-niveles-de-descripción}
 
-### 5.3.1. Un movimiento, tres niveles de descripción {#fispm-c05-un-movimiento-tres-niveles-de-descripciuxf3n}
+### Un movimiento, tres niveles de descripción {#fispm-c05-un-movimiento-tres-niveles-de-descripciuxf3n}
 
 En §2 construimos un movimiento como una aplicación
 
@@ -471,7 +471,7 @@ Para cada $t$, $r_O(t)$ es el vector de posición del punto $P(t)$ relativo al o
 
 []{#definir-curva-coordenada-en-un-marco-fijo}
 
-### 5.3.2. Definir: curva coordenada en un marco fijo {#fispm-c05-definir-curva-coordenada-en-un-marco-fijo}
+### Definir: curva coordenada en un marco fijo {#fispm-c05-definir-curva-coordenada-en-un-marco-fijo}
 
 Fijemos ahora un marco afín
 
@@ -495,7 +495,7 @@ La misma letra $x_F$ se usa, por economía notacional, tanto para la aplicación
 
 []{#relación-punto-a-punto-entre-las-tres-descripciones}
 
-### 5.3.3. Relación punto a punto entre las tres descripciones {#fispm-c05-relaciuxf3n-punto-a-punto-entre-las-tres-descripciones}
+### Relación punto a punto entre las tres descripciones {#fispm-c05-relaciuxf3n-punto-a-punto-entre-las-tres-descripciones}
 
 Por la definición de coordenadas afines del capítulo 4, para cada $t\in I$ se tiene
 
@@ -511,7 +511,7 @@ Estas igualdades no identifican los objetos. Expresan relaciones de representaci
 
 []{#principio-metodológico-conservar-el-tipo-del-objeto}
 
-### 5.3.4. Principio metodológico: conservar el tipo del objeto {#fispm-c05-principio-metodoluxf3gico-conservar-el-tipo-del-objeto}
+### Principio metodológico: conservar el tipo del objeto {#fispm-c05-principio-metodoluxf3gico-conservar-el-tipo-del-objeto}
 
 **Principio metodológico 5.3 --- Mantener el tipado afín** Durante todo el capítulo distinguir explícitamente
 
@@ -523,7 +523,7 @@ Error plausible «Como $x_F(t)$ es una terna, entonces $P(t)$ es una terna». No
 
 []{#balance-representar-sin-confundir}
 
-### 5.3.5. Balance: representar sin confundir {#fispm-c05-balance-representar-sin-confundir}
+### Balance: representar sin confundir {#fispm-c05-balance-representar-sin-confundir}
 
 La cadena de representación construida hasta aquí es
 
@@ -533,7 +533,7 @@ El primer paso requiere elegir un origen; el segundo, además, una base. Ninguna
 
 []{#cambiar-el-origen-cambia-la-curva-de-posición-no-el-movimiento}
 
-### 5.3.6. Cambiar el origen cambia la curva de posición, no el movimiento {#fispm-c05-cambiar-el-origen-cambia-la-curva-de-posiciuxf3n-no-el-movimiento}
+### Cambiar el origen cambia la curva de posición, no el movimiento {#fispm-c05-cambiar-el-origen-cambia-la-curva-de-posiciuxf3n-no-el-movimiento}
 
 Sean $O,O'\in\mathcal E$ dos orígenes fijos y definamos
 
@@ -567,7 +567,7 @@ Como $O$ y $O'$ son fijos, $c$ es el mismo vector para todos los valores de $t$.
 
 []{#reconstruir-una-curva-desde-una-curva-coordenada}
 
-### 5.3.7. Reconstruir una curva desde una curva coordenada {#fispm-c05-reconstruir-una-curva-desde-una-curva-coordenada}
+### Reconstruir una curva desde una curva coordenada {#fispm-c05-reconstruir-una-curva-desde-una-curva-coordenada}
 
 La representación coordenada no pierde información una vez fijado el marco. El capítulo 4 demostró que
 
@@ -603,7 +603,7 @@ para todo $t$. La inyectividad de $x_F$ implica $Q(t)=P(t)$ para cada $t$, luego
 
 []{#dos-marcos-fijos-describen-la-misma-curva-con-columnas-distintas}
 
-### 5.3.8. Dos marcos fijos describen la misma curva con columnas distintas {#fispm-c05-dos-marcos-fijos-describen-la-misma-curva-con-columnas-distintas}
+### Dos marcos fijos describen la misma curva con columnas distintas {#fispm-c05-dos-marcos-fijos-describen-la-misma-curva-con-columnas-distintas}
 
 Sean
 
@@ -633,7 +633,7 @@ Error plausible «Si $x_F(t)$ y $x_{F'}(t)$ son funciones distintas, entonces de
 
 []{#balance-objeto-geométrico-y-descripciones-fijas}
 
-### 5.3.9. Balance: objeto geométrico y descripciones fijas {#fispm-c05-balance-objeto-geomuxe9trico-y-descripciones-fijas}
+### Balance: objeto geométrico y descripciones fijas {#fispm-c05-balance-objeto-geomuxe9trico-y-descripciones-fijas}
 
 Las relaciones construidas en esta sección pueden organizarse como
 
@@ -641,7 +641,7 @@ $$\boxed{ P(t) \;\longleftrightarrow\; r_O(t) \;\longleftrightarrow\; x_F(t), }$
 
 siempre que las elecciones auxiliares correspondientes estén fijadas. Cambiar de origen modifica $r_O$ mediante una traslación vectorial constante; cambiar de marco modifica $x_F$ mediante una ley afín. Ninguna de estas operaciones, por sí sola, cambia el movimiento geométrico $P$. Esta distinción prepara la comparación entre posiciones correspondientes a **dos instantes distintos**. Esa comparación requerirá formar un desplazamiento entre puntos y pertenece a §4.
 
-### 5.3.9. Cambiar origen sin cambiar la curva física {#fispm-c05-e005-cambiar-origen-sin-cambiar-la-curva-fuxedsica .unnumbered}
+### Cambiar origen sin cambiar la curva física {#fispm-c05-e005-cambiar-origen-sin-cambiar-la-curva-fuxedsica .unnumbered}
 
 **Ejercicio 5.5 · Transferencia y prueba** Sea $P:I\to\mathcal E$ un movimiento y sean $O,O'\in\mathcal E$ dos orígenes fijos con
 
@@ -671,7 +671,7 @@ $$\begin{aligned} O'+r_{O'}(t) &=(O+c)+(r_O(t)-c)\\ &=O+r_O(t). \end{aligned}$$
 
 Por tanto, las dos expresiones reconstruyen exactamente el mismo punto $P(t)$ para cada valor temporal. Cambió el origen usado para representar la posición, no la curva física.
 
-### 5.3.9. Una curva, dos marcos fijos {#fispm-c05-e006-una-curva-dos-marcos-fijos .unnumbered}
+### Una curva, dos marcos fijos {#fispm-c05-e006-una-curva-dos-marcos-fijos .unnumbered}
 
 **Ejercicio 5.6 · Cálculo e invariancia de representación** Sea
 
@@ -713,7 +713,7 @@ Las columnas son distintas, pero ambas reconstruyen el mismo punto $P(t)$ en cad
 
 []{#cierre-conceptual-una-curva-varias-descripciones}
 
-### 5.3.10. Cierre conceptual: una curva, varias descripciones {#fispm-c05-cierre-conceptual-una-curva-varias-descripciones}
+### Cierre conceptual: una curva, varias descripciones {#fispm-c05-cierre-conceptual-una-curva-varias-descripciones}
 
 La sección deja separadas tres capas:
 
@@ -727,11 +727,11 @@ La primera es el movimiento geométrico. Las otras dos dependen de elecciones au
 
 []{#fpm-i-05-s04}
 
-## 5.4. Desplazamiento temporal y velocidad media {#fispm-c05-desplazamiento-temporal-y-velocidad-media}
+## 4. Desplazamiento temporal y velocidad media {#fispm-c05-desplazamiento-temporal-y-velocidad-media}
 
 []{#dos-instantes-dos-puntos-y-un-vector-entre-ellos}
 
-### 5.4.1. Dos instantes, dos puntos y un vector entre ellos {#fispm-c05-dos-instantes-dos-puntos-y-un-vector-entre-ellos}
+### Dos instantes, dos puntos y un vector entre ellos {#fispm-c05-dos-instantes-dos-puntos-y-un-vector-entre-ellos}
 
 Hasta ahora hemos estudiado una posición a la vez. Para un movimiento
 
@@ -757,7 +757,7 @@ y, si $t_1=t_2$, $\Delta P_{t_1,t_1}=0.$ En particular, un desplazamiento nulo e
 
 []{#desplazamiento-no-es-distancia-recorrida}
 
-### 5.4.2. Desplazamiento no es distancia recorrida {#fispm-c05-desplazamiento-no-es-distancia-recorrida}
+### Desplazamiento no es distancia recorrida {#fispm-c05-desplazamiento-no-es-distancia-recorrida}
 
 El desplazamiento $\Delta P_{t_1,t_2}$ es un **vector**. Su norma es la distancia euclídea entre las dos posiciones extremas:
 
@@ -769,7 +769,7 @@ aunque el camino recorrido no haya sido nulo. La longitud del recorrido se const
 
 []{#el-intervalo-temporal-y-el-cociente-medio}
 
-### 5.4.3. El intervalo temporal y el cociente medio {#fispm-c05-el-intervalo-temporal-y-el-cociente-medio}
+### El intervalo temporal y el cociente medio {#fispm-c05-el-intervalo-temporal-y-el-cociente-medio}
 
 Para $t_1\ne t_2$, definimos el incremento temporal orientado
 
@@ -785,7 +785,7 @@ La palabra *media* no presupone todavía una función de velocidad instantánea 
 
 []{#principio-metodológico-primero-el-vector-después-el-cociente}
 
-### 5.4.4. Principio metodológico: primero el vector, después el cociente {#fispm-c05-principio-metodoluxf3gico-primero-el-vector-despuuxe9s-el-cociente}
+### Principio metodológico: primero el vector, después el cociente {#fispm-c05-principio-metodoluxf3gico-primero-el-vector-despuuxe9s-el-cociente}
 
 **Principio metodológico 5.4 --- Antes de dividir por tiempo, formar un desplazamiento vectorial legítimo** El cociente temporal debe construirse a partir de
 
@@ -795,7 +795,7 @@ no a partir de una división informal de puntos de $\mathcal E$ por números. Pr
 
 []{#auditoría-dimensional-y-frontera-con-la-velocidad-instantánea}
 
-### 5.4.5. Auditoría dimensional y frontera con la velocidad instantánea {#fispm-c05-auditoruxeda-dimensional-y-frontera-con-la-velocidad-instantuxe1nea}
+### Auditoría dimensional y frontera con la velocidad instantánea {#fispm-c05-auditoruxeda-dimensional-y-frontera-con-la-velocidad-instantuxe1nea}
 
 Si las posiciones espaciales tienen dimensión de longitud, entonces $[\Delta P]=L, \qquad [\Delta t]=T,$
 
@@ -811,7 +811,7 @@ Aún debemos demostrar cómo este desplazamiento se expresa mediante $r_O$, cóm
 
 []{#el-desplazamiento-como-diferencia-de-posiciones-relativas}
 
-### 5.4.6. El desplazamiento como diferencia de posiciones relativas {#fispm-c05-el-desplazamiento-como-diferencia-de-posiciones-relativas}
+### El desplazamiento como diferencia de posiciones relativas {#fispm-c05-el-desplazamiento-como-diferencia-de-posiciones-relativas}
 
 Sea $O\in\mathcal E$ un origen fijo. Las posiciones relativas a $O$ son
 
@@ -839,7 +839,7 @@ $\square$ **Autoexplicación de la prueba.** No hemos restado puntos. Primero co
 
 []{#aditividad-al-insertar-un-tercer-instante}
 
-### 5.4.7. Aditividad al insertar un tercer instante {#fispm-c05-aditividad-al-insertar-un-tercer-instante}
+### Aditividad al insertar un tercer instante {#fispm-c05-aditividad-al-insertar-un-tercer-instante}
 
 Sean $t_1,t_2,t_3\in I$. La ley del triángulo entre los tres puntos de la curva produce inmediatamente una composición temporal de desplazamientos.
 
@@ -859,7 +859,7 @@ que es exactamente la identidad afirmada. $\square$ **Lectura guiada.** El resul
 
 []{#la-velocidad-media-y-los-cambios-de-descripción-fija}
 
-### 5.4.8. La velocidad media y los cambios de descripción fija {#fispm-c05-la-velocidad-media-y-los-cambios-de-descripciuxf3n-fija}
+### La velocidad media y los cambios de descripción fija {#fispm-c05-la-velocidad-media-y-los-cambios-de-descripciuxf3n-fija}
 
 Proposición 5.5 permite escribir, para cualquier origen fijo $O$,
 
@@ -911,7 +911,7 @@ $\square$ **Autoexplicación de la prueba.** El vector medio es el mismo objeto 
 
 []{#balance-diferencias-temporales-antes-de-los-límites}
 
-### 5.4.9. Balance: diferencias temporales antes de los límites {#fispm-c05-balance-diferencias-temporales-antes-de-los-luxedmites}
+### Balance: diferencias temporales antes de los límites {#fispm-c05-balance-diferencias-temporales-antes-de-los-luxedmites}
 
 Hasta aquí hemos construido tres hechos puramente finitos:
 
@@ -925,7 +925,7 @@ $$\boxed{ [\bar v]_{B'}=S^{-1}[\bar v]_B }$$
 
 para marcos fijos. Ninguna de estas identidades utiliza límites ni derivadas. Los ejercicios siguientes aplican estas propiedades y examinan un caso en que el desplazamiento neto ---y por tanto la velocidad media--- es cero aunque el movimiento no sea constante.
 
-### 5.4.9. Composición temporal de desplazamientos {#fispm-c05-e007-composiciuxf3n-temporal-de-desplazamientos .unnumbered}
+### Composición temporal de desplazamientos {#fispm-c05-e007-composiciuxf3n-temporal-de-desplazamientos .unnumbered}
 
 **Ejercicio 5.7 · Prueba y tipado** Sea $P:I\to\mathcal E$ un movimiento y sean $t_1,t_2,t_3\in I$ cualesquiera.
 
@@ -951,7 +951,7 @@ $$\begin{aligned} \Delta P_{t_1,t_2} + \Delta P_{t_2,t_3} &= \bigl(r_O(t_2)-r_O(
 
 Cada desplazamiento pertenece a $V$, de modo que la suma y las restas son operaciones del espacio vectorial. Los puntos $P(t_i)\in\mathcal E$ sólo intervienen al construir los desplazamientos; nunca se suman directamente entre sí.
 
-### 5.4.9. Velocidad media cero en un movimiento no constante {#fispm-c05-e008-velocidad-media-cero-en-un-movimiento-no-constante .unnumbered}
+### Velocidad media cero en un movimiento no constante {#fispm-c05-e008-velocidad-media-cero-en-un-movimiento-no-constante .unnumbered}
 
 **Ejercicio 5.8 · Contraejemplo e interpretación** Sean $A,B\in\mathcal E$, con $A\ne B$, y sea $T>0$. Define
 
@@ -991,7 +991,7 @@ La velocidad media sólo usa el desplazamiento neto entre los extremos del inter
 
 []{#cierre-conceptual-lo-que-un-cociente-finito-sí-afirma}
 
-### 5.4.10. Cierre conceptual: lo que un cociente finito sí afirma {#fispm-c05-cierre-conceptual-lo-que-un-cociente-finito-suxed-afirma}
+### Cierre conceptual: lo que un cociente finito sí afirma {#fispm-c05-cierre-conceptual-lo-que-un-cociente-finito-suxed-afirma}
 
 La sección ha construido una cadena puramente finita:
 
@@ -1009,11 +1009,11 @@ no que $P$ sea constante entre ambos instantes. El siguiente nivel conceptual se
 
 []{#fpm-i-05-s05}
 
-## 5.5. Velocidad instantánea como derivada de una curva afín {#fispm-c05-velocidad-instantuxe1nea-como-derivada-de-una-curva-afuxedn}
+## 5. Velocidad instantánea como derivada de una curva afín {#fispm-c05-velocidad-instantuxe1nea-como-derivada-de-una-curva-afuxedn}
 
 []{#del-cociente-finito-a-una-pregunta-local}
 
-### 5.5.1. Del cociente finito a una pregunta local {#fispm-c05-del-cociente-finito-a-una-pregunta-local}
+### Del cociente finito a una pregunta local {#fispm-c05-del-cociente-finito-a-una-pregunta-local}
 
 En §4 definimos, para $t_1\ne t_2$,
 
@@ -1029,7 +1029,7 @@ Esta cantidad compara dos posiciones separadas por un intervalo temporal finito.
 
 <figcaption>
 
-**Figura 5.1.** Para la parábola $Y=X^2/3$, la secante une dos instantes y la tangente tiene pendiente $2X/3$. En $X=1{,}5$, esa pendiente vale uno. Véase §[5.5](#fispm-c05-velocidad-instantuxe1nea-como-derivada-de-una-curva-afuxedn).
+**Figura 5.1.** Para la parábola $Y=X^2/3$, la secante une dos instantes y la tangente tiene pendiente $2X/3$. En $X=1{,}5$, esa pendiente vale uno. Véase §[5](#fispm-c05-velocidad-instantuxe1nea-como-derivada-de-una-curva-afuxedn).
 
 </figcaption>
 
@@ -1041,7 +1041,7 @@ Activación ¿Qué debe permanecer bien tipado mientras el intervalo temporal se
 
 []{#derivar-una-curva-con-valores-en-v}
 
-### 5.5.2. Derivar una curva con valores en $V$ {#fispm-c05-derivar-una-curva-con-valores-en-v}
+### Derivar una curva con valores en $V$ {#fispm-c05-derivar-una-curva-con-valores-en-v}
 
 M3 proporciona la derivada para funciones escalares. Aquí necesitamos reconstruir la extensión correspondiente a una curva
 
@@ -1059,7 +1059,7 @@ La condición de punto interior garantiza que podemos considerar valores de $h$ 
 
 []{#principio-metodológico-derivar-diferencias-no-puntos}
 
-### 5.5.3. Principio metodológico: derivar diferencias, no puntos {#fispm-c05-principio-metodoluxf3gico-derivar-diferencias-no-puntos}
+### Principio metodológico: derivar diferencias, no puntos {#fispm-c05-principio-metodoluxf3gico-derivar-diferencias-no-puntos}
 
 La forma de la definición 5.8 hace visible una operación esencial: antes de dividir por $h$, el numerador debe ser una **diferencia vectorial legítima**. Esto continúa exactamente el principio usado para la velocidad media.
 
@@ -1075,7 +1075,7 @@ Error de tipo Escribir $P(t+h)-P(t)$ sólo es legítimo si previamente se ha pas
 
 []{#definir-velocidad-instantánea}
 
-### 5.5.4. Definir: velocidad instantánea {#fispm-c05-definir-velocidad-instantuxe1nea}
+### Definir: velocidad instantánea {#fispm-c05-definir-velocidad-instantuxe1nea}
 
 Volvamos ahora al movimiento
 
@@ -1097,7 +1097,7 @@ En un extremo del intervalo sólo emplearemos un límite lateral cuando se decla
 
 []{#principio-metodológico-auditar-las-dimensiones-de-una-derivada-física}
 
-### 5.5.5. Principio metodológico: auditar las dimensiones de una derivada física {#fispm-c05-principio-metodoluxf3gico-auditar-las-dimensiones-de-una-derivada-fuxedsica}
+### Principio metodológico: auditar las dimensiones de una derivada física {#fispm-c05-principio-metodoluxf3gico-auditar-las-dimensiones-de-una-derivada-fuxedsica}
 
 El cociente incremental conserva la misma estructura dimensional que la velocidad media. Si el parámetro $t$ representa tiempo físico y el desplazamiento tiene dimensión de longitud,
 
@@ -1117,7 +1117,7 @@ La segunda igualdad es aquí sólo una **previsión dimensional**; la aceleraci�
 
 []{#balance-del-intervalo-finito-al-límite-vectorial}
 
-### 5.5.6. Balance: del intervalo finito al límite vectorial {#fispm-c05-balance-del-intervalo-finito-al-luxedmite-vectorial}
+### Balance: del intervalo finito al límite vectorial {#fispm-c05-balance-del-intervalo-finito-al-luxedmite-vectorial}
 
 La transición conceptual puede resumirse así:
 
@@ -1127,7 +1127,7 @@ cuando el límite existe. La novedad de §5 no es abandonar el tipado construido
 
 []{#proposición-derivación-componente-a-componente}
 
-### 5.5.7. Proposición: derivación componente a componente {#fispm-c05-proposiciuxf3n-derivaciuxf3n-componente-a-componente}
+### Proposición: derivación componente a componente {#fispm-c05-proposiciuxf3n-derivaciuxf3n-componente-a-componente}
 
 **Proposición 5.8 --- Derivación componente a componente en $V$** Sea
 
@@ -1189,7 +1189,7 @@ Luego existen las tres derivadas escalares y sus valores son precisamente las co
 
 []{#proposición-la-velocidad-es-la-derivada-del-vector-de-posición}
 
-### 5.5.8. Proposición: la velocidad es la derivada del vector de posición {#fispm-c05-proposiciuxf3n-la-velocidad-es-la-derivada-del-vector-de-posiciuxf3n}
+### Proposición: la velocidad es la derivada del vector de posición {#fispm-c05-proposiciuxf3n-la-velocidad-es-la-derivada-del-vector-de-posiciuxf3n}
 
 Fijemos un origen $O\in\mathcal E$ y consideremos la curva de posición relativa
 
@@ -1215,7 +1215,7 @@ $\square$ proposición 5.9 no identifica el punto $P(t)$ con un vector. La deriv
 
 []{#corolario-cambiar-un-origen-fijo-no-cambia-la-velocidad}
 
-### 5.5.9. Corolario: cambiar un origen fijo no cambia la velocidad {#fispm-c05-corolario-cambiar-un-origen-fijo-no-cambia-la-velocidad}
+### Corolario: cambiar un origen fijo no cambia la velocidad {#fispm-c05-corolario-cambiar-un-origen-fijo-no-cambia-la-velocidad}
 
 La fórmula anterior permite separar una dependencia descriptiva de una cantidad geométrica.
 
@@ -1237,7 +1237,7 @@ Proposición 5.9 identifica ambas derivadas con la misma velocidad intrínseca $
 
 []{#proposición-componentes-de-la-velocidad-en-un-marco-fijo}
 
-### 5.5.10. Proposición: componentes de la velocidad en un marco fijo {#fispm-c05-proposiciuxf3n-componentes-de-la-velocidad-en-un-marco-fijo}
+### Proposición: componentes de la velocidad en un marco fijo {#fispm-c05-proposiciuxf3n-componentes-de-la-velocidad-en-un-marco-fijo}
 
 Fijemos ahora un marco geométrico
 
@@ -1267,7 +1267,7 @@ $\square$ La igualdad anterior no define la velocidad por coordenadas: expresa e
 
 []{#balance}
 
-### 5.5.11. Balance {#fispm-c05-balance}
+### Balance {#fispm-c05-balance}
 
 La cadena construida en §§5.7--5.10 queda cerrada:
 
@@ -1275,7 +1275,7 @@ $$\boxed{ \text{cociente incremental afín} \longrightarrow v(t) \longleftrighta
 
 con una condición que debe permanecer visible: el origen y la base usados para derivar coordenadas son **fijos**. Proposición 5.8 justifica la derivación componente a componente sin importar cálculo multivariable. Proposición 5.9 muestra que la velocidad es la derivada de cualquier vector de posición construido desde un origen fijo. Proposición 5.10 demuestra que el origen fijo se elimina al derivar. Proposición 5.11 proporciona la regla práctica de cálculo en coordenadas sin confundir la representación con el vector. Los ejercicios siguientes obligarán a ejecutar esta cadena desde el cociente incremental, comprobar su independencia respecto del origen y reparar una notación de tipo incorrecto. La recta tangente, la regularidad, los instantes de reposo y la aceleración permanecen fuera de §5.
 
-### 5.5.11. Del cociente secante al vector velocidad {#fispm-c05-e009-del-cociente-secante-al-vector-velocidad .unnumbered}
+### Del cociente secante al vector velocidad {#fispm-c05-e009-del-cociente-secante-al-vector-velocidad .unnumbered}
 
 **Ejercicio 5.9 · Derivación y reconstrucción intrínseca** Sea $F=(O,B)$ un marco fijo con $B=(e_1,e_2,e_3)$ y sea $P:\mathbb R\to\mathcal E$ el movimiento definido por
 
@@ -1321,7 +1321,7 @@ $$[v(1)]_B = \left.\frac{d}{dt} \begin{pmatrix} t^2\\ t^3\\ 2t \end{pmatrix}\rig
 
 que representa el mismo vector obtenido intrínsecamente.
 
-### 5.5.11. Independencia del origen {#fispm-c05-e010-independencia-del-origen .unnumbered}
+### Independencia del origen {#fispm-c05-e010-independencia-del-origen .unnumbered}
 
 **Ejercicio 5.10 · Invariancia y prueba** Conserva el movimiento y la base $B$ del ejercicio 5.9. Elige ahora otro origen fijo
 
@@ -1355,7 +1355,7 @@ $$\boxed{r_{O'}'(1)=r_O'(1)=2e_1+3e_2+2e_3.}$$
 
 El argumento no usa ninguna propiedad especial de $c$ salvo que sea **constante respecto de $t$**. Por eso cualquier cambio de origen fijo desaparece al formar la diferencia y, por la proposición 5.10, no altera la velocidad.
 
-### 5.5.12. ejercicio 5.11 --- Por qué $P(t)/t$ no es velocidad {#fispm-c05-e011-por-quuxe9-ptt-no-es-velocidad}
+### ejercicio 5.11 --- Por qué $P(t)/t$ no es velocidad {#fispm-c05-e011-por-quuxe9-ptt-no-es-velocidad}
 
 **Ejercicio 5.11 · Error plausible y reparación** Para el movimiento del ejercicio 5.9, un estudiante escribe
 
@@ -1391,7 +1391,7 @@ $$v(t)=r_O'(t).$$
 
 []{#cierre-conceptual-derivar-sin-perder-la-geometría}
 
-### 5.5.13. Cierre conceptual: derivar sin perder la geometría {#fispm-c05-cierre-conceptual-derivar-sin-perder-la-geometruxeda}
+### Cierre conceptual: derivar sin perder la geometría {#fispm-c05-cierre-conceptual-derivar-sin-perder-la-geometruxeda}
 
 La sección ha construido la velocidad instantánea sin identificar puntos con vectores. El paso fundamental es
 
@@ -1413,11 +1413,11 @@ Estas fórmulas no crean tres conceptos distintos de velocidad. Son tres niveles
 
 []{#fpm-i-05-s06}
 
-## 5.6. Tangente, regularidad e instantes de reposo {#fispm-c05-tangente-regularidad-e-instantes-de-reposo}
+## 6. Tangente, regularidad e instantes de reposo {#fispm-c05-tangente-regularidad-e-instantes-de-reposo}
 
 []{#activación-una-velocidad-no-nula-determina-una-dirección}
 
-### 5.6.1. Activación: una velocidad no nula determina una dirección {#fispm-c05-activaciuxf3n-una-velocidad-no-nula-determina-una-direcciuxf3n}
+### Activación: una velocidad no nula determina una dirección {#fispm-c05-activaciuxf3n-una-velocidad-no-nula-determina-una-direcciuxf3n}
 
 En §5 construimos la velocidad instantánea como un vector
 
@@ -1447,7 +1447,7 @@ cuando la velocidad existe. Así, en un instante con velocidad no nula, los vect
 
 <figcaption>
 
-**Figura 5.2.** La curva $r(u)=(u^3,u^2)$ tiene $r^\prime(0)=0$. La fórmula del vector tangente unitario $r^\prime/\lVert r^\prime\rVert$ no está definida allí. El ejemplo obliga a comprobar regularidad antes de usar esa expresión. Véase §[5.6](#fispm-c05-tangente-regularidad-e-instantes-de-reposo).
+**Figura 5.2.** La curva $r(u)=(u^3,u^2)$ tiene $r^\prime(0)=0$. La fórmula del vector tangente unitario $r^\prime/\lVert r^\prime\rVert$ no está definida allí. El ejemplo obliga a comprobar regularidad antes de usar esa expresión. Véase §[6](#fispm-c05-tangente-regularidad-e-instantes-de-reposo).
 
 </figcaption>
 
@@ -1457,7 +1457,7 @@ Activación Si dos vectores directores difieren sólo por un factor escalar no n
 
 []{#qué-afirmamos-y-qué-no-al-hablar-de-secantes}
 
-### 5.6.2. Qué afirmamos ---y qué no--- al hablar de secantes {#fispm-c05-quuxe9-afirmamos-y-quuxe9-no-al-hablar-de-secantes}
+### Qué afirmamos ---y qué no--- al hablar de secantes {#fispm-c05-quuxe9-afirmamos-y-quuxe9-no-al-hablar-de-secantes}
 
 Para cada $h\ne0$, definamos la recta secante afín
 
@@ -1485,7 +1485,7 @@ La condición de regularidad no afirma que la velocidad sea constante ni que la 
 
 []{#definir-recta-tangente-afín}
 
-### 5.6.3. Definir: recta tangente afín {#fispm-c05-definir-recta-tangente-afuxedn}
+### Definir: recta tangente afín {#fispm-c05-definir-recta-tangente-afuxedn}
 
 **Definición 5.11 --- Recta tangente afín en un instante regular** Si $t_0$ es regular, definimos la **recta tangente afín** al movimiento en $t_0$ por
 
@@ -1495,7 +1495,7 @@ La recta tangente contiene el punto $P(t_0)$ y utiliza $v(t_0)$ como vector dire
 
 []{#proposición-la-dirección-tangente-nace-de-las-secantes}
 
-### 5.6.4. Proposición: la dirección tangente nace de las secantes {#fispm-c05-proposiciuxf3n-la-direcciuxf3n-tangente-nace-de-las-secantes}
+### Proposición: la dirección tangente nace de las secantes {#fispm-c05-proposiciuxf3n-la-direcciuxf3n-tangente-nace-de-las-secantes}
 
 **Proposición 5.12 --- Recta tangente en un instante regular** Sea $P:I\to\mathcal E$ derivable en un punto interior $t_0$ y supongamos que
 
@@ -1537,7 +1537,7 @@ porque $\mu=\lambda c$ recorre todos los números reales cuando $\lambda$ los re
 
 []{#principio-metodológico-el-dibujo-no-contiene-la-parametrización}
 
-### 5.6.5. Principio metodológico: el dibujo no contiene la parametrización {#fispm-c05-principio-metodoluxf3gico-el-dibujo-no-contiene-la-parametrizaciuxf3n}
+### Principio metodológico: el dibujo no contiene la parametrización {#fispm-c05-principio-metodoluxf3gico-el-dibujo-no-contiene-la-parametrizaciuxf3n}
 
 **Principio metodológico 5.7 --- No leer la tangente temporal sólo desde el dibujo de la trayectoria** La imagen geométrica de una curva puede sugerir una dirección tangente, pero no determina por sí sola el vector velocidad.
 
@@ -1551,7 +1551,7 @@ La primera es una recta afín; el segundo es un vector de $V$ con magnitud y sen
 
 []{#balance-del-caso-regular}
 
-### 5.6.6. Balance del caso regular {#fispm-c05-balance-del-caso-regular}
+### Balance del caso regular {#fispm-c05-balance-del-caso-regular}
 
 Para un instante regular hemos construido la cadena
 
@@ -1565,7 +1565,7 @@ Cuando la velocidad se anula, definición 5.11 no produce un vector director no 
 
 []{#el-caso-degenerado-cuando-la-velocidad-se-anula}
 
-### 5.6.7. El caso degenerado: cuando la velocidad se anula {#fispm-c05-el-caso-degenerado-cuando-la-velocidad-se-anula}
+### El caso degenerado: cuando la velocidad se anula {#fispm-c05-el-caso-degenerado-cuando-la-velocidad-se-anula}
 
 Supongamos ahora que el movimiento es derivable en $t_0$ pero
 
@@ -1591,7 +1591,7 @@ sin hipótesis adicionales.
 
 []{#primer-contraste-reposo-instantáneo-sin-reposo-permanente}
 
-### 5.6.8. Primer contraste: reposo instantáneo sin reposo permanente {#fispm-c05-primer-contraste-reposo-instantuxe1neo-sin-reposo-permanente}
+### Primer contraste: reposo instantáneo sin reposo permanente {#fispm-c05-primer-contraste-reposo-instantuxe1neo-sin-reposo-permanente}
 
 Sea $u\in V$ no nulo y fijemos un punto $A\in\mathcal E$. Consideremos
 
@@ -1607,7 +1607,7 @@ de modo que $t=0$ es un instante de reposo según la definición 5.12. Pero el m
 
 []{#segundo-contraste-la-misma-imagen-puede-admitir-una-parametrización-regular}
 
-### 5.6.9. Segundo contraste: la misma imagen puede admitir una parametrización regular {#fispm-c05-segundo-contraste-la-misma-imagen-puede-admitir-una-parametrizaciuxf3n-regular}
+### Segundo contraste: la misma imagen puede admitir una parametrización regular {#fispm-c05-segundo-contraste-la-misma-imagen-puede-admitir-una-parametrizaciuxf3n-regular}
 
 El ejemplo anterior permite aislar la diferencia entre movimiento e imagen. Como la función
 
@@ -1635,7 +1635,7 @@ La conclusión es demasiado fuerte. Lo único que podemos afirmar con las defini
 
 []{#qué-sí-puede-concluirse-de-vt_00}
 
-### 5.6.10. Qué sí puede concluirse de $v(t_0)=0$ {#fispm-c05-quuxe9-suxed-puede-concluirse-de-vt_00}
+### Qué sí puede concluirse de $v(t_0)=0$ {#fispm-c05-quuxe9-suxed-puede-concluirse-de-vt_00}
 
 De la igualdad $v(t_0)=0$
 
@@ -1663,7 +1663,7 @@ $$\boxed{ \text{propiedad de la parametrización} \ne \text{propiedad automátic
 
 []{#balance-del-caso-de-reposo}
 
-### 5.6.11. Balance del caso de reposo {#fispm-c05-balance-del-caso-de-reposo}
+### Balance del caso de reposo {#fispm-c05-balance-del-caso-de-reposo}
 
 §6 distingue ahora dos regímenes:
 
@@ -1671,7 +1671,7 @@ $$\boxed{ \begin{array}{ll} v(t_0)\ne0 &\Longrightarrow \text{instante regular y
 
 El segundo caso no debe interpretarse como una afirmación sobre la complejidad geométrica de la trayectoria. El ejemplo $A+t^3u$ muestra que una parametrización puede detenerse instantáneamente sobre una imagen tan simple como una recta. Los ejercicios 5.12--5.13 usarán estas dos ideas: primero calcular una recta tangente en el caso regular; después comparar dos parametrizaciones de una misma recta, una regular y otra con velocidad nula en un instante. La aceleración continúa fuera de §6.
 
-### 5.6.11. Recta tangente desde la velocidad {#fispm-c05-e012-recta-tangente-desde-la-velocidad .unnumbered}
+### Recta tangente desde la velocidad {#fispm-c05-e012-recta-tangente-desde-la-velocidad .unnumbered}
 
 **Ejercicio 5.12 · Geometría y cálculo** Sea $F=(O,B)$ un marco fijo con $B=(e_1,e_2,e_3)$ y sea
 
@@ -1721,7 +1721,7 @@ $$\boxed{ \widetilde{\mathcal T}_1=\mathcal T_1. }$$
 
 La recta tangente depende de la dirección generada por el vector velocidad, no de una normalización particular de su vector director.
 
-### 5.6.11. Velocidad nula con la misma imagen geométrica {#fispm-c05-e013-velocidad-nula-con-la-misma-imagen-geomuxe9trica .unnumbered}
+### Velocidad nula con la misma imagen geométrica {#fispm-c05-e013-velocidad-nula-con-la-misma-imagen-geomuxe9trica .unnumbered}
 
 **Ejercicio 5.13 · Contraejemplo y distinción parametrización--imagen** Sean $A\in\mathcal E$ y $u\in V$ con $u\ne0$. Considera los movimientos
 
@@ -1775,7 +1775,7 @@ $$\boxed{ \text{misma imagen} \;\not\Rightarrow\; \text{misma regularidad de la 
 
 []{#cierre-conceptual-dirección-tangente-y-fallo-de-la-parametrización}
 
-### 5.6.12. Cierre conceptual: dirección tangente y fallo de la parametrización {#fispm-c05-cierre-conceptual-direcciuxf3n-tangente-y-fallo-de-la-parametrizaciuxf3n}
+### Cierre conceptual: dirección tangente y fallo de la parametrización {#fispm-c05-cierre-conceptual-direcciuxf3n-tangente-y-fallo-de-la-parametrizaciuxf3n}
 
 La sección distingue dos situaciones sin introducir todavía ninguna estructura dinámica. Si
 
@@ -1799,11 +1799,11 @@ La aceleración requiere derivar la curva de velocidades y pertenece íntegramen
 
 []{#fpm-i-05-s07}
 
-## 5.7. Aceleración como segunda derivada {#fispm-c05-aceleraciuxf3n-como-segunda-derivada}
+## 7. Aceleración como segunda derivada {#fispm-c05-aceleraciuxf3n-como-segunda-derivada}
 
 []{#activación-una-velocidad-también-puede-variar}
 
-### 5.7.1. Activación: una velocidad también puede variar {#fispm-c05-activaciuxf3n-una-velocidad-tambiuxe9n-puede-variar}
+### Activación: una velocidad también puede variar {#fispm-c05-activaciuxf3n-una-velocidad-tambiuxe9n-puede-variar}
 
 Hasta ahora la derivada se aplicó a una curva de posiciones para construir la velocidad
 
@@ -1819,7 +1819,7 @@ Pero la velocidad misma puede cambiar con el tiempo. Dos movimientos pueden pose
 
 <figcaption>
 
-**Figura 5.3.** Para $r(u)=(u,u^2/5)$, la velocidad es $(1,2u/5)$ y la aceleración es $(0,2/5)$. La aceleración no tiene por qué ser paralela a la trayectoria ni a la velocidad. Véase §[5.7](#fispm-c05-aceleraciuxf3n-como-segunda-derivada).
+**Figura 5.3.** Para $r(u)=(u,u^2/5)$, la velocidad es $(1,2u/5)$ y la aceleración es $(0,2/5)$. La aceleración no tiene por qué ser paralela a la trayectoria ni a la velocidad. Véase §[7](#fispm-c05-aceleraciuxf3n-como-segunda-derivada).
 
 </figcaption>
 
@@ -1833,7 +1833,7 @@ Activación Si $v(t)$ ya es un vector de $V$, ¿qué tipo de objeto debe ser su 
 
 []{#del-cambio-de-posición-al-cambio-de-velocidad}
 
-### 5.7.2. Del cambio de posición al cambio de velocidad {#fispm-c05-del-cambio-de-posiciuxf3n-al-cambio-de-velocidad}
+### Del cambio de posición al cambio de velocidad {#fispm-c05-del-cambio-de-posiciuxf3n-al-cambio-de-velocidad}
 
 Para $h\ne0$, la diferencia
 
@@ -1861,7 +1861,7 @@ La existencia de $v(t)$ no garantiza por sí sola la existencia de $a(t)$. Defin
 
 []{#control-dimensional}
 
-### 5.7.3. Control dimensional {#fispm-c05-control-dimensional}
+### Control dimensional {#fispm-c05-control-dimensional}
 
 Si $t$ representa tiempo físico y
 
@@ -1879,7 +1879,7 @@ Esta comprobación coincide con la previsión dimensional de principio metodoló
 
 []{#principio-metodológico-cinemática-no-es-dinámica}
 
-### 5.7.4. Principio metodológico: cinemática no es dinámica {#fispm-c05-principio-metodoluxf3gico-cinemuxe1tica-no-es-dinuxe1mica}
+### Principio metodológico: cinemática no es dinámica {#fispm-c05-principio-metodoluxf3gico-cinemuxe1tica-no-es-dinuxe1mica}
 
 **Principio metodológico 5.8 --- Aceleración cinemática no implica todavía fuerza** La afirmación
 
@@ -1895,7 +1895,7 @@ $$\boxed{ \text{cinemática: cómo cambia el movimiento} \qquad\ne\qquad \text{d
 
 []{#qué-falta-demostrar}
 
-### 5.7.5. Qué falta demostrar {#fispm-c05-quuxe9-falta-demostrar}
+### Qué falta demostrar {#fispm-c05-quuxe9-falta-demostrar}
 
 Definición 5.13 define la aceleración derivando directamente la curva de velocidades. Antes de usarla sistemáticamente debemos demostrar dos conexiones con las representaciones ya construidas:
 
@@ -1905,7 +1905,7 @@ Definición 5.13 define la aceleración derivando directamente la curva de veloc
 
 []{#balance-conceptual}
 
-### 5.7.6. Balance conceptual {#fispm-c05-balance-conceptual}
+### Balance conceptual {#fispm-c05-balance-conceptual}
 
 La nueva cadena conceptual es
 
@@ -1915,7 +1915,7 @@ La aceleración exige una derivada adicional respecto de la velocidad y tiene di
 
 []{#proposición-la-aceleración-es-la-segunda-derivada-de-la-posición-relativa}
 
-### 5.7.7. Proposición: la aceleración es la segunda derivada de la posición relativa {#fispm-c05-proposiciuxf3n-la-aceleraciuxf3n-es-la-segunda-derivada-de-la-posiciuxf3n-relativa}
+### Proposición: la aceleración es la segunda derivada de la posición relativa {#fispm-c05-proposiciuxf3n-la-aceleraciuxf3n-es-la-segunda-derivada-de-la-posiciuxf3n-relativa}
 
 En §5 demostramos que, para cualquier origen fijo $O$, $v(t)=r_O'(t).$ Si la velocidad es derivable, podemos derivar una vez más esta identidad. El resultado no introduce una nueva noción de aceleración: conecta definición 5.13 con la representación vectorial de la posición.
 
@@ -1937,7 +1937,7 @@ es válida para **cualquier origen fijo**. La palabra «fijo» es esencial: si e
 
 []{#independencia-del-origen-fijo}
 
-### 5.7.8. Independencia del origen fijo {#fispm-c05-independencia-del-origen-fijo}
+### Independencia del origen fijo {#fispm-c05-independencia-del-origen-fijo}
 
 Sean dos orígenes fijos
 
@@ -1959,7 +1959,7 @@ Así como una traslación constante del origen desaparece al calcular la velocid
 
 []{#proposición-componentes-de-la-aceleración-en-un-marco-fijo}
 
-### 5.7.9. Proposición: componentes de la aceleración en un marco fijo {#fispm-c05-proposiciuxf3n-componentes-de-la-aceleraciuxf3n-en-un-marco-fijo}
+### Proposición: componentes de la aceleración en un marco fijo {#fispm-c05-proposiciuxf3n-componentes-de-la-aceleraciuxf3n-en-un-marco-fijo}
 
 Fijemos un marco
 
@@ -2001,7 +2001,7 @@ es sólo su representación en la base fija $B$.
 
 []{#balance-de-las-representaciones}
 
-### 5.7.10. Balance de las representaciones {#fispm-c05-balance-de-las-representaciones}
+### Balance de las representaciones {#fispm-c05-balance-de-las-representaciones}
 
 La aceleración posee ahora tres descripciones coherentes:
 
@@ -2013,7 +2013,7 @@ $$\boxed{ [a(t)]_B = \frac{d^2}{dt^2}x_F(t). }$$
 
 La primera fórmula es la definición cinemática de la definición 5.13; la segunda conecta la aceleración con la posición relativa; la tercera proporciona el cálculo por componentes. Cambiar un origen **fijo** no modifica ninguna de ellas. Todavía no hemos estudiado cómo cambian las componentes al cambiar de base o de marco fijo: esa covariancia pertenece a §8. Tampoco hemos introducido fuerza, masa ni leyes de Newton. Quedan ejercicios 5.14--5.15 para ejercitar el cálculo de $v$ y $a$, auditar dimensiones y distinguir cuidadosamente velocidad nula, velocidad constante y aceleración nula antes del cierre local de §7.
 
-### 5.7.10. Aceleración sin dinámica {#fispm-c05-e014-aceleraciuxf3n-sin-dinuxe1mica .unnumbered}
+### Aceleración sin dinámica {#fispm-c05-e014-aceleraciuxf3n-sin-dinuxe1mica .unnumbered}
 
 **Ejercicio 5.14 · Cálculo y análisis dimensional** Sea $F=(O,B)$ un marco fijo con $B=(e_1,e_2,e_3)$. Un movimiento tiene coordenadas
 
@@ -2051,7 +2051,7 @@ $$\boxed{ [a(t)]_B = \begin{pmatrix} 2\alpha\\0\\0 \end{pmatrix} \quad\text{para
 
 Si $\alpha\ne0$, podemos afirmar cinemáticamente que la velocidad cambia y que la aceleración es un vector constante no nulo. No podemos concluir en el capítulo 5 cuál es la causa de ese cambio, ni introducir una fuerza o una masa para explicarlo. Eso requeriría la teoría dinámica posterior.
 
-### 5.7.10. Reposo, aceleración nula y velocidad constante {#fispm-c05-e015-reposo-aceleraciuxf3n-nula-y-velocidad-constante .unnumbered}
+### Reposo, aceleración nula y velocidad constante {#fispm-c05-e015-reposo-aceleraciuxf3n-nula-y-velocidad-constante .unnumbered}
 
 **Ejercicio 5.15 · Concepto y contraejemplo** Fija un origen $O$ y considera tres movimientos cuyas curvas de posición relativa son
 
@@ -2111,7 +2111,7 @@ son lógicamente distintas. En el tercer ejemplo calculamos directamente $v_C(t)
 
 []{#cierre-conceptual-segunda-derivada-sin-causalidad-dinámica}
 
-### 5.7.11. Cierre conceptual: segunda derivada sin causalidad dinámica {#fispm-c05-cierre-conceptual-segunda-derivada-sin-causalidad-dinuxe1mica}
+### Cierre conceptual: segunda derivada sin causalidad dinámica {#fispm-c05-cierre-conceptual-segunda-derivada-sin-causalidad-dinuxe1mica}
 
 §7 ha construido la aceleración exclusivamente a partir de la evolución temporal de la velocidad:
 
@@ -2137,11 +2137,11 @@ Fuerzas, masas y leyes de Newton permanecen fuera del capítulo 5. La siguiente 
 
 []{#fpm-i-05-s08}
 
-## 5.8. Marcos fijos y covariancia de las derivadas {#fispm-c05-marcos-fijos-y-covariancia-de-las-derivadas}
+## 8. Marcos fijos y covariancia de las derivadas {#fispm-c05-marcos-fijos-y-covariancia-de-las-derivadas}
 
 []{#activación-el-mismo-vector-columnas-distintas}
 
-### 5.8.1. Activación: el mismo vector, columnas distintas {#fispm-c05-activaciuxf3n-el-mismo-vector-columnas-distintas}
+### Activación: el mismo vector, columnas distintas {#fispm-c05-activaciuxf3n-el-mismo-vector-columnas-distintas}
 
 En §§5 y 7 construimos dos objetos geométricos: $v(t)\in V, \qquad a(t)\in V.$ En un marco fijo
 
@@ -2169,7 +2169,7 @@ Activación Si dos columnas numéricas diferentes representan el mismo vector en
 
 <figcaption>
 
-**Figura 5.4.** Entre marcos de igual base y orígenes separados por una constante, las posiciones difieren en esa constante. Derivarla da cero y las velocidades representadas coinciden. El dibujo compara vectores de posición, no dos fuerzas. Véase §[5.8](#fispm-c05-marcos-fijos-y-covariancia-de-las-derivadas).
+**Figura 5.4.** Entre marcos de igual base y orígenes separados por una constante, las posiciones difieren en esa constante. Derivarla da cero y las velocidades representadas coinciden. El dibujo compara vectores de posición, no dos fuerzas. Véase §[8](#fispm-c05-marcos-fijos-y-covariancia-de-las-derivadas).
 
 </figcaption>
 
@@ -2177,7 +2177,7 @@ Activación Si dos columnas numéricas diferentes representan el mismo vector en
 
 []{#recordatorio-la-ley-afín-para-las-posiciones}
 
-### 5.8.2. Recordatorio: la ley afín para las posiciones {#fispm-c05-recordatorio-la-ley-afuxedn-para-las-posiciones}
+### Recordatorio: la ley afín para las posiciones {#fispm-c05-recordatorio-la-ley-afuxedn-para-las-posiciones}
 
 Sean
 
@@ -2225,7 +2225,7 @@ Es una hipótesis matemática sobre la descripción usada durante la derivación
 
 []{#dos-marcos-fijos-implican-datos-de-cambio-constantes}
 
-### 5.8.3. Dos marcos fijos implican datos de cambio constantes {#fispm-c05-dos-marcos-fijos-implican-datos-de-cambio-constantes}
+### Dos marcos fijos implican datos de cambio constantes {#fispm-c05-dos-marcos-fijos-implican-datos-de-cambio-constantes}
 
 Supongamos que
 
@@ -2251,7 +2251,7 @@ Esta observación será la clave de la proposición 5.15 y proposición 5.16.
 
 []{#qué-ocurriría-si-el-marco-dependiera-del-tiempo}
 
-### 5.8.4. Qué ocurriría si el marco dependiera del tiempo {#fispm-c05-quuxe9-ocurriruxeda-si-el-marco-dependiera-del-tiempo}
+### Qué ocurriría si el marco dependiera del tiempo {#fispm-c05-quuxe9-ocurriruxeda-si-el-marco-dependiera-del-tiempo}
 
 Conviene identificar el límite del método antes de aplicar derivadas. Si permitiéramos, por ejemplo, $c=c(t)$
 
@@ -2267,7 +2267,7 @@ Al derivar ya no sería legítimo tratar $S^{-1}$ y $[c]_B$ como constantes. Apa
 
 []{#principio-metodológico-congelar-el-marco-antes-de-derivar}
 
-### 5.8.5. Principio metodológico: congelar el marco antes de derivar {#fispm-c05-principio-metodoluxf3gico-congelar-el-marco-antes-de-derivar}
+### Principio metodológico: congelar el marco antes de derivar {#fispm-c05-principio-metodoluxf3gico-congelar-el-marco-antes-de-derivar}
 
 **Principio metodológico 5.9 --- Congelar el marco antes de derivar coordenadas** Antes de derivar una ley de transformación de coordenadas, declarar explícitamente si el origen y la base dependen de $t$.
 
@@ -2289,7 +2289,7 @@ sin haber comprobado antes que $S$ y $c$ son constantes.
 
 []{#objeto-geométrico-frente-a-representación}
 
-### 5.8.6. Objeto geométrico frente a representación {#fispm-c05-objeto-geomuxe9trico-frente-a-representaciuxf3n}
+### Objeto geométrico frente a representación {#fispm-c05-objeto-geomuxe9trico-frente-a-representaciuxf3n}
 
 La velocidad fue definida intrínsecamente por la definición 5.9:
 
@@ -2311,7 +2311,7 @@ $$\boxed{ \text{sus componentes se transforman}. }$$
 
 []{#principio-metodológico-invariancia-de-objeto-y-covariancia-de-representación}
 
-### 5.8.7. Principio metodológico: invariancia de objeto y covariancia de representación {#fispm-c05-principio-metodoluxf3gico-invariancia-de-objeto-y-covariancia-de-representaciuxf3n}
+### Principio metodológico: invariancia de objeto y covariancia de representación {#fispm-c05-principio-metodoluxf3gico-invariancia-de-objeto-y-covariancia-de-representaciuxf3n}
 
 **Principio metodológico 5.10 --- Distinguir invariancia de objeto y covariancia de representación** Cuando dos marcos fijos describan el mismo movimiento:
 
@@ -2327,7 +2327,7 @@ puede ocurrir aunque ambos símbolos representen el mismo vector $v(t)$. Esta di
 
 []{#un-ejemplo-mínimo-de-representación}
 
-### 5.8.8. Un ejemplo mínimo de representación {#fispm-c05-un-ejemplo-muxednimo-de-representaciuxf3n}
+### Un ejemplo mínimo de representación {#fispm-c05-un-ejemplo-muxednimo-de-representaciuxf3n}
 
 Sea un vector
 
@@ -2339,7 +2339,7 @@ Equivalentemente, $[u]_{B'} = S^{-1}[u]_B.$ Si $u=v(t)$ en un instante concreto,
 
 []{#balance-conceptual-1}
 
-### 5.8.9. Balance conceptual {#fispm-c05-balance-conceptual-1}
+### Balance conceptual {#fispm-c05-balance-conceptual-1}
 
 La sección queda preparada sobre tres separaciones:
 
@@ -2355,7 +2355,7 @@ Definición 5.14 garantiza que los datos del marco no dependen de $t$. principio
 
 []{#proposición-transformación-de-la-velocidad-entre-marcos-fijos}
 
-### 5.8.10. Proposición: transformación de la velocidad entre marcos fijos {#fispm-c05-proposiciuxf3n-transformaciuxf3n-de-la-velocidad-entre-marcos-fijos}
+### Proposición: transformación de la velocidad entre marcos fijos {#fispm-c05-proposiciuxf3n-transformaciuxf3n-de-la-velocidad-entre-marcos-fijos}
 
 Sean
 
@@ -2387,7 +2387,7 @@ $\square$ proposición 5.15 expresa covariancia de componentes: las dos columnas
 
 []{#proposición-transformación-de-la-aceleración-entre-marcos-fijos}
 
-### 5.8.11. Proposición: transformación de la aceleración entre marcos fijos {#fispm-c05-proposiciuxf3n-transformaciuxf3n-de-la-aceleraciuxf3n-entre-marcos-fijos}
+### Proposición: transformación de la aceleración entre marcos fijos {#fispm-c05-proposiciuxf3n-transformaciuxf3n-de-la-aceleraciuxf3n-entre-marcos-fijos}
 
 La misma hipótesis permite derivar una segunda vez. Como la matriz de cambio sigue siendo constante, la ley lineal de transformación se conserva para la aceleración.
 
@@ -2415,7 +2415,7 @@ $\square$ La aceleración tampoco adquiere un término de traslación cuando amb
 
 []{#marcos-ortonormales-y-norma-de-la-velocidad}
 
-### 5.8.12. Marcos ortonormales y norma de la velocidad {#fispm-c05-marcos-ortonormales-y-norma-de-la-velocidad}
+### Marcos ortonormales y norma de la velocidad {#fispm-c05-marcos-ortonormales-y-norma-de-la-velocidad}
 
 Supongamos ahora que las bases $B$ y $B'$ son ortonormales respecto del mismo producto escalar euclídeo de $V$. Entonces la matriz de cambio $S$ es ortogonal: $S^{\mathsf T}S=I, \qquad S^{-1}=S^{\mathsf T}.$ En una base ortonormal, la norma geométrica de un vector coincide con la norma euclídea de su columna: $\|v\|^2 = [v]_B^{\mathsf T}[v]_B.$
 
@@ -2443,7 +2443,7 @@ Como $B$ y $B'$ son ortonormales, cada una de estas normas coordenadas coincide 
 
 []{#balance-de-las-leyes-de-transformación}
 
-### 5.8.13. Balance de las leyes de transformación {#fispm-c05-balance-de-las-leyes-de-transformaciuxf3n}
+### Balance de las leyes de transformación {#fispm-c05-balance-de-las-leyes-de-transformaciuxf3n}
 
 Para marcos fijos hemos demostrado la cadena
 
@@ -2461,7 +2461,7 @@ $$\boxed{ \|[v(t)]_{B'}\|_2 = \|[v(t)]_B\|_2 = \|v(t)\|. }$$
 
 Así queda visible la distinción de principio metodológico 5.10: el objeto geométrico $v(t)$ o $a(t)$ es el mismo; lo que cambia covariantemente es su columna de componentes. Ejercicios 5.16--5.17 aplican estas leyes y contrastan un cambio ortonormal con uno no ortonormal. Los marcos móviles y la reparametrización de §9 permanecen fuera de §8.
 
-### 5.8.13. Transformar posición, velocidad y aceleración en dos marcos fijos {#fispm-c05-e016-transformar-posiciuxf3n-velocidad-y-aceleraciuxf3n-en-dos-marcos-fijos .unnumbered}
+### Transformar posición, velocidad y aceleración en dos marcos fijos {#fispm-c05-e016-transformar-posiciuxf3n-velocidad-y-aceleraciuxf3n-en-dos-marcos-fijos .unnumbered}
 
 **Ejercicio 5.16 · Cálculo y covariancia** Sea $F=(O,B)$ un marco fijo con base ortonormal $B=(e_1,e_2,e_3)$ y sea un movimiento cuyas coordenadas son
 
@@ -2527,7 +2527,7 @@ $$S^{-1}[a(t)]_B = \begin{pmatrix} 6t\\ -2\\ 0 \end{pmatrix} = [a(t)]_{B'},$$
 
 que verifica proposición 5.16. La traslación $[c]_B$ afecta a $x_{F'}$, pero desaparece de las leyes de transformación de $v$ y $a$ porque es constante.
 
-### 5.8.13. Norma geométrica y bases no ortonormales {#fispm-c05-e017-norma-geomuxe9trica-y-bases-no-ortonormales .unnumbered}
+### Norma geométrica y bases no ortonormales {#fispm-c05-e017-norma-geomuxe9trica-y-bases-no-ortonormales .unnumbered}
 
 **Ejercicio 5.17 · Métrica y error plausible** Conserva el movimiento del ejercicio 5.16 y considera el instante $t=1$. En la base ortonormal $B$,
 
@@ -2591,7 +2591,7 @@ El error consiste en confundir la columna con el vector geométrico y en olvidar
 
 []{#cierre-conceptual-cambiar-la-descripción-sin-cambiar-el-movimiento}
 
-### 5.8.14. Cierre conceptual: cambiar la descripción sin cambiar el movimiento {#fispm-c05-cierre-conceptual-cambiar-la-descripciuxf3n-sin-cambiar-el-movimiento}
+### Cierre conceptual: cambiar la descripción sin cambiar el movimiento {#fispm-c05-cierre-conceptual-cambiar-la-descripciuxf3n-sin-cambiar-el-movimiento}
 
 §8 ha separado de manera explícita tres niveles:
 
@@ -2621,11 +2621,11 @@ La sección siguiente cambiará otra cosa distinta: no el marco espacial, sino e
 
 []{#fpm-i-05-s09}
 
-## 5.9. Reparametrización y regla de la cadena {#fispm-c05-reparametrizaciuxf3n-y-regla-de-la-cadena}
+## 9. Reparametrización y regla de la cadena {#fispm-c05-reparametrizaciuxf3n-y-regla-de-la-cadena}
 
 []{#activación-una-misma-imagen-puede-recorrerse-con-otro-parámetro}
 
-### 5.9.1. Activación: una misma imagen puede recorrerse con otro parámetro {#fispm-c05-activaciuxf3n-una-misma-imagen-puede-recorrerse-con-otro-paruxe1metro}
+### Activación: una misma imagen puede recorrerse con otro parámetro {#fispm-c05-activaciuxf3n-una-misma-imagen-puede-recorrerse-con-otro-paruxe1metro}
 
 Sea
 
@@ -2655,7 +2655,7 @@ El punto espacial no se obtiene mediante una transformación del espacio: seguim
 
 <figcaption>
 
-**Figura 5.5.** Las leyes $s=u$ y $s=u^2$ recorren el mismo intervalo con velocidades distintas. Bajo un cambio $s=\phi(u)$, la derivada de $r(\phi(u))$ contiene el factor $\phi^\prime(u)$. En $u=0$, el segundo reloj deja de ser regular. Véase §[5.9](#fispm-c05-reparametrizaciuxf3n-y-regla-de-la-cadena).
+**Figura 5.5.** Las leyes $s=u$ y $s=u^2$ recorren el mismo intervalo con velocidades distintas. Bajo un cambio $s=\phi(u)$, la derivada de $r(\phi(u))$ contiene el factor $\phi^\prime(u)$. En $u=0$, el segundo reloj deja de ser regular. Véase §[9](#fispm-c05-reparametrizaciuxf3n-y-regla-de-la-cadena).
 
 </figcaption>
 
@@ -2697,7 +2697,7 @@ Las propiedades más fuertes aparecerán al imponer condiciones adicionales.
 
 []{#el-parámetro-nuevo-no-recibe-significado-físico-automáticamente}
 
-### 5.9.2. El parámetro nuevo no recibe significado físico automáticamente {#fispm-c05-el-paruxe1metro-nuevo-no-recibe-significado-fuxedsico-automuxe1ticamente}
+### El parámetro nuevo no recibe significado físico automáticamente {#fispm-c05-el-paruxe1metro-nuevo-no-recibe-significado-fuxedsico-automuxe1ticamente}
 
 La letra usada para parametrizar una curva no determina por sí sola qué magnitud representa. Podemos escribir
 
@@ -2721,7 +2721,7 @@ no debemos declarar automáticamente que $u$ es un nuevo tiempo físico. Esta di
 
 []{#principio-metodológico-declarar-qué-significa-el-parámetro}
 
-### 5.9.3. Principio metodológico: declarar qué significa el parámetro {#fispm-c05-principio-metodoluxf3gico-declarar-quuxe9-significa-el-paruxe1metro}
+### Principio metodológico: declarar qué significa el parámetro {#fispm-c05-principio-metodoluxf3gico-declarar-quuxe9-significa-el-paruxe1metro}
 
 **Principio metodológico 5.11 --- Declarar qué significa el parámetro antes de reparametrizar** Antes de interpretar
 
@@ -2749,7 +2749,7 @@ La imagen geométrica y la ley temporal son niveles diferentes. §10 desarrollar
 
 []{#por-qué-necesitamos-una-clase-de-reparametrizaciones-admisibles}
 
-### 5.9.4. Por qué necesitamos una clase de reparametrizaciones admisibles {#fispm-c05-por-quuxe9-necesitamos-una-clase-de-reparametrizaciones-admisibles}
+### Por qué necesitamos una clase de reparametrizaciones admisibles {#fispm-c05-por-quuxe9-necesitamos-una-clase-de-reparametrizaciones-admisibles}
 
 Si queremos comparar derivadas y conservar un control regular del recorrido, no basta una aplicación arbitraria $\phi$. Por ejemplo, si
 
@@ -2759,7 +2759,7 @@ la variación del nuevo parámetro puede colapsar localmente y alterar la regula
 
 []{#definir-reparametrización-regular-admisible}
 
-### 5.9.5. Definir: reparametrización regular admisible {#fispm-c05-definir-reparametrizaciuxf3n-regular-admisible}
+### Definir: reparametrización regular admisible {#fispm-c05-definir-reparametrizaciuxf3n-regular-admisible}
 
 En esta sección adoptamos una convención única para intervalos con extremos incluidos: las derivadas en puntos interiores son derivadas ordinarias; en un extremo incluido, una expresión como $\phi'(u)$ designa la derivada lateral correspondiente. Así, $C^1$ en un intervalo cerrado significa que la derivada interior admite las extensiones laterales continuas necesarias en los extremos.
 
@@ -2803,7 +2803,7 @@ La palabra «orientación» se refiere aquí al orden del parámetro, no a la or
 
 []{#ejemplos-mínimos-de-admisibilidad}
 
-### 5.9.6. Ejemplos mínimos de admisibilidad {#fispm-c05-ejemplos-muxednimos-de-admisibilidad}
+### Ejemplos mínimos de admisibilidad {#fispm-c05-ejemplos-muxednimos-de-admisibilidad}
 
 Consideremos
 
@@ -2825,7 +2825,7 @@ Por tanto, **no** es una reparametrización regular admisible según la definici
 
 []{#principio-metodológico-auditar-la-reparametrización-antes-de-derivar}
 
-### 5.9.7. Principio metodológico: auditar la reparametrización antes de derivar {#fispm-c05-principio-metodoluxf3gico-auditar-la-reparametrizaciuxf3n-antes-de-derivar}
+### Principio metodológico: auditar la reparametrización antes de derivar {#fispm-c05-principio-metodoluxf3gico-auditar-la-reparametrizaciuxf3n-antes-de-derivar}
 
 **Principio metodológico 5.12 --- Comprobar dominio, biyectividad, signo y no anulación de $\phi'$** Antes de aplicar una regla de transformación a una curva reparametrizada:
 
@@ -2845,7 +2845,7 @@ No utilizar la frase «sólo cambiamos de parámetro» como sustituto de estas c
 
 []{#qué-todavía-no-hemos-demostrado}
 
-### 5.9.8. Qué todavía no hemos demostrado {#fispm-c05-quuxe9-todavuxeda-no-hemos-demostrado}
+### Qué todavía no hemos demostrado {#fispm-c05-quuxe9-todavuxeda-no-hemos-demostrado}
 
 A partir de
 
@@ -2865,7 +2865,7 @@ Esos serán proposiciones 5.18--5.21.
 
 []{#balance-de-definiciones-y-criterios}
 
-### 5.9.9. Balance de definiciones y criterios {#fispm-c05-balance-de-definiciones-y-criterios}
+### Balance de definiciones y criterios {#fispm-c05-balance-de-definiciones-y-criterios}
 
 La sección queda preparada mediante la cadena
 
@@ -2875,7 +2875,7 @@ Definición 5.15 define la operación general. Definición 5.16 identifica la cl
 
 []{#proposición-regla-de-la-cadena-para-la-velocidad-reparametrizada}
 
-### 5.9.10. Proposición: regla de la cadena para la velocidad reparametrizada {#fispm-c05-proposiciuxf3n-regla-de-la-cadena-para-la-velocidad-reparametrizada}
+### Proposición: regla de la cadena para la velocidad reparametrizada {#fispm-c05-proposiciuxf3n-regla-de-la-cadena-para-la-velocidad-reparametrizada}
 
 Sea
 
@@ -2931,7 +2931,7 @@ $\square$ proposición 5.18 muestra con precisión qué cambia bajo reparametriz
 
 []{#proposición-conservación-de-la-trayectoria-bajo-sobreyectividad}
 
-### 5.9.11. Proposición: conservación de la trayectoria bajo sobreyectividad {#fispm-c05-proposiciuxf3n-conservaciuxf3n-de-la-trayectoria-bajo-sobreyectividad}
+### Proposición: conservación de la trayectoria bajo sobreyectividad {#fispm-c05-proposiciuxf3n-conservaciuxf3n-de-la-trayectoria-bajo-sobreyectividad}
 
 La imagen de una curva reparametrizada satisface siempre
 
@@ -2957,7 +2957,7 @@ $\square$ proposición 5.19 es puramente conjuntista: no requiere derivabilidad 
 
 []{#proposición-regularidad-bajo-reparametrización-admisible}
 
-### 5.9.12. Proposición: regularidad bajo reparametrización admisible {#fispm-c05-proposiciuxf3n-regularidad-bajo-reparametrizaciuxf3n-admisible}
+### Proposición: regularidad bajo reparametrización admisible {#fispm-c05-proposiciuxf3n-regularidad-bajo-reparametrizaciuxf3n-admisible}
 
 Supongamos ahora que $\phi$ es regular admisible en el sentido de la definición 5.16. Si la curva original es regular en el punto correspondiente, $v(\phi(u))\ne0,$
 
@@ -2989,7 +2989,7 @@ $\square$ Así, una reparametrización regular admisible no crea un instante de 
 
 []{#proposición-transformación-de-la-norma-de-la-velocidad}
 
-### 5.9.13. Proposición: transformación de la norma de la velocidad {#fispm-c05-proposiciuxf3n-transformaciuxf3n-de-la-norma-de-la-velocidad}
+### Proposición: transformación de la norma de la velocidad {#fispm-c05-proposiciuxf3n-transformaciuxf3n-de-la-norma-de-la-velocidad}
 
 La norma euclídea de $V$ es homogénea: $\|\lambda w\| = |\lambda|\,\|w\|.$
 
@@ -3011,7 +3011,7 @@ $\square$ El valor absoluto es esencial. Si $\phi'(u)<0$, la orientación del pa
 
 []{#orientación-y-dirección-del-vector-velocidad}
 
-### 5.9.14. Orientación y dirección del vector velocidad {#fispm-c05-orientaciuxf3n-y-direcciuxf3n-del-vector-velocidad}
+### Orientación y dirección del vector velocidad {#fispm-c05-orientaciuxf3n-y-direcciuxf3n-del-vector-velocidad}
 
 Proposición 5.18 permite interpretar el signo de $\phi'$. Si
 
@@ -3033,7 +3033,7 @@ La recta tangente afín, sin embargo, permanece asociada a la misma dirección n
 
 []{#balance-de-las-leyes-de-reparametrización}
 
-### 5.9.15. Balance de las leyes de reparametrización {#fispm-c05-balance-de-las-leyes-de-reparametrizaciuxf3n}
+### Balance de las leyes de reparametrización {#fispm-c05-balance-de-las-leyes-de-reparametrizaciuxf3n}
 
 Hemos demostrado cuatro efectos distintos de una reparametrización:
 
@@ -3059,7 +3059,7 @@ Así quedan separados cuatro niveles:
 
 Una reparametrización admisible conserva la trayectoria completa y la regularidad, pero puede modificar la velocidad como vector función del parámetro. Si además invierte orientación, invierte el sentido del vector velocidad. Ejercicios 5.18--5.19 aplican estas leyes de forma explícita. La cuestión de si dos parametrizaciones con la misma imagen representan o no el **mismo movimiento físico** pertenece a §10.
 
-### 5.9.15. Regla de la cadena vectorial {#fispm-c05-e018-regla-de-la-cadena-vectorial .unnumbered}
+### Regla de la cadena vectorial {#fispm-c05-e018-regla-de-la-cadena-vectorial .unnumbered}
 
 **Ejercicio 5.18 · Prueba y cálculo** Sean $A\in\mathcal E$ y $e_1,e_2\in V$ dos vectores linealmente independientes. Considera
 
@@ -3121,7 +3121,7 @@ $$\|\widetilde v(u)\| = \left\| 2u\left(e_1+2u^2e_2\right) \right\| = 2u\,\|e_1+
 
 El ejercicio muestra que el factor $\phi'(u)$ modifica el vector velocidad aun cuando la imagen geométrica se conserva.
 
-### 5.9.15. Preservar o invertir orientación {#fispm-c05-e019-preservar-o-invertir-orientaciuxf3n .unnumbered}
+### Preservar o invertir orientación {#fispm-c05-e019-preservar-o-invertir-orientaciuxf3n .unnumbered}
 
 **Ejercicio 5.19 · Variación y signo** Sean $A\in\mathcal E$ y $e_1,e_2\in V$ linealmente independientes. Considera
 
@@ -3189,7 +3189,7 @@ Sin embargo, siempre que los vectores sean no nulos, multiplicarlos por el escal
 
 []{#cierre-conceptual-misma-curva-geométrica-otro-parámetro}
 
-### 5.9.16. Cierre conceptual: misma curva geométrica, otro parámetro {#fispm-c05-cierre-conceptual-misma-curva-geomuxe9trica-otro-paruxe1metro}
+### Cierre conceptual: misma curva geométrica, otro parámetro {#fispm-c05-cierre-conceptual-misma-curva-geomuxe9trica-otro-paruxe1metro}
 
 §9 ha separado cuatro preguntas que suelen mezclarse:
 
@@ -3223,11 +3223,11 @@ $$\boxed{ \text{cambiar el parámetro} \ne \text{cambiar automáticamente el sig
 
 []{#fpm-i-05-s10}
 
-## 5.10. La misma trayectoria no significa el mismo movimiento {#fispm-c05-la-misma-trayectoria-no-significa-el-mismo-movimiento}
+## 10. La misma trayectoria no significa el mismo movimiento {#fispm-c05-la-misma-trayectoria-no-significa-el-mismo-movimiento}
 
 []{#activación-ver-el-camino-no-basta-para-conocer-el-movimiento}
 
-### 5.10.1. Activación: ver el camino no basta para conocer el movimiento {#fispm-c05-activaciuxf3n-ver-el-camino-no-basta-para-conocer-el-movimiento}
+### Activación: ver el camino no basta para conocer el movimiento {#fispm-c05-activaciuxf3n-ver-el-camino-no-basta-para-conocer-el-movimiento}
 
 Una trayectoria geométrica es un conjunto de puntos: $\Gamma=P(I)\subseteq\mathcal E.$ Un movimiento, en cambio, es una aplicación parametrizada
 
@@ -3251,7 +3251,7 @@ Dos curvas pueden dibujar exactamente la misma figura en el espacio y, sin embar
 
 <figcaption>
 
-**Figura 5.6.** En $0\le u\le1$, las leyes $X_A=u$ y $X_B=u^2$ recorren el mismo segmento. En $u=1/2$ ocupan lugares distintos, y sus velocidades iniciales también difieren. Véase §[5.10](#fispm-c05-la-misma-trayectoria-no-significa-el-mismo-movimiento).
+**Figura 5.6.** En $0\le u\le1$, las leyes $X_A=u$ y $X_B=u^2$ recorren el mismo segmento. En $u=1/2$ ocupan lugares distintos, y sus velocidades iniciales también difieren. Véase §[10](#fispm-c05-la-misma-trayectoria-no-significa-el-mismo-movimiento).
 
 </figcaption>
 
@@ -3285,7 +3285,7 @@ La igualdad de trayectoria es, por tanto, una afirmación geométrica más débi
 
 []{#tres-niveles-que-no-deben-confundirse}
 
-### 5.10.2. Tres niveles que no deben confundirse {#fispm-c05-tres-niveles-que-no-deben-confundirse}
+### Tres niveles que no deben confundirse {#fispm-c05-tres-niveles-que-no-deben-confundirse}
 
 Conviene distinguir explícitamente:
 
@@ -3321,7 +3321,7 @@ En particular, si ambos parámetros se interpretan como tiempo físico, dos curv
 
 []{#primer-contraste-misma-recta-distintas-leyes-temporales}
 
-### 5.10.3. Primer contraste: misma recta, distintas leyes temporales {#fispm-c05-primer-contraste-misma-recta-distintas-leyes-temporales}
+### Primer contraste: misma recta, distintas leyes temporales {#fispm-c05-primer-contraste-misma-recta-distintas-leyes-temporales}
 
 Sea
 
@@ -3365,7 +3365,7 @@ Si el parámetro de ambas curvas se interpreta como tiempo físico, tenemos dos 
 
 []{#la-relación-con-la-reparametrización}
 
-### 5.10.4. La relación con la reparametrización {#fispm-c05-la-relaciuxf3n-con-la-reparametrizaciuxf3n}
+### La relación con la reparametrización {#fispm-c05-la-relaciuxf3n-con-la-reparametrizaciuxf3n}
 
 El ejemplo anterior no es arbitrario. Definamos
 
@@ -3413,7 +3413,7 @@ $$\text{trayectoria} = \text{movimiento}.$$
 
 []{#qué-información-pierde-la-trayectoria}
 
-### 5.10.5. Qué información pierde la trayectoria {#fispm-c05-quuxe9-informaciuxf3n-pierde-la-trayectoria}
+### Qué información pierde la trayectoria {#fispm-c05-quuxe9-informaciuxf3n-pierde-la-trayectoria}
 
 Al pasar de
 
@@ -3445,7 +3445,7 @@ una operación que, en general, no es invertible.
 
 []{#balance-conceptual-2}
 
-### 5.10.6. Balance conceptual {#fispm-c05-balance-conceptual-2}
+### Balance conceptual {#fispm-c05-balance-conceptual-2}
 
 §10 fija ahora la distinción central:
 
@@ -3457,7 +3457,7 @@ $$\boxed{ \text{misma trayectoria} \not\Rightarrow \text{misma historia temporal
 
 Definición 5.18 formaliza la igualdad geométrica de trayectoria. principio metodológico 5.13 obliga a no convertir esa igualdad en una afirmación física más fuerte. Proposición 5.22 demuestra constructivamente que una misma trayectoria admite leyes parametrizadas distintas. Ejercicios 5.20--5.21 harán explícita la diferencia entre varios «relojes» sobre una misma trayectoria y entre reparametrización geométrica y reinterpretación temporal. La noción formal de rapidez pertenece a §11 y no se introduce todavía.
 
-### 5.10.6. Tres relojes sobre el mismo segmento {#fispm-c05-e020-tres-relojes-sobre-el-mismo-segmento .unnumbered}
+### Tres relojes sobre el mismo segmento {#fispm-c05-e020-tres-relojes-sobre-el-mismo-segmento .unnumbered}
 
 **Ejercicio 5.20 · Síntesis y contraejemplo** Sean $A,B\in\mathcal E$, con $A\ne B$, y define
 
@@ -3511,7 +3511,7 @@ $$\boxed{v_3(r)=2d.}$$
 
 Los tres movimientos comparten exactamente el mismo segmento como trayectoria, pero asignan distintos tiempos de paso a sus puntos y poseen velocidades distintas. La trayectoria geométrica, por sí sola, no contiene la escala temporal del recorrido.
 
-### 5.10.6. Reparametrización geométrica versus reinterpretación temporal {#fispm-c05-e021-reparametrizaciuxf3n-geomuxe9trica-versus-reinterpretaciuxf3n-temporal .unnumbered}
+### Reparametrización geométrica versus reinterpretación temporal {#fispm-c05-e021-reparametrizaciuxf3n-geomuxe9trica-versus-reinterpretaciuxf3n-temporal .unnumbered}
 
 **Ejercicio 5.21 · Auditoría conceptual** Sean $A,B\in\mathcal E$, con $A\ne B$, y
 
@@ -3587,7 +3587,7 @@ La diferencia puede resumirse así:
 
 []{#cierre-conceptual-la-trayectoria-no-contiene-un-reloj}
 
-### 5.10.7. Cierre conceptual: la trayectoria no contiene un reloj {#fispm-c05-cierre-conceptual-la-trayectoria-no-contiene-un-reloj}
+### Cierre conceptual: la trayectoria no contiene un reloj {#fispm-c05-cierre-conceptual-la-trayectoria-no-contiene-un-reloj}
 
 §10 ha hecho explícita una pérdida de información fundamental:
 
@@ -3613,11 +3613,11 @@ $$\boxed{ \text{la trayectoria describe dónde;} \qquad \text{la parametrizació
 
 []{#fpm-i-05-s11}
 
-## 5.11. Rapidez, desplazamiento y aproximaciones al camino recorrido {#fispm-c05-rapidez-desplazamiento-y-aproximaciones-al-camino-recorrido}
+## 11. Rapidez, desplazamiento y aproximaciones al camino recorrido {#fispm-c05-rapidez-desplazamiento-y-aproximaciones-al-camino-recorrido}
 
 []{#activación-un-vector-y-una-magnitud-escalar-no-responden-a-la-misma-pregunta}
 
-### 5.11.1. Activación: un vector y una magnitud escalar no responden a la misma pregunta {#fispm-c05-activaciuxf3n-un-vector-y-una-magnitud-escalar-no-responden-a-la-misma-pregunta}
+### Activación: un vector y una magnitud escalar no responden a la misma pregunta {#fispm-c05-activaciuxf3n-un-vector-y-una-magnitud-escalar-no-responden-a-la-misma-pregunta}
 
 La velocidad instantánea es un vector
 
@@ -3669,7 +3669,7 @@ porque sus direcciones o sentidos son distintos. Este principio será importante
 
 []{#desplazamiento-neto-y-recorrido-intermedio}
 
-### 5.11.2. Desplazamiento neto y recorrido intermedio {#fispm-c05-desplazamiento-neto-y-recorrido-intermedio}
+### Desplazamiento neto y recorrido intermedio {#fispm-c05-desplazamiento-neto-y-recorrido-intermedio}
 
 Sean $a<b$ dos instantes. El desplazamiento neto entre los extremos es
 
@@ -3719,7 +3719,7 @@ La norma se aplica **antes** de sumar.
 
 []{#sumar-desplazamientos-no-es-sumar-distancias}
 
-### 5.11.3. Sumar desplazamientos no es sumar distancias {#fispm-c05-sumar-desplazamientos-no-es-sumar-distancias}
+### Sumar desplazamientos no es sumar distancias {#fispm-c05-sumar-desplazamientos-no-es-sumar-distancias}
 
 Por proposición 5.6,
 
@@ -3753,7 +3753,7 @@ El desplazamiento neto depende sólo de los extremos y vive en $V$. La longitud 
 
 []{#ejemplo-mínimo-regresar-al-punto-de-partida}
 
-### 5.11.4. Ejemplo mínimo: regresar al punto de partida {#fispm-c05-ejemplo-muxednimo-regresar-al-punto-de-partida}
+### Ejemplo mínimo: regresar al punto de partida {#fispm-c05-ejemplo-muxednimo-regresar-al-punto-de-partida}
 
 Supongamos que
 
@@ -3779,7 +3779,7 @@ Como $P(c)\ne P(a)=P(b)$, $L_\Pi(P)>0.$ El ejemplo hace visible que un desplazam
 
 []{#qué-todavía-no-hemos-demostrado-1}
 
-### 5.11.5. Qué todavía no hemos demostrado {#fispm-c05-quuxe9-todavuxeda-no-hemos-demostrado-1}
+### Qué todavía no hemos demostrado {#fispm-c05-quuxe9-todavuxeda-no-hemos-demostrado-1}
 
 La desigualdad triangular sugiere que, para cualquier partición, $d(P(a),P(b)) \le L_\Pi(P).$ Éste será proposición 5.23 y todavía no lo usamos como resultado establecido. También esperamos relacionar rapidez nula e instante de reposo mediante $\sigma(t)=0 \Longleftrightarrow v(t)=0.$
 
@@ -3787,7 +3787,7 @@ La desigualdad triangular sugiere que, para cualquier partición, $d(P(a),P(b)) 
 
 []{#balance-de-definiciones}
 
-### 5.11.6. Balance de definiciones {#fispm-c05-balance-de-definiciones}
+### Balance de definiciones {#fispm-c05-balance-de-definiciones}
 
 La sección introduce tres objetos de tipos distintos:
 
@@ -3803,7 +3803,7 @@ Definición 5.19 convierte la velocidad en una magnitud escalar mediante la norm
 
 []{#proposición-toda-longitud-poligonal-domina-el-desplazamiento-neto}
 
-### 5.11.7. Proposición: toda longitud poligonal domina el desplazamiento neto {#fispm-c05-proposiciuxf3n-toda-longitud-poligonal-domina-el-desplazamiento-neto}
+### Proposición: toda longitud poligonal domina el desplazamiento neto {#fispm-c05-proposiciuxf3n-toda-longitud-poligonal-domina-el-desplazamiento-neto}
 
 La relación entre desplazamiento neto y longitud poligonal se obtiene combinando dos hechos ya establecidos:
 
@@ -3843,7 +3843,7 @@ $\square$ proposición 5.23 formaliza una idea geométrica básica: cualquier ca
 
 []{#consecuencia-conceptual-los-extremos-no-contienen-el-recorrido}
 
-### 5.11.8. Consecuencia conceptual: los extremos no contienen el recorrido {#fispm-c05-consecuencia-conceptual-los-extremos-no-contienen-el-recorrido}
+### Consecuencia conceptual: los extremos no contienen el recorrido {#fispm-c05-consecuencia-conceptual-los-extremos-no-contienen-el-recorrido}
 
 Proposición 5.23 permite ordenar dos cantidades escalares: $d(P(a),P(b)) \le L_\Pi(P).$ El lado izquierdo depende únicamente de los extremos. El lado derecho depende también de los puntos intermedios seleccionados por $\Pi$. Por tanto, incluso cuando ambas cantidades tienen la misma dimensión física, no contienen la misma información. En particular, si
 
@@ -3859,7 +3859,7 @@ y una partición con posiciones intermedias distintas puede dar una longitud pol
 
 []{#proposición-rapidez-nula-e-instante-de-reposo}
 
-### 5.11.9. Proposición: rapidez nula e instante de reposo {#fispm-c05-proposiciuxf3n-rapidez-nula-e-instante-de-reposo}
+### Proposición: rapidez nula e instante de reposo {#fispm-c05-proposiciuxf3n-rapidez-nula-e-instante-de-reposo}
 
 La rapidez se definió como la norma de la velocidad: $\sigma(t)=\|v(t)\|.$ En un espacio euclídeo, la norma es definida positiva: $\|w\|=0 \Longleftrightarrow w=0.$
 
@@ -3893,7 +3893,7 @@ Por definición 5.12, la condición $v(t)=0$ equivale exactamente a que $t$ sea 
 
 []{#balance-de-las-desigualdades-y-equivalencias}
 
-### 5.11.10. Balance de las desigualdades y equivalencias {#fispm-c05-balance-de-las-desigualdades-y-equivalencias}
+### Balance de las desigualdades y equivalencias {#fispm-c05-balance-de-las-desigualdades-y-equivalencias}
 
 La sección dispone ahora de dos relaciones fundamentales:
 
@@ -3913,7 +3913,7 @@ $$\text{todas las particiones} \longrightarrow \text{supremo}.$$
 
 Ese paso pertenece a §12. Ejercicios 5.22--5.23 aplicarán la distinción velocidad/rapidez y la desigualdad entre cuerda y recorrido poligonal antes del cierre local de §11.
 
-### 5.11.10. Velocidad versus rapidez {#fispm-c05-e022-velocidad-versus-rapidez .unnumbered}
+### Velocidad versus rapidez {#fispm-c05-e022-velocidad-versus-rapidez .unnumbered}
 
 **Ejercicio 5.22 · Tipado y métrica** Sea $B=(e_1,e_2,e_3)$ una base ortonormal de $V$. Considera dos movimientos con velocidades constantes
 
@@ -3969,7 +3969,7 @@ Entonces $\|v_3\|=\|-v_1\|=\|v_1\|=5,$
 
 pero $v_3$ apunta en sentido opuesto.
 
-### 5.11.10. Camino poligonal versus desplazamiento neto {#fispm-c05-e023-camino-poligonal-versus-desplazamiento-neto .unnumbered}
+### Camino poligonal versus desplazamiento neto {#fispm-c05-e023-camino-poligonal-versus-desplazamiento-neto .unnumbered}
 
 **Ejercicio 5.23 · Geometría y desigualdad** Sea $B=(e_1,e_2,e_3)$ una base ortonormal de $V$ y sea $A\in\mathcal E$. Considera un movimiento $P:[0,2]\to\mathcal E$ que pasa por
 
@@ -4035,7 +4035,7 @@ $$\boxed{ \text{desplazamiento neto} \ne \text{camino poligonal asociado a }\Pi.
 
 []{#cierre-conceptual-magnitud-instantánea-y-camino-finito}
 
-### 5.11.11. Cierre conceptual: magnitud instantánea y camino finito {#fispm-c05-cierre-conceptual-magnitud-instantuxe1nea-y-camino-finito}
+### Cierre conceptual: magnitud instantánea y camino finito {#fispm-c05-cierre-conceptual-magnitud-instantuxe1nea-y-camino-finito}
 
 §11 ha conectado dos escalas de descripción. En un instante,
 
@@ -4061,11 +4061,11 @@ Ejercicio 5.22 mostró que igual rapidez no implica igual velocidad. Ejercicio 5
 
 []{#fpm-i-05-s12}
 
-## 5.12. Longitud geométrica de una curva {#fispm-c05-longitud-geomuxe9trica-de-una-curva}
+## 12. Longitud geométrica de una curva {#fispm-c05-longitud-geomuxe9trica-de-una-curva}
 
 []{#activación-una-sola-partición-no-basta}
 
-### 5.12.1. Activación: una sola partición no basta {#fispm-c05-activaciuxf3n-una-sola-particiuxf3n-no-basta}
+### Activación: una sola partición no basta {#fispm-c05-activaciuxf3n-una-sola-particiuxf3n-no-basta}
 
 En §11, una partición temporal
 
@@ -4085,7 +4085,7 @@ Pero esta cantidad depende de la partición elegida. Una partición gruesa puede
 
 <figcaption>
 
-**Figura 5.7.** Una semicircunferencia de radio $R$ tiene longitud $\pi R$. El desplazamiento une sus extremos y tiene norma $2R$; ambas cantidades miden objetos distintos. Véase §[5.12](#fispm-c05-longitud-geomuxe9trica-de-una-curva).
+**Figura 5.7.** Una semicircunferencia de radio $R$ tiene longitud $\pi R$. El desplazamiento une sus extremos y tiene norma $2R$; ambas cantidades miden objetos distintos. Véase §[12](#fispm-c05-longitud-geomuxe9trica-de-una-curva).
 
 </figcaption>
 
@@ -4097,7 +4097,7 @@ La respuesta no será una fórmula integral. Primero construiremos una definici�
 
 []{#la-familia-de-todas-las-longitudes-poligonales}
 
-### 5.12.2. La familia de todas las longitudes poligonales {#fispm-c05-la-familia-de-todas-las-longitudes-poligonales}
+### La familia de todas las longitudes poligonales {#fispm-c05-la-familia-de-todas-las-longitudes-poligonales}
 
 Sea
 
@@ -4111,7 +4111,7 @@ Cada elemento de $\mathscr L(P;[a,b])$ es un número real no negativo. Por propo
 
 []{#principio-metodológico-definir-longitud-geométricamente-antes-de-integrar}
 
-### 5.12.3. Principio metodológico: definir longitud geométricamente antes de integrar {#fispm-c05-principio-metodoluxf3gico-definir-longitud-geomuxe9tricamente-antes-de-integrar}
+### Principio metodológico: definir longitud geométricamente antes de integrar {#fispm-c05-principio-metodoluxf3gico-definir-longitud-geomuxe9tricamente-antes-de-integrar}
 
 **Principio metodológico 5.16 --- Definir longitud geométricamente antes de usar una fórmula integral** La longitud de una curva no se introduce mediante
 
@@ -4131,7 +4131,7 @@ y no al revés. Esto evita que la integral oculte qué cantidad geométrica est�
 
 []{#definir-longitud-geométrica-de-una-curva}
 
-### 5.12.4. Definir: longitud geométrica de una curva {#fispm-c05-definir-longitud-geomuxe9trica-de-una-curva}
+### Definir: longitud geométrica de una curva {#fispm-c05-definir-longitud-geomuxe9trica-de-una-curva}
 
 **Definición 5.22 --- Longitud geométrica de una curva sobre $[a,b]$** Sea
 
@@ -4149,7 +4149,7 @@ La definición no requiere que $P$ sea derivable. Tampoco depende de una base ni
 
 []{#qué-significa-el-supremo-en-esta-definición}
 
-### 5.12.5. Qué significa el supremo en esta definición {#fispm-c05-quuxe9-significa-el-supremo-en-esta-definiciuxf3n}
+### Qué significa el supremo en esta definición {#fispm-c05-quuxe9-significa-el-supremo-en-esta-definiciuxf3n}
 
 El valor
 
@@ -4177,7 +4177,7 @@ Ser rectificable significa, por tanto, que todas las longitudes poligonales de l
 
 []{#una-jerarquía-de-cantidades}
 
-### 5.12.6. Una jerarquía de cantidades {#fispm-c05-una-jerarquuxeda-de-cantidades}
+### Una jerarquía de cantidades {#fispm-c05-una-jerarquuxeda-de-cantidades}
 
 En §§11--12 aparecen ahora tres cantidades escalares distintas:
 
@@ -4203,7 +4203,7 @@ Todavía no la usamos como resultado formal.
 
 []{#refinar-una-partición-intuición-antes-del-teorema}
 
-### 5.12.7. Refinar una partición: intuición antes del teorema {#fispm-c05-refinar-una-particiuxf3n-intuiciuxf3n-antes-del-teorema}
+### Refinar una partición: intuición antes del teorema {#fispm-c05-refinar-una-particiuxf3n-intuiciuxf3n-antes-del-teorema}
 
 Supongamos que una partición $\Pi'$ se obtiene de $\Pi$ añadiendo uno o más instantes intermedios. Geométricamente, cada segmento del polígono original se reemplaza por una cadena de segmentos que pasa por más puntos de la curva. La desigualdad triangular sugiere que esa operación no puede disminuir la suma total de longitudes. Es decir, esperamos demostrar
 
@@ -4213,7 +4213,7 @@ cuando $\Pi'$ refina $\Pi$. Éste será proposición 5.25. La monotonía bajo re
 
 []{#principio-metodológico-las-particiones-aproximan-desde-abajo}
 
-### 5.12.8. Principio metodológico: las particiones aproximan desde abajo {#fispm-c05-principio-metodoluxf3gico-las-particiones-aproximan-desde-abajo}
+### Principio metodológico: las particiones aproximan desde abajo {#fispm-c05-principio-metodoluxf3gico-las-particiones-aproximan-desde-abajo}
 
 **Principio metodológico 5.17 --- Las particiones aproximan desde abajo la longitud; refinar no debe acortarlas** Al comparar particiones:
 
@@ -4233,7 +4233,7 @@ pero esta implicación seguirá siendo una **expectativa** hasta demostrar propo
 
 []{#curvas-rectificables-y-no-rectificables}
 
-### 5.12.9. Curvas rectificables y no rectificables {#fispm-c05-curvas-rectificables-y-no-rectificables}
+### Curvas rectificables y no rectificables {#fispm-c05-curvas-rectificables-y-no-rectificables}
 
 Definición 5.23 permite dos regímenes. Si existe una cota finita común para todas las longitudes poligonales, entonces $L(P;[a,b])<\infty$
 
@@ -4247,7 +4247,7 @@ y la curva no es rectificable. En este capítulo no necesitamos todavía constru
 
 []{#qué-todavía-no-hemos-demostrado-2}
 
-### 5.12.10. Qué todavía no hemos demostrado {#fispm-c05-quuxe9-todavuxeda-no-hemos-demostrado-2}
+### Qué todavía no hemos demostrado {#fispm-c05-quuxe9-todavuxeda-no-hemos-demostrado-2}
 
 Quedan tres resultados estructurales:
 
@@ -4259,7 +4259,7 @@ Quedan tres resultados estructurales:
 
 []{#balance-de-la-definición-geométrica}
 
-### 5.12.11. Balance de la definición geométrica {#fispm-c05-balance-de-la-definiciuxf3n-geomuxe9trica}
+### Balance de la definición geométrica {#fispm-c05-balance-de-la-definiciuxf3n-geomuxe9trica}
 
 La arquitectura conceptual queda fijada:
 
@@ -4273,7 +4273,7 @@ Definición 5.22 define la longitud geométrica sin derivadas ni integrales. Def
 
 []{#proposición-monotonía-de-la-longitud-poligonal-bajo-refinamiento}
 
-### 5.12.12. Proposición: monotonía de la longitud poligonal bajo refinamiento {#fispm-c05-proposiciuxf3n-monotonuxeda-de-la-longitud-poligonal-bajo-refinamiento}
+### Proposición: monotonía de la longitud poligonal bajo refinamiento {#fispm-c05-proposiciuxf3n-monotonuxeda-de-la-longitud-poligonal-bajo-refinamiento}
 
 Recordemos que una partición
 
@@ -4317,7 +4317,7 @@ $\square$ proposición 5.25 justifica rigurosamente la lectura de principio meto
 
 []{#proposición-la-longitud-geométrica-domina-la-cuerda}
 
-### 5.12.13. Proposición: la longitud geométrica domina la cuerda {#fispm-c05-proposiciuxf3n-la-longitud-geomuxe9trica-domina-la-cuerda}
+### Proposición: la longitud geométrica domina la cuerda {#fispm-c05-proposiciuxf3n-la-longitud-geomuxe9trica-domina-la-cuerda}
 
 Proposición 5.23 ya estableció que, para toda partición $\Pi$, $d(P(a),P(b)) \le L_\Pi(P).$
 
@@ -4349,7 +4349,7 @@ Proposición 5.26 expresa que ninguna curva que une dos puntos puede tener longi
 
 []{#proposición-invariancia-bajo-reparametrización-monótona}
 
-### 5.12.14. Proposición: invariancia bajo reparametrización monótona {#fispm-c05-proposiciuxf3n-invariancia-bajo-reparametrizaciuxf3n-monuxf3tona}
+### Proposición: invariancia bajo reparametrización monótona {#fispm-c05-proposiciuxf3n-invariancia-bajo-reparametrizaciuxf3n-monuxf3tona}
 
 Sea
 
@@ -4381,7 +4381,7 @@ $$\boxed{ L(Q;[c,d]) = L(P;[a,b]). }$$
 
 []{#caso-1-phi-es-estrictamente-creciente}
 
-#### 5.12.14.1. Caso 1: $\phi$ es estrictamente creciente {#fispm-c05-caso-1-phi-es-estrictamente-creciente}
+#### Caso 1: $\phi$ es estrictamente creciente {#fispm-c05-caso-1-phi-es-estrictamente-creciente}
 
 Como $\phi$ es biyectiva entre los intervalos compactos, $\phi(c)=a, \qquad \phi(d)=b.$
 
@@ -4405,7 +4405,7 @@ $$\left\{ L_\Sigma(Q): \Sigma\text{ partición de }[c,d] \right\} = \left\{ L_\P
 
 []{#caso-2-phi-es-estrictamente-decreciente}
 
-#### 5.12.14.2. Caso 2: $\phi$ es estrictamente decreciente {#fispm-c05-caso-2-phi-es-estrictamente-decreciente}
+#### Caso 2: $\phi$ es estrictamente decreciente {#fispm-c05-caso-2-phi-es-estrictamente-decreciente}
 
 Ahora
 
@@ -4443,7 +4443,7 @@ $\square$ proposición 5.27 muestra que la longitud geométrica es independiente
 
 []{#balance-de-las-propiedades-estructurales}
 
-### 5.12.15. Balance de las propiedades estructurales {#fispm-c05-balance-de-las-propiedades-estructurales}
+### Balance de las propiedades estructurales {#fispm-c05-balance-de-las-propiedades-estructurales}
 
 Quedan ahora demostradas tres propiedades estructurales:
 
@@ -4461,7 +4461,7 @@ $$\phi:[c,d]\to[a,b].$$
 
 Proposición 5.25 formaliza la aproximación desde abajo por refinamientos. Proposición 5.26 relaciona la longitud geométrica con la cuerda entre los extremos. Proposición 5.27 establece que la longitud geométrica no depende de la parametrización monótona elegida para recorrer la misma curva. Ninguna de estas pruebas usa derivadas ni integrales. Ejercicios 5.24--5.26 aplicarán estas propiedades antes del cierre local de §12. La fórmula integral y el parámetro natural siguen reservados para §13.
 
-### 5.12.15. Refinar una partición {#fispm-c05-e024-refinar-una-particiuxf3n .unnumbered}
+### Refinar una partición {#fispm-c05-e024-refinar-una-particiuxf3n .unnumbered}
 
 **Ejercicio 5.24 · Prueba** Sea $B=(e_1,e_2,e_3)$ una base ortonormal de $V$ y sea $A\in\mathcal E$. Considera una curva $P:[0,2]\to\mathcal E$ tal que
 
@@ -4513,7 +4513,7 @@ $$\boxed{ L_{\Pi'}(P)=7\ge5=L_\Pi(P), }$$
 
 lo que verifica proposición 5.25. La desigualdad triangular aparece precisamente al comparar el segmento directo entre $P(0)$ y $P(2)$ con la cadena que pasa por $P(1)$: $d(P(0),P(2)) \le d(P(0),P(1)) + d(P(1),P(2)).$
 
-### 5.12.15. Cuerda y longitud geométrica {#fispm-c05-e025-cuerda-y-longitud-geomuxe9trica .unnumbered}
+### Cuerda y longitud geométrica {#fispm-c05-e025-cuerda-y-longitud-geomuxe9trica .unnumbered}
 
 **Ejercicio 5.25 · Transferencia y desigualdad** Conserva los mismos puntos del ejercicio 5.24 y supón ahora que la curva completa es el recorrido quebrado
 
@@ -4575,7 +4575,7 @@ $$\boxed{ d(P(0),P(2))=5<7=L(P;[0,2]). }$$
 
 La cuerda mide la distancia directa entre los extremos; la longitud geométrica mide el recorrido completo de la curva.
 
-### 5.12.15. Longitud bajo una reparametrización monótona no lineal {#fispm-c05-e026-longitud-bajo-una-reparametrizaciuxf3n-monuxf3tona-no-lineal .unnumbered}
+### Longitud bajo una reparametrización monótona no lineal {#fispm-c05-e026-longitud-bajo-una-reparametrizaciuxf3n-monuxf3tona-no-lineal .unnumbered}
 
 **Ejercicio 5.26 · Invariancia y prueba** Sean $A\in\mathcal E$ y $d\in V$, con $d\ne0$. Considera
 
@@ -4629,7 +4629,7 @@ No fue necesario calcular $\phi'(u)$. Proposición 5.27 es un resultado geométr
 
 []{#cierre-conceptual-longitud-antes-que-integral}
 
-### 5.12.16. Cierre conceptual: longitud antes que integral {#fispm-c05-cierre-conceptual-longitud-antes-que-integral}
+### Cierre conceptual: longitud antes que integral {#fispm-c05-cierre-conceptual-longitud-antes-que-integral}
 
 §12 ha construido la longitud de una curva sin usar derivadas ni integrales. La secuencia lógica completa es
 
@@ -4647,11 +4647,11 @@ Proposición 5.27 muestra que la longitud geométrica es invariante bajo reparam
 
 []{#fpm-i-05-s13}
 
-## 5.13. Fórmula de longitud de arco y parámetro natural {#fispm-c05-fuxf3rmula-de-longitud-de-arco-y-paruxe1metro-natural}
+## 13. Fórmula de longitud de arco y parámetro natural {#fispm-c05-fuxf3rmula-de-longitud-de-arco-y-paruxe1metro-natural}
 
 []{#activación-de-una-definición-geométrica-a-una-fórmula-de-cálculo}
 
-### 5.13.1. Activación: de una definición geométrica a una fórmula de cálculo {#fispm-c05-activaciuxf3n-de-una-definiciuxf3n-geomuxe9trica-a-una-fuxf3rmula-de-cuxe1lculo}
+### Activación: de una definición geométrica a una fórmula de cálculo {#fispm-c05-activaciuxf3n-de-una-definiciuxf3n-geomuxe9trica-a-una-fuxf3rmula-de-cuxe1lculo}
 
 En §12 definimos la longitud geométrica mediante $L(P;[a,b]) = \sup_{\Pi}L_\Pi(P),$
 
@@ -4667,7 +4667,7 @@ es de clase $C^1$. En un intervalo cerrado usamos la misma convención de §9: l
 
 <figcaption>
 
-**Figura 5.8.** Las cuerdas de una partición aproximan la longitud de una curva regular. El límite es $\int\lVert r^\prime(u)\rVert\,du$; la norma se integra antes de confundirla con el desplazamiento entre extremos. Véase §[5.13](#fispm-c05-fuxf3rmula-de-longitud-de-arco-y-paruxe1metro-natural).
+**Figura 5.8.** Las cuerdas de una partición aproximan la longitud de una curva regular. El límite es $\int\lVert r^\prime(u)\rVert\,du$; la norma se integra antes de confundirla con el desplazamiento entre extremos. Véase §[13](#fispm-c05-fuxf3rmula-de-longitud-de-arco-y-paruxe1metro-natural).
 
 </figcaption>
 
@@ -4685,7 +4685,7 @@ coincide con la longitud geométrica ya definida.
 
 []{#la-hipótesis-c1-no-depende-del-origen-fijo}
 
-### 5.13.2. La hipótesis $C^1$ no depende del origen fijo {#fispm-c05-la-hipuxf3tesis-c1-no-depende-del-origen-fijo}
+### La hipótesis $C^1$ no depende del origen fijo {#fispm-c05-la-hipuxf3tesis-c1-no-depende-del-origen-fijo}
 
 Sean $O$ y $O'$ dos orígenes fijos y sea
 
@@ -4697,7 +4697,7 @@ Como $c$ es constante, $r_{O'}'(t)=r_O'(t).$ Por tanto, $r_O$ es $C^1$ si y sól
 
 []{#principio-metodológico-la-fórmula-integral-es-un-teorema}
 
-### 5.13.3. Principio metodológico: la fórmula integral es un teorema {#fispm-c05-principio-metodoluxf3gico-la-fuxf3rmula-integral-es-un-teorema}
+### Principio metodológico: la fórmula integral es un teorema {#fispm-c05-principio-metodoluxf3gico-la-fuxf3rmula-integral-es-un-teorema}
 
 **Principio metodológico 5.18 --- La fórmula $\int\|v\|$ es un teorema, no la definición primaria de longitud** La igualdad
 
@@ -4713,7 +4713,7 @@ Ninguna de estas desigualdades puede suponerse por interpretación física o por
 
 []{#paso-técnico-interno-norma-de-una-integral-vectorial}
 
-### 5.13.4. Paso técnico interno: norma de una integral vectorial {#fispm-c05-paso-tuxe9cnico-interno-norma-de-una-integral-vectorial}
+### Paso técnico interno: norma de una integral vectorial {#fispm-c05-paso-tuxe9cnico-interno-norma-de-una-integral-vectorial}
 
 Necesitaremos una desigualdad elemental para funciones continuas
 
@@ -4761,7 +4761,7 @@ $$\boxed{ \left\| \int_\alpha^\beta w(t)\,dt \right\| \le \int_\alpha^\beta\|w(t
 
 []{#primera-desigualdad-la-longitud-geométrica-no-supera-la-integral-de-la-rapidez}
 
-### 5.13.5. Primera desigualdad: la longitud geométrica no supera la integral de la rapidez {#fispm-c05-primera-desigualdad-la-longitud-geomuxe9trica-no-supera-la-integral-de-la-rapidez}
+### Primera desigualdad: la longitud geométrica no supera la integral de la rapidez {#fispm-c05-primera-desigualdad-la-longitud-geomuxe9trica-no-supera-la-integral-de-la-rapidez}
 
 Sea
 
@@ -4791,7 +4791,7 @@ En particular, la integral es finita y la curva resulta rectificable.
 
 []{#preparación-de-la-desigualdad-inversa-continuidad-uniforme-de-v}
 
-### 5.13.6. Preparación de la desigualdad inversa: continuidad uniforme de $v$ {#fispm-c05-preparaciuxf3n-de-la-desigualdad-inversa-continuidad-uniforme-de-v}
+### Preparación de la desigualdad inversa: continuidad uniforme de $v$ {#fispm-c05-preparaciuxf3n-de-la-desigualdad-inversa-continuidad-uniforme-de-v}
 
 Falta demostrar que la longitud geométrica no es menor que la integral. Como $v$ es continua en el intervalo compacto $[a,b]$, es uniformemente continua. Si $a=b$, ambas cantidades son cero y no hay nada que demostrar. Supongamos $a<b.$
 
@@ -4829,7 +4829,7 @@ $$\|v(t)-v(\tau_i)\|<\eta.$$
 
 []{#paso-técnico-interno-comparar-incremento-e-integral-local-de-la-rapidez}
 
-### 5.13.7. Paso técnico interno: comparar incremento e integral local de la rapidez {#fispm-c05-paso-tuxe9cnico-interno-comparar-incremento-e-integral-local-de-la-rapidez}
+### Paso técnico interno: comparar incremento e integral local de la rapidez {#fispm-c05-paso-tuxe9cnico-interno-comparar-incremento-e-integral-local-de-la-rapidez}
 
 Por el teorema fundamental del cálculo,
 
@@ -4867,7 +4867,7 @@ $$\boxed{ \int_{t_{i-1}}^{t_i}\|v(t)\|\,dt \le d(P(t_{i-1}),P(t_i)) + 2\eta h_i.
 
 []{#segunda-desigualdad-la-integral-de-la-rapidez-no-supera-la-longitud-geométrica}
 
-### 5.13.8. Segunda desigualdad: la integral de la rapidez no supera la longitud geométrica {#fispm-c05-segunda-desigualdad-la-integral-de-la-rapidez-no-supera-la-longitud-geomuxe9trica}
+### Segunda desigualdad: la integral de la rapidez no supera la longitud geométrica {#fispm-c05-segunda-desigualdad-la-integral-de-la-rapidez-no-supera-la-longitud-geomuxe9trica}
 
 Sumamos la desigualdad anterior sobre todos los subintervalos:
 
@@ -4887,7 +4887,7 @@ $$\boxed{ \int_a^b\|v(t)\|\,dt \le L(P;[a,b]). }$$
 
 []{#proposición-fórmula-de-longitud-de-arco-para-curvas-c1}
 
-### 5.13.9. Proposición: fórmula de longitud de arco para curvas $C^1$ {#fispm-c05-proposiciuxf3n-fuxf3rmula-de-longitud-de-arco-para-curvas-c1}
+### Proposición: fórmula de longitud de arco para curvas $C^1$ {#fispm-c05-proposiciuxf3n-fuxf3rmula-de-longitud-de-arco-para-curvas-c1}
 
 **Proposición 5.28 --- Fórmula de longitud de arco para curvas $C^1$** Sea
 
@@ -4917,7 +4917,7 @@ $$\boxed{ L(P;[a,b]) = \int_a^b\|v(t)\|\,dt. }$$
 
 Como la rapidez es continua en el compacto $[a,b]$, la integral es finita. Por definición 5.23, $P$ es rectificable. $\square$
 
-### 5.13.10. Qué proposición 5.28 permite afirmar ---y qué todavía no {#fispm-c05-quuxe9-p28-permite-afirmar-y-quuxe9-todavuxeda-no}
+### Qué proposición 5.28 permite afirmar ---y qué todavía no {#fispm-c05-quuxe9-p28-permite-afirmar-y-quuxe9-todavuxeda-no}
 
 Proposición 5.28 cierra el puente entre la definición geométrica de §12 y el cálculo de una variable:
 
@@ -4927,7 +4927,7 @@ para curvas $C^1$. La integral aparece ahora como **fórmula demostrada** para u
 
 []{#balance-de-la-fórmula-de-longitud}
 
-### 5.13.11. Balance de la fórmula de longitud {#fispm-c05-balance-de-la-fuxf3rmula-de-longitud}
+### Balance de la fórmula de longitud {#fispm-c05-balance-de-la-fuxf3rmula-de-longitud}
 
 La construcción respeta el orden
 
@@ -4943,7 +4943,7 @@ No se han creado IDs adicionales para estos pasos técnicos. A continuación se 
 
 []{#definir-función-longitud-de-arco-acumulada}
 
-### 5.13.12. Definir: función longitud de arco acumulada {#fispm-c05-definir-funciuxf3n-longitud-de-arco-acumulada}
+### Definir: función longitud de arco acumulada {#fispm-c05-definir-funciuxf3n-longitud-de-arco-acumulada}
 
 Proposición 5.28 permite ahora interpretar integralmente una longitud que ya fue definida geométricamente.
 
@@ -4967,7 +4967,7 @@ $$s(b)=L(P;[a,b]).$$
 
 []{#propiedades-inmediatas-de-la-función-s}
 
-### 5.13.13. Propiedades inmediatas de la función $s$ {#fispm-c05-propiedades-inmediatas-de-la-funciuxf3n-s}
+### Propiedades inmediatas de la función $s$ {#fispm-c05-propiedades-inmediatas-de-la-funciuxf3n-s}
 
 Como la rapidez es continua, $s(t) = \int_a^t\|v(\tau)\|\,d\tau$
 
@@ -4987,7 +4987,7 @@ y, por tanto, $s'(t)>0.$ En ese caso, $s$ es estrictamente creciente.
 
 []{#definir-parametrización-por-longitud-de-arco}
 
-### 5.13.14. Definir: parametrización por longitud de arco {#fispm-c05-definir-parametrizaciuxf3n-por-longitud-de-arco}
+### Definir: parametrización por longitud de arco {#fispm-c05-definir-parametrizaciuxf3n-por-longitud-de-arco}
 
 **Definición 5.25 --- Parametrización por longitud de arco / velocidad unitaria** Una parametrización derivable
 
@@ -5021,7 +5021,7 @@ No escribir $t=t(s)$ ni usar $$\frac{dt}{ds}$$ antes de justificar la invertibil
 
 principio metodológico 5.19 evita que la construcción del parámetro natural oculte su hipótesis decisiva: la ausencia de instantes de reposo.
 
-### 5.13.15. Preparación de la proposición 5.29: invertir la longitud acumulada {#fispm-c05-preparaciuxf3n-de-p29-invertir-la-longitud-acumulada}
+### Preparación de la proposición 5.29: invertir la longitud acumulada {#fispm-c05-preparaciuxf3n-de-p29-invertir-la-longitud-acumulada}
 
 Supongamos desde ahora que
 
@@ -5061,7 +5061,7 @@ $$\boxed{ \frac{d}{d\ell}s^{-1}(\ell) = \frac{1}{ \|v(s^{-1}(\ell))\| }. }$$
 
 []{#construir-la-curva-parametrizada-por-longitud-de-arco}
 
-### 5.13.16. Construir la curva parametrizada por longitud de arco {#fispm-c05-construir-la-curva-parametrizada-por-longitud-de-arco}
+### Construir la curva parametrizada por longitud de arco {#fispm-c05-construir-la-curva-parametrizada-por-longitud-de-arco}
 
 Definimos $\widehat P:[0,L]\to\mathcal E$
 
@@ -5151,7 +5151,7 @@ Luego $\widehat P$ es una parametrización por longitud de arco. $\square$
 
 []{#qué-significa-realmente-el-parámetro-de-arco}
 
-### 5.13.17. Qué significa realmente el parámetro de arco {#fispm-c05-quuxe9-significa-realmente-el-paruxe1metro-de-arco}
+### Qué significa realmente el parámetro de arco {#fispm-c05-quuxe9-significa-realmente-el-paruxe1metro-de-arco}
 
 En la parametrización original, $s(t) = L(P;[a,t]).$ En la nueva parametrización, $\widehat P(\ell) = P(s^{-1}(\ell)),$
 
@@ -5171,7 +5171,7 @@ $$L(\widehat P;[\ell_1,\ell_2]) = \int_{\ell_1}^{\ell_2} \|\widehat v(\ell)\|\,d
 
 []{#balance-del-parámetro-natural}
 
-### 5.13.18. Balance del parámetro natural {#fispm-c05-balance-del-paruxe1metro-natural}
+### Balance del parámetro natural {#fispm-c05-balance-del-paruxe1metro-natural}
 
 El orden canónico queda ahora completado:
 
@@ -5187,7 +5187,7 @@ $$\|\widehat v\|=1.$$
 
 Ejercicios 5.27--5.29 aplicarán proposición 5.28 y proposición 5.29 antes del cierre local de §13. §14 continúa cerrado.
 
-### 5.13.18. Comprobar la fórmula integral de longitud {#fispm-c05-e027-comprobar-la-fuxf3rmula-integral-de-longitud .unnumbered}
+### Comprobar la fórmula integral de longitud {#fispm-c05-e027-comprobar-la-fuxf3rmula-integral-de-longitud .unnumbered}
 
 **Ejercicio 5.27 · Cálculo y comprobación** Sea $B=(e_1,e_2,e_3)$ una base ortonormal de $V$, sea $A\in\mathcal E$ y considera
 
@@ -5219,7 +5219,7 @@ Su longitud euclídea es $\sqrt{6^2+8^2} = 10,$
 
 de modo que la fórmula integral coincide con la longitud geométrica esperada.
 
-### 5.13.18. Construir la función longitud de arco acumulada {#fispm-c05-e028-construir-la-funciuxf3n-longitud-de-arco-acumulada .unnumbered}
+### Construir la función longitud de arco acumulada {#fispm-c05-e028-construir-la-funciuxf3n-longitud-de-arco-acumulada .unnumbered}
 
 **Ejercicio 5.28 · FTC e inversa** Sea $e_1$ un vector unitario y considera
 
@@ -5265,7 +5265,7 @@ Así,
 
 $$\boxed{ s^{-1}(\ell)=\sqrt{\ell+1}, \qquad 0\le\ell\le3. }$$
 
-### 5.13.18. Parametrización unitaria {#fispm-c05-e029-parametrizaciuxf3n-unitaria .unnumbered}
+### Parametrización unitaria {#fispm-c05-e029-parametrizaciuxf3n-unitaria .unnumbered}
 
 **Ejercicio 5.29 · Prueba y síntesis** Conserva la curva del ejercicio 5.28:
 
@@ -5313,7 +5313,7 @@ Así, el propio parámetro $\ell$ coincide con la longitud geométrica acumulada
 
 []{#cierre-conceptual-de-la-definición-geométrica-al-parámetro-natural}
 
-### 5.13.19. Cierre conceptual: de la definición geométrica al parámetro natural {#fispm-c05-cierre-conceptual-de-la-definiciuxf3n-geomuxe9trica-al-paruxe1metro-natural}
+### Cierre conceptual: de la definición geométrica al parámetro natural {#fispm-c05-cierre-conceptual-de-la-definiciuxf3n-geomuxe9trica-al-paruxe1metro-natural}
 
 §13 completa una cadena que comenzó en §11:
 
@@ -5341,11 +5341,11 @@ $$\boxed{ \text{la integral calcula una longitud previamente definida;} \quad \t
 
 []{#fpm-i-05-s14}
 
-## 5.14. Integración: una curva, varios relojes y varias descripciones {#fispm-c05-integraciuxf3n-una-curva-varios-relojes-y-varias-descripciones}
+## 14. Integración: una curva, varios relojes y varias descripciones {#fispm-c05-integraciuxf3n-una-curva-varios-relojes-y-varias-descripciones}
 
 []{#activación-una-misma-curva-puede-cambiar-de-descripción-de-varias-maneras}
 
-### 5.14.1. Activación: una misma curva puede cambiar de descripción de varias maneras {#fispm-c05-activaciuxf3n-una-misma-curva-puede-cambiar-de-descripciuxf3n-de-varias-maneras}
+### Activación: una misma curva puede cambiar de descripción de varias maneras {#fispm-c05-activaciuxf3n-una-misma-curva-puede-cambiar-de-descripciuxf3n-de-varias-maneras}
 
 A lo largo del capítulo aparecieron tres operaciones conceptualmente diferentes:
 
@@ -5359,7 +5359,7 @@ Estas operaciones no afectan de la misma manera a todos los objetos. Un punto pu
 
 []{#principio-metodológico-final}
 
-### 5.14.2. Principio metodológico final {#fispm-c05-principio-metodoluxf3gico-final}
+### Principio metodológico final {#fispm-c05-principio-metodoluxf3gico-final}
 
 **Principio metodológico 5.20 --- En toda comparación final preguntar: objeto, parámetro, marco y magnitud invariante** Antes de afirmar que dos descripciones «son iguales» o «son distintas», responder:
 
@@ -5377,7 +5377,7 @@ principio metodológico 5.20 resume la disciplina tipológica del capítulo.
 
 []{#matriz-de-transformación-y-permanencia}
 
-### 5.14.3. Matriz de transformación y permanencia {#fispm-c05-matriz-de-transformaciuxf3n-y-permanencia}
+### Matriz de transformación y permanencia {#fispm-c05-matriz-de-transformaciuxf3n-y-permanencia}
 
 Para dos marcos fijos
 
@@ -5407,7 +5407,7 @@ permanece invariante.
 
 []{#efecto-de-una-reparametrización}
 
-### 5.14.4. Efecto de una reparametrización {#fispm-c05-efecto-de-una-reparametrizaciuxf3n}
+### Efecto de una reparametrización {#fispm-c05-efecto-de-una-reparametrizaciuxf3n}
 
 Sea
 
@@ -5429,7 +5429,7 @@ Por tanto, una reparametrización puede cambiar la velocidad y la rapidez como f
 
 []{#proposición-de-síntesis}
 
-### 5.14.5. Proposición de síntesis {#fispm-c05-proposiciuxf3n-de-suxedntesis}
+### Proposición de síntesis {#fispm-c05-proposiciuxf3n-de-suxedntesis}
 
 **Proposición 5.30 --- Coherencia de las descripciones fijas de un mismo movimiento** Considérese un movimiento
 
@@ -5465,7 +5465,7 @@ que son magnitudes geométricas independientes de un marco ortonormal fijo. Por 
 
 []{#qué-cambia-y-qué-permanece-tabla-conceptual}
 
-### 5.14.6. Qué cambia y qué permanece: tabla conceptual {#fispm-c05-quuxe9-cambia-y-quuxe9-permanece-tabla-conceptual}
+### Qué cambia y qué permanece: tabla conceptual {#fispm-c05-quuxe9-cambia-y-quuxe9-permanece-tabla-conceptual}
 
   Objeto o magnitud     Cambio de marco fijo                   Reparametrización
   --------------------- -------------------------------------- ----------------------------------------------------------------------
@@ -5479,7 +5479,7 @@ que son magnitudes geométricas independientes de un marco ortonormal fijo. Por 
 
 La fila de aceleración bajo reparametrización marca deliberadamente una frontera: el capítulo no necesita desarrollar una fórmula adicional para cerrar su arquitectura.
 
-### 5.14.6. Auditoría global de un movimiento en dos marcos y dos parametrizaciones {#fispm-c05-e030-auditoruxeda-global-de-un-movimiento-en-dos-marcos-y-dos-parametrizaciones .unnumbered}
+### Auditoría global de un movimiento en dos marcos y dos parametrizaciones {#fispm-c05-e030-auditoruxeda-global-de-un-movimiento-en-dos-marcos-y-dos-parametrizaciones .unnumbered}
 
 **Ejercicio 5.30 · Síntesis, transferencia y frontera** Sea $F=(O,B)$ un marco ortonormal con
 
@@ -5617,7 +5617,7 @@ El capítulo 5 termina antes de introducir cualquiera de esas estructuras.
 
 []{#cierre-conceptual-del-capítulo}
 
-### 5.14.7. Cierre conceptual del capítulo {#fispm-c05-cierre-conceptual-del-capuxedtulo}
+### Cierre conceptual del capítulo {#fispm-c05-cierre-conceptual-del-capuxedtulo}
 
 El capítulo 5 comenzó con una localización temporalmente etiquetada y terminó con una teoría elemental de curvas afines parametrizadas. La cadena conceptual construida es
 

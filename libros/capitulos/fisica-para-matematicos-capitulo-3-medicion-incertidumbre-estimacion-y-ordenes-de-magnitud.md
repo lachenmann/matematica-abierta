@@ -39,11 +39,11 @@ number-sections: false
 
 []{#fpm-i-03-s01}
 
-## 3.1. Medir no es leer un número {#fispm-c03-medir-no-es-leer-un-nuxfamero}
+## 1. Medir no es leer un número {#fispm-c03-medir-no-es-leer-un-nuxfamero}
 
 []{#intuir-una-regla-parece-simple-hasta-que-preguntamos-qué-significa-el-número}
 
-### 3.1.1. Intuir: una regla parece simple hasta que preguntamos qué significa el número {#fispm-c03-intuir-una-regla-parece-simple-hasta-que-preguntamos-quuxe9-significa-el-nuxfamero}
+### Intuir: una regla parece simple hasta que preguntamos qué significa el número {#fispm-c03-intuir-una-regla-parece-simple-hasta-que-preguntamos-quuxe9-significa-el-nuxfamero}
 
 Coloquemos una regla milimetrada junto a una pequeña barra metálica. A primera vista, el problema parece trivial: alineamos uno de los extremos de la barra con el cero, miramos dónde cae el otro extremo y escribimos un número. Supongamos que obtenemos $12.4\,\mathrm{cm}.$
 
@@ -71,7 +71,7 @@ El resto del capítulo estudia qué información se conserva y qué limitaciones
 
 []{#representar-del-fenómeno-al-mensurando}
 
-### 3.1.2. Representar: del fenómeno al mensurando {#fispm-c03-representar-del-fenuxf3meno-al-mensurando}
+### Representar: del fenómeno al mensurando {#fispm-c03-representar-del-fenuxf3meno-al-mensurando}
 
 En metrología se llama **mensurando** a la magnitud que se pretende medir.[^1]
 
@@ -109,7 +109,7 @@ La palabra «pretende» es importante. El instrumento no decide por nosotros qu�
 
 []{#no-ejemplo-un-número-sin-mensurando}
 
-### 3.1.3. No-ejemplo: un número sin mensurando {#fispm-c03-no-ejemplo-un-nuxfamero-sin-mensurando}
+### No-ejemplo: un número sin mensurando {#fispm-c03-no-ejemplo-un-nuxfamero-sin-mensurando}
 
 Supongamos que una pantalla muestra
 
@@ -143,7 +143,7 @@ El capítulo 2 nos enseñó que una cantidad física no es un número desnudo. A
 
 []{#una-indicación-tampoco-es-todavía-el-resultado-completo}
 
-### 3.1.4. Una indicación tampoco es todavía el resultado completo {#fispm-c03-una-indicaciuxf3n-tampoco-es-todavuxeda-el-resultado-completo}
+### Una indicación tampoco es todavía el resultado completo {#fispm-c03-una-indicaciuxf3n-tampoco-es-todavuxeda-el-resultado-completo}
 
 El VIM llama **indicación** al valor proporcionado por un instrumento o sistema de medición.[^4]
 
@@ -161,7 +161,7 @@ $$\boxed{ \text{indicación} \neq \text{resultado de medición completo}. }$$
 
 []{#definir-resultado-de-medición}
 
-### 3.1.5. Definir: resultado de medición {#fispm-c03-definir-resultado-de-mediciuxf3n}
+### Definir: resultado de medición {#fispm-c03-definir-resultado-de-mediciuxf3n}
 
 El VIM formula el resultado de medición de una manera deliberadamente más rica que «un número obtenido al medir». Un resultado es un conjunto de valores atribuidos al mensurando junto con la información relevante disponible; en muchos casos se expresa mediante un valor medido acompañado por una incertidumbre.[^5]
 
@@ -177,7 +177,7 @@ Esta escritura es conceptual, no una suma algebraica.
 
 []{#matemática-exacta-sobre-datos-no-exactos}
 
-### 3.1.6. Matemática exacta sobre datos no exactos {#fispm-c03-matemuxe1tica-exacta-sobre-datos-no-exactos}
+### Matemática exacta sobre datos no exactos {#fispm-c03-matemuxe1tica-exacta-sobre-datos-no-exactos}
 
 Supongamos que una mesa tiene lados medidos como $a=1.24\,\mathrm m, \qquad b=0.73\,\mathrm m.$ La multiplicación decimal puede hacerse exactamente: $1.24\times0.73=0.9052.$ Pero de ello no se sigue que el área física sea conocida exactamente como $A=0.9052\,\mathrm{m^2}.$
 
@@ -193,7 +193,7 @@ La calculadora puede producir más dígitos que los que la experiencia justifica
 
 []{#representar-resolución-finita}
 
-### 3.1.7. Representar: resolución finita {#fispm-c03-representar-resoluciuxf3n-finita}
+### Representar: resolución finita {#fispm-c03-representar-resoluciuxf3n-finita}
 
 Volvamos a la regla milimetrada. Si la menor división visible de la escala es $1\,\mathrm{mm},$
 
@@ -217,11 +217,11 @@ Este hecho no es una imperfección accidental. Surge de que la interacción expe
 
 []{#ejemplo-una-lectura-analógica-y-una-lectura-digital}
 
-### 3.1.8. Ejemplo: una lectura analógica y una lectura digital {#fispm-c03-ejemplo-una-lectura-analuxf3gica-y-una-lectura-digital}
+### Ejemplo: una lectura analógica y una lectura digital {#fispm-c03-ejemplo-una-lectura-analuxf3gica-y-una-lectura-digital}
 
 []{#caso-a-regla}
 
-#### 3.1.8.1. Caso A --- regla {#fispm-c03-caso-a-regla}
+#### Caso A --- regla {#fispm-c03-caso-a-regla}
 
 Una regla tiene marcas cada
 
@@ -235,7 +235,7 @@ El observador puede intentar interpolar visualmente, pero esa interpolación no 
 
 []{#caso-b-pantalla-digital}
 
-#### 3.1.8.2. Caso B --- pantalla digital {#fispm-c03-caso-b-pantalla-digital}
+#### Caso B --- pantalla digital {#fispm-c03-caso-b-pantalla-digital}
 
 Un termómetro muestra
 
@@ -249,7 +249,7 @@ $$\boxed{ \text{resolución} \neq \text{incertidumbre total}. }$$
 
 []{#variar-repetir-la-medición}
 
-### 3.1.9. Variar: repetir la medición {#fispm-c03-variar-repetir-la-mediciuxf3n}
+### Variar: repetir la medición {#fispm-c03-variar-repetir-la-mediciuxf3n}
 
 Midamos diez veces el período de un mismo péndulo bajo condiciones nominalmente iguales. Podríamos obtener, en segundos, $2.01, \ 2.03, \ 2.00, \ 2.02, \ 2.01, \ldots$
 
@@ -261,13 +261,13 @@ En §§3--5 estudiaremos cómo describir esa dispersión y cómo contribuye a la
 
 []{#espacio-de-ejemplos-y-no-ejemplos}
 
-### 3.1.10. Espacio de ejemplos y no-ejemplos {#fispm-c03-espacio-de-ejemplos-y-no-ejemplos}
+### Espacio de ejemplos y no-ejemplos {#fispm-c03-espacio-de-ejemplos-y-no-ejemplos}
 
 Clasifiquemos varias expresiones.
 
 []{#ejemplo-1}
 
-#### 3.1.10.1. Ejemplo 1 {#fispm-c03-ejemplo-1}
+#### Ejemplo 1 {#fispm-c03-ejemplo-1}
 
 $$L=24.6\,\mathrm{cm}.$$
 
@@ -275,7 +275,7 @@ Podría ser una indicación o un valor medido, pero sin contexto no sabemos toda
 
 []{#ejemplo-2}
 
-#### 3.1.10.2. Ejemplo 2 {#fispm-c03-ejemplo-2}
+#### Ejemplo 2 {#fispm-c03-ejemplo-2}
 
 $$L=(24.6\pm0.1)\,\mathrm{cm}.$$
 
@@ -285,7 +285,7 @@ La notación $\pm$ por sí sola no explica su semántica.
 
 []{#no-ejemplo-1}
 
-#### 3.1.10.3. No-ejemplo 1 {#fispm-c03-no-ejemplo-1}
+#### No-ejemplo 1 {#fispm-c03-no-ejemplo-1}
 
 > «La longitud verdadera es exactamente $24.6\,\mathrm{cm}$ porque eso mostró la regla.»
 
@@ -293,7 +293,7 @@ La conclusión excede la información disponible.
 
 []{#no-ejemplo-2}
 
-#### 3.1.10.4. No-ejemplo 2 {#fispm-c03-no-ejemplo-2}
+#### No-ejemplo 2 {#fispm-c03-no-ejemplo-2}
 
 > «Como dos mediciones dieron números diferentes, una de las dos está necesariamente mal.»
 
@@ -301,7 +301,7 @@ También es falso. Una serie de mediciones puede dispersarse aun cuando el proce
 
 []{#no-ejemplo-3}
 
-#### 3.1.10.5. No-ejemplo 3 {#fispm-c03-no-ejemplo-3}
+#### No-ejemplo 3 {#fispm-c03-no-ejemplo-3}
 
 > «Una balanza que muestra cinco decimales es necesariamente más exacta que una que muestra tres.»
 
@@ -309,7 +309,7 @@ El número de dígitos visibles no basta para evaluar la exactitud del sistema d
 
 []{#primera-noción-de-incertidumbre}
 
-### 3.1.11. Primera noción de incertidumbre {#fispm-c03-primera-nociuxf3n-de-incertidumbre}
+### Primera noción de incertidumbre {#fispm-c03-primera-nociuxf3n-de-incertidumbre}
 
 El VIM define la **incertidumbre de medición** como un parámetro no negativo que caracteriza la dispersión de los valores atribuidos al mensurando sobre la base de la información utilizada.[^7]
 
@@ -327,7 +327,7 @@ Estas distinciones se desarrollarán en §§4--5.
 
 []{#red-la-cadena-completa}
 
-### 3.1.12. Red: la cadena completa {#fispm-c03-red-la-cadena-completa}
+### Red: la cadena completa {#fispm-c03-red-la-cadena-completa}
 
 Podemos ahora ampliar la cadena metodológica del capítulo 1 y capítulo 2.
 
@@ -345,7 +345,7 @@ Esta cadena no es puramente matemática. El paso de una indicación a un resulta
 
 []{#práctica-ma-ped}
 
-### 3.1.13. Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped}
+### Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped}
 
 **Ejercicio 3.1 --- ¿Qué falta para que haya un resultado?**
 
@@ -405,7 +405,7 @@ Una balanza digital con paso de indicación de $0.01\,\mathrm g$ muestra $25.37\
 
 []{#cierre}
 
-### 3.1.14. Cierre {#fispm-c03-cierre}
+### Cierre {#fispm-c03-cierre}
 
 La pregunta inicial parecía elemental:
 
@@ -417,7 +417,7 @@ Medir exige construir una relación controlada entre un sistema físico y una at
 
 $$\boxed{ (\text{mensurando},\ \text{procedimiento},\ \text{indicación},\ \text{modelo},\ \text{resultado},\ \text{incertidumbre}). }$$
 
-En la siguiente sección examinaremos el componente que primero hace visible el carácter finito de toda medición instrumental (§[3.2](#fispm-c03-instrumentos-escalas-y-resoluciuxf3n)).
+En la siguiente sección examinaremos el componente que primero hace visible el carácter finito de toda medición instrumental (§[2](#fispm-c03-instrumentos-escalas-y-resoluciuxf3n)).
 
 []{#fispm-c03-notas-y-fuentes label="fispm-c03-notas-y-fuentes"}
 
@@ -427,11 +427,11 @@ En la siguiente sección examinaremos el componente que primero hace visible el 
 
 []{#fpm-i-03-s02}
 
-## 3.2. Instrumentos, escalas y resolución {#fispm-c03-instrumentos-escalas-y-resoluciuxf3n}
+## 2. Instrumentos, escalas y resolución {#fispm-c03-instrumentos-escalas-y-resoluciuxf3n}
 
 []{#intuir-dos-pantallas-iguales-no-garantizan-dos-mediciones-igualmente-informativas}
 
-### 3.2.1. Intuir: dos pantallas iguales no garantizan dos mediciones igualmente informativas {#fispm-c03-intuir-dos-pantallas-iguales-no-garantizan-dos-mediciones-igualmente-informativas}
+### Intuir: dos pantallas iguales no garantizan dos mediciones igualmente informativas {#fispm-c03-intuir-dos-pantallas-iguales-no-garantizan-dos-mediciones-igualmente-informativas}
 
 Imaginemos dos termómetros digitales colocados en el mismo laboratorio. Ambos muestran
 
@@ -461,7 +461,7 @@ La coincidencia de las pantallas no basta para concluir que los dos sistemas de 
 
 <figcaption>
 
-**Figura 3.1.** Las marcas vecinas están separadas por $\Delta$. La posición entre marcas exige un procedimiento de lectura y una evaluación de incertidumbre; la resolución no determina por sí sola toda la incertidumbre de la medición. Véase §[3.2](#fispm-c03-instrumentos-escalas-y-resoluciuxf3n).
+**Figura 3.1.** Las marcas vecinas están separadas por $\Delta$. La posición entre marcas exige un procedimiento de lectura y una evaluación de incertidumbre; la resolución no determina por sí sola toda la incertidumbre de la medición. Véase §[2](#fispm-c03-instrumentos-escalas-y-resoluciuxf3n).
 
 </figcaption>
 
@@ -489,7 +489,7 @@ $$\boxed{ \text{número mostrado} \neq \text{capacidad total del sistema de medi
 
 []{#representar-un-instrumento-como-parte-de-una-cadena}
 
-### 3.2.2. Representar: un instrumento como parte de una cadena {#fispm-c03-representar-un-instrumento-como-parte-de-una-cadena}
+### Representar: un instrumento como parte de una cadena {#fispm-c03-representar-un-instrumento-como-parte-de-una-cadena}
 
 Un instrumento de medición no es una caja que «contiene» el valor del mensurando. En una medición típica ocurre una cadena de interacciones.
 
@@ -509,7 +509,7 @@ El instrumento forma parte del **procedimiento de medición**. Su salida debe in
 
 []{#definir-indicación}
 
-### 3.2.3. Definir: indicación {#fispm-c03-definir-indicaciuxf3n}
+### Definir: indicación {#fispm-c03-definir-indicaciuxf3n}
 
 En §1 utilizamos la palabra *indicación* de manera preliminar. Ahora la fijamos como término técnico.
 
@@ -529,7 +529,7 @@ La indicación es observable en el dispositivo. El mensurando, en cambio, es la 
 
 []{#escalas-analógicas-leer-implica-comparar}
 
-### 3.2.4. Escalas analógicas: leer implica comparar {#fispm-c03-escalas-analuxf3gicas-leer-implica-comparar}
+### Escalas analógicas: leer implica comparar {#fispm-c03-escalas-analuxf3gicas-leer-implica-comparar}
 
 Consideremos una regla cuyas marcas están separadas por $1\,\mathrm{mm}.$ Si el extremo de un objeto cae entre dos marcas, la lectura no consiste en encontrar una marca que coincida mágicamente con el extremo. El observador compara posiciones e interpola. Podemos tener, por ejemplo, $x\approx 37.4\,\mathrm{mm}.$
 
@@ -547,7 +547,7 @@ En algunos ejercicios introductorios esa convención puede ser una aproximación
 
 []{#resolución-capacidad-de-distinguir-cambios}
 
-### 3.2.5. Resolución: capacidad de distinguir cambios {#fispm-c03-resoluciuxf3n-capacidad-de-distinguir-cambios}
+### Resolución: capacidad de distinguir cambios {#fispm-c03-resoluciuxf3n-capacidad-de-distinguir-cambios}
 
 El VIM define la resolución mediante la respuesta del sistema: es el menor cambio en la magnitud medida que produce un cambio perceptible en la indicación correspondiente.[^10]
 
@@ -563,7 +563,7 @@ En una escala analógica, el problema incluye la capacidad de distinguir desplaz
 
 []{#una-primera-separación-conceptual}
 
-### 3.2.6. Una primera separación conceptual {#fispm-c03-una-primera-separaciuxf3n-conceptual}
+### Una primera separación conceptual {#fispm-c03-una-primera-separaciuxf3n-conceptual}
 
 Conviene fijar desde ahora cuatro conceptos que más adelante estudiaremos por separado:
 
@@ -583,7 +583,7 @@ Estas distinciones impiden varios razonamientos incorrectos.
 
 []{#error-plausible-a}
 
-#### 3.2.6.1. Error plausible A {#fispm-c03-error-plausible-a}
+#### Error plausible A {#fispm-c03-error-plausible-a}
 
 > «El instrumento tiene muchas cifras, luego es muy exacto.»
 
@@ -591,7 +591,7 @@ No se sigue.
 
 []{#error-plausible-b}
 
-#### 3.2.6.2. Error plausible B {#fispm-c03-error-plausible-b}
+#### Error plausible B {#fispm-c03-error-plausible-b}
 
 > «La pantalla cambia de $0.01$ en $0.01$, luego la incertidumbre es exactamente $0.01$.»
 
@@ -599,7 +599,7 @@ Tampoco se sigue.
 
 []{#error-plausible-c}
 
-#### 3.2.6.3. Error plausible C {#fispm-c03-error-plausible-c}
+#### Error plausible C {#fispm-c03-error-plausible-c}
 
 > «Dos objetos dan la misma indicación, luego tienen exactamente el mismo valor del mensurando.»
 
@@ -607,7 +607,7 @@ Tampoco. La última afirmación admite una formulación matemática particularme
 
 []{#modelar-una-pantalla-digital-como-cuantizador}
 
-### 3.2.7. Modelar: una pantalla digital como cuantizador {#fispm-c03-modelar-una-pantalla-digital-como-cuantizador}
+### Modelar: una pantalla digital como cuantizador {#fispm-c03-modelar-una-pantalla-digital-como-cuantizador}
 
 Para entender qué información pierde una indicación digital, construyamos un modelo idealizado.
 
@@ -643,7 +643,7 @@ La información mostrada es entonces una **representación más gruesa** o discr
 
 []{#proposición-igualdad-de-indicaciones-no-implica-igualdad-física-exacta}
 
-### 3.2.8. Proposición: igualdad de indicaciones no implica igualdad física exacta {#fispm-c03-proposiciuxf3n-igualdad-de-indicaciones-no-implica-igualdad-fuxedsica-exacta}
+### Proposición: igualdad de indicaciones no implica igualdad física exacta {#fispm-c03-proposiciuxf3n-igualdad-de-indicaciones-no-implica-igualdad-fuxedsica-exacta}
 
 **Proposición 3.1 --- No inyectividad de una indicación cuantizada**
 
@@ -693,7 +693,7 @@ $$\boxed{ \text{misma representación} \not\Rightarrow \text{misma realidad fís
 
 []{#intervalo-de-medición-y-saturación}
 
-### 3.2.9. Intervalo de medición y saturación {#fispm-c03-intervalo-de-mediciuxf3n-y-saturaciuxf3n}
+### Intervalo de medición y saturación {#fispm-c03-intervalo-de-mediciuxf3n-y-saturaciuxf3n}
 
 Todo instrumento funciona dentro de un dominio operativo. Una balanza diseñada para medir hasta
 
@@ -715,7 +715,7 @@ La idea enlaza directamente con el capítulo 1: un sistema de medición es tambi
 
 []{#umbral-de-discriminación}
 
-### 3.2.10. Umbral de discriminación {#fispm-c03-umbral-de-discriminaciuxf3n}
+### Umbral de discriminación {#fispm-c03-umbral-de-discriminaciuxf3n}
 
 El VIM distingue la resolución del **umbral de discriminación**, relacionado con el mayor cambio en la magnitud medida que todavía no produce un cambio detectable en la indicación.[^14]
 
@@ -729,7 +729,7 @@ no describe por sí sola toda la capacidad discriminante del instrumento.
 
 []{#variar-cambiar-el-modo-de-mostrar-sin-cambiar-el-sensor}
 
-### 3.2.11. Variar: cambiar el modo de mostrar sin cambiar el sensor {#fispm-c03-variar-cambiar-el-modo-de-mostrar-sin-cambiar-el-sensor}
+### Variar: cambiar el modo de mostrar sin cambiar el sensor {#fispm-c03-variar-cambiar-el-modo-de-mostrar-sin-cambiar-el-sensor}
 
 Supongamos un sensor cuya electrónica interna produce una señal numérica con muchos dígitos.
 
@@ -737,7 +737,7 @@ El fabricante puede decidir mostrar:
 
 []{#modo-a}
 
-#### 3.2.11.1. Modo A {#fispm-c03-modo-a}
+#### Modo A {#fispm-c03-modo-a}
 
 $$21.7\,^{\circ}\mathrm C$$
 
@@ -745,7 +745,7 @@ o
 
 []{#modo-b}
 
-#### 3.2.11.2. Modo B {#fispm-c03-modo-b}
+#### Modo B {#fispm-c03-modo-b}
 
 $$21.70\,^{\circ}\mathrm C.$$
 
@@ -775,7 +775,7 @@ $$\boxed{ \text{resolución de visualización} \neq \text{información física t
 
 []{#ejemplo-trabajado-una-balanza-con-paso-de-0.01mathrm-g}
 
-### 3.2.12. Ejemplo trabajado: una balanza con paso de $0.01\,\mathrm g$ {#fispm-c03-ejemplo-trabajado-una-balanza-con-paso-de-0.01mathrm-g}
+### Ejemplo trabajado: una balanza con paso de $0.01\,\mathrm g$ {#fispm-c03-ejemplo-trabajado-una-balanza-con-paso-de-0.01mathrm-g}
 
 Supongamos una balanza cuyo modelo idealizado de visualización es $Q_{\Delta}(m), \qquad \Delta=0.01\,\mathrm g.$ La pantalla indica
 
@@ -797,7 +797,7 @@ En una medición real podrían existir además contribuciones por calibración, 
 
 []{#práctica-ma-ped-1}
 
-### 3.2.13. Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped-1}
+### Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped-1}
 
 **Ejercicio 3.4 --- Leer una escala sin inventar información**
 
@@ -877,7 +877,7 @@ La igualdad de indicaciones no demuestra igualdad física exacta.
 
 []{#autoexplicación-cuatro-preguntas-antes-de-confiar-en-una-cifra}
 
-### 3.2.14. Autoexplicación: cuatro preguntas antes de confiar en una cifra {#fispm-c03-autoexplicaciuxf3n-cuatro-preguntas-antes-de-confiar-en-una-cifra}
+### Autoexplicación: cuatro preguntas antes de confiar en una cifra {#fispm-c03-autoexplicaciuxf3n-cuatro-preguntas-antes-de-confiar-en-una-cifra}
 
 Ante una lectura instrumental, el lector debería aprender a preguntar:
 
@@ -893,7 +893,7 @@ Estas preguntas impiden que la pantalla sustituya al razonamiento físico. Una m
 
 []{#conectar-la-resolución-no-explica-la-dispersión-entre-repeticiones}
 
-### 3.2.15. Conectar: la resolución no explica la dispersión entre repeticiones {#fispm-c03-conectar-la-resoluciuxf3n-no-explica-la-dispersiuxf3n-entre-repeticiones}
+### Conectar: la resolución no explica la dispersión entre repeticiones {#fispm-c03-conectar-la-resoluciuxf3n-no-explica-la-dispersiuxf3n-entre-repeticiones}
 
 Hasta ahora hemos examinado principalmente la capacidad de un sistema para **distinguir cambios**. Pero incluso un instrumento de resolución fija puede producir una serie como
 
@@ -903,7 +903,7 @@ La siguiente pregunta será distinta:
 
 > **¿qué información contiene la dispersión de mediciones repetidas?**
 
-Eso nos lleva a (§[3.3](#fispm-c03-repeticiuxf3n-dispersiuxf3n-y-precisiuxf3n)).
+Eso nos lleva a (§[3](#fispm-c03-repeticiuxf3n-dispersiuxf3n-y-precisiuxf3n)).
 
 Allí podremos distinguir por primera vez la resolución del instrumento de la variabilidad observada en una serie de mediciones.
 
@@ -917,11 +917,11 @@ Allí podremos distinguir por primera vez la resolución del instrumento de la v
 
 []{#fpm-i-03-s03}
 
-## 3.3. Repetición, dispersión y precisión {#fispm-c03-repeticiuxf3n-dispersiuxf3n-y-precisiuxf3n}
+## 3. Repetición, dispersión y precisión {#fispm-c03-repeticiuxf3n-dispersiuxf3n-y-precisiuxf3n}
 
 []{#intuir-repetir-no-significa-obtener-el-mismo-número}
 
-### 3.3.1. Intuir: repetir no significa obtener el mismo número {#fispm-c03-intuir-repetir-no-significa-obtener-el-mismo-nuxfamero}
+### Intuir: repetir no significa obtener el mismo número {#fispm-c03-intuir-repetir-no-significa-obtener-el-mismo-nuxfamero}
 
 Supongamos que medimos cinco veces el período de un péndulo bajo condiciones que intentamos mantener tan semejantes como sea razonable. Obtenemos, en segundos,
 
@@ -963,7 +963,7 @@ Una serie es un objeto de estudio.
 
 []{#representar-una-serie-de-mediciones}
 
-### 3.3.2. Representar: una serie de mediciones {#fispm-c03-representar-una-serie-de-mediciones}
+### Representar: una serie de mediciones {#fispm-c03-representar-una-serie-de-mediciones}
 
 Escribamos una serie de $n$ valores medidos como $x_1,x_2,\ldots,x_n.$
 
@@ -985,7 +985,7 @@ Dos series pueden tener la misma media y comportarse de manera muy distinta.
 
 []{#definir-precisión-de-medición}
 
-### 3.3.3. Definir: precisión de medición {#fispm-c03-definir-precisiuxf3n-de-mediciuxf3n}
+### Definir: precisión de medición {#fispm-c03-definir-precisiuxf3n-de-mediciuxf3n}
 
 El VIM utiliza **precisión de medición** para describir la cercanía entre indicaciones o valores medidos obtenidos mediante mediciones repetidas del mismo objeto o de objetos similares bajo condiciones especificadas.[^15]
 
@@ -1015,7 +1015,7 @@ no una afirmación acerca de cuán cerca estamos del valor verdadero.
 
 []{#principio-la-dispersión-también-es-información}
 
-### 3.3.4. Principio: la dispersión también es información {#fispm-c03-principio-la-dispersiuxf3n-tambiuxe9n-es-informaciuxf3n}
+### Principio: la dispersión también es información {#fispm-c03-principio-la-dispersiuxf3n-tambiuxe9n-es-informaciuxf3n}
 
 **Principio 3.4 --- Repetición y dispersión contienen información sobre el procedimiento** Una serie de mediciones repetidas no debe reducirse a elegir un único número y descartar el resto. La localización y la dispersión de la serie describen aspectos diferentes del comportamiento del procedimiento de medición.
 
@@ -1023,7 +1023,7 @@ Este principio evita dos extremos.
 
 []{#extremo-a-ignorar-la-dispersión}
 
-#### 3.3.4.1. Extremo A --- ignorar la dispersión {#fispm-c03-extremo-a-ignorar-la-dispersiuxf3n}
+#### Extremo A --- ignorar la dispersión {#fispm-c03-extremo-a-ignorar-la-dispersiuxf3n}
 
 Promediamos los datos y reportamos sólo
 
@@ -1033,7 +1033,7 @@ como si la variabilidad observada no existiera.
 
 []{#extremo-b-tratar-toda-variación-como-fracaso}
 
-#### 3.3.4.2. Extremo B --- tratar toda variación como fracaso {#fispm-c03-extremo-b-tratar-toda-variaciuxf3n-como-fracaso}
+#### Extremo B --- tratar toda variación como fracaso {#fispm-c03-extremo-b-tratar-toda-variaciuxf3n-como-fracaso}
 
 Vemos que los números no coinciden exactamente y concluimos que el experimento «salió mal».
 
@@ -1041,7 +1041,7 @@ Ambas lecturas pierden información.
 
 []{#el-centro-media-aritmética}
 
-### 3.3.5. El centro: media aritmética {#fispm-c03-el-centro-media-aritmuxe9tica}
+### El centro: media aritmética {#fispm-c03-el-centro-media-aritmuxe9tica}
 
 Para una serie
 
@@ -1075,7 +1075,7 @@ $$\boxed{ \text{media} \neq \text{descripción completa de una serie}. }$$
 
 []{#desviaciones-respecto-de-la-media}
 
-### 3.3.6. Desviaciones respecto de la media {#fispm-c03-desviaciones-respecto-de-la-media}
+### Desviaciones respecto de la media {#fispm-c03-desviaciones-respecto-de-la-media}
 
 Definimos las desviaciones
 
@@ -1097,7 +1097,7 @@ La estadística metrológica utiliza extensamente la segunda opción.
 
 []{#rango-una-primera-medida-de-dispersión}
 
-### 3.3.7. Rango: una primera medida de dispersión {#fispm-c03-rango-una-primera-medida-de-dispersiuxf3n}
+### Rango: una primera medida de dispersión {#fispm-c03-rango-una-primera-medida-de-dispersiuxf3n}
 
 Una medida sencilla es el rango
 
@@ -1111,7 +1111,7 @@ tenemos $R = 2.03-2.00 = 0.03\,\mathrm s.$ El rango es intuitivo, pero utiliza s
 
 []{#desviación-estándar-muestral}
 
-### 3.3.8. Desviación estándar muestral {#fispm-c03-desviaciuxf3n-estuxe1ndar-muestral}
+### Desviación estándar muestral {#fispm-c03-desviaciuxf3n-estuxe1ndar-muestral}
 
 Para una serie finita introducimos la desviación estándar muestral
 
@@ -1131,7 +1131,7 @@ Más adelante, al estudiar evaluación tipo A, veremos cómo una serie de datos 
 
 []{#ejemplo-calcular-centro-y-dispersión}
 
-### 3.3.9. Ejemplo: calcular centro y dispersión {#fispm-c03-ejemplo-calcular-centro-y-dispersiuxf3n}
+### Ejemplo: calcular centro y dispersión {#fispm-c03-ejemplo-calcular-centro-y-dispersiuxf3n}
 
 Volvamos a
 
@@ -1171,7 +1171,7 @@ Esa notación requeriría especificar qué representa el término que sigue a $\
 
 []{#precisión-no-es-exactitud}
 
-### 3.3.10. Precisión no es exactitud {#fispm-c03-precisiuxf3n-no-es-exactitud}
+### Precisión no es exactitud {#fispm-c03-precisiuxf3n-no-es-exactitud}
 
 Imaginemos ahora un instrumento que, al medir repetidamente una referencia, produce
 
@@ -1191,19 +1191,19 @@ La distinción es física y lógica, no meramente terminológica.
 
 []{#una-analogía-geométrica}
 
-### 3.3.11. Una analogía geométrica {#fispm-c03-una-analoguxeda-geomuxe9trica}
+### Una analogía geométrica {#fispm-c03-una-analoguxeda-geomuxe9trica}
 
 Representemos resultados de medición como puntos sobre una recta.
 
 []{#serie-a-estrecha}
 
-#### 3.3.11.1. Serie A --- estrecha {#fispm-c03-serie-a-estrecha}
+#### Serie A --- estrecha {#fispm-c03-serie-a-estrecha}
 
 $$\cdots \quad 9.99 \quad 10.00 \quad 10.01 \quad \cdots$$
 
 []{#serie-b-ancha}
 
-#### 3.3.11.2. Serie B --- ancha {#fispm-c03-serie-b-ancha}
+#### Serie B --- ancha {#fispm-c03-serie-b-ancha}
 
 $$\cdots \quad 9.7 \quad 10.0 \quad 10.3 \quad \cdots$$
 
@@ -1219,7 +1219,7 @@ Esta imagen será útil cuando introduzcamos error y sesgo en §4.
 
 []{#repetibilidad-y-condiciones}
 
-### 3.3.12. Repetibilidad y condiciones {#fispm-c03-repetibilidad-y-condiciones}
+### Repetibilidad y condiciones {#fispm-c03-repetibilidad-y-condiciones}
 
 Supongamos que repetimos una medición cinco veces en pocos minutos y obtenemos una dispersión pequeña.
 
@@ -1245,13 +1245,13 @@ es incompleta si no queda claro qué condiciones y qué medida de dispersión se
 
 []{#resolución-y-dispersión-tampoco-son-lo-mismo}
 
-### 3.3.13. Resolución y dispersión tampoco son lo mismo {#fispm-c03-resoluciuxf3n-y-dispersiuxf3n-tampoco-son-lo-mismo}
+### Resolución y dispersión tampoco son lo mismo {#fispm-c03-resoluciuxf3n-y-dispersiuxf3n-tampoco-son-lo-mismo}
 
 Consideremos dos casos.
 
 []{#caso-a-dispersión-visible}
 
-#### 3.3.13.1. Caso A --- dispersión visible {#fispm-c03-caso-a-dispersiuxf3n-visible}
+#### Caso A --- dispersión visible {#fispm-c03-caso-a-dispersiuxf3n-visible}
 
 Una balanza con resolución de visualización
 
@@ -1265,7 +1265,7 @@ La variación excede el simple hecho de que la pantalla esté cuantizada.
 
 []{#caso-b-todas-las-indicaciones-coinciden}
 
-#### 3.3.13.2. Caso B --- todas las indicaciones coinciden {#fispm-c03-caso-b-todas-las-indicaciones-coinciden}
+#### Caso B --- todas las indicaciones coinciden {#fispm-c03-caso-b-todas-las-indicaciones-coinciden}
 
 La misma balanza produce
 
@@ -1281,11 +1281,11 @@ La cuantización estudiada en §2 puede enmascarar parte de la dispersión.
 
 []{#diagnóstico-tres-errores-frecuentes}
 
-### 3.3.14. Diagnóstico: tres errores frecuentes {#fispm-c03-diagnuxf3stico-tres-errores-frecuentes}
+### Diagnóstico: tres errores frecuentes {#fispm-c03-diagnuxf3stico-tres-errores-frecuentes}
 
 []{#error-1}
 
-#### 3.3.14.1. Error 1 {#fispm-c03-error-1}
+#### Error 1 {#fispm-c03-error-1}
 
 > «Tomé muchas mediciones; por eso el resultado es exacto.»
 
@@ -1293,7 +1293,7 @@ La repetición aporta información sobre variabilidad, pero no elimina por sí s
 
 []{#error-2}
 
-#### 3.3.14.2. Error 2 {#fispm-c03-error-2}
+#### Error 2 {#fispm-c03-error-2}
 
 > «Los datos están muy juntos; por eso el instrumento mide correctamente.»
 
@@ -1301,7 +1301,7 @@ Datos muy juntos indican buena precisión bajo las condiciones especificadas. No
 
 []{#error-3}
 
-#### 3.3.14.3. Error 3 {#fispm-c03-error-3}
+#### Error 3 {#fispm-c03-error-3}
 
 > «La desviación estándar es la incertidumbre.»
 
@@ -1309,7 +1309,7 @@ No automáticamente. La desviación estándar de una serie describe dispersión.
 
 []{#práctica-ma-ped-2}
 
-### 3.3.15. Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped-2}
+### Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped-2}
 
 **Ejercicio 3.6 --- Centro y dispersión de una serie**
 
@@ -1429,7 +1429,7 @@ $$4.984-5.00=-0.016.$$
 
 []{#autoexplicación-qué-sabemos-después-de-repetir}
 
-### 3.3.16. Autoexplicación: qué sabemos después de repetir {#fispm-c03-autoexplicaciuxf3n-quuxe9-sabemos-despuuxe9s-de-repetir}
+### Autoexplicación: qué sabemos después de repetir {#fispm-c03-autoexplicaciuxf3n-quuxe9-sabemos-despuuxe9s-de-repetir}
 
 Después de una serie de mediciones podemos responder preguntas que una sola indicación no permitía:
 
@@ -1457,7 +1457,7 @@ Estas preguntas requieren una nueva distinción conceptual.
 
 []{#conectar-de-la-dispersión-al-error-y-la-incertidumbre}
 
-### 3.3.17. Conectar: de la dispersión al error y la incertidumbre {#fispm-c03-conectar-de-la-dispersiuxf3n-al-error-y-la-incertidumbre}
+### Conectar: de la dispersión al error y la incertidumbre {#fispm-c03-conectar-de-la-dispersiuxf3n-al-error-y-la-incertidumbre}
 
 La repetición nos enseñó a mirar la dispersión.
 
@@ -1465,7 +1465,7 @@ Ahora debemos evitar otra confusión muy común:
 
 $$\boxed{ \text{error} \neq \text{incertidumbre}. }$$
 
-El siguiente paso será el §[3.4](#fispm-c03-error-sesgo-e-incertidumbre).
+El siguiente paso será el §[4](#fispm-c03-error-sesgo-e-incertidumbre).
 
 Allí separaremos la diferencia ---conceptual--- entre un valor medido y un valor verdadero de la cuantificación de la información disponible sobre los valores atribuidos al mensurando.
 
@@ -1479,11 +1479,11 @@ Allí separaremos la diferencia ---conceptual--- entre un valor medido y un valo
 
 []{#fpm-i-03-s04}
 
-## 3.4. Error, sesgo e incertidumbre {#fispm-c03-error-sesgo-e-incertidumbre}
+## 4. Error, sesgo e incertidumbre {#fispm-c03-error-sesgo-e-incertidumbre}
 
 []{#intuir-error-no-significa-simplemente-algo-salió-mal}
 
-### 3.4.1. Intuir: «error» no significa simplemente «algo salió mal» {#fispm-c03-intuir-error-no-significa-simplemente-algo-saliuxf3-mal}
+### Intuir: «error» no significa simplemente «algo salió mal» {#fispm-c03-intuir-error-no-significa-simplemente-algo-saliuxf3-mal}
 
 En el lenguaje cotidiano, la palabra *error* suele significar equivocación.
 
@@ -1517,7 +1517,7 @@ No significa necesariamente que alguien haya trabajado mal. El sistema puede hab
 
 <figcaption>
 
-**Figura 3.2.** Dos distribuciones de igual anchura pueden estar centradas en lugares diferentes. La curva discontinua representa una serie desplazada respecto de la referencia. La anchura ilustra dispersión; el desplazamiento de su centro ilustra sesgo. Véase §[3.4](#fispm-c03-error-sesgo-e-incertidumbre).
+**Figura 3.2.** Dos distribuciones de igual anchura pueden estar centradas en lugares diferentes. La curva discontinua representa una serie desplazada respecto de la referencia. La anchura ilustra dispersión; el desplazamiento de su centro ilustra sesgo. Véase §[4](#fispm-c03-error-sesgo-e-incertidumbre).
 
 </figcaption>
 
@@ -1529,7 +1529,7 @@ $$\boxed{ \text{error técnico} \neq \text{equivocación humana}. }$$
 
 []{#definir-error-de-medición}
 
-### 3.4.2. Definir: error de medición {#fispm-c03-definir-error-de-mediciuxf3n}
+### Definir: error de medición {#fispm-c03-definir-error-de-mediciuxf3n}
 
 El VIM define el error de medición como un valor medido menos un valor de referencia.[^20]
 
@@ -1555,7 +1555,7 @@ El error no es una etiqueta metafísica que podamos conocer automáticamente. Si
 
 []{#un-error-conocido-puede-corregirse}
 
-### 3.4.3. Un error conocido puede corregirse {#fispm-c03-un-error-conocido-puede-corregirse}
+### Un error conocido puede corregirse {#fispm-c03-un-error-conocido-puede-corregirse}
 
 Supongamos que una balanza, al medir una referencia, presenta un desplazamiento estimado de
 
@@ -1583,13 +1583,13 @@ Por tanto, la corrección modifica el valor atribuido, pero no convierte la medi
 
 []{#componentes-sistemáticas-y-aleatorias}
 
-### 3.4.4. Componentes sistemáticas y aleatorias {#fispm-c03-componentes-sistemuxe1ticas-y-aleatorias}
+### Componentes sistemáticas y aleatorias {#fispm-c03-componentes-sistemuxe1ticas-y-aleatorias}
 
 El VIM distingue componentes del error que se comportan de manera diferente en mediciones repetidas.[^23]
 
 []{#componente-sistemática}
 
-#### 3.4.4.1. Componente sistemática {#fispm-c03-componente-sistemuxe1tica}
+#### Componente sistemática {#fispm-c03-componente-sistemuxe1tica}
 
 Una componente sistemática permanece constante o varía de forma predecible bajo determinadas condiciones.
 
@@ -1605,7 +1605,7 @@ Ejemplos posibles:
 
 []{#componente-aleatoria}
 
-#### 3.4.4.2. Componente aleatoria {#fispm-c03-componente-aleatoria}
+#### Componente aleatoria {#fispm-c03-componente-aleatoria}
 
 Una componente aleatoria varía de manera no predecible entre repeticiones.
 
@@ -1623,7 +1623,7 @@ Una serie muy estrecha pero desplazada respecto de una referencia puede sugerir 
 
 []{#sesgo-estimar-una-componente-sistemática}
 
-### 3.4.5. Sesgo: estimar una componente sistemática {#fispm-c03-sesgo-estimar-una-componente-sistemuxe1tica}
+### Sesgo: estimar una componente sistemática {#fispm-c03-sesgo-estimar-una-componente-sistemuxe1tica}
 
 El VIM utiliza **sesgo de medición** (*measurement bias*) para una estimación del error sistemático.[^24]
 
@@ -1649,7 +1649,7 @@ con una cantidad conocida sin incertidumbre. Una corrección basada en ese sesgo
 
 []{#definir-incertidumbre-de-medición}
 
-### 3.4.6. Definir: incertidumbre de medición {#fispm-c03-definir-incertidumbre-de-mediciuxf3n}
+### Definir: incertidumbre de medición {#fispm-c03-definir-incertidumbre-de-mediciuxf3n}
 
 La incertidumbre responde a una pregunta distinta del error. El VIM la define como un parámetro no negativo que caracteriza la dispersión de los valores atribuidos al mensurando sobre la base de la información utilizada.[^25]
 
@@ -1663,7 +1663,7 @@ $$\boxed{ \text{error} \neq \text{incertidumbre}. }$$
 
 []{#principio-no-intercambiar-error-e-incertidumbre}
 
-### 3.4.7. Principio: no intercambiar error e incertidumbre {#fispm-c03-principio-no-intercambiar-error-e-incertidumbre}
+### Principio: no intercambiar error e incertidumbre {#fispm-c03-principio-no-intercambiar-error-e-incertidumbre}
 
 **Principio 3.5 --- Incertidumbre y error no son sinónimos** El error expresa una diferencia respecto de un valor de referencia; la incertidumbre caracteriza la dispersión de valores atribuibles al mensurando a partir de la información disponible. Un valor de incertidumbre no debe interpretarse automáticamente como el error cometido.
 
@@ -1687,7 +1687,7 @@ Sin especificar el significado, la notación no es suficiente.
 
 []{#ejemplo-mismo-error-estimado-incertidumbres-distintas}
 
-### 3.4.8. Ejemplo: mismo error estimado, incertidumbres distintas {#fispm-c03-ejemplo-mismo-error-estimado-incertidumbres-distintas}
+### Ejemplo: mismo error estimado, incertidumbres distintas {#fispm-c03-ejemplo-mismo-error-estimado-incertidumbres-distintas}
 
 Consideremos dos procedimientos que producen el mismo valor medido: $x_A=x_B=10.20.$
 
@@ -1703,7 +1703,7 @@ Por eso son coordenadas conceptuales distintas.
 
 []{#ejemplo-inverso-error-comparativo-cero-no-implica-incertidumbre-cero}
 
-### 3.4.9. Ejemplo inverso: error comparativo cero no implica incertidumbre cero {#fispm-c03-ejemplo-inverso-error-comparativo-cero-no-implica-incertidumbre-cero}
+### Ejemplo inverso: error comparativo cero no implica incertidumbre cero {#fispm-c03-ejemplo-inverso-error-comparativo-cero-no-implica-incertidumbre-cero}
 
 Supongamos una indicación
 
@@ -1739,7 +1739,7 @@ La igualdad numérica con una referencia no elimina las limitaciones del proceso
 
 []{#una-advertencia-sobre-el-valor-verdadero}
 
-### 3.4.10. Una advertencia sobre el «valor verdadero» {#fispm-c03-una-advertencia-sobre-el-valor-verdadero}
+### Una advertencia sobre el «valor verdadero» {#fispm-c03-una-advertencia-sobre-el-valor-verdadero}
 
 En §3 hablamos de exactitud mediante la cercanía a un valor verdadero del mensurando. Pero en una medición real ese valor no está generalmente disponible como un número conocido de forma exacta. Si estuviera perfectamente conocido, muchas mediciones perderían su propósito.
 
@@ -1759,7 +1759,7 @@ No debemos fingir conocimiento que el procedimiento no proporciona.
 
 []{#la-incertidumbre-no-es-un-intervalo-mágico-alrededor-de-la-verdad}
 
-### 3.4.11. La incertidumbre no es un intervalo mágico alrededor de la verdad {#fispm-c03-la-incertidumbre-no-es-un-intervalo-muxe1gico-alrededor-de-la-verdad}
+### La incertidumbre no es un intervalo mágico alrededor de la verdad {#fispm-c03-la-incertidumbre-no-es-un-intervalo-muxe1gico-alrededor-de-la-verdad}
 
 Es común escribir
 
@@ -1779,7 +1779,7 @@ $$\boxed{ \text{símbolo }\pm \text{ sin definición} = \text{información incom
 
 []{#modelo-de-medición-dónde-pueden-entrar-las-correcciones}
 
-### 3.4.12. Modelo de medición: dónde pueden entrar las correcciones {#fispm-c03-modelo-de-mediciuxf3n-duxf3nde-pueden-entrar-las-correcciones}
+### Modelo de medición: dónde pueden entrar las correcciones {#fispm-c03-modelo-de-mediciuxf3n-duxf3nde-pueden-entrar-las-correcciones}
 
 Supongamos un modelo elemental
 
@@ -1803,11 +1803,11 @@ es exacto para los números introducidos, tanto $X$ como $C$ pueden estar asocia
 
 []{#diagnóstico-cuatro-confusiones-frecuentes}
 
-### 3.4.13. Diagnóstico: cuatro confusiones frecuentes {#fispm-c03-diagnuxf3stico-cuatro-confusiones-frecuentes}
+### Diagnóstico: cuatro confusiones frecuentes {#fispm-c03-diagnuxf3stico-cuatro-confusiones-frecuentes}
 
 []{#confusión-a}
 
-#### 3.4.13.1. Confusión A {#fispm-c03-confusiuxf3n-a}
+#### Confusión A {#fispm-c03-confusiuxf3n-a}
 
 > «Incertidumbre = error desconocido.»
 
@@ -1815,7 +1815,7 @@ Demasiado impreciso. La incertidumbre es un parámetro construido a partir de la
 
 []{#confusión-b}
 
-#### 3.4.13.2. Confusión B {#fispm-c03-confusiuxf3n-b}
+#### Confusión B {#fispm-c03-confusiuxf3n-b}
 
 > «Si corrijo el sesgo, ya no queda incertidumbre.»
 
@@ -1823,7 +1823,7 @@ Falso. La corrección y su propia evaluación pueden contribuir a la incertidumb
 
 []{#confusión-c}
 
-#### 3.4.13.3. Confusión C {#fispm-c03-confusiuxf3n-c}
+#### Confusión C {#fispm-c03-confusiuxf3n-c}
 
 > «Si una medición coincide con el patrón, es exacta.»
 
@@ -1831,7 +1831,7 @@ La coincidencia observada no establece incertidumbre nula ni ausencia de otros e
 
 []{#confusión-d}
 
-#### 3.4.13.4. Confusión D {#fispm-c03-confusiuxf3n-d}
+#### Confusión D {#fispm-c03-confusiuxf3n-d}
 
 > «Si conozco la incertidumbre, conozco el error.»
 
@@ -1841,7 +1841,7 @@ Son objetos conceptuales diferentes.
 
 []{#práctica-ma-ped-3}
 
-### 3.4.14. Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped-3}
+### Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped-3}
 
 **Ejercicio 3.9 --- Error comparativo, corrección e incertidumbre**
 
@@ -1913,7 +1913,7 @@ $$\boxed{ \text{valor de incertidumbre} \not\equiv \text{error conocido} \not\eq
 
 []{#autoexplicación-un-mapa-conceptual}
 
-### 3.4.15. Autoexplicación: un mapa conceptual {#fispm-c03-autoexplicaciuxf3n-un-mapa-conceptual}
+### Autoexplicación: un mapa conceptual {#fispm-c03-autoexplicaciuxf3n-un-mapa-conceptual}
 
 El lector debería poder reconstruir la siguiente red:
 
@@ -1935,7 +1935,7 @@ No hay una única flecha que convierta automáticamente uno de estos conceptos e
 
 []{#conectar-de-dónde-sale-numéricamente-una-incertidumbre}
 
-### 3.4.16. Conectar: ¿de dónde sale numéricamente una incertidumbre? {#fispm-c03-conectar-de-duxf3nde-sale-numuxe9ricamente-una-incertidumbre}
+### Conectar: ¿de dónde sale numéricamente una incertidumbre? {#fispm-c03-conectar-de-duxf3nde-sale-numuxe9ricamente-una-incertidumbre}
 
 Ya sabemos qué **no** es la incertidumbre. Ahora necesitamos aprender a evaluarla.
 
@@ -1955,7 +1955,7 @@ Otras vendrán de:
 
 Esto conduce a la distinción entre evaluaciones de tipo A y tipo B.
 
-El siguiente paso será el §[3.5](#fispm-c03-evaluaciuxf3n-elemental-de-la-incertidumbre).
+El siguiente paso será el §[5](#fispm-c03-evaluaciuxf3n-elemental-de-la-incertidumbre).
 
 ------------------------------------------------------------------------
 
@@ -1967,11 +1967,11 @@ El siguiente paso será el §[3.5](#fispm-c03-evaluaciuxf3n-elemental-de-la-ince
 
 []{#fpm-i-03-s05}
 
-## 3.5. Evaluación elemental de la incertidumbre {#fispm-c03-evaluaciuxf3n-elemental-de-la-incertidumbre}
+## 5. Evaluación elemental de la incertidumbre {#fispm-c03-evaluaciuxf3n-elemental-de-la-incertidumbre}
 
 []{#intuir-una-incertidumbre-no-aparece-por-decreto}
 
-### 3.5.1. Intuir: una incertidumbre no aparece por decreto {#fispm-c03-intuir-una-incertidumbre-no-aparece-por-decreto}
+### Intuir: una incertidumbre no aparece por decreto {#fispm-c03-intuir-una-incertidumbre-no-aparece-por-decreto}
 
 En §4 distinguimos error e incertidumbre.
 
@@ -2007,7 +2007,7 @@ $$\boxed{ \text{modelo} + \text{datos} + \text{información previa} \longrightar
 
 []{#el-modelo-de-medición}
 
-### 3.5.2. El modelo de medición {#fispm-c03-el-modelo-de-mediciuxf3n}
+### El modelo de medición {#fispm-c03-el-modelo-de-mediciuxf3n}
 
 Supongamos que el mensurando se representa mediante una cantidad de salida
 
@@ -2039,7 +2039,7 @@ donde la densidad depende de una masa y un volumen medidos. La elección de las 
 
 []{#dos-métodos-de-evaluación-no-dos-clases-de-error}
 
-### 3.5.3. Dos métodos de evaluación, no dos clases de error {#fispm-c03-dos-muxe9todos-de-evaluaciuxf3n-no-dos-clases-de-error}
+### Dos métodos de evaluación, no dos clases de error {#fispm-c03-dos-muxe9todos-de-evaluaciuxf3n-no-dos-clases-de-error}
 
 La familia GUM y el VIM distinguen dos métodos de evaluación de componentes de incertidumbre:
 
@@ -2063,7 +2063,7 @@ Ambas utilizan información. La diferencia está en cómo se evalúa la componen
 
 []{#definir-evaluación-tipo-a}
 
-### 3.5.4. Definir: evaluación tipo A {#fispm-c03-definir-evaluaciuxf3n-tipo-a}
+### Definir: evaluación tipo A {#fispm-c03-definir-evaluaciuxf3n-tipo-a}
 
 **Definición operativa 3.9 --- Evaluación tipo A de la incertidumbre** Una **evaluación tipo A** es una evaluación de una componente de incertidumbre mediante análisis estadístico de valores medidos obtenidos bajo condiciones definidas.[^29]
 
@@ -2085,7 +2085,7 @@ Dice algo más específico: bajo las hipótesis estadísticas adoptadas, la ince
 
 []{#ejemplo-tipo-a}
 
-### 3.5.5. Ejemplo tipo A {#fispm-c03-ejemplo-tipo-a}
+### Ejemplo tipo A {#fispm-c03-ejemplo-tipo-a}
 
 Supongamos cuatro mediciones, en segundos, $10.0,\quad 10.2,\quad 9.8,\quad 10.0.$ La media es $\bar x=10.0\,\mathrm s.$ Las desviaciones son $0,\quad0.2,\quad-0.2,\quad0,$
 
@@ -2107,7 +2107,7 @@ caracteriza la incertidumbre estándar asociada a la estimación de la media deb
 
 []{#definir-evaluación-tipo-b}
 
-### 3.5.6. Definir: evaluación tipo B {#fispm-c03-definir-evaluaciuxf3n-tipo-b}
+### Definir: evaluación tipo B {#fispm-c03-definir-evaluaciuxf3n-tipo-b}
 
 No toda información proviene de repetir mediciones.
 
@@ -2137,7 +2137,7 @@ Exige declarar:
 
 []{#definir-incertidumbre-estándar}
 
-### 3.5.7. Definir: incertidumbre estándar {#fispm-c03-definir-incertidumbre-estuxe1ndar}
+### Definir: incertidumbre estándar {#fispm-c03-definir-incertidumbre-estuxe1ndar}
 
 Para combinar contribuciones necesitamos expresarlas en una forma común. El VIM llama **incertidumbre estándar** a una incertidumbre de medición expresada como una desviación estándar.[^31]
 
@@ -2159,7 +2159,7 @@ La incertidumbre relativa, que estudiaremos después, será una cantidad de dime
 
 []{#de-una-incertidumbre-expandida-a-una-estándar}
 
-### 3.5.8. De una incertidumbre expandida a una estándar {#fispm-c03-de-una-incertidumbre-expandida-a-una-estuxe1ndar}
+### De una incertidumbre expandida a una estándar {#fispm-c03-de-una-incertidumbre-expandida-a-una-estuxe1ndar}
 
 Un certificado puede reportar una incertidumbre expandida
 
@@ -2183,7 +2183,7 @@ No debemos escribir simplemente «$0.06$» en un presupuesto y combinarlo con in
 
 []{#un-modelo-tipo-b-para-la-resolución-digital}
 
-### 3.5.9. Un modelo tipo B para la resolución digital {#fispm-c03-un-modelo-tipo-b-para-la-resoluciuxf3n-digital}
+### Un modelo tipo B para la resolución digital {#fispm-c03-un-modelo-tipo-b-para-la-resoluciuxf3n-digital}
 
 Supongamos una pantalla con paso
 
@@ -2219,7 +2219,7 @@ $$\boxed{ \text{intervalo conocido} + \text{modelo de distribución} \longrighta
 
 []{#por-qué-un-intervalo-no-basta}
 
-### 3.5.10. Por qué un intervalo no basta {#fispm-c03-por-quuxe9-un-intervalo-no-basta}
+### Por qué un intervalo no basta {#fispm-c03-por-quuxe9-un-intervalo-no-basta}
 
 Supongamos que sólo sabemos
 
@@ -2245,7 +2245,7 @@ requiere hipótesis. La incertidumbre no es simplemente «el ancho del intervalo
 
 []{#ejemplo-tipo-b-certificado-de-calibración}
 
-### 3.5.11. Ejemplo tipo B: certificado de calibración {#fispm-c03-ejemplo-tipo-b-certificado-de-calibraciuxf3n}
+### Ejemplo tipo B: certificado de calibración {#fispm-c03-ejemplo-tipo-b-certificado-de-calibraciuxf3n}
 
 Supongamos que una corrección de calibración es $C=+0.120\,\mathrm g$
 
@@ -2271,7 +2271,7 @@ Eso corresponde a §6. Por ahora registramos que el modelo contiene dos entradas
 
 []{#un-presupuesto-preliminar-de-incertidumbre}
 
-### 3.5.12. Un presupuesto preliminar de incertidumbre {#fispm-c03-un-presupuesto-preliminar-de-incertidumbre}
+### Un presupuesto preliminar de incertidumbre {#fispm-c03-un-presupuesto-preliminar-de-incertidumbre}
 
 Antes de combinar, podemos construir una tabla conceptual:
 
@@ -2287,11 +2287,11 @@ La tabla obliga a declarar de dónde sale cada número.
 
 []{#diagnóstico-tres-confusiones-frecuentes}
 
-### 3.5.13. Diagnóstico: tres confusiones frecuentes {#fispm-c03-diagnuxf3stico-tres-confusiones-frecuentes}
+### Diagnóstico: tres confusiones frecuentes {#fispm-c03-diagnuxf3stico-tres-confusiones-frecuentes}
 
 []{#confusión-a-1}
 
-#### 3.5.13.1. Confusión A {#fispm-c03-confusiuxf3n-a-1}
+#### Confusión A {#fispm-c03-confusiuxf3n-a-1}
 
 > «Tipo A significa aleatorio y tipo B sistemático.»
 
@@ -2299,7 +2299,7 @@ No. A y B clasifican métodos de evaluación de incertidumbre, no tipos físicos
 
 []{#confusión-b-1}
 
-#### 3.5.13.2. Confusión B {#fispm-c03-confusiuxf3n-b-1}
+#### Confusión B {#fispm-c03-confusiuxf3n-b-1}
 
 > «Una incertidumbre tipo B es menos objetiva.»
 
@@ -2307,7 +2307,7 @@ No se sigue. Un certificado de calibración o una especificación técnica puede
 
 []{#confusión-c-1}
 
-#### 3.5.13.3. Confusión C {#fispm-c03-confusiuxf3n-c-1}
+#### Confusión C {#fispm-c03-confusiuxf3n-c-1}
 
 > «Si aumento indefinidamente $n$, toda la incertidumbre tiende a cero.»
 
@@ -2319,7 +2319,7 @@ Las contribuciones de calibración, resolución, modelo u otras fuentes no desap
 
 []{#práctica-ma-ped-4}
 
-### 3.5.14. Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped-4}
+### Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped-4}
 
 **Ejercicio 3.11 --- Evaluación tipo A de una media**
 
@@ -2403,7 +2403,7 @@ $$u_{\mathrm{res}} = \frac{\Delta}{\sqrt{12}} = \frac{0.02}{\sqrt{12}} \,\mathrm
 
 []{#autoexplicación-de-dónde-sale-cada-número}
 
-### 3.5.15. Autoexplicación: de dónde sale cada número {#fispm-c03-autoexplicaciuxf3n-de-duxf3nde-sale-cada-nuxfamero}
+### Autoexplicación: de dónde sale cada número {#fispm-c03-autoexplicaciuxf3n-de-duxf3nde-sale-cada-nuxfamero}
 
 Ante una componente de incertidumbre debemos poder responder:
 
@@ -2425,7 +2425,7 @@ carece de suficiente contexto físico.
 
 []{#conectar-evaluar-no-es-todavía-combinar}
 
-### 3.5.16. Conectar: evaluar no es todavía combinar {#fispm-c03-conectar-evaluar-no-es-todavuxeda-combinar}
+### Conectar: evaluar no es todavía combinar {#fispm-c03-conectar-evaluar-no-es-todavuxeda-combinar}
 
 Después de esta sección podemos tener
 
@@ -2439,7 +2439,7 @@ Y antes de sumar cuadrados debemos responder una pregunta decisiva:
 
 > **¿qué ocurre cuando dos entradas están correlacionadas o no podemos tratarlas como no correlacionadas?**
 
-El siguiente paso será el §[3.6](#fispm-c03-combinaciuxf3n-de-incertidumbres).
+El siguiente paso será el §[6](#fispm-c03-combinaciuxf3n-de-incertidumbres).
 
 ------------------------------------------------------------------------
 
@@ -2451,11 +2451,11 @@ El siguiente paso será el §[3.6](#fispm-c03-combinaciuxf3n-de-incertidumbres).
 
 []{#fpm-i-03-s06}
 
-## 3.6. Combinación de incertidumbres {#fispm-c03-combinaciuxf3n-de-incertidumbres}
+## 6. Combinación de incertidumbres {#fispm-c03-combinaciuxf3n-de-incertidumbres}
 
 []{#intuir-dos-incertidumbres-no-se-suman-siempre-del-mismo-modo}
 
-### 3.6.1. Intuir: dos incertidumbres no se suman siempre del mismo modo {#fispm-c03-intuir-dos-incertidumbres-no-se-suman-siempre-del-mismo-modo}
+### Intuir: dos incertidumbres no se suman siempre del mismo modo {#fispm-c03-intuir-dos-incertidumbres-no-se-suman-siempre-del-mismo-modo}
 
 En §5 terminamos con un modelo elemental de medición, $Y=X+C+R,$
 
@@ -2487,7 +2487,7 @@ La pregunta está mal planteada si todavía no hemos declarado **cómo se relaci
 
 <figcaption>
 
-**Figura 3.3.** Los contornos normalizados $X^2+Y^2=1$ (continuo) y $X^2-1{,}2XY+Y^2=0{,}64$ (discontinuo) corresponden a matrices de covarianza con correlaciones $0$ y $0{,}6$. Aquí $X=\delta x/u_x$ e $Y=\delta y/u_y$. No se les asigna un nivel de confianza. Véase §[3.6](#fispm-c03-combinaciuxf3n-de-incertidumbres).
+**Figura 3.3.** Los contornos normalizados $X^2+Y^2=1$ (continuo) y $X^2-1{,}2XY+Y^2=0{,}64$ (discontinuo) corresponden a matrices de covarianza con correlaciones $0$ y $0{,}6$. Aquí $X=\delta x/u_x$ e $Y=\delta y/u_y$. No se les asigna un nivel de confianza. Véase §[6](#fispm-c03-combinaciuxf3n-de-incertidumbres).
 
 </figcaption>
 
@@ -2497,7 +2497,7 @@ La pregunta está mal planteada si todavía no hemos declarado **cómo se relaci
 
 []{#definir-incertidumbre-estándar-combinada}
 
-### 3.6.2. Definir: incertidumbre estándar combinada {#fispm-c03-definir-incertidumbre-estuxe1ndar-combinada}
+### Definir: incertidumbre estándar combinada {#fispm-c03-definir-incertidumbre-estuxe1ndar-combinada}
 
 El VIM llama **incertidumbre estándar combinada** a la incertidumbre estándar obtenida a partir de las incertidumbres estándar asociadas a las cantidades de entrada de un modelo de medición.[^32]
 
@@ -2509,7 +2509,7 @@ La letra $c$ recuerda que se trata de una incertidumbre **combinada**, no de una
 
 []{#el-caso-más-simple-una-suma-de-entradas-no-correlacionadas}
 
-### 3.6.3. El caso más simple: una suma de entradas no correlacionadas {#fispm-c03-el-caso-muxe1s-simple-una-suma-de-entradas-no-correlacionadas}
+### El caso más simple: una suma de entradas no correlacionadas {#fispm-c03-el-caso-muxe1s-simple-una-suma-de-entradas-no-correlacionadas}
 
 Consideremos
 
@@ -2539,7 +2539,7 @@ La estructura recuerda al teorema de Pitágoras porque estamos combinando contri
 
 []{#resta-el-signo-del-modelo-no-cambia-la-regla-cuando-no-hay-correlación}
 
-### 3.6.4. Resta: el signo del modelo no cambia la regla cuando no hay correlación {#fispm-c03-resta-el-signo-del-modelo-no-cambia-la-regla-cuando-no-hay-correlaciuxf3n}
+### Resta: el signo del modelo no cambia la regla cuando no hay correlación {#fispm-c03-resta-el-signo-del-modelo-no-cambia-la-regla-cuando-no-hay-correlaciuxf3n}
 
 Sea ahora
 
@@ -2555,7 +2555,7 @@ Esto suele sorprender al principio. Si restamos dos números, los valores pueden
 
 []{#resultado-formal-combinación-lineal-sin-correlación}
 
-### 3.6.5. Resultado formal: combinación lineal sin correlación {#fispm-c03-resultado-formal-combinaciuxf3n-lineal-sin-correlaciuxf3n}
+### Resultado formal: combinación lineal sin correlación {#fispm-c03-resultado-formal-combinaciuxf3n-lineal-sin-correlaciuxf3n}
 
 **Proposición 3.2 --- Combinación elemental para un modelo lineal con entradas no correlacionadas** Sea
 
@@ -2569,7 +2569,7 @@ En particular, $u_c(y) = \sqrt{ \sum_{i=1}^N a_i^2u^2(x_i) }.$
 
 []{#demostración}
 
-#### 3.6.5.1. Demostración {#fispm-c03-demostraciuxf3n}
+#### Demostración {#fispm-c03-demostraciuxf3n}
 
 Para un modelo lineal, una variación de entrada
 
@@ -2589,7 +2589,7 @@ Esta proposición es un caso especialmente limpio de la ley de propagación de i
 
 []{#aplicación-completar-el-presupuesto-de-5}
 
-### 3.6.6. Aplicación: completar el presupuesto de §5 {#fispm-c03-aplicaciuxf3n-completar-el-presupuesto-de-5}
+### Aplicación: completar el presupuesto de §5 {#fispm-c03-aplicaciuxf3n-completar-el-presupuesto-de-5}
 
 Retomemos
 
@@ -2611,7 +2611,7 @@ No redondearemos todavía el resultado final. La política de reporte y cifras s
 
 []{#cuando-hay-dependencia-aparece-la-covarianza}
 
-### 3.6.7. Cuando hay dependencia: aparece la covarianza {#fispm-c03-cuando-hay-dependencia-aparece-la-covarianza}
+### Cuando hay dependencia: aparece la covarianza {#fispm-c03-cuando-hay-dependencia-aparece-la-covarianza}
 
 La regla cuadrática anterior deja de ser suficiente cuando dos entradas están correlacionadas. Para dos entradas $X_1$ y $X_2$ en un modelo lineal
 
@@ -2651,7 +2651,7 @@ con la conversa, que no vale en general. Para este capítulo basta saber que **n
 
 []{#ejemplo-decisivo-una-misma-calibración-puede-correlacionar-dos-resultados}
 
-### 3.6.8. Ejemplo decisivo: una misma calibración puede correlacionar dos resultados {#fispm-c03-ejemplo-decisivo-una-misma-calibraciuxf3n-puede-correlacionar-dos-resultados}
+### Ejemplo decisivo: una misma calibración puede correlacionar dos resultados {#fispm-c03-ejemplo-decisivo-una-misma-calibraciuxf3n-puede-correlacionar-dos-resultados}
 
 Supongamos que medimos dos longitudes con el mismo instrumento y modelamos
 
@@ -2671,7 +2671,7 @@ Sustituyendo el modelo completo, $D =(A+C)-(B+C) =A-B.$ La corrección común se
 
 []{#suma-lineal-y-suma-cuadrática-responden-a-preguntas-distintas}
 
-### 3.6.9. Suma lineal y suma cuadrática responden a preguntas distintas {#fispm-c03-suma-lineal-y-suma-cuadruxe1tica-responden-a-preguntas-distintas}
+### Suma lineal y suma cuadrática responden a preguntas distintas {#fispm-c03-suma-lineal-y-suma-cuadruxe1tica-responden-a-preguntas-distintas}
 
 ¿Por qué a veces aparece
 
@@ -2699,7 +2699,7 @@ Mezclar ambos lenguajes produce fórmulas aparentemente contradictorias que en r
 
 []{#producto-primera-regla-relativa}
 
-### 3.6.10. Producto: primera regla relativa {#fispm-c03-producto-primera-regla-relativa}
+### Producto: primera regla relativa {#fispm-c03-producto-primera-regla-relativa}
 
 Consideremos ahora
 
@@ -2729,7 +2729,7 @@ La GUM proporciona esta estructura para productos de potencias bajo las hipótes
 
 []{#cociente-el-signo-cambia-en-la-perturbación-pero-no-en-el-caso-no-correlacionado}
 
-### 3.6.11. Cociente: el signo cambia en la perturbación, pero no en el caso no correlacionado {#fispm-c03-cociente-el-signo-cambia-en-la-perturbaciuxf3n-pero-no-en-el-caso-no-correlacionado}
+### Cociente: el signo cambia en la perturbación, pero no en el caso no correlacionado {#fispm-c03-cociente-el-signo-cambia-en-la-perturbaciuxf3n-pero-no-en-el-caso-no-correlacionado}
 
 Sea
 
@@ -2751,7 +2751,7 @@ Si existe correlación, el signo sí importa porque afecta al término cruzado.
 
 []{#ejemplo-área-de-una-placa}
 
-### 3.6.12. Ejemplo: área de una placa {#fispm-c03-ejemplo-uxe1rea-de-una-placa}
+### Ejemplo: área de una placa {#fispm-c03-ejemplo-uxe1rea-de-una-placa}
 
 Sea
 
@@ -2775,11 +2775,11 @@ De nuevo, no hemos establecido todavía cómo debe escribirse el resultado final
 
 []{#diagnóstico-cuatro-errores-plausibles}
 
-### 3.6.13. Diagnóstico: cuatro errores plausibles {#fispm-c03-diagnuxf3stico-cuatro-errores-plausibles}
+### Diagnóstico: cuatro errores plausibles {#fispm-c03-diagnuxf3stico-cuatro-errores-plausibles}
 
 []{#error-a-sumar-todas-las-incertidumbres-estándar}
 
-#### 3.6.13.1. Error A --- sumar todas las incertidumbres estándar {#fispm-c03-error-a-sumar-todas-las-incertidumbres-estuxe1ndar}
+#### Error A --- sumar todas las incertidumbres estándar {#fispm-c03-error-a-sumar-todas-las-incertidumbres-estuxe1ndar}
 
 > «Siempre hay que sumar $u_1+u_2+\cdots$.»
 
@@ -2787,7 +2787,7 @@ No. Esa regla no representa el caso no correlacionado de la GUM.
 
 []{#error-b-aplicar-siempre-raíz-de-suma-de-cuadrados}
 
-#### 3.6.13.2. Error B --- aplicar siempre raíz de suma de cuadrados {#fispm-c03-error-b-aplicar-siempre-rauxedz-de-suma-de-cuadrados}
+#### Error B --- aplicar siempre raíz de suma de cuadrados {#fispm-c03-error-b-aplicar-siempre-rauxedz-de-suma-de-cuadrados}
 
 > «Siempre hay que usar $\sqrt{u_1^2+u_2^2+\cdots}$.»
 
@@ -2795,19 +2795,19 @@ Tampoco. Si existen correlaciones significativas, deben incorporarse.
 
 []{#error-c-confundir-independencia-y-ausencia-de-correlación}
 
-#### 3.6.13.3. Error C --- confundir independencia y ausencia de correlación {#fispm-c03-error-c-confundir-independencia-y-ausencia-de-correlaciuxf3n}
+#### Error C --- confundir independencia y ausencia de correlación {#fispm-c03-error-c-confundir-independencia-y-ausencia-de-correlaciuxf3n}
 
 Para eliminar covarianzas basta la hipótesis de no correlación. La independencia es una condición más fuerte.
 
 []{#error-d-usar-la-regla-relativa-sin-mirar-el-tamaño-de-las-incertidumbres}
 
-#### 3.6.13.4. Error D --- usar la regla relativa sin mirar el tamaño de las incertidumbres {#fispm-c03-error-d-usar-la-regla-relativa-sin-mirar-el-tamauxf1o-de-las-incertidumbres}
+#### Error D --- usar la regla relativa sin mirar el tamaño de las incertidumbres {#fispm-c03-error-d-usar-la-regla-relativa-sin-mirar-el-tamauxf1o-de-las-incertidumbres}
 
 Las fórmulas relativas de producto y cociente que acabamos de escribir son de primer orden. Si el modelo es fuertemente no lineal en la región relevante o las incertidumbres no son pequeñas, pueden ser insuficientes. Ésta será precisamente la transición a §7.
 
 []{#práctica-ma-ped-5}
 
-### 3.6.14. Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped-5}
+### Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped-5}
 
 **Ejercicio 3.13 --- Sumar entradas sin sumar incertidumbres linealmente**
 
@@ -2909,7 +2909,7 @@ Las hipótesis esenciales son:
 
 []{#red-de-la-receta-al-modelo}
 
-### 3.6.15. Red: de la receta al modelo {#fispm-c03-red-de-la-receta-al-modelo}
+### Red: de la receta al modelo {#fispm-c03-red-de-la-receta-al-modelo}
 
 El capítulo ha avanzado desde
 
@@ -2937,11 +2937,11 @@ Eso permitirá comprender cuándo las reglas de esta sección son válidas, cóm
 
 []{#fpm-i-03-s07}
 
-## 3.7. Propagación mediante linealización {#fispm-c03-propagaciuxf3n-mediante-linealizaciuxf3n}
+## 7. Propagación mediante linealización {#fispm-c03-propagaciuxf3n-mediante-linealizaciuxf3n}
 
 []{#intuir-una-función-no-lineal-puede-parecer-lineal-si-miramos-suficientemente-cerca}
 
-### 3.7.1. Intuir: una función no lineal puede parecer lineal si miramos suficientemente cerca {#fispm-c03-intuir-una-funciuxf3n-no-lineal-puede-parecer-lineal-si-miramos-suficientemente-cerca}
+### Intuir: una función no lineal puede parecer lineal si miramos suficientemente cerca {#fispm-c03-intuir-una-funciuxf3n-no-lineal-puede-parecer-lineal-si-miramos-suficientemente-cerca}
 
 En §6 aprendimos a combinar incertidumbres en modelos lineales como $Y=a_1X_1+\cdots+a_NX_N.$
 
@@ -2975,7 +2975,7 @@ Por tanto, la derivada no aparece aquí como un procedimiento formal aislado. Ap
 
 <figcaption>
 
-**Figura 3.4.** Para datos simétricos $x=\pm a$, la media de $x$ es cero y la de $x^2$ vale $a^2$. Transformar la media y promediar los valores transformados son operaciones distintas. La derivada nula en el origen no elimina esta variación de segundo orden. Véase §[3.7](#fispm-c03-propagaciuxf3n-mediante-linealizaciuxf3n).
+**Figura 3.4.** Para datos simétricos $x=\pm a$, la media de $x$ es cero y la de $x^2$ vale $a^2$. Transformar la media y promediar los valores transformados son operaciones distintas. La derivada nula en el origen no elimina esta variación de segundo orden. Véase §[7](#fispm-c03-propagaciuxf3n-mediante-linealizaciuxf3n).
 
 </figcaption>
 
@@ -2989,7 +2989,7 @@ Por tanto, la derivada no aparece aquí como un procedimiento formal aislado. Ap
 
 <figcaption>
 
-**Figura 3.5.** Para $y=x^2$, alrededor de $x_0=1$, la tangente $y=1+2(x-1)$ aproxima la función. El residuo exacto es $(x-1)^2$; la propagación lineal requiere una banda suficientemente pequeña. Véase §[3.7](#fispm-c03-propagaciuxf3n-mediante-linealizaciuxf3n).
+**Figura 3.5.** Para $y=x^2$, alrededor de $x_0=1$, la tangente $y=1+2(x-1)$ aproxima la función. El residuo exacto es $(x-1)^2$; la propagación lineal requiere una banda suficientemente pequeña. Véase §[7](#fispm-c03-propagaciuxf3n-mediante-linealizaciuxf3n).
 
 </figcaption>
 
@@ -2999,7 +2999,7 @@ Por tanto, la derivada no aparece aquí como un procedimiento formal aislado. Ap
 
 []{#una-variable-del-cambio-de-entrada-al-cambio-de-salida}
 
-### 3.7.2. Una variable: del cambio de entrada al cambio de salida {#fispm-c03-una-variable-del-cambio-de-entrada-al-cambio-de-salida}
+### Una variable: del cambio de entrada al cambio de salida {#fispm-c03-una-variable-del-cambio-de-entrada-al-cambio-de-salida}
 
 Sea
 
@@ -3021,7 +3021,7 @@ La barra de valor absoluto aparece porque una incertidumbre estándar es no nega
 
 []{#definir-coeficiente-de-sensibilidad}
 
-### 3.7.3. Definir: coeficiente de sensibilidad {#fispm-c03-definir-coeficiente-de-sensibilidad}
+### Definir: coeficiente de sensibilidad {#fispm-c03-definir-coeficiente-de-sensibilidad}
 
 En un modelo multivariable
 
@@ -3053,7 +3053,7 @@ tiene la misma unidad que la salida. Este control dimensional es una herramienta
 
 []{#la-linealización-multivariable}
 
-### 3.7.4. La linealización multivariable {#fispm-c03-la-linealizaciuxf3n-multivariable}
+### La linealización multivariable {#fispm-c03-la-linealizaciuxf3n-multivariable}
 
 Sea
 
@@ -3081,7 +3081,7 @@ No dice todavía cómo se combinan estadísticamente las contribuciones. Para es
 
 []{#resultado-formal-ley-de-propagación-de-primer-orden}
 
-### 3.7.5. Resultado formal: ley de propagación de primer orden {#fispm-c03-resultado-formal-ley-de-propagaciuxf3n-de-primer-orden}
+### Resultado formal: ley de propagación de primer orden {#fispm-c03-resultado-formal-ley-de-propagaciuxf3n-de-primer-orden}
 
 **Proposición 3.3 --- Ley de propagación de incertidumbre en la aproximación lineal de primer orden** Sea
 
@@ -3107,7 +3107,7 @@ $$\boxed{ u_c^2(y) \approx \sum_{i=1}^{N} c_i^2u^2(x_i). }$$
 
 []{#demostración-1}
 
-#### 3.7.5.1. Demostración {#fispm-c03-demostraciuxf3n-1}
+#### Demostración {#fispm-c03-demostraciuxf3n-1}
 
 La linealización de primer orden produce $\delta y \approx \sum_{i=1}^{N} c_i\,\delta x_i.$
 
@@ -3125,7 +3125,7 @@ Esta es la forma local de primer orden de la ley de propagación de incertidumbr
 
 []{#recuperar-6-como-caso-particular}
 
-### 3.7.6. Recuperar §6 como caso particular {#fispm-c03-recuperar-6-como-caso-particular}
+### Recuperar §6 como caso particular {#fispm-c03-recuperar-6-como-caso-particular}
 
 La proposición anterior contiene a §6.
 
@@ -3139,7 +3139,7 @@ y, para entradas no correlacionadas, $u_c^2(y) = \sum_{i=1}^{N} a_i^2u^2(x_i).$ 
 
 []{#ejemplo-densidad-obtenida-a-partir-de-masa-y-volumen}
 
-### 3.7.7. Ejemplo: densidad obtenida a partir de masa y volumen {#fispm-c03-ejemplo-densidad-obtenida-a-partir-de-masa-y-volumen}
+### Ejemplo: densidad obtenida a partir de masa y volumen {#fispm-c03-ejemplo-densidad-obtenida-a-partir-de-masa-y-volumen}
 
 Consideremos
 
@@ -3185,7 +3185,7 @@ Este cálculo muestra algo que una mera inspección de $u(m)$ y $u(V)$ no mostra
 
 []{#un-presupuesto-con-coeficientes-de-sensibilidad}
 
-### 3.7.8. Un presupuesto con coeficientes de sensibilidad {#fispm-c03-un-presupuesto-con-coeficientes-de-sensibilidad}
+### Un presupuesto con coeficientes de sensibilidad {#fispm-c03-un-presupuesto-con-coeficientes-de-sensibilidad}
 
 La propagación puede organizarse en una tabla:
 
@@ -3198,7 +3198,7 @@ La última columna permite comparar las contribuciones **ya expresadas en la esc
 
 []{#forma-matricial-una-estructura-compacta}
 
-### 3.7.9. Forma matricial: una estructura compacta {#fispm-c03-forma-matricial-una-estructura-compacta}
+### Forma matricial: una estructura compacta {#fispm-c03-forma-matricial-una-estructura-compacta}
 
 Definamos el vector de sensibilidades
 
@@ -3222,7 +3222,7 @@ La física entra en ambas. El modelo decide qué cantidades intervienen y cómo;
 
 []{#producto-y-cociente-recuperados-mediante-derivadas}
 
-### 3.7.10. Producto y cociente recuperados mediante derivadas {#fispm-c03-producto-y-cociente-recuperados-mediante-derivadas}
+### Producto y cociente recuperados mediante derivadas {#fispm-c03-producto-y-cociente-recuperados-mediante-derivadas}
 
 En §6 anticipamos las reglas relativas. Ahora podemos derivarlas sistemáticamente.
 
@@ -3256,7 +3256,7 @@ El signo desaparece al cuadrar en el caso no correlacionado, y recuperamos la mi
 
 []{#potencias-por-qué-aparece-el-exponente}
 
-### 3.7.11. Potencias: por qué aparece el exponente {#fispm-c03-potencias-por-quuxe9-aparece-el-exponente}
+### Potencias: por qué aparece el exponente {#fispm-c03-potencias-por-quuxe9-aparece-el-exponente}
 
 Sea
 
@@ -3276,7 +3276,7 @@ entonces $\frac{u_c(A)}{A} \approx 2\frac{u(r)}{r}.$ Una incertidumbre relativa 
 
 []{#cuándo-falla-la-linealización}
 
-### 3.7.12. ¿Cuándo falla la linealización? {#fispm-c03-cuuxe1ndo-falla-la-linealizaciuxf3n}
+### ¿Cuándo falla la linealización? {#fispm-c03-cuuxe1ndo-falla-la-linealizaciuxf3n}
 
 Hasta ahora hemos repetido una condición:
 
@@ -3286,13 +3286,13 @@ Debemos aprender a reconocer cuándo esta condición puede fallar.
 
 []{#caso-a-incertidumbre-demasiado-grande}
 
-#### 3.7.12.1. Caso A --- incertidumbre demasiado grande {#fispm-c03-caso-a-incertidumbre-demasiado-grande}
+#### Caso A --- incertidumbre demasiado grande {#fispm-c03-caso-a-incertidumbre-demasiado-grande}
 
 Si $u(x)$ no es pequeño comparado con la escala sobre la cual cambia apreciablemente $f'(x)$, la curvatura de $f$ puede importar.
 
 []{#caso-b-derivada-casi-nula}
 
-#### 3.7.12.2. Caso B --- derivada casi nula {#fispm-c03-caso-b-derivada-casi-nula}
+#### Caso B --- derivada casi nula {#fispm-c03-caso-b-derivada-casi-nula}
 
 Sea
 
@@ -3316,7 +3316,7 @@ Significa que la aproximación lineal ha perdido la contribución principal.
 
 []{#caso-c-singularidades-o-fuertes-no-linealidades}
 
-#### 3.7.12.3. Caso C --- singularidades o fuertes no linealidades {#fispm-c03-caso-c-singularidades-o-fuertes-no-linealidades}
+#### Caso C --- singularidades o fuertes no linealidades {#fispm-c03-caso-c-singularidades-o-fuertes-no-linealidades}
 
 En
 
@@ -3332,7 +3332,7 @@ $$\boxed{ \text{\parbox{.66\linewidth}{\centering si el primer orden deja de rep
 
 []{#una-prueba-de-estrés-de-la-aproximación}
 
-### 3.7.13. Una prueba de estrés de la aproximación {#fispm-c03-una-prueba-de-estruxe9s-de-la-aproximaciuxf3n}
+### Una prueba de estrés de la aproximación {#fispm-c03-una-prueba-de-estruxe9s-de-la-aproximaciuxf3n}
 
 Antes de aceptar una propagación lineal conviene preguntar:
 
@@ -3354,7 +3354,7 @@ Estas preguntas no producen automáticamente una respuesta cuantitativa, pero si
 
 []{#práctica-ma-ped-6}
 
-### 3.7.14. Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped-6}
+### Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped-6}
 
 **Ejercicio 3.16 --- Densidad: identificar la entrada dominante**
 
@@ -3458,7 +3458,7 @@ $$\boxed{ \text{si el gradiente es nulo o muy pequeño, comprobar términos de o
 
 []{#cierre-del-cálculo-local-al-reporte-físico}
 
-### 3.7.15. Cierre: del cálculo local al reporte físico {#fispm-c03-cierre-del-cuxe1lculo-local-al-reporte-fuxedsico}
+### Cierre: del cálculo local al reporte físico {#fispm-c03-cierre-del-cuxe1lculo-local-al-reporte-fuxedsico}
 
 La arquitectura construida hasta aquí es:
 
@@ -3492,11 +3492,11 @@ Termina cuando el resultado se comunica con una precisión compatible con la inf
 
 []{#fpm-i-03-s08}
 
-## 3.8. Cómo se reporta un resultado {#fispm-c03-cuxf3mo-se-reporta-un-resultado}
+## 8. Cómo se reporta un resultado {#fispm-c03-cuxf3mo-se-reporta-un-resultado}
 
 []{#intuir-el-cálculo-no-termina-cuando-aparece-un-número}
 
-### 3.8.1. Intuir: el cálculo no termina cuando aparece un número {#fispm-c03-intuir-el-cuxe1lculo-no-termina-cuando-aparece-un-nuxfamero}
+### Intuir: el cálculo no termina cuando aparece un número {#fispm-c03-intuir-el-cuxe1lculo-no-termina-cuando-aparece-un-nuxfamero}
 
 Supongamos que, después de construir un modelo de medición y propagar las incertidumbres, obtenemos $y=73.28741\,\mathrm g$
 
@@ -3528,7 +3528,7 @@ La GUM recomienda precisamente evitar un número excesivo de dígitos en la esti
 
 <figcaption>
 
-**Figura 3.6.** Un intervalo $X\in[1/2,3/2]$ se transforma bajo $Y=1/X$ en $Y\in[2/3,2]$. Sus extremos quedan a distancias diferentes de $Y(1)=1$. El ejemplo es un intervalo de valores admisibles, sin asignación de probabilidad. Véase §[3.8](#fispm-c03-cuxf3mo-se-reporta-un-resultado).
+**Figura 3.6.** Un intervalo $X\in[1/2,3/2]$ se transforma bajo $Y=1/X$ en $Y\in[2/3,2]$. Sus extremos quedan a distancias diferentes de $Y(1)=1$. El ejemplo es un intervalo de valores admisibles, sin asignación de probabilidad. Véase §[8](#fispm-c03-cuxf3mo-se-reporta-un-resultado).
 
 </figcaption>
 
@@ -3542,7 +3542,7 @@ La GUM recomienda precisamente evitar un número excesivo de dígitos en la esti
 
 <figcaption>
 
-**Figura 3.7.** El punto es la estimación y el segmento representa el intervalo declarado. La superposición de bandas no prueba por sí sola igualdad de los valores verdaderos. Véase §[3.8](#fispm-c03-cuxf3mo-se-reporta-un-resultado).
+**Figura 3.7.** El punto es la estimación y el segmento representa el intervalo declarado. La superposición de bandas no prueba por sí sola igualdad de los valores verdaderos. Véase §[8](#fispm-c03-cuxf3mo-se-reporta-un-resultado).
 
 </figcaption>
 
@@ -3550,7 +3550,7 @@ La GUM recomienda precisamente evitar un número excesivo de dígitos en la esti
 
 []{#dos-niveles-de-incertidumbre-que-no-deben-confundirse}
 
-### 3.8.2. Dos niveles de incertidumbre que no deben confundirse {#fispm-c03-dos-niveles-de-incertidumbre-que-no-deben-confundirse}
+### Dos niveles de incertidumbre que no deben confundirse {#fispm-c03-dos-niveles-de-incertidumbre-que-no-deben-confundirse}
 
 En §§5--7 hemos trabajado principalmente con incertidumbres estándar: $u(x)$
 
@@ -3578,7 +3578,7 @@ como si el símbolo $\pm$ explicara por sí solo el significado estadístico del
 
 []{#definir-incertidumbre-expandida}
 
-### 3.8.3. Definir: incertidumbre expandida {#fispm-c03-definir-incertidumbre-expandida}
+### Definir: incertidumbre expandida {#fispm-c03-definir-incertidumbre-expandida}
 
 **Definición operativa 3.14 --- Incertidumbre expandida** Una **incertidumbre expandida** es una cantidad obtenida al multiplicar una incertidumbre estándar combinada por un factor de cobertura:
 
@@ -3602,7 +3602,7 @@ no significa automáticamente y sin más hipótesis «95 % exacto». La interpre
 
 []{#definir-factor-de-cobertura}
 
-### 3.8.4. Definir: factor de cobertura {#fispm-c03-definir-factor-de-cobertura}
+### Definir: factor de cobertura {#fispm-c03-definir-factor-de-cobertura}
 
 **Definición operativa 3.15 --- Factor de cobertura** El **factor de cobertura** $k$ es el número por el cual se multiplica la incertidumbre estándar combinada para obtener una incertidumbre expandida:
 
@@ -3616,7 +3616,7 @@ No podemos sumar o comparar directamente incertidumbres estándar e incertidumbr
 
 []{#la-notación-pm-no-tiene-una-semántica-universal}
 
-### 3.8.5. La notación $\pm$ no tiene una semántica universal {#fispm-c03-la-notaciuxf3n-pm-no-tiene-una-semuxe1ntica-universal}
+### La notación $\pm$ no tiene una semántica universal {#fispm-c03-la-notaciuxf3n-pm-no-tiene-una-semuxe1ntica-universal}
 
 Consideremos
 
@@ -3656,7 +3656,7 @@ Si además se atribuye una probabilidad de cobertura, debe explicarse cómo se o
 
 []{#cifras-significativas-y-posiciones-decimales}
 
-### 3.8.6. Cifras significativas y posiciones decimales {#fispm-c03-cifras-significativas-y-posiciones-decimales}
+### Cifras significativas y posiciones decimales {#fispm-c03-cifras-significativas-y-posiciones-decimales}
 
 Dos conceptos se confunden con frecuencia:
 
@@ -3676,7 +3676,7 @@ La incertidumbre determina qué posiciones del valor reportado siguen siendo inf
 
 []{#regla-editorial-del-tratado-para-el-redondeo-final}
 
-### 3.8.7. Regla editorial del tratado para el redondeo final {#fispm-c03-regla-editorial-del-tratado-para-el-redondeo-final}
+### Regla editorial del tratado para el redondeo final {#fispm-c03-regla-editorial-del-tratado-para-el-redondeo-final}
 
 Adoptaremos la siguiente política editorial para los ejemplos de este tratado.
 
@@ -3694,7 +3694,7 @@ Esta política es una convención editorial coherente con la recomendación gene
 
 []{#ejemplo-de-los-dígitos-de-cálculo-al-reporte}
 
-### 3.8.8. Ejemplo: de los dígitos de cálculo al reporte {#fispm-c03-ejemplo-de-los-duxedgitos-de-cuxe1lculo-al-reporte}
+### Ejemplo: de los dígitos de cálculo al reporte {#fispm-c03-ejemplo-de-los-duxedgitos-de-cuxe1lculo-al-reporte}
 
 Retomemos
 
@@ -3738,7 +3738,7 @@ El valor central no debe cambiar arbitrariamente de precisión entre dos reporte
 
 []{#no-redondear-demasiado-pronto}
 
-### 3.8.9. No redondear demasiado pronto {#fispm-c03-no-redondear-demasiado-pronto}
+### No redondear demasiado pronto {#fispm-c03-no-redondear-demasiado-pronto}
 
 Supongamos que debemos calcular
 
@@ -3762,7 +3762,7 @@ Esta separación evita dos extremos:
 
 []{#un-cero-final-puede-contener-información}
 
-### 3.8.10. Un cero final puede contener información {#fispm-c03-un-cero-final-puede-contener-informaciuxf3n}
+### Un cero final puede contener información {#fispm-c03-un-cero-final-puede-contener-informaciuxf3n}
 
 Comparemos
 
@@ -3788,7 +3788,7 @@ u otro valor. La incertidumbre debe declararse o estar definida por el contexto 
 
 []{#notación-científica-y-coherencia}
 
-### 3.8.11. Notación científica y coherencia {#fispm-c03-notaciuxf3n-cientuxedfica-y-coherencia}
+### Notación científica y coherencia {#fispm-c03-notaciuxf3n-cientuxedfica-y-coherencia}
 
 Para cantidades muy grandes o muy pequeñas, la notación científica puede hacer más visible la estructura del reporte. Por ejemplo, $R = (1.234\pm0.006)\times10^6\,\Omega$
 
@@ -3802,7 +3802,7 @@ El control dimensional sigue siendo obligatorio: $[y]=[u_c(y)]=[U].$ Una incerti
 
 []{#cifras-significativas-no-equivalen-a-incertidumbre}
 
-### 3.8.12. Cifras significativas no equivalen a incertidumbre {#fispm-c03-cifras-significativas-no-equivalen-a-incertidumbre}
+### Cifras significativas no equivalen a incertidumbre {#fispm-c03-cifras-significativas-no-equivalen-a-incertidumbre}
 
 Una regla escolar frecuente dice algo como:
 
@@ -3820,13 +3820,13 @@ $$\boxed{ \text{cifras significativas} \not\equiv \text{incertidumbre de medici�
 
 []{#plantilla-mínima-de-reporte}
 
-### 3.8.13. Plantilla mínima de reporte {#fispm-c03-plantilla-muxednima-de-reporte}
+### Plantilla mínima de reporte {#fispm-c03-plantilla-muxednima-de-reporte}
 
 Para este tratado utilizaremos tres niveles de reporte.
 
 []{#nivel-a-incertidumbre-estándar}
 
-#### 3.8.13.1. Nivel A --- incertidumbre estándar {#fispm-c03-nivel-a-incertidumbre-estuxe1ndar}
+#### Nivel A --- incertidumbre estándar {#fispm-c03-nivel-a-incertidumbre-estuxe1ndar}
 
 El formato canónico y preferente del tratado será
 
@@ -3838,13 +3838,13 @@ está contemplada por la GUM si se identifica expresamente $u$ como incertidumbr
 
 []{#nivel-b-incertidumbre-expandida}
 
-#### 3.8.13.2. Nivel B --- incertidumbre expandida {#fispm-c03-nivel-b-incertidumbre-expandida}
+#### Nivel B --- incertidumbre expandida {#fispm-c03-nivel-b-incertidumbre-expandida}
 
 $$\boxed{ Y=(y\pm U)\,[Y], \qquad U=k\,u_c(y), \qquad k=\text{valor declarado}. }$$
 
 []{#nivel-c-reporte-metrológico-completo}
 
-#### 3.8.13.3. Nivel C --- reporte metrológico completo {#fispm-c03-nivel-c-reporte-metroluxf3gico-completo}
+#### Nivel C --- reporte metrológico completo {#fispm-c03-nivel-c-reporte-metroluxf3gico-completo}
 
 Además de lo anterior se incluyen, según corresponda:
 
@@ -3868,11 +3868,11 @@ La GUM y NIST insisten en que el resultado debe ir acompañado por información 
 
 []{#diagnóstico-cuatro-errores-de-reporte}
 
-### 3.8.14. Diagnóstico: cuatro errores de reporte {#fispm-c03-diagnuxf3stico-cuatro-errores-de-reporte}
+### Diagnóstico: cuatro errores de reporte {#fispm-c03-diagnuxf3stico-cuatro-errores-de-reporte}
 
 []{#error-a-copiar-todos-los-dígitos-de-la-calculadora}
 
-#### 3.8.14.1. Error A --- copiar todos los dígitos de la calculadora {#fispm-c03-error-a-copiar-todos-los-duxedgitos-de-la-calculadora}
+#### Error A --- copiar todos los dígitos de la calculadora {#fispm-c03-error-a-copiar-todos-los-duxedgitos-de-la-calculadora}
 
 $$x=2.483746192\,\mathrm m$$
 
@@ -3884,7 +3884,7 @@ Los últimos dígitos no están respaldados por la incertidumbre.
 
 []{#error-b-redondear-la-incertidumbre-pero-no-el-valor}
 
-#### 3.8.14.2. Error B --- redondear la incertidumbre pero no el valor {#fispm-c03-error-b-redondear-la-incertidumbre-pero-no-el-valor}
+#### Error B --- redondear la incertidumbre pero no el valor {#fispm-c03-error-b-redondear-la-incertidumbre-pero-no-el-valor}
 
 $$x=2.483746192\,\mathrm m, \qquad u(x)=0.03\,\mathrm m.$$
 
@@ -3892,7 +3892,7 @@ El valor central debe redondearse de manera coherente: $x=2.48\,\mathrm m, \qqua
 
 []{#error-c-escribir-pm-sin-explicar-su-significado}
 
-#### 3.8.14.3. Error C --- escribir $\pm$ sin explicar su significado {#fispm-c03-error-c-escribir-pm-sin-explicar-su-significado}
+#### Error C --- escribir $\pm$ sin explicar su significado {#fispm-c03-error-c-escribir-pm-sin-explicar-su-significado}
 
 $$x=(2.48\pm0.03)\,\mathrm m$$
 
@@ -3900,7 +3900,7 @@ es incompleto si no sabemos qué representa $0.03\,\mathrm m$.
 
 []{#error-d-atribuir-una-probabilidad-universal-a-k2}
 
-#### 3.8.14.4. Error D --- atribuir una probabilidad universal a $k=2$ {#fispm-c03-error-d-atribuir-una-probabilidad-universal-a-k2}
+#### Error D --- atribuir una probabilidad universal a $k=2$ {#fispm-c03-error-d-atribuir-una-probabilidad-universal-a-k2}
 
 No podemos escribir automáticamente
 
@@ -3910,7 +3910,7 @@ sin declarar el modelo y el fundamento de cobertura.
 
 []{#práctica-ma-ped-7}
 
-### 3.8.15. Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped-7}
+### Práctica MA-PED {#fispm-c03-pruxe1ctica-ma-ped-7}
 
 **Ejercicio 3.18 --- Convertir un cálculo en un reporte**
 
@@ -4010,7 +4010,7 @@ sólo expresa una forma simétrica de escritura alrededor de un valor central. L
 
 []{#red-lo-que-debe-sobrevivir-al-cálculo}
 
-### 3.8.16. Red: lo que debe sobrevivir al cálculo {#fispm-c03-red-lo-que-debe-sobrevivir-al-cuxe1lculo}
+### Red: lo que debe sobrevivir al cálculo {#fispm-c03-red-lo-que-debe-sobrevivir-al-cuxe1lculo}
 
 El flujo completo de §§5--8 puede resumirse como
 
@@ -4030,11 +4030,11 @@ En §9 introduciremos la **incertidumbre relativa**, que permitirá comparar res
 
 []{#fpm-i-03-s09}
 
-## 3.9. Incertidumbre relativa y comparación de escalas {#fispm-c03-incertidumbre-relativa-y-comparaciuxf3n-de-escalas}
+## 9. Incertidumbre relativa y comparación de escalas {#fispm-c03-incertidumbre-relativa-y-comparaciuxf3n-de-escalas}
 
 []{#intuir-la-misma-incertidumbre-absoluta-puede-significar-cosas-muy-diferentes}
 
-### 3.9.1. Intuir: la misma incertidumbre absoluta puede significar cosas muy diferentes {#fispm-c03-intuir-la-misma-incertidumbre-absoluta-puede-significar-cosas-muy-diferentes}
+### Intuir: la misma incertidumbre absoluta puede significar cosas muy diferentes {#fispm-c03-intuir-la-misma-incertidumbre-absoluta-puede-significar-cosas-muy-diferentes}
 
 Comparemos dos resultados:
 
@@ -4054,7 +4054,7 @@ En ambos casos la incertidumbre estándar absoluta es la misma: $0.1\,\mathrm{cm
 
 <figcaption>
 
-**Figura 3.8.** Los dos intervalos dibujados se solapan. Ese hecho geométrico no equivale por sí solo a una prueba de compatibilidad estadística: hacen falta el significado de las barras, las correlaciones y el criterio declarado. Véase §[3.9](#fispm-c03-incertidumbre-relativa-y-comparaciuxf3n-de-escalas).
+**Figura 3.8.** Los dos intervalos dibujados se solapan. Ese hecho geométrico no equivale por sí solo a una prueba de compatibilidad estadística: hacen falta el significado de las barras, las correlaciones y el criterio declarado. Véase §[9](#fispm-c03-incertidumbre-relativa-y-comparaciuxf3n-de-escalas).
 
 </figcaption>
 
@@ -4090,7 +4090,7 @@ Ambas preguntas son legítimas. No son intercambiables.
 
 []{#definir-incertidumbre-estándar-relativa}
 
-### 3.9.2. Definir: incertidumbre estándar relativa {#fispm-c03-definir-incertidumbre-estuxe1ndar-relativa}
+### Definir: incertidumbre estándar relativa {#fispm-c03-definir-incertidumbre-estuxe1ndar-relativa}
 
 La GUM utiliza la incertidumbre estándar relativa como el cociente entre una incertidumbre estándar y el valor absoluto de la estimación correspondiente, siempre que esa estimación no sea cero.[^53]
 
@@ -4118,7 +4118,7 @@ entonces $u_r(x) = \frac{0.5}{250.0} = 0.002 = 0.2\%.$
 
 []{#una-cantidad-adimensional-no-significa-una-cantidad-sin-interpretación}
 
-### 3.9.3. Una cantidad adimensional no significa una cantidad sin interpretación {#fispm-c03-una-cantidad-adimensional-no-significa-una-cantidad-sin-interpretaciuxf3n}
+### Una cantidad adimensional no significa una cantidad sin interpretación {#fispm-c03-una-cantidad-adimensional-no-significa-una-cantidad-sin-interpretaciuxf3n}
 
 Como $[u(x)]=[x],$
 
@@ -4140,7 +4140,7 @@ Son distintas escalas de presentación para la misma razón adimensional. La ele
 
 []{#la-incertidumbre-relativa-es-invariante-ante-un-cambio-exacto-de-unidad}
 
-### 3.9.4. La incertidumbre relativa es invariante ante un cambio exacto de unidad {#fispm-c03-la-incertidumbre-relativa-es-invariante-ante-un-cambio-exacto-de-unidad}
+### La incertidumbre relativa es invariante ante un cambio exacto de unidad {#fispm-c03-la-incertidumbre-relativa-es-invariante-ante-un-cambio-exacto-de-unidad}
 
 Supongamos que cambiamos de unidad mediante un factor exacto
 
@@ -4170,7 +4170,7 @@ Esta invariancia hace especialmente útil a la incertidumbre relativa para compa
 
 []{#comparar-instrumentos-y-procedimientos}
 
-### 3.9.5. Comparar instrumentos y procedimientos {#fispm-c03-comparar-instrumentos-y-procedimientos}
+### Comparar instrumentos y procedimientos {#fispm-c03-comparar-instrumentos-y-procedimientos}
 
 Supongamos dos procedimientos para medir longitudes distintas:
 
@@ -4195,7 +4195,7 @@ En relación con el tamaño de lo medido, el primer resultado tiene una incertid
 
 []{#el-problema-del-cero}
 
-### 3.9.6. El problema del cero {#fispm-c03-el-problema-del-cero}
+### El problema del cero {#fispm-c03-el-problema-del-cero}
 
 La definición
 
@@ -4227,7 +4227,7 @@ No hay ninguna contradicción matemática. El resultado nos está diciendo que l
 
 []{#de-7-a-una-regla-relativa-para-productos}
 
-### 3.9.7. De §7 a una regla relativa para productos {#fispm-c03-de-7-a-una-regla-relativa-para-productos}
+### De §7 a una regla relativa para productos {#fispm-c03-de-7-a-una-regla-relativa-para-productos}
 
 En §7 obtuvimos, para
 
@@ -4253,7 +4253,7 @@ bajo las hipótesis declaradas. La aparente simplicidad de esta expresión no de
 
 []{#potencias-el-exponente-amplifica-la-incertidumbre-relativa}
 
-### 3.9.8. Potencias: el exponente amplifica la incertidumbre relativa {#fispm-c03-potencias-el-exponente-amplifica-la-incertidumbre-relativa}
+### Potencias: el exponente amplifica la incertidumbre relativa {#fispm-c03-potencias-el-exponente-amplifica-la-incertidumbre-relativa}
 
 Sea
 
@@ -4281,7 +4281,7 @@ siempre dentro del régimen donde la linealización sea adecuada.
 
 []{#resultado-formal-monomios-y-propagación-relativa}
 
-### 3.9.9. Resultado formal: monomios y propagación relativa {#fispm-c03-resultado-formal-monomios-y-propagaciuxf3n-relativa}
+### Resultado formal: monomios y propagación relativa {#fispm-c03-resultado-formal-monomios-y-propagaciuxf3n-relativa}
 
 **Proposición 3.4 --- Propagación relativa de primer orden en un modelo monomial** Considérese
 
@@ -4303,7 +4303,7 @@ $$\boxed{ u_r^2(z) \approx \sum_{i=1}^{N} a_i^2u_r^2(x_i). }$$
 
 []{#demostración-2}
 
-#### 3.9.9.1. Demostración {#fispm-c03-demostraciuxf3n-2}
+#### Demostración {#fispm-c03-demostraciuxf3n-2}
 
 Para
 
@@ -4333,7 +4333,7 @@ La GUM presenta esta forma relativa para productos de potencias como consecuenci
 
 []{#ejemplo-densidad-y-contribuciones-relativas}
 
-### 3.9.10. Ejemplo: densidad y contribuciones relativas {#fispm-c03-ejemplo-densidad-y-contribuciones-relativas}
+### Ejemplo: densidad y contribuciones relativas {#fispm-c03-ejemplo-densidad-y-contribuciones-relativas}
 
 Para
 
@@ -4363,7 +4363,7 @@ Es decir, $u_r(\rho)\approx0.51\%.$ La comparación relativa muestra inmediatame
 
 []{#cuándo-conviene-usar-incertidumbre-absoluta-y-cuándo-relativa}
 
-### 3.9.11. ¿Cuándo conviene usar incertidumbre absoluta y cuándo relativa? {#fispm-c03-cuuxe1ndo-conviene-usar-incertidumbre-absoluta-y-cuuxe1ndo-relativa}
+### ¿Cuándo conviene usar incertidumbre absoluta y cuándo relativa? {#fispm-c03-cuuxe1ndo-conviene-usar-incertidumbre-absoluta-y-cuuxe1ndo-relativa}
 
 No existe una regla que obligue a elegir una sola representación. La incertidumbre absoluta
 
@@ -4401,11 +4401,11 @@ por sí sola no ofrece.
 
 []{#espacio-de-ejemplos-y-no-ejemplos-1}
 
-### 3.9.12. Espacio de ejemplos y no-ejemplos {#fispm-c03-espacio-de-ejemplos-y-no-ejemplos-1}
+### Espacio de ejemplos y no-ejemplos {#fispm-c03-espacio-de-ejemplos-y-no-ejemplos-1}
 
 []{#ejemplo-a-comparación-legítima}
 
-#### 3.9.12.1. Ejemplo A --- Comparación legítima {#fispm-c03-ejemplo-a-comparaciuxf3n-leguxedtima}
+#### Ejemplo A --- Comparación legítima {#fispm-c03-ejemplo-a-comparaciuxf3n-leguxedtima}
 
 Dos masas:
 
@@ -4417,7 +4417,7 @@ Entonces $u_r(m_1)=0.2\%, \qquad u_r(m_2)=0.5\%.$ La segunda medición tiene may
 
 []{#no-ejemplo-b-dividir-por-cero}
 
-#### 3.9.12.2. No-ejemplo B --- Dividir por cero {#fispm-c03-no-ejemplo-b-dividir-por-cero}
+#### No-ejemplo B --- Dividir por cero {#fispm-c03-no-ejemplo-b-dividir-por-cero}
 
 Si
 
@@ -4431,7 +4431,7 @@ La incertidumbre relativa no está definida.
 
 []{#no-ejemplo-c-confundir-porcentaje-con-probabilidad}
 
-#### 3.9.12.3. No-ejemplo C --- Confundir porcentaje con probabilidad {#fispm-c03-no-ejemplo-c-confundir-porcentaje-con-probabilidad}
+#### No-ejemplo C --- Confundir porcentaje con probabilidad {#fispm-c03-no-ejemplo-c-confundir-porcentaje-con-probabilidad}
 
 Si
 
@@ -4497,7 +4497,7 @@ Obsérvese que el signo negativo del exponente de $D$ desaparece al elevarlo al 
 
 []{#cierre-conceptual}
 
-### 3.9.13. Cierre conceptual {#fispm-c03-cierre-conceptual}
+### Cierre conceptual {#fispm-c03-cierre-conceptual}
 
 En esta sección hemos pasado de una escala absoluta a una escala normalizada: $u(x) \longrightarrow u_r(x)=\frac{u(x)}{|x|}.$ La normalización permite comparar resultados de tamaños distintos y revela la estructura especialmente simple de los modelos multiplicativos.
 
@@ -4513,11 +4513,11 @@ Con esta distinción cerramos el bloque dedicado a la medición y su incertidumb
 
 []{#fpm-i-03-s10}
 
-## 3.10. Estimación física y órdenes de magnitud {#fispm-c03-estimaciuxf3n-fuxedsica-y-uxf3rdenes-de-magnitud}
+## 10. Estimación física y órdenes de magnitud {#fispm-c03-estimaciuxf3n-fuxedsica-y-uxf3rdenes-de-magnitud}
 
 []{#intuir-estimar-no-es-adivinar}
 
-### 3.10.1. Intuir: estimar no es adivinar {#fispm-c03-intuir-estimar-no-es-adivinar}
+### Intuir: estimar no es adivinar {#fispm-c03-intuir-estimar-no-es-adivinar}
 
 Consideremos la pregunta:
 
@@ -4547,7 +4547,7 @@ El valor es aproximado, pero su procedencia es auditable. Podemos discutir las d
 
 []{#definir-estimación-física}
 
-### 3.10.2. Definir: estimación física {#fispm-c03-definir-estimaciuxf3n-fuxedsica}
+### Definir: estimación física {#fispm-c03-definir-estimaciuxf3n-fuxedsica}
 
 **Definición operativa 3.17 --- Estimación física** Una **estimación física** es una inferencia cuantitativa aproximada obtenida a partir de un modelo simplificado, escalas representativas, datos aproximados o cotas plausibles, de modo que las hipótesis empleadas y la precisión pretendida permanezcan explícitas.
 
@@ -4559,7 +4559,7 @@ $$\boxed{\text{pregunta}\longrightarrow\text{modelo simplificado}\longrightarrow
 
 []{#qué-problema-resuelve-una-estimación}
 
-### 3.10.3. Qué problema resuelve una estimación {#fispm-c03-quuxe9-problema-resuelve-una-estimaciuxf3n}
+### Qué problema resuelve una estimación {#fispm-c03-quuxe9-problema-resuelve-una-estimaciuxf3n}
 
 La medición y la estimación responden a problemas distintos. En una medición disponemos de un procedimiento experimental y queremos caracterizar un resultado junto con su incertidumbre. En una estimación, en cambio, puede faltar una medición directa o puede ser innecesaria para la pregunta planteada. Queremos saber, por ejemplo, si una energía está más cerca de $10^3$ que de $10^{12}\,\mathrm J$, si un tiempo característico es de segundos, horas o años, o si el resultado detallado de un cálculo numérico es físicamente plausible.
 
@@ -4567,7 +4567,7 @@ La estimación es entonces una herramienta de **orientación cuantitativa**. No 
 
 []{#el-modelo-simplificado-es-la-parte-principal}
 
-### 3.10.4. El modelo simplificado es la parte principal {#fispm-c03-el-modelo-simplificado-es-la-parte-principal}
+### El modelo simplificado es la parte principal {#fispm-c03-el-modelo-simplificado-es-la-parte-principal}
 
 Supongamos que queremos estimar el número de granos contenidos en un recipiente. Una estrategia posible es escribir
 
@@ -4579,7 +4579,7 @@ El número final dependerá de las cifras introducidas, pero la calidad de la es
 
 []{#escalas-representativas}
 
-### 3.10.5. Escalas representativas {#fispm-c03-escalas-representativas}
+### Escalas representativas {#fispm-c03-escalas-representativas}
 
 En una estimación rara vez necesitamos comenzar con muchos dígitos. Podemos escribir
 
@@ -4599,7 +4599,7 @@ se utilizará aquí informalmente para expresar que $\widetilde Q$ representa un
 
 []{#estimación-de-valor-y-orden-de-magnitud}
 
-### 3.10.6. Estimación de valor y orden de magnitud {#fispm-c03-estimaciuxf3n-de-valor-y-orden-de-magnitud}
+### Estimación de valor y orden de magnitud {#fispm-c03-estimaciuxf3n-de-valor-y-orden-de-magnitud}
 
 Una estimación puede conservar más información que su orden de magnitud. Por ejemplo, $Q\sim8\times10^6$
 
@@ -4615,7 +4615,7 @@ $$\boxed{\text{valor estimado}\neq\text{orden de magnitud}.}$$
 
 []{#definir-orden-de-magnitud}
 
-### 3.10.7. Definir: orden de magnitud {#fispm-c03-definir-orden-de-magnitud}
+### Definir: orden de magnitud {#fispm-c03-definir-orden-de-magnitud}
 
 La expresión «orden de magnitud» se utiliza con más de una convención en la literatura. Para evitar ambigüedad, este tratado adoptará una convención explícita.
 
@@ -4643,7 +4643,7 @@ $$\operatorname{OM}(2\times10^6)=10^6.$$
 
 []{#una-sutileza-las-cantidades-dimensionales-necesitan-una-unidad-declarada}
 
-### 3.10.8. Una sutileza: las cantidades dimensionales necesitan una unidad declarada {#fispm-c03-una-sutileza-las-cantidades-dimensionales-necesitan-una-unidad-declarada}
+### Una sutileza: las cantidades dimensionales necesitan una unidad declarada {#fispm-c03-una-sutileza-las-cantidades-dimensionales-necesitan-una-unidad-declarada}
 
 Consideremos una longitud
 
@@ -4665,7 +4665,7 @@ $$\boxed{\text{el orden de magnitud de una cantidad dimensional requiere una con
 
 []{#control-dimensional-de-una-estimación}
 
-### 3.10.9. Control dimensional de una estimación {#fispm-c03-control-dimensional-de-una-estimaciuxf3n}
+### Control dimensional de una estimación {#fispm-c03-control-dimensional-de-una-estimaciuxf3n}
 
 Una estimación debe respetar las dimensiones físicas.
 
@@ -4685,7 +4685,7 @@ Esto no demuestra que la ley física exacta sea $E=mv^2$. Sólo demuestra que la
 
 []{#falsa-precisión-en-una-estimación}
 
-### 3.10.10. Falsa precisión en una estimación {#fispm-c03-falsa-precisiuxf3n-en-una-estimaciuxf3n}
+### Falsa precisión en una estimación {#fispm-c03-falsa-precisiuxf3n-en-una-estimaciuxf3n}
 
 Supongamos una tasa aproximada
 
@@ -4707,7 +4707,7 @@ o, si sólo interesa la escala, $\operatorname{OM}(N)=10^7.$ La calculadora mult
 
 []{#estimar-antes-de-calcular-con-detalle}
 
-### 3.10.11. Estimar antes de calcular con detalle {#fispm-c03-estimar-antes-de-calcular-con-detalle}
+### Estimar antes de calcular con detalle {#fispm-c03-estimar-antes-de-calcular-con-detalle}
 
 Una estimación preliminar cumple una función diagnóstica.
 
@@ -4721,7 +4721,7 @@ La discrepancia de seis órdenes de magnitud no demuestra automáticamente que e
 
 []{#qué-precisión-debe-pretender-una-estimación}
 
-### 3.10.12. Qué precisión debe pretender una estimación {#fispm-c03-quuxe9-precisiuxf3n-debe-pretender-una-estimaciuxf3n}
+### Qué precisión debe pretender una estimación {#fispm-c03-quuxe9-precisiuxf3n-debe-pretender-una-estimaciuxf3n}
 
 La precisión buscada depende de la pregunta. Si queremos decidir entre
 
@@ -4789,7 +4789,7 @@ mientras en milímetros, $\frac{L}{1\,\mathrm{mm}}=3.$ Por eso una afirmación s
 
 []{#cierre-estimar-es-construir-una-explicación-cuantitativa}
 
-### 3.10.13. Cierre: estimar es construir una explicación cuantitativa {#fispm-c03-cierre-estimar-es-construir-una-explicaciuxf3n-cuantitativa}
+### Cierre: estimar es construir una explicación cuantitativa {#fispm-c03-cierre-estimar-es-construir-una-explicaciuxf3n-cuantitativa}
 
 Una estimación física bien construida contiene más que un número. Contiene
 
@@ -4809,11 +4809,11 @@ Después, en §12, analizaremos cómo someter esas estimaciones a pruebas de rob
 
 []{#fpm-i-03-s11}
 
-## 3.11. Estimaciones tipo Fermi {#fispm-c03-estimaciones-tipo-fermi}
+## 11. Estimaciones tipo Fermi {#fispm-c03-estimaciones-tipo-fermi}
 
 []{#intuir-una-cantidad-difícil-puede-descomponerse}
 
-### 3.11.1. Intuir: una cantidad difícil puede descomponerse {#fispm-c03-intuir-una-cantidad-difuxedcil-puede-descomponerse}
+### Intuir: una cantidad difícil puede descomponerse {#fispm-c03-intuir-una-cantidad-difuxedcil-puede-descomponerse}
 
 Hay preguntas cuantitativas para las que no disponemos de un dato directo:
 
@@ -4839,7 +4839,7 @@ La cantidad difícil ha sido sustituida por factores más accesibles.
 
 []{#definir-estimación-tipo-fermi}
 
-### 3.11.2. Definir: estimación tipo Fermi {#fispm-c03-definir-estimaciuxf3n-tipo-fermi}
+### Definir: estimación tipo Fermi {#fispm-c03-definir-estimaciuxf3n-tipo-fermi}
 
 **Definición operativa 3.19 --- Estimación tipo Fermi** Una **estimación tipo Fermi** es una estimación física en la que una cantidad difícil de conocer directamente se reconstruye mediante una descomposición en factores, cocientes o escalas más accesibles, cada uno evaluado con la precisión necesaria para la pregunta planteada.
 
@@ -4857,7 +4857,7 @@ Lo decisivo es que el modelo permanezca visible. Una estimación tipo Fermi no e
 
 []{#del-problema-al-árbol-de-factores}
 
-### 3.11.3. Del problema al árbol de factores {#fispm-c03-del-problema-al-uxe1rbol-de-factores}
+### Del problema al árbol de factores {#fispm-c03-del-problema-al-uxe1rbol-de-factores}
 
 Antes de introducir números conviene construir un árbol conceptual.
 
@@ -4879,7 +4879,7 @@ La estimación completa es una red de decisiones pequeñas.
 
 []{#el-control-dimensional-funciona-también-como-control-semántico}
 
-### 3.11.4. El control dimensional funciona también como control semántico {#fispm-c03-el-control-dimensional-funciona-tambiuxe9n-como-control-semuxe1ntico}
+### El control dimensional funciona también como control semántico {#fispm-c03-el-control-dimensional-funciona-tambiuxe9n-como-control-semuxe1ntico}
 
 En una estimación de Fermi, las unidades pueden detectar una descomposición mal construida. En el ejemplo anterior,
 
@@ -4909,7 +4909,7 @@ Una cadena con unidades que no se cancelan como esperamos suele señalar:
 
 []{#potencias-de-diez-la-aritmética-de-escalas}
 
-### 3.11.5. Potencias de diez: la aritmética de escalas {#fispm-c03-potencias-de-diez-la-aritmuxe9tica-de-escalas}
+### Potencias de diez: la aritmética de escalas {#fispm-c03-potencias-de-diez-la-aritmuxe9tica-de-escalas}
 
 Supongamos que
 
@@ -4935,7 +4935,7 @@ Esta observación es especialmente útil para hacer cálculos mentales de escala
 
 []{#los-coeficientes-de-orden-uno-todavía-importan}
 
-### 3.11.6. Los coeficientes de orden uno todavía importan {#fispm-c03-los-coeficientes-de-orden-uno-todavuxeda-importan}
+### Los coeficientes de orden uno todavía importan {#fispm-c03-los-coeficientes-de-orden-uno-todavuxeda-importan}
 
 No debemos confundir «trabajar con potencias de diez» con «borrar todos los coeficientes».
 
@@ -4953,7 +4953,7 @@ una escala diferente. Por tanto, una buena estimación de orden de magnitud no c
 
 []{#ejemplo-desarrollado-cuánta-lluvia-cae-sobre-una-manzana-urbana}
 
-### 3.11.7. Ejemplo desarrollado: cuánta lluvia cae sobre una manzana urbana {#fispm-c03-ejemplo-desarrollado-cuuxe1nta-lluvia-cae-sobre-una-manzana-urbana}
+### Ejemplo desarrollado: cuánta lluvia cae sobre una manzana urbana {#fispm-c03-ejemplo-desarrollado-cuuxe1nta-lluvia-cae-sobre-una-manzana-urbana}
 
 Queremos estimar el volumen de agua que cae sobre una manzana de aproximadamente
 
@@ -4985,7 +4985,7 @@ Define el alcance de la pregunta que realmente hemos contestado:
 
 []{#un-factor-debe-representar-una-sola-idea}
 
-### 3.11.8. Un factor debe representar una sola idea {#fispm-c03-un-factor-debe-representar-una-sola-idea}
+### Un factor debe representar una sola idea {#fispm-c03-un-factor-debe-representar-una-sola-idea}
 
 Un error frecuente consiste en introducir dos factores que contienen la misma información.
 
@@ -5003,7 +5003,7 @@ ya incluye duchas, cocina y limpieza, no debemos multiplicar después por un nue
 
 []{#descomponer-hasta-que-los-factores-sean-estimables}
 
-### 3.11.9. Descomponer hasta que los factores sean estimables {#fispm-c03-descomponer-hasta-que-los-factores-sean-estimables}
+### Descomponer hasta que los factores sean estimables {#fispm-c03-descomponer-hasta-que-los-factores-sean-estimables}
 
 Una descomposición es útil si transforma una pregunta difícil en preguntas que podemos contestar razonablemente. Si escribimos
 
@@ -5039,7 +5039,7 @@ El objetivo no es maximizar el número de factores. Es maximizar la **auditabili
 
 []{#demasiados-factores-pueden-ocultar-el-problema}
 
-### 3.11.10. Demasiados factores pueden ocultar el problema {#fispm-c03-demasiados-factores-pueden-ocultar-el-problema}
+### Demasiados factores pueden ocultar el problema {#fispm-c03-demasiados-factores-pueden-ocultar-el-problema}
 
 Una cadena larga parece sofisticada: $Q \sim q_1q_2q_3\cdots q_{12}.$ Pero cada factor introduce una nueva decisión. Si muchos de ellos son débilmente conocidos, la aparente precisión del producto puede ser ilusoria.
 
@@ -5049,7 +5049,7 @@ La cuestión de cuánto pueden acumularse los factores inciertos será tratada s
 
 []{#fermi-no-significa-necesariamente-producto}
 
-### 3.11.11. Fermi no significa necesariamente "producto" {#fispm-c03-fermi-no-significa-necesariamente-producto}
+### Fermi no significa necesariamente "producto" {#fispm-c03-fermi-no-significa-necesariamente-producto}
 
 La estructura multiplicativa es frecuente, pero no obligatoria.
 
@@ -5081,7 +5081,7 @@ $$\frac{\mathrm{m^3}} {\mathrm{m^3/s}} = \mathrm s.$$
 
 []{#una-estimación-fermi-no-es-una-evaluación-gum-de-incertidumbre}
 
-### 3.11.12. Una estimación Fermi no es una evaluación GUM de incertidumbre {#fispm-c03-una-estimaciuxf3n-fermi-no-es-una-evaluaciuxf3n-gum-de-incertidumbre}
+### Una estimación Fermi no es una evaluación GUM de incertidumbre {#fispm-c03-una-estimaciuxf3n-fermi-no-es-una-evaluaciuxf3n-gum-de-incertidumbre}
 
 En §§5--9 trabajamos con incertidumbres estándar, covarianzas, propagación y reporte metrológico.
 
@@ -5179,7 +5179,7 @@ El modelo no intenta describir, por ejemplo, infiltración, escorrentía, evapor
 
 []{#cierre-descomponer-para-poder-pensar}
 
-### 3.11.13. Cierre: descomponer para poder pensar {#fispm-c03-cierre-descomponer-para-poder-pensar}
+### Cierre: descomponer para poder pensar {#fispm-c03-cierre-descomponer-para-poder-pensar}
 
 Una estimación tipo Fermi transforma
 
@@ -5209,11 +5209,11 @@ $$\boxed{ \text{robustez, cotas y estimación por caminos independientes}. }$$
 
 []{#fpm-i-03-s12}
 
-## 3.12. Robustez, cotas y estimación por caminos independientes {#fispm-c03-robustez-cotas-y-estimaciuxf3n-por-caminos-independientes}
+## 12. Robustez, cotas y estimación por caminos independientes {#fispm-c03-robustez-cotas-y-estimaciuxf3n-por-caminos-independientes}
 
 []{#intuir-una-estimación-no-termina-en-el-número-central}
 
-### 3.12.1. Intuir: una estimación no termina en el número central {#fispm-c03-intuir-una-estimaciuxf3n-no-termina-en-el-nuxfamero-central}
+### Intuir: una estimación no termina en el número central {#fispm-c03-intuir-una-estimaciuxf3n-no-termina-en-el-nuxfamero-central}
 
 Supongamos que una estimación tipo Fermi produce $Q\sim 8\times10^5.$
 
@@ -5239,7 +5239,7 @@ $$\boxed{ \text{¿qué parte de la conclusión sobrevive cuando variamos las pre
 
 []{#factores-de-variación}
 
-### 3.12.2. Factores de variación {#fispm-c03-factores-de-variaciuxf3n}
+### Factores de variación {#fispm-c03-factores-de-variaciuxf3n}
 
 Sea una cantidad positiva estimada mediante
 
@@ -5275,7 +5275,7 @@ No es, por sí sola, una desviación estándar ni una probabilidad de cobertura.
 
 []{#resultado-formal-acumulación-de-factores-multiplicativos}
 
-### 3.12.3. Resultado formal: acumulación de factores multiplicativos {#fispm-c03-resultado-formal-acumulaciuxf3n-de-factores-multiplicativos}
+### Resultado formal: acumulación de factores multiplicativos {#fispm-c03-resultado-formal-acumulaciuxf3n-de-factores-multiplicativos}
 
 **Proposición 3.5 --- Cota multiplicativa acumulada para un modelo monomial** Sea
 
@@ -5307,7 +5307,7 @@ $$\boxed{ F = \prod_{i=1}^{N}f_i^{|a_i|}. }$$
 
 []{#demostración-3}
 
-#### 3.12.3.1. Demostración {#fispm-c03-demostraciuxf3n-3}
+#### Demostración {#fispm-c03-demostraciuxf3n-3}
 
 Definamos
 
@@ -5351,7 +5351,7 @@ Proposición 3.5 no es una ley probabilística. Es una afirmación determinista 
 
 []{#el-ejemplo-2532}
 
-### 3.12.4. El ejemplo $2^5=32$ {#fispm-c03-el-ejemplo-2532}
+### El ejemplo $2^5=32$ {#fispm-c03-el-ejemplo-2532}
 
 Supongamos un producto de cinco factores: $Q=q_1q_2q_3q_4q_5.$ Si cada uno se conoce sólo dentro de un factor
 
@@ -5373,7 +5373,7 @@ la acumulación ya permite un desplazamiento superior a una década decimal comp
 
 []{#la-visión-logarítmica}
 
-### 3.12.5. La visión logarítmica {#fispm-c03-la-visiuxf3n-logaruxedtmica}
+### La visión logarítmica {#fispm-c03-la-visiuxf3n-logaruxedtmica}
 
 Tomando logaritmos en la proposición 3.5,
 
@@ -5397,7 +5397,7 @@ La estructura recuerda la propagación relativa de §9, pero no debe confundirse
 
 []{#cuándo-es-robusto-el-orden-de-magnitud}
 
-### 3.12.6. ¿Cuándo es robusto el orden de magnitud? {#fispm-c03-cuuxe1ndo-es-robusto-el-orden-de-magnitud}
+### ¿Cuándo es robusto el orden de magnitud? {#fispm-c03-cuuxe1ndo-es-robusto-el-orden-de-magnitud}
 
 Recordemos definición 3.18. Fijada una unidad $Q_0$ de la misma dimensión que $Q$, el orden de magnitud decimal del valor numérico $Q/Q_0$ cambia cuando su logaritmo cruza una frontera de la forma $n+\frac12.$ Supongamos que nuestra estimación central es $\widetilde Q>0$
 
@@ -5421,7 +5421,7 @@ $$\left[ n-\frac12, n+\frac12 \right).$$
 
 []{#ejemplo-una-escala-robusta-pese-a-una-cota-amplia}
 
-### 3.12.7. Ejemplo: una escala robusta pese a una cota amplia {#fispm-c03-ejemplo-una-escala-robusta-pese-a-una-cota-amplia}
+### Ejemplo: una escala robusta pese a una cota amplia {#fispm-c03-ejemplo-una-escala-robusta-pese-a-una-cota-amplia}
 
 Consideremos una ciudad con
 
@@ -5459,7 +5459,7 @@ es robusto frente a toda la variación declarada. La cifra central puede cambiar
 
 []{#cuando-la-cota-cruza-una-frontera}
 
-### 3.12.8. Cuando la cota cruza una frontera {#fispm-c03-cuando-la-cota-cruza-una-frontera}
+### Cuando la cota cruza una frontera {#fispm-c03-cuando-la-cota-cruza-una-frontera}
 
 Supongamos, en cambio, $3\times10^6 \le Q \le 8\times10^7.$ El extremo inferior está cerca de la frontera entre los órdenes
 
@@ -5483,7 +5483,7 @@ Cotar puede transmitir más información que forzar una única potencia de diez.
 
 []{#cotas-asimétricas}
 
-### 3.12.9. Cotas asimétricas {#fispm-c03-cotas-asimuxe9tricas}
+### Cotas asimétricas {#fispm-c03-cotas-asimuxe9tricas}
 
 No toda incertidumbre de escala tiene que ser simétrica alrededor de un valor representativo.
 
@@ -5515,13 +5515,13 @@ No es obligatorio convertir todo problema en un porcentaje simétrico.
 
 []{#dos-caminos-hacia-la-misma-cantidad}
 
-### 3.12.10. Dos caminos hacia la misma cantidad {#fispm-c03-dos-caminos-hacia-la-misma-cantidad}
+### Dos caminos hacia la misma cantidad {#fispm-c03-dos-caminos-hacia-la-misma-cantidad}
 
 Una estimación puede ser internamente consistente y, sin embargo, apoyarse en una hipótesis equivocada. Una forma poderosa de control consiste en construir la misma cantidad mediante otro modelo. Por ejemplo, estimemos el volumen corporal de una persona adulta.
 
 []{#camino-a-masa-y-densidad}
 
-#### 3.12.10.1. Camino A --- masa y densidad {#fispm-c03-camino-a-masa-y-densidad}
+#### Camino A --- masa y densidad {#fispm-c03-camino-a-masa-y-densidad}
 
 Tomemos
 
@@ -5533,7 +5533,7 @@ $$V_A \sim \frac{m}{\rho} \sim \frac{70}{10^3}\,\mathrm{m^3} = 7\times10^{-2}\,\
 
 []{#camino-b-geometría-gruesa}
 
-#### 3.12.10.2. Camino B --- geometría gruesa {#fispm-c03-camino-b-geometruxeda-gruesa}
+#### Camino B --- geometría gruesa {#fispm-c03-camino-b-geometruxeda-gruesa}
 
 Tomemos una altura
 
@@ -5555,7 +5555,7 @@ Eso aumenta la credibilidad de la conclusión.
 
 []{#independientes-no-significa-independencia-estadística}
 
-### 3.12.11. "Independientes" no significa independencia estadística {#fispm-c03-independientes-no-significa-independencia-estaduxedstica}
+### "Independientes" no significa independencia estadística {#fispm-c03-independientes-no-significa-independencia-estaduxedstica}
 
 La palabra **independientes** en el principio 3.10 no tiene aquí el significado probabilístico utilizado al hablar de variables aleatorias. Queremos rutas que compartan la menor cantidad posible de supuestos estructurales. Por ejemplo, $V \sim \frac{m}{\rho}$
 
@@ -5569,7 +5569,7 @@ $$\boxed{ \text{independencia de rutas de estimación} \neq \text{independencia 
 
 []{#la-discrepancia-es-información}
 
-### 3.12.12. La discrepancia es información {#fispm-c03-la-discrepancia-es-informaciuxf3n}
+### La discrepancia es información {#fispm-c03-la-discrepancia-es-informaciuxf3n}
 
 Supongamos que dos rutas producen
 
@@ -5599,7 +5599,7 @@ Una gran discrepancia no es un fracaso inútil. Es una señal diagnóstica.
 
 []{#robustez-no-significa-exactitud}
 
-### 3.12.13. Robustez no significa exactitud {#fispm-c03-robustez-no-significa-exactitud}
+### Robustez no significa exactitud {#fispm-c03-robustez-no-significa-exactitud}
 
 Una estimación puede ser muy robusta y seguir siendo gruesa. Si muchas variaciones razonables de las premisas producen siempre
 
@@ -5627,7 +5627,7 @@ $$5\times10^5$$
 
 habitantes.
 
-### 3.12.14. Camino A {#fispm-c03-camino-a}
+### Camino A {#fispm-c03-camino-a}
 
 Supón un consumo doméstico representativo entre
 
@@ -5641,7 +5641,7 @@ $$400\,\text{L/persona/día}.$$
 
 2.  Decide si el orden de magnitud decimal es robusto.
 
-### 3.12.15. Camino B {#fispm-c03-camino-b}
+### Camino B {#fispm-c03-camino-b}
 
 Un segundo modelo estima
 
@@ -5687,7 +5687,7 @@ Esta concordancia es una evidencia diagnóstica favorable para el modelo de esca
 
 []{#cierre-del-bloque-de-estimación}
 
-### 3.12.16. Cierre del bloque de estimación {#fispm-c03-cierre-del-bloque-de-estimaciuxf3n}
+### Cierre del bloque de estimación {#fispm-c03-cierre-del-bloque-de-estimaciuxf3n}
 
 Las §§10--12 forman ahora una secuencia completa:
 
@@ -5719,11 +5719,11 @@ $$\boxed{ \text{casos integradores de medición y estimación}. }$$
 
 []{#fpm-i-03-s13}
 
-## 3.13. Casos integradores de medición y estimación {#fispm-c03-casos-integradores-de-mediciuxf3n-y-estimaciuxf3n}
+## 13. Casos integradores de medición y estimación {#fispm-c03-casos-integradores-de-mediciuxf3n-y-estimaciuxf3n}
 
 []{#integrar-una-medición-completa-es-una-cadena-de-decisiones}
 
-### 3.13.1. Integrar: una medición completa es una cadena de decisiones {#fispm-c03-integrar-una-mediciuxf3n-completa-es-una-cadena-de-decisiones}
+### Integrar: una medición completa es una cadena de decisiones {#fispm-c03-integrar-una-mediciuxf3n-completa-es-una-cadena-de-decisiones}
 
 Hasta ahora hemos estudiado por separado mensurando, indicación, resolución, repetición, incertidumbre, propagación, reporte, estimación y orden de magnitud. En un problema real esas piezas aparecen juntas. El esquema de trabajo que utilizaremos en esta sección es
 
@@ -5737,7 +5737,7 @@ No es un adorno externo al procedimiento experimental.
 
 []{#caso-a-medir-una-longitud-con-un-calibre-digital}
 
-### 3.13.2. Caso A --- Medir una longitud con un calibre digital {#fispm-c03-caso-a-medir-una-longitud-con-un-calibre-digital}
+### Caso A --- Medir una longitud con un calibre digital {#fispm-c03-caso-a-medir-una-longitud-con-un-calibre-digital}
 
 Queremos medir el diámetro de una pieza cilíndrica. El **mensurando** no es «lo que muestra el calibre», sino el diámetro de la pieza bajo las condiciones y procedimiento especificados.
 
@@ -5755,7 +5755,7 @@ La escala del resultado está clara antes de cualquier estadística.
 
 []{#centro-dispersión-y-componente-tipo-a}
 
-### 3.13.3. Centro, dispersión y componente tipo A {#fispm-c03-centro-dispersiuxf3n-y-componente-tipo-a}
+### Centro, dispersión y componente tipo A {#fispm-c03-centro-dispersiuxf3n-y-componente-tipo-a}
 
 La media es $\bar d = 20.140\,\mathrm{mm}.$ La desviación estándar muestral de las cinco indicaciones es aproximadamente
 
@@ -5769,7 +5769,7 @@ La dispersión observada y la incertidumbre de la media son cantidades distintas
 
 []{#resolución-combinación-y-reporte}
 
-### 3.13.4. Resolución, combinación y reporte {#fispm-c03-resoluciuxf3n-combinaciuxf3n-y-reporte}
+### Resolución, combinación y reporte {#fispm-c03-resoluciuxf3n-combinaciuxf3n-y-reporte}
 
 Si modelamos la cuantización debida a la resolución mediante una distribución rectangular de anchura
 
@@ -5803,7 +5803,7 @@ Este ejemplo reúne varias ideas del capítulo:
 
 []{#caso-b-medir-un-período-cronometrando-muchas-oscilaciones}
 
-### 3.13.5. Caso B --- Medir un período cronometrando muchas oscilaciones {#fispm-c03-caso-b-medir-un-peruxedodo-cronometrando-muchas-oscilaciones}
+### Caso B --- Medir un período cronometrando muchas oscilaciones {#fispm-c03-caso-b-medir-un-peruxedodo-cronometrando-muchas-oscilaciones}
 
 Queremos determinar el período de una oscilación aproximadamente periódica.
 
@@ -5831,7 +5831,7 @@ ya nos habría permitido detectar inmediatamente un error como $T=15.8\,\mathrm 
 
 []{#propagación-en-el-caso-del-período}
 
-### 3.13.6. Propagación en el caso del período {#fispm-c03-propagaciuxf3n-en-el-caso-del-peruxedodo}
+### Propagación en el caso del período {#fispm-c03-propagaciuxf3n-en-el-caso-del-peruxedodo}
 
 Para los cinco tiempos anteriores, $s_t \approx 0.0286\,\mathrm s,$
 
@@ -5867,7 +5867,7 @@ $$\boxed{ T=1.5806\,\mathrm s, \qquad u_c(T)=0.0030\,\mathrm s. }$$
 
 []{#qué-mejora-al-medir-muchas-oscilaciones-y-qué-no}
 
-### 3.13.7. Qué mejora al medir muchas oscilaciones --- y qué no {#fispm-c03-quuxe9-mejora-al-medir-muchas-oscilaciones-y-quuxe9-no}
+### Qué mejora al medir muchas oscilaciones --- y qué no {#fispm-c03-quuxe9-mejora-al-medir-muchas-oscilaciones-y-quuxe9-no}
 
 El modelo
 
@@ -5889,7 +5889,7 @@ $$\boxed{ \text{aumentar }N \text{\parbox{.66\linewidth}{\centering  mejora cier
 
 []{#caso-c-densidad-de-un-bloque-a-partir-de-masa-y-dimensiones}
 
-### 3.13.8. Caso C --- Densidad de un bloque a partir de masa y dimensiones {#fispm-c03-caso-c-densidad-de-un-bloque-a-partir-de-masa-y-dimensiones}
+### Caso C --- Densidad de un bloque a partir de masa y dimensiones {#fispm-c03-caso-c-densidad-de-un-bloque-a-partir-de-masa-y-dimensiones}
 
 Consideremos un bloque rectangular con
 
@@ -5919,7 +5919,7 @@ La estimación previa sitúa inmediatamente la escala esperada.
 
 []{#propagación-relativa-y-contribución-dominante}
 
-### 3.13.9. Propagación relativa y contribución dominante {#fispm-c03-propagaciuxf3n-relativa-y-contribuciuxf3n-dominante}
+### Propagación relativa y contribución dominante {#fispm-c03-propagaciuxf3n-relativa-y-contribuciuxf3n-dominante}
 
 El volumen nominal es
 
@@ -5967,7 +5967,7 @@ Además, el presupuesto nos indica dónde convendría mejorar el experimento: **
 
 []{#caso-d-consumo-diario-de-agua-medición-y-estimación-fermi}
 
-### 3.13.10. Caso D --- Consumo diario de agua: medición y estimación Fermi {#fispm-c03-caso-d-consumo-diario-de-agua-mediciuxf3n-y-estimaciuxf3n-fermi}
+### Caso D --- Consumo diario de agua: medición y estimación Fermi {#fispm-c03-caso-d-consumo-diario-de-agua-mediciuxf3n-y-estimaciuxf3n-fermi}
 
 Supongamos que el medidor de agua de una vivienda indica al inicio del día
 
@@ -5997,7 +5997,7 @@ Muestra que no existe una discrepancia de escala que obligue inmediatamente a re
 
 []{#diferencia-de-lecturas-y-fuentes-comunes}
 
-### 3.13.11. Diferencia de lecturas y fuentes comunes {#fispm-c03-diferencia-de-lecturas-y-fuentes-comunes}
+### Diferencia de lecturas y fuentes comunes {#fispm-c03-diferencia-de-lecturas-y-fuentes-comunes}
 
 Supongamos que la resolución del medidor es $\Delta=0.001\,\mathrm{m^3}.$ Para una lectura individual, bajo un modelo rectangular de cuantización,
 
@@ -6017,7 +6017,7 @@ En cambio, un error multiplicativo de escala no se cancela de la misma manera. E
 
 []{#medición-de-un-día-no-equivale-a-consumo-típico}
 
-### 3.13.12. Medición de un día no equivale a consumo "típico" {#fispm-c03-mediciuxf3n-de-un-duxeda-no-equivale-a-consumo-tuxedpico}
+### Medición de un día no equivale a consumo "típico" {#fispm-c03-mediciuxf3n-de-un-duxeda-no-equivale-a-consumo-tuxedpico}
 
 El resultado
 
@@ -6033,7 +6033,7 @@ $$\boxed{ \text{cambiar la pregunta física} \Longrightarrow \text{cambiar el me
 
 []{#red-conceptual-de-los-cuatro-casos}
 
-### 3.13.13. Red conceptual de los cuatro casos {#fispm-c03-red-conceptual-de-los-cuatro-casos}
+### Red conceptual de los cuatro casos {#fispm-c03-red-conceptual-de-los-cuatro-casos}
 
   Caso          Mensurando              Modelo principal        Herramienta dominante        Control final
   ------------- ----------------------- ----------------------- ---------------------------- -------------------------------------
@@ -6144,7 +6144,7 @@ Esa concordancia no convierte el valor Fermi en medición ni prueba que el consu
 
 []{#cierre-una-misma-disciplina-para-medir-y-estimar}
 
-### 3.13.14. Cierre: una misma disciplina para medir y estimar {#fispm-c03-cierre-una-misma-disciplina-para-medir-y-estimar}
+### Cierre: una misma disciplina para medir y estimar {#fispm-c03-cierre-una-misma-disciplina-para-medir-y-estimar}
 
 Los cuatro casos muestran que la parte difícil rara vez es la aritmética.
 
@@ -6174,11 +6174,11 @@ En §14 cerraremos el capítulo preguntando qué tipo de afirmación permite fin
 
 []{#fpm-i-03-s14}
 
-## 3.14. Qué puede y qué no puede decir una medición {#fispm-c03-quuxe9-puede-y-quuxe9-no-puede-decir-una-mediciuxf3n}
+## 14. Qué puede y qué no puede decir una medición {#fispm-c03-quuxe9-puede-y-quuxe9-no-puede-decir-una-mediciuxf3n}
 
 []{#volver-a-la-pregunta-rectora}
 
-### 3.14.1. Volver a la pregunta rectora {#fispm-c03-volver-a-la-pregunta-rectora}
+### Volver a la pregunta rectora {#fispm-c03-volver-a-la-pregunta-rectora}
 
 El capítulo comenzó con una pregunta:
 
@@ -6210,7 +6210,7 @@ Pero de esta desigualdad no se sigue que una medición sea arbitraria. El objeti
 
 []{#qué-sí-puede-decir-una-medición-bien-formulada}
 
-### 3.14.2. Qué sí puede decir una medición bien formulada {#fispm-c03-quuxe9-suxed-puede-decir-una-mediciuxf3n-bien-formulada}
+### Qué sí puede decir una medición bien formulada {#fispm-c03-quuxe9-suxed-puede-decir-una-mediciuxf3n-bien-formulada}
 
 Supongamos que reportamos
 
@@ -6232,7 +6232,7 @@ La medición permite formular una afirmación cuantitativa **condicionada por un
 
 []{#qué-no-puede-decir-por-sí-sola}
 
-### 3.14.3. Qué no puede decir por sí sola {#fispm-c03-quuxe9-no-puede-decir-por-suxed-sola}
+### Qué no puede decir por sí sola {#fispm-c03-quuxe9-no-puede-decir-por-suxed-sola}
 
 El mismo resultado
 
@@ -6260,7 +6260,7 @@ $$\boxed{ \text{\parbox{.66\linewidth}{\centering un resultado justifica sólo l
 
 []{#incertidumbre-no-significa-ignorancia-total}
 
-### 3.14.4. Incertidumbre no significa ignorancia total {#fispm-c03-incertidumbre-no-significa-ignorancia-total}
+### Incertidumbre no significa ignorancia total {#fispm-c03-incertidumbre-no-significa-ignorancia-total}
 
 En §4 definimos la incertidumbre como información cuantitativa que caracteriza la dispersión de valores atribuibles al mensurando a partir de la información utilizada.[^56]
 
@@ -6278,7 +6278,7 @@ Consideremos dos situaciones:
 
 []{#situación-a}
 
-#### 3.14.4.1. Situación A {#fispm-c03-situaciuxf3n-a}
+#### Situación A {#fispm-c03-situaciuxf3n-a}
 
 Sólo sabemos que una longitud está probablemente entre
 
@@ -6286,7 +6286,7 @@ $$1\,\mathrm m \quad\text{y}\quad 10\,\mathrm m.$$
 
 []{#situación-b}
 
-#### 3.14.4.2. Situación B {#fispm-c03-situaciuxf3n-b}
+#### Situación B {#fispm-c03-situaciuxf3n-b}
 
 Un procedimiento calibrado conduce a
 
@@ -6298,7 +6298,7 @@ Lo estructura.
 
 []{#incertidumbre-pequeña-no-garantiza-por-sí-sola-exactitud}
 
-### 3.14.5. Incertidumbre pequeña no garantiza por sí sola exactitud {#fispm-c03-incertidumbre-pequeuxf1a-no-garantiza-por-suxed-sola-exactitud}
+### Incertidumbre pequeña no garantiza por sí sola exactitud {#fispm-c03-incertidumbre-pequeuxf1a-no-garantiza-por-suxed-sola-exactitud}
 
 Aquí conviene recuperar la distinción entre **precisión de medición** y **exactitud de medición**. La precisión está relacionada con la cercanía entre indicaciones o valores medidos obtenidos mediante mediciones repetidas bajo condiciones especificadas. La exactitud se refiere cualitativamente a la cercanía entre un valor medido y un valor verdadero del mensurando; el VIM no la trata como una magnitud que deba representarse mediante un único número.[^57]
 
@@ -6320,7 +6320,7 @@ $$\boxed{ \text{incertidumbre evaluada dentro de un modelo} \not\Rightarrow \tex
 
 []{#el-presupuesto-de-incertidumbre-no-certifica-automáticamente-el-modelo}
 
-### 3.14.6. El presupuesto de incertidumbre no certifica automáticamente el modelo {#fispm-c03-el-presupuesto-de-incertidumbre-no-certifica-automuxe1ticamente-el-modelo}
+### El presupuesto de incertidumbre no certifica automáticamente el modelo {#fispm-c03-el-presupuesto-de-incertidumbre-no-certifica-automuxe1ticamente-el-modelo}
 
 Supongamos que medimos repetidamente el diámetro de una pieza no perfectamente circular, siempre en la misma orientación. Podríamos obtener una dispersión extremadamente pequeña. Podríamos incluir además la resolución del calibre y una corrección de calibración.
 
@@ -6338,7 +6338,7 @@ $$\boxed{ \text{propagación correcta} + \text{modelo inadecuado} \neq \text{res
 
 []{#la-incertidumbre-sólo-incluye-lo-que-el-análisis-ha-modelado}
 
-### 3.14.7. La incertidumbre sólo incluye lo que el análisis ha modelado {#fispm-c03-la-incertidumbre-suxf3lo-incluye-lo-que-el-anuxe1lisis-ha-modelado}
+### La incertidumbre sólo incluye lo que el análisis ha modelado {#fispm-c03-la-incertidumbre-suxf3lo-incluye-lo-que-el-anuxe1lisis-ha-modelado}
 
 Un presupuesto de incertidumbre puede contener:
 
@@ -6376,7 +6376,7 @@ Esta disciplina evita tratar el presupuesto de incertidumbre como un ritual alge
 
 []{#un-intervalo-sólo-significa-lo-que-hemos-declarado-que-significa}
 
-### 3.14.8. Un intervalo sólo significa lo que hemos declarado que significa {#fispm-c03-un-intervalo-suxf3lo-significa-lo-que-hemos-declarado-que-significa}
+### Un intervalo sólo significa lo que hemos declarado que significa {#fispm-c03-un-intervalo-suxf3lo-significa-lo-que-hemos-declarado-que-significa}
 
 En §§4 y 8 insistimos en que el símbolo
 
@@ -6400,7 +6400,7 @@ La notación debe seguir a la semántica, no sustituirla.
 
 []{#exactitud-matemática-y-precisión-física-pertenecen-a-niveles-distintos}
 
-### 3.14.9. Exactitud matemática y precisión física pertenecen a niveles distintos {#fispm-c03-exactitud-matemuxe1tica-y-precisiuxf3n-fuxedsica-pertenecen-a-niveles-distintos}
+### Exactitud matemática y precisión física pertenecen a niveles distintos {#fispm-c03-exactitud-matemuxe1tica-y-precisiuxf3n-fuxedsica-pertenecen-a-niveles-distintos}
 
 Supongamos que
 
@@ -6424,7 +6424,7 @@ Este punto explica por qué las cifras producidas por una calculadora no determi
 
 []{#una-medición-responde-una-pregunta-no-todas-las-preguntas-cercanas}
 
-### 3.14.10. Una medición responde una pregunta, no todas las preguntas cercanas {#fispm-c03-una-mediciuxf3n-responde-una-pregunta-no-todas-las-preguntas-cercanas}
+### Una medición responde una pregunta, no todas las preguntas cercanas {#fispm-c03-una-mediciuxf3n-responde-una-pregunta-no-todas-las-preguntas-cercanas}
 
 En §13 medimos un consumo de agua durante un día.
 
@@ -6458,7 +6458,7 @@ Medir una muestra temporal, espacial o poblacional no autoriza automáticamente 
 
 []{#comparar-resultados-exige-comparar-también-sus-modelos}
 
-### 3.14.11. Comparar resultados exige comparar también sus modelos {#fispm-c03-comparar-resultados-exige-comparar-tambiuxe9n-sus-modelos}
+### Comparar resultados exige comparar también sus modelos {#fispm-c03-comparar-resultados-exige-comparar-tambiuxe9n-sus-modelos}
 
 Supongamos dos laboratorios que reportan
 
@@ -6494,7 +6494,7 @@ La comparación física conserva la estructura del problema original.
 
 []{#medición-y-estimación-no-compiten}
 
-### 3.14.12. Medición y estimación no compiten {#fispm-c03-mediciuxf3n-y-estimaciuxf3n-no-compiten}
+### Medición y estimación no compiten {#fispm-c03-mediciuxf3n-y-estimaciuxf3n-no-compiten}
 
 Las §§10--12 introdujeron estimaciones de escala y estimaciones tipo Fermi.
 
@@ -6532,7 +6532,7 @@ con funciones distintas pero complementarias.
 
 []{#reportar-un-resultado-es-construir-un-argumento-compacto}
 
-### 3.14.13. Reportar un resultado es construir un argumento compacto {#fispm-c03-reportar-un-resultado-es-construir-un-argumento-compacto}
+### Reportar un resultado es construir un argumento compacto {#fispm-c03-reportar-un-resultado-es-construir-un-argumento-compacto}
 
 Un buen reporte experimental puede ser breve, pero no es intelectualmente simple. Cuando escribimos
 
@@ -6548,7 +6548,7 @@ Forma parte de la física experimental.
 
 []{#prueba-de-cierre-seis-preguntas-antes-de-aceptar-una-conclusión}
 
-### 3.14.14. Prueba de cierre: seis preguntas antes de aceptar una conclusión {#fispm-c03-prueba-de-cierre-seis-preguntas-antes-de-aceptar-una-conclusiuxf3n}
+### Prueba de cierre: seis preguntas antes de aceptar una conclusión {#fispm-c03-prueba-de-cierre-seis-preguntas-antes-de-aceptar-una-conclusiuxf3n}
 
 Antes de aceptar una afirmación basada en una medición, conviene poder responder:
 
@@ -6590,7 +6590,7 @@ Para cada una, indica qué información adicional sería necesaria.
 
 **Solución**
 
-### 3.14.14. 1. Intervalo garantizado {#fispm-c03-intervalo-garantizado .unnumbered}
+### 1. Intervalo garantizado {#fispm-c03-intervalo-garantizado .unnumbered}
 
 La incertidumbre estándar combinada
 
@@ -6602,11 +6602,11 @@ $$24.998 \le d \le 25.002\,\mathrm{mm}.$$
 
 Para interpretar un intervalo necesitamos declarar qué tipo de incertidumbre o cobertura se está usando y bajo qué modelo.
 
-### 3.14.14. 2. Circularidad {#fispm-c03-circularidad .unnumbered}
+### 2. Circularidad {#fispm-c03-circularidad .unnumbered}
 
 Una serie de mediciones de diámetro en una sola orientación puede ser muy repetible y, aun así, no decir nada suficiente sobre otras orientaciones. Para evaluar circularidad habría que definir el mensurando correspondiente y medir la geometría de la pieza en múltiples direcciones o mediante un procedimiento apropiado.
 
-### 3.14.14. 3. Otro laboratorio {#fispm-c03-otro-laboratorio .unnumbered}
+### 3. Otro laboratorio {#fispm-c03-otro-laboratorio .unnumbered}
 
 Otro laboratorio puede usar un procedimiento, patrón, corrección, temperatura, fuerza de contacto o modelo de incertidumbre distintos. La comparabilidad exige verificar que ambos resultados se refieren al mismo mensurando bajo condiciones y modelos compatibles. El diagnóstico general es
 
@@ -6663,37 +6663,37 @@ $$\boxed{\begin{gathered} \text{\parbox{.83\linewidth}{\centering una medición 
 
 []{#red-final-del-capítulo}
 
-### 3.14.15. Red final del capítulo {#fispm-c03-red-final-del-capuxedtulo}
+### Red final del capítulo {#fispm-c03-red-final-del-capuxedtulo}
 
 Podemos ahora reconstruir la arquitectura completa.
 
 []{#de-la-experiencia-al-resultado}
 
-#### 3.14.15.1. De la experiencia al resultado {#fispm-c03-de-la-experiencia-al-resultado}
+#### De la experiencia al resultado {#fispm-c03-de-la-experiencia-al-resultado}
 
 $$\text{sistema físico} \to \text{mensurando} \to \text{procedimiento} \to \text{indicación}.$$
 
 []{#de-las-indicaciones-a-la-información-metrológica}
 
-#### 3.14.15.2. De las indicaciones a la información metrológica {#fispm-c03-de-las-indicaciones-a-la-informaciuxf3n-metroluxf3gica}
+#### De las indicaciones a la información metrológica {#fispm-c03-de-las-indicaciones-a-la-informaciuxf3n-metroluxf3gica}
 
 $$\text{repetición} + \text{resolución} + \text{calibración} + \text{modelo} \to \text{incertidumbre}.$$
 
 []{#de-las-entradas-a-la-magnitud-derivada}
 
-#### 3.14.15.3. De las entradas a la magnitud derivada {#fispm-c03-de-las-entradas-a-la-magnitud-derivada}
+#### De las entradas a la magnitud derivada {#fispm-c03-de-las-entradas-a-la-magnitud-derivada}
 
 $$\text{modelo de medición} \to \text{coeficientes de sensibilidad} \to \text{propagación}.$$
 
 []{#del-cálculo-al-reporte}
 
-#### 3.14.15.4. Del cálculo al reporte {#fispm-c03-del-cuxe1lculo-al-reporte}
+#### Del cálculo al reporte {#fispm-c03-del-cuxe1lculo-al-reporte}
 
 $$\text{valor} + \text{unidad} + \text{incertidumbre explícita} \to \text{resultado comunicado}.$$
 
 []{#del-resultado-al-juicio-físico}
 
-#### 3.14.15.5. Del resultado al juicio físico {#fispm-c03-del-resultado-al-juicio-fuxedsico}
+#### Del resultado al juicio físico {#fispm-c03-del-resultado-al-juicio-fuxedsico}
 
 $$\text{resultado} + \text{estimación} + \text{robustez} + \text{alcance del modelo} \to \text{conclusión físicamente defendible}.$$
 
@@ -6701,7 +6701,7 @@ La lección global puede resumirse en una sola regla:
 
 $$\boxed{\begin{gathered} \text{\parbox{.83\linewidth}{\centering la física experimental no elimina la incertidumbre;}}\\[2pt] \text{\parbox{.83\linewidth}{\centering aprende a describir qué sabemos, cómo lo sabemos y hasta dónde llega esa afirmación}}. \end{gathered}}$$
 
-### 3.14.16. Transición al capítulo 4 {#fispm-c03-transiciuxf3n-a-fpm-i-04}
+### Transición al capítulo 4 {#fispm-c03-transiciuxf3n-a-fpm-i-04}
 
 Hasta aquí hemos tratado magnitudes que podían representarse mediante un valor escalar:
 

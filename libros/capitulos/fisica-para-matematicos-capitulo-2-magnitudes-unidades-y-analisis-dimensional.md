@@ -43,11 +43,11 @@ $$\boxed{ \text{fenómeno físico} \leftrightarrow \text{modelo matemático} \le
 
 []{#fpm-i-02-s01}
 
-## 2.1. Un número no es todavía una magnitud física {#fispm-c02-un-nuxfamero-no-es-todavuxeda-una-magnitud-fuxedsica}
+## 1. Un número no es todavía una magnitud física {#fispm-c02-un-nuxfamero-no-es-todavuxeda-una-magnitud-fuxedsica}
 
 []{#el-resultado-42}
 
-### 2.1.1. El resultado «42» {#fispm-c02-el-resultado-42}
+### El resultado «42» {#fispm-c02-el-resultado-42}
 
 El capítulo anterior terminó con una regla que acompañará todo el tratado: un cálculo físico no se cierra cuando aparece un número. Debemos todavía interpretarlo respecto del sistema, las premisas, el régimen y la observación. Ahora haremos esa regla más concreta.
 
@@ -83,7 +83,7 @@ Esta separación parece elemental. Sin embargo, una gran cantidad de errores pos
 
 []{#magnitud-física}
 
-### 2.1.2. Magnitud física {#fispm-c02-magnitud-fuxedsica}
+### Magnitud física {#fispm-c02-magnitud-fuxedsica}
 
 El vocabulario metrológico internacional llama **magnitud** a una propiedad de un fenómeno, cuerpo o sustancia cuya magnitud puede expresarse mediante un número y una referencia.[^2]
 
@@ -119,7 +119,7 @@ Esta distinción prolonga el capítulo 1: antes de escribir una ecuación, el mo
 
 []{#una-magnitud-no-es-uno-de-sus-valores-particulares}
 
-### 2.1.3. Una magnitud no es uno de sus valores particulares {#fispm-c02-una-magnitud-no-es-uno-de-sus-valores-particulares}
+### Una magnitud no es uno de sus valores particulares {#fispm-c02-una-magnitud-no-es-uno-de-sus-valores-particulares}
 
 Consideremos la **longitud**.
 
@@ -153,7 +153,7 @@ El BIPM resume esta estructura mediante la idea de que el valor de una magnitud 
 
 []{#la-unidad-es-una-referencia-no-un-adorno-tipográfico}
 
-### 2.1.4. La unidad es una referencia, no un adorno tipográfico {#fispm-c02-la-unidad-es-una-referencia-no-un-adorno-tipogruxe1fico}
+### La unidad es una referencia, no un adorno tipográfico {#fispm-c02-la-unidad-es-una-referencia-no-un-adorno-tipogruxe1fico}
 
 ¿Qué trabajo realiza el metro en
 
@@ -181,7 +181,7 @@ Dentro del cálculo de magnitudes, la unidad participa algebraicamente.
 
 []{#el-valor-numérico-depende-de-la-unidad}
 
-### 2.1.5. El valor numérico depende de la unidad {#fispm-c02-el-valor-numuxe9rico-depende-de-la-unidad}
+### El valor numérico depende de la unidad {#fispm-c02-el-valor-numuxe9rico-depende-de-la-unidad}
 
 El BIPM escribe conceptualmente:
 
@@ -207,7 +207,7 @@ La magnitud representada puede permanecer exactamente igual.
 
 []{#la-misma-longitud-números-diferentes}
 
-### 2.1.6. La misma longitud, números diferentes {#fispm-c02-la-misma-longitud-nuxfameros-diferentes}
+### La misma longitud, números diferentes {#fispm-c02-la-misma-longitud-nuxfameros-diferentes}
 
 Consideremos una misma longitud física: $L=2\,\mathrm m.$
 
@@ -237,7 +237,7 @@ Los números cambian. La longitud no.
 
 []{#por-qué-aparece-la-compensación-inversa}
 
-### 2.1.7. Por qué aparece la compensación inversa {#fispm-c02-por-quuxe9-aparece-la-compensaciuxf3n-inversa}
+### Por qué aparece la compensación inversa {#fispm-c02-por-quuxe9-aparece-la-compensaciuxf3n-inversa}
 
 Supongamos que tenemos una unidad $u$ y otra unidad $u'$ del mismo tipo.
 
@@ -247,7 +247,7 @@ entonces: $L=3\,\mathrm{km}.$ El número disminuye exactamente en el factor en q
 
 []{#primera-proposición-formal}
 
-### 2.1.8. Primera proposición formal {#fispm-c02-primera-proposiciuxf3n-formal}
+### Primera proposición formal {#fispm-c02-primera-proposiciuxf3n-formal}
 
 **Proposición 1 --- Covariancia del valor numérico bajo un cambio multiplicativo de unidad**
 
@@ -265,7 +265,7 @@ $$\boxed{ q'=\frac{q}{\lambda}. }$$
 
 []{#demostración}
 
-#### 2.1.8.1. Demostración {#fispm-c02-demostraciuxf3n}
+#### Demostración {#fispm-c02-demostraciuxf3n}
 
 Partimos de: $Q=q\,u.$
 
@@ -287,7 +287,7 @@ $$\boxed{\text{QED}}$$
 
 []{#interpretación-de-la-proposición-1}
 
-### 2.1.9. Interpretación de la Proposición 1 {#fispm-c02-interpretaciuxf3n-de-la-proposiciuxf3n-1}
+### Interpretación de la Proposición 1 {#fispm-c02-interpretaciuxf3n-de-la-proposiciuxf3n-1}
 
 Si agrandamos la unidad por un factor $\lambda$, el valor numérico disminuye por el mismo factor: $u\longrightarrow\lambda u$
 
@@ -305,7 +305,7 @@ Más adelante veremos una idea análoga cuando cambiemos sistemas de coordenadas
 
 []{#ejemplo-desarrollado-1-metros-y-kilómetros}
 
-### 2.1.10. Ejemplo desarrollado 1 --- Metros y kilómetros {#fispm-c02-ejemplo-desarrollado-1-metros-y-kiluxf3metros}
+### Ejemplo desarrollado 1 --- Metros y kilómetros {#fispm-c02-ejemplo-desarrollado-1-metros-y-kiluxf3metros}
 
 Sea: $L=7500\,\mathrm m.$
 
@@ -323,7 +323,7 @@ Consistió en mantener fija la magnitud mientras cambiábamos la referencia util
 
 []{#ejemplo-desarrollado-2-segundos-y-milisegundos}
 
-### 2.1.11. Ejemplo desarrollado 2 --- Segundos y milisegundos {#fispm-c02-ejemplo-desarrollado-2-segundos-y-milisegundos}
+### Ejemplo desarrollado 2 --- Segundos y milisegundos {#fispm-c02-ejemplo-desarrollado-2-segundos-y-milisegundos}
 
 Consideremos: $T=0.032\,\mathrm s.$
 
@@ -339,7 +339,7 @@ La unidad disminuyó por un factor $1000$ y el valor numérico aumentó por un f
 
 []{#no-todas-las-conversiones-son-de-escala-pura}
 
-### 2.1.12. No todas las conversiones son de escala pura {#fispm-c02-no-todas-las-conversiones-son-de-escala-pura}
+### No todas las conversiones son de escala pura {#fispm-c02-no-todas-las-conversiones-son-de-escala-pura}
 
 La Proposición 1 tiene una hipótesis explícita: $u'=\lambda u.$
 
@@ -357,7 +357,7 @@ El tratamiento preciso de kelvin, grado Celsius y SI aparecerá en §3.
 
 []{#el-símbolo-de-la-magnitud-no-debería-depender-de-la-unidad}
 
-### 2.1.13. El símbolo de la magnitud no debería depender de la unidad {#fispm-c02-el-suxedmbolo-de-la-magnitud-no-deberuxeda-depender-de-la-unidad}
+### El símbolo de la magnitud no debería depender de la unidad {#fispm-c02-el-suxedmbolo-de-la-magnitud-no-deberuxeda-depender-de-la-unidad}
 
 Si: $L=2\,\mathrm m$
 
@@ -377,7 +377,7 @@ pero ambos corresponden al mismo $L$. Una ley física no debería depender accid
 
 []{#del-número-a-la-observación}
 
-### 2.1.14. Del número a la observación {#fispm-c02-del-nuxfamero-a-la-observaciuxf3n}
+### Del número a la observación {#fispm-c02-del-nuxfamero-a-la-observaciuxf3n}
 
 En el capítulo 1 introdujimos relaciones `[``OBS``]`.
 
@@ -393,7 +393,7 @@ Después escogemos una unidad $u=\mathrm m$ y obtenemos: $L=\{L\}_{\mathrm m}\,\
 
 []{#un-número-puro-también-puede-tener-significado-físico}
 
-### 2.1.15. Un número puro también puede tener significado físico {#fispm-c02-un-nuxfamero-puro-tambiuxe9n-puede-tener-significado-fuxedsico}
+### Un número puro también puede tener significado físico {#fispm-c02-un-nuxfamero-puro-tambiuxe9n-puede-tener-significado-fuxedsico}
 
 Debemos evitar el error contrario.
 
@@ -423,13 +423,13 @@ La segunda afirmación sería falsa.
 
 []{#ficha-de-lectura-cuantitativa}
 
-### 2.1.16. Ficha de lectura cuantitativa {#fispm-c02-ficha-de-lectura-cuantitativa}
+### Ficha de lectura cuantitativa {#fispm-c02-ficha-de-lectura-cuantitativa}
 
 **Ficha de lectura de un valor** 1. **Magnitud:** ¿qué propiedad física representa el símbolo? 2. **Valor:** ¿qué valor particular se atribuye? 3. **Unidad:** ¿qué referencia se utiliza? 4. **Número:** ¿cuál es el valor numérico respecto de esa unidad? 5. **Cambio de unidad:** ¿la transformación es multiplicativa? 6. **Observación:** ¿qué procedimiento conecta la magnitud con el dato? 7. **Interpretación:** ¿el número conserva sentido físico si borramos la referencia?
 
 []{#ejercicios-de-1}
 
-### 2.1.17. Ejercicios de §1 {#fispm-c02-ejercicios-de-1}
+### Ejercicios de §1 {#fispm-c02-ejercicios-de-1}
 
 **Ejercicio 1 --- Número, valor o magnitud**
 
@@ -549,7 +549,7 @@ La distancia no cambió. La unidad nueva es cinco veces mayor y por eso hacen fa
 
 []{#cierre}
 
-### 2.1.18. Cierre {#fispm-c02-cierre}
+### Cierre {#fispm-c02-cierre}
 
 Hemos construido la primera capa cuantitativa del tratado:
 
@@ -577,7 +577,7 @@ La sección siguiente profundizará en una pregunta que aquí hemos tratado de m
 
 > **¿qué significa que dos magnitudes sean del mismo tipo y puedan compararse mediante una misma unidad?**
 
-Entramos así en el §[2.2](#fispm-c02-magnitudes-clases-de-magnitudes-y-referencias).
+Entramos así en el §[2](#fispm-c02-magnitudes-clases-de-magnitudes-y-referencias).
 
 []{#magnitudes-clases-de-magnitudes-y-referencias}
 
@@ -585,11 +585,11 @@ Entramos así en el §[2.2](#fispm-c02-magnitudes-clases-de-magnitudes-y-referen
 
 []{#fpm-i-02-s02}
 
-## 2.2. Magnitudes, clases de magnitudes y referencias {#fispm-c02-magnitudes-clases-de-magnitudes-y-referencias}
+## 2. Magnitudes, clases de magnitudes y referencias {#fispm-c02-magnitudes-clases-de-magnitudes-y-referencias}
 
 []{#antes-de-comparar-números-debemos-saber-qué-estamos-comparando}
 
-### 2.2.1. Antes de comparar números, debemos saber qué estamos comparando {#fispm-c02-antes-de-comparar-nuxfameros-debemos-saber-quuxe9-estamos-comparando}
+### Antes de comparar números, debemos saber qué estamos comparando {#fispm-c02-antes-de-comparar-nuxfameros-debemos-saber-quuxe9-estamos-comparando}
 
 En §1 distinguimos cuatro niveles:
 
@@ -615,7 +615,7 @@ Podemos preguntar cuál longitud es mayor, calcular su diferencia o formar, cuan
 
 <figcaption>
 
-**Figura 2.1.** Cambiar de metros a centímetros multiplica por cien el valor numérico y divide por cien la unidad empleada. El segmento físico representado permanece igual: $2\,\mathrm m=200\,\mathrm{cm}$. Véase §[2.2](#fispm-c02-magnitudes-clases-de-magnitudes-y-referencias).
+**Figura 2.1.** Cambiar de metros a centímetros multiplica por cien el valor numérico y divide por cien la unidad empleada. El segmento físico representado permanece igual: $2\,\mathrm m=200\,\mathrm{cm}$. Véase §[2](#fispm-c02-magnitudes-clases-de-magnitudes-y-referencias).
 
 </figcaption>
 
@@ -629,7 +629,7 @@ Podemos preguntar cuál longitud es mayor, calcular su diferencia o formar, cuan
 
 <figcaption>
 
-**Figura 2.2.** La longitud permanece fija al cambiar la unidad. Cada centímetro contiene diez milímetros; el valor numérico se multiplica por diez. Véase §[2.2](#fispm-c02-magnitudes-clases-de-magnitudes-y-referencias).
+**Figura 2.2.** La longitud permanece fija al cambiar la unidad. Cada centímetro contiene diez milímetros; el valor numérico se multiplica por diez. Véase §[2](#fispm-c02-magnitudes-clases-de-magnitudes-y-referencias).
 
 </figcaption>
 
@@ -647,7 +647,7 @@ No tiene sentido físico ordinario afirmar: $5\,\mathrm m<8\,\mathrm s.$ La difi
 
 []{#tipo-de-magnitud}
 
-### 2.2.2. Tipo de magnitud {#fispm-c02-tipo-de-magnitud}
+### Tipo de magnitud {#fispm-c02-tipo-de-magnitud}
 
 El Vocabulario Internacional de Metrología introduce la noción de *kind of quantity* como el aspecto común a magnitudes mutuamente comparables.[^4]
 
@@ -689,7 +689,7 @@ $$\boxed{ \text{mismo valor numérico} \not\Rightarrow \text{mismo tipo de magni
 
 []{#una-clase-física-precede-a-la-elección-de-unidad}
 
-### 2.2.3. Una clase física precede a la elección de unidad {#fispm-c02-una-clase-fuxedsica-precede-a-la-elecciuxf3n-de-unidad}
+### Una clase física precede a la elección de unidad {#fispm-c02-una-clase-fuxedsica-precede-a-la-elecciuxf3n-de-unidad}
 
 En §1 escribimos: $Q=q\,u.$
 
@@ -717,7 +717,7 @@ Este orden será esencial cuando estudiemos dimensiones.
 
 []{#la-unidad-como-cantidad-de-referencia-del-mismo-tipo}
 
-### 2.2.4. La unidad como cantidad de referencia del mismo tipo {#fispm-c02-la-unidad-como-cantidad-de-referencia-del-mismo-tipo}
+### La unidad como cantidad de referencia del mismo tipo {#fispm-c02-la-unidad-como-cantidad-de-referencia-del-mismo-tipo}
 
 El VIM define una unidad de medida como una cantidad escalar real, adoptada por convención, con la cual puede compararse cualquier otra cantidad del mismo tipo para expresar la razón entre ambas como un número.[^5]
 
@@ -729,7 +729,7 @@ puede leerse como: $\frac{L}{1\,\mathrm m}=2.5.$ El metro no es un comentario so
 
 []{#comparabilidad-no-significa-identidad-física}
 
-### 2.2.5. Comparabilidad no significa identidad física {#fispm-c02-comparabilidad-no-significa-identidad-fuxedsica}
+### Comparabilidad no significa identidad física {#fispm-c02-comparabilidad-no-significa-identidad-fuxedsica}
 
 Que dos magnitudes sean del mismo tipo no significa que sean la misma magnitud particular. La longitud de una mesa y la longitud de una habitación pueden compararse porque ambas son longitudes. Pero son propiedades de sistemas diferentes.
 
@@ -751,7 +751,7 @@ $$\boxed{ \text{mismo tipo} \neq \text{misma magnitud particular} \neq \text{mis
 
 []{#el-tipo-de-magnitud-tampoco-está-determinado-por-el-símbolo-algebraico}
 
-### 2.2.6. El tipo de magnitud tampoco está determinado por el símbolo algebraico {#fispm-c02-el-tipo-de-magnitud-tampoco-estuxe1-determinado-por-el-suxedmbolo-algebraico}
+### El tipo de magnitud tampoco está determinado por el símbolo algebraico {#fispm-c02-el-tipo-de-magnitud-tampoco-estuxe1-determinado-por-el-suxedmbolo-algebraico}
 
 Supongamos que en dos problemas distintos aparece la letra:
 
@@ -769,7 +769,7 @@ Esto es una razón adicional para no manipular fórmulas físicas como si fueran
 
 []{#basta-la-expresión-de-unidad-para-identificar-el-tipo}
 
-### 2.2.7. ¿Basta la expresión de unidad para identificar el tipo? {#fispm-c02-basta-la-expresiuxf3n-de-unidad-para-identificar-el-tipo}
+### ¿Basta la expresión de unidad para identificar el tipo? {#fispm-c02-basta-la-expresiuxf3n-de-unidad-para-identificar-el-tipo}
 
 Tampoco.
 
@@ -795,7 +795,7 @@ En §5 veremos una versión más profunda de esta advertencia:
 
 []{#la-física-de-una-cantidad-no-cabe-entera-en-sus-unidades}
 
-### 2.2.8. La física de una cantidad no cabe entera en sus unidades {#fispm-c02-la-fuxedsica-de-una-cantidad-no-cabe-entera-en-sus-unidades}
+### La física de una cantidad no cabe entera en sus unidades {#fispm-c02-la-fuxedsica-de-una-cantidad-no-cabe-entera-en-sus-unidades}
 
 La observación anterior tiene una consecuencia metodológica importante.
 
@@ -831,7 +831,7 @@ son inseparables.
 
 []{#comparar-ordenar-restar-y-formar-razones}
 
-### 2.2.9. Comparar, ordenar, restar y formar razones {#fispm-c02-comparar-ordenar-restar-y-formar-razones}
+### Comparar, ordenar, restar y formar razones {#fispm-c02-comparar-ordenar-restar-y-formar-razones}
 
 Cuando dos valores pertenecen al mismo tipo de magnitud, ciertas operaciones adquieren sentido natural. Si: $L_1=2\,\mathrm m$
 
@@ -849,7 +849,7 @@ Lo que no podemos hacer es **sumar o comparar por orden magnitudes de tipos inco
 
 []{#comparabilidad-y-ecuaciones-físicas}
 
-### 2.2.10. Comparabilidad y ecuaciones físicas {#fispm-c02-comparabilidad-y-ecuaciones-fuxedsicas}
+### Comparabilidad y ecuaciones físicas {#fispm-c02-comparabilidad-y-ecuaciones-fuxedsicas}
 
 Supongamos que alguien propone: $L_1=L_2+T.$
 
@@ -869,7 +869,7 @@ No necesitamos conocer todavía análisis dimensional para detectar el problema.
 
 []{#primera-regla-metodológica-de-2}
 
-### 2.2.11. Primera regla metodológica de §2 {#fispm-c02-primera-regla-metodoluxf3gica-de-2}
+### Primera regla metodológica de §2 {#fispm-c02-primera-regla-metodoluxf3gica-de-2}
 
 **Principio 3 --- La comparabilidad física precede a la comparación numérica** Antes de comparar, sumar o interpretar conjuntamente valores numéricos, debe establecerse qué magnitudes representan y si las operaciones propuestas son compatibles con sus tipos de magnitud.
 
@@ -877,7 +877,7 @@ Esto evita errores como: $3\,\mathrm m+4\,\mathrm s=7.$ El problema no consiste 
 
 []{#la-palabra-referencia-es-más-amplia-que-unidad}
 
-### 2.2.12. La palabra «referencia» es más amplia que «unidad» {#fispm-c02-la-palabra-referencia-es-muxe1s-amplia-que-unidad}
+### La palabra «referencia» es más amplia que «unidad» {#fispm-c02-la-palabra-referencia-es-muxe1s-amplia-que-unidad}
 
 Hasta ahora hemos trabajado casi exclusivamente con valores del tipo: $Q=q\,u.$ Pero el VIM define un valor de magnitud de manera más general como la combinación de un número y una referencia.[^7]
 
@@ -901,7 +901,7 @@ La expresión anterior es conceptual: no afirma una inclusión conjuntista forma
 
 []{#por-qué-en-física-elemental-podemos-concentrarnos-en-unidades}
 
-### 2.2.13. Por qué en física elemental podemos concentrarnos en unidades {#fispm-c02-por-quuxe9-en-fuxedsica-elemental-podemos-concentrarnos-en-unidades}
+### Por qué en física elemental podemos concentrarnos en unidades {#fispm-c02-por-quuxe9-en-fuxedsica-elemental-podemos-concentrarnos-en-unidades}
 
 La mayor parte de las magnitudes de este tratado ---longitud, masa, tiempo, velocidad, aceleración, energía, carga, temperatura termodinámica--- se manipularán mediante unidades. Por eso nuestra notación principal seguirá siendo: $Q=\{Q\}_u\,u.$
 
@@ -917,7 +917,7 @@ La teoría sistemática de medición, incertidumbre y trazabilidad pertenece al 
 
 []{#una-unidad-no-es-cualquier-cantidad-elegida-informalmente}
 
-### 2.2.14. Una unidad no es cualquier cantidad elegida informalmente {#fispm-c02-una-unidad-no-es-cualquier-cantidad-elegida-informalmente}
+### Una unidad no es cualquier cantidad elegida informalmente {#fispm-c02-una-unidad-no-es-cualquier-cantidad-elegida-informalmente}
 
 Podemos comparar una mesa con otra mesa y obtener una razón de longitudes. Pero eso no convierte automáticamente la longitud de la segunda mesa en una **unidad de medida** institucionalizada. Para que una referencia funcione como unidad necesitamos una adopción convencional suficientemente clara y una forma de identificar o realizar esa referencia.
 
@@ -931,7 +931,7 @@ La diferencia es:
 
 []{#el-símbolo-de-cantidad-debe-permanecer-físicamente-estable}
 
-### 2.2.15. El símbolo de cantidad debe permanecer físicamente estable {#fispm-c02-el-suxedmbolo-de-cantidad-debe-permanecer-fuxedsicamente-estable}
+### El símbolo de cantidad debe permanecer físicamente estable {#fispm-c02-el-suxedmbolo-de-cantidad-debe-permanecer-fuxedsicamente-estable}
 
 Volvamos a una longitud particular $L$.
 
@@ -963,7 +963,7 @@ La primera clase tiene un grado de independencia respecto de la elección de uni
 
 []{#mismo-fenómeno-magnitudes-diferentes}
 
-### 2.2.16. Mismo fenómeno, magnitudes diferentes {#fispm-c02-mismo-fenuxf3meno-magnitudes-diferentes}
+### Mismo fenómeno, magnitudes diferentes {#fispm-c02-mismo-fenuxf3meno-magnitudes-diferentes}
 
 Un solo sistema físico puede portar muchas magnitudes diferentes.
 
@@ -993,7 +993,7 @@ Esto vuelve a conectar el capítulo con el concepto de observable del capítulo 
 
 []{#misma-magnitud-general-instancias-diferentes}
 
-### 2.2.17. Misma magnitud general, instancias diferentes {#fispm-c02-misma-magnitud-general-instancias-diferentes}
+### Misma magnitud general, instancias diferentes {#fispm-c02-misma-magnitud-general-instancias-diferentes}
 
 La palabra «longitud» puede aparecer en dos niveles.
 
@@ -1009,7 +1009,7 @@ $$\boxed{ \text{tipo de magnitud} \neq \text{magnitud particular de un sistema}.
 
 []{#una-advertencia-sobre-temperaturas-y-escalas}
 
-### 2.2.18. Una advertencia sobre temperaturas y escalas {#fispm-c02-una-advertencia-sobre-temperaturas-y-escalas}
+### Una advertencia sobre temperaturas y escalas {#fispm-c02-una-advertencia-sobre-temperaturas-y-escalas}
 
 El lenguaje de comparación por razón funciona limpiamente para magnitudes como longitud y masa.
 
@@ -1027,7 +1027,7 @@ $$\boxed{\begin{gathered} \text{\parbox{.82\linewidth}{\centering que algo se ex
 
 []{#segunda-regla-metodológica-de-2}
 
-### 2.2.19. Segunda regla metodológica de §2 {#fispm-c02-segunda-regla-metodoluxf3gica-de-2}
+### Segunda regla metodológica de §2 {#fispm-c02-segunda-regla-metodoluxf3gica-de-2}
 
 **Principio 4 --- La notación de unidad no determina por sí sola el significado físico** Una expresión de unidad restringe las magnitudes que puede representar, pero la identificación del tipo de magnitud exige además el contexto físico, la definición de la cantidad y su regla de interpretación.
 
@@ -1043,7 +1043,7 @@ También preguntaremos:
 
 []{#ficha-de-lectura-identificar-correctamente-una-cantidad-física}
 
-### 2.2.20. Ficha de lectura: identificar correctamente una cantidad física {#fispm-c02-ficha-de-lectura-identificar-correctamente-una-cantidad-fuxedsica}
+### Ficha de lectura: identificar correctamente una cantidad física {#fispm-c02-ficha-de-lectura-identificar-correctamente-una-cantidad-fuxedsica}
 
 A partir de ahora, cuando encontremos una cantidad en una fórmula, podemos aplicar esta ficha mínima.
 
@@ -1065,7 +1065,7 @@ Esta secuencia impide reducir prematuramente la física a números.
 
 []{#ejercicios-de-2}
 
-### 2.2.21. Ejercicios de §2 {#fispm-c02-ejercicios-de-2}
+### Ejercicios de §2 {#fispm-c02-ejercicios-de-2}
 
 **Ejercicio 4 --- Misma unidad, magnitudes diferentes**
 
@@ -1097,7 +1097,7 @@ Responde:
 
 []{#a.-magnitudes-del-mismo-tipo}
 
-#### 2.2.21.1. a. Magnitudes del mismo tipo {#fispm-c02-a.-magnitudes-del-mismo-tipo}
+#### a. Magnitudes del mismo tipo {#fispm-c02-a.-magnitudes-del-mismo-tipo}
 
 La longitud de onda y el diámetro son ambas longitudes.
 
@@ -1109,7 +1109,7 @@ Pueden compararse mediante una misma familia de unidades de longitud. La frecuen
 
 []{#b.-misma-expresión-de-unidad}
 
-#### 2.2.21.2. b. Misma expresión de unidad {#fispm-c02-b.-misma-expresiuxf3n-de-unidad}
+#### b. Misma expresión de unidad {#fispm-c02-b.-misma-expresiuxf3n-de-unidad}
 
 Frecuencia y actividad ofrecen el ejemplo buscado:
 
@@ -1127,7 +1127,7 @@ $$\boxed{ \text{misma expresión algebraica de unidad} \not\Rightarrow \text{mis
 
 []{#c.-mismo-valor-numérico}
 
-#### 2.2.21.3. c. Mismo valor numérico {#fispm-c02-c.-mismo-valor-numuxe9rico}
+#### c. Mismo valor numérico {#fispm-c02-c.-mismo-valor-numuxe9rico}
 
 Supongamos: $L=2\,\mathrm m$
 
@@ -1141,7 +1141,7 @@ $$\boxed{ \{L\}_{\mathrm m}=\{T\}_{\mathrm s} \not\Rightarrow L\text{ y }T\text{
 
 []{#d.-hertz-frente-a-becquerel}
 
-#### 2.2.21.4. d. Hertz frente a becquerel {#fispm-c02-d.-hertz-frente-a-becquerel}
+#### d. Hertz frente a becquerel {#fispm-c02-d.-hertz-frente-a-becquerel}
 
 Tenemos las igualdades de unidades:
 
@@ -1183,13 +1183,13 @@ $$L=3.7\,u.$$
 
 []{#significado-de-l3.7u}
 
-#### 2.2.21.5. 1. Significado de $L=3.7u$ {#fispm-c02-significado-de-l3.7u}
+#### 1. Significado de $L=3.7u$ {#fispm-c02-significado-de-l3.7u}
 
 La expresión afirma que la longitud particular $L$ tiene, respecto de la referencia de longitud $u$, el valor numérico: $\{L\}_u=3.7.$ Equivalentemente: $\frac{L}{u}=3.7.$ No significa que $3.7$ sea la longitud. Significa que la longitud $L$ se expresa como $3.7$ veces la referencia elegida.
 
 []{#compatibilidad-de-tipo}
 
-#### 2.2.21.5. 2. Compatibilidad de tipo {#fispm-c02-compatibilidad-de-tipo .unnumbered}
+#### 2. Compatibilidad de tipo {#fispm-c02-compatibilidad-de-tipo .unnumbered}
 
 Para formar la razón: $\frac{L}{u},$
 
@@ -1199,7 +1199,7 @@ Como $L$ es una longitud, $u$ debe ser también una longitud. Una masa o una dur
 
 []{#nueva-referencia}
 
-#### 2.2.21.5. 3. Nueva referencia {#fispm-c02-nueva-referencia .unnumbered}
+#### 3. Nueva referencia {#fispm-c02-nueva-referencia .unnumbered}
 
 Tenemos: $u'=\frac12u.$ La unidad nueva es dos veces más pequeña. Por la Proposición 1, si: $u'=\lambda u$
 
@@ -1217,7 +1217,7 @@ Cambió la referencia.
 
 []{#convención-y-comparación-física}
 
-#### 2.2.21.5. 4. Convención y comparación física {#fispm-c02-convenciuxf3n-y-comparaciuxf3n-fuxedsica .unnumbered}
+#### 4. Convención y comparación física {#fispm-c02-convenciuxf3n-y-comparaciuxf3n-fuxedsica .unnumbered}
 
 Es convencional:
 
@@ -1235,7 +1235,7 @@ $$\boxed{ \text{convención de referencia} + \text{comparación física} \longri
 
 []{#por-qué-no-es-todavía-el-si}
 
-#### 2.2.21.5. 5. Por qué no es todavía el SI {#fispm-c02-por-quuxe9-no-es-todavuxeda-el-si .unnumbered}
+#### 5. Por qué no es todavía el SI {#fispm-c02-por-quuxe9-no-es-todavuxeda-el-si .unnumbered}
 
 El ejercicio construye un sistema local muy simple basado en una barra material. El SI contemporáneo es una estructura internacional mucho más precisa: sus unidades se definen mediante valores fijados de constantes definitorias y requieren procedimientos de realización y trazabilidad metrológica.
 
@@ -1247,7 +1247,7 @@ El SI será el objeto de §3.
 
 []{#síntesis}
 
-### 2.2.22. Síntesis {#fispm-c02-suxedntesis}
+### Síntesis {#fispm-c02-suxedntesis}
 
 §1 mostró que:
 
@@ -1283,7 +1283,7 @@ y:
 
 $$\boxed{ \text{misma clase de magnitud} \not\Rightarrow \text{misma magnitud particular}. }$$
 
-El siguiente paso será construir el sistema de unidades que usaremos de manera predominante en el tratado (§[2.3](#fispm-c02-el-sistema-internacional-contemporuxe1neo)).
+El siguiente paso será construir el sistema de unidades que usaremos de manera predominante en el tratado (§[3](#fispm-c02-el-sistema-internacional-contemporuxe1neo)).
 
 Allí distinguiremos cuidadosamente:
 
@@ -1305,11 +1305,11 @@ Allí distinguiremos cuidadosamente:
 
 []{#fpm-i-02-s03}
 
-## 2.3. El Sistema Internacional contemporáneo {#fispm-c02-el-sistema-internacional-contemporuxe1neo}
+## 3. El Sistema Internacional contemporáneo {#fispm-c02-el-sistema-internacional-contemporuxe1neo}
 
 []{#una-unidad-local-no-basta-para-una-ciencia-global}
 
-### 2.3.1. Una unidad local no basta para una ciencia global {#fispm-c02-una-unidad-local-no-basta-para-una-ciencia-global}
+### Una unidad local no basta para una ciencia global {#fispm-c02-una-unidad-local-no-basta-para-una-ciencia-global}
 
 En §1 vimos que un valor de magnitud puede escribirse, en los casos ordinarios que nos interesan, como $Q=\{Q\}_u\,u.$ En §2 añadimos que la unidad $u$ debe ser una referencia compatible con el tipo de magnitud de $Q$. Todavía queda un problema. Nada impide que dos comunidades elijan referencias diferentes para la misma clase de magnitud.
 
@@ -1321,7 +1321,7 @@ Es una infraestructura convencional para expresar valores de magnitudes de forma
 
 []{#qué-significa-si-en-2026}
 
-### 2.3.2. Qué significa «SI» en 2026 {#fispm-c02-quuxe9-significa-si-en-2026}
+### Qué significa «SI» en 2026 {#fispm-c02-quuxe9-significa-si-en-2026}
 
 La formulación contemporánea del SI debe leerse con cuidado. Antes de la revisión adoptada por la 26.ª CGPM en 2018 y efectiva desde el 20 de mayo de 2019, era habitual presentar el sistema diciendo que estaba definido mediante siete unidades base y que las demás unidades se derivaban de ellas.
 
@@ -1343,7 +1343,7 @@ No debemos leer esta frase como si las constantes fueran «elegidas arbitrariame
 
 []{#las-siete-constantes-definitorias}
 
-### 2.3.3. Las siete constantes definitorias {#fispm-c02-las-siete-constantes-definitorias}
+### Las siete constantes definitorias {#fispm-c02-las-siete-constantes-definitorias}
 
 Las siete constantes son las siguientes.[^9]
 
@@ -1373,7 +1373,7 @@ La unidad lumen requerirá además la noción de estereorradián, que retomaremo
 
 []{#exacto-por-definición-no-significa-medido-con-incertidumbre-cero}
 
-### 2.3.4. «Exacto por definición» no significa «medido con incertidumbre cero» {#fispm-c02-exacto-por-definiciuxf3n-no-significa-medido-con-incertidumbre-cero}
+### «Exacto por definición» no significa «medido con incertidumbre cero» {#fispm-c02-exacto-por-definiciuxf3n-no-significa-medido-con-incertidumbre-cero}
 
 Esta distinción es fundamental. El valor numérico
 
@@ -1397,7 +1397,7 @@ La incertidumbre pertenece al proceso mediante el cual materializamos, comparamo
 
 []{#constantes-definitorias-no-todas-son-del-mismo-carácter-físico}
 
-### 2.3.5. Constantes definitorias: no todas son del mismo carácter físico {#fispm-c02-constantes-definitorias-no-todas-son-del-mismo-caruxe1cter-fuxedsico}
+### Constantes definitorias: no todas son del mismo carácter físico {#fispm-c02-constantes-definitorias-no-todas-son-del-mismo-caruxe1cter-fuxedsico}
 
 Conviene evitar otra simplificación.
 
@@ -1423,7 +1423,7 @@ La palabra **definitoria** describe el papel que la constante cumple en el siste
 
 []{#las-siete-magnitudes-base-y-las-siete-unidades-base}
 
-### 2.3.6. Las siete magnitudes base y las siete unidades base {#fispm-c02-las-siete-magnitudes-base-y-las-siete-unidades-base}
+### Las siete magnitudes base y las siete unidades base {#fispm-c02-las-siete-magnitudes-base-y-las-siete-unidades-base}
 
 Aunque el SI ya no se define fundamentalmente «a partir de las unidades base», las siete magnitudes base y sus unidades siguen cumpliendo un papel estructural central.[^12]
 
@@ -1447,7 +1447,7 @@ No significa que una magnitud base sea «más real» o «más importante» que u
 
 []{#las-unidades-base-no-son-siete-patrones-materiales}
 
-### 2.3.7. Las unidades base no son siete patrones materiales {#fispm-c02-las-unidades-base-no-son-siete-patrones-materiales}
+### Las unidades base no son siete patrones materiales {#fispm-c02-las-unidades-base-no-son-siete-patrones-materiales}
 
 La palabra «unidad» puede evocar una colección de objetos guardados en un laboratorio:
 
@@ -1469,7 +1469,7 @@ $$\boxed{ \text{definición} \neq \text{artefacto particular} \neq \text{procedi
 
 []{#no-existe-una-correspondencia-simple-una-constante-una-unidad-base}
 
-### 2.3.8. No existe una correspondencia simple «una constante = una unidad base» {#fispm-c02-no-existe-una-correspondencia-simple-una-constante-una-unidad-base}
+### No existe una correspondencia simple «una constante = una unidad base» {#fispm-c02-no-existe-una-correspondencia-simple-una-constante-una-unidad-base}
 
 La presencia de siete constantes y siete unidades base invita a imaginar siete parejas independientes:
 
@@ -1485,7 +1485,7 @@ que aparece en el valor de $h$ contiene a su vez metro y segundo. Por tanto, el 
 
 []{#definición-y-realización}
 
-### 2.3.9. Definición y realización {#fispm-c02-definiciuxf3n-y-realizaciuxf3n}
+### Definición y realización {#fispm-c02-definiciuxf3n-y-realizaciuxf3n}
 
 El BIPM utiliza la expresión francesa *mise en pratique* para los documentos que describen maneras de realizar prácticamente las definiciones de las unidades.
 
@@ -1507,7 +1507,7 @@ introduce sistemas físicos, instrumentos, procedimientos y condiciones experime
 
 []{#base-tampoco-significa-fundamental-en-la-ontología-de-la-física}
 
-### 2.3.10. «Base» tampoco significa «fundamental en la ontología de la física» {#fispm-c02-base-tampoco-significa-fundamental-en-la-ontologuxeda-de-la-fuxedsica}
+### «Base» tampoco significa «fundamental en la ontología de la física» {#fispm-c02-base-tampoco-significa-fundamental-en-la-ontologuxeda-de-la-fuxedsica}
 
 La elección de las siete magnitudes base posee una función organizativa e histórica.
 
@@ -1527,7 +1527,7 @@ $$\text{estatus metrológico de base}.$$
 
 []{#prefijos-si}
 
-### 2.3.11. Prefijos SI {#fispm-c02-prefijos-si}
+### Prefijos SI {#fispm-c02-prefijos-si}
 
 El SI permite construir múltiplos y submúltiplos decimales mediante prefijos. La lista vigente llega desde
 
@@ -1566,7 +1566,7 @@ $$1\,\mathrm{nm}=10^{-9}\,\mathrm m.$$
 
 []{#el-prefijo-forma-parte-de-la-unidad}
 
-### 2.3.12. El prefijo forma parte de la unidad {#fispm-c02-el-prefijo-forma-parte-de-la-unidad}
+### El prefijo forma parte de la unidad {#fispm-c02-el-prefijo-forma-parte-de-la-unidad}
 
 Cuando escribimos
 
@@ -1588,7 +1588,7 @@ El exponente afecta a toda la unidad prefijada.
 
 []{#no-se-encadenan-prefijos}
 
-### 2.3.13. No se encadenan prefijos {#fispm-c02-no-se-encadenan-prefijos}
+### No se encadenan prefijos {#fispm-c02-no-se-encadenan-prefijos}
 
 Los prefijos SI no se apilan. Por ejemplo, no escribimos una supuesta unidad «milimicrómetro» mediante una cadena de prefijos. Se elige un único prefijo cuyo factor total represente la escala deseada.
 
@@ -1600,7 +1600,7 @@ Esto mantiene unívoca la lectura de los símbolos.
 
 []{#la-excepción-histórica-del-kilogramo}
 
-### 2.3.14. La excepción histórica del kilogramo {#fispm-c02-la-excepciuxf3n-histuxf3rica-del-kilogramo}
+### La excepción histórica del kilogramo {#fispm-c02-la-excepciuxf3n-histuxf3rica-del-kilogramo}
 
 El kilogramo tiene una peculiaridad nominal:
 
@@ -1622,7 +1622,7 @@ para representar miligramos. Esta regla es histórica y notacional, no una dific
 
 []{#las-mayúsculas-importan}
 
-### 2.3.15. Las mayúsculas importan {#fispm-c02-las-mayuxfasculas-importan}
+### Las mayúsculas importan {#fispm-c02-las-mayuxfasculas-importan}
 
 Los símbolos SI son sensibles a mayúsculas y minúsculas. Por ejemplo: $\mathrm m$
 
@@ -1648,13 +1648,13 @@ no son escrituras equivalentes del SI. La segunda combina una grafía de prefijo
 
 []{#reglas-elementales-de-escritura}
 
-### 2.3.16. Reglas elementales de escritura {#fispm-c02-reglas-elementales-de-escritura}
+### Reglas elementales de escritura {#fispm-c02-reglas-elementales-de-escritura}
 
 Usaremos desde ahora las siguientes convenciones.
 
 []{#regla-1-espacio-entre-número-y-símbolo-de-unidad}
 
-#### 2.3.16.1. Regla 1 --- Espacio entre número y símbolo de unidad {#fispm-c02-regla-1-espacio-entre-nuxfamero-y-suxedmbolo-de-unidad}
+#### Regla 1 --- Espacio entre número y símbolo de unidad {#fispm-c02-regla-1-espacio-entre-nuxfamero-y-suxedmbolo-de-unidad}
 
 Escribiremos:
 
@@ -1668,7 +1668,7 @@ En texto Markdown/LaTeX representaremos el espacio tipográfico dentro de la fó
 
 []{#regla-2-los-símbolos-de-unidad-no-se-pluralizan}
 
-#### 2.3.16.2. Regla 2 --- Los símbolos de unidad no se pluralizan {#fispm-c02-regla-2-los-suxedmbolos-de-unidad-no-se-pluralizan}
+#### Regla 2 --- Los símbolos de unidad no se pluralizan {#fispm-c02-regla-2-los-suxedmbolos-de-unidad-no-se-pluralizan}
 
 Escribimos: $5\,\mathrm{kg},$
 
@@ -1676,7 +1676,7 @@ no: $5\,\mathrm{kgs}.$
 
 []{#regla-3-el-símbolo-no-lleva-punto-por-ser-abreviatura}
 
-#### 2.3.16.3. Regla 3 --- El símbolo no lleva punto por ser abreviatura {#fispm-c02-regla-3-el-suxedmbolo-no-lleva-punto-por-ser-abreviatura}
+#### Regla 3 --- El símbolo no lleva punto por ser abreviatura {#fispm-c02-regla-3-el-suxedmbolo-no-lleva-punto-por-ser-abreviatura}
 
 Escribimos: $10\,\mathrm m$
 
@@ -1684,7 +1684,7 @@ y no añadimos un punto a $\mathrm m$ salvo que el signo de puntuación correspo
 
 []{#regla-4-los-prefijos-se-unen-al-símbolo-de-unidad}
 
-#### 2.3.16.4. Regla 4 --- Los prefijos se unen al símbolo de unidad {#fispm-c02-regla-4-los-prefijos-se-unen-al-suxedmbolo-de-unidad}
+#### Regla 4 --- Los prefijos se unen al símbolo de unidad {#fispm-c02-regla-4-los-prefijos-se-unen-al-suxedmbolo-de-unidad}
 
 Escribimos:
 
@@ -1694,13 +1694,13 @@ El prefijo no se separa mediante un espacio del símbolo de la unidad.
 
 []{#regla-5-una-potencia-actúa-sobre-toda-la-unidad}
 
-#### 2.3.16.5. Regla 5 --- Una potencia actúa sobre toda la unidad {#fispm-c02-regla-5-una-potencia-actuxfaa-sobre-toda-la-unidad}
+#### Regla 5 --- Una potencia actúa sobre toda la unidad {#fispm-c02-regla-5-una-potencia-actuxfaa-sobre-toda-la-unidad}
 
 Ya vimos: $\mathrm{cm^2} = (10^{-2}\,\mathrm m)^2.$ Esta regla será esencial en conversiones de área y volumen.
 
 []{#unidades-símbolos-y-nombres-no-son-intercambiables-sin-reglas}
 
-### 2.3.17. Unidades, símbolos y nombres no son intercambiables sin reglas {#fispm-c02-unidades-suxedmbolos-y-nombres-no-son-intercambiables-sin-reglas}
+### Unidades, símbolos y nombres no son intercambiables sin reglas {#fispm-c02-unidades-suxedmbolos-y-nombres-no-son-intercambiables-sin-reglas}
 
 Consideremos: $5\,\mathrm m.$
 
@@ -1720,7 +1720,7 @@ sin perder de vista que estamos calculando con representaciones de unidades fís
 
 []{#ejemplo-desarrollado-la-misma-velocidad-en-dos-unidades}
 
-### 2.3.18. Ejemplo desarrollado --- La misma velocidad en dos unidades {#fispm-c02-ejemplo-desarrollado-la-misma-velocidad-en-dos-unidades}
+### Ejemplo desarrollado --- La misma velocidad en dos unidades {#fispm-c02-ejemplo-desarrollado-la-misma-velocidad-en-dos-unidades}
 
 Supongamos una rapidez: $v=25\,\mathrm{m\,s^{-1}}.$
 
@@ -1744,7 +1744,7 @@ $$\boxed{ 25\,\mathrm{m\,s^{-1}} = 90\,\mathrm{km\,h^{-1}}. }$$
 
 []{#ejemplo-desarrollado-por-qué-1mathrmcm2-no-es-10-2mathrmm2}
 
-### 2.3.19. Ejemplo desarrollado --- Por qué $1\,\mathrm{cm^2}$ no es $10^{-2}\,\mathrm{m^2}$ {#fispm-c02-ejemplo-desarrollado-por-quuxe9-1mathrmcm2-no-es-10-2mathrmm2}
+### Ejemplo desarrollado --- Por qué $1\,\mathrm{cm^2}$ no es $10^{-2}\,\mathrm{m^2}$ {#fispm-c02-ejemplo-desarrollado-por-quuxe9-1mathrmcm2-no-es-10-2mathrmm2}
 
 Tomemos un cuadrado de lado: $1\,\mathrm{cm}.$
 
@@ -1758,7 +1758,7 @@ aparece cuando se aplica el factor del prefijo una sola vez en lugar de elevarlo
 
 []{#ejercicios-de-3}
 
-### 2.3.20. Ejercicios de §3 {#fispm-c02-ejercicios-de-3}
+### Ejercicios de §3 {#fispm-c02-ejercicios-de-3}
 
 **Ejercicio 6 --- Leer correctamente el SI actual**
 
@@ -1938,7 +1938,7 @@ $$\boxed{ 1\,\mathrm{cm^2}\neq10^{-2}\,\mathrm{m^2}. }$$
 
 []{#síntesis-1}
 
-### 2.3.21. Síntesis {#fispm-c02-suxedntesis-1}
+### Síntesis {#fispm-c02-suxedntesis-1}
 
 El SI contemporáneo se organiza mediante dos capas que no debemos confundir.
 
@@ -1968,7 +1968,7 @@ $$\boxed{ (pu)^n=p^n u^n. }$$
 
 Por eso las conversiones de área y volumen exigen elevar también el factor del prefijo. Con esta infraestructura ya podemos avanzar al siguiente nivel. Hasta ahora hemos trabajado principalmente con unidades escogidas para clases de magnitudes ya conocidas.
 
-En §4 construiremos nuevas magnitudes mediante productos y cocientes y veremos cómo aparecen sistemáticamente las **unidades derivadas coherentes** (§[2.4](#fispm-c02-magnitudes-derivadas-y-unidades-coherentes)).
+En §4 construiremos nuevas magnitudes mediante productos y cocientes y veremos cómo aparecen sistemáticamente las **unidades derivadas coherentes** (§[4](#fispm-c02-magnitudes-derivadas-y-unidades-coherentes)).
 
 ------------------------------------------------------------------------
 
@@ -1980,11 +1980,11 @@ En §4 construiremos nuevas magnitudes mediante productos y cocientes y veremos 
 
 []{#fpm-i-02-s04}
 
-## 2.4. Magnitudes derivadas y unidades coherentes {#fispm-c02-magnitudes-derivadas-y-unidades-coherentes}
+## 4. Magnitudes derivadas y unidades coherentes {#fispm-c02-magnitudes-derivadas-y-unidades-coherentes}
 
 []{#las-unidades-también-obedecen-relaciones}
 
-### 2.4.1. Las unidades también obedecen relaciones {#fispm-c02-las-unidades-tambiuxe9n-obedecen-relaciones}
+### Las unidades también obedecen relaciones {#fispm-c02-las-unidades-tambiuxe9n-obedecen-relaciones}
 
 En §1 distinguimos una magnitud de su valor numérico y de la unidad elegida para expresarla. En §2 vimos que la comparabilidad física precede a la comparación numérica. En §3 fijamos la arquitectura contemporánea del Sistema Internacional.
 
@@ -2008,7 +2008,7 @@ Pero no toda combinación de unidades es **coherente** con el sistema elegido, y
 
 []{#magnitud-derivada}
 
-### 2.4.2. Magnitud derivada {#fispm-c02-magnitud-derivada}
+### Magnitud derivada {#fispm-c02-magnitud-derivada}
 
 **Definición 11 --- Magnitud derivada** Una **magnitud derivada** es una magnitud definida, dentro de un sistema de magnitudes, mediante una relación algebraica con otras magnitudes del sistema, en particular con las magnitudes tomadas como base.
 
@@ -2034,7 +2034,7 @@ y no una jerarquía ontológica.
 
 []{#producto-cociente-y-potencia}
 
-### 2.4.3. Producto, cociente y potencia {#fispm-c02-producto-cociente-y-potencia}
+### Producto, cociente y potencia {#fispm-c02-producto-cociente-y-potencia}
 
 Sean
 
@@ -2064,7 +2064,7 @@ para un exponente entero $n$, entonces $Q=q_1^n u_1^n.$ Por tanto, producto, coc
 
 []{#unidad-derivada}
 
-### 2.4.4. Unidad derivada {#fispm-c02-unidad-derivada}
+### Unidad derivada {#fispm-c02-unidad-derivada}
 
 **Definición 12 --- Unidad derivada** Una **unidad derivada** es una unidad asociada a una magnitud derivada y expresable, dentro del sistema de unidades considerado, mediante productos de potencias de unidades base.
 
@@ -2084,7 +2084,7 @@ La *SI Brochure* vigente incluye precisamente estas expresiones entre sus ejempl
 
 []{#unidad-derivada-coherente}
 
-### 2.4.5. Unidad derivada coherente {#fispm-c02-unidad-derivada-coherente}
+### Unidad derivada coherente {#fispm-c02-unidad-derivada-coherente}
 
 **Definición 13 --- Unidad derivada coherente** Una **unidad derivada coherente**, respecto de un sistema de magnitudes y un conjunto elegido de unidades base, es una unidad derivada que se obtiene como producto de potencias de las unidades base sin introducir ningún factor de proporcionalidad distinto de $1$.
 
@@ -2106,7 +2106,7 @@ introduce un factor distinto de $1$ respecto de la unidad base metro. La coheren
 
 []{#por-qué-importa-la-coherencia}
 
-### 2.4.6. Por qué importa la coherencia {#fispm-c02-por-quuxe9-importa-la-coherencia}
+### Por qué importa la coherencia {#fispm-c02-por-quuxe9-importa-la-coherencia}
 
 Consideremos
 
@@ -2134,7 +2134,7 @@ La ecuación entre valores numéricos conserva exactamente la forma de la ecuaci
 
 []{#ejemplo-rapidez-en-unidades-coherentes}
 
-### 2.4.7. Ejemplo: rapidez en unidades coherentes {#fispm-c02-ejemplo-rapidez-en-unidades-coherentes}
+### Ejemplo: rapidez en unidades coherentes {#fispm-c02-ejemplo-rapidez-en-unidades-coherentes}
 
 Si
 
@@ -2156,7 +2156,7 @@ No aparece ningún factor extra.
 
 []{#qué-ocurre-cuando-mezclamos-unidades-no-coherentes}
 
-### 2.4.8. Qué ocurre cuando mezclamos unidades no coherentes {#fispm-c02-quuxe9-ocurre-cuando-mezclamos-unidades-no-coherentes}
+### Qué ocurre cuando mezclamos unidades no coherentes {#fispm-c02-quuxe9-ocurre-cuando-mezclamos-unidades-no-coherentes}
 
 Expresemos la misma longitud como $\ell=12\,000\,\mathrm{cm}.$ Si mantenemos $t$ en segundos y queremos $v$ en $\mathrm{m\,s^{-1}}$, entonces $1\,\mathrm{cm}=10^{-2}\,\mathrm m$
 
@@ -2172,7 +2172,7 @@ El factor $10^{-2}$ no pertenece a la física de la relación. Pertenece a nuest
 
 []{#área-volumen-y-potencias-de-unidades}
 
-### 2.4.9. Área, volumen y potencias de unidades {#fispm-c02-uxe1rea-volumen-y-potencias-de-unidades}
+### Área, volumen y potencias de unidades {#fispm-c02-uxe1rea-volumen-y-potencias-de-unidades}
 
 Si un cuadrado tiene lado
 
@@ -2192,7 +2192,7 @@ $$1\,\mathrm{cm^3} = (10^{-2}\,\mathrm m)^3 = 10^{-6}\,\mathrm{m^3}.$$
 
 []{#densidad-de-masa}
 
-### 2.4.10. Densidad de masa {#fispm-c02-densidad-de-masa}
+### Densidad de masa {#fispm-c02-densidad-de-masa}
 
 Para
 
@@ -2218,7 +2218,7 @@ entonces $\rho = 3\times10^3\,\mathrm{kg\,m^{-3}}.$
 
 []{#prefijos-y-coherencia}
 
-### 2.4.11. Prefijos y coherencia {#fispm-c02-prefijos-y-coherencia}
+### Prefijos y coherencia {#fispm-c02-prefijos-y-coherencia}
 
 En §3 vimos que los prefijos introducen factores decimales.
 
@@ -2228,7 +2228,7 @@ y por tanto no pertenece al conjunto de unidades SI coherentes respecto de la ba
 
 []{#unidades-coherentes-con-nombres-especiales}
 
-### 2.4.12. Unidades coherentes con nombres especiales {#fispm-c02-unidades-coherentes-con-nombres-especiales}
+### Unidades coherentes con nombres especiales {#fispm-c02-unidades-coherentes-con-nombres-especiales}
 
 Ciertas combinaciones aparecen tan frecuentemente que el SI les asigna nombres y símbolos especiales.
 
@@ -2248,7 +2248,7 @@ El nombre especial no cambia la estructura algebraica de la unidad.
 
 []{#las-22-unidades-si-con-nombres-especiales}
 
-### 2.4.13. Las 22 unidades SI con nombres especiales {#fispm-c02-las-22-unidades-si-con-nombres-especiales}
+### Las 22 unidades SI con nombres especiales {#fispm-c02-las-22-unidades-si-con-nombres-especiales}
 
 La *SI Brochure* vigente enumera 22 unidades SI con nombres y símbolos especiales.[^18]
 
@@ -2281,7 +2281,7 @@ No necesitamos memorizar la tabla. Debemos reconocer su arquitectura.
 
 []{#misma-expresión-de-unidad-distinta-magnitud}
 
-### 2.4.14. Misma expresión de unidad, distinta magnitud {#fispm-c02-misma-expresiuxf3n-de-unidad-distinta-magnitud}
+### Misma expresión de unidad, distinta magnitud {#fispm-c02-misma-expresiuxf3n-de-unidad-distinta-magnitud}
 
 Tenemos: $\mathrm{Hz}=\mathrm{s^{-1}},$
 
@@ -2307,7 +2307,7 @@ Los nombres especiales pueden ayudar a conservar la distinción semántica.
 
 []{#energía-y-torque}
 
-### 2.4.15. Energía y torque {#fispm-c02-energuxeda-y-torque}
+### Energía y torque {#fispm-c02-energuxeda-y-torque}
 
 La unidad coherente de energía puede escribirse
 
@@ -2321,7 +2321,7 @@ $$\boxed{ \text{estructura dimensional} \neq \text{significado físico completo}
 
 []{#coherencia-no-significa-una-única-escritura}
 
-### 2.4.16. Coherencia no significa una única escritura {#fispm-c02-coherencia-no-significa-una-uxfanica-escritura}
+### Coherencia no significa una única escritura {#fispm-c02-coherencia-no-significa-una-uxfanica-escritura}
 
 Una misma unidad coherente puede escribirse, por ejemplo,
 
@@ -2331,7 +2331,7 @@ Las tres expresiones representan la misma unidad coherente. La elección puede r
 
 []{#ejemplo-expandir-nombres-especiales}
 
-### 2.4.17. Ejemplo: expandir nombres especiales {#fispm-c02-ejemplo-expandir-nombres-especiales}
+### Ejemplo: expandir nombres especiales {#fispm-c02-ejemplo-expandir-nombres-especiales}
 
 Como $\mathrm N = \mathrm{kg\,m\,s^{-2}},$
 
@@ -2351,7 +2351,7 @@ Los nombres especiales forman parte de la misma álgebra coherente.
 
 []{#conversión-de-densidad}
 
-### 2.4.18. Conversión de densidad {#fispm-c02-conversiuxf3n-de-densidad}
+### Conversión de densidad {#fispm-c02-conversiuxf3n-de-densidad}
 
 Calculemos
 
@@ -2375,7 +2375,7 @@ $$\boxed{ 1\,\mathrm{g\,cm^{-3}} = 1000\,\mathrm{kg\,m^{-3}}. }$$
 
 []{#el-álgebra-de-unidades-no-elige-la-física}
 
-### 2.4.19. El álgebra de unidades no elige la física {#fispm-c02-el-uxe1lgebra-de-unidades-no-elige-la-fuxedsica}
+### El álgebra de unidades no elige la física {#fispm-c02-el-uxe1lgebra-de-unidades-no-elige-la-fuxedsica}
 
 Podemos formar matemáticamente
 
@@ -2391,13 +2391,13 @@ Esta limitación reaparecerá en el análisis dimensional.
 
 []{#ficha-de-construcción-de-una-unidad-derivada}
 
-### 2.4.20. Ficha de construcción de una unidad derivada {#fispm-c02-ficha-de-construcciuxf3n-de-una-unidad-derivada}
+### Ficha de construcción de una unidad derivada {#fispm-c02-ficha-de-construcciuxf3n-de-una-unidad-derivada}
 
 **Ficha FPM --- Construcción de una unidad derivada** 1. **Magnitud:** ¿qué cantidad estamos definiendo? 2. **Ecuación de magnitudes:** ¿qué relación la conecta con otras magnitudes? 3. **Tipos:** ¿qué tipos de magnitud intervienen? 4. **Unidades de entrada:** ¿qué unidades usamos? 5. **Álgebra:** ¿qué producto, cociente o potencia resulta? 6. **Factor:** ¿aparece un factor distinto de $1$? 7. **Coherencia:** ¿la unidad resultante es coherente en el SI? 8. **Nombre especial:** ¿existe uno? 9. **Semántica:** ¿otras magnitudes comparten la misma expresión? 10. **Modelo:** ¿qué justifica físicamente esta combinación?
 
 []{#ejercicios}
 
-### 2.4.21. Ejercicios {#fispm-c02-ejercicios}
+### Ejercicios {#fispm-c02-ejercicios}
 
 **Ejercicio 8 --- Construir unidades derivadas coherentes** **Tipo:** análisis dimensional · **Nivel:** básico
 
@@ -2517,7 +2517,7 @@ $$2.5\,\mathrm{g\,cm^{-3}} = 2.5\times10^3\,\mathrm{kg\,m^{-3}} = \boxed{2500\,\
 
 []{#síntesis-2}
 
-### 2.4.22. Síntesis {#fispm-c02-suxedntesis-2}
+### Síntesis {#fispm-c02-suxedntesis-2}
 
 Las relaciones entre magnitudes generan relaciones entre unidades:
 
@@ -2541,7 +2541,7 @@ y
 
 $$\boxed{ \text{álgebra de unidades} \not\Rightarrow \text{selección automática de las variables físicas correctas}. }$$
 
-La siguiente sección construirá una estructura que no depende de la unidad concreta elegida (§[2.5](#fispm-c02-dimensiuxf3n-fuxedsica)).
+La siguiente sección construirá una estructura que no depende de la unidad concreta elegida (§[5](#fispm-c02-dimensiuxf3n-fuxedsica)).
 
 []{#dimensión-física}
 
@@ -2549,11 +2549,11 @@ La siguiente sección construirá una estructura que no depende de la unidad con
 
 []{#fpm-i-02-s05}
 
-## 2.5. Dimensión física {#fispm-c02-dimensiuxf3n-fuxedsica}
+## 5. Dimensión física {#fispm-c02-dimensiuxf3n-fuxedsica}
 
 []{#la-unidad-concreta-no-es-la-dimensión}
 
-### 2.5.1. La unidad concreta no es la dimensión {#fispm-c02-la-unidad-concreta-no-es-la-dimensiuxf3n}
+### La unidad concreta no es la dimensión {#fispm-c02-la-unidad-concreta-no-es-la-dimensiuxf3n}
 
 En §4 vimos que una misma magnitud derivada puede expresarse mediante unidades diferentes. Una rapidez puede escribirse como $72\,\mathrm{km\,h^{-1}},$
 
@@ -2575,7 +2575,7 @@ La unidad especifica una referencia concreta de medida. La dimensión registra c
 
 <figcaption>
 
-**Figura 2.3.** Para un péndulo ideal, el análisis de dimensiones permite escribir $T=\sqrt{\ell/g}\,\Phi(\theta_0)$. No determina la función de la amplitud. En oscilaciones pequeñas, la dinámica da $\Phi(0)=2\pi$. Véase §[2.5](#fispm-c02-dimensiuxf3n-fuxedsica).
+**Figura 2.3.** Para un péndulo ideal, el análisis de dimensiones permite escribir $T=\sqrt{\ell/g}\,\Phi(\theta_0)$. No determina la función de la amplitud. En oscilaciones pequeñas, la dinámica da $\Phi(0)=2\pi$. Véase §[5](#fispm-c02-dimensiuxf3n-fuxedsica).
 
 </figcaption>
 
@@ -2589,7 +2589,7 @@ son unidades diferentes, pero ambas representan magnitudes con la misma estructu
 
 []{#dimensión-de-una-magnitud}
 
-### 2.5.2. Dimensión de una magnitud {#fispm-c02-dimensiuxf3n-de-una-magnitud}
+### Dimensión de una magnitud {#fispm-c02-dimensiuxf3n-de-una-magnitud}
 
 El Vocabulario Internacional de Metrología define la dimensión de una magnitud como la expresión de su dependencia respecto de las magnitudes base de un sistema mediante un producto de potencias, omitiendo cualquier factor numérico.[^19]
 
@@ -2607,7 +2607,7 @@ Ambas notaciones expresan la misma idea; en este libro utilizaremos preferenteme
 
 []{#las-siete-dimensiones-base-del-si}
 
-### 2.5.3. Las siete dimensiones base del SI {#fispm-c02-las-siete-dimensiones-base-del-si}
+### Las siete dimensiones base del SI {#fispm-c02-las-siete-dimensiones-base-del-si}
 
 El SI organiza las magnitudes físicas mediante siete magnitudes base. A cada una se asocia convencionalmente un símbolo dimensional.[^20]
 
@@ -2645,7 +2645,7 @@ El lado izquierdo representa una dimensión; el lado derecho, una unidad concret
 
 []{#el-producto-dimensional-general}
 
-### 2.5.4. El producto dimensional general {#fispm-c02-el-producto-dimensional-general}
+### El producto dimensional general {#fispm-c02-el-producto-dimensional-general}
 
 En el sistema dimensional utilizado por el SI, una magnitud $Q$ puede representarse dimensionalmente mediante
 
@@ -2671,7 +2671,7 @@ Esta representación como lista de exponentes será útil más adelante en el te
 
 []{#producto-cociente-y-potencia-de-dimensiones}
 
-### 2.5.5. Producto, cociente y potencia de dimensiones {#fispm-c02-producto-cociente-y-potencia-de-dimensiones}
+### Producto, cociente y potencia de dimensiones {#fispm-c02-producto-cociente-y-potencia-de-dimensiones}
 
 Las operaciones dimensionales siguen la estructura algebraica de las magnitudes.
 
@@ -2697,7 +2697,7 @@ Estamos manipulando la dependencia estructural respecto de las magnitudes base.
 
 []{#área-y-volumen}
 
-### 2.5.6. Área y volumen {#fispm-c02-uxe1rea-y-volumen}
+### Área y volumen {#fispm-c02-uxe1rea-y-volumen}
 
 Si
 
@@ -2723,7 +2723,7 @@ entonces $[V] = L^3.$ Por eso metro cuadrado, centímetro cuadrado y kilómetro 
 
 []{#rapidez-y-velocidad}
 
-### 2.5.7. Rapidez y velocidad {#fispm-c02-rapidez-y-velocidad}
+### Rapidez y velocidad {#fispm-c02-rapidez-y-velocidad}
 
 Para una relación elemental
 
@@ -2751,7 +2751,7 @@ o cualquier otra unidad compatible.
 
 []{#aceleración}
 
-### 2.5.8. Aceleración {#fispm-c02-aceleraciuxf3n}
+### Aceleración {#fispm-c02-aceleraciuxf3n}
 
 Si una aceleración se modela como cambio de velocidad por intervalo de tiempo, $a=\frac{\Delta v}{\Delta t},$
 
@@ -2769,7 +2769,7 @@ $$\boxed{ [a]=LT^{-2}. }$$
 
 []{#densidad-de-masa-1}
 
-### 2.5.9. Densidad de masa {#fispm-c02-densidad-de-masa-1}
+### Densidad de masa {#fispm-c02-densidad-de-masa-1}
 
 Para
 
@@ -2801,7 +2801,7 @@ son diferentes, pero comparten esta misma dimensión.
 
 []{#algunas-dimensiones-frecuentes}
 
-### 2.5.10. Algunas dimensiones frecuentes {#fispm-c02-algunas-dimensiones-frecuentes}
+### Algunas dimensiones frecuentes {#fispm-c02-algunas-dimensiones-frecuentes}
 
 A partir de las relaciones físicas que las definen dentro del modelo correspondiente podemos obtener:
 
@@ -2825,7 +2825,7 @@ Cada entrada se reconstruye a partir de una relación entre magnitudes.
 
 []{#la-dimensión-no-es-una-unidad-abreviada}
 
-### 2.5.11. La dimensión no es una unidad abreviada {#fispm-c02-la-dimensiuxf3n-no-es-una-unidad-abreviada}
+### La dimensión no es una unidad abreviada {#fispm-c02-la-dimensiuxf3n-no-es-una-unidad-abreviada}
 
 Es tentador pensar:
 
@@ -2855,7 +2855,7 @@ mientras que un sistema coherente selecciona una forma privilegiada de construir
 
 []{#cambiar-unidades-no-cambia-exponentes-dimensionales}
 
-### 2.5.12. Cambiar unidades no cambia exponentes dimensionales {#fispm-c02-cambiar-unidades-no-cambia-exponentes-dimensionales}
+### Cambiar unidades no cambia exponentes dimensionales {#fispm-c02-cambiar-unidades-no-cambia-exponentes-dimensionales}
 
 Consideremos una velocidad. En SI: $v=q\,\mathrm{m\,s^{-1}}.$
 
@@ -2885,7 +2885,7 @@ $$\alpha,\beta,\gamma,\delta,\varepsilon,\zeta,\eta.$$
 
 []{#una-demostración-elemental-de-la-invariancia}
 
-### 2.5.13. Una demostración elemental de la invariancia {#fispm-c02-una-demostraciuxf3n-elemental-de-la-invariancia}
+### Una demostración elemental de la invariancia {#fispm-c02-una-demostraciuxf3n-elemental-de-la-invariancia}
 
 Supongamos, para simplificar, que una magnitud depende solo de longitud y tiempo y tiene la forma $Q=C\,\ell^\beta t^\alpha,$
 
@@ -2923,7 +2923,7 @@ Por tanto, los exponentes dimensionales no dependen del tamaño concreto de las 
 
 []{#misma-dimensión-no-significa-mismo-tipo-de-magnitud}
 
-### 2.5.14. Misma dimensión no significa mismo tipo de magnitud {#fispm-c02-misma-dimensiuxf3n-no-significa-mismo-tipo-de-magnitud}
+### Misma dimensión no significa mismo tipo de magnitud {#fispm-c02-misma-dimensiuxf3n-no-significa-mismo-tipo-de-magnitud}
 
 En §2 aprendimos que la comparabilidad física es más exigente que compartir una notación de unidad. Ahora podemos formular la versión dimensional de esa cautela.
 
@@ -2947,7 +2947,7 @@ $$\boxed{ \text{misma dimensión} \Longrightarrow \text{mismo tipo}. }$$
 
 []{#ejemplo-frecuencia-y-actividad-radionúclida}
 
-### 2.5.15. Ejemplo: frecuencia y actividad radionúclida {#fispm-c02-ejemplo-frecuencia-y-actividad-radionuxfaclida}
+### Ejemplo: frecuencia y actividad radionúclida {#fispm-c02-ejemplo-frecuencia-y-actividad-radionuxfaclida}
 
 En ambos casos aparece
 
@@ -2965,7 +2965,7 @@ La igualdad dimensional no borra la diferencia física entre frecuencia y númer
 
 []{#ejemplo-presión-y-densidad-de-energía}
 
-### 2.5.16. Ejemplo: presión y densidad de energía {#fispm-c02-ejemplo-presiuxf3n-y-densidad-de-energuxeda}
+### Ejemplo: presión y densidad de energía {#fispm-c02-ejemplo-presiuxf3n-y-densidad-de-energuxeda}
 
 Para presión, $p=\frac{F}{A}.$
 
@@ -2989,7 +2989,7 @@ obtenemos $[u] = ML^{-1}T^{-2}.$ Por tanto, $[p]=[u].$ Pero esto no demuestra qu
 
 []{#dimensión-y-forma-vectorial}
 
-### 2.5.17. Dimensión y forma vectorial {#fispm-c02-dimensiuxf3n-y-forma-vectorial}
+### Dimensión y forma vectorial {#fispm-c02-dimensiuxf3n-y-forma-vectorial}
 
 El VIM señala además que, al obtener la dimensión de una magnitud, no se toma en cuenta su carácter escalar, vectorial o tensorial.[^22]
 
@@ -3009,7 +3009,7 @@ El análisis dimensional conserva cierta información y descarta otra.
 
 []{#la-dimensión-depende-del-sistema-de-magnitudes}
 
-### 2.5.18. La dimensión depende del sistema de magnitudes {#fispm-c02-la-dimensiuxf3n-depende-del-sistema-de-magnitudes}
+### La dimensión depende del sistema de magnitudes {#fispm-c02-la-dimensiuxf3n-depende-del-sistema-de-magnitudes}
 
 También debemos evitar presentar la dimensión como una etiqueta metafísica adherida a cada magnitud de manera independiente de toda elección. El BIPM y el VIM hablan de dimensiones **respecto de un sistema de magnitudes**. La elección de magnitudes base es convencional.
 
@@ -3029,7 +3029,7 @@ $$(T,L,M,I,\Theta,N,J).$$
 
 []{#zorich-y-el-cambio-de-base-de-unidades}
 
-### 2.5.19. Zorich y el cambio de base de unidades {#fispm-c02-zorich-y-el-cambio-de-base-de-unidades}
+### Zorich y el cambio de base de unidades {#fispm-c02-zorich-y-el-cambio-de-base-de-unidades}
 
 Zorich organiza su teoría dimensional precisamente alrededor del cambio de tamaños de las unidades base y de la manera en que cambian los valores numéricos de las magnitudes mientras se conserva su estructura dimensional.[^23]
 
@@ -3047,7 +3047,7 @@ En §6 usaremos exactamente esta invariancia para detectar qué sumas e igualdad
 
 []{#ejercicios-1}
 
-### 2.5.20. Ejercicios {#fispm-c02-ejercicios-1}
+### Ejercicios {#fispm-c02-ejercicios-1}
 
 **Ejercicio 11 --- Reconstruir dimensiones**
 
@@ -3251,7 +3251,7 @@ $$\boxed{ \text{dimensiones iguales} \not\Longrightarrow \text{mismo tipo}. }$$
 
 []{#síntesis-3}
 
-### 2.5.21. Síntesis {#fispm-c02-suxedntesis-3}
+### Síntesis {#fispm-c02-suxedntesis-3}
 
 La sección introduce la abstracción decisiva:
 
@@ -3275,7 +3275,7 @@ Con este lenguaje ya podemos formular la siguiente pregunta.
 
 Si una ecuación física debe seguir teniendo sentido cuando cambiamos las unidades base, ¿qué restricciones impone eso a los términos que sumamos o igualamos?
 
-Ése será el objeto de (§[2.6](#fispm-c02-homogeneidad-dimensional)).
+Ése será el objeto de (§[6](#fispm-c02-homogeneidad-dimensional)).
 
 ------------------------------------------------------------------------
 
@@ -3283,11 +3283,11 @@ Si una ecuación física debe seguir teniendo sentido cuando cambiamos las unida
 
 []{#homogeneidad-dimensional}
 
-## 2.6. Homogeneidad dimensional {#fispm-c02-homogeneidad-dimensional}
+## 6. Homogeneidad dimensional {#fispm-c02-homogeneidad-dimensional}
 
 []{#una-igualdad-física-debe-sobrevivir-al-cambio-de-unidades}
 
-### 2.6.1. Una igualdad física debe sobrevivir al cambio de unidades {#fispm-c02-una-igualdad-fuxedsica-debe-sobrevivir-al-cambio-de-unidades}
+### Una igualdad física debe sobrevivir al cambio de unidades {#fispm-c02-una-igualdad-fuxedsica-debe-sobrevivir-al-cambio-de-unidades}
 
 En §5 vimos que una magnitud conserva su dimensión cuando cambiamos las unidades concretas con que expresamos sus magnitudes base.[^24]
 
@@ -3299,7 +3299,7 @@ En §5 vimos que una magnitud conserva su dimensión cuando cambiamos las unidad
 
 <figcaption>
 
-**Figura 2.4.** La posición, su primera derivada y su segunda derivada pertenecen a clases dimensionales distintas. Una suma exige homogeneidad de sus términos. Véase §[2.6](#fispm-c02-homogeneidad-dimensional).
+**Figura 2.4.** La posición, su primera derivada y su segunda derivada pertenecen a clases dimensionales distintas. Una suma exige homogeneidad de sus términos. Véase §[6](#fispm-c02-homogeneidad-dimensional).
 
 </figcaption>
 
@@ -3355,7 +3355,7 @@ El problema aparece antes de sustituir números. La expresión no conserva una i
 
 []{#fpm-i-02-s06}
 
-### 2.6.2. Homogeneidad dimensional {#fispm-c02-homogeneidad-dimensional-1}
+### Homogeneidad dimensional {#fispm-c02-homogeneidad-dimensional-1}
 
 **Definición 17 --- Ecuación dimensionalmente homogénea** Una ecuación física es **dimensionalmente homogénea** cuando todos los términos que se suman o se igualan poseen la misma dimensión, una vez incorporadas las dimensiones de todos los parámetros y constantes físicas que aparecen en ellos.
 
@@ -3381,7 +3381,7 @@ La homogeneidad dimensional es una condición estructural sobre la ecuación. No
 
 []{#sumar-magnitudes-exige-compatibilidad}
 
-### 2.6.3. Sumar magnitudes exige compatibilidad {#fispm-c02-sumar-magnitudes-exige-compatibilidad}
+### Sumar magnitudes exige compatibilidad {#fispm-c02-sumar-magnitudes-exige-compatibilidad}
 
 En §2 distinguimos **tipo de magnitud** y **dimensión**.
 
@@ -3393,7 +3393,7 @@ Esto nos obliga a formular dos niveles de control.
 
 []{#nivel-1-condición-dimensional}
 
-#### 2.6.3.1. Nivel 1 --- Condición dimensional {#fispm-c02-nivel-1-condiciuxf3n-dimensional}
+#### Nivel 1 --- Condición dimensional {#fispm-c02-nivel-1-condiciuxf3n-dimensional}
 
 Para que una suma física
 
@@ -3405,7 +3405,7 @@ $$[A]=[B].$$
 
 []{#nivel-2-compatibilidad-física}
 
-#### 2.6.3.2. Nivel 2 --- Compatibilidad física {#fispm-c02-nivel-2-compatibilidad-fuxedsica}
+#### Nivel 2 --- Compatibilidad física {#fispm-c02-nivel-2-compatibilidad-fuxedsica}
 
 La igualdad dimensional no basta por sí sola.
 
@@ -3415,7 +3415,7 @@ También debemos saber que $A$ y $B$ representan magnitudes que el modelo permit
 
 []{#de-la-dimensión-al-factor-de-reescalado}
 
-### 2.6.4. De la dimensión al factor de reescalado {#fispm-c02-de-la-dimensiuxf3n-al-factor-de-reescalado}
+### De la dimensión al factor de reescalado {#fispm-c02-de-la-dimensiuxf3n-al-factor-de-reescalado}
 
 En §5 escribimos
 
@@ -3453,7 +3453,7 @@ Entonces, bajo el cambio de unidades, $\{Q\}' = \chi_Q(\lambda)\{Q\}.$ La funci�
 
 []{#por-qué-una-suma-obliga-a-un-mismo-factor}
 
-### 2.6.5. Por qué una suma obliga a un mismo factor {#fispm-c02-por-quuxe9-una-suma-obliga-a-un-mismo-factor}
+### Por qué una suma obliga a un mismo factor {#fispm-c02-por-quuxe9-una-suma-obliga-a-un-mismo-factor}
 
 Consideremos una relación física
 
@@ -3483,7 +3483,7 @@ Por tanto, $\chi_A=\chi_B=\chi_C.$ La suma exige que todos sus términos transfo
 
 []{#igualdad-de-factores-implica-igualdad-de-exponentes}
 
-### 2.6.6. Igualdad de factores implica igualdad de exponentes {#fispm-c02-igualdad-de-factores-implica-igualdad-de-exponentes}
+### Igualdad de factores implica igualdad de exponentes {#fispm-c02-igualdad-de-factores-implica-igualdad-de-exponentes}
 
 Supongamos ahora que
 
@@ -3537,7 +3537,7 @@ Esta observación completa la idea necesaria para nuestro segundo resultado form
 
 []{#segunda-proposición-formal-del-capítulo}
 
-### 2.6.7. Segunda proposición formal del capítulo {#fispm-c02-segunda-proposiciuxf3n-formal-del-capuxedtulo}
+### Segunda proposición formal del capítulo {#fispm-c02-segunda-proposiciuxf3n-formal-del-capuxedtulo}
 
 **Proposición 2 --- Homogeneidad dimensional necesaria bajo cambios independientes de unidades base**
 
@@ -3559,7 +3559,7 @@ $$[Q_1] = \cdots = [Q_r] = [R_1] = \cdots = [R_s].$$
 
 []{#demostración-1}
 
-#### 2.6.7.1. Demostración {#fispm-c02-demostraciuxf3n-1}
+#### Demostración {#fispm-c02-demostraciuxf3n-1}
 
 Fijemos un sistema inicial de unidades y llamemos $z_1,\ldots,z_{r+s}$ a los valores numéricos de todos los términos, tomando con signo negativo los del segundo miembro. La relación se escribe entonces $\sum_{i=1}^{r+s}z_i=0.$ Un cambio multiplicativo de las unidades base multiplica cada valor numérico por un factor positivo $\chi_i$, determinado por la dimensión del término. La invariancia de forma exige, para cada realización de la familia, $\sum_{i=1}^{r+s}\chi_i z_i=0.$
 
@@ -3573,7 +3573,7 @@ La hipótesis de variación excluye, por ejemplo, una suma de dos identidades in
 
 []{#qué-demuestra-exactamente-la-proposición-2}
 
-### 2.6.8. Qué demuestra exactamente la Proposición 2 {#fispm-c02-quuxe9-demuestra-exactamente-la-proposiciuxf3n-2}
+### Qué demuestra exactamente la Proposición 2 {#fispm-c02-quuxe9-demuestra-exactamente-la-proposiciuxf3n-2}
 
 La Proposición 2 establece una **condición necesaria** para una ecuación física aditiva que deba conservar su forma bajo cambios de unidades. No demuestra que toda ecuación dimensionalmente homogénea sea físicamente correcta. Por ejemplo, $x=x_0+vt$
 
@@ -3593,7 +3593,7 @@ $$\boxed{ \text{homogeneidad dimensional} \not\Rightarrow \text{verdad física}.
 
 []{#un-error-dimensional-sí-puede-ser-decisivo}
 
-### 2.6.9. Un error dimensional sí puede ser decisivo {#fispm-c02-un-error-dimensional-suxed-puede-ser-decisivo}
+### Un error dimensional sí puede ser decisivo {#fispm-c02-un-error-dimensional-suxed-puede-ser-decisivo}
 
 La asimetría es importante. Si una ecuación falla el control dimensional, entonces tenemos una razón estructural para rechazarla **tal como está escrita**. Si una ecuación pasa el control dimensional, solo sabemos que ha superado una prueba necesaria.
 
@@ -3609,7 +3609,7 @@ Esta asimetría convierte el análisis dimensional en una excelente herramienta 
 
 []{#ejemplo-cinemática-elemental}
 
-### 2.6.10. Ejemplo: cinemática elemental {#fispm-c02-ejemplo-cinemuxe1tica-elemental}
+### Ejemplo: cinemática elemental {#fispm-c02-ejemplo-cinemuxe1tica-elemental}
 
 Consideremos
 
@@ -3645,7 +3645,7 @@ Solo demuestra que su estructura aditiva es dimensionalmente compatible.
 
 []{#ejemplo-de-ecuación-defectuosa}
 
-### 2.6.11. Ejemplo de ecuación defectuosa {#fispm-c02-ejemplo-de-ecuaciuxf3n-defectuosa}
+### Ejemplo de ecuación defectuosa {#fispm-c02-ejemplo-de-ecuaciuxf3n-defectuosa}
 
 Supongamos que aparece
 
@@ -3663,7 +3663,7 @@ Por tanto, $[at]\neq L.$ La suma intenta combinar longitud con velocidad. La ecu
 
 []{#unidades-iguales-no-bastan-para-justificar-una-suma}
 
-### 2.6.12. Unidades iguales no bastan para justificar una suma {#fispm-c02-unidades-iguales-no-bastan-para-justificar-una-suma}
+### Unidades iguales no bastan para justificar una suma {#fispm-c02-unidades-iguales-no-bastan-para-justificar-una-suma}
 
 En §5 vimos que presión y densidad de energía poseen la misma dimensión: $ML^{-1}T^{-2}.$ En SI ambas pueden incluso expresarse mediante unidades algebraicamente equivalentes: $\mathrm{Pa} = \mathrm{J\,m^{-3}}.$
 
@@ -3687,7 +3687,7 @@ Así, la homogeneidad es un filtro estructural, no un diccionario semántico com
 
 []{#constantes-numéricas-y-constantes-físicas}
 
-### 2.6.13. Constantes numéricas y constantes físicas {#fispm-c02-constantes-numuxe9ricas-y-constantes-fuxedsicas}
+### Constantes numéricas y constantes físicas {#fispm-c02-constantes-numuxe9ricas-y-constantes-fuxedsicas}
 
 Consideremos
 
@@ -3717,7 +3717,7 @@ entonces $[k] = MT^{-2}.$ La letra $k$ no trae consigo una dimensión universal.
 
 []{#las-constantes-pueden-reparar-una-ecuación-solo-si-pertenecen-al-modelo}
 
-### 2.6.14. Las constantes pueden reparar una ecuación solo si pertenecen al modelo {#fispm-c02-las-constantes-pueden-reparar-una-ecuaciuxf3n-solo-si-pertenecen-al-modelo}
+### Las constantes pueden reparar una ecuación solo si pertenecen al modelo {#fispm-c02-las-constantes-pueden-reparar-una-ecuaciuxf3n-solo-si-pertenecen-al-modelo}
 
 Supongamos que alguien propone
 
@@ -3741,19 +3741,19 @@ $$\boxed{ \text{restaurar dimensiones} \neq \text{derivar una ley física}. }$$
 
 []{#igualdades-entre-magnitudes-y-ecuaciones-numéricas}
 
-### 2.6.15. Igualdades entre magnitudes y ecuaciones numéricas {#fispm-c02-igualdades-entre-magnitudes-y-ecuaciones-numuxe9ricas}
+### Igualdades entre magnitudes y ecuaciones numéricas {#fispm-c02-igualdades-entre-magnitudes-y-ecuaciones-numuxe9ricas}
 
 Una ecuación física puede leerse en dos niveles.
 
 []{#nivel-de-magnitudes}
 
-#### 2.6.15.1. Nivel de magnitudes {#fispm-c02-nivel-de-magnitudes}
+#### Nivel de magnitudes {#fispm-c02-nivel-de-magnitudes}
 
 $$Q_1+Q_2=Q_3.$$
 
 []{#nivel-de-valores-numéricos-en-un-sistema-de-unidades-coherente}
 
-#### 2.6.15.2. Nivel de valores numéricos en un sistema de unidades coherente {#fispm-c02-nivel-de-valores-numuxe9ricos-en-un-sistema-de-unidades-coherente}
+#### Nivel de valores numéricos en un sistema de unidades coherente {#fispm-c02-nivel-de-valores-numuxe9ricos-en-un-sistema-de-unidades-coherente}
 
 $$q_1+q_2=q_3.$$
 
@@ -3765,7 +3765,7 @@ si los términos tuvieran dimensiones distintas, cambiarían con factores distin
 
 []{#ecuaciones-multiplicativas}
 
-### 2.6.16. Ecuaciones multiplicativas {#fispm-c02-ecuaciones-multiplicativas}
+### Ecuaciones multiplicativas {#fispm-c02-ecuaciones-multiplicativas}
 
 La exigencia de igualdad dimensional término a término se refiere especialmente a **sumas e igualdades aditivas**. En una relación multiplicativa, $Q=AB,$
 
@@ -3793,7 +3793,7 @@ Así, una auditoría dimensional debe respetar la estructura algebraica de la ec
 
 []{#la-dimensión-de-una-derivada-o-cociente-incremental}
 
-### 2.6.17. La dimensión de una derivada o cociente incremental {#fispm-c02-la-dimensiuxf3n-de-una-derivada-o-cociente-incremental}
+### La dimensión de una derivada o cociente incremental {#fispm-c02-la-dimensiuxf3n-de-una-derivada-o-cociente-incremental}
 
 Todavía no necesitamos cálculo diferencial formal para comprender un patrón. Si una magnitud $Q$ cambia durante un intervalo temporal $\Delta t$, el cociente
 
@@ -3815,7 +3815,7 @@ Más adelante, cuando introduzcamos derivadas, el mismo razonamiento dimensional
 
 []{#la-dimensión-de-una-integral}
 
-### 2.6.18. La dimensión de una integral {#fispm-c02-la-dimensiuxf3n-de-una-integral}
+### La dimensión de una integral {#fispm-c02-la-dimensiuxf3n-de-una-integral}
 
 De manera análoga, cuando más adelante encontremos una cantidad definida mediante una integral temporal,
 
@@ -3827,7 +3827,7 @@ No desarrollaremos aquí integración. El objetivo es mostrar que el análisis d
 
 []{#funciones-no-algebraicas-frontera-de-esta-sección}
 
-### 2.6.19. Funciones no algebraicas: frontera de esta sección {#fispm-c02-funciones-no-algebraicas-frontera-de-esta-secciuxf3n}
+### Funciones no algebraicas: frontera de esta sección {#fispm-c02-funciones-no-algebraicas-frontera-de-esta-secciuxf3n}
 
 ¿Qué ocurre con expresiones como
 
@@ -3849,7 +3849,7 @@ Solo registramos que no debemos aplicar reglas algebraicas de manera mecánica a
 
 []{#ejercicios-2}
 
-### 2.6.20. Ejercicios {#fispm-c02-ejercicios-2}
+### Ejercicios {#fispm-c02-ejercicios-2}
 
 **Ejercicio 14 --- Auditoría de ecuaciones**
 
@@ -4039,7 +4039,7 @@ $$\boxed{ \text{homogeneidad} \neq \text{determinación completa de la ley}. }$$
 
 []{#síntesis-4}
 
-### 2.6.21. Síntesis {#fispm-c02-suxedntesis-4}
+### Síntesis {#fispm-c02-suxedntesis-4}
 
 La idea central de la sección es:
 
@@ -4065,7 +4065,7 @@ mientras
 
 $$\boxed{ \text{homogeneidad} \not\Rightarrow \text{verdad física}. }$$
 
-La siguiente sección convertirá esta condición necesaria en una herramienta de trabajo sistemática (§[2.7](#fispm-c02-el-anuxe1lisis-dimensional-como-auditoruxeda)).
+La siguiente sección convertirá esta condición necesaria en una herramienta de trabajo sistemática (§[7](#fispm-c02-el-anuxe1lisis-dimensional-como-auditoruxeda)).
 
 ------------------------------------------------------------------------
 
@@ -4077,11 +4077,11 @@ La siguiente sección convertirá esta condición necesaria en una herramienta d
 
 []{#fpm-i-02-s07}
 
-## 2.7. El análisis dimensional como auditoría {#fispm-c02-el-anuxe1lisis-dimensional-como-auditoruxeda}
+## 7. El análisis dimensional como auditoría {#fispm-c02-el-anuxe1lisis-dimensional-como-auditoruxeda}
 
 []{#por-qué-aparece-una-ecuación-puede-parecer-razonable-y-estar-mal-construida}
 
-### 2.7.1. Por qué aparece: una ecuación puede parecer razonable y estar mal construida {#fispm-c02-por-quuxe9-aparece-una-ecuaciuxf3n-puede-parecer-razonable-y-estar-mal-construida}
+### Por qué aparece: una ecuación puede parecer razonable y estar mal construida {#fispm-c02-por-quuxe9-aparece-una-ecuaciuxf3n-puede-parecer-razonable-y-estar-mal-construida}
 
 Consideremos la expresión
 
@@ -4127,7 +4127,7 @@ No significa derivar toda la física de las dimensiones. Significa someter una f
 
 []{#qué-podríamos-pensar-inicialmente}
 
-### 2.7.2. Qué podríamos pensar inicialmente {#fispm-c02-quuxe9-podruxedamos-pensar-inicialmente}
+### Qué podríamos pensar inicialmente {#fispm-c02-quuxe9-podruxedamos-pensar-inicialmente}
 
 Un lector puede formular una primera intuición:
 
@@ -4153,7 +4153,7 @@ Esta asimetría ya apareció en el Principio 12. En §7 la convertiremos en un p
 
 []{#primera-representación-la-ecuación-como-colección-de-términos}
 
-### 2.7.3. Primera representación: la ecuación como colección de términos {#fispm-c02-primera-representaciuxf3n-la-ecuaciuxf3n-como-colecciuxf3n-de-tuxe9rminos}
+### Primera representación: la ecuación como colección de términos {#fispm-c02-primera-representaciuxf3n-la-ecuaciuxf3n-como-colecciuxf3n-de-tuxe9rminos}
 
 Cuando vemos
 
@@ -4173,7 +4173,7 @@ Este cambio de representación transforma una expresión física en un problema 
 
 []{#segunda-representación-la-firma-dimensional}
 
-### 2.7.4. Segunda representación: la firma dimensional {#fispm-c02-segunda-representaciuxf3n-la-firma-dimensional}
+### Segunda representación: la firma dimensional {#fispm-c02-segunda-representaciuxf3n-la-firma-dimensional}
 
 En §5 escribimos, para una magnitud $Q$,
 
@@ -4227,13 +4227,13 @@ Solo reorganiza la información de una manera que facilitará:
 
 []{#leer-operaciones-mediante-firmas}
 
-### 2.7.5. Leer operaciones mediante firmas {#fispm-c02-leer-operaciones-mediante-firmas}
+### Leer operaciones mediante firmas {#fispm-c02-leer-operaciones-mediante-firmas}
 
 La notación vectorial convierte las reglas dimensionales en operaciones muy simples.
 
 []{#producto}
 
-#### 2.7.5.1. Producto {#fispm-c02-producto}
+#### Producto {#fispm-c02-producto}
 
 Si
 
@@ -4245,7 +4245,7 @@ $$\boxed{ \mathbf d(Q) = \mathbf d(A) + \mathbf d(B). }$$
 
 []{#cociente}
 
-#### 2.7.5.2. Cociente {#fispm-c02-cociente}
+#### Cociente {#fispm-c02-cociente}
 
 Si
 
@@ -4257,7 +4257,7 @@ $$\boxed{ \mathbf d(Q) = \mathbf d(A) - \mathbf d(B). }$$
 
 []{#potencia}
 
-#### 2.7.5.3. Potencia {#fispm-c02-potencia}
+#### Potencia {#fispm-c02-potencia}
 
 Si
 
@@ -4269,7 +4269,7 @@ $$\boxed{ \mathbf d(Q) = n\,\mathbf d(A). }$$
 
 []{#suma}
 
-#### 2.7.5.4. Suma {#fispm-c02-suma}
+#### Suma {#fispm-c02-suma}
 
 Si
 
@@ -4285,7 +4285,7 @@ No combina firmas: exige igualdad de firmas.
 
 []{#precisar-el-método-qué-es-una-auditoría-dimensional}
 
-### 2.7.6. Precisar el método: qué es una auditoría dimensional {#fispm-c02-precisar-el-muxe9todo-quuxe9-es-una-auditoruxeda-dimensional}
+### Precisar el método: qué es una auditoría dimensional {#fispm-c02-precisar-el-muxe9todo-quuxe9-es-una-auditoruxeda-dimensional}
 
 **Definición 19 --- Auditoría dimensional** Una **auditoría dimensional** es el procedimiento de analizar una expresión, ecuación o cadena de cálculo reemplazando sus magnitudes por dimensiones o firmas dimensionales para comprobar la compatibilidad estructural exigida por sus operaciones y localizar posibles inconsistencias.
 
@@ -4305,13 +4305,13 @@ Debe intentar identificar **dónde** aparece la incompatibilidad.
 
 []{#protocolo-fpm-de-auditoría-dimensional}
 
-### 2.7.7. Protocolo FPM de auditoría dimensional {#fispm-c02-protocolo-fpm-de-auditoruxeda-dimensional}
+### Protocolo FPM de auditoría dimensional {#fispm-c02-protocolo-fpm-de-auditoruxeda-dimensional}
 
 Aplicaremos el siguiente procedimiento.
 
 []{#paso-1-declarar-el-significado-de-los-símbolos}
 
-#### 2.7.7.1. Paso 1 --- Declarar el significado de los símbolos {#fispm-c02-paso-1-declarar-el-significado-de-los-suxedmbolos}
+#### Paso 1 --- Declarar el significado de los símbolos {#fispm-c02-paso-1-declarar-el-significado-de-los-suxedmbolos}
 
 No comenzamos con letras desnudas.
 
@@ -4327,7 +4327,7 @@ Esta etapa evita asignar una dimensión incorrecta a una letra por hábito.
 
 []{#paso-2-registrar-dimensiones-conocidas}
 
-#### 2.7.7.2. Paso 2 --- Registrar dimensiones conocidas {#fispm-c02-paso-2-registrar-dimensiones-conocidas}
+#### Paso 2 --- Registrar dimensiones conocidas {#fispm-c02-paso-2-registrar-dimensiones-conocidas}
 
 Por ejemplo:
 
@@ -4339,7 +4339,7 @@ $$[t]=T.$$
 
 []{#paso-3-descomponer-cada-término}
 
-#### 2.7.7.3. Paso 3 --- Descomponer cada término {#fispm-c02-paso-3-descomponer-cada-tuxe9rmino}
+#### Paso 3 --- Descomponer cada término {#fispm-c02-paso-3-descomponer-cada-tuxe9rmino}
 
 Si aparece
 
@@ -4351,13 +4351,13 @@ No intentamos adivinar el resultado visualmente.
 
 []{#paso-4-simplificar-dimensiones-o-firmas}
 
-#### 2.7.7.4. Paso 4 --- Simplificar dimensiones o firmas {#fispm-c02-paso-4-simplificar-dimensiones-o-firmas}
+#### Paso 4 --- Simplificar dimensiones o firmas {#fispm-c02-paso-4-simplificar-dimensiones-o-firmas}
 
 Tenemos $[v^2t] = (LT^{-1})^2T = L^2T^{-1}.$
 
 []{#paso-5-aplicar-la-regla-algebraica-pertinente}
 
-#### 2.7.7.5. Paso 5 --- Aplicar la regla algebraica pertinente {#fispm-c02-paso-5-aplicar-la-regla-algebraica-pertinente}
+#### Paso 5 --- Aplicar la regla algebraica pertinente {#fispm-c02-paso-5-aplicar-la-regla-algebraica-pertinente}
 
 - producto: multiplicar dimensiones;
 
@@ -4369,7 +4369,7 @@ Tenemos $[v^2t] = (LT^{-1})^2T = L^2T^{-1}.$
 
 []{#paso-6-si-falla-localizar-el-primer-punto-incompatible}
 
-#### 2.7.7.6. Paso 6 --- Si falla, localizar el primer punto incompatible {#fispm-c02-paso-6-si-falla-localizar-el-primer-punto-incompatible}
+#### Paso 6 --- Si falla, localizar el primer punto incompatible {#fispm-c02-paso-6-si-falla-localizar-el-primer-punto-incompatible}
 
 No basta decir:
 
@@ -4379,7 +4379,7 @@ Debemos señalar, por ejemplo: $[at]=LT^{-1} \neq L=[x_0].$
 
 []{#paso-7-si-pasa-no-detener-la-revisión-física}
 
-#### 2.7.7.7. Paso 7 --- Si pasa, no detener la revisión física {#fispm-c02-paso-7-si-pasa-no-detener-la-revisiuxf3n-fuxedsica}
+#### Paso 7 --- Si pasa, no detener la revisión física {#fispm-c02-paso-7-si-pasa-no-detener-la-revisiuxf3n-fuxedsica}
 
 Después del control dimensional todavía debemos preguntar:
 
@@ -4399,19 +4399,19 @@ La auditoría dimensional es una capa de control dentro de una auditoría físic
 
 []{#ejemplo-desarrollado-1-encontrar-el-término-defectuoso}
 
-### 2.7.8. Ejemplo desarrollado 1 --- Encontrar el término defectuoso {#fispm-c02-ejemplo-desarrollado-1-encontrar-el-tuxe9rmino-defectuoso}
+### Ejemplo desarrollado 1 --- Encontrar el término defectuoso {#fispm-c02-ejemplo-desarrollado-1-encontrar-el-tuxe9rmino-defectuoso}
 
 Consideremos: $x=x_0+v_0t+\frac12 at.$
 
 []{#intuir}
 
-#### 2.7.8.1. Intuir {#fispm-c02-intuir}
+#### Intuir {#fispm-c02-intuir}
 
 Sabemos que todos los términos sumados a una posición deberían representar contribuciones a una posición.
 
 []{#representar}
 
-#### 2.7.8.2. Representar {#fispm-c02-representar}
+#### Representar {#fispm-c02-representar}
 
 Asignamos:
 
@@ -4425,7 +4425,7 @@ $$[t]=T.$$
 
 []{#precisar}
 
-#### 2.7.8.3. Precisar {#fispm-c02-precisar}
+#### Precisar {#fispm-c02-precisar}
 
 Calculamos: $[v_0t] = LT^{-1}T = L,$
 
@@ -4433,7 +4433,7 @@ pero: $[at] = LT^{-2}T = LT^{-1}.$
 
 []{#poner-a-prueba}
 
-#### 2.7.8.4. Poner a prueba {#fispm-c02-poner-a-prueba}
+#### Poner a prueba {#fispm-c02-poner-a-prueba}
 
 Comparamos las firmas:
 
@@ -4447,7 +4447,7 @@ El último término no pertenece a la misma clase dimensional.
 
 []{#diagnóstico}
 
-#### 2.7.8.5. Diagnóstico {#fispm-c02-diagnuxf3stico}
+#### Diagnóstico {#fispm-c02-diagnuxf3stico}
 
 La ecuación falla por **inhomogeneidad dimensional**. La auditoría no nos dice automáticamente cuál era la fórmula pretendida. Podría faltar, por ejemplo, otro factor de tiempo.
 
@@ -4461,7 +4461,7 @@ Una respuesta adecuada debe mencionar que cambiar números no cambia la dimensi�
 
 []{#ejemplo-desarrollado-2-una-fórmula-que-pasa-y-puede-seguir-siendo-falsa}
 
-### 2.7.9. Ejemplo desarrollado 2 --- Una fórmula que pasa y puede seguir siendo falsa {#fispm-c02-ejemplo-desarrollado-2-una-fuxf3rmula-que-pasa-y-puede-seguir-siendo-falsa}
+### Ejemplo desarrollado 2 --- Una fórmula que pasa y puede seguir siendo falsa {#fispm-c02-ejemplo-desarrollado-2-una-fuxf3rmula-que-pasa-y-puede-seguir-siendo-falsa}
 
 Consideremos: $E=7mv^2.$
 
@@ -4491,13 +4491,13 @@ La inferencia es inválida.
 
 []{#tres-clases-de-fallo-que-no-debemos-confundir}
 
-### 2.7.10. Tres clases de fallo que no debemos confundir {#fispm-c02-tres-clases-de-fallo-que-no-debemos-confundir}
+### Tres clases de fallo que no debemos confundir {#fispm-c02-tres-clases-de-fallo-que-no-debemos-confundir}
 
 La auditoría dimensional ayuda a separar errores distintos.
 
 []{#a.-fallo-dimensional}
 
-#### 2.7.10.1. A. Fallo dimensional {#fispm-c02-a.-fallo-dimensional}
+#### A. Fallo dimensional {#fispm-c02-a.-fallo-dimensional}
 
 Ejemplo: $x=x_0+at.$
 
@@ -4505,7 +4505,7 @@ Tenemos $L\neq LT^{-1}.$ El problema es estructural y puede detectarse sin conoc
 
 []{#b.-fallo-algebraico}
 
-#### 2.7.10.2. B. Fallo algebraico {#fispm-c02-b.-fallo-algebraico}
+#### B. Fallo algebraico {#fispm-c02-b.-fallo-algebraico}
 
 Supongamos una ecuación dimensionalmente correcta: $v=v_0+at.$ Si alguien parte de ella y escribe $v-v_0=a+t,$
 
@@ -4525,7 +4525,7 @@ pero la causa inmediata del fallo fue una manipulación algebraica ilegítima.
 
 []{#c.-fallo-físico-o-de-modelización}
 
-#### 2.7.10.3. C. Fallo físico o de modelización {#fispm-c02-c.-fallo-fuxedsico-o-de-modelizaciuxf3n}
+#### C. Fallo físico o de modelización {#fispm-c02-c.-fallo-fuxedsico-o-de-modelizaciuxf3n}
 
 Una fórmula puede ser dimensionalmente homogénea y algebraicamente impecable, pero utilizar:
 
@@ -4543,7 +4543,7 @@ Por eso necesitamos una jerarquía de auditorías.
 
 []{#representación-por-capas}
 
-### 2.7.11. Representación por capas {#fispm-c02-representaciuxf3n-por-capas}
+### Representación por capas {#fispm-c02-representaciuxf3n-por-capas}
 
 Organizaremos el diagnóstico así:
 
@@ -4551,7 +4551,7 @@ $$\boxed{ \text{dimensional} \to \text{algebraica} \to \text{semántica} \to \te
 
 []{#capa-1-auditoría-dimensional}
 
-#### 2.7.11.1. Capa 1 --- Auditoría dimensional {#fispm-c02-capa-1-auditoruxeda-dimensional}
+#### Capa 1 --- Auditoría dimensional {#fispm-c02-capa-1-auditoruxeda-dimensional}
 
 Pregunta:
 
@@ -4559,7 +4559,7 @@ Pregunta:
 
 []{#capa-2-auditoría-algebraica}
 
-#### 2.7.11.2. Capa 2 --- Auditoría algebraica {#fispm-c02-capa-2-auditoruxeda-algebraica}
+#### Capa 2 --- Auditoría algebraica {#fispm-c02-capa-2-auditoruxeda-algebraica}
 
 Pregunta:
 
@@ -4567,7 +4567,7 @@ Pregunta:
 
 []{#capa-3-auditoría-semántica}
 
-#### 2.7.11.3. Capa 3 --- Auditoría semántica {#fispm-c02-capa-3-auditoruxeda-semuxe1ntica}
+#### Capa 3 --- Auditoría semántica {#fispm-c02-capa-3-auditoruxeda-semuxe1ntica}
 
 Pregunta:
 
@@ -4575,7 +4575,7 @@ Pregunta:
 
 []{#capa-4-auditoría-física}
 
-#### 2.7.11.4. Capa 4 --- Auditoría física {#fispm-c02-capa-4-auditoruxeda-fuxedsica}
+#### Capa 4 --- Auditoría física {#fispm-c02-capa-4-auditoruxeda-fuxedsica}
 
 Pregunta:
 
@@ -4587,7 +4587,7 @@ Este principio extiende el protocolo de revisión del capítulo 1.
 
 []{#conflicto-típico-las-unidades-se-cancelan-así-que-está-bien}
 
-### 2.7.12. Conflicto típico: «las unidades se cancelan, así que está bien» {#fispm-c02-conflicto-tuxedpico-las-unidades-se-cancelan-asuxed-que-estuxe1-bien}
+### Conflicto típico: «las unidades se cancelan, así que está bien» {#fispm-c02-conflicto-tuxedpico-las-unidades-se-cancelan-asuxed-que-estuxe1-bien}
 
 Consideremos: $Q=\frac{ab}{c}.$ Un estudiante sustituye números y obtiene finalmente una unidad esperada.
 
@@ -4605,7 +4605,7 @@ $$\boxed{ \text{unidad final plausible} \not\Rightarrow \text{cálculo íntegro 
 
 []{#conflicto-típico-si-falla-puedo-arreglarlo-con-una-constante}
 
-### 2.7.13. Conflicto típico: «si falla, puedo arreglarlo con una constante» {#fispm-c02-conflicto-tuxedpico-si-falla-puedo-arreglarlo-con-una-constante}
+### Conflicto típico: «si falla, puedo arreglarlo con una constante» {#fispm-c02-conflicto-tuxedpico-si-falla-puedo-arreglarlo-con-una-constante}
 
 Supongamos: $x=t^2.$ La expresión es inhomogénea: $L\neq T^2.$
 
@@ -4627,7 +4627,7 @@ La reparación dimensional genera una **familia admisible de formas**, no una le
 
 []{#variación-detectar-la-dimensión-que-falta}
 
-### 2.7.14. Variación: detectar la dimensión que falta {#fispm-c02-variaciuxf3n-detectar-la-dimensiuxf3n-que-falta}
+### Variación: detectar la dimensión que falta {#fispm-c02-variaciuxf3n-detectar-la-dimensiuxf3n-que-falta}
 
 Aunque §7 no está dedicado todavía a inferir leyes, la auditoría puede localizar información ausente. Supongamos: $F=k\frac{m_1m_2}{r^2}.$ Sin interpretar todavía la ecuación como una ley concreta, podemos preguntar qué dimensión necesitaría $k$ para que la relación fuera homogénea.
 
@@ -4647,7 +4647,7 @@ No ha demostrado la relación. Esta forma de razonamiento prepara §§10--12.
 
 []{#variación-usar-firmas-para-localizar-un-error}
 
-### 2.7.15. Variación: usar firmas para localizar un error {#fispm-c02-variaciuxf3n-usar-firmas-para-localizar-un-error}
+### Variación: usar firmas para localizar un error {#fispm-c02-variaciuxf3n-usar-firmas-para-localizar-un-error}
 
 Sea
 
@@ -4683,13 +4683,13 @@ La firma dimensional funciona así como una herramienta de **localización**, no
 
 []{#qué-no-puede-detectar-el-análisis-dimensional}
 
-### 2.7.16. Qué no puede detectar el análisis dimensional {#fispm-c02-quuxe9-no-puede-detectar-el-anuxe1lisis-dimensional}
+### Qué no puede detectar el análisis dimensional {#fispm-c02-quuxe9-no-puede-detectar-el-anuxe1lisis-dimensional}
 
 Una auditoría dimensional puede no advertir:
 
 []{#coeficientes-numéricos-incorrectos}
 
-#### 2.7.16.1. Coeficientes numéricos incorrectos {#fispm-c02-coeficientes-numuxe9ricos-incorrectos}
+#### Coeficientes numéricos incorrectos {#fispm-c02-coeficientes-numuxe9ricos-incorrectos}
 
 $$E=2mv^2$$
 
@@ -4701,7 +4701,7 @@ tienen la misma dimensión.
 
 []{#signos-incorrectos}
 
-#### 2.7.16.2. Signos incorrectos {#fispm-c02-signos-incorrectos}
+#### Signos incorrectos {#fispm-c02-signos-incorrectos}
 
 $$A+B=C$$
 
@@ -4713,25 +4713,25 @@ pueden ser igualmente homogéneas.
 
 []{#dependencias-funcionales-distintas-con-igual-dimensión}
 
-#### 2.7.16.3. Dependencias funcionales distintas con igual dimensión {#fispm-c02-dependencias-funcionales-distintas-con-igual-dimensiuxf3n}
+#### Dependencias funcionales distintas con igual dimensión {#fispm-c02-dependencias-funcionales-distintas-con-igual-dimensiuxf3n}
 
 Dos funciones diferentes pueden producir la misma dimensión final.
 
 []{#hipótesis-físicas-incorrectas}
 
-#### 2.7.16.4. Hipótesis físicas incorrectas {#fispm-c02-hipuxf3tesis-fuxedsicas-incorrectas}
+#### Hipótesis físicas incorrectas {#fispm-c02-hipuxf3tesis-fuxedsicas-incorrectas}
 
 Una ecuación puede utilizar una aproximación fuera de régimen y seguir siendo homogénea.
 
 []{#confusión-entre-magnitudes-de-igual-dimensión}
 
-#### 2.7.16.5. Confusión entre magnitudes de igual dimensión {#fispm-c02-confusiuxf3n-entre-magnitudes-de-igual-dimensiuxf3n}
+#### Confusión entre magnitudes de igual dimensión {#fispm-c02-confusiuxf3n-entre-magnitudes-de-igual-dimensiuxf3n}
 
 Presión y densidad de energía pueden compartir dimensión sin ser intercambiables en cualquier contexto. Ésta es la frontera conceptual de la herramienta.
 
 []{#lectura-de-una-auditoría-estrategia-global-y-pasos-locales}
 
-### 2.7.17. Lectura de una auditoría: estrategia global y pasos locales {#fispm-c02-lectura-de-una-auditoruxeda-estrategia-global-y-pasos-locales}
+### Lectura de una auditoría: estrategia global y pasos locales {#fispm-c02-lectura-de-una-auditoruxeda-estrategia-global-y-pasos-locales}
 
 práctica guiada exige distinguir la estrategia de las manipulaciones.
 
@@ -4739,13 +4739,13 @@ En una auditoría dimensional:
 
 []{#estrategia-global}
 
-#### 2.7.17.1. Estrategia global {#fispm-c02-estrategia-global}
+#### Estrategia global {#fispm-c02-estrategia-global}
 
 Queremos comprobar si la estructura de la ecuación puede permanecer independiente de la elección de unidades.
 
 []{#pasos-locales}
 
-#### 2.7.17.2. Pasos locales {#fispm-c02-pasos-locales}
+#### Pasos locales {#fispm-c02-pasos-locales}
 
 Calculamos dimensiones, sumamos exponentes y comparamos firmas.
 
@@ -4765,7 +4765,7 @@ Si las tres respuestas pueden darse sin recurrir a una fórmula memorizada, la h
 
 []{#conectar-con-el-protocolo-general-de-física-para-matemáticos}
 
-### 2.7.18. Conectar con el protocolo general de Física para matemáticos {#fispm-c02-conectar-con-el-protocolo-general-de-fuxedsica-para-matemuxe1ticos}
+### Conectar con el protocolo general de Física para matemáticos {#fispm-c02-conectar-con-el-protocolo-general-de-fuxedsica-para-matemuxe1ticos}
 
 En el capítulo 1 fijamos la cadena:
 
@@ -4793,7 +4793,7 @@ $$\boxed{ \text{descartar incompatibilidades estructurales baratas de detectar}.
 
 []{#práctica-guiada}
 
-### 2.7.19. Práctica guiada {#fispm-c02-pruxe1ctica-guiada}
+### Práctica guiada {#fispm-c02-pruxe1ctica-guiada}
 
 **Ejercicio 17 --- Auditoría dimensional completa**
 
@@ -4805,7 +4805,7 @@ Los cuatro apartados siguen la secuencia:
 
 $$\text{Recuperación} \to \text{Consolidación} \to \text{Diagnóstico} \to \text{Síntesis}.$$
 
-### 2.7.20. A. Recuperación {#fispm-c02-a.-recuperaciuxf3n}
+### A. Recuperación {#fispm-c02-a.-recuperaciuxf3n}
 
 Calcula las firmas dimensionales de: $v,\qquad a,\qquad F,\qquad E.$
 
@@ -4813,13 +4813,13 @@ Usa el orden
 
 $$(T,L,M,I,\Theta,N,J).$$
 
-### 2.7.21. B. Consolidación {#fispm-c02-b.-consolidaciuxf3n}
+### B. Consolidación {#fispm-c02-b.-consolidaciuxf3n}
 
 Audita: $x=x_0+v_0t+\frac12 at^2.$
 
 Verifica la dimensión de cada término y explica por qué el factor $1/2$ no interviene en el control dimensional.
 
-### 2.7.22. C. Diagnóstico {#fispm-c02-c.-diagnuxf3stico}
+### C. Diagnóstico {#fispm-c02-c.-diagnuxf3stico}
 
 Un estudiante propone: $v=v_0+at^2.$
 
@@ -4829,7 +4829,7 @@ Otro responde:
 
 Identifica el error dimensional y explica por qué la respuesta no puede repararlo.
 
-### 2.7.23. D. Síntesis {#fispm-c02-d.-suxedntesis}
+### D. Síntesis {#fispm-c02-d.-suxedntesis}
 
 Considera: $Q=C\,m^\alpha v^\beta,$
 
@@ -4843,7 +4843,7 @@ donde $C$ es un número puro y queremos que $Q$ tenga dimensión de energía.
 
 **Solución**
 
-### 2.7.24. A. Recuperación {#fispm-c02-a.-recuperaciuxf3n-1}
+### A. Recuperación {#fispm-c02-a.-recuperaciuxf3n-1}
 
 Para velocidad: $[v]=LT^{-1},$
 
@@ -4869,7 +4869,7 @@ luego
 
 $$\boxed{ \mathbf d(E) = (-2,2,1,0,0,0,0). }$$
 
-### 2.7.25. B. Consolidación {#fispm-c02-b.-consolidaciuxf3n-1}
+### B. Consolidación {#fispm-c02-b.-consolidaciuxf3n-1}
 
 Tenemos: $[x]=[x_0]=L.$
 
@@ -4887,7 +4887,7 @@ $$\frac12$$
 
 es un número puro y no introduce ninguna potencia de las dimensiones base.
 
-### 2.7.26. C. Diagnóstico {#fispm-c02-c.-diagnuxf3stico-1}
+### C. Diagnóstico {#fispm-c02-c.-diagnuxf3stico-1}
 
 La velocidad tiene dimensión: $[v]=LT^{-1}.$
 
@@ -4899,7 +4899,7 @@ $$at^2$$
 
 en una velocidad. El fallo es dimensional, no numérico.
 
-### 2.7.27. D. Síntesis {#fispm-c02-d.-suxedntesis-1}
+### D. Síntesis {#fispm-c02-d.-suxedntesis-1}
 
 Queremos: $[Q] = ML^2T^{-2}.$
 
@@ -4925,7 +4925,7 @@ $$\boxed{ \text{restricción dimensional} \neq \text{ley física completa}. }$$
 
 []{#variar-el-método}
 
-### 2.7.28. Variar el método {#fispm-c02-variar-el-muxe9todo}
+### Variar el método {#fispm-c02-variar-el-muxe9todo}
 
 El ejercicio anterior usó una dimensión objetivo conocida.
 
@@ -4933,13 +4933,13 @@ Podemos variar el problema de tres maneras.
 
 []{#variación-1-ocultar-una-dimensión}
 
-#### 2.7.28.1. Variación 1 --- Ocultar una dimensión {#fispm-c02-variaciuxf3n-1-ocultar-una-dimensiuxf3n}
+#### Variación 1 --- Ocultar una dimensión {#fispm-c02-variaciuxf3n-1-ocultar-una-dimensiuxf3n}
 
 Dar una ecuación y pedir la dimensión de una constante desconocida.
 
 []{#variación-2-ocultar-un-exponente}
 
-#### 2.7.28.2. Variación 2 --- Ocultar un exponente {#fispm-c02-variaciuxf3n-2-ocultar-un-exponente}
+#### Variación 2 --- Ocultar un exponente {#fispm-c02-variaciuxf3n-2-ocultar-un-exponente}
 
 Dar una forma como $Q=AX^\alpha Y^\beta$
 
@@ -4947,7 +4947,7 @@ y usar homogeneidad para restringir $\alpha,\beta$.
 
 []{#variación-3-insertar-un-término-defectuoso}
 
-#### 2.7.28.3. Variación 3 --- Insertar un término defectuoso {#fispm-c02-variaciuxf3n-3-insertar-un-tuxe9rmino-defectuoso}
+#### Variación 3 --- Insertar un término defectuoso {#fispm-c02-variaciuxf3n-3-insertar-un-tuxe9rmino-defectuoso}
 
 Dar una ecuación casi correcta y pedir localizar exactamente el primer término incompatible.
 
@@ -4963,7 +4963,7 @@ El análisis dimensional se vuelve más potente cuando el lector puede pasar de 
 
 []{#red-conceptual}
 
-### 2.7.29. Red conceptual {#fispm-c02-red-conceptual}
+### Red conceptual {#fispm-c02-red-conceptual}
 
 §7 conecta directamente con lo ya construido:
 
@@ -4981,7 +4981,7 @@ porque las firmas dimensionales pueden organizarse como ecuaciones lineales entr
 
 []{#qué-debe-haber-cambiado-en-la-comprensión}
 
-### 2.7.30. Qué debe haber cambiado en la comprensión {#fispm-c02-quuxe9-debe-haber-cambiado-en-la-comprensiuxf3n}
+### Qué debe haber cambiado en la comprensión {#fispm-c02-quuxe9-debe-haber-cambiado-en-la-comprensiuxf3n}
 
 Al cerrar la sección, el lector no debería limitarse a saber «comprobar unidades».
 
@@ -5005,7 +5005,7 @@ Podemos condensar el método completo:
 
 $$\boxed{\begin{gathered} \text{significado} \to \text{dimensión}\\[2pt]\Downarrow\\[2pt]\text{firma} \to \text{operación}\\[2pt]\Downarrow\\[2pt]\text{comparación} \to \text{diagnóstico}\\[2pt]\Downarrow\\[2pt]\text{control físico}. \end{gathered}}$$
 
-La siguiente sección aborda la frontera que hemos pospuesto desde §6 (§[2.8](#fispm-c02-cantidades-de-dimensiuxf3n-uno)).
+La siguiente sección aborda la frontera que hemos pospuesto desde §6 (§[8](#fispm-c02-cantidades-de-dimensiuxf3n-uno)).
 
 Allí veremos por qué «adimensional» no significa «sin significado físico» y por qué los argumentos de ciertas funciones requieren un tratamiento especial.
 
@@ -5019,11 +5019,11 @@ Allí veremos por qué «adimensional» no significa «sin significado físico»
 
 []{#fpm-i-02-s08}
 
-## 2.8. Cantidades de dimensión uno {#fispm-c02-cantidades-de-dimensiuxf3n-uno}
+## 8. Cantidades de dimensión uno {#fispm-c02-cantidades-de-dimensiuxf3n-uno}
 
 []{#intuir-adimensional-no-significa-sin-física}
 
-### 2.8.1. Intuir: «adimensional» no significa «sin física» {#fispm-c02-intuir-adimensional-no-significa-sin-fuxedsica}
+### Intuir: «adimensional» no significa «sin física» {#fispm-c02-intuir-adimensional-no-significa-sin-fuxedsica}
 
 Consideremos estas cantidades:
 
@@ -5057,7 +5057,7 @@ El VIM conserva históricamente el término «cantidad adimensional», pero reco
 
 <figcaption>
 
-**Figura 2.5.** En radianes, $\theta=s/R$. Un arco de longitud igual al radio determina un radián. Ser una razón de longitudes no vuelve intercambiables el ángulo y cualquier otra cantidad de dimensión uno. Véase §[2.8](#fispm-c02-cantidades-de-dimensiuxf3n-uno).
+**Figura 2.5.** En radianes, $\theta=s/R$. Un arco de longitud igual al radio determina un radián. Ser una razón de longitudes no vuelve intercambiables el ángulo y cualquier otra cantidad de dimensión uno. Véase §[8](#fispm-c02-cantidades-de-dimensiuxf3n-uno).
 
 </figcaption>
 
@@ -5065,7 +5065,7 @@ El VIM conserva históricamente el término «cantidad adimensional», pero reco
 
 []{#precisar-cantidad-de-dimensión-uno}
 
-### 2.8.2. Precisar: cantidad de dimensión uno {#fispm-c02-precisar-cantidad-de-dimensiuxf3n-uno}
+### Precisar: cantidad de dimensión uno {#fispm-c02-precisar-cantidad-de-dimensiuxf3n-uno}
 
 **Definición 20 --- Cantidad de dimensión uno** Una **cantidad de dimensión uno** es una magnitud cuya expresión dimensional tiene todos sus exponentes iguales a cero:
 
@@ -5077,7 +5077,7 @@ En términos de firmas dimensionales, $\mathbf d(Q) = (0,0,0,0,0,0,0).$ Esta def
 
 []{#representar-cociente-de-magnitudes-del-mismo-tipo}
 
-### 2.8.3. Representar: cociente de magnitudes del mismo tipo {#fispm-c02-representar-cociente-de-magnitudes-del-mismo-tipo}
+### Representar: cociente de magnitudes del mismo tipo {#fispm-c02-representar-cociente-de-magnitudes-del-mismo-tipo}
 
 Una fuente frecuente de cantidades de dimensión uno es el cociente de dos magnitudes del mismo tipo. Si
 
@@ -5111,7 +5111,7 @@ La igualdad dimensional no colapsa estas interpretaciones.
 
 []{#una-razón-conserva-información-sobre-qué-se-comparó}
 
-### 2.8.4. Una razón conserva información sobre qué se comparó {#fispm-c02-una-razuxf3n-conserva-informaciuxf3n-sobre-quuxe9-se-comparuxf3}
+### Una razón conserva información sobre qué se comparó {#fispm-c02-una-razuxf3n-conserva-informaciuxf3n-sobre-quuxe9-se-comparuxf3}
 
 Supongamos $R=\frac{2\,\mathrm m}{1\,\mathrm m}=2.$ El valor final es numéricamente $2$.
 
@@ -5133,7 +5133,7 @@ Esta observación generaliza §2: la semántica no puede reconstruirse desde el 
 
 []{#la-unidad-coherente-es-uno}
 
-### 2.8.5. La unidad coherente es uno {#fispm-c02-la-unidad-coherente-es-uno}
+### La unidad coherente es uno {#fispm-c02-la-unidad-coherente-es-uno}
 
 Para una cantidad de dimensión uno, la unidad SI derivada coherente es
 
@@ -5145,7 +5145,7 @@ y no como $n=1.50\,1.$ Sin embargo, el hecho de que la unidad coherente sea uno 
 
 []{#porcentajes-y-razones-escaladas}
 
-### 2.8.6. Porcentajes y razones escaladas {#fispm-c02-porcentajes-y-razones-escaladas}
+### Porcentajes y razones escaladas {#fispm-c02-porcentajes-y-razones-escaladas}
 
 Una fracción
 
@@ -5171,7 +5171,7 @@ La unidad coherente es uno, pero podemos emplear unidades o convenciones escalad
 
 []{#el-ángulo-plano-el-caso-que-obliga-a-pensar}
 
-### 2.8.7. El ángulo plano: el caso que obliga a pensar {#fispm-c02-el-uxe1ngulo-plano-el-caso-que-obliga-a-pensar}
+### El ángulo plano: el caso que obliga a pensar {#fispm-c02-el-uxe1ngulo-plano-el-caso-que-obliga-a-pensar}
 
 El ángulo plano es una cantidad de dimensión uno en el SI. Su unidad coherente es el **radián**: $\mathrm{rad}.$ Geométricamente, para un círculo de radio $r$ y arco de longitud $s$, $\theta = \frac{s}{r}\,\mathrm{rad}.$ Como $[s]=[r]=L,$
 
@@ -5199,7 +5199,7 @@ acompañada por la interpretación geométrica de ángulo plano y expresada cohe
 
 []{#el-radián-es-dimensión-uno-pero-no-es-semánticamente-vacío}
 
-### 2.8.8. El radián es dimensión uno, pero no es semánticamente vacío {#fispm-c02-el-radiuxe1n-es-dimensiuxf3n-uno-pero-no-es-semuxe1nticamente-vacuxedo}
+### El radián es dimensión uno, pero no es semánticamente vacío {#fispm-c02-el-radiuxe1n-es-dimensiuxf3n-uno-pero-no-es-semuxe1nticamente-vacuxedo}
 
 Tenemos $[\theta]=1.$ Sin embargo, $30^\circ$
 
@@ -5215,7 +5215,7 @@ $$\boxed{ \text{dimensión} \neq \text{unidad} \neq \text{valor numérico}. }$$
 
 []{#ángulo-sólido}
 
-### 2.8.9. Ángulo sólido {#fispm-c02-uxe1ngulo-suxf3lido}
+### Ángulo sólido {#fispm-c02-uxe1ngulo-suxf3lido}
 
 El ángulo sólido también tiene dimensión uno. Su unidad coherente es el estereorradián: $\mathrm{sr}.$ Para una esfera de radio $r$, si una región de su superficie tiene área $A$, puede escribirse
 
@@ -5233,7 +5233,7 @@ La interpretación geométrica sigue siendo indispensable.
 
 []{#poner-a-prueba-una-intuición-1-significa-intercambiable}
 
-### 2.8.10. Poner a prueba una intuición: ¿«1» significa intercambiable? {#fispm-c02-poner-a-prueba-una-intuiciuxf3n-1-significa-intercambiable}
+### Poner a prueba una intuición: ¿«1» significa intercambiable? {#fispm-c02-poner-a-prueba-una-intuiciuxf3n-1-significa-intercambiable}
 
 Consideremos: $n=1.50$
 
@@ -5257,7 +5257,7 @@ $$\boxed{ \text{mismo valor} + \text{misma dimensión} \not\Rightarrow \text{mis
 
 []{#funciones-no-algebraicas-aparece-una-nueva-exigencia}
 
-### 2.8.11. Funciones no algebraicas: aparece una nueva exigencia {#fispm-c02-funciones-no-algebraicas-aparece-una-nueva-exigencia}
+### Funciones no algebraicas: aparece una nueva exigencia {#fispm-c02-funciones-no-algebraicas-aparece-una-nueva-exigencia}
 
 En §6 dejamos pendiente expresiones como
 
@@ -5285,7 +5285,7 @@ La misma lógica aparece en las expansiones de seno y coseno.
 
 []{#exponencial-por-qué-aparece-ttau}
 
-### 2.8.12. Exponencial: por qué aparece $t/\tau$ {#fispm-c02-exponencial-por-quuxe9-aparece-ttau}
+### Exponencial: por qué aparece $t/\tau$ {#fispm-c02-exponencial-por-quuxe9-aparece-ttau}
 
 Consideremos
 
@@ -5305,7 +5305,7 @@ es una escritura incompleta si $t$ representa un tiempo dimensional y no se ha d
 
 []{#logaritmo-no-tomar-logaritmos-de-una-magnitud-desnuda}
 
-### 2.8.13. Logaritmo: no tomar logaritmos de una magnitud desnuda {#fispm-c02-logaritmo-no-tomar-logaritmos-de-una-magnitud-desnuda}
+### Logaritmo: no tomar logaritmos de una magnitud desnuda {#fispm-c02-logaritmo-no-tomar-logaritmos-de-una-magnitud-desnuda}
 
 Supongamos que escribimos
 
@@ -5321,7 +5321,7 @@ de modo que el argumento permanece invariante.
 
 []{#seno-y-coseno-el-papel-especial-del-radián}
 
-### 2.8.14. Seno y coseno: el papel especial del radián {#fispm-c02-seno-y-coseno-el-papel-especial-del-radiuxe1n}
+### Seno y coseno: el papel especial del radián {#fispm-c02-seno-y-coseno-el-papel-especial-del-radiuxe1n}
 
 En matemática escribimos
 
@@ -5335,7 +5335,7 @@ No porque el grado sea «incorrecto», sino porque las fórmulas analíticas est
 
 []{#no-toda-cantidad-de-dimensión-uno-es-una-razón-continua}
 
-### 2.8.15. No toda cantidad de dimensión uno es una razón continua {#fispm-c02-no-toda-cantidad-de-dimensiuxf3n-uno-es-una-razuxf3n-continua}
+### No toda cantidad de dimensión uno es una razón continua {#fispm-c02-no-toda-cantidad-de-dimensiuxf3n-uno-es-una-razuxf3n-continua}
 
 El VIM incluye entre las cantidades de dimensión uno los **números de entidades**.[^32]
 
@@ -5361,7 +5361,7 @@ $$\boxed{ \text{dimensión} \neq \text{estructura física completa}. }$$
 
 []{#mapa-conceptual}
 
-### 2.8.16. Mapa conceptual {#fispm-c02-mapa-conceptual}
+### Mapa conceptual {#fispm-c02-mapa-conceptual}
 
   Cantidad               Origen conceptual         Dimensión   Representación frecuente
   ---------------------- ------------------------- ----------- --------------------------
@@ -5381,7 +5381,7 @@ La tabla evita dos simplificaciones:
 
 []{#autoexplicación}
 
-### 2.8.17. Autoexplicación {#fispm-c02-autoexplicaciuxf3n}
+### Autoexplicación {#fispm-c02-autoexplicaciuxf3n}
 
 **Pausa de autoexplicación** Explica sin consultar la tabla:
 
@@ -5397,7 +5397,7 @@ $$\text{dimensión}, \quad \text{unidad}, \quad \text{valor numérico}, \quad \t
 
 []{#práctica-guiada-1}
 
-### 2.8.18. Práctica guiada {#fispm-c02-pruxe1ctica-guiada-1}
+### Práctica guiada {#fispm-c02-pruxe1ctica-guiada-1}
 
 **Ejercicio 18 --- Reconocer dimensión uno**
 
@@ -5527,7 +5527,7 @@ $$\boxed{ \text{antes de una función trascendente, auditar la dimensión de su 
 
 []{#variar}
 
-### 2.8.19. Variar {#fispm-c02-variar}
+### Variar {#fispm-c02-variar}
 
 Si aparece
 
@@ -5551,7 +5551,7 @@ El análisis dimensional no determina el valor de $k$, pero sí la dimensión ne
 
 []{#conectar}
 
-### 2.8.20. Conectar {#fispm-c02-conectar}
+### Conectar {#fispm-c02-conectar}
 
 Las cantidades de dimensión uno permiten construir **parámetros que comparan escalas**. En §9 estudiaremos órdenes de magnitud y estimaciones. En §§10--11 aparecerán razones que controlan aproximaciones y semejanza.
 
@@ -5567,7 +5567,7 @@ $$\boxed{ \text{la física compara escalas mediante combinaciones de dimensión 
 
 []{#síntesis-5}
 
-### 2.8.21. Síntesis {#fispm-c02-suxedntesis-5}
+### Síntesis {#fispm-c02-suxedntesis-5}
 
 Una cantidad de dimensión uno satisface $[Q]=1,$
 
@@ -5587,7 +5587,7 @@ La regla práctica queda:
 
 $$\boxed{ \text{función trascendente} \longrightarrow \text{auditar primero el argumento}. }$$
 
-El siguiente paso será el §[2.9](#fispm-c02-escalas-caracteruxedsticas-y-uxf3rdenes-de-magnitud).
+El siguiente paso será el §[9](#fispm-c02-escalas-caracteruxedsticas-y-uxf3rdenes-de-magnitud).
 
 ------------------------------------------------------------------------
 
@@ -5599,11 +5599,11 @@ El siguiente paso será el §[2.9](#fispm-c02-escalas-caracteruxedsticas-y-uxf3r
 
 []{#fpm-i-02-s09}
 
-## 2.9. Escalas características y órdenes de magnitud {#fispm-c02-escalas-caracteruxedsticas-y-uxf3rdenes-de-magnitud}
+## 9. Escalas características y órdenes de magnitud {#fispm-c02-escalas-caracteruxedsticas-y-uxf3rdenes-de-magnitud}
 
 []{#intuir-una-magnitud-puede-ser-grande-o-pequeña-solo-respecto-de-una-escala}
 
-### 2.9.1. Intuir: una magnitud puede ser grande o pequeña solo respecto de una escala {#fispm-c02-intuir-una-magnitud-puede-ser-grande-o-pequeuxf1a-solo-respecto-de-una-escala}
+### Intuir: una magnitud puede ser grande o pequeña solo respecto de una escala {#fispm-c02-intuir-una-magnitud-puede-ser-grande-o-pequeuxf1a-solo-respecto-de-una-escala}
 
 Decir que
 
@@ -5621,7 +5621,7 @@ $$\boxed{ \text{grande o pequeño} \quad \text{respecto de una escala}. }$$
 
 []{#escala-característica}
 
-### 2.9.2. Escala característica {#fispm-c02-escala-caracteruxedstica}
+### Escala característica {#fispm-c02-escala-caracteruxedstica}
 
 **Definición 32 --- Escala característica** Una **escala característica** de una magnitud $Q$ en un modelo es un valor de referencia $Q_\ast$, del mismo tipo de magnitud, elegido para representar el tamaño relevante de $Q$ en el fenómeno o régimen considerado.
 
@@ -5643,7 +5643,7 @@ No tiene por qué ser un promedio ni el valor máximo. Su elección depende de l
 
 []{#representar-una-magnitud-respecto-de-su-escala}
 
-### 2.9.3. Representar una magnitud respecto de su escala {#fispm-c02-representar-una-magnitud-respecto-de-su-escala}
+### Representar una magnitud respecto de su escala {#fispm-c02-representar-una-magnitud-respecto-de-su-escala}
 
 Si $Q_\ast$ es una escala característica de $Q$, la razón
 
@@ -5663,7 +5663,7 @@ como «$Q$ es grande respecto de $Q_\ast$». La escala convierte una comparació
 
 []{#varias-escalas-características-pueden-coexistir}
 
-### 2.9.4. Varias escalas características pueden coexistir {#fispm-c02-varias-escalas-caracteruxedsticas-pueden-coexistir}
+### Varias escalas características pueden coexistir {#fispm-c02-varias-escalas-caracteruxedsticas-pueden-coexistir}
 
 Un sistema puede contener más de una longitud relevante. Por ejemplo: $L,\qquad \ell.$
 
@@ -5681,7 +5681,7 @@ Si normalizamos con $L$: $\frac{\ell}{L}=\varepsilon.$ Si normalizamos con $\ell
 
 []{#década-decimal}
 
-### 2.9.5. Década decimal {#fispm-c02-duxe9cada-decimal}
+### Década decimal {#fispm-c02-duxe9cada-decimal}
 
 Conservaremos una herramienta numérica de la primera redacción.
 
@@ -5697,7 +5697,7 @@ La década registra una escala decimal gruesa.
 
 []{#orden-de-magnitud}
 
-### 2.9.6. Orden de magnitud {#fispm-c02-orden-de-magnitud}
+### Orden de magnitud {#fispm-c02-orden-de-magnitud}
 
 **Definición 23 --- Orden de magnitud** Para $x>0$, el **orden de magnitud decimal** de $x$ será la potencia de diez más cercana en escala logarítmica.
 
@@ -5721,7 +5721,7 @@ de donde: $x=\sqrt{10}\,10^n.$
 
 []{#escala-característica-y-orden-de-magnitud-no-son-lo-mismo}
 
-### 2.9.7. Escala característica y orden de magnitud no son lo mismo {#fispm-c02-escala-caracteruxedstica-y-orden-de-magnitud-no-son-lo-mismo}
+### Escala característica y orden de magnitud no son lo mismo {#fispm-c02-escala-caracteruxedstica-y-orden-de-magnitud-no-son-lo-mismo}
 
 Una escala característica es una **elección física del modelo**. Un orden de magnitud es una **clasificación numérica aproximada**. Por ejemplo, podemos adoptar: $L_\ast=2.4\,\mathrm m$
 
@@ -5733,7 +5733,7 @@ $$\boxed{ \text{escala característica} \neq \text{orden de magnitud}. }$$
 
 []{#escalas-derivadas}
 
-### 2.9.8. Escalas derivadas {#fispm-c02-escalas-derivadas}
+### Escalas derivadas {#fispm-c02-escalas-derivadas}
 
 Si elegimos una escala de longitud: $L_\ast$
 
@@ -5745,7 +5745,7 @@ También una escala de aceleración: $A_\ast = \frac{L_\ast}{T_\ast^2}.$ La estr
 
 []{#ejemplo-movimiento-en-una-pista}
 
-### 2.9.9. Ejemplo: movimiento en una pista {#fispm-c02-ejemplo-movimiento-en-una-pista}
+### Ejemplo: movimiento en una pista {#fispm-c02-ejemplo-movimiento-en-una-pista}
 
 Supongamos que una pista tiene longitud característica: $L_\ast=400\,\mathrm m$
 
@@ -5763,7 +5763,7 @@ corresponde a: $\widehat v = 1.25.$ La comparación no depende de memorizar si $
 
 []{#parámetros-pequeños-y-grandes}
 
-### 2.9.10. Parámetros pequeños y grandes {#fispm-c02-paruxe1metros-pequeuxf1os-y-grandes}
+### Parámetros pequeños y grandes {#fispm-c02-paruxe1metros-pequeuxf1os-y-grandes}
 
 Las razones de escala permiten identificar regímenes.
 
@@ -5783,7 +5783,7 @@ El análisis dimensional no decide por sí solo qué términos pueden descartars
 
 []{#estimación-física-puente-hacia-el-capítulo-siguiente}
 
-### 2.9.11. Estimación física: puente hacia el capítulo siguiente {#fispm-c02-estimaciuxf3n-fuxedsica-puente-hacia-el-capuxedtulo-siguiente}
+### Estimación física: puente hacia el capítulo siguiente {#fispm-c02-estimaciuxf3n-fuxedsica-puente-hacia-el-capuxedtulo-siguiente}
 
 Conservamos el concepto ya activado:
 
@@ -5811,7 +5811,7 @@ pertenece al capítulo 3.
 
 []{#práctica-guiada-2}
 
-### 2.9.12. Práctica guiada {#fispm-c02-pruxe1ctica-guiada-2}
+### Práctica guiada {#fispm-c02-pruxe1ctica-guiada-2}
 
 **Ejercicio 20 --- Elegir y usar escalas características**
 
@@ -5869,7 +5869,7 @@ daría: $\widehat x=5000.$ La razón es correcta, pero la escala elegida no repr
 
 []{#autoexplicación-1}
 
-### 2.9.13. Autoexplicación {#fispm-c02-autoexplicaciuxf3n-1}
+### Autoexplicación {#fispm-c02-autoexplicaciuxf3n-1}
 
 **Pausa de autoexplicación** Explica:
 
@@ -5883,13 +5883,13 @@ daría: $\widehat x=5000.$ La razón es correcta, pero la escala elegida no repr
 
 []{#conectar-1}
 
-### 2.9.14. Conectar {#fispm-c02-conectar-1}
+### Conectar {#fispm-c02-conectar-1}
 
 Hemos construido razones: $\widehat Q=\frac{Q}{Q_\ast}$
 
 de dimensión uno.
 
-La siguiente sección convertirá esta idea en un procedimiento sistemático para reescribir modelos completos (§[2.10](#fispm-c02-adimensionalizaciuxf3n-e-inferencia-dimensional)).
+La siguiente sección convertirá esta idea en un procedimiento sistemático para reescribir modelos completos (§[10](#fispm-c02-adimensionalizaciuxf3n-e-inferencia-dimensional)).
 
 La pregunta dejará de ser únicamente:
 
@@ -5905,11 +5905,11 @@ y pasará a ser:
 
 []{#fpm-i-02-s10}
 
-## 2.10. Adimensionalización e inferencia dimensional {#fispm-c02-adimensionalizaciuxf3n-e-inferencia-dimensional}
+## 10. Adimensionalización e inferencia dimensional {#fispm-c02-adimensionalizaciuxf3n-e-inferencia-dimensional}
 
 []{#intuir-cambiar-de-unidades-no-debería-cambiar-la-forma-esencial-del-problema}
 
-### 2.10.1. Intuir: cambiar de unidades no debería cambiar la forma esencial del problema {#fispm-c02-intuir-cambiar-de-unidades-no-deberuxeda-cambiar-la-forma-esencial-del-problema}
+### Intuir: cambiar de unidades no debería cambiar la forma esencial del problema {#fispm-c02-intuir-cambiar-de-unidades-no-deberuxeda-cambiar-la-forma-esencial-del-problema}
 
 En §9 elegimos escalas características. Ahora utilizaremos esas escalas para construir variables de dimensión uno.
 
@@ -5929,7 +5929,7 @@ Pregunta:
 
 []{#variable-adimensionalizada}
 
-### 2.10.2. Variable adimensionalizada {#fispm-c02-variable-adimensionalizada}
+### Variable adimensionalizada {#fispm-c02-variable-adimensionalizada}
 
 **Definición 33 --- Variable adimensionalizada** Dada una magnitud $Q$ y una escala característica $Q_\ast$ del mismo tipo, la variable
 
@@ -5941,7 +5941,7 @@ Tenemos: $[\widehat Q]=1.$ Pero $\widehat Q$ conserva una interpretación: expre
 
 []{#adimensionalización}
 
-### 2.10.3. Adimensionalización {#fispm-c02-adimensionalizaciuxf3n}
+### Adimensionalización {#fispm-c02-adimensionalizaciuxf3n}
 
 **Definición 34 --- Adimensionalización** La **adimensionalización** de una relación o modelo es el procedimiento de elegir escalas características para sus magnitudes y reescribirlo en términos de variables de dimensión uno, de modo que queden explícitos los parámetros adimensionales que controlan su forma.
 
@@ -5955,7 +5955,7 @@ La operación tiene dos objetivos:
 
 []{#ejemplo-elemental-una-relación-cinemática}
 
-### 2.10.4. Ejemplo elemental: una relación cinemática {#fispm-c02-ejemplo-elemental-una-relaciuxf3n-cinemuxe1tica}
+### Ejemplo elemental: una relación cinemática {#fispm-c02-ejemplo-elemental-una-relaciuxf3n-cinemuxe1tica}
 
 Consideremos: $x=x_0+vt.$
 
@@ -5983,7 +5983,7 @@ La ecuación conserva su forma y todas las variables son de dimensión uno.
 
 []{#qué-puede-quedar-después-de-adimensionalizar}
 
-### 2.10.5. Qué puede quedar después de adimensionalizar {#fispm-c02-quuxe9-puede-quedar-despuuxe9s-de-adimensionalizar}
+### Qué puede quedar después de adimensionalizar {#fispm-c02-quuxe9-puede-quedar-despuuxe9s-de-adimensionalizar}
 
 No siempre podemos absorber todos los parámetros. Si una relación contiene varias escalas independientes, aparecerán razones como: $\varepsilon=\frac{\ell}{L}$
 
@@ -5995,7 +5995,7 @@ No siempre podemos absorber todos los parámetros. Si una relación contiene var
 
 <figcaption>
 
-**Figura 2.6.** Si $L=L_*\lambda$, una familia de áreas semejantes satisface $A/A_*=\lambda^2$. Ambas razones son adimensionales; su interpretación conserva las referencias físicas $L_*$ y $A_*$. Véase §[2.10](#fispm-c02-adimensionalizaciuxf3n-e-inferencia-dimensional).
+**Figura 2.6.** Si $L=L_*\lambda$, una familia de áreas semejantes satisface $A/A_*=\lambda^2$. Ambas razones son adimensionales; su interpretación conserva las referencias físicas $L_*$ y $A_*$. Véase §[10](#fispm-c02-adimensionalizaciuxf3n-e-inferencia-dimensional).
 
 </figcaption>
 
@@ -6015,7 +6015,7 @@ La adimensionalización prepara así el camino hacia:
 
 []{#inferir-puede-la-dimensión-ayudarnos-a-construir-una-fórmula}
 
-### 2.10.6. Inferir: ¿puede la dimensión ayudarnos a construir una fórmula? {#fispm-c02-inferir-puede-la-dimensiuxf3n-ayudarnos-a-construir-una-fuxf3rmula}
+### Inferir: ¿puede la dimensión ayudarnos a construir una fórmula? {#fispm-c02-inferir-puede-la-dimensiuxf3n-ayudarnos-a-construir-una-fuxf3rmula}
 
 Hasta ahora hemos usado la dimensión principalmente como herramienta de control.
 
@@ -6043,7 +6043,7 @@ Esto no deriva toda la física. Pero puede restringir fuertemente la forma posib
 
 []{#representar-del-problema-físico-a-un-ansatz}
 
-### 2.10.7. Representar: del problema físico a un ansatz {#fispm-c02-representar-del-problema-fuxedsico-a-un-ansatz}
+### Representar: del problema físico a un ansatz {#fispm-c02-representar-del-problema-fuxedsico-a-un-ansatz}
 
 La palabra **ansatz** designará aquí una forma propuesta de solución o dependencia que todavía debe justificarse.
 
@@ -6059,7 +6059,7 @@ $$\boxed{ \text{hipótesis de forma} + \text{restricciones dimensionales} }$$
 
 []{#precisar-convertir-dimensiones-en-ecuaciones-para-exponentes}
 
-### 2.10.8. Precisar: convertir dimensiones en ecuaciones para exponentes {#fispm-c02-precisar-convertir-dimensiones-en-ecuaciones-para-exponentes}
+### Precisar: convertir dimensiones en ecuaciones para exponentes {#fispm-c02-precisar-convertir-dimensiones-en-ecuaciones-para-exponentes}
 
 Supongamos que
 
@@ -6091,7 +6091,7 @@ No necesitamos todavía teoría formal de espacios vectoriales para utilizarlo.
 
 []{#firma-dimensional-y-sistema-lineal}
 
-### 2.10.9. Firma dimensional y sistema lineal {#fispm-c02-firma-dimensional-y-sistema-lineal}
+### Firma dimensional y sistema lineal {#fispm-c02-firma-dimensional-y-sistema-lineal}
 
 Con la firma de §7, $\mathbf d(Q) = (a,b,c,\ldots),$
 
@@ -6105,7 +6105,7 @@ $$\boxed{ \mathbf d(Q) = \alpha_1\mathbf d(X_1) + \cdots + \alpha_n\mathbf d(X_n
 
 []{#primer-ejemplo-período-de-un-péndulo-simple}
 
-### 2.10.10. Primer ejemplo: período de un péndulo simple {#fispm-c02-primer-ejemplo-peruxedodo-de-un-puxe9ndulo-simple}
+### Primer ejemplo: período de un péndulo simple {#fispm-c02-primer-ejemplo-peruxedodo-de-un-puxe9ndulo-simple}
 
 Supongamos que buscamos una escala temporal $T_p$ para un péndulo y aceptamos, como modelo dimensional mínimo, que depende de:
 
@@ -6141,7 +6141,7 @@ No ha determinado $C$.
 
 []{#qué-falta-en-el-ejemplo-del-péndulo}
 
-### 2.10.11. Qué falta en el ejemplo del péndulo {#fispm-c02-quuxe9-falta-en-el-ejemplo-del-puxe9ndulo}
+### Qué falta en el ejemplo del péndulo {#fispm-c02-quuxe9-falta-en-el-ejemplo-del-puxe9ndulo}
 
 La teoría del péndulo simple para oscilaciones pequeñas conduce a
 
@@ -6171,7 +6171,7 @@ Debe provenir de información adicional:
 
 []{#poner-a-prueba-una-intuición-la-dimensión-determina-siempre-una-única-forma}
 
-### 2.10.12. Poner a prueba una intuición: ¿la dimensión determina siempre una única forma? {#fispm-c02-poner-a-prueba-una-intuiciuxf3n-la-dimensiuxf3n-determina-siempre-una-uxfanica-forma}
+### Poner a prueba una intuición: ¿la dimensión determina siempre una única forma? {#fispm-c02-poner-a-prueba-una-intuiciuxf3n-la-dimensiuxf3n-determina-siempre-una-uxfanica-forma}
 
 No.
 
@@ -6199,7 +6199,7 @@ y muchas más. Por tanto, la información dimensional es insuficiente para elegi
 
 []{#la-aparición-de-una-libertad-adimensional}
 
-### 2.10.13. La aparición de una libertad adimensional {#fispm-c02-la-apariciuxf3n-de-una-libertad-adimensional}
+### La aparición de una libertad adimensional {#fispm-c02-la-apariciuxf3n-de-una-libertad-adimensional}
 
 Escribamos
 
@@ -6221,7 +6221,7 @@ donde $\Phi$ es una función de dimensión uno. La dimensión no determina $\Phi
 
 []{#segunda-definición-libertad-funcional-adimensional}
 
-### 2.10.14. Segunda definición: libertad funcional adimensional {#fispm-c02-segunda-definiciuxf3n-libertad-funcional-adimensional}
+### Segunda definición: libertad funcional adimensional {#fispm-c02-segunda-definiciuxf3n-libertad-funcional-adimensional}
 
 **Definición 26 --- Libertad funcional adimensional** Existe **libertad funcional adimensional** cuando las restricciones dimensionales permiten multiplicar una forma dimensionalmente admisible por una función arbitraria de una o más combinaciones de dimensión uno sin alterar la dimensión total.
 
@@ -6241,7 +6241,7 @@ es dimensionalmente admisible para cualquier función adecuada $\Phi$. La físic
 
 []{#resultado-formal-condición-para-un-ansatz-monomial}
 
-### 2.10.15. Resultado formal: condición para un ansatz monomial {#fispm-c02-resultado-formal-condiciuxf3n-para-un-ansatz-monomial}
+### Resultado formal: condición para un ansatz monomial {#fispm-c02-resultado-formal-condiciuxf3n-para-un-ansatz-monomial}
 
 **Proposición 3 --- Criterio de homogeneidad para un ansatz monomial**
 
@@ -6261,7 +6261,7 @@ $$\boxed{ q_j = \sum_{i=1}^n a_{ji}\alpha_i. }$$
 
 []{#demostración-2}
 
-#### 2.10.15.1. Demostración {#fispm-c02-demostraciuxf3n-2}
+#### Demostración {#fispm-c02-demostraciuxf3n-2}
 
 Partimos de
 
@@ -6293,7 +6293,7 @@ $$\boxed{\text{QED}}$$
 
 []{#lectura-de-la-proposición-3}
 
-### 2.10.16. Lectura de la Proposición 3 {#fispm-c02-lectura-de-la-proposiciuxf3n-3}
+### Lectura de la Proposición 3 {#fispm-c02-lectura-de-la-proposiciuxf3n-3}
 
 La Proposición 3 no dice que toda ley física tenga forma monomial.
 
@@ -6305,19 +6305,19 @@ La hipótesis y la conclusión deben permanecer separadas.
 
 []{#hipótesis-estructural}
 
-#### 2.10.16.1. Hipótesis estructural {#fispm-c02-hipuxf3tesis-estructural}
+#### Hipótesis estructural {#fispm-c02-hipuxf3tesis-estructural}
 
 $$Q=C\prod_iX_i^{\alpha_i}.$$
 
 []{#restricción-dimensional}
 
-#### 2.10.16.2. Restricción dimensional {#fispm-c02-restricciuxf3n-dimensional}
+#### Restricción dimensional {#fispm-c02-restricciuxf3n-dimensional}
 
 $$q_j=\sum_i a_{ji}\alpha_i.$$
 
 []{#información-no-obtenida}
 
-#### 2.10.16.3. Información no obtenida {#fispm-c02-informaciuxf3n-no-obtenida}
+#### Información no obtenida {#fispm-c02-informaciuxf3n-no-obtenida}
 
 - validez física del ansatz;
 
@@ -6335,7 +6335,7 @@ Una respuesta adecuada debe distinguir la hipótesis monomial de la información
 
 []{#segundo-ejemplo-período-orbital}
 
-### 2.10.17. Segundo ejemplo: período orbital {#fispm-c02-segundo-ejemplo-peruxedodo-orbital}
+### Segundo ejemplo: período orbital {#fispm-c02-segundo-ejemplo-peruxedodo-orbital}
 
 Siguiendo un ejemplo clásico de teoría dimensional,[^33] supongamos que una escala temporal orbital $T_o$ depende de:
 
@@ -6393,7 +6393,7 @@ No fija $C$ ni demuestra que $r,M,G$ sean las únicas variables físicamente rel
 
 []{#el-problema-de-las-variables-omitidas}
 
-### 2.10.18. El problema de las variables omitidas {#fispm-c02-el-problema-de-las-variables-omitidas}
+### El problema de las variables omitidas {#fispm-c02-el-problema-de-las-variables-omitidas}
 
 Ésta es una limitación decisiva. El análisis dimensional opera sobre **las variables que le damos**. Si omitimos una magnitud relevante, podemos obtener una fórmula dimensionalmente impecable y físicamente incompleta.
 
@@ -6407,7 +6407,7 @@ La selección de variables es parte de la modelización, no del álgebra dimensi
 
 []{#un-no-ejemplo-deducir-demasiado-de-una-solución-única}
 
-### 2.10.19. Un no-ejemplo: deducir demasiado de una solución única {#fispm-c02-un-no-ejemplo-deducir-demasiado-de-una-soluciuxf3n-uxfanica}
+### Un no-ejemplo: deducir demasiado de una solución única {#fispm-c02-un-no-ejemplo-deducir-demasiado-de-una-soluciuxf3n-uxfanica}
 
 Supongamos que el sistema dimensional produce una única pareja
 
@@ -6433,7 +6433,7 @@ Todavía puede faltar:
 
 []{#variar-si-añadimos-una-variable-de-dimensión-uno}
 
-### 2.10.20. Variar: si añadimos una variable de dimensión uno {#fispm-c02-variar-si-auxf1adimos-una-variable-de-dimensiuxf3n-uno}
+### Variar: si añadimos una variable de dimensión uno {#fispm-c02-variar-si-auxf1adimos-una-variable-de-dimensiuxf3n-uno}
 
 Volvamos al péndulo. Si además del largo $\ell$ y de $g$ incluimos un ángulo inicial $\theta_0$, con
 
@@ -6449,7 +6449,7 @@ Para oscilaciones pequeñas, $\Phi(\theta_0) \approx 2\pi.$ Para amplitudes mayo
 
 []{#ejercicios-práctica-guiada}
 
-### 2.10.21. Ejercicios práctica guiada {#fispm-c02-ejercicios-pruxe1ctica-guiada}
+### Ejercicios práctica guiada {#fispm-c02-ejercicios-pruxe1ctica-guiada}
 
 **Ejercicio 21 --- Adimensionalizar una relación cinemática**
 
@@ -6557,7 +6557,7 @@ La adimensionalización ha aislado exactamente la dependencia que no puede fijar
 
 []{#autoexplicación-2}
 
-### 2.10.22. Autoexplicación {#fispm-c02-autoexplicaciuxf3n-2}
+### Autoexplicación {#fispm-c02-autoexplicaciuxf3n-2}
 
 **Pausa de autoexplicación** Sin revisar los ejemplos, responde:
 
@@ -6571,7 +6571,7 @@ La adimensionalización ha aislado exactamente la dependencia que no puede fijar
 
 []{#conectar-con-buckingham-pi}
 
-### 2.10.23. Conectar con Buckingham $\Pi$ {#fispm-c02-conectar-con-buckingham-pi}
+### Conectar con Buckingham $\Pi$ {#fispm-c02-conectar-con-buckingham-pi}
 
 La estructura que acabamos de encontrar puede resumirse así. A veces las dimensiones fijan una combinación monomial básica: $Q_0.$ Pero si existen combinaciones independientes de dimensión uno,
 
@@ -6589,7 +6589,7 @@ No lo demostramos todavía.
 
 []{#síntesis-6}
 
-### 2.10.24. Síntesis {#fispm-c02-suxedntesis-6}
+### Síntesis {#fispm-c02-suxedntesis-6}
 
 La inferencia dimensional comienza con una elección física de variables y una hipótesis de forma. Para un ansatz
 
@@ -6617,7 +6617,7 @@ Por tanto:
 
 $$\boxed{ \text{inferencia dimensional} = \text{restricción estructural}, \not\equiv \text{derivación completa de una ley}. }$$
 
-El siguiente paso será el §[2.11](#fispm-c02-semejanza-escalamiento-y-cambio-de-escala).
+El siguiente paso será el §[11](#fispm-c02-semejanza-escalamiento-y-cambio-de-escala).
 
 ------------------------------------------------------------------------
 
@@ -6629,11 +6629,11 @@ El siguiente paso será el §[2.11](#fispm-c02-semejanza-escalamiento-y-cambio-d
 
 []{#fpm-i-02-s11}
 
-## 2.11. Semejanza, escalamiento y cambio de escala {#fispm-c02-semejanza-escalamiento-y-cambio-de-escala}
+## 11. Semejanza, escalamiento y cambio de escala {#fispm-c02-semejanza-escalamiento-y-cambio-de-escala}
 
 []{#intuir-hacer-un-sistema-más-grande-no-significa-multiplicarlo-todo-por-el-mismo-número}
 
-### 2.11.1. Intuir: hacer un sistema más grande no significa multiplicarlo todo por el mismo número {#fispm-c02-intuir-hacer-un-sistema-muxe1s-grande-no-significa-multiplicarlo-todo-por-el-mismo-nuxfamero}
+### Intuir: hacer un sistema más grande no significa multiplicarlo todo por el mismo número {#fispm-c02-intuir-hacer-un-sistema-muxe1s-grande-no-significa-multiplicarlo-todo-por-el-mismo-nuxfamero}
 
 Imaginemos dos modelos geométricamente semejantes de una misma figura. Si todas las longitudes del segundo son $\lambda$
 
@@ -6651,7 +6651,7 @@ Cada magnitud responde al reescalado según su estructura.
 
 []{#representar-una-familia-de-sistemas-relacionados-por-un-parámetro}
 
-### 2.11.2. Representar: una familia de sistemas relacionados por un parámetro {#fispm-c02-representar-una-familia-de-sistemas-relacionados-por-un-paruxe1metro}
+### Representar: una familia de sistemas relacionados por un parámetro {#fispm-c02-representar-una-familia-de-sistemas-relacionados-por-un-paruxe1metro}
 
 Introduciremos un parámetro positivo
 
@@ -6677,7 +6677,7 @@ llamaremos $s$ **exponente de escalamiento** de $Q$ respecto de esa transformaci
 
 []{#dimensión-y-escalamiento-no-son-lo-mismo}
 
-### 2.11.3. Dimensión y escalamiento no son lo mismo {#fispm-c02-dimensiuxf3n-y-escalamiento-no-son-lo-mismo}
+### Dimensión y escalamiento no son lo mismo {#fispm-c02-dimensiuxf3n-y-escalamiento-no-son-lo-mismo}
 
 Debemos separar dos ideas.
 
@@ -6705,7 +6705,7 @@ en cualquier problema. Por ejemplo, en una transformación podríamos duplicar e
 
 <figcaption>
 
-**Figura 2.7.** En figuras semejantes, duplicar todas las longitudes multiplica el área por cuatro y el volumen por ocho. La comparación exige conservar la forma; el dibujo ilustra la relación de áreas. Véase §[2.11](#fispm-c02-semejanza-escalamiento-y-cambio-de-escala).
+**Figura 2.7.** En figuras semejantes, duplicar todas las longitudes multiplica el área por cuatro y el volumen por ocho. La comparación exige conservar la forma; el dibujo ilustra la relación de áreas. Véase §[11](#fispm-c02-semejanza-escalamiento-y-cambio-de-escala).
 
 </figcaption>
 
@@ -6719,7 +6719,7 @@ en cualquier problema. Por ejemplo, en una transformación podríamos duplicar e
 
 <figcaption>
 
-**Figura 2.8.** Para el péndulo ideal a pequeña amplitud y $g$ fijo, $T/T_0=\sqrt{L/L_0}$. Duplicar la longitud multiplica el período por $\sqrt2$, dentro de ese régimen. Véase §[2.11](#fispm-c02-semejanza-escalamiento-y-cambio-de-escala).
+**Figura 2.8.** Para el péndulo ideal a pequeña amplitud y $g$ fijo, $T/T_0=\sqrt{L/L_0}$. Duplicar la longitud multiplica el período por $\sqrt2$, dentro de ese régimen. Véase §[11](#fispm-c02-semejanza-escalamiento-y-cambio-de-escala).
 
 </figcaption>
 
@@ -6733,7 +6733,7 @@ $$\boxed{ \text{misma dimensión} \not\Rightarrow \text{mismo exponente de escal
 
 []{#escalamiento-geométrico-uniforme}
 
-### 2.11.4. Escalamiento geométrico uniforme {#fispm-c02-escalamiento-geomuxe9trico-uniforme}
+### Escalamiento geométrico uniforme {#fispm-c02-escalamiento-geomuxe9trico-uniforme}
 
 Consideremos una familia de cuerpos geométricamente semejantes en la que toda longitud lineal se multiplica por $\lambda.$ Entonces: $L'\!=\lambda L.$ Un área construida como producto de dos longitudes satisface $A'\! = (\lambda L_1)(\lambda L_2) = \lambda^2A.$
 
@@ -6751,7 +6751,7 @@ indica dependencia de escala, no igualdad exacta entre magnitudes.
 
 []{#consecuencia-superficie-frente-a-volumen}
 
-### 2.11.5. Consecuencia: superficie frente a volumen {#fispm-c02-consecuencia-superficie-frente-a-volumen}
+### Consecuencia: superficie frente a volumen {#fispm-c02-consecuencia-superficie-frente-a-volumen}
 
 Para objetos geométricamente semejantes, $\frac AV \sim \frac{\lambda^2}{\lambda^3}.$ Por tanto,
 
@@ -6767,7 +6767,7 @@ Esas aplicaciones requerirían modelos físicos adicionales.
 
 []{#masa-bajo-densidad-constante}
 
-### 2.11.6. Masa bajo densidad constante {#fispm-c02-masa-bajo-densidad-constante}
+### Masa bajo densidad constante {#fispm-c02-masa-bajo-densidad-constante}
 
 Supongamos ahora que comparamos objetos semejantes fabricados con un material de densidad constante
 
@@ -6797,7 +6797,7 @@ Si cambia el material o la densidad, esta ley deja de seguirse automáticamente.
 
 []{#precisar-semejanza-respecto-de-un-modelo}
 
-### 2.11.7. Precisar: semejanza respecto de un modelo {#fispm-c02-precisar-semejanza-respecto-de-un-modelo}
+### Precisar: semejanza respecto de un modelo {#fispm-c02-precisar-semejanza-respecto-de-un-modelo}
 
 Dos objetos pueden tener la misma forma geométrica y no comportarse físicamente de manera semejante. Para hablar de semejanza física necesitamos declarar qué estructura queremos preservar.[^34]
 
@@ -6821,7 +6821,7 @@ según las variables y relaciones que el modelo conserve.
 
 []{#un-ejemplo-temporal-péndulos-semejantes}
 
-### 2.11.8. Un ejemplo temporal: péndulos semejantes {#fispm-c02-un-ejemplo-temporal-puxe9ndulos-semejantes}
+### Un ejemplo temporal: péndulos semejantes {#fispm-c02-un-ejemplo-temporal-puxe9ndulos-semejantes}
 
 En §10 obtuvimos, para el modelo elemental, $T_p = C\sqrt{\frac{\ell}{g}}.$
 
@@ -6841,7 +6841,7 @@ Un péndulo cuatro veces más largo tiene, dentro de este modelo, $T_p'=2T_p.$ L
 
 []{#otro-ejemplo-escala-orbital}
 
-### 2.11.9. Otro ejemplo: escala orbital {#fispm-c02-otro-ejemplo-escala-orbital}
+### Otro ejemplo: escala orbital {#fispm-c02-otro-ejemplo-escala-orbital}
 
 En §10 obtuvimos
 
@@ -6867,7 +6867,7 @@ Nos dice cómo comparar dos miembros de una familia física.
 
 []{#teorema-elemental-de-escalamiento-monomial}
 
-### 2.11.10. Teorema elemental de escalamiento monomial {#fispm-c02-teorema-elemental-de-escalamiento-monomial}
+### Teorema elemental de escalamiento monomial {#fispm-c02-teorema-elemental-de-escalamiento-monomial}
 
 **Proposición 4 --- Escalamiento de un ansatz monomial**
 
@@ -6889,7 +6889,7 @@ $$\boxed{ s_Q = \sum_i\alpha_is_i. }$$
 
 []{#demostración-3}
 
-#### 2.11.10.1. Demostración {#fispm-c02-demostraciuxf3n-3}
+#### Demostración {#fispm-c02-demostraciuxf3n-3}
 
 Sustituimos las leyes de escala de las variables:
 
@@ -6919,7 +6919,7 @@ $$\boxed{\text{QED}}$$
 
 []{#leer-la-proposición-4-correctamente}
 
-### 2.11.11. Leer la Proposición 4 correctamente {#fispm-c02-leer-la-proposiciuxf3n-4-correctamente}
+### Leer la Proposición 4 correctamente {#fispm-c02-leer-la-proposiciuxf3n-4-correctamente}
 
 La Proposición 4 no afirma que toda magnitud física siga una potencia de $\lambda$.
 
@@ -6935,7 +6935,7 @@ No crea por sí sola la relación física.
 
 []{#cantidades-de-dimensión-uno-e-invariantes-de-semejanza}
 
-### 2.11.12. Cantidades de dimensión uno e invariantes de semejanza {#fispm-c02-cantidades-de-dimensiuxf3n-uno-e-invariantes-de-semejanza}
+### Cantidades de dimensión uno e invariantes de semejanza {#fispm-c02-cantidades-de-dimensiuxf3n-uno-e-invariantes-de-semejanza}
 
 Supongamos que bajo una transformación
 
@@ -6967,7 +6967,7 @@ Esta idea anticipa directamente los grupos $\Pi$ de §12.
 
 []{#poner-a-prueba-dimensión-uno-no-implica-invariancia-de-escala}
 
-### 2.11.13. Poner a prueba: dimensión uno no implica invariancia de escala {#fispm-c02-poner-a-prueba-dimensiuxf3n-uno-no-implica-invariancia-de-escala}
+### Poner a prueba: dimensión uno no implica invariancia de escala {#fispm-c02-poner-a-prueba-dimensiuxf3n-uno-no-implica-invariancia-de-escala}
 
 Sea
 
@@ -6997,7 +6997,7 @@ entonces $R'=R.$ La semejanza depende del patrón de transformación.
 
 []{#diagnóstico-miniatura-geométrica-no-equivale-automáticamente-a-modelo-físico}
 
-### 2.11.14. Diagnóstico: miniatura geométrica no equivale automáticamente a modelo físico {#fispm-c02-diagnuxf3stico-miniatura-geomuxe9trica-no-equivale-automuxe1ticamente-a-modelo-fuxedsico}
+### Diagnóstico: miniatura geométrica no equivale automáticamente a modelo físico {#fispm-c02-diagnuxf3stico-miniatura-geomuxe9trica-no-equivale-automuxe1ticamente-a-modelo-fuxedsico}
 
 Supongamos que construimos una maqueta a escala
 
@@ -7017,7 +7017,7 @@ Esta distinción es central en modelos experimentales.
 
 []{#ejemplo-velocidad-bajo-escalamiento-de-longitud-y-tiempo}
 
-### 2.11.15. Ejemplo: velocidad bajo escalamiento de longitud y tiempo {#fispm-c02-ejemplo-velocidad-bajo-escalamiento-de-longitud-y-tiempo}
+### Ejemplo: velocidad bajo escalamiento de longitud y tiempo {#fispm-c02-ejemplo-velocidad-bajo-escalamiento-de-longitud-y-tiempo}
 
 La velocidad satisface $v=\frac{L}{T}.$ Si una familia transforma
 
@@ -7047,7 +7047,7 @@ $$a,\ b.$$
 
 []{#ejemplo-aceleración-bajo-un-escalamiento-general}
 
-### 2.11.16. Ejemplo: aceleración bajo un escalamiento general {#fispm-c02-ejemplo-aceleraciuxf3n-bajo-un-escalamiento-general}
+### Ejemplo: aceleración bajo un escalamiento general {#fispm-c02-ejemplo-aceleraciuxf3n-bajo-un-escalamiento-general}
 
 Como $a_{\mathrm f} \sim \frac{L}{T^2},$
 
@@ -7079,7 +7079,7 @@ exactamente como en el escalamiento temporal del péndulo bajo gravedad fija.
 
 []{#autoexplicación-3}
 
-### 2.11.17. Autoexplicación {#fispm-c02-autoexplicaciuxf3n-3}
+### Autoexplicación {#fispm-c02-autoexplicaciuxf3n-3}
 
 **Pausa de autoexplicación** Responde sin volver a los ejemplos:
 
@@ -7093,7 +7093,7 @@ exactamente como en el escalamiento temporal del péndulo bajo gravedad fija.
 
 []{#práctica-guiada-3}
 
-### 2.11.18. Práctica guiada {#fispm-c02-pruxe1ctica-guiada-3}
+### Práctica guiada {#fispm-c02-pruxe1ctica-guiada-3}
 
 **Ejercicio 23 --- Escalar una familia de modelos**
 
@@ -7105,7 +7105,7 @@ Considera una familia de cuerpos geométricamente semejantes construidos con el 
 
 $$L'\!=\lambda L.$$
 
-### 2.11.19. A. Recuperación {#fispm-c02-a.-recuperaciuxf3n-2}
+### A. Recuperación {#fispm-c02-a.-recuperaciuxf3n-2}
 
 Determina cómo escalan:
 
@@ -7117,7 +7117,7 @@ Determina cómo escalan:
 
 4.  razón $A/V$.
 
-### 2.11.20. B. Consolidación {#fispm-c02-b.-consolidaciuxf3n-2}
+### B. Consolidación {#fispm-c02-b.-consolidaciuxf3n-2}
 
 Si una cantidad característica satisface $Q=Cm^\alpha L^\beta,$
 
@@ -7125,7 +7125,7 @@ demuestra usando la Proposición 4 que
 
 $$Q'\! = \lambda^{3\alpha+\beta}Q.$$
 
-### 2.11.21. C. Diagnóstico {#fispm-c02-c.-diagnuxf3stico-2}
+### C. Diagnóstico {#fispm-c02-c.-diagnuxf3stico-2}
 
 Un estudiante afirma:
 
@@ -7133,7 +7133,7 @@ Un estudiante afirma:
 
 Identifica el error.
 
-### 2.11.22. D. Síntesis {#fispm-c02-d.-suxedntesis-2}
+### D. Síntesis {#fispm-c02-d.-suxedntesis-2}
 
 Supón además que un proceso posee una escala temporal
 
@@ -7149,7 +7149,7 @@ Explica por qué la respuesta no es $T'=\frac1{100}T.$
 
 **Solución**
 
-### 2.11.23. A. Recuperación {#fispm-c02-a.-recuperaciuxf3n-3}
+### A. Recuperación {#fispm-c02-a.-recuperaciuxf3n-3}
 
 Por semejanza geométrica,
 
@@ -7171,7 +7171,7 @@ Por tanto:
 
 $$\boxed{ A\sim\lambda^2,\quad V\sim\lambda^3,\quad m\sim\lambda^3,\quad A/V\sim\lambda^{-1}. }$$
 
-### 2.11.24. B. Consolidación {#fispm-c02-b.-consolidaciuxf3n-3}
+### B. Consolidación {#fispm-c02-b.-consolidaciuxf3n-3}
 
 Tenemos $Q=Cm^\alpha L^\beta.$
 
@@ -7189,7 +7189,7 @@ Luego
 
 $$\boxed{ Q' = \lambda^{3\alpha+\beta}Q. }$$
 
-### 2.11.25. C. Diagnóstico {#fispm-c02-c.-diagnuxf3stico-3}
+### C. Diagnóstico {#fispm-c02-c.-diagnuxf3stico-3}
 
 El estudiante confunde una escala **lineal** con una regla universal para todas las magnitudes. Las áreas cambian como $\lambda^2,$
 
@@ -7203,7 +7203,7 @@ $$Q'\!=\lambda Q$$
 
 válida para toda magnitud.
 
-### 2.11.26. D. Síntesis {#fispm-c02-d.-suxedntesis-3}
+### D. Síntesis {#fispm-c02-d.-suxedntesis-3}
 
 Si
 
@@ -7227,7 +7227,7 @@ $$\boxed{ \text{\parbox{.66\linewidth}{\centering el escalamiento de una magnitu
 
 []{#variar-escalamiento-simultáneo-de-varias-magnitudes}
 
-### 2.11.27. Variar: escalamiento simultáneo de varias magnitudes {#fispm-c02-variar-escalamiento-simultuxe1neo-de-varias-magnitudes}
+### Variar: escalamiento simultáneo de varias magnitudes {#fispm-c02-variar-escalamiento-simultuxe1neo-de-varias-magnitudes}
 
 Supongamos ahora que
 
@@ -7263,7 +7263,7 @@ Esto muestra que una ley dimensional puede contener muchas reglas de escalamient
 
 []{#conectar-con-el-teorema-pi}
 
-### 2.11.28. Conectar con el teorema $\Pi$ {#fispm-c02-conectar-con-el-teorema-pi}
+### Conectar con el teorema $\Pi$ {#fispm-c02-conectar-con-el-teorema-pi}
 
 §10 mostró que una relación dimensional puede dejar funciones arbitrarias de cantidades de dimensión uno.
 
@@ -7283,7 +7283,7 @@ En §12 preguntaremos:
 
 []{#síntesis-7}
 
-### 2.11.29. Síntesis {#fispm-c02-suxedntesis-7}
+### Síntesis {#fispm-c02-suxedntesis-7}
 
 El cambio de escala se describe mediante leyes como $Q(\lambda)=\lambda^sQ(1).$
 
@@ -7317,7 +7317,7 @@ $$\boxed{ \text{semejanza geométrica} \not\Rightarrow \text{semejanza física c
 
 La semejanza exige declarar qué relaciones e invariantes queremos preservar.
 
-El siguiente paso es el §[2.12](#fispm-c02-el-teorema-ux3c0-de-buckingham).
+El siguiente paso es el §[12](#fispm-c02-el-teorema-ux3c0-de-buckingham).
 
 ------------------------------------------------------------------------
 
@@ -7329,11 +7329,11 @@ El siguiente paso es el §[2.12](#fispm-c02-el-teorema-ux3c0-de-buckingham).
 
 []{#fpm-i-02-s12}
 
-## 2.12. El teorema Π de Buckingham {#fispm-c02-el-teorema-ux3c0-de-buckingham}
+## 12. El teorema Π de Buckingham {#fispm-c02-el-teorema-ux3c0-de-buckingham}
 
 []{#intuir-muchas-variables-pocas-combinaciones-esenciales}
 
-### 2.12.1. Intuir: muchas variables, pocas combinaciones esenciales {#fispm-c02-intuir-muchas-variables-pocas-combinaciones-esenciales}
+### Intuir: muchas variables, pocas combinaciones esenciales {#fispm-c02-intuir-muchas-variables-pocas-combinaciones-esenciales}
 
 Supongamos que un fenómeno se describe mediante $q_1,q_2,\ldots,q_n.$
 
@@ -7363,7 +7363,7 @@ El teorema $\Pi$ de Buckingham responde, bajo hipótesis precisas:[^35]
 
 <figcaption>
 
-**Figura 2.9.** Con las magnitudes $v$, $g$ y $\ell$, la combinación $\Pi=v/\sqrt{g\ell}$ tiene dimensión uno. El control dimensional no fija su valor ni garantiza que esas tres magnitudes describan por completo el fenómeno. Véase §[2.12](#fispm-c02-el-teorema-ux3c0-de-buckingham).
+**Figura 2.9.** Con las magnitudes $v$, $g$ y $\ell$, la combinación $\Pi=v/\sqrt{g\ell}$ tiene dimensión uno. El control dimensional no fija su valor ni garantiza que esas tres magnitudes describan por completo el fenómeno. Véase §[12](#fispm-c02-el-teorema-ux3c0-de-buckingham).
 
 </figcaption>
 
@@ -7375,7 +7375,7 @@ donde $r$ es el **rango dimensional** de las variables. La clave está en entend
 
 []{#representar-columnas-de-exponentes-dimensionales}
 
-### 2.12.2. Representar: columnas de exponentes dimensionales {#fispm-c02-representar-columnas-de-exponentes-dimensionales}
+### Representar: columnas de exponentes dimensionales {#fispm-c02-representar-columnas-de-exponentes-dimensionales}
 
 Fijemos un orden de dimensiones base relevantes: $D_1,\ldots,D_d.$ Para cada variable $q_i$, escribimos
 
@@ -7397,7 +7397,7 @@ Contiene solamente sus exponentes dimensionales.
 
 []{#rango-dimensional-sin-presuponer-álgebra-lineal-avanzada}
 
-### 2.12.3. Rango dimensional sin presuponer álgebra lineal avanzada {#fispm-c02-rango-dimensional-sin-presuponer-uxe1lgebra-lineal-avanzada}
+### Rango dimensional sin presuponer álgebra lineal avanzada {#fispm-c02-rango-dimensional-sin-presuponer-uxe1lgebra-lineal-avanzada}
 
 Aplicamos eliminación gaussiana a $A$. El número de columnas pivote ---equivalentemente, el número de filas no nulas de una forma escalonada--- mide cuántas direcciones dimensionales independientes aparecen realmente entre las variables.
 
@@ -7415,7 +7415,7 @@ El número relevante en Buckingham no es simplemente «cuántos símbolos $M,L,T
 
 []{#un-monomio-es-adimensional-exactamente-cuando-resuelve-un-sistema-homogéneo}
 
-### 2.12.4. Un monomio es adimensional exactamente cuando resuelve un sistema homogéneo {#fispm-c02-un-monomio-es-adimensional-exactamente-cuando-resuelve-un-sistema-homoguxe9neo}
+### Un monomio es adimensional exactamente cuando resuelve un sistema homogéneo {#fispm-c02-un-monomio-es-adimensional-exactamente-cuando-resuelve-un-sistema-homoguxe9neo}
 
 Consideremos un producto de potencias:
 
@@ -7441,7 +7441,7 @@ Así, construir combinaciones adimensionales equivale a resolver un sistema line
 
 []{#por-qué-aparecen-n-r-parámetros-libres}
 
-### 2.12.5. ¿Por qué aparecen $n-r$ parámetros libres? {#fispm-c02-por-quuxe9-aparecen-n-r-paruxe1metros-libres}
+### ¿Por qué aparecen $n-r$ parámetros libres? {#fispm-c02-por-quuxe9-aparecen-n-r-paruxe1metros-libres}
 
 Sea $A$ una matriz con $n$ columnas y rango $r$. Al reducir
 
@@ -7469,7 +7469,7 @@ $$\boxed{ n\text{ incógnitas} - r\text{ pivotes} = n-r\text{ variables libres}.
 
 []{#grupo-π}
 
-### 2.12.6. Grupo Π {#fispm-c02-grupo-ux3c0}
+### Grupo Π {#fispm-c02-grupo-ux3c0}
 
 **Definición 31 --- Grupo $\Pi$** Un **grupo $\Pi$** es una combinación monomial de las variables pertinentes,
 
@@ -7481,7 +7481,7 @@ $$A\alpha=0.$$
 
 []{#variables-repetidoras}
 
-### 2.12.7. Variables repetidoras {#fispm-c02-variables-repetidoras}
+### Variables repetidoras {#fispm-c02-variables-repetidoras}
 
 Si
 
@@ -7507,7 +7507,7 @@ No porque aparezcan físicamente «más veces», sino porque se reutilizan para 
 
 []{#construcción-de-los-grupos}
 
-### 2.12.8. Construcción de los grupos {#fispm-c02-construcciuxf3n-de-los-grupos}
+### Construcción de los grupos {#fispm-c02-construcciuxf3n-de-los-grupos}
 
 Tomemos una variable no repetidora: $q_{r+k}.$
 
@@ -7549,7 +7549,7 @@ variables no repetidoras, esta construcción produce $\Pi_1,\ldots,\Pi_{n-r}.$
 
 []{#por-qué-esos-grupos-son-independientes}
 
-### 2.12.9. Por qué esos grupos son independientes {#fispm-c02-por-quuxe9-esos-grupos-son-independientes}
+### Por qué esos grupos son independientes {#fispm-c02-por-quuxe9-esos-grupos-son-independientes}
 
 Cada grupo construido tiene exponente $1$ en una variable no repetidora distinta:
 
@@ -7569,7 +7569,7 @@ Esa variable aparece con exponente $\lambda_k$ y no aparece en los otros grupos.
 
 []{#por-qué-generan-todos-los-monomios-adimensionales}
 
-### 2.12.10. Por qué generan todos los monomios adimensionales {#fispm-c02-por-quuxe9-generan-todos-los-monomios-adimensionales}
+### Por qué generan todos los monomios adimensionales {#fispm-c02-por-quuxe9-generan-todos-los-monomios-adimensionales}
 
 Sea
 
@@ -7601,7 +7601,7 @@ grupos construidos.
 
 []{#la-parte-física-invariancia-frente-a-cambios-de-unidades}
 
-### 2.12.11. La parte física: invariancia frente a cambios de unidades {#fispm-c02-la-parte-fuxedsica-invariancia-frente-a-cambios-de-unidades}
+### La parte física: invariancia frente a cambios de unidades {#fispm-c02-la-parte-fuxedsica-invariancia-frente-a-cambios-de-unidades}
 
 Hasta aquí hemos probado un hecho algebraico.
 
@@ -7619,7 +7619,7 @@ Los grupos $\Pi_k$, al ser adimensionales, permanecen invariantes bajo esas tran
 
 []{#normalizar-las-variables-repetidoras}
 
-### 2.12.12. Normalizar las variables repetidoras {#fispm-c02-normalizar-las-variables-repetidoras}
+### Normalizar las variables repetidoras {#fispm-c02-normalizar-las-variables-repetidoras}
 
 Hay una forma concreta de verlo.
 
@@ -7649,7 +7649,7 @@ Por tanto, una relación invariante bajo cambios de unidades puede describirse �
 
 []{#teorema-π-de-buckingham}
 
-### 2.12.13. Teorema Π de Buckingham {#fispm-c02-teorema-ux3c0-de-buckingham}
+### Teorema Π de Buckingham {#fispm-c02-teorema-ux3c0-de-buckingham}
 
 **Teorema 5 --- $\Pi$ de Buckingham, forma elemental**
 
@@ -7689,7 +7689,7 @@ para alguna función $\Phi$.
 
 []{#demostración-4}
 
-#### 2.12.13.1. Demostración {#fispm-c02-demostraciuxf3n-4}
+#### Demostración {#fispm-c02-demostraciuxf3n-4}
 
 Como $\operatorname{rank}A=r,$
 
@@ -7731,7 +7731,7 @@ $$\boxed{\text{QED}}$$
 
 []{#qué-significa-exactamente-n-r}
 
-### 2.12.14. Qué significa exactamente $n-r$ {#fispm-c02-quuxe9-significa-exactamente-n-r}
+### Qué significa exactamente $n-r$ {#fispm-c02-quuxe9-significa-exactamente-n-r}
 
 La fórmula:
 
@@ -7765,7 +7765,7 @@ Esa función puede requerir:
 
 []{#los-grupos-π-no-son-únicos}
 
-### 2.12.15. Los grupos Π no son únicos {#fispm-c02-los-grupos-ux3c0-no-son-uxfanicos}
+### Los grupos Π no son únicos {#fispm-c02-los-grupos-ux3c0-no-son-uxfanicos}
 
 Supongamos que: $\Pi_1,\Pi_2$
 
@@ -7793,7 +7793,7 @@ Lo canónico es la cantidad de grados de libertad: $n-r.$ La elección práctica
 
 []{#ejemplo-elemental-número-de-reynolds-dimensional}
 
-### 2.12.16. Ejemplo elemental: número de Reynolds dimensional {#fispm-c02-ejemplo-elemental-nuxfamero-de-reynolds-dimensional}
+### Ejemplo elemental: número de Reynolds dimensional {#fispm-c02-ejemplo-elemental-nuxfamero-de-reynolds-dimensional}
 
 Consideremos las variables: $v,\quad L,\quad \rho,\quad \mu,$
 
@@ -7855,7 +7855,7 @@ Aquí nos interesa primero su estructura dimensional. Su interpretación física
 
 []{#poner-a-prueba-contar-dimensiones-sin-calcular-rango}
 
-### 2.12.17. Poner a prueba: contar dimensiones sin calcular rango {#fispm-c02-poner-a-prueba-contar-dimensiones-sin-calcular-rango}
+### Poner a prueba: contar dimensiones sin calcular rango {#fispm-c02-poner-a-prueba-contar-dimensiones-sin-calcular-rango}
 
 Supongamos que las variables tienen dimensiones:
 
@@ -7887,7 +7887,7 @@ La eliminación gaussiana es el control fiable.
 
 []{#ejercicios-práctica-guiada-1}
 
-### 2.12.18. Ejercicios práctica guiada {#fispm-c02-ejercicios-pruxe1ctica-guiada-1}
+### Ejercicios práctica guiada {#fispm-c02-ejercicios-pruxe1ctica-guiada-1}
 
 **Ejercicio 24 --- Construir un grupo $\Pi$ por eliminación**
 
@@ -8083,7 +8083,7 @@ variables adicionales que no aumentan el rango producen nuevas libertades adimen
 
 []{#autoexplicación-4}
 
-### 2.12.19. Autoexplicación {#fispm-c02-autoexplicaciuxf3n-4}
+### Autoexplicación {#fispm-c02-autoexplicaciuxf3n-4}
 
 **Pausa de autoexplicación** Responde sin volver a la demostración:
 
@@ -8101,7 +8101,7 @@ $$\Phi(\Pi_1,\ldots,\Pi_{n-r})=0?$$
 
 []{#variar-cambiar-las-variables-repetidoras}
 
-### 2.12.20. Variar: cambiar las variables repetidoras {#fispm-c02-variar-cambiar-las-variables-repetidoras}
+### Variar: cambiar las variables repetidoras {#fispm-c02-variar-cambiar-las-variables-repetidoras}
 
 En el ejemplo: $v,\quad L,\quad\rho,\quad\mu,$
 
@@ -8117,7 +8117,7 @@ puede reescribirse como otra relación: $\widetilde\Phi(\widetilde\Pi)=0.$ La f�
 
 []{#conectar-con-semejanza}
 
-### 2.12.21. Conectar con semejanza {#fispm-c02-conectar-con-semejanza}
+### Conectar con semejanza {#fispm-c02-conectar-con-semejanza}
 
 §11 definió semejanza como preservación de las relaciones relevantes y de los parámetros adimensionales que controlan el modelo. Buckingham explica ahora por qué esos parámetros aparecen. Si dos sistemas tienen los mismos valores de un conjunto completo de: $\Pi_1,\ldots,\Pi_{n-r},$
 
@@ -8135,7 +8135,7 @@ Los grupos solos no garantizan que dos sistemas físicos distintos compartan tod
 
 []{#qué-hemos-ganado}
 
-### 2.12.22. Qué hemos ganado {#fispm-c02-quuxe9-hemos-ganado}
+### Qué hemos ganado {#fispm-c02-quuxe9-hemos-ganado}
 
 Partimos de una relación con:
 
@@ -8179,7 +8179,7 @@ Pero reduce el espacio en que debemos:
 
 []{#síntesis-8}
 
-### 2.12.23. Síntesis {#fispm-c02-suxedntesis-8}
+### Síntesis {#fispm-c02-suxedntesis-8}
 
 El procedimiento completo es:
 
@@ -8203,7 +8203,7 @@ Pero:
 
 $$\boxed{ \text{Buckingham }\Pi \not\Rightarrow \text{función }\Phi\text{ conocida}. }$$
 
-El siguiente paso será usar todo el aparato en problemas físicos completos (§[2.13](#fispm-c02-ejemplos-de-modelizaciuxf3n-dimensional)).
+El siguiente paso será usar todo el aparato en problemas físicos completos (§[13](#fispm-c02-ejemplos-de-modelizaciuxf3n-dimensional)).
 
 Allí volveremos al péndulo y añadiremos un segundo caso de semejanza para separar con precisión:
 
@@ -8223,11 +8223,11 @@ Allí volveremos al péndulo y añadiremos un segundo caso de semejanza para sep
 
 []{#fpm-i-02-s13}
 
-## 2.13. Ejemplos de modelización dimensional {#fispm-c02-ejemplos-de-modelizaciuxf3n-dimensional}
+## 13. Ejemplos de modelización dimensional {#fispm-c02-ejemplos-de-modelizaciuxf3n-dimensional}
 
 []{#intuir-ahora-importa-tanto-elegir-variables-como-manipular-dimensiones}
 
-### 2.13.1. Intuir: ahora importa tanto elegir variables como manipular dimensiones {#fispm-c02-intuir-ahora-importa-tanto-elegir-variables-como-manipular-dimensiones}
+### Intuir: ahora importa tanto elegir variables como manipular dimensiones {#fispm-c02-intuir-ahora-importa-tanto-elegir-variables-como-manipular-dimensiones}
 
 Hasta §12 hemos construido un aparato poderoso:
 
@@ -8263,7 +8263,7 @@ Ambos aparecen en la tradición clásica del análisis dimensional y están trat
 
 []{#caso-i-el-péndulo-empezar-por-la-lista-de-variables}
 
-### 2.13.2. Caso I --- El péndulo: empezar por la lista de variables {#fispm-c02-caso-i-el-puxe9ndulo-empezar-por-la-lista-de-variables}
+### Caso I --- El péndulo: empezar por la lista de variables {#fispm-c02-caso-i-el-puxe9ndulo-empezar-por-la-lista-de-variables}
 
 Consideremos un péndulo idealizado:
 
@@ -8291,7 +8291,7 @@ $$\boxed{ P=f(\ell,m,g,\varphi_0). }$$
 
 []{#representar-matriz-dimensional-del-péndulo}
 
-### 2.13.3. Representar: matriz dimensional del péndulo {#fispm-c02-representar-matriz-dimensional-del-puxe9ndulo}
+### Representar: matriz dimensional del péndulo {#fispm-c02-representar-matriz-dimensional-del-puxe9ndulo}
 
 Usaremos el orden de dimensiones: $(T,L,M).$
 
@@ -8325,7 +8325,7 @@ grupos adimensionales independientes.
 
 []{#construir-los-dos-grupos-π}
 
-### 2.13.4. Construir los dos grupos Π {#fispm-c02-construir-los-dos-grupos-ux3c0}
+### Construir los dos grupos Π {#fispm-c02-construir-los-dos-grupos-ux3c0}
 
 Uno es inmediato:
 
@@ -8351,7 +8351,7 @@ $$\boxed{ \Pi_1 = P\sqrt{\frac g\ell}. }$$
 
 []{#buckingham-aplicado-al-péndulo}
 
-### 2.13.5. Buckingham aplicado al péndulo {#fispm-c02-buckingham-aplicado-al-puxe9ndulo}
+### Buckingham aplicado al péndulo {#fispm-c02-buckingham-aplicado-al-puxe9ndulo}
 
 El teorema permite escribir: $\Phi(\Pi_1,\Pi_2)=0.$
 
@@ -8369,7 +8369,7 @@ $$\boxed{ P = \sqrt{\frac{\ell}{g}}\, \Psi(\varphi_0). }$$
 
 []{#dónde-quedó-la-masa}
 
-### 2.13.6. ¿Dónde quedó la masa? {#fispm-c02-duxf3nde-queduxf3-la-masa}
+### ¿Dónde quedó la masa? {#fispm-c02-duxf3nde-queduxf3-la-masa}
 
 La masa $m$ estaba incluida en la lista. Sin embargo, no aparece en la forma reducida: $P = \sqrt{\frac{\ell}{g}}\, \Psi(\varphi_0).$ Esto no ocurrió porque decidiéramos de antemano «ignorar la masa». Ocurrió porque, dentro de este conjunto de variables y dimensiones, no puede construirse una dependencia adimensional independiente en $m$ compatible con el período.
 
@@ -8383,7 +8383,7 @@ No estamos afirmando que la masa sea irrelevante para toda propiedad física de 
 
 []{#lo-que-la-dimensión-no-determina-en-el-péndulo}
 
-### 2.13.7. Lo que la dimensión no determina en el péndulo {#fispm-c02-lo-que-la-dimensiuxf3n-no-determina-en-el-puxe9ndulo}
+### Lo que la dimensión no determina en el péndulo {#fispm-c02-lo-que-la-dimensiuxf3n-no-determina-en-el-puxe9ndulo}
 
 La expresión: $P = \sqrt{\frac{\ell}{g}}\, \Psi(\varphi_0)$
 
@@ -8407,7 +8407,7 @@ marca información física adicional: una aproximación de régimen pequeño, no
 
 []{#autoexplicación-del-primer-caso}
 
-### 2.13.8. Autoexplicación del primer caso {#fispm-c02-autoexplicaciuxf3n-del-primer-caso}
+### Autoexplicación del primer caso {#fispm-c02-autoexplicaciuxf3n-del-primer-caso}
 
 **Pausa de autoexplicación** Explica con tus propias palabras:
 
@@ -8423,7 +8423,7 @@ marca información física adicional: una aproximación de régimen pequeño, no
 
 []{#caso-ii-arrastre-en-un-medio-empezar-por-el-modelo-más-austero}
 
-### 2.13.9. Caso II --- Arrastre en un medio: empezar por el modelo más austero {#fispm-c02-caso-ii-arrastre-en-un-medio-empezar-por-el-modelo-muxe1s-austero}
+### Caso II --- Arrastre en un medio: empezar por el modelo más austero {#fispm-c02-caso-ii-arrastre-en-un-medio-empezar-por-el-modelo-muxe1s-austero}
 
 Consideremos una esfera de radio $r$ que se mueve con velocidad característica $v$ en un medio de densidad $\rho$. Queremos estudiar una fuerza de arrastre $F$.
 
@@ -8447,7 +8447,7 @@ Tenemos cuatro variables: $n=4.$ Y las dimensiones $M,L,T$ aparecen independient
 
 []{#construir-el-grupo-de-fuerza}
 
-### 2.13.10. Construir el grupo de fuerza {#fispm-c02-construir-el-grupo-de-fuerza}
+### Construir el grupo de fuerza {#fispm-c02-construir-el-grupo-de-fuerza}
 
 Buscamos: $\Pi_F = F\rho^\alpha v^\beta r^\gamma.$
 
@@ -8479,7 +8479,7 @@ $$\boxed{ \Pi_F = \frac{F}{\rho v^2r^2}. }$$
 
 []{#qué-concluye-buckingham-en-el-modelo-de-tres-variables-explicativas}
 
-### 2.13.11. Qué concluye Buckingham en el modelo de tres variables explicativas {#fispm-c02-quuxe9-concluye-buckingham-en-el-modelo-de-tres-variables-explicativas}
+### Qué concluye Buckingham en el modelo de tres variables explicativas {#fispm-c02-quuxe9-concluye-buckingham-en-el-modelo-de-tres-variables-explicativas}
 
 Como solo existe un grupo adimensional independiente, la relación reducida tiene la forma: $\Phi(\Pi_F)=0.$ En una rama física donde esta ecuación selecciona un valor constante: $\Pi_F=C.$
 
@@ -8499,7 +8499,7 @@ sea suficiente para un fluido real.
 
 []{#poner-a-prueba-el-modelo-introducir-viscosidad}
 
-### 2.13.12. Poner a prueba el modelo: introducir viscosidad {#fispm-c02-poner-a-prueba-el-modelo-introducir-viscosidad}
+### Poner a prueba el modelo: introducir viscosidad {#fispm-c02-poner-a-prueba-el-modelo-introducir-viscosidad}
 
 Supongamos ahora que el medio posee una viscosidad dinámica relevante: $\mu.$
 
@@ -8525,7 +8525,7 @@ Y: $[\mu] = ML^{-1}T^{-1}.$ Por tanto: $[\Pi_2]=1.$
 
 []{#la-función-reaparece}
 
-### 2.13.13. La función reaparece {#fispm-c02-la-funciuxf3n-reaparece}
+### La función reaparece {#fispm-c02-la-funciuxf3n-reaparece}
 
 Buckingham produce ahora: $\Phi(\Pi_1,\Pi_2)=0.$ Cuando podemos despejar $\Pi_1$: $\Pi_1 = \Psi(\Pi_2).$
 
@@ -8547,7 +8547,7 @@ $$\boxed{ \text{constante adimensional} \longrightarrow \text{función de un par
 
 []{#qué-enseña-el-segundo-caso}
 
-### 2.13.14. Qué enseña el segundo caso {#fispm-c02-quuxe9-enseuxf1a-el-segundo-caso}
+### Qué enseña el segundo caso {#fispm-c02-quuxe9-enseuxf1a-el-segundo-caso}
 
 Con el modelo: $F=f(\rho,v,r),$
 
@@ -8561,7 +8561,7 @@ Cambió el modelo. La diferencia muestra por qué la elección de variables es u
 
 []{#semejanza-en-el-problema-de-arrastre}
 
-### 2.13.15. Semejanza en el problema de arrastre {#fispm-c02-semejanza-en-el-problema-de-arrastre}
+### Semejanza en el problema de arrastre {#fispm-c02-semejanza-en-el-problema-de-arrastre}
 
 Supongamos dos experimentos con: $(\rho_1,v_1,r_1,\mu_1)$
 
@@ -8579,7 +8579,7 @@ $$\boxed{ \text{igualar parámetros adimensionales relevantes} \longrightarrow \
 
 []{#ejemplo-de-escalamiento-de-un-modelo}
 
-### 2.13.16. Ejemplo de escalamiento de un modelo {#fispm-c02-ejemplo-de-escalamiento-de-un-modelo}
+### Ejemplo de escalamiento de un modelo {#fispm-c02-ejemplo-de-escalamiento-de-un-modelo}
 
 Supongamos:
 
@@ -8601,13 +8601,13 @@ la velocidad necesaria para conservar este parámetro sería: $v_2=10v_1.$ La se
 
 []{#diagnóstico-comparado-de-los-dos-casos}
 
-### 2.13.17. Diagnóstico comparado de los dos casos {#fispm-c02-diagnuxf3stico-comparado-de-los-dos-casos}
+### Diagnóstico comparado de los dos casos {#fispm-c02-diagnuxf3stico-comparado-de-los-dos-casos}
 
 El péndulo y el arrastre muestran dos mecanismos distintos.
 
 []{#péndulo}
 
-#### 2.13.17.1. Péndulo {#fispm-c02-puxe9ndulo}
+#### Péndulo {#fispm-c02-puxe9ndulo}
 
 Una variable ya adimensional: $\varphi_0$
 
@@ -8615,7 +8615,7 @@ sobrevive directamente como argumento funcional: $P = \sqrt{\frac{\ell}{g}} \Psi
 
 []{#arrastre-viscoso}
 
-#### 2.13.17.2. Arrastre viscoso {#fispm-c02-arrastre-viscoso}
+#### Arrastre viscoso {#fispm-c02-arrastre-viscoso}
 
 La variable adicional $\mu$ no es adimensional.
 
@@ -8627,13 +8627,13 @@ Entonces: $F = \rho v^2r^2 \Psi(\rho vr/\mu).$ En ambos casos, la función adime
 
 []{#qué-puede-decir-la-dimensión-y-qué-no}
 
-### 2.13.18. Qué puede decir la dimensión y qué no {#fispm-c02-quuxe9-puede-decir-la-dimensiuxf3n-y-quuxe9-no}
+### Qué puede decir la dimensión y qué no {#fispm-c02-quuxe9-puede-decir-la-dimensiuxf3n-y-quuxe9-no}
 
 Podemos ordenar los resultados.
 
 []{#la-dimensión-sí-puede}
 
-#### 2.13.18.1. La dimensión sí puede {#fispm-c02-la-dimensiuxf3n-suxed-puede}
+#### La dimensión sí puede {#fispm-c02-la-dimensiuxf3n-suxed-puede}
 
 - detectar variables incompatibles;
 
@@ -8651,7 +8651,7 @@ Podemos ordenar los resultados.
 
 []{#la-dimensión-no-puede-por-sí-sola}
 
-#### 2.13.18.2. La dimensión no puede, por sí sola {#fispm-c02-la-dimensiuxf3n-no-puede-por-suxed-sola}
+#### La dimensión no puede, por sí sola {#fispm-c02-la-dimensiuxf3n-no-puede-por-suxed-sola}
 
 - decidir qué variables son físicamente relevantes;
 
@@ -8669,7 +8669,7 @@ La herramienta es poderosa precisamente cuando mantenemos visible esta frontera.
 
 []{#práctica-guiada-4}
 
-### 2.13.19. Práctica guiada {#fispm-c02-pruxe1ctica-guiada-4}
+### Práctica guiada {#fispm-c02-pruxe1ctica-guiada-4}
 
 **Ejercicio 27 --- Modelización dimensional completa**
 
@@ -8679,7 +8679,7 @@ La herramienta es poderosa precisamente cuando mantenemos visible esta frontera.
 
 Queremos estudiar una fuerza $F$ asociada al movimiento de un objeto de tamaño característico $L$ con velocidad $v$ en un medio de densidad $\rho$ y viscosidad dinámica $\mu$.
 
-### 2.13.20. A. Recuperación {#fispm-c02-a.-recuperaciuxf3n-4}
+### A. Recuperación {#fispm-c02-a.-recuperaciuxf3n-4}
 
 Usa:
 
@@ -8695,13 +8695,13 @@ $$[\mu]=ML^{-1}T^{-1}.$$
 
 Construye la matriz dimensional en el orden $(T,L,M)$ y determina su rango.
 
-### 2.13.21. B. Consolidación {#fispm-c02-b.-consolidaciuxf3n-4}
+### B. Consolidación {#fispm-c02-b.-consolidaciuxf3n-4}
 
 Usa Buckingham para justificar que deben existir dos grupos adimensionales independientes.
 
 Encuentra un conjunto posible.
 
-### 2.13.22. C. Diagnóstico {#fispm-c02-c.-diagnuxf3stico-4}
+### C. Diagnóstico {#fispm-c02-c.-diagnuxf3stico-4}
 
 Un estudiante omite $\mu$ y obtiene: $F=C\rho v^2L^2.$
 
@@ -8711,7 +8711,7 @@ Explica:
 
 2.  por qué eso no demuestra que la viscosidad sea físicamente irrelevante.
 
-### 2.13.23. D. Síntesis {#fispm-c02-d.-suxedntesis-4}
+### D. Síntesis {#fispm-c02-d.-suxedntesis-4}
 
 Para dos modelos en el mismo fluido, con tamaños: $L_2=\frac14L_1,$
 
@@ -8719,7 +8719,7 @@ determina cómo debe cambiar la velocidad para conservar: $\frac{\rho vL}{\mu}.$
 
 Luego explica qué cantidad adimensional de fuerza debería coincidir entre ambos modelos si la semejanza es válida.
 
-### 2.13.24. E. Autoexplicación {#fispm-c02-e.-autoexplicaciuxf3n}
+### E. Autoexplicación {#fispm-c02-e.-autoexplicaciuxf3n}
 
 Señala en tu solución:
 
@@ -8731,7 +8731,7 @@ Señala en tu solución:
 
 **Solución**
 
-### 2.13.25. A. Recuperación {#fispm-c02-a.-recuperaciuxf3n-5}
+### A. Recuperación {#fispm-c02-a.-recuperaciuxf3n-5}
 
 Las columnas dimensionales son:
 
@@ -8751,7 +8751,7 @@ Así:
 
 $$\boxed{ r=3. }$$
 
-### 2.13.26. B. Consolidación {#fispm-c02-b.-consolidaciuxf3n-5}
+### B. Consolidación {#fispm-c02-b.-consolidaciuxf3n-5}
 
 Como: $n=5,$
 
@@ -8773,7 +8773,7 @@ o, cuando puede despejarse:
 
 $$\frac{F}{\rho v^2L^2} = \Psi\left( \frac{\rho vL}{\mu} \right).$$
 
-### 2.13.27. C. Diagnóstico {#fispm-c02-c.-diagnuxf3stico-5}
+### C. Diagnóstico {#fispm-c02-c.-diagnuxf3stico-5}
 
 Si omitimos $\mu$, quedan cuatro variables: $F,\rho,v,L.$ Su rango sigue siendo $3$. Por tanto: $n-r=1.$ El único grupo independiente puede tomarse como: $\frac{F}{\rho v^2L^2}.$ De ahí: $F=C\rho v^2L^2.$ La deducción es dimensionalmente correcta **para ese modelo de variables**.
 
@@ -8781,7 +8781,7 @@ El error sería concluir que $\mu$ es irrelevante en la física real.
 
 Buckingham no selecciona las variables.
 
-### 2.13.28. D. Síntesis {#fispm-c02-d.-suxedntesis-5}
+### D. Síntesis {#fispm-c02-d.-suxedntesis-5}
 
 En el mismo fluido: $\rho_2=\rho_1, \qquad \mu_2=\mu_1.$ Para conservar: $\frac{\rho vL}{\mu},$
 
@@ -8799,7 +8799,7 @@ Si la semejanza física del modelo es válida, debería coincidir también:
 
 $$\boxed{ \frac{F_1}{\rho_1v_1^2L_1^2} = \frac{F_2}{\rho_2v_2^2L_2^2}. }$$
 
-### 2.13.29. E. Autoexplicación {#fispm-c02-e.-autoexplicaciuxf3n-1}
+### E. Autoexplicación {#fispm-c02-e.-autoexplicaciuxf3n-1}
 
 **De las dimensiones** obtuvimos:
 
@@ -8827,7 +8827,7 @@ Su forma concreta exige física adicional, teoría, datos o experimentos.
 
 []{#variar-volver-al-péndulo-con-una-variable-omitida}
 
-### 2.13.30. Variar: volver al péndulo con una variable omitida {#fispm-c02-variar-volver-al-puxe9ndulo-con-una-variable-omitida}
+### Variar: volver al péndulo con una variable omitida {#fispm-c02-variar-volver-al-puxe9ndulo-con-una-variable-omitida}
 
 Supongamos que alguien comienza con: $P=f(\ell,m,\varphi_0)$
 
@@ -8847,7 +8847,7 @@ $$\boxed{ \text{una inferencia formal no puede recuperar una variable que el mod
 
 []{#conectar-con-el-cierre-del-capítulo}
 
-### 2.13.31. Conectar con el cierre del capítulo {#fispm-c02-conectar-con-el-cierre-del-capuxedtulo}
+### Conectar con el cierre del capítulo {#fispm-c02-conectar-con-el-cierre-del-capuxedtulo}
 
 Después de trece secciones podemos ver el análisis dimensional como una cadena completa:
 
@@ -8869,11 +8869,11 @@ Está en hacer visibles las preguntas:
 
 []{#síntesis-9}
 
-### 2.13.32. Síntesis {#fispm-c02-suxedntesis-9}
+### Síntesis {#fispm-c02-suxedntesis-9}
 
 []{#péndulo-1}
 
-#### 2.13.32.1. Péndulo {#fispm-c02-puxe9ndulo-1}
+#### Péndulo {#fispm-c02-puxe9ndulo-1}
 
 Buckingham produce:
 
@@ -8897,7 +8897,7 @@ No produce:
 
 []{#arrastre-viscoso-1}
 
-#### 2.13.32.2. Arrastre viscoso {#fispm-c02-arrastre-viscoso-1}
+#### Arrastre viscoso {#fispm-c02-arrastre-viscoso-1}
 
 Buckingham produce:
 
@@ -8927,7 +8927,7 @@ no:
 
 $$\boxed{ \text{análisis dimensional} = \text{física completa}. }$$
 
-Solo queda cerrar el capítulo mediante (§[2.14](#fispm-c02-quuxe9-puede-y-quuxe9-no-puede-decir-el-anuxe1lisis-dimensional)).
+Solo queda cerrar el capítulo mediante (§[14](#fispm-c02-quuxe9-puede-y-quuxe9-no-puede-decir-el-anuxe1lisis-dimensional)).
 
 ------------------------------------------------------------------------
 
@@ -8939,11 +8939,11 @@ Solo queda cerrar el capítulo mediante (§[2.14](#fispm-c02-quuxe9-puede-y-quux
 
 []{#fpm-i-02-s14}
 
-## 2.14. Qué puede y qué no puede decir el análisis dimensional {#fispm-c02-quuxe9-puede-y-quuxe9-no-puede-decir-el-anuxe1lisis-dimensional}
+## 14. Qué puede y qué no puede decir el análisis dimensional {#fispm-c02-quuxe9-puede-y-quuxe9-no-puede-decir-el-anuxe1lisis-dimensional}
 
 []{#intuir-una-herramienta-poderosa-puede-ser-peligrosa-si-olvidamos-qué-información-contiene}
 
-### 2.14.1. Intuir: una herramienta poderosa puede ser peligrosa si olvidamos qué información contiene {#fispm-c02-intuir-una-herramienta-poderosa-puede-ser-peligrosa-si-olvidamos-quuxe9-informaciuxf3n-contiene}
+### Intuir: una herramienta poderosa puede ser peligrosa si olvidamos qué información contiene {#fispm-c02-intuir-una-herramienta-poderosa-puede-ser-peligrosa-si-olvidamos-quuxe9-informaciuxf3n-contiene}
 
 A lo largo del capítulo hemos obtenido resultados sorprendentemente fuertes a partir de información aparentemente modesta.
 
@@ -8975,7 +8975,7 @@ $$\boxed{ \text{¿qué información conserva la dimensión y qué información p
 
 []{#lo-que-conserva}
 
-### 2.14.2. Lo que conserva {#fispm-c02-lo-que-conserva}
+### Lo que conserva {#fispm-c02-lo-que-conserva}
 
 Una firma dimensional como
 
@@ -9001,7 +9001,7 @@ En este sentido, la dimensión conserva **estructura de escala**.
 
 []{#lo-que-pierde}
 
-### 2.14.3. Lo que pierde {#fispm-c02-lo-que-pierde}
+### Lo que pierde {#fispm-c02-lo-que-pierde}
 
 La misma firma no registra, por sí sola:
 
@@ -9041,7 +9041,7 @@ $$\boxed{ \text{misma dimensión} \neq \text{misma física}. }$$
 
 []{#primera-capacidad-detectar-incompatibilidades}
 
-### 2.14.4. Primera capacidad --- detectar incompatibilidades {#fispm-c02-primera-capacidad-detectar-incompatibilidades}
+### Primera capacidad --- detectar incompatibilidades {#fispm-c02-primera-capacidad-detectar-incompatibilidades}
 
 Si una ecuación propone: $x=x_0+at,$
 
@@ -9061,7 +9061,7 @@ No necesitamos conocer el valor de $a$. La contradicción está en la estructura
 
 []{#primera-limitación-pasar-la-auditoría-no-prueba-la-ley}
 
-### 2.14.5. Primera limitación --- pasar la auditoría no prueba la ley {#fispm-c02-primera-limitaciuxf3n-pasar-la-auditoruxeda-no-prueba-la-ley}
+### Primera limitación --- pasar la auditoría no prueba la ley {#fispm-c02-primera-limitaciuxf3n-pasar-la-auditoruxeda-no-prueba-la-ley}
 
 Consideremos: $E=Cmv^2.$ Para cualquier número puro $C$: $[E]=ML^2T^{-2}.$
 
@@ -9085,7 +9085,7 @@ Esta fue la lección del Principio 12.
 
 []{#segunda-capacidad-inferir-escalas-y-exponentes}
 
-### 2.14.6. Segunda capacidad --- inferir escalas y exponentes {#fispm-c02-segunda-capacidad-inferir-escalas-y-exponentes}
+### Segunda capacidad --- inferir escalas y exponentes {#fispm-c02-segunda-capacidad-inferir-escalas-y-exponentes}
 
 Si aceptamos un ansatz: $Q=CX_1^{\alpha_1}\cdots X_n^{\alpha_n},$ La Proposición 3 convierte la homogeneidad en un sistema lineal. Por ejemplo, para el péndulo: $P=C\ell^\alpha g^\beta,$
 
@@ -9099,7 +9099,7 @@ y por tanto: $P=C\sqrt{\frac{\ell}{g}}.$ La inferencia es rigurosa **dentro del 
 
 []{#segunda-limitación-la-clase-funcional-fue-una-hipótesis}
 
-### 2.14.7. Segunda limitación --- la clase funcional fue una hipótesis {#fispm-c02-segunda-limitaciuxf3n-la-clase-funcional-fue-una-hipuxf3tesis}
+### Segunda limitación --- la clase funcional fue una hipótesis {#fispm-c02-segunda-limitaciuxf3n-la-clase-funcional-fue-una-hipuxf3tesis}
 
 El análisis dimensional no demostró que el período fuera monomial.
 
@@ -9115,7 +9115,7 @@ $$\boxed{ \text{restricción dimensional} \neq \text{determinación funcional co
 
 []{#tercera-capacidad-descubrir-grupos-adimensionales}
 
-### 2.14.8. Tercera capacidad --- descubrir grupos adimensionales {#fispm-c02-tercera-capacidad-descubrir-grupos-adimensionales}
+### Tercera capacidad --- descubrir grupos adimensionales {#fispm-c02-tercera-capacidad-descubrir-grupos-adimensionales}
 
 Con $n$ variables y matriz dimensional de rango $r$, el Teorema 5 permite encontrar:
 
@@ -9125,7 +9125,7 @@ grupos independientes: $\Pi_1,\ldots,\Pi_{n-r}.$ La relación física puede reor
 
 []{#tercera-limitación-buckingham-no-determina-φ}
 
-### 2.14.9. Tercera limitación --- Buckingham no determina Φ {#fispm-c02-tercera-limitaciuxf3n-buckingham-no-determina-ux3c6}
+### Tercera limitación --- Buckingham no determina Φ {#fispm-c02-tercera-limitaciuxf3n-buckingham-no-determina-ux3c6}
 
 El teorema produce: $\Phi(\Pi_1,\ldots,\Pi_k)=0,$
 
@@ -9147,7 +9147,7 @@ No determina la función: $\Psi.$
 
 []{#cuarta-capacidad-construir-semejanza}
 
-### 2.14.10. Cuarta capacidad --- construir semejanza {#fispm-c02-cuarta-capacidad-construir-semejanza}
+### Cuarta capacidad --- construir semejanza {#fispm-c02-cuarta-capacidad-construir-semejanza}
 
 Si dos sistemas preservan los mismos grupos adimensionales relevantes, pueden compararse dentro de una misma descripción reducida.
 
@@ -9167,7 +9167,7 @@ La semejanza es una de las aplicaciones más profundas del método.
 
 []{#cuarta-limitación-semejanza-dimensional-no-significa-identidad-física}
 
-### 2.14.11. Cuarta limitación --- semejanza dimensional no significa identidad física {#fispm-c02-cuarta-limitaciuxf3n-semejanza-dimensional-no-significa-identidad-fuxedsica}
+### Cuarta limitación --- semejanza dimensional no significa identidad física {#fispm-c02-cuarta-limitaciuxf3n-semejanza-dimensional-no-significa-identidad-fuxedsica}
 
 Dos sistemas pueden compartir ciertos grupos $\Pi$ y, sin embargo, diferir en:
 
@@ -9197,7 +9197,7 @@ $$\boxed{ \text{identidad física absoluta}. }$$
 
 []{#quinta-capacidad-revelar-variables-omitidas-indirectamente}
 
-### 2.14.12. Quinta capacidad --- revelar variables omitidas indirectamente {#fispm-c02-quinta-capacidad-revelar-variables-omitidas-indirectamente}
+### Quinta capacidad --- revelar variables omitidas indirectamente {#fispm-c02-quinta-capacidad-revelar-variables-omitidas-indirectamente}
 
 El análisis dimensional no puede inventar una variable que no incluimos. Pero puede producir señales de que el modelo es insuficiente. Por ejemplo, si experimentos realizados con la misma combinación dimensional predicha muestran comportamientos sistemáticamente diferentes, debemos preguntar si falta un parámetro.
 
@@ -9219,7 +9219,7 @@ Así, el fracaso de una reducción dimensional puede funcionar como herramienta 
 
 []{#quinta-limitación-ninguna-inferencia-formal-recupera-una-premisa-ausente}
 
-### 2.14.13. Quinta limitación --- ninguna inferencia formal recupera una premisa ausente {#fispm-c02-quinta-limitaciuxf3n-ninguna-inferencia-formal-recupera-una-premisa-ausente}
+### Quinta limitación --- ninguna inferencia formal recupera una premisa ausente {#fispm-c02-quinta-limitaciuxf3n-ninguna-inferencia-formal-recupera-una-premisa-ausente}
 
 Este punto merece quedar como principio final del capítulo.
 
@@ -9231,7 +9231,7 @@ Podemos escribir:
 
 []{#la-advertencia-de-zorich}
 
-### 2.14.14. La advertencia de Zorich {#fispm-c02-la-advertencia-de-zorich}
+### La advertencia de Zorich {#fispm-c02-la-advertencia-de-zorich}
 
 Zorich cierra sus ejemplos dimensionales señalando que la eficacia del método depende principalmente de comprender correctamente la naturaleza del fenómeno al que se aplica.[^40]
 
@@ -9251,7 +9251,7 @@ No basta con «hacer cuadrar las dimensiones».
 
 []{#tabla-de-decisión-del-análisis-dimensional}
 
-### 2.14.15. Tabla de decisión del análisis dimensional {#fispm-c02-tabla-de-decisiuxf3n-del-anuxe1lisis-dimensional}
+### Tabla de decisión del análisis dimensional {#fispm-c02-tabla-de-decisiuxf3n-del-anuxe1lisis-dimensional}
 
 Ante un problema nuevo, usaremos esta secuencia.
 
@@ -9271,13 +9271,13 @@ Esta tabla no es un algoritmo que reemplace el juicio físico. Es una lista de c
 
 []{#qué-distingue-una-demostración-dimensional-de-una-afirmación-física}
 
-### 2.14.16. Qué distingue una demostración dimensional de una afirmación física {#fispm-c02-quuxe9-distingue-una-demostraciuxf3n-dimensional-de-una-afirmaciuxf3n-fuxedsica}
+### Qué distingue una demostración dimensional de una afirmación física {#fispm-c02-quuxe9-distingue-una-demostraciuxf3n-dimensional-de-una-afirmaciuxf3n-fuxedsica}
 
 A lo largo de FPM mantendremos dos capas.
 
 []{#capa-matemática}
 
-#### 2.14.16.1. Capa matemática {#fispm-c02-capa-matemuxe1tica}
+#### Capa matemática {#fispm-c02-capa-matemuxe1tica}
 
 Ejemplos:
 
@@ -9293,7 +9293,7 @@ Estas conclusiones pueden demostrarse exactamente bajo hipótesis formales.
 
 []{#capa-física}
 
-#### 2.14.16.2. Capa física {#fispm-c02-capa-fuxedsica}
+#### Capa física {#fispm-c02-capa-fuxedsica}
 
 Ejemplos:
 
@@ -9311,7 +9311,7 @@ Estas afirmaciones deben justificarse físicamente. La separación no debilita e
 
 []{#exactitud-matemática-y-adecuación-física}
 
-### 2.14.17. Exactitud matemática y adecuación física {#fispm-c02-exactitud-matemuxe1tica-y-adecuaciuxf3n-fuxedsica}
+### Exactitud matemática y adecuación física {#fispm-c02-exactitud-matemuxe1tica-y-adecuaciuxf3n-fuxedsica}
 
 Volvemos así a una idea del capítulo 1.
 
@@ -9331,7 +9331,7 @@ $$\boxed{ \text{exactitud matemática relativa al modelo} \neq \text{adecuación
 
 []{#autoexplicación-final}
 
-### 2.14.18. Autoexplicación final {#fispm-c02-autoexplicaciuxf3n-final}
+### Autoexplicación final {#fispm-c02-autoexplicaciuxf3n-final}
 
 **Pausa de autoexplicación** Sin consultar las secciones anteriores, explica:
 
@@ -9349,7 +9349,7 @@ $$\boxed{ \text{exactitud matemática relativa al modelo} \neq \text{adecuación
 
 []{#práctica-final}
 
-### 2.14.19. Práctica final {#fispm-c02-pruxe1ctica-final}
+### Práctica final {#fispm-c02-pruxe1ctica-final}
 
 **Ejercicio 28 --- Auditoría integral de un modelo dimensional**
 
@@ -9373,25 +9373,25 @@ Propone además:
 
 $$\tau = \frac Lv \left[ 1+ \frac{\rho vL}{\mu} \right].$$
 
-### 2.14.20. A. Recuperación {#fispm-c02-a.-recuperaciuxf3n-6}
+### A. Recuperación {#fispm-c02-a.-recuperaciuxf3n-6}
 
 Audita dimensionalmente la fórmula.
 
-### 2.14.21. B. Consolidación {#fispm-c02-b.-consolidaciuxf3n-6}
+### B. Consolidación {#fispm-c02-b.-consolidaciuxf3n-6}
 
 Construye la matriz dimensional de: $\tau,\ L,\ v,\ \rho,\ \mu.$
 
 Determina $n$, $r$ y $n-r$.
 
-### 2.14.22. C. Buckingham {#fispm-c02-c.-buckingham}
+### C. Buckingham {#fispm-c02-c.-buckingham}
 
 Construye dos grupos adimensionales independientes y escribe la forma general que Buckingham permite para $\tau$.
 
-### 2.14.23. D. Diagnóstico {#fispm-c02-d.-diagnuxf3stico}
+### D. Diagnóstico {#fispm-c02-d.-diagnuxf3stico}
 
 Decide si la fórmula propuesta por el investigador queda demostrada por el análisis dimensional.
 
-### 2.14.24. E. Variación {#fispm-c02-e.-variaciuxf3n}
+### E. Variación {#fispm-c02-e.-variaciuxf3n}
 
 Supón que nuevos experimentos muestran que dos sistemas con el mismo valor de: $\frac{\rho vL}{\mu}$
 
@@ -9399,7 +9399,7 @@ tienen valores distintos de: $\frac{\tau v}{L}.$
 
 Da al menos tres explicaciones físicamente plausibles que deberían investigarse antes de concluir que Buckingham falla.
 
-### 2.14.25. F. Síntesis epistemológica {#fispm-c02-f.-suxedntesis-epistemoluxf3gica}
+### F. Síntesis epistemológica {#fispm-c02-f.-suxedntesis-epistemoluxf3gica}
 
 Clasifica cada afirmación como:
 
@@ -9425,13 +9425,13 @@ $$\frac{\tau v}{L} = \Psi\left( \frac{\rho vL}{\mu} \right).$$
 
 **Solución**
 
-### 2.14.26. A. Recuperación {#fispm-c02-a.-recuperaciuxf3n-7}
+### A. Recuperación {#fispm-c02-a.-recuperaciuxf3n-7}
 
 Primero: $\left[\frac Lv\right] = \frac{L}{LT^{-1}} = T.$
 
 Además: $\left[ \frac{\rho vL}{\mu} \right] = 1.$ Por tanto: $\left[ 1+\frac{\rho vL}{\mu} \right] = 1.$ Entonces: $[\tau]=T.$ La expresión es dimensionalmente homogénea.
 
-### 2.14.27. B. Consolidación {#fispm-c02-b.-consolidaciuxf3n-7}
+### B. Consolidación {#fispm-c02-b.-consolidaciuxf3n-7}
 
 En el orden $(T,L,M)$:
 
@@ -9449,7 +9449,7 @@ Por tanto:
 
 $$\boxed{ n-r=2. }$$
 
-### 2.14.28. C. Buckingham {#fispm-c02-c.-buckingham-1}
+### C. Buckingham {#fispm-c02-c.-buckingham-1}
 
 Dos grupos posibles son:
 
@@ -9469,7 +9469,7 @@ Equivalentemente:
 
 $$\boxed{ \tau = \frac Lv \Psi\left( \frac{\rho vL}{\mu} \right). }$$
 
-### 2.14.29. D. Diagnóstico {#fispm-c02-d.-diagnuxf3stico-1}
+### D. Diagnóstico {#fispm-c02-d.-diagnuxf3stico-1}
 
 La fórmula propuesta:
 
@@ -9483,7 +9483,7 @@ Por tanto:
 
 $$\boxed{ \text{la fórmula pasa el control dimensional, pero no queda demostrada por él}. }$$
 
-### 2.14.30. E. Variación {#fispm-c02-e.-variaciuxf3n-1}
+### E. Variación {#fispm-c02-e.-variaciuxf3n-1}
 
 Si dos sistemas con el mismo: $\frac{\rho vL}{\mu}$
 
@@ -9503,7 +9503,7 @@ antes de culpar al teorema debemos revisar, por ejemplo:
 
 Buckingham trabaja sobre el modelo declarado. Una discrepancia puede indicar que el modelo no contiene toda la física pertinente.
 
-### 2.14.31. F. Síntesis epistemológica {#fispm-c02-f.-suxedntesis-epistemoluxf3gica-1}
+### F. Síntesis epistemológica {#fispm-c02-f.-suxedntesis-epistemoluxf3gica-1}
 
 **1.**
 
@@ -9549,7 +9549,7 @@ $$\boxed{ \text{álgebra dimensional} \quad|\quad \text{premisas del modelo} \qu
 
 []{#mapa-final-del-capítulo}
 
-### 2.14.32. Mapa final del capítulo {#fispm-c02-mapa-final-del-capuxedtulo}
+### Mapa final del capítulo {#fispm-c02-mapa-final-del-capuxedtulo}
 
 El capítulo comenzó con una advertencia sencilla:
 
@@ -9567,7 +9567,7 @@ $$\boxed{ \text{¿qué sabemos?} \quad \text{¿qué suponemos?} \quad \text{¿qu
 
 []{#cierre-1}
 
-### 2.14.33. Cierre {#fispm-c02-cierre-1}
+### Cierre {#fispm-c02-cierre-1}
 
 El análisis dimensional es una herramienta extraordinaria porque detecta estructura sin exigir conocer todos los detalles de una teoría. Puede decir mucho con poca información. Pero no puede decir más de lo que esa información contiene.
 
@@ -9599,11 +9599,11 @@ Hasta ahora estudiamos principalmente cómo **representar y estructurar magnitud
 
 []{#bibliografía-y-fuentes-normativas}
 
-## 2.14. Bibliografía y fuentes normativas {#fispm-c02-bibliografuxeda-y-fuentes-normativas .unnumbered}
+## Bibliografía y fuentes normativas {#fispm-c02-bibliografuxeda-y-fuentes-normativas .unnumbered}
 
 []{#fuentes-normativas}
 
-### 2.14.34. Fuentes normativas {#fispm-c02-fuentes-normativas}
+### Fuentes normativas {#fispm-c02-fuentes-normativas}
 
 **Bureau International des Poids et Mesures (BIPM).** *The International System of Units (SI)*. 9.ª edición, versión 4.01, junio de 2026. DOI: 10.59161/AUEZ1291. Se utilizaron especialmente §§2.1--2.3.4, capítulo 3 y §5.4.7.
 
@@ -9613,7 +9613,7 @@ Hasta ahora estudiamos principalmente cómo **representar y estructurar magnitud
 
 []{#fuentes-matemático-físicas}
 
-### 2.14.35. Fuentes matemático-físicas {#fispm-c02-fuentes-matemuxe1tico-fuxedsicas}
+### Fuentes matemático-físicas {#fispm-c02-fuentes-matemuxe1tico-fuxedsicas}
 
 **Zorich, Vladimir.** *Mathematical Analysis of Problems in the Natural Sciences*. Springer, 2011. DOI: 10.1007/978-3-642-14813-2. Parte I, especialmente cap. 1, §§1.1--1.3, pp. 5--10; cap. 2, pp. 11--21.
 

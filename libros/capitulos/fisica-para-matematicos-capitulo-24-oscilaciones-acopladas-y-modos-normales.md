@@ -47,7 +47,7 @@ Trabajaremos con un número finito de grados de libertad, masas constantes y fue
 
 []{#fpm-i-24-s01}
 
-## 24.1. Un aparato con dos movimientos simples {#fispm-c24-un-aparato-con-dos-movimientos-simples}
+## 1. Un aparato con dos movimientos simples {#fispm-c24-un-aparato-con-dos-movimientos-simples}
 
 Sean dos masas iguales $m>0$ sobre una guía horizontal sin rozamiento. Cada una está conectada a una pared mediante un resorte de rigidez $k>0$, y un resorte de rigidez $\kappa\ge0$ une las masas. Medimos sus desplazamientos desde el equilibrio con coordenadas $x_1,x_2$ positivas hacia la derecha. La deformación adicional del resorte intermedio es $x_2-x_1$.
 
@@ -59,7 +59,7 @@ Sean dos masas iguales $m>0$ sobre una guía horizontal sin rozamiento. Cada una
 
 <figcaption>
 
-**Figura 24.1.** Dos masas iguales unidas por tres resortes iguales tienen matriz de rigidez $k\left(\begin{smallmatrix}2&-1\\-1&2\end{smallmatrix}\right)$. Las posiciones se miden desde el equilibrio. Véase §[24.1](#fispm-c24-un-aparato-con-dos-movimientos-simples).
+**Figura 24.1.** Dos masas iguales unidas por tres resortes iguales tienen matriz de rigidez $k\left(\begin{smallmatrix}2&-1\\-1&2\end{smallmatrix}\right)$. Las posiciones se miden desde el equilibrio. Véase §[1](#fispm-c24-un-aparato-con-dos-movimientos-simples).
 
 </figcaption>
 
@@ -99,7 +99,7 @@ En el primer modo el resorte intermedio conserva su longitud; por eso $\omega_-$
 
 []{#fpm-i-24-s02}
 
-## 24.2. Soltar una sola masa {#fispm-c24-soltar-una-sola-masa}
+## 2. Soltar una sola masa {#fispm-c24-soltar-una-sola-masa}
 
 Tomemos $x_1(0)=A$, $x_2(0)=0$ y velocidades iniciales nulas. Aquí $s(0)=a(0)=A/2$. Por capítulo 23,
 
@@ -115,7 +115,7 @@ La masa inicialmente quieta empieza a moverse porque el resorte intermedio trans
 
 <figcaption>
 
-**Figura 24.2.** Al soltar sólo la primera masa, con $m=k=1$ y velocidades nulas, $x_1=(\cos t+\cos\sqrt3t)/2$ y $x_2=(\cos t-\cos\sqrt3t)/2$. Continua: primera masa; discontinua: segunda. Véase §[24.2](#fispm-c24-soltar-una-sola-masa).
+**Figura 24.2.** Al soltar sólo la primera masa, con $m=k=1$ y velocidades nulas, $x_1=(\cos t+\cos\sqrt3t)/2$ y $x_2=(\cos t-\cos\sqrt3t)/2$. Continua: primera masa; discontinua: segunda. Véase §[2](#fispm-c24-soltar-una-sola-masa).
 
 </figcaption>
 
@@ -139,7 +139,7 @@ La superposición ofrece una descripción exacta incluso cuando la imagen de «e
 
 []{#fpm-i-24-s03}
 
-## 24.3. Organizar las fuerzas en una matriz {#fispm-c24-organizar-las-fuerzas-en-una-matriz}
+## 3. Organizar las fuerzas en una matriz {#fispm-c24-organizar-las-fuerzas-en-una-matriz}
 
 Para $n$ desplazamientos reunimos las coordenadas en una columna $x=(x_1,\ldots,x_n)^T$. Si cada coordenada es la posición de una masa sobre una guía, la inercia se representa mediante $M=\operatorname{diag}(m_1,\ldots,m_n)$, con $m_i>0$. Las ecuaciones toman la forma $M\ddot x+Kx=0.$
 
@@ -171,7 +171,7 @@ La simetría de $K$ expresa aquí que el acoplamiento se obtiene de un potencial
 
 []{#fpm-i-24-s04}
 
-## 24.4. Un problema de autovalores con masas {#fispm-c24-un-problema-de-autovalores-con-masas}
+## 4. Un problema de autovalores con masas {#fispm-c24-un-problema-de-autovalores-con-masas}
 
 Insertar un movimiento $x=u\cos(\omega t)$ en la ecuación matricial da $Ku=\omega^2Mu.$
 
@@ -195,7 +195,7 @@ La matriz $M^{-1}K$ tiene esos autovalores, pero en general no es simétrica en 
 
 []{#fpm-i-24-s05}
 
-## 24.5. Hacer euclídea la energía cinética {#fispm-c24-hacer-eucluxeddea-la-energuxeda-cinuxe9tica}
+## 5. Hacer euclídea la energía cinética {#fispm-c24-hacer-eucluxeddea-la-energuxeda-cinuxe9tica}
 
 Toda matriz simétrica definida positiva tiene una raíz cuadrada simétrica definida positiva. Para construirla, diagonalizamos $M=O\operatorname{diag}(m_j)O^T$, con $O$ ortogonal y $m_j>0$, y ponemos $M^{1/2}=O\operatorname{diag}(\sqrt{m_j})O^T$. Su inversa es $M^{-1/2}$.
 
@@ -223,7 +223,7 @@ La normalización cambia la escala de las coordenadas modales. Si $x$ se mide en
 
 []{#fpm-i-24-s06}
 
-## 24.6. Desacoplar la evolución y sus datos {#fispm-c24-desacoplar-la-evoluciuxf3n-y-sus-datos}
+## 6. Desacoplar la evolución y sus datos {#fispm-c24-desacoplar-la-evoluciuxf3n-y-sus-datos}
 
 []{#fispm-t1-c24-d0004}
 
@@ -261,7 +261,7 @@ Un estado inicial puramente modal exige que tanto $x_0$ como $v_0$ pertenezcan a
 
 <figcaption>
 
-**Figura 24.3.** El modo en fase tiene $\omega_+^2=k/m$; el modo en oposición, $\omega_-^2=3k/m$. El signo global del autovector es arbitrario. Las flechas son desplazamientos modales. Véase §[24.6](#fispm-c24-desacoplar-la-evoluciuxf3n-y-sus-datos).
+**Figura 24.3.** El modo en fase tiene $\omega_+^2=k/m$; el modo en oposición, $\omega_-^2=3k/m$. El signo global del autovector es arbitrario. Las flechas son desplazamientos modales. Véase §[6](#fispm-c24-desacoplar-la-evoluciuxf3n-y-sus-datos).
 
 </figcaption>
 
@@ -273,7 +273,7 @@ Un estado inicial puramente modal exige que tanto $x_0$ como $v_0$ pertenezcan a
 
 []{#fpm-i-24-s07}
 
-## 24.7. Qué cambia cuando las masas son diferentes {#fispm-c24-quuxe9-cambia-cuando-las-masas-son-diferentes}
+## 7. Qué cambia cuando las masas son diferentes {#fispm-c24-quuxe9-cambia-cuando-las-masas-son-diferentes}
 
 Consideremos $M=\operatorname{diag}(1,2)$ y
 
@@ -303,7 +303,7 @@ Un modo se puede representar mediante una forma sencilla sin normalizar cuando i
 
 []{#fpm-i-24-s08}
 
-## 24.8. Estabilidad, frecuencias nulas y direcciones inestables {#fispm-c24-estabilidad-frecuencias-nulas-y-direcciones-inestables}
+## 8. Estabilidad, frecuencias nulas y direcciones inestables {#fispm-c24-estabilidad-frecuencias-nulas-y-direcciones-inestables}
 
 La positividad del potencial tiene una consecuencia dinámica precisa en el modelo lineal. Como $K$ y $D$ están relacionadas por una congruencia invertible, $K$ es definida positiva exactamente cuando todos los autovalores de $D$ son positivos. En ese caso cada coordenada normal oscila.
 
@@ -329,7 +329,7 @@ Cuando $K$ es el Hessiano de un potencial no lineal, un autovalor nulo sólo inf
 
 []{#fpm-i-24-s09}
 
-## 24.9. De un potencial a su aproximación modal {#fispm-c24-de-un-potencial-a-su-aproximaciuxf3n-modal}
+## 9. De un potencial a su aproximación modal {#fispm-c24-de-un-potencial-a-su-aproximaciuxf3n-modal}
 
 Sea $V$ un potencial de clase $C^3$ cerca de un equilibrio $q_*\in\mathbb R^n$, con $\nabla V(q_*)=0$. Pongamos $x=q-q_*$. Su Hessiano en el equilibrio es la matriz simétrica $K=\nabla^2V(q_*)$ y Taylor da $\nabla V(q_*+x)=Kx+R(x),\qquad \|R(x)\|\le C\|x\|^2$
 
@@ -355,7 +355,7 @@ Si se aumenta la rigidez mediante una matriz simétrica semidefinida positiva $B
 
 []{#fpm-i-24-s10}
 
-## 24.10. Degeneración y simetría {#fispm-c24-degeneraciuxf3n-y-simetruxeda}
+## 10. Degeneración y simetría {#fispm-c24-degeneraciuxf3n-y-simetruxeda}
 
 Dos modos diferentes pueden tener la misma frecuencia. En ese caso no hay una única elección de ejes normales dentro de su espacio propio.
 
@@ -383,7 +383,7 @@ Para el aparato de §1, $P$ intercambia ambas masas. Sus subespacios son las for
 
 []{#fpm-i-24-s11}
 
-## 24.11. Energía de los modos y energía de las masas {#fispm-c24-energuxeda-de-los-modos-y-energuxeda-de-las-masas}
+## 11. Energía de los modos y energía de las masas {#fispm-c24-energuxeda-de-los-modos-y-energuxeda-de-las-masas}
 
 En un sistema libre conservativo las energías modales permanecen constantes. Aun así, la energía asociada a una región del aparato puede variar. Son descomposiciones diferentes del mismo balance.
 
@@ -395,7 +395,7 @@ En un sistema libre conservativo las energías modales permanecen constantes. Au
 
 <figcaption>
 
-**Figura 24.4.** En un esquema de batidos, dos contribuciones locales pueden intercambiarse como $\cos^2(u/2)$ y $\sin^2(u/2)$ mientras su suma permanece uno. Es una ilustración normalizada del intercambio; no identifica cada curva con la energía modal conservada del sistema general. Véase §[24.11](#fispm-c24-energuxeda-de-los-modos-y-energuxeda-de-las-masas).
+**Figura 24.4.** En un esquema de batidos, dos contribuciones locales pueden intercambiarse como $\cos^2(u/2)$ y $\sin^2(u/2)$ mientras su suma permanece uno. Es una ilustración normalizada del intercambio; no identifica cada curva con la energía modal conservada del sistema general. Véase §[11](#fispm-c24-energuxeda-de-los-modos-y-energuxeda-de-las-masas).
 
 </figcaption>
 
@@ -423,7 +423,7 @@ La transferencia exacta también puede ocurrir en casos especiales. Si $\omega_+
 
 []{#fpm-i-24-s12}
 
-## 24.12. Fuerzas que seleccionan modos {#fispm-c24-fuerzas-que-seleccionan-modos}
+## 12. Fuerzas que seleccionan modos {#fispm-c24-fuerzas-que-seleccionan-modos}
 
 Con una fuerza exterior vectorial $f(t)$, la ecuación es $M\ddot x+Kx=f(t)$. La transformación modal da $\ddot Q_j+\lambda_jQ_j=f_j(t),\qquad f_j(t)=u_j^Tf(t).$ La proyección de la fuerza no lleva un factor adicional $M$: surge al multiplicar el balance original por $U^T$. La proyección del desplazamiento sí lo lleva, porque $Q=U^TMx$. Ambas fórmulas responden a operaciones diferentes.
 
@@ -445,7 +445,7 @@ En el aparato simétrico, fuerzas iguales sobre ambas masas excitan sólo la for
 
 []{#fpm-i-24-s13}
 
-## 24.13. Cuándo el amortiguamiento conserva el desacoplamiento {#fispm-c24-cuuxe1ndo-el-amortiguamiento-conserva-el-desacoplamiento}
+## 13. Cuándo el amortiguamiento conserva el desacoplamiento {#fispm-c24-cuuxe1ndo-el-amortiguamiento-conserva-el-desacoplamiento}
 
 Añadamos una fuerza resistente $-C\dot x$, con $C$ simétrica semidefinida positiva: $M\ddot x+C\dot x+Kx=f(t).$ El balance pasa a ser $\dot E=\dot x^Tf-\dot x^TC\dot x$. La pasividad de la resistencia se reconoce en el signo del segundo término. En coordenadas normales aparece
 
@@ -471,7 +471,7 @@ La positividad de $C$ garantiza disipación, pero no basta para garantizar atrac
 
 []{#fpm-i-24-s14}
 
-## 24.14. Una cadena finita y el horizonte de las ondas {#fispm-c24-una-cadena-finita-y-el-horizonte-de-las-ondas}
+## 14. Una cadena finita y el horizonte de las ondas {#fispm-c24-una-cadena-finita-y-el-horizonte-de-las-ondas}
 
 Consideremos $N$ masas iguales $m$ y $N+1$ resortes iguales $k$ entre dos extremos fijos. Sean $x_0=x_{N+1}=0$ las condiciones de borde. Para las masas móviles, $m\ddot x_j=k(x_{j-1}-2x_j+x_{j+1}),\qquad 1\le j\le N.$
 
@@ -493,7 +493,7 @@ Si la separación entre masas es $h$, la combinación de parámetros $h\sqrt{k/m
 
 []{#ejercicios}
 
-## 24.15. Ejercicios {#fispm-c24-ejercicios}
+## 15. Ejercicios {#fispm-c24-ejercicios}
 
 []{#fispm-t1-c24-e0001}
 
@@ -677,7 +677,7 @@ En un sistema con $K$ definida positiva, base modal normalizada $u_j$ y frecuenc
 
 []{#soluciones}
 
-## 24.16. Soluciones {#fispm-c24-soluciones}
+## 16. Soluciones {#fispm-c24-soluciones}
 
 **Solución del ejercicio 24.1.**
 
@@ -829,7 +829,7 @@ Para que aparezca ese crecimiento deben ser no nulos ambos factores: $u_j^Tg$ pe
 
 []{#notas-y-lecturas}
 
-## 24.16. Notas y lecturas {#fispm-c24-notas-y-lecturas .unnumbered}
+## Notas y lecturas {#fispm-c24-notas-y-lecturas .unnumbered}
 
 1.  La lección 4 del curso de Yen-Jie Lee, *Physics III: Vibrations and Waves*, MIT OpenCourseWare, otoño de 2016, presenta osciladores acoplados y modos normales mediante aparatos simétricos. Ofrece una lectura complementaria a la construcción inicial de este capítulo. [Página oficial de la lección](https://ocw.mit.edu/courses/8-03sc-physics-iii-vibrations-and-waves-fall-2016/pages/part-i-mechanical-vibrations-and-waves/lecture-4/).
 

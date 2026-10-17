@@ -35,7 +35,7 @@ number-sections: false
 
 []{#prerrequisitos-y-propósito}
 
-## 9.0. Prerrequisitos y propósito {#fispm-c09-prerrequisitos-y-propuxf3sito .unnumbered}
+## Prerrequisitos y propósito {#fispm-c09-prerrequisitos-y-propuxf3sito .unnumbered}
 
 Se utilizan las historias y derivadas del capítulo 5, las aproximaciones del capítulo 6 y la reconstrucción cinemática y los cambios de marco del capítulo 7--08. La matemática requerida es M2--M3 y M6 elemental: vectores, normas, derivadas, integrales y la formulación de ecuaciones diferenciales. El capítulo introduce el estado, demuestra existencia y unicidad local bajo condiciones explícitas y distingue esas propiedades de la adecuación física del modelo.
 
@@ -49,7 +49,7 @@ Las leyes particulares de gravedad uniforme, contacto, tensión, fricción, resi
 
 []{#fpm-i-09-s01}
 
-## 9.1. De una historia observada a una pregunta dinámica {#fispm-c09-de-una-historia-observada-a-una-pregunta-dinuxe1mica}
+## 1. De una historia observada a una pregunta dinámica {#fispm-c09-de-una-historia-observada-a-una-pregunta-dinuxe1mica}
 
 Un carro recorre una pista casi horizontal. Durante unos segundos su velocidad parece constante; después aumenta y finalmente disminuye. El capítulo 7 permite describir los tres tramos y estimar sus aceleraciones. Pero una gráfica de posición, por completa que sea, no explica por qué cambió la velocidad. Para responder necesitamos información sobre el carro, sobre su entorno y sobre las interacciones que actuaron durante cada tramo.
 
@@ -79,7 +79,7 @@ El argumento no acredita que cada contribución construida corresponda a una int
 
 []{#ejercicios}
 
-### 9.1.1. Ejercicios {#fispm-c09-ejercicios}
+### Ejercicios {#fispm-c09-ejercicios}
 
 []{#fispm-t1-c09-e0001}
 
@@ -101,7 +101,7 @@ El argumento no acredita que cada contribución construida corresponda a una int
 
 []{#fpm-i-09-s02}
 
-## 9.2. Inercia y elección del marco {#fispm-c09-inercia-y-elecciuxf3n-del-marco}
+## 2. Inercia y elección del marco {#fispm-c09-inercia-y-elecciuxf3n-del-marco}
 
 Una partícula sin interacciones apreciables no necesita una intervención permanente para conservar su velocidad. Esta afirmación puede resultar poco intuitiva porque muchos objetos cotidianos se frenan. Un carro sobre una pista pierde velocidad al interactuar con la pista y con el aire; reducir esas influencias prolonga el movimiento aproximadamente uniforme. La extrapolación a un cuerpo aislado pertenece al modelo físico, no a una identidad del cálculo diferencial.
 
@@ -131,7 +131,7 @@ Una mesa de laboratorio puede constituir un marco aproximadamente inercial en un
 
 []{#ejercicios-1}
 
-### 9.2.1. Ejercicios {#fispm-c09-ejercicios-1}
+### Ejercicios {#fispm-c09-ejercicios-1}
 
 []{#fispm-t1-c09-e0003}
 
@@ -151,7 +151,7 @@ Una mesa de laboratorio puede constituir un marco aproximadamente inercial en un
 
 []{#fpm-i-09-s03}
 
-## 9.3. Masa inercial y comparación de respuestas {#fispm-c09-masa-inercial-y-comparaciuxf3n-de-respuestas}
+## 3. Masa inercial y comparación de respuestas {#fispm-c09-masa-inercial-y-comparaciuxf3n-de-respuestas}
 
 Dos carros reciben una intervención reproducible y sus aceleraciones iniciales son diferentes. Un modo de organizar esa diferencia consiste en asignar a cada carro una masa inercial: para una misma fuerza resultante, el cuerpo con mayor masa tiene menor aceleración. El adjetivo «inercial» recuerda que hablamos de respuesta a un cambio de velocidad, no de cuánto pesa el cuerpo en un lugar determinado.[^2]
 
@@ -163,7 +163,7 @@ Dos carros reciben una intervención reproducible y sus aceleraciones iniciales 
 
 <figcaption>
 
-**Figura 9.1.** Una misma fuerza sobre dos cuerpos separados de masas $m$ y $2m$ produce aceleraciones en razón dos a uno. Cada dibujo contiene la única fuerza externa supuesta. Véase §[9.3](#fispm-c09-masa-inercial-y-comparaciuxf3n-de-respuestas).
+**Figura 9.1.** Una misma fuerza sobre dos cuerpos separados de masas $m$ y $2m$ produce aceleraciones en razón dos a uno. Cada dibujo contiene la única fuerza externa supuesta. Véase §[3](#fispm-c09-masa-inercial-y-comparaciuxf3n-de-respuestas).
 
 </figcaption>
 
@@ -193,7 +193,7 @@ La unidad SI de masa es el kilogramo, simbolizado $\mathrm{kg}$. Esta unidad no 
 
 []{#ejercicios-2}
 
-### 9.3.1. Ejercicios {#fispm-c09-ejercicios-2}
+### Ejercicios {#fispm-c09-ejercicios-2}
 
 []{#fispm-t1-c09-e0005}
 
@@ -213,7 +213,7 @@ La unidad SI de masa es el kilogramo, simbolizado $\mathrm{kg}$. Esta unidad no 
 
 []{#fpm-i-09-s04}
 
-## 9.4. Fuerza, agente y resultante {#fispm-c09-fuerza-agente-y-resultante}
+## 4. Fuerza, agente y resultante {#fispm-c09-fuerza-agente-y-resultante}
 
 Decir que un cuerpo está sometido a una fuerza exige más información que dar un número. Hay que identificar el cuerpo receptor, el agente que actúa sobre él, la dirección del vector y las condiciones bajo las que la interacción tiene el valor propuesto. Una fuerza de magnitud $5\,\mathrm N$ puede aumentar una componente de velocidad, reducirla o cambiar sólo la dirección instantánea del movimiento, según su orientación y el estado del cuerpo.
 
@@ -243,7 +243,7 @@ Para predecir una historia necesitaremos además una regla que evalúe la fuerza
 
 []{#ejercicios-3}
 
-### 9.4.1. Ejercicios {#fispm-c09-ejercicios-3}
+### Ejercicios {#fispm-c09-ejercicios-3}
 
 []{#fispm-t1-c09-e0007}
 
@@ -263,7 +263,7 @@ Para predecir una historia necesitaremos además una regla que evalúe la fuerza
 
 []{#fpm-i-09-s05}
 
-## 9.5. Segunda ley y contenido de una ley de interacción {#fispm-c09-segunda-ley-y-contenido-de-una-ley-de-interacciuxf3n}
+## 5. Segunda ley y contenido de una ley de interacción {#fispm-c09-segunda-ley-y-contenido-de-una-ley-de-interacciuxf3n}
 
 Ya disponemos de una clase de marcos, una escala de masas y una representación vectorial de las interacciones. La segunda ley reúne esas piezas. En su forma de masa constante se escribe como una relación entre la resultante sobre una partícula y su aceleración respecto de un marco inercial.
 
@@ -293,7 +293,7 @@ La primera ley aporta la selección del marco y la existencia física de movimie
 
 []{#ejercicios-4}
 
-### 9.5.1. Ejercicios {#fispm-c09-ejercicios-4}
+### Ejercicios {#fispm-c09-ejercicios-4}
 
 **Ejercicio 9.9.** Una partícula tiene masa $2\,\mathrm{kg}$, velocidad instantánea $(3,4)\,\mathrm{m\,s^{-1}}$ y resultante $(8,-6)\,\mathrm N$. Calcula su aceleración y la derivada instantánea de su rapidez. ¿Es uniforme su velocidad?
 
@@ -311,7 +311,7 @@ La primera ley aporta la selección del marco y la existencia física de movimie
 
 []{#fpm-i-09-s06}
 
-## 9.6. Componentes y reconstrucción con fuerza prescrita {#fispm-c09-componentes-y-reconstrucciuxf3n-con-fuerza-prescrita}
+## 6. Componentes y reconstrucción con fuerza prescrita {#fispm-c09-componentes-y-reconstrucciuxf3n-con-fuerza-prescrita}
 
 Para pasar de la ley vectorial al cálculo conviene conservar una distinción del capítulo 8: las componentes cartesianas en una base fija se derivan sin términos adicionales, mientras que una base móvil exige derivar también sus vectores. Trabajaremos primero en una base ortonormal fija de un marco inercial. Si $\mathbf r=\sum_i x_i e_i$ y $\mathbf F=\sum_i F_i e_i$, la segunda ley equivale a $mx_i''=F_i$ para cada $i$.
 
@@ -337,7 +337,7 @@ Cuando $\mathbf f$ es constante obtenemos la historia cuadrática $\mathbf r=\ma
 
 []{#ejercicios-5}
 
-### 9.6.1. Ejercicios {#fispm-c09-ejercicios-5}
+### Ejercicios {#fispm-c09-ejercicios-5}
 
 []{#fispm-t1-c09-e0011}
 
@@ -357,7 +357,7 @@ Cuando $\mathbf f$ es constante obtenemos la historia cuadrática $\mathbf r=\ma
 
 []{#fpm-i-09-s07}
 
-## 9.7. Tercera ley y parejas de interacción {#fispm-c09-tercera-ley-y-parejas-de-interacciuxf3n}
+## 7. Tercera ley y parejas de interacción {#fispm-c09-tercera-ley-y-parejas-de-interacciuxf3n}
 
 Si dos cuerpos interactúan, la descripción de uno solo deja fuera una parte de la escena. Una fuerza que atribuimos a $B$ sobre $A$ tiene, en el modelo newtoniano de interacción por pares que adoptaremos, una pareja que actúa sobre $B$. Las magnitudes son iguales y los sentidos opuestos, pero los receptores son distintos. Esta última precisión explica por qué la tercera ley no obliga a que cada cuerpo tenga aceleración nula.[^5]
 
@@ -369,7 +369,7 @@ Si dos cuerpos interactúan, la descripción de uno solo deja fuera una parte de
 
 <figcaption>
 
-**Figura 9.2.** Las fuerzas internas $f$ y $-f$ se cancelan al sumar los balances de $A$ y $B$. La fuerza externa queda en $\dot P=F_{\rm ext}$. La frontera discontinua declara qué cuerpos se han incluido; cada balance individual conserva su fuerza interna. Véase §[9.7](#fispm-c09-tercera-ley-y-parejas-de-interacciuxf3n).
+**Figura 9.2.** Las fuerzas internas $f$ y $-f$ se cancelan al sumar los balances de $A$ y $B$. La fuerza externa queda en $\dot P=F_{\rm ext}$. La frontera discontinua declara qué cuerpos se han incluido; cada balance individual conserva su fuerza interna. Véase §[7](#fispm-c09-tercera-ley-y-parejas-de-interacciuxf3n).
 
 </figcaption>
 
@@ -383,7 +383,7 @@ Si dos cuerpos interactúan, la descripción de uno solo deja fuera una parte de
 
 <figcaption>
 
-**Figura 9.3.** Las fuerzas de la pareja actúan sobre cuerpos distintos y son opuestas. No se cancelan en el balance de cada cuerpo por separado; sí en el del sistema $A+B$. Véase §[9.7](#fispm-c09-tercera-ley-y-parejas-de-interacciuxf3n).
+**Figura 9.3.** Las fuerzas de la pareja actúan sobre cuerpos distintos y son opuestas. No se cancelan en el balance de cada cuerpo por separado; sí en el del sistema $A+B$. Véase §[7](#fispm-c09-tercera-ley-y-parejas-de-interacciuxf3n).
 
 </figcaption>
 
@@ -415,7 +415,7 @@ El alcance del postulado también debe conservarse. Usaremos modelos de interacc
 
 []{#ejercicios-6}
 
-### 9.7.1. Ejercicios {#fispm-c09-ejercicios-6}
+### Ejercicios {#fispm-c09-ejercicios-6}
 
 []{#fispm-t1-c09-e0013}
 
@@ -435,7 +435,7 @@ El alcance del postulado también debe conservarse. Usaremos modelos de interacc
 
 []{#fpm-i-09-s08}
 
-## 9.8. Estado, ecuación de movimiento y datos iniciales {#fispm-c09-estado-ecuaciuxf3n-de-movimiento-y-datos-iniciales}
+## 8. Estado, ecuación de movimiento y datos iniciales {#fispm-c09-estado-ecuaciuxf3n-de-movimiento-y-datos-iniciales}
 
 Cuando una fuerza depende de la posición o de la velocidad, la ecuación de Newton deja de ser una instrucción para integrar una función temporal conocida. Se convierte en una relación que la historia desconocida debe satisfacer. El cálculo de una trayectoria pasa entonces por un problema de ecuaciones diferenciales: necesitamos saber qué variables evolucionan, cuál es la regla de evolución y qué datos fijan el movimiento que interesa.
 
@@ -447,7 +447,7 @@ Cuando una fuerza depende de la posición o de la velocidad, la ecuación de New
 
 <figcaption>
 
-**Figura 9.4.** En el movimiento libre, cada recta horizontal del plano $(x,v)$ conserva una velocidad. Conocer sólo $x$ deja muchos estados posibles; especificar $(x_0,v_0)$ selecciona una trayectoria del sistema de primer orden. Véase §[9.8](#fispm-c09-estado-ecuaciuxf3n-de-movimiento-y-datos-iniciales).
+**Figura 9.4.** En el movimiento libre, cada recta horizontal del plano $(x,v)$ conserva una velocidad. Conocer sólo $x$ deja muchos estados posibles; especificar $(x_0,v_0)$ selecciona una trayectoria del sistema de primer orden. Véase §[8](#fispm-c09-estado-ecuaciuxf3n-de-movimiento-y-datos-iniciales).
 
 </figcaption>
 
@@ -489,7 +489,7 @@ La suficiencia del estado también pertenece al modelo. Si una fuerza depende de
 
 []{#ejercicios-7}
 
-### 9.8.1. Ejercicios {#fispm-c09-ejercicios-7}
+### Ejercicios {#fispm-c09-ejercicios-7}
 
 []{#fispm-t1-c09-e0015}
 
@@ -511,7 +511,7 @@ Las ocho secciones fijan ahora el lenguaje necesario para continuar: sistema y e
 
 []{#fpm-i-09-s09}
 
-## 9.9. Regularidad de la fuerza y unicidad local {#fispm-c09-regularidad-de-la-fuerza-y-unicidad-local}
+## 9. Regularidad de la fuerza y unicidad local {#fispm-c09-regularidad-de-la-fuerza-y-unicidad-local}
 
 La palabra «determinismo» resume una expectativa: una vez fijados el modelo y el estado inicial, la evolución no debería admitir elecciones adicionales. En §8 aprendimos a formular esa expectativa como un problema de valores iniciales. Nos falta justificarla. La segunda ley no impone por sí sola cuán regular es la función de fuerza, y distintas funciones continuas pueden conducir a comportamientos matemáticos diferentes.
 
@@ -543,7 +543,7 @@ La prueba es una forma elemental de la desigualdad de Gronwall. Su interés fís
 
 []{#ejercicios-8}
 
-### 9.9.1. Ejercicios {#fispm-c09-ejercicios-8}
+### Ejercicios {#fispm-c09-ejercicios-8}
 
 []{#fispm-t1-c09-e0017}
 
@@ -563,7 +563,7 @@ La prueba es una forma elemental de la desigualdad de Gronwall. Su interés fís
 
 []{#fpm-i-09-s10}
 
-## 9.10. Existencia local, prolongación y frontera del dominio {#fispm-c09-existencia-local-prolongaciuxf3n-y-frontera-del-dominio}
+## 10. Existencia local, prolongación y frontera del dominio {#fispm-c09-existencia-local-prolongaciuxf3n-y-frontera-del-dominio}
 
 Una prueba de unicidad responde qué ocurriría si dos soluciones existieran. No construye una. Para completar el determinismo local necesitaremos producir al menos una historia que satisfaga la ecuación y el dato inicial. La forma integral de §8 sugiere un procedimiento: comenzar con una historia sencilla, evaluar en ella el campo y usar esa integral para mejorar la historia. La regularidad nos permitirá controlar las diferencias entre mejoras sucesivas.
 
@@ -597,7 +597,7 @@ La construcción asegura un tiempo pequeño, no el mayor tiempo posible. Las res
 
 []{#ejercicios-9}
 
-### 9.10.1. Ejercicios {#fispm-c09-ejercicios-9}
+### Ejercicios {#fispm-c09-ejercicios-9}
 
 []{#fispm-t1-c09-e0019}
 
@@ -617,7 +617,7 @@ La construcción asegura un tiempo pequeño, no el mayor tiempo posible. Las res
 
 []{#fpm-i-09-s11}
 
-## 9.11. Cambios galileanos y covariancia del modelo {#fispm-c09-cambios-galileanos-y-covariancia-del-modelo}
+## 11. Cambios galileanos y covariancia del modelo {#fispm-c09-cambios-galileanos-y-covariancia-del-modelo}
 
 La primera ley admite una familia de marcos inerciales relacionados por traslaciones uniformes y cambios fijos de orientación. La segunda ley debe leerse con esa libertad en mente. Dos observadores pueden atribuir velocidades diferentes a una misma partícula, sin discrepar acerca de su aceleración vectorial después de traducir componentes. Pero una función de fuerza que depende de la velocidad también necesita transformarse: la igualdad de aceleraciones no autoriza a conservar sin examen la misma expresión del lado derecho.
 
@@ -629,7 +629,7 @@ La primera ley admite una familia de marcos inerciales relacionados por traslaci
 
 <figcaption>
 
-**Figura 9.5.** Para un movimiento uniforme $X=2u$, el marco que avanza con velocidad normalizada uno mide $X\prime=u$. Las pendientes cambian; la aceleración es cero en ambos marcos. Véase §[9.11](#fispm-c09-cambios-galileanos-y-covariancia-del-modelo).
+**Figura 9.5.** Para un movimiento uniforme $X=2u$, el marco que avanza con velocidad normalizada uno mide $X\prime=u$. Las pendientes cambian; la aceleración es cero en ambos marcos. Véase §[11](#fispm-c09-cambios-galileanos-y-covariancia-del-modelo).
 
 </figcaption>
 
@@ -659,7 +659,7 @@ La hipótesis acerca de $\Phi_{ij}$ no se deduce de que la fuerza sea un vector.
 
 []{#ejercicios-10}
 
-### 9.11.1. Ejercicios {#fispm-c09-ejercicios-10}
+### Ejercicios {#fispm-c09-ejercicios-10}
 
 []{#fispm-t1-c09-e0021}
 
@@ -685,7 +685,7 @@ La hipótesis acerca de $\Phi_{ij}$ no se deduce de que la fuerza sea un vector.
 
 []{#fpm-i-09-s12}
 
-## 9.12. Equilibrio, reposo y movimiento uniforme {#fispm-c09-equilibrio-reposo-y-movimiento-uniforme}
+## 12. Equilibrio, reposo y movimiento uniforme {#fispm-c09-equilibrio-reposo-y-movimiento-uniforme}
 
 Un cuerpo que se detiene por un instante puede empezar a moverse de inmediato. Un cuerpo que tiene aceleración cero en cierto instante puede tener aceleración no nula un momento después. Y un cuerpo cuya resultante se anula durante un intervalo puede estar moviéndose uniformemente. Las tres afirmaciones son compatibles con Newton; la confusión aparece cuando una condición puntual se interpreta como una historia completa.
 
@@ -715,7 +715,7 @@ En un sistema de varias partículas, que se anule la suma de fuerzas externas no
 
 []{#ejercicios-11}
 
-### 9.12.1. Ejercicios {#fispm-c09-ejercicios-11}
+### Ejercicios {#fispm-c09-ejercicios-11}
 
 []{#fispm-t1-c09-e0024}
 
@@ -735,7 +735,7 @@ En un sistema de varias partículas, que se anule la suma de fuerzas externas no
 
 []{#fpm-i-09-s13}
 
-## 9.13. Reconstrucción dinámica y contraste de modelos {#fispm-c09-reconstrucciuxf3n-dinuxe1mica-y-contraste-de-modelos}
+## 13. Reconstrucción dinámica y contraste de modelos {#fispm-c09-reconstrucciuxf3n-dinuxe1mica-y-contraste-de-modelos}
 
 Una ecuación bien planteada puede producir una solución única y, aun así, describir mal el experimento. La existencia y unicidad pertenecen a la estructura matemática del modelo; su adecuación física exige confrontar las interacciones propuestas con información independiente. Ahora reuniremos esa distinción con los problemas inversos de §1 y con el control de aproximaciones del capítulo 6.
 
@@ -771,7 +771,7 @@ El resultado es una obstrucción de identificación, no una propuesta de nuevos 
 
 []{#ejercicios-12}
 
-### 9.13.1. Ejercicios {#fispm-c09-ejercicios-12}
+### Ejercicios {#fispm-c09-ejercicios-12}
 
 []{#fispm-t1-c09-e0026}
 
@@ -797,7 +797,7 @@ El resultado es una obstrucción de identificación, no una propuesta de nuevos 
 
 []{#fpm-i-09-s14}
 
-## 9.14. Síntesis de un problema newtoniano completo {#fispm-c09-suxedntesis-de-un-problema-newtoniano-completo}
+## 14. Síntesis de un problema newtoniano completo {#fispm-c09-suxedntesis-de-un-problema-newtoniano-completo}
 
 Podemos ahora recorrer un problema desde sus hipótesis hasta su predicción sin confundir los niveles. Elegimos una partícula, un marco inercial y una masa constante. Especificamos una ley de fuerza y los parámetros de su entorno. Comprobamos que los datos pertenecen al dominio, formulamos la ecuación y justificamos la existencia y unicidad donde corresponda. Después calculamos una historia y la verificamos por sustitución; finalmente preguntamos por la validez del modelo y por el contraste con observaciones.
 
@@ -825,7 +825,7 @@ La constante $\gamma$ tiene dimensión de tiempo inverso; $1/\gamma=m/\lambda$ e
 
 []{#ejercicios-13}
 
-### 9.14.1. Ejercicios {#fispm-c09-ejercicios-13}
+### Ejercicios {#fispm-c09-ejercicios-13}
 
 []{#fispm-t1-c09-e0029}
 
@@ -845,7 +845,7 @@ Por último, sustituir la historia en la ecuación demuestra que es una solució
 
 []{#puente-hacia-las-fuerzas-concretas}
 
-### 9.14.2. Puente hacia las fuerzas concretas {#fispm-c09-puente-hacia-las-fuerzas-concretas}
+### Puente hacia las fuerzas concretas {#fispm-c09-puente-hacia-las-fuerzas-concretas}
 
 El capítulo ha separado las leyes estructurales de Newton de las leyes particulares de interacción. Podemos identificar receptores, formular un estado completo, transformar marcos y justificar una evolución bajo hipótesis explícitas. El siguiente capítulo pondrá contenido físico en el lado de las fuerzas: gravedad uniforme, contacto, tensión, fricción, resistencia y resortes, junto con los diagramas de cuerpo libre. Esa transición requiere conservar las distinciones ya establecidas, porque una ecuación diferencial impecable puede comenzar con una lista de fuerzas equivocada.
 

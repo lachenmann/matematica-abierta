@@ -45,7 +45,7 @@ Trabajaremos con masas positivas constantes en un marco inercial y con separacio
 
 []{#fpm-i-17-s01}
 
-## 17.1. Separar dos movimientos sin perder las partículas {#fispm-c17-separar-dos-movimientos-sin-perder-las-partuxedculas}
+## 1. Separar dos movimientos sin perder las partículas {#fispm-c17-separar-dos-movimientos-sin-perder-las-partuxedculas}
 
 Si ambos cuerpos reciben velocidades iniciales, parte de ellas puede describir una traslación común. El resto corresponde al movimiento de uno respecto del otro. La transformación que hace esta separación debe permitir volver a los datos originales.
 
@@ -57,7 +57,7 @@ Si ambos cuerpos reciben velocidades iniciales, parte de ellas puede describir u
 
 <figcaption>
 
-**Figura 17.1.** El movimiento se reconstruye a partir de $R$ y $r$: $r_1=R-(m_2/M)r$ y $r_2=R+(m_1/M)r$, con $M=m_1+m_2$. El esquema muestra el caso de masas iguales. Véase §[17.1](#fispm-c17-separar-dos-movimientos-sin-perder-las-partuxedculas).
+**Figura 17.1.** El movimiento se reconstruye a partir de $R$ y $r$: $r_1=R-(m_2/M)r$ y $r_2=R+(m_1/M)r$, con $M=m_1+m_2$. El esquema muestra el caso de masas iguales. Véase §[1](#fispm-c17-separar-dos-movimientos-sin-perder-las-partuxedculas).
 
 </figcaption>
 
@@ -97,7 +97,7 @@ La masa reducida no añade una tercera partícula al sistema. Es el coeficiente 
 
 []{#ejercicios}
 
-### 17.1.1. Ejercicios {#fispm-c17-ejercicios}
+### Ejercicios {#fispm-c17-ejercicios}
 
 []{#fispm-t1-c17-e0001}
 
@@ -119,7 +119,7 @@ La masa reducida no añade una tercera partícula al sistema. Es el coeficiente 
 
 []{#fpm-i-17-s02}
 
-## 17.2. La ecuación que gobierna la separación {#fispm-c17-la-ecuaciuxf3n-que-gobierna-la-separaciuxf3n}
+## 2. La ecuación que gobierna la separación {#fispm-c17-la-ecuaciuxf3n-que-gobierna-la-separaciuxf3n}
 
 Para dos masas aisladas, las fuerzas internas se cancelan en la ecuación del centro y se suman, con sus pesos inerciales, en la ecuación relativa. Aquí se ve por qué aparece precisamente $\mu$.
 
@@ -157,7 +157,7 @@ Para la gravitación newtoniana, $f(r)=-Gm_1m_2/r^2$. La ecuación relativa es e
 
 []{#ejercicios-1}
 
-### 17.2.1. Ejercicios {#fispm-c17-ejercicios-1}
+### Ejercicios {#fispm-c17-ejercicios-1}
 
 []{#fispm-t1-c17-e0003}
 
@@ -177,7 +177,7 @@ Para la gravitación newtoniana, $f(r)=-Gm_1m_2/r^2$. La ecuación relativa es e
 
 []{#fpm-i-17-s03}
 
-## 17.3. Conservaciones y plano de movimiento {#fispm-c17-conservaciones-y-plano-de-movimiento}
+## 3. Conservaciones y plano de movimiento {#fispm-c17-conservaciones-y-plano-de-movimiento}
 
 El centro aislado se mueve uniformemente, de modo que sus datos iniciales quedan resueltos. La pregunta restante es cómo cambia $\mathbf q$. La fuerza central conserva su momento angular; un potencial autónomo conserva también su energía relativa.
 
@@ -211,7 +211,7 @@ En el plano orientado por $\mathbf L$ elegiremos $L=|\mathbf L|>0$. La velocidad
 
 []{#ejercicios-2}
 
-### 17.3.1. Ejercicios {#fispm-c17-ejercicios-2}
+### Ejercicios {#fispm-c17-ejercicios-2}
 
 []{#fispm-t1-c17-e0005}
 
@@ -231,7 +231,7 @@ En el plano orientado por $\mathbf L$ elegiremos $L=|\mathbf L|>0$. La velocidad
 
 []{#fpm-i-17-s04}
 
-## 17.4. Qué deben contener los datos iniciales {#fispm-c17-quuxe9-deben-contener-los-datos-iniciales}
+## 4. Qué deben contener los datos iniciales {#fispm-c17-quuxe9-deben-contener-los-datos-iniciales}
 
 Los números $E$ y $L$ restringen el movimiento, pero no sustituyen el estado inicial completo. La misma energía puede describir una partícula que se acerca o se aleja a una distancia dada. La magnitud angular tampoco fija la orientación del plano ni la dirección inicial dentro de él.
 
@@ -257,7 +257,7 @@ Si fijamos una orientación planar distinta, la componente angular puede ser neg
 
 []{#ejercicios-3}
 
-### 17.4.1. Ejercicios {#fispm-c17-ejercicios-3}
+### Ejercicios {#fispm-c17-ejercicios-3}
 
 []{#fispm-t1-c17-e0007}
 
@@ -277,7 +277,7 @@ Si fijamos una orientación planar distinta, la componente angular puede ser neg
 
 []{#fpm-i-17-s05}
 
-## 17.5. El potencial efectivo {#fispm-c17-el-potencial-efectivo}
+## 5. El potencial efectivo {#fispm-c17-el-potencial-efectivo}
 
 La conservación angular permite reemplazar la velocidad angular por $L/(\mu r^2)$. Al hacerlo, una parte de la energía cinética queda expresada como función del radio. Reunirla con el potencial físico produce una descripción unidimensional del cambio de distancia.
 
@@ -289,7 +289,7 @@ La conservación angular permite reemplazar la velocidad angular por $L/(\mu r^2
 
 <figcaption>
 
-**Figura 17.2.** En el ejemplo reducido $U_{\rm ef}=1/(2r^2)-1/r$, el mínimo está en $r=1$. El nivel $E=-0{,}3$ corta la curva en dos radios de retorno y deja un intervalo accesible entre ellos. Véase §[17.5](#fispm-c17-el-potencial-efectivo).
+**Figura 17.2.** En el ejemplo reducido $U_{\rm ef}=1/(2r^2)-1/r$, el mínimo está en $r=1$. El nivel $E=-0{,}3$ corta la curva en dos radios de retorno y deja un intervalo accesible entre ellos. Véase §[5](#fispm-c17-el-potencial-efectivo).
 
 </figcaption>
 
@@ -331,7 +331,7 @@ La gráfica de $W_L$ organiza posibilidades sin resolver todo el movimiento. Una
 
 []{#ejercicios-4}
 
-### 17.5.1. Ejercicios {#fispm-c17-ejercicios-4}
+### Ejercicios {#fispm-c17-ejercicios-4}
 
 []{#fispm-t1-c17-e0009}
 
@@ -351,7 +351,7 @@ La gráfica de $W_L$ organiza posibilidades sin resolver todo el movimiento. Una
 
 []{#fpm-i-17-s06}
 
-## 17.6. Cuadraturas y puntos de retorno {#fispm-c17-cuadraturas-y-puntos-de-retorno}
+## 6. Cuadraturas y puntos de retorno {#fispm-c17-cuadraturas-y-puntos-de-retorno}
 
 Cuando conocemos $E$ y $L$, el cambio de radio puede expresarse por una integral. La integración necesita escoger una rama: la partícula puede atravesar el mismo radio durante la aproximación y durante el alejamiento.
 
@@ -363,7 +363,7 @@ Cuando conocemos $E$ y $L$, el cambio de radio puede expresarse por una integral
 
 <figcaption>
 
-**Figura 17.3.** En el modelo $U_{\rm ef}=1/(2r^2)-1/r$, una energía $E=-1/4$ admite movimiento entre dos radios $r=2\pm\sqrt2$. La velocidad radial se anula allí; la componente angular puede permanecer distinta de cero. Véase §[17.6](#fispm-c17-cuadraturas-y-puntos-de-retorno).
+**Figura 17.3.** En el modelo $U_{\rm ef}=1/(2r^2)-1/r$, una energía $E=-1/4$ admite movimiento entre dos radios $r=2\pm\sqrt2$. La velocidad radial se anula allí; la componente angular puede permanecer distinta de cero. Véase §[6](#fispm-c17-cuadraturas-y-puntos-de-retorno).
 
 </figcaption>
 
@@ -399,7 +399,7 @@ Una tangencia al nivel de energía puede representar una órbita circular o una 
 
 []{#ejercicios-5}
 
-### 17.6.1. Ejercicios {#fispm-c17-ejercicios-5}
+### Ejercicios {#fispm-c17-ejercicios-5}
 
 []{#fispm-t1-c17-e0011}
 
@@ -419,7 +419,7 @@ Una tangencia al nivel de energía puede representar una órbita circular o una 
 
 []{#fpm-i-17-s07}
 
-## 17.7. Momento angular cero y coincidencias {#fispm-c17-momento-angular-cero-y-coincidencias}
+## 7. Momento angular cero y coincidencias {#fispm-c17-momento-angular-cero-y-coincidencias}
 
 La reducción planar con un ángulo creciente utiliza $L>0$. Si el momento angular es cero, la coordenada angular deja de ser una buena variable para reconstruir la trayectoria. El movimiento puede ser radial, pero la coincidencia de los cuerpos requiere un análisis separado.
 
@@ -445,7 +445,7 @@ La gravitación $U=-\alpha/r$ satisface esa condición. Una singularidad atracti
 
 []{#ejercicios-6}
 
-### 17.7.1. Ejercicios {#fispm-c17-ejercicios-6}
+### Ejercicios {#fispm-c17-ejercicios-6}
 
 []{#fispm-t1-c17-e0013}
 
@@ -465,7 +465,7 @@ La gravitación $U=-\alpha/r$ satisface esa condición. Una singularidad atracti
 
 []{#fpm-i-17-s08}
 
-## 17.8. Órbitas circulares y estabilidad radial {#fispm-c17-uxf3rbitas-circulares-y-estabilidad-radial}
+## 8. Órbitas circulares y estabilidad radial {#fispm-c17-uxf3rbitas-circulares-y-estabilidad-radial}
 
 Un radio constante exige que la atracción física sostenga la aceleración centrípeta correspondiente al momento angular. En la descripción efectiva, esa misma condición se convierte en un punto crítico de $W_L$.
 
@@ -501,7 +501,7 @@ La estabilidad radial no afirma que una trayectoria perturbada mantenga la misma
 
 []{#ejercicios-7}
 
-### 17.8.1. Ejercicios {#fispm-c17-ejercicios-7}
+### Ejercicios {#fispm-c17-ejercicios-7}
 
 []{#fispm-t1-c17-e0015}
 
@@ -521,7 +521,7 @@ La estabilidad radial no afirma que una trayectoria perturbada mantenga la misma
 
 []{#fpm-i-17-s09}
 
-## 17.9. Dos frecuencias próximas a una órbita circular {#fispm-c17-dos-frecuencias-pruxf3ximas-a-una-uxf3rbita-circular}
+## 9. Dos frecuencias próximas a una órbita circular {#fispm-c17-dos-frecuencias-pruxf3ximas-a-una-uxf3rbita-circular}
 
 Una perturbación radial pequeña de una órbita circular estable hace que el radio oscile. Mientras tanto, el ángulo continúa aumentando. Comparar la frecuencia radial con la angular permite anticipar cuánto gira la dirección entre dos radios mínimos sucesivos.
 
@@ -533,7 +533,7 @@ Una perturbación radial pequeña de una órbita circular estable hace que el ra
 
 <figcaption>
 
-**Figura 17.4.** Para el oscilador central isotrópico, $x=2\cos u$, $y=\sin u$ forma una elipse centrada en el origen de fuerza. Un período radial corresponde a medio período orbital. Véase §[17.9](#fispm-c17-dos-frecuencias-pruxf3ximas-a-una-uxf3rbita-circular).
+**Figura 17.4.** Para el oscilador central isotrópico, $x=2\cos u$, $y=\sin u$ forma una elipse centrada en el origen de fuerza. Un período radial corresponde a medio período orbital. Véase §[9](#fispm-c17-dos-frecuencias-pruxf3ximas-a-una-uxf3rbita-circular).
 
 </figcaption>
 
@@ -573,7 +573,7 @@ La fuerza inversa del cuadrado corresponde a $p=-2$ y da $\kappa=\Omega$. La fue
 
 []{#ejercicios-8}
 
-### 17.9.1. Ejercicios {#fispm-c17-ejercicios-8}
+### Ejercicios {#fispm-c17-ejercicios-8}
 
 **Ejercicio 17.17.** Para $f=-c/r$, con $c>0$, calcula la razón $\kappa/\Omega$ y el ángulo límite entre mínimos radiales. ¿Ese dato prueba cierre de todas las órbitas próximas?
 
@@ -591,7 +591,7 @@ La fuerza inversa del cuadrado corresponde a $p=-2$ y da $\kappa=\Omega$. La fue
 
 []{#fpm-i-17-s10}
 
-## 17.10. Un ciclo radial no siempre cierra la trayectoria {#fispm-c17-un-ciclo-radial-no-siempre-cierra-la-trayectoria}
+## 10. Un ciclo radial no siempre cierra la trayectoria {#fispm-c17-un-ciclo-radial-no-siempre-cierra-la-trayectoria}
 
 Si el radio oscila entre un mínimo y un máximo, vuelve al mismo valor periódicamente. La posición vectorial sólo vuelve a un estado anterior cuando también se repite la orientación angular. Esas dos periodicidades pueden encajar o quedar desfasadas.
 
@@ -621,7 +621,7 @@ Cuando la razón es irracional, las direcciones de los mínimos nunca se repiten
 
 []{#ejercicios-9}
 
-### 17.10.1. Ejercicios {#fispm-c17-ejercicios-9}
+### Ejercicios {#fispm-c17-ejercicios-9}
 
 []{#fispm-t1-c17-e0019}
 
@@ -641,7 +641,7 @@ Cuando la razón es irracional, las direcciones de los mínimos nunca se repiten
 
 []{#fpm-i-17-s11}
 
-## 17.11. La trayectoria como función del ángulo {#fispm-c17-la-trayectoria-como-funciuxf3n-del-uxe1ngulo}
+## 11. La trayectoria como función del ángulo {#fispm-c17-la-trayectoria-como-funciuxf3n-del-uxe1ngulo}
 
 El tiempo es la variable natural de Newton. Para estudiar la forma de una órbita con $L>0$, el ángulo resulta útil porque aumenta estrictamente y permite describir $r$ como función de $\theta$. Usar el radio inverso simplifica la aceleración radial.
 
@@ -681,7 +681,7 @@ Para la gravitación, $f=-\alpha/r^2$ y Binet se reduce a $u''+u=\mu\alpha/L^2$.
 
 []{#ejercicios-10}
 
-### 17.11.1. Ejercicios {#fispm-c17-ejercicios-10}
+### Ejercicios {#fispm-c17-ejercicios-10}
 
 []{#fispm-t1-c17-e0021}
 
@@ -701,7 +701,7 @@ Para la gravitación, $f=-\alpha/r^2$ y Binet se reduce a $u''+u=\mu\alpha/L^2$.
 
 []{#fpm-i-17-s12}
 
-## 17.12. Volver a las dos trayectorias {#fispm-c17-volver-a-las-dos-trayectorias}
+## 12. Volver a las dos trayectorias {#fispm-c17-volver-a-las-dos-trayectorias}
 
 La solución relativa describe una separación. Para observar cada cuerpo, necesitamos aplicar proposición 17.1 y añadir el centro de masa. En el marco del centro, las dos trayectorias tienen la misma forma relativa escalada y sentidos opuestos.
 
@@ -735,7 +735,7 @@ El movimiento relativo puede ser periódico mientras el conjunto se traslada. Ha
 
 []{#ejercicios-11}
 
-### 17.12.1. Ejercicios {#fispm-c17-ejercicios-11}
+### Ejercicios {#fispm-c17-ejercicios-11}
 
 []{#fispm-t1-c17-e0023}
 
@@ -755,7 +755,7 @@ El movimiento relativo puede ser periódico mientras el conjunto se traslada. Ha
 
 []{#fpm-i-17-s13}
 
-## 17.13. Dos modelos que muestran el alcance de la reducción {#fispm-c17-dos-modelos-que-muestran-el-alcance-de-la-reducciuxf3n}
+## 13. Dos modelos que muestran el alcance de la reducción {#fispm-c17-dos-modelos-que-muestran-el-alcance-de-la-reducciuxf3n}
 
 El potencial efectivo permite estudiar muchas fuerzas centrales con una misma estructura. Dos ejemplos exactos ayudan a comprobar lo que esa estructura dice y lo que deja abierto. Una interacción elástica produce una trayectoria relativa cerrada; una atracción inversa del cubo puede cancelar exactamente el término angular y dejar un equilibrio radial degenerado.
 
@@ -795,7 +795,7 @@ El potencial efectivo plano no forma una barrera que confine pequeñas velocidad
 
 []{#ejercicios-12}
 
-### 17.13.1. Ejercicios {#fispm-c17-ejercicios-12}
+### Ejercicios {#fispm-c17-ejercicios-12}
 
 []{#fispm-t1-c17-e0025}
 
@@ -827,7 +827,7 @@ El potencial efectivo plano no forma una barrera que confine pequeñas velocidad
 
 []{#fpm-i-17-s14}
 
-## 17.14. Reconstrucción completa y paso al problema de Kepler {#fispm-c17-reconstrucciuxf3n-completa-y-paso-al-problema-de-kepler}
+## 14. Reconstrucción completa y paso al problema de Kepler {#fispm-c17-reconstrucciuxf3n-completa-y-paso-al-problema-de-kepler}
 
 La reducción conduce desde dos ecuaciones vectoriales a un centro de masa, un radio y un ángulo. Cada paso conserva una parte de la información: el centro guarda la traslación, el momento angular fija el plano y la velocidad angular, la energía delimita radios y la ecuación radial decide ramas y extremos. Las fórmulas finales deben volver a satisfacer las ecuaciones originales.
 
@@ -856,7 +856,7 @@ El mismo método sirve para fuerzas atractivas o repulsivas, radios ligados o no
 
 []{#ejercicios-13}
 
-### 17.14.1. Ejercicios {#fispm-c17-ejercicios-13}
+### Ejercicios {#fispm-c17-ejercicios-13}
 
 []{#fispm-t1-c17-e0029}
 

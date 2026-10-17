@@ -45,7 +45,7 @@ Empezaremos por equilibrios y flujos continuos, pasaremos a mapas obtenidos por 
 
 []{#fpm-i-30-s01}
 
-## 30.1. Ecuaciones, flujos y retratos de fase {#fispm-c30-ecuaciones-flujos-y-retratos-de-fase}
+## 1. Ecuaciones, flujos y retratos de fase {#fispm-c30-ecuaciones-flujos-y-retratos-de-fase}
 
 []{#fispm-t1-c30-d0001}
 
@@ -63,7 +63,7 @@ Denotamos por $\Phi_t(z_0)$ la solución que parte de $z_0$ en tiempo cero. La u
 
 <figcaption>
 
-**Figura 30.1.** Para $\dot x=x(1-x)$, dos datos $x_0=1/4$ y $1/2$ generan curvas $x(t)=[1+(x_0^{-1}-1)e^{-t}]^{-1}$. No se cruzan: la unicidad conserva el orden de los datos. Véase §[30.1](#fispm-c30-ecuaciones-flujos-y-retratos-de-fase).
+**Figura 30.1.** Para $\dot x=x(1-x)$, dos datos $x_0=1/4$ y $1/2$ generan curvas $x(t)=[1+(x_0^{-1}-1)e^{-t}]^{-1}$. No se cruzan: la unicidad conserva el orden de los datos. Véase §[1](#fispm-c30-ecuaciones-flujos-y-retratos-de-fase).
 
 </figcaption>
 
@@ -83,7 +83,7 @@ Un modelo no autónomo $\dot z=f(z,t)$ puede convertirse formalmente en autónom
 
 []{#fpm-i-30-s02}
 
-## 30.2. Qué significa que un equilibrio sea estable {#fispm-c30-quuxe9-significa-que-un-equilibrio-sea-estable}
+## 2. Qué significa que un equilibrio sea estable {#fispm-c30-quuxe9-significa-que-un-equilibrio-sea-estable}
 
 []{#fispm-t1-c30-d0002}
 
@@ -163,7 +163,7 @@ Por ejemplo, $\dot x=-x^3$ tiene derivada cero en el origen y aun así es asint�
 
 []{#fpm-i-30-s03}
 
-## 30.3. La información que contiene la linealización {#fispm-c30-la-informaciuxf3n-que-contiene-la-linealizaciuxf3n}
+## 3. La información que contiene la linealización {#fispm-c30-la-informaciuxf3n-que-contiene-la-linealizaciuxf3n}
 
 Tras trasladar el equilibrio al origen, escribimos
 
@@ -259,7 +259,7 @@ En dimensión dos son útiles $\tau=\operatorname{tr}A$ y $\Delta=\det A$. Los a
 
 []{#fpm-i-30-s04}
 
-## 30.4. Funciones de Lyapunov y estabilidad no lineal {#fispm-c30-funciones-de-lyapunov-y-estabilidad-no-lineal}
+## 4. Funciones de Lyapunov y estabilidad no lineal {#fispm-c30-funciones-de-lyapunov-y-estabilidad-no-lineal}
 
 []{#fispm-t1-c30-d0003}
 
@@ -317,7 +317,7 @@ Este resultado justifica una conclusión no lineal a partir de la matriz. Si apa
 
 []{#fpm-i-30-s05}
 
-## 30.5. Energía, péndulo y ausencia de atracción hamiltoniana {#fispm-c30-energuxeda-puxe9ndulo-y-ausencia-de-atracciuxf3n-hamiltoniana}
+## 5. Energía, péndulo y ausencia de atracción hamiltoniana {#fispm-c30-energuxeda-puxe9ndulo-y-ausencia-de-atracciuxf3n-hamiltoniana}
 
 []{#fispm-t1-c30-p0005}
 
@@ -379,7 +379,7 @@ La proposición permite convergencia sobre conjuntos de dimensión menor, como u
 
 []{#fpm-i-30-s06}
 
-## 30.6. Retratos locales y términos que la matriz no ve {#fispm-c30-retratos-locales-y-tuxe9rminos-que-la-matriz-no-ve}
+## 6. Retratos locales y términos que la matriz no ve {#fispm-c30-retratos-locales-y-tuxe9rminos-que-la-matriz-no-ve}
 
 Para $\dot x=x$, $\dot y=-y$, los ejes son direcciones inestable y estable. Las curvas satisfacen $xy=\text{constante}$. Un estado del eje vertical converge al origen; uno con $x\ne0$ se aleja en el futuro. La estabilidad del equilibrio se decide considerando todos los datos próximos, de modo que esa convergencia excepcional no lo hace estable.
 
@@ -415,7 +415,7 @@ También debemos distinguir las órbitas de su parametrización. Multiplicar un 
 
 []{#fpm-i-30-s07}
 
-## 30.7. Órbitas periódicas y ciclos límite {#fispm-c30-uxf3rbitas-periuxf3dicas-y-ciclos-luxedmite}
+## 7. Órbitas periódicas y ciclos límite {#fispm-c30-uxf3rbitas-periuxf3dicas-y-ciclos-luxedmite}
 
 Una solución periódica no estacionaria satisface $z(t+T)=z(t)$ para algún $T>0$. Su órbita es una curva cerrada. En un oscilador conservativo pueden existir familias enteras de curvas periódicas vecinas; en un sistema disipativo puede haber una curva aislada hacia la cual se acercan las demás.
 
@@ -517,7 +517,7 @@ Para el oscilador amortiguado, la divergencia constante negativa impide ciclos e
 
 []{#fpm-i-30-s08}
 
-## 30.8. Observar el movimiento a intervalos {#fispm-c30-observar-el-movimiento-a-intervalos}
+## 8. Observar el movimiento a intervalos {#fispm-c30-observar-el-movimiento-a-intervalos}
 
 []{#fispm-t1-c30-d0005}
 
@@ -587,7 +587,7 @@ No todo mapa procede de un flujo invertible. Los mapas de intervalo que estudiar
 
 []{#fpm-i-30-s09}
 
-## 30.9. Estabilidad de puntos fijos de un mapa {#fispm-c30-estabilidad-de-puntos-fijos-de-un-mapa}
+## 9. Estabilidad de puntos fijos de un mapa {#fispm-c30-estabilidad-de-puntos-fijos-de-un-mapa}
 
 []{#fispm-t1-c30-p0009}
 
@@ -609,7 +609,7 @@ La vecindad se conserva y, al iterar, la distancia queda acotada por $c^n|x_0-x_
 
 <figcaption>
 
-**Figura 30.13.** El mapa $x_{n+1}=-x_n/2$ tiene multiplicador $-1/2$. Desde $x_0=1$, las iteraciones alternan de signo y convergen a cero: $x_n=(-1/2)^n$. La alternancia no implica inestabilidad. Véase §[30.9](#fispm-c30-estabilidad-de-puntos-fijos-de-un-mapa).
+**Figura 30.13.** El mapa $x_{n+1}=-x_n/2$ tiene multiplicador $-1/2$. Desde $x_0=1$, las iteraciones alternan de signo y convergen a cero: $x_n=(-1/2)^n$. La alternancia no implica inestabilidad. Véase §[9](#fispm-c30-estabilidad-de-puntos-fijos-de-un-mapa).
 
 </figcaption>
 
@@ -635,7 +635,7 @@ llamado multiplicador del ciclo. Su valor no cambia al empezar por otro punto de
 
 []{#fpm-i-30-s10}
 
-## 30.10. Cambios de régimen y bifurcaciones {#fispm-c30-cambios-de-ruxe9gimen-y-bifurcaciones}
+## 10. Cambios de régimen y bifurcaciones {#fispm-c30-cambios-de-ruxe9gimen-y-bifurcaciones}
 
 Una bifurcación es un cambio cualitativo de la dinámica al variar un parámetro: pueden aparecer o desaparecer equilibrios, cambiar su estabilidad o surgir ciclos. Para reconocerla conviene seguir las soluciones y sus propiedades, además de mirar dónde se anula una derivada.
 
@@ -685,7 +685,7 @@ Al pasar por $r=3$, el ciclo se separa del fijo positivo y éste pasa a tener de
 
 []{#fpm-i-30-s11}
 
-## 30.11. Sensibilidad y exponentes de crecimiento {#fispm-c30-sensibilidad-y-exponentes-de-crecimiento}
+## 11. Sensibilidad y exponentes de crecimiento {#fispm-c30-sensibilidad-y-exponentes-de-crecimiento}
 
 []{#fispm-t1-c30-d0006}
 
@@ -743,7 +743,7 @@ La silla $\dot q=\lambda q$, $\dot p=-\lambda p$ tiene exponente positivo en una
 
 []{#fpm-i-30-s12}
 
-## 30.12. Un ejemplo de caos demostrado {#fispm-c30-un-ejemplo-de-caos-demostrado}
+## 12. Un ejemplo de caos demostrado {#fispm-c30-un-ejemplo-de-caos-demostrado}
 
 []{#fispm-t1-c30-d0008}
 
@@ -797,7 +797,7 @@ La demostración combina expansión con un retorno de las imágenes a toda la re
 
 []{#fpm-i-30-s13}
 
-## 30.13. El mapa logístico y el cálculo finito {#fispm-c30-el-mapa-loguxedstico-y-el-cuxe1lculo-finito}
+## 13. El mapa logístico y el cálculo finito {#fispm-c30-el-mapa-loguxedstico-y-el-cuxe1lculo-finito}
 
 []{#fispm-t1-c30-d0009}
 
@@ -863,7 +863,7 @@ Una simulación larga no resuelve por sí sola ese problema. Debemos comparar pr
 
 []{#fpm-i-30-s14}
 
-## 30.14. Mapas mecánicos y alcance de la predicción {#fispm-c30-mapas-mecuxe1nicos-y-alcance-de-la-predicciuxf3n}
+## 14. Mapas mecánicos y alcance de la predicción {#fispm-c30-mapas-mecuxe1nicos-y-alcance-de-la-predicciuxf3n}
 
 Un modelo mecánico simple alterna un impulso y un vuelo libre. En variables adimensionales de un rotor, el impulso cambia el momento según $p^+=p+K\sin q$, y el vuelo de duración unidad cambia el ángulo en $p^+$. El mapa completo es
 
@@ -907,7 +907,7 @@ El paso a muchos grados de libertad añadirá una dificultad nueva: describir el
 
 []{#complemento-jordan-green}
 
-## 30.15. Complemento. Curvas cerradas y flujo en el plano {#fispm-c30-complemento-jordan-green}
+## 15. Complemento. Curvas cerradas y flujo en el plano {#fispm-c30-complemento-jordan-green}
 
 En proposición 30.8 encerramos una región con una órbita y comparamos el flujo por su frontera con una integral de la divergencia. Hay dos afirmaciones distintas en ese paso: la curva debe tener un interior y el balance local debe poder sumarse sobre él. Las justificaremos para curvas cerradas simples y regulares de clase $C^2$, que son precisamente las órbitas periódicas no estacionarias de un campo $C^1$. No necesitaremos el teorema de Jordan para curvas continuas arbitrarias.
 
@@ -1037,7 +1037,7 @@ Los lemas cubren las dos herramientas usadas en la proposición 30.8. En una ór
 
 []{#ejercicios}
 
-## 30.16. Ejercicios {#fispm-c30-ejercicios}
+## 16. Ejercicios {#fispm-c30-ejercicios}
 
 []{#enunciado-fpm-i-30-e01}
 
@@ -1221,7 +1221,7 @@ Los lemas cubren las dos herramientas usadas en la proposición 30.8. En una ór
 
 []{#soluciones}
 
-## 30.17. Soluciones {#fispm-c30-soluciones}
+## 17. Soluciones {#fispm-c30-soluciones}
 
 **Solución del ejercicio 30.1.** La fórmula es $x=x_0/(1-x_0t)$. Para $x_0<0$, el intervalo máximo que contiene cero es $(1/x_0,\infty)$. La solución aumenta hacia cero desde abajo cuando $t\to\infty$. Para $x_0>0$, el intervalo es $(-\infty,1/x_0)$ y hay escape a infinito en tiempo futuro finito. El equilibrio $x=0$ existe para todo tiempo. La unicidad de cada solución no permite extenderla como función real finita a través de su singularidad.
 
@@ -1307,7 +1307,7 @@ El dato $3/8$ también es eventualmente fijo y no periódico. La densidad de pun
 
 []{#notas-y-lecturas}
 
-## 30.17. Notas y lecturas {#fispm-c30-notas-y-lecturas .unnumbered}
+## Notas y lecturas {#fispm-c30-notas-y-lecturas .unnumbered}
 
 El capítulo 23--I24 aportan oscilaciones y espectros; capítulo 28, el estado y las ecuaciones canónicas; capítulo 29, flujos, ecuación variacional y preservación de volumen. Aquí se ha demostrado un criterio no lineal suficiente de estabilidad, sin presuponer un teorema general de conjugación de sistemas hiperbólicos, una teoría completa de bifurcaciones ni un criterio universal de caos por exponentes positivos.
 

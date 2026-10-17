@@ -39,7 +39,7 @@ number-sections: false
 
 []{#fpm-i-11-s01}
 
-## 11.1. Restricción geométrica y problema dinámico {#fispm-c11-restricciuxf3n-geomuxe9trica-y-problema-dinuxe1mico}
+## 1. Restricción geométrica y problema dinámico {#fispm-c11-restricciuxf3n-geomuxe9trica-y-problema-dinuxe1mico}
 
 Una cuenta ensartada en un alambre puede recorrerlo sin abandonarlo. Un cuerpo unido a una cuerda tensa no puede alejarse arbitrariamente del otro extremo. Dos objetos que permanecen apoyados sobre una plataforma pueden tener movimientos relacionados con el de ésta. Tales condiciones reducen los movimientos posibles, pero no especifican por sí mismas la rapidez o las fuerzas necesarias para realizarlos.[^1]
 
@@ -71,7 +71,7 @@ Conviene separar tres preguntas. La primera es qué posiciones permite la geomet
 
 []{#ejercicios}
 
-### 11.1.1. Ejercicios {#fispm-c11-ejercicios}
+### Ejercicios {#fispm-c11-ejercicios}
 
 []{#fispm-t1-c11-e0001}
 
@@ -93,7 +93,7 @@ Conviene separar tres preguntas. La primera es qué posiciones permite la geomet
 
 []{#fpm-i-11-s02}
 
-## 11.2. Relaciones de posición fijas y dependientes del tiempo {#fispm-c11-relaciones-de-posiciuxf3n-fijas-y-dependientes-del-tiempo}
+## 2. Relaciones de posición fijas y dependientes del tiempo {#fispm-c11-relaciones-de-posiciuxf3n-fijas-y-dependientes-del-tiempo}
 
 Muchas restricciones elementales pueden escribirse utilizando sólo posiciones y tiempo. Una cuenta sobre una recta fija satisface $y=0$; una cuenta sobre una circunferencia fija satisface $x^2+y^2=R^2$. Un cuerpo que acompaña verticalmente una plataforma de altura prescrita $y_s(t)$ satisface $y-y_s(t)=0$ mientras mantiene contacto. La diferencia entre los tres casos aparece al derivar sus ecuaciones.[^2]
 
@@ -129,7 +129,7 @@ Proposición 11.2 expresa condiciones necesarias para una historia que cumple la
 
 []{#ejercicios-1}
 
-### 11.2.1. Ejercicios {#fispm-c11-ejercicios-1}
+### Ejercicios {#fispm-c11-ejercicios-1}
 
 []{#fispm-t1-c11-e0003}
 
@@ -149,7 +149,7 @@ Proposición 11.2 expresa condiciones necesarias para una historia que cumple la
 
 []{#fpm-i-11-s03}
 
-## 11.3. Variables independientes y grados de libertad {#fispm-c11-variables-independientes-y-grados-de-libertad}
+## 3. Variables independientes y grados de libertad {#fispm-c11-variables-independientes-y-grados-de-libertad}
 
 Contar coordenadas cartesianas es un punto de partida. Una partícula en el plano necesita dos; dos partículas en el plano necesitan cuatro. Las restricciones pueden reducir cuántos números de posición se eligen independientemente. Para hacer esa reducción de manera fiable debemos exhibir cómo los demás quedan determinados.
 
@@ -179,7 +179,7 @@ Grados de libertad de posición y número de datos iniciales cumplen funciones d
 
 []{#ejercicios-2}
 
-### 11.3.1. Ejercicios {#fispm-c11-ejercicios-2}
+### Ejercicios {#fispm-c11-ejercicios-2}
 
 []{#fispm-t1-c11-e0005}
 
@@ -199,7 +199,7 @@ Grados de libertad de posición y número de datos iniciales cumplen funciones d
 
 []{#fpm-i-11-s04}
 
-## 11.4. Ecuaciones redundantes y puntos singulares {#fispm-c11-ecuaciones-redundantes-y-puntos-singulares}
+## 4. Ecuaciones redundantes y puntos singulares {#fispm-c11-ecuaciones-redundantes-y-puntos-singulares}
 
 La expresión «restar una por cada restricción» resulta peligrosa si «restricción» significa cada ecuación escrita. Podemos repetir una misma relación, multiplicarla por una constante o escribir una forma equivalente. La posición admisible no cambia y el número de variables libres tampoco. El conteo debe referirse a condiciones independientes efectivas.
 
@@ -233,7 +233,7 @@ En los problemas elementales que siguen trabajaremos en ramas regulares y exhibi
 
 []{#ejercicios-3}
 
-### 11.4.1. Ejercicios {#fispm-c11-ejercicios-3}
+### Ejercicios {#fispm-c11-ejercicios-3}
 
 []{#fispm-t1-c11-e0007}
 
@@ -253,7 +253,7 @@ En los problemas elementales que siguen trabajaremos en ramas regulares y exhibi
 
 []{#fpm-i-11-s05}
 
-## 11.5. Compatibilidad de velocidades y aceleraciones {#fispm-c11-compatibilidad-de-velocidades-y-aceleraciones}
+## 5. Compatibilidad de velocidades y aceleraciones {#fispm-c11-compatibilidad-de-velocidades-y-aceleraciones}
 
 Estar en una posición admisible no garantiza que cualquier velocidad permita conservar el vínculo. Una partícula situada sobre una circunferencia fija, pero con velocidad radial hacia afuera, empieza a abandonarla si no ocurre un cambio de velocidad. Para resolver una evolución regular debemos proporcionar datos compatibles con la restricción activa. Si se plantea un choque que corrige una velocidad, se trata de otro problema, no de una aceleración ordinaria que pueda borrar instantáneamente el dato.
 
@@ -265,7 +265,7 @@ Estar en una posición admisible no garantiza que cualquier velocidad permita co
 
 <figcaption>
 
-**Figura 11.1.** En una circunferencia fija, la velocidad es tangente y la componente normal de aceleración apunta al centro. No debe imponerse aceleración normal nula. Estas flechas son cinemáticas. Véase §[11.5](#fispm-c11-compatibilidad-de-velocidades-y-aceleraciones).
+**Figura 11.1.** En una circunferencia fija, la velocidad es tangente y la componente normal de aceleración apunta al centro. No debe imponerse aceleración normal nula. Estas flechas son cinemáticas. Véase §[5](#fispm-c11-compatibilidad-de-velocidades-y-aceleraciones).
 
 </figcaption>
 
@@ -305,7 +305,7 @@ El control de compatibilidad precede a resolver las fuerzas. Un dato incompatibl
 
 []{#ejercicios-4}
 
-### 11.5.1. Ejercicios {#fispm-c11-ejercicios-4}
+### Ejercicios {#fispm-c11-ejercicios-4}
 
 []{#fispm-t1-c11-e0009}
 
@@ -325,7 +325,7 @@ El control de compatibilidad precede a resolver las fuerzas. Un dato incompatibl
 
 []{#fpm-i-11-s06}
 
-## 11.6. Fuerzas de vínculo y guías lisas {#fispm-c11-fuerzas-de-vuxednculo-y-guuxedas-lisas}
+## 6. Fuerzas de vínculo y guías lisas {#fispm-c11-fuerzas-de-vuxednculo-y-guuxedas-lisas}
 
 Una restricción activa debe coexistir con Newton. Si el cuerpo recibe una fuerza que lo desviaría de una guía, alguna interacción debe proporcionar la contribución necesaria para conservarla. A esa contribución la llamaremos fuerza de vínculo, manteniendo el receptor y el agente físico que la produce. No es una fuerza adicional sin origen: puede ser contacto de una guía o tracción de una cuerda, ya estudiados en el capítulo 10.
 
@@ -337,7 +337,7 @@ Una restricción activa debe coexistir con Newton. Si el cuerpo recibe una fuerz
 
 <figcaption>
 
-**Figura 11.2.** Una partícula en una guía circular fija y lisa puede tener reacción normal centrípeta, perpendicular a su velocidad. Si esa reacción es la única fuerza, su potencia es cero aunque cambie la dirección del movimiento. Véase §[11.6](#fispm-c11-fuerzas-de-vuxednculo-y-guuxedas-lisas).
+**Figura 11.2.** Una partícula en una guía circular fija y lisa puede tener reacción normal centrípeta, perpendicular a su velocidad. Si esa reacción es la única fuerza, su potencia es cero aunque cambie la dirección del movimiento. Véase §[6](#fispm-c11-fuerzas-de-vuxednculo-y-guuxedas-lisas).
 
 </figcaption>
 
@@ -381,7 +381,7 @@ Podemos reducir el movimiento sobre una recta a una coordenada tangencial y cons
 
 []{#ejercicios-5}
 
-### 11.6.1. Ejercicios {#fispm-c11-ejercicios-5}
+### Ejercicios {#fispm-c11-ejercicios-5}
 
 **Ejercicio 11.11.** Una partícula de $2\,\mathrm{kg}$ está en una guía recta lisa horizontal, con datos compatibles. La suma de otras fuerzas es $(6,-8)\,\mathrm N$ en ejes horizontal y vertical. Calcula aceleración y reacción. ¿Se compensa toda esa fuerza?
 
@@ -399,7 +399,7 @@ Podemos reducir el movimiento sobre una recta a una coordenada tangencial y cons
 
 []{#fpm-i-11-s07}
 
-## 11.7. Cuerda sobre una polea fija {#fispm-c11-cuerda-sobre-una-polea-fija}
+## 7. Cuerda sobre una polea fija {#fispm-c11-cuerda-sobre-una-polea-fija}
 
 Una cuerda tensa de longitud constante relaciona posiciones antes de relacionar aceleraciones. Para una polea fija que une dos cuerpos colgantes en ramas verticales, hay dos tramos rectos variables y un arco fijo sobre la polea. Si uno de los tramos se alarga, el otro debe acortarse en igual cantidad. Esta afirmación necesita los ejes y la geometría; no procede de la tercera ley.[^4]
 
@@ -411,7 +411,7 @@ Una cuerda tensa de longitud constante relaciona posiciones antes de relacionar 
 
 <figcaption>
 
-**Figura 11.3.** Con $m_1>m_2$, la máquina de Atwood ideal tiene una tensión común y aceleraciones opuestas. Los diagramas corresponden a cada masa por separado: $m_1g>T>m_2g$. La polea y la cuerda no se incluyen dentro de esos cuerpos. Véase §[11.7](#fispm-c11-cuerda-sobre-una-polea-fija).
+**Figura 11.3.** Con $m_1>m_2$, la máquina de Atwood ideal tiene una tensión común y aceleraciones opuestas. Los diagramas corresponden a cada masa por separado: $m_1g>T>m_2g$. La polea y la cuerda no se incluyen dentro de esos cuerpos. Véase §[7](#fispm-c11-cuerda-sobre-una-polea-fija).
 
 </figcaption>
 
@@ -425,7 +425,7 @@ Una cuerda tensa de longitud constante relaciona posiciones antes de relacionar 
 
 <figcaption>
 
-**Figura 11.4.** Ambas coordenadas crecen hacia abajo. La cuerda inextensible impone $y_1+y_2=\mathrm{constante}$, y por tanto $a_1+a_2=0$. Esta relación proviene de la geometría, no de la tercera ley. Véase §[11.7](#fispm-c11-cuerda-sobre-una-polea-fija).
+**Figura 11.4.** Ambas coordenadas crecen hacia abajo. La cuerda inextensible impone $y_1+y_2=\mathrm{constante}$, y por tanto $a_1+a_2=0$. Esta relación proviene de la geometría, no de la tercera ley. Véase §[7](#fispm-c11-cuerda-sobre-una-polea-fija).
 
 </figcaption>
 
@@ -467,7 +467,7 @@ Si las masas son iguales, la aceleración es cero. Eso permite reposo o movimien
 
 []{#ejercicios-6}
 
-### 11.7.1. Ejercicios {#fispm-c11-ejercicios-6}
+### Ejercicios {#fispm-c11-ejercicios-6}
 
 []{#fispm-t1-c11-e0013}
 
@@ -493,7 +493,7 @@ La rama tensa requiere $A\geq-g$ y datos compatibles con la longitud y su primer
 
 []{#fpm-i-11-s08}
 
-## 11.8. Polea móvil y factores geométricos {#fispm-c11-polea-muxf3vil-y-factores-geomuxe9tricos}
+## 8. Polea móvil y factores geométricos {#fispm-c11-polea-muxf3vil-y-factores-geomuxe9tricos}
 
 Consideremos una cuerda con un extremo fijo en el soporte superior. Desde allí baja, rodea una polea móvil, sube a una polea fija superior y baja finalmente hasta un cuerpo de masa $m_1$. La polea móvil lleva otro cuerpo de masa $m_2$; su propia masa se desprecia y su centro mantiene la misma altura que ese cuerpo salvo una distancia fija. Ambas poleas son ideales y los tramos variables son verticales.[^5]
 
@@ -505,7 +505,7 @@ Consideremos una cuerda con un extremo fijo en el soporte superior. Desde allí 
 
 <figcaption>
 
-**Figura 11.5.** En una polea móvil ideal, los dos ramales ejercen una resultante ascendente $2T$ sobre el conjunto polea--carga. Si el extremo libre se mueve con coordenada descendente $y_1$ y la polea con $y_2$, $y_1+2y_2$ es constante. Véase §[11.8](#fispm-c11-polea-muxf3vil-y-factores-geomuxe9tricos).
+**Figura 11.5.** En una polea móvil ideal, los dos ramales ejercen una resultante ascendente $2T$ sobre el conjunto polea--carga. Si el extremo libre se mueve con coordenada descendente $y_1$ y la polea con $y_2$, $y_1+2y_2$ es constante. Véase §[8](#fispm-c11-polea-muxf3vil-y-factores-geomuxe9tricos).
 
 </figcaption>
 
@@ -553,7 +553,7 @@ Los límites sirven para comprobar el resultado. Si $m_2$ es mucho mayor que $m_
 
 []{#ejercicios-7}
 
-### 11.8.1. Ejercicios {#fispm-c11-ejercicios-7}
+### Ejercicios {#fispm-c11-ejercicios-7}
 
 []{#fispm-t1-c11-e0015}
 
@@ -579,7 +579,7 @@ Las ocho secciones fijan el método de este capítulo: expresar el vínculo, con
 
 []{#fpm-i-11-s09}
 
-## 11.9. Vínculos móviles y coordenadas relativas {#fispm-c11-vuxednculos-muxf3viles-y-coordenadas-relativas}
+## 9. Vínculos móviles y coordenadas relativas {#fispm-c11-vuxednculos-muxf3viles-y-coordenadas-relativas}
 
 Una guía puede trasladarse sin cambiar su forma. La posición del cuerpo respecto de ella facilita la descripción geométrica, aunque las aceleraciones que entran en Newton sigan medidas en el marco inercial. Esta diferencia requiere mantener el movimiento del soporte en las ecuaciones.[^6]
 
@@ -623,7 +623,7 @@ Una medición relativa debe indicar respecto de qué soporte se tomó. Si el lab
 
 []{#ejercicios-8}
 
-### 11.9.1. Ejercicios {#fispm-c11-ejercicios-8}
+### Ejercicios {#fispm-c11-ejercicios-8}
 
 []{#fispm-t1-c11-e0017}
 
@@ -643,7 +643,7 @@ Una medición relativa debe indicar respecto de qué soporte se tomó. Si el lab
 
 []{#fpm-i-11-s10}
 
-## 11.10. Cuña móvil y geometría compartida {#fispm-c11-cuuxf1a-muxf3vil-y-geometruxeda-compartida}
+## 10. Cuña móvil y geometría compartida {#fispm-c11-cuuxf1a-muxf3vil-y-geometruxeda-compartida}
 
 Una cuña que desliza sobre una mesa muestra por qué una aceleración relativa no debe entrar sola en Newton. El cuerpo que baja sobre ella se mueve respecto de la cuña y ésta se mueve respecto de la mesa. Usaremos coordenadas que reconstruyan ambas posiciones, conservando ejes inerciales horizontales y verticales.[^7]
 
@@ -655,7 +655,7 @@ Una cuña que desliza sobre una mesa muestra por qué una aceleración relativa 
 
 <figcaption>
 
-**Figura 11.6.** Si $X$ sitúa el pie izquierdo de la cuña y $s$ mide la distancia del bloque cuesta arriba, $x=X+s\cos\alpha$ e $y=s\sin\alpha$. La posición horizontal mezcla ambas coordenadas. Véase §[11.10](#fispm-c11-cuuxf1a-muxf3vil-y-geometruxeda-compartida).
+**Figura 11.6.** Si $X$ sitúa el pie izquierdo de la cuña y $s$ mide la distancia del bloque cuesta arriba, $x=X+s\cos\alpha$ e $y=s\sin\alpha$. La posición horizontal mezcla ambas coordenadas. Véase §[10](#fispm-c11-cuuxf1a-muxf3vil-y-geometruxeda-compartida).
 
 </figcaption>
 
@@ -707,7 +707,7 @@ Si la cuña está sujeta, el soporte suministra además fuerza horizontal y ya n
 
 []{#ejercicios-9}
 
-### 11.10.1. Ejercicios {#fispm-c11-ejercicios-9}
+### Ejercicios {#fispm-c11-ejercicios-9}
 
 []{#fispm-t1-c11-e0019}
 
@@ -731,7 +731,7 @@ La cuña satisface $MA=30\sqrt3/13\,\mathrm N=N\sin30^\circ$. Sobre el cuerpo, $
 
 []{#fpm-i-11-s11}
 
-## 11.11. Péndulo y reacción en un vínculo curvo {#fispm-c11-puxe9ndulo-y-reacciuxf3n-en-un-vuxednculo-curvo}
+## 11. Péndulo y reacción en un vínculo curvo {#fispm-c11-puxe9ndulo-y-reacciuxf3n-en-un-vuxednculo-curvo}
 
 Una cuerda tensa puede restringir una masa a una circunferencia sin imponer rapidez constante. Para estudiar el péndulo basta distinguir la ecuación tangencial que modifica esa rapidez y el balance radial que determina la tensión. No resolveremos todavía su período ni su evolución mediante energía.[^8]
 
@@ -743,7 +743,7 @@ Una cuerda tensa puede restringir una masa a una circunferencia sin imponer rapi
 
 <figcaption>
 
-**Figura 11.7.** Sobre la masa del péndulo actúan peso y tensión. La tensión apunta al soporte; la componente radial de Newton contiene $mv^2/\ell$, aunque la longitud sea constante. Véase §[11.11](#fispm-c11-puxe9ndulo-y-reacciuxf3n-en-un-vuxednculo-curvo).
+**Figura 11.7.** Sobre la masa del péndulo actúan peso y tensión. La tensión apunta al soporte; la componente radial de Newton contiene $mv^2/\ell$, aunque la longitud sea constante. Véase §[11](#fispm-c11-puxe9ndulo-y-reacciuxf3n-en-un-vuxednculo-curvo).
 
 </figcaption>
 
@@ -789,7 +789,7 @@ La ecuación angular tiene un resultado útil aun sin resolverla: en $0<\theta<\
 
 []{#ejercicios-10}
 
-### 11.11.1. Ejercicios {#fispm-c11-ejercicios-10}
+### Ejercicios {#fispm-c11-ejercicios-10}
 
 []{#fispm-t1-c11-e0021}
 
@@ -815,7 +815,7 @@ La ecuación angular tiene un resultado útil aun sin resolverla: en $0<\theta<\
 
 []{#fpm-i-11-s12}
 
-## 11.12. Contacto unilateral y pérdida del vínculo {#fispm-c11-contacto-unilateral-y-puxe9rdida-del-vuxednculo}
+## 12. Contacto unilateral y pérdida del vínculo {#fispm-c11-contacto-unilateral-y-puxe9rdida-del-vuxednculo}
 
 Una guía bilateral impone su geometría mediante fuerzas de cualquiera de los dos signos. Una superficie de apoyo sólo puede empujar al cuerpo hacia la región accesible. La diferencia cambia la lectura de una solución: primero se calcula la reacción que exigiría el contacto y después se comprueba que la superficie puede ejercerla. Si el signo es imposible, la ecuación de contacto deja de describir la trayectoria.
 
@@ -865,7 +865,7 @@ Esta prueba decide una situación local concreta. No establece toda la historia 
 
 []{#ejercicios-11}
 
-### 11.12.1. Ejercicios {#fispm-c11-ejercicios-11}
+### Ejercicios {#fispm-c11-ejercicios-11}
 
 []{#fispm-t1-c11-e0024}
 
@@ -889,7 +889,7 @@ Para $V^2=2gR$, es mayor que $R^2$ en tiempos positivos y confirma la separació
 
 []{#fpm-i-11-s13}
 
-## 11.13. Sistemas con varias cuerdas {#fispm-c11-sistemas-con-varias-cuerdas}
+## 13. Sistemas con varias cuerdas {#fispm-c11-sistemas-con-varias-cuerdas}
 
 Una segunda cuerda aporta su propia conservación de longitud. También aporta su propia tensión, salvo que un balance justifique una relación con la tensión de otra cuerda. Confundir ambas afirmaciones produce dos errores frecuentes: contar las mismas posiciones varias veces y transmitir una única tensión a través de cuerdas físicamente distintas.
 
@@ -945,7 +945,7 @@ Es útil comprobar también la conservación de las dos longitudes originales de
 
 []{#ejercicios-12}
 
-### 11.13.1. Ejercicios {#fispm-c11-ejercicios-12}
+### Ejercicios {#fispm-c11-ejercicios-12}
 
 []{#fispm-t1-c11-e0026}
 
@@ -975,7 +975,7 @@ La igualdad de aceleraciones no elimina la diferencia inicial de velocidades. El
 
 []{#fpm-i-11-s14}
 
-## 11.14. Síntesis: conteo, datos y admisibilidad {#fispm-c11-suxedntesis-conteo-datos-y-admisibilidad}
+## 14. Síntesis: conteo, datos y admisibilidad {#fispm-c11-suxedntesis-conteo-datos-y-admisibilidad}
 
 El conteo geométrico responde cuántas posiciones independientes describen una rama. Newton responde cómo evoluciona con las fuerzas especificadas. Los signos de tensión y reacción responden si los elementos físicos pueden sostener esa rama. Son preguntas conectadas, pero resolver una no equivale a resolver las demás.
 
@@ -1008,7 +1008,7 @@ Las trayectorias deben interpretarse en intervalos donde se cumplen las hipótes
 
 []{#ejercicios-13}
 
-### 11.14.1. Ejercicios {#fispm-c11-ejercicios-13}
+### Ejercicios {#fispm-c11-ejercicios-13}
 
 []{#fispm-t1-c11-e0029}
 

@@ -45,7 +45,7 @@ Desarrollaremos ambas descripciones a la vez. Los ejemplos del oscilador, las ro
 
 []{#fpm-i-29-s01}
 
-## 29.1. Una operación que determina la evolución {#fispm-c29-una-operaciuxf3n-que-determina-la-evoluciuxf3n}
+## 1. Una operación que determina la evolución {#fispm-c29-una-operaciuxf3n-que-determina-la-evoluciuxf3n}
 
 Para un observable $A(q,p,t)$, la regla de la cadena del capítulo 28 daba
 
@@ -79,7 +79,7 @@ El corchete tiene las unidades del producto de ambas funciones dividido por una 
 
 []{#fpm-i-29-s02}
 
-## 29.2. Las identidades algebraicas {#fispm-c29-las-identidades-algebraicas}
+## 2. Las identidades algebraicas {#fispm-c29-las-identidades-algebraicas}
 
 []{#fispm-t1-c29-p0001}
 
@@ -117,7 +117,7 @@ Jacobi asegura que la operación es compatible consigo misma. Junto con la bilin
 
 []{#fpm-i-29-s03}
 
-## 29.3. Cantidades conservadas y nuevas integrales {#fispm-c29-cantidades-conservadas-y-nuevas-integrales}
+## 3. Cantidades conservadas y nuevas integrales {#fispm-c29-cantidades-conservadas-y-nuevas-integrales}
 
 Una integral del movimiento satisface $F_{,t}+\{F,H\}=0$ en la región considerada. Para una función sin dependencia temporal explícita, basta $\{F,H\}=0$. Si sólo conocemos esa igualdad sobre una trayectoria particular, obtenemos una afirmación restringida a ella; para disponer de una integral del modelo exigimos la identidad correspondiente en los estados de la región.
 
@@ -147,7 +147,7 @@ En varios grados de libertad, las energías de osciladores independientes están
 
 []{#fpm-i-29-s04}
 
-## 29.4. Funciones que generan desplazamientos {#fispm-c29-funciones-que-generan-desplazamientos}
+## 4. Funciones que generan desplazamientos {#fispm-c29-funciones-que-generan-desplazamientos}
 
 Una función $G(q,p)$ define un sistema de ecuaciones con un parámetro $s$:
 
@@ -187,7 +187,7 @@ El cálculo describe la composición infinitesimal de rotaciones. También antic
 
 []{#fpm-i-29-s05}
 
-## 29.5. La forma alternada del espacio de fases {#fispm-c29-la-forma-alternada-del-espacio-de-fases}
+## 5. La forma alternada del espacio de fases {#fispm-c29-la-forma-alternada-del-espacio-de-fases}
 
 En cada punto del espacio de fases consideremos dos desplazamientos infinitesimales $u=(u_q,u_p)$ y $v=(v_q,v_p)$. La expresión
 
@@ -219,7 +219,7 @@ Toda forma alternada no degenerada vive en dimensión par: una matriz antisimét
 
 []{#fpm-i-29-s06}
 
-## 29.6. La forma canónica sobre el cotangente {#fispm-c29-la-forma-canuxf3nica-sobre-el-cotangente}
+## 6. La forma canónica sobre el cotangente {#fispm-c29-la-forma-canuxf3nica-sobre-el-cotangente}
 
 La expresión $\omega=\sum dq^a\wedge dp_a$ se escribió en una carta. Para saber si describe un objeto del espacio de fases completo, debemos comprobar su compatibilidad con los cambios de carta.
 
@@ -249,7 +249,7 @@ La forma $\omega$ no es una distancia ni un producto escalar. Siempre cumple $\o
 
 []{#fpm-i-29-s07}
 
-## 29.7. Campos hamiltonianos y convención de signos {#fispm-c29-campos-hamiltonianos-y-convenciuxf3n-de-signos}
+## 7. Campos hamiltonianos y convención de signos {#fispm-c29-campos-hamiltonianos-y-convenciuxf3n-de-signos}
 
 []{#fispm-t1-c29-d0005}
 
@@ -287,7 +287,7 @@ Como comprobación, para $F=q^2/2$ y $G=p^2/2$, tenemos $X_F=-q\partial_p$ y $X_
 
 []{#fpm-i-29-s08}
 
-## 29.8. El flujo preserva la forma simpléctica {#fispm-c29-el-flujo-preserva-la-forma-simpluxe9ctica}
+## 8. El flujo preserva la forma simpléctica {#fispm-c29-el-flujo-preserva-la-forma-simpluxe9ctica}
 
 Sea $\Phi_{t,t_0}$ la aplicación que lleva un estado inicial en $t_0$ al estado alcanzado en $t$. Es un difeomorfismo local entre los abiertos donde la evolución y su inversa están definidas. Su derivada transporta desplazamientos iniciales a desplazamientos entre soluciones cercanas.
 
@@ -299,7 +299,7 @@ Sea $\Phi_{t,t_0}$ la aplicación que lleva un estado inicial en $t_0$ al estado
 
 <figcaption>
 
-**Figura 29.1.** La cizalla $Q=q$, $P=p+q$ transforma un cuadrado en un paralelogramo de igual área. El desplazamiento de momento es el gradiente de $G(q)=q^2/2$. Véase §[29.8](#fispm-c29-el-flujo-preserva-la-forma-simpluxe9ctica).
+**Figura 29.1.** La cizalla $Q=q$, $P=p+q$ transforma un cuadrado en un paralelogramo de igual área. El desplazamiento de momento es el gradiente de $G(q)=q^2/2$. Véase §[8](#fispm-c29-el-flujo-preserva-la-forma-simpluxe9ctica).
 
 </figcaption>
 
@@ -333,7 +333,7 @@ Esta propiedad no exige que $H$ sea autónomo. La energía puede cambiar por dep
 
 []{#fpm-i-29-s09}
 
-## 29.9. Qué significa que unas variables sean canónicas {#fispm-c29-quuxe9-significa-que-unas-variables-sean-canuxf3nicas}
+## 9. Qué significa que unas variables sean canónicas {#fispm-c29-quuxe9-significa-que-unas-variables-sean-canuxf3nicas}
 
 []{#fispm-t1-c29-d0006}
 
@@ -363,7 +363,7 @@ Por tanto la preservación de todos los corchetes equivale a $M\mathbb JM^{\math
 
 <figcaption>
 
-**Figura 29.2.** El cambio $Q=q$, $P=2p$ duplica el área y satisface $\{Q,P\}=2$. No es canónico con la forma estándar. Los rectángulos están desplazados en la página para facilitar su comparación. Véase §[29.9](#fispm-c29-quuxe9-significa-que-unas-variables-sean-canuxf3nicas).
+**Figura 29.2.** El cambio $Q=q$, $P=2p$ duplica el área y satisface $\{Q,P\}=2$. No es canónico con la forma estándar. Los rectángulos están desplazados en la página para facilitar su comparación. Véase §[9](#fispm-c29-quuxe9-significa-que-unas-variables-sean-canuxf3nicas).
 
 </figcaption>
 
@@ -379,7 +379,7 @@ En un par de variables, la condición equivale a $\partial(Q,P)/\partial(q,p)=1$
 
 []{#fpm-i-29-s10}
 
-## 29.10. Cambios de variables que conviene reconocer {#fispm-c29-cambios-de-variables-que-conviene-reconocer}
+## 10. Cambios de variables que conviene reconocer {#fispm-c29-cambios-de-variables-que-conviene-reconocer}
 
 []{#fispm-t1-c29-p0010}
 
@@ -401,7 +401,7 @@ El reescalamiento $Q=cq$, $P=p/c$, con $c\ne0$, preserva el corchete. Cambiar am
 
 <figcaption>
 
-**Figura 29.3.** La transformación $Q=2q$, $P=p/2$ duplica el ancho y divide la altura por dos. Preserva $dq\wedge dp$ y el corchete $\{Q,P\}=1$. Los rectángulos se han separado para compararlos. Véase §[29.10](#fispm-c29-cambios-de-variables-que-conviene-reconocer).
+**Figura 29.3.** La transformación $Q=2q$, $P=p/2$ duplica el ancho y divide la altura por dos. Preserva $dq\wedge dp$ y el corchete $\{Q,P\}=1$. Los rectángulos se han separado para compararlos. Véase §[10](#fispm-c29-cambios-de-variables-que-conviene-reconocer).
 
 </figcaption>
 
@@ -427,7 +427,7 @@ La posición junto con el momento cinético no forma el mismo sistema de coorden
 
 []{#fpm-i-29-s11}
 
-## 29.11. Simetrías hamiltonianas y Noether {#fispm-c29-simetruxedas-hamiltonianas-y-noether}
+## 11. Simetrías hamiltonianas y Noether {#fispm-c29-simetruxedas-hamiltonianas-y-noether}
 
 Para un hamiltoniano autónomo y un generador $G$ independiente del tiempo, el cambio de $H$ bajo el flujo de $G$ es $dH/ds=\{H,G\}$. La misma cuenta que decide la conservación temporal decide si la transformación generada deja invariante el hamiltoniano.
 
@@ -453,7 +453,7 @@ Una constante añadida a $G$ no cambia $X_G$, porque su diferencial es cero. En 
 
 []{#fpm-i-29-s12}
 
-## 29.12. El volumen de fase y el teorema de Liouville {#fispm-c29-el-volumen-de-fase-y-el-teorema-de-liouville}
+## 12. El volumen de fase y el teorema de Liouville {#fispm-c29-el-volumen-de-fase-y-el-teorema-de-liouville}
 
 La forma simpléctica construye una forma de volumen
 
@@ -489,7 +489,7 @@ tiene determinante uno, pero $\{Q_1,P_1\}=2$ y $\{Q_2,P_2\}=1/2$. La informació
 
 []{#fpm-i-29-s13}
 
-## 29.13. El oscilador en coordenadas de acción y ángulo {#fispm-c29-el-oscilador-en-coordenadas-de-acciuxf3n-y-uxe1ngulo}
+## 13. El oscilador en coordenadas de acción y ángulo {#fispm-c29-el-oscilador-en-coordenadas-de-acciuxf3n-y-uxe1ngulo}
 
 La elipse de energía del oscilador sugiere usar su tamaño y la posición sobre ella como variables. Para $m,\omega>0$, fuera del origen ponemos
 
@@ -525,7 +525,7 @@ El área encerrada por la elipse es $2\pi E/\omega$. La acción expresa esa áre
 
 <figcaption>
 
-**Figura 29.4.** Con $m=\omega=1$, el área encerrada es $2\pi J$. La convención $q=\sqrt{2J}\cos\phi$, $p=-\sqrt{2J}\sin\phi$ hace crecer $\phi$ con el flujo horario. El origen $J=0$ exige otra carta. Véase §[29.13](#fispm-c29-el-oscilador-en-coordenadas-de-acciuxf3n-y-uxe1ngulo).
+**Figura 29.4.** Con $m=\omega=1$, el área encerrada es $2\pi J$. La convención $q=\sqrt{2J}\cos\phi$, $p=-\sqrt{2J}\sin\phi$ hace crecer $\phi$ con el flujo horario. El origen $J=0$ exige otra carta. Véase §[13](#fispm-c29-el-oscilador-en-coordenadas-de-acciuxf3n-y-uxe1ngulo).
 
 </figcaption>
 
@@ -539,7 +539,7 @@ En una familia de osciladores desacoplados podemos aplicar la construcción a ca
 
 []{#fpm-i-29-s14}
 
-## 29.14. Lo local, lo global y la dinámica que sigue {#fispm-c29-lo-local-lo-global-y-la-dinuxe1mica-que-sigue}
+## 14. Lo local, lo global y la dinámica que sigue {#fispm-c29-lo-local-lo-global-y-la-dinuxe1mica-que-sigue}
 
 []{#fispm-t1-c29-d0007}
 
@@ -569,7 +569,7 @@ Tampoco la preservación simpléctica impone estabilidad. El hamiltoniano $H=\la
 
 []{#ejercicios}
 
-## 29.15. Ejercicios {#fispm-c29-ejercicios}
+## 15. Ejercicios {#fispm-c29-ejercicios}
 
 []{#fispm-t1-c29-e0001}
 
@@ -693,7 +693,7 @@ Tampoco la preservación simpléctica impone estabilidad. El hamiltoniano $H=\la
 
 []{#soluciones}
 
-## 29.16. Soluciones {#fispm-c29-soluciones}
+## 16. Soluciones {#fispm-c29-soluciones}
 
 **Solución del ejercicio 29.1.** Por derivación directa, $\{q^2,p^3\}=2q\,3p^2=6qp^2$. Para el segundo corchete, las derivadas del primer argumento son $p,q$ y las del segundo $2q,2p$. Por tanto
 
@@ -843,7 +843,7 @@ Para la partícula libre, $\mathcal DB_x=p_x-m(p_x/m)=0$ y lo mismo vale para $B
 
 []{#notas-y-lecturas}
 
-## 29.16. Notas y lecturas {#fispm-c29-notas-y-lecturas .unnumbered}
+## Notas y lecturas {#fispm-c29-notas-y-lecturas .unnumbered}
 
 El capítulo 28 proporciona las ecuaciones canónicas, su equivalencia regular con Euler--Lagrange y los cambios de referencia dependientes del tiempo. El capítulo 27 aporta las cargas de Noether; capítulo 24 reaparece en las energías modales. Las herramientas de formas diferenciales se han introducido en el grado necesario para construir la forma canónica, reconocer la cerradura y distinguir generadores locales y globales.
 

@@ -35,7 +35,7 @@ number-sections: false
 
 []{#prerrequisitos-y-propósito}
 
-## 7.0. Prerrequisitos y propósito {#fispm-c07-prerrequisitos-y-propuxf3sito .unnumbered}
+## Prerrequisitos y propósito {#fispm-c07-prerrequisitos-y-propuxf3sito .unnumbered}
 
 Se utilizan derivadas e integrales de una variable de M3 y la representación geométrica de M2 disponible en el capítulo 5. El capítulo 5 aporta posición, velocidad, aceleración y longitud; capítulo 6, las cotas para controlar aproximaciones. El capítulo estudia historias sobre una recta fija, reconstrucciones con datos iniciales, eventos e identificación a partir de posiciones. Las aceleraciones se prescriben como datos cinemáticos; su explicación dinámica se estudiará después.
 
@@ -45,7 +45,7 @@ Se utilizan derivadas e integrales de una variable de M3 y la representación ge
 
 []{#fpm-i-07-s01}
 
-## 7.1. Una recta orientada y una historia temporal {#fispm-c07-una-recta-orientada-y-una-historia-temporal}
+## 1. Una recta orientada y una historia temporal {#fispm-c07-una-recta-orientada-y-una-historia-temporal}
 
 Un móvil se desplaza a lo largo de un riel recto. Para describirlo podemos registrar una sucesión de posiciones, pero una lista de números sólo adquiere significado después de fijar dónde está el origen, qué sentido se considera positivo y qué instante corresponde a cada registro. La cifra $2$ no identifica por sí sola una posición; tampoco indica si el móvil está avanzando o regresando. El problema cinemático comienza con una representación que permita interpretar esos datos.
 
@@ -53,7 +53,7 @@ El capítulo 5 construyó la posición como un punto del espacio y la velocidad 
 
 []{#la-coordenada-que-representa-una-posición}
 
-### 7.1.1. La coordenada que representa una posición {#fispm-c07-la-coordenada-que-representa-una-posiciuxf3n}
+### La coordenada que representa una posición {#fispm-c07-la-coordenada-que-representa-una-posiciuxf3n}
 
 Sean $O$ un punto fijo y $e$ un vector unitario fijo, con $\|e\|=1$. La recta orientada correspondiente es $\ell=\{O+\xi e:\xi\in\mathbb R\}$. El signo de $\xi$ identifica uno de sus dos sentidos; su módulo mide la distancia al origen en la unidad de longitud elegida. El símbolo $O+\xi e$ expresa la traslación de un punto por un vector, no una suma de dos puntos.
 
@@ -73,7 +73,7 @@ Cambiar un origen fijo u orientar el eje en el sentido opuesto modifica la repre
 
 []{#de-la-componente-al-vector}
 
-### 7.1.2. De la componente al vector {#fispm-c07-de-la-componente-al-vector}
+### De la componente al vector {#fispm-c07-de-la-componente-al-vector}
 
 Usaremos $v(t)$ y $a(t)$ para las componentes escalares firmadas de velocidad y aceleración. Los vectores completos se escribirán $\mathbf v(t)$ y $\mathbf a(t)$. Esta convención importa: el signo de $v$ depende de la orientación, mientras que la rapidez es una magnitud no negativa.
 
@@ -89,7 +89,7 @@ Las dimensiones de las componentes son $[x]=L$, $[v]=L/T$ y $[a]=L/T^2$. Derivar
 
 []{#escalas-para-escribir-leyes-y-ejercicios}
 
-### 7.1.3. Escalas para escribir leyes y ejercicios {#fispm-c07-escalas-para-escribir-leyes-y-ejercicios}
+### Escalas para escribir leyes y ejercicios {#fispm-c07-escalas-para-escribir-leyes-y-ejercicios}
 
 Los polinomios son útiles para explorar movimientos, pero sus términos deben tener dimensiones compatibles. Para evitar expresiones como una suma de tiempo y tiempo al cuadrado sin coeficientes apropiados, elegimos escalas $T>0$ y $L>0$, y referencias fijas $t_0,x_*$. Escribimos $u=(t-t_0)/T$ y $x(t)=x_*+LX(u)$, donde $u$ y $X$ son adimensionales. Así se reutiliza la adimensionalización del capítulo 2, sin volver a desarrollar su teoría.
 
@@ -101,7 +101,7 @@ En los ejercicios, salvo indicación contraria, se toma $x_*=0$, de modo que $P(
 
 []{#ejercicios}
 
-### 7.1.4. Ejercicios {#fispm-c07-ejercicios}
+### Ejercicios {#fispm-c07-ejercicios}
 
 []{#fispm-t1-c07-e0001}
 
@@ -129,7 +129,7 @@ La representación en una recta fija importa las distinciones geométricas de [c
 
 []{#fpm-i-07-s02}
 
-## 7.2. Leer la gráfica de posición {#fispm-c07-leer-la-gruxe1fica-de-posiciuxf3n}
+## 2. Leer la gráfica de posición {#fispm-c07-leer-la-gruxe1fica-de-posiciuxf3n}
 
 Una curva dibujada en un plano puede sugerir que el móvil sube, baja o gira. Si los ejes del dibujo son tiempo y posición, esas impresiones deben reinterpretarse: el móvil sigue en una recta espacial. La curva muestra cómo cambia su coordenada con el reloj, no la forma de un camino en un espacio de dos dimensiones.
 
@@ -137,7 +137,7 @@ Esta diferencia también explica por qué una gráfica descendente no describe n
 
 []{#dos-conjuntos-con-información-diferente}
 
-### 7.2.1. Dos conjuntos con información diferente {#fispm-c07-dos-conjuntos-con-informaciuxf3n-diferente}
+### Dos conjuntos con información diferente {#fispm-c07-dos-conjuntos-con-informaciuxf3n-diferente}
 
 []{#fispm-t1-c07-d0002}
 
@@ -159,7 +159,7 @@ En las coordenadas normalizadas, la regla es $v=(L/T)X'$. La derivada $X'$ mide 
 
 []{#qué-autoriza-el-signo-de-la-derivada}
 
-### 7.2.2. Qué autoriza el signo de la derivada {#fispm-c07-quuxe9-autoriza-el-signo-de-la-derivada}
+### Qué autoriza el signo de la derivada {#fispm-c07-quuxe9-autoriza-el-signo-de-la-derivada}
 
 []{#fispm-t1-c07-p0002}
 
@@ -175,7 +175,7 @@ Tampoco se aplica esa condición sin revisar la posición temporal del punto. Un
 
 []{#una-lectura-con-signos-separados}
 
-### 7.2.3. Una lectura con signos separados {#fispm-c07-una-lectura-con-signos-separados}
+### Una lectura con signos separados {#fispm-c07-una-lectura-con-signos-separados}
 
 Consideremos $X(u)=2-u+u^2$ en $[0,1]$. La coordenada normalizada es positiva en todo el intervalo, porque $X(u)=(u-1/2)^2+7/4$. La velocidad normalizada es $V(u)=-1+2u$, que es negativa antes de $u=1/2$, nula allí y positiva después. El móvil primero se desplaza hacia coordenadas menores y luego hacia coordenadas mayores, sin cruzar el origen.
 
@@ -191,7 +191,7 @@ El mínimo se confirma por los signos de la derivada a ambos lados. No se ha ded
 
 []{#ejercicios-1}
 
-### 7.2.4. Ejercicios {#fispm-c07-ejercicios-1}
+### Ejercicios {#fispm-c07-ejercicios-1}
 
 []{#fispm-t1-c07-e0003}
 
@@ -219,7 +219,7 @@ La lectura de pendientes recupera las cantidades medias e instantáneas discutid
 
 []{#fpm-i-07-s03}
 
-## 7.3. Leer la gráfica de velocidad {#fispm-c07-leer-la-gruxe1fica-de-velocidad}
+## 3. Leer la gráfica de velocidad {#fispm-c07-leer-la-gruxe1fica-de-velocidad}
 
 Dos móviles pueden pasar por la misma posición con velocidades distintas. Una gráfica de posición permite reconocer esa diferencia a través de sus pendientes; la gráfica de velocidad la presenta directamente como una altura firmada. Sin embargo, esa altura ya no es una posición. Estar por debajo del eje horizontal significa tener componente negativa de velocidad, no estar necesariamente al lado negativo del origen espacial.
 
@@ -227,7 +227,7 @@ La gráfica $G_v=\{(t,v(t)):t\in I\}$ tiene tiempo en su eje horizontal y veloci
 
 []{#altura-pendiente-y-sentido}
 
-### 7.3.1. Altura, pendiente y sentido {#fispm-c07-altura-pendiente-y-sentido}
+### Altura, pendiente y sentido {#fispm-c07-altura-pendiente-y-sentido}
 
 Si $v$ es positiva durante un intervalo, proposición 7.2 asegura que la coordenada crece. Si es negativa, la coordenada decrece. La altura de $G_v$ informa el sentido de recorrido respecto de $e$ y su módulo informa la rapidez. Dos valores $v=3\,\mathrm{m/s}$ y $v=-3\,\mathrm{m/s}$ representan velocidades opuestas con la misma rapidez.
 
@@ -239,7 +239,7 @@ No hemos reconstruido una coordenada específica a partir de esa velocidad. Dist
 
 []{#lo-que-ocurre-en-un-cero}
 
-### 7.3.2. Lo que ocurre en un cero {#fispm-c07-lo-que-ocurre-en-un-cero}
+### Lo que ocurre en un cero {#fispm-c07-lo-que-ocurre-en-un-cero}
 
 En un instante interior $t_c$ con $v(t_c)=0$, el móvil está en reposo instantáneo. Para saber si invierte su sentido necesitamos información a ambos lados. Un valor de una función en un punto no contiene los signos de sus valores vecinos.
 
@@ -259,7 +259,7 @@ Hay tres situaciones elementales. Si $V(u)=u$, el signo cambia de negativo a pos
 
 []{#eventos-que-no-deben-confundirse}
 
-### 7.3.3. Eventos que no deben confundirse {#fispm-c07-eventos-que-no-deben-confundirse}
+### Eventos que no deben confundirse {#fispm-c07-eventos-que-no-deben-confundirse}
 
 La ley $X(u)=1+u$ en $[-2,0]$ cruza el origen en $u=-1$. Su velocidad normalizada es $1$ durante todo el intervalo, de modo que ese cruce ocurre sin reposo ni inversión. Estar en el origen no obliga a tener velocidad cero.
 
@@ -269,7 +269,7 @@ Estas leyes separan las preguntas «estar en el origen», «tener velocidad cero
 
 []{#ejercicios-2}
 
-### 7.3.4. Ejercicios {#fispm-c07-ejercicios-2}
+### Ejercicios {#fispm-c07-ejercicios-2}
 
 []{#fispm-t1-c07-e0005}
 
@@ -297,7 +297,7 @@ Conocer la gráfica de velocidad permite clasificar sentidos y reposos sin fijar
 
 []{#fpm-i-07-s04}
 
-## 7.4. Leer la gráfica de aceleración {#fispm-c07-leer-la-gruxe1fica-de-aceleraciuxf3n}
+## 4. Leer la gráfica de aceleración {#fispm-c07-leer-la-gruxe1fica-de-aceleraciuxf3n}
 
 Un móvil que se desplaza hacia coordenadas negativas puede tener aceleración negativa y aumentar su rapidez. La palabra «negativa» indica una orientación de la componente, mientras que «aumentar la rapidez» compara módulos. Confundir ambas operaciones conduce a interpretar una misma gráfica de dos maneras incompatibles.
 
@@ -305,7 +305,7 @@ La aceleración describe cómo varía la velocidad. Su gráfica tiene tiempo en 
 
 []{#la-altura-de-la-gráfica-de-aceleración}
 
-### 7.4.1. La altura de la gráfica de aceleración {#fispm-c07-la-altura-de-la-gruxe1fica-de-aceleraciuxf3n}
+### La altura de la gráfica de aceleración {#fispm-c07-la-altura-de-la-gruxe1fica-de-aceleraciuxf3n}
 
 Si $a(t)>0$ durante un intervalo, la componente $v(t)$ es estrictamente creciente bajo las hipótesis del valor medio. Puede pasar, por ejemplo, de $-4\,\mathrm{m/s}$ a $-2\,\mathrm{m/s}$: aumenta como número firmado, pero disminuye su módulo. También puede pasar de $2\,\mathrm{m/s}$ a $4\,\mathrm{m/s}$: ahora aumentan componente y rapidez.
 
@@ -317,7 +317,7 @@ Para $A=0$ en un intervalo, el valor medio implica que $v$ es constante en él. 
 
 []{#derivar-la-rapidez-con-sus-hipótesis}
 
-### 7.4.2. Derivar la rapidez con sus hipótesis {#fispm-c07-derivar-la-rapidez-con-sus-hipuxf3tesis}
+### Derivar la rapidez con sus hipótesis {#fispm-c07-derivar-la-rapidez-con-sus-hipuxf3tesis}
 
 La rapidez es $r(t)=|v(t)|$. El valor absoluto cambia de fórmula en cero. Antes de derivarlo debemos comprobar que la velocidad no se anula en el punto considerado.
 
@@ -350,7 +350,7 @@ Ninguna fila supone una fuerza. La tabla sólo traduce el cálculo del valor abs
 
 []{#el-instante-que-exige-otra-lectura}
 
-### 7.4.3. El instante que exige otra lectura {#fispm-c07-el-instante-que-exige-otra-lectura}
+### El instante que exige otra lectura {#fispm-c07-el-instante-que-exige-otra-lectura}
 
 Para $V(u)=u^2$, la rapidez normalizada es $R(u)=u^2$ también en cero, porque la componente nunca es negativa. Su derivada existe allí y vale cero, aunque la hipótesis $v\ne0$ de la proposición 7.3 no se cumpla. La conclusión se obtiene de la fórmula explícita de $R$, no de una aplicación de la proposición 7.3 fuera de su alcance.
 
@@ -362,7 +362,7 @@ La aceleración y la tasa de cambio de rapidez son cantidades distintas: la prim
 
 []{#ejercicios-3}
 
-### 7.4.4. Ejercicios {#fispm-c07-ejercicios-3}
+### Ejercicios {#fispm-c07-ejercicios-3}
 
 **Ejercicio 7.7.** Para $V(u)=-2-u$ en $[0,1]$, determina la aceleración física, el sentido de movimiento y la variación de la rapidez. Audita la frase «una aceleración negativa siempre frena».
 
@@ -388,7 +388,7 @@ Las gráficas de $x,v,a$ permiten así distinguir posición, sentido, rapidez y 
 
 []{#fpm-i-07-s05}
 
-## 7.5. Desplazamiento, distancia y áreas firmadas {#fispm-c07-desplazamiento-distancia-y-uxe1reas-firmadas}
+## 5. Desplazamiento, distancia y áreas firmadas {#fispm-c07-desplazamiento-distancia-y-uxe1reas-firmadas}
 
 Un móvil sale de una marca del riel, alcanza otra y regresa a la primera. El desplazamiento total es cero, pero el recorrido no lo es. Las gráficas de §3 permiten reconocer el cambio de sentido; para medir cuánto se acumula durante cada parte necesitamos integrar la velocidad. El signo que distingue ida y regreso debe conservarse para el desplazamiento y eliminarse para sumar recorrido.
 
@@ -400,7 +400,7 @@ Un móvil sale de una marca del riel, alcanza otra y regresa a la primera. El de
 
 <figcaption>
 
-**Figura 7.1.** Con $V=1-u$ entre $u=0$ y $2$, las áreas positiva y negativa se cancelan: $\Delta X=0$. La distancia normalizada suma sus módulos y vale uno. Véase §[7.5](#fispm-c07-desplazamiento-distancia-y-uxe1reas-firmadas).
+**Figura 7.1.** Con $V=1-u$ entre $u=0$ y $2$, las áreas positiva y negativa se cancelan: $\Delta X=0$. La distancia normalizada suma sus módulos y vale uno. Véase §[5](#fispm-c07-desplazamiento-distancia-y-uxe1reas-firmadas).
 
 </figcaption>
 
@@ -410,7 +410,7 @@ En esta sección $x$ es de clase $C^1$ sobre $[\alpha,\beta]$, con $\alpha<\beta
 
 []{#dos-cantidades-sobre-el-mismo-intervalo}
 
-### 7.5.1. Dos cantidades sobre el mismo intervalo {#fispm-c07-dos-cantidades-sobre-el-mismo-intervalo}
+### Dos cantidades sobre el mismo intervalo {#fispm-c07-dos-cantidades-sobre-el-mismo-intervalo}
 
 La componente del desplazamiento es $\Delta x=x(\beta)-x(\alpha)$; el vector completo es $\Delta x\,e$. La distancia recorrida es la longitud geométrica de esta historia temporal, no sólo la distancia entre sus extremos. Denotaremos ese recorrido por $d_{\mathrm{rec}}$. Su definición y su fórmula integral ya están disponibles en [capítulo 5, §13](fisica-para-matematicos-capitulo-5-tiempo-movimiento-y-curvas.md#fispm-c05-fuxf3rmula-de-longitud-de-arco-y-paruxe1metro-natural), proposición 7.28.
 
@@ -430,7 +430,7 @@ La continuidad permite pasar de una integral nula a una afirmación en cada punt
 
 []{#leer-un-área-con-unidades}
 
-### 7.5.2. Leer un área con unidades {#fispm-c07-leer-un-uxe1rea-con-unidades}
+### Leer un área con unidades {#fispm-c07-leer-un-uxe1rea-con-unidades}
 
 El área firmada entre la gráfica de $v$ y el eje temporal representa $\Delta x$: la parte bajo el eje aporta signo negativo. El área geométrica total representa $d_{\mathrm{rec}}$. En ambos casos las unidades son $(\mathrm{m/s})\mathrm s=\mathrm m$. Una superficie medida en centímetros cuadrados del papel necesita las escalas de ambos ejes para convertirse en una longitud física.
 
@@ -444,13 +444,13 @@ En la notación normalizada de §1, si $u_\alpha=(\alpha-t_0)/T$ y $u_\beta=(\be
 
 []{#un-regreso-que-no-cancela-todo}
 
-### 7.5.3. Un regreso que no cancela todo {#fispm-c07-un-regreso-que-no-cancela-todo}
+### Un regreso que no cancela todo {#fispm-c07-un-regreso-que-no-cancela-todo}
 
 Para $V(u)=1-u$ en $[0,3]$, la contribución positiva entre $0$ y $1$ es $1/2$; el módulo de la contribución negativa entre $1$ y $3$ es $2$. Así, $\Delta x=-3L/2$ y $d_{\mathrm{rec}}=5L/2$. El móvil termina del lado negativo respecto de su posición inicial, pero recorrió también un tramo en el sentido positivo. El exceso de recorrido sobre $|\Delta x|$ registra esa ida que luego fue deshecha.
 
 []{#ejercicios-4}
 
-### 7.5.4. Ejercicios {#fispm-c07-ejercicios-4}
+### Ejercicios {#fispm-c07-ejercicios-4}
 
 []{#fispm-t1-c07-e0009}
 
@@ -474,7 +474,7 @@ Las integrales de esta sección determinan diferencias de posición. Para determ
 
 []{#fpm-i-07-s06}
 
-## 7.6. Reconstruir posición desde velocidad {#fispm-c07-reconstruir-posiciuxf3n-desde-velocidad}
+## 6. Reconstruir posición desde velocidad {#fispm-c07-reconstruir-posiciuxf3n-desde-velocidad}
 
 Dos móviles separados sobre un riel pueden tener la misma velocidad en cada instante. Si sus gráficas de velocidad coinciden, ambos acumulan el mismo desplazamiento entre dos tiempos, pero eso no obliga a que ocupen la misma posición. Integrar la velocidad selecciona diferencias; una posición conocida fija la referencia que falta.
 
@@ -482,7 +482,7 @@ La dificultad aparece incluso con una velocidad constante de $1\,\mathrm{m/s}$. 
 
 []{#el-dato-que-selecciona-una-historia}
 
-### 7.6.1. El dato que selecciona una historia {#fispm-c07-el-dato-que-selecciona-una-historia}
+### El dato que selecciona una historia {#fispm-c07-el-dato-que-selecciona-una-historia}
 
 []{#fispm-t1-c07-d0004}
 
@@ -506,7 +506,7 @@ La hipótesis de continuidad garantiza una posición $C^1$. Una función meramen
 
 []{#una-primitiva-no-es-todavía-una-posición-seleccionada}
 
-### 7.6.2. Una primitiva no es todavía una posición seleccionada {#fispm-c07-una-primitiva-no-es-todavuxeda-una-posiciuxf3n-seleccionada}
+### Una primitiva no es todavía una posición seleccionada {#fispm-c07-una-primitiva-no-es-todavuxeda-una-posiciuxf3n-seleccionada}
 
 Si $F'=v$ en $I$, proposición 7.5 puede escribirse como $x(t)=F(t)+x_0-F(t_0)$. El valor $F(t_0)$ no debe omitirse salvo que sea cero. La familia $F+C$ reúne todas las posiciones con esa velocidad; el dato inicial fija $C=x_0-F(t_0)$.
 
@@ -518,7 +518,7 @@ El procedimiento de reconstrucción por integrales se coteja con Kleppner y Kole
 
 []{#ejercicios-5}
 
-### 7.6.3. Ejercicios {#fispm-c07-ejercicios-5}
+### Ejercicios {#fispm-c07-ejercicios-5}
 
 []{#fispm-t1-c07-e0011}
 
@@ -544,7 +544,7 @@ La reconstrucción desde velocidad queda determinada por un solo valor de posici
 
 []{#fpm-i-07-s07}
 
-## 7.7. Reconstruir movimiento desde aceleración {#fispm-c07-reconstruir-movimiento-desde-aceleraciuxf3n}
+## 7. Reconstruir movimiento desde aceleración {#fispm-c07-reconstruir-movimiento-desde-aceleraciuxf3n}
 
 Una gráfica de aceleración informa cuánto cambia la velocidad entre dos instantes. No indica por sí sola qué velocidad tenía el móvil al comienzo, ni dónde estaba. Un mismo cambio de velocidad puede superponerse a velocidades iniciales distintas; incluso después de seleccionar la velocidad, queda la libertad de trasladar la posición.
 
@@ -552,7 +552,7 @@ La reconstrucción sigue las dos relaciones ya establecidas: $v'=a$ y $x'=v$. In
 
 []{#dos-integraciones-con-datos-en-un-mismo-instante}
 
-### 7.7.1. Dos integraciones con datos en un mismo instante {#fispm-c07-dos-integraciones-con-datos-en-un-mismo-instante}
+### Dos integraciones con datos en un mismo instante {#fispm-c07-dos-integraciones-con-datos-en-un-mismo-instante}
 
 Sea $I=[\alpha,\beta]$, con $\alpha<\beta$, y $t_0\in I$. La regularidad que adoptamos para el dato es $a\in C(I)$. La velocidad construida será $C^1$ y la posición será $C^2$, con derivadas laterales en extremos según la convención de §5.
 
@@ -572,7 +572,7 @@ Las unidades también se acumulan por etapas. La integral de aceleración tiene 
 
 []{#qué-se-pierde-al-omitir-un-dato}
 
-### 7.7.2. Qué se pierde al omitir un dato {#fispm-c07-quuxe9-se-pierde-al-omitir-un-dato}
+### Qué se pierde al omitir un dato {#fispm-c07-quuxe9-se-pierde-al-omitir-un-dato}
 
 Si $x$ es una historia con aceleración $a$, las funciones $$y(t)=x(t)+c+b(t-t_0)$$ tienen la misma aceleración, para cualesquiera constantes $c$ de longitud y $b$ de velocidad. Su posición inicial cambia en $c$ y su velocidad inicial en $b$. Recíprocamente, si $y''=x''$, el valor medio aplicado primero a $y'-x'$ muestra que esa diferencia es una constante $b$; aplicado después a $y-x-b(t-t_0)$ muestra que la diferencia restante es una constante $c$. Ésa es toda la libertad disponible, no sólo una familia de ejemplos.
 
@@ -586,7 +586,7 @@ Esta lectura de las constantes concuerda con Shankar, *Fundamentals of Physics I
 
 []{#un-dato-de-aceleración-variable}
 
-### 7.7.3. Un dato de aceleración variable {#fispm-c07-un-dato-de-aceleraciuxf3n-variable}
+### Un dato de aceleración variable {#fispm-c07-un-dato-de-aceleraciuxf3n-variable}
 
 Consideremos $A(u)=1-u$ en $[0,2]$, con $V(0)=2$ y $X(0)=-1$. Integrar primero da $V(u)=2+u-u^2/2$. Integrar esa función da $X(u)=-1+2u+u^2/2-u^3/6$. Las derivadas $X'=V$ y $V'=A$ verifican la reconstrucción, junto con los dos datos en cero.
 
@@ -594,7 +594,7 @@ La gráfica de aceleración cruza el eje en $u=1$. Allí la velocidad pasa de cr
 
 []{#ejercicios-6}
 
-### 7.7.4. Ejercicios {#fispm-c07-ejercicios-6}
+### Ejercicios {#fispm-c07-ejercicios-6}
 
 []{#fispm-t1-c07-e0013}
 
@@ -622,7 +622,7 @@ Las dos constantes que seleccionan una historia tienen significados diferentes y
 
 []{#fpm-i-07-s08}
 
-## 7.8. Movimiento uniforme {#fispm-c07-movimiento-uniforme}
+## 8. Movimiento uniforme {#fispm-c07-movimiento-uniforme}
 
 Un registro muestra que la coordenada de un móvil aumenta la misma cantidad en cada segundo. Otro muestra que disminuye la misma cantidad. Ambos pueden describirse mediante una velocidad constante; el signo distingue el sentido y el módulo fija cuánto recorrido se acumula por unidad de tiempo. Si la cantidad por segundo es cero, la misma familia incluye el reposo.
 
@@ -630,7 +630,7 @@ Hay que distinguir una hipótesis válida durante un intervalo de una coincidenc
 
 []{#la-condición-y-su-ley-temporal}
 
-### 7.8.1. La condición y su ley temporal {#fispm-c07-la-condiciuxf3n-y-su-ley-temporal}
+### La condición y su ley temporal {#fispm-c07-la-condiciuxf3n-y-su-ley-temporal}
 
 []{#fispm-t1-c07-d0005}
 
@@ -650,7 +650,7 @@ Cada dirección tiene una tarea propia: la integral produce la ley a partir de l
 
 []{#representaciones-de-la-misma-historia}
 
-### 7.8.2. Representaciones de la misma historia {#fispm-c07-representaciones-de-la-misma-historia}
+### Representaciones de la misma historia {#fispm-c07-representaciones-de-la-misma-historia}
 
 Para un movimiento uniforme, la gráfica temporal de posición es un segmento de recta o parte de una recta, según el dominio; la gráfica de velocidad es horizontal y la de aceleración, cuando se considera, está sobre el eje temporal. Esas gráficas se relacionan mediante derivadas, aunque sus alturas representen magnitudes diferentes.
 
@@ -660,7 +660,7 @@ Por ejemplo, en $[0,4\,\mathrm s]$, la ley $x(t)=3\,\mathrm m-(2\,\mathrm{m/s})t
 
 []{#seleccionar-una-ley-no-verifica-la-hipótesis}
 
-### 7.8.3. Seleccionar una ley no verifica la hipótesis {#fispm-c07-seleccionar-una-ley-no-verifica-la-hipuxf3tesis}
+### Seleccionar una ley no verifica la hipótesis {#fispm-c07-seleccionar-una-ley-no-verifica-la-hipuxf3tesis}
 
 Si se sabe de antemano que una historia es uniforme y se conocen $x(t_1)=x_1$, $x(t_2)=x_2$ para $t_1<t_2$, proposición 7.7 obliga a $$v_0=\frac{x_2-x_1}{t_2-t_1},\qquad x(t)=x_1+v_0(t-t_1).$$ Dentro de esa familia hay una historia única. Sin la hipótesis de uniformidad, el cociente sigue siendo una velocidad media, pero deja abierta la forma de la función entre las observaciones.
 
@@ -686,7 +686,7 @@ El movimiento uniforme queda caracterizado por una condición temporal, una ley 
 
 []{#fpm-i-07-s09}
 
-## 7.9. Aceleración constante {#fispm-c07-aceleraciuxf3n-constante}
+## 9. Aceleración constante {#fispm-c07-aceleraciuxf3n-constante}
 
 Un móvil puede aumentar su componente de velocidad en la misma cantidad durante cada segundo, o disminuirla a un ritmo constante. La condición se refiere al cambio de velocidad, no al cambio de posición. Si se conoce además una posición y una velocidad en un instante, las dos integraciones de §7 seleccionan una historia cuadrática.
 
@@ -698,7 +698,7 @@ Un móvil puede aumentar su componente de velocidad en la misma cantidad durante
 
 <figcaption>
 
-**Figura 7.2.** Para $X=u^2/2$ en $0\le u\le2$, la línea continua representa $X$, la discontinua $V=u$ y la punteada $A=1$. Son magnitudes normalizadas distintas, ligadas por derivación. Véase §[7.9](#fispm-c07-aceleraciuxf3n-constante).
+**Figura 7.2.** Para $X=u^2/2$ en $0\le u\le2$, la línea continua representa $X$, la discontinua $V=u$ y la punteada $A=1$. Son magnitudes normalizadas distintas, ligadas por derivación. Véase §[9](#fispm-c07-aceleraciuxf3n-constante).
 
 </figcaption>
 
@@ -708,7 +708,7 @@ Esa forma temporal es una consecuencia de la aceleración prescrita. No explica 
 
 []{#de-la-condición-a-las-leyes-temporales}
 
-### 7.9.1. De la condición a las leyes temporales {#fispm-c07-de-la-condiciuxf3n-a-las-leyes-temporales}
+### De la condición a las leyes temporales {#fispm-c07-de-la-condiciuxf3n-a-las-leyes-temporales}
 
 []{#fispm-t1-c07-d0006}
 
@@ -728,7 +728,7 @@ Las unidades de cada término de posición son longitud: $v_0(t-t_0)$ y $a_0(t-t
 
 []{#inversión-recorrido-y-dominio}
 
-### 7.9.2. Inversión, recorrido y dominio {#fispm-c07-inversiuxf3n-recorrido-y-dominio}
+### Inversión, recorrido y dominio {#fispm-c07-inversiuxf3n-recorrido-y-dominio}
 
 Para $a_0\ne0$, la única candidata a un cero de velocidad es $t_c=t_0-v_0/a_0$. Si está en el interior de $I$, la función afín $v$ tiene signos opuestos a ambos lados y definición 7.3 certifica una inversión. Si cae fuera del dominio, la historia declarada no contiene ese evento. Un cero en un extremo no proporciona por sí solo los dos semientornos que exige definición 7.3.
 
@@ -744,7 +744,7 @@ El control de estas fórmulas se coteja con Shankar, *Fundamentals of Physics I*
 
 []{#ejercicios-7}
 
-### 7.9.3. Ejercicios {#fispm-c07-ejercicios-7}
+### Ejercicios {#fispm-c07-ejercicios-7}
 
 []{#fispm-t1-c07-e0016}
 
@@ -778,7 +778,7 @@ La forma cuadrática queda vinculada a una hipótesis temporal concreta. Cuando 
 
 []{#fpm-i-07-s10}
 
-## 7.10. Historias definidas por tramos {#fispm-c07-historias-definidas-por-tramos}
+## 10. Historias definidas por tramos {#fispm-c07-historias-definidas-por-tramos}
 
 Una descripción puede prescribir aceleración constante durante una parte del recorrido y otra aceleración después. Integrar cada expresión por separado produce fórmulas, pero todavía falta comprobar si representan una sola historia: al llegar al instante de cambio, ambas deben asignar la misma posición. Si además se pretende una velocidad clásica en ese instante, las pendientes también deben coincidir.
 
@@ -790,7 +790,7 @@ Una descripción puede prescribir aceleración constante durante una parte del r
 
 <figcaption>
 
-**Figura 7.3.** La ley $v=1$ hasta $t=1$ y $v=2-t$ después es continua. La aceleración cambia de $0$ a $-1$ en el empalme y no tiene allí un valor clásico único. No hay salto de posición ni impulso requerido por un salto de velocidad. Véase §[7.10](#fispm-c07-historias-definidas-por-tramos).
+**Figura 7.3.** La ley $v=1$ hasta $t=1$ y $v=2-t$ después es continua. La aceleración cambia de $0$ a $-1$ en el empalme y no tiene allí un valor clásico único. No hay salto de posición ni impulso requerido por un salto de velocidad. Véase §[10](#fispm-c07-historias-definidas-por-tramos).
 
 </figcaption>
 
@@ -800,7 +800,7 @@ Los valores finales de un tramo se convierten en datos del siguiente. Esa transf
 
 []{#una-función-construida-con-varios-intervalos}
 
-### 7.10.1. Una función construida con varios intervalos {#fispm-c07-una-funciuxf3n-construida-con-varios-intervalos}
+### Una función construida con varios intervalos {#fispm-c07-una-funciuxf3n-construida-con-varios-intervalos}
 
 []{#fispm-t1-c07-d0007}
 
@@ -812,7 +812,7 @@ Una fórmula del segundo tramo suele escribirse con tiempo local $w=t-\tau_j$. E
 
 []{#qué-exige-una-velocidad-en-la-unión}
 
-### 7.10.2. Qué exige una velocidad en la unión {#fispm-c07-quuxe9-exige-una-velocidad-en-la-uniuxf3n}
+### Qué exige una velocidad en la unión {#fispm-c07-quuxe9-exige-una-velocidad-en-la-uniuxf3n}
 
 []{#fispm-t1-c07-p0009}
 
@@ -834,7 +834,7 @@ No se introduce una aceleración generalizada para reparar una esquina ni se int
 
 []{#transferir-datos-en-lugar-de-reiniciar}
 
-### 7.10.3. Transferir datos en lugar de reiniciar {#fispm-c07-transferir-datos-en-lugar-de-reiniciar}
+### Transferir datos en lugar de reiniciar {#fispm-c07-transferir-datos-en-lugar-de-reiniciar}
 
 Consideremos, en tiempo normalizado, $X(u)=2+u$ para $0\le u\le1$. Al llegar a la unión, $X(1)=3$ y $V(1)=1$. Si el segundo tramo prescribe $A=2$, escribir $w=u-1$ y usar esos datos da $X=3+w+w^2$ y $V=1+2w$. La nueva fórmula conserva posición y velocidad en $w=0$. Elegir en cambio $X=w^2$ produciría un salto de posición; elegir $X=3+w^2$ conservaría posición, pero cambiaría la pendiente de $1$ a $0$.
 
@@ -844,7 +844,7 @@ Para el recorrido, una historia $C^1$ ya está cubierta por la proposición 7.4.
 
 []{#ejercicios-8}
 
-### 7.10.4. Ejercicios {#fispm-c07-ejercicios-8}
+### Ejercicios {#fispm-c07-ejercicios-8}
 
 []{#fispm-t1-c07-e0019}
 
@@ -880,7 +880,7 @@ Una historia por tramos queda determinada por sus leyes, sus dominios y sus unio
 
 []{#fpm-i-07-s11}
 
-## 7.11. Eventos, encuentros y admisibilidad {#fispm-c07-eventos-encuentros-y-admisibilidad}
+## 11. Eventos, encuentros y admisibilidad {#fispm-c07-eventos-encuentros-y-admisibilidad}
 
 Conocer una ley temporal permite preguntar cuándo el móvil alcanza una marca del riel. La incógnita pasa a ser el tiempo: se resuelve una ecuación de posición. Pero las raíces algebraicas sólo son candidatas. Cada una debe pertenecer al dominio de la historia y al tramo cuya fórmula se utilizó.
 
@@ -892,7 +892,7 @@ Conocer una ley temporal permite preguntar cuándo el móvil alcanza una marca d
 
 <figcaption>
 
-**Figura 7.4.** La ley $X=2u-u^2/2$ alcanza un máximo en $u=2$, donde $V=0$ y $A=-1$. La continuación después del evento invierte el sentido; imponer detención permanente sería otro modelo. Véase §[7.11](#fispm-c07-eventos-encuentros-y-admisibilidad).
+**Figura 7.4.** La ley $X=2u-u^2/2$ alcanza un máximo en $u=2$, donde $V=0$ y $A=-1$. La continuación después del evento invierte el sentido; imponer detención permanente sería otro modelo. Véase §[11](#fispm-c07-eventos-encuentros-y-admisibilidad).
 
 </figcaption>
 
@@ -902,7 +902,7 @@ Un encuentro requiere además comparar dos posiciones en un mismo instante, marc
 
 []{#instantes-de-un-evento-de-posición}
 
-### 7.11.1. Instantes de un evento de posición {#fispm-c07-instantes-de-un-evento-de-posiciuxf3n}
+### Instantes de un evento de posición {#fispm-c07-instantes-de-un-evento-de-posiciuxf3n}
 
 []{#fispm-t1-c07-d0008}
 
@@ -916,7 +916,7 @@ Si la ley está definida por tramos, se resuelve $x_j(t)=\xi$ en cada dominio $[
 
 []{#encuentros-en-una-descripción-común}
 
-### 7.11.2. Encuentros en una descripción común {#fispm-c07-encuentros-en-una-descripciuxf3n-comuxfan}
+### Encuentros en una descripción común {#fispm-c07-encuentros-en-una-descripciuxf3n-comuxfan}
 
 []{#fispm-t1-c07-d0009}
 
@@ -930,7 +930,7 @@ Para dos leyes afines, la ecuación de encuentro se reduce a una igualdad lineal
 
 []{#la-raíz-y-el-dominio-tienen-funciones-distintas}
 
-### 7.11.3. La raíz y el dominio tienen funciones distintas {#fispm-c07-la-rauxedz-y-el-dominio-tienen-funciones-distintas}
+### La raíz y el dominio tienen funciones distintas {#fispm-c07-la-rauxedz-y-el-dominio-tienen-funciones-distintas}
 
 Supongamos que una ley cuadrática se adopta sólo hasta un tiempo final conocido. El polinomio puede tener otra raíz más allá de ese tiempo; esa raíz pertenece a su prolongación algebraica, no al conjunto de eventos de la historia declarada. Del mismo modo, un tiempo negativo es admisible si está dentro del intervalo elegido: el origen del reloj no impone una prohibición física a todo tiempo anterior.
 
@@ -940,7 +940,7 @@ Una igualdad de posición en un nodo tampoco garantiza velocidades iguales. El e
 
 []{#ejercicios-9}
 
-### 7.11.4. Ejercicios {#fispm-c07-ejercicios-9}
+### Ejercicios {#fispm-c07-ejercicios-9}
 
 []{#fispm-t1-c07-e0022}
 
@@ -968,7 +968,7 @@ La búsqueda de eventos entrega conjuntos de tiempos acompañados de dominio y, 
 
 []{#fpm-i-07-s12}
 
-## 7.12. Problemas inversos e información faltante {#fispm-c07-problemas-inversos-e-informaciuxf3n-faltante}
+## 12. Problemas inversos e información faltante {#fispm-c07-problemas-inversos-e-informaciuxf3n-faltante}
 
 Hasta aquí hemos partido de una ley de velocidad o aceleración y de los datos iniciales que seleccionan una historia. Otra situación comienza con posiciones registradas en algunos instantes. Se desea recuperar la ley que las produjo. La pregunta cambia: ya no integramos una función temporal conocida, sino que examinamos qué información permiten determinar unas condiciones finitas.
 
@@ -980,7 +980,7 @@ Hasta aquí hemos partido de una ley de velocidad o aceleración y de los datos 
 
 <figcaption>
 
-**Figura 7.5.** Las historias $x=t$ y $x=1+t$ comparten velocidad y aceleración. Para seleccionar una de ellas hace falta un dato de posición. Todas las variables del ejemplo están normalizadas. Véase §[7.12](#fispm-c07-problemas-inversos-e-informaciuxf3n-faltante).
+**Figura 7.5.** Las historias $x=t$ y $x=1+t$ comparten velocidad y aceleración. Para seleccionar una de ellas hace falta un dato de posición. Todas las variables del ejemplo están normalizadas. Véase §[12](#fispm-c07-problemas-inversos-e-informaciuxf3n-faltante).
 
 </figcaption>
 
@@ -990,7 +990,7 @@ Tres posiciones pueden fijar los coeficientes de un polinomio cuadrático. Sin e
 
 []{#identificar-dentro-de-una-familia}
 
-### 7.12.1. Identificar dentro de una familia {#fispm-c07-identificar-dentro-de-una-familia}
+### Identificar dentro de una familia {#fispm-c07-identificar-dentro-de-una-familia}
 
 Trabajamos con las escalas de §1: $u=(t-t_0)/T$ y $x=x_*+LX(u)$, con $L,T>0$. Los datos son pares $(u_j,y_j)$, donde $y_j$ es una posición normalizada. No sumamos potencias de tiempo físico a una longitud: los coeficientes y la variable de los polinomios siguientes son adimensionales.
 
@@ -1004,7 +1004,7 @@ Una incompatibilidad puede aparecer antes de intentar un ajuste. Dos posiciones 
 
 []{#tres-tiempos-distintos-y-una-ley-cuadrática}
 
-### 7.12.2. Tres tiempos distintos y una ley cuadrática {#fispm-c07-tres-tiempos-distintos-y-una-ley-cuadruxe1tica}
+### Tres tiempos distintos y una ley cuadrática {#fispm-c07-tres-tiempos-distintos-y-una-ley-cuadruxe1tica}
 
 []{#fispm-t1-c07-p0010}
 
@@ -1018,7 +1018,7 @@ La familia incluye polinomios afines y constantes; «grado a lo sumo dos» no ex
 
 []{#qué-no-determina-una-lista-finita-de-posiciones}
 
-### 7.12.3. Qué no determina una lista finita de posiciones {#fispm-c07-quuxe9-no-determina-una-lista-finita-de-posiciones}
+### Qué no determina una lista finita de posiciones {#fispm-c07-quuxe9-no-determina-una-lista-finita-de-posiciones}
 
 []{#fispm-t1-c07-p0011}
 
@@ -1038,7 +1038,7 @@ El contraejemplo deja libres sólo condiciones de posición. Si se conocen adem�
 
 []{#ejercicios-10}
 
-### 7.12.4. Ejercicios {#fispm-c07-ejercicios-10}
+### Ejercicios {#fispm-c07-ejercicios-10}
 
 []{#fispm-t1-c07-e0024}
 
@@ -1072,7 +1072,7 @@ La información faltante puede proceder de una hipótesis de modelo todavía no 
 
 []{#fpm-i-07-s13}
 
-## 7.13. Aproximación cinemática y horizonte de validez {#fispm-c07-aproximaciuxf3n-cinemuxe1tica-y-horizonte-de-validez}
+## 13. Aproximación cinemática y horizonte de validez {#fispm-c07-aproximaciuxf3n-cinemuxe1tica-y-horizonte-de-validez}
 
 Una ley simplificada puede describir bien la posición durante un intervalo breve y perder precisión al prolongarla. Una diferencia pequeña de velocidad, mantenida durante mucho tiempo, acumula desplazamiento; una diferencia de aceleración altera primero la velocidad y después la posición. La pregunta útil es cuánto tiempo garantiza la información disponible que el error permanezca bajo la tolerancia elegida.
 
@@ -1080,7 +1080,7 @@ El capítulo 6 §6 separó error y residuo, y §§7--8 construyeron la linealiza
 
 []{#presupuesto-y-horizonte}
 
-### 7.13.1. Presupuesto y horizonte {#fispm-c07-presupuesto-y-horizonte}
+### Presupuesto y horizonte {#fispm-c07-presupuesto-y-horizonte}
 
 []{#fispm-t1-c07-d0011}
 
@@ -1094,7 +1094,7 @@ Estas son cotas deterministas entre historias. No constituyen incertidumbres exp
 
 []{#integrar-una-diferencia-de-velocidad}
 
-### 7.13.2. Integrar una diferencia de velocidad {#fispm-c07-integrar-una-diferencia-de-velocidad}
+### Integrar una diferencia de velocidad {#fispm-c07-integrar-una-diferencia-de-velocidad}
 
 []{#fispm-t1-c07-p0012}
 
@@ -1108,7 +1108,7 @@ Si $\delta_v>0$ y $\varepsilon_x\ge\delta_x$, basta elegir $$H\le\min\left\{H_0,
 
 []{#integrar-dos-veces-una-diferencia-de-aceleración}
 
-### 7.13.3. Integrar dos veces una diferencia de aceleración {#fispm-c07-integrar-dos-veces-una-diferencia-de-aceleraciuxf3n}
+### Integrar dos veces una diferencia de aceleración {#fispm-c07-integrar-dos-veces-una-diferencia-de-aceleraciuxf3n}
 
 []{#fispm-t1-c07-p0013}
 
@@ -1122,7 +1122,7 @@ Los tres términos del presupuesto tienen unidades de longitud. Para coeficiente
 
 []{#la-recta-tangente-como-historia-aproximada}
 
-### 7.13.4. La recta tangente como historia aproximada {#fispm-c07-la-recta-tangente-como-historia-aproximada}
+### La recta tangente como historia aproximada {#fispm-c07-la-recta-tangente-como-historia-aproximada}
 
 Tomemos la candidata $\widetilde x(t_0+h)=x(t_0)+v(t_0)h$. Tiene los mismos datos iniciales y aceleración cero. Si $x\in C^2$ y $|a(t)|\le M$ en el intervalo de control, proposición 7.13 da $$|x(t_0+h)-x(t_0)-v(t_0)h|\le\frac M2 h^2.$$ Es la aplicación temporal de la cota del resto del capítulo 6 §8, obtenida aquí por dos integraciones. La posición base y la velocidad base quedan conservadas; se controla lo que se pierde al mantener fija la velocidad.
 
@@ -1134,7 +1134,7 @@ Referencia interna: [capítulo 6](fisica-para-matematicos-capitulo-6-modelos-apr
 
 []{#ejercicios-11}
 
-### 7.13.5. Ejercicios {#fispm-c07-ejercicios-11}
+### Ejercicios {#fispm-c07-ejercicios-11}
 
 []{#fispm-t1-c07-e0027}
 
@@ -1162,7 +1162,7 @@ En cambio, las historias $X=\widetilde X=0$ satisfacen las mismas cotas disponib
 
 []{#fpm-i-07-s14}
 
-## 7.14. Reconstruir y auditar una historia completa {#fispm-c07-reconstruir-y-auditar-una-historia-completa}
+## 14. Reconstruir y auditar una historia completa {#fispm-c07-reconstruir-y-auditar-una-historia-completa}
 
 Una reconstrucción reúne decisiones que pueden comprobarse por separado. El origen y el reloj permiten interpretar una coordenada; la regularidad autoriza las derivadas; los datos iniciales seleccionan una historia dentro de la clase prescrita. Después vienen las preguntas sobre eventos y recorrido. Si se usa una aproximación, su dominio puede ser menor que el de la historia de referencia.
 
@@ -1170,7 +1170,7 @@ Para cerrar el trabajo hace falta conservar la relación entre esas decisiones. 
 
 []{#una-ficha-que-permita-recuperar-el-razonamiento}
 
-### 7.14.1. Una ficha que permita recuperar el razonamiento {#fispm-c07-una-ficha-que-permita-recuperar-el-razonamiento}
+### Una ficha que permita recuperar el razonamiento {#fispm-c07-una-ficha-que-permita-recuperar-el-razonamiento}
 
 []{#fispm-t1-c07-d0012}
 
@@ -1188,7 +1188,7 @@ Referencia interna: [capítulo 6](fisica-para-matematicos-capitulo-6-modelos-apr
 
 []{#ejercicios-de-síntesis}
 
-### 7.14.2. Ejercicios de síntesis {#fispm-c07-ejercicios-de-suxedntesis}
+### Ejercicios de síntesis {#fispm-c07-ejercicios-de-suxedntesis}
 
 []{#fispm-t1-c07-e0029}
 
@@ -1244,11 +1244,11 @@ La ficha permite comprobar cada conclusión desde el modelo declarado: derivar v
 
 []{#bibliografía-citada}
 
-## 7.14. Bibliografía citada {#fispm-c07-bibliografuxeda-citada .unnumbered}
+## Bibliografía citada {#fispm-c07-bibliografuxeda-citada .unnumbered}
 
 []{#canon-interno-citado}
 
-### 7.14.3. Canon interno citado {#fispm-c07-canon-interno-citado}
+### Canon interno citado {#fispm-c07-canon-interno-citado}
 
 - *Física para matemáticos*, Tomo I, capítulo 2, «Magnitudes, unidades y análisis dimensional». [capítulo 2](fisica-para-matematicos-capitulo-2-magnitudes-unidades-y-analisis-dimensional.md#fispm-c02-magnitudes-unidades-y-anuxe1lisis-dimensional). Localizadores usados: §§9--10, interfaz de escalas y adimensionalización citada en §1.
 
@@ -1258,7 +1258,7 @@ La ficha permite comprobar cada conclusión desde el modelo declarado: derivar v
 
 []{#obra-externa-citada}
 
-### 7.14.4. Obra externa citada {#fispm-c07-obra-externa-citada}
+### Obra externa citada {#fispm-c07-obra-externa-citada}
 
 - Shankar, R. *Fundamentals of Physics I: Mechanics, Relativity, and Thermodynamics*. Expanded Edition. Yale University Press, 2019. Cap. 1, §1.3, pp. 4--6, cantidades medias e instantáneas, citado en §2; cap. 1 §1.4, pp. 6--8, significado de las dos constantes de integración y datos iniciales, citado en §7; pp. 6--10, leyes de aceleración constante, citadas en §9; cap. 1 §1.5, pp. 10--12, dominio y raíces adicionales, citado en §11.
 

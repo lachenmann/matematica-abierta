@@ -47,7 +47,7 @@ Se presuponen los vínculos elementales del capítulo 11, trabajo y energía del
 
 []{#fpm-i-25-s01}
 
-## 25.1. Las posiciones que un sistema puede adoptar {#fispm-c25-las-posiciones-que-un-sistema-puede-adoptar}
+## 1. Las posiciones que un sistema puede adoptar {#fispm-c25-las-posiciones-que-un-sistema-puede-adoptar}
 
 Para $N$ partículas, reunamos sus posiciones cartesianas en $r\in\mathbb R^{3N}$. Una restricción holónoma se expresa mediante ecuaciones $g_\alpha(r,t)=0$, con $\alpha=1,\ldots,s$. En un instante fijo, esas ecuaciones seleccionan las configuraciones admisibles.
 
@@ -73,7 +73,7 @@ El estado mecánico necesita también velocidades. El espacio de configuraciones
 
 []{#fpm-i-25-s02}
 
-## 25.2. Desplazar virtualmente y avanzar en el tiempo {#fispm-c25-desplazar-virtualmente-y-avanzar-en-el-tiempo}
+## 2. Desplazar virtualmente y avanzar en el tiempo {#fispm-c25-desplazar-virtualmente-y-avanzar-en-el-tiempo}
 
 []{#fispm-t1-c25-d0002}
 
@@ -89,7 +89,7 @@ Para un movimiento real $r(t)=R(q(t),t)$, en cambio, $\dot r=J\dot q+R_t, \qquad
 
 <figcaption>
 
-**Figura 25.1.** Con tiempo fijo y longitud de péndulo fija, $\delta r$ es tangente al círculo. La tensión radial realiza trabajo virtual nulo; esta afirmación depende de la idealidad del vínculo. Véase §[25.2](#fispm-c25-desplazar-virtualmente-y-avanzar-en-el-tiempo).
+**Figura 25.1.** Con tiempo fijo y longitud de péndulo fija, $\delta r$ es tangente al círculo. La tensión radial realiza trabajo virtual nulo; esta afirmación depende de la idealidad del vínculo. Véase §[2](#fispm-c25-desplazar-virtualmente-y-avanzar-en-el-tiempo).
 
 </figcaption>
 
@@ -111,7 +111,7 @@ Las velocidades admisibles forman, en general, un espacio afín: comparten una c
 
 []{#fpm-i-25-s03}
 
-## 25.3. Qué se supone de las fuerzas de vínculo {#fispm-c25-quuxe9-se-supone-de-las-fuerzas-de-vuxednculo}
+## 3. Qué se supone de las fuerzas de vínculo {#fispm-c25-quuxe9-se-supone-de-las-fuerzas-de-vuxednculo}
 
 Escribamos Newton como $m_i\ddot{\mathbf r}_i=\mathbf F_i+\mathbf R_i$, separando las fuerzas aplicadas $\mathbf F_i$ y las reacciones de vínculo $\mathbf R_i$. La clasificación depende del modelo: una fuerza que se prescribe explícitamente se conserva entre las aplicadas; una reacción desconocida se determina al exigir compatibilidad.
 
@@ -123,7 +123,7 @@ Escribamos Newton como $m_i\ddot{\mathbf r}_i=\mathbf F_i+\mathbf R_i$, separand
 
 <figcaption>
 
-**Figura 25.2.** En una guía circular fija y lisa, el desplazamiento virtual admisible es tangente y la reacción es normal. Su trabajo virtual es cero. Las flechas no describen dos fuerzas que se equilibren. Véase §[25.3](#fispm-c25-quuxe9-se-supone-de-las-fuerzas-de-vuxednculo).
+**Figura 25.2.** En una guía circular fija y lisa, el desplazamiento virtual admisible es tangente y la reacción es normal. Su trabajo virtual es cero. Las flechas no describen dos fuerzas que se equilibren. Véase §[3](#fispm-c25-quuxe9-se-supone-de-las-fuerzas-de-vuxednculo).
 
 </figcaption>
 
@@ -151,7 +151,7 @@ Para vínculos móviles, la potencia real de esa reacción es $R\cdot\dot r=\lam
 
 []{#fpm-i-25-s04}
 
-## 25.4. Equilibrio mediante trabajo virtual {#fispm-c25-equilibrio-mediante-trabajo-virtual}
+## 4. Equilibrio mediante trabajo virtual {#fispm-c25-equilibrio-mediante-trabajo-virtual}
 
 Pensemos primero en una geometría fija, con contactos bilaterales ideales: el sistema puede desplazarse virtualmente en ambos sentidos de cada dirección tangente. En equilibrio, las fuerzas aplicadas se compensan con las reacciones.
 
@@ -175,7 +175,7 @@ Para una masa que puede deslizar sin rozamiento sobre un plano inclinado, una fu
 
 []{#fpm-i-25-s05}
 
-## 25.5. D'Alembert: proyectar la dinámica {#fispm-c25-dalembert-proyectar-la-dinuxe1mica}
+## 5. D'Alembert: proyectar la dinámica {#fispm-c25-dalembert-proyectar-la-dinuxe1mica}
 
 Multipliquemos cada ecuación de Newton por un desplazamiento virtual admisible y sumemos. Las reacciones ideales desaparecen. El resultado tiene la misma forma de equilibrio si se incorpora el término $-m_i\ddot{\mathbf r}_i$.
 
@@ -199,7 +199,7 @@ La expresión de d'Alembert conserva las restricciones sobre el movimiento y eli
 
 []{#fpm-i-25-s06}
 
-## 25.6. Fuerzas generalizadas y una identidad cinética {#fispm-c25-fuerzas-generalizadas-y-una-identidad-cinuxe9tica}
+## 6. Fuerzas generalizadas y una identidad cinética {#fispm-c25-fuerzas-generalizadas-y-una-identidad-cinuxe9tica}
 
 Sustituyendo $\delta\mathbf r_i=\sum_a\mathbf r_{i,a}\delta q^a$, el trabajo de las fuerzas aplicadas se reorganiza como
 
@@ -247,7 +247,7 @@ $$\frac{d}{dt}\frac{\partial L}{\partial\dot q^a} -\frac{\partial L}{\partial q^
 
 []{#fpm-i-25-s07}
 
-## 25.7. El péndulo, con soporte fijo y móvil {#fispm-c25-el-puxe9ndulo-con-soporte-fijo-y-muxf3vil}
+## 7. El péndulo, con soporte fijo y móvil {#fispm-c25-el-puxe9ndulo-con-soporte-fijo-y-muxf3vil}
 
 Para un péndulo plano de longitud $\ell$, con eje vertical positivo hacia arriba, escribimos $\mathbf r=(\ell\sin\theta,-\ell\cos\theta)$. La derivada $\mathbf r_{,\theta}=\ell(\cos\theta,\sin\theta)$ es tangente. La gravedad $\mathbf F=(0,-mg)$ tiene fuerza generalizada $Q_\theta=-mg\ell\sin\theta$. La tensión, radial, no contribuye.
 
@@ -271,7 +271,7 @@ La aceleración del soporte actúa como excitación. Las variaciones virtuales s
 
 []{#fpm-i-25-s08}
 
-## 25.8. Una función cuyo argumento es una curva {#fispm-c25-una-funciuxf3n-cuyo-argumento-es-una-curva}
+## 8. Una función cuyo argumento es una curva {#fispm-c25-una-funciuxf3n-cuyo-argumento-es-una-curva}
 
 Fijemos dos tiempos $t_0<t_1$ y dos configuraciones en una carta local. Para comparar trayectorias, consideramos curvas $q:[t_0,t_1]\to\mathbb R^n$ que unen esas configuraciones. La función $L(q,v,t)$ asigna un valor a una posición, una velocidad y un instante. Su integral asigna un número a cada curva completa.
 
@@ -283,7 +283,7 @@ Fijemos dos tiempos $t_0<t_1$ y dos configuraciones en una carta local. Para com
 
 <figcaption>
 
-**Figura 25.3.** Las curvas variadas comparten los extremos y difieren en su interior. La acción asigna un número a cada curva completa; la variación deriva esa asignación con respecto al parámetro de la familia. Véase §[25.8](#fispm-c25-una-funciuxf3n-cuyo-argumento-es-una-curva).
+**Figura 25.3.** Las curvas variadas comparten los extremos y difieren en su interior. La acción asigna un número a cada curva completa; la variación deriva esa asignación con respecto al parámetro de la familia. Véase §[8](#fispm-c25-una-funciuxf3n-cuyo-argumento-es-una-curva).
 
 </figcaption>
 
@@ -315,7 +315,7 @@ Para una parametrización curva, la familia física es $r_\varepsilon(t)=R(q_\va
 
 []{#fpm-i-25-s09}
 
-## 25.9. Derivar la acción e integrar por partes {#fispm-c25-derivar-la-acciuxf3n-e-integrar-por-partes}
+## 9. Derivar la acción e integrar por partes {#fispm-c25-derivar-la-acciuxf3n-e-integrar-por-partes}
 
 Supongamos $L$ de clase $C^2$ en un entorno de la trayectoria y $q$ de clase $C^2$. Tomamos variaciones suficientemente pequeñas para permanecer en ese entorno. El intervalo es compacto, por lo que las derivadas continuas del integrando están uniformemente controladas cerca de cada familia de prueba.
 
@@ -341,7 +341,7 @@ La integral restante contiene un coeficiente que sólo depende de la trayectoria
 
 []{#fpm-i-25-s10}
 
-## 25.10. Por qué una identidad integral determina una ecuación {#fispm-c25-por-quuxe9-una-identidad-integral-determina-una-ecuaciuxf3n}
+## 10. Por qué una identidad integral determina una ecuación {#fispm-c25-por-quuxe9-una-identidad-integral-determina-una-ecuaciuxf3n}
 
 []{#fispm-t1-c25-p0009}
 
@@ -369,7 +369,7 @@ El paso decisivo consiste en poder elegir variaciones localizadas en cualquier i
 
 []{#fpm-i-25-s11}
 
-## 25.11. El principio de Hamilton y su equivalencia mecánica {#fispm-c25-el-principio-de-hamilton-y-su-equivalencia-mecuxe1nica}
+## 11. El principio de Hamilton y su equivalencia mecánica {#fispm-c25-el-principio-de-hamilton-y-su-equivalencia-mecuxe1nica}
 
 []{#fispm-t1-c25-p0011}
 
@@ -393,7 +393,7 @@ Se evalúan las fuerzas en la trayectoria considerada. Esta identidad de trabajo
 
 []{#fpm-i-25-s12}
 
-## 25.12. El oscilador: mínimo, degeneración y punto de silla {#fispm-c25-el-oscilador-muxednimo-degeneraciuxf3n-y-punto-de-silla}
+## 12. El oscilador: mínimo, degeneración y punto de silla {#fispm-c25-el-oscilador-muxednimo-degeneraciuxf3n-y-punto-de-silla}
 
 Tomemos $L=m\dot q^2/2-m\omega^2q^2/2$, con $m,\omega>0$, en $[0,\tau]$. Su ecuación de Euler--Lagrange es $\ddot q+\omega^2q=0$. Si $q$ la satisface y $\eta$ tiene extremos cero, expandir la acción da una identidad exacta:
 
@@ -405,7 +405,7 @@ Tomemos $L=m\dot q^2/2-m\omega^2q^2/2$, con $m,\omega>0$, en $[0,\tau]$. Su ecua
 
 <figcaption>
 
-**Figura 25.4.** Para la variación $\eta=\sin(\pi t/T)$ del oscilador, el signo de la segunda variación es el de $(\pi/T)^2-\omega_0^2$. El modo pierde positividad en $T\omega_0=\pi$. Véase §[25.12](#fispm-c25-el-oscilador-muxednimo-degeneraciuxf3n-y-punto-de-silla).
+**Figura 25.4.** Para la variación $\eta=\sin(\pi t/T)$ del oscilador, el signo de la segunda variación es el de $(\pi/T)^2-\omega_0^2$. El modo pierde positividad en $T\omega_0=\pi$. Véase §[12](#fispm-c25-el-oscilador-muxednimo-degeneraciuxf3n-y-punto-de-silla).
 
 </figcaption>
 
@@ -447,7 +447,7 @@ Los datos de posición y velocidad iniciales siguen determinando una solución �
 
 []{#fpm-i-25-s13}
 
-## 25.13. Términos de borde y extremos libres {#fispm-c25-tuxe9rminos-de-borde-y-extremos-libres}
+## 13. Términos de borde y extremos libres {#fispm-c25-tuxe9rminos-de-borde-y-extremos-libres}
 
 La integración por partes de la proposición 25.8 conserva información en los extremos. Puede eliminarse al fijar las configuraciones, o producir condiciones adicionales si algunas componentes quedan libres.
 
@@ -477,7 +477,7 @@ Para una partícula libre, $p=m\dot q$. Si parte de una posición fija y puede t
 
 []{#fpm-i-25-s14}
 
-## 25.14. Multiplicadores y límites de la formulación {#fispm-c25-multiplicadores-y-luxedmites-de-la-formulaciuxf3n}
+## 14. Multiplicadores y límites de la formulación {#fispm-c25-multiplicadores-y-luxedmites-de-la-formulaciuxf3n}
 
 A veces conviene conservar coordenadas cartesianas redundantes y añadir las restricciones a la acción. Sea $A=\partial g/\partial r$ de rango completo, y usemos $L(r,\dot r,t)$ antes de eliminar vínculos.
 
@@ -503,7 +503,7 @@ Con esas fronteras fijadas, la construcción queda disponible para el capítulo 
 
 []{#ejercicios}
 
-## 25.15. Ejercicios {#fispm-c25-ejercicios}
+## 15. Ejercicios {#fispm-c25-ejercicios}
 
 []{#fispm-t1-c25-e0001}
 
@@ -687,7 +687,7 @@ Una cuenta de masa $m$ se mueve sin rozamiento sobre la guía fija $y=a x^2$, co
 
 []{#soluciones}
 
-## 25.16. Soluciones {#fispm-c25-soluciones}
+## 16. Soluciones {#fispm-c25-soluciones}
 
 **Solución del ejercicio 25.1.**
 
@@ -853,7 +853,7 @@ Para comprobarla con Newton, $r_{,q}=(1,2aq)$ y $\ddot r=(\ddot q,2a\dot q^2+2aq
 
 []{#notas-y-lecturas}
 
-## 25.16. Notas y lecturas {#fispm-c25-notas-y-lecturas .unnumbered}
+## Notas y lecturas {#fispm-c25-notas-y-lecturas .unnumbered}
 
 1.  La formulación mediante acción y coordenadas puede contrastarse con David Tong, *Classical Dynamics*, capítulo 2, §§2.1--2.3, en los apuntes oficiales de University of Cambridge. [Capítulo en línea](https://www.damtp.cam.ac.uk/user/tong/dynamics/dynhtml/S2.html). Aquí se conservan explícitamente las condiciones de regularidad, las variaciones admisibles y los términos de borde que intervienen en las demostraciones.
 

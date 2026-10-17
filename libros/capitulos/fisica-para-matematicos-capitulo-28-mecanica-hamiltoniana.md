@@ -45,7 +45,7 @@ Construiremos primero esa sustitución mediante la transformada de Legendre. Des
 
 []{#fpm-i-28-s01}
 
-## 28.1. Del estado mecánico al espacio de fases {#fispm-c28-del-estado-mecuxe1nico-al-espacio-de-fases}
+## 1. Del estado mecánico al espacio de fases {#fispm-c28-del-estado-mecuxe1nico-al-espacio-de-fases}
 
 Para un oscilador, conocer la elongación no basta para predecir el movimiento: el cuerpo puede pasar por esa posición en sentidos opuestos. Un estado debe contener también información de velocidad. En una carta de un espacio de configuraciones $Q$ de dimensión $n$, escribimos ese estado como $(q,v)$, con $v=\dot q$.
 
@@ -81,7 +81,7 @@ Esta descripción ya distingue varios dominios. Para un péndulo, $Q=S^1$ y $T^*
 
 []{#fpm-i-28-s02}
 
-## 28.2. Pendientes y transformada de Legendre {#fispm-c28-pendientes-y-transformada-de-legendre}
+## 2. Pendientes y transformada de Legendre {#fispm-c28-pendientes-y-transformada-de-legendre}
 
 Consideremos primero una función real $\ell(v)$. Su derivada $p=\ell'(v)$ asigna una pendiente a cada velocidad. Si podemos invertir esa relación en una región, definimos $h(p)=p\,v(p)-\ell(v(p)).$
 
@@ -93,7 +93,7 @@ Consideremos primero una función real $\ell(v)$. Su derivada $p=\ell'(v)$ asign
 
 <figcaption>
 
-**Figura 28.1.** Para $L(v)=v^2/2$, la tangente en $v=1$ tiene pendiente $p=1$ y ordenada al origen $-H=-1/2$. La transformada es $H=pv-L=v^2/2$ en ese punto. Véase §[28.2](#fispm-c28-pendientes-y-transformada-de-legendre).
+**Figura 28.1.** Para $L(v)=v^2/2$, la tangente en $v=1$ tiene pendiente $p=1$ y ordenada al origen $-H=-1/2$. La transformada es $H=pv-L=v^2/2$ en ese punto. Véase §[2](#fispm-c28-pendientes-y-transformada-de-legendre).
 
 </figcaption>
 
@@ -119,7 +119,7 @@ Otra construcción, usual en análisis convexo, define el conjugado por $\ell^*(
 
 []{#fpm-i-28-s03}
 
-## 28.3. Regularidad local y dominios globales {#fispm-c28-regularidad-local-y-dominios-globales}
+## 3. Regularidad local y dominios globales {#fispm-c28-regularidad-local-y-dominios-globales}
 
 []{#fispm-t1-c28-d0003}
 
@@ -163,7 +163,7 @@ Esta proposición es suficiente, no necesaria. En coordenadas locales de una var
 
 []{#fpm-i-28-s04}
 
-## 28.4. Construcción del hamiltoniano {#fispm-c28-construcciuxf3n-del-hamiltoniano}
+## 4. Construcción del hamiltoniano {#fispm-c28-construcciuxf3n-del-hamiltoniano}
 
 []{#fispm-t1-c28-d0004}
 
@@ -197,7 +197,7 @@ También resulta $H_{,p_ap_b}=(W^{-1})^{ab}.$ Así, la regularidad puede comprob
 
 []{#fpm-i-28-s05}
 
-## 28.5. Las ecuaciones de Hamilton {#fispm-c28-las-ecuaciones-de-hamilton}
+## 5. Las ecuaciones de Hamilton {#fispm-c28-las-ecuaciones-de-hamilton}
 
 []{#fispm-t1-c28-d0005}
 
@@ -225,7 +225,7 @@ La segunda ecuación incluye el término de fuerza; ya no es el sistema canónic
 
 []{#fpm-i-28-s06}
 
-## 28.6. Lagrangianos cuadráticos y momentos desplazados {#fispm-c28-lagrangianos-cuadruxe1ticos-y-momentos-desplazados}
+## 6. Lagrangianos cuadráticos y momentos desplazados {#fispm-c28-lagrangianos-cuadruxe1ticos-y-momentos-desplazados}
 
 Consideremos la familia del capítulo 26: $L=\frac12v^{\mathsf T}G(q,t)v+a(q,t)^{\mathsf T}v+c(q,t)-V(q,t),$
 
@@ -239,7 +239,7 @@ con $G$ simétrica invertible. En los modelos cinéticos ordinarios es positiva 
 
 <figcaption>
 
-**Figura 28.2.** Para $L=v^2/2+a v-U$, el momento es $p=v+a$. Las dos rectas comparan $a=0$ y $a=1$. Invertir la relación exige conservar ese desplazamiento al construir $H=(p-a)^2/2+U$. Véase §[28.6](#fispm-c28-lagrangianos-cuadruxe1ticos-y-momentos-desplazados).
+**Figura 28.2.** Para $L=v^2/2+a v-U$, el momento es $p=v+a$. Las dos rectas comparan $a=0$ y $a=1$. Invertir la relación exige conservar ese desplazamiento al construir $H=(p-a)^2/2+U$. Véase §[6](#fispm-c28-lagrangianos-cuadruxe1ticos-y-momentos-desplazados).
 
 </figcaption>
 
@@ -267,7 +267,7 @@ Sustituir $p=m(q)\dot q$ en la última ecuación da $m(q)\ddot q+\frac12m'(q)\do
 
 []{#fpm-i-28-s07}
 
-## 28.7. El oscilador y sus curvas de fase {#fispm-c28-el-oscilador-y-sus-curvas-de-fase}
+## 7. El oscilador y sus curvas de fase {#fispm-c28-el-oscilador-y-sus-curvas-de-fase}
 
 Para $m,k>0$, escribimos $\omega=\sqrt{k/m}$ y
 
@@ -295,7 +295,7 @@ En las coordenadas reescaladas $x=\sqrt{m\omega}\,q$, $y=p/\sqrt{m\omega}$, las 
 
 <figcaption>
 
-**Figura 28.3.** Con $m=k=1$, $H=(q^2+p^2)/2$. Las curvas de energía son círculos y el flujo gira en sentido horario: en $q>0,p=0$, $\dot p=-q<0$. Véase §[28.7](#fispm-c28-el-oscilador-y-sus-curvas-de-fase).
+**Figura 28.3.** Con $m=k=1$, $H=(q^2+p^2)/2$. Las curvas de energía son círculos y el flujo gira en sentido horario: en $q>0,p=0$, $\dot p=-q<0$. Véase §[7](#fispm-c28-el-oscilador-y-sus-curvas-de-fase).
 
 </figcaption>
 
@@ -311,7 +311,7 @@ Una curva de nivel no siempre determina toda la trayectoria. Con varios grados d
 
 []{#fpm-i-28-s08}
 
-## 28.8. El péndulo: libraciones, rotaciones y separatriz {#fispm-c28-el-puxe9ndulo-libraciones-rotaciones-y-separatriz}
+## 8. El péndulo: libraciones, rotaciones y separatriz {#fispm-c28-el-puxe9ndulo-libraciones-rotaciones-y-separatriz}
 
 Sea $I=m\ell^2$ y $A=mg\ell$. Con el mínimo de potencial en $\theta=0$,
 
@@ -335,7 +335,7 @@ Si $0<E<2A$, hay dos puntos de retorno alrededor del mínimo, donde $p=0$ y el m
 
 <figcaption>
 
-**Figura 28.4.** Para $H=p^2/2+1-\cos\theta$, se muestran $E=0{,}5$, $2$ y $2{,}6$. El nivel $E=2$ es la separatriz; las libraciones quedan debajo y las rotaciones encima. Los bordes angulares se identifican. Véase §[28.8](#fispm-c28-el-puxe9ndulo-libraciones-rotaciones-y-separatriz).
+**Figura 28.4.** Para $H=p^2/2+1-\cos\theta$, se muestran $E=0{,}5$, $2$ y $2{,}6$. El nivel $E=2$ es la separatriz; las libraciones quedan debajo y las rotaciones encima. Los bordes angulares se identifican. Véase §[8](#fispm-c28-el-puxe9ndulo-libraciones-rotaciones-y-separatriz).
 
 </figcaption>
 
@@ -361,7 +361,7 @@ El factor cuatro de un cuarto de oscilación se ha combinado con $\sqrt{I/2}$ de
 
 []{#fpm-i-28-s09}
 
-## 28.9. Movimiento central y coordenadas polares {#fispm-c28-movimiento-central-y-coordenadas-polares}
+## 9. Movimiento central y coordenadas polares {#fispm-c28-movimiento-central-y-coordenadas-polares}
 
 En el plano, excluyendo el origen y usando una carta angular, $L=\frac m2(\dot r^2+r^2\dot\theta^2)-V(r).$ Los momentos y el hamiltoniano son
 
@@ -393,7 +393,7 @@ La singularidad de las fórmulas en $r=0$ también exige interpretación. Las co
 
 []{#fpm-i-28-s10}
 
-## 28.10. Oscilaciones acopladas en variables canónicas {#fispm-c28-oscilaciones-acopladas-en-variables-canuxf3nicas}
+## 10. Oscilaciones acopladas en variables canónicas {#fispm-c28-oscilaciones-acopladas-en-variables-canuxf3nicas}
 
 Para matrices constantes simétricas $M>0$ y $K$, tenemos
 
@@ -423,7 +423,7 @@ Si $\lambda_i>0$, cada par $(Q_i,P_i)$ es un oscilador de frecuencia $\sqrt{\lam
 
 []{#fpm-i-28-s11}
 
-## 28.11. Una fuerza giroscópica {#fispm-c28-una-fuerza-giroscuxf3pica}
+## 11. Una fuerza giroscópica {#fispm-c28-una-fuerza-giroscuxf3pica}
 
 Retomemos el modelo plano
 
@@ -459,7 +459,7 @@ La distinción también afecta a las simetrías. Si $V=V(\sqrt{x^2+y^2})$, el mo
 
 []{#fpm-i-28-s12}
 
-## 28.12. Coordenadas móviles y términos de borde {#fispm-c28-coordenadas-muxf3viles-y-tuxe9rminos-de-borde}
+## 12. Coordenadas móviles y términos de borde {#fispm-c28-coordenadas-muxf3viles-y-tuxe9rminos-de-borde}
 
 Sea $q=f(Q,t)$ un cambio puntual con jacobiana invertible $J=\partial f/\partial Q$. Entonces $\dot q=J\dot Q+f_{,t}$. Definimos el nuevo lagrangiano sustituyendo esta expresión y el nuevo momento $P=J^{\mathsf T}p$.
 
@@ -507,7 +507,7 @@ Esta fórmula muestra por qué no debemos comparar funciones hamiltonianas en va
 
 []{#fpm-i-28-s13}
 
-## 28.13. La acción en espacio de fases {#fispm-c28-la-acciuxf3n-en-espacio-de-fases}
+## 13. La acción en espacio de fases {#fispm-c28-la-acciuxf3n-en-espacio-de-fases}
 
 Consideremos ahora $q(t)$ y $p(t)$ como curvas independientes y la acción
 
@@ -537,7 +537,7 @@ Fijar posiciones en los extremos es una condición para la variación, no una ga
 
 []{#fpm-i-28-s14}
 
-## 28.14. Evolución de observables y alcance del formalismo {#fispm-c28-evoluciuxf3n-de-observables-y-alcance-del-formalismo}
+## 14. Evolución de observables y alcance del formalismo {#fispm-c28-evoluciuxf3n-de-observables-y-alcance-del-formalismo}
 
 Un observable es aquí una función suave $A(q,p,t)$. La regla de la cadena y las ecuaciones canónicas dan
 
@@ -563,7 +563,7 @@ La expresión bilineal que ha aparecido en la evolución de $A$ será el punto d
 
 []{#ejercicios}
 
-## 28.15. Ejercicios {#fispm-c28-ejercicios}
+## 15. Ejercicios {#fispm-c28-ejercicios}
 
 []{#fispm-t1-c28-e0001}
 
@@ -687,7 +687,7 @@ La expresión bilineal que ha aparecido en la evolución de $A$ será el punto d
 
 []{#soluciones}
 
-## 28.16. Soluciones {#fispm-c28-soluciones}
+## 16. Soluciones {#fispm-c28-soluciones}
 
 **Solución del ejercicio 28.1.** Como $L$ tiene unidades de energía y $v$ de longitud por tiempo, $p=L_{,v}$ tiene unidades de masa por longitud dividida por tiempo. El producto $pv$ y $H$ tienen unidades de energía. La derivada $H_{,p}$ tiene unidades de velocidad. La posición sola no determina el sentido ni la rapidez del movimiento; falta una velocidad o, por regularidad, el momento equivalente. Dos estados con el mismo $q$ y momentos opuestos evolucionan de manera distinta salvo que ambos momentos sean cero.
 
@@ -841,7 +841,7 @@ Completar el cuadrado da $K=(P-mu)^2/(2m)+kQ^2/2-mu^2/2$. Las ecuaciones implica
 
 []{#notas-y-lecturas}
 
-## 28.16. Notas y lecturas {#fispm-c28-notas-y-lecturas .unnumbered}
+## Notas y lecturas {#fispm-c28-notas-y-lecturas .unnumbered}
 
 El punto de entrada es capítulo 26: regularidad del lagrangiano, momentos conjugados y energía. El capítulo 27 aporta la interpretación de las coordenadas cíclicas, la invariancia temporal y las cargas con términos de borde. El capítulo 24 permite reconocer la diagonalización modal en §10. La equivalencia demostrada aquí es local siempre que la inversión de Legendre lo sea; cada afirmación global incluye sus hipótesis adicionales.
 

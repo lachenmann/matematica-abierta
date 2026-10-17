@@ -45,7 +45,7 @@ Trabajaremos con el modelo rígido newtoniano, masas positivas y distribuciones 
 
 []{#fpm-i-21-s01}
 
-## 21.1. Las distancias que no cambian {#fispm-c21-las-distancias-que-no-cambian}
+## 1. Las distancias que no cambian {#fispm-c21-las-distancias-que-no-cambian}
 
 Una descripción rígida puede comenzar con puntos marcados en un objeto. Si la separación entre cada pareja permanece igual, queremos demostrar que todos se obtienen mediante una misma traslación y una misma orientación. Cuatro puntos no coplanares permiten fijar esas operaciones sin ambigüedad.
 
@@ -85,7 +85,7 @@ El centro de masa queda fijo en coordenadas corporales, aunque no pertenezca al 
 
 []{#ejercicios}
 
-### 21.1.1. Ejercicios {#fispm-c21-ejercicios}
+### Ejercicios {#fispm-c21-ejercicios}
 
 []{#fispm-t1-c21-e0001}
 
@@ -107,7 +107,7 @@ El centro de masa queda fijo en coordenadas corporales, aunque no pertenezca al 
 
 []{#fpm-i-21-s02}
 
-## 21.2. Una rotación finita tiene eje, pero el orden importa {#fispm-c21-una-rotaciuxf3n-finita-tiene-eje-pero-el-orden-importa}
+## 2. Una rotación finita tiene eje, pero el orden importa {#fispm-c21-una-rotaciuxf3n-finita-tiene-eje-pero-el-orden-importa}
 
 Al mover un objeto de una orientación a otra, la matriz relativa es una rotación. En tres dimensiones puede describirse mediante un eje y un ángulo. Esa representación resulta útil para una transformación individual; componer varias exige conservar su orden.
 
@@ -137,7 +137,7 @@ Si primero aplicamos $R_1$ a un vector y después $R_2$, la matriz total es $R_2
 
 []{#ejercicios-1}
 
-### 21.2.1. Ejercicios {#fispm-c21-ejercicios-1}
+### Ejercicios {#fispm-c21-ejercicios-1}
 
 []{#fispm-t1-c21-e0003}
 
@@ -157,7 +157,7 @@ Si primero aplicamos $R_1$ a un vector y después $R_2$, la matriz total es $R_2
 
 []{#fpm-i-21-s03}
 
-## 21.3. La velocidad angular no es una lista de tres derivadas de ángulos {#fispm-c21-la-velocidad-angular-no-es-una-lista-de-tres-derivadas-de-uxe1ngulos}
+## 3. La velocidad angular no es una lista de tres derivadas de ángulos {#fispm-c21-la-velocidad-angular-no-es-una-lista-de-tres-derivadas-de-uxe1ngulos}
 
 Una orientación cambia a lo largo de una curva $R(t)$. Su velocidad angular se obtiene diferenciando esa curva, como en el capítulo 20. Conviene conservar simultáneamente sus componentes corporales y su vector físico: cada uno simplifica una parte diferente de los cálculos.
 
@@ -189,7 +189,7 @@ La suma existe, pero uno de los sumandos necesita ser rotado. Si una parametriza
 
 []{#ejercicios-2}
 
-### 21.3.1. Ejercicios {#fispm-c21-ejercicios-2}
+### Ejercicios {#fispm-c21-ejercicios-2}
 
 []{#fispm-t1-c21-e0005}
 
@@ -209,7 +209,7 @@ La suma existe, pero uno de los sumandos necesita ser rotado. Si una parametriza
 
 []{#fpm-i-21-s04}
 
-## 21.4. Todos los puntos comparten una ley de velocidades {#fispm-c21-todos-los-puntos-comparten-una-ley-de-velocidades}
+## 4. Todos los puntos comparten una ley de velocidades {#fispm-c21-todos-los-puntos-comparten-una-ley-de-velocidades}
 
 Los puntos materiales tienen coordenadas corporales constantes. Al derivar $\mathbf x=\mathbf C+R\mathbf q$, el único cambio relativo procede de la base. La velocidad de cada punto se obtiene de su posición respecto del centro de masa y de un mismo vector angular.
 
@@ -221,7 +221,7 @@ Los puntos materiales tienen coordenadas corporales constantes. Al derivar $\mat
 
 <figcaption>
 
-**Figura 21.1.** La diferencia de velocidades de dos puntos de un rígido es perpendicular a su separación. El esquema muestra $\omega$ saliente del plano y un punto $A$ instantáneamente fijo. Véase §[21.4](#fispm-c21-todos-los-puntos-comparten-una-ley-de-velocidades).
+**Figura 21.1.** La diferencia de velocidades de dos puntos de un rígido es perpendicular a su separación. El esquema muestra $\omega$ saliente del plano y un punto $A$ instantáneamente fijo. Véase §[4](#fispm-c21-todos-los-puntos-comparten-una-ley-de-velocidades).
 
 </figcaption>
 
@@ -255,7 +255,7 @@ La rigidez restringe posiciones y velocidades, pero las fuerzas necesarias para 
 
 []{#ejercicios-3}
 
-### 21.4.1. Ejercicios {#fispm-c21-ejercicios-3}
+### Ejercicios {#fispm-c21-ejercicios-3}
 
 []{#fispm-t1-c21-e0007}
 
@@ -275,7 +275,7 @@ La rigidez restringe posiciones y velocidades, pero las fuerzas necesarias para 
 
 []{#fpm-i-21-s05}
 
-## 21.5. El eje instantáneo puede moverse {#fispm-c21-el-eje-instantuxe1neo-puede-moverse}
+## 5. El eje instantáneo puede moverse {#fispm-c21-el-eje-instantuxe1neo-puede-moverse}
 
 En ejercicio 21.7 apareció un punto con velocidad cero mientras el resto del cuerpo se movía. Es posible describir el campo de velocidades instantáneo a partir de ese punto. El eje obtenido pertenece a un instante; no obliga a que los mismos puntos permanezcan quietos durante un intervalo.
 
@@ -287,7 +287,7 @@ En ejercicio 21.7 apareció un punto con velocidad cero mientras el resto del cu
 
 <figcaption>
 
-**Figura 21.2.** Una rueda que avanza hacia la derecha sin deslizar tiene velocidad nula en el contacto instantáneo y velocidad $2V_C$ en el punto superior. La condición es $V_C=R|\omega|$, con giro horario. Véase §[21.5](#fispm-c21-el-eje-instantuxe1neo-puede-moverse).
+**Figura 21.2.** Una rueda que avanza hacia la derecha sin deslizar tiene velocidad nula en el contacto instantáneo y velocidad $2V_C$ en el punto superior. La condición es $V_C=R|\omega|$, con giro horario. Véase §[5](#fispm-c21-el-eje-instantuxe1neo-puede-moverse).
 
 </figcaption>
 
@@ -325,7 +325,7 @@ La descripción es un giro instantáneo acompañado de una traslación sobre su 
 
 []{#ejercicios-4}
 
-### 21.5.1. Ejercicios {#fispm-c21-ejercicios-4}
+### Ejercicios {#fispm-c21-ejercicios-4}
 
 []{#fispm-t1-c21-e0009}
 
@@ -345,7 +345,7 @@ La descripción es un giro instantáneo acompañado de una traslación sobre su 
 
 []{#fpm-i-21-s06}
 
-## 21.6. De la distribución de masa a una matriz {#fispm-c21-de-la-distribuciuxf3n-de-masa-a-una-matriz}
+## 6. De la distribución de masa a una matriz {#fispm-c21-de-la-distribuciuxf3n-de-masa-a-una-matriz}
 
 El campo de velocidades ya está descrito. Para obtener energía o momento angular debemos ponderarlo con la masa de cada punto. En un giro alrededor de un eje, los puntos alejados de ese eje contribuyen más. En tres dimensiones necesitamos una expresión que permita variar la dirección del eje sin rehacer la integral desde cero.
 
@@ -393,7 +393,7 @@ El tensor es definido positivo cuando no existe una recta por el punto de refere
 
 []{#ejercicios-5}
 
-### 21.6.1. Ejercicios {#fispm-c21-ejercicios-5}
+### Ejercicios {#fispm-c21-ejercicios-5}
 
 []{#fispm-t1-c21-e0011}
 
@@ -413,7 +413,7 @@ El tensor es definido positivo cuando no existe una recta por el punto de refere
 
 []{#fpm-i-21-s07}
 
-## 21.7. El momento angular puede apuntar hacia otro lado {#fispm-c21-el-momento-angular-puede-apuntar-hacia-otro-lado}
+## 7. El momento angular puede apuntar hacia otro lado {#fispm-c21-el-momento-angular-puede-apuntar-hacia-otro-lado}
 
 Para una partícula, el momento angular combina posición y velocidad. Al sumar los momentos de un cuerpo rígido, el mismo vector $\boldsymbol\omega$ aparece en todas las velocidades, pero cada posición introduce una proyección diferente. El tensor reúne precisamente esa suma.
 
@@ -425,7 +425,7 @@ Para una partícula, el momento angular combina posición y velocidad. Al sumar 
 
 <figcaption>
 
-**Figura 21.3.** Con momentos principales $I_1=1$, $I_2=2$ y componentes normalizadas $\omega=(1{,}5,1)$, resulta $L=(1{,}5,2)$. Fuera de un eje principal, $L$ y $\omega$ pueden no ser paralelos. Véase §[21.7](#fispm-c21-el-momento-angular-puede-apuntar-hacia-otro-lado).
+**Figura 21.3.** Con momentos principales $I_1=1$, $I_2=2$ y componentes normalizadas $\omega=(1{,}5,1)$, resulta $L=(1{,}5,2)$. Fuera de un eje principal, $L$ y $\omega$ pueden no ser paralelos. Véase §[7](#fispm-c21-el-momento-angular-puede-apuntar-hacia-otro-lado).
 
 </figcaption>
 
@@ -459,7 +459,7 @@ Cambiar el origen modifica el término orbital. El momento interno del centro de
 
 []{#ejercicios-6}
 
-### 21.7.1. Ejercicios {#fispm-c21-ejercicios-6}
+### Ejercicios {#fispm-c21-ejercicios-6}
 
 []{#fispm-t1-c21-e0013}
 
@@ -479,7 +479,7 @@ Cambiar el origen modifica el término orbital. El momento interno del centro de
 
 []{#fpm-i-21-s08}
 
-## 21.8. Cuánto cuesta mover el cuerpo {#fispm-c21-cuuxe1nto-cuesta-mover-el-cuerpo}
+## 8. Cuánto cuesta mover el cuerpo {#fispm-c21-cuuxe1nto-cuesta-mover-el-cuerpo}
 
 La energía cinética suma los cuadrados de las velocidades. Centrar el cuerpo hace desaparecer el término cruzado entre traslación y giro, por la misma condición de masa que separó el momento angular. En otros puntos de referencia ese término puede permanecer.
 
@@ -509,7 +509,7 @@ La fórmula de energía puramente rotacional sobre un pivote requiere un pivote 
 
 []{#ejercicios-7}
 
-### 21.8.1. Ejercicios {#fispm-c21-ejercicios-7}
+### Ejercicios {#fispm-c21-ejercicios-7}
 
 []{#fispm-t1-c21-e0015}
 
@@ -529,7 +529,7 @@ La fórmula de energía puramente rotacional sobre un pivote requiere un pivote 
 
 []{#fpm-i-21-s09}
 
-## 21.9. El tensor corporal permanece fijo; su matriz espacial cambia {#fispm-c21-el-tensor-corporal-permanece-fijo-su-matriz-espacial-cambia}
+## 9. El tensor corporal permanece fijo; su matriz espacial cambia {#fispm-c21-el-tensor-corporal-permanece-fijo-su-matriz-espacial-cambia}
 
 La masa no cambia de lugar en las coordenadas del cuerpo. En esas coordenadas, el tensor calculado en un punto corporal es constante. Un observador inercial ve girar sus ejes y, por ello, ve cambiar las entradas de la matriz. Esa variación no significa que el cuerpo esté redistribuyendo su masa.
 
@@ -557,7 +557,7 @@ Proposición 21.17 describe una orientación física variable en una base espaci
 
 []{#ejercicios-8}
 
-### 21.9.1. Ejercicios {#fispm-c21-ejercicios-8}
+### Ejercicios {#fispm-c21-ejercicios-8}
 
 []{#fispm-t1-c21-e0017}
 
@@ -577,7 +577,7 @@ Proposición 21.17 describe una orientación física variable en una base espaci
 
 []{#fpm-i-21-s10}
 
-## 21.10. Escoger los ejes que simplifican el giro {#fispm-c21-escoger-los-ejes-que-simplifican-el-giro}
+## 10. Escoger los ejes que simplifican el giro {#fispm-c21-escoger-los-ejes-que-simplifican-el-giro}
 
 Las entradas mixtas dependen de la base. Podemos elegir una base que las anule porque el tensor es simétrico. La existencia de esa base tiene una prueba geométrica: una dirección que extrema la forma cuadrática en la esfera unitaria es un autovector, y su plano perpendicular queda preservado por la matriz.
 
@@ -617,7 +617,7 @@ Las cotas comparan giros con una rapidez angular fijada. Si en cambio se fija la
 
 []{#ejercicios-9}
 
-### 21.10.1. Ejercicios {#fispm-c21-ejercicios-9}
+### Ejercicios {#fispm-c21-ejercicios-9}
 
 []{#fispm-t1-c21-e0019}
 
@@ -637,7 +637,7 @@ Las cotas comparan giros con una rapidez angular fijada. Si en cambio se fija la
 
 []{#fpm-i-21-s11}
 
-## 21.11. La simetría puede ahorrar integrales {#fispm-c21-la-simetruxeda-puede-ahorrar-integrales}
+## 11. La simetría puede ahorrar integrales {#fispm-c21-la-simetruxeda-puede-ahorrar-integrales}
 
 Una distribución simétrica hace que ciertas contribuciones se cancelen por parejas. La simetría relevante es la de la masa, no solo la del borde. Una placa de contorno simétrico con densidad desigual puede conservar productos de inercia que el dibujo invita a borrar.
 
@@ -669,7 +669,7 @@ El eje normal al plano es principal, pero los ejes elegidos dentro del plano pue
 
 []{#ejercicios-10}
 
-### 21.11.1. Ejercicios {#fispm-c21-ejercicios-10}
+### Ejercicios {#fispm-c21-ejercicios-10}
 
 **Ejercicio 21.21.** Una distribución es simétrica respecto de $x=0$, pero no se conoce ninguna otra simetría. Escribe la forma más general de su tensor y determina un eje principal garantizado.
 
@@ -687,7 +687,7 @@ El eje normal al plano es principal, pero los ejes elegidos dentro del plano pue
 
 []{#fpm-i-21-s12}
 
-## 21.12. Cambiar el punto, conservar la dirección del eje {#fispm-c21-cambiar-el-punto-conservar-la-direcciuxf3n-del-eje}
+## 12. Cambiar el punto, conservar la dirección del eje {#fispm-c21-cambiar-el-punto-conservar-la-direcciuxf3n-del-eje}
 
 Hasta aquí los cambios de base conservaron el punto de referencia. Mover el punto cambia las distancias de la masa a los ejes y, por tanto, cambia el tensor físico. El centro de masa hace especialmente simple esa traslación, porque anula los primeros momentos.
 
@@ -699,7 +699,7 @@ Hasta aquí los cambios de base conservaron el punto de referencia. Mover el pun
 
 <figcaption>
 
-**Figura 21.4.** Para una misma dirección de giro, desplazar el eje una distancia perpendicular $d$ desde el centro de masa añade $Md^2$ al momento de inercia. Véase §[21.12](#fispm-c21-cambiar-el-punto-conservar-la-direcciuxf3n-del-eje).
+**Figura 21.4.** Para una misma dirección de giro, desplazar el eje una distancia perpendicular $d$ desde el centro de masa añade $Md^2$ al momento de inercia. Véase §[12](#fispm-c21-cambiar-el-punto-conservar-la-direcciuxf3n-del-eje).
 
 </figcaption>
 
@@ -729,7 +729,7 @@ Las entradas mixtas también cambian. En particular, $I_{O,xy}=I_{C,xy}-Md_xd_y$
 
 []{#ejercicios-11}
 
-### 21.12.1. Ejercicios {#fispm-c21-ejercicios-11}
+### Ejercicios {#fispm-c21-ejercicios-11}
 
 []{#fispm-t1-c21-e0023}
 
@@ -749,7 +749,7 @@ Las entradas mixtas también cambian. En particular, $I_{O,xy}=I_{C,xy}-Md_xd_y$
 
 []{#fpm-i-21-s13}
 
-## 21.13. Integrar cuerpos sencillos con una idea común {#fispm-c21-integrar-cuerpos-sencillos-con-una-idea-comuxfan}
+## 13. Integrar cuerpos sencillos con una idea común {#fispm-c21-integrar-cuerpos-sencillos-con-una-idea-comuxfan}
 
 La fórmula del tensor parece contener seis integrales independientes. Las simetrías suelen reducirlas a dos o una, y las coordenadas adaptadas a la forma vuelven visible qué distancia se está promediando. Conviene hacer al menos un cálculo completo antes de usar tablas de momentos.
 
@@ -779,7 +779,7 @@ Para cuerpos compuestos, el tensor se suma una vez que todas las piezas se han e
 
 []{#ejercicios-12}
 
-### 21.13.1. Ejercicios {#fispm-c21-ejercicios-12}
+### Ejercicios {#fispm-c21-ejercicios-12}
 
 []{#fispm-t1-c21-e0025}
 
@@ -799,7 +799,7 @@ Para cuerpos compuestos, el tensor se suma una vez que todas las piezas se han e
 
 []{#fpm-i-21-s14}
 
-## 21.14. Qué matrices pueden ser una inercia {#fispm-c21-quuxe9-matrices-pueden-ser-una-inercia}
+## 14. Qué matrices pueden ser una inercia {#fispm-c21-quuxe9-matrices-pueden-ser-una-inercia}
 
 La simetría y la positividad son necesarias, pero aún no bastan para cualquier matriz candidata. Cada momento principal suma dos promedios de cuadrados y esos promedios deben ser no negativos. Esta observación proporciona una comprobación adicional y una pequeña reconstrucción de distribuciones.
 
@@ -825,7 +825,7 @@ La orientación seguirá describiéndose por una curva en $SO(3)$. En un instant
 
 []{#problemas-de-integración}
 
-### 21.14.1. Problemas de integración {#fispm-c21-problemas-de-integraciuxf3n}
+### Problemas de integración {#fispm-c21-problemas-de-integraciuxf3n}
 
 []{#fispm-t1-c21-e0027}
 

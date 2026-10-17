@@ -41,7 +41,7 @@ El capítulo 9 estableció cómo una resultante determina la aceleración y bajo
 
 []{#fpm-i-10-s01}
 
-## 10.1. Elegir el cuerpo antes de dibujar fuerzas {#fispm-c10-elegir-el-cuerpo-antes-de-dibujar-fuerzas}
+## 1. Elegir el cuerpo antes de dibujar fuerzas {#fispm-c10-elegir-el-cuerpo-antes-de-dibujar-fuerzas}
 
 Un objeto se apoya sobre una mesa y una mano lo tira mediante una cuerda. La escena contiene mesa, objeto, cuerda, mano y Tierra. Un dibujo de toda la escena ayuda a entender qué ocurre, pero no es todavía la herramienta que necesitamos para escribir una ecuación de Newton. Esa ecuación debe tener un receptor definido. Si mezclamos fuerzas sobre el objeto con fuerzas sobre la mano, la suma dejará de representar la resultante de un cuerpo particular.
 
@@ -69,7 +69,7 @@ En un modelo de partícula no podemos usar el punto de aplicación para estudiar
 
 []{#ejercicios}
 
-### 10.1.1. Ejercicios {#fispm-c10-ejercicios}
+### Ejercicios {#fispm-c10-ejercicios}
 
 []{#fispm-t1-c10-e0001}
 
@@ -91,7 +91,7 @@ En un modelo de partícula no podemos usar el punto de aplicación para estudiar
 
 []{#fpm-i-10-s02}
 
-## 10.2. Del diagrama a las ecuaciones {#fispm-c10-del-diagrama-a-las-ecuaciones}
+## 2. Del diagrama a las ecuaciones {#fispm-c10-del-diagrama-a-las-ecuaciones}
 
 Un diagrama permite ver direcciones y detectar omisiones, pero no resuelve automáticamente el problema. Después de identificar contribuciones debemos expresar sus componentes, incluir las condiciones cinemáticas admitidas y comprobar que disponemos de información suficiente para las incógnitas. Algunas magnitudes provienen de una ley calibrada; otras se determinan como fuerzas de contacto necesarias para mantener un movimiento permitido.
 
@@ -119,7 +119,7 @@ No existe una garantía general de que los problemas de fuerzas produzcan sistem
 
 []{#ejercicios-1}
 
-### 10.2.1. Ejercicios {#fispm-c10-ejercicios-1}
+### Ejercicios {#fispm-c10-ejercicios-1}
 
 []{#fispm-t1-c10-e0003}
 
@@ -139,7 +139,7 @@ No existe una garantía general de que los problemas de fuerzas produzcan sistem
 
 []{#fpm-i-10-s03}
 
-## 10.3. Gravedad uniforme y peso {#fispm-c10-gravedad-uniforme-y-peso}
+## 3. Gravedad uniforme y peso {#fispm-c10-gravedad-uniforme-y-peso}
 
 Un cuerpo liberado cerca del suelo suele acelerar hacia abajo. Para describir ese movimiento en una región pequeña y durante tiempos adecuados usamos un campo gravitatorio aproximadamente uniforme. «Uniforme» significa aquí que el vector del campo se toma constante en la región y en el tiempo del problema. No significa que la gravitación tenga esa forma en todas las escalas.[^2]
 
@@ -151,7 +151,7 @@ Un cuerpo liberado cerca del suelo suele acelerar hacia abajo. Para describir es
 
 <figcaption>
 
-**Figura 10.1.** Partícula en caída libre en el campo uniforme: la única fuerza es el peso $P=mg$ hacia abajo. La ausencia de apoyo significa $N=0$, aunque la partícula se aproxime al suelo. Véase §[10.3](#fispm-c10-gravedad-uniforme-y-peso).
+**Figura 10.1.** Partícula en caída libre en el campo uniforme: la única fuerza es el peso $P=mg$ hacia abajo. La ausencia de apoyo significa $N=0$, aunque la partícula se aproxime al suelo. Véase §[3](#fispm-c10-gravedad-uniforme-y-peso).
 
 </figcaption>
 
@@ -183,7 +183,7 @@ La distinción evita una ambigüedad cotidiana: la masa puede conservarse mientr
 
 []{#ejercicios-2}
 
-### 10.3.1. Ejercicios {#fispm-c10-ejercicios-2}
+### Ejercicios {#fispm-c10-ejercicios-2}
 
 []{#fispm-t1-c10-e0005}
 
@@ -203,7 +203,7 @@ La distinción evita una ambigüedad cotidiana: la masa puede conservarse mientr
 
 []{#fpm-i-10-s04}
 
-## 10.4. Contacto normal y unilateralidad {#fispm-c10-contacto-normal-y-unilateralidad}
+## 4. Contacto normal y unilateralidad {#fispm-c10-contacto-normal-y-unilateralidad}
 
 Una superficie puede impedir que un cuerpo la atraviese sin sujetarlo a ella. Esta diferencia importa: una mesa ordinaria empuja un objeto apoyado, pero no lo atrae cuando el objeto se eleva. El contacto sin adhesión es, por tanto, una interacción que sólo puede actuar en un sentido. Su magnitud se obtiene de las ecuaciones; su signo permitido forma parte del modelo.
 
@@ -215,7 +215,7 @@ Una superficie puede impedir que un cuerpo la atraviese sin sujetarlo a ella. Es
 
 <figcaption>
 
-**Figura 10.2.** Para un contacto unilateral ideal no adhesivo, la separación y la normal satisfacen $h\ge0$, $N\ge0$ y $hN=0$. Los estados admisibles están sobre los ejes: contacto con reacción o separación sin reacción. Véase §[10.4](#fispm-c10-contacto-normal-y-unilateralidad).
+**Figura 10.2.** Para un contacto unilateral ideal no adhesivo, la separación y la normal satisfacen $h\ge0$, $N\ge0$ y $hN=0$. Los estados admisibles están sobre los ejes: contacto con reacción o separación sin reacción. Véase §[4](#fispm-c10-contacto-normal-y-unilateralidad).
 
 </figcaption>
 
@@ -263,7 +263,7 @@ En el límite $N=0$ debemos examinar los datos y la evolución posterior. Una se
 
 []{#ejercicios-3}
 
-### 10.4.1. Ejercicios {#fispm-c10-ejercicios-3}
+### Ejercicios {#fispm-c10-ejercicios-3}
 
 []{#fispm-t1-c10-e0007}
 
@@ -283,7 +283,7 @@ En el límite $N=0$ debemos examinar los datos y la evolución posterior. Una se
 
 []{#fpm-i-10-s05}
 
-## 10.5. Normal, peso aparente y fuerzas oblicuas {#fispm-c10-normal-peso-aparente-y-fuerzas-oblicuas}
+## 5. Normal, peso aparente y fuerzas oblicuas {#fispm-c10-normal-peso-aparente-y-fuerzas-oblicuas}
 
 La lectura de un soporte depende de cuánto debe empujar para acompañar el movimiento requerido. El peso gravitatorio sigue siendo $mg$ en el campo uniforme del modelo, mientras que la normal puede ser mayor, menor o nula. Esta distinción permite interpretar una balanza en un ascensor sin alterar la ley gravitatoria.[^4]
 
@@ -339,7 +339,7 @@ La normal y el peso tampoco forman una pareja de tercera ley, aunque coincidan e
 
 []{#ejercicios-4}
 
-### 10.5.1. Ejercicios {#fispm-c10-ejercicios-4}
+### Ejercicios {#fispm-c10-ejercicios-4}
 
 []{#fispm-t1-c10-e0009}
 
@@ -357,7 +357,7 @@ La normal y el peso tampoco forman una pareja de tercera ley, aunque coincidan e
 
 []{#fpm-i-10-s06}
 
-## 10.6. Plano inclinado sin fricción {#fispm-c10-plano-inclinado-sin-fricciuxf3n}
+## 6. Plano inclinado sin fricción {#fispm-c10-plano-inclinado-sin-fricciuxf3n}
 
 El plano inclinado introduce una orientación distinta sin introducir todavía una ley de rozamiento. Sea $\theta$ su ángulo sobre la horizontal, con $0\leq\theta<\pi/2$. Elegimos una base fija adaptada al plano: $e_t$ hacia arriba de la pendiente y $e_n$ perpendicular al plano hacia el lado accesible. En una base horizontal y vertical $(e_x,e_y)$,
 
@@ -405,7 +405,7 @@ Una fuerza tangencial constante puede anular la aceleración si $Q=mg\sin\theta$
 
 []{#ejercicios-5}
 
-### 10.6.1. Ejercicios {#fispm-c10-ejercicios-5}
+### Ejercicios {#fispm-c10-ejercicios-5}
 
 []{#fispm-t1-c10-e0011}
 
@@ -425,7 +425,7 @@ Una fuerza tangencial constante puede anular la aceleración si $Q=mg\sin\theta$
 
 []{#fpm-i-10-s07}
 
-## 10.7. Tensión e idealización de la cuerda {#fispm-c10-tensiuxf3n-e-idealizaciuxf3n-de-la-cuerda}
+## 7. Tensión e idealización de la cuerda {#fispm-c10-tensiuxf3n-e-idealizaciuxf3n-de-la-cuerda}
 
 Una cuerda permite transmitir una tracción entre cuerpos separados. Para incorporarla al diagrama necesitamos conocer la dirección de su tramo próximo al cuerpo y declarar qué propiedades de la cuerda conservamos. Una cuerda flexible ordinaria puede tirar de un extremo, pero no sostener una compresión longitudinal como una barra rígida: al intentar comprimirla, se afloja o cambia de forma.
 
@@ -437,7 +437,7 @@ Una cuerda permite transmitir una tracción entre cuerpos separados. Para incorp
 
 <figcaption>
 
-**Figura 10.5.** Sobre una masa colgante actúan tensión hacia la cuerda y peso hacia abajo. La ecuación vertical es $T-mg=ma_y$; sólo si $a_y=0$ resulta $T=mg$. Véase §[10.7](#fispm-c10-tensiuxf3n-e-idealizaciuxf3n-de-la-cuerda).
+**Figura 10.5.** Sobre una masa colgante actúan tensión hacia la cuerda y peso hacia abajo. La ecuación vertical es $T-mg=ma_y$; sólo si $a_y=0$ resulta $T=mg$. Véase §[7](#fispm-c10-tensiuxf3n-e-idealizaciuxf3n-de-la-cuerda).
 
 </figcaption>
 
@@ -477,7 +477,7 @@ El balance del tramo también aclara la tercera ley. La cuerda tira del cuerpo; 
 
 []{#ejercicios-6}
 
-### 10.7.1. Ejercicios {#fispm-c10-ejercicios-6}
+### Ejercicios {#fispm-c10-ejercicios-6}
 
 []{#fispm-t1-c10-e0013}
 
@@ -497,7 +497,7 @@ El balance del tramo también aclara la tercera ley. La cuerda tira del cuerpo; 
 
 []{#fpm-i-10-s08}
 
-## 10.8. Cuerpos conectados y sistemas compartidos {#fispm-c10-cuerpos-conectados-y-sistemas-compartidos}
+## 8. Cuerpos conectados y sistemas compartidos {#fispm-c10-cuerpos-conectados-y-sistemas-compartidos}
 
 Consideremos dos cuerpos sobre una superficie horizontal lisa y fija. El cuerpo $B$ está a la izquierda y el cuerpo $A$ a la derecha. Una cuerda recta ideal los conecta y una fuerza horizontal externa $F\geq0$ tira de $A$ hacia la derecha. Podemos escribir un diagrama por cuerpo y otro para el conjunto, pero debemos conservar la misma elección de receptores durante cada balance.
 
@@ -551,7 +551,7 @@ En una cadena vertical, dos cuerdas diferentes pueden tener tensiones diferentes
 
 []{#ejercicios-7}
 
-### 10.8.1. Ejercicios {#fispm-c10-ejercicios-7}
+### Ejercicios {#fispm-c10-ejercicios-7}
 
 []{#fispm-t1-c10-e0015}
 
@@ -577,7 +577,7 @@ Con esto queda construido el núcleo de selección del sistema, gravedad, contac
 
 []{#fpm-i-10-s09}
 
-## 10.9. Fricción estática y admisibilidad {#fispm-c10-fricciuxf3n-estuxe1tica-y-admisibilidad}
+## 9. Fricción estática y admisibilidad {#fispm-c10-fricciuxf3n-estuxe1tica-y-admisibilidad}
 
 Empujar suavemente un cuerpo apoyado puede no producir movimiento relativo respecto del soporte. La ausencia de ese movimiento no implica ausencia de fuerza tangencial. Si una fuerza aplicada intenta desplazar el cuerpo y éste permanece en reposo sobre una mesa fija, el balance exige una contribución que la compense. Su valor se determina por la aceleración requerida y tiene un límite dentro del modelo de contacto seco.[^7]
 
@@ -589,7 +589,7 @@ Empujar suavemente un cuerpo apoyado puede no producir movimiento relativo respe
 
 <figcaption>
 
-**Figura 10.7.** En un soporte horizontal, bajo un empuje $F$ y sin aceleración, $f_s=F$ y $N=mg$. Esta rama requiere $F\le\mu_s mg$; $f_s$ no vale siempre su máximo. Véase §[10.9](#fispm-c10-fricciuxf3n-estuxe1tica-y-admisibilidad).
+**Figura 10.7.** En un soporte horizontal, bajo un empuje $F$ y sin aceleración, $f_s=F$ y $N=mg$. Esta rama requiere $F\le\mu_s mg$; $f_s$ no vale siempre su máximo. Véase §[9](#fispm-c10-fricciuxf3n-estuxe1tica-y-admisibilidad).
 
 </figcaption>
 
@@ -639,7 +639,7 @@ Cuando la desigualdad falla, el soporte no puede comunicar la aceleración supue
 
 []{#ejercicios-8}
 
-### 10.9.1. Ejercicios {#fispm-c10-ejercicios-8}
+### Ejercicios {#fispm-c10-ejercicios-8}
 
 []{#fispm-t1-c10-e0017}
 
@@ -659,7 +659,7 @@ Cuando la desigualdad falla, el soporte no puede comunicar la aceleración supue
 
 []{#fpm-i-10-s10}
 
-## 10.10. Fricción cinética y cambio de régimen {#fispm-c10-fricciuxf3n-cinuxe9tica-y-cambio-de-ruxe9gimen}
+## 10. Fricción cinética y cambio de régimen {#fispm-c10-fricciuxf3n-cinuxe9tica-y-cambio-de-ruxe9gimen}
 
 Una vez que las superficies deslizan entre sí, el modelo más sencillo asigna una fuerza tangencial opuesta a esa velocidad relativa. Su magnitud se aproxima por un coeficiente cinético multiplicado por la normal. Hay que distinguir este valor de la fricción que se ajustaba al balance estático.
 
@@ -671,7 +671,7 @@ Una vez que las superficies deslizan entre sí, el modelo más sencillo asigna u
 
 <figcaption>
 
-**Figura 10.8.** Para una caja que desliza cuesta arriba en un plano a $30^\circ$, la normal es perpendicular al plano y $f_k$ apunta cuesta abajo. El peso permanece vertical; sus proyecciones no son fuerzas nuevas. Véase §[10.10](#fispm-c10-fricciuxf3n-cinuxe9tica-y-cambio-de-ruxe9gimen).
+**Figura 10.8.** Para una caja que desliza cuesta arriba en un plano a $30^\circ$, la normal es perpendicular al plano y $f_k$ apunta cuesta abajo. El peso permanece vertical; sus proyecciones no son fuerzas nuevas. Véase §[10](#fispm-c10-fricciuxf3n-cinuxe9tica-y-cambio-de-ruxe9gimen).
 
 </figcaption>
 
@@ -713,7 +713,7 @@ La fricción opuesta al movimiento relativo puede aumentar la rapidez respecto d
 
 []{#ejercicios-9}
 
-### 10.10.1. Ejercicios {#fispm-c10-ejercicios-9}
+### Ejercicios {#fispm-c10-ejercicios-9}
 
 []{#fispm-t1-c10-e0019}
 
@@ -733,7 +733,7 @@ La fricción opuesta al movimiento relativo puede aumentar la rapidez respecto d
 
 []{#fpm-i-10-s11}
 
-## 10.11. Plano inclinado y umbrales de deslizamiento {#fispm-c10-plano-inclinado-y-umbrales-de-deslizamiento}
+## 11. Plano inclinado y umbrales de deslizamiento {#fispm-c10-plano-inclinado-y-umbrales-de-deslizamiento}
 
 Volvamos al plano fijo de §6, con base $e_t$ cuesta arriba y $e_n$ hacia afuera. El contacto ahora puede aportar una fuerza tangencial $f e_t$. Una fuerza adicional $Qe_t$, firmada, deja intacto el balance normal: $N=mg\cos\theta$. El balance tangencial es $ma_t=Q-mg\sin\theta+f.$
 
@@ -745,7 +745,7 @@ Volvamos al plano fijo de §6, con base $e_t$ cuesta arriba y $e_n$ hacia afuera
 
 <figcaption>
 
-**Figura 10.9.** Para $\mu_s=1/2$, la cuña representa $|f_s|\le N/2$ y $N\ge0$. En el interior la fricción se ajusta al equilibrio; la frontera corresponde al umbral del modelo de Coulomb. Véase §[10.11](#fispm-c10-plano-inclinado-y-umbrales-de-deslizamiento).
+**Figura 10.9.** Para $\mu_s=1/2$, la cuña representa $|f_s|\le N/2$ y $N\ge0$. En el interior la fricción se ajusta al equilibrio; la frontera corresponde al umbral del modelo de Coulomb. Véase §[11](#fispm-c10-plano-inclinado-y-umbrales-de-deslizamiento).
 
 </figcaption>
 
@@ -805,7 +805,7 @@ La comparación muestra que perder el reposo no equivale a perder apoyo. La trac
 
 []{#ejercicios-10}
 
-### 10.11.1. Ejercicios {#fispm-c10-ejercicios-10}
+### Ejercicios {#fispm-c10-ejercicios-10}
 
 []{#fispm-t1-c10-e0021}
 
@@ -839,7 +839,7 @@ La normal es positiva y el límite corresponde a fricción, no a separación. Co
 
 []{#fpm-i-10-s12}
 
-## 10.12. Resistencia lineal y cuadrática {#fispm-c10-resistencia-lineal-y-cuadruxe1tica}
+## 12. Resistencia lineal y cuadrática {#fispm-c10-resistencia-lineal-y-cuadruxe1tica}
 
 Un cuerpo que se mueve en un fluido puede recibir una fuerza que depende de su movimiento respecto del medio. A diferencia del rozamiento seco ideal, las aproximaciones que estudiaremos se anulan al anularse esa velocidad relativa y crecen con ella. La elección entre una ley lineal y una cuadrática debe apoyarse en el régimen físico o en datos; Newton no selecciona el exponente.[^9]
 
@@ -851,7 +851,7 @@ Un cuerpo que se mueve en un fluido puede recibir una fuerza que depende de su m
 
 <figcaption>
 
-**Figura 10.10.** Durante la caída con $v_y<0$, la fuerza $-bv_y e_y$ se opone a la velocidad. Al alcanzar $|v_y|=mg/b$ se equilibran ambas fuerzas; antes de ese límite sus módulos pueden diferir. Véase §[10.12](#fispm-c10-resistencia-lineal-y-cuadruxe1tica).
+**Figura 10.10.** Durante la caída con $v_y<0$, la fuerza $-bv_y e_y$ se opone a la velocidad. Al alcanzar $|v_y|=mg/b$ se equilibran ambas fuerzas; antes de ese límite sus módulos pueden diferir. Véase §[12](#fispm-c10-resistencia-lineal-y-cuadruxe1tica).
 
 </figcaption>
 
@@ -913,7 +913,7 @@ Los dos modelos tienen velocidades terminales distintas: $mg/b$ y $\sqrt{mg/c}$.
 
 []{#ejercicios-11}
 
-### 10.12.1. Ejercicios {#fispm-c10-ejercicios-11}
+### Ejercicios {#fispm-c10-ejercicios-11}
 
 []{#fispm-t1-c10-e0024}
 
@@ -941,7 +941,7 @@ La velocidad tiende a cero, pero el desplazamiento crece sin cota en este modelo
 
 []{#fpm-i-10-s13}
 
-## 10.13. Resortes y ley de Hooke {#fispm-c10-resortes-y-ley-de-hooke}
+## 13. Resortes y ley de Hooke {#fispm-c10-resortes-y-ley-de-hooke}
 
 Un resorte puede ejercer una fuerza que depende de cuánto se aparta de su longitud natural. Aquí importa distinguir esa longitud de la posición de equilibrio de un cuerpo sometido a otras fuerzas. Un resorte vertical que sostiene una masa suele estar alargado en equilibrio: la fuerza elástica compensa el peso y no es cero.[^10]
 
@@ -953,7 +953,7 @@ Un resorte puede ejercer una fuerza que depende de cuánto se aparta de su longi
 
 <figcaption>
 
-**Figura 10.11.** El resorte está extendido hacia la derecha respecto del equilibrio $x=0$. Su fuerza sobre la masa apunta hacia la izquierda. En una mesa lisa, peso y normal se compensan verticalmente. Véase §[10.13](#fispm-c10-resortes-y-ley-de-hooke).
+**Figura 10.11.** El resorte está extendido hacia la derecha respecto del equilibrio $x=0$. Su fuerza sobre la masa apunta hacia la izquierda. En una mesa lisa, peso y normal se compensan verticalmente. Véase §[13](#fispm-c10-resortes-y-ley-de-hooke).
 
 </figcaption>
 
@@ -1005,7 +1005,7 @@ La igualdad de fuerza en serie proviene del balance de la unión, como ocurrió 
 
 []{#ejercicios-12}
 
-### 10.13.1. Ejercicios {#fispm-c10-ejercicios-12}
+### Ejercicios {#fispm-c10-ejercicios-12}
 
 []{#fispm-t1-c10-e0026}
 
@@ -1031,7 +1031,7 @@ La igualdad de fuerza en serie proviene del balance de la unión, como ocurrió 
 
 []{#fpm-i-10-s14}
 
-## 10.14. Síntesis y auditoría de fuerzas {#fispm-c10-suxedntesis-y-auditoruxeda-de-fuerzas}
+## 14. Síntesis y auditoría de fuerzas {#fispm-c10-suxedntesis-y-auditoruxeda-de-fuerzas}
 
 Construir un diagrama reúne información de naturaleza distinta. El peso viene de un campo admitido; el resorte, de una ley de deformación; la resistencia, de una ley de velocidad relativa. La normal, la fricción estática y ciertas tensiones se obtienen como fuerzas necesarias para realizar una geometría o un movimiento permitido. Todas entran en Newton, pero no se determinan de la misma manera.
 
@@ -1070,7 +1070,7 @@ También debe mantenerse la frontera del sistema al sumar balances. Para un cuer
 
 []{#ejercicios-13}
 
-### 10.14.1. Ejercicios {#fispm-c10-ejercicios-13}
+### Ejercicios {#fispm-c10-ejercicios-13}
 
 []{#fispm-t1-c10-e0029}
 

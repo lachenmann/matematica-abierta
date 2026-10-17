@@ -45,7 +45,7 @@ Usaremos el tiempo común de la mecánica newtoniana, masas constantes positivas
 
 []{#fpm-i-20-s01}
 
-## 20.1. Dos orígenes que se separan {#fispm-c20-dos-oruxedgenes-que-se-separan}
+## 1. Dos orígenes que se separan {#fispm-c20-dos-oruxedgenes-que-se-separan}
 
 Imaginemos dos cámaras cuyos ejes permanecen paralelos. La primera usa un origen fijo en un marco inercial; la segunda se desplaza con el tren. Si la posición de su origen es $\mathbf X(t)$, ambas asignan a una partícula posiciones relacionadas por $\mathbf x(t)=\mathbf X(t)+\mathbf r(t)$. La resta de posiciones funciona aunque el tren acelere. La diferencia aparece al derivar.
 
@@ -57,7 +57,7 @@ Imaginemos dos cámaras cuyos ejes permanecen paralelos. La primera usa un orige
 
 <figcaption>
 
-**Figura 20.1.** La identidad $r=R+r\prime$ separa la posición del origen móvil y la posición relativa. Con bases paralelas, dos derivadas dan $a=A+a\prime$. Véase §[20.1](#fispm-c20-dos-oruxedgenes-que-se-separan).
+**Figura 20.1.** La identidad $r=R+r\prime$ separa la posición del origen móvil y la posición relativa. Con bases paralelas, dos derivadas dan $a=A+a\prime$. Véase §[1](#fispm-c20-dos-oruxedgenes-que-se-separan).
 
 </figcaption>
 
@@ -89,7 +89,7 @@ Así se recupera la familia de marcos inerciales ligados por traslaciones unifor
 
 []{#ejercicios}
 
-### 20.1.1. Ejercicios {#fispm-c20-ejercicios}
+### Ejercicios {#fispm-c20-ejercicios}
 
 []{#fispm-t1-c20-e0001}
 
@@ -111,7 +111,7 @@ Así se recupera la familia de marcos inerciales ligados por traslaciones unifor
 
 []{#fpm-i-20-s02}
 
-## 20.2. Lo que mide una balanza acelerada {#fispm-c20-lo-que-mide-una-balanza-acelerada}
+## 2. Lo que mide una balanza acelerada {#fispm-c20-lo-que-mide-una-balanza-acelerada}
 
 Una balanza mide la fuerza que sostiene a una persona. En un ascensor esa fuerza puede cambiar aunque la masa y el campo gravitatorio permanezcan prácticamente constantes. Para calcularla podemos trabajar en el edificio o en la cabina; ambas descripciones deben dar la misma lectura del instrumento.
 
@@ -147,7 +147,7 @@ La existencia de un potencial espacial no basta para conservar una energía: hac
 
 []{#ejercicios-1}
 
-### 20.2.1. Ejercicios {#fispm-c20-ejercicios-1}
+### Ejercicios {#fispm-c20-ejercicios-1}
 
 []{#fispm-t1-c20-e0003}
 
@@ -167,7 +167,7 @@ La existencia de un potencial espacial no basta para conservar una energía: hac
 
 []{#fpm-i-20-s03}
 
-## 20.3. Acompañar la caída {#fispm-c20-acompauxf1ar-la-cauxedda}
+## 3. Acompañar la caída {#fispm-c20-acompauxf1ar-la-cauxedda}
 
 Elegir un origen que caiga con un cuerpo elimina la aceleración común debida a un campo uniforme. Esa elección explica por qué objetos próximos pueden parecer flotar juntos. También permite precisar el límite del argumento: un campo que cambia con la posición produce diferencias de aceleración que ninguna traslación común elimina.
 
@@ -191,7 +191,7 @@ La ausencia de normal en caída libre tampoco significa que la fuerza gravitator
 
 []{#ejercicios-2}
 
-### 20.3.1. Ejercicios {#fispm-c20-ejercicios-2}
+### Ejercicios {#fispm-c20-ejercicios-2}
 
 []{#fispm-t1-c20-e0005}
 
@@ -211,7 +211,7 @@ La ausencia de normal en caída libre tampoco significa que la fuerza gravitator
 
 []{#fpm-i-20-s04}
 
-## 20.4. Seguir unos ejes que giran {#fispm-c20-seguir-unos-ejes-que-giran}
+## 4. Seguir unos ejes que giran {#fispm-c20-seguir-unos-ejes-que-giran}
 
 En una plataforma giratoria, restar la posición del origen deja sin resolver la orientación de los ejes. Un vector puede conservar su dirección en el espacio y cambiar sus componentes sobre la plataforma. Necesitamos una escritura que separe ambos hechos sin presuponer un eje fijo de rotación.
 
@@ -249,7 +249,7 @@ La última fórmula permite hablar de aceleración angular sin confundir derivad
 
 []{#ejercicios-3}
 
-### 20.4.1. Ejercicios {#fispm-c20-ejercicios-3}
+### Ejercicios {#fispm-c20-ejercicios-3}
 
 []{#fispm-t1-c20-e0007}
 
@@ -269,7 +269,7 @@ La última fórmula permite hablar de aceleración angular sin confundir derivad
 
 []{#fpm-i-20-s05}
 
-## 20.5. La derivada de un vector y la derivada de sus componentes {#fispm-c20-la-derivada-de-un-vector-y-la-derivada-de-sus-componentes}
+## 5. La derivada de un vector y la derivada de sus componentes {#fispm-c20-la-derivada-de-un-vector-y-la-derivada-de-sus-componentes}
 
 El ejercicio anterior contiene el mecanismo de toda la transformación. Al diferenciar un vector escrito en una base móvil hay dos contribuciones: cambian sus componentes y cambia la base. Se pueden reunir en una única regla que usaremos tanto para la velocidad como para la aceleración.
 
@@ -295,7 +295,7 @@ El producto escalar no cambia al pasar de componentes móviles a inerciales: $(R
 
 []{#ejercicios-4}
 
-### 20.5.1. Ejercicios {#fispm-c20-ejercicios-4}
+### Ejercicios {#fispm-c20-ejercicios-4}
 
 []{#fispm-t1-c20-e0009}
 
@@ -315,7 +315,7 @@ El producto escalar no cambia al pasar de componentes móviles a inerciales: $(R
 
 []{#fpm-i-20-s06}
 
-## 20.6. Qué velocidad llevaba el cuerpo al soltarlo {#fispm-c20-quuxe9-velocidad-llevaba-el-cuerpo-al-soltarlo}
+## 6. Qué velocidad llevaba el cuerpo al soltarlo {#fispm-c20-quuxe9-velocidad-llevaba-el-cuerpo-al-soltarlo}
 
 Un cuerpo que se suelta desde una plataforma conserva inicialmente la velocidad que tenía en el marco inercial. Si antes permanecía quieto respecto de la plataforma, esa velocidad incluye el movimiento del origen y la rotación local. Confundir reposo relativo con reposo inercial cambia el problema desde sus datos iniciales.
 
@@ -347,7 +347,7 @@ La distancia entre esos dos puntos permanece constante, aunque sus velocidades p
 
 []{#ejercicios-5}
 
-### 20.6.1. Ejercicios {#fispm-c20-ejercicios-5}
+### Ejercicios {#fispm-c20-ejercicios-5}
 
 []{#fispm-t1-c20-e0011}
 
@@ -367,7 +367,7 @@ La distancia entre esos dos puntos permanece constante, aunque sus velocidades p
 
 []{#fpm-i-20-s07}
 
-## 20.7. De dónde sale el factor dos {#fispm-c20-de-duxf3nde-sale-el-factor-dos}
+## 7. De dónde sale el factor dos {#fispm-c20-de-duxf3nde-sale-el-factor-dos}
 
 La velocidad relativa entra dos veces al diferenciar la velocidad física. Una contribución procede de la rotación de ese vector velocidad; la otra, del cambio de la posición que aparece en $\boldsymbol\Omega\times\mathbf r$. Mantener ambas operaciones visibles evita perder el factor dos de Coriolis.
 
@@ -379,7 +379,7 @@ La velocidad relativa entra dos veces al diferenciar la velocidad física. Una c
 
 <figcaption>
 
-**Figura 20.2.** Si $\Omega$ sale del plano y $v\prime$ apunta a la derecha, $-2m\Omega\times v\prime$ apunta hacia abajo. La flecha discontinua es una velocidad; el término inercial no es una interacción nueva. Véase §[20.7](#fispm-c20-de-duxf3nde-sale-el-factor-dos).
+**Figura 20.2.** Si $\Omega$ sale del plano y $v\prime$ apunta a la derecha, $-2m\Omega\times v\prime$ apunta hacia abajo. La flecha discontinua es una velocidad; el término inercial no es una interacción nueva. Véase §[7](#fispm-c20-de-duxf3nde-sale-el-factor-dos).
 
 </figcaption>
 
@@ -411,7 +411,7 @@ El término $\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r)$ en la pr
 
 []{#ejercicios-6}
 
-### 20.7.1. Ejercicios {#fispm-c20-ejercicios-6}
+### Ejercicios {#fispm-c20-ejercicios-6}
 
 []{#fispm-t1-c20-e0013}
 
@@ -431,7 +431,7 @@ El término $\boldsymbol\Omega\times(\boldsymbol\Omega\times\mathbf r)$ en la pr
 
 []{#fpm-i-20-s08}
 
-## 20.8. Cuatro términos y sus funciones {#fispm-c20-cuatro-tuxe9rminos-y-sus-funciones}
+## 8. Cuatro términos y sus funciones {#fispm-c20-cuatro-tuxe9rminos-y-sus-funciones}
 
 La ecuación completa permite clasificar los efectos por los datos del marco que los originan. Esta clasificación ayuda a calcular, pero la condición que los distingue de las fuerzas físicas es su procedencia: se introducen al expresar la aceleración en un marco móvil. Las fuerzas del piso, de una cuerda o de un resorte siguen siendo interacciones entre cuerpos.
 
@@ -443,7 +443,7 @@ La ecuación completa permite clasificar los efectos por los datos del marco que
 
 <figcaption>
 
-**Figura 20.3.** Con $\Omega$ saliente y velocidad relativa hacia la derecha, $-2m\Omega\times v^\prime$ apunta hacia abajo. La velocidad discontinua es un dato cinemático; la flecha continua representa el término de fuerza en el marco que gira. Véase §[20.8](#fispm-c20-cuatro-tuxe9rminos-y-sus-funciones).
+**Figura 20.3.** Con $\Omega$ saliente y velocidad relativa hacia la derecha, $-2m\Omega\times v^\prime$ apunta hacia abajo. La velocidad discontinua es un dato cinemático; la flecha continua representa el término de fuerza en el marco que gira. Véase §[8](#fispm-c20-cuatro-tuxe9rminos-y-sus-funciones).
 
 </figcaption>
 
@@ -490,7 +490,7 @@ El signo negativo del potencial refleja que la fuerza centrífuga apunta hacia r
 
 []{#ejercicios-7}
 
-### 20.8.1. Ejercicios {#fispm-c20-ejercicios-7}
+### Ejercicios {#fispm-c20-ejercicios-7}
 
 []{#fispm-t1-c20-e0015}
 
@@ -510,7 +510,7 @@ El signo negativo del potencial refleja que la fuerza centrífuga apunta hacia r
 
 []{#fpm-i-20-s09}
 
-## 20.9. Una recta vista desde una plataforma {#fispm-c20-una-recta-vista-desde-una-plataforma}
+## 9. Una recta vista desde una plataforma {#fispm-c20-una-recta-vista-desde-una-plataforma}
 
 Un ejemplo sin fuerzas permite poner a prueba la ecuación completa. En el marco inercial la trayectoria es una recta. En el marco que gira puede tener una forma complicada, pero conocemos de antemano una manera de obtenerla: transformar esa recta. Esa respuesta sirve para comprobar la ecuación y sus condiciones iniciales al mismo tiempo.
 
@@ -544,7 +544,7 @@ Los dos signos tienen una explicación geométrica. Un punto quieto en el espaci
 
 []{#ejercicios-8}
 
-### 20.9.1. Ejercicios {#fispm-c20-ejercicios-8}
+### Ejercicios {#fispm-c20-ejercicios-8}
 
 []{#fispm-t1-c20-e0017}
 
@@ -564,7 +564,7 @@ Los dos signos tienen una explicación geométrica. Un punto quieto en el espaci
 
 []{#fpm-i-20-s10}
 
-## 20.10. Una guía que impone el giro {#fispm-c20-una-guuxeda-que-impone-el-giro}
+## 10. Una guía que impone el giro {#fispm-c20-una-guuxeda-que-impone-el-giro}
 
 Si una cuenta se desliza por una varilla radial que gira, la trayectoria física deja de ser libre. La varilla impone que el ángulo de la cuenta acompañe su giro. Aunque la guía sea lisa, debe ejercer una reacción transversal para sostener esa condición. La palabra «sin fricción» elimina la fuerza longitudinal de rozamiento, pero conserva la reacción normal.
 
@@ -602,7 +602,7 @@ El motor que mantiene el giro puede suministrar energía a la cuenta mediante la
 
 []{#ejercicios-9}
 
-### 20.10.1. Ejercicios {#fispm-c20-ejercicios-9}
+### Ejercicios {#fispm-c20-ejercicios-9}
 
 []{#fispm-t1-c20-e0019}
 
@@ -620,7 +620,7 @@ El motor que mantiene el giro puede suministrar energía a la cuenta mediante la
 
 []{#fpm-i-20-s11}
 
-## 20.11. Equilibrio y energía en una rotación uniforme {#fispm-c20-equilibrio-y-energuxeda-en-una-rotaciuxf3n-uniforme}
+## 11. Equilibrio y energía en una rotación uniforme {#fispm-c20-equilibrio-y-energuxeda-en-una-rotaciuxf3n-uniforme}
 
 Un cuerpo quieto sobre una plataforma tiene aceleración relativa cero. La fuerza física que necesita puede ser distinta de cero, como mostró ejercicio 20.14. Cuando la rotación es uniforme y las fuerzas físicas conservativas son estacionarias en la plataforma, el potencial centrífugo permite formular tanto la condición de equilibrio como un balance de energía.
 
@@ -632,7 +632,7 @@ Un cuerpo quieto sobre una plataforma tiene aceleración relativa cero. La fuerz
 
 <figcaption>
 
-**Figura 20.4.** Para rotación uniforme, el término centrífugo radial deriva de $U_c=-m\Omega^2r^2/2$. Su pendiente negativa produce una contribución dirigida hacia afuera. Véase §[20.11](#fispm-c20-equilibrio-y-energuxeda-en-una-rotaciuxf3n-uniforme).
+**Figura 20.4.** Para rotación uniforme, el término centrífugo radial deriva de $U_c=-m\Omega^2r^2/2$. Su pendiente negativa produce una contribución dirigida hacia afuera. Véase §[11](#fispm-c20-equilibrio-y-energuxeda-en-una-rotaciuxf3n-uniforme).
 
 </figcaption>
 
@@ -672,7 +672,7 @@ Un mínimo estricto del potencial efectivo puede servir para controlar perturbac
 
 []{#ejercicios-10}
 
-### 20.11.1. Ejercicios {#fispm-c20-ejercicios-10}
+### Ejercicios {#fispm-c20-ejercicios-10}
 
 []{#fispm-t1-c20-e0021}
 
@@ -692,7 +692,7 @@ Un mínimo estricto del potencial efectivo puede servir para controlar perturbac
 
 []{#fpm-i-20-s12}
 
-## 20.12. Un laboratorio que gira con la Tierra {#fispm-c20-un-laboratorio-que-gira-con-la-tierra}
+## 12. Un laboratorio que gira con la Tierra {#fispm-c20-un-laboratorio-que-gira-con-la-tierra}
 
 En una experiencia terrestre, el movimiento de los ejes suele ser pequeño durante cada segundo y, sin embargo, acumular efectos medibles. Para fijar signos usemos un marco local con $x$ hacia el este, $y$ hacia el norte y $z$ hacia arriba. En un modelo esférico de Tierra, a latitud $\lambda$, la velocidad angular tiene componentes
 
@@ -744,7 +744,7 @@ El experimento de Foucault de 1851 hizo visible la rotación terrestre mediante 
 
 []{#ejercicios-11}
 
-### 20.12.1. Ejercicios {#fispm-c20-ejercicios-11}
+### Ejercicios {#fispm-c20-ejercicios-11}
 
 []{#fispm-t1-c20-e0023}
 
@@ -764,7 +764,7 @@ El experimento de Foucault de 1851 hizo visible la rotación terrestre mediante 
 
 []{#fpm-i-20-s13}
 
-## 20.13. Dos energías para la misma trayectoria {#fispm-c20-dos-energuxedas-para-la-misma-trayectoria}
+## 13. Dos energías para la misma trayectoria {#fispm-c20-dos-energuxedas-para-la-misma-trayectoria}
 
 La energía relativa conservada en §11 contiene un potencial centrífugo negativo. Para entender qué combina, comparemos con la energía y el momento angular inerciales cuando el origen es fijo. La identidad resultante explica por qué una guía que gira puede aumentar la energía física y conservar, al mismo tiempo, una combinación relativa.
 
@@ -790,7 +790,7 @@ Un origen que se traslada introduce términos adicionales en esta comparación. 
 
 []{#ejercicios-12}
 
-### 20.13.1. Ejercicios {#fispm-c20-ejercicios-12}
+### Ejercicios {#fispm-c20-ejercicios-12}
 
 []{#fispm-t1-c20-e0025}
 
@@ -810,7 +810,7 @@ Un origen que se traslada introduce términos adicionales en esta comparación. 
 
 []{#fpm-i-20-s14}
 
-## 20.14. Reconstruir el problema físico {#fispm-c20-reconstruir-el-problema-fuxedsico}
+## 14. Reconstruir el problema físico {#fispm-c20-reconstruir-el-problema-fuxedsico}
 
 Las ecuaciones móviles reúnen términos de posición, velocidad y tiempo. Esa mezcla puede sugerir que todos admiten un potencial o que todos pueden tratarse como fuerzas de contacto. Un último resultado permite delimitar la primera posibilidad y los problemas siguientes pondrán a prueba ambas interpretaciones.
 
@@ -828,7 +828,7 @@ El enunciado se limita a potenciales escalares de posición. Más adelante el fo
 
 []{#problemas-de-integración}
 
-### 20.14.1. Problemas de integración {#fispm-c20-problemas-de-integraciuxf3n}
+### Problemas de integración {#fispm-c20-problemas-de-integraciuxf3n}
 
 []{#fispm-t1-c20-e0027}
 

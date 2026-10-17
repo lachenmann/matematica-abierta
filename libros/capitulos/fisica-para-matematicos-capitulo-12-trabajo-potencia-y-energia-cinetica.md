@@ -41,7 +41,7 @@ Newton relaciona la fuerza resultante con el cambio de velocidad. En este capít
 
 []{#fpm-i-12-s01}
 
-## 12.1. Fuerza, desplazamiento y trabajo constante {#fispm-c12-fuerza-desplazamiento-y-trabajo-constante}
+## 1. Fuerza, desplazamiento y trabajo constante {#fispm-c12-fuerza-desplazamiento-y-trabajo-constante}
 
 Empujar un cuerpo no produce el mismo efecto sobre su rapidez en cualquier dirección. Una fuerza puede acompañar el movimiento, oponerse a él o desviarlo sin cambiar instantáneamente la rapidez. El producto escalar del capítulo 4 permite distinguir esas situaciones. Para comenzar, tomemos una fuerza constante y un tramo recto de desplazamiento $\Delta\mathbf r$.[^1]
 
@@ -53,7 +53,7 @@ Empujar un cuerpo no produce el mismo efecto sobre su rapidez en cualquier direc
 
 <figcaption>
 
-**Figura 12.1.** Sólo la componente paralela al desplazamiento contribuye al trabajo de una fuerza constante. La flecha discontinua es un desplazamiento y no una fuerza adicional. Véase §[12.1](#fispm-c12-fuerza-desplazamiento-y-trabajo-constante).
+**Figura 12.1.** Sólo la componente paralela al desplazamiento contribuye al trabajo de una fuerza constante. La flecha discontinua es un desplazamiento y no una fuerza adicional. Véase §[1](#fispm-c12-fuerza-desplazamiento-y-trabajo-constante).
 
 </figcaption>
 
@@ -93,7 +93,7 @@ Proposición 12.1 distingue desplazamiento neto y distancia recorrida. La fuerza
 
 []{#ejercicios}
 
-### 12.1.1. Ejercicios {#fispm-c12-ejercicios}
+### Ejercicios {#fispm-c12-ejercicios}
 
 []{#fispm-t1-c12-e0001}
 
@@ -115,7 +115,7 @@ Proposición 12.1 distingue desplazamiento neto y distancia recorrida. La fuerza
 
 []{#fpm-i-12-s02}
 
-## 12.2. Trabajo de una fuerza variable en una dimensión {#fispm-c12-trabajo-de-una-fuerza-variable-en-una-dimensiuxf3n}
+## 2. Trabajo de una fuerza variable en una dimensión {#fispm-c12-trabajo-de-una-fuerza-variable-en-una-dimensiuxf3n}
 
 Cuando la fuerza cambia a lo largo de una línea, una sola multiplicación no incorpora la variación. Dividimos el recorrido en pequeños tramos, multiplicamos en cada uno la componente firmada de fuerza por el desplazamiento firmado y pasamos a una integral. Las herramientas son las sumas y el teorema fundamental del cálculo de M2--M3; no hace falta introducir aún campos potenciales.[^2]
 
@@ -127,7 +127,7 @@ Cuando la fuerza cambia a lo largo de una línea, una sola multiplicación no in
 
 <figcaption>
 
-**Figura 12.2.** Con $F(x)=1+x$ y desplazamiento desde $0$ hasta $2$, el trabajo normalizado vale $\int_0^2(1+x)\,dx=4$. Invertir el sentido de integración cambia su signo. Véase §[12.2](#fispm-c12-trabajo-de-una-fuerza-variable-en-una-dimensiuxf3n).
+**Figura 12.2.** Con $F(x)=1+x$ y desplazamiento desde $0$ hasta $2$, el trabajo normalizado vale $\int_0^2(1+x)\,dx=4$. Invertir el sentido de integración cambia su signo. Véase §[2](#fispm-c12-trabajo-de-una-fuerza-variable-en-una-dimensiuxf3n).
 
 </figcaption>
 
@@ -141,7 +141,7 @@ Cuando la fuerza cambia a lo largo de una línea, una sola multiplicación no in
 
 <figcaption>
 
-**Figura 12.3.** Para $F(x)=kx$ y $0\le x\le a$, el área bajo la gráfica es $ka^2/2$. Los ejes normalizados son $x/a$ y $F/(ka)$. Véase §[12.2](#fispm-c12-trabajo-de-una-fuerza-variable-en-una-dimensiuxf3n).
+**Figura 12.3.** Para $F(x)=kx$ y $0\le x\le a$, el área bajo la gráfica es $ka^2/2$. Los ejes normalizados son $x/a$ y $F/(ka)$. Véase §[2](#fispm-c12-trabajo-de-una-fuerza-variable-en-una-dimensiuxf3n).
 
 </figcaption>
 
@@ -179,7 +179,7 @@ El argumento de la primitiva es aquí una herramienta de cálculo. La generaliza
 
 []{#ejercicios-1}
 
-### 12.2.1. Ejercicios {#fispm-c12-ejercicios-1}
+### Ejercicios {#fispm-c12-ejercicios-1}
 
 []{#fispm-t1-c12-e0003}
 
@@ -199,7 +199,7 @@ El argumento de la primitiva es aquí una herramienta de cálculo. La generaliza
 
 []{#fpm-i-12-s03}
 
-## 12.3. Energía cinética y cambio de rapidez {#fispm-c12-energuxeda-cinuxe9tica-y-cambio-de-rapidez}
+## 3. Energía cinética y cambio de rapidez {#fispm-c12-energuxeda-cinuxe9tica-y-cambio-de-rapidez}
 
 El factor cuadrático de la velocidad aparece al multiplicar aceleración por velocidad. Antes de usar Newton conviene establecer la identidad matemática que lo produce. Esto permitirá demostrar el teorema sin dividir por rapidez y conservar su validez en instantes de reposo.
 
@@ -239,7 +239,7 @@ En un instante de reposo, proposición 12.4 da $dK/dt=0$ aunque la aceleración 
 
 []{#ejercicios-2}
 
-### 12.3.1. Ejercicios {#fispm-c12-ejercicios-2}
+### Ejercicios {#fispm-c12-ejercicios-2}
 
 []{#fispm-t1-c12-e0005}
 
@@ -259,7 +259,7 @@ En un instante de reposo, proposición 12.4 da $dK/dt=0$ aunque la aceleración 
 
 []{#fpm-i-12-s04}
 
-## 12.4. Trabajo a lo largo de una trayectoria {#fispm-c12-trabajo-a-lo-largo-de-una-trayectoria}
+## 4. Trabajo a lo largo de una trayectoria {#fispm-c12-trabajo-a-lo-largo-de-una-trayectoria}
 
 Para recorrer una curva debemos sumar contribuciones locales, usando en cada una la fuerza y el desplazamiento correspondientes. La posición final menos la inicial no basta para un campo variable general. Podemos formular la integral directamente con una parametrización, de modo que todos sus elementos se reduzcan a operaciones de una variable.[^3]
 
@@ -301,7 +301,7 @@ Para una fuerza constante, la integral espacial da $\mathbf F\cdot\int_a^b\bolds
 
 []{#ejercicios-3}
 
-### 12.4.1. Ejercicios {#fispm-c12-ejercicios-3}
+### Ejercicios {#fispm-c12-ejercicios-3}
 
 []{#fispm-t1-c12-e0007}
 
@@ -321,7 +321,7 @@ Para una fuerza constante, la integral espacial da $\mathbf F\cdot\int_a^b\bolds
 
 []{#fpm-i-12-s05}
 
-## 12.5. Teorema trabajo--energía para una partícula {#fispm-c12-teorema-trabajoenerguxeda-para-una-partuxedcula}
+## 5. Teorema trabajo--energía para una partícula {#fispm-c12-teorema-trabajoenerguxeda-para-una-partuxedcula}
 
 Disponemos de dos expresiones con el mismo integrando: la derivada de energía cinética contiene $m\mathbf a\cdot\mathbf v$ y la integral de trabajo contiene $\mathbf F\cdot\mathbf v$. Newton identifica ambas cuando $\mathbf F$ es la fuerza resultante. La demostración consiste en hacer esa identificación y después integrar; el alcance físico depende de las hipótesis conservadas.[^4]
 
@@ -351,7 +351,7 @@ El procedimiento evita a veces integrar dos veces Newton, pero no elimina todas 
 
 []{#ejercicios-4}
 
-### 12.5.1. Ejercicios {#fispm-c12-ejercicios-4}
+### Ejercicios {#fispm-c12-ejercicios-4}
 
 []{#fispm-t1-c12-e0009}
 
@@ -371,7 +371,7 @@ El procedimiento evita a veces integrar dos veces Newton, pero no elimina todas 
 
 []{#fpm-i-12-s06}
 
-## 12.6. Componente tangencial y dependencia del recorrido {#fispm-c12-componente-tangencial-y-dependencia-del-recorrido}
+## 6. Componente tangencial y dependencia del recorrido {#fispm-c12-componente-tangencial-y-dependencia-del-recorrido}
 
 El producto escalar selecciona la componente de fuerza en el sentido local del movimiento. Podemos expresar esa selección usando longitud de arco, siempre que conservemos la tangente orientada de la curva. En una curva, «distancia» y «desplazamiento vectorial» cumplen funciones diferentes.
 
@@ -411,7 +411,7 @@ La evaluación de una integral sobre una curva prescrita no demuestra por sí so
 
 []{#ejercicios-5}
 
-### 12.6.1. Ejercicios {#fispm-c12-ejercicios-5}
+### Ejercicios {#fispm-c12-ejercicios-5}
 
 []{#fispm-t1-c12-e0011}
 
@@ -429,7 +429,7 @@ La evaluación de una integral sobre una curva prescrita no demuestra por sí so
 
 []{#fpm-i-12-s07}
 
-## 12.7. Potencia media e instantánea {#fispm-c12-potencia-media-e-instantuxe1nea}
+## 7. Potencia media e instantánea {#fispm-c12-potencia-media-e-instantuxe1nea}
 
 Dos procesos pueden realizar el mismo trabajo y requerir tiempos distintos. La potencia expresa la tasa de trabajo, de modo que añade una información temporal que la integral total no contiene.[^5]
 
@@ -441,7 +441,7 @@ Dos procesos pueden realizar el mismo trabajo y requerir tiempos distintos. La p
 
 <figcaption>
 
-**Figura 12.4.** Una fuerza constante paralela al movimiento produce $v=Ft/m$ desde el reposo y potencia $P=F^2t/m$. El trabajo acumulado es el área bajo esta recta. Véase §[12.7](#fispm-c12-potencia-media-e-instantuxe1nea).
+**Figura 12.4.** Una fuerza constante paralela al movimiento produce $v=Ft/m$ desde el reposo y potencia $P=F^2t/m$. El trabajo acumulado es el área bajo esta recta. Véase §[7](#fispm-c12-potencia-media-e-instantuxe1nea).
 
 </figcaption>
 
@@ -479,7 +479,7 @@ En una fuerza paralela al movimiento, escribir $F=P/v$ sólo es lícito cuando $
 
 []{#ejercicios-6}
 
-### 12.7.1. Ejercicios {#fispm-c12-ejercicios-6}
+### Ejercicios {#fispm-c12-ejercicios-6}
 
 []{#fispm-t1-c12-e0013}
 
@@ -499,7 +499,7 @@ En una fuerza paralela al movimiento, escribir $F=P/v$ sólo es lícito cuando $
 
 []{#fpm-i-12-s08}
 
-## 12.8. Rapidez, frenado y límites de la ecuación escalar {#fispm-c12-rapidez-frenado-y-luxedmites-de-la-ecuaciuxf3n-escalar}
+## 8. Rapidez, frenado y límites de la ecuación escalar {#fispm-c12-rapidez-frenado-y-luxedmites-de-la-ecuaciuxf3n-escalar}
 
 Una aplicación frecuente del teorema consiste en calcular la rapidez en una posición conocida de una línea. La reducción funciona especialmente bien si la fuerza total está dada como función de posición. Los instantes de reposo requieren atención: la energía cinética debe seguir siendo no negativa, pero su valor cero no determina por sí solo la continuación.
 
@@ -535,7 +535,7 @@ La distancia de frenado aumenta cuadráticamente con la rapidez inicial y lineal
 
 []{#ejercicios-7}
 
-### 12.8.1. Ejercicios {#fispm-c12-ejercicios-7}
+### Ejercicios {#fispm-c12-ejercicios-7}
 
 []{#fispm-t1-c12-e0015}
 
@@ -561,7 +561,7 @@ Las ocho secciones establecen el cálculo del trabajo y su relación con la ener
 
 []{#fpm-i-12-s09}
 
-## 12.9. Trabajo del peso y de fuerzas elásticas {#fispm-c12-trabajo-del-peso-y-de-fuerzas-eluxe1sticas}
+## 9. Trabajo del peso y de fuerzas elásticas {#fispm-c12-trabajo-del-peso-y-de-fuerzas-eluxe1sticas}
 
 El peso uniforme y el resorte lineal permiten calcular trabajo sin reconstruir todos los instantes del movimiento. La simplificación procede de sus leyes de fuerza. El trabajo del peso sólo requiere el cambio de altura; el de un resorte fijo unidimensional requiere las deformaciones inicial y final. Ninguna de esas fórmulas autoriza a omitir las demás fuerzas cuando se busca el cambio de energía cinética.[^6]
 
@@ -603,7 +603,7 @@ Esta identidad sale al desarrollar $-kq\dot x$ e integrar $q\dot q$. El segundo 
 
 []{#ejercicios-8}
 
-### 12.9.1. Ejercicios {#fispm-c12-ejercicios-8}
+### Ejercicios {#fispm-c12-ejercicios-8}
 
 []{#fispm-t1-c12-e0017}
 
@@ -623,7 +623,7 @@ Esta identidad sale al desarrollar $-kq\dot x$ e integrar $q\dot q$. El segundo 
 
 []{#fpm-i-12-s10}
 
-## 12.10. Rozamiento y longitud recorrida {#fispm-c12-rozamiento-y-longitud-recorrida}
+## 10. Rozamiento y longitud recorrida {#fispm-c12-rozamiento-y-longitud-recorrida}
 
 El rozamiento cinético muestra por qué la longitud recorrida puede importar aunque los extremos coincidan. En una superficie fija, la fuerza se opone a la velocidad de deslizamiento: al invertir el movimiento se invierte también la fuerza. Los trabajos de ida y vuelta tienen entonces el mismo signo negativo. No se cancelan como los del peso o los de un resorte fijo.[^7]
 
@@ -657,7 +657,7 @@ Esta desigualdad se refiere al par de cuerpos y a su deslizamiento relativo. No 
 
 []{#ejercicios-9}
 
-### 12.10.1. Ejercicios {#fispm-c12-ejercicios-9}
+### Ejercicios {#fispm-c12-ejercicios-9}
 
 []{#fispm-t1-c12-e0019}
 
@@ -687,7 +687,7 @@ Newton tangencial da aceleración constante $a=g(\sin\theta-\mu_k\cos\theta)$. S
 
 []{#fpm-i-12-s11}
 
-## 12.11. Trabajo de vínculos fijos y móviles {#fispm-c12-trabajo-de-vuxednculos-fijos-y-muxf3viles}
+## 11. Trabajo de vínculos fijos y móviles {#fispm-c12-trabajo-de-vuxednculos-fijos-y-muxf3viles}
 
 En el capítulo 11 distinguimos la condición geométrica de un vínculo y la fuerza que la hace efectiva. Para calcular trabajo interesa una propiedad concreta: la relación entre la reacción y la velocidad del punto que la recibe. Una guía fija lisa suele imponer perpendicularidad y entonces su reacción no cambia $K$. Una guía móvil puede entregar o retirar energía cinética aun siendo lisa.[^8]
 
@@ -699,7 +699,7 @@ En el capítulo 11 distinguimos la condición geométrica de un vínculo y la fu
 
 <figcaption>
 
-**Figura 12.5.** Una fuerza de vínculo tiene potencia $F\cdot v$ evaluada en el punto sobre el cuerpo. Cuando su punto de aplicación se mueve en la dirección de la fuerza, esa potencia puede ser positiva. No basta invocar idealidad para imponer trabajo nulo. Véase §[12.11](#fispm-c12-trabajo-de-vuxednculos-fijos-y-muxf3viles).
+**Figura 12.5.** Una fuerza de vínculo tiene potencia $F\cdot v$ evaluada en el punto sobre el cuerpo. Cuando su punto de aplicación se mueve en la dirección de la fuerza, esa potencia puede ser positiva. No basta invocar idealidad para imponer trabajo nulo. Véase §[11](#fispm-c12-trabajo-de-vuxednculos-fijos-y-muxf3viles).
 
 </figcaption>
 
@@ -737,7 +737,7 @@ En una plataforma acelerada con altura $c(t)$, la permanencia del contacto exige
 
 []{#ejercicios-10}
 
-### 12.11.1. Ejercicios {#fispm-c12-ejercicios-10}
+### Ejercicios {#fispm-c12-ejercicios-10}
 
 []{#fispm-t1-c12-e0022}
 
@@ -757,7 +757,7 @@ En una plataforma acelerada con altura $c(t)$, la permanencia del contacto exige
 
 []{#fpm-i-12-s12}
 
-## 12.12. Balance cinético de sistemas de partículas {#fispm-c12-balance-cinuxe9tico-de-sistemas-de-partuxedculas}
+## 12. Balance cinético de sistemas de partículas {#fispm-c12-balance-cinuxe9tico-de-sistemas-de-partuxedculas}
 
 El teorema trabajo--energía puede sumarse sobre un conjunto finito de partículas. La suma exige conservar el receptor de cada fuerza: dos fuerzas iguales y opuestas no realizan necesariamente trabajos opuestos, porque actúan sobre partículas con velocidades distintas. Esta diferencia impide trasladar al trabajo la cancelación de fuerzas internas usada en otros balances.[^9]
 
@@ -809,7 +809,7 @@ La frontera del sistema también importa. Si elegimos sólo una masa unida a otr
 
 []{#ejercicios-11}
 
-### 12.12.1. Ejercicios {#fispm-c12-ejercicios-11}
+### Ejercicios {#fispm-c12-ejercicios-11}
 
 []{#fispm-t1-c12-e0024}
 
@@ -833,7 +833,7 @@ El resultado depende de la variación de deformación y permite velocidades dife
 
 []{#fpm-i-12-s13}
 
-## 12.13. Trabajo y energía cinética entre marcos inerciales {#fispm-c12-trabajo-y-energuxeda-cinuxe9tica-entre-marcos-inerciales}
+## 13. Trabajo y energía cinética entre marcos inerciales {#fispm-c12-trabajo-y-energuxeda-cinuxe9tica-entre-marcos-inerciales}
 
 La energía cinética usa velocidades y por eso depende del marco de referencia. El trabajo también depende del marco: el mismo punto receptor puede recorrer desplazamientos diferentes para dos observadores. La igualdad entre trabajo total y cambio cinético se mantiene si ambos lados se calculan coherentemente en cada marco.[^10]
 
@@ -881,7 +881,7 @@ Estas propiedades requieren traslación uniforme. En un marco acelerado, $\mathb
 
 []{#ejercicios-12}
 
-### 12.13.1. Ejercicios {#fispm-c12-ejercicios-12}
+### Ejercicios {#fispm-c12-ejercicios-12}
 
 []{#fispm-t1-c12-e0026}
 
@@ -901,7 +901,7 @@ Estas propiedades requieren traslación uniforme. En un marco acelerado, $\mathb
 
 []{#fpm-i-12-s14}
 
-## 12.14. Síntesis del método y sus límites {#fispm-c12-suxedntesis-del-muxe9todo-y-sus-luxedmites}
+## 14. Síntesis del método y sus límites {#fispm-c12-suxedntesis-del-muxe9todo-y-sus-luxedmites}
 
 El trabajo relaciona una fuerza con el desplazamiento de su receptor. El teorema trabajo--energía integra la componente de Newton que modifica la rapidez. Esa reducción es especialmente útil cuando se conoce la ley de fuerza a lo largo del recorrido y se busca una magnitud escalar, como una rapidez final o una distancia de frenado. Su utilidad no elimina las componentes de Newton que deciden dirección, curvatura y contacto.
 
@@ -927,7 +927,7 @@ La hipótesis de masa constante aparece en todas las pruebas cinéticas del cap�
 
 []{#ejercicios-13}
 
-### 12.14.1. Ejercicios {#fispm-c12-ejercicios-13}
+### Ejercicios {#fispm-c12-ejercicios-13}
 
 []{#fispm-t1-c12-e0028}
 

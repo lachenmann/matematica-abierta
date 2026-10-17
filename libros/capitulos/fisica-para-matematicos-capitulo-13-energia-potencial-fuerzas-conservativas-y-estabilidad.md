@@ -41,7 +41,7 @@ El trabajo de una fuerza puede depender del camino. Cuando admite una representa
 
 []{#fpm-i-13-s01}
 
-## 13.1. Potencial en una dimensión {#fispm-c13-potencial-en-una-dimensiuxf3n}
+## 1. Potencial en una dimensión {#fispm-c13-potencial-en-una-dimensiuxf3n}
 
 En el capítulo 12 calculamos el trabajo de una fuerza y lo igualamos al cambio de energía cinética. Para una fuerza que depende sólo de la posición sobre una línea, esa integral puede almacenarse en una función de estado: basta conocer la posición para asignarle un valor. La construcción permite comparar trabajos mediante diferencias de una misma función y plantea la pregunta que organizará este capítulo: ¿cuándo sigue siendo posible en varias dimensiones?[^1]
 
@@ -73,7 +73,7 @@ La fórmula del trabajo incluye una información física adicional: si esta fuer
 
 []{#ejercicios}
 
-### 13.1.1. Ejercicios {#fispm-c13-ejercicios}
+### Ejercicios {#fispm-c13-ejercicios}
 
 []{#fispm-t1-c13-e0001}
 
@@ -95,7 +95,7 @@ La fórmula del trabajo incluye una información física adicional: si esta fuer
 
 []{#fpm-i-13-s02}
 
-## 13.2. Cero de potencial y superposición {#fispm-c13-cero-de-potencial-y-superposiciuxf3n}
+## 2. Cero de potencial y superposición {#fispm-c13-cero-de-potencial-y-superposiciuxf3n}
 
 La posición de referencia introduce una libertad de representación. Cambiar el cero del potencial no cambia la fuerza ni el trabajo entre dos posiciones. Esa libertad no autoriza a cambiar por separado valores en puntos diferentes: la diferencia debe mantenerse. También permite sumar potenciales de varias fuerzas cuando éstas comparten la misma coordenada y el mismo dominio.[^2]
 
@@ -129,7 +129,7 @@ La suma describe un modelo con parámetros fijos. Si cambia $k$, se mueve el anc
 
 []{#ejercicios-1}
 
-### 13.2.1. Ejercicios {#fispm-c13-ejercicios-1}
+### Ejercicios {#fispm-c13-ejercicios-1}
 
 []{#fispm-t1-c13-e0003}
 
@@ -149,7 +149,7 @@ La suma describe un modelo con parámetros fijos. Si cambia $k$, se mueve el anc
 
 []{#fpm-i-13-s03}
 
-## 13.3. Gradiente y fuerza potencial {#fispm-c13-gradiente-y-fuerza-potencial}
+## 3. Gradiente y fuerza potencial {#fispm-c13-gradiente-y-fuerza-potencial}
 
 En varias dimensiones una posición admite desplazamientos en direcciones distintas. La derivada de una función escalar debe expresar cómo cambia al movernos en cualquiera de ellas. En el espacio euclídeo, el gradiente reúne esas derivadas direccionales en un vector. Permite representar la fuerza a partir de una sola función y calcular su trabajo mediante la regla de la cadena.[^3]
 
@@ -189,7 +189,7 @@ El gradiente cartesiano tampoco se obtiene derivando respecto de cualquier pará
 
 []{#ejercicios-2}
 
-### 13.3.1. Ejercicios {#fispm-c13-ejercicios-2}
+### Ejercicios {#fispm-c13-ejercicios-2}
 
 []{#fispm-t1-c13-e0005}
 
@@ -209,7 +209,7 @@ El gradiente cartesiano tampoco se obtiene derivando respecto de cualquier pará
 
 []{#fpm-i-13-s04}
 
-## 13.4. Independencia del camino y circulación {#fispm-c13-independencia-del-camino-y-circulaciuxf3n}
+## 4. Independencia del camino y circulación {#fispm-c13-independencia-del-camino-y-circulaciuxf3n}
 
 Un campo potencial realiza el mismo trabajo sobre todos los caminos que comparten extremos. La recíproca también es verdadera bajo condiciones elementales de dominio y continuidad. Probarla muestra qué significa construir un potencial a partir del trabajo: la integral elegida no puede guardar una dependencia oculta del camino.[^4]
 
@@ -221,7 +221,7 @@ Un campo potencial realiza el mismo trabajo sobre todos los caminos que comparte
 
 <figcaption>
 
-**Figura 13.1.** Para $F=-\nabla U$, los dos caminos con extremos $a,b$ dan $W=U(a)-U(b)$. La igualdad requiere un potencial definido en el dominio considerado. Véase §[13.4](#fispm-c13-independencia-del-camino-y-circulaciuxf3n).
+**Figura 13.1.** Para $F=-\nabla U$, los dos caminos con extremos $a,b$ dan $W=U(a)-U(b)$. La igualdad requiere un potencial definido en el dominio considerado. Véase §[4](#fispm-c13-independencia-del-camino-y-circulaciuxf3n).
 
 </figcaption>
 
@@ -265,7 +265,7 @@ El dominio conectado permite propagar la constante por caminos. Para un dominio 
 
 []{#ejercicios-3}
 
-### 13.4.1. Ejercicios {#fispm-c13-ejercicios-3}
+### Ejercicios {#fispm-c13-ejercicios-3}
 
 []{#fispm-t1-c13-e0007}
 
@@ -285,7 +285,7 @@ El dominio conectado permite propagar la constante por caminos. Para un dominio 
 
 []{#fpm-i-13-s05}
 
-## 13.5. Integrabilidad local y dominios estrellados {#fispm-c13-integrabilidad-local-y-dominios-estrellados}
+## 5. Integrabilidad local y dominios estrellados {#fispm-c13-integrabilidad-local-y-dominios-estrellados}
 
 Buscar una función cuyo gradiente sea un campo dado plantea una condición de compatibilidad: las derivadas parciales cruzadas de la función deben coincidir. Esa condición produce una prueba rápida para refutar potenciales y, en dominios adecuados, permite construirlos. Mantendremos explícita la hipótesis geométrica necesaria para la construcción global.[^5]
 
@@ -331,7 +331,7 @@ Una práctica habitual de integración por componentes también debe conservar l
 
 []{#ejercicios-4}
 
-### 13.5.1. Ejercicios {#fispm-c13-ejercicios-4}
+### Ejercicios {#fispm-c13-ejercicios-4}
 
 []{#fispm-t1-c13-e0009}
 
@@ -351,7 +351,7 @@ Una práctica habitual de integración por componentes también debe conservar l
 
 []{#fpm-i-13-s06}
 
-## 13.6. Obstrucciones globales y dominios perforados {#fispm-c13-obstrucciones-globales-y-dominios-perforados}
+## 6. Obstrucciones globales y dominios perforados {#fispm-c13-obstrucciones-globales-y-dominios-perforados}
 
 La información diferencial describe el campo cerca de cada punto ordinario. Una integral cerrada puede explorar la forma completa del dominio y rodear una región excluida. Para entender la diferencia, estudiaremos un campo que admite potencial en cada entorno pequeño pero no en todo el plano perforado. El cálculo directo evita atribuirle una contradicción a las derivadas cruzadas.[^6]
 
@@ -363,7 +363,7 @@ La información diferencial describe el campo cerca de cada punto ordinario. Una
 
 <figcaption>
 
-**Figura 13.2.** En $\mathbb R^2\setminus\{0\}$, el campo $F=(-y,x)/(x^2+y^2)$ tiene rotacional nulo localmente y circulación $2\pi$ en un círculo positivo. No admite allí un potencial escalar global monovaluado. Véase §[13.6](#fispm-c13-obstrucciones-globales-y-dominios-perforados).
+**Figura 13.2.** En $\mathbb R^2\setminus\{0\}$, el campo $F=(-y,x)/(x^2+y^2)$ tiene rotacional nulo localmente y circulación $2\pi$ en un círculo positivo. No admite allí un potencial escalar global monovaluado. Véase §[6](#fispm-c13-obstrucciones-globales-y-dominios-perforados).
 
 </figcaption>
 
@@ -377,7 +377,7 @@ La información diferencial describe el campo cerca de cada punto ordinario. Una
 
 <figcaption>
 
-**Figura 13.3.** El campo $F=(-y,x)/(x^2+y^2)$ tiene circulación $2\pi$ sobre un círculo orientado positivamente. Su rotacional local nulo fuera del origen no basta para producir un potencial global. Véase §[13.6](#fispm-c13-obstrucciones-globales-y-dominios-perforados).
+**Figura 13.3.** El campo $F=(-y,x)/(x^2+y^2)$ tiene circulación $2\pi$ sobre un círculo orientado positivamente. Su rotacional local nulo fuera del origen no basta para producir un potencial global. Véase §[6](#fispm-c13-obstrucciones-globales-y-dominios-perforados).
 
 </figcaption>
 
@@ -417,7 +417,7 @@ No toda región perforada obliga a que todo campo falle. El campo $\mathbf G=-k(
 
 []{#ejercicios-5}
 
-### 13.6.1. Ejercicios {#fispm-c13-ejercicios-5}
+### Ejercicios {#fispm-c13-ejercicios-5}
 
 []{#fispm-t1-c13-e0011}
 
@@ -437,7 +437,7 @@ No toda región perforada obliga a que todo campo falle. El campo $\mathbf G=-k(
 
 []{#fpm-i-13-s07}
 
-## 13.7. Conservación de la energía mecánica {#fispm-c13-conservaciuxf3n-de-la-energuxeda-mecuxe1nica}
+## 7. Conservación de la energía mecánica {#fispm-c13-conservaciuxf3n-de-la-energuxeda-mecuxe1nica}
 
 El potencial permite reescribir el teorema trabajo--energía como una cantidad constante cuando la fuerza total proviene de él. La conservación es una consecuencia de Newton y de la forma del campo. Su uso puede reducir el cálculo de rapidez, pero conserva los límites del balance escalar establecidos en el capítulo 12: no determina por sí solo dirección, contacto ni trayectoria.[^7]
 
@@ -471,7 +471,7 @@ La conservación de energía y la conservatividad del campo tampoco son definici
 
 []{#ejercicios-6}
 
-### 13.7.1. Ejercicios {#fispm-c13-ejercicios-6}
+### Ejercicios {#fispm-c13-ejercicios-6}
 
 **Ejercicio 13.13.** Una partícula se lanza desde $y=0$ con velocidad inicial $(3,4)\,\mathrm{m/s}$ bajo gravedad uniforme, con $g=10\,\mathrm{m/s^2}$ y sin resistencia. Compara el límite de altura obtenido sólo de $K\geq0$ con la altura máxima real. ¿Por qué son distintos?
 
@@ -489,7 +489,7 @@ La conservación de energía y la conservatividad del campo tampoco son definici
 
 []{#fpm-i-13-s08}
 
-## 13.8. Fuerzas adicionales y potenciales temporales {#fispm-c13-fuerzas-adicionales-y-potenciales-temporales}
+## 8. Fuerzas adicionales y potenciales temporales {#fispm-c13-fuerzas-adicionales-y-potenciales-temporales}
 
 La energía mecánica deja de ser constante cuando otras fuerzas aportan potencia o cuando el potencial cambia explícitamente con el tiempo. El balance sigue siendo útil: indica qué término modifica la cantidad $K+U$. Escribirlo evita aplicar conservación en un régimen donde un agente externo, una fricción o un soporte móvil intercambia energía con la partícula.[^8]
 
@@ -533,7 +533,7 @@ Aquí hay una libertad de referencia que requiere cuidado. Sumar una constante t
 
 []{#ejercicios-7}
 
-### 13.8.1. Ejercicios {#fispm-c13-ejercicios-7}
+### Ejercicios {#fispm-c13-ejercicios-7}
 
 []{#fispm-t1-c13-e0015}
 
@@ -555,7 +555,7 @@ Las ocho secciones establecen cuándo existe una función potencial, cómo depen
 
 []{#fpm-i-13-s09}
 
-## 13.9. Paisajes de energía y regiones accesibles {#fispm-c13-paisajes-de-energuxeda-y-regiones-accesibles}
+## 9. Paisajes de energía y regiones accesibles {#fispm-c13-paisajes-de-energuxeda-y-regiones-accesibles}
 
 Una vez acreditada la conservación de $E=K+U$, el potencial permite excluir posiciones y separar regiones de movimiento. En una dimensión, su gráfica también indica dónde puede anularse la velocidad. Para interpretar esos puntos necesitamos distinguir pertenencia a una región permitida, llegada en tiempo finito y continuación dinámica. Son preguntas diferentes.[^9]
 
@@ -567,7 +567,7 @@ Una vez acreditada la conservación de $E=K+U$, el potencial permite excluir pos
 
 <figcaption>
 
-**Figura 13.4.** En el ejemplo normalizado $U=(x^2-1)^2$, la energía $E=1/2$ (discontinua) deja dos regiones permitidas separadas por una barrera. Sólo donde $U\le E$ puede ser no negativa la energía cinética. Véase §[13.9](#fispm-c13-paisajes-de-energuxeda-y-regiones-accesibles).
+**Figura 13.4.** En el ejemplo normalizado $U=(x^2-1)^2$, la energía $E=1/2$ (discontinua) deja dos regiones permitidas separadas por una barrera. Sólo donde $U\le E$ puede ser no negativa la energía cinética. Véase §[9](#fispm-c13-paisajes-de-energuxeda-y-regiones-accesibles).
 
 </figcaption>
 
@@ -605,7 +605,7 @@ Las dos situaciones pueden aparecer en un mismo paisaje al variar la energía. E
 
 []{#ejercicios-8}
 
-### 13.9.1. Ejercicios {#fispm-c13-ejercicios-8}
+### Ejercicios {#fispm-c13-ejercicios-8}
 
 []{#fispm-t1-c13-e0017}
 
@@ -631,7 +631,7 @@ Las dos situaciones pueden aparecer en un mismo paisaje al variar la energía. E
 
 []{#fpm-i-13-s10}
 
-## 13.10. Equilibrio y estabilidad: definiciones {#fispm-c13-equilibrio-y-estabilidad-definiciones}
+## 10. Equilibrio y estabilidad: definiciones {#fispm-c13-equilibrio-y-estabilidad-definiciones}
 
 Una posición de fuerza nula no es todavía un estado de reposo si la partícula pasa por ella con velocidad no nula. Para hablar de estabilidad debemos describir el estado completo y precisar qué perturbaciones admitimos. La distinción es esencial en un sistema de segundo orden: una velocidad inicial arbitrariamente pequeña puede producir un desplazamiento grande si se espera suficiente tiempo.[^10]
 
@@ -677,7 +677,7 @@ La elección de un horizonte temporal también cambia la pregunta. En un interva
 
 []{#ejercicios-9}
 
-### 13.10.1. Ejercicios {#fispm-c13-ejercicios-9}
+### Ejercicios {#fispm-c13-ejercicios-9}
 
 []{#fispm-t1-c13-e0020}
 
@@ -697,7 +697,7 @@ La elección de un horizonte temporal también cambia la pregunta. En un interva
 
 []{#fpm-i-13-s11}
 
-## 13.11. Extremos no degenerados en una dimensión {#fispm-c13-extremos-no-degenerados-en-una-dimensiuxf3n}
+## 11. Extremos no degenerados en una dimensión {#fispm-c13-extremos-no-degenerados-en-una-dimensiuxf3n}
 
 Un mínimo del potencial rodea el equilibrio con una barrera energética. Datos suficientemente próximos tienen energía insuficiente para cruzarla y, al mismo tiempo, velocidad pequeña. Este argumento permite probar estabilidad sin resolver la ecuación. Para un máximo con curvatura negativa, una pequeña separación inicial puede crecer hasta abandonar un entorno fijo.[^11]
 
@@ -709,7 +709,7 @@ Un mínimo del potencial rodea el equilibrio con una barrera energética. Datos 
 
 <figcaption>
 
-**Figura 13.5.** Para $U=2x^2/5$, la fuerza es $F=-4x/5$. A ambos lados del mínimo apunta hacia el origen. Con masa positiva, la energía conserva las perturbaciones pequeñas dentro de niveles cercanos. Véase §[13.11](#fispm-c13-extremos-no-degenerados-en-una-dimensiuxf3n).
+**Figura 13.5.** Para $U=2x^2/5$, la fuerza es $F=-4x/5$. A ambos lados del mínimo apunta hacia el origen. Con masa positiva, la energía conserva las perturbaciones pequeñas dentro de niveles cercanos. Véase §[11](#fispm-c13-extremos-no-degenerados-en-una-dimensiuxf3n).
 
 </figcaption>
 
@@ -753,7 +753,7 @@ La prueba del mínimo controla una perturbación de estado mediante energía peq
 
 []{#ejercicios-10}
 
-### 13.11.1. Ejercicios {#fispm-c13-ejercicios-10}
+### Ejercicios {#fispm-c13-ejercicios-10}
 
 []{#fispm-t1-c13-e0022}
 
@@ -777,7 +777,7 @@ Si los datos tienden a $(0,0)$, $E$ tiende a cero y la cota tiende a cero unifor
 
 []{#fpm-i-13-s12}
 
-## 13.12. Equilibrios degenerados y límites del criterio {#fispm-c13-equilibrios-degenerados-y-luxedmites-del-criterio}
+## 12. Equilibrios degenerados y límites del criterio {#fispm-c13-equilibrios-degenerados-y-luxedmites-del-criterio}
 
 La igualdad $U''(x_*)=0$ no clasifica un equilibrio. Puede corresponder a un mínimo estricto, a un máximo, a un punto que no es extremo o a una región plana. Los términos de orden superior pueden decidir la geometría, pero no siempre existe un primer término no nulo de una expansión de Taylor. Conviene volver al potencial real y a la definición dinámica.[^12]
 
@@ -809,7 +809,7 @@ Tampoco se intercambian sin control el límite de perturbaciones pequeñas y el 
 
 []{#ejercicios-11}
 
-### 13.12.1. Ejercicios {#fispm-c13-ejercicios-11}
+### Ejercicios {#fispm-c13-ejercicios-11}
 
 []{#fispm-t1-c13-e0024}
 
@@ -829,7 +829,7 @@ Tampoco se intercambian sin control el límite de perturbaciones pequeñas y el 
 
 []{#fpm-i-13-s13}
 
-## 13.13. Estabilidad en varias dimensiones {#fispm-c13-estabilidad-en-varias-dimensiones}
+## 13. Estabilidad en varias dimensiones {#fispm-c13-estabilidad-en-varias-dimensiones}
 
 En varias dimensiones el potencial puede subir en una dirección y bajar en otra. Examinar una sola sección de su paisaje no basta para demostrar confinamiento. La prueba de estabilidad exige una barrera que rodee al punto en todas las direcciones; el Hessiano ofrece una condición suficiente para construirla cerca de un punto crítico.[^13]
 
@@ -869,7 +869,7 @@ Un cambio ortonormal de coordenadas no altera la positividad de la forma cuadrá
 
 []{#ejercicios-12}
 
-### 13.13.1. Ejercicios {#fispm-c13-ejercicios-12}
+### Ejercicios {#fispm-c13-ejercicios-12}
 
 []{#fispm-t1-c13-e0026}
 
@@ -895,7 +895,7 @@ Un cambio ortonormal de coordenadas no altera la positividad de la forma cuadrá
 
 []{#fpm-i-13-s14}
 
-## 13.14. Síntesis y dominio de validez {#fispm-c13-suxedntesis-y-dominio-de-validez}
+## 14. Síntesis y dominio de validez {#fispm-c13-suxedntesis-y-dominio-de-validez}
 
 El capítulo ha separado tres problemas. Primero, la existencia de potencial para un campo de posición: una cuestión de integrales, derivadas y dominio. Segundo, la conservación de energía mecánica en una historia: una consecuencia de Newton y de las potencias presentes. Tercero, la estabilidad de un equilibrio: una afirmación sobre todos los datos de estado suficientemente próximos y todos los tiempos futuros. Pasar de uno al siguiente requiere hipótesis nuevas.
 
@@ -925,7 +925,7 @@ El marco elegido forma parte de ese dominio de validez. La posición de un sopor
 
 []{#ejercicios-13}
 
-### 13.14.1. Ejercicios {#fispm-c13-ejercicios-13}
+### Ejercicios {#fispm-c13-ejercicios-13}
 
 []{#fispm-t1-c13-e0029}
 

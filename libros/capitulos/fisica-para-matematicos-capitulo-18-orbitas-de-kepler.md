@@ -45,7 +45,7 @@ Consideraremos dos masas puntuales positivas constantes que sólo se atraen grav
 
 []{#fpm-i-18-s01}
 
-## 18.1. Parámetros del problema exacto {#fispm-c18-paruxe1metros-del-problema-exacto}
+## 1. Parámetros del problema exacto {#fispm-c18-paruxe1metros-del-problema-exacto}
 
 La masa reducida organiza la energía de la separación. La suma de masas organiza su aceleración. Es útil dar nombres distintos a esos dos parámetros para evitar un cambio de significado de un símbolo en mitad de un cálculo.
 
@@ -79,7 +79,7 @@ El caso principal tendrá $h>0$, de modo que el plano relativo está determinado
 
 []{#ejercicios}
 
-### 18.1.1. Ejercicios {#fispm-c18-ejercicios}
+### Ejercicios {#fispm-c18-ejercicios}
 
 []{#fispm-t1-c18-e0001}
 
@@ -101,7 +101,7 @@ El caso principal tendrá $h>0$, de modo que el plano relativo está determinado
 
 []{#fpm-i-18-s02}
 
-## 18.2. Una dirección conservada dentro del plano {#fispm-c18-una-direcciuxf3n-conservada-dentro-del-plano}
+## 2. Una dirección conservada dentro del plano {#fispm-c18-una-direcciuxf3n-conservada-dentro-del-plano}
 
 El momento angular conserva la normal al plano. Para orientar la cónica dentro de él necesitamos otra información. La gravitación permite construir un vector constante que señala la dirección de máxima aproximación cuando la órbita no es circular.
 
@@ -139,7 +139,7 @@ La dirección de $\mathbf e$ desaparece como dato geométrico cuando $e=0$: un c
 
 []{#ejercicios-1}
 
-### 18.2.1. Ejercicios {#fispm-c18-ejercicios-1}
+### Ejercicios {#fispm-c18-ejercicios-1}
 
 []{#fispm-t1-c18-e0003}
 
@@ -159,7 +159,7 @@ La dirección de $\mathbf e$ desaparece como dato geométrico cuando $e=0$: un c
 
 []{#fpm-i-18-s03}
 
-## 18.3. La ecuación orbital {#fispm-c18-la-ecuaciuxf3n-orbital}
+## 3. La ecuación orbital {#fispm-c18-la-ecuaciuxf3n-orbital}
 
 Tomar el producto escalar de $\mathbf e$ con la dirección radial permite leer directamente la distancia. La ecuación de Binet ofrece la misma conclusión desde la dinámica escalar. Ambas vías conservan una condición de dominio que será decisiva para las órbitas abiertas.
 
@@ -171,7 +171,7 @@ Tomar el producto escalar de $\mathbf e$ con la dirección radial permite leer d
 
 <figcaption>
 
-**Figura 18.1.** Con el mismo semilado recto $p=1$, se comparan $e=1/2$ (continua), $e=1$ (discontinua) y $e=3/2$ (punteada). Las ramas abiertas se muestran sólo dentro de un intervalo angular admisible. Véase §[18.3](#fispm-c18-la-ecuaciuxf3n-orbital).
+**Figura 18.1.** Con el mismo semilado recto $p=1$, se comparan $e=1/2$ (continua), $e=1$ (discontinua) y $e=3/2$ (punteada). Las ramas abiertas se muestran sólo dentro de un intervalo angular admisible. Véase §[3](#fispm-c18-la-ecuaciuxf3n-orbital).
 
 </figcaption>
 
@@ -199,7 +199,7 @@ La fórmula y proposición 18.3 anticipan la clasificación: $0\leq e<1$ corresp
 
 []{#ejercicios-2}
 
-### 18.3.1. Ejercicios {#fispm-c18-ejercicios-2}
+### Ejercicios {#fispm-c18-ejercicios-2}
 
 []{#fispm-t1-c18-e0005}
 
@@ -219,7 +219,7 @@ La fórmula y proposición 18.3 anticipan la clasificación: $0\leq e<1$ corresp
 
 []{#fpm-i-18-s04}
 
-## 18.4. La elipse y sus focos {#fispm-c18-la-elipse-y-sus-focos}
+## 4. La elipse y sus focos {#fispm-c18-la-elipse-y-sus-focos}
 
 Para $0\leq e<1$, completar el cuadrado convierte la ecuación orbital en la forma de una elipse. El centro de fuerza está en un foco; el centro geométrico se encuentra desplazado. Esa diferencia explica por qué la distancia al centro de fuerza varía durante la vuelta.
 
@@ -231,7 +231,7 @@ Para $0\leq e<1$, completar el cuadrado convierte la ecuación orbital en la for
 
 <figcaption>
 
-**Figura 18.2.** La órbita $x=2\cos E-1$, $y=\sqrt3\sin E$ tiene semiejes $2,\sqrt3$ y un foco en el origen. El centro geométrico está en $(-1,0)$; no coincide con el centro de fuerza. Véase §[18.4](#fispm-c18-la-elipse-y-sus-focos).
+**Figura 18.2.** La órbita $x=2\cos E-1$, $y=\sqrt3\sin E$ tiene semiejes $2,\sqrt3$ y un foco en el origen. El centro geométrico está en $(-1,0)$; no coincide con el centro de fuerza. Véase §[4](#fispm-c18-la-elipse-y-sus-focos).
 
 </figcaption>
 
@@ -273,7 +273,7 @@ La ley elíptica de Kepler aparece aquí como consecuencia del modelo de dos cue
 
 []{#ejercicios-3}
 
-### 18.4.1. Ejercicios {#fispm-c18-ejercicios-3}
+### Ejercicios {#fispm-c18-ejercicios-3}
 
 []{#fispm-t1-c18-e0007}
 
@@ -293,7 +293,7 @@ La ley elíptica de Kepler aparece aquí como consecuencia del modelo de dos cue
 
 []{#fpm-i-18-s05}
 
-## 18.5. La parábola como umbral energético {#fispm-c18-la-paruxe1bola-como-umbral-energuxe9tico}
+## 5. La parábola como umbral energético {#fispm-c18-la-paruxe1bola-como-umbral-energuxe9tico}
 
 Para energía específica cero y $h>0$, proposición 18.3 da $e=1$. La trayectoria tiene un radio mínimo y se extiende hasta distancias arbitrarias. La rapidez se aproxima a cero lejos del centro; ése es el umbral entre un movimiento ligado y uno que conserva rapidez positiva en el infinito.
 
@@ -317,7 +317,7 @@ Decir «energía cero» utiliza el cero de potencial en el infinito. Un cambio c
 
 []{#ejercicios-4}
 
-### 18.5.1. Ejercicios {#fispm-c18-ejercicios-4}
+### Ejercicios {#fispm-c18-ejercicios-4}
 
 []{#fispm-t1-c18-e0009}
 
@@ -337,7 +337,7 @@ Decir «energía cero» utiliza el cero de potencial en el infinito. Un cambio c
 
 []{#fpm-i-18-s06}
 
-## 18.6. La hipérbola y la rama que se recorre {#fispm-c18-la-hipuxe9rbola-y-la-rama-que-se-recorre}
+## 6. La hipérbola y la rama que se recorre {#fispm-c18-la-hipuxe9rbola-y-la-rama-que-se-recorre}
 
 Cuando $\epsilon>0$ y $h>0$, la excentricidad es mayor que uno. La trayectoria abierta conserva una rapidez asintótica positiva. Su ecuación cartesiana tiene dos ramas, pero sólo una satisface la relación polar con radio positivo y origen en el foco de atracción.
 
@@ -375,7 +375,7 @@ La dirección del vector posición en el infinito y la dirección de la velocida
 
 []{#ejercicios-5}
 
-### 18.6.1. Ejercicios {#fispm-c18-ejercicios-5}
+### Ejercicios {#fispm-c18-ejercicios-5}
 
 []{#fispm-t1-c18-e0011}
 
@@ -395,7 +395,7 @@ La dirección del vector posición en el infinito y la dirección de la velocida
 
 []{#fpm-i-18-s07}
 
-## 18.7. Rapidez, extremos y balance energético {#fispm-c18-rapidez-extremos-y-balance-energuxe9tico}
+## 7. Rapidez, extremos y balance energético {#fispm-c18-rapidez-extremos-y-balance-energuxe9tico}
 
 La forma de la cónica permite reconocer posiciones; la energía permite calcular rapidez sin derivar toda la parametrización. El momento angular añade la componente tangencial y, con un signo de rama, completa la velocidad.
 
@@ -431,7 +431,7 @@ La velocidad es un vector. Dos posiciones con la misma distancia pueden tener ig
 
 []{#ejercicios-6}
 
-### 18.7.1. Ejercicios {#fispm-c18-ejercicios-6}
+### Ejercicios {#fispm-c18-ejercicios-6}
 
 []{#fispm-t1-c18-e0013}
 
@@ -451,7 +451,7 @@ La velocidad es un vector. Dos posiciones con la misma distancia pueden tener ig
 
 []{#fpm-i-18-s08}
 
-## 18.8. Área y período: las leyes de Kepler {#fispm-c18-uxe1rea-y-peruxedodo-las-leyes-de-kepler}
+## 8. Área y período: las leyes de Kepler {#fispm-c18-uxe1rea-y-peruxedodo-las-leyes-de-kepler}
 
 La conservación angular implica una velocidad areolar constante. Para una elipse, dividir su área total por esa velocidad produce el período. Este paso reúne geometría y dinámica sin suponer movimiento angular uniforme.
 
@@ -463,7 +463,7 @@ La conservación angular implica una velocidad areolar constante. Para una elips
 
 <figcaption>
 
-**Figura 18.3.** En una órbita kepleriana, el radio desde el foco gravitatorio barre áreas iguales en tiempos iguales. El foco no coincide con el centro geométrico de una elipse excéntrica. Los dos radios señalan un sector, sin asignarle aquí una duración numérica. Véase §[18.8](#fispm-c18-uxe1rea-y-peruxedodo-las-leyes-de-kepler).
+**Figura 18.3.** En una órbita kepleriana, el radio desde el foco gravitatorio barre áreas iguales en tiempos iguales. El foco no coincide con el centro geométrico de una elipse excéntrica. Los dos radios señalan un sector, sin asignarle aquí una duración numérica. Véase §[8](#fispm-c18-uxe1rea-y-peruxedodo-las-leyes-de-kepler).
 
 </figcaption>
 
@@ -497,7 +497,7 @@ Las tres leyes quedan conectadas: energía negativa y $h>0$ producen una elipse 
 
 []{#ejercicios-7}
 
-### 18.8.1. Ejercicios {#fispm-c18-ejercicios-7}
+### Ejercicios {#fispm-c18-ejercicios-7}
 
 []{#fispm-t1-c18-e0015}
 
@@ -517,7 +517,7 @@ Las tres leyes quedan conectadas: energía negativa y $h>0$ producen una elipse 
 
 []{#fpm-i-18-s09}
 
-## 18.9. Un ángulo que facilita el tiempo elíptico {#fispm-c18-un-uxe1ngulo-que-facilita-el-tiempo-eluxedptico}
+## 9. Un ángulo que facilita el tiempo elíptico {#fispm-c18-un-uxe1ngulo-que-facilita-el-tiempo-eluxedptico}
 
 La anomalía verdadera sitúa la partícula respecto del foco. Para calcular el tiempo conviene parametrizar la elipse desde su centro geométrico mediante un círculo auxiliar. El nuevo ángulo no es el ángulo físico de la dirección radial: es una coordenada que simplifica el área barrida.
 
@@ -559,7 +559,7 @@ Para predecir una posición a tiempo dado, el orden es concreto: calcular $\math
 
 []{#ejercicios-8}
 
-### 18.9.1. Ejercicios {#fispm-c18-ejercicios-8}
+### Ejercicios {#fispm-c18-ejercicios-8}
 
 []{#fispm-t1-c18-e0017}
 
@@ -577,7 +577,7 @@ Para predecir una posición a tiempo dado, el orden es concreto: calcular $\math
 
 []{#fpm-i-18-s10}
 
-## 18.10. Resolver la ecuación de Kepler con control del error {#fispm-c18-resolver-la-ecuaciuxf3n-de-kepler-con-control-del-error}
+## 10. Resolver la ecuación de Kepler con control del error {#fispm-c18-resolver-la-ecuaciuxf3n-de-kepler-con-control-del-error}
 
 La función $u-e\sin u$ no se invierte en general mediante una combinación elemental de funciones. Podemos resolverla numéricamente y, además, controlar cuánto puede diferir la aproximación de la solución exacta. El control importa especialmente cuando la excentricidad se acerca a uno.
 
@@ -589,7 +589,7 @@ La función $u-e\sin u$ no se invierte en general mediante una combinación elem
 
 <figcaption>
 
-**Figura 18.4.** Para $e=1/2$, $M=E-\tfrac12\sin E$ es estrictamente creciente: $dM/dE\ge1/2$. La recta discontinua $M=E$ permite ver la diferencia entre anomalía media y excéntrica. Véase §[18.10](#fispm-c18-resolver-la-ecuaciuxf3n-de-kepler-con-control-del-error).
+**Figura 18.4.** Para $e=1/2$, $M=E-\tfrac12\sin E$ es estrictamente creciente: $dM/dE\ge1/2$. La recta discontinua $M=E$ permite ver la diferencia entre anomalía media y excéntrica. Véase §[10](#fispm-c18-resolver-la-ecuaciuxf3n-de-kepler-con-control-del-error).
 
 </figcaption>
 
@@ -627,7 +627,7 @@ El residuo es fácil de calcular y puede certificarse antes de convertir $u$ a p
 
 []{#ejercicios-9}
 
-### 18.10.1. Ejercicios {#fispm-c18-ejercicios-9}
+### Ejercicios {#fispm-c18-ejercicios-9}
 
 []{#fispm-t1-c18-e0019}
 
@@ -647,7 +647,7 @@ El residuo es fácil de calcular y puede certificarse antes de convertir $u$ a p
 
 []{#fpm-i-18-s11}
 
-## 18.11. Tiempo en las órbitas abiertas {#fispm-c18-tiempo-en-las-uxf3rbitas-abiertas}
+## 11. Tiempo en las órbitas abiertas {#fispm-c18-tiempo-en-las-uxf3rbitas-abiertas}
 
 En las trayectorias abiertas no existe un período de vuelta. Podemos medir el tiempo desde el periastro, con signo negativo para el tramo entrante y positivo para el saliente. Una variable de semiángulo simplifica la parábola; una parametrización con funciones hiperbólicas simplifica la hipérbola.
 
@@ -685,7 +685,7 @@ La parametrización hiperbólica conserva automáticamente la rama de atracción
 
 []{#ejercicios-10}
 
-### 18.11.1. Ejercicios {#fispm-c18-ejercicios-10}
+### Ejercicios {#fispm-c18-ejercicios-10}
 
 []{#fispm-t1-c18-e0021}
 
@@ -705,7 +705,7 @@ La parametrización hiperbólica conserva automáticamente la rama de atracción
 
 []{#fpm-i-18-s12}
 
-## 18.12. Los dos cuerpos y la tercera ley exacta {#fispm-c18-los-dos-cuerpos-y-la-tercera-ley-exacta}
+## 12. Los dos cuerpos y la tercera ley exacta {#fispm-c18-los-dos-cuerpos-y-la-tercera-ley-exacta}
 
 La cónica obtenida hasta aquí describe $\mathbf q$, la separación. En el marco del centro de masa, cada cuerpo recorre una cónica escalada, con el centro de masa en un foco. El cuerpo más masivo describe la trayectoria menor. Cuando una masa domina, su trayectoria se vuelve pequeña y aparece la aproximación usual de un centro de fuerza inmóvil.
 
@@ -733,7 +733,7 @@ La suma de masas también aparece en la formulación de Gauss al comienzo de la 
 
 []{#ejercicios-11}
 
-### 18.12.1. Ejercicios {#fispm-c18-ejercicios-11}
+### Ejercicios {#fispm-c18-ejercicios-11}
 
 []{#fispm-t1-c18-e0023}
 
@@ -753,7 +753,7 @@ La suma de masas también aparece en la formulación de Gauss al comienzo de la 
 
 []{#fpm-i-18-s13}
 
-## 18.13. Del estado inicial a la órbita, incluidos los casos radiales {#fispm-c18-del-estado-inicial-a-la-uxf3rbita-incluidos-los-casos-radiales}
+## 13. Del estado inicial a la órbita, incluidos los casos radiales {#fispm-c18-del-estado-inicial-a-la-uxf3rbita-incluidos-los-casos-radiales}
 
 La clasificación se vuelve operativa al calcular los invariantes desde una posición y velocidad iniciales. Antes de escoger una ecuación temporal conviene decidir si el estado es no radial, circular, ligado o abierto. Cada decisión necesita sus condiciones propias.
 
@@ -785,7 +785,7 @@ Una llegada a $r=0$ no determina cómo continúan cuerpos puntuales cuya fuerza 
 
 []{#ejercicios-12}
 
-### 18.13.1. Ejercicios {#fispm-c18-ejercicios-12}
+### Ejercicios {#fispm-c18-ejercicios-12}
 
 []{#fispm-t1-c18-e0025}
 
@@ -805,7 +805,7 @@ Una llegada a $r=0$ no determina cómo continúan cuerpos puntuales cuya fuerza 
 
 []{#fpm-i-18-s14}
 
-## 18.14. Verificar una órbita y delimitar el modelo {#fispm-c18-verificar-una-uxf3rbita-y-delimitar-el-modelo}
+## 14. Verificar una órbita y delimitar el modelo {#fispm-c18-verificar-una-uxf3rbita-y-delimitar-el-modelo}
 
 El modelo de Kepler resuelve un sistema concreto: dos cuerpos con atracción newtoniana, sin otras fuerzas y sin coincidencias. Para compararlo con una observación o un cálculo numérico, podemos comprobar no sólo la posición, sino también los invariantes que deberían permanecer constantes. Una variación de ellos puede revelar un error numérico o una interacción omitida; distinguir ambos exige revisar el problema.
 
@@ -843,7 +843,7 @@ La comparación con datos necesita además unidades, marco, proyección observac
 
 []{#ejercicios-13}
 
-### 18.14.1. Ejercicios {#fispm-c18-ejercicios-13}
+### Ejercicios {#fispm-c18-ejercicios-13}
 
 []{#fispm-t1-c18-e0027}
 

@@ -39,11 +39,11 @@ number-sections: false
 
 []{#fpm-i-04-s01}
 
-## 4.1. Un punto no es un vector {#fispm-c04-un-punto-no-es-un-vector}
+## 1. Un punto no es un vector {#fispm-c04-un-punto-no-es-un-vector}
 
 []{#la-pregunta-física-antes-de-las-coordenadas}
 
-### 4.1.1. La pregunta física antes de las coordenadas {#fispm-c04-la-pregunta-fuxedsica-antes-de-las-coordenadas}
+### La pregunta física antes de las coordenadas {#fispm-c04-la-pregunta-fuxedsica-antes-de-las-coordenadas}
 
 Dos personas describen el mismo objeto. Una coloca el origen de una regla en el extremo izquierdo de una mesa; la otra lo sitúa un metro a su derecha. Sus números para la posición del objeto difieren. Sin embargo, **el objeto no se ha desplazado por el mero cambio de origen**. Este hecho invita a separar tres objetos distintos:
 
@@ -55,7 +55,7 @@ Dos personas describen el mismo objeto. Una coloca el origen de una regla en el 
 
 <figcaption>
 
-**Figura 4.1.** Los puntos son extremos y las flechas son desplazamientos: $\overrightarrow{PQ}+\overrightarrow{QR}=\overrightarrow{PR}$. La identidad no requiere elegir un origen. Véase §[4.1](#fispm-c04-un-punto-no-es-un-vector).
+**Figura 4.1.** Los puntos son extremos y las flechas son desplazamientos: $\overrightarrow{PQ}+\overrightarrow{QR}=\overrightarrow{PR}$. La identidad no requiere elegir un origen. Véase §[1](#fispm-c04-un-punto-no-es-un-vector).
 
 </figcaption>
 
@@ -73,7 +73,7 @@ Activación Si una persona cambia de habitación la regla con la que mide, ¿se 
 
 []{#representar-puntos-y-flechas-de-desplazamiento}
 
-### 4.1.2. Representar: puntos y flechas de desplazamiento {#fispm-c04-representar-puntos-y-flechas-de-desplazamiento}
+### Representar: puntos y flechas de desplazamiento {#fispm-c04-representar-puntos-y-flechas-de-desplazamiento}
 
 Imaginemos tres puntos $O,P,Q$ sobre una recta, en ese orden. La flecha de $O$ a $P$ y la flecha de $P$ a $Q$ pueden componerse para dar la flecha de $O$ a $Q$.
 
@@ -83,7 +83,7 @@ La suma en esta expresión es una suma de **desplazamientos**, no una suma de pu
 
 []{#definir-espacio-afín}
 
-### 4.1.3. Definir: espacio afín {#fispm-c04-definir-espacio-afuxedn}
+### Definir: espacio afín {#fispm-c04-definir-espacio-afuxedn}
 
 Un espacio vectorial real $V$ permite sumar vectores y multiplicarlos por escalares reales. Para este capítulo trabajaremos con un espacio vectorial de dimensión tres, aunque las primeras identidades no dependen de esa dimensión.
 
@@ -99,7 +99,7 @@ Las dos primeras condiciones hacen coherente la traslación por varios desplazam
 
 []{#definir-desplazamiento-entre-puntos}
 
-### 4.1.4. Definir: desplazamiento entre puntos {#fispm-c04-definir-desplazamiento-entre-puntos}
+### Definir: desplazamiento entre puntos {#fispm-c04-definir-desplazamiento-entre-puntos}
 
 **Definición 4.2 --- Desplazamiento** Dados $P,Q\in\mathcal E$, definimos $\overrightarrow{PQ}\in V$ como el único vector que satisface
 
@@ -109,7 +109,7 @@ En particular, $\overrightarrow{PQ}$ no es el punto $Q$ y no necesita elegir nin
 
 []{#primera-prueba-la-ley-del-triángulo}
 
-### 4.1.5. Primera prueba: la ley del triángulo {#fispm-c04-primera-prueba-la-ley-del-triuxe1ngulo}
+### Primera prueba: la ley del triángulo {#fispm-c04-primera-prueba-la-ley-del-triuxe1ngulo}
 
 **Proposición 4.1 --- Identidades de desplazamiento** En todo espacio afín $\mathcal E$ modelado sobre $V$, para cualesquiera puntos $P,Q,R$:
 
@@ -131,7 +131,7 @@ Como $\overrightarrow{PR}$ es el único vector que lleva $P$ a $R$, ambos deben 
 
 []{#por-qué-no-podemos-sumar-dos-puntos}
 
-### 4.1.6. ¿Por qué no podemos sumar dos puntos? {#fispm-c04-por-quuxe9-no-podemos-sumar-dos-puntos}
+### ¿Por qué no podemos sumar dos puntos? {#fispm-c04-por-quuxe9-no-podemos-sumar-dos-puntos}
 
 En $V$ sí existe la operación
 
@@ -147,7 +147,7 @@ Error plausible «Si dibujé un punto como $(2,3)$ y otro como $(4,5)$, puedo su
 
 []{#el-origen-es-una-elección-no-una-propiedad-del-punto}
 
-### 4.1.7. El origen es una elección, no una propiedad del punto {#fispm-c04-el-origen-es-una-elecciuxf3n-no-una-propiedad-del-punto}
+### El origen es una elección, no una propiedad del punto {#fispm-c04-el-origen-es-una-elecciuxf3n-no-una-propiedad-del-punto}
 
 **Definición 4.3 --- Origen y vector de posición** Elegido un punto $O\in\mathcal E$ como **origen**, el vector de posición de $P$ relativo a $O$ es
 
@@ -159,7 +159,7 @@ El subíndice recuerda que se eligió un punto de referencia. La elección permi
 
 []{#segunda-prueba-cambiar-el-origen}
 
-### 4.1.8. Segunda prueba: cambiar el origen {#fispm-c04-segunda-prueba-cambiar-el-origen}
+### Segunda prueba: cambiar el origen {#fispm-c04-segunda-prueba-cambiar-el-origen}
 
 Tomemos un origen nuevo $O'=O+a$, donde $a\in V$. Entonces $\overrightarrow{OO'}=a.$ La ley del triángulo aplicada a $O',O,P$ da $\overrightarrow{O'O}+\overrightarrow{OP}=\overrightarrow{O'P}.$ Como $\overrightarrow{O'O}=-a$, obtenemos
 
@@ -181,7 +181,7 @@ Por tanto la diferencia entre posiciones es independiente del origen. $\square$
 
 []{#ejemplo-físico-dos-personas-describen-el-mismo-desplazamiento}
 
-### 4.1.9. Ejemplo físico: dos personas describen el mismo desplazamiento {#fispm-c04-ejemplo-fuxedsico-dos-personas-describen-el-mismo-desplazamiento}
+### Ejemplo físico: dos personas describen el mismo desplazamiento {#fispm-c04-ejemplo-fuxedsico-dos-personas-describen-el-mismo-desplazamiento}
 
 En un modelo unidimensional, asignemos respecto de $O$ las posiciones $x_O(P)=2\,\mathrm m$ y $x_O(Q)=7\,\mathrm m$. La diferencia es $5\,\mathrm m$ hacia el sentido positivo elegido. Si el nuevo origen se sitúa $a=3\,\mathrm m$ a la derecha de $O$, entonces
 
@@ -195,7 +195,7 @@ En este ejemplo sólo cambió el origen; los ejes conservaron orientación y uni
 
 []{#prueba-de-estrés-de-las-definiciones}
 
-### 4.1.10. Prueba de estrés de las definiciones {#fispm-c04-prueba-de-estruxe9s-de-las-definiciones}
+### Prueba de estrés de las definiciones {#fispm-c04-prueba-de-estruxe9s-de-las-definiciones}
 
 - **¿Pueden coincidir los vectores de posición del mismo punto respecto de dos orígenes diferentes?** No: $r_{O'}(P)=r_O(P)-a$; si los vectores coinciden, entonces $a=0$ y, por la definición 4.1, $O'=O$. La coincidencia de sus *componentes numéricas* en bases diferentes es una cuestión distinta que trataremos en §10.
 
@@ -209,7 +209,7 @@ En este ejemplo sólo cambió el origen; los ejes conservaron orientación y uni
 
 La pregunta de qué hace especial a una geometría **euclídea**, en vez de meramente afín, se responderá al introducir longitud y ángulos.
 
-### 4.1.10. ¿Tiene sentido sumar dos puntos? {#fispm-c04-e001-tiene-sentido-sumar-dos-puntos .unnumbered}
+### ¿Tiene sentido sumar dos puntos? {#fispm-c04-e001-tiene-sentido-sumar-dos-puntos .unnumbered}
 
 []{#fispm-t1-c04-e0004}
 
@@ -217,7 +217,7 @@ La pregunta de qué hace especial a una geometría **euclídea**, en vez de mera
 
 **Solución desarrollada** Con el origen inicial, las coordenadas son $2$ y $5$ y su suma informal es $7$. Con el origen desplazado tres unidades, las coordenadas son $-1$ y $2$, cuya suma es $1$. Si $7$ describía un punto fijo, con el origen nuevo debería tener coordenada $4$, no $1$. La operación propuesta no respeta el cambio de origen y no pertenece a la estructura afín. En cambio, la diferencia pasa de $5-2=3$ a $2-(-1)=3$: el desplazamiento sí es invariante.
 
-### 4.1.10. Cambiar el origen sin mover el objeto {#fispm-c04-e002-cambiar-el-origen-sin-mover-el-objeto .unnumbered}
+### Cambiar el origen sin mover el objeto {#fispm-c04-e002-cambiar-el-origen-sin-mover-el-objeto .unnumbered}
 
 **Ejercicio 4.2 · Representación, formalización e invariancia** Respecto de un origen $O$, dos puntos de una recta tienen coordenadas $x_O(P)=-2\,\mathrm m$ y $x_O(Q)=4\,\mathrm m$. Se elige un origen $O'$ situado $5\,\mathrm m$ a la izquierda de $O$, sin invertir el eje. Calcula las coordenadas nuevas y el desplazamiento $\overrightarrow{PQ}$ en ambas descripciones.
 
@@ -227,7 +227,7 @@ $$x_{O'}(P)=3\,\mathrm m, \qquad x_{O'}(Q)=9\,\mathrm m.$$
 
 Las diferencias son $4-(-2)=6\,\mathrm m, \qquad 9-3=6\,\mathrm m.$ El vector desplazamiento es el mismo, y su componente permanece $+6\,\mathrm m$ porque no se cambió ni orientación ni unidad de la base.
 
-### 4.1.10. Reconstruir un triángulo de desplazamientos {#fispm-c04-e003-reconstruir-un-triuxe1ngulo-de-desplazamientos .unnumbered}
+### Reconstruir un triángulo de desplazamientos {#fispm-c04-e003-reconstruir-un-triuxe1ngulo-de-desplazamientos .unnumbered}
 
 **Ejercicio 4.3 · Prueba y transferencia** Si $\overrightarrow{AB}=u$ y $\overrightarrow{BC}=v$, expresa $\overrightarrow{AC}$, $\overrightarrow{CA}$ y $\overrightarrow{CB}$. Calcula luego la suma cerrada $\overrightarrow{AB}+\overrightarrow{BC}+\overrightarrow{CA}$ sin asignar coordenadas a los puntos.
 
@@ -243,7 +243,7 @@ El vector total de un recorrido cerrado es nulo en un espacio afín: el cálculo
 
 []{#cierre-conceptual-del-lugar-a-la-estructura}
 
-### 4.1.11. Cierre conceptual: del lugar a la estructura {#fispm-c04-cierre-conceptual-del-lugar-a-la-estructura}
+### Cierre conceptual: del lugar a la estructura {#fispm-c04-cierre-conceptual-del-lugar-a-la-estructura}
 
 Hemos probado que una **posición** expresada por $r_O(P)$ depende de un origen, mientras que el desplazamiento $\overrightarrow{PQ}$ es geométricamente independiente de él. Ésta es la primera invariancia que necesitaremos para comparar observadores.
 
@@ -257,11 +257,11 @@ En §2 construiremos sistemáticamente las operaciones afines y la geometría de
 
 []{#fpm-i-04-s02}
 
-## 4.2. La estructura afín de los desplazamientos {#fispm-c04-la-estructura-afuxedn-de-los-desplazamientos}
+## 2. La estructura afín de los desplazamientos {#fispm-c04-la-estructura-afuxedn-de-los-desplazamientos}
 
 []{#activación-dónde-está-el-punto-medio-si-nadie-fija-el-origen}
 
-### 4.2.1. Activación: ¿dónde está el punto medio si nadie fija el origen? {#fispm-c04-activaciuxf3n-duxf3nde-estuxe1-el-punto-medio-si-nadie-fija-el-origen}
+### Activación: ¿dónde está el punto medio si nadie fija el origen? {#fispm-c04-activaciuxf3n-duxf3nde-estuxe1-el-punto-medio-si-nadie-fija-el-origen}
 
 Dos marcas físicas ocupan puntos $P,Q\in\mathcal E$. Para indicar una marca intermedia podemos elegir momentáneamente un origen $O$ y calcular el promedio de sus vectores de posición: $r_O(M)=\frac12r_O(P)+\frac12r_O(Q).$ Pero $O$ es una elección. ¿Cambiará el punto $M$ si otro observador coloca su origen en otro lugar? ¿Por qué este promedio sería admisible, mientras que la «suma de puntos» de §1 no lo era? La respuesta exigirá comprobar la **dependencia de la construcción respecto del origen**; una ilustración de dos marcas sobre una regla sugiere dónde situar $M$, pero no demuestra esa independencia.
 
@@ -273,7 +273,7 @@ Dos marcas físicas ocupan puntos $P,Q\in\mathcal E$. Para indicar una marca int
 
 <figcaption>
 
-**Figura 4.2.** Si $u=\overrightarrow{AB}$ y $v=\overrightarrow{BC}$, entonces $u+v=\overrightarrow{AC}$. El paralelogramo compara la composición de desplazamientos con su representación vectorial. Véase §[4.2](#fispm-c04-la-estructura-afuxedn-de-los-desplazamientos).
+**Figura 4.2.** Si $u=\overrightarrow{AB}$ y $v=\overrightarrow{BC}$, entonces $u+v=\overrightarrow{AC}$. El paralelogramo compara la composición de desplazamientos con su representación vectorial. Véase §[2](#fispm-c04-la-estructura-afuxedn-de-los-desplazamientos).
 
 </figcaption>
 
@@ -281,7 +281,7 @@ Dos marcas físicas ocupan puntos $P,Q\in\mathcal E$. Para indicar una marca int
 
 []{#recuperar-la-estructura-disponible-trasladar-restar-componer}
 
-### 4.2.2. Recuperar la estructura disponible: trasladar, restar, componer {#fispm-c04-recuperar-la-estructura-disponible-trasladar-restar-componer}
+### Recuperar la estructura disponible: trasladar, restar, componer {#fispm-c04-recuperar-la-estructura-disponible-trasladar-restar-componer}
 
 De definición 4.1 sabemos que la traslación $P+v$ es un punto cuando $v\in V$. De definición 4.2 y proposición 4.1:
 
@@ -295,7 +295,7 @@ pero **no** $P+Q$. La estructura distingue expresiones por su tipo: punto, vecto
 
 []{#una-receta-tentativa-con-varios-puntos}
 
-### 4.2.3. Una receta tentativa con varios puntos {#fispm-c04-una-receta-tentativa-con-varios-puntos}
+### Una receta tentativa con varios puntos {#fispm-c04-una-receta-tentativa-con-varios-puntos}
 
 Sean $P_1,\ldots,P_n\in\mathcal E$ y $\lambda_1,\ldots,\lambda_n\in\mathbb R$. Si elegimos un origen auxiliar $O$, la receta
 
@@ -305,7 +305,7 @@ produce un punto: la suma del lado derecho pertenece a $V$ y puede trasladar $O$
 
 []{#proposición-fundamental-el-origen-desaparece-si-y-sólo-si-la-suma-es-uno}
 
-### 4.2.4. Proposición fundamental: el origen desaparece si y sólo si la suma es uno {#fispm-c04-proposiciuxf3n-fundamental-el-origen-desaparece-si-y-suxf3lo-si-la-suma-es-uno}
+### Proposición fundamental: el origen desaparece si y sólo si la suma es uno {#fispm-c04-proposiciuxf3n-fundamental-el-origen-desaparece-si-y-suxf3lo-si-la-suma-es-uno}
 
 **Proposición 4.3 --- Criterio de independencia del origen** Sean $P_1,\ldots,P_n\in\mathcal E$, $\lambda_i\in\mathbb R$ y
 
@@ -325,7 +325,7 @@ Definición 4.2 identifica el vector que lleva $A_O$ a $A_{O'}$ con el término 
 
 []{#definir-correctamente-una-combinación-afín}
 
-### 4.2.5. Definir correctamente una combinación afín {#fispm-c04-definir-correctamente-una-combinaciuxf3n-afuxedn}
+### Definir correctamente una combinación afín {#fispm-c04-definir-correctamente-una-combinaciuxf3n-afuxedn}
 
 **Definición 4.4 --- Combinación afín de puntos** Dados $P_1,\ldots,P_n\in\mathcal E$ y escalares $\lambda_1,\ldots,\lambda_n$ con $\sum_i\lambda_i=1$, su **combinación afín** es el punto único
 
@@ -343,7 +343,7 @@ Esta fórmula ya no necesita elegir un origen exterior a los puntos y facilita l
 
 []{#ejemplos-no-ejemplos-y-cambio-de-origen}
 
-### 4.2.6. Ejemplos, no-ejemplos y cambio de origen {#fispm-c04-ejemplos-no-ejemplos-y-cambio-de-origen}
+### Ejemplos, no-ejemplos y cambio de origen {#fispm-c04-ejemplos-no-ejemplos-y-cambio-de-origen}
 
 Con dos puntos,
 
@@ -357,7 +357,7 @@ El nuevo valor es $4.5\,\mathrm m$ respecto del nuevo origen, equivalente a $7.5
 
 []{#definir-el-baricentro-sin-confundirlo-con-un-promedio-de-puntos}
 
-### 4.2.7. Definir el baricentro sin confundirlo con un promedio de puntos {#fispm-c04-definir-el-baricentro-sin-confundirlo-con-un-promedio-de-puntos}
+### Definir el baricentro sin confundirlo con un promedio de puntos {#fispm-c04-definir-el-baricentro-sin-confundirlo-con-un-promedio-de-puntos}
 
 **Definición 4.5 --- Baricentro de pesos de suma no nula** Dados puntos $P_i$ y pesos escalares $w_i$ compatibles entre sí, con suma $W=\sum_iw_i\ne0$, definimos el **baricentro** como la combinación afín
 
@@ -369,7 +369,7 @@ Como $m_P,m_Q>0$, los coeficientes $m_P/(m_P+m_Q)$ y $m_Q/(m_P+m_Q)$ están entr
 
 []{#qué-sucede-cuando-la-suma-de-los-pesos-es-cero}
 
-### 4.2.8. ¿Qué sucede cuando la suma de los pesos es cero? {#fispm-c04-quuxe9-sucede-cuando-la-suma-de-los-pesos-es-cero}
+### ¿Qué sucede cuando la suma de los pesos es cero? {#fispm-c04-quuxe9-sucede-cuando-la-suma-de-los-pesos-es-cero}
 
 Si $W=0$, la normalización $w_i/W$ está indefinida. No es una dificultad de la calculadora ni una invitación a escoger arbitrariamente un origen. En cambio, el vector ponderado
 
@@ -383,7 +383,7 @@ Esto produce un **vector**, no un baricentro. Para $w_1=1$, $w_2=-1$, resulta $S
 
 []{#definir-el-segmento-afín-y-su-punto-medio}
 
-### 4.2.9. Definir el segmento afín y su punto medio {#fispm-c04-definir-el-segmento-afuxedn-y-su-punto-medio}
+### Definir el segmento afín y su punto medio {#fispm-c04-definir-el-segmento-afuxedn-y-su-punto-medio}
 
 **Definición 4.6 --- Segmento afín y punto medio** Para $P,Q\in\mathcal E$, el segmento afín entre ellos es
 
@@ -397,7 +397,7 @@ La fórmula del punto medio equivale a la combinación afín de coeficientes $1/
 
 []{#comprobación-la-interpolación-no-depende-del-origen}
 
-### 4.2.10. Comprobación: la interpolación no depende del origen {#fispm-c04-comprobaciuxf3n-la-interpolaciuxf3n-no-depende-del-origen}
+### Comprobación: la interpolación no depende del origen {#fispm-c04-comprobaciuxf3n-la-interpolaciuxf3n-no-depende-del-origen}
 
 Sea $X_t=P+t\overrightarrow{PQ}$. Para cualquier origen $O$: $r_O(X_t)=(1-t)r_O(P)+tr_O(Q).$ Esto se deduce de la proposición 4.1 y proposición 4.2: $r_O(Q)-r_O(P)=\overrightarrow{PQ}$. La igualdad representa un punto en función de dos vectores de posición, pero **la definición intrínseca** sigue siendo $P+t\overrightarrow{PQ}$. Además, para $s,t\in\mathbb R$,
 
@@ -407,7 +407,7 @@ Se verifica trasladando $X_s$ por $(t-s)\overrightarrow{PQ}$ y usando la unicida
 
 []{#un-paralelogramo-construido-con-desplazamientos}
 
-### 4.2.11. Un paralelogramo construido con desplazamientos {#fispm-c04-un-paralelogramo-construido-con-desplazamientos}
+### Un paralelogramo construido con desplazamientos {#fispm-c04-un-paralelogramo-construido-con-desplazamientos}
 
 Fijemos un punto $A$ y dos vectores $u,v\in V$. Construyamos sucesivamente
 
@@ -421,7 +421,7 @@ $$\overrightarrow{AB}=u=\overrightarrow{DC}, \qquad \overrightarrow{AD}=v=\overr
 
 []{#proposición-el-paralelogramo-y-sus-diagonales}
 
-### 4.2.12. Proposición: el paralelogramo y sus diagonales {#fispm-c04-proposiciuxf3n-el-paralelogramo-y-sus-diagonales}
+### Proposición: el paralelogramo y sus diagonales {#fispm-c04-proposiciuxf3n-el-paralelogramo-y-sus-diagonales}
 
 **Proposición 4.4 --- Paralelogramo, desplazamientos y puntos medios** Sean $A,B,D\in\mathcal E$. Hay un único punto $C$ tal que
 
@@ -449,7 +449,7 @@ La unicidad de traslación y la aritmética vectorial implican $w=u+v$. Por tant
 
 []{#aplicación-geométrica-y-frontera-física}
 
-### 4.2.13. Aplicación geométrica y frontera física {#fispm-c04-aplicaciuxf3n-geomuxe9trica-y-frontera-fuxedsica}
+### Aplicación geométrica y frontera física {#fispm-c04-aplicaciuxf3n-geomuxe9trica-y-frontera-fuxedsica}
 
 Tres marcas $A,B,D$ permiten definir una cuarta posición por dos rutas conceptualmente equivalentes: $C=B+\overrightarrow{AD}=D+\overrightarrow{AB}.$
 
@@ -457,7 +457,7 @@ Si un trazado real no hace coincidir físicamente ambas marcas construidas, eso 
 
 []{#prueba-de-estrés-baricentro-segmento-y-promedios}
 
-### 4.2.14. Prueba de estrés: baricentro, segmento y promedios {#fispm-c04-prueba-de-estruxe9s-baricentro-segmento-y-promedios}
+### Prueba de estrés: baricentro, segmento y promedios {#fispm-c04-prueba-de-estruxe9s-baricentro-segmento-y-promedios}
 
 1.  Si $\lambda_1+\lambda_2=1$ pero uno es negativo, la combinación es afín, aunque no necesariamente pertenece al segmento.
 
@@ -525,7 +525,7 @@ Para que $C'=C$ se requiere $u-v=u+v$, o $2v=0$. Sobre un espacio vectorial real
 
 []{#cierre-y-red-matemática}
 
-### 4.2.15. Cierre y red matemática {#fispm-c04-cierre-y-red-matemuxe1tica}
+### Cierre y red matemática {#fispm-c04-cierre-y-red-matemuxe1tica}
 
 La estructura afín permite obtener nuevos puntos **sin declarar un origen absoluto**. Las operaciones que acabamos de construir se organizan así:
 
@@ -539,11 +539,11 @@ No obstante, aún no sabemos expresar **cualquier vector de manera única median
 
 []{#fpm-i-04-s03}
 
-## 4.3. Vectores, independencia y bases {#fispm-c04-vectores-independencia-y-bases}
+## 3. Vectores, independencia y bases {#fispm-c04-vectores-independencia-y-bases}
 
 []{#activación-una-flecha-distintas-descripciones}
 
-### 4.3.1. Activación: una flecha, distintas descripciones {#fispm-c04-activaciuxf3n-una-flecha-distintas-descripciones}
+### Activación: una flecha, distintas descripciones {#fispm-c04-activaciuxf3n-una-flecha-distintas-descripciones}
 
 Dos personas registran el mismo desplazamiento físico. Una escoge tres desplazamientos de referencia; la otra escoge otros tres. Sus listas de números pueden diferir sin que cambie el desplazamiento. ¿Cuándo una lista describe un vector de manera completa y sin ambigüedad? La §1 enseñó que $\overrightarrow{PQ}\in V$ no es ni $P$ ni $Q$; la §2 mostró que las sumas y múltiplos escalares corresponden a **vectores**, mientras que combinar puntos exige coeficientes que sumen uno. Ahora estudiaremos cómo expresar cualquier elemento de $V$ a partir de vectores de referencia. La dificultad tiene dos mitades distintas:
 
@@ -557,7 +557,7 @@ Activación Si tenemos tres instrucciones de desplazamiento pero una de ellas es
 
 []{#la-estructura-vectorial-ya-disponible}
 
-### 4.3.2. La estructura vectorial ya disponible {#fispm-c04-la-estructura-vectorial-ya-disponible}
+### La estructura vectorial ya disponible {#fispm-c04-la-estructura-vectorial-ya-disponible}
 
 El espacio real $V$ dispone de una suma $u+v$ y una multiplicación por escalares $\lambda u$. Emplearemos las leyes vectoriales conocidas: asociatividad y conmutatividad de la suma, vector cero, opuestos y distributividad. Para $P\in\mathcal E$, la expresión $P+v$ sigue representando la traslación de un **punto** por un **vector**. Por proposición 4.1, una sucesión de desplazamientos satisface $\overrightarrow{PQ}+\overrightarrow{QR}=\overrightarrow{PR}.$
 
@@ -565,7 +565,7 @@ Que podamos componer flechas no significa que exista una suma intrínseca de pun
 
 []{#definir-combinación-lineal-y-espacio-generado}
 
-### 4.3.3. Definir: combinación lineal y espacio generado {#fispm-c04-definir-combinaciuxf3n-lineal-y-espacio-generado}
+### Definir: combinación lineal y espacio generado {#fispm-c04-definir-combinaciuxf3n-lineal-y-espacio-generado}
 
 **Definición 4.7 --- Combinación lineal y subespacio generado** Para vectores $v_1,\ldots,v_k\in V$ y escalares $a_1,\ldots,a_k\in\mathbb R$, la expresión
 
@@ -581,7 +581,7 @@ Diremos que la familia **genera** $V$ si su espacio generado coincide con $V$. L
 
 []{#dos-pruebas-de-estrés-para-la-generación}
 
-### 4.3.4. Dos pruebas de estrés para la generación {#fispm-c04-dos-pruebas-de-estruxe9s-para-la-generaciuxf3n}
+### Dos pruebas de estrés para la generación {#fispm-c04-dos-pruebas-de-estruxe9s-para-la-generaciuxf3n}
 
 **Familia demasiado pequeña.** Si $u\ne0$, la familia $(u)$ puede representar $2u$ o $-u$, pero no tiene por qué representar cualquier vector de $V$. En un espacio de dimensión tres, su espacio generado es estrictamente menor que $V$. **Familia con instrucciones redundantes.** Añadir $u+v$ a $(u,v)$ no aumenta lo generado:
 
@@ -605,7 +605,7 @@ En particular, que *todos* los vectores de una familia sean no nulos no basta pa
 
 []{#la-pregunta-correcta-cuántas-recetas-tiene-el-mismo-vector}
 
-### 4.3.5. La pregunta correcta: ¿cuántas recetas tiene el mismo vector? {#fispm-c04-la-pregunta-correcta-cuuxe1ntas-recetas-tiene-el-mismo-vector}
+### La pregunta correcta: ¿cuántas recetas tiene el mismo vector? {#fispm-c04-la-pregunta-correcta-cuuxe1ntas-recetas-tiene-el-mismo-vector}
 
 Una familia dependiente proporciona una relación $\sum_i c_iv_i=0$
 
@@ -617,7 +617,7 @@ para cualquier $t\in\mathbb R$. Si $t\ne0$, la segunda lista de coeficientes es 
 
 []{#proposición-independencia-y-unicidad-en-el-espacio-generado}
 
-### 4.3.6. Proposición: independencia y unicidad en el espacio generado {#fispm-c04-proposiciuxf3n-independencia-y-unicidad-en-el-espacio-generado}
+### Proposición: independencia y unicidad en el espacio generado {#fispm-c04-proposiciuxf3n-independencia-y-unicidad-en-el-espacio-generado}
 
 **Proposición 4.5 --- Caracterización de la independencia por unicidad** Para una familia finita $(v_1,\ldots,v_k)$, son equivalentes:
 
@@ -635,7 +635,7 @@ Por independencia, $a_i-b_i=0$ para cada $i$; las listas son iguales. Recíproca
 
 []{#definir-base}
 
-### 4.3.7. Definir: base {#fispm-c04-definir-base}
+### Definir: base {#fispm-c04-definir-base}
 
 **Definición 4.9 --- Base de un espacio vectorial** Una familia ordenada $B=(e_1,\ldots,e_n)$ es una **base** de $V$ si cumple simultáneamente:
 
@@ -647,7 +647,7 @@ En nuestro modelo tridimensional consideraremos bases ordenadas $B=(e_1,e_2,e_3)
 
 []{#proposición-el-teorema-fundamental-de-las-representaciones-en-una-base}
 
-### 4.3.8. Proposición: el teorema fundamental de las representaciones en una base {#fispm-c04-proposiciuxf3n-el-teorema-fundamental-de-las-representaciones-en-una-base}
+### Proposición: el teorema fundamental de las representaciones en una base {#fispm-c04-proposiciuxf3n-el-teorema-fundamental-de-las-representaciones-en-una-base}
 
 **Proposición 4.6 --- Existencia y unicidad de los coeficientes en una base** Sea $B=(e_1,\ldots,e_n)$ una familia finita de vectores. Es una base de $V$ **si y sólo si** cada $v\in V$ posee una única representación
 
@@ -659,7 +659,7 @@ $$\boxed{v=\sum_{i=1}^{n}v^ie_i.}$$
 
 []{#definir-las-componentes-de-un-vector}
 
-### 4.3.9. Definir: las componentes de un vector {#fispm-c04-definir-las-componentes-de-un-vector}
+### Definir: las componentes de un vector {#fispm-c04-definir-las-componentes-de-un-vector}
 
 **Definición 4.10 --- Componentes relativas a una base** Sea $B=(e_1,e_2,e_3)$ una base ordenada de $V$. Para el vector único
 
@@ -675,7 +675,7 @@ Punto, vector y columna $P\in\mathcal E$, $\overrightarrow{PQ}\in V$ y $[\overri
 
 []{#proposición-la-aplicación-de-componentes-respeta-las-operaciones}
 
-### 4.3.10. Proposición: la aplicación de componentes respeta las operaciones {#fispm-c04-proposiciuxf3n-la-aplicaciuxf3n-de-componentes-respeta-las-operaciones}
+### Proposición: la aplicación de componentes respeta las operaciones {#fispm-c04-proposiciuxf3n-la-aplicaciuxf3n-de-componentes-respeta-las-operaciones}
 
 **Proposición 4.7 --- Correspondencia lineal de componentes** Fijada una base $B=(e_1,e_2,e_3)$, la aplicación
 
@@ -693,7 +693,7 @@ Por la unicidad de la proposición 4.6, sus componentes son precisamente $(av^i+
 
 []{#ejemplo-construido-una-base-no-tiene-por-qué-ser-la-primera-que-vemos}
 
-### 4.3.11. Ejemplo construido: una base no tiene por qué ser la primera que vemos {#fispm-c04-ejemplo-construido-una-base-no-tiene-por-quuxe9-ser-la-primera-que-vemos}
+### Ejemplo construido: una base no tiene por qué ser la primera que vemos {#fispm-c04-ejemplo-construido-una-base-no-tiene-por-quuxe9-ser-la-primera-que-vemos}
 
 Sea $E=(e_1,e_2,e_3)$ una base conocida de un espacio de dimensión tres. Definamos
 
@@ -723,7 +723,7 @@ Las columnas son diferentes, pero ambas reconstruyen el mismo vector. La teoría
 
 []{#contraejemplo-tres-vectores-que-no-forman-base}
 
-### 4.3.12. Contraejemplo: tres vectores que no forman base {#fispm-c04-contraejemplo-tres-vectores-que-no-forman-base}
+### Contraejemplo: tres vectores que no forman base {#fispm-c04-contraejemplo-tres-vectores-que-no-forman-base}
 
 Con $E$ como antes, elijamos
 
@@ -739,7 +739,7 @@ Error plausible «Tres vectores no nulos en un espacio tridimensional forman aut
 
 []{#cambiar-la-escala-de-un-vector-de-referencia}
 
-### 4.3.13. Cambiar la escala de un vector de referencia {#fispm-c04-cambiar-la-escala-de-un-vector-de-referencia}
+### Cambiar la escala de un vector de referencia {#fispm-c04-cambiar-la-escala-de-un-vector-de-referencia}
 
 Si $B=(e_1,e_2,e_3)$ es una base y $s\in\mathbb R$ con $s\ne0$, entonces $B'=(se_1,e_2,e_3)$ también es una base: toda representación $v=v^1e_1+v^2e_2+v^3e_3$ se reescribe unívocamente como $v=\frac{v^1}{s}(se_1)+v^2e_2+v^3e_3.$ Por tanto,
 
@@ -749,7 +749,7 @@ Este caso particular enseña un fenómeno esencial: cuando se hace $s$ veces may
 
 []{#la-interpretación-física-y-sus-límites}
 
-### 4.3.14. La interpretación física y sus límites {#fispm-c04-la-interpretaciuxf3n-fuxedsica-y-sus-luxedmites}
+### La interpretación física y sus límites {#fispm-c04-la-interpretaciuxf3n-fuxedsica-y-sus-luxedmites}
 
 La interpretación dimensional de las componentes depende de la convención declarada. Si los vectores de la base representan desplazamientos de referencia con dimensión de longitud, los coeficientes $v^i$ son números adimensionales; si se trabaja con direcciones adimensionales, las componentes pueden portar la unidad de longitud. En ningún caso los coeficientes solos revelan cuál es la base de referencia ni qué convención de unidades se adoptó. No hemos probado que una base sea ortonormal: ni siquiera hemos definido todavía los ángulos y las longitudes. Tampoco se sigue de la definición 4.9 que los vectores elegidos representen un marco físico inercial o que el espacio físico real satisfaga exactamente el modelo euclídeo. Son cuestiones posteriores. Al igual que en el capítulo 3, los valores medidos que se empleen para realizar una representación física tendrán su propia incertidumbre; las igualdades algebraicas de las proposiciones 4.5--4.7 no son resultados experimentales.
 
@@ -817,7 +817,7 @@ $$-b_1-b_2+4b_3 =-e_1-(e_1+e_2)+4(e_1+e_2+e_3) =2e_1+3e_2+4e_3=v.$$
 
 []{#cierre-de-una-base-vectorial-a-las-coordenadas-de-los-puntos}
 
-### 4.3.15. Cierre: de una base vectorial a las coordenadas de los puntos {#fispm-c04-cierre-de-una-base-vectorial-a-las-coordenadas-de-los-puntos}
+### Cierre: de una base vectorial a las coordenadas de los puntos {#fispm-c04-cierre-de-una-base-vectorial-a-las-coordenadas-de-los-puntos}
 
 Ya tenemos una cadena demostrada:
 
@@ -831,11 +831,11 @@ Proposiciones 4.5--4.7 justifican la representación de **vectores** mediante co
 
 []{#fpm-i-04-s04}
 
-## 4.4. Coordenadas afines y marcos cartesianos {#fispm-c04-coordenadas-afines-y-marcos-cartesianos}
+## 4. Coordenadas afines y marcos cartesianos {#fispm-c04-coordenadas-afines-y-marcos-cartesianos}
 
 []{#activación-tres-números-qué-describen}
 
-### 4.4.1. Activación: tres números, ¿qué describen? {#fispm-c04-activaciuxf3n-tres-nuxfameros-quuxe9-describen}
+### Activación: tres números, ¿qué describen? {#fispm-c04-activaciuxf3n-tres-nuxfameros-quuxe9-describen}
 
 Un plano de una sala señala que un sensor ocupa la posición «$(2,-1,3)$». Esa información no determina por sí sola una ubicación física: faltan un origen, tres vectores de referencia ordenados y las convenciones de escala que permiten interpretar los números.[^2] Si otro plano elige el origen en la puerta en vez de una esquina, el mismo sensor recibe otra terna sin moverse. §1 distinguió los puntos de los vectores; §2 construyó combinaciones afines; §3 demostró que una base permite representar **vectores** por columnas únicas. Ahora añadiremos la elección que faltaba para representar **puntos**.
 
@@ -843,7 +843,7 @@ Activación Si dos registros contienen la misma terna $(2,-1,3)$, ¿qué deberí
 
 []{#inventario-de-objetos-no-intercambiar-tipos}
 
-### 4.4.2. Inventario de objetos: no intercambiar tipos {#fispm-c04-inventario-de-objetos-no-intercambiar-tipos}
+### Inventario de objetos: no intercambiar tipos {#fispm-c04-inventario-de-objetos-no-intercambiar-tipos}
 
 La geometría disponible distingue:
 
@@ -863,7 +863,7 @@ está bien definida cuando se fijan $O$ y $B$. Cada flecha representa una **deci
 
 []{#definir-el-marco-afín}
 
-### 4.4.3. Definir el marco afín {#fispm-c04-definir-el-marco-afuxedn}
+### Definir el marco afín {#fispm-c04-definir-el-marco-afuxedn}
 
 **Definición 4.11 --- Marco afín ordenado** Un **marco afín** de $\mathcal E$ es un par
 
@@ -875,7 +875,7 @@ La elección de $O$ fija la referencia para las posiciones; la de $B$ fija cómo
 
 []{#definir-las-coordenadas-de-un-punto}
 
-### 4.4.4. Definir las coordenadas de un punto {#fispm-c04-definir-las-coordenadas-de-un-punto}
+### Definir las coordenadas de un punto {#fispm-c04-definir-las-coordenadas-de-un-punto}
 
 **Definición 4.12 --- Coordenadas afines de un punto** Fijado $\mathfrak F=(O,B)$, las **coordenadas afines** de $P$ son la columna única
 
@@ -891,7 +891,7 @@ En la última fórmula, $O+v$ es la acción afín definida en la definición 4.1
 
 []{#la-proposición-de-existencia-y-unicidad-para-puntos}
 
-### 4.4.5. La proposición de existencia y unicidad para puntos {#fispm-c04-la-proposiciuxf3n-de-existencia-y-unicidad-para-puntos}
+### La proposición de existencia y unicidad para puntos {#fispm-c04-la-proposiciuxf3n-de-existencia-y-unicidad-para-puntos}
 
 **Proposición 4.8 --- Coordenadas afines como correspondencia biyectiva** Para cada marco afín fijo $\mathfrak F=(O,B)$, la aplicación
 
@@ -905,7 +905,7 @@ $$\boxed{(c^1,c^2,c^3)^{\mathsf T}\longmapsto O+c^1e_1+c^2e_2+c^3e_3.}$$
 
 []{#el-origen-y-los-vectores-de-referencia-tienen-coordenadas-sencillas}
 
-### 4.4.6. El origen y los vectores de referencia tienen coordenadas sencillas {#fispm-c04-el-origen-y-los-vectores-de-referencia-tienen-coordenadas-sencillas}
+### El origen y los vectores de referencia tienen coordenadas sencillas {#fispm-c04-el-origen-y-los-vectores-de-referencia-tienen-coordenadas-sencillas}
 
 De $\overrightarrow{OO}=0$ y proposición 4.7 se deduce
 
@@ -919,7 +919,7 @@ Estas columnas no afirman que los vectores de referencia midan un metro, que sea
 
 []{#definir-los-ejes-afines-sin-presuponer-ángulos-rectos}
 
-### 4.4.7. Definir los ejes afines sin presuponer ángulos rectos {#fispm-c04-definir-los-ejes-afines-sin-presuponer-uxe1ngulos-rectos}
+### Definir los ejes afines sin presuponer ángulos rectos {#fispm-c04-definir-los-ejes-afines-sin-presuponer-uxe1ngulos-rectos}
 
 **Definición 4.13 --- Ejes afines de un marco** Para $\mathfrak F=(O,(e_1,e_2,e_3))$, el eje afín asociado a $e_i$ es el conjunto de puntos
 
@@ -929,7 +929,7 @@ Los tres ejes concurren en $O$ y están asociados a desplazamientos linealmente 
 
 []{#proposición-restar-coordenadas-recupera-un-desplazamiento}
 
-### 4.4.8. Proposición: restar coordenadas recupera un desplazamiento {#fispm-c04-proposiciuxf3n-restar-coordenadas-recupera-un-desplazamiento}
+### Proposición: restar coordenadas recupera un desplazamiento {#fispm-c04-proposiciuxf3n-restar-coordenadas-recupera-un-desplazamiento}
 
 **Proposición 4.9 --- Diferencias de coordenadas** Fijado $\mathfrak F=(O,B)$, para todos $P,Q\in\mathcal E$ se tiene
 
@@ -945,7 +945,7 @@ $$[\overrightarrow{QP}]_B =x_{\mathfrak F}(P)-x_{\mathfrak F}(Q) =-[\overrightar
 
 []{#ejemplo-físico-ubicar-un-detector-y-desplazarlo}
 
-### 4.4.9. Ejemplo físico: ubicar un detector y desplazarlo {#fispm-c04-ejemplo-fuxedsico-ubicar-un-detector-y-desplazarlo}
+### Ejemplo físico: ubicar un detector y desplazarlo {#fispm-c04-ejemplo-fuxedsico-ubicar-un-detector-y-desplazarlo}
 
 Fijamos un origen en una marca del laboratorio y tres desplazamientos de referencia ordenados $B=(e_1,e_2,e_3)$. Sea el punto del detector
 
@@ -963,7 +963,7 @@ Aquí sí cambió el punto modelado. La comparación con el próximo caso ---un 
 
 []{#cambiar-sólo-el-origen-conservando-la-base}
 
-### 4.4.10. Cambiar sólo el origen, conservando la base {#fispm-c04-cambiar-suxf3lo-el-origen-conservando-la-base}
+### Cambiar sólo el origen, conservando la base {#fispm-c04-cambiar-suxf3lo-el-origen-conservando-la-base}
 
 Supongamos que elegimos $O'=O+a$ con $a\in V$, pero conservamos exactamente la base ordenada $B$. Los marcos son $\mathfrak F=(O,B),\qquad \mathfrak F'=(O',B).$ §1 ya demostró para el vector de posición que
 
@@ -973,7 +973,7 @@ La novedad consiste en expresar esa ley para las **columnas** mediante proposici
 
 []{#proposición-ley-de-traslación-de-las-coordenadas}
 
-### 4.4.11. Proposición: ley de traslación de las coordenadas {#fispm-c04-proposiciuxf3n-ley-de-traslaciuxf3n-de-las-coordenadas}
+### Proposición: ley de traslación de las coordenadas {#fispm-c04-proposiciuxf3n-ley-de-traslaciuxf3n-de-las-coordenadas}
 
 **Proposición 4.10 --- Cambio de origen con base fija** Si $O'=O+a$ y $B$ se conserva, entonces para cualquier $P\in\mathcal E$,
 
@@ -987,7 +987,7 @@ $$\boxed{x_{(O',B)}(Q)-x_{(O',B)}(P) =x_{(O,B)}(Q)-x_{(O,B)}(P).}$$
 
 []{#ejemplo-dos-planos-de-un-mismo-laboratorio}
 
-### 4.4.12. Ejemplo: dos planos de un mismo laboratorio {#fispm-c04-ejemplo-dos-planos-de-un-mismo-laboratorio}
+### Ejemplo: dos planos de un mismo laboratorio {#fispm-c04-ejemplo-dos-planos-de-un-mismo-laboratorio}
 
 Sea
 
@@ -1001,7 +1001,7 @@ Recuperamos la representación antigua sumando $[a]_B$. Dos columnas distintas r
 
 []{#coordenadas-de-las-combinaciones-afines}
 
-### 4.4.13. Coordenadas de las combinaciones afines {#fispm-c04-coordenadas-de-las-combinaciones-afines}
+### Coordenadas de las combinaciones afines {#fispm-c04-coordenadas-de-las-combinaciones-afines}
 
 **Proposición 4.11 --- Compatibilidad con combinaciones afines** Si $A$ es la combinación afín de puntos $P_1,\ldots,P_n$ con coeficientes $\lambda_i$ tales que $\sum_i\lambda_i=1$, entonces, en cualquier marco fijo $\mathfrak F$,
 
@@ -1015,7 +1015,7 @@ Para un baricentro con $W=\sum_i w_i\ne0$, los coeficientes son $w_i/W$, y la mi
 
 []{#unidades-y-escalas-qué-miden-los-coeficientes}
 
-### 4.4.14. Unidades y escalas: qué miden los coeficientes {#fispm-c04-unidades-y-escalas-quuxe9-miden-los-coeficientes}
+### Unidades y escalas: qué miden los coeficientes {#fispm-c04-unidades-y-escalas-quuxe9-miden-los-coeficientes}
 
 La ecuación $\overrightarrow{OP}=\sum_i x^ie_i$ sólo tiene interpretación dimensional después de declarar qué representan los $e_i$. Por ejemplo, si cada $e_i$ es un **desplazamiento de referencia con dimensión de longitud**, los coeficientes $x^i$ son números adimensionales; el producto $x^ie_i$ sí es una cantidad vectorial de longitud. Si se trabaja con símbolos de direcciones adimensionales y componentes dimensionales, es preciso declararlo como una convención diferente, no mezclar ambas escrituras sin aviso. Los tres desplazamientos de referencia no tienen por qué ser de igual longitud física. Una columna como $(2,-1,3)^{\mathsf T}$ no proporciona por sí sola tres medidas en metros ni permite calcular la distancia al origen. La noción métrica aún no existe en el desarrollo deductivo.
 
@@ -1023,7 +1023,7 @@ El capítulo 2 y capítulo 3 El número escrito en el plano no equivale a una me
 
 []{#diagnóstico-de-afirmaciones-plausibles-pero-falsas}
 
-### 4.4.15. Diagnóstico de afirmaciones plausibles pero falsas {#fispm-c04-diagnuxf3stico-de-afirmaciones-plausibles-pero-falsas}
+### Diagnóstico de afirmaciones plausibles pero falsas {#fispm-c04-diagnuxf3stico-de-afirmaciones-plausibles-pero-falsas}
 
 **«Tres flechas de referencia cualesquiera definen un marco».** Falso: deben constituir una base, es decir, generar $V$ y ser independientes (definición 4.9). **«El origen tiene coordenadas cero en todos los marcos».** El origen *elegido por cada marco* tiene coordenadas cero en su propio marco. El mismo punto $O$ no tiene necesariamente coordenadas cero respecto de otro origen $O'$. **«Si cambia la terna, el objeto se movió».** Falso: proposición 4.10 exhibe un contraejemplo mediante un mero cambio de origen. **«Si dos ternas son iguales, los puntos son necesariamente iguales».** Sólo si las ternas se interpretan en el **mismo marco**; proposición 4.8 no establece identidad entre columnas procedentes de marcos diferentes. **«La diferencia de ternas es un desplazamiento geométrico absoluto».** Debe precisarse: en un mismo marco, es la **columna en la base declarada** del desplazamiento intrínseco (proposición 4.9). Otra base puede proporcionar una columna diferente para ese mismo vector. **«Llamar cartesiano al marco demuestra ejes perpendiculares».** No: la perpendicularidad necesita un producto escalar (§5), y la ortonormalidad será construida en §7.
 
@@ -1089,7 +1089,7 @@ La primera frase confunde un punto $P\in\mathcal E$ con su columna de coordenada
 
 []{#cierre-y-enlace-deductivo}
 
-### 4.4.16. Cierre y enlace deductivo {#fispm-c04-cierre-y-enlace-deductivo}
+### Cierre y enlace deductivo {#fispm-c04-cierre-y-enlace-deductivo}
 
 La representación de un punto necesita dos elecciones:
 
@@ -1097,7 +1097,7 @@ $$\boxed{\text{marco afín}=\text{origen}+\text{base ordenada}.}$$
 
 Con ambas fijadas, las coordenadas son únicas (proposición 4.8); la resta de columnas representa un desplazamiento (proposición 4.9); trasladar sólo el origen modifica las coordenadas por un término común y conserva las diferencias (proposición 4.10); combinar puntos afínmente es compatible con combinar sus columnas usando coeficientes de suma uno (proposición 4.11). Pero todavía **no** hemos definido la longitud de una flecha ni la distancia entre dos puntos. El siguiente paso será precisamente
 
-(§[4.5](#fispm-c04-producto-escalar-norma-y-distancia)).
+(§[5](#fispm-c04-producto-escalar-norma-y-distancia)).
 
 Allí distinguiremos la mera independencia de los ejes de su perpendicularidad y construiremos las herramientas métricas necesarias para hablar con precisión de sistemas cartesianos rectangulares.
 
@@ -1107,11 +1107,11 @@ Allí distinguiremos la mera independencia de los ejes de su perpendicularidad y
 
 []{#fpm-i-04-s05}
 
-## 4.5. Producto escalar, norma y distancia {#fispm-c04-producto-escalar-norma-y-distancia}
+## 5. Producto escalar, norma y distancia {#fispm-c04-producto-escalar-norma-y-distancia}
 
 []{#activación-las-coordenadas-todavía-no-saben-medir}
 
-### 4.5.1. Activación: las coordenadas todavía no saben medir {#fispm-c04-activaciuxf3n-las-coordenadas-todavuxeda-no-saben-medir}
+### Activación: las coordenadas todavía no saben medir {#fispm-c04-activaciuxf3n-las-coordenadas-todavuxeda-no-saben-medir}
 
 En §4 aprendimos a asignar a un punto una terna de coordenadas una vez fijado un marco afín. Supongamos que dos puntos tienen coordenadas
 
@@ -1127,7 +1127,7 @@ Activación ¿Qué estructura matemática debemos añadir a $V$ para comparar lo
 
 []{#la-geometría-afín-y-la-geometría-métrica-son-capas-distintas}
 
-### 4.5.2. La geometría afín y la geometría métrica son capas distintas {#fispm-c04-la-geometruxeda-afuxedn-y-la-geometruxeda-muxe9trica-son-capas-distintas}
+### La geometría afín y la geometría métrica son capas distintas {#fispm-c04-la-geometruxeda-afuxedn-y-la-geometruxeda-muxe9trica-son-capas-distintas}
 
 La estructura afín construida hasta §4 permite distinguir puntos y vectores, trasladar puntos, formar diferencias, elegir bases y representar puntos y desplazamientos por columnas. Nada de esto define todavía longitud, distancia, perpendicularidad o ángulo.
 
@@ -1159,7 +1159,7 @@ La estructura afín determina desplazamientos; el producto escalar añade la pos
 
 []{#definir-norma-inducida}
 
-### 4.5.3. Definir: norma inducida {#fispm-c04-definir-norma-inducida}
+### Definir: norma inducida {#fispm-c04-definir-norma-inducida}
 
 **Definición 4.16 --- Norma euclídea inducida** Para $v\in V$ definimos
 
@@ -1207,7 +1207,7 @@ La igualdad ocurre exactamente cuando $\|u-\lambda v\|=0$, es decir, cuando $u=\
 
 []{#proposición-desigualdad-triangular-de-la-norma}
 
-### 4.5.4. Proposición: desigualdad triangular de la norma {#fispm-c04-proposiciuxf3n-desigualdad-triangular-de-la-norma}
+### Proposición: desigualdad triangular de la norma {#fispm-c04-proposiciuxf3n-desigualdad-triangular-de-la-norma}
 
 **Proposición 4.13 --- Desigualdad triangular** Para todos $u,v\in V$,
 
@@ -1221,7 +1221,7 @@ Como ambos lados son no negativos, tomamos raíces. $\square$ La ley del triáng
 
 []{#definir-distancia-entre-puntos}
 
-### 4.5.5. Definir: distancia entre puntos {#fispm-c04-definir-distancia-entre-puntos}
+### Definir: distancia entre puntos {#fispm-c04-definir-distancia-entre-puntos}
 
 **Definición 4.17 --- Distancia euclídea** Para $P,Q\in\mathcal E$,
 
@@ -1231,7 +1231,7 @@ La definición no requiere origen ni base.
 
 []{#proposición-la-distancia-satisface-los-axiomas-métricos}
 
-### 4.5.6. Proposición: la distancia satisface los axiomas métricos {#fispm-c04-proposiciuxf3n-la-distancia-satisface-los-axiomas-muxe9tricos}
+### Proposición: la distancia satisface los axiomas métricos {#fispm-c04-proposiciuxf3n-la-distancia-satisface-los-axiomas-muxe9tricos}
 
 **Proposición 4.14 --- Propiedades métricas de $d$** Para cualesquiera $P,Q,R\in\mathcal E$:
 
@@ -1251,7 +1251,7 @@ y proposición 4.13 produce la desigualdad triangular de la distancia. $\square$
 
 []{#la-métrica-en-una-base-general-matriz-de-gram}
 
-### 4.5.7. La métrica en una base general: matriz de Gram {#fispm-c04-la-muxe9trica-en-una-base-general-matriz-de-gram}
+### La métrica en una base general: matriz de Gram {#fispm-c04-la-muxe9trica-en-una-base-general-matriz-de-gram}
 
 **Definición 4.18 --- Matriz de Gram de una base** Sea $B=(e_1,e_2,e_3)$ una base. Su **matriz de Gram** es
 
@@ -1263,7 +1263,7 @@ $$\boxed{ \|v\|^2=c^{\mathsf T}G_Bc. }$$
 
 []{#proposición-positividad-de-la-matriz-de-gram}
 
-### 4.5.8. Proposición: positividad de la matriz de Gram {#fispm-c04-proposiciuxf3n-positividad-de-la-matriz-de-gram}
+### Proposición: positividad de la matriz de Gram {#fispm-c04-proposiciuxf3n-positividad-de-la-matriz-de-gram}
 
 **Proposición 4.15 --- Forma cuadrática de Gram** Para toda columna no nula $c\in\mathbb R^3$,
 
@@ -1277,7 +1277,7 @@ $\square$
 
 []{#no-ejemplo-la-fórmula-pitagórica-no-vale-en-cualquier-base}
 
-### 4.5.9. No-ejemplo: la fórmula pitagórica no vale en cualquier base {#fispm-c04-no-ejemplo-la-fuxf3rmula-pitaguxf3rica-no-vale-en-cualquier-base}
+### No-ejemplo: la fórmula pitagórica no vale en cualquier base {#fispm-c04-no-ejemplo-la-fuxf3rmula-pitaguxf3rica-no-vale-en-cualquier-base}
 
 Supongamos
 
@@ -1295,13 +1295,13 @@ Coordenadas no son métrica La expresión $\sqrt{(v^1)^2+(v^2)^2+(v^3)^2}$ no es
 
 []{#invariancia-frente-al-origen-y-dependencia-respecto-de-la-métrica}
 
-### 4.5.10. Invariancia frente al origen y dependencia respecto de la métrica {#fispm-c04-invariancia-frente-al-origen-y-dependencia-respecto-de-la-muxe9trica}
+### Invariancia frente al origen y dependencia respecto de la métrica {#fispm-c04-invariancia-frente-al-origen-y-dependencia-respecto-de-la-muxe9trica}
 
 Si el origen cambia pero la base permanece fija, proposición 4.10 preserva las diferencias de coordenadas. Por ello $\overrightarrow{PQ}$ y $d(P,Q)$ permanecen iguales. Esto no significa que la distancia sea independiente de toda estructura: si sobre $V$ elegimos otro producto escalar, podemos obtener longitudes distintas. La métrica forma parte del modelo.
 
 []{#interpretación-física-y-unidades}
 
-### 4.5.11. Interpretación física y unidades {#fispm-c04-interpretaciuxf3n-fuxedsica-y-unidades}
+### Interpretación física y unidades {#fispm-c04-interpretaciuxf3n-fuxedsica-y-unidades}
 
 Si los vectores modelan desplazamientos, entonces $\|v\|$ tiene dimensión de longitud y $\langle u,v\rangle$ dimensión de longitud al cuadrado. Si los vectores base llevan dimensión de longitud, las entradas de $G_B$ también tienen dimensión de longitud al cuadrado y sus componentes pueden ser adimensionales. Las identidades geométricas son exactas dentro del modelo. Una medición experimental de una distancia posee resolución e incertidumbre, según capítulo 3.
 
@@ -1365,7 +1365,7 @@ Bajo un cambio de origen con base fija, proposición 4.10 resta la misma columna
 
 []{#cierre-de-la-estructura-afín-a-la-geometría-euclídea}
 
-### 4.5.12. Cierre: de la estructura afín a la geometría euclídea {#fispm-c04-cierre-de-la-estructura-afuxedn-a-la-geometruxeda-eucluxeddea}
+### Cierre: de la estructura afín a la geometría euclídea {#fispm-c04-cierre-de-la-estructura-afuxedn-a-la-geometruxeda-eucluxeddea}
 
 La cadena construida es
 
@@ -1373,7 +1373,7 @@ $$\boxed{ \text{estructura afín} +\langle\cdot,\cdot\rangle \longrightarrow \|v
 
 Cauchy--Schwarz controla el producto escalar; de ella se obtiene la desigualdad triangular de la norma y después la de la distancia. El siguiente paso será
 
-(§[4.6](#fispm-c04-proyecciones-uxe1ngulos-y-geometruxeda-de-componentes)).
+(§[6](#fispm-c04-proyecciones-uxe1ngulos-y-geometruxeda-de-componentes)).
 
 []{#proyecciones-ángulos-y-geometría-de-componentes}
 
@@ -1381,11 +1381,11 @@ Cauchy--Schwarz controla el producto escalar; de ella se obtiene la desigualdad 
 
 []{#fpm-i-04-s06}
 
-## 4.6. Proyecciones, ángulos y geometría de componentes {#fispm-c04-proyecciones-uxe1ngulos-y-geometruxeda-de-componentes}
+## 6. Proyecciones, ángulos y geometría de componentes {#fispm-c04-proyecciones-uxe1ngulos-y-geometruxeda-de-componentes}
 
 []{#activación-cuánto-de-un-vector-apunta-en-una-dirección}
 
-### 4.6.1. Activación: ¿cuánto de un vector apunta en una dirección? {#fispm-c04-activaciuxf3n-cuuxe1nto-de-un-vector-apunta-en-una-direcciuxf3n}
+### Activación: ¿cuánto de un vector apunta en una dirección? {#fispm-c04-activaciuxf3n-cuuxe1nto-de-un-vector-apunta-en-una-direcciuxf3n}
 
 Una fuerza, un desplazamiento o cualquier otro vector puede compararse con una dirección elegida. La pregunta física típica no es sólo cuánto mide el vector completo, sino **qué parte de él actúa a lo largo de una dirección determinada**. Con sólo componentes algebraicas esta pregunta depende de cómo hayamos elegido la base. Con el producto escalar introducido en §5 podemos formularla sin depender de una representación particular. Sean $u,v\in V$, con $v\ne0$. Queremos construir un múltiplo de $v$ que represente la parte de $u$ alineada con la dirección de $v$, y que el resto sea perpendicular a esa dirección.
 
@@ -1397,7 +1397,7 @@ Una fuerza, un desplazamiento o cualquier otro vector puede compararse con una d
 
 <figcaption>
 
-**Figura 4.3.** La proyección ortogonal sobre el eje horizontal es $v_\parallel=(v\cdot e_1)e_1$. El residuo perpendicular no desaparece del vector: $v=v_\parallel+v_\perp$. Véase §[4.6](#fispm-c04-proyecciones-uxe1ngulos-y-geometruxeda-de-componentes).
+**Figura 4.3.** La proyección ortogonal sobre el eje horizontal es $v_\parallel=(v\cdot e_1)e_1$. El residuo perpendicular no desaparece del vector: $v=v_\parallel+v_\perp$. Véase §[6](#fispm-c04-proyecciones-uxe1ngulos-y-geometruxeda-de-componentes).
 
 </figcaption>
 
@@ -1411,7 +1411,7 @@ Una fuerza, un desplazamiento o cualquier otro vector puede compararse con una d
 
 <figcaption>
 
-**Figura 4.4.** En una base ortonormal, $v=v_1e_1+v_2e_2$ y $v_i=v\cdot e_i$. Las líneas discontinuas sitúan las componentes; no son fuerzas adicionales. Véase §[4.6](#fispm-c04-proyecciones-uxe1ngulos-y-geometruxeda-de-componentes).
+**Figura 4.4.** En una base ortonormal, $v=v_1e_1+v_2e_2$ y $v_i=v\cdot e_i$. Las líneas discontinuas sitúan las componentes; no son fuerzas adicionales. Véase §[6](#fispm-c04-proyecciones-uxe1ngulos-y-geometruxeda-de-componentes).
 
 </figcaption>
 
@@ -1431,7 +1431,7 @@ La definición utiliza el producto escalar, no la apariencia de un dibujo ni la 
 
 []{#la-condición-que-debe-satisfacer-una-proyección}
 
-### 4.6.2. La condición que debe satisfacer una proyección {#fispm-c04-la-condiciuxf3n-que-debe-satisfacer-una-proyecciuxf3n}
+### La condición que debe satisfacer una proyección {#fispm-c04-la-condiciuxf3n-que-debe-satisfacer-una-proyecciuxf3n}
 
 Busquemos un vector de la forma $p=\lambda v$
 
@@ -1449,7 +1449,7 @@ La construcción no requiere todavía definir un ángulo.
 
 []{#definir-proyección-ortogonal-sobre-una-dirección}
 
-### 4.6.3. Definir: proyección ortogonal sobre una dirección {#fispm-c04-definir-proyecciuxf3n-ortogonal-sobre-una-direcciuxf3n}
+### Definir: proyección ortogonal sobre una dirección {#fispm-c04-definir-proyecciuxf3n-ortogonal-sobre-una-direcciuxf3n}
 
 **Definición 4.20 --- Proyección ortogonal sobre un vector no nulo** Para $v\ne0$, definimos la **proyección ortogonal de $u$ sobre la dirección de $v$** por
 
@@ -1463,7 +1463,7 @@ Por ello la proyección depende de la **dirección** o recta vectorial elegida, 
 
 []{#proposición-descomposición-ortogonal-y-unicidad}
 
-### 4.6.4. Proposición: descomposición ortogonal y unicidad {#fispm-c04-proposiciuxf3n-descomposiciuxf3n-ortogonal-y-unicidad}
+### Proposición: descomposición ortogonal y unicidad {#fispm-c04-proposiciuxf3n-descomposiciuxf3n-ortogonal-y-unicidad}
 
 **Proposición 4.16 --- Descomposición ortogonal respecto de una dirección** Sean $u,v\in V$ con $v\ne0$. Entonces existe una única descomposición
 
@@ -1495,7 +1495,7 @@ Así $\alpha v=p$, y entonces $s=u-p=r$. $\square$ La prueba separa con claridad
 
 []{#primera-consecuencia-caso-ortogonal-y-caso-paralelo}
 
-### 4.6.5. Primera consecuencia: caso ortogonal y caso paralelo {#fispm-c04-primera-consecuencia-caso-ortogonal-y-caso-paralelo}
+### Primera consecuencia: caso ortogonal y caso paralelo {#fispm-c04-primera-consecuencia-caso-ortogonal-y-caso-paralelo}
 
 Si $u\perp v$, entonces $\langle u,v\rangle=0,$
 
@@ -1515,13 +1515,13 @@ $$\text{contenido enteramente en la dirección} \longrightarrow u.$$
 
 []{#interpretación-física-y-alcance-de-la-proyección}
 
-### 4.6.6. Interpretación física y alcance de la proyección {#fispm-c04-interpretaciuxf3n-fuxedsica-y-alcance-de-la-proyecciuxf3n}
+### Interpretación física y alcance de la proyección {#fispm-c04-interpretaciuxf3n-fuxedsica-y-alcance-de-la-proyecciuxf3n}
 
 Si $u$ representa un desplazamiento y $v$ fija una dirección de referencia, $\operatorname{proj}_v(u)$ es el desplazamiento vectorial que queda al conservar sólo la parte alineada con esa dirección según la métrica escogida. Esto **no** significa que una proyección matemática sea una nueva medición. En una experiencia real, los datos con que se reconstruyen $u$ y la dirección de $v$ pueden tener incertidumbre; la identidad de la proposición 4.16 pertenece al modelo geométrico. Tampoco hemos definido todavía un número llamado «ángulo entre $u$ y $v$». Ese concepto requiere usar Cauchy--Schwarz para demostrar primero que cierto cociente pertenece a $[-1,1]$.
 
 []{#cauchyschwarz-legitima-el-coseno}
 
-### 4.6.7. Cauchy--Schwarz legitima el coseno {#fispm-c04-cauchyschwarz-legitima-el-coseno}
+### Cauchy--Schwarz legitima el coseno {#fispm-c04-cauchyschwarz-legitima-el-coseno}
 
 Sean ahora $u,v\in V$ no nulos. Proposición 4.12 implica $|\langle u,v\rangle| \le \|u\|\,\|v\|.$
 
@@ -1533,7 +1533,7 @@ El cociente es adimensional y pertenece exactamente al dominio de la función $\
 
 []{#definir-ángulo-entre-vectores-no-nulos}
 
-### 4.6.8. Definir: ángulo entre vectores no nulos {#fispm-c04-definir-uxe1ngulo-entre-vectores-no-nulos}
+### Definir: ángulo entre vectores no nulos {#fispm-c04-definir-uxe1ngulo-entre-vectores-no-nulos}
 
 **Definición 4.21 --- Ángulo entre dos vectores no nulos** Para $u\ne0$ y $v\ne0$, definimos el **ángulo** $\theta(u,v)\in[0,\pi]$ por
 
@@ -1543,7 +1543,7 @@ La definición no se extiende al vector cero: si $u=0$ o $v=0$, el denominador s
 
 []{#proposición-casos-límite-y-ortogonalidad}
 
-### 4.6.9. Proposición: casos límite y ortogonalidad {#fispm-c04-proposiciuxf3n-casos-luxedmite-y-ortogonalidad}
+### Proposición: casos límite y ortogonalidad {#fispm-c04-proposiciuxf3n-casos-luxedmite-y-ortogonalidad}
 
 **Proposición 4.17 --- Caracterización métrica de los ángulos límite** Sean $u,v\ne0$. Entonces:
 
@@ -1567,7 +1567,7 @@ determina $c>0$ cuando $\cos\theta=1$ y $c<0$ cuando $\cos\theta=-1$. La recípr
 
 []{#definir-componente-escalar-en-una-dirección}
 
-### 4.6.10. Definir: componente escalar en una dirección {#fispm-c04-definir-componente-escalar-en-una-direcciuxf3n}
+### Definir: componente escalar en una dirección {#fispm-c04-definir-componente-escalar-en-una-direcciuxf3n}
 
 **Definición 4.22 --- Componente escalar de un vector en una dirección orientada** Para $v\ne0$, definimos la **componente escalar de $u$ en la dirección orientada de $v$** por
 
@@ -1587,7 +1587,7 @@ Por tanto, **la componente escalar depende del sentido elegido en la dirección*
 
 []{#proposición-relación-entre-ángulo-componente-y-proyección}
 
-### 4.6.11. Proposición: relación entre ángulo, componente y proyección {#fispm-c04-proposiciuxf3n-relaciuxf3n-entre-uxe1ngulo-componente-y-proyecciuxf3n}
+### Proposición: relación entre ángulo, componente y proyección {#fispm-c04-proposiciuxf3n-relaciuxf3n-entre-uxe1ngulo-componente-y-proyecciuxf3n}
 
 **Proposición 4.18 --- Forma angular de la componente y la proyección** Para $u,v\ne0$,
 
@@ -1617,7 +1617,7 @@ Finalmente, $\|\widehat v\|=1$ y la homogeneidad de la norma producen la última
 
 []{#ejemplo-sin-coordenadas}
 
-### 4.6.12. Ejemplo sin coordenadas {#fispm-c04-ejemplo-sin-coordenadas}
+### Ejemplo sin coordenadas {#fispm-c04-ejemplo-sin-coordenadas}
 
 Supongamos
 
@@ -1639,7 +1639,7 @@ El número $3$ y el vector $\tfrac32v$ codifican aspectos distintos de la misma 
 
 []{#balance-conceptual-del-ángulo-a-pitágoras}
 
-### 4.6.13. Balance conceptual: del ángulo a Pitágoras {#fispm-c04-balance-conceptual-del-uxe1ngulo-a-pituxe1goras}
+### Balance conceptual: del ángulo a Pitágoras {#fispm-c04-balance-conceptual-del-uxe1ngulo-a-pituxe1goras}
 
 Ya podemos pasar rigurosamente de
 
@@ -1653,7 +1653,7 @@ La geometría elemental de la proyección todavía necesita una última pieza: c
 
 []{#proposición-identidad-pitagórica-de-la-descomposición-ortogonal}
 
-### 4.6.14. Proposición: identidad pitagórica de la descomposición ortogonal {#fispm-c04-proposiciuxf3n-identidad-pitaguxf3rica-de-la-descomposiciuxf3n-ortogonal}
+### Proposición: identidad pitagórica de la descomposición ortogonal {#fispm-c04-proposiciuxf3n-identidad-pitaguxf3rica-de-la-descomposiciuxf3n-ortogonal}
 
 **Proposición 4.19 --- Pitágoras para proyección y residuo** Sean $u,v\in V$ con $v\ne0$. Definamos
 
@@ -1673,7 +1673,7 @@ Esta identidad no es la fórmula pitagórica por **componentes de una base arbit
 
 []{#consecuencia-longitud-perpendicular-a-una-dirección}
 
-### 4.6.15. Consecuencia: longitud perpendicular a una dirección {#fispm-c04-consecuencia-longitud-perpendicular-a-una-direcciuxf3n}
+### Consecuencia: longitud perpendicular a una dirección {#fispm-c04-consecuencia-longitud-perpendicular-a-una-direcciuxf3n}
 
 De proposición 4.19 y proposición 4.18, $\|p\| = |\operatorname{comp}_v(u)|.$
 
@@ -1699,7 +1699,7 @@ La interpretación geométrica es precisa:
 
 []{#geometría-de-componentes-sin-adelantar-7}
 
-### 4.6.16. Geometría de componentes sin adelantar §7 {#fispm-c04-geometruxeda-de-componentes-sin-adelantar-7}
+### Geometría de componentes sin adelantar §7 {#fispm-c04-geometruxeda-de-componentes-sin-adelantar-7}
 
 Supongamos que una base contiene un vector $e_1$ de norma uno. Para
 
@@ -1793,7 +1793,7 @@ Reescalar una dirección no cambia la recta vectorial y, por tanto, tampoco la p
 
 []{#cierre-de-6}
 
-### 4.6.17. Cierre de §6 {#fispm-c04-cierre-de-6}
+### Cierre de §6 {#fispm-c04-cierre-de-6}
 
 La sección ha separado cuatro nociones que suelen mezclarse:
 
@@ -1807,7 +1807,7 @@ con la proposición 4.19 proporcionando el control pitagórico de la descomposic
 
 $$\boxed{ \text{una coordenada no es automáticamente una componente métrica}. }$$
 
-Para convertir sistemáticamente las entradas de una columna en componentes métricas necesitamos una base cuyas direcciones sean unitarias y mutuamente ortogonales. El siguiente paso será el §[4.7](#fispm-c04-bases-ortonormales-y-descomposiciuxf3n).
+Para convertir sistemáticamente las entradas de una columna en componentes métricas necesitamos una base cuyas direcciones sean unitarias y mutuamente ortogonales. El siguiente paso será el §[7](#fispm-c04-bases-ortonormales-y-descomposiciuxf3n).
 
 []{#bases-ortonormales-y-descomposición}
 
@@ -1815,11 +1815,11 @@ Para convertir sistemáticamente las entradas de una columna en componentes mét
 
 []{#fpm-i-04-s07}
 
-## 4.7. Bases ortonormales y descomposición {#fispm-c04-bases-ortonormales-y-descomposiciuxf3n}
+## 7. Bases ortonormales y descomposición {#fispm-c04-bases-ortonormales-y-descomposiciuxf3n}
 
 []{#activación-cuándo-una-coordenada-coincide-con-una-componente-métrica}
 
-### 4.7.1. Activación: ¿cuándo una coordenada coincide con una componente métrica? {#fispm-c04-activaciuxf3n-cuuxe1ndo-una-coordenada-coincide-con-una-componente-muxe9trica}
+### Activación: ¿cuándo una coordenada coincide con una componente métrica? {#fispm-c04-activaciuxf3n-cuuxe1ndo-una-coordenada-coincide-con-una-componente-muxe9trica}
 
 En §3 una base $B=(e_1,e_2,e_3)$ permitió escribir todo vector de manera única: $v=v^1e_1+v^2e_2+v^3e_3.$ En §5 vimos que, para una base general, no podemos calcular la longitud mediante $\sqrt{(v^1)^2+(v^2)^2+(v^3)^2}$
 
@@ -1865,7 +1865,7 @@ En ese caso, las fórmulas de esta sección deben conservar los factores de esca
 
 []{#la-matriz-de-gram-se-simplifica}
 
-### 4.7.2. La matriz de Gram se simplifica {#fispm-c04-la-matriz-de-gram-se-simplifica}
+### La matriz de Gram se simplifica {#fispm-c04-la-matriz-de-gram-se-simplifica}
 
 Definición 4.18 definió la matriz de Gram de una base: $G_B = \bigl(\langle e_i,e_j\rangle\bigr)_{i,j}.$ Si $B$ es ortonormal, definición 4.23 implica inmediatamente
 
@@ -1881,7 +1881,7 @@ $$\|v\|^2 = [v]_B^{\mathsf T}[v]_B.$$
 
 []{#proposición-recuperar-componentes-mediante-productos-escalares}
 
-### 4.7.3. Proposición: recuperar componentes mediante productos escalares {#fispm-c04-proposiciuxf3n-recuperar-componentes-mediante-productos-escalares}
+### Proposición: recuperar componentes mediante productos escalares {#fispm-c04-proposiciuxf3n-recuperar-componentes-mediante-productos-escalares}
 
 **Proposición 4.20 --- Componentes y norma en una base ortonormal** Sea
 
@@ -1921,7 +1921,7 @@ $\square$
 
 []{#relación-con-las-proyecciones-de-6}
 
-### 4.7.4. Relación con las proyecciones de §6 {#fispm-c04-relaciuxf3n-con-las-proyecciones-de-6}
+### Relación con las proyecciones de §6 {#fispm-c04-relaciuxf3n-con-las-proyecciones-de-6}
 
 Como $\|e_k\|=1$, definición 4.22 produce
 
@@ -1947,7 +1947,7 @@ La igualdad no era válida de manera automática en una base general; ahora est�
 
 []{#principio-metodológico-y-pregunta-constructiva}
 
-### 4.7.5. Principio metodológico y pregunta constructiva {#fispm-c04-principio-metodoluxf3gico-y-pregunta-constructiva}
+### Principio metodológico y pregunta constructiva {#fispm-c04-principio-metodoluxf3gico-y-pregunta-constructiva}
 
 **Principio metodológico 4.9 --- Verificar ortonormalidad antes de leer componentes métricamente** Antes de usar
 
@@ -1973,7 +1973,7 @@ Todavía falta responder una pregunta constructiva: dado un conjunto de vectores
 
 []{#la-estrategia-quitar-sucesivamente-las-partes-ya-explicadas}
 
-### 4.7.6. La estrategia: quitar sucesivamente las partes ya explicadas {#fispm-c04-la-estrategia-quitar-sucesivamente-las-partes-ya-explicadas}
+### La estrategia: quitar sucesivamente las partes ya explicadas {#fispm-c04-la-estrategia-quitar-sucesivamente-las-partes-ya-explicadas}
 
 Sean
 
@@ -2003,7 +2003,7 @@ Antes de aceptar estas fórmulas debemos probar dos cuestiones:
 
 []{#definir-procedimiento-de-gramschmidt-en-dimensión-tres}
 
-### 4.7.7. Definir: procedimiento de Gram--Schmidt en dimensión tres {#fispm-c04-definir-procedimiento-de-gramschmidt-en-dimensiuxf3n-tres}
+### Definir: procedimiento de Gram--Schmidt en dimensión tres {#fispm-c04-definir-procedimiento-de-gramschmidt-en-dimensiuxf3n-tres}
 
 **Definición 4.24 --- Procedimiento de Gram--Schmidt** Sea $(a_1,a_2,a_3)$ una familia linealmente independiente. Definimos recursivamente
 
@@ -2019,7 +2019,7 @@ Cuando los denominadores son no nulos, la familia $(e_1,e_2,e_3)$ se denomina la
 
 []{#primer-control-los-residuos-no-pueden-anularse}
 
-### 4.7.8. Primer control: los residuos no pueden anularse {#fispm-c04-primer-control-los-residuos-no-pueden-anularse}
+### Primer control: los residuos no pueden anularse {#fispm-c04-primer-control-los-residuos-no-pueden-anularse}
 
 Para $u_1$ no hay dificultad: $a_1\ne0$ porque la familia es independiente. Supongamos que
 
@@ -2051,7 +2051,7 @@ otra contradicción con la independencia original. Por tanto, la preservación d
 
 []{#proposición-gramschmidt-preserva-los-subespacios-generados}
 
-### 4.7.9. Proposición: Gram--Schmidt preserva los subespacios generados {#fispm-c04-proposiciuxf3n-gramschmidt-preserva-los-subespacios-generados}
+### Proposición: Gram--Schmidt preserva los subespacios generados {#fispm-c04-proposiciuxf3n-gramschmidt-preserva-los-subespacios-generados}
 
 **Proposición 4.21 --- Preservación de generación por Gram--Schmidt** Para la construcción de la definición 4.24,
 
@@ -2095,7 +2095,7 @@ Por tanto los tres subespacios acumulativos coinciden. $\square$ Esta proposici�
 
 []{#proposición-el-resultado-es-ortonormal}
 
-### 4.7.10. Proposición: el resultado es ortonormal {#fispm-c04-proposiciuxf3n-el-resultado-es-ortonormal}
+### Proposición: el resultado es ortonormal {#fispm-c04-proposiciuxf3n-el-resultado-es-ortonormal}
 
 **Proposición 4.22 --- Corrección de Gram--Schmidt** Si $(a_1,a_2,a_3)$ es linealmente independiente, el procedimiento definición 4.24 está bien definido y produce una familia
 
@@ -2123,7 +2123,7 @@ tomar producto escalar con $e_k$ da $c_k=0$. Por definición 4.9, $B$ es una bas
 
 []{#el-orden-importa-el-subespacio-final-no}
 
-### 4.7.11. El orden importa, el subespacio final no {#fispm-c04-el-orden-importa-el-subespacio-final-no}
+### El orden importa, el subespacio final no {#fispm-c04-el-orden-importa-el-subespacio-final-no}
 
 El procedimiento definición 4.24 utiliza un **orden**. Si comenzamos con
 
@@ -2139,7 +2139,7 @@ Por tanto Gram--Schmidt no descubre una base ortonormal **canónica** sin datos 
 
 []{#balance-antes-de-los-ejemplos-y-ejercicios}
 
-### 4.7.12. Balance antes de los ejemplos y ejercicios {#fispm-c04-balance-antes-de-los-ejemplos-y-ejercicios}
+### Balance antes de los ejemplos y ejercicios {#fispm-c04-balance-antes-de-los-ejemplos-y-ejercicios}
 
 Ya sabemos:
 
@@ -2155,7 +2155,7 @@ Todavía falta aplicar el procedimiento en un caso concreto y cerrar el bloque �
 
 []{#ejemplo-guiado-ortonormalizar-una-base-oblicua-simple}
 
-### 4.7.13. Ejemplo guiado: ortonormalizar una base oblicua simple {#fispm-c04-ejemplo-guiado-ortonormalizar-una-base-oblicua-simple}
+### Ejemplo guiado: ortonormalizar una base oblicua simple {#fispm-c04-ejemplo-guiado-ortonormalizar-una-base-oblicua-simple}
 
 Sea
 
@@ -2323,7 +2323,7 @@ $$\boxed{ \|v\|^2 = \sum_{i=1}^{3} \langle v,e_i\rangle^2. }$$
 
 []{#cierre-de-7}
 
-### 4.7.14. Cierre de §7 {#fispm-c04-cierre-de-7}
+### Cierre de §7 {#fispm-c04-cierre-de-7}
 
 La secuencia §§5--7 ha construido progresivamente la geometría euclídea:
 
@@ -2339,7 +2339,7 @@ y
 
 $$\boxed{ \|v\|^2 = \sum_i(v^i)^2. }$$
 
-Gram--Schmidt demuestra además que, a partir de una base cualquiera de un espacio euclídeo finito, podemos construir una base ortonormal sin cambiar el espacio generado. Con ello queda cerrada la construcción métrica iniciada en §4. El siguiente paso será el §[4.8](#fispm-c04-orientaciuxf3n-y-determinantes).
+Gram--Schmidt demuestra además que, a partir de una base cualquiera de un espacio euclídeo finito, podemos construir una base ortonormal sin cambiar el espacio generado. Con ello queda cerrada la construcción métrica iniciada en §4. El siguiente paso será el §[8](#fispm-c04-orientaciuxf3n-y-determinantes).
 
 []{#orientación-y-determinantes}
 
@@ -2347,11 +2347,11 @@ Gram--Schmidt demuestra además que, a partir de una base cualquiera de un espac
 
 []{#fpm-i-04-s08}
 
-## 4.8. Orientación y determinantes {#fispm-c04-orientaciuxf3n-y-determinantes}
+## 8. Orientación y determinantes {#fispm-c04-orientaciuxf3n-y-determinantes}
 
 []{#activación-una-base-ordenada-puede-tener-dos-sentidos}
 
-### 4.8.1. Activación: una base ordenada puede tener dos "sentidos" {#fispm-c04-activaciuxf3n-una-base-ordenada-puede-tener-dos-sentidos}
+### Activación: una base ordenada puede tener dos "sentidos" {#fispm-c04-activaciuxf3n-una-base-ordenada-puede-tener-dos-sentidos}
 
 Una base ordenada tridimensional
 
@@ -2373,7 +2373,7 @@ Esa cantidad es el determinante.
 
 []{#definir-determinante-de-una-matriz-real-3-3}
 
-### 4.8.2. Definir: determinante de una matriz real 3 × 3 {#fispm-c04-definir-determinante-de-una-matriz-real-3-3}
+### Definir: determinante de una matriz real 3 × 3 {#fispm-c04-definir-determinante-de-una-matriz-real-3-3}
 
 **Definición 4.25 --- Determinante tridimensional** Para
 
@@ -2387,7 +2387,7 @@ Esta expresión es un escalar asociado a una matriz cuadrada de orden tres. En p
 
 []{#determinante-de-una-terna-de-vectores-respecto-de-una-base}
 
-### 4.8.3. Determinante de una terna de vectores respecto de una base {#fispm-c04-determinante-de-una-terna-de-vectores-respecto-de-una-base}
+### Determinante de una terna de vectores respecto de una base {#fispm-c04-determinante-de-una-terna-de-vectores-respecto-de-una-base}
 
 Fijemos temporalmente una base ordenada de referencia
 
@@ -2405,7 +2405,7 @@ Si tomamos precisamente la terna de referencia, $\det_E(e_1,e_2,e_3)=1.$
 
 []{#primera-propiedad-intercambiar-dos-columnas-cambia-el-signo}
 
-### 4.8.4. Primera propiedad: intercambiar dos columnas cambia el signo {#fispm-c04-primera-propiedad-intercambiar-dos-columnas-cambia-el-signo}
+### Primera propiedad: intercambiar dos columnas cambia el signo {#fispm-c04-primera-propiedad-intercambiar-dos-columnas-cambia-el-signo}
 
 **Proposición 4.23 --- Regla de intercambio** Si $A'$ se obtiene de una matriz $A$ intercambiando dos columnas, entonces
 
@@ -2437,7 +2437,7 @@ Los demás intercambios se comprueban de la misma manera. $\square$ La regla de 
 
 []{#consecuencia-una-permutación-impar-invierte-el-signo}
 
-### 4.8.5. Consecuencia: una permutación impar invierte el signo {#fispm-c04-consecuencia-una-permutaciuxf3n-impar-invierte-el-signo}
+### Consecuencia: una permutación impar invierte el signo {#fispm-c04-consecuencia-una-permutaciuxf3n-impar-invierte-el-signo}
 
 Si partimos de
 
@@ -2455,7 +2455,7 @@ realiza dos intercambios y conserva el signo. Esto anticipa la distinción entre
 
 []{#definir-orientación-relativa-a-una-base-de-referencia}
 
-### 4.8.6. Definir: orientación relativa a una base de referencia {#fispm-c04-definir-orientaciuxf3n-relativa-a-una-base-de-referencia}
+### Definir: orientación relativa a una base de referencia {#fispm-c04-definir-orientaciuxf3n-relativa-a-una-base-de-referencia}
 
 **Definición 4.26 --- Orientación relativa** Fijemos una base ordenada de referencia
 
@@ -2481,7 +2481,7 @@ se demostrará en §§8.9--8.12, junto con las propiedades estructurales necesar
 
 []{#ejemplo-inmediato-invertir-dos-ejes}
 
-### 4.8.7. Ejemplo inmediato: invertir dos ejes {#fispm-c04-ejemplo-inmediato-invertir-dos-ejes}
+### Ejemplo inmediato: invertir dos ejes {#fispm-c04-ejemplo-inmediato-invertir-dos-ejes}
 
 La base de referencia satisface $\det_E(e_1,e_2,e_3)=1>0.$ Por proposición 4.23, $\det_E(e_2,e_1,e_3)=-1.$ Por tanto, $(e_1,e_2,e_3)$
 
@@ -2493,7 +2493,7 @@ poseen orientaciones relativas opuestas. Sin embargo, ambas bases tienen exactam
 
 []{#principio-metodológico-y-cuestiones-pendientes}
 
-### 4.8.8. Principio metodológico y cuestiones pendientes {#fispm-c04-principio-metodoluxf3gico-y-cuestiones-pendientes}
+### Principio metodológico y cuestiones pendientes {#fispm-c04-principio-metodoluxf3gico-y-cuestiones-pendientes}
 
 **Principio metodológico 4.11 --- Separar métrica y orientación** Longitudes, ángulos y ortonormalidad pertenecen a la estructura métrica; la orientación añade un dato de signo asociado al orden de una base. No inferir orientación únicamente a partir de productos escalares.
 
@@ -2515,7 +2515,7 @@ Esto permite hablar de orientación **relativa a una base elegida**, pero todav�
 
 []{#proposición-multilinealidad-y-alternancia}
 
-### 4.8.9. Proposición: multilinealidad y alternancia {#fispm-c04-proposiciuxf3n-multilinealidad-y-alternancia}
+### Proposición: multilinealidad y alternancia {#fispm-c04-proposiciuxf3n-multilinealidad-y-alternancia}
 
 **Proposición 4.24 --- El determinante es trilineal y alternante** Fijada una base de referencia $E$, la aplicación
 
@@ -2547,7 +2547,7 @@ Los demás casos se reducen a éste intercambiando columnas. $\square$
 
 []{#consecuencia-dependencia-lineal-implica-determinante-cero}
 
-### 4.8.10. Consecuencia: dependencia lineal implica determinante cero {#fispm-c04-consecuencia-dependencia-lineal-implica-determinante-cero}
+### Consecuencia: dependencia lineal implica determinante cero {#fispm-c04-consecuencia-dependencia-lineal-implica-determinante-cero}
 
 **Proposición 4.25 --- Una terna dependiente tiene determinante nulo** Si $v_1,v_2,v_3$ son linealmente dependientes, entonces
 
@@ -2569,7 +2569,7 @@ Si la relación de dependencia despeja otro vector, el argumento es idéntico. $
 
 []{#proposición-multiplicatividad-del-determinante}
 
-### 4.8.11. Proposición: multiplicatividad del determinante {#fispm-c04-proposiciuxf3n-multiplicatividad-del-determinante}
+### Proposición: multiplicatividad del determinante {#fispm-c04-proposiciuxf3n-multiplicatividad-del-determinante}
 
 **Proposición 4.26 --- Determinante de un producto** Para matrices reales $3\times3$,
 
@@ -2597,7 +2597,7 @@ $\square$
 
 []{#proposición-determinante-no-nulo-e-independencia}
 
-### 4.8.12. Proposición: determinante no nulo e independencia {#fispm-c04-proposiciuxf3n-determinante-no-nulo-e-independencia}
+### Proposición: determinante no nulo e independencia {#fispm-c04-proposiciuxf3n-determinante-no-nulo-e-independencia}
 
 **Proposición 4.27 --- Criterio de base mediante el determinante** Sean $v_1,v_2,v_3\in V$ y sea
 
@@ -2635,7 +2635,7 @@ Esto prueba la equivalencia. $\square$ La observación pendiente de §8.6 queda 
 
 []{#definir-misma-orientación-entre-bases}
 
-### 4.8.13. Definir: misma orientación entre bases {#fispm-c04-definir-misma-orientaciuxf3n-entre-bases}
+### Definir: misma orientación entre bases {#fispm-c04-definir-misma-orientaciuxf3n-entre-bases}
 
 **Definición 4.27 --- Bases con la misma orientación** Sean
 
@@ -2655,7 +2655,7 @@ La equivalencia entre ambas formulaciones se justificará de inmediato.
 
 []{#proposición-la-comparación-de-orientación-no-depende-de-la-referencia}
 
-### 4.8.14. Proposición: la comparación de orientación no depende de la referencia {#fispm-c04-proposiciuxf3n-la-comparaciuxf3n-de-orientaciuxf3n-no-depende-de-la-referencia}
+### Proposición: la comparación de orientación no depende de la referencia {#fispm-c04-proposiciuxf3n-la-comparaciuxf3n-de-orientaciuxf3n-no-depende-de-la-referencia}
 
 **Proposición 4.28 --- Invariancia de la comparación de orientación** El signo de
 
@@ -2685,7 +2685,7 @@ Multiplicar por un número positivo no cambia el signo. Luego ambas referencias 
 
 []{#las-bases-se-separan-en-dos-clases}
 
-### 4.8.15. Las bases se separan en dos clases {#fispm-c04-las-bases-se-separan-en-dos-clases}
+### Las bases se separan en dos clases {#fispm-c04-las-bases-se-separan-en-dos-clases}
 
 Definición 4.27 y proposición 4.28 permiten olvidar una base de referencia particular y hablar simplemente de dos clases de bases ordenadas. Fijada una base $E$:
 
@@ -2697,7 +2697,7 @@ Definición 4.27 y proposición 4.28 permiten olvidar una base de referencia par
 
 []{#balance-de-la-orientación-al-volumen}
 
-### 4.8.16. Balance: de la orientación al volumen {#fispm-c04-balance-de-la-orientaciuxf3n-al-volumen}
+### Balance: de la orientación al volumen {#fispm-c04-balance-de-la-orientaciuxf3n-al-volumen}
 
 Ya disponemos de la estructura mínima necesaria:
 
@@ -2713,7 +2713,7 @@ Todavía falta interpretar geométricamente el **valor absoluto** del determinan
 
 []{#reglas-geométricas-que-ya-contiene-el-determinante}
 
-### 4.8.17. Reglas geométricas que ya contiene el determinante {#fispm-c04-reglas-geomuxe9tricas-que-ya-contiene-el-determinante}
+### Reglas geométricas que ya contiene el determinante {#fispm-c04-reglas-geomuxe9tricas-que-ya-contiene-el-determinante}
 
 Proposición 4.24 y proposición 4.23 permiten leer tres operaciones elementales directamente en el determinante. Si multiplicamos una arista por un escalar $\lambda$,
 
@@ -2735,7 +2735,7 @@ Estas tres reglas anticipan exactamente el comportamiento geométrico esperado d
 
 []{#definir-volumen-orientado-y-volumen-euclídeo}
 
-### 4.8.18. Definir: volumen orientado y volumen euclídeo {#fispm-c04-definir-volumen-orientado-y-volumen-eucluxeddeo}
+### Definir: volumen orientado y volumen euclídeo {#fispm-c04-definir-volumen-orientado-y-volumen-eucluxeddeo}
 
 Fijemos ahora una base **ortonormal** y una de las dos clases de orientación como positiva: $E=(e_1,e_2,e_3).$
 
@@ -2751,7 +2751,7 @@ La ortonormalidad de $E$ es esencial para esta lectura métrica. Si usáramos un
 
 []{#proposición-reglas-del-volumen-orientado}
 
-### 4.8.19. Proposición: reglas del volumen orientado {#fispm-c04-proposiciuxf3n-reglas-del-volumen-orientado}
+### Proposición: reglas del volumen orientado {#fispm-c04-proposiciuxf3n-reglas-del-volumen-orientado}
 
 **Proposición 4.29 --- Escala, cizalla y orientación del volumen** Para toda terna $v_1,v_2,v_3$ y todo $\lambda\in\mathbb R$:
 
@@ -2769,7 +2769,7 @@ En consecuencia, el volumen euclídeo no cambia al intercambiar dos aristas ni a
 
 []{#proposición-una-base-ortonormal-tiene-determinante-1}
 
-### 4.8.20. Proposición: una base ortonormal tiene determinante ±1 {#fispm-c04-proposiciuxf3n-una-base-ortonormal-tiene-determinante-1}
+### Proposición: una base ortonormal tiene determinante ±1 {#fispm-c04-proposiciuxf3n-una-base-ortonormal-tiene-determinante-1}
 
 **Proposición 4.30 --- Determinante de una base ortonormal** Sea
 
@@ -2809,7 +2809,7 @@ si tiene la orientación opuesta.
 
 []{#proposición-independencia-de-la-referencia-ortonormal}
 
-### 4.8.21. Proposición: independencia de la referencia ortonormal {#fispm-c04-proposiciuxf3n-independencia-de-la-referencia-ortonormal}
+### Proposición: independencia de la referencia ortonormal {#fispm-c04-proposiciuxf3n-independencia-de-la-referencia-ortonormal}
 
 **Proposición 4.31 --- Invariancia del volumen bajo cambio de referencia ortonormal** Sean
 
@@ -2861,7 +2861,7 @@ sin indicar una base ortonormal particular.
 
 []{#ejemplo-guiado-cizalla-escala-y-orientación}
 
-### 4.8.22. Ejemplo guiado: cizalla, escala y orientación {#fispm-c04-ejemplo-guiado-cizalla-escala-y-orientaciuxf3n}
+### Ejemplo guiado: cizalla, escala y orientación {#fispm-c04-ejemplo-guiado-cizalla-escala-y-orientaciuxf3n}
 
 Sea $E=(e_1,e_2,e_3)$ una base ortonormal positivamente orientada y definamos
 
@@ -2975,7 +2975,7 @@ El volumen euclídeo sigue siendo $1$ y la orientación se invierte.
 
 []{#cierre-de-8}
 
-### 4.8.23. Cierre de §8 {#fispm-c04-cierre-de-8}
+### Cierre de §8 {#fispm-c04-cierre-de-8}
 
 La sección ha separado tres capas distintas:
 
@@ -2997,7 +2997,7 @@ El determinante contiene así simultáneamente información algebraica, orientac
 
 - `det`: factor de volumen cuando la referencia métrica está normalizada.
 
-La sección termina exactamente donde comienza la siguiente necesidad tridimensional: construir, a partir de dos vectores y una orientación elegida, un tercer vector perpendicular cuya magnitud codifique un área. Esa construcción será el objeto de §9. El siguiente paso será el §[4.9](#fispm-c04-producto-vectorial-en-dimensiuxf3n-tres).
+La sección termina exactamente donde comienza la siguiente necesidad tridimensional: construir, a partir de dos vectores y una orientación elegida, un tercer vector perpendicular cuya magnitud codifique un área. Esa construcción será el objeto de §9. El siguiente paso será el §[9](#fispm-c04-producto-vectorial-en-dimensiuxf3n-tres).
 
 []{#producto-vectorial-en-dimensión-tres}
 
@@ -3005,11 +3005,11 @@ La sección termina exactamente donde comienza la siguiente necesidad tridimensi
 
 []{#fpm-i-04-s09}
 
-## 4.9. Producto vectorial en dimensión tres {#fispm-c04-producto-vectorial-en-dimensiuxf3n-tres}
+## 9. Producto vectorial en dimensión tres {#fispm-c04-producto-vectorial-en-dimensiuxf3n-tres}
 
 []{#activación-de-dos-vectores-a-una-normal-orientada}
 
-### 4.9.1. Activación: de dos vectores a una normal orientada {#fispm-c04-activaciuxf3n-de-dos-vectores-a-una-normal-orientada}
+### Activación: de dos vectores a una normal orientada {#fispm-c04-activaciuxf3n-de-dos-vectores-a-una-normal-orientada}
 
 Sean
 
@@ -3029,7 +3029,7 @@ En dimensión tres aparece una posibilidad especial: podemos buscar un tercer ve
 
 <figcaption>
 
-**Figura 4.5.** En una base ortonormal positivamente orientada, $e_1\times e_2=e_3$. El punto dentro del círculo indica una dirección que sale del papel; invertir los factores invierte ese vector. Véase §[4.9](#fispm-c04-producto-vectorial-en-dimensiuxf3n-tres).
+**Figura 4.5.** En una base ortonormal positivamente orientada, $e_1\times e_2=e_3$. El punto dentro del círculo indica una dirección que sale del papel; invertir los factores invierte ese vector. Véase §[9](#fispm-c04-producto-vectorial-en-dimensiuxf3n-tres).
 
 </figcaption>
 
@@ -3043,7 +3043,7 @@ La orientación construida en §8 resuelve el primer problema; el producto escal
 
 []{#los-dos-ingredientes-que-necesita-la-construcción}
 
-### 4.9.2. Los dos ingredientes que necesita la construcción {#fispm-c04-los-dos-ingredientes-que-necesita-la-construcciuxf3n}
+### Los dos ingredientes que necesita la construcción {#fispm-c04-los-dos-ingredientes-que-necesita-la-construcciuxf3n}
 
 Para definir $u\times v$ necesitamos simultáneamente:
 
@@ -3065,7 +3065,7 @@ para todo $w\in V$?
 
 []{#proposición-representación-vectorial-del-volumen-orientado}
 
-### 4.9.3. Proposición: representación vectorial del volumen orientado {#fispm-c04-proposiciuxf3n-representaciuxf3n-vectorial-del-volumen-orientado}
+### Proposición: representación vectorial del volumen orientado {#fispm-c04-proposiciuxf3n-representaciuxf3n-vectorial-del-volumen-orientado}
 
 **Proposición 4.32 --- Existencia y unicidad del vector representante** Para cada par $u,v\in V$ existe un único vector $x\in V$ tal que
 
@@ -3117,7 +3117,7 @@ La construcción utilizó una base ortonormal positiva para demostrar existencia
 
 []{#definir-producto-vectorial}
 
-### 4.9.4. Definir: producto vectorial {#fispm-c04-definir-producto-vectorial}
+### Definir: producto vectorial {#fispm-c04-definir-producto-vectorial}
 
 **Definición 4.29 --- Producto vectorial en un espacio euclídeo orientado de dimensión tres** Para $u,v\in V$, definimos su **producto vectorial**
 
@@ -3135,7 +3135,7 @@ Reutilizar $V$ para codificar su dirección no autoriza a sumar $u\times v$ con 
 
 []{#primeras-consecuencias-sin-coordenadas}
 
-### 4.9.5. Primeras consecuencias sin coordenadas {#fispm-c04-primeras-consecuencias-sin-coordenadas}
+### Primeras consecuencias sin coordenadas {#fispm-c04-primeras-consecuencias-sin-coordenadas}
 
 Tomemos
 
@@ -3161,7 +3161,7 @@ $$\boxed{ u\times u=0. }$$
 
 []{#qué-ocurre-si-invertimos-la-orientación}
 
-### 4.9.6. Qué ocurre si invertimos la orientación {#fispm-c04-quuxe9-ocurre-si-invertimos-la-orientaciuxf3n}
+### Qué ocurre si invertimos la orientación {#fispm-c04-quuxe9-ocurre-si-invertimos-la-orientaciuxf3n}
 
 Supongamos que conservamos el mismo producto escalar pero declaramos positiva la orientación opuesta. Entonces el volumen orientado cambia de signo:
 
@@ -3183,7 +3183,7 @@ La orientación no es, por tanto, una decoración terminológica: determina el *
 
 []{#principio-metodológico-y-consecuencias-pendientes}
 
-### 4.9.7. Principio metodológico y consecuencias pendientes {#fispm-c04-principio-metodoluxf3gico-y-consecuencias-pendientes}
+### Principio metodológico y consecuencias pendientes {#fispm-c04-principio-metodoluxf3gico-y-consecuencias-pendientes}
 
 **Principio metodológico 4.14 --- Declarar métrica y orientación antes de usar el producto vectorial** El producto vectorial tridimensional requiere simultáneamente:
 
@@ -3207,7 +3207,7 @@ contiene ya la geometría esencial de la operación. Todavía falta traducir est
 
 []{#proposición-fórmula-en-una-base-ortonormal-positiva}
 
-### 4.9.8. Proposición: fórmula en una base ortonormal positiva {#fispm-c04-proposiciuxf3n-fuxf3rmula-en-una-base-ortonormal-positiva}
+### Proposición: fórmula en una base ortonormal positiva {#fispm-c04-proposiciuxf3n-fuxf3rmula-en-una-base-ortonormal-positiva}
 
 **Proposición 4.33 --- Fórmula coordenada del producto vectorial** Sea
 
@@ -3249,7 +3249,7 @@ Reuniendo las tres componentes obtenemos la fórmula. $\square$ La expresión us
 
 []{#tabla-de-la-base-ortonormal-positiva}
 
-### 4.9.9. Tabla de la base ortonormal positiva {#fispm-c04-tabla-de-la-base-ortonormal-positiva}
+### Tabla de la base ortonormal positiva {#fispm-c04-tabla-de-la-base-ortonormal-positiva}
 
 Aplicando proposición 4.33 a los vectores de la propia base,
 
@@ -3271,7 +3271,7 @@ Esta tabla incorpora simultáneamente ortonormalidad y orientación. En una base
 
 []{#proposición-bilinealidad-y-antisimetría}
 
-### 4.9.10. Proposición: bilinealidad y antisimetría {#fispm-c04-proposiciuxf3n-bilinealidad-y-antisimetruxeda}
+### Proposición: bilinealidad y antisimetría {#fispm-c04-proposiciuxf3n-bilinealidad-y-antisimetruxeda}
 
 **Proposición 4.34 --- Bilinealidad y antisimetría del producto vectorial** Para $u,v,w\in V$ y $\alpha,\beta\in\mathbb R$:
 
@@ -3303,7 +3303,7 @@ que ya habíamos obtenido directamente en §9.5.
 
 []{#consecuencias-algebraicas-inmediatas}
 
-### 4.9.11. Consecuencias algebraicas inmediatas {#fispm-c04-consecuencias-algebraicas-inmediatas}
+### Consecuencias algebraicas inmediatas {#fispm-c04-consecuencias-algebraicas-inmediatas}
 
 De proposición 4.34 se sigue
 
@@ -3325,7 +3325,7 @@ Estas identidades son algebraicas; no requieren elegir coordenadas una vez que d
 
 []{#proposición-cuándo-se-anula-el-producto-vectorial}
 
-### 4.9.12. Proposición: cuándo se anula el producto vectorial {#fispm-c04-proposiciuxf3n-cuuxe1ndo-se-anula-el-producto-vectorial}
+### Proposición: cuándo se anula el producto vectorial {#fispm-c04-proposiciuxf3n-cuuxe1ndo-se-anula-el-producto-vectorial}
 
 **Proposición 4.35 --- Criterio de dependencia mediante el producto vectorial** Para $u,v\in V$,
 
@@ -3363,7 +3363,7 @@ Así $u$ y $v$ son linealmente dependientes. Si la componente no nula de $u$ es 
 
 []{#advertencia-la-fórmula-coordenada-tiene-hipótesis}
 
-### 4.9.13. Advertencia: la fórmula coordenada tiene hipótesis {#fispm-c04-advertencia-la-fuxf3rmula-coordenada-tiene-hipuxf3tesis}
+### Advertencia: la fórmula coordenada tiene hipótesis {#fispm-c04-advertencia-la-fuxf3rmula-coordenada-tiene-hipuxf3tesis}
 
 **Principio metodológico 4.15 --- No transportar la fórmula de componentes fuera de una base ortonormal positiva** La expresión
 
@@ -3375,7 +3375,7 @@ Este punto es paralelo a la advertencia de §5 sobre la fórmula pitagórica por
 
 []{#balance-forma-intrínseca-y-forma-coordenada}
 
-### 4.9.14. Balance: forma intrínseca y forma coordenada {#fispm-c04-balance-forma-intruxednseca-y-forma-coordenada}
+### Balance: forma intrínseca y forma coordenada {#fispm-c04-balance-forma-intruxednseca-y-forma-coordenada}
 
 Ya tenemos dos descripciones complementarias: **Descripción intrínseca**
 
@@ -3431,7 +3431,7 @@ La identidad es intrínseca aunque se haya demostrado en una base ortonormal pos
 
 []{#proposición-magnitud-y-ángulo}
 
-### 4.9.15. Proposición: magnitud y ángulo {#fispm-c04-proposiciuxf3n-magnitud-y-uxe1ngulo}
+### Proposición: magnitud y ángulo {#fispm-c04-proposiciuxf3n-magnitud-y-uxe1ngulo}
 
 **Proposición 4.37 --- Magnitud del producto vectorial** Sean $u,v\ne0$ y sea
 
@@ -3463,7 +3463,7 @@ Los casos extremos son coherentes con la proposición 4.35:
 
 []{#interpretación-como-área}
 
-### 4.9.16. Interpretación como área {#fispm-c04-interpretaciuxf3n-como-uxe1rea}
+### Interpretación como área {#fispm-c04-interpretaciuxf3n-como-uxe1rea}
 
 El paralelogramo generado por $u$ y $v$ tiene base de longitud $\|u\|$ y altura perpendicular
 
@@ -3485,7 +3485,7 @@ El signo orientacional no aparece en la norma. Está contenido en el sentido del
 
 []{#proposición-la-normal-elegida-es-positivamente-orientada}
 
-### 4.9.17. Proposición: la normal elegida es positivamente orientada {#fispm-c04-proposiciuxf3n-la-normal-elegida-es-positivamente-orientada}
+### Proposición: la normal elegida es positivamente orientada {#fispm-c04-proposiciuxf3n-la-normal-elegida-es-positivamente-orientada}
 
 **Proposición 4.38 --- Orientación de la terna $(u,v,u\times v)$** Si $u$ y $v$ son linealmente independientes, entonces
 
@@ -3615,7 +3615,7 @@ La magnitud ---y por tanto el área--- depende de la métrica, pero no de cuál 
 
 []{#cierre-de-9}
 
-### 4.9.18. Cierre de §9 {#fispm-c04-cierre-de-9}
+### Cierre de §9 {#fispm-c04-cierre-de-9}
 
 El producto vectorial ha quedado construido a partir de dos estructuras previas:
 
@@ -3645,7 +3645,7 @@ Finalmente,
 
 $$\boxed{ \operatorname{Vol}^{\mathrm{or}} (u,v,u\times v) = \|u\times v\|^2>0 }$$
 
-cuando $u$ y $v$ son independientes. La orientación determina el sentido de la normal; la métrica determina su magnitud. La siguiente sección cambiará de foco: no introducirá una nueva operación geométrica, sino que estudiará cómo una misma entidad vectorial adquiere distintas columnas cuando cambiamos de base. El siguiente paso será el §[4.10](#fispm-c04-cambios-de-base-y-coordenadas-vectoriales).
+cuando $u$ y $v$ son independientes. La orientación determina el sentido de la normal; la métrica determina su magnitud. La siguiente sección cambiará de foco: no introducirá una nueva operación geométrica, sino que estudiará cómo una misma entidad vectorial adquiere distintas columnas cuando cambiamos de base. El siguiente paso será el §[10](#fispm-c04-cambios-de-base-y-coordenadas-vectoriales).
 
 []{#cambios-de-base-y-coordenadas-vectoriales}
 
@@ -3653,11 +3653,11 @@ cuando $u$ y $v$ son independientes. La orientación determina el sentido de la 
 
 []{#fpm-i-04-s10}
 
-## 4.10. Cambios de base y coordenadas vectoriales {#fispm-c04-cambios-de-base-y-coordenadas-vectoriales}
+## 10. Cambios de base y coordenadas vectoriales {#fispm-c04-cambios-de-base-y-coordenadas-vectoriales}
 
 []{#activación-el-vector-no-cambia-porque-cambie-su-columna}
 
-### 4.10.1. Activación: el vector no cambia porque cambie su columna {#fispm-c04-activaciuxf3n-el-vector-no-cambia-porque-cambie-su-columna}
+### Activación: el vector no cambia porque cambie su columna {#fispm-c04-activaciuxf3n-el-vector-no-cambia-porque-cambie-su-columna}
 
 Sea
 
@@ -3673,7 +3673,7 @@ El objetivo inicial de esta sección es determinar rigurosamente cómo se relaci
 
 []{#definir-matriz-de-la-nueva-base-expresada-en-la-antigua}
 
-### 4.10.2. Definir: matriz de la nueva base expresada en la antigua {#fispm-c04-definir-matriz-de-la-nueva-base-expresada-en-la-antigua}
+### Definir: matriz de la nueva base expresada en la antigua {#fispm-c04-definir-matriz-de-la-nueva-base-expresada-en-la-antigua}
 
 **Definición 4.30 --- Matriz de cambio de base** Sean
 
@@ -3693,7 +3693,7 @@ Sus columnas son, por tanto, los vectores de la **base nueva** $B'$ expresados e
 
 <figcaption>
 
-**Figura 4.6.** La base prima se gira un ángulo $\theta$ positivo. Las coordenadas de un mismo vector se transforman por la rotación inversa; el vector geométrico permanece fijo. Véase §[4.10](#fispm-c04-cambios-de-base-y-coordenadas-vectoriales).
+**Figura 4.6.** La base prima se gira un ángulo $\theta$ positivo. Las coordenadas de un mismo vector se transforman por la rotación inversa; el vector geométrico permanece fijo. Véase §[10](#fispm-c04-cambios-de-base-y-coordenadas-vectoriales).
 
 </figcaption>
 
@@ -3707,7 +3707,7 @@ $$\boxed{ \text{columnas en }B' \ \xrightarrow{\ S\ }\ \text{columnas en }B. }$$
 
 []{#proposición-ley-pasiva-de-transformación-de-coordenadas}
 
-### 4.10.3. Proposición: ley pasiva de transformación de coordenadas {#fispm-c04-proposiciuxf3n-ley-pasiva-de-transformaciuxf3n-de-coordenadas}
+### Proposición: ley pasiva de transformación de coordenadas {#fispm-c04-proposiciuxf3n-ley-pasiva-de-transformaciuxf3n-de-coordenadas}
 
 **Proposición 4.39 --- Cambio de componentes entre dos bases** Para todo $v\in V$,
 
@@ -3741,7 +3741,7 @@ La aparición de la inversa no es una convención arbitraria: procede del hecho 
 
 []{#cambio-pasivo-frente-a-transformación-activa}
 
-### 4.10.4. Cambio pasivo frente a transformación activa {#fispm-c04-cambio-pasivo-frente-a-transformaciuxf3n-activa}
+### Cambio pasivo frente a transformación activa {#fispm-c04-cambio-pasivo-frente-a-transformaciuxf3n-activa}
 
 En un **cambio pasivo de base**:
 
@@ -3773,7 +3773,7 @@ $$\boxed{ \begin{array}{c} \text{activo: }B\text{ fija},\ v\to T(v), \\ {}[T(v)]
 
 []{#la-misma-matriz-puede-aparecer-en-dos-problemas-diferentes}
 
-### 4.10.5. La misma matriz puede aparecer en dos problemas diferentes {#fispm-c04-la-misma-matriz-puede-aparecer-en-dos-problemas-diferentes}
+### La misma matriz puede aparecer en dos problemas diferentes {#fispm-c04-la-misma-matriz-puede-aparecer-en-dos-problemas-diferentes}
 
 Supongamos que definimos una transformación lineal $T_S$ mediante $T_S(e_j)=e'_j.$ Por definición 4.30, la matriz de esta transformación activa en la base $B$ es precisamente
 
@@ -3789,7 +3789,7 @@ La diferencia no es algebraica sino conceptual: en un caso cambia el vector; en 
 
 []{#ejemplo-diagnóstico}
 
-### 4.10.6. Ejemplo diagnóstico {#fispm-c04-ejemplo-diagnuxf3stico}
+### Ejemplo diagnóstico {#fispm-c04-ejemplo-diagnuxf3stico}
 
 Sea
 
@@ -3817,7 +3817,7 @@ $$[v]_B = \begin{pmatrix} 2\\ 3\\ 1 \end{pmatrix}.$$
 
 []{#lectura-pasiva}
 
-#### 4.10.6.1. Lectura pasiva {#fispm-c04-lectura-pasiva}
+#### Lectura pasiva {#fispm-c04-lectura-pasiva}
 
 El vector no cambia. Sólo buscamos su columna en $B'$:
 
@@ -3827,7 +3827,7 @@ En efecto, $2(e_1+e_2)+e_2+e_3 = 2e_1+3e_2+e_3 = v.$
 
 []{#lectura-activa}
 
-#### 4.10.6.2. Lectura activa {#fispm-c04-lectura-activa}
+#### Lectura activa {#fispm-c04-lectura-activa}
 
 Definamos ahora $T_S$ por
 
@@ -3845,7 +3845,7 @@ $$\boxed{ \begin{aligned} \text{pasivo:}&\quad v\text{ igual},\quad (2,3,1)\to(2
 
 []{#principio-metodológico-y-convención-de-cambio}
 
-### 4.10.7. Principio metodológico y convención de cambio {#fispm-c04-principio-metodoluxf3gico-y-convenciuxf3n-de-cambio}
+### Principio metodológico y convención de cambio {#fispm-c04-principio-metodoluxf3gico-y-convenciuxf3n-de-cambio}
 
 **Principio metodológico 4.16 --- Preguntar qué está cambiando antes de multiplicar por una matriz** Antes de escribir una fórmula matricial, distinguir explícitamente:
 
@@ -3869,7 +3869,7 @@ Todavía falta estudiar la composición de varios cambios de base, la matriz inv
 
 []{#la-matriz-identidad-como-cambio-trivial}
 
-### 4.10.8. La matriz identidad como cambio trivial {#fispm-c04-la-matriz-identidad-como-cambio-trivial}
+### La matriz identidad como cambio trivial {#fispm-c04-la-matriz-identidad-como-cambio-trivial}
 
 Si usamos la misma base como origen y destino, $B=(e_1,e_2,e_3),$
 
@@ -3889,7 +3889,7 @@ Un cambio de descripción que no cambia la base debe dejar las columnas intactas
 
 []{#proposición-el-cambio-inverso}
 
-### 4.10.9. Proposición: el cambio inverso {#fispm-c04-proposiciuxf3n-el-cambio-inverso}
+### Proposición: el cambio inverso {#fispm-c04-proposiciuxf3n-el-cambio-inverso}
 
 **Proposición 4.40 --- La matriz inversa cambia de vuelta a la base original** Para dos bases ordenadas $B$ y $B'$,
 
@@ -3919,7 +3919,7 @@ $$\boxed{ B' \longrightarrow B \quad\text{se deshace con}\quad B\longrightarrow 
 
 []{#proposición-composición-de-cambios-de-base}
 
-### 4.10.10. Proposición: composición de cambios de base {#fispm-c04-proposiciuxf3n-composiciuxf3n-de-cambios-de-base}
+### Proposición: composición de cambios de base {#fispm-c04-proposiciuxf3n-composiciuxf3n-de-cambios-de-base}
 
 **Proposición 4.41 --- Regla de composición** Sean $B$, $B'$ y $C$ tres bases ordenadas. Entonces
 
@@ -3949,7 +3949,7 @@ $$S_{B\leftarrow B'}.$$
 
 []{#consistencia-de-caminos}
 
-### 4.10.11. Consistencia de caminos {#fispm-c04-consistencia-de-caminos}
+### Consistencia de caminos {#fispm-c04-consistencia-de-caminos}
 
 Supongamos que queremos convertir una columna desde $C$ hasta $B$. Podemos hacerlo directamente: $[v]_B = S_{B\leftarrow C}[v]_C.$
 
@@ -3965,7 +3965,7 @@ Este criterio es una herramienta práctica de control: si dos rutas producen mat
 
 []{#ejemplo-con-tres-bases}
 
-### 4.10.12. Ejemplo con tres bases {#fispm-c04-ejemplo-con-tres-bases}
+### Ejemplo con tres bases {#fispm-c04-ejemplo-con-tres-bases}
 
 Sea
 
@@ -4007,7 +4007,7 @@ que forman la matriz obtenida por composición.
 
 []{#proposición-compatibilidad-con-determinantes-y-orientación}
 
-### 4.10.13. Proposición: compatibilidad con determinantes y orientación {#fispm-c04-proposiciuxf3n-compatibilidad-con-determinantes-y-orientaciuxf3n}
+### Proposición: compatibilidad con determinantes y orientación {#fispm-c04-proposiciuxf3n-compatibilidad-con-determinantes-y-orientaciuxf3n}
 
 **Proposición 4.42 --- Determinante de un cambio compuesto** Para tres bases $B$, $B'$ y $C$,
 
@@ -4031,7 +4031,7 @@ Esto conecta la convención matricial de §10 con las clases de orientación con
 
 []{#principio-metodológico-de-consistencia}
 
-### 4.10.14. Principio metodológico de consistencia {#fispm-c04-principio-metodoluxf3gico-de-consistencia}
+### Principio metodológico de consistencia {#fispm-c04-principio-metodoluxf3gico-de-consistencia}
 
 **Principio metodológico 4.17 --- Leer las flechas antes de multiplicar matrices de cambio** Para una matriz
 
@@ -4049,7 +4049,7 @@ La regla funciona como un control de tipos: $C \to B \to A.$ Si las etiquetas no
 
 []{#balance-inversión-composición-y-consistencia}
 
-### 4.10.15. Balance: inversión, composición y consistencia {#fispm-c04-balance-inversiuxf3n-composiciuxf3n-y-consistencia}
+### Balance: inversión, composición y consistencia {#fispm-c04-balance-inversiuxf3n-composiciuxf3n-y-consistencia}
 
 Ya disponemos de una red coherente de cambios pasivos:
 
@@ -4065,7 +4065,7 @@ Estas identidades aseguran que la descripción de un vector puede convertirse en
 
 []{#definir-matriz-de-una-transformación-lineal-en-una-base}
 
-### 4.10.16. Definir: matriz de una transformación lineal en una base {#fispm-c04-definir-matriz-de-una-transformaciuxf3n-lineal-en-una-base}
+### Definir: matriz de una transformación lineal en una base {#fispm-c04-definir-matriz-de-una-transformaciuxf3n-lineal-en-una-base}
 
 **Definición 4.31 --- Matriz de una transformación lineal** Sea
 
@@ -4091,7 +4091,7 @@ La matriz es una representación de $T$ una vez elegida una base.
 
 []{#proposición-ley-de-conjugación}
 
-### 4.10.17. Proposición: ley de conjugación {#fispm-c04-proposiciuxf3n-ley-de-conjugaciuxf3n}
+### Proposición: ley de conjugación {#fispm-c04-proposiciuxf3n-ley-de-conjugaciuxf3n}
 
 **Proposición 4.43 --- Cambio de base de la matriz de un operador** Sean $B$ y $B'$ dos bases y sea
 
@@ -4117,7 +4117,7 @@ $$B' \ \xrightarrow{\ S\ }\ B \ \xrightarrow{\ A_B(T)\ }\ B \ \xrightarrow{\ S^{
 
 []{#misma-transformación-matrices-distintas}
 
-### 4.10.18. Misma transformación, matrices distintas {#fispm-c04-misma-transformaciuxf3n-matrices-distintas}
+### Misma transformación, matrices distintas {#fispm-c04-misma-transformaciuxf3n-matrices-distintas}
 
 La igualdad $A_{B'}(T) = S^{-1}A_B(T)S$
 
@@ -4135,7 +4135,7 @@ Una diferencia entre matrices no implica una diferencia entre operadores.
 
 []{#proposición-el-determinante-del-operador-no-depende-de-la-base}
 
-### 4.10.19. Proposición: el determinante del operador no depende de la base {#fispm-c04-proposiciuxf3n-el-determinante-del-operador-no-depende-de-la-base}
+### Proposición: el determinante del operador no depende de la base {#fispm-c04-proposiciuxf3n-el-determinante-del-operador-no-depende-de-la-base}
 
 **Proposición 4.44 --- Invariancia del determinante bajo cambio de base** Para cualquier transformación lineal $T$ y cualesquiera bases $B,B'$,
 
@@ -4163,7 +4163,7 @@ Así, aunque la matriz cambie con la base, su determinante es una propiedad intr
 
 []{#ejemplo-una-matriz-diagonal-deja-de-ser-diagonal}
 
-### 4.10.20. Ejemplo: una matriz diagonal deja de ser diagonal {#fispm-c04-ejemplo-una-matriz-diagonal-deja-de-ser-diagonal}
+### Ejemplo: una matriz diagonal deja de ser diagonal {#fispm-c04-ejemplo-una-matriz-diagonal-deja-de-ser-diagonal}
 
 Sea
 
@@ -4321,7 +4321,7 @@ El operador es el mismo; sólo cambia su representación matricial.
 
 []{#cierre-de-10}
 
-### 4.10.21. Cierre de §10 {#fispm-c04-cierre-de-10}
+### Cierre de §10 {#fispm-c04-cierre-de-10}
 
 La sección ha distinguido tres objetos que suelen confundirse:
 
@@ -4351,7 +4351,7 @@ La conclusión metodológica es simple:
 
 $$\boxed{ \text{antes de multiplicar matrices, declarar qué objeto cambia y en qué base se expresa}. }$$
 
-La siguiente sección estudiará transformaciones lineales que preservan la geometría euclídea: rotaciones, reflexiones e isometrías. El siguiente paso será el §[4.11](#fispm-c04-rotaciones-reflexiones-e-isometruxedas).
+La siguiente sección estudiará transformaciones lineales que preservan la geometría euclídea: rotaciones, reflexiones e isometrías. El siguiente paso será el §[11](#fispm-c04-rotaciones-reflexiones-e-isometruxedas).
 
 []{#rotaciones-reflexiones-e-isometrías}
 
@@ -4359,11 +4359,11 @@ La siguiente sección estudiará transformaciones lineales que preservan la geom
 
 []{#fpm-i-04-s11}
 
-## 4.11. Rotaciones, reflexiones e isometrías {#fispm-c04-rotaciones-reflexiones-e-isometruxedas}
+## 11. Rotaciones, reflexiones e isometrías {#fispm-c04-rotaciones-reflexiones-e-isometruxedas}
 
 []{#activación-transformar-sin-deformar}
 
-### 4.11.1. Activación: transformar sin deformar {#fispm-c04-activaciuxf3n-transformar-sin-deformar}
+### Activación: transformar sin deformar {#fispm-c04-activaciuxf3n-transformar-sin-deformar}
 
 Una transformación lineal general
 
@@ -4379,7 +4379,7 @@ puede cambiar longitudes, ángulos y volúmenes. Pero hay transformaciones espec
 
 <figcaption>
 
-**Figura 4.7.** La reflexión $S(x,y)=(-x,y)$ conserva longitudes y ángulos y tiene determinante $-1$. Por ello no es una rotación propia del plano. Véase §[4.11](#fispm-c04-rotaciones-reflexiones-e-isometruxedas).
+**Figura 4.7.** La reflexión $S(x,y)=(-x,y)$ conserva longitudes y ángulos y tiene determinante $-1$. Por ello no es una rotación propia del plano. Véase §[11](#fispm-c04-rotaciones-reflexiones-e-isometruxedas).
 
 </figcaption>
 
@@ -4409,7 +4409,7 @@ Por eso una isometría lineal conserva las longitudes de todos los vectores de d
 
 []{#polarización-recuperar-el-producto-escalar-desde-la-norma}
 
-### 4.11.2. Polarización: recuperar el producto escalar desde la norma {#fispm-c04-polarizaciuxf3n-recuperar-el-producto-escalar-desde-la-norma}
+### Polarización: recuperar el producto escalar desde la norma {#fispm-c04-polarizaciuxf3n-recuperar-el-producto-escalar-desde-la-norma}
 
 En un espacio euclídeo real, $\|u+v\|^2 = \langle u+v,u+v\rangle.$ Por bilinealidad y simetría,
 
@@ -4423,7 +4423,7 @@ Esta identidad muestra que, en el caso real, la norma determina completamente el
 
 []{#proposición-preservar-norma-equivale-a-preservar-producto-escalar}
 
-### 4.11.3. Proposición: preservar norma equivale a preservar producto escalar {#fispm-c04-proposiciuxf3n-preservar-norma-equivale-a-preservar-producto-escalar}
+### Proposición: preservar norma equivale a preservar producto escalar {#fispm-c04-proposiciuxf3n-preservar-norma-equivale-a-preservar-producto-escalar}
 
 **Proposición 4.45 --- Caracterización intrínseca de las isometrías lineales** Sea
 
@@ -4463,7 +4463,7 @@ Por tanto, una isometría lineal conserva simultáneamente longitudes y ángulos
 
 []{#consecuencias-geométricas-inmediatas}
 
-### 4.11.4. Consecuencias geométricas inmediatas {#fispm-c04-consecuencias-geomuxe9tricas-inmediatas}
+### Consecuencias geométricas inmediatas {#fispm-c04-consecuencias-geomuxe9tricas-inmediatas}
 
 Si $T$ es una isometría lineal, proposición 4.45 da $\langle T(u),T(v)\rangle = \langle u,v\rangle.$
 
@@ -4471,7 +4471,7 @@ Por tanto:
 
 []{#ortogonalidad}
 
-#### 4.11.4.1. Ortogonalidad {#fispm-c04-ortogonalidad}
+#### Ortogonalidad {#fispm-c04-ortogonalidad}
 
 Si
 
@@ -4487,7 +4487,7 @@ $$\boxed{ u\perp v \Longrightarrow T(u)\perp T(v). }$$
 
 []{#ángulos}
 
-#### 4.11.4.2. Ángulos {#fispm-c04-uxe1ngulos}
+#### Ángulos {#fispm-c04-uxe1ngulos}
 
 Para $u,v\ne0$,
 
@@ -4499,7 +4499,7 @@ $$\boxed{ \theta(T(u),T(v)) = \theta(u,v). }$$
 
 []{#distancias-entre-vectores}
 
-#### 4.11.4.3. Distancias entre vectores {#fispm-c04-distancias-entre-vectores}
+#### Distancias entre vectores {#fispm-c04-distancias-entre-vectores}
 
 Por linealidad, $T(u)-T(v) = T(u-v).$
 
@@ -4507,7 +4507,7 @@ Entonces $\|T(u)-T(v)\| = \|T(u-v)\| = \|u-v\|.$ Así una isometría lineal cons
 
 []{#matriz-de-una-isometría-en-una-base-ortonormal}
 
-### 4.11.5. Matriz de una isometría en una base ortonormal {#fispm-c04-matriz-de-una-isometruxeda-en-una-base-ortonormal}
+### Matriz de una isometría en una base ortonormal {#fispm-c04-matriz-de-una-isometruxeda-en-una-base-ortonormal}
 
 Sea
 
@@ -4529,7 +4529,7 @@ Por tanto, las columnas de $Q$ forman una base ortonormal. En coordenadas respec
 
 []{#proposición-caracterización-matricial}
 
-### 4.11.6. Proposición: caracterización matricial {#fispm-c04-proposiciuxf3n-caracterizaciuxf3n-matricial}
+### Proposición: caracterización matricial {#fispm-c04-proposiciuxf3n-caracterizaciuxf3n-matricial}
 
 **Proposición 4.46 --- Matriz ortogonal de una isometría** Sea $E$ una base ortonormal y
 
@@ -4573,7 +4573,7 @@ se denomina **matriz ortogonal**.
 
 []{#consecuencias-algebraicas-de-la-ortogonalidad}
 
-### 4.11.7. Consecuencias algebraicas de la ortogonalidad {#fispm-c04-consecuencias-algebraicas-de-la-ortogonalidad}
+### Consecuencias algebraicas de la ortogonalidad {#fispm-c04-consecuencias-algebraicas-de-la-ortogonalidad}
 
 De
 
@@ -4595,7 +4595,7 @@ Toda isometría lineal es, por tanto, biyectiva. El signo de $\det Q$ permitirá
 
 []{#no-confundir-matriz-ortogonal-con-base-ortonormal}
 
-### 4.11.8. No confundir matriz ortogonal con base ortonormal {#fispm-c04-no-confundir-matriz-ortogonal-con-base-ortonormal}
+### No confundir matriz ortogonal con base ortonormal {#fispm-c04-no-confundir-matriz-ortogonal-con-base-ortonormal}
 
 Una **base ortonormal** es una terna ordenada de vectores
 
@@ -4615,7 +4615,7 @@ Pero los dos objetos no son del mismo tipo.
 
 []{#cambio-pasivo-frente-a-isometría-activa}
 
-### 4.11.9. Cambio pasivo frente a isometría activa {#fispm-c04-cambio-pasivo-frente-a-isometruxeda-activa}
+### Cambio pasivo frente a isometría activa {#fispm-c04-cambio-pasivo-frente-a-isometruxeda-activa}
 
 En §10 vimos que una matriz ortogonal también puede aparecer como matriz de cambio entre dos bases ortonormales. Eso no convierte automáticamente el cambio de base en una transformación activa. Si
 
@@ -4645,7 +4645,7 @@ Declarar siempre qué objeto permanece fijo y qué objeto se transforma.
 
 []{#balance-de-la-ortogonalidad-matricial-a-la-orientación}
 
-### 4.11.10. Balance: de la ortogonalidad matricial a la orientación {#fispm-c04-balance-de-la-ortogonalidad-matricial-a-la-orientaciuxf3n}
+### Balance: de la ortogonalidad matricial a la orientación {#fispm-c04-balance-de-la-ortogonalidad-matricial-a-la-orientaciuxf3n}
 
 Ya tenemos la caracterización esencial:
 
@@ -4667,7 +4667,7 @@ Todavía falta interpretar geométricamente las dos posibilidades del determinan
 
 []{#definir-isometrías-propias-e-impropias}
 
-### 4.11.11. Definir: isometrías propias e impropias {#fispm-c04-definir-isometruxedas-propias-e-impropias}
+### Definir: isometrías propias e impropias {#fispm-c04-definir-isometruxedas-propias-e-impropias}
 
 **Definición 4.33 --- Isometría propia e impropia** Sea $T$ una isometría lineal y sea
 
@@ -4687,7 +4687,7 @@ Proposición 4.44 garantiza que el determinante de la matriz de un operador no d
 
 []{#proposición-el-signo-del-determinante-controla-la-orientación}
 
-### 4.11.12. Proposición: el signo del determinante controla la orientación {#fispm-c04-proposiciuxf3n-el-signo-del-determinante-controla-la-orientaciuxf3n}
+### Proposición: el signo del determinante controla la orientación {#fispm-c04-proposiciuxf3n-el-signo-del-determinante-controla-la-orientaciuxf3n}
 
 **Proposición 4.47 --- Orientación bajo una isometría** Sea
 
@@ -4715,7 +4715,7 @@ es exactamente la orientación relativa de la base imagen respecto de $E$. $\squ
 
 []{#definir-reflexión-ortogonal-respecto-de-un-plano}
 
-### 4.11.13. Definir: reflexión ortogonal respecto de un plano {#fispm-c04-definir-reflexiuxf3n-ortogonal-respecto-de-un-plano}
+### Definir: reflexión ortogonal respecto de un plano {#fispm-c04-definir-reflexiuxf3n-ortogonal-respecto-de-un-plano}
 
 Sea $n$ un vector unitario: $\|n\|=1.$ El plano vectorial perpendicular a $n$ es $n^\perp = \{v\in V:\langle v,n\rangle=0\}.$
 
@@ -4737,7 +4737,7 @@ Entonces $H_n(v) = v_\perp-v_\parallel.$ La reflexión conserva la componente co
 
 []{#proposición-la-reflexión-es-una-isometría-impropia}
 
-### 4.11.14. Proposición: la reflexión es una isometría impropia {#fispm-c04-proposiciuxf3n-la-reflexiuxf3n-es-una-isometruxeda-impropia}
+### Proposición: la reflexión es una isometría impropia {#fispm-c04-proposiciuxf3n-la-reflexiuxf3n-es-una-isometruxeda-impropia}
 
 **Proposición 4.48 --- Propiedades de la reflexión ortogonal** Para todo vector unitario $n$, la aplicación $H_n$ satisface:
 
@@ -4785,7 +4785,7 @@ La reflexión conserva todas las longitudes y ángulos, pero invierte la orienta
 
 []{#construir-una-base-ortonormal-adaptada-a-un-eje}
 
-### 4.11.15. Construir una base ortonormal adaptada a un eje {#fispm-c04-construir-una-base-ortonormal-adaptada-a-un-eje}
+### Construir una base ortonormal adaptada a un eje {#fispm-c04-construir-una-base-ortonormal-adaptada-a-un-eje}
 
 Sea ahora $n$ unitario. Elegimos un vector
 
@@ -4819,7 +4819,7 @@ también es positiva. Así obtenemos una base ortonormal positiva adaptada al ej
 
 []{#definir-rotación-axial}
 
-### 4.11.16. Definir: rotación axial {#fispm-c04-definir-rotaciuxf3n-axial}
+### Definir: rotación axial {#fispm-c04-definir-rotaciuxf3n-axial}
 
 **Definición 4.35 --- Rotación alrededor de un eje** Sea $n$ unitario y sea $\varphi\in\mathbb R$. Definimos
 
@@ -4837,7 +4837,7 @@ Por tanto, la componente axial queda fija y la componente perpendicular rota den
 
 []{#proposición-matriz-y-propiedades-de-una-rotación-axial}
 
-### 4.11.17. Proposición: matriz y propiedades de una rotación axial {#fispm-c04-proposiciuxf3n-matriz-y-propiedades-de-una-rotaciuxf3n-axial}
+### Proposición: matriz y propiedades de una rotación axial {#fispm-c04-proposiciuxf3n-matriz-y-propiedades-de-una-rotaciuxf3n-axial}
 
 **Proposición 4.49 --- Rotación axial como isometría propia** Sea
 
@@ -4893,7 +4893,7 @@ Por proposición 4.44, este determinante es independiente de la base elegida. $\
 
 []{#rotación-y-reflexión-no-se-distinguen-por-conservar-distancias}
 
-### 4.11.18. Rotación y reflexión no se distinguen por conservar distancias {#fispm-c04-rotaciuxf3n-y-reflexiuxf3n-no-se-distinguen-por-conservar-distancias}
+### Rotación y reflexión no se distinguen por conservar distancias {#fispm-c04-rotaciuxf3n-y-reflexiuxf3n-no-se-distinguen-por-conservar-distancias}
 
 Tanto una rotación axial como una reflexión ortogonal satisfacen
 
@@ -4923,7 +4923,7 @@ Así, "preservar geometría métrica" no implica "preservar orientación".
 
 []{#principio-metodológico-qué-informa-el-determinante}
 
-### 4.11.19. Principio metodológico: qué informa el determinante {#fispm-c04-principio-metodoluxf3gico-quuxe9-informa-el-determinante}
+### Principio metodológico: qué informa el determinante {#fispm-c04-principio-metodoluxf3gico-quuxe9-informa-el-determinante}
 
 **Principio metodológico 4.20 --- Usar el determinante para orientación, no para identificar toda la isometría** Para una matriz ortogonal $Q$:
 
@@ -4937,7 +4937,7 @@ indica que la invierte. El signo del determinante no determina por sí solo el �
 
 []{#balance-rotaciones-y-reflexiones}
 
-### 4.11.20. Balance: rotaciones y reflexiones {#fispm-c04-balance-rotaciones-y-reflexiones}
+### Balance: rotaciones y reflexiones {#fispm-c04-balance-rotaciones-y-reflexiones}
 
 Ya tenemos dos prototipos fundamentales: **Reflexión ortogonal**
 
@@ -4951,7 +4951,7 @@ Ambas son isometrías activas, no meros cambios pasivos de base. Todavía falta 
 
 []{#proposición-composición-e-inversa-de-isometrías}
 
-### 4.11.21. Proposición: composición e inversa de isometrías {#fispm-c04-proposiciuxf3n-composiciuxf3n-e-inversa-de-isometruxedas}
+### Proposición: composición e inversa de isometrías {#fispm-c04-proposiciuxf3n-composiciuxf3n-e-inversa-de-isometruxedas}
 
 **Proposición 4.50 --- Composición, inversa y signo** Sean $T_1$ y $T_2$ isometrías lineales. Entonces:
 
@@ -5003,7 +5003,7 @@ Por proposición 4.44, este signo no depende de la base elegida. $\square$ La pr
 
 []{#comparación-estructural-rotación-frente-a-reflexión}
 
-### 4.11.22. Comparación estructural: rotación frente a reflexión {#fispm-c04-comparaciuxf3n-estructural-rotaciuxf3n-frente-a-reflexiuxf3n}
+### Comparación estructural: rotación frente a reflexión {#fispm-c04-comparaciuxf3n-estructural-rotaciuxf3n-frente-a-reflexiuxf3n}
 
 Rotaciones axiales y reflexiones ortogonales comparten toda la estructura métrica:
 
@@ -5013,13 +5013,13 @@ Pero difieren en tres rasgos fundamentales.
 
 []{#orientación}
 
-#### 4.11.22.1. Orientación {#fispm-c04-orientaciuxf3n}
+#### Orientación {#fispm-c04-orientaciuxf3n}
 
 Para una rotación axial, $\det R_{n,\varphi}=+1.$ Para una reflexión ortogonal, $\det H_n=-1.$
 
 []{#conjunto-de-vectores-fijos}
 
-#### 4.11.22.2. Conjunto de vectores fijos {#fispm-c04-conjunto-de-vectores-fijos}
+#### Conjunto de vectores fijos {#fispm-c04-conjunto-de-vectores-fijos}
 
 Una rotación axial fija la recta
 
@@ -5031,7 +5031,7 @@ $$n^\perp.$$
 
 []{#acción-sobre-la-dirección-normal}
 
-#### 4.11.22.3. Acción sobre la dirección normal {#fispm-c04-acciuxf3n-sobre-la-direcciuxf3n-normal}
+#### Acción sobre la dirección normal {#fispm-c04-acciuxf3n-sobre-la-direcciuxf3n-normal}
 
 La reflexión satisface $H_n(n)=-n.$ La rotación satisface $R_{n,\varphi}(n)=n.$ Por tanto, conocer sólo que una transformación es una isometría no basta para decidir su tipo geométrico.
 
@@ -5181,7 +5181,7 @@ Cuatro cuartos de vuelta restauran todo vector.
 
 []{#cierre-de-11}
 
-### 4.11.23. Cierre de §11 {#fispm-c04-cierre-de-11}
+### Cierre de §11 {#fispm-c04-cierre-de-11}
 
 La sección ha construido la noción de **transformación lineal que preserva la geometría**:
 
@@ -5209,7 +5209,7 @@ y
 
 $$\boxed{ H_n \quad\text{reflexión ortogonal, impropia}. }$$
 
-La composición de isometrías vuelve a ser una isometría y los signos de orientación se multiplican. La siguiente sección volverá del espacio vectorial al espacio afín: estudiaremos simultáneamente cambios de origen y de base en un marco geométrico completo. El siguiente paso será el §[4.12](#fispm-c04-cambios-de-origen-y-de-marco-geomuxe9trico).
+La composición de isometrías vuelve a ser una isometría y los signos de orientación se multiplican. La siguiente sección volverá del espacio vectorial al espacio afín: estudiaremos simultáneamente cambios de origen y de base en un marco geométrico completo. El siguiente paso será el §[12](#fispm-c04-cambios-de-origen-y-de-marco-geomuxe9trico).
 
 []{#cambios-de-origen-y-de-marco-geométrico}
 
@@ -5217,11 +5217,11 @@ La composición de isometrías vuelve a ser una isometría y los signos de orien
 
 []{#fpm-i-04-s12}
 
-## 4.12. Cambios de origen y de marco geométrico {#fispm-c04-cambios-de-origen-y-de-marco-geomuxe9trico}
+## 12. Cambios de origen y de marco geométrico {#fispm-c04-cambios-de-origen-y-de-marco-geomuxe9trico}
 
 []{#activación-ahora-cambian-dos-datos-a-la-vez}
 
-### 4.12.1. Activación: ahora cambian dos datos a la vez {#fispm-c04-activaciuxf3n-ahora-cambian-dos-datos-a-la-vez}
+### Activación: ahora cambian dos datos a la vez {#fispm-c04-activaciuxf3n-ahora-cambian-dos-datos-a-la-vez}
 
 Hasta aquí hemos estudiado por separado dos operaciones:
 
@@ -5253,7 +5253,7 @@ La respuesta combinará exactamente las leyes de §§4 y 10.
 
 []{#definir-datos-de-un-cambio-de-marco-afín}
 
-### 4.12.2. Definir: datos de un cambio de marco afín {#fispm-c04-definir-datos-de-un-cambio-de-marco-afuxedn}
+### Definir: datos de un cambio de marco afín {#fispm-c04-definir-datos-de-un-cambio-de-marco-afuxedn}
 
 **Definición 4.36 --- Cambio entre dos marcos afines** Sean
 
@@ -5285,7 +5285,7 @@ $$\boxed{ O'=O+a. }$$
 
 []{#derivación-geométrica-antes-de-escribir-matrices}
 
-### 4.12.3. Derivación geométrica antes de escribir matrices {#fispm-c04-derivaciuxf3n-geomuxe9trica-antes-de-escribir-matrices}
+### Derivación geométrica antes de escribir matrices {#fispm-c04-derivaciuxf3n-geomuxe9trica-antes-de-escribir-matrices}
 
 Para cualquier punto $P$,
 
@@ -5309,7 +5309,7 @@ Sustituir la relación anterior produce la ley completa.
 
 []{#proposición-ley-afín-de-cambio-de-marco}
 
-### 4.12.4. Proposición: ley afín de cambio de marco {#fispm-c04-proposiciuxf3n-ley-afuxedn-de-cambio-de-marco}
+### Proposición: ley afín de cambio de marco {#fispm-c04-proposiciuxf3n-ley-afuxedn-de-cambio-de-marco}
 
 **Proposición 4.51 --- Transformación de las coordenadas de un punto** Sean
 
@@ -5347,7 +5347,7 @@ $\square$
 
 []{#por-qué-la-transformación-de-puntos-es-afín-no-lineal}
 
-### 4.12.5. Por qué la transformación de puntos es afín, no lineal {#fispm-c04-por-quuxe9-la-transformaciuxf3n-de-puntos-es-afuxedn-no-lineal}
+### Por qué la transformación de puntos es afín, no lineal {#fispm-c04-por-quuxe9-la-transformaciuxf3n-de-puntos-es-afuxedn-no-lineal}
 
 Definamos la aplicación sobre columnas
 
@@ -5371,7 +5371,7 @@ la transformación de coordenadas de puntos no es lineal: $\Phi_{F'\leftarrow F}
 
 <figcaption>
 
-**Figura 4.8.** Para orígenes separados por $a=\overrightarrow{OO^\prime}$ y bases iguales, los vectores de posición cumplen $r=a+r^\prime$. El punto físico y las diferencias entre puntos permanecen iguales. Véase §[4.12](#fispm-c04-cambios-de-origen-y-de-marco-geomuxe9trico).
+**Figura 4.8.** Para orígenes separados por $a=\overrightarrow{OO^\prime}$ y bases iguales, los vectores de posición cumplen $r=a+r^\prime$. El punto físico y las diferencias entre puntos permanecen iguales. Véase §[12](#fispm-c04-cambios-de-origen-y-de-marco-geomuxe9trico).
 
 </figcaption>
 
@@ -5381,7 +5381,7 @@ la ley se reduce al cambio lineal de base: $x_{F'}(P)=S^{-1}x_F(P).$
 
 []{#proposición-los-desplazamientos-no-sienten-el-cambio-de-origen}
 
-### 4.12.6. Proposición: los desplazamientos no sienten el cambio de origen {#fispm-c04-proposiciuxf3n-los-desplazamientos-no-sienten-el-cambio-de-origen}
+### Proposición: los desplazamientos no sienten el cambio de origen {#fispm-c04-proposiciuxf3n-los-desplazamientos-no-sienten-el-cambio-de-origen}
 
 **Proposición 4.52 --- Transformación de un desplazamiento entre marcos** Para cualesquiera puntos $P,Q$,
 
@@ -5417,7 +5417,7 @@ La traslación afecta las coordenadas absolutas de los puntos, pero no el despla
 
 []{#punto-y-vector-obedecen-leyes-distintas}
 
-### 4.12.7. Punto y vector obedecen leyes distintas {#fispm-c04-punto-y-vector-obedecen-leyes-distintas}
+### Punto y vector obedecen leyes distintas {#fispm-c04-punto-y-vector-obedecen-leyes-distintas}
 
 Para un **punto**:
 
@@ -5437,11 +5437,11 @@ $$\boxed{ \text{un punto no es un vector}. }$$
 
 []{#dos-casos-límite-recuperan-resultados-anteriores}
 
-### 4.12.8. Dos casos límite recuperan resultados anteriores {#fispm-c04-dos-casos-luxedmite-recuperan-resultados-anteriores}
+### Dos casos límite recuperan resultados anteriores {#fispm-c04-dos-casos-luxedmite-recuperan-resultados-anteriores}
 
 []{#sólo-cambia-el-origen}
 
-#### 4.12.8.1. Sólo cambia el origen {#fispm-c04-suxf3lo-cambia-el-origen}
+#### Sólo cambia el origen {#fispm-c04-suxf3lo-cambia-el-origen}
 
 Si
 
@@ -5457,7 +5457,7 @@ que es exactamente proposición 4.10.
 
 []{#sólo-cambia-la-base}
 
-#### 4.12.8.2. Sólo cambia la base {#fispm-c04-suxf3lo-cambia-la-base}
+#### Sólo cambia la base {#fispm-c04-suxf3lo-cambia-la-base}
 
 Si
 
@@ -5473,7 +5473,7 @@ Es la misma ley lineal que proposición 4.39 aplicada al vector de posición rel
 
 []{#ejemplo-diagnóstico-de-signo}
 
-### 4.12.9. Ejemplo diagnóstico de signo {#fispm-c04-ejemplo-diagnuxf3stico-de-signo}
+### Ejemplo diagnóstico de signo {#fispm-c04-ejemplo-diagnuxf3stico-de-signo}
 
 Sea
 
@@ -5497,7 +5497,7 @@ El signo negativo es geométricamente inevitable: al mover el origen **hacia** e
 
 []{#principio-metodológico}
 
-### 4.12.10. Principio metodológico {#fispm-c04-principio-metodoluxf3gico}
+### Principio metodológico {#fispm-c04-principio-metodoluxf3gico}
 
 **Principio metodológico 4.22 --- Separar la parte traslacional de la parte lineal** En un cambio completo de marco
 
@@ -5515,7 +5515,7 @@ mientras las componentes de vectores transforman linealmente, $[v]_{B'}=S^{-1}[v
 
 []{#balance-ley-afín-y-separación-puntovector}
 
-### 4.12.11. Balance: ley afín y separación punto--vector {#fispm-c04-balance-ley-afuxedn-y-separaciuxf3n-puntovector}
+### Balance: ley afín y separación punto--vector {#fispm-c04-balance-ley-afuxedn-y-separaciuxf3n-puntovector}
 
 Queda establecida la ley conjunta:
 
@@ -5533,7 +5533,7 @@ Todavía falta estudiar cómo se componen dos cambios completos de marco, cómo 
 
 []{#tres-marcos-y-dos-cambios-sucesivos}
 
-### 4.12.12. Tres marcos y dos cambios sucesivos {#fispm-c04-tres-marcos-y-dos-cambios-sucesivos}
+### Tres marcos y dos cambios sucesivos {#fispm-c04-tres-marcos-y-dos-cambios-sucesivos}
 
 Consideremos tres marcos afines:
 
@@ -5559,7 +5559,7 @@ $$F\longrightarrow F''.$$
 
 []{#el-desplazamiento-total-de-los-orígenes}
 
-### 4.12.13. El desplazamiento total de los orígenes {#fispm-c04-el-desplazamiento-total-de-los-oruxedgenes}
+### El desplazamiento total de los orígenes {#fispm-c04-el-desplazamiento-total-de-los-oruxedgenes}
 
 La ley del triángulo afín da
 
@@ -5579,7 +5579,7 @@ La suma geométrica de vectores es intrínseca; la suma de columnas sólo es leg
 
 []{#proposición-composición-de-cambios-completos-de-marco}
 
-### 4.12.14. Proposición: composición de cambios completos de marco {#fispm-c04-proposiciuxf3n-composiciuxf3n-de-cambios-completos-de-marco}
+### Proposición: composición de cambios completos de marco {#fispm-c04-proposiciuxf3n-composiciuxf3n-de-cambios-completos-de-marco}
 
 **Proposición 4.53 --- Composición de cambios de marco afín** Con las definiciones anteriores,
 
@@ -5623,7 +5623,7 @@ La forma de la ley se conserva bajo composición: un cambio de marco seguido de 
 
 []{#definir-representación-afín-coordenada}
 
-### 4.12.15. Definir: representación afín coordenada {#fispm-c04-definir-representaciuxf3n-afuxedn-coordenada}
+### Definir: representación afín coordenada {#fispm-c04-definir-representaciuxf3n-afuxedn-coordenada}
 
 **Definición 4.37 --- Par afín asociado a un cambio de marco** Para
 
@@ -5653,7 +5653,7 @@ Esta notación no convierte los puntos en vectores: sólo representa la aplicaci
 
 []{#proposición-ley-algebraica-de-composición-de-pares-afines}
 
-### 4.12.16. Proposición: ley algebraica de composición de pares afines {#fispm-c04-proposiciuxf3n-ley-algebraica-de-composiciuxf3n-de-pares-afines}
+### Proposición: ley algebraica de composición de pares afines {#fispm-c04-proposiciuxf3n-ley-algebraica-de-composiciuxf3n-de-pares-afines}
 
 **Proposición 4.54 --- Composición de pares afines** Sean
 
@@ -5681,7 +5681,7 @@ Obsérvese que las traslaciones no se suman sin más: la primera debe ser transp
 
 []{#proposición-cambio-inverso-de-marco}
 
-### 4.12.17. Proposición: cambio inverso de marco {#fispm-c04-proposiciuxf3n-cambio-inverso-de-marco}
+### Proposición: cambio inverso de marco {#fispm-c04-proposiciuxf3n-cambio-inverso-de-marco}
 
 **Proposición 4.55 --- Inversa de un cambio de marco afín** Si
 
@@ -5721,7 +5721,7 @@ Esta fórmula es exactamente la resolución de la proposición 4.51 para $x_F(P)
 
 []{#interpretación-geométrica-del-cambio-inverso}
 
-### 4.12.18. Interpretación geométrica del cambio inverso {#fispm-c04-interpretaciuxf3n-geomuxe9trica-del-cambio-inverso}
+### Interpretación geométrica del cambio inverso {#fispm-c04-interpretaciuxf3n-geomuxe9trica-del-cambio-inverso}
 
 Desde el marco nuevo hacia el antiguo, el desplazamiento del origen es $\overrightarrow{O'O} = -a.$ Su columna en la base nueva es $[-a]_{B'} = -S^{-1}[a]_B.$ Además, $S_{B'\leftarrow B} = S^{-1}.$ Aplicando proposición 4.51 en sentido inverso,
 
@@ -5735,7 +5735,7 @@ La fórmula algebraica de la proposición 4.55 coincide exactamente con la geome
 
 []{#ejemplo-de-consistencia-por-dos-caminos}
 
-### 4.12.19. Ejemplo de consistencia por dos caminos {#fispm-c04-ejemplo-de-consistencia-por-dos-caminos}
+### Ejemplo de consistencia por dos caminos {#fispm-c04-ejemplo-de-consistencia-por-dos-caminos}
 
 Tomemos
 
@@ -5765,7 +5765,7 @@ $$x_F(P) = \begin{pmatrix} 4\\ 3\\ 2 \end{pmatrix}.$$
 
 []{#ruta-en-dos-etapas}
 
-#### 4.12.19.1. Ruta en dos etapas {#fispm-c04-ruta-en-dos-etapas}
+#### Ruta en dos etapas {#fispm-c04-ruta-en-dos-etapas}
 
 Primero,
 
@@ -5777,7 +5777,7 @@ $$x_{F''}(P) = R^{-1} \left( x_{F'}(P)-[b]_{B'} \right) = \begin{pmatrix} 3\\ -1
 
 []{#ruta-directa}
 
-#### 4.12.19.2. Ruta directa {#fispm-c04-ruta-directa}
+#### Ruta directa {#fispm-c04-ruta-directa}
 
 Proposición 4.53 da
 
@@ -5791,7 +5791,7 @@ La coincidencia no es accidental: es la condición de consistencia del cambio de
 
 []{#principio-metodológico-de-tipado}
 
-### 4.12.20. Principio metodológico de tipado {#fispm-c04-principio-metodoluxf3gico-de-tipado}
+### Principio metodológico de tipado {#fispm-c04-principio-metodoluxf3gico-de-tipado}
 
 **Principio metodológico 4.23 --- No sumar columnas escritas en bases distintas** Los vectores
 
@@ -5803,7 +5803,7 @@ Este principio evita uno de los errores más frecuentes al componer traslaciones
 
 []{#balance-composición-inversa-y-tipado}
 
-### 4.12.21. Balance: composición, inversa y tipado {#fispm-c04-balance-composiciuxf3n-inversa-y-tipado}
+### Balance: composición, inversa y tipado {#fispm-c04-balance-composiciuxf3n-inversa-y-tipado}
 
 Los cambios completos de marco quedan ahora cerrados algebraicamente bajo composición:
 
@@ -5829,7 +5829,7 @@ Todavía falta ejercitar estas leyes y preparar la transición desde un marco ge
 
 []{#proposición-marcos-ortonormales-y-conservación-de-distancias}
 
-### 4.12.22. Proposición: marcos ortonormales y conservación de distancias {#fispm-c04-proposiciuxf3n-marcos-ortonormales-y-conservaciuxf3n-de-distancias}
+### Proposición: marcos ortonormales y conservación de distancias {#fispm-c04-proposiciuxf3n-marcos-ortonormales-y-conservaciuxf3n-de-distancias}
 
 **Proposición 4.56 --- Invariancia métrica entre marcos ortonormales** Sean
 
@@ -5867,7 +5867,7 @@ El cambio de origen modifica las coordenadas individuales de $P$ y $Q$, pero des
 
 []{#cambio-de-descripción-no-significa-movimiento-del-punto}
 
-### 4.12.23. Cambio de descripción no significa movimiento del punto {#fispm-c04-cambio-de-descripciuxf3n-no-significa-movimiento-del-punto}
+### Cambio de descripción no significa movimiento del punto {#fispm-c04-cambio-de-descripciuxf3n-no-significa-movimiento-del-punto}
 
 En toda esta sección hemos considerado un mismo punto geométrico $P$ descrito desde marcos distintos:
 
@@ -6069,7 +6069,7 @@ $$\boxed{ x = \begin{pmatrix} 4\\ 2\\ 5 \end{pmatrix}. }$$
 
 []{#síntesis-geométrica}
 
-### 4.12.24. Síntesis geométrica {#fispm-c04-suxedntesis-geomuxe9trica}
+### Síntesis geométrica {#fispm-c04-suxedntesis-geomuxe9trica}
 
 Un marco afín
 
@@ -6091,7 +6091,7 @@ Por eso un punto y un vector no pueden obedecer exactamente la misma ley de tran
 
 []{#del-marco-geométrico-al-marco-físico}
 
-### 4.12.25. Del marco geométrico al marco físico {#fispm-c04-del-marco-geomuxe9trico-al-marco-fuxedsico}
+### Del marco geométrico al marco físico {#fispm-c04-del-marco-geomuxe9trico-al-marco-fuxedsico}
 
 Nada de lo desarrollado en §12 introduce todavía:
 
@@ -6117,7 +6117,7 @@ La próxima sección incorporará exactamente esa capa conceptual, sin adelantar
 
 []{#cierre-de-12}
 
-### 4.12.26. Cierre de §12 {#fispm-c04-cierre-de-12}
+### Cierre de §12 {#fispm-c04-cierre-de-12}
 
 La sección ha unificado todos los cambios geométricos de descripción construidos desde §1. Para dos marcos
 
@@ -6143,7 +6143,7 @@ y la inversa,
 
 $$\boxed{ (L,t)^{-1} = (L^{-1},-L^{-1}t). }$$
 
-La parte traslacional sólo afecta coordenadas de puntos; las diferencias entre puntos y los vectores de desplazamiento transforman linealmente. Los ejercicios 4.24--4.25 aplican estas leyes antes de pasar de la geometría del marco a su realización física. El siguiente paso será el §[4.13](#fispm-c04-del-sistema-de-coordenadas-al-marco-fuxedsico-de-referencia).
+La parte traslacional sólo afecta coordenadas de puntos; las diferencias entre puntos y los vectores de desplazamiento transforman linealmente. Los ejercicios 4.24--4.25 aplican estas leyes antes de pasar de la geometría del marco a su realización física. El siguiente paso será el §[13](#fispm-c04-del-sistema-de-coordenadas-al-marco-fuxedsico-de-referencia).
 
 []{#del-sistema-de-coordenadas-al-marco-físico-de-referencia}
 
@@ -6151,11 +6151,11 @@ La parte traslacional sólo afecta coordenadas de puntos; las diferencias entre 
 
 []{#fpm-i-04-s13}
 
-## 4.13. Del sistema de coordenadas al marco físico de referencia {#fispm-c04-del-sistema-de-coordenadas-al-marco-fuxedsico-de-referencia}
+## 13. Del sistema de coordenadas al marco físico de referencia {#fispm-c04-del-sistema-de-coordenadas-al-marco-fuxedsico-de-referencia}
 
 []{#un-sistema-de-coordenadas-no-basta}
 
-### 4.13.1. Un sistema de coordenadas no basta {#fispm-c04-un-sistema-de-coordenadas-no-basta}
+### Un sistema de coordenadas no basta {#fispm-c04-un-sistema-de-coordenadas-no-basta}
 
 Un marco geométrico
 
@@ -6185,7 +6185,7 @@ $$\boxed{ \text{sistema geométrico de coordenadas} \ne \text{marco físico de r
 
 []{#de-una-elección-matemática-a-un-procedimiento-de-medición}
 
-### 4.13.2. De una elección matemática a un procedimiento de medición {#fispm-c04-de-una-elecciuxf3n-matemuxe1tica-a-un-procedimiento-de-mediciuxf3n}
+### De una elección matemática a un procedimiento de medición {#fispm-c04-de-una-elecciuxf3n-matemuxe1tica-a-un-procedimiento-de-mediciuxf3n}
 
 En geometría podemos elegir formalmente un punto
 
@@ -6203,7 +6203,7 @@ La primera indica qué objetos matemáticos usamos. La segunda indica cómo se v
 
 []{#definir-marco-físico-de-referencia-en-sentido-mínimo}
 
-### 4.13.3. Definir: marco físico de referencia en sentido mínimo {#fispm-c04-definir-marco-fuxedsico-de-referencia-en-sentido-muxednimo}
+### Definir: marco físico de referencia en sentido mínimo {#fispm-c04-definir-marco-fuxedsico-de-referencia-en-sentido-muxednimo}
 
 **Definición 4.38 --- Marco físico de referencia, nivel operacional mínimo** En el nivel de este capítulo, un **marco físico de referencia** es una realización operacional
 
@@ -6223,7 +6223,7 @@ Esta definición es deliberadamente mínima. No afirma que el marco sea inercial
 
 []{#el-origen-y-los-ejes-deben-estar-físicamente-realizables}
 
-### 4.13.4. El origen y los ejes deben estar físicamente realizables {#fispm-c04-el-origen-y-los-ejes-deben-estar-fuxedsicamente-realizables}
+### El origen y los ejes deben estar físicamente realizables {#fispm-c04-el-origen-y-los-ejes-deben-estar-fuxedsicamente-realizables}
 
 En un dibujo podemos señalar arbitrariamente un punto como origen. En un laboratorio necesitamos una referencia reproducible que permita reconocer qué ubicación corresponde a
 
@@ -6241,7 +6241,7 @@ porque entonces las componentes corresponden directamente a proyecciones métric
 
 []{#el-patrón-de-longitud-pertenece-al-procedimiento-físico}
 
-### 4.13.5. El patrón de longitud pertenece al procedimiento físico {#fispm-c04-el-patruxf3n-de-longitud-pertenece-al-procedimiento-fuxedsico}
+### El patrón de longitud pertenece al procedimiento físico {#fispm-c04-el-patruxf3n-de-longitud-pertenece-al-procedimiento-fuxedsico}
 
 La geometría euclídea determina una longitud abstracta
 
@@ -6259,7 +6259,7 @@ Estas tres operaciones modifican descripciones numéricas por razones conceptual
 
 []{#el-convenio-temporal-una-lectura-todavía-no-una-cinemática}
 
-### 4.13.6. El convenio temporal: una lectura, todavía no una cinemática {#fispm-c04-el-convenio-temporal-una-lectura-todavuxeda-no-una-cinemuxe1tica}
+### El convenio temporal: una lectura, todavía no una cinemática {#fispm-c04-el-convenio-temporal-una-lectura-todavuxeda-no-una-cinemuxe1tica}
 
 Para distinguir mediciones realizadas en ocasiones diferentes necesitamos una etiqueta temporal. En este capítulo representaremos esa lectura simplemente por $t\in\mathbb R.$
 
@@ -6275,7 +6275,7 @@ ni definimos expresiones como $\frac{dP}{dt}.$ Tampoco introducimos velocidad o 
 
 []{#definir-registro-físico-de-localización}
 
-### 4.13.7. Definir: registro físico de localización {#fispm-c04-definir-registro-fuxedsico-de-localizaciuxf3n}
+### Definir: registro físico de localización {#fispm-c04-definir-registro-fuxedsico-de-localizaciuxf3n}
 
 **Definición 4.39 --- Registro de localización en un marco físico** Dada una ocurrencia física localizada espacialmente en un punto $P$ y una lectura temporal $t$, su registro en el marco
 
@@ -6295,7 +6295,7 @@ Este par es un **registro de medición**. No estamos construyendo todavía un es
 
 []{#proposición-cambio-espacial-bajo-un-convenio-temporal-común}
 
-### 4.13.8. Proposición: cambio espacial bajo un convenio temporal común {#fispm-c04-proposiciuxf3n-cambio-espacial-bajo-un-convenio-temporal-comuxfan}
+### Proposición: cambio espacial bajo un convenio temporal común {#fispm-c04-proposiciuxf3n-cambio-espacial-bajo-un-convenio-temporal-comuxfan}
 
 **Proposición 4.57 --- Registro de una misma ocurrencia en dos marcos con tiempo común** Sean dos marcos físicos
 
@@ -6331,13 +6331,13 @@ El resultado no contiene ninguna afirmación sobre movimiento relativo: sólo co
 
 []{#tres-niveles-que-no-deben-confundirse}
 
-### 4.13.9. Tres niveles que no deben confundirse {#fispm-c04-tres-niveles-que-no-deben-confundirse}
+### Tres niveles que no deben confundirse {#fispm-c04-tres-niveles-que-no-deben-confundirse}
 
 Conviene distinguir explícitamente:
 
 []{#nivel-1-geometría}
 
-#### 4.13.9.1. Nivel 1 --- Geometría {#fispm-c04-nivel-1-geometruxeda}
+#### Nivel 1 --- Geometría {#fispm-c04-nivel-1-geometruxeda}
 
 $$F=(O,B).$$
 
@@ -6345,7 +6345,7 @@ Es una elección matemática de origen y base.
 
 []{#nivel-2-medición-espacial}
 
-#### 4.13.9.2. Nivel 2 --- Medición espacial {#fispm-c04-nivel-2-mediciuxf3n-espacial}
+#### Nivel 2 --- Medición espacial {#fispm-c04-nivel-2-mediciuxf3n-espacial}
 
 $$(F,\mathcal L,\mathcal O).$$
 
@@ -6353,7 +6353,7 @@ El origen, los ejes y la unidad de longitud tienen una realización operacional.
 
 []{#nivel-3-marco-físico-mínimo}
 
-#### 4.13.9.3. Nivel 3 --- Marco físico mínimo {#fispm-c04-nivel-3-marco-fuxedsico-muxednimo}
+#### Nivel 3 --- Marco físico mínimo {#fispm-c04-nivel-3-marco-fuxedsico-muxednimo}
 
 $$\mathfrak R=(F,\mathcal L,\mathcal T,\mathcal O).$$
 
@@ -6361,7 +6361,7 @@ Además de localizar espacialmente, el procedimiento asigna una lectura temporal
 
 []{#no-ejemplos}
 
-### 4.13.10. No-ejemplos {#fispm-c04-no-ejemplos}
+### No-ejemplos {#fispm-c04-no-ejemplos}
 
 **Un dibujo con ejes no constituye por sí solo un marco físico** Dibujar tres ejes y escribir coordenadas produce una representación geométrica, pero no especifica cómo se materializan el origen, las direcciones, la unidad ni la lectura temporal.
 
@@ -6375,7 +6375,7 @@ $$\boxed{ \text{sistema cartesiano} \not\Rightarrow \text{marco inercial}. }$$
 
 []{#principio-metodológico-1}
 
-### 4.13.11. Principio metodológico {#fispm-c04-principio-metodoluxf3gico-1}
+### Principio metodológico {#fispm-c04-principio-metodoluxf3gico-1}
 
 **Principio metodológico 4.25 --- Declarar la realización física antes de interpretar coordenadas** Cuando una terna de coordenadas se use en física, identificar explícitamente:
 
@@ -6391,7 +6391,7 @@ Sólo después interpretar una columna como resultado de una localización físi
 
 []{#balance-del-marco-geométrico-a-la-realización-operacional}
 
-### 4.13.12. Balance: del marco geométrico a la realización operacional {#fispm-c04-balance-del-marco-geomuxe9trico-a-la-realizaciuxf3n-operacional}
+### Balance: del marco geométrico a la realización operacional {#fispm-c04-balance-del-marco-geomuxe9trico-a-la-realizaciuxf3n-operacional}
 
 Queda establecida la diferencia fundamental:
 
@@ -6409,7 +6409,7 @@ Si dos marcos comparten calibración y convenio temporal, la lectura $t$ permane
 
 []{#definir-observador-asociado-a-un-marco}
 
-### 4.13.13. Definir: observador asociado a un marco {#fispm-c04-definir-observador-asociado-a-un-marco}
+### Definir: observador asociado a un marco {#fispm-c04-definir-observador-asociado-a-un-marco}
 
 **Definición 4.40 --- Observador asociado a un marco físico** En el nivel de este capítulo, un **observador asociado a**
 
@@ -6423,7 +6423,7 @@ La palabra "observador" no designa necesariamente una persona. Puede representar
 
 []{#una-misma-ocurrencia-puede-tener-registros-numéricos-distintos}
 
-### 4.13.14. Una misma ocurrencia puede tener registros numéricos distintos {#fispm-c04-una-misma-ocurrencia-puede-tener-registros-numuxe9ricos-distintos}
+### Una misma ocurrencia puede tener registros numéricos distintos {#fispm-c04-una-misma-ocurrencia-puede-tener-registros-numuxe9ricos-distintos}
 
 Supongamos que dos observadores usan marcos
 
@@ -6445,7 +6445,7 @@ En general, $x_F(P) \ne x_{F'}(P).$ Eso no significa que los observadores estén
 
 []{#proposición-acuerdo-métrico-entre-observadores-ortonormales}
 
-### 4.13.15. Proposición: acuerdo métrico entre observadores ortonormales {#fispm-c04-proposiciuxf3n-acuerdo-muxe9trico-entre-observadores-ortonormales}
+### Proposición: acuerdo métrico entre observadores ortonormales {#fispm-c04-proposiciuxf3n-acuerdo-muxe9trico-entre-observadores-ortonormales}
 
 **Proposición 4.58 --- Invariancia de la separación espacial registrada** Sean dos observadores asociados a marcos físicos
 
@@ -6469,7 +6469,7 @@ Como ambos observadores comparten además la calibración $\mathcal L$, ambas no
 
 []{#desacuerdo-de-coordenadas-no-es-desacuerdo-físico}
 
-### 4.13.16. Desacuerdo de coordenadas no es desacuerdo físico {#fispm-c04-desacuerdo-de-coordenadas-no-es-desacuerdo-fuxedsico}
+### Desacuerdo de coordenadas no es desacuerdo físico {#fispm-c04-desacuerdo-de-coordenadas-no-es-desacuerdo-fuxedsico}
 
 Consideremos, por ejemplo,
 
@@ -6483,7 +6483,7 @@ Las columnas son distintas. Sin información adicional, no podemos concluir que 
 
 []{#el-observador-no-tiene-por-qué-estar-sentado-en-el-origen}
 
-### 4.13.17. El observador no tiene por qué estar "sentado en el origen" {#fispm-c04-el-observador-no-tiene-por-quuxe9-estar-sentado-en-el-origen}
+### El observador no tiene por qué estar "sentado en el origen" {#fispm-c04-el-observador-no-tiene-por-quuxe9-estar-sentado-en-el-origen}
 
 En ejemplos elementales se dibuja con frecuencia una persona junto al origen de coordenadas. Ese dibujo puede ser útil, pero no constituye una definición. El marco puede estar realizado mediante una red de marcas y dispositivos distribuidos. Lo esencial es que exista un procedimiento reproducible para producir
 
@@ -6497,7 +6497,7 @@ El origen forma parte de la descripción espacial; el observador implementa el s
 
 []{#todavía-no-hemos-definido-un-marco-en-movimiento}
 
-### 4.13.18. Todavía no hemos definido un marco "en movimiento" {#fispm-c04-todavuxeda-no-hemos-definido-un-marco-en-movimiento}
+### Todavía no hemos definido un marco "en movimiento" {#fispm-c04-todavuxeda-no-hemos-definido-un-marco-en-movimiento}
 
 Para afirmar que un marco cambia respecto de otro a medida que transcurre el tiempo necesitaríamos permitir que sus datos espaciales dependieran de la lectura temporal. Por ejemplo, aparecerían objetos del tipo
 
@@ -6511,7 +6511,7 @@ Pero introducir esas dependencias equivaldría a comenzar el estudio del movimie
 
 []{#por-qué-la-inercialidad-no-puede-leerse-de-la-geometría}
 
-### 4.13.19. Por qué la inercialidad no puede leerse de la geometría {#fispm-c04-por-quuxe9-la-inercialidad-no-puede-leerse-de-la-geometruxeda}
+### Por qué la inercialidad no puede leerse de la geometría {#fispm-c04-por-quuxe9-la-inercialidad-no-puede-leerse-de-la-geometruxeda}
 
 Un marco puede poseer:
 
@@ -6533,7 +6533,7 @@ La ortogonalidad de los ejes es una propiedad geométrica. La inercialidad es un
 
 []{#falsos-criterios-de-inercialidad}
 
-### 4.13.20. Falsos criterios de inercialidad {#fispm-c04-falsos-criterios-de-inercialidad}
+### Falsos criterios de inercialidad {#fispm-c04-falsos-criterios-de-inercialidad}
 
 **"Los ejes son cartesianos, por tanto el marco es inercial."**
 
@@ -6549,7 +6549,7 @@ Falso. Un reloj permite asignar lecturas temporales; la inercialidad requiere es
 
 []{#principio-metodológico-2}
 
-### 4.13.21. Principio metodológico {#fispm-c04-principio-metodoluxf3gico-2}
+### Principio metodológico {#fispm-c04-principio-metodoluxf3gico-2}
 
 **Principio metodológico 4.26 --- Separar diferencias de descripción de diferencias físicas** Cuando dos observadores asignen registros distintos a una misma situación:
 
@@ -6565,7 +6565,7 @@ No interpretar una diferencia entre columnas numéricas como una diferencia fís
 
 []{#balance-observador-registro-e-inercialidad}
 
-### 4.13.22. Balance: observador, registro e inercialidad {#fispm-c04-balance-observador-registro-e-inercialidad}
+### Balance: observador, registro e inercialidad {#fispm-c04-balance-observador-registro-e-inercialidad}
 
 Un observador queda entendido aquí como la realización operacional de un marco físico, no como un punto geométrico ni necesariamente como una persona. Dos observadores pueden asignar coordenadas diferentes a una misma ocurrencia:
 
@@ -6583,7 +6583,7 @@ Todavía falta ejercitar estas distinciones y cerrar la sección sin invadir el 
 
 []{#qué-puede-inferirse-de-un-registro-y-qué-no}
 
-### 4.13.23. Qué puede inferirse de un registro y qué no {#fispm-c04-quuxe9-puede-inferirse-de-un-registro-y-quuxe9-no}
+### Qué puede inferirse de un registro y qué no {#fispm-c04-quuxe9-puede-inferirse-de-un-registro-y-quuxe9-no}
 
 Un registro
 
@@ -6613,7 +6613,7 @@ Todas esas afirmaciones requieren estructura adicional.
 
 []{#principio-metodológico-de-nivel-de-estructura}
 
-### 4.13.24. Principio metodológico de nivel de estructura {#fispm-c04-principio-metodoluxf3gico-de-nivel-de-estructura}
+### Principio metodológico de nivel de estructura {#fispm-c04-principio-metodoluxf3gico-de-nivel-de-estructura}
 
 **Principio metodológico 4.27 --- Declarar el nivel de estructura antes de inferir física** Antes de extraer una conclusión, identificar qué estructura está realmente disponible:
 
@@ -6763,7 +6763,7 @@ Como sólo disponemos de registros correspondientes a una lectura temporal comú
 
 []{#síntesis-operacional}
 
-### 4.13.25. Síntesis operacional {#fispm-c04-suxedntesis-operacional}
+### Síntesis operacional {#fispm-c04-suxedntesis-operacional}
 
 La arquitectura conceptual de la sección puede resumirse como una cadena de estructura creciente:
 
@@ -6783,7 +6783,7 @@ Un observador es el sistema operacional capaz de producirlos. Dos observadores p
 
 []{#cierre-de-13}
 
-### 4.13.26. Cierre de §13 {#fispm-c04-cierre-de-13}
+### Cierre de §13 {#fispm-c04-cierre-de-13}
 
 La sección ha mostrado por qué una terna de números no basta para constituir una referencia física. Un marco físico mínimo requiere:
 
@@ -6803,7 +6803,7 @@ y
 
 $$\boxed{ \text{marco físico} \not\Rightarrow \text{marco inercial}. }$$
 
-Los ejercicios 4.26--4.27 obligan a separar explícitamente geometría, realización operacional, observador e inercialidad. La última sección del capítulo integrará todas las distinciones construidas ---puntos, vectores, coordenadas, bases, orientación, isometrías y marcos--- antes de entregar el concepto de posición dependiente del tiempo al capítulo 5. El siguiente paso será el §[4.14](#fispm-c04-integraciuxf3n-una-geometruxeda-varias-descripciones).
+Los ejercicios 4.26--4.27 obligan a separar explícitamente geometría, realización operacional, observador e inercialidad. La última sección del capítulo integrará todas las distinciones construidas ---puntos, vectores, coordenadas, bases, orientación, isometrías y marcos--- antes de entregar el concepto de posición dependiente del tiempo al capítulo 5. El siguiente paso será el §[14](#fispm-c04-integraciuxf3n-una-geometruxeda-varias-descripciones).
 
 []{#integración-una-geometría-varias-descripciones}
 
@@ -6811,11 +6811,11 @@ Los ejercicios 4.26--4.27 obligan a separar explícitamente geometría, realizac
 
 []{#fpm-i-04-s14}
 
-## 4.14. Integración: una geometría, varias descripciones {#fispm-c04-integraciuxf3n-una-geometruxeda-varias-descripciones}
+## 14. Integración: una geometría, varias descripciones {#fispm-c04-integraciuxf3n-una-geometruxeda-varias-descripciones}
 
 []{#una-geometría-varias-descripciones}
 
-### 4.14.1. Una geometría, varias descripciones {#fispm-c04-una-geometruxeda-varias-descripciones}
+### Una geometría, varias descripciones {#fispm-c04-una-geometruxeda-varias-descripciones}
 
 A lo largo del capítulo hemos repetido una misma operación conceptual:
 
@@ -6837,7 +6837,7 @@ Un punto no es su terna de coordenadas. Un vector no es su columna de componente
 
 []{#la-jerarquía-construida-desde-1}
 
-### 4.14.2. La jerarquía construida desde §1 {#fispm-c04-la-jerarquuxeda-construida-desde-1}
+### La jerarquía construida desde §1 {#fispm-c04-la-jerarquuxeda-construida-desde-1}
 
 El capítulo ha introducido una cadena de estructuras:
 
@@ -6861,7 +6861,7 @@ Cada nivel añade estructura. Ningún nivel debe confundirse con la representaci
 
 []{#definir-invariante-de-descripción}
 
-### 4.14.3. Definir: invariante de descripción {#fispm-c04-definir-invariante-de-descripciuxf3n}
+### Definir: invariante de descripción {#fispm-c04-definir-invariante-de-descripciuxf3n}
 
 **Definición 4.41 --- Invariante bajo cambio de descripción** Una cantidad asociada a una configuración geométrica será llamada **invariante de descripción** si su valor no cambia cuando modificamos únicamente el marco o la base usados para describir esa misma configuración, manteniendo fija la estructura geométrica pertinente.
 
@@ -6873,7 +6873,7 @@ Las coordenadas cambian; la distancia no.
 
 []{#no-todo-lo-que-cambia-deja-de-ser-geométricamente-válido}
 
-### 4.14.4. No todo lo que cambia deja de ser geométricamente válido {#fispm-c04-no-todo-lo-que-cambia-deja-de-ser-geomuxe9tricamente-vuxe1lido}
+### No todo lo que cambia deja de ser geométricamente válido {#fispm-c04-no-todo-lo-que-cambia-deja-de-ser-geomuxe9tricamente-vuxe1lido}
 
 Supongamos que
 
@@ -6897,19 +6897,19 @@ Este uso no introduce todavía cálculo tensorial. Significa simplemente que las
 
 []{#vector}
 
-#### 4.14.4.1. Vector {#fispm-c04-vector}
+#### Vector {#fispm-c04-vector}
 
 $$\boxed{ [v]_{B'} = S^{-1}[v]_B. }$$
 
 []{#punto}
 
-#### 4.14.4.2. Punto {#fispm-c04-punto}
+#### Punto {#fispm-c04-punto}
 
 $$\boxed{ x_{F'}(P) = S^{-1} \left( x_F(P)-[a]_B \right). }$$
 
 []{#operador-lineal}
 
-#### 4.14.4.3. Operador lineal {#fispm-c04-operador-lineal}
+#### Operador lineal {#fispm-c04-operador-lineal}
 
 $$\boxed{ A_{B'}(T) = S^{-1}A_B(T)S. }$$
 
@@ -6917,7 +6917,7 @@ Las tres fórmulas son diferentes porque describen objetos de tipos diferentes.
 
 []{#composición-como-prueba-de-coherencia}
 
-### 4.14.5. Composición como prueba de coherencia {#fispm-c04-composiciuxf3n-como-prueba-de-coherencia}
+### Composición como prueba de coherencia {#fispm-c04-composiciuxf3n-como-prueba-de-coherencia}
 
 Una ley de transformación no es sólo una receta para pasar de una descripción a otra. Debe ser compatible con cambios sucesivos. Para vectores,
 
@@ -6931,7 +6931,7 @@ Por tanto, pasar directamente o mediante una descripción intermedia debe produc
 
 []{#proposición-reconstrucción-independiente-de-la-descripción}
 
-### 4.14.6. Proposición: reconstrucción independiente de la descripción {#fispm-c04-proposiciuxf3n-reconstrucciuxf3n-independiente-de-la-descripciuxf3n}
+### Proposición: reconstrucción independiente de la descripción {#fispm-c04-proposiciuxf3n-reconstrucciuxf3n-independiente-de-la-descripciuxf3n}
 
 **Proposición 4.59 --- El objeto reconstruido no depende de la representación**
 
@@ -6963,7 +6963,7 @@ $$P\in\mathcal E.$$
 
 []{#parte-a}
 
-#### 4.14.6.1. Parte (a) {#fispm-c04-parte-a}
+#### Parte (a) {#fispm-c04-parte-a}
 
 Escribamos
 
@@ -6989,7 +6989,7 @@ Ambas columnas reconstruyen el mismo vector.
 
 []{#parte-b}
 
-#### 4.14.6.2. Parte (b) {#fispm-c04-parte-b}
+#### Parte (b) {#fispm-c04-parte-b}
 
 Desde el marco $F$, $P = O+\overrightarrow{OP},$
 
@@ -7025,7 +7025,7 @@ $$\boxed{ \text{cambiar la descripción no cambia el objeto}. }$$
 
 []{#qué-cambia-y-qué-permanece}
 
-### 4.14.7. Qué cambia y qué permanece {#fispm-c04-quuxe9-cambia-y-quuxe9-permanece}
+### Qué cambia y qué permanece {#fispm-c04-quuxe9-cambia-y-quuxe9-permanece}
 
 Podemos resumir los principales objetos así:
 
@@ -7042,7 +7042,7 @@ La última columna contiene objetos o cantidades geométricas. Las columnas inte
 
 []{#invariante-no-significa-mismo-número-en-cualquier-fórmula-mal-usada}
 
-### 4.14.8. Invariante no significa "mismo número en cualquier fórmula mal usada" {#fispm-c04-invariante-no-significa-mismo-nuxfamero-en-cualquier-fuxf3rmula-mal-usada}
+### Invariante no significa "mismo número en cualquier fórmula mal usada" {#fispm-c04-invariante-no-significa-mismo-nuxfamero-en-cualquier-fuxf3rmula-mal-usada}
 
 La invariancia no permite ignorar las leyes de transformación. Por ejemplo, en una base no ortonormal la norma no se calcula, en general, mediante $(v^1)^2+(v^2)^2+(v^3)^2.$
 
@@ -7052,7 +7052,7 @@ Este punto evita confundir invariancia geométrica con invariancia literal de un
 
 []{#principio-metodológico-3}
 
-### 4.14.9. Principio metodológico {#fispm-c04-principio-metodoluxf3gico-3}
+### Principio metodológico {#fispm-c04-principio-metodoluxf3gico-3}
 
 **Principio metodológico 4.28 --- Preguntar primero por el objeto, después por sus números** Ante una fórmula con coordenadas o matrices:
 
@@ -7070,19 +7070,19 @@ Este principio resume la disciplina conceptual desarrollada desde §1.
 
 []{#balance-objeto-representación-e-invariancia}
 
-### 4.14.10. Balance: objeto, representación e invariancia {#fispm-c04-balance-objeto-representaciuxf3n-e-invariancia}
+### Balance: objeto, representación e invariancia {#fispm-c04-balance-objeto-representaciuxf3n-e-invariancia}
 
 La síntesis inicial queda organizada por dos ideas complementarias.
 
 []{#invariancia}
 
-#### 4.14.10.1. Invariancia {#fispm-c04-invariancia}
+#### Invariancia {#fispm-c04-invariancia}
 
 $$\boxed{ \text{el objeto o la cantidad geométrica pertinente permanece}. }$$
 
 []{#covariancia-de-representación}
 
-#### 4.14.10.2. Covariancia de representación {#fispm-c04-covariancia-de-representaciuxf3n}
+#### Covariancia de representación {#fispm-c04-covariancia-de-representaciuxf3n}
 
 $$\boxed{ \text{los datos numéricos cambian mediante una ley coherente}. }$$
 
@@ -7090,7 +7090,7 @@ Así, "varias descripciones" no significa "varias geometrías". El mismo punto, 
 
 []{#invariantes-métricos-bajo-marcos-ortonormales}
 
-### 4.14.11. Invariantes métricos bajo marcos ortonormales {#fispm-c04-invariantes-muxe9tricos-bajo-marcos-ortonormales}
+### Invariantes métricos bajo marcos ortonormales {#fispm-c04-invariantes-muxe9tricos-bajo-marcos-ortonormales}
 
 Sean
 
@@ -7116,7 +7116,7 @@ Las columnas cambian; las relaciones métricas no.
 
 []{#la-orientación-requiere-una-capa-adicional}
 
-### 4.14.12. La orientación requiere una capa adicional {#fispm-c04-la-orientaciuxf3n-requiere-una-capa-adicional}
+### La orientación requiere una capa adicional {#fispm-c04-la-orientaciuxf3n-requiere-una-capa-adicional}
 
 La métrica por sí sola no distingue una base ortonormal positiva de una negativa. Si
 
@@ -7138,25 +7138,25 @@ Esta distinción explica por qué una reflexión puede conservar todas las dista
 
 []{#triangulación-y-trilateración-no-son-lo-mismo}
 
-### 4.14.13. Triangulación y trilateración no son lo mismo {#fispm-c04-triangulaciuxf3n-y-trilateraciuxf3n-no-son-lo-mismo}
+### Triangulación y trilateración no son lo mismo {#fispm-c04-triangulaciuxf3n-y-trilateraciuxf3n-no-son-lo-mismo}
 
 En problemas de localización se emplean dos familias de procedimientos que conviene distinguir.
 
 []{#triangulación}
 
-#### 4.14.13.1. Triangulación {#fispm-c04-triangulaciuxf3n}
+#### Triangulación {#fispm-c04-triangulaciuxf3n}
 
 Reconstruye una posición a partir de **direcciones o ángulos** medidos desde referencias conocidas.
 
 []{#trilateración}
 
-#### 4.14.13.2. Trilateración {#fispm-c04-trilateraciuxf3n}
+#### Trilateración {#fispm-c04-trilateraciuxf3n}
 
 Reconstruye una posición a partir de **distancias** a puntos de referencia conocidos. En esta sección utilizaremos trilateración porque permite expresar la consistencia directamente mediante los invariantes métricos ya desarrollados. No usaremos ambos términos como sinónimos.
 
 []{#definir-datos-métricos-de-localización}
 
-### 4.14.14. Definir: datos métricos de localización {#fispm-c04-definir-datos-muxe9tricos-de-localizaciuxf3n}
+### Definir: datos métricos de localización {#fispm-c04-definir-datos-muxe9tricos-de-localizaciuxf3n}
 
 **Definición 4.43 --- Datos de trilateración respecto de cuatro referencias** Sean
 
@@ -7174,7 +7174,7 @@ forman una base de $V$. Los datos $\Lambda(P)$ están formados por cantidades m�
 
 []{#proposición-cuatro-distancias-determinan-un-punto-en-dimensión-tres}
 
-### 4.14.15. Proposición: cuatro distancias determinan un punto en dimensión tres {#fispm-c04-proposiciuxf3n-cuatro-distancias-determinan-un-punto-en-dimensiuxf3n-tres}
+### Proposición: cuatro distancias determinan un punto en dimensión tres {#fispm-c04-proposiciuxf3n-cuatro-distancias-determinan-un-punto-en-dimensiuxf3n-tres}
 
 **Proposición 4.60 --- Unicidad de la trilateración en dimensión tres** Sean
 
@@ -7244,7 +7244,7 @@ La proposición no afirma que cualquier cuádrupla de números positivos corresp
 
 []{#consistencia-de-los-datos-bajo-cambio-de-marco}
 
-### 4.14.16. Consistencia de los datos bajo cambio de marco {#fispm-c04-consistencia-de-los-datos-bajo-cambio-de-marco}
+### Consistencia de los datos bajo cambio de marco {#fispm-c04-consistencia-de-los-datos-bajo-cambio-de-marco}
 
 Como cada entrada de
 
@@ -7268,7 +7268,7 @@ $$\boxed{ \text{coordenadas covariantes}. }$$
 
 []{#proposición-la-reconstrucción-métrica-es-compatible-con-el-cambio-de-marco}
 
-### 4.14.17. Proposición: la reconstrucción métrica es compatible con el cambio de marco {#fispm-c04-proposiciuxf3n-la-reconstrucciuxf3n-muxe9trica-es-compatible-con-el-cambio-de-marco}
+### Proposición: la reconstrucción métrica es compatible con el cambio de marco {#fispm-c04-proposiciuxf3n-la-reconstrucciuxf3n-muxe9trica-es-compatible-con-el-cambio-de-marco}
 
 **Proposición 4.61 --- Consistencia de la trilateración entre marcos ortonormales** Sean
 
@@ -7290,7 +7290,7 @@ son invariantes entre $F$ y $F'$. Por proposición 4.60, existe a lo sumo un pun
 
 []{#ejemplo-exacto-de-localización-por-distancias}
 
-### 4.14.18. Ejemplo exacto de localización por distancias {#fispm-c04-ejemplo-exacto-de-localizaciuxf3n-por-distancias}
+### Ejemplo exacto de localización por distancias {#fispm-c04-ejemplo-exacto-de-localizaciuxf3n-por-distancias}
 
 Tomemos una base ortonormal
 
@@ -7326,7 +7326,7 @@ Si otro marco ortonormal asigna a $P$ una columna diferente, estos cuatro valore
 
 []{#cómo-se-recuperan-las-coordenadas-en-el-ejemplo}
 
-### 4.14.19. Cómo se recuperan las coordenadas en el ejemplo {#fispm-c04-cuxf3mo-se-recuperan-las-coordenadas-en-el-ejemplo}
+### Cómo se recuperan las coordenadas en el ejemplo {#fispm-c04-cuxf3mo-se-recuperan-las-coordenadas-en-el-ejemplo}
 
 En el ejemplo anterior, si
 
@@ -7348,7 +7348,7 @@ obtenemos $x=2, \qquad y=3, \qquad z=4.$ La reconstrucción coordenada depende d
 
 []{#principio-metodológico-de-consistencia-entre-observadores}
 
-### 4.14.20. Principio metodológico de consistencia entre observadores {#fispm-c04-principio-metodoluxf3gico-de-consistencia-entre-observadores}
+### Principio metodológico de consistencia entre observadores {#fispm-c04-principio-metodoluxf3gico-de-consistencia-entre-observadores}
 
 **Principio metodológico 4.29 --- Comparar invariantes antes de comparar coordenadas** Cuando dos descripciones de una misma configuración parezcan incompatibles:
 
@@ -7364,25 +7364,25 @@ Dos columnas diferentes no constituyen por sí solas datos contradictorios.
 
 []{#balance-reconstrucción-e-invariantes}
 
-### 4.14.21. Balance: reconstrucción e invariantes {#fispm-c04-balance-reconstrucciuxf3n-e-invariantes}
+### Balance: reconstrucción e invariantes {#fispm-c04-balance-reconstrucciuxf3n-e-invariantes}
 
 La integración geométrica queda ahora organizada en tres niveles:
 
 []{#objeto}
 
-#### 4.14.21.1. Objeto {#fispm-c04-objeto}
+#### Objeto {#fispm-c04-objeto}
 
 $$\boxed{ P,\ v,\ \overrightarrow{PQ},\ T }$$
 
 []{#representación-covariante}
 
-#### 4.14.21.2. Representación covariante {#fispm-c04-representaciuxf3n-covariante}
+#### Representación covariante {#fispm-c04-representaciuxf3n-covariante}
 
 $$\boxed{ x_F(P),\ [v]_B,\ [\overrightarrow{PQ}]_B,\ A_B(T) }$$
 
 []{#invariantes}
 
-#### 4.14.21.3. Invariantes {#fispm-c04-invariantes}
+#### Invariantes {#fispm-c04-invariantes}
 
 $$\boxed{ d(P,Q),\ \|v\|,\ \langle u,v\rangle,\ \theta(u,v) }$$
 
@@ -7614,7 +7614,7 @@ Conserva la métrica e invierte orientación.
 
 []{#la-red-conceptual-completa-del-capítulo}
 
-### 4.14.22. La red conceptual completa del capítulo {#fispm-c04-la-red-conceptual-completa-del-capuxedtulo}
+### La red conceptual completa del capítulo {#fispm-c04-la-red-conceptual-completa-del-capuxedtulo}
 
 El capítulo 4 puede condensarse en la siguiente cadena:
 
@@ -7628,7 +7628,7 @@ Cada flecha añade una capa de estructura o de representación. Ninguna permite 
 
 []{#lo-que-el-capítulo-deja-establecido}
 
-### 4.14.23. Lo que el capítulo deja establecido {#fispm-c04-lo-que-el-capuxedtulo-deja-establecido}
+### Lo que el capítulo deja establecido {#fispm-c04-lo-que-el-capuxedtulo-deja-establecido}
 
 Al cerrar capítulo 4 disponemos de:
 
@@ -7662,7 +7662,7 @@ Al cerrar capítulo 4 disponemos de:
 
 Todo ello se ha construido sin introducir todavía una ley de movimiento.
 
-### 4.14.24. La puerta hacia el capítulo 5 {#fispm-c04-la-puerta-hacia-fpm-i-05}
+### La puerta hacia el capítulo 5 {#fispm-c04-la-puerta-hacia-fpm-i-05}
 
 Hasta aquí, un punto $P$ ha sido considerado como una localización geométrica fija dentro de cada problema. El siguiente paso conceptual será permitir que la posición asignada a un cuerpo dependa de la lectura temporal. Eso exigirá introducir una aplicación temporal del tipo
 
@@ -7680,7 +7680,7 @@ y estudiar su geometría. El capítulo 4 no desarrolla todavía esa estructura. 
 
 - qué cantidades geométricas son independientes de la descripción.
 
-### 4.14.25. Cierre de §14 y de la redacción del capítulo 4 {#fispm-c04-cierre-de-14-y-de-la-redacciuxf3n-de-fpm-i-04}
+### Cierre de §14 y de la redacción del capítulo 4 {#fispm-c04-cierre-de-14-y-de-la-redacciuxf3n-de-fpm-i-04}
 
 La afirmación que organiza todo el capítulo es:
 

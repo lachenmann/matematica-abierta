@@ -41,7 +41,7 @@ Este capítulo utiliza álgebra, geometría euclídea y cálculo de una variable
 
 []{#fpm-i-06-s01}
 
-## 6.1. Aproximar es formular una afirmación con condiciones {#fispm-c06-aproximar-es-formular-una-afirmaciuxf3n-con-condiciones}
+## 1. Aproximar es formular una afirmación con condiciones {#fispm-c06-aproximar-es-formular-una-afirmaciuxf3n-con-condiciones}
 
 La distancia entre dos puntos separados por una longitud horizontal $L>0$ y una altura $h$ es, dentro del modelo geométrico euclídeo, $d=\sqrt{L^2+h^2}$. Si la altura parece pequeña, suele reemplazarse esa distancia por $L$. La igualdad de Pitágoras y el reemplazo responden a operaciones diferentes: la primera es una consecuencia exacta de la geometría adoptada; el segundo pierde una parte de la distancia. Para juzgar esa pérdida hay que compararla con alguna referencia.
 
@@ -49,7 +49,7 @@ Dividir por $L$ permite reconocer la comparación pertinente. Si $u=h/L$, la rel
 
 []{#una-afirmación-que-pueda-comprobarse}
 
-### 6.1.1. Una afirmación que pueda comprobarse {#fispm-c06-una-afirmaciuxf3n-que-pueda-comprobarse}
+### Una afirmación que pueda comprobarse {#fispm-c06-una-afirmaciuxf3n-que-pueda-comprobarse}
 
 []{#fispm-t1-c06-d0001}
 
@@ -65,7 +65,7 @@ El símbolo $\approx$ podrá abreviar una aproximación cuyo criterio ya se haya
 
 []{#acumular-simplificaciones}
 
-### 6.1.2. Acumular simplificaciones {#fispm-c06-acumular-simplificaciones}
+### Acumular simplificaciones {#fispm-c06-acumular-simplificaciones}
 
 Una aproximación suele construirse en varios pasos. El riesgo es que cada paso sea pequeño según una referencia distinta y que se sumen sus cifras como si fueran comparables.
 
@@ -79,7 +79,7 @@ La prueba explica por qué importa la escala común. Si las cotas fueran $\alpha
 
 []{#ejercicios}
 
-### 6.1.3. Ejercicios {#fispm-c06-ejercicios}
+### Ejercicios {#fispm-c06-ejercicios}
 
 []{#fispm-t1-c06-e0001}
 
@@ -103,7 +103,7 @@ Referencia interna utilizada: [capítulo 3, §12](fisica-para-matematicos-capitu
 
 []{#fpm-i-06-s02}
 
-## 6.2. Escalas y variables adimensionales: interfaz con el capítulo 2 {#fispm-c06-escalas-y-variables-adimensionales-interfaz-con-fpm-i-02}
+## 2. Escalas y variables adimensionales: interfaz con el capítulo 2 {#fispm-c06-escalas-y-variables-adimensionales-interfaz-con-fpm-i-02}
 
 El capítulo 2 construyó las escalas características y la adimensionalización. Aquí se usan para decidir qué simplificación conviene probar. La elección de una escala reorganiza el modelo y hace visibles ciertas razones; por sí sola no elimina ningún término.
 
@@ -113,7 +113,7 @@ Si se escoge $Q$ como escala de $q$, las variables $y=q/Q$ y $a=b/Q$ convierten 
 
 []{#la-relación-normalizada}
 
-### 6.2.1. La relación normalizada {#fispm-c06-la-relaciuxf3n-normalizada}
+### La relación normalizada {#fispm-c06-la-relaciuxf3n-normalizada}
 
 []{#fispm-t1-c06-d0002}
 
@@ -129,7 +129,7 @@ El modelo también muestra el peligro de mirar sólo el coeficiente $\varepsilon
 
 []{#cambiar-la-referencia-sin-cambiar-la-exactitud}
 
-### 6.2.2. Cambiar la referencia sin cambiar la exactitud {#fispm-c06-cambiar-la-referencia-sin-cambiar-la-exactitud}
+### Cambiar la referencia sin cambiar la exactitud {#fispm-c06-cambiar-la-referencia-sin-cambiar-la-exactitud}
 
 []{#fispm-t1-c06-p0002}
 
@@ -143,7 +143,7 @@ Para mantener separadas las operaciones, una relación normalizada se escribirá
 
 []{#ejercicios-1}
 
-### 6.2.3. Ejercicios {#fispm-c06-ejercicios-1}
+### Ejercicios {#fispm-c06-ejercicios-1}
 
 []{#fispm-t1-c06-e0003}
 
@@ -165,7 +165,7 @@ Referencia interna utilizada: [capítulo 2, §9](fisica-para-matematicos-capitul
 
 []{#fpm-i-06-s03}
 
-## 6.3. Parámetros adimensionales y definición de régimen {#fispm-c06-paruxe1metros-adimensionales-y-definiciuxf3n-de-ruxe9gimen}
+## 3. Parámetros adimensionales y definición de régimen {#fispm-c06-paruxe1metros-adimensionales-y-definiciuxf3n-de-ruxe9gimen}
 
 En la relación $y+\varepsilon y^2=a$, decir «$\varepsilon$ es pequeño» deja una parte del problema sin especificar. Si $y$ permanece cercano a uno, la contribución cuadrática es pequeña frente a la lineal. Si $y$ se acerca a $1/\varepsilon$, ambas contribuciones tienen tamaños comparables. La misma familia puede recorrer situaciones distintas según cómo varíe $a$ y qué valores alcance la solución.
 
@@ -173,7 +173,7 @@ La diferencia aparece incluso antes de resolver una ecuación. Para $0<\varepsil
 
 []{#régimen-y-límite}
 
-### 6.3.1. Régimen y límite {#fispm-c06-ruxe9gimen-y-luxedmite}
+### Régimen y límite {#fispm-c06-ruxe9gimen-y-luxedmite}
 
 []{#fispm-t1-c06-d0003}
 
@@ -189,7 +189,7 @@ En este capítulo $\varepsilon\ll1$ será una abreviatura interpretativa, respal
 
 []{#control-puntual-y-control-sobre-un-dominio}
 
-### 6.3.2. Control puntual y control sobre un dominio {#fispm-c06-control-puntual-y-control-sobre-un-dominio}
+### Control puntual y control sobre un dominio {#fispm-c06-control-puntual-y-control-sobre-un-dominio}
 
 La diferencia entre comprobar cada valor fijo y controlar todo un dominio admite una formulación elemental. Para una función $r(\varepsilon,x)$, comprobar $r(\varepsilon,x)\to0$ para cada $x$ fijo permite que el umbral elegido dependa de ese $x$. Una garantía uniforme en un dominio $X_\varepsilon$ exige una cota válida simultáneamente para todos sus puntos, con el mismo umbral.
 
@@ -199,7 +199,7 @@ En una aplicación física, el dominio puede ser un intervalo de posiciones, alt
 
 []{#ejercicios-2}
 
-### 6.3.3. Ejercicios {#fispm-c06-ejercicios-2}
+### Ejercicios {#fispm-c06-ejercicios-2}
 
 []{#fispm-t1-c06-e0005}
 
@@ -219,7 +219,7 @@ Referencia: Hinch, *Perturbation Methods* (1991), cap. 1, §§1.1--1.2, pp. 1--
 
 []{#fpm-i-06-s04}
 
-## 6.4. Comparar tamaños: órdenes de magnitud {#fispm-c06-comparar-tamauxf1os-uxf3rdenes-de-magnitud}
+## 4. Comparar tamaños: órdenes de magnitud {#fispm-c06-comparar-tamauxf1os-uxf3rdenes-de-magnitud}
 
 Antes de eliminar un término conviene escribir la comparación que lo autoriza. En $y+\varepsilon y^2=a$, el coeficiente $\varepsilon$ no es el objeto que se compara con $y$. Para $y>0$, el cociente pertinente es $(\varepsilon y^2)/y=\varepsilon y$. Esta operación exige comparar términos del mismo tipo de magnitud; si se comparan cantidades de dimensiones distintas, primero debe justificarse una normalización que las lleve a una misma relación.
 
@@ -227,7 +227,7 @@ El capítulo 2 y capítulo 3 introdujeron órdenes de magnitud como escalas num�
 
 []{#dos-relaciones-diferentes}
 
-### 6.4.1. Dos relaciones diferentes {#fispm-c06-dos-relaciones-diferentes}
+### Dos relaciones diferentes {#fispm-c06-dos-relaciones-diferentes}
 
 []{#fispm-t1-c06-d0004}
 
@@ -243,7 +243,7 @@ Comparabilidad no significa igualdad ni razón tendiendo a uno. Los términos $2
 
 []{#una-clasificación-reutilizable}
 
-### 6.4.2. Una clasificación reutilizable {#fispm-c06-una-clasificaciuxf3n-reutilizable}
+### Una clasificación reutilizable {#fispm-c06-una-clasificaciuxf3n-reutilizable}
 
 []{#fispm-t1-c06-p0003}
 
@@ -255,7 +255,7 @@ Para $0<\varepsilon\le1$, esta clasificación sitúa $\varepsilon^3$ por debajo 
 
 []{#cancelaciones-y-cantidades-objetivo}
 
-### 6.4.3. Cancelaciones y cantidades objetivo {#fispm-c06-cancelaciones-y-cantidades-objetivo}
+### Cancelaciones y cantidades objetivo {#fispm-c06-cancelaciones-y-cantidades-objetivo}
 
 Comparar los sumandos no siempre basta para controlar su suma. La expresión $(1+\varepsilon)-1=\varepsilon$ contiene dos términos comparables de tamaño cercano a uno, cuya diferencia es mucho menor. Sustituir $1+\varepsilon$ por $1$ tiene un defecto pequeño frente a uno, pero destruye la diferencia completa. Si la observable que interesa es ese incremento, la aproximación debe juzgarse respecto al incremento.
 
@@ -267,7 +267,7 @@ La advertencia tiene una interpretación geométrica inmediata. En la distancia 
 
 []{#ejercicios-3}
 
-### 6.4.4. Ejercicios {#fispm-c06-ejercicios-3}
+### Ejercicios {#fispm-c06-ejercicios-3}
 
 []{#fispm-t1-c06-e0007}
 
@@ -289,7 +289,7 @@ Referencias internas utilizadas: [capítulo 2, §9](fisica-para-matematicos-capi
 
 []{#fpm-i-06-s05}
 
-## 6.5. Términos dominantes y balance dominante {#fispm-c06-tuxe9rminos-dominantes-y-balance-dominante}
+## 5. Términos dominantes y balance dominante {#fispm-c06-tuxe9rminos-dominantes-y-balance-dominante}
 
 La relación normalizada $y+\varepsilon y^2=a$, con $a,\varepsilon>0$ y $y\ge0$, puede simplificarse de dos maneras que parecen incompatibles. Si se omite el término cuadrático, queda $y=a$. Si se omite el término lineal, queda $\varepsilon y^2=a$ y, en el dominio no negativo, $y=\sqrt{a/\varepsilon}$. Elegir una de esas respuestas por la apariencia del coeficiente deja sin resolver el problema principal: qué término es pequeño sobre la respuesta que acabamos de obtener.
 
@@ -301,7 +301,7 @@ La relación normalizada $y+\varepsilon y^2=a$, con $a,\varepsilon>0$ y $y\ge0$,
 
 <figcaption>
 
-**Figura 6.1.** Los términos $u$ y $\varepsilon u^2$, con $\varepsilon=0{,}1$, son iguales en $u=10$. El segundo es pequeño respecto del primero sólo si $\varepsilon u\ll1$, aunque $\varepsilon$ sea pequeño. Véase §[6.5](#fispm-c06-tuxe9rminos-dominantes-y-balance-dominante).
+**Figura 6.1.** Los términos $u$ y $\varepsilon u^2$, con $\varepsilon=0{,}1$, son iguales en $u=10$. El segundo es pequeño respecto del primero sólo si $\varepsilon u\ll1$, aunque $\varepsilon$ sea pequeño. Véase §[5](#fispm-c06-tuxe9rminos-dominantes-y-balance-dominante).
 
 </figcaption>
 
@@ -313,7 +313,7 @@ La ecuación completa tiene una solución positiva: la función $F(y)=y+\varepsi
 
 []{#qué-se-conserva-en-un-balance}
 
-### 6.5.1. Qué se conserva en un balance {#fispm-c06-quuxe9-se-conserva-en-un-balance}
+### Qué se conserva en un balance {#fispm-c06-quuxe9-se-conserva-en-un-balance}
 
 []{#fispm-t1-c06-d0006}
 
@@ -337,7 +337,7 @@ La finitud interviene en el paso al límite de la suma. La proposición no dice 
 
 []{#ejercicios-4}
 
-### 6.5.2. Ejercicios {#fispm-c06-ejercicios-4}
+### Ejercicios {#fispm-c06-ejercicios-4}
 
 []{#fispm-t1-c06-e0009}
 
@@ -367,7 +367,7 @@ Referencia: Hinch, *Perturbation Methods* (1991), cap. 1, §§1.1--1.2, pp. 1--
 
 []{#fpm-i-06-s06}
 
-## 6.6. Error, residuo y calidad de una aproximación {#fispm-c06-error-residuo-y-calidad-de-una-aproximaciuxf3n}
+## 6. Error, residuo y calidad de una aproximación {#fispm-c06-error-residuo-y-calidad-de-una-aproximaciuxf3n}
 
 Un candidato puede satisfacer casi una ecuación y aun así estar lejos de su solución. Para reconocer esa posibilidad hay que distinguir dos defectos: el de la cantidad aproximada y el de la relación en la que se la inserta.
 
@@ -379,7 +379,7 @@ Un candidato puede satisfacer casi una ecuación y aun así estar lejos de su so
 
 <figcaption>
 
-**Figura 6.2.** En $0\le x\le1$, $0\le x-\sin x\le x^3/6$. La curva continua es el error y la discontinua su cota; aquí ambos se calculan con el mismo argumento adimensional. Véase §[6.6](#fispm-c06-error-residuo-y-calidad-de-una-aproximaciuxf3n).
+**Figura 6.2.** En $0\le x\le1$, $0\le x-\sin x\le x^3/6$. La curva continua es el error y la discontinua su cota; aquí ambos se calculan con el mismo argumento adimensional. Véase §[6](#fispm-c06-error-residuo-y-calidad-de-una-aproximaciuxf3n).
 
 </figcaption>
 
@@ -389,7 +389,7 @@ Si la distancia exacta del modelo geométrico es $d$ y se utiliza $\widetilde d$
 
 []{#medir-el-error-de-la-observable}
 
-### 6.6.1. Medir el error de la observable {#fispm-c06-medir-el-error-de-la-observable}
+### Medir el error de la observable {#fispm-c06-medir-el-error-de-la-observable}
 
 []{#fispm-t1-c06-d0007}
 
@@ -401,7 +401,7 @@ Estos errores comparan dos predicciones o una predicción completa con su reducc
 
 []{#sustituir-en-la-relación-original}
 
-### 6.6.2. Sustituir en la relación original {#fispm-c06-sustituir-en-la-relaciuxf3n-original}
+### Sustituir en la relación original {#fispm-c06-sustituir-en-la-relaciuxf3n-original}
 
 []{#fispm-t1-c06-d0008}
 
@@ -413,7 +413,7 @@ En $F(y)=y+\varepsilon y^2-a$, el candidato $y=a$ tiene residuo $\varepsilon a^2
 
 []{#cuándo-un-residuo-controla-el-error}
 
-### 6.6.3. Cuándo un residuo controla el error {#fispm-c06-cuuxe1ndo-un-residuo-controla-el-error}
+### Cuándo un residuo controla el error {#fispm-c06-cuuxe1ndo-un-residuo-controla-el-error}
 
 []{#fispm-t1-c06-p0005}
 
@@ -431,7 +431,7 @@ Si se reemplaza $F$ por $\widehat F=\delta F$, con $\delta>0$, el residuo pasa a
 
 []{#ejercicios-5}
 
-### 6.6.4. Ejercicios {#fispm-c06-ejercicios-5}
+### Ejercicios {#fispm-c06-ejercicios-5}
 
 []{#fispm-t1-c06-e0011}
 
@@ -459,7 +459,7 @@ Referencias utilizadas: [capítulo 3, §12](fisica-para-matematicos-capitulo-3-m
 
 []{#fpm-i-06-s07}
 
-## 6.7. Linealización alrededor de un estado de referencia {#fispm-c06-linealizaciuxf3n-alrededor-de-un-estado-de-referencia}
+## 7. Linealización alrededor de un estado de referencia {#fispm-c06-linealizaciuxf3n-alrededor-de-un-estado-de-referencia}
 
 Una función puede resultar complicada en un intervalo amplio y tener una descripción simple cerca de un punto. Si una observable $q=f(x)$ depende de una sola variable, conocer el valor $f(x_0)$ y la pendiente $f'(x_0)$ permite predecir cómo cambia ante un incremento pequeño $h=x-x_0$. La cuestión es qué reemplazo expresa esa información y cuál es su alcance.
 
@@ -471,7 +471,7 @@ Una función puede resultar complicada en un intervalo amplio y tener una descri
 
 <figcaption>
 
-**Figura 6.3.** La curva $\sin x$ y su tangente $x$ se comparan en $|x|\le1$, con ángulo en radianes. La proximidad es local: no convierte ambas funciones en idénticas. Véase §[6.7](#fispm-c06-linealizaciuxf3n-alrededor-de-un-estado-de-referencia).
+**Figura 6.3.** La curva $\sin x$ y su tangente $x$ se comparan en $|x|\le1$, con ángulo en radianes. La proximidad es local: no convierte ambas funciones en idénticas. Véase §[7](#fispm-c06-linealizaciuxf3n-alrededor-de-un-estado-de-referencia).
 
 </figcaption>
 
@@ -481,7 +481,7 @@ Para la distancia $f(h)=\sqrt{L^2+h^2}$, con $L>0$, el punto base $h=0$ tiene va
 
 []{#parte-afín-y-parte-lineal}
 
-### 6.7.1. Parte afín y parte lineal {#fispm-c06-parte-afuxedn-y-parte-lineal}
+### Parte afín y parte lineal {#fispm-c06-parte-afuxedn-y-parte-lineal}
 
 []{#fispm-t1-c06-d0009}
 
@@ -493,7 +493,7 @@ La diferenciabilidad implica $$\frac{f(x_0+h)-L_{x_0}(h)}{h}\longrightarrow0 \qq
 
 []{#por-qué-esa-aproximación-es-la-de-primer-orden}
 
-### 6.7.2. Por qué esa aproximación es la de primer orden {#fispm-c06-por-quuxe9-esa-aproximaciuxf3n-es-la-de-primer-orden}
+### Por qué esa aproximación es la de primer orden {#fispm-c06-por-quuxe9-esa-aproximaciuxf3n-es-la-de-primer-orden}
 
 []{#fispm-t1-c06-p0006}
 
@@ -509,7 +509,7 @@ La propiedad selecciona los coeficientes por un criterio matemático, no por un 
 
 []{#cuando-la-pendiente-desaparece}
 
-### 6.7.3. Cuando la pendiente desaparece {#fispm-c06-cuando-la-pendiente-desaparece}
+### Cuando la pendiente desaparece {#fispm-c06-cuando-la-pendiente-desaparece}
 
 Si $f'(x_0)=0$, la linealización conserva el valor base y predice un cambio nulo. Puede aproximar bien el valor total mientras describe mal el primer cambio no nulo. Para $f(x)=1+x^2$ alrededor de cero, el valor aproximado es $1$ y el error absoluto es $x^2$. El incremento exacto respecto al estado base es $x^2$, mientras que el incremento linealizado es cero: su error relativo es $1$ para todo $x\ne0$.
 
@@ -517,7 +517,7 @@ El ejemplo no contradice proposición 6.6. El defecto $x^2$ dividido por $x$ tie
 
 []{#ejercicios-6}
 
-### 6.7.4. Ejercicios {#fispm-c06-ejercicios-6}
+### Ejercicios {#fispm-c06-ejercicios-6}
 
 []{#fispm-t1-c06-e0014}
 
@@ -539,7 +539,7 @@ Referencia: Riley--Hobson--Bence, *Mathematical Methods for Physics and Engineer
 
 []{#fpm-i-06-s08}
 
-## 6.8. Resto de Taylor y dominio local de la linealización {#fispm-c06-resto-de-taylor-y-dominio-local-de-la-linealizaciuxf3n}
+## 8. Resto de Taylor y dominio local de la linealización {#fispm-c06-resto-de-taylor-y-dominio-local-de-la-linealizaciuxf3n}
 
 La derivada seleccionó una aproximación de primer orden, pero una aplicación necesita saber cuánto puede alejarse del punto base. Decir que el defecto dividido por el incremento tiende a cero no determina, por sí solo, qué intervalo garantiza una tolerancia concreta. Para obtener ese intervalo hace falta controlar cómo varía la pendiente.
 
@@ -551,7 +551,7 @@ La derivada seleccionó una aproximación de primer orden, pero una aplicación 
 
 <figcaption>
 
-**Figura 6.4.** En $|x|\le1$, el resto de $e^x\approx1+x$ satisface $|e^x-1-x|\le(e/2)x^2$. La cota discontinua usa el máximo de la segunda derivada en ese intervalo. Véase §[6.8](#fispm-c06-resto-de-taylor-y-dominio-local-de-la-linealizaciuxf3n).
+**Figura 6.4.** En $|x|\le1$, el resto de $e^x\approx1+x$ satisface $|e^x-1-x|\le(e/2)x^2$. La cota discontinua usa el máximo de la segunda derivada en ese intervalo. Véase §[8](#fispm-c06-resto-de-taylor-y-dominio-local-de-la-linealizaciuxf3n).
 
 </figcaption>
 
@@ -561,7 +561,7 @@ Si la segunda derivada es grande, la pendiente cambia rápidamente y el interval
 
 []{#separar-aproximación-y-resto}
 
-### 6.8.1. Separar aproximación y resto {#fispm-c06-separar-aproximaciuxf3n-y-resto}
+### Separar aproximación y resto {#fispm-c06-separar-aproximaciuxf3n-y-resto}
 
 []{#fispm-t1-c06-d0010}
 
@@ -579,7 +579,7 @@ Si se desea un error referido a una escala $S>0$ no mayor que $\tau>0$, proposic
 
 []{#controlar-el-cambio-observado}
 
-### 6.8.2. Controlar el cambio observado {#fispm-c06-controlar-el-cambio-observado}
+### Controlar el cambio observado {#fispm-c06-controlar-el-cambio-observado}
 
 Para juzgar el cambio $\Delta f=f(x_0+h)-f(x_0)$, el denominador relativo puede ser muy distinto del valor total $f(x_0+h)$. El siguiente resultado proporciona un criterio cuando la pendiente base no se anula.
 
@@ -597,7 +597,7 @@ La condición $a\ne0$ permite comparar el resto con el cambio de primer orden. S
 
 []{#ejercicios-7}
 
-### 6.8.3. Ejercicios {#fispm-c06-ejercicios-7}
+### Ejercicios {#fispm-c06-ejercicios-7}
 
 []{#fispm-t1-c06-e0016}
 
@@ -627,7 +627,7 @@ Referencia: Riley--Hobson--Bence, 3.ª ed. (2006), §4.6, pp. 136--140.
 
 []{#fpm-i-06-s09}
 
-## 6.9. Parámetro pequeño y primera jerarquía de aproximaciones {#fispm-c06-paruxe1metro-pequeuxf1o-y-primera-jerarquuxeda-de-aproximaciones}
+## 9. Parámetro pequeño y primera jerarquía de aproximaciones {#fispm-c06-paruxe1metro-pequeuxf1o-y-primera-jerarquuxeda-de-aproximaciones}
 
 La cota del resto permite decidir si una aproximación basta para una tolerancia. Cuando varias aproximaciones se ordenan por potencias de un parámetro, interesa conservar también la dependencia de sus defectos con ese parámetro. Un número aislado, como $0.001$, no muestra qué ocurrirá al reducir a la mitad el incremento normalizado.
 
@@ -635,7 +635,7 @@ Para una familia de restos $R(\varepsilon,x)$, una estimación $|R(\varepsilon,x
 
 []{#una-notación-para-cotas-uniformes}
 
-### 6.9.1. Una notación para cotas uniformes {#fispm-c06-una-notaciuxf3n-para-cotas-uniformes}
+### Una notación para cotas uniformes {#fispm-c06-una-notaciuxf3n-para-cotas-uniformes}
 
 []{#fispm-t1-c06-d0011}
 
@@ -655,7 +655,7 @@ Dividir requiere una condición adicional sobre el denominador; proposición 6.9
 
 []{#orden-cero-y-primeras-correcciones}
 
-### 6.9.2. Orden cero y primeras correcciones {#fispm-c06-orden-cero-y-primeras-correcciones}
+### Orden cero y primeras correcciones {#fispm-c06-orden-cero-y-primeras-correcciones}
 
 []{#fispm-t1-c06-d0012}
 
@@ -677,7 +677,7 @@ El orden cero es $1$, la primera corrección es $-\varepsilon$ y la siguiente es
 
 []{#ejercicios-8}
 
-### 6.9.3. Ejercicios {#fispm-c06-ejercicios-8}
+### Ejercicios {#fispm-c06-ejercicios-8}
 
 []{#fispm-t1-c06-e0019}
 
@@ -699,7 +699,7 @@ Referencia: Hinch, *Perturbation Methods* (1991), cap. 2, §§2.1--2.2, pp. 19-
 
 []{#fpm-i-06-s10}
 
-## 6.10. Límite regular y señal elemental de singularidad {#fispm-c06-luxedmite-regular-y-seuxf1al-elemental-de-singularidad}
+## 10. Límite regular y señal elemental de singularidad {#fispm-c06-luxedmite-regular-y-seuxf1al-elemental-de-singularidad}
 
 Poner un parámetro igual a cero puede simplificar una relación y conservar una respuesta relevante. También puede borrar una rama de soluciones o perder el control sobre una región del dominio. Ambas posibilidades pueden detectarse mediante álgebra y límites de una variable, sin desarrollar una teoría de perturbaciones singulares.
 
@@ -711,7 +711,7 @@ Poner un parámetro igual a cero puede simplificar una relación y conservar una
 
 <figcaption>
 
-**Figura 6.5.** La familia $y_\varepsilon=e^{-x/\varepsilon}$ converge a cero para cada $x>0$ y conserva $y_\varepsilon(0)=1$. La gráfica usa $\varepsilon=0{,}1$: la aproximación exterior $y=0$ no es uniforme en $[0,1]$. Véase §[6.10](#fispm-c06-luxedmite-regular-y-seuxf1al-elemental-de-singularidad).
+**Figura 6.5.** La familia $y_\varepsilon=e^{-x/\varepsilon}$ converge a cero para cada $x>0$ y conserva $y_\varepsilon(0)=1$. La gráfica usa $\varepsilon=0{,}1$: la aproximación exterior $y=0$ no es uniforme en $[0,1]$. Véase §[10](#fispm-c06-luxedmite-regular-y-seuxf1al-elemental-de-singularidad).
 
 </figcaption>
 
@@ -721,7 +721,7 @@ El diagnóstico debe relacionarse con la pregunta. Conservar una rama positiva c
 
 []{#compatibilidad-respecto-a-la-información-requerida}
 
-### 6.10.1. Compatibilidad respecto a la información requerida {#fispm-c06-compatibilidad-respecto-a-la-informaciuxf3n-requerida}
+### Compatibilidad respecto a la información requerida {#fispm-c06-compatibilidad-respecto-a-la-informaciuxf3n-requerida}
 
 []{#fispm-t1-c06-d0013}
 
@@ -731,7 +731,7 @@ La cláusula «respecto a una pregunta» es necesaria. Una ecuación reducida pu
 
 []{#una-ecuación-que-pierde-una-raíz}
 
-### 6.10.2. Una ecuación que pierde una raíz {#fispm-c06-una-ecuaciuxf3n-que-pierde-una-rauxedz}
+### Una ecuación que pierde una raíz {#fispm-c06-una-ecuaciuxf3n-que-pierde-una-rauxedz}
 
 Consideremos $$\varepsilon y^2+y-1=0,\qquad \varepsilon>0,$$ sin restringir inicialmente $y$ a valores positivos. Sus raíces son $$y_+(\varepsilon)=\frac{-1+\sqrt{1+4\varepsilon}}{2\varepsilon}, \qquad y_-(\varepsilon)=\frac{-1-\sqrt{1+4\varepsilon}}{2\varepsilon}.$$ La primera expresión tiene numerador y denominador tendiendo a cero. Racionalizarla da $y_+=2/(1+\sqrt{1+4\varepsilon})$, y entonces $y_+\to1$. La segunda satisface $\varepsilon y_-=-(1+\sqrt{1+4\varepsilon})/2\to-1$, por lo que diverge hacia $-\infty$.
 
@@ -739,7 +739,7 @@ Al poner $\varepsilon=0$, la ecuación se convierte en $y-1=0$ y conserva la ra�
 
 []{#una-función-cuyo-límite-no-controla-todo-el-intervalo}
 
-### 6.10.3. Una función cuyo límite no controla todo el intervalo {#fispm-c06-una-funciuxf3n-cuyo-luxedmite-no-controla-todo-el-intervalo}
+### Una función cuyo límite no controla todo el intervalo {#fispm-c06-una-funciuxf3n-cuyo-luxedmite-no-controla-todo-el-intervalo}
 
 Para $\varepsilon>0$ y $x\in[0,1]$, sea $f_\varepsilon(x)=x/(x+\varepsilon)$. Su límite en cada punto fijo es $$g(x)= \begin{cases} 0,&x=0,\\ 1,&0<x\le1. \end{cases}$$ Aunque ese límite existe punto por punto, el defecto respecto a $g$ no disminuye uniformemente. Para $x>0$ su módulo es $\varepsilon/(x+\varepsilon)$, que puede acercarse tanto como se quiera a $1$ escogiendo $x$ positivo suficientemente próximo a cero. En $x=0$ el defecto es cero. El supremo de los defectos en $[0,1]$ es $1$, aunque no se alcance.
 
@@ -753,7 +753,7 @@ No desarrollaremos métodos para reparar todos los límites incompatibles. La co
 
 []{#ejercicios-9}
 
-### 6.10.4. Ejercicios {#fispm-c06-ejercicios-9}
+### Ejercicios {#fispm-c06-ejercicios-9}
 
 []{#fispm-t1-c06-e0021}
 
@@ -775,7 +775,7 @@ Referencia: Hinch, *Perturbation Methods* (1991), cap. 1, §1.2, pp. 4--7.
 
 []{#fpm-i-06-s11}
 
-## 6.11. Coherencia a posteriori de los términos despreciados {#fispm-c06-coherencia-a-posteriori-de-los-tuxe9rminos-despreciados}
+## 11. Coherencia a posteriori de los términos despreciados {#fispm-c06-coherencia-a-posteriori-de-los-tuxe9rminos-despreciados}
 
 Una reducción puede estar bien resuelta y mal aplicada. En §5, omitir el término cuadrático de $y+\varepsilon y^2=a$ produjo $y=a$ sin error algebraico en la ecuación reducida. La cuestión pendiente era si esa respuesta hacía pequeña la contribución que se había eliminado. Al insertar el candidato, la condición se convirtió en $\eta=\varepsilon a$ pequeño.
 
@@ -787,7 +787,7 @@ Una reducción puede estar bien resuelta y mal aplicada. En §5, omitir el térm
 
 <figcaption>
 
-**Figura 6.6.** Un residuo modelo $\varepsilon u^2$ debe compararse con una tolerancia declarada a lo largo de la solución. Aquí $\varepsilon=0{,}03$ y la línea discontinua vale $0{,}2$; el umbral se alcanza en $u=\sqrt{20/3}$. Véase §[6.11](#fispm-c06-coherencia-a-posteriori-de-los-tuxe9rminos-despreciados).
+**Figura 6.6.** Un residuo modelo $\varepsilon u^2$ debe compararse con una tolerancia declarada a lo largo de la solución. Aquí $\varepsilon=0{,}03$ y la línea discontinua vale $0{,}2$; el umbral se alcanza en $u=\sqrt{20/3}$. Véase §[11](#fispm-c06-coherencia-a-posteriori-de-los-tuxe9rminos-despreciados).
 
 </figcaption>
 
@@ -797,7 +797,7 @@ La comprobación es a posteriori porque utiliza la respuesta obtenida. No debe c
 
 []{#una-obligación-que-acompaña-al-candidato}
 
-### 6.11.1. Una obligación que acompaña al candidato {#fispm-c06-una-obligaciuxf3n-que-acompauxf1a-al-candidato}
+### Una obligación que acompaña al candidato {#fispm-c06-una-obligaciuxf3n-que-acompauxf1a-al-candidato}
 
 []{#fispm-t1-c06-d0014}
 
@@ -807,7 +807,7 @@ Por ejemplo, insertar $y=a$ y encontrar $\varepsilon a\le0.01$ verifica una raz�
 
 []{#una-garantía-sin-conocer-la-fórmula-de-la-raíz}
 
-### 6.11.2. Una garantía sin conocer la fórmula de la raíz {#fispm-c06-una-garantuxeda-sin-conocer-la-fuxf3rmula-de-la-rauxedz}
+### Una garantía sin conocer la fórmula de la raíz {#fispm-c06-una-garantuxeda-sin-conocer-la-fuxf3rmula-de-la-rauxedz}
 
 []{#fispm-t1-c06-p0011}
 
@@ -825,7 +825,7 @@ El residuo normalizado del candidato también vale $\eta$, pero esa coincidencia
 
 []{#la-información-que-deja-un-rechazo}
 
-### 6.11.3. La información que deja un rechazo {#fispm-c06-la-informaciuxf3n-que-deja-un-rechazo}
+### La información que deja un rechazo {#fispm-c06-la-informaciuxf3n-que-deja-un-rechazo}
 
 Si el balance cuadrático da $y_{\mathrm C}=\sqrt{a/\varepsilon}$, su hipótesis de omisión exige que $1/\sqrt{\varepsilon a}$ sea pequeño. Cuando ese cociente resulta grande, el candidato sigue resolviendo la ecuación reducida, pero no satisface la justificación que llevó a ella. El rechazo identifica qué término sigue siendo relevante y ayuda a seleccionar otro modelo.
 
@@ -833,7 +833,7 @@ La autoconsistencia no evalúa toda la adecuación física del modelo original. 
 
 []{#ejercicios-10}
 
-### 6.11.4. Ejercicios {#fispm-c06-ejercicios-10}
+### Ejercicios {#fispm-c06-ejercicios-10}
 
 []{#fispm-t1-c06-e0023}
 
@@ -855,7 +855,7 @@ Referencias: Hinch, *Perturbation Methods* (1991), cap. 1, §§1.1--1.2, pp. 1-
 
 []{#fpm-i-06-s12}
 
-## 6.12. Regímenes múltiples, cruces y ruptura de aproximaciones {#fispm-c06-reguxedmenes-muxfaltiples-cruces-y-ruptura-de-aproximaciones}
+## 12. Regímenes múltiples, cruces y ruptura de aproximaciones {#fispm-c06-reguxedmenes-muxfaltiples-cruces-y-ruptura-de-aproximaciones}
 
 Los dos candidatos de §5 responden a zonas distintas de la entrada normalizada. Para $\eta=\varepsilon a$ pequeño, $y=a$ conserva el término lineal y tiene el control relativo de la proposición 6.11. Para $\eta$ grande, el candidato $\sqrt{a/\varepsilon}$ conserva la contribución cuadrática. Entre esos regímenes puede haber una zona donde ninguno de los dos modelos cortos alcance la tolerancia pedida.
 
@@ -867,7 +867,7 @@ Los dos candidatos de §5 responden a zonas distintas de la entrada normalizada.
 
 <figcaption>
 
-**Figura 6.7.** Si el error normalizado crece como $\varepsilon u$, con $\varepsilon=0{,}05$, alcanza la tolerancia $0{,}2$ en $u=4$. Un parámetro pequeño no garantiza precisión para tiempos arbitrarios. Véase §[6.12](#fispm-c06-reguxedmenes-muxfaltiples-cruces-y-ruptura-de-aproximaciones).
+**Figura 6.7.** Si el error normalizado crece como $\varepsilon u$, con $\varepsilon=0{,}05$, alcanza la tolerancia $0{,}2$ en $u=4$. Un parámetro pequeño no garantiza precisión para tiempos arbitrarios. Véase §[12](#fispm-c06-reguxedmenes-muxfaltiples-cruces-y-ruptura-de-aproximaciones).
 
 </figcaption>
 
@@ -877,7 +877,7 @@ El cruce no se fija por una cifra universal de $\varepsilon$. La razón que deci
 
 []{#criterio-de-cruce-y-dominio-certificado}
 
-### 6.12.1. Criterio de cruce y dominio certificado {#fispm-c06-criterio-de-cruce-y-dominio-certificado}
+### Criterio de cruce y dominio certificado {#fispm-c06-criterio-de-cruce-y-dominio-certificado}
 
 []{#fispm-t1-c06-d0015}
 
@@ -887,7 +887,7 @@ La última distinción importa cuando la cota es conservadora. Una aproximación
 
 []{#control-de-los-dos-modelos-reducidos}
 
-### 6.12.2. Control de los dos modelos reducidos {#fispm-c06-control-de-los-dos-modelos-reducidos}
+### Control de los dos modelos reducidos {#fispm-c06-control-de-los-dos-modelos-reducidos}
 
 []{#fispm-t1-c06-p0012}
 
@@ -901,7 +901,7 @@ Para una tolerancia relativa $\tau>0$, proposición 6.12 certifica el candidato 
 
 []{#la-zona-intermedia}
 
-### 6.12.3. La zona intermedia {#fispm-c06-la-zona-intermedia}
+### La zona intermedia {#fispm-c06-la-zona-intermedia}
 
 Cuando $\eta=1$, la forma escalada $z=y_\ast/a$ satisface $z+z^2=1$, por lo que $z=(\sqrt5-1)/2$. Ambos candidatos coinciden con $a$, y su error relativo es $(1-z)/z=(\sqrt5-1)/2$, aproximadamente $0.618$. Una tolerancia del diez por ciento no se cumple. Aquí el diagnóstico de términos comparables se acompaña de un fallo efectivo de ambas reducciones.
 
@@ -913,7 +913,7 @@ Para otros datos, una región excluida por una cota suficiente puede contener pu
 
 []{#ejercicios-11}
 
-### 6.12.4. Ejercicios {#fispm-c06-ejercicios-11}
+### Ejercicios {#fispm-c06-ejercicios-11}
 
 []{#fispm-t1-c06-e0025}
 
@@ -935,7 +935,7 @@ Referencias internas: [capítulo 2, §9](fisica-para-matematicos-capitulo-2-magn
 
 []{#fpm-i-06-s13}
 
-## 6.13. Jerarquías de modelos y descripción efectiva {#fispm-c06-jerarquuxedas-de-modelos-y-descripciuxf3n-efectiva}
+## 13. Jerarquías de modelos y descripción efectiva {#fispm-c06-jerarquuxedas-de-modelos-y-descripciuxf3n-efectiva}
 
 Una distancia puede describirse mediante $\sqrt{L^2+h^2}$, mediante $L+h^2/(2L)$ o mediante $L$. Las tres expresiones conservan información diferente sobre el mismo modelo geométrico. Para la distancia total y una tolerancia moderada puede bastar la última. Para estudiar el pequeño aumento causado por la altura, esa expresión elimina precisamente el efecto que interesa y conviene conservar la corrección cuadrática.
 
@@ -943,7 +943,7 @@ La palabra «completo» es relativa al modelo de partida. La fórmula de Pitágo
 
 []{#comparar-descripciones-mediante-una-observable-común}
 
-### 6.13.1. Comparar descripciones mediante una observable común {#fispm-c06-comparar-descripciones-mediante-una-observable-comuxfan}
+### Comparar descripciones mediante una observable común {#fispm-c06-comparar-descripciones-mediante-una-observable-comuxfan}
 
 []{#fispm-t1-c06-d0016}
 
@@ -961,7 +961,7 @@ En geometría, $d_0=L$ conserva la escala principal de la distancia, mientras qu
 
 []{#presupuesto-de-error-entre-descripciones}
 
-### 6.13.2. Presupuesto de error entre descripciones {#fispm-c06-presupuesto-de-error-entre-descripciones}
+### Presupuesto de error entre descripciones {#fispm-c06-presupuesto-de-error-entre-descripciones}
 
 []{#fispm-t1-c06-p0013}
 
@@ -989,13 +989,13 @@ Referencias internas utilizadas: [capítulo 3, §14](fisica-para-matematicos-cap
 
 []{#fpm-i-06-s14}
 
-## 6.14. Protocolo de aproximación controlada {#fispm-c06-protocolo-de-aproximaciuxf3n-controlada}
+## 14. Protocolo de aproximación controlada {#fispm-c06-protocolo-de-aproximaciuxf3n-controlada}
 
 Una aproximación queda defendida cuando otra persona puede recuperar la pregunta, comprobar la reducción y reconocer sus límites sin adivinar las condiciones omitidas. Una fórmula breve puede ser el resultado de ese trabajo, pero no lo sustituye. Los ejemplos del capítulo permiten reunir las obligaciones en una ficha que sirve tanto para construir una aproximación como para auditar una ya propuesta.
 
 []{#la-ficha-y-sus-obligaciones}
 
-### 6.14.1. La ficha y sus obligaciones {#fispm-c06-la-ficha-y-sus-obligaciones}
+### La ficha y sus obligaciones {#fispm-c06-la-ficha-y-sus-obligaciones}
 
 []{#fispm-t1-c06-d0017}
 
@@ -1029,7 +1029,7 @@ La cinemática en una dimensión del capítulo 7 podrá utilizar esta ficha para
 
 []{#problemas-de-síntesis}
 
-### 6.14.2. Problemas de síntesis {#fispm-c06-problemas-de-suxedntesis}
+### Problemas de síntesis {#fispm-c06-problemas-de-suxedntesis}
 
 []{#fispm-t1-c06-e0028}
 
@@ -1073,11 +1073,11 @@ Una fórmula aproximada expresa una decisión sobre qué información conservar.
 
 []{#bibliografía-citada}
 
-## 6.14. Bibliografía citada {#fispm-c06-bibliografuxeda-citada .unnumbered}
+## Bibliografía citada {#fispm-c06-bibliografuxeda-citada .unnumbered}
 
 []{#canon-interno-citado}
 
-### 6.14.3. Canon interno citado {#fispm-c06-canon-interno-citado}
+### Canon interno citado {#fispm-c06-canon-interno-citado}
 
 - *Física para matemáticos*, Tomo I, capítulo 1, «Teorías físicas: fenómenos, modelos y leyes». [capítulo 1](fisica-para-matematicos-capitulo-1-teorias-fisicas-fenomenos-modelos-y-leyes.md#fispm-c01-teoruxedas-fuxedsicas-fenuxf3menos-modelos-y-leyes). Localizador utilizado: §11, «Dominio de validez y teorías efectivas», citado en §13.
 
@@ -1087,7 +1087,7 @@ Una fórmula aproximada expresa una decisión sobre qué información conservar.
 
 []{#obras-externas-citadas}
 
-### 6.14.4. Obras externas citadas {#fispm-c06-obras-externas-citadas}
+### Obras externas citadas {#fispm-c06-obras-externas-citadas}
 
 - Hinch, E. J. *Perturbation Methods*. Cambridge University Press, 1991. Localizadores utilizados: cap. 1, §§1.1--1.2, pp. 1--7, citado en §§3, 5, 10 y 11; cap. 2, §§2.1--2.2, pp. 19--26, citado en §9.
 
