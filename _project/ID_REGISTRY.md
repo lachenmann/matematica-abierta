@@ -6,7 +6,7 @@
 |---|---|
 | Concepto | MA-CON-0021 |
 | Problema | MA-PRB-0007 |
-| Artículo | MA-ART-0017 |
+| Artículo | MA-ART-0021 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
 | Capítulo | MA-BCH-0371 |
@@ -58,6 +58,8 @@
 | MA-ART-0013 | article | ¿Puede cualquier teorema demostrarse con 100 operaciones? Lo que realmente dice James P. Jones | `blog/jones-100-operaciones.md` | published |
 | MA-ART-0014 | article | La propiedad arquimediana: de Eudoxo a Arquímedes y al análisis moderno | `teoria/resultados/propiedad-arquimediana.qmd` | published |
 | MA-ART-0015 | article | Cómo Newton obtuvo la serie del seno a partir del binomio | `blog/newton-serie-seno-binomio.qmd` | published; M01–M04 QA PASS |
+| MA-ART-0020 | article | Euler y el problema de Basilea: historia, derivación y consecuencias | `blog/euler-problema-de-basilea.qmd` | published; maestro Obsidian MA-ART-0020 v0.2.0; autorización 16-10-2026 |
+| MA-ART-0020-HIST | article | La prueba histórica de Euler del problema de Basilea | `blog/euler-basilea-prueba-historica.qmd` | published; complemento canónico de MA-ART-0020; autorización 16-10-2026 |
 | MA-APP-0001 | interactive-application | Laboratorio interactivo de la desigualdad triangular | `teoria/resultados/laboratorio-desigualdad-triangular.qmd` | review |
 | MA-APP-0002 | interactive-application | Laboratorio de Cauchy–Schwarz: del cuadrado a la geometría | `teoria/resultados/laboratorio-cauchy-schwarz.qmd` | published; canonical-web reconciliation + M11 publication QA PASS 2026-09-29 |
 | MA-APP-0003 | interactive-application | Laboratorio de cotas óptimas: recta, banda épsilon y disco | `assets/labs/MA-APP-0003-supremo-infimo.html` | published |
