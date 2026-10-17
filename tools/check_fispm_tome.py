@@ -26,6 +26,7 @@ def main():
   s=sources[r['chapter']]
   assert 'content-id: '+r['content_id'] in s and 'source-id: '+r['source_id'] in s
   assert '[[' not in s and '[!' not in s
+  assert not re.search(r'\\(?:parbox|linewidth|centering)\b',s),(r['chapter'],'print-only LaTeX layout command in web source')
   assert not re.search(r'PRIVATE|QA_PASS|EDITORIAL_PROVISIONAL_CLOSE|MASTER_CANONICO',s)
   if r['chapter']>1:assert Path(rows[r['chapter']-2]['path']).name in s
   if r['chapter']<30:assert Path(rows[r['chapter']]['path']).name in s

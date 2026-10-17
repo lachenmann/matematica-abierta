@@ -1023,7 +1023,7 @@ Esa afirmación no expresa una razón de temperaturas termodinámicas. El caso s
 
 Aquí cumple una función conceptual:
 
-$$\boxed{\begin{gathered} \text{\parbox{.82\linewidth}{\centering que algo se exprese con un número y una referencia}}\\[2pt] \not\Rightarrow\\[2pt] \text{\parbox{.82\linewidth}{\centering que todas las operaciones numéricas tengan interpretación física directa}}. \end{gathered}}$$
+$$\boxed{\begin{gathered} \begin{gathered}\text{que algo se exprese con un número y}\\\text{una referencia}\end{gathered}\\[2pt] \not\Rightarrow\\[2pt] \begin{gathered}\text{que todas las operaciones numéricas}\\\text{tengan interpretación física directa}\end{gathered}. \end{gathered}}$$
 
 []{#segunda-regla-metodológica-de-2}
 
@@ -7223,7 +7223,7 @@ El tiempo no disminuye cien veces porque su ley de escala no es lineal en $L$: $
 
 La conclusión sintetiza la sección:
 
-$$\boxed{ \text{\parbox{.66\linewidth}{\centering el escalamiento de una magnitud viene de la estructura del modelo, no del tamaño lineal por sí solo}}. }$$
+$$\boxed{ \begin{gathered}\text{el escalamiento de una magnitud viene}\\\text{de la estructura del modelo, no del}\\\text{tamaño lineal por sí solo}\end{gathered}. }$$
 
 []{#variar-escalamiento-simultáneo-de-varias-magnitudes}
 
