@@ -49,7 +49,7 @@ def main():
     assert ' '.join(manifest['caption'].split()) in ' '.join(page.captions[manifest['figure_label']].split()),manifest['figure_id']
   if args.site_dir:
    h=(args.site_dir/Path(row['path']).with_suffix('.html')).read_text();page=Page();page.feed(h)
-   assert set(ids)<=set(page.ids),row['path'];assert len(page.ids)==len(set(page.ids)),row['path'];assert page.math>0
+   assert set(ids)<=set(page.ids),row['path'];assert all(page.ids.count(i)==1 for i in ids),row['path'];assert page.math>0
    assert len([im for im in page.images if '/apm-tomo-ii/' in im.get('src','')])==sum(f['chapter']==row['chapter'] for f in m['figures'])
  assert len(allids)==1901 and len(set(allids))==1901 and ex==808 and sol==808
  assert len(m['figures'])==78
