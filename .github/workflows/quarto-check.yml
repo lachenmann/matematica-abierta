@@ -256,15 +256,15 @@ jobs:
           python3 -m unittest tests/test_apm_qa_scope.py
           python3 tools/apm_qa_scope.py --base "$APM_BASE_SHA" >> "$GITHUB_OUTPUT"
 
-      - name: APM Tomo I full desktop and phone composition QA
-        if: steps.apm_scope.outputs.required == 'true'
-        run: python3 tests/apm_tome_browser.py
-
       - name: APM Tomo II complete source and rendered integrity
         run: python3 tools/check_apm_tome_ii.py --site-dir _site
 
       - name: APM Tomo II desktop and phone composition
         run: python3 tests/apm_tome_ii_browser.py
+
+      - name: APM Tomo I full desktop and phone composition QA
+        if: steps.apm_scope.outputs.required == 'true'
+        run: python3 tests/apm_tome_browser.py
 
       - name: Preserve APM Tomo II visual evidence
         if: always()
