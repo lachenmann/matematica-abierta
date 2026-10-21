@@ -6,10 +6,24 @@ import http.server,socketserver,threading,json,os
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1];os.chdir(ROOT)
 m=json.loads((ROOT/'data/apm-tome-ii-manifest.json').read_text());out=ROOT/'.ma-build/apm-ii-visual';out.mkdir(parents=True,exist_ok=True)
-class Server(socketserver.TCPServer):allow_reuse_address=True
-server=Server(('127.0.0.1',8792),partial(http.server.SimpleHTTPRequestHandler,directory=str(ROOT/'_site')));threading.Thread(target=server.serve_forever,daemon=True).start();checks=[]
+class Server(http.server.ThreadingHTTPServer):allow_reuse_address=True
+server=Server(('127.0.0.1',8792),partial(http.server.SimpleHTTPRequestHandler,directory=str(ROOT/'_site')));threading.Thread(target=server.serve_forever,daemon=True).start();checks=[];navigation_checks=[]
 with sync_playwright() as p:
  browser=p.chromium.launch();contexts={w:browser.new_context(viewport={'width':w,'height':1000}) for w in [375,1440]}
+ t1=json.loads((ROOT/'data/apm-tome-i-manifest.json').read_text())
+ book='libros/para-matematicos/algebra-para-matematicos.html'
+ index='libros/para-matematicos/algebra-para-matematicos-tomo-ii.html'
+ navigation=[(book,[row['path'].replace('.md','.html') for row in t1['chapters']]+[index]),
+             (index,[row['path'].replace('.md','.html') for row in m['chapters']]+[
+              'libros/capitulos/algebra-para-matematicos-tomo-ii-convenciones.html',
+              'libros/capitulos/algebra-para-matematicos-tomo-ii-bibliografia.html',book])]
+ for path,expected in navigation:
+  for width,ctx in contexts.items():
+   page=ctx.new_page();response=page.goto('http://127.0.0.1:8792/'+path,wait_until='networkidle',timeout=120000)
+   data=page.evaluate("expected=>({pageWidth:document.documentElement.scrollWidth,missing:expected.filter(p=>![...document.querySelectorAll('main a[href]')].some(a=>new URL(a.href).pathname==='/'+p))})",expected)
+   data.update(path=path,width=width,status=response.status);data['pass']=response.status==200 and data['pageWidth']<=width+2 and not data['missing'];navigation_checks.append(data)
+   page.screenshot(path=str(out/f'index-{len(navigation_checks)}-{width}.png'));page.close()
+ assert len(navigation_checks)==4 and all(x['pass'] for x in navigation_checks),json.dumps(navigation_checks,ensure_ascii=False)
  for row in m['chapters']:
   for width,ctx in contexts.items():
    page=ctx.new_page();errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
@@ -19,7 +33,7 @@ with sync_playwright() as p:
    d.update(chapter=row['chapter'],width=width,status=response.status,errors=list(errors));d['pass']=response.status==200 and d['pageWidth']<=width+2 and d['math']>0 and d['math']==d['sourceMath'] and not any(d[k] for k in ['mathErrors','undefinedCommands','missingIds','duplicateIds','failedImages','missingAlt','brokenFragments','errors']);checks.append(d)
    for label,target in [('theory',page.locator('main.content h2').first),('exercise',page.locator('[id="'+row['exercise_ids'][0]+'"]')),('solution',page.locator('[id="'+row['solution_ids'][0]+'"]')),('end',page.locator('[id="'+row['solution_ids'][-1]+'"]'))]:
     if target.count():target.evaluate("e=>e.scrollIntoView({block:'start',behavior:'instant'})");page.screenshot(path=str(out/f'c{row["chapter"]:02}-{width}-{label}.png'))
-   page.close();(out/'results.json').write_text(json.dumps({'complete':len(checks)==40,'checks':checks},ensure_ascii=False,indent=2));print(json.dumps({'chapter':row['chapter'],'width':width,'pass':d['pass']}),flush=True)
+   page.close();(out/'results.json').write_text(json.dumps({'complete':len(checks)==40,'checks':checks,'navigation_checks':navigation_checks},ensure_ascii=False,indent=2));print(json.dumps({'chapter':row['chapter'],'width':width,'pass':d['pass']}),flush=True)
  browser.close()
 server.shutdown();assert len(checks)==40 and all(x['pass'] for x in checks),json.dumps([x for x in checks if not x['pass']],ensure_ascii=False)
-print('APM Tomo II: 40/40 desktop/phone checks PASS')
+print('APM Tomo II: 40/40 desktop/phone chapters and 4/4 index navigation checks PASS')
