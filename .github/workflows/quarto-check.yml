@@ -260,6 +260,21 @@ jobs:
         if: steps.apm_scope.outputs.required == 'true'
         run: python3 tests/apm_tome_browser.py
 
+      - name: APM Tomo II complete source and rendered integrity
+        run: python3 tools/check_apm_tome_ii.py --site-dir _site
+
+      - name: APM Tomo II desktop and phone composition
+        run: python3 tests/apm_tome_ii_browser.py
+
+      - name: Preserve APM Tomo II visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: apm-tome-ii-visual-qa
+          path: .ma-build/apm-ii-visual/
+          retention-days: 7
+          if-no-files-found: error
+
       - name: Preserve APM visual evidence
         if: always() && steps.apm_scope.outputs.required == 'true'
         uses: actions/upload-artifact@v4
@@ -296,3 +311,4 @@ jobs:
           include-hidden-files: true
           retention-days: 14
           if-no-files-found: warn
+

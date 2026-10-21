@@ -571,3 +571,32 @@ Se conservan los IDs y URLs publicados de C00–C05. Se incorporan C06–C31, su
 | MA-BCH-0368 | book-chapter | FISPM-T1-C28 — Mecánica hamiltoniana | `libros/capitulos/fisica-para-matematicos-capitulo-28-mecanica-hamiltoniana.md` | published |
 | MA-BCH-0369 | book-chapter | FISPM-T1-C29 — Corchetes de Poisson y estructura simpléctica elemental | `libros/capitulos/fisica-para-matematicos-capitulo-29-corchetes-de-poisson-y-estructura-simplectica-elemental.md` | published |
 | MA-BCH-0370 | book-chapter | FISPM-T1-C30 — Sistemas dinámicos, estabilidad y caos | `libros/capitulos/fisica-para-matematicos-capitulo-30-sistemas-dinamicos-estabilidad-y-caos.md` | published |
+
+
+
+## APM — Tomo II, publicación web autorizada 2026-10-21
+
+| ID | Tipo | Título | Ruta | Estado |
+|---|---|---|---|---|
+| MA-BCH-0372 | book-chapter | APM Tomo II — Sistemas lineales y eliminación | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-01-sistemas-lineales-y-eliminacion.md` | published |
+| MA-BCH-0373 | book-chapter | APM Tomo II — Matrices como representación de sistemas | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-02-matrices-como-representacion-de-sistemas.md` | published |
+| MA-BCH-0374 | book-chapter | APM Tomo II — Álgebra de matrices e invertibilidad | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-03-algebra-de-matrices-e-invertibilidad.md` | published |
+| MA-BCH-0375 | book-chapter | APM Tomo II — Espacios vectoriales | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-04-espacios-vectoriales.md` | published |
+| MA-BCH-0376 | book-chapter | APM Tomo II — Subespacios y generación | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-05-subespacios-y-generacion.md` | published |
+| MA-BCH-0377 | book-chapter | APM Tomo II — Dependencia e independencia lineal | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-06-dependencia-e-independencia-lineal.md` | published |
+| MA-BCH-0378 | book-chapter | APM Tomo II — Bases y dimensión | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-07-bases-y-dimension.md` | published |
+| MA-BCH-0379 | book-chapter | APM Tomo II — Transformaciones lineales | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-08-transformaciones-lineales.md` | published |
+| MA-BCH-0380 | book-chapter | APM Tomo II — Núcleo, imagen y rango-nulidad | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-09-nucleo-imagen-y-rango-nulidad.md` | published |
+| MA-BCH-0381 | book-chapter | APM Tomo II — Isomorfismos y coordenadas | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-10-isomorfismos-y-coordenadas.md` | published |
+| MA-BCH-0382 | book-chapter | APM Tomo II — Sumas directas y espacios cociente | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-11-sumas-directas-y-espacios-cociente.md` | published |
+| MA-BCH-0383 | book-chapter | APM Tomo II — Matrices de transformaciones y cambio de base | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-12-matrices-de-transformaciones-y-cambio-de-base.md` | published |
+| MA-BCH-0384 | book-chapter | APM Tomo II — Determinantes | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-13-determinantes.md` | published |
+| MA-BCH-0385 | book-chapter | APM Tomo II — Valores propios y vectores propios | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-14-valores-propios-y-vectores-propios.md` | published |
+| MA-BCH-0386 | book-chapter | APM Tomo II — Polinomios de operadores y teorema de Cayley–Hamilton | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-15-polinomios-de-operadores-y-teorema-de-cayleyhamilton.md` | published |
+| MA-BCH-0387 | book-chapter | APM Tomo II — Diagonalización | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-16-diagonalizacion.md` | published |
+| MA-BCH-0388 | book-chapter | APM Tomo II — Subespacios invariantes, triangularización y formas canónicas | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-17-subespacios-invariantes-triangularizacion-y-formas-canonicas.md` | published |
+| MA-BCH-0389 | book-chapter | APM Tomo II — Forma de Jordan | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-18-forma-de-jordan.md` | published |
+| MA-BCH-0390 | book-chapter | APM Tomo II — Espacio dual y transposición | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-19-espacio-dual-y-transposicion.md` | published |
+| MA-BCH-0391 | book-chapter | APM Tomo II — Formas bilineales, productos internos y teoremas espectrales | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-20-formas-bilineales-productos-internos-y-teoremas-espectrales.md` | published |
+| MA-BCH-0392 | book-chapter | APM Tomo II — Convenciones de lectura | `libros/capitulos/algebra-para-matematicos-tomo-ii-convenciones.md` | published |
+| MA-BCH-0393 | book-chapter | APM Tomo II — Bibliografía | `libros/capitulos/algebra-para-matematicos-tomo-ii-bibliografia.md` | published |
