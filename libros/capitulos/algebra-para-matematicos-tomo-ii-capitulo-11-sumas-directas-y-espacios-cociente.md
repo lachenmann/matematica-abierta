@@ -42,7 +42,7 @@ La elección de $(0,2)$ como representante es cómoda, pero no obligatoria. La r
 
 <figure id="fig-apm-t2-c11-f01" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C11-F01.svg" alt="Dos descomposiciones de (4,2) separan una componente horizontal y otra en un complemento, vertical u oblicuo; ambas componentes elegidas representan la misma clase módulo el eje horizontal." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 11.1.</em> Los puntos <span class="math inline">\((0,2)\)</span> y <span class="math inline">\((2,2)\)</span> son representantes de la misma clase horizontal. Elegir un complemento determina cuál se usa; formar la clase no exige esa elección.</figcaption>
+<figcaption><em>Figura 11.1.</em> Los puntos $(0,2)$ y $(2,2)$ son representantes de la misma clase horizontal. Elegir un complemento determina cuál se usa; formar la clase no exige esa elección.</figcaption>
 </figure>
 
 Las sumas directas darán condiciones para descomponer vectores de manera única. Los cocientes permitirán conservar sólo la información que permanece al ignorar un subespacio. La relación entre ambas construcciones explicará por qué podemos calcular con representantes sin convertir la elección de uno de ellos en parte de la definición.
@@ -259,7 +259,7 @@ Para el eje horizontal, $T(x,y)=3y$ anula $U$ y define $\overline T((x,y)+U)=3y$
 
 <figure id="fig-apm-t2-c11-f03" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C11-F03.svg" alt="El recorrido de V a W mediante T coincide con el recorrido por V/U cuando U está contenido en el núcleo; al tomar U igual al núcleo, la aplicación inducida llega biyectivamente a la imagen." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 11.3.</em> La factorización obliga a que <span class="math inline">\(T\)</span> sea constante en cada clase. Cuando se identifican exactamente las entradas con la misma salida, la aplicación inducida es un isomorfismo hacia la imagen.</figcaption>
+<figcaption><em>Figura 11.3.</em> La factorización obliga a que $T$ sea constante en cada clase. Cuando se identifican exactamente las entradas con la misma salida, la aplicación inducida es un isomorfismo hacia la imagen.</figcaption>
 </figure>
 
 ## 11.8. Reunir exactamente las entradas con la misma salida

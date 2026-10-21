@@ -40,7 +40,7 @@ La dirección $(1,-1,0)$ se reconoce porque su propia salida es cero. En cambio,
 
 <figure id="fig-apm-t2-c09-f01" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C09-F01.svg" alt="Dos rectas paralelas de entradas tienen salidas constantes bajo T(x,y,z)=(x+y,z); la recta por cero es el núcleo y la recta por (2,0,1) es la fibra de (2,1)." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 9.1.</em> Trasladar una entrada en la dirección <span class="math inline">\((1,-1,0)\)</span> no cambia su salida. La proyección utilizada para dibujar el dominio tridimensional conserva incidencias y paralelismo, sin representar sus ángulos o longitudes espaciales.</figcaption>
+<figcaption><em>Figura 9.1.</em> Trasladar una entrada en la dirección $(1,-1,0)$ no cambia su salida. La proyección utilizada para dibujar el dominio tridimensional conserva incidencias y paralelismo, sin representar sus ángulos o longitudes espaciales.</figcaption>
 </figure>
 
 Trabajaremos sobre un cuerpo $\mathbb F$ común al dominio y al codominio. Los ejemplos numéricos son reales salvo indicación contraria. Se presuponen la eliminación de C01–C03, las bases de C07 y la linealidad de C08. Las afirmaciones sobre dimensiones enteras llevarán una hipótesis de finitud; las nociones de núcleo e imagen no la necesitan.
@@ -123,7 +123,7 @@ Para la medición inicial, una base adaptada del dominio es $((1,-1,0),(1,0,0),(
 
 <figure id="fig-apm-t2-c09-f02" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C09-F02.svg" alt="Una base del dominio contiene primero un vector del núcleo y después dos vectores cuyas imágenes forman una base del codominio para la medición T(x,y,z)=(x+y,z)." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 9.2.</em> Los bloques tienen funciones distintas: un vector básico se anula y las otras dos imágenes son independientes. Las flechas representan la aplicación de <span class="math inline">\(T\)</span>, no la posición geométrica de tres vectores en un mismo plano.</figcaption>
+<figcaption><em>Figura 9.2.</em> Los bloques tienen funciones distintas: un vector básico se anula y las otras dos imágenes son independientes. Las flechas representan la aplicación de $T$, no la posición geométrica de tres vectores en un mismo plano.</figcaption>
 </figure>
 
 La derivación formal $D:P_3(\mathbb R)\to P_3(\mathbb R)$ ofrece otro ejemplo. La condición $D(a+bt+ct^2+dt^3)=b+2ct+3dt^2=0$ fuerza $b=c=d=0$, de modo que el núcleo es el espacio de constantes, de dimensión uno. La imagen es $P_2(\mathbb R)$: no se producen términos de grado tres y todo $a+bt+ct^2$ se obtiene derivando $at+(b/2)t^2+(c/3)t^3$. El rango es tres y $4=1+3$. Las divisiones por dos y tres son válidas aquí sobre $\mathbb R$; sobre otros cuerpos debemos volver a examinar los coeficientes.
@@ -190,7 +190,7 @@ La eliminación muestra los parámetros y rango-nulidad justifica su número. Co
 
 <figure id="fig-apm-t2-c09-f03" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C09-F03.svg" alt="El mismo sistema rectangular muestra dos pivotes en la matriz de coeficientes, dos variables libres y una condición de compatibilidad c=a+b0 en la matriz ampliada." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 9.3.</em> En el dibujo, <span class="math inline">\(b\)</span> abrevia <span class="math inline">\(b_0\)</span>. Los pivotes que cuentan el rango pertenecen a la matriz de coeficientes. Si <span class="math inline">\(c-a-b_0\ne0\)</span>, aparece un pivote adicional en la última columna ampliada que certifica incompatibilidad, sin aumentar el rango de <span class="math inline">\(A\)</span>.</figcaption>
+<figcaption><em>Figura 9.3.</em> En el dibujo, $b$ abrevia $b_0$. Los pivotes que cuentan el rango pertenecen a la matriz de coeficientes. Si $c-a-b_0\ne0$, aparece un pivote adicional en la última columna ampliada que certifica incompatibilidad, sin aumentar el rango de $A$.</figcaption>
 </figure>
 
 ## 9.7. Restringir una transformación y componerla

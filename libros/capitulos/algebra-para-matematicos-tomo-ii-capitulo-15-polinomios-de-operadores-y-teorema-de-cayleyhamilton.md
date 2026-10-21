@@ -51,7 +51,7 @@ La condición universal importa incluso en un plano. Sea $N(x,y)=(y,0)$. Se tien
 
 <figure id="fig-apm-t2-c15-f01" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C15-F01.svg" alt="La primera aplicación de N(x,y)=(y,0) envía (1,2) a (2,0), y la segunda envía ese resultado al origen. La figura ilustra N al cuadrado igual a cero; la justificación para todas las entradas se da en el texto." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 15.1.</em> Las flechas representan la entrada y sus imágenes desde el origen. El último resultado es el vector cero, marcado por un punto; no hay una flecha de longitud positiva que lo represente. El cálculo dibujado es una instancia de la identidad <span class="math inline">\(N^2(x,y)=(0,0)\)</span>.</figcaption>
+<figcaption><em>Figura 15.1.</em> Las flechas representan la entrada y sus imágenes desde el origen. El último resultado es el vector cero, marcado por un punto; no hay una flecha de longitud positiva que lo represente. El cálculo dibujado es una instancia de la identidad $N^2(x,y)=(0,0)$.</figcaption>
 </figure>
 
 <span id="MA-BCH-APM-02-015-PRP-001" class="apm-anchor"></span>
@@ -181,7 +181,7 @@ Para $R=\begin{pmatrix}0&-1\\1&0\end{pmatrix}$, la reducción es aún más corta
 
 <figure id="fig-apm-t2-c15-f02" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C15-F02.svg" alt="Las imágenes sucesivas de e1 por R, una rotación de un cuarto de vuelta, recorren e1, e2, menos e1 y menos e2; la cuarta aplicación vuelve a e1." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 15.2.</em> Se dibuja la órbita de un vector real. La identidad <span class="math inline">\(R^2=-I\)</span>, comprobada como matriz, explica el ciclo de todos los vectores y permite reducir cualquier exponente; la sola periodicidad de una entrada no probaría esa identidad universal.</figcaption>
+<figcaption><em>Figura 15.2.</em> Se dibuja la órbita de un vector real. La identidad $R^2=-I$, comprobada como matriz, explica el ciclo de todos los vectores y permite reducir cualquier exponente; la sola periodicidad de una entrada no probaría esa identidad universal.</figcaption>
 </figure>
 
 También podemos trabajar sin raíces del mínimo. Para $F=\begin{pmatrix}1&1\\1&0\end{pmatrix}$ se cumple $F^2=F+I$. Si definimos los números $f_0=0$, $f_1=1$ y $f_{k+1}=f_k+f_{k-1}$ para $k\ge1$, una inducción da $F^k=f_kF+f_{k-1}I$ para $k\ge1$: al multiplicar por $F$ aparecen $f_k(F+I)+f_{k-1}F=f_{k+1}F+f_kI$. La relación cuadrática entre matrices produce la misma recurrencia que organiza los coeficientes. Por ejemplo, $F^{10}=55F+34I$.
@@ -247,7 +247,7 @@ Para $F=\begin{pmatrix}1&1\\1&0\end{pmatrix}$, los vectores $e_2$ y $Fe_2=e_1$ f
 
 <figure id="fig-apm-t2-c15-f03" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C15-F03.svg" alt="La matriz F transforma una columna (a,b) en (a+b,a). Partiendo de e2 aparecen (0,1), (1,0), (1,1), (2,1) y (3,2); las dos primeras columnas forman una base." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 15.3.</em> Las columnas se presentan en una tabla para conservar sus valores exactos. La relación entre cada tres columnas es <span class="math inline">\(v_{k+2}=v_{k+1}+v_k\)</span>. El hecho de que <span class="math inline">\(v_0,v_1\)</span> formen una base permite convertir la recurrencia observada y comprobada en una relación del operador completo.</figcaption>
+<figcaption><em>Figura 15.3.</em> Las columnas se presentan en una tabla para conservar sus valores exactos. La relación entre cada tres columnas es $v_{k+2}=v_{k+1}+v_k$. El hecho de que $v_0,v_1$ formen una base permite convertir la recurrencia observada y comprobada en una relación del operador completo.</figcaption>
 </figure>
 
 La operación de reducir potencias a restos vuelve así al problema inicial con un criterio de verificación. Una cuenta sobre un vector produce una relación local; una cuenta sobre una base la convierte en identidad de operadores. Cuando una sola trayectoria contiene esa base, la recurrencia que describe su evolución ya recoge el polinomio mínimo completo.

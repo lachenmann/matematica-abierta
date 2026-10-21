@@ -177,7 +177,7 @@ La primera se calcula en una factorización de polinomios; la segunda, resolvien
 
 <figure id="fig-apm-t2-c14-f02" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C14-F02.svg" alt="Dos operadores reales tienen el mismo polinomio (t-3) al cuadrado. Para 3I el espacio propio de tres es todo el plano, mientras para la matriz con una entrada uno sobre la diagonal es sólo el eje horizontal." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 14.2.</em> El sombreado representa <span class="math inline">\(E_3\)</span> dentro de la región de plano visible. En el primer panel el subespacio continúa como todo <span class="math inline">\(\mathbb R^2\)</span>; en el segundo continúa como una recta. La multiplicidad algebraica es dos en ambos casos.</figcaption>
+<figcaption><em>Figura 14.2.</em> El sombreado representa $E_3$ dentro de la región de plano visible. En el primer panel el subespacio continúa como todo $\mathbb R^2$; en el segundo continúa como una recta. La multiplicidad algebraica es dos en ambos casos.</figcaption>
 </figure>
 
 <span id="MA-BCH-APM-02-014-THM-003" class="apm-anchor"></span>
@@ -222,7 +222,7 @@ Los vectores de estas columnas no pertenecen a $\mathbb R^2$. Al pasar al cuerpo
 
 <figure id="fig-apm-t2-c14-f03" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C14-F03.svg" alt="En el plano real, una rotación de un cuarto de vuelta lleva (2,1) a (-1,2), fuera de su recta. A la derecha se muestran las raíces complejas i y menos i del polinomio t al cuadrado más uno, junto a sus vectores propios complejos." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 14.3.</em> El panel geométrico representa vectores reales; el panel algebraico da columnas de <span class="math inline">\(\mathbb C^2\)</span>, que no se dibujan como flechas del mismo plano real. El cambio de cuerpo queda explícito.</figcaption>
+<figcaption><em>Figura 14.3.</em> El panel geométrico representa vectores reales; el panel algebraico da columnas de $\mathbb C^2$, que no se dibujan como flechas del mismo plano real. El cambio de cuerpo queda explícito.</figcaption>
 </figure>
 
 La dependencia también se observa entre $\mathbb Q$ y $\mathbb R$. La matriz $\begin{pmatrix}0&2\\1&0\end{pmatrix}$ tiene característico $t^2-2$. No posee valores propios racionales; sobre los reales tiene $\sqrt2$ y $-\sqrt2$. En cuerpos de característica positiva pueden, además, juntarse raíces que eran distintas en otros cuerpos: sobre $\mathbb F_2$, $t^2+1=(t+1)^2$. La matriz del cuarto de vuelta, reducida a ese cuerpo, se convierte en $\begin{pmatrix}0&1\\1&0\end{pmatrix}$ y sólo tiene el valor propio uno, con espacio propio $\operatorname{span}(1,1)$.

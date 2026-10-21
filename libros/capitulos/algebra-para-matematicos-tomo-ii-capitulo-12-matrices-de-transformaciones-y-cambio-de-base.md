@@ -177,7 +177,7 @@ El teorema 12.1 identifica $Q^{-1}AP$ como la matriz pedida. $\square$
 
 <figure id="fig-apm-t2-c12-f02" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C12-F02.svg" alt="Un cuadrado de coordenadas muestra A entre las bases antiguas y A&#x27; entre las nuevas; P convierte la entrada nueva en antigua, y Q convierte la salida nueva en antigua. Las dos rutas verifican AP=QA&#x27;." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 12.2.</em> Las rutas desde la entrada nueva hasta la salida antigua dan <span class="math inline">\(AP=QA&#39;\)</span>. Despejar <span class="math inline">\(A&#39;\)</span> equivale a convertir la salida por <span class="math inline">\(Q^{-1}\)</span>.</figcaption>
+<figcaption><em>Figura 12.2.</em> Las rutas desde la entrada nueva hasta la salida antigua dan $AP=QA'$. Despejar $A'$ equivale a convertir la salida por $Q^{-1}$.</figcaption>
 </figure>
 
 En el ejemplo de la derivación, cambiemos a $\mathcal B'=(1,1+t,(1+t)^2)$ y $\mathcal C'=(1,1+t)$. Los vectores nuevos escritos en las bases antiguas dan

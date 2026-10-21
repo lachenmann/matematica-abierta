@@ -243,7 +243,7 @@ Sobre $\mathbb R$, una ecuación no degenerada en dos incógnitas describe una r
 
 <figure id="fig-apm-t2-c01-f03" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C01-F03.svg" alt="Proyección paralela de los planos x+y+z=3 y x-y=1; la recta común es (2,1,0)+t(-1,-1,2)." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 1.3.</em> Los parches de dos planos se encuentran en la recta <span class="math inline">\((2-t,1-t,2t)\)</span>. La perspectiva conserva la incidencia, pero no los ángulos ni las longitudes espaciales; las ecuaciones verifican la intersección completa, que continúa fuera de la ventana dibujada.</figcaption>
+<figcaption><em>Figura 1.3.</em> Los parches de dos planos se encuentran en la recta $(2-t,1-t,2t)$. La perspectiva conserva la incidencia, pero no los ángulos ni las longitudes espaciales; las ecuaciones verifican la intersección completa, que continúa fuera de la ventana dibujada.</figcaption>
 </figure>
 
 La compatibilidad exige una intersección común a todas las ecuaciones. Comprobar que cada pareja de ecuaciones tiene soluciones deja todavía una posibilidad que un dibujo de dos planos no revela. Consideremos en $\mathbb R^3$ los planos
@@ -256,7 +256,7 @@ Los dos primeros comparten la recta $(0,0,t)$. El primero y el tercero comparten
 
 <figure id="fig-apm-t2-c01-f05" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C01-F05.svg" alt="Sección z=0 de los planos x=0, y=0 y x+y=1; las intersecciones por parejas son (0,0), (0,1) y (1,0), sin punto común a las tres rectas." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 1.3a.</em> La sección <span class="math inline">\(z=0\)</span> permite ver las tres intersecciones por parejas. Como ninguna ecuación depende de <span class="math inline">\(z\)</span>, cada punto señalado se prolonga en una recta paralela al eje <span class="math inline">\(z\)</span>. Si existiera un punto común en el espacio, su proyección <span class="math inline">\((x,y,0)\)</span> pertenecería a las tres rectas dibujadas; las ecuaciones prueban que no existe.</figcaption>
+<figcaption><em>Figura 1.3a.</em> La sección $z=0$ permite ver las tres intersecciones por parejas. Como ninguna ecuación depende de $z$, cada punto señalado se prolonga en una recta paralela al eje $z$. Si existiera un punto común en el espacio, su proyección $(x,y,0)$ pertenecería a las tres rectas dibujadas; las ecuaciones prueban que no existe.</figcaption>
 </figure>
 
 En este ejemplo cada ecuación es compatible con las otras por separado, pero el tercer dato contradice lo que las dos primeras exigen conjuntamente. Restar de $x+y=1$ las ecuaciones $x=0$ y $y=0$ produce directamente $0=1$. El cálculo identifica qué información entra en conflicto y muestra por qué revisar parejas no basta cuando el problema exige satisfacer todas las condiciones a la vez.
@@ -365,7 +365,7 @@ La misma distributividad muestra que la suma de dos soluciones homogéneas y cua
 
 <figure id="fig-apm-t2-c01-f04" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C01-F04.svg" alt="En el plano xy, las rectas x+2y=0 y x+2y=3 se relacionan por la traslación p=(3,0)." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 1.4.</em> Cada solución de <span class="math inline">\(x+2y=3\)</span> se obtiene trasladando por <span class="math inline">\((3,0)\)</span> una solución de <span class="math inline">\(x+2y=0\)</span>. Las flechas unen puntos correspondientes; el origen pertenece a la recta homogénea.</figcaption>
+<figcaption><em>Figura 1.4.</em> Cada solución de $x+2y=3$ se obtiene trasladando por $(3,0)$ una solución de $x+2y=0$. Las flechas unen puntos correspondientes; el origen pertenece a la recta homogénea.</figcaption>
 </figure>
 
 La eliminación ha permitido distinguir información contradictoria, redundante y suficiente para determinar incógnitas. Una vez elegida una solución particular, la libertad restante queda expresada por las variaciones que hacen cero todas las ecuaciones homogéneas. Esa descripción conserva el conjunto completo de soluciones, incluso cuando una lista de valores aislados ya no puede representarlo.

@@ -141,7 +141,7 @@ Para $U=\{(x,y,z):z=x+y\}\subseteq\mathbb R^3$, el funcional $\ell(x,y,z)=-x-y+z
 
 <figure id="fig-apm-t2-c19-f03" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C19-F03.svg" alt="Plano z=x+y y familia de funcionales que lo anulan, escrita como múltiplos de −x−y+z." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 19.3.</em> El plano pertenece a <span class="math inline">\(V\)</span> y la familia de reglas pertenece a <span class="math inline">\(V^*\)</span>. Se muestran sus fórmulas, sin colocar esas reglas como flechas dentro del plano original.</figcaption>
+<figcaption><em>Figura 19.3.</em> El plano pertenece a $V$ y la familia de reglas pertenece a $V^*$. Se muestran sus fórmulas, sin colocar esas reglas como flechas dentro del plano original.</figcaption>
 </figure>
 
 <span id="MA-BCH-APM-02-019-PRP-005" class="apm-anchor"></span>
@@ -185,7 +185,7 @@ Para $T(x,y)=(x,y,x+y)$ y $g(u,v,w)=2u-v+3w$, la regla trasladada es $T'g(x,y)=5
 
 <figure id="fig-apm-t2-c19-f04" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C19-F04.svg" alt="Una medición en el espacio de salida se compone con T y se convierte en un funcional sobre el espacio de entrada." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 19.4.</em> La identidad <span class="math inline">\((T&#39;g)(v)=g(Tv)\)</span> fija tanto el sentido de la aplicación dual como sus valores.</figcaption>
+<figcaption><em>Figura 19.4.</em> La identidad $(T'g)(v)=g(Tv)$ fija tanto el sentido de la aplicación dual como sus valores.</figcaption>
 </figure>
 
 ## 19.6. Por qué aparece una matriz transpuesta
@@ -248,7 +248,7 @@ Las dos primeras filas son independientes y la tercera es su suma. Por ello $\ke
 
 <figure id="fig-apm-t2-c19-f06" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C19-F06.svg" alt="Sistema de tres ecuaciones con una relación entre filas, condición sobre el término independiente y certificado de incompatibilidad." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 19.5.</em> La dependencia entre filas obliga a la misma dependencia entre las entradas de <span class="math inline">\(b\)</span>. Una violación se detecta mediante un funcional que anula todas las columnas de <span class="math inline">\(A\)</span>.</figcaption>
+<figcaption><em>Figura 19.5.</em> La dependencia entre filas obliga a la misma dependencia entre las entradas de $b$. Una violación se detecta mediante un funcional que anula todas las columnas de $A$.</figcaption>
 </figure>
 
 ## 19.8. Los funcionales de un cociente
@@ -294,7 +294,7 @@ La evaluación se define sin elegir una base. Esa propiedad se conserva al aplic
 
 <figure id="fig-apm-t2-c19-f05" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C19-F05.svg" alt="Cuadrado que expresa la compatibilidad de la evaluación bidual con una aplicación lineal T." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 19.6.</em> Los dos recorridos llevan <span class="math inline">\(v\)</span> a la regla <span class="math inline">\(g\mapsto g(Tv)\)</span>. Los espacios de entrada y salida de cada flecha se mantienen explícitos.</figcaption>
+<figcaption><em>Figura 19.6.</em> Los dos recorridos llevan $v$ a la regla $g\mapsto g(Tv)$. Los espacios de entrada y salida de cada flecha se mantienen explícitos.</figcaption>
 </figure>
 
 <span id="MA-BCH-APM-02-019-COR-012" class="apm-anchor"></span>

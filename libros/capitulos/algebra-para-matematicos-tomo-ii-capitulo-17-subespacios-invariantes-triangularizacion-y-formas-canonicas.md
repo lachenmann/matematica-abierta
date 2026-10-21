@@ -137,7 +137,7 @@ preserva la recta $\operatorname{span}e_1$ y el plano $\operatorname{span}(e_1,e
 
 <figure id="fig-apm-t2-c17-f02" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C17-F02.svg" alt="Una recta contenida en un plano de R3 forma parte de una bandera invariante. El vector e2 y su imagen e1+2e2 están en el plano, mientras la primera recta también se preserva." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 17.2.</em> Se muestra una región del plano <span class="math inline">\(z=0\)</span> y de la recta generada por <span class="math inline">\(e_1\)</span>, que continúan fuera del recuadro. Los vectores dibujados ilustran la acción; las imágenes de los generadores prueban las inclusiones de subespacios.</figcaption>
+<figcaption><em>Figura 17.2.</em> Se muestra una región del plano $z=0$ y de la recta generada por $e_1$, que continúan fuera del recuadro. Los vectores dibujados ilustran la acción; las imágenes de los generadores prueban las inclusiones de subespacios.</figcaption>
 </figure>
 
 <span id="MA-BCH-APM-02-017-THM-002" class="apm-anchor"></span>
@@ -236,7 +236,7 @@ Sobre $\mathbb R$, una rotación $R$ de un cuarto de vuelta tiene mínimo irredu
 
 <figure id="fig-apm-t2-c17-f04" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C17-F04.svg" alt="La rotación real tiene una componente primaria de dimensión dos para el factor t al cuadrado más uno. Sobre los complejos aparecen dos componentes propias, para i y menos i." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 17.4.</em> Se comparan subespacios sobre cuerpos distintos. Las dimensiones dos real y uno complejo se refieren a los respectivos cuerpos; no se dibujan columnas de <span class="math inline">\(\mathbb C^2\)</span> como rectas del mismo plano real.</figcaption>
+<figcaption><em>Figura 17.4.</em> Se comparan subespacios sobre cuerpos distintos. Las dimensiones dos real y uno complejo se refieren a los respectivos cuerpos; no se dibujan columnas de $\mathbb C^2$ como rectas del mismo plano real.</figcaption>
 </figure>
 
 ## 17.7. La parte que queda cuando sólo hay una raíz

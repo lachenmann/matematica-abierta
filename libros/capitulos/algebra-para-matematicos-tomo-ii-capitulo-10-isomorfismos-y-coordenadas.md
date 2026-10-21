@@ -213,7 +213,7 @@ La primera matriz envía $(3,1)^{\mathsf T}$ a $(2,2)^{\mathsf T}$, mientras que
 
 <figure id="fig-apm-t2-c10-f02" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C10-F02.svg" alt="Un diagrama distingue el vector v, sus coordenadas en B y en C, y la transición P de B a C; la vuelta usa la matriz inversa." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 10.2.</em> Los dos recorridos desde <span class="math inline">\([v]_{\mathcal B}\)</span> hasta <span class="math inline">\([v]_{\mathcal C}\)</span> coinciden: reconstruir y volver a leer, o multiplicar por la matriz de transición. Las columnas básicas determinan esa matriz de manera única.</figcaption>
+<figcaption><em>Figura 10.2.</em> Los dos recorridos desde $[v]_{\mathcal B}$ hasta $[v]_{\mathcal C}$ coinciden: reconstruir y volver a leer, o multiplicar por la matriz de transición. Las columnas básicas determinan esa matriz de manera única.</figcaption>
 </figure>
 
 Cambiar la descripción y aplicar una transformación al vector son operaciones distintas. En $\mathbb R^2$, la misma matriz numérica puede multiplicar una columna de coordenadas para convertirla, o definir una función sobre vectores escritos en la base usual. La operación que estamos realizando se reconoce por los tipos de entrada y salida. En el cálculo anterior el vector geométrico continúa siendo $(4,2)$.
@@ -304,7 +304,7 @@ Para $h=1$, $p=2+3t+t^2$ se describe como $6+5(t-1)+(t-1)^2$. Los números $(2,3
 
 <figure id="fig-apm-t2-c10-f03" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C10-F03.svg" alt="El polinomio 2+3t+t² tiene coeficientes (2,3,1) en potencias de t y (6,5,1) en potencias de t-1; la matriz de transición conecta ambas columnas." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 10.3.</em> Las dos expresiones representan el mismo polinomio. La transición combina coeficientes según las identidades <span class="math inline">\(t=(t-1)+1\)</span> y <span class="math inline">\(t^2=(t-1)^2+2(t-1)+1\)</span>; no modifica los valores de la función representada.</figcaption>
+<figcaption><em>Figura 10.3.</em> Las dos expresiones representan el mismo polinomio. La transición combina coeficientes según las identidades $t=(t-1)+1$ y $t^2=(t-1)^2+2(t-1)+1$; no modifica los valores de la función representada.</figcaption>
 </figure>
 
 Estas fórmulas se obtuvieron distribuyendo productos y siguen siendo válidas en característica dos. Allí $2h=0$, pero los unos de la diagonal no desaparecen y la lista trasladada sigue siendo una base. En contraste, la base plana $((1,1),(1,-1))$ de la apertura falla en característica dos, porque sus dos vectores coinciden. El cuerpo debe examinarse en cada construcción, incluso cuando la notación parezca familiar.

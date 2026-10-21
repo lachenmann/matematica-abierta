@@ -40,7 +40,7 @@ Esas dos mediciones no bastan para demostrar que el dispositivo se comporte así
 
 <figure id="fig-apm-t2-c08-f01" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C08-F01.svg" alt="Dos vectores de entrada y su suma se transforman en u=(2,1), v=(-1,2) y u+v=(1,3), conservando el paralelogramo de la suma." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 8.1.</em> La regla <span class="math inline">\(T(x,y)=(2x-y,x+2y)\)</span> reconstruye todas sus salidas mediante las imágenes de las entradas usuales. La figura representa esta regla concreta; no certifica el comportamiento de una función desconocida a partir de unas pocas mediciones.</figcaption>
+<figcaption><em>Figura 8.1.</em> La regla $T(x,y)=(2x-y,x+2y)$ reconstruye todas sus salidas mediante las imágenes de las entradas usuales. La figura representa esta regla concreta; no certifica el comportamiento de una función desconocida a partir de unas pocas mediciones.</figcaption>
 </figure>
 
 Trabajaremos con espacios vectoriales sobre un mismo cuerpo $\mathbb F$. Usaremos las bases y combinaciones de C04–C07 y las operaciones con funciones del tomo I. Los ejemplos numéricos son reales salvo indicación contraria. No se presupone cálculo diferencial: la derivación de polinomios que aparecerá más adelante se definirá mediante sus coeficientes.
@@ -247,7 +247,7 @@ Sobre $W=\operatorname{span}(1,0)$ y $C_a=\operatorname{span}(a,1)$ en $\mathbb 
 
 <figure id="fig-apm-t2-c08-f02" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C08-F02.svg" alt="La proyección P(x,y)=(x-y,0) conserva el eje horizontal y descarta la dirección (1,1); dos puntos que difieren en esa dirección tienen la misma salida." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 8.2.</em> Las flechas entre puntos y sus proyecciones siguen rectas paralelas a <span class="math inline">\(C_1=\operatorname{span}(1,1)\)</span>. La igualdad <span class="math inline">\(P^2=P\)</span> expresa que los puntos del eje horizontal ya están fijos después de la primera aplicación.</figcaption>
+<figcaption><em>Figura 8.2.</em> Las flechas entre puntos y sus proyecciones siguen rectas paralelas a $C_1=\operatorname{span}(1,1)$. La igualdad $P^2=P$ expresa que los puntos del eje horizontal ya están fijos después de la primera aplicación.</figcaption>
 </figure>
 
 ## 8.8. Traslaciones y aplicaciones afines

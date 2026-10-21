@@ -230,7 +230,7 @@ Si cambiamos $a$, cambian los sumandos aunque el vector $(x,y)$ permanezca fijo.
 
 <figure id="fig-apm-t2-c07-f03" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C07-F03.svg" alt="El mismo vector (3,2) se descompone usando el eje horizontal y dos complementos distintos: la recta vertical y la recta generada por (1,1)." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 7.3.</em> En el primer complemento, <span class="math inline">\((3,2)=(3,0)+(0,2)\)</span>; en el segundo, <span class="math inline">\((3,2)=(1,0)+(2,2)\)</span>. La unicidad se refiere a cada pareja de subespacios fijada.</figcaption>
+<figcaption><em>Figura 7.3.</em> En el primer complemento, $(3,2)=(3,0)+(0,2)$; en el segundo, $(3,2)=(1,0)+(2,2)$. La unicidad se refiere a cada pareja de subespacios fijada.</figcaption>
 </figure>
 
 ## 7.8. Lo que cambia en dimensión infinita

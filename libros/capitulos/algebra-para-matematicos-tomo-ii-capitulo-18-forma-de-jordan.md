@@ -40,7 +40,7 @@ En C17 separamos el espacio en componentes primarias. Sobre la componente corres
 
 <figure id="fig-apm-t2-c18-f01" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C18-F01.svg" alt="Una cadena de longitud tres y la matriz del operador 2I más su desplazamiento nilpotente." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 18.1.</em> Las flechas representan la acción de <span class="math inline">\(N=T-2I\)</span>. Ordenamos la base desde el vector que muere primero hasta el que inicia la trayectoria más larga. Por eso los unos de la matriz quedan encima de la diagonal.</figcaption>
+<figcaption><em>Figura 18.1.</em> Las flechas representan la acción de $N=T-2I$. Ordenamos la base desde el vector que muere primero hasta el que inicia la trayectoria más larga. Por eso los unos de la matriz quedan encima de la diagonal.</figcaption>
 </figure>
 
 Trabajaremos en dimensión finita sobre un cuerpo conmutativo $\mathbb F$. La construcción nilpotente funciona sobre cualquier cuerpo; la forma de Jordan de un operador general exigirá que su característico se escinda en $\mathbb F$. Usaremos los núcleos e imágenes de C09 y los cocientes de C11, las matrices de cambio de base de C12, los polinomios de operadores de C15 y la descomposición primaria de C17. Para el espacio cero se admiten la base vacía y la matriz sin bloques, con característico y mínimo iguales a uno.
@@ -126,7 +126,7 @@ Más precisamente, una base de $\ker N^j$ consta de los primeros $\min(j,s_i)$ v
 
 <figure id="fig-apm-t2-c18-f02" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C18-F02.svg" alt="Cadenas de longitudes cuatro, dos y uno, ordenadas por nivel desde sus vectores inferiores." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 18.3.</em> Los primeros <span class="math inline">\(j\)</span> niveles contienen una base de <span class="math inline">\(\ker N^j\)</span>. Cada cadena que alcanza el nivel <span class="math inline">\(j\)</span> añade exactamente un vector al pasar del núcleo anterior al siguiente.</figcaption>
+<figcaption><em>Figura 18.3.</em> Los primeros $j$ niveles contienen una base de $\ker N^j$. Cada cadena que alcanza el nivel $j$ añade exactamente un vector al pasar del núcleo anterior al siguiente.</figcaption>
 </figure>
 
 <span id="MA-BCH-APM-02-018-COR-005" class="apm-anchor"></span>
@@ -214,7 +214,7 @@ La igualdad $NP=PJ$ expresa, columna por columna, las dos cadenas. Además $\det
 
 <figure id="fig-apm-t2-c18-f05" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C18-F05.svg" alt="Matriz nilpotente de orden cuatro y sus cadenas, con cambio de base de determinante dos." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 18.5.</em> La cabeza <span class="math inline">\(e_3\)</span> aporta tres vectores y <span class="math inline">\(e_4\)</span> completa el núcleo. Las columnas aparecen en el mismo orden que los bloques de <span class="math inline">\(J\)</span>.</figcaption>
+<figcaption><em>Figura 18.5.</em> La cabeza $e_3$ aporta tres vectores y $e_4$ completa el núcleo. Las columnas aparecen en el mismo orden que los bloques de $J$.</figcaption>
 </figure>
 
 Hay otra construcción útil cuando ya se han calculado todos los núcleos. A una cabeza de longitud $j$ podemos añadir elementos de $K_{j-1}$ sin modificar su vector inferior, y las imágenes por $N$ de cabezas más largas ya suministran parte de $K_j$. El cociente siguiente separa esas dos redundancias.

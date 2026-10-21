@@ -467,7 +467,7 @@ Para $b=(2,1,-1)$ se obtiene $A^+b=(1,1)$ y $AA^+b=(2,0,0)$. El residuo $(0,1,-1
 
 <figure id="fig-apm-t2-c20-f08" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C20-F08.svg" alt="Mínimos cuadrados con núcleo no trivial y selección de la preimagen de norma mínima." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 20.8.</em> En el espacio de salida se proyecta <span class="math inline">\(b\)</span> sobre la imagen. En el dominio, todas las preimágenes de esa proyección forman una recta; la pseudoinversa elige su punto perpendicular al núcleo.</figcaption>
+<figcaption><em>Figura 20.8.</em> En el espacio de salida se proyecta $b$ sobre la imagen. En el dominio, todas las preimágenes de esa proyección forman una recta; la pseudoinversa elige su punto perpendicular al núcleo.</figcaption>
 </figure>
 
 ### 20.22. Conservar las direcciones de mayor efecto

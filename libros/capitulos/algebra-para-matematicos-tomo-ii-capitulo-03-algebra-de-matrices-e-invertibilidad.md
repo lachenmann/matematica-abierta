@@ -137,7 +137,7 @@ La primera matriz registra duplicar y luego sumar; la segunda, sumar y luego dup
 
 <figure id="fig-apm-t2-c03-f01" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C03-F01.svg" alt="La imagen del cuadrado unidad cambia al aplicar primero D y después S o primero S y después D." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 3.1.</em> Las imágenes del cuadrado unidad por <span class="math inline">\(SD\)</span> y <span class="math inline">\(DS\)</span> tienen vértices distintos. La diferencia se debe al orden de los dos cálculos, con escalas iguales en los ejes de cada panel.</figcaption>
+<figcaption><em>Figura 3.1.</em> Las imágenes del cuadrado unidad por $SD$ y $DS$ tienen vértices distintos. La diferencia se debe al orden de los dos cálculos, con escalas iguales en los ejes de cada panel.</figcaption>
 </figure>
 
 Tampoco se conserva la regla de que un producto cero obliga a anular un factor. La matriz
@@ -247,7 +247,7 @@ Para $S$ del comienzo, la inversa es $\begin{bmatrix}1&-1\\0&1\end{bmatrix}$: de
 
 <figure id="fig-apm-t2-c03-f02" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C03-F02.svg" alt="Una cizalla puede deshacerse; la regla que elimina la segunda coordenada identifica entradas distintas." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 3.2.</em> Deshacer la cizalla recupera el dato completo. Para <span class="math inline">\(J\)</span>, las entradas <span class="math inline">\((1,-1)\)</span> y <span class="math inline">\((1,1)\)</span> comparten la salida <span class="math inline">\((1,0)\)</span>, de modo que ninguna regla inversa puede recuperar ambas.</figcaption>
+<figcaption><em>Figura 3.2.</em> Deshacer la cizalla recupera el dato completo. Para $J$, las entradas $(1,-1)$ y $(1,1)$ comparten la salida $(1,0)$, de modo que ninguna regla inversa puede recuperar ambas.</figcaption>
 </figure>
 
 <span id="MA-BCH-APM-02-003-PROP-005" class="apm-anchor"></span>
@@ -430,7 +430,7 @@ $$
 
 <figure id="fig-apm-t2-c03-f03" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C03-F03.svg" alt="La permutación de las filas segunda y tercera cambia de orden los multiplicadores 2 y 3 ya calculados; los factores resultantes satisfacen PA=LU." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 3.3.</em> La primera columna inferior de <span class="math inline">\(L\)</span> guarda <span class="math inline">\(3,2\)</span> después del intercambio. Mantener el orden anterior <span class="math inline">\(2,3\)</span> produciría un producto distinto de <span class="math inline">\(PA\)</span>.</figcaption>
+<figcaption><em>Figura 3.3.</em> La primera columna inferior de $L$ guarda $3,2$ después del intercambio. Mantener el orden anterior $2,3$ produciría un producto distinto de $PA$.</figcaption>
 </figure>
 
 Una vez calculados los factores de una matriz invertible, el sistema $Ax=b$ se resuelve mediante $Ly=Pb$ y $Ux=y$. La columna de datos debe recibir la misma permutación que los coeficientes. Este procedimiento reutiliza la eliminación para datos sucesivos; no necesita formar la inversa completa ni promete por sí solo controlar los errores de redondeo de una implementación numérica.

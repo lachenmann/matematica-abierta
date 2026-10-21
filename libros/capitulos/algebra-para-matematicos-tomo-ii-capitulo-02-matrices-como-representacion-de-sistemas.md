@@ -340,7 +340,7 @@ La primera columna de datos es compatible; la segunda, incompatible. La fila inf
 
 <figure id="fig-apm-t2-c02-f03" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C02-F03.svg" alt="Dos columnas de datos se transportan junto a los mismos coeficientes; la última fila tiene cero en una y uno en la otra." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 2.3.</em> Un cálculo común permite estudiar distintos datos. Las columnas <span class="math inline">\(b\)</span> y <span class="math inline">\(c\)</span> son dos problemas separados: la contradicción de uno no vuelve incompatible al otro.</figcaption>
+<figcaption><em>Figura 2.3.</em> Un cálculo común permite estudiar distintos datos. Las columnas $b$ y $c$ son dos problemas separados: la contradicción de uno no vuelve incompatible al otro.</figcaption>
 </figure>
 
 ## 2.8. Existencia para cualquier término independiente

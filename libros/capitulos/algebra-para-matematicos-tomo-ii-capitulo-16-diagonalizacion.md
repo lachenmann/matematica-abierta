@@ -40,7 +40,7 @@ C14 permitió encontrar direcciones propias y comparar sus dimensiones; C15 most
 
 <figure id="fig-apm-t2-c16-f01" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C16-F01.svg" alt="La misma entrada y su imagen se representan en coordenadas usuales y en la base oblicua formada por (1,0) y (1,1). En esa base las coordenadas se multiplican por dos y tres." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 16.1.</em> La entrada <span class="math inline">\(v=(1,2)\)</span> tiene coordenadas <span class="math inline">\((-1,2)\)</span> en la base propia, y <span class="math inline">\(Av=(4,6)\)</span> tiene coordenadas <span class="math inline">\((-2,6)\)</span>. El panel de coordenadas representa columnas relativas a esa base; sus ángulos en el papel no son los ángulos entre los vectores originales.</figcaption>
+<figcaption><em>Figura 16.1.</em> La entrada $v=(1,2)$ tiene coordenadas $(-1,2)$ en la base propia, y $Av=(4,6)$ tiene coordenadas $(-2,6)$. El panel de coordenadas representa columnas relativas a esa base; sus ángulos en el papel no son los ángulos entre los vectores originales.</figcaption>
 </figure>
 
 Trabajaremos en un espacio $V$ de dimensión finita sobre un cuerpo conmutativo $\mathbb F$. Todos los valores propios y factores lineales que aparezcan en un criterio se entienden en ese cuerpo. Usamos la semejanza de C12, la independencia de espacios propios y las multiplicidades de C14, y la evaluación y el mínimo de C15. El espacio cero se considera diagonalizable mediante su base vacía; los argumentos que requieren elegir un valor propio se formularán en dimensión positiva.
@@ -172,7 +172,7 @@ Una entrada $(x,y)$ se descompone como $(x-y,0)+(y,y)$. En particular, $(1,2)=(-
 
 <figure id="fig-apm-t2-c16-f02" class="quarto-figure quarto-figure-center">
 <img src="/assets/books/apm-tomo-ii/T2-C16-F02.svg" alt="El vector (1,2) se descompone en (-1,0), que pertenece al espacio propio de dos, y (2,2), que pertenece al de tres. El paralelogramo muestra que la suma recupera la entrada." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto">
-<figcaption><em>Figura 16.2.</em> Las líneas auxiliares trasladan las componentes sin cambiar sus direcciones. La proyección sobre el eje horizontal se realiza paralelamente a la recta <span class="math inline">\(y=x\)</span>; la fórmula <span class="math inline">\(E_2(x,y)=(x-y,0)\)</span> expresa esa elección.</figcaption>
+<figcaption><em>Figura 16.2.</em> Las líneas auxiliares trasladan las componentes sin cambiar sus direcciones. La proyección sobre el eje horizontal se realiza paralelamente a la recta $y=x$; la fórmula $E_2(x,y)=(x-y,0)$ expresa esa elección.</figcaption>
 </figure>
 
 <span id="MA-BCH-APM-02-016-PRP-002" class="apm-anchor"></span>
