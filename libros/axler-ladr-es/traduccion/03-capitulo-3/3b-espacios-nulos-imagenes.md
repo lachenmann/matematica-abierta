@@ -1,0 +1,707 @@
+# 3B · Espacios nulos e imágenes
+
+**Estado:** `COTEJADO`  
+**Fuente:** Sheldon Axler, *Linear Algebra Done Right*, 4.ª ed., PDF oficial de 16-08-2026, pp. 59–68.  
+**Licencia:** adaptación/traducción no oficial bajo CC BY-NC 4.0.  
+**Control de erratas:** la errata oficial vigente no registra correcciones específicas para las pp. 59–68.
+
+> [TRAD] Traducción de trabajo de Matemática Abierta. Se preservan numeración, fórmulas, ejemplos, demostraciones y estructura lógica. En fórmulas se conserva la notación de Axler `null T` y `range T`; en la prosa se traducen como **espacio nulo** e **imagen**.
+
+## Espacio nulo e inyectividad
+
+En esta sección estudiaremos dos subespacios íntimamente asociados a cada aplicación lineal. Comenzamos por el conjunto de vectores que son enviados a $0$.
+
+## 3.11 Definición: espacio nulo, $\operatorname{null}T$
+
+Si $T\in\mathcal L(V,W)$, el **espacio nulo** de $T$, denotado por $\operatorname{null}T$, es el subconjunto de $V$ formado por los vectores que $T$ envía a $0$:
+
+$$
+\operatorname{null}T=\{v\in V:T v=0\}.
+$$
+
+## 3.12 Ejemplos: espacio nulo
+
+- Si $T$ es la aplicación cero de $V$ en $W$, entonces
+  $$
+  \operatorname{null}T=V.
+  $$
+
+- Supongamos que $\varphi\in\mathcal L(\mathbf C^3,\mathbf C)$ está definida por
+  $$
+  \varphi(z_1,z_2,z_3)=z_1+2z_2+3z_3.
+  $$
+  Entonces
+  $$
+  \operatorname{null}\varphi
+  =\{(z_1,z_2,z_3)\in\mathbf C^3:z_1+2z_2+3z_3=0\}.
+  $$
+
+- Sea $D\in\mathcal L(\mathcal P(\mathbf R))$ la aplicación de derivación $Dp=p'$. El espacio nulo de $D$ es el conjunto de los polinomios constantes.
+
+- Sea $T\in\mathcal L(\mathcal P(\mathbf R))$ la aplicación de multiplicación por $x^2$,
+  $$
+  (Tp)(x)=x^2p(x).
+  $$
+  Entonces
+  $$
+  \operatorname{null}T=\{0\}.
+  $$
+
+- Sea $T\in\mathcal L(\mathbf F^\infty)$ el desplazamiento hacia atrás,
+  $$
+  T(x_1,x_2,x_3,\ldots)=(x_2,x_3,\ldots).
+  $$
+  Entonces
+  $$
+  \operatorname{null}T=\{(a,0,0,\ldots):a\in\mathbf F\}.
+  $$
+
+La palabra *null* significa «cero». Algunos matemáticos usan el término **núcleo** (*kernel*) en lugar de espacio nulo.
+
+## 3.13 El espacio nulo es un subespacio
+
+Si $T\in\mathcal L(V,W)$, entonces $\operatorname{null}T$ es un subespacio de $V$.
+
+**Demostración.** Como $T$ es lineal,
+
+$$
+T(0)=0,
+$$
+
+por 3.10, así que $0\in\operatorname{null}T$.
+
+Si $u,v\in\operatorname{null}T$, entonces
+
+$$
+T(u+v)=Tu+Tv=0+0=0,
+$$
+
+por lo que $u+v\in\operatorname{null}T$.
+
+Si $u\in\operatorname{null}T$ y $\lambda\in\mathbf F$, entonces
+
+$$
+T(\lambda u)=\lambda Tu=\lambda0=0,
+$$
+
+por lo que $\lambda u\in\operatorname{null}T$.
+
+Así, $\operatorname{null}T$ contiene a $0$ y es cerrado bajo suma y multiplicación por escalares. Por 1.34 es un subespacio de $V$. $\square$
+
+## 3.14 Definición: inyectiva
+
+Una función $T:V\to W$ se llama **inyectiva** si
+
+$$
+Tu=Tv\quad\Longrightarrow\quad u=v.
+$$
+
+El término *one-to-one* significa lo mismo que inyectiva. Equivalentemente, $T$ es inyectiva si envía entradas distintas a salidas distintas.
+
+## 3.15 Inyectividad $\Longleftrightarrow$ espacio nulo igual a $\{0\}$
+
+Sea $T\in\mathcal L(V,W)$. Entonces
+
+$$
+T\text{ es inyectiva}
+\quad\Longleftrightarrow\quad
+\operatorname{null}T=\{0\}.
+$$
+
+**Demostración.** Supongamos primero que $T$ es inyectiva. Ya sabemos que $0\in\operatorname{null}T$. Si $v\in\operatorname{null}T$, entonces
+
+$$
+Tv=0=T0.
+$$
+
+La inyectividad implica $v=0$. Por tanto $\operatorname{null}T=\{0\}$.
+
+Recíprocamente, supongamos que $\operatorname{null}T=\{0\}$ y que $Tu=Tv$. Entonces
+
+$$
+0=Tu-Tv=T(u-v).
+$$
+
+Así $u-v\in\operatorname{null}T=\{0\}$, de donde $u=v$. Por tanto $T$ es inyectiva. $\square$
+
+## Imagen y sobreyectividad
+
+Ahora damos un nombre al conjunto de salidas de una aplicación lineal.
+
+## 3.16 Definición: imagen, $\operatorname{range}T$
+
+Si $T\in\mathcal L(V,W)$, la **imagen** de $T$ es el subconjunto de $W$ formado por los vectores que son iguales a $Tv$ para algún $v\in V$:
+
+$$
+\operatorname{range}T=\{Tv:v\in V\}.
+$$
+
+## 3.17 Ejemplos: imagen
+
+- Si $T$ es la aplicación cero de $V$ en $W$, entonces
+  $$
+  \operatorname{range}T=\{0\}.
+  $$
+
+- Si $T\in\mathcal L(\mathbf R^2,\mathbf R^3)$ está definida por
+  $$
+  T(x,y)=(2x,5y,x+y),
+  $$
+  entonces
+  $$
+  \operatorname{range}T
+  =\{(2x,5y,x+y):x,y\in\mathbf R\}.
+  $$
+
+- Sea $D\in\mathcal L(\mathcal P(\mathbf R))$ la derivación $Dp=p'$. Como para todo $q\in\mathcal P(\mathbf R)$ existe $p\in\mathcal P(\mathbf R)$ con $p'=q$, se tiene
+  $$
+  \operatorname{range}D=\mathcal P(\mathbf R).
+  $$
+
+## 3.18 La imagen es un subespacio
+
+Si $T\in\mathcal L(V,W)$, entonces $\operatorname{range}T$ es un subespacio de $W$.
+
+**Demostración.** Como $T(0)=0$, tenemos $0\in\operatorname{range}T$.
+
+Si $w_1,w_2\in\operatorname{range}T$, existen $v_1,v_2\in V$ tales que
+
+$$
+Tv_1=w_1,\qquad Tv_2=w_2.
+$$
+
+Entonces
+
+$$
+T(v_1+v_2)=Tv_1+Tv_2=w_1+w_2,
+$$
+
+por lo que $w_1+w_2\in\operatorname{range}T$.
+
+Si $w\in\operatorname{range}T$ y $\lambda\in\mathbf F$, existe $v\in V$ con $Tv=w$, y
+
+$$
+T(\lambda v)=\lambda Tv=\lambda w.
+$$
+
+Por tanto $\lambda w\in\operatorname{range}T$. Por 1.34, $\operatorname{range}T$ es un subespacio de $W$. $\square$
+
+## 3.19 Definición: sobreyectiva
+
+Una función $T:V\to W$ se llama **sobreyectiva** si
+
+$$
+\operatorname{range}T=W.
+$$
+
+El término inglés *onto* significa lo mismo que sobreyectiva.
+
+## 3.20 Ejemplo: la sobreyectividad depende del espacio de llegada
+
+Sea
+
+$$
+D\in\mathcal L(\mathcal P_5(\mathbf R))
+$$
+
+definida por $Dp=p'$. Esta aplicación no es sobreyectiva porque $x^5$ no pertenece a su imagen.
+
+En cambio, la aplicación
+
+$$
+S\in\mathcal L(\mathcal P_5(\mathbf R),\mathcal P_4(\mathbf R))
+$$
+
+definida también por $Sp=p'$ sí es sobreyectiva, porque
+
+$$
+\operatorname{range}S=\mathcal P_4(\mathbf R).
+$$
+
+La sobreyectividad depende, por tanto, del espacio que se toma como espacio de llegada.
+
+## Teorema fundamental de las aplicaciones lineales
+
+El resultado siguiente es tan importante que recibe un nombre especialmente destacado.
+
+## 3.21 Teorema fundamental de las aplicaciones lineales
+
+Supongamos que $V$ es de dimensión finita y que $T\in\mathcal L(V,W)$. Entonces $\operatorname{range}T$ es de dimensión finita y
+
+$$
+\boxed{
+\dim V=\dim\operatorname{null}T+\dim\operatorname{range}T.
+}
+$$
+
+**Demostración.** Sea
+
+$$
+u_1,\ldots,u_m
+$$
+
+una base de $\operatorname{null}T$. Entonces
+
+$$
+\dim\operatorname{null}T=m.
+$$
+
+Extendemos esta lista a una base de $V$:
+
+$$
+u_1,\ldots,u_m,v_1,\ldots,v_n.
+$$
+
+Así,
+
+$$
+\dim V=m+n.
+$$
+
+Demostraremos que
+
+$$
+Tv_1,\ldots,Tv_n
+$$
+
+es una base de $\operatorname{range}T$.
+
+Sea $v\in V$. Podemos escribir
+
+$$
+v=a_1u_1+\cdots+a_mu_m+b_1v_1+\cdots+b_nv_n.
+$$
+
+Aplicando $T$,
+
+$$
+Tv=b_1Tv_1+\cdots+b_nTv_n,
+$$
+
+porque $Tu_k=0$ para cada $k$. Por tanto $Tv_1,\ldots,Tv_n$ genera $\operatorname{range}T$, que en particular es de dimensión finita.
+
+Para demostrar independencia lineal, supongamos
+
+$$
+c_1Tv_1+\cdots+c_nTv_n=0.
+$$
+
+Entonces
+
+$$
+T(c_1v_1+\cdots+c_nv_n)=0,
+$$
+
+así que
+
+$$
+c_1v_1+\cdots+c_nv_n\in\operatorname{null}T.
+$$
+
+Como $u_1,\ldots,u_m$ genera $\operatorname{null}T$, existen $d_1,\ldots,d_m$ tales que
+
+$$
+c_1v_1+\cdots+c_nv_n=d_1u_1+\cdots+d_mu_m.
+$$
+
+La independencia lineal de
+
+$$
+u_1,\ldots,u_m,v_1,\ldots,v_n
+$$
+
+obliga a que todos los $c_j$ y $d_k$ sean $0$. Así $Tv_1,\ldots,Tv_n$ es linealmente independiente y, por tanto, una base de $\operatorname{range}T$.
+
+En consecuencia
+
+$$
+\dim\operatorname{range}T=n,
+$$
+
+y
+
+$$
+\dim V=m+n
+=\dim\operatorname{null}T+\dim\operatorname{range}T.
+$$
+
+$\square$
+
+## 3.22 Una aplicación lineal hacia un espacio de menor dimensión no es inyectiva
+
+Supongamos que $V$ y $W$ son de dimensión finita y que
+
+$$
+\dim V>\dim W.
+$$
+
+Entonces ninguna aplicación lineal de $V$ en $W$ es inyectiva.
+
+**Demostración.** Para $T\in\mathcal L(V,W)$,
+
+$$
+\begin{aligned}
+\dim\operatorname{null}T
+&=\dim V-\dim\operatorname{range}T\\
+&\ge \dim V-\dim W\\
+&>0.
+\end{aligned}
+$$
+
+Por tanto $\operatorname{null}T\ne\{0\}$, y 3.15 implica que $T$ no es inyectiva. $\square$
+
+## 3.23 Ejemplo: una aplicación lineal de $\mathbf F^4$ en $\mathbf F^3$ no es inyectiva
+
+Definamos
+
+$$
+T:\mathbf F^4\to\mathbf F^3
+$$
+
+por
+
+$$
+T(z_1,z_2,z_3,z_4)
+=
+(\sqrt7z_1+\pi z_2+z_4,\,97z_1+3z_2+2z_3,\,z_2+6z_3+7z_4).
+$$
+
+Como
+
+$$
+\dim\mathbf F^4>\dim\mathbf F^3,
+$$
+
+3.22 muestra inmediatamente que $T$ no es inyectiva, sin necesidad de cálculo adicional.
+
+## 3.24 Una aplicación lineal hacia un espacio de mayor dimensión no es sobreyectiva
+
+Supongamos que $V$ y $W$ son de dimensión finita y que
+
+$$
+\dim V<\dim W.
+$$
+
+Entonces ninguna aplicación lineal de $V$ en $W$ es sobreyectiva.
+
+**Demostración.** Si $T\in\mathcal L(V,W)$, entonces
+
+$$
+\begin{aligned}
+\dim\operatorname{range}T
+&=\dim V-\dim\operatorname{null}T\\
+&\le\dim V\\
+&<\dim W.
+\end{aligned}
+$$
+
+Así $\operatorname{range}T\ne W$, y por tanto $T$ no es sobreyectiva. $\square$
+
+Los resultados 3.22 y 3.24 tienen consecuencias inmediatas para sistemas de ecuaciones lineales.
+
+Fijemos enteros positivos $m,n$ y escalares $A_{j,k}\in\mathbf F$ para $j=1,\ldots,m$ y $k=1,\ldots,n$. Consideremos el sistema homogéneo
+
+$$
+\sum_{k=1}^nA_{1,k}x_k=0,
+\quad\ldots,\quad
+\sum_{k=1}^nA_{m,k}x_k=0.
+$$
+
+Definimos $T:\mathbf F^n\to\mathbf F^m$ por
+
+## 3.25
+
+$$
+T(x_1,\ldots,x_n)
+=
+\left(
+\sum_{k=1}^nA_{1,k}x_k,
+\ldots,
+\sum_{k=1}^nA_{m,k}x_k
+\right).
+$$
+
+Entonces $T(x_1,\ldots,x_n)=0$ equivale exactamente al sistema homogéneo anterior.
+
+## 3.26 Sistema homogéneo de ecuaciones lineales
+
+Un sistema homogéneo de ecuaciones lineales con **más variables que ecuaciones** tiene soluciones no nulas.
+
+**Demostración.** En la notación anterior, $T:\mathbf F^n\to\mathbf F^m$. Si $n>m$, entonces 3.22 implica que $T$ no es inyectiva. Por 3.15,
+
+$$
+\operatorname{null}T\ne\{0\},
+$$
+
+y por tanto existe una solución no nula del sistema homogéneo. $\square$
+
+Ahora consideremos el sistema no homogéneo
+
+## 3.27
+
+$$
+\sum_{k=1}^nA_{1,k}x_k=c_1,
+\quad\ldots,\quad
+\sum_{k=1}^nA_{m,k}x_k=c_m.
+$$
+
+Este sistema equivale a
+
+$$
+T(x_1,\ldots,x_n)=(c_1,\ldots,c_m),
+$$
+
+con $T$ dada por 3.25.
+
+## 3.28 Sistema no homogéneo de ecuaciones lineales
+
+Un sistema no homogéneo de ecuaciones lineales con **más ecuaciones que variables** carece de solución para alguna elección de los términos constantes.
+
+**Demostración.** En la notación anterior, si $n<m$, entonces 3.24 implica que
+
+$$
+T:\mathbf F^n\to\mathbf F^m
+$$
+
+no es sobreyectiva. Por tanto existe algún
+
+$$
+(c_1,\ldots,c_m)\in\mathbf F^m
+$$
+
+que no pertenece a $\operatorname{range}T$. Para esa elección de términos constantes, el sistema 3.27 no tiene solución. $\square$
+
+Axler señala que 3.26 y 3.28 también pueden demostrarse mediante eliminación gaussiana, pero que el enfoque abstracto mediante aplicaciones lineales produce demostraciones más limpias.
+
+# Ejercicios 3B
+
+1. Da un ejemplo de una aplicación lineal $T$ tal que
+   $$
+   \dim\operatorname{null}T=3,
+   \qquad
+   \dim\operatorname{range}T=2.
+   $$
+
+2. Supón que $S,T\in\mathcal L(V)$ y que
+   $$
+   \operatorname{range}S\subseteq\operatorname{null}T.
+   $$
+   Demuestra que
+   $$
+   (ST)^2=0.
+   $$
+
+3. Supón que $v_1,\ldots,v_m$ es una lista de vectores de $V$. Define $T\in\mathcal L(\mathbf F^m,V)$ por
+   $$
+   T(z_1,\ldots,z_m)=z_1v_1+\cdots+z_mv_m.
+   $$
+   (a) ¿Qué propiedad de $T$ corresponde a que $v_1,\ldots,v_m$ genere $V$?  
+   (b) ¿Qué propiedad de $T$ corresponde a que $v_1,\ldots,v_m$ sea linealmente independiente?
+
+4. Demuestra que
+   $$
+   \{T\in\mathcal L(\mathbf R^5,\mathbf R^4):\dim\operatorname{null}T>2\}
+   $$
+   no es un subespacio de $\mathcal L(\mathbf R^5,\mathbf R^4)$.
+
+5. Da un ejemplo de $T\in\mathcal L(\mathbf R^4)$ tal que
+   $$
+   \operatorname{range}T=\operatorname{null}T.
+   $$
+
+6. Demuestra que no existe $T\in\mathcal L(\mathbf R^5)$ tal que
+   $$
+   \operatorname{range}T=\operatorname{null}T.
+   $$
+
+7. Supón que $V$ y $W$ son de dimensión finita y que
+   $$
+   2\le\dim V\le\dim W.
+   $$
+   Demuestra que el conjunto de aplicaciones $T\in\mathcal L(V,W)$ que no son inyectivas no es un subespacio de $\mathcal L(V,W)$.
+
+8. Supón que $V$ y $W$ son de dimensión finita y que
+   $$
+   \dim V\ge\dim W\ge2.
+   $$
+   Demuestra que el conjunto de aplicaciones $T\in\mathcal L(V,W)$ que no son sobreyectivas no es un subespacio de $\mathcal L(V,W)$.
+
+9. Supón que $T\in\mathcal L(V,W)$ es inyectiva y que $v_1,\ldots,v_n$ es linealmente independiente en $V$. Demuestra que
+   $$
+   Tv_1,\ldots,Tv_n
+   $$
+   es linealmente independiente en $W$.
+
+10. Supón que $v_1,\ldots,v_n$ genera $V$ y que $T\in\mathcal L(V,W)$. Demuestra que
+    $$
+    Tv_1,\ldots,Tv_n
+    $$
+    genera $\operatorname{range}T$.
+
+11. Supón que $V$ es de dimensión finita y $T\in\mathcal L(V,W)$. Demuestra que existe un subespacio $U$ de $V$ tal que
+    $$
+    U\cap\operatorname{null}T=\{0\}
+    $$
+    y
+    $$
+    \operatorname{range}T=\{Tu:u\in U\}.
+    $$
+
+12. Supón que $T:\mathbf F^4\to\mathbf F^2$ es lineal y que
+    $$
+    \operatorname{null}T
+    =\{(x_1,x_2,x_3,x_4)\in\mathbf F^4:x_1=5x_2\text{ y }x_3=7x_4\}.
+    $$
+    Demuestra que $T$ es sobreyectiva.
+
+13. Supón que $U$ es un subespacio tridimensional de $\mathbf R^8$ y que $T:\mathbf R^8\to\mathbf R^5$ es lineal con
+    $$
+    \operatorname{null}T=U.
+    $$
+    Demuestra que $T$ es sobreyectiva.
+
+14. Demuestra que no existe una aplicación lineal de $\mathbf F^5$ en $\mathbf F^2$ cuyo espacio nulo sea
+    $$
+    \{(x_1,x_2,x_3,x_4,x_5)\in\mathbf F^5:x_1=3x_2\text{ y }x_3=x_4=x_5\}.
+    $$
+
+15. Supón que existe una aplicación lineal sobre $V$ cuyo espacio nulo y cuya imagen son ambos de dimensión finita. Demuestra que $V$ es de dimensión finita.
+
+16. Supón que $V$ y $W$ son de dimensión finita. Demuestra que existe una aplicación lineal inyectiva de $V$ en $W$ si y sólo si
+    $$
+    \dim V\le\dim W.
+    $$
+
+17. Supón que $V$ y $W$ son de dimensión finita. Demuestra que existe una aplicación lineal sobreyectiva de $V$ sobre $W$ si y sólo si
+    $$
+    \dim V\ge\dim W.
+    $$
+
+18. Supón que $V,W$ son de dimensión finita y que $U$ es un subespacio de $V$. Demuestra que existe $T\in\mathcal L(V,W)$ con
+    $$
+    \operatorname{null}T=U
+    $$
+    si y sólo si
+    $$
+    \dim U\ge\dim V-\dim W.
+    $$
+
+19. Supón que $W$ es de dimensión finita y $T\in\mathcal L(V,W)$. Demuestra que $T$ es inyectiva si y sólo si existe $S\in\mathcal L(W,V)$ tal que
+    $$
+    ST=I_V.
+    $$
+
+20. Supón que $W$ es de dimensión finita y $T\in\mathcal L(V,W)$. Demuestra que $T$ es sobreyectiva si y sólo si existe $S\in\mathcal L(W,V)$ tal que
+    $$
+    TS=I_W.
+    $$
+
+21. Supón que $V$ es de dimensión finita, $T\in\mathcal L(V,W)$ y $U$ es un subespacio de $W$. Demuestra que
+    $$
+    \{v\in V:Tv\in U\}
+    $$
+    es un subespacio de $V$ y que
+    $$
+    \dim\{v\in V:Tv\in U\}
+    =\dim\operatorname{null}T+\dim(U\cap\operatorname{range}T).
+    $$
+
+22. Supón que $U$ y $V$ son de dimensión finita, $S\in\mathcal L(V,W)$ y $T\in\mathcal L(U,V)$. Demuestra que
+    $$
+    \dim\operatorname{null}(ST)
+    \le
+    \dim\operatorname{null}S+\dim\operatorname{null}T.
+    $$
+
+23. Bajo las mismas hipótesis del ejercicio anterior, demuestra que
+    $$
+    \dim\operatorname{range}(ST)
+    \le
+    \min\{\dim\operatorname{range}S,\dim\operatorname{range}T\}.
+    $$
+
+24. (a) Supón que $\dim V=5$ y que $S,T\in\mathcal L(V)$ satisfacen $ST=0$. Demuestra que
+    $$
+    \dim\operatorname{range}(TS)\le2.
+    $$
+    (b) Da un ejemplo de $S,T\in\mathcal L(\mathbf F^5)$ con $ST=0$ y
+    $$
+    \dim\operatorname{range}(TS)=2.
+    $$
+
+25. Supón que $W$ es de dimensión finita y $S,T\in\mathcal L(V,W)$. Demuestra que
+    $$
+    \operatorname{null}S\subseteq\operatorname{null}T
+    $$
+    si y sólo si existe $E\in\mathcal L(W)$ tal que
+    $$
+    T=ES.
+    $$
+
+26. Supón que $V$ es de dimensión finita y $S,T\in\mathcal L(V,W)$. Demuestra que
+    $$
+    \operatorname{range}S\subseteq\operatorname{range}T
+    $$
+    si y sólo si existe $E\in\mathcal L(V)$ tal que
+    $$
+    S=TE.
+    $$
+
+27. Supón que $P\in\mathcal L(V)$ y $P^2=P$. Demuestra que
+    $$
+    V=\operatorname{null}P\oplus\operatorname{range}P.
+    $$
+
+28. Supón que $D\in\mathcal L(\mathcal P(\mathbf R))$ satisface
+    $$
+    \deg Dp=(\deg p)-1
+    $$
+    para todo polinomio no constante $p$. Demuestra que $D$ es sobreyectiva.
+
+29. Supón que $p\in\mathcal P(\mathbf R)$. Demuestra que existe $q\in\mathcal P(\mathbf R)$ tal que
+    $$
+    5q''+3q'=p.
+    $$
+
+30. Supón que $\varphi\in\mathcal L(V,\mathbf F)$ y $\varphi\ne0$. Supón que $u\notin\operatorname{null}\varphi$. Demuestra que
+    $$
+    V=\operatorname{null}\varphi\oplus\{au:a\in\mathbf F\}.
+    $$
+
+31. Supón que $V$ es de dimensión finita, $X$ es un subespacio de $V$ y $Y$ es un subespacio de dimensión finita de $W$. Demuestra que existe $T\in\mathcal L(V,W)$ tal que
+    $$
+    \operatorname{null}T=X,
+    \qquad
+    \operatorname{range}T=Y
+    $$
+    si y sólo si
+    $$
+    \dim X+\dim Y=\dim V.
+    $$
+
+32. Supón que $V$ es de dimensión finita, $\dim V>1$, y que $\varphi:\mathcal L(V)\to\mathbf F$ es lineal y satisface
+    $$
+    \varphi(ST)=\varphi(S)\varphi(T)
+    $$
+    para todos $S,T\in\mathcal L(V)$. Demuestra que
+    $$
+    \varphi=0.
+    $$
+
+33. Supón que $V$ y $W$ son espacios vectoriales reales y que $T\in\mathcal L(V,W)$. Define
+    $$
+    T_{\mathbf C}:V_{\mathbf C}\to W_{\mathbf C}
+    $$
+    por
+    $$
+    T_{\mathbf C}(u+iv)=Tu+iTv.
+    $$
+    (a) Demuestra que $T_{\mathbf C}$ es una aplicación lineal compleja.  
+    (b) Demuestra que $T_{\mathbf C}$ es inyectiva si y sólo si $T$ es inyectiva.  
+    (c) Demuestra que $\operatorname{range}T_{\mathbf C}=W_{\mathbf C}$ si y sólo si $\operatorname{range}T=W$.
+
+    La aplicación $T_{\mathbf C}$ se llama **complexificación** de $T$.
+
+---
+
+**Atribución:** Sheldon Axler, *Linear Algebra Done Right*, 4.ª edición. Traducción/adaptación no oficial realizada para Matemática Abierta bajo CC BY-NC 4.0. Fuente oficial: <https://linear.axler.net/>.
