@@ -3,7 +3,7 @@ title: "Restricciones elementales y grados de libertad"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 11"
 author: "A. Peña"
 description: "Capítulo 11 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0351
+archived-content-id: MA-BCH-0351
 source-id: FISPM-T1-C11
 editorial-id: FPM-I-11
 content-type: book-chapter
@@ -27,9 +27,20 @@ format:
     css: ../../assets/books/fispm/fispm-reader.css
     lightbox: true
 number-sections: false
+archive: true
+edition: v04
+search: false
+sitemap: false
+listing: false
 ---
 
-[Capítulo 10](fisica-para-matematicos-capitulo-10-fuerzas-elementales-y-diagramas-de-cuerpo-libre.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 12](fisica-para-matematicos-capitulo-12-trabajo-potencia-y-energia-cinetica.md)
+::: {.callout-note}
+## Edición archivada · v04
+
+Esta página conserva la edición de 17 de octubre de 2026. La [edición canónica revisada](/libros/para-matematicos/fisica-para-matematicos.html) reúne los capítulos 0–27 y sus soluciones.
+:::
+
+[Capítulo 10](fisica-para-matematicos-capitulo-10-fuerzas-elementales-y-diagramas-de-cuerpo-libre.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos-v04-archivo.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 12](fisica-para-matematicos-capitulo-12-trabajo-potencia-y-energia-cinetica.md)
 
 []{#fispm-c11-restricciones-elementales-y-grados-de-libertad}
 

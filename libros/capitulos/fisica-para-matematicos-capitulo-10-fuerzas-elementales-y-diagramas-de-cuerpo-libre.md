@@ -3,7 +3,7 @@ title: "Fuerzas elementales y diagramas de cuerpo libre"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 10"
 author: "A. Peña"
 description: "Capítulo 10 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0350
+archived-content-id: MA-BCH-0350
 source-id: FISPM-T1-C10
 editorial-id: FPM-I-10
 content-type: book-chapter
@@ -27,9 +27,20 @@ format:
     css: ../../assets/books/fispm/fispm-reader.css
     lightbox: true
 number-sections: false
+archive: true
+edition: v04
+search: false
+sitemap: false
+listing: false
 ---
 
-[Capítulo 9](fisica-para-matematicos-capitulo-9-leyes-de-newton-y-estructura-de-la-dinamica.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 11](fisica-para-matematicos-capitulo-11-restricciones-elementales-y-grados-de-libertad.md)
+::: {.callout-note}
+## Edición archivada · v04
+
+Esta página conserva la edición de 17 de octubre de 2026. La [edición canónica revisada](/libros/para-matematicos/fisica-para-matematicos.html) reúne los capítulos 0–27 y sus soluciones.
+:::
+
+[Capítulo 9](fisica-para-matematicos-capitulo-9-leyes-de-newton-y-estructura-de-la-dinamica.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos-v04-archivo.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 11](fisica-para-matematicos-capitulo-11-restricciones-elementales-y-grados-de-libertad.md)
 
 []{#fispm-c10-fuerzas-elementales-y-diagramas-de-cuerpo-libre}
 

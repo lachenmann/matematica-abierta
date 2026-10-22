@@ -97,7 +97,7 @@ jobs:
       - name: Render affected pages or complete site and offline pilot
         run: python3 tools/smart_render.py build --offline-book MA-BOK-0005
 
-      - name: Verify FISPM thirty-chapter source and rendered contract
+      - name: Verify FISPM canonical edition and archived edition
         run: python3 tools/check_fispm_tome.py --site-dir _site
 
       - name: Verify rendered MA-ART-0017 MathJax
@@ -178,39 +178,9 @@ jobs:
           assert manifest["siteBaseUrl"] == "https://matematicaabierta.cl"
           assert manifest["hashAlgorithm"] == "sha256"
           assert manifest["bookId"] == "MA-BOK-0005"
-          assert manifest["entryContentId"] == "MA-BCH-0009"
-          assert [item["contentId"] for item in manifest["contents"]] == [
-              "MA-BCH-0009",
-              "MA-BCH-0031",
-              "MA-BCH-0343",
-              "MA-BCH-0344",
-              "MA-BCH-0345",
-              "MA-BCH-0346",
-              "MA-BCH-0347",
-              "MA-BCH-0348",
-              "MA-BCH-0349",
-              "MA-BCH-0350",
-              "MA-BCH-0351",
-              "MA-BCH-0352",
-              "MA-BCH-0353",
-              "MA-BCH-0354",
-              "MA-BCH-0355",
-              "MA-BCH-0356",
-              "MA-BCH-0357",
-              "MA-BCH-0358",
-              "MA-BCH-0359",
-              "MA-BCH-0360",
-              "MA-BCH-0361",
-              "MA-BCH-0362",
-              "MA-BCH-0363",
-              "MA-BCH-0364",
-              "MA-BCH-0365",
-              "MA-BCH-0366",
-              "MA-BCH-0367",
-              "MA-BCH-0368",
-              "MA-BCH-0369",
-              "MA-BCH-0370",
-          ]
+          release = json.loads(Path("data/fispm-tome-i-manifest.json").read_text())
+          assert manifest["entryContentId"] == release["chapters"][0]["content_id"]
+          assert [item["contentId"] for item in manifest["contents"]] == [row["content_id"] for row in release["chapters"]]
           assert {"assets/quarto-bootstrap-dark.css", "assets/quarto-bootstrap-light.css",
                   "assets/mathjax/tex-chtml.js"}.issubset(
                       item["localPath"] for item in manifest["assets"])

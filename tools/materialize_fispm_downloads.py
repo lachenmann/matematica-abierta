@@ -19,11 +19,10 @@ def digest(path):
             h.update(chunk)
     return h.hexdigest()
 
-def main():
-    manifest = json.loads((ROOT / 'data/fispm-download-parts/v04.json').read_text())
+def assemble(manifest):
     output = ROOT / manifest['output']
     if output.is_file() and output.stat().st_size == manifest['bytes'] and digest(output) == manifest['sha256']:
-        print('FISPM v04 Overleaf download: SHA-256 verified')
+        print('FISPM download: SHA-256 verified')
         return
     output.parent.mkdir(parents=True, exist_ok=True)
     temp = output.with_name(output.name + '.tmp')
@@ -37,11 +36,16 @@ def main():
                     for chunk in iter(lambda: src.read(1024 * 1024), b''):
                         dest.write(chunk)
         if temp.stat().st_size != manifest['bytes'] or digest(temp) != manifest['sha256']:
-            raise ValueError('Assembled v04 archive does not match the approved deliverable')
+            raise ValueError('Assembled download does not match the approved deliverable')
         os.replace(temp, output)
-        print('FISPM v04 Overleaf download: rebuilt and SHA-256 verified')
+        print('FISPM download: rebuilt and SHA-256 verified')
     finally:
         temp.unlink(missing_ok=True)
+
+def main():
+    assemble(json.loads((ROOT / 'data/fispm-download-parts/v04.json').read_text()))
+    for manifest in json.loads((ROOT / 'data/fispm-download-parts/r20261021.json').read_text()):
+        assemble(manifest)
 
 if __name__ == '__main__':
     main()

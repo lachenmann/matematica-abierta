@@ -3,7 +3,7 @@ title: "Órbitas de Kepler"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 18"
 author: "A. Peña"
 description: "Capítulo 18 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0358
+archived-content-id: MA-BCH-0358
 source-id: FISPM-T1-C18
 editorial-id: FPM-I-18
 content-type: book-chapter
@@ -27,9 +27,20 @@ format:
     css: ../../assets/books/fispm/fispm-reader.css
     lightbox: true
 number-sections: false
+archive: true
+edition: v04
+search: false
+sitemap: false
+listing: false
 ---
 
-[Capítulo 17](fisica-para-matematicos-capitulo-17-problema-de-dos-cuerpos-y-fuerzas-centrales.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 19](fisica-para-matematicos-capitulo-19-dispersion-clasica-y-reduccion-efectiva.md)
+::: {.callout-note}
+## Edición archivada · v04
+
+Esta página conserva la edición de 17 de octubre de 2026. La [edición canónica revisada](/libros/para-matematicos/fisica-para-matematicos.html) reúne los capítulos 0–27 y sus soluciones.
+:::
+
+[Capítulo 17](fisica-para-matematicos-capitulo-17-problema-de-dos-cuerpos-y-fuerzas-centrales.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos-v04-archivo.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 19](fisica-para-matematicos-capitulo-19-dispersion-clasica-y-reduccion-efectiva.md)
 
 []{#fispm-c18-uxf3rbitas-de-kepler}
 

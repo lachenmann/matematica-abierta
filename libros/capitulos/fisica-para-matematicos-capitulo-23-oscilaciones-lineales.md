@@ -3,7 +3,7 @@ title: "Oscilaciones lineales"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 23"
 author: "A. Peña"
 description: "Capítulo 23 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0363
+archived-content-id: MA-BCH-0363
 source-id: FISPM-T1-C23
 editorial-id: FPM-I-23
 content-type: book-chapter
@@ -27,9 +27,20 @@ format:
     css: ../../assets/books/fispm/fispm-reader.css
     lightbox: true
 number-sections: false
+archive: true
+edition: v04
+search: false
+sitemap: false
+listing: false
 ---
 
-[Capítulo 22](fisica-para-matematicos-capitulo-22-cuerpo-rigido-dinamica.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 24](fisica-para-matematicos-capitulo-24-oscilaciones-acopladas-y-modos-normales.md)
+::: {.callout-note}
+## Edición archivada · v04
+
+Esta página conserva la edición de 17 de octubre de 2026. La [edición canónica revisada](/libros/para-matematicos/fisica-para-matematicos.html) reúne los capítulos 0–27 y sus soluciones.
+:::
+
+[Capítulo 22](fisica-para-matematicos-capitulo-22-cuerpo-rigido-dinamica.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos-v04-archivo.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 24](fisica-para-matematicos-capitulo-24-oscilaciones-acopladas-y-modos-normales.md)
 
 []{#fispm-c23-oscilaciones-lineales}
 

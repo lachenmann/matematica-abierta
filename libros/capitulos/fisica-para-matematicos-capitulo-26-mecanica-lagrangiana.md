@@ -3,7 +3,7 @@ title: "Mecánica lagrangiana"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 26"
 author: "A. Peña"
 description: "Capítulo 26 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0366
+archived-content-id: MA-BCH-0366
 source-id: FISPM-T1-C26
 editorial-id: FPM-I-26
 content-type: book-chapter
@@ -27,9 +27,20 @@ format:
     css: ../../assets/books/fispm/fispm-reader.css
     lightbox: true
 number-sections: false
+archive: true
+edition: v04
+search: false
+sitemap: false
+listing: false
 ---
 
-[Capítulo 25](fisica-para-matematicos-capitulo-25-configuracion-trabajo-virtual-y-principios-variacionales.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 27](fisica-para-matematicos-capitulo-27-simetrias-teorema-de-noether-y-leyes-de-conservacion.md)
+::: {.callout-note}
+## Edición archivada · v04
+
+Esta página conserva la edición de 17 de octubre de 2026. La [edición canónica revisada](/libros/para-matematicos/fisica-para-matematicos.html) reúne los capítulos 0–27 y sus soluciones.
+:::
+
+[Capítulo 25](fisica-para-matematicos-capitulo-25-configuracion-trabajo-virtual-y-principios-variacionales.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos-v04-archivo.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 27](fisica-para-matematicos-capitulo-27-simetrias-teorema-de-noether-y-leyes-de-conservacion.md)
 
 []{#fispm-c26-mecuxe1nica-lagrangiana}
 

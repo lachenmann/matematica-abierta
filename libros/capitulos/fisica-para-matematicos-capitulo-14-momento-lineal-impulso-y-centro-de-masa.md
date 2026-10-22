@@ -3,7 +3,7 @@ title: "Momento lineal, impulso y centro de masa"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 14"
 author: "A. Peña"
 description: "Capítulo 14 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0354
+archived-content-id: MA-BCH-0354
 source-id: FISPM-T1-C14
 editorial-id: FPM-I-14
 content-type: book-chapter
@@ -27,9 +27,20 @@ format:
     css: ../../assets/books/fispm/fispm-reader.css
     lightbox: true
 number-sections: false
+archive: true
+edition: v04
+search: false
+sitemap: false
+listing: false
 ---
 
-[Capítulo 13](fisica-para-matematicos-capitulo-13-energia-potencial-fuerzas-conservativas-y-estabilidad.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 15](fisica-para-matematicos-capitulo-15-momento-angular-y-torque.md)
+::: {.callout-note}
+## Edición archivada · v04
+
+Esta página conserva la edición de 17 de octubre de 2026. La [edición canónica revisada](/libros/para-matematicos/fisica-para-matematicos.html) reúne los capítulos 0–27 y sus soluciones.
+:::
+
+[Capítulo 13](fisica-para-matematicos-capitulo-13-energia-potencial-fuerzas-conservativas-y-estabilidad.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos-v04-archivo.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 15](fisica-para-matematicos-capitulo-15-momento-angular-y-torque.md)
 
 []{#fispm-c14-momento-lineal-impulso-y-centro-de-masa}
 

@@ -3,7 +3,7 @@ title: "Simetrías, teorema de Noether y leyes de conservación"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 27"
 author: "A. Peña"
 description: "Capítulo 27 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0367
+archived-content-id: MA-BCH-0367
 source-id: FISPM-T1-C27
 editorial-id: FPM-I-27
 content-type: book-chapter
@@ -27,9 +27,20 @@ format:
     css: ../../assets/books/fispm/fispm-reader.css
     lightbox: true
 number-sections: false
+archive: true
+edition: v04
+search: false
+sitemap: false
+listing: false
 ---
 
-[Capítulo 26](fisica-para-matematicos-capitulo-26-mecanica-lagrangiana.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 28](fisica-para-matematicos-capitulo-28-mecanica-hamiltoniana.md)
+::: {.callout-note}
+## Edición archivada · v04
+
+Esta página conserva la edición de 17 de octubre de 2026. La [edición canónica revisada](/libros/para-matematicos/fisica-para-matematicos.html) reúne los capítulos 0–27 y sus soluciones.
+:::
+
+[Capítulo 26](fisica-para-matematicos-capitulo-26-mecanica-lagrangiana.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos-v04-archivo.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 28](fisica-para-matematicos-capitulo-28-mecanica-hamiltoniana.md)
 
 []{#fispm-c27-simetruxedas-teorema-de-noether-y-leyes-de-conservaciuxf3n}
 

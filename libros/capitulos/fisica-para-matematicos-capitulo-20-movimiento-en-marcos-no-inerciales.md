@@ -3,7 +3,7 @@ title: "Movimiento en marcos no inerciales"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 20"
 author: "A. Peña"
 description: "Capítulo 20 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0360
+archived-content-id: MA-BCH-0360
 source-id: FISPM-T1-C20
 editorial-id: FPM-I-20
 content-type: book-chapter
@@ -27,9 +27,20 @@ format:
     css: ../../assets/books/fispm/fispm-reader.css
     lightbox: true
 number-sections: false
+archive: true
+edition: v04
+search: false
+sitemap: false
+listing: false
 ---
 
-[Capítulo 19](fisica-para-matematicos-capitulo-19-dispersion-clasica-y-reduccion-efectiva.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 21](fisica-para-matematicos-capitulo-21-cuerpo-rigido-cinematica-rotaciones-y-tensor-de-inercia.md)
+::: {.callout-note}
+## Edición archivada · v04
+
+Esta página conserva la edición de 17 de octubre de 2026. La [edición canónica revisada](/libros/para-matematicos/fisica-para-matematicos.html) reúne los capítulos 0–27 y sus soluciones.
+:::
+
+[Capítulo 19](fisica-para-matematicos-capitulo-19-dispersion-clasica-y-reduccion-efectiva.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos-v04-archivo.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 21](fisica-para-matematicos-capitulo-21-cuerpo-rigido-cinematica-rotaciones-y-tensor-de-inercia.md)
 
 []{#fispm-c20-movimiento-en-marcos-no-inerciales}
 
