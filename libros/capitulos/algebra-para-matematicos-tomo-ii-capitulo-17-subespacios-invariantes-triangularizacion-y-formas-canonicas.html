@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 17 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.">
+
+<title>Capítulo 17. Subespacios invariantes, triangularización y formas canónicas – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#mantener-una-parte-del-espacio-dentro-de-sí-misma" id="toc-mantener-una-parte-del-espacio-dentro-de-sí-misma" class="nav-link active" data-scroll-target="#mantener-una-parte-del-espacio-dentro-de-sí-misma">17.1. Mantener una parte del espacio dentro de sí misma</a></li>
+  <li><a href="#los-bloques-que-deja-una-base-adaptada" id="toc-los-bloques-que-deja-una-base-adaptada" class="nav-link" data-scroll-target="#los-bloques-que-deja-una-base-adaptada">17.2. Los bloques que deja una base adaptada</a></li>
+  <li><a href="#el-subespacio-que-genera-una-trayectoria" id="toc-el-subespacio-que-genera-una-trayectoria" class="nav-link" data-scroll-target="#el-subespacio-que-genera-una-trayectoria">17.3. El subespacio que genera una trayectoria</a></li>
+  <li><a href="#una-sucesión-de-subespacios-que-se-conservan" id="toc-una-sucesión-de-subespacios-que-se-conservan" class="nav-link" data-scroll-target="#una-sucesión-de-subespacios-que-se-conservan">17.4. Una sucesión de subespacios que se conservan</a></li>
+  <li><a href="#cuándo-un-complemento-también-se-conserva" id="toc-cuándo-un-complemento-también-se-conserva" class="nav-link" data-scroll-target="#cuándo-un-complemento-también-se-conserva">17.5. Cuándo un complemento también se conserva</a></li>
+  <li><a href="#separar-factores-que-no-comparten-divisores" id="toc-separar-factores-que-no-comparten-divisores" class="nav-link" data-scroll-target="#separar-factores-que-no-comparten-divisores">17.6. Separar factores que no comparten divisores</a></li>
+  <li><a href="#la-parte-que-queda-cuando-sólo-hay-una-raíz" id="toc-la-parte-que-queda-cuando-sólo-hay-una-raíz" class="nav-link" data-scroll-target="#la-parte-que-queda-cuando-sólo-hay-una-raíz">17.7. La parte que queda cuando sólo hay una raíz</a></li>
+  <li><a href="#separar-una-acción-diagonalizable-y-una-nilpotente" id="toc-separar-una-acción-diagonalizable-y-una-nilpotente" class="nav-link" data-scroll-target="#separar-una-acción-diagonalizable-y-una-nilpotente">17.8. Separar una acción diagonalizable y una nilpotente</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">17.9. Ejercicios</a></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">17.10. Soluciones</a></li>
+  <li><a href="#lecturas-y-referencias" id="toc-lecturas-y-referencias" class="nav-link" data-scroll-target="#lecturas-y-referencias">Lecturas y referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 17. Subespacios invariantes, triangularización y formas canónicas</h1>
+<p class="subtitle lead">Álgebra para matemáticos · Tomo II</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 17 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-16-diagonalizacion.html">← Capítulo 16</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-18-forma-de-jordan.html">Capítulo 18 →</a></p>
+<p>El operador <span class="math inline">\(T(x,y)=(2x+y,2y)\)</span> no tiene una base propia: su único espacio propio es el eje horizontal. Sin embargo, su acción no carece de organización. Ese eje permanece dentro de sí mismo, y dos entradas con la misma altura vuelven a tener la misma altura después de transformarse. La primera coordenada contiene la mezcla que impide diagonalizar; la segunda permite describir una acción que sigue estando definida cuando olvidamos la posición horizontal.</p>
+<p>En la base usual, <span class="math inline">\(T\)</span> tiene matriz <span class="math inline">\(\begin{pmatrix}2&amp;1\\0&amp;2\end{pmatrix}\)</span>. La entrada cero inferior significa que transformar un vector del primer eje no produce una componente en el segundo. La entrada uno superior expresa algo diferente: una entrada fuera del eje puede adquirir una componente en él. Conservar un subespacio permite estudiar la acción dentro de él y la acción restante sobre clases, aunque no podamos separar ambas mediante dos subespacios que se conserven por separado.</p>
+<figure id="fig-apm-t2-c17-f01" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C17-F01.svg" alt="El operador T(x,y)=(2x+y,2y) preserva el eje horizontal. Las rectas de altura uno se envían a la recta de altura dos, mostrando la acción sobre clases módulo el eje." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 17.1.</em> El panel izquierdo muestra vectores concretos; el derecho agrupa las entradas por altura. Una clase es una recta horizontal completa, y su imagen queda determinada por la altura, aunque las primeras coordenadas de sus representantes sean distintas.
+</figcaption>
+</figure>
+<p>Trabajaremos sobre un cuerpo conmutativo <span class="math inline">\(\mathbb F\)</span> y, salvo indicación contraria, en dimensión finita. Recuperamos los cocientes y bases adaptadas de C11, la representación de C12, el característico de C14, los polinomios de operadores y Bézout de C15, y la diagonalización de C16. La finalidad es encontrar componentes que el operador preserve y precisar qué información contienen. Los bloques obtenidos tendrán bases internas todavía libres: la expresión «formas canónicas» requiere distinguir esas componentes determinadas por el operador de las matrices concretas elegidas para representarlas.</p>
+<section id="mantener-una-parte-del-espacio-dentro-de-sí-misma" class="level2">
+<h2 class="anchored" data-anchor-id="mantener-una-parte-del-espacio-dentro-de-sí-misma">17.1. Mantener una parte del espacio dentro de sí misma</h2>
+<p><span id="MA-BCH-APM-02-017-DEF-001" class="apm-anchor"></span> <strong>Definición 17.1.</strong> Un subespacio <span class="math inline">\(W\subseteq V\)</span> es <strong>invariante bajo <span class="math inline">\(T\)</span></strong>, o <strong><span class="math inline">\(T\)</span>-invariante</strong>, si <span class="math inline">\(T(W)\subseteq W\)</span>. En ese caso, la <strong>restricción</strong> <span class="math inline">\(T_W:W\to W\)</span> aplica la misma regla que <span class="math inline">\(T\)</span>, con dominio y codominio <span class="math inline">\(W\)</span>. El <strong>operador cociente</strong> se define por</p>
+<p><span class="math display">\[
+\overline T:V/W\longrightarrow V/W,\qquad
+\overline T(v+W)=T(v)+W.
+\]</span></p>
+<p>La inclusión de invariancia puede ser estricta. El operador cero preserva todo subespacio, aunque envíe uno no nulo a <span class="math inline">\(\{0\}\)</span>. Una recta invariante está generada por un vector propio, según C14; en dimensión mayor, el operador puede mezclar las direcciones internas y seguir preservando el subespacio.</p>
+<p><span id="MA-BCH-APM-02-017-PRP-001" class="apm-anchor"></span> <strong>Proposición 17.1 (restricción y cociente).</strong> La regla para <span class="math inline">\(\overline T\)</span> está bien definida si y sólo si <span class="math inline">\(W\)</span> es invariante. Cuando lo es, <span class="math inline">\(T_W\)</span> y <span class="math inline">\(\overline T\)</span> son lineales, y para la proyección canónica <span class="math inline">\(\pi:V\to V/W\)</span> se cumple <span class="math inline">\(\pi T=\overline T\pi\)</span>. Además, todo polinomio de <span class="math inline">\(T\)</span> preserva <span class="math inline">\(W\)</span>, y su restricción y su operador cociente son <span class="math inline">\(p(T_W)\)</span> y <span class="math inline">\(p(\overline T)\)</span>.</p>
+<p><strong>Demostración.</strong> Dos representantes <span class="math inline">\(v,v'\)</span> dan la misma clase cuando <span class="math inline">\(v-v'\in W\)</span>. Sus imágenes dan la misma clase cuando <span class="math inline">\(T(v-v')\in W\)</span>. La invariancia garantiza esa implicación. Recíprocamente, si la regla está bien definida, para <span class="math inline">\(w\in W\)</span> las entradas <span class="math inline">\(w\)</span> y cero representan la misma clase, de modo que <span class="math inline">\(T(w)+W=W\)</span> y <span class="math inline">\(T(w)\in W\)</span>. La linealidad procede de las operaciones de clases de C11 y de la linealidad de <span class="math inline">\(T\)</span>; la identidad con <span class="math inline">\(\pi\)</span> es la propia fórmula aplicada a cada entrada.</p>
+<p>La invariancia pasa de <span class="math inline">\(T\)</span> a cada potencia por inducción y a combinaciones lineales por ser <span class="math inline">\(W\)</span> subespacio. Restringir una composición de aplicaciones que preservan <span class="math inline">\(W\)</span> equivale a componer sus restricciones. Asimismo, repetir la fórmula de clases da <span class="math inline">\(\overline T^{\,j}(v+W)=T^j(v)+W\)</span>. Sumar con los coeficientes de <span class="math inline">\(p\)</span> prueba las dos afirmaciones de evaluación, incluido el término constante con la identidad de cada espacio. <span class="math inline">\(\square\)</span></p>
+<p>En la apertura, <span class="math inline">\(W=\operatorname{span}e_1\)</span>. Dentro de <span class="math inline">\(W\)</span>, <span class="math inline">\(T\)</span> multiplica por dos. Una clase de <span class="math inline">\(V/W\)</span> está determinada por su altura <span class="math inline">\(y\)</span>, y <span class="math inline">\(\overline T\)</span> también multiplica esa altura por dos. Las dos acciones son escalares, pero <span class="math inline">\(T\)</span> no es escalar ni diagonalizable. La información sobre cómo una entrada exterior aporta una componente en <span class="math inline">\(W\)</span> no aparece en esas dos acciones consideradas por separado.</p>
+<p>No hay contradicción con la propiedad universal de C11. Para que una aplicación <span class="math inline">\(v+W\mapsto T(v)\)</span> tenga valores en <span class="math inline">\(V\)</span> y esté bien definida, se exige <span class="math inline">\(T(W)=0\)</span>. Aquí la salida también es una clase; basta que <span class="math inline">\(T(W)\)</span> quede dentro de <span class="math inline">\(W\)</span>, pues esas diferencias desaparecen al pasar al cociente.</p>
+</section>
+<section id="los-bloques-que-deja-una-base-adaptada" class="level2">
+<h2 class="anchored" data-anchor-id="los-bloques-que-deja-una-base-adaptada">17.2. Los bloques que deja una base adaptada</h2>
+<p>Sea <span class="math inline">\((w_1,\ldots,w_k,u_1,\ldots,u_{n-k})\)</span> una base cuyo primer bloque sea base de <span class="math inline">\(W\)</span>. Las imágenes de los primeros <span class="math inline">\(k\)</span> vectores no tienen componentes en los restantes precisamente cuando <span class="math inline">\(W\)</span> es invariante. Por tanto, la matriz toma la forma</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}B&amp;C\\0&amp;D\end{pmatrix}.
+\]</span></p>
+<p>El bloque <span class="math inline">\(B\)</span> representa <span class="math inline">\(T_W\)</span>. Las clases <span class="math inline">\((u_1+W,\ldots,u_{n-k}+W)\)</span> forman una base del cociente por C11, teorema 11.7, y el bloque <span class="math inline">\(D\)</span> representa <span class="math inline">\(\overline T\)</span> en ella. El bloque <span class="math inline">\(C\)</span> registra las componentes en <span class="math inline">\(W\)</span> de las imágenes de los vectores añadidos. Que <span class="math inline">\(D\)</span> represente un operador sobre clases no obliga a que <span class="math inline">\(\operatorname{span}(u_1,\ldots,u_{n-k})\)</span> sea invariante.</p>
+<p><span id="MA-BCH-APM-02-017-PRP-002" class="apm-anchor"></span> <strong>Proposición 17.2 (polinomios de los dos operadores inducidos).</strong> Para <span class="math inline">\(W\)</span> invariante,</p>
+<p><span class="math display">\[
+\chi_T=\chi_{T_W}\chi_{\overline T},\qquad
+m_{T_W}\mid m_T,\qquad m_{\overline T}\mid m_T,\qquad
+m_T\mid m_{T_W}m_{\overline T}.
+\]</span></p>
+<p>Se conservan los convenios <span class="math inline">\(\chi=m=1\)</span> para un espacio cero.</p>
+<p><strong>Demostración.</strong> Aplicar el determinante triangular por bloques de C13 a <span class="math inline">\(tI-A\)</span> da la primera igualdad. Si <span class="math inline">\(m_T(T)=0\)</span>, su restricción y su cociente son cero por 17.1; C15 implica que los dos mínimos dividen a <span class="math inline">\(m_T\)</span>.</p>
+<p>Para la última divisibilidad, escribamos <span class="math inline">\(p=m_{T_W}\)</span> y <span class="math inline">\(q=m_{\overline T}\)</span>. La igualdad <span class="math inline">\(q(\overline T)=0\)</span> significa que <span class="math inline">\(q(T)v\in W\)</span> para cada <span class="math inline">\(v\)</span>. Sobre esa imagen, <span class="math inline">\(p(T)\)</span> actúa como <span class="math inline">\(p(T_W)=0\)</span>. Así, <span class="math inline">\(p(T)q(T)=0\)</span>, y <span class="math inline">\(m_T\mid pq\)</span> por C15. El argumento se mantiene si uno de los espacios es cero: su identidad también es el operador cero, y el polinomio mínimo es uno. <span class="math inline">\(\square\)</span></p>
+<p>Para el bloque <span class="math inline">\(\begin{pmatrix}2&amp;1\\0&amp;2\end{pmatrix}\)</span>, ambos mínimos inducidos son <span class="math inline">\(t-2\)</span>, mientras <span class="math inline">\(m_T=(t-2)^2\)</span>. No podemos reemplazar la última divisibilidad por una igualdad con el menor múltiplo común: el acoplamiento superior puede exigir repetir un factor. Si la matriz fuera <span class="math inline">\(2I_2\)</span>, los dos mínimos inducidos seguirían siendo <span class="math inline">\(t-2\)</span>, pero también el mínimo total sería <span class="math inline">\(t-2\)</span>.</p>
+</section>
+<section id="el-subespacio-que-genera-una-trayectoria" class="level2">
+<h2 class="anchored" data-anchor-id="el-subespacio-que-genera-una-trayectoria">17.3. El subespacio que genera una trayectoria</h2>
+<p>Si empezamos con <span class="math inline">\(v\)</span> y exigimos que un subespacio que lo contenga sea invariante, ese subespacio debe contener también <span class="math inline">\(Tv,T^2v,\ldots\)</span>. El espacio generado por todos ellos es la elección más pequeña posible. C15 utilizó el caso en que una trayectoria ya daba una base de todo el espacio; podemos aplicar la misma idea a la parte alcanzada por una entrada cualquiera.</p>
+<p><span id="MA-BCH-APM-02-017-DEF-002" class="apm-anchor"></span> <strong>Definición 17.2.</strong> El <strong>subespacio cíclico generado por <span class="math inline">\(v\)</span></strong> es <span class="math inline">\(Z_T(v)=\operatorname{span}(v,Tv,T^2v,\ldots)\)</span>. Para <span class="math inline">\(v=0\)</span> es el espacio cero.</p>
+<p><span id="MA-BCH-APM-02-017-THM-001" class="apm-anchor"></span> <strong>Teorema 17.3 (base de una trayectoria).</strong> Si <span class="math inline">\(v\ne0\)</span>, existe un primer <span class="math inline">\(d\ge1\)</span> tal que <span class="math inline">\(T^dv\)</span> es combinación de <span class="math inline">\(v,Tv,\ldots,T^{d-1}v\)</span>. Esos <span class="math inline">\(d\)</span> vectores forman una base de <span class="math inline">\(Z_T(v)\)</span>, que es invariante y mínimo entre los subespacios invariantes que contienen a <span class="math inline">\(v\)</span>. Si</p>
+<p><span class="math display">\[
+T^dv+a_{d-1}T^{d-1}v+\cdots+a_1Tv+a_0v=0,
+\]</span></p>
+<p>entonces <span class="math inline">\(q_v(t)=t^d+a_{d-1}t^{d-1}+\cdots+a_0\)</span> es el mínimo y el característico de <span class="math inline">\(T_{Z_T(v)}\)</span>. Un polinomio <span class="math inline">\(p\)</span> satisface <span class="math inline">\(p(T)v=0\)</span> si y sólo si <span class="math inline">\(q_v\mid p\)</span>.</p>
+<p><strong>Demostración.</strong> La finitud de dimensión fuerza una primera dependencia, y el primer término <span class="math inline">\(v\)</span> no es cero. Por la elección de <span class="math inline">\(d\)</span>, los términos anteriores son independientes. Su generado <span class="math inline">\(Z\)</span> se preserva: <span class="math inline">\(T\)</span> envía cada término salvo el último al siguiente, y la relación expresa la imagen del último dentro de <span class="math inline">\(Z\)</span>. En consecuencia, todas las potencias posteriores aplicadas a <span class="math inline">\(v\)</span> permanecen en <span class="math inline">\(Z\)</span>, que coincide con <span class="math inline">\(Z_T(v)\)</span>. Cualquier subespacio invariante que contenga a <span class="math inline">\(v\)</span> contiene esa trayectoria entera.</p>
+<p>La relación anula a <span class="math inline">\(v\)</span> y también a cada <span class="math inline">\(T^jv\)</span>, porque <span class="math inline">\(q_v(T)\)</span> conmuta con <span class="math inline">\(T^j\)</span>. Por tanto, anula la restricción entera. Un polinomio no nulo de grado menor que <span class="math inline">\(d\)</span> no puede anular a <span class="math inline">\(v\)</span>, pues daría una dependencia entre la base indicada. Así, <span class="math inline">\(q_v\)</span> es el mínimo. Esa base es una trayectoria de longitud igual a la dimensión de <span class="math inline">\(Z\)</span>, y C15, proposición 15.9, da que mínimo y característico de la restricción coinciden. Finalmente, dividir <span class="math inline">\(p\)</span> entre <span class="math inline">\(q_v\)</span> deja un resto de grado menor que <span class="math inline">\(d\)</span>; si <span class="math inline">\(p(T)v=0\)</span>, el resto también anula a <span class="math inline">\(v\)</span> y debe ser cero. La implicación recíproca usa la regla del producto de evaluaciones. <span class="math inline">\(\square\)</span></p>
+<p>En esa base, la matriz de la restricción tiene unos inmediatamente debajo de la diagonal y última columna <span class="math inline">\((-a_0,\ldots,-a_{d-1})^{\mathsf T}\)</span>; las demás entradas son cero. Se llama <strong>matriz compañera</strong> de <span class="math inline">\(q_v\)</span>. Para <span class="math inline">\(d=1\)</span>, es la matriz <span class="math inline">\((-a_0)\)</span>. Por ejemplo, si <span class="math inline">\(T(e_1)=e_2\)</span>, <span class="math inline">\(T(e_2)=e_3\)</span> y <span class="math inline">\(T(e_3)=2e_1\)</span>, la trayectoria de <span class="math inline">\(e_1\)</span> da la matriz <span class="math inline">\(\begin{pmatrix}0&amp;0&amp;2\\1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}\)</span> y el polinomio <span class="math inline">\(t^3-2\)</span> de C15. Encontrar subespacios cíclicos no demuestra todavía que podamos escogerlos como sumandos invariantes complementarios; esa afirmación exigiría otro teorema.</p>
+</section>
+<section id="una-sucesión-de-subespacios-que-se-conservan" class="level2">
+<h2 class="anchored" data-anchor-id="una-sucesión-de-subespacios-que-se-conservan">17.4. Una sucesión de subespacios que se conservan</h2>
+<p><span id="MA-BCH-APM-02-017-DEF-003" class="apm-anchor"></span> <strong>Definición 17.3.</strong> Una <strong>bandera completa</strong> de <span class="math inline">\(V\)</span>, con <span class="math inline">\(\dim V=n\)</span>, es una sucesión <span class="math inline">\(0=W_0\subset W_1\subset\cdots\subset W_n=V\)</span> con <span class="math inline">\(\dim W_j=j\)</span>. Es invariante si cada <span class="math inline">\(W_j\)</span> lo es. Diremos que <span class="math inline">\(T\)</span> es <strong>triangularizable sobre <span class="math inline">\(\mathbb F\)</span></strong> si tiene una matriz triangular superior en alguna base sobre ese cuerpo.</p>
+<p><span id="MA-BCH-APM-02-017-PRP-003" class="apm-anchor"></span> <strong>Proposición 17.4 (bandera y triangularidad).</strong> Una base <span class="math inline">\((v_1,\ldots,v_n)\)</span> representa a <span class="math inline">\(T\)</span> mediante una matriz triangular superior si y sólo si cada <span class="math inline">\(\operatorname{span}(v_1,\ldots,v_j)\)</span> es invariante. Por tanto, <span class="math inline">\(T\)</span> es triangularizable si y sólo si admite una bandera completa invariante.</p>
+<p><strong>Demostración.</strong> La matriz es triangular superior si y sólo si la columna <span class="math inline">\(j\)</span> sólo usa las primeras <span class="math inline">\(j\)</span> posiciones, es decir, si <span class="math inline">\(Tv_j\in\operatorname{span}(v_1,\ldots,v_j)\)</span>. Esas inclusiones implican por linealidad que cada generado inicial se preserve, y la invariancia de esos generados incluye las propias inclusiones. Si tenemos una bandera, escogemos sucesivamente <span class="math inline">\(v_j\in W_j\setminus W_{j-1}\)</span>; por las dimensiones, sus generados iniciales son los <span class="math inline">\(W_j\)</span>. La base resultante representa a <span class="math inline">\(T\)</span> triangularmente. <span class="math inline">\(\square\)</span></p>
+<p>La matriz</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}2&amp;1&amp;1\\0&amp;2&amp;1\\0&amp;0&amp;-1\end{pmatrix}
+\]</span></p>
+<p>preserva la recta <span class="math inline">\(\operatorname{span}e_1\)</span> y el plano <span class="math inline">\(\operatorname{span}(e_1,e_2)\)</span>. El vector <span class="math inline">\(e_2\)</span> no es propio: su imagen <span class="math inline">\(e_1+2e_2\)</span> permanece en el plano, pero no en su propia recta. Una base triangular permite imágenes que utilicen vectores anteriores; una base diagonal sólo permite el vector de la misma posición.</p>
+<figure id="fig-apm-t2-c17-f02" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C17-F02.svg" alt="Una recta contenida en un plano de R3 forma parte de una bandera invariante. El vector e2 y su imagen e1+2e2 están en el plano, mientras la primera recta también se preserva." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 17.2.</em> Se muestra una región del plano <span class="math inline">\(z=0\)</span> y de la recta generada por <span class="math inline">\(e_1\)</span>, que continúan fuera del recuadro. Los vectores dibujados ilustran la acción; las imágenes de los generadores prueban las inclusiones de subespacios.
+</figcaption>
+</figure>
+<p><span id="MA-BCH-APM-02-017-THM-002" class="apm-anchor"></span> <strong>Teorema 17.5 (criterio de triangularización).</strong> Son equivalentes: <span class="math inline">\(T\)</span> es triangularizable sobre <span class="math inline">\(\mathbb F\)</span>; <span class="math inline">\(\chi_T\)</span> se escinde sobre <span class="math inline">\(\mathbb F\)</span>; y <span class="math inline">\(m_T\)</span> se escinde sobre <span class="math inline">\(\mathbb F\)</span>. Se permiten factores repetidos.</p>
+<p><strong>Demostración.</strong> Una matriz triangular tiene característico igual al producto de <span class="math inline">\(t\)</span> menos sus entradas diagonales, por C13. Si el característico se escinde, también lo hace su divisor <span class="math inline">\(m_T\)</span>. En efecto, si <span class="math inline">\(dh=\prod_j(t-\alpha_j)\)</span>, evaluar en <span class="math inline">\(\alpha_1\)</span> muestra que <span class="math inline">\(d\)</span> o <span class="math inline">\(h\)</span> tiene esa raíz. El teorema del factor permite extraer <span class="math inline">\(t-\alpha_1\)</span> del factor correspondiente y cancelarlo en la igualdad. Una inducción sobre el número de factores prueba que <span class="math inline">\(d\)</span> se escinde.</p>
+<p>Probaremos que un mínimo escindido permite triangularizar por inducción sobre <span class="math inline">\(n=\dim V\)</span>. En dimensión cero la base vacía sirve. Si <span class="math inline">\(n&gt;0\)</span>, el mínimo tiene grado positivo y, al escindirse, tiene una raíz <span class="math inline">\(\lambda\in\mathbb F\)</span>. C15 da un vector propio no nulo <span class="math inline">\(v_1\)</span>. La recta <span class="math inline">\(W=\operatorname{span}v_1\)</span> es invariante, y el mínimo del operador cociente divide a <span class="math inline">\(m_T\)</span> por 17.2; por tanto, también se escinde. La inducción da una base triangular del cociente. Elegimos representantes <span class="math inline">\(v_2,\ldots,v_n\)</span> de sus vectores básicos; junto con <span class="math inline">\(v_1\)</span> forman una base de <span class="math inline">\(V\)</span> por C11. La condición triangular en clases significa que <span class="math inline">\(Tv_j\)</span> difiere de una combinación de <span class="math inline">\(v_2,\ldots,v_j\)</span> por un vector de <span class="math inline">\(W\)</span>. Así, <span class="math inline">\(Tv_j\in\operatorname{span}(v_1,\ldots,v_j)\)</span> para todo <span class="math inline">\(j\)</span>, y 17.4 termina la prueba. <span class="math inline">\(\square\)</span></p>
+<p>Sobre <span class="math inline">\(\mathbb C\)</span>, el TFA admitido en T1 §26.15 garantiza la escisión del característico, y todo operador de dimensión finita es triangularizable. Sobre <span class="math inline">\(\mathbb R\)</span>, una rotación de un cuarto de vuelta no lo es. El criterio de C16 exigía además que el mínimo no repitiera factores; la triangularización admite esa repetición.</p>
+</section>
+<section id="cuándo-un-complemento-también-se-conserva" class="level2">
+<h2 class="anchored" data-anchor-id="cuándo-un-complemento-también-se-conserva">17.5. Cuándo un complemento también se conserva</h2>
+<p>Supongamos <span class="math inline">\(V=W\oplus U\)</span>. Si ambos sumandos son invariantes, escoger una base en cada uno produce una matriz diagonal por bloques. Si sólo <span class="math inline">\(W\)</span> lo es, puede quedar el bloque superior que ya vimos. La existencia de complementos como espacios vectoriales, probada en C11, no asegura que podamos eliminar ese bloque.</p>
+<p><span id="MA-BCH-APM-02-017-PRP-004" class="apm-anchor"></span> <strong>Proposición 17.6 (sumandos invariantes y proyecciones).</strong> En una suma directa finita <span class="math inline">\(V=\bigoplus_iW_i\)</span>, todos los sumandos son invariantes si y sólo si cada proyección de componentes <span class="math inline">\(E_i\)</span> conmuta con <span class="math inline">\(T\)</span>. En tal caso, con <span class="math inline">\(T_i=T_{W_i}\)</span>,</p>
+<p><span class="math display">\[
+\chi_T=\prod_i\chi_{T_i},\qquad
+m_T=\operatorname{mcm}(m_{T_1},\ldots,m_{T_r}),
+\]</span></p>
+<p>donde el menor múltiplo común se toma mónico.</p>
+<p><strong>Demostración.</strong> Si todos los sumandos se preservan y <span class="math inline">\(v=\sum_i v_i\)</span>, entonces <span class="math inline">\(TE_jv=Tv_j=E_jTv\)</span>, porque cada <span class="math inline">\(Tv_i\)</span> permanece en su propio sumando. Recíprocamente, si <span class="math inline">\(TE_j=E_jT\)</span> y <span class="math inline">\(w=E_jw\in W_j\)</span>, entonces <span class="math inline">\(Tw=E_jTw\in W_j\)</span>. La matriz en bases concatenadas es diagonal por bloques, y su determinante característico es el producto indicado.</p>
+<p>Un polinomio anula a <span class="math inline">\(T\)</span> si y sólo si anula cada restricción, pues toda entrada es suma de sus componentes. Por C15, esto equivale a ser múltiplo de cada <span class="math inline">\(m_{T_i}\)</span>. El único mónico de menor grado con esa propiedad es su menor múltiplo común, y por la definición del mínimo coincide con <span class="math inline">\(m_T\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Para <span class="math inline">\(T(x,y)=(2x+y,2y)\)</span> y <span class="math inline">\(W=\operatorname{span}e_1\)</span>, cualquier recta complementaria está generada por <span class="math inline">\(u=e_2+ce_1\)</span>. Su imagen es <span class="math inline">\(Tu=2u+e_1\)</span>. No puede ser múltiplo de <span class="math inline">\(u\)</span>, pues comparar la segunda coordenada fijaría el múltiplo en dos y dejaría el término no nulo <span class="math inline">\(e_1\)</span>. Ningún complemento de <span class="math inline">\(W\)</span> es invariante. Aunque el operador cociente tenga dimensión uno, no podemos realizar su acción mediante una recta complementaria preservada dentro del plano.</p>
+</section>
+<section id="separar-factores-que-no-comparten-divisores" class="level2">
+<h2 class="anchored" data-anchor-id="separar-factores-que-no-comparten-divisores">17.6. Separar factores que no comparten divisores</h2>
+<p>El mínimo de la matriz <span class="math inline">\(A\)</span> de §17.4 es <span class="math inline">\((t-2)^2(t+1)\)</span> sobre <span class="math inline">\(\mathbb R\)</span>. El espacio propio de dos no alcanza a explicar todo el plano de las primeras coordenadas, pero el núcleo de <span class="math inline">\((A-2I)^2\)</span> sí lo alcanza. El factor <span class="math inline">\(t+1\)</span> describe otra componente, y Bézout permitirá separarlas porque no comparte divisor no constante con <span class="math inline">\((t-2)^2\)</span>.</p>
+<p>Un polinomio no constante es <strong>irreducible sobre <span class="math inline">\(\mathbb F\)</span></strong> si no es producto de dos polinomios de grado positivo sobre ese cuerpo. Se normalizan sus coeficientes principales en uno. Para no exigir una teoría anterior de anillos, dejamos explícita la propiedad de factorización que usaremos.</p>
+<p><span id="MA-BCH-APM-02-017-LEM-001" class="apm-anchor"></span> <strong>Lema 17.7 (factores irreducibles y productos coprimos).</strong> Todo polinomio mónico no constante sobre <span class="math inline">\(\mathbb F\)</span> es producto de irreducibles mónicos, de manera única salvo el orden. Si <span class="math inline">\(f_1,\ldots,f_r\)</span> son coprimos por parejas y cada <span class="math inline">\(f_i\)</span> divide a <span class="math inline">\(h\)</span>, entonces <span class="math inline">\(\prod_i f_i\)</span> divide a <span class="math inline">\(h\)</span>. El menor múltiplo común mónico de varios polinomios no nulos se obtiene tomando el máximo exponente de cada factor irreducible.</p>
+<p><strong>Demostración.</strong> La existencia de una factorización procede por inducción sobre el grado: si el polinomio es irreducible, hemos terminado; si no, sus dos factores pueden normalizarse y tienen grados menores, de modo que se factorizan por inducción. Si un irreducible <span class="math inline">\(p\)</span> divide a <span class="math inline">\(ab\)</span> y no divide a <span class="math inline">\(a\)</span>, su máximo común divisor con <span class="math inline">\(a\)</span> es uno: cualquier divisor no constante de <span class="math inline">\(p\)</span> sería un múltiplo escalar de <span class="math inline">\(p\)</span>. Una identidad <span class="math inline">\(up+va=1\)</span>, multiplicada por <span class="math inline">\(b\)</span>, muestra entonces que <span class="math inline">\(p\mid b\)</span>. Por ello, si dos productos de irreducibles coinciden, el primer factor de uno divide algún factor del otro y, al ser mónicos irreducibles, ambos factores son iguales. Se cancelan en la igualdad y se repite, lo que prueba la unicidad.</p>
+<p>Para dos polinomios coprimos <span class="math inline">\(f,g\)</span>, si <span class="math inline">\(h=fa\)</span> y <span class="math inline">\(g\mid h\)</span>, Bézout aplicado a <span class="math inline">\(f,g\)</span> da que <span class="math inline">\(g\mid a\)</span>, y por tanto <span class="math inline">\(fg\mid h\)</span>. La factorización muestra que el producto de cualquier subfamilia de los <span class="math inline">\(f_i\)</span> sigue siendo coprimo con los restantes, de modo que una inducción prueba la afirmación general. Finalmente, ser múltiplo común equivale a tener para cada irreducible un exponente al menos tan grande como el de cualquiera de los polinomios dados. Tomar esos máximos produce el único mónico de menor grado y prueba la fórmula del menor múltiplo común. <span class="math inline">\(\square\)</span></p>
+<p><span id="MA-BCH-APM-02-017-THM-003" class="apm-anchor"></span> <strong>Teorema 17.8 (núcleos de factores coprimos).</strong> Sean <span class="math inline">\(f_1,\ldots,f_r\)</span> polinomios mónicos no constantes, coprimos por parejas, tales que <span class="math inline">\(q(T)=0\)</span> para <span class="math inline">\(q=\prod_i f_i\)</span>. Entonces</p>
+<p><span class="math display">\[
+V=\bigoplus_{i=1}^r\ker f_i(T).
+\]</span></p>
+<p>Los sumandos son invariantes. Si <span class="math inline">\(Q_i=q/f_i\)</span> y se elige <span class="math inline">\(u_i\)</span> con <span class="math inline">\(u_iQ_i+v_if_i=1\)</span>, la proyección sobre <span class="math inline">\(\ker f_i(T)\)</span> es <span class="math inline">\(E_i=u_i(T)Q_i(T)\)</span>.</p>
+<p><strong>Demostración.</strong> El lema garantiza que <span class="math inline">\(Q_i\)</span> y <span class="math inline">\(f_i\)</span> son coprimos, así que Bézout proporciona la identidad indicada. Pongamos <span class="math inline">\(e_i=u_iQ_i\)</span>. Módulo <span class="math inline">\(f_i\)</span>, <span class="math inline">\(e_i\)</span> difiere de uno por un múltiplo de <span class="math inline">\(f_i\)</span>; para <span class="math inline">\(j\ne i\)</span>, <span class="math inline">\(e_j\)</span> es múltiplo de <span class="math inline">\(f_i\)</span>. Por tanto, cada <span class="math inline">\(f_i\)</span> divide a <span class="math inline">\(1-\sum_j e_j\)</span>. Como son coprimos por parejas, su producto <span class="math inline">\(q\)</span> divide a ese polinomio. Al evaluar obtenemos <span class="math inline">\(\sum_iE_i=I\)</span>.</p>
+<p>Además, <span class="math inline">\(f_ie_i=u_iq\)</span>, de modo que <span class="math inline">\(f_i(T)E_i=0\)</span> y <span class="math inline">\(E_i\)</span> lleva cada entrada a <span class="math inline">\(\ker f_i(T)\)</span>. Esto prueba que los núcleos generan <span class="math inline">\(V\)</span>. Si <span class="math inline">\(w\in\ker f_i(T)\)</span>, la identidad de Bézout da <span class="math inline">\(E_iw=w\)</span>; si <span class="math inline">\(w\in\ker f_j(T)\)</span> para <span class="math inline">\(j\ne i\)</span>, el factor <span class="math inline">\(f_j\)</span> de <span class="math inline">\(e_i\)</span> da <span class="math inline">\(E_iw=0\)</span>. Aplicar <span class="math inline">\(E_i\)</span> a una relación <span class="math inline">\(\sum_jw_j=0\)</span> entre esos núcleos obliga a <span class="math inline">\(w_i=0\)</span> para cada <span class="math inline">\(i\)</span>. La suma es directa y los <span class="math inline">\(E_i\)</span> son sus proyectores. Finalmente, <span class="math inline">\(f_i(T)\)</span> conmuta con <span class="math inline">\(T\)</span>, así que <span class="math inline">\(f_i(T)w=0\)</span> implica <span class="math inline">\(f_i(T)Tw=T f_i(T)w=0\)</span>; cada núcleo es invariante. <span class="math inline">\(\square\)</span></p>
+<p>No se exige que cada factor sea lineal ni que <span class="math inline">\(q\)</span> sea el mínimo. Si un factor resulta innecesario para anular a <span class="math inline">\(T\)</span>, su núcleo puede ser cero. Las proyecciones no dependen de los coeficientes de Bézout elegidos: cualquiera de esas elecciones conserva un sumando y anula los otros, y la descomposición directa fija esa acción de manera única.</p>
+<p><span id="MA-BCH-APM-02-017-THM-004" class="apm-anchor"></span> <strong>Teorema 17.9 (descomposición primaria).</strong> Sea <span class="math inline">\(V\ne\{0\}\)</span> y sea <span class="math inline">\(m_T=\prod_i p_i^{r_i}\)</span> la factorización del mínimo en irreducibles mónicos distintos, con <span class="math inline">\(r_i\ge1\)</span>. Entonces los subespacios</p>
+<p><span class="math display">\[
+W_i=\ker p_i(T)^{r_i}
+\]</span></p>
+<p>son no nulos, invariantes y satisfacen <span class="math inline">\(V=\bigoplus_iW_i\)</span>. El mínimo de <span class="math inline">\(T_{W_i}\)</span> es exactamente <span class="math inline">\(p_i^{r_i}\)</span>. Los proyectores de esa suma son polinomios de <span class="math inline">\(T\)</span>.</p>
+<p><strong>Demostración.</strong> Las potencias de irreducibles distintos son coprimas por el lema. El teorema 17.8 se aplica a su producto <span class="math inline">\(m_T\)</span> y da la suma y los proyectores. Por definición de <span class="math inline">\(W_i\)</span>, <span class="math inline">\(p_i(T)^{r_i}\)</span> lo anula, por lo que el mínimo <span class="math inline">\(m_i\)</span> de la restricción divide a <span class="math inline">\(p_i^{r_i}\)</span>; vale <span class="math inline">\(p_i^{s_i}\)</span> con <span class="math inline">\(0\le s_i\le r_i\)</span>, admitiendo <span class="math inline">\(s_i=0\)</span> si el espacio fuera cero. Como los sumandos son invariantes, 17.6 da <span class="math inline">\(m_T=\operatorname{mcm}(m_1,\ldots,m_r)=\prod_i p_i^{s_i}\)</span>. La unicidad de factorización obliga a <span class="math inline">\(s_i=r_i\)</span> para cada <span class="math inline">\(i\)</span>. Así, los mínimos tienen la forma afirmada y ninguno de los espacios puede ser cero. <span class="math inline">\(\square\)</span></p>
+<p>Estos subespacios se llaman <strong>componentes primarias</strong>. Están definidos como núcleos de polinomios determinados por <span class="math inline">\(T\)</span>, sin elegir una base. En bases concatenadas, la matriz queda diagonal por bloques, uno para cada irreducible. Cambiar una base dentro de un bloque modifica su matriz, pero no el subespacio que representa ni el mínimo de su restricción.</p>
+<p>Para la matriz <span class="math inline">\(A\)</span> de §17.4, sobre <span class="math inline">\(\mathbb R\)</span> se obtiene</p>
+<p><span class="math display">\[
+W_2=\ker(A-2I)^2=\operatorname{span}(e_1,e_2),\qquad
+W_{-1}=\ker(A+I)=\operatorname{span}(2,3,-9).
+\]</span></p>
+<p>Los dos sumandos son invariantes y complementarios. Al concatenar esas bases, la matriz es <span class="math inline">\(\operatorname{diag}(\begin{pmatrix}2&amp;1\\0&amp;2\end{pmatrix},-1)\)</span>. El tercer eje usual no era invariante; la nueva recta complementaria sí lo es. El proyector sobre <span class="math inline">\(W_{-1}\)</span> es</p>
+<p><span class="math display">\[
+E_{-1}=\frac{(A-2I)^2}{9}
+=\begin{pmatrix}0&amp;0&amp;-2/9\\0&amp;0&amp;-1/3\\0&amp;0&amp;1\end{pmatrix},
+\qquad E_2=I-E_{-1}.
+\]</span></p>
+<p>La fórmula actúa como cero en <span class="math inline">\(W_2\)</span> y como uno en <span class="math inline">\(W_{-1}\)</span> porque allí <span class="math inline">\(A-2I\)</span> multiplica por menos tres. Para <span class="math inline">\(e_3\)</span>, las dos componentes son <span class="math inline">\((2/9,1/3,0)\)</span> y <span class="math inline">\((-2/9,-1/3,1)\)</span>, cuya suma es <span class="math inline">\(e_3\)</span>.</p>
+<figure id="fig-apm-t2-c17-f03" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C17-F03.svg" alt="La base e1,e2,(2,3,-9) separa las dos componentes primarias de la matriz A. La entrada e3 se descompone mediante dos proyectores en vectores de esos sumandos." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 17.3.</em> Las componentes se presentan con coordenadas exactas. El bloque de dimensión dos contiene una raíz repetida y no está diagonalizado; la descomposición sólo lo separa de la componente del valor menos uno.
+</figcaption>
+</figure>
+<p>Sobre <span class="math inline">\(\mathbb R\)</span>, una rotación <span class="math inline">\(R\)</span> de un cuarto de vuelta tiene mínimo irreducible <span class="math inline">\(t^2+1\)</span>, así que toda <span class="math inline">\(\mathbb R^2\)</span> constituye una sola componente primaria. La descomposición no obliga a producir rectas reales que no existen. Sobre <span class="math inline">\(\mathbb C\)</span>, el mismo mínimo se factoriza como <span class="math inline">\((t-i)(t+i)\)</span> y aparecen dos componentes lineales. El cuerpo interviene tanto en la triangularización como en los factores con los que se organiza la descomposición primaria.</p>
+<figure id="fig-apm-t2-c17-f04" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C17-F04.svg" alt="La rotación real tiene una componente primaria de dimensión dos para el factor t al cuadrado más uno. Sobre los complejos aparecen dos componentes propias, para i y menos i." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 17.4.</em> Se comparan subespacios sobre cuerpos distintos. Las dimensiones dos real y uno complejo se refieren a los respectivos cuerpos; no se dibujan columnas de <span class="math inline">\(\mathbb C^2\)</span> como rectas del mismo plano real.
+</figcaption>
+</figure>
+</section>
+<section id="la-parte-que-queda-cuando-sólo-hay-una-raíz" class="level2">
+<h2 class="anchored" data-anchor-id="la-parte-que-queda-cuando-sólo-hay-una-raíz">17.7. La parte que queda cuando sólo hay una raíz</h2>
+<p><span id="MA-BCH-APM-02-017-DEF-004" class="apm-anchor"></span> <strong>Definición 17.4.</strong> Un operador <span class="math inline">\(N\)</span> es <strong>nilpotente</strong> si <span class="math inline">\(N^r=0\)</span> para algún entero <span class="math inline">\(r\ge1\)</span>. En un espacio no nulo, su <strong>índice de nilpotencia</strong> es el menor de esos enteros. El operador cero tiene índice uno en dimensión positiva.</p>
+<p><span id="MA-BCH-APM-02-017-PRP-005" class="apm-anchor"></span> <strong>Proposición 17.10 (criterios de nilpotencia).</strong> En dimensión <span class="math inline">\(n\ge1\)</span>, son equivalentes: <span class="math inline">\(N\)</span> es nilpotente; <span class="math inline">\(m_N=t^r\)</span> para algún <span class="math inline">\(1\le r\le n\)</span>; y <span class="math inline">\(\chi_N=t^n\)</span>. El exponente <span class="math inline">\(r\)</span> es su índice. Existe una base triangular con diagonal cero y siempre <span class="math inline">\(N^n=0\)</span>.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(N^k=0\)</span>, el mínimo divide a <span class="math inline">\(t^k\)</span> por C15, así que es una potencia <span class="math inline">\(t^r\)</span>, con <span class="math inline">\(r\ge1\)</span>. La cota <span class="math inline">\(r\le n\)</span> procede de Cayley–Hamilton. Ese mínimo se escinde, de modo que 17.5 da una matriz triangular. Sus entradas diagonales son valores propios y por C15 son raíces del mínimo; todas son cero. Su característico es entonces <span class="math inline">\(t^n\)</span>. Recíprocamente, si el característico es <span class="math inline">\(t^n\)</span>, Cayley–Hamilton da <span class="math inline">\(N^n=0\)</span>. Finalmente, el criterio de divisibilidad muestra que <span class="math inline">\(t^j\)</span> anula a <span class="math inline">\(N\)</span> exactamente cuando <span class="math inline">\(j\ge r\)</span>, lo que identifica el índice. <span class="math inline">\(\square\)</span></p>
+<p>Tener sólo cero como valor propio no implica nilpotencia si el característico no se escinde. Sobre <span class="math inline">\(\mathbb R\)</span>, <span class="math inline">\(\operatorname{diag}(0,R)\)</span> tiene cero como único valor propio real y no es nilpotente, porque sus potencias mantienen el bloque invertible <span class="math inline">\(R^k\)</span>. Lo que debe ser una potencia de <span class="math inline">\(t\)</span> es el mínimo o el característico, no sólo la lista de raíces que vemos dentro del cuerpo.</p>
+<p><span id="MA-BCH-APM-02-017-COR-001" class="apm-anchor"></span> <strong>Corolario 17.11 (componentes cuando el característico se escinde).</strong> Supongamos <span class="math inline">\(\chi_T=\prod_i(t-\lambda_i)^{a_i}\)</span> con valores distintos. Si <span class="math inline">\(m_T=\prod_i(t-\lambda_i)^{r_i}\)</span>, entonces</p>
+<p><span class="math display">\[
+G_{\lambda_i}=\ker(T-\lambda_iI)^{r_i}
+=\ker(T-\lambda_iI)^{a_i}
+=\ker(T-\lambda_iI)^n
+\]</span></p>
+<p>es la componente primaria de <span class="math inline">\(\lambda_i\)</span> y tiene dimensión <span class="math inline">\(a_i\)</span>. En ella, <span class="math inline">\(T=\lambda_iI+N_i\)</span>, donde <span class="math inline">\(N_i\)</span> es nilpotente de índice <span class="math inline">\(r_i\)</span>. Los <span class="math inline">\(G_{\lambda_i}\)</span> se llaman <strong>espacios propios generalizados</strong>.</p>
+<p><strong>Demostración.</strong> C15 da <span class="math inline">\(1\le r_i\le a_i\le n\)</span>. La descomposición primaria entrega la suma directa de los primeros núcleos y el mínimo <span class="math inline">\((t-\lambda_i)^{r_i}\)</span> de cada restricción. Trasladar la variable muestra que el mínimo de <span class="math inline">\(N_i=T_{G_{\lambda_i}}-\lambda_iI\)</span> es <span class="math inline">\(t^{r_i}\)</span>: <span class="math inline">\(h(N_i)=0\)</span> equivale a que <span class="math inline">\(h(t-\lambda_i)\)</span> sea múltiplo de ese mínimo de la restricción; al poner <span class="math inline">\(u=t-\lambda_i\)</span>, esto equivale a <span class="math inline">\(u^{r_i}\mid h(u)\)</span>. Por 17.10, <span class="math inline">\(N_i\)</span> es nilpotente de índice <span class="math inline">\(r_i\)</span>.</p>
+<p>Sobre otra componente <span class="math inline">\(G_{\lambda_j}\)</span>, <span class="math inline">\(T-\lambda_iI\)</span> es invertible: los polinomios <span class="math inline">\(t-\lambda_i\)</span> y <span class="math inline">\((t-\lambda_j)^{r_j}\)</span> son coprimos, y el criterio de C15 se aplica a la restricción. Ninguna potencia de ese operador anula un vector no nulo en ese otro sumando. Sobre la propia componente, toda potencia de exponente al menos <span class="math inline">\(r_i\)</span> es cero. La descomposición directa prueba por tanto la igualdad de los tres núcleos.</p>
+<p>La triangularización de <span class="math inline">\(N_i\)</span> con diagonal cero hace que el característico de la restricción de <span class="math inline">\(T\)</span> a <span class="math inline">\(G_{\lambda_i}\)</span> sea <span class="math inline">\((t-\lambda_i)^{\dim G_{\lambda_i}}\)</span>. Multiplicar esos característicos por 17.6 y comparar con <span class="math inline">\(\chi_T\)</span> obliga a <span class="math inline">\(\dim G_{\lambda_i}=a_i\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>El espacio propio ordinario es el núcleo de la primera potencia y puede ser menor. En el ejemplo de <span class="math inline">\(A\)</span>, <span class="math inline">\(E_2=\operatorname{span}e_1\)</span> tiene dimensión uno, mientras <span class="math inline">\(G_2=\operatorname{span}(e_1,e_2)\)</span> tiene dimensión dos, igual a la multiplicidad algebraica. La nilpotencia mide la acción residual de <span class="math inline">\(T-2I\)</span> dentro de esa componente. Esta reducción proporciona bloques asociados a una sola raíz, sin fijar todavía una base para su parte nilpotente.</p>
+</section>
+<section id="separar-una-acción-diagonalizable-y-una-nilpotente" class="level2">
+<h2 class="anchored" data-anchor-id="separar-una-acción-diagonalizable-y-una-nilpotente">17.8. Separar una acción diagonalizable y una nilpotente</h2>
+<p>Los proyectores primarios son polinomios de <span class="math inline">\(T\)</span>. Por eso conmutan con todo operador que conmute con <span class="math inline">\(T\)</span>, y sus imágenes también son invariantes para esos operadores: si <span class="math inline">\(ST=TS\)</span>, entonces <span class="math inline">\(p_i(T)^{r_i}Sw=S p_i(T)^{r_i}w=0\)</span> para <span class="math inline">\(w\in W_i\)</span>. Las componentes primarias no dependen de las bases ni de los coeficientes de Bézout escogidos. Cuando los factores son lineales, permiten separar dos acciones de <span class="math inline">\(T\)</span> sobre todo el espacio.</p>
+<p><span id="MA-BCH-APM-02-017-THM-005" class="apm-anchor"></span> <strong>Teorema 17.12 (parte diagonalizable y parte nilpotente).</strong> Si <span class="math inline">\(m_T\)</span> se escinde sobre <span class="math inline">\(\mathbb F\)</span>, existen únicos operadores <span class="math inline">\(S,N\)</span> tales que <span class="math inline">\(T=S+N\)</span>, <span class="math inline">\(S\)</span> es diagonalizable sobre <span class="math inline">\(\mathbb F\)</span>, <span class="math inline">\(N\)</span> es nilpotente y <span class="math inline">\(SN=NS\)</span>. Ambos son polinomios de <span class="math inline">\(T\)</span>. Si <span class="math inline">\(E_i\)</span> son los proyectores de sus componentes primarias, entonces</p>
+<p><span class="math display">\[
+S=\sum_i\lambda_iE_i,\qquad N=T-S.
+\]</span></p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(V=\{0\}\)</span>, ambos operadores son cero y las afirmaciones se cumplen. Supongamos <span class="math inline">\(V\ne\{0\}\)</span>. Por 17.5 también se escinde el característico, de modo que se aplica 17.11. En cada <span class="math inline">\(G_{\lambda_i}\)</span>, la fórmula hace que <span class="math inline">\(S\)</span> sea la multiplicación por <span class="math inline">\(\lambda_i\)</span> y que <span class="math inline">\(N\)</span> sea la parte nilpotente <span class="math inline">\(N_i\)</span> de 17.11. Concatenar bases arbitrarias de esas componentes diagonaliza <span class="math inline">\(S\)</span>. Si <span class="math inline">\(r=\max_i r_i\)</span>, <span class="math inline">\(N^r=0\)</span> en cada sumando y por tanto en todo <span class="math inline">\(V\)</span>. Los proyectores son polinomios de <span class="math inline">\(T\)</span>, de modo que también lo son <span class="math inline">\(S,N\)</span>, y conmutan.</p>
+<p>Para la unicidad, supongamos otra escritura <span class="math inline">\(T=S'+N'\)</span> con las mismas propiedades. Como <span class="math inline">\(S'\)</span> y <span class="math inline">\(N'\)</span> conmutan entre sí, ambos conmutan con <span class="math inline">\(T\)</span>, y por ello con sus polinomios <span class="math inline">\(S,N\)</span>. En particular, <span class="math inline">\(S\)</span> y <span class="math inline">\(S'\)</span> son diagonalizables conmutantes; C16 da una base común, en la cual <span class="math inline">\(S-S'\)</span> es diagonal. A su vez, <span class="math inline">\(N\)</span> y <span class="math inline">\(N'\)</span> conmutan y son nilpotentes. Si <span class="math inline">\(N^a=0\)</span> y <span class="math inline">\((N')^b=0\)</span>, el desarrollo binomial de <span class="math inline">\((N'-N)^{a+b-1}\)</span> se anula: cada término contiene una potencia de <span class="math inline">\(N\)</span> al menos <span class="math inline">\(a\)</span> o una de <span class="math inline">\(N'\)</span> al menos <span class="math inline">\(b\)</span>. Así, <span class="math inline">\(N'-N\)</span> es nilpotente. La igualdad <span class="math inline">\(S-S'=N'-N\)</span> dice que el mismo operador es diagonalizable y nilpotente; todas las entradas de su diagonal deben ser cero, de modo que es cero. Se obtiene <span class="math inline">\(S=S'\)</span> y luego <span class="math inline">\(N=N'\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Para la matriz <span class="math inline">\(A\)</span> que hemos seguido,</p>
+<p><span class="math display">\[
+S=2I-3E_{-1}=\begin{pmatrix}2&amp;0&amp;2/3\\0&amp;2&amp;1\\0&amp;0&amp;-1\end{pmatrix},\qquad
+N=\begin{pmatrix}0&amp;1&amp;1/3\\0&amp;0&amp;0\\0&amp;0&amp;0\end{pmatrix}.
+\]</span></p>
+<p>Se verifica <span class="math inline">\(S+N=A\)</span>, <span class="math inline">\(N^2=0\)</span> y <span class="math inline">\(SN=NS\)</span>. La parte diagonalizable no es, en las coordenadas usuales, la matriz que se obtiene borrando las entradas fuera de la diagonal de <span class="math inline">\(A\)</span>: esa operación no conservaría necesariamente la conmutación. Aquí la fórmula por componentes fija la parte escalar de la acción en cada espacio propio generalizado y deja en <span class="math inline">\(N\)</span> la acción residual que recorre sus direcciones.</p>
+<figure id="fig-apm-t2-c17-f05" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C17-F05.svg" alt="La matriz A se escribe como suma de una parte S diagonalizable y una parte N con cuadrado cero. Las matrices incluyen sus entradas racionales y satisfacen SN igual a NS." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 17.5.</em> Las matrices corresponden a las coordenadas usuales. La construcción mediante los proyectores primarios hace que las dos partes conmuten; borrar las entradas fuera de la diagonal no proporciona en general esa descomposición.
+</figcaption>
+</figure>
+<p>La componente de dos conserva una dirección en la que <span class="math inline">\(T-2I\)</span> todavía actúa y otra en la que ya se anula. Separarla de la componente de menos uno ha permitido aislar esa dificultad sin borrarla. Las componentes y los operadores <span class="math inline">\(S,N\)</span> quedan determinados; la elección de coordenadas dentro de la parte nilpotente permanece abierta.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">17.9. Ejercicios</h2>
+<p>Los ejemplos numéricos se trabajan sobre <span class="math inline">\(\mathbb R\)</span> salvo indicación contraria. Las preguntas generales se entienden en dimensión finita; cuando aparezca un índice de nilpotencia o una factorización no vacía del mínimo, el espacio es no nulo. Toda fórmula sobre clases debe comprobarse con independencia del representante. Las matrices de restricción y cociente deben indicar sus bases.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-001" class="apm-anchor"></span> <strong>Ejercicio 1 — Comprobar invariancia.</strong> Para <span class="math inline">\(A=\begin{pmatrix}2&amp;1&amp;1\\0&amp;2&amp;1\\0&amp;0&amp;-1\end{pmatrix}\)</span>, decide si se preservan <span class="math inline">\(\operatorname{span}e_1\)</span>, <span class="math inline">\(\operatorname{span}(e_1,e_2)\)</span> y <span class="math inline">\(\operatorname{span}e_3\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-002" class="apm-anchor"></span> <strong>Ejercicio 2 — Calcular dentro y módulo una recta.</strong> Para <span class="math inline">\(T(x,y)=(2x+y,2y)\)</span> y <span class="math inline">\(W=\operatorname{span}e_1\)</span>, calcula las matrices de <span class="math inline">\(T_W\)</span> y <span class="math inline">\(\overline T\)</span> en las bases <span class="math inline">\((e_1)\)</span> y <span class="math inline">\((e_2+W)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-003" class="apm-anchor"></span> <strong>Ejercicio 3 — Una fórmula de clases que falla.</strong> Sea <span class="math inline">\(S(x,y)=(y,x)\)</span> y <span class="math inline">\(W=\operatorname{span}e_1\)</span>. ¿Define <span class="math inline">\(v+W\mapsto S(v)+W\)</span> un operador en <span class="math inline">\(\mathbb R^2/W\)</span>?</p>
+<p><span id="MA-BCH-APM-02-017-EXR-004" class="apm-anchor"></span> <strong>Ejercicio 4 — Los bloques de una base adaptada.</strong> Para <span class="math inline">\(A\)</span> del ejercicio 1 y <span class="math inline">\(W=\operatorname{span}(e_1,e_2)\)</span>, encuentra las matrices de restricción y cociente, sus característicos y sus mínimos.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-005" class="apm-anchor"></span> <strong>Ejercicio 5 — Un producto que no es el mínimo.</strong> Para <span class="math inline">\(T=2I_2\)</span> y <span class="math inline">\(W=\operatorname{span}e_1\)</span>, compara <span class="math inline">\(m_T\)</span> con <span class="math inline">\(m_{T_W}m_{\overline T}\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-006" class="apm-anchor"></span> <strong>Ejercicio 6 — Un complemento que no puede conservarse.</strong> Prueba que <span class="math inline">\(W=\operatorname{span}e_1\)</span> no tiene complemento invariante para <span class="math inline">\(T(x,y)=(2x+y,2y)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-007" class="apm-anchor"></span> <strong>Ejercicio 7 — Un complemento invariante que sí existe.</strong> Para <span class="math inline">\(A=\begin{pmatrix}2&amp;1\\0&amp;3\end{pmatrix}\)</span> y <span class="math inline">\(W=\operatorname{span}e_1\)</span>, encuentra un complemento invariante y explica qué ocurre con el bloque de acoplamiento.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-008" class="apm-anchor"></span> <strong>Ejercicio 8 — Una trayectoria que sólo alcanza un plano.</strong> Para <span class="math inline">\(T=\operatorname{diag}(1,2,3)\)</span> y <span class="math inline">\(v=(1,1,0)\)</span>, encuentra <span class="math inline">\(Z_T(v)\)</span>, su base de trayectoria y <span class="math inline">\(q_v\)</span>. Compáralo con <span class="math inline">\(m_T\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-009" class="apm-anchor"></span> <strong>Ejercicio 9 — Una trayectoria que alcanza todo el espacio.</strong> Para el mismo <span class="math inline">\(T\)</span> y <span class="math inline">\(v=(1,1,1)\)</span>, prueba que <span class="math inline">\(Z_T(v)=\mathbb R^3\)</span> y encuentra su polinomio de relación mínima.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-010" class="apm-anchor"></span> <strong>Ejercicio 10 — Un polinomio como entrada cíclica.</strong> En <span class="math inline">\(P_2(\mathbb R)\)</span>, sea <span class="math inline">\(D\)</span> la derivación formal y <span class="math inline">\(v=t^2\)</span>. Encuentra la base de trayectoria y la matriz de la restricción a su subespacio cíclico.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-011" class="apm-anchor"></span> <strong>Ejercicio 11 — Leer una bandera desde una matriz.</strong> Para <span class="math inline">\(N=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix}\)</span>, exhibe una bandera completa invariante. ¿Son propios todos los vectores de la base usual?</p>
+<p><span id="MA-BCH-APM-02-017-EXR-012" class="apm-anchor"></span> <strong>Ejercicio 12 — Construir una base triangular.</strong> Sea <span class="math inline">\(T(x,y,z)=(y,0,x)\)</span>. Encuentra una bandera completa invariante y una base triangular superior.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-013" class="apm-anchor"></span> <strong>Ejercicio 13 — El cuerpo y la bandera.</strong> Para la rotación real <span class="math inline">\(R=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\)</span>, decide si existe una bandera completa invariante sobre <span class="math inline">\(\mathbb R\)</span> y sobre <span class="math inline">\(\mathbb C\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-014" class="apm-anchor"></span> <strong>Ejercicio 14 — Un único valor real que no controla las potencias.</strong> Para <span class="math inline">\(A=\operatorname{diag}(0,R)\)</span>, con la rotación del ejercicio 13, encuentra el espectro real, el mínimo y decide si es nilpotente.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-015" class="apm-anchor"></span> <strong>Ejercicio 15 — Triangularizar sin diagonalizar.</strong> Da un operador triangularizable cuyo mínimo tenga grado tres y que no sea diagonalizable. Justifica ambas conclusiones desde el mínimo.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-016" class="apm-anchor"></span> <strong>Ejercicio 16 — Una base triangular de un operador diagonalizable.</strong> ¿Puede un operador diagonalizable tener una matriz triangular no diagonal en otra base? Da un ejemplo e identifica la diferencia entre ambas afirmaciones.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-017" class="apm-anchor"></span> <strong>Ejercicio 17 — Un vector propio del cociente que no se levanta.</strong> Para <span class="math inline">\(T(x,y)=(2x+y,2y)\)</span> y <span class="math inline">\(W=\operatorname{span}e_1\)</span>, la clase <span class="math inline">\(e_2+W\)</span> es propia de <span class="math inline">\(\overline T\)</span>. ¿Existe algún representante de ella que sea propio de <span class="math inline">\(T\)</span>?</p>
+<p><span id="MA-BCH-APM-02-017-EXR-018" class="apm-anchor"></span> <strong>Ejercicio 18 — Acotar un mínimo por dos operadores inducidos.</strong> Si <span class="math inline">\(m_{T_W}=m_{\overline T}=t-a\)</span>, demuestra que <span class="math inline">\(m_T\)</span> sólo puede ser <span class="math inline">\(t-a\)</span> o <span class="math inline">\((t-a)^2\)</span> en dimensión positiva. Realiza las dos posibilidades en dimensión dos.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-019" class="apm-anchor"></span> <strong>Ejercicio 19 — Bloques repetidos y mínimo.</strong> Para <span class="math inline">\(A=\operatorname{diag}(R,R)\)</span> sobre <span class="math inline">\(\mathbb R\)</span>, calcula característico, mínimo y descomposición primaria. ¿Coinciden sus dos bloques visibles con dos componentes primarias distintas?</p>
+<p><span id="MA-BCH-APM-02-017-EXR-020" class="apm-anchor"></span> <strong>Ejercicio 20 — Núcleos, imágenes y conmutación.</strong> Si <span class="math inline">\(ST=TS\)</span>, demuestra que <span class="math inline">\(\ker S\)</span> e <span class="math inline">\(\operatorname{im}S\)</span> son invariantes bajo <span class="math inline">\(T\)</span>. Aplica el resultado a <span class="math inline">\(S=p(T)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-021" class="apm-anchor"></span> <strong>Ejercicio 21 — Preservar la imagen no basta.</strong> Para <span class="math inline">\(T=\begin{pmatrix}2&amp;1\\0&amp;2\end{pmatrix}\)</span> y <span class="math inline">\(E=\operatorname{diag}(1,0)\)</span>, comprueba que <span class="math inline">\(T\)</span> preserva <span class="math inline">\(\operatorname{im}E\)</span> pero <span class="math inline">\(TE\ne ET\)</span>. ¿Qué condición falta?</p>
+<p><span id="MA-BCH-APM-02-017-EXR-022" class="apm-anchor"></span> <strong>Ejercicio 22 — Bézout con una raíz doble.</strong> Encuentra una identidad de Bézout entre <span class="math inline">\((t-2)^2\)</span> y <span class="math inline">\(t+1\)</span>. Úsala para obtener los dos proyectores del ejemplo A del capítulo.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-023" class="apm-anchor"></span> <strong>Ejercicio 23 — Una base de componentes primarias.</strong> Para <span class="math inline">\(A\)</span> del ejercicio 1, calcula <span class="math inline">\(G_2,G_{-1}\)</span> y verifica la matriz en la base <span class="math inline">\(e_1,e_2,(2,3,-9)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-024" class="apm-anchor"></span> <strong>Ejercicio 24 — Comparar el primer núcleo y el segundo.</strong> Para el mismo A, calcula <span class="math inline">\(\ker(A-2I)\)</span> y <span class="math inline">\(\ker(A-2I)^2\)</span> y explica por qué sus dimensiones miden informaciones diferentes.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-025" class="apm-anchor"></span> <strong>Ejercicio 25 — Un factor anulador innecesario.</strong> Para <span class="math inline">\(T=2I_3\)</span>, aplica 17.8 al polinomio <span class="math inline">\((t-2)(t-3)\)</span>. Determina los dos núcleos y explica la diferencia con 17.9.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-026" class="apm-anchor"></span> <strong>Ejercicio 26 — Qué ocurre sin coprimalidad.</strong> Para <span class="math inline">\(N=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\)</span>, toma <span class="math inline">\(f=g=t\)</span>. Aunque <span class="math inline">\((fg)(N)=0\)</span>, ¿se obtiene <span class="math inline">\(V=\ker f(N)\oplus\ker g(N)\)</span>?</p>
+<p><span id="MA-BCH-APM-02-017-EXR-027" class="apm-anchor"></span> <strong>Ejercicio 27 — Una componente irreducible real.</strong> Sea <span class="math inline">\(A=\operatorname{diag}(R,2)\)</span> sobre <span class="math inline">\(\mathbb R\)</span>. Encuentra su descomposición primaria y decide si puede triangularizarse sobre ese cuerpo.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-028" class="apm-anchor"></span> <strong>Ejercicio 28 — Un irreducible sobre un cuerpo finito.</strong> En <span class="math inline">\(\mathbb F_2\)</span>, estudia <span class="math inline">\(A=\begin{pmatrix}0&amp;1\\1&amp;1\end{pmatrix}\)</span>. Determina mínimo, componentes primarias y triangularizabilidad. Calcula <span class="math inline">\(A^3\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-029" class="apm-anchor"></span> <strong>Ejercicio 29 — Índice de nilpotencia.</strong> Para <span class="math inline">\(N(x,y,z)=(y,z,0)\)</span>, encuentra su índice, su mínimo y su característico. Repite para el operador cero en dimensión tres.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-030" class="apm-anchor"></span> <strong>Ejercicio 30 — Cuando dejan de crecer los núcleos.</strong> Si <span class="math inline">\(\ker T^j=\ker T^{j+1}\)</span> para algún <span class="math inline">\(j\ge1\)</span>, prueba que todos los núcleos posteriores son iguales. Si T es nilpotente, ¿qué implica esa igualdad?</p>
+<p><span id="MA-BCH-APM-02-017-EXR-031" class="apm-anchor"></span> <strong>Ejercicio 31 — Dimensiones ordinarias y generalizadas.</strong> Para <span class="math inline">\(A=\begin{pmatrix}2&amp;1&amp;0&amp;0\\0&amp;2&amp;0&amp;0\\0&amp;0&amp;2&amp;0\\0&amp;0&amp;0&amp;-1\end{pmatrix}\)</span>, encuentra <span class="math inline">\(E_2,G_2,G_{-1}\)</span> y sus dimensiones. Relaciona cada dimensión con una multiplicidad.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-032" class="apm-anchor"></span> <strong>Ejercicio 32 — Una descomposición heredada por un subespacio.</strong> Si W es T-invariante y <span class="math inline">\(V=\bigoplus_iW_i\)</span> es la descomposición primaria de T, demuestra <span class="math inline">\(W=\bigoplus_i(W\cap W_i)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-033" class="apm-anchor"></span> <strong>Ejercicio 33 — Invertir fuera de una componente.</strong> Sobre la componente <span class="math inline">\(G_4\)</span> supón que <span class="math inline">\(T=4I+N\)</span> y <span class="math inline">\(N^3=0\)</span>. Encuentra la inversa de <span class="math inline">\(T-I\)</span> y verifica por qué ningún vector no nulo de <span class="math inline">\(G_4\)</span> puede pertenecer a <span class="math inline">\(\ker(T-I)^k\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-034" class="apm-anchor"></span> <strong>Ejercicio 34 — Independencia de una identidad de Bézout.</strong> En 17.8, demuestra que dos elecciones de <span class="math inline">\(u_i\)</span> producen el mismo proyector. Prueba también que <span class="math inline">\(e_i^2-e_i\)</span> es múltiplo de q, donde <span class="math inline">\(e_i=u_iQ_i\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-035" class="apm-anchor"></span> <strong>Ejercicio 35 — Los polinomios de las dos partes.</strong> Si <span class="math inline">\(m_T=\prod_i(t-\lambda_i)^{r_i}\)</span> en dimensión positiva y <span class="math inline">\(T=S+N\)</span> es la descomposición de 17.12, determina <span class="math inline">\(m_S\)</span> y el índice de N.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-036" class="apm-anchor"></span> <strong>Ejercicio 36 — Promediar para obtener un complemento invariante.</strong> Supón <span class="math inline">\(T^2=I\)</span>, característica distinta de dos y W invariante. Sea P cualquier proyector con imagen W. Demuestra que <span class="math inline">\(E=(P+TPT)/2\)</span> es un proyector con imagen W que conmuta con T, y deduce la existencia de un complemento invariante.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-037" class="apm-anchor"></span> <strong>Ejercicio 37 — Triangularizar dos operadores complejos.</strong> Si S y T son operadores complejos conmutantes, demuestra que existe una misma base en la que ambos son triangulares superiores, aunque no sean diagonalizables.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-038" class="apm-anchor"></span> <strong>Ejercicio 38 — Encontrar una recta dentro de un subespacio.</strong> Sea W un subespacio complejo no nulo preservado por T. Demuestra que W contiene una recta invariante. ¿Vale sobre <span class="math inline">\(\mathbb R\)</span>?</p>
+<p><span id="MA-BCH-APM-02-017-EXR-039" class="apm-anchor"></span> <strong>Ejercicio 39 — La conmutación y la unicidad de las partes.</strong> Muestra que la unicidad de la escritura <span class="math inline">\(T=S+N\)</span>, con S diagonalizable y N nilpotente, puede fallar si se omite <span class="math inline">\(SN=NS\)</span>. Usa <span class="math inline">\(T=\operatorname{diag}(1,2)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-EXR-040" class="apm-anchor"></span> <strong>Ejercicio 40 — Dos componentes con acción residual.</strong> Sea <span class="math inline">\(A=\begin{pmatrix}2&amp;1&amp;1&amp;0\\0&amp;2&amp;1&amp;0\\0&amp;0&amp;-1&amp;1\\0&amp;0&amp;0&amp;-1\end{pmatrix}\)</span>. Encuentra su mínimo y sus componentes primarias. Verifica que <span class="math inline">\(E=(A-2I)^2(2A+5I)/27\)</span> proyecta sobre la componente de menos uno y calcula <span class="math inline">\(S=2I-3E\)</span> y <span class="math inline">\(N=A-S\)</span>.</p>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">17.10. Soluciones</h2>
+<p><span id="MA-BCH-APM-02-017-SOL-001" class="apm-anchor"></span> <strong>Solución 1.</strong> Las imágenes son <span class="math inline">\(Ae_1=2e_1\)</span>, <span class="math inline">\(Ae_2=e_1+2e_2\)</span> y <span class="math inline">\(Ae_3=e_1+e_2-e_3\)</span>. La primera recta y el plano de las primeras coordenadas se preservan porque las imágenes de sus generadores permanecen en ellos. La tercera recta no se preserva: <span class="math inline">\(Ae_3\)</span> tiene componentes no nulas en <span class="math inline">\(e_1\)</span> y <span class="math inline">\(e_2\)</span>. Basta comprobar generadores por linealidad; una imagen que salga del subespacio basta para refutar la invariancia.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-002" class="apm-anchor"></span> <strong>Solución 2.</strong> La restricción satisface <span class="math inline">\(T(e_1)=2e_1\)</span>, así que su matriz es <span class="math inline">\((2)\)</span>. En el cociente, <span class="math inline">\(T(e_2)+W=e_1+2e_2+W=2(e_2+W)\)</span>, y su matriz también es <span class="math inline">\((2)\)</span>. Para un representante <span class="math inline">\(e_2+ce_1\)</span>, la imagen es <span class="math inline">\(2e_2+(1+2c)e_1\)</span> y su clase sigue siendo <span class="math inline">\(2e_2+W\)</span>. Esto comprueba directamente que la primera coordenada elegida no cambia el resultado en clases.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-003" class="apm-anchor"></span> <strong>Solución 3.</strong> No.&nbsp;Los vectores cero y <span class="math inline">\(e_1\)</span> representan la misma clase, pero sus imágenes son cero y <span class="math inline">\(e_2\)</span>, cuyas clases son diferentes porque <span class="math inline">\(e_2\notin W\)</span>. La causa es <span class="math inline">\(S(W)\not\subseteq W\)</span>. La linealidad de <span class="math inline">\(S\)</span> no garantiza por sí sola que la regla respete la identificación de representantes.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-004" class="apm-anchor"></span> <strong>Solución 4.</strong> En la base <span class="math inline">\((e_1,e_2)\)</span>, la restricción tiene matriz <span class="math inline">\(B=\begin{pmatrix}2&amp;1\\0&amp;2\end{pmatrix}\)</span>, con característico y mínimo <span class="math inline">\((t-2)^2\)</span>: <span class="math inline">\(B-2I\)</span> es no nula y su cuadrado es cero. En la base <span class="math inline">\((e_3+W)\)</span>, el cociente tiene matriz <span class="math inline">\((-1)\)</span>, con característico y mínimo <span class="math inline">\(t+1\)</span>. El característico total es su producto. Los dos mínimos son coprimos y ambos dividen al mínimo total, mientras su producto lo anula por 17.2; luego <span class="math inline">\(m_A=(t-2)^2(t+1)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-005" class="apm-anchor"></span> <strong>Solución 5.</strong> Los tres operadores son multiplicación por dos en sus respectivos espacios no nulos. Por tanto, los tres mínimos son <span class="math inline">\(t-2\)</span>. El producto de los dos mínimos inducidos es <span class="math inline">\((t-2)^2\)</span>, que anula a <span class="math inline">\(T\)</span> pero no es su mínimo. La divisibilidad de 17.2 puede ser estricta; cuando hay una suma directa invariante, el mínimo se obtiene por menor múltiplo común.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-006" class="apm-anchor"></span> <strong>Solución 6.</strong> Cualquier recta complementaria tiene un generador con segunda coordenada no nula; al normalizarlo queda <span class="math inline">\(u=(c,1)=e_2+ce_1\)</span>. Se tiene <span class="math inline">\(Tu=2u+e_1\)</span>. Si la recta fuera invariante, <span class="math inline">\(Tu=au\)</span> para algún escalar. La segunda coordenada obliga a <span class="math inline">\(a=2\)</span>, y la primera dejaría <span class="math inline">\(e_1=0\)</span>, contradicción. Los complementos como espacios vectoriales existen, pero ninguno satisface aquí la condición adicional de invariancia.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-007" class="apm-anchor"></span> <strong>Solución 7.</strong> La recta <span class="math inline">\(U=\operatorname{span}(1,1)\)</span> es propia de valor tres y complementa a <span class="math inline">\(W\)</span>. En la base <span class="math inline">\(e_1,(1,1)\)</span> la matriz es <span class="math inline">\(\operatorname{diag}(2,3)\)</span>, sin bloque de acoplamiento. El complemento usual <span class="math inline">\(\operatorname{span}e_2\)</span> no era invariante, porque <span class="math inline">\(Ae_2=(1,3)\)</span>. El bloque superior depende de la elección del complemento; aquí puede eliminarse porque existe una elección preservada.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-008" class="apm-anchor"></span> <strong>Solución 8.</strong> Los vectores <span class="math inline">\(v=(1,1,0)\)</span> y <span class="math inline">\(Tv=(1,2,0)\)</span> son independientes y generan el plano <span class="math inline">\(z=0\)</span>. La siguiente imagen es <span class="math inline">\((1,4,0)=3Tv-2v\)</span>, por lo que <span class="math inline">\(q_v=t^2-3t+2=(t-1)(t-2)\)</span>. El plano se preserva y contiene la trayectoria entera. El mínimo total es <span class="math inline">\((t-1)(t-2)(t-3)\)</span>; el factor de tres no aparece en esa entrada. La matriz de la restricción en la base de trayectoria es <span class="math inline">\(\begin{pmatrix}0&amp;-2\\1&amp;3\end{pmatrix}\)</span>, con mínimo y característico <span class="math inline">\(q_v\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-009" class="apm-anchor"></span> <strong>Solución 9.</strong> Las columnas <span class="math inline">\(v,Tv,T^2v\)</span> forman <span class="math inline">\(P=\begin{pmatrix}1&amp;1&amp;1\\1&amp;2&amp;4\\1&amp;3&amp;9\end{pmatrix}\)</span>, cuyo determinante es dos. Son una base y la trayectoria alcanza todo el espacio. El característico y el mínimo coinciden por 17.3, y ambos son <span class="math inline">\((t-1)(t-2)(t-3)=t^3-6t^2+11t-6\)</span>. En particular, <span class="math inline">\(T^3v=6T^2v-11Tv+6v\)</span>. Ninguna relación de menor grado puede existir por la independencia de las tres columnas.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-010" class="apm-anchor"></span> <strong>Solución 10.</strong> La trayectoria comienza <span class="math inline">\(t^2,2t,2,0\)</span>. Los tres términos no nulos son independientes, pues tienen grados distintos y coeficientes principales no nulos; generan todo <span class="math inline">\(P_2(\mathbb R)\)</span>. La primera relación es <span class="math inline">\(D^3v=0\)</span>, así que <span class="math inline">\(q_v=t^3\)</span>. En la base <span class="math inline">\((t^2,2t,2)\)</span>, las imágenes son el segundo vector, el tercero y cero, y la matriz es <span class="math inline">\(\begin{pmatrix}0&amp;0&amp;0\\1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}\)</span>. Esa matriz es triangular inferior en este orden; invertir el orden de la base la hace triangular superior. El teorema cíclico no exige que su orden de trayectoria sea ya el de una bandera superior.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-011" class="apm-anchor"></span> <strong>Solución 11.</strong> La bandera es <span class="math inline">\(0\subset\operatorname{span}e_1\subset\operatorname{span}(e_1,e_2)\subset\mathbb R^3\)</span>. Las imágenes <span class="math inline">\(Ne_1=0\)</span>, <span class="math inline">\(Ne_2=e_1\)</span> y <span class="math inline">\(Ne_3=e_2\)</span> prueban la invariancia de cada generado inicial. Sólo <span class="math inline">\(e_1\)</span> es propio entre los tres vectores usuales, con valor cero; las otras dos imágenes no son múltiplos de su entrada. Una base triangular no tiene por qué ser una base propia.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-012" class="apm-anchor"></span> <strong>Solución 12.</strong> Se tiene <span class="math inline">\(Te_2=e_1\)</span>, <span class="math inline">\(Te_1=e_3\)</span> y <span class="math inline">\(Te_3=0\)</span>. La bandera <span class="math inline">\(0\subset\operatorname{span}e_3\subset\operatorname{span}(e_3,e_1)\subset V\)</span> se preserva. En la base <span class="math inline">\((e_3,e_1,e_2)\)</span>, las columnas de las imágenes son cero, la primera columna básica y la segunda, de modo que <span class="math inline">\([T]=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{pmatrix}\)</span>. El orden se eligió para que cada imagen usara sólo posiciones anteriores.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-013" class="apm-anchor"></span> <strong>Solución 13.</strong> Una bandera completa en dimensión dos exige una recta invariante. Sobre <span class="math inline">\(\mathbb R\)</span>, <span class="math inline">\(t^2+1\)</span> no tiene raíces y no hay vectores propios, por lo que no existe tal recta. Sobre <span class="math inline">\(\mathbb C\)</span>, <span class="math inline">\((1,-i)\)</span> es propio de valor <span class="math inline">\(i\)</span> y su recta inicia una bandera; al añadir <span class="math inline">\((1,i)\)</span> se obtiene incluso una base diagonal. La escisión determina la posibilidad de triangularizar y no sólo la de diagonalizar.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-014" class="apm-anchor"></span> <strong>Solución 14.</strong> El bloque cero de dimensión uno tiene mínimo <span class="math inline">\(t\)</span> y el bloque de rotación mínimo <span class="math inline">\(t^2+1\)</span>. Por suma directa invariante, <span class="math inline">\(m_A=t(t^2+1)\)</span>; los factores son coprimos. El único valor propio real es cero, pero <span class="math inline">\(A\)</span> no es nilpotente: para toda potencia positiva el bloque <span class="math inline">\(R^k\)</span> permanece invertible. El característico es también <span class="math inline">\(t(t^2+1)\)</span> y no se escinde sobre <span class="math inline">\(\mathbb R\)</span>. La lista de raíces reales no describe los factores irreducibles restantes.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-015" class="apm-anchor"></span> <strong>Solución 15.</strong> Sirve <span class="math inline">\(N\)</span> del ejercicio 11. Se tiene <span class="math inline">\(N^3=0\)</span> y <span class="math inline">\(N^2e_3=e_1\ne0\)</span>, de modo que <span class="math inline">\(m_N=t^3\)</span>. Ese polinomio se escinde sobre cualquier cuerpo, así que el operador es triangularizable. Repite un factor lineal, por lo que el criterio de C16 impide diagonalizarlo. La matriz usual ya exhibe triangularidad superior.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-016" class="apm-anchor"></span> <strong>Solución 16.</strong> La matriz <span class="math inline">\(A=\begin{pmatrix}2&amp;1\\0&amp;3\end{pmatrix}\)</span> es triangular y no diagonal en la base usual, pero sus valores distintos garantizan diagonalización en la base <span class="math inline">\((1,0),(1,1)\)</span>. La primera afirmación se refiere a una representación escogida; la segunda afirma que existe alguna base con representación diagonal. La entrada superior no nula en una base arbitraria no basta para descartar la diagonalizabilidad.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-017" class="apm-anchor"></span> <strong>Solución 17.</strong> Todos sus representantes son <span class="math inline">\(u=e_2+ce_1\)</span>. La ecuación <span class="math inline">\(Tu=2u+e_1\)</span> muestra que ninguno es propio de valor dos. Tampoco puede tener otro valor: la segunda coordenada de <span class="math inline">\(Tu\)</span> es dos y la de <span class="math inline">\(u\)</span> es uno, así que cualquier valor propio asociado tendría que ser dos. La ecuación propia en el cociente permite una diferencia en <span class="math inline">\(W\)</span>, mientras que la ecuación en <span class="math inline">\(V\)</span> exige que esa diferencia sea cero.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-018" class="apm-anchor"></span> <strong>Solución 18.</strong> Por 17.2, <span class="math inline">\(t-a\)</span> divide a <span class="math inline">\(m_T\)</span> y <span class="math inline">\(m_T\)</span> divide a <span class="math inline">\((t-a)^2\)</span>. Los divisores mónicos intermedios son exactamente los dos indicados. La matriz <span class="math inline">\(aI_2\)</span> realiza el primero. La matriz <span class="math inline">\(\begin{pmatrix}a&amp;1\\0&amp;a\end{pmatrix}\)</span> realiza el segundo porque su diferencia con <span class="math inline">\(aI\)</span> es no nula y tiene cuadrado cero. En ambos ejemplos, <span class="math inline">\(W=\operatorname{span}e_1\)</span> produce las dos acciones inducidas escalares requeridas.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-019" class="apm-anchor"></span> <strong>Solución 19.</strong> Cada bloque tiene característico y mínimo <span class="math inline">\(t^2+1\)</span>. El característico total es <span class="math inline">\((t^2+1)^2\)</span> y el mínimo es el menor múltiplo común, <span class="math inline">\(t^2+1\)</span>. Como éste tiene un solo irreducible, la descomposición primaria tiene una única componente: todo <span class="math inline">\(\mathbb R^4\)</span>. Los dos planos de los bloques son sumandos invariantes, pero no componentes primarias diferentes. La descomposición primaria agrupa todo lo asociado a un mismo irreducible y puede admitir divisiones invariantes internas.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-020" class="apm-anchor"></span> <strong>Solución 20.</strong> Si <span class="math inline">\(Sw=0\)</span>, entonces <span class="math inline">\(S(Tw)=T(Sw)=0\)</span>, por lo que <span class="math inline">\(Tw\in\ker S\)</span>. Si <span class="math inline">\(w=Su\)</span>, entonces <span class="math inline">\(Tw=TSu=STu\in\operatorname{im}S\)</span>. Los polinomios de <span class="math inline">\(T\)</span> conmutan con <span class="math inline">\(T\)</span> por C15, así que sus núcleos e imágenes se preservan. Este argumento explica directamente la invariancia de los núcleos que aparecen en la descomposición primaria.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-021" class="apm-anchor"></span> <strong>Solución 21.</strong> La imagen de <span class="math inline">\(E\)</span> es <span class="math inline">\(\operatorname{span}e_1\)</span>, que se preserva porque <span class="math inline">\(Te_1=2e_1\)</span>. Sin embargo, <span class="math inline">\(TE=\begin{pmatrix}2&amp;0\\0&amp;0\end{pmatrix}\)</span> y <span class="math inline">\(ET=\begin{pmatrix}2&amp;1\\0&amp;0\end{pmatrix}\)</span>. El núcleo de <span class="math inline">\(E\)</span> es <span class="math inline">\(\operatorname{span}e_2\)</span> y no se preserva. Para que la proyección conmute se necesita que también se conserve el otro sumando, según 17.6.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-022" class="apm-anchor"></span> <strong>Solución 22.</strong> Expandir muestra <span class="math inline">\((t-2)^2+(5-t)(t+1)=9\)</span>. Dividir por nueve da <span class="math inline">\(1=(t-2)^2/9+(5-t)(t+1)/9\)</span>. El primer término se anula en la componente de dos y vale uno en la de menos uno, de modo que <span class="math inline">\(E_{-1}=(A-2I)^2/9\)</span>. El segundo produce <span class="math inline">\(E_2=(5I-A)(A+I)/9=I-E_{-1}\)</span>. En cada caso se verifica la acción conservando su propio núcleo y anulando el otro, como prescribe 17.8.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-023" class="apm-anchor"></span> <strong>Solución 23.</strong> La matriz <span class="math inline">\((A-2I)^2=\begin{pmatrix}0&amp;0&amp;-2\\0&amp;0&amp;-3\\0&amp;0&amp;9\end{pmatrix}\)</span> tiene núcleo <span class="math inline">\(z=0\)</span>, así que <span class="math inline">\(G_2=\operatorname{span}(e_1,e_2)\)</span>. Resolver <span class="math inline">\((A+I)v=0\)</span> da la recta <span class="math inline">\(G_{-1}=\operatorname{span}(2,3,-9)\)</span>. Las columnas de <span class="math inline">\(P=\begin{pmatrix}1&amp;0&amp;2\\0&amp;1&amp;3\\0&amp;0&amp;-9\end{pmatrix}\)</span> forman una base, con determinante menos nueve. Las imágenes de esas columnas son <span class="math inline">\(2e_1\)</span>, <span class="math inline">\(e_1+2e_2\)</span> y menos la tercera columna, de modo que <span class="math inline">\(P^{-1}AP=\operatorname{diag}(\begin{pmatrix}2&amp;1\\0&amp;2\end{pmatrix},-1)\)</span>. El bloque de dos permanece no diagonal.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-024" class="apm-anchor"></span> <strong>Solución 24.</strong> Las ecuaciones de <span class="math inline">\((A-2I)v=0\)</span> fuerzan primero <span class="math inline">\(z=0\)</span> y después <span class="math inline">\(y=0\)</span>, así que el núcleo es <span class="math inline">\(\operatorname{span}e_1\)</span>, de dimensión uno. El segundo núcleo es el plano <span class="math inline">\(z=0\)</span>, de dimensión dos, por el ejercicio 23. El primero cuenta vectores propios independientes; el segundo recupera la componente primaria completa de dos, cuya dimensión es su multiplicidad algebraica. No todos sus vectores son propios: <span class="math inline">\((A-2I)e_2=e_1\ne0\)</span>.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-025" class="apm-anchor"></span> <strong>Solución 25.</strong> El núcleo de <span class="math inline">\(T-2I\)</span> es todo el espacio; <span class="math inline">\(T-3I=-I\)</span> es invertible y su núcleo es cero. La suma directa es <span class="math inline">\(V\oplus\{0\}\)</span> y los proyectores son <span class="math inline">\(I\)</span> y cero. El polinomio dado anula, pero no es el mínimo, que es <span class="math inline">\(t-2\)</span>. El teorema 17.8 permite factores redundantes y sumandos cero; 17.9 usa exactamente los factores del mínimo y garantiza componentes no nulas.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-026" class="apm-anchor"></span> <strong>Solución 26.</strong> No.&nbsp;Ambos núcleos son la misma recta <span class="math inline">\(\operatorname{span}e_1\)</span>. Su suma sigue siendo esa recta y no cubre el plano; además, no es directa porque su intersección es no nula. La identidad <span class="math inline">\(N^2=0\)</span> no separa dos factores iguales mediante Bézout: <span class="math inline">\(t\)</span> y <span class="math inline">\(t\)</span> tienen máximo común divisor <span class="math inline">\(t\)</span>. El teorema requiere coprimalidad por parejas.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-027" class="apm-anchor"></span> <strong>Solución 27.</strong> El mínimo es <span class="math inline">\((t^2+1)(t-2)\)</span> porque es el menor múltiplo común de los mínimos de los bloques. Sus factores son irreducibles distintos sobre <span class="math inline">\(\mathbb R\)</span>. La componente de <span class="math inline">\(t^2+1\)</span> es el plano de las primeras dos coordenadas, y la de <span class="math inline">\(t-2\)</span> es la tercera recta: sobre el otro bloque cada factor evaluado es invertible. No puede triangularizarse sobre <span class="math inline">\(\mathbb R\)</span> porque el mínimo no se escinde en factores lineales. Una forma diagonal por bloques no implica una forma triangular por escalares.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-028" class="apm-anchor"></span> <strong>Solución 28.</strong> El polinomio <span class="math inline">\(p=t^2+t+1\)</span> no tiene raíces en cero ni en uno y, siendo cuadrático, es irreducible. Se verifica <span class="math inline">\(A^2=A+I\)</span>, así que p anula a A; la matriz no es escalar y su mínimo es p.&nbsp;Hay una sola componente primaria, todo el plano. No se triangulariza sobre <span class="math inline">\(\mathbb F_2\)</span> porque p no se escinde allí. Multiplicar la relación por A da <span class="math inline">\(A^3=A^2+A=I\)</span> en característica dos. Tener orden finito como operador invertible no asegura valores propios en el cuerpo.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-029" class="apm-anchor"></span> <strong>Solución 29.</strong> Las potencias actúan como <span class="math inline">\(N^2(x,y,z)=(z,0,0)\)</span> y <span class="math inline">\(N^3=0\)</span>. Puesto que <span class="math inline">\(N^2e_3=e_1\ne0\)</span>, el índice es tres, el mínimo <span class="math inline">\(t^3\)</span> y el característico <span class="math inline">\(t^3\)</span>. Para el operador cero de dimensión tres, el índice es uno y el mínimo t, mientras el característico sigue siendo <span class="math inline">\(t^3\)</span>. El grado del característico fija la dimensión y no distingue esos dos índices.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-030" class="apm-anchor"></span> <strong>Solución 30.</strong> Si <span class="math inline">\(T^{j+2}v=0\)</span>, entonces <span class="math inline">\(Tv\in\ker T^{j+1}=\ker T^j\)</span>, por lo que <span class="math inline">\(T^{j+1}v=0\)</span> y <span class="math inline">\(v\in\ker T^j\)</span>. Junto con las inclusiones siempre válidas, esto da <span class="math inline">\(\ker T^{j+2}=\ker T^{j+1}\)</span>. Repetir el argumento prueba la estabilidad posterior. Si T es nilpotente, alguna potencia tiene núcleo V; por estabilidad, ya <span class="math inline">\(\ker T^j=V\)</span>, es decir, <span class="math inline">\(T^j=0\)</span>. Una igualdad antes de cubrir V no puede ocurrir para un nilpotente.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-031" class="apm-anchor"></span> <strong>Solución 31.</strong> El característico es <span class="math inline">\((t-2)^3(t+1)\)</span> y el mínimo <span class="math inline">\((t-2)^2(t+1)\)</span>. La ecuación <span class="math inline">\((A-2I)v=0\)</span> impone <span class="math inline">\(y=0\)</span> y la cuarta coordenada cero; por tanto, <span class="math inline">\(E_2=\operatorname{span}(e_1,e_3)\)</span> tiene dimensión dos, la multiplicidad geométrica. La segunda potencia anula todo el primer bloque de tres coordenadas y no la cuarta; así, <span class="math inline">\(G_2=\operatorname{span}(e_1,e_2,e_3)\)</span> tiene dimensión tres, la multiplicidad algebraica. <span class="math inline">\(G_{-1}=\operatorname{span}e_4\)</span> tiene dimensión uno y coincide con el espacio propio ordinario de menos uno.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-032" class="apm-anchor"></span> <strong>Solución 32.</strong> Cada proyector primario es un polinomio de T, por lo que preserva W según 17.1. Para <span class="math inline">\(w\in W\)</span>, su descomposición <span class="math inline">\(w=\sum_iE_iw\)</span> tiene cada término en W y en la imagen primaria <span class="math inline">\(W_i\)</span>. Eso prueba que las intersecciones generan W. La suma es directa porque cualquier relación entre ellas es también una relación entre los sumandos primarios de V. El argumento no exige que el mínimo se escinda en factores lineales.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-033" class="apm-anchor"></span> <strong>Solución 33.</strong> La identidad geométrica finita da <span class="math inline">\((3I+N)^{-1}=\tfrac13I-\tfrac19N+\tfrac1{27}N^2\)</span>. Multiplicar por <span class="math inline">\(3I+N\)</span> deja I: los términos lineal y cuadrático se cancelan y el cúbico es cero. La misma cuenta vale en el otro orden. Cualquier potencia de un operador invertible es invertible, así que su núcleo es cero. Este cálculo ilustra por qué las potencias asociadas a un valor distinto no recuperan vectores de otra componente primaria.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-034" class="apm-anchor"></span> <strong>Solución 34.</strong> Cada elección conserva <span class="math inline">\(\ker f_i(T)\)</span> y anula los demás núcleos; como éstos suman directamente V, ambas evaluaciones coinciden. Polinómicamente, dos elecciones <span class="math inline">\(e_i,e_i^{\ast}\)</span> tienen diferencia divisible por <span class="math inline">\(f_i\)</span> porque ambas son congruentes con uno módulo ese factor, y por cada <span class="math inline">\(f_j\)</span>, <span class="math inline">\(j\ne i\)</span>, porque ambas contienen <span class="math inline">\(Q_i\)</span>. La coprimalidad obliga a que q divida la diferencia. Asimismo, <span class="math inline">\(e_i^2-e_i\)</span> es divisible por <span class="math inline">\(f_i\)</span> al ser <span class="math inline">\(e_i\)</span> congruente con uno, y por todos los otros factores al ser congruente con cero. Luego q lo divide. Evaluar esa identidad da directamente la idempotencia.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-035" class="apm-anchor"></span> <strong>Solución 35.</strong> En cada componente primaria no nula, S multiplica por <span class="math inline">\(\lambda_i\)</span>, así que es diagonalizable con todos esos valores. Su mínimo es <span class="math inline">\(\prod_i(t-\lambda_i)\)</span> por C16. La restricción de N a la componente i tiene índice <span class="math inline">\(r_i\)</span>, y por tanto <span class="math inline">\(N^r=0\)</span> para <span class="math inline">\(r=\max_i r_i\)</span>. En una componente que alcance el máximo, <span class="math inline">\(N^{r-1}\)</span> no es cero; si r es uno, esa afirmación se refiere a la identidad en un espacio no nulo. Así, el índice global es r. En particular, N es cero exactamente cuando todos los exponentes son uno.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-036" class="apm-anchor"></span> <strong>Solución 36.</strong> Tanto P como TPT tienen imagen contenida en W: T preserva W. Para <span class="math inline">\(w\in W\)</span>, <span class="math inline">\(Pw=w\)</span> y <span class="math inline">\(Tw\in W\)</span>, por lo que <span class="math inline">\(TPTw=T(Tw)=w\)</span>. Entonces E toma valores en W y es la identidad allí; se deduce <span class="math inline">\(E^2=E\)</span> e imagen W. Además, <span class="math inline">\(TE=(TP+PT)/2=ET\)</span>, usando <span class="math inline">\(T^2=I\)</span>. Por 17.6, <span class="math inline">\(\ker E\)</span> también es invariante y complementa a W. La división por dos es legítima por hipótesis. En característica dos, el bloque <span class="math inline">\(\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)</span> es una involución y su primera recta no tiene complemento invariante, por el argumento del ejercicio 6 con a igual a uno.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-037" class="apm-anchor"></span> <strong>Solución 37.</strong> Procedemos por inducción sobre la dimensión. Si es positiva, S tiene un valor propio por el TFA admitido de T1 §26.15 y C14. Su espacio propio no nulo se preserva por T, porque conmutan. La restricción de T a ese espacio tiene un vector propio, por la misma existencia compleja, y ese vector es propio de ambos. Su recta W es invariante para los dos. En V/W, los operadores inducidos conmutan: aplicar sus composiciones a una clase equivale a aplicar ST o TS y luego tomar la clase. La inducción proporciona una base triangular común del cociente. Levantar sus representantes y anteponer el vector de W produce una base cuyos generados iniciales son invariantes para ambos, como en 17.5. En dimensión cero la base vacía inicia la inducción. No se ha supuesto una base común propia.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-038" class="apm-anchor"></span> <strong>Solución 38.</strong> La restricción <span class="math inline">\(T_W\)</span> es un operador complejo de dimensión finita positiva. El TFA admitido y el criterio de C14 le dan un vector propio no nulo, cuya recta pertenece a W y es invariante bajo T. Sobre <span class="math inline">\(\mathbb R\)</span> puede fallar: para W igual al plano y T una rotación de un cuarto de vuelta, no hay ninguna recta propia real. La positividad de dimensión y el cuerpo son las hipótesis que permiten el argumento de existencia.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-039" class="apm-anchor"></span> <strong>Solución 39.</strong> Una escritura es S=T y N=0. Otra es <span class="math inline">\(S^{\ast}=\begin{pmatrix}1&amp;1\\0&amp;2\end{pmatrix}\)</span> y <span class="math inline">\(N^{\ast}=\begin{pmatrix}0&amp;-1\\0&amp;0\end{pmatrix}\)</span>. La primera tiene valores distintos y es diagonalizable, la segunda tiene cuadrado cero, y su suma es T. Pero <span class="math inline">\(S^{\ast}N^{\ast}=\begin{pmatrix}0&amp;-1\\0&amp;0\end{pmatrix}\)</span> y <span class="math inline">\(N^{\ast}S^{\ast}=\begin{pmatrix}0&amp;-2\\0&amp;0\end{pmatrix}\)</span> son diferentes. Esa escritura no satisface la hipótesis de 17.12, por lo que no contradice su unicidad.</p>
+<p><span id="MA-BCH-APM-02-017-SOL-040" class="apm-anchor"></span> <strong>Solución 40.</strong> El característico triangular es <span class="math inline">\((t-2)^2(t+1)^2\)</span>. El espacio propio de dos es <span class="math inline">\(\operatorname{span}e_1\)</span>, y resolver <span class="math inline">\((A+I)v=0\)</span> da una recta: los dos valores tienen multiplicidad geométrica uno y algebraica dos. Por 17.11, cada componente tiene dimensión dos y, si el exponente de su factor en el mínimo fuese uno, la acción allí sería escalar y su espacio propio tendría dimensión dos. Por tanto, ambos exponentes son dos y <span class="math inline">\(m_A=(t-2)^2(t+1)^2\)</span>. Se obtiene <span class="math inline">\(G_2=\operatorname{span}(e_1,e_2)\)</span> y <span class="math inline">\(G_{-1}=\operatorname{span}(u,v)\)</span>, donde <span class="math inline">\(u=(-2/9,-1/3,1,0)\)</span> y <span class="math inline">\(v=(-1/27,-1/9,0,1)\)</span>; sustituirlos en <span class="math inline">\((A+I)^2\)</span> verifica el núcleo y son independientes. El polinomio <span class="math inline">\(e(t)=(t-2)^2(2t+5)/27\)</span> es múltiplo de <span class="math inline">\((t-2)^2\)</span> y satisface <span class="math inline">\(1-e(t)=(t+1)^2(7-2t)/27\)</span>, así que tiene las congruencias de proyección. Su evaluación es <span class="math inline">\(E=\begin{pmatrix}0&amp;0&amp;-2/9&amp;-1/27\\0&amp;0&amp;-1/3&amp;-1/9\\0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;1\end{pmatrix}\)</span>. Luego <span class="math inline">\(S=\begin{pmatrix}2&amp;0&amp;2/3&amp;1/9\\0&amp;2&amp;1&amp;1/3\\0&amp;0&amp;-1&amp;0\\0&amp;0&amp;0&amp;-1\end{pmatrix}\)</span> y <span class="math inline">\(N=\begin{pmatrix}0&amp;1&amp;1/3&amp;-1/9\\0&amp;0&amp;0&amp;-1/3\\0&amp;0&amp;0&amp;1\\0&amp;0&amp;0&amp;0\end{pmatrix}\)</span>. La fórmula de proyección hace que S actúe por dos y menos uno en las dos componentes; por ello es diagonalizable. Ambas matrices son polinomios de A y conmutan. Multiplicar N por sí misma da cero, con cancelación de las dos contribuciones a la posición (1,4); N es no nula y tiene índice dos. Así se verifican todas las condiciones de 17.12.</p>
+</section>
+<section id="lecturas-y-referencias" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-referencias">Lecturas y referencias</h2>
+<p>Hoffman–Kunze, <em>Linear Algebra</em>, §§6.4, 6.7–6.8, desarrolla invariancia, sumas preservadas y descomposición primaria. Axler, <em>Linear Algebra Done Right</em>, §5C, relaciona triangularidad, generados iniciales y escisión del mínimo; sus ejercicios sobre operadores cociente permiten continuar el vínculo con clases. Friedberg, Insel y Spence, <em>Linear Algebra</em>, §5.4, estudia restricciones y subespacios cíclicos. Aquí la triangularización se construye mediante operadores cociente, y la descomposición primaria mediante identidades de Bézout demostradas sobre el cuerpo de trabajo.</p>
+<hr>
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-16-diagonalizacion.html">← Capítulo 16</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-18-forma-de-jordan.html">Capítulo 18 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

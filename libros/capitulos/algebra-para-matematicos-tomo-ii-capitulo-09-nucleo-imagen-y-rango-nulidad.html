@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 9 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.">
+
+<title>Capítulo 9. Núcleo, imagen y rango-nulidad – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#qué-se-pierde-y-qué-se-alcanza" id="toc-qué-se-pierde-y-qué-se-alcanza" class="nav-link active" data-scroll-target="#qué-se-pierde-y-qué-se-alcanza">9.1. Qué se pierde y qué se alcanza</a></li>
+  <li><a href="#reconocer-la-inyectividad-mirando-el-cero" id="toc-reconocer-la-inyectividad-mirando-el-cero" class="nav-link" data-scroll-target="#reconocer-la-inyectividad-mirando-el-cero">9.2. Reconocer la inyectividad mirando el cero</a></li>
+  <li><a href="#rango-y-nulidad-construir-las-dos-partes-de-una-base" id="toc-rango-y-nulidad-construir-las-dos-partes-de-una-base" class="nav-link" data-scroll-target="#rango-y-nulidad-construir-las-dos-partes-de-una-base">9.3. Rango y nulidad: construir las dos partes de una base</a></li>
+  <li><a href="#existencia-y-unicidad-bajo-restricciones-de-dimensión" id="toc-existencia-y-unicidad-bajo-restricciones-de-dimensión" class="nav-link" data-scroll-target="#existencia-y-unicidad-bajo-restricciones-de-dimensión">9.4. Existencia y unicidad bajo restricciones de dimensión</a></li>
+  <li><a href="#todas-las-soluciones-de-una-misma-salida" id="toc-todas-las-soluciones-de-una-misma-salida" class="nav-link" data-scroll-target="#todas-las-soluciones-de-una-misma-salida">9.5. Todas las soluciones de una misma salida</a></li>
+  <li><a href="#la-misma-dimensión-en-filas-y-columnas" id="toc-la-misma-dimensión-en-filas-y-columnas" class="nav-link" data-scroll-target="#la-misma-dimensión-en-filas-y-columnas">9.6. La misma dimensión en filas y columnas</a></li>
+  <li><a href="#restringir-una-transformación-y-componerla" id="toc-restringir-una-transformación-y-componerla" class="nav-link" data-scroll-target="#restringir-una-transformación-y-componerla">9.7. Restringir una transformación y componerla</a></li>
+  <li><a href="#diseñar-una-transformación-con-núcleo-e-imagen-dados" id="toc-diseñar-una-transformación-con-núcleo-e-imagen-dados" class="nav-link" data-scroll-target="#diseñar-una-transformación-con-núcleo-e-imagen-dados">9.8. Diseñar una transformación con núcleo e imagen dados</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">9.9. Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#calcular-y-representar" id="toc-calcular-y-representar" class="nav-link" data-scroll-target="#calcular-y-representar">Calcular y representar</a></li>
+  <li><a href="#reconstruir-y-aplicar-pruebas" id="toc-reconstruir-y-aplicar-pruebas" class="nav-link" data-scroll-target="#reconstruir-y-aplicar-pruebas">Reconstruir y aplicar pruebas</a></li>
+  <li><a href="#construir-y-contrastar" id="toc-construir-y-contrastar" class="nav-link" data-scroll-target="#construir-y-contrastar">Construir y contrastar</a></li>
+  <li><a href="#integrar-y-transferir" id="toc-integrar-y-transferir" class="nav-link" data-scroll-target="#integrar-y-transferir">Integrar y transferir</a></li>
+  </ul></li>
+  <li><a href="#soluciones-razonadas" id="toc-soluciones-razonadas" class="nav-link" data-scroll-target="#soluciones-razonadas">9.10. Soluciones razonadas</a></li>
+  <li><a href="#lecturas-y-referencias" id="toc-lecturas-y-referencias" class="nav-link" data-scroll-target="#lecturas-y-referencias">Lecturas y referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 9. Núcleo, imagen y rango-nulidad</h1>
+<p class="subtitle lead">Álgebra para matemáticos · Tomo II</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 9 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-08-transformaciones-lineales.html">← Capítulo 8</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-10-isomorfismos-y-coordenadas.html">Capítulo 10 →</a></p>
+<p>Una medición registra la suma de dos cantidades y, por separado, una tercera. Su regla es <span class="math inline">\(T(x,y,z)=(x+y,z)\)</span>. Las entradas <span class="math inline">\((2,0,1)\)</span> y <span class="math inline">\((0,2,1)\)</span> dan la misma salida <span class="math inline">\((2,1)\)</span>, y podemos desplazarnos de una a otra sin cambiar lo observado: aumentar la primera cantidad y disminuir la segunda en la misma medida deja intactas ambas mediciones. Las entradas compatibles con esa salida forman toda la recta <span class="math inline">\((2,0,1)+t(1,-1,0)\)</span>.</p>
+<p>La dirección <span class="math inline">\((1,-1,0)\)</span> se reconoce porque su propia salida es cero. En cambio, cualquier par <span class="math inline">\((a,b)\)</span> puede aparecer como resultado de la medición, ya que <span class="math inline">\(T(a,0,b)=(a,b)\)</span>. En esta transformación, una dirección de entrada queda oculta mientras dos direcciones de salida pueden variar libremente. La igualdad <span class="math inline">\(3=1+2\)</span> sugiere un balance que debemos justificar para transformaciones entre espacios cualesquiera, incluidos los que están formados por polinomios, matrices o funciones.</p>
+<figure id="fig-apm-t2-c09-f01" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C09-F01.svg" alt="Dos rectas paralelas de entradas tienen salidas constantes bajo T(x,y,z)=(x+y,z); la recta por cero es el núcleo y la recta por (2,0,1) es la fibra de (2,1)." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 9.1.</em> Trasladar una entrada en la dirección <span class="math inline">\((1,-1,0)\)</span> no cambia su salida. La proyección utilizada para dibujar el dominio tridimensional conserva incidencias y paralelismo, sin representar sus ángulos o longitudes espaciales.
+</figcaption>
+</figure>
+<p>Trabajaremos sobre un cuerpo <span class="math inline">\(\mathbb F\)</span> común al dominio y al codominio. Los ejemplos numéricos son reales salvo indicación contraria. Se presuponen la eliminación de C01–C03, las bases de C07 y la linealidad de C08. Las afirmaciones sobre dimensiones enteras llevarán una hipótesis de finitud; las nociones de núcleo e imagen no la necesitan.</p>
+<section id="qué-se-pierde-y-qué-se-alcanza" class="level2">
+<h2 class="anchored" data-anchor-id="qué-se-pierde-y-qué-se-alcanza">9.1. Qué se pierde y qué se alcanza</h2>
+<p><span id="MA-BCH-APM-02-009-DEF-001" class="apm-anchor"></span> <strong>Definición 9.1 (núcleo e imagen).</strong> Para una transformación lineal <span class="math inline">\(T:V\to W\)</span>, su <strong>núcleo</strong> y su <strong>imagen</strong> son</p>
+<p><span class="math display">\[
+\ker T=\{x\in V:T(x)=0_W\},
+\qquad
+\operatorname{im}T=\{T(x):x\in V\}.
+\]</span></p>
+<p>El núcleo es un conjunto de entradas; la imagen es un conjunto de salidas. Aunque una matriz represente ambos cálculos, los dos objetos viven en espacios diferentes. En la transformación de la apertura, <span class="math inline">\(\ker T=\{(t,-t,0):t\in\mathbb R\}\)</span> está en <span class="math inline">\(\mathbb R^3\)</span>, mientras que <span class="math inline">\(\operatorname{im}T=\mathbb R^2\)</span> está en el codominio.</p>
+<p><span id="MA-BCH-APM-02-009-PRP-001" class="apm-anchor"></span> <strong>Proposición 9.1.</strong> El núcleo de <span class="math inline">\(T:V\to W\)</span> es un subespacio de <span class="math inline">\(V\)</span> y su imagen es un subespacio de <span class="math inline">\(W\)</span>.</p>
+<p><strong>Demostración.</strong> Como <span class="math inline">\(T(0_V)=0_W\)</span>, el núcleo contiene <span class="math inline">\(0_V\)</span>. Si <span class="math inline">\(x,y\in\ker T\)</span> y <span class="math inline">\(a,b\in\mathbb F\)</span>, la linealidad da <span class="math inline">\(T(ax+by)=aT(x)+bT(y)=0_W\)</span>, así que el núcleo es cerrado por combinaciones lineales.</p>
+<p>La imagen contiene <span class="math inline">\(0_W=T(0_V)\)</span>. Si <span class="math inline">\(u,v\)</span> pertenecen a la imagen, existen entradas <span class="math inline">\(x,y\)</span> con <span class="math inline">\(T(x)=u\)</span>, <span class="math inline">\(T(y)=v\)</span>. Para escalares <span class="math inline">\(a,b\)</span>, tenemos <span class="math inline">\(au+bv=T(ax+by)\)</span>, de modo que la combinación también pertenece a la imagen. Los criterios de subespacio de C05 completan ambas verificaciones. <span class="math inline">\(\square\)</span></p>
+<p>Encontrar una imagen exige demostrar qué salidas se obtienen y que no falta ninguna de las que declaramos posibles. Por ejemplo, para <span class="math inline">\(S:\mathbb R^3\to\mathbb R^3\)</span> definido por <span class="math inline">\(S(x,y,z)=(x+y,z,x+y+z)\)</span>, toda salida <span class="math inline">\((a,b,c)\)</span> satisface <span class="math inline">\(c=a+b\)</span>. Recíprocamente, si se cumple esa ecuación, la entrada <span class="math inline">\((a,0,b)\)</span> produce <span class="math inline">\((a,b,c)\)</span>. Por tanto, <span class="math inline">\(\operatorname{im}S\)</span> es exactamente el plano <span class="math inline">\(c=a+b\)</span>, aunque el codominio sea todo <span class="math inline">\(\mathbb R^3\)</span>.</p>
+<p>Una función es <strong>sobreyectiva</strong> si su imagen coincide con su codominio. La regla anterior no es sobreyectiva hacia <span class="math inline">\(\mathbb R^3\)</span>, pero sí lo es si elegimos como codominio el plano <span class="math inline">\(c=a+b\)</span>. El núcleo y las salidas alcanzadas permanecen iguales; cambia la afirmación de sobreyectividad porque ésta compara las salidas con el codominio declarado.</p>
+<p><span id="MA-BCH-APM-02-009-PRP-002" class="apm-anchor"></span> <strong>Proposición 9.2 (imágenes de generadores).</strong> Si una lista <span class="math inline">\((v_1,\ldots,v_r)\)</span> genera <span class="math inline">\(V\)</span>, entonces <span class="math inline">\(\operatorname{im}T=\operatorname{span}(T(v_1),\ldots,T(v_r))\)</span>.</p>
+<p><strong>Demostración.</strong> Cada imagen <span class="math inline">\(T(v_j)\)</span> pertenece a <span class="math inline">\(\operatorname{im}T\)</span>, que es subespacio, de modo que contiene todo el espacio generado por ellas. En sentido contrario, cualquier elemento de la imagen es <span class="math inline">\(T(x)\)</span> y podemos escribir <span class="math inline">\(x=\sum_j a_jv_j\)</span>. La superposición de C08 da <span class="math inline">\(T(x)=\sum_j a_jT(v_j)\)</span>, que pertenece al espacio generado indicado. <span class="math inline">\(\square\)</span></p>
+<p>Las imágenes de una base generan la imagen de la transformación, pero pueden dejar de ser independientes. Una proyección puede enviar uno de sus vectores a cero o dos vectores distintos a la misma salida. Para obtener una base de la imagen debemos extraerla de la lista de salidas, como en C07, o escoger con cuidado una base del dominio que tenga en cuenta el núcleo.</p>
+</section>
+<section id="reconocer-la-inyectividad-mirando-el-cero" class="level2">
+<h2 class="anchored" data-anchor-id="reconocer-la-inyectividad-mirando-el-cero">9.2. Reconocer la inyectividad mirando el cero</h2>
+<p>Una función es inyectiva cuando dos entradas con la misma salida necesariamente coinciden. Para una transformación lineal, la diferencia entre dos entradas con la misma salida pertenece al núcleo: <span class="math inline">\(T(x)=T(y)\)</span> equivale a <span class="math inline">\(T(x-y)=0\)</span>. Esa observación convierte una comparación entre todas las parejas de entradas en una pregunta sobre las entradas que producen cero.</p>
+<p><span id="MA-BCH-APM-02-009-THM-001" class="apm-anchor"></span> <strong>Teorema 9.3.</strong> Una transformación lineal <span class="math inline">\(T:V\to W\)</span> es inyectiva si y sólo si <span class="math inline">\(\ker T=\{0_V\}\)</span>.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(T\)</span> es inyectiva y <span class="math inline">\(x\in\ker T\)</span>, entonces <span class="math inline">\(T(x)=0_W=T(0_V)\)</span> obliga a <span class="math inline">\(x=0_V\)</span>. La inclusión contraria ya se conoce, por lo que el núcleo es exactamente <span class="math inline">\(\{0_V\}\)</span>.</p>
+<p>Supongamos ahora que el núcleo sólo contiene al cero. Si <span class="math inline">\(T(x)=T(y)\)</span>, la linealidad da <span class="math inline">\(T(x-y)=0_W\)</span>, así que <span class="math inline">\(x-y\in\ker T\)</span> y, por la hipótesis, <span class="math inline">\(x-y=0_V\)</span>. En consecuencia, <span class="math inline">\(x=y\)</span> y <span class="math inline">\(T\)</span> es inyectiva. <span class="math inline">\(\square\)</span></p>
+<p>La finitud de dimensión no intervino. Tampoco basta que el núcleo sea pequeño en un sentido informal: un solo vector no nulo del núcleo proporciona ya dos entradas distintas, ese vector y el cero, con una misma salida. Sobre un cuerpo finito, esas coincidencias siguen existiendo aunque las fibras sólo contengan un número finito de puntos.</p>
+<p>Si <span class="math inline">\(T\)</span> es inyectiva, envía cualquier lista independiente a una lista independiente. En efecto, una relación <span class="math inline">\(\sum_j a_jT(v_j)=0\)</span> implica <span class="math inline">\(T(\sum_j a_jv_j)=0\)</span>; el núcleo trivial da <span class="math inline">\(\sum_j a_jv_j=0\)</span> y la independencia de la lista original anula todos los coeficientes. El recíproco puede reconocerse en listas de un solo vector: si ningún vector no nulo puede enviarse a cero, el núcleo es trivial.</p>
+</section>
+<section id="rango-y-nulidad-construir-las-dos-partes-de-una-base" class="level2">
+<h2 class="anchored" data-anchor-id="rango-y-nulidad-construir-las-dos-partes-de-una-base">9.3. Rango y nulidad: construir las dos partes de una base</h2>
+<p><span id="MA-BCH-APM-02-009-DEF-002" class="apm-anchor"></span> <strong>Definición 9.2.</strong> Cuando los subespacios correspondientes tienen dimensión finita, el <strong>rango</strong> de <span class="math inline">\(T\)</span> es <span class="math inline">\(\operatorname{rg}T=\dim(\operatorname{im}T)\)</span> y su <strong>nulidad</strong> es <span class="math inline">\(\operatorname{nul}T=\dim(\ker T)\)</span>.</p>
+<p>Si <span class="math inline">\(V\)</span> es de dimensión finita, su núcleo es finito por C07 y su imagen está generada por las imágenes de una base finita, por la proposición 9.2. En ese caso ambas cantidades están definidas, incluso si el codominio <span class="math inline">\(W\)</span> tiene dimensión infinita.</p>
+<p><span id="MA-BCH-APM-02-009-THM-002" class="apm-anchor"></span> <strong>Teorema 9.4 (rango-nulidad).</strong> Si <span class="math inline">\(T:V\to W\)</span> es lineal y <span class="math inline">\(\dim V=n&lt;\infty\)</span>, entonces</p>
+<p><span class="math display">\[
+\dim V=\operatorname{nul}T+\operatorname{rg}T.
+\]</span></p>
+<p><strong>Demostración.</strong> Comenzamos por una base <span class="math inline">\((u_1,\ldots,u_k)\)</span> del núcleo y la extendemos hasta una base <span class="math inline">\((u_1,\ldots,u_k,v_1,\ldots,v_r)\)</span> de <span class="math inline">\(V\)</span>. Tenemos <span class="math inline">\(n=k+r\)</span>. Los vectores del primer bloque desaparecen bajo <span class="math inline">\(T\)</span>; probaremos que las imágenes del segundo bloque forman una base de la imagen. Esa elección es lo que permitirá contar sin confundir generadores con vectores independientes.</p>
+<p>Si <span class="math inline">\(x=\sum_i a_iu_i+\sum_j b_jv_j\)</span>, al aplicar <span class="math inline">\(T\)</span> queda <span class="math inline">\(T(x)=\sum_j b_jT(v_j)\)</span>, porque <span class="math inline">\(T(u_i)=0\)</span>. Por tanto, las imágenes <span class="math inline">\(T(v_1),\ldots,T(v_r)\)</span> generan <span class="math inline">\(\operatorname{im}T\)</span>.</p>
+<p>Supongamos que satisfacen una relación <span class="math inline">\(\sum_j c_jT(v_j)=0\)</span>. La linealidad nos dice que <span class="math inline">\(z=\sum_j c_jv_j\)</span> pertenece al núcleo. Como los <span class="math inline">\(u_i\)</span> forman una base de ese núcleo, podemos escribir también <span class="math inline">\(z=\sum_i d_iu_i\)</span>. Al igualar las dos expresiones obtenemos</p>
+<p><span class="math display">\[
+\sum_{j=1}^r c_jv_j-\sum_{i=1}^k d_iu_i=0.
+\]</span></p>
+<p>Ésta es una relación en la base completa del dominio. Su independencia anula todos los <span class="math inline">\(c_j\)</span> y <span class="math inline">\(d_i\)</span>. Las imágenes del segundo bloque son, por tanto, independientes y forman una base de la imagen. Su dimensión es <span class="math inline">\(r\)</span>, mientras que la del núcleo es <span class="math inline">\(k\)</span>, de donde <span class="math inline">\(\operatorname{rg}T+\operatorname{nul}T=r+k=n\)</span>.</p>
+<p>Si <span class="math inline">\(k=0\)</span> o <span class="math inline">\(r=0\)</span>, el bloque correspondiente es vacío y los mismos argumentos valen con sumas vacías. Esto incluye al espacio nulo, a la transformación cero y a las transformaciones inyectivas. <span class="math inline">\(\square\)</span></p>
+<p>Para la medición inicial, una base adaptada del dominio es <span class="math inline">\(((1,-1,0),(1,0,0),(0,0,1))\)</span>. El primer vector genera el núcleo; los dos restantes se envían a <span class="math inline">\((1,0)\)</span> y <span class="math inline">\((0,1)\)</span>, que forman una base de la imagen. Hemos hecho explícita la descomposición <span class="math inline">\(3=1+2\)</span> sin atribuir significado de dimensión a un simple conteo de ejemplos.</p>
+<figure id="fig-apm-t2-c09-f02" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C09-F02.svg" alt="Una base del dominio contiene primero un vector del núcleo y después dos vectores cuyas imágenes forman una base del codominio para la medición T(x,y,z)=(x+y,z)." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 9.2.</em> Los bloques tienen funciones distintas: un vector básico se anula y las otras dos imágenes son independientes. Las flechas representan la aplicación de <span class="math inline">\(T\)</span>, no la posición geométrica de tres vectores en un mismo plano.
+</figcaption>
+</figure>
+<p>La derivación formal <span class="math inline">\(D:P_3(\mathbb R)\to P_3(\mathbb R)\)</span> ofrece otro ejemplo. La condición <span class="math inline">\(D(a+bt+ct^2+dt^3)=b+2ct+3dt^2=0\)</span> fuerza <span class="math inline">\(b=c=d=0\)</span>, de modo que el núcleo es el espacio de constantes, de dimensión uno. La imagen es <span class="math inline">\(P_2(\mathbb R)\)</span>: no se producen términos de grado tres y todo <span class="math inline">\(a+bt+ct^2\)</span> se obtiene derivando <span class="math inline">\(at+(b/2)t^2+(c/3)t^3\)</span>. El rango es tres y <span class="math inline">\(4=1+3\)</span>. Las divisiones por dos y tres son válidas aquí sobre <span class="math inline">\(\mathbb R\)</span>; sobre otros cuerpos debemos volver a examinar los coeficientes.</p>
+</section>
+<section id="existencia-y-unicidad-bajo-restricciones-de-dimensión" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-y-unicidad-bajo-restricciones-de-dimensión">9.4. Existencia y unicidad bajo restricciones de dimensión</h2>
+<p>El teorema permite reconocer obstáculos antes de calcular. Si <span class="math inline">\(V,W\)</span> son finitos, la imagen es un subespacio de <span class="math inline">\(W\)</span>, de modo que <span class="math inline">\(\operatorname{rg}T\le\dim W\)</span>; rango-nulidad también da <span class="math inline">\(\operatorname{rg}T\le\dim V\)</span>. Si <span class="math inline">\(\dim V&gt;\dim W\)</span>, resulta <span class="math inline">\(\operatorname{nul}T\ge\dim V-\dim W&gt;0\)</span>, por lo que ninguna transformación lineal <span class="math inline">\(V\to W\)</span> puede ser inyectiva. Si <span class="math inline">\(\dim V&lt;\dim W\)</span>, ninguna puede ser sobreyectiva porque su imagen tiene dimensión demasiado pequeña.</p>
+<p><span id="MA-BCH-APM-02-009-COR-001" class="apm-anchor"></span> <strong>Corolario 9.5.</strong> Para una transformación lineal entre dos espacios de la misma dimensión finita, son equivalentes: ser inyectiva, ser sobreyectiva y ser biyectiva.</p>
+<p><strong>Demostración.</strong> Escribamos <span class="math inline">\(\dim V=\dim W=n\)</span>. Si <span class="math inline">\(T\)</span> es inyectiva, el núcleo tiene dimensión cero y rango-nulidad da <span class="math inline">\(\operatorname{rg}T=n\)</span>. La imagen es un subespacio de <span class="math inline">\(W\)</span> con toda su dimensión, luego coincide con <span class="math inline">\(W\)</span> por C07 y <span class="math inline">\(T\)</span> es sobreyectiva. Si <span class="math inline">\(T\)</span> es sobreyectiva, su rango es <span class="math inline">\(n\)</span> y rango-nulidad da nulidad cero; el núcleo es entonces el subespacio nulo y el teorema 9.3 prueba inyectividad. La biyectividad reúne ambas propiedades. <span class="math inline">\(\square\)</span></p>
+<p>La igualdad de dimensiones y su finitud son necesarias en esta conclusión. La inclusión <span class="math inline">\(J:\mathbb R^2\to\mathbb R^3\)</span>, <span class="math inline">\(J(x,y)=(x,y,0)\)</span>, es inyectiva sin ser sobreyectiva; la medición de la apertura es sobreyectiva sin ser inyectiva. En el espacio de todas las sucesiones, el desplazamiento a la derecha <span class="math inline">\(R(x_0,x_1,\ldots)=(0,x_0,x_1,\ldots)\)</span> es inyectivo pero no alcanza una sucesión con primera entrada uno. El desplazamiento a la izquierda <span class="math inline">\(L(x_0,x_1,\ldots)=(x_1,x_2,\ldots)\)</span> alcanza toda sucesión, pero pierde la primera entrada. Estos operadores de C08 actúan sobre un mismo espacio infinito y separan las dos propiedades.</p>
+<p>Las mismas ideas aclaran los sistemas cuadrados de C03: para <span class="math inline">\(A\in M_n(\mathbb F)\)</span>, si <span class="math inline">\(Ax=0\)</span> sólo admite la solución nula, entonces <span class="math inline">\(T_A\)</span> es inyectiva y, por el corolario, cada sistema <span class="math inline">\(Ax=b\)</span> tiene exactamente una solución. No basta esta afirmación para matrices rectangulares sin comparar sus dimensiones.</p>
+</section>
+<section id="todas-las-soluciones-de-una-misma-salida" class="level2">
+<h2 class="anchored" data-anchor-id="todas-las-soluciones-de-una-misma-salida">9.5. Todas las soluciones de una misma salida</h2>
+<p>Para <span class="math inline">\(w\in W\)</span>, la <strong>fibra</strong> de <span class="math inline">\(T\)</span> sobre <span class="math inline">\(w\)</span> es el conjunto <span class="math inline">\(T^{-1}(\{w\})=\{x\in V:T(x)=w\}\)</span>. La notación designa una preimagen de conjunto; no supone que <span class="math inline">\(T\)</span> tenga función inversa.</p>
+<p><span id="MA-BCH-APM-02-009-THM-003" class="apm-anchor"></span> <strong>Teorema 9.6 (fibras como traslaciones).</strong> La fibra sobre <span class="math inline">\(w\)</span> es vacía si <span class="math inline">\(w\notin\operatorname{im}T\)</span>. Si <span class="math inline">\(T(p)=w\)</span>, entonces</p>
+<p><span class="math display">\[
+T^{-1}(\{w\})=p+\ker T=\{p+u:u\in\ker T\}.
+\]</span></p>
+<p><strong>Demostración.</strong> No pertenecer a la imagen significa precisamente que no existe una entrada con esa salida. Si existe <span class="math inline">\(p\)</span> y <span class="math inline">\(T(x)=w=T(p)\)</span>, entonces <span class="math inline">\(T(x-p)=0\)</span>, por lo que <span class="math inline">\(x-p\in\ker T\)</span> y <span class="math inline">\(x\in p+\ker T\)</span>. Recíprocamente, para <span class="math inline">\(u\in\ker T\)</span> se tiene <span class="math inline">\(T(p+u)=T(p)+T(u)=w\)</span>, de modo que <span class="math inline">\(p+u\)</span> pertenece a la fibra. Las dos inclusiones prueban la igualdad. <span class="math inline">\(\square\)</span></p>
+<p>El punto particular <span class="math inline">\(p\)</span> no es único si el núcleo es no trivial. Elegir otro punto <span class="math inline">\(p'\)</span> de la misma fibra no cambia la traslación como conjunto, porque <span class="math inline">\(p'-p\in\ker T\)</span>. Todas las fibras no vacías tienen las mismas direcciones y la misma cantidad de parámetros independientes, dada en dimensión finita por <span class="math inline">\(\operatorname{nul}T\)</span>.</p>
+<p>En la apertura, sobre <span class="math inline">\((a,b)\)</span> podemos elegir <span class="math inline">\(p=(a,0,b)\)</span> y obtener <span class="math inline">\((a+t,-t,b)\)</span> para todas las soluciones. Para la transformación <span class="math inline">\(S(x,y,z)=(x+y,z,x+y+z)\)</span> de §9.1, la salida <span class="math inline">\((a,b,c)\)</span> tiene fibra vacía cuando <span class="math inline">\(c\ne a+b\)</span> y, cuando es compatible, tiene la misma familia <span class="math inline">\((a+t,-t,b)\)</span>. El núcleo regula la unicidad; la imagen regula la existencia.</p>
+<p>Si <span class="math inline">\(w\ne0\)</span>, una fibra no vacía no contiene el cero y no es un subespacio vectorial con las operaciones heredadas. Es un subespacio afín, una traslación del núcleo. Sobre un cuerpo finito de <span class="math inline">\(q\)</span> elementos, si la nulidad es <span class="math inline">\(k\)</span>, cada fibra no vacía contiene exactamente <span class="math inline">\(q^k\)</span> entradas: la traslación <span class="math inline">\(u\mapsto p+u\)</span> es una correspondencia biyectiva con el núcleo. Esta afirmación sustituye a «hay infinitas soluciones» cuando el cuerpo es finito.</p>
+</section>
+<section id="la-misma-dimensión-en-filas-y-columnas" class="level2">
+<h2 class="anchored" data-anchor-id="la-misma-dimensión-en-filas-y-columnas">9.6. La misma dimensión en filas y columnas</h2>
+<p>Para <span class="math inline">\(A\in M_{m\times n}(\mathbb F)\)</span>, el producto <span class="math inline">\(Ax\)</span> es la combinación de sus columnas con coeficientes dados por las entradas de <span class="math inline">\(x\)</span>. Por tanto, <span class="math inline">\(\operatorname{im}T_A\)</span> es el <strong>espacio de columnas</strong> de <span class="math inline">\(A\)</span> y <span class="math inline">\(\ker T_A\)</span> es el espacio de soluciones de <span class="math inline">\(Ax=0\)</span>. Llamamos <strong>espacio de filas</strong> al subespacio de <span class="math inline">\(\mathbb F^n\)</span> generado por las filas de <span class="math inline">\(A\)</span>. Su dimensión y la del espacio de columnas se llaman, respectivamente, rango por filas y rango por columnas.</p>
+<p><span id="MA-BCH-APM-02-009-THM-004" class="apm-anchor"></span> <strong>Teorema 9.7.</strong> Los rangos por filas y por columnas de una matriz son iguales al número de pivotes de su forma escalonada reducida. Ese número es también <span class="math inline">\(\operatorname{rg}T_A\)</span>. En particular, <span class="math inline">\(\operatorname{rg}(A^{\mathsf T})=\operatorname{rg}A\)</span>.</p>
+<p><strong>Demostración.</strong> Sea <span class="math inline">\(R\)</span> la forma reducida de <span class="math inline">\(A\)</span> y sea <span class="math inline">\(r\)</span> su número de pivotes. Cada operación elemental de fila sustituye filas por combinaciones de las anteriores; por ello el espacio de filas nuevo está contenido en el anterior. La operación inversa proporciona la inclusión contraria, así que el espacio de filas se conserva. Las <span class="math inline">\(r\)</span> filas no nulas de <span class="math inline">\(R\)</span> generan su espacio de filas y son independientes: en la columna de pivote correspondiente a cada una, una relación entre ellas se reduce al coeficiente de esa fila. El rango por filas de <span class="math inline">\(A\)</span> es, por tanto, <span class="math inline">\(r\)</span>.</p>
+<p>La proposición 7.6 de C07 prueba que las columnas <strong>originales</strong> de <span class="math inline">\(A\)</span> situadas en las posiciones de pivote forman una base de su espacio de columnas. Luego el rango por columnas también es <span class="math inline">\(r\)</span>. Como ese espacio es <span class="math inline">\(\operatorname{im}T_A\)</span>, el rango de la transformación es el mismo. Finalmente, las columnas de <span class="math inline">\(A^{\mathsf T}\)</span> son las filas de <span class="math inline">\(A\)</span>, de modo que el rango por columnas de <span class="math inline">\(A^{\mathsf T}\)</span> coincide con el rango por filas de <span class="math inline">\(A\)</span>, y ambos son iguales a <span class="math inline">\(\operatorname{rg}A\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Los dos espacios no son iguales como conjuntos: están en <span class="math inline">\(\mathbb F^m\)</span> y <span class="math inline">\(\mathbb F^n\)</span>, respectivamente, y pueden tener incluso distinto número de entradas por vector. El teorema afirma igualdad de dimensiones. Tampoco afirma que las operaciones de fila conserven el espacio de columnas; conservan sus relaciones de dependencia y las posiciones que permiten seleccionar una base en las columnas originales.</p>
+<p>Consideremos el sistema <span class="math inline">\(Ax=b\)</span> con</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}1&amp;0&amp;1&amp;2\\0&amp;1&amp;1&amp;-1\\1&amp;1&amp;2&amp;1\end{pmatrix},
+\qquad b=\begin{pmatrix}a\\b_0\\c\end{pmatrix}.
+\]</span></p>
+<p>La tercera fila de coeficientes es suma de las dos primeras. Reducir la matriz ampliada produce la última ecuación <span class="math inline">\(0=c-a-b_0\)</span>, de modo que la imagen está formada por las columnas <span class="math inline">\((a,b_0,c)\)</span> con <span class="math inline">\(c=a+b_0\)</span>. Las dos primeras columnas originales forman una base de la imagen, el rango es dos y la nulidad es <span class="math inline">\(4-2=2\)</span>. Tomando <span class="math inline">\(x_3=s\)</span>, <span class="math inline">\(x_4=t\)</span>, la solución general compatible es</p>
+<p><span class="math display">\[
+x=(a,b_0,0,0)+s(-1,-1,1,0)+t(-2,1,0,1).
+\]</span></p>
+<p>La eliminación muestra los parámetros y rango-nulidad justifica su número. Con cuatro incógnitas y sólo dos condiciones independientes, una salida compatible no puede determinar una entrada única.</p>
+<figure id="fig-apm-t2-c09-f03" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C09-F03.svg" alt="El mismo sistema rectangular muestra dos pivotes en la matriz de coeficientes, dos variables libres y una condición de compatibilidad c=a+b0 en la matriz ampliada." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 9.3.</em> En el dibujo, <span class="math inline">\(b\)</span> abrevia <span class="math inline">\(b_0\)</span>. Los pivotes que cuentan el rango pertenecen a la matriz de coeficientes. Si <span class="math inline">\(c-a-b_0\ne0\)</span>, aparece un pivote adicional en la última columna ampliada que certifica incompatibilidad, sin aumentar el rango de <span class="math inline">\(A\)</span>.
+</figcaption>
+</figure>
+</section>
+<section id="restringir-una-transformación-y-componerla" class="level2">
+<h2 class="anchored" data-anchor-id="restringir-una-transformación-y-componerla">9.7. Restringir una transformación y componerla</h2>
+<p>Si <span class="math inline">\(U\subseteq V\)</span> es un subespacio, la <strong>restricción</strong> <span class="math inline">\(T|_U:U\to W\)</span> usa la misma regla de <span class="math inline">\(T\)</span>, pero sólo acepta entradas de <span class="math inline">\(U\)</span>. Sigue siendo lineal; su núcleo es <span class="math inline">\(U\cap\ker T\)</span> y su imagen es <span class="math inline">\(T(U)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-009-PRP-003" class="apm-anchor"></span> <strong>Proposición 9.8 (restricción y rango de una composición).</strong> Si <span class="math inline">\(U\)</span> tiene dimensión finita, entonces</p>
+<p><span class="math display">\[
+\dim T(U)=\dim U-\dim(U\cap\ker T).
+\]</span></p>
+<p>Si <span class="math inline">\(T:X\to V\)</span> y <span class="math inline">\(S:V\to W\)</span> tienen rangos finitos, se cumple <span class="math inline">\(\operatorname{rg}(ST)\le\min(\operatorname{rg}S,\operatorname{rg}T)\)</span>. Si además <span class="math inline">\(\dim V=m&lt;\infty\)</span>, entonces</p>
+<p><span class="math display">\[
+\operatorname{rg}(ST)\ge\operatorname{rg}T+\operatorname{rg}S-m.
+\]</span></p>
+<p><strong>Demostración.</strong> La primera identidad es rango-nulidad aplicado a <span class="math inline">\(T|_U\)</span>, con el núcleo y la imagen que acabamos de identificar.</p>
+<p>Para la composición, <span class="math inline">\(\operatorname{im}(ST)=S(\operatorname{im}T)\)</span>. Esta imagen está contenida en <span class="math inline">\(\operatorname{im}S\)</span>, lo que da una cota superior. Aplicar la primera identidad a la restricción de <span class="math inline">\(S\)</span> al subespacio finito <span class="math inline">\(\operatorname{im}T\)</span> da también</p>
+<p><span class="math display">\[
+\operatorname{rg}(ST)
+=\operatorname{rg}T-\dim(\operatorname{im}T\cap\ker S)
+\le\operatorname{rg}T.
+\]</span></p>
+<p>Si <span class="math inline">\(V\)</span> tiene dimensión <span class="math inline">\(m\)</span>, entonces <span class="math inline">\(\dim\ker S=m-\operatorname{rg}S\)</span>. La intersección no puede superar esa dimensión, de modo que la igualdad anterior da la cota inferior anunciada. <span class="math inline">\(\square\)</span></p>
+<p>La pérdida adicional al aplicar <span class="math inline">\(S\)</span> depende de qué parte de las salidas de <span class="math inline">\(T\)</span> cae en el núcleo de <span class="math inline">\(S\)</span>. Si esa intersección es cero, la composición conserva todo el rango de <span class="math inline">\(T\)</span>, aunque <span class="math inline">\(S\)</span> pueda anular direcciones que nunca se alcanzan desde <span class="math inline">\(T\)</span>. Si, en cambio, la imagen completa de <span class="math inline">\(T\)</span> está dentro del núcleo de <span class="math inline">\(S\)</span>, la composición es cero.</p>
+</section>
+<section id="diseñar-una-transformación-con-núcleo-e-imagen-dados" class="level2">
+<h2 class="anchored" data-anchor-id="diseñar-una-transformación-con-núcleo-e-imagen-dados">9.8. Diseñar una transformación con núcleo e imagen dados</h2>
+<p>Los subespacios obtenidos al estudiar una transformación también pueden usarse como datos de un problema de construcción. No basta escoger un núcleo y una imagen de tamaños arbitrarios: rango-nulidad relaciona sus dimensiones.</p>
+<p><span id="MA-BCH-APM-02-009-THM-005" class="apm-anchor"></span> <strong>Teorema 9.9 (construcción con datos estructurales).</strong> Sea <span class="math inline">\(V\)</span> de dimensión finita, <span class="math inline">\(K\subseteq V\)</span> un subespacio y <span class="math inline">\(I\subseteq W\)</span> un subespacio finito. Existe una transformación lineal <span class="math inline">\(T:V\to W\)</span> con <span class="math inline">\(\ker T=K\)</span> e <span class="math inline">\(\operatorname{im}T=I\)</span> si y sólo si <span class="math inline">\(\dim K+\dim I=\dim V\)</span>.</p>
+<p><strong>Demostración.</strong> La necesidad es rango-nulidad. Para probar suficiencia, tomamos una base <span class="math inline">\((u_1,\ldots,u_k)\)</span> de <span class="math inline">\(K\)</span> y la extendemos a una base <span class="math inline">\((u_1,\ldots,u_k,v_1,\ldots,v_r)\)</span> de <span class="math inline">\(V\)</span>. La igualdad de dimensiones dice que <span class="math inline">\(r=\dim I\)</span>; elijamos una base <span class="math inline">\((w_1,\ldots,w_r)\)</span> de <span class="math inline">\(I\)</span>. Por C08 existe una única transformación con <span class="math inline">\(T(u_i)=0\)</span> y <span class="math inline">\(T(v_j)=w_j\)</span> sobre esa base elegida.</p>
+<p>Su imagen es <span class="math inline">\(I\)</span>, porque esas imágenes generan exactamente <span class="math inline">\(I\)</span>. Si <span class="math inline">\(x=\sum_i a_iu_i+\sum_j b_jv_j\)</span> y <span class="math inline">\(T(x)=0\)</span>, entonces <span class="math inline">\(\sum_j b_jw_j=0\)</span>. La independencia de los <span class="math inline">\(w_j\)</span> fuerza <span class="math inline">\(b_j=0\)</span> para todo <span class="math inline">\(j\)</span>, por lo que <span class="math inline">\(x\in K\)</span>. La inclusión <span class="math inline">\(K\subseteq\ker T\)</span> ya se deduce de los valores prescritos. Así, el núcleo es exactamente <span class="math inline">\(K\)</span>. La construcción admite bloques vacíos y funciona también para rango cero o núcleo trivial. <span class="math inline">\(\square\)</span></p>
+<p>Por ejemplo, para construir <span class="math inline">\(T:\mathbb R^3\to\mathbb R^2\)</span> con núcleo <span class="math inline">\(K=\operatorname{span}(1,1,0)\)</span> e imagen toda <span class="math inline">\(\mathbb R^2\)</span>, completamos ese generador con <span class="math inline">\(e_2,e_3\)</span>. Les asignamos salidas <span class="math inline">\(0,(1,0),(0,1)\)</span>, respectivamente. Como <span class="math inline">\((x,y,z)=x(1,1,0)+(y-x)e_2+ze_3\)</span>, resulta <span class="math inline">\(T(x,y,z)=(y-x,z)\)</span>. Otras bases y otras asignaciones independientes pueden dar transformaciones diferentes con los mismos subespacios; el teorema garantiza existencia, sin afirmar una elección canónica.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">9.9. Ejercicios</h2>
+<p>Los problemas comienzan con descripciones de núcleos, imágenes y fibras; después piden construir pruebas, detectar errores y diseñar transformaciones. Todos requieren justificación. Los espacios son reales salvo indicación contraria.</p>
+<section id="calcular-y-representar" class="level3">
+<h3 class="anchored" data-anchor-id="calcular-y-representar">Calcular y representar</h3>
+<p><span id="MA-BCH-APM-02-009-EXR-001" class="apm-anchor"></span> <strong>1.</strong> Para <span class="math inline">\(T:\mathbb R^3\to\mathbb R^2\)</span>, <span class="math inline">\(T(x,y,z)=(x+y,z)\)</span>, encuentre bases del núcleo y de la imagen, rango y nulidad. Describa la fibra sobre <span class="math inline">\((2,1)\)</span> usando dos soluciones particulares distintas.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-002" class="apm-anchor"></span> <strong>2.</strong> Para <span class="math inline">\(S(x,y,z)=(x+y,z,x+y+z)\)</span>, determine núcleo, imagen y fibras sobre <span class="math inline">\((1,2,3)\)</span> y <span class="math inline">\((1,2,4)\)</span>. Distinga imagen y codominio.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-003" class="apm-anchor"></span> <strong>3.</strong> Considere <span class="math inline">\(A=\begin{pmatrix}1&amp;0&amp;1&amp;2\\0&amp;1&amp;1&amp;-1\\1&amp;1&amp;2&amp;1\end{pmatrix}\)</span>. Halle bases de sus espacios de filas y columnas y de las soluciones de <span class="math inline">\(Ax=0\)</span>. Resuelva <span class="math inline">\(Ax=(2,1,3)^{\mathsf T}\)</span> y decida qué sucede con <span class="math inline">\(Ax=(2,1,4)^{\mathsf T}\)</span>.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-004" class="apm-anchor"></span> <strong>4.</strong> Sea <span class="math inline">\(E:P_2(\mathbb R)\to\mathbb R^2\)</span>, <span class="math inline">\(E(p)=(p(0),p(1))\)</span>. Determine núcleo, imagen, rango, nulidad y todos los polinomios con <span class="math inline">\(E(p)=(2,5)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-005" class="apm-anchor"></span> <strong>5.</strong> Para <span class="math inline">\(D:P_3(\mathbb R)\to P_3(\mathbb R)\)</span>, determine núcleo e imagen y resuelva <span class="math inline">\(Dp=2+6t\)</span>. Repita el cálculo de núcleo e imagen sobre <span class="math inline">\(\mathbb F_2\)</span> y compare las dimensiones.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-006" class="apm-anchor"></span> <strong>6.</strong> Sea <span class="math inline">\(P:\mathbb R^2\to\mathbb R^2\)</span>, <span class="math inline">\(P(x,y)=(x-2y,0)\)</span>. Calcule núcleo, imagen y todas las fibras. Explique geométricamente cuáles son vacías.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-007" class="apm-anchor"></span> <strong>7.</strong> Para <span class="math inline">\(T_a(x,y,z)=(x+y,z,x+y+az)\)</span>, determine rango y nulidad según <span class="math inline">\(a\in\mathbb R\)</span>. ¿Hay algún valor para el cual sea inyectiva o sobreyectiva hacia <span class="math inline">\(\mathbb R^3\)</span>?</p>
+<p><span id="MA-BCH-APM-02-009-EXR-008" class="apm-anchor"></span> <strong>8.</strong> Sea <span class="math inline">\(T_a:\mathbb R^2\to\mathbb R^2\)</span>, <span class="math inline">\(T_a(x,y)=(x+ay,ax+y)\)</span>. Determine para qué valores de <span class="math inline">\(a\)</span> es biyectiva y describa núcleo e imagen en los valores excepcionales.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-009" class="apm-anchor"></span> <strong>9.</strong> Calcule núcleo, imagen, rango y nulidad de la identidad y de la transformación cero <span class="math inline">\(V\to W\)</span>, con <span class="math inline">\(\dim V=n&lt;\infty\)</span>. Incluya los casos <span class="math inline">\(V=\{0\}\)</span> y <span class="math inline">\(W=\{0\}\)</span> donde tengan sentido.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-010" class="apm-anchor"></span> <strong>10.</strong> Sobre <span class="math inline">\(\mathbb F_2\)</span>, halle la cantidad de soluciones de <span class="math inline">\(x+y+z=1\)</span> y enumérelas. Compare con el número de soluciones de la ecuación homogénea asociada.</p>
+</section>
+<section id="reconstruir-y-aplicar-pruebas" class="level3">
+<h3 class="anchored" data-anchor-id="reconstruir-y-aplicar-pruebas">Reconstruir y aplicar pruebas</h3>
+<p><span id="MA-BCH-APM-02-009-EXR-011" class="apm-anchor"></span> <strong>11.</strong> Pruebe que <span class="math inline">\(T(x)=T(y)\)</span> equivale a <span class="math inline">\(x-y\in\ker T\)</span>, y deduzca que dos fibras no vacías son iguales o disjuntas.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-012" class="apm-anchor"></span> <strong>12.</strong> Si <span class="math inline">\(T:V\to W\)</span> es lineal y <span class="math inline">\(U\subseteq V\)</span>, <span class="math inline">\(Y\subseteq W\)</span> son subespacios, pruebe que <span class="math inline">\(T(U)\)</span> y <span class="math inline">\(T^{-1}(Y)\)</span> son subespacios. Distinga el segundo conjunto de una fibra sobre un vector no nulo.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-013" class="apm-anchor"></span> <strong>13.</strong> Pruebe que una transformación lineal es inyectiva si y sólo si envía cada lista independiente a una lista independiente. No suponga dimensión finita.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-014" class="apm-anchor"></span> <strong>14.</strong> En la prueba de rango-nulidad, explique por qué una relación entre las imágenes de los vectores añadidos produce un vector del núcleo y por qué la independencia de la base completa anula sus coeficientes. ¿Qué faltaría si sólo se demostrara generación de la imagen?</p>
+<p><span id="MA-BCH-APM-02-009-EXR-015" class="apm-anchor"></span> <strong>15.</strong> Si <span class="math inline">\(\dim V=5\)</span> y <span class="math inline">\(\dim W=3\)</span>, determine los valores posibles del rango y de la nulidad de una transformación lineal <span class="math inline">\(V\to W\)</span>. Construya un ejemplo para cada rango posible.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-016" class="apm-anchor"></span> <strong>16.</strong> Para <span class="math inline">\(T:V\to W\)</span> con dimensiones finitas <span class="math inline">\(n,m\)</span>, pruebe que la existencia de una transformación inyectiva exige <span class="math inline">\(n\le m\)</span> y la de una sobreyectiva exige <span class="math inline">\(n\ge m\)</span>. Pruebe también que esas condiciones son suficientes para construir alguna transformación del tipo pedido.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-017" class="apm-anchor"></span> <strong>17.</strong> Pruebe que <span class="math inline">\(\ker T=V\)</span> equivale a que <span class="math inline">\(T\)</span> sea la transformación cero, y que también equivale a <span class="math inline">\(\operatorname{im}T=\{0\}\)</span>. ¿Se necesita finitud?</p>
+<p><span id="MA-BCH-APM-02-009-EXR-018" class="apm-anchor"></span> <strong>18.</strong> Un estudiante cuenta los pivotes de la matriz ampliada de un sistema incompatible como rango de la matriz de coeficientes. Dé un ejemplo mínimo que muestre el error y formule el criterio correcto de consistencia mediante imagen.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-019" class="apm-anchor"></span> <strong>19.</strong> Si <span class="math inline">\(S:V\to W\)</span> y <span class="math inline">\(T:U\to V\)</span> son lineales, pruebe <span class="math inline">\(\ker T\subseteq\ker(ST)\)</span> e <span class="math inline">\(\operatorname{im}(ST)\subseteq\operatorname{im}S\)</span>. Dé ejemplos donde ambas inclusiones sean estrictas.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-020" class="apm-anchor"></span> <strong>20.</strong> Si <span class="math inline">\(\dim V=n\)</span>, pruebe que dos operadores sobre <span class="math inline">\(V\)</span> con <span class="math inline">\(ST=I\)</span> también satisfacen <span class="math inline">\(TS=I\)</span>. Identifique dónde se usa la dimensión finita.</p>
+</section>
+<section id="construir-y-contrastar" class="level3">
+<h3 class="anchored" data-anchor-id="construir-y-contrastar">Construir y contrastar</h3>
+<p><span id="MA-BCH-APM-02-009-EXR-021" class="apm-anchor"></span> <strong>21.</strong> Construya <span class="math inline">\(T:\mathbb R^3\to\mathbb R^3\)</span> con núcleo <span class="math inline">\(\operatorname{span}(1,1,0)\)</span> e imagen <span class="math inline">\(\operatorname{span}(e_1,e_3)\)</span>. Verifique ambos espacios exactamente.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-022" class="apm-anchor"></span> <strong>22.</strong> ¿Puede existir <span class="math inline">\(T:\mathbb R^4\to\mathbb R^3\)</span> con núcleo de dimensión tres e imagen de dimensión dos? Si no, modifique sólo la dimensión del núcleo y construya un ejemplo que conserve la imagen <span class="math inline">\(\operatorname{span}(e_1,e_2)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-023" class="apm-anchor"></span> <strong>23.</strong> Construya dos operadores distintos sobre <span class="math inline">\(\mathbb R^2\)</span> con el mismo núcleo y la misma imagen. Compruebe que esos subespacios no determinan una transformación única.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-024" class="apm-anchor"></span> <strong>24.</strong> Dé dos matrices con igual rango y distinto núcleo; después, dos con igual núcleo y distinta imagen. Justifique cada comparación.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-025" class="apm-anchor"></span> <strong>25.</strong> Restrinja <span class="math inline">\(T(x,y,z)=(x+y,z)\)</span> al subespacio <span class="math inline">\(U=\{z=0\}\)</span>. Determine <span class="math inline">\(U\cap\ker T\)</span>, <span class="math inline">\(T(U)\)</span> y verifique la fórmula de restricción de la proposición 9.8.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-026" class="apm-anchor"></span> <strong>26.</strong> Para los desplazamientos <span class="math inline">\(L,R\)</span> de sucesiones de C08, calcule núcleos e imágenes. Explique por qué no se puede usar el corolario 9.5 y compruebe otra vez <span class="math inline">\(LR=I\)</span>, <span class="math inline">\(RL\ne I\)</span>.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-027" class="apm-anchor"></span> <strong>27.</strong> Sea <span class="math inline">\(C:M_2(\mathbb R)\to M_2(\mathbb R)\)</span> dado por <span class="math inline">\(C(A)=AB-BA\)</span>, donde <span class="math inline">\(B=\begin{pmatrix}1&amp;0\\0&amp;2\end{pmatrix}\)</span>. Encuentre bases de núcleo e imagen y verifique rango-nulidad.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-028" class="apm-anchor"></span> <strong>28.</strong> Para la derivación formal en <span class="math inline">\(P_3(\mathbb F_3)\)</span>, determine núcleo e imagen. Compare con <span class="math inline">\(P_3(\mathbb R)\)</span> y localice la condición que falla en afirmar que sólo se anulan las constantes.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-029" class="apm-anchor"></span> <strong>29.</strong> Sea <span class="math inline">\(E:P_3(\mathbb R)\to\mathbb R^3\)</span>, <span class="math inline">\(E(p)=(p(0),p(1),p(2))\)</span>. Determine rango y nulidad; dé una base del núcleo y explique por qué toda terna es alcanzable sin resolver un sistema general desde cero.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-030" class="apm-anchor"></span> <strong>30.</strong> Para <span class="math inline">\(T(x,y)=(x,0)\)</span> y salida <span class="math inline">\(w=(1,0)\)</span>, un argumento llama «núcleo trasladado» a la fibra y concluye que es subespacio. Describa la fibra, refute esa conclusión y explique qué propiedad geométrica sí conserva.</p>
+</section>
+<section id="integrar-y-transferir" class="level3">
+<h3 class="anchored" data-anchor-id="integrar-y-transferir">Integrar y transferir</h3>
+<p><span id="MA-BCH-APM-02-009-EXR-031" class="apm-anchor"></span> <strong>31.</strong> Sean <span class="math inline">\(T:X\to V\)</span> y <span class="math inline">\(S:V\to W\)</span> con rangos finitos. Pruebe que <span class="math inline">\(\operatorname{rg}(ST)=\operatorname{rg}T\)</span> si y sólo si <span class="math inline">\(\operatorname{im}T\cap\ker S=\{0\}\)</span>. Interprete el resultado como inyectividad de una restricción.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-032" class="apm-anchor"></span> <strong>32.</strong> Construya dos pares de operadores <span class="math inline">\(S,T\)</span> sobre <span class="math inline">\(\mathbb R^3\)</span> con <span class="math inline">\(\operatorname{rg}S=\operatorname{rg}T=2\)</span>, tales que <span class="math inline">\(\operatorname{rg}(ST)\)</span> valga uno en el primer par y dos en el segundo. Compare con las dos cotas de la proposición 9.8.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-033" class="apm-anchor"></span> <strong>33.</strong> Para <span class="math inline">\(T:V\to W\)</span> con <span class="math inline">\(\dim V&lt;\infty\)</span> y un subespacio <span class="math inline">\(Y\subseteq\operatorname{im}T\)</span>, pruebe <span class="math inline">\(\dim T^{-1}(Y)=\dim\ker T+\dim Y\)</span> sin usar espacios cociente.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-034" class="apm-anchor"></span> <strong>34.</strong> Si <span class="math inline">\(A,B:V\to W\)</span> son lineales de rango finito, pruebe <span class="math inline">\(\operatorname{rg}(A+B)\le\operatorname{rg}A+\operatorname{rg}B\)</span>. Dé un ejemplo de desigualdad estricta y explique por qué no se sigue una fórmula de igualdad por defecto.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-035" class="apm-anchor"></span> <strong>35.</strong> Sea <span class="math inline">\(P:V\to V\)</span> lineal, <span class="math inline">\(P^2=P\)</span> y <span class="math inline">\(\dim V&lt;\infty\)</span>. Pruebe que <span class="math inline">\(V=\ker P+\operatorname{im}P\)</span> con intersección cero y determine núcleo, imagen y rango de <span class="math inline">\(I-P\)</span>.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-036" class="apm-anchor"></span> <strong>36.</strong> Sea <span class="math inline">\(T:V\to V\)</span> con <span class="math inline">\(\dim V=n\)</span> y <span class="math inline">\(T^2=0\)</span>. Pruebe que <span class="math inline">\(\operatorname{im}T\subseteq\ker T\)</span> y <span class="math inline">\(\operatorname{rg}T\le\lfloor n/2\rfloor\)</span>. Construya un ejemplo que alcance la cota para cada <span class="math inline">\(n\)</span>.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-037" class="apm-anchor"></span> <strong>37.</strong> Si <span class="math inline">\(T:V\to W\)</span> es lineal sobre <span class="math inline">\(\mathbb F_q\)</span>, con <span class="math inline">\(\dim V=n\)</span> y rango <span class="math inline">\(r\)</span>, determine el número de salidas alcanzables y el de entradas que producen cada una. Deduzca un recuento completo de las entradas y trate las salidas no alcanzables.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-038" class="apm-anchor"></span> <strong>38.</strong> Sea <span class="math inline">\(K\subseteq V\)</span>, <span class="math inline">\(\dim V=n\)</span>, <span class="math inline">\(\dim K=k\)</span>, y sea <span class="math inline">\(W\)</span> de dimensión <span class="math inline">\(n-k\)</span>. Construya una transformación sobreyectiva con núcleo <span class="math inline">\(K\)</span>. Si <span class="math inline">\(K=\{0\}\)</span>, justifique además la unicidad de la preimagen de cada salida, sin afirmar unicidad de la transformación construida.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-039" class="apm-anchor"></span> <strong>39.</strong> Sean <span class="math inline">\(T,S:V\to W\)</span> con <span class="math inline">\(\ker T=\ker S\)</span> y <span class="math inline">\(\operatorname{im}T=\operatorname{im}S=I\)</span>. Pruebe que la regla <span class="math inline">\(F(Tx)=Sx\)</span> define una transformación lineal biyectiva <span class="math inline">\(F:I\to I\)</span> y satisface <span class="math inline">\(S=FT\)</span>. No suponga que <span class="math inline">\(T\)</span> es invertible ni use cocientes.</p>
+<p><span id="MA-BCH-APM-02-009-EXR-040" class="apm-anchor"></span> <strong>40.</strong> Un argumento afirma que rango-nulidad prueba «rango más nulidad igual a la dimensión del codominio». Refútelo con una transformación rectangular y reconstruya la igualdad correcta desde una base adaptada. Explique qué hipótesis adicional haría coincidir ambas dimensiones ambientales.</p>
+</section>
+</section>
+<section id="soluciones-razonadas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-razonadas">9.10. Soluciones razonadas</h2>
+<p><span id="MA-BCH-APM-02-009-SOL-001" class="apm-anchor"></span> <strong>1.</strong> Para anular la salida se requiere <span class="math inline">\(x+y=0\)</span> y <span class="math inline">\(z=0\)</span>, luego <span class="math inline">\(\ker T=\operatorname{span}(1,-1,0)\)</span> tiene nulidad uno. Toda salida <span class="math inline">\((a,b)\)</span> proviene de <span class="math inline">\((a,0,b)\)</span>, de modo que la imagen es <span class="math inline">\(\mathbb R^2\)</span>, con base usual y rango dos. Sobre <span class="math inline">\((2,1)\)</span> podemos elegir <span class="math inline">\(p=(2,0,1)\)</span> o <span class="math inline">\(p'=(0,2,1)\)</span>. Las parametrizaciones son <span class="math inline">\(p+t(1,-1,0)\)</span> y <span class="math inline">\(p'+s(1,-1,0)\)</span>; coinciden al tomar <span class="math inline">\(s=t+2\)</span>. Ambas describen exactamente las entradas cuya suma de primeras dos coordenadas es dos y cuya tercera coordenada es uno.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-002" class="apm-anchor"></span> <strong>2.</strong> Anular las primeras dos componentes exige <span class="math inline">\(x+y=0\)</span>, <span class="math inline">\(z=0\)</span>; la tercera queda automáticamente anulada. El núcleo tiene base <span class="math inline">\(((1,-1,0))\)</span>. Las salidas satisfacen <span class="math inline">\(c=a+b\)</span> y toda terna con esa propiedad se obtiene desde <span class="math inline">\((a,0,b)\)</span>. Por tanto, la imagen tiene base <span class="math inline">\(((1,0,1),(0,1,1))\)</span>, rango dos y nulidad uno. La fibra de <span class="math inline">\((1,2,3)\)</span> es <span class="math inline">\((1,0,2)+t(1,-1,0)\)</span>, mientras que la de <span class="math inline">\((1,2,4)\)</span> es vacía. El codominio declarado sigue siendo <span class="math inline">\(\mathbb R^3\)</span>; la imagen sólo ocupa un plano dentro de él.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-003" class="apm-anchor"></span> <strong>3.</strong> Al restar las dos primeras filas de la tercera obtenemos una fila cero, y las primeras dos ya tienen pivotes en las posiciones uno y dos. Una base del espacio de filas es <span class="math inline">\(((1,0,1,2),(0,1,1,-1))\)</span>; sus posiciones de pivote prueban independencia. Una base del espacio de columnas se toma en la matriz original: <span class="math inline">\(((1,0,1),(0,1,1))\)</span>. El homogéneo tiene base <span class="math inline">\(((-1,-1,1,0),(-2,1,0,1))\)</span>, pues sus coeficientes se leen en las entradas libres tercera y cuarta. Para <span class="math inline">\((2,1,3)^{\mathsf T}\)</span> la condición de compatibilidad se cumple y todas las soluciones son <span class="math inline">\((2,1,0,0)+s(-1,-1,1,0)+t(-2,1,0,1)\)</span>. Para <span class="math inline">\((2,1,4)^{\mathsf T}\)</span>, la última ecuación reducida es <span class="math inline">\(0=1\)</span> y no hay solución.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-004" class="apm-anchor"></span> <strong>4.</strong> Si <span class="math inline">\(p=a+bt+ct^2\)</span>, entonces <span class="math inline">\(E(p)=(a,a+b+c)\)</span>. Su núcleo exige <span class="math inline">\(a=0\)</span>, <span class="math inline">\(b=-c\)</span>, luego tiene base <span class="math inline">\((t^2-t)\)</span> y nulidad uno. Una salida <span class="math inline">\((u,v)\)</span> se alcanza mediante <span class="math inline">\(p=u+(v-u)t\)</span>, por lo que la imagen es <span class="math inline">\(\mathbb R^2\)</span> y el rango es dos. Para <span class="math inline">\((2,5)\)</span> elegimos <span class="math inline">\(p_0=2+3t\)</span>; todas las soluciones son <span class="math inline">\(p=2+3t+c(t^2-t)\)</span>. La familia conserva los dos valores evaluados y añade exactamente los polinomios que se anulan en ambos puntos.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-005" class="apm-anchor"></span> <strong>5.</strong> Sobre <span class="math inline">\(\mathbb R\)</span>, el núcleo son las constantes y la imagen es <span class="math inline">\(P_2(\mathbb R)\)</span>, de dimensiones uno y tres. Resolver <span class="math inline">\(Dp=2+6t\)</span> da <span class="math inline">\(p=a+2t+3t^2\)</span>, con <span class="math inline">\(a\)</span> libre. Sobre <span class="math inline">\(\mathbb F_2\)</span>, para <span class="math inline">\(p=a+bt+ct^2+dt^3\)</span> se obtiene <span class="math inline">\(Dp=b+dt^2\)</span> porque <span class="math inline">\(2=0\)</span> y <span class="math inline">\(3=1\)</span>. Así, el núcleo tiene base <span class="math inline">\((1,t^2)\)</span> y la imagen base <span class="math inline">\((1,t^2)\)</span>, aunque uno sea un subespacio de entradas y el otro de salidas. Rango y nulidad son dos; se verifica <span class="math inline">\(4=2+2\)</span>. La reducción de la ecuación real tiene salida cero, y sus soluciones binarias son justamente el núcleo.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-006" class="apm-anchor"></span> <strong>6.</strong> La condición <span class="math inline">\(x-2y=0\)</span> da <span class="math inline">\(\ker P=\operatorname{span}(2,1)\)</span>. La imagen es el eje horizontal, porque <span class="math inline">\(P(a,0)=(a,0)\)</span> y toda salida tiene segunda componente cero. Ambos espacios tienen dimensión uno. Una salida <span class="math inline">\((a,b)\)</span> tiene fibra vacía si <span class="math inline">\(b\ne0\)</span>; si <span class="math inline">\(b=0\)</span>, la fibra es <span class="math inline">\((a,0)+t(2,1)\)</span>. Son rectas paralelas al núcleo. La fibra del cero coincide con el núcleo y las demás rectas no pasan por el origen.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-007" class="apm-anchor"></span> <strong>7.</strong> Las primeras dos componentes de la salida se anulan sólo si <span class="math inline">\(x+y=0\)</span> y <span class="math inline">\(z=0\)</span>, independientemente de <span class="math inline">\(a\)</span>. Por ello el núcleo siempre es <span class="math inline">\(\operatorname{span}(1,-1,0)\)</span> y la nulidad siempre vale uno. Las salidas tienen la forma <span class="math inline">\((u,v,u+av)\)</span>, generadas por <span class="math inline">\((1,0,1)\)</span> y <span class="math inline">\((0,1,a)\)</span>; son independientes al mirar las primeras dos entradas. El rango vale dos para todo <span class="math inline">\(a\)</span>. Ningún valor da inyectividad ni sobreyectividad hacia <span class="math inline">\(\mathbb R^3\)</span>. El parámetro cambia el plano imagen, pero no su dimensión.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-008" class="apm-anchor"></span> <strong>8.</strong> En el homogéneo, <span class="math inline">\(x=-ay\)</span> y la segunda ecuación queda <span class="math inline">\((1-a^2)y=0\)</span>. Si <span class="math inline">\(a\ne\pm1\)</span>, el núcleo es trivial y el corolario 9.5 da biyectividad. También podemos resolver cualquier salida <span class="math inline">\((u,v)\)</span> con <span class="math inline">\(y=(v-au)/(1-a^2)\)</span> y <span class="math inline">\(x=(u-av)/(1-a^2)\)</span>, lo que verifica existencia y unicidad. Para <span class="math inline">\(a=1\)</span>, <span class="math inline">\(T_1(x,y)=(x+y,x+y)\)</span>, su núcleo tiene base <span class="math inline">\(((1,-1))\)</span> y su imagen base <span class="math inline">\(((1,1))\)</span>. Para <span class="math inline">\(a=-1\)</span>, el núcleo tiene base <span class="math inline">\(((1,1))\)</span> y la imagen base <span class="math inline">\(((1,-1))\)</span>. En ambos casos excepcionales rango y nulidad valen uno. El análisis por casos precede a la división por <span class="math inline">\(1-a^2\)</span>.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-009" class="apm-anchor"></span> <strong>9.</strong> La identidad sobre <span class="math inline">\(V\)</span> tiene núcleo <span class="math inline">\(\{0\}\)</span> e imagen <span class="math inline">\(V\)</span>, por lo que su nulidad es cero y su rango <span class="math inline">\(n\)</span>. La transformación cero <span class="math inline">\(V\to W\)</span> tiene núcleo <span class="math inline">\(V\)</span> e imagen <span class="math inline">\(\{0_W\}\)</span>, de modo que su nulidad es <span class="math inline">\(n\)</span> y su rango cero. Si <span class="math inline">\(V=\{0\}\)</span>, ambos números valen cero y la única transformación es inyectiva; es sobreyectiva sólo si también <span class="math inline">\(W=\{0\}\)</span>. Si el codominio es nulo y el dominio no, la función cero es sobreyectiva pero no inyectiva. La identidad sólo se considera con dominio y codominio iguales.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-010" class="apm-anchor"></span> <strong>10.</strong> La aplicación <span class="math inline">\(T:\mathbb F_2^3\to\mathbb F_2\)</span> dada por la suma de entradas es sobreyectiva, pues <span class="math inline">\(T(1,0,0)=1\)</span>. Su núcleo tiene dimensión dos por rango-nulidad y contiene <span class="math inline">\(000,110,101,011\)</span>. La fibra sobre uno contiene <span class="math inline">\(100,010,001,111\)</span>, cuatro soluciones. Es la traslación del núcleo por <span class="math inline">\(100\)</span>, por lo que tiene el mismo número de elementos. La existencia de variables libres no implica infinitud cuando el cuerpo sólo tiene dos elementos.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-011" class="apm-anchor"></span> <strong>11.</strong> Por linealidad, <span class="math inline">\(T(x)=T(y)\)</span> equivale a <span class="math inline">\(T(x-y)=0\)</span>, que es precisamente <span class="math inline">\(x-y\in\ker T\)</span>. Si dos fibras sobre <span class="math inline">\(u\)</span> y <span class="math inline">\(v\)</span> comparten un punto <span class="math inline">\(x\)</span>, su salida es a la vez <span class="math inline">\(u\)</span> y <span class="math inline">\(v\)</span>, de modo que <span class="math inline">\(u=v\)</span> y las fibras coinciden. Si sus salidas son distintas no comparten ningún punto. En términos de traslaciones, un punto común fuerza que la diferencia de los dos puntos particulares pertenezca al núcleo y, por tanto, que describan el mismo conjunto.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-012" class="apm-anchor"></span> <strong>12.</strong> La imagen <span class="math inline">\(T(U)\)</span> contiene cero. Si <span class="math inline">\(a=T(u)\)</span>, <span class="math inline">\(b=T(v)\)</span> con <span class="math inline">\(u,v\in U\)</span>, cualquier combinación <span class="math inline">\(\alpha a+\beta b=T(\alpha u+\beta v)\)</span> vuelve a pertenecer a <span class="math inline">\(T(U)\)</span> porque <span class="math inline">\(U\)</span> es subespacio. Para la preimagen, <span class="math inline">\(T(0)=0\in Y\)</span>, así que es no vacía; si <span class="math inline">\(x,z\)</span> están en ella, <span class="math inline">\(T(\alpha x+\beta z)=\alpha T(x)+\beta T(z)\in Y\)</span>. Por eso <span class="math inline">\(T^{-1}(Y)\)</span> es subespacio de <span class="math inline">\(V\)</span>. Una fibra sobre un vector no nulo es preimagen de un singleton que no contiene cero; si es no vacía, no contiene el cero del dominio y no es subespacio.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-013" class="apm-anchor"></span> <strong>13.</strong> Si <span class="math inline">\(T\)</span> es inyectiva y <span class="math inline">\(v_1,\ldots,v_r\)</span> es independiente, una relación nula entre sus imágenes da <span class="math inline">\(T(\sum_j a_jv_j)=0=T(0)\)</span>. La inyectividad obliga a <span class="math inline">\(\sum_j a_jv_j=0\)</span> y la independencia anula los coeficientes. Recíprocamente, para cualquier vector <span class="math inline">\(v\ne0\)</span>, la lista <span class="math inline">\((v)\)</span> es independiente. Si todas esas listas conservan independencia, <span class="math inline">\(T(v)\ne0\)</span>. No hay, por tanto, elementos no nulos del núcleo y el teorema 9.3 da inyectividad. Los argumentos sólo usan relaciones finitas y no requieren una base del espacio.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-014" class="apm-anchor"></span> <strong>14.</strong> Si <span class="math inline">\(\sum_j c_jT(v_j)=0\)</span>, la superposición permite reunir la suma como <span class="math inline">\(T(\sum_j c_jv_j)=0\)</span>. Así, <span class="math inline">\(\sum_j c_jv_j\)</span> es un vector del núcleo y admite una expresión mediante su base <span class="math inline">\(u_i\)</span>. Al restar ambas expresiones aparece una relación en la base completa <span class="math inline">\((u_i,v_j)\)</span>, cuya independencia obliga a que todos los <span class="math inline">\(c_j\)</span> sean cero. Probar sólo generación daría una lista de <span class="math inline">\(r\)</span> generadores de la imagen y la cota <span class="math inline">\(\operatorname{rg}T\le r\)</span>; todavía podría contener redundancias, por lo que no justificaría la igualdad de dimensiones que exige rango-nulidad.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-015" class="apm-anchor"></span> <strong>15.</strong> El rango puede ser <span class="math inline">\(r=0,1,2,3\)</span>; no puede superar la dimensión tres del codominio. Rango-nulidad obliga a nulidad <span class="math inline">\(5-r\)</span>, es decir, <span class="math inline">\(5,4,3,2\)</span>, respectivamente. Para construir ejemplos, fijamos bases <span class="math inline">\(v_1,\ldots,v_5\)</span> y <span class="math inline">\(w_1,w_2,w_3\)</span> y prescribimos <span class="math inline">\(T(v_j)=w_j\)</span> para <span class="math inline">\(j\le r\)</span>, <span class="math inline">\(T(v_j)=0\)</span> para <span class="math inline">\(j&gt;r\)</span>. La imagen tiene base <span class="math inline">\((w_1,\ldots,w_r)\)</span> y el núcleo base <span class="math inline">\((v_{r+1},\ldots,v_5)\)</span> por independencia de las salidas no nulas. Esto realiza cada valor, incluido <span class="math inline">\(r=0\)</span> mediante una lista vacía de imágenes básicas.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-016" class="apm-anchor"></span> <strong>16.</strong> Si <span class="math inline">\(T\)</span> es inyectiva, su nulidad es cero y su rango <span class="math inline">\(n\)</span>, que no puede superar <span class="math inline">\(m\)</span>. Si es sobreyectiva, el rango es <span class="math inline">\(m\)</span> y no puede superar <span class="math inline">\(n\)</span>. Para suficiencia, elegimos bases. Cuando <span class="math inline">\(n\le m\)</span>, enviamos los <span class="math inline">\(n\)</span> vectores básicos de <span class="math inline">\(V\)</span> a los primeros <span class="math inline">\(n\)</span> de una base de <span class="math inline">\(W\)</span>; la independencia de esas salidas hace trivial el núcleo. Cuando <span class="math inline">\(n\ge m\)</span>, enviamos los primeros <span class="math inline">\(m\)</span> vectores de una base de <span class="math inline">\(V\)</span> a toda la base de <span class="math inline">\(W\)</span> y los restantes a cero. La imagen es todo <span class="math inline">\(W\)</span>. Las mismas construcciones con bases vacías tratan dimensiones cero.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-017" class="apm-anchor"></span> <strong>17.</strong> Si el núcleo es <span class="math inline">\(V\)</span>, cada entrada se envía a cero, que es la definición de transformación cero. Si <span class="math inline">\(T\)</span> es cero, su imagen sólo contiene cero y contiene ese valor. Si la imagen es <span class="math inline">\(\{0\}\)</span>, toda salida es cero y, por tanto, cada entrada pertenece al núcleo. Ninguna parte usa dimensión; basta interpretar los dos conjuntos y recordar que <span class="math inline">\(V\)</span> contiene al menos el vector cero.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-018" class="apm-anchor"></span> <strong>18.</strong> La ecuación <span class="math inline">\(0x=1\)</span> tiene matriz de coeficientes <span class="math inline">\((0)\)</span>, de rango cero, y ampliada <span class="math inline">\((0\mid1)\)</span>, de rango uno. Su pivote está en la columna del término independiente y certifica una contradicción. La regla correcta es que <span class="math inline">\(Ax=b\)</span> es consistente si y sólo si <span class="math inline">\(b\in\operatorname{im}T_A\)</span>, el espacio de columnas de <span class="math inline">\(A\)</span>. Equivalentemente, añadir <span class="math inline">\(b\)</span> como columna no aumenta la dimensión del generado: <span class="math inline">\(\operatorname{rg}(A\mid b)=\operatorname{rg}A\)</span>. La igualdad de rangos se justifica por ese criterio de generación, no contando el pivote ampliado como si fuera de <span class="math inline">\(A\)</span>.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-019" class="apm-anchor"></span> <strong>19.</strong> Si <span class="math inline">\(T(x)=0\)</span>, entonces <span class="math inline">\(S(T(x))=S(0)=0\)</span>, luego <span class="math inline">\(x\in\ker(ST)\)</span>. Toda salida <span class="math inline">\(S(T(x))\)</span> es además una salida de <span class="math inline">\(S\)</span>, por lo que pertenece a su imagen. Para que ambas inclusiones sean estrictas en un mismo ejemplo, tome en <span class="math inline">\(\mathbb R^2\)</span> <span class="math inline">\(T(x,y)=(x,0)\)</span> y <span class="math inline">\(S(x,y)=(0,y)\)</span>. Entonces <span class="math inline">\(ST=0\)</span>. El núcleo de <span class="math inline">\(T\)</span> es el eje vertical, estrictamente contenido en todo <span class="math inline">\(\mathbb R^2=\ker(ST)\)</span>, y <span class="math inline">\(\operatorname{im}(ST)=\{0\}\)</span> está estrictamente contenido en el eje vertical <span class="math inline">\(\operatorname{im}S\)</span>.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-020" class="apm-anchor"></span> <strong>20.</strong> De <span class="math inline">\(ST=I\)</span> se deduce que <span class="math inline">\(T\)</span> es inyectiva: si <span class="math inline">\(T(x)=T(y)\)</span>, aplicar <span class="math inline">\(S\)</span> da <span class="math inline">\(x=y\)</span>. Como es un operador sobre un espacio de dimensión finita, el corolario 9.5 lo hace sobreyectivo. Dado cualquier <span class="math inline">\(v\in V\)</span>, elegimos <span class="math inline">\(x\)</span> con <span class="math inline">\(v=T(x)\)</span>. Entonces <span class="math inline">\(TS(v)=TST(x)=T(x)=v\)</span>, y por ello <span class="math inline">\(TS=I\)</span>. La finitud se usó únicamente al pasar de inyectividad a sobreyectividad de <span class="math inline">\(T\)</span>. Los desplazamientos de sucesiones muestran por qué ese paso no es válido en general.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-021" class="apm-anchor"></span> <strong>21.</strong> Definimos <span class="math inline">\(T(x,y,z)=(y-x,0,z)\)</span>. Su núcleo exige <span class="math inline">\(y=x\)</span>, <span class="math inline">\(z=0\)</span>, de modo que es exactamente <span class="math inline">\(\operatorname{span}(1,1,0)\)</span>. Toda salida tiene segunda entrada cero y cualquier <span class="math inline">\((a,0,b)\)</span> se obtiene desde <span class="math inline">\((0,a,b)\)</span>, así que la imagen es exactamente <span class="math inline">\(\operatorname{span}(e_1,e_3)\)</span>. No basta comprobar que los generadores del núcleo se anulan y que dos salidas se alcanzan: las dos verificaciones anteriores prueban también que no hay más vectores en el núcleo ni salidas fuera del subespacio pedido.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-022" class="apm-anchor"></span> <strong>22.</strong> Las dimensiones propuestas sumarían <span class="math inline">\(3+2=5\)</span>, que no es la dimensión cuatro del dominio. Por rango-nulidad es imposible. Para mantener rango dos debemos cambiar la nulidad a dos. La regla <span class="math inline">\(T(x_1,x_2,x_3,x_4)=(x_1,x_2,0)\)</span> tiene núcleo <span class="math inline">\(\operatorname{span}(e_3,e_4)\)</span> en el dominio e imagen <span class="math inline">\(\operatorname{span}(e_1,e_2)\)</span> en el codominio. Así realiza exactamente las nuevas dimensiones y la imagen requerida.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-023" class="apm-anchor"></span> <strong>23.</strong> Tome <span class="math inline">\(T(x,y)=(x,0)\)</span> y <span class="math inline">\(S(x,y)=(2x,0)\)</span>. En ambas, el núcleo es el eje vertical y la imagen es el eje horizontal, porque el factor dos no se anula sobre <span class="math inline">\(\mathbb R\)</span>. Son operadores diferentes, pues <span class="math inline">\(T(1,0)=(1,0)\)</span> y <span class="math inline">\(S(1,0)=(2,0)\)</span>. Los subespacios registran qué se anula y qué se alcanza, pero no determinan cómo cada entrada concreta recorre las salidas.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-024" class="apm-anchor"></span> <strong>24.</strong> Las matrices fila <span class="math inline">\((1\ 0)\)</span> y <span class="math inline">\((0\ 1)\)</span> tienen rango uno, pero sus núcleos son el eje vertical y el horizontal, respectivamente. Para conservar el núcleo y cambiar la imagen, tomamos <span class="math inline">\(A=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span> y <span class="math inline">\(B=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}\)</span>. Ambas se anulan exactamente cuando la primera entrada es cero; sus imágenes son los ejes horizontal y vertical, distintos. En los dos ejemplos la igualdad de un invariante no obliga a igualdad de los subespacios restantes.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-025" class="apm-anchor"></span> <strong>25.</strong> El subespacio <span class="math inline">\(U\)</span> es el plano horizontal <span class="math inline">\(z=0\)</span>, de dimensión dos. Como el núcleo de <span class="math inline">\(T\)</span> ya es <span class="math inline">\(\operatorname{span}(1,-1,0)\)</span>, su intersección con <span class="math inline">\(U\)</span> tiene dimensión uno. Las salidas de entradas en <span class="math inline">\(U\)</span> son <span class="math inline">\((x+y,0)\)</span>, que forman todo el eje horizontal de <span class="math inline">\(\mathbb R^2\)</span>, de dimensión uno. Se verifica <span class="math inline">\(\dim T(U)=2-1=1\)</span>. Al restringir el dominio, una dirección que antes contribuía a la imagen, la de la tercera coordenada, ya no está disponible.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-026" class="apm-anchor"></span> <strong>26.</strong> Para <span class="math inline">\(L(x_0,x_1,\ldots)=(x_1,x_2,\ldots)\)</span>, el núcleo es <span class="math inline">\(\operatorname{span}(e_0)\)</span> y la imagen es todo el espacio de sucesiones: basta anteponer un cero para hallar una preimagen. Para <span class="math inline">\(R(x_0,x_1,\ldots)=(0,x_0,x_1,\ldots)\)</span>, el núcleo es trivial y la imagen es el subespacio de sucesiones con primera entrada cero. El espacio de todas las sucesiones tiene listas independientes de cualquier longitud, por lo que no es de dimensión finita y no se aplica el corolario 9.5. Se verifica <span class="math inline">\(LR=I\)</span>, mientras que <span class="math inline">\(RL(x_0,x_1,\ldots)=(0,x_1,x_2,\ldots)\)</span>, distinto de la identidad cuando <span class="math inline">\(x_0\ne0\)</span>.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-027" class="apm-anchor"></span> <strong>27.</strong> Para <span class="math inline">\(A=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)</span>, el cálculo de los dos productos da <span class="math inline">\(AB-BA=\begin{pmatrix}0&amp;b\\-c&amp;0\end{pmatrix}\)</span>. Se anula exactamente en las matrices diagonales, cuyo espacio tiene base <span class="math inline">\((E_{11},E_{22})\)</span>. Toda matriz con diagonal cero se obtiene eligiendo <span class="math inline">\(b\)</span> como su entrada superior y <span class="math inline">\(c\)</span> como el negativo de la inferior; por tanto la imagen tiene base <span class="math inline">\((E_{12},E_{21})\)</span>. Rango y nulidad son dos y su suma es cuatro, la dimensión de <span class="math inline">\(M_2(\mathbb R)\)</span>. La linealidad se deduce de la distributividad de los productos con <span class="math inline">\(B\)</span> fijo.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-028" class="apm-anchor"></span> <strong>28.</strong> En <span class="math inline">\(\mathbb F_3\)</span>, <span class="math inline">\(D(a+bt+ct^2+dt^3)=b+2ct\)</span>, porque el coeficiente tres del último término se anula. Como dos es invertible en ese cuerpo, el núcleo tiene base <span class="math inline">\((1,t^3)\)</span> y la imagen base <span class="math inline">\((1,t)\)</span>. Ambas dimensiones son dos. Sobre <span class="math inline">\(\mathbb R\)</span>, el núcleo sólo tiene base <span class="math inline">\((1)\)</span> y la imagen <span class="math inline">\((1,t,t^2)\)</span>, de dimensiones uno y tres. La afirmación de que un coeficiente <span class="math inline">\(k a_k\)</span> nulo fuerza <span class="math inline">\(a_k=0\)</span> requiere que <span class="math inline">\(k\)</span> sea no nulo en el cuerpo, condición que falla para <span class="math inline">\(k=3\)</span> sobre <span class="math inline">\(\mathbb F_3\)</span>.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-029" class="apm-anchor"></span> <strong>29.</strong> Los polinomios de Lagrange para los nodos <span class="math inline">\(0,1,2\)</span> pertenecen a <span class="math inline">\(P_2(\mathbb R)\)</span> y tienen salidas <span class="math inline">\(e_1,e_2,e_3\)</span>, respectivamente; el ejercicio 36 de C07 ya construyó esa base por evaluación. Luego <span class="math inline">\(E\)</span> es sobreyectiva, tiene rango tres y, como el dominio tiene dimensión cuatro, nulidad uno. El polinomio no nulo <span class="math inline">\(q=t(t-1)(t-2)\)</span> se anula en los tres nodos, de modo que pertenece al núcleo. Una lista independiente de un vector en un espacio de dimensión uno es base, así que <span class="math inline">\((q)\)</span> es la base buscada. La dimensión justifica que no faltan otras direcciones del núcleo.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-030" class="apm-anchor"></span> <strong>30.</strong> La fibra es <span class="math inline">\(\{(1,t):t\in\mathbb R\}=(1,0)+\operatorname{span}(0,1)\)</span>. No contiene el cero; tampoco es cerrada por suma, pues <span class="math inline">\((1,0)+(1,0)=(2,0)\)</span> queda fuera. Por tanto no es subespacio vectorial. Sí es una recta afín paralela al núcleo, con las mismas direcciones de diferencias entre sus puntos. La palabra «trasladado» describe una relación geométrica, sin conservar automáticamente las operaciones de subespacio.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-031" class="apm-anchor"></span> <strong>31.</strong> La identidad de la proposición 9.8 da <span class="math inline">\(\operatorname{rg}(ST)=\operatorname{rg}T-\dim(\operatorname{im}T\cap\ker S)\)</span>. La igualdad de rangos equivale a que la intersección tenga dimensión cero, es decir, a que sólo contenga al cero. Esa intersección es el núcleo de <span class="math inline">\(S|_{\operatorname{im}T}\)</span>. Por el teorema 9.3, su anulación equivale a la inyectividad de la restricción. La composición conserva el rango de <span class="math inline">\(T\)</span> exactamente cuando <span class="math inline">\(S\)</span> no identifica dos salidas distintas que <span class="math inline">\(T\)</span> pueda alcanzar.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-032" class="apm-anchor"></span> <strong>32.</strong> Tome primero <span class="math inline">\(T(x,y,z)=(x,y,0)\)</span> y <span class="math inline">\(S(x,y,z)=(0,y,z)\)</span>. Ambos tienen rango dos, pero <span class="math inline">\(ST(x,y,z)=(0,y,0)\)</span> tiene rango uno. Para el segundo par, tome <span class="math inline">\(S=T\)</span> igual a la proyección <span class="math inline">\((x,y,z)\mapsto(x,y,0)\)</span>; entonces <span class="math inline">\(ST=T\)</span> y el rango de la composición es dos. Las cotas dan <span class="math inline">\(2+2-3=1\le\operatorname{rg}(ST)\le2\)</span>, y los ejemplos alcanzan ambos extremos. La posición de los subespacios, no sólo las dimensiones individuales, decide el valor dentro de ese intervalo.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-033" class="apm-anchor"></span> <strong>33.</strong> El conjunto <span class="math inline">\(X=T^{-1}(Y)\)</span> es subespacio por el ejercicio 12 y tiene dimensión finita al estar en <span class="math inline">\(V\)</span>. La restricción <span class="math inline">\(T|_X:X\to Y\)</span> es sobreyectiva: cada <span class="math inline">\(y\in Y\)</span> pertenece por hipótesis a la imagen de <span class="math inline">\(T\)</span> y cualquier preimagen suya está en <span class="math inline">\(X\)</span>. Su núcleo es todo <span class="math inline">\(\ker T\)</span>, porque <span class="math inline">\(0\in Y\)</span> y, por tanto, el núcleo de <span class="math inline">\(T\)</span> ya está contenido en <span class="math inline">\(X\)</span>. Rango-nulidad para esa restricción da <span class="math inline">\(\dim X=\dim\ker T+\dim Y\)</span>. Se aplicó el teorema a un dominio distinto; no se ha formado un cociente.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-034" class="apm-anchor"></span> <strong>34.</strong> Para cada <span class="math inline">\(x\)</span>, <span class="math inline">\((A+B)x=Ax+Bx\)</span> pertenece a <span class="math inline">\(\operatorname{im}A+\operatorname{im}B\)</span>. Así, <span class="math inline">\(\operatorname{im}(A+B)\)</span> está contenida en esa suma, cuya dimensión es a lo sumo <span class="math inline">\(\operatorname{rg}A+\operatorname{rg}B\)</span> por C07. Esto prueba la desigualdad. Sobre <span class="math inline">\(\mathbb R\)</span>, el ejemplo <span class="math inline">\(A=I\)</span> y <span class="math inline">\(B=-I\)</span> en un espacio de dimensión uno da rango cero para <span class="math inline">\(A+B\)</span>, frente a suma de rangos dos. La cancelación de las salidas y las intersecciones de los subespacios impiden deducir igualdad por un simple recuento de dos listas generadoras.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-035" class="apm-anchor"></span> <strong>35.</strong> Para cualquier <span class="math inline">\(v\)</span>, escribimos <span class="math inline">\(v=(v-Pv)+Pv\)</span>. El primer sumando está en <span class="math inline">\(\ker P\)</span> porque <span class="math inline">\(P(v-Pv)=Pv-P^2v=0\)</span> y el segundo pertenece a <span class="math inline">\(\operatorname{im}P\)</span>. Si <span class="math inline">\(z\)</span> está en ambos, <span class="math inline">\(z=Pu\)</span> para algún <span class="math inline">\(u\)</span> y <span class="math inline">\(Pz=0\)</span>; pero <span class="math inline">\(Pz=P^2u=Pu=z\)</span>, luego <span class="math inline">\(z=0\)</span>. Además, <span class="math inline">\((I-P)v=0\)</span> equivale a <span class="math inline">\(v=Pv\)</span>, que equivale a <span class="math inline">\(v\in\operatorname{im}P\)</span>; así <span class="math inline">\(\ker(I-P)=\operatorname{im}P\)</span>. Toda salida de <span class="math inline">\(I-P\)</span> está en <span class="math inline">\(\ker P\)</span> y cada <span class="math inline">\(u\in\ker P\)</span> satisface <span class="math inline">\((I-P)u=u\)</span>, por lo que <span class="math inline">\(\operatorname{im}(I-P)=\ker P\)</span>. En consecuencia, <span class="math inline">\(\operatorname{rg}(I-P)=\operatorname{nul}P=n-\operatorname{rg}P\)</span>.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-036" class="apm-anchor"></span> <strong>36.</strong> Si <span class="math inline">\(y=T(x)\)</span>, entonces <span class="math inline">\(T(y)=T^2(x)=0\)</span>, de modo que <span class="math inline">\(\operatorname{im}T\subseteq\ker T\)</span>. Al tomar dimensiones, <span class="math inline">\(r=\operatorname{rg}T\le\operatorname{nul}T=n-r\)</span>, luego <span class="math inline">\(2r\le n\)</span> y <span class="math inline">\(r\le\lfloor n/2\rfloor\)</span>. Para alcanzar la cota, fije una base <span class="math inline">\((e_1,\ldots,e_n)\)</span> y escriba <span class="math inline">\(r=\lfloor n/2\rfloor\)</span>. Prescriba <span class="math inline">\(T(e_{r+j})=e_j\)</span> para <span class="math inline">\(1\le j\le r\)</span> y <span class="math inline">\(T(e_i)=0\)</span> en las posiciones restantes. La imagen tiene base <span class="math inline">\((e_1,\ldots,e_r)\)</span> y todos esos vectores se anulan al volver a aplicar <span class="math inline">\(T\)</span>, por lo que <span class="math inline">\(T^2=0\)</span> y el rango es <span class="math inline">\(r\)</span>. La construcción incluye <span class="math inline">\(n=0,1\)</span>, cuando <span class="math inline">\(r=0\)</span> y la transformación es cero.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-037" class="apm-anchor"></span> <strong>37.</strong> La imagen tiene <span class="math inline">\(q^r\)</span> elementos por C07. Rango-nulidad da dimensión <span class="math inline">\(n-r\)</span> para el núcleo, que contiene <span class="math inline">\(q^{n-r}\)</span> elementos. Cada salida alcanzable tiene una fibra que es traslación de ese núcleo, así que recibe exactamente <span class="math inline">\(q^{n-r}\)</span> entradas. Las salidas distintas tienen fibras disjuntas y toda entrada pertenece a la fibra de su propia salida; por tanto, el recuento total es <span class="math inline">\(q^r q^{n-r}=q^n\)</span>, como corresponde al tamaño de <span class="math inline">\(V\)</span>. Una salida fuera de la imagen recibe cero entradas y no se cuenta entre las <span class="math inline">\(q^r\)</span> alcanzables.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-038" class="apm-anchor"></span> <strong>38.</strong> Tome una base <span class="math inline">\((u_1,\ldots,u_k)\)</span> de <span class="math inline">\(K\)</span> y extiéndala a una base <span class="math inline">\((u_1,\ldots,u_k,v_1,\ldots,v_{n-k})\)</span> de <span class="math inline">\(V\)</span>. Escoja una base <span class="math inline">\((w_1,\ldots,w_{n-k})\)</span> de <span class="math inline">\(W\)</span> y prescriba <span class="math inline">\(T(u_i)=0\)</span>, <span class="math inline">\(T(v_j)=w_j\)</span>. La prescripción de C08 da una función lineal; las salidas básicas generan <span class="math inline">\(W\)</span> y una combinación se anula sólo si todos sus coeficientes de los <span class="math inline">\(v_j\)</span> son cero, de modo que el núcleo es exactamente <span class="math inline">\(K\)</span>. Si <span class="math inline">\(K=\{0\}\)</span>, el teorema 9.3 da inyectividad y, junto con sobreyectividad, cada salida tiene una preimagen única. Esto no elimina la libertad en elegir las bases y las salidas básicas que producen distintas transformaciones.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-039" class="apm-anchor"></span> <strong>39.</strong> Para cada <span class="math inline">\(y\in I\)</span> existe <span class="math inline">\(x\)</span> con <span class="math inline">\(T(x)=y\)</span>, así que la regla propone un valor en todo su dominio. Si también <span class="math inline">\(T(x')=y\)</span>, entonces <span class="math inline">\(x-x'\in\ker T=\ker S\)</span> y <span class="math inline">\(S(x)=S(x')\)</span>, lo que prueba buena definición. Para <span class="math inline">\(y=T(x)\)</span>, <span class="math inline">\(z=T(v)\)</span>, tenemos <span class="math inline">\(ay+bz=T(ax+bv)\)</span>; por la regla, <span class="math inline">\(F(ay+bz)=S(ax+bv)=aF(y)+bF(z)\)</span>. Si <span class="math inline">\(F(Tx)=0\)</span>, entonces <span class="math inline">\(Sx=0\)</span>, luego <span class="math inline">\(x\in\ker S=\ker T\)</span> y <span class="math inline">\(Tx=0\)</span>, así que <span class="math inline">\(F\)</span> es inyectiva por núcleo trivial. Dado <span class="math inline">\(z\in I=\operatorname{im}S\)</span>, escribimos <span class="math inline">\(z=Sx=F(Tx)\)</span>, lo que prueba sobreyectividad. Finalmente, para todo <span class="math inline">\(x\)</span>, <span class="math inline">\(F(Tx)=Sx\)</span> expresa exactamente <span class="math inline">\(S=FT\)</span>. No se ha usado una inversa de <span class="math inline">\(T\)</span> ni elegido una preimagen única.</p>
+<p><span id="MA-BCH-APM-02-009-SOL-040" class="apm-anchor"></span> <strong>40.</strong> La transformación <span class="math inline">\(T:\mathbb R^3\to\mathbb R^2\)</span>, <span class="math inline">\(T(x,y,z)=(x+y,z)\)</span> tiene rango dos y nulidad uno, cuya suma es tres y no dos. En una base adaptada del dominio, un bloque de <span class="math inline">\(k\)</span> vectores genera el núcleo y un segundo bloque de <span class="math inline">\(r\)</span> vectores tiene imágenes que forman una base de la imagen. Los dos bloques juntos forman una base de <span class="math inline">\(V\)</span>, por lo que <span class="math inline">\(k+r=\dim V\)</span>. El codominio puede contener salidas no alcanzadas y no es el espacio donde se contó esa base. Si además <span class="math inline">\(V,W\)</span> tienen la misma dimensión finita, sus dimensiones ambientales coinciden numéricamente; la igualdad fundamental sigue contando una base del dominio.</p>
+</section>
+<section id="lecturas-y-referencias" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-referencias">Lecturas y referencias</h2>
+<p>Friedberg, Insel y Spence, <em>Linear Algebra</em>, 5.ª edición, §2.1, y Hoffman y Kunze, <em>Linear Algebra</em>, 2.ª edición, §3.1, desarrollan núcleo, imagen y el teorema de dimensión mediante extensión de una base. En Hoffman y Kunze, el teorema 3 de esa sección compara los rangos por filas y columnas. Axler, <em>Linear Algebra Done Right</em>, 4.ª edición, §3B, separa inyectividad, sobreyectividad y el teorema fundamental de aplicaciones lineales. Nathaniel Johnston, <em>Advanced Linear and Matrix Algebra</em> (2021), §1.2.4, contrasta estas propiedades en ejemplos de operadores y en dimensión infinita. Las pruebas de este capítulo usan directamente bases, relaciones y eliminación; no presuponen la teoría de cocientes o la dualidad.</p>
+<hr>
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-08-transformaciones-lineales.html">← Capítulo 8</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-10-isomorfismos-y-coordenadas.html">Capítulo 10 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

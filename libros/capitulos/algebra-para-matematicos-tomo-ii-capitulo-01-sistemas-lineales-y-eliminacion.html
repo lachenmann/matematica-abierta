@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 1 del tomo II, con 34 ejercicios y sus soluciones desarrolladas.">
+
+<title>Capítulo 1. Sistemas lineales y eliminación – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#qué-cuenta-como-solución" id="toc-qué-cuenta-como-solución" class="nav-link active" data-scroll-target="#qué-cuenta-como-solución">1.1. Qué cuenta como solución</a></li>
+  <li><a href="#consecuencias-que-conservan-la-información" id="toc-consecuencias-que-conservan-la-información" class="nav-link" data-scroll-target="#consecuencias-que-conservan-la-información">1.2. Consecuencias que conservan la información</a></li>
+  <li><a href="#eliminar-sin-perder-la-vuelta" id="toc-eliminar-sin-perder-la-vuelta" class="nav-link" data-scroll-target="#eliminar-sin-perder-la-vuelta">1.3. Eliminar sin perder la vuelta</a></li>
+  <li><a href="#por-qué-el-procedimiento-termina" id="toc-por-qué-el-procedimiento-termina" class="nav-link" data-scroll-target="#por-qué-el-procedimiento-termina">1.4. Por qué el procedimiento termina</a></li>
+  <li><a href="#contradicciones-identidades-y-libertad" id="toc-contradicciones-identidades-y-libertad" class="nav-link" data-scroll-target="#contradicciones-identidades-y-libertad">1.5. Contradicciones, identidades y libertad</a></li>
+  <li><a href="#más-ecuaciones-no-siempre-dan-más-información" id="toc-más-ecuaciones-no-siempre-dan-más-información" class="nav-link" data-scroll-target="#más-ecuaciones-no-siempre-dan-más-información">1.6. Más ecuaciones no siempre dan más información</a></li>
+  <li><a href="#lo-que-cambia-al-mover-los-datos" id="toc-lo-que-cambia-al-mover-los-datos" class="nav-link" data-scroll-target="#lo-que-cambia-al-mover-los-datos">1.7. Lo que cambia al mover los datos</a>
+  <ul class="collapse">
+  <li><a href="#conservar-una-prueba-de-la-contradicción" id="toc-conservar-una-prueba-de-la-contradicción" class="nav-link" data-scroll-target="#conservar-una-prueba-de-la-contradicción">Conservar una prueba de la contradicción</a></li>
+  </ul></li>
+  <li><a href="#una-solución-particular-y-todas-sus-variaciones" id="toc-una-solución-particular-y-todas-sus-variaciones" class="nav-link" data-scroll-target="#una-solución-particular-y-todas-sus-variaciones">1.8. Una solución particular y todas sus variaciones</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">1.9. Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#lectura-eliminación-y-parametrización" id="toc-lectura-eliminación-y-parametrización" class="nav-link" data-scroll-target="#lectura-eliminación-y-parametrización">Lectura, eliminación y parametrización</a></li>
+  <li><a href="#parámetros-y-control-de-operaciones" id="toc-parámetros-y-control-de-operaciones" class="nav-link" data-scroll-target="#parámetros-y-control-de-operaciones">Parámetros y control de operaciones</a></li>
+  <li><a href="#construcción-geometría-y-transferencia" id="toc-construcción-geometría-y-transferencia" class="nav-link" data-scroll-target="#construcción-geometría-y-transferencia">Construcción, geometría y transferencia</a></li>
+  <li><a href="#certificados-y-compatibilidad-conjunta" id="toc-certificados-y-compatibilidad-conjunta" class="nav-link" data-scroll-target="#certificados-y-compatibilidad-conjunta">Certificados y compatibilidad conjunta</a></li>
+  </ul></li>
+  <li><a href="#soluciones-razonadas" id="toc-soluciones-razonadas" class="nav-link" data-scroll-target="#soluciones-razonadas">1.10. Soluciones razonadas</a></li>
+  <li><a href="#lecturas-y-referencias" id="toc-lecturas-y-referencias" class="nav-link" data-scroll-target="#lecturas-y-referencias">Lecturas y referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 1. Sistemas lineales y eliminación</h1>
+<p class="subtitle lead">Álgebra para matemáticos · Tomo II</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 1 del tomo II, con 34 ejercicios y sus soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-02-matrices-como-representacion-de-sistemas.html">Capítulo 2 →</a></p>
+<p>Un laboratorio prepara diez litros de una mezcla a partir de tres soluciones que contienen, respectivamente, un diez, un veinte y un cuarenta por ciento de cierta sustancia. La mezcla final debe contener dos litros de esa sustancia. Si <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> y <span class="math inline">\(z\)</span> son los litros tomados de cada solución, las dos condiciones son</p>
+<p><span class="math display">\[
+\begin{cases}
+x+y+z=10,\\
+x+2y+4z=20.
+\end{cases}
+\]</span></p>
+<p>La segunda ecuación expresa la cantidad de sustancia después de multiplicar por diez la igualdad <span class="math inline">\(0{,}1x+0{,}2y+0{,}4z=2\)</span>. Hemos supuesto que los volúmenes se suman; es una condición del modelo, que deberá comprobarse al aplicarlo a una mezcla real. Las incógnitas deben ser no negativas, aunque por un momento conviene separar esa restricción del problema de resolver las igualdades.</p>
+<p>Restar la primera ecuación de la segunda da <span class="math inline">\(y+3z=10\)</span>. Si elegimos <span class="math inline">\(z=t\)</span>, quedan <span class="math inline">\(y=10-3t\)</span> y <span class="math inline">\(x=2t\)</span>, por lo que todas las soluciones algebraicas tienen la forma <span class="math inline">\((2t,10-3t,t)\)</span>. Cada valor de <span class="math inline">\(t\)</span> produce una terna que satisface las dos ecuaciones, y toda terna que las satisface aparece de esa manera. Las restricciones físicas seleccionan <span class="math inline">\(0\le t\le10/3\)</span>. Los datos permiten una familia de mezclas: para <span class="math inline">\(t=1\)</span> obtenemos <span class="math inline">\((2,7,1)\)</span>, mientras que para <span class="math inline">\(t=2\)</span> obtenemos <span class="math inline">\((4,4,2)\)</span>.</p>
+<p>Una medición adicional puede decidir entre ellas. Supongamos que los costos por litro son uno, dos y tres unidades monetarias y que el presupuesto utilizado fue dieciocho. La nueva ecuación es <span class="math inline">\(x+2y+3z=18\)</span>. Al restarla de la ecuación de concentración obtenemos <span class="math inline">\(z=2\)</span>, que selecciona la mezcla <span class="math inline">\((4,4,2)\)</span>. El procedimiento ha cambiado el aspecto de las ecuaciones para hacer visible la información que contienen. Necesitamos entender cuándo ese cambio conserva todas las soluciones y cómo organizarlo cuando hay muchas incógnitas.</p>
+<section id="qué-cuenta-como-solución" class="level2">
+<h2 class="anchored" data-anchor-id="qué-cuenta-como-solución">1.1. Qué cuenta como solución</h2>
+<p><span id="MA-BCH-APM-02-001-DEF-001" class="apm-anchor"></span></p>
+<p>Una <strong>ecuación lineal</strong> en las incógnitas <span class="math inline">\(x_1,\ldots,x_n\)</span> es una igualdad <span class="math inline">\(a_1x_1+\cdots+a_nx_n=b\)</span>, donde los coeficientes <span class="math inline">\(a_j\)</span> y el término independiente <span class="math inline">\(b\)</span> están fijados en el dominio numérico elegido. Se permiten coeficientes cero, incluso todos ellos. Un <strong>sistema lineal</strong> reúne un número finito de esas ecuaciones, que han de satisfacerse simultáneamente. Para <span class="math inline">\(m\)</span> ecuaciones escribiremos</p>
+<p><span class="math display">\[
+\begin{cases}
+a_{11}x_1+\cdots+a_{1n}x_n=b_1,\\
+\vdots\\
+a_{m1}x_1+\cdots+a_{mn}x_n=b_m.
+\end{cases}
+\]</span></p>
+<p>El primer índice de <span class="math inline">\(a_{ij}\)</span> indica la ecuación y el segundo la incógnita. Una solución es una <strong>terna, pareja o, en general, <span class="math inline">\(n\)</span>-tupla ordenada</strong> <span class="math inline">\((u_1,\ldots,u_n)\)</span> del dominio elegido que hace verdaderas todas las igualdades al sustituir <span class="math inline">\(x_j=u_j\)</span>. Mantendremos fijo el orden de las incógnitas. El conjunto de soluciones puede ser vacío; cuando no lo es, diremos que el sistema es <strong>compatible</strong> o <strong>consistente</strong>.</p>
+<p>En el problema del laboratorio el dominio algebraico es <span class="math inline">\(\mathbb R\)</span> y luego imponemos desigualdades. En otros problemas importa que los valores sean racionales o complejos. Resolver <span class="math inline">\(2x=1\)</span> sobre <span class="math inline">\(\mathbb Q\)</span> da <span class="math inline">\(x=1/2\)</span>; exigir además que <span class="math inline">\(x\)</span> sea entero cambia el problema, pues esa solución deja de estar permitida. La eliminación que estudiaremos permite dividir por cualquier coeficiente no nulo, operación disponible en <span class="math inline">\(\mathbb Q\)</span>, <span class="math inline">\(\mathbb R\)</span> y <span class="math inline">\(\mathbb C\)</span>, pero no dentro de los enteros.</p>
+<p>El marco algebraico común es un <strong>cuerpo</strong> <span class="math inline">\(\mathbb F\)</span>: un conjunto con suma y producto conmutativos y asociativos, con elementos <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span> distintos, inversos aditivos, inversos multiplicativos de los elementos no nulos y la ley distributiva. Esas propiedades bastan para los argumentos del capítulo. Puede seguirse la primera lectura tomando <span class="math inline">\(\mathbb F=\mathbb R\)</span>; al usar geometría o desigualdades lo indicaremos expresamente. Los ejemplos numéricos se calcularán sobre <span class="math inline">\(\mathbb R\)</span>, salvo indicación contraria; los resultados y las demostraciones formulados sobre un cuerpo <span class="math inline">\(\mathbb F\)</span> conservan ese alcance general. El ejercicio 27 muestra por qué, en un cuerpo finito, “tener una incógnita libre” requiere una conclusión distinta de “tener infinitas soluciones”.</p>
+<p>La palabra lineal se refiere a las incógnitas declaradas. Si <span class="math inline">\(t\)</span> es un parámetro fijo, <span class="math inline">\(tx+y=1\)</span> es lineal en <span class="math inline">\(x,y\)</span>; <span class="math inline">\(xy=1\)</span> y <span class="math inline">\(x^2+y=1\)</span> no tienen la forma definida. Una expresión como <span class="math inline">\(x+y/x=2\)</span> tampoco la tiene: además de la división por una incógnita, impone una restricción de dominio que no podemos olvidar al transformarla.</p>
+<p><span id="MA-BCH-APM-02-001-DEF-002" class="apm-anchor"></span></p>
+<p>Un sistema es <strong>homogéneo</strong> cuando todos sus términos independientes son cero. La tupla <span class="math inline">\((0,\ldots,0)\)</span> es entonces solución y se llama solución trivial. “Homogéneo” no significa que esa sea la única solución: la ecuación <span class="math inline">\(x-y=0\)</span> tiene todas las parejas <span class="math inline">\((t,t)\)</span>. Un sistema no homogéneo tiene al menos un término independiente no nulo; puede tener ninguna, una o varias soluciones.</p>
+</section>
+<section id="consecuencias-que-conservan-la-información" class="level2">
+<h2 class="anchored" data-anchor-id="consecuencias-que-conservan-la-información">1.2. Consecuencias que conservan la información</h2>
+<p>En la mezcla inicial reemplazamos la segunda ecuación por la diferencia entre ambas. Toda solución anterior satisface esa diferencia. Para asegurar que no aparecen soluciones nuevas hace falta recuperar también la ecuación reemplazada: basta sumar la primera a la diferencia. La posibilidad de regresar es lo que vuelve segura la transformación.</p>
+<p><span id="MA-BCH-APM-02-001-DEF-003" class="apm-anchor"></span></p>
+<p>Dos sistemas en las mismas incógnitas ordenadas y sobre el mismo cuerpo son <strong>equivalentes</strong> si tienen el mismo conjunto de soluciones. Son operaciones elementales sobre sus ecuaciones:</p>
+<ol type="1">
+<li>intercambiar dos ecuaciones;</li>
+<li>multiplicar una ecuación completa por un escalar no nulo;</li>
+<li>reemplazar una ecuación por ella misma más un múltiplo de otra ecuación distinta, conservando las demás.</li>
+</ol>
+<p>La tercera regla se escribe <span class="math inline">\(E_i\leftarrow E_i+cE_j\)</span>, con <span class="math inline">\(i\ne j\)</span>. La flecha describe una instrucción: ambos miembros de <span class="math inline">\(E_i\)</span> cambian usando los valores actuales de las dos ecuaciones. No es un signo de equivalencia lógica entre fórmulas. Si se ejecutan varias instrucciones, se leerán en el orden indicado, salvo que se diga que usan simultáneamente las ecuaciones anteriores.</p>
+<p><span id="MA-BCH-APM-02-001-PROP-001" class="apm-anchor"></span></p>
+<p><strong>Proposición 1.1.</strong> Una operación elemental transforma un sistema lineal en otro equivalente. Una sucesión finita de operaciones elementales también conserva su conjunto de soluciones.</p>
+<p><strong>Demostración.</strong> Intercambiar ecuaciones sólo cambia el orden de condiciones que ya se exigían simultáneamente. Multiplicar una igualdad por <span class="math inline">\(c\ne0\)</span> conserva su verdad en ambos sentidos, porque podemos multiplicar la nueva igualdad por <span class="math inline">\(c^{-1}\)</span>.</p>
+<p>Para la tercera operación, escribamos las ecuaciones implicadas como <span class="math inline">\(L_i(x)=b_i\)</span> y <span class="math inline">\(L_j(x)=b_j\)</span>, donde <span class="math inline">\(L_i\)</span> y <span class="math inline">\(L_j\)</span> son sus respectivas expresiones lineales. Una tupla que satisface las ecuaciones antiguas cumple <span class="math inline">\(L_i(x)+cL_j(x)=b_i+cb_j\)</span>, de modo que satisface el sistema nuevo. Recíprocamente, una solución nueva sigue satisfaciendo <span class="math inline">\(L_j(x)=b_j\)</span>, porque esa ecuación se conservó. Restarla <span class="math inline">\(c\)</span> veces de la nueva ecuación recupera <span class="math inline">\(L_i(x)=b_i\)</span>. Las otras condiciones permanecen intactas. Tenemos las dos inclusiones entre conjuntos de soluciones y, por ello, su igualdad. Al repetir este razonamiento, cada sistema de una sucesión finita tiene las mismas soluciones que el anterior y que el inicial. <span class="math inline">\(\square\)</span></p>
+<p>Las dos restricciones de las reglas tienen una función concreta. Multiplicar <span class="math inline">\(x=1\)</span> por cero deja <span class="math inline">\(0=0\)</span> y admite todos los valores de <span class="math inline">\(x\)</span>. Reemplazar a la vez <span class="math inline">\(E_1\)</span> y <span class="math inline">\(E_2\)</span> por su suma conserva sólo una condición repetida: de <span class="math inline">\(x=1\)</span>, <span class="math inline">\(y=2\)</span> pasaríamos a dos copias de <span class="math inline">\(x+y=3\)</span>, con muchas más soluciones. Que cada nueva ecuación sea consecuencia de las antiguas garantiza un sentido de inclusión; la recuperación de las antiguas garantiza el otro.</p>
+<figure id="fig-apm-t2-c01-f01" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C01-F01.svg" alt="Dos pares de rectas: antes, x+y=3 y 2x+y=4; después, x+y=3 y x=1. Ambos pares se cortan en (1,2)." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 1.1.</em> Reemplazar la segunda ecuación por la segunda menos la primera cambia una recta y conserva la intersección del sistema. Las rectas están representadas con la misma escala en ambos ejes.
+</figcaption>
+</figure>
+</section>
+<section id="eliminar-sin-perder-la-vuelta" class="level2">
+<h2 class="anchored" data-anchor-id="eliminar-sin-perder-la-vuelta">1.3. Eliminar sin perder la vuelta</h2>
+<p>Consideremos un sistema en el que ninguna incógnita esté ya aislada:</p>
+<p><span class="math display">\[
+\begin{cases}
+x+y+z=6,\\
+2x+3y+z=11,\\
+x-y+2z=5.
+\end{cases}
+\]</span></p>
+<p>El coeficiente de <span class="math inline">\(x\)</span> en la primera ecuación vale uno. Lo usamos para cancelar <span class="math inline">\(x\)</span> en las otras dos: <span class="math inline">\(E_2\leftarrow E_2-2E_1\)</span> y <span class="math inline">\(E_3\leftarrow E_3-E_1\)</span>. El sistema equivalente es</p>
+<p><span class="math display">\[
+\begin{cases}
+x+y+z=6,\\
+y-z=-1,\\
+-2y+z=-1.
+\end{cases}
+\]</span></p>
+<p>El coeficiente de <span class="math inline">\(y\)</span> en la segunda ecuación permite continuar, sin tocar la primera. La instrucción <span class="math inline">\(E_3\leftarrow E_3+2E_2\)</span> produce <span class="math inline">\(-z=-3\)</span>. El sistema quedó escalonado:</p>
+<p><span class="math display">\[
+\begin{cases}
+x+y+z=6,\\
+y-z=-1,\\
+-z=-3.
+\end{cases}
+\]</span></p>
+<p>La última ecuación da <span class="math inline">\(z=3\)</span>, la segunda da <span class="math inline">\(y=2\)</span> y la primera da <span class="math inline">\(x=1\)</span>. Este recorrido desde abajo se llama <strong>sustitución regresiva</strong>. Sustituir <span class="math inline">\((1,2,3)\)</span> en el sistema original comprueba <span class="math inline">\(6=6\)</span>, <span class="math inline">\(11=11\)</span> y <span class="math inline">\(5=5\)</span>; la equivalencia de todos los pasos asegura además que no hemos dejado otra solución fuera.</p>
+<p><span id="MA-BCH-APM-02-001-DEF-004" class="apm-anchor"></span></p>
+<p>El primer coeficiente no nulo de una ecuación, al leer las incógnitas en el orden fijado, se llama su <strong>pivote</strong>. Diremos que un sistema está <strong>escalonado respecto de sus coeficientes</strong> cuando las ecuaciones sin coeficientes no nulos están al final y la incógnita del pivote de cada ecuación restante aparece más a la derecha que la del pivote anterior. En particular, debajo de un pivote los coeficientes de su incógnita son cero. Las ecuaciones finales pueden ser identidades <span class="math inline">\(0=0\)</span> o contradicciones <span class="math inline">\(0=c\)</span> con <span class="math inline">\(c\ne0\)</span>; el término independiente no cuenta como coeficiente de una incógnita.</p>
+<p>Un pivote necesita ser distinto de cero porque lo usamos como divisor. Para eliminar un coeficiente <span class="math inline">\(d\)</span> mediante un pivote <span class="math inline">\(a\ne0\)</span> reemplazamos la ecuación correspondiente por ella misma menos <span class="math inline">\(d/a\)</span> veces la ecuación del pivote. La elección del múltiplo se obtiene al exigir <span class="math inline">\(d-(d/a)a=0\)</span>.</p>
+<p>La primera ecuación disponible puede comenzar con cero. En</p>
+<p><span class="math display">\[
+\begin{cases}
+y+z=3,\\
+2x-y+z=1,\\
+x+y-z=2
+\end{cases}
+\]</span></p>
+<p>intercambiamos la primera y la tercera. Restar dos veces la nueva primera de la segunda deja <span class="math inline">\(-3y+3z=-3\)</span>; la tercera es <span class="math inline">\(y+z=3\)</span>. Podemos usar la tercera como siguiente ecuación pivote, mediante un nuevo intercambio, y eliminar <span class="math inline">\(y\)</span>: <span class="math inline">\(-3y+3z=-3\)</span> más tres veces <span class="math inline">\(y+z=3\)</span> da <span class="math inline">\(6z=6\)</span>. Se obtiene <span class="math inline">\(z=1\)</span>, <span class="math inline">\(y=2\)</span>, <span class="math inline">\(x=1\)</span>. El cero inicial exigía escoger otra ecuación, no anunciaba incompatibilidad.</p>
+</section>
+<section id="por-qué-el-procedimiento-termina" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-el-procedimiento-termina">1.4. Por qué el procedimiento termina</h2>
+<p>El ejemplo sugiere un algoritmo que sirve también si <span class="math inline">\(m\ne n\)</span>. Conservamos arriba las ecuaciones que ya tienen pivote y trabajamos sólo con las restantes. Entre estas buscamos la incógnita más a la izquierda con algún coeficiente no nulo. Si existe, intercambiamos ecuaciones para colocar arriba una con ese coeficiente y la usamos para anularlo en todas las ecuaciones que quedan debajo. Después dejamos fija la ecuación elegida y repetimos el proceso en las inferiores.</p>
+<p>La elección de la incógnita más a la izquierda hace que todas las ecuaciones de la parte activa tengan coeficientes cero en las posiciones anteriores. Por eso sus combinaciones no vuelven a introducir incógnitas ya eliminadas. Cada paso fija una ecuación adicional y desplaza estrictamente a la derecha la posición del pivote. Habrá a lo sumo <span class="math inline">\(\min(m,n)\)</span> pasos de elección de pivote. Cada paso utiliza un número finito de operaciones elementales; el proceso termina cuando no quedan ecuaciones activas o sus coeficientes son todos cero.</p>
+<p><span id="MA-BCH-APM-02-001-THM-001" class="apm-anchor"></span></p>
+<p><strong>Teorema 1.2 (eliminación).</strong> Todo sistema de un número finito de ecuaciones lineales en un número finito de incógnitas sobre un cuerpo puede transformarse mediante operaciones elementales en un sistema escalonado equivalente.</p>
+<p><strong>Demostración.</strong> El procedimiento anterior proporciona una construcción finita. El pivote elegido es no nulo; cada anulación usa la operación <span class="math inline">\(E_i\leftarrow E_i-(d/a)E_j\)</span> con ecuaciones distintas. Los intercambios y anulaciones son elementales y conservan soluciones por la proposición 1.1. Las posiciones de los pivotes avanzan estrictamente a la derecha y las ecuaciones con coeficientes nulos quedan al final, de modo que el resultado cumple la definición de sistema escalonado. <span class="math inline">\(\square\)</span></p>
+<p>No hemos supuesto que el número de ecuaciones sea el de incógnitas. Tampoco hemos necesitado que cada incógnita tenga un pivote. La información que falte aparecerá al reconstruir las soluciones.</p>
+</section>
+<section id="contradicciones-identidades-y-libertad" class="level2">
+<h2 class="anchored" data-anchor-id="contradicciones-identidades-y-libertad">1.5. Contradicciones, identidades y libertad</h2>
+<p>Un sistema escalonado puede terminar en una igualdad imposible. Por ejemplo,</p>
+<p><span class="math display">\[
+\begin{cases}
+x+2y-z=1,\\
+2x+4y-2z=3
+\end{cases}
+\]</span></p>
+<p>se transforma por <span class="math inline">\(E_2\leftarrow E_2-2E_1\)</span> en una primera ecuación intacta y <span class="math inline">\(0=1\)</span>. No existe ninguna tupla que satisfaga ambas. En cambio, si el segundo término independiente fuese <span class="math inline">\(2\)</span>, la misma operación produciría <span class="math inline">\(0=0\)</span>. Esa identidad no exige que ninguna incógnita sea cero; no añade una restricción.</p>
+<p><span id="MA-BCH-APM-02-001-DEF-005" class="apm-anchor"></span></p>
+<p>En un sistema escalonado, las incógnitas que corresponden a pivotes se llaman <strong>principales</strong>. Las restantes se llaman <strong>libres</strong>. “Libre” significa que podemos elegir su valor arbitrariamente en el cuerpo y resolver después, desde la última ecuación, las incógnitas principales, siempre que no haya contradicción.</p>
+<p>Consideremos</p>
+<p><span class="math display">\[
+\begin{cases}
+x+2y-z+w=3,\\
+y+z-2w=1.
+\end{cases}
+\]</span></p>
+<p>Las principales son <span class="math inline">\(x,y\)</span> y las libres son <span class="math inline">\(z,w\)</span>. Elegir <span class="math inline">\(z=s\)</span> y <span class="math inline">\(w=t\)</span> da <span class="math inline">\(y=1-s+2t\)</span> y luego <span class="math inline">\(x=1+3s-5t\)</span>. La solución completa es</p>
+<p><span class="math display">\[
+(x,y,z,w)=(1+3s-5t,\;1-s+2t,\;s,\;t),
+\qquad s,t\in\mathbb F.
+\]</span></p>
+<p>Una parametrización completa tiene dos obligaciones: cada elección de parámetros debe producir una solución y toda solución debe quedar representada. Aquí la primera se comprueba sustituyendo en ambas ecuaciones. Para la segunda, cualquier solución tiene ciertos valores <span class="math inline">\(s=z\)</span> y <span class="math inline">\(t=w\)</span>; la segunda ecuación fuerza el valor escrito de <span class="math inline">\(y\)</span> y la primera fuerza el de <span class="math inline">\(x\)</span>. Además, los parámetros se recuperan leyendo las dos últimas coordenadas, por lo que elecciones distintas producen soluciones distintas.</p>
+<p><span id="MA-BCH-APM-02-001-THM-002" class="apm-anchor"></span></p>
+<p><strong>Teorema 1.3 (lectura de un sistema escalonado).</strong> Sea un sistema escalonado con <span class="math inline">\(n\)</span> incógnitas y <span class="math inline">\(r\)</span> pivotes.</p>
+<ul>
+<li>Si contiene una ecuación <span class="math inline">\(0=c\)</span> con <span class="math inline">\(c\ne0\)</span>, es incompatible.</li>
+<li>Si no contiene contradicciones, cada elección de las <span class="math inline">\(n-r\)</span> incógnitas libres determina una única solución.</li>
+</ul>
+<p><strong>Demostración.</strong> Una contradicción no puede ser satisfecha por ninguna tupla. Supongamos que todas las ecuaciones sin coeficientes son <span class="math inline">\(0=0\)</span>. Fijemos valores arbitrarios de las incógnitas libres. En la última ecuación con pivote sólo quedan por decidir su incógnita principal y valores ya fijados; su coeficiente no nulo permite resolverla de forma única. Al subir, las principales situadas a la derecha ya fueron determinadas y las libres ya estaban fijadas, de modo que la siguiente ecuación también determina de forma única su incógnita principal. Continuamos hasta la primera. Las ecuaciones se satisfacen por construcción y las identidades finales no añaden condiciones. El mismo recorrido muestra que ninguna otra elección de las principales podría acompañar a los valores libres fijados. <span class="math inline">\(\square\)</span></p>
+<p>Sobre <span class="math inline">\(\mathbb R\)</span> o <span class="math inline">\(\mathbb C\)</span> se deduce que hay ninguna, una o infinitas soluciones: en el caso compatible, hay una si <span class="math inline">\(r=n\)</span> e infinitas si queda al menos una variable libre. Sobre un cuerpo de <span class="math inline">\(q\)</span> elementos hay, en el caso compatible, <span class="math inline">\(q^{n-r}\)</span> soluciones, porque cada una de las <span class="math inline">\(n-r\)</span> elecciones tiene <span class="math inline">\(q\)</span> posibilidades y la parametrización no repite soluciones.</p>
+<p>El número <span class="math inline">\(r\)</span> es nuestro primer encuentro con el <strong>rango</strong>: cuenta los pivotes que han quedado al separar las restricciones. En este capítulo lo leemos en un escalonamiento concreto. La afirmación de que ese número no depende de las elecciones de eliminación tendrá su demostración al formalizar matrices en C02; aquí no la usamos para justificar el algoritmo ni la clasificación.</p>
+<figure id="fig-apm-t2-c01-f02" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C01-F02.svg" alt="Tres paneles con rectas que se cortan en un punto, rectas paralelas distintas y rectas coincidentes." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 1.2.</em> Para dos ecuaciones reales en dos incógnitas, las rectas pueden compartir un punto, ninguno o una recta entera. Una ecuación cuyos coeficientes sean ambos cero debe examinarse aparte: puede describir todo el plano o el conjunto vacío.
+</figcaption>
+</figure>
+</section>
+<section id="más-ecuaciones-no-siempre-dan-más-información" class="level2">
+<h2 class="anchored" data-anchor-id="más-ecuaciones-no-siempre-dan-más-información">1.6. Más ecuaciones no siempre dan más información</h2>
+<p>Las tres ecuaciones</p>
+<p><span class="math display">\[
+\begin{cases}
+x+y=3,\\
+2x-y=0,\\
+3x=3
+\end{cases}
+\]</span></p>
+<p>tienen la solución única <span class="math inline">\((1,2)\)</span>. La tercera es la suma de las dos primeras y no elimina ninguna solución que ellas admitieran. Si reemplazamos su término independiente por <span class="math inline">\(4\)</span>, las dos primeras siguen forzando <span class="math inline">\((1,2)\)</span>, pero la tercera exige <span class="math inline">\(3=4\)</span>. El sistema se vuelve incompatible. Contar ecuaciones sin examinar sus relaciones no permite decidir qué ocurre.</p>
+<p>Con más incógnitas que ecuaciones, el teorema 1.3 sí proporciona una conclusión: si un sistema es compatible y <span class="math inline">\(n&gt;m\)</span>, queda al menos una variable libre, porque puede haber a lo sumo <span class="math inline">\(m\)</span> pivotes. Sobre <span class="math inline">\(\mathbb R\)</span> o <span class="math inline">\(\mathbb C\)</span> tendrá infinitas soluciones. La compatibilidad es indispensable: las ecuaciones <span class="math inline">\(x+y+z=0\)</span> y <span class="math inline">\(x+y+z=1\)</span> tienen más incógnitas que ecuaciones y ninguna solución.</p>
+<p>Sobre <span class="math inline">\(\mathbb R\)</span>, una ecuación no degenerada en dos incógnitas describe una recta y una en tres describe un plano. Resolver el sistema consiste en hallar su intersección común. Dos planos no paralelos se cortan en una recta; una tercera ecuación puede seleccionar un punto, contener toda esa recta o no tocarla. La figura 1.3 muestra un caso en el que una parametrización describe la intersección sin depender de la perspectiva del dibujo.</p>
+<figure id="fig-apm-t2-c01-f03" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C01-F03.svg" alt="Proyección paralela de los planos x+y+z=3 y x-y=1; la recta común es (2,1,0)+t(-1,-1,2)." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 1.3.</em> Los parches de dos planos se encuentran en la recta <span class="math inline">\((2-t,1-t,2t)\)</span>. La perspectiva conserva la incidencia, pero no los ángulos ni las longitudes espaciales; las ecuaciones verifican la intersección completa, que continúa fuera de la ventana dibujada.
+</figcaption>
+</figure>
+<p>La compatibilidad exige una intersección común a todas las ecuaciones. Comprobar que cada pareja de ecuaciones tiene soluciones deja todavía una posibilidad que un dibujo de dos planos no revela. Consideremos en <span class="math inline">\(\mathbb R^3\)</span> los planos</p>
+<p><span class="math display">\[
+P_1:\ x=0,\qquad P_2:\ y=0,\qquad P_3:\ x+y=1.
+\]</span></p>
+<p>Los dos primeros comparten la recta <span class="math inline">\((0,0,t)\)</span>. El primero y el tercero comparten <span class="math inline">\((0,1,t)\)</span>, mientras que el segundo y el tercero comparten <span class="math inline">\((1,0,t)\)</span>, con <span class="math inline">\(t\in\mathbb R\)</span>. Ninguna de esas intersecciones está vacía, pero son tres rectas distintas. Un punto que perteneciera a los tres planos tendría <span class="math inline">\(x=y=0\)</span> por las dos primeras condiciones y <span class="math inline">\(x+y=1\)</span> por la tercera, lo que exigiría <span class="math inline">\(0=1\)</span>. Las soluciones de una pareja no tienen por qué servir a las demás ecuaciones.</p>
+<figure id="fig-apm-t2-c01-f05" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C01-F05.svg" alt="Sección z=0 de los planos x=0, y=0 y x+y=1; las intersecciones por parejas son (0,0), (0,1) y (1,0), sin punto común a las tres rectas." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 1.3a.</em> La sección <span class="math inline">\(z=0\)</span> permite ver las tres intersecciones por parejas. Como ninguna ecuación depende de <span class="math inline">\(z\)</span>, cada punto señalado se prolonga en una recta paralela al eje <span class="math inline">\(z\)</span>. Si existiera un punto común en el espacio, su proyección <span class="math inline">\((x,y,0)\)</span> pertenecería a las tres rectas dibujadas; las ecuaciones prueban que no existe.
+</figcaption>
+</figure>
+<p>En este ejemplo cada ecuación es compatible con las otras por separado, pero el tercer dato contradice lo que las dos primeras exigen conjuntamente. Restar de <span class="math inline">\(x+y=1\)</span> las ecuaciones <span class="math inline">\(x=0\)</span> y <span class="math inline">\(y=0\)</span> produce directamente <span class="math inline">\(0=1\)</span>. El cálculo identifica qué información entra en conflicto y muestra por qué revisar parejas no basta cuando el problema exige satisfacer todas las condiciones a la vez.</p>
+</section>
+<section id="lo-que-cambia-al-mover-los-datos" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-cambia-al-mover-los-datos">1.7. Lo que cambia al mover los datos</h2>
+<p>Los parámetros pueden cambiar tanto el número como la naturaleza de las soluciones. Estudiemos, sobre <span class="math inline">\(\mathbb R\)</span>,</p>
+<p><span class="math display">\[
+\begin{cases}
+x+y+z=2,\\
+2x+3y+4z=5,\\
+3x+4y+(a+5)z=b.
+\end{cases}
+\]</span></p>
+<p>Restar dos veces la primera de la segunda da <span class="math inline">\(y+2z=1\)</span>. Restar de la tercera la suma de las dos ecuaciones originales da <span class="math inline">\(az=b-7\)</span>; esa última instrucción puede realizarse como dos operaciones elementales sucesivas, restando primero la primera y luego la segunda original, antes de modificar esta última. Una secuencia inequívoca es <span class="math inline">\(E_3\leftarrow E_3-E_1\)</span>, <span class="math inline">\(E_3\leftarrow E_3-E_2\)</span>, <span class="math inline">\(E_2\leftarrow E_2-2E_1\)</span>. Queda</p>
+<p><span class="math display">\[
+\begin{cases}
+x+y+z=2,\\
+y+2z=1,\\
+az=b-7.
+\end{cases}
+\]</span></p>
+<p>Si <span class="math inline">\(a\ne0\)</span>, la última igualdad fija <span class="math inline">\(z=(b-7)/a\)</span>, y las anteriores dan <span class="math inline">\(y=1-2z\)</span> y <span class="math inline">\(x=1+z\)</span>. Si <span class="math inline">\(a=0\)</span> y <span class="math inline">\(b\ne7\)</span>, tenemos una contradicción. Si <span class="math inline">\(a=0\)</span> y <span class="math inline">\(b=7\)</span>, <span class="math inline">\(z=t\)</span> queda libre y todas las soluciones son <span class="math inline">\((1+t,1-2t,t)\)</span>.</p>
+<p>Dividir por <span class="math inline">\(a\)</span> al comienzo habría borrado los dos casos en los que <span class="math inline">\(a=0\)</span>. Cuando el pivote depende de un parámetro, la división obliga a separar el caso donde se anula. En un problema numérico el pivote es conocido; en una familia, su posible desaparición forma parte del problema.</p>
+<p>El escalonamiento es un procedimiento exacto. Si se trabaja con mediciones redondeadas, decidir si un coeficiente es cero o sólo muy pequeño exige otras herramientas. Podemos conservar fracciones para evitar redondeos artificiales en nuestros ejemplos; no deduciremos de esa exactitud algebraica una garantía de estabilidad numérica.</p>
+<section id="conservar-una-prueba-de-la-contradicción" class="level3">
+<h3 class="anchored" data-anchor-id="conservar-una-prueba-de-la-contradicción">Conservar una prueba de la contradicción</h3>
+<p>En la familia anterior, los valores <span class="math inline">\(a=0\)</span> y <span class="math inline">\(b=8\)</span> producen un sistema incompatible. Podemos comprobarlo sin calcular ninguna incógnita: sus tres ecuaciones son</p>
+<p><span class="math display">\[
+\begin{aligned}
+E_1:&amp;\quad x+y+z=2,\\
+E_2:&amp;\quad 2x+3y+4z=5,\\
+E_3:&amp;\quad 3x+4y+5z=8.
+\end{aligned}
+\]</span></p>
+<p>El miembro izquierdo de <span class="math inline">\(E_3\)</span> es la suma de los de <span class="math inline">\(E_1\)</span> y <span class="math inline">\(E_2\)</span>, mientras que los términos independientes no cumplen esa relación: <span class="math inline">\(8\ne2+5\)</span>. La combinación <span class="math inline">\(E_3-E_1-E_2\)</span> exige <span class="math inline">\(0=1\)</span>. Para revisar esta conclusión basta conocer las ecuaciones originales y los tres multiplicadores <span class="math inline">\(-1,-1,1\)</span>; no necesitamos reconstruir las operaciones que llevaron a descubrirlos.</p>
+<p><span id="MA-BCH-APM-02-001-DEF-006" class="apm-anchor"></span></p>
+<p>Llamaremos <strong>certificado de incompatibilidad</strong> de un sistema a una lista de escalares <span class="math inline">\(\lambda_1,\ldots,\lambda_m\)</span> que, al combinar las ecuaciones completas, produzca <span class="math inline">\(0=1\)</span>. En términos de los coeficientes, esto significa</p>
+<p><span class="math display">\[
+\sum_{i=1}^m\lambda_i a_{ij}=0\quad\text{para cada }j=1,\ldots,n,
+\qquad
+\sum_{i=1}^m\lambda_i b_i=1.
+\]</span></p>
+<p>La primera condición cancela todas las incógnitas; la segunda conserva un término independiente que hace imposible la igualdad. Si una combinación produce <span class="math inline">\(0=c\)</span> con <span class="math inline">\(c\ne0\)</span>, dividir todos sus multiplicadores por <span class="math inline">\(c\)</span> la normaliza a <span class="math inline">\(0=1\)</span>. Esa división es válida en cualquier cuerpo.</p>
+<p><span id="MA-BCH-APM-02-001-THM-003" class="apm-anchor"></span></p>
+<p><strong>Teorema 1.3a (certificados de incompatibilidad).</strong> Un sistema lineal finito sobre un cuerpo es incompatible si y sólo si admite un certificado de incompatibilidad.</p>
+<p><strong>Demostración.</strong> Supongamos primero que existe un certificado y que <span class="math inline">\(u\)</span> fuera una solución. Cada igualdad <span class="math inline">\(\sum_j a_{ij}u_j=b_i\)</span> sería verdadera. Multiplicarlas por <span class="math inline">\(\lambda_i\)</span> y sumarlas daría</p>
+<p><span class="math display">\[
+\sum_{j=1}^n\left(\sum_{i=1}^m\lambda_i a_{ij}\right)u_j
+=\sum_{i=1}^m\lambda_i b_i.
+\]</span></p>
+<p>Las condiciones del certificado convierten el miembro izquierdo en cero y el derecho en uno. Como <span class="math inline">\(0\ne1\)</span> en un cuerpo, no puede existir tal solución.</p>
+<p>Para la otra dirección, escalonemos un sistema incompatible. El teorema 1.3 asegura que aparece una ecuación <span class="math inline">\(0=c\)</span> con <span class="math inline">\(c\ne0\)</span>: si no apareciera ninguna, la sustitución regresiva construiría una solución. Necesitamos comprobar que esa ecuación contradictoria conserva una expresión como combinación de las originales. Al comenzar, cada ecuación es una combinación de ellas: basta poner uno en su propia posición y cero en las restantes. Intercambiarlas sólo intercambia esas listas de multiplicadores; multiplicar una ecuación por un escalar multiplica su lista; sumar a una ecuación un múltiplo de otra suma ese mismo múltiplo de las dos listas. Por inducción sobre las operaciones realizadas, cada ecuación obtenida sigue siendo una combinación de las originales.</p>
+<p>La fila que expresa <span class="math inline">\(0=c\)</span> proporciona, por tanto, multiplicadores que cancelan todos los coeficientes y producen <span class="math inline">\(c\)</span> en el segundo miembro. Multiplicarlos por <span class="math inline">\(c^{-1}\)</span> da el certificado requerido. <span class="math inline">\(\square\)</span></p>
+<p>El argumento describe también una forma de conservar la explicación de un fallo durante la eliminación. Junto a cada ecuación podemos anotar su lista de multiplicadores respecto de las originales y actualizarla con las mismas instrucciones. Si al final aparece una contradicción, la lista que la acompaña señala exactamente qué combinación de datos resulta imposible. El descubrimiento puede haber requerido muchas operaciones, pero la verificación del certificado se reduce a comprobar las dos condiciones escritas arriba.</p>
+<p>En la familia de §1.7, la combinación <span class="math inline">\(E_3-E_1-E_2\)</span> produce <span class="math inline">\(az=b-7\)</span>. Cuando <span class="math inline">\(a=0\)</span> y <span class="math inline">\(b\ne7\)</span>, los multiplicadores <span class="math inline">\((-1,-1,1)/(b-7)\)</span> forman un certificado. Para <span class="math inline">\(a\ne0\)</span> esa combinación conserva el término <span class="math inline">\(az\)</span> y sirve para determinar <span class="math inline">\(z\)</span>; no certifica incompatibilidad. La misma cancelación puede descubrir una restricción útil o una contradicción según el valor de los parámetros.</p>
+<p>El certificado conserva los multiplicadores de una consecuencia imposible; no exige que podamos recuperar de esa sola igualdad todas las ecuaciones originales. El sistema incompatible y la ecuación <span class="math inline">\(0=1\)</span> tienen, de hecho, el mismo conjunto vacío de soluciones. Esto no convierte la sustitución de cualquier sistema por una combinación de sus ecuaciones en una regla que conserve soluciones: para un sistema compatible, una consecuencia aislada puede admitir soluciones nuevas, como vimos en §1.2. Para refutar la compatibilidad basta que ninguna solución pudiera evitar la contradicción exhibida.</p>
+</section>
+</section>
+<section id="una-solución-particular-y-todas-sus-variaciones" class="level2">
+<h2 class="anchored" data-anchor-id="una-solución-particular-y-todas-sus-variaciones">1.8. Una solución particular y todas sus variaciones</h2>
+<p>En el sistema de dos ecuaciones del laboratorio, la parametrización también puede escribirse</p>
+<p><span class="math display">\[
+(x,y,z)=(0,10,0)+t(2,-3,1).
+\]</span></p>
+<p>Sumamos y multiplicamos tuplas coordenada a coordenada. La primera terna es una solución particular. La terna <span class="math inline">\((2,-3,1)\)</span> satisface las mismas ecuaciones con términos independientes cero: sus coordenadas suman cero y <span class="math inline">\(2+2(-3)+4=0\)</span>. Al añadir una cantidad de esa terna, la cantidad total y la concentración permanecen constantes.</p>
+<p><span id="MA-BCH-APM-02-001-PROP-002" class="apm-anchor"></span></p>
+<p><strong>Proposición 1.4.</strong> Fijemos los coeficientes de un sistema y supongamos que tiene una solución particular <span class="math inline">\(p\)</span>. Una tupla <span class="math inline">\(x\)</span> es solución de ese sistema si y sólo si <span class="math inline">\(x=p+h\)</span>, donde <span class="math inline">\(h\)</span> satisface el sistema homogéneo con los mismos coeficientes.</p>
+<p><strong>Demostración.</strong> Escribamos <span class="math inline">\(p=(p_1,\ldots,p_n)\)</span> y <span class="math inline">\(x=(x_1,\ldots,x_n)\)</span>. Si ambas tuplas satisfacen la ecuación <span class="math inline">\(i\)</span>, restar sus igualdades da <span class="math inline">\(\sum_j a_{ij}(x_j-p_j)=b_i-b_i=0\)</span>. Esto vale para cada <span class="math inline">\(i\)</span>, de modo que <span class="math inline">\(h=x-p\)</span> satisface el sistema homogéneo. Recíprocamente, si <span class="math inline">\(\sum_j a_{ij}h_j=0\)</span> para cada <span class="math inline">\(i\)</span>, entonces</p>
+<p><span class="math display">\[
+\sum_j a_{ij}(p_j+h_j)
+=\sum_j a_{ij}p_j+\sum_j a_{ij}h_j=b_i.
+\]</span></p>
+<p>Por ello <span class="math inline">\(p+h\)</span> satisface todas las ecuaciones del sistema original. <span class="math inline">\(\square\)</span></p>
+<p>La misma distributividad muestra que la suma de dos soluciones homogéneas y cualquier múltiplo escalar de una solución homogénea vuelven a ser soluciones homogéneas. Para dos soluciones no homogéneas, en cambio, la suma satisface ecuaciones con términos independientes <span class="math inline">\(2b_i\)</span>, que pueden diferir de los originales. El ejercicio 17 precisa qué combinaciones sí conservan esos datos.</p>
+<figure id="fig-apm-t2-c01-f04" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C01-F04.svg" alt="En el plano xy, las rectas x+2y=0 y x+2y=3 se relacionan por la traslación p=(3,0)." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 1.4.</em> Cada solución de <span class="math inline">\(x+2y=3\)</span> se obtiene trasladando por <span class="math inline">\((3,0)\)</span> una solución de <span class="math inline">\(x+2y=0\)</span>. Las flechas unen puntos correspondientes; el origen pertenece a la recta homogénea.
+</figcaption>
+</figure>
+<p>La eliminación ha permitido distinguir información contradictoria, redundante y suficiente para determinar incógnitas. Una vez elegida una solución particular, la libertad restante queda expresada por las variaciones que hacen cero todas las ecuaciones homogéneas. Esa descripción conserva el conjunto completo de soluciones, incluso cuando una lista de valores aislados ya no puede representarlo.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">1.9. Ejercicios</h2>
+<p>Los primeros problemas consolidan la lectura y el cálculo; los últimos exigen construir ejemplos, justificar procedimientos y combinar ideas. Todos se resuelven con lo desarrollado en este capítulo. Trabajar sobre <span class="math inline">\(\mathbb R\)</span> salvo indicación contraria.</p>
+<section id="lectura-eliminación-y-parametrización" class="level3">
+<h3 class="anchored" data-anchor-id="lectura-eliminación-y-parametrización">Lectura, eliminación y parametrización</h3>
+<p><span id="MA-BCH-APM-02-001-EXR-001" class="apm-anchor"></span> <strong>1.</strong> Determinar cuáles de las expresiones <span class="math inline">\(3x-2y=4\)</span>, <span class="math inline">\(xy=4\)</span>, <span class="math inline">\(tx+y=1\)</span>, <span class="math inline">\(x+1/y=2\)</span> y <span class="math inline">\(0x+0y=5\)</span> son ecuaciones lineales en <span class="math inline">\(x,y\)</span>, considerando <span class="math inline">\(t\)</span> fijo. Para las lineales, indicar cuáles pueden ser incompatibles.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-002" class="apm-anchor"></span> <strong>2.</strong> Resolver <span class="math inline">\(x+2y=7\)</span>, <span class="math inline">\(3x-y=7\)</span> e indicar las operaciones y la verificación en las ecuaciones originales.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-003" class="apm-anchor"></span> <strong>3.</strong> Resolver <span class="math inline">\(y+z=4\)</span>, <span class="math inline">\(x+y-z=1\)</span>, <span class="math inline">\(2x-y+z=2\)</span> usando un intercambio inicial.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-004" class="apm-anchor"></span> <strong>4.</strong> Parametrizar las soluciones de <span class="math inline">\(2x-y+z=4\)</span>, <span class="math inline">\(4x-2y+2z=8\)</span> y probar que la parametrización es completa.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-005" class="apm-anchor"></span> <strong>5.</strong> Justificar la incompatibilidad de <span class="math inline">\(x-y+2z=2\)</span>, <span class="math inline">\(3x-3y+6z=5\)</span> sin buscar valores de las incógnitas.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-006" class="apm-anchor"></span> <strong>6.</strong> Resolver <span class="math inline">\(x+y+z+w=2\)</span>, <span class="math inline">\(2x+3y+z+4w=5\)</span>. Identificar dos variables libres y verificar que pueden elegirse independientemente.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-007" class="apm-anchor"></span> <strong>7.</strong> Resolver <span class="math inline">\(x+y=4\)</span>, <span class="math inline">\(2x-y=2\)</span>, <span class="math inline">\(3x=6\)</span>. Repetir si la última ecuación se cambia a <span class="math inline">\(3x=7\)</span>.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-008" class="apm-anchor"></span> <strong>8.</strong> Resolver el sistema homogéneo <span class="math inline">\(x+2y-z=0\)</span>, <span class="math inline">\(2x+4y-2z=0\)</span>. Dar dos soluciones distintas no nulas y explicar por qué no son todas.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-009" class="apm-anchor"></span> <strong>9.</strong> Resolver <span class="math inline">\(x-y+z=0\)</span>, <span class="math inline">\(y+z-w=0\)</span> en cuatro incógnitas. Escribir cada solución como combinación de dos tuplas fijas.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-010" class="apm-anchor"></span> <strong>10.</strong> Describir las soluciones de un sistema en tres incógnitas cuyas ecuaciones son todas <span class="math inline">\(0=0\)</span>. ¿Qué ocurre si una de ellas se cambia por <span class="math inline">\(0=2\)</span>?</p>
+</section>
+<section id="parámetros-y-control-de-operaciones" class="level3">
+<h3 class="anchored" data-anchor-id="parámetros-y-control-de-operaciones">Parámetros y control de operaciones</h3>
+<p><span id="MA-BCH-APM-02-001-EXR-011" class="apm-anchor"></span> <strong>11.</strong> Para <span class="math inline">\(2x+y=1\)</span>, <span class="math inline">\(4x+(t+2)y=3\)</span>, clasificar todos los valores de <span class="math inline">\(t\)</span> y dar las soluciones cuando existan.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-012" class="apm-anchor"></span> <strong>12.</strong> Estudiar <span class="math inline">\(x+y=1\)</span>, <span class="math inline">\(ax+y=b\)</span> para todos los parámetros reales <span class="math inline">\(a,b\)</span>. Explicar cómo se ven geométricamente los casos excepcionales.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-013" class="apm-anchor"></span> <strong>13.</strong> Una solución propuesta de <span class="math inline">\(ax+y=1\)</span>, <span class="math inline">\(x+y=2\)</span> comienza con <span class="math inline">\(x=(1-y)/a\)</span> y concluye que no puede estudiarse <span class="math inline">\(a=0\)</span>. Localizar la falla y resolver la familia completa.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-014" class="apm-anchor"></span> <strong>14.</strong> Se conserva <span class="math inline">\(E_j\)</span> y se reemplaza <span class="math inline">\(E_i\)</span> por <span class="math inline">\(cE_i+dE_j\)</span>, con <span class="math inline">\(i\ne j\)</span>. Probar que <span class="math inline">\(c\ne0\)</span> garantiza equivalencia para cualquier sistema. Mostrar que con <span class="math inline">\(c=0\)</span> esa garantía falla.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-015" class="apm-anchor"></span> <strong>15.</strong> Sobre <span class="math inline">\(\mathbb R\)</span>, reemplazar simultáneamente <span class="math inline">\(E_1,E_2\)</span> por <span class="math inline">\(E_1+E_2,E_1-E_2\)</span> conserva soluciones. Demostrarlo recuperando las ecuaciones originales. Explicar qué falla si <span class="math inline">\(1+1=0\)</span> en el cuerpo.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-016" class="apm-anchor"></span> <strong>16.</strong> Dos tuplas <span class="math inline">\(p,q\)</span> satisfacen el mismo sistema no homogéneo. Probar que <span class="math inline">\(p-q\)</span> satisface el homogéneo asociado. Dar un ejemplo en que <span class="math inline">\(p+q\)</span> no satisfaga el sistema original.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-017" class="apm-anchor"></span> <strong>17.</strong> Si <span class="math inline">\(p,q\)</span> son soluciones del mismo sistema, probar que <span class="math inline">\(\lambda p+(1-\lambda)q\)</span> es solución para todo escalar <span class="math inline">\(\lambda\)</span>. Si el sistema es no homogéneo, probar que <span class="math inline">\(\alpha p+\beta q\)</span> es solución si y sólo si <span class="math inline">\(\alpha+\beta=1\)</span>.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-018" class="apm-anchor"></span> <strong>18.</strong> Probar que un sistema real con dos soluciones distintas tiene infinitas soluciones, sin volver a eliminar. Identificar dónde intervienen que las soluciones sean distintas y que el cuerpo sea infinito.</p>
+</section>
+<section id="construcción-geometría-y-transferencia" class="level3">
+<h3 class="anchored" data-anchor-id="construcción-geometría-y-transferencia">Construcción, geometría y transferencia</h3>
+<p><span id="MA-BCH-APM-02-001-EXR-019" class="apm-anchor"></span> <strong>19.</strong> Construir sistemas lineales en tres incógnitas cuyos conjuntos de soluciones sean: el punto <span class="math inline">\((1,2,3)\)</span>; la recta <span class="math inline">\((1+t,2-t,3)\)</span>; el plano <span class="math inline">\(x+y+z=1\)</span>; el conjunto vacío. Probar cada igualdad de conjuntos.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-020" class="apm-anchor"></span> <strong>20.</strong> Los planos <span class="math inline">\(x=0\)</span>, <span class="math inline">\(y=0\)</span> y <span class="math inline">\(x+y=1\)</span> se cortan dos a dos. Probar que no tienen un punto común a los tres y describir cada intersección por parejas.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-021" class="apm-anchor"></span> <strong>21.</strong> Hallar todos los polinomios <span class="math inline">\(p(t)=at^2+bt+c\)</span> que satisfacen <span class="math inline">\(p(0)=2\)</span>, <span class="math inline">\(p(1)=3\)</span> y <span class="math inline">\(p(2)=8\)</span>. Explicar por qué el problema es lineal aunque aparezca <span class="math inline">\(t^2\)</span>.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-022" class="apm-anchor"></span> <strong>22.</strong> Tres flujos reales <span class="math inline">\(x,y,z\)</span> satisfacen <span class="math inline">\(x-y=2\)</span>, <span class="math inline">\(y-z=1\)</span>, <span class="math inline">\(x-z=3\)</span>. Determinar todos los flujos. Indicar cuáles son no negativos. Repetir el diagnóstico si la última diferencia prescrita es <span class="math inline">\(4\)</span>.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-023" class="apm-anchor"></span> <strong>23.</strong> Sin resolver primero las incógnitas, hallar la condición sobre <span class="math inline">\(b_1,b_2,b_3\)</span> para que <span class="math inline">\(x+y=b_1\)</span>, <span class="math inline">\(y+z=b_2\)</span>, <span class="math inline">\(x+2y+z=b_3\)</span> sea compatible. Dar después todas las soluciones y un certificado de incompatibilidad cuando falle la condición.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-024" class="apm-anchor"></span> <strong>24.</strong> Sea un sistema compatible y una ecuación adicional <span class="math inline">\(L(x)=c\)</span>. Probar que el nuevo sistema tiene exactamente las mismas soluciones si y sólo si toda solución antigua satisface la ecuación adicional. Explicar por qué “la ecuación es verdadera para una solución” no basta.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-025" class="apm-anchor"></span> <strong>25.</strong> Resolver sobre <span class="math inline">\(\mathbb C\)</span> el sistema <span class="math inline">\(x+iy=1\)</span>, <span class="math inline">\(ix+y=0\)</span>. Verificar ambas igualdades.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-026" class="apm-anchor"></span> <strong>26.</strong> Resolver <span class="math inline">\(x+y=1\)</span>, <span class="math inline">\(x-y=0\)</span> sobre <span class="math inline">\(\mathbb Q\)</span>, sobre <span class="math inline">\(\mathbb R\)</span> y con la condición de que ambas incógnitas sean enteras. Explicar el papel de dividir por dos.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-027" class="apm-anchor"></span> <strong>27.</strong> En <span class="math inline">\(\mathbb F_2=\{0,1\}\)</span> se suma y multiplica módulo dos. Verificar brevemente que es un cuerpo y resolver <span class="math inline">\(x+y+z=0\)</span>. Enumerar las soluciones y relacionar su número con las variables libres.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-028" class="apm-anchor"></span> <strong>28.</strong> Dada cualquier tupla <span class="math inline">\(p\in\mathbb R^n\)</span>, probar que el sistema de todas las ecuaciones <span class="math inline">\(x_j=p_j\)</span> tiene solución única. Construir en cambio un sistema de <span class="math inline">\(n+1\)</span> ecuaciones y <span class="math inline">\(n\)</span> incógnitas con esa misma solución única y otro incompatible.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-029" class="apm-anchor"></span> <strong>29.</strong> Una combinación de las ecuaciones de un sistema produce <span class="math inline">\(0=1\)</span>. Probar que el sistema es incompatible. Probar la recíproca para un sistema lineal finito sobre un cuerpo usando la eliminación.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-030" class="apm-anchor"></span> <strong>30.</strong> Si un sistema homogéneo tiene <span class="math inline">\(n\)</span> incógnitas y menos de <span class="math inline">\(n\)</span> ecuaciones, probar que tiene una solución no trivial. ¿Cuántas soluciones hay si el cuerpo tiene <span class="math inline">\(q\)</span> elementos y un escalonamiento tiene <span class="math inline">\(r\)</span> pivotes?</p>
+<p><span id="MA-BCH-APM-02-001-EXR-031" class="apm-anchor"></span> <strong>31.</strong> Sobre <span class="math inline">\(\mathbb R\)</span>, encontrar una condición necesaria y suficiente sobre <span class="math inline">\(a,b,c\)</span> para que la expresión <span class="math inline">\(ax+by+cz\)</span> tenga el mismo valor en todas las mezclas algebraicas <span class="math inline">\((x,y,z)=(2t,10-3t,t)\)</span> del problema inicial. Explicar qué ocurre al pedir que ese valor sea <span class="math inline">\(d\)</span>.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-032" class="apm-anchor"></span> <strong>32.</strong> Un sistema ya escalonado es <span class="math inline">\(x+2y+z=5\)</span>, <span class="math inline">\(y-z=1\)</span>. Un estudiante escribe <span class="math inline">\(z=t\)</span>, <span class="math inline">\(y=1-t\)</span>, <span class="math inline">\(x=3+t\)</span>. Diagnosticar y reparar su parametrización. Explicar por qué verificar una sola solución no certifica una fórmula para todas.</p>
+</section>
+<section id="certificados-y-compatibilidad-conjunta" class="level3">
+<h3 class="anchored" data-anchor-id="certificados-y-compatibilidad-conjunta">Certificados y compatibilidad conjunta</h3>
+<p><span id="MA-BCH-APM-02-001-EXR-033" class="apm-anchor"></span> <strong>33.</strong> Sobre <span class="math inline">\(\mathbb R\)</span>, considerar las ecuaciones <span class="math inline">\(E_1:x+y=1\)</span>, <span class="math inline">\(E_2:2x+2y=3\)</span>, <span class="math inline">\(E_3:x-y=0\)</span> y <span class="math inline">\(E_4:4x+4y=6\)</span>. Hallar todos los certificados normalizados <span class="math inline">\((\lambda_1,\lambda_2,\lambda_3,\lambda_4)\)</span> que producen <span class="math inline">\(0=1\)</span>. ¿Es único el certificado? Explicar por qué certificados distintos pueden demostrar la misma incompatibilidad.</p>
+<p><span id="MA-BCH-APM-02-001-EXR-034" class="apm-anchor"></span> <strong>34.</strong> Para números reales <span class="math inline">\(a,b,c\)</span>, estudiar los planos <span class="math inline">\(x=a\)</span>, <span class="math inline">\(y=b\)</span> y <span class="math inline">\(x+y=c\)</span> en <span class="math inline">\(\mathbb R^3\)</span>. Describir todas las intersecciones por parejas y la intersección de los tres. Cuando el sistema sea incompatible, dar un certificado normalizado; cuando sea compatible, parametrizar todas sus soluciones. Explicar por qué ninguna elección de <span class="math inline">\(a,b,c\)</span> elimina las intersecciones por parejas.</p>
+</section>
+</section>
+<section id="soluciones-razonadas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-razonadas">1.10. Soluciones razonadas</h2>
+<p><span id="MA-BCH-APM-02-001-SOL-001" class="apm-anchor"></span> <strong>1.</strong> Son lineales <span class="math inline">\(3x-2y=4\)</span>, <span class="math inline">\(tx+y=1\)</span> para cada <span class="math inline">\(t\)</span> fijo y <span class="math inline">\(0x+0y=5\)</span>. La primera admite, por ejemplo, <span class="math inline">\((4/3,0)\)</span>; la segunda admite <span class="math inline">\((0,1)\)</span> para cualquier <span class="math inline">\(t\)</span>. La última es incompatible porque su miembro izquierdo siempre vale cero. El producto <span class="math inline">\(xy\)</span> no es una combinación con coeficientes fijos de <span class="math inline">\(x,y\)</span>; <span class="math inline">\(1/y\)</span> tampoco y además exige <span class="math inline">\(y\ne0\)</span>. El parámetro fijo no actúa como incógnita.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-002" class="apm-anchor"></span> <strong>2.</strong> Restar tres veces la primera ecuación de la segunda da <span class="math inline">\(-7y=-14\)</span>, de donde <span class="math inline">\(y=2\)</span>. La primera exige <span class="math inline">\(x=3\)</span>. Al sustituir, <span class="math inline">\(3+2(2)=7\)</span> y <span class="math inline">\(3(3)-2=7\)</span>. La operación fue elemental y la sustitución regresiva determinó ambas incógnitas de forma única.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-003" class="apm-anchor"></span> <strong>3.</strong> Intercambiar las dos primeras ecuaciones deja <span class="math inline">\(x+y-z=1\)</span> arriba. Reemplazar la tercera por ella misma menos dos veces la primera da <span class="math inline">\(-3y+3z=0\)</span>. Conservar como segunda <span class="math inline">\(y+z=4\)</span> y sumar tres veces esta ecuación a la tercera produce <span class="math inline">\(6z=12\)</span>. Así <span class="math inline">\(z=2\)</span>, <span class="math inline">\(y=2\)</span> y <span class="math inline">\(x=1\)</span>. En el sistema original los miembros izquierdos valen <span class="math inline">\(4\)</span>, <span class="math inline">\(1\)</span> y <span class="math inline">\(2\)</span>. Cada paso fue reversible, por lo que la solución es única.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-004" class="apm-anchor"></span> <strong>4.</strong> La segunda menos dos veces la primera es <span class="math inline">\(0=0\)</span>. Elegir <span class="math inline">\(y=s\)</span>, <span class="math inline">\(z=t\)</span> fuerza <span class="math inline">\(x=2+s/2-t/2\)</span>. Toda pareja real <span class="math inline">\((s,t)\)</span> da una solución porque <span class="math inline">\(2x-y+z=4\)</span> y su doble vale <span class="math inline">\(8\)</span>. Recíprocamente, cualquier solución tiene ciertos valores <span class="math inline">\(s=y\)</span>, <span class="math inline">\(t=z\)</span>, y la primera ecuación obliga al valor indicado de <span class="math inline">\(x\)</span>. No se puede concluir <span class="math inline">\(y=z=0\)</span> de la identidad final.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-005" class="apm-anchor"></span> <strong>5.</strong> La segunda ecuación menos tres veces la primera produce <span class="math inline">\(0=5-6=-1\)</span>. Una solución tendría que satisfacer esa igualdad falsa. La incompatibilidad se debe a los términos independientes: los coeficientes de la segunda son exactamente el triple de los de la primera.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-006" class="apm-anchor"></span> <strong>6.</strong> La operación <span class="math inline">\(E_2\leftarrow E_2-2E_1\)</span> deja <span class="math inline">\(y-z+2w=1\)</span>. Tomar <span class="math inline">\(z=s\)</span>, <span class="math inline">\(w=t\)</span> da <span class="math inline">\(y=1+s-2t\)</span> y <span class="math inline">\(x=1-2s+t\)</span>. No queda ninguna ecuación que restrinja <span class="math inline">\(s,t\)</span>. Sustituyendo, la primera suma es <span class="math inline">\(2\)</span> y la segunda es <span class="math inline">\(2-4s+2t+3+3s-6t+s+4t=5\)</span>. Cualquier solución recupera sus parámetros como <span class="math inline">\(s=z\)</span>, <span class="math inline">\(t=w\)</span>, lo que prueba exhaustividad e independencia de las elecciones.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-007" class="apm-anchor"></span> <strong>7.</strong> La segunda menos dos veces la primera da <span class="math inline">\(-3y=-6\)</span>, de donde <span class="math inline">\(y=2\)</span> y <span class="math inline">\(x=2\)</span>. La tercera exige <span class="math inline">\(3x=6\)</span> y se cumple; de hecho es la suma de las dos primeras. Cambiarla por <span class="math inline">\(3x=7\)</span> exige <span class="math inline">\(6=7\)</span> en la única pareja que admiten las dos primeras. También puede certificarse restando de la tercera la suma de las primeras: queda <span class="math inline">\(0=1\)</span>.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-008" class="apm-anchor"></span> <strong>8.</strong> La segunda ecuación se elimina completamente. Si <span class="math inline">\(y=s\)</span>, <span class="math inline">\(z=t\)</span>, entonces <span class="math inline">\(x=-2s+t\)</span>. Dos soluciones no nulas son <span class="math inline">\((-2,1,0)\)</span> y <span class="math inline">\((1,0,1)\)</span>. Sus valores concretos no agotan la familia <span class="math inline">\((-2s+t,s,t)\)</span>; por ejemplo, variar <span class="math inline">\(s\)</span> manteniendo <span class="math inline">\(t=0\)</span> ya da infinitas soluciones distintas. Cada solución tiene esos valores de <span class="math inline">\(s,t\)</span>, y la ecuación fuerza la primera coordenada.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-009" class="apm-anchor"></span> <strong>9.</strong> Fijar <span class="math inline">\(z=s\)</span>, <span class="math inline">\(w=t\)</span> da <span class="math inline">\(y=t-s\)</span> y luego <span class="math inline">\(x=t-2s\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+(x,y,z,w)=s(-2,-1,1,0)+t(1,1,0,1).
+\]</span></p>
+<p>Las dos tuplas fijas satisfacen ambas ecuaciones homogéneas, por lo que todas sus combinaciones las satisfacen. La deducción regresiva muestra que toda solución aparece y que <span class="math inline">\(s,t\)</span> se recuperan de <span class="math inline">\(z,w\)</span>.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-010" class="apm-anchor"></span> <strong>10.</strong> Toda terna real satisface todas las identidades: el conjunto es <span class="math inline">\(\mathbb R^3\)</span>. Las tres incógnitas son libres. Una sola ecuación <span class="math inline">\(0=2\)</span> vuelve incompatible el sistema completo, cualquiera sea el número de identidades que la acompañen.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-011" class="apm-anchor"></span> <strong>11.</strong> Restar dos veces la primera de la segunda da <span class="math inline">\(ty=1\)</span>. Si <span class="math inline">\(t=0\)</span>, no hay solución. Si <span class="math inline">\(t\ne0\)</span>, <span class="math inline">\(y=1/t\)</span> y <span class="math inline">\(x=(1-1/t)/2\)</span>. Al sustituir en la segunda obtenemos <span class="math inline">\(2-2/t+(t+2)/t=3\)</span>, como se exige. El primer pivote es siempre <span class="math inline">\(2\)</span> y sólo el segundo puede desaparecer; no hay caso de infinitas soluciones en esta familia.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-012" class="apm-anchor"></span> <strong>12.</strong> La segunda menos la primera da <span class="math inline">\((a-1)x=b-1\)</span>. Para <span class="math inline">\(a\ne1\)</span>, <span class="math inline">\(x=(b-1)/(a-1)\)</span> y <span class="math inline">\(y=1-x\)</span>; la sustitución verifica ambas ecuaciones. Para <span class="math inline">\(a=1\)</span>, las ecuaciones tienen iguales miembros izquierdos: si <span class="math inline">\(b=1\)</span> coinciden y las soluciones son <span class="math inline">\((t,1-t)\)</span>; si <span class="math inline">\(b\ne1\)</span> son rectas paralelas distintas y no hay solución. En el primer caso general las rectas tienen un único punto común.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-013" class="apm-anchor"></span> <strong>13.</strong> La división por <span class="math inline">\(a\)</span> sólo era válida si <span class="math inline">\(a\ne0\)</span>; no demuestra que el problema carezca de sentido para <span class="math inline">\(a=0\)</span>. Restar la segunda ecuación de la primera evita esa división: <span class="math inline">\((a-1)x=-1\)</span>. Para <span class="math inline">\(a\ne1\)</span> se obtiene <span class="math inline">\(x=1/(1-a)\)</span> y <span class="math inline">\(y=2-1/(1-a)\)</span>. Para <span class="math inline">\(a=1\)</span>, las ecuaciones exigen simultáneamente <span class="math inline">\(x+y=1\)</span> y <span class="math inline">\(x+y=2\)</span>, y no hay solución. El caso <span class="math inline">\(a=0\)</span> está incluido en la fórmula: <span class="math inline">\((x,y)=(1,1)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-014" class="apm-anchor"></span> <strong>14.</strong> Si <span class="math inline">\(c\ne0\)</span>, podemos multiplicar primero <span class="math inline">\(E_i\)</span> por <span class="math inline">\(c\)</span> y después añadir <span class="math inline">\(dE_j\)</span>. Ambas operaciones son elementales. También se recupera directamente <span class="math inline">\(E_i\)</span> restando <span class="math inline">\(dE_j\)</span> de la nueva ecuación y dividiendo por <span class="math inline">\(c\)</span>. Si <span class="math inline">\(c=0\)</span>, tomar <span class="math inline">\(E_i:x=1\)</span> y <span class="math inline">\(E_j:y=0\)</span> deja como nueva primera ecuación <span class="math inline">\(dy=0\)</span>. Junto con <span class="math inline">\(y=0\)</span> admite cualquier <span class="math inline">\(x\)</span>, mientras que el sistema anterior exigía <span class="math inline">\(x=1\)</span>. Esto muestra que la garantía universal falla, aunque en algunos sistemas particulares pueda conservarse el conjunto.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-015" class="apm-anchor"></span> <strong>15.</strong> Llamemos <span class="math inline">\(F_1=E_1+E_2\)</span> y <span class="math inline">\(F_2=E_1-E_2\)</span> a las nuevas igualdades completas. Las antiguas se recuperan como <span class="math inline">\(E_1=(F_1+F_2)/2\)</span> y <span class="math inline">\(E_2=(F_1-F_2)/2\)</span>. Toda solución antigua satisface las nuevas y toda solución nueva satisface las recuperadas. Si <span class="math inline">\(1+1=0\)</span>, no podemos dividir por dos y suma y diferencia son la misma operación. Sobre <span class="math inline">\(\mathbb F_2\)</span>, partir de <span class="math inline">\(x=0\)</span>, <span class="math inline">\(y=0\)</span> produce dos copias de <span class="math inline">\(x+y=0\)</span>, que también admiten <span class="math inline">\((1,1)\)</span>. Se perdió información.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-016" class="apm-anchor"></span> <strong>16.</strong> Para cada ecuación, restar las igualdades satisfechas por <span class="math inline">\(p\)</span> y <span class="math inline">\(q\)</span> da <span class="math inline">\(\sum_j a_{ij}(p_j-q_j)=0\)</span>. Por eso la diferencia resuelve el homogéneo. En la ecuación no homogénea <span class="math inline">\(x+y=1\)</span>, <span class="math inline">\(p=(1,0)\)</span> y <span class="math inline">\(q=(0,1)\)</span> son soluciones, pero <span class="math inline">\(p+q=(1,1)\)</span> tiene suma de coordenadas <span class="math inline">\(2\)</span>. La suma de soluciones conserva la homogeneidad, no en general un término independiente fijado distinto de cero.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-017" class="apm-anchor"></span> <strong>17.</strong> Si <span class="math inline">\(L_i\)</span> es el miembro izquierdo de la ecuación <span class="math inline">\(i\)</span>, distributividad da <span class="math inline">\(L_i(\alpha p+\beta q)=(\alpha+\beta)b_i\)</span>. Con <span class="math inline">\(\alpha=\lambda\)</span>, <span class="math inline">\(\beta=1-\lambda\)</span> resulta <span class="math inline">\(b_i\)</span> para cada <span class="math inline">\(i\)</span>, y obtenemos una solución. Si el sistema es no homogéneo, existe un <span class="math inline">\(i\)</span> con <span class="math inline">\(b_i\ne0\)</span>. Para que esa ecuación conserve su término independiente es necesario <span class="math inline">\((\alpha+\beta)b_i=b_i\)</span>, y dividir por <span class="math inline">\(b_i\)</span> da <span class="math inline">\(\alpha+\beta=1\)</span>. Esa condición también basta para todas las ecuaciones. En el sistema homogéneo no es necesaria, porque todos los <span class="math inline">\(b_i\)</span> son cero.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-018" class="apm-anchor"></span> <strong>18.</strong> Las tuplas <span class="math inline">\(q+\lambda(p-q)\)</span> son soluciones por el ejercicio 17. Si dos parámetros <span class="math inline">\(\lambda,\mu\)</span> dan la misma tupla, <span class="math inline">\((\lambda-\mu)(p-q)=0\)</span> coordenada a coordenada. Como <span class="math inline">\(p\ne q\)</span>, alguna coordenada de <span class="math inline">\(p-q\)</span> es no nula, y en ella podemos dividir para obtener <span class="math inline">\(\lambda=\mu\)</span>. Los infinitos parámetros reales producen soluciones distintas. Sobre un cuerpo finito la misma inyectividad vale, pero sólo suministra un número finito de valores de <span class="math inline">\(\lambda\)</span>.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-019" class="apm-anchor"></span> <strong>19.</strong> Para el punto, las ecuaciones <span class="math inline">\(x=1\)</span>, <span class="math inline">\(y=2\)</span>, <span class="math inline">\(z=3\)</span> fijan las tres coordenadas. Para la recta, usar <span class="math inline">\(x+y=3\)</span>, <span class="math inline">\(z=3\)</span>: toda tupla de la forma dada las satisface y, recíprocamente, de una solución se recupera <span class="math inline">\(t=x-1\)</span>, con <span class="math inline">\(y=2-t\)</span>. El plano se obtiene con la única ecuación <span class="math inline">\(x+y+z=1\)</span>; su conjunto es el pedido por definición. Para el vacío, usar <span class="math inline">\(x=0\)</span>, <span class="math inline">\(x=1\)</span>; ninguna tupla puede tener su primera coordenada igual a ambos números. Las construcciones no dependen de un dibujo.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-020" class="apm-anchor"></span> <strong>20.</strong> Las dos primeras condiciones se cortan en <span class="math inline">\((0,0,t)\)</span>. La primera y la tercera se cortan en <span class="math inline">\((0,1,t)\)</span>; la segunda y la tercera, en <span class="math inline">\((1,0,t)\)</span>. Cada pareja tiene una recta común. Un punto de los tres planos tendría <span class="math inline">\(x=y=0\)</span> y por tanto <span class="math inline">\(x+y=0\)</span>, incompatible con <span class="math inline">\(x+y=1\)</span>. Las intersecciones por parejas pueden ser distintas y no aseguran una intersección global.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-021" class="apm-anchor"></span> <strong>21.</strong> Las condiciones dan <span class="math inline">\(c=2\)</span>, <span class="math inline">\(a+b+c=3\)</span> y <span class="math inline">\(4a+2b+c=8\)</span>. Restando el valor de <span class="math inline">\(c\)</span> quedan <span class="math inline">\(a+b=1\)</span>, <span class="math inline">\(4a+2b=6\)</span>; restar dos veces la primera a la segunda da <span class="math inline">\(2a=4\)</span>. Se obtiene <span class="math inline">\(a=2\)</span>, <span class="math inline">\(b=-1\)</span>, <span class="math inline">\(c=2\)</span> y <span class="math inline">\(p(t)=2t^2-t+2\)</span>. Sus valores son <span class="math inline">\(2,3,8\)</span> y la eliminación prueba unicidad. Las incógnitas son los coeficientes <span class="math inline">\(a,b,c\)</span>; los valores <span class="math inline">\(0,1,2\)</span> de <span class="math inline">\(t\)</span> son datos fijos. Por eso las ecuaciones son lineales en las incógnitas.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-022" class="apm-anchor"></span> <strong>22.</strong> Las dos primeras ecuaciones dan <span class="math inline">\(z=t\)</span>, <span class="math inline">\(y=t+1\)</span>, <span class="math inline">\(x=t+3\)</span>. Su diferencia <span class="math inline">\(x-z\)</span> vale siempre <span class="math inline">\(3\)</span>, así que la tercera no añade condición. Los tres flujos son no negativos exactamente cuando <span class="math inline">\(t\ge0\)</span>: esa condición basta y es necesaria por <span class="math inline">\(z=t\)</span>. Si la última diferencia fuese <span class="math inline">\(4\)</span>, restar la suma de las dos primeras ecuaciones de la tercera daría <span class="math inline">\(0=1\)</span>. El balance incompatible puede detectarse antes de fijar un flujo.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-023" class="apm-anchor"></span> <strong>23.</strong> La suma de las dos primeras ecuaciones tiene miembro izquierdo <span class="math inline">\(x+2y+z\)</span>, igual al de la tercera. Es necesario <span class="math inline">\(b_3=b_1+b_2\)</span>. Si se cumple, elegir <span class="math inline">\(y=t\)</span> da <span class="math inline">\(x=b_1-t\)</span> y <span class="math inline">\(z=b_2-t\)</span>; estas tuplas satisfacen también la tercera. La condición es por tanto suficiente. Si falla, <span class="math inline">\(E_3-E_1-E_2\)</span> produce <span class="math inline">\(0=b_3-b_1-b_2\ne0\)</span>, certificado de incompatibilidad que conserva sólo una combinación de las condiciones que cualquier solución habría de satisfacer.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-024" class="apm-anchor"></span> <strong>24.</strong> El conjunto nuevo es la intersección del conjunto antiguo <span class="math inline">\(S\)</span> con <span class="math inline">\(\{x:L(x)=c\}\)</span>. Es igual a <span class="math inline">\(S\)</span> si y sólo si <span class="math inline">\(S\)</span> está contenido en ese segundo conjunto, que es la afirmación pedida. Saber que una solución satisface la ecuación adicional sólo garantiza que la intersección no es vacía. Por ejemplo, a <span class="math inline">\(x+y=1\)</span> añadir <span class="math inline">\(x=1\)</span> conserva <span class="math inline">\((1,0)\)</span> y elimina <span class="math inline">\((0,1)\)</span>; el conjunto de soluciones ha cambiado.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-025" class="apm-anchor"></span> <strong>25.</strong> Restar <span class="math inline">\(i\)</span> veces la primera de la segunda da <span class="math inline">\((1-i^2)y=-i\)</span>, es decir, <span class="math inline">\(2y=-i\)</span>. Así <span class="math inline">\(y=-i/2\)</span> y <span class="math inline">\(x=1-iy=1/2\)</span>. Las verificaciones son <span class="math inline">\(1/2+i(-i/2)=1\)</span> e <span class="math inline">\(i/2-i/2=0\)</span>. Los dos pivotes no nulos determinan la pareja de forma única; la misma operación de eliminación funciona con escalares complejos.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-026" class="apm-anchor"></span> <strong>26.</strong> Sumar las ecuaciones da <span class="math inline">\(2x=1\)</span>; la segunda da <span class="math inline">\(y=x\)</span>. Sobre <span class="math inline">\(\mathbb Q\)</span> y <span class="math inline">\(\mathbb R\)</span> la solución única es <span class="math inline">\((1/2,1/2)\)</span>. No hay solución con coordenadas enteras porque <span class="math inline">\(2x=1\)</span> no puede cumplirse para un entero. Dividir por dos produce un escalar permitido en los dos cuerpos, pero no un entero. Resolver primero en <span class="math inline">\(\mathbb Q\)</span> y filtrar las soluciones enteras es válido; afirmar que todas las divisiones permanecen dentro de <span class="math inline">\(\mathbb Z\)</span> no lo es.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-027" class="apm-anchor"></span> <strong>27.</strong> Las tablas módulo dos tienen <span class="math inline">\(0\)</span> como neutro aditivo, cada elemento como su propio opuesto y <span class="math inline">\(1\)</span> como neutro multiplicativo y único elemento no nulo, inverso de sí mismo. Asociatividad, conmutatividad y distributividad se heredan del cálculo entero al reducir módulo dos. Se cumplen los axiomas del cuerpo. De <span class="math inline">\(x+y+z=0\)</span> obtenemos <span class="math inline">\(x=y+z\)</span>, pues restar y sumar coinciden. Elegir <span class="math inline">\(y,z\)</span> en <span class="math inline">\(\{0,1\}\)</span> produce <span class="math inline">\((0,0,0)\)</span>, <span class="math inline">\((1,0,1)\)</span>, <span class="math inline">\((1,1,0)\)</span> y <span class="math inline">\((0,1,1)\)</span>. Son <span class="math inline">\(2^2=4\)</span> soluciones: hay dos variables libres y ningún sentido en el que esa lista sea infinita.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-028" class="apm-anchor"></span> <strong>28.</strong> Las <span class="math inline">\(n\)</span> ecuaciones <span class="math inline">\(x_j=p_j\)</span> obligan a que cualquier solución sea <span class="math inline">\(p\)</span>, y <span class="math inline">\(p\)</span> las satisface. Añadir <span class="math inline">\(\sum_{j=1}^n x_j=\sum_{j=1}^n p_j\)</span> conserva esa única solución, porque ya es consecuencia de las igualdades coordenadas. Añadir en cambio <span class="math inline">\(\sum_j x_j=\sum_j p_j+1\)</span> la excluye y deja el sistema vacío. La construcción muestra que <span class="math inline">\(n+1\)</span> ecuaciones pueden ser compatibles o incompatibles; el mero conteo no decide.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-029" class="apm-anchor"></span> <strong>29.</strong> Toda solución de las ecuaciones originales satisface cualquier combinación escalar de ellas, por distributividad y suma de igualdades. Si una combinación da <span class="math inline">\(0=1\)</span>, ninguna solución puede existir. Para la recíproca, escalonar un sistema incompatible. Por el teorema 1.3 debe aparecer una contradicción <span class="math inline">\(0=c\)</span>, <span class="math inline">\(c\ne0\)</span>; de otro modo la sustitución regresiva construiría una solución. Cada ecuación obtenida por operaciones elementales es una combinación de las originales: esto vale al comienzo y se conserva al sumar múltiplos, intercambiar o escalar ecuaciones. La contradicción encontrada es por ello una combinación de las originales; multiplicar sus coeficientes por <span class="math inline">\(c^{-1}\)</span> produce <span class="math inline">\(0=1\)</span>. El argumento certifica incompatibilidad sin recurrir a determinantes.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-030" class="apm-anchor"></span> <strong>30.</strong> El sistema homogéneo es compatible por la solución cero. Hay a lo sumo <span class="math inline">\(m&lt;n\)</span> pivotes, de modo que existe una variable libre. Elegir una de las libres igual a <span class="math inline">\(1\)</span> y las otras igual a <span class="math inline">\(0\)</span> produce, por el teorema 1.3, una solución cuya coordenada elegida es no nula. Sobre un cuerpo de <span class="math inline">\(q\)</span> elementos hay exactamente <span class="math inline">\(q^{n-r}\)</span> elecciones de libres, y cada una determina una solución distinta. Ese número puede ser finito aunque haya soluciones no triviales.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-031" class="apm-anchor"></span> <strong>31.</strong> Sustituir la familia da <span class="math inline">\(ax+by+cz=10b+t(2a-3b+c)\)</span>. La expresión es constante para todo <span class="math inline">\(t\in\mathbb R\)</span> si y sólo si <span class="math inline">\(2a-3b+c=0\)</span>: la necesidad se obtiene comparando <span class="math inline">\(t=0\)</span> con <span class="math inline">\(t=1\)</span>, y la suficiencia al anular el coeficiente. En ese caso el valor constante es <span class="math inline">\(10b\)</span>. Pedir además el valor <span class="math inline">\(d\)</span> conserva toda la familia si <span class="math inline">\(d=10b\)</span> y la excluye por completo si <span class="math inline">\(d\ne10b\)</span>. Si <span class="math inline">\(2a-3b+c\ne0\)</span>, la ecuación adicional selecciona un único parámetro <span class="math inline">\(t=(d-10b)/(2a-3b+c)\)</span>. Para mezclas físicas hay que comprobar además <span class="math inline">\(0\le t\le10/3\)</span>.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-032" class="apm-anchor"></span> <strong>32.</strong> De <span class="math inline">\(y-z=1\)</span> se deduce <span class="math inline">\(y=1+z\)</span>, no <span class="math inline">\(1-z\)</span>. Con <span class="math inline">\(z=t\)</span> obtenemos <span class="math inline">\(y=1+t\)</span> y, por la primera ecuación, <span class="math inline">\(x=5-2(1+t)-t=3-3t\)</span>. La familia correcta es <span class="math inline">\((3-3t,1+t,t)\)</span>. Sustituirla da <span class="math inline">\(5\)</span> y <span class="math inline">\(1\)</span> en los dos miembros izquierdos. La propuesta errónea cumple la segunda sólo cuando <span class="math inline">\(1-2t=1\)</span>, es decir, <span class="math inline">\(t=0\)</span>, y en ese valor también cumple la primera. Verificar únicamente ese caso habría ocultado el error en la fórmula general.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-033" class="apm-anchor"></span> <strong>33.</strong> Cancelar los coeficientes de <span class="math inline">\(x,y\)</span> exige</p>
+<p><span class="math display">\[
+\lambda_1+2\lambda_2+\lambda_3+4\lambda_4=0,
+\qquad
+\lambda_1+2\lambda_2-\lambda_3+4\lambda_4=0.
+\]</span></p>
+<p>Restar las igualdades da <span class="math inline">\(2\lambda_3=0\)</span> y, al trabajar sobre los reales, <span class="math inline">\(\lambda_3=0\)</span>. Producir uno en el segundo miembro exige <span class="math inline">\(\lambda_1+3\lambda_2+6\lambda_4=1\)</span>. La cancelación restante da <span class="math inline">\(\lambda_1=-2\lambda_2-4\lambda_4\)</span>; sustituirla en la condición del segundo miembro deja <span class="math inline">\(\lambda_2+2\lambda_4=1\)</span>. Con <span class="math inline">\(\lambda_4=t\)</span> obtenemos todos los certificados:</p>
+<p><span class="math display">\[
+(\lambda_1,\lambda_2,\lambda_3,\lambda_4)=(-2,1-2t,0,t),
+\qquad t\in\mathbb R.
+\]</span></p>
+<p>Para cualquier <span class="math inline">\(t\)</span> los coeficientes de las dos incógnitas suman cero y los términos independientes suman <span class="math inline">\(-2+3(1-2t)+6t=1\)</span>, así que cada lista certifica la contradicción. Las ecuaciones deducidas fuerzan esa forma para cualquier certificado, lo que prueba exhaustividad. No es único: <span class="math inline">\(t=0\)</span> usa <span class="math inline">\(E_2-2E_1\)</span>, mientras que <span class="math inline">\(t=1/2\)</span> usa <span class="math inline">\(E_4/2-2E_1\)</span>. La redundancia <span class="math inline">\(E_4=2E_2\)</span> permite escribir la misma contradicción de varias maneras sin cambiar el sistema.</p>
+<p><span id="MA-BCH-APM-02-001-SOL-034" class="apm-anchor"></span> <strong>34.</strong> Las intersecciones por parejas son las rectas <span class="math inline">\((a,b,t)\)</span>, <span class="math inline">\((a,c-a,t)\)</span> y <span class="math inline">\((c-b,b,t)\)</span>, respectivamente, para <span class="math inline">\(t\in\mathbb R\)</span>. Cada familia satisface las dos ecuaciones correspondientes, y éstas fijan las dos primeras coordenadas como se ha indicado; no imponen ninguna condición a <span class="math inline">\(z\)</span>. Por eso las tres intersecciones por parejas existen para todos los datos.</p>
+<p>Una solución común a los tres planos debe tener <span class="math inline">\(x=a\)</span>, <span class="math inline">\(y=b\)</span>, de modo que la tercera ecuación se cumple exactamente si <span class="math inline">\(c=a+b\)</span>. En ese caso las tres rectas anteriores coinciden y todas las soluciones son <span class="math inline">\((a,b,t)\)</span>. Si <span class="math inline">\(c\ne a+b\)</span>, la combinación <span class="math inline">\(E_3-E_1-E_2\)</span> produce <span class="math inline">\(0=c-a-b\)</span> y, por tanto, <span class="math inline">\((-1,-1,1)/(c-a-b)\)</span> es un certificado normalizado. La división sólo se usa en el caso incompatible, donde el denominador no es cero.</p>
+</section>
+<section id="lecturas-y-referencias" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-referencias">Lecturas y referencias</h2>
+<p>Kenneth Hoffman y Ray Kunze, <em>Linear Algebra</em>, 2.ª ed., §§1.2–1.3; Steven H. Weintraub, <em>Linear Algebra for the Young Mathematician</em>, cap. 2; Gilbert Strang, <em>Introduction to Linear Algebra</em>, 4.ª ed., §2.2; Sergei Treil, <em>Linear Algebra Done Wrong</em>, cap. 2; John M. Erdman, <em>Exercises and Problems in Linear Algebra</em>, cap. 1. Estas lecturas ofrecen perspectivas complementarias del método y de los conjuntos de soluciones.</p>
+<p>Nathaniel Johnston, <em>Introduction to Linear and Matrix Algebra</em>, 2021, §2.1 y tema 2.A; Stephen H. Friedberg, Arnold J. Insel y Lawrence E. Spence, <em>Linear Algebra</em>, 5.ª ed., §§3.1,3.3–3.4. Johnston ofrece el recorrido geométrico y algorítmico; Friedberg, Insel y Spence permiten continuar hacia la descripción estructural de las soluciones, con la teoría de espacios vectoriales que se desarrollará más adelante.</p>
+<hr>
+<p><a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-02-matrices-como-representacion-de-sistemas.html">Capítulo 2 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

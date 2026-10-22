@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 5 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.">
+
+<title>Capítulo 5. Subespacios y generación – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#espacios-dentro-de-un-espacio" id="toc-espacios-dentro-de-un-espacio" class="nav-link active" data-scroll-target="#espacios-dentro-de-un-espacio">5.1. Espacios dentro de un espacio</a></li>
+  <li><a href="#describir-por-condiciones" id="toc-describir-por-condiciones" class="nav-link" data-scroll-target="#describir-por-condiciones">5.2. Describir por condiciones</a></li>
+  <li><a href="#intersecar-condiciones-y-reunir-conjuntos" id="toc-intersecar-condiciones-y-reunir-conjuntos" class="nav-link" data-scroll-target="#intersecar-condiciones-y-reunir-conjuntos">5.3. Intersecar condiciones y reunir conjuntos</a></li>
+  <li><a href="#el-subespacio-que-unos-vectores-obligan-a-construir" id="toc-el-subespacio-que-unos-vectores-obligan-a-construir" class="nav-link" data-scroll-target="#el-subespacio-que-unos-vectores-obligan-a-construir">5.4. El subespacio que unos vectores obligan a construir</a></li>
+  <li><a href="#comparar-descripciones-y-cambiar-generadores" id="toc-comparar-descripciones-y-cambiar-generadores" class="nav-link" data-scroll-target="#comparar-descripciones-y-cambiar-generadores">5.5. Comparar descripciones y cambiar generadores</a></li>
+  <li><a href="#pasar-de-ecuaciones-a-generadores-y-volver" id="toc-pasar-de-ecuaciones-a-generadores-y-volver" class="nav-link" data-scroll-target="#pasar-de-ecuaciones-a-generadores-y-volver">5.6. Pasar de ecuaciones a generadores y volver</a></li>
+  <li><a href="#la-suma-de-subespacios" id="toc-la-suma-de-subespacios" class="nav-link" data-scroll-target="#la-suma-de-subespacios">5.7. La suma de subespacios</a></li>
+  <li><a href="#traslaciones-y-condiciones-no-homogéneas" id="toc-traslaciones-y-condiciones-no-homogéneas" class="nav-link" data-scroll-target="#traslaciones-y-condiciones-no-homogéneas">5.8. Traslaciones y condiciones no homogéneas</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">5.9. Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#reconocer-y-refutar" id="toc-reconocer-y-refutar" class="nav-link" data-scroll-target="#reconocer-y-refutar">Reconocer y refutar</a></li>
+  <li><a href="#construir-y-comprobar-pertenencia" id="toc-construir-y-comprobar-pertenencia" class="nav-link" data-scroll-target="#construir-y-comprobar-pertenencia">Construir y comprobar pertenencia</a></li>
+  <li><a href="#generación-finita-y-conjuntos-infinitos" id="toc-generación-finita-y-conjuntos-infinitos" class="nav-link" data-scroll-target="#generación-finita-y-conjuntos-infinitos">Generación finita y conjuntos infinitos</a></li>
+  <li><a href="#intersecciones-uniones-y-sumas" id="toc-intersecciones-uniones-y-sumas" class="nav-link" data-scroll-target="#intersecciones-uniones-y-sumas">Intersecciones, uniones y sumas</a></li>
+  <li><a href="#traslaciones-y-síntesis" id="toc-traslaciones-y-síntesis" class="nav-link" data-scroll-target="#traslaciones-y-síntesis">Traslaciones y síntesis</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">5.10. Soluciones</a></li>
+  <li><a href="#lecturas-y-referencias" id="toc-lecturas-y-referencias" class="nav-link" data-scroll-target="#lecturas-y-referencias">Lecturas y referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 5. Subespacios y generación</h1>
+<p class="subtitle lead">Álgebra para matemáticos · Tomo II</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 5 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-04-espacios-vectoriales.html">← Capítulo 4</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-06-dependencia-e-independencia-lineal.html">Capítulo 6 →</a></p>
+<p>Dos datos <span class="math inline">\(a,b\)</span> se combinan para producir la columna <span class="math inline">\((a,a+b,b)\)</span>. Podemos describir todos los resultados posibles dejando variar los dos datos, pero también podemos reconocerlos mediante una condición: si la salida es <span class="math inline">\((x,y,z)\)</span>, necesariamente <span class="math inline">\(y=x+z\)</span>. La condición es suficiente, pues cualquier columna que la cumpla se obtiene eligiendo <span class="math inline">\(a=x\)</span> y <span class="math inline">\(b=z\)</span>. Tenemos así dos descripciones del mismo conjunto,</p>
+<p><span class="math display">\[
+W=\{(a,a+b,b):a,b\in\mathbb F\}
+=\{(x,y,z)\in\mathbb F^3:y=x+z\}.
+\]</span></p>
+<p>La primera descripción explica cómo construir sus elementos; la segunda permite comprobar si una columna pertenece. Si sumamos dos salidas, sumamos sus datos de entrada; si multiplicamos una salida por un escalar, multiplicamos ambos datos por él. En los dos casos obtenemos otra salida posible. En C04 verificamos esta propiedad en distintos espacios repitiendo parte de sus axiomas. La estructura del espacio ambiente permite abreviar esas verificaciones y, después, construir sistemáticamente todos los vectores que ciertas condiciones o ciertos datos nos obligan a admitir.</p>
+<p>Durante el capítulo, <span class="math inline">\(V\)</span> será un espacio vectorial sobre un cuerpo conmutativo <span class="math inline">\(\mathbb F\)</span>. Las representaciones geométricas se harán sobre <span class="math inline">\(\mathbb R\)</span>; los enunciados sobre <span class="math inline">\(\mathbb F\)</span> no presuponen orden, infinitud ni característica cero.</p>
+<section id="espacios-dentro-de-un-espacio" class="level2">
+<h2 class="anchored" data-anchor-id="espacios-dentro-de-un-espacio">5.1. Espacios dentro de un espacio</h2>
+<p><span id="MA-BCH-APM-02-005-DEF-001" class="apm-anchor"></span> <strong>Definición 5.1 (subespacio).</strong> Un subconjunto <span class="math inline">\(U\subseteq V\)</span> es un <strong>subespacio vectorial</strong> de <span class="math inline">\(V\)</span> si las operaciones de <span class="math inline">\(V\)</span>, restringidas a <span class="math inline">\(U\)</span>, hacen de <span class="math inline">\(U\)</span> un espacio vectorial sobre el mismo cuerpo <span class="math inline">\(\mathbb F\)</span>.</p>
+<p>La restricción conserva el significado de sumar y de multiplicar por un escalar. Esto distingue un subespacio de un subconjunto al que se han dado operaciones nuevas. La recta <span class="math inline">\(x+y=1\)</span> de C04 podía convertirse en un espacio al elegir un origen y cambiar sus operaciones; con la suma y los múltiplos ordinarios del plano seguía sin ser un subespacio.</p>
+<p>Las leyes universales, como asociatividad o distributividad, ya valen para todos los vectores de <span class="math inline">\(V\)</span>, y por ello para los de <span class="math inline">\(U\)</span>. Lo que debemos comprobar es que las operaciones permanezcan en <span class="math inline">\(U\)</span> y que los elementos cuya existencia exigen los axiomas se encuentren allí.</p>
+<p><span id="MA-BCH-APM-02-005-THM-001" class="apm-anchor"></span> <strong>Teorema 5.1 (criterio de subespacio).</strong> Un subconjunto <span class="math inline">\(U\subseteq V\)</span> es un subespacio si y sólo si contiene <span class="math inline">\(0_V\)</span>, es cerrado bajo suma y es cerrado bajo multiplicación por cada escalar de <span class="math inline">\(\mathbb F\)</span>.</p>
+<p><strong>Demostración.</strong> Supongamos primero que <span class="math inline">\(U\)</span> es un subespacio y llamemos <span class="math inline">\(e\)</span> a su cero. Para cualquier <span class="math inline">\(u\in U\)</span>, la igualdad <span class="math inline">\(u+e=u=u+0_V\)</span> se cumple en <span class="math inline">\(V\)</span>, así que la cancelación de C04 da <span class="math inline">\(e=0_V\)</span>. Por tanto <span class="math inline">\(0_V\in U\)</span>. Los cierres son necesarios porque la suma y la multiplicación escalar deben ser operaciones internas de <span class="math inline">\(U\)</span>.</p>
+<p>Recíprocamente, los cierres permiten restringir ambas operaciones. El vector <span class="math inline">\(0_V\)</span> pertenece a <span class="math inline">\(U\)</span> y sigue siendo neutro. Si <span class="math inline">\(u\in U\)</span>, el cierre escalar proporciona <span class="math inline">\((-1)u=-u\in U\)</span>, y ese vector es su opuesto también dentro de <span class="math inline">\(U\)</span>. Conmutatividad, asociatividad, acción del uno, compatibilidad y las dos distributividades se conservan porque cada igualdad es la misma que en <span class="math inline">\(V\)</span>. Se satisfacen así los ocho axiomas de C04. <span class="math inline">\(\square\)</span></p>
+<p>Puede sustituirse la condición <span class="math inline">\(0_V\in U\)</span> por <span class="math inline">\(U\ne\varnothing\)</span> si se mantienen los dos cierres: elegido <span class="math inline">\(u\in U\)</span>, multiplicar por cero obliga a incluir <span class="math inline">\(0_V\)</span>. La no vaciedad no debe desaparecer, pues el conjunto vacío satisface vacíamente las afirmaciones de cierre y carece de cero.</p>
+<p><span id="MA-BCH-APM-02-005-COR-001" class="apm-anchor"></span> <strong>Corolario 5.1 (criterio mediante combinaciones).</strong> Un subconjunto no vacío <span class="math inline">\(U\)</span> es un subespacio de <span class="math inline">\(V\)</span> si y sólo si <span class="math inline">\(au+bv\in U\)</span> para todos <span class="math inline">\(u,v\in U\)</span> y <span class="math inline">\(a,b\in\mathbb F\)</span>.</p>
+<p><strong>Demostración.</strong> Un subespacio conserva sumas y múltiplos y, por tanto, esas combinaciones. En la otra dirección, escoger <span class="math inline">\(a=b=0\)</span> proporciona el cero; escoger <span class="math inline">\(a=b=1\)</span> proporciona el cierre aditivo; escoger <span class="math inline">\(b=0\)</span> proporciona el cierre escalar. El teorema 5.1 se aplica. <span class="math inline">\(\square\)</span></p>
+<p>Los conjuntos <span class="math inline">\(\{0_V\}\)</span> y <span class="math inline">\(V\)</span> son siempre subespacios. Para un ejemplo menos extremo, las matrices superiores triangulares de tamaño <span class="math inline">\(n\times n\)</span> forman un subespacio de <span class="math inline">\(M_{n,n}(\mathbb F)\)</span>: en cada entrada debajo de la diagonal, <span class="math inline">\(aA+bB\)</span> tiene valor <span class="math inline">\(a\cdot0+b\cdot0=0\)</span>. La matriz cero está incluida. El argumento comprueba una condición sobre entradas y evita repetir las leyes del producto escalar.</p>
+<p>Contener cero no basta. Las matrices singulares <span class="math inline">\(2\times2\)</span> contienen la matriz cero y conservan múltiplos, pero <span class="math inline">\(\begin{bmatrix}1&amp;0\\0&amp;0\end{bmatrix}\)</span> y <span class="math inline">\(\begin{bmatrix}0&amp;0\\0&amp;1\end{bmatrix}\)</span> son singulares y su suma es la identidad. Tampoco basta conservar sumas: <span class="math inline">\(\mathbb Z\subset\mathbb R\)</span> conserva la suma y contiene cero, pero <span class="math inline">\(\frac12\cdot1\)</span> no es entero. El cuerpo de escalares participa en el criterio.</p>
+</section>
+<section id="describir-por-condiciones" class="level2">
+<h2 class="anchored" data-anchor-id="describir-por-condiciones">5.2. Describir por condiciones</h2>
+<p>Una condición homogénea explica con frecuencia el cierre. Para el conjunto de la apertura, si <span class="math inline">\(u=(x,y,z)\)</span> y <span class="math inline">\(u'=(x',y',z')\)</span> cumplen <span class="math inline">\(y=x+z\)</span> y <span class="math inline">\(y'=x'+z'\)</span>, entonces <span class="math inline">\(ay+by'=(ax+bx')+(az+bz')\)</span>. La combinación <span class="math inline">\(au+bu'\)</span> vuelve a satisfacer la condición y el cero la satisface.</p>
+<p>Más generalmente, sea <span class="math inline">\(A\in M_{m,n}(\mathbb F)\)</span>. El conjunto de soluciones de <span class="math inline">\(Ax=0\)</span> es un subespacio de <span class="math inline">\(\mathbb F^n\)</span>, pues contiene cero y <span class="math inline">\(A(au+bv)=aAu+bAv=0\)</span> para dos soluciones <span class="math inline">\(u,v\)</span>. Este cálculo, demostrado en C03 y utilizado en C04, es ahora una aplicación del criterio. No hace falta resolver el sistema para saber que su conjunto de soluciones tiene estructura vectorial.</p>
+<p>Una condición sobre funciones se trata del mismo modo, evaluando donde corresponda. En el espacio <span class="math inline">\(\mathbb F^X\)</span>, si <span class="math inline">\(x_0\in X\)</span> está fijado, las funciones que cumplen <span class="math inline">\(f(x_0)=0\)</span> forman un subespacio: <span class="math inline">\((af+bg)(x_0)=af(x_0)+bg(x_0)=0\)</span>. Si <span class="math inline">\(x_0,x_1\in X\)</span>, la condición <span class="math inline">\(f(x_0)=f(x_1)\)</span> también se conserva, porque la igualdad de valores se conserva al formar la misma combinación en ambos lados. No estamos suponiendo continuidad ni ninguna representación gráfica de las funciones.</p>
+<p>En <span class="math inline">\(\mathbb F[t]_{\le3}\)</span>, los polinomios cuyo coeficiente de <span class="math inline">\(t\)</span> es cero forman un subespacio: cada uno tiene la forma <span class="math inline">\(a+bt^2+ct^3\)</span>. La condición se refiere a coeficientes formales, con el significado fijado en C04. Por contraste, los polinomios de grado exactamente tres, incluso añadiendo el cero, pueden perder su grado al sumarse; por ejemplo, <span class="math inline">\((t^3+t)+(-t^3)=t\)</span>.</p>
+<p>La homogeneidad debe verificarse en la condición concreta. El conjunto <span class="math inline">\(xy=0\)</span> de <span class="math inline">\(\mathbb R^2\)</span> contiene cero y conserva múltiplos, pero sumar <span class="math inline">\((1,0)\)</span> y <span class="math inline">\((0,1)\)</span> sale de él. Una ecuación con miembro derecho cero puede ser no lineal y fallar el cierre.</p>
+</section>
+<section id="intersecar-condiciones-y-reunir-conjuntos" class="level2">
+<h2 class="anchored" data-anchor-id="intersecar-condiciones-y-reunir-conjuntos">5.3. Intersecar condiciones y reunir conjuntos</h2>
+<p>Si imponemos dos condiciones simultáneamente, tomamos la intersección de sus conjuntos de soluciones. Las mismas operaciones que conservan cada condición conservan las dos.</p>
+<p><span id="MA-BCH-APM-02-005-PRP-001" class="apm-anchor"></span> <strong>Proposición 5.1 (intersecciones de subespacios).</strong> La intersección de cualquier familia <span class="math inline">\((U_i)_{i\in I}\)</span> de subespacios de <span class="math inline">\(V\)</span> es un subespacio. Cuando <span class="math inline">\(I=\varnothing\)</span>, la intersección se entiende relativa a <span class="math inline">\(V\)</span> y vale <span class="math inline">\(V\)</span>.</p>
+<p><strong>Demostración.</strong> Para una familia no vacía, cada <span class="math inline">\(U_i\)</span> contiene <span class="math inline">\(0_V\)</span>, de modo que el cero pertenece a la intersección. Si <span class="math inline">\(u,v\)</span> pertenecen a ella, pertenecen a cada <span class="math inline">\(U_i\)</span>. Por su cierre, <span class="math inline">\(au+bv\)</span> también pertenece a cada <span class="math inline">\(U_i\)</span>, y por tanto a la intersección. El corolario 5.1 prueba que es un subespacio. Para <span class="math inline">\(I=\varnothing\)</span>, la condición «pertenecer a todos los <span class="math inline">\(U_i\)</span>» no impone ninguna restricción a los elementos de <span class="math inline">\(V\)</span>; la intersección es <span class="math inline">\(V\)</span>, que ya es un subespacio. <span class="math inline">\(\square\)</span></p>
+<p>Por ejemplo, en <span class="math inline">\(\mathbb R^3\)</span> las condiciones <span class="math inline">\(y=x+z\)</span> y <span class="math inline">\(x=z\)</span> definen dos planos por el origen. Su intersección está formada por <span class="math inline">\((t,2t,t)\)</span>: sustituir <span class="math inline">\(x=z=t\)</span> determina <span class="math inline">\(y\)</span>. Todos sus elementos cumplen ambas condiciones, y cualquier vector que cumpla ambas aparece así.</p>
+<p>La unión responde a otra pregunta: basta cumplir una condición o la otra. En el plano, los dos ejes son subespacios, pero su unión no contiene <span class="math inline">\((1,1)\)</span>, aunque contenga sus sumandos <span class="math inline">\((1,0)\)</span> y <span class="math inline">\((0,1)\)</span>. Para conservar ambas direcciones y las operaciones tendremos que añadir más vectores que los que aparecen en la unión.</p>
+<figure id="fig-apm-t2-c05-f01" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C05-F01.svg" alt="Intersección y unión de dos ejes, y vectores que obliga a añadir el cierre bajo suma." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+Intersección y unión de dos ejes, y vectores que obliga a añadir el cierre bajo suma.
+</figcaption>
+</figure>
+<p>El defecto puede describirse exactamente para dos subespacios.</p>
+<p><span id="MA-BCH-APM-02-005-PRP-002" class="apm-anchor"></span> <strong>Proposición 5.2 (unión de dos subespacios).</strong> La unión <span class="math inline">\(U\cup W\)</span> de dos subespacios es un subespacio si y sólo si <span class="math inline">\(U\subseteq W\)</span> o <span class="math inline">\(W\subseteq U\)</span>.</p>
+<p><strong>Demostración.</strong> Si uno está contenido en el otro, la unión es el mayor y ya es un subespacio. Supongamos que ninguno contiene al otro. Existen entonces <span class="math inline">\(u\in U\setminus W\)</span> y <span class="math inline">\(w\in W\setminus U\)</span>. Si <span class="math inline">\(u+w\)</span> perteneciera a <span class="math inline">\(U\)</span>, restar <span class="math inline">\(u\)</span> dentro de <span class="math inline">\(U\)</span> daría <span class="math inline">\(w\in U\)</span>, contradicción. Si perteneciera a <span class="math inline">\(W\)</span>, restar <span class="math inline">\(w\)</span> daría <span class="math inline">\(u\in W\)</span>, también contradicción. Por tanto <span class="math inline">\(u+w\)</span> no pertenece a la unión, aunque ambos sumandos sí pertenezcan. Falla el cierre aditivo. <span class="math inline">\(\square\)</span></p>
+<p>La afirmación se refiere a dos subespacios. Una familia de más subespacios puede comportarse de otra manera, especialmente sobre un cuerpo finito; los ejercicios permitirán comprobar esa frontera.</p>
+</section>
+<section id="el-subespacio-que-unos-vectores-obligan-a-construir" class="level2">
+<h2 class="anchored" data-anchor-id="el-subespacio-que-unos-vectores-obligan-a-construir">5.4. El subespacio que unos vectores obligan a construir</h2>
+<p>Volvamos a la salida <span class="math inline">\((a,a+b,b)\)</span>. Puede escribirse como <span class="math inline">\(a(1,1,0)+b(0,1,1)\)</span>. Dos vectores fijos bastan para producir todos los resultados, usando sólo suma y multiplicación escalar. Cualquier subespacio que contenga esos dos vectores debe contener, por sus cierres, todas esas combinaciones.</p>
+<p><span id="MA-BCH-APM-02-005-DEF-002" class="apm-anchor"></span> <strong>Definición 5.2 (subespacio generado).</strong> Para un subconjunto <span class="math inline">\(S\subseteq V\)</span>, escribimos <span class="math inline">\(\operatorname{span}_{\mathbb F}(S)\)</span> para el conjunto de todas las combinaciones lineales finitas de elementos de <span class="math inline">\(S\)</span>:</p>
+<p><span class="math display">\[
+\operatorname{span}_{\mathbb F}(S)
+=\left\{\sum_{j=1}^r a_js_j:
+r\in\mathbb N_0,\ a_j\in\mathbb F,\ s_j\in S\right\}.
+\]</span></p>
+<p>La suma con <span class="math inline">\(r=0\)</span> es <span class="math inline">\(0_V\)</span>. Si el cuerpo está claro, escribimos <span class="math inline">\(\operatorname{span}(S)\)</span>. Decimos que <span class="math inline">\(S\)</span> <strong>genera</strong> <span class="math inline">\(U\)</span> si <span class="math inline">\(\operatorname{span}(S)=U\)</span>. Para una lista finita abreviamos <span class="math inline">\(\operatorname{span}\{v_1,\ldots,v_r\}\)</span> como <span class="math inline">\(\operatorname{span}(v_1,\ldots,v_r)\)</span>.</p>
+<p>Esta definición incluye <span class="math inline">\(S=\varnothing\)</span>: su única combinación es la suma vacía y <span class="math inline">\(\operatorname{span}(\varnothing)=\{0_V\}\)</span>. Si <span class="math inline">\(S\)</span> es infinito, cada combinación sigue utilizando sólo finitos elementos. La definición no autoriza una suma infinita ni una operación de límite.</p>
+<p><span id="MA-BCH-APM-02-005-THM-002" class="apm-anchor"></span> <strong>Teorema 5.2 (carácter mínimo de la generación).</strong> <span class="math inline">\(\operatorname{span}(S)\)</span> es el menor subespacio de <span class="math inline">\(V\)</span> que contiene a <span class="math inline">\(S\)</span>: es un subespacio, contiene a <span class="math inline">\(S\)</span> y está contenido en todo subespacio que contenga a <span class="math inline">\(S\)</span>. Equivalentemente,</p>
+<p><span class="math display">\[
+\operatorname{span}(S)
+=\bigcap_{\substack{U\text{ subespacio de }V\\S\subseteq U}}U.
+\]</span></p>
+<p><strong>Demostración.</strong> La suma vacía garantiza que el conjunto de combinaciones no sea vacío. Si <span class="math inline">\(x=\sum_{j=1}^r a_js_j\)</span> y <span class="math inline">\(y=\sum_{k=1}^q b_kt_k\)</span>, entonces, para escalares <span class="math inline">\(c,d\)</span>,</p>
+<p><span class="math display">\[
+cx+dy=\sum_{j=1}^r(ca_j)s_j+\sum_{k=1}^q(db_k)t_k.
+\]</span></p>
+<p>La expresión utiliza a lo sumo <span class="math inline">\(r+q\)</span> elementos de <span class="math inline">\(S\)</span> y es otra combinación finita. Por el criterio de subespacio, <span class="math inline">\(\operatorname{span}(S)\)</span> es un subespacio. Cada <span class="math inline">\(s\in S\)</span> pertenece porque <span class="math inline">\(s=1s\)</span>.</p>
+<p>Si <span class="math inline">\(U\)</span> contiene a <span class="math inline">\(S\)</span> y es un subespacio, contiene cada múltiplo <span class="math inline">\(a_js_j\)</span> y toda suma finita de ellos, incluido el cero. Por tanto contiene <span class="math inline">\(\operatorname{span}(S)\)</span>. La familia de la intersección no es vacía, pues incluye a <span class="math inline">\(V\)</span>. Cada uno de sus miembros contiene <span class="math inline">\(\operatorname{span}(S)\)</span>, y entre sus miembros está el propio <span class="math inline">\(\operatorname{span}(S)\)</span>; estas dos inclusiones prueban la igualdad. <span class="math inline">\(\square\)</span></p>
+<p>«Menor» significa contenido en cualquier otro subespacio con la propiedad. La afirmación compara inclusiones: toda solución posible de la exigencia de cierre debe admitir las combinaciones que acabamos de construir.</p>
+<p>En el ejemplo de la apertura, <span class="math inline">\(W=\operatorname{span}((1,1,0),(0,1,1))\)</span>. Si buscamos si <span class="math inline">\((2,1,-1)\)</span> pertenece, basta resolver <span class="math inline">\(a=2\)</span>, <span class="math inline">\(a+b=1\)</span>, <span class="math inline">\(b=-1\)</span>, y los datos son compatibles. La columna es <span class="math inline">\(2(1,1,0)-(0,1,1)\)</span>. En cambio, <span class="math inline">\((2,0,-1)\)</span> no pertenece: sus componentes incumplen <span class="math inline">\(y=x+z\)</span> y los tres requisitos para <span class="math inline">\(a,b\)</span> serían incompatibles.</p>
+<figure id="fig-apm-t2-c05-f02" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C05-F02.svg" alt="Una descripción por generadores y una descripción por ecuaciones del mismo plano." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+Una descripción por generadores y una descripción por ecuaciones del mismo plano.
+</figcaption>
+</figure>
+<p>La definición es igualmente concreta en otros espacios. Los polinomios <span class="math inline">\(1,t,\ldots,t^n\)</span> generan <span class="math inline">\(\mathbb F[t]_{\le n}\)</span> porque escribir un polinomio por sus coeficientes es escribir esa combinación. Todos los monomios <span class="math inline">\(1,t,t^2,\ldots\)</span> generan <span class="math inline">\(\mathbb F[t]\)</span>, con una combinación finita distinta para cada polinomio. Las matrices <span class="math inline">\(E_{ij}\)</span>, definidas por tener un uno en la entrada <span class="math inline">\((i,j)\)</span> y cero en las restantes, generan <span class="math inline">\(M_{m,n}(\mathbb F)\)</span>: cada matriz satisface <span class="math inline">\(A=\sum_{i=1}^m\sum_{j=1}^n A_{ij}E_{ij}\)</span>.</p>
+<p>En el espacio de sucesiones, las sucesiones <span class="math inline">\(e_k\)</span> que valen uno en la posición <span class="math inline">\(k\)</span> y cero en las demás generan exactamente las sucesiones de soporte finito. Cada combinación finita sólo puede ser no nula en las posiciones usadas, y cualquier sucesión de soporte finito se expresa sumando sus valores por los <span class="math inline">\(e_k\)</span> correspondientes. La sucesión constante uno no pertenece a ese generado, porque nunca deja de ser no nula.</p>
+</section>
+<section id="comparar-descripciones-y-cambiar-generadores" class="level2">
+<h2 class="anchored" data-anchor-id="comparar-descripciones-y-cambiar-generadores">5.5. Comparar descripciones y cambiar generadores</h2>
+<p>Para demostrar que dos conjuntos generan lo mismo no hace falta comparar una por una todas sus combinaciones. Basta comprobar que los datos de cada uno pueden construirse a partir del otro.</p>
+<p><span id="MA-BCH-APM-02-005-PRP-003" class="apm-anchor"></span> <strong>Proposición 5.3 (inclusión y sustitución de generadores).</strong> Para <span class="math inline">\(S,T\subseteq V\)</span> se cumplen:</p>
+<ol type="1">
+<li>Si <span class="math inline">\(S\subseteq T\)</span>, entonces <span class="math inline">\(\operatorname{span}(S)\subseteq\operatorname{span}(T)\)</span>.</li>
+<li><span class="math inline">\(\operatorname{span}(\operatorname{span}(S))=\operatorname{span}(S)\)</span>.</li>
+<li><span class="math inline">\(\operatorname{span}(S)\subseteq\operatorname{span}(T)\)</span> si y sólo si <span class="math inline">\(S\subseteq\operatorname{span}(T)\)</span>.</li>
+</ol>
+<p>Por tanto los generados son iguales si y sólo si cada elemento de <span class="math inline">\(S\)</span> pertenece al generado de <span class="math inline">\(T\)</span> y cada elemento de <span class="math inline">\(T\)</span> pertenece al generado de <span class="math inline">\(S\)</span>.</p>
+<p><strong>Demostración.</strong> Para la primera afirmación, una combinación de elementos de <span class="math inline">\(S\)</span> también es una combinación de elementos de <span class="math inline">\(T\)</span>. Para la segunda, <span class="math inline">\(\operatorname{span}(S)\)</span> ya es un subespacio: toda combinación de sus elementos permanece en él, y cada uno de sus elementos es una combinación de longitud uno.</p>
+<p>Si hay inclusión de los generados, <span class="math inline">\(S\subseteq\operatorname{span}(S)\)</span> da la inclusión requerida para <span class="math inline">\(S\)</span>. Recíprocamente, si <span class="math inline">\(S\subseteq\operatorname{span}(T)\)</span>, este último es un subespacio que contiene a <span class="math inline">\(S\)</span>, por lo que el carácter mínimo obliga a contener <span class="math inline">\(\operatorname{span}(S)\)</span>. Aplicar el resultado en ambas direcciones prueba la conclusión sobre igualdad. <span class="math inline">\(\square\)</span></p>
+<p>Si <span class="math inline">\(w=u-v\)</span>, añadir <span class="math inline">\(w\)</span> a la lista <span class="math inline">\(u,v\)</span> no modifica el generado: cualquier combinación de <span class="math inline">\(u,v,w\)</span> puede reescribirse como <span class="math inline">\(au+bv+cw=(a+c)u+(b-c)v\)</span>. La nueva lista permite representar los mismos vectores de más maneras. Por ejemplo, <span class="math inline">\(u=1u+0v+0w=0u+1v+1w\)</span>. La generación asegura que una representación existe; por sí sola no asegura que sea única.</p>
+<p>Las operaciones reversibles sobre una lista también conservan su generado. Sustituir <span class="math inline">\(v_j\)</span> por <span class="math inline">\(v_j+cv_i\)</span>, con <span class="math inline">\(i\ne j\)</span>, conserva todos los vectores anteriores porque recuperamos <span class="math inline">\(v_j\)</span> restando <span class="math inline">\(cv_i\)</span>; en la otra dirección, el vector nuevo era una combinación de los anteriores. Permutar la lista o multiplicar uno de sus miembros por un escalar no nulo tiene la misma propiedad. Son las operaciones que ya conocemos en las filas de una matriz, reinterpretadas como cambios de una lista de vectores.</p>
+<p>Hay que respetar qué lista se está cambiando. Las operaciones por filas conservan el subespacio generado por las filas, consideradas vectores de <span class="math inline">\(\mathbb F^n\)</span>. No conservan necesariamente el generado por las columnas como subconjunto del espacio de salida. Por ejemplo, <span class="math inline">\(A=\begin{bmatrix}1&amp;0\\1&amp;0\end{bmatrix}\)</span> se reduce por una operación de filas a <span class="math inline">\(R=\begin{bmatrix}1&amp;0\\0&amp;0\end{bmatrix}\)</span>. Las columnas de <span class="math inline">\(A\)</span> generan la recta de <span class="math inline">\((1,1)\)</span>; las de <span class="math inline">\(R\)</span>, la de <span class="math inline">\((1,0)\)</span>. En cambio, aplicar operaciones de columnas a una matriz sí cambia reversiblemente la lista de sus columnas y conserva su generado.</p>
+</section>
+<section id="pasar-de-ecuaciones-a-generadores-y-volver" class="level2">
+<h2 class="anchored" data-anchor-id="pasar-de-ecuaciones-a-generadores-y-volver">5.6. Pasar de ecuaciones a generadores y volver</h2>
+<p>Para construir generadores de las soluciones de un sistema homogéneo podemos usar la parametrización de C01–C02. En <span class="math inline">\(\mathbb F^4\)</span>, consideremos</p>
+<p><span class="math display">\[
+x_1+x_2-x_3=0,\qquad x_2+x_4=0.
+\]</span></p>
+<p>Tomando <span class="math inline">\(x_3=s\)</span> y <span class="math inline">\(x_4=t\)</span>, obtenemos <span class="math inline">\(x_2=-t\)</span> y <span class="math inline">\(x_1=s+t\)</span>. Por tanto el conjunto de soluciones es</p>
+<p><span class="math display">\[
+H=\{(s+t,-t,s,t):s,t\in\mathbb F\}
+=\operatorname{span}((1,0,1,0),(1,-1,0,1)).
+\]</span></p>
+<p>La igualdad contiene dos comprobaciones: todo vector de la forma indicada satisface las ecuaciones y toda solución queda determinada por sus valores de <span class="math inline">\(x_3,x_4\)</span> en esa forma. Al separar los coeficientes de cada parámetro se obtienen generadores. Si no hay variables libres, la única solución es cero y sirve la lista vacía.</p>
+<p>En la dirección contraria, supongamos que los generadores son las columnas de una matriz <span class="math inline">\(G\)</span>. Pertenecer a su generado significa que existe una columna de coeficientes <span class="math inline">\(c\)</span> que satisface <span class="math inline">\(Gc=x\)</span>. Si reducimos <span class="math inline">\(G\)</span> por filas y registramos las mismas operaciones mediante una matriz invertible <span class="math inline">\(P\)</span>, como en C03, obtenemos el sistema equivalente <span class="math inline">\((PG)c=Px\)</span>. Cada fila cero de <span class="math inline">\(PG\)</span> obliga a que la correspondiente entrada de <span class="math inline">\(Px\)</span> sea cero. Son condiciones homogéneas sobre <span class="math inline">\(x\)</span>.</p>
+<p>Esas condiciones también son suficientes: en una forma escalonada, las filas no nulas tienen pivotes, y una vez satisfechas las filas cero podemos fijar las variables libres de <span class="math inline">\(c\)</span> y resolver las pivotales por sustitución hacia atrás. Por eso las condiciones de las filas cero describen exactamente el generado de las columnas originales de <span class="math inline">\(G\)</span>. Si no hay filas cero, no hay condiciones adicionales y cualquier <span class="math inline">\(x\)</span> del tamaño indicado es admisible.</p>
+<p>Para los generadores <span class="math inline">\((1,1,0)\)</span> y <span class="math inline">\((0,1,1)\)</span>, el sistema es <span class="math inline">\(c_1=x\)</span>, <span class="math inline">\(c_1+c_2=y\)</span>, <span class="math inline">\(c_2=z\)</span>. Restar la primera ecuación de la segunda y después restar la tercera produce la condición <span class="math inline">\(0=y-x-z\)</span>. Recuperamos la ecuación del plano inicial sin introducir determinantes ni una teoría de dimensión.</p>
+<p>Los polinomios se tratan comparando coeficientes. Si <span class="math inline">\(p=1+t\)</span> y <span class="math inline">\(q=t+t^2\)</span> sobre <span class="math inline">\(\mathbb R\)</span>, la pertenencia de <span class="math inline">\(r=a+bt+ct^2\)</span> a <span class="math inline">\(\operatorname{span}(p,q)\)</span> exige</p>
+<p><span class="math display">\[
+r=\alpha p+\beta q
+=\alpha+(\alpha+\beta)t+\beta t^2.
+\]</span></p>
+<p>Se obtiene <span class="math inline">\(\alpha=a\)</span>, <span class="math inline">\(\beta=c\)</span> y la condición <span class="math inline">\(b=a+c\)</span>. El generado es un conjunto de polinomios, aunque el cálculo pueda organizarse mediante sus columnas de coeficientes. Sobre un cuerpo finito seguimos comparando coeficientes formales, sin reemplazar esa condición por coincidencia de valores en todos los escalares.</p>
+</section>
+<section id="la-suma-de-subespacios" class="level2">
+<h2 class="anchored" data-anchor-id="la-suma-de-subespacios">5.7. La suma de subespacios</h2>
+<p>Los dos ejes del plano no conservaban la suma al tomar su unión. Si exigimos un subespacio que contenga ambos, estamos obligados a incluir todas las sumas de un vector de cada eje, y con ellas obtenemos el plano entero.</p>
+<p><span id="MA-BCH-APM-02-005-DEF-003" class="apm-anchor"></span> <strong>Definición 5.3 (suma de subespacios).</strong> Para subespacios <span class="math inline">\(U,W\subseteq V\)</span>, su <strong>suma</strong> es <span class="math inline">\(U+W=\{u+w:u\in U,\ w\in W\}\)</span>. Para una lista finita <span class="math inline">\(U_1,\ldots,U_r\)</span> se define de igual modo el conjunto de todas las sumas <span class="math inline">\(u_1+\cdots+u_r\)</span> con <span class="math inline">\(u_j\in U_j\)</span>. La suma de una lista vacía de subespacios es <span class="math inline">\(\{0_V\}\)</span>.</p>
+<p><span id="MA-BCH-APM-02-005-PRP-004" class="apm-anchor"></span> <strong>Proposición 5.4 (suma y generación).</strong> <span class="math inline">\(U+W\)</span> es el menor subespacio que contiene a <span class="math inline">\(U\)</span> y a <span class="math inline">\(W\)</span>. En particular,</p>
+<p><span class="math display">\[
+U+W=\operatorname{span}(U\cup W),\qquad
+\operatorname{span}(S)+\operatorname{span}(T)=\operatorname{span}(S\cup T).
+\]</span></p>
+<p><strong>Demostración.</strong> El cero pertenece a <span class="math inline">\(U+W\)</span> como <span class="math inline">\(0+0\)</span>. Si <span class="math inline">\(x=u_1+w_1\)</span> y <span class="math inline">\(y=u_2+w_2\)</span>, entonces <span class="math inline">\(ax+by=(au_1+bu_2)+(aw_1+bw_2)\)</span>, con el primer paréntesis en <span class="math inline">\(U\)</span> y el segundo en <span class="math inline">\(W\)</span>. Es, por tanto, un subespacio. Contiene a <span class="math inline">\(U\)</span> porque <span class="math inline">\(u=u+0\)</span>, y a <span class="math inline">\(W\)</span> porque <span class="math inline">\(w=0+w\)</span>. Cualquier subespacio que contenga a ambos debe contener cada <span class="math inline">\(u+w\)</span>, lo que demuestra el carácter mínimo y la primera igualdad.</p>
+<p>Para la segunda, <span class="math inline">\(\operatorname{span}(S\cup T)\)</span> contiene a <span class="math inline">\(S\)</span> y a <span class="math inline">\(T\)</span>, y por minimalidad contiene sus dos generados y su suma. A la inversa, esa suma es un subespacio que contiene a <span class="math inline">\(S\cup T\)</span>, de modo que contiene su generado. Las dos inclusiones dan la igualdad. <span class="math inline">\(\square\)</span></p>
+<p>Por la asociatividad y conmutatividad de la suma vectorial, <span class="math inline">\(U+W=W+U\)</span> y <span class="math inline">\((U+W)+Z=U+(W+Z)\)</span>. Además <span class="math inline">\(U+U=U\)</span> y <span class="math inline">\(U+\{0_V\}=U\)</span>. Por ejemplo, <span class="math inline">\(U+U\subseteq U\)</span> por cierre, mientras que <span class="math inline">\(u=u+0\)</span> da la inclusión contraria. No se suman tamaños ni se cuentan elementos en estas identidades.</p>
+<p>La suma admite una descripción simple cuando hay generadores: se reúnen las listas. La intersección puede requerir resolver un sistema nuevo. Si <span class="math inline">\(U\)</span> está generado por las columnas de <span class="math inline">\(G\)</span> y <span class="math inline">\(W\)</span> por las de <span class="math inline">\(K\)</span>, un vector de la intersección tiene dos representaciones que deben coincidir: <span class="math inline">\(Ga=Kb\)</span>. Resolver <span class="math inline">\([G\ -K]\begin{bmatrix}a\\b\end{bmatrix}=0\)</span> y sustituir los parámetros en <span class="math inline">\(Ga\)</span> produce generadores de <span class="math inline">\(U\cap W\)</span>. Los parámetros pertenecen a las representaciones; los generadores resultantes deben ser vectores del espacio ambiente.</p>
+<p>Para ver la diferencia, en <span class="math inline">\(\mathbb R^3\)</span> sean <span class="math inline">\(U=\{(x,y,0)\}\)</span> y <span class="math inline">\(W=\{(0,y,z)\}\)</span>. La intersección consta de <span class="math inline">\((0,y,0)\)</span> y la suma es todo <span class="math inline">\(\mathbb R^3\)</span>, pues <span class="math inline">\((x,y,z)=(x,y,0)+(0,0,z)\)</span>. Una descomposición en suma no tiene por qué ser única: <span class="math inline">\((0,1,0)=(0,1,0)+(0,0,0)=(0,0,0)+(0,1,0)\)</span>. La coincidencia de las dos partes en la intersección permite esa ambigüedad.</p>
+<figure id="fig-apm-t2-c05-f03" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C05-F03.svg" alt="Dos planos, su intersección y una descomposición de un vector de su suma." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+Dos planos, su intersección y una descomposición de un vector de su suma.
+</figcaption>
+</figure>
+<p>Para una familia infinita <span class="math inline">\((U_i)_{i\in I}\)</span>, definimos su suma como <span class="math inline">\(\operatorname{span}(\bigcup_{i\in I}U_i)\)</span>. Cada vector es una suma finita de elementos de algunos de los subespacios, aunque la familia completa sea infinita. Agrupar términos del mismo subespacio no cambia esa finitud. La expresión no prescribe sumar un vector de cada miembro de una familia infinita.</p>
+</section>
+<section id="traslaciones-y-condiciones-no-homogéneas" class="level2">
+<h2 class="anchored" data-anchor-id="traslaciones-y-condiciones-no-homogéneas">5.8. Traslaciones y condiciones no homogéneas</h2>
+<p><span id="MA-BCH-APM-02-005-DEF-004" class="apm-anchor"></span> <strong>Definición 5.4 (subespacio afín).</strong> Un subconjunto de <span class="math inline">\(V\)</span> de la forma <span class="math inline">\(p+U=\{p+u:u\in U\}\)</span>, donde <span class="math inline">\(U\)</span> es un subespacio y <span class="math inline">\(p\in V\)</span>, se llama <strong>subespacio afín</strong>. El conjunto <span class="math inline">\(U\)</span> se llama su espacio de direcciones. Esta definición exige que el conjunto sea no vacío.</p>
+<p>El adjetivo distingue la traslación de la estructura lineal con origen fijo. En <span class="math inline">\(\mathbb R^2\)</span>, la recta <span class="math inline">\(x+y=1\)</span> es <span class="math inline">\((1,0)+\operatorname{span}((-1,1))\)</span>. No es un subespacio lineal con las operaciones ordinarias. Los desplazamientos entre dos de sus puntos sí pertenecen siempre a la recta de ecuación <span class="math inline">\(x+y=0\)</span>.</p>
+<p><span id="MA-BCH-APM-02-005-PRP-005" class="apm-anchor"></span> <strong>Proposición 5.5 (direcciones y origen).</strong> Si <span class="math inline">\(L=p+U\)</span>, entonces el conjunto de diferencias <span class="math inline">\(\{x-y:x,y\in L\}\)</span> es exactamente <span class="math inline">\(U\)</span>. En consecuencia, <span class="math inline">\(U\)</span> está determinado por <span class="math inline">\(L\)</span>. Además <span class="math inline">\(L\)</span> es un subespacio lineal si y sólo si <span class="math inline">\(0_V\in L\)</span>, y en ese caso <span class="math inline">\(L=U\)</span>.</p>
+<p><strong>Demostración.</strong> Para <span class="math inline">\(x=p+u\)</span> e <span class="math inline">\(y=p+v\)</span>, la diferencia es <span class="math inline">\(u-v\in U\)</span>. A la inversa, cada <span class="math inline">\(u\in U\)</span> se obtiene como <span class="math inline">\((p+u)-p\)</span>, con ambos puntos en <span class="math inline">\(L\)</span>. Esto prueba la igualdad y determina <span class="math inline">\(U\)</span> a partir del conjunto <span class="math inline">\(L\)</span>.</p>
+<p>Si <span class="math inline">\(0_V\in p+U\)</span>, existe <span class="math inline">\(u\in U\)</span> con <span class="math inline">\(p+u=0_V\)</span>, así que <span class="math inline">\(p=-u\in U\)</span>. Entonces <span class="math inline">\(p+U=U\)</span>: una inclusión usa cierre de suma y la otra la escritura <span class="math inline">\(w=p+(w-p)\)</span>. Por tanto es un subespacio lineal. Si <span class="math inline">\(L\)</span> es un subespacio lineal, contiene cero por el teorema 5.1. <span class="math inline">\(\square\)</span></p>
+<p>Cuando <span class="math inline">\(Ax=b\)</span> es consistente y <span class="math inline">\(p\)</span> es una solución, C04 probó que su conjunto de soluciones es <span class="math inline">\(p+H\)</span>, donde <span class="math inline">\(H\)</span> es el subespacio de soluciones de <span class="math inline">\(Ax=0\)</span>. Si <span class="math inline">\(b\ne0\)</span>, no contiene cero y es afín pero no lineal; si el sistema es inconsistente, el conjunto vacío no es afín según la definición adoptada. La elección de otra solución <span class="math inline">\(q\)</span> como punto inicial no cambia las direcciones, porque <span class="math inline">\(p-q\in H\)</span>.</p>
+<p>Las descripciones obtenidas hasta aquí permiten construir y reconocer subespacios, reunir condiciones y combinar generadores. Queda una dificultad que los cálculos ya hacen visible: una lista puede producir los mismos vectores que otra más corta y una columna puede admitir muchas expresiones. Decidir cuándo una representación es única exige estudiar las relaciones entre los generadores.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">5.9. Ejercicios</h2>
+<section id="reconocer-y-refutar" class="level3">
+<h3 class="anchored" data-anchor-id="reconocer-y-refutar">Reconocer y refutar</h3>
+<p><span id="MA-BCH-APM-02-005-EXR-001" class="apm-anchor"></span> <strong>1.</strong> Determine cuáles subconjuntos de <span class="math inline">\(\mathbb R^3\)</span> son subespacios: <span class="math inline">\(x-2y+z=0\)</span>; <span class="math inline">\(x-2y+z=1\)</span>; <span class="math inline">\(x\ge0\)</span>; <span class="math inline">\(x^2+y^2=0\)</span>; <span class="math inline">\(xy=0\)</span>. Justifique cada respuesta.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-002" class="apm-anchor"></span> <strong>2.</strong> Explique por qué <span class="math inline">\(\varnothing\)</span>, <span class="math inline">\(\{0_V\}\)</span> y <span class="math inline">\(V\)</span> tienen comportamientos distintos en el criterio de subespacio. ¿Puede un subconjunto de <span class="math inline">\(V\)</span> tener un cero distinto del de <span class="math inline">\(V\)</span> conservando sus operaciones?</p>
+<p><span id="MA-BCH-APM-02-005-EXR-003" class="apm-anchor"></span> <strong>3.</strong> Pruebe que un subconjunto no vacío de <span class="math inline">\(\mathbb F_2^n\)</span> cerrado bajo suma es un subespacio. Dé un contraejemplo a la afirmación correspondiente para subconjuntos de <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-004" class="apm-anchor"></span> <strong>4.</strong> Pruebe que las matrices simétricas son un subespacio de <span class="math inline">\(M_{n,n}(\mathbb F)\)</span>. Determine la intersección con el subespacio de matrices superiores triangulares.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-005" class="apm-anchor"></span> <strong>5.</strong> Para matrices <span class="math inline">\(2\times2\)</span>, compare el conjunto de las singulares con el de las invertibles respecto de cero, cierre aditivo y cierre escalar. Trabaje sobre cualquier cuerpo.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-006" class="apm-anchor"></span> <strong>6.</strong> Describa mediante generadores los polinomios de <span class="math inline">\(\mathbb F[t]_{\le4}\)</span> cuyo coeficiente de <span class="math inline">\(t^2\)</span> es cero y pruebe que forman un subespacio.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-007" class="apm-anchor"></span> <strong>7.</strong> En <span class="math inline">\(\mathbb R^{\mathbb R}\)</span>, compare las condiciones <span class="math inline">\(f(0)=f(1)\)</span> y <span class="math inline">\(f(0)+f(1)=1\)</span>. Determine cuál define un subespacio y justifique.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-008" class="apm-anchor"></span> <strong>8.</strong> Sea <span class="math inline">\(U\)</span> un subespacio y <span class="math inline">\(p\in V\)</span>. Pruebe directamente que <span class="math inline">\(p+U=U\)</span> si <span class="math inline">\(p\in U\)</span> y que <span class="math inline">\(p+U\)</span> no contiene cero si <span class="math inline">\(p\notin U\)</span>.</p>
+</section>
+<section id="construir-y-comprobar-pertenencia" class="level3">
+<h3 class="anchored" data-anchor-id="construir-y-comprobar-pertenencia">Construir y comprobar pertenencia</h3>
+<p><span id="MA-BCH-APM-02-005-EXR-009" class="apm-anchor"></span> <strong>9.</strong> Para <span class="math inline">\(u=(1,1,0)\)</span>, <span class="math inline">\(v=(0,1,1)\)</span> y <span class="math inline">\(w=u-v\)</span>, calcule <span class="math inline">\(2u-3v+4w\)</span> y dé todos sus coeficientes respecto de la lista <span class="math inline">\(u,v,w\)</span> sobre <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-010" class="apm-anchor"></span> <strong>10.</strong> Halle una condición sobre <span class="math inline">\((x,y,z)\)</span> equivalente a pertenecer a <span class="math inline">\(\operatorname{span}((1,2,0),(0,1,1))\)</span>. Decida la pertenencia de <span class="math inline">\((2,3,-1)\)</span> y <span class="math inline">\((2,2,-1)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-011" class="apm-anchor"></span> <strong>11.</strong> Obtenga generadores de las soluciones de <span class="math inline">\(x+y+z=0\)</span>, <span class="math inline">\(x-z=0\)</span> sobre <span class="math inline">\(\mathbb F\)</span>. Compruebe las dos inclusiones entre el generado y el conjunto de soluciones.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-012" class="apm-anchor"></span> <strong>12.</strong> En <span class="math inline">\(\mathbb R[t]_{\le2}\)</span>, sean <span class="math inline">\(p=1+t\)</span> y <span class="math inline">\(q=t+t^2\)</span>. Determine si <span class="math inline">\(2+3t+t^2\)</span> y <span class="math inline">\(1+t^2\)</span> pertenecen a <span class="math inline">\(\operatorname{span}(p,q)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-013" class="apm-anchor"></span> <strong>13.</strong> Dé tres matrices que generen todas las matrices simétricas <span class="math inline">\(2\times2\)</span> sobre <span class="math inline">\(\mathbb F\)</span> y escriba la expresión de una matriz genérica en términos de ellas.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-014" class="apm-anchor"></span> <strong>14.</strong> Construya generadores de <span class="math inline">\(x_1+x_2-x_3=0\)</span>, <span class="math inline">\(x_2+x_4=0\)</span> y, a partir de esos generadores, recupere las dos ecuaciones.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-015" class="apm-anchor"></span> <strong>15.</strong> Determine si <span class="math inline">\((1,0,1),(0,1,1),(1,1,0)\)</span> generan todo el espacio de ternas sobre <span class="math inline">\(\mathbb R\)</span> y sobre <span class="math inline">\(\mathbb F_2\)</span>. En el segundo caso describa exactamente su generado.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-016" class="apm-anchor"></span> <strong>16.</strong> Pruebe que <span class="math inline">\(\operatorname{span}(u+v,u-v)=\operatorname{span}(u,v)\)</span> si el escalar <span class="math inline">\(2\)</span> no es cero. Muestre mediante un ejemplo en <span class="math inline">\(\mathbb F_2^2\)</span> que esa hipótesis importa.</p>
+</section>
+<section id="generación-finita-y-conjuntos-infinitos" class="level3">
+<h3 class="anchored" data-anchor-id="generación-finita-y-conjuntos-infinitos">Generación finita y conjuntos infinitos</h3>
+<p><span id="MA-BCH-APM-02-005-EXR-017" class="apm-anchor"></span> <strong>17.</strong> Calcule <span class="math inline">\(\operatorname{span}(\varnothing)\)</span> y <span class="math inline">\(\operatorname{span}(\{0_V\})\)</span>. Pruebe que <span class="math inline">\(\operatorname{span}(S)=S\)</span> si y sólo si <span class="math inline">\(S\)</span> es un subespacio.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-018" class="apm-anchor"></span> <strong>18.</strong> Pruebe que si <span class="math inline">\(v\in\operatorname{span}(S)\)</span> existe un subconjunto finito <span class="math inline">\(S_0\subseteq S\)</span> tal que <span class="math inline">\(v\in\operatorname{span}(S_0)\)</span>. Incluya <span class="math inline">\(v=0\)</span> y <span class="math inline">\(S=\varnothing\)</span>.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-019" class="apm-anchor"></span> <strong>19.</strong> Pruebe que ninguna lista finita de polinomios genera <span class="math inline">\(\mathbb F[t]\)</span>, sin utilizar dimensión.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-020" class="apm-anchor"></span> <strong>20.</strong> Para cada <span class="math inline">\(k\in\mathbb Z\)</span>, sea <span class="math inline">\(\delta_k:\mathbb Z\to\mathbb F\)</span> la función que vale uno en <span class="math inline">\(k\)</span> y cero fuera de <span class="math inline">\(k\)</span>. Describa su generado conjunto y pruebe que la función constante uno no pertenece.</p>
+</section>
+<section id="intersecciones-uniones-y-sumas" class="level3">
+<h3 class="anchored" data-anchor-id="intersecciones-uniones-y-sumas">Intersecciones, uniones y sumas</h3>
+<p><span id="MA-BCH-APM-02-005-EXR-021" class="apm-anchor"></span> <strong>21.</strong> Halle generadores de la intersección de <span class="math inline">\(y=x+z\)</span> y <span class="math inline">\(x=z\)</span> en <span class="math inline">\(\mathbb R^3\)</span>. Explique por qué resolver ambas condiciones es suficiente.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-022" class="apm-anchor"></span> <strong>22.</strong> Sean <span class="math inline">\(U=\operatorname{span}((1,1,0))\)</span> y <span class="math inline">\(W=\operatorname{span}((0,1,1))\)</span>. Describa mediante ecuaciones <span class="math inline">\(U+W\)</span>, <span class="math inline">\(U\cap W\)</span> y <span class="math inline">\(U\cup W\)</span>; indique cuáles son subespacios.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-023" class="apm-anchor"></span> <strong>23.</strong> Para los planos <span class="math inline">\(U=\{(x,y,0)\}\)</span> y <span class="math inline">\(W=\{(0,y,z)\}\)</span> de <span class="math inline">\(\mathbb R^3\)</span>, dé todas las descomposiciones de <span class="math inline">\((a,b,c)\)</span> como <span class="math inline">\(u+w\)</span> con <span class="math inline">\(u\in U\)</span> y <span class="math inline">\(w\in W\)</span>.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-024" class="apm-anchor"></span> <strong>24.</strong> En <span class="math inline">\(\mathbb R^3\)</span> sean <span class="math inline">\(S=\{e_1,e_2\}\)</span> y <span class="math inline">\(T=\{e_1+e_2,e_3\}\)</span>, donde <span class="math inline">\(e_j\)</span> son las columnas usuales. Compare <span class="math inline">\(\operatorname{span}(S\cap T)\)</span> con <span class="math inline">\(\operatorname{span}(S)\cap\operatorname{span}(T)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-025" class="apm-anchor"></span> <strong>25.</strong> Pruebe en general que <span class="math inline">\(\operatorname{span}(S\cap T)\subseteq\operatorname{span}(S)\cap\operatorname{span}(T)\)</span> y explique por qué no se puede sustituir automáticamente la inclusión por igualdad.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-026" class="apm-anchor"></span> <strong>26.</strong> Pruebe que si <span class="math inline">\(S\)</span> genera <span class="math inline">\(U\)</span> y <span class="math inline">\(T\)</span> genera <span class="math inline">\(W\)</span>, su unión genera <span class="math inline">\(U+W\)</span>. Aplique el resultado a dos subespacios de matrices sin convertir las matrices en columnas.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-027" class="apm-anchor"></span> <strong>27.</strong> Sean <span class="math inline">\(U,W\)</span> subespacios con <span class="math inline">\(U\ne W\)</span>. Determine si <span class="math inline">\(U\cup W\)</span> puede ser un subespacio y construya ejemplos que muestren por qué <span class="math inline">\(U\ne W\)</span> no decide por sí solo la respuesta.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-028" class="apm-anchor"></span> <strong>28.</strong> Muestre que <span class="math inline">\(\mathbb F_2^2\)</span> es la unión de tres subespacios propios, ninguno contenido en otro. Compare con la proposición 5.2.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-029" class="apm-anchor"></span> <strong>29.</strong> Sea <span class="math inline">\((U_i)_{i\in I}\)</span> una familia no vacía de subespacios tal que, dados dos, uno está contenido en el otro. Pruebe que <span class="math inline">\(\bigcup_iU_i\)</span> es un subespacio.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-030" class="apm-anchor"></span> <strong>30.</strong> Pruebe que la suma de una familia de subespacios es el conjunto de todas las sumas finitas de elementos de miembros de la familia, según la definición de §5.7. Incluya la familia vacía.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-031" class="apm-anchor"></span> <strong>31.</strong> Pruebe <span class="math inline">\(U+(W\cap Z)\subseteq(U+W)\cap(U+Z)\)</span>. Halle subespacios de <span class="math inline">\(\mathbb R^2\)</span> para los que la inclusión sea estricta.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-032" class="apm-anchor"></span> <strong>32.</strong> Si <span class="math inline">\(U\subseteq Z\)</span>, pruebe <span class="math inline">\((U+W)\cap Z=U+(W\cap Z)\)</span>, justificando cada inclusión.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-033" class="apm-anchor"></span> <strong>33.</strong> En <span class="math inline">\(\mathbb F[t]\)</span>, calcule la unión y la intersección de los subespacios <span class="math inline">\(\mathbb F[t]_{\le n}\)</span> para todos <span class="math inline">\(n\ge0\)</span>. Explique por qué la unión sí es un subespacio en este caso.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-034" class="apm-anchor"></span> <strong>34.</strong> En el espacio de sucesiones <span class="math inline">\((a_0,a_1,\ldots)\)</span>, sea <span class="math inline">\(U_m\)</span> el conjunto de las que cumplen <span class="math inline">\(a_0=\cdots=a_{m-1}=0\)</span>, con <span class="math inline">\(U_0\)</span> igual a todo el espacio. Calcule <span class="math inline">\(\bigcap_{m\ge0}U_m\)</span> y pruebe que ninguna intersección finita de los <span class="math inline">\(U_m\)</span> da ese resultado.</p>
+</section>
+<section id="traslaciones-y-síntesis" class="level3">
+<h3 class="anchored" data-anchor-id="traslaciones-y-síntesis">Traslaciones y síntesis</h3>
+<p><span id="MA-BCH-APM-02-005-EXR-035" class="apm-anchor"></span> <strong>35.</strong> Halle la intersección de las rectas reales <span class="math inline">\(x+y=1\)</span> y <span class="math inline">\(x-y=0\)</span>. Determine si es un subespacio lineal y si es un subespacio afín.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-036" class="apm-anchor"></span> <strong>36.</strong> Si <span class="math inline">\((p+U)\cap(q+W)\)</span> es no vacío y contiene a <span class="math inline">\(a\)</span>, pruebe que la intersección es <span class="math inline">\(a+(U\cap W)\)</span>. Explique qué cambia si la intersección es vacía.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-037" class="apm-anchor"></span> <strong>37.</strong> Halle el menor subespacio afín de <span class="math inline">\(\mathbb R^3\)</span> que contiene a <span class="math inline">\(p=(1,0,0)\)</span>, <span class="math inline">\(q=(1,1,0)\)</span> y <span class="math inline">\(r=(1,0,1)\)</span>. Demuestre su minimalidad mediante diferencias de puntos.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-038" class="apm-anchor"></span> <strong>38.</strong> Sean <span class="math inline">\(U=\operatorname{span}((1,0,1,0),(0,1,0,1))\)</span> y <span class="math inline">\(W=\operatorname{span}((1,1,0,0),(0,0,1,1))\)</span> en <span class="math inline">\(\mathbb R^4\)</span>. Halle generadores de <span class="math inline">\(U\cap W\)</span> resolviendo la igualdad de representaciones y una ecuación que describa <span class="math inline">\(U+W\)</span>.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-039" class="apm-anchor"></span> <strong>39.</strong> Para matrices <span class="math inline">\(A,B\)</span> del mismo tamaño, pruebe que toda solución común de <span class="math inline">\(Ax=0\)</span> y <span class="math inline">\(Bx=0\)</span> satisface <span class="math inline">\((A+B)x=0\)</span>. ¿Vale la recíproca? Dé un ejemplo real concreto.</p>
+<p><span id="MA-BCH-APM-02-005-EXR-040" class="apm-anchor"></span> <strong>40.</strong> Pruebe que ninguna unión finita de rectas por el origen agota <span class="math inline">\(\mathbb R^2\)</span>. Puede examinar los puntos <span class="math inline">\((1,t)\)</span> para <span class="math inline">\(t\in\mathbb R\)</span>. Explique por qué el ejercicio 28 no contradice esta afirmación.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">5.10. Soluciones</h2>
+<p><span id="MA-BCH-APM-02-005-SOL-001" class="apm-anchor"></span> <strong>1.</strong> La primera condición es homogénea y lineal: el cero la satisface y cualquier combinación de dos soluciones vuelve a satisfacerla por distributividad. La condición con miembro derecho uno excluye el cero. Para <span class="math inline">\(x\ge0\)</span>, el vector <span class="math inline">\((1,0,0)\)</span> pertenece pero su opuesto no. Sobre los reales, <span class="math inline">\(x^2+y^2=0\)</span> obliga a <span class="math inline">\(x=y=0\)</span>, de modo que el conjunto es <span class="math inline">\(\{(0,0,z)\}\)</span>, un subespacio. Para <span class="math inline">\(xy=0\)</span>, <span class="math inline">\((1,0,0)\)</span> y <span class="math inline">\((0,1,0)\)</span> pertenecen, pero su suma no; falla el cierre aditivo. La conclusión sobre cuadrados utiliza que el cuerpo es real.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-002" class="apm-anchor"></span> <strong>2.</strong> El vacío satisface los cierres vacíamente, pero no contiene cero y no es un subespacio. <span class="math inline">\(\{0_V\}\)</span> contiene cero y cualquier suma o múltiplo sigue siendo cero; sí lo es. <span class="math inline">\(V\)</span> es un subespacio de sí mismo por sus axiomas. Si un subconjunto no vacío conserva las operaciones y tiene neutro <span class="math inline">\(e\)</span>, para <span class="math inline">\(u\)</span> en él se cumple <span class="math inline">\(u+e=u=u+0_V\)</span> en <span class="math inline">\(V\)</span>. Cancelar da <span class="math inline">\(e=0_V\)</span>. Un cero distinto requeriría cambiar el significado de alguna operación.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-003" class="apm-anchor"></span> <strong>3.</strong> Elija <span class="math inline">\(u\)</span> en el subconjunto. En <span class="math inline">\(\mathbb F_2^n\)</span>, <span class="math inline">\(u+u=0\)</span>, por lo que el cierre aditivo incluye al cero. Los únicos escalares son cero y uno, y sus productos son <span class="math inline">\(0\)</span> y el propio vector; también hay cierre escalar. El criterio se aplica. En <span class="math inline">\(\mathbb R\)</span>, <span class="math inline">\(\mathbb Z\)</span> es no vacío y cerrado bajo suma, pero <span class="math inline">\(\frac12\cdot1\notin\mathbb Z\)</span>; no es un subespacio real. La propiedad aditiva no sustituye al cierre respecto de un cuerpo con más escalares.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-004" class="apm-anchor"></span> <strong>4.</strong> La matriz cero es simétrica. Si <span class="math inline">\(A^{\mathsf T}=A\)</span> y <span class="math inline">\(B^{\mathsf T}=B\)</span>, entonces <span class="math inline">\((aA+bB)^{\mathsf T}=aA^{\mathsf T}+bB^{\mathsf T}=aA+bB\)</span> por las identidades de C03. El criterio prueba que las simétricas son un subespacio. Si una matriz es además superior triangular, cada entrada por debajo de la diagonal es cero y la entrada simétrica por encima también es cero. Por tanto es diagonal. Recíprocamente toda matriz diagonal es simétrica y superior triangular; la intersección es exactamente el subespacio diagonal, sobre cualquier cuerpo.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-005" class="apm-anchor"></span> <strong>5.</strong> Las singulares contienen cero. Un múltiplo por cero es cero; para <span class="math inline">\(a\ne0\)</span>, si <span class="math inline">\(aA\)</span> fuese invertible, <span class="math inline">\(A=a^{-1}(aA)\)</span> sería invertible, contradicción. Por ello conservan múltiplos. No conservan suma: las dos matrices diagonales con diagonales <span class="math inline">\((1,0)\)</span> y <span class="math inline">\((0,1)\)</span> son singulares y suman <span class="math inline">\(I\)</span>. Las invertibles no contienen cero ni conservan todos los múltiplos, pues <span class="math inline">\(0I=0\)</span>. Tampoco conservan sumas: <span class="math inline">\(I\)</span> y <span class="math inline">\(-I\)</span> son invertibles y suman cero. En característica dos, <span class="math inline">\(-I=I\)</span>, y el mismo ejemplo sigue funcionando.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-006" class="apm-anchor"></span> <strong>6.</strong> Cada polinomio del conjunto es <span class="math inline">\(a_0+a_1t+a_3t^3+a_4t^4\)</span>, de modo que pertenece a <span class="math inline">\(\operatorname{span}(1,t,t^3,t^4)\)</span>. Cada combinación de esos cuatro polinomios tiene coeficiente de <span class="math inline">\(t^2\)</span> nulo, lo que demuestra la inclusión contraria. El conjunto es ese generado y por el teorema 5.2 es un subespacio. También puede verificarse directamente que el coeficiente exigido sigue siendo cero al combinar dos elementos.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-007" class="apm-anchor"></span> <strong>7.</strong> La función cero cumple <span class="math inline">\(f(0)=f(1)\)</span>. Para dos funciones que cumplen esa igualdad, <span class="math inline">\((af+bg)(0)=af(0)+bg(0)=af(1)+bg(1)=(af+bg)(1)\)</span>. El criterio da un subespacio. La segunda condición no admite a la función cero, cuya suma de valores es cero, y por eso no define un subespacio. Por ejemplo, la función constante <span class="math inline">\(1/2\)</span> sí la cumple, pero su múltiplo por cero no.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-008" class="apm-anchor"></span> <strong>8.</strong> Si <span class="math inline">\(p\in U\)</span>, cada <span class="math inline">\(p+u\)</span> pertenece a <span class="math inline">\(U\)</span>. Para la otra inclusión, cualquier <span class="math inline">\(v\in U\)</span> se escribe como <span class="math inline">\(p+(v-p)\)</span> y <span class="math inline">\(v-p\in U\)</span>. Si <span class="math inline">\(p\notin U\)</span> y <span class="math inline">\(0=p+u\)</span> para algún <span class="math inline">\(u\in U\)</span>, tendríamos <span class="math inline">\(p=-u\in U\)</span>, contradicción. La presencia del origen detecta exactamente cuándo la traslación coincide con el subespacio original.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-009" class="apm-anchor"></span> <strong>9.</strong> Como <span class="math inline">\(w=u-v\)</span>, la combinación es <span class="math inline">\(6u-7v=(6,-1,-7)\)</span>. Para hallar todos los coeficientes escribimos <span class="math inline">\(\alpha u+\beta v+\gamma w=(\alpha+\gamma)u+(\beta-\gamma)v\)</span>. Comparar la primera y la tercera componente con el resultado obliga a <span class="math inline">\(\alpha+\gamma=6\)</span> y <span class="math inline">\(\beta-\gamma=-7\)</span>; la componente central queda automáticamente igual a <span class="math inline">\(-1\)</span>. Por tanto todos los coeficientes son <span class="math inline">\((\alpha,\beta,\gamma)=(6-s,-7+s,s)\)</span> con <span class="math inline">\(s\in\mathbb R\)</span>. Sustituirlos verifica la expresión y explica la falta de unicidad.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-010" class="apm-anchor"></span> <strong>10.</strong> Una combinación es <span class="math inline">\(a(1,2,0)+b(0,1,1)=(a,2a+b,b)\)</span>, por lo que debe cumplirse <span class="math inline">\(y=2x+z\)</span>. Si esa condición se cumple, escoger <span class="math inline">\(a=x\)</span> y <span class="math inline">\(b=z\)</span> recupera la terna, de modo que también es suficiente. <span class="math inline">\((2,3,-1)\)</span> pertenece y vale <span class="math inline">\(2(1,2,0)-(0,1,1)\)</span>. <span class="math inline">\((2,2,-1)\)</span> no pertenece, porque <span class="math inline">\(2\ne4-1\)</span>.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-011" class="apm-anchor"></span> <strong>11.</strong> De <span class="math inline">\(x=z=t\)</span> y <span class="math inline">\(x+y+z=0\)</span> se obtiene <span class="math inline">\(y=-2t\)</span>, con la interpretación de dos en el cuerpo. Toda solución es <span class="math inline">\(t(1,-2,1)\)</span>, lo que da una inclusión en el generado de ese vector. Recíprocamente, cada múltiplo indicado satisface <span class="math inline">\(t-2t+t=0\)</span> y <span class="math inline">\(t-t=0\)</span>, de modo que el generado sólo contiene soluciones. En característica dos el vector generador es <span class="math inline">\((1,0,1)\)</span> y el argumento sigue siendo válido.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-012" class="apm-anchor"></span> <strong>12.</strong> La condición de pertenencia para <span class="math inline">\(a+bt+ct^2\)</span> es <span class="math inline">\(b=a+c\)</span>. Para <span class="math inline">\(2+3t+t^2\)</span> se cumple <span class="math inline">\(3=2+1\)</span> y la representación es <span class="math inline">\(2p+q\)</span>. Para <span class="math inline">\(1+t^2\)</span>, los coeficientes constante y cuadrático obligarían a usar <span class="math inline">\(\alpha=\beta=1\)</span>, pero entonces el coeficiente de <span class="math inline">\(t\)</span> sería dos y no cero. Por tanto no pertenece al generado real.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-013" class="apm-anchor"></span> <strong>13.</strong> Sirven <span class="math inline">\(E_{11}=\begin{bmatrix}1&amp;0\\0&amp;0\end{bmatrix}\)</span>, <span class="math inline">\(E_{22}=\begin{bmatrix}0&amp;0\\0&amp;1\end{bmatrix}\)</span> y <span class="math inline">\(F=\begin{bmatrix}0&amp;1\\1&amp;0\end{bmatrix}\)</span>. Una matriz simétrica genérica es <span class="math inline">\(\begin{bmatrix}a&amp;b\\b&amp;c\end{bmatrix}=aE_{11}+cE_{22}+bF\)</span>. A la inversa, cada combinación tiene esa forma y es simétrica. No se divide por dos, por lo que la descripción también es válida en característica dos.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-014" class="apm-anchor"></span> <strong>14.</strong> Tomando <span class="math inline">\(x_3=s\)</span>, <span class="math inline">\(x_4=t\)</span> obtenemos <span class="math inline">\((s+t,-t,s,t)\)</span>, y por tanto los generadores <span class="math inline">\((1,0,1,0)\)</span> y <span class="math inline">\((1,-1,0,1)\)</span>. A partir de una combinación, sus componentes satisfacen <span class="math inline">\(x_1=s+t=x_3-x_2\)</span> y <span class="math inline">\(x_2=-t=-x_4\)</span>; esto recupera las ecuaciones. Si ambas relaciones se cumplen, los valores <span class="math inline">\(s=x_3\)</span> y <span class="math inline">\(t=x_4\)</span> reconstruyen la combinación, de modo que no se han añadido condiciones ni perdido soluciones.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-015" class="apm-anchor"></span> <strong>15.</strong> Una combinación con coeficientes <span class="math inline">\(a,b,c\)</span> es <span class="math inline">\((a+c,b+c,a+b)\)</span>. Sobre <span class="math inline">\(\mathbb R\)</span>, para una terna <span class="math inline">\((x,y,z)\)</span> podemos elegir <span class="math inline">\(a=(x-y+z)/2\)</span>, <span class="math inline">\(b=(-x+y+z)/2\)</span> y <span class="math inline">\(c=(x+y-z)/2\)</span>; sustituir da las tres componentes requeridas. Generan todo <span class="math inline">\(\mathbb R^3\)</span>. Sobre <span class="math inline">\(\mathbb F_2\)</span>, la suma de las tres componentes de cualquier combinación es cero. Recíprocamente, si <span class="math inline">\(x+y+z=0\)</span>, entonces <span class="math inline">\(z=x+y\)</span> y <span class="math inline">\((x,y,z)=x(1,0,1)+y(0,1,1)\)</span>. El generado es exactamente ese conjunto de cuatro vectores y no todo <span class="math inline">\(\mathbb F_2^3\)</span>. La tercera columna es la suma de las dos primeras.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-016" class="apm-anchor"></span> <strong>16.</strong> Cada vector <span class="math inline">\(u+v\)</span> y <span class="math inline">\(u-v\)</span> pertenece al generado de <span class="math inline">\(u,v\)</span>, así que hay una inclusión. Si <span class="math inline">\(2\ne0\)</span>, tiene inverso en el cuerpo y <span class="math inline">\(u=\frac12((u+v)+(u-v))\)</span>, <span class="math inline">\(v=\frac12((u+v)-(u-v))\)</span>. La proposición 5.3 da la otra inclusión. En <span class="math inline">\(\mathbb F_2^2\)</span>, tome <span class="math inline">\(u=(1,0)\)</span> y <span class="math inline">\(v=(0,1)\)</span>. Entonces <span class="math inline">\(u+v=u-v=(1,1)\)</span>; esos vectores sólo generan <span class="math inline">\(\{(0,0),(1,1)\}\)</span>, mientras que <span class="math inline">\(u,v\)</span> generan las cuatro columnas.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-017" class="apm-anchor"></span> <strong>17.</strong> El generado del vacío contiene únicamente la suma vacía: <span class="math inline">\(\{0_V\}\)</span>. Cualquier combinación de ceros es cero, por lo que <span class="math inline">\(\operatorname{span}(\{0_V\})=\{0_V\}\)</span> también. Si <span class="math inline">\(\operatorname{span}(S)=S\)</span>, el teorema 5.2 implica que <span class="math inline">\(S\)</span> es un subespacio. Si <span class="math inline">\(S\)</span> es un subespacio, contiene todas sus combinaciones y cada elemento suyo es una combinación de longitud uno; por tanto coincide con su generado. Esto excluye el vacío como posible punto fijo.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-018" class="apm-anchor"></span> <strong>18.</strong> Por definición, una representación de <span class="math inline">\(v\)</span> usa una lista finita <span class="math inline">\(s_1,\ldots,s_r\)</span> de elementos de <span class="math inline">\(S\)</span>. El conjunto <span class="math inline">\(S_0=\{s_1,\ldots,s_r\}\)</span> es finito y la misma expresión demuestra <span class="math inline">\(v\in\operatorname{span}(S_0)\)</span>. Para <span class="math inline">\(v=0\)</span> podemos tomar <span class="math inline">\(r=0\)</span> y <span class="math inline">\(S_0=\varnothing\)</span>, incluso cuando <span class="math inline">\(S\)</span> también es vacío. No necesitamos seleccionar representantes para todos los vectores simultáneamente.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-019" class="apm-anchor"></span> <strong>19.</strong> Una lista finita de polinomios tiene todos sus coeficientes nulos por encima de alguna posición <span class="math inline">\(N\ge0\)</span>; si la lista es vacía, sirve cualquier <span class="math inline">\(N\)</span>. Cada combinación conserva esa propiedad, porque suma ceros en cada posición superior a <span class="math inline">\(N\)</span>. El polinomio <span class="math inline">\(t^{N+1}\)</span> no puede ser una combinación de esa lista. Por ello ningún conjunto finito genera todos los polinomios, aunque la familia infinita de monomios sí los genere.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-020" class="apm-anchor"></span> <strong>20.</strong> Una combinación finita de funciones <span class="math inline">\(\delta_k\)</span> sólo puede ser no nula en los finitísimos enteros usados en la combinación. A la inversa, si <span class="math inline">\(f\)</span> sólo es no nula en el conjunto finito <span class="math inline">\(J\)</span>, entonces <span class="math inline">\(f=\sum_{k\in J}f(k)\delta_k\)</span>, como se comprueba en cada entero. El generado es exactamente el conjunto de funciones de soporte finito. La función constante uno es no nula en todos los enteros, un conjunto infinito, y queda fuera.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-021" class="apm-anchor"></span> <strong>21.</strong> De <span class="math inline">\(x=z=t\)</span> y <span class="math inline">\(y=x+z\)</span> resulta <span class="math inline">\((x,y,z)=(t,2t,t)\)</span>. Por tanto la intersección es <span class="math inline">\(\operatorname{span}((1,2,1))\)</span>. Cada múltiplo satisface ambas condiciones y toda solución simultánea tiene esa forma. La intersección significa precisamente cumplir las dos condiciones, así que no hay una tercera condición oculta que verificar.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-022" class="apm-anchor"></span> <strong>22.</strong> <span class="math inline">\(U+W\)</span> está formado por <span class="math inline">\((a,a+b,b)\)</span>, por lo que su ecuación es <span class="math inline">\(y=x+z\)</span>. Para la intersección, <span class="math inline">\((a,a,0)=(0,b,b)\)</span> obliga a <span class="math inline">\(a=b=0\)</span>, y <span class="math inline">\(U\cap W=\{0\}\)</span>. La unión consta de las ternas que cumplen <span class="math inline">\(z=0,\ y=x\)</span> o bien <span class="math inline">\(x=0,\ y=z\)</span>. La suma y la intersección son subespacios por las proposiciones correspondientes. La unión no lo es: contiene <span class="math inline">\((1,1,0)\)</span> y <span class="math inline">\((0,1,1)\)</span>, pero no su suma <span class="math inline">\((1,2,1)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-023" class="apm-anchor"></span> <strong>23.</strong> Si <span class="math inline">\((a,b,c)=(x,y,0)+(0,s,z)\)</span>, la primera y tercera componente fuerzan <span class="math inline">\(x=a\)</span> y <span class="math inline">\(z=c\)</span>, mientras que <span class="math inline">\(y+s=b\)</span>. Por tanto todas las descomposiciones son <span class="math inline">\((a,b,c)=(a,t,0)+(0,b-t,c)\)</span>, con <span class="math inline">\(t\in\mathbb R\)</span>. Todos esos pares son admisibles y cada descomposición tiene esa forma. El parámetro libre mueve un vector de la intersección de una parte a la otra.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-024" class="apm-anchor"></span> <strong>24.</strong> Los conjuntos <span class="math inline">\(S\)</span> y <span class="math inline">\(T\)</span> no comparten ningún vector, así que <span class="math inline">\(\operatorname{span}(S\cap T)=\{0\}\)</span>. El generado de <span class="math inline">\(S\)</span> es <span class="math inline">\(\{(x,y,0)\}\)</span> y el de <span class="math inline">\(T\)</span> es <span class="math inline">\(\{(a,a,b)\}\)</span>. En su intersección debe ser <span class="math inline">\(b=0\)</span>, y queda <span class="math inline">\(\{(a,a,0)\}=\operatorname{span}(e_1+e_2)\)</span>, que no es cero. Intersecar las listas originales no registra las combinaciones que ambas listas pueden producir.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-025" class="apm-anchor"></span> <strong>25.</strong> Como <span class="math inline">\(S\cap T\subseteq S\)</span> y <span class="math inline">\(S\cap T\subseteq T\)</span>, la monotonía de la generación da inclusión en cada generado. Por tanto su generado está incluido en la intersección de ambos. Los conjuntos del ejercicio 24 muestran que la inclusión puede ser estricta: ningún dato coincide literalmente, pero ciertos vectores producidos por combinación sí coinciden.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-026" class="apm-anchor"></span> <strong>26.</strong> Por la proposición 5.4, <span class="math inline">\(\operatorname{span}(S\cup T)=\operatorname{span}(S)+\operatorname{span}(T)=U+W\)</span>. También puede agruparse cada combinación de la unión en los términos procedentes de <span class="math inline">\(S\)</span> y los procedentes de <span class="math inline">\(T\)</span>. Como ejemplo matricial, las matrices diagonales <span class="math inline">\(2\times2\)</span> están generadas por <span class="math inline">\(E_{11},E_{22}\)</span> y las estrictamente superiores triangulares por <span class="math inline">\(E_{12}\)</span>. Su suma está generada por las tres matrices y consta exactamente de <span class="math inline">\(\begin{bmatrix}a&amp;b\\0&amp;c\end{bmatrix}\)</span>, pues cada una se escribe <span class="math inline">\(aE_{11}+bE_{12}+cE_{22}\)</span>.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-027" class="apm-anchor"></span> <strong>27.</strong> La unión es un subespacio exactamente cuando uno de los dos está contenido en el otro, aunque sean distintos. En <span class="math inline">\(\mathbb R^2\)</span>, tome <span class="math inline">\(U=\{0\}\)</span> y <span class="math inline">\(W\)</span> igual al eje horizontal: son distintos y su unión es <span class="math inline">\(W\)</span>, un subespacio. Si <span class="math inline">\(U\)</span> y <span class="math inline">\(W\)</span> son los dos ejes, también son distintos, pero la unión no conserva la suma. La desigualdad no informa por sí sola sobre las inclusiones.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-028" class="apm-anchor"></span> <strong>28.</strong> Los conjuntos <span class="math inline">\(L_1=\{(0,0),(1,0)\}\)</span>, <span class="math inline">\(L_2=\{(0,0),(0,1)\}\)</span> y <span class="math inline">\(L_3=\{(0,0),(1,1)\}\)</span> son los generados de sus respectivos vectores no nulos. Son subespacios propios y ninguno está contenido en otro porque sus únicos vectores no nulos son distintos. Su unión contiene las cuatro columnas de <span class="math inline">\(\mathbb F_2^2\)</span>. La proposición 5.2 trata una unión de dos; aquí la suma que falta en la unión de los dos primeros aparece en el tercero.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-029" class="apm-anchor"></span> <strong>29.</strong> La familia es no vacía y cada miembro contiene cero, de modo que la unión contiene cero. Dados <span class="math inline">\(u,v\)</span> en la unión, existen miembros <span class="math inline">\(U_i,U_j\)</span> que los contienen. Por la hipótesis de comparación, uno de esos miembros contiene a ambos. Allí también pertenece <span class="math inline">\(au+bv\)</span> para cualesquiera escalares. Por tanto la combinación pertenece a la unión y el criterio prueba que ésta es un subespacio. La comparación de dos miembros evita que los sumandos queden separados en conjuntos incompatibles.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-030" class="apm-anchor"></span> <strong>30.</strong> Una suma finita <span class="math inline">\(u_1+\cdots+u_r\)</span>, con cada <span class="math inline">\(u_j\)</span> en algún miembro de la familia, es una combinación de elementos de su unión y pertenece al generado que define la suma. Recíprocamente, en una combinación finita <span class="math inline">\(\sum_{j=1}^r a_jv_j\)</span> de elementos de la unión, cada producto <span class="math inline">\(a_jv_j\)</span> pertenece al mismo subespacio que <span class="math inline">\(v_j\)</span>, por cierre escalar. Por tanto la combinación es una suma finita del tipo indicado. Si la familia es vacía, su unión es vacía y su generado es <span class="math inline">\(\{0\}\)</span>, correspondiente a la suma de cero términos.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-031" class="apm-anchor"></span> <strong>31.</strong> Si <span class="math inline">\(x=u+w\)</span> con <span class="math inline">\(u\in U\)</span> y <span class="math inline">\(w\in W\cap Z\)</span>, esa misma expresión lo coloca tanto en <span class="math inline">\(U+W\)</span> como en <span class="math inline">\(U+Z\)</span>. Esto prueba la inclusión. Para ver que puede ser estricta, tome <span class="math inline">\(U\)</span> como el eje horizontal, <span class="math inline">\(W\)</span> como el vertical y <span class="math inline">\(Z=\operatorname{span}((1,1))\)</span> en <span class="math inline">\(\mathbb R^2\)</span>. Entonces <span class="math inline">\(W\cap Z=\{0\}\)</span>, de modo que el miembro izquierdo es <span class="math inline">\(U\)</span>. Pero <span class="math inline">\(U+W=\mathbb R^2\)</span> y <span class="math inline">\(U+Z=\mathbb R^2\)</span>; para la segunda igualdad, <span class="math inline">\((x,y)=(x-y,0)+y(1,1)\)</span>. El miembro derecho es todo el plano.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-032" class="apm-anchor"></span> <strong>32.</strong> Si <span class="math inline">\(x=u+w\)</span> con <span class="math inline">\(u\in U\)</span> y <span class="math inline">\(w\in W\cap Z\)</span>, pertenece a <span class="math inline">\(U+W\)</span>; además ambos sumandos pertenecen a <span class="math inline">\(Z\)</span> porque <span class="math inline">\(U\subseteq Z\)</span>, de modo que <span class="math inline">\(x\in Z\)</span>. Esto da una inclusión. Si <span class="math inline">\(x\in(U+W)\cap Z\)</span>, escriba <span class="math inline">\(x=u+w\)</span> con <span class="math inline">\(u\in U\)</span>, <span class="math inline">\(w\in W\)</span>. Como <span class="math inline">\(x,u\in Z\)</span>, se tiene <span class="math inline">\(w=x-u\in Z\)</span>. Por tanto <span class="math inline">\(w\in W\cap Z\)</span> y <span class="math inline">\(x\in U+(W\cap Z)\)</span>. La hipótesis de inclusión es la que permite mantener la resta en <span class="math inline">\(Z\)</span>.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-033" class="apm-anchor"></span> <strong>33.</strong> Cada polinomio tiene sólo finitos coeficientes no nulos, por lo que pertenece a algún <span class="math inline">\(\mathbb F[t]_{\le n}\)</span>. La unión es todo <span class="math inline">\(\mathbb F[t]\)</span>. La intersección está contenida en el miembro <span class="math inline">\(n=0\)</span>, que consiste en las constantes; todas las constantes pertenecen a los demás miembros, de modo que la intersección es <span class="math inline">\(\mathbb F[t]_{\le0}\)</span>. La unión es un subespacio porque la familia es creciente, y por ello cumple la comparación del ejercicio 29.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-034" class="apm-anchor"></span> <strong>34.</strong> Cada <span class="math inline">\(U_m\)</span> es un subespacio: las entradas prescritas siguen siendo cero bajo combinaciones. Si una sucesión pertenece a todos, su entrada de índice <span class="math inline">\(k\)</span> es cero por pertenecer a <span class="math inline">\(U_{k+1}\)</span>. La intersección es sólo la sucesión cero. Para una familia finita no vacía de índices, sea <span class="math inline">\(M\)</span> el mayor. Como <span class="math inline">\(U_{m+1}\subseteq U_m\)</span>, su intersección es <span class="math inline">\(U_M\)</span>, que contiene la sucesión no nula <span class="math inline">\(e_M\)</span>. Si la familia de índices es vacía, su intersección es el espacio ambiente, también distinto de cero. Ninguna intersección finita coincide con la de todos los miembros.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-035" class="apm-anchor"></span> <strong>35.</strong> De <span class="math inline">\(x=y\)</span> y <span class="math inline">\(x+y=1\)</span> resulta el único punto <span class="math inline">\((1/2,1/2)\)</span>. El conjunto no contiene el cero del plano y no es un subespacio lineal. Sí es afín: es <span class="math inline">\((1/2,1/2)+\{0\}\)</span>. El cuerpo real permite dividir por dos; el enunciado no autoriza trasladar la respuesta sin cambios a característica dos.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-036" class="apm-anchor"></span> <strong>36.</strong> Como <span class="math inline">\(a\in p+U\)</span>, existe <span class="math inline">\(u_0\in U\)</span> con <span class="math inline">\(a=p+u_0\)</span> y se tiene <span class="math inline">\(p+U=a+U\)</span>, pues trasladar por <span class="math inline">\(u_0\)</span> dentro de <span class="math inline">\(U\)</span> no cambia el conjunto. Del mismo modo, <span class="math inline">\(q+W=a+W\)</span>. Un vector <span class="math inline">\(x\)</span> pertenece a los dos exactamente cuando <span class="math inline">\(x-a\in U\)</span> y <span class="math inline">\(x-a\in W\)</span>, es decir, cuando <span class="math inline">\(x-a\in U\cap W\)</span>. Esto equivale a <span class="math inline">\(x\in a+(U\cap W)\)</span>. Si la intersección es vacía, no puede elegirse <span class="math inline">\(a\)</span> y, con la definición de este capítulo, el resultado vacío no es un subespacio afín.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-037" class="apm-anchor"></span> <strong>37.</strong> Las diferencias son <span class="math inline">\(q-p=(0,1,0)\)</span> y <span class="math inline">\(r-p=(0,0,1)\)</span>. El conjunto <span class="math inline">\(L=p+\operatorname{span}(q-p,r-p)=\{(1,y,z):y,z\in\mathbb R\}\)</span> es afín y contiene los tres puntos. Si <span class="math inline">\(M\)</span> es otro subespacio afín que los contiene y su espacio de direcciones es <span class="math inline">\(D\)</span>, la proposición 5.5 implica <span class="math inline">\(q-p,r-p\in D\)</span>. Por cierre, <span class="math inline">\(D\)</span> contiene su generado. Como <span class="math inline">\(p\in M\)</span>, también <span class="math inline">\(M=p+D\)</span>; por tanto contiene a <span class="math inline">\(L\)</span>. Esto demuestra que <span class="math inline">\(L\)</span> es el menor, no sólo uno que sirve.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-038" class="apm-anchor"></span> <strong>38.</strong> Las representaciones son <span class="math inline">\((a,b,a,b)\)</span> para <span class="math inline">\(U\)</span> y <span class="math inline">\((c,c,d,d)\)</span> para <span class="math inline">\(W\)</span>. Igualarlas fuerza <span class="math inline">\(a=b=c=d\)</span>. La intersección es por tanto <span class="math inline">\(\operatorname{span}((1,1,1,1))\)</span>. Para la suma, una columna genérica es <span class="math inline">\((a+c,b+c,a+d,b+d)\)</span> y satisface <span class="math inline">\(x_1+x_4=x_2+x_3\)</span>. A la inversa, si esa igualdad se cumple, elija <span class="math inline">\(a=x_3\)</span>, <span class="math inline">\(b=x_4\)</span>, <span class="math inline">\(d=0\)</span> y <span class="math inline">\(c=x_1-x_3\)</span>. La segunda componente queda <span class="math inline">\(x_4+x_1-x_3=x_2\)</span> y las otras coinciden directamente. La condición es suficiente y describe exactamente la suma.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-039" class="apm-anchor"></span> <strong>39.</strong> Si <span class="math inline">\(Ax=Bx=0\)</span>, la distributividad da <span class="math inline">\((A+B)x=Ax+Bx=0\)</span>. La recíproca falla: sobre <span class="math inline">\(\mathbb R\)</span>, tome <span class="math inline">\(A=\begin{bmatrix}1&amp;0\end{bmatrix}\)</span> y <span class="math inline">\(B=\begin{bmatrix}-1&amp;0\end{bmatrix}\)</span>. Su suma es la fila cero, y cualquier columna de dos entradas es solución de <span class="math inline">\((A+B)x=0\)</span>. Las soluciones comunes de los dos sistemas, en cambio, exigen primera entrada nula. La columna <span class="math inline">\((1,0)\)</span> muestra la diferencia.</p>
+<p><span id="MA-BCH-APM-02-005-SOL-040" class="apm-anchor"></span> <strong>40.</strong> Una recta por el origen contiene a lo sumo un punto de la forma <span class="math inline">\((1,t)\)</span>. En efecto, dos de esos puntos en la misma recta serían proporcionales; comparar su primera componente obliga a que el factor sea uno, y entonces sus segundas componentes son iguales. Una unión de <span class="math inline">\(r\)</span> rectas puede contener a lo sumo <span class="math inline">\(r\)</span> puntos de esa forma. Como hay infinitos reales <span class="math inline">\(t\)</span>, existe uno fuera de la unión. En <span class="math inline">\(\mathbb F_2\)</span> sólo hay dos posibilidades para <span class="math inline">\(t\)</span>, y el argumento de infinitud no se aplica; los tres subespacios del ejercicio 28 pueden cubrir todo el espacio finito.</p>
+</section>
+<section id="lecturas-y-referencias" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-referencias">Lecturas y referencias</h2>
+<p>Nathaniel Johnston, <em>Advanced Linear and Matrix Algebra</em>, Springer, 2021, §§1.1.1–1.1.2: criterio de subespacio, combinaciones finitas y generación. Kenneth Hoffman y Ray Kunze, <em>Linear Algebra</em>, 2.ª edición, Prentice-Hall, 1971, §2.2: intersecciones, generación como intersección y descripciones por ecuaciones y generadores. Stephen H. Friedberg, Arnold J. Insel y Lawrence E. Spence, <em>Linear Algebra</em>, 5.ª edición, Pearson, 2019, §§1.3–1.4: ejemplos de subespacios, operaciones con conjuntos de vectores y pertenencia mediante sistemas. Sheldon Axler, <em>Linear Algebra Done Right</em>, 4.ª edición, Springer, 2024, §1C, hasta el resultado 1.40: suma de subespacios como el menor subespacio que contiene a los sumandos.</p>
+<hr>
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-04-espacios-vectoriales.html">← Capítulo 4</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-06-dependencia-e-independencia-lineal.html">Capítulo 6 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

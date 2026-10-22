@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 8 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.">
+
+<title>Capítulo 8. Transformaciones lineales – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#conservar-las-combinaciones" id="toc-conservar-las-combinaciones" class="nav-link active" data-scroll-target="#conservar-las-combinaciones">8.1. Conservar las combinaciones</a></li>
+  <li><a href="#construir-una-transformación-a-partir-de-una-base" id="toc-construir-una-transformación-a-partir-de-una-base" class="nav-link" data-scroll-target="#construir-una-transformación-a-partir-de-una-base">8.2. Construir una transformación a partir de una base</a></li>
+  <li><a href="#datos-redundantes-y-compatibilidad" id="toc-datos-redundantes-y-compatibilidad" class="nav-link" data-scroll-target="#datos-redundantes-y-compatibilidad">8.3. Datos redundantes y compatibilidad</a></li>
+  <li><a href="#transformaciones-entre-objetos-distintos" id="toc-transformaciones-entre-objetos-distintos" class="nav-link" data-scroll-target="#transformaciones-entre-objetos-distintos">8.4. Transformaciones entre objetos distintos</a></li>
+  <li><a href="#sumar-transformaciones-y-contar-sus-parámetros" id="toc-sumar-transformaciones-y-contar-sus-parámetros" class="nav-link" data-scroll-target="#sumar-transformaciones-y-contar-sus-parámetros">8.5. Sumar transformaciones y contar sus parámetros</a></li>
+  <li><a href="#componer-el-orden-de-las-operaciones" id="toc-componer-el-orden-de-las-operaciones" class="nav-link" data-scroll-target="#componer-el-orden-de-las-operaciones">8.6. Componer: el orden de las operaciones</a></li>
+  <li><a href="#proyecciones-algebraicas" id="toc-proyecciones-algebraicas" class="nav-link" data-scroll-target="#proyecciones-algebraicas">8.7. Proyecciones algebraicas</a></li>
+  <li><a href="#traslaciones-y-aplicaciones-afines" id="toc-traslaciones-y-aplicaciones-afines" class="nav-link" data-scroll-target="#traslaciones-y-aplicaciones-afines">8.8. Traslaciones y aplicaciones afines</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">8.9. Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#reconocer-y-calcular" id="toc-reconocer-y-calcular" class="nav-link" data-scroll-target="#reconocer-y-calcular">Reconocer y calcular</a></li>
+  <li><a href="#probar-y-controlar-hipótesis" id="toc-probar-y-controlar-hipótesis" class="nav-link" data-scroll-target="#probar-y-controlar-hipótesis">Probar y controlar hipótesis</a></li>
+  <li><a href="#construir-transformaciones-y-contraejemplos" id="toc-construir-transformaciones-y-contraejemplos" class="nav-link" data-scroll-target="#construir-transformaciones-y-contraejemplos">Construir transformaciones y contraejemplos</a></li>
+  <li><a href="#integrar-y-transferir" id="toc-integrar-y-transferir" class="nav-link" data-scroll-target="#integrar-y-transferir">Integrar y transferir</a></li>
+  </ul></li>
+  <li><a href="#soluciones-razonadas" id="toc-soluciones-razonadas" class="nav-link" data-scroll-target="#soluciones-razonadas">8.10. Soluciones razonadas</a></li>
+  <li><a href="#lecturas-y-referencias" id="toc-lecturas-y-referencias" class="nav-link" data-scroll-target="#lecturas-y-referencias">Lecturas y referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 8. Transformaciones lineales</h1>
+<p class="subtitle lead">Álgebra para matemáticos · Tomo II</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 8 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-07-bases-y-dimension.html">← Capítulo 7</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-09-nucleo-imagen-y-rango-nulidad.html">Capítulo 9 →</a></p>
+<p>Un dispositivo recibe dos señales que podemos ajustar por separado y produce una salida formada por dos números. Al activar únicamente la primera señal con intensidad uno, obtenemos <span class="math inline">\(u=(2,1)\)</span>; al activar únicamente la segunda, obtenemos <span class="math inline">\(v=(-1,2)\)</span>. Si duplicar una señal duplica su contribución y combinar señales suma sus contribuciones, una entrada <span class="math inline">\((x,y)\)</span> debe producir <span class="math inline">\(xu+yv=(2x-y,x+2y)\)</span>. Dos mediciones determinan entonces la respuesta a cualquier entrada, incluso a intensidades negativas o fraccionarias.</p>
+<p>Esas dos mediciones no bastan para demostrar que el dispositivo se comporte así. La regla <span class="math inline">\(F(x,y)=(2x-y+xy,x+2y)\)</span> coincide con la anterior sobre las dos entradas usuales <span class="math inline">\((1,0)\)</span> y <span class="math inline">\((0,1)\)</span>, pero en <span class="math inline">\((1,1)\)</span> produce <span class="math inline">\((2,3)\)</span> en lugar de <span class="math inline">\((1,3)\)</span>. El término <span class="math inline">\(xy\)</span> describe una interacción que no se revela cuando una de las señales está apagada. Conocer las respuestas sobre una base determina la transformación completa cuando sabemos que ésta respeta las combinaciones lineales; si todavía no conocemos esa propiedad, las respuestas aisladas sólo son datos parciales.</p>
+<figure id="fig-apm-t2-c08-f01" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C08-F01.svg" alt="Dos vectores de entrada y su suma se transforman en u=(2,1), v=(-1,2) y u+v=(1,3), conservando el paralelogramo de la suma." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 8.1.</em> La regla <span class="math inline">\(T(x,y)=(2x-y,x+2y)\)</span> reconstruye todas sus salidas mediante las imágenes de las entradas usuales. La figura representa esta regla concreta; no certifica el comportamiento de una función desconocida a partir de unas pocas mediciones.
+</figcaption>
+</figure>
+<p>Trabajaremos con espacios vectoriales sobre un mismo cuerpo <span class="math inline">\(\mathbb F\)</span>. Usaremos las bases y combinaciones de C04–C07 y las operaciones con funciones del tomo I. Los ejemplos numéricos son reales salvo indicación contraria. No se presupone cálculo diferencial: la derivación de polinomios que aparecerá más adelante se definirá mediante sus coeficientes.</p>
+<section id="conservar-las-combinaciones" class="level2">
+<h2 class="anchored" data-anchor-id="conservar-las-combinaciones">8.1. Conservar las combinaciones</h2>
+<p><span id="MA-BCH-APM-02-008-DEF-001" class="apm-anchor"></span> <strong>Definición 8.1 (transformación lineal).</strong> Sean <span class="math inline">\(V,W\)</span> espacios vectoriales sobre <span class="math inline">\(\mathbb F\)</span>. Una función <span class="math inline">\(T:V\to W\)</span> es <strong>lineal</strong> si para todos <span class="math inline">\(x,y\in V\)</span> y <span class="math inline">\(a\in\mathbb F\)</span> se cumplen <span class="math inline">\(T(x+y)=T(x)+T(y)\)</span> y <span class="math inline">\(T(ax)=aT(x)\)</span>. La primera propiedad se llama <strong>aditividad</strong> y la segunda <strong>homogeneidad</strong>. Cuando el dominio y el codominio coinciden, hablaremos también de un <strong>operador lineal</strong> sobre ese espacio.</p>
+<p>Las operaciones de entrada se efectúan en <span class="math inline">\(V\)</span> y las de salida en <span class="math inline">\(W\)</span>; sus vectores pueden ser objetos de clases distintas. La fórmula no exige que <span class="math inline">\(T\)</span> conserve longitudes, ángulos, productos ni todas las operaciones que podamos definir sobre esos objetos. Exige dos compatibilidades precisas con la estructura vectorial.</p>
+<p>La regla de la apertura es lineal porque, al sustituir <span class="math inline">\(a(x,y)+b(s,t)\)</span>, obtenemos</p>
+<p><span class="math display">\[
+\begin{aligned}
+T(ax+bs,ay+bt)
+&amp;=(2ax+2bs-ay-bt,ax+bs+2ay+2bt)\\
+&amp;=a(2x-y,x+2y)+b(2s-t,s+2t).
+\end{aligned}
+\]</span></p>
+<p>El cálculo tiene coeficientes y entradas arbitrarios. Comprobar la misma igualdad sólo para dos vectores particulares no justificaría los cuantificadores de la definición.</p>
+<p><span id="MA-BCH-APM-02-008-PRP-001" class="apm-anchor"></span> <strong>Proposición 8.1 (superposición).</strong> Una función <span class="math inline">\(T:V\to W\)</span> es lineal si y sólo si <span class="math inline">\(T(ax+by)=aT(x)+bT(y)\)</span> para todos <span class="math inline">\(x,y\in V\)</span> y <span class="math inline">\(a,b\in\mathbb F\)</span>. En ese caso <span class="math inline">\(T(0_V)=0_W\)</span>, <span class="math inline">\(T(-x)=-T(x)\)</span> y, para cualquier lista finita de vectores y escalares,</p>
+<p><span class="math display">\[
+T\left(\sum_{j=1}^r a_jx_j\right)=\sum_{j=1}^r a_jT(x_j).
+\]</span></p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(T\)</span> es lineal, primero aplicamos aditividad a <span class="math inline">\(ax+by\)</span> y después homogeneidad a cada sumando. En sentido contrario, tomar <span class="math inline">\(a=b=1\)</span> da aditividad; tomar <span class="math inline">\(b=0\)</span> da homogeneidad, porque <span class="math inline">\(0T(y)=0_W\)</span>.</p>
+<p>La aditividad aplicada a <span class="math inline">\(0_V+0_V\)</span> da <span class="math inline">\(T(0_V)=T(0_V)+T(0_V)\)</span>; al cancelar un sumando en <span class="math inline">\(W\)</span>, obtenemos <span class="math inline">\(T(0_V)=0_W\)</span>. La homogeneidad con escalar <span class="math inline">\(-1\)</span> da la afirmación sobre opuestos. Para una suma de <span class="math inline">\(r+1\)</span> términos, separamos el último, usamos aditividad y aplicamos al bloque anterior la fórmula para <span class="math inline">\(r\)</span> términos. La inducción, comenzando por un término, prueba la fórmula finita. Para la suma vacía, ambos miembros son cero por lo que acabamos de demostrar. <span class="math inline">\(\square\)</span></p>
+<p>La condición <span class="math inline">\(T(0)=0\)</span> sirve para descartar muchas funciones, pero no basta para probar linealidad: <span class="math inline">\(f(x)=x^2\)</span> sobre <span class="math inline">\(\mathbb R\)</span> lleva cero a cero y, sin embargo, <span class="math inline">\(f(1+1)=4\ne2=f(1)+f(1)\)</span>. Una sola falla basta para refutar la definición, mientras que una prueba positiva debe controlar todos los vectores y escalares.</p>
+<p>La función cero <span class="math inline">\(0_{V,W}:V\to W\)</span>, que envía cada vector al cero de <span class="math inline">\(W\)</span>, es lineal porque ambos miembros de las igualdades requeridas son cero. La identidad <span class="math inline">\(I_V(x)=x\)</span> también lo es porque deja las operaciones intactas. Si el dominio es <span class="math inline">\(\{0\}\)</span>, existe una sola transformación lineal hacia <span class="math inline">\(W\)</span>, pues su valor en cero está obligado. Si el codominio es <span class="math inline">\(\{0\}\)</span>, existe igualmente una sola función y es lineal.</p>
+<p>El cuerpo no puede omitirse. La conjugación <span class="math inline">\(C:\mathbb C\to\mathbb C\)</span>, <span class="math inline">\(C(z)=\overline z\)</span>, respeta las sumas y la multiplicación por escalares reales, luego es lineal al considerar <span class="math inline">\(\mathbb C\)</span> como espacio real. Como transformación de espacios complejos, falla la homogeneidad: <span class="math inline">\(C(i\cdot1)=-i\)</span>, mientras que <span class="math inline">\(iC(1)=i\)</span>. La misma función, con las mismas entradas y salidas, cambia de estatuto cuando cambia el cuerpo de escalares.</p>
+</section>
+<section id="construir-una-transformación-a-partir-de-una-base" class="level2">
+<h2 class="anchored" data-anchor-id="construir-una-transformación-a-partir-de-una-base">8.2. Construir una transformación a partir de una base</h2>
+<p>La superposición permite recuperar una transformación ya conocida a partir de los valores que toma en una base. Para convertir esa observación en un procedimiento de construcción necesitamos comprobar además que cualquier elección de esos valores produce una función lineal bien definida.</p>
+<p><span id="MA-BCH-APM-02-008-THM-001" class="apm-anchor"></span> <strong>Teorema 8.2 (prescripción sobre una base).</strong> Sea <span class="math inline">\(\mathcal B=(b_1,\ldots,b_n)\)</span> una base de <span class="math inline">\(V\)</span> y sean <span class="math inline">\(w_1,\ldots,w_n\)</span> vectores cualesquiera de <span class="math inline">\(W\)</span>. Existe una única transformación lineal <span class="math inline">\(T:V\to W\)</span> tal que <span class="math inline">\(T(b_j)=w_j\)</span> para cada <span class="math inline">\(j\)</span>.</p>
+<p><strong>Demostración.</strong> Cada <span class="math inline">\(x\in V\)</span> admite una única representación <span class="math inline">\(x=\sum_j a_jb_j\)</span>. Esa unicidad permite definir una función mediante la regla</p>
+<p><span class="math display">\[
+T(x)=\sum_{j=1}^n a_jw_j.
+\]</span></p>
+<p>No hemos supuesto que los <span class="math inline">\(w_j\)</span> sean independientes ni que generen <span class="math inline">\(W\)</span>. Una vez fijados los coeficientes únicos de <span class="math inline">\(x\)</span>, la suma de salida existe en <span class="math inline">\(W\)</span> aunque algunos de esos vectores sean cero o coincidan entre sí.</p>
+<p>Debemos comprobar que la función construida es lineal. Si <span class="math inline">\(x=\sum_j a_jb_j\)</span> e <span class="math inline">\(y=\sum_j c_jb_j\)</span>, la unicidad de coordenadas identifica los coeficientes de <span class="math inline">\(\alpha x+\beta y\)</span> como <span class="math inline">\(\alpha a_j+\beta c_j\)</span>. Por la propia regla de construcción,</p>
+<p><span class="math display">\[
+T(\alpha x+\beta y)
+=\sum_j(\alpha a_j+\beta c_j)w_j
+=\alpha T(x)+\beta T(y).
+\]</span></p>
+<p>La proposición 8.1 prueba la linealidad. Para <span class="math inline">\(x=b_k\)</span>, sus coeficientes son uno en la posición <span class="math inline">\(k\)</span> y cero en las demás, así que <span class="math inline">\(T(b_k)=w_k\)</span>.</p>
+<p>Finalmente, cualquier transformación lineal <span class="math inline">\(S\)</span> con los valores prescritos debe satisfacer <span class="math inline">\(S(x)=\sum_j a_jS(b_j)=\sum_j a_jw_j=T(x)\)</span> para todo <span class="math inline">\(x\)</span>. Ésta es igualdad de funciones, lo que demuestra la unicidad. Si la base es vacía, <span class="math inline">\(V=\{0\}\)</span> y la suma vacía construye la única transformación lineal posible. <span class="math inline">\(\square\)</span></p>
+<p>Por ejemplo, consideremos la base <span class="math inline">\(b_1=(1,1)\)</span>, <span class="math inline">\(b_2=(1,-1)\)</span> de <span class="math inline">\(\mathbb R^2\)</span> y los valores <span class="math inline">\(T(b_1)=(1,2,0)\)</span>, <span class="math inline">\(T(b_2)=(0,1,1)\)</span>. Puesto que <span class="math inline">\((x,y)=\frac{x+y}{2}b_1+\frac{x-y}{2}b_2\)</span>, obtenemos</p>
+<p><span class="math display">\[
+T(x,y)=\left(\frac{x+y}{2},\frac{3x+y}{2},\frac{x-y}{2}\right).
+\]</span></p>
+<p>La entrada está en un plano y la salida en un espacio de tres coordenadas. No hay dificultad en cambiar de tipo de objeto: si en la misma base prescribiéramos <span class="math inline">\(S(b_1)=1+t\)</span> y <span class="math inline">\(S(b_2)=t^2\)</span>, construiríamos la transformación <span class="math inline">\(S(x,y)=\frac{x+y}{2}(1+t)+\frac{x-y}{2}t^2\)</span> con codominio <span class="math inline">\(P_2(\mathbb R)\)</span>.</p>
+<p>En particular, dos transformaciones lineales que coinciden sobre una base coinciden sobre todo el dominio. El argumento funciona incluso con una lista generadora redundante, siempre que ambas funciones sean ya lineales: se expresa cada vector mediante los generadores y se aplica superposición. La cuestión de existencia requiere más cuidado cuando los datos se prescriben sobre una lista dependiente.</p>
+</section>
+<section id="datos-redundantes-y-compatibilidad" class="level2">
+<h2 class="anchored" data-anchor-id="datos-redundantes-y-compatibilidad">8.3. Datos redundantes y compatibilidad</h2>
+<p>Supongamos que queremos prescribir los valores sobre <span class="math inline">\(u=(1,0)\)</span>, <span class="math inline">\(v=(0,1)\)</span> y <span class="math inline">\(z=(1,1)\)</span>. Como <span class="math inline">\(z=u+v\)</span>, cualquier transformación lineal debe satisfacer <span class="math inline">\(T(z)=T(u)+T(v)\)</span>. Si elegimos los tres valores libremente podemos violar esa obligación y hacer imposible la construcción. Las relaciones lineales de la entrada imponen las correspondientes relaciones en la salida.</p>
+<p><span id="MA-BCH-APM-02-008-THM-002" class="apm-anchor"></span> <strong>Teorema 8.3 (prescripción sobre generadores).</strong> Sea <span class="math inline">\((v_1,\ldots,v_r)\)</span> una lista que genera <span class="math inline">\(V\)</span>, y fijemos <span class="math inline">\(w_1,\ldots,w_r\in W\)</span>. Existe una transformación lineal <span class="math inline">\(T:V\to W\)</span> con <span class="math inline">\(T(v_j)=w_j\)</span> si y sólo si se cumple la siguiente condición para todos los escalares <span class="math inline">\(a_1,\ldots,a_r\)</span>:</p>
+<p><span class="math display">\[
+\sum_{j=1}^r a_jv_j=0
+\quad\Longrightarrow\quad
+\sum_{j=1}^r a_jw_j=0.
+\]</span></p>
+<p>Cuando existe, la transformación es única.</p>
+<p><strong>Demostración.</strong> Si existe <span class="math inline">\(T\)</span>, aplicarla a una relación nula y usar superposición produce exactamente la relación nula de salida. Esto prueba la necesidad.</p>
+<p>Supongamos que la condición se cumple. Dado <span class="math inline">\(x\in V\)</span>, elegimos una expresión <span class="math inline">\(x=\sum_j c_jv_j\)</span> y proponemos <span class="math inline">\(T(x)=\sum_j c_jw_j\)</span>. La generación asegura que existe al menos una expresión, pero la dependencia permite que haya varias. Para que la propuesta defina una función debemos demostrar que todas dan la misma salida. Si también <span class="math inline">\(x=\sum_j d_jv_j\)</span>, entonces <span class="math inline">\(\sum_j(c_j-d_j)v_j=0\)</span>. La hipótesis da <span class="math inline">\(\sum_j(c_j-d_j)w_j=0\)</span>, de modo que las dos sumas de salida coinciden. La regla es, por tanto, independiente de la representación elegida.</p>
+<p>Para verificar la linealidad, tomamos representaciones de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>; la combinación de sus coeficientes representa a <span class="math inline">\(\alpha x+\beta y\)</span>. Como la regla ya está bien definida, podemos usar esa representación y obtener <span class="math inline">\(T(\alpha x+\beta y)=\alpha T(x)+\beta T(y)\)</span>. Tomar la representación de <span class="math inline">\(v_j\)</span> con un coeficiente uno y los demás cero da el valor prescrito <span class="math inline">\(w_j\)</span>. La unicidad se sigue de que cualquier transformación lineal con esos valores debe aplicar a cada representación de <span class="math inline">\(x\)</span> la misma regla de superposición. <span class="math inline">\(\square\)</span></p>
+<p>La condición pide conservar todas las relaciones. Sobre la lista <span class="math inline">\(u,v,u+v\)</span> basta comprobar <span class="math inline">\(w_3=w_1+w_2\)</span>, porque cualquier relación de entrada tiene coeficientes <span class="math inline">\((-c,-c,c)\)</span>: las dos entradas de <span class="math inline">\(au+bv+c(u+v)=0\)</span> fuerzan <span class="math inline">\(a=b=-c\)</span>. Si, por ejemplo, <span class="math inline">\(w_1=(2,1)\)</span> y <span class="math inline">\(w_2=(-1,2)\)</span>, la única elección compatible para <span class="math inline">\(w_3\)</span> es <span class="math inline">\((1,3)\)</span>. Elegir <span class="math inline">\((2,3)\)</span> no define otra transformación lineal; produce datos incompatibles.</p>
+<p>Cuando los generadores no llenan el dominio, los valores pueden dejar libertad incluso si son compatibles. Si sólo prescribimos <span class="math inline">\(T(e_1)=(1,0)\)</span> en <span class="math inline">\(\mathbb R^2\)</span>, podemos elegir arbitrariamente <span class="math inline">\(T(e_2)\)</span> y completar por el teorema 8.2. En general, una transformación lineal dada sobre un subespacio de un espacio finito se extiende al espacio completo: extendemos una base del subespacio a una del ambiente y elegimos los valores de los vectores añadidos. La extensión queda determinada por esas nuevas elecciones.</p>
+</section>
+<section id="transformaciones-entre-objetos-distintos" class="level2">
+<h2 class="anchored" data-anchor-id="transformaciones-entre-objetos-distintos">8.4. Transformaciones entre objetos distintos</h2>
+<p>El producto matricial proporciona una familia familiar. Si <span class="math inline">\(A\in M_{m\times n}(\mathbb F)\)</span> es fija, la función <span class="math inline">\(T_A:\mathbb F^n\to\mathbb F^m\)</span>, <span class="math inline">\(T_A(x)=Ax\)</span>, es lineal porque <span class="math inline">\(A(\alpha x+\beta y)=\alpha Ax+\beta Ay\)</span>, por las reglas de C03. Recíprocamente, una transformación lineal entre estos espacios se escribe <span class="math inline">\(T(x)=\sum_j x_jT(e_j)\)</span>; al colocar las columnas <span class="math inline">\(T(e_j)\)</span> en una matriz obtenemos exactamente un producto <span class="math inline">\(Ax\)</span>. Para bases arbitrarias la construcción requiere llevar un control separado de las coordenadas de entrada y salida; ese estudio se reserva a C12.</p>
+<p>En el espacio de todas las funciones <span class="math inline">\(X\to\mathbb F\)</span>, fijar <span class="math inline">\(a\in X\)</span> produce la <strong>evaluación</strong> <span class="math inline">\(E_a(f)=f(a)\)</span>. Es lineal porque <span class="math inline">\((\alpha f+\beta g)(a)=\alpha f(a)+\beta g(a)\)</span>. El vector de entrada puede ser una función completa y la salida un solo escalar. En particular, <span class="math inline">\(E_a:P_d(\mathbb F)\to\mathbb F\)</span> evalúa polinomios formales. Aunque polinomios distintos puedan dar la misma función sobre un cuerpo finito, la evaluación en un punto sigue siendo una función bien definida y lineal.</p>
+<p>La transposición <span class="math inline">\(\tau:M_{m\times n}(\mathbb F)\to M_{n\times m}(\mathbb F)\)</span> también es lineal: la entrada <span class="math inline">\((i,j)\)</span> de <span class="math inline">\((\alpha A+\beta B)^{\mathsf T}\)</span> es <span class="math inline">\(\alpha a_{ji}+\beta b_{ji}\)</span>, igual a la entrada correspondiente de <span class="math inline">\(\alpha A^{\mathsf T}+\beta B^{\mathsf T}\)</span>. Aquí el orden de las dimensiones del dominio y el codominio cambia, pero las operaciones siguen siendo compatibles.</p>
+<p>En <span class="math inline">\(\mathbb F[t]\)</span> definimos la <strong>derivación formal</strong> por</p>
+<p><span class="math display">\[
+D\left(\sum_{k=0}^d a_kt^k\right)
+=\sum_{k=1}^d k a_kt^{k-1}.
+\]</span></p>
+<p>El entero <span class="math inline">\(k\)</span> en esta fórmula significa la suma de <span class="math inline">\(k\)</span> copias de la unidad del cuerpo. La suma es finita y el resultado es otro polinomio; para una constante da cero. Al sumar dos polinomios, podemos completar sus listas de coeficientes con ceros hasta un mismo grado y calcular</p>
+<p><span class="math display">\[
+D(\alpha p+\beta q)
+=\sum_{k\ge1}k(\alpha a_k+\beta b_k)t^{k-1}
+=\alpha Dp+\beta Dq,
+\]</span></p>
+<p>donde sólo hay un número finito de términos no nulos. La linealidad está demostrada algebraicamente. En <span class="math inline">\(\mathbb F_2[t]\)</span>, por ejemplo, <span class="math inline">\(D(t^2)=2t=0\)</span>, aunque <span class="math inline">\(t^2\)</span> no sea constante. Las propiedades familiares de la derivada real no se transportan todas al cambiar el cuerpo.</p>
+<p>Fijar un polinomio <span class="math inline">\(q\)</span> produce otro operador lineal, <span class="math inline">\(M_q(p)=qp\)</span>: la distributividad da <span class="math inline">\(q(\alpha p+\beta r)=\alpha qp+\beta qr\)</span>. Esta afirmación mantiene fijo <span class="math inline">\(q\)</span>. La función <span class="math inline">\(p\mapsto p^2\)</span> no es en general lineal, pues en ella cambian ambos factores; sobre <span class="math inline">\(\mathbb R\)</span>, el polinomio constante <span class="math inline">\(1\)</span> ya da <span class="math inline">\((2\cdot1)^2=4\ne2\cdot1^2\)</span>. Volveremos al comportamiento especial del cuadrado en característica dos en los ejercicios.</p>
+</section>
+<section id="sumar-transformaciones-y-contar-sus-parámetros" class="level2">
+<h2 class="anchored" data-anchor-id="sumar-transformaciones-y-contar-sus-parámetros">8.5. Sumar transformaciones y contar sus parámetros</h2>
+<p>Podemos considerar simultáneamente todas las transformaciones lineales entre dos espacios fijos. Para sumar dos de ellas usamos las operaciones del codominio en cada punto de entrada.</p>
+<p><span id="MA-BCH-APM-02-008-DEF-002" class="apm-anchor"></span> <strong>Definición 8.2 (espacio de transformaciones).</strong> Denotamos por <span class="math inline">\(\operatorname{Hom}_{\mathbb F}(V,W)\)</span> el conjunto de transformaciones lineales de <span class="math inline">\(V\)</span> en <span class="math inline">\(W\)</span>. Para <span class="math inline">\(S,T\)</span> en ese conjunto y <span class="math inline">\(a\in\mathbb F\)</span>, definimos <span class="math inline">\((S+T)(x)=S(x)+T(x)\)</span> y <span class="math inline">\((aT)(x)=aT(x)\)</span> para todo <span class="math inline">\(x\in V\)</span>. Cuando <span class="math inline">\(V=W\)</span>, también escribimos <span class="math inline">\(\operatorname{End}_{\mathbb F}(V)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-PRP-002" class="apm-anchor"></span> <strong>Proposición 8.4.</strong> Con esas operaciones, <span class="math inline">\(\operatorname{Hom}_{\mathbb F}(V,W)\)</span> es un espacio vectorial sobre <span class="math inline">\(\mathbb F\)</span>.</p>
+<p><strong>Demostración.</strong> Debemos verificar primero que las operaciones permanecen dentro del conjunto. Para <span class="math inline">\(x,y\in V\)</span> y <span class="math inline">\(\alpha,\beta\in\mathbb F\)</span>, la linealidad de <span class="math inline">\(S\)</span> y <span class="math inline">\(T\)</span> da</p>
+<p><span class="math display">\[
+\begin{aligned}
+(S+T)(\alpha x+\beta y)
+&amp;=\alpha S(x)+\beta S(y)+\alpha T(x)+\beta T(y)\\
+&amp;=\alpha(S+T)(x)+\beta(S+T)(y).
+\end{aligned}
+\]</span></p>
+<p>El reordenamiento usa la conmutatividad de la suma en <span class="math inline">\(W\)</span>. Para un escalar fijo <span class="math inline">\(a\)</span>, el mismo cálculo da <span class="math inline">\((aT)(\alpha x+\beta y)=\alpha(aT)(x)+\beta(aT)(y)\)</span>.</p>
+<p>Las leyes vectoriales restantes se verifican evaluando en un <span class="math inline">\(x\)</span> arbitrario y usando las de <span class="math inline">\(W\)</span>: por ejemplo, <span class="math inline">\(((R+S)+T)(x)=(R(x)+S(x))+T(x)=R(x)+(S(x)+T(x))=(R+(S+T))(x)\)</span>, por lo que las funciones son iguales. La conmutatividad, las dos distributividades, la asociatividad del producto de escalares y la acción de la unidad se comprueban del mismo modo mediante las correspondientes identidades en <span class="math inline">\(W\)</span>. La función cero es el neutro aditivo y la función <span class="math inline">\(x\mapsto-T(x)\)</span> es el opuesto de <span class="math inline">\(T\)</span>. Quedan verificadas las leyes de espacio vectorial. <span class="math inline">\(\square\)</span></p>
+<p>Exigir un dominio y un codominio comunes permite que la suma tenga sentido. No podemos sumar sin más una función <span class="math inline">\(V\to W\)</span> y otra <span class="math inline">\(W\to U\)</span>: ni sus argumentos ni sus valores tienen por qué pertenecer a los mismos espacios. La composición, que estudiaremos después, sí enlazará transformaciones con esos tipos.</p>
+<p><span id="MA-BCH-APM-02-008-THM-003" class="apm-anchor"></span> <strong>Teorema 8.5 (dimensión del espacio de transformaciones).</strong> Si <span class="math inline">\(\dim V=n\)</span> y <span class="math inline">\(\dim W=m\)</span> son finitas, entonces <span class="math inline">\(\dim\operatorname{Hom}_{\mathbb F}(V,W)=mn\)</span>.</p>
+<p><strong>Demostración.</strong> Elijamos bases <span class="math inline">\((b_1,\ldots,b_n)\)</span> de <span class="math inline">\(V\)</span> y <span class="math inline">\((c_1,\ldots,c_m)\)</span> de <span class="math inline">\(W\)</span>. Por el teorema 8.2, para cada pareja <span class="math inline">\((i,j)\)</span> existe una transformación <span class="math inline">\(E_{ij}\)</span> cuyo valor en <span class="math inline">\(b_j\)</span> es <span class="math inline">\(c_i\)</span> y cuyo valor en los demás vectores de la base de <span class="math inline">\(V\)</span> es cero. Estas funciones son los candidatos a base de Hom.</p>
+<p>Si <span class="math inline">\(T:V\to W\)</span> es lineal, escribimos cada uno de sus valores prescritos como <span class="math inline">\(T(b_j)=\sum_i a_{ij}c_i\)</span>. La transformación <span class="math inline">\(\sum_{i,j}a_{ij}E_{ij}\)</span> tiene esos mismos valores en cada <span class="math inline">\(b_j\)</span>, por lo que coincide con <span class="math inline">\(T\)</span> en todo <span class="math inline">\(V\)</span>. Esto prueba que los <span class="math inline">\(E_{ij}\)</span> generan Hom.</p>
+<p>Para verificar su independencia, supongamos que <span class="math inline">\(\sum_{i,j}d_{ij}E_{ij}\)</span> es la función cero. Al evaluar en un <span class="math inline">\(b_k\)</span> fijo, todos los términos con <span class="math inline">\(j\ne k\)</span> desaparecen y obtenemos <span class="math inline">\(\sum_i d_{ik}c_i=0\)</span>. La independencia de la base de <span class="math inline">\(W\)</span> anula cada <span class="math inline">\(d_{ik}\)</span>. Como podemos hacer esto para todos los <span class="math inline">\(k\)</span>, se anulan todos los coeficientes. Por tanto, las <span class="math inline">\(mn\)</span> funciones <span class="math inline">\(E_{ij}\)</span> forman una base. Si alguno de los dos espacios es nulo, Hom contiene sólo la función cero y la base descrita es vacía, coherentemente con <span class="math inline">\(mn=0\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Para <span class="math inline">\(V=\mathbb R^2\)</span> y <span class="math inline">\(W=\mathbb R^3\)</span>, una transformación tiene dos valores básicos de tres coeficientes cada uno; Hom tiene dimensión seis. Estos seis parámetros pertenecen al espacio de funciones lineales, no al espacio de entradas ni al de salidas. Las funciones <span class="math inline">\(E_{ij}\)</span> de la prueba dependen de las bases elegidas; el número <span class="math inline">\(mn\)</span> permanece igual por la invariancia de dimensión demostrada en C07.</p>
+</section>
+<section id="componer-el-orden-de-las-operaciones" class="level2">
+<h2 class="anchored" data-anchor-id="componer-el-orden-de-las-operaciones">8.6. Componer: el orden de las operaciones</h2>
+<p><span id="MA-BCH-APM-02-008-PRP-003" class="apm-anchor"></span> <strong>Proposición 8.6 (composición y leyes algebraicas).</strong> Si <span class="math inline">\(T:U\to V\)</span> y <span class="math inline">\(S:V\to W\)</span> son lineales, su composición <span class="math inline">\(S\circ T:U\to W\)</span> es lineal. La composición es asociativa y tiene como identidades las funciones identidad de cada espacio. Además, distribuye sobre sumas de transformaciones de tipos compatibles y respeta la multiplicación por escalares.</p>
+<p><strong>Demostración.</strong> Aplicamos primero <span class="math inline">\(T\)</span> y después <span class="math inline">\(S\)</span>:</p>
+<p><span class="math display">\[
+(S\circ T)(\alpha x+\beta y)
+=S(\alpha T(x)+\beta T(y))
+=\alpha S(T(x))+\beta S(T(y)).
+\]</span></p>
+<p>La asociatividad se verifica sobre cada vector: <span class="math inline">\(R(S(T(x)))\)</span> es el valor tanto de <span class="math inline">\((R\circ S)\circ T\)</span> como de <span class="math inline">\(R\circ(S\circ T)\)</span>. Para <span class="math inline">\(T:U\to V\)</span>, las identidades correctas son <span class="math inline">\(I_V\circ T=T=T\circ I_U\)</span>.</p>
+<p>Si <span class="math inline">\(S_1,S_2:V\to W\)</span>, entonces <span class="math inline">\(((S_1+S_2)\circ T)(x)=S_1(T(x))+S_2(T(x))\)</span>, que da una distributividad. Si <span class="math inline">\(T_1,T_2:U\to V\)</span>, la otra usa la aditividad de <span class="math inline">\(S\)</span>: <span class="math inline">\((S\circ(T_1+T_2))(x)=S(T_1(x)+T_2(x))=S(T_1(x))+S(T_2(x))\)</span>. La homogeneidad de <span class="math inline">\(S\)</span> da <span class="math inline">\(S\circ(aT)=a(S\circ T)\)</span>, y la definición puntual da <span class="math inline">\((aS)\circ T=a(S\circ T)\)</span>. Todas son igualdades de funciones porque se verifican en cada entrada. <span class="math inline">\(\square\)</span></p>
+<p>Es frecuente escribir <span class="math inline">\(ST\)</span> en lugar de <span class="math inline">\(S\circ T\)</span>; en esa notación la operación situada a la derecha actúa primero. Incluso cuando ambas composiciones están definidas, el orden puede cambiar el resultado. En <span class="math inline">\(\mathbb F[t]\)</span>, sean <span class="math inline">\(D\)</span> la derivación formal y <span class="math inline">\(M(p)=tp\)</span>. Para cada monomio <span class="math inline">\(t^k\)</span>,</p>
+<p><span class="math display">\[
+DM(t^k)=(k+1)t^k,\qquad MD(t^k)=kt^k.
+\]</span></p>
+<p>Para <span class="math inline">\(k=0\)</span>, la segunda igualdad significa <span class="math inline">\(M(D1)=M(0)=0\)</span>; no hace falta escribir una potencia de exponente negativo. Restando y usando linealidad sobre las sumas finitas que forman los polinomios, obtenemos <span class="math inline">\(DM-MD=I\)</span>. La identidad vale en cualquier característica, pues <span class="math inline">\((k+1)-k=1\)</span> en todo cuerpo. En particular, <span class="math inline">\(D\)</span> y <span class="math inline">\(M\)</span> no conmutan.</p>
+<p>La resta de operadores y la composición cumplen funciones distintas en esta fórmula. <span class="math inline">\((D-M)(p)\)</span> resta dos polinomios de salida; <span class="math inline">\(DM(p)\)</span> introduce el polinomio <span class="math inline">\(M(p)\)</span> como entrada de <span class="math inline">\(D\)</span>. Confundirlas destruye el tipo de cálculo que acaba de producir la identidad.</p>
+</section>
+<section id="proyecciones-algebraicas" class="level2">
+<h2 class="anchored" data-anchor-id="proyecciones-algebraicas">8.7. Proyecciones algebraicas</h2>
+<p>Los complementos construidos en C07 permiten definir transformaciones sin comenzar por una fórmula de coordenadas. Supongamos que <span class="math inline">\(W\)</span> y <span class="math inline">\(C\)</span> son subespacios de <span class="math inline">\(V\)</span>, con <span class="math inline">\(V=W+C\)</span> y <span class="math inline">\(W\cap C=\{0\}\)</span>. Cada <span class="math inline">\(x\in V\)</span> se escribe de manera única como <span class="math inline">\(x=w+c\)</span>; podemos conservar el sumando de <span class="math inline">\(W\)</span> y descartar el de <span class="math inline">\(C\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-PRP-004" class="apm-anchor"></span> <strong>Proposición 8.7 (proyección según un complemento).</strong> La regla <span class="math inline">\(P(w+c)=w\)</span> define un operador lineal sobre <span class="math inline">\(V\)</span>. Sus valores pertenecen a <span class="math inline">\(W\)</span>, fija cada vector de <span class="math inline">\(W\)</span>, anula cada vector de <span class="math inline">\(C\)</span> y satisface <span class="math inline">\(P^2=P\)</span>.</p>
+<p><strong>Demostración.</strong> La unicidad de la descomposición garantiza que el valor no depende de una elección. Si <span class="math inline">\(x=w+c\)</span> e <span class="math inline">\(y=w'+c'\)</span>, entonces <span class="math inline">\(\alpha x+\beta y=(\alpha w+\beta w')+(\alpha c+\beta c')\)</span> es su descomposición en los dos subespacios. Por tanto, <span class="math inline">\(P(\alpha x+\beta y)=\alpha w+\beta w'=\alpha P(x)+\beta P(y)\)</span>. Para <span class="math inline">\(w\in W\)</span>, la descomposición es <span class="math inline">\(w=w+0\)</span> y <span class="math inline">\(P(w)=w\)</span>; para <span class="math inline">\(c\in C\)</span> es <span class="math inline">\(c=0+c\)</span> y <span class="math inline">\(P(c)=0\)</span>. Como <span class="math inline">\(P(x)\in W\)</span>, volver a aplicar <span class="math inline">\(P\)</span> no lo cambia, de donde <span class="math inline">\(P(P(x))=P(x)\)</span> para todo <span class="math inline">\(x\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Sobre <span class="math inline">\(W=\operatorname{span}(1,0)\)</span> y <span class="math inline">\(C_a=\operatorname{span}(a,1)\)</span> en <span class="math inline">\(\mathbb R^2\)</span>, la descomposición de C07 da <span class="math inline">\(P_a(x,y)=(x-ay,0)\)</span>. Todos estos operadores proyectan sobre la misma recta, pero lo hacen descartando direcciones distintas. Para <span class="math inline">\(a=1\)</span>, el punto <span class="math inline">\((3,2)\)</span> se envía a <span class="math inline">\((1,0)\)</span>; para <span class="math inline">\(a=0\)</span>, se envía a <span class="math inline">\((3,0)\)</span>. La palabra «proyección» no exige perpendicularidad en esta construcción.</p>
+<figure id="fig-apm-t2-c08-f02" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C08-F02.svg" alt="La proyección P(x,y)=(x-y,0) conserva el eje horizontal y descarta la dirección (1,1); dos puntos que difieren en esa dirección tienen la misma salida." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 8.2.</em> Las flechas entre puntos y sus proyecciones siguen rectas paralelas a <span class="math inline">\(C_1=\operatorname{span}(1,1)\)</span>. La igualdad <span class="math inline">\(P^2=P\)</span> expresa que los puntos del eje horizontal ya están fijos después de la primera aplicación.
+</figcaption>
+</figure>
+</section>
+<section id="traslaciones-y-aplicaciones-afines" class="level2">
+<h2 class="anchored" data-anchor-id="traslaciones-y-aplicaciones-afines">8.8. Traslaciones y aplicaciones afines</h2>
+<p>La función <span class="math inline">\(x\mapsto3x+2\)</span> tiene por gráfica una recta, pero no es una transformación lineal de <span class="math inline">\(\mathbb R\)</span> en <span class="math inline">\(\mathbb R\)</span> porque no lleva cero a cero. Podemos conservar su parentesco con las transformaciones lineales distinguiendo la parte que depende de la entrada de un desplazamiento fijo de la salida.</p>
+<p><span id="MA-BCH-APM-02-008-DEF-003" class="apm-anchor"></span> <strong>Definición 8.3 (aplicación afín).</strong> Una función <span class="math inline">\(f:V\to W\)</span> es <strong>afín</strong> si existe una transformación lineal <span class="math inline">\(T:V\to W\)</span> y un vector fijo <span class="math inline">\(b\in W\)</span> tales que <span class="math inline">\(f(x)=T(x)+b\)</span> para todo <span class="math inline">\(x\in V\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-PRP-005" class="apm-anchor"></span> <strong>Proposición 8.8.</strong> En una aplicación afín, <span class="math inline">\(b=f(0)\)</span> y <span class="math inline">\(T(x)=f(x)-f(0)\)</span>, por lo que la parte lineal y el desplazamiento son únicos. Una función es afín si y sólo si conserva todas las combinaciones afines finitas, es decir,</p>
+<p><span class="math display">\[
+f\left(\sum_{j=1}^r a_jx_j\right)=\sum_{j=1}^r a_jf(x_j)
+\quad\text{siempre que}\quad \sum_{j=1}^r a_j=1.
+\]</span></p>
+<p>Una aplicación afín es lineal si y sólo si <span class="math inline">\(f(0)=0\)</span>.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(f(x)=T(x)+b\)</span>, evaluar en cero da <span class="math inline">\(f(0)=b\)</span> y despejar da la fórmula única para <span class="math inline">\(T\)</span>. En una combinación cuyos coeficientes suman uno, calculamos</p>
+<p><span class="math display">\[
+\sum_j a_jf(x_j)=\sum_j a_jT(x_j)+\left(\sum_j a_j\right)b
+=T\left(\sum_j a_jx_j\right)+b,
+\]</span></p>
+<p>que es el valor de <span class="math inline">\(f\)</span> en la combinación.</p>
+<p>Recíprocamente, supongamos que se conservan todas esas combinaciones y definamos <span class="math inline">\(g(x)=f(x)-f(0)\)</span>. Los coeficientes <span class="math inline">\(1,1,-1\)</span> de los vectores <span class="math inline">\(x,y,0\)</span> suman uno en cualquier cuerpo. Aplicar la hipótesis da <span class="math inline">\(f(x+y)=f(x)+f(y)-f(0)\)</span>, de donde <span class="math inline">\(g(x+y)=g(x)+g(y)\)</span>. Los coeficientes <span class="math inline">\(a,1-a\)</span> de los vectores <span class="math inline">\(x,0\)</span> también suman uno y dan <span class="math inline">\(f(ax)=af(x)+(1-a)f(0)\)</span>, es decir, <span class="math inline">\(g(ax)=ag(x)\)</span>. Así <span class="math inline">\(g\)</span> es lineal y <span class="math inline">\(f=g+f(0)\)</span> es afín. Finalmente, si <span class="math inline">\(f(0)=0\)</span>, la descomposición afín es su parte lineal; si <span class="math inline">\(f\)</span> es lineal, la proposición 8.1 obliga a <span class="math inline">\(f(0)=0\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Sobre espacios reales, una combinación <span class="math inline">\(x+t(y-x)\)</span> recorre una recta y, para <span class="math inline">\(0\le t\le1\)</span>, el segmento entre <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. Una aplicación afín satisface <span class="math inline">\(f(x+t(y-x))=f(x)+t(f(y)-f(x))\)</span>. Si <span class="math inline">\(f(y)=f(x)\)</span>, toda esa recta se envía a un punto; en caso contrario, su imagen es una recta. Por eso la afirmación informal «las rectas se transforman en rectas» necesita admitir el colapso y tampoco caracteriza por sí sola la linealidad: las traslaciones llevan rectas a rectas y pueden mover el origen.</p>
+<figure id="fig-apm-t2-c08-f03" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C08-F03.svg" alt="La cizalla T(x,y)=(x+y,y) fija el origen; la función afín f(x,y)=T(x,y)+(1,1) conserva la malla paralela pero desplaza el origen a (1,1)." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 8.3.</em> La misma parte lineal transforma una malla en los dos paneles de salida. El desplazamiento fijo conserva las combinaciones cuyos coeficientes suman uno; para una suma sin esa restricción aparecerían dos copias del desplazamiento en lugar de una.
+</figcaption>
+</figure>
+<p>La diferencia se reconoce también al restar salidas: <span class="math inline">\(f(x)-f(y)=T(x-y)\)</span>. Una traslación se cancela en las diferencias, pero permanece en los valores absolutos. Al pasar de ecuaciones homogéneas a no homogéneas ya habíamos encontrado esa separación entre direcciones lineales y un punto de partida; la noción de aplicación afín la expresa ahora para funciones entre espacios.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">8.9. Ejercicios</h2>
+<p>Los cálculos iniciales fijan los tipos de entrada y salida. Los problemas posteriores piden construir transformaciones, justificar que una regla está bien definida y estudiar qué cambia al variar una hipótesis. Salvo indicación contraria, los espacios y escalares son reales.</p>
+<section id="reconocer-y-calcular" class="level3">
+<h3 class="anchored" data-anchor-id="reconocer-y-calcular">Reconocer y calcular</h3>
+<p><span id="MA-BCH-APM-02-008-EXR-001" class="apm-anchor"></span> <strong>1.</strong> Determine cuáles son lineales de <span class="math inline">\(\mathbb R^2\)</span> en <span class="math inline">\(\mathbb R^2\)</span>: <span class="math inline">\(T_1(x,y)=(x-2y,3x)\)</span>, <span class="math inline">\(T_2(x,y)=(x-2y+1,3x)\)</span> y <span class="math inline">\(T_3(x,y)=(x-2y,xy)\)</span>. Pruebe cada afirmación o dé un testigo de falla.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-002" class="apm-anchor"></span> <strong>2.</strong> Una transformación lineal <span class="math inline">\(T:\mathbb R^2\to\mathbb R^3\)</span> satisface <span class="math inline">\(T(1,1)=(1,2,0)\)</span> y <span class="math inline">\(T(1,-1)=(0,1,1)\)</span>. Halle <span class="math inline">\(T(3,1)\)</span> y la fórmula de <span class="math inline">\(T(x,y)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-003" class="apm-anchor"></span> <strong>3.</strong> Construya la transformación lineal <span class="math inline">\(T:P_2(\mathbb R)\to\mathbb R^2\)</span> con <span class="math inline">\(T(1)=(1,0)\)</span>, <span class="math inline">\(T(t)=(0,1)\)</span> y <span class="math inline">\(T(t^2)=(1,-1)\)</span>. Calcule <span class="math inline">\(T(2-3t+4t^2)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-004" class="apm-anchor"></span> <strong>4.</strong> Determine si existen transformaciones lineales <span class="math inline">\(\mathbb R^2\to\mathbb R^2\)</span> con <span class="math inline">\(T(e_1)=(2,1)\)</span>, <span class="math inline">\(T(e_2)=(-1,2)\)</span> y, respectivamente, <span class="math inline">\(T(e_1+e_2)=(1,3)\)</span> o <span class="math inline">\(T(e_1+e_2)=(2,3)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-005" class="apm-anchor"></span> <strong>5.</strong> Para <span class="math inline">\(E_2:P_3(\mathbb R)\to\mathbb R\)</span>, calcule <span class="math inline">\(E_2(1-2t+3t^2-t^3)\)</span>. Pruebe la linealidad de la evaluación e indique en qué dominio tiene sentido preguntar si también preserva productos; conteste allí la pregunta.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-006" class="apm-anchor"></span> <strong>6.</strong> Calcule la derivada formal de <span class="math inline">\(p=1+2t+3t^2+4t^3\)</span> sobre <span class="math inline">\(\mathbb R\)</span> y de su reducción de coeficientes sobre <span class="math inline">\(\mathbb F_2\)</span>. Explique la diferencia.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-007" class="apm-anchor"></span> <strong>7.</strong> Pruebe que la transposición es lineal sobre cualquier cuerpo. Defina la transposición conjugada mediante <span class="math inline">\((A^\dagger)_{ij}=\overline{a_{ji}}\)</span> y decida si es lineal sobre <span class="math inline">\(\mathbb C\)</span> y sobre <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-008" class="apm-anchor"></span> <strong>8.</strong> Sean <span class="math inline">\(S(x,y)=(x+y,y)\)</span> y <span class="math inline">\(T(x,y)=(x,2y)\)</span>. Calcule <span class="math inline">\(S+T\)</span>, <span class="math inline">\(2S-T\)</span>, <span class="math inline">\(ST\)</span> y <span class="math inline">\(TS\)</span>, e indique en qué entrada se distingue el orden de composición.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-009" class="apm-anchor"></span> <strong>9.</strong> En <span class="math inline">\(\mathbb R^2\)</span>, halle la proyección sobre el eje horizontal según el complemento <span class="math inline">\(\operatorname{span}(2,1)\)</span>. Verifique su linealidad, <span class="math inline">\(P^2=P\)</span> y el valor de <span class="math inline">\(P(5,2)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-010" class="apm-anchor"></span> <strong>10.</strong> Descomponga <span class="math inline">\(f(x,y)=(x+2y+3,-y+1)\)</span> en su parte lineal y su desplazamiento. Calcule <span class="math inline">\(f(0)\)</span> y compruebe la identidad <span class="math inline">\(f(x)-f(y)=T(x-y)\)</span> usando vectores generales.</p>
+</section>
+<section id="probar-y-controlar-hipótesis" class="level3">
+<h3 class="anchored" data-anchor-id="probar-y-controlar-hipótesis">Probar y controlar hipótesis</h3>
+<p><span id="MA-BCH-APM-02-008-EXR-011" class="apm-anchor"></span> <strong>11.</strong> Pruebe que dos transformaciones lineales que coinciden en una lista generadora coinciden en todo el espacio. Explique por qué no hace falta independencia.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-012" class="apm-anchor"></span> <strong>12.</strong> Sea <span class="math inline">\(V\)</span> de dimensión uno sobre <span class="math inline">\(\mathbb F\)</span> con base <span class="math inline">\((b)\)</span>. Describa todas las transformaciones lineales <span class="math inline">\(V\to W\)</span>. Deduzca que toda transformación lineal <span class="math inline">\(\mathbb F\to\mathbb F\)</span> es multiplicación por un escalar fijo.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-013" class="apm-anchor"></span> <strong>13.</strong> En el teorema 8.2, separe la función de generación de la función de independencia. Indique cuál garantiza que la propuesta alcanza cada entrada y cuál garantiza que no hay dos salidas propuestas para una entrada.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-014" class="apm-anchor"></span> <strong>14.</strong> Muestre que <span class="math inline">\(T(0)=0\)</span> no basta para probar linealidad. Dé además una función <span class="math inline">\(\mathbb R^2\to\mathbb R\)</span> que se anule en <span class="math inline">\(e_1,e_2\)</span> pero no sea la transformación cero.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-015" class="apm-anchor"></span> <strong>15.</strong> Si <span class="math inline">\(T:\mathbb Q^n\to\mathbb Q^m\)</span> es aditiva, pruebe que es lineal sobre <span class="math inline">\(\mathbb Q\)</span>. No suponga homogeneidad de antemano.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-016" class="apm-anchor"></span> <strong>16.</strong> Considere <span class="math inline">\(f:\mathbb R\to\mathbb R\)</span>, <span class="math inline">\(f(x)=|x|\)</span>. Determine qué ocurre con homogeneidad para escalares no negativos y para escalares arbitrarios. Localice también una falla de aditividad.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-017" class="apm-anchor"></span> <strong>17.</strong> Sea <span class="math inline">\(T:V\to W\)</span> una transformación lineal biyectiva. Pruebe directamente que su función inversa <span class="math inline">\(T^{-1}:W\to V\)</span> es lineal, sin usar matrices.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-018" class="apm-anchor"></span> <strong>18.</strong> Un cálculo afirma que <span class="math inline">\(S\circ(T_1+T_2)=S\circ T_1+S\circ T_2\)</span> para funciones cualesquiera. Identifique la hipótesis utilizada en la prueba correcta y dé un contraejemplo cuando falla.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-019" class="apm-anchor"></span> <strong>19.</strong> Sean <span class="math inline">\(S,T:V\to V\)</span> lineales. Pruebe que <span class="math inline">\(S-T\)</span> es lineal y que <span class="math inline">\(ST-TS\)</span> también lo es. ¿Deben coincidir esas dos operaciones?</p>
+<p><span id="MA-BCH-APM-02-008-EXR-020" class="apm-anchor"></span> <strong>20.</strong> Describa explícitamente las seis transformaciones elementales que forman una base de <span class="math inline">\(\operatorname{Hom}(\mathbb R^2,\mathbb R^3)\)</span> para las bases usuales y exprese <span class="math inline">\(T(x,y)=(2x-y,x+3y,4y)\)</span> mediante ellas.</p>
+</section>
+<section id="construir-transformaciones-y-contraejemplos" class="level3">
+<h3 class="anchored" data-anchor-id="construir-transformaciones-y-contraejemplos">Construir transformaciones y contraejemplos</h3>
+<p><span id="MA-BCH-APM-02-008-EXR-021" class="apm-anchor"></span> <strong>21.</strong> Determine todos los <span class="math inline">\(c\in\mathbb R\)</span> para los cuales existe <span class="math inline">\(T:\mathbb R^2\to\mathbb R\)</span> lineal con <span class="math inline">\(T(1,0)=1\)</span>, <span class="math inline">\(T(1,1)=2\)</span>, <span class="math inline">\(T(2,1)=c\)</span>. Dé la transformación cuando exista.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-022" class="apm-anchor"></span> <strong>22.</strong> Sea <span class="math inline">\(W=\operatorname{span}((1,1,0),(0,1,1))\subseteq\mathbb R^3\)</span>. Construya todas las extensiones lineales a <span class="math inline">\(\mathbb R^3\)</span> de la función lineal prescrita por <span class="math inline">\(S(1,1,0)=1\)</span>, <span class="math inline">\(S(0,1,1)=2\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-023" class="apm-anchor"></span> <strong>23.</strong> Para <span class="math inline">\(u=(1,0,0)\)</span>, <span class="math inline">\(v=(0,1,0)\)</span> y <span class="math inline">\(w=u+v\)</span> en <span class="math inline">\(\mathbb R^3\)</span>, prescriba salidas escalares <span class="math inline">\(1,2,3\)</span>. Explique por qué son compatibles y por qué no determinan una única transformación sobre todo <span class="math inline">\(\mathbb R^3\)</span>. Describa todas.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-024" class="apm-anchor"></span> <strong>24.</strong> Construya el operador lineal sobre <span class="math inline">\(P_2(\mathbb R)\)</span> que satisface <span class="math inline">\(T(1)=1\)</span>, <span class="math inline">\(T(t)=t+1\)</span> y <span class="math inline">\(T(t^2)=t^2+2t+1\)</span>. Reconozca una regla de sustitución y calcule <span class="math inline">\(T(2t^2-t+3)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-025" class="apm-anchor"></span> <strong>25.</strong> En <span class="math inline">\(\mathbb F_2[t]\)</span>, pruebe que <span class="math inline">\(Q(p)=p^2\)</span> es lineal sobre <span class="math inline">\(\mathbb F_2\)</span>. Muestre que la misma regla sobre <span class="math inline">\(\mathbb F_3[t]\)</span> no es aditiva.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-026" class="apm-anchor"></span> <strong>26.</strong> En el espacio de sucesiones <span class="math inline">\((x_j)_{j\ge0}\)</span> sobre <span class="math inline">\(\mathbb F\)</span>, defina <span class="math inline">\(L(x_0,x_1,\ldots)=(x_1,x_2,\ldots)\)</span> y <span class="math inline">\(R(x_0,x_1,\ldots)=(0,x_0,x_1,\ldots)\)</span>. Pruebe que son lineales y calcule <span class="math inline">\(LR\)</span> y <span class="math inline">\(RL\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-027" class="apm-anchor"></span> <strong>27.</strong> Dé una aplicación afín <span class="math inline">\(\mathbb R^2\to\mathbb R^2\)</span> que no sea lineal y una transformación lineal que envíe una recta completa a un punto. Explique qué falla en usar «rectas a rectas» como definición de linealidad.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-028" class="apm-anchor"></span> <strong>28.</strong> Pruebe que una aplicación afín real conserva puntos medios. Para <span class="math inline">\(f(x)=3x+2\)</span>, compare <span class="math inline">\(f((x+y)/2)\)</span> con <span class="math inline">\((f(x)+f(y))/2\)</span> y compare <span class="math inline">\(f(x+y)\)</span> con <span class="math inline">\(f(x)+f(y)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-029" class="apm-anchor"></span> <strong>29.</strong> Sean <span class="math inline">\(f(x)=T(x)+b\)</span> y <span class="math inline">\(g(y)=S(y)+c\)</span> aplicaciones afines de tipos compatibles. Determine la parte lineal y el desplazamiento de <span class="math inline">\(g\circ f\)</span>. Dé un ejemplo donde el orden de dos traslaciones y una transformación lineal cambie el resultado.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-030" class="apm-anchor"></span> <strong>30.</strong> Halle todas las funciones reales lineales que satisfacen <span class="math inline">\(T(2)=6\)</span>, y todas las funciones reales afines que satisfacen <span class="math inline">\(f(2)=6\)</span>, <span class="math inline">\(f(3)=8\)</span>. Explique la diferencia en cantidad de datos.</p>
+</section>
+<section id="integrar-y-transferir" class="level3">
+<h3 class="anchored" data-anchor-id="integrar-y-transferir">Integrar y transferir</h3>
+<p><span id="MA-BCH-APM-02-008-EXR-031" class="apm-anchor"></span> <strong>31.</strong> Sea <span class="math inline">\(W\subseteq V\)</span> y <span class="math inline">\(\dim V&lt;\infty\)</span>. Pruebe que cualquier transformación lineal <span class="math inline">\(S:W\to U\)</span> admite una extensión lineal a <span class="math inline">\(V\)</span>. Si <span class="math inline">\(W\ne V\)</span> y <span class="math inline">\(U\ne\{0\}\)</span>, pruebe que la extensión no es única.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-032" class="apm-anchor"></span> <strong>32.</strong> Sean <span class="math inline">\(\dim V=n\)</span>, <span class="math inline">\(\dim W=m\)</span> sobre <span class="math inline">\(\mathbb F_q\)</span>. Cuente las transformaciones lineales <span class="math inline">\(V\to W\)</span>. Si se prescriben valores arbitrarios en <span class="math inline">\(k\)</span> vectores independientes, ¿cuántas satisfacen esos valores? Incluya espacios nulos.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-033" class="apm-anchor"></span> <strong>33.</strong> Sobre <span class="math inline">\(\mathbb F[t]\)</span>, pruebe por comparación de coeficientes la regla formal <span class="math inline">\(D(pq)=(Dp)q+p(Dq)\)</span>. Deduzca <span class="math inline">\(DM_q-M_qD=M_{Dq}\)</span> para cualquier polinomio fijo <span class="math inline">\(q\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-034" class="apm-anchor"></span> <strong>34.</strong> Describa todos los operadores lineales <span class="math inline">\(T:P_2(\mathbb R)\to P_2(\mathbb R)\)</span> que conmutan con la derivación formal <span class="math inline">\(D\)</span>. Trabaje sobre <span class="math inline">\(1,t,t^2\)</span> y exprese el resultado como combinación de <span class="math inline">\(I,D,D^2\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-035" class="apm-anchor"></span> <strong>35.</strong> Sean <span class="math inline">\(v_1,\ldots,v_r\)</span> generadores de <span class="math inline">\(V\)</span> y <span class="math inline">\(R_0\subseteq\mathbb F^r\)</span> el conjunto de sus relaciones. Pruebe que <span class="math inline">\(R_0\)</span> es subespacio. Muestre que para verificar la compatibilidad del teorema 8.3 basta comprobar las relaciones de una base de <span class="math inline">\(R_0\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-036" class="apm-anchor"></span> <strong>36.</strong> Una transformación lineal <span class="math inline">\(T:P_2(\mathbb R)\to\mathbb R^2\)</span> debe satisfacer <span class="math inline">\(T(1)=(1,0)\)</span>, <span class="math inline">\(T(t)=(0,1)\)</span>, <span class="math inline">\(T(1+t+t^2)=(2,3)\)</span> y <span class="math inline">\(T(1+t)=(1,1)\)</span>. Determine si existe, calcule <span class="math inline">\(T\)</span> y explique cómo controla los datos redundantes el teorema 8.3.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-037" class="apm-anchor"></span> <strong>37.</strong> Sea <span class="math inline">\(\mathcal B\)</span> una base algebraica infinita de <span class="math inline">\(V\)</span>. Asigne a cada <span class="math inline">\(b\in\mathcal B\)</span> un vector arbitrario <span class="math inline">\(w_b\in W\)</span>. Pruebe que existe una única transformación lineal con esos valores. Explique por qué no intervienen sumas infinitas ni un nuevo teorema de existencia de bases.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-038" class="apm-anchor"></span> <strong>38.</strong> Se ha observado que una función real coincide con <span class="math inline">\(x\mapsto2x\)</span> sobre un conjunto finito de entradas. ¿Certifica esa prueba su linealidad? Para mostrar el límite de cualquier prueba finita de ese tipo, dado un conjunto finito <span class="math inline">\(A\subseteq\mathbb R\)</span>, construya una función no lineal que coincida con <span class="math inline">\(x\mapsto2x\)</span> en todos los puntos de <span class="math inline">\(A\)</span> y también en cero.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-039" class="apm-anchor"></span> <strong>39.</strong> Sea <span class="math inline">\(P:V\to V\)</span> lineal y <span class="math inline">\(P^2=P\)</span>. Defina <span class="math inline">\(W=\{x:P(x)=x\}\)</span> y <span class="math inline">\(C=\{x:P(x)=0\}\)</span>. Pruebe que son subespacios complementarios y que <span class="math inline">\(P\)</span> es precisamente la proyección sobre <span class="math inline">\(W\)</span> según <span class="math inline">\(C\)</span>, sin suponer dimensión finita.</p>
+<p><span id="MA-BCH-APM-02-008-EXR-040" class="apm-anchor"></span> <strong>40.</strong> Sobre un cuerpo de característica dos, no está definida la expresión <span class="math inline">\((x+y)/2\)</span>. Rehaga la prueba de que conservar todas las combinaciones afines implica ser afín usando combinaciones de dos y de tres puntos. Explique por qué la prueba del texto funciona también en esa característica.</p>
+</section>
+</section>
+<section id="soluciones-razonadas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-razonadas">8.10. Soluciones razonadas</h2>
+<p><span id="MA-BCH-APM-02-008-SOL-001" class="apm-anchor"></span> <strong>1.</strong> Para <span class="math inline">\(T_1\)</span>, cada componente es una combinación fija de las entradas; al sustituir <span class="math inline">\(a(x,y)+b(s,t)\)</span> se obtiene <span class="math inline">\(aT_1(x,y)+bT_1(s,t)\)</span> por distributividad, luego es lineal. En <span class="math inline">\(T_2\)</span>, el vector cero se envía a <span class="math inline">\((1,0)\)</span>, lo que descarta la linealidad. En <span class="math inline">\(T_3\)</span>, las entradas <span class="math inline">\(e_1,e_2\)</span> tienen salidas <span class="math inline">\((1,0),(-2,0)\)</span>, cuya suma es <span class="math inline">\((-1,0)\)</span>, pero <span class="math inline">\(T_3(e_1+e_2)=(-1,1)\)</span>. Falla la aditividad. Cada refutación usa un testigo explícito; la prueba positiva usa entradas arbitrarias.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-002" class="apm-anchor"></span> <strong>2.</strong> La base de entrada es <span class="math inline">\(b_1=(1,1)\)</span>, <span class="math inline">\(b_2=(1,-1)\)</span> y <span class="math inline">\((x,y)=\frac{x+y}{2}b_1+\frac{x-y}{2}b_2\)</span>. La superposición da <span class="math inline">\(T(x,y)=((x+y)/2,(3x+y)/2,(x-y)/2)\)</span>. Para <span class="math inline">\((3,1)\)</span>, los coeficientes son <span class="math inline">\(2,1\)</span>, de modo que <span class="math inline">\(T(3,1)=2(1,2,0)+(0,1,1)=(2,5,1)\)</span>. Sustituir <span class="math inline">\((3,1)\)</span> en la fórmula confirma el resultado.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-003" class="apm-anchor"></span> <strong>3.</strong> La lista <span class="math inline">\((1,t,t^2)\)</span> es base. Por el teorema 8.2, los valores elegidos definen una única transformación y su fórmula es <span class="math inline">\(T(a+bt+ct^2)=a(1,0)+b(0,1)+c(1,-1)=(a+c,b-c)\)</span>. En el polinomio pedido obtenemos <span class="math inline">\((2+4,-3-4)=(6,-7)\)</span>. La construcción ya prueba linealidad; también puede verificarse directamente que la fórmula respeta combinaciones de coeficientes.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-004" class="apm-anchor"></span> <strong>4.</strong> Los dos primeros valores determinan una transformación por la base usual, con fórmula <span class="math inline">\(T(x,y)=x(2,1)+y(-1,2)=(2x-y,x+2y)\)</span>. Su valor en <span class="math inline">\(e_1+e_2\)</span> debe ser <span class="math inline">\((1,3)\)</span>, luego la primera prescripción es compatible y la segunda es imposible. La relación de entrada <span class="math inline">\(e_1+e_2-(e_1+e_2)=0\)</span>, escrita con las tres posiciones de la lista, exige que se reste de la suma de las dos primeras salidas exactamente la tercera.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-005" class="apm-anchor"></span> <strong>5.</strong> Sustituir <span class="math inline">\(t=2\)</span> da <span class="math inline">\(1-4+12-8=1\)</span>. Para polinomios arbitrarios, <span class="math inline">\(E_2(ap+bq)=(ap+bq)(2)=ap(2)+bq(2)\)</span>, luego la evaluación es lineal. También se cumple <span class="math inline">\((pq)(2)=p(2)q(2)\)</span>, de modo que la evaluación preserva productos cuando el dominio los admite. El producto de dos elementos de <span class="math inline">\(P_3\)</span> puede salir de <span class="math inline">\(P_3\)</span>; por eso la afirmación sobre productos se entiende en <span class="math inline">\(\mathbb R[t]\)</span>, o en los pares cuyo producto permanezca en <span class="math inline">\(P_3\)</span>. La linealidad, por sí misma, no había exigido esta compatibilidad adicional.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-006" class="apm-anchor"></span> <strong>6.</strong> Sobre <span class="math inline">\(\mathbb R\)</span>, <span class="math inline">\(Dp=2+6t+12t^2\)</span>. Al reducir los coeficientes de <span class="math inline">\(p\)</span> módulo dos queda <span class="math inline">\(\overline p=1+t^2\)</span>, cuya derivada formal es <span class="math inline">\(0+2t=0\)</span> en <span class="math inline">\(\mathbb F_2[t]\)</span>. También la reducción de <span class="math inline">\(2+6t+12t^2\)</span> da cero. La regla formal es compatible con la reducción, pero los enteros pares se anulan en el cuerpo; de ahí que un polinomio no constante pueda tener derivada cero.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-007" class="apm-anchor"></span> <strong>7.</strong> Comparar entradas da <span class="math inline">\((aA+bB)^{\mathsf T}=aA^{\mathsf T}+bB^{\mathsf T}\)</span> para escalares del cuerpo, por lo que la transposición es lineal. Para la transposición conjugada se obtiene <span class="math inline">\((aA+bB)^\dagger=\overline aA^\dagger+\overline bB^\dagger\)</span>. Cuando <span class="math inline">\(a,b\)</span> son reales, coincide con la igualdad requerida y la regla es real lineal. Sobre <span class="math inline">\(\mathbb C\)</span> falla: con una matriz no nula <span class="math inline">\(A\)</span>, <span class="math inline">\((iA)^\dagger=-iA^\dagger\ne iA^\dagger\)</span>. Por ejemplo, basta la matriz de una entrada <span class="math inline">\((1)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-008" class="apm-anchor"></span> <strong>8.</strong> La suma es <span class="math inline">\((S+T)(x,y)=(2x+y,3y)\)</span> y <span class="math inline">\((2S-T)(x,y)=(x+2y,0)\)</span>. Componer en el orden escrito da <span class="math inline">\(ST(x,y)=S(x,2y)=(x+2y,2y)\)</span>, mientras que <span class="math inline">\(TS(x,y)=T(x+y,y)=(x+y,2y)\)</span>. En <span class="math inline">\((0,1)\)</span> las salidas son <span class="math inline">\((2,2)\)</span> y <span class="math inline">\((1,2)\)</span>, respectivamente. Sumar las salidas de dos funciones y aplicar una función después de otra son operaciones diferentes.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-009" class="apm-anchor"></span> <strong>9.</strong> La descomposición es <span class="math inline">\((x,y)=(x-2y,0)+y(2,1)\)</span>, por lo que <span class="math inline">\(P(x,y)=(x-2y,0)\)</span>. La fórmula respeta combinaciones lineales por distributividad. Al volver a aplicarla, la segunda entrada ya es cero y obtenemos <span class="math inline">\(P(x-2y,0)=(x-2y,0)\)</span>; así <span class="math inline">\(P^2=P\)</span>. Finalmente, <span class="math inline">\(P(5,2)=(1,0)\)</span>. Las direcciones descartadas no son perpendiculares al eje horizontal.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-010" class="apm-anchor"></span> <strong>10.</strong> El desplazamiento es <span class="math inline">\(b=f(0)=(3,1)\)</span> y la parte lineal es <span class="math inline">\(T(x,y)=(x+2y,-y)\)</span>. Para entradas <span class="math inline">\(u=(x,y)\)</span>, <span class="math inline">\(v=(s,t)\)</span>, la resta da <span class="math inline">\(f(u)-f(v)=(x-s+2(y-t),-(y-t))=T(u-v)\)</span>. Las constantes se cancelan en la diferencia, aunque impiden que <span class="math inline">\(f\)</span> sea lineal porque <span class="math inline">\(f(0)\ne0\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-011" class="apm-anchor"></span> <strong>11.</strong> Sea <span class="math inline">\(v_1,\ldots,v_r\)</span> una lista generadora donde <span class="math inline">\(T\)</span> y <span class="math inline">\(S\)</span> coinciden. Para cualquier <span class="math inline">\(x\)</span> existe una expresión <span class="math inline">\(x=\sum_j a_jv_j\)</span>, y entonces <span class="math inline">\(T(x)=\sum_j a_jT(v_j)=\sum_j a_jS(v_j)=S(x)\)</span>. No hace falta que la expresión sea única: estamos evaluando dos funciones ya bien definidas y lineales mediante una expresión disponible. La independencia era necesaria para la construcción libre de valores, no para comparar funciones existentes sobre generadores.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-012" class="apm-anchor"></span> <strong>12.</strong> Cada entrada se escribe de manera única como <span class="math inline">\(ab\)</span> con <span class="math inline">\(a\in\mathbb F\)</span>. Elegido cualquier <span class="math inline">\(w\in W\)</span>, la fórmula <span class="math inline">\(T(ab)=aw\)</span> define una transformación lineal, y toda transformación tiene esa forma con <span class="math inline">\(w=T(b)\)</span>. Para <span class="math inline">\(V=W=\mathbb F\)</span> y base <span class="math inline">\((1)\)</span>, se obtiene <span class="math inline">\(T(x)=xT(1)=cx\)</span>. El escalar <span class="math inline">\(c\)</span> es único y puede ser cero; no se requiere invertibilidad.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-013" class="apm-anchor"></span> <strong>13.</strong> La generación asegura que para cada <span class="math inline">\(x\)</span> existen coeficientes con <span class="math inline">\(x=\sum_j a_jb_j\)</span>; por ello la regla de salida propuesta alcanza todo el dominio. La independencia garantiza la unicidad de esos coeficientes, de modo que no hay dos instrucciones de salida que deban compararse. En una lista dependiente todavía podría definirse una transformación, pero haría falta comprobar compatibilidad entre representaciones, como en el teorema 8.3. Si la lista no genera, la propuesta sólo define valores sobre su espacio generado.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-014" class="apm-anchor"></span> <strong>14.</strong> La función <span class="math inline">\(x\mapsto x^2\)</span> se anula en cero pero no es aditiva, pues <span class="math inline">\(4\ne1+1\)</span> al comparar <span class="math inline">\(x=y=1\)</span>. Para la segunda petición, <span class="math inline">\(F(x,y)=xy\)</span> se anula tanto en <span class="math inline">\(e_1\)</span> como en <span class="math inline">\(e_2\)</span> y toma el valor uno en <span class="math inline">\((1,1)\)</span>. Coincide con la función cero sobre una base sin coincidir en todo el espacio, porque <span class="math inline">\(F\)</span> no es lineal. La hipótesis de linealidad no puede suprimirse del criterio de igualdad sobre una base.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-015" class="apm-anchor"></span> <strong>15.</strong> La aditividad da <span class="math inline">\(T(0)=0\)</span> por cancelación y <span class="math inline">\(T(-x)=-T(x)\)</span>. Sumar <span class="math inline">\(x\)</span> repetidamente da <span class="math inline">\(T(kx)=kT(x)\)</span> para enteros positivos; los opuestos extienden la identidad a todos los enteros. Si <span class="math inline">\(r\ne0\)</span> es entero, aplicarla a <span class="math inline">\(x/r\)</span> produce <span class="math inline">\(T(x)=rT(x/r)\)</span>, por lo que <span class="math inline">\(T(x/r)=T(x)/r\)</span> en el codominio racional. Para <span class="math inline">\(a=s/r\in\mathbb Q\)</span>, resulta <span class="math inline">\(T(ax)=sT(x/r)=aT(x)\)</span>. Junto con aditividad, es la linealidad sobre <span class="math inline">\(\mathbb Q\)</span>. El argumento alcanza los escalares racionales; no demuestra por sí solo homogeneidad para otros cuerpos.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-016" class="apm-anchor"></span> <strong>16.</strong> Para <span class="math inline">\(a\ge0\)</span>, se cumple <span class="math inline">\(|ax|=a|x|\)</span>. Para <span class="math inline">\(a=-1\)</span> y <span class="math inline">\(x=1\)</span>, el primer miembro vale uno y el segundo vale <span class="math inline">\(-1\)</span>, así que la homogeneidad falla al admitir todos los escalares reales. También falla aditividad en <span class="math inline">\(x=1\)</span>, <span class="math inline">\(y=-1\)</span>: <span class="math inline">\(|1+(-1)|=0\)</span>, pero <span class="math inline">\(|1|+|-1|=2\)</span>. Comprobar sólo intensidades no negativas no prueba la definición sobre un cuerpo que incluye los negativos.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-017" class="apm-anchor"></span> <strong>17.</strong> Dados <span class="math inline">\(u,v\in W\)</span>, la sobreyectividad proporciona <span class="math inline">\(x,y\in V\)</span> con <span class="math inline">\(u=T(x)\)</span> y <span class="math inline">\(v=T(y)\)</span>. La linealidad da <span class="math inline">\(au+bv=T(ax+by)\)</span>. Al aplicar la inversa, que existe por biyectividad, obtenemos <span class="math inline">\(T^{-1}(au+bv)=ax+by=aT^{-1}(u)+bT^{-1}(v)\)</span>. Esto prueba linealidad. La inyectividad asegura que las preimágenes empleadas por la inversa son únicas; la sobreyectividad asegura que existen para todas las entradas de <span class="math inline">\(W\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-018" class="apm-anchor"></span> <strong>18.</strong> El paso <span class="math inline">\(S(T_1(x)+T_2(x))=S(T_1(x))+S(T_2(x))\)</span> usa aditividad de <span class="math inline">\(S\)</span>. Si elegimos funciones reales <span class="math inline">\(S(z)=z^2\)</span> y <span class="math inline">\(T_1=T_2=I\)</span>, el miembro izquierdo es <span class="math inline">\(4x^2\)</span> y el derecho es <span class="math inline">\(2x^2\)</span>; difieren para <span class="math inline">\(x=1\)</span>. No se necesita linealidad de <span class="math inline">\(T_1,T_2\)</span> para ese paso concreto, pero sí que sus valores puedan sumarse en el dominio de <span class="math inline">\(S\)</span>. Para que toda la igualdad viva en Hom con las operaciones del capítulo, tomamos transformaciones lineales de tipos compatibles.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-019" class="apm-anchor"></span> <strong>19.</strong> El espacio Hom contiene <span class="math inline">\(S+(-1)T=S-T\)</span>, por la proposición 8.4. Las composiciones <span class="math inline">\(ST\)</span> y <span class="math inline">\(TS\)</span> son lineales por la proposición 8.6, y su diferencia también lo es. No son la misma operación: si <span class="math inline">\(S=I\)</span> y <span class="math inline">\(T=0\)</span> sobre un espacio no nulo, <span class="math inline">\(S-T=I\)</span>, mientras que <span class="math inline">\(ST-TS=0\)</span>. El primero resta dos valores; el segundo compara dos órdenes de aplicación.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-020" class="apm-anchor"></span> <strong>20.</strong> Para <span class="math inline">\(i=1,2,3\)</span>, definimos <span class="math inline">\(E_{i1}(x,y)=xe_i\)</span> y <span class="math inline">\(E_{i2}(x,y)=ye_i\)</span>, con <span class="math inline">\(e_i\)</span> ahora en el codominio <span class="math inline">\(\mathbb R^3\)</span>. Son las seis funciones del teorema 8.5 y forman una base de Hom. La transformación pedida es <span class="math inline">\(2E_{11}-E_{12}+E_{21}+3E_{22}+4E_{32}\)</span>; el coeficiente de <span class="math inline">\(E_{31}\)</span> es cero. Evaluar en <span class="math inline">\(e_1\)</span> da <span class="math inline">\((2,1,0)\)</span> y en <span class="math inline">\(e_2\)</span> da <span class="math inline">\((-1,3,4)\)</span>, y estos valores verifican la expresión por la base del dominio.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-021" class="apm-anchor"></span> <strong>21.</strong> Los vectores <span class="math inline">\((1,0)\)</span> y <span class="math inline">\((1,1)\)</span> son independientes y forman una base. Como <span class="math inline">\((2,1)=(1,0)+(1,1)\)</span>, la única salida compatible es <span class="math inline">\(c=1+2=3\)</span>. La función resultante tiene <span class="math inline">\(T(e_1)=1\)</span> y <span class="math inline">\(T(e_2)=T(1,1)-T(1,0)=1\)</span>, luego <span class="math inline">\(T(x,y)=x+y\)</span>. Esta fórmula alcanza todos los datos cuando <span class="math inline">\(c=3\)</span> y muestra existencia además de la condición necesaria.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-022" class="apm-anchor"></span> <strong>22.</strong> Sea <span class="math inline">\(u=(1,1,0)\)</span> y <span class="math inline">\(v=(0,1,1)\)</span>. La lista <span class="math inline">\((u,v,e_2)\)</span> es base: en una relación, las entradas primera y tercera anulan los coeficientes de <span class="math inline">\(u,v\)</span>, y después la segunda anula el de <span class="math inline">\(e_2\)</span>. Escojamos libremente <span class="math inline">\(T(e_2)=a\in\mathbb R\)</span>. Entonces <span class="math inline">\(T(e_1)=1-a\)</span> y <span class="math inline">\(T(e_3)=2-a\)</span>, por lo que todas las extensiones tienen la forma <span class="math inline">\(T_a(x,y,z)=(1-a)x+ay+(2-a)z\)</span>. Cada fórmula es lineal y satisface los datos; toda extensión aparece al tomar <span class="math inline">\(a=T(e_2)\)</span>. La libertad corresponde a la dirección añadida a la base del subespacio.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-023" class="apm-anchor"></span> <strong>23.</strong> La única clase de relaciones entre <span class="math inline">\(u,v,w\)</span> viene de <span class="math inline">\(w=u+v\)</span>, y las salidas cumplen <span class="math inline">\(3=1+2\)</span>. Por tanto definen una transformación sobre el plano generado por <span class="math inline">\(e_1,e_2\)</span>. No generan <span class="math inline">\(\mathbb R^3\)</span>, de modo que el valor en <span class="math inline">\(e_3\)</span> no está determinado. Elegido <span class="math inline">\(a\in\mathbb R\)</span>, obtenemos <span class="math inline">\(T_a(x,y,z)=x+2y+az\)</span>. Todas estas transformaciones cumplen los datos y son distintas cuando cambia <span class="math inline">\(a\)</span>, pues se distinguen en <span class="math inline">\(e_3\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-024" class="apm-anchor"></span> <strong>24.</strong> Los tres valores sobre la base usual definen un único operador. Para <span class="math inline">\(p=a+bt+ct^2\)</span>, su valor es <span class="math inline">\(a+b(t+1)+c(t^2+2t+1)=p(t+1)\)</span>. La sustitución por un polinomio fijo respeta las combinaciones lineales y preserva aquí el grado máximo dos. En el polinomio pedido, <span class="math inline">\(2(t+1)^2-(t+1)+3=2t^2+3t+4\)</span>. Se puede comprobar el mismo resultado sumando las tres imágenes prescritas con los coeficientes <span class="math inline">\(3,-1,2\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-025" class="apm-anchor"></span> <strong>25.</strong> En característica dos, la conmutatividad del producto da <span class="math inline">\((p+q)^2=p^2+2pq+q^2=p^2+q^2\)</span>. Los únicos escalares de <span class="math inline">\(\mathbb F_2\)</span> son cero y uno, y <span class="math inline">\(Q(ap)=aQ(p)\)</span> para ambos, luego <span class="math inline">\(Q\)</span> es lineal sobre ese cuerpo. En <span class="math inline">\(\mathbb F_3[t]\)</span>, tomar <span class="math inline">\(p=q=1\)</span> da <span class="math inline">\(Q(1+1)=2^2=1\)</span>, mientras que <span class="math inline">\(Q(1)+Q(1)=2\)</span>. La aditividad falla. La afirmación sobre homogeneidad del primer caso usa que los escalares pertenecen precisamente a <span class="math inline">\(\mathbb F_2\)</span>, no sólo que el cuerpo tenga característica dos.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-026" class="apm-anchor"></span> <strong>26.</strong> La suma y el producto por escalares de sucesiones se efectúan entrada por entrada. Desplazar los índices respeta ambas operaciones, al igual que insertar un cero inicial, por lo que <span class="math inline">\(L\)</span> y <span class="math inline">\(R\)</span> son lineales. Las composiciones son <span class="math inline">\(LR(x_0,x_1,\ldots)=(x_0,x_1,\ldots)\)</span> y <span class="math inline">\(RL(x_0,x_1,\ldots)=(0,x_1,x_2,\ldots)\)</span>. Así <span class="math inline">\(LR=I\)</span>, pero <span class="math inline">\(RL\ne I\)</span>, como se ve en <span class="math inline">\((1,0,0,\ldots)\)</span>. La segunda composición es una proyección que descarta la primera entrada. No se han usado sumas infinitas: las operaciones son definiciones punto a punto.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-027" class="apm-anchor"></span> <strong>27.</strong> La traslación <span class="math inline">\(f(x,y)=(x+1,y)\)</span> es afín con parte lineal identidad y desplazamiento <span class="math inline">\((1,0)\)</span>; no es lineal porque mueve el cero. La transformación <span class="math inline">\(P(x,y)=(x,0)\)</span> envía el eje vertical completo al punto cero. Por tanto, una definición basada sólo en imágenes de rectas excluiría proyecciones lineales si exigiera rectas no degeneradas, y admitiría traslaciones no lineales si se limitara a conservar rectas. La definición mediante combinaciones controla ambos casos.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-028" class="apm-anchor"></span> <strong>28.</strong> Los coeficientes <span class="math inline">\(1/2,1/2\)</span> suman uno en <span class="math inline">\(\mathbb R\)</span>, luego una aplicación afín satisface <span class="math inline">\(f((x+y)/2)=(f(x)+f(y))/2\)</span>. Para <span class="math inline">\(f(x)=3x+2\)</span>, ambos miembros valen <span class="math inline">\(3(x+y)/2+2\)</span>. En cambio, <span class="math inline">\(f(x+y)=3x+3y+2\)</span> y <span class="math inline">\(f(x)+f(y)=3x+3y+4\)</span>. La diferencia de dos unidades procede de contar el desplazamiento dos veces al sumar salidas. Conservar puntos medios es una consecuencia de afinidad; aquí no se afirma un recíproco sin otras hipótesis.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-029" class="apm-anchor"></span> <strong>29.</strong> Sustituyendo, <span class="math inline">\(g(f(x))=S(T(x)+b)+c=ST(x)+S(b)+c\)</span>. La parte lineal es <span class="math inline">\(ST\)</span> y el desplazamiento es <span class="math inline">\(S(b)+c\)</span>. Para un ejemplo de orden, sean <span class="math inline">\(T(x)=2x\)</span> en <span class="math inline">\(\mathbb R^2\)</span> y las traslaciones <span class="math inline">\(\tau_1(x)=x+e_1\)</span>, <span class="math inline">\(\tau_2(x)=x+e_2\)</span>. Entonces <span class="math inline">\(\tau_2\tau_1T(x)=2x+e_1+e_2\)</span>, mientras que <span class="math inline">\(T\tau_2\tau_1(x)=2x+2e_1+2e_2\)</span>. Las dos traslaciones conmutan entre sí; al atravesar el operador <span class="math inline">\(T\)</span>, su desplazamiento se duplica y el resultado cambia.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-030" class="apm-anchor"></span> <strong>30.</strong> Una transformación real lineal de la recta es <span class="math inline">\(T(x)=ax\)</span>, y <span class="math inline">\(T(2)=6\)</span> obliga a <span class="math inline">\(a=3\)</span>, por lo que hay exactamente una. Una función afín tiene forma <span class="math inline">\(f(x)=ax+b\)</span>. Los datos dan <span class="math inline">\(2a+b=6\)</span>, <span class="math inline">\(3a+b=8\)</span>; restar produce <span class="math inline">\(a=2\)</span> y después <span class="math inline">\(b=2\)</span>. La función es <span class="math inline">\(f(x)=2x+2\)</span>. En el caso lineal sólo se elige el valor sobre una base; el caso afín tiene además un desplazamiento independiente que requiere otro dato para determinarlo.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-031" class="apm-anchor"></span> <strong>31.</strong> Elija una base de <span class="math inline">\(W\)</span> y extiéndala a una base de <span class="math inline">\(V\)</span> por C07. Conserve en la primera parte los valores dados por <span class="math inline">\(S\)</span> y elija cualquier salida para los vectores añadidos. El teorema 8.2 construye una transformación en <span class="math inline">\(V\)</span>, y el ejercicio 11 prueba que coincide con <span class="math inline">\(S\)</span> sobre <span class="math inline">\(W\)</span> porque coincide en su base. Si <span class="math inline">\(W\ne V\)</span>, hay al menos un vector añadido; si <span class="math inline">\(U\ne\{0\}\)</span>, podemos asignarle cero en una extensión y un vector no nulo en otra, manteniendo iguales las demás elecciones. Las dos extensiones se distinguen en ese vector. Si no hay vectores añadidos o el codominio es nulo, esa libertad desaparece.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-032" class="apm-anchor"></span> <strong>32.</strong> Cada uno de los <span class="math inline">\(n\)</span> vectores de una base de <span class="math inline">\(V\)</span> puede enviarse libremente a cualquiera de los <span class="math inline">\(q^m\)</span> vectores de <span class="math inline">\(W\)</span>. El teorema 8.2 garantiza que cada elección da exactamente una transformación y que elecciones distintas dan transformaciones distintas. Hay, por tanto, <span class="math inline">\(q^{mn}\)</span>. Si se han fijado valores en <span class="math inline">\(k\)</span> vectores independientes, los extendemos a una base y quedan <span class="math inline">\(n-k\)</span> elecciones libres; el número es <span class="math inline">\(q^{m(n-k)}\)</span>. No hay condición de compatibilidad adicional porque los primeros vectores son independientes. Cuando <span class="math inline">\(n=0\)</span> o <span class="math inline">\(m=0\)</span>, la fórmula da uno, como corresponde a la única transformación cero; necesariamente <span class="math inline">\(k=0\)</span> si el dominio es nulo.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-033" class="apm-anchor"></span> <strong>33.</strong> Escribamos <span class="math inline">\(p=\sum_i a_it^i\)</span>, <span class="math inline">\(q=\sum_j b_jt^j\)</span>, con sumas finitas. En el producto, cada par de monomios aporta <span class="math inline">\(a_ib_jt^{i+j}\)</span>; al derivarlo aporta <span class="math inline">\((i+j)a_ib_jt^{i+j-1}\)</span> cuando <span class="math inline">\(i+j\ge1\)</span>. Separar el factor <span class="math inline">\(i+j\)</span> en sus dos sumandos distribuye esa contribución entre <span class="math inline">\(i a_ib_jt^{i-1+j}\)</span> y <span class="math inline">\(j a_ib_jt^{i+j-1}\)</span>, correspondientes a <span class="math inline">\((Dp)q\)</span> y <span class="math inline">\(p(Dq)\)</span>. Los términos con índice cero en el factor derivado se omiten, por lo que no se introduce <span class="math inline">\(t^{-1}\)</span>. Sumar todos los pares prueba la regla en cualquier característica. En consecuencia, <span class="math inline">\(D(qp)-qDp=(Dq)p\)</span>, es decir, <span class="math inline">\(DM_q-M_qD=M_{Dq}\)</span> como igualdad de operadores.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-034" class="apm-anchor"></span> <strong>34.</strong> Primero, <span class="math inline">\(D(T1)=T(D1)=0\)</span>. En <span class="math inline">\(P_2(\mathbb R)\)</span> esto obliga a <span class="math inline">\(T1=a\)</span> constante, porque la derivada de <span class="math inline">\(r+st+ut^2\)</span> es <span class="math inline">\(s+2ut\)</span>. Después, <span class="math inline">\(D(Tt)=T(1)=a\)</span>, así que <span class="math inline">\(Tt=b+at\)</span> para alguna constante <span class="math inline">\(b\)</span>. Finalmente, <span class="math inline">\(D(Tt^2)=T(2t)=2b+2at\)</span>, lo que obliga a <span class="math inline">\(Tt^2=c+2bt+at^2\)</span>. Los tres parámetros <span class="math inline">\(a,b,c\)</span> son libres: por prescripción sobre la base definen un operador, y las igualdades verificadas prueban <span class="math inline">\(DT=TD\)</span> sobre esa base y, por linealidad, en todo el espacio. Como <span class="math inline">\(D^2(t^2)=2\)</span>, la expresión es <span class="math inline">\(T=aI+bD+(c/2)D^2\)</span>. Las divisiones por dos y el criterio de derivada nula se usan aquí sobre <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-035" class="apm-anchor"></span> <strong>35.</strong> La lista nula de coeficientes pertenece a <span class="math inline">\(R_0\)</span>. Si <span class="math inline">\(a,b\in R_0\)</span> y <span class="math inline">\(\alpha,\beta\in\mathbb F\)</span>, se tiene <span class="math inline">\(\sum_j(\alpha a_j+\beta b_j)v_j=\alpha\sum_j a_jv_j+\beta\sum_j b_jv_j=0\)</span>, por lo que <span class="math inline">\(R_0\)</span> es subespacio de <span class="math inline">\(\mathbb F^r\)</span>. Tiene una base finita por C07. Si las salidas propuestas anulan las relaciones de esa base, anulan cualquier combinación de ellas: para <span class="math inline">\(a=\sum_\ell c_\ell r^{(\ell)}\)</span>, la suma <span class="math inline">\(\sum_j a_jw_j\)</span> es <span class="math inline">\(\sum_\ell c_\ell\sum_j r_j^{(\ell)}w_j=0\)</span>. La condición de compatibilidad queda verificada para todas las relaciones. El recíproco es inmediato porque los vectores de una base de relaciones son relaciones particulares.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-036" class="apm-anchor"></span> <strong>36.</strong> Los polinomios <span class="math inline">\(1,t,1+t+t^2\)</span> forman una base: en una relación, el coeficiente de <span class="math inline">\(t^2\)</span> anula el tercer escalar y después los otros dos se anulan. El cuarto vector <span class="math inline">\(1+t\)</span> es la suma de los dos primeros. Su salida propuesta <span class="math inline">\((1,1)\)</span> es justamente <span class="math inline">\((1,0)+(0,1)\)</span>, así que respeta la relación y los datos son compatibles. El valor de <span class="math inline">\(t^2\)</span> debe ser <span class="math inline">\((2,3)-(1,0)-(0,1)=(1,2)\)</span>. Por tanto, <span class="math inline">\(T(a+bt+ct^2)=(a+c,b+2c)\)</span>. La fórmula verifica los cuatro datos. Como los primeros tres forman una base, toda relación entre los cuatro generadores es múltiplo de la ya comprobada; el ejercicio 35 explica por qué no quedan obligaciones ocultas.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-037" class="apm-anchor"></span> <strong>37.</strong> Por definición de base algebraica, cada <span class="math inline">\(x\)</span> tiene una representación única con soporte finito, <span class="math inline">\(x=\sum_{b\in J}a_bb\)</span> para algún conjunto finito <span class="math inline">\(J\subseteq\mathcal B\)</span>. Definimos <span class="math inline">\(T(x)=\sum_{b\in J}a_bw_b\)</span>. Añadir posiciones con coeficiente cero no altera la salida, y la independencia de la base garantiza que dos representaciones tienen los mismos coeficientes después de reunir sus soportes finitos. La suma de dos vectores sólo requiere la unión de dos soportes finitos, y el cálculo del teorema 8.2 prueba linealidad. La superposición obliga a la misma fórmula para cualquier transformación con los valores prescritos, lo que prueba unicidad. La base ya se entrega como hipótesis; no se construye una base de un espacio arbitrario ni se admite una suma infinita de salidas.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-038" class="apm-anchor"></span> <strong>38.</strong> Un conjunto finito de pruebas no controla todas las entradas reales. Elijamos <span class="math inline">\(c\notin A\cup\{0\}\)</span> y definamos <span class="math inline">\(f(x)=2x\)</span> para <span class="math inline">\(x\ne c\)</span>, pero <span class="math inline">\(f(c)=2c+1\)</span>. Coincide con la regla lineal en todos los puntos pedidos y en cero. No es lineal: elegimos <span class="math inline">\(d\)</span> distinto de <span class="math inline">\(0\)</span> y <span class="math inline">\(c\)</span>; entonces ni <span class="math inline">\(d\)</span> ni <span class="math inline">\(c-d\)</span> son <span class="math inline">\(c\)</span>, y <span class="math inline">\(f(d)+f(c-d)=2c\)</span>, mientras que <span class="math inline">\(f(d+(c-d))=f(c)=2c+1\)</span>. Tenemos una falla explícita de aditividad fuera de los datos de control. La construcción se hace para cada conjunto finito fijado; no se afirma que una misma función distinta de <span class="math inline">\(2x\)</span> coincida con él en todas las entradas reales.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-039" class="apm-anchor"></span> <strong>39.</strong> Ambos conjuntos contienen cero. Si <span class="math inline">\(x,y\in W\)</span>, entonces <span class="math inline">\(P(ax+by)=aP(x)+bP(y)=ax+by\)</span>, así que <span class="math inline">\(W\)</span> es subespacio; si <span class="math inline">\(x,y\in C\)</span>, la misma cuenta da cero y prueba que <span class="math inline">\(C\)</span> es subespacio. Para cualquier <span class="math inline">\(v\)</span>, la igualdad <span class="math inline">\(v=P(v)+(v-P(v))\)</span> da una suma con primer término en <span class="math inline">\(W\)</span>, pues <span class="math inline">\(P^2(v)=P(v)\)</span>, y segundo en <span class="math inline">\(C\)</span>, pues <span class="math inline">\(P(v-P(v))=P(v)-P^2(v)=0\)</span>. Si <span class="math inline">\(z\in W\cap C\)</span>, entonces <span class="math inline">\(z=P(z)=0\)</span>, así que la intersección es nula. La descomposición es única y <span class="math inline">\(P\)</span> conserva exactamente su primer sumando. No se usó una base ni una cota de dimensión.</p>
+<p><span id="MA-BCH-APM-02-008-SOL-040" class="apm-anchor"></span> <strong>40.</strong> Definimos <span class="math inline">\(g(x)=f(x)-f(0)\)</span>. Para homogeneidad usamos los dos puntos <span class="math inline">\(x,0\)</span> y coeficientes <span class="math inline">\(a,1-a\)</span>, cuya suma es uno: <span class="math inline">\(f(ax)=af(x)+(1-a)f(0)\)</span>, luego <span class="math inline">\(g(ax)=ag(x)\)</span>. Para aditividad usamos <span class="math inline">\(x,y,0\)</span> con coeficientes <span class="math inline">\(1,1,-1\)</span>, cuya suma sigue siendo uno; la conservación da <span class="math inline">\(f(x+y)=f(x)+f(y)-f(0)\)</span> y, al restar <span class="math inline">\(f(0)\)</span>, resulta <span class="math inline">\(g(x+y)=g(x)+g(y)\)</span>. En característica dos, <span class="math inline">\(-1=1\)</span> y <span class="math inline">\(1+1+1=1\)</span>, por lo que esa combinación de tres puntos sigue siendo válida. No se ha dividido por dos. La igualdad completa para combinaciones afines, y no una fórmula de puntos medios inexistente, es la hipótesis que permite el argumento.</p>
+</section>
+<section id="lecturas-y-referencias" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-referencias">Lecturas y referencias</h2>
+<p>La definición, los ejemplos y la prescripción sobre una base pueden contrastarse con Hoffman y Kunze, <em>Linear Algebra</em>, 2.ª edición, §3.1; Friedberg, Insel y Spence, <em>Linear Algebra</em>, 5.ª edición, §2.1, desarrolla estos temas junto con núcleo e imagen, que aquí se reservan a C09. Nathaniel Johnston, <em>Advanced Linear and Matrix Algebra</em> (2021), §1.2.3, compara transformaciones sobre vectores, matrices y polinomios. Axler, <em>Linear Algebra Done Right</em>, 4.ª edición, §3A, estudia el espacio de transformaciones, la prescripción sobre una base y la composición. La prueba de dimensión de Hom se construye directamente con transformaciones elementales; la representación matricial sistemática aparecerá en C12.</p>
+<hr>
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-07-bases-y-dimension.html">← Capítulo 7</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-09-nucleo-imagen-y-rango-nulidad.html">Capítulo 9 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 2 del tomo II, con 38 ejercicios y sus soluciones desarrolladas.">
+
+<title>Capítulo 2. Matrices como representación de sistemas – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#qué-información-guarda-una-matriz" id="toc-qué-información-guarda-una-matriz" class="nav-link active" data-scroll-target="#qué-información-guarda-una-matriz">2.1. Qué información guarda una matriz</a></li>
+  <li><a href="#operaciones-sobre-filas-y-equivalencia" id="toc-operaciones-sobre-filas-y-equivalencia" class="nav-link" data-scroll-target="#operaciones-sobre-filas-y-equivalencia">2.2. Operaciones sobre filas y equivalencia</a></li>
+  <li><a href="#escalonar-y-reducir" id="toc-escalonar-y-reducir" class="nav-link" data-scroll-target="#escalonar-y-reducir">2.3. Escalonar y reducir</a></li>
+  <li><a href="#la-información-que-las-operaciones-conservan" id="toc-la-información-que-las-operaciones-conservan" class="nav-link" data-scroll-target="#la-información-que-las-operaciones-conservan">2.4. La información que las operaciones conservan</a></li>
+  <li><a href="#por-qué-la-forma-reducida-es-única" id="toc-por-qué-la-forma-reducida-es-única" class="nav-link" data-scroll-target="#por-qué-la-forma-reducida-es-única">2.5. Por qué la forma reducida es única</a>
+  <ul class="collapse">
+  <li><a href="#reconocer-la-información-común-de-dos-tablas" id="toc-reconocer-la-información-común-de-dos-tablas" class="nav-link" data-scroll-target="#reconocer-la-información-común-de-dos-tablas">Reconocer la información común de dos tablas</a></li>
+  <li><a href="#sistemas-equivalentes-y-matrices-equivalentes-por-filas" id="toc-sistemas-equivalentes-y-matrices-equivalentes-por-filas" class="nav-link" data-scroll-target="#sistemas-equivalentes-y-matrices-equivalentes-por-filas">Sistemas equivalentes y matrices equivalentes por filas</a></li>
+  </ul></li>
+  <li><a href="#el-rango-como-invariante" id="toc-el-rango-como-invariante" class="nav-link" data-scroll-target="#el-rango-como-invariante">2.6. El rango como invariante</a></li>
+  <li><a href="#resolver-varios-sistemas-con-una-sola-reducción" id="toc-resolver-varios-sistemas-con-una-sola-reducción" class="nav-link" data-scroll-target="#resolver-varios-sistemas-con-una-sola-reducción">2.7. Resolver varios sistemas con una sola reducción</a></li>
+  <li><a href="#existencia-para-cualquier-término-independiente" id="toc-existencia-para-cualquier-término-independiente" class="nav-link" data-scroll-target="#existencia-para-cualquier-término-independiente">2.8. Existencia para cualquier término independiente</a>
+  <ul class="collapse">
+  <li><a href="#hasta-dónde-conviene-reducir" id="toc-hasta-dónde-conviene-reducir" class="nav-link" data-scroll-target="#hasta-dónde-conviene-reducir">Hasta dónde conviene reducir</a></li>
+  </ul></li>
+  <li><a href="#parámetros-cuerpos-y-límites-de-la-representación" id="toc-parámetros-cuerpos-y-límites-de-la-representación" class="nav-link" data-scroll-target="#parámetros-cuerpos-y-límites-de-la-representación">2.9. Parámetros, cuerpos y límites de la representación</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">2.10. Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#representar-reducir-e-interpretar" id="toc-representar-reducir-e-interpretar" class="nav-link" data-scroll-target="#representar-reducir-e-interpretar">Representar, reducir e interpretar</a></li>
+  <li><a href="#parámetros-y-control-del-procedimiento" id="toc-parámetros-y-control-del-procedimiento" class="nav-link" data-scroll-target="#parámetros-y-control-del-procedimiento">Parámetros y control del procedimiento</a></li>
+  <li><a href="#pruebas-ejemplos-y-contraejemplos" id="toc-pruebas-ejemplos-y-contraejemplos" class="nav-link" data-scroll-target="#pruebas-ejemplos-y-contraejemplos">Pruebas, ejemplos y contraejemplos</a></li>
+  <li><a href="#síntesis-y-transferencia" id="toc-síntesis-y-transferencia" class="nav-link" data-scroll-target="#síntesis-y-transferencia">Síntesis y transferencia</a></li>
+  <li><a href="#combinaciones-de-filas-y-elección-del-procedimiento" id="toc-combinaciones-de-filas-y-elección-del-procedimiento" class="nav-link" data-scroll-target="#combinaciones-de-filas-y-elección-del-procedimiento">Combinaciones de filas y elección del procedimiento</a></li>
+  </ul></li>
+  <li><a href="#soluciones-razonadas" id="toc-soluciones-razonadas" class="nav-link" data-scroll-target="#soluciones-razonadas">2.11. Soluciones razonadas</a></li>
+  <li><a href="#lecturas-y-referencias" id="toc-lecturas-y-referencias" class="nav-link" data-scroll-target="#lecturas-y-referencias">Lecturas y referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 2. Matrices como representación de sistemas</h1>
+<p class="subtitle lead">Álgebra para matemáticos · Tomo II</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 2 del tomo II, con 38 ejercicios y sus soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-01-sistemas-lineales-y-eliminacion.html">← Capítulo 1</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-03-algebra-de-matrices-e-invertibilidad.html">Capítulo 3 →</a></p>
+<p>Al eliminar incógnitas pasamos buena parte del cálculo copiando las mismas letras. En el sistema</p>
+<p><span class="math display">\[
+\begin{cases}
+x+2y-z+w=3,\\
+y+z-2w=1,\\
+2x+5y-z=7,
+\end{cases}
+\]</span></p>
+<p>los cambios se realizan sobre los coeficientes y los términos independientes; las incógnitas conservan su orden. Podemos registrar toda esa información en una tabla:</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrrr|r}
+1&amp;2&amp;-1&amp;1&amp;3\\
+0&amp;1&amp;1&amp;-2&amp;1\\
+2&amp;5&amp;-1&amp;0&amp;7
+\end{array}\right].
+\]</span></p>
+<p>La tercera fila recuerda que el coeficiente de <span class="math inline">\(w\)</span> es cero, aunque la letra no aparezca en la ecuación. El separador distingue los coeficientes de los datos del segundo miembro. Si restamos dos veces la primera fila de la tercera, la última fila se convierte en <span class="math inline">\((0,1,1,-2\,|\,1)\)</span>; restar luego la segunda la anula. La ecuación que parecía aportar un tercer dato era consecuencia de las otras dos.</p>
+<p>Esta escritura facilita el cálculo, pero plantea una cuestión que el cálculo solo no decide. Podemos escoger pivotes diferentes, intercambiar filas en momentos distintos y obtener tablas escalonadas de aspecto desigual. Para comparar los resultados necesitamos precisar qué parte de la tabla depende de esas elecciones y qué parte pertenece al problema original.</p>
+<section id="qué-información-guarda-una-matriz" class="level2">
+<h2 class="anchored" data-anchor-id="qué-información-guarda-una-matriz">2.1. Qué información guarda una matriz</h2>
+<p><span id="MA-BCH-APM-02-002-DEF-001" class="apm-anchor"></span></p>
+<p>Una <strong>matriz de tamaño <span class="math inline">\(m\times n\)</span> sobre un cuerpo <span class="math inline">\(\mathbb F\)</span></strong> es una tabla rectangular de elementos de <span class="math inline">\(\mathbb F\)</span>, con <span class="math inline">\(m\)</span> filas ordenadas y <span class="math inline">\(n\)</span> columnas ordenadas. Su entrada de fila <span class="math inline">\(i\)</span> y columna <span class="math inline">\(j\)</span> se denota <span class="math inline">\(a_{ij}\)</span>; escribimos <span class="math inline">\(A=(a_{ij})\)</span> o</p>
+<p><span class="math display">\[
+A=\begin{bmatrix}
+a_{11}&amp;\cdots&amp;a_{1n}\\
+\vdots&amp;&amp;\vdots\\
+a_{m1}&amp;\cdots&amp;a_{mn}
+\end{bmatrix}.
+\]</span></p>
+<p>Las filas son las tuplas <span class="math inline">\((a_{i1},\ldots,a_{in})\)</span> y las columnas son listas verticales. En <span class="math inline">\(m\times n\)</span>, el número de filas se escribe primero. Dos matrices son iguales si tienen el mismo tamaño y coinciden entrada a entrada. Las posiciones forman parte de la información: intercambiar dos columnas puede producir otra matriz aunque los números presentes sean los mismos.</p>
+<p>Trabajaremos con <span class="math inline">\(m,n\ge1\)</span>. Los ejemplos numéricos se calculan sobre <span class="math inline">\(\mathbb R\)</span>, salvo indicación contraria; las definiciones, los resultados y las demostraciones formulados sobre <span class="math inline">\(\mathbb F\)</span> se mantienen sobre ese cuerpo. La <strong>matriz cero</strong> <span class="math inline">\(0_{m\times n}\)</span> tiene todas sus entradas iguales a cero. Una matriz es <strong>cuadrada</strong> si <span class="math inline">\(m=n\)</span>; en ese caso, las posiciones <span class="math inline">\((i,i)\)</span> forman su diagonal principal. La <strong>matriz identidad</strong> <span class="math inline">\(I_n\)</span> tiene unos en esa diagonal y ceros en las otras entradas. La identidad será importante aquí por su forma reducida; todavía no necesitamos un producto entre matrices.</p>
+<p><span id="MA-BCH-APM-02-002-DEF-002" class="apm-anchor"></span></p>
+<p>Para un sistema de <span class="math inline">\(m\)</span> ecuaciones en <span class="math inline">\(n\)</span> incógnitas ordenadas, su <strong>matriz de coeficientes</strong> es <span class="math inline">\(A=(a_{ij})\)</span>. Si <span class="math inline">\(b\)</span> es la columna de términos independientes, su <strong>matriz ampliada</strong> es <span class="math inline">\([A\,|\,b]\)</span>, de tamaño <span class="math inline">\(m\times(n+1)\)</span>. En ocasiones escribiremos <span class="math inline">\(Ax=b\)</span> como abreviatura del sistema; hasta definir el producto matricial, esa escritura significa las igualdades <span class="math inline">\(\sum_{j=1}^n a_{ij}x_j=b_i\)</span> para <span class="math inline">\(i=1,\ldots,m\)</span>.</p>
+<p>La matriz <span class="math inline">\(A\)</span> permite estudiar todos los sistemas que comparten coeficientes, mientras que <span class="math inline">\([A\,|\,b]\)</span> selecciona uno de ellos. En el ejemplo inicial <span class="math inline">\(A\)</span> tiene tamaño <span class="math inline">\(3\times4\)</span> y la ampliada tiene tamaño <span class="math inline">\(3\times5\)</span>. Cambiar <span class="math inline">\(7\)</span> por <span class="math inline">\(8\)</span> en la tercera ecuación conserva <span class="math inline">\(A\)</span> y cambia <span class="math inline">\(b\)</span>; como veremos, ese cambio basta para destruir la compatibilidad.</p>
+<p>La barra no es una columna adicional ni una operación. Es una marca de interpretación: al retirar esa marca queda una matriz ordinaria de cinco columnas. Podemos reducirla como tal, pero al interpretar un sistema sólo las primeras cuatro columnas corresponden a incógnitas. Un pivote en la última columna tendrá un significado distinto.</p>
+</section>
+<section id="operaciones-sobre-filas-y-equivalencia" class="level2">
+<h2 class="anchored" data-anchor-id="operaciones-sobre-filas-y-equivalencia">2.2. Operaciones sobre filas y equivalencia</h2>
+<p>Sumamos tuplas y las multiplicamos por escalares coordenada a coordenada, como hicimos en C01. Eso permite trasladar las operaciones elementales de las ecuaciones a sus tablas.</p>
+<p><span id="MA-BCH-APM-02-002-DEF-003" class="apm-anchor"></span></p>
+<p>Las <strong>operaciones elementales por filas</strong> son intercambiar dos filas; multiplicar una fila por un escalar no nulo; y reemplazar una fila por ella misma más un múltiplo de otra fila distinta. Se aplican a la fila completa. Escribiremos, por ejemplo, <span class="math inline">\(F_3\leftarrow F_3-2F_1\)</span>.</p>
+<p>Dos matrices del mismo tamaño son <strong>equivalentes por filas</strong>, y escribimos <span class="math inline">\(A\sim B\)</span>, si una se obtiene de la otra mediante una sucesión finita de operaciones elementales. Se permite la sucesión vacía, que deja la matriz intacta.</p>
+<p>Cada operación tiene una inversa elemental: un intercambio se deshace intercambiando otra vez; multiplicar por <span class="math inline">\(c\ne0\)</span> se deshace multiplicando por <span class="math inline">\(c^{-1}\)</span>; y sumar <span class="math inline">\(cF_j\)</span> se deshace sumando <span class="math inline">\(-cF_j\)</span>, porque la fila <span class="math inline">\(j\)</span> se conservó. De aquí resulta que la equivalencia por filas es reflexiva, simétrica y transitiva. La última propiedad se verifica concatenando sucesiones de operaciones.</p>
+<p><span id="MA-BCH-APM-02-002-PROP-001" class="apm-anchor"></span></p>
+<p><strong>Proposición 2.1.</strong> Si <span class="math inline">\([A\,|\,b]\sim[C\,|\,d]\)</span>, los sistemas correspondientes en las mismas incógnitas tienen exactamente las mismas soluciones.</p>
+<p><strong>Demostración.</strong> Cada operación sobre una fila de la ampliada ejecuta la misma operación sobre ambos miembros de una ecuación. Por la proposición 1.1, conserva su conjunto de soluciones, y lo mismo ocurre con la sucesión finita completa. <span class="math inline">\(\square\)</span></p>
+<p>La condición “fila completa” evita un error importante. Si restamos una ecuación de otra, también se restan sus términos independientes. En el sistema <span class="math inline">\(x+y=2\)</span>, <span class="math inline">\(x-y=0\)</span>, la segunda menos la primera es <span class="math inline">\(-2y=-2\)</span>. Escribir <span class="math inline">\(-2y=0\)</span> por operar sólo con <span class="math inline">\(A\)</span> cambia el problema.</p>
+<p>Una matriz de coeficientes puede reducirse sola, pero cualquier columna <span class="math inline">\(b\)</span> que la acompañe debe recibir después exactamente las mismas operaciones. La afirmación <span class="math inline">\(A\sim C\)</span> no dice que <span class="math inline">\(Ax=b\)</span> y <span class="math inline">\(Cx=b\)</span> tengan las mismas soluciones con el mismo <span class="math inline">\(b\)</span>. Lo que se conserva es el sistema cuando se transportan juntos coeficientes y datos.</p>
+<figure id="fig-apm-t2-c02-f01" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C02-F01.svg" alt="Matriz ampliada con tres filas y cinco columnas; se distinguen las cuatro columnas de incógnitas y la de términos independientes." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 2.1.</em> Cada fila representa una ecuación completa. El coeficiente cero de la cuarta incógnita se conserva como una entrada explícita.
+</figcaption>
+</figure>
+</section>
+<section id="escalonar-y-reducir" class="level2">
+<h2 class="anchored" data-anchor-id="escalonar-y-reducir">2.3. Escalonar y reducir</h2>
+<p><span id="MA-BCH-APM-02-002-DEF-004" class="apm-anchor"></span></p>
+<p>Una matriz está en <strong>forma escalonada por filas</strong> si sus filas cero están debajo de las filas no nulas y el primer elemento no nulo de cada fila no nula está estrictamente a la derecha del primer elemento no nulo de la anterior. Esos primeros elementos son los <strong>pivotes</strong>; sus posiciones y columnas se llaman posiciones y columnas pivote.</p>
+<p>La condición implica que debajo de un pivote hay ceros. No exige que el pivote valga uno ni que haya ceros encima. Una matriz cero ya está escalonada y no tiene pivotes.</p>
+<p>La eliminación de C01, aplicada a las filas, transforma cualquier matriz en una escalonada equivalente. Se elige un coeficiente no nulo de la columna activa más a la izquierda, se coloca arriba mediante un intercambio si hace falta y se anulan las entradas inferiores. Los ceros de las columnas anteriores se conservan, y el proceso termina después de elegir a lo sumo <span class="math inline">\(\min(m,n)\)</span> pivotes.</p>
+<p><span id="MA-BCH-APM-02-002-DEF-005" class="apm-anchor"></span></p>
+<p>Una matriz está en <strong>forma escalonada reducida por filas</strong> si está escalonada, cada pivote vale uno y ese uno es la única entrada no nula de su columna. Usaremos la abreviatura <strong>forma reducida</strong>.</p>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[
+U=\begin{bmatrix}
+2&amp;4&amp;-2\\
+0&amp;3&amp;6\\
+0&amp;0&amp;0
+\end{bmatrix},
+\qquad
+R=\begin{bmatrix}
+1&amp;0&amp;-5\\
+0&amp;1&amp;2\\
+0&amp;0&amp;0
+\end{bmatrix}
+\]</span></p>
+<p>son equivalentes por filas. La primera está escalonada; la segunda, reducida. Para pasar de <span class="math inline">\(U\)</span> a <span class="math inline">\(R\)</span>, dividimos la segunda fila por tres, restamos cuatro veces esa fila de la primera y dividimos la primera por dos. Los pivotes permanecen en las columnas primera y segunda.</p>
+<p>Una matriz reducida puede tener entradas distintas de cero y uno. Los ceros adicionales se exigen en las columnas pivote; las otras columnas conservan números que describen la relación con las incógnitas libres. Tampoco tienen que estar todos los pivotes sobre la diagonal principal: en</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+0&amp;1&amp;4&amp;0&amp;-2\\
+0&amp;0&amp;0&amp;1&amp;3\\
+0&amp;0&amp;0&amp;0&amp;0
+\end{bmatrix}
+\]</span></p>
+<p>las columnas pivote son la segunda y la cuarta.</p>
+<p><span id="MA-BCH-APM-02-002-THM-001" class="apm-anchor"></span></p>
+<p><strong>Teorema 2.2 (existencia de la forma reducida).</strong> Toda matriz sobre un cuerpo es equivalente por filas a una matriz escalonada reducida.</p>
+<p><strong>Demostración.</strong> Primero la escalonamos. Dividimos cada fila no nula por su pivote para convertirlo en uno. Empezamos por el pivote situado más abajo y anulamos las entradas que hay encima, sumando múltiplos de su fila a las superiores. Continuamos hacia arriba.</p>
+<p>La fila usada en cada paso tiene ceros a la izquierda de su pivote; por eso no cambia los pivotes anteriores. Al tratar pivotes de abajo arriba, las columnas pivote posteriores ya están limpias. La fila que estamos usando tiene cero en ellas, pues esas columnas fueron limpiadas también en esa fila; por tanto, no deshace el trabajo anterior. Tras un número finito de operaciones, cada columna pivote contiene sólo su uno y la matriz sigue escalonada. <span class="math inline">\(\square\)</span></p>
+<p>Este procedimiento se conoce como <strong>eliminación de Gauss–Jordan</strong>. Si sólo queremos resolver un sistema, escalonarlo y sustituir regresivamente puede resultar más económico. La forma reducida exige operaciones adicionales a cambio de dejar explícitas, sin sustituciones pendientes, las relaciones entre las incógnitas.</p>
+<p>Para la ampliada inicial, las operaciones <span class="math inline">\(F_3\leftarrow F_3-2F_1\)</span>, <span class="math inline">\(F_3\leftarrow F_3-F_2\)</span> y <span class="math inline">\(F_1\leftarrow F_1-2F_2\)</span> dan</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrrr|r}
+1&amp;0&amp;-3&amp;5&amp;1\\
+0&amp;1&amp;1&amp;-2&amp;1\\
+0&amp;0&amp;0&amp;0&amp;0
+\end{array}\right].
+\]</span></p>
+<p>Leemos <span class="math inline">\(x=1+3z-5w\)</span>, <span class="math inline">\(y=1-z+2w\)</span>. Las incógnitas <span class="math inline">\(z,w\)</span> son libres; si las llamamos <span class="math inline">\(s,t\)</span>, recuperamos <span class="math inline">\((1+3s-5t,1-s+2t,s,t)\)</span>. La tercera fila expresa la identidad <span class="math inline">\(0=0\)</span>.</p>
+<figure id="fig-apm-t2-c02-f02" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C02-F02.svg" alt="Dos matrices reducidas con pivotes marcados; se diferencia un pivote en una columna de incógnita de un pivote en la columna ampliada." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 2.2.</em> Una columna sin pivote entre las incógnitas deja una variable libre. Un pivote en la columna de términos independientes representa una contradicción, no una incógnita adicional que pueda resolverse.
+</figcaption>
+</figure>
+</section>
+<section id="la-información-que-las-operaciones-conservan" class="level2">
+<h2 class="anchored" data-anchor-id="la-información-que-las-operaciones-conservan">2.4. La información que las operaciones conservan</h2>
+<p>Para demostrar que la forma reducida es única necesitamos algo más que observar varios ejemplos. Las operaciones pueden alterar cada fila de la matriz; sin embargo, conservan todas las tuplas que pueden construirse combinando sus filas.</p>
+<p><span id="MA-BCH-APM-02-002-DEF-006" class="apm-anchor"></span></p>
+<p>Si las filas de <span class="math inline">\(A\)</span> son <span class="math inline">\(f_1,\ldots,f_m\)</span>, llamaremos <strong>conjunto de combinaciones de sus filas</strong> al conjunto</p>
+<p><span class="math display">\[
+\mathcal C(A)=
+\{c_1f_1+\cdots+c_mf_m:c_1,\ldots,c_m\in\mathbb F\}.
+\]</span></p>
+<p>La definición sólo usa suma de tuplas y producto por escalares; no presupone una teoría de espacios vectoriales. Incluye la tupla cero, escogiendo todos los coeficientes cero. Si todas las filas son cero, ésa es la única combinación.</p>
+<p><span id="MA-BCH-APM-02-002-LEM-001" class="apm-anchor"></span></p>
+<p><strong>Lema 2.3.</strong> Si <span class="math inline">\(A\sim B\)</span>, entonces <span class="math inline">\(\mathcal C(A)=\mathcal C(B)\)</span>.</p>
+<p><strong>Demostración.</strong> Después de una operación elemental, cada fila nueva es una combinación de las antiguas. Al sustituir esas expresiones en cualquier combinación de las nuevas filas y distribuir, obtenemos una combinación de las antiguas. Esto prueba una inclusión de conjuntos. La operación inversa expresa también cada fila antigua mediante las nuevas, por lo que prueba la inclusión contraria. La igualdad se conserva a lo largo de la sucesión de operaciones. <span class="math inline">\(\square\)</span></p>
+<p>El conjunto <span class="math inline">\(\mathcal C(A)\)</span> contiene muchas tuplas; una forma escalonada permite reconocer dónde puede comenzar una combinación no nula. Supongamos que sus filas no nulas son <span class="math inline">\(r_1,\ldots,r_k\)</span>, con pivotes en <span class="math inline">\(p_1&lt;\cdots&lt;p_k\)</span>. Si una combinación tiene algún coeficiente no nulo, tomemos el primero de ellos, <span class="math inline">\(c_i\)</span>. Las filas posteriores son cero en todas las posiciones anteriores a sus pivotes, y sus pivotes quedan después de <span class="math inline">\(p_i\)</span>. En la posición <span class="math inline">\(p_i\)</span> la combinación vale <span class="math inline">\(c_i r_{i,p_i}\ne0\)</span>, y antes de ella vale cero. No puede haber una cancelación allí: las filas posteriores todavía no han comenzado.</p>
+<p><span id="MA-BCH-APM-02-002-LEM-002" class="apm-anchor"></span></p>
+<p><strong>Lema 2.4.</strong> En una matriz escalonada, las posiciones posibles de la primera entrada no nula de una tupla de <span class="math inline">\(\mathcal C(A)\)</span> son exactamente sus columnas pivote. Además, una combinación de sus filas no nulas es cero sólo si todos sus coeficientes son cero.</p>
+<p><strong>Demostración.</strong> El argumento anterior muestra que toda combinación con algún coeficiente no nulo comienza en la columna pivote de la primera fila cuyo coeficiente no es cero. Recíprocamente, cada fila no nula es una combinación y comienza en su propio pivote. La misma observación impide que una combinación con algún coeficiente no nulo sea cero. <span class="math inline">\(\square\)</span></p>
+<p>Es la forma escalonada la que permite identificar la primera contribución que no puede cancelarse. En una matriz arbitraria dos filas pueden comenzar en la misma columna y cancelar sus primeras entradas; por eso el lema necesita su hipótesis.</p>
+</section>
+<section id="por-qué-la-forma-reducida-es-única" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-la-forma-reducida-es-única">2.5. Por qué la forma reducida es única</h2>
+<p><span id="MA-BCH-APM-02-002-THM-002" class="apm-anchor"></span></p>
+<p><strong>Teorema 2.5 (unicidad).</strong> Si <span class="math inline">\(R\)</span> y <span class="math inline">\(S\)</span> son matrices escalonadas reducidas, del mismo tamaño, equivalentes por filas, entonces <span class="math inline">\(R=S\)</span>. En consecuencia, toda matriz tiene una única forma escalonada reducida equivalente por filas.</p>
+<p><strong>Demostración.</strong> Por el lema 2.3, <span class="math inline">\(\mathcal C(R)=\mathcal C(S)\)</span>. El lema 2.4 identifica las columnas pivote de cada una como las posiciones posibles donde empieza una combinación no nula. Esas posiciones dependen sólo del conjunto común de combinaciones, por lo que <span class="math inline">\(R\)</span> y <span class="math inline">\(S\)</span> tienen los mismos pivotes <span class="math inline">\(p_1&lt;\cdots&lt;p_k\)</span> y el mismo número de filas no nulas.</p>
+<p>Sean <span class="math inline">\(r_i,s_i\)</span> sus filas no nulas correspondientes. En las columnas pivote, ambas tienen un uno en <span class="math inline">\(p_i\)</span> y cero en las otras, por la condición reducida. La diferencia <span class="math inline">\(r_i-s_i\)</span> tiene, por tanto, cero en todas las columnas pivote. Además pertenece a <span class="math inline">\(\mathcal C(R)\)</span>: <span class="math inline">\(r_i\)</span> es una combinación de las filas de <span class="math inline">\(R\)</span> y <span class="math inline">\(s_i\)</span>, al pertenecer a <span class="math inline">\(\mathcal C(S)=\mathcal C(R)\)</span>, también lo es; restar sus expresiones sigue dando una combinación de las filas de <span class="math inline">\(R\)</span>.</p>
+<p>Si esa diferencia fuese no nula, el lema 2.4 diría que su primera entrada no nula está en alguna columna pivote. Eso contradice que todas esas entradas sean cero. Luego <span class="math inline">\(r_i=s_i\)</span> para cada <span class="math inline">\(i\)</span>. Las filas restantes de ambas matrices son cero y también coinciden. Por ello <span class="math inline">\(R=S\)</span>. La existencia del teorema 2.2 completa la conclusión para cualquier matriz. <span class="math inline">\(\square\)</span></p>
+<p>La prueba distingue dos cuestiones. Las posiciones de los pivotes quedan fijadas por el conjunto de combinaciones; la condición reducida fija además las entradas de cada fila. Dos matrices pueden tener iguales posiciones pivote y seguir siendo distintas si cambian los números de las columnas restantes. La unicidad controla también esos números.</p>
+<p>Denotaremos la forma reducida de <span class="math inline">\(A\)</span> por <span class="math inline">\(\operatorname{rref}(A)\)</span>. El nombre abrevia la expresión inglesa <em>reduced row echelon form</em>; lo usaremos como notación de una matriz determinada, con independencia de qué algoritmo la produzca.</p>
+<p><span id="MA-BCH-APM-02-002-COR-001" class="apm-anchor"></span></p>
+<p><strong>Corolario 2.6.</strong> Para matrices del mismo tamaño, <span class="math inline">\(A\sim B\)</span> si y sólo si <span class="math inline">\(\operatorname{rref}(A)=\operatorname{rref}(B)\)</span>.</p>
+<p><strong>Demostración.</strong> Si son equivalentes, sus formas reducidas son equivalentes y coinciden por unicidad. Si sus formas reducidas coinciden, reducimos <span class="math inline">\(A\)</span> a esa matriz común y deshacemos las operaciones que reducen <span class="math inline">\(B\)</span>; la concatenación transforma <span class="math inline">\(A\)</span> en <span class="math inline">\(B\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La forma reducida ofrece así un representante único de cada clase de equivalencia por filas. La existencia de un representante canónico no hace única la ruta de cálculo: distintas sucesiones pueden tener el mismo punto de llegada.</p>
+<section id="reconocer-la-información-común-de-dos-tablas" class="level3">
+<h3 class="anchored" data-anchor-id="reconocer-la-información-común-de-dos-tablas">Reconocer la información común de dos tablas</h3>
+<p>Las combinaciones de filas entraron en la prueba de unicidad para reconocer qué podía sobrevivir a las operaciones. Podemos completar esa relación: conocer todas las combinaciones permite decidir también si dos matrices del mismo tamaño se pueden transformar una en otra.</p>
+<p><span id="MA-BCH-APM-02-002-PROP-002" class="apm-anchor"></span></p>
+<p><strong>Proposición 2.6a.</strong> Para matrices <span class="math inline">\(A,B\)</span> del mismo tamaño y sobre el mismo cuerpo, las siguientes condiciones son equivalentes: <span class="math inline">\(A\sim B\)</span>; <span class="math inline">\(\mathcal C(A)=\mathcal C(B)\)</span>; y <span class="math inline">\(\operatorname{rref}(A)=\operatorname{rref}(B)\)</span>.</p>
+<p><strong>Demostración.</strong> El lema 2.3 prueba que <span class="math inline">\(A\sim B\)</span> implica igualdad de los conjuntos de combinaciones. El corolario 2.6 ya relaciona la equivalencia por filas con la igualdad de formas reducidas. Falta justificar que la igualdad <span class="math inline">\(\mathcal C(A)=\mathcal C(B)\)</span> basta para recuperar esa forma común.</p>
+<p>Sean <span class="math inline">\(R=\operatorname{rref}(A)\)</span> y <span class="math inline">\(S=\operatorname{rref}(B)\)</span>. Las operaciones de reducción conservan las combinaciones, así que <span class="math inline">\(\mathcal C(R)=\mathcal C(S)\)</span>. Por el lema 2.4, las primeras posiciones no nulas que pueden tener las tuplas de ese conjunto son exactamente las columnas pivote de <span class="math inline">\(R\)</span> y de <span class="math inline">\(S\)</span>; ambas matrices tienen, por ello, las mismas columnas pivote y el mismo número de filas no nulas. En cada una de esas columnas sus filas correspondientes <span class="math inline">\(r_i,s_i\)</span> coinciden: tienen uno en el pivote de la fila y cero en los otros pivotes.</p>
+<p>La diferencia <span class="math inline">\(r_i-s_i\)</span> pertenece al conjunto común de combinaciones y es cero en todas las columnas pivote. Si fuese no nula, el lema 2.4 obligaría a que comenzara en una de esas columnas, lo cual es imposible. Luego <span class="math inline">\(r_i=s_i\)</span>. Las filas restantes son cero en ambas matrices y ocupan las mismas posiciones porque los tamaños coinciden. Así <span class="math inline">\(R=S\)</span>, y el corolario 2.6 da <span class="math inline">\(A\sim B\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La condición de tamaño no puede omitirse: una fila adicional que sea combinación de las anteriores no cambia el conjunto <span class="math inline">\(\mathcal C\)</span>, pero ninguna operación elemental crea o elimina filas. La proposición compara matrices que tienen el mismo número de lugares disponibles para escribir esa información.</p>
+<p>Para aplicar el resultado no siempre hace falta reducir. Si conocemos una expresión de cada fila de <span class="math inline">\(B\)</span> como combinación de las de <span class="math inline">\(A\)</span>, obtenemos <span class="math inline">\(\mathcal C(B)\subseteq\mathcal C(A)\)</span>; si también podemos expresar cada fila de <span class="math inline">\(A\)</span> mediante las de <span class="math inline">\(B\)</span>, la inclusión inversa prueba equivalencia. Una sola inclusión no alcanza. Por ejemplo, las filas de <span class="math inline">\(\begin{bmatrix}1&amp;0\\0&amp;0\end{bmatrix}\)</span> son combinaciones de las de <span class="math inline">\(I_2\)</span>, pero la tupla <span class="math inline">\((0,1)\)</span> pertenece a <span class="math inline">\(\mathcal C(I_2)\)</span> y no al conjunto de combinaciones de la otra matriz. El ejercicio 37 aplica las dos inclusiones a matrices que, aunque parecen distintas, sí son equivalentes.</p>
+</section>
+<section id="sistemas-equivalentes-y-matrices-equivalentes-por-filas" class="level3">
+<h3 class="anchored" data-anchor-id="sistemas-equivalentes-y-matrices-equivalentes-por-filas">Sistemas equivalentes y matrices equivalentes por filas</h3>
+<p>Al trabajar con una ampliada aparecen dos relaciones que conviene distinguir. Dos sistemas son equivalentes cuando tienen el mismo conjunto de soluciones. Dos matrices del mismo tamaño son equivalentes por filas cuando una sucesión de operaciones elementales transforma una en otra. La proposición 2.1 asegura que la segunda relación produce la primera al interpretar matrices ampliadas en las mismas incógnitas; recuperar la segunda a partir de la primera exige más información.</p>
+<p>Consideremos las ampliadas reales</p>
+<p><span class="math display">\[
+R=\left[\begin{array}{rr|r}1&amp;0&amp;0\\0&amp;0&amp;1\end{array}\right],
+\qquad
+S=\left[\begin{array}{rr|r}0&amp;1&amp;0\\0&amp;0&amp;1\end{array}\right].
+\]</span></p>
+<p>La primera exige <span class="math inline">\(x=0\)</span> y <span class="math inline">\(0=1\)</span>; la segunda exige <span class="math inline">\(y=0\)</span> y <span class="math inline">\(0=1\)</span>. Ambos sistemas son incompatibles, de modo que sus conjuntos de soluciones coinciden: los dos son vacíos. Sin embargo, las matrices están reducidas y son distintas. Si fueran equivalentes por filas, el teorema 2.5 las obligaría a coincidir.</p>
+<p>La proposición 2.6a permite localizar también la diferencia que las operaciones conservan. Las combinaciones de las filas de <span class="math inline">\(R\)</span> son las tuplas <span class="math inline">\((u,0,v)\)</span>, mientras que las de <span class="math inline">\(S\)</span> son <span class="math inline">\((0,u,v)\)</span>, con <span class="math inline">\(u,v\in\mathbb R\)</span>. La tupla <span class="math inline">\((1,0,0)\)</span> pertenece al primer conjunto y no al segundo. Mirar sólo las soluciones vacías ha borrado esa distinción: conocemos que las exigencias no pueden cumplirse juntas, pero ya no sabemos qué combinaciones de coeficientes y datos estaban escritas.</p>
+<p>Por eso, encontrar la misma respuesta «incompatible» para dos sistemas no demuestra equivalencia por filas de sus ampliadas. Tampoco basta conocer sus rangos, que en este ejemplo son dos para ambas ampliadas. Para comparar matrices mediante operaciones debemos comprobar la información más precisa de sus combinaciones de filas o de sus formas reducidas. El conjunto de soluciones responde a la pregunta por las incógnitas; la equivalencia por filas controla además cómo se relacionan las filas que representan el problema.</p>
+</section>
+</section>
+<section id="el-rango-como-invariante" class="level2">
+<h2 class="anchored" data-anchor-id="el-rango-como-invariante">2.6. El rango como invariante</h2>
+<p><span id="MA-BCH-APM-02-002-DEF-007" class="apm-anchor"></span></p>
+<p>El <strong>rango</strong> de una matriz <span class="math inline">\(A\)</span>, denotado <span class="math inline">\(\operatorname{rg}(A)\)</span>, es el número de pivotes de su forma reducida. Para una matriz <span class="math inline">\(m\times n\)</span> se cumple <span class="math inline">\(0\le\operatorname{rg}(A)\le\min(m,n)\)</span>.</p>
+<p>Podemos calcularlo sin completar Gauss–Jordan. Al reducir una matriz ya escalonada, los pivotes se normalizan y se limpian las entradas superiores, pero sus posiciones no cambian. Por tanto, el número de pivotes de cualquier escalonada equivalente a <span class="math inline">\(A\)</span> coincide con el de su forma reducida única. Ésta es la justificación pendiente de C01: las elecciones de eliminación pueden cambiar los valores de los pivotes, pero no cuántos hay ni sus columnas, con el orden de columnas fijado.</p>
+<p>La equivalencia por filas conserva el rango. Su recíproca es falsa: las matrices <span class="math inline">\(\begin{bmatrix}1&amp;0\\0&amp;0\end{bmatrix}\)</span> y <span class="math inline">\(\begin{bmatrix}0&amp;1\\0&amp;0\end{bmatrix}\)</span> tienen rango uno y ya están reducidas, pero no son iguales; el corolario 2.6 impide que sean equivalentes.</p>
+<p>El rango cero caracteriza a la matriz cero. En efecto, una forma reducida sin pivotes es cero, y una sucesión de operaciones elementales aplicada a una matriz cero sigue dejándola cero, también al invertir la sucesión. El rango cuenta una propiedad de las restricciones y no el número de entradas no nulas: una tabla llena de unos puede tener rango uno.</p>
+<p><span id="MA-BCH-APM-02-002-THM-003" class="apm-anchor"></span></p>
+<p><strong>Teorema 2.7 (criterio de compatibilidad por rangos).</strong> El sistema con matriz de coeficientes <span class="math inline">\(A\)</span> y columna <span class="math inline">\(b\)</span> es compatible si y sólo si <span class="math inline">\(\operatorname{rg}(A)=\operatorname{rg}([A\,|\,b])\)</span>. Si es compatible, tiene una única solución si y sólo si <span class="math inline">\(\operatorname{rg}(A)=n\)</span>, donde <span class="math inline">\(n\)</span> es el número de incógnitas.</p>
+<p><strong>Demostración.</strong> Reduzcamos la matriz ampliada completa. Al retirar su última columna, la tabla restante sigue estando reducida: si había un pivote en la última columna, su fila tenía ceros en todas las anteriores y se vuelve cero; las otras filas conservan sus pivotes y su orden. Además, las operaciones realizadas sobre los coeficientes fueron operaciones elementales sobre <span class="math inline">\(A\)</span>. Esa tabla es, por ello, <span class="math inline">\(\operatorname{rref}(A)\)</span>.</p>
+<p>Si la última columna no contiene un pivote, ambas matrices tienen el mismo número de pivotes. No hay fila de la forma <span class="math inline">\((0,\ldots,0\,|\,c)\)</span> con <span class="math inline">\(c\ne0\)</span>, y el teorema 1.3 construye soluciones. Si contiene un pivote, aparece una fila <span class="math inline">\((0,\ldots,0\,|\,1)\)</span> y el sistema es incompatible; en ese caso la ampliada tiene un pivote más. Esto prueba la equivalencia de compatibilidad y igualdad de rangos.</p>
+<p>En el caso compatible hay <span class="math inline">\(n-\operatorname{rg}(A)\)</span> incógnitas libres. Ninguna queda libre exactamente cuando el rango es <span class="math inline">\(n\)</span>; entonces las principales se determinan de forma única. Si queda alguna libre, sus distintos valores proporcionan soluciones distintas, porque un cuerpo tiene al menos los elementos <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>En particular, añadir una columna puede aumentar el rango en cero o en uno, y el aumento en la columna <span class="math inline">\(b\)</span> detecta incompatibilidad. Sobre un cuerpo de <span class="math inline">\(q\)</span> elementos, un sistema compatible tiene <span class="math inline">\(q^{n-\operatorname{rg}(A)}\)</span> soluciones; sobre un cuerpo infinito tendrá infinitas si no es único.</p>
+<p>Si el sistema inicial termina en <span class="math inline">\(8\)</span> en lugar de <span class="math inline">\(7\)</span>, la misma eliminación deja una fila <span class="math inline">\((0,0,0,0\,|\,1)\)</span>. El rango de <span class="math inline">\(A\)</span> sigue siendo dos y el de la ampliada es tres. Las dos primeras ecuaciones admiten la familia ya conocida; la tercera la excluye entera.</p>
+</section>
+<section id="resolver-varios-sistemas-con-una-sola-reducción" class="level2">
+<h2 class="anchored" data-anchor-id="resolver-varios-sistemas-con-una-sola-reducción">2.7. Resolver varios sistemas con una sola reducción</h2>
+<p>Cuando cambian los datos pero no los coeficientes, repetir la eliminación desde cero desaprovecha información. Para la matriz inicial podemos dejar simbólicos los términos independientes:</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrrr|r}
+1&amp;2&amp;-1&amp;1&amp;b_1\\
+0&amp;1&amp;1&amp;-2&amp;b_2\\
+2&amp;5&amp;-1&amp;0&amp;b_3
+\end{array}\right]
+\sim
+\left[\begin{array}{rrrr|r}
+1&amp;0&amp;-3&amp;5&amp;b_1-2b_2\\
+0&amp;1&amp;1&amp;-2&amp;b_2\\
+0&amp;0&amp;0&amp;0&amp;b_3-2b_1-b_2
+\end{array}\right].
+\]</span></p>
+<p>Para producir esta tabla se redujo <span class="math inline">\(A\)</span> y se transportó la columna <span class="math inline">\(b\)</span> con las mismas operaciones. La tabla completa sólo es una forma reducida de la ampliada cuando la última entrada es cero; si no lo es, aún habría que normalizar ese pivote final y limpiar su columna. Para resolver el sistema no hace falta ese trabajo adicional: la condición de compatibilidad es <span class="math inline">\(b_3=2b_1+b_2\)</span>.</p>
+<p>Cuando se cumple, tomar <span class="math inline">\(z=s\)</span>, <span class="math inline">\(w=t\)</span> produce</p>
+<p><span class="math display">\[
+(x,y,z,w)=
+(b_1-2b_2+3s-5t,\;b_2-s+2t,\;s,\;t).
+\]</span></p>
+<p>La misma cadena de operaciones sirve para varias columnas concretas. En <span class="math inline">\([A\,|\,b\,|\,c]\)</span> cada columna a la derecha de <span class="math inline">\(A\)</span> es un término independiente de un sistema diferente, no una nueva incógnita del mismo sistema. Por ejemplo, para <span class="math inline">\(b=(3,1,7)\)</span> y <span class="math inline">\(c=(3,1,8)\)</span> obtenemos</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrrr|r|r}
+1&amp;0&amp;-3&amp;5&amp;1&amp;1\\
+0&amp;1&amp;1&amp;-2&amp;1&amp;1\\
+0&amp;0&amp;0&amp;0&amp;0&amp;1
+\end{array}\right].
+\]</span></p>
+<p>La primera columna de datos es compatible; la segunda, incompatible. La fila inferior se lee por separado: exige <span class="math inline">\(0=0\)</span> para el sistema con <span class="math inline">\(b\)</span> y <span class="math inline">\(0=1\)</span> para el sistema con <span class="math inline">\(c\)</span>. El rango de la matriz con las dos columnas añadidas informa sobre ambas juntas, pero no reemplaza la inspección de cada sistema.</p>
+<figure id="fig-apm-t2-c02-f03" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C02-F03.svg" alt="Dos columnas de datos se transportan junto a los mismos coeficientes; la última fila tiene cero en una y uno en la otra." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 2.3.</em> Un cálculo común permite estudiar distintos datos. Las columnas <span class="math inline">\(b\)</span> y <span class="math inline">\(c\)</span> son dos problemas separados: la contradicción de uno no vuelve incompatible al otro.
+</figcaption>
+</figure>
+</section>
+<section id="existencia-para-cualquier-término-independiente" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-para-cualquier-término-independiente">2.8. Existencia para cualquier término independiente</h2>
+<p>El rango de <span class="math inline">\(A\)</span> también permite distinguir dos afirmaciones: tener a lo sumo una solución para cada dato y tener al menos una solución para cada dato. Una matriz rectangular puede cumplir una sin cumplir la otra.</p>
+<p><span id="MA-BCH-APM-02-002-THM-004" class="apm-anchor"></span></p>
+<p><strong>Teorema 2.8.</strong> Para una matriz <span class="math inline">\(m\times n\)</span> sobre un cuerpo:</p>
+<ol type="1">
+<li>todos sus sistemas compatibles tienen solución única si y sólo si <span class="math inline">\(\operatorname{rg}(A)=n\)</span>;</li>
+<li>el sistema <span class="math inline">\(Ax=b\)</span> es compatible para toda columna <span class="math inline">\(b\in\mathbb F^m\)</span> si y sólo si <span class="math inline">\(\operatorname{rg}(A)=m\)</span>;</li>
+<li>para toda columna <span class="math inline">\(b\)</span> hay una única solución si y sólo si <span class="math inline">\(m=n=\operatorname{rg}(A)\)</span>.</li>
+</ol>
+<p><strong>Demostración.</strong> Si el rango es <span class="math inline">\(n\)</span>, el teorema 2.7 da unicidad en cada sistema compatible. Si es menor, el sistema homogéneo es compatible y tiene alguna incógnita libre, por lo que sus soluciones no son únicas. Esto prueba la primera afirmación.</p>
+<p>Para la segunda, fijemos una sucesión que reduzca <span class="math inline">\(A\)</span> y apliquémosla también a <span class="math inline">\(b\)</span>. Si el rango es <span class="math inline">\(m\)</span>, no queda ninguna fila cero de coeficientes; cualquier columna transformada acompaña entonces un sistema compatible, porque no puede aparecer una contradicción de coeficientes nulos.</p>
+<p>Si el rango es menor que <span class="math inline">\(m\)</span>, la última fila de <span class="math inline">\(\operatorname{rref}(A)\)</span> es cero. Elijamos en el sistema reducido una columna <span class="math inline">\(d\)</span> cuya última entrada sea uno y las otras cero. Ese sistema es incompatible. Para encontrar un dato original que lo produzca, aplicamos a <span class="math inline">\(d\)</span> las operaciones inversas, en orden inverso, de la sucesión fijada; obtenemos una columna <span class="math inline">\(b\)</span>. Al reducir <span class="math inline">\([A\,|\,b]\)</span> mediante la sucesión original, reaparece exactamente <span class="math inline">\([\operatorname{rref}(A)\,|\,d]\)</span>, y por ello el sistema original también es incompatible. Queda demostrada la necesidad.</p>
+<p>Tener exactamente una solución para todo dato reúne las dos primeras propiedades; exige rango <span class="math inline">\(n\)</span> y rango <span class="math inline">\(m\)</span>, y por tanto <span class="math inline">\(m=n=\operatorname{rg}(A)\)</span>. Esa condición también basta. <span class="math inline">\(\square\)</span></p>
+<p>Por ejemplo, <span class="math inline">\(x+z=b_1\)</span>, <span class="math inline">\(y+z=b_2\)</span> siempre admite soluciones y deja libre <span class="math inline">\(z\)</span>. En cambio, <span class="math inline">\(x=b_1\)</span>, <span class="math inline">\(y=b_2\)</span>, <span class="math inline">\(x+y=b_3\)</span> admite a lo sumo una pareja, pero sólo existe si <span class="math inline">\(b_3=b_1+b_2\)</span>. La primera matriz tiene rango igual al número de filas; la segunda, al número de columnas.</p>
+<section id="hasta-dónde-conviene-reducir" class="level3">
+<h3 class="anchored" data-anchor-id="hasta-dónde-conviene-reducir">Hasta dónde conviene reducir</h3>
+<p>Las operaciones necesarias dependen de qué queremos averiguar. Consideremos la familia real de ampliadas</p>
+<p><span class="math display">\[
+M_h=\left[\begin{array}{rrr|r}
+2&amp;4&amp;-2&amp;6\\
+4&amp;11&amp;-1&amp;15\\
+2&amp;7&amp;1&amp;h
+\end{array}\right].
+\]</span></p>
+<p>Las instrucciones <span class="math inline">\(F_2\leftarrow F_2-2F_1\)</span>, <span class="math inline">\(F_3\leftarrow F_3-F_1\)</span> y luego <span class="math inline">\(F_3\leftarrow F_3-F_2\)</span>, siempre con las filas actuales, producen</p>
+<p><span class="math display">\[
+U_h=\left[\begin{array}{rrr|r}
+2&amp;4&amp;-2&amp;6\\
+0&amp;3&amp;3&amp;3\\
+0&amp;0&amp;0&amp;h-9
+\end{array}\right].
+\]</span></p>
+<p>Si únicamente queremos decidir compatibilidad, el cálculo ya terminó: para <span class="math inline">\(h\ne9\)</span> la última fila exige <span class="math inline">\(0=h-9\)</span> y refuta cualquier solución; para <span class="math inline">\(h=9\)</span> las dos filas restantes permiten resolver las principales después de elegir la libre. Normalizar todos los pivotes y limpiar sus columnas no cambiaría ninguna de esas conclusiones. También conocemos el rango de coeficientes, que es dos para todo <span class="math inline">\(h\)</span>, y el de la ampliada, que vale dos cuando <span class="math inline">\(h=9\)</span> y tres en los demás casos.</p>
+<p>Para describir las soluciones en el caso compatible podemos seguir desde esta misma tabla. La segunda ecuación dice <span class="math inline">\(y+z=1\)</span> después de dividir por tres. Elegir <span class="math inline">\(z=t\)</span> da <span class="math inline">\(y=1-t\)</span>; la primera ecuación exige entonces <span class="math inline">\(2x+4(1-t)-2t=6\)</span>, de donde <span class="math inline">\(x=1+3t\)</span>. Todas las soluciones son</p>
+<p><span class="math display">\[
+(x,y,z)=(1+3t,1-t,t),\qquad t\in\mathbb R.
+\]</span></p>
+<p>Cada terna de esa forma satisface el sistema escalonado y, por equivalencia, el original. Recíprocamente, cualquier solución tiene algún valor <span class="math inline">\(t=z\)</span> que determina las otras dos coordenadas. La sustitución regresiva proporciona así una descripción completa sin haber reducido la ampliada hasta el final.</p>
+<p>Si queremos comparar <span class="math inline">\(M_9\)</span> con otra matriz mediante sus formas reducidas, conviene hacer visibles las relaciones que todavía están mezcladas en la primera fila. Dividimos la segunda por tres, restamos cuatro veces esa fila de la primera y dividimos la primera por dos. Obtenemos</p>
+<p><span class="math display">\[
+\operatorname{rref}(M_9)=
+\left[\begin{array}{rrr|r}
+1&amp;0&amp;-3&amp;1\\
+0&amp;1&amp;1&amp;1\\
+0&amp;0&amp;0&amp;0
+\end{array}\right].
+\]</span></p>
+<p>La parametrización se lee directamente, y esta matriz ofrece además un objeto único con el que comparar la reducción de otra ampliada del mismo tamaño. La tabla escalonada era suficiente para resolver; la forma reducida permite aplicar inmediatamente el criterio del corolario 2.6.</p>
+<p>Para <span class="math inline">\(h\ne9\)</span> también existe una forma reducida única, aunque ya sepamos que no hay soluciones. Normalizar la última fila de <span class="math inline">\(U_h\)</span> y limpiar su columna, junto con la reducción de los coeficientes, da</p>
+<p><span class="math display">\[
+\operatorname{rref}(M_h)=
+\left[\begin{array}{rrr|r}
+1&amp;0&amp;-3&amp;0\\
+0&amp;1&amp;1&amp;0\\
+0&amp;0&amp;0&amp;1
+\end{array}\right]
+\qquad(h\ne9).
+\]</span></p>
+<p>En esta familia todas las ampliadas incompatibles son equivalentes por filas, porque tienen exactamente esa forma reducida. La conclusión proviene de la reducción común y no sólo de que sus sistemas sean incompatibles; las matrices <span class="math inline">\(R,S\)</span> de §2.5 mostraban que la incompatibilidad por sí sola no basta.</p>
+<p>La elección del punto de parada exige conservar la razón de lo que ya se sabe. Una contradicción decide que el sistema es imposible; una tabla escalonada sin contradicciones permite elegir parámetros y resolver; una forma reducida fija un representante para comparar matrices. Continuar el cálculo es útil cuando proporciona la información que la pregunta todavía necesita.</p>
+</section>
+</section>
+<section id="parámetros-cuerpos-y-límites-de-la-representación" class="level2">
+<h2 class="anchored" data-anchor-id="parámetros-cuerpos-y-límites-de-la-representación">2.9. Parámetros, cuerpos y límites de la representación</h2>
+<p>Para la familia real</p>
+<p><span class="math display">\[
+A_t=\begin{bmatrix}1&amp;2&amp;1\\2&amp;4&amp;t\end{bmatrix},
+\]</span></p>
+<p>la operación <span class="math inline">\(F_2\leftarrow F_2-2F_1\)</span> produce la segunda fila <span class="math inline">\((0,0,t-2)\)</span>. Si <span class="math inline">\(t=2\)</span>, el rango es uno y la forma reducida tiene primera fila <span class="math inline">\((1,2,1)\)</span>. Si <span class="math inline">\(t\ne2\)</span>, normalizamos el pivote de la tercera columna y lo eliminamos de la primera: la forma reducida tiene filas <span class="math inline">\((1,2,0)\)</span> y <span class="math inline">\((0,0,1)\)</span>, y rango dos. La fórmula de esta última reducción requiere dividir por <span class="math inline">\(t-2\)</span>; no puede evaluarse después en <span class="math inline">\(t=2\)</span> como si siguiera siendo válida.</p>
+<p>El cuerpo también importa. La matriz con entradas enteras <span class="math inline">\(\begin{bmatrix}1&amp;1\\1&amp;-1\end{bmatrix}\)</span> tiene rango dos sobre <span class="math inline">\(\mathbb Q\)</span> o <span class="math inline">\(\mathbb R\)</span>, porque al restar filas aparece un pivote <span class="math inline">\(-2\)</span>. Si interpretamos sus entradas módulo dos, <span class="math inline">\(-1=1\)</span> y ambas filas coinciden: su rango sobre <span class="math inline">\(\mathbb F_2\)</span> es uno. Se trata de interpretar los enteros en cuerpos con distinta aritmética.</p>
+<p>Cuando un cuerpo está contenido en otro, la situación es distinta. Una matriz racional puede reducirse utilizando únicamente escalares racionales. La forma reducida obtenida sigue siendo reducida sobre <span class="math inline">\(\mathbb R\)</span> o <span class="math inline">\(\mathbb C\)</span>, y las operaciones siguen siendo válidas; por unicidad es la misma forma reducida. Su rango no cambia. Una columna de datos racionales compatible sobre <span class="math inline">\(\mathbb C\)</span> ya era compatible sobre <span class="math inline">\(\mathbb Q\)</span>: basta escoger cero para las incógnitas libres en la forma reducida. Las soluciones complejas adicionales, cuando las hay, proceden de permitir parámetros complejos.</p>
+<p>Las filas de una ampliada pueden cambiarse para conservar soluciones; las columnas de incógnitas no tienen ese papel. Intercambiar las columnas de <span class="math inline">\(x\)</span> y <span class="math inline">\(y\)</span> en la ecuación <span class="math inline">\(x+2y=5\)</span> produce <span class="math inline">\(2x+y=5\)</span>, cuyo conjunto de parejas ordenadas es diferente. Si intercambiamos también los nombres de las coordenadas podemos relacionar ambos problemas, pero debemos declarar esa correspondencia. Dejar fijos los nombres y mover los coeficientes altera la representación del sistema.</p>
+<p>La forma reducida permite comparar tablas mediante una sucesión controlada de operaciones. Su unicidad fija los pivotes y las relaciones restantes; el rango retiene cuántas restricciones sobreviven. La tabla ampliada añade la información necesaria para decidir si los datos respetan esas restricciones y, cuando lo hacen, para leer todas las soluciones.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">2.10. Ejercicios</h2>
+<p>Salvo indicación contraria, trabajar sobre <span class="math inline">\(\mathbb R\)</span>. Al calcular una forma reducida, registrar operaciones suficientes para reconstruir el procedimiento. Al resolver sistemas, justificar también que se obtuvieron todas las soluciones.</p>
+<section id="representar-reducir-e-interpretar" class="level3">
+<h3 class="anchored" data-anchor-id="representar-reducir-e-interpretar">Representar, reducir e interpretar</h3>
+<p><span id="MA-BCH-APM-02-002-EXR-001" class="apm-anchor"></span> <strong>1.</strong> Sea <span class="math inline">\(A=\begin{bmatrix}2&amp;0&amp;-1\\4&amp;3&amp;5\end{bmatrix}\)</span>. Indicar tamaño, entradas <span class="math inline">\(a_{13},a_{22}\)</span>, segunda fila y tercera columna. Explicar por qué no puede ser igual a una matriz <span class="math inline">\(3\times2\)</span> con los mismos seis números.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-002" class="apm-anchor"></span> <strong>2.</strong> Escribir la matriz de coeficientes y la ampliada de <span class="math inline">\(y-2z=3\)</span>, <span class="math inline">\(2x+z=1\)</span>, <span class="math inline">\(x-y=0\)</span>, en el orden <span class="math inline">\(x,y,z\)</span>. Reconstruir las ecuaciones desde la ampliada e indicar sus tamaños.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-003" class="apm-anchor"></span> <strong>3.</strong> Clasificar como no escalonada, escalonada no reducida o reducida: <span class="math inline">\(P=\begin{bmatrix}1&amp;2\\0&amp;3\end{bmatrix}\)</span>, <span class="math inline">\(Q=\begin{bmatrix}0&amp;1&amp;2\\0&amp;0&amp;0\end{bmatrix}\)</span>, <span class="math inline">\(U=\begin{bmatrix}0&amp;0\\1&amp;0\end{bmatrix}\)</span> y <span class="math inline">\(V=\begin{bmatrix}1&amp;2&amp;0\\0&amp;0&amp;1\end{bmatrix}\)</span>.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-004" class="apm-anchor"></span> <strong>4.</strong> Calcular forma reducida y rango de <span class="math inline">\(\begin{bmatrix}1&amp;2&amp;3\\2&amp;4&amp;6\end{bmatrix}\)</span>. Resolver el sistema homogéneo correspondiente.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-005" class="apm-anchor"></span> <strong>5.</strong> Reducir <span class="math inline">\(\begin{bmatrix}0&amp;1&amp;2\\1&amp;0&amp;-1\\1&amp;1&amp;1\end{bmatrix}\)</span>. Indicar columnas pivote y describir las soluciones homogéneas.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-006" class="apm-anchor"></span> <strong>6.</strong> Reducir <span class="math inline">\(\begin{bmatrix}1&amp;2&amp;0&amp;1\\0&amp;1&amp;1&amp;2\\2&amp;5&amp;1&amp;4\end{bmatrix}\)</span>. Explicar la relación entre la tercera fila y las anteriores y parametrizar el sistema homogéneo.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-007" class="apm-anchor"></span> <strong>7.</strong> Reducir <span class="math inline">\(\left[\begin{array}{rrr|r}1&amp;1&amp;1&amp;2\\2&amp;2&amp;2&amp;5\end{array}\right]\)</span>. Comparar los rangos de coeficientes y ampliada y resolver el problema de compatibilidad.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-008" class="apm-anchor"></span> <strong>8.</strong> Resolver la ampliada <span class="math inline">\(\left[\begin{array}{rrr|r}1&amp;0&amp;2&amp;3\\0&amp;1&amp;-1&amp;1\\2&amp;-1&amp;5&amp;5\end{array}\right]\)</span>. Dar su forma reducida.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-009" class="apm-anchor"></span> <strong>9.</strong> Resolver <span class="math inline">\(\left[\begin{array}{rrrr|r}0&amp;1&amp;2&amp;-1&amp;4\\0&amp;0&amp;1&amp;3&amp;2\end{array}\right]\)</span>. Explicar por qué la primera incógnita es libre aunque esté a la izquierda de todos los pivotes.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-010" class="apm-anchor"></span> <strong>10.</strong> Reducir <span class="math inline">\(\left[\begin{array}{rr|r}1&amp;2&amp;3\\2&amp;4&amp;6\\3&amp;6&amp;10\end{array}\right]\)</span>. Indicar qué expresa cada fila de la forma reducida y decidir si una fila cero elimina la contradicción de otra.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-011" class="apm-anchor"></span> <strong>11.</strong> Resolver sobre <span class="math inline">\(\mathbb Q\)</span> la ampliada <span class="math inline">\(\left[\begin{array}{rr|r}1/2&amp;1/3&amp;1\\1&amp;-1/3&amp;0\end{array}\right]\)</span>, usando fracciones exactas.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-012" class="apm-anchor"></span> <strong>12.</strong> Hallar la forma reducida de <span class="math inline">\(\begin{bmatrix}1&amp;1\\1&amp;-1\end{bmatrix}\)</span> sobre <span class="math inline">\(\mathbb Q\)</span> y al interpretar sus entradas en <span class="math inline">\(\mathbb F_2\)</span>. Comparar rangos y soluciones homogéneas.</p>
+</section>
+<section id="parámetros-y-control-del-procedimiento" class="level3">
+<h3 class="anchored" data-anchor-id="parámetros-y-control-del-procedimiento">Parámetros y control del procedimiento</h3>
+<p><span id="MA-BCH-APM-02-002-EXR-013" class="apm-anchor"></span> <strong>13.</strong> Para <span class="math inline">\(A_t=\begin{bmatrix}1&amp;2&amp;1\\2&amp;4&amp;t\end{bmatrix}\)</span>, determinar forma reducida, rango y columnas pivote para todos los valores reales de <span class="math inline">\(t\)</span>.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-014" class="apm-anchor"></span> <strong>14.</strong> Para la ampliada <span class="math inline">\(\left[\begin{array}{rrr|r}1&amp;2&amp;1&amp;b_1\\2&amp;4&amp;t&amp;b_2\end{array}\right]\)</span>, clasificar compatibilidad y dar todas las soluciones para cada caso.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-015" class="apm-anchor"></span> <strong>15.</strong> Reducir la matriz del ejercicio 4 por dos rutas: una anulando primero la segunda fila y otra intercambiando primero las filas. Explicar qué parte del resultado debe coincidir y qué parte del trabajo puede diferir.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-016" class="apm-anchor"></span> <strong>16.</strong> Una matriz se transforma, en este orden, por <span class="math inline">\(F_2\leftarrow F_2-3F_1\)</span>, intercambio de <span class="math inline">\(F_1,F_2\)</span>, y <span class="math inline">\(F_2\leftarrow F_2/2\)</span>. Escribir la sucesión que deshace el cambio. ¿Puede ejecutarse esta descripción en característica dos?</p>
+<p><span id="MA-BCH-APM-02-002-EXR-017" class="apm-anchor"></span> <strong>17.</strong> Demostrar con detalle que la equivalencia por filas es una relación de equivalencia sobre las matrices de un tamaño fijo.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-018" class="apm-anchor"></span> <strong>18.</strong> Para <span class="math inline">\(f_1=(1,2,0)\)</span>, <span class="math inline">\(f_2=(0,1,1)\)</span> y <span class="math inline">\(g_1=f_1-2f_2\)</span>, <span class="math inline">\(g_2=f_2\)</span>, expresar una combinación arbitraria de los <span class="math inline">\(g_i\)</span> mediante los <span class="math inline">\(f_i\)</span>, y viceversa. Usarlo para verificar el lema 2.3 en este caso.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-019" class="apm-anchor"></span> <strong>19.</strong> Si las filas no nulas de una escalonada tienen pivotes en las columnas <span class="math inline">\(2,4,5\)</span>, ¿dónde puede comenzar una combinación no nula? Demostrar que todos esos comienzos son posibles. Dar dos filas no escalonadas cuya diferencia empiece después de los comienzos de ambas.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-020" class="apm-anchor"></span> <strong>20.</strong> Demostrar que reducir una matriz ya escalonada no cambia sus columnas pivote. Explicar por qué esto permite calcular el rango deteniéndose antes de limpiar las entradas superiores.</p>
+</section>
+<section id="pruebas-ejemplos-y-contraejemplos" class="level3">
+<h3 class="anchored" data-anchor-id="pruebas-ejemplos-y-contraejemplos">Pruebas, ejemplos y contraejemplos</h3>
+<p><span id="MA-BCH-APM-02-002-EXR-021" class="apm-anchor"></span> <strong>21.</strong> Describir todas las matrices reducidas <span class="math inline">\(2\times2\)</span> sobre un cuerpo. Si el cuerpo tiene <span class="math inline">\(q\)</span> elementos, ¿cuántas hay?</p>
+<p><span id="MA-BCH-APM-02-002-EXR-022" class="apm-anchor"></span> <strong>22.</strong> Construir dos matrices reducidas <span class="math inline">\(2\times3\)</span> con iguales columnas pivote y rango que no sean equivalentes por filas. Justificar la respuesta.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-023" class="apm-anchor"></span> <strong>23.</strong> Interpretar como ampliadas las matrices <span class="math inline">\(\begin{bmatrix}1&amp;0&amp;0\\0&amp;0&amp;1\end{bmatrix}\)</span> y <span class="math inline">\(\begin{bmatrix}0&amp;1&amp;0\\0&amp;0&amp;1\end{bmatrix}\)</span>. Probar que sus sistemas tienen el mismo conjunto de soluciones, pero las ampliadas no son equivalentes por filas. ¿Contradice esto la proposición 2.1?</p>
+<p><span id="MA-BCH-APM-02-002-EXR-024" class="apm-anchor"></span> <strong>24.</strong> Intercambiar las columnas de coeficientes en <span class="math inline">\([1\ \ 2\,|\,5]\)</span>. Exhibir una pareja que resuelva el sistema anterior y no el nuevo. Describir la correspondencia entre sus soluciones si se intercambian también las coordenadas.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-025" class="apm-anchor"></span> <strong>25.</strong> En <span class="math inline">\(x+y=2\)</span>, <span class="math inline">\(x-y=0\)</span>, se aplica <span class="math inline">\(F_2\leftarrow F_2-F_1\)</span> sólo a los coeficientes y se conserva por error el término independiente cero. Resolver el sistema erróneo y el correcto, y localizar la información perdida.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-026" class="apm-anchor"></span> <strong>26.</strong> Probar que una matriz no nula no puede ser equivalente por filas a la matriz cero. Demostrar que añadir al final una fila cero no cambia el número de pivotes, aunque la matriz resultante tenga otro tamaño.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-027" class="apm-anchor"></span> <strong>27.</strong> Para <span class="math inline">\(A=\begin{bmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\end{bmatrix}\)</span> y <span class="math inline">\(B=\begin{bmatrix}1&amp;0\\0&amp;1\\1&amp;1\end{bmatrix}\)</span>, estudiar existencia y unicidad para todos los términos independientes. Explicar la diferencia entre rango máximo por filas y por columnas.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-028" class="apm-anchor"></span> <strong>28.</strong> Reducir conjuntamente los dos sistemas con coeficientes <span class="math inline">\(\begin{bmatrix}1&amp;2\\3&amp;5\end{bmatrix}\)</span> y términos independientes <span class="math inline">\((1,2)\)</span> y <span class="math inline">\((0,1)\)</span>. Dar las dos soluciones y comprobarlas.</p>
+</section>
+<section id="síntesis-y-transferencia" class="level3">
+<h3 class="anchored" data-anchor-id="síntesis-y-transferencia">Síntesis y transferencia</h3>
+<p><span id="MA-BCH-APM-02-002-EXR-029" class="apm-anchor"></span> <strong>29.</strong> Para <span class="math inline">\(A=\begin{bmatrix}1&amp;2&amp;-1&amp;1\\0&amp;1&amp;1&amp;-2\\2&amp;5&amp;-1&amp;0\end{bmatrix}\)</span>, dar una condición necesaria y suficiente sobre <span class="math inline">\(b_1,b_2,b_3\)</span> para que <span class="math inline">\(Ax=b\)</span> sea compatible. Parametrizar todas las soluciones y justificar la necesidad y suficiencia.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-030" class="apm-anchor"></span> <strong>30.</strong> Aplicar la reducción anterior simultáneamente a <span class="math inline">\(b=(3,1,7)\)</span> y <span class="math inline">\(c=(3,1,8)\)</span>. Explicar por qué una contradicción en la columna de <span class="math inline">\(c\)</span> no invalida las soluciones del sistema con <span class="math inline">\(b\)</span>.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-031" class="apm-anchor"></span> <strong>31.</strong> Sea <span class="math inline">\(\mathbb K\)</span> un subcuerpo de <span class="math inline">\(\mathbb F\)</span>. Probar que una matriz con entradas en <span class="math inline">\(\mathbb K\)</span> tiene la misma forma reducida y rango al considerarla sobre <span class="math inline">\(\mathbb F\)</span>. Si sus datos <span class="math inline">\(b\)</span> también están en <span class="math inline">\(\mathbb K\)</span>, probar que la compatibilidad sobre <span class="math inline">\(\mathbb F\)</span> implica compatibilidad sobre <span class="math inline">\(\mathbb K\)</span>. Explicar por qué los conjuntos de soluciones pueden ser distintos.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-032" class="apm-anchor"></span> <strong>32.</strong> Hallar todos los polinomios reales <span class="math inline">\(p(t)=a_0+a_1t+a_2t^2+a_3t^3\)</span> con <span class="math inline">\(p(0)=1\)</span>, <span class="math inline">\(p(1)=2\)</span> y <span class="math inline">\(p(-1)=0\)</span>. Construir y reducir su ampliada, e interpretar el parámetro libre.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-033" class="apm-anchor"></span> <strong>33.</strong> Usando el razonamiento del teorema 2.7, probar que añadir una columna a una matriz aumenta su rango a lo sumo en uno y nunca lo disminuye. Deducir que añadir <span class="math inline">\(k\)</span> columnas aumenta el rango a lo sumo en <span class="math inline">\(k\)</span>.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-034" class="apm-anchor"></span> <strong>34.</strong> Contar las matrices reducidas <span class="math inline">\(2\times3\)</span> de rango uno sobre un cuerpo de <span class="math inline">\(q\)</span> elementos. Separar los casos según la columna pivote y explicar por qué no hay duplicaciones.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-035" class="apm-anchor"></span> <strong>35.</strong> Un sistema tiene ampliada reducida <span class="math inline">\(\left[\begin{array}{rrr|r}1&amp;0&amp;2&amp;3\\0&amp;1&amp;-1&amp;1\\0&amp;0&amp;0&amp;0\end{array}\right]\)</span>. Se añade <span class="math inline">\(ax+by+cz=d\)</span>. Determinar cuándo conserva todas las soluciones, cuándo selecciona exactamente una y cuándo deja el conjunto vacío.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-036" class="apm-anchor"></span> <strong>36.</strong> Se afirma que la forma reducida real de <span class="math inline">\(\begin{bmatrix}1&amp;1&amp;0\\0&amp;1&amp;1\end{bmatrix}\)</span> es <span class="math inline">\(\begin{bmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\end{bmatrix}\)</span>. Encontrar el error y refutar el resultado mediante una solución homogénea. Explicar qué sucede con la misma afirmación al interpretar las entradas módulo dos.</p>
+</section>
+<section id="combinaciones-de-filas-y-elección-del-procedimiento" class="level3">
+<h3 class="anchored" data-anchor-id="combinaciones-de-filas-y-elección-del-procedimiento">Combinaciones de filas y elección del procedimiento</h3>
+<p><span id="MA-BCH-APM-02-002-EXR-037" class="apm-anchor"></span> <strong>37.</strong> Sean</p>
+<p><span class="math display">\[
+A=\begin{bmatrix}1&amp;2&amp;1\\0&amp;1&amp;-1\\1&amp;3&amp;0\end{bmatrix},
+\qquad
+B=\begin{bmatrix}2&amp;1&amp;5\\1&amp;1&amp;2\\0&amp;0&amp;0\end{bmatrix}.
+\]</span></p>
+<p>Probar que son equivalentes por filas expresando cada fila de una matriz como combinación de las de la otra, sin comenzar por un escalonamiento. Calcular después su forma reducida común. Explicar qué parte de la justificación faltaría si sólo se hubieran expresado las filas de <span class="math inline">\(B\)</span> mediante las de <span class="math inline">\(A\)</span>.</p>
+<p><span id="MA-BCH-APM-02-002-EXR-038" class="apm-anchor"></span> <strong>38.</strong> Para datos reales <span class="math inline">\(a,b,c\)</span>, estudiar</p>
+<p><span class="math display">\[
+N=\left[\begin{array}{rrr|r}
+1&amp;-1&amp;2&amp;a\\2&amp;1&amp;1&amp;b\\3&amp;0&amp;3&amp;c
+\end{array}\right].
+\]</span></p>
+<p>Detener primero la eliminación en cuanto permita decidir compatibilidad y rangos. Cuando existan soluciones, obtenerlas por sustitución regresiva. Calcular finalmente la forma reducida completa en cada caso y explicar qué información adicional permite usar para comparar <span class="math inline">\(N\)</span> con otras matrices del mismo tamaño.</p>
+</section>
+</section>
+<section id="soluciones-razonadas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-razonadas">2.11. Soluciones razonadas</h2>
+<p><span id="MA-BCH-APM-02-002-SOL-001" class="apm-anchor"></span> <strong>1.</strong> El tamaño es <span class="math inline">\(2\times3\)</span>, <span class="math inline">\(a_{13}=-1\)</span>, <span class="math inline">\(a_{22}=3\)</span>, la segunda fila es <span class="math inline">\((4,3,5)\)</span> y la tercera columna es <span class="math inline">\((-1,5)\)</span> escrita verticalmente. La igualdad de matrices exige el mismo conjunto de posiciones; una tabla <span class="math inline">\(3\times2\)</span> organiza las entradas en posiciones distintas. Coincidir en la lista de números no basta para igualdad.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-002" class="apm-anchor"></span> <strong>2.</strong> En el orden fijado,</p>
+<p><span class="math display">\[
+A=\begin{bmatrix}0&amp;1&amp;-2\\2&amp;0&amp;1\\1&amp;-1&amp;0\end{bmatrix},
+\qquad
+[A\,|\,b]=\left[\begin{array}{rrr|r}
+0&amp;1&amp;-2&amp;3\\2&amp;0&amp;1&amp;1\\1&amp;-1&amp;0&amp;0
+\end{array}\right].
+\]</span></p>
+<p>Los tamaños son <span class="math inline">\(3\times3\)</span> y <span class="math inline">\(3\times4\)</span>. Multiplicar cada entrada de una fila, salvo la última, por la incógnita de su columna y sumarlas reconstruye <span class="math inline">\(0x+y-2z=3\)</span>, <span class="math inline">\(2x+0y+z=1\)</span> y <span class="math inline">\(x-y+0z=0\)</span>. Los ceros sostienen la posición de las incógnitas que no se escriben en las ecuaciones abreviadas.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-003" class="apm-anchor"></span> <strong>3.</strong> <span class="math inline">\(P\)</span> es escalonada y no reducida: su segundo pivote vale tres y hay un dos encima. <span class="math inline">\(Q\)</span> es reducida, con pivote en la segunda columna; el dos de la tercera columna no infringe ninguna condición. <span class="math inline">\(U\)</span> no es escalonada porque una fila cero precede a una no nula. <span class="math inline">\(V\)</span> es reducida con pivotes en columnas primera y tercera; el dos está en una columna no pivote.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-004" class="apm-anchor"></span> <strong>4.</strong> Restar dos veces la primera fila de la segunda produce</p>
+<p><span class="math display">\[
+R=\begin{bmatrix}1&amp;2&amp;3\\0&amp;0&amp;0\end{bmatrix}.
+\]</span></p>
+<p>Ya está reducida y su rango es uno. El homogéneo es <span class="math inline">\(x+2y+3z=0\)</span>: con <span class="math inline">\(y=s\)</span>, <span class="math inline">\(z=t\)</span>, todas las soluciones son <span class="math inline">\((-2s-3t,s,t)\)</span>. La ecuación determina <span class="math inline">\(x\)</span> de forma única para cada elección de las libres, y toda solución recupera sus parámetros como <span class="math inline">\(s=y,t=z\)</span>.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-005" class="apm-anchor"></span> <strong>5.</strong> Intercambiar las dos primeras filas da <span class="math inline">\((1,0,-1)\)</span> arriba y <span class="math inline">\((0,1,2)\)</span> debajo. La tercera menos las dos primeras se anula, porque <span class="math inline">\((1,1,1)=(1,0,-1)+(0,1,2)\)</span>. La forma reducida es</p>
+<p><span class="math display">\[
+\begin{bmatrix}1&amp;0&amp;-1\\0&amp;1&amp;2\\0&amp;0&amp;0\end{bmatrix}.
+\]</span></p>
+<p>Los pivotes están en columnas primera y segunda, y el rango es dos. El homogéneo exige <span class="math inline">\(x=z\)</span>, <span class="math inline">\(y=-2z\)</span>; sus soluciones son <span class="math inline">\((t,-2t,t)\)</span>, con <span class="math inline">\(t\in\mathbb R\)</span>.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-006" class="apm-anchor"></span> <strong>6.</strong> La tercera fila es dos veces la primera más la segunda. Las instrucciones <span class="math inline">\(F_3\leftarrow F_3-2F_1\)</span> y <span class="math inline">\(F_3\leftarrow F_3-F_2\)</span> la anulan. Después <span class="math inline">\(F_1\leftarrow F_1-2F_2\)</span> da</p>
+<p><span class="math display">\[
+R=\begin{bmatrix}1&amp;0&amp;-2&amp;-3\\0&amp;1&amp;1&amp;2\\0&amp;0&amp;0&amp;0\end{bmatrix}.
+\]</span></p>
+<p>Tiene rango dos. Las incógnitas tercera y cuarta pueden elegirse <span class="math inline">\(s,t\)</span>, y las otras quedan <span class="math inline">\(x_1=2s+3t\)</span>, <span class="math inline">\(x_2=-s-2t\)</span>. Sustituir produce cero en las tres ecuaciones; la tercera no añade ninguna condición por la combinación de filas señalada.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-007" class="apm-anchor"></span> <strong>7.</strong> <span class="math inline">\(F_2\leftarrow F_2-2F_1\)</span> produce <span class="math inline">\((0,0,0\,|\,1)\)</span>. Limpiar la entrada dos que queda arriba de ese pivote mediante <span class="math inline">\(F_1\leftarrow F_1-2F_2\)</span> da</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrr|r}1&amp;1&amp;1&amp;0\\0&amp;0&amp;0&amp;1\end{array}\right].
+\]</span></p>
+<p>El rango de coeficientes es uno y el de la ampliada es dos. La última fila representa <span class="math inline">\(0=1\)</span>, así que no existe solución. El cero que aparece en el término independiente de la primera fila tras la reducción completa no borra esa contradicción.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-008" class="apm-anchor"></span> <strong>8.</strong> La tercera fila es dos veces la primera menos la segunda, también en el término independiente: <span class="math inline">\(2(3)-1=5\)</span>. Se anula con esas operaciones y las otras ya están reducidas. Resulta</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrr|r}1&amp;0&amp;2&amp;3\\0&amp;1&amp;-1&amp;1\\0&amp;0&amp;0&amp;0\end{array}\right].
+\]</span></p>
+<p>Con <span class="math inline">\(z=t\)</span> se obtiene <span class="math inline">\((x,y,z)=(3-2t,1+t,t)\)</span>. Las dos primeras ecuaciones se cumplen por construcción y la tercera es su combinación, lo que prueba suficiencia; cualquier solución debe tener esa forma por las dos primeras.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-009" class="apm-anchor"></span> <strong>9.</strong> La operación <span class="math inline">\(F_1\leftarrow F_1-2F_2\)</span> produce</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrrr|r}0&amp;1&amp;0&amp;-7&amp;0\\0&amp;0&amp;1&amp;3&amp;2\end{array}\right].
+\]</span></p>
+<p>Las columnas pivote son segunda y tercera. Con <span class="math inline">\(x_1=s\)</span>, <span class="math inline">\(x_4=t\)</span>, quedan <span class="math inline">\(x_2=7t\)</span> y <span class="math inline">\(x_3=2-3t\)</span>. Toda solución es <span class="math inline">\((s,7t,2-3t,t)\)</span>; la primera coordenada no aparece en ninguna ecuación porque su columna es cero. La libertad no depende de estar a la derecha de todos los pivotes.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-010" class="apm-anchor"></span> <strong>10.</strong> Restar <span class="math inline">\(2F_1\)</span> de <span class="math inline">\(F_2\)</span> y <span class="math inline">\(3F_1\)</span> de <span class="math inline">\(F_3\)</span> da una fila cero y una fila <span class="math inline">\((0,0\,|\,1)\)</span>. Intercambiarlas coloca la contradicción arriba de la fila cero. Restar tres veces la fila contradictoria de la primera limpia su término independiente. La forma reducida es</p>
+<p><span class="math display">\[
+\left[\begin{array}{rr|r}1&amp;2&amp;0\\0&amp;0&amp;1\\0&amp;0&amp;0\end{array}\right].
+\]</span></p>
+<p>Las filas representan <span class="math inline">\(x+2y=0\)</span>, <span class="math inline">\(0=1\)</span> y <span class="math inline">\(0=0\)</span>. El sistema exige las tres a la vez; una identidad no vuelve verdadera una contradicción. Los rangos son uno y dos y no hay solución.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-011" class="apm-anchor"></span> <strong>11.</strong> Multiplicar la primera fila por dos produce <span class="math inline">\((1,2/3\,|\,2)\)</span>. Restarla de la segunda da <span class="math inline">\((0,-1\,|\,-2)\)</span>. Multiplicar esta fila por <span class="math inline">\(-1\)</span> y restar <span class="math inline">\(2/3\)</span> de ella a la primera produce <span class="math inline">\(\left[\begin{array}{rr|r}1&amp;0&amp;2/3\\0&amp;1&amp;2\end{array}\right]\)</span>. La solución es <span class="math inline">\((2/3,2)\)</span>, racional. Sus miembros izquierdos valen <span class="math inline">\(1/3+2/3=1\)</span> y <span class="math inline">\(2/3-2/3=0\)</span>. Los dos pivotes dejan ninguna variable libre.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-012" class="apm-anchor"></span> <strong>12.</strong> Sobre <span class="math inline">\(\mathbb Q\)</span>, restar la primera fila de la segunda da <span class="math inline">\((0,-2)\)</span>; dividirla por <span class="math inline">\(-2\)</span> y limpiar arriba lleva a <span class="math inline">\(I_2\)</span>, rango dos y sólo solución homogénea cero. Sobre <span class="math inline">\(\mathbb F_2\)</span>, las filas originales son ambas <span class="math inline">\((1,1)\)</span>; restarlas deja cero y la forma reducida es <span class="math inline">\(\begin{bmatrix}1&amp;1\\0&amp;0\end{bmatrix}\)</span>. Su rango es uno y el homogéneo tiene <span class="math inline">\((0,0)\)</span> y <span class="math inline">\((1,1)\)</span>. La división por <span class="math inline">\(-2\)</span> no está disponible en ese cuerpo porque ese elemento es cero.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-013" class="apm-anchor"></span> <strong>13.</strong> Tras <span class="math inline">\(F_2\leftarrow F_2-2F_1\)</span>, la segunda fila es <span class="math inline">\((0,0,t-2)\)</span>. Si <span class="math inline">\(t=2\)</span>, la forma reducida es <span class="math inline">\(\begin{bmatrix}1&amp;2&amp;1\\0&amp;0&amp;0\end{bmatrix}\)</span> y el rango uno, con pivote en columna primera. Si <span class="math inline">\(t\ne2\)</span>, dividir la segunda por <span class="math inline">\(t-2\)</span> y restarla de la primera da <span class="math inline">\(\begin{bmatrix}1&amp;2&amp;0\\0&amp;0&amp;1\end{bmatrix}\)</span>, rango dos y pivotes en primera y tercera. Los casos cubren todos los parámetros y sólo se divide bajo la hipótesis apropiada.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-014" class="apm-anchor"></span> <strong>14.</strong> La segunda fila menos dos veces la primera es <span class="math inline">\((0,0,t-2\,|\,b_2-2b_1)\)</span>. Para <span class="math inline">\(t\ne2\)</span>, queda <span class="math inline">\(z=(b_2-2b_1)/(t-2)\)</span>; tomando <span class="math inline">\(y=s\)</span>, la primera da <span class="math inline">\(x=b_1-2s-z\)</span>. El sistema es compatible para todo <span class="math inline">\(b_1,b_2\)</span> y tiene una variable libre. Si <span class="math inline">\(t=2\)</span>, es compatible exactamente cuando <span class="math inline">\(b_2=2b_1\)</span>; en ese caso <span class="math inline">\(y=s,z=u\)</span> son libres y <span class="math inline">\(x=b_1-2s-u\)</span>. Si <span class="math inline">\(t=2\)</span> y <span class="math inline">\(b_2\ne2b_1\)</span>, la última fila es una contradicción. La primera ecuación y la diferencia de ecuaciones son equivalentes al sistema original, por lo que las familias son completas.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-015" class="apm-anchor"></span> <strong>15.</strong> La primera ruta usa <span class="math inline">\(F_2\leftarrow F_2-2F_1\)</span> y llega directamente a <span class="math inline">\(\begin{bmatrix}1&amp;2&amp;3\\0&amp;0&amp;0\end{bmatrix}\)</span>. En la segunda intercambiamos filas, dividimos la primera por dos y restamos esa primera de la segunda; llegamos a la misma tabla. Difieren las operaciones y los pivotes intermedios, que en la segunda ruta empiezan por dos. La forma reducida y las columnas pivote finales deben coincidir por el teorema 2.5.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-016" class="apm-anchor"></span> <strong>16.</strong> Se deshace primero el último paso: multiplicar <span class="math inline">\(F_2\)</span> por dos. Luego se intercambian <span class="math inline">\(F_1,F_2\)</span> y finalmente se ejecuta <span class="math inline">\(F_2\leftarrow F_2+3F_1\)</span>. Cada instrucción utiliza las filas actuales y revierte la anterior en orden inverso. En característica dos la operación original <span class="math inline">\(F_2/2\)</span> no está definida; por eso la descripción completa no constituye allí una sucesión válida de operaciones elementales.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-017" class="apm-anchor"></span> <strong>17.</strong> Para reflexividad basta la sucesión vacía. Si una sucesión lleva <span class="math inline">\(A\)</span> a <span class="math inline">\(B\)</span>, invertir cada operación y ejecutarlas en orden inverso lleva <span class="math inline">\(B\)</span> a <span class="math inline">\(A\)</span>, lo que prueba simetría. Si una sucesión lleva <span class="math inline">\(A\)</span> a <span class="math inline">\(B\)</span> y otra lleva <span class="math inline">\(B\)</span> a <span class="math inline">\(C\)</span>, ejecutarlas consecutivamente lleva <span class="math inline">\(A\)</span> a <span class="math inline">\(C\)</span> y sigue siendo finita; esto prueba transitividad. El tamaño no cambia en ninguna operación, de modo que todo sucede en el conjunto de matrices fijado.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-018" class="apm-anchor"></span> <strong>18.</strong> Para escalares <span class="math inline">\(u,v\)</span>,</p>
+<p><span class="math display">\[
+ug_1+vg_2=u(f_1-2f_2)+vf_2=uf_1+(v-2u)f_2.
+\]</span></p>
+<p>En sentido inverso, <span class="math inline">\(f_1=g_1+2g_2\)</span> y <span class="math inline">\(f_2=g_2\)</span>, por lo que <span class="math inline">\(af_1+bf_2=ag_1+(2a+b)g_2\)</span>. Las dos identidades muestran que cada combinación de una pareja es combinación de la otra, sin afirmar que deban coincidir los coeficientes usados.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-019" class="apm-anchor"></span> <strong>19.</strong> Los únicos comienzos posibles son las columnas <span class="math inline">\(2,4,5\)</span>: la primera fila que tenga coeficiente no nulo en una combinación aporta una entrada no cancelable en su pivote. Cada comienzo se realiza tomando sólo la fila correspondiente con coeficiente uno. Sin escalonamiento, <span class="math inline">\(f=(1,0)\)</span> y <span class="math inline">\(g=(1,1)\)</span> comienzan ambas en columna primera, pero <span class="math inline">\(g-f=(0,1)\)</span> comienza en la segunda. La coincidencia de comienzos permite la cancelación que el lema excluye.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-020" class="apm-anchor"></span> <strong>20.</strong> Normalizar una fila por un escalar no nulo conserva dónde empieza. Limpiar encima de un pivote usa una fila que es cero antes de él; por tanto, no modifica el pivote anterior de una fila superior. Al proceder desde abajo, tampoco altera las columnas pivote posteriores ya limpias, pues la fila auxiliar tiene cero en ellas. Ninguna fila no nula se anula: conserva su pivote. La reducción mantiene todas las posiciones y su cantidad; por unicidad esa cantidad ya es el rango, sin necesidad de hacer las limpiezas superiores para contarlo.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-021" class="apm-anchor"></span> <strong>21.</strong> En rango cero sólo está <span class="math inline">\(0_{2\times2}\)</span>. En rango dos los pivotes deben ocupar columnas primera y segunda y ambas deben estar limpias, de modo que sólo está <span class="math inline">\(I_2\)</span>. En rango uno la fila no nula ocupa el primer lugar. Si su pivote está en la primera columna, la matriz es <span class="math inline">\(\begin{bmatrix}1&amp;a\\0&amp;0\end{bmatrix}\)</span> con <span class="math inline">\(a\)</span> arbitrario; si está en la segunda, es <span class="math inline">\(\begin{bmatrix}0&amp;1\\0&amp;0\end{bmatrix}\)</span>. No hay otros casos. Sobre un cuerpo de <span class="math inline">\(q\)</span> elementos hay <span class="math inline">\(1+1+q+1=q+3\)</span> matrices, sin duplicación porque los rangos o la columna pivote distinguen los grupos.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-022" class="apm-anchor"></span> <strong>22.</strong> Sirven <span class="math inline">\(R=\begin{bmatrix}1&amp;0&amp;0\\0&amp;0&amp;1\end{bmatrix}\)</span> y <span class="math inline">\(S=\begin{bmatrix}1&amp;1&amp;0\\0&amp;0&amp;1\end{bmatrix}\)</span>. Ambas son reducidas, tienen rango dos y pivotes en primera y tercera columnas. Son distintas en la entrada <span class="math inline">\((1,2)\)</span>; si fueran equivalentes, la unicidad las haría iguales. Conocer rango y columnas pivote no determina los coeficientes de las otras columnas.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-023" class="apm-anchor"></span> <strong>23.</strong> La primera ampliada exige <span class="math inline">\(x=0\)</span> y <span class="math inline">\(0=1\)</span>; la segunda, <span class="math inline">\(y=0\)</span> y <span class="math inline">\(0=1\)</span>. Los dos conjuntos de soluciones son vacíos. Sus matrices ya están reducidas y son distintas, por lo que no son equivalentes por filas. La proposición 2.1 sólo afirma que equivalencia por filas implica igualdad de soluciones; el ejemplo muestra que la implicación recíproca no vale en general.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-024" class="apm-anchor"></span> <strong>24.</strong> La ampliada nueva es <span class="math inline">\([2\ \ 1\,|\,5]\)</span>. La pareja <span class="math inline">\((5,0)\)</span> satisface <span class="math inline">\(x+2y=5\)</span>, pero no <span class="math inline">\(2x+y=5\)</span>. Si <span class="math inline">\((u,v)\)</span> satisface la primera, la pareja <span class="math inline">\((v,u)\)</span> satisface la segunda porque <span class="math inline">\(2v+u=5\)</span>; intercambiar otra vez recupera la pareja inicial. Se tiene una correspondencia biyectiva que cambia coordenadas, no igualdad de conjuntos con coordenadas fijas.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-025" class="apm-anchor"></span> <strong>25.</strong> El sistema erróneo es <span class="math inline">\(x+y=2\)</span>, <span class="math inline">\(-2y=0\)</span>, que da <span class="math inline">\((2,0)\)</span>. El correcto es <span class="math inline">\(x+y=2\)</span>, <span class="math inline">\(-2y=-2\)</span>, que da <span class="math inline">\((1,1)\)</span>. En las ecuaciones originales, la pareja errónea tiene <span class="math inline">\(x-y=2\)</span> en vez de cero. Al restar la primera ecuación se debía restar también su término independiente dos; conservar el cero destruyó la reversibilidad de la transformación de ecuaciones.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-026" class="apm-anchor"></span> <strong>26.</strong> Toda operación elemental deja cero a la matriz cero. Si una matriz <span class="math inline">\(A\)</span> pudiera transformarse en cero, la sucesión inversa partiría de cero y tendría que llegar también a cero; así <span class="math inline">\(A=0\)</span>. Para añadir una fila cero, ejecutar sobre las filas antiguas una reducción de <span class="math inline">\(A\)</span> y dejar la nueva intacta da su forma reducida con una fila cero adicional. El número de pivotes se conserva. No llamamos equivalentes por filas a las matrices de tamaños distintos; comparamos sólo sus rangos.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-027" class="apm-anchor"></span> <strong>27.</strong> La matriz <span class="math inline">\(A\)</span> ya está reducida y tiene dos pivotes, uno por fila. Para cualquier <span class="math inline">\((b_1,b_2)\)</span>, las soluciones son <span class="math inline">\((b_1-t,b_2-t,t)\)</span>; existen siempre y no son únicas. Para <span class="math inline">\(B\)</span>, restar las dos primeras filas de la tercera produce una fila cero en coeficientes. Sus sistemas son <span class="math inline">\(x=b_1,y=b_2,x+y=b_3\)</span>, compatibles exactamente si <span class="math inline">\(b_3=b_1+b_2\)</span> y entonces con única solución <span class="math inline">\((b_1,b_2)\)</span>. Tiene un pivote por columna y no por fila. El primer requisito garantiza unicidad cuando existe; el segundo, existencia para cualquier dato, como precisa el teorema 2.8.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-028" class="apm-anchor"></span> <strong>28.</strong> Empezamos con <span class="math inline">\(\left[\begin{array}{rr|r|r}1&amp;2&amp;1&amp;0\\3&amp;5&amp;2&amp;1\end{array}\right]\)</span>. La operación <span class="math inline">\(F_2\leftarrow F_2-3F_1\)</span> produce <span class="math inline">\((0,-1\,|\,-1\,|\,1)\)</span>. Multiplicar esa fila por <span class="math inline">\(-1\)</span> y restar dos veces la nueva segunda a la primera da</p>
+<p><span class="math display">\[
+\left[\begin{array}{rr|r|r}1&amp;0&amp;-1&amp;2\\0&amp;1&amp;1&amp;-1\end{array}\right].
+\]</span></p>
+<p>Las soluciones son <span class="math inline">\((-1,1)\)</span> y <span class="math inline">\((2,-1)\)</span>. Para la primera, <span class="math inline">\(-1+2=1\)</span> y <span class="math inline">\(-3+5=2\)</span>; para la segunda, <span class="math inline">\(2-2=0\)</span> y <span class="math inline">\(6-5=1\)</span>. Los pivotes en ambas columnas de coeficientes prueban unicidad en los dos sistemas.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-029" class="apm-anchor"></span> <strong>29.</strong> Restar <span class="math inline">\(2F_1\)</span> y luego <span class="math inline">\(F_2\)</span> de <span class="math inline">\(F_3\)</span> deja como última entrada <span class="math inline">\(b_3-2b_1-b_2\)</span>, con coeficientes cero. Es necesario que se anule. Si <span class="math inline">\(b_3=2b_1+b_2\)</span>, limpiar la segunda columna de la primera fila deja <span class="math inline">\(x-3z+5w=b_1-2b_2\)</span>, <span class="math inline">\(y+z-2w=b_2\)</span>. Elegir <span class="math inline">\(z=s,w=t\)</span> produce la familia de §2.7, que satisface esas dos ecuaciones y la identidad final. Esto prueba suficiencia. Cualquier solución determina <span class="math inline">\(s,t\)</span> mediante sus últimas coordenadas y debe tener las dos primeras indicadas, lo que prueba exhaustividad.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-030" class="apm-anchor"></span> <strong>30.</strong> Las operaciones del ejercicio anterior aplicadas a ambas columnas producen las filas <span class="math inline">\((1,0,-3,5\,|\,1\,|\,1)\)</span>, <span class="math inline">\((0,1,1,-2\,|\,1\,|\,1)\)</span> y <span class="math inline">\((0,0,0,0\,|\,0\,|\,1)\)</span>. Con <span class="math inline">\(b\)</span> las soluciones son <span class="math inline">\((1+3s-5t,1-s+2t,s,t)\)</span>. Con <span class="math inline">\(c\)</span> no hay solución por <span class="math inline">\(0=1\)</span>. Cada columna de datos describe un sistema distinto y recibe las mismas operaciones; exigir la contradicción de la última columna al sistema de la primera mezclaría dos problemas.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-031" class="apm-anchor"></span> <strong>31.</strong> Reducir sobre <span class="math inline">\(\mathbb K\)</span> sólo usa sumas, productos e inversos no nulos de ese cuerpo. Todos ellos siguen perteneciendo a <span class="math inline">\(\mathbb K\)</span> y son válidos en <span class="math inline">\(\mathbb F\)</span>; un elemento no nulo de un subcuerpo sigue siendo no nulo en el cuerpo mayor. La tabla obtenida cumple las mismas condiciones de forma reducida sobre ambos cuerpos. Por unicidad es la forma reducida en los dos y su rango coincide. Aplicando el argumento también a la ampliada, los rangos de coeficientes y ampliada coinciden sobre <span class="math inline">\(\mathbb K\)</span> si coinciden sobre <span class="math inline">\(\mathbb F\)</span>, lo que prueba compatibilidad. También puede elegirse cero para las libres y obtener una solución en <span class="math inline">\(\mathbb K\)</span>. Los conjuntos pueden diferir: <span class="math inline">\(x+y=0\)</span> admite sólo parejas racionales al trabajar sobre <span class="math inline">\(\mathbb Q\)</span>, y también parejas como <span class="math inline">\((\sqrt2,-\sqrt2)\)</span> sobre <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-032" class="apm-anchor"></span> <strong>32.</strong> En el orden <span class="math inline">\(a_0,a_1,a_2,a_3\)</span> la ampliada es</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrrr|r}
+1&amp;0&amp;0&amp;0&amp;1\\
+1&amp;1&amp;1&amp;1&amp;2\\
+1&amp;-1&amp;1&amp;-1&amp;0
+\end{array}\right].
+\]</span></p>
+<p>Restar la primera fila de las otras dos deja <span class="math inline">\((0,1,1,1\,|\,1)\)</span> y <span class="math inline">\((0,-1,1,-1\,|\,-1)\)</span>. Sumarlas produce <span class="math inline">\((0,0,2,0\,|\,0)\)</span> en la tercera; dividir por dos y limpiar la tercera columna de la segunda da</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrrr|r}
+1&amp;0&amp;0&amp;0&amp;1\\0&amp;1&amp;0&amp;1&amp;1\\0&amp;0&amp;1&amp;0&amp;0
+\end{array}\right].
+\]</span></p>
+<p>Con <span class="math inline">\(a_3=u\)</span>, resulta <span class="math inline">\(a_0=1,a_1=1-u,a_2=0\)</span>. Todos los polinomios son <span class="math inline">\(p(t)=1+(1-u)t+ut^3\)</span>. El término variable <span class="math inline">\(u(t^3-t)\)</span> se anula en <span class="math inline">\(0,1,-1\)</span>, por lo que las tres mediciones no lo distinguen. Sustituir verifica los datos y las ecuaciones reducidas prueban que no falta ningún polinomio de la forma pedida.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-033" class="apm-anchor"></span> <strong>33.</strong> Reducir <span class="math inline">\([A\,|\,c]\)</span> completamente y retirar la última columna deja una forma reducida equivalente a <span class="math inline">\(A\)</span>, como se demostró en el teorema 2.7. Los pivotes de las primeras columnas son por tanto los de <span class="math inline">\(\operatorname{rref}(A)\)</span>; la última columna tiene cero o un pivote adicional. Así el nuevo rango es <span class="math inline">\(\operatorname{rg}(A)\)</span> o <span class="math inline">\(\operatorname{rg}(A)+1\)</span>. Al añadir <span class="math inline">\(k\)</span> columnas de una en una, cada paso aumenta en cero o uno; por inducción el aumento total está entre cero y <span class="math inline">\(k\)</span>. No hace falta que las columnas añadidas se interpreten como datos de un único sistema.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-034" class="apm-anchor"></span> <strong>34.</strong> En rango uno la única fila no nula es la primera. Si el pivote ocupa columna primera, la fila es <span class="math inline">\((1,a,b)\)</span> y hay <span class="math inline">\(q^2\)</span> elecciones. Si ocupa columna segunda es <span class="math inline">\((0,1,b)\)</span> y hay <span class="math inline">\(q\)</span>. Si ocupa columna tercera es <span class="math inline">\((0,0,1)\)</span> y hay una. La segunda fila es cero en todos los casos. Se obtiene <span class="math inline">\(q^2+q+1\)</span>. Las columnas pivote distinguen los casos y las entradas distinguen las matrices dentro de cada uno; la unicidad de la forma reducida impide identificar entre sí dos matrices distintas de la lista mediante equivalencia por filas.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-035" class="apm-anchor"></span> <strong>35.</strong> El sistema antiguo tiene soluciones <span class="math inline">\((3-2t,1+t,t)\)</span>. En la ecuación añadida, su miembro izquierdo es <span class="math inline">\(3a+b+t(-2a+b+c)\)</span>. Si <span class="math inline">\(k=-2a+b+c\ne0\)</span>, la nueva condición fija <span class="math inline">\(t=(d-3a-b)/k\)</span> y selecciona exactamente una solución. Si <span class="math inline">\(k=0\)</span> y <span class="math inline">\(d=3a+b\)</span>, toda la familia se conserva. Si <span class="math inline">\(k=0\)</span> y <span class="math inline">\(d\ne3a+b\)</span>, ninguna solución queda. Los casos son exhaustivos. La nueva ecuación puede aportar una restricción efectiva, una condición ya satisfecha por todas o una condición incompatible con todas.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-036" class="apm-anchor"></span> <strong>36.</strong> La instrucción correcta <span class="math inline">\(F_1\leftarrow F_1-F_2\)</span> da <span class="math inline">\((1,0,-1)\)</span> en vez de <span class="math inline">\((1,0,1)\)</span>. Por tanto, la forma reducida real es <span class="math inline">\(\begin{bmatrix}1&amp;0&amp;-1\\0&amp;1&amp;1\end{bmatrix}\)</span>. La tupla <span class="math inline">\((1,-1,1)\)</span> satisface las dos ecuaciones homogéneas originales; en la primera ecuación de la tabla propuesta da <span class="math inline">\(1+1=2\ne0\)</span>. Esa tabla no conserva las soluciones y no puede ser equivalente por filas. Módulo dos, <span class="math inline">\(-1=1\)</span>: el paso de eliminación da precisamente la tabla propuesta, que entonces sí es correcta. La comprobación de un signo depende del cuerpo en el que se interpreta.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-037" class="apm-anchor"></span> <strong>37.</strong> Llamemos <span class="math inline">\(f_1,f_2,f_3\)</span> a las filas de <span class="math inline">\(A\)</span> y <span class="math inline">\(g_1,g_2,g_3\)</span> a las de <span class="math inline">\(B\)</span>. Se comprueba que</p>
+<p><span class="math display">\[
+g_1=2f_1-3f_2,\qquad g_2=f_1-f_2,\qquad g_3=0.
+\]</span></p>
+<p>Estas identidades prueban <span class="math inline">\(\mathcal C(B)\subseteq\mathcal C(A)\)</span>. Para recuperar las filas de <span class="math inline">\(A\)</span>, resolvemos esas dos relaciones:</p>
+<p><span class="math display">\[
+f_1=3g_2-g_1,\qquad f_2=2g_2-g_1,
+\qquad f_3=f_1+f_2=5g_2-2g_1.
+\]</span></p>
+<p>Obtenemos también <span class="math inline">\(\mathcal C(A)\subseteq\mathcal C(B)\)</span> y, por la proposición 2.6a, <span class="math inline">\(A\sim B\)</span>. Una sola inclusión permitiría todavía que <span class="math inline">\(B\)</span> hubiera perdido combinaciones presentes en <span class="math inline">\(A\)</span>; las expresiones inversas descartan esa posibilidad.</p>
+<p>En <span class="math inline">\(A\)</span>, restar de la tercera fila la suma de las dos primeras la anula; restar dos veces la segunda de la primera deja <span class="math inline">\((1,0,3)\)</span>. La forma reducida es</p>
+<p><span class="math display">\[
+\begin{bmatrix}1&amp;0&amp;3\\0&amp;1&amp;-1\\0&amp;0&amp;0\end{bmatrix}.
+\]</span></p>
+<p>Ya que las matrices son equivalentes, ésa es también la forma reducida de <span class="math inline">\(B\)</span>. Como comprobación directa, en <span class="math inline">\(B\)</span> podemos intercambiar las dos primeras filas, restar dos veces la primera de la segunda, multiplicar la segunda por <span class="math inline">\(-1\)</span> y restarla de la primera. Se obtiene la misma matriz.</p>
+<p><span id="MA-BCH-APM-02-002-SOL-038" class="apm-anchor"></span> <strong>38.</strong> Ejecutamos <span class="math inline">\(F_2\leftarrow F_2-2F_1\)</span>, <span class="math inline">\(F_3\leftarrow F_3-3F_1\)</span> y después <span class="math inline">\(F_3\leftarrow F_3-F_2\)</span>. Resulta</p>
+<p><span class="math display">\[
+\left[\begin{array}{rrr|r}
+1&amp;-1&amp;2&amp;a\\0&amp;3&amp;-3&amp;b-2a\\0&amp;0&amp;0&amp;c-a-b
+\end{array}\right].
+\]</span></p>
+<p>El rango de coeficientes es dos. Si <span class="math inline">\(c\ne a+b\)</span>, la última fila es contradictoria, el sistema es incompatible y la ampliada tiene rango tres; para ese diagnóstico ya podemos detenernos. Si <span class="math inline">\(c=a+b\)</span>, la última fila es cero, ambos rangos valen dos y podemos elegir <span class="math inline">\(z=t\)</span>. La segunda ecuación da <span class="math inline">\(y=t+(b-2a)/3\)</span> y la primera da <span class="math inline">\(x=(a+b)/3-t\)</span>. La familia completa es</p>
+<p><span class="math display">\[
+\left(\frac{a+b}{3}-t,\ t+\frac{b-2a}{3},\ t\right),
+\qquad t\in\mathbb R.
+\]</span></p>
+<p>La sustitución satisface las dos primeras ecuaciones y la tercera es su suma cuando <span class="math inline">\(c=a+b\)</span>. Cualquier solución recupera el parámetro como <span class="math inline">\(t=z\)</span> y queda forzada a tener esa forma. Al normalizar el segundo pivote y limpiar encima, en el caso compatible obtenemos</p>
+<p><span class="math display">\[
+\operatorname{rref}(N)=
+\left[\begin{array}{rrr|r}
+1&amp;0&amp;1&amp;(a+b)/3\\0&amp;1&amp;-1&amp;(b-2a)/3\\0&amp;0&amp;0&amp;0
+\end{array}\right].
+\]</span></p>
+<p>En el caso incompatible, normalizamos además el pivote de la última columna y limpiamos las entradas superiores de esa columna. Queda</p>
+<p><span class="math display">\[
+\operatorname{rref}(N)=
+\left[\begin{array}{rrr|r}
+1&amp;0&amp;1&amp;0\\0&amp;1&amp;-1&amp;0\\0&amp;0&amp;0&amp;1
+\end{array}\right]
+\qquad(c\ne a+b).
+\]</span></p>
+<p>Las formas reducidas permiten aplicar el corolario 2.6 para comparar con cualquier otra matriz <span class="math inline">\(3\times4\)</span>. En particular, todas las ampliadas incompatibles de esta familia son equivalentes por filas, aunque esa afirmación no se sigue únicamente de compartir el conjunto vacío de soluciones.</p>
+</section>
+<section id="lecturas-y-referencias" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-referencias">Lecturas y referencias</h2>
+<p>Kenneth Hoffman y Ray Kunze, <em>Linear Algebra</em>, 2.ª ed., §§1.3–1.4; Sergei Treil, <em>Linear Algebra Done Wrong</em>, cap. 2, §§2–3; Gilbert Strang, <em>Introduction to Linear Algebra</em>, 4.ª ed., §§3.2–3.4. El enfoque mediante combinaciones de filas permite justificar la unicidad sin anticipar la teoría de dimensión.</p>
+<p>Nathaniel Johnston, <em>Introduction to Linear and Matrix Algebra</em>, 2021, §§2.1,2.4.3 y apéndice B.2; Stephen H. Friedberg, Arnold J. Insel y Lawrence E. Spence, <em>Linear Algebra</em>, 5.ª ed., §§3.1–3.4. El apéndice de Johnston ofrece otra demostración de la unicidad de la forma reducida; el tratamiento del rango en ambos libros permite enlazar después el número de pivotes con la dimensión de la imagen.</p>
+<hr>
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-01-sistemas-lineales-y-eliminacion.html">← Capítulo 1</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-03-algebra-de-matrices-e-invertibilidad.html">Capítulo 3 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

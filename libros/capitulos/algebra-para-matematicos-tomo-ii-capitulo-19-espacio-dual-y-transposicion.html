@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 19 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.">
+
+<title>Capítulo 19. Espacio dual y transposición – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#aplicaciones-con-salida-escalar" id="toc-aplicaciones-con-salida-escalar" class="nav-link active" data-scroll-target="#aplicaciones-con-salida-escalar">19.1. Aplicaciones con salida escalar</a></li>
+  <li><a href="#la-base-que-lee-coordenadas" id="toc-la-base-que-lee-coordenadas" class="nav-link" data-scroll-target="#la-base-que-lee-coordenadas">19.2. La base que lee coordenadas</a></li>
+  <li><a href="#extender-una-regla-y-separar-un-vector" id="toc-extender-una-regla-y-separar-un-vector" class="nav-link" data-scroll-target="#extender-una-regla-y-separar-un-vector">19.3. Extender una regla y separar un vector</a></li>
+  <li><a href="#las-ecuaciones-que-anulan-un-subespacio" id="toc-las-ecuaciones-que-anulan-un-subespacio" class="nav-link" data-scroll-target="#las-ecuaciones-que-anulan-un-subespacio">19.4. Las ecuaciones que anulan un subespacio</a></li>
+  <li><a href="#transportar-una-medición-hacia-la-entrada" id="toc-transportar-una-medición-hacia-la-entrada" class="nav-link" data-scroll-target="#transportar-una-medición-hacia-la-entrada">19.5. Transportar una medición hacia la entrada</a></li>
+  <li><a href="#por-qué-aparece-una-matriz-transpuesta" id="toc-por-qué-aparece-una-matriz-transpuesta" class="nav-link" data-scroll-target="#por-qué-aparece-una-matriz-transpuesta">19.6. Por qué aparece una matriz transpuesta</a></li>
+  <li><a href="#núcleos-imágenes-y-compatibilidad" id="toc-núcleos-imágenes-y-compatibilidad" class="nav-link" data-scroll-target="#núcleos-imágenes-y-compatibilidad">19.7. Núcleos, imágenes y compatibilidad</a></li>
+  <li><a href="#los-funcionales-de-un-cociente" id="toc-los-funcionales-de-un-cociente" class="nav-link" data-scroll-target="#los-funcionales-de-un-cociente">19.8. Los funcionales de un cociente</a></li>
+  <li><a href="#evaluar-un-funcional-en-un-vector-fijo" id="toc-evaluar-un-funcional-en-un-vector-fijo" class="nav-link" data-scroll-target="#evaluar-un-funcional-en-un-vector-fijo">19.9. Evaluar un funcional en un vector fijo</a></li>
+  <li><a href="#invariancia-y-transposición-de-operadores" id="toc-invariancia-y-transposición-de-operadores" class="nav-link" data-scroll-target="#invariancia-y-transposición-de-operadores">19.10. Invariancia y transposición de operadores</a></li>
+  <li><a href="#ejercicios-y-soluciones" id="toc-ejercicios-y-soluciones" class="nav-link" data-scroll-target="#ejercicios-y-soluciones">19.11. Ejercicios y soluciones</a></li>
+  <li><a href="#lecturas-y-referencias" id="toc-lecturas-y-referencias" class="nav-link" data-scroll-target="#lecturas-y-referencias">Lecturas y referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 19. Espacio dual y transposición</h1>
+<p class="subtitle lead">Álgebra para matemáticos · Tomo II</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 19 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-18-forma-de-jordan.html">← Capítulo 18</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-20-formas-bilineales-productos-internos-y-teoremas-espectrales.html">Capítulo 20 →</a></p>
+<p>La regla <span class="math inline">\(\ell(x,y)=x+2y\)</span> asigna un número a cada vector del plano. Los vectores <span class="math inline">\((2,1)\)</span> y <span class="math inline">\((0,2)\)</span> producen la misma salida, cuatro, porque su diferencia <span class="math inline">\((2,-1)\)</span> queda anulada por la regla. Si conocemos solamente esa salida, distinguimos unas rectas paralelas de otras, pero perdemos la posición dentro de cada recta. Una ecuación lineal puede verse así como una medición que conserva cierta información del vector y descarta otra.</p>
+<p>Hemos usado reglas de esta clase desde los primeros sistemas de ecuaciones. Cada fila de una matriz toma las coordenadas de una entrada y produce una coordenada de su imagen. También extraer un coeficiente de un polinomio, evaluarlo en un punto o tomar la traza de una matriz son aplicaciones lineales con salida escalar. Reunir esas aplicaciones en un espacio permitirá estudiar qué información separa vectores, qué ecuaciones definen un subespacio y cómo se transporta una medición a través de una transformación.</p>
+<figure id="fig-apm-t2-c19-f01" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C19-F01.svg" alt="Rectas de nivel de la aplicación lineal ℓ(x,y)=x+2y, con el núcleo resaltado." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 19.1.</em> Cada recta reúne vectores con la misma salida. La recta de nivel cero es el núcleo. La figura representa un funcional mediante sus valores, sin elegir un vector que lo sustituya.
+</figcaption>
+</figure>
+<p>Salvo indicación expresa, los espacios serán de dimensión finita sobre un cuerpo conmutativo <span class="math inline">\(\mathbb F\)</span>. Se utilizan la extensión de bases de C07, las aplicaciones lineales de C08, rango–nulidad de C09, los cocientes de C11 y las matrices de C12. La transposición algebraica no requiere producto interno; sobre <span class="math inline">\(\mathbb C\)</span> se mantendrá la linealidad compleja, sin introducir conjugaciones. El caso de dimensión cero se incluye con bases vacías.</p>
+<section id="aplicaciones-con-salida-escalar" class="level2">
+<h2 class="anchored" data-anchor-id="aplicaciones-con-salida-escalar">19.1. Aplicaciones con salida escalar</h2>
+<p><span id="MA-BCH-APM-02-019-DEF-001" class="apm-anchor"></span> <strong>Definición 19.1.</strong> Un <strong>funcional lineal</strong> sobre <span class="math inline">\(V\)</span> es una aplicación lineal <span class="math inline">\(f:V\to\mathbb F\)</span>. El <strong>espacio dual algebraico</strong> es <span class="math inline">\(V^*=\operatorname{Hom}_{\mathbb F}(V,\mathbb F)\)</span>, con las operaciones puntuales <span class="math inline">\((f+g)(v)=f(v)+g(v)\)</span> y <span class="math inline">\((af)(v)=af(v)\)</span>.</p>
+<p>Las operaciones son las de C08 para espacios de aplicaciones lineales; en particular, una combinación lineal de funcionales vuelve a ser un funcional. La palabra «algebraico» indica que se incluyen todos los funcionales lineales. No hay una topología ni una condición adicional de continuidad en esta definición.</p>
+<p>En <span class="math inline">\(\mathbb F^n\)</span>, cada funcional tiene la forma <span class="math inline">\(f(x_1,\ldots,x_n)=a_1x_1+\cdots+a_nx_n\)</span>. En efecto, basta escribir <span class="math inline">\(x=\sum_jx_je_j\)</span> y aplicar linealidad: necesariamente <span class="math inline">\(a_j=f(e_j)\)</span>. La fila <span class="math inline">\((a_1,\ldots,a_n)\)</span> representa esa aplicación en las bases usuales. La aplicación y la fila pertenecen a categorías distintas de objetos: una recibe vectores, la otra registra sus coeficientes después de haber fijado coordenadas.</p>
+<p>Para el espacio <span class="math inline">\(\mathcal P_2(\mathbb F)\)</span> de polinomios formales de grado a lo sumo dos, las reglas <span class="math inline">\(c_j(a_0+a_1t+a_2t^2)=a_j\)</span> son funcionales. Para cualquier <span class="math inline">\(a\in\mathbb F\)</span>, la evaluación <span class="math inline">\(E_a(p)=p(a)\)</span> también lo es. Ninguno de estos ejemplos necesita cálculo. Sobre <span class="math inline">\(\mathbb C\)</span>, la regla <span class="math inline">\(z\mapsto\overline z\)</span> no es un funcional complejo: su valor en <span class="math inline">\(i\)</span> es <span class="math inline">\(-i\)</span>, mientras la linealidad compleja exigiría <span class="math inline">\(i\)</span> veces su valor en uno, que sería <span class="math inline">\(i\)</span>.</p>
+</section>
+<section id="la-base-que-lee-coordenadas" class="level2">
+<h2 class="anchored" data-anchor-id="la-base-que-lee-coordenadas">19.2. La base que lee coordenadas</h2>
+<p>Fijemos una base ordenada <span class="math inline">\(\mathcal B=(v_1,\ldots,v_n)\)</span>. La unicidad de las coordenadas permite definir una aplicación <span class="math inline">\(\varphi_i\)</span> que a cada vector le asigna su coordenada <span class="math inline">\(i\)</span>. Sumar vectores o multiplicarlos por escalares realiza esas mismas operaciones sobre sus coordenadas, de modo que cada <span class="math inline">\(\varphi_i\)</span> es lineal.</p>
+<p><span id="MA-BCH-APM-02-019-DEF-002" class="apm-anchor"></span> <strong>Definición 19.2.</strong> La <strong>base dual</strong> de <span class="math inline">\(\mathcal B\)</span> es la lista <span class="math inline">\(\mathcal B^*=(\varphi_1,\ldots,\varphi_n)\)</span> caracterizada por <span class="math inline">\(\varphi_i(v_j)=\delta_{ij}\)</span>, donde <span class="math inline">\(\delta_{ij}\)</span> vale uno si <span class="math inline">\(i=j\)</span> y cero en caso contrario.</p>
+<p><span id="MA-BCH-APM-02-019-THM-001" class="apm-anchor"></span> <strong>Teorema 19.1 (base dual y reconstrucción).</strong> La lista <span class="math inline">\(\mathcal B^*\)</span> es una base de <span class="math inline">\(V^*\)</span> y es la única con los valores prescritos. Además,</p>
+<p><span class="math display">\[
+v=\sum_{i=1}^n\varphi_i(v)v_i,\qquad
+f=\sum_{i=1}^nf(v_i)\varphi_i.
+\]</span></p>
+<p>En particular, <span class="math inline">\(\dim V^*=\dim V\)</span>.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(v=\sum_jx_jv_j\)</span>, aplicar un funcional con los valores prescritos da <span class="math inline">\(\sum_jx_j\delta_{ij}=x_i\)</span>. Por ello necesariamente es el funcional coordenada ya construido y la primera identidad queda probada. Para la segunda, aplicar <span class="math inline">\(f\)</span> a la primera da <span class="math inline">\(f(v)=\sum_i\varphi_i(v)f(v_i)\)</span> para toda entrada <span class="math inline">\(v\)</span>, que es la igualdad de funcionales anunciada. Así la lista dual genera <span class="math inline">\(V^*\)</span>.</p>
+<p>Si <span class="math inline">\(\sum_i a_i\varphi_i=0\)</span>, evaluar en <span class="math inline">\(v_j\)</span> da <span class="math inline">\(a_j=0\)</span> para cada <span class="math inline">\(j\)</span>. La lista es independiente y, por tanto, una base de longitud <span class="math inline">\(n\)</span>. La demostración incluye <span class="math inline">\(n=0\)</span>: sólo existe el funcional cero sobre el espacio cero. <span class="math inline">\(\square\)</span></p>
+<p>Las dos fórmulas reconstruyen objetos diferentes. Los números <span class="math inline">\(\varphi_i(v)\)</span> reconstruyen un vector en la base <span class="math inline">\(\mathcal B\)</span>; los números <span class="math inline">\(f(v_i)\)</span> reconstruyen un funcional en la base <span class="math inline">\(\mathcal B^*\)</span>. Para evaluar después, se multiplican esas dos listas y se suman sus productos.</p>
+<p>Tomemos en <span class="math inline">\(\mathbb R^2\)</span> los vectores <span class="math inline">\(v_1=(1,1)\)</span> y <span class="math inline">\(v_2=(1,2)\)</span>. Resolver <span class="math inline">\((x,y)=a(1,1)+b(1,2)\)</span> da <span class="math inline">\(a=2x-y\)</span> y <span class="math inline">\(b=-x+y\)</span>. Por tanto, la base dual es <span class="math inline">\(\varphi_1(x,y)=2x-y\)</span>, <span class="math inline">\(\varphi_2(x,y)=-x+y\)</span>. Para <span class="math inline">\(f(x,y)=x+2y\)</span>, los coeficientes duales son <span class="math inline">\(f(v_1)=3\)</span> y <span class="math inline">\(f(v_2)=5\)</span>: en efecto, <span class="math inline">\(3\varphi_1+5\varphi_2=x+2y\)</span>.</p>
+<figure id="fig-apm-t2-c19-f02" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C19-F02.svg" alt="Base del plano y tabla de evaluación de su base dual, calculada mediante la matriz inversa." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 19.2.</em> Las filas de la inversa producen los funcionales coordenada. La tabla de evaluación es la identidad y verifica a la vez la normalización y el orden de la base dual.
+</figcaption>
+</figure>
+<p><span id="MA-BCH-APM-02-019-PRP-002" class="apm-anchor"></span> <strong>Proposición 19.2 (cambio de base dual).</strong> Sean <span class="math inline">\(\mathcal B=(v_i)\)</span> y <span class="math inline">\(\mathcal C=(w_j)\)</span> bases de <span class="math inline">\(V\)</span>, y sea <span class="math inline">\(P\)</span> la matriz cuyas columnas son <span class="math inline">\([w_j]_{\mathcal B}\)</span>, de modo que <span class="math inline">\([v]_{\mathcal B}=P[v]_{\mathcal C}\)</span>. Si <span class="math inline">\(\mathcal B^*=(\varphi_i)\)</span> y <span class="math inline">\(\mathcal C^*=(\psi_j)\)</span>, entonces</p>
+<p><span class="math display">\[
+\psi_j=\sum_i(P^{-1})_{ji}\varphi_i,\qquad
+[f]_{\mathcal C^*}=P^{\mathsf T}[f]_{\mathcal B^*}.
+\]</span></p>
+<p>Las columnas de coordenadas de los propios <span class="math inline">\(\psi_j\)</span> en <span class="math inline">\(\mathcal B^*\)</span> forman <span class="math inline">\(P^{-\mathsf T}=(P^{-1})^{\mathsf T}\)</span>.</p>
+<p><strong>Demostración.</strong> La igualdad <span class="math inline">\([v]_{\mathcal C}=P^{-1}[v]_{\mathcal B}\)</span> dice que la coordenada <span class="math inline">\(j\)</span> nueva es la fila <span class="math inline">\(j\)</span> de <span class="math inline">\(P^{-1}\)</span> aplicada a las coordenadas antiguas. Esto prueba la primera fórmula. Si <span class="math inline">\(c_i=f(v_i)\)</span>, entonces <span class="math inline">\(f(w_j)=\sum_iP_{ij}f(v_i)=\sum_iP_{ij}c_i\)</span>, que es la coordenada <span class="math inline">\(j\)</span> de <span class="math inline">\(P^{\mathsf T}c\)</span>. Finalmente, el coeficiente de <span class="math inline">\(\varphi_i\)</span> en <span class="math inline">\(\psi_j\)</span> es <span class="math inline">\((P^{-1})_{ji}\)</span>; colocarlo en la fila <span class="math inline">\(i\)</span>, columna <span class="math inline">\(j\)</span>, da la matriz <span class="math inline">\(P^{-\mathsf T}\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>No hay conflicto entre las dos transpuestas: una fórmula cambia las coordenadas de un funcional fijo; la otra registra los funcionales de la nueva base en la antigua. En el ejemplo, <span class="math inline">\(P=\begin{pmatrix}1&amp;1\\1&amp;2\end{pmatrix}\)</span>, y sus filas inversas son <span class="math inline">\((2,-1)\)</span> y <span class="math inline">\((-1,1)\)</span>. La columna <span class="math inline">\((1,2)\)</span> de coeficientes usuales de <span class="math inline">\(f\)</span> se convierte en <span class="math inline">\((3,5)\)</span> mediante <span class="math inline">\(P^{\mathsf T}\)</span>.</p>
+</section>
+<section id="extender-una-regla-y-separar-un-vector" class="level2">
+<h2 class="anchored" data-anchor-id="extender-una-regla-y-separar-un-vector">19.3. Extender una regla y separar un vector</h2>
+<p>Un funcional definido sólo en un subespacio prescribe una parte de una medición. En dimensión finita podemos completarla: fijamos sus valores en una base del subespacio y elegimos los que faltan al ampliar esa base. La elección adicional será importante al interpretar los cocientes.</p>
+<p><span id="MA-BCH-APM-02-019-LEM-003" class="apm-anchor"></span> <strong>Lema 19.3 (extensión, separación e hiperplanos).</strong> Todo funcional sobre un subespacio <span class="math inline">\(U\subseteq V\)</span> se extiende a un funcional sobre <span class="math inline">\(V\)</span>. Si <span class="math inline">\(v\notin U\)</span>, existe <span class="math inline">\(f\in V^*\)</span> tal que <span class="math inline">\(f|_U=0\)</span> y <span class="math inline">\(f(v)=1\)</span>. Los núcleos de funcionales no nulos son exactamente los hiperplanos, es decir, los subespacios de codimensión uno. Dos funcionales no nulos tienen el mismo núcleo si y sólo si uno es un múltiplo escalar no nulo del otro.</p>
+<p><strong>Demostración.</strong> Elijamos una base de <span class="math inline">\(U\)</span> y ampliémosla a una de <span class="math inline">\(V\)</span>. A los primeros vectores asignamos los valores del funcional dado, y a los restantes valores arbitrarios. C08 garantiza una única aplicación lineal con esos valores; coincide con la original en una base de <span class="math inline">\(U\)</span> y, por tanto, en todo <span class="math inline">\(U\)</span>.</p>
+<p>Si <span class="math inline">\(v\notin U\)</span>, añadirlo a una base de <span class="math inline">\(U\)</span> conserva la independencia. Podemos incluirlo al ampliar la base, asignarle valor uno, asignar cero a la base de <span class="math inline">\(U\)</span> y, por ejemplo, cero a los demás vectores añadidos. Esto da el separador.</p>
+<p>Un funcional no nulo tiene imagen igual a <span class="math inline">\(\mathbb F\)</span>, pues su imagen es un subespacio no nulo de un espacio de dimensión uno. Rango–nulidad da codimensión uno para su núcleo. Recíprocamente, si <span class="math inline">\(U\)</span> tiene codimensión uno, una base suya se completa con un único vector; el funcional cero en la primera y uno en ese vector tiene núcleo exactamente <span class="math inline">\(U\)</span>.</p>
+<p>Sean por último <span class="math inline">\(f,g\ne0\)</span> con el mismo núcleo. Elijamos <span class="math inline">\(u\)</span> con <span class="math inline">\(f(u)=1\)</span>. Para todo <span class="math inline">\(v\)</span>, el vector <span class="math inline">\(v-f(v)u\)</span> pertenece a <span class="math inline">\(\ker f=\ker g\)</span>, luego <span class="math inline">\(g(v)=g(u)f(v)\)</span>. Además <span class="math inline">\(g(u)\ne0\)</span> porque <span class="math inline">\(u\)</span> no pertenece al núcleo común. La recíproca es inmediata al multiplicar por un escalar no nulo. <span class="math inline">\(\square\)</span></p>
+<p>El núcleo fija la dirección de los niveles, pero no su escala. Los funcionales <span class="math inline">\(x+2y\)</span> y <span class="math inline">\(3x+6y\)</span> anulan la misma recta; sus salidas en cada vector difieren por el factor tres. Por otra parte, un funcional dado sobre una recta del plano admite muchas extensiones: su valor en una dirección complementaria queda libre.</p>
+</section>
+<section id="las-ecuaciones-que-anulan-un-subespacio" class="level2">
+<h2 class="anchored" data-anchor-id="las-ecuaciones-que-anulan-un-subespacio">19.4. Las ecuaciones que anulan un subespacio</h2>
+<p><span id="MA-BCH-APM-02-019-DEF-003" class="apm-anchor"></span> <strong>Definición 19.3.</strong> Para un subconjunto <span class="math inline">\(S\subseteq V\)</span>, su <strong>anulador</strong> es <span class="math inline">\(S^\circ=\{f\in V^*:f(s)=0\text{ para todo }s\in S\}\)</span>. Para <span class="math inline">\(L\subseteq V^*\)</span>, escribiremos <span class="math inline">\(L_0=\{v\in V:f(v)=0\text{ para todo }f\in L\}\)</span> y lo llamaremos su <strong>preanulador</strong>.</p>
+<p>Ambos conjuntos son subespacios: las condiciones de anulación se conservan al sumar y multiplicar por escalares. Además, <span class="math inline">\(S^\circ=(\operatorname{span}S)^\circ\)</span>. Es importante conservar el espacio ambiente: <span class="math inline">\(U^\circ\)</span> está en <span class="math inline">\(V^*\)</span>, mientras <span class="math inline">\((U^\circ)_0\)</span> está en <span class="math inline">\(V\)</span>. El símbolo <span class="math inline">\(\circ\)</span> no representa aquí ortogonalidad para un producto interno.</p>
+<p><span id="MA-BCH-APM-02-019-THM-004" class="apm-anchor"></span> <strong>Teorema 19.4 (dimensión y recuperación).</strong> Si <span class="math inline">\(U\subseteq V\)</span> es un subespacio, entonces</p>
+<p><span class="math display">\[
+\dim U^\circ=\dim V-\dim U,\qquad (U^\circ)_0=U.
+\]</span></p>
+<p>En particular, los anuladores determinan los subespacios y revierten sus inclusiones: <span class="math inline">\(U\subseteq W\)</span> si y sólo si <span class="math inline">\(W^\circ\subseteq U^\circ\)</span>.</p>
+<p><strong>Demostración.</strong> Extendamos una base <span class="math inline">\((v_1,\ldots,v_k)\)</span> de <span class="math inline">\(U\)</span> a una base <span class="math inline">\((v_1,\ldots,v_n)\)</span> de <span class="math inline">\(V\)</span>. Por 19.1, un funcional tiene expansión <span class="math inline">\(f=\sum_i f(v_i)\varphi_i\)</span>. Anula <span class="math inline">\(U\)</span> exactamente cuando los primeros <span class="math inline">\(k\)</span> coeficientes son cero. Por tanto, <span class="math inline">\((\varphi_{k+1},\ldots,\varphi_n)\)</span> es una base de <span class="math inline">\(U^\circ\)</span>, que da la dimensión.</p>
+<p>Cada elemento de <span class="math inline">\(U\)</span> queda anulado por todos los elementos de <span class="math inline">\(U^\circ\)</span>, luego <span class="math inline">\(U\subseteq(U^\circ)_0\)</span>. Si <span class="math inline">\(v\notin U\)</span>, el separador de 19.3 pertenece a <span class="math inline">\(U^\circ\)</span> y toma valor uno en <span class="math inline">\(v\)</span>, así que <span class="math inline">\(v\notin(U^\circ)_0\)</span>. Esto prueba la igualdad. La inclusión <span class="math inline">\(U\subseteq W\)</span> implica directamente <span class="math inline">\(W^\circ\subseteq U^\circ\)</span>. Para la recíproca, si todos los funcionales que anulan <span class="math inline">\(W\)</span> anulan también <span class="math inline">\(U\)</span>, entonces <span class="math inline">\(U\subseteq(W^\circ)_0=W\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Para <span class="math inline">\(U=\{(x,y,z):z=x+y\}\subseteq\mathbb R^3\)</span>, el funcional <span class="math inline">\(\ell(x,y,z)=-x-y+z\)</span> anula el plano y es no nulo. El anulador tiene dimensión uno, de modo que <span class="math inline">\(U^\circ=\operatorname{span}\ell\)</span>. Describir un plano por dos generadores o por una ecuación son dos maneras de fijar la misma información. Para un subespacio de dimensión <span class="math inline">\(k\)</span> en dimensión <span class="math inline">\(n\)</span>, una base de su anulador da exactamente <span class="math inline">\(n-k\)</span> ecuaciones independientes.</p>
+<figure id="fig-apm-t2-c19-f03" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C19-F03.svg" alt="Plano z=x+y y familia de funcionales que lo anulan, escrita como múltiplos de −x−y+z." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 19.3.</em> El plano pertenece a <span class="math inline">\(V\)</span> y la familia de reglas pertenece a <span class="math inline">\(V^*\)</span>. Se muestran sus fórmulas, sin colocar esas reglas como flechas dentro del plano original.
+</figcaption>
+</figure>
+<p><span id="MA-BCH-APM-02-019-PRP-005" class="apm-anchor"></span> <strong>Proposición 19.5 (sumas e intersecciones).</strong> Para subespacios <span class="math inline">\(U,W\subseteq V\)</span>,</p>
+<p><span class="math display">\[
+(U+W)^\circ=U^\circ\cap W^\circ,\qquad
+(U\cap W)^\circ=U^\circ+W^\circ.
+\]</span></p>
+<p><strong>Demostración.</strong> Un funcional anula toda suma <span class="math inline">\(u+w\)</span> exactamente cuando anula ambos sumandos; basta tomar uno de ellos cero para una dirección, y usar linealidad para la otra. Esto prueba la primera igualdad.</p>
+<p>Cada suma de un funcional que anula <span class="math inline">\(U\)</span> y otro que anula <span class="math inline">\(W\)</span> anula <span class="math inline">\(U\cap W\)</span>, de modo que <span class="math inline">\(U^\circ+W^\circ\subseteq(U\cap W)^\circ\)</span>. Para demostrar que no falta nada, pongamos <span class="math inline">\(n=\dim V\)</span> y usemos Grassmann, la primera igualdad y 19.4:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dim(U^\circ+W^\circ)
+&amp;=(n-\dim U)+(n-\dim W)-\dim(U+W)^\circ\\
+&amp;=n-\dim U-\dim W+\dim(U+W)\\
+&amp;=n-\dim(U\cap W)=\dim(U\cap W)^\circ.
+\end{aligned}
+\]</span></p>
+<p>La inclusión entre subespacios de igual dimensión es una igualdad. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="transportar-una-medición-hacia-la-entrada" class="level2">
+<h2 class="anchored" data-anchor-id="transportar-una-medición-hacia-la-entrada">19.5. Transportar una medición hacia la entrada</h2>
+<p>Sea <span class="math inline">\(T:V\to W\)</span> lineal y sea <span class="math inline">\(g:W\to\mathbb F\)</span> un funcional. Si primero aplicamos <span class="math inline">\(T\)</span> y después medimos con <span class="math inline">\(g\)</span>, obtenemos sobre <span class="math inline">\(V\)</span> el funcional <span class="math inline">\(v\mapsto g(Tv)\)</span>. La transformación envía vectores hacia <span class="math inline">\(W\)</span>; la composición permite traer las mediciones desde <span class="math inline">\(W\)</span> hasta <span class="math inline">\(V\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-DEF-004" class="apm-anchor"></span> <strong>Definición 19.4.</strong> La <strong>aplicación dual</strong>, o <strong>transpuesta algebraica</strong>, de <span class="math inline">\(T:V\to W\)</span> es <span class="math inline">\(T':W^*\to V^*\)</span>, definida por <span class="math inline">\(T'g=g\circ T\)</span>. El apóstrofo indica dualidad, no derivación. Se reserva <span class="math inline">\(T^*\)</span> para la notación de adjuntos cuando se introduzcan productos internos.</p>
+<p><span id="MA-BCH-APM-02-019-PRP-006" class="apm-anchor"></span> <strong>Proposición 19.6 (linealidad y orden de composición).</strong> La aplicación <span class="math inline">\(T'\)</span> es lineal. Para aplicaciones lineales del mismo dominio y codominio, <span class="math inline">\((aS+bT)'=aS'+bT'\)</span>. Si <span class="math inline">\(T:V\to W\)</span> y <span class="math inline">\(S:W\to X\)</span>, entonces <span class="math inline">\((S\circ T)'=T'\circ S'\)</span>. Además, <span class="math inline">\(I_V'=I_{V^*}\)</span> y, si <span class="math inline">\(T\)</span> es un isomorfismo, <span class="math inline">\((T^{-1})'=(T')^{-1}\)</span>.</p>
+<p><strong>Demostración.</strong> La composición <span class="math inline">\(g\circ T\)</span> es lineal, así que pertenece a <span class="math inline">\(V^*\)</span>. Para <span class="math inline">\(g,h\in W^*\)</span>, evaluar en <span class="math inline">\(v\)</span> da <span class="math inline">\(T'(ag+bh)(v)=ag(Tv)+bh(Tv)\)</span>, que prueba la linealidad de <span class="math inline">\(T'\)</span>. Para la dependencia respecto de <span class="math inline">\(T\)</span>, la linealidad de <span class="math inline">\(g\)</span> da <span class="math inline">\(g(aSv+bTv)=ag(Sv)+bg(Tv)\)</span>; las dos aplicaciones duales coinciden en cada funcional y en cada entrada.</p>
+<p>Si <span class="math inline">\(h\in X^*\)</span>, entonces <span class="math inline">\((S\circ T)'h=h\circ S\circ T=T'(S'h)\)</span>. El orden se invierte porque primero hay que traer <span class="math inline">\(h\)</span> de <span class="math inline">\(X\)</span> a <span class="math inline">\(W\)</span> y después de <span class="math inline">\(W\)</span> a <span class="math inline">\(V\)</span>. La identidad se verifica componiendo con <span class="math inline">\(I_V\)</span>. Finalmente, dualizar <span class="math inline">\(T^{-1}T=I_V\)</span> y <span class="math inline">\(TT^{-1}=I_W\)</span> muestra que <span class="math inline">\((T^{-1})'\)</span> es una inversa de <span class="math inline">\(T'\)</span> en ambos órdenes. <span class="math inline">\(\square\)</span></p>
+<p>Para <span class="math inline">\(T(x,y)=(x,y,x+y)\)</span> y <span class="math inline">\(g(u,v,w)=2u-v+3w\)</span>, la regla trasladada es <span class="math inline">\(T'g(x,y)=5x+2y\)</span>. Esta medición en el plano conserva exactamente la salida que se habría obtenido midiendo la imagen en el espacio tridimensional.</p>
+<figure id="fig-apm-t2-c19-f04" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C19-F04.svg" alt="Una medición en el espacio de salida se compone con T y se convierte en un funcional sobre el espacio de entrada." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 19.4.</em> La identidad <span class="math inline">\((T'g)(v)=g(Tv)\)</span> fija tanto el sentido de la aplicación dual como sus valores.
+</figcaption>
+</figure>
+</section>
+<section id="por-qué-aparece-una-matriz-transpuesta" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-aparece-una-matriz-transpuesta">19.6. Por qué aparece una matriz transpuesta</h2>
+<p><span id="MA-BCH-APM-02-019-THM-007" class="apm-anchor"></span> <strong>Teorema 19.7 (matriz de la aplicación dual).</strong> Si <span class="math inline">\(A=[T]_{\mathcal C\leftarrow\mathcal B}\)</span>, donde <span class="math inline">\(\mathcal B\)</span> es base de <span class="math inline">\(V\)</span> y <span class="math inline">\(\mathcal C\)</span> base de <span class="math inline">\(W\)</span>, entonces</p>
+<p><span class="math display">\[
+[T']_{\mathcal B^*\leftarrow\mathcal C^*}=A^{\mathsf T}.
+\]</span></p>
+<p><strong>Demostración.</strong> Escribamos <span class="math inline">\(\mathcal B=(v_i)\)</span>, <span class="math inline">\(\mathcal C=(w_j)\)</span> y sus bases duales <span class="math inline">\((\varphi_i)\)</span> y <span class="math inline">\((\psi_j)\)</span>. El coeficiente de <span class="math inline">\(\varphi_i\)</span> en <span class="math inline">\(T'\psi_j\)</span> es, por 19.1, su valor en <span class="math inline">\(v_i\)</span>. Ese valor es <span class="math inline">\(\psi_j(Tv_i)\)</span>. Como <span class="math inline">\(Tv_i=\sum_kA_{ki}w_k\)</span>, resulta <span class="math inline">\(\psi_j(Tv_i)=A_{ji}\)</span>. Así la entrada de fila <span class="math inline">\(i\)</span>, columna <span class="math inline">\(j\)</span> de la matriz dual es <span class="math inline">\(A_{ji}\)</span>, exactamente la entrada de <span class="math inline">\(A^{\mathsf T}\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Si <span class="math inline">\(\dim V=n\)</span> y <span class="math inline">\(\dim W=m\)</span>, la matriz <span class="math inline">\(A\)</span> tiene tamaño <span class="math inline">\(m\times n\)</span> y la dual tiene tamaño <span class="math inline">\(n\times m\)</span>. La fórmula exige las bases duales correspondientes. Con bases arbitrarias e independientes de <span class="math inline">\(V^*\)</span> y <span class="math inline">\(W^*\)</span> habrá que añadir cambios de base; transponer una tabla no elimina esa dependencia.</p>
+<p>Para el ejemplo anterior,</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}1&amp;0\\0&amp;1\\1&amp;1\end{pmatrix},\qquad
+A^{\mathsf T}=\begin{pmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\end{pmatrix}.
+\]</span></p>
+<p>La columna <span class="math inline">\((2,-1,3)\)</span> representa <span class="math inline">\(g\)</span> en la base dual usual de <span class="math inline">\(\mathbb R^3\)</span>. Multiplicarla por <span class="math inline">\(A^{\mathsf T}\)</span> da <span class="math inline">\((5,2)\)</span>, que representa <span class="math inline">\(T'g\)</span>. Sobre <span class="math inline">\(\mathbb C\)</span> se realiza el mismo cálculo sin conjugaciones. Para <span class="math inline">\(T(z)=iz\)</span>, el dual envía <span class="math inline">\(g(z)=az\)</span> al funcional <span class="math inline">\(z\mapsto ai z\)</span>; la matriz es <span class="math inline">\((i)\)</span>, no <span class="math inline">\((-i)\)</span>.</p>
+<p>La regla <span class="math inline">\((ST)'=T'S'\)</span> recupera <span class="math inline">\((BA)^{\mathsf T}=A^{\mathsf T}B^{\mathsf T}\)</span>. La inversión del orden matricial expresa la inversión del recorrido de las mediciones.</p>
+</section>
+<section id="núcleos-imágenes-y-compatibilidad" class="level2">
+<h2 class="anchored" data-anchor-id="núcleos-imágenes-y-compatibilidad">19.7. Núcleos, imágenes y compatibilidad</h2>
+<p><span id="MA-BCH-APM-02-019-THM-008" class="apm-anchor"></span> <strong>Teorema 19.8 (núcleo e imagen del dual).</strong> Para <span class="math inline">\(T:V\to W\)</span>,</p>
+<p><span class="math display">\[
+\ker T'=(\operatorname{im}T)^\circ,\qquad
+\operatorname{im}T'=(\ker T)^\circ,\qquad
+\operatorname{rg}T'=\operatorname{rg}T.
+\]</span></p>
+<p>En consecuencia, <span class="math inline">\(T\)</span> es sobreyectiva si y sólo si <span class="math inline">\(T'\)</span> es inyectiva, y <span class="math inline">\(T\)</span> es inyectiva si y sólo si <span class="math inline">\(T'\)</span> es sobreyectiva.</p>
+<p><strong>Demostración.</strong> La condición <span class="math inline">\(T'g=0\)</span> significa <span class="math inline">\(g(Tv)=0\)</span> para toda entrada <span class="math inline">\(v\)</span>; equivale a que <span class="math inline">\(g\)</span> anule la imagen de <span class="math inline">\(T\)</span>. Esto prueba la primera igualdad.</p>
+<p>Si <span class="math inline">\(f=T'g\)</span>, entonces <span class="math inline">\(f(v)=g(Tv)=0\)</span> cuando <span class="math inline">\(v\in\ker T\)</span>, lo que da una inclusión para la segunda. Recíprocamente, sea <span class="math inline">\(f\in(\ker T)^\circ\)</span>. Definamos sobre <span class="math inline">\(\operatorname{im}T\)</span> la regla <span class="math inline">\(h(Tv)=f(v)\)</span>. Está bien definida: si <span class="math inline">\(Tv=Tv'\)</span>, la diferencia <span class="math inline">\(v-v'\)</span> está en el núcleo y <span class="math inline">\(f(v)=f(v')\)</span>. La regla es lineal al elegir preimágenes de sumas y múltiplos. Extendamos <span class="math inline">\(h\)</span> a <span class="math inline">\(g\in W^*\)</span> mediante 19.3. Entonces <span class="math inline">\(T'g(v)=g(Tv)=f(v)\)</span> para todo <span class="math inline">\(v\)</span>, y <span class="math inline">\(f\)</span> pertenece a la imagen dual.</p>
+<p>Por 19.4, esa imagen tiene dimensión <span class="math inline">\(\dim V-\dim\ker T=\operatorname{rg}T\)</span>. La primera igualdad muestra que <span class="math inline">\(T'\)</span> tiene núcleo cero exactamente cuando la imagen de <span class="math inline">\(T\)</span> es todo <span class="math inline">\(W\)</span>. La segunda muestra que <span class="math inline">\(T'\)</span> tiene imagen todo <span class="math inline">\(V^*\)</span> exactamente cuando <span class="math inline">\(\ker T=0\)</span>. Aquí se usan los casos extremos del anulador en 19.4. <span class="math inline">\(\square\)</span></p>
+<p>Aplicando 19.7 a una matriz rectangular, recuperamos <span class="math inline">\(\operatorname{rg}A^{\mathsf T}=\operatorname{rg}A\)</span>. Las filas de <span class="math inline">\(A\)</span> generan los funcionales obtenidos como combinaciones de las coordenadas de la salida. El teorema dice que son precisamente todos los funcionales que anulan el núcleo de <span class="math inline">\(A\)</span>. Esto explica por qué las ecuaciones de un sistema homogéneo determinan el mismo subespacio aunque se reemplacen por otra base del espacio de filas.</p>
+<p><span id="MA-BCH-APM-02-019-COR-009" class="apm-anchor"></span> <strong>Corolario 19.9 (criterio dual de compatibilidad).</strong> Para <span class="math inline">\(A\in\mathbb F^{m\times n}\)</span> y <span class="math inline">\(b\in\mathbb F^m\)</span>, el sistema <span class="math inline">\(Ax=b\)</span> tiene solución si y sólo si <span class="math inline">\(c^{\mathsf T}b=0\)</span> para todo <span class="math inline">\(c\in\ker A^{\mathsf T}\)</span>. Si es incompatible, existe tal <span class="math inline">\(c\)</span> con <span class="math inline">\(c^{\mathsf T}b=1\)</span>.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(b=Ax\)</span> y <span class="math inline">\(A^{\mathsf T}c=0\)</span>, entonces <span class="math inline">\(c^{\mathsf T}b=c^{\mathsf T}Ax=0\)</span>. Si <span class="math inline">\(b\notin\operatorname{im}A\)</span>, el lema 19.3 da un funcional sobre <span class="math inline">\(\mathbb F^m\)</span> que anula esa imagen y toma valor uno en <span class="math inline">\(b\)</span>. En las coordenadas duales usuales tiene forma <span class="math inline">\(y\mapsto c^{\mathsf T}y\)</span>. Anular la imagen significa <span class="math inline">\(A^{\mathsf T}c=0\)</span>, y su valor en <span class="math inline">\(b\)</span> da el certificado anunciado. <span class="math inline">\(\square\)</span></p>
+<p>Consideremos</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}1&amp;0&amp;1&amp;2\\0&amp;1&amp;1&amp;-1\\1&amp;1&amp;2&amp;1\end{pmatrix}.
+\]</span></p>
+<p>Las dos primeras filas son independientes y la tercera es su suma. Por ello <span class="math inline">\(\ker A^{\mathsf T}\)</span> está generado por <span class="math inline">\(c=(-1,-1,1)\)</span> y la compatibilidad equivale a <span class="math inline">\(b_3=b_1+b_2\)</span>. Si se cumple, todas las soluciones son <span class="math inline">\((b_1-s-2t,b_2-s+t,s,t)\)</span>, con <span class="math inline">\(s,t\in\mathbb F\)</span>. El núcleo tiene base <span class="math inline">\((-1,-1,1,0)\)</span> y <span class="math inline">\((-2,1,0,1)\)</span>; su anulador está generado por los funcionales de las dos primeras filas. En esta cuenta se ven las dos igualdades de 19.8 y la libertad de una fibra de C09.</p>
+<figure id="fig-apm-t2-c19-f06" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C19-F06.svg" alt="Sistema de tres ecuaciones con una relación entre filas, condición sobre el término independiente y certificado de incompatibilidad." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 19.5.</em> La dependencia entre filas obliga a la misma dependencia entre las entradas de <span class="math inline">\(b\)</span>. Una violación se detecta mediante un funcional que anula todas las columnas de <span class="math inline">\(A\)</span>.
+</figcaption>
+</figure>
+</section>
+<section id="los-funcionales-de-un-cociente" class="level2">
+<h2 class="anchored" data-anchor-id="los-funcionales-de-un-cociente">19.8. Los funcionales de un cociente</h2>
+<p>Una regla sobre clases <span class="math inline">\(v+U\)</span> sólo puede depender de la clase, por lo que debe ignorar diferencias que estén en <span class="math inline">\(U\)</span>. Esa exigencia identifica el dual del cociente con el anulador. En cambio, restringir un funcional a <span class="math inline">\(U\)</span> olvida sus valores en las direcciones complementarias.</p>
+<p><span id="MA-BCH-APM-02-019-THM-010" class="apm-anchor"></span> <strong>Teorema 19.10 (cociente y exactitud elemental).</strong> Sean <span class="math inline">\(i:U\to V\)</span> la inclusión y <span class="math inline">\(q:V\to V/U\)</span> la proyección. La aplicación <span class="math inline">\(q':(V/U)^*\to V^*\)</span> es inyectiva y tiene imagen <span class="math inline">\(U^\circ\)</span>. La aplicación <span class="math inline">\(i':V^*\to U^*\)</span> es la restricción, es sobreyectiva y tiene núcleo <span class="math inline">\(U^\circ\)</span>. Así se obtiene</p>
+<p><span class="math display">\[
+0\longrightarrow(V/U)^*\xrightarrow{q'}V^*\xrightarrow{i'}U^*\longrightarrow0.
+\]</span></p>
+<p>La secuencia es <strong>exacta</strong>: en cada lugar, la imagen de la flecha anterior es el núcleo de la siguiente. En particular, <span class="math inline">\((V/U)^*\cong U^\circ\)</span> mediante <span class="math inline">\(q'\)</span> y <span class="math inline">\(V^*/U^\circ\cong U^*\)</span> mediante restricción.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(h\circ q=0\)</span>, la sobreyectividad de <span class="math inline">\(q\)</span> implica <span class="math inline">\(h=0\)</span>, así que <span class="math inline">\(q'\)</span> es inyectiva. Toda composición <span class="math inline">\(h\circ q\)</span> anula <span class="math inline">\(U\)</span>. A la inversa, si <span class="math inline">\(f\)</span> anula <span class="math inline">\(U\)</span>, la fórmula <span class="math inline">\(h(v+U)=f(v)\)</span> está bien definida porque cambiar un representante añade un elemento anulado por <span class="math inline">\(f\)</span>. Es lineal por las operaciones del cociente y satisface <span class="math inline">\(q'h=f\)</span>. Esto identifica exactamente su imagen.</p>
+<p>Por definición, <span class="math inline">\(i'f=f|_U\)</span>. El lema 19.3 garantiza sobreyectividad, y la condición de restricción cero es precisamente <span class="math inline">\(f\in U^\circ\)</span>. Las flechas con cero significan inyectividad en el primer extremo y sobreyectividad en el último; la igualdad en el centro es la ya probada. La primera identificación es el isomorfismo de <span class="math inline">\(q'\)</span> con su imagen. La segunda se obtiene del primer teorema de isomorfía de C11 aplicado a la restricción. <span class="math inline">\(\square\)</span></p>
+<p>Las extensiones de un funcional fijo <span class="math inline">\(h\in U^*\)</span> forman una familia <span class="math inline">\(f_0+U^\circ\)</span>, una vez elegida una extensión <span class="math inline">\(f_0\)</span>. En efecto, dos extensiones tienen la misma restricción si y sólo si su diferencia anula <span class="math inline">\(U\)</span>. Elegir un complemento de <span class="math inline">\(U\)</span> permite imponer valores cero allí y obtener una extensión concreta. El anulador y las dos aplicaciones del teorema no necesitan ese complemento; la selección de una extensión sí puede depender de él.</p>
+</section>
+<section id="evaluar-un-funcional-en-un-vector-fijo" class="level2">
+<h2 class="anchored" data-anchor-id="evaluar-un-funcional-en-un-vector-fijo">19.9. Evaluar un funcional en un vector fijo</h2>
+<p>El bidual es <span class="math inline">\(V^{**}=(V^*)^*\)</span>. Sus elementos reciben funcionales y devuelven escalares. Un vector fijo <span class="math inline">\(v\in V\)</span> produce una regla de esa clase: entregar a cada funcional <span class="math inline">\(f\)</span> su valor <span class="math inline">\(f(v)\)</span>. La entrada de esta nueva regla es <span class="math inline">\(f\)</span>, mientras <span class="math inline">\(v\)</span> permanece fijo.</p>
+<p><span id="MA-BCH-APM-02-019-THM-011" class="apm-anchor"></span> <strong>Teorema 19.11 (evaluación bidual).</strong> La aplicación</p>
+<p><span class="math display">\[
+\operatorname{ev}_V:V\longrightarrow V^{**},\qquad
+\operatorname{ev}_V(v)(f)=f(v),
+\]</span></p>
+<p>es un isomorfismo. Además, para toda <span class="math inline">\(T:V\to W\)</span> se cumple <span class="math inline">\(T''\operatorname{ev}_V=\operatorname{ev}_W T\)</span>, donde <span class="math inline">\(T''=(T')':V^{**}\to W^{**}\)</span>.</p>
+<p><strong>Demostración.</strong> Para un <span class="math inline">\(v\)</span> fijo, la regla es lineal en <span class="math inline">\(f\)</span>: <span class="math inline">\((af+bg)(v)=af(v)+bg(v)\)</span>. Así <span class="math inline">\(\operatorname{ev}_V(v)\in V^{**}\)</span>. Para <span class="math inline">\(f\)</span> fijo, la linealidad <span class="math inline">\(f(av+bw)=af(v)+bf(w)\)</span> muestra que <span class="math inline">\(\operatorname{ev}_V\)</span> es lineal como aplicación de <span class="math inline">\(v\)</span>.</p>
+<p>Si <span class="math inline">\(v\ne0\)</span>, el separador de 19.3 aplicado al subespacio cero proporciona <span class="math inline">\(f\)</span> con <span class="math inline">\(f(v)=1\)</span>. Por ello <span class="math inline">\(\operatorname{ev}_V(v)\ne0\)</span>, y la evaluación es inyectiva. La dimensión de <span class="math inline">\(V^{**}\)</span> es <span class="math inline">\(\dim V^*=\dim V\)</span> por 19.1; la inyectividad implica sobreyectividad en dimensión finita.</p>
+<p>Para la identidad restante, evaluemos ambos lados en un funcional <span class="math inline">\(g\in W^*\)</span>. El lado izquierdo vale <span class="math inline">\(\operatorname{ev}_V(v)(T'g)=(T'g)(v)=g(Tv)\)</span>. El derecho vale <span class="math inline">\(\operatorname{ev}_W(Tv)(g)=g(Tv)\)</span>. Son elementos de <span class="math inline">\(W^{**}\)</span> con los mismos valores en cada entrada y, por tanto, iguales. <span class="math inline">\(\square\)</span></p>
+<p>La evaluación se define sin elegir una base. Esa propiedad se conserva al aplicar cualquier transformación, como expresa la última identidad, y da un sentido preciso a llamar <strong>canónica</strong> a esta identificación con el bidual. Un isomorfismo con <span class="math inline">\(V^*\)</span> obtenido enviando una base a su base dual depende, en cambio, de la base elegida. En el plano usual enviaría <span class="math inline">\((1,1)\)</span> al funcional <span class="math inline">\(x+y\)</span>; usando la base de §19.2 lo enviaría a <span class="math inline">\(2x-y\)</span>. Son dos elecciones distintas para el mismo vector.</p>
+<figure id="fig-apm-t2-c19-f05" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C19-F05.svg" alt="Cuadrado que expresa la compatibilidad de la evaluación bidual con una aplicación lineal T." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 19.6.</em> Los dos recorridos llevan <span class="math inline">\(v\)</span> a la regla <span class="math inline">\(g\mapsto g(Tv)\)</span>. Los espacios de entrada y salida de cada flecha se mantienen explícitos.
+</figcaption>
+</figure>
+<p><span id="MA-BCH-APM-02-019-COR-012" class="apm-anchor"></span> <strong>Corolario 19.12 (recuperación desde el lado dual).</strong> Para un subespacio <span class="math inline">\(L\subseteq V^*\)</span>,</p>
+<p><span class="math display">\[
+\dim L_0=\dim V-\dim L,\qquad (L_0)^\circ=L.
+\]</span></p>
+<p>Por tanto, <span class="math inline">\(U\mapsto U^\circ\)</span> y <span class="math inline">\(L\mapsto L_0\)</span> son correspondencias inversas entre los subespacios de <span class="math inline">\(V\)</span> y de <span class="math inline">\(V^*\)</span>, que revierten inclusiones.</p>
+<p><strong>Demostración.</strong> Aplicando 19.4 al espacio <span class="math inline">\(V^*\)</span>, el anulador de <span class="math inline">\(L\)</span> dentro de <span class="math inline">\(V^{**}\)</span> tiene dimensión <span class="math inline">\(\dim V^*-\dim L\)</span>. Bajo <span class="math inline">\(\operatorname{ev}_V\)</span>, sus elementos corresponden exactamente a los <span class="math inline">\(v\)</span> tales que <span class="math inline">\(f(v)=0\)</span> para todo <span class="math inline">\(f\in L\)</span>, es decir, a <span class="math inline">\(L_0\)</span>. Esto prueba la fórmula de dimensión.</p>
+<p>Cada <span class="math inline">\(f\in L\)</span> anula <span class="math inline">\(L_0\)</span>, de modo que <span class="math inline">\(L\subseteq(L_0)^\circ\)</span>. Por 19.4, el segundo espacio tiene dimensión <span class="math inline">\(\dim V-\dim L_0=\dim L\)</span>; la inclusión es igualdad. Junto con <span class="math inline">\((U^\circ)_0=U\)</span>, esto prueba que las dos operaciones son inversas. Ambas revierten inclusiones por sus propias condiciones de anulación. <span class="math inline">\(\square\)</span></p>
+</section>
+<section id="invariancia-y-transposición-de-operadores" class="level2">
+<h2 class="anchored" data-anchor-id="invariancia-y-transposición-de-operadores">19.10. Invariancia y transposición de operadores</h2>
+<p><span id="MA-BCH-APM-02-019-PRP-013" class="apm-anchor"></span> <strong>Proposición 19.13 (subespacios invariantes y anuladores).</strong> Para un operador <span class="math inline">\(T:V\to V\)</span> y un subespacio <span class="math inline">\(U\subseteq V\)</span>, se tiene <span class="math inline">\(T(U)\subseteq U\)</span> si y sólo si <span class="math inline">\(T'(U^\circ)\subseteq U^\circ\)</span>.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(T(U)\subseteq U\)</span>, para <span class="math inline">\(f\in U^\circ\)</span> y <span class="math inline">\(u\in U\)</span> resulta <span class="math inline">\((T'f)(u)=f(Tu)=0\)</span>. Por ello <span class="math inline">\(T'f\in U^\circ\)</span>. Recíprocamente, supongamos invariante el anulador. Para todo <span class="math inline">\(u\in U\)</span> y <span class="math inline">\(f\in U^\circ\)</span>, se tiene <span class="math inline">\(f(Tu)=(T'f)(u)=0\)</span>. Así <span class="math inline">\(Tu\)</span> pertenece a <span class="math inline">\((U^\circ)_0=U\)</span> por 19.4, que prueba la invariancia. <span class="math inline">\(\square\)</span></p>
+<p>En una base adaptada a <span class="math inline">\(U\)</span>, C17 da <span class="math inline">\([T]=\begin{pmatrix}B&amp;C\\0&amp;D\end{pmatrix}\)</span>. La base dual tiene como últimos vectores una base de <span class="math inline">\(U^\circ\)</span>. La matriz transpuesta es <span class="math inline">\(\begin{pmatrix}B^{\mathsf T}&amp;0\\C^{\mathsf T}&amp;D^{\mathsf T}\end{pmatrix}\)</span> y preserva precisamente el subespacio generado por esos últimos vectores. Su restricción a <span class="math inline">\(U^\circ\)</span> tiene matriz <span class="math inline">\(D^{\mathsf T}\)</span>. Esto coincide con dualizar el operador cociente sobre <span class="math inline">\(V/U\)</span>, cuya matriz era <span class="math inline">\(D\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-PRP-014" class="apm-anchor"></span> <strong>Proposición 19.14 (invariantes de un operador y su dual).</strong> Los operadores <span class="math inline">\(T\)</span> y <span class="math inline">\(T'\)</span> tienen el mismo característico y el mismo mínimo. Para todo <span class="math inline">\(\lambda\in\mathbb F\)</span> y <span class="math inline">\(j\geq0\)</span>,</p>
+<p><span class="math display">\[
+\dim\ker(T'-\lambda I)^j=\dim\ker(T-\lambda I)^j.
+\]</span></p>
+<p>Si el característico se escinde, tienen los mismos tamaños de bloques de Jordan para cada valor propio. En particular, una matriz con característico escindido es semejante a su transpuesta.</p>
+<p><strong>Demostración.</strong> Por 19.7 y la invariancia del determinante bajo transposición de C13, <span class="math inline">\(\det(tI-A^{\mathsf T})=\det(tI-A)\)</span>. Para todo polinomio <span class="math inline">\(p\)</span>, la linealidad de la dualización y su regla de composición dan <span class="math inline">\(p(T)'=p(T')\)</span>: invertir el orden no cambia una potencia de un mismo operador. Una aplicación <span class="math inline">\(S\)</span> es cero si y sólo si <span class="math inline">\(S'\)</span> es cero. Una dirección es inmediata; para la otra, si <span class="math inline">\(Sv\ne0\)</span>, algún funcional separador toma valor uno en <span class="math inline">\(Sv\)</span>, por lo que <span class="math inline">\(S'\)</span> no es cero. Así <span class="math inline">\(p(T)=0\)</span> si y sólo si <span class="math inline">\(p(T')=0\)</span>, y los mínimos coinciden.</p>
+<p>Aplicar la igualdad de rangos de 19.8 a <span class="math inline">\(S=(T-\lambda I)^j\)</span> da igualdad de rangos con <span class="math inline">\(S'=(T'-\lambda I)^j\)</span>. Como los dos espacios tienen igual dimensión, rango–nulidad da las nulidades anunciadas. Si el característico se escinde, C18 recupera de ellas los tamaños de cada valor y clasifica por semejanza. <span class="math inline">\(\square\)</span></p>
+<p>La hipótesis de escisión corresponde aquí al alcance del argumento por Jordan. Los resultados de rango, característico, mínimo y nulidades anteriores se probaron sobre cualquier cuerpo. La transposición de un bloque superior de Jordan también se puede convertir en el mismo bloque invirtiendo el orden de sus vectores; esa observación será útil en los ejercicios.</p>
+</section>
+<section id="ejercicios-y-soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-y-soluciones">19.11. Ejercicios y soluciones</h2>
+<p>En las fórmulas de coordenadas, los funcionales se representan por columnas de coeficientes en una base dual; su evaluación sobre una columna de coordenadas se escribe <span class="math inline">\(c^{\mathsf T}x\)</span>. No se conjugan escalares complejos. Los ejemplos numéricos se toman sobre <span class="math inline">\(\mathbb Q\)</span> o <span class="math inline">\(\mathbb R\)</span> salvo indicación distinta.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-001" class="apm-anchor"></span> <strong>Ejercicio 19.1.</strong> Determine cuáles de las reglas <span class="math inline">\(x+2y\)</span>, <span class="math inline">\(x+2y+1\)</span> y <span class="math inline">\(xy\)</span> sobre <span class="math inline">\(\mathbb R^2\)</span> son funcionales lineales.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-001" class="apm-anchor"></span> <strong>Solución 1.</strong> La primera respeta sumas y múltiplos al distribuir sus dos términos, luego es lineal. La segunda toma valor uno en el vector cero, lo que impide linealidad. La tercera vale cero en <span class="math inline">\((1,0)\)</span> y <span class="math inline">\((0,1)\)</span>, pero vale uno en su suma <span class="math inline">\((1,1)\)</span>; falla la aditividad. Tener salida escalar no basta para ser un funcional lineal.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-002" class="apm-anchor"></span> <strong>Ejercicio 19.2.</strong> Encuentre la base dual de <span class="math inline">\(((1,1),(1,2))\)</span> y reconstruya <span class="math inline">\((3,4)\)</span> con ella.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-002" class="apm-anchor"></span> <strong>Solución 2.</strong> Resolver <span class="math inline">\((x,y)=a(1,1)+b(1,2)\)</span> da <span class="math inline">\(a=2x-y\)</span> y <span class="math inline">\(b=-x+y\)</span>. Así <span class="math inline">\(\varphi_1=2x-y\)</span> y <span class="math inline">\(\varphi_2=-x+y\)</span>. Evaluarlas en <span class="math inline">\((3,4)\)</span> da dos y uno, respectivamente. Por tanto <span class="math inline">\((3,4)=2(1,1)+(1,2)\)</span>. Las evaluaciones en los dos vectores de la base dan las columnas <span class="math inline">\((1,0)\)</span> y <span class="math inline">\((0,1)\)</span>, que verifican la condición dual.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-003" class="apm-anchor"></span> <strong>Ejercicio 19.3.</strong> Calcule la base dual de <span class="math inline">\(\mathcal B=((1,0,0),(1,1,0),(0,1,1))\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-003" class="apm-anchor"></span> <strong>Solución 3.</strong> La matriz de columnas de la base y su inversa son <span class="math display">\[
+P=\begin{pmatrix}1&amp;1&amp;0\\0&amp;1&amp;1\\0&amp;0&amp;1\end{pmatrix},\qquad
+P^{-1}=\begin{pmatrix}1&amp;-1&amp;1\\0&amp;1&amp;-1\\0&amp;0&amp;1\end{pmatrix}.
+\]</span> Las filas inversas dan <span class="math inline">\(\varphi_1(x,y,z)=x-y+z\)</span>, <span class="math inline">\(\varphi_2(x,y,z)=y-z\)</span> y <span class="math inline">\(\varphi_3(x,y,z)=z\)</span>. Evaluar cada fila en las columnas de <span class="math inline">\(P\)</span> produce la identidad, así que la lista es la base dual en el orden pedido.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-004" class="apm-anchor"></span> <strong>Ejercicio 19.4.</strong> Exprese <span class="math inline">\(f(x,y,z)=2x-y+3z\)</span> en la base dual del ejercicio 3.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-004" class="apm-anchor"></span> <strong>Solución 4.</strong> Los coeficientes son los valores en la base original: <span class="math inline">\(f(1,0,0)=2\)</span>, <span class="math inline">\(f(1,1,0)=1\)</span> y <span class="math inline">\(f(0,1,1)=2\)</span>. Por ello <span class="math inline">\(f=2\varphi_1+\varphi_2+2\varphi_3\)</span>. Sustituir las fórmulas da <span class="math inline">\(2(x-y+z)+(y-z)+2z=2x-y+3z\)</span>, que verifica el resultado sin invertir de nuevo una matriz.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-005" class="apm-anchor"></span> <strong>Ejercicio 19.5.</strong> Para <span class="math inline">\(f(x,y)=4x-y\)</span>, calcule sus coordenadas duales en la base del ejercicio 2 usando el cambio de base.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-005" class="apm-anchor"></span> <strong>Solución 5.</strong> Las coordenadas usuales son la columna <span class="math inline">\((4,-1)\)</span>. Para <span class="math inline">\(P=\begin{pmatrix}1&amp;1\\1&amp;2\end{pmatrix}\)</span>, la fórmula da <span class="math inline">\(P^{\mathsf T}(4,-1)=(3,2)\)</span>. También <span class="math inline">\(f(1,1)=3\)</span> y <span class="math inline">\(f(1,2)=2\)</span>. Finalmente <span class="math inline">\(3(2x-y)+2(-x+y)=4x-y\)</span>. Aquí se usa <span class="math inline">\(P^{\mathsf T}\)</span> para cambiar los coeficientes de un funcional fijo; las filas de <span class="math inline">\(P^{-1}\)</span> construyen la base dual misma.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-006" class="apm-anchor"></span> <strong>Ejercicio 19.6.</strong> Identifique la base dual de <span class="math inline">\((1,t,t^2)\)</span> en <span class="math inline">\(\mathcal P_2(\mathbb F)\)</span> y escriba <span class="math inline">\(E_a\)</span> en ella.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-006" class="apm-anchor"></span> <strong>Solución 6.</strong> Los funcionales coordenada son <span class="math inline">\(c_0,c_1,c_2\)</span>, que extraen cada coeficiente: <span class="math inline">\(c_i(t^j)=\delta_{ij}\)</span>. Para <span class="math inline">\(p=a_0+a_1t+a_2t^2\)</span>, evaluar en <span class="math inline">\(a\)</span> da <span class="math inline">\(a_0+aa_1+a^2a_2\)</span>. Así <span class="math inline">\(E_a=c_0+ac_1+a^2c_2\)</span>. Es una identidad sobre cualquier cuerpo, pues usa polinomios formales y evaluación algebraica.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-007" class="apm-anchor"></span> <strong>Ejercicio 19.7.</strong> Pruebe sobre <span class="math inline">\(\mathbb Q\)</span> que <span class="math inline">\(E_0,E_1,E_2\)</span> forman una base de <span class="math inline">\(\mathcal P_2(\mathbb Q)^*\)</span> y encuentre la base de polinomios de la que son duales.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-007" class="apm-anchor"></span> <strong>Solución 7.</strong> Considere <span class="math inline">\(L_0=(t-1)(t-2)/2\)</span>, <span class="math inline">\(L_1=-t(t-2)\)</span> y <span class="math inline">\(L_2=t(t-1)/2\)</span>. Sus valores en <span class="math inline">\(0,1,2\)</span> forman la identidad: <span class="math inline">\(E_i(L_j)=\delta_{ij}\)</span>. Por ello los tres polinomios son independientes, pues evaluar una relación en esos puntos anula cada coeficiente. Son una base de un espacio de dimensión tres. Los funcionales de evaluación son su base dual por 19.1. En particular, cada <span class="math inline">\(p\)</span> se reconstruye como <span class="math inline">\(p(0)L_0+p(1)L_1+p(2)L_2\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-008" class="apm-anchor"></span> <strong>Ejercicio 19.8.</strong> ¿Pueden las evaluaciones en puntos de <span class="math inline">\(\mathbb F_2\)</span> generar todo el dual de <span class="math inline">\(\mathcal P_2(\mathbb F_2)\)</span>?</p>
+<p><span id="MA-BCH-APM-02-019-SOL-008" class="apm-anchor"></span> <strong>Solución 8.</strong> No.&nbsp;Sólo hay dos puntos y, por tanto, dos funcionales de evaluación, mientras el dual tiene dimensión tres. Además el polinomio formal no nulo <span class="math inline">\(t^2+t\)</span> se anula en ambos puntos; todas las combinaciones de evaluaciones lo anulan. El funcional que extrae el coeficiente de <span class="math inline">\(t^2\)</span> toma valor uno en él y no pertenece a ese espacio generado. La distinción entre polinomios formales y sus funciones sobre un cuerpo finito importa aquí.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-009" class="apm-anchor"></span> <strong>Ejercicio 19.9.</strong> Pruebe que la traza es un funcional no nulo sobre <span class="math inline">\(M_n(\mathbb F)\)</span> para <span class="math inline">\(n\geq1\)</span>, y determine la dimensión de su núcleo incluso cuando la característica divide a <span class="math inline">\(n\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-009" class="apm-anchor"></span> <strong>Solución 9.</strong> La suma de las entradas diagonales respeta las operaciones matriciales, de modo que la traza es lineal. La matriz unidad <span class="math inline">\(E_{11}\)</span> tiene traza uno, así que el funcional no es cero sobre ningún cuerpo. Su rango es uno y su núcleo tiene dimensión <span class="math inline">\(n^2-1\)</span>. Aunque <span class="math inline">\(\operatorname{tr}I_n=n\)</span> pueda ser cero en el cuerpo, eso no anula el funcional completo.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-010" class="apm-anchor"></span> <strong>Ejercicio 19.10.</strong> Encuentre todos los funcionales no nulos sobre <span class="math inline">\(\mathbb R^2\)</span> cuyo núcleo sea <span class="math inline">\(x+2y=0\)</span>, y normalice uno para que tome valor uno en <span class="math inline">\((1,0)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-010" class="apm-anchor"></span> <strong>Solución 10.</strong> El lema 19.3 dice que son <span class="math inline">\(f(x,y)=a(x+2y)\)</span> con <span class="math inline">\(a\ne0\)</span>. También se deduce escribiendo un funcional general <span class="math inline">\(bx+cy\)</span> y exigiendo que anule <span class="math inline">\((2,-1)\)</span>: resulta <span class="math inline">\(2b-c=0\)</span>. La normalización <span class="math inline">\(f(1,0)=1\)</span> fuerza <span class="math inline">\(a=1\)</span>, así que el funcional normalizado es <span class="math inline">\(x+2y\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-011" class="apm-anchor"></span> <strong>Ejercicio 19.11.</strong> Sea <span class="math inline">\(U=\operatorname{span}((1,1,0),(0,1,1))\)</span>. Encuentre todas las extensiones del funcional <span class="math inline">\(h\)</span> que toma valores uno y dos en esos generadores, respectivamente.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-011" class="apm-anchor"></span> <strong>Solución 11.</strong> Los generadores son independientes y los datos definen un funcional sobre <span class="math inline">\(U\)</span>. Una extensión <span class="math inline">\(f(x,y,z)=\alpha x+\beta y+\gamma z\)</span> debe cumplir <span class="math inline">\(\alpha+\beta=1\)</span> y <span class="math inline">\(\beta+\gamma=2\)</span>. Tomando <span class="math inline">\(\beta=a\)</span>, todas son <span class="math inline">\(f=(1-a)x+ay+(2-a)z\)</span>, con <span class="math inline">\(a\in\mathbb F\)</span>. La diferencia de dos elecciones es un múltiplo de <span class="math inline">\(-x+y-z\)</span>, que anula ambos generadores. La libertad de las extensiones tiene dimensión uno.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-012" class="apm-anchor"></span> <strong>Ejercicio 19.12.</strong> Para el subespacio del ejercicio 11, construya un separador que tome valor uno en <span class="math inline">\(e_2\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-012" class="apm-anchor"></span> <strong>Solución 12.</strong> El funcional <span class="math inline">\(\ell(x,y,z)=-x+y-z\)</span> anula <span class="math inline">\((1,1,0)\)</span> y <span class="math inline">\((0,1,1)\)</span>, luego anula todo <span class="math inline">\(U\)</span>. En cambio, <span class="math inline">\(\ell(e_2)=1\)</span>. Esto prueba a la vez que <span class="math inline">\(e_2\notin U\)</span> y que <span class="math inline">\(\ell\)</span> es el separador pedido. Su coeficiente de <span class="math inline">\(y\)</span> fija la normalización, y las condiciones sobre los dos generadores determinan los otros coeficientes.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-013" class="apm-anchor"></span> <strong>Ejercicio 19.13.</strong> Calcule el anulador del plano <span class="math inline">\(z=x+y\)</span> y recupere el plano como preanulador.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-013" class="apm-anchor"></span> <strong>Solución 13.</strong> Un funcional <span class="math inline">\(ax+by+cz\)</span> anula todos los vectores <span class="math inline">\((x,y,x+y)\)</span> si y sólo si <span class="math inline">\((a+c)x+(b+c)y=0\)</span> para todo <span class="math inline">\(x,y\)</span>. Esto obliga a <span class="math inline">\(a=b=-c\)</span>. El anulador es la recta generada por <span class="math inline">\(-x-y+z\)</span>. Su preanulador es el conjunto donde esa regla vale cero, es decir, el plano original. Se comprueba <span class="math inline">\(\dim U+\dim U^\circ=2+1=3\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-014" class="apm-anchor"></span> <strong>Ejercicio 19.14.</strong> Halle el anulador de <span class="math inline">\(U=\operatorname{span}((1,0,1,0),(0,1,0,1))\subseteq\mathbb F^4\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-014" class="apm-anchor"></span> <strong>Solución 14.</strong> Para <span class="math inline">\(f(x)=\sum_i a_ix_i\)</span>, las condiciones son <span class="math inline">\(a_1+a_3=0\)</span> y <span class="math inline">\(a_2+a_4=0\)</span>. Por tanto <span class="math inline">\(U^\circ=\operatorname{span}(x_1-x_3,x_2-x_4)\)</span>. Estos dos funcionales son independientes por sus coeficientes de <span class="math inline">\(x_1,x_2\)</span>. Su núcleo común exige <span class="math inline">\(x_1=x_3\)</span> y <span class="math inline">\(x_2=x_4\)</span>, que describe exactamente <span class="math inline">\(U\)</span>. El cálculo funciona también en característica dos, interpretando allí los signos.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-015" class="apm-anchor"></span> <strong>Ejercicio 19.15.</strong> Verifique las dos identidades de 19.5 para <span class="math inline">\(U=\operatorname{span}(e_1,e_2)\)</span> y <span class="math inline">\(W=\operatorname{span}(e_2,e_3)\)</span> en <span class="math inline">\(\mathbb F^3\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-015" class="apm-anchor"></span> <strong>Solución 15.</strong> Se tiene <span class="math inline">\(U+W=\mathbb F^3\)</span> y <span class="math inline">\(U\cap W=\operatorname{span}e_2\)</span>. Sus anuladores son <span class="math inline">\(U^\circ=\operatorname{span}z\)</span> y <span class="math inline">\(W^\circ=\operatorname{span}x\)</span>, entendiendo <span class="math inline">\(x,z\)</span> como funcionales coordenada. La intersección de estas rectas duales es cero, que coincide con <span class="math inline">\((U+W)^\circ\)</span>. Su suma es <span class="math inline">\(\operatorname{span}(x,z)\)</span>, el conjunto de funcionales que anula <span class="math inline">\(e_2\)</span>, y coincide con <span class="math inline">\((U\cap W)^\circ\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-016" class="apm-anchor"></span> <strong>Ejercicio 19.16.</strong> Demuestre que si dos subespacios propios distintos tienen la misma dimensión, existe un funcional que anula uno de ellos y no anula el otro.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-016" class="apm-anchor"></span> <strong>Solución 16.</strong> Sean <span class="math inline">\(U\ne W\)</span> de igual dimensión. No puede ocurrir <span class="math inline">\(W\subseteq U\)</span>, porque una inclusión entre espacios de igual dimensión sería igualdad. Elija <span class="math inline">\(w\in W\setminus U\)</span>. El separador de 19.3 anula <span class="math inline">\(U\)</span> y toma valor uno en <span class="math inline">\(w\)</span>, así que no anula todo <span class="math inline">\(W\)</span>. En particular, los anuladores de <span class="math inline">\(U\)</span> y <span class="math inline">\(W\)</span> son distintos. No es necesario construir coordenadas de ambos espacios.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-017" class="apm-anchor"></span> <strong>Ejercicio 19.17.</strong> Si <span class="math inline">\(f_1,\ldots,f_k\)</span> son funcionales independientes en un espacio de dimensión <span class="math inline">\(n\)</span>, pruebe que su núcleo común tiene dimensión <span class="math inline">\(n-k\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-017" class="apm-anchor"></span> <strong>Solución 17.</strong> El espacio <span class="math inline">\(L=\operatorname{span}(f_1,\ldots,f_k)\)</span> tiene dimensión <span class="math inline">\(k\)</span>. Su preanulador es exactamente <span class="math inline">\(\bigcap_i\ker f_i\)</span>, porque anular los generadores equivale a anular todas sus combinaciones. El corolario 19.12 da <span class="math inline">\(\dim L_0=n-k\)</span>. Para una familia dependiente, la misma cuenta usa <span class="math inline">\(\dim L\)</span> en lugar del número de funcionales escritos.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-018" class="apm-anchor"></span> <strong>Ejercicio 19.18.</strong> ¿Son el anulador <span class="math inline">\(U^\circ\)</span> y el dual <span class="math inline">\(U^*\)</span> el mismo espacio? Use una recta de <span class="math inline">\(\mathbb F^3\)</span> para explicar la diferencia.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-018" class="apm-anchor"></span> <strong>Solución 18.</strong> No.&nbsp;Para <span class="math inline">\(U=\operatorname{span}e_1\)</span>, su dual <span class="math inline">\(U^*\)</span> tiene dimensión uno y contiene aplicaciones definidas sólo sobre esa recta. Su anulador en <span class="math inline">\((\mathbb F^3)^*\)</span> tiene dimensión dos y consta de reglas <span class="math inline">\(by+cz\)</span> definidas en todo el espacio que valen cero en la recta. La restricción de cualquier elemento del anulador es el funcional cero de <span class="math inline">\(U^*\)</span>; identificar ambos objetos perdería tanto sus dominios como sus dimensiones.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-019" class="apm-anchor"></span> <strong>Ejercicio 19.19.</strong> Para <span class="math inline">\(T(x,y,z)=(x+z,2x-y)\)</span>, calcule <span class="math inline">\(T'\)</span> y su matriz en bases duales usuales.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-019" class="apm-anchor"></span> <strong>Solución 19.</strong> Sea <span class="math inline">\(g(u,v)=au+bv\)</span>. Entonces <span class="math inline">\(T'g(x,y,z)=a(x+z)+b(2x-y)=(a+2b)x-by+az\)</span>. La columna de salida es <span class="math inline">\((a+2b,-b,a)\)</span>, y la matriz es <span class="math display">\[
+\begin{pmatrix}1&amp;2\\0&amp;-1\\1&amp;0\end{pmatrix}
+=\begin{pmatrix}1&amp;0&amp;1\\2&amp;-1&amp;0\end{pmatrix}^{\mathsf T}.
+\]</span> La entrada de <span class="math inline">\(T'\)</span> es un funcional sobre el espacio de salida de <span class="math inline">\(T\)</span>, no un vector del dominio original.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-020" class="apm-anchor"></span> <strong>Ejercicio 19.20.</strong> Calcule los núcleos y las imágenes de <span class="math inline">\(T\)</span> y <span class="math inline">\(T'\)</span> en el ejercicio 19 y compruebe 19.8.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-020" class="apm-anchor"></span> <strong>Solución 20.</strong> Las ecuaciones del núcleo de <span class="math inline">\(T\)</span> dan <span class="math inline">\(z=-x\)</span> y <span class="math inline">\(y=2x\)</span>, luego <span class="math inline">\(\ker T=\operatorname{span}(1,2,-1)\)</span>. Como las dos filas son independientes, <span class="math inline">\(T\)</span> tiene imagen <span class="math inline">\(\mathbb F^2\)</span>. Por la fórmula de <span class="math inline">\(T'\)</span>, salida cero implica <span class="math inline">\(a=b=0\)</span>, de modo que su núcleo es cero. Su imagen consta de columnas <span class="math inline">\((c_1,c_2,c_3)\)</span> con <span class="math inline">\(c_1+2c_2-c_3=0\)</span>: para ellas basta elegir <span class="math inline">\(a=c_3\)</span> y <span class="math inline">\(b=-c_2\)</span>. Esa condición es exactamente anular <span class="math inline">\((1,2,-1)\)</span>. Ambas aplicaciones tienen rango dos, y el núcleo dual es el anulador de todo el codominio.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-021" class="apm-anchor"></span> <strong>Ejercicio 19.21.</strong> Para <span class="math inline">\(T(x,y)=(x,y,x+y)\)</span> y <span class="math inline">\(S(u,v,w)=(u+w,v-w)\)</span>, compruebe la inversión del orden de composición al dualizar.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-021" class="apm-anchor"></span> <strong>Solución 21.</strong> Las matrices son <span class="math inline">\(A=\begin{pmatrix}1&amp;0\\0&amp;1\\1&amp;1\end{pmatrix}\)</span> y <span class="math inline">\(B=\begin{pmatrix}1&amp;0&amp;1\\0&amp;1&amp;-1\end{pmatrix}\)</span>. Su producto es <span class="math inline">\(BA=\begin{pmatrix}2&amp;1\\-1&amp;0\end{pmatrix}\)</span>. Por otro lado, <span class="math inline">\(A^{\mathsf T}B^{\mathsf T}=\begin{pmatrix}2&amp;-1\\1&amp;0\end{pmatrix}=(BA)^{\mathsf T}\)</span>. Las dimensiones también fijan el orden: primero <span class="math inline">\(S'\)</span> lleva funcionales de <span class="math inline">\(\mathbb F^2\)</span> a <span class="math inline">\((\mathbb F^3)^*\)</span> y después <span class="math inline">\(T'\)</span> los lleva al dual del plano inicial.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-022" class="apm-anchor"></span> <strong>Ejercicio 19.22.</strong> Para la matriz de tres filas de §19.7, encuentre una base del espacio de filas, una de <span class="math inline">\(\ker A\)</span> y una de <span class="math inline">\(\ker A^{\mathsf T}\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-022" class="apm-anchor"></span> <strong>Solución 22.</strong> Las dos primeras filas son independientes por sus primeras dos coordenadas, y la tercera es su suma; aquéllas son una base del espacio de filas. Resolver las dos primeras ecuaciones homogéneas con <span class="math inline">\(z=s,w=t\)</span> da <span class="math inline">\((x,y,z,w)=s(-1,-1,1,0)+t(-2,1,0,1)\)</span>, una base del núcleo. La relación única entre las tres filas tiene coeficientes <span class="math inline">\((-1,-1,1)\)</span>, que generan <span class="math inline">\(\ker A^{\mathsf T}\)</span>. Las dimensiones son dos, dos y uno, respectivamente.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-023" class="apm-anchor"></span> <strong>Ejercicio 19.23.</strong> Resuelva el sistema de §19.7 con <span class="math inline">\(b=(2,-1,1)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-023" class="apm-anchor"></span> <strong>Solución 23.</strong> La condición <span class="math inline">\(b_3=b_1+b_2\)</span> se cumple porque <span class="math inline">\(1=2-1\)</span>. Poniendo <span class="math inline">\(z=s,w=t\)</span>, las dos primeras ecuaciones dan <span class="math inline">\(x=2-s-2t\)</span> e <span class="math inline">\(y=-1-s+t\)</span>. La tercera se satisface automáticamente por ser suma de las dos primeras. Todas las soluciones son <span class="math inline">\((2-s-2t,-1-s+t,s,t)\)</span>. La elección <span class="math inline">\(s=t=0\)</span> produce la solución particular <span class="math inline">\((2,-1,0,0)\)</span>; los coeficientes de <span class="math inline">\(s,t\)</span> son los generadores del núcleo del ejercicio 22.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-024" class="apm-anchor"></span> <strong>Ejercicio 19.24.</strong> Pruebe la incompatibilidad para <span class="math inline">\(b=(2,-1,0)\)</span> y dé un certificado normalizado con valor uno en <span class="math inline">\(b\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-024" class="apm-anchor"></span> <strong>Solución 24.</strong> La relación de filas exige <span class="math inline">\(0=2-1\)</span>, que es falsa sobre <span class="math inline">\(\mathbb Q\)</span> o <span class="math inline">\(\mathbb R\)</span>. El vector <span class="math inline">\(c=(1,1,-1)\)</span> pertenece a <span class="math inline">\(\ker A^{\mathsf T}\)</span> porque fila 1 más fila 2 menos fila 3 es cero. Además <span class="math inline">\(c^{\mathsf T}b=2-1-0=1\)</span>. Si existiera solución, resultaría <span class="math inline">\(1=c^{\mathsf T}b=c^{\mathsf T}Ax=0\)</span>, contradicción. El funcional certificado impide la solución sin resolver para las cuatro incógnitas.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-025" class="apm-anchor"></span> <strong>Ejercicio 19.25.</strong> Pruebe que un funcional sobre <span class="math inline">\(\mathbb F^n\)</span> que se anula en <span class="math inline">\(\ker A\)</span> es combinación lineal de las filas de <span class="math inline">\(A\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-025" class="apm-anchor"></span> <strong>Solución 25.</strong> Sea <span class="math inline">\(f\)</span> tal funcional. Sobre <span class="math inline">\(\operatorname{im}A\)</span>, la regla <span class="math inline">\(h(Ax)=f(x)\)</span> está bien definida porque dos preimágenes difieren en un elemento del núcleo. Extendiendo <span class="math inline">\(h\)</span> a todo <span class="math inline">\(\mathbb F^m\)</span>, obtenemos una fila <span class="math inline">\(c^{\mathsf T}\)</span> tal que <span class="math inline">\(f(x)=c^{\mathsf T}Ax\)</span>. Así la fila de coeficientes de <span class="math inline">\(f\)</span> es <span class="math inline">\(c^{\mathsf T}A\)</span>, una combinación de las filas. Recíprocamente, cualquier combinación de filas se anula en el núcleo porque <span class="math inline">\(Ax=0\)</span> allí.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-026" class="apm-anchor"></span> <strong>Ejercicio 19.26.</strong> Demuestre directamente que una aplicación inyectiva <span class="math inline">\(T:V\to W\)</span> tiene dual sobreyectiva.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-026" class="apm-anchor"></span> <strong>Solución 26.</strong> Dado <span class="math inline">\(f\in V^*\)</span>, defina <span class="math inline">\(h\)</span> sobre <span class="math inline">\(\operatorname{im}T\)</span> por <span class="math inline">\(h(Tv)=f(v)\)</span>. La inyectividad hace única la preimagen y garantiza buena definición. La regla es lineal porque <span class="math inline">\(T\)</span> respeta combinaciones. Extienda <span class="math inline">\(h\)</span> a <span class="math inline">\(g\in W^*\)</span> por extensión de una base. Entonces <span class="math inline">\(T'g=f\)</span>, así que todo funcional del dominio original está en la imagen dual. La extensión puede no ser única cuando la imagen de <span class="math inline">\(T\)</span> es propia.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-027" class="apm-anchor"></span> <strong>Ejercicio 19.27.</strong> Para <span class="math inline">\(U=\operatorname{span}(1,1)\subseteq\mathbb F^2\)</span>, describa todos los funcionales sobre <span class="math inline">\(V/U\)</span> y la identificación con <span class="math inline">\(U^\circ\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-027" class="apm-anchor"></span> <strong>Solución 27.</strong> Cada clase de <span class="math inline">\((x,y)\)</span> tiene representante <span class="math inline">\((x-y,0)\)</span> al restarle <span class="math inline">\(y(1,1)\)</span>. El representante es único, porque <span class="math inline">\((a,0)\in U\)</span> obliga a <span class="math inline">\(a=0\)</span>. Por tanto el cociente tiene base la clase de <span class="math inline">\((1,0)\)</span> y sus funcionales son <span class="math inline">\(h_a((x,y)+U)=a(x-y)\)</span>. Al componer con <span class="math inline">\(q\)</span>, se obtiene <span class="math inline">\(q'h_a=a(x-y)\)</span>, precisamente el anulador de la recta. La fórmula es independiente del representante porque sumar <span class="math inline">\((t,t)\)</span> no cambia <span class="math inline">\(x-y\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-028" class="apm-anchor"></span> <strong>Ejercicio 19.28.</strong> Encuentre todas las extensiones a <span class="math inline">\(\mathbb R^2\)</span> del funcional sobre la recta <span class="math inline">\(U=\operatorname{span}(1,1)\)</span> que toma valor tres en <span class="math inline">\((1,1)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-028" class="apm-anchor"></span> <strong>Solución 28.</strong> Un funcional <span class="math inline">\(f(x,y)=ax+by\)</span> tiene la restricción pedida exactamente cuando <span class="math inline">\(a+b=3\)</span>. Las extensiones son <span class="math inline">\(ax+(3-a)y\)</span> para <span class="math inline">\(a\in\mathbb R\)</span>. Partiendo de <span class="math inline">\(f_0=3y\)</span>, la familia se escribe <span class="math inline">\(f_0+a(x-y)\)</span>; la dirección es <span class="math inline">\(U^\circ\)</span>. Si se elige como complemento el eje horizontal, imponer cero allí selecciona <span class="math inline">\(3y\)</span>. Si se elige el eje vertical, selecciona <span class="math inline">\(3x\)</span>. La diferencia de las extensiones sigue anulando <span class="math inline">\(U\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-029" class="apm-anchor"></span> <strong>Ejercicio 19.29.</strong> Escriba la secuencia exacta de 19.10 para <span class="math inline">\(U=\operatorname{span}(e_1,e_2)\subseteq\mathbb F^3\)</span> usando coordenadas.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-029" class="apm-anchor"></span> <strong>Solución 29.</strong> Identificando el cociente con la tercera coordenada, <span class="math inline">\(q(x,y,z)=z\)</span>. Su dual envía un escalar <span class="math inline">\(a\)</span> al funcional <span class="math inline">\(az\)</span>, de columna <span class="math inline">\((0,0,a)\)</span>. La restricción envía <span class="math inline">\((b,c,d)\)</span> a <span class="math inline">\((b,c)\)</span>, que son los valores sobre <span class="math inline">\(e_1,e_2\)</span>. Así la secuencia es <span class="math inline">\(0\to\mathbb F\to\mathbb F^3\to\mathbb F^2\to0\)</span>, con esas dos reglas. La primera es inyectiva, su imagen es la tercera recta coordenada, ésta es el núcleo de la segunda y la segunda es sobreyectiva. Eso verifica todos los lugares de exactitud.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-030" class="apm-anchor"></span> <strong>Ejercicio 19.30.</strong> En una base <span class="math inline">\((v_1,v_2)\)</span>, un elemento <span class="math inline">\(L\in V^{**}\)</span> está dado por <span class="math inline">\(L(f)=2f(v_1)-f(v_2)\)</span>. Encuentre el vector que lo representa por evaluación y pruebe su unicidad.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-030" class="apm-anchor"></span> <strong>Solución 30.</strong> Por linealidad de <span class="math inline">\(f\)</span>, <span class="math inline">\(L(f)=f(2v_1-v_2)\)</span> para todo <span class="math inline">\(f\)</span>. El vector es <span class="math inline">\(v=2v_1-v_2\)</span>. Si otro vector <span class="math inline">\(w\)</span> diera los mismos valores, todos los funcionales anularían <span class="math inline">\(v-w\)</span>. La separación de 19.3 implica <span class="math inline">\(v-w=0\)</span>. Esto prueba unicidad directamente y coincide con la inyectividad de <span class="math inline">\(\operatorname{ev}_V\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-031" class="apm-anchor"></span> <strong>Ejercicio 19.31.</strong> Sea <span class="math inline">\(L\in\mathcal P_2(\mathbb Q)^{**}\)</span> con <span class="math inline">\(L(E_0)=1\)</span>, <span class="math inline">\(L(E_1)=2\)</span> y <span class="math inline">\(L(E_2)=5\)</span>. Determine el polinomio que representa <span class="math inline">\(L\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-031" class="apm-anchor"></span> <strong>Solución 31.</strong> El polinomio buscado debe tomar valores <span class="math inline">\(1,2,5\)</span> en <span class="math inline">\(0,1,2\)</span>. Es <span class="math inline">\(p=1+t^2\)</span>, como se comprueba sustituyendo. Para demostrar que representa a <span class="math inline">\(L\)</span> en todos los funcionales, use que <span class="math inline">\(E_0,E_1,E_2\)</span> son una base del dual por el ejercicio 7. Las aplicaciones <span class="math inline">\(L\)</span> y <span class="math inline">\(\operatorname{ev}(p)\)</span> coinciden en los tres elementos de esa base, luego coinciden en todo el dual. La unicidad sigue de 19.11, o de que un polinomio de grado a lo sumo dos con tres raíces distintas es cero.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-032" class="apm-anchor"></span> <strong>Ejercicio 19.32.</strong> Compare los isomorfismos <span class="math inline">\(V\to V^*\)</span> que envían una base a su base dual para la base usual del plano y para la base del ejercicio 2.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-032" class="apm-anchor"></span> <strong>Solución 32.</strong> En la base usual, el isomorfismo <span class="math inline">\(F\)</span> envía <span class="math inline">\(e_1\)</span> a <span class="math inline">\(x\)</span> y <span class="math inline">\(e_2\)</span> a <span class="math inline">\(y\)</span>, por lo que <span class="math inline">\(F(1,1)=x+y\)</span>. En la otra base, el isomorfismo <span class="math inline">\(G\)</span> envía <span class="math inline">\(v_1=(1,1)\)</span> a <span class="math inline">\(\varphi_1=2x-y\)</span>, así que <span class="math inline">\(G(1,1)=2x-y\)</span>. Estos funcionales son distintos, por ejemplo al evaluarlos en <span class="math inline">\((0,1)\)</span> dan uno y menos uno. Cada regla depende de la base con que se construyó, a diferencia de <span class="math inline">\(v\mapsto(f\mapsto f(v))\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-033" class="apm-anchor"></span> <strong>Ejercicio 19.33.</strong> Compruebe la identidad de naturalidad de 19.11 para <span class="math inline">\(T(x,y)=(x,y,x+y)\)</span>, <span class="math inline">\(v=(1,2)\)</span> y <span class="math inline">\(g(u,v,w)=2u-v+3w\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-033" class="apm-anchor"></span> <strong>Solución 33.</strong> La imagen del vector es <span class="math inline">\(Tv=(1,2,3)\)</span> y <span class="math inline">\(g(Tv)=2-2+9=9\)</span>. La regla dual es <span class="math inline">\(T'g(x,y)=5x+2y\)</span>, que toma valor nueve en <span class="math inline">\((1,2)\)</span>. Por definición, evaluar <span class="math inline">\(T''\operatorname{ev}(v)\)</span> en <span class="math inline">\(g\)</span> da <span class="math inline">\(\operatorname{ev}(v)(T'g)=9\)</span>, y evaluar <span class="math inline">\(\operatorname{ev}(Tv)\)</span> en <span class="math inline">\(g\)</span> también da nueve. La misma cuenta para una regla arbitraria <span class="math inline">\(g\)</span> constituye la identidad completa del teorema; este ejemplo verifica sus dos recorridos en datos concretos.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-034" class="apm-anchor"></span> <strong>Ejercicio 19.34.</strong> Para <span class="math inline">\(L=\operatorname{span}(x+y,y+z)\subseteq(\mathbb F^3)^*\)</span>, calcule <span class="math inline">\(L_0\)</span> y demuestre explícitamente que <span class="math inline">\((L_0)^\circ=L\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-034" class="apm-anchor"></span> <strong>Solución 34.</strong> Las dos ecuaciones dan <span class="math inline">\(y=-x\)</span> y <span class="math inline">\(z=x\)</span>, por lo que <span class="math inline">\(L_0=\operatorname{span}(1,-1,1)\)</span>. Un funcional <span class="math inline">\(ax+by+cz\)</span> anula esa recta si y sólo si <span class="math inline">\(a-b+c=0\)</span>, es decir, <span class="math inline">\(b=a+c\)</span>. En tal caso se escribe <span class="math inline">\(a(x+y)+c(y+z)\)</span> y pertenece a <span class="math inline">\(L\)</span>. La recíproca se comprueba anulando el generador. La cuenta da dimensiones dos y uno y funciona en cualquier característica.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-035" class="apm-anchor"></span> <strong>Ejercicio 19.35.</strong> Sea <span class="math inline">\(T\)</span> de matriz <span class="math inline">\(\begin{pmatrix}2&amp;1&amp;0\\0&amp;2&amp;0\\0&amp;0&amp;3\end{pmatrix}\)</span> y <span class="math inline">\(U=\operatorname{span}e_1\)</span>. Compruebe la invariancia de <span class="math inline">\(U\)</span> y de <span class="math inline">\(U^\circ\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-035" class="apm-anchor"></span> <strong>Solución 35.</strong> Se tiene <span class="math inline">\(Te_1=2e_1\)</span>, así que <span class="math inline">\(U\)</span> es invariante. Su anulador está generado por los funcionales <span class="math inline">\(y,z\)</span>. El dual envía una columna <span class="math inline">\((a,b,c)\)</span> a <span class="math inline">\((2a,a+2b,3c)\)</span>, por transposición. Si <span class="math inline">\(a=0\)</span>, la primera coordenada de salida sigue siendo cero, luego <span class="math inline">\(U^\circ\)</span> es invariante. La restricción a ese anulador tiene matriz <span class="math inline">\(\operatorname{diag}(2,3)\)</span>, que es la transpuesta del operador cociente en las clases de <span class="math inline">\(e_2,e_3\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-036" class="apm-anchor"></span> <strong>Ejercicio 19.36.</strong> Pruebe que para <span class="math inline">\(f\ne0\)</span>, el hiperplano <span class="math inline">\(\ker f\)</span> es invariante bajo <span class="math inline">\(T\)</span> si y sólo si <span class="math inline">\(T'f=\lambda f\)</span> para algún escalar <span class="math inline">\(\lambda\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-036" class="apm-anchor"></span> <strong>Solución 36.</strong> Si <span class="math inline">\(T'f=\lambda f\)</span>, entonces para <span class="math inline">\(u\in\ker f\)</span> resulta <span class="math inline">\(f(Tu)=\lambda f(u)=0\)</span>, así que el núcleo es invariante. Recíprocamente, elija <span class="math inline">\(v\)</span> con <span class="math inline">\(f(v)=1\)</span>. Para cualquier <span class="math inline">\(x\)</span>, la diferencia <span class="math inline">\(x-f(x)v\)</span> está en el núcleo; su imagen por <span class="math inline">\(T\)</span> también está allí. Aplicar <span class="math inline">\(f\)</span> da <span class="math inline">\(f(Tx)=f(x)f(Tv)\)</span>. Por ello <span class="math inline">\(T'f=\lambda f\)</span> con <span class="math inline">\(\lambda=f(Tv)\)</span>. El escalar puede ser cero; no se ha supuesto que <span class="math inline">\(T\)</span> sea invertible.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-037" class="apm-anchor"></span> <strong>Ejercicio 19.37.</strong> Sea <span class="math inline">\(R_s\)</span> la matriz que invierte el orden de la base usual. Pruebe <span class="math inline">\(R_s^{-1}J_s(\lambda)^{\mathsf T}R_s=J_s(\lambda)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-037" class="apm-anchor"></span> <strong>Solución 37.</strong> Se cumple <span class="math inline">\(R_s^{-1}=R_s\)</span>, pues invertir dos veces devuelve cada vector a su lugar. La parte escalar <span class="math inline">\(\lambda I\)</span> permanece fija. En la parte nilpotente transpuesta hay un uno en cada posición <span class="math inline">\((i+1,i)\)</span>. La inversión de filas y columnas lleva esa posición a <span class="math inline">\((s-i,s+1-i)\)</span>, que está una posición por encima de la diagonal. Esas son exactamente todas las posiciones de los unos de <span class="math inline">\(U_s\)</span>. Sumando la parte escalar se obtiene la identidad sobre cualquier cuerpo.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-038" class="apm-anchor"></span> <strong>Ejercicio 19.38.</strong> Pruebe que <span class="math inline">\(A\)</span> es diagonalizable sobre <span class="math inline">\(\mathbb F\)</span> si y sólo si <span class="math inline">\(A^{\mathsf T}\)</span> lo es, sin suponer de antemano que el característico se escinde.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-038" class="apm-anchor"></span> <strong>Solución 38.</strong> Por C16, la diagonalización equivale a que el mínimo sea producto de factores lineales distintos sobre el cuerpo. La proposición 19.14 prueba que <span class="math inline">\(A\)</span> y su transpuesta tienen el mismo mínimo sin exigir escisión previa. Por tanto cumplen a la vez ese criterio. También puede transponerse directamente <span class="math inline">\(A=PDP^{-1}\)</span> para obtener <span class="math inline">\(A^{\mathsf T}=(P^{-1})^{\mathsf T}DP^{\mathsf T}\)</span>, y la recíproca se obtiene transponiendo de nuevo.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-039" class="apm-anchor"></span> <strong>Ejercicio 19.39.</strong> Demuestre que todo funcional <span class="math inline">\(F\)</span> sobre <span class="math inline">\(M_n(\mathbb F)\)</span> tiene una expresión única <span class="math inline">\(F(A)=\operatorname{tr}(BA)\)</span> con <span class="math inline">\(B\in M_n(\mathbb F)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-039" class="apm-anchor"></span> <strong>Solución 39.</strong> Las matrices unidad <span class="math inline">\(E_{ij}\)</span> forman una base. Defina <span class="math inline">\(B\)</span> mediante <span class="math inline">\(B_{ji}=F(E_{ij})\)</span>. La identidad <span class="math inline">\(\operatorname{tr}(BE_{ij})=B_{ji}\)</span> muestra que el funcional <span class="math inline">\(A\mapsto\operatorname{tr}(BA)\)</span> coincide con <span class="math inline">\(F\)</span> en cada elemento de esa base y, por linealidad, en toda matriz. Si dos matrices dieran el mismo funcional, evaluar en cada <span class="math inline">\(E_{ij}\)</span> igualaría sus entradas <span class="math inline">\(ji\)</span>, así que serían iguales. No se ha introducido conjugación ni una positividad; la fórmula es válida en toda característica.</p>
+<p><span id="MA-BCH-APM-02-019-EXR-040" class="apm-anchor"></span> <strong>Ejercicio 19.40.</strong> Como contraste con la dimensión finita, describa el dual algebraico de <span class="math inline">\(\mathbb F[t]\)</span> mediante sucesiones y explique por qué los extractores de coeficientes no forman una base de ese dual.</p>
+<p><span id="MA-BCH-APM-02-019-SOL-040" class="apm-anchor"></span> <strong>Solución 40.</strong> Un funcional queda determinado por la sucesión arbitraria <span class="math inline">\(a_j=f(t^j)\)</span>, <span class="math inline">\(j\geq0\)</span>. Recíprocamente, cualquier sucesión define <span class="math inline">\(f(\sum_{j=0}^m c_jt^j)=\sum_{j=0}^m c_ja_j\)</span>; la suma es finita para cada entrada y da un funcional lineal. Esto identifica el dual con todas las sucesiones de escalares, con operaciones término a término. El extractor de coeficiente <span class="math inline">\(c_j\)</span> corresponde a la sucesión con un uno en la posición <span class="math inline">\(j\)</span> y ceros en las otras. Sus combinaciones lineales finitas sólo dan sucesiones con soporte finito. La evaluación en uno corresponde a <span class="math inline">\((1,1,1,\ldots)\)</span> y no está en ese espacio generado. La prueba finita de base dual no se traslada a una lista infinita de extractores.</p>
+</section>
+<section id="lecturas-y-referencias" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-referencias">Lecturas y referencias</h2>
+<p>Hoffman–Kunze, <em>Linear Algebra</em>, §§3.5–3.7, organiza la relación entre funcionales, anuladores, bidual y transposición. Axler, <em>Linear Algebra Done Right</em>, §3F, desarrolla el núcleo y la imagen de la aplicación dual y recupera la igualdad de rangos. Friedberg–Insel–Spence, <em>Linear Algebra</em>, §2.6, ofrece cálculos de bases duales y de la matriz transpuesta. Johnston, <em>Advanced Linear and Matrix Algebra</em>, §1.3.2, distingue la representación dependiente de una base de la evaluación bidual canónica.</p>
+<hr>
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-18-forma-de-jordan.html">← Capítulo 18</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-20-formas-bilineales-productos-internos-y-teoremas-espectrales.html">Capítulo 20 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 13 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.">
+
+<title>Capítulo 13. Determinantes – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#linealidad-en-una-columna-con-las-otras-fijas" id="toc-linealidad-en-una-columna-con-las-otras-fijas" class="nav-link active" data-scroll-target="#linealidad-en-una-columna-con-las-otras-fijas">13.1. Linealidad en una columna, con las otras fijas</a></li>
+  <li><a href="#contar-los-intercambios-sin-depender-del-camino" id="toc-contar-los-intercambios-sin-depender-del-camino" class="nav-link" data-scroll-target="#contar-los-intercambios-sin-depender-del-camino">13.2. Contar los intercambios sin depender del camino</a></li>
+  <li><a href="#existencia-unicidad-y-fórmula-de-leibniz" id="toc-existencia-unicidad-y-fórmula-de-leibniz" class="nav-link" data-scroll-target="#existencia-unicidad-y-fórmula-de-leibniz">13.3. Existencia, unicidad y fórmula de Leibniz</a></li>
+  <li><a href="#trasponer-triangularizar-y-llevar-la-cuenta-de-las-operaciones" id="toc-trasponer-triangularizar-y-llevar-la-cuenta-de-las-operaciones" class="nav-link" data-scroll-target="#trasponer-triangularizar-y-llevar-la-cuenta-de-las-operaciones">13.4. Trasponer, triangularizar y llevar la cuenta de las operaciones</a></li>
+  <li><a href="#componer-multiplica-los-determinantes" id="toc-componer-multiplica-los-determinantes" class="nav-link" data-scroll-target="#componer-multiplica-los-determinantes">13.5. Componer multiplica los determinantes</a></li>
+  <li><a href="#el-determinante-de-un-operador-y-el-de-dos-descripciones" id="toc-el-determinante-de-un-operador-y-el-de-dos-descripciones" class="nav-link" data-scroll-target="#el-determinante-de-un-operador-y-el-de-dos-descripciones">13.6. El determinante de un operador y el de dos descripciones</a></li>
+  <li><a href="#menores-cofactores-y-una-inversa-explícita" id="toc-menores-cofactores-y-una-inversa-explícita" class="nav-link" data-scroll-target="#menores-cofactores-y-una-inversa-explícita">13.7. Menores, cofactores y una inversa explícita</a></li>
+  <li><a href="#sistemas-y-bloques-elegir-cuánto-calcular" id="toc-sistemas-y-bloques-elegir-cuánto-calcular" class="nav-link" data-scroll-target="#sistemas-y-bloques-elegir-cuánto-calcular">13.8. Sistemas y bloques: elegir cuánto calcular</a></li>
+  <li><a href="#área-orientación-y-pérdida-de-dimensión" id="toc-área-orientación-y-pérdida-de-dimensión" class="nav-link" data-scroll-target="#área-orientación-y-pérdida-de-dimensión">13.9. Área, orientación y pérdida de dimensión</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">13.10. Ejercicios</a></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">13.11. Soluciones</a></li>
+  <li><a href="#lecturas-y-referencias" id="toc-lecturas-y-referencias" class="nav-link" data-scroll-target="#lecturas-y-referencias">Lecturas y referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 13. Determinantes</h1>
+<p class="subtitle lead">Álgebra para matemáticos · Tomo II</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 13 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-12-matrices-de-transformaciones-y-cambio-de-base.html">← Capítulo 12</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-14-valores-propios-y-vectores-propios.html">Capítulo 14 →</a></p>
+<p>Una cizalla del plano puede deformar un cuadrado hasta convertirlo en un paralelogramo sin cambiar su área. La transformación <span class="math inline">\(S(x,y)=(x+2y,y)\)</span>, que acompañó nuestro estudio del cambio de base, lleva los lados <span class="math inline">\((1,0)\)</span> y <span class="math inline">\((0,1)\)</span> a <span class="math inline">\((1,0)\)</span> y <span class="math inline">\((2,1)\)</span>. La figura resultante sigue teniendo base uno y altura uno. En cambio, <span class="math inline">\(D(x,y)=(3x,2y)\)</span> convierte el mismo cuadrado en un rectángulo de área seis. El rango de ambos operadores es dos; ese invariante distingue si el plano se aplasta, pero no cuánto cambia su área.</p>
+<p>También podemos intercambiar los dos ejes mediante <span class="math inline">\(R(x,y)=(y,x)\)</span>. El cuadrado conserva su área y cambia la orientación de su par de lados: el primer vector, seguido del segundo, recorre las direcciones en el orden contrario. Buscaremos un número que registre a la vez la escala de las áreas y ese signo. Para las tres transformaciones anteriores serán, respectivamente, <span class="math inline">\(1\)</span>, <span class="math inline">\(6\)</span> y <span class="math inline">\(-1\)</span>.</p>
+<figure id="fig-apm-t2-c13-f01" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C13-F01.svg" alt="El cuadrado unidad se transforma en un paralelogramo de área uno por una cizalla, en un rectángulo de área seis por un escalamiento, y conserva área con orientación invertida al intercambiar los ejes." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 13.1.</em> Las flechas azul y roja corresponden al primer y al segundo vector básico, en ese orden. Los ejes mantienen la misma escala en los tres paneles. El signo distingue el orden de los lados, mientras el valor absoluto mide el área.
+</figcaption>
+</figure>
+<p>En dimensión dos aparece la expresión <span class="math inline">\(ad-bc\)</span> para las columnas <span class="math inline">\((a,b)\)</span> y <span class="math inline">\((c,d)\)</span>. Podríamos tomarla como receta y buscar fórmulas análogas de mayor tamaño; resultará más fértil averiguar qué propiedades permiten reconstruirla. La construcción algebraica funcionará sobre cualquier cuerpo conmutativo <span class="math inline">\(\mathbb F\)</span>. La interpretación mediante áreas, signos positivos y negativos se reservará a <span class="math inline">\(\mathbb R\)</span>.</p>
+<p>Utilizaremos las operaciones matriciales, independencia y bases, rango y representación de operadores de C03–C12. No se presupone teoría de grupos ni de formas multilineales: desarrollaremos el vocabulario que hace falta. Los ejemplos con números racionales se entienden sobre <span class="math inline">\(\mathbb R\)</span>, salvo indicación contraria.</p>
+<section id="linealidad-en-una-columna-con-las-otras-fijas" class="level2">
+<h2 class="anchored" data-anchor-id="linealidad-en-una-columna-con-las-otras-fijas">13.1. Linealidad en una columna, con las otras fijas</h2>
+<p>Para <span class="math inline">\(u=(a,b)\)</span> y <span class="math inline">\(v=(c,h)\)</span> consideremos <span class="math inline">\(d(u,v)=ah-bc\)</span>. Si reemplazamos <span class="math inline">\(u\)</span> por <span class="math inline">\(\alpha u+\beta w\)</span> y mantenemos <span class="math inline">\(v\)</span>, la distributividad da <span class="math inline">\(d(\alpha u+\beta w,v)=\alpha d(u,v)+\beta d(w,v)\)</span>. Ocurre lo mismo al variar únicamente <span class="math inline">\(v\)</span>. Pero si multiplicamos ambas columnas por un mismo escalar <span class="math inline">\(t\)</span>, el resultado se multiplica por <span class="math inline">\(t^2\)</span>. La distinción importa: esta función no es una aplicación lineal del espacio de matrices al cuerpo.</p>
+<p>Además, <span class="math inline">\(d(u,u)=0\)</span> y <span class="math inline">\(d(e_1,e_2)=1\)</span>. La primera igualdad expresa que dos lados iguales producen una figura aplastada; la segunda fija la unidad con la que medimos. Esas propiedades tienen sentido en cualquier dimensión aunque ya no podamos dibujar los vectores.</p>
+<p><span id="MA-BCH-APM-02-013-DEF-001" class="apm-anchor"></span> <strong>Definición 13.1.</strong> Una función <span class="math inline">\(d:(\mathbb F^n)^n\to\mathbb F\)</span> es <strong>multilineal</strong> si es lineal en cada uno de sus <span class="math inline">\(n\)</span> argumentos manteniendo fijos los demás. Es <strong>alternante</strong> si su valor es cero cuando dos argumentos son iguales. Diremos que está <strong>normalizada</strong> si <span class="math inline">\(d(e_1,\ldots,e_n)=1\)</span>.</p>
+<p>Cada argumento será una columna. Multilinealidad exige, para cada posición <span class="math inline">\(j\)</span>,</p>
+<p><span class="math display">\[
+d(v_1,\ldots,\alpha u+\beta w,\ldots,v_n)
+=\alpha d(v_1,\ldots,u,\ldots,v_n)
++\beta d(v_1,\ldots,w,\ldots,v_n).
+\]</span></p>
+<p>Sólo cambia la posición indicada. Si se modifican dos columnas simultáneamente, hay que expandir en ambas posiciones y aparecen términos cruzados. Para una columna cero, la linealidad en esa posición obliga a que el valor sea cero.</p>
+<p><span id="MA-BCH-APM-02-013-LEM-001" class="apm-anchor"></span> <strong>Lema 13.1 (consecuencias de la alternancia).</strong> Para una función multilineal alternante, intercambiar dos argumentos cambia el valor por su opuesto. Añadir a un argumento un múltiplo de otro deja el valor intacto. Si los <span class="math inline">\(n\)</span> argumentos son linealmente dependientes, el valor es cero.</p>
+<p><strong>Demostración.</strong> Fijemos todas las posiciones salvo dos y pongamos en ambas <span class="math inline">\(u+w\)</span>. Por alternancia el valor es cero. Al expandir en las dos posiciones, los términos con <span class="math inline">\(u,u\)</span> y con <span class="math inline">\(w,w\)</span> desaparecen; quedan el valor con <span class="math inline">\(u,w\)</span> y el valor con <span class="math inline">\(w,u\)</span>, cuya suma es cero. Así, el intercambio cambia el signo.</p>
+<p>Si reemplazamos <span class="math inline">\(v_j\)</span> por <span class="math inline">\(v_j+cv_k\)</span>, con <span class="math inline">\(k\ne j\)</span>, la expansión produce el valor original más <span class="math inline">\(c\)</span> veces otro valor en el que <span class="math inline">\(v_k\)</span> ocupa dos posiciones. Este último es cero por alternancia, lo que prueba la segunda afirmación.</p>
+<p>Para la tercera, una relación no trivial <span class="math inline">\(\sum_j\lambda_jv_j=0\)</span> tiene algún <span class="math inline">\(\lambda_k\ne0\)</span>. Podemos despejar <span class="math inline">\(v_k=-\sum_{j\ne k}(\lambda_j/\lambda_k)v_j\)</span>. Al sustituir esta combinación en la posición <span class="math inline">\(k\)</span> y expandir, cada término tiene un argumento repetido y se anula. <span class="math inline">\(\square\)</span></p>
+<p>La prueba del intercambio es válida incluso en característica dos, donde <span class="math inline">\(-x=x\)</span>. La conversa requiere cuidado: allí una función que permanece igual al intercambiar dos argumentos no tiene por qué anularse cuando éstos coinciden. Por ejemplo, <span class="math inline">\(b(u,v)=u_1v_1\)</span> sobre <span class="math inline">\(\mathbb F_2^2\)</span> es bilineal y satisface <span class="math inline">\(b(v,u)=-b(u,v)\)</span>, pero <span class="math inline">\(b(e_1,e_1)=1\)</span>. Por eso la definición de alternancia se hizo mediante repetición de argumentos.</p>
+<p>En orden dos ya podemos reconstruir la expresión inicial. Expandir <span class="math inline">\(d(ae_1+be_2,ce_1+he_2)\)</span> deja sólo los términos <span class="math inline">\(ah\,d(e_1,e_2)\)</span> y <span class="math inline">\(bc\,d(e_2,e_1)\)</span>. La normalización y el lema dan <span class="math inline">\(ah-bc\)</span>. En orden mayor tendremos la misma expansión, pero habrá que organizar los órdenes posibles de los vectores básicos.</p>
+</section>
+<section id="contar-los-intercambios-sin-depender-del-camino" class="level2">
+<h2 class="anchored" data-anchor-id="contar-los-intercambios-sin-depender-del-camino">13.2. Contar los intercambios sin depender del camino</h2>
+<p>Una permutación de <span class="math inline">\(\{1,\ldots,n\}\)</span> es una biyección de ese conjunto consigo mismo. Podemos escribirla como una lista <span class="math inline">\(\sigma(1),\ldots,\sigma(n)\)</span> que contiene cada número una vez. Una <strong>inversión</strong> es un par de posiciones <span class="math inline">\(i&lt;j\)</span> para el cual <span class="math inline">\(\sigma(i)&gt;\sigma(j)\)</span>. Su número, denotado <span class="math inline">\(N(\sigma)\)</span>, cuenta los pares que aparecen en orden contrario al natural.</p>
+<p><span id="MA-BCH-APM-02-013-DEF-002" class="apm-anchor"></span> <strong>Definición 13.2.</strong> El <strong>signo</strong> de una permutación es el entero <span class="math inline">\(\operatorname{sgn}\sigma=(-1)^{N(\sigma)}\)</span>. Cuando se usa como escalar de <span class="math inline">\(\mathbb F\)</span>, se interpreta como <span class="math inline">\(1_{\mathbb F}\)</span> o <span class="math inline">\(-1_{\mathbb F}\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-LEM-002" class="apm-anchor"></span> <strong>Lema 13.2.</strong> Intercambiar dos posiciones adyacentes de una permutación cambia su signo. Intercambiar dos posiciones cualesquiera también cambia su signo. Toda permutación puede ordenarse mediante intercambios adyacentes, y cualquier función multilineal alternante satisface</p>
+<p><span class="math display">\[
+d(e_{\sigma(1)},\ldots,e_{\sigma(n)})
+=(\operatorname{sgn}\sigma)\,d(e_1,\ldots,e_n).
+\]</span></p>
+<p>Además, <span class="math inline">\(\operatorname{sgn}(\sigma^{-1})=\operatorname{sgn}\sigma\)</span>.</p>
+<p><strong>Demostración.</strong> Al intercambiar dos entradas vecinas, cambia únicamente la condición de inversión del par que forman. Para cualquier otra entrada, el número total de inversiones que mantiene con esas dos se conserva. Por tanto <span class="math inline">\(N\)</span> aumenta o disminuye en uno. Un intercambio entre posiciones <span class="math inline">\(i&lt;j\)</span> puede realizarse moviendo la entrada de <span class="math inline">\(i\)</span> hasta <span class="math inline">\(j\)</span> mediante <span class="math inline">\(j-i\)</span> intercambios adyacentes y moviendo después la entrada originalmente situada en <span class="math inline">\(j\)</span> hasta <span class="math inline">\(i\)</span> mediante <span class="math inline">\(j-i-1\)</span> intercambios. Son <span class="math inline">\(2(j-i)-1\)</span>, un número impar, de modo que también cambia el signo.</p>
+<p>Si la lista no está ordenada, tiene una pareja adyacente invertida: si todas las parejas vecinas estuvieran en orden creciente, toda la lista lo estaría. Intercambiar esa pareja reduce <span class="math inline">\(N\)</span> en uno. Repitiendo llegamos a la lista usual después de <span class="math inline">\(N(\sigma)\)</span> intercambios. Aplicar el lema 13.1 en cada paso da la fórmula para <span class="math inline">\(d\)</span>. No necesitamos escoger un camino canónico: cada intercambio cambia la paridad de <span class="math inline">\(N\)</span>, así que todo camino entre los mismos órdenes tiene la misma paridad.</p>
+<p>Por último, una inversión <span class="math inline">\(i&lt;j\)</span> con <span class="math inline">\(\sigma(i)&gt;\sigma(j)\)</span> corresponde a la inversión de <span class="math inline">\(\sigma^{-1}\)</span> situada en las posiciones <span class="math inline">\(\sigma(j)&lt;\sigma(i)\)</span>: sus imágenes son <span class="math inline">\(j&gt;i\)</span>. Esta correspondencia es biyectiva, por lo que las dos permutaciones tienen igual número de inversiones y el mismo signo. <span class="math inline">\(\square\)</span></p>
+<p>Por ejemplo, la lista <span class="math inline">\((3,1,2)\)</span> tiene dos inversiones y signo positivo. La lista <span class="math inline">\((2,1,3)\)</span> tiene una y signo negativo. El signo se ha construido contando pares de enteros, sin usar previamente determinantes ni resultados de teoría de grupos.</p>
+</section>
+<section id="existencia-unicidad-y-fórmula-de-leibniz" class="level2">
+<h2 class="anchored" data-anchor-id="existencia-unicidad-y-fórmula-de-leibniz">13.3. Existencia, unicidad y fórmula de Leibniz</h2>
+<p>Si las columnas de <span class="math inline">\(A\)</span> son <span class="math inline">\(v_1,\ldots,v_n\)</span>, cada una se expresa como <span class="math inline">\(v_j=\sum_i a_{ij}e_i\)</span>. Expandir una función multilineal en todas las posiciones produce <span class="math inline">\(n^n\)</span> términos indexados por listas de índices de fila. Cuando la función es alternante, desaparece cualquier lista que repita un índice. Las restantes son las permutaciones.</p>
+<p><span id="MA-BCH-APM-02-013-THM-001" class="apm-anchor"></span> <strong>Teorema 13.3 (caracterización del determinante).</strong> Para cada <span class="math inline">\(n\ge1\)</span> existe una única función multilineal, alternante y normalizada de las <span class="math inline">\(n\)</span> columnas de una matriz de orden <span class="math inline">\(n\)</span>. Se llama <strong>determinante</strong>, y viene dada por</p>
+<p><span class="math display">\[
+\det A=\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma)
+\prod_{j=1}^n a_{\sigma(j),j},
+\]</span></p>
+<p>donde <span class="math inline">\(S_n\)</span> es el conjunto de permutaciones de <span class="math inline">\(\{1,\ldots,n\}\)</span>. Más generalmente, toda función multilineal alternante <span class="math inline">\(d\)</span> satisface <span class="math inline">\(d(v_1,\ldots,v_n)=d(e_1,\ldots,e_n)\det A\)</span>.</p>
+<p><strong>Demostración.</strong> Comencemos por lo que las propiedades obligan a hacer. La expansión descrita antes del enunciado es</p>
+<p><span class="math display">\[
+d(v_1,\ldots,v_n)=
+\sum_{i_1,\ldots,i_n=1}^n
+\left(\prod_{j=1}^na_{i_jj}\right)d(e_{i_1},\ldots,e_{i_n}).
+\]</span></p>
+<p>Los términos con índices repetidos son cero. Para los restantes, el lema 13.2 identifica el último factor con <span class="math inline">\((\operatorname{sgn}\sigma)d(e_1,\ldots,e_n)\)</span>. Esto demuestra la fórmula general y la unicidad en el caso normalizado. Todavía no demuestra que las propiedades puedan satisfacerse: debemos comprobar la existencia.</p>
+<p>Definamos una función mediante la suma de Leibniz. Cada producto utiliza exactamente una entrada de cada columna, así que al variar una sola columna es lineal en ella; la suma finita conserva esa propiedad. En la identidad, todo producto se anula salvo el de la permutación identidad, que vale uno. Falta la alternancia.</p>
+<p>Supongamos iguales las columnas <span class="math inline">\(j\)</span> y <span class="math inline">\(k\)</span>. Emparejamos cada permutación <span class="math inline">\(\sigma\)</span> con la permutación obtenida al intercambiar sus valores en esas dos posiciones. Son permutaciones distintas, los productos correspondientes son iguales porque las columnas coinciden, y sus signos son opuestos por el lema 13.2. Cada pareja suma cero. Esta cancelación funciona también en característica dos: un término y su opuesto siempre suman cero. Por tanto la función definida es alternante, y su existencia queda probada. <span class="math inline">\(\square\)</span></p>
+<p>Para orden uno la fórmula dice <span class="math inline">\(\det(a)=a\)</span>. Adoptamos además <span class="math inline">\(\det I_0=1\)</span> para la matriz vacía de orden cero; la convención de producto vacío uno hará que las expansiones por menores funcionen también en orden uno.</p>
+<p>En orden dos recuperamos <span class="math inline">\(\det\begin{pmatrix}a&amp;c\\b&amp;d\end{pmatrix}=ad-bc\)</span>. En orden tres las seis permutaciones dan</p>
+<p><span class="math display">\[
+\det\begin{pmatrix}a&amp;b&amp;c\\d&amp;e&amp;f\\g&amp;h&amp;i\end{pmatrix}
+=aei+bfg+cdh-ceg-bdi-afh.
+\]</span></p>
+<p>La fórmula permite reconstruir los signos y comprender qué sumamos. Su número de términos crece como <span class="math inline">\(n!\)</span>, por lo que no será nuestro método habitual de cálculo en órdenes grandes. La caracterización por columnas da herramientas más económicas.</p>
+</section>
+<section id="trasponer-triangularizar-y-llevar-la-cuenta-de-las-operaciones" class="level2">
+<h2 class="anchored" data-anchor-id="trasponer-triangularizar-y-llevar-la-cuenta-de-las-operaciones">13.4. Trasponer, triangularizar y llevar la cuenta de las operaciones</h2>
+<p><span id="MA-BCH-APM-02-013-PRP-001" class="apm-anchor"></span> <strong>Proposición 13.4 (transposición y operaciones elementales).</strong> Para toda matriz cuadrada, <span class="math inline">\(\det A^{\mathsf T}=\det A\)</span>. El determinante es, por tanto, multilineal y alternante también en las filas. En filas o columnas, un intercambio multiplica el determinante por <span class="math inline">\(-1\)</span>, multiplicar una de ellas por <span class="math inline">\(c\)</span> multiplica el determinante por <span class="math inline">\(c\)</span>, y añadir un múltiplo de otra no lo cambia.</p>
+<p><strong>Demostración.</strong> Aplicar Leibniz a <span class="math inline">\(A^{\mathsf T}\)</span> produce productos <span class="math inline">\(\prod_j a_{j,\sigma(j)}\)</span>. Si ponemos <span class="math inline">\(i=\sigma(j)\)</span>, ese producto se reescribe como <span class="math inline">\(\prod_i a_{\sigma^{-1}(i),i}\)</span>. La aplicación <span class="math inline">\(\sigma\mapsto\sigma^{-1}\)</span> recorre todas las permutaciones y conserva su signo por el lema 13.2. La suma resultante es <span class="math inline">\(\det A\)</span>.</p>
+<p>Las propiedades de columnas pasan a las filas por transposición. El intercambio y la adición se demostraron en el lema 13.1, y el efecto de escalar una posición es la multilinealidad. <span class="math inline">\(\square\)</span></p>
+<p><span id="MA-BCH-APM-02-013-PRP-002" class="apm-anchor"></span> <strong>Proposición 13.5 (matrices triangulares).</strong> El determinante de una matriz triangular superior o inferior es el producto de sus entradas diagonales.</p>
+<p><strong>Demostración.</strong> Para una matriz triangular superior, un término no nulo de Leibniz sólo puede usar entradas con <span class="math inline">\(\sigma(j)\le j\)</span>. Para <span class="math inline">\(j=1\)</span> esto obliga a <span class="math inline">\(\sigma(1)=1\)</span>; después, para <span class="math inline">\(j=2\)</span> obliga a <span class="math inline">\(\sigma(2)=2\)</span>, pues el valor uno ya se utilizó. Continuando, sólo queda la identidad. Su producto es <span class="math inline">\(a_{11}\cdots a_{nn}\)</span>. El caso triangular inferior se obtiene trasponiendo. <span class="math inline">\(\square\)</span></p>
+<p>Al triangularizar <span class="math inline">\(A\)</span> mediante eliminación, cada operación debe acompañarse de su efecto sobre el determinante. Si sólo usamos adiciones de múltiplos de otras filas y <span class="math inline">\(s\)</span> intercambios, la matriz triangular <span class="math inline">\(U\)</span> satisface <span class="math inline">\(\det U=(-1)^s\det A\)</span>. Como el inverso de <span class="math inline">\((-1)^s\)</span> es él mismo, <span class="math inline">\(\det A=(-1)^s\prod_j u_{jj}\)</span>. Si además escalamos filas por factores no nulos <span class="math inline">\(c_1,\ldots,c_k\)</span>, aparece el factor adicional <span class="math inline">\(\prod_\ell c_\ell\)</span> en <span class="math inline">\(\det U\)</span> y hay que dividir por él al recuperar <span class="math inline">\(\det A\)</span>.</p>
+<p>Por ejemplo,</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}0&amp;2&amp;1\\1&amp;1&amp;0\\2&amp;4&amp;5\end{pmatrix}
+\longrightarrow
+\begin{pmatrix}1&amp;1&amp;0\\0&amp;2&amp;1\\2&amp;4&amp;5\end{pmatrix}
+\longrightarrow
+\begin{pmatrix}1&amp;1&amp;0\\0&amp;2&amp;1\\0&amp;2&amp;5\end{pmatrix}
+\longrightarrow
+\begin{pmatrix}1&amp;1&amp;0\\0&amp;2&amp;1\\0&amp;0&amp;4\end{pmatrix}.
+\]</span></p>
+<p>Se intercambiaron las dos primeras filas y después se hicieron <span class="math inline">\(R_3\leftarrow R_3-2R_1\)</span> y <span class="math inline">\(R_3\leftarrow R_3-R_2\)</span>. El producto diagonal final es ocho, y el único intercambio da <span class="math inline">\(\det A=-8\)</span>. Reducir hasta la identidad también permitiría calcularlo, pero obligaría a registrar normalizaciones adicionales sin aportar información necesaria.</p>
+<figure id="fig-apm-t2-c13-f02" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C13-F02.svg" alt="Una fila de operaciones transforma la matriz del ejemplo en triangular. Un intercambio cambia el signo y las dos adiciones posteriores lo conservan; el producto de pivotes final es ocho y el determinante inicial es menos ocho." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 13.2.</em> La cuenta distingue el determinante de la matriz inicial del de la matriz que aparece durante el algoritmo. Los pivotes pertenecen a la última matriz, cuyo determinante se obtiene mediante su diagonal.
+</figcaption>
+</figure>
+</section>
+<section id="componer-multiplica-los-determinantes" class="level2">
+<h2 class="anchored" data-anchor-id="componer-multiplica-los-determinantes">13.5. Componer multiplica los determinantes</h2>
+<p>Sean <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> matrices de orden <span class="math inline">\(n\)</span>, con columnas de <span class="math inline">\(B\)</span> iguales a <span class="math inline">\(v_1,\ldots,v_n\)</span>. Las columnas de <span class="math inline">\(AB\)</span> son <span class="math inline">\(Av_1,\ldots,Av_n\)</span>. Esta observación convierte una propiedad del producto matricial en una aplicación de la unicidad ya demostrada.</p>
+<p><span id="MA-BCH-APM-02-013-THM-002" class="apm-anchor"></span> <strong>Teorema 13.6 (multiplicatividad).</strong> Para <span class="math inline">\(A,B\in M_n(\mathbb F)\)</span>,</p>
+<p><span class="math display">\[
+\det(AB)=(\det A)(\det B).
+\]</span></p>
+<p><strong>Demostración.</strong> Fijemos <span class="math inline">\(A\)</span> y definamos <span class="math inline">\(d_A(v_1,\ldots,v_n)=\det(Av_1,\ldots,Av_n)\)</span>. Como la aplicación <span class="math inline">\(v\mapsto Av\)</span> es lineal, <span class="math inline">\(d_A\)</span> es multilineal. Si se repiten dos argumentos, sus imágenes también se repiten, de modo que es alternante. Su valor en <span class="math inline">\((e_1,\ldots,e_n)\)</span> es <span class="math inline">\(\det A\)</span>. La afirmación general del teorema 13.3 da</p>
+<p><span class="math display">\[
+\det(Av_1,\ldots,Av_n)=(\det A)\det(v_1,\ldots,v_n).
+\]</span></p>
+<p>El miembro izquierdo es <span class="math inline">\(\det(AB)\)</span> y el segundo factor del derecho es <span class="math inline">\(\det B\)</span>. No se ha supuesto que ninguno sea distinto de cero. <span class="math inline">\(\square\)</span></p>
+<p><span id="MA-BCH-APM-02-013-THM-003" class="apm-anchor"></span> <strong>Teorema 13.7 (invertibilidad).</strong> Para una matriz cuadrada sobre <span class="math inline">\(\mathbb F\)</span>, son equivalentes: <span class="math inline">\(\det A\ne0\)</span>, las columnas de <span class="math inline">\(A\)</span> forman una base, <span class="math inline">\(\operatorname{rg}A=n\)</span> y <span class="math inline">\(A\)</span> es invertible. Si es invertible, <span class="math inline">\(\det(A^{-1})=(\det A)^{-1}\)</span>.</p>
+<p><strong>Demostración.</strong> Si las columnas son dependientes, el lema 13.1 da <span class="math inline">\(\det A=0\)</span>. Por contraposición, determinante no nulo implica columnas independientes; al haber <span class="math inline">\(n\)</span> columnas en <span class="math inline">\(\mathbb F^n\)</span>, forman una base. C07 y C09 identifican esta condición con rango <span class="math inline">\(n\)</span>, y C03–C09 con invertibilidad, mediante la aplicación <span class="math inline">\(x\mapsto Ax\)</span>.</p>
+<p>Si <span class="math inline">\(A\)</span> es invertible, la multiplicatividad aplicada a <span class="math inline">\(AA^{-1}=I\)</span> da <span class="math inline">\((\det A)\det(A^{-1})=1\)</span>. Ninguno de los factores puede ser cero, y al dividir obtenemos la fórmula. Se cierra así el ciclo de equivalencias. <span class="math inline">\(\square\)</span></p>
+<p>El determinante añade un criterio escalar a resultados que ya conocíamos por sistemas y dimensión. Una matriz rectangular puede tener rango máximo e incluso una inversa por un lado; el determinante definido aquí corresponde a matrices cuadradas y no sustituye esas distinciones.</p>
+<p>Tampoco se puede usar linealidad para sumar matrices completas. Para <span class="math inline">\(n\ge2\)</span>, <span class="math inline">\(\det(2I_n)=2^n\)</span> sobre <span class="math inline">\(\mathbb R\)</span>, mientras <span class="math inline">\(\det I_n+\det I_n=2\)</span>. El ejemplo <span class="math inline">\(n=2\)</span> ya muestra la falla. Al sumar matrices se suman todas sus columnas a la vez, y la multilinealidad produce términos mezclados. En cambio, de esa misma propiedad sí se deduce <span class="math inline">\(\det(cA)=c^n\det A\)</span>, porque se ha multiplicado cada una de las <span class="math inline">\(n\)</span> columnas por <span class="math inline">\(c\)</span>.</p>
+</section>
+<section id="el-determinante-de-un-operador-y-el-de-dos-descripciones" class="level2">
+<h2 class="anchored" data-anchor-id="el-determinante-de-un-operador-y-el-de-dos-descripciones">13.6. El determinante de un operador y el de dos descripciones</h2>
+<p>C12 mostró que un cambio de base de un operador transforma <span class="math inline">\(A\)</span> en <span class="math inline">\(P^{-1}AP\)</span>. La multiplicatividad permite seguir los tres factores.</p>
+<p><span id="MA-BCH-APM-02-013-PRP-003" class="apm-anchor"></span> <strong>Proposición 13.8 (invariancia por semejanza).</strong> Si <span class="math inline">\(A'=P^{-1}AP\)</span> con <span class="math inline">\(P\)</span> invertible, entonces <span class="math inline">\(\det A'=\det A\)</span>. Por tanto, para un operador <span class="math inline">\(T:V\to V\)</span> de dimensión finita está bien definido <span class="math inline">\(\det T=\det[T]_{\mathcal B}\)</span> usando una misma base <span class="math inline">\(\mathcal B\)</span> en entrada y salida. Además, <span class="math inline">\(\det(ST)=(\det S)(\det T)\)</span>.</p>
+<p><strong>Demostración.</strong> La multiplicatividad y el teorema 13.7 dan</p>
+<p><span class="math display">\[
+\det(P^{-1}AP)=\det(P^{-1})\det A\det P
+=(\det P)^{-1}\det A\det P=\det A.
+\]</span></p>
+<p>Dos bases producen matrices semejantes por C12, lo que prueba la independencia. Representar una composición en una misma base y aplicar el teorema 13.6 da la última afirmación. <span class="math inline">\(\square\)</span></p>
+<p>Si se cambian las bases de entrada y salida de manera independiente, aunque tengan la misma dimensión, la fórmula es distinta. Para <span class="math inline">\(A'=Q^{-1}AP\)</span>,</p>
+<p><span class="math display">\[
+\det A'=\frac{\det P}{\det Q}\det A.
+\]</span></p>
+<p>Así, el valor escalar puede cambiar con una representación mixta. La propiedad de ser cero se conserva, pues <span class="math inline">\(\det P\)</span> y <span class="math inline">\(\det Q\)</span> son no nulos; esto concuerda con la invariancia del rango. La identidad de <span class="math inline">\(\mathbb R\)</span> tiene matriz <span class="math inline">\((1)\)</span> usando una misma base y matriz <span class="math inline">\((2)\)</span> usando el vector <span class="math inline">\(2\)</span> como base de entrada y el vector <span class="math inline">\(1\)</span> como base de salida. Su determinante como operador es uno.</p>
+<p>La traza y el determinante son invariantes distintos. En orden dos, <span class="math inline">\(\operatorname{diag}(1,4)\)</span> y <span class="math inline">\(\operatorname{diag}(2,3)\)</span> tienen la misma traza cinco y determinantes cuatro y seis, por lo que no son semejantes. Aun la coincidencia de ambos invariantes puede ser insuficiente: <span class="math inline">\(I_2\)</span> y <span class="math inline">\(\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)</span> tienen traza dos y determinante uno, pero todo conjugado de <span class="math inline">\(I_2\)</span> es él mismo.</p>
+</section>
+<section id="menores-cofactores-y-una-inversa-explícita" class="level2">
+<h2 class="anchored" data-anchor-id="menores-cofactores-y-una-inversa-explícita">13.7. Menores, cofactores y una inversa explícita</h2>
+<p>La eliminación permite calcular un determinante sin desplegar sus <span class="math inline">\(n!\)</span> términos. Otra organización útil reúne los términos según la entrada que utilizan de una fila o columna. Esto produce determinantes de menor tamaño y prepara una fórmula de inversa.</p>
+<p><span id="MA-BCH-APM-02-013-DEF-003" class="apm-anchor"></span> <strong>Definición 13.3.</strong> Para <span class="math inline">\(A\in M_n(\mathbb F)\)</span>, <span class="math inline">\(A_{\widehat i\widehat j}\)</span> es la matriz obtenida suprimiendo la fila <span class="math inline">\(i\)</span> y la columna <span class="math inline">\(j\)</span>, sin cambiar el orden de las restantes. El <strong>cofactor</strong> de <span class="math inline">\(a_{ij}\)</span> es <span class="math inline">\(C_{ij}=(-1)^{i+j}\det A_{\widehat i\widehat j}\)</span>. La <strong>adjugata</strong> es la transpuesta de la matriz de cofactores: <span class="math inline">\((\operatorname{adj}A)_{ij}=C_{ji}\)</span>.</p>
+<p>Se llama menor asociado a esa supresión al determinante <span class="math inline">\(\det A_{\widehat i\widehat j}\)</span>. También se habla de menores de otros tamaños, tomando submatrices cuadradas con las filas y columnas elegidas en su orden original. La adjugata no es la transpuesta de <span class="math inline">\(A\)</span> y tampoco es el operador adjunto asociado a un producto interno.</p>
+<p><span id="MA-BCH-APM-02-013-THM-004" class="apm-anchor"></span> <strong>Teorema 13.9 (expansión por cofactores).</strong> Fijando una columna <span class="math inline">\(j\)</span> o una fila <span class="math inline">\(i\)</span> se tiene, respectivamente,</p>
+<p><span class="math display">\[
+\det A=\sum_{i=1}^na_{ij}C_{ij},\qquad
+\det A=\sum_{j=1}^na_{ij}C_{ij}.
+\]</span></p>
+<p><strong>Demostración.</strong> Agrupemos los términos de Leibniz según <span class="math inline">\(\sigma(j)=i\)</span>, es decir, según la fila escogida en la columna fija <span class="math inline">\(j\)</span>. El factor <span class="math inline">\(a_{ij}\)</span> se mantiene común. Al borrar esa fila y esa columna, las elecciones restantes recorren las permutaciones de la submatriz.</p>
+<p>Hay que comparar sus signos. Si <span class="math inline">\(L\)</span> valores menores que <span class="math inline">\(i\)</span> aparecen antes de la posición <span class="math inline">\(j\)</span> en la lista de <span class="math inline">\(\sigma\)</span>, las inversiones que involucran esa posición son <span class="math inline">\((j-1-L)+(i-1-L)=i+j-2-2L\)</span>. Las otras inversiones son exactamente las de la permutación reducida, pues borrar y renumerar conservando el orden no cambia las comparaciones. El factor de signo perdido es, por tanto, <span class="math inline">\((-1)^{i+j}\)</span>. La suma del grupo vale <span class="math inline">\(a_{ij}(-1)^{i+j}\det A_{\widehat i\widehat j}\)</span>. Sumar sobre <span class="math inline">\(i\)</span> prueba la expansión por la columna <span class="math inline">\(j\)</span>. La expansión por filas se obtiene aplicando la de columnas a <span class="math inline">\(A^{\mathsf T}\)</span> y usando la proposición 13.4 en los menores. <span class="math inline">\(\square\)</span></p>
+<p>Por ejemplo, en <span class="math inline">\(A=\begin{pmatrix}2&amp;0&amp;1\\0&amp;3&amp;0\\1&amp;0&amp;4\end{pmatrix}\)</span> la segunda fila sólo tiene una entrada no nula. La expansión da <span class="math inline">\(\det A=3\det\begin{pmatrix}2&amp;1\\1&amp;4\end{pmatrix}=3(8-1)=21\)</span>. La elección de fila evitó calcular dos menores que se multiplicarían por cero.</p>
+<p><span id="MA-BCH-APM-02-013-THM-005" class="apm-anchor"></span> <strong>Teorema 13.10 (identidades de la adjugata).</strong> Para toda matriz <span class="math inline">\(A\)</span> de orden <span class="math inline">\(n\ge1\)</span>,</p>
+<p><span class="math display">\[
+A\operatorname{adj}A=\operatorname{adj}A\,A=(\det A)I_n.
+\]</span></p>
+<p>Si <span class="math inline">\(\det A\ne0\)</span>, entonces <span class="math inline">\(A^{-1}=(\det A)^{-1}\operatorname{adj}A\)</span>.</p>
+<p><strong>Demostración.</strong> La entrada <span class="math inline">\((i,j)\)</span> de <span class="math inline">\(A\operatorname{adj}A\)</span> es <span class="math inline">\(\sum_k a_{ik}C_{jk}\)</span>. Si <span class="math inline">\(i=j\)</span>, es la expansión por la fila <span class="math inline">\(j\)</span> y vale <span class="math inline">\(\det A\)</span>. Si <span class="math inline">\(i\ne j\)</span>, reemplacemos la fila <span class="math inline">\(j\)</span> de <span class="math inline">\(A\)</span> por la fila <span class="math inline">\(i\)</span>. Los cofactores de esa fila no cambian, porque al calcularlos la fila reemplazada se suprime. La suma anterior es el determinante de esa matriz con dos filas iguales y vale cero. Esto prueba <span class="math inline">\(A\operatorname{adj}A=(\det A)I\)</span>.</p>
+<p>La entrada <span class="math inline">\((i,j)\)</span> de <span class="math inline">\(\operatorname{adj}A\,A\)</span> es <span class="math inline">\(\sum_k C_{ki}a_{kj}\)</span>. Para <span class="math inline">\(i=j\)</span> es la expansión por la columna <span class="math inline">\(i\)</span>. Para <span class="math inline">\(i\ne j\)</span>, es la expansión por esa misma columna después de reemplazarla por la columna <span class="math inline">\(j\)</span>; los menores no cambian y las dos columnas iguales anulan el determinante. Resulta el segundo producto. Si <span class="math inline">\(\det A\ne0\)</span>, dividir ambas identidades por ese escalar produce una inversa por ambos lados. <span class="math inline">\(\square\)</span></p>
+<p>En orden dos,</p>
+<p><span class="math display">\[
+\operatorname{adj}\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}
+=\begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}.
+\]</span></p>
+<p>La posición transpuesta de los cofactores es la que hace que el producto reconstruya las expansiones adecuadas. Sobre cuerpos de cualquier característica la identidad de productos sigue siendo válida, incluso cuando el determinante es cero; lo que queda prohibido en ese caso es dividir por él.</p>
+</section>
+<section id="sistemas-y-bloques-elegir-cuánto-calcular" class="level2">
+<h2 class="anchored" data-anchor-id="sistemas-y-bloques-elegir-cuánto-calcular">13.8. Sistemas y bloques: elegir cuánto calcular</h2>
+<p>La fórmula de la inversa proporciona una expresión para cada incógnita de un sistema cuadrado invertible. Podemos obtenerla de manera más directa usando las columnas y ver así qué problema resuelve.</p>
+<p><span id="MA-BCH-APM-02-013-COR-001" class="apm-anchor"></span> <strong>Corolario 13.11 (regla de Cramer).</strong> Si <span class="math inline">\(A\)</span> es invertible y <span class="math inline">\(Ax=b\)</span>, sea <span class="math inline">\(A_j(b)\)</span> la matriz obtenida reemplazando la columna <span class="math inline">\(j\)</span> por <span class="math inline">\(b\)</span>. Entonces</p>
+<p><span class="math display">\[
+x_j=\frac{\det A_j(b)}{\det A}\qquad(1\le j\le n).
+\]</span></p>
+<p><strong>Demostración.</strong> Si las columnas de <span class="math inline">\(A\)</span> son <span class="math inline">\(v_i\)</span>, la ecuación es <span class="math inline">\(b=\sum_i x_iv_i\)</span>. Expandir el determinante de <span class="math inline">\(A_j(b)\)</span> en la posición reemplazada produce términos con columnas repetidas para todo <span class="math inline">\(i\ne j\)</span>. Sólo queda <span class="math inline">\(x_j\det A\)</span>. Dividir por <span class="math inline">\(\det A\ne0\)</span> da la fórmula. <span class="math inline">\(\square\)</span></p>
+<p>Para el sistema <span class="math inline">\(2x+y=5\)</span>, <span class="math inline">\(x-y=1\)</span>, el determinante de la matriz de coeficientes es <span class="math inline">\(-3\)</span>. Reemplazar la primera columna da determinante <span class="math inline">\(-6\)</span>, y reemplazar la segunda da <span class="math inline">\(-3\)</span>. Por tanto <span class="math inline">\(x=2\)</span>, <span class="math inline">\(y=1\)</span>, lo que también se comprueba en las ecuaciones. La regla produce fórmulas útiles cuando interesan las dependencias algebraicas de las incógnitas; para calcular un sistema grande, reutilizar una eliminación suele ahorrar el trabajo de evaluar un determinante por incógnita.</p>
+<p>Cuando <span class="math inline">\(\det A=0\)</span>, Cramer deja de ser una fórmula para la solución. Ni siquiera el hecho de que todos los determinantes reemplazados sean cero asegura compatibilidad: para <span class="math inline">\(A=0_2\)</span> y <span class="math inline">\(b=(1,0)^{\mathsf T}\)</span>, todos ellos son cero y el sistema es imposible. Las herramientas de rango y eliminación de C01–C09 siguen decidiendo ese problema.</p>
+<p><span id="MA-BCH-APM-02-013-PRP-004" class="apm-anchor"></span> <strong>Proposición 13.12 (triangularidad por bloques).</strong> Si <span class="math inline">\(B\)</span> y <span class="math inline">\(D\)</span> son matrices cuadradas de órdenes <span class="math inline">\(r\)</span> y <span class="math inline">\(s\)</span>, respectivamente, entonces</p>
+<p><span class="math display">\[
+\det\begin{pmatrix}B&amp;C\\0&amp;D\end{pmatrix}=(\det B)(\det D).
+\]</span></p>
+<p>También vale la fórmula para la disposición triangular inferior. No se requiere que los bloques diagonales sean invertibles.</p>
+<p><strong>Demostración.</strong> En las primeras <span class="math inline">\(r\)</span> columnas, las entradas situadas en las últimas <span class="math inline">\(s\)</span> filas son cero. Por tanto, un término de Leibniz no nulo debe escoger para esas columnas <span class="math inline">\(r\)</span> filas distintas entre las primeras <span class="math inline">\(r\)</span>, es decir, todas ellas. Las últimas <span class="math inline">\(s\)</span> columnas quedan obligadas a usar las últimas <span class="math inline">\(s\)</span> filas. Las permutaciones que sobreviven se separan en una permutación de cada bloque diagonal, y no hay inversiones entre ambos grupos porque toda fila del primero precede a toda fila del segundo. Sus signos y productos se multiplican; la suma factoriza como <span class="math inline">\(\det B\det D\)</span>. El caso inferior se obtiene trasponiendo. <span class="math inline">\(\square\)</span></p>
+<p>El bloque <span class="math inline">\(C\)</span> no influye en esa fórmula, pero su posición sí. Para cuatro bloques cuadrados del mismo orden, la fórmula <span class="math inline">\(\det\begin{pmatrix}B&amp;C\\E&amp;D\end{pmatrix}=\det(BD-CE)\)</span> puede fallar: los bloques son matrices y su producto no es conmutativo. La prueba anterior se apoyaba en ceros que restringían las permutaciones.</p>
+</section>
+<section id="área-orientación-y-pérdida-de-dimensión" class="level2">
+<h2 class="anchored" data-anchor-id="área-orientación-y-pérdida-de-dimensión">13.9. Área, orientación y pérdida de dimensión</h2>
+<p>La construcción algebraica permite justificar la interpretación que abrió el capítulo. Para <span class="math inline">\(u=(a,b)\)</span> y <span class="math inline">\(v=(c,d)\)</span> reales, el área del paralelogramo que determinan es <span class="math inline">\(|ad-bc|\)</span>. Si <span class="math inline">\(a\ne0\)</span>, podemos reemplazar <span class="math inline">\(v\)</span> por <span class="math inline">\(w=v-(c/a)u=(0,d-bc/a)\)</span>. Este desplazamiento del segundo lado en la dirección del primero conserva base y altura respecto de la recta que contiene a <span class="math inline">\(u\)</span>, por lo que conserva el área. El paralelogramo de lados <span class="math inline">\(u\)</span> y <span class="math inline">\(w\)</span> tiene un lado vertical de longitud <span class="math inline">\(|d-bc/a|\)</span> y distancia horizontal entre sus lados verticales igual a <span class="math inline">\(|a|\)</span>. Su área es <span class="math inline">\(|a|\,|d-bc/a|=|ad-bc|\)</span>. Si <span class="math inline">\(a=0\)</span>, el primer lado es vertical y la misma cuenta directa da <span class="math inline">\(|b|\,|c|=|ad-bc|\)</span>. El caso <span class="math inline">\(u=0\)</span> queda incluido y da área cero.</p>
+<p>El signo de <span class="math inline">\(ad-bc\)</span> define la orientación del par independiente respecto del orden usual <span class="math inline">\((e_1,e_2)\)</span>. Intercambiar los lados cambia ese signo y mantiene el área. Dos lados dependientes tienen determinante cero y no determinan orientación de una base. Para toda transformación real de matriz <span class="math inline">\(A\)</span>,</p>
+<p><span class="math display">\[
+\det(Au,Av)=(\det A)\det(u,v).
+\]</span></p>
+<p>Es la multiplicatividad aplicada a la matriz con columnas <span class="math inline">\(u,v\)</span>. Al tomar valores absolutos, cada paralelogramo ve multiplicada su área por <span class="math inline">\(|\det A|\)</span>. Si el determinante es negativo se invierte además la orientación; si es cero, todas esas áreas pasan a cero.</p>
+<figure id="fig-apm-t2-c13-f03" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C13-F03.svg" alt="Un paralelogramo con lados u=(2,1) y v=(1,2) tiene determinante tres. Sustituir v por v+u=(3,3) cambia su forma y conserva el determinante y el área." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 13.3.</em> El segundo lado se desplaza a lo largo de una dirección paralela al primero. El área permanece en tres. La invariancia por adición de columnas tiene aquí una realización geométrica concreta.
+</figcaption>
+</figure>
+<p>En <span class="math inline">\(\mathbb R^n\)</span> se llama <strong>volumen orientado algebraico</strong> de una lista de <span class="math inline">\(n\)</span> vectores al determinante de su matriz de columnas en la base usual. Esta denominación prolonga las propiedades que acabamos de verificar en el plano; no presupone una teoría de medida en dimensión arbitraria. Su valor cero equivale a dependencia y todo operador lo multiplica por un mismo factor. La distinción entre conservar dimensión y conservar volumen queda visible incluso sin figuras: <span class="math inline">\(\operatorname{diag}(3,2)\)</span> tiene rango completo y multiplica las áreas por seis, mientras la cizalla tiene también rango completo y las conserva.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">13.10. Ejercicios</h2>
+<p>Se trabaja sobre <span class="math inline">\(\mathbb R\)</span> en los ejercicios numéricos, salvo que se indique otro cuerpo. Los argumentos generales se refieren a un cuerpo conmutativo <span class="math inline">\(\mathbb F\)</span>. Todas las matrices cuyos determinantes aparecen son cuadradas.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-001" class="apm-anchor"></span> <strong>Ejercicio 1 — Un cálculo que se comprueba.</strong> Calcula el determinante de <span class="math inline">\(A=\begin{pmatrix}3&amp;-2\\4&amp;1\end{pmatrix}\)</span> y comprueba que sus columnas son independientes.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-002" class="apm-anchor"></span> <strong>Ejercicio 2 — Triangularidad.</strong> Calcula <span class="math inline">\(\det\begin{pmatrix}2&amp;7&amp;-1\\0&amp;-3&amp;4\\0&amp;0&amp;5\end{pmatrix}\)</span> y explica por qué las entradas fuera de la diagonal no intervienen.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-003" class="apm-anchor"></span> <strong>Ejercicio 3 — Seguir operaciones.</strong> Una matriz real <span class="math inline">\(A\)</span> de orden tres tiene determinante cinco. Se intercambian sus primeras dos filas, se multiplica después la tercera fila por <span class="math inline">\(-2\)</span> y se suma a la segunda tres veces la primera. ¿Cuál es el determinante final?</p>
+<p><span id="MA-BCH-APM-02-013-EXR-004" class="apm-anchor"></span> <strong>Ejercicio 4 — Eliminación suficiente.</strong> Calcula <span class="math inline">\(\det\begin{pmatrix}0&amp;1&amp;2\\2&amp;1&amp;0\\4&amp;3&amp;1\end{pmatrix}\)</span> por eliminación, registrando el efecto de cada operación.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-005" class="apm-anchor"></span> <strong>Ejercicio 5 — Escoger una expansión.</strong> Calcula el determinante de <span class="math inline">\(\begin{pmatrix}2&amp;0&amp;1\\0&amp;3&amp;0\\1&amp;0&amp;4\end{pmatrix}\)</span> y sus tres cofactores de la segunda fila.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-006" class="apm-anchor"></span> <strong>Ejercicio 6 — Parámetros y rango.</strong> Para <span class="math inline">\(A_t=\begin{pmatrix}t&amp;1\\1&amp;t\end{pmatrix}\)</span>, determina los valores reales de <span class="math inline">\(t\)</span> para los que es invertible y calcula el rango en los restantes.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-007" class="apm-anchor"></span> <strong>Ejercicio 7 — Un error de linealidad.</strong> Refuta sobre <span class="math inline">\(\mathbb R\)</span> la afirmación <span class="math inline">\(\det(A+B)=\det A+\det B\)</span> en orden dos. Explica qué términos omitió ese razonamiento.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-008" class="apm-anchor"></span> <strong>Ejercicio 8 — Una columna y todas las columnas.</strong> Si <span class="math inline">\(A\)</span> es de orden cuatro y <span class="math inline">\(\det A=3\)</span>, compara el efecto de multiplicar sólo la segunda columna por dos con el de multiplicar toda la matriz por dos.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-009" class="apm-anchor"></span> <strong>Ejercicio 9 — Inversiones.</strong> Determina los signos de las listas <span class="math inline">\((4,2,1,3)\)</span> y <span class="math inline">\((3,1,4,2)\)</span> y los determinantes de las matrices que tienen como columnas los vectores básicos en esos órdenes.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-010" class="apm-anchor"></span> <strong>Ejercicio 10 — Orden invertido.</strong> La matriz <span class="math inline">\(J\)</span> tiene columnas <span class="math inline">\(e_n,e_{n-1},\ldots,e_1\)</span>. Calcula <span class="math inline">\(\det J\)</span>. Deduce el determinante de una matriz cuya única diagonal posiblemente no nula es la secundaria.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-011" class="apm-anchor"></span> <strong>Ejercicio 11 — Un cálculo en característica dos.</strong> En <span class="math inline">\(\mathbb F_2\)</span>, calcula el determinante y la inversa de <span class="math inline">\(A=\begin{pmatrix}1&amp;1\\1&amp;0\end{pmatrix}\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-012" class="apm-anchor"></span> <strong>Ejercicio 12 — Antisimetría y alternancia.</strong> Construye sobre <span class="math inline">\(\mathbb F_2^2\)</span> una función bilineal <span class="math inline">\(b\)</span> con <span class="math inline">\(b(v,u)=-b(u,v)\)</span> que no sea alternante. ¿Por qué no existe tal ejemplo cuando la característica es distinta de dos?</p>
+<p><span id="MA-BCH-APM-02-013-EXR-013" class="apm-anchor"></span> <strong>Ejercicio 13 — Una normalización diferente.</strong> Sea <span class="math inline">\(d\)</span> una función multilineal alternante de las columnas de matrices de orden <span class="math inline">\(n\ge1\)</span>, con <span class="math inline">\(d(e_1,\ldots,e_n)=c\)</span>. Demuestra que <span class="math inline">\(d(A)=c\det A\)</span>, incluso si <span class="math inline">\(c=0\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-014" class="apm-anchor"></span> <strong>Ejercicio 14 — Transpuesta e inversa.</strong> Para <span class="math inline">\(A=\begin{pmatrix}2&amp;1\\1&amp;1\end{pmatrix}\)</span>, calcula <span class="math inline">\(\det A\)</span>, <span class="math inline">\(A^{-1}\)</span> y <span class="math inline">\(\det(A^{\mathsf T}A)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-015" class="apm-anchor"></span> <strong>Ejercicio 15 — Potencias.</strong> Demuestra que <span class="math inline">\(\det(A^k)=(\det A)^k\)</span> para todo entero <span class="math inline">\(k\ge0\)</span>. Extiende la fórmula a enteros negativos cuando <span class="math inline">\(A\)</span> es invertible.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-016" class="apm-anchor"></span> <strong>Ejercicio 16 — Dos invariantes insuficientes.</strong> Da dos matrices de orden dos con la misma traza y el mismo determinante que no sean semejantes. Demuestra que no lo son.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-017" class="apm-anchor"></span> <strong>Ejercicio 17 — Dos bases independientes.</strong> Sean <span class="math inline">\(A=\operatorname{diag}(2,3)\)</span>, <span class="math inline">\(P=\begin{pmatrix}1&amp;1\\0&amp;2\end{pmatrix}\)</span> y <span class="math inline">\(Q=\operatorname{diag}(3,1)\)</span>. Calcula el determinante de <span class="math inline">\(A'=Q^{-1}AP\)</span> por la fórmula de cambio de bases y comprueba el resultado directamente.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-018" class="apm-anchor"></span> <strong>Ejercicio 18 — Magnitud del determinante.</strong> Para cada <span class="math inline">\(n\ge1\)</span>, muestra que hay matrices reales invertibles de orden <span class="math inline">\(n\)</span> con determinante positivo tan pequeño como se quiera. ¿Puede deducirse el rango a partir de un umbral positivo fijo para ese determinante?</p>
+<p><span id="MA-BCH-APM-02-013-EXR-019" class="apm-anchor"></span> <strong>Ejercicio 19 — Una familia próxima a la dependencia.</strong> Estudia <span class="math inline">\(A_\varepsilon=\begin{pmatrix}1&amp;1\\1&amp;1+\varepsilon\end{pmatrix}\)</span>: determinante, inversa cuando existe y comportamiento de las columnas en <span class="math inline">\(\varepsilon=0\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-020" class="apm-anchor"></span> <strong>Ejercicio 20 — Cofactores colocados correctamente.</strong> Calcula la matriz de cofactores y la adjugata de <span class="math inline">\(A=\begin{pmatrix}2&amp;1\\3&amp;2\end{pmatrix}\)</span>. Comprueba ambos productos de la identidad de adjugata.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-021" class="apm-anchor"></span> <strong>Ejercicio 21 — Adjugata de una matriz singular.</strong> Calcula la adjugata de <span class="math inline">\(A=\operatorname{diag}(1,1,0)\)</span> y explica por qué determinante cero no implica adjugata cero.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-022" class="apm-anchor"></span> <strong>Ejercicio 22 — Dos direcciones perdidas.</strong> Si <span class="math inline">\(A\)</span> es de orden <span class="math inline">\(n\ge2\)</span> y <span class="math inline">\(\operatorname{rg}A\le n-2\)</span>, demuestra que <span class="math inline">\(\operatorname{adj}A=0\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-023" class="apm-anchor"></span> <strong>Ejercicio 23 — El rango mediante menores.</strong> Demuestra que el rango de una matriz <span class="math inline">\(A\in M_{m\times n}(\mathbb F)\)</span> es el mayor orden de un menor no nulo. Para rango cero adopta el menor vacío de orden cero y valor uno.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-024" class="apm-anchor"></span> <strong>Ejercicio 24 — Una sola dirección perdida.</strong> Si <span class="math inline">\(A\)</span> es de orden <span class="math inline">\(n\ge2\)</span> y rango <span class="math inline">\(n-1\)</span>, demuestra que su adjugata tiene rango uno y que su imagen es <span class="math inline">\(\ker A\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-025" class="apm-anchor"></span> <strong>Ejercicio 25 — Trasponer la adjugata.</strong> Demuestra <span class="math inline">\(\operatorname{adj}(A^{\mathsf T})=(\operatorname{adj}A)^{\mathsf T}\)</span>, incluyendo matrices singulares.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-026" class="apm-anchor"></span> <strong>Ejercicio 26 — Adjugata de un producto invertible.</strong> Si <span class="math inline">\(A,B\)</span> son invertibles del mismo orden, prueba que <span class="math inline">\(\operatorname{adj}(AB)=\operatorname{adj}B\operatorname{adj}A\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-027" class="apm-anchor"></span> <strong>Ejercicio 27 — Cramer y sustitución.</strong> Resuelve <span class="math inline">\(3x+y=7\)</span>, <span class="math inline">\(2x-y=3\)</span> mediante Cramer y comprueba la solución en el sistema.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-028" class="apm-anchor"></span> <strong>Ejercicio 28 — Cramer fuera de sus hipótesis.</strong> Construye un sistema cuadrado incompatible con <span class="math inline">\(\det A=0\)</span> y <span class="math inline">\(\det A_j(b)=0\)</span> para todas las columnas reemplazadas. Explica por qué no contradice Cramer.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-029" class="apm-anchor"></span> <strong>Ejercicio 29 — Bloques singulares.</strong> Calcula <span class="math inline">\(\det\begin{pmatrix}1&amp;2&amp;7&amp;8\\2&amp;4&amp;9&amp;10\\0&amp;0&amp;3&amp;1\\0&amp;0&amp;0&amp;2\end{pmatrix}\)</span> justificando por qué no necesitas invertir ningún bloque.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-030" class="apm-anchor"></span> <strong>Ejercicio 30 — Eliminar un bloque.</strong> Para bloques de tamaños compatibles, con <span class="math inline">\(B\)</span> cuadrado invertible y <span class="math inline">\(D\)</span> cuadrado, demuestra <span class="math inline">\(\det\begin{pmatrix}B&amp;C\\E&amp;D\end{pmatrix}=\det B\det(D-EB^{-1}C)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-031" class="apm-anchor"></span> <strong>Ejercicio 31 — Una fórmula escalar que falla para bloques.</strong> Sean <span class="math inline">\(B=I_2\)</span>, <span class="math inline">\(C=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\)</span>, <span class="math inline">\(E=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}\)</span> y <span class="math inline">\(D=\operatorname{diag}(2,3)\)</span>. Compara <span class="math inline">\(\det\begin{pmatrix}B&amp;C\\E&amp;D\end{pmatrix}\)</span> con <span class="math inline">\(\det(BD-CE)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-032" class="apm-anchor"></span> <strong>Ejercicio 32 — Una perturbación de rango uno.</strong> Para columnas <span class="math inline">\(u,v\in\mathbb F^n\)</span>, con <span class="math inline">\(n\ge1\)</span>, demuestra <span class="math inline">\(\det(I_n+uv^{\mathsf T})=1+v^{\mathsf T}u\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-033" class="apm-anchor"></span> <strong>Ejercicio 33 — Actualizar una matriz invertible.</strong> Si <span class="math inline">\(A\)</span> es invertible y <span class="math inline">\(u,v\)</span> son columnas, deduce una fórmula para <span class="math inline">\(\det(A+uv^{\mathsf T})\)</span> y decide exactamente cuándo es invertible la matriz actualizada.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-034" class="apm-anchor"></span> <strong>Ejercicio 34 — Antisimetría de orden impar.</strong> Si <span class="math inline">\(A^{\mathsf T}=-A\)</span>, el orden <span class="math inline">\(n\)</span> es impar y <span class="math inline">\(\operatorname{char}\mathbb F\ne2\)</span>, demuestra que <span class="math inline">\(A\)</span> es singular. Da un contraejemplo en característica dos si sólo se conserva la igualdad <span class="math inline">\(A^{\mathsf T}=-A\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-035" class="apm-anchor"></span> <strong>Ejercicio 35 — Una condición de conservación.</strong> Sea <span class="math inline">\(A\)</span> real y <span class="math inline">\(A^{\mathsf T}A=I_n\)</span>. Demuestra que <span class="math inline">\(\det A\)</span> es uno o menos uno. Refuta la conversa en orden dos.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-036" class="apm-anchor"></span> <strong>Ejercicio 36 — Área y orientación.</strong> Para <span class="math inline">\(u=(2,1)\)</span> y <span class="math inline">\(v=(1,2)\)</span> calcula el área y la orientación antes y después de aplicar <span class="math inline">\(S(x,y)=(x+2y,y)\)</span> y después de aplicar <span class="math inline">\(R(x,y)=(y,x)\)</span>. Trata ambas transformaciones por separado.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-037" class="apm-anchor"></span> <strong>Ejercicio 37 — Inversas enteras.</strong> Sea <span class="math inline">\(A\)</span> una matriz de entradas enteras. Demuestra que admite inversa con entradas enteras si y sólo si <span class="math inline">\(\det A=1\)</span> o <span class="math inline">\(-1\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-038" class="apm-anchor"></span> <strong>Ejercicio 38 — Bloques fuera de la diagonal.</strong> Para <span class="math inline">\(B,C\)</span> cuadrados del mismo orden <span class="math inline">\(r\ge1\)</span>, demuestra <span class="math inline">\(\det\begin{pmatrix}0&amp;B\\C&amp;0\end{pmatrix}=(-1)^r\det B\det C\)</span>, sin exigir invertibilidad.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-039" class="apm-anchor"></span> <strong>Ejercicio 39 — Traza dentro de un determinante polinómico.</strong> Para <span class="math inline">\(A\in M_n(\mathbb F)\)</span>, <span class="math inline">\(n\ge1\)</span>, estudia el polinomio <span class="math inline">\(f(t)=\det(I_n+tA)\)</span>. Demuestra que su término constante es uno, su coeficiente de <span class="math inline">\(t\)</span> es <span class="math inline">\(\operatorname{tr}A\)</span> y su coeficiente de <span class="math inline">\(t^n\)</span> es <span class="math inline">\(\det A\)</span>. No supongas que su grado sea siempre <span class="math inline">\(n\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-EXR-040" class="apm-anchor"></span> <strong>Ejercicio 40 — Vandermonde e interpolación.</strong> Para <span class="math inline">\(a_1,\ldots,a_n\in\mathbb F\)</span>, con <span class="math inline">\(n\ge1\)</span>, demuestra <span class="math inline">\(\det V=\prod_{1\le i&lt;j\le n}(a_j-a_i)\)</span>, donde <span class="math inline">\(V_{ij}=a_j^{\,i-1}\)</span>. Deduce cuándo los valores de un polinomio de grado menor que <span class="math inline">\(n\)</span> en esos puntos determinan sus coeficientes de manera única.</p>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">13.11. Soluciones</h2>
+<p><span id="MA-BCH-APM-02-013-SOL-001" class="apm-anchor"></span> <strong>Solución 1.</strong> La fórmula de orden dos da <span class="math inline">\(\det A=3\cdot1-(-2)\cdot4=11\)</span>. También se puede comprobar la independencia sin usar ese criterio: si <span class="math inline">\(3x-2y=0\)</span> y <span class="math inline">\(4x+y=0\)</span>, la segunda ecuación da <span class="math inline">\(y=-4x\)</span>, y la primera da <span class="math inline">\(11x=0\)</span>. Sobre <span class="math inline">\(\mathbb R\)</span>, esto obliga a <span class="math inline">\(x=y=0\)</span>. Las dos vías concuerdan.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-002" class="apm-anchor"></span> <strong>Solución 2.</strong> La matriz es triangular superior, de modo que su determinante es <span class="math inline">\(2(-3)5=-30\)</span>. La proposición 13.5 demuestra que toda permutación distinta de la identidad debe escoger alguna entrada situada debajo de la diagonal, que es cero. La independencia del resultado respecto de <span class="math inline">\(7,-1,4\)</span> procede de esos ceros, no de una regla para matrices arbitrarias.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-003" class="apm-anchor"></span> <strong>Solución 3.</strong> El intercambio lleva el determinante a <span class="math inline">\(-5\)</span>. Escalar la tercera fila por <span class="math inline">\(-2\)</span> lo lleva a <span class="math inline">\(10\)</span>, y la adición final lo conserva. El resultado es diez. Es necesario aplicar las reglas a las matrices que se van obteniendo: el factor de la adición no multiplica el determinante, porque la fila de origen permanece también en otra posición y el término adicional tiene dos filas iguales.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-004" class="apm-anchor"></span> <strong>Solución 4.</strong> Intercambiamos las dos primeras filas y obtenemos <span class="math inline">\(\begin{pmatrix}2&amp;1&amp;0\\0&amp;1&amp;2\\4&amp;3&amp;1\end{pmatrix}\)</span>; su determinante es el opuesto del buscado. Las operaciones <span class="math inline">\(R_3\leftarrow R_3-2R_1\)</span> y después <span class="math inline">\(R_3\leftarrow R_3-R_2\)</span> dan <span class="math inline">\(\begin{pmatrix}2&amp;1&amp;0\\0&amp;1&amp;2\\0&amp;0&amp;-1\end{pmatrix}\)</span>. Ambas conservan el determinante, cuyo valor final es <span class="math inline">\(-2\)</span>. Deshacer el único cambio de signo da determinante inicial dos. No hubo que normalizar los pivotes.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-005" class="apm-anchor"></span> <strong>Solución 5.</strong> El menor de la entrada central es <span class="math inline">\(\begin{pmatrix}2&amp;1\\1&amp;4\end{pmatrix}\)</span>, de determinante siete, y su signo es positivo. Los otros menores de esa fila son <span class="math inline">\(\begin{pmatrix}0&amp;1\\0&amp;4\end{pmatrix}\)</span> y <span class="math inline">\(\begin{pmatrix}2&amp;0\\1&amp;0\end{pmatrix}\)</span>, ambos de determinante cero. Por tanto <span class="math inline">\((C_{21},C_{22},C_{23})=(0,7,0)\)</span> y la expansión da <span class="math inline">\(3\cdot7=21\)</span>. La segunda fila evita términos no nulos adicionales.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-006" class="apm-anchor"></span> <strong>Solución 6.</strong> El determinante es <span class="math inline">\(t^2-1=(t-1)(t+1)\)</span>. Por el teorema 13.7, es invertible exactamente cuando <span class="math inline">\(t\ne1,-1\)</span>. Para <span class="math inline">\(t=1\)</span>, las dos columnas coinciden y son no nulas, de modo que el rango es uno. Para <span class="math inline">\(t=-1\)</span>, una columna es la opuesta de la otra y ninguna es cero, por lo que el rango también es uno. El determinante cero por sí solo sólo daba rango menor que dos; el examen de las columnas decide cuánto disminuye.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-007" class="apm-anchor"></span> <strong>Solución 7.</strong> Con <span class="math inline">\(A=B=I_2\)</span>, el determinante de la suma es cuatro, mientras la suma de determinantes es dos. Si las columnas son <span class="math inline">\(a_1,a_2\)</span> y <span class="math inline">\(b_1,b_2\)</span>, la expansión correcta es <span class="math inline">\(\det(a_1+b_1,a_2+b_2)=\det(a_1,a_2)+\det(a_1,b_2)+\det(b_1,a_2)+\det(b_1,b_2)\)</span>. Se habían omitido los dos términos mezclados. En el ejemplo ambos valen uno.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-008" class="apm-anchor"></span> <strong>Solución 8.</strong> Escalar una sola columna multiplica el determinante por dos y produce seis. Escalar toda la matriz escala sus cuatro columnas, por lo que produce <span class="math inline">\(2^4\cdot3=48\)</span>. La multilinealidad se aplica una vez en el primer caso y cuatro veces en el segundo.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-009" class="apm-anchor"></span> <strong>Solución 9.</strong> En <span class="math inline">\((4,2,1,3)\)</span>, el cuatro contribuye tres inversiones y el dos contribuye una: hay cuatro en total y el signo es positivo. En <span class="math inline">\((3,1,4,2)\)</span>, el tres contribuye dos y el cuatro una: hay tres y el signo es negativo. Por el lema 13.2 y la normalización, los determinantes de las respectivas matrices de columnas son uno y menos uno.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-010" class="apm-anchor"></span> <strong>Solución 10.</strong> Cada par de posiciones es una inversión, así que hay <span class="math inline">\(n(n-1)/2\)</span> y <span class="math inline">\(\det J=(-1)^{n(n-1)/2}\)</span>. Si las entradas de la diagonal secundaria, leídas de arriba abajo, son <span class="math inline">\(c_1,\ldots,c_n\)</span>, la matriz es <span class="math inline">\(\operatorname{diag}(c_1,\ldots,c_n)J\)</span>. La multiplicatividad da determinante <span class="math inline">\((-1)^{n(n-1)/2}\prod_i c_i\)</span>, aun cuando alguno de los factores sea cero.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-011" class="apm-anchor"></span> <strong>Solución 11.</strong> El determinante es <span class="math inline">\(1\cdot0-1\cdot1=-1=1\)</span> en este cuerpo. La adjugata es <span class="math inline">\(\begin{pmatrix}0&amp;-1\\-1&amp;1\end{pmatrix}=\begin{pmatrix}0&amp;1\\1&amp;1\end{pmatrix}\)</span>; como el determinante es uno, ésta es la inversa. Los dos productos con <span class="math inline">\(A\)</span> son identidad usando <span class="math inline">\(1+1=0\)</span>. El cambio de signo se vuelve invisible, pero la no nulidad sigue detectando invertibilidad.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-012" class="apm-anchor"></span> <strong>Solución 12.</strong> Sirve <span class="math inline">\(b(u,v)=u_1v_1\)</span>: es lineal en cada variable, es simétrica y el opuesto coincide con el original en característica dos, pero <span class="math inline">\(b(e_1,e_1)=1\)</span>. Si la característica es distinta de dos y se cumple el cambio de signo, tomar <span class="math inline">\(u=v\)</span> da <span class="math inline">\(2b(u,u)=0\)</span>. El escalar dos es entonces invertible y fuerza <span class="math inline">\(b(u,u)=0\)</span> para todo <span class="math inline">\(u\)</span>. Esa última división es la que falla en el ejemplo.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-013" class="apm-anchor"></span> <strong>Solución 13.</strong> Expandimos cada columna en la base usual. Las listas de índices repetidos se anulan y una lista de índices distintos aporta el signo de su permutación por el valor <span class="math inline">\(c\)</span>. La suma completa es <span class="math inline">\(c\sum_{\sigma\in S_n}(\operatorname{sgn}\sigma)\prod_j a_{\sigma(j),j}=c\det A\)</span>. No se divide por <span class="math inline">\(c\)</span>; en particular, si <span class="math inline">\(c=0\)</span>, la función entera es cero. Esto también muestra por qué normalizar distingue un elemento entre todos sus múltiplos.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-014" class="apm-anchor"></span> <strong>Solución 14.</strong> El determinante es <span class="math inline">\(2-1=1\)</span> y la adjugata da <span class="math inline">\(A^{-1}=\begin{pmatrix}1&amp;-1\\-1&amp;2\end{pmatrix}\)</span>. La transposición conserva el determinante y la multiplicatividad da <span class="math inline">\(\det(A^{\mathsf T}A)=(\det A)^2=1\)</span>. Directamente <span class="math inline">\(A^{\mathsf T}A=\begin{pmatrix}5&amp;3\\3&amp;2\end{pmatrix}\)</span> tiene determinante <span class="math inline">\(10-9=1\)</span>.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-015" class="apm-anchor"></span> <strong>Solución 15.</strong> En <span class="math inline">\(k=0\)</span>, ambos lados valen uno, interpretando la potencia cero del escalar como el producto vacío, incluso si <span class="math inline">\(\det A=0\)</span>. La multiplicatividad y una inducción dan <span class="math inline">\(\det(A^{k+1})=\det(A^k)\det A=(\det A)^{k+1}\)</span>. Si <span class="math inline">\(A\)</span> es invertible y <span class="math inline">\(k=-m\)</span> con <span class="math inline">\(m&gt;0\)</span>, aplicamos el caso positivo a <span class="math inline">\(A^{-1}\)</span> y usamos <span class="math inline">\(\det(A^{-1})=(\det A)^{-1}\)</span>. Sin invertibilidad las potencias negativas de la matriz no están definidas.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-016" class="apm-anchor"></span> <strong>Solución 16.</strong> Tomamos <span class="math inline">\(I_2\)</span> y <span class="math inline">\(B=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)</span>. Ambas tienen traza dos y determinante uno. Para cualquier <span class="math inline">\(P\)</span> invertible, <span class="math inline">\(P^{-1}I_2P=I_2\)</span>, mientras <span class="math inline">\(B\ne I_2\)</span>. Por tanto no son semejantes. La prueba sirve sobre cualquier cuerpo, incluida característica dos, donde ambas trazas son cero.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-017" class="apm-anchor"></span> <strong>Solución 17.</strong> Los determinantes de <span class="math inline">\(A,P,Q\)</span> son seis, dos y tres. Por tanto <span class="math inline">\(\det A'=(2/3)6=4\)</span>. El producto directo da <span class="math inline">\(A'=\begin{pmatrix}2/3&amp;2/3\\0&amp;6\end{pmatrix}\)</span>, cuyo producto diagonal es cuatro. No hay semejanza: las transiciones de entrada y salida son diferentes, y el determinante ha cambiado.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-018" class="apm-anchor"></span> <strong>Solución 18.</strong> Para <span class="math inline">\(\varepsilon&gt;0\)</span>, <span class="math inline">\(A_\varepsilon=\operatorname{diag}(\varepsilon,1,\ldots,1)\)</span> tiene inversa <span class="math inline">\(\operatorname{diag}(\varepsilon^{-1},1,\ldots,1)\)</span> y determinante <span class="math inline">\(\varepsilon\)</span>. Dado cualquier umbral positivo, podemos escoger un determinante menor sin perder rango. Por tanto ningún umbral positivo fijo reemplaza al criterio exacto <span class="math inline">\(\det A=0\)</span>. La afirmación es algebraica; no propone un procedimiento para decidir rango con datos aproximados.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-019" class="apm-anchor"></span> <strong>Solución 19.</strong> El determinante es <span class="math inline">\(\varepsilon\)</span>. Para <span class="math inline">\(\varepsilon\ne0\)</span>, la fórmula de adjugata da <span class="math inline">\(A_\varepsilon^{-1}=\varepsilon^{-1}\begin{pmatrix}1+\varepsilon&amp;-1\\-1&amp;1\end{pmatrix}\)</span>. El producto devuelve identidad porque las entradas diagonales del producto antes de dividir son <span class="math inline">\(\varepsilon\)</span> y las cruzadas cero. En <span class="math inline">\(\varepsilon=0\)</span> las dos columnas coinciden y son no nulas: el rango baja de dos a uno. La diferencia de columnas es <span class="math inline">\((0,\varepsilon)^{\mathsf T}\)</span> y exhibe cómo se pierde la segunda dirección.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-020" class="apm-anchor"></span> <strong>Solución 20.</strong> La matriz de cofactores es <span class="math inline">\(C=\begin{pmatrix}2&amp;-3\\-1&amp;2\end{pmatrix}\)</span>, y su transpuesta es <span class="math inline">\(\operatorname{adj}A=\begin{pmatrix}2&amp;-1\\-3&amp;2\end{pmatrix}\)</span>. Como <span class="math inline">\(\det A=4-3=1\)</span>, la adjugata es la inversa. Multiplicar en ambos órdenes da <span class="math inline">\(I_2\)</span>. Sin trasponer <span class="math inline">\(C\)</span>, las sumas del producto no coincidirían con las expansiones por la fila o columna apropiada.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-021" class="apm-anchor"></span> <strong>Solución 21.</strong> Todos los cofactores son cero salvo <span class="math inline">\(C_{33}=\det I_2=1\)</span>. Por tanto <span class="math inline">\(\operatorname{adj}A=\operatorname{diag}(0,0,1)\)</span> y es no nula, aunque <span class="math inline">\(\det A=0\)</span>. Cada columna de la adjugata está en el núcleo de <span class="math inline">\(A\)</span>, como obliga <span class="math inline">\(A\operatorname{adj}A=0\)</span>. La anulación de un producto no exige que uno de los factores sea la matriz cero.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-022" class="apm-anchor"></span> <strong>Solución 22.</strong> Cualquier submatriz obtenida suprimiendo una fila y una columna tiene rango a lo sumo <span class="math inline">\(\operatorname{rg}A\)</span>: escoger columnas restringe el dominio y escoger coordenadas de salida aplica una proyección, y ninguna operación aumenta el rango. Su tamaño es <span class="math inline">\(n-1\)</span> y su rango es menor que <span class="math inline">\(n-1\)</span>, de modo que su determinante es cero. Todos los cofactores se anulan y por tanto también su transpuesta, la adjugata. Para <span class="math inline">\(n=2\)</span> la hipótesis fuerza <span class="math inline">\(A=0_2\)</span>, coherentemente.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-023" class="apm-anchor"></span> <strong>Solución 23.</strong> Un menor no nulo de orden <span class="math inline">\(k\)</span> da una submatriz invertible. Sus <span class="math inline">\(k\)</span> columnas son independientes después de restringir a las filas escogidas; por ello las columnas completas correspondientes también son independientes y <span class="math inline">\(\operatorname{rg}A\ge k\)</span>. Para la otra dirección, sea <span class="math inline">\(r=\operatorname{rg}A&gt;0\)</span> y escojamos <span class="math inline">\(r\)</span> columnas independientes. La matriz rectangular <span class="math inline">\(B\)</span> que forman tiene rango de columnas <span class="math inline">\(r\)</span> y, por la igualdad de rangos de filas y columnas de C09, posee <span class="math inline">\(r\)</span> filas independientes. Esas filas, cada una de longitud <span class="math inline">\(r\)</span>, forman una matriz cuadrada invertible: el menor correspondiente es no nulo. Cuando <span class="math inline">\(r=0\)</span>, todas las entradas son cero, y ningún menor de orden positivo puede ser no nulo. La convención vacía cubre ese caso.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-024" class="apm-anchor"></span> <strong>Solución 24.</strong> Por el ejercicio 23 existe un menor no nulo de orden <span class="math inline">\(n-1\)</span>, que es, salvo signo, un cofactor. Por tanto la adjugata no es cero. Como <span class="math inline">\(\det A=0\)</span>, la identidad de adjugata da <span class="math inline">\(A\operatorname{adj}A=0\)</span>, de donde <span class="math inline">\(\operatorname{im}(\operatorname{adj}A)\subseteq\ker A\)</span>. Rango-nulidad da <span class="math inline">\(\dim\ker A=1\)</span>. Una imagen no nula contenida en esa recta es la recta entera, y el rango de la adjugata es uno.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-025" class="apm-anchor"></span> <strong>Solución 25.</strong> Suprimir la fila <span class="math inline">\(i\)</span> y columna <span class="math inline">\(j\)</span> de <span class="math inline">\(A^{\mathsf T}\)</span> produce la transpuesta de la matriz obtenida suprimiendo la fila <span class="math inline">\(j\)</span> y columna <span class="math inline">\(i\)</span> de <span class="math inline">\(A\)</span>. Los dos determinantes son iguales. Por ello <span class="math inline">\(C_{ij}(A^{\mathsf T})=C_{ji}(A)\)</span>, pues <span class="math inline">\((-1)^{i+j}=(-1)^{j+i}\)</span>. Al trasponer las matrices de cofactores obtenemos la identidad pedida. No usamos inversas, así que el argumento incluye el caso singular y también orden uno.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-026" class="apm-anchor"></span> <strong>Solución 26.</strong> La fórmula de inversa equivale a <span class="math inline">\(\operatorname{adj}A=(\det A)A^{-1}\)</span> para <span class="math inline">\(A\)</span> invertible. Entonces <span class="math inline">\(\operatorname{adj}(AB)=\det(AB)(AB)^{-1}=(\det A)(\det B)B^{-1}A^{-1}=\operatorname{adj}B\operatorname{adj}A\)</span>. Los determinantes son escalares y pueden moverse entre los factores. La identidad también tiene versiones más generales, pero esta prueba sólo acredita el caso invertible solicitado.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-027" class="apm-anchor"></span> <strong>Solución 27.</strong> La matriz <span class="math inline">\(A=\begin{pmatrix}3&amp;1\\2&amp;-1\end{pmatrix}\)</span> tiene determinante <span class="math inline">\(-3-2=-5\)</span>. Reemplazar la primera columna por <span class="math inline">\((7,3)^{\mathsf T}\)</span> da determinante <span class="math inline">\(-7-3=-10\)</span>; reemplazar la segunda da <span class="math inline">\(3\cdot3-2\cdot7=-5\)</span>. Así <span class="math inline">\(x=2\)</span>, <span class="math inline">\(y=1\)</span>. Las sustituciones dan <span class="math inline">\(3(2)+1=7\)</span> y <span class="math inline">\(2(2)-1=3\)</span>. El denominador no nulo justifica la unicidad.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-028" class="apm-anchor"></span> <strong>Solución 28.</strong> Tomamos <span class="math inline">\(A=0_2\)</span> y <span class="math inline">\(b=(1,1)^{\mathsf T}\)</span>. El sistema exigiría <span class="math inline">\(0=1\)</span> en ambas filas y es incompatible. Reemplazar una columna deja la otra cero, por lo que ambos determinantes reemplazados son cero; también <span class="math inline">\(\det A=0\)</span>. El corolario 13.11 exige invertibilidad y por tanto no se aplica. La expresión <span class="math inline">\(0/0\)</span> no da una incógnita ni un criterio de compatibilidad.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-029" class="apm-anchor"></span> <strong>Solución 29.</strong> La matriz es triangular superior por bloques. El bloque superior izquierdo <span class="math inline">\(B=\begin{pmatrix}1&amp;2\\2&amp;4\end{pmatrix}\)</span> tiene determinante cero y el inferior derecho <span class="math inline">\(D=\begin{pmatrix}3&amp;1\\0&amp;2\end{pmatrix}\)</span> tiene determinante seis. La proposición 13.12 da determinante cero. Su prueba sólo utiliza la posición de los ceros y la suma de Leibniz; no exige que <span class="math inline">\(B\)</span> o <span class="math inline">\(D\)</span> tengan inversa.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-030" class="apm-anchor"></span> <strong>Solución 30.</strong> Multiplicamos a la izquierda por <span class="math inline">\(L=\begin{pmatrix}I&amp;0\\-EB^{-1}&amp;I\end{pmatrix}\)</span>. Es triangular inferior por bloques y su determinante es uno. El producto es <span class="math inline">\(LM=\begin{pmatrix}B&amp;C\\0&amp;D-EB^{-1}C\end{pmatrix}\)</span>, porque el bloque inferior izquierdo es <span class="math inline">\(-EB^{-1}B+E=0\)</span>. La multiplicatividad da <span class="math inline">\(\det(LM)=\det M\)</span> y la fórmula triangular por bloques da el resultado. El orden <span class="math inline">\(EB^{-1}C\)</span> queda fijado por el producto; permutarlo sin una hipótesis adicional no está permitido.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-031" class="apm-anchor"></span> <strong>Solución 31.</strong> El ejercicio 30 da para la matriz de cuatro bloques el valor <span class="math inline">\(\det(D-EC)\)</span>. Como <span class="math inline">\(EC=\operatorname{diag}(0,1)\)</span>, ese determinante es <span class="math inline">\(2(3-1)=4\)</span>. En cambio, <span class="math inline">\(CE=\operatorname{diag}(1,0)\)</span> y <span class="math inline">\(\det(BD-CE)=(2-1)3=3\)</span>. Los dos valores difieren. Se ha reemplazado indebidamente el orden de dos factores que no conmutan; la fórmula de orden dos para entradas escalares no se traslada así a bloques.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-032" class="apm-anchor"></span> <strong>Solución 32.</strong> La columna <span class="math inline">\(j\)</span> es <span class="math inline">\(e_j+v_ju\)</span>. Expandimos por multilinealidad. El término que escoge todos los <span class="math inline">\(e_j\)</span> es uno. Todo término que escoja <span class="math inline">\(u\)</span> en dos o más posiciones se anula por alternancia. Si sólo se escoge en la posición <span class="math inline">\(j\)</span>, el término es <span class="math inline">\(v_j\det(e_1,\ldots,u,\ldots,e_n)=v_ju_j\)</span>: al expandir <span class="math inline">\(u=\sum_i u_ie_i\)</span>, sólo sobrevive <span class="math inline">\(i=j\)</span>. Sumar esos <span class="math inline">\(n\)</span> términos da <span class="math inline">\(1+\sum_jv_ju_j\)</span>. La prueba no supone que <span class="math inline">\(u\)</span> o <span class="math inline">\(v\)</span> sean no nulos.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-033" class="apm-anchor"></span> <strong>Solución 33.</strong> Se factoriza <span class="math inline">\(A+uv^{\mathsf T}=A(I+A^{-1}uv^{\mathsf T})\)</span>. Por multiplicatividad y el ejercicio 32, <span class="math inline">\(\det(A+uv^{\mathsf T})=(\det A)(1+v^{\mathsf T}A^{-1}u)\)</span>. El primer factor es no nulo, así que la actualización es invertible si y sólo si <span class="math inline">\(1+v^{\mathsf T}A^{-1}u\ne0\)</span>. El escalar puede anularse incluso cuando los datos de la perturbación son no nulos; la fórmula decide ese caso sin exigir una nueva eliminación completa.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-034" class="apm-anchor"></span> <strong>Solución 34.</strong> La transposición y la homogeneidad dan <span class="math inline">\(\det A=\det A^{\mathsf T}=\det(-A)=(-1)^n\det A=-\det A\)</span>. Así <span class="math inline">\(2\det A=0\)</span>, y la característica permite dividir por dos: <span class="math inline">\(\det A=0\)</span>. En característica dos, la matriz de orden uno <span class="math inline">\((1)\)</span> cumple <span class="math inline">\(A^{\mathsf T}=A=-A\)</span> y tiene determinante uno. La condición de diagonal cero no está incluida en la igualdad propuesta y no puede añadirse implícitamente.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-035" class="apm-anchor"></span> <strong>Solución 35.</strong> Tomando determinantes, <span class="math inline">\(1=\det(A^{\mathsf T}A)=(\det A)^2\)</span>, de donde <span class="math inline">\(\det A\in\{1,-1\}\)</span> en <span class="math inline">\(\mathbb R\)</span>. La conversa falla para <span class="math inline">\(A=\operatorname{diag}(2,1/2)\)</span>: su determinante es uno, pero <span class="math inline">\(A^{\mathsf T}A=\operatorname{diag}(4,1/4)\ne I_2\)</span>. Conservar área no exige conservar todas las direcciones con sus longitudes; una se alarga mientras otra se acorta.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-036" class="apm-anchor"></span> <strong>Solución 36.</strong> El determinante inicial es <span class="math inline">\(4-1=3\)</span>: área tres y orientación positiva. La cizalla tiene determinante uno, por lo que conserva ambos datos. Directamente <span class="math inline">\(Su=(4,1)\)</span> y <span class="math inline">\(Sv=(5,2)\)</span> dan <span class="math inline">\(8-5=3\)</span>. El intercambio tiene determinante menos uno: <span class="math inline">\(Ru=(1,2)\)</span> y <span class="math inline">\(Rv=(2,1)\)</span> dan <span class="math inline">\(1-4=-3\)</span>. El área sigue siendo tres y la orientación pasa a negativa. Son dos imágenes separadas del par original, como pide el enunciado.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-037" class="apm-anchor"></span> <strong>Solución 37.</strong> Si la inversa tiene entradas enteras, sus determinantes y el de <span class="math inline">\(A\)</span> son enteros, pues Leibniz sólo usa sumas y productos de enteros. Su producto es uno, así que ambos son uno o menos uno. Recíprocamente, cada cofactor de <span class="math inline">\(A\)</span> es entero. Si <span class="math inline">\(\det A=\pm1\)</span>, la fórmula <span class="math inline">\(A^{-1}=(\det A)^{-1}\operatorname{adj}A\)</span> produce entradas enteras. Podemos razonar dentro de <span class="math inline">\(\mathbb Q\)</span> y verificar después esa integridad; no se ha supuesto que los enteros formen un cuerpo.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-038" class="apm-anchor"></span> <strong>Solución 38.</strong> Intercambiamos el grupo de las primeras <span class="math inline">\(r\)</span> filas con el grupo de las últimas <span class="math inline">\(r\)</span>, conservando el orden dentro de cada grupo. Cada fila del primer grupo cruza a cada fila del segundo, lo que requiere <span class="math inline">\(r^2\)</span> intercambios adyacentes. Se obtiene <span class="math inline">\(\operatorname{diag}(C,B)\)</span>, cuyo determinante es <span class="math inline">\(\det C\det B\)</span>. Por tanto el determinante original es <span class="math inline">\((-1)^{r^2}\det C\det B=(-1)^r\det B\det C\)</span>, pues <span class="math inline">\(r^2-r\)</span> es par. La prueba funciona aunque uno de los bloques sea singular.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-039" class="apm-anchor"></span> <strong>Solución 39.</strong> La columna <span class="math inline">\(j\)</span> es <span class="math inline">\(e_j+ta_j\)</span>, donde <span class="math inline">\(a_j\)</span> es la columna <span class="math inline">\(j\)</span> de <span class="math inline">\(A\)</span>. La multilinealidad produce un polinomio de grado a lo sumo <span class="math inline">\(n\)</span>. El término constante escoge todos los <span class="math inline">\(e_j\)</span> y vale uno. Para un término de grado uno se escoge una sola columna <span class="math inline">\(ta_j\)</span>; expandirla en la base usual deja sólo su componente <span class="math inline">\(a_{jj}\)</span>, pues las demás repiten una columna básica. Sumando sobre <span class="math inline">\(j\)</span>, el coeficiente es <span class="math inline">\(\sum_j a_{jj}=\operatorname{tr}A\)</span>. Escoger <span class="math inline">\(ta_j\)</span> en todas las posiciones produce <span class="math inline">\(t^n\det A\)</span>. Si ese coeficiente es cero, el grado baja: con <span class="math inline">\(A=0\)</span> resulta el polinomio constante uno. Sobre cuerpos finitos se habla de coeficientes formales, no de recuperar un polinomio a partir de sus valores como función.</p>
+<p><span id="MA-BCH-APM-02-013-SOL-040" class="apm-anchor"></span> <strong>Solución 40.</strong> Si se repiten dos <span class="math inline">\(a_j\)</span>, se repiten dos columnas y el determinante es cero; el producto también es cero. Supongamos distintos los puntos y usemos inducción en <span class="math inline">\(n\)</span>. Para <span class="math inline">\(n=1\)</span> el determinante y el producto vacío son uno. Fijemos <span class="math inline">\(a_1,\ldots,a_{n-1}\)</span> distintos y reemplacemos la última columna por <span class="math inline">\((1,z,\ldots,z^{n-1})^{\mathsf T}\)</span>. El determinante resultante es un polinomio <span class="math inline">\(g(z)\)</span> de grado a lo sumo <span class="math inline">\(n-1\)</span>. Se anula en cada <span class="math inline">\(a_i\)</span> porque allí repite una columna. La división de un polinomio por <span class="math inline">\(z-a_i\)</span> deja como resto su valor en <span class="math inline">\(a_i\)</span>, de modo que cada raíz permite extraer ese factor. Al extraerlo, las otras raíces se conservan: para <span class="math inline">\(a_j\ne a_i\)</span>, la igualdad <span class="math inline">\(0=(a_j-a_i)q(a_j)\)</span> fuerza <span class="math inline">\(q(a_j)=0\)</span>. Así pueden extraerse sucesivamente todos los factores y <span class="math inline">\(g(z)\)</span> es múltiplo de <span class="math inline">\(\prod_{i&lt;n}(z-a_i)\)</span>. Su coeficiente de <span class="math inline">\(z^{n-1}\)</span> es el cofactor de la entrada final: signo <span class="math inline">\((-1)^{2n}=1\)</span> y menor <span class="math inline">\(V_{n-1}\)</span>. Como ambos polinomios tienen grado a lo sumo <span class="math inline">\(n-1\)</span>, queda <span class="math inline">\(g(z)=\det V_{n-1}\prod_{i&lt;n}(z-a_i)\)</span>. Evaluar en <span class="math inline">\(z=a_n\)</span> y aplicar la inducción prueba la fórmula. La matriz que lleva los coeficientes de <span class="math inline">\(p\)</span> a <span class="math inline">\((p(a_1),\ldots,p(a_n))\)</span> es <span class="math inline">\(V^{\mathsf T}\)</span>. Es invertible exactamente cuando los puntos son distintos, y en ese caso cualquier lista de valores determina un único polinomio de grado menor que <span class="math inline">\(n\)</span>. Si hay repetición, la matriz singular impide esa unicidad global y hay listas de valores incompatibles.</p>
+</section>
+<section id="lecturas-y-referencias" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-referencias">Lecturas y referencias</h2>
+<p>Hoffman–Kunze, <em>Linear Algebra</em>, §§5.2–5.4, desarrolla el determinante mediante funciones alternantes; Friedberg, Insel y Spence, <em>Linear Algebra</em>, capítulo 4, permite contrastar ese enfoque con la construcción recursiva por cofactores y las operaciones elementales. Johnston, <em>Advanced Linear and Matrix Algebra</em>, apéndice A.1.5, reúne la lectura geométrica, las permutaciones y las propiedades matriciales. En este capítulo la justificación algebraica de multiplicatividad es independiente de la interpretación geométrica.</p>
+<hr>
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-12-matrices-de-transformaciones-y-cambio-de-base.html">← Capítulo 12</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-14-valores-propios-y-vectores-propios.html">Capítulo 14 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

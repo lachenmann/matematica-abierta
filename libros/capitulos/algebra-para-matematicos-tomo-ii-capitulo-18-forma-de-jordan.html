@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 18 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.">
+
+<title>Capítulo 18. Forma de Jordan – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#una-filtración-que-cuenta-la-duración-de-las-trayectorias" id="toc-una-filtración-que-cuenta-la-duración-de-las-trayectorias" class="nav-link active" data-scroll-target="#una-filtración-que-cuenta-la-duración-de-las-trayectorias">18.1. Una filtración que cuenta la duración de las trayectorias</a></li>
+  <li><a href="#cadenas-y-sus-primeros-vectores" id="toc-cadenas-y-sus-primeros-vectores" class="nav-link" data-scroll-target="#cadenas-y-sus-primeros-vectores">18.2. Cadenas y sus primeros vectores</a></li>
+  <li><a href="#construir-una-base-completa-de-cadenas" id="toc-construir-una-base-completa-de-cadenas" class="nav-link" data-scroll-target="#construir-una-base-completa-de-cadenas">18.3. Construir una base completa de cadenas</a></li>
+  <li><a href="#la-matriz-de-una-cadena" id="toc-la-matriz-de-una-cadena" class="nav-link" data-scroll-target="#la-matriz-de-una-cadena">18.4. La matriz de una cadena</a></li>
+  <li><a href="#leer-las-longitudes-desde-los-núcleos" id="toc-leer-las-longitudes-desde-los-núcleos" class="nav-link" data-scroll-target="#leer-las-longitudes-desde-los-núcleos">18.5. Leer las longitudes desde los núcleos</a></li>
+  <li><a href="#separar-valores-propios-y-reunir-las-cadenas" id="toc-separar-valores-propios-y-reunir-las-cadenas" class="nav-link" data-scroll-target="#separar-valores-propios-y-reunir-las-cadenas">18.6. Separar valores propios y reunir las cadenas</a></li>
+  <li><a href="#de-los-tamaños-a-una-base-verificable" id="toc-de-los-tamaños-a-una-base-verificable" class="nav-link" data-scroll-target="#de-los-tamaños-a-una-base-verificable">18.7. De los tamaños a una base verificable</a></li>
+  <li><a href="#calcular-con-un-bloque" id="toc-calcular-con-un-bloque" class="nav-link" data-scroll-target="#calcular-con-un-bloque">18.8. Calcular con un bloque</a></li>
+  <li><a href="#ejercicios-y-soluciones" id="toc-ejercicios-y-soluciones" class="nav-link" data-scroll-target="#ejercicios-y-soluciones">18.9. Ejercicios y soluciones</a></li>
+  <li><a href="#lecturas-y-referencias" id="toc-lecturas-y-referencias" class="nav-link" data-scroll-target="#lecturas-y-referencias">Lecturas y referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 18. Forma de Jordan</h1>
+<p class="subtitle lead">Álgebra para matemáticos · Tomo II</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 18 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-17-subespacios-invariantes-triangularizacion-y-formas-canonicas.html">← Capítulo 17</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-19-espacio-dual-y-transposicion.html">Capítulo 19 →</a></p>
+<p>Para el operador <span class="math inline">\(T(x,y,z)=(2x+y,2y+z,2z)\)</span>, el único espacio propio es la recta generada por <span class="math inline">\(e_1\)</span>. Con una sola dirección propia no podemos formar una base de tres vectores. Los otros dos vectores usuales, sin embargo, tienen una relación precisa con esa recta: si restamos la parte escalar y escribimos <span class="math inline">\(N=T-2I\)</span>, obtenemos <span class="math inline">\(Ne_3=e_2\)</span>, <span class="math inline">\(Ne_2=e_1\)</span> y <span class="math inline">\(Ne_1=0\)</span>. Cada aplicación de <span class="math inline">\(N\)</span> baja un peldaño hasta llegar a cero.</p>
+<p>En C17 separamos el espacio en componentes primarias. Sobre la componente correspondiente a <span class="math inline">\(\lambda\)</span>, el operador toma la forma <span class="math inline">\(\lambda I+N\)</span>, con <span class="math inline">\(N\)</span> nilpotente. Queda por organizar esa parte nilpotente. Una base formada por cadenas como la anterior hará visible toda su acción; las longitudes de las cadenas serán la información que no depende de la base elegida.</p>
+<figure id="fig-apm-t2-c18-f01" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C18-F01.svg" alt="Una cadena de longitud tres y la matriz del operador 2I más su desplazamiento nilpotente." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 18.1.</em> Las flechas representan la acción de <span class="math inline">\(N=T-2I\)</span>. Ordenamos la base desde el vector que muere primero hasta el que inicia la trayectoria más larga. Por eso los unos de la matriz quedan encima de la diagonal.
+</figcaption>
+</figure>
+<p>Trabajaremos en dimensión finita sobre un cuerpo conmutativo <span class="math inline">\(\mathbb F\)</span>. La construcción nilpotente funciona sobre cualquier cuerpo; la forma de Jordan de un operador general exigirá que su característico se escinda en <span class="math inline">\(\mathbb F\)</span>. Usaremos los núcleos e imágenes de C09 y los cocientes de C11, las matrices de cambio de base de C12, los polinomios de operadores de C15 y la descomposición primaria de C17. Para el espacio cero se admiten la base vacía y la matriz sin bloques, con característico y mínimo iguales a uno.</p>
+<section id="una-filtración-que-cuenta-la-duración-de-las-trayectorias" class="level2">
+<h2 class="anchored" data-anchor-id="una-filtración-que-cuenta-la-duración-de-las-trayectorias">18.1. Una filtración que cuenta la duración de las trayectorias</h2>
+<p>Sea <span class="math inline">\(N:V\to V\)</span> nilpotente. Escribamos <span class="math inline">\(K_j=\ker N^j\)</span> para <span class="math inline">\(j\geq0\)</span>, de modo que <span class="math inline">\(K_0=\{0\}\)</span>. Un vector de <span class="math inline">\(K_j\)</span> desaparece después de aplicar <span class="math inline">\(N\)</span> a lo sumo <span class="math inline">\(j\)</span> veces. Tenemos <span class="math inline">\(K_0\subseteq K_1\subseteq K_2\subseteq\cdots\)</span>, pues <span class="math inline">\(N^jv=0\)</span> implica <span class="math inline">\(N^{j+1}v=0\)</span>. Si <span class="math inline">\(N^r=0\)</span>, entonces <span class="math inline">\(K_r=V\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-LEM-001" class="apm-anchor"></span> <strong>Lema 18.1 (incrementos de los núcleos).</strong> Para <span class="math inline">\(j\geq1\)</span>, la regla <span class="math inline">\(v+K_j\mapsto Nv+K_{j-1}\)</span> define una aplicación inyectiva de <span class="math inline">\(K_{j+1}/K_j\)</span> en <span class="math inline">\(K_j/K_{j-1}\)</span>. En consecuencia, si <span class="math inline">\(\kappa_j=\dim K_j\)</span>, los incrementos <span class="math inline">\(\kappa_j-\kappa_{j-1}\)</span> forman una sucesión no creciente de enteros no negativos. Si <span class="math inline">\(V\ne0\)</span> y <span class="math inline">\(r\)</span> es el índice de nilpotencia, las inclusiones hasta <span class="math inline">\(K_r\)</span> son estrictas.</p>
+<p><strong>Demostración.</strong> Para <span class="math inline">\(v\in K_{j+1}\)</span>, se cumple <span class="math inline">\(N^j(Nv)=0\)</span>, de modo que <span class="math inline">\(Nv\in K_j\)</span>. Cambiar <span class="math inline">\(v\)</span> por un vector de su misma clase añade un elemento de <span class="math inline">\(K_j\)</span>; su imagen por <span class="math inline">\(N\)</span> pertenece a <span class="math inline">\(K_{j-1}\)</span>. La regla queda bien definida y es lineal. Si su salida es cero, <span class="math inline">\(Nv\in K_{j-1}\)</span>, luego <span class="math inline">\(N^jv=0\)</span> y <span class="math inline">\(v\in K_j\)</span>. Su núcleo es cero. Comparar dimensiones de cocientes da la desigualdad entre incrementos.</p>
+<p>Si una inclusión <span class="math inline">\(K_{j-1}\subseteq K_j\)</span> fuera igualdad, el incremento correspondiente sería cero y todos los posteriores también. La sucesión no podría volver a crecer. Para <span class="math inline">\(j&lt;r\)</span> esto contradice <span class="math inline">\(K_r=V\)</span> y <span class="math inline">\(N^{r-1}\ne0\)</span>; para <span class="math inline">\(j=r\)</span>, la igualdad contradiría directamente <span class="math inline">\(K_{r-1}\ne V\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Esta restricción ya descarta datos imposibles. Las nulidades <span class="math inline">\(0,2,3,5\)</span> no pueden ser las primeras de un nilpotente: sus incrementos serían <span class="math inline">\(2,1,2\)</span>, y el último crecimiento excedería al anterior. Cada nivel nuevo debe encontrar suficiente espacio en el nivel previo para que su imagen quede allí.</p>
+</section>
+<section id="cadenas-y-sus-primeros-vectores" class="level2">
+<h2 class="anchored" data-anchor-id="cadenas-y-sus-primeros-vectores">18.2. Cadenas y sus primeros vectores</h2>
+<p><span id="MA-BCH-APM-02-018-DEF-001" class="apm-anchor"></span> <strong>Definición 18.1.</strong> Una <strong>cadena nilpotente de longitud <span class="math inline">\(s\)</span></strong> es una lista <span class="math inline">\((v_1,\ldots,v_s)\)</span> con <span class="math inline">\(v_1\ne0\)</span>, <span class="math inline">\(Nv_1=0\)</span> y <span class="math inline">\(Nv_j=v_{j-1}\)</span> para <span class="math inline">\(2\leq j\leq s\)</span>. Llamaremos <span class="math inline">\(v_1\)</span> su vector inferior y <span class="math inline">\(v_s\)</span> su cabeza. Una <strong>cadena para <span class="math inline">\(T\)</span> correspondiente a <span class="math inline">\(\lambda\)</span></strong> es una cadena nilpotente de <span class="math inline">\(T-\lambda I\)</span>.</p>
+<p>Partir de una cabeza <span class="math inline">\(v\)</span> con <span class="math inline">\(N^sv=0\)</span> y <span class="math inline">\(N^{s-1}v\ne0\)</span> produce la cadena <span class="math inline">\((N^{s-1}v,\ldots,Nv,v)\)</span>. Su longitud registra exactamente cuántos pasos necesita esa trayectoria para morir. Al juntar varias cadenas, la independencia de sus vectores inferiores controla todas las alturas.</p>
+<p><span id="MA-BCH-APM-02-018-LEM-002" class="apm-anchor"></span> <strong>Lema 18.2 (independencia de cadenas).</strong> Los vectores de una familia finita de cadenas nilpotentes son linealmente independientes si y sólo si sus vectores inferiores son linealmente independientes.</p>
+<p><strong>Demostración.</strong> La necesidad procede de tomar una subfamilia de una familia independiente. Para la suficiencia, consideremos una relación entre todos los vectores de las cadenas y supongamos que tiene algún coeficiente no nulo. Sea <span class="math inline">\(j\)</span> el mayor nivel que aparece con coeficiente no nulo, numerando desde abajo. Aplicar <span class="math inline">\(N^{j-1}\)</span> anula todos los niveles menores y convierte cada vector de nivel <span class="math inline">\(j\)</span> en el inferior de su cadena. Obtenemos una relación entre vectores inferiores independientes. Todos sus coeficientes deben ser cero, en contradicción con la elección de <span class="math inline">\(j\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>En particular, una sola cadena siempre es independiente. Dos cabezas independientes, en cambio, pueden conducir al mismo vector inferior. Por ejemplo, si <span class="math inline">\(Ne_2=e_1\)</span> y <span class="math inline">\(Ne_3=e_1\)</span>, las cabezas <span class="math inline">\(e_2,e_3\)</span> son independientes, pero las dos cadenas comparten <span class="math inline">\(e_1\)</span>. El criterio mira lo que queda al final de cada trayectoria.</p>
+</section>
+<section id="construir-una-base-completa-de-cadenas" class="level2">
+<h2 class="anchored" data-anchor-id="construir-una-base-completa-de-cadenas">18.3. Construir una base completa de cadenas</h2>
+<p><span id="MA-BCH-APM-02-018-THM-003" class="apm-anchor"></span> <strong>Teorema 18.3 (base de cadenas nilpotentes).</strong> Todo operador nilpotente de un espacio de dimensión finita admite una base que es unión de cadenas nilpotentes.</p>
+<p><strong>Demostración.</strong> Inducimos sobre <span class="math inline">\(\dim V\)</span>. Para <span class="math inline">\(V=0\)</span>, la base vacía cumple lo pedido. Supongamos <span class="math inline">\(V\ne0\)</span> y pongamos <span class="math inline">\(W=\operatorname{im}N\)</span>. Este subespacio es invariante bajo <span class="math inline">\(N\)</span> y tiene dimensión menor que <span class="math inline">\(V\)</span>: si <span class="math inline">\(N\)</span> fuera sobreyectivo sería inyectivo en dimensión finita, y ninguna potencia suya podría ser cero sobre un espacio no nulo. La restricción a <span class="math inline">\(W\)</span> sigue siendo nilpotente.</p>
+<p>Por inducción, <span class="math inline">\(W\)</span> tiene una base de cadenas <span class="math inline">\((w_{i,1},\ldots,w_{i,s_i})\)</span>, con <span class="math inline">\(1\leq i\leq b\)</span>. Cada cabeza <span class="math inline">\(w_{i,s_i}\)</span> pertenece a <span class="math inline">\(\operatorname{im}N\)</span>; elegimos <span class="math inline">\(u_i\in V\)</span> tal que <span class="math inline">\(Nu_i=w_{i,s_i}\)</span>. Así obtenemos una cadena más larga <span class="math inline">\((w_{i,1},\ldots,w_{i,s_i},u_i)\)</span>.</p>
+<p>Los <span class="math inline">\(b\)</span> vectores inferiores <span class="math inline">\(w_{i,1}\)</span> son independientes y pertenecen a <span class="math inline">\(\ker N\)</span>. Completémoslos hasta una base de ese núcleo añadiendo <span class="math inline">\(z_1,\ldots,z_c\)</span>. Cada <span class="math inline">\(z_j\)</span> forma una cadena de longitud uno. Los vectores inferiores de las cadenas alargadas y de estas nuevas cadenas forman una base de <span class="math inline">\(\ker N\)</span>; el lema 18.2 asegura que todos los vectores reunidos son independientes.</p>
+<p>Falta contar. La base de <span class="math inline">\(W\)</span> aportó <span class="math inline">\(\dim W\)</span> vectores, los levantamientos añadieron <span class="math inline">\(b\)</span> y la ampliación del núcleo añadió <span class="math inline">\(c\)</span>, donde <span class="math inline">\(b+c=\dim\ker N\)</span>. El total es <span class="math inline">\(\operatorname{rg}N+\dim\ker N=\dim V\)</span>. La familia independiente es una base. El argumento incluye <span class="math inline">\(N=0\)</span>: en ese caso <span class="math inline">\(W=0\)</span>, no hay cadenas que alargar y toda base de <span class="math inline">\(V=\ker N\)</span> consta de cadenas unitarias. <span class="math inline">\(\square\)</span></p>
+<figure id="fig-apm-t2-c18-f04" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C18-F04.svg" alt="Construcción por inducción sobre la imagen: se alargan las cadenas de la imagen y se añaden vectores del núcleo." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 18.2.</em> Una base de la imagen con longitudes dos y uno se levanta a cadenas de longitudes tres y dos. Un vector inferior adicional completa el núcleo y aporta una cadena unitaria. El espacio del ejemplo tiene dimensión seis.
+</figcaption>
+</figure>
+<p>La demostración da un procedimiento efectivo: calcular una base de la imagen, representar allí la restricción, resolver el problema en dimensión menor, levantar cada cabeza mediante un sistema lineal y completar los vectores inferiores dentro del núcleo. Los levantamientos pueden elegirse libremente entre las soluciones; la independencia se conserva porque depende de los vectores inferiores, que ya estaban fijados.</p>
+</section>
+<section id="la-matriz-de-una-cadena" class="level2">
+<h2 class="anchored" data-anchor-id="la-matriz-de-una-cadena">18.4. La matriz de una cadena</h2>
+<p><span id="MA-BCH-APM-02-018-DEF-002" class="apm-anchor"></span> <strong>Definición 18.2.</strong> El <strong>bloque de Jordan</strong> de tamaño <span class="math inline">\(s\geq1\)</span> y valor <span class="math inline">\(\lambda\)</span> es <span class="math inline">\(J_s(\lambda)=\lambda I_s+U_s\)</span>, donde <span class="math inline">\(U_s\)</span> tiene unos en las posiciones <span class="math inline">\((i,i+1)\)</span> y ceros en las restantes. Por ejemplo,</p>
+<p><span class="math display">\[
+J_4(\lambda)=\begin{pmatrix}
+\lambda&amp;1&amp;0&amp;0\\0&amp;\lambda&amp;1&amp;0\\0&amp;0&amp;\lambda&amp;1\\0&amp;0&amp;0&amp;\lambda
+\end{pmatrix}.
+\]</span></p>
+<p>Si <span class="math inline">\((v_1,\ldots,v_s)\)</span> es una cadena para <span class="math inline">\(T-\lambda I\)</span>, entonces <span class="math inline">\(Tv_1=\lambda v_1\)</span> y <span class="math inline">\(Tv_j=\lambda v_j+v_{j-1}\)</span> para <span class="math inline">\(j&gt;1\)</span>. Escribir esas imágenes por columnas da exactamente <span class="math inline">\(J_s(\lambda)\)</span>. El subespacio generado por la cadena es invariante. En el caso nilpotente, el teorema 18.3 descompone <span class="math inline">\(V\)</span> como suma directa de estos subespacios, con bloques <span class="math inline">\(J_s(0)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-DEF-003" class="apm-anchor"></span> <strong>Definición 18.3.</strong> Una <strong>base de Jordan</strong> de <span class="math inline">\(T\)</span> es una base que es unión de cadenas correspondientes a valores propios. Su matriz, diagonal por bloques de Jordan, se llama una <strong>forma de Jordan</strong> de <span class="math inline">\(T\)</span>. Se pueden permutar los bloques; cuando se desea fijar su presentación, se agrupan por valor propio y se ordenan sus tamaños de mayor a menor dentro de cada grupo.</p>
+<p>Una base de Jordan contiene vectores propios y vectores que llegan a ellos después de aplicar varias veces <span class="math inline">\(T-\lambda I\)</span>. No se exige que todos sean propios. Las posiciones de los unos dependen del orden dentro de las cadenas; en este libro el vector inferior va primero.</p>
+</section>
+<section id="leer-las-longitudes-desde-los-núcleos" class="level2">
+<h2 class="anchored" data-anchor-id="leer-las-longitudes-desde-los-núcleos">18.5. Leer las longitudes desde los núcleos</h2>
+<p><span id="MA-BCH-APM-02-018-PRP-004" class="apm-anchor"></span> <strong>Proposición 18.4 (nulidades y rangos).</strong> Si una base de cadenas de <span class="math inline">\(N\)</span> tiene longitudes <span class="math inline">\(s_1,\ldots,s_b\)</span>, entonces, para todo <span class="math inline">\(j\geq0\)</span>,</p>
+<p><span class="math display">\[
+\kappa_j=\dim\ker N^j=\sum_{i=1}^b\min(j,s_i),\qquad
+\operatorname{rg}N^j=\sum_{i=1}^b\max(s_i-j,0).
+\]</span></p>
+<p>Más precisamente, una base de <span class="math inline">\(\ker N^j\)</span> consta de los primeros <span class="math inline">\(\min(j,s_i)\)</span> vectores de cada cadena.</p>
+<p><strong>Demostración.</strong> En una cadena, <span class="math inline">\(N^jv_k\)</span> es cero si <span class="math inline">\(k\leq j\)</span>, y es <span class="math inline">\(v_{k-j}\)</span> si <span class="math inline">\(k&gt;j\)</span>. Las imágenes no nulas de los vectores de la base son distintas y forman una subfamilia independiente de ella. Por tanto, una combinación queda en el núcleo exactamente cuando sus coeficientes en los lugares <span class="math inline">\(k&gt;j\)</span> son cero. Esto identifica una base del núcleo y cuenta sus elementos. Los vectores restantes tienen imágenes independientes y forman una base de la imagen; su número da la segunda fórmula. <span class="math inline">\(\square\)</span></p>
+<figure id="fig-apm-t2-c18-f02" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C18-F02.svg" alt="Cadenas de longitudes cuatro, dos y uno, ordenadas por nivel desde sus vectores inferiores." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 18.3.</em> Los primeros <span class="math inline">\(j\)</span> niveles contienen una base de <span class="math inline">\(\ker N^j\)</span>. Cada cadena que alcanza el nivel <span class="math inline">\(j\)</span> añade exactamente un vector al pasar del núcleo anterior al siguiente.
+</figcaption>
+</figure>
+<p><span id="MA-BCH-APM-02-018-COR-005" class="apm-anchor"></span> <strong>Corolario 18.5 (recuperación y unicidad de los tamaños).</strong> El número <span class="math inline">\(b_j\)</span> de bloques de tamaño al menos <span class="math inline">\(j\)</span> y el número <span class="math inline">\(c_j\)</span> de bloques de tamaño exactamente <span class="math inline">\(j\)</span> son</p>
+<p><span class="math display">\[
+b_j=\kappa_j-\kappa_{j-1},\qquad
+c_j=b_j-b_{j+1}=2\kappa_j-\kappa_{j-1}-\kappa_{j+1}\quad(j\geq1).
+\]</span></p>
+<p>Las nulidades determinan, por tanto, todas las longitudes con sus repeticiones. El número total de bloques es <span class="math inline">\(\kappa_1\)</span> y, si <span class="math inline">\(V\ne0\)</span>, el mayor tamaño es el índice de nilpotencia.</p>
+<p><strong>Demostración.</strong> En la diferencia de las fórmulas de 18.4, una cadena aporta uno si <span class="math inline">\(s_i\geq j\)</span> y cero si <span class="math inline">\(s_i&lt;j\)</span>. Esto prueba la fórmula de <span class="math inline">\(b_j\)</span>. Restar las cantidades de cadenas que alcanzan los niveles <span class="math inline">\(j\)</span> y <span class="math inline">\(j+1\)</span> cuenta las que terminan en el primero. Los bloques son tantos como sus vectores inferiores, que forman una base del núcleo. Finalmente, <span class="math inline">\(N^j\)</span> es cero precisamente cuando <span class="math inline">\(j\)</span> alcanza todas las longitudes. <span class="math inline">\(\square\)</span></p>
+<p>Para las longitudes <span class="math inline">\(4,2,1\)</span>, las nulidades son <span class="math inline">\(0,3,5,6,7,7,\ldots\)</span>. Sus incrementos son <span class="math inline">\(3,2,1,1,0,\ldots\)</span>. Hay tres bloques, dos llegan al segundo nivel, uno llega al tercero y ese mismo llega al cuarto. Las diferencias sucesivas dan un bloque de tamaño uno, uno de tamaño dos, ninguno de tamaño tres y uno de tamaño cuatro. La repetición de la nulidad final permite calcular también <span class="math inline">\(c_4\)</span> sin inventar un crecimiento posterior.</p>
+<figure id="fig-apm-t2-c18-f03" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C18-F03.svg" alt="Nulidades e incrementos para la partición de siete dada por cuatro, dos y uno." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 18.4.</em> Los valores se evalúan en índices enteros. Los incrementos cuentan cadenas que sobreviven hasta cada nivel; sus diferencias cuentan cadenas que terminan allí.
+</figcaption>
+</figure>
+<p>Las bases construidas en 18.3 pueden variar. Los tamaños que producen no varían, porque las dimensiones de los núcleos pertenecen al operador. Ésta es la primera parte de la canonicidad de Jordan.</p>
+</section>
+<section id="separar-valores-propios-y-reunir-las-cadenas" class="level2">
+<h2 class="anchored" data-anchor-id="separar-valores-propios-y-reunir-las-cadenas">18.6. Separar valores propios y reunir las cadenas</h2>
+<p><span id="MA-BCH-APM-02-018-THM-006" class="apm-anchor"></span> <strong>Teorema 18.6 (existencia de la forma de Jordan).</strong> Un operador de dimensión finita admite una forma de Jordan sobre <span class="math inline">\(\mathbb F\)</span> si y sólo si su polinomio característico se escinde sobre <span class="math inline">\(\mathbb F\)</span>.</p>
+<p><strong>Demostración.</strong> Si existe una forma de Jordan, su matriz es triangular y su característico es el producto de sus factores diagonales <span class="math inline">\(t-\lambda\)</span>, de modo que se escinde.</p>
+<p>Supongamos ahora que el característico se escinde. C17, corolario 17.11, proporciona la suma directa <span class="math inline">\(V=\bigoplus_\lambda G_\lambda\)</span>, donde <span class="math inline">\(G_\lambda=\ker(T-\lambda I)^{r_\lambda}\)</span> y <span class="math inline">\(r_\lambda\)</span> es el exponente de <span class="math inline">\(t-\lambda\)</span> en el mínimo. Sobre <span class="math inline">\(G_\lambda\)</span>, el operador <span class="math inline">\(N_\lambda=(T-\lambda I)|_{G_\lambda}\)</span> es nilpotente. Por 18.3 elegimos una base de cadenas de cada <span class="math inline">\(N_\lambda\)</span>. La suma directa garantiza que reunir todas esas bases da una base de <span class="math inline">\(V\)</span>. La acción de <span class="math inline">\(T\)</span> sobre cada cadena tiene matriz <span class="math inline">\(J_s(\lambda)\)</span>, como se comprobó por columnas en 18.4. La matriz total es diagonal por esos bloques. Para el espacio cero la afirmación se cumple con los convenios iniciales. <span class="math inline">\(\square\)</span></p>
+<p>Sobre <span class="math inline">\(\mathbb C\)</span> la existencia se sigue del teorema fundamental del álgebra, conservando el estatuto de resultado externo admitido en T1, §26.15. Sobre <span class="math inline">\(\mathbb R\)</span> puede fallar: la rotación de matriz <span class="math inline">\(\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\)</span> tiene característico <span class="math inline">\(t^2+1\)</span>, que no se escinde allí. Al extender los escalares a <span class="math inline">\(\mathbb C\)</span>, esa misma matriz sí tiene forma de Jordan, en este caso diagonal.</p>
+<p><span id="MA-BCH-APM-02-018-PRP-007" class="apm-anchor"></span> <strong>Proposición 18.7 (datos de cada valor propio).</strong> Supongamos que el característico se escinde y fijemos un valor propio <span class="math inline">\(\lambda\)</span>. Si sus tamaños de bloque son <span class="math inline">\(s_{\lambda,1},\ldots,s_{\lambda,b_\lambda}\)</span>, entonces</p>
+<p><span class="math display">\[
+\dim\ker(T-\lambda I)^j=\sum_{i=1}^{b_\lambda}\min(j,s_{\lambda,i}),\qquad
+a_\lambda=\sum_i s_{\lambda,i},\qquad
+g_\lambda=b_\lambda,\qquad
+r_\lambda=\max_i s_{\lambda,i}.
+\]</span></p>
+<p>Aquí <span class="math inline">\(a_\lambda\)</span> y <span class="math inline">\(g_\lambda\)</span> son las multiplicidades algebraica y geométrica, y <span class="math inline">\(r_\lambda\)</span> es el exponente de <span class="math inline">\(t-\lambda\)</span> en el mínimo. Las diferencias de nulidades de 18.5 recuperan todos los bloques de <span class="math inline">\(\lambda\)</span>, calculando los núcleos en el espacio completo.</p>
+<p><strong>Demostración.</strong> En <span class="math inline">\(G_\lambda\)</span> se aplica 18.4. En una componente <span class="math inline">\(G_\mu\)</span> con <span class="math inline">\(\mu\ne\lambda\)</span>, la restricción de <span class="math inline">\(T-\lambda I\)</span> es <span class="math inline">\((\mu-\lambda)I+N_\mu\)</span>. Es invertible: al factorizar el escalar no nulo, su inversa es una suma geométrica finita de potencias de <span class="math inline">\(-N_\mu/(\mu-\lambda)\)</span>. Todas sus potencias tienen núcleo cero. Por ello el núcleo total recibe contribución sólo de <span class="math inline">\(G_\lambda\)</span> y se obtiene la primera fórmula.</p>
+<p>El característico de un bloque es <span class="math inline">\((t-\lambda)^s\)</span>, por triangularidad, y el producto de los característicos de los bloques da <span class="math inline">\(a_\lambda=\sum_i s_{\lambda,i}\)</span>. Para <span class="math inline">\(j=1\)</span>, cada bloque correspondiente aporta una dimensión al espacio propio y obtenemos <span class="math inline">\(g_\lambda=b_\lambda\)</span>. Por C17, el índice de nilpotencia de <span class="math inline">\(N_\lambda\)</span> es <span class="math inline">\(r_\lambda\)</span>; el corolario 18.5 lo identifica con la mayor longitud. <span class="math inline">\(\square\)</span></p>
+<p>Así se leen las dos expresiones polinómicas desde los bloques:</p>
+<p><span class="math display">\[
+\chi_T(t)=\prod_\lambda(t-\lambda)^{\sum_i s_{\lambda,i}},\qquad
+m_T(t)=\prod_\lambda(t-\lambda)^{\max_i s_{\lambda,i}}.
+\]</span></p>
+<p>La diagonalización corresponde a que todos los tamaños sean uno. Tener un único bloque para un valor propio significa que su multiplicidad geométrica es uno, aunque la algebraica pueda ser grande.</p>
+<p><span id="MA-BCH-APM-02-018-COR-008" class="apm-anchor"></span> <strong>Corolario 18.8 (clasificación por semejanza en el caso escindido).</strong> Dos matrices del mismo orden cuyos característicos se escinden son semejantes si y sólo si tienen los mismos valores propios y los mismos tamaños de bloque, con sus repeticiones. Equivalentemente, tienen los mismos valores propios y las mismas nulidades de <span class="math inline">\((A-\lambda I)^j\)</span> para todo <span class="math inline">\(\lambda\)</span> propio y <span class="math inline">\(1\leq j\leq n\)</span>.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(B=P^{-1}AP\)</span>, entonces <span class="math inline">\((B-\lambda I)^j=P^{-1}(A-\lambda I)^jP\)</span>, de modo que <span class="math inline">\(P\)</span> lleva un núcleo sobre el otro y sus dimensiones coinciden. Las nulidades determinan los tamaños por 18.5 y 18.7. En la otra dirección, ordenar de igual manera bloques coincidentes produce una matriz <span class="math inline">\(J\)</span> común; si <span class="math inline">\(A=PJP^{-1}\)</span> y <span class="math inline">\(B=QJQ^{-1}\)</span>, se obtiene <span class="math inline">\(B=(PQ^{-1})^{-1}A(PQ^{-1})\)</span>. Hasta <span class="math inline">\(j=n\)</span> basta: ningún bloque puede superar la dimensión, y después las nulidades permanecen constantes. <span class="math inline">\(\square\)</span></p>
+<p>Los datos <span class="math inline">\(\chi_T\)</span>, <span class="math inline">\(m_T\)</span> y las multiplicidades geométricas juntos todavía pueden ser insuficientes. Las particiones nilpotentes <span class="math inline">\((3,3,1)\)</span> y <span class="math inline">\((3,2,2)\)</span> tienen dimensión siete, tres bloques e índice tres. Ambas dan <span class="math inline">\(\chi=t^7\)</span> y <span class="math inline">\(m=t^3\)</span>, pero sus nulidades segundas son cinco y seis. Por 18.8 representan clases de semejanza distintas.</p>
+</section>
+<section id="de-los-tamaños-a-una-base-verificable" class="level2">
+<h2 class="anchored" data-anchor-id="de-los-tamaños-a-una-base-verificable">18.7. De los tamaños a una base verificable</h2>
+<p>Consideremos sobre <span class="math inline">\(\mathbb Q\)</span> la matriz</p>
+<p><span class="math display">\[
+N=\begin{pmatrix}0&amp;2&amp;0&amp;0\\0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;0\end{pmatrix}.
+\]</span></p>
+<p>Se tiene <span class="math inline">\(Ne_2=2e_1\)</span>, <span class="math inline">\(Ne_3=e_2+e_4\)</span> y <span class="math inline">\(Ne_1=Ne_4=0\)</span>. Por tanto <span class="math inline">\(N^2e_3=2e_1\)</span> y <span class="math inline">\(N^3=0\)</span>. Los rangos de <span class="math inline">\(N,N^2,N^3\)</span> son <span class="math inline">\(2,1,0\)</span>, así que las nulidades son <span class="math inline">\(2,3,4\)</span>. Los incrementos <span class="math inline">\(2,1,1\)</span> anuncian dos bloques, de tamaños tres y uno.</p>
+<p>Tomamos la cabeza <span class="math inline">\(e_3\)</span>. Su cadena ordenada es <span class="math inline">\((2e_1,e_2+e_4,e_3)\)</span>. El vector <span class="math inline">\(e_4\)</span> pertenece al núcleo y es independiente del inferior <span class="math inline">\(2e_1\)</span>; aporta la cadena unitaria restante. Con estas columnas,</p>
+<p><span class="math display">\[
+P=\begin{pmatrix}2&amp;0&amp;0&amp;0\\0&amp;1&amp;0&amp;0\\0&amp;0&amp;1&amp;0\\0&amp;1&amp;0&amp;1\end{pmatrix},\qquad
+J=\begin{pmatrix}0&amp;1&amp;0&amp;0\\0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0\end{pmatrix}.
+\]</span></p>
+<p>La igualdad <span class="math inline">\(NP=PJ\)</span> expresa, columna por columna, las dos cadenas. Además <span class="math inline">\(\det P=2\ne0\)</span>, de modo que <span class="math inline">\(P^{-1}NP=J\)</span>. Verificar esa identidad y la invertibilidad de <span class="math inline">\(P\)</span> evita que una lista de tamaños correcta oculte una base mal elegida.</p>
+<figure id="fig-apm-t2-c18-f05" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C18-F05.svg" alt="Matriz nilpotente de orden cuatro y sus cadenas, con cambio de base de determinante dos." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 18.5.</em> La cabeza <span class="math inline">\(e_3\)</span> aporta tres vectores y <span class="math inline">\(e_4\)</span> completa el núcleo. Las columnas aparecen en el mismo orden que los bloques de <span class="math inline">\(J\)</span>.
+</figcaption>
+</figure>
+<p>Hay otra construcción útil cuando ya se han calculado todos los núcleos. A una cabeza de longitud <span class="math inline">\(j\)</span> podemos añadir elementos de <span class="math inline">\(K_{j-1}\)</span> sin modificar su vector inferior, y las imágenes por <span class="math inline">\(N\)</span> de cabezas más largas ya suministran parte de <span class="math inline">\(K_j\)</span>. El cociente siguiente separa esas dos redundancias.</p>
+<p><span id="MA-BCH-APM-02-018-PRP-009" class="apm-anchor"></span> <strong>Proposición 18.9 (elección compatible de cabezas).</strong> Sea <span class="math inline">\(N\)</span> nilpotente en <span class="math inline">\(V\ne0\)</span>, de índice <span class="math inline">\(r\)</span>. Para <span class="math inline">\(1\leq j\leq r\)</span>, pongamos</p>
+<p><span class="math display">\[
+H_j=K_j/(K_{j-1}+NK_{j+1}),\qquad K_{r+1}=V.
+\]</span></p>
+<p>Se tiene <span class="math inline">\(\dim H_j=c_j\)</span>, el número de bloques de tamaño exactamente <span class="math inline">\(j\)</span>. Eligiendo representantes en <span class="math inline">\(K_j\)</span> de una base de cada <span class="math inline">\(H_j\)</span>, y formando con cada representante una cadena de longitud <span class="math inline">\(j\)</span>, se obtiene una base de Jordan de <span class="math inline">\(N\)</span>.</p>
+<p><strong>Demostración.</strong> El denominador está contenido en <span class="math inline">\(K_j\)</span>, pues <span class="math inline">\(N^{j+1}v=0\)</span> implica <span class="math inline">\(N^j(Nv)=0\)</span>. Definamos <span class="math inline">\(B_j=\ker N\cap\operatorname{im}N^{j-1}\)</span>. La aplicación <span class="math inline">\(K_j\to B_j\)</span>, <span class="math inline">\(v\mapsto N^{j-1}v\)</span>, es sobreyectiva: si <span class="math inline">\(b=N^{j-1}v\)</span> y <span class="math inline">\(Nb=0\)</span>, entonces <span class="math inline">\(v\in K_j\)</span>. Su núcleo es <span class="math inline">\(K_{j-1}\)</span>. Además, lleva <span class="math inline">\(NK_{j+1}\)</span> sobre <span class="math inline">\(B_{j+1}\)</span>: sus imágenes son <span class="math inline">\(N^ju\)</span> para <span class="math inline">\(u\in K_{j+1}\)</span>, y éstos son exactamente los elementos de <span class="math inline">\(\ker N\cap\operatorname{im}N^j\)</span>. Resulta un isomorfismo</p>
+<p><span class="math display">\[
+H_j\longrightarrow B_j/B_{j+1},\qquad
+v+(K_{j-1}+NK_{j+1})\longmapsto N^{j-1}v+B_{j+1}.
+\]</span></p>
+<p>En una base de cadenas existente por 18.3, <span class="math inline">\(B_j\)</span> está generado por los vectores inferiores de las cadenas de longitud al menos <span class="math inline">\(j\)</span>. Así <span class="math inline">\(\dim B_j=b_j\)</span> y <span class="math inline">\(\dim H_j=b_j-b_{j+1}=c_j\)</span>.</p>
+<p>Elijamos los representantes del enunciado. Sus imágenes <span class="math inline">\(N^{j-1}v\)</span> representan una base de <span class="math inline">\(B_j/B_{j+1}\)</span>. En la filtración descendente <span class="math inline">\(B_1\supseteq B_2\supseteq\cdots\supseteq B_{r+1}=0\)</span>, levantar bases de los cocientes sucesivos produce una base de <span class="math inline">\(B_1\)</span>: empezando por el último cociente, cada paso añade vectores independientes módulo el subespacio ya generado y completa el siguiente espacio. Por tanto, todos los vectores inferiores elegidos forman una base de <span class="math inline">\(\ker N\)</span>.</p>
+<p>Cada cabeza tiene longitud exactamente <span class="math inline">\(j\)</span>, pues su clase no nula impide que esté en <span class="math inline">\(K_{j-1}\)</span>. El lema 18.2 asegura la independencia de todas las cadenas. Aportan <span class="math inline">\(\sum_j jc_j=\dim V\)</span> vectores, porque los <span class="math inline">\(c_j\)</span> ya cuentan los tamaños de una base de cadenas existente. La familia es una base. <span class="math inline">\(\square\)</span></p>
+<p>Esta elección exige bases de cocientes, que se calculan extendiendo primero una base de <span class="math inline">\(K_{j-1}+NK_{j+1}\)</span> a una de <span class="math inline">\(K_j\)</span>. No basta tomar cualquier vector que aparezca al ampliar una base de un núcleo: podría ser un tramo de una cadena más larga y repetir una dirección inferior ya utilizada.</p>
+<p>Volvamos también al ejemplo de C17,</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}2&amp;1&amp;1&amp;0\\0&amp;2&amp;1&amp;0\\0&amp;0&amp;-1&amp;1\\0&amp;0&amp;0&amp;-1\end{pmatrix}.
+\]</span></p>
+<p>Sus componentes primarias son <span class="math inline">\(G_2=\operatorname{span}(e_1,e_2)\)</span> y <span class="math inline">\(G_{-1}=\operatorname{span}(u,v)\)</span>, donde</p>
+<p><span class="math display">\[
+u=(-2/9,-1/3,1,0),\qquad v=(-1/27,-1/9,0,1).
+\]</span></p>
+<p>Las relaciones <span class="math inline">\((A-2I)e_1=0\)</span>, <span class="math inline">\((A-2I)e_2=e_1\)</span>, <span class="math inline">\((A+I)u=0\)</span> y <span class="math inline">\((A+I)v=u\)</span> dan dos cadenas. Si <span class="math inline">\(P=(e_1\ e_2\ u\ v)\)</span>, entonces <span class="math inline">\(\det P=1\)</span> y <span class="math inline">\(AP=P\operatorname{diag}(J_2(2),J_2(-1))\)</span>. La base primaria anterior queda ahora organizada internamente: cada componente tiene una sola cadena de longitud dos.</p>
+</section>
+<section id="calcular-con-un-bloque" class="level2">
+<h2 class="anchored" data-anchor-id="calcular-con-un-bloque">18.8. Calcular con un bloque</h2>
+<p><span id="MA-BCH-APM-02-018-PRP-010" class="apm-anchor"></span> <strong>Proposición 18.10 (evaluación polinómica).</strong> Escribamos la identidad formal <span class="math inline">\(p(\lambda+z)=\sum_{j\geq0}a_jz^j\)</span> en <span class="math inline">\(\mathbb F[z]\)</span>. Entonces</p>
+<p><span class="math display">\[
+p(J_s(\lambda))=\sum_{j=0}^{s-1}a_jU_s^j.
+\]</span></p>
+<p><strong>Demostración.</strong> La identidad es un cambio de variable entre polinomios. Evaluarla en <span class="math inline">\(U_s\)</span> sustituye <span class="math inline">\(\lambda+z\)</span> por <span class="math inline">\(\lambda I+U_s=J_s(\lambda)\)</span>. Los términos de grado al menos <span class="math inline">\(s\)</span> desaparecen porque <span class="math inline">\(U_s^s=0\)</span>. La evaluación respeta sumas y productos por C15, así que no se necesita una expansión analítica. <span class="math inline">\(\square\)</span></p>
+<p>La fórmula conserva sentido en característica positiva sin dividir por factoriales. Cada potencia <span class="math inline">\(U_s^j\)</span> tiene unos en la <span class="math inline">\(j\)</span>-ésima diagonal superior. Por eso el coeficiente <span class="math inline">\(a_j\)</span> ocupa esa diagonal de <span class="math inline">\(p(J_s(\lambda))\)</span>. Para <span class="math inline">\(s=3\)</span>, <span class="math inline">\(\lambda=2\)</span> y <span class="math inline">\(p(t)=t^3\)</span>, la expansión <span class="math inline">\((2+z)^3=8+12z+6z^2+z^3\)</span> da</p>
+<p><span class="math display">\[
+J_3(2)^3=8I+12U_3+6U_3^2
+=\begin{pmatrix}8&amp;12&amp;6\\0&amp;8&amp;12\\0&amp;0&amp;8\end{pmatrix}.
+\]</span></p>
+<figure id="fig-apm-t2-c18-f06" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C18-F06.svg" alt="Evaluación del cubo de un bloque de tamaño tres mediante tres diagonales superiores." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 18.6.</em> Los coeficientes de la expansión formal se colocan por diagonales. La potencia cúbica del desplazamiento es cero y no aporta una cuarta diagonal.
+</figcaption>
+</figure>
+<p><span id="MA-BCH-APM-02-018-COR-011" class="apm-anchor"></span> <strong>Corolario 18.11 (potencias e inversa).</strong> Para <span class="math inline">\(k\geq0\)</span>,</p>
+<p><span class="math display">\[
+J_s(\lambda)^k=\sum_{j=0}^{\min(k,s-1)}\binom{k}{j}\lambda^{k-j}U_s^j.
+\]</span></p>
+<p>Si <span class="math inline">\(\lambda\ne0\)</span>, el bloque es invertible y</p>
+<p><span class="math display">\[
+J_s(\lambda)^{-1}=\lambda^{-1}\sum_{j=0}^{s-1}(-\lambda^{-1}U_s)^j.
+\]</span></p>
+<p>Los coeficientes binomiales se interpretan en <span class="math inline">\(\mathbb F\)</span>; en los exponentes cero se usa <span class="math inline">\(\lambda^0=1\)</span>, también para <span class="math inline">\(\lambda=0\)</span>.</p>
+<p><strong>Demostración.</strong> La primera identidad resulta de 18.10 y el binomio para <span class="math inline">\((\lambda+z)^k\)</span>. Para la segunda, pongamos <span class="math inline">\(X=-\lambda^{-1}U_s\)</span>. Al multiplicar <span class="math inline">\(I-X\)</span> por <span class="math inline">\(I+X+\cdots+X^{s-1}\)</span> queda <span class="math inline">\(I-X^s=I\)</span>. Como <span class="math inline">\(X^s=0\)</span> y <span class="math inline">\(J_s(\lambda)=\lambda(I-X)\)</span>, obtenemos la inversa anunciada. Si <span class="math inline">\(\lambda=0\)</span>, el bloque es nilpotente en dimensión positiva y no es invertible. <span class="math inline">\(\square\)</span></p>
+<p>Si <span class="math inline">\(A=PJP^{-1}\)</span>, calcular <span class="math inline">\(A^k\)</span> se reduce a calcular cada bloque de <span class="math inline">\(J^k\)</span> y volver mediante <span class="math inline">\(PJ^kP^{-1}\)</span>. La matriz <span class="math inline">\(P\)</span> conserva su importancia: los bloques describen la acción en una base adaptada; para recuperar coordenadas originales hay que realizar el cambio de base.</p>
+</section>
+<section id="ejercicios-y-soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-y-soluciones">18.9. Ejercicios y soluciones</h2>
+<p>Los ejercicios siguen la construcción desde las trayectorias hasta la clasificación y el cálculo. Se mantienen los convenios de orden de cadenas y de escisión del capítulo; cuando cambie el cuerpo se indicará expresamente.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-001" class="apm-anchor"></span> <strong>Ejercicio 18.1.</strong> Para <span class="math inline">\(N(x,y,z)=(y,z,0)\)</span>, encuentre una cadena que sea base y calcule <span class="math inline">\(K_1,K_2,K_3\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-001" class="apm-anchor"></span> <strong>Solución 1.</strong> Se tiene <span class="math inline">\(Ne_3=e_2\)</span>, <span class="math inline">\(Ne_2=e_1\)</span> y <span class="math inline">\(Ne_1=0\)</span>, de modo que <span class="math inline">\((e_1,e_2,e_3)\)</span> es una cadena y una base. Resolver <span class="math inline">\(N(x,y,z)=0\)</span> exige <span class="math inline">\(y=z=0\)</span>; por tanto <span class="math inline">\(K_1=\operatorname{span}e_1\)</span>. Como <span class="math inline">\(N^2(x,y,z)=(z,0,0)\)</span>, resulta <span class="math inline">\(K_2=\operatorname{span}(e_1,e_2)\)</span>. Finalmente <span class="math inline">\(N^3=0\)</span> y <span class="math inline">\(K_3=\mathbb F^3\)</span>. Las nulidades <span class="math inline">\(1,2,3\)</span> corresponden a un único bloque de tamaño tres.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-002" class="apm-anchor"></span> <strong>Ejercicio 18.2.</strong> Si <span class="math inline">\(N^4v=0\)</span> y <span class="math inline">\(N^3v\ne0\)</span>, demuestre directamente que <span class="math inline">\(v,Nv,N^2v,N^3v\)</span> son independientes.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-002" class="apm-anchor"></span> <strong>Solución 2.</strong> En una relación <span class="math inline">\(a_0v+a_1Nv+a_2N^2v+a_3N^3v=0\)</span>, aplicar <span class="math inline">\(N^3\)</span> da <span class="math inline">\(a_0N^3v=0\)</span>, luego <span class="math inline">\(a_0=0\)</span>. Aplicar ahora <span class="math inline">\(N^2\)</span> a la relación restante da <span class="math inline">\(a_1=0\)</span>; aplicar <span class="math inline">\(N\)</span> da <span class="math inline">\(a_2=0\)</span>, y queda <span class="math inline">\(a_3N^3v=0\)</span>, luego <span class="math inline">\(a_3=0\)</span>. Ordenados en sentido inverso, estos cuatro vectores forman una cadena de longitud cuatro.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-003" class="apm-anchor"></span> <strong>Ejercicio 18.3.</strong> Calcule las nulidades de todas las potencias de <span class="math inline">\(J_4(0)\oplus J_2(0)\oplus J_1(0)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-003" class="apm-anchor"></span> <strong>Solución 3.</strong> Cada bloque de tamaño <span class="math inline">\(s\)</span> aporta <span class="math inline">\(\min(j,s)\)</span> a la nulidad de la potencia <span class="math inline">\(j\)</span>. Para <span class="math inline">\(j=0,1,2,3,4\)</span> se obtienen respectivamente <span class="math inline">\(0,3,5,6,7\)</span>. Desde <span class="math inline">\(j=4\)</span> la nulidad es siete, porque los tres bloques ya se anulan. Los rangos correspondientes son <span class="math inline">\(7,4,2,1,0\)</span>, y después cero.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-004" class="apm-anchor"></span> <strong>Ejercicio 18.4.</strong> Un nilpotente de dimensión nueve tiene nulidades <span class="math inline">\(0,3,5,7,8,9,9,\ldots\)</span>. Determine sus bloques.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-004" class="apm-anchor"></span> <strong>Solución 4.</strong> Los incrementos son <span class="math inline">\(3,2,2,1,1,0\)</span>. Sus diferencias dan <span class="math inline">\(c_1=1\)</span>, <span class="math inline">\(c_2=0\)</span>, <span class="math inline">\(c_3=1\)</span>, <span class="math inline">\(c_4=0\)</span> y <span class="math inline">\(c_5=1\)</span>. Los tamaños son, por tanto, <span class="math inline">\(5,3,1\)</span>. Suman nueve; el número de bloques es tres y el mayor tamaño cinco, de acuerdo con la primera nulidad y el índice de estabilización.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-005" class="apm-anchor"></span> <strong>Ejercicio 18.5.</strong> ¿Puede un nilpotente de dimensión seis tener nulidades <span class="math inline">\(0,2,3,5,6\)</span>?</p>
+<p><span id="MA-BCH-APM-02-018-SOL-005" class="apm-anchor"></span> <strong>Solución 5.</strong> No.&nbsp;Los incrementos serían <span class="math inline">\(2,1,2,1\)</span>. Por 18.1 deben ser no crecientes, pero el tercero aumenta de uno a dos. También la fórmula de bloques exactos daría <span class="math inline">\(c_2=2\cdot3-2-5=-1\)</span>, imposible para un número de bloques. No existe tal operador.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-006" class="apm-anchor"></span> <strong>Ejercicio 18.6.</strong> Un nilpotente de dimensión ocho tiene rango seis y <span class="math inline">\(N^4=0\)</span>. Determine sus posibles formas de Jordan.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-006" class="apm-anchor"></span> <strong>Solución 6.</strong> La nulidad de <span class="math inline">\(N\)</span> es dos, así que hay dos bloques. Sus tamaños suman ocho y ninguno supera cuatro. La única posibilidad es <span class="math inline">\(4+4\)</span>. Por ello la forma es <span class="math inline">\(J_4(0)\oplus J_4(0)\)</span>. En particular, las hipótesis fuerzan índice exactamente cuatro y nulidades <span class="math inline">\(2,4,6,8\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-007" class="apm-anchor"></span> <strong>Ejercicio 18.7.</strong> En dimensión siete, suponga <span class="math inline">\(N^2=0\)</span> y <span class="math inline">\(\operatorname{rg}N=3\)</span>. Encuentre los bloques.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-007" class="apm-anchor"></span> <strong>Solución 7.</strong> Los bloques tienen tamaños uno o dos. Cada bloque de tamaño dos contribuye uno al rango de <span class="math inline">\(N\)</span>, por lo que hay tres de ellos. Ocupan seis dimensiones y queda un bloque unitario. La forma es <span class="math inline">\(J_2(0)^{\oplus3}\oplus J_1(0)\)</span> y el núcleo tiene dimensión cuatro, como exige rango–nulidad.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-008" class="apm-anchor"></span> <strong>Ejercicio 18.8.</strong> Para <span class="math inline">\(J_3(5)\oplus J_2(5)\oplus J_2(-1)\)</span> sobre <span class="math inline">\(\mathbb Q\)</span>, calcule <span class="math inline">\(\chi\)</span>, <span class="math inline">\(m\)</span> y las multiplicidades geométricas.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-008" class="apm-anchor"></span> <strong>Solución 8.</strong> Los bloques de valor cinco ocupan cinco dimensiones y los de valor menos uno, dos. Así <span class="math inline">\(\chi=(t-5)^5(t+1)^2\)</span>. Los mayores tamaños son tres y dos, luego <span class="math inline">\(m=(t-5)^3(t+1)^2\)</span>. Hay dos bloques de valor cinco y uno de valor menos uno, de modo que <span class="math inline">\(g_5=2\)</span> y <span class="math inline">\(g_{-1}=1\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-009" class="apm-anchor"></span> <strong>Ejercicio 18.9.</strong> En el ejercicio anterior, calcule <span class="math inline">\(\dim\ker(A-5I)^j\)</span> para <span class="math inline">\(j=1,2,3\)</span> y explique qué ocurre en el bloque de valor <span class="math inline">\(-1\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-009" class="apm-anchor"></span> <strong>Solución 9.</strong> Los dos bloques de cinco aportan <span class="math inline">\(\min(j,3)+\min(j,2)\)</span>, por lo que las nulidades son <span class="math inline">\(2,4,5\)</span>. En el bloque de menos uno, <span class="math inline">\(A-5I=-6I+U_2\)</span> es invertible: su determinante es <span class="math inline">\(36\ne0\)</span>. Ninguna potencia suya aporta un vector no nulo al núcleo. Desde la tercera potencia la nulidad total permanece en cinco, sin llegar a siete.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-010" class="apm-anchor"></span> <strong>Ejercicio 18.10.</strong> Pruebe que un operador nilpotente y diagonalizable es cero.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-010" class="apm-anchor"></span> <strong>Solución 10.</strong> En una base propia, cada valor propio <span class="math inline">\(\lambda\)</span> cumple <span class="math inline">\(\lambda^r=0\)</span> porque <span class="math inline">\(N^r=0\)</span>. En un cuerpo esto obliga a <span class="math inline">\(\lambda=0\)</span>. Su matriz diagonal es entonces cero y el operador también. En términos de Jordan, la diagonalización exige bloques unitarios y la nilpotencia exige que todos sus valores sean cero.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-011" class="apm-anchor"></span> <strong>Ejercicio 18.11.</strong> Para la matriz nilpotente de orden cuatro de §18.7, escriba <span class="math inline">\(NP\)</span> y <span class="math inline">\(PJ\)</span> y compruebe el cambio de base.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-011" class="apm-anchor"></span> <strong>Solución 11.</strong> Las columnas de <span class="math inline">\(P\)</span> son <span class="math inline">\(2e_1,e_2+e_4,e_3,e_4\)</span>. Aplicar <span class="math inline">\(N\)</span> da <span class="math inline">\(0,2e_1,e_2+e_4,0\)</span>. Multiplicar <span class="math inline">\(P\)</span> por <span class="math inline">\(J=J_3(0)\oplus J_1(0)\)</span> produce esas mismas cuatro columnas, por la posición de los unos de <span class="math inline">\(J\)</span>. Ambas matrices son</p>
+<p><span class="math display">\[
+\begin{pmatrix}0&amp;2&amp;0&amp;0\\0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;1&amp;0\end{pmatrix}.
+\]</span></p>
+<p>Como <span class="math inline">\(\det P=2\ne0\)</span> sobre <span class="math inline">\(\mathbb Q\)</span>, la igualdad prueba <span class="math inline">\(P^{-1}NP=J\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-012" class="apm-anchor"></span> <strong>Ejercicio 18.12.</strong> Reduzca la matriz <span class="math inline">\(N\)</span> de §18.7 al cuerpo <span class="math inline">\(\mathbb F_2\)</span>. Determine de nuevo los bloques.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-012" class="apm-anchor"></span> <strong>Solución 12.</strong> Sobre <span class="math inline">\(\mathbb F_2\)</span> se tiene <span class="math inline">\(Ne_2=0\)</span> y <span class="math inline">\(Ne_3=e_2+e_4\)</span>, mientras <span class="math inline">\(Ne_1=Ne_4=0\)</span>. La imagen es la recta generada por <span class="math inline">\(e_2+e_4\)</span>, y <span class="math inline">\(N^2=0\)</span>. Las nulidades son tres y cuatro, con incrementos <span class="math inline">\(3,1,0\)</span>. Hay un bloque de tamaño dos y dos de tamaño uno. Una base de cadenas es <span class="math inline">\((e_2+e_4,e_3,e_1,e_4)\)</span>: los inferiores <span class="math inline">\(e_2+e_4,e_1,e_4\)</span> son independientes en el núcleo. La antigua matriz <span class="math inline">\(P\)</span> tiene determinante cero en este cuerpo y ya no sirve.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-013" class="apm-anchor"></span> <strong>Ejercicio 18.13.</strong> Dé dos cabezas independientes cuyas cadenas no sean conjuntamente independientes.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-013" class="apm-anchor"></span> <strong>Solución 13.</strong> En <span class="math inline">\(\mathbb F^3\)</span>, defina <span class="math inline">\(Ne_2=Ne_3=e_1\)</span> y <span class="math inline">\(Ne_1=0\)</span>. Las cabezas <span class="math inline">\(e_2,e_3\)</span> son independientes, pero las cadenas <span class="math inline">\((e_1,e_2)\)</span> y <span class="math inline">\((e_1,e_3)\)</span> repiten el mismo vector inferior. La relación entre las dos copias de <span class="math inline">\(e_1\)</span> muestra dependencia. Para obtener una base de cadenas se puede usar <span class="math inline">\((e_1,e_2)\)</span> y la cadena unitaria <span class="math inline">\((e_3-e_2)\)</span>, pues <span class="math inline">\(N(e_3-e_2)=0\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-014" class="apm-anchor"></span> <strong>Ejercicio 18.14.</strong> ¿Determinan el característico y el mínimo la clase de semejanza de un nilpotente? Construya un contraejemplo de dimensión seis.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-014" class="apm-anchor"></span> <strong>Solución 14.</strong> Las particiones <span class="math inline">\((3,3)\)</span> y <span class="math inline">\((3,2,1)\)</span> dan operadores de dimensión seis, característico <span class="math inline">\(t^6\)</span> y mínimo <span class="math inline">\(t^3\)</span>. Sus nulidades primeras son dos y tres, respectivamente, porque tienen distinto número de bloques. Por ello no son semejantes. Los dos polinomios indican dimensión y mayor tamaño, pero no distribuyen todas las dimensiones entre bloques.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-015" class="apm-anchor"></span> <strong>Ejercicio 18.15.</strong> Compare las particiones <span class="math inline">\((3,3,1)\)</span> y <span class="math inline">\((3,2,2)\)</span> usando también la multiplicidad geométrica.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-015" class="apm-anchor"></span> <strong>Solución 15.</strong> Ambas tienen tres bloques, suma siete y tamaño máximo tres: coinciden <span class="math inline">\(\chi=t^7\)</span>, <span class="math inline">\(m=t^3\)</span> y <span class="math inline">\(g_0=3\)</span>. En la segunda potencia, la primera partición da <span class="math inline">\(2+2+1=5\)</span> y la segunda <span class="math inline">\(2+2+2=6\)</span>. Las nulidades diferentes impiden la semejanza por 18.8. Incluso añadir la multiplicidad geométrica a ambos polinomios deja información sin determinar.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-016" class="apm-anchor"></span> <strong>Ejercicio 18.16.</strong> Clasifique los nilpotentes de dimensión cuatro, indicando sus sucesiones de nulidades positivas hasta estabilizar.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-016" class="apm-anchor"></span> <strong>Solución 16.</strong> Las particiones de cuatro son <span class="math inline">\((4)\)</span>, <span class="math inline">\((3,1)\)</span>, <span class="math inline">\((2,2)\)</span>, <span class="math inline">\((2,1,1)\)</span> y <span class="math inline">\((1,1,1,1)\)</span>. Producen, respectivamente, las sucesiones <span class="math inline">\((1,2,3,4)\)</span>, <span class="math inline">\((2,3,4)\)</span>, <span class="math inline">\((2,4)\)</span>, <span class="math inline">\((3,4)\)</span> y <span class="math inline">\((4)\)</span>. Cada partición existe tomando la suma de los bloques correspondientes; la unicidad de 18.5 asegura que son cinco clases distintas y que no falta ninguna.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-017" class="apm-anchor"></span> <strong>Ejercicio 18.17.</strong> Demuestre que un nilpotente de dimensión <span class="math inline">\(n&gt;0\)</span> tiene un solo bloque si y sólo si <span class="math inline">\(\dim\ker N=1\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-017" class="apm-anchor"></span> <strong>Solución 17.</strong> El número de bloques es exactamente la nulidad primera, por 18.5. Si ésta es uno, hay un solo bloque y su tamaño debe ser <span class="math inline">\(n\)</span>. Recíprocamente, <span class="math inline">\(J_n(0)\)</span> tiene núcleo generado por su primer vector. En ese caso una cabeza de longitud <span class="math inline">\(n\)</span> es un vector cíclico y la lista de sus potencias genera todo el espacio.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-018" class="apm-anchor"></span> <strong>Ejercicio 18.18.</strong> Si dos matrices tienen las mismas nulidades de todas sus potencias, ¿deben ser semejantes? Considere matrices invertibles.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-018" class="apm-anchor"></span> <strong>Solución 18.</strong> No en general. Sobre <span class="math inline">\(\mathbb Q\)</span>, <span class="math inline">\(I_2\)</span> y <span class="math inline">\(2I_2\)</span> son invertibles, así que todas las potencias de ambas tienen nulidad cero. Sin embargo, sus característicos son <span class="math inline">\((t-1)^2\)</span> y <span class="math inline">\((t-2)^2\)</span>, por lo que no son semejantes. El criterio del capítulo compara las potencias desplazadas por cada valor propio, además de los valores propios mismos. Para nilpotentes sí bastan las potencias sin desplazar.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-019" class="apm-anchor"></span> <strong>Ejercicio 18.19.</strong> Pruebe que <span class="math inline">\(\operatorname{rg}N^{j-1}-\operatorname{rg}N^j\)</span> cuenta los bloques de tamaño al menos <span class="math inline">\(j\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-019" class="apm-anchor"></span> <strong>Solución 19.</strong> Por rango–nulidad, la diferencia es <span class="math inline">\((n-\kappa_{j-1})-(n-\kappa_j)=\kappa_j-\kappa_{j-1}\)</span>. El corolario 18.5 identifica este número con <span class="math inline">\(b_j\)</span>. También puede verse en cada bloque: su rango disminuye en uno mientras el exponente no ha superado su tamaño, y después permanece en cero.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-020" class="apm-anchor"></span> <strong>Ejercicio 18.20.</strong> En dimensión diez se sabe que los rangos de <span class="math inline">\(N,N^2,N^3,N^4\)</span> son <span class="math inline">\(6,3,1,0\)</span>. Halle los tamaños.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-020" class="apm-anchor"></span> <strong>Solución 20.</strong> Las nulidades, incluyendo <span class="math inline">\(\kappa_0\)</span>, son <span class="math inline">\(0,4,7,9,10\)</span>, y después diez. Los incrementos son <span class="math inline">\(4,3,2,1,0\)</span>. Sus diferencias son uno en los tamaños uno, dos, tres y cuatro. La partición es <span class="math inline">\((4,3,2,1)\)</span>, cuya suma es diez; sustituirla en la fórmula de rango devuelve <span class="math inline">\(6,3,1,0\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-021" class="apm-anchor"></span> <strong>Ejercicio 18.21.</strong> Para <span class="math inline">\(N=J_3(0)\oplus J_1(0)\)</span>, calcule los espacios <span class="math inline">\(H_j\)</span> de 18.9 usando la base de cadenas <span class="math inline">\((v_1,v_2,v_3,z)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-021" class="apm-anchor"></span> <strong>Solución 21.</strong> Tenemos <span class="math inline">\(K_1=\operatorname{span}(v_1,z)\)</span>, <span class="math inline">\(K_2=\operatorname{span}(v_1,v_2,z)\)</span> y <span class="math inline">\(K_3=K_4=V\)</span>. Para <span class="math inline">\(j=1\)</span>, <span class="math inline">\(NK_2=\operatorname{span}v_1\)</span>, así que <span class="math inline">\(H_1\)</span> tiene base la clase de <span class="math inline">\(z\)</span>. Para <span class="math inline">\(j=2\)</span>, <span class="math inline">\(K_1+NK_3=\operatorname{span}(v_1,z,v_2)=K_2\)</span>, de modo que <span class="math inline">\(H_2=0\)</span>. Para <span class="math inline">\(j=3\)</span>, <span class="math inline">\(K_2+NK_4=K_2\)</span> y la clase de <span class="math inline">\(v_3\)</span> es base de <span class="math inline">\(H_3\)</span>. Las dimensiones <span class="math inline">\(1,0,1\)</span> cuentan exactamente los bloques.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-022" class="apm-anchor"></span> <strong>Ejercicio 18.22.</strong> En el ejercicio anterior, reemplace la cabeza <span class="math inline">\(v_3\)</span> por <span class="math inline">\(v_3+av_2+bz\)</span> y el vector unitario <span class="math inline">\(z\)</span> por <span class="math inline">\(z+cv_1\)</span>. ¿Se obtiene una base de cadenas para cualesquiera <span class="math inline">\(a,b,c\in\mathbb F\)</span>?</p>
+<p><span id="MA-BCH-APM-02-018-SOL-022" class="apm-anchor"></span> <strong>Solución 22.</strong> Sí. La cabeza nueva tiene imágenes <span class="math inline">\(v_2+av_1\)</span> y <span class="math inline">\(v_1\)</span>, por lo que genera la cadena <span class="math inline">\((v_1,v_2+av_1,v_3+av_2+bz)\)</span>. El vector <span class="math inline">\(z+cv_1\)</span> sigue en el núcleo. Los inferiores <span class="math inline">\(v_1,z+cv_1\)</span> son independientes: en una relación, el coeficiente de <span class="math inline">\(z\)</span> fuerza el segundo coeficiente a cero y luego el primero a cero. El lema 18.2 da independencia de los cuatro vectores y, por dimensión, forman una base.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-023" class="apm-anchor"></span> <strong>Ejercicio 18.23.</strong> ¿Por qué tomar una base de <span class="math inline">\(K_2/K_1\)</span> y convertir cada representante en cabeza de longitud dos puede impedir completar una base de Jordan?</p>
+<p><span id="MA-BCH-APM-02-018-SOL-023" class="apm-anchor"></span> <strong>Solución 23.</strong> En un bloque <span class="math inline">\(J_3(0)\)</span> con cadena <span class="math inline">\((v_1,v_2,v_3)\)</span>, la clase de <span class="math inline">\(v_2\)</span> es base de <span class="math inline">\(K_2/K_1\)</span>. Produce la cadena <span class="math inline">\((v_1,v_2)\)</span>. Pero para incluir la dirección de <span class="math inline">\(v_3\)</span> hay que usar una cadena de longitud tres, cuyo inferior vuelve a ser un múltiplo de <span class="math inline">\(v_1\)</span>; las dos cadenas juntas son dependientes. El cociente correcto para cabezas de longitud exactamente dos es <span class="math inline">\(K_2/(K_1+NK_3)=0\)</span>, que excluye ese tramo de la cadena más larga.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-024" class="apm-anchor"></span> <strong>Ejercicio 18.24.</strong> Justifique la igualdad <span class="math inline">\(\sum_{j\geq1}j c_j=\sum_{j\geq1}b_j=\dim V\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-024" class="apm-anchor"></span> <strong>Solución 24.</strong> Cada bloque de longitud <span class="math inline">\(s\)</span> aporta uno a <span class="math inline">\(b_1,\ldots,b_s\)</span>, y cero a los restantes; por tanto su aporte total es <span class="math inline">\(s\)</span>. Sumando por bloques resulta <span class="math inline">\(\sum_jb_j=\dim V\)</span>. Como <span class="math inline">\(c_j=b_j-b_{j+1}\)</span> y todas las sucesiones terminan en cero, la suma finita <span class="math inline">\(\sum_jj(b_j-b_{j+1})\)</span> se telescopa a <span class="math inline">\(\sum_jb_j\)</span>. No hay cuestión de convergencia: sólo hay finitos términos no nulos.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-025" class="apm-anchor"></span> <strong>Ejercicio 18.25.</strong> Si una sucesión entera empieza en cero, llega a <span class="math inline">\(n\)</span> y permanece allí, y sus incrementos son no negativos y no crecientes, construya un nilpotente de dimensión <span class="math inline">\(n\)</span> con esas nulidades.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-025" class="apm-anchor"></span> <strong>Solución 25.</strong> Denote por <span class="math inline">\(b_j\)</span> los incrementos y ponga <span class="math inline">\(c_j=b_j-b_{j+1}\)</span>. Son enteros no negativos y terminan en cero. Tome <span class="math inline">\(c_j\)</span> bloques <span class="math inline">\(J_j(0)\)</span> para cada <span class="math inline">\(j\)</span>. El telescopado del ejercicio 24 da dimensión <span class="math inline">\(\sum_jjc_j=\sum_jb_j=n\)</span>. Por 18.5, los incrementos de las nulidades de esta matriz son exactamente los <span class="math inline">\(b_j\)</span> elegidos; al partir ambas sucesiones de cero, coinciden término a término. Si <span class="math inline">\(n=0\)</span>, se usa la matriz vacía.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-026" class="apm-anchor"></span> <strong>Ejercicio 18.26.</strong> Si <span class="math inline">\(N\)</span> tiene bloques de longitudes <span class="math inline">\(s_i\)</span>, determine <span class="math inline">\(\dim(\ker N\cap\operatorname{im}N^k)\)</span> para <span class="math inline">\(k\geq0\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-026" class="apm-anchor"></span> <strong>Solución 26.</strong> En una cadena de longitud <span class="math inline">\(s\)</span>, la imagen de <span class="math inline">\(N^k\)</span> está generada por los primeros <span class="math inline">\(\max(s-k,0)\)</span> vectores. Su intersección con el núcleo contiene el vector inferior exactamente cuando <span class="math inline">\(s\geq k+1\)</span>. Las componentes de cadenas forman una suma directa, así que la dimensión buscada es el número de bloques de tamaño al menos <span class="math inline">\(k+1\)</span>, esto es <span class="math inline">\(b_{k+1}=\kappa_{k+1}-\kappa_k\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-027" class="apm-anchor"></span> <strong>Ejercicio 18.27.</strong> Compruebe las cadenas de valores <span class="math inline">\(2\)</span> y <span class="math inline">\(-1\)</span> del ejemplo mixto de §18.7 calculando <span class="math inline">\(Au\)</span> y <span class="math inline">\(Av\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-027" class="apm-anchor"></span> <strong>Solución 27.</strong> Para <span class="math inline">\(u=(-2/9,-1/3,1,0)\)</span> se obtiene <span class="math inline">\(Au=(2/9,1/3,-1,0)=-u\)</span>. Para <span class="math inline">\(v=(-1/27,-1/9,0,1)\)</span> se obtiene <span class="math inline">\(Av=(-5/27,-2/9,1,-1)=u-v\)</span>. Junto con <span class="math inline">\(Ae_1=2e_1\)</span> y <span class="math inline">\(Ae_2=e_1+2e_2\)</span>, esto prueba las cuatro columnas de <span class="math inline">\(AP=P\operatorname{diag}(J_2(2),J_2(-1))\)</span>. La matriz <span class="math inline">\(P=(e_1\ e_2\ u\ v)\)</span> es triangular superior con diagonal uno; es invertible.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-028" class="apm-anchor"></span> <strong>Ejercicio 18.28.</strong> Sobre <span class="math inline">\(\mathbb R\)</span>, encuentre una base de Jordan para <span class="math inline">\(A=\begin{pmatrix}3&amp;2\\0&amp;3\end{pmatrix}\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-028" class="apm-anchor"></span> <strong>Solución 28.</strong> Para <span class="math inline">\(N=A-3I\)</span>, se cumple <span class="math inline">\(Ne_2=2e_1\)</span> y <span class="math inline">\(Ne_1=0\)</span>. La cadena <span class="math inline">\((2e_1,e_2)\)</span> es una base. Así <span class="math inline">\(P=\operatorname{diag}(2,1)\)</span> tiene determinante dos y <span class="math inline">\(P^{-1}AP=J_2(3)\)</span>. La normalización de la cadena convierte el coeficiente dos del acoplamiento en el uno del bloque.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-029" class="apm-anchor"></span> <strong>Ejercicio 18.29.</strong> Explique por qué la rotación real de §18.6 no tiene forma de Jordan real y encuentre una forma compleja con su base.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-029" class="apm-anchor"></span> <strong>Solución 29.</strong> El característico es <span class="math inline">\(t^2+1\)</span>, sin raíces reales; 18.6 impide una forma real. Sobre <span class="math inline">\(\mathbb C\)</span>, los vectores <span class="math inline">\(v=(1,-i)\)</span> y <span class="math inline">\(w=(1,i)\)</span> satisfacen <span class="math inline">\(Av=iv\)</span> y <span class="math inline">\(Aw=-iw\)</span>. La matriz <span class="math inline">\(P=(v\ w)\)</span> tiene determinante <span class="math inline">\(2i\ne0\)</span>. Por ello <span class="math inline">\(P^{-1}AP=\operatorname{diag}(i,-i)\)</span>, que es su forma de Jordan compleja.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-030" class="apm-anchor"></span> <strong>Ejercicio 18.30.</strong> Calcule <span class="math inline">\(p(J_3(1))\)</span> sobre <span class="math inline">\(\mathbb Q\)</span> para <span class="math inline">\(p(t)=t^4-2t+3\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-030" class="apm-anchor"></span> <strong>Solución 30.</strong> La expansión es <span class="math inline">\(p(1+z)=2+2z+6z^2+4z^3+z^4\)</span>. Como <span class="math inline">\(U_3^3=0\)</span>, resulta</p>
+<p><span class="math display">\[
+p(J_3(1))=2I+2U_3+6U_3^2=\begin{pmatrix}2&amp;2&amp;6\\0&amp;2&amp;2\\0&amp;0&amp;2\end{pmatrix}.
+\]</span></p>
+<p>El truncamiento elimina los términos cúbico y cuártico, sin afectar las tres diagonales presentes.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-031" class="apm-anchor"></span> <strong>Ejercicio 18.31.</strong> En característica dos, calcule <span class="math inline">\(J_3(1)^2\)</span> y <span class="math inline">\(J_3(1)^4\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-031" class="apm-anchor"></span> <strong>Solución 31.</strong> Escribiendo <span class="math inline">\(J=I+U\)</span>, el binomio y <span class="math inline">\(2=0\)</span> dan <span class="math inline">\(J^2=I+U^2\)</span>. Esta matriz no es la identidad, porque <span class="math inline">\(U_3^2\)</span> tiene un uno en la posición <span class="math inline">\((1,3)\)</span>. Al volver a elevar al cuadrado, <span class="math inline">\((I+U^2)^2=I+U^4=I\)</span>, pues <span class="math inline">\(U^3=0\)</span>. En particular, el orden multiplicativo del bloque es cuatro: su cuadrado aún no es uno y su cuarta potencia sí.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-032" class="apm-anchor"></span> <strong>Ejercicio 18.32.</strong> Calcule <span class="math inline">\(J_3(2)^{-1}\)</span> sobre <span class="math inline">\(\mathbb Q\)</span> y verifique el producto.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-032" class="apm-anchor"></span> <strong>Solución 32.</strong> La suma geométrica finita da <span class="math inline">\(J_3(2)^{-1}=\frac12I-\frac14U_3+\frac18U_3^2\)</span>. Multiplicar por <span class="math inline">\(2I+U_3\)</span> produce <span class="math inline">\(I\)</span> en la diagonal; los coeficientes de <span class="math inline">\(U_3\)</span> son <span class="math inline">\(-1/2+1/2=0\)</span> y los de <span class="math inline">\(U_3^2\)</span>, <span class="math inline">\(1/4-1/4=0\)</span>. El término restante es <span class="math inline">\(U_3^3/8=0\)</span>. La inversa es</p>
+<p><span class="math display">\[
+\begin{pmatrix}1/2&amp;-1/4&amp;1/8\\0&amp;1/2&amp;-1/4\\0&amp;0&amp;1/2\end{pmatrix}.
+\]</span></p>
+<p><span id="MA-BCH-APM-02-018-EXR-033" class="apm-anchor"></span> <strong>Ejercicio 18.33.</strong> Para el operador de la apertura, obtenga una fórmula para <span class="math inline">\(T^k(x,y,z)\)</span> válida para todos los enteros <span class="math inline">\(k\geq0\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-033" class="apm-anchor"></span> <strong>Solución 33.</strong> La matriz es <span class="math inline">\(2I+U_3\)</span>. Por 18.11 su potencia es <span class="math inline">\(2^kI+k2^{k-1}U_3+\binom{k}{2}2^{k-2}U_3^2\)</span>. Sobre <span class="math inline">\(\mathbb Q\)</span> o <span class="math inline">\(\mathbb R\)</span> esta expresión tiene sentido también para <span class="math inline">\(k=0,1\)</span>, con sus coeficientes nulos. Como <span class="math inline">\(U_3(x,y,z)=(y,z,0)\)</span> y <span class="math inline">\(U_3^2(x,y,z)=(z,0,0)\)</span>, se obtiene <span class="math inline">\((2^kx+k2^{k-1}y+\binom{k}{2}2^{k-2}z,\ 2^ky+k2^{k-1}z,\ 2^kz)\)</span>. Para otro cuerpo debe interpretarse la suma truncada de 18.11, que evita exponentes negativos innecesarios.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-034" class="apm-anchor"></span> <strong>Ejercicio 18.34.</strong> Si <span class="math inline">\(p(t)=(t-\lambda)^hq(t)\)</span> con <span class="math inline">\(h\geq0\)</span> y <span class="math inline">\(q(\lambda)\ne0\)</span>, calcule la nulidad de <span class="math inline">\(p(J_s(\lambda))\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-034" class="apm-anchor"></span> <strong>Solución 34.</strong> Se tiene <span class="math inline">\(p(J)=U_s^h q(\lambda I+U_s)\)</span>. La segunda matriz es <span class="math inline">\(q(\lambda)I\)</span> más un polinomio en <span class="math inline">\(U_s\)</span> sin término constante. Esa parte es nilpotente, así que la matriz es invertible por la suma geométrica finita. Además conmuta con <span class="math inline">\(U_s^h\)</span>. Por ello el producto tiene el mismo rango y la misma nulidad que <span class="math inline">\(U_s^h\)</span>, cuya nulidad es <span class="math inline">\(\min(h,s)\)</span>. El argumento incluye <span class="math inline">\(h=0\)</span> y <span class="math inline">\(h\geq s\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-035" class="apm-anchor"></span> <strong>Ejercicio 18.35.</strong> Caracterice los polinomios <span class="math inline">\(p\)</span> que anulan una matriz de Jordan, deduciendo de nuevo la fórmula del mínimo.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-035" class="apm-anchor"></span> <strong>Solución 35.</strong> En un bloque de tamaño <span class="math inline">\(s\)</span> y valor <span class="math inline">\(\lambda\)</span>, la expansión <span class="math inline">\(p(\lambda+z)=\sum a_jz^j\)</span> da una matriz con <span class="math inline">\(a_j\)</span> en la diagonal superior <span class="math inline">\(j\)</span>. Se anula exactamente cuando <span class="math inline">\(a_0,\ldots,a_{s-1}\)</span> son cero, equivalencia que también puede expresarse como <span class="math inline">\((t-\lambda)^s\mid p\)</span>. Para anular todos los bloques se necesita la mayor de estas potencias para cada <span class="math inline">\(\lambda\)</span>. Como los factores de valores distintos son coprimos, el producto de esas potencias divide a <span class="math inline">\(p\)</span>, y ese mismo producto anula todos los bloques. Es el mínimo mónico.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-036" class="apm-anchor"></span> <strong>Ejercicio 18.36.</strong> Un operador de dimensión siete satisface <span class="math inline">\(\chi=(t-2)^5(t+1)^2\)</span> y <span class="math inline">\(m=(t-2)^3(t+1)^2\)</span> sobre <span class="math inline">\(\mathbb Q\)</span>. Enumere sus posibles formas de Jordan y diga qué nulidad las distingue.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-036" class="apm-anchor"></span> <strong>Solución 36.</strong> Para el valor dos, las particiones de cinco con tamaño máximo tres son <span class="math inline">\((3,2)\)</span> y <span class="math inline">\((3,1,1)\)</span>. Para menos uno, dimensión dos y máximo dos fuerzan <span class="math inline">\((2)\)</span>. Las formas son <span class="math inline">\(J_3(2)\oplus J_2(2)\oplus J_2(-1)\)</span> y <span class="math inline">\(J_3(2)\oplus J_1(2)\oplus J_1(2)\oplus J_2(-1)\)</span>. Se distinguen por <span class="math inline">\(\dim\ker(A-2I)\)</span>, que es dos en la primera y tres en la segunda. Esas son todas las opciones porque las particiones enumeradas agotan la dimensión primaria cinco.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-037" class="apm-anchor"></span> <strong>Ejercicio 18.37.</strong> Demuestre que para un nilpotente de dimensión <span class="math inline">\(n&gt;0\)</span>, las condiciones <span class="math inline">\(m_N=t^n\)</span>, existencia de un vector cíclico y un solo bloque son equivalentes.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-037" class="apm-anchor"></span> <strong>Solución 37.</strong> Si <span class="math inline">\(m_N=t^n\)</span>, el mayor bloque tiene tamaño <span class="math inline">\(n\)</span> y ocupa toda la dimensión; hay un solo bloque. Su cabeza genera por potencias todos los vectores de la cadena, así que es cíclica. Si <span class="math inline">\(v\)</span> es cíclico, las potencias de <span class="math inline">\(N\)</span> sobre <span class="math inline">\(v\)</span> generan <span class="math inline">\(V\)</span>. Si su primera potencia nula fuera <span class="math inline">\(N^sv=0\)</span> con <span class="math inline">\(s&lt;n\)</span>, sólo habría a lo sumo <span class="math inline">\(s\)</span> vectores generadores, imposible. Así <span class="math inline">\(N^{n-1}v\ne0\)</span>, el índice es al menos <span class="math inline">\(n\)</span> y, por dimensión o por las longitudes, es exactamente <span class="math inline">\(n\)</span>. Luego <span class="math inline">\(m_N=t^n\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-038" class="apm-anchor"></span> <strong>Ejercicio 18.38.</strong> Pruebe que, si <span class="math inline">\(N\)</span> tiene un solo bloque, todo operador que conmuta con <span class="math inline">\(N\)</span> es un polinomio en <span class="math inline">\(N\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-038" class="apm-anchor"></span> <strong>Solución 38.</strong> Sea <span class="math inline">\(v\)</span> una cabeza cíclica, de modo que <span class="math inline">\(v,Nv,\ldots,N^{n-1}v\)</span> es base. Para un operador <span class="math inline">\(S\)</span> que conmuta con <span class="math inline">\(N\)</span>, hay un único polinomio <span class="math inline">\(p\)</span> de grado menor que <span class="math inline">\(n\)</span> tal que <span class="math inline">\(Sv=p(N)v\)</span>, al expresar <span class="math inline">\(Sv\)</span> en esa base. Entonces <span class="math inline">\(SN^jv=N^jSv=N^jp(N)v=p(N)N^jv\)</span> para cada <span class="math inline">\(j\)</span>. Los dos operadores coinciden en una base y por tanto <span class="math inline">\(S=p(N)\)</span>. La recíproca también vale porque todo polinomio en <span class="math inline">\(N\)</span> conmuta con <span class="math inline">\(N\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-039" class="apm-anchor"></span> <strong>Ejercicio 18.39.</strong> Considere <span class="math inline">\(A_\varepsilon=\begin{pmatrix}\lambda&amp;1\\0&amp;\lambda+\varepsilon\end{pmatrix}\)</span> sobre <span class="math inline">\(\mathbb R\)</span>. Determine su forma para <span class="math inline">\(\varepsilon\ne0\)</span> y para <span class="math inline">\(\varepsilon=0\)</span>, y calcule una base propia en el primer caso.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-039" class="apm-anchor"></span> <strong>Solución 39.</strong> Para <span class="math inline">\(\varepsilon\ne0\)</span> hay dos valores propios distintos. Los vectores <span class="math inline">\(e_1\)</span> y <span class="math inline">\((1,\varepsilon)\)</span> son propios de valores <span class="math inline">\(\lambda\)</span> y <span class="math inline">\(\lambda+\varepsilon\)</span>, porque la segunda imagen es <span class="math inline">\((\lambda+\varepsilon)(1,\varepsilon)\)</span>. La matriz <span class="math inline">\(P_\varepsilon=\begin{pmatrix}1&amp;1\\0&amp;\varepsilon\end{pmatrix}\)</span> tiene determinante <span class="math inline">\(\varepsilon\)</span> y diagonaliza. Para <span class="math inline">\(\varepsilon=0\)</span>, la matriz ya es <span class="math inline">\(J_2(\lambda)\)</span> y sólo tiene una dirección propia. Las dos columnas de <span class="math inline">\(P_\varepsilon\)</span> se acercan a la misma dirección cuando <span class="math inline">\(\varepsilon\)</span> tiende a cero; la estructura exacta de bloques cambia en el límite.</p>
+<p><span id="MA-BCH-APM-02-018-EXR-040" class="apm-anchor"></span> <strong>Ejercicio 18.40.</strong> Encuentre la forma de Jordan del cuadrado de un bloque <span class="math inline">\(N=J_s(0)\)</span>, para todo <span class="math inline">\(s\geq1\)</span>.</p>
+<p><span id="MA-BCH-APM-02-018-SOL-040" class="apm-anchor"></span> <strong>Solución 40.</strong> Con la cadena usual <span class="math inline">\(e_1,\ldots,e_s\)</span>, el operador <span class="math inline">\(N^2\)</span> envía <span class="math inline">\(e_j\)</span> a <span class="math inline">\(e_{j-2}\)</span> para <span class="math inline">\(j\geq3\)</span> y anula <span class="math inline">\(e_1,e_2\)</span> cuando existen. Los índices impares forman la cadena <span class="math inline">\((e_1,e_3,e_5,\ldots)\)</span>, de longitud <span class="math inline">\(\lceil s/2\rceil\)</span>; los pares forman <span class="math inline">\((e_2,e_4,e_6,\ldots)\)</span>, de longitud <span class="math inline">\(\lfloor s/2\rfloor\)</span>. Juntas son una reordenación de la base. La forma es <span class="math inline">\(J_{\lceil s/2\rceil}(0)\oplus J_{\lfloor s/2\rfloor}(0)\)</span>, omitiendo el segundo bloque cuando su tamaño es cero. Así se obtiene un solo bloque unitario para <span class="math inline">\(s=1\)</span> y dos para <span class="math inline">\(s=2\)</span>.</p>
+</section>
+<section id="lecturas-y-referencias" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-referencias">Lecturas y referencias</h2>
+<p>Friedberg–Insel–Spence, <em>Linear Algebra</em>, §§7.1–7.2, desarrolla las cadenas, su construcción desde la imagen y los diagramas que permiten contar bloques. Hoffman–Kunze, <em>Linear Algebra</em>, §7.3, presenta la forma de Jordan a partir de descomposiciones cíclicas; su orden de vectores coloca los unos debajo de la diagonal, mientras aquí se coloca primero el vector inferior. Axler, <em>Linear Algebra Done Right</em>, §8C, ofrece otra construcción de la base nilpotente; su prueba con un funcional lineal podrá compararse con ésta después de C19. Johnston, <em>Advanced Linear and Matrix Algebra</em>, §2.4.1, relaciona las nulidades de potencias con las cantidades de bloques.</p>
+<hr>
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-17-subespacios-invariantes-triangularizacion-y-formas-canonicas.html">← Capítulo 17</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-19-espacio-dual-y-transposicion.html">Capítulo 19 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

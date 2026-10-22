@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 12 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.">
+
+<title>Capítulo 12. Matrices de transformaciones y cambio de base – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#las-imágenes-de-una-base-se-convierten-en-columnas" id="toc-las-imágenes-de-una-base-se-convierten-en-columnas" class="nav-link active" data-scroll-target="#las-imágenes-de-una-base-se-convierten-en-columnas">12.1. Las imágenes de una base se convierten en columnas</a></li>
+  <li><a href="#componer-exige-que-coincidan-las-coordenadas-intermedias" id="toc-componer-exige-que-coincidan-las-coordenadas-intermedias" class="nav-link" data-scroll-target="#componer-exige-que-coincidan-las-coordenadas-intermedias">12.2. Componer exige que coincidan las coordenadas intermedias</a></li>
+  <li><a href="#cambiar-dos-bases-seguir-la-entrada-y-la-salida" id="toc-cambiar-dos-bases-seguir-la-entrada-y-la-salida" class="nav-link" data-scroll-target="#cambiar-dos-bases-seguir-la-entrada-y-la-salida">12.3. Cambiar dos bases: seguir la entrada y la salida</a></li>
+  <li><a href="#un-operador-en-dos-bases-semejanza" id="toc-un-operador-en-dos-bases-semejanza" class="nav-link" data-scroll-target="#un-operador-en-dos-bases-semejanza">12.4. Un operador en dos bases: semejanza</a></li>
+  <li><a href="#el-rango-y-los-sistemas-sobreviven-al-cambio-de-descripción" id="toc-el-rango-y-los-sistemas-sobreviven-al-cambio-de-descripción" class="nav-link" data-scroll-target="#el-rango-y-los-sistemas-sobreviven-al-cambio-de-descripción">12.5. El rango y los sistemas sobreviven al cambio de descripción</a></li>
+  <li><a href="#dos-bases-independientes-permiten-una-forma-más-simple" id="toc-dos-bases-independientes-permiten-una-forma-más-simple" class="nav-link" data-scroll-target="#dos-bases-independientes-permiten-una-forma-más-simple">12.6. Dos bases independientes permiten una forma más simple</a></li>
+  <li><a href="#una-suma-diagonal-que-no-depende-de-la-base" id="toc-una-suma-diagonal-que-no-depende-de-la-base" class="nav-link" data-scroll-target="#una-suma-diagonal-que-no-depende-de-la-base">12.7. Una suma diagonal que no depende de la base</a></li>
+  <li><a href="#descomposiciones-que-producen-bloques" id="toc-descomposiciones-que-producen-bloques" class="nav-link" data-scroll-target="#descomposiciones-que-producen-bloques">12.8. Descomposiciones que producen bloques</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">12.9. Ejercicios</a></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">12.10. Soluciones</a></li>
+  <li><a href="#lecturas-y-referencias" id="toc-lecturas-y-referencias" class="nav-link" data-scroll-target="#lecturas-y-referencias">Lecturas y referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 12. Matrices de transformaciones y cambio de base</h1>
+<p class="subtitle lead">Álgebra para matemáticos · Tomo II</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 12 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-11-sumas-directas-y-espacios-cociente.html">← Capítulo 11</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-13-determinantes.html">Capítulo 13 →</a></p>
+<p>La transformación <span class="math inline">\(T(x,y)=(x+2y,y)\)</span> deja fijos los vectores horizontales y desplaza cada punto en una cantidad horizontal que depende de su altura. En la base usual del plano, sus columnas son <span class="math inline">\((1,0)\)</span> y <span class="math inline">\((2,1)\)</span>, las imágenes de los dos vectores básicos. Podemos recuperar toda la transformación a partir de ellas: la entrada <span class="math inline">\((x,y)=xe_1+ye_2\)</span> se convierte en <span class="math inline">\(xT(e_1)+yT(e_2)\)</span>.</p>
+<p>Si medimos los vectores usando la base <span class="math inline">\(\mathcal B'=((1,0),(0,2))\)</span>, el segundo vector básico se transforma en <span class="math inline">\((4,2)=4(1,0)+(0,2)\)</span>. Las columnas pasan a ser <span class="math inline">\((1,0)\)</span> y <span class="math inline">\((4,1)\)</span>. La regla sobre los puntos del plano permanece intacta, aunque una de las entradas de su matriz se ha duplicado. Para la misma entrada física <span class="math inline">\(v=(1,2)\)</span> obtenemos</p>
+<p><span class="math display">\[
+[v]_{\mathcal E}=\begin{pmatrix}1\\2\end{pmatrix},\qquad
+[T(v)]_{\mathcal E}=\begin{pmatrix}5\\2\end{pmatrix};
+\qquad
+[v]_{\mathcal B'}=\begin{pmatrix}1\\1\end{pmatrix},\qquad
+[T(v)]_{\mathcal B'}=\begin{pmatrix}5\\1\end{pmatrix}.
+\]</span></p>
+<p>Dos cálculos distintos describen la misma entrada y la misma salida. El cambio de matriz registra el cambio de unidades con que describimos ambas. La dificultad consiste en mantener juntas esas elecciones: una columna sin su base de salida y un vector de números sin su base de entrada dejan incompleta la información.</p>
+<figure id="fig-apm-t2-c12-f01" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C12-F01.svg" alt="La misma cizalla T(x,y)=(x+2y,y) lleva el vector (1,2) a (5,2). A la derecha se representan los pares de coordenadas (1,1) y (5,1) en una base cuyo segundo vector mide dos unidades verticales." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 12.1.</em> Cada panel utiliza sus propias coordenadas. La segunda coordenada cambia de dos a uno porque el segundo vector básico se duplica; las flechas describen los mismos vectores del espacio original.
+</figcaption>
+</figure>
+<p>Trabajaremos sobre un cuerpo conmutativo <span class="math inline">\(\mathbb F\)</span>, con espacios de dimensión finita y bases ordenadas. Las coordenadas serán columnas. Los ejemplos con fracciones se entienden sobre <span class="math inline">\(\mathbb R\)</span> salvo indicación contraria. Utilizaremos la determinación de una aplicación por sus valores en una base (C08), núcleo e imagen (C09), los isomorfismos de coordenadas y matrices de transición (C10), y las descomposiciones de C11. No necesitaremos determinantes ni valores propios.</p>
+<section id="las-imágenes-de-una-base-se-convierten-en-columnas" class="level2">
+<h2 class="anchored" data-anchor-id="las-imágenes-de-una-base-se-convierten-en-columnas">12.1. Las imágenes de una base se convierten en columnas</h2>
+<p>Sean <span class="math inline">\(\mathcal B=(b_1,\ldots,b_n)\)</span> una base de <span class="math inline">\(V\)</span> y <span class="math inline">\(\mathcal C=(c_1,\ldots,c_m)\)</span> una base de <span class="math inline">\(W\)</span>. Para describir <span class="math inline">\(T:V\to W\)</span> basta conocer los vectores <span class="math inline">\(T(b_j)\)</span>, pero esos vectores todavía pertenecen a <span class="math inline">\(W\)</span>. Al escribirlos en la base <span class="math inline">\(\mathcal C\)</span> obtenemos números que podemos organizar en una matriz.</p>
+<p><span id="MA-BCH-APM-02-012-DEF-001" class="apm-anchor"></span> <strong>Definición 12.1.</strong> La <strong>matriz de <span class="math inline">\(T\)</span> respecto de <span class="math inline">\(\mathcal B\)</span> y <span class="math inline">\(\mathcal C\)</span></strong> es</p>
+<p><span class="math display">\[
+[T]_{\mathcal C\leftarrow\mathcal B}
+=\bigl([T(b_1)]_{\mathcal C}\ \cdots\ [T(b_n)]_{\mathcal C}\bigr).
+\]</span></p>
+<p>Tiene <span class="math inline">\(m\)</span> filas y <span class="math inline">\(n\)</span> columnas. La base a la derecha de la flecha corresponde al dominio; la de la izquierda, al codominio. Si <span class="math inline">\(V=W\)</span> y se emplea una misma base <span class="math inline">\(\mathcal B\)</span> para ambos, abreviamos <span class="math inline">\([T]_{\mathcal B}=[T]_{\mathcal B\leftarrow\mathcal B}\)</span>.</p>
+<p>La entrada <span class="math inline">\(a_{ij}\)</span> de esta matriz es el coeficiente de <span class="math inline">\(c_i\)</span> en <span class="math inline">\(T(b_j)\)</span>. El índice de columna indica qué vector se transforma; el de fila, en qué dirección del codominio se mide su imagen. Esta lectura explica la forma rectangular sin exigir que <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span> sean espacios de tuplas.</p>
+<p><span id="MA-BCH-APM-02-012-THM-001" class="apm-anchor"></span> <strong>Teorema 12.1 (identidad de representación).</strong> Si <span class="math inline">\(A=[T]_{\mathcal C\leftarrow\mathcal B}\)</span>, entonces</p>
+<p><span class="math display">\[
+[T(v)]_{\mathcal C}=A[v]_{\mathcal B}\qquad(v\in V).
+\]</span></p>
+<p>Es la única matriz con esta propiedad. Recíprocamente, toda matriz <span class="math inline">\(A\in M_{m\times n}(\mathbb F)\)</span> representa una única transformación <span class="math inline">\(V\to W\)</span> con las bases fijadas.</p>
+<p><strong>Demostración.</strong> Escribamos <span class="math inline">\(v=\sum_jx_jb_j\)</span>. La linealidad de <span class="math inline">\(T\)</span> y del isomorfismo de coordenadas da</p>
+<p><span class="math display">\[
+[T(v)]_{\mathcal C}=\sum_{j=1}^nx_j[T(b_j)]_{\mathcal C}.
+\]</span></p>
+<p>El producto de una matriz por una columna es la combinación de sus columnas con esos coeficientes, de modo que el último miembro es <span class="math inline">\(A[v]_{\mathcal B}\)</span>. Si otra matriz cumple la misma identidad, aplicarla a <span class="math inline">\(v=b_j\)</span> muestra que su columna <span class="math inline">\(j\)</span> debe ser <span class="math inline">\([T(b_j)]_{\mathcal C}\)</span>; queda probada la unicidad.</p>
+<p>Para construir <span class="math inline">\(T\)</span> a partir de <span class="math inline">\(A\)</span>, interpretamos la columna <span class="math inline">\(j\)</span> como coordenadas de un vector <span class="math inline">\(w_j\in W\)</span> y asignamos <span class="math inline">\(T(b_j)=w_j\)</span>. C08 proporciona una única extensión lineal a todo <span class="math inline">\(V\)</span>. La definición de matriz recupera exactamente <span class="math inline">\(A\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Si <span class="math inline">\(\kappa_{\mathcal B}(v)=[v]_{\mathcal B}\)</span> y <span class="math inline">\(\kappa_{\mathcal C}(w)=[w]_{\mathcal C}\)</span>, el teorema expresa</p>
+<p><span class="math display">\[
+L_A=\kappa_{\mathcal C}\circ T\circ\kappa_{\mathcal B}^{-1},
+\qquad L_A(x)=Ax.
+\]</span></p>
+<p>Esta igualdad de funciones explica en qué sentido una matriz representa una transformación: permite transportar el problema a columnas, hacer allí el cálculo y reconstruir la salida en <span class="math inline">\(W\)</span>.</p>
+<p>Por ejemplo, consideremos la derivación formal <span class="math inline">\(D:P_2(\mathbb R)\to P_1(\mathbb R)\)</span>, dada por <span class="math inline">\(D(a+bt+ct^2)=b+2ct\)</span>. Para <span class="math inline">\(\mathcal B=(1,t,t^2)\)</span> y <span class="math inline">\(\mathcal C=(1,t)\)</span>,</p>
+<p><span class="math display">\[
+[D]_{\mathcal C\leftarrow\mathcal B}
+=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;2\end{pmatrix}.
+\]</span></p>
+<p>La primera columna es cero porque la derivada formal de <span class="math inline">\(1\)</span> es cero; la última contiene las coordenadas de <span class="math inline">\(2t\)</span>. Al multiplicar por <span class="math inline">\((a,b,c)^{\mathsf T}\)</span> obtenemos <span class="math inline">\((b,2c)^{\mathsf T}\)</span>, que describe el polinomio de salida en una base distinta y de otra longitud. La matriz no tiene por qué ser cuadrada. Tampoco estamos suponiendo resultados de cálculo diferencial: <span class="math inline">\(D\)</span> se definió como una operación algebraica en coeficientes.</p>
+<p>Si alguno de los espacios es el espacio cero, su base es la lista vacía. Adoptamos matrices de tamaño <span class="math inline">\(m\times0\)</span> o <span class="math inline">\(0\times n\)</span> y sumas vacías; la identidad de representación sigue describiendo la única aplicación posible cuando el dominio es cero, y la aplicación nula cuando el codominio es cero.</p>
+</section>
+<section id="componer-exige-que-coincidan-las-coordenadas-intermedias" class="level2">
+<h2 class="anchored" data-anchor-id="componer-exige-que-coincidan-las-coordenadas-intermedias">12.2. Componer exige que coincidan las coordenadas intermedias</h2>
+<p>Sean <span class="math inline">\(T:V\to W\)</span> y <span class="math inline">\(S:W\to Z\)</span>. Si conocemos <span class="math inline">\([v]_{\mathcal B}\)</span>, la matriz de <span class="math inline">\(T\)</span> produce coordenadas en <span class="math inline">\(\mathcal C\)</span>. Para aplicar después la matriz de <span class="math inline">\(S\)</span>, ésta debe recibir coordenadas en esa misma base de <span class="math inline">\(W\)</span>. La compatibilidad de tamaños sólo controla la cantidad de números; el nombre de la base controla su significado.</p>
+<p><span id="MA-BCH-APM-02-012-THM-002" class="apm-anchor"></span> <strong>Teorema 12.2 (operaciones y composición).</strong> Fijadas bases <span class="math inline">\(\mathcal B,\mathcal C,\mathcal D\)</span> de <span class="math inline">\(V,W,Z\)</span>, se cumplen</p>
+<p><span class="math display">\[
+[\alpha T+\beta U]_{\mathcal C\leftarrow\mathcal B}
+=\alpha[T]_{\mathcal C\leftarrow\mathcal B}+\beta[U]_{\mathcal C\leftarrow\mathcal B},
+\qquad
+[S\circ T]_{\mathcal D\leftarrow\mathcal B}
+=[S]_{\mathcal D\leftarrow\mathcal C}[T]_{\mathcal C\leftarrow\mathcal B},
+\]</span></p>
+<p>donde <span class="math inline">\(T,U:V\to W\)</span>. Además, <span class="math inline">\([I_V]_{\mathcal B}=I_n\)</span>. Si <span class="math inline">\(T\)</span> es un isomorfismo,</p>
+<p><span class="math display">\[
+[T^{-1}]_{\mathcal B\leftarrow\mathcal C}
+=([T]_{\mathcal C\leftarrow\mathcal B})^{-1}.
+\]</span></p>
+<p><strong>Demostración.</strong> La columna <span class="math inline">\(j\)</span> de la matriz de <span class="math inline">\(\alpha T+\beta U\)</span> se obtiene tomando coordenadas de <span class="math inline">\(\alpha T(b_j)+\beta U(b_j)\)</span>; la linealidad de las coordenadas da la primera fórmula. Para la composición, aplicamos dos veces el teorema 12.1:</p>
+<p><span class="math display">\[
+[S(T(v))]_{\mathcal D}
+=[S]_{\mathcal D\leftarrow\mathcal C}[T(v)]_{\mathcal C}
+=[S]_{\mathcal D\leftarrow\mathcal C}[T]_{\mathcal C\leftarrow\mathcal B}[v]_{\mathcal B}.
+\]</span></p>
+<p>La unicidad de representación identifica la matriz del compuesto. Las imágenes <span class="math inline">\(I_V(b_j)=b_j\)</span> tienen coordenadas <span class="math inline">\(e_j\)</span>, de donde resulta <span class="math inline">\(I_n\)</span>. Al representar <span class="math inline">\(T^{-1}T=I_V\)</span> y <span class="math inline">\(TT^{-1}=I_W\)</span> obtenemos ambos productos identidad, y por tanto la fórmula de la inversa. <span class="math inline">\(\square\)</span></p>
+<p>La correspondencia <span class="math inline">\(T\mapsto[T]_{\mathcal C\leftarrow\mathcal B}\)</span> es así un isomorfismo entre los espacios vectoriales <span class="math inline">\(\operatorname{Hom}(V,W)\)</span> y <span class="math inline">\(M_{m\times n}(\mathbb F)\)</span>. Su biyectividad procede del teorema 12.1 y su linealidad del 12.2. En particular, <span class="math inline">\(\dim\operatorname{Hom}(V,W)=mn\)</span>: las matrices con una única entrada uno forman una base, y cada una corresponde al mapa que lleva un vector básico a un vector básico prescrito y anula los demás.</p>
+<p>Cuando se representa un operador usando una misma base, la compatibilidad está asegurada para cualquier número de composiciones. De <span class="math inline">\([T^2]_{\mathcal B}=A^2\)</span> y una inducción resulta <span class="math inline">\([T^k]_{\mathcal B}=A^k\)</span> para todo entero <span class="math inline">\(k\ge0\)</span>. Si entrada y salida usan bases distintas, multiplicar la matriz por sí misma carece en general de esa interpretación, incluso si es cuadrada.</p>
+</section>
+<section id="cambiar-dos-bases-seguir-la-entrada-y-la-salida" class="level2">
+<h2 class="anchored" data-anchor-id="cambiar-dos-bases-seguir-la-entrada-y-la-salida">12.3. Cambiar dos bases: seguir la entrada y la salida</h2>
+<p>C10 construyó la matriz <span class="math inline">\(P_{\mathcal B\leftarrow\mathcal B'}\)</span> cuyas columnas son <span class="math inline">\([b'_j]_{\mathcal B}\)</span>. Satisface</p>
+<p><span class="math display">\[
+[v]_{\mathcal B}=P_{\mathcal B\leftarrow\mathcal B'}[v]_{\mathcal B'}.
+\]</span></p>
+<p>Es también la matriz de la identidad cuando el dominio se describe en <span class="math inline">\(\mathcal B'\)</span> y el codominio en <span class="math inline">\(\mathcal B\)</span>. Para evitar ambigüedades, fijaremos <span class="math inline">\(P=P_{\mathcal B\leftarrow\mathcal B'}\)</span> y <span class="math inline">\(Q=P_{\mathcal C\leftarrow\mathcal C'}\)</span>. Ambas matrices convierten coordenadas nuevas en antiguas.</p>
+<p>Para calcular la salida en las bases nuevas, primero convertimos la entrada nueva en antigua mediante <span class="math inline">\(P\)</span>, aplicamos <span class="math inline">\(A=[T]_{\mathcal C\leftarrow\mathcal B}\)</span> y convertimos la salida antigua en nueva mediante <span class="math inline">\(Q^{-1}\)</span>. Esta sucesión determina el orden de los factores.</p>
+<p><span id="MA-BCH-APM-02-012-THM-003" class="apm-anchor"></span> <strong>Teorema 12.3 (cambio de bases).</strong> Con las convenciones anteriores,</p>
+<p><span class="math display">\[
+A'=[T]_{\mathcal C'\leftarrow\mathcal B'}=Q^{-1}AP.
+\]</span></p>
+<p><strong>Demostración.</strong> Para cada <span class="math inline">\(v\in V\)</span>,</p>
+<p><span class="math display">\[
+[T(v)]_{\mathcal C'}=Q^{-1}[T(v)]_{\mathcal C}
+=Q^{-1}A[v]_{\mathcal B}
+=Q^{-1}AP[v]_{\mathcal B'}.
+\]</span></p>
+<p>El teorema 12.1 identifica <span class="math inline">\(Q^{-1}AP\)</span> como la matriz pedida. <span class="math inline">\(\square\)</span></p>
+<figure id="fig-apm-t2-c12-f02" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C12-F02.svg" alt="Un cuadrado de coordenadas muestra A entre las bases antiguas y A' entre las nuevas; P convierte la entrada nueva en antigua, y Q convierte la salida nueva en antigua. Las dos rutas verifican AP=QA'." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 12.2.</em> Las rutas desde la entrada nueva hasta la salida antigua dan <span class="math inline">\(AP=QA'\)</span>. Despejar <span class="math inline">\(A'\)</span> equivale a convertir la salida por <span class="math inline">\(Q^{-1}\)</span>.
+</figcaption>
+</figure>
+<p>En el ejemplo de la derivación, cambiemos a <span class="math inline">\(\mathcal B'=(1,1+t,(1+t)^2)\)</span> y <span class="math inline">\(\mathcal C'=(1,1+t)\)</span>. Los vectores nuevos escritos en las bases antiguas dan</p>
+<p><span class="math display">\[
+P=\begin{pmatrix}1&amp;1&amp;1\\0&amp;1&amp;2\\0&amp;0&amp;1\end{pmatrix},\qquad
+Q=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}.
+\]</span></p>
+<p>Entonces</p>
+<p><span class="math display">\[
+AP=\begin{pmatrix}0&amp;1&amp;2\\0&amp;0&amp;2\end{pmatrix},\qquad
+Q^{-1}AP=\begin{pmatrix}0&amp;1&amp;0\\0&amp;0&amp;2\end{pmatrix}.
+\]</span></p>
+<p>La matriz final coincide numéricamente con la inicial. La comprobación directa explica esa coincidencia: <span class="math inline">\(D(1)=0\)</span>, <span class="math inline">\(D(1+t)=1\)</span> y <span class="math inline">\(D((1+t)^2)=2(1+t)\)</span>. La forma de la regla de derivación se conserva al trasladar la variable, aunque las bases sean otras. Una matriz igual no obliga a que las bases coincidan; una matriz diferente tampoco obliga a que la transformación cambie.</p>
+<p>Si sólo cambia la base del dominio, la fórmula se reduce a <span class="math inline">\(A'=AP\)</span>. Cada columna nueva es la imagen de una combinación de vectores básicos antiguos. Si sólo cambia la base del codominio, resulta <span class="math inline">\(A'=Q^{-1}A\)</span>: los vectores imagen siguen siendo los mismos y sólo cambia cómo se describen. Confundir estos dos actos lleva a colocar inversas donde no corresponden.</p>
+</section>
+<section id="un-operador-en-dos-bases-semejanza" class="level2">
+<h2 class="anchored" data-anchor-id="un-operador-en-dos-bases-semejanza">12.4. Un operador en dos bases: semejanza</h2>
+<p>Cuando <span class="math inline">\(T:V\to V\)</span> se representa con una misma base a ambos lados, cambiar esa base obliga a usar la misma transición en entrada y salida. La fórmula general se especializa con <span class="math inline">\(Q=P\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-DEF-002" class="apm-anchor"></span> <strong>Definición 12.2.</strong> Dos matrices <span class="math inline">\(A,A'\in M_n(\mathbb F)\)</span> son <strong>semejantes</strong> si existe <span class="math inline">\(P\in M_n(\mathbb F)\)</span> invertible tal que <span class="math inline">\(A'=P^{-1}AP\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-PRP-001" class="apm-anchor"></span> <strong>Proposición 12.4.</strong> Las matrices de un mismo operador en dos bases son semejantes. Recíprocamente, si <span class="math inline">\(A'=P^{-1}AP\)</span> y <span class="math inline">\(A=[T]_{\mathcal B}\)</span>, existe una base <span class="math inline">\(\mathcal B'\)</span> tal que <span class="math inline">\(P=P_{\mathcal B\leftarrow\mathcal B'}\)</span> y <span class="math inline">\(A'=[T]_{\mathcal B'}\)</span>. La semejanza es una relación de equivalencia.</p>
+<p><strong>Demostración.</strong> La primera afirmación es el teorema 12.3 con igual transición en ambos espacios. Para la recíproca, definimos <span class="math inline">\(b'_j\)</span> como el vector cuyas coordenadas en <span class="math inline">\(\mathcal B\)</span> son la columna <span class="math inline">\(j\)</span> de <span class="math inline">\(P\)</span>. Como <span class="math inline">\(P\)</span> es invertible, sus columnas son una base de <span class="math inline">\(\mathbb F^n\)</span>; el isomorfismo de coordenadas las transporta a una base de <span class="math inline">\(V\)</span>. Su matriz de transición es <span class="math inline">\(P\)</span>, y el teorema de cambio de bases da <span class="math inline">\(A'\)</span>.</p>
+<p>La reflexividad usa <span class="math inline">\(P=I\)</span>. Si <span class="math inline">\(A'=P^{-1}AP\)</span>, entonces <span class="math inline">\(A=P A'P^{-1}\)</span>, que da simetría. Si además <span class="math inline">\(A''=R^{-1}A'R\)</span>, sustituyendo se obtiene <span class="math inline">\(A''=(PR)^{-1}A(PR)\)</span>; la invertibilidad de <span class="math inline">\(PR\)</span> prueba transitividad. <span class="math inline">\(\square\)</span></p>
+<p>La cizalla inicial tiene matrices</p>
+<p><span class="math display">\[
+A=\begin{pmatrix}1&amp;2\\0&amp;1\end{pmatrix},\quad
+P=\begin{pmatrix}1&amp;0\\0&amp;2\end{pmatrix},\quad
+P^{-1}AP=\begin{pmatrix}1&amp;4\\0&amp;1\end{pmatrix}.
+\]</span></p>
+<p>El orden se puede comprobar con <span class="math inline">\(v=(1,2)\)</span>, cuyas coordenadas nuevas son <span class="math inline">\((1,1)^{\mathsf T}\)</span>. El producto por la matriz nueva da <span class="math inline">\((5,1)^{\mathsf T}\)</span> y la reconstrucción mediante <span class="math inline">\(P\)</span> devuelve <span class="math inline">\((5,2)^{\mathsf T}=T(v)\)</span>. La expresión <span class="math inline">\(PAP^{-1}\)</span> correspondería a la convención inversa para la transición; con nuestro <span class="math inline">\(P\)</span> no representa el cambio pedido.</p>
+<p>Un ejemplo distinto muestra por qué vale la pena buscar una base adecuada. Sea <span class="math inline">\(T(x,y)=(y,x)\)</span> y tomemos <span class="math inline">\(b'_1=(1,1)\)</span>, <span class="math inline">\(b'_2=(1,-1)\)</span>. Sobre <span class="math inline">\(\mathbb R\)</span> forman una base, y sus imágenes son <span class="math inline">\(T(b'_1)=b'_1\)</span>, <span class="math inline">\(T(b'_2)=-b'_2\)</span>. Por ello</p>
+<p><span class="math display">\[
+[T]_{\mathcal E}=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\qquad
+[T]_{\mathcal B'}=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}.
+\]</span></p>
+<p>La base separa dos comportamientos que la fórmula inicial mezclaba: una dirección permanece fija y la otra invierte su signo. Esta construcción requiere que <span class="math inline">\(2\ne0\)</span> en el cuerpo; en característica dos los dos vectores propuestos coinciden y dejan de ser una base.</p>
+</section>
+<section id="el-rango-y-los-sistemas-sobreviven-al-cambio-de-descripción" class="level2">
+<h2 class="anchored" data-anchor-id="el-rango-y-los-sistemas-sobreviven-al-cambio-de-descripción">12.5. El rango y los sistemas sobreviven al cambio de descripción</h2>
+<p>El núcleo de <span class="math inline">\(A\)</span> está formado por columnas, mientras que el núcleo de <span class="math inline">\(T\)</span> está formado por vectores de <span class="math inline">\(V\)</span>. El isomorfismo de coordenadas permite compararlos sin confundirlos.</p>
+<p><span id="MA-BCH-APM-02-012-PRP-002" class="apm-anchor"></span> <strong>Proposición 12.5.</strong> Para <span class="math inline">\(A=[T]_{\mathcal C\leftarrow\mathcal B}\)</span>,</p>
+<p><span class="math display">\[
+\kappa_{\mathcal B}(\ker T)=\ker L_A,\qquad
+\kappa_{\mathcal C}(\operatorname{im}T)=\operatorname{im}L_A.
+\]</span></p>
+<p>En particular, <span class="math inline">\(\operatorname{rg}A=\operatorname{rg}T\)</span> y <span class="math inline">\(\operatorname{nul}A=\dim\ker T\)</span>. Multiplicar una matriz a izquierda o derecha por una matriz invertible conserva su rango.</p>
+<p><strong>Demostración.</strong> La identidad <span class="math inline">\(T(v)=0\)</span> equivale a <span class="math inline">\([T(v)]_{\mathcal C}=0\)</span>, que por representación equivale a <span class="math inline">\(A[v]_{\mathcal B}=0\)</span>. La biyectividad de <span class="math inline">\(\kappa_{\mathcal B}\)</span> da la primera igualdad. Cada vector de la imagen de <span class="math inline">\(T\)</span> es <span class="math inline">\(T(v)\)</span> y su columna es <span class="math inline">\(A[v]_{\mathcal B}\)</span>; como las coordenadas de <span class="math inline">\(v\)</span> recorren todo <span class="math inline">\(\mathbb F^n\)</span>, obtenemos la segunda igualdad. Los isomorfismos preservan dimensión por C10.</p>
+<p>Si <span class="math inline">\(P\)</span> es invertible, las columnas <span class="math inline">\(Px\)</span> recorren todo el dominio de <span class="math inline">\(A\)</span>, de modo que <span class="math inline">\(\operatorname{im}(AP)=\operatorname{im}A\)</span>. Si <span class="math inline">\(R\)</span> es invertible, <span class="math inline">\(\operatorname{im}(RA)=R(\operatorname{im}A)\)</span> tiene la misma dimensión. Esto prueba la última afirmación. <span class="math inline">\(\square\)</span></p>
+<p>Para <span class="math inline">\(A'=Q^{-1}AP\)</span>, las fórmulas más precisas son</p>
+<p><span class="math display">\[
+\ker A'=P^{-1}(\ker A),\qquad
+\operatorname{im}A'=Q^{-1}(\operatorname{im}A).
+\]</span></p>
+<p>Los subespacios de columnas pueden cambiar de posición; sus dimensiones permanecen. También se conserva toda la información de una ecuación <span class="math inline">\(T(v)=w\)</span>. Si <span class="math inline">\(b=[w]_{\mathcal C}\)</span> y <span class="math inline">\(b'=[w]_{\mathcal C'}=Q^{-1}b\)</span>, las soluciones de <span class="math inline">\(Ax=b\)</span> corresponden biyectivamente a las de <span class="math inline">\(A'x'=b'\)</span> mediante <span class="math inline">\(x=Px'\)</span>. Cambiar la matriz y mantener sin conversión el término independiente puede producir un problema distinto.</p>
+</section>
+<section id="dos-bases-independientes-permiten-una-forma-más-simple" class="level2">
+<h2 class="anchored" data-anchor-id="dos-bases-independientes-permiten-una-forma-más-simple">12.6. Dos bases independientes permiten una forma más simple</h2>
+<p>Una transformación rectangular no admite una misma base de entrada y salida. Incluso para un operador podemos decidir usar bases distintas. Esa libertad es mayor que la permitida por semejanza.</p>
+<p><span id="MA-BCH-APM-02-012-DEF-003" class="apm-anchor"></span> <strong>Definición 12.3.</strong> Dos matrices del mismo tamaño <span class="math inline">\(m\times n\)</span> son <strong>equivalentes por dos bases</strong> si <span class="math inline">\(A'=Q^{-1}AP\)</span> para matrices invertibles <span class="math inline">\(P\)</span> y <span class="math inline">\(Q\)</span> de órdenes <span class="math inline">\(n\)</span> y <span class="math inline">\(m\)</span>. Esta equivalencia permite operaciones invertibles de filas y de columnas; es más amplia que la equivalencia por filas de C02.</p>
+<p><span id="MA-BCH-APM-02-012-THM-004" class="apm-anchor"></span> <strong>Teorema 12.6 (clasificación por rango).</strong> Si <span class="math inline">\(T:V\to W\)</span> tiene rango <span class="math inline">\(r\)</span>, existen bases de <span class="math inline">\(V\)</span> y <span class="math inline">\(W\)</span> en las que su matriz es</p>
+<p><span class="math display">\[
+J_r=\begin{pmatrix}I_r&amp;0\\0&amp;0\end{pmatrix}_{m\times n}.
+\]</span></p>
+<p>Dos matrices del mismo tamaño son equivalentes por dos bases si y sólo si tienen igual rango.</p>
+<p><strong>Demostración.</strong> Tomemos una base <span class="math inline">\(k_1,\ldots,k_{n-r}\)</span> del núcleo y extendámosla con vectores <span class="math inline">\(u_1,\ldots,u_r\)</span> hasta una base de <span class="math inline">\(V\)</span>, usando rango-nulidad. Las imágenes <span class="math inline">\(T(u_1),\ldots,T(u_r)\)</span> forman una base de la imagen: cualquier <span class="math inline">\(v\)</span> se expresa mediante los <span class="math inline">\(u_i\)</span> y los <span class="math inline">\(k_j\)</span>, y al aplicar <span class="math inline">\(T\)</span> desaparecen los últimos; si una combinación de <span class="math inline">\(T(u_i)\)</span> se anula, la combinación correspondiente de <span class="math inline">\(u_i\)</span> pertenece al núcleo, y la independencia de la base extendida anula sus coeficientes.</p>
+<p>Ordenamos la base del dominio como <span class="math inline">\((u_1,\ldots,u_r,k_1,\ldots,k_{n-r})\)</span>. Extendemos <span class="math inline">\((T(u_1),\ldots,T(u_r))\)</span> a una base de <span class="math inline">\(W\)</span>. Las primeras <span class="math inline">\(r\)</span> columnas de la matriz son entonces los primeros vectores usuales y todas las demás columnas son cero. Es exactamente <span class="math inline">\(J_r\)</span>.</p>
+<p>Si dos matrices son equivalentes, la proposición 12.5 les da igual rango. Si tienen el mismo rango, ambas pueden llevarse a la misma <span class="math inline">\(J_r\)</span>. Invirtiendo el cambio de bases de una y componiéndolo con el de la otra se obtiene una equivalencia entre ambas. <span class="math inline">\(\square\)</span></p>
+<figure id="fig-apm-t2-c12-f03" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C12-F03.svg" alt="La base del dominio se separa en r vectores que se envían a una base de la imagen y n-r vectores del núcleo que se envían a cero. Una extensión de la base de la imagen completa las m direcciones del codominio." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+<em>Figura 12.3.</em> El bloque identidad procede de elegir como vectores básicos de salida las imágenes de los primeros vectores de entrada. El bloque cero procede del núcleo. El esquema registra dimensiones y correspondencias, sin sugerir ortogonalidad.
+</figcaption>
+</figure>
+<p>Para <span class="math inline">\(T(x,y,z)=(x+y,y+z)\)</span>, elegimos <span class="math inline">\(u_1=e_1\)</span>, <span class="math inline">\(u_2=e_3\)</span> y <span class="math inline">\(k=(-1,1,-1)\)</span>. El vector <span class="math inline">\(k\)</span> genera el núcleo y los tres son independientes: en <span class="math inline">\(au_1+bu_2+ck=0\)</span>, la segunda coordenada da <span class="math inline">\(c=0\)</span> y después <span class="math inline">\(a=b=0\)</span>. Sus imágenes son <span class="math inline">\(e_1,e_2,0\)</span>, por lo que la matriz en esas bases es</p>
+<p><span class="math display">\[
+\begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}.
+\]</span></p>
+<p>La clasificación por rango resuelve completamente la equivalencia por dos bases. No resuelve la semejanza. Sobre <span class="math inline">\(\mathbb R\)</span>, <span class="math inline">\(I_2\)</span> y <span class="math inline">\(2I_2\)</span> tienen rango dos y son equivalentes por dos bases, pero cualquier conjugado de <span class="math inline">\(I_2\)</span> sigue siendo <span class="math inline">\(I_2\)</span>. La libertad de modificar la base de salida con independencia de la de entrada borra información que un operador conserva al iterarse.</p>
+</section>
+<section id="una-suma-diagonal-que-no-depende-de-la-base" class="level2">
+<h2 class="anchored" data-anchor-id="una-suma-diagonal-que-no-depende-de-la-base">12.7. Una suma diagonal que no depende de la base</h2>
+<p>La cizalla cambió una entrada fuera de la diagonal; el intercambio de coordenadas cambió incluso sus entradas diagonales. En ambos ejemplos la suma de la diagonal permaneció. Para demostrar que sucede con cualquier cambio de base necesitamos una propiedad que relacione esa suma con el producto matricial.</p>
+<p><span id="MA-BCH-APM-02-012-DEF-004" class="apm-anchor"></span> <strong>Definición 12.4.</strong> La <strong>traza</strong> de <span class="math inline">\(A=(a_{ij})\in M_n(\mathbb F)\)</span> es <span class="math inline">\(\operatorname{tr}A=\sum_{i=1}^na_{ii}\)</span>. Para <span class="math inline">\(n=0\)</span> la suma vale cero.</p>
+<p><span id="MA-BCH-APM-02-012-LEM-001" class="apm-anchor"></span> <strong>Lema 12.7 (intercambio de dos factores).</strong> Si <span class="math inline">\(A\in M_{m\times n}(\mathbb F)\)</span> y <span class="math inline">\(B\in M_{n\times m}(\mathbb F)\)</span>, entonces</p>
+<p><span class="math display">\[
+\operatorname{tr}(AB)=\operatorname{tr}(BA).
+\]</span></p>
+<p><strong>Demostración.</strong> La entrada diagonal <span class="math inline">\(i\)</span> de <span class="math inline">\(AB\)</span> es <span class="math inline">\(\sum_{j=1}^na_{ij}b_{ji}\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\operatorname{tr}(AB)=\sum_{i=1}^m\sum_{j=1}^na_{ij}b_{ji}
+=\sum_{j=1}^n\sum_{i=1}^mb_{ji}a_{ij}=\operatorname{tr}(BA).
+\]</span></p>
+<p>Se reordenan sumas finitas y se usa la conmutatividad de escalares. No se afirma que las matrices <span class="math inline">\(AB\)</span> y <span class="math inline">\(BA\)</span> sean iguales: pueden tener tamaños distintos. <span class="math inline">\(\square\)</span></p>
+<p><span id="MA-BCH-APM-02-012-THM-005" class="apm-anchor"></span> <strong>Teorema 12.8 (traza de un operador).</strong> Si <span class="math inline">\(A'=P^{-1}AP\)</span>, entonces <span class="math inline">\(\operatorname{tr}A'=\operatorname{tr}A\)</span>. Por consiguiente, para un operador <span class="math inline">\(T:V\to V\)</span> está bien definido</p>
+<p><span class="math display">\[
+\operatorname{tr}T=\operatorname{tr}[T]_{\mathcal B},
+\]</span></p>
+<p>con cualquier base <span class="math inline">\(\mathcal B\)</span> de <span class="math inline">\(V\)</span>. La traza es lineal y satisface <span class="math inline">\(\operatorname{tr}(ST)=\operatorname{tr}(TS)\)</span> para operadores de <span class="math inline">\(V\)</span>.</p>
+<p><strong>Demostración.</strong> Aplicamos el lema a los dos factores <span class="math inline">\(P^{-1}A\)</span> y <span class="math inline">\(P\)</span>:</p>
+<p><span class="math display">\[
+\operatorname{tr}(P^{-1}AP)=\operatorname{tr}(PP^{-1}A)=\operatorname{tr}A.
+\]</span></p>
+<p>La proposición 12.4 asegura que dos elecciones de base producen matrices semejantes, de donde resulta la independencia. Sumar las diagonales de <span class="math inline">\(\alpha A+\beta B\)</span> da <span class="math inline">\(\alpha\operatorname{tr}A+\beta\operatorname{tr}B\)</span>; los teoremas 12.1–12.2 trasladan esta propiedad a operadores. La última identidad procede del lema y de la fórmula de composición en una misma base. <span class="math inline">\(\square\)</span></p>
+<p>La invariancia exige una misma base para entrada y salida. La identidad de <span class="math inline">\(\mathbb R\)</span> tiene matriz <span class="math inline">\((1)\)</span> usando la misma base, pero tiene matriz <span class="math inline">\((2)\)</span> si el vector básico de entrada es <span class="math inline">\(2\)</span> y el de salida es <span class="math inline">\(1\)</span>. La traza de esa representación mixta no es la traza del operador. También sería ilegítimo definirla para una matriz rectangular tomando sólo las posiciones diagonales disponibles y esperar las mismas propiedades de invariancia.</p>
+<p>La traza tampoco clasifica la semejanza. Las matrices <span class="math inline">\(0_2\)</span> y <span class="math inline">\(\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\)</span> tienen traza cero y rangos distintos. Incluso agregar el rango no basta: <span class="math inline">\(I_2\)</span> y <span class="math inline">\(\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)</span> tienen ambos traza dos y rango dos sobre <span class="math inline">\(\mathbb R\)</span>, mientras todo conjugado de <span class="math inline">\(I_2\)</span> es <span class="math inline">\(I_2\)</span>. Un invariante proporciona una obstrucción: si difiere, no hay semejanza. La coincidencia de un invariante no asegura que exista un cambio de base.</p>
+<p>En característica positiva la traza es un elemento del cuerpo. Si <span class="math inline">\(E^2=E\)</span>, C11 da <span class="math inline">\(V=\operatorname{im}E\oplus\ker E\)</span>. En una base adaptada, <span class="math inline">\([E]=\operatorname{diag}(I_r,0)\)</span>, de modo que <span class="math inline">\(\operatorname{tr}E=r\,1_{\mathbb F}\)</span>. Sobre <span class="math inline">\(\mathbb R\)</span> recupera el rango entero. Sobre <span class="math inline">\(\mathbb F_p\)</span> sólo registra su residuo módulo <span class="math inline">\(p\)</span>; la identidad de <span class="math inline">\(\mathbb F_p^p\)</span> tiene traza cero y rango <span class="math inline">\(p\)</span>. La definición es válida en ambos casos, pero su capacidad para distinguir dimensiones cambia.</p>
+</section>
+<section id="descomposiciones-que-producen-bloques" class="level2">
+<h2 class="anchored" data-anchor-id="descomposiciones-que-producen-bloques">12.8. Descomposiciones que producen bloques</h2>
+<p>Una suma directa <span class="math inline">\(V=U\oplus K\)</span> permite concatenar bases. Si un operador preserva ambos subespacios, sus columnas correspondientes a <span class="math inline">\(U\)</span> no tienen componente en <span class="math inline">\(K\)</span>, y las correspondientes a <span class="math inline">\(K\)</span> no tienen componente en <span class="math inline">\(U\)</span>. Esa observación convierte la descomposición de C11 en un cálculo por bloques.</p>
+<p><span id="MA-BCH-APM-02-012-PRP-003" class="apm-anchor"></span> <strong>Proposición 12.9.</strong> Sea <span class="math inline">\(V=U\oplus K\)</span> y supongamos que <span class="math inline">\(T(U)\subseteq U\)</span> y <span class="math inline">\(T(K)\subseteq K\)</span>. En la base concatenada <span class="math inline">\(\mathcal B=(\mathcal U,\mathcal K)\)</span>,</p>
+<p><span class="math display">\[
+[T]_{\mathcal B}=\begin{pmatrix}A&amp;0\\0&amp;D\end{pmatrix},
+\qquad A=[T|_U]_{\mathcal U},\quad D=[T|_K]_{\mathcal K}.
+\]</span></p>
+<p>Además, <span class="math inline">\(\operatorname{rg}T=\operatorname{rg}(T|_U)+\operatorname{rg}(T|_K)\)</span> y <span class="math inline">\(\operatorname{tr}T=\operatorname{tr}(T|_U)+\operatorname{tr}(T|_K)\)</span>.</p>
+<p><strong>Demostración.</strong> Las inclusiones del enunciado anulan las componentes cruzadas de las imágenes de cada vector básico, dando los dos bloques cero. La imagen es <span class="math inline">\(T(U)+T(K)\)</span>; como los sumandos están contenidos en <span class="math inline">\(U\)</span> y <span class="math inline">\(K\)</span>, su intersección es cero y sus dimensiones se suman. La diagonal de la matriz por bloques concatena las de <span class="math inline">\(A\)</span> y <span class="math inline">\(D\)</span>, lo que prueba la fórmula de traza. <span class="math inline">\(\square\)</span></p>
+<p>Si únicamente se cumple <span class="math inline">\(T(U)\subseteq U\)</span>, el bloque inferior izquierdo es cero y el superior derecho puede ser no nulo. Por ejemplo, la cizalla preserva el eje horizontal, pero lleva <span class="math inline">\(e_2\)</span> a <span class="math inline">\(2e_1+e_2\)</span>; el eje vertical no permanece dentro de sí mismo. Este bloque cruzado mide una interacción que una descomposición arbitraria no elimina.</p>
+<p>El proyector oblicuo <span class="math inline">\(E(x,y)=(x-y,0)\)</span> tiene imagen horizontal y núcleo <span class="math inline">\(\operatorname{span}(1,1)\)</span>. En la base <span class="math inline">\(((1,0),(1,1))\)</span> su matriz es <span class="math inline">\(\operatorname{diag}(1,0)\)</span>: la primera dirección se conserva y la segunda se anula. La elección de la base hace legible la descomposición que ya existía en el operador. Esa posibilidad de adaptar las coordenadas a su comportamiento explica la utilidad de la semejanza; rango y traza permiten comprobar que algunas propiedades atraviesan todas esas descripciones.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">12.9. Ejercicios</h2>
+<p>Los problemas siguientes usan coordenadas columna. Una matriz sin bases indicadas actúa entre los espacios usuales del tamaño correspondiente. Se trabaja sobre <span class="math inline">\(\mathbb R\)</span> salvo que se indique otro cuerpo.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-001" class="apm-anchor"></span> <strong>Ejercicio 1 — Columnas y salida.</strong> Sea <span class="math inline">\(T(x,y)=(2x-y,x+3y)\)</span>. Escribe su matriz usual y calcula <span class="math inline">\(T(2,-1)\)</span> mediante ella.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-002" class="apm-anchor"></span> <strong>Ejercicio 2 — Una base de salida distinta.</strong> Para el mapa del ejercicio 1 usa la base usual de entrada y <span class="math inline">\(\mathcal C=((1,1),(0,1))\)</span> de salida.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-003" class="apm-anchor"></span> <strong>Ejercicio 3 — Reconstruir el mapa.</strong> En <span class="math inline">\(P_1(\mathbb R)\)</span> toma <span class="math inline">\(\mathcal B=(1,1+t)\)</span>; en <span class="math inline">\(\mathbb R^2\)</span>, <span class="math inline">\(\mathcal C=((1,0),(1,1))\)</span>. La matriz de <span class="math inline">\(T\)</span> es <span class="math inline">\(\begin{pmatrix}1&amp;2\\3&amp;4\end{pmatrix}\)</span>. Encuentra <span class="math inline">\(T(a+bt)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-004" class="apm-anchor"></span> <strong>Ejercicio 4 — Evaluar polinomios.</strong> Sea <span class="math inline">\(E:P_2(\mathbb R)\to\mathbb R^3\)</span>, <span class="math inline">\(E(p)=(p(0),p(1),p(-1))\)</span>. Representa <span class="math inline">\(E\)</span> en bases usuales y determina su núcleo.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-005" class="apm-anchor"></span> <strong>Ejercicio 5 — Composición rectangular.</strong> Toma <span class="math inline">\(A=\begin{pmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\end{pmatrix}\)</span> y <span class="math inline">\(B=\begin{pmatrix}1&amp;2\\0&amp;1\\1&amp;0\end{pmatrix}\)</span>. Calcula <span class="math inline">\(BA\)</span> y <span class="math inline">\(AB\)</span> e indica los espacios en que actúan.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-006" class="apm-anchor"></span> <strong>Ejercicio 6 — La identidad entre bases.</strong> Para <span class="math inline">\(\mathcal B=((1,1),(1,-1))\)</span> encuentra <span class="math inline">\([I]_{\mathcal E\leftarrow\mathcal B}\)</span> y <span class="math inline">\([I]_{\mathcal B\leftarrow\mathcal E}\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-007" class="apm-anchor"></span> <strong>Ejercicio 7 — Invertir con bases.</strong> El mapa del ejercicio 1 es un isomorfismo. Encuentra la matriz de su inversa en bases usuales.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-008" class="apm-anchor"></span> <strong>Ejercicio 8 — Cambiar sólo la entrada.</strong> Para <span class="math inline">\(A=\begin{pmatrix}2&amp;-1\\1&amp;3\end{pmatrix}\)</span> y <span class="math inline">\(\mathcal B'=((1,1),(1,0))\)</span>, mantén la base usual de salida y calcula la nueva matriz.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-009" class="apm-anchor"></span> <strong>Ejercicio 9 — Cambiar sólo la salida.</strong> Para el mismo <span class="math inline">\(A\)</span>, mantén la entrada usual y usa <span class="math inline">\(\mathcal C'=((1,0),(1,1))\)</span> de salida.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-010" class="apm-anchor"></span> <strong>Ejercicio 10 — Cambiar ambas bases.</strong> Combina las bases nuevas de los ejercicios 8 y 9. Verifica la salida de <span class="math inline">\(v=(2,1)\)</span> en ambos sistemas.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-011" class="apm-anchor"></span> <strong>Ejercicio 11 — El orden de las inversas.</strong> En la cizalla inicial se propone <span class="math inline">\(A_{\mathrm{nueva}}=PAP^{-1}\)</span> con <span class="math inline">\(P=\operatorname{diag}(1,2)\)</span>. Localiza el error y proporciona una entrada que lo detecte.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-012" class="apm-anchor"></span> <strong>Ejercicio 12 — Componer con una base intermedia distinta.</strong> Sean <span class="math inline">\(A=[T]_{\mathcal C\leftarrow\mathcal B}\)</span>, <span class="math inline">\(B=[S]_{\mathcal D\leftarrow\mathcal C'}\)</span> y <span class="math inline">\(R=P_{\mathcal C'\leftarrow\mathcal C}\)</span>. Encuentra la matriz de <span class="math inline">\(ST\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-013" class="apm-anchor"></span> <strong>Ejercicio 13 — Potencias con representación mixta.</strong> En <span class="math inline">\(V=\mathbb R\)</span>, representa la identidad usando entrada <span class="math inline">\((2)\)</span> y salida <span class="math inline">\((1)\)</span>. Explica por qué elevar esa matriz al cuadrado no representa su segunda iteración con las mismas bases mixtas.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-014" class="apm-anchor"></span> <strong>Ejercicio 14 — Una matriz que simplifica un operador.</strong> Para <span class="math inline">\(T(x,y)=(3x+y,x+3y)\)</span> usa <span class="math inline">\(\mathcal B=((1,1),(1,-1))\)</span>. Calcula <span class="math inline">\([T]_{\mathcal B}\)</span> y una fórmula para <span class="math inline">\(T^k\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-015" class="apm-anchor"></span> <strong>Ejercicio 15 — Rango y núcleo en nuevas coordenadas.</strong> Sean <span class="math inline">\(A=\begin{pmatrix}1&amp;1\\0&amp;0\end{pmatrix}\)</span> y <span class="math inline">\(P=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)</span>. Encuentra <span class="math inline">\(AP\)</span>, su núcleo y su imagen; compáralos con los de <span class="math inline">\(A\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-016" class="apm-anchor"></span> <strong>Ejercicio 16 — Convertir el término independiente.</strong> Sea <span class="math inline">\(A=I_2\)</span>, <span class="math inline">\(Q=\operatorname{diag}(2,1)\)</span> y <span class="math inline">\(P=I_2\)</span>. Compara <span class="math inline">\(Ax=(2,3)^{\mathsf T}\)</span> con su ecuación correctamente convertida y con la ecuación que conserva erróneamente el mismo término independiente.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-017" class="apm-anchor"></span> <strong>Ejercicio 17 — Construir bases para el rango.</strong> Para <span class="math inline">\(T(x,y,z)=(x+y,y+z)\)</span>, construye explícitamente las matrices <span class="math inline">\(P,Q\)</span> que llevan su matriz usual a <span class="math inline">\(J_2\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-018" class="apm-anchor"></span> <strong>Ejercicio 18 — Equivalencia sin semejanza.</strong> Demuestra que <span class="math inline">\(I_2\)</span> y <span class="math inline">\(2I_2\)</span> son equivalentes por dos bases y no semejantes.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-019" class="apm-anchor"></span> <strong>Ejercicio 19 — La misma traza no basta.</strong> Da dos matrices reales <span class="math inline">\(2\times2\)</span> con igual rango e igual traza que no sean semejantes. Justifica la última afirmación.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-020" class="apm-anchor"></span> <strong>Ejercicio 20 — Traza rectangular.</strong> Para las matrices <span class="math inline">\(A,B\)</span> del ejercicio 5, comprueba la identidad de trazas sin confundir los tamaños de <span class="math inline">\(AB\)</span> y <span class="math inline">\(BA\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-021" class="apm-anchor"></span> <strong>Ejercicio 21 — Permutar tres factores.</strong> Para matrices cuadradas del mismo orden demuestra <span class="math inline">\(\operatorname{tr}(ABC)=\operatorname{tr}(BCA)=\operatorname{tr}(CAB)\)</span>. ¿Puede permutarse cualquier pareja?</p>
+<p><span id="MA-BCH-APM-02-012-EXR-022" class="apm-anchor"></span> <strong>Ejercicio 22 — Conmutadores.</strong> Para <span class="math inline">\(A,B\in M_n(\mathbb F)\)</span> demuestra que <span class="math inline">\(AB-BA\)</span> tiene traza cero. Deduce que sobre <span class="math inline">\(\mathbb R\)</span>, para <span class="math inline">\(n\ge1\)</span>, no puede cumplirse <span class="math inline">\(AB-BA=I_n\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-023" class="apm-anchor"></span> <strong>Ejercicio 23 — Un funcional de rango uno.</strong> Sean <span class="math inline">\(u\in\mathbb F^n\)</span> y <span class="math inline">\(\varphi(x)=\sum_j a_jx_j\)</span>. Para <span class="math inline">\(T(x)=\varphi(x)u\)</span>, calcula su matriz, traza y rango.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-024" class="apm-anchor"></span> <strong>Ejercicio 24 — Proyectores oblicuos.</strong> Para <span class="math inline">\(E(x,y)=(x-y,0)\)</span> calcula su matriz usual, una base en que sea diagonal y su traza.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-025" class="apm-anchor"></span> <strong>Ejercicio 25 — La característica altera la lectura de la traza.</strong> En <span class="math inline">\(\mathbb F_2^2\)</span> estudia la traza, rango e idempotencia de <span class="math inline">\(I_2\)</span>. Explica qué afirmación real deja de poder inferirse.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-026" class="apm-anchor"></span> <strong>Ejercicio 26 — Bloques e interacción.</strong> En la descomposición <span class="math inline">\(\mathbb R^3=\operatorname{span}(e_1,e_2)\oplus\operatorname{span}(e_3)\)</span>, estudia <span class="math inline">\(A=\begin{pmatrix}1&amp;0&amp;2\\0&amp;1&amp;3\\0&amp;0&amp;4\end{pmatrix}\)</span>. ¿Qué sumandos preserva?</p>
+<p><span id="MA-BCH-APM-02-012-EXR-027" class="apm-anchor"></span> <strong>Ejercicio 27 — Una base del espacio de mapas.</strong> Para bases <span class="math inline">\(\mathcal B=(b_j)_{j=1}^n\)</span>, <span class="math inline">\(\mathcal C=(c_i)_{i=1}^m\)</span>, define <span class="math inline">\(F_{ij}(b_k)=\delta_{jk}c_i\)</span>. Demuestra que los <span class="math inline">\(F_{ij}\)</span> forman una base de <span class="math inline">\(\operatorname{Hom}(V,W)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-028" class="apm-anchor"></span> <strong>Ejercicio 28 — Por qué hace falta una base.</strong> Se propone representar un mapa de <span class="math inline">\(\mathbb R^2\)</span> usando la lista <span class="math inline">\((e_1,e_2,e_1+e_2)\)</span> de entrada. Explica qué falla en las coordenadas y qué condición deben satisfacer las tres imágenes prescritas.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-029" class="apm-anchor"></span> <strong>Ejercicio 29 — Clasificación de todas las matrices de rango uno.</strong> Demuestra que una matriz no nula <span class="math inline">\(A\in M_{m\times n}(\mathbb F)\)</span> tiene rango uno si y sólo si <span class="math inline">\(A=uv^{\mathsf T}\)</span> con <span class="math inline">\(u,v\)</span> no nulos.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-030" class="apm-anchor"></span> <strong>Ejercicio 30 — Semejanza y potencias.</strong> Si <span class="math inline">\(B=P^{-1}AP\)</span>, demuestra que <span class="math inline">\(B^k=P^{-1}A^kP\)</span> para <span class="math inline">\(k\ge0\)</span>. Deduce la invariancia de <span class="math inline">\(\operatorname{rg}(A^k)\)</span> y <span class="math inline">\(\operatorname{tr}(A^k)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-031" class="apm-anchor"></span> <strong>Ejercicio 31 — Rangos iguales, cuadrados distintos.</strong> Construye dos matrices <span class="math inline">\(2\times2\)</span> del mismo rango que sean equivalentes por dos bases pero cuyos cuadrados tengan rangos distintos.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-032" class="apm-anchor"></span> <strong>Ejercicio 32 — Traslación de polinomios.</strong> Para <span class="math inline">\(S:P_2(\mathbb R)\to P_2(\mathbb R)\)</span>, <span class="math inline">\(S(p)(t)=p(t+1)\)</span>, calcula su matriz en <span class="math inline">\((1,t,t^2)\)</span> y la matriz de <span class="math inline">\(S^k\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-033" class="apm-anchor"></span> <strong>Ejercicio 33 — Un mapa desde un cociente.</strong> En <span class="math inline">\(V=\mathbb R^3\)</span> toma <span class="math inline">\(U=\operatorname{span}(1,1,1)\)</span> y <span class="math inline">\(T(x,y,z)=(x-z,y-z)\)</span>. Representa el isomorfismo inducido <span class="math inline">\(\overline T:V/U\to\mathbb R^2\)</span> en una base explícita de clases.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-034" class="apm-anchor"></span> <strong>Ejercicio 34 — Complementos y elecciones.</strong> En el ejercicio 33 utiliza el complemento <span class="math inline">\(K=\operatorname{span}(e_1,e_2)\)</span> para elegir representantes. Después usa <span class="math inline">\(K'=\operatorname{span}((2,1,1),(1,2,1))\)</span>. ¿Cambia la matriz obtenida con las clases de esos generadores?</p>
+<p><span id="MA-BCH-APM-02-012-EXR-035" class="apm-anchor"></span> <strong>Ejercicio 35 — Intercambio en característica dos.</strong> En <span class="math inline">\(\mathbb F_2^2\)</span> considera <span class="math inline">\(T(x,y)=(y,x)\)</span>. ¿Existe una base en que su matriz sea diagonal?</p>
+<p><span id="MA-BCH-APM-02-012-EXR-036" class="apm-anchor"></span> <strong>Ejercicio 36 — Todas las bases que conservan una matriz.</strong> Sea <span class="math inline">\(A=\operatorname{diag}(1,2)\)</span> sobre <span class="math inline">\(\mathbb R\)</span>. Encuentra todas las matrices invertibles <span class="math inline">\(P\)</span> tales que <span class="math inline">\(P^{-1}AP=A\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-037" class="apm-anchor"></span> <strong>Ejercicio 37 — Reconocer una proyección sin resolver un sistema.</strong> Sea <span class="math inline">\(A\in M_n(\mathbb F)\)</span> con <span class="math inline">\(A^2=A\)</span>. Demuestra que es semejante a <span class="math inline">\(\operatorname{diag}(I_r,0)\)</span>, donde <span class="math inline">\(r=\operatorname{rg}A\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-038" class="apm-anchor"></span> <strong>Ejercicio 38 — Traza como caracterización lineal.</strong> Sea <span class="math inline">\(f:M_n(\mathbb F)\to\mathbb F\)</span> lineal y supongamos <span class="math inline">\(f(AB)=f(BA)\)</span> para todas <span class="math inline">\(A,B\)</span>. Demuestra que existe <span class="math inline">\(c\in\mathbb F\)</span> con <span class="math inline">\(f(A)=c\operatorname{tr}A\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-039" class="apm-anchor"></span> <strong>Ejercicio 39 — Dos operadores conjugados por un isomorfismo.</strong> Sean <span class="math inline">\(T:V\to V\)</span>, <span class="math inline">\(S:W\to W\)</span> y un isomorfismo <span class="math inline">\(F:V\to W\)</span> con <span class="math inline">\(FT=SF\)</span>. Demuestra que sus matrices en cualesquiera bases son semejantes y tienen igual rango y traza.</p>
+<p><span id="MA-BCH-APM-02-012-EXR-040" class="apm-anchor"></span> <strong>Ejercicio 40 — Reconstrucción integral.</strong> Define <span class="math inline">\(T:P_2(\mathbb R)\to P_2(\mathbb R)\)</span> por <span class="math inline">\(T(p)=p(0)\,1+p(1)\,t\)</span>. Calcula su matriz en <span class="math inline">\(\mathcal E=(1,t,t^2)\)</span> y en <span class="math inline">\(\mathcal B=(1,t,t^2-t)\)</span>; halla núcleo, imagen, rango y traza. Comprueba el cambio de base.</p>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">12.10. Soluciones</h2>
+<p><span id="MA-BCH-APM-02-012-SOL-001" class="apm-anchor"></span> <strong>Solución 1.</strong> Las imágenes de <span class="math inline">\(e_1,e_2\)</span> son <span class="math inline">\((2,1)\)</span> y <span class="math inline">\((-1,3)\)</span>, de modo que <span class="math inline">\(A=\begin{pmatrix}2&amp;-1\\1&amp;3\end{pmatrix}\)</span>. El producto <span class="math inline">\(A(2,-1)^{\mathsf T}=(5,-1)^{\mathsf T}\)</span> da <span class="math inline">\(T(2,-1)=(5,-1)\)</span>. La comprobación directa sustituye en ambas componentes y produce la misma salida.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-002" class="apm-anchor"></span> <strong>Solución 2.</strong> Para escribir <span class="math inline">\((a,b)\)</span> en <span class="math inline">\(\mathcal C\)</span> resolvemos <span class="math inline">\((a,b)=a(1,1)+(b-a)(0,1)\)</span>. Así, <span class="math inline">\([T(e_1)]_{\mathcal C}=(2,-1)^{\mathsf T}\)</span> y <span class="math inline">\([T(e_2)]_{\mathcal C}=(-1,4)^{\mathsf T}\)</span>. La matriz es <span class="math inline">\(\begin{pmatrix}2&amp;-1\\-1&amp;4\end{pmatrix}\)</span>. Sus columnas son coordenadas de las imágenes, y no sus coordenadas usuales.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-003" class="apm-anchor"></span> <strong>Solución 3.</strong> La entrada se escribe <span class="math inline">\((a-b)1+b(1+t)\)</span> y tiene coordenadas <span class="math inline">\((a-b,b)^{\mathsf T}\)</span>. El producto da <span class="math inline">\((a+b,3a+b)^{\mathsf T}\)</span> en <span class="math inline">\(\mathcal C\)</span>. Al reconstruir, <span class="math inline">\(T(a+bt)=(a+b)(1,0)+(3a+b)(1,1)=(4a+2b,3a+b)\)</span>. El último paso es indispensable para responder en coordenadas usuales.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-004" class="apm-anchor"></span> <strong>Solución 4.</strong> Las imágenes de <span class="math inline">\(1,t,t^2\)</span> son <span class="math inline">\((1,1,1),(0,1,-1),(0,1,1)\)</span>, respectivamente. La matriz es <span class="math inline">\(\begin{pmatrix}1&amp;0&amp;0\\1&amp;1&amp;1\\1&amp;-1&amp;1\end{pmatrix}\)</span>. Si su producto por <span class="math inline">\((a,b,c)^{\mathsf T}\)</span> es cero, la primera fila da <span class="math inline">\(a=0\)</span> y las otras dan <span class="math inline">\(b+c=-b+c=0\)</span>. Sumar y restar, usando <span class="math inline">\(2\ne0\)</span>, da <span class="math inline">\(b=c=0\)</span>. Por tanto el núcleo es trivial.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-005" class="apm-anchor"></span> <strong>Solución 5.</strong> <span class="math inline">\(A:\mathbb R^3\to\mathbb R^2\)</span> y <span class="math inline">\(B:\mathbb R^2\to\mathbb R^3\)</span>. Por multiplicación, <span class="math inline">\(BA=\begin{pmatrix}1&amp;2&amp;3\\0&amp;1&amp;1\\1&amp;0&amp;1\end{pmatrix}\)</span> actúa en <span class="math inline">\(\mathbb R^3\)</span>, mientras <span class="math inline">\(AB=\begin{pmatrix}2&amp;2\\1&amp;1\end{pmatrix}\)</span> actúa en <span class="math inline">\(\mathbb R^2\)</span>. Las dos composiciones son legítimas y diferentes; que sus trazas sean ambas tres se explica por el lema 12.7.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-006" class="apm-anchor"></span> <strong>Solución 6.</strong> La primera matriz tiene como columnas los vectores de <span class="math inline">\(\mathcal B\)</span>: <span class="math inline">\(P=\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix}\)</span>. La segunda es <span class="math inline">\(P^{-1}=\frac12\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix}\)</span>, pues <span class="math inline">\(P^2=2I\)</span>. La identidad tiene matriz identidad cuando las bases de ambos lados coinciden; aquí se están convirtiendo coordenadas.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-007" class="apm-anchor"></span> <strong>Solución 7.</strong> Resolver <span class="math inline">\(u=2x-y\)</span>, <span class="math inline">\(v=x+3y\)</span> da <span class="math inline">\(x=(3u+v)/7\)</span>, <span class="math inline">\(y=(-u+2v)/7\)</span>. La matriz inversa es <span class="math inline">\(\frac17\begin{pmatrix}3&amp;1\\-1&amp;2\end{pmatrix}\)</span>. Multiplicarla a izquierda y derecha por <span class="math inline">\(A\)</span> da <span class="math inline">\(I_2\)</span>, lo que comprueba tanto la fórmula como la biyectividad sin determinantes.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-008" class="apm-anchor"></span> <strong>Solución 8.</strong> La transición nueva a usual es <span class="math inline">\(P=\begin{pmatrix}1&amp;1\\1&amp;0\end{pmatrix}\)</span>. Resulta <span class="math inline">\(AP=\begin{pmatrix}1&amp;2\\4&amp;1\end{pmatrix}\)</span>. Sus columnas son <span class="math inline">\(T(1,1)=(1,4)\)</span> y <span class="math inline">\(T(1,0)=(2,1)\)</span>, comprobación directa que también fija el lado del producto.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-009" class="apm-anchor"></span> <strong>Solución 9.</strong> <span class="math inline">\(Q=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)</span> y <span class="math inline">\(Q^{-1}=\begin{pmatrix}1&amp;-1\\0&amp;1\end{pmatrix}\)</span>. Por tanto <span class="math inline">\(Q^{-1}A=\begin{pmatrix}1&amp;-4\\1&amp;3\end{pmatrix}\)</span>. En efecto, <span class="math inline">\((2,1)=(1,0)+(1,1)\)</span> y <span class="math inline">\((-1,3)=-4(1,0)+3(1,1)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-010" class="apm-anchor"></span> <strong>Solución 10.</strong> <span class="math inline">\(A'=Q^{-1}AP=\begin{pmatrix}-3&amp;1\\4&amp;1\end{pmatrix}\)</span>. La entrada tiene coordenadas nuevas <span class="math inline">\((1,1)^{\mathsf T}\)</span>, y su salida tiene coordenadas <span class="math inline">\((-2,5)^{\mathsf T}\)</span>. Reconstruir en <span class="math inline">\(\mathcal C'\)</span> da <span class="math inline">\(-2(1,0)+5(1,1)=(3,5)\)</span>, que coincide con <span class="math inline">\(T(2,1)\)</span>. Quedan controladas la matriz, la entrada y la reconstrucción.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-011" class="apm-anchor"></span> <strong>Solución 11.</strong> Con la convención del capítulo, <span class="math inline">\(P\)</span> recibe coordenadas nuevas, por lo que actúa primero, a la derecha. La fórmula correcta es <span class="math inline">\(P^{-1}AP=\begin{pmatrix}1&amp;4\\0&amp;1\end{pmatrix}\)</span>. La fórmula propuesta da <span class="math inline">\(\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)</span>. Para la entrada nueva <span class="math inline">\((0,1)^{\mathsf T}\)</span>, que representa <span class="math inline">\((0,2)\)</span>, ésta produciría <span class="math inline">\((1,1)^{\mathsf T}\)</span> en vez de <span class="math inline">\((4,1)^{\mathsf T}\)</span>. Al reconstruir se obtendría <span class="math inline">\((1,2)\)</span> en lugar de <span class="math inline">\((4,2)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-012" class="apm-anchor"></span> <strong>Solución 12.</strong> La entrada en <span class="math inline">\(\mathcal B\)</span> se convierte por <span class="math inline">\(A\)</span> en coordenadas <span class="math inline">\(\mathcal C\)</span>; <span class="math inline">\(R\)</span> convierte esas coordenadas en las que recibe <span class="math inline">\(B\)</span>. Por tanto <span class="math inline">\([ST]_{\mathcal D\leftarrow\mathcal B}=BRA\)</span>. La comprobación consiste en aplicar la identidad a una columna arbitraria <span class="math inline">\([v]_{\mathcal B}\)</span>: el producto devuelve <span class="math inline">\([S(T(v))]_{\mathcal D}\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-013" class="apm-anchor"></span> <strong>Solución 13.</strong> La matriz mixta es <span class="math inline">\((2)\)</span>. La segunda iteración sigue siendo la identidad y tiene la misma matriz mixta <span class="math inline">\((2)\)</span>, mientras el cuadrado numérico es <span class="math inline">\((4)\)</span>. Entre dos aplicaciones debe convertirse la salida en la base <span class="math inline">\((1)\)</span> a la entrada en <span class="math inline">\((2)\)</span>, mediante <span class="math inline">\((1/2)\)</span>. El producto correcto es <span class="math inline">\((2)(1/2)(2)=(2)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-014" class="apm-anchor"></span> <strong>Solución 14.</strong> <span class="math inline">\(T(1,1)=4(1,1)\)</span> y <span class="math inline">\(T(1,-1)=2(1,-1)\)</span>, así que <span class="math inline">\([T]_{\mathcal B}=\operatorname{diag}(4,2)\)</span>. Como <span class="math inline">\((x,y)=\frac{x+y}{2}(1,1)+\frac{x-y}{2}(1,-1)\)</span>, para <span class="math inline">\(k\ge0\)</span> resulta <span class="math inline">\(T^k(x,y)=\frac{4^k(x+y)}2(1,1)+\frac{2^k(x-y)}2(1,-1)\)</span>. No hace falta multiplicar repetidamente matrices llenas.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-015" class="apm-anchor"></span> <strong>Solución 15.</strong> <span class="math inline">\(AP=\begin{pmatrix}1&amp;2\\0&amp;0\end{pmatrix}\)</span> tiene núcleo <span class="math inline">\(\operatorname{span}(-2,1)\)</span> e imagen <span class="math inline">\(\operatorname{span}(1,0)\)</span>. El núcleo de <span class="math inline">\(A\)</span> es <span class="math inline">\(\operatorname{span}(-1,1)\)</span>; aplicar <span class="math inline">\(P^{-1}\)</span> a ese generador da <span class="math inline">\((-2,1)\)</span>. La imagen permanece igual porque el cambio sólo afecta al dominio. Ambos rangos son uno.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-016" class="apm-anchor"></span> <strong>Solución 16.</strong> <span class="math inline">\(A'=Q^{-1}=\operatorname{diag}(1/2,1)\)</span>. El término convertido es <span class="math inline">\(b'=(1,3)^{\mathsf T}\)</span>, de modo que la solución sigue siendo <span class="math inline">\(x=(2,3)^{\mathsf T}\)</span>. Si se escribe <span class="math inline">\(A'x=(2,3)^{\mathsf T}\)</span>, la solución pasa a <span class="math inline">\((4,3)^{\mathsf T}\)</span>. Se habría cambiado el vector de salida solicitado al dejar intacta su columna de números.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-017" class="apm-anchor"></span> <strong>Solución 17.</strong> Sirven <span class="math inline">\(P=\begin{pmatrix}1&amp;0&amp;-1\\0&amp;0&amp;1\\0&amp;1&amp;-1\end{pmatrix}\)</span>, con columnas <span class="math inline">\(e_1,e_3,(-1,1,-1)\)</span>, y <span class="math inline">\(Q=I_2\)</span>. La independencia de las columnas se comprobó en §12.6. El producto directo es <span class="math inline">\(AP=\begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\end{pmatrix}\)</span>; las dos primeras columnas identifican una base de la imagen y la última se anula.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-018" class="apm-anchor"></span> <strong>Solución 18.</strong> Eligiendo <span class="math inline">\(P=2I_2\)</span> y <span class="math inline">\(Q=I_2\)</span> se obtiene <span class="math inline">\(Q^{-1}I_2P=2I_2\)</span>. Para semejanza, en cambio, <span class="math inline">\(R^{-1}I_2R=I_2\)</span> para toda <span class="math inline">\(R\)</span> invertible. Como <span class="math inline">\(2I_2\ne I_2\)</span> sobre <span class="math inline">\(\mathbb R\)</span>, no existe tal semejanza. El argumento no depende de calcular trazas.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-019" class="apm-anchor"></span> <strong>Solución 19.</strong> Sirven <span class="math inline">\(I_2\)</span> y <span class="math inline">\(B=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\)</span>. Ambas son invertibles y tienen traza dos. Toda matriz semejante a <span class="math inline">\(I_2\)</span> es <span class="math inline">\(I_2\)</span>, mientras <span class="math inline">\(B\ne I_2\)</span>. La comparación prueba que ni siquiera el par de invariantes rango-traza es completo.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-020" class="apm-anchor"></span> <strong>Solución 20.</strong> Las diagonales de <span class="math inline">\(BA\)</span> son <span class="math inline">\(1,1,1\)</span>, según el producto del ejercicio 5, cuya suma es tres; las de <span class="math inline">\(AB\)</span> son <span class="math inline">\(2,1\)</span>, también de suma tres. Por tanto <span class="math inline">\(\operatorname{tr}(BA)=\operatorname{tr}(AB)=3\)</span>. La identidad iguala escalares de matrices de tamaños tres y dos; no afirma igualdad de matrices.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-021" class="apm-anchor"></span> <strong>Solución 21.</strong> Aplicar el lema a <span class="math inline">\(A\)</span> y <span class="math inline">\(BC\)</span> da la primera igualdad; aplicarlo otra vez a <span class="math inline">\(B\)</span> y <span class="math inline">\(CA\)</span> da la segunda. Una permutación arbitraria no está autorizada. Por ejemplo, con <span class="math inline">\(A=E_{12}\)</span>, <span class="math inline">\(B=E_{21}\)</span> y <span class="math inline">\(C=E_{11}\)</span> en orden dos, <span class="math inline">\(ABC=E_{11}\)</span> tiene traza uno, mientras <span class="math inline">\(ACB=0\)</span> tiene traza cero.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-022" class="apm-anchor"></span> <strong>Solución 22.</strong> La linealidad y el lema dan <span class="math inline">\(\operatorname{tr}(AB-BA)=\operatorname{tr}(AB)-\operatorname{tr}(BA)=0\)</span>. Si fuera <span class="math inline">\(I_n\)</span> sobre <span class="math inline">\(\mathbb R\)</span>, su traza sería <span class="math inline">\(n&gt;0\)</span>, contradicción. En característica positiva el argumento sólo excluye la igualdad cuando <span class="math inline">\(n\,1_{\mathbb F}\ne0\)</span>; el caso restante requiere otro examen.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-023" class="apm-anchor"></span> <strong>Solución 23.</strong> La columna <span class="math inline">\(j\)</span> es <span class="math inline">\(a_ju\)</span>, de modo que la matriz es <span class="math inline">\(u(a_1,\ldots,a_n)\)</span>. Su diagonal suma <span class="math inline">\(\sum_ja_ju_j=\varphi(u)\)</span>. Si <span class="math inline">\(u=0\)</span> o <span class="math inline">\(\varphi=0\)</span>, el rango es cero. Si ambos son no nulos, existe <span class="math inline">\(v\)</span> con <span class="math inline">\(\varphi(v)\ne0\)</span>; al escalarlo se obtiene <span class="math inline">\(w\)</span> con <span class="math inline">\(\varphi(w)=1\)</span>. Entonces <span class="math inline">\(T(w)=u\)</span>, y la imagen, contenida en <span class="math inline">\(\operatorname{span}u\)</span>, es exactamente esa recta: el rango es uno.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-024" class="apm-anchor"></span> <strong>Solución 24.</strong> La matriz usual es <span class="math inline">\(\begin{pmatrix}1&amp;-1\\0&amp;0\end{pmatrix}\)</span>. La base <span class="math inline">\(((1,0),(1,1))\)</span> separa imagen y núcleo. Las imágenes de esos vectores son ellos mismos y cero, respectivamente, por lo que la matriz nueva es <span class="math inline">\(\operatorname{diag}(1,0)\)</span>. Ambas matrices tienen traza uno; el proyector tiene rango uno.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-025" class="apm-anchor"></span> <strong>Solución 25.</strong> <span class="math inline">\(I_2^2=I_2\)</span>, su rango es dos y su traza es <span class="math inline">\(1+1=0\)</span> en <span class="math inline">\(\mathbb F_2\)</span>. Por ello traza cero no obliga a rango cero para un idempotente en este cuerpo. La fórmula general <span class="math inline">\(\operatorname{tr}E=r\,1_{\mathbb F}\)</span> permanece válida; identificar ese escalar con el entero <span class="math inline">\(r\)</span> sin atender a la característica es el error.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-026" class="apm-anchor"></span> <strong>Solución 26.</strong> Las dos primeras columnas están en <span class="math inline">\(U=\operatorname{span}(e_1,e_2)\)</span>, que sí se preserva. La tercera imagen es <span class="math inline">\((2,3,4)\)</span>, fuera de <span class="math inline">\(K=\operatorname{span}e_3\)</span>, así que <span class="math inline">\(K\)</span> no se preserva. El bloque inferior izquierdo es cero y el superior derecho es la columna <span class="math inline">\((2,3)^{\mathsf T}\)</span>. La matriz es triangular por bloques, sin ser diagonal por bloques.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-027" class="apm-anchor"></span> <strong>Solución 27.</strong> Cada <span class="math inline">\(F_{ij}\)</span> existe por extensión desde la base. Su matriz es la unidad matricial con uno en <span class="math inline">\((i,j)\)</span>. Si <span class="math inline">\([T]=(a_{ij})\)</span>, las imágenes de cada <span class="math inline">\(b_k\)</span> muestran que <span class="math inline">\(T=\sum_{i,j}a_{ij}F_{ij}\)</span>, por lo que generan. En una relación nula, aplicar a <span class="math inline">\(b_k\)</span> da <span class="math inline">\(\sum_i\alpha_{ik}c_i=0\)</span>; la independencia de <span class="math inline">\(\mathcal C\)</span> anula todos los coeficientes. Son, pues, una base de <span class="math inline">\(mn\)</span> elementos.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-028" class="apm-anchor"></span> <strong>Solución 28.</strong> La lista es generadora pero dependiente. Un vector tiene múltiples ternas de coeficientes: cero se representa tanto por <span class="math inline">\((0,0,0)\)</span> como por <span class="math inline">\((1,1,-1)\)</span>. Si se prescriben imágenes <span class="math inline">\(w_1,w_2,w_3\)</span>, la extensión es posible exactamente cuando <span class="math inline">\(w_3=w_1+w_2\)</span>. La necesidad viene de aplicar linealidad a la relación; la suficiencia se obtiene definiendo el mapa por las imágenes de <span class="math inline">\(e_1,e_2\)</span>. Las tres columnas no parametrizan libremente todos los mapas como lo haría una base.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-029" class="apm-anchor"></span> <strong>Solución 29.</strong> Si tiene rango uno, elige una columna no nula <span class="math inline">\(u\)</span>. Cada columna es un múltiplo <span class="math inline">\(v_ju\)</span>, porque la imagen es la recta que genera <span class="math inline">\(u\)</span>. Así <span class="math inline">\(A=u(v_1,\ldots,v_n)\)</span> y <span class="math inline">\(v\ne0\)</span>. Recíprocamente, en esa factorización todas las columnas están en <span class="math inline">\(\operatorname{span}u\)</span> y alguna es no nula, pues <span class="math inline">\(v\ne0\)</span>. La imagen tiene entonces dimensión uno. No aparece conjugación: <span class="math inline">\(v^{\mathsf T}\)</span> es sólo una fila de escalares.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-030" class="apm-anchor"></span> <strong>Solución 30.</strong> Para <span class="math inline">\(k=0\)</span>, ambos lados son identidad. Si la fórmula vale en <span class="math inline">\(k\)</span>, multiplicar por <span class="math inline">\(B\)</span> cancela los factores centrales <span class="math inline">\(PP^{-1}\)</span> y da <span class="math inline">\(B^{k+1}=P^{-1}A^{k+1}P\)</span>. La inducción cubre todos los exponentes. Las proposiciones 12.5 y el teorema 12.8 aplicados a cada potencia dan los invariantes. La cancelación exige la relación de semejanza; una equivalencia por dos bases no la garantiza.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-031" class="apm-anchor"></span> <strong>Solución 31.</strong> Toma <span class="math inline">\(A=\operatorname{diag}(1,0)\)</span> y <span class="math inline">\(B=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix}\)</span>. Ambas tienen rango uno y <span class="math inline">\(B=AP\)</span> con <span class="math inline">\(P=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)</span>. Sin embargo, <span class="math inline">\(A^2=A\)</span> tiene rango uno y <span class="math inline">\(B^2=0\)</span> tiene rango cero. Por el ejercicio 30 tampoco pueden ser semejantes. La iteración detecta información que la equivalencia por dos bases pierde.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-032" class="apm-anchor"></span> <strong>Solución 32.</strong> Las imágenes básicas son <span class="math inline">\(1,t+1,t^2+2t+1\)</span>, por lo que <span class="math inline">\(A=\begin{pmatrix}1&amp;1&amp;1\\0&amp;1&amp;2\\0&amp;0&amp;1\end{pmatrix}\)</span>. Componer <span class="math inline">\(k\)</span> traslaciones da <span class="math inline">\(S^k(p)(t)=p(t+k)\)</span> para <span class="math inline">\(k\ge0\)</span>, por inducción sobre la sustitución. Sus columnas proporcionan <span class="math inline">\(A^k=\begin{pmatrix}1&amp;k&amp;k^2\\0&amp;1&amp;2k\\0&amp;0&amp;1\end{pmatrix}\)</span>. La fórmula se comprueba también multiplicando las matrices de las traslaciones por <span class="math inline">\(k\)</span> y por uno.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-033" class="apm-anchor"></span> <strong>Solución 33.</strong> <span class="math inline">\(\ker T=U\)</span> y <span class="math inline">\(T\)</span> es sobreyectiva porque <span class="math inline">\(T(a,b,0)=(a,b)\)</span>. Por C11 induce un isomorfismo. Las clases <span class="math inline">\(e_1+U,e_2+U\)</span> generan: <span class="math inline">\((x,y,z)+U=(x-z)e_1+(y-z)e_2+U\)</span>. Son independientes porque <span class="math inline">\((a,b,0)\in U\)</span> obliga a <span class="math inline">\(a=b=0\)</span>. Sus imágenes son <span class="math inline">\(e_1,e_2\)</span>, así que la matriz del isomorfismo inducido en esa base y la usual es <span class="math inline">\(I_2\)</span>.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-034" class="apm-anchor"></span> <strong>Solución 34.</strong> Los generadores de <span class="math inline">\(K\)</span> producen <span class="math inline">\(e_1+U,e_2+U\)</span>. Los de <span class="math inline">\(K'\)</span> son <span class="math inline">\(e_1+(1,1,1)\)</span> y <span class="math inline">\(e_2+(1,1,1)\)</span>, así que producen las mismas clases. Además, si una combinación de esos generadores pertenece a <span class="math inline">\(U\)</span>, aplicar <span class="math inline">\(T\)</span> da sus coeficientes iguales a cero; por dimensión, <span class="math inline">\(K'\)</span> es un complemento. La matriz sigue siendo <span class="math inline">\(I_2\)</span>: han cambiado los representantes, no la base del cociente.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-035" class="apm-anchor"></span> <strong>Solución 35.</strong> Si una diagonal <span class="math inline">\(D\)</span> fuera semejante a <span class="math inline">\(A=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)</span>, satisfaría <span class="math inline">\(D^2=I\)</span>, porque <span class="math inline">\(A^2=I\)</span>. En <span class="math inline">\(\mathbb F_2\)</span> los únicos escalares son cero y uno, y <span class="math inline">\(d^2=1\)</span> obliga a <span class="math inline">\(d=1\)</span>. Por tanto <span class="math inline">\(D=I\)</span>, lo que obligaría a <span class="math inline">\(A=I\)</span> al deshacer la semejanza, contradicción. La base real usada en §12.4 no se puede trasladar a este cuerpo.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-036" class="apm-anchor"></span> <strong>Solución 36.</strong> La condición equivale a <span class="math inline">\(AP=PA\)</span>. Si <span class="math inline">\(P=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)</span>, comparar entradas da <span class="math inline">\(b=2b\)</span> y <span class="math inline">\(2c=c\)</span>, luego <span class="math inline">\(b=c=0\)</span>. Las entradas diagonales quedan libres, con <span class="math inline">\(a,d\ne0\)</span> para invertibilidad. Así todas y sólo las matrices diagonales invertibles conservan numéricamente esta representación.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-037" class="apm-anchor"></span> <strong>Solución 37.</strong> Para cualquier <span class="math inline">\(v\)</span>, escribimos <span class="math inline">\(v=Av+(v-Av)\)</span>. El primer término pertenece a la imagen y el segundo al núcleo porque <span class="math inline">\(A(v-Av)=Av-A^2v=0\)</span>. Si <span class="math inline">\(w=Au\)</span> está también en el núcleo, <span class="math inline">\(0=Aw=A^2u=Au=w\)</span>. La suma es directa. En una base de la imagen seguida de una del núcleo, <span class="math inline">\(A\)</span> actúa como identidad y cero, respectivamente, dando la semejanza buscada. Es una sola base en ambos lados, por lo que la conclusión es más fuerte que equivalencia por rango.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-038" class="apm-anchor"></span> <strong>Solución 38.</strong> Para <span class="math inline">\(i\ne j\)</span>, <span class="math inline">\(E_{ii}E_{ij}=E_{ij}\)</span> y <span class="math inline">\(E_{ij}E_{ii}=0\)</span>, luego <span class="math inline">\(f(E_{ij})=0\)</span>. También <span class="math inline">\(E_{ij}E_{ji}=E_{ii}\)</span> y <span class="math inline">\(E_{ji}E_{ij}=E_{jj}\)</span>, así que <span class="math inline">\(f(E_{ii})=f(E_{jj})\)</span>. Tomando <span class="math inline">\(c=f(E_{11})\)</span>, la expansión de cualquier matriz en unidades da <span class="math inline">\(f(A)=c\sum_i a_{ii}\)</span>. Para <span class="math inline">\(n=1\)</span> la conclusión procede directamente de linealidad; para <span class="math inline">\(n=0\)</span> el espacio sólo contiene cero y puede tomarse <span class="math inline">\(c=0\)</span>. No se divide por <span class="math inline">\(n\)</span>, de modo que funciona en cualquier característica.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-039" class="apm-anchor"></span> <strong>Solución 39.</strong> Fijemos bases <span class="math inline">\(\mathcal B\)</span> de <span class="math inline">\(V\)</span> y <span class="math inline">\(\mathcal C\)</span> de <span class="math inline">\(W\)</span>. Con <span class="math inline">\(A=[T]_{\mathcal B}\)</span>, <span class="math inline">\(B=[S]_{\mathcal C}\)</span> y <span class="math inline">\(R=[F]_{\mathcal C\leftarrow\mathcal B}\)</span>, la identidad da <span class="math inline">\(RA=BR\)</span>. Como <span class="math inline">\(R\)</span> es invertible, <span class="math inline">\(B=RAR^{-1}\)</span>. Es una semejanza con transición <span class="math inline">\(R^{-1}\)</span> en la definición. Los invariantes ya demostrados dan igualdad de rango y traza. Los espacios pueden ser diferentes: el isomorfismo transporta también la acción de los operadores.</p>
+<p><span id="MA-BCH-APM-02-012-SOL-040" class="apm-anchor"></span> <strong>Solución 40.</strong> Las imágenes usuales son <span class="math inline">\(1+t,t,t\)</span>, por lo que <span class="math inline">\(A=\begin{pmatrix}1&amp;0&amp;0\\1&amp;1&amp;1\\0&amp;0&amp;0\end{pmatrix}\)</span>. Para la nueva base, <span class="math inline">\(T(1)=1+t\)</span>, <span class="math inline">\(T(t)=t\)</span> y <span class="math inline">\(T(t^2-t)=0\)</span>, así que <span class="math inline">\(B=\begin{pmatrix}1&amp;0&amp;0\\1&amp;1&amp;0\\0&amp;0&amp;0\end{pmatrix}\)</span>. La transición es <span class="math inline">\(P=\begin{pmatrix}1&amp;0&amp;0\\0&amp;1&amp;-1\\0&amp;0&amp;1\end{pmatrix}\)</span>; multiplicar da <span class="math inline">\(AP=PB\)</span>. El núcleo exige <span class="math inline">\(a=0\)</span> y <span class="math inline">\(b+c=0\)</span>, de donde <span class="math inline">\(\ker T=\operatorname{span}(t^2-t)\)</span>. La imagen es <span class="math inline">\(P_1\)</span>, de dimensión dos, pues <span class="math inline">\(1+t,t\)</span> son independientes. El rango es dos y la traza es dos en ambas matrices. La base nueva expone el núcleo como última dirección sin diagonalizar la acción sobre la imagen.</p>
+</section>
+<section id="lecturas-y-referencias" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-referencias">Lecturas y referencias</h2>
+<p>Para contrastar la representación de aplicaciones y el cambio de bases, pueden consultarse Johnston, <em>Advanced Linear and Matrix Algebra</em>, §1.2; Friedberg, Insel y Spence, <em>Linear Algebra</em>, §§2.2–2.5; y Hoffman–Kunze, <em>Linear Algebra</em>, §3.4. Axler, <em>Linear Algebra Done Right</em>, §§3C–3D y comienzo de §8D, ofrece otra presentación de la correspondencia entre matrices y operadores y de la invariancia de la traza. La parte inicial sobre traza puede leerse sin utilizar la teoría espectral que la rodea en ese libro.</p>
+<hr>
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-11-sumas-directas-y-espacios-cociente.html">← Capítulo 11</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-13-determinantes.html">Capítulo 13 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

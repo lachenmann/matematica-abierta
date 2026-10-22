@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Capítulo 6 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.">
+
+<title>Capítulo 6. Dependencia e independencia lineal – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#relaciones-que-producen-el-vector-cero" id="toc-relaciones-que-producen-el-vector-cero" class="nav-link active" data-scroll-target="#relaciones-que-producen-el-vector-cero">6.1. Relaciones que producen el vector cero</a></li>
+  <li><a href="#qué-vector-puede-eliminarse" id="toc-qué-vector-puede-eliminarse" class="nav-link" data-scroll-target="#qué-vector-puede-eliminarse">6.2. Qué vector puede eliminarse</a></li>
+  <li><a href="#unicidad-de-los-coeficientes" id="toc-unicidad-de-los-coeficientes" class="nav-link" data-scroll-target="#unicidad-de-los-coeficientes">6.3. Unicidad de los coeficientes</a></li>
+  <li><a href="#detectar-relaciones-mediante-eliminación" id="toc-detectar-relaciones-mediante-eliminación" class="nav-link" data-scroll-target="#detectar-relaciones-mediante-eliminación">6.4. Detectar relaciones mediante eliminación</a></li>
+  <li><a href="#el-cuerpo-de-los-coeficientes" id="toc-el-cuerpo-de-los-coeficientes" class="nav-link" data-scroll-target="#el-cuerpo-de-los-coeficientes">6.5. El cuerpo de los coeficientes</a></li>
+  <li><a href="#polinomios-matrices-y-funciones" id="toc-polinomios-matrices-y-funciones" class="nav-link" data-scroll-target="#polinomios-matrices-y-funciones">6.6. Polinomios, matrices y funciones</a></li>
+  <li><a href="#familias-indexadas-incluidas-las-infinitas" id="toc-familias-indexadas-incluidas-las-infinitas" class="nav-link" data-scroll-target="#familias-indexadas-incluidas-las-infinitas">6.7. Familias indexadas, incluidas las infinitas</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">6.8. Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#leer-una-relación" id="toc-leer-una-relación" class="nav-link" data-scroll-target="#leer-una-relación">Leer una relación</a></li>
+  <li><a href="#sistemas-parámetros-y-coeficientes" id="toc-sistemas-parámetros-y-coeficientes" class="nav-link" data-scroll-target="#sistemas-parámetros-y-coeficientes">Sistemas, parámetros y coeficientes</a></li>
+  <li><a href="#polinomios-matrices-y-funciones-1" id="toc-polinomios-matrices-y-funciones-1" class="nav-link" data-scroll-target="#polinomios-matrices-y-funciones-1">Polinomios, matrices y funciones</a></li>
+  <li><a href="#pruebas-estructurales-y-fronteras" id="toc-pruebas-estructurales-y-fronteras" class="nav-link" data-scroll-target="#pruebas-estructurales-y-fronteras">Pruebas estructurales y fronteras</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">6.9. Soluciones</a></li>
+  <li><a href="#lecturas-y-referencias" id="toc-lecturas-y-referencias" class="nav-link" data-scroll-target="#lecturas-y-referencias">Lecturas y referencias</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Capítulo 6. Dependencia e independencia lineal</h1>
+<p class="subtitle lead">Álgebra para matemáticos · Tomo II</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 6 del tomo II, con 40 ejercicios y sus soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-05-subespacios-y-generacion.html">← Capítulo 5</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-07-bases-y-dimension.html">Capítulo 7 →</a></p>
+<p>Tres controles producen las salidas <span class="math inline">\(u=(1,0,1)\)</span>, <span class="math inline">\(v=(0,1,1)\)</span> y <span class="math inline">\(w=(1,1,2)\)</span>. Si damos a los controles intensidades <span class="math inline">\(a,b,c\)</span>, la salida combinada es <span class="math inline">\(au+bv+cw\)</span>. Podemos obtener <span class="math inline">\((2,3,5)\)</span> con intensidades <span class="math inline">\((2,3,0)\)</span> o con <span class="math inline">\((1,2,1)\)</span>. La razón es visible en las propias salidas: <span class="math inline">\(w=u+v\)</span>. Aumentar en uno el tercer control y disminuir en uno los dos primeros deja la salida intacta.</p>
+<p>La misma observación puede escribirse como <span class="math inline">\(-u-v+w=0\)</span>. Esta igualdad registra un cambio de intensidades que no produce ningún cambio de salida. Conocer todas las igualdades de ese tipo nos permitirá reconocer qué controles sobran y cuándo una salida determina las intensidades de manera única.</p>
+<figure id="fig-apm-t2-c06-f01" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C06-F01.svg" alt="Dos ternas de coeficientes producen la misma salida porque su diferencia es una relación lineal." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+Dos ternas de coeficientes producen la misma salida porque su diferencia es una relación lineal.
+</figcaption>
+</figure>
+<p>Trabajaremos en un espacio vectorial <span class="math inline">\(V\)</span> sobre un cuerpo <span class="math inline">\(\mathbb F\)</span>. Los ejemplos numéricos son reales salvo indicación contraria. Una relación puede involucrar columnas, matrices, polinomios o funciones; su significado depende de las operaciones del espacio y del cuerpo de coeficientes.</p>
+<section id="relaciones-que-producen-el-vector-cero" class="level2">
+<h2 class="anchored" data-anchor-id="relaciones-que-producen-el-vector-cero">6.1. Relaciones que producen el vector cero</h2>
+<p><span id="MA-BCH-APM-02-006-DEF-001" class="apm-anchor"></span> <strong>Definición 6.1 (relación, dependencia e independencia de una lista).</strong> Para una lista finita <span class="math inline">\(v_1,\ldots,v_r\)</span> de vectores, una <strong>relación lineal</strong> es una igualdad <span class="math inline">\(a_1v_1+\cdots+a_rv_r=0_V\)</span> con <span class="math inline">\(a_j\in\mathbb F\)</span>. La relación es <strong>trivial</strong> si todos los coeficientes son cero. La lista es <strong>linealmente independiente</strong> si toda relación es trivial, y <strong>linealmente dependiente</strong> si existe una relación no trivial.</p>
+<p>La independencia afirma una implicación para todos los coeficientes:</p>
+<p><span class="math display">\[
+\sum_{j=1}^r a_jv_j=0_V
+\quad\Longrightarrow\quad
+a_1=\cdots=a_r=0_{\mathbb F}.
+\]</span></p>
+<p>Para refutar esa implicación necesitamos una relación en la que no todos los coeficientes sean cero. No se exige que todos sean no nulos: basta uno. En la lista <span class="math inline">\(u,v,0_V\)</span>, con <span class="math inline">\(u,v\)</span> independientes, la igualdad <span class="math inline">\(0u+0v+1\cdot0_V=0_V\)</span> ya demuestra dependencia.</p>
+<p>La lista vacía es independiente: sólo admite la tupla vacía de coeficientes y su suma es cero. Una lista con un único vector <span class="math inline">\(v\)</span> es independiente exactamente cuando <span class="math inline">\(v\ne0_V\)</span>, porque la anulación escalar de C04 transforma <span class="math inline">\(av=0_V\)</span>, con <span class="math inline">\(a\ne0\)</span>, en <span class="math inline">\(v=0_V\)</span>.</p>
+<p>Importa conservar las posiciones de la lista. La lista <span class="math inline">\(u,u\)</span> es dependiente por <span class="math inline">\(1u+(-1)u=0_V\)</span>, incluso si <span class="math inline">\(u\ne0_V\)</span>. El conjunto <span class="math inline">\(\{u\}\)</span>, que ya no conserva la repetición, es independiente si <span class="math inline">\(u\ne0_V\)</span>. Más adelante usaremos familias indexadas para mantener esta distinción sin depender de una numeración finita. Cuando se hable de independencia de un conjunto finito, sus elementos se consideran una vez cada uno.</p>
+<p>Para dos vectores no nulos, dependencia equivale a que uno sea múltiplo del otro. Si <span class="math inline">\(au+bv=0\)</span> es no trivial y <span class="math inline">\(b\ne0\)</span>, entonces <span class="math inline">\(v=-b^{-1}au\)</span>; si <span class="math inline">\(b=0\)</span>, la igualdad obligaría a <span class="math inline">\(a=0\)</span> porque <span class="math inline">\(u\ne0\)</span>, contradicción. La implicación contraria resulta pasando un múltiplo al otro lado. Para tres vectores, la ausencia de pares proporcionales no garantiza independencia: en <span class="math inline">\(\mathbb R^2\)</span>, <span class="math inline">\((1,0),(0,1),(1,1)\)</span> no son proporcionales por parejas, pero el tercero es la suma de los dos primeros.</p>
+<figure id="fig-apm-t2-c06-f02" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C06-F02.svg" alt="La misma relación, con las coordenadas duplicadas: cada pareja es independiente y la terna es dependiente." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+La misma relación, con las coordenadas duplicadas: cada pareja es independiente y la terna es dependiente.
+</figcaption>
+</figure>
+</section>
+<section id="qué-vector-puede-eliminarse" class="level2">
+<h2 class="anchored" data-anchor-id="qué-vector-puede-eliminarse">6.2. Qué vector puede eliminarse</h2>
+<p>En una igualdad <span class="math inline">\(a_1v_1+\cdots+a_rv_r=0\)</span>, un coeficiente no nulo permite despejar su vector. El paso decisivo consiste en escoger una posición donde exista un inverso escalar.</p>
+<p><span id="MA-BCH-APM-02-006-THM-001" class="apm-anchor"></span> <strong>Teorema 6.1 (dependencia y eliminación).</strong> Una lista finita es dependiente si y sólo si alguno de sus vectores pertenece al generado de los restantes. Si una relación tiene coeficiente <span class="math inline">\(a_k\ne0\)</span>, entonces</p>
+<p><span class="math display">\[
+v_k=-\sum_{j\ne k}a_k^{-1}a_jv_j,
+\]</span></p>
+<p>y quitar la posición <span class="math inline">\(k\)</span> no cambia el subespacio generado. Además, en toda lista dependiente existe una posición <span class="math inline">\(k\)</span> cuyo vector pertenece al generado de los anteriores <span class="math inline">\(v_1,\ldots,v_{k-1}\)</span>.</p>
+<p><strong>Demostración.</strong> Una relación no trivial tiene algún coeficiente no nulo. Despejarlo da la fórmula y expresa el vector como combinación de los otros. Cualquier combinación de la lista completa puede entonces reescribirse sustituyendo esa fórmula, sin usar <span class="math inline">\(v_k\)</span>. Por tanto el generado completo está contenido en el de la lista abreviada. La inclusión contraria se sigue de que la lista abreviada sólo contiene vectores de la original.</p>
+<p>Recíprocamente, si <span class="math inline">\(v_k=\sum_{j\ne k}b_jv_j\)</span>, trasladar todo a un lado produce una relación cuyo coeficiente en la posición <span class="math inline">\(k\)</span> es uno. Es no trivial porque <span class="math inline">\(1_{\mathbb F}\ne0_{\mathbb F}\)</span>. Si la lista tiene un solo vector y éste es cero, el generado de los restantes es el generado vacío <span class="math inline">\(\{0_V\}\)</span>, de modo que el argumento incluye ese caso.</p>
+<p>Para la última afirmación, partimos de una relación no trivial y elegimos el mayor índice <span class="math inline">\(k\)</span> con coeficiente no nulo. Esta elección elimina todos los términos posteriores; al despejar <span class="math inline">\(v_k\)</span> sólo aparecen los anteriores. Si <span class="math inline">\(k=1\)</span>, la relación dice <span class="math inline">\(a_1v_1=0\)</span> y por tanto <span class="math inline">\(v_1=0\)</span>, que pertenece al generado de la lista anterior vacía. <span class="math inline">\(\square\)</span></p>
+<p>La conclusión no permite eliminar cualquier vector de una lista dependiente. En <span class="math inline">\(u,v,0\)</span> con <span class="math inline">\(u,v\)</span> independientes, la relación exhibida sólo tiene coeficiente no nulo en la posición del cero. Eliminar <span class="math inline">\(u\)</span> o <span class="math inline">\(v\)</span> reduce el generado. Tampoco un coeficiente cero en una relación prueba por sí solo que ese vector sea indispensable: podría aparecer con coeficiente no nulo en otra relación.</p>
+<p>En el ejemplo inicial, todas las relaciones se obtienen comparando componentes:</p>
+<p><span class="math display">\[
+au+bv+cw=(a+c,b+c,a+b+2c)=0.
+\]</span></p>
+<p>Las dos primeras ecuaciones dan <span class="math inline">\(a=-c\)</span> y <span class="math inline">\(b=-c\)</span>; la tercera se satisface entonces automáticamente. Las relaciones son exactamente <span class="math inline">\(c(-1,-1,1)\)</span> en el espacio de coeficientes. Cualquiera de los tres vectores puede quitarse sin cambiar el generado, porque en esa relación los tres coeficientes son no nulos sobre cualquier cuerpo.</p>
+<p><span id="MA-BCH-APM-02-006-PRP-001" class="apm-anchor"></span> <strong>Proposición 6.1 (herencia).</strong> Quitar posiciones de una lista independiente conserva la independencia. Añadir posiciones a una lista dependiente conserva la dependencia.</p>
+<p><strong>Demostración.</strong> Una relación en la lista abreviada se completa con ceros en las posiciones eliminadas. Si la lista completa es independiente, todos los coeficientes de esa relación deben ser cero. Para la segunda afirmación, una relación no trivial de la lista anterior sigue siendo no trivial al añadir coeficientes cero en las posiciones nuevas. <span class="math inline">\(\square\)</span></p>
+<p><span id="MA-BCH-APM-02-006-PRP-002" class="apm-anchor"></span> <strong>Proposición 6.2 (añadir un vector).</strong> Si <span class="math inline">\(v_1,\ldots,v_r\)</span> es independiente, la lista <span class="math inline">\(v_1,\ldots,v_r,w\)</span> es independiente si y sólo si <span class="math inline">\(w\notin\operatorname{span}(v_1,\ldots,v_r)\)</span>.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(w\)</span> pertenece al generado, una representación suya produce una relación con coeficiente uno en su posición, y la lista ampliada es dependiente. Si <span class="math inline">\(w\)</span> no pertenece, consideremos una relación <span class="math inline">\(\sum_{j=1}^r a_jv_j+bw=0\)</span>. Un <span class="math inline">\(b\)</span> no nulo permitiría despejar <span class="math inline">\(w\)</span> como combinación de los <span class="math inline">\(v_j\)</span>, contradicción. Luego <span class="math inline">\(b=0\)</span>, y la independencia previa obliga a <span class="math inline">\(a_1=\cdots=a_r=0\)</span>. Para <span class="math inline">\(r=0\)</span>, la condición es <span class="math inline">\(w\notin\{0_V\}\)</span>, de acuerdo con el caso de un solo vector. <span class="math inline">\(\square\)</span></p>
+<p>Esto permite leer una lista en orden: será independiente exactamente cuando cada vector quede fuera del generado por los anteriores. Si aparece un primer vector que no aporta esa novedad, el prefijo que termina allí es dependiente, y la lista completa también. El teorema 6.1 explica por qué siempre encontraremos una posición de ese tipo si hay dependencia; no necesitamos ensayar por separado todos los posibles vectores que podríamos despejar.</p>
+</section>
+<section id="unicidad-de-los-coeficientes" class="level2">
+<h2 class="anchored" data-anchor-id="unicidad-de-los-coeficientes">6.3. Unicidad de los coeficientes</h2>
+<p>La misma relación que permite quitar un vector explica todas las ambigüedades de representación.</p>
+<p><span id="MA-BCH-APM-02-006-THM-002" class="apm-anchor"></span> <strong>Teorema 6.2 (independencia y representación única).</strong> Una lista <span class="math inline">\(v_1,\ldots,v_r\)</span> es independiente si y sólo si cada vector de su generado tiene una única representación <span class="math inline">\(x=\sum_{j=1}^r a_jv_j\)</span> mediante esa lista.</p>
+<p><strong>Demostración.</strong> La pertenencia al generado garantiza existencia de al menos una representación. Si la lista es independiente y dos tuplas <span class="math inline">\(a,b\)</span> representan el mismo <span class="math inline">\(x\)</span>, restar sus expresiones da <span class="math inline">\(\sum_{j=1}^r(a_j-b_j)v_j=0\)</span>. Por independencia, <span class="math inline">\(a_j-b_j=0\)</span> para todo <span class="math inline">\(j\)</span>, y las tuplas coinciden.</p>
+<p>Recíprocamente, si todos los vectores del generado tienen representación única, esto ocurre en particular para <span class="math inline">\(0_V\)</span>. Como los coeficientes todos nulos ya lo representan, cualquier relación debe tener precisamente esos coeficientes; la lista es independiente. Para la lista vacía, el generado sólo contiene cero y éste tiene la única representación vacía. <span class="math inline">\(\square\)</span></p>
+<p>La unicidad sólo se afirma para los vectores del generado. Las columnas <span class="math inline">\((1,0,0)\)</span> y <span class="math inline">\((0,1,0)\)</span> son independientes, pero ninguna combinación suya produce <span class="math inline">\((0,0,1)\)</span>. La generación controla la existencia; la independencia controla la unicidad una vez que existe una expresión.</p>
+<p><span id="MA-BCH-APM-02-006-DEF-002" class="apm-anchor"></span> <strong>Definición 6.2 (espacio de relaciones).</strong> Para una lista finita <span class="math inline">\(\mathcal L=(v_1,\ldots,v_r)\)</span>, su <strong>espacio de relaciones</strong> es</p>
+<p><span class="math display">\[
+\mathcal R(\mathcal L)
+=\left\{(a_1,\ldots,a_r)\in\mathbb F^r:
+\sum_{j=1}^r a_jv_j=0_V\right\}.
+\]</span></p>
+<p>Es un subespacio de <span class="math inline">\(\mathbb F^r\)</span>: contiene la tupla nula, y si <span class="math inline">\(a,b\)</span> son relaciones, las distributividades dan <span class="math inline">\(\sum_j(ca_j+db_j)v_j=c\sum_ja_jv_j+d\sum_jb_jv_j=0_V\)</span>. La lista es independiente exactamente cuando ese subespacio es <span class="math inline">\(\{0\}\)</span>.</p>
+<p>Si <span class="math inline">\(c\)</span> es una tupla que representa a <span class="math inline">\(x\)</span>, las tuplas que lo representan son exactamente <span class="math inline">\(c+\mathcal R(\mathcal L)\)</span>. En efecto, otra tupla <span class="math inline">\(d\)</span> produce el mismo vector si y sólo si <span class="math inline">\(d-c\)</span> es una relación. Es la traslación de un conjunto de soluciones homogéneas que conocimos en C04–C05, aplicada ahora al espacio de coeficientes.</p>
+<p>Para la salida inicial <span class="math inline">\((2,3,5)\)</span>, podemos tomar <span class="math inline">\(c=(2,3,0)\)</span> y obtenemos todas las representaciones <span class="math inline">\((2-s,3-s,s)\)</span> con <span class="math inline">\(s\in\mathbb F\)</span>. Si la lista es dependiente, sumar a una representación múltiplos de una relación no nula produce representaciones distintas: <span class="math inline">\(c+s\alpha=c+t\alpha\)</span> implicaría <span class="math inline">\((s-t)\alpha=0\)</span>, y algún coeficiente no nulo de <span class="math inline">\(\alpha\)</span> obliga a <span class="math inline">\(s=t\)</span>. Sobre un cuerpo infinito esto proporciona infinitas representaciones; sobre un cuerpo finito proporciona tantas como escalares, sin convertir finitud en infinitud.</p>
+</section>
+<section id="detectar-relaciones-mediante-eliminación" class="level2">
+<h2 class="anchored" data-anchor-id="detectar-relaciones-mediante-eliminación">6.4. Detectar relaciones mediante eliminación</h2>
+<p>Si los vectores son columnas <span class="math inline">\(v_j\in\mathbb F^n\)</span>, formamos la matriz <span class="math inline">\(A=[v_1\ \cdots\ v_r]\)</span>. Una relación de la lista es exactamente una solución de <span class="math inline">\(Aa=0\)</span>. Los capítulos iniciales proporcionan un procedimiento completo para encontrar esas soluciones y decidir si existen soluciones no nulas.</p>
+<p><span id="MA-BCH-APM-02-006-PRP-003" class="apm-anchor"></span> <strong>Proposición 6.3 (criterio por pivotes).</strong> Las columnas de una matriz <span class="math inline">\(A\in M_{n,r}(\mathbb F)\)</span> son independientes si y sólo si su forma escalonada tiene un pivote en cada columna, equivalentemente, si su rango por pivotes es <span class="math inline">\(r\)</span>.</p>
+<p><strong>Demostración.</strong> Las operaciones elementales no cambian las soluciones de <span class="math inline">\(Aa=0\)</span>. Si todas las variables son pivotales, la sustitución hacia atrás da como única solución la tupla cero. Si alguna variable es libre, podemos darle valor uno y dar valor cero a las otras variables libres; C01–C02 determinan valores de las pivotales que completan una solución. Esa tupla no es nula porque conserva una entrada libre igual a uno. Esto equivale exactamente a la definición de independencia de las columnas. Si <span class="math inline">\(r=0\)</span>, no hay variables y la única solución es la tupla vacía; el criterio sigue siendo válido. <span class="math inline">\(\square\)</span></p>
+<p><span id="MA-BCH-APM-02-006-COR-001" class="apm-anchor"></span> <strong>Corolario 6.1.</strong> Toda lista de más de <span class="math inline">\(n\)</span> vectores de <span class="math inline">\(\mathbb F^n\)</span> es dependiente.</p>
+<p><strong>Demostración.</strong> Una matriz con <span class="math inline">\(n\)</span> filas tiene a lo sumo <span class="math inline">\(n\)</span> pivotes. Si tiene más de <span class="math inline">\(n\)</span> columnas, alguna no puede ser pivotal; la proposición 6.3 proporciona una relación no trivial. <span class="math inline">\(\square\)</span></p>
+<p>La cota cuenta posiciones posibles de pivotes en el algoritmo ya fundamentado de eliminación. Tener a lo sumo <span class="math inline">\(n\)</span> columnas no asegura independencia: todavía puede faltar algún pivote.</p>
+<p>Por ejemplo, para las columnas <span class="math inline">\((1,0,1),(0,1,1),(1,1,k)\)</span>, con <span class="math inline">\(k\in\mathbb F\)</span>, una relación exige <span class="math inline">\(a+c=0\)</span>, <span class="math inline">\(b+c=0\)</span>, <span class="math inline">\(a+b+kc=0\)</span>. Sustituir las dos primeras da <span class="math inline">\((k-2)c=0\)</span>. Si <span class="math inline">\(k\ne2\)</span>, sólo hay la relación trivial. Si <span class="math inline">\(k=2\)</span>, las relaciones son <span class="math inline">\(c(-1,-1,1)\)</span>. La escritura <span class="math inline">\(k-2\)</span> significa <span class="math inline">\(k-(1_{\mathbb F}+1_{\mathbb F})\)</span>; en característica dos el valor excepcional es <span class="math inline">\(k=0\)</span>.</p>
+<p>Las operaciones por filas conservan cada tupla de coeficientes que expresa una relación: si <span class="math inline">\(R=PA\)</span> con <span class="math inline">\(P\)</span> invertible, entonces <span class="math inline">\(Ra=0\)</span> equivale a <span class="math inline">\(Aa=0\)</span>. Las operaciones por columnas cambian los coeficientes: si <span class="math inline">\(B=AE\)</span> con <span class="math inline">\(E\)</span> invertible, una tupla <span class="math inline">\(b\)</span> es relación de <span class="math inline">\(B\)</span> exactamente cuando <span class="math inline">\(Eb\)</span> es relación de <span class="math inline">\(A\)</span>. Como <span class="math inline">\(b\mapsto Eb\)</span> lleva cero a cero y ningún vector no nulo a cero, preservan la independencia de la lista completa, aunque cambien qué tupla expresa cada relación.</p>
+<figure id="fig-apm-t2-c06-f03" class="quarto-figure quarto-figure-center anchored figure">
+<img src="../../assets/books/apm-tomo-ii/T2-C06-F03.svg" alt="El valor excepcional del parámetro coloca el tercer vector en el plano generado por los anteriores." loading="lazy" style="display:block;max-width:100%;max-height:22rem;width:auto;height:auto;margin-inline:auto" class="figure-img">
+<figcaption>
+El valor excepcional del parámetro coloca el tercer vector en el plano generado por los anteriores.
+</figcaption>
+</figure>
+</section>
+<section id="el-cuerpo-de-los-coeficientes" class="level2">
+<h2 class="anchored" data-anchor-id="el-cuerpo-de-los-coeficientes">6.5. El cuerpo de los coeficientes</h2>
+<p>La lista <span class="math inline">\(1,i\)</span> de números complejos es independiente cuando los coeficientes deben ser reales: <span class="math inline">\(a+bi=0\)</span>, con <span class="math inline">\(a,b\in\mathbb R\)</span>, obliga a que ambas partes sean cero. Con coeficientes complejos, en cambio, <span class="math inline">\((-i)\cdot1+1\cdot i=0\)</span> es una relación no trivial. Los objetos no han cambiado; sí han cambiado los coeficientes permitidos.</p>
+<p>Si restringimos los escalares de un espacio de un cuerpo <span class="math inline">\(\mathbb F\)</span> a un subcuerpo <span class="math inline">\(\mathbb K\)</span>, una familia independiente sobre <span class="math inline">\(\mathbb F\)</span> sigue siendo independiente sobre <span class="math inline">\(\mathbb K\)</span>: cada relación con coeficientes en <span class="math inline">\(\mathbb K\)</span> ya era una relación admitida sobre <span class="math inline">\(\mathbb F\)</span>. El ejemplo <span class="math inline">\(1,i\)</span> muestra que la implicación inversa puede fallar.</p>
+<p>Hay una situación distinta en la que la independencia sí se conserva al pasar de reales a complejos.</p>
+<p><span id="MA-BCH-APM-02-006-PRP-004" class="apm-anchor"></span> <strong>Proposición 6.4 (columnas reales y coeficientes complejos).</strong> Una lista de columnas de <span class="math inline">\(\mathbb R^n\)</span> es independiente sobre <span class="math inline">\(\mathbb R\)</span> si y sólo si, considerada como lista de columnas de <span class="math inline">\(\mathbb C^n\)</span>, es independiente sobre <span class="math inline">\(\mathbb C\)</span>.</p>
+<p><strong>Demostración.</strong> Una relación real no trivial también es una relación compleja no trivial; por tanto la independencia compleja implica la real. Supongamos que la lista es independiente sobre <span class="math inline">\(\mathbb R\)</span> y que <span class="math inline">\(\sum_j(a_j+ib_j)v_j=0\)</span>, con <span class="math inline">\(a_j,b_j\in\mathbb R\)</span>. Como las entradas de cada <span class="math inline">\(v_j\)</span> son reales, comparar partes reales e imaginarias en cada componente da <span class="math inline">\(\sum_ja_jv_j=0\)</span> y <span class="math inline">\(\sum_jb_jv_j=0\)</span>. La independencia real obliga a que todos los <span class="math inline">\(a_j,b_j\)</span> sean cero. La relación compleja era trivial. <span class="math inline">\(\square\)</span></p>
+<p>La hipótesis de entradas reales es lo que permite separar las dos ecuaciones de esa manera. No se aplica a la lista compleja <span class="math inline">\(1,i\)</span> del ejemplo anterior.</p>
+<p>Sobre cuerpos finitos también debemos examinar qué escalares se anulan. En la clasificación con parámetro de §6.4, el valor dos puede ser cero; en un despeje donde aparezca tres, el mismo problema surge en <span class="math inline">\(\mathbb F_3\)</span>. Las pruebas por relaciones siguen siendo válidas, pero sólo se invierten los coeficientes que son no nulos en el cuerpo declarado.</p>
+</section>
+<section id="polinomios-matrices-y-funciones" class="level2">
+<h2 class="anchored" data-anchor-id="polinomios-matrices-y-funciones">6.6. Polinomios, matrices y funciones</h2>
+<p>Para probar independencia de polinomios formales, una relación es una igualdad de coeficientes. Por ejemplo, si <span class="math inline">\(a\cdot1+b(1+t)+c(1+t+t^2)=0\)</span>, el coeficiente de <span class="math inline">\(t^2\)</span> da <span class="math inline">\(c=0\)</span>, el de <span class="math inline">\(t\)</span> da <span class="math inline">\(b+c=0\)</span> y el constante da <span class="math inline">\(a+b+c=0\)</span>. Se obtiene <span class="math inline">\(a=b=c=0\)</span> sin derivadas ni divisiones por enteros. El argumento funciona sobre cualquier cuerpo.</p>
+<p>Más generalmente, una lista de polinomios no nulos con grados distintos es independiente. En una relación no trivial, entre los polinomios cuyo coeficiente es no nulo escojamos el de mayor grado. Sólo él aporta al coeficiente de esa potencia; su coeficiente principal y su coeficiente en la relación son ambos no nulos, por lo que su producto tampoco es cero. La suma no puede ser el polinomio cero, contradicción.</p>
+<p>Las matrices <span class="math inline">\(E_{ij}\)</span> de C05 son independientes por la misma razón localizada: en una relación <span class="math inline">\(\sum_{i,j}a_{ij}E_{ij}=0\)</span>, la entrada <span class="math inline">\((i,j)\)</span> es exactamente <span class="math inline">\(a_{ij}\)</span>. Todas esas entradas deben ser cero. Comparar entradas puede ser más claro que apilar la matriz en una columna, aunque ambas maneras conducen al mismo sistema.</p>
+<p>En un espacio de funciones, la igualdad exige comprobar todos los argumentos, pero podemos usar algunos valores para descartar relaciones.</p>
+<p><span id="MA-BCH-APM-02-006-PRP-005" class="apm-anchor"></span> <strong>Proposición 6.5 (certificado por evaluación).</strong> Sean <span class="math inline">\(f_1,\ldots,f_r:X\to\mathbb F\)</span> y <span class="math inline">\(x_1,\ldots,x_m\in X\)</span>. Si las columnas de la matriz <span class="math inline">\(E=(f_j(x_i))_{i,j}\)</span> son independientes, entonces las funciones <span class="math inline">\(f_1,\ldots,f_r\)</span> son independientes.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(\sum_ja_jf_j=0\)</span> como función, al evaluar en cada <span class="math inline">\(x_i\)</span> obtenemos <span class="math inline">\(\sum_ja_jf_j(x_i)=0\)</span>. Estas ecuaciones forman <span class="math inline">\(Ea=0\)</span>. La independencia de sus columnas obliga a <span class="math inline">\(a=0\)</span>, de modo que toda relación de funciones es trivial. <span class="math inline">\(\square\)</span></p>
+<p>La suficiencia no autoriza la recíproca para una selección fija de puntos. Las funciones reales <span class="math inline">\(1,t,t^2\)</span> son independientes, pues una igualdad polinómica válida en todo <span class="math inline">\(\mathbb R\)</span> tiene todos sus coeficientes nulos por C04. Si las evaluamos sólo en <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>, las dos últimas dan la misma columna <span class="math inline">\((0,1)\)</span> y los valores muestreados son dependientes. Perder información al tomar muestras puede crear relaciones que no son identidades de funciones.</p>
+<p>En <span class="math inline">\(\mathbb F_2\)</span>, las funciones <span class="math inline">\(t\)</span> y <span class="math inline">\(t^2\)</span> en todo el cuerpo sí son iguales. Los polinomios formales <span class="math inline">\(t\)</span> y <span class="math inline">\(t^2\)</span> siguen siendo independientes por sus coeficientes, pero sus funciones sobre ese dominio no lo son. Hay que declarar tanto el objeto como el cuerpo antes de interpretar una relación.</p>
+</section>
+<section id="familias-indexadas-incluidas-las-infinitas" class="level2">
+<h2 class="anchored" data-anchor-id="familias-indexadas-incluidas-las-infinitas">6.7. Familias indexadas, incluidas las infinitas</h2>
+<p>Una sucesión <span class="math inline">\(v_1,v_2,\ldots\)</span> puede contener infinitos vectores, pero las operaciones de un espacio vectorial sólo han definido sumas finitas. La independencia lineal de una familia debe conservar esa restricción.</p>
+<p><span id="MA-BCH-APM-02-006-DEF-003" class="apm-anchor"></span> <strong>Definición 6.3 (independencia de una familia indexada).</strong> Para una familia <span class="math inline">\((v_i)_{i\in I}\)</span>, una relación es una familia de escalares <span class="math inline">\((a_i)_{i\in I}\)</span> de <strong>soporte finito</strong>, es decir, con sólo finitos <span class="math inline">\(a_i\)</span> no nulos, tal que <span class="math inline">\(\sum_{i\in I}a_iv_i=0_V\)</span>. La suma se efectúa únicamente sobre ese soporte finito. La familia de vectores es independiente si toda relación tiene <span class="math inline">\(a_i=0\)</span> para cada <span class="math inline">\(i\)</span>, y dependiente en caso contrario.</p>
+<p>Los índices distintos pueden designar vectores iguales: si <span class="math inline">\(v_i=v_j\)</span> para <span class="math inline">\(i\ne j\)</span>, los coeficientes uno y menos uno en esas dos posiciones producen una relación no trivial. Para un conjunto <span class="math inline">\(S\)</span>, la familia correspondiente es <span class="math inline">\((s)_{s\in S}\)</span> y no repite elementos. Con <span class="math inline">\(I=\varnothing\)</span> sólo existe la familia vacía de coeficientes; sigue siendo independiente.</p>
+<p><span id="MA-BCH-APM-02-006-PRP-006" class="apm-anchor"></span> <strong>Proposición 6.6 (criterio finito).</strong> Una familia indexada es independiente si y sólo si todas sus subfamilias finitas son independientes.</p>
+<p><strong>Demostración.</strong> Una relación no trivial de una subfamilia finita se extiende con ceros a todos los índices y demuestra dependencia de la familia completa. A la inversa, si la familia completa es dependiente, una relación no trivial tiene soporte finito; la subfamilia en ese soporte ya es dependiente. Ambas implicaciones prueban la equivalencia. <span class="math inline">\(\square\)</span></p>
+<p>La familia <span class="math inline">\(1,t,t^2,\ldots\)</span> de polinomios formales es independiente: cada relación utiliza finitos monomios y comparar sus coeficientes da cero en cada posición. Las sucesiones <span class="math inline">\(e_k\)</span> que tienen uno en la posición <span class="math inline">\(k\)</span> y cero en las demás también forman una familia independiente, porque evaluar una relación en la posición <span class="math inline">\(k\)</span> recupera su coeficiente. Aunque sean independientes, sólo generan las sucesiones de soporte finito, como vimos en C05; la sucesión constante uno queda fuera.</p>
+<p>La equivalencia del teorema 6.2 se extiende a estas familias interpretando cada representación como una familia de coeficientes de soporte finito. Restar dos de ellas sigue dando soporte finito, contenido en la unión de dos conjuntos finitos, y el mismo argumento identifica unicidad con ausencia de relaciones. No se afirma nada sobre series infinitas o convergencia.</p>
+<p>En una lista finita, independencia significa también que ninguna posición puede quitarse sin reducir el generado: si una posición pudiera quitarse, su vector sería combinación de los restantes y aparecería una relación no trivial; si la lista es dependiente, el teorema 6.1 proporciona una posición eliminable. Reunir generación e independencia permitirá describir un espacio por datos suficientes y sin ambigüedad. Para hacerlo de manera sistemática tendremos que comparar listas y justificar hasta dónde pueden ampliarse o abreviarse.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">6.8. Ejercicios</h2>
+<section id="leer-una-relación" class="level3">
+<h3 class="anchored" data-anchor-id="leer-una-relación">Leer una relación</h3>
+<p><span id="MA-BCH-APM-02-006-EXR-001" class="apm-anchor"></span> <strong>1.</strong> Para <span class="math inline">\(u\ne0_V\)</span>, clasifique las listas vacía, <span class="math inline">\((0_V)\)</span>, <span class="math inline">\((u)\)</span>, <span class="math inline">\((u,u)\)</span> y <span class="math inline">\((u,2u)\)</span> sobre un cuerpo cualquiera. Exhiba una relación no trivial en cada caso dependiente.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-002" class="apm-anchor"></span> <strong>2.</strong> Sean <span class="math inline">\(u,v\)</span> independientes y <span class="math inline">\(w=2u-3v\)</span>. Halle todas las relaciones de <span class="math inline">\((u,v,w)\)</span> sobre <span class="math inline">\(\mathbb F\)</span>. Indique qué posiciones pueden despejarse a partir de una relación no trivial cuando los escalares dos y tres son no nulos.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-003" class="apm-anchor"></span> <strong>3.</strong> En <span class="math inline">\(\mathbb R^2\)</span>, pruebe que cada pareja de la lista <span class="math inline">\((1,0),(0,1),(1,1)\)</span> es independiente y que la lista completa es dependiente. Explique por qué «ninguno es múltiplo de otro» no decide el caso de tres vectores.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-004" class="apm-anchor"></span> <strong>4.</strong> Si <span class="math inline">\(u,v\)</span> son independientes, halle todas las relaciones de <span class="math inline">\((u,v,0_V)\)</span>. Determine cuáles posiciones pueden quitarse conservando el generado.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-005" class="apm-anchor"></span> <strong>5.</strong> Compare la lista <span class="math inline">\((e_1,e_2,e_1)\)</span> con el conjunto <span class="math inline">\(\{e_1,e_2\}\)</span> en <span class="math inline">\(\mathbb F^2\)</span>. Halle todas las relaciones de la lista y explique qué información se pierde al pasar al conjunto.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-006" class="apm-anchor"></span> <strong>6.</strong> Demuestre por prolongación de coeficientes con ceros que cualquier subfamilia de una familia indexada independiente es independiente.</p>
+</section>
+<section id="sistemas-parámetros-y-coeficientes" class="level3">
+<h3 class="anchored" data-anchor-id="sistemas-parámetros-y-coeficientes">Sistemas, parámetros y coeficientes</h3>
+<p><span id="MA-BCH-APM-02-006-EXR-007" class="apm-anchor"></span> <strong>7.</strong> Clasifique <span class="math inline">\((1,0,1),(0,1,1),(1,1,k)\)</span> para todo <span class="math inline">\(k\in\mathbb R\)</span>. Para el valor dependiente dé todas las relaciones y dos representaciones de <span class="math inline">\((2,3,5)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-008" class="apm-anchor"></span> <strong>8.</strong> En <span class="math inline">\(\mathbb R^4\)</span>, sean <span class="math inline">\(u=(1,0,1,0)\)</span> y <span class="math inline">\(v=(0,1,0,1)\)</span>. Compare las listas <span class="math inline">\((u,v,(1,1,1,1))\)</span> y <span class="math inline">\((u,v,(0,0,1,0))\)</span> mediante sus sistemas de relaciones.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-009" class="apm-anchor"></span> <strong>9.</strong> Reconsidere el ejercicio 2 sobre <span class="math inline">\(\mathbb F_2\)</span> y sobre <span class="math inline">\(\mathbb F_3\)</span>. Determine todas las relaciones y cuáles de los tres vectores pueden eliminarse sin cambiar el generado.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-010" class="apm-anchor"></span> <strong>10.</strong> En <span class="math inline">\(\mathbb F_2^2\)</span>, halle todas las relaciones de <span class="math inline">\((e_1,e_2,e_1+e_2)\)</span> y todos los coeficientes que representan a <span class="math inline">\(e_1\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-011" class="apm-anchor"></span> <strong>11.</strong> Si <span class="math inline">\(u,v\)</span> son independientes y <span class="math inline">\(w=u+v\)</span>, halle todas las representaciones de <span class="math inline">\(u+2v\)</span> mediante <span class="math inline">\((u,v,w)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-012" class="apm-anchor"></span> <strong>12.</strong> Pruebe que si una lista es dependiente, todo vector de su generado tiene al menos dos representaciones. Si el cuerpo tiene <span class="math inline">\(q\)</span> elementos, pruebe que tiene al menos <span class="math inline">\(q\)</span>; si es infinito, que tiene infinitas.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-013" class="apm-anchor"></span> <strong>13.</strong> Para <span class="math inline">\(A=\begin{bmatrix}1&amp;0&amp;1\\0&amp;1&amp;1\end{bmatrix}\)</span> sobre <span class="math inline">\(\mathbb R\)</span>, encuentre todas las relaciones de las columnas y todas las soluciones de <span class="math inline">\(Ac=(4,-1)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-014" class="apm-anchor"></span> <strong>14.</strong> Pruebe que las columnas de <span class="math inline">\(\begin{bmatrix}1&amp;2\\0&amp;1\\1&amp;0\end{bmatrix}\)</span> son independientes. Determine si <span class="math inline">\((1,1,0)\)</span> pertenece a su generado.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-015" class="apm-anchor"></span> <strong>15.</strong> Dé una relación no trivial de <span class="math inline">\((e_1,e_2,e_3,(1,1,1))\)</span> en <span class="math inline">\(\mathbb F^3\)</span>. Justifique mediante pivotes por qué cualquier lista de cuatro columnas en ese ambiente es dependiente.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-016" class="apm-anchor"></span> <strong>16.</strong> Si <span class="math inline">\(R=PA\)</span> con <span class="math inline">\(P\)</span> invertible, pruebe que las tuplas de relación de las columnas de <span class="math inline">\(A\)</span> y <span class="math inline">\(R\)</span> son las mismas. Explique por qué esto no implica que los dos generados sean el mismo subconjunto.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-017" class="apm-anchor"></span> <strong>17.</strong> Si <span class="math inline">\(B=AE\)</span> con <span class="math inline">\(E\)</span> invertible, determine la correspondencia entre sus espacios de relaciones y pruebe que las columnas de <span class="math inline">\(A\)</span> son independientes si y sólo si las de <span class="math inline">\(B\)</span> lo son.</p>
+</section>
+<section id="polinomios-matrices-y-funciones-1" class="level3">
+<h3 class="anchored" data-anchor-id="polinomios-matrices-y-funciones-1">Polinomios, matrices y funciones</h3>
+<p><span id="MA-BCH-APM-02-006-EXR-018" class="apm-anchor"></span> <strong>18.</strong> En <span class="math inline">\(\mathbb F[t]\)</span>, halle todas las relaciones entre <span class="math inline">\(p=1+t\)</span>, <span class="math inline">\(q=t+t^2\)</span> y <span class="math inline">\(r=1+2t+t^2\)</span>. Determine qué polinomios pueden eliminarse de la lista.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-019" class="apm-anchor"></span> <strong>19.</strong> Pruebe que cualquier familia de polinomios no nulos cuyos grados son distintos es independiente. Incluya familias infinitas.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-020" class="apm-anchor"></span> <strong>20.</strong> Pruebe que <span class="math inline">\(1\)</span>, <span class="math inline">\(1+t\)</span>, <span class="math inline">\(1+t+t^2\)</span> y <span class="math inline">\(1+t+t^2+t^3\)</span> son independientes sobre cualquier cuerpo. Exprese <span class="math inline">\(a+bt+ct^2+dt^3\)</span> mediante esa lista.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-021" class="apm-anchor"></span> <strong>21.</strong> Compare la lista de polinomios formales <span class="math inline">\((1,t,t^2)\)</span> sobre <span class="math inline">\(\mathbb F_2\)</span> con la lista de sus funciones en <span class="math inline">\(\mathbb F_2\)</span>. Halle todas las relaciones en ambos casos.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-022" class="apm-anchor"></span> <strong>22.</strong> Pruebe que las seis matrices <span class="math inline">\(E_{ij}\)</span> de <span class="math inline">\(M_{2,3}(\mathbb F)\)</span> son independientes. ¿Qué ocurre si se añade <span class="math inline">\(E_{11}+E_{12}\)</span>? Escriba una relación y determine si se puede eliminar una de las matrices originales.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-023" class="apm-anchor"></span> <strong>23.</strong> Clasifique la lista <span class="math inline">\(I\)</span>, <span class="math inline">\(\begin{bmatrix}1&amp;0\\0&amp;-1\end{bmatrix}\)</span>, <span class="math inline">\(\begin{bmatrix}0&amp;1\\1&amp;0\end{bmatrix}\)</span> sobre cuerpos donde dos es no nulo y sobre <span class="math inline">\(\mathbb F_2\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-024" class="apm-anchor"></span> <strong>24.</strong> Pruebe que las funciones reales <span class="math inline">\(1\)</span>, <span class="math inline">\(|t|\)</span> y <span class="math inline">\(t\)</span> son independientes usando sólo evaluaciones en <span class="math inline">\(0,1,-1\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-025" class="apm-anchor"></span> <strong>25.</strong> Para las funciones reales <span class="math inline">\(1,t,t^2\)</span>, halle todas las relaciones entre sus listas de valores en <span class="math inline">\(0,1\)</span>. Explique por qué esas relaciones no prueban dependencia de las funciones. Añada una evaluación que certifique la independencia.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-026" class="apm-anchor"></span> <strong>26.</strong> Sea <span class="math inline">\(\delta_k:\mathbb N_0\to\mathbb F\)</span> la función que vale uno en <span class="math inline">\(k\)</span> y cero en las otras posiciones. Pruebe independencia de <span class="math inline">\((\delta_k)_{k\ge0}\)</span> y determine si genera la función constante uno.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-027" class="apm-anchor"></span> <strong>27.</strong> Pruebe que las sucesiones <span class="math inline">\((1)_{n\ge0}\)</span>, <span class="math inline">\((2^n)_{n\ge0}\)</span> y <span class="math inline">\((3^n)_{n\ge0}\)</span> son independientes sobre <span class="math inline">\(\mathbb R\)</span> mediante las posiciones <span class="math inline">\(n=0,1,2\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-028" class="apm-anchor"></span> <strong>28.</strong> Explique con cuantificadores por qué la independencia de <span class="math inline">\(1,t,t^2,\ldots\)</span> en <span class="math inline">\(\mathbb F[t]\)</span> no exige estudiar series <span class="math inline">\(\sum_{n\ge0}a_nt^n\)</span> con infinitos coeficientes no nulos.</p>
+</section>
+<section id="pruebas-estructurales-y-fronteras" class="level3">
+<h3 class="anchored" data-anchor-id="pruebas-estructurales-y-fronteras">Pruebas estructurales y fronteras</h3>
+<p><span id="MA-BCH-APM-02-006-EXR-029" class="apm-anchor"></span> <strong>29.</strong> Sea <span class="math inline">\((v_i)_{i\in I}\)</span> una familia independiente y sea <span class="math inline">\(w\)</span> un vector al que se da un índice nuevo. Pruebe que la familia ampliada es independiente si y sólo si <span class="math inline">\(w\)</span> no pertenece al generado de la familia anterior.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-030" class="apm-anchor"></span> <strong>30.</strong> En <span class="math inline">\(\mathbb F^3\)</span>, considere la lista <span class="math inline">\(e_1,e_2,e_1+e_2,e_3\)</span>. Halle el primer prefijo dependiente y determine si quitar la tercera o la cuarta posición conserva el generado.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-031" class="apm-anchor"></span> <strong>31.</strong> Sea <span class="math inline">\(v_1,\ldots,v_r\)</span> independiente y reemplace <span class="math inline">\(v_k\)</span> por <span class="math inline">\(w=\sum_{j=1}^r a_jv_j\)</span>. Pruebe que la nueva lista es independiente si y sólo si <span class="math inline">\(a_k\ne0\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-032" class="apm-anchor"></span> <strong>32.</strong> Pruebe directamente, desde la última fila hacia la primera, que las columnas de una matriz superior triangular con diagonal no nula son independientes.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-033" class="apm-anchor"></span> <strong>33.</strong> Reproduzca la prueba de independencia real/compleja para columnas reales, indicando dónde se usa que las entradas son reales.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-034" class="apm-anchor"></span> <strong>34.</strong> Halle las relaciones de la lista <span class="math inline">\((1,i)\)</span> considerando <span class="math inline">\(\mathbb C\)</span> como espacio sobre <span class="math inline">\(\mathbb R\)</span> y como espacio sobre <span class="math inline">\(\mathbb C\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-035" class="apm-anchor"></span> <strong>35.</strong> Si <span class="math inline">\(v_1,\ldots,v_r\)</span> es independiente y <span class="math inline">\(c_1,\ldots,c_r\)</span> son escalares no nulos, pruebe independencia de <span class="math inline">\(c_1v_1,\ldots,c_rv_r\)</span>. Describa qué ocurre si alguno de los <span class="math inline">\(c_j\)</span> es cero.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-036" class="apm-anchor"></span> <strong>36.</strong> Dé ejemplos en <span class="math inline">\(\mathbb R^2\)</span> donde trasladar todos los vectores de una lista por un mismo vector convierta una lista independiente en dependiente y una dependiente en independiente.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-037" class="apm-anchor"></span> <strong>37.</strong> Sean dos familias independientes con conjuntos de índices disjuntos. Pruebe que la familia reunida es independiente si y sólo si los subespacios generados por ambas tienen intersección <span class="math inline">\(\{0\}\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-038" class="apm-anchor"></span> <strong>38.</strong> Sea una lista dependiente cuyas sublistas propias son todas independientes. Pruebe que cada relación no trivial tiene todos sus coeficientes no nulos y que puede eliminarse cualquier posición sin cambiar el generado.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-039" class="apm-anchor"></span> <strong>39.</strong> Muestre que un coeficiente cero en una relación no decide si su posición puede quitarse. Use una relación de <span class="math inline">\((e_1,e_2,e_1,e_2)\)</span> que tenga coeficiente cero en la segunda posición y compare con <span class="math inline">\((e_1,e_2,0)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-EXR-040" class="apm-anchor"></span> <strong>40.</strong> Para <span class="math inline">\(\lambda,\mu\in\mathbb F\)</span>, halle todas las relaciones de <span class="math inline">\((1,t,(t-\lambda)^2,(t-\mu)^2)\)</span>. Clasifique también <span class="math inline">\((1,(t-\lambda)^2,(t-\mu)^2)\)</span>, indicando los casos de característica dos.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">6.9. Soluciones</h2>
+<p><span id="MA-BCH-APM-02-006-SOL-001" class="apm-anchor"></span> <strong>1.</strong> La lista vacía y <span class="math inline">\((u)\)</span> son independientes: en el segundo caso <span class="math inline">\(au=0\)</span> obliga a <span class="math inline">\(a=0\)</span> porque <span class="math inline">\(u\ne0\)</span>. <span class="math inline">\((0_V)\)</span> es dependiente por <span class="math inline">\(1\cdot0_V=0_V\)</span>. <span class="math inline">\((u,u)\)</span> admite la relación de coeficientes <span class="math inline">\((1,-1)\)</span>, y <span class="math inline">\((u,2u)\)</span> la de coeficientes <span class="math inline">\((2,-1)\)</span>. Ambas son no triviales en cualquier cuerpo, pues <span class="math inline">\(-1\ne0\)</span>, incluso cuando el escalar dos es cero y el segundo vector de la última lista es el vector cero.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-002" class="apm-anchor"></span> <strong>2.</strong> La combinación <span class="math inline">\(au+bv+cw\)</span> es <span class="math inline">\((a+2c)u+(b-3c)v\)</span>. Como <span class="math inline">\(u,v\)</span> son independientes, se anula exactamente cuando <span class="math inline">\(a=-2c\)</span> y <span class="math inline">\(b=3c\)</span>. Todas las relaciones son <span class="math inline">\(s(-2,3,1)\)</span>, con <span class="math inline">\(s\in\mathbb F\)</span>. Si dos y tres son no nulos y <span class="math inline">\(s\ne0\)</span>, los tres coeficientes son no nulos, por lo que cualquiera de las posiciones puede despejarse y eliminarse. En particular <span class="math inline">\(w=2u-3v\)</span>, <span class="math inline">\(u=(w+3v)/2\)</span> y <span class="math inline">\(v=(2u-w)/3\)</span>; las divisiones necesitan las hipótesis indicadas.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-003" class="apm-anchor"></span> <strong>3.</strong> Una relación entre <span class="math inline">\((1,0)\)</span> y <span class="math inline">\((0,1)\)</span> tiene componentes <span class="math inline">\((a,b)\)</span> y sólo se anula con ambos coeficientes cero. Para <span class="math inline">\((1,0),(1,1)\)</span>, la segunda componente de <span class="math inline">\((a+b,b)\)</span> obliga a <span class="math inline">\(b=0\)</span> y después <span class="math inline">\(a=0\)</span>. Para <span class="math inline">\((0,1),(1,1)\)</span> se razona con la primera componente de <span class="math inline">\((b,a+b)\)</span>. La terna completa admite la relación de coeficientes <span class="math inline">\((1,1,-1)\)</span>. Las relaciones entre tres vectores pueden involucrar los tres a la vez sin que exista una entre sólo dos.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-004" class="apm-anchor"></span> <strong>4.</strong> La igualdad <span class="math inline">\(au+bv+c0_V=0\)</span> equivale a <span class="math inline">\(au+bv=0\)</span>, de modo que <span class="math inline">\(a=b=0\)</span> y <span class="math inline">\(c\)</span> es arbitrario. Sólo las relaciones con <span class="math inline">\(c\ne0\)</span> son no triviales. Quitar el cero conserva el generado. Quitar <span class="math inline">\(u\)</span> lo cambiaría, porque exigiría <span class="math inline">\(u\in\operatorname{span}(v)\)</span>, contradiciendo la independencia; el mismo argumento impide quitar <span class="math inline">\(v\)</span>. Es una lista dependiente en la que no todos los miembros son redundantes.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-005" class="apm-anchor"></span> <strong>5.</strong> La combinación <span class="math inline">\(ae_1+be_2+ce_1\)</span> tiene componentes <span class="math inline">\((a+c,b)\)</span>; todas las relaciones son <span class="math inline">\((s,0,-s)\)</span>. La lista es dependiente, mientras que el conjunto de sus valores distintos <span class="math inline">\(\{e_1,e_2\}\)</span> es independiente por comparación de componentes. El paso al conjunto elimina una posición y la posibilidad de asignar coeficientes distintos a las dos apariciones de <span class="math inline">\(e_1\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-006" class="apm-anchor"></span> <strong>6.</strong> Sea <span class="math inline">\(J\subseteq I\)</span> y suponga que una relación en <span class="math inline">\((v_j)_{j\in J}\)</span> tiene soporte finito. Defina coeficientes en todo <span class="math inline">\(I\)</span> manteniendo los de <span class="math inline">\(J\)</span> y poniendo cero fuera de <span class="math inline">\(J\)</span>. El soporte no crece y la misma suma sigue siendo cero. La independencia de la familia completa obliga a que todos esos coeficientes sean cero, incluidos los de <span class="math inline">\(J\)</span>. Por tanto la subfamilia es independiente. El argumento también incluye <span class="math inline">\(J=\varnothing\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-007" class="apm-anchor"></span> <strong>7.</strong> Las ecuaciones de una relación son <span class="math inline">\(a+c=0\)</span>, <span class="math inline">\(b+c=0\)</span>, <span class="math inline">\(a+b+kc=0\)</span>. Al sustituir <span class="math inline">\(a=b=-c\)</span> queda <span class="math inline">\((k-2)c=0\)</span>. Si <span class="math inline">\(k\ne2\)</span>, la relación es trivial y la lista es independiente. Si <span class="math inline">\(k=2\)</span>, todas las relaciones son <span class="math inline">\(s(-1,-1,1)\)</span>. Para ese valor, <span class="math inline">\((2,3,5)=2u+3v=1u+2v+1w\)</span>, donde <span class="math inline">\(u,v,w\)</span> son las columnas de la lista; las dos tuplas difieren por <span class="math inline">\((-1,-1,1)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-008" class="apm-anchor"></span> <strong>8.</strong> En la primera lista, el tercer vector es <span class="math inline">\(u+v\)</span>. Comparar primera y segunda componentes de una relación da <span class="math inline">\(a+c=b+c=0\)</span>, y las otras componentes no añaden condiciones. Las relaciones son <span class="math inline">\(s(-1,-1,1)\)</span>. En la segunda lista la combinación tiene componentes <span class="math inline">\((a,b,a+c,b)\)</span>; si es cero, las dos primeras dan <span class="math inline">\(a=b=0\)</span> y la tercera da <span class="math inline">\(c=0\)</span>. Es independiente. Contar cuatro entradas y tres columnas no distingue las dos listas; importa si aparece una variable libre en el sistema homogéneo.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-009" class="apm-anchor"></span> <strong>9.</strong> Sobre <span class="math inline">\(\mathbb F_2\)</span>, <span class="math inline">\(w=2u-3v=v\)</span> y las relaciones del ejercicio 2 son <span class="math inline">\((0,s,s)\)</span>, con <span class="math inline">\(s\in\mathbb F_2\)</span>. Se puede quitar <span class="math inline">\(v\)</span> o <span class="math inline">\(w\)</span>, pero no <span class="math inline">\(u\)</span>, que no pertenece al generado de <span class="math inline">\(v\)</span>. Sobre <span class="math inline">\(\mathbb F_3\)</span>, <span class="math inline">\(w=2u\)</span> y las relaciones son <span class="math inline">\((s,0,s)\)</span>, pues <span class="math inline">\(-2=1\)</span> y <span class="math inline">\(3=0\)</span>. Se puede quitar <span class="math inline">\(u\)</span> o <span class="math inline">\(w\)</span>, pero no <span class="math inline">\(v\)</span>. Los coeficientes que se anulan señalan aquí posiciones que no aparecen en ninguna relación no trivial, porque ya hemos encontrado todas.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-010" class="apm-anchor"></span> <strong>10.</strong> Una relación tiene componentes <span class="math inline">\((a+c,b+c)=0\)</span>. En <span class="math inline">\(\mathbb F_2\)</span> se obtiene <span class="math inline">\(a=b=c\)</span>, y las relaciones son <span class="math inline">\((0,0,0)\)</span> y <span class="math inline">\((1,1,1)\)</span>. Para representar a <span class="math inline">\(e_1\)</span>, las ecuaciones son <span class="math inline">\(a+c=1\)</span>, <span class="math inline">\(b+c=0\)</span>. Con <span class="math inline">\(c=0\)</span> obtenemos <span class="math inline">\((1,0,0)\)</span>; con <span class="math inline">\(c=1\)</span>, <span class="math inline">\((0,1,1)\)</span>. Ésas son todas las posibilidades de los coeficientes.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-011" class="apm-anchor"></span> <strong>11.</strong> La igualdad <span class="math inline">\(au+bv+cw=u+2v\)</span> equivale a <span class="math inline">\((a+c)u+(b+c)v=u+2v\)</span>. La independencia de <span class="math inline">\(u,v\)</span> obliga a <span class="math inline">\(a+c=1\)</span> y <span class="math inline">\(b+c=2\)</span>. Todas las tuplas son <span class="math inline">\((1-s,2-s,s)\)</span>, con <span class="math inline">\(s\in\mathbb F\)</span>. Sustituirlas da el vector pedido; compararlas con una tupla cualquiera que lo represente demuestra que no faltan casos.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-012" class="apm-anchor"></span> <strong>12.</strong> Sea <span class="math inline">\(\alpha\)</span> una relación no nula y <span class="math inline">\(c\)</span> una representación del vector dado. Para cada <span class="math inline">\(s\in\mathbb F\)</span>, la tupla <span class="math inline">\(c+s\alpha\)</span> representa el mismo vector. Si <span class="math inline">\(c+s\alpha=c+t\alpha\)</span>, alguna posición con <span class="math inline">\(\alpha_k\ne0\)</span> da <span class="math inline">\((s-t)\alpha_k=0\)</span>, de donde <span class="math inline">\(s=t\)</span>. Así se obtienen tuplas distintas para escalares distintos. Todo cuerpo tiene al menos dos elementos, lo que prueba la primera afirmación; los otros casos siguen contando esos escalares. No se afirma que ésas sean todas las representaciones cuando el espacio de relaciones tiene otras direcciones.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-013" class="apm-anchor"></span> <strong>13.</strong> Para el sistema homogéneo las ecuaciones son <span class="math inline">\(c_1+c_3=0\)</span> y <span class="math inline">\(c_2+c_3=0\)</span>, de modo que las relaciones son <span class="math inline">\(s(-1,-1,1)\)</span>. Para el dato <span class="math inline">\((4,-1)\)</span> obtenemos <span class="math inline">\(c_1+c_3=4\)</span> y <span class="math inline">\(c_2+c_3=-1\)</span>. La solución general es <span class="math inline">\((4-s,-1-s,s)\)</span> con <span class="math inline">\(s\in\mathbb R\)</span>. Puede verse como la representación particular <span class="math inline">\((4,-1,0)\)</span> más una relación; la sustitución verifica ambas ecuaciones.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-014" class="apm-anchor"></span> <strong>14.</strong> Una relación de las dos columnas exige <span class="math inline">\(a+2b=0\)</span>, <span class="math inline">\(b=0\)</span> y <span class="math inline">\(a=0\)</span>; sólo existe la trivial. Para representar <span class="math inline">\((1,1,0)\)</span>, las dos últimas filas obligan a <span class="math inline">\(b=1\)</span> y <span class="math inline">\(a=0\)</span>, mientras que la primera exigiría <span class="math inline">\(a+2b=1\)</span>, lo cual daría <span class="math inline">\(2=1\)</span>. No pertenece al generado real. La lista es independiente aunque no represente todas las columnas del ambiente.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-015" class="apm-anchor"></span> <strong>15.</strong> La relación es <span class="math inline">\(e_1+e_2+e_3-(1,1,1)=0\)</span>, con coeficientes <span class="math inline">\((1,1,1,-1)\)</span> no todos nulos en ningún cuerpo. Para cualquier lista de cuatro columnas de <span class="math inline">\(\mathbb F^3\)</span>, una matriz de tres filas admite a lo sumo tres pivotes. Hay al menos una variable libre en el sistema homogéneo de cuatro coeficientes, y darle valor uno produce una relación no trivial.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-016" class="apm-anchor"></span> <strong>16.</strong> Si <span class="math inline">\(Aa=0\)</span>, entonces <span class="math inline">\(Ra=PAa=0\)</span>. Si <span class="math inline">\(Ra=0\)</span>, multiplicar por <span class="math inline">\(P^{-1}\)</span> da <span class="math inline">\(Aa=0\)</span>. Las mismas tuplas son relaciones. Eso no dice que cada columna de <span class="math inline">\(A\)</span> tenga las mismas entradas que su columna correspondiente en <span class="math inline">\(R\)</span>: el producto por <span class="math inline">\(P\)</span> cambia los vectores. Por ejemplo, las columnas de <span class="math inline">\(\begin{bmatrix}1&amp;0\\1&amp;0\end{bmatrix}\)</span> generan la recta de <span class="math inline">\((1,1)\)</span> y las de <span class="math inline">\(\begin{bmatrix}1&amp;0\\0&amp;0\end{bmatrix}\)</span> generan la de <span class="math inline">\((1,0)\)</span>, aunque ambas matrices tienen exactamente las relaciones <span class="math inline">\((0,s)\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-017" class="apm-anchor"></span> <strong>17.</strong> Se cumple <span class="math inline">\(Bb=0\)</span> si y sólo si <span class="math inline">\(A(Eb)=0\)</span>, de modo que <span class="math inline">\(\mathcal R(B)=E^{-1}\mathcal R(A)\)</span>, donde el miembro derecho indica todas las tuplas <span class="math inline">\(E^{-1}a\)</span> con <span class="math inline">\(a\in\mathcal R(A)\)</span>. La correspondencia <span class="math inline">\(b\mapsto Eb\)</span> es biyectiva y conserva la distinción entre cero y no cero. Así un espacio de relaciones es sólo cero exactamente cuando lo es el otro, que es el criterio de independencia de las columnas.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-018" class="apm-anchor"></span> <strong>18.</strong> Se tiene <span class="math inline">\(r=p+q\)</span>. Además <span class="math inline">\(p,q\)</span> son independientes: en <span class="math inline">\(ap+bq=0\)</span>, el coeficiente constante da <span class="math inline">\(a=0\)</span> y el cuadrático da <span class="math inline">\(b=0\)</span>. Por tanto una relación <span class="math inline">\(ap+bq+cr=0\)</span> equivale a <span class="math inline">\(a+c=b+c=0\)</span>, y todas son <span class="math inline">\(s(-1,-1,1)\)</span>. En una no trivial los tres coeficientes son no nulos, incluso en característica dos. Se puede eliminar cualquiera de los tres, usando <span class="math inline">\(r=p+q\)</span>, <span class="math inline">\(p=r-q\)</span> o <span class="math inline">\(q=r-p\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-019" class="apm-anchor"></span> <strong>19.</strong> Considere una relación de soporte finito y suponga que algún coeficiente es no nulo. Entre los polinomios con coeficiente no nulo hay uno de mayor grado. Por la hipótesis de grados distintos, ningún otro aporta a la potencia principal de ese polinomio. Su contribución es un producto de dos escalares no nulos, que no puede ser cero en un cuerpo. Esto contradice que la suma sea el polinomio cero. Toda relación es trivial. El argumento se aplica a cada relación finita de una familia infinita y por ello prueba también ese caso.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-020" class="apm-anchor"></span> <strong>20.</strong> Si una combinación de la lista con coeficientes <span class="math inline">\(\alpha,\beta,\gamma,\delta\)</span> es cero, el coeficiente de <span class="math inline">\(t^3\)</span> da <span class="math inline">\(\delta=0\)</span>; el de <span class="math inline">\(t^2\)</span> da <span class="math inline">\(\gamma+\delta=0\)</span>; el de <span class="math inline">\(t\)</span> da <span class="math inline">\(\beta+\gamma+\delta=0\)</span> y el constante da <span class="math inline">\(\alpha+\beta+\gamma+\delta=0\)</span>. Resultan todos nulos. Para el polinomio dado, los mismos pasos dan los coeficientes <span class="math inline">\((a-b,b-c,c-d,d)\)</span>. Sumarlos por la lista recupera respectivamente los coeficientes <span class="math inline">\(a,b,c,d\)</span>; no se ha dividido por ningún entero.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-021" class="apm-anchor"></span> <strong>21.</strong> Para polinomios formales, <span class="math inline">\(a+bt+ct^2=0\)</span> obliga a <span class="math inline">\(a=b=c=0\)</span> por igualdad de coeficientes. Para funciones en <span class="math inline">\(\mathbb F_2\)</span>, evaluar en cero da <span class="math inline">\(a=0\)</span> y evaluar en uno da <span class="math inline">\(a+b+c=0\)</span>, de donde <span class="math inline">\(b=c\)</span>. Las relaciones de funciones son <span class="math inline">\((0,s,s)\)</span>, con <span class="math inline">\(s\in\mathbb F_2\)</span>. La no trivial expresa que las funciones de <span class="math inline">\(t\)</span> y <span class="math inline">\(t^2\)</span> coinciden en los dos argumentos.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-022" class="apm-anchor"></span> <strong>22.</strong> En una relación de las seis matrices, la entrada <span class="math inline">\((i,j)\)</span> es el coeficiente de <span class="math inline">\(E_{ij}\)</span>, de modo que todos deben ser cero. Si se añade <span class="math inline">\(F=E_{11}+E_{12}\)</span>, aparece la relación <span class="math inline">\(E_{11}+E_{12}-F=0\)</span>. Puede quitarse <span class="math inline">\(E_{11}\)</span> porque <span class="math inline">\(E_{11}=F-E_{12}\)</span>, o <span class="math inline">\(E_{12}\)</span> porque <span class="math inline">\(E_{12}=F-E_{11}\)</span>. Las demás matrices originales tienen una entrada uno en una posición donde todos los restantes miembros de la lista tienen cero; por tanto no pueden eliminarse conservando el generado.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-023" class="apm-anchor"></span> <strong>23.</strong> Una combinación con coeficientes <span class="math inline">\(a,b,c\)</span> es <span class="math inline">\(\begin{bmatrix}a+b&amp;c\\c&amp;a-b\end{bmatrix}\)</span>. Si es cero, <span class="math inline">\(c=0\)</span>, <span class="math inline">\(a+b=0\)</span> y <span class="math inline">\(a-b=0\)</span>. Cuando dos es no nulo, sumar las dos últimas ecuaciones da <span class="math inline">\(2a=0\)</span>, luego <span class="math inline">\(a=b=0\)</span> y la lista es independiente. En <span class="math inline">\(\mathbb F_2\)</span> ambas ecuaciones diagonales coinciden y las relaciones son <span class="math inline">\((s,s,0)\)</span>. Las dos primeras matrices son entonces iguales.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-024" class="apm-anchor"></span> <strong>24.</strong> Si <span class="math inline">\(a+b|t|+ct=0\)</span> para todo real <span class="math inline">\(t\)</span>, evaluar en cero da <span class="math inline">\(a=0\)</span>. Evaluar en uno y menos uno da <span class="math inline">\(b+c=0\)</span> y <span class="math inline">\(b-c=0\)</span>. Sumarlas da <span class="math inline">\(2b=0\)</span>, por lo que <span class="math inline">\(b=0\)</span> y después <span class="math inline">\(c=0\)</span>. Toda relación es trivial. El argumento sólo utiliza los valores indicados y las operaciones reales.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-025" class="apm-anchor"></span> <strong>25.</strong> Las relaciones de los valores en cero y uno cumplen <span class="math inline">\(a=0\)</span> y <span class="math inline">\(a+b+c=0\)</span>. Son <span class="math inline">\((0,s,-s)\)</span> con <span class="math inline">\(s\in\mathbb R\)</span>. Una de ellas con <span class="math inline">\(s\ne0\)</span> corresponde a la función <span class="math inline">\(s(t-t^2)\)</span>, que se anula en las dos muestras pero no en todo el dominio: en <span class="math inline">\(t=-1\)</span> vale <span class="math inline">\(-2s\ne0\)</span>. Añadir esa evaluación obliga a <span class="math inline">\(s=0\)</span>; la matriz de tres evaluaciones sólo admite la relación trivial y certifica la independencia de las funciones.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-026" class="apm-anchor"></span> <strong>26.</strong> En una relación de soporte finito <span class="math inline">\(\sum_ka_k\delta_k=0\)</span>, evaluar en el índice <span class="math inline">\(j\)</span> da <span class="math inline">\(a_j=0\)</span> para cada posición usada; los otros coeficientes ya son cero. Por tanto la familia es independiente. Cualquier combinación finita de los <span class="math inline">\(\delta_k\)</span> sólo es no nula en finitas posiciones, mientras que la función constante uno lo es en todas. No la genera.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-027" class="apm-anchor"></span> <strong>27.</strong> Una relación de sucesiones proporciona, para <span class="math inline">\(n=0,1,2\)</span>, las ecuaciones <span class="math inline">\(a+b+c=0\)</span>, <span class="math inline">\(a+2b+3c=0\)</span> y <span class="math inline">\(a+4b+9c=0\)</span>. Restar ecuaciones consecutivas da <span class="math inline">\(b+2c=0\)</span> y <span class="math inline">\(2b+6c=0\)</span>. Restar dos veces la primera de estas últimas a la segunda da <span class="math inline">\(2c=0\)</span>, de modo que <span class="math inline">\(c=0\)</span>, <span class="math inline">\(b=0\)</span> y <span class="math inline">\(a=0\)</span>. Al ser reales los coeficientes, dividir por dos es válido. No se ha sumado una serie de términos de las sucesiones.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-028" class="apm-anchor"></span> <strong>28.</strong> La definición pide que para cada familia de coeficientes <span class="math inline">\((a_n)\)</span> de soporte finito, la igualdad <span class="math inline">\(\sum_na_nt^n=0\)</span> implique <span class="math inline">\(a_n=0\)</span> para todo <span class="math inline">\(n\)</span>. Cada suma así tiene un mayor índice no nulo si la familia no es cero, y es un polinomio formal. Comparar coeficientes descarta la relación no trivial. Las familias con infinitos coeficientes no nulos no forman parte de los cuantificadores de esta definición; interpretarlas como series requeriría otra estructura.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-029" class="apm-anchor"></span> <strong>29.</strong> Si <span class="math inline">\(w\)</span> está en el generado, su representación usa finitos miembros de la familia anterior y produce una relación de soporte finito con coeficiente uno en el índice nuevo. La familia ampliada es dependiente. Si <span class="math inline">\(w\)</span> no está en el generado y hay una relación finita <span class="math inline">\(\sum_i a_iv_i+bw=0\)</span>, un <span class="math inline">\(b\ne0\)</span> permitiría despejar <span class="math inline">\(w\)</span>, contradicción. Luego <span class="math inline">\(b=0\)</span> y la independencia anterior da <span class="math inline">\(a_i=0\)</span> en cada índice. El argumento incluye la familia anterior vacía.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-030" class="apm-anchor"></span> <strong>30.</strong> <span class="math inline">\(e_1\)</span> es no nulo y <span class="math inline">\((e_1,e_2)\)</span> es independiente por comparación de componentes. El prefijo de longitud tres es dependiente porque <span class="math inline">\(e_1+e_2-(e_1+e_2)=0\)</span> usa coeficientes <span class="math inline">\((1,1,-1)\)</span> en sus tres posiciones. Ése es el primero. Quitar la tercera conserva el generado, pues ese vector es suma de los dos primeros. Quitar la cuarta no lo conserva: los tres restantes tienen tercera componente cero y no producen <span class="math inline">\(e_3\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-031" class="apm-anchor"></span> <strong>31.</strong> En una relación de la lista nueva, llame <span class="math inline">\(b_k\)</span> al coeficiente de <span class="math inline">\(w\)</span> y <span class="math inline">\(b_j\)</span> a los otros. Sustituir <span class="math inline">\(w\)</span> da una relación de la lista anterior cuyo coeficiente en la posición <span class="math inline">\(k\)</span> es <span class="math inline">\(b_ka_k\)</span> y cuyos otros coeficientes son <span class="math inline">\(b_j+b_ka_j\)</span>. Si <span class="math inline">\(a_k\ne0\)</span>, la independencia anterior fuerza primero <span class="math inline">\(b_k=0\)</span> y luego todos los <span class="math inline">\(b_j=0\)</span>. Si <span class="math inline">\(a_k=0\)</span>, el nuevo vector ya es combinación de los miembros que permanecen, de modo que el teorema 6.1 hace dependiente la lista nueva. Ésta incluye el caso <span class="math inline">\(w=0\)</span>.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-032" class="apm-anchor"></span> <strong>32.</strong> Para una matriz triangular <span class="math inline">\(T\)</span> de tamaño <span class="math inline">\(n\)</span>, una relación de columnas es <span class="math inline">\(Tc=0\)</span>. Su última fila da <span class="math inline">\(T_{nn}c_n=0\)</span>, y como <span class="math inline">\(T_{nn}\ne0\)</span>, resulta <span class="math inline">\(c_n=0\)</span>. La fila anterior da entonces <span class="math inline">\(T_{n-1,n-1}c_{n-1}=0\)</span>, y se obtiene <span class="math inline">\(c_{n-1}=0\)</span>. Continuando hacia arriba se anulan todos los coeficientes. Las entradas por encima de la diagonal no obstruyen el razonamiento porque multiplican coeficientes ya anulados.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-033" class="apm-anchor"></span> <strong>33.</strong> Una relación real es también compleja, así que la independencia compleja impide relaciones reales no triviales. Para la otra dirección, escriba cada coeficiente complejo como <span class="math inline">\(a_j+ib_j\)</span> con partes reales. Si las columnas <span class="math inline">\(v_j\)</span> son reales, las partes real e imaginaria de la relación son respectivamente <span class="math inline">\(\sum_ja_jv_j=0\)</span> y <span class="math inline">\(\sum_jb_jv_j=0\)</span>. La independencia real anula todos los coeficientes. La condición sobre entradas reales permite extraer esas dos partes sin mezclar coordenadas imaginarias propias de los vectores.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-034" class="apm-anchor"></span> <strong>34.</strong> Con coeficientes reales, <span class="math inline">\(a+bi=0\)</span> obliga a <span class="math inline">\(a=b=0\)</span>, por lo que la única relación es <span class="math inline">\((0,0)\)</span>. Con coeficientes complejos, la misma igualdad se resuelve como <span class="math inline">\(a=-ib\)</span>, y todas las relaciones son <span class="math inline">\((-is,s)\)</span> con <span class="math inline">\(s\in\mathbb C\)</span>. Para <span class="math inline">\(s=1\)</span> se obtiene una relación no trivial. Es un cambio del cuerpo sobre el mismo conjunto de vectores, distinto del caso de columnas con entradas reales en la proposición 6.4.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-035" class="apm-anchor"></span> <strong>35.</strong> Una relación <span class="math inline">\(\sum_ja_j(c_jv_j)=0\)</span> es una relación de la lista anterior con coeficientes <span class="math inline">\(a_jc_j\)</span>. La independencia da <span class="math inline">\(a_jc_j=0\)</span> y, al ser cada <span class="math inline">\(c_j\)</span> no nulo, <span class="math inline">\(a_j=0\)</span>. Si algún <span class="math inline">\(c_j=0\)</span>, la posición correspondiente contiene el vector cero y la lista nueva es dependiente mediante el coeficiente uno en esa posición y ceros en las demás. Para una lista vacía no existe una posición de ese tipo y su independencia se conserva.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-036" class="apm-anchor"></span> <strong>36.</strong> La lista <span class="math inline">\((1,0),(0,1)\)</span> es independiente. Al sumar <span class="math inline">\(p=(-1,0)\)</span> a sus dos miembros se obtiene <span class="math inline">\((0,0),(-1,1)\)</span>, dependiente porque contiene cero. Para la otra dirección, <span class="math inline">\((1,0),(2,0)\)</span> es dependiente; sumar <span class="math inline">\(q=(0,1)\)</span> produce <span class="math inline">\((1,1),(2,1)\)</span>. Una relación de estos últimos exige <span class="math inline">\(a+2b=0\)</span> y <span class="math inline">\(a+b=0\)</span>, de donde <span class="math inline">\(b=0\)</span> y <span class="math inline">\(a=0\)</span>. Trasladar todos los vectores conserva diferencias entre puntos, pero puede cambiar las relaciones lineales referidas al origen.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-037" class="apm-anchor"></span> <strong>37.</strong> Suponga que la intersección de los generados es cero. En una relación finita de la familia reunida, agrupe los términos de la primera familia en <span class="math inline">\(x\)</span> y los de la segunda en <span class="math inline">\(y\)</span>. Como <span class="math inline">\(x+y=0\)</span>, tenemos <span class="math inline">\(x=-y\)</span> en la intersección; por tanto ambos son cero. La independencia de cada familia anula todos sus coeficientes, y la reunida es independiente.</p>
+<p>Si la intersección contiene un vector <span class="math inline">\(z\ne0\)</span>, éste tiene una representación finita en cada familia. Restarlas produce una relación en la familia reunida. Los índices son disjuntos, y al menos un coeficiente de la representación de <span class="math inline">\(z\)</span> es no nulo porque <span class="math inline">\(z\ne0\)</span>; la relación reunida es no trivial. La familia es dependiente. Las familias vacías también quedan cubiertas: su generado es cero y no introducen términos.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-038" class="apm-anchor"></span> <strong>38.</strong> Si una relación no trivial tuviera coeficiente cero en alguna posición, los coeficientes de las posiciones restantes darían una relación todavía no trivial en una sublista propia. Esto contradice la hipótesis. Por tanto todos sus coeficientes son no nulos; el teorema 6.1 permite despejar y eliminar cualquiera de sus posiciones. Para la lista de longitud uno que contiene cero, la única sublista propia es vacía y la misma conclusión se cumple.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-039" class="apm-anchor"></span> <strong>39.</strong> La lista <span class="math inline">\((e_1,e_2,e_1,e_2)\)</span> admite la relación <span class="math inline">\((1,0,-1,0)\)</span>, cuyo segundo coeficiente es cero. Sin embargo, su segunda posición puede quitarse: <span class="math inline">\(e_2\)</span> sigue apareciendo en la cuarta posición, y la relación <span class="math inline">\((0,1,0,-1)\)</span> muestra cómo despejarla. En <span class="math inline">\((e_1,e_2,0)\)</span>, la relación <span class="math inline">\((0,0,1)\)</span> también tiene segundo coeficiente cero, pero quitar <span class="math inline">\(e_2\)</span> deja sólo múltiplos de <span class="math inline">\(e_1\)</span> y no conserva el generado. Una relación seleccionada no contiene necesariamente toda la información sobre las posiciones eliminables.</p>
+<p><span id="MA-BCH-APM-02-006-SOL-040" class="apm-anchor"></span> <strong>40.</strong> En una relación con coeficientes <span class="math inline">\(a,b,c,d\)</span>, comparar el término cuadrático da <span class="math inline">\(c+d=0\)</span>, luego <span class="math inline">\(d=-c\)</span>. Comparar el término lineal da <span class="math inline">\(b-2\lambda c-2\mu d=0\)</span>, por lo que <span class="math inline">\(b=2(\lambda-\mu)c\)</span>. El término constante da <span class="math inline">\(a+\lambda^2c+\mu^2d=0\)</span>, de donde <span class="math inline">\(a=(\mu^2-\lambda^2)c\)</span>. Todas las relaciones son</p>
+<p><span class="math display">\[
+s(\mu^2-\lambda^2,\ 2(\lambda-\mu),\ 1,\ -1),
+\qquad s\in\mathbb F.
+\]</span></p>
+<p>La lista de cuatro siempre es dependiente, pues las dos últimas entradas de la tupla indicada son no nulas. Para la lista sin <span class="math inline">\(t\)</span>, sus relaciones corresponden a las anteriores con <span class="math inline">\(b=0\)</span>. Si <span class="math inline">\(2(\lambda-\mu)\ne0\)</span>, esto obliga a <span class="math inline">\(s=0\)</span> y la terna es independiente. Si <span class="math inline">\(2(\lambda-\mu)=0\)</span>, todas las tuplas <span class="math inline">\(s(\mu^2-\lambda^2,1,-1)\)</span> son relaciones de la terna y ésta es dependiente. En característica dos ocurre para cualquier <span class="math inline">\(\lambda,\mu\)</span>; en característica distinta de dos ocurre exactamente cuando <span class="math inline">\(\lambda=\mu\)</span>.</p>
+</section>
+<section id="lecturas-y-referencias" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-referencias">Lecturas y referencias</h2>
+<p>Nathaniel Johnston, <em>Advanced Linear and Matrix Algebra</em>, Springer, 2021, §1.1.2: relaciones, ejemplos matriciales y polinómicos, y familias infinitas. Stephen H. Friedberg, Arnold J. Insel y Lawrence E. Spence, <em>Linear Algebra</em>, 5.ª edición, Pearson, 2019, §1.5: dependencia, eliminación de redundancia y ampliación de conjuntos independientes. Kenneth Hoffman y Ray Kunze, <em>Linear Algebra</em>, 2.ª edición, Prentice-Hall, 1971, comienzo de §2.3: definición de dependencia y criterio mediante subconjuntos finitos. Sheldon Axler, <em>Linear Algebra Done Right</em>, 4.ª edición, Springer, 2024, §2A, resultados 2.15–2.21: independencia de listas, unicidad de representación y lema de dependencia.</p>
+<p>Los ejercicios 19 y 32 retoman resultados clásicos recogidos en los ejercicios 18 y 17 de §1.5 de Friedberg–Insel–Spence. El ejercicio 37 desarrolla el resultado de su ejercicio 21 con familias de índices disjuntos, para conservar posibles repeticiones de valores y tratar también familias infinitas mediante soportes finitos.</p>
+<hr>
+<p><a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-05-subespacios-y-generacion.html">← Capítulo 5</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos-tomo-ii.html">Índice del tomo II</a> · <a href="../../libros/para-matematicos/algebra-para-matematicos.html">Obra completa</a> · <a href="../../libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-07-bases-y-dimension.html">Capítulo 7 →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
