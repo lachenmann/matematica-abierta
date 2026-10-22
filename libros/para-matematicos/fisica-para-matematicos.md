@@ -6,7 +6,7 @@ content-type: book
 collection: PM-FIS
 status: published
 date-created: 2026-09-10
-date-modified: 2026-10-21
+date-modified: 2026-10-22
 areas:
   - fisica-matematica
   - fundamentos
@@ -76,6 +76,13 @@ author: "A. Peña"
 La resolución de problemas acompaña la construcción de conceptos: elegir un sistema y un marco, traducir las condiciones a ecuaciones, desarrollar el cálculo y comprobar qué afirma la respuesta sobre la situación inicial. Los ejemplos y las soluciones permiten estudiar esas decisiones con el detalle de una clase escrita.
 
 ### Descargas
+
+- [PDF A4 de lectura con cubierta oficial — 532 páginas, azul pizarra](/assets/books/fispm/downloads/r20261021-cubierta-oficial-v01/FPM_Tomo_I_r20261021_A4_Cubierta_Oficial_v01.pdf){download="FPM_Tomo_I_r20261021_A4_Cubierta_Oficial_v01.pdf"}.
+- [Proyecto Overleaf con cubierta oficial automática](/assets/books/fispm/downloads/r20261021-cubierta-oficial-v01/FPM_Tomo_I_r20261021_Overleaf_Cubierta_Oficial_v01.zip){download="FPM_Tomo_I_r20261021_Overleaf_Cubierta_Oficial_v01.zip"}.
+
+La cubierta oficial sustituye únicamente la primera página: las 531 páginas interiores y los 332 marcadores conservan la edición canónica revisada. El proyecto mantiene AMSBook y pdfLaTeX.
+
+#### Archivos originales de la edición del 21 de octubre
 
 - [PDF A4 de lectura — 532 páginas, portada azul claro](/assets/books/fispm/downloads/r20261021/FPM_Tomo_I_00_27_Lectura_A4.pdf).
 - [Proyecto LaTeX editable para Overleaf](/assets/books/fispm/downloads/r20261021/FPM_Tomo_I_Overleaf_r20261021.zip).
