@@ -138,7 +138,7 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
             # The resource allowlist stays closed; only the hosted link is omitted.
             (site / 'manifest.webmanifest').write_text('{}')
             with self.assertRaisesRegex(ValueError, 'unsupported canonical media'):
-                assets.resource('/manifest.webmanifest', chapter.as_uri())
+                assets.resource((site / 'manifest.webmanifest').as_uri(), chapter.as_uri())
 
     def test_runtime_distribution_integrity_is_checked_before_extraction(self):
         with tempfile.TemporaryDirectory() as tmp, patch('canonical_offline.download', return_value=b'corrupt archive'):
