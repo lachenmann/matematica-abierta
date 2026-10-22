@@ -7,6 +7,7 @@ import shutil
 import subprocess
 import tarfile
 import tempfile
+import xml.etree.ElementTree as ET
 
 SPEC = importlib.util.spec_from_file_location("smart_render", Path(__file__).resolve().parents[1] / "tools/smart_render.py")
 smart = importlib.util.module_from_spec(SPEC)
@@ -20,6 +21,24 @@ def git(root, *args):
 def commit(root):
     git(root, "add", ".")
     git(root, "commit", "-qm", "isolated integration fixture")
+
+
+def comparable_inventory(site):
+    """Compare complete content while ignoring index entry order/formatting.
+
+    Quarto's full traversal and selected-page updates may serialize global
+    indexes in different orders. All entries, fields and timestamps remain
+    part of this comparison; HTML and every other asset stay byte-exact.
+    """
+    result = smart.inventory(site)
+    search = json.loads((site / "search.json").read_text())
+    result["search.json"] = sorted(json.dumps(row, sort_keys=True, ensure_ascii=False) for row in search)
+    sitemap = ET.parse(site / "sitemap.xml").getroot()
+    def element(node):
+        return (node.tag, sorted(node.attrib.items()), (node.text or "").strip(),
+                sorted(element(child) for child in node))
+    result["sitemap.xml"] = element(sitemap)
+    return result
 
 
 def main():
@@ -70,9 +89,9 @@ def main():
             assert "MA_SMART_SHARED_MARKER" in (checkout / "_site" / name).read_text()
         assert "MA_SMART_BODY_MARKER" in (checkout / "_site/search.json").read_text()
         complete = smart.build(reference, force_full=True)
-        inc = smart.inventory(checkout / "_site")
-        full = smart.inventory(reference / "_site")
-        assert inc == full, {"different": [p for p in inc if inc.get(p) != full.get(p)]}
+        inc = comparable_inventory(checkout / "_site")
+        full = comparable_inventory(reference / "_site")
+        assert inc == full, {"different": {p: {"incremental": inc.get(p), "full": full.get(p)} for p in set(inc) | set(full) if inc.get(p) != full.get(p)}}
         smart.seal(checkout)
         # Corruption must be rejected, followed by a fresh complete rebuild.
         (checkout / "_site/second.html").unlink()
@@ -89,7 +108,7 @@ def main():
         assert not (checkout / "_site/second.html").exists()
         assert "#456" in (checkout / "_site/styles.css").read_text()
         result = {"verdict": "PASS", "restored_archive": True, "cumulative_commits": 2,
-                  "shared_include_consumers": 2, "exact_file_equivalence": True,
+                  "shared_include_consumers": 2, "byte_exact_assets_and_html": True, "complete_index_content_equivalence": True,
                   "corrupt_base_fallback": True, "deleted_output_removed": True,
                   "seconds": {"incremental": incremental["seconds"], "full": complete["seconds"]}}
         print(json.dumps(result, indent=2))

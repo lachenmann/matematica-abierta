@@ -62,6 +62,7 @@ jobs:
           python -m http.server 8765 --directory _site > "$RUNNER_TEMP/fda-server.log" 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
+          curl --fail --silent --show-error --retry 20 --retry-delay 1 --retry-connrefused http://127.0.0.1:8765/libros/otros/la-demostracion-admirable/index.html -o /dev/null
           node tests/fda_web_browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()

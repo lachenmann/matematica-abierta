@@ -7,7 +7,7 @@ collection: PM-ALG
 editorial-project: APM
 status: published
 date-created: 2026-09-12
-date-modified: 2026-10-09
+date-modified: 2026-10-21
 areas:
   - algebra
   - fundamentos
@@ -48,6 +48,28 @@ related:
   - MA-BCH-0199
   - MA-BCH-0200
   - MA-BCH-0201
+  - MA-BCH-0372
+  - MA-BCH-0373
+  - MA-BCH-0374
+  - MA-BCH-0375
+  - MA-BCH-0376
+  - MA-BCH-0377
+  - MA-BCH-0378
+  - MA-BCH-0379
+  - MA-BCH-0380
+  - MA-BCH-0381
+  - MA-BCH-0382
+  - MA-BCH-0383
+  - MA-BCH-0384
+  - MA-BCH-0385
+  - MA-BCH-0386
+  - MA-BCH-0387
+  - MA-BCH-0388
+  - MA-BCH-0389
+  - MA-BCH-0390
+  - MA-BCH-0391
+  - MA-BCH-0392
+  - MA-BCH-0393
 provenance:
   type: original
   sources: []
@@ -159,6 +181,12 @@ Sus 26 capítulos recorren pensamiento algebraico, expresiones y leyes de las op
 
     92 ejercicios y soluciones.
 
+## Tomo II — Álgebra lineal y transformaciones
+
+El segundo tomo está publicado completo: **20 capítulos, 808 ejercicios con sus soluciones y 78 figuras**.
+
+[**Abrir el índice y leer el tomo II**](/libros/para-matematicos/algebra-para-matematicos-tomo-ii.md).
+
 ## Criterio de publicación
 
 La fuente canónica de la obra se mantiene en el manuscrito editorial de Matemática Abierta. La edición web deriva cada capítulo cerrado a **un único archivo Markdown público**, evitando cadenas de fragmentos o reconstrucciones paralelas.
@@ -169,3 +197,6 @@ Los ejercicios sustanciales incluyen soluciones desarrolladas en el propio capí
 
 La segunda fundación editorial de la obra está activa. El Tomo I tiene cerrados y aprobados sus 26 capítulos, con 2352 ejercicios y sus soluciones desarrolladas; el manuscrito completo ha superado el QA matemático y pedagógico integral. La edición web reúne los 26 capítulos del Tomo I, con sus 2352 ejercicios y soluciones desarrolladas.
 
+
+
+El tomo II está disponible íntegramente en la web, con sus veinte capítulos, convenciones de lectura, bibliografía y soluciones desarrolladas.

@@ -1,13 +1,20 @@
-"""Run the full APM browser battery when APM or its shared presentation changes."""
+"""Run the Tomo I browser battery when its chapters or shared presentation change."""
 from pathlib import Path
 import subprocess,json,argparse
 
 COMMON={"_brand.yml","styles.scss","paper.scss","brand.scss","libros/_metadata.yml",
  "assets/books/reader.css","tools/smart_render.py","tests/apm_tome_browser.py",
- "data/apm-tome-i-manifest.json","libros/para-matematicos/algebra-para-matematicos.md"}
+ "data/apm-tome-i-manifest.json"}
 
 def required(changed,chapter_paths,old_config,new_config):
  for name in changed:
+  # Tomo II has a complete independent browser battery, including both indexes.
+  # Neither its chapter pages nor the shared landing change Tomo I composition.
+  if name.startswith(("libros/capitulos/algebra-para-matematicos-tomo-ii",
+                      "libros/para-matematicos/algebra-para-matematicos-tomo-ii")):
+   continue
+  if name == "libros/para-matematicos/algebra-para-matematicos.md":
+   continue
   if name in COMMON or name in chapter_paths:return True
   if name.startswith(('assets/books/apm-tomo-i/','assets/includes/','assets/brand/')):return True
   if name.startswith('libros/capitulos/algebra-para-matematicos'):return True
