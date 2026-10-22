@@ -98,8 +98,10 @@ El libro ofrece el recorrido pedagógico. [Conceptos](../../conceptos/index.qmd)
 
 Edición revisada del **16 de octubre de 2026**, firmada por **A. Peña**. Ambos PDF contienen los veinte capítulos y los ochocientos ejercicios con sus soluciones.
 
-- [PDF A4 para lectura digital](../../assets/books/cpm-tomo-i/downloads/Calculo_para_matematicos_Tomo_I_amsbook.pdf).
-- [PDF carta para impresión](../../assets/books/cpm-tomo-i/downloads/Calculo_para_matematicos_Tomo_I_carta_amsbook.pdf).
+**Cubiertas oficiales de la colección · 22 de octubre de 2026.**
+
+- [PDF A4 para lectura digital](../../assets/books/para-matematicos/downloads/cubiertas-v01/CPM_I_A4_Cubierta_Oficial_v01.pdf){download="CPM_I_A4_Cubierta_Oficial_v01.pdf"} — 1.348 páginas.
+- [PDF Carta para impresión](../../assets/books/para-matematicos/downloads/cubiertas-v01/CPM_I_Carta_Cubierta_Oficial_v01.pdf){download="CPM_I_Carta_Cubierta_Oficial_v01.pdf"} — 1.433 páginas.
 - [Proyecto LaTeX completo para Overleaf](../../assets/books/cpm-tomo-i/downloads/Calculo_para_matematicos_Tomo_I_Overleaf_amsbook.zip).
 
 ## Bibliografía del Tomo I

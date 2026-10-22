@@ -158,6 +158,15 @@ La demostración matemática comienza después de declarar las premisas físicas
 
 **Edición ilustrada v04 · 17 de octubre de 2026.** Los 30 capítulos se leen íntegramente en la web, con 900 ejercicios y sus soluciones y 176 figuras vectoriales. Las figuras se pueden ampliar para examinar sus detalles.
 
+### PDF con cubierta oficial
+
+Cubierta de la colección incorporada el 22 de octubre de 2026 a la **edición archivada v04**.
+
+- [PDF A4 para lectura digital](../../assets/books/para-matematicos/downloads/cubiertas-v01/FPM_I_A4_Cubierta_Oficial_v01.pdf){download="FPM_I_A4_Cubierta_Oficial_v01.pdf"} — 1.140 páginas.
+- [PDF Carta para impresión](../../assets/books/para-matematicos/downloads/cubiertas-v01/FPM_I_Carta_Cubierta_Oficial_v01.pdf){download="FPM_I_Carta_Cubierta_Oficial_v01.pdf"} — 1.230 páginas.
+
+### Archivos de la edición v04 original
+
 - [PDF A4 para lectura](/assets/books/fispm/downloads/v04/FPM_Tomo_I_Lectura_A4_AMSBook_CM_v04.pdf) (1140 páginas).
 - [PDF carta para impresión](/assets/books/fispm/downloads/v04/FPM_Tomo_I_Impresion_Carta_AMSBook_CM_v04.pdf) (1230 páginas).
 - [Proyecto LaTeX completo para Overleaf](/assets/books/fispm/downloads/v04/FPM_Tomo_I_AMSBook_CM_Illustrado_Overleaf_v04.zip).
