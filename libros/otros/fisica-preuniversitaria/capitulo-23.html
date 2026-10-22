@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+
+<title>23. Laboratorio de modelización, datos y problemas integradores – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-cb076892e24e5ecd918925b139627211.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-a27ce7592f35ccc06b5fae55f34b11f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#de-una-pregunta-a-un-procedimiento-de-medida" id="toc-de-una-pregunta-a-un-procedimiento-de-medida" class="nav-link active" data-scroll-target="#de-una-pregunta-a-un-procedimiento-de-medida">De una pregunta a un procedimiento de medida</a>
+  <ul class="collapse">
+  <li><a href="#r23-1" id="toc-r23-1" class="nav-link" data-scroll-target="#r23-1">Problema resuelto 23.1 · Convertir una pregunta sobre el péndulo en un protocolo</a></li>
+  <li><a href="#r23-2" id="toc-r23-2" class="nav-link" data-scroll-target="#r23-2">Problema resuelto 23.2 · Estimar la repetibilidad del cronometraje</a></li>
+  </ul></li>
+  <li><a href="#tablas-transformaciones-y-gráficas-fieles" id="toc-tablas-transformaciones-y-gráficas-fieles" class="nav-link" data-scroll-target="#tablas-transformaciones-y-gráficas-fieles">Tablas, transformaciones y gráficas fieles</a>
+  <ul class="collapse">
+  <li><a href="#r23-3" id="toc-r23-3" class="nav-link" data-scroll-target="#r23-3">Problema resuelto 23.3 · Representar una medición con su incertidumbre</a></li>
+  <li><a href="#r23-4" id="toc-r23-4" class="nav-link" data-scroll-target="#r23-4">Problema resuelto 23.4 · Integrar una gráfica de velocidad muestreada</a></li>
+  </ul></li>
+  <li><a href="#ajuste-lineal-parámetros-y-residuos" id="toc-ajuste-lineal-parámetros-y-residuos" class="nav-link" data-scroll-target="#ajuste-lineal-parámetros-y-residuos">Ajuste lineal, parámetros y residuos</a>
+  <ul class="collapse">
+  <li><a href="#r23-5" id="toc-r23-5" class="nav-link" data-scroll-target="#r23-5">Problema resuelto 23.5 · Estimar g a partir de cinco puntos</a></li>
+  <li><a href="#r23-6" id="toc-r23-6" class="nav-link" data-scroll-target="#r23-6">Problema resuelto 23.6 · Examinar residuos y dispersión del ajuste</a></li>
+  <li><a href="#r23-7" id="toc-r23-7" class="nav-link" data-scroll-target="#r23-7">Problema resuelto 23.7 · Comparar una recta libre con una recta por el origen</a></li>
+  </ul></li>
+  <li><a href="#incertidumbres-de-magnitudes-indirectas" id="toc-incertidumbres-de-magnitudes-indirectas" class="nav-link" data-scroll-target="#incertidumbres-de-magnitudes-indirectas">Incertidumbres de magnitudes indirectas</a>
+  <ul class="collapse">
+  <li><a href="#r23-8" id="toc-r23-8" class="nav-link" data-scroll-target="#r23-8">Problema resuelto 23.8 · Combinar dos longitudes independientes</a></li>
+  <li><a href="#r23-9" id="toc-r23-9" class="nav-link" data-scroll-target="#r23-9">Problema resuelto 23.9 · Obtener densidad e incertidumbre de un cilindro</a></li>
+  <li><a href="#r23-10" id="toc-r23-10" class="nav-link" data-scroll-target="#r23-10">Problema resuelto 23.10 · Reconocer una contribución común que se cancela</a></li>
+  </ul></li>
+  <li><a href="#dimensiones-límites-y-comparación-de-modelos" id="toc-dimensiones-límites-y-comparación-de-modelos" class="nav-link" data-scroll-target="#dimensiones-límites-y-comparación-de-modelos">Dimensiones, límites y comparación de modelos</a>
+  <ul class="collapse">
+  <li><a href="#r23-11" id="toc-r23-11" class="nav-link" data-scroll-target="#r23-11">Problema resuelto 23.11 · Examinar dos expresiones para el período</a></li>
+  <li><a href="#r23-12" id="toc-r23-12" class="nav-link" data-scroll-target="#r23-12">Problema resuelto 23.12 · Distinguir modelos con los mismos límites</a></li>
+  </ul></li>
+  <li><a href="#integración-numérica-y-estudio-de-convergencia" id="toc-integración-numérica-y-estudio-de-convergencia" class="nav-link" data-scroll-target="#integración-numérica-y-estudio-de-convergencia">Integración numérica y estudio de convergencia</a>
+  <ul class="collapse">
+  <li><a href="#r23-13" id="toc-r23-13" class="nav-link" data-scroll-target="#r23-13">Problema resuelto 23.13 · Probar convergencia en caída con aceleración constante</a></li>
+  <li><a href="#r23-14" id="toc-r23-14" class="nav-link" data-scroll-target="#r23-14">Problema resuelto 23.14 · Integrar una caída con rozamiento lineal</a></li>
+  <li><a href="#r23-15" id="toc-r23-15" class="nav-link" data-scroll-target="#r23-15">Problema resuelto 23.15 · Usar la energía como control de un algoritmo</a></li>
+  </ul></li>
+  <li><a href="#una-serie-observada-calibración-de-instrumentos" id="toc-una-serie-observada-calibración-de-instrumentos" class="nav-link" data-scroll-target="#una-serie-observada-calibración-de-instrumentos">Una serie observada: calibración de instrumentos</a>
+  <ul class="collapse">
+  <li><a href="#r23-16" id="toc-r23-16" class="nav-link" data-scroll-target="#r23-16">Problema resuelto 23.16 · Reproducir un ajuste con datos públicos</a></li>
+  <li><a href="#r23-17" id="toc-r23-17" class="nav-link" data-scroll-target="#r23-17">Problema resuelto 23.17 · Invertir una relación de calibración</a></li>
+  </ul></li>
+  <li><a href="#una-conclusión-que-otra-persona-pueda-reconstruir" id="toc-una-conclusión-que-otra-persona-pueda-reconstruir" class="nav-link" data-scroll-target="#una-conclusión-que-otra-persona-pueda-reconstruir">Una conclusión que otra persona pueda reconstruir</a>
+  <ul class="collapse">
+  <li><a href="#r23-18" id="toc-r23-18" class="nav-link" data-scroll-target="#r23-18">Problema resuelto 23.18 · Redactar una conclusión con sus condiciones</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-para-desarrollar-autonomía" id="toc-ejercicios-para-desarrollar-autonomía" class="nav-link" data-scroll-target="#ejercicios-para-desarrollar-autonomía">Ejercicios para desarrollar autonomía</a>
+  <ul class="collapse">
+  <li><a href="#e23-1" id="toc-e23-1" class="nav-link" data-scroll-target="#e23-1">Ejercicio 23.1 · Precisar una variable experimental</a></li>
+  <li><a href="#e23-2" id="toc-e23-2" class="nav-link" data-scroll-target="#e23-2">Ejercicio 23.2 · Estimar una media y su incertidumbre</a></li>
+  <li><a href="#e23-3" id="toc-e23-3" class="nav-link" data-scroll-target="#e23-3">Ejercicio 23.3 · Interpretar la resolución de una regla</a></li>
+  <li><a href="#e23-4" id="toc-e23-4" class="nav-link" data-scroll-target="#e23-4">Ejercicio 23.4 · Transformar una barra de incertidumbre</a></li>
+  <li><a href="#e23-5" id="toc-e23-5" class="nav-link" data-scroll-target="#e23-5">Ejercicio 23.5 · Integrar velocidades discretas</a></li>
+  <li><a href="#e23-6" id="toc-e23-6" class="nav-link" data-scroll-target="#e23-6">Ejercicio 23.6 · Hallar una pendiente con unidades</a></li>
+  <li><a href="#e23-7" id="toc-e23-7" class="nav-link" data-scroll-target="#e23-7">Ejercicio 23.7 · Calcular e interpretar un residuo</a></li>
+  <li><a href="#e23-8" id="toc-e23-8" class="nav-link" data-scroll-target="#e23-8">Ejercicio 23.8 · Propagar la incertidumbre de una pendiente</a></li>
+  <li><a href="#e23-9" id="toc-e23-9" class="nav-link" data-scroll-target="#e23-9">Ejercicio 23.9 · Examinar una extrapolación</a></li>
+  <li><a href="#e23-10" id="toc-e23-10" class="nav-link" data-scroll-target="#e23-10">Ejercicio 23.10 · Combinar dos mediciones independientes</a></li>
+  <li><a href="#e23-11" id="toc-e23-11" class="nav-link" data-scroll-target="#e23-11">Ejercicio 23.11 · Calcular una incertidumbre de área</a></li>
+  <li><a href="#e23-12" id="toc-e23-12" class="nav-link" data-scroll-target="#e23-12">Ejercicio 23.12 · Reconocer la sensibilidad de una potencia</a></li>
+  <li><a href="#e23-13" id="toc-e23-13" class="nav-link" data-scroll-target="#e23-13">Ejercicio 23.13 · Cambiar una contribución común</a></li>
+  <li><a href="#e23-14" id="toc-e23-14" class="nav-link" data-scroll-target="#e23-14">Ejercicio 23.14 · Comprobar dimensiones y escala</a></li>
+  <li><a href="#e23-15" id="toc-e23-15" class="nav-link" data-scroll-target="#e23-15">Ejercicio 23.15 · Usar un límite terminal</a></li>
+  <li><a href="#e23-16" id="toc-e23-16" class="nav-link" data-scroll-target="#e23-16">Ejercicio 23.16 · Dar los primeros pasos de Euler</a></li>
+  <li><a href="#e23-17" id="toc-e23-17" class="nav-link" data-scroll-target="#e23-17">Ejercicio 23.17 · Estimar una tolerancia de paso</a></li>
+  <li><a href="#e23-18" id="toc-e23-18" class="nav-link" data-scroll-target="#e23-18">Ejercicio 23.18 · Comparar errores de dos mallas</a></li>
+  <li><a href="#e23-19" id="toc-e23-19" class="nav-link" data-scroll-target="#e23-19">Ejercicio 23.19 · Examinar estabilidad en rozamiento lineal</a></li>
+  <li><a href="#e23-20" id="toc-e23-20" class="nav-link" data-scroll-target="#e23-20">Ejercicio 23.20 · Calcular una deriva energética</a></li>
+  <li><a href="#e23-21" id="toc-e23-21" class="nav-link" data-scroll-target="#e23-21">Ejercicio 23.21 · Revisar un par de datos observados</a></li>
+  <li><a href="#e23-22" id="toc-e23-22" class="nav-link" data-scroll-target="#e23-22">Ejercicio 23.22 · Aplicar una calibración sencilla</a></li>
+  <li><a href="#e23-23" id="toc-e23-23" class="nav-link" data-scroll-target="#e23-23">Ejercicio 23.23 · Separar dispersión y contribución común</a></li>
+  <li><a href="#e23-24" id="toc-e23-24" class="nav-link" data-scroll-target="#e23-24">Ejercicio 23.24 · Hacer reconstruible una conclusión</a></li>
+  </ul></li>
+  <li><a href="#soluciones-razonadas" id="toc-soluciones-razonadas" class="nav-link" data-scroll-target="#soluciones-razonadas">Soluciones razonadas</a>
+  <ul class="collapse">
+  <li><a href="#sol-e23-1" id="toc-sol-e23-1" class="nav-link" data-scroll-target="#sol-e23-1">Solución 23.1</a></li>
+  <li><a href="#sol-e23-2" id="toc-sol-e23-2" class="nav-link" data-scroll-target="#sol-e23-2">Solución 23.2</a></li>
+  <li><a href="#sol-e23-3" id="toc-sol-e23-3" class="nav-link" data-scroll-target="#sol-e23-3">Solución 23.3</a></li>
+  <li><a href="#sol-e23-4" id="toc-sol-e23-4" class="nav-link" data-scroll-target="#sol-e23-4">Solución 23.4</a></li>
+  <li><a href="#sol-e23-5" id="toc-sol-e23-5" class="nav-link" data-scroll-target="#sol-e23-5">Solución 23.5</a></li>
+  <li><a href="#sol-e23-6" id="toc-sol-e23-6" class="nav-link" data-scroll-target="#sol-e23-6">Solución 23.6</a></li>
+  <li><a href="#sol-e23-7" id="toc-sol-e23-7" class="nav-link" data-scroll-target="#sol-e23-7">Solución 23.7</a></li>
+  <li><a href="#sol-e23-8" id="toc-sol-e23-8" class="nav-link" data-scroll-target="#sol-e23-8">Solución 23.8</a></li>
+  <li><a href="#sol-e23-9" id="toc-sol-e23-9" class="nav-link" data-scroll-target="#sol-e23-9">Solución 23.9</a></li>
+  <li><a href="#sol-e23-10" id="toc-sol-e23-10" class="nav-link" data-scroll-target="#sol-e23-10">Solución 23.10</a></li>
+  <li><a href="#sol-e23-11" id="toc-sol-e23-11" class="nav-link" data-scroll-target="#sol-e23-11">Solución 23.11</a></li>
+  <li><a href="#sol-e23-12" id="toc-sol-e23-12" class="nav-link" data-scroll-target="#sol-e23-12">Solución 23.12</a></li>
+  <li><a href="#sol-e23-13" id="toc-sol-e23-13" class="nav-link" data-scroll-target="#sol-e23-13">Solución 23.13</a></li>
+  <li><a href="#sol-e23-14" id="toc-sol-e23-14" class="nav-link" data-scroll-target="#sol-e23-14">Solución 23.14</a></li>
+  <li><a href="#sol-e23-15" id="toc-sol-e23-15" class="nav-link" data-scroll-target="#sol-e23-15">Solución 23.15</a></li>
+  <li><a href="#sol-e23-16" id="toc-sol-e23-16" class="nav-link" data-scroll-target="#sol-e23-16">Solución 23.16</a></li>
+  <li><a href="#sol-e23-17" id="toc-sol-e23-17" class="nav-link" data-scroll-target="#sol-e23-17">Solución 23.17</a></li>
+  <li><a href="#sol-e23-18" id="toc-sol-e23-18" class="nav-link" data-scroll-target="#sol-e23-18">Solución 23.18</a></li>
+  <li><a href="#sol-e23-19" id="toc-sol-e23-19" class="nav-link" data-scroll-target="#sol-e23-19">Solución 23.19</a></li>
+  <li><a href="#sol-e23-20" id="toc-sol-e23-20" class="nav-link" data-scroll-target="#sol-e23-20">Solución 23.20</a></li>
+  <li><a href="#sol-e23-21" id="toc-sol-e23-21" class="nav-link" data-scroll-target="#sol-e23-21">Solución 23.21</a></li>
+  <li><a href="#sol-e23-22" id="toc-sol-e23-22" class="nav-link" data-scroll-target="#sol-e23-22">Solución 23.22</a></li>
+  <li><a href="#sol-e23-23" id="toc-sol-e23-23" class="nav-link" data-scroll-target="#sol-e23-23">Solución 23.23</a></li>
+  <li><a href="#sol-e23-24" id="toc-sol-e23-24" class="nav-link" data-scroll-target="#sol-e23-24">Solución 23.24</a></li>
+  </ul></li>
+  <li><a href="#una-experiencia-un-pequeño-estudio-reproducible-del-péndulo" id="toc-una-experiencia-un-pequeño-estudio-reproducible-del-péndulo" class="nav-link" data-scroll-target="#una-experiencia-un-pequeño-estudio-reproducible-del-péndulo">Una experiencia: un pequeño estudio reproducible del péndulo</a>
+  <ul class="collapse">
+  <li><a href="#de-los-registros-propios-a-una-conclusión-revisable" id="toc-de-los-registros-propios-a-una-conclusión-revisable" class="nav-link" data-scroll-target="#de-los-registros-propios-a-una-conclusión-revisable">De los registros propios a una conclusión revisable</a></li>
+  </ul></li>
+  <li><a href="#diagnóstico-de-cierre-del-recorrido" id="toc-diagnóstico-de-cierre-del-recorrido" class="nav-link" data-scroll-target="#diagnóstico-de-cierre-del-recorrido">Diagnóstico de cierre del recorrido</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">23. Laboratorio de modelización, datos y problemas integradores</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="capitulo-22.html">← Capítulo anterior</a> · <a href="index.html">Índice del libro</a></p>
+<p>Dos grupos pueden medir el mismo péndulo y obtener valores ligeramente distintos de la aceleración gravitatoria. Para entender la diferencia hace falta reconstruir sus mediciones: qué longitud tomaron, cómo contaron las oscilaciones, qué instrumentos usaron y qué relación eligieron para calcular el resultado. La conclusión adquiere fuerza cuando esos pasos quedan disponibles para otra persona.</p>
+<p>Este capítulo reúne herramientas desarrolladas a lo largo del libro y las lleva a una investigación pequeña. El péndulo permitirá estudiar mediciones y ajustes; una serie pública de calibración aportará datos observados; la caída de un cuerpo servirá para comprobar algoritmos. Los ejemplos didácticos usan datos construidos y los identifican expresamente. El trabajo experimental del lector producirá sus propios registros y sus propias conclusiones.</p>
+<section id="de-una-pregunta-a-un-procedimiento-de-medida" class="level2">
+<h2 class="anchored" data-anchor-id="de-una-pregunta-a-un-procedimiento-de-medida">De una pregunta a un procedimiento de medida</h2>
+<p>Una pregunta experimental se vuelve operacional cuando precisa una magnitud que se medirá, una variable que se modificará y condiciones que se mantendrán controladas. Para un péndulo simple, la pregunta puede ser: ¿cómo depende el período de la longitud efectiva, al mantener pequeña la amplitud angular? La longitud efectiva va desde el punto de suspensión hasta el centro de masas de la pesa. El período es el tiempo de una oscilación completa, con regreso a la misma posición y sentido de movimiento.</p>
+<p>El modelo de pequeña amplitud relaciona ambas magnitudes mediante <span class="math inline">\(T=2\pi\sqrt{L/g}\)</span>. Supone una pesa de dimensiones pequeñas frente a <span class="math inline">\(L\)</span>, un hilo de masa despreciable, un soporte estable y pérdidas débiles durante la medida. Una amplitud inicial próxima a cinco grados facilita esa aproximación. Conviene registrar también la amplitud para valorar su posible influencia. La pesa debe ser ligera, estar sujeta a un soporte firme y oscilar sobre una zona despejada.</p>
+<p>En el capítulo 1 expresamos la información de medición mediante intervalos compatibles. En <span class="math inline">\((10{,}0\pm0{,}2)\,\mathrm{cm}\)</span>, la semianchura de <span class="math inline">\(0{,}2\,\mathrm{cm}\)</span> delimita el intervalo adoptado. Al sumar longitudes con cotas de <span class="math inline">\(0{,}2\)</span> y <span class="math inline">\(0{,}3\,\mathrm{cm}\)</span>, la suma tiene una cota conservadora de <span class="math inline">\(0{,}5\,\mathrm{cm}\)</span>. En este capítulo describimos la incertidumbre estándar mediante desviaciones estándar: para estimaciones independientes con incertidumbres estándar de <span class="math inline">\(0{,}2\)</span> y <span class="math inline">\(0{,}3\,\mathrm{cm}\)</span>, la suma tiene <span class="math inline">\(u=\sqrt{0{,}2^2+0{,}3^2}\,\mathrm{cm}\simeq0{,}36\,\mathrm{cm}\)</span>. Las contribuciones correlacionadas incorporan <span class="math inline">\(2\operatorname{cov}(x,y)\)</span> a la varianza de la suma. Una cota se convierte en incertidumbre estándar al adoptar una distribución: para una uniforme de semianchura <span class="math inline">\(a\)</span>, <span class="math inline">\(u=a/\sqrt3\)</span>. Una contribución de calibración común permanece al repetir la medida. Cada informe precisa la interpretación de <span class="math inline">\(\pm\)</span> y las hipótesis que sostienen su cálculo.</p>
+<section id="r23-1" class="level3">
+<h3 class="anchored" data-anchor-id="r23-1">Problema resuelto 23.1 · Convertir una pregunta sobre el péndulo en un protocolo</h3>
+<p>Se dispone de una regla, un cronómetro y un péndulo con longitud cercana a un metro. Propón una medición del período y distingue variables y controles. <em>Resolución.</em> Se mide <span class="math inline">\(L\)</span> hasta el centro de la pesa y se registra el tiempo <span class="math inline">\(t_{20}\)</span> de veinte oscilaciones completas. Se calcula <span class="math inline">\(T=t_{20}/20\)</span>. Para estudiar la dependencia con <span class="math inline">\(L\)</span> se eligen varias longitudes, conservando la pesa, el soporte y una amplitud inicial próxima a cinco grados. Se repite cada cronometraje, se anota el instrumento y se describe el criterio de inicio y final. El promedio temporal y la dispersión permitirán caracterizar la repetibilidad.</p>
+<div id="fig-fp-av-r23-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.1 · Convertir una pregunta sobre el péndulo en un protocolo. En el capítulo 1 expresamos la información de medición mediante intervalos compatibles. En (10,0pm0,2)\,cm, la semianchura de 0,2\,cm delimita el intervalo adoptado. Al sumar longitudes con cotas de 0,2 y 0,3\,cm, la suma tiene una cota conservadora de 0,5\,cm. En este capítulo describimos la incertidumbre estándar">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-1.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.1 · Convertir una pregunta sobre el péndulo en un protocolo. En el capítulo 1 expresamos la información de medición mediante intervalos compatibles. En (10,0pm0,2)\,cm, la semianchura de 0,2\,cm delimita el intervalo adoptado. Al sumar longitudes con cotas de 0,2 y 0,3\,cm, la suma tiene una cota conservadora de 0,5\,cm. En este capítulo describimos la incertidumbre estándar">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Apoyo visual: Problema resuelto 23.1 · Convertir una pregunta sobre el péndulo en un protocolo.
+</figcaption>
+</figure>
+</div>
+<p>Una observación registra un resultado: una longitud, una lectura o una secuencia de posiciones. La explicación vincula esos registros con un modelo. En el experimento, un período mayor al aumentar <span class="math inline">\(L\)</span> constituye una tendencia observada. La ecuación del péndulo propone una relación cuantitativa que permite contrastar esa tendencia. Conservar ambas capas de información ayuda a revisar el razonamiento.</p>
+<p>Para <span class="math inline">\(n\)</span> repeticiones independientes <span class="math inline">\(t_i\)</span>, la media es <span class="math inline">\(\bar t=(\sum t_i)/n\)</span>, la desviación muestral es <span class="math inline">\(s_t=\sqrt{\sum(t_i-\bar t)^2/(n-1)}\)</span> y la incertidumbre estándar de la media debida a repetibilidad es <span class="math inline">\(u_{\bar t}=s_t/\sqrt n\)</span>. El factor <span class="math inline">\(\sqrt n\)</span> corresponde a esa componente aleatoria. Las contribuciones comunes de calibración, longitud o procedimiento requieren estimaciones propias.</p>
+</section>
+<section id="r23-2" class="level3">
+<h3 class="anchored" data-anchor-id="r23-2">Problema resuelto 23.2 · Estimar la repetibilidad del cronometraje</h3>
+<p>En un ejemplo didáctico construido, cinco tiempos de veinte oscilaciones son <span class="math inline">\(40{,}10\)</span>, <span class="math inline">\(40{,}20\)</span>, <span class="math inline">\(40{,}30\)</span>, <span class="math inline">\(40{,}20\)</span> y <span class="math inline">\(40{,}20\,\mathrm{s}\)</span>. Calcula la media, la desviación muestral y la componente de incertidumbre de <span class="math inline">\(T\)</span> asociada a la media temporal. <em>Resolución.</em> La media es <span class="math inline">\(\bar t=40{,}20\,\mathrm{s}\)</span>. La suma de desviaciones cuadradas es <span class="math inline">\(0{,}0200\,\mathrm{s^2}\)</span>, de modo que <span class="math inline">\(s_t=0{,}0707\,\mathrm{s}\)</span> y <span class="math inline">\(u_{\bar t}=0{,}0316\,\mathrm{s}\)</span>. Al dividir por veinte, <span class="math display">\[
+T=2{,}0100\,\mathrm{s},\qquad u_T=\frac{0{,}0316}{20}\simeq0{,}0016\,\mathrm{s}.
+\]</span> El resultado temporal, considerando esta componente, se expresa como <span class="math inline">\((2{,}0100\pm0{,}0016)\,\mathrm{s}\)</span>. Las cifras adicionales permiten mostrar la estimación de repetibilidad; una evaluación completa incorporará las demás contribuciones.</p>
+<div id="fig-fp-av-r23-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.2 · Estimar la repetibilidad del cronometraje. Para n repeticiones independientes ti, la media es bar t=(sum ti)/n, la desviación muestral es st=sqrtsum(ti-bar t)^2/(n-1) y la incertidumbre estándar de la media debida a repetibilidad es ubar t=st/sqrt n. El factor sqrt n corresponde a esa componente aleatoria. Las contribuciones comunes de calibración, longitud o">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-2.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.2 · Estimar la repetibilidad del cronometraje. Para n repeticiones independientes ti, la media es bar t=(sum ti)/n, la desviación muestral es st=sqrtsum(ti-bar t)^2/(n-1) y la incertidumbre estándar de la media debida a repetibilidad es ubar t=st/sqrt n. El factor sqrt n corresponde a esa componente aleatoria. Las contribuciones comunes de calibración, longitud o">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Apoyo visual: Problema resuelto 23.2 · Estimar la repetibilidad del cronometraje.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="tablas-transformaciones-y-gráficas-fieles" class="level2">
+<h2 class="anchored" data-anchor-id="tablas-transformaciones-y-gráficas-fieles">Tablas, transformaciones y gráficas fieles</h2>
+<p>Una tabla de trabajo conserva los registros originales, las unidades y las transformaciones usadas. Para el péndulo conviene guardar <span class="math inline">\(L\)</span>, cada tiempo de varias oscilaciones, el número de oscilaciones y las estimaciones de incertidumbre. A partir de ellos se calculan <span class="math inline">\(T\)</span> y <span class="math inline">\(T^2\)</span>. La relación esperada se vuelve lineal al representar <span class="math inline">\(T^2\)</span> frente a <span class="math inline">\(L\)</span>: <span class="math display">\[
+T^2=\frac{4\pi^2}{g}L.
+\]</span> Esta transformación conserva la relación física y modifica la escala de incertidumbre de la variable vertical. Para incertidumbres pequeñas, <span class="math inline">\(u_{T^2}\simeq2|T|u_T\)</span>. El resultado procede de la sensibilidad de <span class="math inline">\(T^2\)</span> ante un pequeño cambio de <span class="math inline">\(T\)</span>.</p>
+<section id="r23-3" class="level3">
+<h3 class="anchored" data-anchor-id="r23-3">Problema resuelto 23.3 · Representar una medición con su incertidumbre</h3>
+<p>Para un punto didáctico, <span class="math inline">\(L=(0{,}800\pm0{,}002)\,\mathrm{m}\)</span> y <span class="math inline">\(T=(1{,}800\pm0{,}010)\,\mathrm{s}\)</span>, donde las incertidumbres son estándar. Obtén el punto y las barras para la gráfica <span class="math inline">\(T^2\)</span> frente a <span class="math inline">\(L\)</span>. <em>Resolución.</em> Se calcula <span class="math inline">\(T^2=3{,}240\,\mathrm{s^2}\)</span> y <span class="math inline">\(u_{T^2}\simeq2(1{,}800)(0{,}010)=0{,}036\,\mathrm{s^2}\)</span>. El punto es <span class="math inline">\((0{,}800\,\mathrm{m},3{,}240\,\mathrm{s^2})\)</span>, con barra horizontal de semiancho <span class="math inline">\(0{,}002\,\mathrm{m}\)</span> y vertical de semiancho <span class="math inline">\(0{,}036\,\mathrm{s^2}\)</span>. Estas barras representan incertidumbres estándar de las coordenadas. Su interpretación probabilística completa depende de las distribuciones y del procedimiento de estimación.</p>
+<div id="fig-fp-av-r23-3" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.3 · Representar una medición con su incertidumbre. Una tabla de trabajo conserva los registros originales, las unidades y las transformaciones usadas. Para el péndulo conviene guardar L, cada tiempo de varias oscilaciones, el número de oscilaciones y las estimaciones de incertidumbre. A partir de ellos se calculan T y T^2. La relación esperada se vuelve lineal al">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-3.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.3 · Representar una medición con su incertidumbre. Una tabla de trabajo conserva los registros originales, las unidades y las transformaciones usadas. Para el péndulo conviene guardar L, cada tiempo de varias oscilaciones, el número de oscilaciones y las estimaciones de incertidumbre. A partir de ellos se calculan T y T^2. La relación esperada se vuelve lineal al">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Apoyo visual: Problema resuelto 23.3 · Representar una medición con su incertidumbre.
+</figcaption>
+</figure>
+</div>
+<p>Los ejes identifican magnitud y unidad; la escala debe permitir distinguir los datos y su incertidumbre. Los puntos medidos se muestran como tales. Una línea puede representar un modelo ajustado o una interpolación declarada. La superficie bajo una gráfica de velocidad frente a tiempo tiene además una interpretación física: el desplazamiento. Con datos discretos, una aproximación por trapecios supone variación lineal entre mediciones contiguas.</p>
+</section>
+<section id="r23-4" class="level3">
+<h3 class="anchored" data-anchor-id="r23-4">Problema resuelto 23.4 · Integrar una gráfica de velocidad muestreada</h3>
+<p>Una serie construida da <span class="math inline">\(v=1{,}0\)</span>, <span class="math inline">\(3{,}1\)</span>, <span class="math inline">\(4{,}9\)</span> y <span class="math inline">\(7{,}0\,\mathrm{m/s}\)</span> en <span class="math inline">\(t=0\)</span>, <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span> y <span class="math inline">\(3\,\mathrm{s}\)</span>. Estima el desplazamiento mediante trapecios. <em>Resolución.</em> Cada intervalo dura un segundo. Por tanto, <span class="math display">\[
+\Delta x\simeq\frac{1{,}0+3{,}1}{2}(1)
++\frac{3{,}1+4{,}9}{2}(1)+\frac{4{,}9+7{,}0}{2}(1)
+=12{,}0\,\mathrm{m}.
+\]</span> La unidad resulta de multiplicar velocidad por tiempo. El cálculo es exacto para la interpolación lineal elegida. El movimiento real entre muestras puede introducir una diferencia que se estudia aumentando la frecuencia de muestreo o proponiendo un modelo dinámico.</p>
+<div id="fig-fp-av-r23-4" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.4 · Integrar una gráfica de velocidad muestreada. Los ejes identifican magnitud y unidad; la escala debe permitir distinguir los datos y su incertidumbre. Los puntos medidos se muestran como tales. Una línea puede representar un modelo ajustado o una interpolación declarada. La superficie bajo una gráfica de velocidad frente a tiempo tiene además una interpretación">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-4.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.4 · Integrar una gráfica de velocidad muestreada. Los ejes identifican magnitud y unidad; la escala debe permitir distinguir los datos y su incertidumbre. Los puntos medidos se muestran como tales. Una línea puede representar un modelo ajustado o una interpolación declarada. La superficie bajo una gráfica de velocidad frente a tiempo tiene además una interpretación">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Apoyo visual: Problema resuelto 23.4 · Integrar una gráfica de velocidad muestreada.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="ajuste-lineal-parámetros-y-residuos" class="level2">
+<h2 class="anchored" data-anchor-id="ajuste-lineal-parámetros-y-residuos">Ajuste lineal, parámetros y residuos</h2>
+<p>El ajuste de una recta <span class="math inline">\(y=ax+b\)</span> busca parámetros que aproximen los datos según un criterio declarado. Los mínimos cuadrados ordinarios minimizan <span class="math inline">\(S=\sum_i[y_i-(ax_i+b)]^2\)</span>. Para pesos iguales y abscisas con incertidumbre despreciable frente al efecto de la incertidumbre vertical, las estimaciones son <span class="math display">\[
+a=\frac{\sum_i(x_i-\bar x)(y_i-\bar y)}{\sum_i(x_i-\bar x)^2},
+\qquad b=\bar y-a\bar x.
+\]</span> El modelo estadístico usual escribe cada dato como la predicción de una recta poblacional más un error de media cero. Para el ajuste considerado, esos errores se suponen independientes y con varianza común. Los residuos se calculan respecto de la recta estimada y permiten examinar las hipótesis mediante sus patrones; el ajuste introduce relaciones entre ellos. Incertidumbres verticales muy distintas sugieren pesos diferentes; incertidumbres horizontales relevantes requieren un tratamiento que incorpore ambas coordenadas. En el péndulo, <span class="math inline">\(a\)</span> tiene unidades <span class="math inline">\(\,\mathrm{s^2/m}\)</span> y el modelo ideal da <span class="math inline">\(g=4\pi^2/a\)</span>.</p>
+<section id="r23-5" class="level3">
+<h3 class="anchored" data-anchor-id="r23-5">Problema resuelto 23.5 · Estimar g a partir de cinco puntos</h3>
+<p>Usa los cinco pares didácticos de la tabla, construidos para este capítulo, con <span class="math inline">\(x=L\)</span> e <span class="math inline">\(y=T^2\)</span>. Ajusta <span class="math inline">\(y=ax+b\)</span> y obtén <span class="math inline">\(g\)</span>. <em>Resolución.</em> Las medias son <span class="math inline">\(\bar x=0{,}600\,\mathrm{m}\)</span> y <span class="math inline">\(\bar y=2{,}434\,\mathrm{s^2}\)</span>. Las sumas centradas son <span class="math inline">\(S_{xx}=0{,}400\,\mathrm{m^2}\)</span> y <span class="math inline">\(S_{xy}=1{,}616\,\mathrm{m\,s^2}\)</span>. Así, <span class="math display">\[
+a=4{,}040\,\mathrm{s^2/m},\quad b=0{,}0100\,\mathrm{s^2},
+\qquad g\simeq9{,}772\,\mathrm{m/s^2}.
+\]</span> La pendiente determina <span class="math inline">\(g\)</span> bajo las hipótesis del péndulo y del ajuste. El intercepto queda disponible para examinar el comportamiento del modelo y del procedimiento.</p>
+<div id="fig-fp-av-r23-5" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.5 · Estimar g a partir de cinco puntos. El ajuste de una recta y=ax+b busca parámetros que aproximen los datos según un criterio declarado. Los mínimos cuadrados ordinarios minimizan S=sumi[yi-(axi+b)]^2. Para pesos iguales y abscisas con incertidumbre despreciable frente al efecto de la incertidumbre vertical, las estimaciones son a=fracsumi(xi-bar">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-5.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.5 · Estimar g a partir de cinco puntos. El ajuste de una recta y=ax+b busca parámetros que aproximen los datos según un criterio declarado. Los mínimos cuadrados ordinarios minimizan S=sumi[yi-(axi+b)]^2. Para pesos iguales y abscisas con incertidumbre despreciable frente al efecto de la incertidumbre vertical, las estimaciones son a=fracsumi(xi-bar">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Apoyo visual: Problema resuelto 23.5 · Estimar g a partir de cinco puntos.
+</figcaption>
+</figure>
+</div>
+<p>El residuo <span class="math inline">\(r_i=y_i-(ax_i+b)\)</span> expresa la separación vertical entre cada dato y la predicción ajustada. Su signo indica el lado de la recta y su unidad coincide con la de <span class="math inline">\(y\)</span>. Una gráfica de residuos puede revelar curvatura, dispersión variable o dependencia con el orden de medida. La presencia de un patrón orienta nuevas pruebas del modelo, de los instrumentos o de las variables de control.</p>
+</section>
+<section id="r23-6" class="level3">
+<h3 class="anchored" data-anchor-id="r23-6">Problema resuelto 23.6 · Examinar residuos y dispersión del ajuste</h3>
+<p>Calcula los residuos del ajuste anterior y estima la desviación residual <span class="math inline">\(s_r\)</span> y la incertidumbre de la pendiente debida a la dispersión, con <span class="math inline">\(s_r=\sqrt{\sum r_i^2/(n-2)}\)</span> y <span class="math inline">\(u_a=s_r/\sqrt{S_{xx}}\)</span>. <em>Resolución.</em> En orden creciente de longitud, los residuos son <span class="math inline">\(0{,}002\)</span>, <span class="math inline">\(-0{,}004\)</span>, <span class="math inline">\(0{,}004\)</span>, <span class="math inline">\(-0{,}004\)</span> y <span class="math inline">\(0{,}002\,\mathrm{s^2}\)</span>. Su suma es cero por la condición de mínimos cuadrados asociada al intercepto libre; esta restricción pertenece al ajuste. Su suma de cuadrados es <span class="math inline">\(5{,}60\times10^{-5}\,\mathrm{s^4}\)</span>. Resulta <span class="math display">\[
+s_r\simeq0{,}00432\,\mathrm{s^2},\qquad
+u_a\simeq0{,}00683\,\mathrm{s^2/m}.
+\]</span> La incertidumbre asociada de <span class="math inline">\(g\)</span> es <span class="math inline">\(u_g\simeq(g/a)u_a\simeq0{,}017\,\mathrm{m/s^2}\)</span>. Esta es una estimación condicionada al modelo estadístico adoptado y a tratar las longitudes como abscisas conocidas. La calibración de longitudes y los efectos de amplitud requieren componentes adicionales para un resultado experimental completo.</p>
+<div id="fig-fp-av-r23-6" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.6 · Examinar residuos y dispersión del ajuste. El residuo ri=yi-(axi+b) expresa la separación vertical entre cada dato y la predicción ajustada. Su signo indica el lado de la recta y su unidad coincide con la de y. Una gráfica de residuos puede revelar curvatura, dispersión variable o dependencia con el orden de medida. La presencia de un patrón orienta nuevas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-6.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.6 · Examinar residuos y dispersión del ajuste. El residuo ri=yi-(axi+b) expresa la separación vertical entre cada dato y la predicción ajustada. Su signo indica el lado de la recta y su unidad coincide con la de y. Una gráfica de residuos puede revelar curvatura, dispersión variable o dependencia con el orden de medida. La presencia de un patrón orienta nuevas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Apoyo visual: Problema resuelto 23.6 · Examinar residuos y dispersión del ajuste.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r23-7" class="level3">
+<h3 class="anchored" data-anchor-id="r23-7">Problema resuelto 23.7 · Comparar una recta libre con una recta por el origen</h3>
+<p>Repite el ajuste de los cinco pares imponiendo <span class="math inline">\(b=0\)</span>. Usa <span class="math inline">\(a_0=(\sum x_iy_i)/(\sum x_i^2)\)</span> y compara el valor de <span class="math inline">\(g\)</span>. <em>Resolución.</em> Las sumas dan <span class="math inline">\(\sum x_i^2=2{,}20\,\mathrm{m^2}\)</span> y <span class="math inline">\(\sum x_iy_i=8{,}918\,\mathrm{m\,s^2}\)</span>. Por tanto, <span class="math inline">\(a_0\simeq4{,}05364\,\mathrm{s^2/m}\)</span> y <span class="math inline">\(g_0\simeq9{,}739\,\mathrm{m/s^2}\)</span>. La diferencia respecto del ajuste libre es aproximadamente <span class="math inline">\(-0{,}033\,\mathrm{m/s^2}\)</span>. Imponer el origen incorpora una hipótesis adicional. La elección se justifica mediante el modelo, el origen de las coordenadas y la evaluación de posibles desplazamientos de medida. Un intercepto distinto de cero ofrece una pista que se estudia con esas comprobaciones.</p>
+<div id="fig-fp-av-r23-7" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.7 · Comparar una recta libre con una recta por el origen. El residuo ri=yi-(axi+b) expresa la separación vertical entre cada dato y la predicción ajustada. Su signo indica el lado de la recta y su unidad coincide con la de y. Una gráfica de residuos puede revelar curvatura, dispersión variable o dependencia con el orden de medida. La presencia de un patrón orienta nuevas">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-7.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.7 · Comparar una recta libre con una recta por el origen. El residuo ri=yi-(axi+b) expresa la separación vertical entre cada dato y la predicción ajustada. Su signo indica el lado de la recta y su unidad coincide con la de y. Una gráfica de residuos puede revelar curvatura, dispersión variable o dependencia con el orden de medida. La presencia de un patrón orienta nuevas">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Apoyo visual: Problema resuelto 23.7 · Comparar una recta libre con una recta por el origen.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="incertidumbres-de-magnitudes-indirectas" class="level2">
+<h2 class="anchored" data-anchor-id="incertidumbres-de-magnitudes-indirectas">Incertidumbres de magnitudes indirectas</h2>
+<p>La incertidumbre estándar caracteriza la dispersión atribuida a una magnitud mediante una desviación estándar. Para <span class="math inline">\(z=x+y\)</span> o <span class="math inline">\(z=x-y\)</span>, con entradas independientes, <span class="math inline">\(u_z=\sqrt{u_x^2+u_y^2}\)</span>. Para <span class="math inline">\(q=Cx^\alpha y^\beta\)</span>, una aproximación lineal en incertidumbres relativas pequeñas da <span class="math display">\[
+\left(\frac{u_q}{|q|}\right)^2\simeq
+\left(\alpha\frac{u_x}{x}\right)^2+
+\left(\beta\frac{u_y}{y}\right)^2.
+\]</span> La fórmula supone entradas independientes y una constante <span class="math inline">\(C\)</span> tratada como conocida. Se puede obtener desarrollando el cambio de <span class="math inline">\(q\)</span> ante pequeños cambios de las entradas y sumando sus varianzas. Una cota máxima de error corresponde a otro criterio de combinación y debe identificarse como tal.</p>
+<section id="r23-8" class="level3">
+<h3 class="anchored" data-anchor-id="r23-8">Problema resuelto 23.8 · Combinar dos longitudes independientes</h3>
+<p>La distancia desde el soporte hasta la parte superior de una pesa es <span class="math inline">\(\ell=(0{,}800\pm0{,}002)\,\mathrm{m}\)</span> y desde allí hasta su centro de masas es <span class="math inline">\(d=(0{,}025\pm0{,}001)\,\mathrm{m}\)</span>. Las incertidumbres son estándar e independientes. Calcula la longitud efectiva. <em>Resolución.</em> La longitud es <span class="math inline">\(L=\ell+d=0{,}825\,\mathrm{m}\)</span>. Su incertidumbre es <span class="math display">\[
+u_L=\sqrt{0{,}002^2+0{,}001^2}\,\mathrm{m}
+\simeq0{,}0022\,\mathrm{m}.
+\]</span> Con dos cifras significativas en la incertidumbre, el resultado se puede escribir <span class="math inline">\((0{,}8250\pm0{,}0022)\,\mathrm{m}\)</span>. La suma geométrica exige describir con precisión los extremos de cada medición.</p>
+<div id="fig-fp-av-r23-8" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.8 · Combinar dos longitudes independientes. La incertidumbre estándar caracteriza la dispersión atribuida a una magnitud mediante una desviación estándar. Para z=x+y o z=x-y, con entradas independientes, uz=sqrtux^2+uy^2. Para q=Cx^alpha y^beta, una aproximación lineal en incertidumbres relativas pequeñas da left(fracuq|q|right)^2simeq">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-8.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.8 · Combinar dos longitudes independientes. La incertidumbre estándar caracteriza la dispersión atribuida a una magnitud mediante una desviación estándar. Para z=x+y o z=x-y, con entradas independientes, uz=sqrtux^2+uy^2. Para q=Cx^alpha y^beta, una aproximación lineal en incertidumbres relativas pequeñas da left(fracuq|q|right)^2simeq">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Apoyo visual: Problema resuelto 23.8 · Combinar dos longitudes independientes.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r23-9" class="level3">
+<h3 class="anchored" data-anchor-id="r23-9">Problema resuelto 23.9 · Obtener densidad e incertidumbre de un cilindro</h3>
+<p>Un cilindro macizo tiene <span class="math inline">\(m=(54{,}0\pm0{,}1)\,\mathrm{g}\)</span>, diámetro <span class="math inline">\(d=(2{,}000\pm0{,}010)\,\mathrm{cm}\)</span> y altura <span class="math inline">\(H=(3{,}000\pm0{,}020)\,\mathrm{cm}\)</span>. Calcula <span class="math inline">\(\rho\)</span> y su incertidumbre estándar, suponiendo entradas independientes y forma cilíndrica ideal. <em>Resolución.</em> El volumen es <span class="math inline">\(V=\pi d^2H/4\simeq9{,}425\,\mathrm{cm^3}\)</span> y la densidad <span class="math inline">\(\rho=4m/(\pi d^2H)\simeq5{,}7296\,\mathrm{g/cm^3}\)</span>. Los exponentes dan <span class="math display">\[
+\frac{u_\rho}{\rho}\simeq
+\sqrt{\left(\frac{0{,}1}{54{,}0}\right)^2+
+\left(\frac{2(0{,}010)}{2{,}000}\right)^2+
+\left(\frac{0{,}020}{3{,}000}\right)^2}
+\simeq0{,}0122.
+\]</span> Así, <span class="math inline">\(u_\rho\simeq0{,}070\,\mathrm{g/cm^3}\)</span> y se informa <span class="math inline">\((5{,}730\pm0{,}070)\,\mathrm{g/cm^3}\)</span>. El factor dos del diámetro procede de su exponente en el volumen. Su contribución domina entre las tres consideradas.</p>
+<div id="fig-fp-av-r23-9" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.9 · Obtener densidad e incertidumbre de un cilindro. La incertidumbre estándar caracteriza la dispersión atribuida a una magnitud mediante una desviación estándar. Para z=x+y o z=x-y, con entradas independientes, uz=sqrtux^2+uy^2. Para q=Cx^alpha y^beta, una aproximación lineal en incertidumbres relativas pequeñas da left(fracuq|q|right)^2simeq">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-9.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.9 · Obtener densidad e incertidumbre de un cilindro. La incertidumbre estándar caracteriza la dispersión atribuida a una magnitud mediante una desviación estándar. Para z=x+y o z=x-y, con entradas independientes, uz=sqrtux^2+uy^2. Para q=Cx^alpha y^beta, una aproximación lineal en incertidumbres relativas pequeñas da left(fracuq|q|right)^2simeq">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9: Apoyo visual: Problema resuelto 23.9 · Obtener densidad e incertidumbre de un cilindro.
+</figcaption>
+</figure>
+</div>
+<p>Cuando dos mediciones comparten una contribución, su relación estadística modifica la combinación. Para una diferencia <span class="math inline">\(D=x-y\)</span>, <span class="math inline">\(u_D^2=u_x^2+u_y^2-2\operatorname{cov}(x,y)\)</span>. La covarianza registra la variación conjunta. Un desplazamiento aditivo común se cancela al restar las lecturas; una incertidumbre de escala multiplicativa sigue otra relación.</p>
+</section>
+<section id="r23-10" class="level3">
+<h3 class="anchored" data-anchor-id="r23-10">Problema resuelto 23.10 · Reconocer una contribución común que se cancela</h3>
+<p>Dos lecturas de una misma regla son <span class="math inline">\(x=0{,}500\,\mathrm{m}\)</span> e <span class="math inline">\(y=0{,}300\,\mathrm{m}\)</span>. Cada una tiene una contribución independiente de <span class="math inline">\(0{,}001\,\mathrm{m}\)</span> y ambas comparten el mismo desplazamiento de cero, de incertidumbre estándar <span class="math inline">\(0{,}002\,\mathrm{m}\)</span>. Calcula <span class="math inline">\(D=x-y\)</span> y su incertidumbre. <em>Resolución.</em> En el modelo <span class="math inline">\(x=x_\mathrm{real}+\delta+\epsilon_x\)</span> e <span class="math inline">\(y=y_\mathrm{real}+\delta+\epsilon_y\)</span>, la diferencia elimina <span class="math inline">\(\delta\)</span>. Quedan las dos contribuciones independientes, por lo que <span class="math display">\[
+D=0{,}200\,\mathrm{m},\qquad
+u_D=\sqrt{2}(0{,}001)\,\mathrm{m}\simeq0{,}0014\,\mathrm{m}.
+\]</span> La covarianza común equivale a <span class="math inline">\(u_\delta^2\)</span> y reproduce esta cancelación en la fórmula general. El modelo de error compartido debe justificarse para el instrumento y las lecturas concretas.</p>
+<div id="fig-fp-av-r23-10" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.10 · Reconocer una contribución común que se cancela. Cuando dos mediciones comparten una contribución, su relación estadística modifica la combinación. Para una diferencia D=x-y, uD^2=ux^2+uy^2-2cov(x,y). La covarianza registra la variación conjunta. Un desplazamiento aditivo común se cancela al restar las lecturas; una incertidumbre de escala multiplicativa sigue otra">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-10.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.10 · Reconocer una contribución común que se cancela. Cuando dos mediciones comparten una contribución, su relación estadística modifica la combinación. Para una diferencia D=x-y, uD^2=ux^2+uy^2-2cov(x,y). La covarianza registra la variación conjunta. Un desplazamiento aditivo común se cancela al restar las lecturas; una incertidumbre de escala multiplicativa sigue otra">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Apoyo visual: Problema resuelto 23.10 · Reconocer una contribución común que se cancela.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="dimensiones-límites-y-comparación-de-modelos" class="level2">
+<h2 class="anchored" data-anchor-id="dimensiones-límites-y-comparación-de-modelos">Dimensiones, límites y comparación de modelos</h2>
+<p>Las dimensiones permiten comprobar la compatibilidad entre magnitudes antes de ajustar parámetros. Los límites examinan cómo se comporta una expresión en regímenes conocidos. El orden de magnitud compara la predicción con escalas físicas razonables. Estos controles se complementan con los datos: varias expresiones pueden compartir dimensiones y límites y diferir en su evolución intermedia.</p>
+<section id="r23-11" class="level3">
+<h3 class="anchored" data-anchor-id="r23-11">Problema resuelto 23.11 · Examinar dos expresiones para el período</h3>
+<p>Se proponen <span class="math inline">\(T_A=2\pi\sqrt{L/g}\)</span> y <span class="math inline">\(T_B=2\pi L/g\)</span> para un período. Comprueba sus dimensiones y calcula la primera para <span class="math inline">\(L=1{,}00\,\mathrm{m}\)</span> y <span class="math inline">\(g=9{,}80\,\mathrm{m/s^2}\)</span>. <em>Resolución.</em> El cociente <span class="math inline">\(L/g\)</span> tiene dimensión <span class="math inline">\(\mathrm T^2\)</span>. Su raíz cuadrada posee dimensión temporal, compatible con <span class="math inline">\(T_A\)</span>. La expresión <span class="math inline">\(T_B\)</span> conserva dimensión de tiempo al cuadrado y exige una modificación para representar un período. Para la primera, <span class="math display">\[
+T_A=2\pi\sqrt{\frac{1{,}00}{9{,}80}}\simeq2{,}01\,\mathrm{s}.
+\]</span> La consistencia dimensional establece una condición necesaria. La relación con el péndulo exige además la derivación dinámica y la evaluación experimental de sus hipótesis.</p>
+<div id="fig-fp-av-r23-11" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.11 · Examinar dos expresiones para el período. Las dimensiones permiten comprobar la compatibilidad entre magnitudes antes de ajustar parámetros. Los límites examinan cómo se comporta una expresión en regímenes conocidos. El orden de magnitud compara la predicción con escalas físicas razonables. Estos controles se complementan con los datos: varias expresiones">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-11.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.11 · Examinar dos expresiones para el período. Las dimensiones permiten comprobar la compatibilidad entre magnitudes antes de ajustar parámetros. Los límites examinan cómo se comporta una expresión en regímenes conocidos. El orden de magnitud compara la predicción con escalas físicas razonables. Estos controles se complementan con los datos: varias expresiones">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;11: Apoyo visual: Problema resuelto 23.11 · Examinar dos expresiones para el período.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r23-12" class="level3">
+<h3 class="anchored" data-anchor-id="r23-12">Problema resuelto 23.12 · Distinguir modelos con los mismos límites</h3>
+<p>Para una caída desde reposo se proponen <span class="math inline">\(v_A=g\tau(1-e^{-t/\tau})\)</span> y <span class="math inline">\(v_B=gt/(1+t/\tau)\)</span>, con <span class="math inline">\(g=9{,}80\,\mathrm{m/s^2}\)</span> y <span class="math inline">\(\tau=2{,}00\,\mathrm{s}\)</span>. Compara el comienzo, el límite a tiempos grandes y el valor en <span class="math inline">\(t=1{,}00\,\mathrm{s}\)</span>. <em>Resolución.</em> Para <span class="math inline">\(t/\tau\)</span> pequeño, ambas expresiones comienzan con <span class="math inline">\(v\simeq gt\)</span>. A tiempos grandes, ambas se aproximan a <span class="math inline">\(g\tau=19{,}6\,\mathrm{m/s}\)</span>. En un segundo, <span class="math display">\[
+v_A\simeq7{,}71\,\mathrm{m/s},\qquad v_B\simeq6{,}53\,\mathrm{m/s}.
+\]</span> Los datos en el régimen intermedio permiten distinguirlas. La primera surge de <span class="math inline">\(dv/dt=g-v/\tau\)</span>, correspondiente a rozamiento lineal por unidad de masa. La segunda describe otra evolución. Compartir el comienzo y el límite terminal deja abierta la selección física entre ambas.</p>
+<div id="fig-fp-av-r23-12" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.12 · Distinguir modelos con los mismos límites. Las dimensiones permiten comprobar la compatibilidad entre magnitudes antes de ajustar parámetros. Los límites examinan cómo se comporta una expresión en regímenes conocidos. El orden de magnitud compara la predicción con escalas físicas razonables. Estos controles se complementan con los datos: varias expresiones">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-12.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.12 · Distinguir modelos con los mismos límites. Las dimensiones permiten comprobar la compatibilidad entre magnitudes antes de ajustar parámetros. Los límites examinan cómo se comporta una expresión en regímenes conocidos. El orden de magnitud compara la predicción con escalas físicas razonables. Estos controles se complementan con los datos: varias expresiones">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12: Apoyo visual: Problema resuelto 23.12 · Distinguir modelos con los mismos límites.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="integración-numérica-y-estudio-de-convergencia" class="level2">
+<h2 class="anchored" data-anchor-id="integración-numérica-y-estudio-de-convergencia">Integración numérica y estudio de convergencia</h2>
+<p>Un algoritmo de integración aproxima la evolución temporal mediante pasos finitos. Para una caída con coordenada <span class="math inline">\(y\)</span> positiva hacia abajo y aceleración <span class="math inline">\(a(v)\)</span>, el método de Euler explícito usa los valores del instante anterior: <span class="math display">\[
+y_{n+1}=y_n+v_n\Delta t,\qquad
+v_{n+1}=v_n+a(v_n)\Delta t.
+\]</span> Las dos actualizaciones parten del mismo estado <span class="math inline">\((y_n,v_n)\)</span>. Usar la velocidad recién actualizada en la primera ecuación define otro método. El estudio de convergencia compara resultados al reducir <span class="math inline">\(\Delta t\)</span> manteniendo los mismos datos iniciales, parámetros y tiempo final. Cuando existe una solución analítica, permite calcular directamente el error numérico.</p>
+<section id="r23-13" class="level3">
+<h3 class="anchored" data-anchor-id="r23-13">Problema resuelto 23.13 · Probar convergencia en caída con aceleración constante</h3>
+<p>Aplica Euler explícito a <span class="math inline">\(a=g=10{,}0\,\mathrm{m/s^2}\)</span>, con <span class="math inline">\(y_0=v_0=0\)</span>, hasta <span class="math inline">\(t_f=1{,}00\,\mathrm{s}\)</span>. Compara pasos de <span class="math inline">\(0{,}250\)</span>, <span class="math inline">\(0{,}125\)</span> y <span class="math inline">\(0{,}0625\,\mathrm{s}\)</span> con la solución analítica. <em>Resolución.</em> En cada paso la velocidad aumenta <span class="math inline">\(g\Delta t\)</span>. Al sumar las velocidades previas para la posición se obtiene <span class="math display">\[
+y_N=\frac{g\Delta t^2N(N-1)}2
+=\frac{g t_f^2}{2}-\frac{g t_f\Delta t}{2}.
+\]</span> La solución exacta es <span class="math inline">\(y(t_f)=5{,}00\,\mathrm{m}\)</span>. Los errores de posición son <span class="math inline">\(1{,}25\)</span>, <span class="math inline">\(0{,}625\)</span> y <span class="math inline">\(0{,}3125\,\mathrm{m}\)</span>. Cada reducción del paso a la mitad reduce el error a la mitad. La velocidad final es <span class="math inline">\(10{,}0\,\mathrm{m/s}\)</span> en los tres casos.</p>
+<div id="fig-fp-av-r23-13" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.13 · Probar convergencia en caída con aceleración constante. Un algoritmo de integración aproxima la evolución temporal mediante pasos finitos. Para una caída con coordenada y positiva hacia abajo y aceleración a(v), el método de Euler explícito usa los valores del instante anterior: yn+1=yn+vnDelta t,qquad vn+1=vn+a(vn)Delta t. Las dos actualizaciones parten del mismo estado">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-13.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.13 · Probar convergencia en caída con aceleración constante. Un algoritmo de integración aproxima la evolución temporal mediante pasos finitos. Para una caída con coordenada y positiva hacia abajo y aceleración a(v), el método de Euler explícito usa los valores del instante anterior: yn+1=yn+vnDelta t,qquad vn+1=vn+a(vn)Delta t. Las dos actualizaciones parten del mismo estado">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;13: Apoyo visual: Problema resuelto 23.13 · Probar convergencia en caída con aceleración constante.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r23-14" class="level3">
+<h3 class="anchored" data-anchor-id="r23-14">Problema resuelto 23.14 · Integrar una caída con rozamiento lineal</h3>
+<p>Usa <span class="math inline">\(a(v)=g-v/\tau\)</span>, con <span class="math inline">\(g=10{,}0\,\mathrm{m/s^2}\)</span>, <span class="math inline">\(\tau=1{,}00\,\mathrm{s}\)</span> y reposo inicial. Calcula la rapidez en <span class="math inline">\(t_f=2{,}00\,\mathrm{s}\)</span> con Euler para pasos de <span class="math inline">\(0{,}500\)</span>, <span class="math inline">\(0{,}250\)</span> y <span class="math inline">\(0{,}125\,\mathrm{s}\)</span>. <em>Resolución.</em> La recurrencia es <span class="math inline">\(v_{n+1}=(1-\Delta t/\tau)v_n+g\Delta t\)</span>. Su aplicación entrega <span class="math inline">\(9{,}375\)</span>, <span class="math inline">\(8{,}99887\)</span> y <span class="math inline">\(8{,}81933\,\mathrm{m/s}\)</span>. La solución analítica del modelo es <span class="math display">\[
+v(2)=g\tau(1-e^{-2/\tau})\simeq8{,}64665\,\mathrm{m/s}.
+\]</span> Los errores son aproximadamente <span class="math inline">\(0{,}72835\)</span>, <span class="math inline">\(0{,}35222\)</span> y <span class="math inline">\(0{,}17268\,\mathrm{m/s}\)</span>; sus razones sucesivas son cercanas a dos. Para esta ecuación, Euler es estable si <span class="math inline">\(|1-\Delta t/\tau|&lt;1\)</span> y se acerca de forma monótona a la rapidez terminal cuando <span class="math inline">\(0&lt;\Delta t\leq\tau\)</span>. La elección del paso atiende tanto a estabilidad como a precisión.</p>
+<div id="fig-fp-av-r23-14" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.14 · Integrar una caída con rozamiento lineal. Un algoritmo de integración aproxima la evolución temporal mediante pasos finitos. Para una caída con coordenada y positiva hacia abajo y aceleración a(v), el método de Euler explícito usa los valores del instante anterior: yn+1=yn+vnDelta t,qquad vn+1=vn+a(vn)Delta t. Las dos actualizaciones parten del mismo estado">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-14.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.14 · Integrar una caída con rozamiento lineal. Un algoritmo de integración aproxima la evolución temporal mediante pasos finitos. Para una caída con coordenada y positiva hacia abajo y aceleración a(v), el método de Euler explícito usa los valores del instante anterior: yn+1=yn+vnDelta t,qquad vn+1=vn+a(vn)Delta t. Las dos actualizaciones parten del mismo estado">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;14: Apoyo visual: Problema resuelto 23.14 · Integrar una caída con rozamiento lineal.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r23-15" class="level3">
+<h3 class="anchored" data-anchor-id="r23-15">Problema resuelto 23.15 · Usar la energía como control de un algoritmo</h3>
+<p>En la caída sin rozamiento del problema 23.13, toma <span class="math inline">\(m=1{,}00\,\mathrm{kg}\)</span> y <span class="math inline">\(U=-mgy\)</span>, con cero inicial. Calcula la energía mecánica numérica final para los pasos estudiados. <em>Resolución.</em> La velocidad final da <span class="math inline">\(K=mv^2/2=50{,}0\,\mathrm{J}\)</span>. Para <span class="math inline">\(\Delta t=0{,}250\,\mathrm{s}\)</span>, <span class="math inline">\(y_N=3{,}75\,\mathrm{m}\)</span> y <span class="math inline">\(U=-37{,}5\,\mathrm{J}\)</span>, luego <span class="math inline">\(E_N=12{,}5\,\mathrm{J}\)</span>. Los otros pasos dan <span class="math inline">\(E_N=6{,}25\)</span> y <span class="math inline">\(3{,}125\,\mathrm{J}\)</span>. El valor exacto es <span class="math inline">\(E=0\)</span> durante toda la caída. La deriva numérica se reduce con el paso y ofrece un control adicional de la aproximación. En el sistema con rozamiento, el balance incorpora la energía transferida por esa interacción.</p>
+<div id="fig-fp-av-r23-15" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.15 · Usar la energía como control de un algoritmo. Un algoritmo de integración aproxima la evolución temporal mediante pasos finitos. Para una caída con coordenada y positiva hacia abajo y aceleración a(v), el método de Euler explícito usa los valores del instante anterior: yn+1=yn+vnDelta t,qquad vn+1=vn+a(vn)Delta t. Las dos actualizaciones parten del mismo estado">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-15.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.15 · Usar la energía como control de un algoritmo. Un algoritmo de integración aproxima la evolución temporal mediante pasos finitos. Para una caída con coordenada y positiva hacia abajo y aceleración a(v), el método de Euler explícito usa los valores del instante anterior: yn+1=yn+vnDelta t,qquad vn+1=vn+a(vn)Delta t. Las dos actualizaciones parten del mismo estado">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;15: Apoyo visual: Problema resuelto 23.15 · Usar la energía como control de un algoritmo.
+</figcaption>
+</figure>
+</div>
+<p>La convergencia comprueba cómo un algoritmo aproxima las ecuaciones elegidas. La correspondencia de esas ecuaciones con un objeto físico se evalúa mediante mediciones, parámetros y condiciones del experimento. La carpeta de laboratorio adjunta incluye un programa Python con Euler explícito, sus parámetros, tablas de convergencia y pruebas frente a las soluciones analíticas. El código utiliza la biblioteca estándar y conserva los datos iniciales en su documentación.</p>
+</section>
+</section>
+<section id="una-serie-observada-calibración-de-instrumentos" class="level2">
+<h2 class="anchored" data-anchor-id="una-serie-observada-calibración-de-instrumentos">Una serie observada: calibración de instrumentos</h2>
+<p>La colección pública StRD del NIST incluye la serie Norris, con 36 pares observados de una calibración de monitores de ozono. La variable <span class="math inline">\(x\)</span> corresponde a la medición de concentración del NIST y <span class="math inline">\(y\)</span> a la del instrumento del cliente. La ficha proporciona su significado y valores numéricos. Conservaremos su unidad de concentración como <span class="math inline">\(u_N\)</span>; una conversión al SI exige documentar la escala física original. La carpeta de datos contiene los pares en el orden publicado, con su fuente y fecha de consulta.</p>
+<p>Para comparar procedimientos numéricos, NIST publica parámetros certificados del ajuste ordinario <span class="math inline">\(y=ax+b\)</span>. Esa certificación se refiere al resultado del cálculo para esa serie y ese modelo. Una calibración metrológica completa incorpora además la incertidumbre de la referencia, la del instrumento y las condiciones de uso.</p>
+<section id="r23-16" class="level3">
+<h3 class="anchored" data-anchor-id="r23-16">Problema resuelto 23.16 · Reproducir un ajuste con datos públicos</h3>
+<p>Ajusta los 36 pares Norris suministrados en el archivo adjunto y compara la pendiente, el intercepto y la desviación residual con los valores publicados. <em>Resolución.</em> Aplicando las sumas centradas de la ecuación 23.2 se obtiene <span class="math display">\[
+a\simeq1{,}002116818,\qquad b\simeq-0{,}262323074\,\mathrm{u_N},
+\qquad s_r\simeq0{,}884796396\,\mathrm{u_N}.
+\]</span> La pendiente es adimensional porque ambas coordenadas usan la misma unidad. El programa adjunto reproduce estos resultados y los compara con los certificados. Para el par publicado <span class="math inline">\(x=884{,}6\,\mathrm{u_N}\)</span>, <span class="math inline">\(y=888{,}0\,\mathrm{u_N}\)</span>, el residuo es aproximadamente <span class="math inline">\(+1{,}790\,\mathrm{u_N}\)</span>. La gráfica de residuos conserva la variación que resulta difícil de percibir en la escala completa de concentraciones.</p>
+<div id="fig-fp-av-r23-16" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.16 · Reproducir un ajuste con datos públicos. Para comparar procedimientos numéricos, NIST publica parámetros certificados del ajuste ordinario y=ax+b. Esa certificación se refiere al resultado del cálculo para esa serie y ese modelo. Una calibración metrológica completa incorpora además la incertidumbre de la referencia, la del instrumento y las condiciones de">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-16.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.16 · Reproducir un ajuste con datos públicos. Para comparar procedimientos numéricos, NIST publica parámetros certificados del ajuste ordinario y=ax+b. Esa certificación se refiere al resultado del cálculo para esa serie y ese modelo. Una calibración metrológica completa incorpora además la incertidumbre de la referencia, la del instrumento y las condiciones de">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;16: Apoyo visual: Problema resuelto 23.16 · Reproducir un ajuste con datos públicos.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r23-17" class="level3">
+<h3 class="anchored" data-anchor-id="r23-17">Problema resuelto 23.17 · Invertir una relación de calibración</h3>
+<p>Con el ajuste anterior, estima la lectura equivalente de la referencia para una indicación del cliente <span class="math inline">\(y=500{,}0\,\mathrm{u_N}\)</span>. Explica qué información permitiría evaluar la incertidumbre de la estimación. <em>Resolución.</em> La inversión de la recta da <span class="math display">\[
+x_{\mathrm{est}}=\frac{y-b}{a}
+=\frac{500{,}0+0{,}262323074}{1{,}002116818}
+\simeq499{,}206\,\mathrm{u_N}.
+\]</span> Las cifras mostradas permiten verificar el cálculo. Un informe de medida necesita estimar la incertidumbre de la nueva lectura, la dispersión residual, la incertidumbre de los parámetros y su covarianza, junto con la contribución de la referencia. La inversión algebraica entrega el valor central condicionado al ajuste.</p>
+<div id="fig-fp-av-r23-17" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.17 · Invertir una relación de calibración. Para comparar procedimientos numéricos, NIST publica parámetros certificados del ajuste ordinario y=ax+b. Esa certificación se refiere al resultado del cálculo para esa serie y ese modelo. Una calibración metrológica completa incorpora además la incertidumbre de la referencia, la del instrumento y las condiciones de">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-17.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.17 · Invertir una relación de calibración. Para comparar procedimientos numéricos, NIST publica parámetros certificados del ajuste ordinario y=ax+b. Esa certificación se refiere al resultado del cálculo para esa serie y ese modelo. Una calibración metrológica completa incorpora además la incertidumbre de la referencia, la del instrumento y las condiciones de">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;17: Apoyo visual: Problema resuelto 23.17 · Invertir una relación de calibración.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="una-conclusión-que-otra-persona-pueda-reconstruir" class="level2">
+<h2 class="anchored" data-anchor-id="una-conclusión-que-otra-persona-pueda-reconstruir">Una conclusión que otra persona pueda reconstruir</h2>
+<p>Un informe reproducible reúne la pregunta, el procedimiento, los datos originales, las transformaciones, el modelo y una conclusión cuyo alcance corresponde a las evidencias. Un lector debe poder identificar el significado de cada columna y reconstruir cada cantidad final. Los cambios de datos, criterios de exclusión y versiones del programa se registran para que las decisiones queden trazables.</p>
+<section id="r23-18" class="level3">
+<h3 class="anchored" data-anchor-id="r23-18">Problema resuelto 23.18 · Redactar una conclusión con sus condiciones</h3>
+<p>Usa <span class="math inline">\(L=(0{,}800\pm0{,}002)\,\mathrm{m}\)</span> y <span class="math inline">\(T=(1{,}800\pm0{,}010)\,\mathrm{s}\)</span>, con incertidumbres estándar independientes, para informar una estimación de <span class="math inline">\(g\)</span>. Elabora una conclusión breve e identifica un control pendiente. <em>Resolución.</em> Del modelo de pequeña amplitud, <span class="math display">\[
+g=\frac{4\pi^2L}{T^2}\simeq9{,}748\,\mathrm{m/s^2},\qquad
+\frac{u_g}{g}\simeq\sqrt{\left(\frac{0{,}002}{0{,}800}\right)^2+
+\left(\frac{2(0{,}010)}{1{,}800}\right)^2}.
+\]</span> Resulta <span class="math inline">\(u_g\simeq0{,}11\,\mathrm{m/s^2}\)</span>. Una conclusión posible es: «Con el modelo de péndulo simple a pequeña amplitud y las incertidumbres indicadas, los datos construidos entregan <span class="math inline">\(g=(9{,}75\pm0{,}11)\,\mathrm{m/s^2}\)</span>, con incertidumbre estándar. El resultado depende de la longitud hasta el centro de masas y del período medido. Para una experiencia real se evaluarán la amplitud, la calibración y la repetibilidad con registros propios». Cada condición orienta una comprobación concreta.</p>
+<div id="fig-fp-av-r23-18" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 23.18 · Redactar una conclusión con sus condiciones. Un informe reproducible reúne la pregunta, el procedimiento, los datos originales, las transformaciones, el modelo y una conclusión cuyo alcance corresponde a las evidencias. Un lector debe poder identificar el significado de cada columna y reconstruir cada cantidad final. Los cambios de datos, criterios de exclusión">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r23-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R23-18.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 23.18 · Redactar una conclusión con sus condiciones. Un informe reproducible reúne la pregunta, el procedimiento, los datos originales, las transformaciones, el modelo y una conclusión cuyo alcance corresponde a las evidencias. Un lector debe poder identificar el significado de cada columna y reconstruir cada cantidad final. Los cambios de datos, criterios de exclusión">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r23-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;18: Apoyo visual: Problema resuelto 23.18 · Redactar una conclusión con sus condiciones.
+</figcaption>
+</figure>
+</div>
+<p>En un proyecto breve conviene empezar con una pregunta acotada y conservar desde el principio los registros que permitirán responderla. La revisión de dimensiones, residuos, incertidumbres y convergencia actúa sobre partes distintas del razonamiento. Al reunirlas, la explicación física queda abierta a nuevas mediciones y a una revisión fundamentada.</p>
+</section>
+</section>
+<section id="ejercicios-para-desarrollar-autonomía" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-para-desarrollar-autonomía">Ejercicios para desarrollar autonomía</h2>
+<section id="e23-1" class="level3">
+<h3 class="anchored" data-anchor-id="e23-1">Ejercicio 23.1 · Precisar una variable experimental</h3>
+<p>Formula una pregunta sobre la dependencia del período del péndulo con la amplitud. Identifica la variable que se modifica, la que se mide y dos controles.</p>
+</section>
+<section id="e23-2" class="level3">
+<h3 class="anchored" data-anchor-id="e23-2">Ejercicio 23.2 · Estimar una media y su incertidumbre</h3>
+<p>Tres tiempos construidos de quince oscilaciones son <span class="math inline">\(30{,}0\)</span>, <span class="math inline">\(30{,}2\)</span> y <span class="math inline">\(30{,}4\,\mathrm{s}\)</span>. Calcula media, desviación muestral, incertidumbre estándar de la media y período con su componente de repetibilidad.</p>
+</section>
+<section id="e23-3" class="level3">
+<h3 class="anchored" data-anchor-id="e23-3">Ejercicio 23.3 · Interpretar la resolución de una regla</h3>
+<p>Una regla redondea al milímetro más próximo. Modela el error de redondeo como uniforme entre <span class="math inline">\(-0{,}5\)</span> y <span class="math inline">\(+0{,}5\,\mathrm{mm}\)</span>. Usa <span class="math inline">\(u=a/\sqrt3\)</span> para una distribución uniforme en <span class="math inline">\([-a,a]\)</span> y calcula su incertidumbre estándar.</p>
+</section>
+<section id="e23-4" class="level3">
+<h3 class="anchored" data-anchor-id="e23-4">Ejercicio 23.4 · Transformar una barra de incertidumbre</h3>
+<p>Para <span class="math inline">\(T=(1{,}50\pm0{,}02)\,\mathrm{s}\)</span>, calcula <span class="math inline">\(T^2\)</span> y su incertidumbre estándar por aproximación lineal.</p>
+</section>
+<section id="e23-5" class="level3">
+<h3 class="anchored" data-anchor-id="e23-5">Ejercicio 23.5 · Integrar velocidades discretas</h3>
+<p>Las velocidades construidas son <span class="math inline">\(0\)</span>, <span class="math inline">\(2\)</span> y <span class="math inline">\(4\,\mathrm{m/s}\)</span> en <span class="math inline">\(t=0\)</span>, <span class="math inline">\(1\)</span> y <span class="math inline">\(2\,\mathrm{s}\)</span>. Calcula el desplazamiento por trapecios e identifica la hipótesis entre muestras.</p>
+</section>
+<section id="e23-6" class="level3">
+<h3 class="anchored" data-anchor-id="e23-6">Ejercicio 23.6 · Hallar una pendiente con unidades</h3>
+<p>Una recta de <span class="math inline">\(T^2\)</span> frente a <span class="math inline">\(L\)</span> pasa por <span class="math inline">\((0{,}250\,\mathrm{m},1{,}010\,\mathrm{s^2})\)</span> y <span class="math inline">\((0{,}750\,\mathrm{m},3{,}030\,\mathrm{s^2})\)</span>. Calcula pendiente, intercepto y <span class="math inline">\(g\)</span> inferido.</p>
+</section>
+<section id="e23-7" class="level3">
+<h3 class="anchored" data-anchor-id="e23-7">Ejercicio 23.7 · Calcular e interpretar un residuo</h3>
+<p>Para <span class="math inline">\(L=0{,}600\,\mathrm{m}\)</span> se obtiene <span class="math inline">\(T^2=2{,}460\,\mathrm{s^2}\)</span>. Calcula el residuo respecto de <span class="math inline">\(T^2=(4{,}040\,\mathrm{s^2/m})L+0{,}010\,\mathrm{s^2}\)</span> e interpreta su signo.</p>
+</section>
+<section id="e23-8" class="level3">
+<h3 class="anchored" data-anchor-id="e23-8">Ejercicio 23.8 · Propagar la incertidumbre de una pendiente</h3>
+<p>Un ajuste entrega <span class="math inline">\(a=(4{,}00\pm0{,}04)\,\mathrm{s^2/m}\)</span>. Calcula <span class="math inline">\(g=4\pi^2/a\)</span> y la componente de incertidumbre que proviene de <span class="math inline">\(a\)</span>.</p>
+</section>
+<section id="e23-9" class="level3">
+<h3 class="anchored" data-anchor-id="e23-9">Ejercicio 23.9 · Examinar una extrapolación</h3>
+<p>Una recta empírica es <span class="math inline">\(T^2=(4{,}10\,\mathrm{s^2/m})L-0{,}020\,\mathrm{s^2}\)</span>. Encuentra dónde cruza el eje <span class="math inline">\(L\)</span> y analiza su extrapolación hasta <span class="math inline">\(L=0\)</span> como modelo de período al cuadrado.</p>
+</section>
+<section id="e23-10" class="level3">
+<h3 class="anchored" data-anchor-id="e23-10">Ejercicio 23.10 · Combinar dos mediciones independientes</h3>
+<p>Dos segmentos miden <span class="math inline">\((20{,}0\pm0{,}2)\,\mathrm{cm}\)</span> y <span class="math inline">\((30{,}0\pm0{,}3)\,\mathrm{cm}\)</span>. Calcula su suma con incertidumbre estándar independiente.</p>
+</section>
+<section id="e23-11" class="level3">
+<h3 class="anchored" data-anchor-id="e23-11">Ejercicio 23.11 · Calcular una incertidumbre de área</h3>
+<p>Un rectángulo tiene lados <span class="math inline">\(a=(10{,}0\pm0{,}1)\,\mathrm{cm}\)</span> y <span class="math inline">\(b=(5{,}00\pm0{,}05)\,\mathrm{cm}\)</span>, independientes. Calcula área e incertidumbre estándar.</p>
+</section>
+<section id="e23-12" class="level3">
+<h3 class="anchored" data-anchor-id="e23-12">Ejercicio 23.12 · Reconocer la sensibilidad de una potencia</h3>
+<p>El radio de una esfera es <span class="math inline">\((2{,}00\pm0{,}01)\,\mathrm{cm}\)</span>. Calcula el volumen y su incertidumbre estándar mediante aproximación lineal.</p>
+</section>
+<section id="e23-13" class="level3">
+<h3 class="anchored" data-anchor-id="e23-13">Ejercicio 23.13 · Cambiar una contribución común</h3>
+<p>Dos lecturas comparten un error aditivo <span class="math inline">\(\delta\)</span> con incertidumbre estándar <span class="math inline">\(0{,}20\,\mathrm{cm}\)</span>. Sus otras contribuciones son despreciables. Calcula la incertidumbre debida a <span class="math inline">\(\delta\)</span> en la suma y en la diferencia.</p>
+</section>
+<section id="e23-14" class="level3">
+<h3 class="anchored" data-anchor-id="e23-14">Ejercicio 23.14 · Comprobar dimensiones y escala</h3>
+<p>Para una caída desde reposo se propone <span class="math inline">\(y=gt^2/2\)</span>. Verifica dimensiones y calcula la distancia para <span class="math inline">\(g=10{,}0\,\mathrm{m/s^2}\)</span> y <span class="math inline">\(t=0{,}200\,\mathrm{s}\)</span>.</p>
+</section>
+<section id="e23-15" class="level3">
+<h3 class="anchored" data-anchor-id="e23-15">Ejercicio 23.15 · Usar un límite terminal</h3>
+<p>En el modelo <span class="math inline">\(dv/dt=g-v/\tau\)</span>, con <span class="math inline">\(g=9{,}80\,\mathrm{m/s^2}\)</span> y <span class="math inline">\(\tau=0{,}500\,\mathrm{s}\)</span>, calcula la rapidez terminal y la aceleración cuando <span class="math inline">\(v=2{,}45\,\mathrm{m/s}\)</span>.</p>
+</section>
+<section id="e23-16" class="level3">
+<h3 class="anchored" data-anchor-id="e23-16">Ejercicio 23.16 · Dar los primeros pasos de Euler</h3>
+<p>Usa Euler explícito con <span class="math inline">\(g=10{,}0\,\mathrm{m/s^2}\)</span>, <span class="math inline">\(\Delta t=0{,}100\,\mathrm{s}\)</span> y <span class="math inline">\(y_0=v_0=0\)</span>. Calcula posición y velocidad en los dos primeros pasos.</p>
+</section>
+<section id="e23-17" class="level3">
+<h3 class="anchored" data-anchor-id="e23-17">Ejercicio 23.17 · Estimar una tolerancia de paso</h3>
+<p>Para caída con aceleración constante y Euler explícito, el error de posición en <span class="math inline">\(t_f\)</span> tiene magnitud <span class="math inline">\(gt_f\Delta t/2\)</span>. Con <span class="math inline">\(g=10{,}0\,\mathrm{m/s^2}\)</span> y <span class="math inline">\(t_f=1{,}00\,\mathrm{s}\)</span>, determina un paso que dé error de posición menor o igual que <span class="math inline">\(0{,}050\,\mathrm{m}\)</span> y alcance exactamente el tiempo final.</p>
+</section>
+<section id="e23-18" class="level3">
+<h3 class="anchored" data-anchor-id="e23-18">Ejercicio 23.18 · Comparar errores de dos mallas</h3>
+<p>Una aproximación tiene errores de <span class="math inline">\(0{,}080\)</span> y <span class="math inline">\(0{,}020\,\mathrm{m}\)</span> al usar pasos <span class="math inline">\(h\)</span> y <span class="math inline">\(h/2\)</span>. Estima el orden observado mediante <span class="math inline">\(p=\log_2(|e_h/e_{h/2}|)\)</span>. Explica el alcance de esa estimación.</p>
+</section>
+<section id="e23-19" class="level3">
+<h3 class="anchored" data-anchor-id="e23-19">Ejercicio 23.19 · Examinar estabilidad en rozamiento lineal</h3>
+<p>Para <span class="math inline">\(\tau=1{,}00\,\mathrm{s}\)</span>, calcula el factor <span class="math inline">\(q=1-\Delta t/\tau\)</span> con <span class="math inline">\(\Delta t=0{,}500\)</span>, <span class="math inline">\(1{,}50\)</span> y <span class="math inline">\(2{,}50\,\mathrm{s}\)</span>. Describe cómo evoluciona la diferencia respecto de la rapidez terminal en cada caso.</p>
+</section>
+<section id="e23-20" class="level3">
+<h3 class="anchored" data-anchor-id="e23-20">Ejercicio 23.20 · Calcular una deriva energética</h3>
+<p>En caída libre con <span class="math inline">\(m=1{,}00\,\mathrm{kg}\)</span> y <span class="math inline">\(g=10{,}0\,\mathrm{m/s^2}\)</span>, Euler explícito entrega al segundo <span class="math inline">\(v=10{,}0\,\mathrm{m/s}\)</span> e <span class="math inline">\(y=4{,}50\,\mathrm{m}\)</span>. Calcula <span class="math inline">\(E=mv^2/2-mgy\)</span> y compara con la energía inicial nula.</p>
+</section>
+<section id="e23-21" class="level3">
+<h3 class="anchored" data-anchor-id="e23-21">Ejercicio 23.21 · Revisar un par de datos observados</h3>
+<p>Para el par Norris <span class="math inline">\(x=0{,}2\,\mathrm{u_N}\)</span>, <span class="math inline">\(y=0{,}1\,\mathrm{u_N}\)</span>, calcula el residuo de <span class="math inline">\(y=1{,}002116818x-0{,}262323074\,\mathrm{u_N}\)</span>. Identifica el significado de ambas variables.</p>
+</section>
+<section id="e23-22" class="level3">
+<h3 class="anchored" data-anchor-id="e23-22">Ejercicio 23.22 · Aplicar una calibración sencilla</h3>
+<p>Una calibración didáctica da <span class="math inline">\(y=1{,}020x+0{,}500\,\mathrm{V}\)</span>, con ambas variables en voltios. Para <span class="math inline">\(y=5{,}600\,\mathrm{V}\)</span>, calcula la lectura equivalente <span class="math inline">\(x\)</span>.</p>
+</section>
+<section id="e23-23" class="level3">
+<h3 class="anchored" data-anchor-id="e23-23">Ejercicio 23.23 · Separar dispersión y contribución común</h3>
+<p>Una media tiene componente aleatoria de incertidumbre <span class="math inline">\(0{,}040\,\mathrm{s}\)</span> y una componente de calibración independiente de <span class="math inline">\(0{,}030\,\mathrm{s}\)</span>. Calcula la combinación y el valor que quedaría si una repetición ampliada redujera la componente aleatoria a <span class="math inline">\(0{,}020\,\mathrm{s}\)</span>.</p>
+</section>
+<section id="e23-24" class="level3">
+<h3 class="anchored" data-anchor-id="e23-24">Ejercicio 23.24 · Hacer reconstruible una conclusión</h3>
+<p>Un informe afirma: «La simulación confirma el movimiento con precisión». Reescribe la conclusión incorporando el modelo <span class="math inline">\(a=g-v/\tau\)</span>, <span class="math inline">\(g=10{,}0\,\mathrm{m/s^2}\)</span>, <span class="math inline">\(\tau=1{,}00\,\mathrm{s}\)</span>, reposo inicial, <span class="math inline">\(t_f=2{,}00\,\mathrm{s}\)</span> y Euler con <span class="math inline">\(\Delta t=0{,}125\,\mathrm{s}\)</span>. Usa el resultado del problema 23.14 y propone una comprobación experimental adicional.</p>
+</section>
+</section>
+<section id="soluciones-razonadas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-razonadas">Soluciones razonadas</h2>
+<section id="sol-e23-1" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-1">Solución 23.1</h3>
+<p>Una pregunta posible es: «¿Cómo cambia <span class="math inline">\(T\)</span> al variar la amplitud inicial entre cinco y veinte grados?». Se modifica la amplitud, se mide el período y se conservan la longitud efectiva y la misma pesa. Registrar el procedimiento de liberación permite estudiar también su repetibilidad.</p>
+</section>
+<section id="sol-e23-2" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-2">Solución 23.2</h3>
+<p><span class="math inline">\(\bar t=30{,}2\,\mathrm{s}\)</span>, <span class="math inline">\(s_t=0{,}200\,\mathrm{s}\)</span> y <span class="math inline">\(u_{\bar t}=0{,}200/\sqrt3\simeq0{,}115\,\mathrm{s}\)</span>. El período es <span class="math inline">\(T=30{,}2/15\simeq2{,}0133\,\mathrm{s}\)</span> y su componente de incertidumbre es <span class="math inline">\(u_T\simeq0{,}0077\,\mathrm{s}\)</span>. Se informa <span class="math inline">\((2{,}0133\pm0{,}0077)\,\mathrm{s}\)</span> para esa componente.</p>
+</section>
+<section id="sol-e23-3" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-3">Solución 23.3</h3>
+<p>El semiancho es <span class="math inline">\(a=0{,}5\,\mathrm{mm}\)</span>. Por tanto, <span class="math inline">\(u=0{,}5/\sqrt3\simeq0{,}289\,\mathrm{mm}=2{,}89\times10^{-4}\,\mathrm{m}\)</span>. La resolución y la incertidumbre estándar se vinculan aquí mediante la distribución uniforme declarada.</p>
+</section>
+<section id="sol-e23-4" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-4">Solución 23.4</h3>
+<p><span class="math inline">\(T^2=2{,}25\,\mathrm{s^2}\)</span> y <span class="math inline">\(u_{T^2}\simeq2(1{,}50)(0{,}02)=0{,}06\,\mathrm{s^2}\)</span>. La barra vertical tiene ese semiancho en la gráfica transformada.</p>
+</section>
+<section id="sol-e23-5" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-5">Solución 23.5</h3>
+<p>Los trapecios aportan <span class="math inline">\((0+2)/2=1\,\mathrm{m}\)</span> y <span class="math inline">\((2+4)/2=3\,\mathrm{m}\)</span>, para un total de <span class="math inline">\(4\,\mathrm{m}\)</span>. La interpolación adoptada hace variar linealmente la velocidad en cada intervalo.</p>
+</section>
+<section id="sol-e23-6" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-6">Solución 23.6</h3>
+<p><span class="math inline">\(a=(3{,}030-1{,}010)/(0{,}750-0{,}250)=4{,}040\,\mathrm{s^2/m}\)</span>. El intercepto es cero para esos dos puntos. Entonces <span class="math inline">\(g=4\pi^2/4{,}040\simeq9{,}772\,\mathrm{m/s^2}\)</span>, condicionado al modelo del péndulo.</p>
+</section>
+<section id="sol-e23-7" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-7">Solución 23.7</h3>
+<p>La predicción es <span class="math inline">\(4{,}040(0{,}600)+0{,}010=2{,}434\,\mathrm{s^2}\)</span>. El residuo es <span class="math inline">\(+0{,}026\,\mathrm{s^2}\)</span>, de modo que el punto queda por encima de la recta.</p>
+</section>
+<section id="sol-e23-8" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-8">Solución 23.8</h3>
+<p><span class="math inline">\(g\simeq9{,}8696\,\mathrm{m/s^2}\)</span> y <span class="math inline">\(u_g=(g/a)u_a\simeq0{,}0987\,\mathrm{m/s^2}\)</span>. Con redondeo coherente, <span class="math inline">\((9{,}87\pm0{,}10)\,\mathrm{m/s^2}\)</span> representa la componente procedente de la pendiente.</p>
+</section>
+<section id="sol-e23-9" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-9">Solución 23.9</h3>
+<p>El cruce está en <span class="math inline">\(L=0{,}020/4{,}10\simeq0{,}00488\,\mathrm{m}\)</span>. En <span class="math inline">\(L=0\)</span> la extrapolación produce <span class="math inline">\(T^2=-0{,}020\,\mathrm{s^2}\)</span>. Un período real al cuadrado tiene valor positivo o nulo; esa extrapolación queda fuera de una interpretación física directa. El ajuste puede evaluarse en el intervalo de longitudes que sustentan sus datos.</p>
+</section>
+<section id="sol-e23-10" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-10">Solución 23.10</h3>
+<p>La suma es <span class="math inline">\(50{,}0\,\mathrm{cm}\)</span> y <span class="math inline">\(u=\sqrt{0{,}2^2+0{,}3^2}\simeq0{,}36\,\mathrm{cm}\)</span>. Un reporte coherente es <span class="math inline">\((50{,}00\pm0{,}36)\,\mathrm{cm}\)</span>, bajo independencia.</p>
+</section>
+<section id="sol-e23-11" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-11">Solución 23.11</h3>
+<p><span class="math inline">\(A=50{,}0\,\mathrm{cm^2}\)</span>. La incertidumbre relativa es <span class="math inline">\(\sqrt{(0{,}1/10)^2+(0{,}05/5)^2}\simeq0{,}0141\)</span>, por lo que <span class="math inline">\(u_A\simeq0{,}71\,\mathrm{cm^2}\)</span>. Se puede escribir <span class="math inline">\((50{,}00\pm0{,}71)\,\mathrm{cm^2}\)</span>.</p>
+</section>
+<section id="sol-e23-12" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-12">Solución 23.12</h3>
+<p><span class="math inline">\(V=4\pi r^3/3\simeq33{,}510\,\mathrm{cm^3}\)</span>. La incertidumbre relativa es <span class="math inline">\(3u_r/r=0{,}0150\)</span>, y <span class="math inline">\(u_V\simeq0{,}50\,\mathrm{cm^3}\)</span>. El resultado es <span class="math inline">\((33{,}51\pm0{,}50)\,\mathrm{cm^3}\)</span>.</p>
+</section>
+<section id="sol-e23-13" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-13">Solución 23.13</h3>
+<p>En la suma aparece <span class="math inline">\(2\delta\)</span>, con incertidumbre <span class="math inline">\(2u_\delta=0{,}40\,\mathrm{cm}\)</span>. En la diferencia la contribución común se cancela y aporta cero. Otros efectos del instrumento requerirían componentes propias.</p>
+</section>
+<section id="sol-e23-14" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-14">Solución 23.14</h3>
+<p><span class="math inline">\([g][t]^2=(\mathrm L\mathrm T^{-2})\mathrm T^2=\mathrm L\)</span>. La predicción es <span class="math inline">\(y=10(0{,}200)^2/2=0{,}200\,\mathrm{m}\)</span>.</p>
+</section>
+<section id="sol-e23-15" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-15">Solución 23.15</h3>
+<p>La condición terminal <span class="math inline">\(a=0\)</span> da <span class="math inline">\(v_\infty=g\tau=4{,}90\,\mathrm{m/s}\)</span>. Para <span class="math inline">\(v=2{,}45\,\mathrm{m/s}\)</span>, <span class="math inline">\(a=9{,}80-2{,}45/0{,}500=4{,}90\,\mathrm{m/s^2}\)</span>, hacia abajo con la convención elegida.</p>
+</section>
+<section id="sol-e23-16" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-16">Solución 23.16</h3>
+<p>Primer paso: <span class="math inline">\(y_1=0\)</span> y <span class="math inline">\(v_1=1{,}00\,\mathrm{m/s}\)</span>. Segundo paso: <span class="math inline">\(y_2=0{,}100\,\mathrm{m}\)</span> y <span class="math inline">\(v_2=2{,}00\,\mathrm{m/s}\)</span>. Cada posición usa la velocidad del estado anterior.</p>
+</section>
+<section id="sol-e23-17" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-17">Solución 23.17</h3>
+<p><span class="math inline">\(gt_f\Delta t/2\leq0{,}050\,\mathrm{m}\)</span> exige <span class="math inline">\(\Delta t\leq0{,}0100\,\mathrm{s}\)</span>. Elegir <span class="math inline">\(0{,}0100\,\mathrm{s}\)</span> produce cien pasos y un error de <span class="math inline">\(0{,}050\,\mathrm{m}\)</span> al tiempo final.</p>
+</section>
+<section id="sol-e23-18" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-18">Solución 23.18</h3>
+<p>La razón de errores es cuatro y <span class="math inline">\(p=\log_2 4=2\)</span>. Es un orden observado para esos pasos y ese problema; se contrasta con refinamientos adicionales y con el régimen asintótico del método.</p>
+</section>
+<section id="sol-e23-19" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-19">Solución 23.19</h3>
+<p>Los factores son <span class="math inline">\(0{,}500\)</span>, <span class="math inline">\(-0{,}500\)</span> y <span class="math inline">\(-1{,}50\)</span>. El primero reduce la diferencia de forma monótona; el segundo alterna su signo y reduce su magnitud; el tercero alterna el signo y aumenta la magnitud. La condición <span class="math inline">\(|q|&lt;1\)</span> explica las dos primeras evoluciones estables.</p>
+</section>
+<section id="sol-e23-20" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-20">Solución 23.20</h3>
+<p><span class="math inline">\(K=50{,}0\,\mathrm{J}\)</span> y <span class="math inline">\(U=-45{,}0\,\mathrm{J}\)</span>, de modo que <span class="math inline">\(E=5{,}00\,\mathrm{J}\)</span>. La diferencia respecto del valor inicial es una deriva del resultado numérico para el sistema conservativo.</p>
+</section>
+<section id="sol-e23-21" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-21">Solución 23.21</h3>
+<p>La predicción es <span class="math inline">\(-0{,}0618997\,\mathrm{u_N}\)</span> y el residuo <span class="math inline">\(0{,}1-(-0{,}0618997)\simeq+0{,}161900\,\mathrm{u_N}\)</span>. <span class="math inline">\(x\)</span> corresponde a la referencia NIST y <span class="math inline">\(y\)</span> a la lectura del cliente. Las variables conservan la unidad de concentración de la serie.</p>
+</section>
+<section id="sol-e23-22" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-22">Solución 23.22</h3>
+<p><span class="math inline">\(x=(5{,}600-0{,}500)/1{,}020=5{,}000\,\mathrm{V}\)</span>. La inversión se aplica al rango y las condiciones para los que se obtuvo la recta.</p>
+</section>
+<section id="sol-e23-23" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-23">Solución 23.23</h3>
+<p>La combinación inicial es <span class="math inline">\(\sqrt{0{,}040^2+0{,}030^2}=0{,}050\,\mathrm{s}\)</span>. Al reducir la componente aleatoria, la combinación pasa a <span class="math inline">\(0{,}036\,\mathrm{s}\)</span>, obtenida al sumar cuadráticamente <span class="math inline">\(0{,}020\,\mathrm{s}\)</span> y <span class="math inline">\(0{,}030\,\mathrm{s}\)</span>. La componente común de calibración mantiene su valor al ampliar las repeticiones.</p>
+</section>
+<section id="sol-e23-24" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e23-24">Solución 23.24</h3>
+<p>Una redacción posible es: «Euler explícito, con paso <span class="math inline">\(0{,}125\,\mathrm{s}\)</span>, da <span class="math inline">\(v(2\,\mathrm{s})=8{,}81933\,\mathrm{m/s}\)</span> para el modelo y las condiciones indicadas. La solución analítica da <span class="math inline">\(8{,}64665\,\mathrm{m/s}\)</span>, con error numérico de <span class="math inline">\(+0{,}17268\,\mathrm{m/s}\)</span>. Los pasos de <span class="math inline">\(0{,}500\)</span> y <span class="math inline">\(0{,}250\,\mathrm{s}\)</span> presentan errores mayores y la reducción observada es aproximadamente de primer orden». Una prueba física adicional mediría velocidades y estimaría <span class="math inline">\(\tau\)</span> para el cuerpo y el medio elegidos.</p>
+</section>
+</section>
+<section id="una-experiencia-un-pequeño-estudio-reproducible-del-péndulo" class="level2">
+<h2 class="anchored" data-anchor-id="una-experiencia-un-pequeño-estudio-reproducible-del-péndulo">Una experiencia: un pequeño estudio reproducible del péndulo</h2>
+<section id="de-los-registros-propios-a-una-conclusión-revisable" class="level3">
+<h3 class="anchored" data-anchor-id="de-los-registros-propios-a-una-conclusión-revisable">De los registros propios a una conclusión revisable</h3>
+<p>Prepara un péndulo ligero con soporte firme y zona de oscilación despejada. Elige al menos cinco longitudes, mide hasta el centro de masas y registra la amplitud inicial próxima a cinco grados. Cronometra veinte oscilaciones completas y realiza al menos cinco repeticiones por longitud. Alterna el orden de longitudes para examinar posibles cambios del procedimiento durante la sesión.</p>
+<p>Conserva los tiempos originales en una tabla con fecha, instrumentos, unidades y criterio de conteo. Calcula <span class="math inline">\(T\)</span>, su repetibilidad y <span class="math inline">\(T^2\)</span>. Estima también la contribución de la longitud y del instrumento temporal, indicando cómo las obtuviste. Traza la gráfica con barras de incertidumbre y examina si sus tamaños permiten el ajuste ordinario o requieren otro tratamiento. Compara un ajuste libre con el paso por el origen y dibuja los residuos.</p>
+<p>Redacta una conclusión que informe el valor inferido de <span class="math inline">\(g\)</span>, las componentes incluidas en su incertidumbre y las condiciones del modelo. Adjunta datos, fórmulas o programa y decisiones de análisis. La carpeta de laboratorio ofrece archivos didácticos y un ejemplo computacional; los registros de esta experiencia corresponden a las mediciones que realice cada grupo.</p>
+</section>
+</section>
+<section id="diagnóstico-de-cierre-del-recorrido" class="level2">
+<h2 class="anchored" data-anchor-id="diagnóstico-de-cierre-del-recorrido">Diagnóstico de cierre del recorrido</h2>
+<p>Un grupo obtiene <span class="math inline">\(a=(4{,}050\pm0{,}020)\,\mathrm{s^2/m}\)</span> al ajustar <span class="math inline">\(T^2\)</span> frente a <span class="math inline">\(L\)</span>. La incertidumbre indicada procede de la dispersión del ajuste. Calcula <span class="math inline">\(g\)</span> y esa componente de incertidumbre. El grupo también implementa Euler explícito para caída sin rozamiento con <span class="math inline">\(g=10{,}0\,\mathrm{m/s^2}\)</span>, reposo inicial y <span class="math inline">\(t_f=1{,}00\,\mathrm{s}\)</span>, y obtiene <span class="math inline">\(y=4{,}50\,\mathrm{m}\)</span> para <span class="math inline">\(\Delta t=0{,}100\,\mathrm{s}\)</span> y <span class="math inline">\(y=4{,}75\,\mathrm{m}\)</span> para <span class="math inline">\(\Delta t=0{,}050\,\mathrm{s}\)</span>. Calcula los errores y su razón. Formula una conclusión sobre el algoritmo y otra sobre la estimación experimental, precisando qué información adicional permite evaluar esta última.</p>
+<p><strong>Contraste.</strong> La pendiente entrega <span class="math inline">\(g=4\pi^2/4{,}050\simeq9{,}748\,\mathrm{m/s^2}\)</span> y <span class="math inline">\(u_g\simeq(g/a)(0{,}020)\simeq0{,}048\,\mathrm{m/s^2}\)</span>. Esta componente depende de las hipótesis del ajuste. La caída analítica alcanza <span class="math inline">\(5{,}00\,\mathrm{m}\)</span>; los errores son <span class="math inline">\(-0{,}500\)</span> y <span class="math inline">\(-0{,}250\,\mathrm{m}\)</span>, con razón de magnitudes dos. Los resultados muestran convergencia de primer orden de la posición en ese caso. La estimación experimental requiere además registros originales, medición de la longitud efectiva, amplitudes, calibración y evaluación de las incertidumbres omitidas. Las dos conclusiones corresponden a comprobaciones diferentes del estudio.</p>
+<p><strong>Lecturas y datos de apoyo.</strong> Las relaciones del péndulo y de la caída retoman los capítulos de oscilaciones y dinámica del proyecto, cotejados con los textos de Sears–Zemansky y Serway–Vuille en su desarrollo. El tratamiento del ajuste y de incertidumbre se apoya en el <em>NIST/SEMATECH e-Handbook of Statistical Methods</em>, apartados sobre mínimos cuadrados y propagación de incertidumbre. Los datos observados proceden de NIST StRD, serie Norris. El informe de fuentes adjunto precisa enlaces, metadatos y alcance de las consultas. El resto de los datos de práctica y las ayudas visuales se preparó para esta obra.</p>
+<hr>
+<p><a href="capitulo-22.html">← Capítulo anterior</a> · <a href="index.html">Índice del libro</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

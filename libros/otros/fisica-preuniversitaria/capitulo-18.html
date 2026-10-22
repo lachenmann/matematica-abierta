@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+
+<title>18. Corriente eléctrica y circuitos – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-cb076892e24e5ecd918925b139627211.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-a27ce7592f35ccc06b5fae55f34b11f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#corriente-seguir-la-carga-que-atraviesa-una-sección" id="toc-corriente-seguir-la-carga-que-atraviesa-una-sección" class="nav-link active" data-scroll-target="#corriente-seguir-la-carga-que-atraviesa-una-sección">Corriente: seguir la carga que atraviesa una sección</a>
+  <ul class="collapse">
+  <li><a href="#r18-1" id="toc-r18-1" class="nav-link" data-scroll-target="#r18-1">Problema resuelto 18.1 · Contar la transferencia de carga</a></li>
+  <li><a href="#r18-2" id="toc-r18-2" class="nav-link" data-scroll-target="#r18-2">Problema resuelto 18.2 · Acumular carga con una corriente variable</a></li>
+  <li><a href="#r18-3" id="toc-r18-3" class="nav-link" data-scroll-target="#r18-3">Problema resuelto 18.3 · Obtener una rapidez de deriva</a></li>
+  </ul></li>
+  <li><a href="#resistencia-material-y-temperatura" id="toc-resistencia-material-y-temperatura" class="nav-link" data-scroll-target="#resistencia-material-y-temperatura">Resistencia, material y temperatura</a>
+  <ul class="collapse">
+  <li><a href="#r18-4" id="toc-r18-4" class="nav-link" data-scroll-target="#r18-4">Problema resuelto 18.4 · Reconocer una respuesta óhmica</a></li>
+  <li><a href="#r18-5" id="toc-r18-5" class="nav-link" data-scroll-target="#r18-5">Problema resuelto 18.5 · Cambiar la geometría conservando material</a></li>
+  <li><a href="#r18-6" id="toc-r18-6" class="nav-link" data-scroll-target="#r18-6">Problema resuelto 18.6 · Incluir el calentamiento de un resistor</a></li>
+  </ul></li>
+  <li><a href="#fuentes-energía-por-unidad-de-carga" id="toc-fuentes-energía-por-unidad-de-carga" class="nav-link" data-scroll-target="#fuentes-energía-por-unidad-de-carga">Fuentes: energía por unidad de carga</a>
+  <ul class="collapse">
+  <li><a href="#r18-7" id="toc-r18-7" class="nav-link" data-scroll-target="#r18-7">Problema resuelto 18.7 · Separar voltaje terminal y fem</a></li>
+  <li><a href="#r18-8" id="toc-r18-8" class="nav-link" data-scroll-target="#r18-8">Problema resuelto 18.8 · Inferir un modelo de fuente a partir de mediciones</a></li>
+  </ul></li>
+  <li><a href="#potencia-y-energía-transferida" id="toc-potencia-y-energía-transferida" class="nav-link" data-scroll-target="#potencia-y-energía-transferida">Potencia y energía transferida</a>
+  <ul class="collapse">
+  <li><a href="#r18-9" id="toc-r18-9" class="nav-link" data-scroll-target="#r18-9">Problema resuelto 18.9 · Pasar de voltaje y resistencia a energía</a></li>
+  <li><a href="#r18-10" id="toc-r18-10" class="nav-link" data-scroll-target="#r18-10">Problema resuelto 18.10 · Comparar potencias y explicitar qué se mantiene</a></li>
+  </ul></li>
+  <li><a href="#reconocer-conexiones-y-reducir-una-red" id="toc-reconocer-conexiones-y-reducir-una-red" class="nav-link" data-scroll-target="#reconocer-conexiones-y-reducir-una-red">Reconocer conexiones y reducir una red</a>
+  <ul class="collapse">
+  <li><a href="#r18-11" id="toc-r18-11" class="nav-link" data-scroll-target="#r18-11">Problema resuelto 18.11 · Repartir voltajes en una conexión en serie</a></li>
+  <li><a href="#r18-12" id="toc-r18-12" class="nav-link" data-scroll-target="#r18-12">Problema resuelto 18.12 · Repartir corrientes en una conexión en paralelo</a></li>
+  <li><a href="#r18-13" id="toc-r18-13" class="nav-link" data-scroll-target="#r18-13">Problema resuelto 18.13 · Resolver un circuito mixto y reconstruir sus ramas</a></li>
+  </ul></li>
+  <li><a href="#leyes-de-kirchhoff-y-elección-de-signos" id="toc-leyes-de-kirchhoff-y-elección-de-signos" class="nav-link" data-scroll-target="#leyes-de-kirchhoff-y-elección-de-signos">Leyes de Kirchhoff y elección de signos</a>
+  <ul class="collapse">
+  <li><a href="#r18-14" id="toc-r18-14" class="nav-link" data-scroll-target="#r18-14">Problema resuelto 18.14 · Resolver un nodo alimentado por dos fuentes</a></li>
+  <li><a href="#r18-15" id="toc-r18-15" class="nav-link" data-scroll-target="#r18-15">Problema resuelto 18.15 · Interpretar una corriente de referencia negativa</a></li>
+  </ul></li>
+  <li><a href="#medir-también-forma-parte-del-circuito" id="toc-medir-también-forma-parte-del-circuito" class="nav-link" data-scroll-target="#medir-también-forma-parte-del-circuito">Medir también forma parte del circuito</a>
+  <ul class="collapse">
+  <li><a href="#r18-16" id="toc-r18-16" class="nav-link" data-scroll-target="#r18-16">Problema resuelto 18.16 · Comparar amperímetros ideal y real</a></li>
+  <li><a href="#r18-17" id="toc-r18-17" class="nav-link" data-scroll-target="#r18-17">Problema resuelto 18.17 · Calcular el efecto de conectar un voltímetro</a></li>
+  </ul></li>
+  <li><a href="#límites-de-operación-y-decisiones-de-diseño" id="toc-límites-de-operación-y-decisiones-de-diseño" class="nav-link" data-scroll-target="#límites-de-operación-y-decisiones-de-diseño">Límites de operación y decisiones de diseño</a>
+  <ul class="collapse">
+  <li><a href="#r18-18" id="toc-r18-18" class="nav-link" data-scroll-target="#r18-18">Problema resuelto 18.18 · Comprobar límites en una red de baja tensión</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-para-reconstruir-y-transferir" id="toc-ejercicios-para-reconstruir-y-transferir" class="nav-link" data-scroll-target="#ejercicios-para-reconstruir-y-transferir">Ejercicios para reconstruir y transferir</a>
+  <ul class="collapse">
+  <li><a href="#e18-1" id="toc-e18-1" class="nav-link" data-scroll-target="#e18-1">Ejercicio 18.1 · Una corriente durante un intervalo</a></li>
+  <li><a href="#e18-2" id="toc-e18-2" class="nav-link" data-scroll-target="#e18-2">Ejercicio 18.2 · El área de un trapecio</a></li>
+  <li><a href="#e18-3" id="toc-e18-3" class="nav-link" data-scroll-target="#e18-3">Ejercicio 18.3 · Deriva y sección</a></li>
+  <li><a href="#e18-4" id="toc-e18-4" class="nav-link" data-scroll-target="#e18-4">Ejercicio 18.4 · Una recta de operación</a></li>
+  <li><a href="#e18-5" id="toc-e18-5" class="nav-link" data-scroll-target="#e18-5">Ejercicio 18.5 · Tres cocientes diferentes</a></li>
+  <li><a href="#e18-6" id="toc-e18-6" class="nav-link" data-scroll-target="#e18-6">Ejercicio 18.6 · Resistencia de un alambre</a></li>
+  <li><a href="#e18-7" id="toc-e18-7" class="nav-link" data-scroll-target="#e18-7">Ejercicio 18.7 · Triplicar la longitud con el mismo volumen</a></li>
+  <li><a href="#e18-8" id="toc-e18-8" class="nav-link" data-scroll-target="#e18-8">Ejercicio 18.8 · Una resistencia a otra temperatura</a></li>
+  <li><a href="#e18-9" id="toc-e18-9" class="nav-link" data-scroll-target="#e18-9">Ejercicio 18.9 · Una fuente con resistencia interna</a></li>
+  <li><a href="#e18-10" id="toc-e18-10" class="nav-link" data-scroll-target="#e18-10">Ejercicio 18.10 · Dos mediciones de una fuente</a></li>
+  <li><a href="#e18-11" id="toc-e18-11" class="nav-link" data-scroll-target="#e18-11">Ejercicio 18.11 · Energía en un resistor</a></li>
+  <li><a href="#e18-12" id="toc-e18-12" class="nav-link" data-scroll-target="#e18-12">Ejercicio 18.12 · Potencia y tiempo de uso</a></li>
+  <li><a href="#e18-13" id="toc-e18-13" class="nav-link" data-scroll-target="#e18-13">Ejercicio 18.13 · Reducir resistencia a voltaje fijo</a></li>
+  <li><a href="#e18-14" id="toc-e18-14" class="nav-link" data-scroll-target="#e18-14">Ejercicio 18.14 · Dos resistores en serie</a></li>
+  <li><a href="#e18-15" id="toc-e18-15" class="nav-link" data-scroll-target="#e18-15">Ejercicio 18.15 · Dos resistores en paralelo</a></li>
+  <li><a href="#e18-16" id="toc-e18-16" class="nav-link" data-scroll-target="#e18-16">Ejercicio 18.16 · Reconstruir un circuito mixto</a></li>
+  <li><a href="#e18-17" id="toc-e18-17" class="nav-link" data-scroll-target="#e18-17">Ejercicio 18.17 · Leer conexiones por sus nodos</a></li>
+  <li><a href="#e18-18" id="toc-e18-18" class="nav-link" data-scroll-target="#e18-18">Ejercicio 18.18 · Balance de corrientes en una unión</a></li>
+  <li><a href="#e18-19" id="toc-e18-19" class="nav-link" data-scroll-target="#e18-19">Ejercicio 18.19 · Un nodo entre dos fuentes</a></li>
+  <li><a href="#e18-20" id="toc-e18-20" class="nav-link" data-scroll-target="#e18-20">Ejercicio 18.20 · Fuentes en oposición</a></li>
+  <li><a href="#e18-21" id="toc-e18-21" class="nav-link" data-scroll-target="#e18-21">Ejercicio 18.21 · La resistencia del amperímetro</a></li>
+  <li><a href="#e18-22" id="toc-e18-22" class="nav-link" data-scroll-target="#e18-22">Ejercicio 18.22 · Un voltímetro sobre un divisor</a></li>
+  <li><a href="#e18-23" id="toc-e18-23" class="nav-link" data-scroll-target="#e18-23">Ejercicio 18.23 · Comprobar corriente y potencia nominal</a></li>
+  <li><a href="#e18-24" id="toc-e18-24" class="nav-link" data-scroll-target="#e18-24">Ejercicio 18.24 · Abrir una rama de un paralelo</a></li>
+  </ul></li>
+  <li><a href="#soluciones-razonadas" id="toc-soluciones-razonadas" class="nav-link" data-scroll-target="#soluciones-razonadas">Soluciones razonadas</a>
+  <ul class="collapse">
+  <li><a href="#sol-e18-1" id="toc-sol-e18-1" class="nav-link" data-scroll-target="#sol-e18-1">Solución 18.1</a></li>
+  <li><a href="#sol-e18-2" id="toc-sol-e18-2" class="nav-link" data-scroll-target="#sol-e18-2">Solución 18.2</a></li>
+  <li><a href="#sol-e18-3" id="toc-sol-e18-3" class="nav-link" data-scroll-target="#sol-e18-3">Solución 18.3</a></li>
+  <li><a href="#sol-e18-4" id="toc-sol-e18-4" class="nav-link" data-scroll-target="#sol-e18-4">Solución 18.4</a></li>
+  <li><a href="#sol-e18-5" id="toc-sol-e18-5" class="nav-link" data-scroll-target="#sol-e18-5">Solución 18.5</a></li>
+  <li><a href="#sol-e18-6" id="toc-sol-e18-6" class="nav-link" data-scroll-target="#sol-e18-6">Solución 18.6</a></li>
+  <li><a href="#sol-e18-7" id="toc-sol-e18-7" class="nav-link" data-scroll-target="#sol-e18-7">Solución 18.7</a></li>
+  <li><a href="#sol-e18-8" id="toc-sol-e18-8" class="nav-link" data-scroll-target="#sol-e18-8">Solución 18.8</a></li>
+  <li><a href="#sol-e18-9" id="toc-sol-e18-9" class="nav-link" data-scroll-target="#sol-e18-9">Solución 18.9</a></li>
+  <li><a href="#sol-e18-10" id="toc-sol-e18-10" class="nav-link" data-scroll-target="#sol-e18-10">Solución 18.10</a></li>
+  <li><a href="#sol-e18-11" id="toc-sol-e18-11" class="nav-link" data-scroll-target="#sol-e18-11">Solución 18.11</a></li>
+  <li><a href="#sol-e18-12" id="toc-sol-e18-12" class="nav-link" data-scroll-target="#sol-e18-12">Solución 18.12</a></li>
+  <li><a href="#sol-e18-13" id="toc-sol-e18-13" class="nav-link" data-scroll-target="#sol-e18-13">Solución 18.13</a></li>
+  <li><a href="#sol-e18-14" id="toc-sol-e18-14" class="nav-link" data-scroll-target="#sol-e18-14">Solución 18.14</a></li>
+  <li><a href="#sol-e18-15" id="toc-sol-e18-15" class="nav-link" data-scroll-target="#sol-e18-15">Solución 18.15</a></li>
+  <li><a href="#sol-e18-16" id="toc-sol-e18-16" class="nav-link" data-scroll-target="#sol-e18-16">Solución 18.16</a></li>
+  <li><a href="#sol-e18-17" id="toc-sol-e18-17" class="nav-link" data-scroll-target="#sol-e18-17">Solución 18.17</a></li>
+  <li><a href="#sol-e18-18" id="toc-sol-e18-18" class="nav-link" data-scroll-target="#sol-e18-18">Solución 18.18</a></li>
+  <li><a href="#sol-e18-19" id="toc-sol-e18-19" class="nav-link" data-scroll-target="#sol-e18-19">Solución 18.19</a></li>
+  <li><a href="#sol-e18-20" id="toc-sol-e18-20" class="nav-link" data-scroll-target="#sol-e18-20">Solución 18.20</a></li>
+  <li><a href="#sol-e18-21" id="toc-sol-e18-21" class="nav-link" data-scroll-target="#sol-e18-21">Solución 18.21</a></li>
+  <li><a href="#sol-e18-22" id="toc-sol-e18-22" class="nav-link" data-scroll-target="#sol-e18-22">Solución 18.22</a></li>
+  <li><a href="#sol-e18-23" id="toc-sol-e18-23" class="nav-link" data-scroll-target="#sol-e18-23">Solución 18.23</a></li>
+  <li><a href="#sol-e18-24" id="toc-sol-e18-24" class="nav-link" data-scroll-target="#sol-e18-24">Solución 18.24</a></li>
+  </ul></li>
+  <li><a href="#una-experiencia-reconstruir-conexiones-y-comprobar-lecturas" id="toc-una-experiencia-reconstruir-conexiones-y-comprobar-lecturas" class="nav-link" data-scroll-target="#una-experiencia-reconstruir-conexiones-y-comprobar-lecturas">Una experiencia: reconstruir conexiones y comprobar lecturas</a>
+  <ul class="collapse">
+  <li><a href="#experiencia-dos-dibujos-del-mismo-circuito" id="toc-experiencia-dos-dibujos-del-mismo-circuito" class="nav-link" data-scroll-target="#experiencia-dos-dibujos-del-mismo-circuito">Experiencia · Dos dibujos del mismo circuito</a></li>
+  </ul></li>
+  <li><a href="#diagnóstico-antes-de-avanzar" id="toc-diagnóstico-antes-de-avanzar" class="nav-link" data-scroll-target="#diagnóstico-antes-de-avanzar">Diagnóstico antes de avanzar</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">18. Corriente eléctrica y circuitos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="capitulo-17.html">← Capítulo anterior</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-19.html">Capítulo siguiente →</a></p>
+<p>Al conectar una pila a un resistor, las cargas del conductor adquieren un movimiento de deriva y la pila comienza a entregar energía. Para describir lo que ocurre necesitamos conocer cuánta carga atraviesa cada sección por segundo y qué energía se transfiere por unidad de carga. Esas dos preguntas conducirán a la corriente y al voltaje de los elementos.</p>
+<p>Un circuito puede dibujarse de muchas maneras conservando sus conexiones. Aprenderemos a reconocerlas, a seguir el potencial por distintos recorridos y a comprobar que la energía entregada por las fuentes coincide con la que reciben los otros elementos. Las mediciones entrarán en esa misma descripción: al conectar un instrumento también estamos modificando la red.</p>
+<section id="corriente-seguir-la-carga-que-atraviesa-una-sección" class="level2">
+<h2 class="anchored" data-anchor-id="corriente-seguir-la-carga-que-atraviesa-una-sección">Corriente: seguir la carga que atraviesa una sección</h2>
+<p>Imaginemos una sección transversal fija de un cable. La carga que la atraviesa durante un intervalo permite definir la corriente media, <span class="math display">\[
+I_{\mathrm{med}}=\frac{\Delta Q}{\Delta t},\qquad
+I(t)=\frac{dQ}{dt}.
+\]</span> El ampere, símbolo <span class="math inline">\(\,\mathrm{A}\)</span>, equivale a un coulomb por segundo. La función <span class="math inline">\(Q(t)\)</span> cuenta la transferencia acumulada con signo respecto de un sentido elegido. Una corriente de <span class="math inline">\(0{,}20\,\mathrm{A}\)</span> mantenida durante <span class="math inline">\(5\,\mathrm{s}\)</span> corresponde al paso de <span class="math inline">\(1\,\mathrm{C}\)</span> de carga convencional en ese sentido. Para una corriente variable, la carga transferida es el área con signo bajo su gráfica: <span class="math display">\[
+\Delta Q=\int_{t_i}^{t_f}I(t)\,dt.
+\]</span></p>
+<p>El sentido convencional de la corriente es el del transporte de carga positiva. En un metal, los portadores móviles son electrones: su deriva apunta en sentido opuesto. En una disolución pueden contribuir iones de ambos signos; un ion positivo hacia la derecha y uno negativo hacia la izquierda aportan corriente convencional hacia la derecha. Al asignar una flecha a una rama fijamos una referencia. Un valor negativo del cálculo indica corriente convencional en el sentido contrario.</p>
+<section id="r18-1" class="level3">
+<h3 class="anchored" data-anchor-id="r18-1">Problema resuelto 18.1 · Contar la transferencia de carga</h3>
+<p>Un cable metálico conduce una corriente constante de <span class="math inline">\(0{,}250\,\mathrm{A}\)</span> durante <span class="math inline">\(120\,\mathrm{s}\)</span>. Halla la carga convencional transferida y el número neto de electrones que atraviesa una sección. Usa <span class="math inline">\(e=1{,}602176634\times10^{-19}\,\mathrm{C}\)</span>. <em>Resolución.</em> La corriente fija una tasa de transferencia, de modo que <span class="math display">\[
+\Delta Q=I\Delta t=(0{,}250)(120)=30{,}0\,\mathrm{C},
+\qquad N=\frac{|\Delta Q|}{e}\simeq1{,}87\times10^{20}.
+\]</span> Los electrones cruzan en sentido opuesto a la flecha de corriente. El conteo expresa el transporte neto durante esos dos minutos; en el cable hay además movimiento microscópico en muchas direcciones.</p>
+<div id="fig-fp-av-r18-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.1 · Contar la transferencia de carga. Un cable metálico conduce una corriente constante de 0,250\,A durante 120\,s. Halla la carga convencional transferida y el número neto de electrones que atraviesa una sección. Usa e=1,602176634times10^-19\,C. Resolución. La corriente fija una tasa de transferencia, de modo que Delta Q=IDelta t=(0,250)(120)=30,0\,C,">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-1.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.1 · Contar la transferencia de carga. Un cable metálico conduce una corriente constante de 0,250\,A durante 120\,s. Halla la carga convencional transferida y el número neto de electrones que atraviesa una sección. Usa e=1,602176634times10^-19\,C. Resolución. La corriente fija una tasa de transferencia, de modo que Delta Q=IDelta t=(0,250)(120)=30,0\,C,">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Apoyo visual: Problema resuelto 18.1 · Contar la transferencia de carga.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r18-2" class="level3">
+<h3 class="anchored" data-anchor-id="r18-2">Problema resuelto 18.2 · Acumular carga con una corriente variable</h3>
+<p>Una corriente aumenta linealmente de cero a <span class="math inline">\(0{,}600\,\mathrm{A}\)</span> entre <span class="math inline">\(t=0\)</span> y <span class="math inline">\(t=4{,}00\,\mathrm{s}\)</span>, y conserva ese valor hasta <span class="math inline">\(t=10{,}0\,\mathrm{s}\)</span>. Calcula la carga transferida y la corriente media de los diez segundos. <em>Resolución.</em> El primer intervalo aporta el área de un triángulo y el segundo, la de un rectángulo: <span class="math display">\[
+\Delta Q=\frac12(4{,}00)(0{,}600)+(6{,}00)(0{,}600)
+=1{,}20+3{,}60=4{,}80\,\mathrm{C}.
+\]</span> La corriente media es <span class="math inline">\(4{,}80/10{,}0=0{,}480\,\mathrm{A}\)</span>. El área reúne la transferencia de ambos intervalos y permite compararla con una corriente constante equivalente en ese tiempo.</p>
+<div id="fig-fp-av-r18-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.2 · Acumular carga con una corriente variable. Una corriente aumenta linealmente de cero a 0,600\,A entre t=0 y t=4,00\,s, y conserva ese valor hasta t=10,0\,s. Calcula la carga transferida y la corriente media de los diez segundos. Resolución. El primer intervalo aporta el área de un triángulo y el segundo, la de un rectángulo: Delta">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-2.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.2 · Acumular carga con una corriente variable. Una corriente aumenta linealmente de cero a 0,600\,A entre t=0 y t=4,00\,s, y conserva ese valor hasta t=10,0\,s. Calcula la carga transferida y la corriente media de los diez segundos. Resolución. El primer intervalo aporta el área de un triángulo y el segundo, la de un rectángulo: Delta">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Apoyo visual: Problema resuelto 18.2 · Acumular carga con una corriente variable.
+</figcaption>
+</figure>
+</div>
+<p>En un modelo uniforme, con <span class="math inline">\(n\)</span> portadores por unidad de volumen, carga de magnitud <span class="math inline">\(|q|\)</span>, sección <span class="math inline">\(A\)</span> y rapidez de deriva <span class="math inline">\(v_d\)</span>, durante <span class="math inline">\(\Delta t\)</span> atraviesan la sección los portadores contenidos en un volumen <span class="math inline">\(Av_d\Delta t\)</span>. Por tanto, la magnitud de la corriente es <span class="math display">\[
+|I|=n|q|Av_d.
+\]</span> La rapidez de deriva describe un promedio del movimiento. Al cerrar un interruptor, el campo electromagnético se reorganiza a lo largo del circuito y pone en deriva cargas que ya estaban distribuidas por él. La propagación de esa perturbación depende del medio y de la geometría; puede ser mucho más rápida que la deriva de cada electrón. La corriente mide transferencia de carga por tiempo, mientras que <span class="math inline">\(v_d\)</span> mide distancia por tiempo.</p>
+<p>En un conductor resistivo con corriente estacionaria hay un campo eléctrico interno que sostiene esa deriva. La condición de campo cero del capítulo anterior corresponde al equilibrio electrostático. Las interacciones de los portadores con el material transfieren energía a sus grados de libertad microscópicos y permiten una deriva media estable.</p>
+</section>
+<section id="r18-3" class="level3">
+<h3 class="anchored" data-anchor-id="r18-3">Problema resuelto 18.3 · Obtener una rapidez de deriva</h3>
+<p>Un conductor contiene <span class="math inline">\(n=8{,}00\times10^{28}\,\mathrm{m^{-3}}\)</span> electrones móviles, tiene sección <span class="math inline">\(1{,}00\,\mathrm{mm^2}\)</span> y conduce <span class="math inline">\(1{,}60\,\mathrm{A}\)</span>. Calcula la rapidez de deriva. <em>Resolución.</em> La conversión de área es <span class="math inline">\(1\,\mathrm{mm^2}=10^{-6}\,\mathrm{m^2}\)</span>. Así, <span class="math display">\[
+v_d=\frac{1{,}60}{(8{,}00\times10^{28})e(10^{-6})}
+\simeq1{,}25\times10^{-4}\,\mathrm{m/s}.
+\]</span> Un desplazamiento medio de un metro a esa rapidez tomaría aproximadamente <span class="math inline">\(8{,}01\times10^3\,\mathrm{s}\)</span>, unas <span class="math inline">\(2{,}23\,\mathrm{h}\)</span>. Ese tiempo caracteriza el desplazamiento medio de portadores, y la respuesta eléctrica del circuito se establece mediante la propagación del campo.</p>
+<div id="fig-fp-av-r18-3" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.3 · Obtener una rapidez de deriva. Un conductor contiene n=8,00times10^28\,mathrmm^-3 electrones móviles, tiene sección 1,00\,mm^2 y conduce 1,60\,A. Calcula la rapidez de deriva. Resolución. La conversión de área es 1\,mm^2=10^-6\,m^2. Así, vd=frac1,60(8,00times10^28)e(10^-6) simeq1,25times10^-4\,m/s. Un desplazamiento medio de un metro a esa rapidez">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-3.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.3 · Obtener una rapidez de deriva. Un conductor contiene n=8,00times10^28\,mathrmm^-3 electrones móviles, tiene sección 1,00\,mm^2 y conduce 1,60\,A. Calcula la rapidez de deriva. Resolución. La conversión de área es 1\,mm^2=10^-6\,m^2. Así, vd=frac1,60(8,00times10^28)e(10^-6) simeq1,25times10^-4\,m/s. Un desplazamiento medio de un metro a esa rapidez">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Apoyo visual: Problema resuelto 18.3 · Obtener una rapidez de deriva.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="resistencia-material-y-temperatura" class="level2">
+<h2 class="anchored" data-anchor-id="resistencia-material-y-temperatura">Resistencia, material y temperatura</h2>
+<p>Para estudiar un elemento de dos terminales, llamemos <span class="math inline">\(a\)</span> al terminal por el que entra la corriente de referencia <span class="math inline">\(I\)</span> y definamos <span class="math inline">\(V_{ab}=V_a-V_b\)</span>. En un resistor óhmico, dentro del intervalo de operación y temperatura considerado, <span class="math display">\[
+V_{ab}=RI.
+\]</span> La resistencia <span class="math inline">\(R\)</span> se mide en ohms: <span class="math inline">\(1\,\mathrm{\Omega}=1\,\mathrm{V/A}\)</span>. La gráfica de <span class="math inline">\(V_{ab}\)</span> frente a <span class="math inline">\(I\)</span> es una recta que pasa por el origen, con pendiente <span class="math inline">\(R\)</span>. Cuando <span class="math inline">\(R&gt;0\)</span>, la corriente convencional atraviesa el resistor hacia potenciales menores.</p>
+<p>La proporcionalidad expresa un comportamiento experimental de determinados elementos bajo condiciones dadas. El cociente <span class="math inline">\(V/I\)</span> también puede calcularse en un punto de operación de un dispositivo de respuesta curva, pero ese valor por sí solo describe únicamente ese punto. Una lámpara incandescente, por ejemplo, cambia considerablemente su temperatura al variar la corriente y presenta una relación voltaje–corriente que exige tomar en cuenta ese calentamiento.</p>
+<section id="r18-4" class="level3">
+<h3 class="anchored" data-anchor-id="r18-4">Problema resuelto 18.4 · Reconocer una respuesta óhmica</h3>
+<p>Manteniendo la temperatura de un elemento, se miden los pares <span class="math inline">\((I,V)=(0{,}050\,\mathrm{A},1{,}00\,\mathrm{V})\)</span>, <span class="math inline">\((0{,}100\,\mathrm{A},2{,}00\,\mathrm{V})\)</span> y <span class="math inline">\((0{,}150\,\mathrm{A},3{,}00\,\mathrm{V})\)</span>. Encuentra su resistencia y predice la corriente a <span class="math inline">\(4{,}00\,\mathrm{V}\)</span> si la proporcionalidad continúa. <em>Resolución.</em> Los tres cocientes son iguales: <span class="math inline">\(V/I=20{,}0\,\mathrm{\Omega}\)</span>. Los puntos son compatibles con un modelo óhmico en el intervalo medido. Su prolongación hasta <span class="math inline">\(4{,}00\,\mathrm{V}\)</span> da <span class="math inline">\(I=4{,}00/20{,}0=0{,}200\,\mathrm{A}\)</span>. La predicción mantiene explícitas la temperatura y la continuidad del modelo fuera de los datos medidos.</p>
+<div id="fig-fp-av-r18-4" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.4 · Reconocer una respuesta óhmica. Manteniendo la temperatura de un elemento, se miden los pares (I,V)=(0,050\,A,1,00\,V), (0,100\,A,2,00\,V) y (0,150\,A,3,00\,V). Encuentra su resistencia y predice la corriente a 4,00\,V si la proporcionalidad continúa. Resolución. Los tres cocientes son iguales: V/I=20,0\,Omega. Los puntos son compatibles con un">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-4.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.4 · Reconocer una respuesta óhmica. Manteniendo la temperatura de un elemento, se miden los pares (I,V)=(0,050\,A,1,00\,V), (0,100\,A,2,00\,V) y (0,150\,A,3,00\,V). Encuentra su resistencia y predice la corriente a 4,00\,V si la proporcionalidad continúa. Resolución. Los tres cocientes son iguales: V/I=20,0\,Omega. Los puntos son compatibles con un">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Apoyo visual: Problema resuelto 18.4 · Reconocer una respuesta óhmica.
+</figcaption>
+</figure>
+</div>
+<p>Para un alambre homogéneo, de sección uniforme, longitud <span class="math inline">\(L\)</span> y resistividad <span class="math inline">\(\rho\)</span>, <span class="math display">\[
+R=\rho\frac{L}{A}.
+\]</span> La resistividad, en <span class="math inline">\(\,\mathrm{\Omega\,m}\)</span>, caracteriza la respuesta del material en las condiciones indicadas. Al aumentar la longitud se suma resistencia a lo largo del recorrido; al aumentar el área se ofrecen más caminos de transporte simultáneo. La resistencia depende de ambos aspectos geométricos. Si la sección es circular, <span class="math inline">\(A=\pi d^2/4\)</span>, y duplicar el diámetro multiplica el área por cuatro.</p>
+</section>
+<section id="r18-5" class="level3">
+<h3 class="anchored" data-anchor-id="r18-5">Problema resuelto 18.5 · Cambiar la geometría conservando material</h3>
+<p>Un alambre tiene <span class="math inline">\(\rho=2{,}00\times10^{-8}\,\mathrm{\Omega\,m}\)</span>, longitud <span class="math inline">\(2{,}00\,\mathrm{m}\)</span> y sección <span class="math inline">\(0{,}500\,\mathrm{mm^2}\)</span>. Se fabrica con el mismo volumen otro alambre de longitud <span class="math inline">\(4{,}00\,\mathrm{m}\)</span>. Supón resistividad y temperatura constantes. Calcula ambas resistencias. <em>Resolución.</em> Inicialmente, <span class="math display">\[
+R=\frac{(2{,}00\times10^{-8})(2{,}00)}{0{,}500\times10^{-6}}
+=0{,}0800\,\mathrm{\Omega}.
+\]</span> Conservar <span class="math inline">\(AL\)</span> exige reducir la sección a <span class="math inline">\(0{,}250\,\mathrm{mm^2}\)</span>. La nueva longitud se duplica y el área se reduce a la mitad, de modo que <span class="math inline">\(R'=4R=0{,}320\,\mathrm{\Omega}\)</span>. Hay que seguir los dos cambios geométricos.</p>
+<div id="fig-fp-av-r18-5" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.5 · Cambiar la geometría conservando material. Un alambre tiene rho=2,00times10^-8\,Omega\,m, longitud 2,00\,m y sección 0,500\,mm^2. Se fabrica con el mismo volumen otro alambre de longitud 4,00\,m. Supón resistividad y temperatura constantes. Calcula ambas resistencias. Resolución. Inicialmente, R=frac(2,00times10^-8)(2,00)0,500times10^-6 =0,0800\,Omega.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-5.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.5 · Cambiar la geometría conservando material. Un alambre tiene rho=2,00times10^-8\,Omega\,m, longitud 2,00\,m y sección 0,500\,mm^2. Se fabrica con el mismo volumen otro alambre de longitud 4,00\,m. Supón resistividad y temperatura constantes. Calcula ambas resistencias. Resolución. Inicialmente, R=frac(2,00times10^-8)(2,00)0,500times10^-6 =0,0800\,Omega.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Apoyo visual: Problema resuelto 18.5 · Cambiar la geometría conservando material.
+</figcaption>
+</figure>
+</div>
+<p>En muchos metales, para un intervalo de temperatura suficientemente limitado, se usa la aproximación lineal <span class="math display">\[
+R(T)\simeq R_0[1+\alpha(T-T_0)].
+\]</span> Aquí <span class="math inline">\(R_0\)</span> corresponde a <span class="math inline">\(T_0\)</span> y <span class="math inline">\(\alpha\)</span> es el coeficiente referido a esa temperatura, con unidades <span class="math inline">\(\,\mathrm{K^{-1}}\)</span> o <span class="math inline">\(\,\mathrm{{}^{\circ}C^{-1}}\)</span> para diferencias de temperatura. Su empleo supone que la respuesta puede aproximarse por una recta en el intervalo dado; también suele despreciar la pequeña contribución del cambio geométrico. Otros materiales pueden tener coeficientes de distinto signo y respuestas que requieren otro modelo.</p>
+</section>
+<section id="r18-6" class="level3">
+<h3 class="anchored" data-anchor-id="r18-6">Problema resuelto 18.6 · Incluir el calentamiento de un resistor</h3>
+<p>Un resistor tiene <span class="math inline">\(R_0=10{,}0\,\mathrm{\Omega}\)</span> a <span class="math inline">\(20{,}0\,{}^{\circ}\mathrm C\)</span> y <span class="math inline">\(\alpha=4{,}00\times10^{-3}\,\mathrm{K^{-1}}\)</span>. El modelo lineal es válido hasta <span class="math inline">\(70{,}0\,{}^{\circ}\mathrm C\)</span>. Halla su resistencia a esa temperatura y la corriente si se mantienen <span class="math inline">\(6{,}00\,\mathrm{V}\)</span> entre sus terminales. <em>Resolución.</em> El aumento de temperatura es <span class="math inline">\(50{,}0\,\mathrm{K}\)</span>. Por tanto, <span class="math display">\[
+R=10{,}0[1+(0{,}00400)(50{,}0)]=12{,}0\,\mathrm{\Omega},
+\qquad I=\frac{6{,}00}{12{,}0}=0{,}500\,\mathrm{A}.
+\]</span> A <span class="math inline">\(20\,{}^{\circ}\mathrm C\)</span> la misma diferencia de potencial produciría <span class="math inline">\(0{,}600\,\mathrm{A}\)</span>. El modelo relaciona el estado térmico con la corriente; para predecir cómo se alcanza esa temperatura haría falta además estudiar los intercambios térmicos.</p>
+<div id="fig-fp-av-r18-6" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.6 · Incluir el calentamiento de un resistor. Un resistor tiene R0=10,0\,Omega a 20,0\,^circmathrm C y alpha=4,00times10^-3\,mathrmK^-1. El modelo lineal es válido hasta 70,0\,^circmathrm C. Halla su resistencia a esa temperatura y la corriente si se mantienen 6,00\,V entre sus terminales. Resolución. El aumento de temperatura es 50,0\,K. Por tanto,">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-6.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.6 · Incluir el calentamiento de un resistor. Un resistor tiene R0=10,0\,Omega a 20,0\,^circmathrm C y alpha=4,00times10^-3\,mathrmK^-1. El modelo lineal es válido hasta 70,0\,^circmathrm C. Halla su resistencia a esa temperatura y la corriente si se mantienen 6,00\,V entre sus terminales. Resolución. El aumento de temperatura es 50,0\,K. Por tanto,">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Apoyo visual: Problema resuelto 18.6 · Incluir el calentamiento de un resistor.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="fuentes-energía-por-unidad-de-carga" class="level2">
+<h2 class="anchored" data-anchor-id="fuentes-energía-por-unidad-de-carga">Fuentes: energía por unidad de carga</h2>
+<p>Un resistor con corriente transforma energía eléctrica en energía interna. Para sostener el proceso, el circuito necesita una fuente que transfiera energía a los portadores mediante procesos químicos, mecánicos u otros. La fuerza electromotriz, o fem, se define como la energía que esos procesos aportan por unidad de carga transportada en el sentido de elevación de potencial de la fuente ideal: <span class="math display">\[
+\mathcal E=\frac{W_{\mathrm{fuente}}}{Q}.
+\]</span> Su unidad es el volt. El nombre histórico designa una energía por carga. Una fuente ideal mantiene entre sus terminales el voltaje <span class="math inline">\(\mathcal E\)</span>; la corriente depende de la red conectada. Los alambres ideales de nuestros esquemas tienen resistencia despreciable y cada tramo conectado sin elementos intermedios constituye un mismo nodo, de potencial único dentro de este modelo.</p>
+<p>En los esquemas, un rectángulo representa un resistor y un círculo con signos <span class="math inline">\(+\)</span> y <span class="math inline">\(-\)</span> representa una fuente ideal de voltaje. Los puntos sólidos señalan uniones de conductores. Los instrumentos de medición aparecerán como círculos con las letras A o V.</p>
+<p>Una fuente real puede representarse, en un intervalo de operación, mediante una fem ideal <span class="math inline">\(\mathcal E\)</span> en serie con una resistencia interna <span class="math inline">\(r\)</span>. Durante la descarga, si sale una corriente <span class="math inline">\(I\)</span> por el terminal positivo, su voltaje terminal es <span class="math display">\[
+V_{\mathrm{term}}=\mathcal E-Ir.
+\]</span> Al conectar un resistor externo <span class="math inline">\(R\)</span>, el balance por unidad de carga da <span class="math inline">\(\mathcal E=I(R+r)\)</span>, luego <span class="math inline">\(I=\mathcal E/(R+r)\)</span>. En circuito abierto, la corriente estacionaria es cero y el modelo da <span class="math inline">\(V_{\mathrm{term}}=\mathcal E\)</span>. La fem y <span class="math inline">\(r\)</span> de una pila real pueden cambiar con su estado de carga, su temperatura y el régimen de uso.</p>
+<section id="r18-7" class="level3">
+<h3 class="anchored" data-anchor-id="r18-7">Problema resuelto 18.7 · Separar voltaje terminal y fem</h3>
+<p>Una fuente tiene <span class="math inline">\(\mathcal E=9{,}00\,\mathrm{V}\)</span> y <span class="math inline">\(r=1{,}00\,\mathrm{\Omega}\)</span>. Alimenta un resistor de <span class="math inline">\(8{,}00\,\mathrm{\Omega}\)</span>. Calcula la corriente, el voltaje terminal y la energía transferida por coulomb en cada parte. <em>Resolución.</em> La corriente es <span class="math display">\[
+I=\frac{9{,}00}{8{,}00+1{,}00}=1{,}00\,\mathrm{A},
+\qquad V_{\mathrm{term}}=9{,}00-(1{,}00)(1{,}00)=8{,}00\,\mathrm{V}.
+\]</span> Por cada coulomb convencional, los procesos de la fuente entregan <span class="math inline">\(9\,\mathrm{J}\)</span>; el resistor externo recibe <span class="math inline">\(8\,\mathrm{J}\)</span> y la resistencia interna, <span class="math inline">\(1\,\mathrm{J}\)</span>. El voltaje terminal también se comprueba con <span class="math inline">\(IR=8\,\mathrm{V}\)</span>.</p>
+<div id="fig-fp-av-r18-7" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.7 · Separar voltaje terminal y fem. Una fuente tiene mathcal E=9,00\,V y r=1,00\,Omega. Alimenta un resistor de 8,00\,Omega. Calcula la corriente, el voltaje terminal y la energía transferida por coulomb en cada parte. Resolución. La corriente es I=frac9,008,00+1,00=1,00\,A, qquad Vterm=9,00-(1,00)(1,00)=8,00\,V. Por cada coulomb convencional, los">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-7.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.7 · Separar voltaje terminal y fem. Una fuente tiene mathcal E=9,00\,V y r=1,00\,Omega. Alimenta un resistor de 8,00\,Omega. Calcula la corriente, el voltaje terminal y la energía transferida por coulomb en cada parte. Resolución. La corriente es I=frac9,008,00+1,00=1,00\,A, qquad Vterm=9,00-(1,00)(1,00)=8,00\,V. Por cada coulomb convencional, los">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Apoyo visual: Problema resuelto 18.7 · Separar voltaje terminal y fem.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r18-8" class="level3">
+<h3 class="anchored" data-anchor-id="r18-8">Problema resuelto 18.8 · Inferir un modelo de fuente a partir de mediciones</h3>
+<p>Una fuente en descarga presenta <span class="math inline">\(2{,}90\,\mathrm{V}\)</span> cuando entrega <span class="math inline">\(0{,}200\,\mathrm{A}\)</span> y <span class="math inline">\(2{,}60\,\mathrm{V}\)</span> cuando entrega <span class="math inline">\(0{,}800\,\mathrm{A}\)</span>. Supón constantes <span class="math inline">\(\mathcal E\)</span> y <span class="math inline">\(r\)</span> entre ambas mediciones. Halla sus valores. <em>Resolución.</em> Al restar <span class="math inline">\(V_1=\mathcal E-I_1r\)</span> y <span class="math inline">\(V_2=\mathcal E-I_2r\)</span>, resulta <span class="math display">\[
+r=\frac{2{,}90-2{,}60}{0{,}800-0{,}200}
+=0{,}500\,\mathrm{\Omega}.
+\]</span> Entonces <span class="math inline">\(\mathcal E=2{,}90+(0{,}200)(0{,}500)=3{,}00\,\mathrm{V}\)</span>. En la gráfica de voltaje terminal frente a corriente, la ordenada en el origen es <span class="math inline">\(\mathcal E\)</span> y la pendiente es <span class="math inline">\(-r\)</span>.</p>
+<div id="fig-fp-av-r18-8" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.8 · Inferir un modelo de fuente a partir de mediciones. Una fuente en descarga presenta 2,90\,V cuando entrega 0,200\,A y 2,60\,V cuando entrega 0,800\,A. Supón constantes mathcal E y r entre ambas mediciones. Halla sus valores. Resolución. Al restar V1=mathcal E-I1r y V2=mathcal E-I2r, resulta r=frac2,90-2,600,800-0,200 =0,500\,Omega. Entonces mathcal">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-8.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.8 · Inferir un modelo de fuente a partir de mediciones. Una fuente en descarga presenta 2,90\,V cuando entrega 0,200\,A y 2,60\,V cuando entrega 0,800\,A. Supón constantes mathcal E y r entre ambas mediciones. Halla sus valores. Resolución. Al restar V1=mathcal E-I1r y V2=mathcal E-I2r, resulta r=frac2,90-2,600,800-0,200 =0,500\,Omega. Entonces mathcal">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Apoyo visual: Problema resuelto 18.8 · Inferir un modelo de fuente a partir de mediciones.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="potencia-y-energía-transferida" class="level2">
+<h2 class="anchored" data-anchor-id="potencia-y-energía-transferida">Potencia y energía transferida</h2>
+<p>Si una carga <span class="math inline">\(\Delta Q\)</span> atraviesa un elemento desde <span class="math inline">\(a\)</span> hacia <span class="math inline">\(b\)</span>, la disminución de su energía potencial es <span class="math inline">\(V_{ab}\Delta Q\)</span>. Con la corriente de referencia entrando por <span class="math inline">\(a\)</span>, la potencia eléctrica recibida por el elemento es <span class="math display">\[
+P=V_{ab}I.
+\]</span> Esta convención permite interpretar el signo: <span class="math inline">\(P&gt;0\)</span> corresponde a recepción de energía eléctrica y <span class="math inline">\(P&lt;0\)</span>, a entrega. En un resistor óhmico, sustituir <span class="math inline">\(V_{ab}=RI\)</span> produce <span class="math display">\[
+P=I^2R=\frac{V_{ab}^2}{R}.
+\]</span> Las tres expresiones se refieren al mismo estado de operación. Para comparar estados, hay que identificar qué mantiene el circuito: una fuente de voltaje fijo y una fuente de corriente fija conducen a comparaciones diferentes.</p>
+<p>En régimen constante, la energía transferida durante <span class="math inline">\(\Delta t\)</span> es <span class="math inline">\(E_{\mathrm{trans}}=P\Delta t\)</span>. Si la potencia varía, se integra sobre el tiempo. El joule es la unidad SI; el kilowatt-hora es otra unidad de energía, con <span class="math display">\[
+1\,\mathrm{kWh}=10^3\,\mathrm{W}\times3600\,\mathrm{s}=3{,}60\times10^6\,\mathrm{J}.
+\]</span> El producto potencia por tiempo mide una acumulación. Al hablar de consumo de energía, seguimos su transferencia y transformación en el dispositivo y su entorno, de acuerdo con la conservación de la energía estudiada en los capítulos anteriores.</p>
+<section id="r18-9" class="level3">
+<h3 class="anchored" data-anchor-id="r18-9">Problema resuelto 18.9 · Pasar de voltaje y resistencia a energía</h3>
+<p>Un resistor óhmico de <span class="math inline">\(24{,}0\,\mathrm{\Omega}\)</span> se mantiene a <span class="math inline">\(12{,}0\,\mathrm{V}\)</span> durante <span class="math inline">\(5{,}00\,\mathrm{min}\)</span>. Supón resistencia constante. Calcula corriente, potencia y energía en joules y kilowatt-horas. <em>Resolución.</em> La corriente es <span class="math inline">\(I=12{,}0/24{,}0=0{,}500\,\mathrm{A}\)</span>. La potencia recibida es <span class="math inline">\(P=VI=(12{,}0)(0{,}500)=6{,}00\,\mathrm{W}\)</span>. En <span class="math inline">\(300\,\mathrm{s}\)</span> se transfieren <span class="math display">\[
+E_{\mathrm{trans}}=(6{,}00)(300)=1{,}80\times10^3\,\mathrm{J}
+=5{,}00\times10^{-4}\,\mathrm{kWh}.
+\]</span> Si la temperatura del resistor permaneciera constante, esa energía tendría que salir hacia el entorno a la misma tasa media a la que entra, una vez alcanzado el régimen térmico estacionario.</p>
+<div id="fig-fp-av-r18-9" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.9 · Pasar de voltaje y resistencia a energía. Un resistor óhmico de 24,0\,Omega se mantiene a 12,0\,V durante 5,00\,min. Supón resistencia constante. Calcula corriente, potencia y energía en joules y kilowatt-horas. Resolución. La corriente es I=12,0/24,0=0,500\,A. La potencia recibida es P=VI=(12,0)(0,500)=6,00\,W. En 300\,s se transfieren">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-9.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.9 · Pasar de voltaje y resistencia a energía. Un resistor óhmico de 24,0\,Omega se mantiene a 12,0\,V durante 5,00\,min. Supón resistencia constante. Calcula corriente, potencia y energía en joules y kilowatt-horas. Resolución. La corriente es I=12,0/24,0=0,500\,A. La potencia recibida es P=VI=(12,0)(0,500)=6,00\,W. En 300\,s se transfieren">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9: Apoyo visual: Problema resuelto 18.9 · Pasar de voltaje y resistencia a energía.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r18-10" class="level3">
+<h3 class="anchored" data-anchor-id="r18-10">Problema resuelto 18.10 · Comparar potencias y explicitar qué se mantiene</h3>
+<p>Compara resistores de <span class="math inline">\(6{,}00\,\mathrm{\Omega}\)</span> y <span class="math inline">\(12{,}0\,\mathrm{\Omega}\)</span> cuando cada uno se conecta por separado a <span class="math inline">\(6{,}00\,\mathrm{V}\)</span>. Repite la comparación si una fuente mantiene <span class="math inline">\(0{,}500\,\mathrm{A}\)</span> en cada ensayo. <em>Resolución.</em> A voltaje fijo, <span class="math inline">\(P=V^2/R\)</span>: las potencias son <span class="math inline">\(6{,}00\,\mathrm{W}\)</span> y <span class="math inline">\(3{,}00\,\mathrm{W}\)</span>, respectivamente. A corriente fija, <span class="math inline">\(P=I^2R\)</span>: son <span class="math inline">\(1{,}50\,\mathrm{W}\)</span> y <span class="math inline">\(3{,}00\,\mathrm{W}\)</span>. En el segundo ensayo la fuente ajusta el voltaje a <span class="math inline">\(3{,}00\,\mathrm{V}\)</span> o <span class="math inline">\(6{,}00\,\mathrm{V}\)</span> para sostener la misma corriente. La condición impuesta por la fuente determina cómo cambia la potencia.</p>
+<div id="fig-fp-av-r18-10" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.10 · Comparar potencias y explicitar qué se mantiene. Compara resistores de 6,00\,Omega y 12,0\,Omega cuando cada uno se conecta por separado a 6,00\,V. Repite la comparación si una fuente mantiene 0,500\,A en cada ensayo. Resolución. A voltaje fijo, P=V^2/R: las potencias son 6,00\,W y 3,00\,W, respectivamente. A corriente fija, P=I^2R: son 1,50\,W y 3,00\,W. En el">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-10.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.10 · Comparar potencias y explicitar qué se mantiene. Compara resistores de 6,00\,Omega y 12,0\,Omega cuando cada uno se conecta por separado a 6,00\,V. Repite la comparación si una fuente mantiene 0,500\,A en cada ensayo. Resolución. A voltaje fijo, P=V^2/R: las potencias son 6,00\,W y 3,00\,W, respectivamente. A corriente fija, P=I^2R: son 1,50\,W y 3,00\,W. En el">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Apoyo visual: Problema resuelto 18.10 · Comparar potencias y explicitar qué se mantiene.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="reconocer-conexiones-y-reducir-una-red" class="level2">
+<h2 class="anchored" data-anchor-id="reconocer-conexiones-y-reducir-una-red">Reconocer conexiones y reducir una red</h2>
+<p>La información decisiva de un esquema reside en qué terminales están conectados. Dos resistores están en serie cuando comparten una unión sin derivaciones y, por tanto, llevan la misma corriente en régimen estacionario. El voltaje entre los extremos del conjunto se obtiene sumando las caídas: <span class="math display">\[
+V=IR_1+IR_2=I(R_1+R_2),\qquad
+R_{\mathrm{eq,serie}}=\sum_i R_i.
+\]</span> El equivalente reproduce la relación entre el voltaje aplicado al conjunto y la corriente que entra por sus terminales. La suma es mayor que cualquiera de sus resistencias positivas individuales.</p>
+<section id="r18-11" class="level3">
+<h3 class="anchored" data-anchor-id="r18-11">Problema resuelto 18.11 · Repartir voltajes en una conexión en serie</h3>
+<p>Una fuente ideal de <span class="math inline">\(12{,}0\,\mathrm{V}\)</span> alimenta resistores de <span class="math inline">\(4{,}00\,\mathrm{\Omega}\)</span> y <span class="math inline">\(8{,}00\,\mathrm{\Omega}\)</span> en serie. Calcula la corriente, los voltajes y las potencias. <em>Resolución.</em> La resistencia equivalente es <span class="math inline">\(12{,}0\,\mathrm{\Omega}\)</span> y la corriente común, <span class="math inline">\(1{,}00\,\mathrm{A}\)</span>. Los voltajes son <span class="math inline">\(4{,}00\,\mathrm{V}\)</span> y <span class="math inline">\(8{,}00\,\mathrm{V}\)</span>; su suma recupera los <span class="math inline">\(12{,}0\,\mathrm{V}\)</span> de la fuente. Las potencias son <span class="math inline">\(4{,}00\,\mathrm{W}\)</span> y <span class="math inline">\(8{,}00\,\mathrm{W}\)</span>, que suman los <span class="math inline">\(12{,}0\,\mathrm{W}\)</span> entregados. En cada resistor entra y sale la misma corriente: la transferencia de energía se manifiesta en la caída de potencial.</p>
+<div id="fig-fp-av-r18-11" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.11 · Repartir voltajes en una conexión en serie. Una fuente ideal de 12,0\,V alimenta resistores de 4,00\,Omega y 8,00\,Omega en serie. Calcula la corriente, los voltajes y las potencias. Resolución. La resistencia equivalente es 12,0\,Omega y la corriente común, 1,00\,A. Los voltajes son 4,00\,V y 8,00\,V; su suma recupera los 12,0\,V de la fuente. Las potencias">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-11.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.11 · Repartir voltajes en una conexión en serie. Una fuente ideal de 12,0\,V alimenta resistores de 4,00\,Omega y 8,00\,Omega en serie. Calcula la corriente, los voltajes y las potencias. Resolución. La resistencia equivalente es 12,0\,Omega y la corriente común, 1,00\,A. Los voltajes son 4,00\,V y 8,00\,V; su suma recupera los 12,0\,V de la fuente. Las potencias">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;11: Apoyo visual: Problema resuelto 18.11 · Repartir voltajes en una conexión en serie.
+</figcaption>
+</figure>
+</div>
+<p>Dos resistores están en paralelo cuando sus terminales se conectan a los mismos dos nodos. Ambos tienen el mismo voltaje <span class="math inline">\(V\)</span> y las corrientes de rama se suman a la entrada. Así, <span class="math display">\[
+I=\frac{V}{R_1}+\frac{V}{R_2},\qquad
+\frac{1}{R_{\mathrm{eq,paralelo}}}=\sum_i\frac{1}{R_i}.
+\]</span> Para dos resistores, <span class="math inline">\(R_{\mathrm{eq}}=R_1R_2/(R_1+R_2)\)</span>. Agregar una rama conductora ofrece otra vía a la corriente y reduce la resistencia equivalente por debajo de la menor resistencia individual positiva. Esa conclusión supone los mismos dos nodos de comparación.</p>
+</section>
+<section id="r18-12" class="level3">
+<h3 class="anchored" data-anchor-id="r18-12">Problema resuelto 18.12 · Repartir corrientes en una conexión en paralelo</h3>
+<p>Resistores de <span class="math inline">\(6{,}00\,\mathrm{\Omega}\)</span> y <span class="math inline">\(3{,}00\,\mathrm{\Omega}\)</span> se conectan en paralelo a una fuente ideal de <span class="math inline">\(6{,}00\,\mathrm{V}\)</span>. Obtén las corrientes y verifica la potencia total. <em>Resolución.</em> Cada rama tiene <span class="math inline">\(6{,}00\,\mathrm{V}\)</span>. Sus corrientes son <span class="math inline">\(I_1=6/6=1{,}00\,\mathrm{A}\)</span> e <span class="math inline">\(I_2=6/3=2{,}00\,\mathrm{A}\)</span>. La fuente entrega <span class="math inline">\(I=3{,}00\,\mathrm{A}\)</span>, coherente con <span class="math inline">\(R_{\mathrm{eq}}=2{,}00\,\mathrm{\Omega}\)</span>. Las potencias son <span class="math inline">\(6{,}00\,\mathrm{W}\)</span> y <span class="math inline">\(12{,}0\,\mathrm{W}\)</span>, cuya suma <span class="math inline">\(18{,}0\,\mathrm{W}\)</span> coincide con <span class="math inline">\(VI\)</span>. Cada rama aporta su propia transferencia de energía por segundo.</p>
+<div id="fig-fp-av-r18-12" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.12 · Repartir corrientes en una conexión en paralelo. Resistores de 6,00\,Omega y 3,00\,Omega se conectan en paralelo a una fuente ideal de 6,00\,V. Obtén las corrientes y verifica la potencia total. Resolución. Cada rama tiene 6,00\,V. Sus corrientes son I1=6/6=1,00\,A e I2=6/3=2,00\,A. La fuente entrega I=3,00\,A, coherente con Req=2,00\,Omega. Las potencias son">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-12.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.12 · Repartir corrientes en una conexión en paralelo. Resistores de 6,00\,Omega y 3,00\,Omega se conectan en paralelo a una fuente ideal de 6,00\,V. Obtén las corrientes y verifica la potencia total. Resolución. Cada rama tiene 6,00\,V. Sus corrientes son I1=6/6=1,00\,A e I2=6/3=2,00\,A. La fuente entrega I=3,00\,A, coherente con Req=2,00\,Omega. Las potencias son">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12: Apoyo visual: Problema resuelto 18.12 · Repartir corrientes en una conexión en paralelo.
+</figcaption>
+</figure>
+</div>
+<p>Para reducir una red mixta, conviene marcar primero los nodos unidos por alambres ideales y buscar grupos que satisfagan las condiciones anteriores. Después de cada sustitución se vuelve a examinar la conexión. Una vez obtenida la corriente total, se recorre la reducción en sentido inverso para recuperar voltajes y corrientes de rama. La posición de los símbolos en la página puede cambiar libremente mientras se conserven esos nodos.</p>
+</section>
+<section id="r18-13" class="level3">
+<h3 class="anchored" data-anchor-id="r18-13">Problema resuelto 18.13 · Resolver un circuito mixto y reconstruir sus ramas</h3>
+<p>Una fuente ideal de <span class="math inline">\(12{,}0\,\mathrm{V}\)</span> alimenta <span class="math inline">\(R_0=2{,}00\,\mathrm{\Omega}\)</span> en serie con el paralelo de <span class="math inline">\(R_1=6{,}00\,\mathrm{\Omega}\)</span> y <span class="math inline">\(R_2=3{,}00\,\mathrm{\Omega}\)</span>. Calcula todas las corrientes y potencias. <em>Resolución.</em> El paralelo equivale a <span class="math inline">\(2{,}00\,\mathrm{\Omega}\)</span>, así que el conjunto equivale a <span class="math inline">\(4{,}00\,\mathrm{\Omega}\)</span> y toma <span class="math inline">\(3{,}00\,\mathrm{A}\)</span>. En <span class="math inline">\(R_0\)</span> caen <span class="math inline">\((3)(2)=6{,}00\,\mathrm{V}\)</span> y quedan <span class="math inline">\(6{,}00\,\mathrm{V}\)</span> para el paralelo. Sus corrientes son <span class="math inline">\(1{,}00\,\mathrm{A}\)</span> y <span class="math inline">\(2{,}00\,\mathrm{A}\)</span>, cuya suma recupera los <span class="math inline">\(3{,}00\,\mathrm{A}\)</span> de entrada. Las potencias resultan <span class="math display">\[
+P_0=18{,}0\,\mathrm{W},\qquad P_1=6{,}00\,\mathrm{W},\qquad
+P_2=12{,}0\,\mathrm{W}.
+\]</span> La suma es <span class="math inline">\(36{,}0\,\mathrm{W}=(12{,}0\,\mathrm{V})(3{,}00\,\mathrm{A})\)</span>. Conocer únicamente la resistencia equivalente permite calcular la corriente total; reconstruir la red permite conocer el estado de cada elemento.</p>
+<div id="fig-fp-av-r18-13" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.13 · Resolver un circuito mixto y reconstruir sus ramas. Una fuente ideal de 12,0\,V alimenta R0=2,00\,Omega en serie con el paralelo de R1=6,00\,Omega y R2=3,00\,Omega. Calcula todas las corrientes y potencias. Resolución. El paralelo equivale a 2,00\,Omega, así que el conjunto equivale a 4,00\,Omega y toma 3,00\,A. En R0 caen (3)(2)=6,00\,V y quedan 6,00\,V para el">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-13.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.13 · Resolver un circuito mixto y reconstruir sus ramas. Una fuente ideal de 12,0\,V alimenta R0=2,00\,Omega en serie con el paralelo de R1=6,00\,Omega y R2=3,00\,Omega. Calcula todas las corrientes y potencias. Resolución. El paralelo equivale a 2,00\,Omega, así que el conjunto equivale a 4,00\,Omega y toma 3,00\,A. En R0 caen (3)(2)=6,00\,V y quedan 6,00\,V para el">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;13: Apoyo visual: Problema resuelto 18.13 · Resolver un circuito mixto y reconstruir sus ramas.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="leyes-de-kirchhoff-y-elección-de-signos" class="level2">
+<h2 class="anchored" data-anchor-id="leyes-de-kirchhoff-y-elección-de-signos">Leyes de Kirchhoff y elección de signos</h2>
+<p>La conservación de la carga en una región que contiene una unión exige <span class="math display">\[
+\frac{dQ_{\mathrm{nodo}}}{dt}=\sum I_{\mathrm{entra}}-\sum I_{\mathrm{sale}}.
+\]</span> En el régimen estacionario que estudiamos, la carga del nodo permanece constante y la suma de corrientes entrantes iguala la de salientes. Esta es la ley de nodos de Kirchhoff. La pequeña redistribución superficial que establece los campos y potenciales del circuito ocurre durante el proceso de conexión; el modelo estacionario describe el estado posterior.</p>
+<p>La ley de recorridos cerrados establece que la suma algebraica de cambios de potencial en un lazo es cero. Se aplica aquí al modelo de elementos concentrados, con régimen estacionario y efectos de inducción variables despreciables. Partir de un punto y regresar al mismo punto exige recuperar su potencial. Una fuente ideal se representa por un aumento <span class="math inline">\(+\mathcal E\)</span> al recorrerla del terminal negativo al positivo, o por <span class="math inline">\(-\mathcal E\)</span> en el recorrido opuesto. En un resistor, avanzar en el sentido de su corriente de referencia aporta <span class="math inline">\(-IR\)</span>, y avanzar al contrario aporta <span class="math inline">\(+IR\)</span>.</p>
+<p>Las flechas y los sentidos de recorrido pueden elegirse antes de conocer la solución. Lo necesario es conservarlos en todas las ecuaciones. Los resultados con signo permiten recuperar el sentido físico y comprobar que cada resistor recibe potencia <span class="math inline">\(I^2R\)</span>. Una red con varios lazos puede resolverse mediante ecuaciones de nodos o mediante un conjunto independiente de ecuaciones de lazo, junto con las relaciones entre corrientes.</p>
+<section id="r18-14" class="level3">
+<h3 class="anchored" data-anchor-id="r18-14">Problema resuelto 18.14 · Resolver un nodo alimentado por dos fuentes</h3>
+<p>Toma un nodo inferior <span class="math inline">\(b\)</span> como <span class="math inline">\(0\,\mathrm{V}\)</span>. Una fuente ideal fija un terminal <span class="math inline">\(c\)</span> a <span class="math inline">\(12{,}0\,\mathrm{V}\)</span> y otra fija un terminal <span class="math inline">\(d\)</span> a <span class="math inline">\(6{,}00\,\mathrm{V}\)</span>. Hay un resistor de <span class="math inline">\(2{,}00\,\mathrm{\Omega}\)</span> entre <span class="math inline">\(c\)</span> y un nodo <span class="math inline">\(a\)</span>, uno de <span class="math inline">\(2{,}00\,\mathrm{\Omega}\)</span> entre <span class="math inline">\(a\)</span> y <span class="math inline">\(d\)</span>, y uno de <span class="math inline">\(4{,}00\,\mathrm{\Omega}\)</span> entre <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>. Los terminales negativos de ambas fuentes están unidos a <span class="math inline">\(b\)</span>. Halla el potencial de <span class="math inline">\(a\)</span> y las corrientes. <em>Resolución.</em> Definimos las tres corrientes de referencia saliendo de <span class="math inline">\(a\)</span>. La ley de nodos da <span class="math display">\[
+\frac{V_a-12}{2}+\frac{V_a-6}{2}+\frac{V_a}{4}=0,
+\qquad 5V_a=36,\qquad V_a=7{,}20\,\mathrm{V}.
+\]</span> En la rama hacia <span class="math inline">\(c\)</span> se obtiene <span class="math inline">\(-2{,}40\,\mathrm{A}\)</span>: físicamente entran <span class="math inline">\(2{,}40\,\mathrm{A}\)</span> desde la fuente de <span class="math inline">\(12\,\mathrm{V}\)</span>. Salen <span class="math inline">\(0{,}600\,\mathrm{A}\)</span> hacia <span class="math inline">\(d\)</span> y <span class="math inline">\(1{,}80\,\mathrm{A}\)</span> hacia <span class="math inline">\(b\)</span>. Se verifica <span class="math inline">\(2{,}40=0{,}600+1{,}80\)</span>.</p>
+<p>La fuente de <span class="math inline">\(12\,\mathrm{V}\)</span> entrega <span class="math inline">\(28{,}8\,\mathrm{W}\)</span>. La de <span class="math inline">\(6\,\mathrm{V}\)</span> recibe <span class="math inline">\(3{,}60\,\mathrm{W}\)</span>, pues la corriente entra por su terminal positivo. Los resistores reciben <span class="math inline">\(11{,}52\,\mathrm{W}\)</span>, <span class="math inline">\(0{,}720\,\mathrm{W}\)</span> y <span class="math inline">\(12{,}96\,\mathrm{W}\)</span>, que suman <span class="math inline">\(25{,}20\,\mathrm{W}\)</span>. El balance es <span class="math inline">\(28{,}8=25{,}2+3{,}6\)</span>. La fuente ideal receptora representa un elemento capaz de absorber esa energía; la posibilidad de recargar una batería concreta exige además que su tecnología y control lo permitan.</p>
+<div id="fig-fp-av-r18-14" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.14 · Resolver un nodo alimentado por dos fuentes. La fuente de 12\,V entrega 28,8\,W. La de 6\,V recibe 3,60\,W, pues la corriente entra por su terminal positivo. Los resistores reciben 11,52\,W, 0,720\,W y 12,96\,W, que suman 25,20\,W. El balance es 28,8=25,2+3,6. La fuente ideal receptora representa un elemento capaz de absorber esa energía; la posibilidad de">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-14.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.14 · Resolver un nodo alimentado por dos fuentes. La fuente de 12\,V entrega 28,8\,W. La de 6\,V recibe 3,60\,W, pues la corriente entra por su terminal positivo. Los resistores reciben 11,52\,W, 0,720\,W y 12,96\,W, que suman 25,20\,W. El balance es 28,8=25,2+3,6. La fuente ideal receptora representa un elemento capaz de absorber esa energía; la posibilidad de">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;14: Apoyo visual: Problema resuelto 18.14 · Resolver un nodo alimentado por dos fuentes.
+</figcaption>
+</figure>
+</div>
+<p>También podemos resolver el problema anterior con dos corrientes de lazo, <span class="math inline">\(i_1\)</span> en el lazo izquierdo e <span class="math inline">\(i_2\)</span> en el derecho, ambas en sentido horario. El resistor central conduce <span class="math inline">\(i_1-i_2\)</span> hacia abajo. Las ecuaciones son <span class="math inline">\(6i_1-4i_2=12\)</span> y <span class="math inline">\(-4i_1+6i_2=-6\)</span>. Dan <span class="math inline">\(i_1=2{,}40\,\mathrm{A}\)</span> e <span class="math inline">\(i_2=0{,}600\,\mathrm{A}\)</span>. El mismo circuito admite distintas incógnitas; los voltajes y las corrientes físicas coinciden.</p>
+</section>
+<section id="r18-15" class="level3">
+<h3 class="anchored" data-anchor-id="r18-15">Problema resuelto 18.15 · Interpretar una corriente de referencia negativa</h3>
+<p>Dos fuentes ideales de <span class="math inline">\(12{,}0\,\mathrm{V}\)</span> y <span class="math inline">\(9{,}00\,\mathrm{V}\)</span> se conectan en oposición en un único lazo, con una resistencia total de <span class="math inline">\(3{,}00\,\mathrm{\Omega}\)</span>. Elige como referencia una corriente que recorra la fuente de <span class="math inline">\(9\,\mathrm{V}\)</span> de negativo a positivo y la de <span class="math inline">\(12\,\mathrm{V}\)</span> de positivo a negativo. Calcula e interpreta el resultado. <em>Resolución.</em> Con esa referencia, la ecuación del lazo es <span class="math display">\[
+9-12-3I=0,\qquad I=-1{,}00\,\mathrm{A}.
+\]</span> La corriente real tiene magnitud <span class="math inline">\(1{,}00\,\mathrm{A}\)</span> y sentido opuesto al elegido: sale del terminal positivo de la fuente de <span class="math inline">\(12\,\mathrm{V}\)</span> y entra en el positivo de la de <span class="math inline">\(9\,\mathrm{V}\)</span>. La primera entrega <span class="math inline">\(12{,}0\,\mathrm{W}\)</span>, la segunda recibe <span class="math inline">\(9{,}00\,\mathrm{W}\)</span> y el resistor recibe <span class="math inline">\(3{,}00\,\mathrm{W}\)</span>. La ecuación con signo conserva la elección inicial y el balance de energía verifica su interpretación.</p>
+<div id="fig-fp-av-r18-15" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.15 · Interpretar una corriente de referencia negativa. Dos fuentes ideales de 12,0\,V y 9,00\,V se conectan en oposición en un único lazo, con una resistencia total de 3,00\,Omega. Elige como referencia una corriente que recorra la fuente de 9\,V de negativo a positivo y la de 12\,V de positivo a negativo. Calcula e interpreta el resultado. Resolución. Con esa referencia,">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-15.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.15 · Interpretar una corriente de referencia negativa. Dos fuentes ideales de 12,0\,V y 9,00\,V se conectan en oposición en un único lazo, con una resistencia total de 3,00\,Omega. Elige como referencia una corriente que recorra la fuente de 9\,V de negativo a positivo y la de 12\,V de positivo a negativo. Calcula e interpreta el resultado. Resolución. Con esa referencia,">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;15: Apoyo visual: Problema resuelto 18.15 · Interpretar una corriente de referencia negativa.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="medir-también-forma-parte-del-circuito" class="level2">
+<h2 class="anchored" data-anchor-id="medir-también-forma-parte-del-circuito">Medir también forma parte del circuito</h2>
+<p>Un amperímetro se intercala en la rama cuya corriente se quiere medir. En el modelo ideal su resistencia es cero, así que reemplaza un tramo de alambre sin añadir caída de potencial. Un voltímetro se conecta entre los dos puntos cuyo voltaje se quiere conocer; en el modelo ideal su resistencia es infinita y su corriente es cero. Esas idealizaciones permiten atribuir la lectura al circuito original.</p>
+<p>Los instrumentos reales tienen resistencias de entrada finitas y otras limitaciones. Para incluir su efecto, se incorporan como elementos de la red: la resistencia del amperímetro queda en serie y la del voltímetro, en paralelo con la parte medida. La precisión del valor mostrado y la perturbación que produce el instrumento son cuestiones relacionadas, pero diferentes. Un instrumento puede leer con mucha precisión el voltaje del circuito que él mismo ha modificado.</p>
+<section id="r18-16" class="level3">
+<h3 class="anchored" data-anchor-id="r18-16">Problema resuelto 18.16 · Comparar amperímetros ideal y real</h3>
+<p>Una fuente ideal de <span class="math inline">\(6{,}00\,\mathrm{V}\)</span> alimenta un resistor de <span class="math inline">\(30{,}0\,\mathrm{\Omega}\)</span>. Un voltímetro ideal se conecta entre los extremos del resistor. Halla las lecturas con un amperímetro ideal en serie y luego con uno de resistencia <span class="math inline">\(2{,}00\,\mathrm{\Omega}\)</span>. <em>Resolución.</em> Con instrumentos ideales, el amperímetro lee <span class="math inline">\(6/30=0{,}200\,\mathrm{A}\)</span> y el voltímetro, <span class="math inline">\(6{,}00\,\mathrm{V}\)</span>. Con el amperímetro real, la resistencia total pasa a <span class="math inline">\(32{,}0\,\mathrm{\Omega}\)</span>, luego <span class="math display">\[
+I=\frac{6{,}00}{32{,}0}=0{,}1875\,\mathrm{A},\qquad
+V_R=(0{,}1875)(30{,}0)=5{,}625\,\mathrm{V}.
+\]</span> Los otros <span class="math inline">\(0{,}375\,\mathrm{V}\)</span> caen en el amperímetro. La corriente disminuye un <span class="math inline">\(6{,}25\%\)</span> respecto del circuito con amperímetro ideal. El voltímetro continúa conectado exclusivamente entre los extremos del resistor de <span class="math inline">\(30\,\mathrm{\Omega}\)</span>.</p>
+<div id="fig-fp-av-r18-16" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.16 · Comparar amperímetros ideal y real. Una fuente ideal de 6,00\,V alimenta un resistor de 30,0\,Omega. Un voltímetro ideal se conecta entre los extremos del resistor. Halla las lecturas con un amperímetro ideal en serie y luego con uno de resistencia 2,00\,Omega. Resolución. Con instrumentos ideales, el amperímetro lee 6/30=0,200\,A y el voltímetro,">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-16.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.16 · Comparar amperímetros ideal y real. Una fuente ideal de 6,00\,V alimenta un resistor de 30,0\,Omega. Un voltímetro ideal se conecta entre los extremos del resistor. Halla las lecturas con un amperímetro ideal en serie y luego con uno de resistencia 2,00\,Omega. Resolución. Con instrumentos ideales, el amperímetro lee 6/30=0,200\,A y el voltímetro,">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;16: Apoyo visual: Problema resuelto 18.16 · Comparar amperímetros ideal y real.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r18-17" class="level3">
+<h3 class="anchored" data-anchor-id="r18-17">Problema resuelto 18.17 · Calcular el efecto de conectar un voltímetro</h3>
+<p>Dos resistores de <span class="math inline">\(10{,}0\,\mathrm{k\Omega}\)</span> están en serie a una fuente ideal de <span class="math inline">\(9{,}00\,\mathrm{V}\)</span>. Se conecta un voltímetro de resistencia <span class="math inline">\(10{,}0\,\mathrm{k\Omega}\)</span> entre los extremos del resistor inferior. Calcula su lectura y compárala con el voltaje anterior a conectarlo. <em>Resolución.</em> Antes de medir, la corriente es <span class="math inline">\(9/20\,000=0{,}450\,\mathrm{mA}\)</span> y cada resistor tiene <span class="math inline">\(4{,}50\,\mathrm{V}\)</span>. Al conectar el instrumento, este queda en paralelo con el resistor inferior: ambos equivalen a <span class="math inline">\(5{,}00\,\mathrm{k\Omega}\)</span>. La corriente que pasa por el resistor superior aumenta a <span class="math inline">\(9/15\,000=0{,}600\,\mathrm{mA}\)</span>. El voltaje inferior y la lectura son <span class="math display">\[
+V_{\mathrm{lectura}}=(0{,}600\,\mathrm{mA})(5{,}00\,\mathrm{k\Omega})=3{,}00\,\mathrm{V}.
+\]</span> Por el resistor inferior y por el voltímetro pasan <span class="math inline">\(0{,}300\,\mathrm{mA}\)</span> en cada rama. La lectura es dos tercios del voltaje previo. Una resistencia de entrada mucho mayor que la del tramo medido reduciría esta perturbación.</p>
+<div id="fig-fp-av-r18-17" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.17 · Calcular el efecto de conectar un voltímetro. Dos resistores de 10,0\,kOmega están en serie a una fuente ideal de 9,00\,V. Se conecta un voltímetro de resistencia 10,0\,kOmega entre los extremos del resistor inferior. Calcula su lectura y compárala con el voltaje anterior a conectarlo. Resolución. Antes de medir, la corriente es 9/20\,000=0,450\,mA y cada">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-17.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.17 · Calcular el efecto de conectar un voltímetro. Dos resistores de 10,0\,kOmega están en serie a una fuente ideal de 9,00\,V. Se conecta un voltímetro de resistencia 10,0\,kOmega entre los extremos del resistor inferior. Calcula su lectura y compárala con el voltaje anterior a conectarlo. Resolución. Antes de medir, la corriente es 9/20\,000=0,450\,mA y cada">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;17: Apoyo visual: Problema resuelto 18.17 · Calcular el efecto de conectar un voltímetro.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="límites-de-operación-y-decisiones-de-diseño" class="level2">
+<h2 class="anchored" data-anchor-id="límites-de-operación-y-decisiones-de-diseño">Límites de operación y decisiones de diseño</h2>
+<p>Las ecuaciones de una red deben contrastarse con los límites de sus componentes. Un resistor tiene una potencia nominal que depende de las condiciones térmicas especificadas; los cables y las fuentes también tienen límites de corriente. Para un resistor ideal de valor constante, una cota de potencia <span class="math inline">\(P_{\max}\)</span> permite obtener <span class="math inline">\(|I|\leq\sqrt{P_{\max}/R}\)</span> y <span class="math inline">\(|V|\leq\sqrt{P_{\max}R}\)</span>. En un montaje real se consideran además tolerancias, ventilación y condiciones de uso.</p>
+<p>La conexión directa de un amperímetro de baja resistencia entre los terminales de una fuente crea una rama de corriente potencialmente muy elevada. Su lugar de medición es en serie, con rango, bornes y protección apropiados. Un cortocircuito ofrece un camino de resistencia pequeña que puede llevar la fuente y los conductores fuera de sus límites. En el modelo de fuente con resistencia interna, <span class="math inline">\(I=\mathcal E/(R+r)\)</span> aumenta al reducirse <span class="math inline">\(R\)</span>; cerca del cortocircuito pueden hacerse importantes efectos térmicos y limitaciones que ese modelo simple omite.</p>
+<p>Los límites nominales de un componente y la seguridad de una persona describen problemas diferentes. Esta depende de la trayectoria de corriente, del contacto, del entorno y del tiempo de exposición, entre otros factores. Las prácticas de este capítulo se restringen a fuentes de laboratorio de baja tensión y energía limitada o a simulaciones, con supervisión y componentes adecuados. Las instalaciones conectadas a la red requieren personal competente y protecciones reglamentarias. El cálculo elemental de un circuito sirve para interpretar su funcionamiento dentro de las hipótesis establecidas.</p>
+<section id="r18-18" class="level3">
+<h3 class="anchored" data-anchor-id="r18-18">Problema resuelto 18.18 · Comprobar límites en una red de baja tensión</h3>
+<p>Una fuente regulada mantiene <span class="math inline">\(12{,}0\,\mathrm{V}\)</span> hasta una corriente total de <span class="math inline">\(50{,}0\,\mathrm{mA}\)</span>. Se conectan ramas iguales, cada una con un resistor de <span class="math inline">\(1{,}20\,\mathrm{k\Omega}\)</span> y potencia nominal <span class="math inline">\(0{,}250\,\mathrm{W}\)</span> en las condiciones especificadas. Calcula el máximo número de ramas permitido por esos dos límites ideales y el estado de operación con cuatro ramas. Supón valores exactos para esta comprobación. <em>Resolución.</em> Cada rama toma <span class="math inline">\(12/1200=0{,}0100\,\mathrm{A}\)</span> y recibe <span class="math inline">\(12^2/1200=0{,}120\,\mathrm{W}\)</span>, dentro de la potencia indicada. El límite de corriente admite <span class="math inline">\(50/10=5\)</span> ramas en este modelo. Con cuatro ramas, <span class="math display">\[
+R_{\mathrm{eq}}=300\,\mathrm{\Omega},\qquad I_{\mathrm{total}}=40{,}0\,\mathrm{mA},
+\qquad P_{\mathrm{total}}=0{,}480\,\mathrm{W}.
+\]</span> Quedan <span class="math inline">\(10{,}0\,\mathrm{mA}\)</span> hasta la cota de corriente. Una sexta rama exigiría <span class="math inline">\(60\,\mathrm{mA}\)</span> si el voltaje continuara en <span class="math inline">\(12\,\mathrm{V}\)</span>, y esa exigencia supera el intervalo regulado declarado. El estado real entonces dependería de la respuesta de protección de la fuente. La comprobación realizada usa las condiciones nominales dadas; un diseño concreto debe incluir sus tolerancias y condiciones térmicas.</p>
+<div id="fig-fp-av-r18-18" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 18.18 · Comprobar límites en una red de baja tensión. Una fuente regulada mantiene 12,0\,V hasta una corriente total de 50,0\,mA. Se conectan ramas iguales, cada una con un resistor de 1,20\,kOmega y potencia nominal 0,250\,W en las condiciones especificadas. Calcula el máximo número de ramas permitido por esos dos límites ideales y el estado de operación con cuatro">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r18-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R18-18.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 18.18 · Comprobar límites en una red de baja tensión. Una fuente regulada mantiene 12,0\,V hasta una corriente total de 50,0\,mA. Se conectan ramas iguales, cada una con un resistor de 1,20\,kOmega y potencia nominal 0,250\,W en las condiciones especificadas. Calcula el máximo número de ramas permitido por esos dos límites ideales y el estado de operación con cuatro">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r18-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;18: Apoyo visual: Problema resuelto 18.18 · Comprobar límites en una red de baja tensión.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="ejercicios-para-reconstruir-y-transferir" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-para-reconstruir-y-transferir">Ejercicios para reconstruir y transferir</h2>
+<p>Usa <span class="math inline">\(e=1{,}602176634\times10^{-19}\,\mathrm{C}\)</span>. Supón alambres ideales, resistores óhmicos de valor constante y fuentes ideales, salvo indicación explícita. Las fem indicadas son positivas del terminal negativo al positivo. Representa los nodos antes de reducir una red.</p>
+<section id="e18-1" class="level3">
+<h3 class="anchored" data-anchor-id="e18-1">Ejercicio 18.1 · Una corriente durante un intervalo</h3>
+<p>Por un cable metálico pasan <span class="math inline">\(0{,}0800\,\mathrm{A}\)</span> durante <span class="math inline">\(75{,}0\,\mathrm{s}\)</span>. Calcula la carga convencional transferida y el conteo neto de electrones que cruza una sección.</p>
+</section>
+<section id="e18-2" class="level3">
+<h3 class="anchored" data-anchor-id="e18-2">Ejercicio 18.2 · El área de un trapecio</h3>
+<p>Una corriente aumenta linealmente desde <span class="math inline">\(0{,}200\,\mathrm{A}\)</span> a <span class="math inline">\(0{,}600\,\mathrm{A}\)</span> en <span class="math inline">\(5{,}00\,\mathrm{s}\)</span>. Halla la carga transferida y la corriente media.</p>
+</section>
+<section id="e18-3" class="level3">
+<h3 class="anchored" data-anchor-id="e18-3">Ejercicio 18.3 · Deriva y sección</h3>
+<p>Un conductor tiene <span class="math inline">\(n=5{,}00\times10^{28}\,\mathrm{m^{-3}}\)</span> electrones móviles, sección <span class="math inline">\(2{,}00\,\mathrm{mm^2}\)</span> y corriente <span class="math inline">\(0{,}800\,\mathrm{A}\)</span>. Calcula <span class="math inline">\(v_d\)</span> y predice su cambio si la sección se reduce a la mitad manteniendo <span class="math inline">\(n\)</span> e <span class="math inline">\(I\)</span>.</p>
+</section>
+<section id="e18-4" class="level3">
+<h3 class="anchored" data-anchor-id="e18-4">Ejercicio 18.4 · Una recta de operación</h3>
+<p>A temperatura fija se miden <span class="math inline">\((V,I)=(2{,}00\,\mathrm{V},0{,}100\,\mathrm{A})\)</span>, <span class="math inline">\((4{,}00\,\mathrm{V},0{,}200\,\mathrm{A})\)</span> y <span class="math inline">\((6{,}00\,\mathrm{V},0{,}300\,\mathrm{A})\)</span>. Halla <span class="math inline">\(R\)</span> y la corriente predicha a <span class="math inline">\(12{,}0\,\mathrm{V}\)</span> si continúa el modelo óhmico.</p>
+</section>
+<section id="e18-5" class="level3">
+<h3 class="anchored" data-anchor-id="e18-5">Ejercicio 18.5 · Tres cocientes diferentes</h3>
+<p>Un dispositivo presenta <span class="math inline">\((V,I)=(1{,}00\,\mathrm{V},0{,}100\,\mathrm{A})\)</span>, <span class="math inline">\((2{,}00\,\mathrm{V},0{,}160\,\mathrm{A})\)</span> y <span class="math inline">\((3{,}00\,\mathrm{V},0{,}200\,\mathrm{A})\)</span>. Calcula <span class="math inline">\(V/I\)</span> en cada punto y evalúa si un único resistor óhmico representa los tres datos exactamente.</p>
+</section>
+<section id="e18-6" class="level3">
+<h3 class="anchored" data-anchor-id="e18-6">Ejercicio 18.6 · Resistencia de un alambre</h3>
+<p>Un alambre uniforme tiene <span class="math inline">\(\rho=1{,}50\times10^{-6}\,\mathrm{\Omega\,m}\)</span>, <span class="math inline">\(L=0{,}800\,\mathrm{m}\)</span> y <span class="math inline">\(A=0{,}200\,\mathrm{mm^2}\)</span>. Calcula su resistencia.</p>
+</section>
+<section id="e18-7" class="level3">
+<h3 class="anchored" data-anchor-id="e18-7">Ejercicio 18.7 · Triplicar la longitud con el mismo volumen</h3>
+<p>Se rehace un alambre con el triple de longitud y el mismo volumen. Se conservan material, temperatura y resistividad. Encuentra <span class="math inline">\(A'/A\)</span> y <span class="math inline">\(R'/R\)</span>.</p>
+</section>
+<section id="e18-8" class="level3">
+<h3 class="anchored" data-anchor-id="e18-8">Ejercicio 18.8 · Una resistencia a otra temperatura</h3>
+<p>Un resistor tiene <span class="math inline">\(100\,\mathrm{\Omega}\)</span> a <span class="math inline">\(20{,}0\,{}^{\circ}\mathrm C\)</span> y <span class="math inline">\(\alpha=3{,}00\times10^{-3}\,\mathrm{K^{-1}}\)</span>. Calcula <span class="math inline">\(R\)</span> a <span class="math inline">\(70{,}0\,{}^{\circ}\mathrm C\)</span> usando el modelo lineal en ese intervalo.</p>
+</section>
+<section id="e18-9" class="level3">
+<h3 class="anchored" data-anchor-id="e18-9">Ejercicio 18.9 · Una fuente con resistencia interna</h3>
+<p>Una fuente de fem <span class="math inline">\(6{,}00\,\mathrm{V}\)</span> y resistencia interna <span class="math inline">\(0{,}500\,\mathrm{\Omega}\)</span> alimenta <span class="math inline">\(2{,}50\,\mathrm{\Omega}\)</span>. Halla <span class="math inline">\(I\)</span>, <span class="math inline">\(V_{\mathrm{term}}\)</span>, la potencia aportada por la fem y las potencias recibidas por ambas resistencias.</p>
+</section>
+<section id="e18-10" class="level3">
+<h3 class="anchored" data-anchor-id="e18-10">Ejercicio 18.10 · Dos mediciones de una fuente</h3>
+<p>Una fuente en descarga tiene <span class="math inline">\(4{,}40\,\mathrm{V}\)</span> al entregar <span class="math inline">\(0{,}200\,\mathrm{A}\)</span> y <span class="math inline">\(4{,}00\,\mathrm{V}\)</span> al entregar <span class="math inline">\(0{,}600\,\mathrm{A}\)</span>. Obtén <span class="math inline">\(\mathcal E\)</span> y <span class="math inline">\(r\)</span> en el modelo lineal.</p>
+</section>
+<section id="e18-11" class="level3">
+<h3 class="anchored" data-anchor-id="e18-11">Ejercicio 18.11 · Energía en un resistor</h3>
+<p>Un resistor de <span class="math inline">\(50{,}0\,\mathrm{\Omega}\)</span> permanece a <span class="math inline">\(10{,}0\,\mathrm{V}\)</span> durante <span class="math inline">\(15{,}0\,\mathrm{min}\)</span>. Calcula <span class="math inline">\(I\)</span>, <span class="math inline">\(P\)</span> y la energía en joules y kilowatt-horas.</p>
+</section>
+<section id="e18-12" class="level3">
+<h3 class="anchored" data-anchor-id="e18-12">Ejercicio 18.12 · Potencia y tiempo de uso</h3>
+<p>Un dispositivo recibe una potencia constante de <span class="math inline">\(60{,}0\,\mathrm{W}\)</span> durante <span class="math inline">\(2{,}00\,\mathrm{h}\)</span>. Expresa la energía transferida en kilowatt-horas y joules.</p>
+</section>
+<section id="e18-13" class="level3">
+<h3 class="anchored" data-anchor-id="e18-13">Ejercicio 18.13 · Reducir resistencia a voltaje fijo</h3>
+<p>Un resistor conectado a una fuente de voltaje fijo se reemplaza por otro cuya resistencia es la mitad. Halla los factores de cambio de corriente y potencia.</p>
+</section>
+<section id="e18-14" class="level3">
+<h3 class="anchored" data-anchor-id="e18-14">Ejercicio 18.14 · Dos resistores en serie</h3>
+<p>Una fuente de <span class="math inline">\(24{,}0\,\mathrm{V}\)</span> alimenta resistores de <span class="math inline">\(3{,}00\,\mathrm{\Omega}\)</span> y <span class="math inline">\(9{,}00\,\mathrm{\Omega}\)</span> en serie. Calcula corriente, voltajes y potencias individuales.</p>
+</section>
+<section id="e18-15" class="level3">
+<h3 class="anchored" data-anchor-id="e18-15">Ejercicio 18.15 · Dos resistores en paralelo</h3>
+<p>Resistores de <span class="math inline">\(4{,}00\,\mathrm{\Omega}\)</span> y <span class="math inline">\(12{,}0\,\mathrm{\Omega}\)</span> comparten los terminales de una fuente de <span class="math inline">\(12{,}0\,\mathrm{V}\)</span>. Halla <span class="math inline">\(R_{\mathrm{eq}}\)</span>, corrientes y potencia total.</p>
+</section>
+<section id="e18-16" class="level3">
+<h3 class="anchored" data-anchor-id="e18-16">Ejercicio 18.16 · Reconstruir un circuito mixto</h3>
+<p>Una fuente de <span class="math inline">\(21{,}0\,\mathrm{V}\)</span> alimenta <span class="math inline">\(3{,}00\,\mathrm{\Omega}\)</span> en serie con el paralelo de <span class="math inline">\(6{,}00\,\mathrm{\Omega}\)</span> y <span class="math inline">\(12{,}0\,\mathrm{\Omega}\)</span>. Encuentra las corrientes, los voltajes y las potencias de los tres resistores.</p>
+</section>
+<section id="e18-17" class="level3">
+<h3 class="anchored" data-anchor-id="e18-17">Ejercicio 18.17 · Leer conexiones por sus nodos</h3>
+<p>Un resistor de <span class="math inline">\(2{,}00\,\mathrm{\Omega}\)</span> conecta <span class="math inline">\(a\)</span> con <span class="math inline">\(b\)</span> y uno de <span class="math inline">\(4{,}00\,\mathrm{\Omega}\)</span> conecta <span class="math inline">\(b\)</span> con <span class="math inline">\(c\)</span>. Solo esos dos elementos llegan a <span class="math inline">\(b\)</span>. Un tercer resistor de <span class="math inline">\(6{,}00\,\mathrm{\Omega}\)</span> conecta <span class="math inline">\(a\)</span> con <span class="math inline">\(c\)</span>. Encuentra la resistencia equivalente entre <span class="math inline">\(a\)</span> y <span class="math inline">\(c\)</span> y dibuja una representación del circuito.</p>
+</section>
+<section id="e18-18" class="level3">
+<h3 class="anchored" data-anchor-id="e18-18">Ejercicio 18.18 · Balance de corrientes en una unión</h3>
+<p>En régimen estacionario entran <span class="math inline">\(0{,}700\,\mathrm{A}\)</span> en un nodo. Salen <span class="math inline">\(0{,}200\,\mathrm{A}\)</span> por una rama y <span class="math inline">\(0{,}100\,\mathrm{A}\)</span> por otra. Halla la corriente de una tercera rama y su sentido.</p>
+</section>
+<section id="e18-19" class="level3">
+<h3 class="anchored" data-anchor-id="e18-19">Ejercicio 18.19 · Un nodo entre dos fuentes</h3>
+<p>Repite la conexión del problema 18.14 con <span class="math inline">\(V_c=10{,}0\,\mathrm{V}\)</span>, <span class="math inline">\(V_d=4{,}00\,\mathrm{V}\)</span>, resistores laterales de <span class="math inline">\(2{,}00\,\mathrm{\Omega}\)</span> y resistor central de <span class="math inline">\(5{,}00\,\mathrm{\Omega}\)</span>. Halla <span class="math inline">\(V_a\)</span> y las corrientes físicas de las tres ramas.</p>
+</section>
+<section id="e18-20" class="level3">
+<h3 class="anchored" data-anchor-id="e18-20">Ejercicio 18.20 · Fuentes en oposición</h3>
+<p>En un único lazo hay fuentes ideales de <span class="math inline">\(8{,}00\,\mathrm{V}\)</span> y <span class="math inline">\(5{,}00\,\mathrm{V}\)</span> en oposición, y una resistencia total de <span class="math inline">\(6{,}00\,\mathrm{\Omega}\)</span>. Halla la corriente e identifica la potencia entregada o recibida por cada elemento.</p>
+</section>
+<section id="e18-21" class="level3">
+<h3 class="anchored" data-anchor-id="e18-21">Ejercicio 18.21 · La resistencia del amperímetro</h3>
+<p>Una fuente de <span class="math inline">\(5{,}00\,\mathrm{V}\)</span> alimenta <span class="math inline">\(9{,}00\,\mathrm{\Omega}\)</span>. Se intercala en serie un amperímetro de <span class="math inline">\(1{,}00\,\mathrm{\Omega}\)</span> y se mide con un voltímetro ideal el voltaje del resistor de <span class="math inline">\(9\,\mathrm{\Omega}\)</span>. Halla ambas lecturas y compáralas con las del amperímetro ideal.</p>
+</section>
+<section id="e18-22" class="level3">
+<h3 class="anchored" data-anchor-id="e18-22">Ejercicio 18.22 · Un voltímetro sobre un divisor</h3>
+<p>Una fuente de <span class="math inline">\(12{,}0\,\mathrm{V}\)</span> alimenta en serie un resistor superior de <span class="math inline">\(20{,}0\,\mathrm{k\Omega}\)</span> y uno inferior de <span class="math inline">\(10{,}0\,\mathrm{k\Omega}\)</span>. Un voltímetro de <span class="math inline">\(20{,}0\,\mathrm{k\Omega}\)</span> se conecta en paralelo con el inferior. Halla el voltaje inferior antes y después de conectar el instrumento.</p>
+</section>
+<section id="e18-23" class="level3">
+<h3 class="anchored" data-anchor-id="e18-23">Ejercicio 18.23 · Comprobar corriente y potencia nominal</h3>
+<p>Una fuente regulada de <span class="math inline">\(5{,}00\,\mathrm{V}\)</span> admite hasta <span class="math inline">\(40{,}0\,\mathrm{mA}\)</span>. Cada rama conectada en paralelo contiene <span class="math inline">\(500\,\mathrm{\Omega}\)</span> con potencia nominal <span class="math inline">\(0{,}250\,\mathrm{W}\)</span>. Usando los valores indicados como exactos, calcula el máximo número de ramas compatible con ambos límites y la potencia total en ese estado.</p>
+</section>
+<section id="e18-24" class="level3">
+<h3 class="anchored" data-anchor-id="e18-24">Ejercicio 18.24 · Abrir una rama de un paralelo</h3>
+<p>Resistores de <span class="math inline">\(6{,}00\,\mathrm{\Omega}\)</span> y <span class="math inline">\(3{,}00\,\mathrm{\Omega}\)</span> están en paralelo a <span class="math inline">\(6{,}00\,\mathrm{V}\)</span>. La rama de <span class="math inline">\(3\,\mathrm{\Omega}\)</span> queda abierta. Compara corrientes y potencias totales antes y después, y explica qué ocurre con la corriente del resistor de <span class="math inline">\(6\,\mathrm{\Omega}\)</span>.</p>
+</section>
+</section>
+<section id="soluciones-razonadas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-razonadas">Soluciones razonadas</h2>
+<section id="sol-e18-1" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-1">Solución 18.1</h3>
+<p>La transferencia convencional es <span class="math inline">\(\Delta Q=(0{,}0800)(75{,}0)=6{,}00\,\mathrm{C}\)</span>. El conteo neto es <span class="math inline">\(N=6/e\simeq3{,}74\times10^{19}\)</span> electrones, con deriva opuesta al sentido convencional.</p>
+</section>
+<section id="sol-e18-2" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-2">Solución 18.2</h3>
+<p>La corriente media de una variación lineal es la media de los extremos: <span class="math inline">\(I_{\mathrm{med}}=(0{,}200+0{,}600)/2=0{,}400\,\mathrm{A}\)</span>. El área del trapecio da <span class="math inline">\(\Delta Q=(0{,}400)(5{,}00)=2{,}00\,\mathrm{C}\)</span>.</p>
+</section>
+<section id="sol-e18-3" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-3">Solución 18.3</h3>
+<p><span class="math inline">\(v_d=I/(neA)=0{,}800/[(5{,}00\times10^{28})e(2{,}00\times10^{-6})]\simeq4{,}99\times10^{-5}\,\mathrm{m/s}\)</span>. Mantener la corriente con la mitad de sección exige duplicar la rapidez de deriva, a <span class="math inline">\(9{,}99\times10^{-5}\,\mathrm{m/s}\)</span>.</p>
+</section>
+<section id="sol-e18-4" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-4">Solución 18.4</h3>
+<p>Los tres cocientes dan <span class="math inline">\(R=20{,}0\,\mathrm{\Omega}\)</span>. La prolongación del modelo a <span class="math inline">\(12{,}0\,\mathrm{V}\)</span> predice <span class="math inline">\(I=0{,}600\,\mathrm{A}\)</span> bajo las condiciones estipuladas.</p>
+</section>
+<section id="sol-e18-5" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-5">Solución 18.5</h3>
+<p>Los cocientes son <span class="math inline">\(10{,}0\,\mathrm{\Omega}\)</span>, <span class="math inline">\(12{,}5\,\mathrm{\Omega}\)</span> y <span class="math inline">\(15{,}0\,\mathrm{\Omega}\)</span>. La resistencia que reproduce cada punto cambia entre ellos; los tres datos requieren una respuesta más general que un único resistor óhmico de valor fijo.</p>
+</section>
+<section id="sol-e18-6" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-6">Solución 18.6</h3>
+<p>Convertir el área da <span class="math inline">\(A=2{,}00\times10^{-7}\,\mathrm{m^2}\)</span>. Así, <span class="math inline">\(R=(1{,}50\times10^{-6})(0{,}800)/(2{,}00\times10^{-7})=6{,}00\,\mathrm{\Omega}\)</span>.</p>
+</section>
+<section id="sol-e18-7" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-7">Solución 18.7</h3>
+<p>Conservar volumen implica <span class="math inline">\(A'L'=AL\)</span>, luego <span class="math inline">\(A'/A=1/3\)</span>. La razón de resistencias es <span class="math inline">\((L'/L)(A/A')=3\times3=9\)</span>.</p>
+</section>
+<section id="sol-e18-8" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-8">Solución 18.8</h3>
+<p>El incremento térmico es <span class="math inline">\(50{,}0\,\mathrm{K}\)</span>. Resulta <span class="math inline">\(R=100[1+(0{,}00300)(50{,}0)]=115\,\mathrm{\Omega}\)</span>.</p>
+</section>
+<section id="sol-e18-9" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-9">Solución 18.9</h3>
+<p><span class="math inline">\(I=6/(2{,}50+0{,}500)=2{,}00\,\mathrm{A}\)</span> y <span class="math inline">\(V_{\mathrm{term}}=IR=5{,}00\,\mathrm{V}\)</span>. La fem aporta <span class="math inline">\(\mathcal EI=12{,}0\,\mathrm{W}\)</span>; las resistencias reciben <span class="math inline">\(I^2r=2{,}00\,\mathrm{W}\)</span> e <span class="math inline">\(I^2R=10{,}0\,\mathrm{W}\)</span>. Las potencias recibidas suman la entregada.</p>
+</section>
+<section id="sol-e18-10" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-10">Solución 18.10</h3>
+<p><span class="math inline">\(r=(4{,}40-4{,}00)/(0{,}600-0{,}200)=1{,}00\,\mathrm{\Omega}\)</span> y <span class="math inline">\(\mathcal E=4{,}40+(0{,}200)(1{,}00)=4{,}60\,\mathrm{V}\)</span>. Ambos puntos satisfacen <span class="math inline">\(V=\mathcal E-Ir\)</span>.</p>
+</section>
+<section id="sol-e18-11" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-11">Solución 18.11</h3>
+<p><span class="math inline">\(I=10/50=0{,}200\,\mathrm{A}\)</span> y <span class="math inline">\(P=VI=2{,}00\,\mathrm{W}\)</span>. En <span class="math inline">\(900\,\mathrm{s}\)</span> se transfieren <span class="math inline">\(1800\,\mathrm{J}=5{,}00\times10^{-4}\,\mathrm{kWh}\)</span>.</p>
+</section>
+<section id="sol-e18-12" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-12">Solución 18.12</h3>
+<p><span class="math inline">\(E_{\mathrm{trans}}=(0{,}0600\,\mathrm{kW})(2{,}00\,\mathrm{h})=0{,}120\,\mathrm{kWh}=4{,}32\times10^5\,\mathrm{J}\)</span>. La duración convierte la potencia en energía acumulada.</p>
+</section>
+<section id="sol-e18-13" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-13">Solución 18.13</h3>
+<p>A voltaje fijo, <span class="math inline">\(I=V/R\)</span> y <span class="math inline">\(P=V^2/R\)</span>. Reducir la resistencia a la mitad duplica ambas magnitudes.</p>
+</section>
+<section id="sol-e18-14" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-14">Solución 18.14</h3>
+<p><span class="math inline">\(R_{\mathrm{eq}}=12{,}0\,\mathrm{\Omega}\)</span> e <span class="math inline">\(I=2{,}00\,\mathrm{A}\)</span>. Los voltajes son <span class="math inline">\(6{,}00\,\mathrm{V}\)</span> y <span class="math inline">\(18{,}0\,\mathrm{V}\)</span>, y las potencias, <span class="math inline">\(12{,}0\,\mathrm{W}\)</span> y <span class="math inline">\(36{,}0\,\mathrm{W}\)</span>. Sus sumas verifican <span class="math inline">\(24\,\mathrm{V}\)</span> y <span class="math inline">\(48\,\mathrm{W}=VI\)</span>.</p>
+</section>
+<section id="sol-e18-15" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-15">Solución 18.15</h3>
+<p>El paralelo equivale a <span class="math inline">\(3{,}00\,\mathrm{\Omega}\)</span>. Las corrientes son <span class="math inline">\(3{,}00\,\mathrm{A}\)</span> y <span class="math inline">\(1{,}00\,\mathrm{A}\)</span>, con total <span class="math inline">\(4{,}00\,\mathrm{A}\)</span>. La potencia total es <span class="math inline">\(48{,}0\,\mathrm{W}\)</span>, igual a la suma de <span class="math inline">\(36{,}0\,\mathrm{W}\)</span> y <span class="math inline">\(12{,}0\,\mathrm{W}\)</span>.</p>
+</section>
+<section id="sol-e18-16" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-16">Solución 18.16</h3>
+<p>El paralelo equivale a <span class="math inline">\(4{,}00\,\mathrm{\Omega}\)</span> y el total a <span class="math inline">\(7{,}00\,\mathrm{\Omega}\)</span>. La corriente total es <span class="math inline">\(3{,}00\,\mathrm{A}\)</span>. En el resistor de <span class="math inline">\(3\,\mathrm{\Omega}\)</span> caen <span class="math inline">\(9{,}00\,\mathrm{V}\)</span> y se reciben <span class="math inline">\(27{,}0\,\mathrm{W}\)</span>. El paralelo tiene <span class="math inline">\(12{,}0\,\mathrm{V}\)</span>: pasan <span class="math inline">\(2{,}00\,\mathrm{A}\)</span> por <span class="math inline">\(6\,\mathrm{\Omega}\)</span> y <span class="math inline">\(1{,}00\,\mathrm{A}\)</span> por <span class="math inline">\(12\,\mathrm{\Omega}\)</span>, con potencias <span class="math inline">\(24{,}0\,\mathrm{W}\)</span> y <span class="math inline">\(12{,}0\,\mathrm{W}\)</span>. La suma es <span class="math inline">\(63{,}0\,\mathrm{W}=(21)(3)\)</span>.</p>
+</section>
+<section id="sol-e18-17" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-17">Solución 18.17</h3>
+<p>El nodo <span class="math inline">\(b\)</span> sin derivación pone en serie <span class="math inline">\(2\,\mathrm{\Omega}\)</span> y <span class="math inline">\(4\,\mathrm{\Omega}\)</span>, con equivalente <span class="math inline">\(6\,\mathrm{\Omega}\)</span> entre <span class="math inline">\(a\)</span> y <span class="math inline">\(c\)</span>. Esa rama está en paralelo con el tercer resistor de <span class="math inline">\(6\,\mathrm{\Omega}\)</span>, y el conjunto equivale a <span class="math inline">\(3{,}00\,\mathrm{\Omega}\)</span>. El dibujo puede mostrar dos caminos de <span class="math inline">\(a\)</span> a <span class="math inline">\(c\)</span>, uno con los dos resistores consecutivos y el otro con el tercero.</p>
+</section>
+<section id="sol-e18-18" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-18">Solución 18.18</h3>
+<p>La corriente restante sale del nodo y vale <span class="math inline">\(0{,}700-0{,}200-0{,}100=0{,}400\,\mathrm{A}\)</span>. Con ella se conserva la carga del nodo en el régimen dado.</p>
+</section>
+<section id="sol-e18-19" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-19">Solución 18.19</h3>
+<p>La ecuación <span class="math inline">\((V_a-10)/2+(V_a-4)/2+V_a/5=0\)</span> da <span class="math inline">\(V_a=35/6\,\mathrm{V}\simeq5{,}83\,\mathrm{V}\)</span>. Desde el terminal de <span class="math inline">\(10\,\mathrm{V}\)</span> entran <span class="math inline">\(25/12\,\mathrm{A}\simeq2{,}08\,\mathrm{A}\)</span>; salen <span class="math inline">\(11/12\,\mathrm{A}\simeq0{,}917\,\mathrm{A}\)</span> hacia el de <span class="math inline">\(4\,\mathrm{V}\)</span> y <span class="math inline">\(7/6\,\mathrm{A}\simeq1{,}17\,\mathrm{A}\)</span> hacia el nodo inferior. Los valores exactos verifican el balance.</p>
+</section>
+<section id="sol-e18-20" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-20">Solución 18.20</h3>
+<p>La fem neta en el sentido impulsado por la fuente de <span class="math inline">\(8\,\mathrm{V}\)</span> es <span class="math inline">\(8-5=3\,\mathrm{V}\)</span>, de modo que <span class="math inline">\(I=3/6=0{,}500\,\mathrm{A}\)</span>. La fuente mayor entrega <span class="math inline">\(4{,}00\,\mathrm{W}\)</span>, la menor recibe <span class="math inline">\(2{,}50\,\mathrm{W}\)</span> y el resistor recibe <span class="math inline">\(1{,}50\,\mathrm{W}\)</span>.</p>
+</section>
+<section id="sol-e18-21" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-21">Solución 18.21</h3>
+<p>La resistencia total es <span class="math inline">\(10\,\mathrm{\Omega}\)</span> y el amperímetro lee <span class="math inline">\(0{,}500\,\mathrm{A}\)</span>. El voltímetro lee <span class="math inline">\((0{,}500)(9)=4{,}50\,\mathrm{V}\)</span>. Con amperímetro ideal las lecturas serían <span class="math inline">\(5/9\,\mathrm{A}\simeq0{,}556\,\mathrm{A}\)</span> y <span class="math inline">\(5{,}00\,\mathrm{V}\)</span>.</p>
+</section>
+<section id="sol-e18-22" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-22">Solución 18.22</h3>
+<p>Sin voltímetro, el divisor da <span class="math inline">\(V=12(10)/(20+10)=4{,}00\,\mathrm{V}\)</span>. Conectado el instrumento, la parte inferior equivale a <span class="math inline">\((10)(20)/(10+20)=20/3\,\mathrm{k\Omega}\)</span>. El voltaje inferior es <span class="math inline">\(12(20/3)/(20+20/3)=3{,}00\,\mathrm{V}\)</span>. La corriente del resistor superior aumenta de <span class="math inline">\(0{,}400\,\mathrm{mA}\)</span> a <span class="math inline">\(0{,}450\,\mathrm{mA}\)</span>.</p>
+</section>
+<section id="sol-e18-23" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-23">Solución 18.23</h3>
+<p>Cada rama toma <span class="math inline">\(5/500=10{,}0\,\mathrm{mA}\)</span> y recibe <span class="math inline">\(5^2/500=0{,}0500\,\mathrm{W}\)</span>. La cota de corriente admite cuatro ramas, con potencia total <span class="math inline">\(0{,}200\,\mathrm{W}\)</span>. Una quinta exigiría <span class="math inline">\(50{,}0\,\mathrm{mA}\)</span> si la fuente mantuviera su voltaje, fuera del intervalo declarado.</p>
+</section>
+<section id="sol-e18-24" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e18-24">Solución 18.24</h3>
+<p>Antes de la apertura, las corrientes de rama son <span class="math inline">\(1{,}00\,\mathrm{A}\)</span> y <span class="math inline">\(2{,}00\,\mathrm{A}\)</span>, con total <span class="math inline">\(3{,}00\,\mathrm{A}\)</span> y potencia <span class="math inline">\(18{,}0\,\mathrm{W}\)</span>. Después solo conduce el resistor de <span class="math inline">\(6\,\mathrm{\Omega}\)</span>: el total pasa a <span class="math inline">\(1{,}00\,\mathrm{A}\)</span> y <span class="math inline">\(6{,}00\,\mathrm{W}\)</span>. Su propia corriente permanece en <span class="math inline">\(1{,}00\,\mathrm{A}\)</span> porque conserva <span class="math inline">\(6\,\mathrm{V}\)</span> entre sus terminales con la fuente ideal indicada.</p>
+</section>
+</section>
+<section id="una-experiencia-reconstruir-conexiones-y-comprobar-lecturas" class="level2">
+<h2 class="anchored" data-anchor-id="una-experiencia-reconstruir-conexiones-y-comprobar-lecturas">Una experiencia: reconstruir conexiones y comprobar lecturas</h2>
+<section id="experiencia-dos-dibujos-del-mismo-circuito" class="level3">
+<h3 class="anchored" data-anchor-id="experiencia-dos-dibujos-del-mismo-circuito">Experiencia · Dos dibujos del mismo circuito</h3>
+<p>Usa un simulador o un equipo docente con fuente regulada de baja tensión y limitación de corriente, bajo supervisión. En el montaje físico, selecciona resistores y rangos de instrumentos apropiados con el docente y realiza las conexiones con la fuente desconectada. Se excluyen los experimentos con la red eléctrica.</p>
+<p>Dibuja dos resistores en serie y después cambia su posición en el papel conservando exactamente los nodos. Predice corrientes y voltajes antes de observar las lecturas. Repite el procedimiento con una conexión en paralelo. En cada caso, contrasta la suma de caídas de potencial de un recorrido cerrado y el balance de corrientes de una unión. Para estudiar el efecto de los instrumentos, modifica sus resistencias de entrada en la simulación y vuelve a calcular la red resultante. Registra qué conexiones conservaste, qué condición mantuvo la fuente y qué cambió al medir.</p>
+</section>
+</section>
+<section id="diagnóstico-antes-de-avanzar" class="level2">
+<h2 class="anchored" data-anchor-id="diagnóstico-antes-de-avanzar">Diagnóstico antes de avanzar</h2>
+<p>Una fuente de <span class="math inline">\(\mathcal E=12{,}0\,\mathrm{V}\)</span> y <span class="math inline">\(r=1{,}00\,\mathrm{\Omega}\)</span> alimenta un resistor de <span class="math inline">\(3{,}00\,\mathrm{\Omega}\)</span> en serie con el paralelo de <span class="math inline">\(12{,}0\,\mathrm{\Omega}\)</span> y <span class="math inline">\(6{,}00\,\mathrm{\Omega}\)</span>. Halla las corrientes, el voltaje terminal y las potencias. Predice qué leería un voltímetro ideal sobre el paralelo y cómo cambiaría esa lectura si la rama de <span class="math inline">\(6\,\mathrm{\Omega}\)</span> quedara abierta.</p>
+<p><strong>Contraste.</strong> El paralelo equivale a <span class="math inline">\(4\,\mathrm{\Omega}\)</span>; la resistencia externa es <span class="math inline">\(7\,\mathrm{\Omega}\)</span> y la total, <span class="math inline">\(8\,\mathrm{\Omega}\)</span>. La corriente es <span class="math inline">\(1{,}50\,\mathrm{A}\)</span> y el voltaje terminal, <span class="math inline">\(10{,}5\,\mathrm{V}\)</span>. El resistor de <span class="math inline">\(3\,\mathrm{\Omega}\)</span> tiene <span class="math inline">\(4{,}50\,\mathrm{V}\)</span> y el paralelo, <span class="math inline">\(6{,}00\,\mathrm{V}\)</span>. Sus corrientes son <span class="math inline">\(0{,}500\,\mathrm{A}\)</span> y <span class="math inline">\(1{,}00\,\mathrm{A}\)</span>. La fuente aporta <span class="math inline">\(18{,}0\,\mathrm{W}\)</span>; la resistencia interna recibe <span class="math inline">\(2{,}25\,\mathrm{W}\)</span> y las externas, <span class="math inline">\(6{,}75\,\mathrm{W}\)</span>, <span class="math inline">\(3{,}00\,\mathrm{W}\)</span> y <span class="math inline">\(6{,}00\,\mathrm{W}\)</span>, que suman <span class="math inline">\(15{,}75\,\mathrm{W}\)</span>. El voltímetro ideal lee <span class="math inline">\(6{,}00\,\mathrm{V}\)</span>. Al abrir la rama de <span class="math inline">\(6\,\mathrm{\Omega}\)</span>, la resistencia total pasa a <span class="math inline">\(16\,\mathrm{\Omega}\)</span>, la corriente baja a <span class="math inline">\(0{,}750\,\mathrm{A}\)</span> y la lectura sobre el resistor restante de <span class="math inline">\(12\,\mathrm{\Omega}\)</span> aumenta a <span class="math inline">\(9{,}00\,\mathrm{V}\)</span>. La menor corriente total reduce las caídas en las resistencias que quedan en serie con él. Su potencia aumenta de <span class="math inline">\(3{,}00\,\mathrm{W}\)</span> a <span class="math inline">\(6{,}75\,\mathrm{W}\)</span>.</p>
+<p><strong>Lecturas de apoyo.</strong> H. D. Young y R. A. Freedman, <em>Física universitaria</em>, volumen 2, 12.ª edición, capítulo 25 y secciones 26.1–26.3. R. A. Serway y C. Vuille, <em>Fundamentos de física</em>, volumen 2, 9.ª edición, secciones 17.1–17.6, 18.1–18.4 y 18.6–18.7. Los problemas, los datos y las ayudas visuales de este capítulo se han preparado para esta obra.</p>
+<hr>
+<p><a href="capitulo-17.html">← Capítulo anterior</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-19.html">Capítulo siguiente →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

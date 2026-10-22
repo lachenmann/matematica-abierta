@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+
+<title>12. Presión, flotación y fluidos – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-cb076892e24e5ecd918925b139627211.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-a27ce7592f35ccc06b5fae55f34b11f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#densidad-y-presión-dos-cocientes-con-distinto-significado" id="toc-densidad-y-presión-dos-cocientes-con-distinto-significado" class="nav-link active" data-scroll-target="#densidad-y-presión-dos-cocientes-con-distinto-significado">Densidad y presión: dos cocientes con distinto significado</a>
+  <ul class="collapse">
+  <li><a href="#r12-1" id="toc-r12-1" class="nav-link" data-scroll-target="#r12-1">Problema resuelto 12.1 · Un volumen pequeño en unidades coherentes</a></li>
+  <li><a href="#r12-2" id="toc-r12-2" class="nav-link" data-scroll-target="#r12-2">Problema resuelto 12.2 · La misma fuerza sobre dos áreas</a></li>
+  </ul></li>
+  <li><a href="#cómo-cambia-la-presión-con-la-altura" id="toc-cómo-cambia-la-presión-con-la-altura" class="nav-link" data-scroll-target="#cómo-cambia-la-presión-con-la-altura">Cómo cambia la presión con la altura</a>
+  <ul class="collapse">
+  <li><a href="#r12-3" id="toc-r12-3" class="nav-link" data-scroll-target="#r12-3">Problema resuelto 12.3 · Una ventana bajo el agua</a></li>
+  <li><a href="#r12-4" id="toc-r12-4" class="nav-link" data-scroll-target="#r12-4">Problema resuelto 12.4 · Leer el signo de un manómetro</a></li>
+  <li><a href="#r12-5" id="toc-r12-5" class="nav-link" data-scroll-target="#r12-5">Problema resuelto 12.5 · Dos líquidos, dos incrementos</a></li>
+  <li><a href="#r12-6" id="toc-r12-6" class="nav-link" data-scroll-target="#r12-6">Problema resuelto 12.6 · Una compuerta: sumar fuerzas distribuidas</a></li>
+  </ul></li>
+  <li><a href="#pascal-y-el-intercambio-entre-fuerza-y-recorrido" id="toc-pascal-y-el-intercambio-entre-fuerza-y-recorrido" class="nav-link" data-scroll-target="#pascal-y-el-intercambio-entre-fuerza-y-recorrido">Pascal y el intercambio entre fuerza y recorrido</a>
+  <ul class="collapse">
+  <li><a href="#r12-7" id="toc-r12-7" class="nav-link" data-scroll-target="#r12-7">Problema resuelto 12.7 · Una prensa y sus dos recorridos</a></li>
+  <li><a href="#r12-8" id="toc-r12-8" class="nav-link" data-scroll-target="#r12-8">Problema resuelto 12.8 · El pistón de salida está más arriba</a></li>
+  </ul></li>
+  <li><a href="#arquímedes-del-gradiente-de-presión-al-empuje" id="toc-arquímedes-del-gradiente-de-presión-al-empuje" class="nav-link" data-scroll-target="#arquímedes-del-gradiente-de-presión-al-empuje">Arquímedes: del gradiente de presión al empuje</a>
+  <ul class="collapse">
+  <li><a href="#r12-9" id="toc-r12-9" class="nav-link" data-scroll-target="#r12-9">Problema resuelto 12.9 · Lo que mide el dinamómetro</a></li>
+  <li><a href="#r12-10" id="toc-r12-10" class="nav-link" data-scroll-target="#r12-10">Problema resuelto 12.10 · Cuánto emerge y cuánto puede cargar</a></li>
+  <li><a href="#r12-11" id="toc-r12-11" class="nav-link" data-scroll-target="#r12-11">Problema resuelto 12.11 · Inferir la densidad a partir del peso aparente</a></li>
+  <li><a href="#r12-12" id="toc-r12-12" class="nav-link" data-scroll-target="#r12-12">Problema resuelto 12.12 · Hielo que flota y después se funde</a></li>
+  </ul></li>
+  <li><a href="#conservar-la-masa-de-un-fluido-que-circula" id="toc-conservar-la-masa-de-un-fluido-que-circula" class="nav-link" data-scroll-target="#conservar-la-masa-de-un-fluido-que-circula">Conservar la masa de un fluido que circula</a>
+  <ul class="collapse">
+  <li><a href="#r12-13" id="toc-r12-13" class="nav-link" data-scroll-target="#r12-13">Problema resuelto 12.13 · Reducir un diámetro a la mitad</a></li>
+  <li><a href="#r12-14" id="toc-r12-14" class="nav-link" data-scroll-target="#r12-14">Problema resuelto 12.14 · La continuidad en una bifurcación</a></li>
+  </ul></li>
+  <li><a href="#bernoulli-seguir-la-energía-de-una-corriente" id="toc-bernoulli-seguir-la-energía-de-una-corriente" class="nav-link" data-scroll-target="#bernoulli-seguir-la-energía-de-una-corriente">Bernoulli: seguir la energía de una corriente</a>
+  <ul class="collapse">
+  <li><a href="#r12-15" id="toc-r12-15" class="nav-link" data-scroll-target="#r12-15">Problema resuelto 12.15 · Un estrechamiento horizontal</a></li>
+  <li><a href="#r12-16" id="toc-r12-16" class="nav-link" data-scroll-target="#r12-16">Problema resuelto 12.16 · La altura también cuesta presión</a></li>
+  </ul></li>
+  <li><a href="#del-depósito-al-chorro-hipótesis-y-predicciones" id="toc-del-depósito-al-chorro-hipótesis-y-predicciones" class="nav-link" data-scroll-target="#del-depósito-al-chorro-hipótesis-y-predicciones">Del depósito al chorro: hipótesis y predicciones</a>
+  <ul class="collapse">
+  <li><a href="#r12-17" id="toc-r12-17" class="nav-link" data-scroll-target="#r12-17">Problema resuelto 12.17 · La rapidez y el caudal instantáneos</a></li>
+  <li><a href="#r12-18" id="toc-r12-18" class="nav-link" data-scroll-target="#r12-18">Problema resuelto 12.18 · Un alcance que permite poner a prueba el modelo</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-para-reconstruir-y-transferir" id="toc-ejercicios-para-reconstruir-y-transferir" class="nav-link" data-scroll-target="#ejercicios-para-reconstruir-y-transferir">Ejercicios para reconstruir y transferir</a>
+  <ul class="collapse">
+  <li><a href="#e12-1" id="toc-e12-1" class="nav-link" data-scroll-target="#e12-1">Ejercicio 12.1 · Masa de un líquido</a></li>
+  <li><a href="#e12-2" id="toc-e12-2" class="nav-link" data-scroll-target="#e12-2">Ejercicio 12.2 · De área a fuerza</a></li>
+  <li><a href="#e12-3" id="toc-e12-3" class="nav-link" data-scroll-target="#e12-3">Ejercicio 12.3 · Diferencia entre profundidades</a></li>
+  <li><a href="#e12-4" id="toc-e12-4" class="nav-link" data-scroll-target="#e12-4">Ejercicio 12.4 · Absoluta y manométrica</a></li>
+  <li><a href="#e12-5" id="toc-e12-5" class="nav-link" data-scroll-target="#e12-5">Ejercicio 12.5 · Manómetro de agua</a></li>
+  <li><a href="#e12-6" id="toc-e12-6" class="nav-link" data-scroll-target="#e12-6">Ejercicio 12.6 · Capas y profundidad equivalente</a></li>
+  <li><a href="#e12-7" id="toc-e12-7" class="nav-link" data-scroll-target="#e12-7">Ejercicio 12.7 · Una tapa horizontal</a></li>
+  <li><a href="#e12-8" id="toc-e12-8" class="nav-link" data-scroll-target="#e12-8">Ejercicio 12.8 · Centro de presión</a></li>
+  <li><a href="#e12-9" id="toc-e12-9" class="nav-link" data-scroll-target="#e12-9">Ejercicio 12.9 · Una razón de radios</a></li>
+  <li><a href="#e12-10" id="toc-e12-10" class="nav-link" data-scroll-target="#e12-10">Ejercicio 12.10 · El costo energético de levantar</a></li>
+  <li><a href="#e12-11" id="toc-e12-11" class="nav-link" data-scroll-target="#e12-11">Ejercicio 12.11 · Corregir un desnivel</a></li>
+  <li><a href="#e12-12" id="toc-e12-12" class="nav-link" data-scroll-target="#e12-12">Ejercicio 12.12 · Empuje antes de conocer la masa</a></li>
+  <li><a href="#e12-13" id="toc-e12-13" class="nav-link" data-scroll-target="#e12-13">Ejercicio 12.13 · La fuerza de un hilo hacia abajo</a></li>
+  <li><a href="#e12-14" id="toc-e12-14" class="nav-link" data-scroll-target="#e12-14">Ejercicio 12.14 · Calado en agua salada</a></li>
+  <li><a href="#e12-15" id="toc-e12-15" class="nav-link" data-scroll-target="#e12-15">Ejercicio 12.15 · Volumen y densidad de una pieza</a></li>
+  <li><a href="#e12-16" id="toc-e12-16" class="nav-link" data-scroll-target="#e12-16">Ejercicio 12.16 · Volumen repartido entre dos líquidos</a></li>
+  <li><a href="#e12-17" id="toc-e12-17" class="nav-link" data-scroll-target="#e12-17">Ejercicio 12.17 · Caudal y tiempo de llenado</a></li>
+  <li><a href="#e12-18" id="toc-e12-18" class="nav-link" data-scroll-target="#e12-18">Ejercicio 12.18 · Un gas que cambia de densidad</a></li>
+  <li><a href="#e12-19" id="toc-e12-19" class="nav-link" data-scroll-target="#e12-19">Ejercicio 12.19 · Dos salidas</a></li>
+  <li><a href="#e12-20" id="toc-e12-20" class="nav-link" data-scroll-target="#e12-20">Ejercicio 12.20 · Presión en un tramo horizontal</a></li>
+  <li><a href="#e12-21" id="toc-e12-21" class="nav-link" data-scroll-target="#e12-21">Ejercicio 12.21 · Cambian rapidez y altura</a></li>
+  <li><a href="#e12-22" id="toc-e12-22" class="nav-link" data-scroll-target="#e12-22">Ejercicio 12.22 · El nivel desciende</a></li>
+  <li><a href="#e12-23" id="toc-e12-23" class="nav-link" data-scroll-target="#e12-23">Ejercicio 12.23 · Elegir el orificio para un alcance</a></li>
+  <li><a href="#e12-24" id="toc-e12-24" class="nav-link" data-scroll-target="#e12-24">Ejercicio 12.24 · Un balance con pérdida</a></li>
+  </ul></li>
+  <li><a href="#soluciones-razonadas" id="toc-soluciones-razonadas" class="nav-link" data-scroll-target="#soluciones-razonadas">Soluciones razonadas</a>
+  <ul class="collapse">
+  <li><a href="#sol-e12-1" id="toc-sol-e12-1" class="nav-link" data-scroll-target="#sol-e12-1">Solución 12.1</a></li>
+  <li><a href="#sol-e12-2" id="toc-sol-e12-2" class="nav-link" data-scroll-target="#sol-e12-2">Solución 12.2</a></li>
+  <li><a href="#sol-e12-3" id="toc-sol-e12-3" class="nav-link" data-scroll-target="#sol-e12-3">Solución 12.3</a></li>
+  <li><a href="#sol-e12-4" id="toc-sol-e12-4" class="nav-link" data-scroll-target="#sol-e12-4">Solución 12.4</a></li>
+  <li><a href="#sol-e12-5" id="toc-sol-e12-5" class="nav-link" data-scroll-target="#sol-e12-5">Solución 12.5</a></li>
+  <li><a href="#sol-e12-6" id="toc-sol-e12-6" class="nav-link" data-scroll-target="#sol-e12-6">Solución 12.6</a></li>
+  <li><a href="#sol-e12-7" id="toc-sol-e12-7" class="nav-link" data-scroll-target="#sol-e12-7">Solución 12.7</a></li>
+  <li><a href="#sol-e12-8" id="toc-sol-e12-8" class="nav-link" data-scroll-target="#sol-e12-8">Solución 12.8</a></li>
+  <li><a href="#sol-e12-9" id="toc-sol-e12-9" class="nav-link" data-scroll-target="#sol-e12-9">Solución 12.9</a></li>
+  <li><a href="#sol-e12-10" id="toc-sol-e12-10" class="nav-link" data-scroll-target="#sol-e12-10">Solución 12.10</a></li>
+  <li><a href="#sol-e12-11" id="toc-sol-e12-11" class="nav-link" data-scroll-target="#sol-e12-11">Solución 12.11</a></li>
+  <li><a href="#sol-e12-12" id="toc-sol-e12-12" class="nav-link" data-scroll-target="#sol-e12-12">Solución 12.12</a></li>
+  <li><a href="#sol-e12-13" id="toc-sol-e12-13" class="nav-link" data-scroll-target="#sol-e12-13">Solución 12.13</a></li>
+  <li><a href="#sol-e12-14" id="toc-sol-e12-14" class="nav-link" data-scroll-target="#sol-e12-14">Solución 12.14</a></li>
+  <li><a href="#sol-e12-15" id="toc-sol-e12-15" class="nav-link" data-scroll-target="#sol-e12-15">Solución 12.15</a></li>
+  <li><a href="#sol-e12-16" id="toc-sol-e12-16" class="nav-link" data-scroll-target="#sol-e12-16">Solución 12.16</a></li>
+  <li><a href="#sol-e12-17" id="toc-sol-e12-17" class="nav-link" data-scroll-target="#sol-e12-17">Solución 12.17</a></li>
+  <li><a href="#sol-e12-18" id="toc-sol-e12-18" class="nav-link" data-scroll-target="#sol-e12-18">Solución 12.18</a></li>
+  <li><a href="#sol-e12-19" id="toc-sol-e12-19" class="nav-link" data-scroll-target="#sol-e12-19">Solución 12.19</a></li>
+  <li><a href="#sol-e12-20" id="toc-sol-e12-20" class="nav-link" data-scroll-target="#sol-e12-20">Solución 12.20</a></li>
+  <li><a href="#sol-e12-21" id="toc-sol-e12-21" class="nav-link" data-scroll-target="#sol-e12-21">Solución 12.21</a></li>
+  <li><a href="#sol-e12-22" id="toc-sol-e12-22" class="nav-link" data-scroll-target="#sol-e12-22">Solución 12.22</a></li>
+  <li><a href="#sol-e12-23" id="toc-sol-e12-23" class="nav-link" data-scroll-target="#sol-e12-23">Solución 12.23</a></li>
+  <li><a href="#sol-e12-24" id="toc-sol-e12-24" class="nav-link" data-scroll-target="#sol-e12-24">Solución 12.24</a></li>
+  </ul></li>
+  <li><a href="#una-experiencia-el-alcance-de-un-chorro" id="toc-una-experiencia-el-alcance-de-un-chorro" class="nav-link" data-scroll-target="#una-experiencia-el-alcance-de-un-chorro">Una experiencia: el alcance de un chorro</a>
+  <ul class="collapse">
+  <li><a href="#dos-alturas-que-cumplen-funciones-distintas" id="toc-dos-alturas-que-cumplen-funciones-distintas" class="nav-link" data-scroll-target="#dos-alturas-que-cumplen-funciones-distintas">Dos alturas que cumplen funciones distintas</a></li>
+  </ul></li>
+  <li><a href="#diagnóstico-antes-de-avanzar" id="toc-diagnóstico-antes-de-avanzar" class="nav-link" data-scroll-target="#diagnóstico-antes-de-avanzar">Diagnóstico antes de avanzar</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">12. Presión, flotación y fluidos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="capitulo-11.html">← Capítulo anterior</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-13.html">Capítulo siguiente →</a></p>
+<p>Una botella llena de agua puede sostener un objeto que se hundiría en el aire. Una prensa permite levantar una carga grande mediante una fuerza pequeña. Y un chorro se estrecha mientras cae, aunque nadie retire agua de sus costados. Estos hechos parecen diferentes; todos pueden estudiarse siguiendo las fuerzas, la masa y la energía de un fluido.</p>
+<p>Comenzaremos por el equilibrio. La presión permitirá expresar cómo se distribuye una fuerza sobre una superficie, y su variación con la altura explicará tanto la flotación como los instrumentos de medida. Después dejaremos moverse al líquido: conservar la masa fijará el caudal; conservar la energía relacionará presión, rapidez y elevación. En cada paso habrá que decidir qué condiciones hacen razonable el modelo.</p>
+<section id="densidad-y-presión-dos-cocientes-con-distinto-significado" class="level2">
+<h2 class="anchored" data-anchor-id="densidad-y-presión-dos-cocientes-con-distinto-significado">Densidad y presión: dos cocientes con distinto significado</h2>
+<p>Un fluido puede deformarse continuamente bajo una fuerza tangencial sostenida. Los líquidos conservan aproximadamente su volumen; los gases cambian de volumen con mucha mayor facilidad. En reposo, un fluido ordinario ejerce sobre una pared una fuerza perpendicular a ella. Si pudiera sostener una tensión tangencial sin deformarse, el modelo de fluido en reposo dejaría de describirlo.</p>
+<p>La densidad media es la masa dividida por el volumen ocupado, <span class="math inline">\(\rho=m/V\)</span>, y se mide en <span class="math inline">\(\,\mathrm{kg/m^3}\)</span>. Para un material homogéneo coincide con su densidad local. En una distribución no uniforme, la definición local es <span class="math inline">\(\rho=dm/dV\)</span>; la masa total se obtiene sumando <span class="math inline">\(dm=\rho\,dV\)</span>. Usaremos líquidos de densidad constante y tomaremos <span class="math inline">\(\rho_{\mathrm{agua}}=1000\,\mathrm{kg/m^3}\)</span> y <span class="math inline">\(g=9{,}8\,\mathrm{m/s^2}\)</span>, salvo indicación distinta. La temperatura y la composición pueden modificar esas densidades.</p>
+<p>La presión media sobre una superficie plana es <span class="math inline">\(p_{\mathrm{media}}=F_\perp/A=(1/A)\int_A p\,dA\)</span>. Su definición local es <span class="math inline">\(p=dF_\perp/dA\)</span>; una distribución uniforme tiene presión local igual a ese promedio. Un pascal es un newton por metro cuadrado: <span class="math inline">\(1\,\mathrm{Pa}=1\,\mathrm{N/m^2}\)</span>. La presión es escalar; la dirección de la fuerza se obtiene de la orientación de cada superficie. Sobre un área curva, las fuerzas elementales tienen direcciones distintas y se suman como vectores.</p>
+<section id="r12-1" class="level3">
+<h3 class="anchored" data-anchor-id="r12-1">Problema resuelto 12.1 · Un volumen pequeño en unidades coherentes</h3>
+<p>Una pieza homogénea tiene masa <span class="math inline">\(540\,\mathrm{g}\)</span> y volumen <span class="math inline">\(200\,\mathrm{cm^3}\)</span>. Calcula su densidad en unidades SI. <em>Resolución.</em> Como <span class="math inline">\(1\,\mathrm{cm^3}=10^{-6}\,\mathrm{m^3}\)</span>, el volumen es <span class="math inline">\(2{,}00\times10^{-4}\,\mathrm{m^3}\)</span> y la masa, <span class="math inline">\(0{,}540\,\mathrm{kg}\)</span>. Por tanto, <span class="math display">\[
+\rho=\frac{0{,}540}{2{,}00\times10^{-4}}=2700\,\mathrm{kg/m^3}.
+\]</span> También resulta <span class="math inline">\(2{,}70\,\mathrm{g/cm^3}\)</span>. El factor de conversión afecta a las tres dimensiones del volumen: convertir solo una longitud daría una densidad equivocada.</p>
+<div id="fig-fp-av-r12-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.1 · Un volumen pequeño en unidades coherentes. Una pieza homogénea tiene masa 540\,g y volumen 200\,cm^3. Calcula su densidad en unidades SI. Resolución. Como 1\,cm^3=10^-6\,m^3, el volumen es 2,00times10^-4\,m^3 y la masa, 0,540\,kg. Por tanto, rho=frac0,5402,00times10^-4=2700\,kg/m^3. También resulta 2,70\,g/cm^3. El factor de conversión afecta a las tres">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-1.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.1 · Un volumen pequeño en unidades coherentes. Una pieza homogénea tiene masa 540\,g y volumen 200\,cm^3. Calcula su densidad en unidades SI. Resolución. Como 1\,cm^3=10^-6\,m^3, el volumen es 2,00times10^-4\,m^3 y la masa, 0,540\,kg. Por tanto, rho=frac0,5402,00times10^-4=2700\,kg/m^3. También resulta 2,70\,g/cm^3. El factor de conversión afecta a las tres">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Apoyo visual: Problema resuelto 12.1 · Un volumen pequeño en unidades coherentes.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r12-2" class="level3">
+<h3 class="anchored" data-anchor-id="r12-2">Problema resuelto 12.2 · La misma fuerza sobre dos áreas</h3>
+<p>Una fuerza normal de <span class="math inline">\(600\,\mathrm{N}\)</span> se distribuye uniformemente primero sobre <span class="math inline">\(0{,}030\,\mathrm{m^2}\)</span> y después sobre <span class="math inline">\(0{,}0060\,\mathrm{m^2}\)</span>. Compara las presiones.</p>
+<p><em>Resolución.</em> Las presiones son <span class="math inline">\(p_1=600/0{,}030=20\,\mathrm{kPa}\)</span> y <span class="math inline">\(p_2=600/0{,}0060=100\,\mathrm{kPa}\)</span>. Reducir el área a la quinta parte multiplica la presión por cinco. La fuerza total sigue siendo <span class="math inline">\(600\,\mathrm{N}\)</span> en cada caso. Si dos superficies tienen igual presión pero áreas distintas, en cambio, las fuerzas normales serán distintas: <span class="math inline">\(F=pA\)</span>.</p>
+<div id="fig-fp-av-r12-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.2 · La misma fuerza sobre dos áreas. Resolución. Las presiones son p1=600/0,030=20\,kPa y p2=600/0,0060=100\,kPa. Reducir el área a la quinta parte multiplica la presión por cinco. La fuerza total sigue siendo 600\,N en cada caso. Si dos superficies tienen igual presión pero áreas distintas, en cambio, las fuerzas normales serán distintas: F=pA.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-2.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.2 · La misma fuerza sobre dos áreas. Resolución. Las presiones son p1=600/0,030=20\,kPa y p2=600/0,0060=100\,kPa. Reducir el área a la quinta parte multiplica la presión por cinco. La fuerza total sigue siendo 600\,N en cada caso. Si dos superficies tienen igual presión pero áreas distintas, en cambio, las fuerzas normales serán distintas: F=pA.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Apoyo visual: Problema resuelto 12.2 · La misma fuerza sobre dos áreas.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="cómo-cambia-la-presión-con-la-altura" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-cambia-la-presión-con-la-altura">Cómo cambia la presión con la altura</h2>
+<p>Tomemos un pequeño prisma de líquido en reposo, con área horizontal <span class="math inline">\(A\)</span> y espesor <span class="math inline">\(dz\)</span>. El eje <span class="math inline">\(z\)</span> apunta hacia arriba. En su base actúa <span class="math inline">\(p(z)A\)</span> hacia arriba; en su cara superior, <span class="math inline">\(p(z+dz)A\)</span> hacia abajo; su peso es <span class="math inline">\(\rho gA\,dz\)</span>. El equilibrio exige <span class="math display">\[
+p(z)A-p(z+dz)A-\rho gA\,dz=0.
+\]</span> Al dividir por <span class="math inline">\(A\,dz\)</span> y tomar el límite obtenemos <span class="math inline">\(dp/dz=-\rho g\)</span>. Para densidad y gravedad constantes, integrar entre dos niveles da <span class="math display">\[
+p_2-p_1=-\rho g(z_2-z_1),\qquad p=p_s+\rho gh.
+\]</span> En la segunda forma, <span class="math inline">\(h\)</span> es la profundidad bajo una superficie cuya presión es <span class="math inline">\(p_s\)</span>. La presión depende del desnivel, del fluido y de la presión de referencia, cualquiera sea la forma del recipiente. A igual altura, dos puntos de un mismo líquido conectado y en reposo tienen la misma presión. Comparar fluidos distintos o recipientes aislados con presiones superficiales diferentes requiere incluir esos datos en el balance.</p>
+<p>La <em>presión absoluta</em> se mide respecto del vacío. La <em>presión manométrica</em> es <span class="math inline">\(p_{\mathrm{man}}=p_{\mathrm{abs}}-p_{\mathrm{atm}}\)</span>. Puede ser negativa sin que lo sea la presión absoluta. En un recipiente abierto, <span class="math inline">\(p_s=p_{\mathrm{atm}}\)</span>; en uno cerrado, la presión del gas superior debe conocerse. Al calcular la fuerza neta sobre una pared que tiene aire al otro lado se resta esa presión exterior. Si se emplea <span class="math inline">\(p_{\mathrm{man}}\)</span>, esa resta ya está hecha.</p>
+<section id="r12-3" class="level3">
+<h3 class="anchored" data-anchor-id="r12-3">Problema resuelto 12.3 · Una ventana bajo el agua</h3>
+<p>El centro de una ventana pequeña de área <span class="math inline">\(0{,}020\,\mathrm{m^2}\)</span> está <span class="math inline">\(3{,}0\,\mathrm{m}\)</span> bajo una superficie de agua abierta. Dentro hay aire a <span class="math inline">\(101\,\mathrm{kPa}\)</span>, igual que fuera en la superficie. Calcula la presión absoluta en el centro y la fuerza neta aproximada. Supón pequeña la variación de profundidad sobre la ventana.</p>
+<p><em>Resolución.</em> El incremento hidrostático es <span class="math inline">\(\rho gh=1000(9{,}8)(3)=29{,}4\,\mathrm{kPa}\)</span>. Así, <span class="math inline">\(p_{\mathrm{abs}}=130{,}4\,\mathrm{kPa}\)</span>. La fuerza neta usa la diferencia con el aire interior: <span class="math display">\[
+F_{\mathrm{neta}}=(130{,}4-101)10^3(0{,}020)=588\,\mathrm{N}.
+\]</span> Apunta hacia dentro. Multiplicar la presión absoluta por el área calcularía la fuerza del agua sobre una cara; la resultante requiere combinar las fuerzas de ambas caras. Para una ventana plana vertical de área conocida, la presión media coincide además con la presión en su centroide, si la densidad es constante.</p>
+<div id="fig-fp-av-r12-3" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.3 · Una ventana bajo el agua. Resolución. El incremento hidrostático es rho gh=1000(9,8)(3)=29,4\,kPa. Así, pabs=130,4\,kPa. La fuerza neta usa la diferencia con el aire interior: Fneta=(130,4-101)10^3(0,020)=588\,N. Apunta hacia dentro. Multiplicar la presión absoluta por el área calcularía la fuerza del agua sobre una cara; la resultante">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-3.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.3 · Una ventana bajo el agua. Resolución. El incremento hidrostático es rho gh=1000(9,8)(3)=29,4\,kPa. Así, pabs=130,4\,kPa. La fuerza neta usa la diferencia con el aire interior: Fneta=(130,4-101)10^3(0,020)=588\,N. Apunta hacia dentro. Multiplicar la presión absoluta por el área calcularía la fuerza del agua sobre una cara; la resultante">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Apoyo visual: Problema resuelto 12.3 · Una ventana bajo el agua.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r12-4" class="level3">
+<h3 class="anchored" data-anchor-id="r12-4">Problema resuelto 12.4 · Leer el signo de un manómetro</h3>
+<p>Un tubo en U contiene mercurio de densidad <span class="math inline">\(13600\,\mathrm{kg/m^3}\)</span>. Un brazo comunica con un gas y el otro con la atmósfera. El mercurio queda <span class="math inline">\(8{,}0\,\mathrm{cm}\)</span> más alto en el brazo abierto. Determina la presión manométrica del gas. Desprecia la variación de presión en los gases. <em>Resolución.</em> En el brazo abierto descendemos <span class="math inline">\(0{,}080\,\mathrm{m}\)</span> hasta el nivel de la interfaz del otro brazo. La presión aumenta en <span class="math inline">\(\rho gh\)</span>; a ese nivel ambas ramas del mercurio tienen la misma presión. Resulta <span class="math display">\[
+p_g-p_{\mathrm{atm}}=13600(9{,}8)(0{,}080)\simeq10{,}7\,\mathrm{kPa}.
+\]</span> El gas tiene mayor presión que el ambiente: ha deprimido el mercurio de su lado. Invertir las alturas cambiaría el signo de la lectura.</p>
+<div id="fig-fp-av-r12-4" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.4 · Leer el signo de un manómetro. Un tubo en U contiene mercurio de densidad 13600\,kg/m^3. Un brazo comunica con un gas y el otro con la atmósfera. El mercurio queda 8,0\,cm más alto en el brazo abierto. Determina la presión manométrica del gas. Desprecia la variación de presión en los gases. Resolución. En el brazo abierto descendemos 0,080\,m hasta">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-4.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.4 · Leer el signo de un manómetro. Un tubo en U contiene mercurio de densidad 13600\,kg/m^3. Un brazo comunica con un gas y el otro con la atmósfera. El mercurio queda 8,0\,cm más alto en el brazo abierto. Determina la presión manométrica del gas. Desprecia la variación de presión en los gases. Resolución. En el brazo abierto descendemos 0,080\,m hasta">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Apoyo visual: Problema resuelto 12.4 · Leer el signo de un manómetro.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r12-5" class="level3">
+<h3 class="anchored" data-anchor-id="r12-5">Problema resuelto 12.5 · Dos líquidos, dos incrementos</h3>
+<p>Un depósito abierto contiene <span class="math inline">\(0{,}50\,\mathrm{m}\)</span> de aceite de densidad <span class="math inline">\(800\,\mathrm{kg/m^3}\)</span> sobre <span class="math inline">\(1{,}20\,\mathrm{m}\)</span> de agua. Halla la presión manométrica en el fondo. Los líquidos son inmiscibles; desprecia efectos de tensión superficial.</p>
+<p><em>Resolución.</em> La presión es continua al atravesar una interfaz plana sin tensión superficial apreciable. Sumamos el aumento en cada capa: <span class="math display">\[
+p_f-p_{\mathrm{atm}}=800(9{,}8)(0{,}50)+1000(9{,}8)(1{,}20)
+=15680\,\mathrm{Pa}.
+\]</span> Equivale a una columna de agua de <span class="math inline">\(1{,}60\,\mathrm{m}\)</span>, menor que la altura geométrica total de <span class="math inline">\(1{,}70\,\mathrm{m}\)</span>. Usar una sola densidad para toda la columna perdería la contribución distinta del aceite.</p>
+<div id="fig-fp-av-r12-5" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.5 · Dos líquidos, dos incrementos. Resolución. La presión es continua al atravesar una interfaz plana sin tensión superficial apreciable. Sumamos el aumento en cada capa: pf-patm=800(9,8)(0,50)+1000(9,8)(1,20) =15680\,Pa. Equivale a una columna de agua de 1,60\,m, menor que la altura geométrica total de 1,70\,m. Usar una sola densidad para toda la">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-5.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.5 · Dos líquidos, dos incrementos. Resolución. La presión es continua al atravesar una interfaz plana sin tensión superficial apreciable. Sumamos el aumento en cada capa: pf-patm=800(9,8)(0,50)+1000(9,8)(1,20) =15680\,Pa. Equivale a una columna de agua de 1,60\,m, menor que la altura geométrica total de 1,70\,m. Usar una sola densidad para toda la">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Apoyo visual: Problema resuelto 12.5 · Dos líquidos, dos incrementos.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r12-6" class="level3">
+<h3 class="anchored" data-anchor-id="r12-6">Problema resuelto 12.6 · Una compuerta: sumar fuerzas distribuidas</h3>
+<p>Una compuerta vertical rectangular tiene ancho <span class="math inline">\(b=1{,}0\,\mathrm{m}\)</span> y altura <span class="math inline">\(H=2{,}0\,\mathrm{m}\)</span>. Su borde superior coincide con la superficie de agua abierta; al otro lado hay aire a presión atmosférica. Calcula la fuerza neta y la profundidad a la que actúa su resultante.</p>
+<p><em>Resolución.</em> A profundidad <span class="math inline">\(h\)</span>, la presión manométrica es <span class="math inline">\(\rho gh\)</span>. Una franja horizontal de espesor <span class="math inline">\(dh\)</span> recibe <span class="math inline">\(dF=\rho ghb\,dh\)</span>. Por tanto, <span class="math display">\[
+F=\int_0^H\rho gbh\,dh=\frac12\rho gbH^2=19600\,\mathrm{N}.
+\]</span> Para ubicar la resultante igualamos su momento respecto del borde superior al de todas las franjas: <span class="math display">\[
+Fh_R=\int_0^Hh\,dF=\frac13\rho gbH^3,
+\qquad h_R=\frac{2H}{3}=1{,}33\,\mathrm{m}.
+\]</span> La fuerza actúa por debajo del centro geométrico porque las franjas inferiores reciben mayor presión. Su módulo también se obtiene con <span class="math inline">\(\rho g(H/2)bH\)</span>; localizar el punto de aplicación requiere calcular el momento de la distribución, que difiere del correspondiente a <span class="math inline">\(H/2\)</span>.</p>
+<div id="fig-fp-av-r12-6" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.6 · Una compuerta: sumar fuerzas distribuidas. Resolución. A profundidad h, la presión manométrica es rho gh. Una franja horizontal de espesor dh recibe dF=rho ghb\,dh. Por tanto, F=int0^Hrho gbh\,dh=frac12rho gbH^2=19600\,N. Para ubicar la resultante igualamos su momento respecto del borde superior al de todas las franjas: FhR=int0^Hh\,dF=frac13rho gbH^3, qquad">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-6.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.6 · Una compuerta: sumar fuerzas distribuidas. Resolución. A profundidad h, la presión manométrica es rho gh. Una franja horizontal de espesor dh recibe dF=rho ghb\,dh. Por tanto, F=int0^Hrho gbh\,dh=frac12rho gbH^2=19600\,N. Para ubicar la resultante igualamos su momento respecto del borde superior al de todas las franjas: FhR=int0^Hh\,dF=frac13rho gbH^3, qquad">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Apoyo visual: Problema resuelto 12.6 · Una compuerta: sumar fuerzas distribuidas.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="pascal-y-el-intercambio-entre-fuerza-y-recorrido" class="level2">
+<h2 class="anchored" data-anchor-id="pascal-y-el-intercambio-entre-fuerza-y-recorrido">Pascal y el intercambio entre fuerza y recorrido</h2>
+<p>Si aumentamos la presión en una frontera de un líquido confinado, su nuevo equilibrio sigue cumpliendo <span class="math inline">\(p=p_s+\rho gh\)</span>. Cuando la geometría y la densidad se mantienen, cada punto recibe el mismo incremento <span class="math inline">\(\Delta p_s\)</span>. Este es el principio de Pascal: se transmite el incremento de presión. Las presiones totales de puntos a distinta altura pueden seguir siendo diferentes.</p>
+<p>En una prensa ideal con pistones a la misma altura, sin rozamiento ni peso de los pistones, y con la misma presión exterior en ambos, las fuerzas aplicadas satisfacen <span class="math display">\[
+\frac{F_1}{A_1}=\frac{F_2}{A_2}.
+\]</span> Para un desplazamiento pequeño, el líquido incompresible obliga a que <span class="math inline">\(A_1s_1=A_2s_2\)</span>, donde los <span class="math inline">\(s\)</span> son módulos de recorridos opuestos. Multiplicar ambas relaciones da <span class="math inline">\(F_1s_1=F_2s_2\)</span>: la mayor fuerza se obtiene a costa de un menor recorrido. La igualdad de trabajos supone pérdidas despreciables y un cambio despreciable de energía potencial del líquido. Para desniveles apreciables hay que añadir el término hidrostático; para movimientos grandes, actualizar las alturas.</p>
+<section id="r12-7" class="level3">
+<h3 class="anchored" data-anchor-id="r12-7">Problema resuelto 12.7 · Una prensa y sus dos recorridos</h3>
+<p>Los pistones de una prensa ideal tienen áreas de <span class="math inline">\(4{,}0\,\mathrm{cm^2}\)</span> y <span class="math inline">\(100\,\mathrm{cm^2}\)</span>. Se aplica una fuerza de <span class="math inline">\(120\,\mathrm{N}\)</span> al menor, que desciende <span class="math inline">\(0{,}25\,\mathrm{m}\)</span>. Calcula la fuerza de salida, el ascenso mayor y los trabajos. Desprecia las correcciones por desnivel durante el movimiento.</p>
+<p><em>Resolución.</em> La razón de áreas es <span class="math inline">\(25\)</span>, por lo que <span class="math inline">\(F_2=25(120)=3000\,\mathrm{N}\)</span>. La conservación del volumen da <span class="math inline">\(s_2=s_1/25=0{,}010\,\mathrm{m}\)</span>. Los trabajos de entrada y de salida tienen el mismo módulo: <span class="math display">\[
+W_{\mathrm{entrada}}=120(0{,}25)=30\,\mathrm{J},\qquad
+W_{\mathrm{salida}}=3000(0{,}010)=30\,\mathrm{J}.
+\]</span> El trabajo que la carga realiza sobre el dispositivo tiene signo negativo; el que el dispositivo realiza sobre la carga es positivo. Las áreas pueden compararse en <span class="math inline">\(\,\mathrm{cm^2}\)</span> porque sus unidades se cancelan en la razón.</p>
+<div id="fig-fp-av-r12-7" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.7 · Una prensa y sus dos recorridos. Resolución. La razón de áreas es 25, por lo que F2=25(120)=3000\,N. La conservación del volumen da s2=s1/25=0,010\,m. Los trabajos de entrada y de salida tienen el mismo módulo: Wentrada=120(0,25)=30\,J,qquad Wsalida=3000(0,010)=30\,J. El trabajo que la carga realiza sobre el dispositivo tiene signo negativo; el que">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-7.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.7 · Una prensa y sus dos recorridos. Resolución. La razón de áreas es 25, por lo que F2=25(120)=3000\,N. La conservación del volumen da s2=s1/25=0,010\,m. Los trabajos de entrada y de salida tienen el mismo módulo: Wentrada=120(0,25)=30\,J,qquad Wsalida=3000(0,010)=30\,J. El trabajo que la carga realiza sobre el dispositivo tiene signo negativo; el que">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Apoyo visual: Problema resuelto 12.7 · Una prensa y sus dos recorridos.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r12-8" class="level3">
+<h3 class="anchored" data-anchor-id="r12-8">Problema resuelto 12.8 · El pistón de salida está más arriba</h3>
+<p>En equilibrio, un pistón de <span class="math inline">\(0{,}010\,\mathrm{m^2}\)</span> sostiene una carga de <span class="math inline">\(2000\,\mathrm{N}\)</span> y está <span class="math inline">\(1{,}50\,\mathrm{m}\)</span> por encima de otro de <span class="math inline">\(4{,}0\times10^{-4}\,\mathrm{m^2}\)</span>. El aceite tiene densidad <span class="math inline">\(800\,\mathrm{kg/m^3}\)</span>. Ambos pistones carecen de peso y rozamiento y están expuestos a la misma atmósfera. ¿Qué fuerza hacia abajo requiere el pistón menor?</p>
+<p><em>Resolución.</em> Bajo el pistón mayor, <span class="math inline">\(p_{2,\mathrm{man}}=2000/0{,}010=200000\,\mathrm{Pa}\)</span>. Como el menor está más abajo, su presión debe ser mayor: <span class="math display">\[
+p_{1,\mathrm{man}}=200000+800(9{,}8)(1{,}50)=211760\,\mathrm{Pa}.
+\]</span> Luego <span class="math inline">\(F_1=p_{1,\mathrm{man}}A_1=84{,}704\,\mathrm{N}\simeq84{,}7\,\mathrm{N}\)</span>. Ignorar el desnivel daría <span class="math inline">\(80\,\mathrm{N}\)</span>. El principio de Pascal sigue siendo válido; lo que cambia con la altura es el valor de equilibrio sobre el que se transmite un incremento de presión.</p>
+<div id="fig-fp-av-r12-8" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.8 · El pistón de salida está más arriba. Resolución. Bajo el pistón mayor, p2,man=2000/0,010=200000\,Pa. Como el menor está más abajo, su presión debe ser mayor: p1,man=200000+800(9,8)(1,50)=211760\,Pa. Luego F1=p1,manA1=84,704\,Nsimeq84,7\,N. Ignorar el desnivel daría 80\,N. El principio de Pascal sigue siendo válido; lo que cambia con la altura es el valor">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-8.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.8 · El pistón de salida está más arriba. Resolución. Bajo el pistón mayor, p2,man=2000/0,010=200000\,Pa. Como el menor está más abajo, su presión debe ser mayor: p1,man=200000+800(9,8)(1,50)=211760\,Pa. Luego F1=p1,manA1=84,704\,Nsimeq84,7\,N. Ignorar el desnivel daría 80\,N. El principio de Pascal sigue siendo válido; lo que cambia con la altura es el valor">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Apoyo visual: Problema resuelto 12.8 · El pistón de salida está más arriba.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="arquímedes-del-gradiente-de-presión-al-empuje" class="level2">
+<h2 class="anchored" data-anchor-id="arquímedes-del-gradiente-de-presión-al-empuje">Arquímedes: del gradiente de presión al empuje</h2>
+<p>Imaginemos un volumen de líquido en reposo y marquemos su frontera sin retirar materia. Las fuerzas que el líquido circundante ejerce sobre esa frontera equilibran el peso del volumen marcado. Si lo sustituimos por un cuerpo de la misma forma, las presiones en las mismas posiciones producen la misma resultante, siempre que se mantengan el campo hidrostático y el contacto del fluido con la superficie. Esa resultante es el <em>empuje</em>: <span class="math display">\[
+B=\rho_f gV_d.
+\]</span> <span class="math inline">\(V_d\)</span> es el volumen de fluido desplazado; para un cuerpo parcialmente sumergido, solo cuenta la porción sumergida. El empuje apunta hacia arriba y su línea de acción pasa por el centro de volumen desplazado cuando <span class="math inline">\(\rho_f\)</span> es uniforme. Para capas de densidad diferente, se suman <span class="math inline">\(\rho_i gV_i\)</span>. El aire también ejerce empuje, aunque aquí lo despreciaremos frente al del agua y frente al peso de objetos densos.</p>
+<p>El empuje queda determinado por el fluido desplazado y el campo gravitatorio. Un cuerpo sostenido e inmerso puede tener <span class="math inline">\(B&lt;mg\)</span> o <span class="math inline">\(B&gt;mg\)</span>. Para flotar libremente en equilibrio vertical, sin otros apoyos ni tensiones, sí debe cumplirse <span class="math inline">\(B=mg\)</span>. Si es homogéneo, de densidad <span class="math inline">\(\rho_c\)</span>, se obtiene <span class="math inline">\(V_d/V=\rho_c/\rho_f\)</span>. Una fracción mayor que uno indica que la flotación parcial es imposible. La igualdad de densidades permite equilibrio totalmente sumergido, idealmente neutro frente a desplazamientos verticales. La estabilidad ante un giro requiere además estudiar los momentos de las fuerzas.</p>
+<p>La derivación necesita fuerzas de presión alrededor del volumen desplazado. Un objeto sellado contra el fondo, sin líquido debajo, requiere estudiar las presiones efectivamente presentes en sus superficies. En ese caso deben calcularse las fuerzas de presión y de contacto con la distribución real del líquido.</p>
+<section id="r12-9" class="level3">
+<h3 class="anchored" data-anchor-id="r12-9">Problema resuelto 12.9 · Lo que mide el dinamómetro</h3>
+<p>Un cuerpo de masa <span class="math inline">\(5{,}0\,\mathrm{kg}\)</span> y volumen <span class="math inline">\(2{,}0\times10^{-3}\,\mathrm{m^3}\)</span> permanece completamente sumergido en agua, suspendido de un dinamómetro. No toca el fondo. Calcula el empuje y la lectura.</p>
+<p><em>Resolución.</em> El empuje es <span class="math inline">\(B=1000(9{,}8)(0{,}0020)=19{,}6\,\mathrm{N}\)</span>. El equilibrio vertical del cuerpo exige <span class="math inline">\(T+B-mg=0\)</span>; por tanto, <span class="math display">\[
+T=49{,}0-19{,}6=29{,}4\,\mathrm{N}.
+\]</span> El dinamómetro mide la tensión, llamada aquí peso aparente; la fuerza gravitatoria sigue siendo <span class="math inline">\(49{,}0\,\mathrm{N}\)</span>. En el equilibrio vertical, la tensión aporta <span class="math inline">\(29{,}4\,\mathrm{N}\)</span> y el empuje los <span class="math inline">\(19{,}6\,\mathrm{N}\)</span> restantes.</p>
+<div id="fig-fp-av-r12-9" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.9 · Lo que mide el dinamómetro. Resolución. El empuje es B=1000(9,8)(0,0020)=19,6\,N. El equilibrio vertical del cuerpo exige T+B-mg=0; por tanto, T=49,0-19,6=29,4\,N. El dinamómetro mide la tensión, llamada aquí peso aparente; la fuerza gravitatoria sigue siendo 49,0\,N. En el equilibrio vertical, la tensión aporta 29,4\,N y el empuje los 19,6\,N">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-9.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.9 · Lo que mide el dinamómetro. Resolución. El empuje es B=1000(9,8)(0,0020)=19,6\,N. El equilibrio vertical del cuerpo exige T+B-mg=0; por tanto, T=49,0-19,6=29,4\,N. El dinamómetro mide la tensión, llamada aquí peso aparente; la fuerza gravitatoria sigue siendo 49,0\,N. En el equilibrio vertical, la tensión aporta 29,4\,N y el empuje los 19,6\,N">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9: Apoyo visual: Problema resuelto 12.9 · Lo que mide el dinamómetro.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r12-10" class="level3">
+<h3 class="anchored" data-anchor-id="r12-10">Problema resuelto 12.10 · Cuánto emerge y cuánto puede cargar</h3>
+<p>Un cubo homogéneo de arista <span class="math inline">\(0{,}10\,\mathrm{m}\)</span> y densidad <span class="math inline">\(600\,\mathrm{kg/m^3}\)</span> flota en agua con sus caras horizontales. Halla su calado y la masa adicional máxima que puede sostener justo antes de sumergirse por completo. La carga permanece fuera del agua y no altera la orientación. <em>Resolución.</em> Su volumen es <span class="math inline">\(10^{-3}\,\mathrm{m^3}\)</span> y su masa, <span class="math inline">\(0{,}60\,\mathrm{kg}\)</span>. La fracción sumergida vale <span class="math inline">\(600/1000=0{,}60\)</span>, de modo que el calado es <span class="math inline">\(0{,}060\,\mathrm{m}\)</span>. Al límite, el agua desplazada tiene masa <span class="math inline">\(1{,}00\,\mathrm{kg}\)</span>. La carga máxima resulta <span class="math display">\[
+m_{\mathrm{carga}}=1{,}00-0{,}60=0{,}40\,\mathrm{kg}.
+\]</span> La carga de <span class="math inline">\(0{,}40\,\mathrm{kg}\)</span> corresponde al límite ideal de equilibrio vertical en la orientación supuesta. El oleaje y la estabilidad de una carga alta exigen márgenes adicionales.</p>
+<div id="fig-fp-av-r12-10" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.10 · Cuánto emerge y cuánto puede cargar. Un cubo homogéneo de arista 0,10\,m y densidad 600\,kg/m^3 flota en agua con sus caras horizontales. Halla su calado y la masa adicional máxima que puede sostener justo antes de sumergirse por completo. La carga permanece fuera del agua y no altera la orientación. Resolución. Su volumen es 10^-3\,m^3 y su masa,">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-10.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.10 · Cuánto emerge y cuánto puede cargar. Un cubo homogéneo de arista 0,10\,m y densidad 600\,kg/m^3 flota en agua con sus caras horizontales. Halla su calado y la masa adicional máxima que puede sostener justo antes de sumergirse por completo. La carga permanece fuera del agua y no altera la orientación. Resolución. Su volumen es 10^-3\,m^3 y su masa,">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Apoyo visual: Problema resuelto 12.10 · Cuánto emerge y cuánto puede cargar.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r12-11" class="level3">
+<h3 class="anchored" data-anchor-id="r12-11">Problema resuelto 12.11 · Inferir la densidad a partir del peso aparente</h3>
+<p>Una pieza pesa <span class="math inline">\(9{,}80\,\mathrm{N}\)</span> en aire y el dinamómetro marca <span class="math inline">\(7{,}35\,\mathrm{N}\)</span> cuando se sumerge por completo en agua. Ignora el empuje del aire y el volumen del hilo. Calcula la densidad de la pieza.</p>
+<p><em>Resolución.</em> La disminución de lectura es el empuje: <span class="math inline">\(B=9{,}80-7{,}35=2{,}45\,\mathrm{N}\)</span>. Entonces <span class="math display">\[
+V=\frac{2{,}45}{1000(9{,}8)}=2{,}50\times10^{-4}\,\mathrm{m^3},\qquad
+m=\frac{9{,}80}{9{,}8}=1{,}00\,\mathrm{kg}.
+\]</span> La densidad es <span class="math inline">\(m/V=4000\,\mathrm{kg/m^3}\)</span>. También puede deducirse directamente <span class="math inline">\(\rho_c=\rho_f W/(W-T)\)</span>. La pieza debe estar completamente sumergida, sin burbujas adheridas ni apoyo en el recipiente, para que la diferencia de lecturas permita determinar su volumen completo.</p>
+<div id="fig-fp-av-r12-11" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.11 · Inferir la densidad a partir del peso aparente. Resolución. La disminución de lectura es el empuje: B=9,80-7,35=2,45\,N. Entonces V=frac2,451000(9,8)=2,50times10^-4\,m^3,qquad m=frac9,809,8=1,00\,kg. La densidad es m/V=4000\,kg/m^3. También puede deducirse directamente rhoc=rhof W/(W-T). La pieza debe estar completamente sumergida, sin burbujas adheridas ni apoyo">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-11.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.11 · Inferir la densidad a partir del peso aparente. Resolución. La disminución de lectura es el empuje: B=9,80-7,35=2,45\,N. Entonces V=frac2,451000(9,8)=2,50times10^-4\,m^3,qquad m=frac9,809,8=1,00\,kg. La densidad es m/V=4000\,kg/m^3. También puede deducirse directamente rhoc=rhof W/(W-T). La pieza debe estar completamente sumergida, sin burbujas adheridas ni apoyo">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;11: Apoyo visual: Problema resuelto 12.11 · Inferir la densidad a partir del peso aparente.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r12-12" class="level3">
+<h3 class="anchored" data-anchor-id="r12-12">Problema resuelto 12.12 · Hielo que flota y después se funde</h3>
+<p>Un bloque de hielo de densidad <span class="math inline">\(900\,\mathrm{kg/m^3}\)</span> flota primero en agua dulce de densidad <span class="math inline">\(1000\,\mathrm{kg/m^3}\)</span> y después en agua salada de densidad <span class="math inline">\(1025\,\mathrm{kg/m^3}\)</span>. Compara las fracciones sumergidas. ¿Cambia el nivel al fundirse en el recipiente de agua dulce? Desprecia evaporación, variaciones térmicas del líquido y el volumen del aire desplazado.</p>
+<p><em>Resolución.</em> La fracción sumergida es <span class="math inline">\(\rho_h/\rho_f\)</span>: vale <span class="math inline">\(0{,}900\)</span> en agua dulce y <span class="math inline">\(900/1025\simeq0{,}878\)</span> en agua salada. El mismo peso requiere menos volumen desplazado en el líquido más denso.</p>
+<p>Para una masa de hielo <span class="math inline">\(m\)</span>, antes de fundirse se desplaza <span class="math inline">\(V_d=m/\rho_{\mathrm{agua}}\)</span>. Después se incorpora agua líquida de volumen <span class="math inline">\(m/\rho_{\mathrm{agua}}\)</span>, exactamente el mismo. El nivel del recipiente de agua dulce permanece constante en este modelo. Para estudiar hielo dulce que se derrite en agua salada debemos incorporar la densidad y la mezcla del agua añadida.</p>
+<div id="fig-fp-av-r12-12" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.12 · Hielo que flota y después se funde. Para una masa de hielo m, antes de fundirse se desplaza Vd=m/rhoagua. Después se incorpora agua líquida de volumen m/rhoagua, exactamente el mismo. El nivel del recipiente de agua dulce permanece constante en este modelo. Para estudiar hielo dulce que se derrite en agua salada debemos incorporar la densidad y la">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-12.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.12 · Hielo que flota y después se funde. Para una masa de hielo m, antes de fundirse se desplaza Vd=m/rhoagua. Después se incorpora agua líquida de volumen m/rhoagua, exactamente el mismo. El nivel del recipiente de agua dulce permanece constante en este modelo. Para estudiar hielo dulce que se derrite en agua salada debemos incorporar la densidad y la">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12: Apoyo visual: Problema resuelto 12.12 · Hielo que flota y después se funde.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="conservar-la-masa-de-un-fluido-que-circula" class="level2">
+<h2 class="anchored" data-anchor-id="conservar-la-masa-de-un-fluido-que-circula">Conservar la masa de un fluido que circula</h2>
+<p>En un flujo estacionario, las propiedades de cada punto fijo permanecen constantes mientras las partículas siguen moviéndose. Una línea de corriente es tangente a la velocidad local. Consideremos un tramo de tubería sin fugas ni ramificaciones. En un intervalo <span class="math inline">\(dt\)</span> atraviesa una sección de área <span class="math inline">\(A\)</span> un volumen <span class="math inline">\(dV=Av\,dt\)</span> si la velocidad es uniforme y normal a la sección. Si varía sobre ella, <span class="math inline">\(v\)</span> representará aquí su componente normal media.</p>
+<p>El caudal volumétrico es <span class="math inline">\(Q=dV/dt=Av\)</span>, medido en <span class="math inline">\(\,\mathrm{m^3/s}\)</span>; <span class="math inline">\(1\,\mathrm{L/s}=10^{-3}\,\mathrm{m^3/s}\)</span>. El caudal másico es <span class="math inline">\(\dot m=\rho Av\)</span> para densidad uniforme en la sección. La ausencia de acumulación de masa exige <span class="math display">\[
+\rho_1A_1v_1=\rho_2A_2v_2.
+\]</span> En un líquido incompresible, <span class="math inline">\(\rho_1=\rho_2\)</span> y queda <span class="math inline">\(A_1v_1=A_2v_2\)</span>. En una unión, la suma de caudales másicos entrantes iguala a la de salientes. Igualar caudales volumétricos requiere además igual densidad. Una sección estrecha exige mayor rapidez para transportar el mismo caudal; determinar el caudal producido por una bomba o un depósito requiere completar el modelo.</p>
+<section id="r12-13" class="level3">
+<h3 class="anchored" data-anchor-id="r12-13">Problema resuelto 12.13 · Reducir un diámetro a la mitad</h3>
+<p>Agua circula de forma estacionaria por una tubería que pasa de <span class="math inline">\(4{,}0\)</span> a <span class="math inline">\(2{,}0\,\mathrm{cm}\)</span> de diámetro. En la sección ancha la rapidez media es <span class="math inline">\(0{,}50\,\mathrm{m/s}\)</span>. Calcula la rapidez estrecha y el caudal. <em>Resolución.</em> El área circular es <span class="math inline">\(A=\pi d^2/4\)</span>. La razón de áreas vale cuatro, de modo que <span class="math inline">\(v_2=4v_1=2{,}0\,\mathrm{m/s}\)</span>. El caudal es <span class="math display">\[
+Q=\pi(0{,}020)^2(0{,}50)\simeq6{,}28\times10^{-4}\,\mathrm{m^3/s},
+\]</span> unos <span class="math inline">\(0{,}628\,\mathrm{L/s}\)</span>. El cambio de diámetro entra al cuadrado; duplicar la rapidez sería insuficiente para conservar el caudal.</p>
+<div id="fig-fp-av-r12-13" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.13 · Reducir un diámetro a la mitad. Agua circula de forma estacionaria por una tubería que pasa de 4,0 a 2,0\,cm de diámetro. En la sección ancha la rapidez media es 0,50\,m/s. Calcula la rapidez estrecha y el caudal. Resolución. El área circular es A=pi d^2/4. La razón de áreas vale cuatro, de modo que v2=4v1=2,0\,m/s. El caudal es">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-13.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.13 · Reducir un diámetro a la mitad. Agua circula de forma estacionaria por una tubería que pasa de 4,0 a 2,0\,cm de diámetro. En la sección ancha la rapidez media es 0,50\,m/s. Calcula la rapidez estrecha y el caudal. Resolución. El área circular es A=pi d^2/4. La razón de áreas vale cuatro, de modo que v2=4v1=2,0\,m/s. El caudal es">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;13: Apoyo visual: Problema resuelto 12.13 · Reducir un diámetro a la mitad.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r12-14" class="level3">
+<h3 class="anchored" data-anchor-id="r12-14">Problema resuelto 12.14 · La continuidad en una bifurcación</h3>
+<p>En una unión estacionaria entran <span class="math inline">\(6{,}0\,\mathrm{L/s}\)</span> de agua. Por una rama de área <span class="math inline">\(10\,\mathrm{cm^2}\)</span> salen a <span class="math inline">\(3{,}0\,\mathrm{m/s}\)</span>. La otra rama tiene área <span class="math inline">\(15\,\mathrm{cm^2}\)</span>. Halla su caudal y rapidez. No hay fugas ni acumulación.</p>
+<p><em>Resolución.</em> La primera rama transporta <span class="math inline">\(Q_a=(10\times10^{-4})(3)=0{,}0030\,\mathrm{m^3/s}=3{,}0\,\mathrm{L/s}\)</span>. La segunda debe llevar <span class="math inline">\(Q_b=6{,}0-3{,}0=3{,}0\,\mathrm{L/s}\)</span>. Por ello, <span class="math display">\[
+v_b=\frac{0{,}0030}{15\times10^{-4}}=2{,}0\,\mathrm{m/s}.
+\]</span> El caudal de entrada se reparte entre las ramas, y su suma conserva el valor de entrada. Las dos ramas tienen igual caudal y distinta rapidez porque sus áreas son distintas. Las presiones y las resistencias del circuito determinan si ese reparto puede realizarse; la continuidad comprueba su compatibilidad con la conservación de masa.</p>
+<div id="fig-fp-av-r12-14" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.14 · La continuidad en una bifurcación. Resolución. La primera rama transporta Qa=(10times10^-4)(3)=0,0030\,m^3/s=3,0\,L/s. La segunda debe llevar Qb=6,0-3,0=3,0\,L/s. Por ello, vb=frac0,003015times10^-4=2,0\,m/s. El caudal de entrada se reparte entre las ramas, y su suma conserva el valor de entrada. Las dos ramas tienen igual caudal y distinta rapidez">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-14.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.14 · La continuidad en una bifurcación. Resolución. La primera rama transporta Qa=(10times10^-4)(3)=0,0030\,m^3/s=3,0\,L/s. La segunda debe llevar Qb=6,0-3,0=3,0\,L/s. Por ello, vb=frac0,003015times10^-4=2,0\,m/s. El caudal de entrada se reparte entre las ramas, y su suma conserva el valor de entrada. Las dos ramas tienen igual caudal y distinta rapidez">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;14: Apoyo visual: Problema resuelto 12.14 · La continuidad en una bifurcación.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="bernoulli-seguir-la-energía-de-una-corriente" class="level2">
+<h2 class="anchored" data-anchor-id="bernoulli-seguir-la-energía-de-una-corriente">Bernoulli: seguir la energía de una corriente</h2>
+<p>Sigamos un pequeño volumen <span class="math inline">\(dV\)</span> que avanza entre dos secciones de una corriente ideal. Su masa es <span class="math inline">\(dm=\rho dV\)</span>. El fluido anterior realiza un trabajo <span class="math inline">\(p_1dV\)</span> sobre el tramo; el tramo entrega un trabajo <span class="math inline">\(p_2dV\)</span> al fluido posterior. Al aplicar el teorema de trabajo y energía, incorporando la gravedad mediante energía potencial, se obtiene <span class="math display">\[
+(p_1-p_2)dV=\tfrac12\rho dV(v_2^2-v_1^2)+\rho g dV(z_2-z_1).
+\]</span> En régimen estacionario se cancelan las contribuciones intermedias que no cambian en el tiempo. Dividir por <span class="math inline">\(dV\)</span> y reagrupar conduce a <span class="math display">\[
+p_1+\frac12\rho v_1^2+\rho gz_1
+=p_2+\frac12\rho v_2^2+\rho gz_2.
+\]</span> Cada término tiene unidades de presión, o de energía por unidad de volumen. Dividiendo por <span class="math inline">\(\rho g\)</span> aparecen alturas: <span class="math inline">\(p/(\rho g)\)</span>, <span class="math inline">\(v^2/(2g)\)</span> y <span class="math inline">\(z\)</span>. El término <span class="math inline">\(p\,dV\)</span> representa el trabajo de las fuerzas de presión en las fronteras elegidas.</p>
+<p>La relación se aplica entre puntos de una misma línea de corriente en un flujo estacionario, incompresible y con disipación viscosa despreciable, sin bombas ni turbinas entre los puntos. En una tubería usaremos además velocidades aproximadamente uniformes en las secciones; un perfil muy desigual exige correcciones de energía cinética. Cada aplicación requiere comprobar que el régimen de flujo satisface esas condiciones. Rozamiento importante, cambios bruscos, remolinos o una máquina que entrega trabajo obligan a ampliar el balance. Cada línea de corriente puede tener su propia constante de Bernoulli.</p>
+<p>Si los dos puntos tienen igual altura, mayor rapidez corresponde a menor presión dentro de este modelo. Si las alturas difieren, el término gravitatorio también interviene. Puede usarse presión manométrica en ambos extremos cuando se resta la misma referencia atmosférica. En un chorro libre expuesto al aire, la presión es aproximadamente la atmosférica, de acuerdo con la condición en su superficie.</p>
+<section id="r12-15" class="level3">
+<h3 class="anchored" data-anchor-id="r12-15">Problema resuelto 12.15 · Un estrechamiento horizontal</h3>
+<p>Una tubería horizontal ideal lleva <span class="math inline">\(1{,}6\,\mathrm{L/s}\)</span> de agua. Sus áreas son <span class="math inline">\(8{,}0\)</span> y <span class="math inline">\(4{,}0\,\mathrm{cm^2}\)</span>. En la sección ancha la presión manométrica es <span class="math inline">\(30\,\mathrm{kPa}\)</span>. Calcula las velocidades y la presión en la sección estrecha.</p>
+<p><em>Resolución.</em> Convertimos <span class="math inline">\(Q=1{,}6\times10^{-3}\,\mathrm{m^3/s}\)</span> y las áreas a <span class="math inline">\(\,\mathrm{m^2}\)</span>. Resultan <span class="math inline">\(v_1=2{,}0\,\mathrm{m/s}\)</span> y <span class="math inline">\(v_2=4{,}0\,\mathrm{m/s}\)</span>. Bernoulli, con <span class="math inline">\(z_1=z_2\)</span>, da <span class="math display">\[
+p_2=p_1+\frac12\rho(v_1^2-v_2^2)
+=30000+500(4-16)=24000\,\mathrm{Pa}.
+\]</span> La presión baja <span class="math inline">\(6{,}0\,\mathrm{kPa}\)</span> mientras aumenta la energía cinética por unidad de volumen en esa misma cantidad. Una diferencia de presión impulsa y acelera el líquido; el balance de energía relaciona esa aceleración con los cambios de presión y altura.</p>
+<div id="fig-fp-av-r12-15" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.15 · Un estrechamiento horizontal. Resolución. Convertimos Q=1,6times10^-3\,m^3/s y las áreas a \,m^2. Resultan v1=2,0\,m/s y v2=4,0\,m/s. Bernoulli, con z1=z2, da p2=p1+frac12rho(v1^2-v2^2) =30000+500(4-16)=24000\,Pa. La presión baja 6,0\,kPa mientras aumenta la energía cinética por unidad de volumen en esa misma cantidad. Una diferencia de presión">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-15.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.15 · Un estrechamiento horizontal. Resolución. Convertimos Q=1,6times10^-3\,m^3/s y las áreas a \,m^2. Resultan v1=2,0\,m/s y v2=4,0\,m/s. Bernoulli, con z1=z2, da p2=p1+frac12rho(v1^2-v2^2) =30000+500(4-16)=24000\,Pa. La presión baja 6,0\,kPa mientras aumenta la energía cinética por unidad de volumen en esa misma cantidad. Una diferencia de presión">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;15: Apoyo visual: Problema resuelto 12.15 · Un estrechamiento horizontal.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r12-16" class="level3">
+<h3 class="anchored" data-anchor-id="r12-16">Problema resuelto 12.16 · La altura también cuesta presión</h3>
+<p>Agua asciende por una tubería ideal de sección constante. Entre dos puntos de una misma corriente sube <span class="math inline">\(4{,}0\,\mathrm{m}\)</span>; la rapidez es <span class="math inline">\(3{,}0\,\mathrm{m/s}\)</span> en ambos. Si abajo hay <span class="math inline">\(80\,\mathrm{kPa}\)</span> manométricos, ¿qué presión hay arriba?</p>
+<p><em>Resolución.</em> Los términos cinéticos se cancelan porque la continuidad mantiene la rapidez. Así, <span class="math display">\[
+p_2=p_1-\rho g(z_2-z_1)
+=80000-1000(9{,}8)(4)=40800\,\mathrm{Pa}.
+\]</span> Arriba hay <span class="math inline">\(40{,}8\,\mathrm{kPa}\)</span> manométricos y la rapidez conserva su valor. El descenso de presión sostiene el aumento de energía potencial por unidad de volumen. En una tubería real habría además una caída asociada a disipación, si ninguna bomba actuara entre esos puntos.</p>
+<div id="fig-fp-av-r12-16" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.16 · La altura también cuesta presión. Resolución. Los términos cinéticos se cancelan porque la continuidad mantiene la rapidez. Así, p2=p1-rho g(z2-z1) =80000-1000(9,8)(4)=40800\,Pa. Arriba hay 40,8\,kPa manométricos y la rapidez conserva su valor. El descenso de presión sostiene el aumento de energía potencial por unidad de volumen. En una tubería real">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-16.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.16 · La altura también cuesta presión. Resolución. Los términos cinéticos se cancelan porque la continuidad mantiene la rapidez. Así, p2=p1-rho g(z2-z1) =80000-1000(9,8)(4)=40800\,Pa. Arriba hay 40,8\,kPa manométricos y la rapidez conserva su valor. El descenso de presión sostiene el aumento de energía potencial por unidad de volumen. En una tubería real">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;16: Apoyo visual: Problema resuelto 12.16 · La altura también cuesta presión.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="del-depósito-al-chorro-hipótesis-y-predicciones" class="level2">
+<h2 class="anchored" data-anchor-id="del-depósito-al-chorro-hipótesis-y-predicciones">Del depósito al chorro: hipótesis y predicciones</h2>
+<p>Un depósito grande abierto descarga por un pequeño orificio a profundidad <span class="math inline">\(h\)</span> bajo su superficie. Elegimos un punto en la superficie y otro en el chorro recién salido. Ambos están aproximadamente a presión atmosférica. Si el área del depósito es mucho mayor que la del chorro, la rapidez superficial es despreciable. El balance ideal reduce entonces <span class="math inline">\(\rho gh=\rho v^2/2\)</span>: <span class="math display">\[
+v=\sqrt{2gh}.
+\]</span> Es la ley de Torricelli: el líquido sale con la rapidez que adquiriría una caída libre a través de <span class="math inline">\(h\)</span>. La densidad se cancela. La semejanza de rapidez procede del balance de energía, aunque las trayectorias y las fuerzas durante el movimiento sean distintas.</p>
+<p>El nivel baja durante el vaciado. La fórmula puede usarse de manera cuasiestacionaria si ese descenso es lento comparado con el ajuste del flujo, pero el caudal <span class="math inline">\(Q=Av\)</span> disminuye al disminuir <span class="math inline">\(h\)</span>. En un orificio real, el chorro puede contraerse y su rapidez puede ser menor que la ideal; el área efectiva y las pérdidas deben medirse o modelarse. La contracción del chorro puede hacer que su sección mínima difiera del área geométrica del agujero.</p>
+<section id="r12-17" class="level3">
+<h3 class="anchored" data-anchor-id="r12-17">Problema resuelto 12.17 · La rapidez y el caudal instantáneos</h3>
+<p>Un depósito grande abierto tiene una salida ideal de sección efectiva <span class="math inline">\(2{,}0\,\mathrm{cm^2}\)</span>, situada <span class="math inline">\(1{,}25\,\mathrm{m}\)</span> bajo el nivel del agua. Calcula la rapidez y el caudal en ese instante. Supón despreciable la rapidez de la superficie y las pérdidas.</p>
+<p><em>Resolución.</em> Torricelli da <span class="math inline">\(v=\sqrt{2(9{,}8)(1{,}25)}=\sqrt{24{,}5}\simeq4{,}95\,\mathrm{m/s}\)</span>. Entonces <span class="math display">\[
+Q=(2{,}0\times10^{-4})(4{,}95)\simeq9{,}90\times10^{-4}\,\mathrm{m^3/s}
+=0{,}990\,\mathrm{L/s}.
+\]</span> Ese caudal permitiría llenar inicialmente casi un litro por segundo. Calcular el tiempo de vaciado completo requiere además conocer la geometría del depósito y cómo cambia el nivel. Al reducir <span class="math inline">\(h\)</span> a la cuarta parte, tanto la rapidez como el caudal se reducirían a la mitad si la sección efectiva se mantuviera.</p>
+<div id="fig-fp-av-r12-17" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.17 · La rapidez y el caudal instantáneos. Resolución. Torricelli da v=sqrt2(9,8)(1,25)=sqrt24,5simeq4,95\,m/s. Entonces Q=(2,0times10^-4)(4,95)simeq9,90times10^-4\,m^3/s =0,990\,L/s. Ese caudal permitiría llenar inicialmente casi un litro por segundo. Calcular el tiempo de vaciado completo requiere además conocer la geometría del depósito y cómo cambia el">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-17.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.17 · La rapidez y el caudal instantáneos. Resolución. Torricelli da v=sqrt2(9,8)(1,25)=sqrt24,5simeq4,95\,m/s. Entonces Q=(2,0times10^-4)(4,95)simeq9,90times10^-4\,m^3/s =0,990\,L/s. Ese caudal permitiría llenar inicialmente casi un litro por segundo. Calcular el tiempo de vaciado completo requiere además conocer la geometría del depósito y cómo cambia el">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;17: Apoyo visual: Problema resuelto 12.17 · La rapidez y el caudal instantáneos.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r12-18" class="level3">
+<h3 class="anchored" data-anchor-id="r12-18">Problema resuelto 12.18 · Un alcance que permite poner a prueba el modelo</h3>
+<p>La superficie de un depósito grande abierto está <span class="math inline">\(1{,}80\,\mathrm{m}\)</span> por encima de una boquilla horizontal situada <span class="math inline">\(0{,}80\,\mathrm{m}\)</span> sobre el suelo. La sección efectiva del chorro es <span class="math inline">\(1{,}0\,\mathrm{cm^2}\)</span>. Predice rapidez, caudal y alcance horizontal ideales. Después interpreta una rapidez de salida medida de <span class="math inline">\(4{,}50\,\mathrm{m/s}\)</span>. Desprecia la resistencia del aire y considera lento el descenso del nivel.</p>
+<p><em>Resolución.</em> El desnivel que acelera el líquido es la diferencia de altura entre la superficie y la salida: <span class="math inline">\(1{,}80\,\mathrm{m}\)</span>. En el modelo ideal, <span class="math display">\[
+v=\sqrt{2(9{,}8)(1{,}80)}\simeq5{,}94\,\mathrm{m/s},\qquad
+Q\simeq5{,}94\times10^{-4}\,\mathrm{m^3/s}=0{,}594\,\mathrm{L/s}.
+\]</span> Al salir, cada pequeña porción sigue aproximadamente un tiro horizontal. Su tiempo de caída es <span class="math inline">\(t=\sqrt{2(0{,}80)/9{,}8}\simeq0{,}404\,\mathrm{s}\)</span>; el alcance resulta <span class="math inline">\(x=vt=2\sqrt{(1{,}80)(0{,}80)}=2{,}40\,\mathrm{m}\)</span>.</p>
+<p>La rapidez medida produciría <span class="math inline">\(x\simeq4{,}50(0{,}404)=1{,}82\,\mathrm{m}\)</span>. Si las alturas y presiones se mantienen, el déficit de energía mecánica por unidad de peso puede expresarse como una altura de pérdida: <span class="math display">\[
+h_L=1{,}80-\frac{4{,}50^2}{2(9{,}8)}\simeq0{,}767\,\mathrm{m}.
+\]</span> Ese término amplía el balance a <span class="math inline">\(h=v^2/(2g)+h_L\)</span>. La energía total se conserva; parte de la energía mecánica se transforma en energía interna y movimiento desordenado. El dato cuantifica un déficit respecto del modelo; identificar su causa requiere evidencia adicional. También convendría comprobar el nivel, la dirección del chorro y la sección efectiva.</p>
+<div id="fig-fp-av-r12-18" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 12.18 · Un alcance que permite poner a prueba el modelo. La rapidez medida produciría xsimeq4,50(0,404)=1,82\,m. Si las alturas y presiones se mantienen, el déficit de energía mecánica por unidad de peso puede expresarse como una altura de pérdida: hL=1,80-frac4,50^22(9,8)simeq0,767\,m. Ese término amplía el balance a h=v^2/(2g)+hL. La energía total se conserva; parte de la">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r12-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R12-18.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 12.18 · Un alcance que permite poner a prueba el modelo. La rapidez medida produciría xsimeq4,50(0,404)=1,82\,m. Si las alturas y presiones se mantienen, el déficit de energía mecánica por unidad de peso puede expresarse como una altura de pérdida: hL=1,80-frac4,50^22(9,8)simeq0,767\,m. Ese término amplía el balance a h=v^2/(2g)+hL. La energía total se conserva; parte de la">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r12-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;18: Apoyo visual: Problema resuelto 12.18 · Un alcance que permite poner a prueba el modelo.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="ejercicios-para-reconstruir-y-transferir" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-para-reconstruir-y-transferir">Ejercicios para reconstruir y transferir</h2>
+<p>Intenta primero representar la situación y elegir las fronteras del sistema. Usa <span class="math inline">\(g=9{,}8\,\mathrm{m/s^2}\)</span> y agua de densidad <span class="math inline">\(1000\,\mathrm{kg/m^3}\)</span>. En los problemas de flujo ideal se suponen régimen estacionario o cuasiestacionario, líquido incompresible, pérdidas despreciables y velocidades uniformes en las secciones. En flotación desprecia el empuje del aire y la tensión superficial, salvo que se indique otra cosa.</p>
+<section id="e12-1" class="level3">
+<h3 class="anchored" data-anchor-id="e12-1">Ejercicio 12.1 · Masa de un líquido</h3>
+<p>Un líquido homogéneo de densidad <span class="math inline">\(850\,\mathrm{kg/m^3}\)</span> ocupa <span class="math inline">\(2{,}4\,\mathrm{L}\)</span>. Calcula su masa y su peso.</p>
+</section>
+<section id="e12-2" class="level3">
+<h3 class="anchored" data-anchor-id="e12-2">Ejercicio 12.2 · De área a fuerza</h3>
+<p>Una presión uniforme de <span class="math inline">\(35\,\mathrm{kPa}\)</span> actúa sobre <span class="math inline">\(12\,\mathrm{cm^2}\)</span>. Calcula la fuerza normal sobre esa cara. ¿Cuál sería la resultante si la cara opuesta recibiera la misma presión?</p>
+</section>
+<section id="e12-3" class="level3">
+<h3 class="anchored" data-anchor-id="e12-3">Ejercicio 12.3 · Diferencia entre profundidades</h3>
+<p>Dos puntos de un mismo depósito abierto de agua están a <span class="math inline">\(0{,}50\)</span> y <span class="math inline">\(2{,}50\,\mathrm{m}\)</span> de profundidad. Determina la diferencia de presiones y señala cuál es mayor.</p>
+</section>
+<section id="e12-4" class="level3">
+<h3 class="anchored" data-anchor-id="e12-4">Ejercicio 12.4 · Absoluta y manométrica</h3>
+<p>En un lugar con presión atmosférica de <span class="math inline">\(98\,\mathrm{kPa}\)</span>, un instrumento marca <span class="math inline">\(-15\,\mathrm{kPa}\)</span> manométricos en una cámara. Halla la presión absoluta. Explica si el signo implica presión absoluta negativa.</p>
+</section>
+<section id="e12-5" class="level3">
+<h3 class="anchored" data-anchor-id="e12-5">Ejercicio 12.5 · Manómetro de agua</h3>
+<p>Un gas se conecta a un brazo de un tubo en U con agua; el otro queda abierto. El agua está <span class="math inline">\(12\,\mathrm{cm}\)</span> más alta del lado del gas. Halla la presión manométrica del gas, despreciando el peso del aire.</p>
+</section>
+<section id="e12-6" class="level3">
+<h3 class="anchored" data-anchor-id="e12-6">Ejercicio 12.6 · Capas y profundidad equivalente</h3>
+<p>Hay <span class="math inline">\(0{,}40\,\mathrm{m}\)</span> de aceite de densidad <span class="math inline">\(750\,\mathrm{kg/m^3}\)</span> sobre <span class="math inline">\(0{,}80\,\mathrm{m}\)</span> de agua en un vaso abierto. Calcula la presión manométrica inferior y la profundidad de agua pura que produciría lo mismo.</p>
+</section>
+<section id="e12-7" class="level3">
+<h3 class="anchored" data-anchor-id="e12-7">Ejercicio 12.7 · Una tapa horizontal</h3>
+<p>Una tapa horizontal de área <span class="math inline">\(0{,}015\,\mathrm{m^2}\)</span> separa agua situada arriba de aire atmosférico debajo. Está <span class="math inline">\(0{,}60\,\mathrm{m}\)</span> bajo una superficie abierta. Determina la fuerza neta de presión y su sentido. Desprecia el peso de la tapa.</p>
+</section>
+<section id="e12-8" class="level3">
+<h3 class="anchored" data-anchor-id="e12-8">Ejercicio 12.8 · Centro de presión</h3>
+<p>Repite el cálculo de la compuerta del problema 12.6 para ancho <span class="math inline">\(0{,}80\,\mathrm{m}\)</span> y altura <span class="math inline">\(1{,}50\,\mathrm{m}\)</span>, con el borde superior en la superficie. Determina fuerza y profundidad de aplicación.</p>
+</section>
+<section id="e12-9" class="level3">
+<h3 class="anchored" data-anchor-id="e12-9">Ejercicio 12.9 · Una razón de radios</h3>
+<p>Una prensa ideal tiene radios de pistón <span class="math inline">\(1{,}0\)</span> y <span class="math inline">\(5{,}0\,\mathrm{cm}\)</span>. A igual altura, ¿qué carga sostiene una fuerza de <span class="math inline">\(90\,\mathrm{N}\)</span> en el menor? Si este desciende <span class="math inline">\(20\,\mathrm{cm}\)</span>, ¿cuánto sube el mayor? Ignora correcciones de altura.</p>
+</section>
+<section id="e12-10" class="level3">
+<h3 class="anchored" data-anchor-id="e12-10">Ejercicio 12.10 · El costo energético de levantar</h3>
+<p>En una prensa ideal que trabaja a igual altura, el pistón mayor levanta <span class="math inline">\(1800\,\mathrm{N}\)</span> una distancia de <span class="math inline">\(0{,}040\,\mathrm{m}\)</span>. El área mayor es veinte veces la menor. Calcula fuerza, recorrido y trabajo de entrada. Desprecia cambios de energía potencial del líquido.</p>
+</section>
+<section id="e12-11" class="level3">
+<h3 class="anchored" data-anchor-id="e12-11">Ejercicio 12.11 · Corregir un desnivel</h3>
+<p>Dos pistones ideales tienen igual presión atmosférica exterior. El mayor, de <span class="math inline">\(0{,}020\,\mathrm{m^2}\)</span>, sostiene <span class="math inline">\(1000\,\mathrm{N}\)</span> y está <span class="math inline">\(2{,}0\,\mathrm{m}\)</span> por debajo del menor, de <span class="math inline">\(0{,}0010\,\mathrm{m^2}\)</span>. La densidad del líquido es <span class="math inline">\(900\,\mathrm{kg/m^3}\)</span>. Calcula la fuerza necesaria hacia abajo en el menor para equilibrio.</p>
+</section>
+<section id="e12-12" class="level3">
+<h3 class="anchored" data-anchor-id="e12-12">Ejercicio 12.12 · Empuje antes de conocer la masa</h3>
+<p>Un objeto desplaza <span class="math inline">\(350\,\mathrm{cm^3}\)</span> de agua. Calcula el empuje. ¿Puede determinarse su masa con ese único dato si está sostenido por un hilo? ¿Y si flota libremente en equilibrio?</p>
+</section>
+<section id="e12-13" class="level3">
+<h3 class="anchored" data-anchor-id="e12-13">Ejercicio 12.13 · La fuerza de un hilo hacia abajo</h3>
+<p>Una esfera de volumen <span class="math inline">\(0{,}0040\,\mathrm{m^3}\)</span> y masa <span class="math inline">\(2{,}0\,\mathrm{kg}\)</span> está totalmente sumergida en agua. Un hilo vertical la sujeta al fondo sin que lo toque. Calcula la tensión y dibuja sus tres fuerzas.</p>
+</section>
+<section id="e12-14" class="level3">
+<h3 class="anchored" data-anchor-id="e12-14">Ejercicio 12.14 · Calado en agua salada</h3>
+<p>Un bloque homogéneo de densidad <span class="math inline">\(700\,\mathrm{kg/m^3}\)</span> y altura <span class="math inline">\(0{,}20\,\mathrm{m}\)</span> flota verticalmente en un líquido de densidad <span class="math inline">\(1050\,\mathrm{kg/m^3}\)</span>. Determina la fracción sumergida y la altura emergida.</p>
+</section>
+<section id="e12-15" class="level3">
+<h3 class="anchored" data-anchor-id="e12-15">Ejercicio 12.15 · Volumen y densidad de una pieza</h3>
+<p>Una pieza pesa <span class="math inline">\(19{,}6\,\mathrm{N}\)</span> en aire y su peso aparente al sumergirse completamente en agua es <span class="math inline">\(14{,}7\,\mathrm{N}\)</span>. Calcula masa, volumen y densidad, despreciando el empuje del aire.</p>
+</section>
+<section id="e12-16" class="level3">
+<h3 class="anchored" data-anchor-id="e12-16">Ejercicio 12.16 · Volumen repartido entre dos líquidos</h3>
+<p>Un cuerpo de <span class="math inline">\(1{,}0\,\mathrm{kg}\)</span> y volumen <span class="math inline">\(1{,}2\times10^{-3}\,\mathrm{m^3}\)</span> queda en equilibrio atravesando una interfaz entre aceite de densidad <span class="math inline">\(800\,\mathrm{kg/m^3}\)</span> y agua de densidad <span class="math inline">\(1000\,\mathrm{kg/m^3}\)</span>. No sobresale al aire ni toca paredes. Halla el volumen en cada líquido, sin tensión superficial.</p>
+</section>
+<section id="e12-17" class="level3">
+<h3 class="anchored" data-anchor-id="e12-17">Ejercicio 12.17 · Caudal y tiempo de llenado</h3>
+<p>Una tubería de sección <span class="math inline">\(3{,}0\,\mathrm{cm^2}\)</span> lleva agua a rapidez media constante <span class="math inline">\(2{,}0\,\mathrm{m/s}\)</span>. Halla el caudal y el tiempo para llenar <span class="math inline">\(90\,\mathrm{L}\)</span>, sin pérdidas de agua.</p>
+</section>
+<section id="e12-18" class="level3">
+<h3 class="anchored" data-anchor-id="e12-18">Ejercicio 12.18 · Un gas que cambia de densidad</h3>
+<p>En flujo estacionario sin fugas, un gas pasa de densidad <span class="math inline">\(1{,}2\,\mathrm{kg/m^3}\)</span> y área <span class="math inline">\(20\,\mathrm{cm^2}\)</span> a densidad <span class="math inline">\(0{,}80\,\mathrm{kg/m^3}\)</span> y área <span class="math inline">\(10\,\mathrm{cm^2}\)</span>. Si <span class="math inline">\(v_1=5{,}0\,\mathrm{m/s}\)</span>, halla <span class="math inline">\(v_2\)</span> y ambos caudales volumétricos. ¿Qué caudal se conserva?</p>
+</section>
+<section id="e12-19" class="level3">
+<h3 class="anchored" data-anchor-id="e12-19">Ejercicio 12.19 · Dos salidas</h3>
+<p>Entran <span class="math inline">\(8{,}0\,\mathrm{L/s}\)</span> de agua a una unión. Una salida de <span class="math inline">\(12\,\mathrm{cm^2}\)</span> lleva <span class="math inline">\(2{,}5\,\mathrm{m/s}\)</span>. Calcula la rapidez de la otra salida si su área es <span class="math inline">\(20\,\mathrm{cm^2}\)</span>.</p>
+</section>
+<section id="e12-20" class="level3">
+<h3 class="anchored" data-anchor-id="e12-20">Ejercicio 12.20 · Presión en un tramo horizontal</h3>
+<p>En una tubería horizontal ideal, el agua pasa de <span class="math inline">\(1{,}0\)</span> a <span class="math inline">\(3{,}0\,\mathrm{m/s}\)</span>. En la sección lenta hay <span class="math inline">\(25\,\mathrm{kPa}\)</span> manométricos. Halla la presión en la sección rápida y la razón de áreas <span class="math inline">\(A_1/A_2\)</span>.</p>
+</section>
+<section id="e12-21" class="level3">
+<h3 class="anchored" data-anchor-id="e12-21">Ejercicio 12.21 · Cambian rapidez y altura</h3>
+<p>En un conducto ideal, el agua pasa de <span class="math inline">\(v_1=2{,}0\,\mathrm{m/s}\)</span> a <span class="math inline">\(v_2=4{,}0\,\mathrm{m/s}\)</span> mientras asciende <span class="math inline">\(3{,}0\,\mathrm{m}\)</span>. Si <span class="math inline">\(p_{1,\mathrm{man}}=70\,\mathrm{kPa}\)</span>, calcula <span class="math inline">\(p_{2,\mathrm{man}}\)</span> e identifica las dos contribuciones al cambio.</p>
+</section>
+<section id="e12-22" class="level3">
+<h3 class="anchored" data-anchor-id="e12-22">Ejercicio 12.22 · El nivel desciende</h3>
+<p>Un depósito grande tiene una salida ideal de sección efectiva <span class="math inline">\(1{,}5\,\mathrm{cm^2}\)</span>. Calcula rapidez y caudal cuando el desnivel es <span class="math inline">\(0{,}80\,\mathrm{m}\)</span>. Compara con el instante en que el desnivel es <span class="math inline">\(0{,}20\,\mathrm{m}\)</span>. Calcula cómo varía el caudal a medida que baja el nivel.</p>
+</section>
+<section id="e12-23" class="level3">
+<h3 class="anchored" data-anchor-id="e12-23">Ejercicio 12.23 · Elegir el orificio para un alcance</h3>
+<p>La superficie de un depósito grande está a altura fija <span class="math inline">\(H=2{,}0\,\mathrm{m}\)</span> sobre el suelo. Un chorro ideal sale horizontalmente por un orificio a altura <span class="math inline">\(y\)</span>, con <span class="math inline">\(0&lt;y&lt;H\)</span>. Deduce el alcance <span class="math inline">\(x(y)\)</span> y determina qué altura lo maximiza. Desprecia el aire.</p>
+</section>
+<section id="e12-24" class="level3">
+<h3 class="anchored" data-anchor-id="e12-24">Ejercicio 12.24 · Un balance con pérdida</h3>
+<p>Agua sale de un depósito grande abierto por una boquilla situada <span class="math inline">\(2{,}0\,\mathrm{m}\)</span> bajo la superficie. Se mide <span class="math inline">\(v=5{,}0\,\mathrm{m/s}\)</span>. Calcula la altura de pérdida equivalente <span class="math inline">\(h_L\)</span> y el déficit de energía mecánica por cada litro descargado. Supón ambas presiones atmosféricas y rapidez superficial despreciable.</p>
+</section>
+</section>
+<section id="soluciones-razonadas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-razonadas">Soluciones razonadas</h2>
+<section id="sol-e12-1" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-1">Solución 12.1</h3>
+<p>El volumen es <span class="math inline">\(2{,}4\times10^{-3}\,\mathrm{m^3}\)</span>. De <span class="math inline">\(m=\rho V\)</span> resulta <span class="math inline">\(m=2{,}04\,\mathrm{kg}\)</span>; su peso es <span class="math inline">\(mg=19{,}992\,\mathrm{N}\simeq20{,}0\,\mathrm{N}\)</span>. La densidad relaciona la masa con el volumen.</p>
+</section>
+<section id="sol-e12-2" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-2">Solución 12.2</h3>
+<p>Convertimos <span class="math inline">\(12\,\mathrm{cm^2}=1{,}2\times10^{-3}\,\mathrm{m^2}\)</span>. Así, <span class="math inline">\(F=pA=35000(0{,}0012)=42\,\mathrm{N}\)</span>. Con la misma presión sobre la cara opuesta, sus fuerzas normales se cancelan y la resultante de presión es cero.</p>
+</section>
+<section id="sol-e12-3" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-3">Solución 12.3</h3>
+<p>El punto más profundo tiene mayor presión. La diferencia es <span class="math inline">\(\Delta p=1000(9{,}8)(2{,}50-0{,}50)=19600\,\mathrm{Pa}=19{,}6\,\mathrm{kPa}\)</span>. La presión atmosférica se cancela porque ambos puntos comparten la misma superficie de referencia.</p>
+</section>
+<section id="sol-e12-4" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-4">Solución 12.4</h3>
+<p>La presión absoluta es <span class="math inline">\(98-15=83\,\mathrm{kPa}\)</span>. La lectura manométrica de <span class="math inline">\(-15\,\mathrm{kPa}\)</span> expresa una presión <span class="math inline">\(15\,\mathrm{kPa}\)</span> menor que la atmosférica local.</p>
+</section>
+<section id="sol-e12-5" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-5">Solución 12.5</h3>
+<p>Del lado del gas la columna está más alta, de modo que el gas ejerce menos presión que la atmósfera. Recorriendo el agua entre niveles se obtiene <span class="math inline">\(p_g-p_{\mathrm{atm}}=-1000(9{,}8)(0{,}12)=-1176\,\mathrm{Pa}\simeq-1{,}18\,\mathrm{kPa}\)</span>.</p>
+</section>
+<section id="sol-e12-6" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-6">Solución 12.6</h3>
+<p>Sumamos las contribuciones: <span class="math inline">\(p_{\mathrm{man}}=9{,}8[750(0{,}40)+1000(0{,}80)]=10780\,\mathrm{Pa}\)</span>. La altura equivalente de agua es <span class="math inline">\(10780/(1000\times9{,}8)=1{,}10\,\mathrm{m}\)</span>. Es menor que el espesor total porque el aceite es menos denso que el agua.</p>
+</section>
+<section id="sol-e12-7" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-7">Solución 12.7</h3>
+<p>La diferencia de presión es <span class="math inline">\(\rho gh=5880\,\mathrm{Pa}\)</span>. La fuerza neta es <span class="math inline">\(5880(0{,}015)=88{,}2\,\mathrm{N}\)</span> hacia abajo. Se resta la atmósfera inferior; el agua empuja hacia abajo sobre la cara superior de la tapa.</p>
+</section>
+<section id="sol-e12-8" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-8">Solución 12.8</h3>
+<p>Integrar <span class="math inline">\(dF=\rho gbh\,dh\)</span> entre <span class="math inline">\(0\)</span> y <span class="math inline">\(H\)</span> da <span class="math inline">\(F=\rho gbH^2/2=8820\,\mathrm{N}\)</span>. El momento integrado da <span class="math inline">\(h_R=2H/3=1{,}00\,\mathrm{m}\)</span>, medido bajo la superficie, sobre la línea media vertical de la compuerta.</p>
+</section>
+<section id="sol-e12-9" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-9">Solución 12.9</h3>
+<p>La razón de áreas es <span class="math inline">\((5/1)^2=25\)</span>. Por Pascal, <span class="math inline">\(F_2=25(90)=2250\,\mathrm{N}\)</span>. La igualdad de volúmenes da <span class="math inline">\(s_2=0{,}20/25=0{,}0080\,\mathrm{m}=0{,}80\,\mathrm{cm}\)</span>. Usar una razón de radios en lugar de áreas daría un resultado incorrecto.</p>
+</section>
+<section id="sol-e12-10" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-10">Solución 12.10</h3>
+<p>La fuerza de entrada es <span class="math inline">\(1800/20=90\,\mathrm{N}\)</span> y su recorrido es <span class="math inline">\(20(0{,}040)=0{,}80\,\mathrm{m}\)</span>. El trabajo es <span class="math inline">\(90(0{,}80)=72\,\mathrm{J}\)</span>, igual a <span class="math inline">\(1800(0{,}040)\)</span>. La prensa conserva la energía en el modelo ideal.</p>
+</section>
+<section id="sol-e12-11" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-11">Solución 12.11</h3>
+<p>Bajo el mayor hay <span class="math inline">\(p_{2,\mathrm{man}}=1000/0{,}020=50000\,\mathrm{Pa}\)</span>. El menor está arriba, por lo que <span class="math inline">\(p_{1,\mathrm{man}}=50000-900(9{,}8)(2)=32360\,\mathrm{Pa}\)</span>. Su fuerza de entrada es <span class="math inline">\(32{,}36\,\mathrm{N}\)</span>. Aquí el desnivel reduce la fuerza necesaria respecto de los <span class="math inline">\(50\,\mathrm{N}\)</span> que corresponderían a igual altura.</p>
+</section>
+<section id="sol-e12-12" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-12">Solución 12.12</h3>
+<p>El volumen desplazado es <span class="math inline">\(3{,}50\times10^{-4}\,\mathrm{m^3}\)</span>; el empuje vale <span class="math inline">\(B=3{,}43\,\mathrm{N}\)</span>. Si un hilo actúa, falta conocer su fuerza para inferir la masa. En flotación libre y equilibrio, <span class="math inline">\(mg=B\)</span>, de donde <span class="math inline">\(m=0{,}350\,\mathrm{kg}\)</span>.</p>
+</section>
+<section id="sol-e12-13" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-13">Solución 12.13</h3>
+<p>El empuje es <span class="math inline">\(39{,}2\,\mathrm{N}\)</span> y el peso es <span class="math inline">\(19{,}6\,\mathrm{N}\)</span>. El hilo tira hacia el fondo. El equilibrio <span class="math inline">\(B-mg-T=0\)</span> da <span class="math inline">\(T=19{,}6\,\mathrm{N}\)</span>. El diagrama tiene una flecha hacia arriba, <span class="math inline">\(B\)</span>, y dos hacia abajo, <span class="math inline">\(mg\)</span> y <span class="math inline">\(T\)</span>.</p>
+</section>
+<section id="sol-e12-14" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-14">Solución 12.14</h3>
+<p>La fracción sumergida es <span class="math inline">\(700/1050=2/3\)</span>. El calado vale <span class="math inline">\(0{,}20(2/3)=0{,}133\,\mathrm{m}\)</span> y emergen <span class="math inline">\(0{,}20(1/3)\simeq0{,}0667\,\mathrm{m}\)</span>. El líquido desplazado pesa lo mismo que el bloque.</p>
+</section>
+<section id="sol-e12-15" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-15">Solución 12.15</h3>
+<p>La masa es <span class="math inline">\(19{,}6/9{,}8=2{,}0\,\mathrm{kg}\)</span>. El empuje <span class="math inline">\(19{,}6-14{,}7=4{,}9\,\mathrm{N}\)</span> implica <span class="math inline">\(V=4{,}9/9800=5{,}0\times10^{-4}\,\mathrm{m^3}\)</span>. La densidad es <span class="math inline">\(4000\,\mathrm{kg/m^3}\)</span>; la pieza tiene mayor densidad que el agua y necesita una tensión hacia arriba para quedar en reposo.</p>
+</section>
+<section id="sol-e12-16" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-16">Solución 12.16</h3>
+<p>Sean <span class="math inline">\(V_a\)</span> y <span class="math inline">\(V_w\)</span> los volúmenes en aceite y agua. Deben cumplirse <span class="math inline">\(V_a+V_w=0{,}0012\)</span> y <span class="math inline">\(800V_a+1000V_w=1\)</span>, con volúmenes en <span class="math inline">\(\,\mathrm{m^3}\)</span>. Sustituyendo resulta <span class="math inline">\(V_w=2{,}0\times10^{-4}\,\mathrm{m^3}\)</span> y <span class="math inline">\(V_a=1{,}0\times10^{-3}\,\mathrm{m^3}\)</span>. Ambos son positivos y suman el volumen completo, de modo que el equilibrio propuesto es compatible con las fuerzas verticales.</p>
+</section>
+<section id="sol-e12-17" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-17">Solución 12.17</h3>
+<p>El caudal es <span class="math inline">\(Q=3{,}0\times10^{-4}(2)=6{,}0\times10^{-4}\,\mathrm{m^3/s}=0{,}60\,\mathrm{L/s}\)</span>. Como es constante, <span class="math inline">\(t=V/Q=90/0{,}60=150\,\mathrm{s}\)</span>. Para un caudal variable debemos integrar su evolución temporal; <span class="math inline">\(V=Qt\)</span> corresponde a caudal constante o a su media apropiada.</p>
+</section>
+<section id="sol-e12-18" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-18">Solución 12.18</h3>
+<p>Conservamos masa: <span class="math inline">\(v_2=\rho_1A_1v_1/(\rho_2A_2)=15\,\mathrm{m/s}\)</span>. Los caudales volumétricos son <span class="math inline">\(Q_1=0{,}010\,\mathrm{m^3/s}\)</span> y <span class="math inline">\(Q_2=0{,}015\,\mathrm{m^3/s}\)</span>. Son distintos, pero ambos dan <span class="math inline">\(\dot m=0{,}012\,\mathrm{kg/s}\)</span>. Estos datos requieren la forma compresible del balance de masa, en lugar de <span class="math inline">\(A_1v_1=A_2v_2\)</span>.</p>
+</section>
+<section id="sol-e12-19" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-19">Solución 12.19</h3>
+<p>La primera salida lleva <span class="math inline">\(12\times10^{-4}(2{,}5)=0{,}0030\,\mathrm{m^3/s}=3{,}0\,\mathrm{L/s}\)</span>. La otra transporta <span class="math inline">\(5{,}0\,\mathrm{L/s}\)</span>. Su rapidez es <span class="math inline">\(0{,}0050/0{,}0020=2{,}5\,\mathrm{m/s}\)</span>. Aquí las velocidades coinciden, pero los caudales difieren por las áreas.</p>
+</section>
+<section id="sol-e12-20" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-20">Solución 12.20</h3>
+<p>Bernoulli da <span class="math inline">\(p_2=25000+\tfrac12(1000)(1^2-3^2)=21000\,\mathrm{Pa}=21\,\mathrm{kPa}\)</span> manométricos. Continuidad exige <span class="math inline">\(A_1/A_2=v_2/v_1=3\)</span>. La sección rápida es la más pequeña.</p>
+</section>
+<section id="sol-e12-21" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-21">Solución 12.21</h3>
+<p>El incremento cinético consume <span class="math inline">\(\tfrac12\rho(4^2-2^2)=6000\,\mathrm{Pa}\)</span> y el incremento gravitatorio, <span class="math inline">\(\rho g(3)=29400\,\mathrm{Pa}\)</span>. Así, <span class="math inline">\(p_2=70000-6000-29400=34600\,\mathrm{Pa}=34{,}6\,\mathrm{kPa}\)</span>. Comparar solo velocidades omitiría la contribución mayor de este caso.</p>
+</section>
+<section id="sol-e12-22" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-22">Solución 12.22</h3>
+<p>Para <span class="math inline">\(h=0{,}80\,\mathrm{m}\)</span>, <span class="math inline">\(v=\sqrt{15{,}68}\simeq3{,}96\,\mathrm{m/s}\)</span> y <span class="math inline">\(Q\simeq0{,}594\,\mathrm{L/s}\)</span>. Para <span class="math inline">\(h=0{,}20\,\mathrm{m}\)</span>, la rapidez es <span class="math inline">\(1{,}98\,\mathrm{m/s}\)</span> y el caudal, <span class="math inline">\(0{,}297\,\mathrm{L/s}\)</span>. Ambos se reducen a la mitad porque dependen de <span class="math inline">\(\sqrt h\)</span>, la raíz cuadrada de <span class="math inline">\(h\)</span>.</p>
+</section>
+<section id="sol-e12-23" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-23">Solución 12.23</h3>
+<p>Torricelli usa <span class="math inline">\(H-y\)</span> y la caída del chorro usa <span class="math inline">\(y\)</span>: <span class="math inline">\(x=\sqrt{2g(H-y)}\sqrt{2y/g}=2\sqrt{y(H-y)}\)</span>. Como <span class="math inline">\(y(H-y)=H^2/4-(y-H/2)^2\)</span>, el máximo ocurre en <span class="math inline">\(y=H/2=1{,}0\,\mathrm{m}\)</span> y vale <span class="math inline">\(x_{\max}=H=2{,}0\,\mathrm{m}\)</span>. Los orificios a alturas complementarias <span class="math inline">\(y\)</span> y <span class="math inline">\(H-y\)</span> tienen el mismo alcance ideal, aunque distintas velocidades y tiempos de caída.</p>
+</section>
+<section id="sol-e12-24" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e12-24">Solución 12.24</h3>
+<p>El balance ampliado es <span class="math inline">\(2=v^2/(2g)+h_L\)</span>. De ahí, <span class="math inline">\(h_L=2-25/19{,}6\simeq0{,}724\,\mathrm{m}\)</span>. Un litro tiene masa <span class="math inline">\(1\,\mathrm{kg}\)</span>, así que su déficit de energía mecánica es <span class="math inline">\(mgh_L=7{,}1\,\mathrm{J}\)</span>. El término expresa una transformación de energía incluida en el balance total.</p>
+</section>
+</section>
+<section id="una-experiencia-el-alcance-de-un-chorro" class="level2">
+<h2 class="anchored" data-anchor-id="una-experiencia-el-alcance-de-un-chorro">Una experiencia: el alcance de un chorro</h2>
+<section id="dos-alturas-que-cumplen-funciones-distintas" class="level3">
+<h3 class="anchored" data-anchor-id="dos-alturas-que-cumplen-funciones-distintas">Dos alturas que cumplen funciones distintas</h3>
+<p>Usa un recipiente plástico con una salida horizontal pequeña, preparado previamente y colocado sobre una bandeja. Mide la altura <span class="math inline">\(y\)</span> de la salida y el desnivel <span class="math inline">\(h\)</span> entre salida y superficie. Durante un intervalo breve recoge el volumen descargado y mide el alcance sobre una superficie horizontal al nivel del suelo de referencia. Mantén pequeños los cambios de nivel en cada medición; repite con varios niveles.</p>
+<p>Predice <span class="math inline">\(x=2\sqrt{hy}\)</span> y <span class="math inline">\(Q=A\sqrt{2gh}\)</span> antes de comparar. Una gráfica de <span class="math inline">\(x^2\)</span> frente a <span class="math inline">\(h\)</span> debería aproximarse a una recta de pendiente <span class="math inline">\(4y\)</span> si se cumplen las hipótesis. Registra la dispersión de varios alcances y la incertidumbre de las alturas. Comprueba primero que el chorro salga horizontal; una inclinación cambia la ecuación de vuelo.</p>
+<p>El área de un agujero irregular y la contracción del chorro dificultan una predicción precisa del caudal. Puede estimarse una rapidez desde <span class="math inline">\(x/\sqrt{2y/g}\)</span> y después una sección efectiva desde <span class="math inline">\(Q/v\)</span>. Si difieren de los valores ideales, distingue incertidumbre de medición, descenso del nivel y limitaciones del modelo. Contrasta las posibles causas de cada desajuste con evidencia adicional.</p>
+</section>
+</section>
+<section id="diagnóstico-antes-de-avanzar" class="level2">
+<h2 class="anchored" data-anchor-id="diagnóstico-antes-de-avanzar">Diagnóstico antes de avanzar</h2>
+<p>Responde sin consultar las fórmulas: (a) ¿pueden dos puntos de un líquido tener igual presión y ejercer fuerzas distintas sobre dos pistones? (b) Un bloque flota en un líquido más denso: ¿aumenta el empuje o cambia el volumen desplazado? (c) ¿basta saber que una tubería se estrecha para asegurar que su presión baja? (d) ¿qué se conserva en una corriente de gas cuya densidad cambia?</p>
+<p><strong>Contraste.</strong> (a) Sí: <span class="math inline">\(F=pA\)</span>, por lo que cambian las fuerzas si cambian las áreas. (b) Para el mismo bloque en equilibrio libre, el empuje sigue siendo <span class="math inline">\(mg\)</span> y disminuye <span class="math inline">\(V_d\)</span>. (c) Hay que especificar altura, régimen, densidad, pérdidas y máquinas; en un tramo horizontal ideal de flujo estacionario incompresible, continuidad y Bernoulli sí predicen esa caída. (d) Se conserva el caudal másico sin acumulación ni fugas; el volumétrico puede cambiar.</p>
+<p><strong>Lecturas de apoyo.</strong> H. D. Young y R. A. Freedman, <em>Física universitaria</em>, volumen 1, 12.ª edición, capítulo 14, secciones 14.1–14.5; R. A. Serway y C. Vuille, <em>Fundamentos de física</em>, volumen 1, 9.ª edición, capítulo 9, secciones 9.2 y 9.4–9.7. Los problemas y las ayudas de este capítulo son originales; las lecturas permiten contrastar las leyes y las hipótesis empleadas.</p>
+<hr>
+<p><a href="capitulo-11.html">← Capítulo anterior</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-13.html">Capítulo siguiente →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

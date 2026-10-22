@@ -1,0 +1,2132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+
+<title>13. Oscilaciones y movimiento armónico – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-cb076892e24e5ecd918925b139627211.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-a27ce7592f35ccc06b5fae55f34b11f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#la-posición-de-equilibrio-y-la-ley-de-hooke" id="toc-la-posición-de-equilibrio-y-la-ley-de-hooke" class="nav-link active" data-scroll-target="#la-posición-de-equilibrio-y-la-ley-de-hooke">La posición de equilibrio y la ley de Hooke</a>
+  <ul class="collapse">
+  <li><a href="#r13-1" id="toc-r13-1" class="nav-link" data-scroll-target="#r13-1">Problema resuelto 13.1 · Medir la rigidez y leer el signo</a></li>
+  <li><a href="#r13-2" id="toc-r13-2" class="nav-link" data-scroll-target="#r13-2">Problema resuelto 13.2 · Dos orígenes para un resorte vertical</a></li>
+  <li><a href="#r13-3" id="toc-r13-3" class="nav-link" data-scroll-target="#r13-3">Problema resuelto 13.3 · Construir una rigidez equivalente</a></li>
+  </ul></li>
+  <li><a href="#de-la-fuerza-a-una-ecuación-para-el-movimiento" id="toc-de-la-fuerza-a-una-ecuación-para-el-movimiento" class="nav-link" data-scroll-target="#de-la-fuerza-a-una-ecuación-para-el-movimiento">De la fuerza a una ecuación para el movimiento</a>
+  <ul class="collapse">
+  <li><a href="#r13-4" id="toc-r13-4" class="nav-link" data-scroll-target="#r13-4">Problema resuelto 13.4 · Comprobar una trayectoria por derivación</a></li>
+  <li><a href="#r13-5" id="toc-r13-5" class="nav-link" data-scroll-target="#r13-5">Problema resuelto 13.5 · Reconstruir amplitud y fase</a></li>
+  </ul></li>
+  <li><a href="#amplitud-fase-frecuencia-y-tiempos-de-paso" id="toc-amplitud-fase-frecuencia-y-tiempos-de-paso" class="nav-link" data-scroll-target="#amplitud-fase-frecuencia-y-tiempos-de-paso">Amplitud, fase, frecuencia y tiempos de paso</a>
+  <ul class="collapse">
+  <li><a href="#r13-6" id="toc-r13-6" class="nav-link" data-scroll-target="#r13-6">Problema resuelto 13.6 · Una posición se visita dos veces</a></li>
+  <li><a href="#r13-7" id="toc-r13-7" class="nav-link" data-scroll-target="#r13-7">Problema resuelto 13.7 · Leer una fase negativa</a></li>
+  <li><a href="#r13-8" id="toc-r13-8" class="nav-link" data-scroll-target="#r13-8">Problema resuelto 13.8 · Comparar osciladores sin fijar la amplitud</a></li>
+  </ul></li>
+  <li><a href="#la-energía-y-la-geometría-del-estado" id="toc-la-energía-y-la-geometría-del-estado" class="nav-link" data-scroll-target="#la-energía-y-la-geometría-del-estado">La energía y la geometría del estado</a>
+  <ul class="collapse">
+  <li><a href="#r13-9" id="toc-r13-9" class="nav-link" data-scroll-target="#r13-9">Problema resuelto 13.9 · La energía se reparte durante el ciclo</a></li>
+  <li><a href="#r13-10" id="toc-r13-10" class="nav-link" data-scroll-target="#r13-10">Problema resuelto 13.10 · Igualdad de energías en el diagrama de estado</a></li>
+  <li><a href="#r13-11" id="toc-r13-11" class="nav-link" data-scroll-target="#r13-11">Problema resuelto 13.11 · Soltar desde la longitud natural</a></li>
+  </ul></li>
+  <li><a href="#el-péndulo-y-la-aproximación-de-ángulo-pequeño" id="toc-el-péndulo-y-la-aproximación-de-ángulo-pequeño" class="nav-link" data-scroll-target="#el-péndulo-y-la-aproximación-de-ángulo-pequeño">El péndulo y la aproximación de ángulo pequeño</a>
+  <ul class="collapse">
+  <li><a href="#r13-12" id="toc-r13-12" class="nav-link" data-scroll-target="#r13-12">Problema resuelto 13.12 · Un péndulo de pequeña amplitud</a></li>
+  <li><a href="#r13-13" id="toc-r13-13" class="nav-link" data-scroll-target="#r13-13">Problema resuelto 13.13 · Estimar la gravedad con varios ciclos</a></li>
+  <li><a href="#r13-14" id="toc-r13-14" class="nav-link" data-scroll-target="#r13-14">Problema resuelto 13.14 · Cuantificar el error de una aproximación</a></li>
+  </ul></li>
+  <li><a href="#amortiguamiento-una-pérdida-que-puede-calcularse" id="toc-amortiguamiento-una-pérdida-que-puede-calcularse" class="nav-link" data-scroll-target="#amortiguamiento-una-pérdida-que-puede-calcularse">Amortiguamiento: una pérdida que puede calcularse</a>
+  <ul class="collapse">
+  <li><a href="#r13-15" id="toc-r13-15" class="nav-link" data-scroll-target="#r13-15">Problema resuelto 13.15 · Envolvente y energía a igual fase</a></li>
+  <li><a href="#r13-16" id="toc-r13-16" class="nav-link" data-scroll-target="#r13-16">Problema resuelto 13.16 · Tres regímenes con el mismo resorte</a></li>
+  </ul></li>
+  <li><a href="#forzamiento-y-resonancia-qué-respuesta-se-maximiza" id="toc-forzamiento-y-resonancia-qué-respuesta-se-maximiza" class="nav-link" data-scroll-target="#forzamiento-y-resonancia-qué-respuesta-se-maximiza">Forzamiento y resonancia: qué respuesta se maximiza</a>
+  <ul class="collapse">
+  <li><a href="#r13-17" id="toc-r13-17" class="nav-link" data-scroll-target="#r13-17">Problema resuelto 13.17 · Responder a una fuerza de frecuencia conocida</a></li>
+  <li><a href="#r13-18" id="toc-r13-18" class="nav-link" data-scroll-target="#r13-18">Problema resuelto 13.18 · Máximos de desplazamiento y potencia</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-para-reconstruir-y-transferir" id="toc-ejercicios-para-reconstruir-y-transferir" class="nav-link" data-scroll-target="#ejercicios-para-reconstruir-y-transferir">Ejercicios para reconstruir y transferir</a>
+  <ul class="collapse">
+  <li><a href="#e13-1" id="toc-e13-1" class="nav-link" data-scroll-target="#e13-1">Ejercicio 13.1 · Reconstruir una ley de fuerza</a></li>
+  <li><a href="#e13-2" id="toc-e13-2" class="nav-link" data-scroll-target="#e13-2">Ejercicio 13.2 · Un equilibrio desplazado</a></li>
+  <li><a href="#e13-3" id="toc-e13-3" class="nav-link" data-scroll-target="#e13-3">Ejercicio 13.3 · Dos resortes en paralelo</a></li>
+  <li><a href="#e13-4" id="toc-e13-4" class="nav-link" data-scroll-target="#e13-4">Ejercicio 13.4 · Dos resortes en serie</a></li>
+  <li><a href="#e13-5" id="toc-e13-5" class="nav-link" data-scroll-target="#e13-5">Ejercicio 13.5 · Comprobar la ecuación diferencial</a></li>
+  <li><a href="#e13-6" id="toc-e13-6" class="nav-link" data-scroll-target="#e13-6">Ejercicio 13.6 · De período a rigidez</a></li>
+  <li><a href="#e13-7" id="toc-e13-7" class="nav-link" data-scroll-target="#e13-7">Ejercicio 13.7 · Elegir un cuadrante</a></li>
+  <li><a href="#e13-8" id="toc-e13-8" class="nav-link" data-scroll-target="#e13-8">Ejercicio 13.8 · Primer cruce y distancia recorrida</a></li>
+  <li><a href="#e13-9" id="toc-e13-9" class="nav-link" data-scroll-target="#e13-9">Ejercicio 13.9 · Rapidez y aceleración en media amplitud</a></li>
+  <li><a href="#e13-10" id="toc-e13-10" class="nav-link" data-scroll-target="#e13-10">Ejercicio 13.10 · Cambiar tres parámetros</a></li>
+  <li><a href="#e13-11" id="toc-e13-11" class="nav-link" data-scroll-target="#e13-11">Ejercicio 13.11 · Un balance de energía</a></li>
+  <li><a href="#e13-12" id="toc-e13-12" class="nav-link" data-scroll-target="#e13-12">Ejercicio 13.12 · Cuatro estados con igual reparto</a></li>
+  <li><a href="#e13-13" id="toc-e13-13" class="nav-link" data-scroll-target="#e13-13">Ejercicio 13.13 · Inferir la amplitud sin observar un extremo</a></li>
+  <li><a href="#e13-14" id="toc-e13-14" class="nav-link" data-scroll-target="#e13-14">Ejercicio 13.14 · Caída sobre un equilibrio elástico</a></li>
+  <li><a href="#e13-15" id="toc-e13-15" class="nav-link" data-scroll-target="#e13-15">Ejercicio 13.15 · Período de un péndulo</a></li>
+  <li><a href="#e13-16" id="toc-e13-16" class="nav-link" data-scroll-target="#e13-16">Ejercicio 13.16 · Cambiar el campo gravitatorio</a></li>
+  <li><a href="#e13-17" id="toc-e13-17" class="nav-link" data-scroll-target="#e13-17">Ejercicio 13.17 · Una medición de gravedad</a></li>
+  <li><a href="#e13-18" id="toc-e13-18" class="nav-link" data-scroll-target="#e13-18">Ejercicio 13.18 · Control local de la aproximación</a></li>
+  <li><a href="#e13-19" id="toc-e13-19" class="nav-link" data-scroll-target="#e13-19">Ejercicio 13.19 · Frecuencia libre amortiguada</a></li>
+  <li><a href="#e13-20" id="toc-e13-20" class="nav-link" data-scroll-target="#e13-20">Ejercicio 13.20 · El umbral crítico</a></li>
+  <li><a href="#e13-21" id="toc-e13-21" class="nav-link" data-scroll-target="#e13-21">Ejercicio 13.21 · Medir el amortiguamiento con extremos</a></li>
+  <li><a href="#e13-22" id="toc-e13-22" class="nav-link" data-scroll-target="#e13-22">Ejercicio 13.22 · Potencia en la frecuencia natural</a></li>
+  <li><a href="#e13-23" id="toc-e13-23" class="nav-link" data-scroll-target="#e13-23">Ejercicio 13.23 · Tres frecuencias distintas</a></li>
+  <li><a href="#e13-24" id="toc-e13-24" class="nav-link" data-scroll-target="#e13-24">Ejercicio 13.24 · Periódico y armónico</a></li>
+  </ul></li>
+  <li><a href="#soluciones-razonadas" id="toc-soluciones-razonadas" class="nav-link" data-scroll-target="#soluciones-razonadas">Soluciones razonadas</a>
+  <ul class="collapse">
+  <li><a href="#sol-e13-1" id="toc-sol-e13-1" class="nav-link" data-scroll-target="#sol-e13-1">Solución 13.1</a></li>
+  <li><a href="#sol-e13-2" id="toc-sol-e13-2" class="nav-link" data-scroll-target="#sol-e13-2">Solución 13.2</a></li>
+  <li><a href="#sol-e13-3" id="toc-sol-e13-3" class="nav-link" data-scroll-target="#sol-e13-3">Solución 13.3</a></li>
+  <li><a href="#sol-e13-4" id="toc-sol-e13-4" class="nav-link" data-scroll-target="#sol-e13-4">Solución 13.4</a></li>
+  <li><a href="#sol-e13-5" id="toc-sol-e13-5" class="nav-link" data-scroll-target="#sol-e13-5">Solución 13.5</a></li>
+  <li><a href="#sol-e13-6" id="toc-sol-e13-6" class="nav-link" data-scroll-target="#sol-e13-6">Solución 13.6</a></li>
+  <li><a href="#sol-e13-7" id="toc-sol-e13-7" class="nav-link" data-scroll-target="#sol-e13-7">Solución 13.7</a></li>
+  <li><a href="#sol-e13-8" id="toc-sol-e13-8" class="nav-link" data-scroll-target="#sol-e13-8">Solución 13.8</a></li>
+  <li><a href="#sol-e13-9" id="toc-sol-e13-9" class="nav-link" data-scroll-target="#sol-e13-9">Solución 13.9</a></li>
+  <li><a href="#sol-e13-10" id="toc-sol-e13-10" class="nav-link" data-scroll-target="#sol-e13-10">Solución 13.10</a></li>
+  <li><a href="#sol-e13-11" id="toc-sol-e13-11" class="nav-link" data-scroll-target="#sol-e13-11">Solución 13.11</a></li>
+  <li><a href="#sol-e13-12" id="toc-sol-e13-12" class="nav-link" data-scroll-target="#sol-e13-12">Solución 13.12</a></li>
+  <li><a href="#sol-e13-13" id="toc-sol-e13-13" class="nav-link" data-scroll-target="#sol-e13-13">Solución 13.13</a></li>
+  <li><a href="#sol-e13-14" id="toc-sol-e13-14" class="nav-link" data-scroll-target="#sol-e13-14">Solución 13.14</a></li>
+  <li><a href="#sol-e13-15" id="toc-sol-e13-15" class="nav-link" data-scroll-target="#sol-e13-15">Solución 13.15</a></li>
+  <li><a href="#sol-e13-16" id="toc-sol-e13-16" class="nav-link" data-scroll-target="#sol-e13-16">Solución 13.16</a></li>
+  <li><a href="#sol-e13-17" id="toc-sol-e13-17" class="nav-link" data-scroll-target="#sol-e13-17">Solución 13.17</a></li>
+  <li><a href="#sol-e13-18" id="toc-sol-e13-18" class="nav-link" data-scroll-target="#sol-e13-18">Solución 13.18</a></li>
+  <li><a href="#sol-e13-19" id="toc-sol-e13-19" class="nav-link" data-scroll-target="#sol-e13-19">Solución 13.19</a></li>
+  <li><a href="#sol-e13-20" id="toc-sol-e13-20" class="nav-link" data-scroll-target="#sol-e13-20">Solución 13.20</a></li>
+  <li><a href="#sol-e13-21" id="toc-sol-e13-21" class="nav-link" data-scroll-target="#sol-e13-21">Solución 13.21</a></li>
+  <li><a href="#sol-e13-22" id="toc-sol-e13-22" class="nav-link" data-scroll-target="#sol-e13-22">Solución 13.22</a></li>
+  <li><a href="#sol-e13-23" id="toc-sol-e13-23" class="nav-link" data-scroll-target="#sol-e13-23">Solución 13.23</a></li>
+  <li><a href="#sol-e13-24" id="toc-sol-e13-24" class="nav-link" data-scroll-target="#sol-e13-24">Solución 13.24</a></li>
+  </ul></li>
+  <li><a href="#una-experiencia-medir-el-período-sin-confundirlo-con-la-amplitud" id="toc-una-experiencia-medir-el-período-sin-confundirlo-con-la-amplitud" class="nav-link" data-scroll-target="#una-experiencia-medir-el-período-sin-confundirlo-con-la-amplitud">Una experiencia: medir el período sin confundirlo con la amplitud</a>
+  <ul class="collapse">
+  <li><a href="#qué-permanece-y-qué-cambia" id="toc-qué-permanece-y-qué-cambia" class="nav-link" data-scroll-target="#qué-permanece-y-qué-cambia">Qué permanece y qué cambia</a></li>
+  </ul></li>
+  <li><a href="#diagnóstico-antes-de-avanzar" id="toc-diagnóstico-antes-de-avanzar" class="nav-link" data-scroll-target="#diagnóstico-antes-de-avanzar">Diagnóstico antes de avanzar</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">13. Oscilaciones y movimiento armónico</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="capitulo-12.html">← Capítulo anterior</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-14.html">Capítulo siguiente →</a></p>
+<p>Un cuerpo unido a un resorte atraviesa la posición de equilibrio y sigue avanzando. Al atravesar el equilibrio conserva la velocidad adquirida, que lo lleva al otro lado mientras la fuerza resultante pasa por cero. El resorte invierte entonces su fuerza y comienza a frenarlo. La repetición nace de esa combinación entre restitución e inercia.</p>
+<p>Estudiaremos cómo una ley de fuerza produce una oscilación y cómo las condiciones iniciales deciden su amplitud y su fase. La energía ofrecerá una segunda manera de describir el mismo movimiento. El péndulo permitirá reconocer el alcance de una aproximación; el amortiguamiento y el forzamiento mostrarán qué cambia cuando un sistema pierde energía mecánica o recibe un impulso periódico.</p>
+<section id="la-posición-de-equilibrio-y-la-ley-de-hooke" class="level2">
+<h2 class="anchored" data-anchor-id="la-posición-de-equilibrio-y-la-ley-de-hooke">La posición de equilibrio y la ley de Hooke</h2>
+<p>Al estirar o comprimir moderadamente un resorte, suele encontrarse una relación aproximadamente proporcional entre su deformación y la fuerza necesaria para sostenerlo. En un eje orientado a lo largo del resorte, la fuerza que este ejerce sobre el cuerpo unido a él es <span class="math display">\[
+F_s=-kq,\qquad k&gt;0.
+\]</span> Aquí <span class="math inline">\(q\)</span> mide el cambio de longitud con signo respecto de la longitud natural: positivo al estirar, negativo al comprimir. La constante <span class="math inline">\(k\)</span>, medida en <span class="math inline">\(\,\mathrm{N/m}\)</span>, caracteriza la rigidez dentro del intervalo lineal. El signo indica una fuerza que se opone a la deformación. Dentro de ese intervalo, <span class="math inline">\(k\)</span> caracteriza al resorte y la carga determina la deformación de equilibrio.</p>
+<p>La ley de Hooke es un modelo constitutivo. Un resorte real puede apartarse de la proporcionalidad antes de quedar deformado permanentemente: el límite de proporcionalidad marca el alcance de la relación lineal y el límite elástico, el de la recuperación de la forma. En nuestros modelos, el resorte tendrá masa despreciable y sus extremos permanecerán unidos a los soportes y cuerpos indicados.</p>
+<p>Conviene distinguir longitud natural y posición de equilibrio del sistema. En horizontal, sin otra fuerza a lo largo del movimiento, ambas referencias coinciden. En vertical, la gravedad desplaza el equilibrio. Si <span class="math inline">\(q\)</span> aumenta hacia abajo, la ecuación es <span class="math inline">\(m\ddot q=mg-kq\)</span> y el equilibrio está en <span class="math inline">\(q_e=mg/k\)</span>. Al medir el desplazamiento desde allí, <span class="math inline">\(x=q-q_e\)</span>, se obtiene <span class="math inline">\(m\ddot x=-kx\)</span>. El peso ya ha intervenido al fijar el origen.</p>
+<section id="r13-1" class="level3">
+<h3 class="anchored" data-anchor-id="r13-1">Problema resuelto 13.1 · Medir la rigidez y leer el signo</h3>
+<p>Un resorte horizontal requiere una fuerza externa de <span class="math inline">\(6{,}0\,\mathrm{N}\)</span> para mantener una elongación de <span class="math inline">\(3{,}0\,\mathrm{cm}\)</span>. Halla <span class="math inline">\(k\)</span> y la fuerza que ejercerá sobre un cuerpo cuando esté comprimido <span class="math inline">\(2{,}0\,\mathrm{cm}\)</span>. Supón comportamiento lineal. <em>Resolución.</em> En la medición estática las fuerzas externa y elástica se equilibran. Por ello, <span class="math display">\[
+k=\frac{6{,}0}{0{,}030}=200\,\mathrm{N/m}.
+\]</span> Con compresión, <span class="math inline">\(q=-0{,}020\,\mathrm{m}\)</span> y <span class="math inline">\(F_s=-200(-0{,}020)=+4{,}0\,\mathrm{N}\)</span>. La fuerza apunta hacia la posición de longitud natural. Comprobar la linealidad en un intervalo requiere una serie de medidas de fuerza y deformación dentro de él.</p>
+<div id="fig-fp-av-r13-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.1 · Medir la rigidez y leer el signo. Un resorte horizontal requiere una fuerza externa de 6,0\,N para mantener una elongación de 3,0\,cm. Halla k y la fuerza que ejercerá sobre un cuerpo cuando esté comprimido 2,0\,cm. Supón comportamiento lineal. Resolución. En la medición estática las fuerzas externa y elástica se equilibran. Por ello,">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-1.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.1 · Medir la rigidez y leer el signo. Un resorte horizontal requiere una fuerza externa de 6,0\,N para mantener una elongación de 3,0\,cm. Halla k y la fuerza que ejercerá sobre un cuerpo cuando esté comprimido 2,0\,cm. Supón comportamiento lineal. Resolución. En la medición estática las fuerzas externa y elástica se equilibran. Por ello,">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Apoyo visual: Problema resuelto 13.1 · Medir la rigidez y leer el signo.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r13-2" class="level3">
+<h3 class="anchored" data-anchor-id="r13-2">Problema resuelto 13.2 · Dos orígenes para un resorte vertical</h3>
+<p>Una masa de <span class="math inline">\(0{,}20\,\mathrm{kg}\)</span> cuelga de un resorte de <span class="math inline">\(40\,\mathrm{N/m}\)</span>. Se la desplaza <span class="math inline">\(2{,}0\,\mathrm{cm}\)</span> por debajo de su posición de equilibrio y se la suelta desde el reposo. Calcula la elongación total, la fuerza del resorte y la fuerza neta al liberarla. Usa <span class="math inline">\(g=9{,}8\,\mathrm{m/s^2}\)</span>.</p>
+<p><em>Resolución.</em> Tomamos el eje hacia abajo. El equilibrio está en <span class="math inline">\(q_e=mg/k=0{,}049\,\mathrm{m}\)</span>; al liberar, la elongación total es <span class="math inline">\(q=q_e+x=0{,}069\,\mathrm{m}\)</span>. Así, <span class="math display">\[
+F_s=-40(0{,}069)=-2{,}76\,\mathrm{N},\qquad
+F_{\mathrm{neta}}=1{,}96-2{,}76=-0{,}80\,\mathrm{N}.
+\]</span> El mismo resultado neto se obtiene con <span class="math inline">\(-kx\)</span>. Aplicar <span class="math inline">\(-kx\)</span> como si fuera la fuerza del resorte aislada omitiría la tensión que ya sostiene el peso en equilibrio. Su aceleración inicial es <span class="math inline">\(-4{,}0\,\mathrm{m/s^2}\)</span>.</p>
+<div id="fig-fp-av-r13-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.2 · Dos orígenes para un resorte vertical. Resolución. Tomamos el eje hacia abajo. El equilibrio está en qe=mg/k=0,049\,m; al liberar, la elongación total es q=qe+x=0,069\,m. Así, Fs=-40(0,069)=-2,76\,N,qquad Fneta=1,96-2,76=-0,80\,N. El mismo resultado neto se obtiene con -kx. Aplicar -kx como si fuera la fuerza del resorte aislada omitiría la tensión que ya">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-2.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.2 · Dos orígenes para un resorte vertical. Resolución. Tomamos el eje hacia abajo. El equilibrio está en qe=mg/k=0,049\,m; al liberar, la elongación total es q=qe+x=0,069\,m. Así, Fs=-40(0,069)=-2,76\,N,qquad Fneta=1,96-2,76=-0,80\,N. El mismo resultado neto se obtiene con -kx. Aplicar -kx como si fuera la fuerza del resorte aislada omitiría la tensión que ya">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Apoyo visual: Problema resuelto 13.2 · Dos orígenes para un resorte vertical.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r13-3" class="level3">
+<h3 class="anchored" data-anchor-id="r13-3">Problema resuelto 13.3 · Construir una rigidez equivalente</h3>
+<p>Dos resortes ideales de <span class="math inline">\(120\)</span> y <span class="math inline">\(240\,\mathrm{N/m}\)</span> se conectan primero en serie y después en paralelo. Determina la constante equivalente y la fuerza necesaria para una deformación total de <span class="math inline">\(3{,}0\,\mathrm{cm}\)</span> en cada montaje. En paralelo, ambos se deforman igual; en serie, su unión tiene masa despreciable.</p>
+<p><em>Resolución.</em> En serie, la misma tensión <span class="math inline">\(F\)</span> atraviesa ambos resortes, mientras las elongaciones se suman: <span class="math inline">\(q=F/k_1+F/k_2\)</span>. Así, <span class="math display">\[
+\frac1{k_s}=\frac1{k_1}+\frac1{k_2},\qquad k_s=80\,\mathrm{N/m}.
+\]</span> En paralelo cada resorte se deforma <span class="math inline">\(q\)</span> y las fuerzas se suman: <span class="math inline">\(F=(k_1+k_2)q\)</span>, de donde <span class="math inline">\(k_p=360\,\mathrm{N/m}\)</span>. Para <span class="math inline">\(q=0{,}030\,\mathrm{m}\)</span> resultan <span class="math inline">\(F_s=2{,}4\,\mathrm{N}\)</span> y <span class="math inline">\(F_p=10{,}8\,\mathrm{N}\)</span>. En serie, las elongaciones individuales son <span class="math inline">\(0{,}020\)</span> y <span class="math inline">\(0{,}010\,\mathrm{m}\)</span>; en paralelo, ambas valen <span class="math inline">\(0{,}030\,\mathrm{m}\)</span>. Esas condiciones geométricas explican por qué las constantes se combinan de distinta manera.</p>
+<div id="fig-fp-av-r13-3" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.3 · Construir una rigidez equivalente. Resolución. En serie, la misma tensión F atraviesa ambos resortes, mientras las elongaciones se suman: q=F/k1+F/k2. Así, frac1ks=frac1k1+frac1k2,qquad ks=80\,N/m. En paralelo cada resorte se deforma q y las fuerzas se suman: F=(k1+k2)q, de donde kp=360\,N/m. Para q=0,030\,m resultan Fs=2,4\,N y Fp=10,8\,N. En serie,">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-3.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.3 · Construir una rigidez equivalente. Resolución. En serie, la misma tensión F atraviesa ambos resortes, mientras las elongaciones se suman: q=F/k1+F/k2. Así, frac1ks=frac1k1+frac1k2,qquad ks=80\,N/m. En paralelo cada resorte se deforma q y las fuerzas se suman: F=(k1+k2)q, de donde kp=360\,N/m. Para q=0,030\,m resultan Fs=2,4\,N y Fp=10,8\,N. En serie,">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Apoyo visual: Problema resuelto 13.3 · Construir una rigidez equivalente.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="de-la-fuerza-a-una-ecuación-para-el-movimiento" class="level2">
+<h2 class="anchored" data-anchor-id="de-la-fuerza-a-una-ecuación-para-el-movimiento">De la fuerza a una ecuación para el movimiento</h2>
+<p>En un cuerpo de masa constante, sometido únicamente a una fuerza neta <span class="math inline">\(-kx\)</span> a lo largo del eje, la segunda ley de Newton se escribe <span class="math display">\[
+\ddot x+\omega_0^2x=0,\qquad \omega_0=\sqrt{\frac{k}{m}}.
+\]</span> Los puntos sobre <span class="math inline">\(x\)</span> indican derivadas respecto del tiempo: <span class="math inline">\(\dot x=v\)</span> y <span class="math inline">\(\ddot x=a\)</span>. La ecuación relaciona una función desconocida con su segunda derivada. Se llama <em>ecuación diferencial</em>. La relación debe cumplirse durante todo el movimiento.</p>
+<p>El seno y el coseno son candidatos naturales porque derivarlos dos veces devuelve la misma función con signo contrario. Para constantes <span class="math inline">\(A\geq0\)</span> y <span class="math inline">\(\phi\)</span>, <span class="math display">\[
+x(t)=A\cos(\omega_0t+\phi),\quad
+v(t)=-A\omega_0\sin(\omega_0t+\phi),\quad
+a(t)=-\omega_0^2x(t).
+\]</span> Sustituir estas expresiones verifica la ecuación. Además, podemos elegirlas para cualquier par de valores iniciales <span class="math inline">\(x_0\)</span> y <span class="math inline">\(v_0\)</span> cuando <span class="math inline">\(\omega_0&gt;0\)</span>. En esta ecuación lineal, esos dos datos determinan una única solución. Una forma que hace visible esa dependencia es <span class="math display">\[
+x(t)=x_0\cos(\omega_0t)+\frac{v_0}{\omega_0}\sin(\omega_0t).
+\]</span> El movimiento descrito es <em>armónico simple</em>, o MAS. Su rasgo dinámico es que la aceleración resulta proporcional al desplazamiento respecto del equilibrio y de sentido opuesto. Para reconocer un MAS en una trayectoria periódica, comprobamos esa relación entre aceleración y desplazamiento durante todo el movimiento.</p>
+<section id="r13-4" class="level3">
+<h3 class="anchored" data-anchor-id="r13-4">Problema resuelto 13.4 · Comprobar una trayectoria por derivación</h3>
+<p>Una masa de <span class="math inline">\(0{,}50\,\mathrm{kg}\)</span> está unida a un resorte horizontal de <span class="math inline">\(200\,\mathrm{N/m}\)</span> sin rozamiento. Se propone <span class="math inline">\(x(t)=0{,}030\cos(20t)\)</span>, con <span class="math inline">\(x\)</span> en metros y <span class="math inline">\(t\)</span> en segundos. Verifica la solución y calcula posición, velocidad y aceleración en <span class="math inline">\(t=\pi/60\,\mathrm{s}\)</span>.</p>
+<p><em>Resolución.</em> La razón <span class="math inline">\(k/m=400\,\mathrm{s^{-2}}\)</span> da <span class="math inline">\(\omega_0=20\,\mathrm{rad/s}\)</span>. Derivando, <span class="math display">\[
+v=-0{,}600\sin(20t),\qquad a=-12{,}0\cos(20t).
+\]</span> En efecto, <span class="math inline">\(a=-400x\)</span>, y <span class="math inline">\(ma=-200x\)</span> coincide con la fuerza del resorte. En el instante pedido, <span class="math inline">\(20t=\pi/3\)</span>, por lo que <span class="math inline">\(x=0{,}0150\,\mathrm{m}\)</span>, <span class="math inline">\(v=-0{,}300\sqrt3\,\mathrm{m/s}\simeq-0{,}520\,\mathrm{m/s}\)</span> y <span class="math inline">\(a=-6{,}00\,\mathrm{m/s^2}\)</span>. El cuerpo se acerca al equilibrio desde el lado positivo: velocidad y aceleración apuntan aquí en el mismo sentido, de modo que su rapidez aumenta.</p>
+<div id="fig-fp-av-r13-4" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.4 · Comprobar una trayectoria por derivación. Resolución. La razón k/m=400\,mathrms^-2 da omega0=20\,rad/s. Derivando, v=-0,600sin(20t),qquad a=-12,0cos(20t). En efecto, a=-400x, y ma=-200x coincide con la fuerza del resorte. En el instante pedido, 20t=pi/3, por lo que x=0,0150\,m, v=-0,300sqrt3\,m/ssimeq-0,520\,m/s y a=-6,00\,m/s^2. El cuerpo se acerca al">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-4.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.4 · Comprobar una trayectoria por derivación. Resolución. La razón k/m=400\,mathrms^-2 da omega0=20\,rad/s. Derivando, v=-0,600sin(20t),qquad a=-12,0cos(20t). En efecto, a=-400x, y ma=-200x coincide con la fuerza del resorte. En el instante pedido, 20t=pi/3, por lo que x=0,0150\,m, v=-0,300sqrt3\,m/ssimeq-0,520\,m/s y a=-6,00\,m/s^2. El cuerpo se acerca al">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Apoyo visual: Problema resuelto 13.4 · Comprobar una trayectoria por derivación.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r13-5" class="level3">
+<h3 class="anchored" data-anchor-id="r13-5">Problema resuelto 13.5 · Reconstruir amplitud y fase</h3>
+<p>El mismo oscilador tiene ahora <span class="math inline">\(x_0=+0{,}030\,\mathrm{m}\)</span> y <span class="math inline">\(v_0=-0{,}800\,\mathrm{m/s}\)</span>. Encuentra su movimiento, su amplitud y una fase inicial compatible con los signos.</p>
+<p><em>Resolución.</em> La ecuación 13.4 da directamente <span class="math display">\[
+x(t)=0{,}030\cos(20t)-0{,}040\sin(20t).
+\]</span> Al desarrollar <span class="math inline">\(A\cos(20t+\phi)\)</span> se identifica <span class="math inline">\(A\cos\phi=0{,}030\)</span> y <span class="math inline">\(A\sin\phi=0{,}040\)</span>. Sumando los cuadrados se obtiene <span class="math inline">\(A=0{,}050\,\mathrm{m}\)</span>; ambos coeficientes sitúan <span class="math inline">\(\phi\)</span> en el primer cuadrante, con <span class="math inline">\(\phi=\arctan(4/3)\simeq0{,}927\,\mathrm{rad}\)</span>. Entonces <span class="math inline">\(x=0{,}050\cos(20t+0{,}927)\)</span>, salvo el redondeo de la fase. El signo menos de la velocidad es esencial para escoger el cuadrante. Una fase aumentada en <span class="math inline">\(2\pi\)</span> describe exactamente el mismo movimiento.</p>
+<div id="fig-fp-av-r13-5" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.5 · Reconstruir amplitud y fase. Resolución. La ecuación 13.4 da directamente x(t)=0,030cos(20t)-0,040sin(20t). Al desarrollar Acos(20t+phi) se identifica Acosphi=0,030 y Asinphi=0,040. Sumando los cuadrados se obtiene A=0,050\,m; ambos coeficientes sitúan phi en el primer cuadrante, con phi=arctan(4/3)simeq0,927\,rad. Entonces x=0,050cos(20t+0,927),">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-5.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.5 · Reconstruir amplitud y fase. Resolución. La ecuación 13.4 da directamente x(t)=0,030cos(20t)-0,040sin(20t). Al desarrollar Acos(20t+phi) se identifica Acosphi=0,030 y Asinphi=0,040. Sumando los cuadrados se obtiene A=0,050\,m; ambos coeficientes sitúan phi en el primer cuadrante, con phi=arctan(4/3)simeq0,927\,rad. Entonces x=0,050cos(20t+0,927),">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Apoyo visual: Problema resuelto 13.5 · Reconstruir amplitud y fase.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="amplitud-fase-frecuencia-y-tiempos-de-paso" class="level2">
+<h2 class="anchored" data-anchor-id="amplitud-fase-frecuencia-y-tiempos-de-paso">Amplitud, fase, frecuencia y tiempos de paso</h2>
+<p>La amplitud <span class="math inline">\(A\)</span> es el máximo valor de <span class="math inline">\(|x|\)</span> en el MAS. La fase <span class="math inline">\(\omega_0t+\phi\)</span> indica en qué parte del ciclo se encuentra el sistema, incluidos el sentido de movimiento y el extremo hacia el que avanza. Dos instantes con la misma posición pueden tener velocidades opuestas. Para determinar la fase se especifican la posición y el sentido de movimiento.</p>
+<p>El período <span class="math inline">\(T\)</span> es el menor tiempo positivo después del cual se repiten posición y velocidad; la frecuencia <span class="math inline">\(f=1/T\)</span> cuenta ciclos por segundo. En una oscilación no trivial, <span class="math inline">\(A&gt;0\)</span>, la fase aumenta <span class="math inline">\(2\pi\)</span> durante cada período: <span class="math display">\[
+T=\frac{2\pi}{\omega_0}=2\pi\sqrt{\frac{m}{k}},\qquad
+f=\frac{\omega_0}{2\pi}.
+\]</span> La frecuencia angular se expresa en <span class="math inline">\(\,\mathrm{rad/s}\)</span>; la frecuencia en <span class="math inline">\(\,\mathrm{Hz}=\,\mathrm{s^{-1}}\)</span>. El radián es adimensional, pero conservar su nombre evita confundir ciclos con fases angulares. El argumento de las funciones trigonométricas y las fórmulas de derivación se interpretan en radianes.</p>
+<p>Para reconstruir la fase desde los datos iniciales se usan <span class="math inline">\(A=\sqrt{x_0^2+(v_0/\omega_0)^2}\)</span>, <span class="math inline">\(\cos\phi=x_0/A\)</span> y <span class="math inline">\(\sin\phi=-v_0/(A\omega_0)\)</span>. Una calculadora con función de dos argumentos permite obtener el cuadrante mediante <span class="math inline">\(\phi=\operatorname{atan2}(-v_0/\omega_0,x_0)\)</span>. Si <span class="math inline">\(A=0\)</span>, el cuerpo permanece en equilibrio y la fase carece de significado físico.</p>
+<section id="r13-6" class="level3">
+<h3 class="anchored" data-anchor-id="r13-6">Problema resuelto 13.6 · Una posición se visita dos veces</h3>
+<p>Un oscilador parte del extremo <span class="math inline">\(x=A&gt;0\)</span> en reposo y tiene <span class="math inline">\(\omega_0=20\,\mathrm{rad/s}\)</span>. ¿Cuándo pasa por primera vez por <span class="math inline">\(x=A/2\)</span> hacia el equilibrio? ¿Cuándo vuelve por esa posición alejándose del equilibrio? <em>Resolución.</em> La fase inicial es cero. Resolver <span class="math inline">\(\cos(20t)=1/2\)</span> en el primer ciclo da fases <span class="math inline">\(\pi/3\)</span> y <span class="math inline">\(5\pi/3\)</span>. En la primera, <span class="math inline">\(v&lt;0\)</span>; en la segunda, <span class="math inline">\(v&gt;0\)</span>. Por tanto, <span class="math display">\[
+t_1=\frac{\pi}{60}\,\mathrm{s}=\frac T6,\qquad
+t_2=\frac{\pi}{12}\,\mathrm{s}=\frac{5T}{6}.
+\]</span> Los dos pasos corresponden a estados con velocidades opuestas. Entre los dos pasos el cuerpo visita el extremo negativo y vuelve a cruzar el equilibrio.</p>
+<div id="fig-fp-av-r13-6" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.6 · Una posición se visita dos veces. Un oscilador parte del extremo x=A>0 en reposo y tiene omega0=20\,rad/s. ¿Cuándo pasa por primera vez por x=A/2 hacia el equilibrio? ¿Cuándo vuelve por esa posición alejándose del equilibrio? Resolución. La fase inicial es cero. Resolver cos(20t)=1/2 en el primer ciclo da fases pi/3 y 5pi/3. En la primera, v<0; en la">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-6.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.6 · Una posición se visita dos veces. Un oscilador parte del extremo x=A>0 en reposo y tiene omega0=20\,rad/s. ¿Cuándo pasa por primera vez por x=A/2 hacia el equilibrio? ¿Cuándo vuelve por esa posición alejándose del equilibrio? Resolución. La fase inicial es cero. Resolver cos(20t)=1/2 en el primer ciclo da fases pi/3 y 5pi/3. En la primera, v<0; en la">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Apoyo visual: Problema resuelto 13.6 · Una posición se visita dos veces.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r13-7" class="level3">
+<h3 class="anchored" data-anchor-id="r13-7">Problema resuelto 13.7 · Leer una fase negativa</h3>
+<p>Se mide <span class="math inline">\(x(t)=0{,}040\cos(5\pi t-\pi/3)\)</span> en unidades SI. Determina amplitud, período, frecuencia y condiciones iniciales. Describe hacia dónde se mueve el cuerpo al comenzar.</p>
+<p><em>Resolución.</em> Se identifican <span class="math inline">\(A=0{,}040\,\mathrm{m}\)</span>, <span class="math inline">\(\omega_0=5\pi\,\mathrm{rad/s}\)</span> y <span class="math inline">\(\phi=-\pi/3\)</span>. El período es <span class="math inline">\(T=2\pi/(5\pi)=0{,}400\,\mathrm{s}\)</span> y la frecuencia, <span class="math inline">\(2{,}50\,\mathrm{Hz}\)</span>. Al evaluar y derivar, <span class="math display">\[
+x_0=0{,}040\cos(-\pi/3)=0{,}020\,\mathrm{m},\qquad
+v_0=-0{,}200\pi\sin(-\pi/3)=0{,}100\pi\sqrt3\,\mathrm{m/s}.
+\]</span> La velocidad inicial es aproximadamente <span class="math inline">\(+0{,}544\,\mathrm{m/s}\)</span>. El cuerpo está a la derecha del equilibrio y se aleja de él; su aceleración apunta a la izquierda y lo frena. La amplitud conserva su valor positivo; la fase inicial fija la posición y el sentido de movimiento al comenzar.</p>
+<div id="fig-fp-av-r13-7" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.7 · Leer una fase negativa. Resolución. Se identifican A=0,040\,m, omega0=5pi\,rad/s y phi=-pi/3. El período es T=2pi/(5pi)=0,400\,s y la frecuencia, 2,50\,Hz. Al evaluar y derivar, x0=0,040cos(-pi/3)=0,020\,m,qquad v0=-0,200pisin(-pi/3)=0,100pisqrt3\,m/s. La velocidad inicial es aproximadamente +0,544\,m/s. El cuerpo está a la derecha del">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-7.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.7 · Leer una fase negativa. Resolución. Se identifican A=0,040\,m, omega0=5pi\,rad/s y phi=-pi/3. El período es T=2pi/(5pi)=0,400\,s y la frecuencia, 2,50\,Hz. Al evaluar y derivar, x0=0,040cos(-pi/3)=0,020\,m,qquad v0=-0,200pisin(-pi/3)=0,100pisqrt3\,m/s. La velocidad inicial es aproximadamente +0,544\,m/s. El cuerpo está a la derecha del">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Apoyo visual: Problema resuelto 13.7 · Leer una fase negativa.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r13-8" class="level3">
+<h3 class="anchored" data-anchor-id="r13-8">Problema resuelto 13.8 · Comparar osciladores sin fijar la amplitud</h3>
+<p>Un segundo oscilador tiene masa cuatro veces mayor y constante elástica nueve veces mayor que el primero. Compara sus períodos y frecuencias. ¿Alteraría la comparación multiplicar la amplitud del segundo por tres?</p>
+<p><em>Resolución.</em> Al dividir las expresiones de los períodos, <span class="math display">\[
+\frac{T_2}{T_1}=\sqrt{\frac{4m_1/(9k_1)}{m_1/k_1}}=\frac23,
+\qquad \frac{f_2}{f_1}=\frac32.
+\]</span> El aumento de rigidez domina sobre el aumento de masa. El período del resorte ideal lineal depende de la masa y de la rigidez. La amplitud fija la escala de energía y de velocidad; en un resorte real, su aumento puede llevar al sistema fuera del intervalo de Hooke.</p>
+<div id="fig-fp-av-r13-8" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.8 · Comparar osciladores sin fijar la amplitud. Resolución. Al dividir las expresiones de los períodos, fracT2T1=sqrtfrac4m1/(9k1)m1/k1=frac23, qquad fracf2f1=frac32. El aumento de rigidez domina sobre el aumento de masa. El período del resorte ideal lineal depende de la masa y de la rigidez. La amplitud fija la escala de energía y de velocidad; en un resorte real,">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-8.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.8 · Comparar osciladores sin fijar la amplitud. Resolución. Al dividir las expresiones de los períodos, fracT2T1=sqrtfrac4m1/(9k1)m1/k1=frac23, qquad fracf2f1=frac32. El aumento de rigidez domina sobre el aumento de masa. El período del resorte ideal lineal depende de la masa y de la rigidez. La amplitud fija la escala de energía y de velocidad; en un resorte real,">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Apoyo visual: Problema resuelto 13.8 · Comparar osciladores sin fijar la amplitud.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="la-energía-y-la-geometría-del-estado" class="level2">
+<h2 class="anchored" data-anchor-id="la-energía-y-la-geometría-del-estado">La energía y la geometría del estado</h2>
+<p>El trabajo de la fuerza elástica entre <span class="math inline">\(0\)</span> y <span class="math inline">\(x\)</span> es <span class="math inline">\(\int_0^x(-ku)\,du=-kx^2/2\)</span>. Podemos asociarle una energía potencial <span class="math inline">\(U=kx^2/2\)</span>, tomando cero en el equilibrio horizontal. Sin disipación, la energía mecánica permanece constante: <span class="math display">\[
+E=\frac12mv^2+\frac12kx^2=\frac12kA^2.
+\]</span> La última igualdad se evalúa en un extremo, donde <span class="math inline">\(v=0\)</span>. En el equilibrio la energía cinética es máxima: <span class="math inline">\(v_{\max}=\omega_0A\)</span>. A cualquier posición admisible, <span class="math display">\[
+|v|=\omega_0\sqrt{A^2-x^2},\qquad |x|\leq A.
+\]</span> La conservación de energía da la rapidez. El signo de la velocidad se determina siguiendo la rama del movimiento que recorre el cuerpo. Si se dibuja <span class="math inline">\(v\)</span> frente a <span class="math inline">\(x\)</span>, la ecuación <span class="math inline">\(x^2/A^2+v^2/(\omega_0^2A^2)=1\)</span> describe una elipse. En cada extremo de posición hay velocidad cero; en cada cruce por el equilibrio, rapidez máxima. Este <em>diagrama de estado</em> representa conjuntamente la posición y la velocidad.</p>
+<p>En un resorte vertical, la energía potencial del sistema resorte–masa–Tierra es <span class="math inline">\(U(q)=kq^2/2-mgq\)</span> con el eje hacia abajo. Al completar el cuadrado resulta <span class="math inline">\(U=k(q-q_e)^2/2-m^2g^2/(2k)\)</span>. El término constante desplaza la referencia energética y tiene derivada espacial cero. Si elegimos el cero en el mínimo, la energía de oscilación vuelve a ser <span class="math inline">\(mv^2/2+kx^2/2\)</span>, con <span class="math inline">\(x=q-q_e\)</span>. El cambio de coordenada queda acompañado por el cambio de referencia energética.</p>
+<section id="r13-9" class="level3">
+<h3 class="anchored" data-anchor-id="r13-9">Problema resuelto 13.9 · La energía se reparte durante el ciclo</h3>
+<p>Una masa de <span class="math inline">\(0{,}50\,\mathrm{kg}\)</span> oscila con <span class="math inline">\(k=200\,\mathrm{N/m}\)</span> y amplitud <span class="math inline">\(0{,}050\,\mathrm{m}\)</span>. Determina la energía total y la rapidez al pasar por <span class="math inline">\(x=0{,}030\,\mathrm{m}\)</span>. ¿Puede saberse el signo de la velocidad con esos datos?</p>
+<p><em>Resolución.</em> La energía total es <span class="math inline">\(E=\tfrac12(200)(0{,}050)^2=0{,}250\,\mathrm{J}\)</span>. En la posición pedida, <span class="math inline">\(U=\tfrac12(200)(0{,}030)^2=0{,}090\,\mathrm{J}\)</span> y <span class="math inline">\(K=0{,}160\,\mathrm{J}\)</span>. Así, <span class="math display">\[
+|v|=\sqrt{\frac{2K}{m}}=\sqrt{\frac{0{,}320}{0{,}50}}=0{,}800\,\mathrm{m/s}.
+\]</span> Hay dos velocidades posibles, <span class="math inline">\(\pm0{,}800\,\mathrm{m/s}\)</span>. El signo negativo corresponde a acercarse al equilibrio desde ese lado; el positivo, a alejarse de él. El resultado coincide con las condiciones iniciales usadas en el problema 13.5 cuando se escoge la rama negativa.</p>
+<div id="fig-fp-av-r13-9" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.9 · La energía se reparte durante el ciclo. Resolución. La energía total es E=tfrac12(200)(0,050)^2=0,250\,J. En la posición pedida, U=tfrac12(200)(0,030)^2=0,090\,J y K=0,160\,J. Así, |v|=sqrtfrac2Km=sqrtfrac0,3200,50=0,800\,m/s. Hay dos velocidades posibles, pm0,800\,m/s. El signo negativo corresponde a acercarse al equilibrio desde ese lado; el positivo, a">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-9.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.9 · La energía se reparte durante el ciclo. Resolución. La energía total es E=tfrac12(200)(0,050)^2=0,250\,J. En la posición pedida, U=tfrac12(200)(0,030)^2=0,090\,J y K=0,160\,J. Así, |v|=sqrtfrac2Km=sqrtfrac0,3200,50=0,800\,m/s. Hay dos velocidades posibles, pm0,800\,m/s. El signo negativo corresponde a acercarse al equilibrio desde ese lado; el positivo, a">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9: Apoyo visual: Problema resuelto 13.9 · La energía se reparte durante el ciclo.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r13-10" class="level3">
+<h3 class="anchored" data-anchor-id="r13-10">Problema resuelto 13.10 · Igualdad de energías en el diagrama de estado</h3>
+<p>Para el oscilador del problema anterior, encuentra las posiciones y velocidades en las que <span class="math inline">\(K=U\)</span>. Indica cuántos estados distintos aparecen en un ciclo. <em>Resolución.</em> Si ambas energías son iguales, cada una vale <span class="math inline">\(E/2\)</span>. De <span class="math inline">\(kx^2/2=kA^2/4\)</span> se obtiene <span class="math inline">\(x=\pm A/\sqrt2\simeq\pm0{,}0354\,\mathrm{m}\)</span>. En esos puntos, <span class="math display">\[
+v=\pm\frac{\omega_0A}{\sqrt2}=\pm0{,}707\,\mathrm{m/s}.
+\]</span> Cada posición se recorre con ambos signos de velocidad. Hay cuatro estados distintos y cuatro pasos por esa condición en un período. Las combinaciones de signos representan fases distintas, aunque sus energías coincidan.</p>
+<div id="fig-fp-av-r13-10" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.10 · Igualdad de energías en el diagrama de estado. Para el oscilador del problema anterior, encuentra las posiciones y velocidades en las que K=U. Indica cuántos estados distintos aparecen en un ciclo. Resolución. Si ambas energías son iguales, cada una vale E/2. De kx^2/2=kA^2/4 se obtiene x=pm A/sqrt2simeqpm0,0354\,m. En esos puntos,">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-10.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.10 · Igualdad de energías en el diagrama de estado. Para el oscilador del problema anterior, encuentra las posiciones y velocidades en las que K=U. Indica cuántos estados distintos aparecen en un ciclo. Resolución. Si ambas energías son iguales, cada una vale E/2. De kx^2/2=kA^2/4 se obtiene x=pm A/sqrt2simeqpm0,0354\,m. En esos puntos,">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Apoyo visual: Problema resuelto 13.10 · Igualdad de energías en el diagrama de estado.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r13-11" class="level3">
+<h3 class="anchored" data-anchor-id="r13-11">Problema resuelto 13.11 · Soltar desde la longitud natural</h3>
+<p>Una masa de <span class="math inline">\(0{,}20\,\mathrm{kg}\)</span> cuelga de un resorte vertical de <span class="math inline">\(40\,\mathrm{N/m}\)</span>. Se sostiene el cuerpo con el resorte sin deformar y se lo suelta desde el reposo. Calcula la amplitud respecto del equilibrio, la máxima elongación total y la rapidez máxima. Supón un resorte unido al cuerpo, lineal en todo el recorrido.</p>
+<p><em>Resolución.</em> El equilibrio está <span class="math inline">\(q_e=mg/k=0{,}049\,\mathrm{m}\)</span> por debajo de la longitud natural. Inicialmente <span class="math inline">\(x_0=-q_e\)</span> y <span class="math inline">\(v_0=0\)</span>, por lo que <span class="math inline">\(A=q_e\)</span>. El extremo inferior queda en <span class="math inline">\(q=q_e+A=0{,}098\,\mathrm{m}\)</span>. La frecuencia angular es <span class="math inline">\(\sqrt{200}\,\mathrm{rad/s}\)</span>, y <span class="math display">\[
+v_{\max}=\sqrt{200}(0{,}049)\simeq0{,}693\,\mathrm{m/s}.
+\]</span> La energía de oscilación es <span class="math inline">\(kA^2/2=0{,}04802\,\mathrm{J}\)</span>, medida desde el mínimo del potencial total. Con la referencia <span class="math inline">\(U(0)=0\)</span>, la energía total inicial sería cero y en el extremo inferior se cumpliría <span class="math inline">\(kq^2/2-mgq=0\)</span>. Ambas referencias predicen <span class="math inline">\(q=2mg/k\)</span> como extremo inferior.</p>
+<div id="fig-fp-av-r13-11" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.11 · Soltar desde la longitud natural. Resolución. El equilibrio está qe=mg/k=0,049\,m por debajo de la longitud natural. Inicialmente x0=-qe y v0=0, por lo que A=qe. El extremo inferior queda en q=qe+A=0,098\,m. La frecuencia angular es sqrt200\,rad/s, y vmax=sqrt200(0,049)simeq0,693\,m/s. La energía de oscilación es kA^2/2=0,04802\,J, medida desde el">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-11.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.11 · Soltar desde la longitud natural. Resolución. El equilibrio está qe=mg/k=0,049\,m por debajo de la longitud natural. Inicialmente x0=-qe y v0=0, por lo que A=qe. El extremo inferior queda en q=qe+A=0,098\,m. La frecuencia angular es sqrt200\,rad/s, y vmax=sqrt200(0,049)simeq0,693\,m/s. La energía de oscilación es kA^2/2=0,04802\,J, medida desde el">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;11: Apoyo visual: Problema resuelto 13.11 · Soltar desde la longitud natural.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="el-péndulo-y-la-aproximación-de-ángulo-pequeño" class="level2">
+<h2 class="anchored" data-anchor-id="el-péndulo-y-la-aproximación-de-ángulo-pequeño">El péndulo y la aproximación de ángulo pequeño</h2>
+<p>Un péndulo simple consiste en una masa puntual suspendida de un hilo inextensible y de masa despreciable, de longitud <span class="math inline">\(L\)</span>, con punto de suspensión fijo. La tensión se dirige a lo largo del hilo. La componente tangencial de la fuerza total procede de la gravedad y vale <span class="math inline">\(-mg\sin\theta\)</span>. Si <span class="math inline">\(\theta\)</span> se mide en radianes desde la vertical inferior, la aceleración tangencial es <span class="math inline">\(L\ddot\theta\)</span>, y resulta <span class="math display">\[
+\ddot\theta+\frac gL\sin\theta=0.
+\]</span> La masa se cancela. La fuerza tangencial contiene <span class="math inline">\(\sin\theta\)</span>. Para aproximarla cerca de cero, usamos <span class="math inline">\(\sin\theta=\theta-\theta^3/6+\cdots\)</span>, y el primer término da <span class="math display">\[
+\ddot\theta+\frac gL\theta\simeq0,\qquad
+\omega_0\simeq\sqrt{\frac gL},\qquad T_0=2\pi\sqrt{\frac Lg}.
+\]</span> La amplitud angular se expresa en radianes para controlar la precisión de esa aproximación. El término omitido es del orden de <span class="math inline">\(\theta^3\)</span>, así que el error relativo en la fuerza empieza en el orden de <span class="math inline">\(\theta^2\)</span>. El error del período requiere estudiar el movimiento a lo largo de un ciclo completo.</p>
+<p>El potencial exacto, tomando cero abajo, es <span class="math inline">\(mgL(1-\cos\theta)\)</span>. Para amplitud angular <span class="math inline">\(\theta_0\)</span> y sin rozamiento, la conservación de energía da <span class="math inline">\(v_{\max}=\sqrt{2gL(1-\cos\theta_0)}\)</span> en el punto inferior. Para ángulos pequeños, <span class="math inline">\(1-\cos\theta_0\simeq\theta_0^2/2\)</span> y resulta <span class="math inline">\(v_{\max}\simeq\theta_0\sqrt{gL}\)</span>. Usaremos <span class="math inline">\(T_0\)</span> como período aproximado; a amplitudes mayores el período del péndulo depende de la amplitud.</p>
+<section id="r13-12" class="level3">
+<h3 class="anchored" data-anchor-id="r13-12">Problema resuelto 13.12 · Un péndulo de pequeña amplitud</h3>
+<p>Un péndulo de longitud <span class="math inline">\(0{,}98\,\mathrm{m}\)</span> oscila con amplitud <span class="math inline">\(0{,}10\,\mathrm{rad}\)</span>. Calcula período y frecuencia en la aproximación armónica, y compara la rapidez máxima aproximada con la obtenida mediante energía exacta. Usa <span class="math inline">\(g=9{,}8\,\mathrm{m/s^2}\)</span>.</p>
+<p><em>Resolución.</em> La frecuencia angular aproximada es <span class="math inline">\(\sqrt{10}\,\mathrm{rad/s}\)</span>. Así, <span class="math inline">\(T_0=2\pi/\sqrt{10}\simeq1{,}987\,\mathrm{s}\)</span> y <span class="math inline">\(f_0\simeq0{,}503\,\mathrm{Hz}\)</span>. La rapidez máxima aproximada es <span class="math display">\[
+v_{\max}\simeq0{,}10\sqrt{(9{,}8)(0{,}98)}\simeq0{,}310\,\mathrm{m/s}.
+\]</span> El balance exacto da <span class="math inline">\(\sqrt{2(9{,}8)(0{,}98)(1-\cos0{,}10)}\simeq0{,}3098\,\mathrm{m/s}\)</span>. La proximidad concuerda con una amplitud pequeña. El período de este modelo depende de la longitud y de la gravedad. El rozamiento y una distribución extensa de masa requieren incorporar sus efectos al modelo.</p>
+<div id="fig-fp-av-r13-12" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.12 · Un péndulo de pequeña amplitud. Resolución. La frecuencia angular aproximada es sqrt10\,rad/s. Así, T0=2pi/sqrt10simeq1,987\,s y f0simeq0,503\,Hz. La rapidez máxima aproximada es vmaxsimeq0,10sqrt(9,8)(0,98)simeq0,310\,m/s. El balance exacto da sqrt2(9,8)(0,98)(1-cos0,10)simeq0,3098\,m/s. La proximidad concuerda con una amplitud pequeña. El período">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-12.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.12 · Un péndulo de pequeña amplitud. Resolución. La frecuencia angular aproximada es sqrt10\,rad/s. Así, T0=2pi/sqrt10simeq1,987\,s y f0simeq0,503\,Hz. La rapidez máxima aproximada es vmaxsimeq0,10sqrt(9,8)(0,98)simeq0,310\,m/s. El balance exacto da sqrt2(9,8)(0,98)(1-cos0,10)simeq0,3098\,m/s. La proximidad concuerda con una amplitud pequeña. El período">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12: Apoyo visual: Problema resuelto 13.12 · Un péndulo de pequeña amplitud.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r13-13" class="level3">
+<h3 class="anchored" data-anchor-id="r13-13">Problema resuelto 13.13 · Estimar la gravedad con varios ciclos</h3>
+<p>Un péndulo de longitud <span class="math inline">\(L=1{,}000\pm0{,}005\,\mathrm{m}\)</span> tarda <span class="math inline">\(40{,}2\pm0{,}2\,\mathrm{s}\)</span> en completar 20 ciclos de pequeña amplitud. Estima <span class="math inline">\(g\)</span> y una cota lineal aproximada de su incertidumbre, tratando las cotas dadas como límites instrumentales. Desprecia correcciones por amplitud y rozamiento.</p>
+<p><em>Resolución.</em> El período estimado es <span class="math inline">\(T=40{,}2/20=2{,}01\,\mathrm{s}\)</span>. Al despejar, <span class="math display">\[
+g=\frac{4\pi^2L}{T^2}\simeq9{,}772\,\mathrm{m/s^2}.
+\]</span> Para variaciones pequeñas, diferenciar da <span class="math inline">\(dg/g=dL/L-2\,dT/T\)</span>. Una cota lineal conservadora suma los módulos: <span class="math display">\[
+\frac{\delta g}{g}\lesssim\frac{0{,}005}{1{,}000}
++2\frac{0{,}2}{40{,}2}\simeq0{,}01495.
+\]</span> Resulta <span class="math inline">\(\delta g\simeq0{,}15\,\mathrm{m/s^2}\)</span> y podemos informar <span class="math inline">\(g\simeq(9{,}77\pm0{,}15)\,\mathrm{m/s^2}\)</span> bajo esas hipótesis. Esta estimación expresa una cota instrumental aproximada. Cronometrar varios ciclos reduce la incertidumbre relativa de una misma cota de tiempo total; las correcciones sistemáticas requieren un tratamiento propio.</p>
+<div id="fig-fp-av-r13-13" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.13 · Estimar la gravedad con varios ciclos. Resolución. El período estimado es T=40,2/20=2,01\,s. Al despejar, g=frac4pi^2LT^2simeq9,772\,m/s^2. Para variaciones pequeñas, diferenciar da dg/g=dL/L-2\,dT/T. Una cota lineal conservadora suma los módulos: fracdelta gglesssimfrac0,0051,000 +2frac0,240,2simeq0,01495. Resulta delta gsimeq0,15\,m/s^2 y podemos">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-13.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.13 · Estimar la gravedad con varios ciclos. Resolución. El período estimado es T=40,2/20=2,01\,s. Al despejar, g=frac4pi^2LT^2simeq9,772\,m/s^2. Para variaciones pequeñas, diferenciar da dg/g=dL/L-2\,dT/T. Una cota lineal conservadora suma los módulos: fracdelta gglesssimfrac0,0051,000 +2frac0,240,2simeq0,01495. Resulta delta gsimeq0,15\,m/s^2 y podemos">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;13: Apoyo visual: Problema resuelto 13.13 · Estimar la gravedad con varios ciclos.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r13-14" class="level3">
+<h3 class="anchored" data-anchor-id="r13-14">Problema resuelto 13.14 · Cuantificar el error de una aproximación</h3>
+<p>Compara el módulo de la fuerza tangencial exacta del péndulo con el de su aproximación lineal a <span class="math inline">\(10^\circ\)</span> y a <span class="math inline">\(30^\circ\)</span>. Mide el error relativo respecto de la fuerza exacta. ¿Son esos porcentajes errores del período?</p>
+<p><em>Resolución.</em> Para <span class="math inline">\(0&lt;\theta&lt;\pi\)</span>, la fuerza exacta tiene módulo <span class="math inline">\(mg\sin\theta\)</span> y la aproximada, <span class="math inline">\(mg\theta\)</span>. Por tanto, <span class="math display">\[
+\varepsilon_F=\frac{mg\theta-mg\sin\theta}{mg\sin\theta}
+=\frac\theta{\sin\theta}-1.
+\]</span> Con <span class="math inline">\(10^\circ=\pi/18\,\mathrm{rad}\)</span> resulta <span class="math inline">\(\varepsilon_F\simeq0{,}00510\)</span>, un <span class="math inline">\(0{,}510\%\)</span>. Con <span class="math inline">\(30^\circ=\pi/6\,\mathrm{rad}\)</span> resulta <span class="math inline">\(\varepsilon_F\simeq0{,}0472\)</span>, un <span class="math inline">\(4{,}72\%\)</span>. La aproximación sobreestima el módulo de restitución en ambos casos. Estos porcentajes describen la fuerza instantánea a los ángulos indicados. El error del período depende de la evolución durante un ciclo completo.</p>
+<div id="fig-fp-av-r13-14" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.14 · Cuantificar el error de una aproximación. Resolución. Para 0<theta<pi, la fuerza exacta tiene módulo mgsintheta y la aproximada, mgtheta. Por tanto, varepsilonF=fracmgtheta-mgsinthetamgsintheta =fracthetasintheta-1. Con 10^circ=pi/18\,rad resulta varepsilonFsimeq0,00510, un 0,510\%. Con 30^circ=pi/6\,rad resulta varepsilonFsimeq0,0472, un 4,72\%. La">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-14.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.14 · Cuantificar el error de una aproximación. Resolución. Para 0<theta<pi, la fuerza exacta tiene módulo mgsintheta y la aproximada, mgtheta. Por tanto, varepsilonF=fracmgtheta-mgsinthetamgsintheta =fracthetasintheta-1. Con 10^circ=pi/18\,rad resulta varepsilonFsimeq0,00510, un 0,510\%. Con 30^circ=pi/6\,rad resulta varepsilonFsimeq0,0472, un 4,72\%. La">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;14: Apoyo visual: Problema resuelto 13.14 · Cuantificar el error de una aproximación.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="amortiguamiento-una-pérdida-que-puede-calcularse" class="level2">
+<h2 class="anchored" data-anchor-id="amortiguamiento-una-pérdida-que-puede-calcularse">Amortiguamiento: una pérdida que puede calcularse</h2>
+<p>En regímenes de resistencia aproximadamente proporcional a la velocidad, modelamos la fuerza como <span class="math inline">\(F_r=-bv\)</span>, con <span class="math inline">\(b\geq0\)</span> en <span class="math inline">\(\,\mathrm{kg/s}\)</span>. La ecuación pasa a ser <span class="math display">\[
+m\ddot x+b\dot x+kx=0.
+\]</span> Multiplicarla por <span class="math inline">\(\dot x\)</span> muestra que <span class="math inline">\(dE/dt=-b\dot x^2\leq0\)</span> para <span class="math inline">\(E=m\dot x^2/2+kx^2/2\)</span>. La disipación tiene tasa <span class="math inline">\(b\dot x^2\)</span>: con <span class="math inline">\(b&gt;0\)</span> reduce la energía mecánica durante el movimiento, y para <span class="math inline">\(b=0\)</span> esa energía permanece constante. El sistema ampliado, incluido el entorno, conserva la energía total.</p>
+<p>Definamos <span class="math inline">\(\gamma=b/(2m)\)</span> y <span class="math inline">\(\omega_0=\sqrt{k/m}\)</span>. Al sustituir <span class="math inline">\(x=e^{rt}\)</span> se obtiene <span class="math inline">\(r^2+2\gamma r+\omega_0^2=0\)</span>. Si <span class="math inline">\(\gamma&lt;\omega_0\)</span>, las raíces conducen a una solución oscilatoria <span class="math display">\[
+x(t)=Ce^{-\gamma t}\cos(\omega_dt+\phi),\qquad
+\omega_d=\sqrt{\omega_0^2-\gamma^2}.
+\]</span> Puede verificarse derivando. Las curvas <span class="math inline">\(\pm Ce^{-\gamma t}\)</span> son envolventes que acotan el desplazamiento. Los extremos reales se obtienen con <span class="math inline">\(\dot x=0\)</span>, incluyendo la derivada de la envolvente exponencial. Tras un pseudoperíodo <span class="math inline">\(T_d=2\pi/\omega_d\)</span>, posición y velocidad quedan multiplicadas por <span class="math inline">\(e^{-\gamma T_d}\)</span>. La fase se repite mientras disminuye la escala de posición y velocidad.</p>
+<p>Si <span class="math inline">\(\gamma=\omega_0\)</span>, el amortiguamiento es crítico y <span class="math inline">\(x=(C_1+C_2t)e^{-\gamma t}\)</span>. Si <span class="math inline">\(\gamma&gt;\omega_0\)</span>, hay dos raíces reales negativas y una combinación de exponentes decrecientes. Estos dos regímenes carecen de oscilación sostenida alrededor del equilibrio. Las condiciones iniciales, junto con <span class="math inline">\(m\)</span>, <span class="math inline">\(k\)</span> y <span class="math inline">\(b\)</span>, determinan el número de cruces y la forma del retorno.</p>
+<section id="r13-15" class="level3">
+<h3 class="anchored" data-anchor-id="r13-15">Problema resuelto 13.15 · Envolvente y energía a igual fase</h3>
+<p>Un sistema tiene <span class="math inline">\(m=1{,}0\,\mathrm{kg}\)</span>, <span class="math inline">\(k=25\,\mathrm{N/m}\)</span> y <span class="math inline">\(b=2{,}0\,\mathrm{kg/s}\)</span>. Su movimiento es <span class="math inline">\(x=0{,}040e^{-t}\cos(\sqrt{24}\,t)\)</span> en unidades SI. Calcula la frecuencia amortiguada, la envolvente a los <span class="math inline">\(3{,}0\,\mathrm{s}\)</span> y la razón de energías entre dos instantes separados por <span class="math inline">\(T_d\)</span>. ¿Se soltó inicialmente desde el reposo?</p>
+<p><em>Resolución.</em> Tenemos <span class="math inline">\(\omega_0=5\,\mathrm{rad/s}\)</span>, <span class="math inline">\(\gamma=1\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(\omega_d=\sqrt{24}\simeq4{,}899\,\mathrm{rad/s}\)</span>. La envolvente a <span class="math inline">\(3\,\mathrm{s}\)</span> vale <span class="math inline">\(0{,}040e^{-3}\simeq0{,}00199\,\mathrm{m}\)</span>. Ese valor acota <span class="math inline">\(|x|\)</span>; para obtener el desplazamiento en ese instante se incluye el factor coseno.</p>
+<p>El pseudoperíodo es <span class="math inline">\(T_d=2\pi/\sqrt{24}\simeq1{,}283\,\mathrm{s}\)</span>. A igual fase, tanto <span class="math inline">\(x\)</span> como <span class="math inline">\(v\)</span> adquieren el factor <span class="math inline">\(e^{-T_d}\)</span>, de modo que <span class="math inline">\(E(t+T_d)/E(t)=e^{-2T_d}\simeq0{,}0769\)</span>. Esta igualdad a fases repetidas es exacta en el modelo. A tiempos arbitrarios, la energía contiene además factores periódicos procedentes de la posición y de la derivada completa de la envolvente. En particular, <span class="math inline">\(v_0=-0{,}040\,\mathrm{m/s}\)</span>; la derivada de la envolvente aporta esa velocidad inicial incluso con fase cero del coseno.</p>
+<div id="fig-fp-av-r13-15" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.15 · Envolvente y energía a igual fase. El pseudoperíodo es Td=2pi/sqrt24simeq1,283\,s. A igual fase, tanto x como v adquieren el factor e^-Td, de modo que E(t+Td)/E(t)=e^-2Tdsimeq0,0769. Esta igualdad a fases repetidas es exacta en el modelo. A tiempos arbitrarios, la energía contiene además factores periódicos procedentes de la posición y de la derivada">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-15.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.15 · Envolvente y energía a igual fase. El pseudoperíodo es Td=2pi/sqrt24simeq1,283\,s. A igual fase, tanto x como v adquieren el factor e^-Td, de modo que E(t+Td)/E(t)=e^-2Tdsimeq0,0769. Esta igualdad a fases repetidas es exacta en el modelo. A tiempos arbitrarios, la energía contiene además factores periódicos procedentes de la posición y de la derivada">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;15: Apoyo visual: Problema resuelto 13.15 · Envolvente y energía a igual fase.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r13-16" class="level3">
+<h3 class="anchored" data-anchor-id="r13-16">Problema resuelto 13.16 · Tres regímenes con el mismo resorte</h3>
+<p>Con <span class="math inline">\(m=1{,}0\,\mathrm{kg}\)</span> y <span class="math inline">\(k=25\,\mathrm{N/m}\)</span>, clasifica los movimientos libres para <span class="math inline">\(b=2\)</span>, <span class="math inline">\(10\)</span> y <span class="math inline">\(12\,\mathrm{kg/s}\)</span>. Obtén las raíces características del caso sobreamortiguado.</p>
+<p><em>Resolución.</em> El umbral crítico es <span class="math inline">\(b_c=2\sqrt{mk}=10\,\mathrm{kg/s}\)</span>. Para <span class="math inline">\(b=2\)</span> hay oscilaciones amortiguadas; para <span class="math inline">\(b=10\)</span> se alcanza el caso crítico; para <span class="math inline">\(b=12\)</span> el sistema es sobreamortiguado. En este último, <span class="math inline">\(\gamma=6\,\mathrm{s^{-1}}\)</span> y <span class="math display">\[
+r_{\pm}=-6\pm\sqrt{36-25}=-6\pm\sqrt{11}\,\mathrm{s^{-1}}.
+\]</span> Ambas raíces son negativas. Cada término de <span class="math inline">\(C_1e^{r_+t}+C_2e^{r_-t}\)</span> es una exponencial real decreciente; las condiciones iniciales <span class="math inline">\(x_0\)</span> y <span class="math inline">\(v_0\)</span> fijan su combinación, que tiende a cero. El caso crítico requiere su propia forma con <span class="math inline">\(t e^{-\gamma t}\)</span> porque las dos raíces coinciden.</p>
+<div id="fig-fp-av-r13-16" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.16 · Tres regímenes con el mismo resorte. Resolución. El umbral crítico es bc=2sqrtmk=10\,kg/s. Para b=2 hay oscilaciones amortiguadas; para b=10 se alcanza el caso crítico; para b=12 el sistema es sobreamortiguado. En este último, gamma=6\,mathrms^-1 y rpm=-6pmsqrt36-25=-6pmsqrt11\,mathrms^-1. Ambas raíces son negativas. Cada término de C1e^r+t+C2e^r-t es">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-16.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.16 · Tres regímenes con el mismo resorte. Resolución. El umbral crítico es bc=2sqrtmk=10\,kg/s. Para b=2 hay oscilaciones amortiguadas; para b=10 se alcanza el caso crítico; para b=12 el sistema es sobreamortiguado. En este último, gamma=6\,mathrms^-1 y rpm=-6pmsqrt36-25=-6pmsqrt11\,mathrms^-1. Ambas raíces son negativas. Cada término de C1e^r+t+C2e^r-t es">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;16: Apoyo visual: Problema resuelto 13.16 · Tres regímenes con el mismo resorte.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="forzamiento-y-resonancia-qué-respuesta-se-maximiza" class="level2">
+<h2 class="anchored" data-anchor-id="forzamiento-y-resonancia-qué-respuesta-se-maximiza">Forzamiento y resonancia: qué respuesta se maximiza</h2>
+<p>Una fuerza externa periódica puede compensar la disipación. Con <span class="math inline">\(F(t)=F_0\cos(\Omega t)\)</span>, la ecuación es <span class="math inline">\(m\ddot x+b\dot x+kx=F_0\cos(\Omega t)\)</span>. Su solución reúne un transitorio libre y una respuesta forzada. Si <span class="math inline">\(b&gt;0\)</span>, el transitorio decae y queda una oscilación estacionaria a la frecuencia impuesta <span class="math inline">\(\Omega\)</span>, que puede diferir de <span class="math inline">\(\omega_0\)</span> y de <span class="math inline">\(\omega_d\)</span>.</p>
+<p>Para hallar esa respuesta proponemos <span class="math inline">\(x=a\cos\Omega t+c\sin\Omega t\)</span>. Al sustituir e igualar por separado los coeficientes de coseno y seno, con <span class="math inline">\(D=k-m\Omega^2\)</span>, resulta <span class="math inline">\(Da+b\Omega c=F_0\)</span> y <span class="math inline">\(Dc-b\Omega a=0\)</span>. Resolver esas dos ecuaciones da <span class="math inline">\(a=F_0D/(D^2+b^2\Omega^2)\)</span> y <span class="math inline">\(c=F_0b\Omega/(D^2+b^2\Omega^2)\)</span>. Por tanto, <span class="math display">\[
+x=A(\Omega)\cos(\Omega t-\delta),\qquad
+A(\Omega)=\frac{F_0}{\sqrt{(k-m\Omega^2)^2+b^2\Omega^2}},
+\]</span> con <span class="math inline">\(\delta=\operatorname{atan2}(b\Omega,k-m\Omega^2)\)</span> para <span class="math inline">\(F_0&gt;0\)</span>, <span class="math inline">\(b&gt;0\)</span> y <span class="math inline">\(\Omega&gt;0\)</span>. El desfase indica cuánto se retrasa el desplazamiento respecto de la fuerza. Cuando <span class="math inline">\(\Omega=\omega_0\)</span>, el desplazamiento se retrasa <span class="math inline">\(\pi/2\)</span> y la velocidad queda en fase con la fuerza.</p>
+<p>La resonancia describe un aumento de respuesta en cierta banda de frecuencias. Para precisar dónde está su máximo hay que indicar qué se mide. El máximo de amplitud de desplazamiento ocurre en <span class="math inline">\(\Omega_r=\sqrt{\omega_0^2-2\gamma^2}\)</span> si <span class="math inline">\(\gamma&lt;\omega_0/\sqrt2\)</span>. Para <span class="math inline">\(\gamma\geq\omega_0/\sqrt2\)</span>, la amplitud decrece desde su valor estático <span class="math inline">\(F_0/k\)</span> al aumentar la frecuencia. En el régimen subamortiguado, la frecuencia libre es <span class="math inline">\(\omega_d=\sqrt{\omega_0^2-\gamma^2}\)</span>; el máximo de desplazamiento responde a la expresión anterior.</p>
+<p>La potencia media recibida en el estado estacionario se obtiene multiplicando fuerza y velocidad y promediando un ciclo. Como <span class="math inline">\(\langle\sin^2\rangle=1/2\)</span> y los productos seno–coseno promedian cero, resulta <span class="math display">\[
+\overline P=\frac12b\Omega^2A(\Omega)^2.
+\]</span> Es igual a la potencia media disipada por la fuerza resistiva. En este modelo su máximo ocurre en <span class="math inline">\(\Omega=\omega_0\)</span>, aunque el máximo de desplazamiento esté en otra frecuencia. Cuando <span class="math inline">\(b=0\)</span>, la respuesta exactamente resonante crece con el tiempo. Ese caso requiere una solución temporal propia, pues la expresión estacionaria resulta singular en la resonancia ideal.</p>
+<section id="r13-17" class="level3">
+<h3 class="anchored" data-anchor-id="r13-17">Problema resuelto 13.17 · Responder a una fuerza de frecuencia conocida</h3>
+<p>Un oscilador tiene <span class="math inline">\(m=1{,}0\,\mathrm{kg}\)</span>, <span class="math inline">\(k=25\,\mathrm{N/m}\)</span>, <span class="math inline">\(b=2{,}0\,\mathrm{kg/s}\)</span> y recibe una fuerza de amplitud <span class="math inline">\(F_0=0{,}40\,\mathrm{N}\)</span>. Calcula la amplitud y el desfase estacionarios para <span class="math inline">\(\Omega=3{,}0\)</span> y <span class="math inline">\(5{,}0\,\mathrm{rad/s}\)</span>.</p>
+<p><em>Resolución.</em> Para <span class="math inline">\(\Omega=3\)</span>, <span class="math inline">\(k-m\Omega^2=16\,\mathrm{N/m}\)</span> y <span class="math inline">\(b\Omega=6\,\mathrm{N/m}\)</span>. Por ello, <span class="math display">\[
+A(3)=\frac{0{,}40}{\sqrt{16^2+6^2}}\simeq0{,}0234\,\mathrm{m},\qquad
+\delta(3)=\arctan(6/16)\simeq0{,}359\,\mathrm{rad}.
+\]</span> Para <span class="math inline">\(\Omega=5=\omega_0\)</span>, el término <span class="math inline">\(k-m\Omega^2\)</span> se anula: <span class="math inline">\(A(5)=0{,}40/(2\times5)=0{,}0400\,\mathrm{m}\)</span> y <span class="math inline">\(\delta=\pi/2\)</span>. La oscilación estacionaria tiene la frecuencia de la fuerza en cada ensayo. Para reconstruir el inicio del movimiento se añade el transitorio compatible con las condiciones iniciales.</p>
+<div id="fig-fp-av-r13-17" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.17 · Responder a una fuerza de frecuencia conocida. Resolución. Para Omega=3, k-mOmega^2=16\,N/m y bOmega=6\,N/m. Por ello, A(3)=frac0,40sqrt16^2+6^2simeq0,0234\,m,qquad delta(3)=arctan(6/16)simeq0,359\,rad. Para Omega=5=omega0, el término k-mOmega^2 se anula: A(5)=0,40/(2times5)=0,0400\,m y delta=pi/2. La oscilación estacionaria tiene la frecuencia de la fuerza en">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-17.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.17 · Responder a una fuerza de frecuencia conocida. Resolución. Para Omega=3, k-mOmega^2=16\,N/m y bOmega=6\,N/m. Por ello, A(3)=frac0,40sqrt16^2+6^2simeq0,0234\,m,qquad delta(3)=arctan(6/16)simeq0,359\,rad. Para Omega=5=omega0, el término k-mOmega^2 se anula: A(5)=0,40/(2times5)=0,0400\,m y delta=pi/2. La oscilación estacionaria tiene la frecuencia de la fuerza en">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;17: Apoyo visual: Problema resuelto 13.17 · Responder a una fuerza de frecuencia conocida.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r13-18" class="level3">
+<h3 class="anchored" data-anchor-id="r13-18">Problema resuelto 13.18 · Máximos de desplazamiento y potencia</h3>
+<p>Para el sistema anterior, encuentra la frecuencia que maximiza el desplazamiento y compárala con la que maximiza la potencia media. Calcula ambos valores máximos.</p>
+<p><em>Resolución.</em> Maximizar <span class="math inline">\(A\)</span> equivale a minimizar <span class="math inline">\(D(\Omega)=(25-\Omega^2)^2+4\Omega^2\)</span>. Al escribir <span class="math inline">\(u=\Omega^2\geq0\)</span>, <span class="math inline">\(D=(25-u)^2+4u\)</span> tiene derivada <span class="math inline">\(2u-46\)</span> y mínimo en <span class="math inline">\(u=23\)</span>. Así, <span class="math display">\[
+\Omega_r=\sqrt{23}\simeq4{,}796\,\mathrm{rad/s},\qquad
+A_{\max}=\frac{0{,}40}{\sqrt{96}}\simeq0{,}0408\,\mathrm{m}.
+\]</span> La potencia media es <span class="math inline">\(\overline P=\Omega^2A^2\)</span> con estos valores de <span class="math inline">\(b\)</span>. Su máximo ocurre en <span class="math inline">\(\Omega=\omega_0=5\,\mathrm{rad/s}\)</span> y vale <span class="math inline">\(\overline P_{\max}=F_0^2/(2b)=0{,}0400\,\mathrm{W}\)</span>. A esa frecuencia la fuerza y la velocidad están en fase: la transferencia media de energía es máxima. El pequeño desplazamiento entre los dos máximos explica por qué una observación de «resonancia» debe indicar qué magnitud se midió y cuánto amortiguamiento había.</p>
+<div id="fig-fp-av-r13-18" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 13.18 · Máximos de desplazamiento y potencia. Resolución. Maximizar A equivale a minimizar D(Omega)=(25-Omega^2)^2+4Omega^2. Al escribir u=Omega^2geq0, D=(25-u)^2+4u tiene derivada 2u-46 y mínimo en u=23. Así, Omegar=sqrt23simeq4,796\,rad/s,qquad Amax=frac0,40sqrt96simeq0,0408\,m. La potencia media es overline P=Omega^2A^2 con estos valores de b. Su máximo ocurre">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r13-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R13-18.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 13.18 · Máximos de desplazamiento y potencia. Resolución. Maximizar A equivale a minimizar D(Omega)=(25-Omega^2)^2+4Omega^2. Al escribir u=Omega^2geq0, D=(25-u)^2+4u tiene derivada 2u-46 y mínimo en u=23. Así, Omegar=sqrt23simeq4,796\,rad/s,qquad Amax=frac0,40sqrt96simeq0,0408\,m. La potencia media es overline P=Omega^2A^2 con estos valores de b. Su máximo ocurre">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r13-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;18: Apoyo visual: Problema resuelto 13.18 · Máximos de desplazamiento y potencia.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="ejercicios-para-reconstruir-y-transferir" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-para-reconstruir-y-transferir">Ejercicios para reconstruir y transferir</h2>
+<p>Usa unidades SI, <span class="math inline">\(g=9{,}8\,\mathrm{m/s^2}\)</span> y resortes de masa despreciable dentro de su intervalo lineal. Los movimientos son unidimensionales; se desprecian pérdidas salvo en los ejercicios que introducen amortiguamiento. En los péndulos se supone masa puntual, hilo ideal y suspensión fija. Distingue siempre coordenada desde la longitud natural y desplazamiento desde el equilibrio.</p>
+<section id="e13-1" class="level3">
+<h3 class="anchored" data-anchor-id="e13-1">Ejercicio 13.1 · Reconstruir una ley de fuerza</h3>
+<p>Una fuerza externa de <span class="math inline">\(2{,}4\,\mathrm{N}\)</span> sostiene un resorte estirado <span class="math inline">\(1{,}2\,\mathrm{cm}\)</span>. Calcula <span class="math inline">\(k\)</span> y la fuerza del resorte para una compresión de <span class="math inline">\(2{,}0\,\mathrm{cm}\)</span>, tomando positivo el estiramiento.</p>
+</section>
+<section id="e13-2" class="level3">
+<h3 class="anchored" data-anchor-id="e13-2">Ejercicio 13.2 · Un equilibrio desplazado</h3>
+<p>Una masa de <span class="math inline">\(0{,}30\,\mathrm{kg}\)</span> cuelga de un resorte de <span class="math inline">\(60\,\mathrm{N/m}\)</span>. Halla la elongación estática. Si la masa se duplica y el resorte sigue siendo lineal, ¿qué cambia en <span class="math inline">\(q_e\)</span> y en <span class="math inline">\(k\)</span>?</p>
+</section>
+<section id="e13-3" class="level3">
+<h3 class="anchored" data-anchor-id="e13-3">Ejercicio 13.3 · Dos resortes en paralelo</h3>
+<p>Dos resortes de <span class="math inline">\(100\)</span> y <span class="math inline">\(150\,\mathrm{N/m}\)</span> se deforman ambos <span class="math inline">\(0{,}020\,\mathrm{m}\)</span> en un montaje paralelo. Calcula la fuerza de cada uno y la fuerza total necesaria para sostener el montaje.</p>
+</section>
+<section id="e13-4" class="level3">
+<h3 class="anchored" data-anchor-id="e13-4">Ejercicio 13.4 · Dos resortes en serie</h3>
+<p>Los resortes del ejercicio anterior se unen en serie y soportan una fuerza de <span class="math inline">\(3{,}0\,\mathrm{N}\)</span>. Calcula sus elongaciones, la elongación total y la constante equivalente.</p>
+</section>
+<section id="e13-5" class="level3">
+<h3 class="anchored" data-anchor-id="e13-5">Ejercicio 13.5 · Comprobar la ecuación diferencial</h3>
+<p>Para <span class="math inline">\(x(t)=0{,}080\cos(10t)\)</span> en unidades SI, deriva <span class="math inline">\(v\)</span> y <span class="math inline">\(a\)</span> y comprueba la relación armónica. Si <span class="math inline">\(m=0{,}20\,\mathrm{kg}\)</span>, determina <span class="math inline">\(k\)</span>.</p>
+</section>
+<section id="e13-6" class="level3">
+<h3 class="anchored" data-anchor-id="e13-6">Ejercicio 13.6 · De período a rigidez</h3>
+<p>Una masa de <span class="math inline">\(0{,}40\,\mathrm{kg}\)</span> oscila con período <span class="math inline">\(0{,}80\,\mathrm{s}\)</span>. Calcula frecuencia, frecuencia angular y constante elástica en el modelo de resorte ideal.</p>
+</section>
+<section id="e13-7" class="level3">
+<h3 class="anchored" data-anchor-id="e13-7">Ejercicio 13.7 · Elegir un cuadrante</h3>
+<p>Un MAS de <span class="math inline">\(\omega_0=10\,\mathrm{rad/s}\)</span> comienza con <span class="math inline">\(x_0=-0{,}030\,\mathrm{m}\)</span> y <span class="math inline">\(v_0=+0{,}400\,\mathrm{m/s}\)</span>. Escribe <span class="math inline">\(x(t)\)</span> como suma de coseno y seno y determina amplitud y una fase en la forma <span class="math inline">\(A\cos(10t+\phi)\)</span>.</p>
+</section>
+<section id="e13-8" class="level3">
+<h3 class="anchored" data-anchor-id="e13-8">Ejercicio 13.8 · Primer cruce y distancia recorrida</h3>
+<p>Un cuerpo parte del extremo positivo de un MAS con <span class="math inline">\(\omega_0=4{,}0\,\mathrm{rad/s}\)</span> y <span class="math inline">\(A=0{,}060\,\mathrm{m}\)</span>. ¿Cuándo cruza por primera vez el equilibrio? ¿Qué distancia recorre en un período completo?</p>
+</section>
+<section id="e13-9" class="level3">
+<h3 class="anchored" data-anchor-id="e13-9">Ejercicio 13.9 · Rapidez y aceleración en media amplitud</h3>
+<p>Expresa la rapidez y el módulo de la aceleración cuando <span class="math inline">\(|x|=A/2\)</span> como fracciones de sus respectivos máximos. ¿Basta conocer <span class="math inline">\(x=A/2\)</span> para elegir el signo de <span class="math inline">\(v\)</span>?</p>
+</section>
+<section id="e13-10" class="level3">
+<h3 class="anchored" data-anchor-id="e13-10">Ejercicio 13.10 · Cambiar tres parámetros</h3>
+<p>Un segundo oscilador tiene masa nueve veces mayor, constante elástica cuatro veces mayor y amplitud dos veces mayor. Halla las razones de períodos, energías y rapideces máximas respecto del primero.</p>
+</section>
+<section id="e13-11" class="level3">
+<h3 class="anchored" data-anchor-id="e13-11">Ejercicio 13.11 · Un balance de energía</h3>
+<p>Con <span class="math inline">\(k=80\,\mathrm{N/m}\)</span>, <span class="math inline">\(m=0{,}20\,\mathrm{kg}\)</span> y <span class="math inline">\(A=0{,}10\,\mathrm{m}\)</span>, calcula la energía total, la rapidez máxima y la rapidez en <span class="math inline">\(x=0{,}060\,\mathrm{m}\)</span>.</p>
+</section>
+<section id="e13-12" class="level3">
+<h3 class="anchored" data-anchor-id="e13-12">Ejercicio 13.12 · Cuatro estados con igual reparto</h3>
+<p>En un MAS de amplitud <span class="math inline">\(0{,}060\,\mathrm{m}\)</span>, ¿en qué posiciones son iguales las energías cinética y potencial? ¿Cuántos estados de posición y velocidad cumplen esa condición en un ciclo no trivial?</p>
+</section>
+<section id="e13-13" class="level3">
+<h3 class="anchored" data-anchor-id="e13-13">Ejercicio 13.13 · Inferir la amplitud sin observar un extremo</h3>
+<p>En un MAS de <span class="math inline">\(\omega_0=10\,\mathrm{rad/s}\)</span> se mide <span class="math inline">\(x=0{,}030\,\mathrm{m}\)</span> y <span class="math inline">\(v=-0{,}400\,\mathrm{m/s}\)</span>. Calcula la amplitud y la rapidez máxima.</p>
+</section>
+<section id="e13-14" class="level3">
+<h3 class="anchored" data-anchor-id="e13-14">Ejercicio 13.14 · Caída sobre un equilibrio elástico</h3>
+<p>Una masa de <span class="math inline">\(0{,}10\,\mathrm{kg}\)</span> se libera desde el reposo con un resorte vertical sin deformar, de <span class="math inline">\(50\,\mathrm{N/m}\)</span> y unido al cuerpo. Calcula la elongación de equilibrio, la máxima elongación y la rapidez máxima.</p>
+</section>
+<section id="e13-15" class="level3">
+<h3 class="anchored" data-anchor-id="e13-15">Ejercicio 13.15 · Período de un péndulo</h3>
+<p>Calcula el período aproximado de un péndulo simple de longitud <span class="math inline">\(0{,}40\,\mathrm{m}\)</span> y pequeña amplitud. ¿Cambiaría al duplicar la masa puntual?</p>
+</section>
+<section id="e13-16" class="level3">
+<h3 class="anchored" data-anchor-id="e13-16">Ejercicio 13.16 · Cambiar el campo gravitatorio</h3>
+<p>Un péndulo de longitud fija se traslada a un lugar donde <span class="math inline">\(g\)</span> es la cuarta parte del original. Compara los períodos de pequeña amplitud. ¿Qué longitud nueva conservaría el período original en ese lugar?</p>
+</section>
+<section id="e13-17" class="level3">
+<h3 class="anchored" data-anchor-id="e13-17">Ejercicio 13.17 · Una medición de gravedad</h3>
+<p>Un péndulo simple de longitud <span class="math inline">\(0{,}90\,\mathrm{m}\)</span> tiene período medido <span class="math inline">\(1{,}90\,\mathrm{s}\)</span> a pequeña amplitud. Estima <span class="math inline">\(g\)</span> mediante el modelo armónico. Indica dos posibles fuentes de error sistemático.</p>
+</section>
+<section id="e13-18" class="level3">
+<h3 class="anchored" data-anchor-id="e13-18">Ejercicio 13.18 · Control local de la aproximación</h3>
+<p>A <span class="math inline">\(\theta=0{,}20\,\mathrm{rad}\)</span>, calcula el error relativo de reemplazar <span class="math inline">\(\sin\theta\)</span> por <span class="math inline">\(\theta\)</span>, respecto del valor exacto. Explica por qué ese porcentaje no es automáticamente el error del período.</p>
+</section>
+<section id="e13-19" class="level3">
+<h3 class="anchored" data-anchor-id="e13-19">Ejercicio 13.19 · Frecuencia libre amortiguada</h3>
+<p>Un sistema tiene <span class="math inline">\(m=2{,}0\,\mathrm{kg}\)</span>, <span class="math inline">\(k=50\,\mathrm{N/m}\)</span> y <span class="math inline">\(b=4{,}0\,\mathrm{kg/s}\)</span>. Halla <span class="math inline">\(\gamma\)</span>, <span class="math inline">\(\omega_0\)</span>, <span class="math inline">\(\omega_d\)</span> y el pseudoperíodo. Clasifica el régimen.</p>
+</section>
+<section id="e13-20" class="level3">
+<h3 class="anchored" data-anchor-id="e13-20">Ejercicio 13.20 · El umbral crítico</h3>
+<p>Para <span class="math inline">\(m=0{,}50\,\mathrm{kg}\)</span> y <span class="math inline">\(k=32\,\mathrm{N/m}\)</span>, calcula el valor crítico de <span class="math inline">\(b\)</span>. Explica qué forma de solución reemplaza a seno y coseno amortiguados en ese umbral.</p>
+</section>
+<section id="e13-21" class="level3">
+<h3 class="anchored" data-anchor-id="e13-21">Ejercicio 13.21 · Medir el amortiguamiento con extremos</h3>
+<p>En un oscilador subamortiguado, dos máximos positivos sucesivos están separados <span class="math inline">\(0{,}50\,\mathrm{s}\)</span> y sus desplazamientos guardan razón <span class="math inline">\(0{,}80\)</span>. Estima <span class="math inline">\(\gamma\)</span> y <span class="math inline">\(b\)</span> si <span class="math inline">\(m=1{,}0\,\mathrm{kg}\)</span>. ¿Qué razón guardan las energías mecánicas en esos dos máximos?</p>
+</section>
+<section id="e13-22" class="level3">
+<h3 class="anchored" data-anchor-id="e13-22">Ejercicio 13.22 · Potencia en la frecuencia natural</h3>
+<p>Un oscilador con <span class="math inline">\(m=1{,}0\,\mathrm{kg}\)</span>, <span class="math inline">\(k=16\,\mathrm{N/m}\)</span> y <span class="math inline">\(b=2{,}0\,\mathrm{kg/s}\)</span> recibe <span class="math inline">\(F=0{,}60\cos(4t)\,\mathrm{N}\)</span>. Tras el transitorio, calcula amplitud, desfase y potencia media recibida.</p>
+</section>
+<section id="e13-23" class="level3">
+<h3 class="anchored" data-anchor-id="e13-23">Ejercicio 13.23 · Tres frecuencias distintas</h3>
+<p>Para el sistema del ejercicio anterior, calcula <span class="math inline">\(\omega_0\)</span>, <span class="math inline">\(\omega_d\)</span> y la frecuencia <span class="math inline">\(\Omega_r\)</span> del máximo de desplazamiento. Ordénalas y di cuál maximiza la potencia media.</p>
+</section>
+<section id="e13-24" class="level3">
+<h3 class="anchored" data-anchor-id="e13-24">Ejercicio 13.24 · Periódico y armónico</h3>
+<p>Sea <span class="math inline">\(x(t)=A\cos^2(\omega t)\)</span>, con <span class="math inline">\(A,\omega&gt;0\)</span>. ¿Satisface <span class="math inline">\(\ddot x=-\omega^2x\)</span>? Usa una identidad trigonométrica para encontrar su posición media, su período y una ecuación armónica para el desplazamiento desde esa media.</p>
+</section>
+</section>
+<section id="soluciones-razonadas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-razonadas">Soluciones razonadas</h2>
+<section id="sol-e13-1" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-1">Solución 13.1</h3>
+<p>La elongación es <span class="math inline">\(0{,}012\,\mathrm{m}\)</span>, de modo que <span class="math inline">\(k=2{,}4/0{,}012=200\,\mathrm{N/m}\)</span>. Para <span class="math inline">\(q=-0{,}020\,\mathrm{m}\)</span>, la fuerza del resorte es <span class="math inline">\(-kq=+4{,}0\,\mathrm{N}\)</span>. La fuerza externa para mantenerlo comprimido tendría el signo contrario.</p>
+</section>
+<section id="sol-e13-2" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-2">Solución 13.2</h3>
+<p>La elongación estática es <span class="math inline">\(q_e=mg/k=0{,}049\,\mathrm{m}\)</span>. Al duplicar la masa se duplica a <span class="math inline">\(0{,}098\,\mathrm{m}\)</span>; <span class="math inline">\(k\)</span> permanece en <span class="math inline">\(60\,\mathrm{N/m}\)</span> bajo la hipótesis de linealidad. La relación fuerza–deformación determina la rigidez.</p>
+</section>
+<section id="sol-e13-3" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-3">Solución 13.3</h3>
+<p>Las fuerzas elásticas tienen módulos <span class="math inline">\(100(0{,}020)=2{,}0\,\mathrm{N}\)</span> y <span class="math inline">\(150(0{,}020)=3{,}0\,\mathrm{N}\)</span>. La fuerza externa total necesaria vale <span class="math inline">\(5{,}0\,\mathrm{N}\)</span>. La constante equivalente es <span class="math inline">\(250\,\mathrm{N/m}\)</span> porque ambos resortes tienen igual deformación.</p>
+</section>
+<section id="sol-e13-4" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-4">Solución 13.4</h3>
+<p>La tensión común es <span class="math inline">\(3\,\mathrm{N}\)</span>. Resultan <span class="math inline">\(q_1=3/100=0{,}030\,\mathrm{m}\)</span> y <span class="math inline">\(q_2=3/150=0{,}020\,\mathrm{m}\)</span>. La suma es <span class="math inline">\(0{,}050\,\mathrm{m}\)</span> y <span class="math inline">\(k_s=3/0{,}050=60\,\mathrm{N/m}\)</span>. El montaje es más flexible que cualquiera de los dos resortes por separado.</p>
+</section>
+<section id="sol-e13-5" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-5">Solución 13.5</h3>
+<p>Derivar da <span class="math inline">\(v=-0{,}800\sin(10t)\,\mathrm{m/s}\)</span> y <span class="math inline">\(a=-8{,}00\cos(10t)\,\mathrm{m/s^2}\)</span>. Así, <span class="math inline">\(a=-100x\)</span>. La frecuencia angular es <span class="math inline">\(10\,\mathrm{rad/s}\)</span> y <span class="math inline">\(k=m\omega_0^2=20\,\mathrm{N/m}\)</span>. La comprobación vale para todo <span class="math inline">\(t\)</span>.</p>
+</section>
+<section id="sol-e13-6" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-6">Solución 13.6</h3>
+<p>La frecuencia es <span class="math inline">\(1/0{,}80=1{,}25\,\mathrm{Hz}\)</span> y <span class="math inline">\(\omega_0=2\pi/0{,}80=2{,}5\pi\,\mathrm{rad/s}\)</span>. La constante resulta <span class="math inline">\(k=m\omega_0^2=2{,}5\pi^2\,\mathrm{N/m}\simeq24{,}7\,\mathrm{N/m}\)</span>. Omitir el factor <span class="math inline">\(2\pi\)</span> confundiría frecuencia y frecuencia angular.</p>
+</section>
+<section id="sol-e13-7" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-7">Solución 13.7</h3>
+<p>La solución es <span class="math inline">\(x=-0{,}030\cos(10t)+0{,}040\sin(10t)\)</span>. La amplitud vale <span class="math inline">\(0{,}050\,\mathrm{m}\)</span>. Deben cumplirse <span class="math inline">\(\cos\phi=-0{,}6\)</span> y <span class="math inline">\(\sin\phi=-0{,}8\)</span>: una fase es <span class="math inline">\(\phi\simeq4{,}069\,\mathrm{rad}\)</span>, equivalente a <span class="math inline">\(-2{,}214\,\mathrm{rad}\)</span>. El tercer cuadrante asegura velocidad inicial positiva en la convención <span class="math inline">\(v_0=-A\omega_0\sin\phi\)</span>.</p>
+</section>
+<section id="sol-e13-8" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-8">Solución 13.8</h3>
+<p>Con <span class="math inline">\(x=A\cos(4t)\)</span>, el primer cero ocurre cuando <span class="math inline">\(4t=\pi/2\)</span>: <span class="math inline">\(t=\pi/8\,\mathrm{s}\simeq0{,}393\,\mathrm{s}\)</span>. En un período el cuerpo recorre de <span class="math inline">\(+A\)</span> a <span class="math inline">\(-A\)</span> y regresa; la distancia es <span class="math inline">\(4A=0{,}240\,\mathrm{m}\)</span> y el desplazamiento neto es cero.</p>
+</section>
+<section id="sol-e13-9" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-9">Solución 13.9</h3>
+<p>De <span class="math inline">\(|v|=\omega_0\sqrt{A^2-x^2}\)</span> resulta <span class="math inline">\(|v|/v_{\max}=\sqrt3/2\)</span>. Como <span class="math inline">\(|a|=\omega_0^2|x|\)</span>, <span class="math inline">\(|a|/a_{\max}=1/2\)</span>. La posición positiva determina aceleración negativa, pero admite ambos signos de velocidad según la fase.</p>
+</section>
+<section id="sol-e13-10" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-10">Solución 13.10</h3>
+<p>El período cambia por <span class="math inline">\(\sqrt{9/4}=3/2\)</span>. La energía <span class="math inline">\(kA^2/2\)</span> cambia por <span class="math inline">\(4\times2^2=16\)</span>. La frecuencia angular cambia por <span class="math inline">\(\sqrt{4/9}=2/3\)</span> y la rapidez máxima por <span class="math inline">\((2/3)2=4/3\)</span>. Las tres comparaciones miden propiedades distintas del movimiento.</p>
+</section>
+<section id="sol-e13-11" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-11">Solución 13.11</h3>
+<p>La energía es <span class="math inline">\(E=80(0{,}10)^2/2=0{,}400\,\mathrm{J}\)</span>. Como <span class="math inline">\(\omega_0=\sqrt{80/0{,}20}=20\,\mathrm{rad/s}\)</span>, <span class="math inline">\(v_{\max}=2{,}0\,\mathrm{m/s}\)</span>. En <span class="math inline">\(x=0{,}060\,\mathrm{m}\)</span>, <span class="math inline">\(|v|=20\sqrt{0{,}10^2-0{,}060^2}=1{,}60\,\mathrm{m/s}\)</span>. El signo requiere conocer el sentido de paso.</p>
+</section>
+<section id="sol-e13-12" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-12">Solución 13.12</h3>
+<p>Igualar <span class="math inline">\(U\)</span> con <span class="math inline">\(E/2\)</span> da <span class="math inline">\(x=\pm A/\sqrt2\simeq\pm0{,}0424\,\mathrm{m}\)</span>. Cada posición tiene dos signos de velocidad de igual módulo, de modo que aparecen cuatro estados por ciclo. Contar los estados exige distinguir también los dos sentidos de paso por cada posición.</p>
+</section>
+<section id="sol-e13-13" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-13">Solución 13.13</h3>
+<p>La ecuación de energía equivale a <span class="math inline">\(A^2=x^2+(v/\omega_0)^2\)</span>. Con los datos, <span class="math inline">\(A=\sqrt{0{,}030^2+0{,}040^2}=0{,}050\,\mathrm{m}\)</span>. La rapidez máxima es <span class="math inline">\(\omega_0A=0{,}500\,\mathrm{m/s}\)</span>. La velocidad negativa fija la rama actual; la amplitud se obtiene del balance energético.</p>
+</section>
+<section id="sol-e13-14" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-14">Solución 13.14</h3>
+<p>El equilibrio está en <span class="math inline">\(q_e=0{,}10(9{,}8)/50=0{,}0196\,\mathrm{m}\)</span>. La liberación desde la longitud natural y en reposo implica <span class="math inline">\(A=q_e\)</span>, de modo que <span class="math inline">\(q_{\max}=2q_e=0{,}0392\,\mathrm{m}\)</span>. La rapidez máxima es <span class="math inline">\(\sqrt{50/0{,}10}(0{,}0196)\simeq0{,}438\,\mathrm{m/s}\)</span> al cruzar el equilibrio.</p>
+</section>
+<section id="sol-e13-15" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-15">Solución 13.15</h3>
+<p>El período aproximado es <span class="math inline">\(T_0=2\pi\sqrt{0{,}40/9{,}8}\simeq1{,}27\,\mathrm{s}\)</span>. La masa se cancela al escribir la ecuación tangencial y el período queda determinado por la longitud y el campo gravitatorio. La fórmula presupone amplitud angular pequeña.</p>
+</section>
+<section id="sol-e13-16" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-16">Solución 13.16</h3>
+<p>Para longitud fija, <span class="math inline">\(T\propto1/\sqrt g\)</span>; al pasar a <span class="math inline">\(g/4\)</span>, el período se duplica. Para conservar el período original se necesita mantener <span class="math inline">\(L/g\)</span>: la longitud nueva debe ser <span class="math inline">\(L/4\)</span>.</p>
+</section>
+<section id="sol-e13-17" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-17">Solución 13.17</h3>
+<p>Despejar da <span class="math inline">\(g=4\pi^2(0{,}90)/(1{,}90)^2\simeq9{,}84\,\mathrm{m/s^2}\)</span>. Una longitud medida hasta un punto distinto del centro de la masa y una amplitud demasiado grande producen errores sistemáticos. También pueden intervenir movimiento del soporte o una masa que no sea aproximadamente puntual.</p>
+</section>
+<section id="sol-e13-18" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-18">Solución 13.18</h3>
+<p>La comparación correcta usa radianes: <span class="math inline">\(\varepsilon_F=0{,}20/\sin(0{,}20)-1\simeq0{,}00670\)</span>, aproximadamente <span class="math inline">\(0{,}670\%\)</span>. Se compara una fuerza en una posición concreta; el período requiere seguir toda la evolución, incluida la rapidez variable.</p>
+</section>
+<section id="sol-e13-19" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-19">Solución 13.19</h3>
+<p>Se obtiene <span class="math inline">\(\gamma=b/(2m)=1\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(\omega_0=\sqrt{k/m}=5\,\mathrm{rad/s}\)</span>. Como <span class="math inline">\(1&lt;5\)</span>, el régimen es subamortiguado, con <span class="math inline">\(\omega_d=\sqrt{24}\,\mathrm{rad/s}\simeq4{,}899\,\mathrm{rad/s}\)</span> y <span class="math inline">\(T_d\simeq1{,}283\,\mathrm{s}\)</span>. La fase se repite, pero posición y velocidad disminuyen de escala.</p>
+</section>
+<section id="sol-e13-20" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-20">Solución 13.20</h3>
+<p>El valor crítico es <span class="math inline">\(b_c=2\sqrt{mk}=2\sqrt{(0{,}50)(32)}=8{,}0\,\mathrm{kg/s}\)</span>. En él, <span class="math inline">\(\gamma=8\,\mathrm{s^{-1}}\)</span> y la solución es <span class="math inline">\(x=(C_1+C_2t)e^{-8t}\)</span>. Las constantes se fijan con la posición y la velocidad iniciales, y la solución describe un retorno al equilibrio sin ciclos de oscilación libre.</p>
+</section>
+<section id="sol-e13-21" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-21">Solución 13.21</h3>
+<p>Los extremos equivalentes se separan por <span class="math inline">\(T_d\)</span>. Su razón es <span class="math inline">\(e^{-\gamma T_d}=0{,}80\)</span>, así que <span class="math inline">\(\gamma=-\ln(0{,}80)/0{,}50\simeq0{,}446\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(b=2m\gamma\simeq0{,}893\,\mathrm{kg/s}\)</span>. En ambos extremos <span class="math inline">\(v=0\)</span>; la razón de energías es el cuadrado de la razón de posiciones, <span class="math inline">\(0{,}80^2=0{,}64\)</span>.</p>
+</section>
+<section id="sol-e13-22" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-22">Solución 13.22</h3>
+<p>La frecuencia de la fuerza coincide con <span class="math inline">\(\omega_0=\sqrt{16}=4\,\mathrm{rad/s}\)</span>. La amplitud estacionaria es <span class="math inline">\(A=F_0/(b\Omega)=0{,}60/8=0{,}0750\,\mathrm{m}\)</span> y el desfase es <span class="math inline">\(\pi/2\)</span>. La potencia media es <span class="math inline">\(b\Omega^2A^2/2=0{,}0900\,\mathrm{W}\)</span>. Es igual a la disipación media por la fuerza resistiva.</p>
+</section>
+<section id="sol-e13-23" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-23">Solución 13.23</h3>
+<p>Con <span class="math inline">\(\gamma=1\,\mathrm{s^{-1}}\)</span>, <span class="math inline">\(\omega_d=\sqrt{16-1}=\sqrt{15}\,\mathrm{rad/s}\simeq3{,}873\,\mathrm{rad/s}\)</span> y <span class="math inline">\(\Omega_r=\sqrt{16-2}=\sqrt{14}\,\mathrm{rad/s}\simeq3{,}742\,\mathrm{rad/s}\)</span>. El orden es <span class="math inline">\(\Omega_r&lt;\omega_d&lt;\omega_0=4\,\mathrm{rad/s}\)</span>. El máximo de potencia está en <span class="math inline">\(\omega_0\)</span>; el de desplazamiento, en <span class="math inline">\(\Omega_r\)</span>.</p>
+</section>
+<section id="sol-e13-24" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e13-24">Solución 13.24</h3>
+<p>La identidad <span class="math inline">\(\cos^2u=(1+\cos2u)/2\)</span> da <span class="math inline">\(x=A/2+(A/2)\cos(2\omega t)\)</span>. La media es <span class="math inline">\(A/2\)</span> y el período, <span class="math inline">\(\pi/\omega\)</span>. Con <span class="math inline">\(y=x-A/2\)</span> se cumple <span class="math inline">\(\ddot y=-(2\omega)^2y\)</span>. En cambio, <span class="math inline">\(\ddot x=-4\omega^2(x-A/2)\)</span>, que no equivale a <span class="math inline">\(-\omega^2x\)</span>. La función sí representa un MAS alrededor de otro equilibrio y con otra frecuencia angular.</p>
+</section>
+</section>
+<section id="una-experiencia-medir-el-período-sin-confundirlo-con-la-amplitud" class="level2">
+<h2 class="anchored" data-anchor-id="una-experiencia-medir-el-período-sin-confundirlo-con-la-amplitud">Una experiencia: medir el período sin confundirlo con la amplitud</h2>
+<section id="qué-permanece-y-qué-cambia" class="level3">
+<h3 class="anchored" data-anchor-id="qué-permanece-y-qué-cambia">Qué permanece y qué cambia</h3>
+<p>Con un péndulo de masa pequeña y soporte firme, mide la longitud desde el punto de suspensión hasta el centro de la masa. Separa un ángulo pequeño y suelta sin empujar. Cronometra diez o veinte ciclos, repite y registra la dispersión. Comienza y termina en la misma posición y sentido de paso; un ciclo completo exige regresar a la misma posición con el mismo sentido de movimiento.</p>
+<p>Repite con varias longitudes y conserva una amplitud angular pequeña semejante. La predicción <span class="math inline">\(T_0^2=(4\pi^2/g)L\)</span> sugiere representar <span class="math inline">\(T^2\)</span> frente a <span class="math inline">\(L\)</span>. La pendiente permitiría estimar <span class="math inline">\(g\)</span>. Registra las incertidumbres y examina si la recta pasa cerca del origen: un desfase en la longitud efectiva puede aparecer como intercepto.</p>
+<p>Con la misma longitud, compara amplitudes pequeñas diferentes. La aproximación armónica predice períodos casi iguales; la comparación experimental permite estudiar la precisión de esa predicción. Observa además cómo decae la amplitud. Si quieres ensayar un modelo exponencial, mide extremos del mismo lado y grafica su logaritmo frente al tiempo. Una recta aproximada apoyaría una tasa de decaimiento constante en ese intervalo; desviaciones pueden señalar otro mecanismo de rozamiento o limitaciones de la medición.</p>
+</section>
+</section>
+<section id="diagnóstico-antes-de-avanzar" class="level2">
+<h2 class="anchored" data-anchor-id="diagnóstico-antes-de-avanzar">Diagnóstico antes de avanzar</h2>
+<p>Justifica sin sustituir números: (a) En el equilibrio de un MAS no trivial, ¿se anulan velocidad y aceleración? (b) ¿Por qué una masa vertical puede tener fuerza neta cero mientras el resorte ejerce fuerza? (c) ¿Todo movimiento periódico cumple la ecuación del MAS respecto del origen elegido? (d) En un oscilador amortiguado y forzado, ¿coinciden necesariamente el máximo de desplazamiento y el máximo de potencia?</p>
+<p><strong>Contraste.</strong> (a) La aceleración se anula y la rapidez es máxima; para <span class="math inline">\(A&gt;0\)</span> la velocidad no es cero. (b) La fuerza elástica equilibra el peso: el origen de oscilación está desplazado respecto de la longitud natural. (c) Para identificar un MAS debe comprobarse <span class="math inline">\(a=-\omega_0^2x\)</span> respecto del equilibrio durante todo el movimiento. (d) En el modelo lineal con rozamiento viscoso, el máximo de potencia está en <span class="math inline">\(\omega_0\)</span>; el de desplazamiento, cuando existe a frecuencia positiva, está en <span class="math inline">\(\sqrt{\omega_0^2-2\gamma^2}\)</span>.</p>
+<p><strong>Lecturas de apoyo.</strong> H. D. Young y R. A. Freedman, <em>Física universitaria</em>, volumen 1, 12.ª edición, capítulo 13, secciones 13.1–13.3 y 13.5–13.8; R. A. Serway y C. Vuille, <em>Fundamentos de física</em>, volumen 1, 9.ª edición, capítulo 13, secciones 13.1–13.6. Los problemas, datos y ayudas visuales de este capítulo son originales.</p>
+<hr>
+<p><a href="capitulo-12.html">← Capítulo anterior</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-14.html">Capítulo siguiente →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

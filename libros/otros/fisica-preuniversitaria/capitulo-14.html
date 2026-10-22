@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+
+<title>14. Ondas, sonido, superposición y resonancia – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-cb076892e24e5ecd918925b139627211.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-a27ce7592f35ccc06b5fae55f34b11f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#una-oscilación-que-se-propaga" id="toc-una-oscilación-que-se-propaga" class="nav-link active" data-scroll-target="#una-oscilación-que-se-propaga">Una oscilación que se propaga</a>
+  <ul class="collapse">
+  <li><a href="#r14-1" id="toc-r14-1" class="nav-link" data-scroll-target="#r14-1">Problema resuelto 14.1 · Leer espacio y tiempo por separado</a></li>
+  <li><a href="#r14-2" id="toc-r14-2" class="nav-link" data-scroll-target="#r14-2">Problema resuelto 14.2 · Dos velocidades en una misma ecuación</a></li>
+  </ul></li>
+  <li><a href="#la-rapidez-se-obtiene-del-medio" id="toc-la-rapidez-se-obtiene-del-medio" class="nav-link" data-scroll-target="#la-rapidez-se-obtiene-del-medio">La rapidez se obtiene del medio</a>
+  <ul class="collapse">
+  <li><a href="#r14-3" id="toc-r14-3" class="nav-link" data-scroll-target="#r14-3">Problema resuelto 14.3 · Tensión y masa por unidad de longitud</a></li>
+  <li><a href="#r14-4" id="toc-r14-4" class="nav-link" data-scroll-target="#r14-4">Problema resuelto 14.4 · La frecuencia atraviesa una frontera fija</a></li>
+  </ul></li>
+  <li><a href="#superposición-e-interferencia" id="toc-superposición-e-interferencia" class="nav-link" data-scroll-target="#superposición-e-interferencia">Superposición e interferencia</a>
+  <ul class="collapse">
+  <li><a href="#r14-5" id="toc-r14-5" class="nav-link" data-scroll-target="#r14-5">Problema resuelto 14.5 · Dos pulsos se encuentran</a></li>
+  <li><a href="#r14-6" id="toc-r14-6" class="nav-link" data-scroll-target="#r14-6">Problema resuelto 14.6 · Una suma que depende de la fase</a></li>
+  <li><a href="#r14-7" id="toc-r14-7" class="nav-link" data-scroll-target="#r14-7">Problema resuelto 14.7 · Del camino a la fase</a></li>
+  </ul></li>
+  <li><a href="#reflexión-ondas-estacionarias-y-modos-normales" id="toc-reflexión-ondas-estacionarias-y-modos-normales" class="nav-link" data-scroll-target="#reflexión-ondas-estacionarias-y-modos-normales">Reflexión, ondas estacionarias y modos normales</a>
+  <ul class="collapse">
+  <li><a href="#r14-8" id="toc-r14-8" class="nav-link" data-scroll-target="#r14-8">Problema resuelto 14.8 · Contar nodos incluidos los extremos</a></li>
+  <li><a href="#r14-9" id="toc-r14-9" class="nav-link" data-scroll-target="#r14-9">Problema resuelto 14.9 · Un tubo abierto en ambos extremos</a></li>
+  <li><a href="#r14-10" id="toc-r14-10" class="nav-link" data-scroll-target="#r14-10">Problema resuelto 14.10 · Cerrar un extremo cambia la familia</a></li>
+  </ul></li>
+  <li><a href="#sonido-timbre-y-batimientos" id="toc-sonido-timbre-y-batimientos" class="nav-link" data-scroll-target="#sonido-timbre-y-batimientos">Sonido, timbre y batimientos</a>
+  <ul class="collapse">
+  <li><a href="#r14-11" id="toc-r14-11" class="nav-link" data-scroll-target="#r14-11">Problema resuelto 14.11 · Una misma fundamental, dos espectros</a></li>
+  </ul></li>
+  <li><a href="#intensidad-y-niveles-en-decibelios" id="toc-intensidad-y-niveles-en-decibelios" class="nav-link" data-scroll-target="#intensidad-y-niveles-en-decibelios">Intensidad y niveles en decibelios</a>
+  <ul class="collapse">
+  <li><a href="#r14-12" id="toc-r14-12" class="nav-link" data-scroll-target="#r14-12">Problema resuelto 14.12 · Alejarse de una fuente puntual</a></li>
+  <li><a href="#r14-13" id="toc-r14-13" class="nav-link" data-scroll-target="#r14-13">Problema resuelto 14.13 · Interpretar un aumento de nivel</a></li>
+  <li><a href="#r14-14" id="toc-r14-14" class="nav-link" data-scroll-target="#r14-14">Problema resuelto 14.14 · Dos fuentes: importa su correlación</a></li>
+  </ul></li>
+  <li><a href="#doppler-contar-frentes-desde-una-referencia-común" id="toc-doppler-contar-frentes-desde-una-referencia-común" class="nav-link" data-scroll-target="#doppler-contar-frentes-desde-una-referencia-común">Doppler: contar frentes desde una referencia común</a>
+  <ul class="collapse">
+  <li><a href="#r14-15" id="toc-r14-15" class="nav-link" data-scroll-target="#r14-15">Problema resuelto 14.15 · Se mueve quien escucha</a></li>
+  <li><a href="#r14-16" id="toc-r14-16" class="nav-link" data-scroll-target="#r14-16">Problema resuelto 14.16 · Se mueve quien emite</a></li>
+  <li><a href="#r14-17" id="toc-r14-17" class="nav-link" data-scroll-target="#r14-17">Problema resuelto 14.17 · Fuente, observador y viento</a></li>
+  </ul></li>
+  <li><a href="#una-aplicación-afinar-con-batimientos" id="toc-una-aplicación-afinar-con-batimientos" class="nav-link" data-scroll-target="#una-aplicación-afinar-con-batimientos">Una aplicación: afinar con batimientos</a>
+  <ul class="collapse">
+  <li><a href="#r14-18" id="toc-r14-18" class="nav-link" data-scroll-target="#r14-18">Problema resuelto 14.18 · Modificar la longitud para alcanzar una referencia</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-para-reconstruir-y-transferir" id="toc-ejercicios-para-reconstruir-y-transferir" class="nav-link" data-scroll-target="#ejercicios-para-reconstruir-y-transferir">Ejercicios para reconstruir y transferir</a>
+  <ul class="collapse">
+  <li><a href="#e14-1" id="toc-e14-1" class="nav-link" data-scroll-target="#e14-1">Ejercicio 14.1 · Un perfil y un registro temporal</a></li>
+  <li><a href="#e14-2" id="toc-e14-2" class="nav-link" data-scroll-target="#e14-2">Ejercicio 14.2 · Leer una onda que va hacia la izquierda</a></li>
+  <li><a href="#e14-3" id="toc-e14-3" class="nav-link" data-scroll-target="#e14-3">Ejercicio 14.3 · Interpretar los coeficientes</a></li>
+  <li><a href="#e14-4" id="toc-e14-4" class="nav-link" data-scroll-target="#e14-4">Ejercicio 14.4 · Una cuerda bajo tensión</a></li>
+  <li><a href="#e14-5" id="toc-e14-5" class="nav-link" data-scroll-target="#e14-5">Ejercicio 14.5 · Variar la tensión con frecuencia fija</a></li>
+  <li><a href="#e14-6" id="toc-e14-6" class="nav-link" data-scroll-target="#e14-6">Ejercicio 14.6 · Cambiar de medio</a></li>
+  <li><a href="#e14-7" id="toc-e14-7" class="nav-link" data-scroll-target="#e14-7">Ejercicio 14.7 · Una suma con signo</a></li>
+  <li><a href="#e14-8" id="toc-e14-8" class="nav-link" data-scroll-target="#e14-8">Ejercicio 14.8 · Un cuarto de ciclo entre contribuciones</a></li>
+  <li><a href="#e14-9" id="toc-e14-9" class="nav-link" data-scroll-target="#e14-9">Ejercicio 14.9 · Una diferencia de caminos</a></li>
+  <li><a href="#e14-10" id="toc-e14-10" class="nav-link" data-scroll-target="#e14-10">Ejercicio 14.10 · Amplitudes distintas en oposición</a></li>
+  <li><a href="#e14-11" id="toc-e14-11" class="nav-link" data-scroll-target="#e14-11">Ejercicio 14.11 · Quinto modo de una cuerda</a></li>
+  <li><a href="#e14-12" id="toc-e14-12" class="nav-link" data-scroll-target="#e14-12">Ejercicio 14.12 · Inferir la tensión desde la fundamental</a></li>
+  <li><a href="#e14-13" id="toc-e14-13" class="nav-link" data-scroll-target="#e14-13">Ejercicio 14.13 · Tres modos de un tubo abierto</a></li>
+  <li><a href="#e14-14" id="toc-e14-14" class="nav-link" data-scroll-target="#e14-14">Ejercicio 14.14 · Tres modos de un tubo cerrado</a></li>
+  <li><a href="#e14-15" id="toc-e14-15" class="nav-link" data-scroll-target="#e14-15">Ejercicio 14.15 · La misma fundamental con otras fronteras</a></li>
+  <li><a href="#e14-16" id="toc-e14-16" class="nav-link" data-scroll-target="#e14-16">Ejercicio 14.16 · La periodicidad de un espectro</a></li>
+  <li><a href="#e14-17" id="toc-e14-17" class="nav-link" data-scroll-target="#e14-17">Ejercicio 14.17 · Potencia repartida sobre una esfera</a></li>
+  <li><a href="#e14-18" id="toc-e14-18" class="nav-link" data-scroll-target="#e14-18">Ejercicio 14.18 · Una diferencia de veinte decibelios</a></li>
+  <li><a href="#e14-19" id="toc-e14-19" class="nav-link" data-scroll-target="#e14-19">Ejercicio 14.19 · Tres fuentes independientes</a></li>
+  <li><a href="#e14-20" id="toc-e14-20" class="nav-link" data-scroll-target="#e14-20">Ejercicio 14.20 · El observador se acerca y se aleja</a></li>
+  <li><a href="#e14-21" id="toc-e14-21" class="nav-link" data-scroll-target="#e14-21">Ejercicio 14.21 · La fuente se acerca y se aleja</a></li>
+  <li><a href="#e14-22" id="toc-e14-22" class="nav-link" data-scroll-target="#e14-22">Ejercicio 14.22 · Ambos se aproximan</a></li>
+  <li><a href="#e14-23" id="toc-e14-23" class="nav-link" data-scroll-target="#e14-23">Ejercicio 14.23 · Viento con fuente y observador quietos</a></li>
+  <li><a href="#e14-24" id="toc-e14-24" class="nav-link" data-scroll-target="#e14-24">Ejercicio 14.24 · Afinar con información incompleta</a></li>
+  </ul></li>
+  <li><a href="#soluciones-razonadas" id="toc-soluciones-razonadas" class="nav-link" data-scroll-target="#soluciones-razonadas">Soluciones razonadas</a>
+  <ul class="collapse">
+  <li><a href="#sol-e14-1" id="toc-sol-e14-1" class="nav-link" data-scroll-target="#sol-e14-1">Solución 14.1</a></li>
+  <li><a href="#sol-e14-2" id="toc-sol-e14-2" class="nav-link" data-scroll-target="#sol-e14-2">Solución 14.2</a></li>
+  <li><a href="#sol-e14-3" id="toc-sol-e14-3" class="nav-link" data-scroll-target="#sol-e14-3">Solución 14.3</a></li>
+  <li><a href="#sol-e14-4" id="toc-sol-e14-4" class="nav-link" data-scroll-target="#sol-e14-4">Solución 14.4</a></li>
+  <li><a href="#sol-e14-5" id="toc-sol-e14-5" class="nav-link" data-scroll-target="#sol-e14-5">Solución 14.5</a></li>
+  <li><a href="#sol-e14-6" id="toc-sol-e14-6" class="nav-link" data-scroll-target="#sol-e14-6">Solución 14.6</a></li>
+  <li><a href="#sol-e14-7" id="toc-sol-e14-7" class="nav-link" data-scroll-target="#sol-e14-7">Solución 14.7</a></li>
+  <li><a href="#sol-e14-8" id="toc-sol-e14-8" class="nav-link" data-scroll-target="#sol-e14-8">Solución 14.8</a></li>
+  <li><a href="#sol-e14-9" id="toc-sol-e14-9" class="nav-link" data-scroll-target="#sol-e14-9">Solución 14.9</a></li>
+  <li><a href="#sol-e14-10" id="toc-sol-e14-10" class="nav-link" data-scroll-target="#sol-e14-10">Solución 14.10</a></li>
+  <li><a href="#sol-e14-11" id="toc-sol-e14-11" class="nav-link" data-scroll-target="#sol-e14-11">Solución 14.11</a></li>
+  <li><a href="#sol-e14-12" id="toc-sol-e14-12" class="nav-link" data-scroll-target="#sol-e14-12">Solución 14.12</a></li>
+  <li><a href="#sol-e14-13" id="toc-sol-e14-13" class="nav-link" data-scroll-target="#sol-e14-13">Solución 14.13</a></li>
+  <li><a href="#sol-e14-14" id="toc-sol-e14-14" class="nav-link" data-scroll-target="#sol-e14-14">Solución 14.14</a></li>
+  <li><a href="#sol-e14-15" id="toc-sol-e14-15" class="nav-link" data-scroll-target="#sol-e14-15">Solución 14.15</a></li>
+  <li><a href="#sol-e14-16" id="toc-sol-e14-16" class="nav-link" data-scroll-target="#sol-e14-16">Solución 14.16</a></li>
+  <li><a href="#sol-e14-17" id="toc-sol-e14-17" class="nav-link" data-scroll-target="#sol-e14-17">Solución 14.17</a></li>
+  <li><a href="#sol-e14-18" id="toc-sol-e14-18" class="nav-link" data-scroll-target="#sol-e14-18">Solución 14.18</a></li>
+  <li><a href="#sol-e14-19" id="toc-sol-e14-19" class="nav-link" data-scroll-target="#sol-e14-19">Solución 14.19</a></li>
+  <li><a href="#sol-e14-20" id="toc-sol-e14-20" class="nav-link" data-scroll-target="#sol-e14-20">Solución 14.20</a></li>
+  <li><a href="#sol-e14-21" id="toc-sol-e14-21" class="nav-link" data-scroll-target="#sol-e14-21">Solución 14.21</a></li>
+  <li><a href="#sol-e14-22" id="toc-sol-e14-22" class="nav-link" data-scroll-target="#sol-e14-22">Solución 14.22</a></li>
+  <li><a href="#sol-e14-23" id="toc-sol-e14-23" class="nav-link" data-scroll-target="#sol-e14-23">Solución 14.23</a></li>
+  <li><a href="#sol-e14-24" id="toc-sol-e14-24" class="nav-link" data-scroll-target="#sol-e14-24">Solución 14.24</a></li>
+  </ul></li>
+  <li><a href="#una-experiencia-medir-modos-y-batimientos" id="toc-una-experiencia-medir-modos-y-batimientos" class="nav-link" data-scroll-target="#una-experiencia-medir-modos-y-batimientos">Una experiencia: medir modos y batimientos</a>
+  <ul class="collapse">
+  <li><a href="#longitud-espectro-y-fronteras" id="toc-longitud-espectro-y-fronteras" class="nav-link" data-scroll-target="#longitud-espectro-y-fronteras">Longitud, espectro y fronteras</a></li>
+  </ul></li>
+  <li><a href="#diagnóstico-antes-de-avanzar" id="toc-diagnóstico-antes-de-avanzar" class="nav-link" data-scroll-target="#diagnóstico-antes-de-avanzar">Diagnóstico antes de avanzar</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">14. Ondas, sonido, superposición y resonancia</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="capitulo-13.html">← Capítulo anterior</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-15.html">Capítulo siguiente →</a></p>
+<p>Cuando pulsamos una cuerda, una perturbación recorre su longitud mientras cada pequeño tramo se mueve alrededor de su posición de equilibrio. El instrumento responde como un sistema extendido: la tensión comunica el movimiento entre regiones vecinas y las fronteras devuelven parte de lo que llega hasta ellas. La repetición de esas idas y vueltas selecciona las oscilaciones que pueden mantenerse.</p>
+<p>La misma idea permitirá estudiar una columna de aire. Seguiremos primero una onda viajera, combinaremos después varias ondas y buscaremos los movimientos compatibles con una cuerda o un tubo. A partir de allí podremos relacionar frecuencia y timbre, calcular intensidades y comprender cómo cambia la frecuencia observada cuando se mueven la fuente, el observador o el medio.</p>
+<section id="una-oscilación-que-se-propaga" class="level2">
+<h2 class="anchored" data-anchor-id="una-oscilación-que-se-propaga">Una oscilación que se propaga</h2>
+<p>Una onda mecánica es una perturbación que se propaga mediante las interacciones de un medio material. En una cuerda, el desplazamiento transversal de un punto puede representarse como <span class="math inline">\(y(x,t)\)</span>: necesitamos su posición de equilibrio <span class="math inline">\(x\)</span> y el instante <span class="math inline">\(t\)</span> para conocer cuánto se ha apartado de ella. Una fotografía fija <span class="math inline">\(t\)</span> y muestra el perfil espacial; un registro de un punto fijo sigue su movimiento temporal.</p>
+<p>Una onda es transversal cuando el desplazamiento local es perpendicular a la propagación. En una onda longitudinal, ambos tienen la misma dirección: así se producen las compresiones y rarefacciones del sonido en el aire. En los modelos lineales que usaremos, las partículas oscilan alrededor de sus posiciones de equilibrio mientras se propagan la perturbación y la energía. La curva de una onda sonora puede representar presión o desplazamiento longitudinal; el eje vertical de esa gráfica expresa una magnitud, aunque las partículas se muevan horizontalmente.</p>
+<p>Una forma que viaja hacia <span class="math inline">\(+x\)</span> con rapidez constante <span class="math inline">\(c\)</span> puede escribirse <span class="math inline">\(y=f(x-ct)\)</span>: mantener fijo <span class="math inline">\(x-ct\)</span> exige aumentar <span class="math inline">\(x\)</span> a razón <span class="math inline">\(c\)</span>. Para una onda sinusoidal, <span class="math display">\[
+y(x,t)=A\cos(kx-\omega t+\phi),\quad
+k=\frac{2\pi}{\lambda},\quad \omega=2\pi f,\quad c=\lambda f=\frac\omega k.
+\]</span> <span class="math inline">\(A\)</span> es la amplitud, <span class="math inline">\(\lambda\)</span> la distancia entre puntos consecutivos en la misma fase y <span class="math inline">\(T=1/f\)</span> el período de oscilación de un punto fijo. Aquí <span class="math inline">\(k\)</span> designa el <em>número de onda</em>, medido en <span class="math inline">\(\,\mathrm{rad/m}\)</span>. En el capítulo anterior esa letra se empleaba para la rigidez de un resorte; el contexto y las unidades distinguen las dos magnitudes. Con <span class="math inline">\(k,\omega&gt;0\)</span>, la combinación <span class="math inline">\(kx+\omega t\)</span> representa propagación hacia <span class="math inline">\(-x\)</span>.</p>
+<p>Al derivar <span class="math inline">\(y\)</span> respecto del tiempo con <span class="math inline">\(x\)</span> fijo obtenemos la velocidad transversal de un elemento, <span class="math inline">\(v_y=\partial y/\partial t=A\omega\sin(kx-\omega t+\phi)\)</span>. El símbolo <span class="math inline">\(\partial\)</span> indica que la otra variable se mantiene fija. La rapidez de propagación <span class="math inline">\(c\)</span> y la rapidez local <span class="math inline">\(|v_y|\)</span> describen procesos diferentes. La primera depende del medio; el máximo de la segunda es <span class="math inline">\(A\omega\)</span> para esta onda.</p>
+<section id="r14-1" class="level3">
+<h3 class="anchored" data-anchor-id="r14-1">Problema resuelto 14.1 · Leer espacio y tiempo por separado</h3>
+<p>Una fotografía de una onda muestra crestas consecutivas separadas <span class="math inline">\(0{,}80\,\mathrm{m}\)</span> y desplazamiento máximo <span class="math inline">\(0{,}020\,\mathrm{m}\)</span>. Un punto de la cuerda completa un ciclo cada <span class="math inline">\(0{,}0040\,\mathrm{s}\)</span>. Determina amplitud, longitud de onda, frecuencia y rapidez de propagación. <em>Resolución.</em> El perfil da <span class="math inline">\(A=0{,}020\,\mathrm{m}\)</span> y <span class="math inline">\(\lambda=0{,}80\,\mathrm{m}\)</span>. El registro temporal da <span class="math inline">\(T=0{,}0040\,\mathrm{s}\)</span> y <span class="math inline">\(f=250\,\mathrm{Hz}\)</span>. Por tanto, <span class="math display">\[
+c=\lambda f=(0{,}80)(250)=200\,\mathrm{m/s}.
+\]</span> Durante un período el perfil avanza una longitud de onda, mientras el punto observado completa su oscilación. La fotografía aporta una distancia y el registro aporta un tiempo.</p>
+<div id="fig-fp-av-r14-1" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.1 · Leer espacio y tiempo por separado. Una fotografía de una onda muestra crestas consecutivas separadas 0,80\,m y desplazamiento máximo 0,020\,m. Un punto de la cuerda completa un ciclo cada 0,0040\,s. Determina amplitud, longitud de onda, frecuencia y rapidez de propagación. Resolución. El perfil da A=0,020\,m y lambda=0,80\,m. El registro temporal da">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-1.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.1 · Leer espacio y tiempo por separado. Una fotografía de una onda muestra crestas consecutivas separadas 0,80\,m y desplazamiento máximo 0,020\,m. Un punto de la cuerda completa un ciclo cada 0,0040\,s. Determina amplitud, longitud de onda, frecuencia y rapidez de propagación. Resolución. El perfil da A=0,020\,m y lambda=0,80\,m. El registro temporal da">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Apoyo visual: Problema resuelto 14.1 · Leer espacio y tiempo por separado.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r14-2" class="level3">
+<h3 class="anchored" data-anchor-id="r14-2">Problema resuelto 14.2 · Dos velocidades en una misma ecuación</h3>
+<p>Una cuerda tiene <span class="math inline">\(y=0{,}0030\cos(4\pi x-80\pi t+\pi/6)\)</span> en unidades SI. Halla el sentido de propagación, <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(f\)</span>, <span class="math inline">\(c\)</span> y la velocidad transversal en <span class="math inline">\(x=1/12\,\mathrm{m}\)</span>, <span class="math inline">\(t=0\)</span>.</p>
+<p><em>Resolución.</em> El signo de <span class="math inline">\(-\omega t\)</span> identifica avance hacia <span class="math inline">\(+x\)</span>. Se obtiene <span class="math inline">\(\lambda=2\pi/(4\pi)=0{,}50\,\mathrm{m}\)</span>, <span class="math inline">\(f=80\pi/(2\pi)=40\,\mathrm{Hz}\)</span> y <span class="math inline">\(c=20\,\mathrm{m/s}\)</span>. Para el movimiento local, <span class="math display">\[
+v_y=0{,}240\pi\sin(4\pi x-80\pi t+\pi/6).
+\]</span> En el punto y momento pedidos la fase es <span class="math inline">\(\pi/2\)</span>: el elemento pasa por <span class="math inline">\(y=0\)</span> con <span class="math inline">\(v_y=+0{,}240\pi\,\mathrm{m/s}\simeq+0{,}754\,\mathrm{m/s}\)</span>. El perfil se traslada horizontalmente a <span class="math inline">\(20\,\mathrm{m/s}\)</span> y el elemento cruza verticalmente su equilibrio con esa velocidad transversal.</p>
+<div id="fig-fp-av-r14-2" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.2 · Dos velocidades en una misma ecuación. Resolución. El signo de -omega t identifica avance hacia +x. Se obtiene lambda=2pi/(4pi)=0,50\,m, f=80pi/(2pi)=40\,Hz y c=20\,m/s. Para el movimiento local, vy=0,240pisin(4pi x-80pi t+pi/6). En el punto y momento pedidos la fase es pi/2: el elemento pasa por y=0 con vy=+0,240pi\,m/ssimeq+0,754\,m/s. El perfil se">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-2.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.2 · Dos velocidades en una misma ecuación. Resolución. El signo de -omega t identifica avance hacia +x. Se obtiene lambda=2pi/(4pi)=0,50\,m, f=80pi/(2pi)=40\,Hz y c=20\,m/s. Para el movimiento local, vy=0,240pisin(4pi x-80pi t+pi/6). En el punto y momento pedidos la fase es pi/2: el elemento pasa por y=0 con vy=+0,240pi\,m/ssimeq+0,754\,m/s. El perfil se">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Apoyo visual: Problema resuelto 14.2 · Dos velocidades en una misma ecuación.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="la-rapidez-se-obtiene-del-medio" class="level2">
+<h2 class="anchored" data-anchor-id="la-rapidez-se-obtiene-del-medio">La rapidez se obtiene del medio</h2>
+<p>En una cuerda uniforme, la densidad lineal es <span class="math inline">\(\mu=M/L\)</span>, en <span class="math inline">\(\,\mathrm{kg/m}\)</span>. Denotaremos su tensión por <span class="math inline">\(\mathcal T\)</span> para distinguirla del período. Para pendientes pequeñas, la componente vertical de la tensión es aproximadamente <span class="math inline">\(\mathcal T\,\partial y/\partial x\)</span>. Un tramo de longitud <span class="math inline">\(dx\)</span> recibe la diferencia de esas componentes en sus extremos. Su masa es <span class="math inline">\(\mu\,dx\)</span>, y Newton da <span class="math display">\[
+\mu\,dx\frac{\partial^2y}{\partial t^2}
+=\mathcal T\frac{\partial^2y}{\partial x^2}\,dx.
+\]</span> Así obtenemos la ecuación de onda lineal y su rapidez: <span class="math display">\[
+\frac{\partial^2y}{\partial t^2}=c^2\frac{\partial^2y}{\partial x^2},
+\qquad c=\sqrt{\frac{\mathcal T}{\mu}}.
+\]</span> El modelo supone tensión aproximadamente constante, cuerda flexible y uniforme, pendiente pequeña y pérdidas despreciables. Al sustituir la onda sinusoidal en la ecuación aparece <span class="math inline">\(\omega^2=c^2k^2\)</span>, consistente con <span class="math inline">\(c=\omega/k\)</span>. La relación entre inercia y restitución vuelve a fijar el movimiento; ahora intervienen regiones vecinas del medio.</p>
+<p>En el sonido longitudinal, la rapidez depende de la respuesta elástica del material y de su densidad. Para un fluido homogéneo, el modelo da <span class="math inline">\(c=\sqrt{B/\rho}\)</span>, donde <span class="math inline">\(B\)</span> es su módulo volumétrico en las condiciones del proceso. Usaremos <span class="math inline">\(c=340\,\mathrm{m/s}\)</span> cuando se indique aire, como valor adoptado para los ejercicios. La temperatura y la composición pueden cambiarlo.</p>
+<p>Cuando una fuente periódica y una frontera permanecen estacionarias, la oscilación transmitida conserva la frecuencia impuesta por la fuente. Si cambia la rapidez en el segundo medio, cambia la longitud de onda según <span class="math inline">\(\lambda=c/f\)</span>. Las amplitudes reflejada y transmitida dependen además del acoplamiento entre los medios.</p>
+<section id="r14-3" class="level3">
+<h3 class="anchored" data-anchor-id="r14-3">Problema resuelto 14.3 · Tensión y masa por unidad de longitud</h3>
+<p>Una cuerda uniforme de <span class="math inline">\(1{,}20\,\mathrm{m}\)</span> tiene masa <span class="math inline">\(6{,}0\,\mathrm{g}\)</span> y tensión <span class="math inline">\(80\,\mathrm{N}\)</span>. Calcula la rapidez de una onda transversal. ¿Cómo cambia si se cuadruplica la tensión manteniendo <span class="math inline">\(\mu\)</span>?</p>
+<p><em>Resolución.</em> La densidad lineal es <span class="math inline">\(\mu=0{,}0060/1{,}20=0{,}0050\,\mathrm{kg/m}\)</span>. Así, <span class="math display">\[
+c=\sqrt{\frac{80}{0{,}0050}}\simeq126{,}5\,\mathrm{m/s}.
+\]</span> Con tensión <span class="math inline">\(4\mathcal T\)</span>, la rapidez se multiplica por <span class="math inline">\(\sqrt4=2\)</span>, alcanzando unos <span class="math inline">\(253\,\mathrm{m/s}\)</span>. La comparación presupone que el cambio de tensión mantiene aproximadamente la densidad lineal y la validez del modelo. Las dimensiones también concuerdan: <span class="math inline">\((\,\mathrm{N})/(\,\mathrm{kg/m})=\,\mathrm{m^2/s^2}\)</span>.</p>
+<div id="fig-fp-av-r14-3" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.3 · Tensión y masa por unidad de longitud. Resolución. La densidad lineal es mu=0,0060/1,20=0,0050\,kg/m. Así, c=sqrtfrac800,0050simeq126,5\,m/s. Con tensión 4mathcal T, la rapidez se multiplica por sqrt4=2, alcanzando unos 253\,m/s. La comparación presupone que el cambio de tensión mantiene aproximadamente la densidad lineal y la validez del modelo. Las">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-3.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.3 · Tensión y masa por unidad de longitud. Resolución. La densidad lineal es mu=0,0060/1,20=0,0050\,kg/m. Así, c=sqrtfrac800,0050simeq126,5\,m/s. Con tensión 4mathcal T, la rapidez se multiplica por sqrt4=2, alcanzando unos 253\,m/s. La comparación presupone que el cambio de tensión mantiene aproximadamente la densidad lineal y la validez del modelo. Las">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Apoyo visual: Problema resuelto 14.3 · Tensión y masa por unidad de longitud.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r14-4" class="level3">
+<h3 class="anchored" data-anchor-id="r14-4">Problema resuelto 14.4 · La frecuencia atraviesa una frontera fija</h3>
+<p>Una fuente de <span class="math inline">\(60\,\mathrm{Hz}\)</span> envía ondas desde un medio de rapidez <span class="math inline">\(120\,\mathrm{m/s}\)</span> hacia otro de <span class="math inline">\(80\,\mathrm{m/s}\)</span>. Ambos medios y la interfaz están en reposo. Determina las longitudes de onda incidente y transmitida.</p>
+<p><em>Resolución.</em> La frontera responde con la periodicidad de la excitación, por lo que <span class="math inline">\(f_2=f_1=60\,\mathrm{Hz}\)</span>. Se obtiene <span class="math inline">\(\lambda_1=120/60=2{,}0\,\mathrm{m}\)</span> y <span class="math inline">\(\lambda_2=80/60\simeq1{,}33\,\mathrm{m}\)</span>. La razón <span class="math inline">\(\lambda_2/\lambda_1=2/3\)</span> coincide con <span class="math inline">\(c_2/c_1\)</span>. Este cálculo determina la separación espacial de fases en cada medio; para conocer amplitudes harían falta propiedades adicionales de la interfaz.</p>
+<div id="fig-fp-av-r14-4" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.4 · La frecuencia atraviesa una frontera fija. Resolución. La frontera responde con la periodicidad de la excitación, por lo que f2=f1=60\,Hz. Se obtiene lambda1=120/60=2,0\,m y lambda2=80/60simeq1,33\,m. La razón lambda2/lambda1=2/3 coincide con c2/c1. Este cálculo determina la separación espacial de fases en cada medio; para conocer amplitudes harían falta">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-4.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.4 · La frecuencia atraviesa una frontera fija. Resolución. La frontera responde con la periodicidad de la excitación, por lo que f2=f1=60\,Hz. Se obtiene lambda1=120/60=2,0\,m y lambda2=80/60simeq1,33\,m. La razón lambda2/lambda1=2/3 coincide con c2/c1. Este cálculo determina la separación espacial de fases en cada medio; para conocer amplitudes harían falta">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Apoyo visual: Problema resuelto 14.4 · La frecuencia atraviesa una frontera fija.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="superposición-e-interferencia" class="level2">
+<h2 class="anchored" data-anchor-id="superposición-e-interferencia">Superposición e interferencia</h2>
+<p>La ecuación de onda anterior es lineal: si <span class="math inline">\(y_1\)</span> y <span class="math inline">\(y_2\)</span> son soluciones, también lo es <span class="math inline">\(y=y_1+y_2\)</span>. En un mismo punto y un mismo instante, los desplazamientos se suman con signo. Para perturbaciones pequeñas, este principio permite seguir cada onda durante el encuentro y reconstruir la perturbación resultante.</p>
+<p>Las fuerzas y desplazamientos se combinan linealmente; la energía contiene cuadrados. En una cuerda ideal, las energías cinética y elástica por unidad de longitud son <span class="math inline">\(u_K=\mu(\partial y/\partial t)^2/2\)</span> y <span class="math inline">\(u_U=\mathcal T(\partial y/\partial x)^2/2\)</span>. Ambas dependen del estado completo, incluidas velocidades y pendientes. Un desplazamiento instantáneo nulo puede coexistir con movimiento local y energía cinética.</p>
+<p>Para dos oscilaciones de igual frecuencia que llegan a un punto, <span class="math inline">\(y_1=A_1\cos\theta\)</span> y <span class="math inline">\(y_2=A_2\cos(\theta+\Delta\phi)\)</span>, desarrollar el segundo coseno y sumar coeficientes da <span class="math display">\[
+A_R^2=A_1^2+A_2^2+2A_1A_2\cos\Delta\phi.
+\]</span> Con amplitudes iguales, <span class="math inline">\(A_R=2A|\cos(\Delta\phi/2)|\)</span>. Las fases iguales producen el máximo <span class="math inline">\(2A\)</span>; una diferencia impar de <span class="math inline">\(\pi\)</span> produce cancelación de desplazamiento en ese punto. Para dos fuentes en fase y trayectos comparables en un medio homogéneo, la diferencia de caminos <span class="math inline">\(\Delta r\)</span> aporta <span class="math inline">\(\Delta\phi=2\pi\Delta r/\lambda\)</span>, salvo un signo que aquí deja igual el coseno. Las fases iniciales y los posibles cambios al reflejarse también contribuyen.</p>
+<p>Una interferencia estable requiere fuentes coherentes: su diferencia de fase debe mantenerse durante la observación. La energía se redistribuye entre regiones; el balance global incluye las fuentes, las ondas y sus fronteras. En acústica conviene precisar asimismo qué campo se representa: presión, desplazamiento o velocidad del medio.</p>
+<section id="r14-5" class="level3">
+<h3 class="anchored" data-anchor-id="r14-5">Problema resuelto 14.5 · Dos pulsos se encuentran</h3>
+<p>Dos pulsos transversales viajan en sentidos opuestos por una cuerda ideal. En cierto instante, sus centros coinciden: uno desplazaría ese punto <span class="math inline">\(+3{,}0\,\mathrm{cm}\)</span> y el otro, <span class="math inline">\(-2{,}0\,\mathrm{cm}\)</span>. Halla el desplazamiento resultante y explica cómo continúa cada pulso.</p>
+<p><em>Resolución.</em> La suma con signo da <span class="math inline">\(y=3{,}0-2{,}0=+1{,}0\,\mathrm{cm}\)</span>. En el modelo lineal cada pulso sigue propagándose y recupera su perfil separado después del encuentro. La superposición describe el desplazamiento combinado durante el cruce.</p>
+<p>Si dos pulsos iguales y opuestos llegaran a anular todo el perfil en un instante, las velocidades locales podrían seguir siendo distintas de cero: la cuerda atravesaría momentáneamente su configuración recta. Para evaluar la energía habría que incluir esas velocidades. El estado de la cuerda requiere posición y velocidad de cada elemento, como ocurría con un oscilador.</p>
+<div id="fig-fp-av-r14-5" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.5 · Dos pulsos se encuentran. Si dos pulsos iguales y opuestos llegaran a anular todo el perfil en un instante, las velocidades locales podrían seguir siendo distintas de cero: la cuerda atravesaría momentáneamente su configuración recta. Para evaluar la energía habría que incluir esas velocidades. El estado de la cuerda requiere posición y">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-5.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.5 · Dos pulsos se encuentran. Si dos pulsos iguales y opuestos llegaran a anular todo el perfil en un instante, las velocidades locales podrían seguir siendo distintas de cero: la cuerda atravesaría momentáneamente su configuración recta. Para evaluar la energía habría que incluir esas velocidades. El estado de la cuerda requiere posición y">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-5-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;5: Apoyo visual: Problema resuelto 14.5 · Dos pulsos se encuentran.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r14-6" class="level3">
+<h3 class="anchored" data-anchor-id="r14-6">Problema resuelto 14.6 · Una suma que depende de la fase</h3>
+<p>Dos ondas coherentes de igual frecuencia producen en un punto oscilaciones de amplitud <span class="math inline">\(4{,}0\,\mathrm{mm}\)</span> cada una, con diferencia de fase <span class="math inline">\(2\pi/3\)</span>. Calcula la amplitud resultante. <em>Resolución.</em> La ecuación 14.3 da <span class="math display">\[
+A_R=2(4{,}0)|\cos(\pi/3)|=4{,}0\,\mathrm{mm}.
+\]</span> La resultante tiene la misma amplitud que una contribución aislada. La suma debe incorporar las fases de ambas oscilaciones. Con las mismas amplitudes, cambiar la diferencia de fase a cero produciría <span class="math inline">\(8{,}0\,\mathrm{mm}\)</span>; cambiarla a <span class="math inline">\(\pi\)</span> daría amplitud nula.</p>
+<div id="fig-fp-av-r14-6" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.6 · Una suma que depende de la fase. Dos ondas coherentes de igual frecuencia producen en un punto oscilaciones de amplitud 4,0\,mm cada una, con diferencia de fase 2pi/3. Calcula la amplitud resultante. Resolución. La ecuación 14.3 da AR=2(4,0)|cos(pi/3)|=4,0\,mm. La resultante tiene la misma amplitud que una contribución aislada. La suma debe">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-6.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.6 · Una suma que depende de la fase. Dos ondas coherentes de igual frecuencia producen en un punto oscilaciones de amplitud 4,0\,mm cada una, con diferencia de fase 2pi/3. Calcula la amplitud resultante. Resolución. La ecuación 14.3 da AR=2(4,0)|cos(pi/3)|=4,0\,mm. La resultante tiene la misma amplitud que una contribución aislada. La suma debe">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-6-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;6: Apoyo visual: Problema resuelto 14.6 · Una suma que depende de la fase.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r14-7" class="level3">
+<h3 class="anchored" data-anchor-id="r14-7">Problema resuelto 14.7 · Del camino a la fase</h3>
+<p>Dos fuentes sonoras coherentes y en fase emiten a <span class="math inline">\(680\,\mathrm{Hz}\)</span> en aire de rapidez <span class="math inline">\(340\,\mathrm{m/s}\)</span>. Un punto recibe ondas de igual amplitud con diferencia de caminos <span class="math inline">\(0{,}75\,\mathrm{m}\)</span>. ¿Qué interferencia produce esa diferencia, despreciando reflexiones?</p>
+<p><em>Resolución.</em> La longitud de onda es <span class="math inline">\(\lambda=340/680=0{,}50\,\mathrm{m}\)</span>. La diferencia representa <span class="math inline">\(1{,}5\lambda\)</span>, por lo que <span class="math inline">\(\Delta\phi=3\pi\)</span>, equivalente a <span class="math inline">\(\pi\)</span> al restar un ciclo completo. La suma ideal en ese punto es destructiva y la amplitud de presión resultante se anula. El resultado depende de la igualdad de amplitudes y de la coherencia supuestas. Al cambiar de posición cambian los trayectos y puede aparecer refuerzo.</p>
+<div id="fig-fp-av-r14-7" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.7 · Del camino a la fase. Resolución. La longitud de onda es lambda=340/680=0,50\,m. La diferencia representa 1,5lambda, por lo que Deltaphi=3pi, equivalente a pi al restar un ciclo completo. La suma ideal en ese punto es destructiva y la amplitud de presión resultante se anula. El resultado depende de la igualdad de amplitudes y de la">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-7.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.7 · Del camino a la fase. Resolución. La longitud de onda es lambda=340/680=0,50\,m. La diferencia representa 1,5lambda, por lo que Deltaphi=3pi, equivalente a pi al restar un ciclo completo. La suma ideal en ese punto es destructiva y la amplitud de presión resultante se anula. El resultado depende de la igualdad de amplitudes y de la">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-7-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;7: Apoyo visual: Problema resuelto 14.7 · Del camino a la fase.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="reflexión-ondas-estacionarias-y-modos-normales" class="level2">
+<h2 class="anchored" data-anchor-id="reflexión-ondas-estacionarias-y-modos-normales">Reflexión, ondas estacionarias y modos normales</h2>
+<p>En un extremo fijo de una cuerda, el desplazamiento debe ser cero durante todo el tiempo. La onda reflejada se combina con la incidente para cumplir esa condición. Para amplitudes iguales, una pareja adecuada puede escribirse <span class="math inline">\(y_1=A\sin(kx-\omega t)\)</span> y <span class="math inline">\(y_2=A\sin(kx+\omega t)\)</span>, cuya suma es <span class="math display">\[
+y(x,t)=2A\sin(kx)\cos(\omega t).
+\]</span> El factor espacial fija la amplitud de cada punto y el temporal describe su oscilación. Los <em>nodos</em> permanecen en reposo; los <em>vientres</em> o antinodos tienen amplitud máxima. Se trata de una onda estacionaria. Entre nodos consecutivos hay <span class="math inline">\(\lambda/2\)</span>; entre un nodo y el vientre vecino, <span class="math inline">\(\lambda/4\)</span>.</p>
+<p>En una cuerda de longitud <span class="math inline">\(L\)</span> fija en ambos extremos, <span class="math inline">\(\sin(kL)=0\)</span> exige <span class="math inline">\(k_n=n\pi/L\)</span>, con <span class="math inline">\(n=1,2,3,\ldots\)</span>. Por ello, <span class="math display">\[
+\lambda_n=\frac{2L}{n},\qquad f_n=\frac{nc}{2L}=nf_1.
+\]</span> Cada patrón es un modo normal. La excitación puede producir combinaciones de modos. En una onda estacionaria ideal formada por dos ondas iguales opuestas, el transporte neto medio de energía a lo largo de la cuerda es cero; hay energía almacenada y transferencias locales durante el ciclo.</p>
+<p>En un tubo sonoro ideal, una abertura funciona aproximadamente como nodo de presión y vientre de desplazamiento del aire. Un extremo cerrado rígido funciona como vientre de presión y nodo de desplazamiento. Estas condiciones son complementarias porque la presión depende de la compresión del aire. Para un tubo abierto en ambos extremos, <span class="math inline">\(f_n=nc/(2L)\)</span>. Para uno cerrado en un extremo y abierto en el otro, <span class="math display">\[
+f_j=\frac{(2j-1)c}{4L},\qquad j=1,2,3,\ldots.
+\]</span> La segunda familia contiene los armónicos impares de su fundamental. La longitud efectiva de un tubo real incluye correcciones en las aberturas; su geometría, sus pérdidas y sus acoplamientos modifican la respuesta. Una excitación periódica próxima a un modo puede producir resonancia, con amplitud limitada por las pérdidas y por la manera de excitar el sistema.</p>
+<section id="r14-8" class="level3">
+<h3 class="anchored" data-anchor-id="r14-8">Problema resuelto 14.8 · Contar nodos incluidos los extremos</h3>
+<p>Una cuerda de <span class="math inline">\(0{,}90\,\mathrm{m}\)</span>, fija en ambos extremos, tiene rapidez ondulatoria <span class="math inline">\(120\,\mathrm{m/s}\)</span>. Calcula su fundamental y describe el tercer modo: frecuencia, longitud de onda, nodos y vientres.</p>
+<p><em>Resolución.</em> La fundamental es <span class="math inline">\(f_1=120/(2\times0{,}90)\simeq66{,}7\,\mathrm{Hz}\)</span>. El tercer modo tiene <span class="math inline">\(f_3=200\,\mathrm{Hz}\)</span> y <span class="math inline">\(\lambda_3=2(0{,}90)/3=0{,}60\,\mathrm{m}\)</span>. Sus nodos están en <span class="math inline">\(x=0\)</span>, <span class="math inline">\(0{,}30\)</span>, <span class="math inline">\(0{,}60\)</span> y <span class="math inline">\(0{,}90\,\mathrm{m}\)</span>: cuatro en total, dos interiores. Los vientres quedan en <span class="math inline">\(0{,}15\)</span>, <span class="math inline">\(0{,}45\)</span> y <span class="math inline">\(0{,}75\,\mathrm{m}\)</span>. El número de modo cuenta los tres segmentos de media longitud de onda que caben entre los soportes.</p>
+<div id="fig-fp-av-r14-8" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.8 · Contar nodos incluidos los extremos. Resolución. La fundamental es f1=120/(2times0,90)simeq66,7\,Hz. El tercer modo tiene f3=200\,Hz y lambda3=2(0,90)/3=0,60\,m. Sus nodos están en x=0, 0,30, 0,60 y 0,90\,m: cuatro en total, dos interiores. Los vientres quedan en 0,15, 0,45 y 0,75\,m. El número de modo cuenta los tres segmentos de media longitud de onda">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-8.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.8 · Contar nodos incluidos los extremos. Resolución. La fundamental es f1=120/(2times0,90)simeq66,7\,Hz. El tercer modo tiene f3=200\,Hz y lambda3=2(0,90)/3=0,60\,m. Sus nodos están en x=0, 0,30, 0,60 y 0,90\,m: cuatro en total, dos interiores. Los vientres quedan en 0,15, 0,45 y 0,75\,m. El número de modo cuenta los tres segmentos de media longitud de onda">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;8: Apoyo visual: Problema resuelto 14.8 · Contar nodos incluidos los extremos.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r14-9" class="level3">
+<h3 class="anchored" data-anchor-id="r14-9">Problema resuelto 14.9 · Un tubo abierto en ambos extremos</h3>
+<p>Un tubo ideal de longitud <span class="math inline">\(0{,}85\,\mathrm{m}\)</span> está abierto en ambos extremos y contiene aire con <span class="math inline">\(c=340\,\mathrm{m/s}\)</span>. Halla sus tres frecuencias modales más bajas y ubica los nodos de presión de la fundamental.</p>
+<p><em>Resolución.</em> La fundamental vale <span class="math inline">\(f_1=340/(2\times0{,}85)=200\,\mathrm{Hz}\)</span> y las siguientes son <span class="math inline">\(400\)</span> y <span class="math inline">\(600\,\mathrm{Hz}\)</span>. En la fundamental, la presión tiene nodos en las dos aberturas y un vientre en el centro. El desplazamiento del aire tiene vientres en las aberturas y un nodo central. Cada afirmación debe nombrar la magnitud representada para que la palabra nodo identifique una condición física precisa.</p>
+<div id="fig-fp-av-r14-9" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.9 · Un tubo abierto en ambos extremos. Resolución. La fundamental vale f1=340/(2times0,85)=200\,Hz y las siguientes son 400 y 600\,Hz. En la fundamental, la presión tiene nodos en las dos aberturas y un vientre en el centro. El desplazamiento del aire tiene vientres en las aberturas y un nodo central. Cada afirmación debe nombrar la magnitud representada">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-9.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.9 · Un tubo abierto en ambos extremos. Resolución. La fundamental vale f1=340/(2times0,85)=200\,Hz y las siguientes son 400 y 600\,Hz. En la fundamental, la presión tiene nodos en las dos aberturas y un vientre en el centro. El desplazamiento del aire tiene vientres en las aberturas y un nodo central. Cada afirmación debe nombrar la magnitud representada">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;9: Apoyo visual: Problema resuelto 14.9 · Un tubo abierto en ambos extremos.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r14-10" class="level3">
+<h3 class="anchored" data-anchor-id="r14-10">Problema resuelto 14.10 · Cerrar un extremo cambia la familia</h3>
+<p>Se cierra rígidamente un extremo del tubo anterior. Conservando <span class="math inline">\(L=0{,}85\,\mathrm{m}\)</span> y <span class="math inline">\(c=340\,\mathrm{m/s}\)</span>, determina las tres frecuencias más bajas y distingue modo, armónico y sobretono.</p>
+<p><em>Resolución.</em> Ahora <span class="math inline">\(f_1=c/(4L)=100\,\mathrm{Hz}\)</span> y las frecuencias siguientes son <span class="math inline">\(300\)</span> y <span class="math inline">\(500\,\mathrm{Hz}\)</span>. Corresponden a los modos primero, segundo y tercero del tubo, y a los armónicos primero, tercero y quinto de la fundamental. El primer sobretono es la primera frecuencia por encima de la fundamental: aquí vale <span class="math inline">\(300\,\mathrm{Hz}\)</span>. En el extremo cerrado el desplazamiento se anula; la primera abertura compatible queda a un cuarto de longitud de onda para la fundamental.</p>
+<div id="fig-fp-av-r14-10" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.10 · Cerrar un extremo cambia la familia. Resolución. Ahora f1=c/(4L)=100\,Hz y las frecuencias siguientes son 300 y 500\,Hz. Corresponden a los modos primero, segundo y tercero del tubo, y a los armónicos primero, tercero y quinto de la fundamental. El primer sobretono es la primera frecuencia por encima de la fundamental: aquí vale 300\,Hz. En el extremo">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-10.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.10 · Cerrar un extremo cambia la familia. Resolución. Ahora f1=c/(4L)=100\,Hz y las frecuencias siguientes son 300 y 500\,Hz. Corresponden a los modos primero, segundo y tercero del tubo, y a los armónicos primero, tercero y quinto de la fundamental. El primer sobretono es la primera frecuencia por encima de la fundamental: aquí vale 300\,Hz. En el extremo">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;10: Apoyo visual: Problema resuelto 14.10 · Cerrar un extremo cambia la familia.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="sonido-timbre-y-batimientos" class="level2">
+<h2 class="anchored" data-anchor-id="sonido-timbre-y-batimientos">Sonido, timbre y batimientos</h2>
+<p>Una señal periódica puede construirse sumando componentes sinusoidales de frecuencias <span class="math inline">\(f_0\)</span>, <span class="math inline">\(2f_0\)</span>, <span class="math inline">\(3f_0\)</span>, etc. Sus amplitudes relativas y fases determinan la forma temporal. El espectro muestra qué componentes contiene la señal y con qué amplitudes. Dos sonidos pueden compartir fundamental y tener espectros distintos; esa estructura, junto con su evolución temporal y el ataque, contribuye a su timbre. La frecuencia fundamental organiza la periodicidad y se relaciona con la altura musical percibida.</p>
+<p>Una señal puede conservar período <span class="math inline">\(1/f_0\)</span> aun cuando la componente de frecuencia <span class="math inline">\(f_0\)</span> tenga amplitud cero. Por ejemplo, componentes de <span class="math inline">\(2f_0\)</span> y <span class="math inline">\(3f_0\)</span> completan respectivamente dos y tres ciclos en ese tiempo; su suma tiene ese período fundamental si ambas están presentes. Identificar la frecuencia más baja presente y determinar el período de toda la señal son operaciones distintas.</p>
+<p>Si se superponen dos oscilaciones de igual amplitud y frecuencias próximas, la identidad de suma de cosenos da <span class="math display">\[
+A\cos(2\pi f_1t)+A\cos(2\pi f_2t)
+=2A\cos[\pi(f_1-f_2)t]\cos\!\left[2\pi\frac{f_1+f_2}{2}t\right].
+\]</span> Se oye una oscilación rápida cuya intensidad varía lentamente: aparecen <em>batimientos</em> o pulsaciones. Los máximos del módulo de la envolvente se repiten con frecuencia <span class="math inline">\(f_b=|f_1-f_2|\)</span>. Un cambio de signo de la envolvente representa un cambio de fase; su módulo vuelve a crecer y produce otro máximo de intensidad.</p>
+<section id="r14-11" class="level3">
+<h3 class="anchored" data-anchor-id="r14-11">Problema resuelto 14.11 · Una misma fundamental, dos espectros</h3>
+<p>Dos señales periódicas tienen componentes de <span class="math inline">\(200\)</span>, <span class="math inline">\(400\)</span> y <span class="math inline">\(600\,\mathrm{Hz}\)</span>. Sus amplitudes relativas son <span class="math inline">\((1;0{,}3;0{,}1)\)</span> y <span class="math inline">\((1;0{,}8;0{,}6)\)</span>. Compara su período fundamental y su estructura espectral. <em>Resolución.</em> Las tres frecuencias son múltiplos enteros de <span class="math inline">\(200\,\mathrm{Hz}\)</span> y esa componente está presente en ambas. El período fundamental es <span class="math inline">\(1/200=0{,}0050\,\mathrm{s}\)</span>. La segunda señal tiene mayor contribución relativa de los armónicos segundo y tercero. Las formas temporales y los timbres pueden diferir aunque compartan fundamental. Para comparar intensidad total haría falta fijar una escala física de amplitudes y la magnitud que representan.</p>
+<div id="fig-fp-av-r14-11" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.11 · Una misma fundamental, dos espectros. Dos señales periódicas tienen componentes de 200, 400 y 600\,Hz. Sus amplitudes relativas son (1;0,3;0,1) y (1;0,8;0,6). Compara su período fundamental y su estructura espectral. Resolución. Las tres frecuencias son múltiplos enteros de 200\,Hz y esa componente está presente en ambas. El período fundamental es">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-11.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.11 · Una misma fundamental, dos espectros. Dos señales periódicas tienen componentes de 200, 400 y 600\,Hz. Sus amplitudes relativas son (1;0,3;0,1) y (1;0,8;0,6). Compara su período fundamental y su estructura espectral. Resolución. Las tres frecuencias son múltiplos enteros de 200\,Hz y esa componente está presente en ambas. El período fundamental es">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;11: Apoyo visual: Problema resuelto 14.11 · Una misma fundamental, dos espectros.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="intensidad-y-niveles-en-decibelios" class="level2">
+<h2 class="anchored" data-anchor-id="intensidad-y-niveles-en-decibelios">Intensidad y niveles en decibelios</h2>
+<p>La intensidad media <span class="math inline">\(I\)</span> es la potencia que atraviesa una superficie perpendicular al flujo por unidad de área, medida en <span class="math inline">\(\,\mathrm{W/m^2}\)</span>. Una fuente puntual ideal, de potencia acústica <span class="math inline">\(P\)</span> e irradiación uniforme, reparte esa potencia sobre esferas de área <span class="math inline">\(4\pi r^2\)</span>: <span class="math display">\[
+I(r)=\frac{P}{4\pi r^2}.
+\]</span> La relación supone medio homogéneo, pérdidas de propagación despreciables y observación fuera de la región inmediata a la fuente. Reflexiones y direccionalidad pueden producir distribuciones distintas.</p>
+<p>Para una onda sonora plana viajera en un medio uniforme, el modelo lineal relaciona intensidad y presión eficaz mediante <span class="math inline">\(I=p_{\mathrm{rms}}^2/(\rho c)\)</span>. La presión eficaz es la raíz del promedio temporal del cuadrado de la fluctuación de presión. Para una sinusoide de amplitud <span class="math inline">\(p_m\)</span>, <span class="math inline">\(p_{\mathrm{rms}}=p_m/\sqrt2\)</span>. La presión y la velocidad de partícula llevan conjuntamente el flujo de energía; en campos estacionarios se requiere estudiar su relación de fase y su producto medio.</p>
+<p>El nivel de intensidad sonora se define como <span class="math display">\[
+\beta=10\log_{10}\!\left(\frac I{I_0}\right),\qquad
+I_0=10^{-12}\,\mathrm{W/m^2}.
+\]</span> El valor de referencia fija la escala convencional. De la definición se deduce <span class="math inline">\(\Delta\beta=10\log_{10}(I_2/I_1)\)</span> y, al invertirla, <span class="math inline">\(I=I_0\,10^{\beta/10}\)</span>. Un nivel expresa un cociente logarítmico de intensidades. La percepción de sonoridad incorpora además frecuencia, duración y respuesta del oyente.</p>
+<p>Las contribuciones de flujo medio se suman vectorialmente cuando los términos cruzados promedian cero, como sucede para señales no correlacionadas. Si las ondas viajeras avanzan en la misma dirección y sentido, sus intensidades escalares se refieren a una misma superficie normal y se suman directamente; después se convierte el resultado a decibelios. Para ondas coherentes, las presiones se combinan con su fase y los términos cruzados pueden reforzar o reducir el resultado. Las direcciones de propagación forman parte de los datos necesarios para interpretar el flujo.</p>
+<section id="r14-12" class="level3">
+<h3 class="anchored" data-anchor-id="r14-12">Problema resuelto 14.12 · Alejarse de una fuente puntual</h3>
+<p>Una fuente ideal irradia <span class="math inline">\(0{,}010\,\mathrm{W}\)</span> uniformemente en aire. Calcula la intensidad a <span class="math inline">\(2{,}0\)</span> y <span class="math inline">\(4{,}0\,\mathrm{m}\)</span> y el cambio de nivel entre ambos puntos. Desprecia absorción y reflexiones.</p>
+<p><em>Resolución.</em> En las dos distancias, <span class="math display">\[
+I_2=\frac{0{,}010}{4\pi(2)^2}\simeq1{,}99\times10^{-4}\,\mathrm{W/m^2},\qquad
+I_4\simeq4{,}97\times10^{-5}\,\mathrm{W/m^2}.
+\]</span> La segunda intensidad es la cuarta parte de la primera. Por tanto, <span class="math inline">\(\beta_4-\beta_2=10\log_{10}(1/4)\simeq-6{,}02\,\mathrm{dB}\)</span>. Los niveles son aproximadamente <span class="math inline">\(83{,}0\)</span> y <span class="math inline">\(77{,}0\,\mathrm{dB}\)</span>, respectivamente. La disminución procede de repartir la misma potencia sobre una superficie cuatro veces mayor.</p>
+<div id="fig-fp-av-r14-12" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.12 · Alejarse de una fuente puntual. Resolución. En las dos distancias, I2=frac0,0104pi(2)^2simeq1,99times10^-4\,W/m^2,qquad I4simeq4,97times10^-5\,W/m^2. La segunda intensidad es la cuarta parte de la primera. Por tanto, beta4-beta2=10log10(1/4)simeq-6,02\,dB. Los niveles son aproximadamente 83,0 y 77,0\,dB, respectivamente. La disminución procede de">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-12.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.12 · Alejarse de una fuente puntual. Resolución. En las dos distancias, I2=frac0,0104pi(2)^2simeq1,99times10^-4\,W/m^2,qquad I4simeq4,97times10^-5\,W/m^2. La segunda intensidad es la cuarta parte de la primera. Por tanto, beta4-beta2=10log10(1/4)simeq-6,02\,dB. Los niveles son aproximadamente 83,0 y 77,0\,dB, respectivamente. La disminución procede de">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;12: Apoyo visual: Problema resuelto 14.12 · Alejarse de una fuente puntual.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r14-13" class="level3">
+<h3 class="anchored" data-anchor-id="r14-13">Problema resuelto 14.13 · Interpretar un aumento de nivel</h3>
+<p>Compara las intensidades correspondientes a <span class="math inline">\(60\)</span> y <span class="math inline">\(70\,\mathrm{dB}\)</span>. ¿Cuánto aumentaría el nivel de la primera al duplicar su intensidad?</p>
+<p><em>Resolución.</em> Invertimos la definición: <span class="math inline">\(I_{60}=10^{-12}10^6=10^{-6}\,\mathrm{W/m^2}\)</span> y <span class="math inline">\(I_{70}=10^{-12}10^7=10^{-5}\,\mathrm{W/m^2}\)</span>. El aumento de <span class="math inline">\(10\,\mathrm{dB}\)</span> representa un factor diez. Al duplicar la intensidad de la primera, el incremento es <span class="math inline">\(10\log_{10}2\simeq3{,}01\,\mathrm{dB}\)</span>, y el nuevo nivel resulta <span class="math inline">\(63{,}01\,\mathrm{dB}\)</span>. Estas operaciones comparan intensidades físicas dentro de la escala definida.</p>
+<div id="fig-fp-av-r14-13" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.13 · Interpretar un aumento de nivel. Resolución. Invertimos la definición: I60=10^-1210^6=10^-6\,W/m^2 y I70=10^-1210^7=10^-5\,W/m^2. El aumento de 10\,dB representa un factor diez. Al duplicar la intensidad de la primera, el incremento es 10log102simeq3,01\,dB, y el nuevo nivel resulta 63,01\,dB. Estas operaciones comparan intensidades físicas dentro de">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-13.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.13 · Interpretar un aumento de nivel. Resolución. Invertimos la definición: I60=10^-1210^6=10^-6\,W/m^2 y I70=10^-1210^7=10^-5\,W/m^2. El aumento de 10\,dB representa un factor diez. Al duplicar la intensidad de la primera, el incremento es 10log102simeq3,01\,dB, y el nuevo nivel resulta 63,01\,dB. Estas operaciones comparan intensidades físicas dentro de">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;13: Apoyo visual: Problema resuelto 14.13 · Interpretar un aumento de nivel.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r14-14" class="level3">
+<h3 class="anchored" data-anchor-id="r14-14">Problema resuelto 14.14 · Dos fuentes: importa su correlación</h3>
+<p>Dos ondas planas viajeras avanzan en la misma dirección y sentido, en el mismo medio. Cada una produce por separado <span class="math inline">\(60\,\mathrm{dB}\)</span> en el punto de observación. Calcula el nivel conjunto si sus señales son no correlacionadas. Compáralo con dos ondas de igual frecuencia que allí tengan esas amplitudes de presión y lleguen en fase.</p>
+<p><em>Resolución.</em> Cada contribución aislada tiene intensidad <span class="math inline">\(I=10^{-6}\,\mathrm{W/m^2}\)</span>. En el primer caso se suman intensidades: <span class="math inline">\(I_T=2I\)</span> y <span class="math inline">\(\beta_T=60+10\log_{10}2\simeq63{,}01\,\mathrm{dB}\)</span>.</p>
+<p>En el segundo caso se suman presiones en fase: la amplitud de presión se duplica. La intensidad de la onda plana resultante, proporcional al cuadrado de esa amplitud, es <span class="math inline">\(4I\)</span>. Entonces <span class="math inline">\(\beta_T=60+10\log_{10}4\simeq66{,}02\,\mathrm{dB}\)</span>. La fase y la geometría especificadas permiten calcular ese refuerzo. Los dos niveles individuales dejan abierta esa información, por lo que es preciso conocer cómo se relacionan las señales para sumarlas.</p>
+<div id="fig-fp-av-r14-14" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.14 · Dos fuentes: importa su correlación. En el segundo caso se suman presiones en fase: la amplitud de presión se duplica. La intensidad de la onda plana resultante, proporcional al cuadrado de esa amplitud, es 4I. Entonces betaT=60+10log104simeq66,02\,dB. La fase y la geometría especificadas permiten calcular ese refuerzo. Los dos niveles individuales dejan">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-14.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.14 · Dos fuentes: importa su correlación. En el segundo caso se suman presiones en fase: la amplitud de presión se duplica. La intensidad de la onda plana resultante, proporcional al cuadrado de esa amplitud, es 4I. Entonces betaT=60+10log104simeq66,02\,dB. La fase y la geometría especificadas permiten calcular ese refuerzo. Los dos niveles individuales dejan">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-14-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;14: Apoyo visual: Problema resuelto 14.14 · Dos fuentes: importa su correlación.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="doppler-contar-frentes-desde-una-referencia-común" class="level2">
+<h2 class="anchored" data-anchor-id="doppler-contar-frentes-desde-una-referencia-común">Doppler: contar frentes desde una referencia común</h2>
+<p>Consideremos propagación unidimensional y un medio en reposo. Elegimos <span class="math inline">\(+x\)</span> desde la fuente hacia el observador a lo largo del rayo que los conecta. Sean <span class="math inline">\(u_s\)</span> y <span class="math inline">\(u_o\)</span> sus velocidades con signo respecto del medio, y <span class="math inline">\(f_s\)</span> la frecuencia de emisión. Durante un período <span class="math inline">\(T_s\)</span>, la fuente avanza <span class="math inline">\(u_sT_s\)</span> y el frente anterior recorre <span class="math inline">\(cT_s\)</span>. La separación entre frentes que salen hacia <span class="math inline">\(+x\)</span> es <span class="math display">\[
+\lambda_{+}=(c-u_s)T_s=\frac{c-u_s}{f_s}.
+\]</span> El observador cruza esos frentes con rapidez relativa <span class="math inline">\(c-u_o\)</span>. Dividir esa rapidez por la separación da <span class="math display">\[
+f_o=f_s\frac{c-u_o}{c-u_s}.
+\]</span> Usaremos velocidades subsónicas y geometría colineal, con el observador delante de la fuente para la dirección elegida. En esta convención, <span class="math inline">\(u_s&gt;0\)</span> acerca la fuente al observador; <span class="math inline">\(u_o&gt;0\)</span> aleja al observador de la fuente. Una velocidad negativa indica movimiento hacia <span class="math inline">\(-x\)</span>. Para otra dirección de propagación se reorienta el eje y se vuelven a asignar los signos.</p>
+<p>El movimiento de la fuente cambia la separación de frentes; el del observador cambia la tasa con que los encuentra. Esa diferencia explica la presencia de sus velocidades en lugares distintos de la fórmula. En un viento uniforme de velocidad <span class="math inline">\(w\)</span> respecto del suelo, se pueden convertir las velocidades a la referencia del aire restando <span class="math inline">\(w\)</span>. También puede seguirse cada frente respecto del suelo, donde su velocidad en la dirección del viento es <span class="math inline">\(c+w\)</span>. Las dos descripciones dan el mismo resultado al usar una sola referencia de manera consistente.</p>
+<section id="r14-15" class="level3">
+<h3 class="anchored" data-anchor-id="r14-15">Problema resuelto 14.15 · Se mueve quien escucha</h3>
+<p>Una fuente quieta respecto del aire emite a <span class="math inline">\(500\,\mathrm{Hz}\)</span>. Un observador avanza hacia ella a <span class="math inline">\(20\,\mathrm{m/s}\)</span>. Con <span class="math inline">\(c=340\,\mathrm{m/s}\)</span>, calcula la frecuencia observada y compárala con la de alejarse a esa rapidez. <em>Resolución.</em> Con el eje desde la fuente al observador, acercarse corresponde a <span class="math inline">\(u_o=-20\,\mathrm{m/s}\)</span>. Por ello, <span class="math display">\[
+f_o=500\frac{340+20}{340}\simeq529{,}4\,\mathrm{Hz}.
+\]</span> Al alejarse, <span class="math inline">\(u_o=+20\,\mathrm{m/s}\)</span> y <span class="math inline">\(f_o=500(320/340)\simeq470{,}6\,\mathrm{Hz}\)</span>. La separación de frentes en el aire sigue siendo <span class="math inline">\(340/500=0{,}680\,\mathrm{m}\)</span>; cambia la rapidez con que el observador los cruza.</p>
+<div id="fig-fp-av-r14-15" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.15 · Se mueve quien escucha. Una fuente quieta respecto del aire emite a 500\,Hz. Un observador avanza hacia ella a 20\,m/s. Con c=340\,m/s, calcula la frecuencia observada y compárala con la de alejarse a esa rapidez. Resolución. Con el eje desde la fuente al observador, acercarse corresponde a uo=-20\,m/s. Por ello,">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-15.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.15 · Se mueve quien escucha. Una fuente quieta respecto del aire emite a 500\,Hz. Un observador avanza hacia ella a 20\,m/s. Con c=340\,m/s, calcula la frecuencia observada y compárala con la de alejarse a esa rapidez. Resolución. Con el eje desde la fuente al observador, acercarse corresponde a uo=-20\,m/s. Por ello,">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-15-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;15: Apoyo visual: Problema resuelto 14.15 · Se mueve quien escucha.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r14-16" class="level3">
+<h3 class="anchored" data-anchor-id="r14-16">Problema resuelto 14.16 · Se mueve quien emite</h3>
+<p>Ahora el observador está quieto en el aire y la fuente de <span class="math inline">\(500\,\mathrm{Hz}\)</span> avanza hacia él a <span class="math inline">\(20\,\mathrm{m/s}\)</span>. Calcula la frecuencia recibida. Después considera una fuente que se aleja a la misma rapidez, eligiendo de nuevo el eje desde ella hacia el observador.</p>
+<p><em>Resolución.</em> Al acercarse, <span class="math inline">\(u_s=+20\,\mathrm{m/s}\)</span> y la separación de frentes es <span class="math inline">\(\lambda_+=(340-20)/500=0{,}640\,\mathrm{m}\)</span>. Así, <span class="math inline">\(f_o=340/0{,}640=531{,}25\,\mathrm{Hz}\)</span>. Al alejarse, <span class="math inline">\(u_s=-20\,\mathrm{m/s}\)</span> y resulta <span class="math display">\[
+f_o=500\frac{340}{340+20}\simeq472{,}2\,\mathrm{Hz}.
+\]</span> La comparación con el problema anterior muestra una diferencia pequeña y medible: el movimiento de la fuente modifica la longitud de onda en el medio. La rapidez de propagación respecto del aire se mantiene en <span class="math inline">\(340\,\mathrm{m/s}\)</span> en ambos ensayos.</p>
+<div id="fig-fp-av-r14-16" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.16 · Se mueve quien emite. Resolución. Al acercarse, us=+20\,m/s y la separación de frentes es lambda+=(340-20)/500=0,640\,m. Así, fo=340/0,640=531,25\,Hz. Al alejarse, us=-20\,m/s y resulta fo=500frac340340+20simeq472,2\,Hz. La comparación con el problema anterior muestra una diferencia pequeña y medible: el movimiento de la fuente modifica la">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-16.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.16 · Se mueve quien emite. Resolución. Al acercarse, us=+20\,m/s y la separación de frentes es lambda+=(340-20)/500=0,640\,m. Así, fo=340/0,640=531,25\,Hz. Al alejarse, us=-20\,m/s y resulta fo=500frac340340+20simeq472,2\,Hz. La comparación con el problema anterior muestra una diferencia pequeña y medible: el movimiento de la fuente modifica la">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-16-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;16: Apoyo visual: Problema resuelto 14.16 · Se mueve quien emite.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="r14-17" class="level3">
+<h3 class="anchored" data-anchor-id="r14-17">Problema resuelto 14.17 · Fuente, observador y viento</h3>
+<p>Una fuente situada a la izquierda emite a <span class="math inline">\(600\,\mathrm{Hz}\)</span> y se mueve hacia la derecha a <span class="math inline">\(20\,\mathrm{m/s}\)</span> respecto del suelo. Un observador a su derecha avanza también hacia la derecha a <span class="math inline">\(10\,\mathrm{m/s}\)</span>. Calcula la frecuencia recibida primero con aire quieto y después con viento uniforme de <span class="math inline">\(10\,\mathrm{m/s}\)</span> hacia la derecha. Usa <span class="math inline">\(c=340\,\mathrm{m/s}\)</span> respecto del aire.</p>
+<p><em>Resolución.</em> Sin viento, ambas velocidades se refieren ya al medio y <span class="math display">\[
+f_o=600\frac{340-10}{340-20}=618{,}75\,\mathrm{Hz}.
+\]</span> Con viento, las velocidades respecto del aire pasan a <span class="math inline">\(u_s=20-10=10\,\mathrm{m/s}\)</span> y <span class="math inline">\(u_o=10-10=0\)</span>. Se obtiene <span class="math inline">\(f_o=600(340/330)\simeq618{,}18\,\mathrm{Hz}\)</span>.</p>
+<p>Como comprobación desde el suelo, los frentes avanzan ahora a <span class="math inline">\(350\,\mathrm{m/s}\)</span>, la separación es <span class="math inline">\((350-20)/600=0{,}550\,\mathrm{m}\)</span> y la rapidez de encuentro es <span class="math inline">\(350-10=340\,\mathrm{m/s}\)</span>. Su cociente reproduce <span class="math inline">\(618{,}18\,\mathrm{Hz}\)</span>. Cada cálculo mantiene todas las velocidades en una misma referencia.</p>
+<div id="fig-fp-av-r14-17" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.17 · Fuente, observador y viento. Como comprobación desde el suelo, los frentes avanzan ahora a 350\,m/s, la separación es (350-20)/600=0,550\,m y la rapidez de encuentro es 350-10=340\,m/s. Su cociente reproduce 618,18\,Hz. Cada cálculo mantiene todas las velocidades en una misma referencia.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-17.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.17 · Fuente, observador y viento. Como comprobación desde el suelo, los frentes avanzan ahora a 350\,m/s, la separación es (350-20)/600=0,550\,m y la rapidez de encuentro es 350-10=340\,m/s. Su cociente reproduce 618,18\,Hz. Cada cálculo mantiene todas las velocidades en una misma referencia.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-17-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;17: Apoyo visual: Problema resuelto 14.17 · Fuente, observador y viento.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="una-aplicación-afinar-con-batimientos" class="level2">
+<h2 class="anchored" data-anchor-id="una-aplicación-afinar-con-batimientos">Una aplicación: afinar con batimientos</h2>
+<p>La rapidez del sonido, la geometría de la columna de aire y las condiciones en sus extremos fijan sus frecuencias modales. Una excitación próxima a un modo puede producir una respuesta resonante, cuya amplitud depende de las pérdidas y del acoplamiento. Los batimientos permiten comparar una de esas oscilaciones con una referencia cercana. Al observar que las pulsaciones se vuelven más lentas mientras se ajusta el instrumento, inferimos que las frecuencias se aproximan. La frecuencia de batimiento determina el módulo de su diferencia; una segunda observación permite decidir cuál de las dos frecuencias es mayor.</p>
+<section id="r14-18" class="level3">
+<h3 class="anchored" data-anchor-id="r14-18">Problema resuelto 14.18 · Modificar la longitud para alcanzar una referencia</h3>
+<p>Un tubo ideal abierto en ambos extremos mide <span class="math inline">\(0{,}85\,\mathrm{m}\)</span> y suena en su fundamental, con <span class="math inline">\(c=340\,\mathrm{m/s}\)</span>. Se compara con una referencia de <span class="math inline">\(202\,\mathrm{Hz}\)</span>. Calcula los batimientos iniciales y la longitud efectiva necesaria para igualar la referencia. Supón que el ajuste conserva el tipo de frontera y la rapidez del sonido.</p>
+<p><em>Resolución.</em> El tubo produce <span class="math inline">\(f_1=340/(2\times0{,}85)=200\,\mathrm{Hz}\)</span>. La comparación genera <span class="math inline">\(|202-200|=2\,\mathrm{Hz}\)</span> de batimiento, un máximo de la envolvente cada <span class="math inline">\(0{,}50\,\mathrm{s}\)</span>. Para alcanzar la referencia, <span class="math display">\[
+L'=\frac{340}{2(202)}\simeq0{,}8416\,\mathrm{m}.
+\]</span> La longitud debe reducirse unos <span class="math inline">\(0{,}00842\,\mathrm{m}\)</span>, es decir, <span class="math inline">\(0{,}842\,\mathrm{cm}\)</span>. Acortar el tubo eleva la fundamental en el modelo. Si solo conociéramos los dos batimientos por segundo y la referencia, las frecuencias candidatas del otro sonido serían <span class="math inline">\(200\)</span> y <span class="math inline">\(204\,\mathrm{Hz}\)</span>; la longitud inicial proporciona el dato adicional que permite elegir.</p>
+<div id="fig-fp-av-r14-18" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Ilustración de Problema resuelto 14.18 · Modificar la longitud para alcanzar una referencia. Resolución. El tubo produce f1=340/(2times0,85)=200\,Hz. La comparación genera |202-200|=2\,Hz de batimiento, un máximo de la envolvente cada 0,50\,s. Para alcanzar la referencia, L'=frac3402(202)simeq0,8416\,m. La longitud debe reducirse unos 0,00842\,m, es decir, 0,842\,cm. Acortar el tubo eleva la fundamental en el">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fp-av-r14-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/fisica-preuniversitaria/figuras/AV-R14-18.svg" class="img-fluid figure-img" alt="Ilustración de Problema resuelto 14.18 · Modificar la longitud para alcanzar una referencia. Resolución. El tubo produce f1=340/(2times0,85)=200\,Hz. La comparación genera |202-200|=2\,Hz de batimiento, un máximo de la envolvente cada 0,50\,s. Para alcanzar la referencia, L'=frac3402(202)simeq0,8416\,m. La longitud debe reducirse unos 0,00842\,m, es decir, 0,842\,cm. Acortar el tubo eleva la fundamental en el">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fp-av-r14-18-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;18: Apoyo visual: Problema resuelto 14.18 · Modificar la longitud para alcanzar una referencia.
+</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="ejercicios-para-reconstruir-y-transferir" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-para-reconstruir-y-transferir">Ejercicios para reconstruir y transferir</h2>
+<p>Usa modelos lineales, cuerdas uniformes e ideales y tubos de longitud efectiva indicada. Para aire adopta <span class="math inline">\(c=340\,\mathrm{m/s}\)</span>, salvo dato distinto. En niveles usa <span class="math inline">\(I_0=10^{-12}\,\mathrm{W/m^2}\)</span>. En Doppler, asigna velocidades respecto del medio y elige el eje en la dirección de propagación hacia el observador.</p>
+<section id="e14-1" class="level3">
+<h3 class="anchored" data-anchor-id="e14-1">Ejercicio 14.1 · Un perfil y un registro temporal</h3>
+<p>Una onda tiene amplitud <span class="math inline">\(6{,}0\,\mathrm{mm}\)</span>, separación entre crestas de <span class="math inline">\(0{,}40\,\mathrm{m}\)</span> y período <span class="math inline">\(0{,}0020\,\mathrm{s}\)</span>. Calcula <span class="math inline">\(f\)</span> y <span class="math inline">\(c\)</span>, e identifica qué datos pertenecen al perfil espacial.</p>
+</section>
+<section id="e14-2" class="level3">
+<h3 class="anchored" data-anchor-id="e14-2">Ejercicio 14.2 · Leer una onda que va hacia la izquierda</h3>
+<p>Para <span class="math inline">\(y=0{,}0050\sin(10\pi x+40\pi t)\)</span> en SI, determina sentido, longitud de onda, frecuencia, rapidez de propagación y máxima rapidez transversal.</p>
+</section>
+<section id="e14-3" class="level3">
+<h3 class="anchored" data-anchor-id="e14-3">Ejercicio 14.3 · Interpretar los coeficientes</h3>
+<p>Una onda tiene <span class="math inline">\(k=8\pi\,\mathrm{rad/m}\)</span>, <span class="math inline">\(\omega=120\pi\,\mathrm{rad/s}\)</span> y <span class="math inline">\(A=0{,}0040\,\mathrm{m}\)</span>. Halla <span class="math inline">\(\lambda\)</span>, <span class="math inline">\(f\)</span>, <span class="math inline">\(c\)</span> y <span class="math inline">\(|v_y|_{\max}\)</span>.</p>
+</section>
+<section id="e14-4" class="level3">
+<h3 class="anchored" data-anchor-id="e14-4">Ejercicio 14.4 · Una cuerda bajo tensión</h3>
+<p>Una cuerda de <span class="math inline">\(2{,}0\,\mathrm{m}\)</span> tiene masa <span class="math inline">\(10\,\mathrm{g}\)</span> y tensión <span class="math inline">\(50\,\mathrm{N}\)</span>. Determina su densidad lineal y la rapidez ondulatoria.</p>
+</section>
+<section id="e14-5" class="level3">
+<h3 class="anchored" data-anchor-id="e14-5">Ejercicio 14.5 · Variar la tensión con frecuencia fija</h3>
+<p>Se multiplica por nueve la tensión de una cuerda manteniendo su densidad lineal y la frecuencia de la fuente. ¿Por qué factores cambian rapidez y longitud de onda?</p>
+</section>
+<section id="e14-6" class="level3">
+<h3 class="anchored" data-anchor-id="e14-6">Ejercicio 14.6 · Cambiar de medio</h3>
+<p>Una onda sonora de <span class="math inline">\(740\,\mathrm{Hz}\)</span> pasa por una interfaz estacionaria de aire a agua, con rapideces <span class="math inline">\(340\)</span> y <span class="math inline">\(1480\,\mathrm{m/s}\)</span>. Calcula la frecuencia transmitida y ambas longitudes de onda.</p>
+</section>
+<section id="e14-7" class="level3">
+<h3 class="anchored" data-anchor-id="e14-7">Ejercicio 14.7 · Una suma con signo</h3>
+<p>En un punto, dos pulsos producen desplazamientos de <span class="math inline">\(+2{,}5\)</span> y <span class="math inline">\(-4{,}0\,\mathrm{cm}\)</span>. Halla el desplazamiento total y explica qué información adicional necesitarías para calcular la energía instantánea de la cuerda.</p>
+</section>
+<section id="e14-8" class="level3">
+<h3 class="anchored" data-anchor-id="e14-8">Ejercicio 14.8 · Un cuarto de ciclo entre contribuciones</h3>
+<p>Dos oscilaciones coherentes tienen amplitudes de <span class="math inline">\(3{,}0\,\mathrm{mm}\)</span> y diferencia de fase <span class="math inline">\(\pi/2\)</span>. Calcula la amplitud resultante.</p>
+</section>
+<section id="e14-9" class="level3">
+<h3 class="anchored" data-anchor-id="e14-9">Ejercicio 14.9 · Una diferencia de caminos</h3>
+<p>Dos fuentes coherentes en fase llegan con igual amplitud a un punto. Si <span class="math inline">\(\lambda=0{,}60\,\mathrm{m}\)</span> y <span class="math inline">\(\Delta r=0{,}90\,\mathrm{m}\)</span>, determina la diferencia de fase y el carácter de la interferencia.</p>
+</section>
+<section id="e14-10" class="level3">
+<h3 class="anchored" data-anchor-id="e14-10">Ejercicio 14.10 · Amplitudes distintas en oposición</h3>
+<p>Dos oscilaciones de amplitudes <span class="math inline">\(5{,}0\)</span> y <span class="math inline">\(3{,}0\,\mathrm{mm}\)</span> llegan con diferencia de fase <span class="math inline">\(\pi\)</span>. Calcula la amplitud resultante y la fase de la suma respecto de la contribución mayor.</p>
+</section>
+<section id="e14-11" class="level3">
+<h3 class="anchored" data-anchor-id="e14-11">Ejercicio 14.11 · Quinto modo de una cuerda</h3>
+<p>Una cuerda de <span class="math inline">\(1{,}20\,\mathrm{m}\)</span> fija en ambos extremos tiene <span class="math inline">\(c=96\,\mathrm{m/s}\)</span>. Calcula <span class="math inline">\(f_1\)</span>, <span class="math inline">\(f_5\)</span> y el número de nodos totales, nodos interiores y vientres del quinto modo.</p>
+</section>
+<section id="e14-12" class="level3">
+<h3 class="anchored" data-anchor-id="e14-12">Ejercicio 14.12 · Inferir la tensión desde la fundamental</h3>
+<p>Una cuerda uniforme de <span class="math inline">\(0{,}75\,\mathrm{m}\)</span> y masa <span class="math inline">\(3{,}0\,\mathrm{g}\)</span> tiene fundamental <span class="math inline">\(100\,\mathrm{Hz}\)</span> con extremos fijos. Calcula su rapidez ondulatoria y la tensión.</p>
+</section>
+<section id="e14-13" class="level3">
+<h3 class="anchored" data-anchor-id="e14-13">Ejercicio 14.13 · Tres modos de un tubo abierto</h3>
+<p>Calcula las tres frecuencias más bajas de un tubo ideal de <span class="math inline">\(0{,}68\,\mathrm{m}\)</span> abierto en ambos extremos.</p>
+</section>
+<section id="e14-14" class="level3">
+<h3 class="anchored" data-anchor-id="e14-14">Ejercicio 14.14 · Tres modos de un tubo cerrado</h3>
+<p>Para la misma longitud del ejercicio anterior, cierra un extremo. Calcula las tres primeras frecuencias y señala el primer sobretono y el tercer armónico.</p>
+</section>
+<section id="e14-15" class="level3">
+<h3 class="anchored" data-anchor-id="e14-15">Ejercicio 14.15 · La misma fundamental con otras fronteras</h3>
+<p>¿Qué longitud efectiva requiere una fundamental de <span class="math inline">\(170\,\mathrm{Hz}\)</span> en un tubo abierto en ambos extremos? ¿Y en uno cerrado en un extremo?</p>
+</section>
+<section id="e14-16" class="level3">
+<h3 class="anchored" data-anchor-id="e14-16">Ejercicio 14.16 · La periodicidad de un espectro</h3>
+<p>Una señal contiene componentes sinusoidales de <span class="math inline">\(400\)</span>, <span class="math inline">\(600\)</span> y <span class="math inline">\(800\,\mathrm{Hz}\)</span>, todas con amplitud distinta de cero. Determina su frecuencia fundamental de repetición y explica la función de una posible componente de <span class="math inline">\(200\,\mathrm{Hz}\)</span>.</p>
+</section>
+<section id="e14-17" class="level3">
+<h3 class="anchored" data-anchor-id="e14-17">Ejercicio 14.17 · Potencia repartida sobre una esfera</h3>
+<p>Una fuente puntual isotrópica emite <span class="math inline">\(0{,}040\,\mathrm{W}\)</span>. Calcula intensidad y nivel a <span class="math inline">\(10\,\mathrm{m}\)</span>, despreciando absorción y reflexiones.</p>
+</section>
+<section id="e14-18" class="level3">
+<h3 class="anchored" data-anchor-id="e14-18">Ejercicio 14.18 · Una diferencia de veinte decibelios</h3>
+<p>Calcula la intensidad de <span class="math inline">\(80\,\mathrm{dB}\)</span> y su razón respecto de la correspondiente a <span class="math inline">\(60\,\mathrm{dB}\)</span>. Justifica el factor obtenido mediante logaritmos.</p>
+</section>
+<section id="e14-19" class="level3">
+<h3 class="anchored" data-anchor-id="e14-19">Ejercicio 14.19 · Tres fuentes independientes</h3>
+<p>Tres ondas viajeras no correlacionadas avanzan en la misma dirección y sentido y producen cada una <span class="math inline">\(55\,\mathrm{dB}\)</span> en el punto de observación. Calcula el nivel conjunto referido a una misma superficie normal a la propagación.</p>
+</section>
+<section id="e14-20" class="level3">
+<h3 class="anchored" data-anchor-id="e14-20">Ejercicio 14.20 · El observador se acerca y se aleja</h3>
+<p>Una fuente quieta en el aire emite <span class="math inline">\(680\,\mathrm{Hz}\)</span>. Calcula la frecuencia que recibe un observador al acercarse a <span class="math inline">\(17\,\mathrm{m/s}\)</span> y al alejarse a la misma rapidez.</p>
+</section>
+<section id="e14-21" class="level3">
+<h3 class="anchored" data-anchor-id="e14-21">Ejercicio 14.21 · La fuente se acerca y se aleja</h3>
+<p>Una fuente de <span class="math inline">\(680\,\mathrm{Hz}\)</span> se mueve a <span class="math inline">\(34\,\mathrm{m/s}\)</span> en aire quieto. Un observador permanece quieto. Calcula la frecuencia al aproximarse la fuente y al alejarse.</p>
+</section>
+<section id="e14-22" class="level3">
+<h3 class="anchored" data-anchor-id="e14-22">Ejercicio 14.22 · Ambos se aproximan</h3>
+<p>Una fuente situada a la izquierda emite a <span class="math inline">\(400\,\mathrm{Hz}\)</span> y avanza hacia la derecha a <span class="math inline">\(30\,\mathrm{m/s}\)</span> en aire quieto. El observador a su derecha se mueve hacia la izquierda a <span class="math inline">\(10\,\mathrm{m/s}\)</span>. Calcula la frecuencia recibida y muestra los signos elegidos.</p>
+</section>
+<section id="e14-23" class="level3">
+<h3 class="anchored" data-anchor-id="e14-23">Ejercicio 14.23 · Viento con fuente y observador quietos</h3>
+<p>Fuente y observador permanecen quietos respecto del suelo. Entre ellos sopla viento uniforme de <span class="math inline">\(20\,\mathrm{m/s}\)</span> en la dirección fuente–observador. La fuente emite <span class="math inline">\(500\,\mathrm{Hz}\)</span>. Calcula la separación de frentes respecto del suelo y la frecuencia recibida.</p>
+</section>
+<section id="e14-24" class="level3">
+<h3 class="anchored" data-anchor-id="e14-24">Ejercicio 14.24 · Afinar con información incompleta</h3>
+<p>Una referencia de <span class="math inline">\(432\,\mathrm{Hz}\)</span> produce tres batimientos por segundo con otra señal. Halla las frecuencias candidatas y el intervalo entre máximos de la envolvente. Si además se sabe que la otra frecuencia es mayor, identifica su valor y la frecuencia media de ambas.</p>
+</section>
+</section>
+<section id="soluciones-razonadas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-razonadas">Soluciones razonadas</h2>
+<section id="sol-e14-1" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-1">Solución 14.1</h3>
+<p>El perfil espacial proporciona <span class="math inline">\(A=0{,}0060\,\mathrm{m}\)</span> y <span class="math inline">\(\lambda=0{,}40\,\mathrm{m}\)</span>. El período fija <span class="math inline">\(f=1/T=500\,\mathrm{Hz}\)</span>; la rapidez es <span class="math inline">\(c=\lambda f=200\,\mathrm{m/s}\)</span>. Amplitud y longitud de onda son longitudes con funciones distintas en la descripción.</p>
+</section>
+<section id="sol-e14-2" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-2">Solución 14.2</h3>
+<p>La combinación <span class="math inline">\(kx+\omega t\)</span> se desplaza hacia <span class="math inline">\(-x\)</span>. Se obtiene <span class="math inline">\(\lambda=2\pi/(10\pi)=0{,}20\,\mathrm{m}\)</span>, <span class="math inline">\(f=20\,\mathrm{Hz}\)</span> y <span class="math inline">\(c=4{,}0\,\mathrm{m/s}\)</span>. La máxima rapidez transversal es <span class="math inline">\(A\omega=0{,}200\pi\,\mathrm{m/s}\simeq0{,}628\,\mathrm{m/s}\)</span>, obtenida derivando respecto del tiempo.</p>
+</section>
+<section id="sol-e14-3" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-3">Solución 14.3</h3>
+<p>La longitud de onda vale <span class="math inline">\(0{,}25\,\mathrm{m}\)</span> y la frecuencia, <span class="math inline">\(60\,\mathrm{Hz}\)</span>. Así, <span class="math inline">\(c=15\,\mathrm{m/s}\)</span>. El máximo local es <span class="math inline">\(A\omega=0{,}480\pi\,\mathrm{m/s}\simeq1{,}51\,\mathrm{m/s}\)</span>. La comparación separa avance del perfil y oscilación del elemento.</p>
+</section>
+<section id="sol-e14-4" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-4">Solución 14.4</h3>
+<p>La densidad lineal es <span class="math inline">\(\mu=0{,}010/2{,}0=0{,}0050\,\mathrm{kg/m}\)</span>. La rapidez resulta <span class="math inline">\(\sqrt{50/0{,}0050}=100\,\mathrm{m/s}\)</span> bajo las hipótesis de cuerda ideal y pendiente pequeña.</p>
+</section>
+<section id="sol-e14-5" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-5">Solución 14.5</h3>
+<p>La rapidez se multiplica por <span class="math inline">\(\sqrt9=3\)</span>. Como la frecuencia se conserva, <span class="math inline">\(\lambda=c/f\)</span> también se multiplica por tres. La amplitud depende de la excitación y del acoplamiento; estos datos fijan las razones de rapidez y longitud de onda.</p>
+</section>
+<section id="sol-e14-6" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-6">Solución 14.6</h3>
+<p>La frecuencia transmitida es <span class="math inline">\(740\,\mathrm{Hz}\)</span> por la estacionariedad de fuente e interfaz. En aire, <span class="math inline">\(\lambda=340/740\simeq0{,}459\,\mathrm{m}\)</span>; en agua, <span class="math inline">\(\lambda=1480/740=2{,}00\,\mathrm{m}\)</span>. El cambio de rapidez queda reflejado en la separación espacial de las fases.</p>
+</section>
+<section id="sol-e14-7" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-7">Solución 14.7</h3>
+<p>La suma es <span class="math inline">\(y=2{,}5-4{,}0=-1{,}5\,\mathrm{cm}\)</span>. Para la energía instantánea de un tramo harían falta su velocidad transversal y la pendiente del perfil resultante, además de <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\mathcal T\)</span>. El desplazamiento aislado describe una parte de ese estado.</p>
+</section>
+<section id="sol-e14-8" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-8">Solución 14.8</h3>
+<p>Se obtiene <span class="math inline">\(A_R=2(3{,}0)|\cos(\pi/4)|=3\sqrt2\,\mathrm{mm}\simeq4{,}24\,\mathrm{mm}\)</span>. Equivalentemente, sumar los cuadrados de dos coeficientes en cuadratura da <span class="math inline">\(A_R^2=3^2+3^2\)</span>.</p>
+</section>
+<section id="sol-e14-9" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-9">Solución 14.9</h3>
+<p>La diferencia de caminos es <span class="math inline">\(1{,}5\lambda\)</span>, así que <span class="math inline">\(\Delta\phi=3\pi\)</span>, equivalente a <span class="math inline">\(\pi\)</span> para la interferencia. Las dos contribuciones de igual amplitud se cancelan en ese punto bajo las hipótesis de coherencia y fase inicial común.</p>
+</section>
+<section id="sol-e14-10" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-10">Solución 14.10</h3>
+<p>La suma equivale a <span class="math inline">\(5\cos\theta+3\cos(\theta+\pi)=2\cos\theta\)</span>, con amplitudes en milímetros. La amplitud total es <span class="math inline">\(2{,}0\,\mathrm{mm}\)</span> y la fase coincide con la contribución mayor.</p>
+</section>
+<section id="sol-e14-11" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-11">Solución 14.11</h3>
+<p>La fundamental es <span class="math inline">\(96/(2\times1{,}20)=40\,\mathrm{Hz}\)</span>; el quinto modo tiene <span class="math inline">\(200\,\mathrm{Hz}\)</span>. Sus cinco segmentos de media longitud de onda producen seis nodos totales, cuatro interiores y cinco vientres.</p>
+</section>
+<section id="sol-e14-12" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-12">Solución 14.12</h3>
+<p>La rapidez es <span class="math inline">\(c=2Lf_1=150\,\mathrm{m/s}\)</span>. Con <span class="math inline">\(\mu=0{,}0030/0{,}75=0{,}0040\,\mathrm{kg/m}\)</span> se obtiene <span class="math inline">\(\mathcal T=\mu c^2=90\,\mathrm{N}\)</span>. Se emplea la longitud vibrante comprendida entre los dos soportes.</p>
+</section>
+<section id="sol-e14-13" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-13">Solución 14.13</h3>
+<p>La fundamental es <span class="math inline">\(340/(2\times0{,}68)=250\,\mathrm{Hz}\)</span>. Las otras dos frecuencias son <span class="math inline">\(500\)</span> y <span class="math inline">\(750\,\mathrm{Hz}\)</span>. Los extremos abiertos tienen nodos de presión y vientres de desplazamiento en este modelo.</p>
+</section>
+<section id="sol-e14-14" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-14">Solución 14.14</h3>
+<p>La fundamental es <span class="math inline">\(340/(4\times0{,}68)=125\,\mathrm{Hz}\)</span>. Siguen <span class="math inline">\(375\)</span> y <span class="math inline">\(625\,\mathrm{Hz}\)</span>, armónicos tercero y quinto. El primer sobretono y el tercer armónico coinciden aquí en <span class="math inline">\(375\,\mathrm{Hz}\)</span>.</p>
+</section>
+<section id="sol-e14-15" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-15">Solución 14.15</h3>
+<p>En abierto–abierto, <span class="math inline">\(L=c/(2f_1)=1{,}00\,\mathrm{m}\)</span>. En cerrado–abierto, <span class="math inline">\(L=c/(4f_1)=0{,}500\,\mathrm{m}\)</span>. Cambiar las fronteras cambia la fracción de longitud de onda que cabe en la fundamental.</p>
+</section>
+<section id="sol-e14-16" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-16">Solución 14.16</h3>
+<p>Las frecuencias son <span class="math inline">\(2\)</span>, <span class="math inline">\(3\)</span> y <span class="math inline">\(4\)</span> veces <span class="math inline">\(200\,\mathrm{Hz}\)</span>. Su máximo divisor común es <span class="math inline">\(200\,\mathrm{Hz}\)</span>, por lo que la señal se repite cada <span class="math inline">\(0{,}0050\,\mathrm{s}\)</span>. Una componente de <span class="math inline">\(200\,\mathrm{Hz}\)</span> puede reforzar ese espectro manteniendo el período; la combinación dada ya tiene esa periodicidad fundamental por la presencia conjunta de los múltiplos segundo y tercero.</p>
+</section>
+<section id="sol-e14-17" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-17">Solución 14.17</h3>
+<p>La intensidad es <span class="math inline">\(I=0{,}040/(4\pi\times10^2)\simeq3{,}18\times10^{-5}\,\mathrm{W/m^2}\)</span>. El nivel resulta <span class="math inline">\(10\log_{10}(I/10^{-12})\simeq75{,}0\,\mathrm{dB}\)</span>. El área de reparto es la de la esfera completa porque se supuso emisión isotrópica.</p>
+</section>
+<section id="sol-e14-18" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-18">Solución 14.18</h3>
+<p>A <span class="math inline">\(80\,\mathrm{dB}\)</span>, <span class="math inline">\(I=10^{-12}10^8=10^{-4}\,\mathrm{W/m^2}\)</span>. A <span class="math inline">\(60\,\mathrm{dB}\)</span>, <span class="math inline">\(I=10^{-6}\,\mathrm{W/m^2}\)</span>. La razón es <span class="math inline">\(100=10^{(80-60)/10}\)</span>: cada aumento de diez decibelios multiplica por diez la intensidad.</p>
+</section>
+<section id="sol-e14-19" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-19">Solución 14.19</h3>
+<p>Las ondas tienen la misma dirección y sentido y sus señales son no correlacionadas. Sus intensidades se suman sobre la superficie normal común; el nivel total es <span class="math inline">\(55+10\log_{10}3\simeq59{,}77\,\mathrm{dB}\)</span>. Cada nivel se convierte en intensidad; la suma física se expresa después en la escala logarítmica.</p>
+</section>
+<section id="sol-e14-20" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-20">Solución 14.20</h3>
+<p>Acercarse significa <span class="math inline">\(u_o=-17\,\mathrm{m/s}\)</span> y produce <span class="math inline">\(f_o=680(340+17)/340=714\,\mathrm{Hz}\)</span>. Alejarse da <span class="math inline">\(u_o=+17\,\mathrm{m/s}\)</span> y <span class="math inline">\(f_o=680(340-17)/340=646\,\mathrm{Hz}\)</span>. La fuente quieta mantiene la separación de frentes.</p>
+</section>
+<section id="sol-e14-21" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-21">Solución 14.21</h3>
+<p>Al aproximarse, <span class="math inline">\(u_s=+34\,\mathrm{m/s}\)</span> y <span class="math inline">\(f_o=680(340)/(340-34)\simeq755{,}6\,\mathrm{Hz}\)</span>. Al alejarse, <span class="math inline">\(u_s=-34\,\mathrm{m/s}\)</span> y <span class="math inline">\(f_o=680(340)/(340+34)\simeq618{,}2\,\mathrm{Hz}\)</span>. La velocidad de la fuente interviene al calcular el espaciamiento de los frentes.</p>
+</section>
+<section id="sol-e14-22" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-22">Solución 14.22</h3>
+<p>Elegimos <span class="math inline">\(+x\)</span> de izquierda a derecha. Así, <span class="math inline">\(u_s=+30\)</span> y <span class="math inline">\(u_o=-10\,\mathrm{m/s}\)</span>. La frecuencia observada es <span class="math inline">\(400(340+10)/(340-30)\simeq451{,}6\,\mathrm{Hz}\)</span>. La aproximación de ambos aumenta la tasa de encuentro respecto de la emisión.</p>
+</section>
+<section id="sol-e14-23" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-23">Solución 14.23</h3>
+<p>Desde el suelo, los frentes avanzan a <span class="math inline">\(c+w=360\,\mathrm{m/s}\)</span>. La fuente quieta los emite separados <span class="math inline">\(\lambda=360/500=0{,}720\,\mathrm{m}\)</span>. El observador quieto recibe <span class="math inline">\(360/0{,}720=500\,\mathrm{Hz}\)</span>. Desde el aire, ambos se mueven a <span class="math inline">\(-20\,\mathrm{m/s}\)</span> y los factores iguales del numerador y denominador de Doppler se cancelan.</p>
+</section>
+<section id="sol-e14-24" class="level3">
+<h3 class="anchored" data-anchor-id="sol-e14-24">Solución 14.24</h3>
+<p>La condición <span class="math inline">\(|f-432|=3\)</span> da <span class="math inline">\(f=429\)</span> o <span class="math inline">\(435\,\mathrm{Hz}\)</span>. El intervalo entre máximos es <span class="math inline">\(1/3\,\mathrm{s}\simeq0{,}333\,\mathrm{s}\)</span>. El dato de que la otra frecuencia es mayor selecciona <span class="math inline">\(435\,\mathrm{Hz}\)</span> y la frecuencia media es <span class="math inline">\((432+435)/2=433{,}5\,\mathrm{Hz}\)</span>. El módulo de la diferencia y la frecuencia media desempeñan funciones distintas en la señal combinada.</p>
+</section>
+</section>
+<section id="una-experiencia-medir-modos-y-batimientos" class="level2">
+<h2 class="anchored" data-anchor-id="una-experiencia-medir-modos-y-batimientos">Una experiencia: medir modos y batimientos</h2>
+<section id="longitud-espectro-y-fronteras" class="level3">
+<h3 class="anchored" data-anchor-id="longitud-espectro-y-fronteras">Longitud, espectro y fronteras</h3>
+<p>Con una cuerda o una banda elástica bajo tensión moderada, mantén dos extremos sujetos y excita movimientos pequeños. Busca patrones con uno, dos y tres vientres, registra la longitud vibrante y estima las frecuencias mediante un video o un registro de audio. Compara las razones de frecuencias con los enteros <span class="math inline">\(1:2:3\)</span>. La elasticidad de la banda puede hacer variar su tensión al ajustar la longitud: registra esa condición para interpretar el ensayo.</p>
+<p>Para explorar batimientos, combina dos tonos de frecuencias próximas y amplitudes moderadas, por ejemplo <span class="math inline">\(200\)</span> y <span class="math inline">\(202\,\mathrm{Hz}\)</span>, mediante un generador de señales. Observa la envolvente temporal en un registro y cuenta sus máximos durante varios segundos. Compara su separación con <span class="math inline">\(1/|f_1-f_2|\)</span>. Después conserva la diferencia y desplaza ambas frecuencias juntas: la rapidez de los batimientos debería mantenerse mientras cambia la oscilación rápida.</p>
+<p>Al medir niveles con un teléfono, compara ensayos realizados en la misma configuración y registra la ponderación y la calibración disponibles. La escala de un instrumento concreto puede representar presión sonora ponderada; para confrontarla con el nivel de intensidad de este capítulo hay que identificar la magnitud medida y las condiciones acústicas. Reflexiones, ubicación del micrófono y ruido de fondo aportan parte de la evidencia del experimento.</p>
+</section>
+</section>
+<section id="diagnóstico-antes-de-avanzar" class="level2">
+<h2 class="anchored" data-anchor-id="diagnóstico-antes-de-avanzar">Diagnóstico antes de avanzar</h2>
+<p>Explica: (a) qué distingue <span class="math inline">\(c\)</span> de <span class="math inline">\(\partial y/\partial t\)</span>; (b) cómo se relacionan nodo de presión y vientre de desplazamiento en una abertura ideal; (c) qué información necesitas para sumar dos sonidos; (d) cómo asignas los signos en Doppler antes de sustituir velocidades.</p>
+<p><strong>Contraste.</strong> (a) <span class="math inline">\(c\)</span> mide el avance del perfil; la derivada temporal mide el movimiento local del medio. (b) La presión se ajusta aproximadamente a la atmosférica en la abertura mientras el aire puede desplazarse con amplitud grande. (c) Se especifican amplitudes, fases, correlación y direcciones de propagación; para ondas viajeras de igual dirección y sentido con señales no correlacionadas, las intensidades medias se suman antes de convertir a decibelios. (d) Se elige el eje a lo largo de la propagación y se expresan las velocidades de fuente y observador respecto del mismo medio.</p>
+<p><strong>Lecturas de apoyo.</strong> H. D. Young y R. A. Freedman, <em>Física universitaria</em>, volumen 1, 12.ª edición, capítulos 15 y 16, pasajes sobre ondas mecánicas, superposición, modos, intensidad, batimientos y Doppler; R. A. Serway y C. Vuille, <em>Fundamentos de física</em>, volumen 1, 9.ª edición, secciones 13.7–13.11 y capítulo 14. Los problemas, datos y ayudas visuales de esta entrega son originales.</p>
+<hr>
+<p><a href="capitulo-13.html">← Capítulo anterior</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-15.html">Capítulo siguiente →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
