@@ -9,9 +9,9 @@
 | Artículo | MA-ART-0021 |
 | Aplicación interactiva | MA-APP-0006 |
 | Lección | MA-LES-0005 |
-| Capítulo | MA-BCH-0424 |
+| Capítulo | MA-BCH-0447 |
 | Curso | MA-CRS-0002 |
-| Libro | MA-BOK-0017 |
+| Libro | MA-BOK-0018 |
 
 ## IDs asignados
 
@@ -608,36 +608,40 @@ Se conservan los IDs y URLs publicados de C00–C05. Se incorporan C06–C31, su
 La edición FISPM v04 conserva sus IDs históricos en archived-content-id, cualificados por edición en el archivo. La edición r20261021 mantiene los IDs de sus unidades temáticas; MA-BCH-0009, MA-BCH-0031, MA-BCH-0344 y MA-BCH-0346 permanecen asociados a la edición archivada.
 
 
+## Reserva coordinada de Física preuniversitaria
+
+Se conservan `MA-BOK-0016` y `MA-BCH-0396`–`MA-BCH-0418` para el alta anterior de Física preuniversitaria, [PR #345](https://github.com/lachenmann/matematica-abierta/pull/345). Matemática preuniversitaria usa el siguiente bloque libre. Esta reserva no publica el contenido de Física; su integración conserva su propio flujo.
+
 ## Matemática preuniversitaria — edición completa, 2026-10-22
 
 | ID | Tipo | Título | Ruta | Estado |
 |---|---|---|---|---|
-| MA-BOK-0016 | book | Matemática preuniversitaria | `libros/otros/matematica-preuniversitaria/index.qmd` | published |
-| MA-BCH-0396 | book-chapter | MP — Prefacio | `libros/otros/matematica-preuniversitaria/prefacio.qmd` | published |
-| MA-BCH-0397 | book-chapter | MP — Introducción. Un problema que vuelve a aparecer | `libros/otros/matematica-preuniversitaria/introduccion.qmd` | published |
-| MA-BCH-0398 | book-chapter | MP — Capítulo cero. Antes de calcular: ¿qué significa resolver un problema? | `libros/otros/matematica-preuniversitaria/capitulo-00.qmd` | published |
-| MA-BCH-0399 | book-chapter | MP — Los números, el orden y la recta real | `libros/otros/matematica-preuniversitaria/capitulo-01.qmd` | published |
-| MA-BCH-0400 | book-chapter | MP — Fracciones, razones, proporciones y porcentajes | `libros/otros/matematica-preuniversitaria/capitulo-02.qmd` | published |
-| MA-BCH-0401 | book-chapter | MP — Potencias, raíces y notación científica | `libros/otros/matematica-preuniversitaria/capitulo-03.qmd` | published |
-| MA-BCH-0402 | book-chapter | MP — Estimación, aproximación y control del error | `libros/otros/matematica-preuniversitaria/capitulo-04.qmd` | published |
-| MA-BCH-0403 | book-chapter | MP — El lenguaje del álgebra: expresiones e identidades | `libros/otros/matematica-preuniversitaria/capitulo-05.qmd` | published |
-| MA-BCH-0404 | book-chapter | MP — Ecuaciones, inecuaciones y valor absoluto | `libros/otros/matematica-preuniversitaria/capitulo-06.qmd` | published |
-| MA-BCH-0405 | book-chapter | MP — Sistemas de ecuaciones y relaciones lineales | `libros/otros/matematica-preuniversitaria/capitulo-07.qmd` | published |
-| MA-BCH-0406 | book-chapter | MP — Ecuaciones cuadráticas y polinomios elementales | `libros/otros/matematica-preuniversitaria/capitulo-08.qmd` | published |
-| MA-BCH-0407 | book-chapter | MP — Expresiones racionales, factorización y restricciones | `libros/otros/matematica-preuniversitaria/capitulo-09.qmd` | published |
-| MA-BCH-0408 | book-chapter | MP — Sucesiones, progresiones y matemática financiera | `libros/otros/matematica-preuniversitaria/capitulo-10.qmd` | published |
-| MA-BCH-0409 | book-chapter | MP — Geometría plana: construcciones y argumentos | `libros/otros/matematica-preuniversitaria/capitulo-11.qmd` | published |
-| MA-BCH-0410 | book-chapter | MP — Congruencia, semejanza, Pitágoras y escalas | `libros/otros/matematica-preuniversitaria/capitulo-12.qmd` | published |
-| MA-BCH-0411 | book-chapter | MP — Circunferencia, círculo y geometría del espacio | `libros/otros/matematica-preuniversitaria/capitulo-13.qmd` | published |
-| MA-BCH-0412 | book-chapter | MP — Razones trigonométricas, radianes e identidades | `libros/otros/matematica-preuniversitaria/capitulo-14.qmd` | published |
-| MA-BCH-0413 | book-chapter | MP — Coordenadas, rectas, distancias y vectores | `libros/otros/matematica-preuniversitaria/capitulo-15.qmd` | published |
-| MA-BCH-0414 | book-chapter | MP — Funciones, dominios y representaciones | `libros/otros/matematica-preuniversitaria/capitulo-16.qmd` | published |
-| MA-BCH-0415 | book-chapter | MP — Funciones afines y cuadráticas | `libros/otros/matematica-preuniversitaria/capitulo-17.qmd` | published |
-| MA-BCH-0416 | book-chapter | MP — Funciones polinómicas, racionales y radicales | `libros/otros/matematica-preuniversitaria/capitulo-18.qmd` | published |
-| MA-BCH-0417 | book-chapter | MP — Funciones exponenciales y logarítmicas | `libros/otros/matematica-preuniversitaria/capitulo-19.qmd` | published |
-| MA-BCH-0418 | book-chapter | MP — Funciones trigonométricas y modelos periódicos | `libros/otros/matematica-preuniversitaria/capitulo-20.qmd` | published |
-| MA-BCH-0419 | book-chapter | MP — Composición, inversión y modelización funcional | `libros/otros/matematica-preuniversitaria/capitulo-21.qmd` | published |
-| MA-BCH-0420 | book-chapter | MP — Combinatoria, muestreo y descripción de datos | `libros/otros/matematica-preuniversitaria/capitulo-22.qmd` | published |
-| MA-BCH-0421 | book-chapter | MP — Probabilidad, condiciones y distribuciones elementales | `libros/otros/matematica-preuniversitaria/capitulo-23.qmd` | published |
-| MA-BCH-0422 | book-chapter | MP — Variación, acumulación y umbral del cálculo | `libros/otros/matematica-preuniversitaria/capitulo-24.qmd` | published |
-| MA-BCH-0423 | book-chapter | MP — Demostraciones de las propiedades | `libros/otros/matematica-preuniversitaria/apendice.qmd` | published |
+| MA-BOK-0017 | book | Matemática preuniversitaria | `libros/otros/matematica-preuniversitaria/index.qmd` | published |
+| MA-BCH-0419 | book-chapter | MP — Prefacio | `libros/otros/matematica-preuniversitaria/prefacio.qmd` | published |
+| MA-BCH-0420 | book-chapter | MP — Introducción. Un problema que vuelve a aparecer | `libros/otros/matematica-preuniversitaria/introduccion.qmd` | published |
+| MA-BCH-0421 | book-chapter | MP — Capítulo cero. Antes de calcular: ¿qué significa resolver un problema? | `libros/otros/matematica-preuniversitaria/capitulo-00.qmd` | published |
+| MA-BCH-0422 | book-chapter | MP — Los números, el orden y la recta real | `libros/otros/matematica-preuniversitaria/capitulo-01.qmd` | published |
+| MA-BCH-0423 | book-chapter | MP — Fracciones, razones, proporciones y porcentajes | `libros/otros/matematica-preuniversitaria/capitulo-02.qmd` | published |
+| MA-BCH-0424 | book-chapter | MP — Potencias, raíces y notación científica | `libros/otros/matematica-preuniversitaria/capitulo-03.qmd` | published |
+| MA-BCH-0425 | book-chapter | MP — Estimación, aproximación y control del error | `libros/otros/matematica-preuniversitaria/capitulo-04.qmd` | published |
+| MA-BCH-0426 | book-chapter | MP — El lenguaje del álgebra: expresiones e identidades | `libros/otros/matematica-preuniversitaria/capitulo-05.qmd` | published |
+| MA-BCH-0427 | book-chapter | MP — Ecuaciones, inecuaciones y valor absoluto | `libros/otros/matematica-preuniversitaria/capitulo-06.qmd` | published |
+| MA-BCH-0428 | book-chapter | MP — Sistemas de ecuaciones y relaciones lineales | `libros/otros/matematica-preuniversitaria/capitulo-07.qmd` | published |
+| MA-BCH-0429 | book-chapter | MP — Ecuaciones cuadráticas y polinomios elementales | `libros/otros/matematica-preuniversitaria/capitulo-08.qmd` | published |
+| MA-BCH-0430 | book-chapter | MP — Expresiones racionales, factorización y restricciones | `libros/otros/matematica-preuniversitaria/capitulo-09.qmd` | published |
+| MA-BCH-0431 | book-chapter | MP — Sucesiones, progresiones y matemática financiera | `libros/otros/matematica-preuniversitaria/capitulo-10.qmd` | published |
+| MA-BCH-0432 | book-chapter | MP — Geometría plana: construcciones y argumentos | `libros/otros/matematica-preuniversitaria/capitulo-11.qmd` | published |
+| MA-BCH-0433 | book-chapter | MP — Congruencia, semejanza, Pitágoras y escalas | `libros/otros/matematica-preuniversitaria/capitulo-12.qmd` | published |
+| MA-BCH-0434 | book-chapter | MP — Circunferencia, círculo y geometría del espacio | `libros/otros/matematica-preuniversitaria/capitulo-13.qmd` | published |
+| MA-BCH-0435 | book-chapter | MP — Razones trigonométricas, radianes e identidades | `libros/otros/matematica-preuniversitaria/capitulo-14.qmd` | published |
+| MA-BCH-0436 | book-chapter | MP — Coordenadas, rectas, distancias y vectores | `libros/otros/matematica-preuniversitaria/capitulo-15.qmd` | published |
+| MA-BCH-0437 | book-chapter | MP — Funciones, dominios y representaciones | `libros/otros/matematica-preuniversitaria/capitulo-16.qmd` | published |
+| MA-BCH-0438 | book-chapter | MP — Funciones afines y cuadráticas | `libros/otros/matematica-preuniversitaria/capitulo-17.qmd` | published |
+| MA-BCH-0439 | book-chapter | MP — Funciones polinómicas, racionales y radicales | `libros/otros/matematica-preuniversitaria/capitulo-18.qmd` | published |
+| MA-BCH-0440 | book-chapter | MP — Funciones exponenciales y logarítmicas | `libros/otros/matematica-preuniversitaria/capitulo-19.qmd` | published |
+| MA-BCH-0441 | book-chapter | MP — Funciones trigonométricas y modelos periódicos | `libros/otros/matematica-preuniversitaria/capitulo-20.qmd` | published |
+| MA-BCH-0442 | book-chapter | MP — Composición, inversión y modelización funcional | `libros/otros/matematica-preuniversitaria/capitulo-21.qmd` | published |
+| MA-BCH-0443 | book-chapter | MP — Combinatoria, muestreo y descripción de datos | `libros/otros/matematica-preuniversitaria/capitulo-22.qmd` | published |
+| MA-BCH-0444 | book-chapter | MP — Probabilidad, condiciones y distribuciones elementales | `libros/otros/matematica-preuniversitaria/capitulo-23.qmd` | published |
+| MA-BCH-0445 | book-chapter | MP — Variación, acumulación y umbral del cálculo | `libros/otros/matematica-preuniversitaria/capitulo-24.qmd` | published |
+| MA-BCH-0446 | book-chapter | MP — Demostraciones de las propiedades | `libros/otros/matematica-preuniversitaria/apendice.qmd` | published |
