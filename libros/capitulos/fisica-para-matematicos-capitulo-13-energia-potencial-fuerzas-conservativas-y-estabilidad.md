@@ -27,9 +27,20 @@ format:
     css: ../../assets/books/fispm/fispm-reader.css
     lightbox: true
 number-sections: false
+archive: true
+edition: v04
+search: false
+sitemap: false
+listing: false
 ---
 
-[Capítulo 12](fisica-para-matematicos-capitulo-12-trabajo-potencia-y-energia-cinetica.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 14](fisica-para-matematicos-capitulo-14-momento-lineal-impulso-y-centro-de-masa.md)
+::: {.callout-note}
+## Edición archivada · v04
+
+Esta página conserva la edición de 17 de octubre de 2026. La [edición canónica revisada](/libros/para-matematicos/fisica-para-matematicos.html) reúne los capítulos 0–27 y sus soluciones.
+:::
+
+[Capítulo 12](fisica-para-matematicos-capitulo-12-trabajo-potencia-y-energia-cinetica.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos-v04-archivo.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 14](fisica-para-matematicos-capitulo-14-momento-lineal-impulso-y-centro-de-masa.md)
 
 []{#fispm-c13-energuxeda-potencial-fuerzas-conservativas-y-estabilidad}
 

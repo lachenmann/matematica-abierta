@@ -27,9 +27,20 @@ format:
     css: ../../assets/books/fispm/fispm-reader.css
     lightbox: true
 number-sections: false
+archive: true
+edition: v04
+search: false
+sitemap: false
+listing: false
 ---
 
-[Capítulo 23](fisica-para-matematicos-capitulo-23-oscilaciones-lineales.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 25](fisica-para-matematicos-capitulo-25-configuracion-trabajo-virtual-y-principios-variacionales.md)
+::: {.callout-note}
+## Edición archivada · v04
+
+Esta página conserva la edición de 17 de octubre de 2026. La [edición canónica revisada](/libros/para-matematicos/fisica-para-matematicos.html) reúne los capítulos 0–27 y sus soluciones.
+:::
+
+[Capítulo 23](fisica-para-matematicos-capitulo-23-oscilaciones-lineales.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos-v04-archivo.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 25](fisica-para-matematicos-capitulo-25-configuracion-trabajo-virtual-y-principios-variacionales.md)
 
 []{#fispm-c24-oscilaciones-acopladas-y-modos-normales}
 

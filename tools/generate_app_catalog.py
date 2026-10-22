@@ -151,7 +151,7 @@ def parse_front_matter(text: str) -> dict[str, Any]:
             data[key] = values
             continue
 
-        if key in SCALAR_FIELDS or key == "draft":
+        if key in SCALAR_FIELDS or key in {"draft", "archive"}:
             data[key] = _parse_scalar(raw_value)
 
         i += 1
@@ -193,7 +193,7 @@ def build_catalog(root: Path, *, generated_at: str | None = None) -> dict[str, A
 
         if not content_id or not content_type or status != "published":
             continue
-        if metadata.get("draft") is True:
+        if metadata.get("draft") is True or metadata.get("archive") is True:
             continue
 
         relative_str = relative.as_posix()

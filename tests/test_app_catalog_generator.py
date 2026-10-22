@@ -44,6 +44,16 @@ Texto.
 
 
 class CatalogTests(unittest.TestCase):
+    def test_archived_edition_keeps_identity_outside_current_catalog(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = '---\ntitle: "Capítulo"\ncontent-id: MA-BCH-0343\ncontent-type: book-chapter\nbook-id: MA-BOK-0005\nstatus: published\n'
+            (root / 'actual.md').write_text(source + '---\nTexto actual.\n')
+            (root / 'archivo.md').write_text(source + 'archive: true\n---\nTexto histórico.\n')
+            items = build_catalog(root)['items']
+            self.assertEqual([x['path'] for x in items], ['/actual.html'])
+            self.assertEqual(items[0]['id'], 'MA-BCH-0343')
+
     def test_exports_only_explicitly_published_content(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

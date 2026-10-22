@@ -27,9 +27,20 @@ format:
     css: ../../assets/books/fispm/fispm-reader.css
     lightbox: true
 number-sections: false
+archive: true
+edition: v04
+search: false
+sitemap: false
+listing: false
 ---
 
-[Capítulo 10](fisica-para-matematicos-capitulo-10-fuerzas-elementales-y-diagramas-de-cuerpo-libre.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 12](fisica-para-matematicos-capitulo-12-trabajo-potencia-y-energia-cinetica.md)
+::: {.callout-note}
+## Edición archivada · v04
+
+Esta página conserva la edición de 17 de octubre de 2026. La [edición canónica revisada](/libros/para-matematicos/fisica-para-matematicos.html) reúne los capítulos 0–27 y sus soluciones.
+:::
+
+[Capítulo 10](fisica-para-matematicos-capitulo-10-fuerzas-elementales-y-diagramas-de-cuerpo-libre.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos-v04-archivo.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 12](fisica-para-matematicos-capitulo-12-trabajo-potencia-y-energia-cinetica.md)
 
 []{#fispm-c11-restricciones-elementales-y-grados-de-libertad}
 

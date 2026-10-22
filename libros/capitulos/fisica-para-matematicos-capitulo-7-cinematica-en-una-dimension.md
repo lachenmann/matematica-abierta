@@ -27,9 +27,20 @@ format:
     css: ../../assets/books/fispm/fispm-reader.css
     lightbox: true
 number-sections: false
+archive: true
+edition: v04
+search: false
+sitemap: false
+listing: false
 ---
 
-[Capítulo 6](fisica-para-matematicos-capitulo-6-modelos-aproximaciones-escalas-y-linealizacion.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 8](fisica-para-matematicos-capitulo-8-cinematica-en-varias-dimensiones.md)
+::: {.callout-note}
+## Edición archivada · v04
+
+Esta página conserva la edición de 17 de octubre de 2026. La [edición canónica revisada](/libros/para-matematicos/fisica-para-matematicos.html) reúne los capítulos 0–27 y sus soluciones.
+:::
+
+[Capítulo 6](fisica-para-matematicos-capitulo-6-modelos-aproximaciones-escalas-y-linealizacion.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos-v04-archivo.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 8](fisica-para-matematicos-capitulo-8-cinematica-en-varias-dimensiones.md)
 
 []{#fispm-c07-cinemuxe1tica-en-una-dimensiuxf3n}
 

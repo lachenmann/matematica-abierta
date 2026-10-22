@@ -543,34 +543,34 @@ Se conservan los IDs y URLs publicados de C00–C05. Se incorporan C06–C31, su
 
 | ID | Tipo | Título | Ruta | Estado |
 |---|---|---|---|---|
-| MA-BCH-0343 | book-chapter | FISPM-T1-C03 — Medición, incertidumbre, estimación y órdenes de magnitud | `libros/capitulos/fisica-para-matematicos-capitulo-3-medicion-incertidumbre-estimacion-y-ordenes-de-magnitud.md` | published |
+| MA-BCH-0343 | book-chapter | FISPM-r20261021-C00 — El problema de medir | `libros/capitulos/fisica-para-matematicos-00-el-problema-de-medir.md` | published |
 | MA-BCH-0344 | book-chapter | FISPM-T1-C04 — Espacio euclídeo, vectores y marcos de referencia | `libros/capitulos/fisica-para-matematicos-capitulo-4-espacio-euclideo-vectores-y-marcos-de-referencia.md` | published |
-| MA-BCH-0345 | book-chapter | FISPM-T1-C05 — Tiempo, movimiento y curvas | `libros/capitulos/fisica-para-matematicos-capitulo-5-tiempo-movimiento-y-curvas.md` | published |
+| MA-BCH-0345 | book-chapter | FISPM-r20261021-C01 — Describir, medir y estimar un movimiento | `libros/capitulos/fisica-para-matematicos-01-describir-medir-y-estimar-un-movimiento.md` | published |
 | MA-BCH-0346 | book-chapter | FISPM-T1-C06 — Modelos, aproximaciones, escalas y linealización | `libros/capitulos/fisica-para-matematicos-capitulo-6-modelos-aproximaciones-escalas-y-linealizacion.md` | published |
-| MA-BCH-0347 | book-chapter | FISPM-T1-C07 — Cinemática en una dimensión | `libros/capitulos/fisica-para-matematicos-capitulo-7-cinematica-en-una-dimension.md` | published |
-| MA-BCH-0348 | book-chapter | FISPM-T1-C08 — Cinemática en varias dimensiones | `libros/capitulos/fisica-para-matematicos-capitulo-8-cinematica-en-varias-dimensiones.md` | published |
-| MA-BCH-0349 | book-chapter | FISPM-T1-C09 — Leyes de Newton y estructura de la dinámica | `libros/capitulos/fisica-para-matematicos-capitulo-9-leyes-de-newton-y-estructura-de-la-dinamica.md` | published |
-| MA-BCH-0350 | book-chapter | FISPM-T1-C10 — Fuerzas elementales y diagramas de cuerpo libre | `libros/capitulos/fisica-para-matematicos-capitulo-10-fuerzas-elementales-y-diagramas-de-cuerpo-libre.md` | published |
-| MA-BCH-0351 | book-chapter | FISPM-T1-C11 — Restricciones elementales y grados de libertad | `libros/capitulos/fisica-para-matematicos-capitulo-11-restricciones-elementales-y-grados-de-libertad.md` | published |
-| MA-BCH-0352 | book-chapter | FISPM-T1-C12 — Trabajo, potencia y energía cinética | `libros/capitulos/fisica-para-matematicos-capitulo-12-trabajo-potencia-y-energia-cinetica.md` | published |
-| MA-BCH-0353 | book-chapter | FISPM-T1-C13 — Energía potencial, fuerzas conservativas y estabilidad | `libros/capitulos/fisica-para-matematicos-capitulo-13-energia-potencial-fuerzas-conservativas-y-estabilidad.md` | published |
-| MA-BCH-0354 | book-chapter | FISPM-T1-C14 — Momento lineal, impulso y centro de masa | `libros/capitulos/fisica-para-matematicos-capitulo-14-momento-lineal-impulso-y-centro-de-masa.md` | published |
-| MA-BCH-0355 | book-chapter | FISPM-T1-C15 — Momento angular y torque | `libros/capitulos/fisica-para-matematicos-capitulo-15-momento-angular-y-torque.md` | published |
-| MA-BCH-0356 | book-chapter | FISPM-T1-C16 — Gravitación newtoniana | `libros/capitulos/fisica-para-matematicos-capitulo-16-gravitacion-newtoniana.md` | published |
-| MA-BCH-0357 | book-chapter | FISPM-T1-C17 — Problema de dos cuerpos y fuerzas centrales | `libros/capitulos/fisica-para-matematicos-capitulo-17-problema-de-dos-cuerpos-y-fuerzas-centrales.md` | published |
-| MA-BCH-0358 | book-chapter | FISPM-T1-C18 — Órbitas de Kepler | `libros/capitulos/fisica-para-matematicos-capitulo-18-orbitas-de-kepler.md` | published |
-| MA-BCH-0359 | book-chapter | FISPM-T1-C19 — Dispersión clásica y reducción efectiva | `libros/capitulos/fisica-para-matematicos-capitulo-19-dispersion-clasica-y-reduccion-efectiva.md` | published |
-| MA-BCH-0360 | book-chapter | FISPM-T1-C20 — Movimiento en marcos no inerciales | `libros/capitulos/fisica-para-matematicos-capitulo-20-movimiento-en-marcos-no-inerciales.md` | published |
-| MA-BCH-0361 | book-chapter | FISPM-T1-C21 — Cuerpo rígido: cinemática, rotaciones y tensor de inercia | `libros/capitulos/fisica-para-matematicos-capitulo-21-cuerpo-rigido-cinematica-rotaciones-y-tensor-de-inercia.md` | published |
-| MA-BCH-0362 | book-chapter | FISPM-T1-C22 — Cuerpo rígido: dinámica | `libros/capitulos/fisica-para-matematicos-capitulo-22-cuerpo-rigido-dinamica.md` | published |
-| MA-BCH-0363 | book-chapter | FISPM-T1-C23 — Oscilaciones lineales | `libros/capitulos/fisica-para-matematicos-capitulo-23-oscilaciones-lineales.md` | published |
-| MA-BCH-0364 | book-chapter | FISPM-T1-C24 — Oscilaciones acopladas y modos normales | `libros/capitulos/fisica-para-matematicos-capitulo-24-oscilaciones-acopladas-y-modos-normales.md` | published |
-| MA-BCH-0365 | book-chapter | FISPM-T1-C25 — Configuración, trabajo virtual y principios variacionales | `libros/capitulos/fisica-para-matematicos-capitulo-25-configuracion-trabajo-virtual-y-principios-variacionales.md` | published |
-| MA-BCH-0366 | book-chapter | FISPM-T1-C26 — Mecánica lagrangiana | `libros/capitulos/fisica-para-matematicos-capitulo-26-mecanica-lagrangiana.md` | published |
-| MA-BCH-0367 | book-chapter | FISPM-T1-C27 — Simetrías, teorema de Noether y leyes de conservación | `libros/capitulos/fisica-para-matematicos-capitulo-27-simetrias-teorema-de-noether-y-leyes-de-conservacion.md` | published |
-| MA-BCH-0368 | book-chapter | FISPM-T1-C28 — Mecánica hamiltoniana | `libros/capitulos/fisica-para-matematicos-capitulo-28-mecanica-hamiltoniana.md` | published |
-| MA-BCH-0369 | book-chapter | FISPM-T1-C29 — Corchetes de Poisson y estructura simpléctica elemental | `libros/capitulos/fisica-para-matematicos-capitulo-29-corchetes-de-poisson-y-estructura-simplectica-elemental.md` | published |
-| MA-BCH-0370 | book-chapter | FISPM-T1-C30 — Sistemas dinámicos, estabilidad y caos | `libros/capitulos/fisica-para-matematicos-capitulo-30-sistemas-dinamicos-estabilidad-y-caos.md` | published |
+| MA-BCH-0347 | book-chapter | FISPM-r20261021-C02 — Reconstruir movimientos en una recta | `libros/capitulos/fisica-para-matematicos-02-reconstruir-movimientos-en-una-recta.md` | published |
+| MA-BCH-0348 | book-chapter | FISPM-r20261021-C03 — Movimiento en el plano | `libros/capitulos/fisica-para-matematicos-03-movimiento-en-el-plano.md` | published |
+| MA-BCH-0349 | book-chapter | FISPM-r20261021-C04 — Fuerzas y leyes de Newton | `libros/capitulos/fisica-para-matematicos-04-fuerzas-y-leyes-de-newton.md` | published |
+| MA-BCH-0350 | book-chapter | FISPM-r20261021-C05 — Contactos, tensiones y rozamiento | `libros/capitulos/fisica-para-matematicos-05-contactos-tensiones-y-rozamiento.md` | published |
+| MA-BCH-0351 | book-chapter | FISPM-r20261021-C06 — Cuerpos conectados y restricciones | `libros/capitulos/fisica-para-matematicos-06-cuerpos-conectados-y-restricciones.md` | published |
+| MA-BCH-0352 | book-chapter | FISPM-r20261021-C07 — Trabajo y energía cinética | `libros/capitulos/fisica-para-matematicos-07-trabajo-y-energia-cinetica.md` | published |
+| MA-BCH-0353 | book-chapter | FISPM-r20261021-C08 — Potencial, equilibrio y estabilidad | `libros/capitulos/fisica-para-matematicos-08-potencial-equilibrio-y-estabilidad.md` | published |
+| MA-BCH-0354 | book-chapter | FISPM-r20261021-C09 — Impulso, colisiones y centro de masa | `libros/capitulos/fisica-para-matematicos-09-impulso-colisiones-y-centro-de-masa.md` | published |
+| MA-BCH-0355 | book-chapter | FISPM-r20261021-C12 — Momento angular y torque | `libros/capitulos/fisica-para-matematicos-12-momento-angular-y-torque.md` | published |
+| MA-BCH-0356 | book-chapter | FISPM-r20261021-C14 — Gravitación y campo | `libros/capitulos/fisica-para-matematicos-14-gravitacion-y-campo.md` | published |
+| MA-BCH-0357 | book-chapter | FISPM-r20261021-C15 — Dos cuerpos y fuerzas centrales | `libros/capitulos/fisica-para-matematicos-15-dos-cuerpos-y-fuerzas-centrales.md` | published |
+| MA-BCH-0358 | book-chapter | FISPM-r20261021-C16 — Órbitas de Kepler | `libros/capitulos/fisica-para-matematicos-16-orbitas-de-kepler.md` | published |
+| MA-BCH-0359 | book-chapter | FISPM-r20261021-C17 — Dispersión clásica | `libros/capitulos/fisica-para-matematicos-17-dispersion-clasica.md` | published |
+| MA-BCH-0360 | book-chapter | FISPM-r20261021-C18 — Marcos acelerados y giratorios | `libros/capitulos/fisica-para-matematicos-18-marcos-acelerados-y-giratorios.md` | published |
+| MA-BCH-0361 | book-chapter | FISPM-r20261021-C19 — Cuerpo rígido en tres dimensiones | `libros/capitulos/fisica-para-matematicos-19-cuerpo-rigido-en-tres-dimensiones.md` | published |
+| MA-BCH-0362 | book-chapter | FISPM-r20261021-C13 — Rotación plana y rodadura | `libros/capitulos/fisica-para-matematicos-13-rotacion-plana-y-rodadura.md` | published |
+| MA-BCH-0363 | book-chapter | FISPM-r20261021-C10 — El oscilador armónico | `libros/capitulos/fisica-para-matematicos-10-el-oscilador-armonico.md` | published |
+| MA-BCH-0364 | book-chapter | FISPM-r20261021-C20 — Oscilaciones acopladas | `libros/capitulos/fisica-para-matematicos-20-oscilaciones-acopladas.md` | published |
+| MA-BCH-0365 | book-chapter | FISPM-r20261021-C21 — Trabajo virtual, coordenadas generalizadas y acción | `libros/capitulos/fisica-para-matematicos-21-trabajo-virtual-coordenadas-generalizadas-y-accion.md` | published |
+| MA-BCH-0366 | book-chapter | FISPM-r20261021-C22 — Mecánica lagrangiana | `libros/capitulos/fisica-para-matematicos-22-mecanica-lagrangiana.md` | published |
+| MA-BCH-0367 | book-chapter | FISPM-r20261021-C23 — Simetrías y conservación | `libros/capitulos/fisica-para-matematicos-23-simetrias-y-conservacion.md` | published |
+| MA-BCH-0368 | book-chapter | FISPM-r20261021-C24 — Mecánica hamiltoniana | `libros/capitulos/fisica-para-matematicos-24-mecanica-hamiltoniana.md` | published |
+| MA-BCH-0369 | book-chapter | FISPM-r20261021-C25 — Poisson y geometría del espacio de fases | `libros/capitulos/fisica-para-matematicos-25-poisson-y-geometria-del-espacio-de-fases.md` | published |
+| MA-BCH-0370 | book-chapter | FISPM-r20261021-C26 — Estabilidad y dinámica no lineal | `libros/capitulos/fisica-para-matematicos-26-estabilidad-y-dinamica-no-lineal.md` | published |
 
 
 
@@ -600,3 +600,9 @@ Se conservan los IDs y URLs publicados de C00–C05. Se incorporan C06–C31, su
 | MA-BCH-0391 | book-chapter | APM Tomo II — Formas bilineales, productos internos y teoremas espectrales | `libros/capitulos/algebra-para-matematicos-tomo-ii-capitulo-20-formas-bilineales-productos-internos-y-teoremas-espectrales.md` | published |
 | MA-BCH-0392 | book-chapter | APM Tomo II — Convenciones de lectura | `libros/capitulos/algebra-para-matematicos-tomo-ii-convenciones.md` | published |
 | MA-BCH-0393 | book-chapter | APM Tomo II — Bibliografía | `libros/capitulos/algebra-para-matematicos-tomo-ii-bibliografia.md` | published |
+
+| MA-BCH-0394 | book-chapter | FISPM-r20261021-C11 — Disipación y respuesta forzada | `libros/capitulos/fisica-para-matematicos-11-disipacion-y-respuesta-forzada.md` | published |
+
+| MA-BCH-0395 | book-chapter | FISPM-r20261021-C27 — Sistemas abiertos y transferencia de masa | `libros/capitulos/fisica-para-matematicos-27-sistemas-abiertos-y-transferencia-de-masa.md` | published |
+
+La edición FISPM v04 conserva sus IDs históricos cualificados por edición en el archivo. La edición r20261021 mantiene los IDs de sus unidades temáticas; MA-BCH-0009, MA-BCH-0031, MA-BCH-0344 y MA-BCH-0346 permanecen asociados a la edición archivada.

@@ -27,9 +27,20 @@ format:
     css: ../../assets/books/fispm/fispm-reader.css
     lightbox: true
 number-sections: false
+archive: true
+edition: v04
+search: false
+sitemap: false
+listing: false
 ---
 
-[Capítulo 24](fisica-para-matematicos-capitulo-24-oscilaciones-acopladas-y-modos-normales.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 26](fisica-para-matematicos-capitulo-26-mecanica-lagrangiana.md)
+::: {.callout-note}
+## Edición archivada · v04
+
+Esta página conserva la edición de 17 de octubre de 2026. La [edición canónica revisada](/libros/para-matematicos/fisica-para-matematicos.html) reúne los capítulos 0–27 y sus soluciones.
+:::
+
+[Capítulo 24](fisica-para-matematicos-capitulo-24-oscilaciones-acopladas-y-modos-normales.md) · [Índice del Tomo I](../para-matematicos/fisica-para-matematicos-v04-archivo.md#tomo-i-fundamentos-y-mecanica) · [Capítulo 26](fisica-para-matematicos-capitulo-26-mecanica-lagrangiana.md)
 
 []{#fispm-c25-configuraciuxf3n-trabajo-virtual-y-principios-variacionales}
 
