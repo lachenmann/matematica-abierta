@@ -1,0 +1,42 @@
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="/manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
