@@ -54,9 +54,17 @@ $$
 
 significa fuerza ejercida por A sobre B. El cuerpo B es quien recibe esa fuerza. En un diagrama del carro sólo entran fuerzas que terminan en el carro; las que éste ejerce sobre el riel o el freno pertenecen a los diagramas de esos otros cuerpos.
 
-![La escena del carro y su diagrama se muestran separados. El diagrama contiene fuerza del freno, normal del riel y peso ejercido por la Tierra.](/assets/books/fispm/r20261021/newton_carro_diagrama.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-4-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/newton_carro_diagrama.svg" class="lightbox" data-gallery="fispm-r20261021-c4"><img src="/assets/books/fispm/r20261021/newton_carro_diagrama.svg" alt="La escena del carro y su diagrama se muestran separados. El diagrama contiene fuerza del freno, normal del riel y peso ejercido por la Tierra." class="fpm-v04-figure img-fluid" width="508.703878" height="447.59952" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 4.1.* La flecha de velocidad pertenece a la descripción del movimiento. En el diagrama de cuerpo libre aparecen únicamente las tres fuerzas externas del modelo. El freno permanece fuera del sistema carro y carga.
+
+</figcaption>
+
+</figure>
 
 Un diagrama de cuerpo libre conserva el sistema elegido y reemplaza el entorno por sus fuerzas.
 
@@ -82,9 +90,17 @@ La resultante reúne las interacciones ya enumeradas. Si se dibujan las tres fue
 
 Las componentes sirven para calcular la suma. Si una fuerza oblicua se expresa como $F_x\mathbf e_x+F_y\mathbf e_y$, ambos términos representan esa misma fuerza. Podemos utilizar el vector completo o sus componentes, conservando esa equivalencia durante la cuenta.
 
-![Un inventario de dos fuerzas y su suma gráfica se muestran en paneles distintos para evitar contar la resultante como una tercera interacción.](/assets/books/fispm/r20261021/newton_resultante_componentes.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-4-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/newton_resultante_componentes.svg" class="lightbox" data-gallery="fispm-r20261021-c4"><img src="/assets/books/fispm/r20261021/newton_resultante_componentes.svg" alt="Un inventario de dos fuerzas y su suma gráfica se muestran en paneles distintos para evitar contar la resultante como una tercera interacción." class="fpm-v04-figure img-fluid" width="569.99952" height="251.514881" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 4.2.* La construcción punta con cola calcula la suma. La resultante pertenece al cálculo del efecto conjunto, mientras que las fuerzas individuales conservan sus agentes.
+
+</figcaption>
+
+</figure>
 
 ## El marco forma parte de la ley
 
@@ -170,9 +186,17 @@ $$
 
 Para una masa de cincuenta kilogramos y aceleración hacia arriba de $2\,\mathrm{m/s^2}$, la normal vale $600\,\mathrm N$, mientras que el peso sigue siendo $500\,\mathrm N$. Una báscula ideal bajo sus pies responde a esa fuerza de contacto. El resultado depende de la aceleración, no del sentido de la velocidad: la plataforma podría estar descendiendo y frenando.
 
-![Una persona y el diagrama de sus fuerzas permiten comparar el peso con la lectura del apoyo durante una aceleración vertical.](/assets/books/fispm/r20261021/newton_apoyo_acelerado.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-4-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/newton_apoyo_acelerado.svg" class="lightbox" data-gallery="fispm-r20261021-c4"><img src="/assets/books/fispm/r20261021/newton_apoyo_acelerado.svg" alt="Una persona y el diagrama de sus fuerzas permiten comparar el peso con la lectura del apoyo durante una aceleración vertical." class="fpm-v04-figure img-fluid" width="555.59952" height="303.824145" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 4.3.* La báscula responde a la normal. La aceleración se indica fuera del diagrama de fuerzas y puede apuntar hacia arriba mientras la plataforma aún desciende.
+
+</figcaption>
+
+</figure>
 
 Si un cálculo exigiera $N<0$ para un suelo que sólo puede empujar desde abajo, la hipótesis de mantener contacto sería incompatible con ese resultado. Habría que cambiar de régimen. Esta comprobación enseña qué preguntar después de resolver: además de satisfacer las ecuaciones, la fuerza debe poder ser ejercida por el agente que le atribuimos.
 
@@ -188,9 +212,17 @@ La igualdad de módulos y la oposición de direcciones relacionan fuerzas recibi
 
 Un libro inmóvil sobre una mesa recibe su peso, ejercido por la Tierra, y la normal, ejercida por la mesa. Ambas pueden equilibrarse sobre el libro. La pareja del peso en la tercera ley es la fuerza gravitatoria que el libro ejerce sobre la Tierra. La pareja de la normal es la fuerza que el libro ejerce sobre la mesa. Compartir módulo y direcciones opuestas en una situación de equilibrio no basta para identificar una pareja de interacción: hay que intercambiar los mismos dos agentes y receptores.
 
-![Dos pares de interacción se distinguen mediante flechas sobre cuerpos distintos: libro y Tierra, y libro y mesa.](/assets/books/fispm/r20261021/newton_pares_interaccion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-4-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/newton_pares_interaccion.svg" class="lightbox" data-gallery="fispm-r20261021-c4"><img src="/assets/books/fispm/r20261021/newton_pares_interaccion.svg" alt="Dos pares de interacción se distinguen mediante flechas sobre cuerpos distintos: libro y Tierra, y libro y mesa." class="fpm-v04-figure img-fluid" width="506.483537" height="476.39952" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 4.4.* En cada fila se conserva una única interacción y se intercambian agente y receptor. El peso y la normal del libro pertenecen a filas diferentes.
+
+</figcaption>
+
+</figure>
 
 Si dos patinadores se empujan, la fuerza de uno sobre el otro puede acelerar a ambos en sentidos opuestos. En la ecuación de cada patinador sólo aparece la fuerza que recibe. Cancelar las dos dentro de una ecuación de uno solo eliminaría una fuerza que actúa sobre el otro cuerpo y produciría una conclusión falsa.
 
@@ -243,9 +275,17 @@ $$
 
 En A, el contacto actúa hacia la izquierda. Su ecuación es $12\,\mathrm N-C=(3\,\mathrm{kg})a$, que reproduce el mismo resultado. El valor $C>0$ corresponde a un empuje: es admisible para el contacto entre los bloques. La ecuación del sistema conjunto permitió obtener el movimiento; las ecuaciones individuales permitieron resolver una interacción que la suma había eliminado.
 
-![Los diagramas individuales de dos bloques conservan sus fuerzas mutuas. Al ampliar la frontera para incluir ambos bloques, la fuerza de contacto pasa a ser interna.](/assets/books/fispm/r20261021/newton_dos_bloques.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-4-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/newton_dos_bloques.svg" class="lightbox" data-gallery="fispm-r20261021-c4"><img src="/assets/books/fispm/r20261021/newton_dos_bloques.svg" alt="Los diagramas individuales de dos bloques conservan sus fuerzas mutuas. Al ampliar la frontera para incluir ambos bloques, la fuerza de contacto pasa a ser interna." class="fpm-v04-figure img-fluid" width="533.99952" height="463.999879" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 4.5.* La misma fuerza de contacto es externa en cada diagrama individual e interna en el sistema conjunto. Se muestran sólo las componentes horizontales; las fuerzas verticales se equilibran. Las masas se suman multiplicando una aceleración común sólo después de justificar el contacto mantenido.
+
+</figcaption>
+
+</figure>
 
 ## Una ley de fuerza completa la ecuación
 
@@ -267,9 +307,17 @@ $$
 
 La posición $x=0$ permite una solución en reposo si también se elige velocidad inicial cero. Si el carro pasa por ese punto con velocidad no nula, la fuerza y la aceleración se anulan en ese instante y el carro continúa atravesándolo. Para determinar una historia hacen falta tanto las condiciones iniciales como la ley de interacción. El estudio de esta ecuación y de sus soluciones se retomará en el oscilador armónico; el ejercicio 17 permite ya comprobar una función propuesta mediante sustitución.
 
-![La fuerza de un resorte cambia de signo al atravesar la posición sin deformación y se representa por una recta de pendiente negativa en su régimen lineal.](/assets/books/fispm/r20261021/newton_resorte_ley.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-4-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/newton_resorte_ley.svg" class="lightbox" data-gallery="fispm-r20261021-c4"><img src="/assets/books/fispm/r20261021/newton_resorte_ley.svg" alt="La fuerza de un resorte cambia de signo al atravesar la posición sin deformación y se representa por una recta de pendiente negativa en su régimen lineal." class="fpm-v04-figure img-fluid" width="526.79952" height="425.99952" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 4.6.* La recta representa una ley del modelo, no una consecuencia universal de la segunda ley. La deformación y la fuerza deben permanecer dentro del régimen de calibración del resorte.
+
+</figcaption>
+
+</figure>
 
 ## De una fuerza conocida a toda la historia
 
@@ -318,9 +366,17 @@ $$
 
 Esta ecuación especifica una componente de la suma de fuerzas; falta identificar qué agente la proporciona. Para un pequeño cuerpo unido a una cuerda y deslizándose sobre una mesa horizontal ideal, la tensión puede ser la única fuerza horizontal. Si la cuerda mantiene un círculo de radio dos metros, la masa es un kilogramo y la rapidez cuatro metros por segundo, su tensión debe ser de ocho newtons. El peso y la normal se equilibran verticalmente.
 
-![La velocidad tangente se distingue de la tensión hacia el centro en una vista superior. Un diagrama separado contiene la fuerza horizontal sobre el cuerpo.](/assets/books/fispm/r20261021/newton_circulo_interaccion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-4-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/newton_circulo_interaccion.svg" class="lightbox" data-gallery="fispm-r20261021-c4"><img src="/assets/books/fispm/r20261021/newton_circulo_interaccion.svg" alt="La velocidad tangente se distingue de la tensión hacia el centro en una vista superior. Un diagrama separado contiene la fuerza horizontal sobre el cuerpo." class="fpm-v04-figure img-fluid" width="569.99952" height="274.544209" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 4.7.* La expresión $mq^2/R$ calcula el módulo radial requerido. En este modelo lo aporta la tensión; no se dibuja otra fuerza adicional llamada centrípeta. El diagrama se limita a la proyección horizontal y las fuerzas verticales se equilibran.
+
+</figcaption>
+
+</figure>
 
 Si se rompe la cuerda, desaparece esa interacción. Mientras las otras fuerzas horizontales sigan siendo despreciables, la partícula conserva la velocidad que tenía al romperse: sigue la recta tangente correspondiente. La circunferencia anterior deja de ser una restricción mantenida. Conservar una fuerza radial después de quitar su agente describiría otro aparato.
 

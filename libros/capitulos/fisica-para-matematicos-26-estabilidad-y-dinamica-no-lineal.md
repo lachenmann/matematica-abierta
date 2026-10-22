@@ -52,8 +52,17 @@ El capítulo 8 aplicó esta definición a posición y velocidad mediante toleran
 
 El oscilador $x''+x=0$ conserva $x^2+(x')^2$. Por eso una preparación a distancia menor que $\delta=\varepsilon$ permanece dentro de la tolerancia. Toda órbita de amplitud positiva conserva su distancia al origen, y el límite hacia el reposo requiere la preparación exactamente nula. Es un primer ejemplo de equilibrio estable con movimiento persistente alrededor de él.
 
-![Tolerancia y conservación alrededor de un equilibrio](/assets/books/fispm/r20261021/estabilidad_vecindades.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-26-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/estabilidad_vecindades.svg" class="lightbox" data-gallery="fispm-r20261021-c26"><img src="/assets/books/fispm/r20261021/estabilidad_vecindades.svg" alt="Tolerancia y conservación alrededor de un equilibrio" class="fpm-v04-figure img-fluid" width="378.213608" height="315.936" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 26.1.* Las circunferencias representan órbitas del oscilador adimensional y el disco exterior fija una tolerancia. El control incluye las dos componentes del estado. La distancia al centro permanece constante.
+
+</figcaption>
+
+</figure>
 
 ## La energía construye una barrera
 
@@ -93,8 +102,17 @@ La prueba ofrece un procedimiento para elegir tolerancias: estimar la energía m
 
 Para el péndulo, $1-\cos\theta>0$ cuando $0<|\theta|<2\pi$. El reposo inferior es un mínimo local estricto de $e$ y resulta estable. Una órbita con $0<e<2$ oscila dentro de un intervalo angular acotado alrededor de ese reposo. En $e=2$ aparece la separatriz; para $e>2$, $u$ conserva signo y el péndulo gira. La identidad $u^2=2(e-1+\cos\theta)$ permite dibujar las tres regiones sin integrar la ecuación temporal.
 
-![Retrato de fases y separatriz del péndulo](/assets/books/fispm/r20261021/estabilidad_pendulo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-26-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/estabilidad_pendulo.svg" class="lightbox" data-gallery="fispm-r20261021-c26"><img src="/assets/books/fispm/r20261021/estabilidad_pendulo.svg" alt="Retrato de fases y separatriz del péndulo" class="fpm-v04-figure img-fluid" width="571.370625" height="343.723875" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 26.2.* Niveles exactos de la energía adimensional del péndulo. Las fronteras angulares $-\pi$ y $\pi$ representan la misma dirección; la figura muestra una ventana del recubrimiento del cilindro. La separatriz de energía dos conecta los reposos superiores de esa representación.
+
+</figcaption>
+
+</figure>
 
 ## Qué conserva la linealización
 
@@ -148,8 +166,17 @@ $$
 
 tienen la misma matriz en el origen para $\sigma=-1,0,1$. Al escribir $r^2=x^2+y^2$ se obtiene $r'=\sigma r^3$ y una velocidad angular igual a uno. Para $\sigma=-1$ las órbitas se acercan al origen; para cero son círculos; para uno se alejan y abandonan cualquier disco fijo. Una misma linealización con espectro imaginario admite las tres conductas.
 
-![Tres sistemas con idéntica parte lineal](/assets/books/fispm/r20261021/estabilidad_linealizacion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-26-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/estabilidad_linealizacion.svg" class="lightbox" data-gallery="fispm-r20261021-c26"><img src="/assets/books/fispm/r20261021/estabilidad_linealizacion.svg" alt="Tres sistemas con idéntica parte lineal" class="fpm-v04-figure img-fluid" width="643.299375" height="304.013758" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 26.3.* Los términos cúbicos cambian la evolución radial y conservan la misma rotación de primer orden en el origen. Las curvas se obtienen de la solución radial exacta; la espiral saliente se representa sólo antes de su escape del disco dibujado.
+
+</figcaption>
+
+</figure>
 
 ## Disipar energía y demostrar el retorno
 
@@ -180,8 +207,17 @@ Todos los puntos de acumulación coinciden, por tanto, con ese estado. Si la sol
 
 Este argumento usa la estructura del conjunto donde cesa la disipación. Si un sistema conserva un modo desacoplado, la pérdida de energía en otra componente puede dejar oscilaciones persistentes. El ejercicio 10 examina esa hipótesis. Cerca del reposo, el péndulo viscoso tiene autovalores que satisfacen $\lambda^2+\beta\lambda+1=0$, con parte real negativa; el criterio anterior añade una estimación exponencial local. La prueba energética alcanza todo el pozo $e<2$.
 
-![Energía que permite o impide cruzar entre pozos](/assets/books/fispm/r20261021/estabilidad_pozos.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-26-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/estabilidad_pozos.svg" class="lightbox" data-gallery="fispm-r20261021-c26"><img src="/assets/books/fispm/r20261021/estabilidad_pozos.svg" alt="Energía que permite o impide cruzar entre pozos" class="fpm-v04-figure img-fluid" width="571.32375" height="315.936" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 26.4.* El potencial $U(x)=(x^2-1)^2/4$ tiene dos mínimos y una barrera de altura $1/4$. Una energía total inferior a esa barrera confina cada trayectoria conservativa en el pozo donde fue preparada. La misma barrera retiene trayectorias que pierden energía.
+
+</figcaption>
+
+</figure>
 
 ## Mirar una vez por periodo
 
@@ -220,8 +256,17 @@ El flujo es localmente invertible por unicidad. La regla de derivación del dete
 
 La contracción del área mide el producto de dos factores locales de deformación. Uno de ellos puede superar la unidad mientras el otro compensa esa expansión. Por ello, la fórmula del determinante por sí sola deja abierta la convergencia a un punto fijo del mapa no lineal. La solución lineal probó esa convergencia mediante toda la matriz $M$.
 
-![Convergencia de observaciones a fase fija](/assets/books/fispm/r20261021/estabilidad_estroboscopio.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-26-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/estabilidad_estroboscopio.svg" class="lightbox" data-gallery="fispm-r20261021-c26"><img src="/assets/books/fispm/r20261021/estabilidad_estroboscopio.svg" alt="Convergencia de observaciones a fase fija" class="fpm-v04-figure img-fluid" width="614.499375" height="336.406125" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 26.5.* Muestras cada periodo del oscilador lineal $x''+0{,}4x'+x=0{,}6\cos\tau$, preparado en reposo. Los puntos convergen al estado de la solución periódica a esa fase: $(x,x')=(0,1{,}5)$. La curva continua incluye las primeras oscilaciones y no representa por sí sola el mapa discreto.
+
+</figcaption>
+
+</figure>
 
 ## Sensibilidad y horizonte de predicción
 
@@ -254,13 +299,31 @@ La proposición controla una curva continua con residuo acotado durante todo el 
 
 Esta es una cota superior: garantiza una precisión si el miembro derecho queda dentro de la tolerancia. En un sistema concreto puede sobreestimar ampliamente la separación. Para el campo variacional $v'=DF(z(\tau))v$, el número $\log(\|v(S)\|/\|v(0)\|)/S$ registra amplificación durante el tiempo finito $S$ en la dirección escogida. Su dependencia de dirección, intervalo y trayectoria forma parte del dato; un valor positivo aislado no establece un comportamiento asintótico ni prueba caos.
 
-![Tiempo necesario para abandonar una tolerancia](/assets/books/fispm/r20261021/estabilidad_escape.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-26-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/estabilidad_escape.svg" class="lightbox" data-gallery="fispm-r20261021-c26"><img src="/assets/books/fispm/r20261021/estabilidad_escape.svg" alt="Tiempo necesario para abandonar una tolerancia" class="fpm-v04-figure img-fluid" width="582.316875" height="315.454125" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 26.6.* Para la ecuación exacta $x'=x$, el tiempo de llegada a $x=0{,}1$ es $\log(0{,}1/x_0)$. Reducir el error inicial aplaza el escape; cada dato positivo acaba alcanzando la frontera. Los valores corresponden a tiempo y estado adimensionales.
+
+</figcaption>
+
+</figure>
 
 La integración numérica añade otra fuente de error. Antes de interpretar una órbita calculada debemos variar el paso, comparar una magnitud con solución conocida y controlar balances. En un sistema conservativo, un método puede dibujar una espiral por aumentar la energía artificialmente; un método que conserva área puede mantener una órbita acotada y acumular error de fase. La validación necesita responder a la pregunta física que motivó el cálculo.
 
-![Error energético y error de fase en una discretización](/assets/books/fispm/r20261021/estabilidad_numerica.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-26-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/estabilidad_numerica.svg" class="lightbox" data-gallery="fispm-r20261021-c26"><img src="/assets/books/fispm/r20261021/estabilidad_numerica.svg" alt="Error energético y error de fase en una discretización" class="fpm-v04-figure img-fluid" width="621.118125" height="329.904" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 26.7.* Para $x''+x=0$ se comparan Euler explícito y la composición de impulso y desplazamiento del capítulo 25, con paso $h=0{,}1$. El primer método acumula energía; el segundo conserva una forma cuadrática próxima a la energía y mantiene un error de fase. La fase geométrica se obtiene desenvolviendo el ángulo $\operatorname{atan2}(-v,x)$ de manera continua; la fase exacta es $\tau$.
+
+</figcaption>
+
+</figure>
 
 La distinción entre estabilidad, atracción y fidelidad numérica permite formular un experimento más preciso: preparar una región de estados, declarar las escalas y registrar cómo evoluciona. En un péndulo real, la pérdida de energía, el tiempo de cruce y la respuesta al actuador discriminan aspectos diferentes del modelo. Una gráfica calculada adquiere valor físico cuando conocemos qué parte de esas comparaciones controla.
 

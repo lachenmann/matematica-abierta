@@ -42,9 +42,17 @@ $$
 
 En un metro de extensión ambas fuerzas se equilibran. Pero el carro ha sido acelerado antes de llegar allí: no hay motivo para que pierda de golpe la velocidad que adquirió.
 
-![Un resorte y un tirón constante actúan sobre un carro en un riel horizontal liso.](/assets/books/fispm/r20261021/potencial_carro.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-8-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/potencial_carro.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="/assets/books/fispm/r20261021/potencial_carro.svg" alt="Un resorte y un tirón constante actúan sobre un carro en un riel horizontal liso." class="fpm-v04-figure img-fluid" width="680" height="500" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 8.1.* El eje mide extensión respecto de la longitud natural. La posición $x=1\,\mathrm m$ equilibra el tirón y la fuerza elástica. La posición de reposo inicial es $x=0$, donde la fuerza neta apunta a la derecha. El esquema no representa módulos mediante longitudes de flecha.
+
+</figcaption>
+
+</figure>
 
 ## La misma integral, leída desde sus extremos
 
@@ -73,9 +81,17 @@ $$
 
 La gráfica de $U$ es una parábola cuyo mínimo está en un metro y vale menos cuatro joules. La separación vertical entre la línea horizontal $E=0$ y esa parábola es $K=E-U$. En el mínimo la energía cinética es máxima, cuatro joules, y la rapidez es dos metros por segundo. El carro cruza la posición de fuerzas equilibradas con su mayor rapidez.
 
-![La parábola del potencial efectivo y la recta de energía delimitan los extremos del movimiento y la energía cinética intermedia.](/assets/books/fispm/r20261021/potencial_parabola.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-8-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/potencial_parabola.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="/assets/books/fispm/r20261021/potencial_parabola.svg" alt="La parábola del potencial efectivo y la recta de energía delimitan los extremos del movimiento y la energía cinética intermedia." class="fpm-v04-figure img-fluid" width="680" height="525" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 8.2.* La ordenada es energía, no altura física del riel. Los extremos $x=0$ y $x=2\,\mathrm m$ tienen rapidez nula; en $x=1\,\mathrm m$ la pendiente del potencial y la fuerza neta son cero, pero la rapidez no lo es. La diferencia $E-U$ se mide en joules.
+
+</figcaption>
+
+</figure>
 
 La función $U$ incorpora tanto el resorte como el tirón constante: $U=U_s+U_f$, con $U_s=kx^2/2$ y $U_f=-f_0x$. Esta elección no borra el trabajo del mecanismo. Para el subsistema carro–resorte, $K+U_s$ aumenta en $f_0x$ mientras el carro avanza. Al incluir también $U_f$ obtenemos una constante matemática del modelo de fuerzas considerado. Debemos indicar qué interacciones están incluidas antes de interpretar una energía mecánica como la de un sistema físicamente aislado.
 
@@ -194,9 +210,17 @@ para una partícula de dos kilogramos. Es una interacción idealizada definida p
 
 Con $E=1\,\mathrm J$, una partícula que comienza en el pozo derecho queda entre $a/\sqrt2$ y $a\sqrt{3/2}$. Hay otra región permitida a la izquierda, pero el intervalo alrededor del origen está prohibido y la separa de ella. Con $E=5\,\mathrm J$, en cambio, la energía cinética en el origen vale un joule. Una partícula que se dirige hacia la barrera desde el pozo derecho puede cruzarla con rapidez de un metro por segundo.
 
-![El mismo potencial de dos pozos se compara con tres líneas de energía: por debajo, en la altura y por encima de la barrera.](/assets/books/fispm/r20261021/potencial_dos_pozos.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-8-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/potencial_dos_pozos.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="/assets/books/fispm/r20261021/potencial_dos_pozos.svg" alt="El mismo potencial de dos pozos se compara con tres líneas de energía: por debajo, en la altura y por encima de la barrera." class="fpm-v04-figure img-fluid" width="680" height="720" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 8.3.* A energía de un joule hay dos intervalos permitidos separados. A cinco joules el origen se atraviesa con rapidez positiva. La línea de cuatro joules toca el máximo: requiere examinar el tiempo de aproximación antes de afirmar que hay cruce.
+
+</figcaption>
+
+</figure>
 
 En el caso límite $E=U_b$, escribir $\xi=x/a$ da
 
@@ -244,9 +268,17 @@ El argumento encierra la trayectoria mediante barreras de energía. No demuestra
 
 Podemos expresar las dos tolerancias en un estado con coordenadas adimensionales: elegimos una longitud de referencia $a>0$ y una rapidez de referencia $b>0$, y escribimos $z=((x-x_e)/a,\dot x/b)$. Una cota de la norma de $z$ controla posición y velocidad, y sendas cotas de ambas componentes controlan esa norma. Esta equivalencia permitirá conservar la misma definición cuando el capítulo 19 compare componentes de velocidad angular y el 26 estudie estados de varias variables. En cada caso habrá que indicar cuáles son las variables cuya proximidad se desea controlar.
 
-![Un mínimo estricto ofrece dos barreras positivas alrededor del equilibrio; una energía inicial suficientemente pequeña no permite alcanzarlas.](/assets/books/fispm/r20261021/potencial_barreras.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-8-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/potencial_barreras.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="/assets/books/fispm/r20261021/potencial_barreras.svg" alt="Un mínimo estricto ofrece dos barreras positivas alrededor del equilibrio; una energía inicial suficientemente pequeña no permite alcanzarlas." class="fpm-v04-figure img-fluid" width="680" height="525" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 8.4.* La prueba utiliza el menor de los incrementos de potencial en los dos extremos de un intervalo. La condición de energía también controla la velocidad. El dibujo ilustra la barrera del argumento, no supone que todo potencial sea parabólico.
+
+</figcaption>
+
+</figure>
 
 ## La segunda derivada y los casos que deja abiertos
 
@@ -263,9 +295,17 @@ $$
 
 Esta cota obliga a llegar a $r$ en un tiempo finito o a haber salido antes. Por pequeños que sean los datos iniciales, hay perturbaciones que abandonan una misma vecindad fijada del equilibrio. Esto niega la estabilidad. Finalmente, los potenciales $+\beta q^4$ y $-\beta q^4$, con $\beta>0$, tienen ambos segunda derivada nula en cero, pero el primero tiene mínimo estricto y el segundo empuja hacia fuera cualquier desplazamiento no nulo. Sus comportamientos distintos muestran que la igualdad no decide.
 
-![Potenciales con mínimo, máximo y extremos degenerados muestran qué informa el signo de la segunda derivada y cuándo resulta insuficiente.](/assets/books/fispm/r20261021/potencial_estabilidad.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-8-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/potencial_estabilidad.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="/assets/books/fispm/r20261021/potencial_estabilidad.svg" alt="Potenciales con mínimo, máximo y extremos degenerados muestran qué informa el signo de la segunda derivada y cuándo resulta insuficiente." class="fpm-v04-figure img-fluid" width="680" height="625" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 8.5.* Las curvas representan energía frente a posición. El mínimo cuártico tiene equilibrio estable aunque su segunda derivada sea cero. Los ejemplos se comparan con escalas normalizadas y no representan la misma ley de fuerza.
+
+</figcaption>
+
+</figure>
 
 En los textos elementales suele llamarse *equilibrio neutro* a una región de potencial constante: trasladar una partícula y volver a dejarla en reposo produce otro reposo. Conviene distinguir esa clasificación estática de la definición anterior. Con $U$ constante, una velocidad inicial no nula, por pequeña que sea, produce $x(t)=x(0)+v_0t$. En una recta libre acaba por salir de cualquier vecindad acotada de una posición individual. Por tanto, ese estado individual no es estable frente a todas las perturbaciones de posición y velocidad. Al hablar de estabilidad debemos mantener explícitas las perturbaciones que admitimos.
 
@@ -442,9 +482,17 @@ El tiempo hasta $\xi>0$ desde $\xi_0=1$ es la integral del texto. Para $0<\eta\l
 
 La desigualdad $U(0)\leq E$ es necesaria, pero no afirma un tiempo de llegada. El estado $(0,0)$ es por sí mismo otro movimiento posible: el equilibrio superior exacto. La historia preparada en $x=a$ se aproxima a ese estado sin coincidir con él en tiempo finito.
 
-![La posición positiva disminuye hacia el origen sin alcanzarlo en ningún tiempo finito.](/assets/books/fispm/r20261021/potencial_tiempo_critico.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-8-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/potencial_tiempo_critico.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="/assets/books/fispm/r20261021/potencial_tiempo_critico.svg" alt="La posición positiva disminuye hacia el origen sin alcanzarlo en ningún tiempo finito." class="fpm-v04-figure img-fluid" width="680" height="525" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 8.6.* Aproximación crítica para la masa y el doble pozo del problema. El eje horizontal es tiempo, a diferencia de los diagramas de energía anteriores. El extremo dibujado de la curva todavía tiene posición positiva; el recorte de la gráfica no representa un instante de llegada al origen.
+
+</figcaption>
+
+</figure>
 
 ### 8. Una detención en tiempo finito {#solucion-8-8}
 
@@ -478,9 +526,17 @@ Como cada término de $mv^2/2+kq^2/2$ es no negativo, la conservación da $|q|\l
 
 Controlar sólo la posición inicial no habría bastado. Una velocidad inicial grande puede aportar una energía cinética grande incluso en $q=0$ y producir una excursión muy extensa. La prueba del mínimo estricto necesita la cercanía del estado completo.
 
-![El rectángulo de preparaciones iniciales está dentro de una elipse de energía, y ésta queda dentro de las tolerancias de posición y velocidad.](/assets/books/fispm/r20261021/potencial_estado.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-8-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/potencial_estado.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="/assets/books/fispm/r20261021/potencial_estado.svg" alt="El rectángulo de preparaciones iniciales está dentro de una elipse de energía, y ésta queda dentro de las tolerancias de posición y velocidad." class="fpm-v04-figure img-fluid" width="680" height="560" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 8.7.* Cada punto del plano representa un estado $(q,v)$. Las dos coordenadas tienen unidades y escalas distintas. La región de energía no mayor de $0{,}02\,\mathrm J$ encierra todas las preparaciones dadas y controla su evolución posterior; no se afirma que los movimientos recorran el borde de los rectángulos.
+
+</figcaption>
+
+</figure>
 
 ### 11. Salir de la vecindad de un máximo {#solucion-8-11}
 
@@ -532,9 +588,17 @@ La normal es diez newtons y la fricción estática puede tener módulo hasta cua
 
 En $x=0{,}10\,\mathrm m$ se necesitan dos newtons hacia la derecha, admisibles. El bloque está en reposo aunque no esté en el mínimo del potencial elástico. En $x=0{,}30\,\mathrm m$ harían falta seis newtons estáticos, imposibles. Empieza a deslizar hacia la izquierda; la fricción cinética pasa a tres newtons hacia la derecha. La fuerza neta inicial del régimen deslizante es $-6+3=-3\,\mathrm N$ y su aceleración $-3\,\mathrm{m/s^2}$. La ecuación $U'=0$ sola habría ignorado la interacción adicional que permite todo el intervalo de reposos.
 
-![La fricción requerida kx sólo pertenece al intervalo estático permitido cuando la extensión está entre menos y más veinte centímetros.](/assets/books/fispm/r20261021/potencial_reposo_rozamiento.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-8-8" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/potencial_reposo_rozamiento.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="/assets/books/fispm/r20261021/potencial_reposo_rozamiento.svg" alt="La fricción requerida kx sólo pertenece al intervalo estático permitido cuando la extensión está entre menos y más veinte centímetros." class="fpm-v04-figure img-fluid" width="680" height="540" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 8.8.* La banda horizontal corresponde a fuerzas entre menos y más cuatro newtons. Su intersección con $f_{\mathrm{requerida}}=kx$ determina el intervalo de reposos. El modelo admite los extremos de la banda; superarlos obliga a revisar el régimen.
+
+</figcaption>
+
+</figure>
 
 ### 17. Un umbral con incertidumbre {#solucion-8-17}
 
@@ -608,9 +672,17 @@ En $t=\pi/2\,\mathrm s$, la extensión vuelve a cero, el carro lleva velocidad $
 
 Durante la primera mitad, $0<t<\pi/2\,\mathrm s$, la potencia es positiva; durante la segunda, $\pi/2\,\mathrm s<t<\pi\,\mathrm s$, es negativa. El agente entrega ocho centésimas de joule y después las recupera. La integral del ciclo vale cero porque las energías extremas coinciden. La identidad instantánea conserva la información sobre los intercambios interiores que esa comparación de extremos resume.
 
-![La energía crece hasta ocho centésimas de joule y vuelve a cero, mientras la potencia del apoyo cambia de positiva a negativa a mitad del ciclo.](/assets/books/fispm/r20261021/potencial_apoyo_movil.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-8-9" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/potencial_apoyo_movil.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="/assets/books/fispm/r20261021/potencial_apoyo_movil.svg" alt="La energía crece hasta ocho centésimas de joule y vuelve a cero, mientras la potencia del apoyo cambia de positiva a negativa a mitad del ciclo." class="fpm-v04-figure img-fluid" width="475.2" height="316.8" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 8.9.* La energía corresponde al carro y al resorte ideal. La potencia positiva entrega energía a ese conjunto y la negativa la devuelve al mecanismo que mueve el apoyo. Las ordenadas tienen unidades distintas y comparten el mismo reloj. El área con signo de la potencia da el cambio de energía; las áreas de ambos medios ciclos se compensan.
+
+</figcaption>
+
+</figure>
 
 ## Lecturas de apoyo
 

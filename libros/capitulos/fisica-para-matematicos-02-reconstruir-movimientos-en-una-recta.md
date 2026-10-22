@@ -88,9 +88,17 @@ $$
 
 La detención ocurre cuando $u=2\,\mathrm s$, es decir, en $t=10\,\mathrm s$, y A queda en $x_A=18\,\mathrm m$. Estas expresiones completan el modelo para todos los tiempos no negativos si mantenemos la marcha uniforme de B.
 
-![Posiciones de los dos carros sobre un mismo eje temporal. B espera, acelera y continúa uniformemente; A avanza, frena y queda en reposo. Las curvas se cruzan a los 6,75 segundos.](/assets/books/fispm/r20261021/reconstruccion_posiciones.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-2-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/reconstruccion_posiciones.svg" class="lightbox" data-gallery="fispm-r20261021-c2"><img src="/assets/books/fispm/r20261021/reconstruccion_posiciones.svg" alt="Posiciones de los dos carros sobre un mismo eje temporal. B espera, acelera y continúa uniformemente; A avanza, frena y queda en reposo. Las curvas se cruzan a los 6,75 segundos." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 2.1.* Las curvas representan dos historias completas. Su intersección compara posiciones en un mismo instante; visitar una misma posición en tiempos distintos no produce una intersección.
+
+</figcaption>
+
+</figure>
 
 Cada expresión debe conservar el estado final del tramo anterior. En este modelo la posición y la velocidad son continuas en los cambios de régimen; la aceleración puede cambiar bruscamente. No se presupone una aceleración clásica definida exactamente en esos instantes. Son idealizaciones de transiciones cuya duración estamos despreciando.
 
@@ -106,9 +114,17 @@ $$
 
 Esos nueve metros son un desplazamiento. Para obtener la posición sumamos la posición inicial de $-6\,\mathrm m$; el resultado es $3\,\mathrm m$. Confundir el área con la posición habría desplazado toda la historia seis metros.
 
-![Velocidad del carro B: reposo hasta dos segundos, crecimiento lineal hasta seis metros por segundo en cinco segundos y velocidad constante después. El triángulo sombreado tiene área de nueve metros.](/assets/books/fispm/r20261021/reconstruccion_velocidad.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-2-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/reconstruccion_velocidad.svg" class="lightbox" data-gallery="fispm-r20261021-c2"><img src="/assets/books/fispm/r20261021/reconstruccion_velocidad.svg" alt="Velocidad del carro B: reposo hasta dos segundos, crecimiento lineal hasta seis metros por segundo en cinco segundos y velocidad constante después. El triángulo sombreado tiene área de nueve metros." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 2.2.* El área bajo la velocidad proporciona el cambio de posición. Una condición inicial permite situar ese cambio sobre el eje espacial.
+
+</figcaption>
+
+</figure>
 
 Para una posición continua y continuamente derivable por tramos, la relación que reconstruye su evolución es
 
@@ -180,9 +196,17 @@ Un valor negativo significa que B está detrás; un valor positivo, que está de
 
 Entre cinco y ocho segundos esa velocidad relativa es $4\,\mathrm{m/s}$. Al comenzar el tramo, A está en diez metros y B en tres: faltan siete metros de separación. Cerrarlos requiere $7/4\,\mathrm s$, que añadimos a los cinco segundos del reloj común. Recuperamos $6{,}75\,\mathrm s$ mediante una cuenta que hace visible qué se está cerrando y desde cuándo.
 
-![Separación entre los carros desde dos hasta ocho segundos. La parábola válida termina en cinco segundos; su prolongación cortaría el cero antes que la recta que describe la separación real posterior.](/assets/books/fispm/r20261021/reconstruccion_separacion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-2-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/reconstruccion_separacion.svg" class="lightbox" data-gallery="fispm-r20261021-c2"><img src="/assets/books/fispm/r20261021/reconstruccion_separacion.svg" alt="Separación entre los carros desde dos hasta ocho segundos. La parábola válida termina en cinco segundos; su prolongación cortaría el cero antes que la recta que describe la separación real posterior." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 2.3.* La curva discontinua permite localizar el error de dominio. La separación efectiva continúa por la recta y se anula en $6{,}75\,\mathrm s$.
+
+</figcaption>
+
+</figure>
 
 Después de ocho segundos, A frena y su velocidad disminuye desde dos metros por segundo hasta cero, mientras B conserva seis. La separación crece durante todo ese frenado y sigue creciendo cuando A queda detenido. No habrá un segundo encuentro. Esta conclusión se obtiene comparando velocidades, sin resolver otra cuadrática y revisar sus raíces.
 
@@ -245,9 +269,17 @@ $$
 
 Se anula en dos segundos y es negativa a ambos lados. P llega a la misma altura que Q, en $x=10\,\mathrm m$, pero vuelve a quedar detrás. En ese instante las dos velocidades son $3\,\mathrm{m/s}$. La igualdad de velocidades explica la tangencia de las gráficas; el signo de la diferencia antes y después decide si hubo adelantamiento.
 
-![Diferencia de posiciones igual al negativo del cuadrado del tiempo numérico menos dos. La curva toca el cero en dos segundos y permanece negativa a ambos lados.](/assets/books/fispm/r20261021/reconstruccion_tangencia.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-2-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/reconstruccion_tangencia.svg" class="lightbox" data-gallery="fispm-r20261021-c2"><img src="/assets/books/fispm/r20261021/reconstruccion_tangencia.svg" alt="Diferencia de posiciones igual al negativo del cuadrado del tiempo numérico menos dos. La curva toca el cero en dos segundos y permanece negativa a ambos lados." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 2.4.* Un cero doble puede representar un encuentro sin cambio de orden. Buscar únicamente cambios de signo omitiría este evento.
+
+</figcaption>
+
+</figure>
 
 La misma distinción importa al trabajar con datos o métodos numéricos: comprobar que una función no cambia de signo entre dos registros no demuestra que nunca se haya anulado. La información disponible debe permitir excluir también contactos tangenciales y cambios que hayan ocurrido entre las observaciones.
 
@@ -515,9 +547,17 @@ La separación es $g=(\theta^2-4\theta+3)\,\mathrm m=(\theta-1)(\theta-3)\,\math
 
 El signo de $g$ es positivo antes de un segundo, negativo entre uno y tres y positivo después de tres. B comienza delante, es sobrepasado por A y luego vuelve a adelantarlo. Las separaciones de los extremos son tres y ocho metros, ambas positivas. Igual signo en dos registros no excluye ceros intermedios, incluso si ambas trayectorias son suaves y ambos puntos avanzan siempre. La fórmula conocida en todo el intervalo permite detectar los dos cruces que las muestras extremas omiten.
 
-![Los dos ceros cambian el signo de la separación. Los valores positivos en los extremos del registro no bastan para excluir encuentros interiores.](/assets/books/fispm/r20261021/dos_encuentros.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-2-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/dos_encuentros.svg" class="lightbox" data-gallery="fispm-r20261021-c2"><img src="/assets/books/fispm/r20261021/dos_encuentros.svg" alt="Los dos ceros cambian el signo de la separación. Los valores positivos en los extremos del registro no bastan para excluir encuentros interiores." class="fpm-v04-figure img-fluid" width="800" height="430" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 2.5.* Los dos ceros cambian el signo de la separación. Los valores positivos en los extremos del registro no bastan para excluir encuentros interiores.
+
+</figcaption>
+
+</figure>
 
 ### 12. Cuántas veces se alcanza una posición {#solucion-2-12}
 
@@ -630,9 +670,17 @@ Al sustituir uno y dos se comprueba que coinciden posición y velocidad a cada l
 
 Entre cero y dos segundos el desplazamiento es nulo, pero la distancia es $2/3+2/3=4/3\,\mathrm m$. El área bajo la aceleración representa $\Delta v$, el área con signo bajo la velocidad representa $\Delta x$ y el área bajo su valor absoluto representa distancia. Las tres integrales se refieren a la misma historia y responden preguntas distintas.
 
-![Los mismos instantes alinean tres magnitudes distintas. El área de la aceleración cambia la velocidad; la posición primero disminuye y luego aumenta, aunque la aceleración permanezca no negativa.](/assets/books/fispm/r20261021/aceleracion_velocidad_posicion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-2-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/aceleracion_velocidad_posicion.svg" class="lightbox" data-gallery="fispm-r20261021-c2"><img src="/assets/books/fispm/r20261021/aceleracion_velocidad_posicion.svg" alt="Los mismos instantes alinean tres magnitudes distintas. El área de la aceleración cambia la velocidad; la posición primero disminuye y luego aumenta, aunque la aceleración permanezca no negativa." class="fpm-v04-figure img-fluid" width="576" height="504" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 2.6.* Los mismos instantes alinean tres magnitudes distintas. El área de la aceleración cambia la velocidad; la posición primero disminuye y luego aumenta, aunque la aceleración permanezca no negativa.
+
+</figcaption>
+
+</figure>
 
 ## Lecturas de apoyo
 

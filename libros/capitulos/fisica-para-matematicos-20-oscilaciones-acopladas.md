@@ -52,8 +52,17 @@ $$
 
 El peso y la normal se compensan en vertical. Cada ecuación horizontal conserva las dos interacciones elásticas del carro correspondiente. Si sujetáramos el segundo carro, el primero oscilaría con rigidez $k+\kappa$. Al liberarlo cambia la situación física: su desplazamiento modifica continuamente la extensión central.
 
-![Dos carros y tres resortes con desplazamientos orientados hacia la derecha.](/assets/books/fispm/r20261021/acoplados_aparato.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-20-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/acoplados_aparato.svg" class="lightbox" data-gallery="fispm-r20261021-c20"><img src="/assets/books/fispm/r20261021/acoplados_aparato.svg" alt="Dos carros y tres resortes con desplazamientos orientados hacia la derecha." class="fpm-v04-figure img-fluid" width="498.4" height="163.6" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 20.1.* La extensión del resorte central depende de la diferencia de desplazamientos. Las paredes fijan el laboratorio y proporcionan las fuerzas externas sobre el conjunto.
+
+</figcaption>
+
+</figure>
 
 Sumemos las ecuaciones y después restémoslas. Las combinaciones
 
@@ -78,8 +87,17 @@ Los signos de los subíndices indican suma y diferencia; en este aparato $\omega
 
 Para $\phi_+=(1,1)^{\mathsf T}$ ambos carros se desplazan igual y el resorte central conserva su extensión. Para $\phi_-=(1,-1)^{\mathsf T}$ se desplazan en sentidos opuestos y el resorte central añade restauración. Una componente nula del perfil mantiene ese carro en equilibrio durante el modo. Multiplicar el perfil por una constante y dividir la amplitud por la misma constante describe idéntico movimiento.
 
-![Perfiles de movimiento conjunto y de movimiento opuesto.](/assets/books/fispm/r20261021/acoplados_modos.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-20-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/acoplados_modos.svg" class="lightbox" data-gallery="fispm-r20261021-c20"><img src="/assets/books/fispm/r20261021/acoplados_modos.svg" alt="Perfiles de movimiento conjunto y de movimiento opuesto." class="fpm-v04-figure img-fluid" width="498.4" height="156.118281" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 20.2.* Las flechas representan desplazamientos simultáneos. El perfil conserva sus proporciones durante cada oscilación; su escala depende de la preparación.
+
+</figcaption>
+
+</figure>
 
 ## Preparar los modos y recuperar los datos
 
@@ -111,8 +129,17 @@ $$
 
 Si $\kappa/k$ es pequeño, la frecuencia $\bar\omega$ marca la oscilación rápida y $\delta/2$ describe una modulación lenta. Los módulos de las envolventes vuelven a su situación inicial después de $2\pi/\delta$. La primera anulación de la envolvente del carro 1 ocurre en $t=\pi/\delta$. Su velocidad en ese instante es $-A\delta\cos(\bar\omega\pi/\delta)/2$ y puede conservar un valor distinto de cero. El registro de posición y el de velocidad deben leerse conjuntamente para decidir qué estado alcanzó el carro.
 
-![Dos registros temporales con sus envolventes en acoplamiento débil.](/assets/books/fispm/r20261021/acoplados_batimientos.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-20-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/acoplados_batimientos.svg" class="lightbox" data-gallery="fispm-r20261021-c20"><img src="/assets/books/fispm/r20261021/acoplados_batimientos.svg" alt="Dos registros temporales con sus envolventes en acoplamiento débil." class="fpm-v04-figure img-fluid" width="497.980312" height="234.79625" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 20.3.* Con $m=1\,\mathrm{kg}$, $k=4\,\mathrm{N/m}$ y $\kappa=0{,}245\,\mathrm{N/m}$, las frecuencias son $2$ y $\sqrt{4{,}49}$ radianes por segundo. Las líneas discontinuas muestran los límites de amplitud de las expresiones exactas del modelo lineal.
+
+</figcaption>
+
+</figure>
 
 La energía de los carros y los tres resortes es
 
@@ -171,8 +198,17 @@ $$
 
 El polinomio es $2(\lambda-2)(\lambda-5)$. Podemos elegir los perfiles sin normalizar $(1,1)^{\mathsf T}$ y $(-2,1)^{\mathsf T}$. Su producto euclídeo es $-1$, mientras que su producto de masas es $-2+2=0$. Los perfiles normalizados son $\phi_1=(1,1)^{\mathsf T}/\sqrt3$ y $\phi_2=(-2,1)^{\mathsf T}/\sqrt6$, con las unidades implícitas de esa normalización. Dividir cada ecuación por su masa produce una matriz $M^{-1}K$ cuyas entradas cruzadas son $-2$ y $-1$. La simetría relevante se conserva en la pareja $(K,M)$.
 
-![Comparación de dos perfiles de masas diferentes y su ortogonalidad ponderada.](/assets/books/fispm/r20261021/acoplados_masas.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-20-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/acoplados_masas.svg" class="lightbox" data-gallery="fispm-r20261021-c20"><img src="/assets/books/fispm/r20261021/acoplados_masas.svg" alt="Comparación de dos perfiles de masas diferentes y su ortogonalidad ponderada." class="fpm-v04-figure img-fluid" width="497.980312" height="195.155844" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 20.4.* Para masas de uno y dos kilogramos, el perfil rápido desplaza el primer carro con el doble de amplitud y signo opuesto. Las masas intervienen tanto en la frecuencia como en la proyección de una preparación.
+
+</figcaption>
+
+</figure>
 
 ## Separar las ecuaciones y la energía
 
@@ -212,8 +248,17 @@ En un equilibrio de un sistema elástico, una dirección de curvatura negativa d
 
 Dos frecuencias positivas tampoco aseguran que toda la trayectoria se repita. Cuando ambas participaciones son distintas de cero, un período común $T$ exige $\omega_1T$ y $\omega_2T$ múltiplos enteros de $2\pi$. Por tanto, exige una razón racional $\omega_1/\omega_2$. La descomposición modal permite sumar movimientos periódicos cuyas fases relativas siguen cambiando sin un período común exacto.
 
-![Una dirección libre, una oscilatoria y una de crecimiento.](/assets/books/fispm/r20261021/acoplados_regimenes.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-20-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/acoplados_regimenes.svg" class="lightbox" data-gallery="fispm-r20261021-c20"><img src="/assets/books/fispm/r20261021/acoplados_regimenes.svg" alt="Una dirección libre, una oscilatoria y una de crecimiento." class="fpm-v04-figure img-fluid" width="512.37125" height="176.454922" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 20.5.* Los valores cero, positivo y negativo de $\lambda$ producen evoluciones distintas de la coordenada modal. Cada curva corresponde a una ecuación lineal y a los datos iniciales indicados.
+
+</figcaption>
+
+</figure>
 
 ## La aproximación cerca de un equilibrio
 
@@ -230,8 +275,17 @@ La cota compara fuerzas a medida que disminuye el desplazamiento. En direcciones
 
 El capítulo 21 extenderá la energía cinética a una matriz que depende de coordenadas y de la geometría del vínculo. Cerca de un equilibrio fijo reaparecerá una pareja de formas cuadráticas como $(K,M)$. El presente capítulo construye las proyecciones y la ortogonalidad que ese uso necesita.
 
-![Potencial cuadrático y corrección cuártica para amplitudes crecientes.](/assets/books/fispm/r20261021/acoplados_aproximacion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-20-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/acoplados_aproximacion.svg" class="lightbox" data-gallery="fispm-r20261021-c20"><img src="/assets/books/fispm/r20261021/acoplados_aproximacion.svg" alt="Potencial cuadrático y corrección cuártica para amplitudes crecientes." class="fpm-v04-figure img-fluid" width="498.10125" height="187.873433" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 20.6.* Para $U(q)=kq^2/2+\alpha q^4/4$ con $k,\alpha>0$, la razón entre la fuerza cúbica y la lineal es $\alpha q^2/k$ cuando $q\ne0$. Esa comparación permite declarar una escala de amplitud.
+
+</figcaption>
+
+</figure>
 
 ## Lo que una medición de modos permite inferir
 
@@ -239,8 +293,17 @@ En el aparato simétrico, si se conocen la masa y las dos frecuencias, se obtien
 
 Para estudiar el acoplamiento débil hay que registrar un intervalo suficientemente largo para ver la modulación. Las lecturas repetidas, la calibración de los sensores y la elección de la frecuencia de muestreo conservan el papel que tenían en el capítulo 0. Una serie muy precisa puede seguir siendo compatible con varias frecuencias si sus instantes de registro pierden información. Los problemas finales separan el ajuste de parámetros del contraste de un modelo y del diseño de observaciones nuevas.
 
-![Frecuencias medidas y regiones admisibles de rigideces.](/assets/books/fispm/r20261021/acoplados_inferencia.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-20-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/acoplados_inferencia.svg" class="lightbox" data-gallery="fispm-r20261021-c20"><img src="/assets/books/fispm/r20261021/acoplados_inferencia.svg" alt="Frecuencias medidas y regiones admisibles de rigideces." class="fpm-v04-figure img-fluid" width="483.63375" height="191.59625" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 20.7.* Con masa conocida, las cotas de ambas frecuencias delimitan rigideces admisibles. Las proyecciones sobre los ejes dan cotas individuales; conservar la pareja de frecuencias preserva también la relación entre los parámetros.
+
+</figcaption>
+
+</figure>
 
 ## Elegir qué combinación registrar
 
@@ -561,9 +624,17 @@ Añadir $z=x_1$ permite reconstruir $x_1=z$ y $x_2=2y-z$ en cada instante. Si am
 
 Con parámetros exactos, el registro de $z=x_1$ solo también permite recuperar los dos modos mediante la proposición, pues ambos coeficientes valen uno. En este caso $\omega_-^2-\omega_+^2=4\,\mathrm{s^{-2}}$, y las fórmulas son $Q_+=(\ddot z+\omega_-^2z)/(\omega_-^2-\omega_+^2)$ y $Q_-=z-Q_+$. Las velocidades iniciales se obtienen derivando, lo que introduce la tercera derivada de $z$. La información temporal exacta contiene los cuatro datos; estimar esas derivadas a partir de lecturas perturbadas exige un control de ruido y de muestreo que la identidad algebraica deja abierto.
 
-![Dos preparaciones con promedio idéntico y diferentes trayectorias del primer carro.](/assets/books/fispm/r20261021/acoplados_sensor_modos.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-20-8" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/acoplados_sensor_modos.svg" class="lightbox" data-gallery="fispm-r20261021-c20"><img src="/assets/books/fispm/r20261021/acoplados_sensor_modos.svg" alt="Dos preparaciones con promedio idéntico y diferentes trayectorias del primer carro." class="fpm-v04-figure img-fluid" width="518.4" height="223.2" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 20.8.* En el panel izquierdo coinciden los promedios de las dos preparaciones, aunque sus energías son distintas. El derecho conserva la lectura del primer carro y distingue los movimientos. Las curvas son soluciones exactas del modelo lineal; se muestran diez segundos del registro continuo.
+
+</figcaption>
+
+</figure>
 
 ## Lecturas y relaciones
 

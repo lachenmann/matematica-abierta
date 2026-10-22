@@ -46,9 +46,17 @@ $$
 
 La aceleración inicial es $-0{,}48\,\mathrm{m/s^2}$. Ese signo no contradice el sentido de la velocidad: significa que, mientras el carro avanza hacia la derecha, pierde rapidez. Las fórmulas de aceleración constante no describen el movimiento completo, porque la fuerza cambia con la posición. Los capítulos anteriores permitían calcular una rapidez mediante energía o un cambio de velocidad mediante impulso; conocer el instante de cada evento exige resolver ahora la ecuación de movimiento.
 
-![El carro se prepara a la derecha del equilibrio con velocidad hacia la derecha y fuerza restauradora hacia la izquierda.](/assets/books/fispm/r20261021/oscilador_preparacion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-10-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/oscilador_preparacion.svg" class="lightbox" data-gallery="fispm-r20261021-c10"><img src="/assets/books/fispm/r20261021/oscilador_preparacion.svg" alt="El carro se prepara a la derecha del equilibrio con velocidad hacia la derecha y fuerza restauradora hacia la izquierda." class="fpm-v04-figure img-fluid" width="900" height="480" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 10.1.* Velocidad y fuerza pueden tener sentidos opuestos. Se dibujan con flechas de distinto color y rótulos explícitos; sus longitudes no comparan magnitudes de unidades diferentes. El origen se refiere al equilibrio del modelo horizontal.
+
+</figcaption>
+
+</figure>
 
 ## Una función que conserva su forma al derivar dos veces
 
@@ -137,9 +145,17 @@ $$
 
 Allí la velocidad es $-0{,}40\,\mathrm{m/s}$. El estado completo vuelve a repetirse cada $T=\pi\,\mathrm s$. La amplitud calculada es menor que los treinta centímetros declarados como límite del resorte lineal, de modo que la trayectoria permanece en su dominio supuesto.
 
-![La posición, la velocidad y la aceleración del carro se muestran contra el mismo tiempo.](/assets/books/fispm/r20261021/oscilador_tiempo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-10-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/oscilador_tiempo.svg" class="lightbox" data-gallery="fispm-r20261021-c10"><img src="/assets/books/fispm/r20261021/oscilador_tiempo.svg" alt="La posición, la velocidad y la aceleración del carro se muestran contra el mismo tiempo." class="fpm-v04-figure img-fluid" width="900" height="850" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 10.2.* Las tres gráficas representan el mismo movimiento y tienen ejes verticales con unidades distintas. La primera detención, el primer cruce del equilibrio y el período completo se identifican con líneas verticales. Aceleración nula no implica reposo.
+
+</figcaption>
+
+</figure>
 
 La frecuencia angular cuenta radianes de fase por unidad de tiempo; la frecuencia cuenta ciclos. Para este carro, $\omega=2\,\mathrm{rad/s}$ y $f=1/\pi\,\mathrm{Hz}$. El factor $2\pi$ permite convertir una en otra. Cambiar la amplitud conserva ese período dentro del modelo lineal ideal, pero cambia las velocidades, las aceleraciones y la energía.
 
@@ -163,17 +179,33 @@ $$
 
 El plano de estados utiliza posición en un eje y velocidad en el otro. La curva de energía es una elipse en esas coordenadas; si representamos $\dot q/\omega$ frente a $q$, ambos ejes tienen unidades de longitud y aparece una circunferencia. La posición por sí sola no fija el estado: en cada punto interior al recorrido puede haber movimiento hacia la derecha o hacia la izquierda. El signo de la velocidad distingue esas dos posibilidades.
 
-![Una elipse de estados muestra dos velocidades opuestas para una misma posición y el sentido de recorrido.](/assets/books/fispm/r20261021/oscilador_estado.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-10-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/oscilador_estado.svg" class="lightbox" data-gallery="fispm-r20261021-c10"><img src="/assets/books/fispm/r20261021/oscilador_estado.svg" alt="Una elipse de estados muestra dos velocidades opuestas para una misma posición y el sentido de recorrido." class="fpm-v04-figure img-fluid" width="900" height="560" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 10.3.* El movimiento del ejemplo pasa inicialmente por $(0{,}12\,\mathrm m,0{,}32\,\mathrm{m/s})$. La misma posición con velocidad negativa pertenece a otro instante. Las flechas de la elipse representan evolución temporal, no fuerzas en el espacio físico.
+
+</figcaption>
+
+</figure>
 
 En los extremos $q=\pm A$, la energía es enteramente potencial y el carro se detiene sólo un instante, porque allí la fuerza no es nula. Al cruzar el equilibrio, toda la energía de este modelo es cinética y la rapidez alcanza su máximo. Para el ejemplo, $E=(8\,\mathrm{N/m})(0{,}20\,\mathrm m)^2/2=0{,}16\,\mathrm J$.
 
 La conservación permite hallar $|\dot q|=\omega\sqrt{A^2-q^2}$, pero deja pendiente el signo. La solución temporal resuelve qué rama sigue el movimiento y cuándo cambia de rama en un extremo. Ambas descripciones se complementan: la energía controla posiciones y rapideces posibles, mientras que la fase sitúa al sistema sobre esa curva en cada instante.
 
-![La energía potencial y la cinética se intercambian durante un período del carro.](/assets/books/fispm/r20261021/oscilador_energia.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-10-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/oscilador_energia.svg" class="lightbox" data-gallery="fispm-r20261021-c10"><img src="/assets/books/fispm/r20261021/oscilador_energia.svg" alt="La energía potencial y la cinética se intercambian durante un período del carro." class="fpm-v04-figure img-fluid" width="900" height="500" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 10.4.* Las energías suman $0{,}16\,\mathrm J$. Cada una repite sus valores en medio período del movimiento, porque depende del cuadrado de un seno o un coseno. Esa repetición no significa que posición y velocidad hayan vuelto a su estado inicial.
+
+</figcaption>
+
+</figure>
 
 ## Medir desde un equilibrio desplazado
 
@@ -190,9 +222,17 @@ $$
 
 En un resorte vertical, tomando $y$ hacia abajo desde la longitud natural, $m\ddot y=mg-ky$. El equilibrio está en $y_e=mg/k$. La gravedad uniforme desplaza la posición de equilibrio y no modifica $\omega$ en este modelo. Soltar el cuerpo desde la longitud natural equivale a comenzar con $q_0=-y_e$, no con amplitud cero.
 
-![Un resorte vertical distingue longitud natural, equilibrio y desplazamiento respecto de ese equilibrio.](/assets/books/fispm/r20261021/oscilador_vertical.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-10-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/oscilador_vertical.svg" class="lightbox" data-gallery="fispm-r20261021-c10"><img src="/assets/books/fispm/r20261021/oscilador_vertical.svg" alt="Un resorte vertical distingue longitud natural, equilibrio y desplazamiento respecto de ese equilibrio." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 10.5.* Las coordenadas $y$ y $q=y-y_e$ tienen orígenes diferentes. En $y=y_e$ se equilibran peso y fuerza del resorte. El esquema utiliza gravedad uniforme, resorte ideal y soporte fijo; no identifica la longitud natural con el equilibrio cargado.
+
+</figcaption>
+
+</figure>
 
 Si los apoyos cambian con el tiempo o la fuerza deja de ser constante, esta traslación por un número fijo ya no resuelve el problema. También puede cambiar la inercia relevante: dos masas libres unidas por un resorte no equivalen a una masa con el otro extremo inmóvil. El ejercicio 13 deduce su ecuación relativa utilizando el centro de masa del capítulo anterior.
 
@@ -239,17 +279,33 @@ Para ángulos pequeños en radianes, sustituir $\sin\theta$ por $\theta$ produce
 
 Un registro de posición con suficiente resolución puede dar amplitud, período y fase del modelo. Medir sólo posiciones en instantes muy separados puede dejar ambigua incluso la frecuencia: movimientos que completan ciclos adicionales entre las muestras pueden coincidir en todos los puntos registrados. El ejercicio 18 construye dos ejemplos exactos.
 
-![Dos oscilaciones de frecuencias diferentes coinciden en posiciones registradas cada segundo.](/assets/books/fispm/r20261021/oscilador_muestreo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-10-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/oscilador_muestreo.svg" class="lightbox" data-gallery="fispm-r20261021-c10"><img src="/assets/books/fispm/r20261021/oscilador_muestreo.svg" alt="Dos oscilaciones de frecuencias diferentes coinciden en posiciones registradas cada segundo." class="fpm-v04-figure img-fluid" width="900" height="570" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 10.6.* Los puntos muestran el mismo registro en tiempos enteros para dos movimientos distintos. Una observación intermedia permite separarlos. Las curvas son modelos matemáticos; los puntos no se presentan como mediciones reales.
+
+</figcaption>
+
+</figure>
 
 El período se estima mejor contando varias oscilaciones equivalentes que cronometrando una sola. Sin embargo, la reducción de una cota temporal por ciclo no elimina otras incertidumbres, como una masa mal conocida o el cambio de amplitud por pérdidas. Del período ideal $T=2\pi\sqrt{m/k}$ se obtiene $k=4\pi^2m/T^2$: una inferencia de rigidez exige conservar las cotas de ambas magnitudes.
 
 La propia prueba de unicidad permite interpretar qué sucede con pequeñas diferencias de preparación. Para dos soluciones del mismo oscilador, su diferencia vuelve a ser armónica y permanece acotada por una amplitud fijada por las diferencias iniciales. En cambio, un pequeño error de frecuencia puede producir un desfase creciente al comparar durante muchos ciclos. Los dos últimos problemas distinguen estas situaciones; la estabilidad frente a los datos iniciales no convierte un modelo aproximado en exacto para todo tiempo.
 
-![En el plano de desplazamiento y velocidad reescalada, las diferencias iniciales quedan dentro de una circunferencia de error.](/assets/books/fispm/r20261021/oscilador_errores.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-10-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/oscilador_errores.svg" class="lightbox" data-gallery="fispm-r20261021-c10"><img src="/assets/books/fispm/r20261021/oscilador_errores.svg" alt="En el plano de desplazamiento y velocidad reescalada, las diferencias iniciales quedan dentro de una circunferencia de error." class="fpm-v04-figure img-fluid" width="900" height="590" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 10.7.* Ambos ejes tienen unidades de longitud al representar $\Delta v/\omega$ frente a $\Delta q$. Para el mismo valor de $\omega$, el radio de error se conserva. Comparar dos frecuencias distintas es otro problema, que puede acumular fase.
+
+</figcaption>
+
+</figure>
 
 ## Ejercicios
 

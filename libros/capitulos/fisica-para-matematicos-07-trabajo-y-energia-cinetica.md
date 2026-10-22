@@ -45,9 +45,17 @@ F(x)=12\,\mathrm N-(2\,\mathrm{N/m})x,
 \qquad F_{\mathrm{net},x}(x)=8\,\mathrm N-(2\,\mathrm{N/m})x.
 $$
 
-![El carro se desplaza a la derecha sobre un riel fijo; el tirón disminuye con x y el rozamiento mantiene cuatro newtons hacia la izquierda.](/assets/books/fispm/r20261021/trabajo_carro.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-7-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/trabajo_carro.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="/assets/books/fispm/r20261021/trabajo_carro.svg" alt="El carro se desplaza a la derecha sobre un riel fijo; el tirón disminuye con x y el rozamiento mantiene cuatro newtons hacia la izquierda." class="fpm-v04-figure img-fluid" width="680" height="500" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 7.1.* El diagrama identifica al receptor de las fuerzas. La normal y el peso no tienen componente horizontal. Las flechas del tirón y del rozamiento son esquemáticas; sus valores a lo largo del recorrido se comparan en la figura siguiente.
+
+</figcaption>
+
+</figure>
 
 ## Acumular el efecto de la fuerza durante el recorrido
 
@@ -81,9 +89,17 @@ Escogimos la raíz positiva porque seguimos el tramo de avance. Podemos comproba
 
 El área bajo la recta de fuerza neta es un triángulo de base cuatro metros y altura ocho newtons. Su área da los mismos dieciséis joules. Si separamos agentes, el tirón aporta treinta y dos joules —el área de un trapecio— y el rozamiento aporta menos dieciséis. La normal y el peso aportan cero en este recorrido horizontal.
 
-![Gráficas del tirón, el rozamiento y la fuerza neta frente a la posición. Las áreas con signo dan sus trabajos.](/assets/books/fispm/r20261021/trabajo_areas.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-7-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/trabajo_areas.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="/assets/books/fispm/r20261021/trabajo_areas.svg" alt="Gráficas del tirón, el rozamiento y la fuerza neta frente a la posición. Las áreas con signo dan sus trabajos." class="fpm-v04-figure img-fluid" width="680" height="670" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 7.2.* Las tres gráficas utilizan la misma escala de posición. La ordenada es una componente de fuerza, no una rapidez. Una región bajo el eje aporta trabajo negativo; el balance neto es $32\,\mathrm J-16\,\mathrm J=16\,\mathrm J$.
+
+</figcaption>
+
+</figure>
 
 ## La detención después de retirar el tirón
 
@@ -131,9 +147,17 @@ $$
 
 Para un desplazamiento recto de longitud $d$ que forma un ángulo $\alpha$ con la fuerza constante, obtenemos $W=Fd\cos\alpha$. Usar sólo $Fd$ supone que fuerza y desplazamiento comparten sentido. Tampoco basta que el módulo de la fuerza sea constante para aplicar la proposición: su dirección debe permanecer constante. La tensión de un péndulo cambia de dirección durante la oscilación y es perpendicular a la velocidad; su trabajo se decide por esa perpendicularidad.
 
-![Un desplazamiento horizontal distingue un tirón oblicuo, una fuerza opuesta y una fuerza perpendicular.](/assets/books/fispm/r20261021/trabajo_signos.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-7-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/trabajo_signos.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="/assets/books/fispm/r20261021/trabajo_signos.svg" alt="Un desplazamiento horizontal distingue un tirón oblicuo, una fuerza opuesta y una fuerza perpendicular." class="fpm-v04-figure img-fluid" width="680" height="500" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 7.3.* El signo corresponde a la proyección de cada fuerza sobre el desplazamiento. El trabajo positivo y el negativo pueden provenir de fuerzas simultáneas sobre la misma partícula. Las componentes auxiliares del tirón no se agregan como fuerzas nuevas.
+
+</figcaption>
+
+</figure>
 
 ## La cantidad que cambia cuando hay trabajo neto
 
@@ -201,9 +225,17 @@ $$
 
 Al alejar la partícula de la posición natural, el resorte hace trabajo negativo. Al acercarla, hace trabajo positivo. Es importante distinguir su fuerza de la del agente que estira el resorte: en un desplazamiento lento controlado, o en uno con velocidad constante y sin otras fuerzas horizontales, ese agente debe ejercer una fuerza aproximadamente opuesta o exactamente opuesta, respectivamente. Sus trabajos corresponden a receptores e interacciones identificables.
 
-![La fuerza lineal del resorte se opone a la deformación; el área orientada determina el trabajo.](/assets/books/fispm/r20261021/trabajo_resorte.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-7-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/trabajo_resorte.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="/assets/books/fispm/r20261021/trabajo_resorte.svg" alt="La fuerza lineal del resorte se opone a la deformación; el área orientada determina el trabajo." class="fpm-v04-figure img-fluid" width="680" height="500" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 7.4.* El módulo de la fuerza crece con la deformación. Al comprimir desde $x=0$ hacia valores negativos, la fuerza es positiva pero $dx<0$, de modo que el trabajo del resorte es negativo. La orientación de los límites importa tanto como el signo de la gráfica.
+
+</figcaption>
+
+</figure>
 
 ## Sumar energías de cuerpos conectados
 
@@ -223,9 +255,17 @@ $$
 
 Para $M=6\,\mathrm{kg}$, $m=2\,\mathrm{kg}$ y $h=0{,}70\,\mathrm m$, el miembro derecho vale catorce joules y resulta $v=\sqrt2\,\mathrm{m/s}$. El coeficiente $M+4m$ aparece porque la energía cinética usa el cuadrado de la rapidez y la pesa se mueve con rapidez $2v$. Coincide con el cálculo de Newton del capítulo anterior: $v^2=2(10/7\,\mathrm{m/s^2})(0{,}70\,\mathrm m)=2\,\mathrm{m^2/s^2}$.
 
-![La carga baja h, la pesa sube 2h y los trabajos de la tensión se cancelan en la suma, aunque no se anulan por separado.](/assets/books/fispm/r20261021/trabajo_polea.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-7-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/trabajo_polea.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="/assets/books/fispm/r20261021/trabajo_polea.svg" alt="La carga baja h, la pesa sube 2h y los trabajos de la tensión se cancelan en la suma, aunque no se anulan por separado." class="fpm-v04-figure img-fluid" width="680" height="635" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 7.5.* Para los valores del texto, la tensión realiza menos treinta y seis joules sobre la carga y más treinta y seis sobre la pesa. Los trabajos gravitatorios son cuarenta y dos y menos veintiocho joules. Las energías cinéticas finales suman seis y ocho joules. La figura usa el recorrido de la polea móvil, no el de una polea fija sencilla.
+
+</figcaption>
+
+</figure>
 
 La fórmula de energía no proporciona por sí sola la tensión. Para recuperarla necesitamos una ecuación de Newton o información equivalente. También se debe verificar que la cuerda permanezca tensa y que no haya obstáculos antes del desplazamiento utilizado. El balance simplifica una pregunta concreta sin eliminar las demás condiciones del modelo.
 
@@ -243,9 +283,17 @@ La potencia media durante un intervalo de duración $\Delta t>0$ es $\overline P
 
 Al sumar agentes, el teorema demostrado da $\sum_jP_{\mathbf F_j}=dK/dt$. Un ascensor que ya sube a velocidad constante tiene potencia neta nula, aunque el motor aporte potencia positiva y la gravedad aporte la opuesta. No se deduce el consumo eléctrico del motor con sólo este balance mecánico: las pérdidas y la conversión entre formas de energía necesitarían otro modelo.
 
-![Una potencia creciente tiene un área que corresponde al trabajo; la potencia media es la altura del rectángulo de la misma área.](/assets/books/fispm/r20261021/trabajo_potencia.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-7-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/trabajo_potencia.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="/assets/books/fispm/r20261021/trabajo_potencia.svg" alt="Una potencia creciente tiene un área que corresponde al trabajo; la potencia media es la altura del rectángulo de la misma área." class="fpm-v04-figure img-fluid" width="680" height="500" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 7.6.* En el ejemplo del ejercicio 17, $P(t)=4\,\mathrm W+(8\,\mathrm{W/s})t$. El trabajo de cero a tres segundos es cuarenta y ocho joules. La potencia final, veintiocho watts, no es la potencia media de dieciséis watts.
+
+</figcaption>
+
+</figure>
 
 ## Lo que una medición de trabajo permite inferir
 
@@ -437,9 +485,17 @@ El trabajo de fricción sobre la caja es $+8\,\mathrm J$, igual a $K_f-K_i=9\,\m
 
 Los trabajos de la pareja suman menos cuatro joules. Podemos reconstruir ese valor siguiendo el deslizamiento: la cinta adelanta a la caja $3\,\mathrm m-2\,\mathrm m=1\,\mathrm m$, y el módulo de la fuerza de contacto es cuatro newtons. La suma es, por tanto, $-(4\,\mathrm N)(1\,\mathrm m)=-4\,\mathrm J$. Las fuerzas opuestas actúan sobre receptores que recorren distancias diferentes. La pérdida de energía cinética mecánica asociada al deslizamiento requiere considerar la energía interna al ampliar el sistema; no representa una desaparición de energía. El motor que mantiene la cinta uniforme aporta además su propio trabajo. Cuando las velocidades se igualan, mantener el movimiento uniforme de la caja requiere fricción tangencial nula en esta situación.
 
-![La caja y la cinta avanzan distancias diferentes durante el deslizamiento, aunque las fuerzas de contacto sean opuestas.](/assets/books/fispm/r20261021/trabajo_cinta.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-7-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/trabajo_cinta.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="/assets/books/fispm/r20261021/trabajo_cinta.svg" alt="La caja y la cinta avanzan distancias diferentes durante el deslizamiento, aunque las fuerzas de contacto sean opuestas." class="fpm-v04-figure img-fluid" width="680" height="500" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 7.7.* En un segundo, la caja avanza dos metros y la superficie tres. La fricción entrega ocho joules a la caja y realiza menos doce joules sobre la cinta. Las flechas de fuerza están separadas de los desplazamientos para no confundir sus módulos.
+
+</figcaption>
+
+</figure>
 
 ### 13. Trabajo de la fricción estática {#solucion-7-13}
 
@@ -503,9 +559,17 @@ $$
 
 La fuerza B entrega antes el mismo trabajo, así que el cuerpo conserva una rapidez mayor durante buena parte del recorrido. La comparación de trabajos totales pierde la distribución espacial de esa entrega. Los perfiles completos de $K(x)$ sí conservan información suficiente para calcular los tiempos mediante una integral en el tramo de avance.
 
-![Dos perfiles de fuerza tienen áreas iguales y producen energías cinéticas finales iguales, pero diferentes valores intermedios.](/assets/books/fispm/r20261021/trabajo_perfiles.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-7-8" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/trabajo_perfiles.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="/assets/books/fispm/r20261021/trabajo_perfiles.svg" alt="Dos perfiles de fuerza tienen áreas iguales y producen energías cinéticas finales iguales, pero diferentes valores intermedios." class="fpm-v04-figure img-fluid" width="680" height="640" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 7.8.* En el perfil B se adquieren los ocho joules durante la primera mitad del recorrido. Para cada posición interior posterior al origen, su energía cinética es mayor que la del perfil A, hasta coincidir al final. Por ello la integral de tiempo es menor para B.
+
+</figcaption>
+
+</figure>
 
 ### 19. Inferir un coeficiente con cotas {#solucion-7-19}
 

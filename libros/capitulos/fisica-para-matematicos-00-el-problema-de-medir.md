@@ -44,9 +44,17 @@ $$
 
 Para obtener ese resultado tuvimos que identificar dos bordes, alinear la regla y relacionar cada extremo con una marca. Si uno de los bordes es irregular o la barra está inclinada respecto de la escala, el procedimiento requiere una decisión adicional. La expresión «longitud de la barra» se vuelve una pregunta precisa cuando hemos determinado qué extremos se comparan y en qué condiciones. A esa magnitud que pretendemos medir, definida con el detalle necesario para el problema, la llamaremos *mensurando*. El término permite distinguir lo que buscamos de la señal que utilizamos para conocerlo.
 
-![Una barra alineada con una regla; sus extremos corresponden a 2,30 y 14,70 centímetros, y una llave marca la diferencia de 12,40 centímetros.](/assets/books/fispm/r20261021/medida_regla.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-0-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/medida_regla.svg" class="lightbox" data-gallery="fispm-r20261021-c0"><img src="/assets/books/fispm/r20261021/medida_regla.svg" alt="Una barra alineada con una regla; sus extremos corresponden a 2,30 y 14,70 centímetros, y una llave marca la diferencia de 12,40 centímetros." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 0.1.* La longitud es la separación entre los extremos elegidos. El cero de la regla no tiene que coincidir con uno de ellos para que podamos medirla mediante una diferencia.
+
+</figcaption>
+
+</figure>
 
 ## La magnitud, el número y la unidad
 
@@ -132,9 +140,17 @@ Una corrección constante del cero no habría corregido el factor de escala. El 
 
 Las dos referencias determinaron la recta porque habíamos supuesto una relación afín. Todavía no justifican esa relación para cualquier masa. Si intentamos extenderla y una referencia adicional de $50\,\mathrm g$ produce una lectura entre $50{,}79$ y $50{,}81\,\mathrm g$, el modelo predice $50{,}22\,\mathrm g$ y queda fuera de ese intervalo. La discrepancia impide aceptar sin revisión aquella extensión. Habrá que examinar el rango del aparato, la calibración, la referencia y las condiciones de lectura; los dos puntos usados para ajustar la recta no constituían una prueba independiente de ella.
 
-![Recta de calibración fijada por las masas de cinco y veinticinco gramos. Una tercera referencia de cincuenta gramos queda fuera de la prolongación predicha; un panel de residuos muestra la diferencia de 0,58 gramos.](/assets/books/fispm/r20261021/medida_calibracion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-0-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/medida_calibracion.svg" class="lightbox" data-gallery="fispm-r20261021-c0"><img src="/assets/books/fispm/r20261021/medida_calibracion.svg" alt="Recta de calibración fijada por las masas de cinco y veinticinco gramos. Una tercera referencia de cincuenta gramos queda fuera de la prolongación predicha; un panel de residuos muestra la diferencia de 0,58 gramos." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 0.2.* Las dos primeras referencias fijan el modelo afín. El tercer punto prueba una extensión de su dominio. La escala ampliada del residuo permite apreciar una discrepancia que el dibujo general deja poco visible.
+
+</figcaption>
+
+</figure>
 
 ## Precisión y exactitud
 
@@ -160,9 +176,17 @@ Podemos hacer visible la diferencia con una comparación simulada. Tratemos como
 
 A tiene menor dispersión en esta comparación, pero todas sus lecturas están más lejos de la referencia que las de B. B ofrece aquí resultados más próximos a ella aunque varían más entre sí. La coincidencia exacta de su media con la referencia es una propiedad de los datos elegidos; cinco observaciones no garantizan que las mediciones futuras mantengan esa coincidencia. El contraste permite separar las dos preguntas sin atribuir al aparato una perfección que no hemos demostrado.
 
-![Dos series simuladas sobre una misma escala de longitudes. A se concentra alrededor de 12,40 centímetros; B se dispersa más alrededor de la referencia idealizada de 12,60 centímetros.](/assets/books/fispm/r20261021/precision_exactitud.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-0-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/precision_exactitud.svg" class="lightbox" data-gallery="fispm-r20261021-c0"><img src="/assets/books/fispm/r20261021/precision_exactitud.svg" alt="Dos series simuladas sobre una misma escala de longitudes. A se concentra alrededor de 12,40 centímetros; B se dispersa más alrededor de la referencia idealizada de 12,60 centímetros." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 0.3.* La concentración de una serie y su cercanía a la referencia se juzgan mediante comparaciones distintas. Los puntos muestran todas las lecturas de este ejemplo; los segmentos señalan sus rangos observados.
+
+</figcaption>
+
+</figure>
 
 Para referirse específicamente al acuerdo entre el promedio ideal de repeticiones y una referencia, la metrología utiliza además el término *veracidad*. Esta distinción permite estudiar el sesgo sin confundirlo con la dispersión. Una media finita ayuda a investigarlo, pero no coincide por definición con ese promedio ideal. La exactitud, por su parte, no se expresa mediante un número propio como «exactitud de 0,02 centímetros»: esa cifra podría describir un error o una cota, y habría que precisar cuál.
 
@@ -184,9 +208,17 @@ $$
 
 La cota absoluta por ciclo se ha reducido a $0{,}02\,\mathrm s$ porque el mismo error total se distribuye entre diez ciclos contados. La mejora depende de que la cota total se mantenga y el conteo sea correcto. No proviene de suponer que diez errores independientes se cancelan.
 
-![Curva periódica esquemática con diez ciclos completos, marcados desde un paso por el origen con sentido positivo hasta el siguiente paso equivalente tras diez ciclos.](/assets/books/fispm/r20261021/medida_ciclos.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-0-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/medida_ciclos.svg" class="lightbox" data-gallery="fispm-r20261021-c0"><img src="/assets/books/fispm/r20261021/medida_ciclos.svg" alt="Curva periódica esquemática con diez ciclos completos, marcados desde un paso por el origen con sentido positivo hasta el siguiente paso equivalente tras diez ciclos." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 0.4.* Para contar ciclos elegimos eventos equivalentes. Dos pasos por la misma posición con sentidos opuestos pueden estar separados por medio ciclo. La curva ilustra la periodicidad; no es un registro experimental del oscilador.
+
+</figcaption>
+
+</figure>
 
 Si los ciclos duran exactamente lo mismo, $\overline T$ coincide con ese período común. Si sus duraciones cambian, el cociente proporciona su media. Una disminución de amplitud, un cambio del dispositivo o una variación del ritmo pueden exigir comprobar qué duración estamos promediando. Medir durante más tiempo amplía la observación y puede hacer visibles efectos que antes eran despreciables.
 
@@ -210,9 +242,17 @@ $$
 
 El producto de los valores centrales es $12{,}4\cdot5{,}0=62{,}0\,\mathrm{cm^2}$. Sus distancias a los extremos del intervalo son $1{,}73$ y $1{,}75\,\mathrm{cm^2}$: una fórmula no lineal puede transformar intervalos simétricos en una envolvente que no está centrada en el resultado nominal. Si quisiéramos una cota simétrica alrededor de $62{,}0$, tendría que ser al menos la mayor de esas dos diferencias. La escritura $A=(62{,}0\pm1{,}8)\,\mathrm{cm^2}$ sería una envolvente conservadora redondeada.
 
-![Intervalo de áreas admisibles entre 60,27 y 63,75 centímetros cuadrados. El valor nominal de 62,0 está marcado, con distancias diferentes de 1,73 y 1,75 a los extremos.](/assets/books/fispm/r20261021/medida_area.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-0-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/medida_area.svg" class="lightbox" data-gallery="fispm-r20261021-c0"><img src="/assets/books/fispm/r20261021/medida_area.svg" alt="Intervalo de áreas admisibles entre 60,27 y 63,75 centímetros cuadrados. El valor nominal de 62,0 está marcado, con distancias diferentes de 1,73 y 1,75 a los extremos." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 0.5.* La cota del producto se obtiene de los extremos de las magnitudes positivas. El punto nominal no ocupa exactamente el centro de la banda.
+
+</figcaption>
+
+</figure>
 
 El procedimiento no necesita independencia estadística. Si existen relaciones adicionales entre $L$ y $w$, la banda puede ser más ancha que el conjunto realmente posible, pero sigue conteniéndolo. Para estrecharla haría falta usar esas relaciones con una justificación física o instrumental.
 
@@ -521,9 +561,17 @@ $$
 
 Esta envolvente contiene el valor correcto, pero sus extremos combinan factores de escala distintos para los dos lados. El modelo del enunciado exige uno solo. Recuperar esa relación elimina la incertidumbre de la razón dentro de este modelo ideal; otros errores de lectura o de orientación impedirían esa cancelación exacta.
 
-![La dependencia común restringe los pares a un segmento. Combinar libremente sus cotas individuales admite pares que ningún factor común puede producir.](/assets/books/fispm/r20261021/escala_comun.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-0-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/escala_comun.svg" class="lightbox" data-gallery="fispm-r20261021-c0"><img src="/assets/books/fispm/r20261021/escala_comun.svg" alt="La dependencia común restringe los pares a un segmento. Combinar libremente sus cotas individuales admite pares que ningún factor común puede producir." class="fpm-v04-figure img-fluid" width="800" height="430" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 0.6.* La dependencia común restringe los pares a un segmento. Combinar libremente sus cotas individuales admite pares que ningún factor común puede producir.
+
+</figcaption>
+
+</figure>
 
 ### 14. Promediar con cotas absolutas {#solucion-0-14}
 

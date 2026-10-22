@@ -54,8 +54,17 @@ las ecuaciones se escriben $\dot q=H_p$ y $\dot p=-H_q$. En este aparato $H$ es 
 
 La curva de energía permite conocer las posiciones extremas; la flecha del movimiento permite distinguir una llegada de una salida. Dos preparaciones sobre la misma elipse tienen la misma energía y distinta fase. Las masas del resorte, las pérdidas por rozamiento y los límites de elasticidad pertenecen al contraste del modelo con el aparato; la elipse expresa una consecuencia exacta de las idealizaciones declaradas.
 
-![Elipse de energía y sentido del movimiento](/assets/books/fispm/r20261021/hamilton_fase.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-24-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/hamilton_fase.svg" class="lightbox" data-gallery="fispm-r20261021-c24"><img src="/assets/books/fispm/r20261021/hamilton_fase.svg" alt="Elipse de energía y sentido del movimiento" class="fpm-v04-figure img-fluid" width="571.0575" height="329.661187" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 24.1.* Para $m=2$, $k=8$ y energía $0,52$, la preparación $q=0,3$, $p=-0,8$ fija un punto y una dirección en la elipse. Las unidades son SI.
+
+</figcaption>
+
+</figure>
 
 ## Invertir los momentos
 
@@ -81,8 +90,17 @@ Esta operación es la transformación de Legendre respecto de las velocidades. E
 
 Para una función escalar de una velocidad, la tangente a la gráfica de $L(v)$ en $v$ tiene pendiente $p=L_v(v)$ y ordenada en el origen $L(v)-pv=-H(p)$. La figura muestra cómo el valor de la pendiente selecciona el punto de contacto. Si esa selección tiene varias ramas, habrá que elegir el dominio en el que la inversión describe el estado que estamos siguiendo.
 
-![Tangente y transformación de Legendre](/assets/books/fispm/r20261021/hamilton_legendre.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-24-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/hamilton_legendre.svg" class="lightbox" data-gallery="fispm-r20261021-c24"><img src="/assets/books/fispm/r20261021/hamilton_legendre.svg" alt="Tangente y transformación de Legendre" class="fpm-v04-figure img-fluid" width="571.370625" height="329.904" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 24.2.* A posición y tiempo fijos, la pendiente $p$ selecciona una velocidad en la parábola $L=v^2$. La ordenada de su tangente vale $-H$; se muestran valores numéricos adimensionales.
+
+</figcaption>
+
+</figure>
 
 **Proposición.** En una rama regular, las derivadas del Hamiltoniano satisfacen
 
@@ -159,8 +177,17 @@ Si $Q=0$ y $H_t=0$, cada órbita permanece en un nivel de $H$. Para $H$ suave, e
 
 En un grado de libertad, $H=p^2/(2m)+U(q)$ convierte el nivel $H=E$ en $p=\pm\sqrt{2m(E-U(q))}$. Las dos ramas conservan los dos sentidos de movimiento. Los puntos con $p=0$ requieren mirar también $\dot p=-U'(q)$ para decidir si hay retorno o equilibrio. Una ecuación de energía por sí sola permite curvas con un uso incorrecto del tiempo; las dos ecuaciones canónicas eliminan esa ambigüedad.
 
-![Niveles de energía del péndulo](/assets/books/fispm/r20261021/hamilton_pendulo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-24-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/hamilton_pendulo.svg" class="lightbox" data-gallery="fispm-r20261021-c24"><img src="/assets/books/fispm/r20261021/hamilton_pendulo.svg" alt="Niveles de energía del péndulo" class="fpm-v04-figure img-fluid" width="571.370625" height="350.707875" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 24.3.* El cilindro del péndulo se representa con el corte $-\pi\leq\theta\leq\pi$. Las oscilaciones quedan bajo la energía de la posición superior; las rotaciones atraviesan el corte. La separatriz contiene, además del equilibrio superior, ramas que se le acercan asintóticamente. Parámetros $m=\ell=g=1$.
+
+</figcaption>
+
+</figure>
 
 ## La acción en posición y momento
 
@@ -382,8 +409,17 @@ Un radio constante exige $p_r=0$ y $U_{\mathrm{ef}}'(r)=0$, es decir $kr_0^4=\la
 
 La reconstrucción angular requiere integrar $\dot\phi=\lambda/(mr(t)^2)$. En la órbita circular vale $\dot\phi=\operatorname{sgn}(\lambda)\sqrt{k/m}$. Para los parámetros unitarios, $r_0=1$, la frecuencia radial linealizada es $2$ y la velocidad angular circular es $1$. El término centrífugo del potencial efectivo expresa el momento fijado y la geometría de la reducción.
 
-![Reducción radial y reconstrucción angular](/assets/books/fispm/r20261021/hamilton_radial.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-24-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/hamilton_radial.svg" class="lightbox" data-gallery="fispm-r20261021-c24"><img src="/assets/books/fispm/r20261021/hamilton_radial.svg" alt="Reducción radial y reconstrucción angular" class="fpm-v04-figure img-fluid" width="570.52125" height="329.904" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 24.4.* Para $m=k=\lambda=1$, el potencial efectivo tiene mínimo en $r=1$. La figura representa el movimiento radial reducido; la órbita plana exige integrar también la ecuación del ángulo.
+
+</figcaption>
+
+</figure>
 
 ### 7. El cilindro del péndulo {#solucion-24-7}
 
@@ -425,8 +461,17 @@ $$
 
 Integrar da $x(t)=x_0+(p_0/m)t$ y $q(t)=x_0+(p_0/m)t-a(t)$. Para $a=At^2/2$, $\ddot q=-A$, mientras $\ddot x=0$. La energía cinética del laboratorio $E_{\mathrm{lab}}=p_0^2/(2m)$ permanece constante. El Hamiltoniano genera la evolución de $q$ y cambia según la aceleración de la representación. El apoyo sólo define el origen móvil de coordenadas en este problema; una fuerza de contacto requeriría incorporarse al modelo.
 
-![Partícula libre en coordenadas aceleradas](/assets/books/fispm/r20261021/hamilton_movil.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-24-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/hamilton_movil.svg" class="lightbox" data-gallery="fispm-r20261021-c24"><img src="/assets/books/fispm/r20261021/hamilton_movil.svg" alt="Partícula libre en coordenadas aceleradas" class="fpm-v04-figure img-fluid" width="559.633125" height="329.904" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 24.5.* El movimiento libre $x=t$ conserva su velocidad de laboratorio. El origen prescrito $a=t^2/4$ produce la coordenada $q=x-a$. El máximo de $q$ registra igualdad instantánea de velocidades.
+
+</figcaption>
+
+</figure>
 
 ### 10. Trasladar el momento mediante un borde {#solucion-24-10}
 
@@ -439,8 +484,17 @@ $$
 
 Derivar $m\dot q=P-a$ y usar la segunda ecuación cancela $\dot a$, dejando $m\ddot q=-kq$. La energía física es $E=(P-a)^2/(2m)+kq^2/2$. Aun con $a$ dependiente del tiempo, su derivada sobre la solución es $\dot E=\dot q(\dot P-\dot a+kq)=0$. En un instante fijo, cada curva de energía queda trasladada en el eje del momento por la cantidad $a(t)$; la calibración que convierte velocidad medida en momento conjugado incluye esa cantidad.
 
-![El borde traslada la coordenada de momento](/assets/books/fispm/r20261021/hamilton_borde.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-24-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/hamilton_borde.svg" class="lightbox" data-gallery="fispm-r20261021-c24"><img src="/assets/books/fispm/r20261021/hamilton_borde.svg" alt="El borde traslada la coordenada de momento" class="fpm-v04-figure img-fluid" width="517.693441" height="327.417576" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 24.6.* Para un oscilador unitario, la misma energía física se representa mediante $q^2+p^2=1$ o $q^2+(P-a)^2=1$. La traslación mostrada usa $a=0,7$ en un instante fijo; las curvas representan energía física.
+
+</figcaption>
+
+</figure>
 
 ### 11. Un resorte cuya rigidez cambia {#solucion-24-11}
 
@@ -565,8 +619,17 @@ $$
 
 La cota procede de la anchura del intervalo y vale para todo $n$. Para $h=0,1$, resulta $|H_n-H_0|\leq0,1053H_0$. El esquema sigue una elipse modificada y puede acumular desfase temporal; conservar una forma cercana a la energía controla una propiedad concreta del cálculo. La solución exacta sigue teniendo su propia fase y su energía $H_0$.
 
-![Comparación de energía en dos esquemas de actualización](/assets/books/fispm/r20261021/hamilton_numerico.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-24-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/hamilton_numerico.svg" class="lightbox" data-gallery="fispm-r20261021-c24"><img src="/assets/books/fispm/r20261021/hamilton_numerico.svg" alt="Comparación de energía en dos esquemas de actualización" class="fpm-v04-figure img-fluid" width="571.153125" height="252.838125" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 24.7.* Desde $(q_0,p_0)=(1,0)$, con $h=0,1$, Euler explícito multiplica la energía por $1,01$ en cada paso. La actualización sucesiva de momento y posición conserva $I_h$ y mantiene acotada la energía física calculada. Los puntos corresponden a estados discretos.
+
+</figcaption>
+
+</figure>
 
 El estado se puede seguir sin acumular redondeos de doscientas actualizaciones. Para $0<h<2$, pongamos $a_h=\sqrt{1-h^2/4}$ y $\vartheta_h=2\arcsin(h/2)$. Entonces $\cos\vartheta_h=1-h^2/2$ y $\sin\vartheta_h=ha_h$. Las expresiones
 

@@ -44,9 +44,17 @@ $$
 
 El término nuevo depende de la velocidad. Su signo cambia cuando el carro cambia de sentido: siempre se opone al movimiento relativo al laboratorio. En cambio, la fuerza del resorte cambia de signo al atravesar el equilibrio. Confundir estas dos dependencias impediría incluso dibujar correctamente las fuerzas durante un ciclo.
 
-![El resorte y el amortiguador actúan en paralelo sobre un carro; un actuador externo puede agregar una fuerza horizontal.](/assets/books/fispm/r20261021/disipacion_modelo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-11-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/disipacion_modelo.svg" class="lightbox" data-gallery="fispm-r20261021-c11"><img src="/assets/books/fispm/r20261021/disipacion_modelo.svg" alt="El resorte y el amortiguador actúan en paralelo sobre un carro; un actuador externo puede agregar una fuerza horizontal." class="fpm-v04-figure img-fluid" width="900" height="520" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 11.1.* El amortiguador se refiere a un soporte fijo. La fuerza aplicada se incorpora después. Las flechas indican el eje y una fuerza aplicada positiva; la fuerza viscosa debe determinarse a partir del signo de la velocidad.
+
+</figcaption>
+
+</figure>
 
 ## Lo que dice la energía antes de resolver la trayectoria
 
@@ -125,9 +133,17 @@ $$
 
 La velocidad se anula cuando $u=n\pi/2$. El primer extremo negativo ocurre en $t=\pi\,\mathrm s/2$ y vale $-(0{,}10\,\mathrm m)e^{-\pi/2}$. El siguiente extremo positivo llega en $t=\pi\,\mathrm s$ y vale $(0{,}10\,\mathrm m)e^{-\pi}\approx0{,}00432\,\mathrm m$. Ya podemos explicar los cuatro milímetros del comienzo.
 
-![Movimiento libre del carro inicial y curvas exponenciales que lo acotan.](/assets/books/fispm/r20261021/disipacion_decaimiento.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-11-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/disipacion_decaimiento.svg" class="lightbox" data-gallery="fispm-r20261021-c11"><img src="/assets/books/fispm/r20261021/disipacion_decaimiento.svg" alt="Movimiento libre del carro inicial y curvas exponenciales que lo acotan." class="fpm-v04-figure img-fluid" width="900" height="520" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 11.2.* Se representa la solución con los datos del problema de apertura. Las curvas discontinuas son cotas de la posición, no trayectorias adicionales. Se señalan extremos reales del movimiento.
+
+</figcaption>
+
+</figure>
 
 La misma solución puede escribirse $x=Re^{-\gamma t}\cos(\omega_dt-\alpha)$, con $R\geq0$ constante. La cantidad $Re^{-\gamma t}$ es una envolvente: acota $|x|$. Sin embargo, cuando el coseno vale uno su derivada total es $-\gamma Re^{-\gamma t}$, que no es cero si $\gamma R>0$. Por ello los máximos de posición no se obtienen simplemente haciendo uno al coseno. La pendiente de la envolvente desplaza los extremos.
 
@@ -152,9 +168,17 @@ $$
 
 Ambas raíces son negativas porque $0<\lambda<\gamma$. Los coeficientes se encuentran resolviendo $C+D=x_0$ y $r_+C+r_-D=v_0$; el determinante es distinto de cero. La sustitución verifica estas soluciones y la unicidad vuelve a garantizar que no faltan otras. En los tres regímenes, cuando $b>0$, posición y velocidad tienden a cero.
 
-![Comparación de tres movimientos con los mismos datos iniciales y distintos amortiguamientos.](/assets/books/fispm/r20261021/disipacion_regimenes.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-11-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/disipacion_regimenes.svg" class="lightbox" data-gallery="fispm-r20261021-c11"><img src="/assets/books/fispm/r20261021/disipacion_regimenes.svg" alt="Comparación de tres movimientos con los mismos datos iniciales y distintos amortiguamientos." class="fpm-v04-figure img-fluid" width="900" height="520" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 11.3.* Se mantienen $m=k=1$ en unidades SI, $x_0=0{,}10\,\mathrm m$ y $v_0=0$. Se comparan $b=0{,}6$, $b=2$ y $b=4\,\mathrm{kg/s}$. La afirmación de regreso sin cruce se refiere a estos datos de liberación desde el reposo.
+
+</figcaption>
+
+</figure>
 
 La clasificación de la ecuación no determina todos los detalles de una trayectoria. Un sistema crítico puede atravesar el equilibrio si se lanza hacia él con suficiente rapidez; lo que no presenta es una sucesión sostenida de cruces oscilatorios. También es incorrecto concluir que aumentar $b$ siempre acelera el retorno. En el régimen muy sobreamortiguado,
 
@@ -230,9 +254,17 @@ Elegimos $0<\delta<\pi$. La fase $\delta$ representa un retraso del desplazamien
 
 La palabra estacionaria describe una forma de respuesta sostenida, no una posición inmóvil. El tiempo que debemos esperar para observarla depende del modo libre más lento y de la tolerancia del experimento. En un sistema sobreamortiguado no basta estimarlo con $1/\gamma$.
 
-![La solución completa se descompone en un transitorio decreciente y una respuesta periódica sostenida.](/assets/books/fispm/r20261021/disipacion_transitorio.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-11-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/disipacion_transitorio.svg" class="lightbox" data-gallery="fispm-r20261021-c11"><img src="/assets/books/fispm/r20261021/disipacion_transitorio.svg" alt="La solución completa se descompone en un transitorio decreciente y una respuesta periódica sostenida." class="fpm-v04-figure img-fluid" width="900" height="520" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 11.4.* Para $m=1\,\mathrm{kg}$, $k=5\,\mathrm{N/m}$, $b=2\,\mathrm{kg/s}$ y $F(t)=(0{,}5\,\mathrm N)\cos(2t/\mathrm s)$, se conecta la fuerza con el carro inicialmente en reposo en el equilibrio. La respuesta estacionaria no satisface por sí sola esos datos iniciales.
+
+</figcaption>
+
+</figure>
 
 En ese ejemplo, $D=17\,\mathrm{(N/m)^2}$, $a=(1/34)\,\mathrm m$ y $c=(2/17)\,\mathrm m$. La amplitud es $A=(0{,}5/\sqrt{17})\,\mathrm m\approx0{,}121\,\mathrm m$ y el retraso satisface $\tan\delta=4$, en el primer cuadrante. Pero $x_s(0)=a$ y $\dot x_s(0)=2c/\mathrm s$ no son nulos. El transitorio debe empezar en $h(0)=-a$ y $\dot h(0)=-2c/\mathrm s$ para corregir ambos datos. Aplicar mecánicamente la fórmula de amplitud al instante de conexión omitiría esa preparación.
 
@@ -259,9 +291,17 @@ Si $\gamma\geq\omega_0/\sqrt2$, $A(\Omega)$ disminuye para $\Omega>0$ y su máxi
 
 La condición de subamortiguamiento es más amplia. Un sistema puede oscilar al soltarlo y no presentar un pico de desplazamiento al barrer frecuencias. Cuando el pico existe y $b>0$, tenemos $\Omega_r<\omega_d<\omega_0$. Para amortiguamiento muy pequeño las diferencias pueden quedar por debajo de la resolución experimental; eso explica la utilidad de una frecuencia de resonancia aproximada, pero no convierte las tres expresiones en una identidad.
 
-![Amplitud de desplazamiento normalizada al variar la frecuencia aplicada para varios amortiguamientos.](/assets/books/fispm/r20261021/disipacion_resonancia.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-11-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/disipacion_resonancia.svg" class="lightbox" data-gallery="fispm-r20261021-c11"><img src="/assets/books/fispm/r20261021/disipacion_resonancia.svg" alt="Amplitud de desplazamiento normalizada al variar la frecuencia aplicada para varios amortiguamientos." class="fpm-v04-figure img-fluid" width="900" height="520" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 11.5.* Se dibuja $kA/F_0$ en función de $\Omega/\omega_0$ para valores indicados de $\zeta=\gamma/\omega_0$. Con $\zeta=0{,}8$ la respuesta libre todavía es oscilatoria, aunque ya no existe un pico de desplazamiento a frecuencia positiva.
+
+</figcaption>
+
+</figure>
 
 En el límite de baja frecuencia, $A\to F_0/k$ y $\delta\to0$: el carro sigue casi el equilibrio instantáneo. Para frecuencias muy altas, $A\sim F_0/(m\Omega^2)$ y $\delta\to\pi$: la inercia domina y la posición queda casi opuesta a la fuerza. En $\Omega=\omega_0$, $\delta=\pi/2$ y $A=F_0/(b\omega_0)$. Este último punto será especial para la transferencia de energía, aunque no maximice el desplazamiento.
 
@@ -296,9 +336,17 @@ El denominador alcanza su mínimo $b^2$ únicamente cuando $k/\Omega=m\Omega$, e
 
 En esa frecuencia, la velocidad está en fase con la fuerza y $F\dot x_s=(F_0^2/b)\cos^2(\omega_0t)\geq0$. Fuera de ella, el actuador puede recibir energía durante parte del ciclo, aunque la transferencia media siga siendo positiva. Tampoco una amplitud constante de posición implica energía mecánica instantánea constante: la fuerza aplicada y la disipación no tienen por qué compensarse en cada instante.
 
-![Retraso de fase y potencia media normalizada de una respuesta con amortiguamiento positivo.](/assets/books/fispm/r20261021/disipacion_fase_potencia.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-11-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/disipacion_fase_potencia.svg" class="lightbox" data-gallery="fispm-r20261021-c11"><img src="/assets/books/fispm/r20261021/disipacion_fase_potencia.svg" alt="Retraso de fase y potencia media normalizada de una respuesta con amortiguamiento positivo." class="fpm-v04-figure img-fluid" width="900" height="735" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 11.6.* Para $\zeta=0{,}25$, el retraso cruza $\pi/2$ en $\Omega/\omega_0=1$, donde la potencia media es máxima. Las dos gráficas comparten el eje de frecuencia y tienen escalas verticales diferentes.
+
+</figcaption>
+
+</figure>
 
 Se define el factor de calidad por $Q=m\omega_0/b=\omega_0/(2\gamma)$. Es adimensional. Para expresar su relación con un ancho de respuesta, usemos los dos puntos donde la potencia media es la mitad de su máximo. La fórmula anterior exige $(k/\Omega-m\Omega)^2=b^2$ y da
 
@@ -334,9 +382,17 @@ $$
 
 Derivar dos veces deja $\ddot x+\omega_0^2x=(F_0/m)\cos(\omega_0t)$ y en cero se anulan posición y velocidad. La envolvente crece linealmente. No hay una amplitud infinita en un instante finito: hay crecimiento sin cota cuando el tiempo crece dentro de un modelo ideal. En un aparato real, antes pueden fallar la linealidad del resorte, el control del actuador o la omisión de disipación.
 
-![Respuesta resonante sin amortiguamiento, conectada desde datos iniciales nulos.](/assets/books/fispm/r20261021/disipacion_resonancia_ideal.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-11-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/disipacion_resonancia_ideal.svg" class="lightbox" data-gallery="fispm-r20261021-c11"><img src="/assets/books/fispm/r20261021/disipacion_resonancia_ideal.svg" alt="Respuesta resonante sin amortiguamiento, conectada desde datos iniciales nulos." class="fpm-v04-figure img-fluid" width="900" height="520" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 11.7.* Ejemplo con $m=1\,\mathrm{kg}$, $\omega_0=2\,\mathrm{s^{-1}}$ y $F_0=0{,}2\,\mathrm N$. Las líneas discontinuas son las envolventes $\pm(0{,}05\,\mathrm{m/s})t$. El crecimiento debe contrastarse con el intervalo de validez de las leyes de fuerza.
+
+</figcaption>
+
+</figure>
 
 Para $b>0$, incluso muy pequeño, la respuesta estacionaria en $\omega_0$ es finita, pero el tiempo necesario para aproximarse a ella aumenta al reducir $b$ en el régimen subamortiguado. Tomar primero un tiempo muy largo y después hacer pequeño el amortiguamiento describe una pregunta diferente de conectar una fuerza a un oscilador sin disipación y observarlo durante un tiempo fijo. La distinción entre preparación, transitorio y respuesta sostenida evita atribuir al experimento un límite que todavía no ha alcanzado.
 

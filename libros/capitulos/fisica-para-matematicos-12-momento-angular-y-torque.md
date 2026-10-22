@@ -38,9 +38,17 @@ El laboratorio será nuestro marco inercial. El centro fijo de la guía es $O$ y
 
 En el capítulo 9 aprendimos a acumular una fuerza para encontrar el cambio de momento lineal. Aquí la dirección de la fuerza cambia y la guía también ejerce una reacción. Sumarlas como si fueran dos números constantes perdería la geometría. Sin embargo, la fuerza radial y la tangencial se distinguen por una cantidad sencilla: la distancia perpendicular de sus líneas de acción al centro. Para la primera vale cero; para la segunda, el radio de la guía.
 
-![Una cuenta recorre una guía circular; la fuerza aplicada es tangente y la reacción de la guía es radial.](/assets/books/fispm/r20261021/angular_anillo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-12-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/angular_anillo.svg" class="lightbox" data-gallery="fispm-r20261021-c12"><img src="/assets/books/fispm/r20261021/angular_anillo.svg" alt="Una cuenta recorre una guía circular; la fuerza aplicada es tangente y la reacción de la guía es radial." class="fpm-v04-figure img-fluid" width="900" height="540" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 12.1.* Vista superior. Las fuerzas horizontales tienen direcciones distintas. Se dibujan en una posición genérica de la cuenta; el peso y el apoyo vertical, que se compensan, no se representan. La flecha curva fija el sentido angular positivo.
+
+</figcaption>
+
+</figure>
 
 ## Medir el efecto de una fuerza respecto de un punto
 
@@ -76,9 +84,17 @@ En un movimiento contenido en el plano $xy$ con $O$ en ese plano, el momento ang
 
 Para una fuerza no nula, sea $d$ la distancia perpendicular de $O$ a su línea de acción. Entonces $\|\boldsymbol\tau_O\|=d\|\mathbf F\|$. A $d$ se lo llama brazo de palanca. Trasladar el punto de aplicación a lo largo de esa misma línea conserva el torque respecto de $O$, pues $(\mathbf r+\lambda\mathbf F)\times\mathbf F=\mathbf r\times\mathbf F$. Esta equivalencia de torques no afirma que la deformación local o el movimiento de cualquier sistema deformable sean idénticos.
 
-![La distancia perpendicular a la línea de acción determina el brazo de palanca y el signo depende de la orientación.](/assets/books/fispm/r20261021/angular_brazo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-12-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/angular_brazo.svg" class="lightbox" data-gallery="fispm-r20261021-c12"><img src="/assets/books/fispm/r20261021/angular_brazo.svg" alt="La distancia perpendicular a la línea de acción determina el brazo de palanca y el signo depende de la orientación." class="fpm-v04-figure img-fluid" width="900" height="540" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 12.2.* Dos fuerzas horizontales iguales, aplicadas por encima o por debajo de $O$, producen componentes de torque de signos opuestos. El brazo es la distancia vertical a la línea de acción; no es la longitud oblicua del vector posición.
+
+</figcaption>
+
+</figure>
 
 ## El balance que relaciona torque y momento angular
 
@@ -111,9 +127,17 @@ El balance integra torque, no fuerza sola. La integral tiene unidades de momento
 
 También puede ocurrir que una partícula tenga momento angular sin recorrer una circunferencia. Una masa $m$ que avanza por la recta $y=h$ con velocidad $v\mathbf e_x$ tiene $L_{O,z}=-mhv$. La distancia al origen y el ángulo de su vector posición cambian, pero el producto que interviene en el momento angular permanece constante. Si elegimos un punto de esa recta como referencia, el momento angular de la misma partícula es cero.
 
-![Una partícula se mueve en línea recta por encima del origen; el brazo del momento lineal es constante.](/assets/books/fispm/r20261021/angular_recta.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-12-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/angular_recta.svg" class="lightbox" data-gallery="fispm-r20261021-c12"><img src="/assets/books/fispm/r20261021/angular_recta.svg" alt="Una partícula se mueve en línea recta por encima del origen; el brazo del momento lineal es constante." class="fpm-v04-figure img-fluid" width="900" height="520" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 12.3.* Un movimiento rectilíneo uniforme puede tener momento angular no nulo respecto de un punto exterior a la trayectoria. La referencia $A$ sobre la recta da un resultado distinto. No se está atribuyendo a la partícula un giro interno.
+
+</figcaption>
+
+</figure>
 
 ## Resolver el movimiento de la cuenta
 
@@ -153,9 +177,17 @@ Si $\mathbf P=0$, el momento angular total es independiente del punto de referen
 
 Dos fuerzas opuestas pueden tener resultante nula y torque total no nulo. Si $+\mathbf F$ actúa en $\mathbf r_1$ y $-\mathbf F$ en $\mathbf r_2$, su torque suma $(\mathbf r_1-\mathbf r_2)\times\mathbf F$. Se llama par de fuerzas a esa disposición cuando las líneas de acción son paralelas y distintas. Su torque es independiente del origen y puede cambiar el momento angular mientras el momento lineal permanece constante.
 
-![Un par de fuerzas opuestas tiene resultante cero y torque no nulo, independiente del origen.](/assets/books/fispm/r20261021/angular_par.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-12-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/angular_par.svg" class="lightbox" data-gallery="fispm-r20261021-c12"><img src="/assets/books/fispm/r20261021/angular_par.svg" alt="Un par de fuerzas opuestas tiene resultante cero y torque no nulo, independiente del origen." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 12.4.* Fuerzas de $5\,\mathrm N$ separadas por $0{,}60\,\mathrm m$ producen un torque de $3\,\mathrm{N\,m}$ hacia $+z$. Trasladar el origen cambia los torques individuales, pero conserva su suma.
+
+</figcaption>
+
+</figure>
 
 ## Qué deben cumplir las fuerzas internas
 
@@ -206,9 +238,17 @@ En particular, respecto del centro de masa, $\dot{\mathbf L}_C=\boldsymbol\tau_{
 
 La parte $\mathbf R\times\mathbf P$ describe el momento angular que tendría toda la masa concentrada en su centro de masa. La parte $\mathbf L_C$ conserva la contribución del movimiento relativo. Una de ellas puede ser cero sin que lo sea la otra; también pueden tener signos opuestos.
 
-![Dos partículas permiten separar el movimiento común del centro de masa y las velocidades relativas.](/assets/books/fispm/r20261021/angular_centro.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-12-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/angular_centro.svg" class="lightbox" data-gallery="fispm-r20261021-c12"><img src="/assets/books/fispm/r20261021/angular_centro.svg" alt="Dos partículas permiten separar el movimiento común del centro de masa y las velocidades relativas." class="fpm-v04-figure img-fluid" width="900" height="555" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 12.5.* Para masas iguales, $\mathbf R=(1,1)\,\mathrm m$, $\mathbf P=(4,0)\,\mathrm{kg\,m/s}$ y $L_{C,z}=-2\,\mathrm{kg\,m^2/s}$. La contribución del centro de masa respecto de $O$ es $-4\,\mathrm{kg\,m^2/s}$; el total vale $-6\,\mathrm{kg\,m^2/s}$. Las flechas de velocidad relativa se distinguen de la velocidad común.
+
+</figcaption>
+
+</figure>
 
 La fórmula del punto móvil declara una convención: usamos momentos lineales medidos en el laboratorio. Si reemplazáramos todas las velocidades por velocidades relativas al punto móvil, estaríamos definiendo otra cantidad. En el centro de masa ambas sumas coinciden por la identidad ponderada; en un punto móvil arbitrario no tenemos ese permiso. El ejercicio 11 muestra el término que se perdería al confundir las convenciones.
 
@@ -261,9 +301,17 @@ donde $\mathcal A$ es el área barrida con signo por el radio vector. En consecu
 
 La ley de áreas no identifica por sí sola una ley de gravitación ni una forma orbital. Por ejemplo, $\mathbf r(t)=(a\cos(\omega t),b\sin(\omega t),0)$, con $a,b,\omega>0$, satisface $\ddot{\mathbf r}=-\omega^2\mathbf r$ y barre áreas a tasa $ab\omega/2$ respecto del centro de esa elipse. Es un modelo de fuerza central distinto del que estudiaremos en la gravitación.
 
-![Dos sectores de una trayectoria elíptica central tienen la misma área para intervalos temporales iguales.](/assets/books/fispm/r20261021/angular_areas.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-12-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/angular_areas.svg" class="lightbox" data-gallery="fispm-r20261021-c12"><img src="/assets/books/fispm/r20261021/angular_areas.svg" alt="Dos sectores de una trayectoria elíptica central tienen la misma área para intervalos temporales iguales." class="fpm-v04-figure img-fluid" width="900" height="565" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 12.6.* Se usa el ejemplo $x=(2\,\mathrm m)\cos u$, $y=(1\,\mathrm m)\sin u$, con $u=t/(1\,\mathrm s)$. Los sectores corresponden a incrementos iguales $\Delta u=\pi/4$ y cada uno tiene área $\pi/4\,\mathrm{m^2}$. Sus longitudes de arco no tienen por qué coincidir.
+
+</figcaption>
+
+</figure>
 
 Si $\mathbf L_O=0$ y $r>0$, la velocidad es radial: $\mathbf r\times\mathbf v=0$ obliga a que ambos vectores sean paralelos. El ángulo permanece fijo en cada tramo que evita el centro, aunque la rapidez radial pueda cambiar. La trayectoria radial queda contenida en una recta por $O$, compatible con todos los planos que contienen esa recta. El vector momento angular nulo deja indeterminado cuál de esos planos elegir. Si la fuerza es singular en el centro, la conservación por sí sola deja pendiente la continuación a través de él.
 
@@ -290,9 +338,17 @@ Si el torque es constante, $W=\tau_{O,z}\Delta\theta$. Para un cuerpo rígido qu
 
 Un hilo que pasa por un orificio de una mesa sin rozamiento permite contrastar ambos balances. Si tiramos de la cuenta unida al hilo, la tensión horizontal apunta hacia el orificio y su torque respecto de él es cero. Aun así, realiza trabajo durante la contracción. En dos instantes con velocidad radial nula, reducir el radio a la mitad duplica la rapidez tangencial y cuadruplica la energía cinética. El momento angular permanece constante; la mano que recoge el hilo suministra la energía adicional.
 
-![Una cuenta atraída radialmente hacia un orificio conserva su momento angular mientras su energía cinética puede aumentar.](/assets/books/fispm/r20261021/angular_contraccion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-12-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/angular_contraccion.svg" class="lightbox" data-gallery="fispm-r20261021-c12"><img src="/assets/books/fispm/r20261021/angular_contraccion.svg" alt="Una cuenta atraída radialmente hacia un orificio conserva su momento angular mientras su energía cinética puede aumentar." class="fpm-v04-figure img-fluid" width="900" height="600" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 12.7.* Se comparan dos estados con velocidad radial nula. Para una masa de $0{,}50\,\mathrm{kg}$, radios de $0{,}60$ y $0{,}30\,\mathrm m$ y rapidez tangencial inicial de $2\,\mathrm{m/s}$, el momento angular vale $0{,}60\,\mathrm{kg\,m^2/s}$ en ambos. La energía cinética pasa de uno a cuatro joules.
+
+</figcaption>
+
+</figure>
 
 ## Ejercicios
 
@@ -623,9 +679,17 @@ $$
 
 En $t=\tau$, tenemos $L_{A,z}=0$, $H_{A,z}=1\,\mathrm{kg\,m^2/s}$ y $\dot H_{A,z}=2\,\mathrm{N\,m}$. La partícula sigue en reposo en el laboratorio; el cambio de la cantidad relativa procede de la aceleración del origen elegido. Cada balance conserva la información sobre la referencia y la velocidad que intervienen en su definición.
 
-![El origen móvil recorre una parábola mientras la partícula permanece fija; el momento angular con velocidades relativas crece aunque el formado con el momento lineal del laboratorio sea cero.](/assets/books/fispm/r20261021/angular_origen_acelerado.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-12-8" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/angular_origen_acelerado.svg" class="lightbox" data-gallery="fispm-r20261021-c12"><img src="/assets/books/fispm/r20261021/angular_origen_acelerado.svg" alt="El origen móvil recorre una parábola mientras la partícula permanece fija; el momento angular con velocidades relativas crece aunque el formado con el momento lineal del laboratorio sea cero." class="fpm-v04-figure img-fluid" width="504" height="252" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 12.8.* La curva izquierda representa la posición del origen móvil en el laboratorio, con ambas coordenadas normalizadas por la longitud de referencia. La flecha une el origen del laboratorio con $A$ en el instante $\tau$. Las curvas de la derecha corresponden a las dos convenciones de velocidad del ejercicio 21. Su diferencia procede de la elección de referencia; la partícula permanece fija y libre.
+
+</figcaption>
+
+</figure>
 
 ## Lecturas y conexiones
 

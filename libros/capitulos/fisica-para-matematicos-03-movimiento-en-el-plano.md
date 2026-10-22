@@ -54,9 +54,17 @@ El punto ocupado y el vector que lo representa cumplen funciones diferentes. Si 
 
 Las componentes de un vector son cantidades con signo. Un desplazamiento de tres metros a la derecha y cuatro hacia arriba tiene componentes $(3,4)\,\mathrm m$ y módulo cinco metros. Escribir su módulo no permite recuperar ambas componentes. Tampoco indica qué camino siguió la partícula entre los extremos.
 
-![Un vector de posición y un desplazamiento se construyen desde orígenes distintos. Las proyecciones cartesianas permiten recuperar sus componentes.](/assets/books/fispm/r20261021/plano_posicion_desplazamiento.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-3-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/plano_posicion_desplazamiento.svg" class="lightbox" data-gallery="fispm-r20261021-c3"><img src="/assets/books/fispm/r20261021/plano_posicion_desplazamiento.svg" alt="Un vector de posición y un desplazamiento se construyen desde orígenes distintos. Las proyecciones cartesianas permiten recuperar sus componentes." class="fpm-v04-figure img-fluid" width="397.001081" height="353.99952" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 3.1.* El vector de posición parte del origen elegido; el desplazamiento parte de la posición inicial. Los segmentos auxiliares representan componentes, no etapas del recorrido.
+
+</figcaption>
+
+</figure>
 
 ## Derivar un vector y leer su dirección
 
@@ -104,9 +112,17 @@ $$
 
 recorren la misma semiparábola $y=x^2/(1\,\mathrm m)$ con $x\geq0$. En el primer movimiento, la velocidad inicial es $(1,0)\,\mathrm{m/s}$; en el segundo es cero. Saber por dónde pasa un cuerpo deja abierta la pregunta de cuándo pasa y cuánto tarda.
 
-![Dos parametrizaciones recorren la misma parábola. Las marcas correspondientes a iguales incrementos de tiempo ocupan posiciones diferentes.](/assets/books/fispm/r20261021/plano_trayectoria_reloj.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-3-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/plano_trayectoria_reloj.svg" class="lightbox" data-gallery="fispm-r20261021-c3"><img src="/assets/books/fispm/r20261021/plano_trayectoria_reloj.svg" alt="Dos parametrizaciones recorren la misma parábola. Las marcas correspondientes a iguales incrementos de tiempo ocupan posiciones diferentes." class="fpm-v04-figure img-fluid" width="569.99952" height="317.032657" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 3.2.* La curva común no contiene el reloj. Cada panel usa los instantes $t=0$, $0,5\,\mathrm s$ y $1\,\mathrm s$ para su propio movimiento.
+
+</figcaption>
+
+</figure>
 
 ## Integrar componentes sin separar los instantes
 
@@ -172,9 +188,17 @@ La altura máxima ocurre cuando $v_y=12\,\mathrm{m/s}-gt$ se anula: $t=1,2\,\mat
 
 Al llegar a la abertura, $t=2\,\mathrm s$, tenemos $\mathbf v=(6,-8)\,\mathrm{m/s}$ y rapidez $10\,\mathrm{m/s}$. Llega descendiendo. Si no encontrara la abertura ni otro obstáculo, el primer retorno al nivel del lanzamiento sería en $t=2,4\,\mathrm s$, a $14,4\,\mathrm m$ del origen. La parábola algebraica también contiene puntos correspondientes a tiempos negativos y al movimiento posterior a un eventual choque; esos puntos no quedan autorizados por el dominio físico declarado.
 
-![El lanzamiento se descompone en un avance horizontal uniforme y una evolución vertical cuadrática, sincronizados por las mismas marcas de tiempo.](/assets/books/fispm/r20261021/plano_lanzamiento_componentes.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-3-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/plano_lanzamiento_componentes.svg" class="lightbox" data-gallery="fispm-r20261021-c3"><img src="/assets/books/fispm/r20261021/plano_lanzamiento_componentes.svg" alt="El lanzamiento se descompone en un avance horizontal uniforme y una evolución vertical cuadrática, sincronizados por las mismas marcas de tiempo." class="fpm-v04-figure img-fluid" width="538.244467" height="512.39952" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 3.3.* En la cima se anula la componente vertical de la velocidad. Las flechas de aceleración mantienen dirección y módulo; se dibujan con una escala distinta de las de velocidad.
+
+</figcaption>
+
+</figure>
 
 ## Alcanzar un punto con una rapidez fijada
 
@@ -208,9 +232,17 @@ $$
 
 Hay dos soluciones: $z=1$ y $z=2$. La segunda es el lanzamiento ya calculado. La primera corresponde a $45^\circ$, con componentes iguales a $3\sqrt{10}\,\mathrm{m/s}$ y tiempo de llegada $4/\sqrt{10}\,\mathrm s$. Las dos historias alcanzan el mismo punto con la misma rapidez inicial, pero duran tiempos diferentes y pasan por alturas distintas. A seis metros del origen, sus alturas son cuatro y siete metros, respectivamente; una pared de cinco metros en esa vertical descarta la primera y permite el paso de la segunda.
 
-![Dos trayectorias con la misma rapidez inicial alcanzan el objetivo. Una pared intermedia elimina el lanzamiento más bajo.](/assets/books/fispm/r20261021/plano_dos_lanzamientos.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-3-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/plano_dos_lanzamientos.svg" class="lightbox" data-gallery="fispm-r20261021-c3"><img src="/assets/books/fispm/r20261021/plano_dos_lanzamientos.svg" alt="Dos trayectorias con la misma rapidez inicial alcanzan el objetivo. Una pared intermedia elimina el lanzamiento más bajo." class="fpm-v04-figure img-fluid" width="526.79952" height="339.59952" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 3.4.* La ecuación del objetivo ofrece candidatos; la geometría de los obstáculos decide cuáles permanecen admisibles. Se muestran los tramos anteriores a la vertical del objetivo.
+
+</figcaption>
+
+</figure>
 
 La fórmula habitual del alcance $R=u^2\sin(2\alpha)/g$ se obtiene poniendo $Y=0$, suponiendo $0<\alpha<\pi/2$ y buscando el retorno posterior al lanzamiento al mismo nivel. Su máximo es $u^2/g$ y se alcanza a $45^\circ$. Cambiar la altura de llegada o añadir un obstáculo modifica el problema de optimización; conservar el ángulo sin revisar la derivación perdería las hipótesis que lo justifican.
 
@@ -263,9 +295,17 @@ $$
 
 La componente radial es siempre hacia el centro y tiene módulo $R\dot\varphi^2=q^2/R$. La componente tangencial orientada según $\mathbf e_\varphi$ es $R\ddot\varphi$. Si $\dot\varphi<0$, la velocidad apunta en sentido opuesto a ese vector de base; por eso el signo de la componente tangencial, por sí solo, no dice si la rapidez aumenta. La fórmula del producto escalar o la derivada de $q=R|\dot\varphi|$ resuelven esa cuestión.
 
-![La base radial y tangencial gira sobre un círculo. La aceleración puede tener simultáneamente una parte hacia el centro y otra tangente.](/assets/books/fispm/r20261021/plano_circulo_aceleracion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-3-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/plano_circulo_aceleracion.svg" class="lightbox" data-gallery="fispm-r20261021-c3"><img src="/assets/books/fispm/r20261021/plano_circulo_aceleracion.svg" alt="La base radial y tangencial gira sobre un círculo. La aceleración puede tener simultáneamente una parte hacia el centro y otra tangente." class="fpm-v04-figure img-fluid" width="307.358119" height="584.39952" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 3.5.* Las flechas representan direcciones y componentes de aceleración en un punto. La parte radial apunta hacia el centro tanto para un giro horario como para uno antihorario. Los vectores de base y de aceleración utilizan escalas gráficas propias; sus longitudes no se comparan entre paneles.
+
+</figcaption>
+
+</figure>
 
 En el movimiento circular uniforme, $\varphi=\varphi_0+\omega t$ con $\omega$ constante no nula. Entonces $q=R|\omega|$, el período es $T=2\pi/|\omega|$ y la aceleración es $-R\omega^2\mathbf e_r$. Por ejemplo, con $R=2\,\mathrm m$ y $\omega=\pi/(2\,\mathrm s)$, la vuelta dura cuatro segundos, la rapidez es $\pi\,\mathrm{m/s}$ y el módulo de la aceleración es $\pi^2/2\,\mathrm{m/s^2}$. La aceleración cambia de dirección durante el giro, aunque su módulo permanezca constante.
 
@@ -302,9 +342,17 @@ $$
 
 El cruce dura doce segundos. Cancelar la deriva reduce la velocidad transversal disponible. Si la rapidez respecto del agua fuera menor que la corriente, no podría anularse la deriva; si fuera igual, cancelarla consumiría toda la velocidad y no quedaría avance transversal.
 
-![El triángulo de velocidades del cruce distingue la velocidad respecto del agua de la velocidad respecto de la orilla.](/assets/books/fispm/r20261021/plano_rio_velocidades.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-3-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/plano_rio_velocidades.svg" class="lightbox" data-gallery="fispm-r20261021-c3"><img src="/assets/books/fispm/r20261021/plano_rio_velocidades.svg" alt="El triángulo de velocidades del cruce distingue la velocidad respecto del agua de la velocidad respecto de la orilla." class="fpm-v04-figure img-fluid" width="526.79952" height="469.19952" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 3.6.* Las flechas forman una suma vectorial. Apuntar río arriba permite que la velocidad respecto de tierra sea transversal, a costa de aumentar el tiempo de cruce.
+
+</figcaption>
+
+</figure>
 
 ## Lo que una trayectoria observada permite comprobar
 

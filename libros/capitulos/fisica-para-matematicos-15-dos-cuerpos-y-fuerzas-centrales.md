@@ -38,9 +38,17 @@ El sistema consta de los dos cuerpos. Usamos un marco inercial y despreciamos fu
 
 Las fuerzas mutuas tienen igual magnitud, pero producen aceleraciones distintas. La masa mayor acelera hacia la menor y la menor hacia la mayor. Podemos aprovechar esa relación para describir por separado el traslado del sistema entero y el cambio de su configuración. El centro de masa, construido en el capítulo 9, proporciona la primera variable; el vector que une los cuerpos proporciona la segunda.
 
-![Las dos masas se sitúan a lados opuestos del centro de masa y tienen velocidades tangenciales opuestas.](/assets/books/fispm/r20261021/binario_inicial.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-15-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/binario_inicial.svg" class="lightbox" data-gallery="fispm-r20261021-c15"><img src="/assets/books/fispm/r20261021/binario_inicial.svg" alt="Las dos masas se sitúan a lados opuestos del centro de masa y tienen velocidades tangenciales opuestas." class="fpm-v04-figure img-fluid" width="900" height="560" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 15.1.* Estado inicial en el plano $xy$. El centro de masa está en reposo en el origen. Las flechas de velocidad tienen longitudes en razón dos; las fuerzas gravitatorias tienen igual magnitud y sentidos opuestos sobre la línea que une los cuerpos.
+
+</figcaption>
+
+</figure>
 
 ## Elegir variables que permitan recuperar los dos movimientos
 
@@ -67,9 +75,17 @@ Las velocidades se recuperan derivando, con $\mathbf V=\dot{\mathbf R}$ y $\math
 
 La unidad de $m_{\rm r}$ es el kilogramo. Para masas iguales $m$, vale $m/2$; cuando $m_2$ es muy pequeña frente a $m_1$, se aproxima a $m_2$. La masa reducida se obtiene al cambiar de variables en las ecuaciones del par. La masa total sigue siendo $M$, y el momento lineal total sigue siendo $M\mathbf V$.
 
-![Las posiciones se recuperan sumando al centro de masa dos múltiplos opuestos del vector relativo.](/assets/books/fispm/r20261021/binario_reconstruccion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-15-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/binario_reconstruccion.svg" class="lightbox" data-gallery="fispm-r20261021-c15"><img src="/assets/books/fispm/r20261021/binario_reconstruccion.svg" alt="Las posiciones se recuperan sumando al centro de masa dos múltiplos opuestos del vector relativo." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 15.2.* El dibujo muestra una configuración instantánea para $m_1=2m_2$. La razón entre las distancias al centro de masa es inversa a la razón de masas. El origen del laboratorio puede elegirse fuera del centro de masa.
+
+</figcaption>
+
+</figure>
 
 ## Reducir las ecuaciones sin inmovilizar una masa
 
@@ -152,9 +168,17 @@ La aceleración radial física es la componente $\ddot r-r\dot\theta^2$. La deri
 
 Sea $L$ la componente firmada de $\mathbf L$ sobre la normal elegida. Se tiene $L=m_{\rm r}r^2\dot\theta$. Para $L\ne0$, el ángulo avanza siempre en el mismo sentido mientras la solución tenga radio positivo. Un elemento de área orientada barrida por el vector relativo es $dA=r^2d\theta/2$, así que $\dot A=L/(2m_{\rm r})$. El área se barre uniformemente aunque cambien la distancia y la velocidad angular.
 
-![La velocidad relativa se separa en una componente radial y otra tangencial en el plano del movimiento.](/assets/books/fispm/r20261021/central_plano.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-15-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/central_plano.svg" class="lightbox" data-gallery="fispm-r20261021-c15"><img src="/assets/books/fispm/r20261021/central_plano.svg" alt="La velocidad relativa se separa en una componente radial y otra tangencial en el plano del movimiento." class="fpm-v04-figure img-fluid" width="900" height="575" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 15.3.* El momento angular es perpendicular al plano. La velocidad tangencial es $r\dot\theta$ y la rapidez radial es $|\dot r|$. La ley de áreas se refiere al vector relativo; las áreas de las trayectorias baricéntricas incluyen además los cuadrados de sus factores de escala.
+
+</figcaption>
+
+</figure>
 
 La energía relativa puede escribirse como
 
@@ -190,9 +214,17 @@ $$
 
 El ángulo se obtiene integrando $\dot\theta=L/(m_{\rm r}r^2)$ sobre ese mismo movimiento. También se puede combinar esta igualdad con la anterior para integrar $d\theta/dr$. El signo $\sigma$ cambia al pasar un retorno simple. La ecuación de energía proporciona rapidez y región accesible; el estado inicial completa el sentido de marcha y el origen del tiempo.
 
-![Las contribuciones de energía potencial y energía tangencial forman el potencial efectivo gravitatorio.](/assets/books/fispm/r20261021/central_efectivo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-15-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/central_efectivo.svg" class="lightbox" data-gallery="fispm-r20261021-c15"><img src="/assets/books/fispm/r20261021/central_efectivo.svg" alt="Las contribuciones de energía potencial y energía tangencial forman el potencial efectivo gravitatorio." class="fpm-v04-figure img-fluid" width="900" height="590" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 15.4.* Con $r_c=L^2/(m_{\rm r}k)$ y $\rho=r/r_c$, se usa la escala de energía $k/r_c$. La suma es $W_L/(k/r_c)=1/(2\rho^2)-1/\rho$. La recta negativa ilustrada corta la curva en dos radios de retorno.
+
+</figcaption>
+
+</figure>
 
 ## Resolver un estado gravitatorio antes de clasificar toda la órbita
 
@@ -202,9 +234,17 @@ Si $E=-1{,}5\,\mathrm J$, los radios donde se anula $\dot r$ satisfacen $Er^2+kr
 
 En el radio interior la velocidad relativa todavía tiene componente tangencial de tres metros por segundo. En el exterior esa componente vale un metro por segundo. El retorno cambia el sentido de evolución de la distancia, mientras el vector relativo sigue girando. La condición $\dot r=0$ equivale a distancia instantáneamente estacionaria y deja libre la componente tangencial.
 
-![Un lazo en el plano de radio y velocidad radial representa el cambio entre las ramas entrante y saliente.](/assets/books/fispm/r20261021/central_retornos.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-15-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/central_retornos.svg" class="lightbox" data-gallery="fispm-r20261021-c15"><img src="/assets/books/fispm/r20261021/central_retornos.svg" alt="Un lazo en el plano de radio y velocidad radial representa el cambio entre las ramas entrante y saliente." class="fpm-v04-figure img-fluid" width="900" height="565" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 15.5.* Curva de energía para el ejemplo $E=-1{,}5\,\mathrm J$. Los extremos tienen velocidad radial cero y velocidad tangencial no nula. Este retrato usa las coordenadas $(r,\dot r)$; la forma de la trayectoria espacial requiere recuperar también $\theta(t)$.
+
+</figcaption>
+
+</figure>
 
 **Proposición.** Para $U(r)=-k/r$, con $k>0$ y $L\ne0$, el potencial efectivo tiene un único mínimo en
 
@@ -237,9 +277,17 @@ Una órbita circular necesita que la distancia y su velocidad radial inicial per
 
 En gravitación, sustituir el radio circular en la segunda derivada da $W_L''(r_c)=k/r_c^3$. Por tanto $\omega_r=\sqrt{k/(m_{\rm r}r_c^3)}$ y $|\Omega|$ tiene ese mismo valor. La coincidencia es una propiedad de esta interacción. Otras leyes centrales producen otra relación entre la frecuencia radial pequeña y el giro.
 
-![Un mínimo del potencial efectivo produce confinamiento radial local; la curvatura fija la frecuencia linealizada.](/assets/books/fispm/r20261021/central_circular.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-15-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/central_circular.svg" class="lightbox" data-gallery="fispm-r20261021-c15"><img src="/assets/books/fispm/r20261021/central_circular.svg" alt="Un mínimo del potencial efectivo produce confinamiento radial local; la curvatura fija la frecuencia linealizada." class="fpm-v04-figure img-fluid" width="900" height="560" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 15.6.* La aproximación cuadrática describe perturbaciones radiales pequeñas alrededor de $r_c$. La estabilidad considerada fija $L$ y controla la distancia y su velocidad radial; una diferencia de fase angular puede acumularse al comparar dos movimientos.
+
+</figcaption>
+
+</figure>
 
 Para las masas iniciales, $M=3m_0$ y $m_{\rm r}=2m_0/3$. La separación inicial es $r=d$, con velocidad radial cero y rapidez relativa $u_0=\sqrt{3Gm_0/d}$. La aceleración relativa requerida por un círculo es $u_0^2/d=3Gm_0/d^2$, exactamente la que proporciona la gravitación del par. Así,
 
@@ -256,9 +304,17 @@ En una interacción central que dependa del tiempo, el torque relativo sigue sie
 
 La estabilidad tampoco se decide únicamente por la atracción. Para $U=-a/r^s$, con $a>0$ y $s>0$, la condición circular es $L^2=m_{\rm r}as\,r_c^{2-s}$. Al evaluar la curvatura se obtiene $W_L''(r_c)=as(2-s)/r_c^{s+2}$. La frontera $s=2$ separa mínimos y máximos y exige un examen propio. Los ejercicios permitirán reconstruir este cálculo y explorar su caso degenerado.
 
-![Dos potenciales atractivos pueden producir mínimos o máximos del potencial efectivo según su singularidad.](/assets/books/fispm/r20261021/central_regimenes.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-15-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/central_regimenes.svg" class="lightbox" data-gallery="fispm-r20261021-c15"><img src="/assets/books/fispm/r20261021/central_regimenes.svg" alt="Dos potenciales atractivos pueden producir mínimos o máximos del potencial efectivo según su singularidad." class="fpm-v04-figure img-fluid" width="900" height="580" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 15.7.* Para cada exponente se eligen escalas que sitúan el radio circular en $\rho=1$, y se representa $1/(2\rho^2)-1/(s\rho^s)$. El caso $s=1$ tiene un mínimo; $s=3$ tiene un máximo. La atracción central por sí sola deja abierta la pregunta por la estabilidad.
+
+</figcaption>
+
+</figure>
 
 ## Ejercicios
 

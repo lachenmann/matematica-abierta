@@ -50,9 +50,17 @@ La observación de reposo exige $\ddot x=0$, por lo que con el primer tirón se 
 
 La igualdad $|f|=\mu_sN$ daría veinte newtons de fricción y una fuerza neta de cuatro hacia la izquierda, pese a que la caja permanece en reposo. Ese resultado diagnostica la elección equivocada de la ley: hemos utilizado el máximo disponible como si fuera el valor que el contacto debe ejercer siempre. La ecuación del movimiento determina cuánto rozamiento se necesita; el límite decide si esa demanda puede satisfacerse.
 
-![Dos diagramas de la misma caja distinguen el tirón de dieciséis newtons en reposo y el de veinticuatro durante el deslizamiento.](/assets/books/fispm/r20261021/contacto_caja_regimenes.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-5-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/contacto_caja_regimenes.svg" class="lightbox" data-gallery="fispm-r20261021-c5"><img src="/assets/books/fispm/r20261021/contacto_caja_regimenes.svg" alt="Dos diagramas de la misma caja distinguen el tirón de dieciséis newtons en reposo y el de veinticuatro durante el deslizamiento." class="fpm-v04-figure img-fluid" width="503.411003" height="346.79952" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 5.1.* En reposo, el rozamiento requerido es de dieciséis newtons, inferior a su límite de veinte. Al deslizar hacia la derecha se utiliza otro parámetro y su módulo es de doce newtons. El peso y la normal se equilibran en ambos diagramas; las escalas de las flechas de cada panel son comunes.
+
+</figcaption>
+
+</figure>
 
 ## Seguir la caja hasta que vuelva a detenerse
 
@@ -83,9 +91,17 @@ La primera velocidad nula de este segundo tramo ocurre en $\tau=2\,\mathrm s$, a
 
 Mantener después $f=-12\,\mathrm N$ produciría una velocidad negativa, pero esa prolongación asignaría a la fricción el mismo sentido que el nuevo deslizamiento. El signo de la ley cinética había sido elegido para velocidades positivas. El cero de la velocidad obliga a volver al problema físico; no autoriza a seguir usando la misma recta indefinidamente.
 
-![La fuerza aplicada se retira a los dos segundos; la fricción permanece hasta los cuatro, cuando la caja se detiene. La velocidad y la posición enlazan de forma continua.](/assets/books/fispm/r20261021/contacto_historia_caja.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-5-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/contacto_historia_caja.svg" class="lightbox" data-gallery="fispm-r20261021-c5"><img src="/assets/books/fispm/r20261021/contacto_historia_caja.svg" alt="La fuerza aplicada se retira a los dos segundos; la fricción permanece hasta los cuatro, cuando la caja se detiene. La velocidad y la posición enlazan de forma continua." class="fpm-v04-figure img-fluid" width="533.99952" height="526.79952" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 5.2.* Los cambios de ley están alineados en el mismo reloj. La posición llega a doce metros y permanece allí. En los instantes de cambio representamos límites laterales; el modelo no describe la transición microscópica del contacto.
+
+</figcaption>
+
+</figure>
 
 ## Qué contiene el modelo de rozamiento
 
@@ -134,9 +150,17 @@ Con $m=4\,\mathrm{kg}$, $F=20\,\mathrm N$, $\sin\alpha=3/5$ y $\cos\alpha=4/5$, 
 
 Usar $N=mg$ habría dado un límite estático de veinte newtons y una conclusión equivocada de reposo. La dirección del tirón modifica simultáneamente la demanda tangencial y la capacidad del contacto. Si una cuenta diera $N<0$, antes de usarla en $\mu N$ habría que abandonar la hipótesis de apoyo mantenido.
 
-![El tirón oblicuo tiene componentes dieciséis y doce newtons. La normal resultante es veintiocho newtons y la fricción cinética, ocho coma cuatro.](/assets/books/fispm/r20261021/contacto_tiron_oblicuo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-5-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/contacto_tiron_oblicuo.svg" class="lightbox" data-gallery="fispm-r20261021-c5"><img src="/assets/books/fispm/r20261021/contacto_tiron_oblicuo.svg" alt="El tirón oblicuo tiene componentes dieciséis y doce newtons. La normal resultante es veintiocho newtons y la fricción cinética, ocho coma cuatro." class="fpm-v04-figure img-fluid" width="534.43142" height="354.55952" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 5.3.* El diagrama contiene la fuerza oblicua completa. Sus proyecciones se muestran en otro panel para evitar contarlas como dos fuerzas adicionales. La normal se obtiene de la ecuación vertical.
+
+</figcaption>
+
+</figure>
 
 ## La pendiente decide qué fricción se necesita
 
@@ -146,9 +170,17 @@ Con $\mu_s=0{,}80$, el límite estático es $19{,}2\,\mathrm N$ y esa situación
 
 El signo de la fricción se decide comprobando la tendencia al deslizamiento o el deslizamiento que ya existe. Si el bloque llegara moviéndose hacia arriba, la fricción cinética apuntaría hacia abajo junto con la componente del peso. La condición de reposo debe revisarse después de la primera detención; no se puede tomar sin examen la solución de bajada para describir la subida.
 
-![El peso vertical se proyecta sobre ejes paralelo y normal al plano; la fricción estática necesaria apunta hacia arriba y vale dieciocho newtons.](/assets/books/fispm/r20261021/contacto_plano_inclinado.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-5-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/contacto_plano_inclinado.svg" class="lightbox" data-gallery="fispm-r20261021-c5"><img src="/assets/books/fispm/r20261021/contacto_plano_inclinado.svg" alt="El peso vertical se proyecta sobre ejes paralelo y normal al plano; la fricción estática necesaria apunta hacia arriba y vale dieciocho newtons." class="fpm-v04-figure img-fluid" width="548.39952" height="318.727297" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 5.4.* En este ejemplo la normal es de veinticuatro newtons y el peso, de treinta. La fricción requerida se compara con su límite; sus componentes no se añaden como otras fuerzas al diagrama.
+
+</figcaption>
+
+</figure>
 
 **Proposición.** Sea un bloque de masa $m>0$ sobre un plano fijo de inclinación $0\leq\alpha<\pi/2$. Supongamos un modelo de partícula, contacto mantenido, peso, una fuerza aplicada de componente $F$ paralela al plano hacia arriba —sin componente normal— y rozamiento estático de coeficiente $\mu_s\geq0$. El reposo es admisible exactamente cuando
 
@@ -203,9 +235,17 @@ $$
 
 La tensión es positiva y menor que los veinte newtons del peso colgante. La aceleración positiva confirma el sentido de deslizamiento supuesto. El sistema se puede seguir con esa ley hasta que cambie una condición: la masa llegue al suelo, el bloque alcance la polea, se retire un agente o aparezca holgura. La relación de longitud seguirá siendo necesaria en otras geometrías, pero ya no se puede anticipar que todas las aceleraciones tendrán el mismo módulo.
 
-![Una polea fija conecta un bloque horizontal con una masa colgante. Los diagramas individuales usan ejes distintos y conservan el mismo módulo de tensión.](/assets/books/fispm/r20261021/contacto_polea_fija.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-5-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/contacto_polea_fija.svg" class="lightbox" data-gallery="fispm-r20261021-c5"><img src="/assets/books/fispm/r20261021/contacto_polea_fija.svg" alt="Una polea fija conecta un bloque horizontal con una masa colgante. Los diagramas individuales usan ejes distintos y conservan el mismo módulo de tensión." class="fpm-v04-figure img-fluid" width="487.705777" height="497.99952" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 5.5.* La cuerda tensa impone una relación entre sus tramos. Las ecuaciones usan el mismo valor de $a$ después de derivar esa relación; no porque ambos cuerpos reciban las mismas fuerzas. Las longitudes de las flechas de fuerza son esquemáticas.
+
+</figcaption>
+
+</figure>
 
 ## Fricción que acelera en el sentido de la marcha
 
@@ -224,17 +264,33 @@ $$
 
 Si se supera la cota, la caja puede deslizar hacia atrás respecto del vehículo mientras todavía avanza respecto del suelo. Una cinta transportadora ofrece otro ejemplo: una caja inicialmente quieta respecto del laboratorio es acelerada por la fricción de una cinta que pasa bajo ella. El sentido se decide comparando velocidades de las dos superficies, no mirando sólo la flecha de velocidad de la caja.
 
-![Una caja que se mueve hacia la derecha más lentamente que la cinta desliza hacia la izquierda respecto de ella y recibe fricción hacia la derecha.](/assets/books/fispm/r20261021/contacto_velocidad_relativa.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-5-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/contacto_velocidad_relativa.svg" class="lightbox" data-gallery="fispm-r20261021-c5"><img src="/assets/books/fispm/r20261021/contacto_velocidad_relativa.svg" alt="Una caja que se mueve hacia la derecha más lentamente que la cinta desliza hacia la izquierda respecto de ella y recibe fricción hacia la derecha." class="fpm-v04-figure img-fluid" width="474.343059" height="397.19952" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 5.6.* Las velocidades están expresadas respecto del laboratorio y utilizan su propia escala. La fuerza pertenece al diagrama de la caja. La comparación de velocidades determina el signo del deslizamiento relativo.
+
+</figcaption>
+
+</figure>
 
 ## Una desigualdad también puede resolver un problema
 
 En una cuenta de equilibrio, la fricción desconocida se obtiene de una igualdad y luego se comprueba mediante una desigualdad. Esa comprobación puede producir un intervalo completo de fuerzas aplicadas, en lugar de un único número. El criterio de reposo demostrado para el plano inclinado identifica precisamente ese intervalo. Sus extremos indican fricción estática límite en sentidos contrarios; en su interior puede cambiar incluso el signo de la fuerza requerida.
 
-![Un intervalo de fuerzas paralelas permite el reposo en una pendiente. La fricción requerida cambia de sentido al pasar por la componente tangencial del peso.](/assets/books/fispm/r20261021/contacto_intervalo_estatico.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-5-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/contacto_intervalo_estatico.svg" class="lightbox" data-gallery="fispm-r20261021-c5"><img src="/assets/books/fispm/r20261021/contacto_intervalo_estatico.svg" alt="Un intervalo de fuerzas paralelas permite el reposo en una pendiente. La fricción requerida cambia de sentido al pasar por la componente tangencial del peso." class="fpm-v04-figure img-fluid" width="533.99952" height="433.19952" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 5.7.* Para $m=3\,\mathrm{kg}$, $\sin\alpha=3/5$, $\cos\alpha=4/5$ y $\mu_s=0{,}50$, el reposo admite $6\leq F/(1\,\mathrm N)\leq30$. En $F=18\,\mathrm N$ no se necesita fricción; en los extremos se requieren doce newtons en sentidos opuestos. Si el agente es una cuerda, también hay que respetar que sólo puede tirar.
+
+</figcaption>
+
+</figure>
 
 Esta forma de resolver conserva la pregunta física: qué debe proporcionar un contacto y qué valores permite su modelo. La masa no necesita empezar a deslizar para que aprendamos algo sobre ella. Un reposo observado sólo impone una cota inferior a la fricción máxima disponible; una historia deslizante permite investigar otro parámetro. Para distinguirlos harán falta ensayos preparados en regímenes distintos y mediciones cuyas incertidumbres no se confundan con un cambio real de contacto.
 

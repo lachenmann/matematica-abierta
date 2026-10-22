@@ -51,9 +51,17 @@ $$
 
 La energía cinética inicial era nueve joules; la final es seis. Los tres joules de diferencia pueden convertirse en deformación, vibración y energía interna. La hipótesis que permitió sumar las ecuaciones de Newton sigue siendo válida aunque la energía cinética cambie. El choque ha dado una ocasión concreta para separar dos balances que hasta aquí podían parecer inseparables.
 
-![Los dos carros antes y después del enganche, con sus velocidades y el balance de energía cinética.](/assets/books/fispm/r20261021/impulso_carros.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-9-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/impulso_carros.svg" class="lightbox" data-gallery="fispm-r20261021-c9"><img src="/assets/books/fispm/r20261021/impulso_carros.svg" alt="Los dos carros antes y después del enganche, con sus velocidades y el balance de energía cinética." class="fpm-v04-figure img-fluid" width="900" height="480" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 9.1.* Los instantes dibujados delimitan el choque. El momento horizontal total vale seis kilogramos metro por segundo en ambos; la energía cinética disminuye tres joules. Las flechas indican sentidos, sin fijar una escala de fuerza.
+
+</figcaption>
+
+</figure>
 
 ## Acumular una fuerza durante un intervalo
 
@@ -77,9 +85,17 @@ $$
 
 La integral es un área con signo cuando la fuerza tiene una sola componente. Dos pulsos pueden tener la misma área y producir el mismo cambio de momento, aunque difieran mucho sus máximos. La fuerza media vectorial queda definida por $\overline{\mathbf F}=\mathbf J/(t_b-t_a)$. Por tanto, un impulso y una duración conocidos determinan la media, pero dejan indeterminado el máximo. Si la fuerza cambia de dirección, las contribuciones pueden cancelarse y la media puede ser cero pese a una interacción intensa.
 
-![Dos perfiles temporales, rectangular y triangular, tienen áreas iguales y máximos distintos.](/assets/books/fispm/r20261021/impulso_perfiles.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-9-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/impulso_perfiles.svg" class="lightbox" data-gallery="fispm-r20261021-c9"><img src="/assets/books/fispm/r20261021/impulso_perfiles.svg" alt="Dos perfiles temporales, rectangular y triangular, tienen áreas iguales y máximos distintos." class="fpm-v04-figure img-fluid" width="900" height="480" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 9.2.* En el ejemplo de la figura, ambos pulsos positivos duran medio segundo y entregan dos newton segundo. Sus máximos son cuatro y ocho newtons. El área determina la variación de momento; el detalle temporal exige información adicional.
+
+</figcaption>
+
+</figure>
 
 El modelo de choque instantáneo resume un intervalo corto mediante velocidades anteriores y posteriores. El salto ideal de velocidad representa un impulso finito: no se obtiene sustituyendo una fuerza ordinaria finita en un intervalo de duración cero. Para calcular una fuerza media o un máximo hay que recuperar información sobre la duración o el perfil del contacto.
 
@@ -147,9 +163,17 @@ $$
 
 El resultado explica por qué el centro de masa sigue un movimiento sencillo cuando las partes se separan o se deforman. Si la única resultante externa es la gravedad uniforme, $\mathbf F^{\rm ext}=M\mathbf g$ y $\ddot{\mathbf R}=\mathbf g$, aunque el cuerpo gire o estalle. Para fuerzas externas que dependan de cada posición, la suma puede requerir conocer la configuración; la ecuación del centro de masa no garantiza por sí sola un problema cerrado para $\mathbf R$.
 
-![Dos partículas de masas distintas se sitúan respecto de su centro de masa.](/assets/books/fispm/r20261021/impulso_centro.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-9-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/impulso_centro.svg" class="lightbox" data-gallery="fispm-r20261021-c9"><img src="/assets/books/fispm/r20261021/impulso_centro.svg" alt="Dos partículas de masas distintas se sitúan respecto de su centro de masa." class="fpm-v04-figure img-fluid" width="900" height="480" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 9.3.* Para masas de uno y tres kilogramos situadas en cero y cuatro metros, el centro está en tres metros. Las separaciones ponderadas se compensan: $1(0-3)+3(4-3)=0$, en kilogramos metro.
+
+</figcaption>
+
+</figure>
 
 Elegir un observador que se traslada con velocidad constante $\mathbf U$ reemplaza cada velocidad por $\mathbf v_i'=\mathbf v_i-\mathbf U$. Entonces $\mathbf P'=\mathbf P-M\mathbf U$. El valor de $\mathbf P$ depende del observador, pero su cambio entre dos instantes es el mismo porque $M$ y $\mathbf U$ son constantes. En ausencia de impulso externo podemos tomar $\mathbf U=\dot{\mathbf R}$ y describir el choque en el marco del centro de masa, donde el momento total es cero.
 
@@ -189,9 +213,17 @@ Todos los sumandos del movimiento relativo son no negativos. Para un momento tot
 
 En nuestros carros, $\mu=2/3\,\mathrm{kg}$ y la rapidez relativa inicial era tres metros por segundo. Su energía relativa era $\mu(3\,\mathrm{m/s})^2/2=3\,\mathrm J$. El enganche la elimina por completo, mientras la energía del centro de masa permanece en seis joules.
 
-![La energía cinética se descompone en movimiento del centro de masa y movimiento relativo.](/assets/books/fispm/r20261021/impulso_energia.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-9-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/impulso_energia.svg" class="lightbox" data-gallery="fispm-r20261021-c9"><img src="/assets/books/fispm/r20261021/impulso_energia.svg" alt="La energía cinética se descompone en movimiento del centro de masa y movimiento relativo." class="fpm-v04-figure img-fluid" width="900" height="480" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 9.4.* Las barras representan el ejemplo inicial. El enganche conserva la parte asociada al centro de masa y lleva a cero la energía cinética relativa. El balance de energía total debe incluir los otros modos que reciben los tres joules.
+
+</figcaption>
+
+</figure>
 
 Si dos cuerpos se separan mediante un resorte que estaba comprimido, el proceso inverso puede aumentar su energía cinética a momento total constante. La energía procede del resorte. Por eso una ley de conservación del momento no decide, por sí sola, si la energía cinética aumenta, disminuye o permanece igual.
 
@@ -235,15 +267,31 @@ Con masas iguales y $e=1$, las velocidades se intercambian. Con una masa recepto
 
 Un proyectil que se incrusta en un bloque suspendido ofrece dos intervalos con información diferente. Durante el impacto, si el bloque está en la posición más baja y el impulso horizontal del soporte es despreciable, el momento horizontal del proyectil y del bloque permite obtener la velocidad común inmediatamente posterior. Durante la elevación siguiente, la gravedad cambia ese momento, pero la tensión ideal no realiza trabajo y el balance de energía mecánica relaciona la rapidez inicial de la subida con su altura máxima. La solución 16 desarrolla ambos intervalos.
 
-![Impacto de un proyectil contra un bloque y ascenso posterior del conjunto.](/assets/books/fispm/r20261021/impulso_etapas.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-9-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/impulso_etapas.svg" class="lightbox" data-gallery="fispm-r20261021-c9"><img src="/assets/books/fispm/r20261021/impulso_etapas.svg" alt="Impacto de un proyectil contra un bloque y ascenso posterior del conjunto." class="fpm-v04-figure img-fluid" width="900" height="480" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 9.5.* El estado inmediatamente posterior al choque conecta dos balances. La subida recupera la energía cinética que quedó después del impacto; no recupera la energía transformada durante la incrustación. Se supone traslación del bloque sin rotación apreciable.
 
+</figcaption>
+
+</figure>
+
 En el plano, conservar el momento proporciona dos ecuaciones escalares. Si ambos cuerpos quedan juntos, esas ecuaciones determinan las dos componentes de la velocidad común. Si salen separados, hay cuatro componentes finales desconocidas; añadir conservación de energía deja todavía, en general, una libertad. Una dirección de salida medida o un modelo geométrico de contacto puede aportar la condición restante. El ejercicio 15 muestra un caso en que una dirección observada permite completar la predicción.
 
-![Dos velocidades finales perpendiculares suman vectorialmente la velocidad inicial en un choque elástico de masas iguales.](/assets/books/fispm/r20261021/impulso_plano.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-9-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/impulso_plano.svg" class="lightbox" data-gallery="fispm-r20261021-c9"><img src="/assets/books/fispm/r20261021/impulso_plano.svg" alt="Dos velocidades finales perpendiculares suman vectorialmente la velocidad inicial en un choque elástico de masas iguales." class="fpm-v04-figure img-fluid" width="900" height="610" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 9.6.* En el ejercicio 15, una partícula sale a treinta grados y la otra a menos sesenta grados respecto del eje inicial. La perpendicularidad se deduce de momento y energía para masas iguales, con una de ellas inicialmente en reposo y ambas velocidades finales no nulas.
+
+</figcaption>
+
+</figure>
 
 ## Del balance a una medición
 
@@ -251,9 +299,17 @@ Para contrastar una conservación necesitamos masas y velocidades con signos, co
 
 En el ejemplo de enganche, si las masas se tratan como exactas y se sabe que $u_1\in[2{,}9,3{,}1]\,\mathrm{m/s}$ y $u_2\in[-0{,}1,0{,}1]\,\mathrm{m/s}$, la velocidad común predicha sin impulso externo pertenece a $[1{,}9,2{,}1]\,\mathrm{m/s}$. Una medición posterior entre $2{,}15$ y $2{,}19\,\mathrm{m/s}$ queda separada de esa banda. El ejercicio 18 cuantifica el menor impulso externo que permitiría cerrar esa discrepancia si las demás hipótesis se conservan.
 
-![Bandas de velocidad predicha y observada que no se intersectan.](/assets/books/fispm/r20261021/impulso_bandas.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-9-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/impulso_bandas.svg" class="lightbox" data-gallery="fispm-r20261021-c9"><img src="/assets/books/fispm/r20261021/impulso_bandas.svg" alt="Bandas de velocidad predicha y observada que no se intersectan." class="fpm-v04-figure img-fluid" width="900" height="480" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 9.7.* La separación mínima de las bandas es $0{,}05\,\mathrm{m/s}$. Son cotas didácticas, sin interpretación probabilística. Una discrepancia obliga a revisar medición, sistema e intercambios; no identifica automáticamente cuál de ellos falló.
+
+</figcaption>
+
+</figure>
 
 La reconstrucción puede detenerse antes de obtener una solución única. Conocer el momento final de dos cuerpos separados sólo fija una combinación de sus velocidades. La solución 20 conserva esa indeterminación hasta que se incorpora una condición física adicional. Reconocer ese punto forma parte de resolver el problema.
 

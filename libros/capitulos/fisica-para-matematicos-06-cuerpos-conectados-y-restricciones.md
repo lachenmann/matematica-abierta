@@ -38,9 +38,17 @@ La segunda pregunta puede resolverse antes de conocer las masas. Cuando la polea
 
 El laboratorio será nuestro marco inercial y tomaremos $g=10\,\mathrm{m/s^2}$. La cuerda es inextensible y de masa despreciable; las poleas tienen masa despreciable y funcionan sin pérdidas. Los tramos rectos permanecen verticales y los arcos de contacto conservan su longitud. La carga está unida al eje móvil por un enganche corto, rígido y de masa despreciable. Describiremos la traslación del conjunto móvil mediante la posición de la carga. Estas hipótesis excluyen el balanceo, la elasticidad y la inercia de rotación de las poleas.
 
-![Una cuerda baja del anclaje A, rodea la polea móvil P, sube a la polea fija F y desciende hasta la pesa m.](/assets/books/fispm/r20261021/restriccion_polea_movil.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-6-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/restriccion_polea_movil.svg" class="lightbox" data-gallery="fispm-r20261021-c6"><img src="/assets/books/fispm/r20261021/restriccion_polea_movil.svg" alt="Una cuerda baja del anclaje A, rodea la polea móvil P, sube a la polea fija F y desciende hasta la pesa m." class="fpm-v04-figure img-fluid" width="680" height="525" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 6.1.* La carga $M$ acompaña al eje móvil. Las dos distancias verticales asociadas a ese eje aumentan cuando desciende. Las coordenadas de los cuerpos se miden hacia abajo desde un nivel fijo; las diferencias entre ejes, tangencias y enganches quedan absorbidas en constantes. El esquema representa conexiones y sentidos, sin escala de fuerzas.
+
+</figcaption>
+
+</figure>
 
 ## La longitud antes que las fuerzas
 
@@ -94,9 +102,17 @@ $$
 
 La carga desciende y la pesa sube con el doble de aceleración en módulo. La tensión es mayor que el peso de la pesa, $20\,\mathrm N$, como requiere su aceleración hacia arriba. Las dos fuerzas que sostienen el conjunto móvil suman $360/7\,\mathrm N$, menos que sus sesenta newtons de peso. Ambas comprobaciones dan el mismo sentido de movimiento.
 
-![Diagramas separados para el conjunto móvil y la pesa, con dos tensiones sobre el primero y una sobre la segunda.](/assets/books/fispm/r20261021/restriccion_fuerzas.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-6-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/restriccion_fuerzas.svg" class="lightbox" data-gallery="fispm-r20261021-c6"><img src="/assets/books/fispm/r20261021/restriccion_fuerzas.svg" alt="Diagramas separados para el conjunto móvil y la pesa, con dos tensiones sobre el primero y una sobre la segunda." class="fpm-v04-figure img-fluid" width="680" height="500" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 6.2.* Cada panel contiene fuerzas recibidas por su sistema. Las flechas son esquemáticas: la igualdad de los dos módulos $T$ corresponde a la cuerda ideal. La fuerza del enganche sobre la carga aislada sería $2T$; al incluir el enganche en el conjunto móvil, esa interacción es interna y no se agrega al diagrama.
+
+</figcaption>
+
+</figure>
 
 Partiendo del reposo, los desplazamientos son
 
@@ -131,9 +147,17 @@ $$
 
 Resolver sólo la ecuación de aceleraciones conserva cualquier error inicial de posición y permite que un error inicial de velocidad crezca linealmente. Esos movimientos adicionales satisfacen una consecuencia de la restricción, pero no la restricción que queríamos imponer.
 
-![Las configuraciones forman una recta en el plano de coordenadas; las velocidades compatibles siguen su dirección.](/assets/books/fispm/r20261021/restriccion_configuraciones.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-6-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/restriccion_configuraciones.svg" class="lightbox" data-gallery="fispm-r20261021-c6"><img src="/assets/books/fispm/r20261021/restriccion_configuraciones.svg" alt="Las configuraciones forman una recta en el plano de coordenadas; las velocidades compatibles siguen su dirección." class="fpm-v04-figure img-fluid" width="680" height="500" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 6.3.* Para el ejemplo geométrico $2y+z=8\,\mathrm m$, cada punto del segmento dibujado es una pareja admisible dentro del dominio $y,z\geq0$. Las velocidades compatibles son tangentes a la recta. Los extremos pueden corresponder a límites físicos que requieren información adicional del aparato.
+
+</figcaption>
+
+</figure>
 
 La misma idea sirve para una relación lineal $b_1q_1+\cdots+b_nq_n=C(t)$, con coeficientes constantes: se deriva una o dos veces y se conservan los datos iniciales correspondientes. Si la geometría obliga a usar coeficientes variables, también hay que derivarlos. No toda restricción tiene la sencillez de una suma de longitudes verticales.
 
@@ -177,9 +201,17 @@ $$
 
 Mover un punto que antes era fijo cambia la ecuación geométrica. La figura siguiente permite identificar qué longitud cambia con $u$ y comprobar su signo.
 
-![El anclaje desciende y acorta únicamente el primer ramal de la polea móvil.](/assets/books/fispm/r20261021/restriccion_anclaje.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-6-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/restriccion_anclaje.svg" class="lightbox" data-gallery="fispm-r20261021-c6"><img src="/assets/books/fispm/r20261021/restriccion_anclaje.svg" alt="El anclaje desciende y acorta únicamente el primer ramal de la polea móvil." class="fpm-v04-figure img-fluid" width="680" height="525" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 6.4.* Con los tres ejes positivos hacia abajo, el ramal entre anclaje y polea móvil depende de $y-u$. El descenso del anclaje acorta ese tramo cuando la polea móvil permanece en su lugar. Los otros dos tramos no contienen $u$.
+
+</figcaption>
+
+</figure>
 
 ## Varias cuerdas: reconocer relaciones diferentes
 
@@ -193,9 +225,17 @@ $$
 
 La suma da $a=F/(m_1+m_2+m_3)$. Entonces $T_1=m_1a$ y $T_2=(m_1+m_2)a$. La segunda cuerda acelera a los dos primeros carros, mientras que la primera sólo acelera al primero. La igualdad de tensión se refiere a una cuerda ideal continua bajo las hipótesis adecuadas; no se extiende a cuerdas distintas por estar en un mismo aparato.
 
-![Tres carros unidos por dos cuerdas presentan aceleración común y tensiones distintas.](/assets/books/fispm/r20261021/restriccion_tres_carros.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-6-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/restriccion_tres_carros.svg" class="lightbox" data-gallery="fispm-r20261021-c6"><img src="/assets/books/fispm/r20261021/restriccion_tres_carros.svg" alt="Tres carros unidos por dos cuerdas presentan aceleración común y tensiones distintas." class="fpm-v04-figure img-fluid" width="680" height="500" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 6.5.* Para $m_1=1\,\mathrm{kg}$, $m_2=2\,\mathrm{kg}$, $m_3=3\,\mathrm{kg}$ y $F=12\,\mathrm N$, resulta $a=2\,\mathrm{m/s^2}$, $T_1=2\,\mathrm N$ y $T_2=6\,\mathrm N$. Se muestran conexiones y fuerza aplicada; los diagramas de cada receptor se reconstruyen en las ecuaciones.
+
+</figcaption>
+
+</figure>
 
 Contar restricciones requiere comprobar que aportan información distinta. Las ecuaciones $x+2y=C_1$ y $2x+4y=C_2$ describen una sola condición si $C_2=2C_1$. Si las constantes no guardan esa relación, no hay ninguna configuración que las cumpla a la vez. Dos ecuaciones escritas no garantizan dos reducciones independientes de las coordenadas.
 
@@ -234,17 +274,33 @@ $$
 
 El extremo horizontal conserva su rapidez, pero el vertical acelera. La geometría cambia la proporción entre sus desplazamientos. Igualar los módulos de sus aceleraciones contradiría la longitud de la barra.
 
-![Barra entre pared y piso y curva de configuraciones admisibles en el primer cuadrante.](/assets/books/fispm/r20261021/restriccion_barra.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-6-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/restriccion_barra.svg" class="lightbox" data-gallery="fispm-r20261021-c6"><img src="/assets/books/fispm/r20261021/restriccion_barra.svg" alt="Barra entre pared y piso y curva de configuraciones admisibles en el primer cuadrante." class="fpm-v04-figure img-fluid" width="680" height="500" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 6.6.* En este dibujo $y$ crece hacia arriba y $x$ hacia la derecha: son las distancias positivas al rincón. La curva $x^2+y^2=\ell^2$ permite leer cómo cambia la razón entre velocidades. Estas coordenadas no son las coordenadas hacia abajo de la polea inicial.
+
+</figcaption>
+
+</figure>
 
 Para una partícula unida a un pivote fijo por una cuerda tensa de longitud $\ell$, el vector posición relativo $\mathbf r$ satisface $\mathbf r\cdot\mathbf r=\ell^2$. Las mismas derivaciones dan $\mathbf r\cdot\mathbf v=0$ y $\mathbf r\cdot\mathbf a=-\|\mathbf v\|^2$. La componente de aceleración dirigida hacia el pivote es, por tanto, $v^2/\ell$. La aceleración puede tener además una componente tangencial. Esta conclusión combina la geometría del círculo del capítulo 3 con la necesidad de una fuerza radial del capítulo 4; no supone rapidez constante.
 
 En el punto más bajo de un círculo vertical, el peso apunta alejándose del centro y la tensión hacia él. Así, $T-mg=mv^2/\ell$. En el punto más alto, ambos apuntan hacia el centro y $T+mg=mv^2/\ell$. Un valor negativo de esta última tensión rechaza el círculo tenso para esos datos. No calcula la trayectoria posterior de la cuerda floja.
 
-![En los puntos inferior y superior de un círculo vertical cambian la dirección del peso respecto del centro y el valor admisible de la tensión.](/assets/books/fispm/r20261021/restriccion_circulo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-6-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/restriccion_circulo.svg" class="lightbox" data-gallery="fispm-r20261021-c6"><img src="/assets/books/fispm/r20261021/restriccion_circulo.svg" alt="En los puntos inferior y superior de un círculo vertical cambian la dirección del peso respecto del centro y el valor admisible de la tensión." class="fpm-v04-figure img-fluid" width="680" height="500" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 6.7.* Las fuerzas se dibujan sobre la partícula, y las flechas radiales auxiliares indican hacia dónde queda el centro. El dato de rapidez se refiere al instante considerado; no se presupone que dos estados mostrados pertenezcan a la misma trayectoria.
+
+</figcaption>
+
+</figure>
 
 ## Qué aprendemos del aparato
 

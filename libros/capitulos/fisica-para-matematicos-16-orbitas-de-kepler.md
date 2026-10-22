@@ -148,8 +148,17 @@ $$
 
 conservar ambas evita que un arcocoseno confunda el tramo entrante con el saliente.
 
-![Estado y orientación de la órbita](/assets/books/fispm/r20261021/kepler_estado.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-16-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/kepler_estado.svg" class="lightbox" data-gallery="fispm-r20261021-c16"><img src="/assets/books/fispm/r20261021/kepler_estado.svg" alt="Estado y orientación de la órbita" class="fpm-v04-figure img-fluid" width="900" height="620" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 16.1.* El estado inicial fija el plano, la orientación del periastro y el sentido de recorrido. El vector de velocidad se representa descompuesto en sus componentes radial y tangencial.
+
+</figcaption>
+
+</figure>
 
 ## Leer la forma y los límites de una cónica
 
@@ -223,8 +232,17 @@ $$
 
 La primera fórmula se obtiene derivando $r(f)$ y usando $\dot f=h/r^2$; la segunda expresa la conservación angular. Escribir $\mathbf u=\dot r\mathbf e_r+u_\theta\mathbf e_\theta$ y sustituir las componentes trigonométricas produce la expresión vectorial. Así, la curva y su sentido de recorrido permiten reconstruir el estado completo en cada punto.
 
-![Tres cónicas gravitatorias](/assets/books/fispm/r20261021/kepler_conicas.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-16-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/kepler_conicas.svg" class="lightbox" data-gallery="fispm-r20261021-c16"><img src="/assets/books/fispm/r20261021/kepler_conicas.svg" alt="Tres cónicas gravitatorias. Esquema del capítulo 16; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid" width="900" height="680" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 16.2.* Elipse, parábola y rama hiperbólica con un mismo radio de periastro y foco común. La rama física de la hipérbola queda delimitada por la positividad del denominador polar; los extremos infinitos se muestran mediante tramos truncados.
+
+</figcaption>
+
+</figure>
 
 La órbita inicial tiene $p=1\,\mathrm m$ y $e=1/2$, por lo que $a=4/3\,\mathrm m$, $b=2\sqrt3/3\,\mathrm m$ y los ápsides recuperan $r_p=2/3\,\mathrm m$, $r_a=2\,\mathrm m$. La ecuación cartesiana está girada respecto de los ejes del laboratorio, pues su periastro apunta hacia abajo. La orientación sale del dato vectorial, mientras que los valores escalares obtenidos por energía permanecen iguales.
 
@@ -253,8 +271,17 @@ $$
 
 y ambos cuerpos tienen el mismo período. La relación $m_1a_1=m_2a_2$ permite repartir las masas cuando se conocen ambos semiejes físicos. Una observación angular proyectada exige además distancia y orientación para obtener esas longitudes.
 
-![Áreas iguales y tiempos iguales](/assets/books/fispm/r20261021/kepler_areas.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-16-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/kepler_areas.svg" class="lightbox" data-gallery="fispm-r20261021-c16"><img src="/assets/books/fispm/r20261021/kepler_areas.svg" alt="Áreas iguales y tiempos iguales" class="fpm-v04-figure img-fluid" width="900" height="620" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 16.3.* Dos sectores focales de una misma elipse barridos durante intervalos iguales. Cerca del periastro se recorre un ángulo mayor; la igualdad relevante es la de áreas.
+
+</figcaption>
+
+</figure>
 
 ## Construir un reloj sobre la elipse
 
@@ -288,8 +315,17 @@ $$
 
 Estos pares permiten usar la función $\operatorname{atan2}(y,x)$, que devuelve el ángulo con los signos de seno y coseno especificados. Después se añade el múltiplo de $2\pi$ que corresponda a la vuelta seguida.
 
-![Anomalías verdadera y excéntrica](/assets/books/fispm/r20261021/kepler_anomalias.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-16-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/kepler_anomalias.svg" class="lightbox" data-gallery="fispm-r20261021-c16"><img src="/assets/books/fispm/r20261021/kepler_anomalias.svg" alt="Anomalías verdadera y excéntrica" class="fpm-v04-figure img-fluid" width="900" height="650" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 16.4.* La misma posición sobre la elipse se describe desde el foco mediante $f$ y desde el centro del círculo auxiliar mediante $\chi$. La proyección vertical construye la parametrización elíptica.
+
+</figcaption>
+
+</figure>
 
 **Proposición.** Para una elipse con $0\le e<1$, la evolución temporal satisface la ecuación de Kepler
 
@@ -341,8 +377,17 @@ $$
 
 El denominador permanece positivo, aunque puede ser pequeño para órbitas muy excéntricas cerca del periastro. Para tener un procedimiento controlado se conserva también el intervalo de signos: se acepta el paso de Newton si cae en su interior y, en otro caso, se usa su punto medio. Puede exigirse además una bisección periódica para garantizar que la anchura tienda a cero. Al detenerse, la cota por residuo o por anchura expresa la precisión obtenida.
 
-![Inversión de la ecuación de Kepler](/assets/books/fispm/r20261021/kepler_reloj.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-16-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/kepler_reloj.svg" class="lightbox" data-gallery="fispm-r20261021-c16"><img src="/assets/books/fispm/r20261021/kepler_reloj.svg" alt="Inversión de la ecuación de Kepler" class="fpm-v04-figure img-fluid" width="900" height="600" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 16.5.* La función $\chi-e\sin\chi$ crece estrictamente. El residuo de una aproximación controla su error angular mediante el límite inferior $1-e$ de la pendiente.
+
+</figcaption>
+
+</figure>
 
 En la órbita inicial, $f_0=\pi/2$ da $\cos\chi_0=1/2$ y $\sin\chi_0=\sqrt3/2$, de modo que $\chi_0=\pi/3$. El tiempo transcurrido desde el periastro satisface
 
@@ -380,15 +425,33 @@ $$
 
 En el marco baricéntrico ambas curvas son elipses homotéticas de la relativa, con foco en el centro de masa y la misma excentricidad. El periastro de un cuerpo y el del otro apuntan en direcciones opuestas; los dos alcanzan simultáneamente su menor distancia al centro. En un laboratorio donde $\mathbf V_0\ne0$, la traslación se suma durante cada vuelta y las trayectorias pueden dejar de ser curvas cerradas.
 
-![Reconstrucción baricéntrica de dos elipses](/assets/books/fispm/r20261021/kepler_binario.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-16-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/kepler_binario.svg" class="lightbox" data-gallery="fispm-r20261021-c16"><img src="/assets/books/fispm/r20261021/kepler_binario.svg" alt="Reconstrucción baricéntrica de dos elipses" class="fpm-v04-figure img-fluid" width="900" height="600" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 16.6.* Para masas en razón dos a uno, los semiejes baricéntricos están en razón uno a dos. Las posiciones se dibujan al mismo instante y pertenecen a lados opuestos del centro de masa.
+
+</figcaption>
+
+</figure>
 
 Una energía y un momento angular escalar fijan el tamaño y la forma, pero aún permiten girar la órbita en el espacio y desplazar su origen temporal. Incluso un radio y una rapidez conocidos pueden corresponder a estados diferentes, porque el ángulo de la velocidad determina $h$. El problema observacional exige recuperar esos datos a partir de mediciones: proyecciones en el cielo, distancias y velocidades. Las inferencias de los ejercicios declararán qué información se considera ya reconstruida.
 
 Las parábolas y las hipérbolas admiten también relojes adaptados a su geometría; dos problemas los desarrollan sin forzar una continuación de la anomalía excéntrica elíptica. El caso $h=0$ conserva la ecuación radial y puede alcanzar una colisión en tiempo finito. Distinguir esos dominios mantiene las fórmulas orbitales ligadas al estado físico que las produjo.
 
-![Formas y dominios orbitales](/assets/books/fispm/r20261021/kepler_dominios.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-16-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/kepler_dominios.svg" class="lightbox" data-gallery="fispm-r20261021-c16"><img src="/assets/books/fispm/r20261021/kepler_dominios.svg" alt="Formas y dominios orbitales. Esquema del capítulo 16; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid" width="900" height="580" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 16.7.* La excentricidad clasifica cónicas cuando $h>0$. El movimiento radial tiene $h=0$ y requiere su propia ecuación temporal; el valor $e=1$ por sí solo pierde entonces capacidad de clasificación.
+
+</figcaption>
+
+</figure>
 
 ## Ejercicios
 

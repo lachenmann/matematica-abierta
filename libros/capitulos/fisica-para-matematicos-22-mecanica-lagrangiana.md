@@ -72,8 +72,17 @@ $$
 
 La cuña retrocede y el bloque aumenta su coordenada descendente. Con masas y ángulo constantes, ambas aceleraciones son constantes mientras se mantenga este modelo de contacto. Los datos iniciales determinan las posiciones y velocidades mediante dos integraciones.
 
-![Geometría de la cuña móvil](/assets/books/fispm/r20261021/lagrange_cuna.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-22-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/lagrange_cuna.svg" class="lightbox" data-gallery="fispm-r20261021-c22"><img src="/assets/books/fispm/r20261021/lagrange_cuna.svg" alt="Geometría de la cuña móvil. Esquema del capítulo 22; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid" width="414.886246" height="319.68" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 22.1.* La velocidad horizontal del bloque combina la traslación de la cuña y su movimiento relativo sobre la cara. El término cruzado de la energía cinética conserva esa combinación.
+
+</figcaption>
+
+</figure>
 
 ## La matriz cinética determina las aceleraciones
 
@@ -187,8 +196,17 @@ La positividad de las masas hace positiva esta forma siempre que $J^{\mathsf T}z
 
 Los datos iniciales deben satisfacer tanto $f=0$ como $J\dot r+f_t=0$. Para un vínculo unilateral se comprueba además el sentido de la reacción. Si el cálculo exige una reacción atractiva de la superficie, el tramo de contacto supuesto ha terminado. La ecuación geométrica debe entonces dejar paso al movimiento libre apropiado.
 
-![Reacción normal sobre bloque y cuña](/assets/books/fispm/r20261021/lagrange_reaccion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-22-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/lagrange_reaccion.svg" class="lightbox" data-gallery="fispm-r20261021-c22"><img src="/assets/books/fispm/r20261021/lagrange_reaccion.svg" alt="Reacción normal sobre bloque y cuña" class="fpm-v04-figure img-fluid" width="433.575853" height="319.68" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 22.2.* La reacción normal aparece en sentidos opuestos sobre ambos cuerpos. Proyectar Newton permite recuperar su módulo después de resolver las coordenadas independientes.
+
+</figcaption>
+
+</figure>
 
 ## Cambiar coordenadas conservando las ecuaciones
 
@@ -221,8 +239,17 @@ $$
 
 El término de aceleración del apoyo nace de derivar la energía cinética transformada. Si se conserva únicamente $m\dot q^2/2$, se está cambiando el modelo. Restar la derivada total de $m\dot a q$ permite escribir, además de un término que sólo depende del tiempo, el lagrangiano equivalente $m\dot q^2/2-kq^2/2-m\ddot a q$.
 
-![Oscilador con equilibrio móvil](/assets/books/fispm/r20261021/lagrange_apoyo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-22-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/lagrange_apoyo.svg" class="lightbox" data-gallery="fispm-r20261021-c22"><img src="/assets/books/fispm/r20261021/lagrange_apoyo.svg" alt="Oscilador con equilibrio móvil" class="fpm-v04-figure img-fluid" width="611.401875" height="344.736" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 22.3.* La posición cartesiana y el desplazamiento relativo se relacionan por $x=a+q$. El movimiento prescrito del apoyo entra en la ecuación relativa mediante su aceleración.
+
+</figcaption>
+
+</figure>
 
 ## Hacer la cuenta de energía del aparato correcto
 
@@ -254,8 +281,17 @@ $$
 
 El parentesco con la cuña es visible en el término cruzado. Su coeficiente depende ahora del ángulo y sus derivadas generan términos cuadráticos en las velocidades. Los ejercicios desarrollarán las ecuaciones exactas, su aproximación de pequeño ángulo y la modificación producida por un resorte en el carro. La misma geometría cinética conectará el mecanismo con los modos del capítulo 20.
 
-![Carrito y péndulo](/assets/books/fispm/r20261021/lagrange_carrito.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-22-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/lagrange_carrito.svg" class="lightbox" data-gallery="fispm-r20261021-c22"><img src="/assets/books/fispm/r20261021/lagrange_carrito.svg" alt="Carrito y péndulo. Esquema del capítulo 22; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid" width="448.568471" height="319.68" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 22.4.* El ángulo y la posición del carro describen conjuntamente la posición de la masa suspendida. Derivar su posición antes de construir $T$ permite conservar el arrastre del soporte.
+
+</figcaption>
+
+</figure>
 
 ## Ejercicios
 
@@ -458,8 +494,17 @@ $$
 
 Al linealizar alrededor de un reposo inferior se obtiene $(M+m)\ddot X+m\ell\ddot\theta=0$, $\ddot X+\ell\ddot\theta+g\theta=0$. El modo oscilatorio tiene $\omega^2=(M+m)g/(M\ell)=80/3\,\mathrm{s^{-2}}$, y $\omega\approx5{,}163978\,\mathrm{s^{-1}}$. Sus amplitudes satisfacen $X=-m\ell\theta/(M+m)=-\theta/8\,\mathrm m$ cuando el ángulo se expresa en radianes. Además existe la traslación uniforme del sistema, con $\theta=0$. Su preparación inicial determina cuánto de cada comportamiento aparece.
 
-![Perfiles del carrito con resorte](/assets/books/fispm/r20261021/lagrange_modos.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-22-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/lagrange_modos.svg" class="lightbox" data-gallery="fispm-r20261021-c22"><img src="/assets/books/fispm/r20261021/lagrange_modos.svg" alt="Perfiles del carrito con resorte" class="fpm-v04-figure img-fluid" width="479.488276" height="339.602578" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 22.5.* Las amplitudes de traslación y ángulo tienen unidades diferentes. El dibujo representa dos configuraciones de los perfiles del ejercicio 11 y conserva su relación de signos; las amplitudes de traslación y ángulo se amplían por separado.
+
+</figcaption>
+
+</figure>
 
 ### 11. Sujetar el carrito con un resorte {#solucion-22-11}
 
@@ -549,8 +594,17 @@ La reacción parte del valor positivo $mg\cos\theta_0$ y llega a cero cuando $\c
 
 Al tomar $\theta_0\to0^+$, el ángulo tiende a $\arccos(2/3)$. La preparación exacta en la cima con velocidad cero conserva el equilibrio del modelo: la ecuación angular $\ddot\theta=(g/R)\sin\theta$ admite $\theta(t)=0$, y sus datos exactos determinan esa solución. En efecto, la integral de tiempo para una salida desde la cima contiene $d\theta/\sqrt{2g(1-\cos\theta)/R}$; como $1-\cos\theta\le\theta^2/2$, esa integral diverge al comenzar en cero. El valor límite del ángulo de separación corresponde a preparaciones perturbadas que sí empiezan a deslizar. El tiempo para abandonar una vecindad de la cima crece al reducir la perturbación inicial. Distinguir ambas preparaciones evita atribuir movimiento espontáneo a un estado de equilibrio ideal.
 
-![Pérdida de contacto en una esfera](/assets/books/fispm/r20261021/lagrange_contacto.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-22-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/lagrange_contacto.svg" class="lightbox" data-gallery="fispm-r20261021-c22"><img src="/assets/books/fispm/r20261021/lagrange_contacto.svg" alt="Pérdida de contacto en una esfera" class="fpm-v04-figure img-fluid" width="611.20125" height="337.704" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 22.6.* La reacción compresiva disminuye hasta cero. La ecuación de contacto se usa hasta ese punto y el movimiento posterior se reconstruye como vuelo libre.
+
+</figcaption>
+
+</figure>
 
 ### 19. Una energía conservada puede ocultar un modelo mal construido {#solucion-22-19}
 
@@ -571,8 +625,17 @@ Su ecuación es $m\ddot r=J^2/(mr^3)-U'(r)$, igual a la ecuación radial origina
 
 Para el potencial armónico, $kr_0-J^2/(mr_0^3)=0$ da $r_0=(J^2/(mk))^{1/4}$. La segunda derivada del potencial efectivo en ese radio vale $k+3J^2/(mr_0^4)=4k$. Las pequeñas oscilaciones radiales con $J$ fijo tienen frecuencia $\omega_r=2\sqrt{k/m}$. El movimiento circular tiene rapidez angular $|\dot\varphi|=\sqrt{k/m}$, y su signo coincide con el de $J$. Las dos frecuencias responden a observaciones diferentes del mismo sistema.
 
-![Potencial efectivo radial](/assets/books/fispm/r20261021/lagrange_routh.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-22-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/lagrange_routh.svg" class="lightbox" data-gallery="fispm-r20261021-c22"><img src="/assets/books/fispm/r20261021/lagrange_routh.svg" alt="Potencial efectivo radial. Esquema del capítulo 22; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid" width="611.233125" height="337.824" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 22.7.* La energía de momento angular produce una barrera al acercarse al origen y un mínimo de radio positivo en el oscilador central. La curvatura de ese mínimo determina la oscilación radial pequeña.
+
+</figcaption>
+
+</figure>
 
 Para precisar el regreso al potencial efectivo del capítulo 15, conservemos la energía
 

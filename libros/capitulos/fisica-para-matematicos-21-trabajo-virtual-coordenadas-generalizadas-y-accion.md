@@ -68,8 +68,17 @@ $$
 
 En estas derivadas parciales se mantienen fijas las demás variables. En una derivada temporal a lo largo de la trayectoria cambian a la vez $q(t)$ y $t$.
 
-![Péndulo y dirección tangente](/assets/books/fispm/r20261021/virtual_pendulo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-21-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/virtual_pendulo.svg" class="lightbox" data-gallery="fispm-r20261021-c21"><img src="/assets/books/fispm/r20261021/virtual_pendulo.svg" alt="Péndulo y dirección tangente. Esquema del capítulo 21; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid" width="441.20025" height="338.04" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 21.1.* El perfil tangente se obtiene al derivar la posición respecto del ángulo. La reacción radial tiene producto escalar cero con ese perfil.
+
+</figcaption>
+
+</figure>
 
 ## Comparar posiciones en un mismo instante
 
@@ -153,8 +162,17 @@ La ecuación determina el movimiento en las coordenadas elegidas. Para recuperar
 
 En el péndulo fijo, $U=-mg\ell\cos\theta$ y $T=m\ell^2\dot\theta^2/2$. Las derivadas dan $m\ell^2\ddot\theta+mg\ell\sin\theta=0$. La ecuación angular tiene unidades de torque. Dividir por $m\ell^2$ produce $\ddot\theta+(g/\ell)\sin\theta=0$, cuya reducción de pequeño ángulo ya se estudió. Toda esta construcción conserva el seno exacto del modelo de varilla rígida.
 
-![Restricción de cuerda y masas](/assets/books/fispm/r20261021/virtual_atwood.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-21-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/virtual_atwood.svg" class="lightbox" data-gallery="fispm-r20261021-c21"><img src="/assets/books/fispm/r20261021/virtual_atwood.svg" alt="Restricción de cuerda y masas. Esquema del capítulo 21; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid" width="426.222512" height="301.32" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 21.2.* Una cuerda inextensible relaciona los desplazamientos de las masas. Al elegir una coordenada, las velocidades y la energía cinética deben incorporar esa relación.
+
+</figcaption>
+
+</figure>
 
 ## Variar una trayectoria completa
 
@@ -188,8 +206,17 @@ Una función de prueba con el soporte requerido se obtiene trasladando y reescal
 
 Para un sistema conservativo con vínculos ideales holónomos, la acción estacionaria reproduce las ecuaciones obtenidas de Newton. Los datos iniciales de posición y velocidad siguen siendo la preparación habitual para predecir un movimiento. Los extremos fijos de la prueba organizan la comparación entre trayectorias y no prescriben una manera de preparar el experimento. Con fuerzas adicionales, la ecuación equivalente es $\delta S+\int\sum_iQ_i^{\mathrm{ad}}\eta_i\,dt=0$; el caso de acción estacionaria ordinaria corresponde a fuerzas adicionales de proyección cero.
 
-![Trayectorias con extremos fijados](/assets/books/fispm/r20261021/virtual_variaciones.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-21-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/virtual_variaciones.svg" class="lightbox" data-gallery="fispm-r20261021-c21"><img src="/assets/books/fispm/r20261021/virtual_variaciones.svg" alt="Trayectorias con extremos fijados" class="fpm-v04-figure img-fluid" width="611.469375" height="324" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 21.3.* Una familia de curvas comparte sus posiciones en los tiempos extremos. El parámetro de comparación cambia la curva completa; la coordenada horizontal sigue representando el tiempo.
+
+</figcaption>
+
+</figure>
 
 ## El término de borde y la elección del lagrangiano
 
@@ -211,8 +238,17 @@ $$
 
 Cuando $\tau>\pi/\omega$, esta diferencia es negativa. A la vez, variaciones de frecuencia suficientemente alta dan diferencias positivas. La trayectoria estacionaria tiene entonces direcciones de ambos signos. El resultado surge de integrar dos cuadrados y permite precisar la afirmación antes de introducir herramientas de segundo orden más generales.
 
-![Signos del cambio de acción](/assets/books/fispm/r20261021/virtual_accion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-21-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/virtual_accion.svg" class="lightbox" data-gallery="fispm-r20261021-c21"><img src="/assets/books/fispm/r20261021/virtual_accion.svg" alt="Signos del cambio de acción. Esquema del capítulo 21; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid" width="611.450625" height="330.669187" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 21.4.* Para variaciones sinusoidales del oscilador, el signo del cambio cuadrático de acción depende de la duración y de la frecuencia de la variación.
+
+</figcaption>
+
+</figure>
 
 La partícula libre permite ir un paso más allá y usar la acción para controlar una trayectoria de comparación. Si sus extremos están fijados, la recta de velocidad constante ofrece una referencia con la que medir cuánto cuesta una desviación. La diferencia de acciones reúne el cuadrado de la velocidad de esa desviación, y de allí se obtiene también una cota de posición.
 
@@ -262,8 +298,17 @@ Para una geometría impuesta dependiente del tiempo, $T=\frac12\dot q^{\mathsf T
 
 Las coordenadas elegidas deben seguir describiendo una región regular y las reacciones deben satisfacer la idealidad usada. Las restricciones expresadas sólo mediante relaciones de velocidades requieren examinar su integrabilidad y su principio dinámico antes de variar curvas con este procedimiento. Los ejemplos que siguen mantienen explícitas las ecuaciones geométricas de posición; las reacciones se recuperan cuando hacen falta para decidir el régimen físico.
 
-![Soporte móvil y comparación instantánea](/assets/books/fispm/r20261021/virtual_soporte.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-21-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/virtual_soporte.svg" class="lightbox" data-gallery="fispm-r20261021-c21"><img src="/assets/books/fispm/r20261021/virtual_soporte.svg" alt="Soporte móvil y comparación instantánea" class="fpm-v04-figure img-fluid" width="500.22" height="298.026" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 21.5.* La variación virtual mantiene fijo el soporte en un instante. La velocidad física incluye además el movimiento impuesto del apoyo.
+
+</figcaption>
+
+</figure>
 
 ## Ejercicios
 
@@ -406,8 +451,17 @@ La ecuación es $(m+4M)\ddot q=(m-2M)g$. El factor cuatro proviene del cuadrado 
 
 La polea móvil recibe dos tensiones ascendentes, así que $m\ddot q=mg-2\mathcal T$. Se obtiene $\mathcal T=90/7\,\mathrm N$. La otra masa cumple $M\ddot z=Mg-\mathcal T$ y da el mismo valor. El trabajo virtual total es $-2\mathcal T\delta q-\mathcal T\delta z=0$. Las aceleraciones se han deducido del vínculo antes de usar la dinámica, lo que evita asignarles por error igual módulo.
 
-![Polea móvil y restricción geométrica](/assets/books/fispm/r20261021/virtual_polea_movil.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-21-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/virtual_polea_movil.svg" class="lightbox" data-gallery="fispm-r20261021-c21"><img src="/assets/books/fispm/r20261021/virtual_polea_movil.svg" alt="Polea móvil y restricción geométrica" class="fpm-v04-figure img-fluid" width="386.405156" height="338.545047" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 21.6.* La coordenada descendente de la polea móvil modifica dos tramos de cuerda; el extremo libre debe recorrer el doble de distancia en sentido opuesto.
+
+</figcaption>
+
+</figure>
 
 ### 6. Preparar el estado del péndulo {#solucion-21-6}
 
@@ -569,8 +623,17 @@ $$
 
 La segunda fila del problema generalizado da $-\mu\phi_1+(1-\mu)\phi_2=0$. En el modo lento, $\phi_2/\phi_1=\sqrt2$; en el rápido, $\phi_2/\phi_1=-\sqrt2$. El primero mueve ambas varillas con ángulos del mismo signo y el segundo con signos opuestos. El cálculo usa la misma ortogonalidad ponderada por masa del capítulo 20, ahora con una matriz cinética cruzada derivada de la geometría. La aproximación describe estados cercanos al reposo inferior, con ángulos y velocidades de la escala pequeña de oscilación.
 
-![Ángulos del péndulo doble](/assets/books/fispm/r20261021/virtual_doble.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-21-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/virtual_doble.svg" class="lightbox" data-gallery="fispm-r20261021-c21"><img src="/assets/books/fispm/r20261021/virtual_doble.svg" alt="Ángulos del péndulo doble. Esquema del capítulo 21; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid" width="419.860937" height="331.92" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 21.7.* Ambos ángulos son absolutos respecto de la vertical inferior. La velocidad de la segunda masa incorpora el movimiento de ambas varillas.
+
+</figcaption>
+
+</figure>
 
 ### 18. Una guía helicoidal {#solucion-21-18}
 

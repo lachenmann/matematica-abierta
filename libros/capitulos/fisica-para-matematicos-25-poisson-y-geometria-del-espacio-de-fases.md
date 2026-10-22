@@ -85,8 +85,17 @@ $$
 
 Las posiciones y los momentos giran con el mismo ángulo $s$. Para $g=L_z$, el producto entre la variación angular y el momento tiene unidades de acción. Si $H$ conserva su valor bajo esas rotaciones, $\{H,L_z\}=0$, y la antisimetría del corchete da $\{L_z,H\}=0$: el momento angular se conserva en la evolución física. La invariancia del modelo bajo la transformación aporta la hipótesis que conecta ambas afirmaciones.
 
-![Rotaciones generadas por el momento angular](/assets/books/fispm/r20261021/poisson_rotacion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-25-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/poisson_rotacion.svg" class="lightbox" data-gallery="fispm-r20261021-c25"><img src="/assets/books/fispm/r20261021/poisson_rotacion.svg" alt="Rotaciones generadas por el momento angular" class="fpm-v04-figure img-fluid" width="521.706727" height="232.128" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 25.1.* La transformación generada por $L_z$ gira posición y momento con el mismo ángulo. El origen y el marco respecto de los cuales se define el momento angular permanecen fijados.
+
+</figcaption>
+
+</figure>
 
 **Proposición.** El corchete es bilineal, antisimétrico y cumple la regla de producto y la identidad de Jacobi:
 
@@ -148,8 +157,17 @@ La alternancia significa $\omega(u,u)=0$. La forma es no degenerada: si $\omega(
 
 El requisito compara todos los desplazamientos en cada estado. Permite que el cambio sea no lineal y que sus derivadas varíen de un lugar a otro. Para transformaciones que dependen del tiempo, exigiremos esta condición a cada instante fijo y calcularemos además el término temporal del Hamiltoniano.
 
-![Escalas duales y conservación del área](/assets/books/fispm/r20261021/poisson_escala.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-25-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/poisson_escala.svg" class="lightbox" data-gallery="fispm-r20261021-c25"><img src="/assets/books/fispm/r20261021/poisson_escala.svg" alt="Escalas duales y conservación del área" class="fpm-v04-figure img-fluid" width="571.32375" height="305.144158" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 25.2.* $Q=2q$, $P=p/2$ estira una dirección y comprime su pareja. El paralelogramo conserva su área orientada. Las longitudes dibujadas se expresan en coordenadas adimensionales.
+
+</figcaption>
+
+</figure>
 
 ## Comprobar una transformación
 
@@ -175,8 +193,17 @@ Para funciones $f(z)=F(\Phi(z))$ y $g(z)=G(\Phi(z))$, aplicar la regla de la cad
 
 La prueba exige conservar las ecuaciones de todos los Hamiltonianos con el Hamiltoniano compuesto indicado. Un cambio puede funcionar accidentalmente para una función particular y carecer de esa propiedad estructural. En un plano de fases, la identidad $AJA^{\mathsf T}=(\det A)J$ reduce el criterio a $\det A=1$. En cuatro dimensiones, ese determinante controla el volumen, mientras las entradas de la matriz siguen imponiendo las relaciones entre todas las parejas.
 
-![Una transformación de volumen uno que altera las parejas](/assets/books/fispm/r20261021/poisson_volumen.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-25-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/poisson_volumen.svg" class="lightbox" data-gallery="fispm-r20261021-c25"><img src="/assets/books/fispm/r20261021/poisson_volumen.svg" alt="Una transformación de volumen uno que altera las parejas" class="fpm-v04-figure img-fluid" width="571.32375" height="305.144158" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 25.3.* La transformación $Q_1=2q_1$, $Q_2=q_2/2$, $P_1=p_1$, $P_2=p_2$ conserva el volumen de cuatro dimensiones. Las áreas de los dos planos conjugados se multiplican por $2$ y por $1/2$, respectivamente.
+
+</figcaption>
+
+</figure>
 
 ## Cómo evoluciona una región de estados
 
@@ -201,8 +228,17 @@ En el instante inicial el producto vale $J$, y por ello lo conserva: el flujo es
 
 Éste es el teorema de Liouville en el alcance local considerado. La cancelación también aparece en la divergencia del campo: $\sum_i(H_{p_iq_i}-H_{q_ip_i})=0$. La autonomía de $H$ conserva además energía; la dependencia temporal puede cambiar la energía mientras el volumen de fases permanece fijo. Con rozamiento viscoso la ecuación del momento recibe una fuerza adicional y el argumento cambia, como muestra el ejercicio 13.
 
-![Cizallamiento de una región de estados libres](/assets/books/fispm/r20261021/poisson_flujo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-25-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/poisson_flujo.svg" class="lightbox" data-gallery="fispm-r20261021-c25"><img src="/assets/books/fispm/r20261021/poisson_flujo.svg" alt="Cizallamiento de una región de estados libres" class="fpm-v04-figure img-fluid" width="571.299375" height="310.815604" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 25.4.* Para $H=p^2/2$ y tiempo unitario, el flujo es $(q,p)\mapsto(q+p,p)$. El cuadrado de preparaciones se transforma en un paralelogramo de igual área. Se muestra el transporte exacto del modelo adimensional.
+
+</figcaption>
+
+</figure>
 
 ## Construir el cambio con una función generadora
 
@@ -485,8 +521,17 @@ $$
 
 La integral es positiva con el recorrido físico y equivale al área encerrada en magnitud, para esta convención de $p\,dq$. El ángulo vive módulo $2\pi$ y las derivadas usadas son locales; el origen corresponde a $I=0$ y requiere otra carta. La acción $I$ tiene unidades de energía multiplicada por tiempo, pues se obtiene dividiendo energía por una frecuencia.
 
-![Acción y ángulo de una elipse](/assets/books/fispm/r20261021/poisson_accion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-25-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/poisson_accion.svg" class="lightbox" data-gallery="fispm-r20261021-c25"><img src="/assets/books/fispm/r20261021/poisson_accion.svg" alt="Acción y ángulo de una elipse. Esquema del capítulo 25; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid" width="370.443794" height="315.694125" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 25.5.* Para el oscilador unitario con $I=1/2$, la elipse es una circunferencia en las coordenadas escaladas. El ángulo aumenta uniformemente y el área encerrada vale $2\pi I$. El punto inicial fija la fase.
+
+</figcaption>
+
+</figure>
 
 ### 11. La nube de preparaciones libres {#solucion-25-11}
 
@@ -519,8 +564,17 @@ La matriz del campo es $B=\begin{pmatrix}0&1/m\\-k&-b/m\end{pmatrix}$ y su traza
 
 El balance de energía es $\dot H=-bp^2/m^2$. La contracción describe el cambio de una familia de preparaciones; el balance describe la pérdida de energía de cada solución, según su momento. Ambas consecuencias proceden de la misma fuerza viscosa añadida al modelo. El flujo en las variables físicas $(q,p)$ tiene ese determinante y queda fuera de la clase canónica definida aquí.
 
-![Transporte conservativo y contracción viscosa](/assets/books/fispm/r20261021/poisson_disipacion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-25-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/poisson_disipacion.svg" class="lightbox" data-gallery="fispm-r20261021-c25"><img src="/assets/books/fispm/r20261021/poisson_disipacion.svg" alt="Transporte conservativo y contracción viscosa" class="fpm-v04-figure img-fluid" width="570.701314" height="346.205455" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 25.6.* El oscilador unitario transporta un disco de estados conservando su área. Con $b=0,4$ y $m=k=1$, el mismo conjunto inicial pierde área por el factor $e^{-bt/m}$. Ambas imágenes se calculan mediante los flujos lineales exactos hasta $t=2$.
+
+</figcaption>
+
+</figure>
 
 ### 14. Energía variable y volumen constante {#solucion-25-14}
 
@@ -602,8 +656,17 @@ $$
 
 Los dos últimos términos reproducen Coriolis y la contribución centrífuga del marco giratorio del capítulo 18. La energía mecánica del laboratorio es $E=\|P\|^2/(2m)+k\|Q\|^2/2$. En este potencial isótropo, tanto $E$ como $L_z$ permanecen constantes y $K=E-\Omega L_z$ también. El momento conjugado cumple $P=m(\dot Q+\Omega C Q)$, que permite convertir una velocidad medida en el marco giratorio en el dato del espacio de fases.
 
-![Dos descripciones de la órbita de un oscilador isótropo](/assets/books/fispm/r20261021/poisson_marco.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-25-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/poisson_marco.svg" class="lightbox" data-gallery="fispm-r20261021-c25"><img src="/assets/books/fispm/r20261021/poisson_marco.svg" alt="Dos descripciones de la órbita de un oscilador isótropo" class="fpm-v04-figure img-fluid" width="509.453889" height="266.20565" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 25.7.* Para $m=k=1$, $\Omega=1/2$ y órbita circular inercial $q=(\cos t,\sin t)$, la coordenada giratoria es $Q=(\cos(t/2),\sin(t/2))$. En $0\leq t\leq2\pi$, el marco giratorio registra media vuelta. Las flechas señalan el recorrido y los puntos, el mismo instante final.
+
+</figcaption>
+
+</figure>
 
 ### 21. Elegir el paso para controlar la fase {#solucion-25-21}
 

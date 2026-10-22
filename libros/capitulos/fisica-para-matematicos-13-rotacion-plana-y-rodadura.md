@@ -38,9 +38,17 @@ Estudiaremos primero un disco de masa $M=2\,\mathrm{kg}$ y radio $R=0{,}10\,\mat
 
 Modelaremos el disco como un cuerpo rígido y axisimétrico, sin deformación apreciable ni resistencia del aire o a la rodadura. El contacto se describe con una normal y rozamiento de Coulomb; la superficie y el disco no intercambian materia. Intentaremos una solución sin deslizamiento, pero después tendremos que comprobar que la fricción estática disponible puede sostenerla. No basta con escribir esa condición como si cualquier superficie pudiera imponerla.
 
-![Disco sobre una rampa con peso, normal y una fricción de sentido inicialmente desconocido.](/assets/books/fispm/r20261021/rodadura_rampa.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-13-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/rodadura_rampa.svg" class="lightbox" data-gallery="fispm-r20261021-c13"><img src="/assets/books/fispm/r20261021/rodadura_rampa.svg" alt="Disco sobre una rampa con peso, normal y una fricción de sentido inicialmente desconocido." class="fpm-v04-figure img-fluid" width="900" height="560" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 13.1.* El eje tangencial apunta cuesta abajo. La fuerza de rozamiento se tratará como una componente firmada; su sentido saldrá de las ecuaciones. El peso actúa en el centro de masa y la normal en el contacto ideal.
+
+</figcaption>
+
+</figure>
 
 ## La posición de cada punto de un cuerpo que gira
 
@@ -105,9 +113,17 @@ $$
 
 El teorema exige que uno de los ejes sea central. No permite sumar $Md^2$ entre dos ejes arbitrarios usando solamente la distancia entre ellos. Para la varilla, el eje por un extremo está a $\ell/2$ del central y da $I_{\rm extremo}=M\ell^2/3$. El aumento es consistente con haber alejado del eje una parte importante de la masa.
 
-![Aro, disco y varilla muestran distribuciones de masa diferentes respecto de sus ejes.](/assets/books/fispm/r20261021/rodadura_inercias.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-13-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/rodadura_inercias.svg" class="lightbox" data-gallery="fispm-r20261021-c13"><img src="/assets/books/fispm/r20261021/rodadura_inercias.svg" alt="Aro, disco y varilla muestran distribuciones de masa diferentes respecto de sus ejes." class="fpm-v04-figure img-fluid" width="900" height="520" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 13.2.* Las fórmulas corresponden a distribuciones homogéneas ideales y a los ejes señalados. La distancia usada en el teorema de ejes paralelos es perpendicular a los ejes.
+
+</figcaption>
+
+</figure>
 
 ## Las dos ecuaciones de movimiento
 
@@ -150,9 +166,17 @@ En el contacto instantáneo, los dos primeros términos tangenciales suman $(a_C
 
 El punto material que toca el suelo cambia a medida que la rueda avanza. No podemos derivar «la velocidad del contacto es cero» como si se tratara siempre de la misma partícula. La aceleración no nula explica cómo el punto que estaba abajo comienza a separarse de la superficie.
 
-![Suma de traslación y giro para los puntos superior e inferior de una rueda.](/assets/books/fispm/r20261021/rodadura_velocidades.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-13-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/rodadura_velocidades.svg" class="lightbox" data-gallery="fispm-r20261021-c13"><img src="/assets/books/fispm/r20261021/rodadura_velocidades.svg" alt="Suma de traslación y giro para los puntos superior e inferior de una rueda." class="fpm-v04-figure img-fluid" width="900" height="560" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 13.3.* Con $V>0$ y $\omega=-V/R$, la velocidad del punto inferior se anula y la del superior se duplica. Las flechas de las contribuciones se suman vectorialmente.
+
+</figcaption>
+
+</figure>
 
 Sobre una cinta que se mueve con velocidad $U\mathbf e_x$, la condición es $V+R\omega=U$. La velocidad del punto de contacto en el laboratorio ya no es cero. Esa diferencia afectará también al trabajo de la fricción: estática se refiere a ausencia de deslizamiento relativo, no necesariamente a potencia nula en cualquier marco.
 
@@ -215,9 +239,17 @@ Para una liberación desde el reposo, $V=\sqrt{2gh/(1+\beta)}$. Esta segunda ví
 
 En el disco inicial se pierden $15\,\mathrm J$ de energía potencial. Diez joules quedan en traslación y cinco en giro. Un aro tiene $\beta=1$ y destina la mitad a cada contribución; con la misma caída llega con rapidez $\sqrt{7{,}5}\,\mathrm{m/s}$, menor que la del disco. Esta comparación supone que ambas superficies pueden suministrar las fricciones necesarias.
 
-![Reparto de una misma pérdida de energía potencial entre traslación y giro.](/assets/books/fispm/r20261021/rodadura_energia.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-13-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/rodadura_energia.svg" class="lightbox" data-gallery="fispm-r20261021-c13"><img src="/assets/books/fispm/r20261021/rodadura_energia.svg" alt="Reparto de una misma pérdida de energía potencial entre traslación y giro." class="fpm-v04-figure img-fluid" width="900" height="500" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 13.4.* Para un disco homogéneo, las fracciones son $2/3$ y $1/3$; para un aro delgado, $1/2$ y $1/2$. La masa y la caída son iguales, pero la rapidez final depende de la distribución de masa.
+
+</figcaption>
+
+</figure>
 
 La frase «la fricción estática no realiza trabajo» necesita sus condiciones. Sobre una cinta móvil, el punto de contacto puede tener velocidad no nula en el laboratorio y la potencia puede ser $fU$. Si hay deformaciones, pérdidas internas o resistencia a la rodadura, el modelo de un único contacto puntual rígido deja de describir toda la transferencia.
 
@@ -237,9 +269,17 @@ $$
 
 lo que da $a_C=T/[MR(1+\beta)]$ y $f=Ma_C>0$. La fricción apunta hacia la derecha y acelera el centro. No hay una regla correcta que la obligue siempre a oponerse a la velocidad del centro de masa.
 
-![Fuerza aplicada al centro y torque motor requieren fricciones de sentidos distintos.](/assets/books/fispm/r20261021/rodadura_friccion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-13-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/rodadura_friccion.svg" class="lightbox" data-gallery="fispm-r20261021-c13"><img src="/assets/books/fispm/r20261021/rodadura_friccion.svg" alt="Fuerza aplicada al centro y torque motor requieren fricciones de sentidos distintos." class="fpm-v04-figure img-fluid" width="900" height="535" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 13.5.* Las ecuaciones se refieren a rodadura sin deslizamiento sobre un suelo fijo. La fuerza de contacto se obtiene al resolver los balances y después se compara con el límite de fricción estática.
+
+</figcaption>
+
+</figure>
 
 ## Cuando la rueda comienza deslizando
 
@@ -271,9 +311,17 @@ $$
 
 Después de $t_*$ no se prolonga automáticamente la fuerza cinética con el mismo signo. Sin otras fuerzas horizontales ni torques aplicados, una rodadura uniforme requiere $f=0$, valor admisible dentro de cualquier cono estático con $\mu_s\geq0$. El cuerpo puede continuar rodando uniformemente en el modelo ideal. No queda detenido porque una parte del movimiento inicial se haya disipado.
 
-![Velocidad del centro, contribución angular y deslizamiento hasta el inicio de rodadura.](/assets/books/fispm/r20261021/rodadura_transicion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-13-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/rodadura_transicion.svg" class="lightbox" data-gallery="fispm-r20261021-c13"><img src="/assets/books/fispm/r20261021/rodadura_transicion.svg" alt="Velocidad del centro, contribución angular y deslizamiento hasta el inicio de rodadura." class="fpm-v04-figure img-fluid" width="900" height="580" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 13.6.* La transición se localiza mediante $u=V+R\omega=0$, no mediante $V=0$. El cambio de ley de contacto impide extender el tramo de fricción cinética más allá de su dominio.
+
+</figcaption>
+
+</figure>
 
 ## Una polea con inercia
 
@@ -292,9 +340,17 @@ $$
 
 La razón $I/R^2$ tiene unidades de masa y aumenta la inercia efectiva del movimiento. No representa materia adicional en la cuerda: proviene de la energía y del torque necesarios para acelerar la polea. Si $I\to0$, recuperamos el resultado de la polea ideal sin inercia, y $T_1=T_2$. Para $I>0$ y $a>0$, $T_2-T_1=Ia/R^2>0$.
 
-![Dos tensiones diferentes aceleran una polea de eje fijo y momento de inercia no nulo.](/assets/books/fispm/r20261021/rodadura_polea.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-13-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/rodadura_polea.svg" class="lightbox" data-gallery="fispm-r20261021-c13"><img src="/assets/books/fispm/r20261021/rodadura_polea.svg" alt="Dos tensiones diferentes aceleran una polea de eje fijo y momento de inercia no nulo." class="fpm-v04-figure img-fluid" width="900" height="600" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 13.7.* Las aceleraciones de las masas tienen igual magnitud por inextensibilidad, y $|\alpha|=a/R$ por ausencia de deslizamiento entre cuerda y polea. La cuerda ligera puede transmitir tensiones distintas a través del contacto distribuido con la polea.
+
+</figcaption>
+
+</figure>
 
 La reconstrucción de cada movimiento ha combinado una ley dinámica, una representación del cuerpo y una ley de contacto. Si una predicción falla, debemos revisar ese conjunto de hipótesis: rigidez, distribución de masa, fuerza disponible y ausencia de deslizamiento tienen funciones distintas y pueden contrastarse con observaciones diferentes.
 

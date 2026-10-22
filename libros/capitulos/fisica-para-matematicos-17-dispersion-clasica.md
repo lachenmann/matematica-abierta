@@ -60,8 +60,17 @@ La igualdad de sus módulos proviene de la conservación de energía y de $U(\in
 
 Usaremos también un ángulo orientado $\psi$ en el plano dibujado, desde $+x$ hacia la velocidad saliente, positivo hacia $+y$. Para el haz situado por encima del centro, una repulsión produce una desviación positiva y una atracción una negativa en los encuentros sencillos. El detector angular que integra todos los azimuts registra su magnitud $\chi$; conocer además el lado de salida puede aportar información sobre el signo de la interacción.
 
-![Preparación y desviación de un encuentro](/assets/books/fispm/r20261021/dispersion_encuentro.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-17-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/dispersion_encuentro.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="/assets/books/fispm/r20261021/dispersion_encuentro.svg" alt="Preparación y desviación de un encuentro" class="fpm-v04-figure img-fluid" width="900" height="640" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 17.1.* Trayectoria repulsiva del ejemplo inicial y sus asíntotas. El parámetro de impacto se mide respecto de la preparación incidente; el giro compara las direcciones de las velocidades, no los radios de los puntos lejanos de entrada y salida.
+
+</figcaption>
+
+</figure>
 
 ## Obtener la desviación a partir del movimiento radial
 
@@ -132,8 +141,17 @@ Completar el cuadrado deja el radicando $1+x^2-(z+sx)^2$. Una primitiva es $\arc
 
 En el ejemplo de apertura, $E=2\,\mathrm J$ y $a_*=1\,\mathrm m$. El parámetro $b=\sqrt3\,\mathrm m$ produce $\chi=\pi/3$, y la distancia mínima es $1+\sqrt{1+3}=3\,\mathrm m$. Si se cambia el signo de $\alpha$ conservando su módulo y la preparación, la magnitud del giro sigue siendo $\pi/3$, pero la partícula sale hacia abajo y alcanza $r_{\min}=1\,\mathrm m$. El radio mínimo y el lado de salida permiten distinguir dos interacciones que producen la misma distribución de magnitudes angulares.
 
-![Distancia mínima para atracción y repulsión](/assets/books/fispm/r20261021/dispersion_retornos.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-17-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/dispersion_retornos.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="/assets/books/fispm/r20261021/dispersion_retornos.svg" alt="Distancia mínima para atracción y repulsión" class="fpm-v04-figure img-fluid" width="900" height="610" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 17.2.* Radios mínimos para el mismo valor de $a_*$ y distintos parámetros de impacto. La rama atractiva se aproxima al centro cuando $b$ tiende a cero; el encuentro radial atractivo alcanza una singularidad y necesita tratamiento separado.
+
+</figcaption>
+
+</figure>
 
 La conexión con Kepler también es explícita. La órbita atractiva es una hipérbola de excentricidad $e=\sqrt{1+(b/a_*)^2}$ y satisface $\sin(\chi/2)=1/e$. La repulsión recorre una rama hiperbólica con el mismo valor de esa excentricidad, aunque el foco de fuerza queda al otro lado de la geometría pertinente. La igualdad de magnitudes angulares procede de ambas geometrías y queda justificada por la integral, sin tener que identificar sus ramas.
 
@@ -158,8 +176,17 @@ $$
 
 **Demostración.** En una rama monótona, las preparaciones que llegan a una banda angular de ancho $d\chi$ ocupan una corona de área $2\pi b_i|db_i/d\chi|d\chi$ a primer orden. Esa banda ocupa ángulo sólido $2\pi\sin\chi\,d\chi$. El cociente proporciona la contribución de la rama a la densidad. El valor absoluto conserva un área positiva tanto si el parámetro aumenta como si disminuye con el ángulo. Cuando varias coronas disjuntas llegan a la misma banda, sus áreas se suman; las hipótesis de finitud y regularidad permiten efectuar esa suma local. Dividir por el ángulo sólido da la fórmula enunciada. $\square$
 
-![Transformación de coronas en bandas angulares](/assets/books/fispm/r20261021/dispersion_jacobiano.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-17-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/dispersion_jacobiano.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="/assets/books/fispm/r20261021/dispersion_jacobiano.svg" alt="Transformación de coronas en bandas angulares" class="fpm-v04-figure img-fluid" width="900" height="650" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 17.3.* El área $2\pi b|db|$ y la banda angular $2\pi\sin\chi|d\chi|$ describen el mismo conjunto de encuentros mediante dos variables diferentes. La representación de la esfera es esquemática.
+
+</figcaption>
+
+</figure>
 
 La sección eficaz tiene una interpretación geométrica aun cuando la fuerza actúe sin contacto. Una interacción puede desviar partículas que estaban preparadas a distancias muy superiores al tamaño del blanco. El área de un disco material aparece como sección eficaz sólo cuando el modelo de interacción y la condición observada conducen precisamente a ese disco de preparaciones.
 
@@ -185,8 +212,17 @@ $$
 
 Para la ventana de apertura, $[\pi/3,\pi/2]$, el área es $\pi a_*^2(3-1)=2\pi\,\mathrm{m^2}$. Es mayor que la sección de algunos blancos materiales posibles porque mide preparaciones que se desvían, sin imponer una condición de contacto.
 
-![Densidades angulares de dos modelos](/assets/books/fispm/r20261021/dispersion_densidades.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-17-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/dispersion_densidades.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="/assets/books/fispm/r20261021/dispersion_densidades.svg" alt="Densidades angulares de dos modelos" class="fpm-v04-figure img-fluid" width="900" height="640" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 17.4.* Densidad de Rutherford y densidad constante de una esfera rígida de radio $2a_*$. El eje vertical es logarítmico y la curva inversa del radio se trunca antes del ángulo cero.
+
+</figcaption>
+
+</figure>
 
 Al aceptar todos los ángulos mayores que $\chi_0>0$, se obtiene $\sigma_{\chi\ge\chi_0}=\pi a_*^2\cot^2(\chi_0/2)$. Esta cantidad crece sin cota cuando $\chi_0\to0$. El modelo atribuye desviaciones pequeñas a preparaciones con $b$ arbitrariamente grande: la sección total de desviación no nula resulta infinita. En una preparación de radio finito o en una interacción modificada a gran distancia, aparece un corte que debe incluirse en el cálculo. Las secciones integradas sobre ventanas separadas de cero permanecen finitas.
 
@@ -202,8 +238,17 @@ La fórmula describe una lámina suficientemente diluida para despreciar encuent
 
 Si la eficiencia o la cobertura dependen de la dirección, se integra $\eta(\chi,\varphi)D(\chi)\,d\Omega$ sobre la aceptación real. Reemplazar una ventana ancha por $D$ en su centro multiplicada por su ángulo sólido puede sesgar el conteo, sobre todo cerca de la dirección incidente, donde la densidad varía rápidamente.
 
-![Aceptación angular y preparaciones](/assets/books/fispm/r20261021/dispersion_aceptacion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-17-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/dispersion_aceptacion.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="/assets/books/fispm/r20261021/dispersion_aceptacion.svg" alt="Aceptación angular y preparaciones" class="fpm-v04-figure img-fluid" width="900" height="600" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 17.5.* Para $a_*=1\,\mathrm m$, aceptar entre $60^\circ$ y $90^\circ$ equivale a una corona entre $b=1\,\mathrm m$ y $b=\sqrt3\,\mathrm m$. El área es $2\pi\,\mathrm{m^2}$.
+
+</figcaption>
+
+</figure>
 
 ## Reconstruir lo que mide el laboratorio
 
@@ -246,8 +291,17 @@ $$
 
 Para $q<1$ el numerador es positivo y el recorrido va de la dirección delantera a la trasera. Si $q=1$, las identidades de ángulo mitad dan directamente $\beta=\chi/2$ en el intervalo indicado. Para $q>1$, el denominador sigue positivo y la derivada cambia de signo una sola vez, en $\cos\chi=-1/q$. Evaluar la dirección allí da $\sin\beta_{\max}=1/q$. La función parte de cero, alcanza ese máximo y vuelve a cero en $\chi=\pi$, por lo que cada ángulo interior tiene una preimagen a cada lado del máximo. $\square$
 
-![Triángulo de velocidades de laboratorio](/assets/books/fispm/r20261021/dispersion_laboratorio.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-17-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/dispersion_laboratorio.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="/assets/books/fispm/r20261021/dispersion_laboratorio.svg" alt="Triángulo de velocidades de laboratorio" class="fpm-v04-figure img-fluid" width="900" height="640" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 17.6.* Sumar la velocidad del centro de masa transforma la dirección relativa en la del proyectil. Con $m_t=2m_p$ y $\chi=120^\circ$, el proyectil sale a $\beta=90^\circ$ en el laboratorio.
+
+</figcaption>
+
+</figure>
 
 La densidad angular también debe transformarse. En cada rama regular se conservan los eventos y el azimut, con lo que
 
@@ -260,8 +314,17 @@ $$
 
 La suma se restringe a las ramas físicamente accesibles. Para masas iguales, $D_{\mathrm{lab}}(\beta)=4\cos\beta\,D(2\beta)$ en $0<\beta<\pi/2$. En un extremo donde la derivada angular se anula, la densidad puede divergir aunque la sección integrada sobre una ventana sea finita. Los conteos experimentales involucran justamente esas ventanas, con sus coberturas y eficiencias.
 
-![Ramas del ángulo de laboratorio](/assets/books/fispm/r20261021/dispersion_ramas.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-17-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/dispersion_ramas.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="/assets/books/fispm/r20261021/dispersion_ramas.svg" alt="Ramas del ángulo de laboratorio" class="fpm-v04-figure img-fluid" width="900" height="660" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 17.7.* El ángulo de laboratorio puede corresponder a dos desviaciones relativas distintas cuando el proyectil es más pesado que el blanco. La energía final del proyectil permite distinguirlas.
+
+</figcaption>
+
+</figure>
 
 La inferencia física reúne así la preparación, la ley angular, el cambio de variables y el modelo de detector. Una misma distribución de magnitudes puede conservar ambigüedades: el signo de $\alpha$, una normalización de blancos desconocida o dos ramas que el detector angular no separa. Medir otra magnitud, variar la energía o precisar el rango de validez permite decidir qué parte de la interacción ha sido realmente identificada.
 
@@ -649,9 +712,17 @@ En cada rama, el valor absoluto de $d\chi/d\beta$ crece como una constante posit
 
 La corona calculada conserva exactamente esa área finita y permite evaluar la ventana sin integrar una expresión singular. Para una medición que incluya el máximo, la preparación y las ramas aportan una descripción más cómoda que el valor puntual de la densidad. Los encuentros situados exactamente en el borde angular corresponden a una circunferencia del plano de impacto y su área es cero.
 
-![Dos ramas de la relación angular llegan a una misma ventana del laboratorio y corresponden a dos coronas adyacentes del plano de impacto.](/assets/books/fispm/r20261021/dispersion_ventana_doble.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-17-8" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/dispersion_ventana_doble.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="/assets/books/fispm/r20261021/dispersion_ventana_doble.svg" alt="Dos ramas de la relación angular llegan a una misma ventana del laboratorio y corresponden a dos coronas adyacentes del plano de impacto." class="fpm-v04-figure img-fluid" width="518.4" height="255.6" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 17.8.* La ventana va de $\arctan(1/2)$ a $30^\circ$ en el laboratorio. La rama 1 ocupa la corona exterior, entre $a_*/\sqrt3$ y $a_*$; la rama 2 ocupa la interior, entre $a_*/3$ y $a_*/\sqrt3$. El borde discontinuo separa las preparaciones de ambas ramas. Las áreas se suman y dan $8\pi a_*^2/9$, aunque la densidad angular crezca sin cota al aproximarse al máximo.
+
+</figcaption>
+
+</figure>
 
 ## Lecturas y conexiones
 

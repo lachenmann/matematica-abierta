@@ -58,8 +58,17 @@ Con arena que cae verticalmente, $w=0$: el carro entrega parte de su momento hor
 
 La elección admite una frontera fija en el laboratorio o una frontera que acompañe al aparato. El conjunto material permite aplicar directamente la ley de balance ya conocida; el contenido abierto permite formular la pregunta experimental sobre el carro. Pasar de una descripción a otra exige incluir las porciones que cruzan.
 
-![Captura de una porción y elección del sistema](/assets/books/fispm/r20261021/abiertos_captura.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-27-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/abiertos_captura.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="/assets/books/fispm/r20261021/abiertos_captura.svg" alt="Captura de una porción y elección del sistema" class="fpm-v04-figure img-fluid" width="643.68" height="260.064" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 27.1.* La frontera material reúne el carro y la porción que será capturada. Tras el contacto ambos comparten velocidad. La frontera abierta que sigue al carro incorpora la porción al cruzar su borde. Las flechas representan velocidades horizontales.
+
+</figcaption>
+
+</figure>
 
 Dividamos la ecuación anterior por el tiempo de captura $\Delta t$. Si $\Delta m/\Delta t\to\mu(t)$, las velocidades son continuas y el incremento de velocidad es de orden $\Delta t$, obtenemos $m\dot v=\mu(w-v)$. El producto $\Delta m\Delta v$ es de orden $\Delta t^2$; al dividir por $\Delta t$ tiende a cero. El límite declara la aproximación continua que sustituye muchos impactos pequeños.
 
@@ -111,8 +120,17 @@ $$
 
 El movimiento se aproxima al de la corriente entrante mientras la recogida continúa. Las ecuaciones incluyen un mecanismo de relajación producido por incorporación de masa, con una evolución algebraica característica.
 
-![Velocidad y masa durante una recogida continua](/assets/books/fispm/r20261021/abiertos_recogida.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-27-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/abiertos_recogida.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="/assets/books/fispm/r20261021/abiertos_recogida.svg" alt="Velocidad y masa durante una recogida continua" class="fpm-v04-figure img-fluid" width="605.9775" height="299.2755" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 27.2.* Para $m_0=2\,\mathrm{kg}$, $v_0=3\,\mathrm{m/s}$ y $\mu=0{,}5\,\mathrm{kg/s}$ se comparan corrientes con velocidad horizontal cero y un metro por segundo. La masa aumenta al mismo ritmo; las velocidades finales difieren por el momento transportado hacia el carro.
+
+</figcaption>
+
+</figure>
 
 ## Comprobar la ecuación desde otro laboratorio
 
@@ -173,8 +191,17 @@ Si trabajamos sólo con la componente horizontal del carro, la misma identidad d
 
 Para mantener $v>0$ constante frente a una entrada con $w=0$, el motor debe ejercer $F_x=\mu v$. Su potencia es $\mu v^2$; la energía cinética horizontal almacenada crece a tasa $\mu v^2/2$ y la otra mitad se convierte en energía interna durante la captura. La fuerza, la potencia suministrada y la energía almacenada responden a preguntas distintas sobre el mismo proceso.
 
-![Momento y energía durante la captura a velocidad sostenida](/assets/books/fispm/r20261021/abiertos_energia.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-27-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/abiertos_energia.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="/assets/books/fispm/r20261021/abiertos_energia.svg" alt="Momento y energía durante la captura a velocidad sostenida" class="fpm-v04-figure img-fluid" width="593.9925" height="257.3715" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 27.3.* Con $v=3\,\mathrm{m/s}$ y $\mu=0{,}5\,\mathrm{kg/s}$, la potencia horizontal suministrada es $4{,}5\,\mathrm W$. La mitad incrementa la energía cinética horizontal del contenido y la otra mitad se convierte durante la captura. Se representa sólo este balance horizontal.
+
+</figcaption>
+
+</figure>
 
 ## Expulsar materia: el cohete ideal
 
@@ -215,8 +242,17 @@ $$
 
 Estas fórmulas presuponen vuelo libre durante el tramo. Si el vehículo está apoyado en una plataforma, la reacción del apoyo debe incluirse hasta que las condiciones permitan el despegue. La ecuación de vuelo libre por sí sola no determina el instante de separación del soporte.
 
-![Masa positiva y aceleración durante la expulsión](/assets/books/fispm/r20261021/abiertos_cohete.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-27-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/abiertos_cohete.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="/assets/books/fispm/r20261021/abiertos_cohete.svg" alt="Masa positiva y aceleración durante la expulsión" class="fpm-v04-figure img-fluid" width="663.802385" height="292.2915" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 27.4.* En un ejemplo sin fuerza externa, $m_0=100\,\mathrm{kg}$, $\nu=2\,\mathrm{kg/s}$ y $c=200\,\mathrm{m/s}$. La expulsión termina a los veinte segundos, con masa seca de sesenta kilogramos. El empuje constante produce una aceleración creciente mientras disminuye la masa.
+
+</figcaption>
+
+</figure>
 
 En una tobera puede intervenir una diferencia de presión entre la sección de salida y el ambiente. Para un chorro axial uniforme, una aproximación habitual reúne la contribución de momento y la tracción neta de presión en
 
@@ -232,8 +268,17 @@ Un chorro que golpea una placa puede atravesar el aparato sin quedar almacenado.
 
 En una corriente uniforme de densidad $\rho$, sección $A$ y rapidez axial $U$, el caudal a través de una sección fija perpendicular al eje es $\rho AU$. Si la sección se desplaza con rapidez $V<U$ hacia delante, sólo atraviesa la sección la columna de longitud $(U-V)\Delta t$ durante el intervalo $\Delta t$. La tasa es entonces $\rho A(U-V)$. La velocidad inercial transportada sigue siendo $U$; $U-V$ decide cuánta materia cruza cada segundo.
 
-![Frontera móvil y longitud interceptada del chorro](/assets/books/fispm/r20261021/abiertos_frontera.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-27-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/abiertos_frontera.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="/assets/books/fispm/r20261021/abiertos_frontera.svg" alt="Frontera móvil y longitud interceptada del chorro" class="fpm-v04-figure img-fluid" width="598.529752" height="294.984" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 27.5.* Durante el mismo intervalo, el fluido recorre $U\Delta t$ y la placa avanza $V\Delta t$. La longitud de corriente que alcanza la placa es $(U-V)\Delta t$. Se supone $0\le V<U$ y un chorro uniforme que la placa intercepta por completo.
+
+</figcaption>
+
+</figure>
 
 **Definición.** Un volumen de control $V(t)$ es una región espacial elegida para contabilizar el contenido y sus transportes. Si su frontera tiene velocidad $\mathbf b$ y normal exterior unitaria $\mathbf n$, la densidad superficial de flujo másico saliente es $j_m=\rho(\mathbf u-\mathbf b)\cdot\mathbf n$, donde $\mathbf u$ es la velocidad local de la materia. La integral de $j_m$ sobre una parte de la frontera proporciona su flujo neto de masa hacia fuera.
 
@@ -292,8 +337,17 @@ Al cambiar a la frontera de velocidad $\mathbf b$, restamos el transporte con $\
 
 En una sección de flujo uniforme, la integral de momento es el producto del caudal másico por la velocidad inercial de la corriente. Sumando secciones recuperamos los balances de puertos. Esta deducción explica por qué aparecen dos velocidades en el mismo término: una transporta momento por unidad de masa y la otra determina la masa que atraviesa el borde.
 
-![Un codo desvía el flujo y recibe una reacción](/assets/books/fispm/r20261021/abiertos_codo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-27-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/abiertos_codo.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="/assets/books/fispm/r20261021/abiertos_codo.svg" alt="Un codo desvía el flujo y recibe una reacción" class="fpm-v04-figure img-fluid" width="409.539349" height="343.872" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 27.6.* Un flujo estacionario entra horizontalmente y sale verticalmente. Con igual rapidez en ambas secciones y presiones manométricas nulas, la fuerza del conducto sobre el fluido tiene la dirección de la variación de momento. El fluido ejerce sobre el conducto la fuerza opuesta.
+
+</figcaption>
+
+</figure>
 
 ## Qué se mide al contrastar un sistema abierto
 
@@ -301,8 +355,17 @@ Para el carro bastan una balanza, un registro de posición y una estimación ind
 
 Una comparación útil combina el balance de momento con el energético. Dos entradas con la misma suma de momentos pueden entregar energías cinéticas diferentes. El movimiento del receptor permite inferir una media de velocidades de llegada; la energía convertida durante la mezcla depende también de su dispersión. Los ejercicios finales recuperan así el problema de inferir lo que un registro realmente determina.
 
-![Igual entrada de momento y distinta conversión de energía](/assets/books/fispm/r20261021/abiertos_inferencia.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-27-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/abiertos_inferencia.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="/assets/books/fispm/r20261021/abiertos_inferencia.svg" alt="Igual entrada de momento y distinta conversión de energía" class="fpm-v04-figure img-fluid" width="614.93625" height="306.2595" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 27.7.* Dos preparaciones tienen caudal total $0{,}5\,\mathrm{kg/s}$ y velocidad media de entrada $1{,}8\,\mathrm{m/s}$. Con receptor a tres metros por segundo, la corriente uniforme y las dos corrientes separadas producen la misma aceleración instantánea y distintas tasas de conversión cinética en la captura.
+
+</figcaption>
+
+</figure>
 
 Podemos expresar con precisión qué añade una medición de energía a la trayectoria del receptor. Consideremos entradas de velocidades horizontales $w_a$, tasas $\mu_a\geq0$ y tasa total $\mu=\sum_a\mu_a>0$, capturadas sin mezclarse antes en otro aparato.
 
@@ -631,9 +694,17 @@ Al comenzar, $D(0)=1{,}17\,\mathrm W$ y $\dot K(0)=0{,}45\,\mathrm W$. Los regis
 
 El cuarto momento central retiene otra propiedad. En A vale $(1{,}8)^4=10{,}4976\,\mathrm{m^4/s^4}$. En B vale $(1/2)(1{,}8\sqrt2)^4=20{,}9952\,\mathrm{m^4/s^4}$. Un registro de velocidades individuales inmediatamente antes de la captura distingue las dos familias y permite estimar esa magnitud con una calibración y un muestreo declarados. También las distingue el registro separado de los caudales por puerto. Las dos preparaciones muestran que ajustar trayectoria y conversión energética fija más información que la trayectoria sola, mientras la estructura de las corrientes continúa requiriendo observaciones adicionales.
 
-![Caudales por velocidad en dos familias de corrientes con igual media y varianza.](/assets/books/fispm/r20261021/abiertos_momentos_iguales.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-27-8" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/abiertos_momentos_iguales.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="/assets/books/fispm/r20261021/abiertos_momentos_iguales.svg" alt="Caudales por velocidad en dos familias de corrientes con igual media y varianza." class="fpm-v04-figure img-fluid" width="518.4" height="216" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 27.8.* Las barras representan caudales por puerto. Las dos familias comparten tasa total, media y varianza de velocidad, y producen los mismos registros del receptor dentro del modelo. El cuarto momento central y las velocidades de cada puerto permiten distinguirlas.
+
+</figcaption>
+
+</figure>
 
 ## Lecturas y relaciones
 

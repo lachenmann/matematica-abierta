@@ -64,8 +64,17 @@ $$
 
 con una orientación inicial $Q(0)$. Conocer las tres componentes de velocidad angular no equivale a conocer dónde se encuentra cada punto del cuerpo.
 
-![Traslación y velocidad de un punto material](/assets/books/fispm/r20261021/rigido_cinematica.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-19-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/rigido_cinematica.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="/assets/books/fispm/r20261021/rigido_cinematica.svg" alt="Traslación y velocidad de un punto material" class="fpm-v04-figure img-fluid" width="900" height="610" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 19.1.* La separación material se transporta mediante $Q$. La velocidad de un punto suma la velocidad del centro y la contribución perpendicular al eje instantáneo de giro; el dibujo representa un instante.
+
+</figcaption>
+
+</figure>
 
 ## Reunir la distribución de masa en una transformación
 
@@ -108,8 +117,17 @@ donde $\mathbf R$ se mide desde $O$.
 
 En el ejemplo de apertura, $\mathsf I=\operatorname{diag}(8,2,10)$. Multiplicar por $(1,1,0)$ da $(8,2,0)$, y la energía rotacional es $5$. Conservar únicamente el momento escalar alrededor de $(1,1,0)$ permitiría calcular esa energía, pero perdería la componente transversal del momento angular.
 
-![Velocidad angular y momento angular distintos](/assets/books/fispm/r20261021/rigido_vectores.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-19-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/rigido_vectores.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="/assets/books/fispm/r20261021/rigido_vectores.svg" alt="Velocidad angular y momento angular distintos" class="fpm-v04-figure img-fluid" width="900" height="610" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 19.2.* Para la distribución de cuatro masas del comienzo, los vectores $(1,1,0)$ y $(8,2,0)$ tienen direcciones diferentes. Las flechas se normalizan por separado para comparar direcciones; no comparten una escala de magnitud ni unidades.
+
+</figcaption>
+
+</figure>
 
 ## Escoger ejes que separen las respuestas
 
@@ -148,8 +166,17 @@ Si dos momentos coinciden, cualquier base ortonormal de su plano propio sirve; s
 
 La forma cuadrática también permite visualizar los ejes. Para una energía positiva fijada $E$, la superficie $\frac12\boldsymbol\omega\cdot\mathsf I\boldsymbol\omega=E$ es un elipsoide si los tres momentos son positivos. En ejes principales sus semiejes son $\sqrt{2E/I_j}$; un momento mayor corresponde a menor velocidad angular a la misma energía. No deben confundirse esos semiejes con los de una superficie dibujada en componentes de momento angular.
 
-![Sección de una superficie de energía](/assets/books/fispm/r20261021/rigido_elipse.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-19-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/rigido_elipse.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="/assets/books/fispm/r20261021/rigido_elipse.svg" alt="Sección de una superficie de energía" class="fpm-v04-figure img-fluid" width="900" height="590" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 19.3.* Sección $\omega_3=0$ de la superficie de energía para momentos $2$ y $6$ y energía $3$ en unidades consistentes. El gradiente de la energía tiene dirección $\mathsf I\boldsymbol\omega$; normalmente es distinto de la dirección radial $\boldsymbol\omega$.
+
+</figcaption>
+
+</figure>
 
 Una matriz reconstruida a partir de medidas debe conservar también las restricciones de una distribución de masa. El momento alrededor de cada eje reúne cuadrados de distancias; por ello las tres respuestas principales están relacionadas. Podemos expresar esa relación sin elegir primero los ejes.
 
@@ -187,8 +214,17 @@ Para ejes paralelos de dirección unitaria $\mathbf u$ se obtiene $J_O(\mathbf u
 
 El traslado puede crear entradas no diagonales incluso si los ejes originales eran principales en el centro. Suponer que basta sumar $Md^2$ a las tres diagonales pierde tanto las distancias perpendiculares como los términos cruzados.
 
-![Traslado del origen y distancias perpendiculares](/assets/books/fispm/r20261021/rigido_traslado.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-19-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/rigido_traslado.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="/assets/books/fispm/r20261021/rigido_traslado.svg" alt="Traslado del origen y distancias perpendiculares" class="fpm-v04-figure img-fluid" width="900" height="580" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 19.4.* Dos ejes paralelos separados por la componente de $\mathbf d$ perpendicular a su dirección. La corrección escalar usa esa separación perpendicular; la fórmula tensorial conserva además la información entre direcciones.
+
+</figcaption>
+
+</figure>
 
 ## Escribir el balance en los ejes del cuerpo
 
@@ -244,8 +280,17 @@ $$
 
 Como $\mathbf L$ es fijo, $\mathbf n$ describe un cono alrededor de él con rapidez angular $\|\mathbf L\|/A$, salvo el caso de alineación, en que el eje permanece fijo. Esa rapidez y $\nu$ responden a observaciones distintas.
 
-![Componentes materiales y eje en el laboratorio](/assets/books/fispm/r20261021/rigido_giro_libre.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-19-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/rigido_giro_libre.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="/assets/books/fispm/r20261021/rigido_giro_libre.svg" alt="Componentes materiales y eje en el laboratorio" class="fpm-v04-figure img-fluid" width="900" height="620" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 19.5.* En el cuerpo simétrico libre, las componentes transversales recorren una circunferencia a tasa $\nu$; en el laboratorio, el eje de simetría precesa alrededor del momento angular constante. Los paneles representan espacios diferentes.
+
+</figcaption>
+
+</figure>
 
 Para tres momentos distintos, los giros puros $\boldsymbol\omega=\Omega\mathbf e_j$ también son soluciones libres. Estudiar su estabilidad exige decir qué permanece próximo: trabajaremos con las componentes materiales de velocidad angular. Una diferencia pequeña de rapidez puede acumular una diferencia grande de orientación tras mucho tiempo, aunque esas velocidades permanezcan próximas.
 
@@ -300,8 +345,17 @@ $$
 
 Su tasa exponencial es $|\Omega|\gamma$. La solución exacta de la prueba muestra que la inestabilidad pertenece al sistema completo; la ecuación lineal aproxima su comienzo mientras las perturbaciones son pequeñas respecto de $|\Omega|$. Los momentos repetidos requieren otro examen, porque los coeficientes estrictamente positivos usados en la prueba pueden anularse.
 
-![Estabilidad y eje intermedio](/assets/books/fispm/r20261021/rigido_estabilidad.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-19-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/rigido_estabilidad.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="/assets/books/fispm/r20261021/rigido_estabilidad.svg" alt="Estabilidad y eje intermedio. Esquema del capítulo 19; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid" width="900" height="610" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 19.6.* Retratos de fase de las ecuaciones transversales linealizadas para momentos $1,2,3$ y giro base de módulo uno. Las curvas cerradas y las ramas hiperbólicas muestran mecanismos locales diferentes; la estabilidad no se define como constancia de la orientación completa.
+
+</figcaption>
+
+</figure>
 
 ## Contrastar una aproximación para el giróscopo
 
@@ -332,8 +386,17 @@ $$
 
 Exige discriminante no negativo. La comparación $4A\cos\theta\,Mg d/(Cs)^2\ll1$ controla la expansión de esa raíz; también debe comprobarse la separación entre precesión y giro cuando se interprete como giro rápido. La precesión regular requiere datos iniciales preparados para ella. Soltar un giróscopo con otra velocidad inicial puede producir nutación, es decir, variación de $\theta$, aunque los parámetros permitan una rama regular lenta.
 
-![Torque gravitatorio y precesión regular](/assets/books/fispm/r20261021/rigido_giroscopo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-19-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/rigido_giroscopo.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="/assets/books/fispm/r20261021/rigido_giroscopo.svg" alt="Torque gravitatorio y precesión regular" class="fpm-v04-figure img-fluid" width="900" height="610" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 19.7.* El peso actúa en el centro y produce torque respecto del pivote. El dibujo sitúa eje y vertical en el plano de la hoja, con el torque entrando en ella; una precesión regular mantiene el ángulo y satisface el balance vectorial desarrollado en el texto.
+
+</figcaption>
+
+</figure>
 
 ## Ejercicios
 

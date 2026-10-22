@@ -54,8 +54,17 @@ La transformación se aplica activamente a las posiciones del modelo dentro del 
 
 Su valor puede variar de una preparación inicial a otra. Para las dos masas, $P$ es una integral primera y su valor concreto se obtiene midiendo las velocidades iniciales. La función y la constante asignada por los datos cumplen papeles distintos.
 
-![Traslación común de dos masas](/assets/books/fispm/r20261021/simetria_traslacion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-23-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/simetria_traslacion.svg" class="lightbox" data-gallery="fispm-r20261021-c23"><img src="/assets/books/fispm/r20261021/simetria_traslacion.svg" alt="Traslación común de dos masas. Esquema del capítulo 23; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid" width="500.22" height="301.32" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 23.1.* La traslación común conserva la separación y la extensión del resorte. Un resorte unido a una pared fija introduciría otra dependencia geométrica.
+
+</figcaption>
+
+</figure>
 
 ## Variar el lagrangiano a tiempo fijo
 
@@ -125,8 +134,17 @@ La conservación de las tres componentes requiere las tres direcciones correspon
 
 Las hipótesis sobre el potencial constituyen parte de la descripción de las interacciones. Noether muestra sus consecuencias dentro de ese modelo. La adecuación de esas interacciones y de los vínculos a un aparato concreto se contrasta mediante fuerzas, torques y observaciones, como en los capítulos precedentes.
 
-![Potenciales central y anisótropo](/assets/books/fispm/r20261021/simetria_rotacion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-23-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/simetria_rotacion.svg" class="lightbox" data-gallery="fispm-r20261021-c23"><img src="/assets/books/fispm/r20261021/simetria_rotacion.svg" alt="Potenciales central y anisótropo" class="fpm-v04-figure img-fluid" width="599.063655" height="367.080545" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 23.2.* Las curvas de nivel circulares admiten rotaciones continuas que conservan el potencial. Una dependencia distinta en las dos direcciones selecciona ejes y cambia ese cálculo de simetría.
+
+</figcaption>
+
+</figure>
 
 ## Transformar también el tiempo
 
@@ -185,8 +203,17 @@ Para una traslación temporal de un lagrangiano autónomo se toma $\tau=1$, $\xi
 
 Un potencial que se desplaza con rapidez constante ofrece otra combinación: trasladar el tiempo y desplazar a la vez la posición para acompañarlo conserva su forma. La cantidad asociada combina energía y momento. El ejercicio 20 desarrollará esa cuenta y su interpretación en coordenadas relativas.
 
-![Transformación de curvas y de tiempos](/assets/books/fispm/r20261021/simetria_tiempo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-23-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/simetria_tiempo.svg" class="lightbox" data-gallery="fispm-r20261021-c23"><img src="/assets/books/fispm/r20261021/simetria_tiempo.svg" alt="Transformación de curvas y de tiempos" class="fpm-v04-figure img-fluid" width="603.241875" height="330.670125" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 23.3.* Una transformación temporal modifica el intervalo de integración. La condición variacional conserva el factor que relaciona $dt_\varepsilon$ con $dt$.
+
+</figcaption>
+
+</figure>
 
 ## Conservar el término de borde
 
@@ -222,8 +249,17 @@ Los términos añadidos se cancelan exactamente. $\square$
 
 El lagrangiano y el borde deben acompañarse durante el cálculo. Tomar sólo el momento conjugado nuevo podría atribuir una variación física a lo que procede de la representación elegida.
 
-![Cambio de velocidad de una partícula libre](/assets/books/fispm/r20261021/simetria_galileo.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-23-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/simetria_galileo.svg" class="lightbox" data-gallery="fispm-r20261021-c23"><img src="/assets/books/fispm/r20261021/simetria_galileo.svg" alt="Cambio de velocidad de una partícula libre" class="fpm-v04-figure img-fluid" width="611.472188" height="330.669187" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 23.4.* El cambio de velocidad produce otra trayectoria libre con el mismo valor inicial de posición. La cantidad $tp-mx$ conserva ese dato inicial.
+
+</figcaption>
+
+</figure>
 
 ## Seguir un potencial que acelera
 
@@ -270,8 +306,17 @@ La energía vale $(J_1^2+J_2^2)/(2m)$ y reúne sus módulos, mientras las dos co
 
 La condición variacional siempre debe comprobarse. En el mismo oscilador, multiplicar una solución por una constante produce otra solución, pero multiplica su acción por el cuadrado de esa constante. El ejercicio 19 estudiará esa transformación y mostrará qué hipótesis del teorema falta. Las simetrías discretas, como invertir simultáneamente posición y velocidad en ese oscilador, también relacionan movimientos; las cantidades obtenidas aquí proceden de familias diferenciables y de sus generadores.
 
-![Constantes y fase del oscilador](/assets/books/fispm/r20261021/simetria_fase.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-23-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/simetria_fase.svg" class="lightbox" data-gallery="fispm-r20261021-c23"><img src="/assets/books/fispm/r20261021/simetria_fase.svg" alt="Constantes y fase del oscilador" class="fpm-v04-figure img-fluid" width="443.684766" height="343.058578" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 23.5.* Dos constantes reconstruyen el estado del oscilador respecto del reloj elegido. La energía fija una órbita y el dato de fase selecciona el punto de esa órbita en cada instante.
+
+</figcaption>
+
+</figure>
 
 ## Ejercicios
 
@@ -469,8 +514,17 @@ $$
 
 Las ecuaciones para las dos coordenadas son $\dot p_\varphi=-V_0\sin(z/h-\varphi)$ y $\dot p_z=(V_0/h)\sin(z/h-\varphi)$; su combinación tiene derivada cero. Cada término de $J$ tiene unidades de momento angular. El coseno es periódico en el ángulo, de modo que el potencial es monovaluado para $\rho>0$. En el eje, el ángulo deja de describir una posición y esta formulación requiere revisar el campo y sus coordenadas.
 
-![Transformación helicoidal](/assets/books/fispm/r20261021/simetria_helice.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-23-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/simetria_helice.svg" class="lightbox" data-gallery="fispm-r20261021-c23"><img src="/assets/books/fispm/r20261021/simetria_helice.svg" alt="Transformación helicoidal. Esquema del capítulo 23; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid" width="452.468203" height="352.562578" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 23.6.* Aumentar el ángulo y la altura en la proporción fijada por $h$ conserva $z/h-\varphi$. La cantidad asociada combina momento angular y momento vertical.
+
+</figcaption>
+
+</figure>
 
 ### 12. Contraer el radio conservando el momento angular {#solucion-23-12}
 
@@ -577,8 +631,17 @@ $$
 
 en metros con tiempo en segundos. La energía relativa vale $0{,}125+0{,}08=0{,}205\,\mathrm J$ y $C=0{,}205-0{,}125=0{,}08\,\mathrm J$, igual a $E(0)-up(0)$. La preparación inicial y la velocidad del potencial fijan la combinación conservada y permiten comprobar su interpretación sin suponer que la energía cartesiana sea constante.
 
-![Potencial que se desplaza](/assets/books/fispm/r20261021/simetria_potencial_movil.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-23-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/simetria_potencial_movil.svg" class="lightbox" data-gallery="fispm-r20261021-c23"><img src="/assets/books/fispm/r20261021/simetria_potencial_movil.svg" alt="Potencial que se desplaza. Esquema del capítulo 23; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid" width="611.472188" height="344.493187" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 23.7.* La traslación conjunta de posición y tiempo acompaña al potencial. Su cantidad conservada combina energía y momento y se relaciona con la energía del movimiento relativo.
+
+</figcaption>
+
+</figure>
 
 ### 21. Un potencial acelerado y su término de borde {#solucion-23-21}
 
@@ -616,9 +679,17 @@ Al evaluar la energía efectiva en el instante inicial resulta $K_{\mathrm{rel}}
 
 El potencial móvil cambia la energía física a tasa $\dot E=(u+\gamma t)F$ y el momento a tasa $\dot p=F$. La combinación $E-(u+\gamma t)p$ tiene derivada $-\gamma p$; el término de borde proporciona el sumando cuya derivada compensa esa tasa. Con un centro de aceleración variable, la proposición del núcleo conserva el balance $\dot C=m\dddot a x$ y su forma integrada. Una cota para la variación de aceleración debe acompañarse de una cota de posición durante el intervalo antes de atribuir una precisión a la conservación aproximada.
 
-![Oscilación respecto del centro acelerado y compensación de las contribuciones al balance.](/assets/books/fispm/r20261021/simetria_potencial_acelerado.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-23-8" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/simetria_potencial_acelerado.svg" class="lightbox" data-gallery="fispm-r20261021-c23"><img src="/assets/books/fispm/r20261021/simetria_potencial_acelerado.svg" alt="Oscilación respecto del centro acelerado y compensación de las contribuciones al balance." class="fpm-v04-figure img-fluid" width="518.4" height="226.8" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 23.8.* La coordenada relativa oscila alrededor de $-0{,}05\,\mathrm m$. En el laboratorio, $E-\dot a p$ cambia y la contribución $m\gamma x$ completa la constante $C=0{,}12\,\mathrm J$. Las curvas muestran soluciones del modelo ideal con aceleración constante.
+
+</figcaption>
+
+</figure>
 
 ## Lecturas y conexiones
 

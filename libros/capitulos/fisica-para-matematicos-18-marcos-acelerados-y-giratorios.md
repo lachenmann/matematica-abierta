@@ -48,8 +48,17 @@ $$
 
 La matriz $Q$ transforma componentes móviles en componentes inerciales; su inversa es $Q^{\mathsf T}$. Por ello $\boldsymbol\rho=Q^{\mathsf T}(\mathbf x-\mathbf R)$. Ambas expresiones representan la misma separación física. Trasladar el origen modifica qué vector de posición usamos; girar los ejes modifica las componentes con que lo describimos.
 
-![Posición y orientación del marco móvil](/assets/books/fispm/r20261021/marcos_geometria.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-18-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/marcos_geometria.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="/assets/books/fispm/r20261021/marcos_geometria.svg" alt="Posición y orientación del marco móvil" class="fpm-v04-figure img-fluid" width="900" height="610" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 18.1.* La posición se construye sumando el desplazamiento del origen móvil y la separación desde él. El factor $Q$ expresa esa separación en los ejes del laboratorio.
+
+</figcaption>
+
+</figure>
 
 Para derivar un vector representado en ejes móviles necesitamos conocer el cambio de los propios ejes. La ortogonalidad hace que esa información tenga una forma muy restringida.
 
@@ -94,8 +103,17 @@ $$
 
 El signo positivo significa giro antihorario visto desde $+z$ hacia el plano. Todas las componentes que aparecen juntas dentro de un producto vectorial se expresarán en la misma base móvil.
 
-![Derivar un vector ligado a los ejes](/assets/books/fispm/r20261021/marcos_transporte.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-18-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/marcos_transporte.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="/assets/books/fispm/r20261021/marcos_transporte.svg" alt="Derivar un vector ligado a los ejes" class="fpm-v04-figure img-fluid" width="900" height="660" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 18.2.* Un vector de longitud fija ligado a un eje giratorio tiene derivada tangencial. El cambio de la base aporta $\boldsymbol\omega\times\mathbf a$ incluso cuando sus componentes permanecen constantes.
+
+</figcaption>
+
+</figure>
 
 ## Derivar la posición dos veces
 
@@ -166,15 +184,33 @@ $$
 
 En un giro con $\boldsymbol\omega=\Omega\mathbf e_z$, una velocidad relativa hacia $+x$ produce corrección de Coriolis hacia $-y$. Si además $\dot\Omega>0$, la corrección de Euler sobre una partícula situada en $+x$ apunta también hacia $-y$, aunque puede existir cuando la velocidad relativa es cero. La dependencia de cada término permite distinguirlos mediante estados preparados de manera diferente.
 
-![Términos añadidos en cuatro preparaciones](/assets/books/fispm/r20261021/marcos_correcciones.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-18-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/marcos_correcciones.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="/assets/books/fispm/r20261021/marcos_correcciones.svg" alt="Términos añadidos en cuatro preparaciones" class="fpm-v04-figure img-fluid" width="900" height="635" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 18.3.* Direcciones de las correcciones traslacional, centrífuga, de Coriolis y de Euler en cuatro ejemplos planos. Las flechas representan términos de la ecuación móvil; cada panel declara la preparación que los produce.
+
+</figcaption>
+
+</figure>
 
 Para ejes que sólo se trasladan, $Q$ es constante y queda $m\mathbf a_{\mathrm{rel}}=\mathbf F'-m\mathbf A'$. Un disco horizontal libre permanece en reposo en el laboratorio si ése era su estado inicial. Respecto de un carro que acelera hacia $+x$, su coordenada disminuye con aceleración $-A$. Si una pared lo obliga a acompañar al carro, debe ejercer una fuerza física $mA$ hacia adelante; el término traslacional se compensa en el balance de reposo relativo.
 
 En un campo uniforme $\mathbf g$ y con traslación de aceleración constante, se puede agrupar la gravedad y la corrección del marco en $\mathbf g_{\mathrm{ef}}=\mathbf g-\mathbf A'$. La dirección de una cuerda en equilibrio y la lectura de un apoyo se obtienen entonces con el balance de fuerzas. Para una báscula horizontal en un ascensor de aceleración vertical $A_z$, el contacto estacionario requiere $N=m(g+A_z)$ y $N\ge0$. Una normal negativa indica que la hipótesis de contacto debe abandonarse.
 
-![Gravedad efectiva en un carro acelerado](/assets/books/fispm/r20261021/marcos_gravedad_efectiva.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-18-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/marcos_gravedad_efectiva.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="/assets/books/fispm/r20261021/marcos_gravedad_efectiva.svg" alt="Gravedad efectiva en un carro acelerado" class="fpm-v04-figure img-fluid" width="900" height="640" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 18.4.* Un péndulo en reposo respecto de un carro acelerado se inclina hacia atrás. La tensión compensa el peso y la corrección traslacional; la aceleración efectiva apunta en la dirección de la cuerda hacia la masa.
+
+</figcaption>
+
+</figure>
 
 ## Reconstruir la partícula liberada de la plataforma
 
@@ -207,8 +243,17 @@ $$
 
 que coincide con $-2\boldsymbol\omega\times\mathbf v_{\mathrm{rel}}-\boldsymbol\omega\times(\boldsymbol\omega\times\boldsymbol\rho)$. Todos esos términos reconstruyen aceleración inercial cero. Su presencia en la ecuación giratoria es compatible con la ausencia de fuerza horizontal después de la liberación.
 
-![La misma liberación en dos marcos](/assets/books/fispm/r20261021/marcos_particula_libre.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-18-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/marcos_particula_libre.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="/assets/books/fispm/r20261021/marcos_particula_libre.svg" alt="La misma liberación en dos marcos" class="fpm-v04-figure img-fluid" width="900" height="650" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 18.5.* La trayectoria de laboratorio es una recta tangente al círculo inicial. La trayectoria relativa es curva. Los puntos numerados representan los mismos instantes $\tau=0,1,2$ y ambos paneles usan escalas iguales en sus ejes.
+
+</figcaption>
+
+</figure>
 
 Si se preparara la partícula en reposo en el laboratorio, su velocidad relativa inicial sería $-\boldsymbol\omega\times\boldsymbol\rho_0$. Sus coordenadas móviles recorrerían una circunferencia en sentido contrario al giro. La diferencia entre ambos problemas está en la velocidad inicial, antes de resolver ninguna ecuación.
 
@@ -256,8 +301,17 @@ con energía y momento angular respecto de ese origen, usando el mismo potencial
 
 El potencial físico puede depender del tiempo en el laboratorio si gira con el dispositivo. En ese caso, la constancia de $\mathcal J$ no obliga a que $E_{\mathrm{lab}}$ y $\mathbf L_{\mathrm{lab}}$ se conserven por separado. Para la partícula libre de la plataforma, $U'=0$ y se obtiene $\mathcal J=-m\Omega^2r_0^2/2$: la energía cinética relativa crece mientras el potencial centrífugo disminuye en la misma cantidad.
 
-![Balance energético de la partícula libre](/assets/books/fispm/r20261021/marcos_energia.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-18-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/marcos_energia.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="/assets/books/fispm/r20261021/marcos_energia.svg" alt="Balance energético de la partícula libre" class="fpm-v04-figure img-fluid" width="900" height="640" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 18.6.* En unidades de $m\Omega^2r_0^2/2$, la energía cinética relativa es $\tau^2$, el potencial centrífugo es $-(1+\tau^2)$ y su suma permanece en $-1$.
+
+</figcaption>
+
+</figure>
 
 La forma de $\mathcal J$ también invita a preguntar qué información aporta su signo. Para un oscilador armónico isótropo de frecuencia $\omega_0=\sqrt{k/m}>0$, observado desde un giro plano uniforme, $U_{\mathrm{ef}}=m(\omega_0^2-\Omega^2)\|\boldsymbol\rho\|^2/2$. Cuando $|\Omega|>\omega_0$, ese potencial tiene un máximo en el origen. La energía de laboratorio ofrece otra forma conservada,
 
@@ -272,8 +326,17 @@ Es positiva para todo estado distinto del equilibrio y controla sus dos componen
 
 Una cuenta sobre una varilla radial giratoria permite examinar el papel de un vínculo. Si se desliza sin rozamiento y no hay fuerza aplicada a lo largo de la varilla, su coordenada satisface $\ddot r=\Omega^2r$; la reacción transversal de la varilla es $2m\Omega\dot r$. Su potencia relativa es cero porque resulta perpendicular al deslizamiento. En el laboratorio, el punto de contacto tiene componente transversal de velocidad $\Omega r$ y la reacción realiza trabajo a razón $2m\Omega^2r\dot r$. El mecanismo que mantiene la rotación aporta esa energía. Los ejercicios comparan este movimiento con otro donde un actuador fija una velocidad radial constante.
 
-![Fuerzas y velocidades en una ranura giratoria](/assets/books/fispm/r20261021/marcos_ranura.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-18-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/marcos_ranura.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="/assets/books/fispm/r20261021/marcos_ranura.svg" alt="Fuerzas y velocidades en una ranura giratoria" class="fpm-v04-figure img-fluid" width="900" height="620" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 18.7.* Para un deslizamiento radial hacia afuera, Coriolis apunta hacia atrás en la ecuación móvil. La pared ejerce una reacción física hacia adelante que mantiene la cuenta dentro de la ranura. El trabajo de esa reacción depende de la velocidad usada en el balance.
+
+</figcaption>
+
+</figure>
 
 ## Aplicar un marco giratorio local a la Tierra
 
@@ -299,8 +362,17 @@ $$
 
 La desviación es hacia el este. La sustitución se justifica porque la velocidad horizontal inducida es ya de primer orden en $\Omega$; volver a introducirla en Coriolis produce correcciones de orden superior. El parámetro temporal es $\Omega T_0\ll1$. También se necesita $H$ pequeño frente al radio terrestre para sostener el modelo local, y un control independiente de las fuerzas atmosféricas si se busca interpretar una medición. La pequeñez de un término respecto de la caída vertical puede coexistir con una desviación horizontal medible.
 
-![Componentes de rotación y desviación local](/assets/books/fispm/r20261021/marcos_tierra.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-18-8" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/marcos_tierra.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="/assets/books/fispm/r20261021/marcos_tierra.svg" alt="Componentes de rotación y desviación local" class="fpm-v04-figure img-fluid" width="900" height="660" loading="lazy" decoding="async"></a>
+
+<figcaption>
+
 *Figura 18.8.* La rotación se descompone en los ejes locales. En una caída vertical, su componente hacia el norte produce desviación al este. El desplazamiento horizontal del dibujo está ampliado para mostrar el signo del efecto.
+
+</figcaption>
+
+</figure>
 
 En un péndulo de pequeña amplitud, las componentes horizontales de Coriolis acoplan las dos direcciones de oscilación. El último problema construye la precesión dentro de un modelo lineal declarado y distingue la solución exacta de ese modelo de la precisión de sus aproximaciones físicas. La regla de transporte, por su parte, queda disponible para describir el momento angular de un cuerpo rígido desde ejes ligados al propio cuerpo.
 

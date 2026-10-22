@@ -38,9 +38,17 @@ La rapidez inicial y la longitud disponible permiten imaginar la escena, pero to
 
 Supongamos que, durante ese tramo, su velocidad disminuye dos metros por segundo en cada segundo. Esta es una hipótesis sobre el movimiento. Podría proceder de mediciones previas o ser una primera aproximación al comportamiento del freno. La utilizaremos para construir una predicción y después examinaremos qué depende de ella.
 
-![Un carro sobre un riel recto; se marca su frente como origen, una flecha indica velocidad hacia el extremo y la distancia disponible desde el frente es de veinte metros.](/assets/books/fispm/r20261021/riel_sistema.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-1-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/riel_sistema.svg" class="lightbox" data-gallery="fispm-r20261021-c1"><img src="/assets/books/fispm/r20261021/riel_sistema.svg" alt="Un carro sobre un riel recto; se marca su frente como origen, una flecha indica velocidad hacia el extremo y la distancia disponible desde el frente es de veinte metros." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 1.* La distancia disponible se mide desde el frente del carro, que será el punto cuya posición seguimos. La flecha representa su velocidad inicial. El esquema no asigna una longitud física al dibujo del carro.
+
+</figcaption>
+
+</figure>
 
 ## Un origen y un sentido para describir el movimiento
 
@@ -102,9 +110,17 @@ $$
 
 En este intervalo el carro avanza siempre en el mismo sentido; por eso el desplazamiento coincide con la distancia recorrida. Si una historia incluyera un retroceso, el área firmada de la velocidad seguiría dando el desplazamiento, pero las distancias de ambos tramos tendrían que sumarse con valores positivos.
 
-![Posición y velocidad del carro hasta seis segundos. El frenado termina en cuatro segundos y dieciséis metros. Después, el modelo supone que el carro permanece detenido.](/assets/books/fispm/r20261021/frenado.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-1-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/frenado.svg" class="lightbox" data-gallery="fispm-r20261021-c1"><img src="/assets/books/fispm/r20261021/frenado.svg" alt="Posición y velocidad del carro hasta seis segundos. El frenado termina en cuatro segundos y dieciséis metros. Después, el modelo supone que el carro permanece detenido." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 2.* La región sombreada bajo la velocidad representa dieciséis metros de desplazamiento. Las curvas discontinuas prolongan la fórmula del frenado más allá de la primera detención y describirían un retroceso; el modelo por tramos mantiene el reposo.
+
+</figcaption>
+
+</figure>
 
 ## Posición, desplazamiento y distancia recorrida
 
@@ -252,9 +268,17 @@ Consideremos la siguiente tabla de datos simulados. Servirá para practicar el c
 
 La gráfica completa muestra una coincidencia visual estrecha, pero la escala de dieciséis metros puede ocultar diferencias de centímetros. Para examinarlas definimos el residuo como la posición indicada menos la posición predicha. En los cuatro registros posteriores al origen los residuos son $0{,}02$, $0{,}01$, $0{,}03$ y $-0{,}01$ metros. Todos quedan dentro de las cotas supuestas. Esto significa que las observaciones del ejemplo son compatibles con la predicción a esa resolución de contraste; no prueba que el movimiento real tenga aceleración exactamente constante.
 
-![Posiciones simuladas y curva del modelo; en un panel separado se muestran los residuos de dos, uno, tres y menos un centímetro, con cotas de cinco centímetros por lectura.](/assets/books/fispm/r20261021/medicion_residuos.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-1-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/medicion_residuos.svg" class="lightbox" data-gallery="fispm-r20261021-c1"><img src="/assets/books/fispm/r20261021/medicion_residuos.svg" alt="Posiciones simuladas y curva del modelo; en un panel separado se muestran los residuos de dos, uno, tres y menos un centímetro, con cotas de cinco centímetros por lectura." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 3.* El panel de residuos cambia la escala para hacer visibles las diferencias. Las barras representan las cotas adoptadas en el ejemplo; no son intervalos de confianza ni describen una distribución de probabilidades.
+
+</figcaption>
+
+</figure>
 
 Podemos usar dos posiciones para calcular una velocidad media. Entre uno y dos segundos, los valores centrales dan
 
@@ -331,9 +355,17 @@ $$
 
 La conclusión de detención anterior al extremo es robusta dentro de estos supuestos. El margen no protege frente a un retraso que omitimos ni frente a un freno cuya aceleración deja de ajustarse al modelo. El razonamiento identifica qué afirmación está respaldada por las cotas y qué cambios del aparato exigirían otro cálculo.
 
-![Intervalo conservador de distancia de frenado, de 14,85 a 17,27 metros, e intervalo de longitud disponible, de 19,9 a 20,1 metros; el margen entre las cotas desfavorables es de 2,63 metros.](/assets/books/fispm/r20261021/intervalos_frenado.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-1-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/intervalos_frenado.svg" class="lightbox" data-gallery="fispm-r20261021-c1"><img src="/assets/books/fispm/r20261021/intervalos_frenado.svg" alt="Intervalo conservador de distancia de frenado, de 14,85 a 17,27 metros, e intervalo de longitud disponible, de 19,9 a 20,1 metros; el margen entre las cotas desfavorables es de 2,63 metros." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 4.* Las dos bandas comparten unidades y escala. Su separación permite comparar la peor distancia de frenado con la menor longitud disponible, sin atribuir una distribución probabilística a las bandas.
+
+</figcaption>
+
+</figure>
 
 ## Estimar antes de terminar la cuenta
 
@@ -693,9 +725,17 @@ $$
 
 La derivada es negativa antes de ese punto y positiva después; allí está el mínimo, $B(h_*)=2\sqrt{A\varepsilon}\approx0{,}2828\,\mathrm{m/s}$. Con $h=0{,}10\,\mathrm s$ la cota es $0{,}30\,\mathrm{m/s}$. El mínimo calculado corresponde a la cota que estamos utilizando. La historia $x(t+s)=x(t)+v(t)s+As^2/2$, con error de lectura $-\varepsilon$ al comienzo y $+\varepsilon$ al final, alcanza esa cota: la diferencia finita excede $v(t)$ en $Ah/2+2\varepsilon/h$. Por tanto, para cada $h$ admisible el límite superior contempla un caso realizable dentro de las hipótesis. Los errores de una experiencia concreta pueden ser menores y favorecer otra separación temporal. Al reducir $h$ indefinidamente con $\varepsilon>0$, la contribución instrumental de la cota crece sin límite; esa información impide certificar la mejora que tendría la diferencia finita con posiciones exactas.
 
-![En el modelo de cotas del ejercicio, reducir la separación temporal disminuye el error de aproximación y amplifica el de lectura. La curva muestra la suma, no un error observado.](/assets/books/fispm/r20261021/diferencias_cota.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-1-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/diferencias_cota.svg" class="lightbox" data-gallery="fispm-r20261021-c1"><img src="/assets/books/fispm/r20261021/diferencias_cota.svg" alt="En el modelo de cotas del ejercicio, reducir la separación temporal disminuye el error de aproximación y amplifica el de lectura. La curva muestra la suma, no un error observado." class="fpm-v04-figure img-fluid" width="800" height="430" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 1.5.* En el modelo de cotas del ejercicio, reducir la separación temporal disminuye el error de aproximación y amplifica el de lectura. La curva muestra la suma, no un error observado.
+
+</figcaption>
+
+</figure>
 
 ### 13. La rapidez límite con retraso {#solucion-1-13}
 

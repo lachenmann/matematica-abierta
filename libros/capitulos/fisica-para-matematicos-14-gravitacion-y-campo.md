@@ -38,9 +38,17 @@ Trabajaremos con un planeta ideal esféricamente simétrico, de radio $R=6{,}00\
 
 En cada medida se libera brevemente una sonda y se reconstruye su aceleración inicial respecto de ese marco. Una sonda sostenida a altura fija tendría aceleración cero: su soporte compensaría la gravedad. La lectura de un acelerómetro transportado en caída libre tampoco se identifica sin más con la aceleración de su posición respecto del planeta. El procedimiento de observación forma parte del problema.
 
-![El radio se mide desde el centro del planeta; la altura se mide desde su superficie.](/assets/books/fispm/r20261021/gravedad_alturas.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-14-1" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/gravedad_alturas.svg" class="lightbox" data-gallery="fispm-r20261021-c14"><img src="/assets/books/fispm/r20261021/gravedad_alturas.svg" alt="El radio se mide desde el centro del planeta; la altura se mide desde su superficie." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 14.1.* Los dos radios de observación son $R$ y $R+h$. La altura de la segunda sonda es $h=0{,}10R$. Las flechas indican el sentido del campo; la figura no representa distancias planetarias a escala.
+
+</figcaption>
+
+</figure>
 
 ## De una interacción entre masas a un campo
 
@@ -69,9 +77,17 @@ $$
 
 Una fuente distante y otra cercana pueden tirar en direcciones distintas. Sumar solamente sus magnitudes perdería la posibilidad de cancelación. Dos masas iguales mantenidas en $x=-a$ y $x=a$ producen campo cero en el origen, aunque cada una atraiga una partícula situada allí. Ese cero depende de la posición; no elimina la interacción en los puntos vecinos.
 
-![En un punto situado sobre la mediatriz de dos fuentes iguales, se cancelan las componentes horizontales del campo.](/assets/books/fispm/r20261021/gravedad_superposicion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-14-2" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/gravedad_superposicion.svg" class="lightbox" data-gallery="fispm-r20261021-c14"><img src="/assets/books/fispm/r20261021/gravedad_superposicion.svg" alt="En un punto situado sobre la mediatriz de dos fuentes iguales, se cancelan las componentes horizontales del campo." class="fpm-v04-figure img-fluid" width="900" height="570" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 14.2.* Las fuentes están sostenidas en posiciones fijas. En el punto superior, las componentes verticales se suman hacia abajo y las horizontales se cancelan. En el punto medio de las fuentes se anula el campo total.
+
+</figcaption>
+
+</figure>
 
 Considerar fija una fuente de masa grande es una aproximación dinámica adicional. En la interacción de dos partículas, las aceleraciones tienen razón $m/M$, porque las fuerzas tienen igual magnitud. Esa razón pequeña justifica despreciar el retroceso para muchas preguntas, pero la precisión buscada y la duración del experimento deben permitirlo. Si ambas masas se mueven de forma apreciable, habrá que resolver sus dos trayectorias. El campo no convierte a la fuente en un cuerpo exento de la tercera ley.
 
@@ -129,9 +145,17 @@ La tolerancia depende de qué queremos predecir. Para aproximar el campo con un 
 
 En el experimento inicial, $\eta=0{,}10$ y $\mu=g_0R^2=3{,}60\times10^{14}\,\mathrm{m^3/s^2}$. La predicción de magnitud del campo es $g(h)=1000/121\,\mathrm{m/s^2}\approx8{,}2645\,\mathrm{m/s^2}$, dentro del intervalo medido $[8{,}24,8{,}30]\,\mathrm{m/s^2}$. Usar diez a esa altura sobreestimaría la aceleración exacta un $21\%$. El dato superficial ajustó $\mu$; la segunda medida es el contraste independiente de la variación radial, condicionado a las hipótesis de radio, simetría y observación.
 
-![El campo central disminuye con la altura, mientras que la aproximación uniforme mantiene su valor superficial.](/assets/books/fispm/r20261021/gravedad_aproximacion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-14-3" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/gravedad_aproximacion.svg" class="lightbox" data-gallery="fispm-r20261021-c14"><img src="/assets/books/fispm/r20261021/gravedad_aproximacion.svg" alt="El campo central disminuye con la altura, mientras que la aproximación uniforme mantiene su valor superficial." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 14.3.* Se representa $g(h)/g_0$ frente a $h/R$. La curva es $1/(1+h/R)^2$. La discrepancia se mide aquí respecto del campo exacto; usar otra referencia en el denominador daría otro porcentaje.
+
+</figcaption>
+
+</figure>
 
 El modelo uniforme sobre una región tridimensional requiere además que la dirección cambie poco. Dos puntos separados lateralmente una longitud pequeña $\ell$ sobre una esfera tienen direcciones radiales que difieren un ángulo del orden de $\ell/R$. Controlar únicamente la altura no vuelve paralelas todas las verticales de un planeta. En el laboratorio pequeño las dos comparaciones, $h/R$ y $\ell/R$, pueden ser diminutas; a escala planetaria hay que conservar la geometría.
 
@@ -158,9 +182,17 @@ Dos fuentes con el mismo centro de masa pueden producir campos distintos cerca d
 
 Comencemos por un cascarón esférico delgado y homogéneo de radio $a>0$ y masa $M$. Elegimos el eje polar desde su centro hacia el punto de observación, situado a distancia $r$. Todos los elementos de una banda de ángulo polar $\theta$ están a la misma distancia $s$ del observador. Esa elección convierte una suma sobre la superficie en una integral de una variable.
 
-![Una banda esférica de ángulo polar común tiene distancia constante al punto de observación.](/assets/books/fispm/r20261021/gravedad_cascaron.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-14-4" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/gravedad_cascaron.svg" class="lightbox" data-gallery="fispm-r20261021-c14"><img src="/assets/books/fispm/r20261021/gravedad_cascaron.svg" alt="Una banda esférica de ángulo polar común tiene distancia constante al punto de observación." class="fpm-v04-figure img-fluid" width="900" height="580" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 14.4.* La sección meridiana muestra $s^2=r^2+a^2-2ra\cos\theta$. La banda completa gira alrededor del eje que une el centro y el observador; no es sólo el pequeño arco visible en la sección.
+
+</figcaption>
+
+</figure>
 
 **Proposición.** El potencial de un cascarón esférico homogéneo, con cero en el infinito, es
 
@@ -227,9 +259,17 @@ $$
 
 Dentro de esa esfera la magnitud del campo crece linealmente desde cero; fuera decrece como $r^{-2}$. La gráfica tiene su máximo superficial, mientras que el potencial es más negativo en el centro. Estas formas permiten comprobar signos y continuidad sin memorizar dos fórmulas desconectadas.
 
-![El campo y el potencial de una esfera homogénea se comparan dentro y fuera de la superficie.](/assets/books/fispm/r20261021/gravedad_esfera.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-14-5" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/gravedad_esfera.svg" class="lightbox" data-gallery="fispm-r20261021-c14"><img src="/assets/books/fispm/r20261021/gravedad_esfera.svg" alt="El campo y el potencial de una esfera homogénea se comparan dentro y fuera de la superficie." class="fpm-v04-figure img-fluid" width="900" height="690" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 14.5.* Se representan la magnitud $g/(GM/R^2)$ y el potencial $\Phi/(GM/R)$ frente a $r/R$. El campo es continuo en la superficie de esta esfera de densidad finita; el salto del cascarón infinitamente delgado pertenece a un modelo distinto.
+
+</figcaption>
+
+</figure>
 
 ## Usar energía para una caída extensa o un escape
 
@@ -260,9 +300,17 @@ Si $e<0$, el miembro derecho se anula en el radio positivo indicado; es positivo
 
 La rapidez de escape depende del lugar de lanzamiento y de la elección de energía inicial. No es una rapidez que un motor deba mantener durante todo el viaje. Un lanzamiento impulsivo, seguido de movimiento libre, y un ascenso sostenido por un propulsor son problemas distintos. Para el planeta de referencia, el umbral superficial es $\sqrt{2g_0R}=\sqrt{1{,}20\times10^8}\,\mathrm{m/s}\approx10{,}95\,\mathrm{km/s}$, sin atmósfera ni rotación.
 
-![En un lanzamiento radial, la energía específica determina si existe un radio de retorno finito.](/assets/books/fispm/r20261021/gravedad_escape.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-14-6" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/gravedad_escape.svg" class="lightbox" data-gallery="fispm-r20261021-c14"><img src="/assets/books/fispm/r20261021/gravedad_escape.svg" alt="En un lanzamiento radial, la energía específica determina si existe un radio de retorno finito." class="fpm-v04-figure img-fluid" width="900" height="550" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 14.6.* El potencial exterior es $-\mu/r$. Las rectas de energía negativa, nula y positiva distinguen retorno, escape marginal y escape con rapidez asintótica no nula. El análisis se refiere a la rama radial saliente.
+
+</figcaption>
+
+</figure>
 
 ## Qué puede inferirse de una medición del campo
 
@@ -272,9 +320,17 @@ Una segunda medida a otro radio contrasta la dependencia inversa cuadrática sin
 
 Una medida de $g$ tampoco determina por sí sola el radio y la masa de un cuerpo. Dos esferas de radios distintos pueden compartir el mismo campo superficial y tener distintas rapideces de escape, porque $v_{\rm esc}^2=2g_0R$. La interpretación física depende de qué parámetros se conocen de manera independiente.
 
-![Una medida ajusta el parámetro gravitatorio y una segunda posición permite contrastar el modelo.](/assets/books/fispm/r20261021/gravedad_medicion.svg){.fpm-v04-figure}
+<figure id="fig-fispm-r20261021-14-7" class="fpm-v04-panel">
+
+<a href="/assets/books/fispm/r20261021/gravedad_medicion.svg" class="lightbox" data-gallery="fispm-r20261021-c14"><img src="/assets/books/fispm/r20261021/gravedad_medicion.svg" alt="Una medida ajusta el parámetro gravitatorio y una segunda posición permite contrastar el modelo." class="fpm-v04-figure img-fluid" width="900" height="540" loading="lazy" decoding="async"></a>
+
+<figcaption>
 
 *Figura 14.7.* Para el planeta de referencia, $g_0$ y $R$ fijan $\mu$. El intervalo de la segunda medición contiene la predicción central y excluye el campo uniforme. La banda de predicción incorpora las cotas superficiales del ejercicio 18. La compatibilidad no elimina la necesidad de examinar las hipótesis del aparato.
+
+</figcaption>
+
+</figure>
 
 ## Ejercicios
 

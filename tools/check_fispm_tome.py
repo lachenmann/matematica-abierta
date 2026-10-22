@@ -34,7 +34,7 @@ def main():
   eh=re.findall(r'^### (\d+)\. (.*?) \{#ejercicio-\d+-\d+\}',en,re.M)
   sh=re.findall(r'^### (\d+)\. (.*?) \{#solucion-\d+-\d+\}',sol,re.M)
   assert eh==sh and len(eh)==r['exercises'] and 18<=len(eh)<=27,(p,'exercise pairs')
-  assert len(re.findall(r'!\[',s))==r['figures']
+  assert len(re.findall(r'<figure id="fig-fispm-r20261021-',s))==r['figures']
   if r['chapter']>0:assert Path(rows[r['chapter']-1]['path']).name in s
   if r['chapter']<27:assert Path(rows[r['chapter']+1]['path']).name in s
  for f in data['figures']:assert digest(ROOT/f['path'])==f['sha256']
