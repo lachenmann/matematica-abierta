@@ -8,6 +8,20 @@ const path=require('node:path');
  const page=await browser.newPage(); const findings=[];
  const names=fs.readdirSync('libros/otros/tratado-funciones').filter(x=>x.endsWith('.qmd')).map(x=>x.slice(0,-4));
  try {
+  // The workflow starts its HTTP server in the background. Wait for the
+  // actual first test page before measuring layout; keep all page assertions.
+  const readyURL=`http://127.0.0.1:8765/libros/otros/tratado-funciones/${names[0]}.html`;
+  const readyDeadline=Date.now()+10000;
+  while(true){
+   try {
+    const ready=await fetch(readyURL,{method:'HEAD',signal:AbortSignal.timeout(1000)});
+    if(!ready.ok)throw new Error(`Test server returned HTTP ${ready.status}`);
+    break;
+   } catch(error){
+    if(Date.now()>=readyDeadline)throw error;
+    await new Promise(resolve=>setTimeout(resolve,100));
+   }
+  }
   for(const theme of ['dark','light'])for(const width of [390,1280]){
    await page.setViewportSize({width,height:900});
    for(const name of names){
