@@ -3,7 +3,7 @@ title: "1. Medición, magnitudes, dimensiones y modelos físicos"
 status: published
 draft: false
 author: A. Peña
-date-modified: '2026-10-21'
+date-modified: '2026-10-22'
 license: GFDL-1.3-or-later
 areas:
   - fisica-matematica
@@ -23,19 +23,19 @@ book-id: MA-BOK-0016
 source-id: FP-C01
 ---
 
-[Índice del libro](index.html) · [Capítulo siguiente →](capitulo-02.html)
+[← Prólogo](prologo.html) · [Índice del libro](index.html) · [Capítulo siguiente →](capitulo-02.html)
 
-Un problema de física comienza cuando observamos una situación y decidimos qué queremos averiguar. Pensemos en una pregunta aparentemente sencilla: ¿cuánto tarda la luz del Sol en llegar a la Tierra? Podemos responder combinando dos datos: la distancia entre ambos astros y la rapidez de la luz en el vacío. Una relación entre distancia y tiempo convierte esos datos en una predicción. El primer acto físico consiste en reconocer qué magnitudes intervienen y por qué una relación entre ellas resulta apropiada.
+La luz del Sol entra por una ventana y alcanza la mesa en la que estamos leyendo. Para llegar hasta ella ha cruzado el espacio entre el Sol y la Tierra. Podemos preguntarnos cuánto ha durado ese viaje y buscar una respuesta con dos datos: la distancia recorrida y la rapidez de la luz. Una escena cotidiana nos ha llevado a un problema cuya escala cuesta imaginar.
 
-En las páginas siguientes aprenderemos a construir esa relación con cuidado. También veremos que una fórmula correcta puede dar una respuesta equivocada si usamos unidades incompatibles, si interpretamos mal los datos o si olvidamos las condiciones del modelo. La comprobación forma parte de la resolución de un problema.
+Conocemos una relación parecida por los viajes que hacemos en la Tierra. Si un vehículo mantiene su rapidez, recorrer el doble de distancia le exige el doble de tiempo. Esa relación permite calcular una de las tres cantidades cuando conocemos las otras dos. Para aplicarla a la luz elegiremos un primer modelo: propagación a rapidez constante en el vacío, tomando la distancia Sol–Tierra como longitud aproximada del trayecto. Así podremos relacionar una observación cercana con una distancia astronómica.
 
-### Pregunta de partida
+La cuenta será breve; preparar sus datos merece atención. La distancia puede venir expresada en kilómetros y la rapidez en metros por segundo. Tendremos que hacer compatibles esas unidades y decidir cuántas cifras podemos sostener con la información disponible. También podremos recorrer el razonamiento en sentido inverso: a partir del tiempo de viaje y de la rapidez, estimar la distancia al Sol. Volveremos a ese problema en la sección «Un primer problema astronómico».
 
-¿Cómo decidimos si una medición es suficiente para responder una pregunta física? El número, la unidad, la incertidumbre y el modelo deben leerse juntos.
+Empezaremos por cantidades que podemos medir cerca de nosotros. La longitud de una mesa o la duración de un recorrido permiten aprender a expresar una medida y examinar su alcance. Ese cuidado nos acompañará cuando los objetos se encuentren demasiado lejos para acercarles una regla.
 
 ## De la descripción a la explicación
 
-Cuando una persona dice que un vehículo «va rápido», comunica una impresión útil en la vida cotidiana. Para calcular cuándo llegará a una ciudad necesitamos una descripción cuantitativa del movimiento. Para hacerlo tendremos que especificar una distancia y un tiempo, o una rapidez. Algo similar ocurre con expresiones como «el agua está caliente» o «el objeto pesa mucho». La física necesita distinguir la impresión cualitativa de la magnitud que podemos comparar y medir.
+Podemos empezar midiendo la longitud de una mesa con una regla y repetir la medida con una cinta graduada. Para comparar los resultados necesitaremos saber qué extremos se tomaron, qué unidad se empleó y qué detalle permite distinguir cada instrumento. Esas decisiones dan un contenido preciso a la pregunta «¿cuánto mide?». Con el tiempo de un recorrido haremos algo semejante: fijaremos los sucesos de comienzo y de término, y usaremos un reloj para medir la duración entre ambos. Al expresar esas cantidades podremos construir relaciones como la que nos permitirá estudiar el viaje de la luz.
 
 Usaremos potencias de diez para escribir números grandes o pequeños: $10^3=1000$ y $10^{-2}=1/100=0{,}01$. Una escritura como $3\times10^4$ significa $30\,000$; en cambio, $3\times10^{-4}=0{,}0003$. Al multiplicar potencias de la misma base sumamos exponentes: $10^3\times10^{-2}=10^{3-2}=10$. La potencia afecta también a las unidades: $\,\mathrm{cm^2}$ es la unidad de área de un cuadrado de un centímetro de lado, mientras que $\,\mathrm{cm^3}$ mide el volumen de un cubo de ese lado.
 
@@ -205,7 +205,7 @@ Las estimaciones también permiten decidir qué datos necesitan medirse con prec
 
 ## Un primer problema astronómico
 
-La luz permite obtener información de objetos lejanos mediante observaciones a distancia. A grandes distancias, ese hecho tiene una consecuencia profunda: observar el universo también significa observarlo en el pasado. Antes de estudiar telescopios y órbitas, podemos comprender cuantitativamente la idea mediante una operación elemental.
+Volvamos a la luz que llegaba a nuestra ventana. Su tiempo de viaje nos permite estimar la distancia que recorrió: en el problema siguiente tomaremos ese tiempo como dato y lo combinaremos con la rapidez de propagación. La misma relación permite hacer el cálculo inverso si conocemos la distancia. Además, la luz recibida trae información del momento en que fue emitida; al observar objetos lejanos accedemos a etapas anteriores de su historia.
 
 ### Problema resuelto 1.7 · La distancia al Sol a partir del tiempo de viaje de la luz {#r1-7}
 
@@ -438,4 +438,4 @@ Para avanzar con seguridad, explica por escrito la diferencia entre magnitud, un
 
 ---
 
-[Índice del libro](index.html) · [Capítulo siguiente →](capitulo-02.html)
+[← Prólogo](prologo.html) · [Índice del libro](index.html) · [Capítulo siguiente →](capitulo-02.html)
