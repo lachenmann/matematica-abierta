@@ -132,9 +132,11 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
             site = Path(tmp)
             (site / 'libros/capitulos').mkdir(parents=True)
             (site / 'theme.css').write_text('body{color:white}')
+            (site / 'manifest.webmanifest').write_text('{"start_url":"/","scope":"/"}')
             for number in [1, 2]:
                 (site / f'libros/capitulos/capitulo-{number}.html').write_text(
                     '<html lang="es"><head><link rel="stylesheet" href="../../theme.css">'
+                    '<link rel="manifest" href="../../manifest.webmanifest">'
                     '<script id="ma-math-font-ready">window.MathJax={startup:{}};</script>'
                     '<script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js"></script>'
                     '</head><body class="quarto-dark"><script id="quarto-html-before-body">window.theme=true;</script>'
@@ -153,6 +155,7 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
                 self.assertIn('class="canonical-shell"', html)
                 self.assertIn('window.theme=true;', html)
                 self.assertNotIn('<nav>', html)
+                self.assertNotIn('rel="manifest"', html)
                 self.assertNotIn('cdn.jsdelivr.net', html)
             self.assertEqual(manifest['totalSize'], sum((package / i['localPath']).stat().st_size
                              for i in manifest['contents'] + manifest['assets']))

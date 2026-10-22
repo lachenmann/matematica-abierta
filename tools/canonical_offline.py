@@ -237,7 +237,9 @@ class CanonicalAssets:
                 return tag
             if href.endswith("/bootstrap-icons.css") and not re.search(r'class=["\'][^"\']*\bbi(?:\s|[-"\'])', main):
                 return ""
-            if _html_attr_value(tag, "rel") == "canonical":
+            # Installation metadata belongs to the online PWA, not the native
+            # offline reader; its start_url and scope are site-root URLs.
+            if _html_attr_value(tag, "rel") in {"canonical", "manifest"}:
                 return ""
             preferred = None
             if _html_attr_value(tag, "id") == "quarto-bootstrap":
