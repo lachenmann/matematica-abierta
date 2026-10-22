@@ -1,0 +1,2096 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Composición, inversión y modelización funcional – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-cb076892e24e5ecd918925b139627211.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-a27ce7592f35ccc06b5fae55f34b11f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#seguir-una-salida-hasta-la-siguiente-entrada" id="toc-seguir-una-salida-hasta-la-siguiente-entrada" class="nav-link active" data-scroll-target="#seguir-una-salida-hasta-la-siguiente-entrada">Seguir una salida hasta la siguiente entrada</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-del-encadenamiento" id="toc-propiedades-del-encadenamiento" class="nav-link" data-scroll-target="#propiedades-del-encadenamiento">Propiedades del encadenamiento</a></li>
+  <li><a href="#problema-1.-descuento-y-despacho" id="toc-problema-1.-descuento-y-despacho" class="nav-link" data-scroll-target="#problema-1.-descuento-y-despacho">Problema 1. Descuento y despacho</a></li>
+  <li><a href="#problema-2.-una-misma-regla-con-dominios-distintos" id="toc-problema-2.-una-misma-regla-con-dominios-distintos" class="nav-link" data-scroll-target="#problema-2.-una-misma-regla-con-dominios-distintos">Problema 2. Una misma regla con dominios distintos</a></li>
+  <li><a href="#problema-3.-tres-etapas-compatibles" id="toc-problema-3.-tres-etapas-compatibles" class="nav-link" data-scroll-target="#problema-3.-tres-etapas-compatibles">Problema 3. Tres etapas compatibles</a></li>
+  </ul></li>
+  <li><a href="#conservar-las-restricciones-de-la-cadena" id="toc-conservar-las-restricciones-de-la-cadena" class="nav-link" data-scroll-target="#conservar-las-restricciones-de-la-cadena">Conservar las restricciones de la cadena</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-de-los-dominios-compuestos" id="toc-propiedades-de-los-dominios-compuestos" class="nav-link" data-scroll-target="#propiedades-de-los-dominios-compuestos">Propiedades de los dominios compuestos</a></li>
+  <li><a href="#problema-4.-la-raíz-de-un-cociente" id="toc-problema-4.-la-raíz-de-un-cociente" class="nav-link" data-scroll-target="#problema-4.-la-raíz-de-un-cociente">Problema 4. La raíz de un cociente</a></li>
+  <li><a href="#problema-5.-logaritmo-después-de-una-raíz" id="toc-problema-5.-logaritmo-después-de-una-raíz" class="nav-link" data-scroll-target="#problema-5.-logaritmo-después-de-una-raíz">Problema 5. Logaritmo después de una raíz</a></li>
+  <li><a href="#problema-6.-cancelar-con-memoria-del-dominio" id="toc-problema-6.-cancelar-con-memoria-del-dominio" class="nav-link" data-scroll-target="#problema-6.-cancelar-con-memoria-del-dominio">Problema 6. Cancelar con memoria del dominio</a></li>
+  </ul></li>
+  <li><a href="#volver-desde-la-salida" id="toc-volver-desde-la-salida" class="nav-link" data-scroll-target="#volver-desde-la-salida">Volver desde la salida</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-de-la-inversión" id="toc-propiedades-de-la-inversión" class="nav-link" data-scroll-target="#propiedades-de-la-inversión">Propiedades de la inversión</a></li>
+  <li><a href="#problema-7.-deshacer-una-calibración-afín" id="toc-problema-7.-deshacer-una-calibración-afín" class="nav-link" data-scroll-target="#problema-7.-deshacer-una-calibración-afín">Problema 7. Deshacer una calibración afín</a></li>
+  <li><a href="#problema-8.-elegir-una-rama-de-la-parábola" id="toc-problema-8.-elegir-una-rama-de-la-parábola" class="nav-link" data-scroll-target="#problema-8.-elegir-una-rama-de-la-parábola">Problema 8. Elegir una rama de la parábola</a></li>
+  <li><a href="#problema-9.-inversa-racional-con-un-valor-excluido" id="toc-problema-9.-inversa-racional-con-un-valor-excluido" class="nav-link" data-scroll-target="#problema-9.-inversa-racional-con-un-valor-excluido">Problema 9. Inversa racional con un valor excluido</a></li>
+  <li><a href="#problema-10.-una-cadena-exponencial-hacia-atrás" id="toc-problema-10.-una-cadena-exponencial-hacia-atrás" class="nav-link" data-scroll-target="#problema-10.-una-cadena-exponencial-hacia-atrás">Problema 10. Una cadena exponencial hacia atrás</a></li>
+  </ul></li>
+  <li><a href="#un-problema-inverso-puede-tener-varias-respuestas" id="toc-un-problema-inverso-puede-tener-varias-respuestas" class="nav-link" data-scroll-target="#un-problema-inverso-puede-tener-varias-respuestas">Un problema inverso puede tener varias respuestas</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-de-las-preimágenes-y-las-ramas" id="toc-propiedades-de-las-preimágenes-y-las-ramas" class="nav-link" data-scroll-target="#propiedades-de-las-preimágenes-y-las-ramas">Propiedades de las preimágenes y las ramas</a></li>
+  <li><a href="#problema-11.-altura-y-dos-instantes" id="toc-problema-11.-altura-y-dos-instantes" class="nav-link" data-scroll-target="#problema-11.-altura-y-dos-instantes">Problema 11. Altura y dos instantes</a></li>
+  <li><a href="#problema-12.-un-sensor-que-satura" id="toc-problema-12.-un-sensor-que-satura" class="nav-link" data-scroll-target="#problema-12.-un-sensor-que-satura">Problema 12. Un sensor que satura</a></li>
+  <li><a href="#problema-13.-recuperar-una-fase-dentro-del-intervalo" id="toc-problema-13.-recuperar-una-fase-dentro-del-intervalo" class="nav-link" data-scroll-target="#problema-13.-recuperar-una-fase-dentro-del-intervalo">Problema 13. Recuperar una fase dentro del intervalo</a></li>
+  </ul></li>
+  <li><a href="#unidades-y-parámetros-que-dicen-algo-del-fenómeno" id="toc-unidades-y-parámetros-que-dicen-algo-del-fenómeno" class="nav-link" data-scroll-target="#unidades-y-parámetros-que-dicen-algo-del-fenómeno">Unidades y parámetros que dicen algo del fenómeno</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-de-las-escalas-y-los-parámetros" id="toc-propiedades-de-las-escalas-y-los-parámetros" class="nav-link" data-scroll-target="#propiedades-de-las-escalas-y-los-parámetros">Propiedades de las escalas y los parámetros</a></li>
+  <li><a href="#problema-14.-caudal-concentración-y-unidades" id="toc-problema-14.-caudal-concentración-y-unidades" class="nav-link" data-scroll-target="#problema-14.-caudal-concentración-y-unidades">Problema 14. Caudal, concentración y unidades</a></li>
+  <li><a href="#problema-15.-pasar-de-minutos-a-segundos" id="toc-problema-15.-pasar-de-minutos-a-segundos" class="nav-link" data-scroll-target="#problema-15.-pasar-de-minutos-a-segundos">Problema 15. Pasar de minutos a segundos</a></li>
+  <li><a href="#problema-16.-medir-desde-un-nuevo-origen" id="toc-problema-16.-medir-desde-un-nuevo-origen" class="nav-link" data-scroll-target="#problema-16.-medir-desde-un-nuevo-origen">Problema 16. Medir desde un nuevo origen</a></li>
+  <li><a href="#problema-17.-datos-que-identifican-una-combinación" id="toc-problema-17.-datos-que-identifican-una-combinación" class="nav-link" data-scroll-target="#problema-17.-datos-que-identifican-una-combinación">Problema 17. Datos que identifican una combinación</a></li>
+  </ul></li>
+  <li><a href="#qué-afirman-los-datos-y-qué-añade-el-modelo" id="toc-qué-afirman-los-datos-y-qué-añade-el-modelo" class="nav-link" data-scroll-target="#qué-afirman-los-datos-y-qué-añade-el-modelo">Qué afirman los datos y qué añade el modelo</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-del-ajuste-y-su-alcance" id="toc-propiedades-del-ajuste-y-su-alcance" class="nav-link" data-scroll-target="#propiedades-del-ajuste-y-su-alcance">Propiedades del ajuste y su alcance</a></li>
+  <li><a href="#problema-18.-interpolar-y-salir-del-intervalo" id="toc-problema-18.-interpolar-y-salir-del-intervalo" class="nav-link" data-scroll-target="#problema-18.-interpolar-y-salir-del-intervalo">Problema 18. Interpolar y salir del intervalo</a></li>
+  <li><a href="#problema-19.-dos-modelos-tres-coincidencias" id="toc-problema-19.-dos-modelos-tres-coincidencias" class="nav-link" data-scroll-target="#problema-19.-dos-modelos-tres-coincidencias">Problema 19. Dos modelos, tres coincidencias</a></li>
+  <li><a href="#problema-20.-elegir-una-constante-por-residuos" id="toc-problema-20.-elegir-una-constante-por-residuos" class="nav-link" data-scroll-target="#problema-20.-elegir-una-constante-por-residuos">Problema 20. Elegir una constante por residuos</a></li>
+  <li><a href="#problema-21.-dos-lecturas-de-un-decaimiento" id="toc-problema-21.-dos-lecturas-de-un-decaimiento" class="nav-link" data-scroll-target="#problema-21.-dos-lecturas-de-un-decaimiento">Problema 21. Dos lecturas de un decaimiento</a></li>
+  </ul></li>
+  <li><a href="#una-ecuación-puede-describir-una-curva-entera" id="toc-una-ecuación-puede-describir-una-curva-entera" class="nav-link" data-scroll-target="#una-ecuación-puede-describir-una-curva-entera">Una ecuación puede describir una curva entera</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-de-relaciones-y-parametrizaciones" id="toc-propiedades-de-relaciones-y-parametrizaciones" class="nav-link" data-scroll-target="#propiedades-de-relaciones-y-parametrizaciones">Propiedades de relaciones y parametrizaciones</a></li>
+  <li><a href="#problema-22.-una-elipse-y-sus-ramas" id="toc-problema-22.-una-elipse-y-sus-ramas" class="nav-link" data-scroll-target="#problema-22.-una-elipse-y-sus-ramas">Problema 22. Una elipse y sus ramas</a></li>
+  <li><a href="#problema-23.-una-curva-recorrida-parcialmente" id="toc-problema-23.-una-curva-recorrida-parcialmente" class="nav-link" data-scroll-target="#problema-23.-una-curva-recorrida-parcialmente">Problema 23. Una curva recorrida parcialmente</a></li>
+  <li><a href="#problema-24.-igual-trayectoria-distinto-reloj" id="toc-problema-24.-igual-trayectoria-distinto-reloj" class="nav-link" data-scroll-target="#problema-24.-igual-trayectoria-distinto-reloj">Problema 24. Igual trayectoria, distinto reloj</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-para-trabajar-sin-profesor" id="toc-ejercicios-para-trabajar-sin-profesor" class="nav-link" data-scroll-target="#ejercicios-para-trabajar-sin-profesor">Ejercicios para trabajar sin profesor</a></li>
+  <li><a href="#soluciones-desarrolladas" id="toc-soluciones-desarrolladas" class="nav-link" data-scroll-target="#soluciones-desarrolladas">Soluciones desarrolladas</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-1.-orden-de-cambios-afines" id="toc-ejercicio-1.-orden-de-cambios-afines" class="nav-link" data-scroll-target="#ejercicio-1.-orden-de-cambios-afines">Ejercicio 1. Orden de cambios afines</a></li>
+  <li><a href="#ejercicio-2.-cuadrado-y-raíz-trasladada" id="toc-ejercicio-2.-cuadrado-y-raíz-trasladada" class="nav-link" data-scroll-target="#ejercicio-2.-cuadrado-y-raíz-trasladada">Ejercicio 2. Cuadrado y raíz trasladada</a></li>
+  <li><a href="#ejercicio-3.-tres-etapas-y-una-imagen" id="toc-ejercicio-3.-tres-etapas-y-una-imagen" class="nav-link" data-scroll-target="#ejercicio-3.-tres-etapas-y-una-imagen">Ejercicio 3. Tres etapas y una imagen</a></li>
+  <li><a href="#ejercicio-4.-signo-del-cociente" id="toc-ejercicio-4.-signo-del-cociente" class="nav-link" data-scroll-target="#ejercicio-4.-signo-del-cociente">Ejercicio 4. Signo del cociente</a></li>
+  <li><a href="#ejercicio-5.-dos-restricciones-sucesivas" id="toc-ejercicio-5.-dos-restricciones-sucesivas" class="nav-link" data-scroll-target="#ejercicio-5.-dos-restricciones-sucesivas">Ejercicio 5. Dos restricciones sucesivas</a></li>
+  <li><a href="#ejercicio-6.-una-regla-extendible" id="toc-ejercicio-6.-una-regla-extendible" class="nav-link" data-scroll-target="#ejercicio-6.-una-regla-extendible">Ejercicio 6. Una regla extendible</a></li>
+  <li><a href="#ejercicio-7.-invertir-con-intervalos" id="toc-ejercicio-7.-invertir-con-intervalos" class="nav-link" data-scroll-target="#ejercicio-7.-invertir-con-intervalos">Ejercicio 7. Invertir con intervalos</a></li>
+  <li><a href="#ejercicio-8.-dos-signos-justificados" id="toc-ejercicio-8.-dos-signos-justificados" class="nav-link" data-scroll-target="#ejercicio-8.-dos-signos-justificados">Ejercicio 8. Dos signos justificados</a></li>
+  <li><a href="#ejercicio-9.-un-cociente-invertible" id="toc-ejercicio-9.-un-cociente-invertible" class="nav-link" data-scroll-target="#ejercicio-9.-un-cociente-invertible">Ejercicio 9. Un cociente invertible</a></li>
+  <li><a href="#ejercicio-10.-desandar-una-exponencial" id="toc-ejercicio-10.-desandar-una-exponencial" class="nav-link" data-scroll-target="#ejercicio-10.-desandar-una-exponencial">Ejercicio 10. Desandar una exponencial</a></li>
+  <li><a href="#ejercicio-11.-subida-y-bajada" id="toc-ejercicio-11.-subida-y-bajada" class="nav-link" data-scroll-target="#ejercicio-11.-subida-y-bajada">Ejercicio 11. Subida y bajada</a></li>
+  <li><a href="#ejercicio-12.-una-lectura-constante-en-un-intervalo" id="toc-ejercicio-12.-una-lectura-constante-en-un-intervalo" class="nav-link" data-scroll-target="#ejercicio-12.-una-lectura-constante-en-un-intervalo">Ejercicio 12. Una lectura constante en un intervalo</a></li>
+  <li><a href="#ejercicio-13.-todas-las-fases-admisibles" id="toc-ejercicio-13.-todas-las-fases-admisibles" class="nav-link" data-scroll-target="#ejercicio-13.-todas-las-fases-admisibles">Ejercicio 13. Todas las fases admisibles</a></li>
+  <li><a href="#ejercicio-14.-acumulación-limitada-por-capacidad" id="toc-ejercicio-14.-acumulación-limitada-por-capacidad" class="nav-link" data-scroll-target="#ejercicio-14.-acumulación-limitada-por-capacidad">Ejercicio 14. Acumulación limitada por capacidad</a></li>
+  <li><a href="#ejercicio-15.-unidades-de-la-tasa" id="toc-ejercicio-15.-unidades-de-la-tasa" class="nav-link" data-scroll-target="#ejercicio-15.-unidades-de-la-tasa">Ejercicio 15. Unidades de la tasa</a></li>
+  <li><a href="#ejercicio-16.-traslación-y-normalización" id="toc-ejercicio-16.-traslación-y-normalización" class="nav-link" data-scroll-target="#ejercicio-16.-traslación-y-normalización">Ejercicio 16. Traslación y normalización</a></li>
+  <li><a href="#ejercicio-17.-una-suma-identificada" id="toc-ejercicio-17.-una-suma-identificada" class="nav-link" data-scroll-target="#ejercicio-17.-una-suma-identificada">Ejercicio 17. Una suma identificada</a></li>
+  <li><a href="#ejercicio-18.-una-familia-declarada" id="toc-ejercicio-18.-una-familia-declarada" class="nav-link" data-scroll-target="#ejercicio-18.-una-familia-declarada">Ejercicio 18. Una familia declarada</a></li>
+  <li><a href="#ejercicio-19.-coincidencias-finitas" id="toc-ejercicio-19.-coincidencias-finitas" class="nav-link" data-scroll-target="#ejercicio-19.-coincidencias-finitas">Ejercicio 19. Coincidencias finitas</a></li>
+  <li><a href="#ejercicio-20.-mínimo-cuadrático-exacto" id="toc-ejercicio-20.-mínimo-cuadrático-exacto" class="nav-link" data-scroll-target="#ejercicio-20.-mínimo-cuadrático-exacto">Ejercicio 20. Mínimo cuadrático exacto</a></li>
+  <li><a href="#ejercicio-21.-recuperación-de-parámetros-y-umbral" id="toc-ejercicio-21.-recuperación-de-parámetros-y-umbral" class="nav-link" data-scroll-target="#ejercicio-21.-recuperación-de-parámetros-y-umbral">Ejercicio 21. Recuperación de parámetros y umbral</a></li>
+  <li><a href="#ejercicio-22.-dos-ramas-de-la-elipse" id="toc-ejercicio-22.-dos-ramas-de-la-elipse" class="nav-link" data-scroll-target="#ejercicio-22.-dos-ramas-de-la-elipse">Ejercicio 22. Dos ramas de la elipse</a></li>
+  <li><a href="#ejercicio-23.-restricciones-tras-eliminar-el-parámetro" id="toc-ejercicio-23.-restricciones-tras-eliminar-el-parámetro" class="nav-link" data-scroll-target="#ejercicio-23.-restricciones-tras-eliminar-el-parámetro">Ejercicio 23. Restricciones tras eliminar el parámetro</a></li>
+  <li><a href="#ejercicio-24.-un-cambio-de-reloj-biyectivo" id="toc-ejercicio-24.-un-cambio-de-reloj-biyectivo" class="nav-link" data-scroll-target="#ejercicio-24.-un-cambio-de-reloj-biyectivo">Ejercicio 24. Un cambio de reloj biyectivo</a></li>
+  </ul></li>
+  <li><a href="#diagnóstico-de-salida" id="toc-diagnóstico-de-salida" class="nav-link" data-scroll-target="#diagnóstico-de-salida">Diagnóstico de salida</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Composición, inversión y modelización funcional</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">22 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="capitulo-20.html">← Funciones trigonométricas y modelos periódicos</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-22.html">Siguiente →</a></p>
+<p>Una empresa aplica un descuento del veinte por ciento al precio de un producto y cobra después una tarifa fija de tres mil pesos por el despacho. Otra empresa anuncia los mismos dos cambios, en el orden contrario. ¿Producen el mismo cobro? Si conocemos el total pagado, ¿podemos reconstruir el precio inicial? La primera pregunta exige seguir una cadena de operaciones; la segunda pide recorrerla hacia atrás. Ambas dependen del orden y de los valores que cada etapa admite.</p>
+<p>Las familias funcionales estudiadas en los capítulos anteriores permiten construir cadenas mucho más variadas. Una temperatura produce una señal eléctrica; la señal se transforma en una lectura; una calibración convierte esa lectura en una estimación. La fórmula final reúne varias decisiones: qué entra, qué sale, qué restricciones conserva y qué parte del fenómeno representa. En este capítulo trataremos esas decisiones como parte del razonamiento matemático.</p>
+<section id="seguir-una-salida-hasta-la-siguiente-entrada" class="level2">
+<h2 class="anchored" data-anchor-id="seguir-una-salida-hasta-la-siguiente-entrada">Seguir una salida hasta la siguiente entrada</h2>
+<p>Sean <span class="math inline">\(g:D_g\to B\)</span> y <span class="math inline">\(f:D_f\to C\)</span>. La composición <span class="math inline">\(f\circ g\)</span> asigna a cada entrada admisible <span class="math inline">\(x\)</span> el valor <span class="math inline">\(f(g(x))\)</span>. Su dominio natural es</p>
+<p><span class="math display">\[D_{f\circ g}=\{x\in D_g:g(x)\in D_f\}.\]</span></p>
+<p>La función interior actúa primero. Para componer en todo <span class="math inline">\(D_g\)</span> basta que <span class="math inline">\(g(D_g)\subseteq D_f\)</span>. Cuando esta inclusión falla, la misma regla puede definir una composición sobre el subconjunto indicado. Llamaremos imagen de un conjunto <span class="math inline">\(S\subseteq D_g\)</span> al conjunto <span class="math inline">\(g(S)=\{g(x):x\in S\}\)</span>. La preimagen <span class="math inline">\(g^{-1}(T)=\{x\in D_g:g(x)\in T\}\)</span> está definida para cualquier conjunto <span class="math inline">\(T\)</span> de salidas; esta notación designa aquí un conjunto, incluso cuando <span class="math inline">\(g\)</span> carece de función inversa.</p>
+<div id="fig-mp-composicion-y-orden" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Una cadena conserva el orden de sus etapas y permite reconstruir la entrada al invertir cada paso.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-composicion-y-orden-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Composicion_y_orden.svg" class="img-fluid figure-img" alt="Una cadena conserva el orden de sus etapas y permite reconstruir la entrada al invertir cada paso.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-composicion-y-orden-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Una cadena conserva el orden de sus etapas y permite reconstruir la entrada al invertir cada paso.
+</figcaption>
+</figure>
+</div>
+<section id="propiedades-del-encadenamiento" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-del-encadenamiento">Propiedades del encadenamiento</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Hipótesis y alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Dominio natural</td>
+<td>Se exige <span class="math inline">\(x\in D_g\)</span> y <span class="math inline">\(g(x)\in D_f\)</span> para evaluar <span class="math inline">\(f\circ g\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Identidad</td>
+<td><span class="math inline">\(\operatorname{id}(x)=x\)</span> conserva los valores; <span class="math inline">\(f\circ\operatorname{id}_{D_f}=f\)</span> y <span class="math inline">\(\operatorname{id}_{C}\circ f=f\)</span> para <span class="math inline">\(f:D_f\to C\)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Asociatividad</td>
+<td><span class="math inline">\(h\circ(f\circ g)=(h\circ f)\circ g\)</span> donde <span class="math inline">\(x\)</span>, <span class="math inline">\(g(x)\)</span> y <span class="math inline">\(f(g(x))\)</span> cumplen las tres restricciones.</td>
+</tr>
+<tr class="even">
+<td>Orden de las etapas</td>
+<td>La igualdad <span class="math inline">\(f\circ g=g\circ f\)</span> requiere comprobación de valores y dominios.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#encadenamiento-dominio-y-asociatividad">Encadenamiento, dominio y asociatividad</a>» en el apéndice de demostraciones.</p>
+</section>
+<section id="problema-1.-descuento-y-despacho" class="level3">
+<h3 class="anchored" data-anchor-id="problema-1.-descuento-y-despacho">Problema 1. Descuento y despacho</h3>
+<p>Un producto cuesta <span class="math inline">\(p\geq0\)</span> miles de pesos. Se aplican <span class="math inline">\(d(p)=0{,}8p\)</span> y <span class="math inline">\(s(p)=p+3\)</span>. Hallar ambos cobros y determinar cuándo coinciden.</p>
+<p><strong>Solución.</strong> Descontar y despachar produce <span class="math inline">\((s\circ d)(p)=0{,}8p+3\)</span>. Despachar y descontar produce <span class="math inline">\((d\circ s)(p)=0{,}8p+2{,}4\)</span>. La diferencia es <span class="math inline">\(0{,}6\)</span> miles de pesos para toda entrada admisible. Por tanto, los cobros difieren en seiscientos pesos y no coinciden. Para <span class="math inline">\(p=20\)</span>, los totales son <span class="math inline">\(19\)</span> y <span class="math inline">\(18{,}4\)</span> miles. La diferencia constante expresa que la segunda empresa también descuenta una parte del despacho.</p>
+</section>
+<section id="problema-2.-una-misma-regla-con-dominios-distintos" class="level3">
+<h3 class="anchored" data-anchor-id="problema-2.-una-misma-regla-con-dominios-distintos">Problema 2. Una misma regla con dominios distintos</h3>
+<p>Sean <span class="math inline">\(g(x)=x^2\)</span>, definida en <span class="math inline">\(\mathbb R\)</span>, y <span class="math inline">\(f(u)=\sqrt u\)</span>, definida en <span class="math inline">\([0,\infty)\)</span>. Determinar las dos composiciones como funciones.</p>
+<p><strong>Solución.</strong> Todo cuadrado pertenece al dominio de la raíz; por ello <span class="math inline">\((f\circ g)(x)=\sqrt{x^2}=|x|\)</span> para <span class="math inline">\(x\in\mathbb R\)</span>. Para <span class="math inline">\(g\circ f\)</span>, la entrada debe satisfacer <span class="math inline">\(x\geq0\)</span>; allí <span class="math inline">\((g\circ f)(x)=(\sqrt x)^2=x\)</span>. Una composición es el valor absoluto sobre <span class="math inline">\(\mathbb R\)</span> y la otra es la identidad sobre <span class="math inline">\([0,\infty)\)</span>. En particular, evaluar <span class="math inline">\(f\circ g\)</span> en <span class="math inline">\(-2\)</span> da <span class="math inline">\(2\)</span>, mientras que <span class="math inline">\(g\circ f\)</span> carece de valor en esa entrada.</p>
+</section>
+<section id="problema-3.-tres-etapas-compatibles" class="level3">
+<h3 class="anchored" data-anchor-id="problema-3.-tres-etapas-compatibles">Problema 3. Tres etapas compatibles</h3>
+<p>Una señal <span class="math inline">\(x\in[0,4]\)</span> pasa por <span class="math inline">\(g(x)=x+1\)</span>, por <span class="math inline">\(f(u)=u^2\)</span> y por <span class="math inline">\(h(v)=\log_2v\)</span>. Calcular la salida y justificar que puede agruparse de dos maneras.</p>
+<p><strong>Solución.</strong> Las salidas intermedias pertenecen a <span class="math inline">\([1,5]\)</span> y <span class="math inline">\([1,25]\)</span>, respectivamente, de modo que el logaritmo recibe siempre un número positivo. La salida es <span class="math inline">\(\log_2((x+1)^2)=2\log_2(x+1)\)</span>. Tanto <span class="math inline">\(h(f(g(x)))\)</span> como <span class="math inline">\((h\circ f)(g(x))\)</span> evalúan esos mismos tres pasos. Para <span class="math inline">\(x=3\)</span>, la cadena <span class="math inline">\(3\mapsto4\mapsto16\mapsto4\)</span> comprueba el resultado. La identidad logarítmica se usa con <span class="math inline">\(x+1&gt;0\)</span>.</p>
+</section>
+</section>
+<section id="conservar-las-restricciones-de-la-cadena" class="level2">
+<h2 class="anchored" data-anchor-id="conservar-las-restricciones-de-la-cadena">Conservar las restricciones de la cadena</h2>
+<p>Para que una salida pase a la etapa siguiente, debe cumplir las condiciones de entrada de esa etapa. Si la función exterior es un logaritmo, examinamos si la salida interior es positiva; si es una raíz par, si esa salida es no negativa; si aparece un cociente, si su denominador tiene un valor distinto de cero. Estas comprobaciones siguen la cadena en su orden de evaluación y el dominio obtenido acompañará cualquier simplificación posterior. La intersección <span class="math inline">\(D_f\cap D_g\)</span> responde a otra pregunta, la de qué números sirven como entradas de ambas funciones por separado; al componer, necesitamos que <span class="math inline">\(g(x)\)</span> pueda entrar en <span class="math inline">\(f\)</span>.</p>
+<section id="propiedades-de-los-dominios-compuestos" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-los-dominios-compuestos">Propiedades de los dominios compuestos</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Hipótesis y alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Preimagen del dominio exterior</td>
+<td><span class="math inline">\(D_{f\circ g}=g^{-1}(D_f)\)</span>, con la preimagen tomada dentro de <span class="math inline">\(D_g\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Logaritmo exterior</td>
+<td>Para <span class="math inline">\(f(u)=\log_a u\)</span>, <span class="math inline">\(a&gt;0\)</span>, <span class="math inline">\(a\ne1\)</span>, se exige <span class="math inline">\(g(x)&gt;0\)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Raíz par exterior</td>
+<td>Para <span class="math inline">\(f(u)=\sqrt[2n]{u}\)</span>, <span class="math inline">\(n\geq1\)</span>, se exige <span class="math inline">\(g(x)\geq0\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Simplificación y dominio</td>
+<td>Si una regla simplificada coincide con <span class="math inline">\(f(g(x))\)</span> en su dominio, la composición conserva ese dominio; una extensión requiere declararse.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#restricciones-de-una-composición">Restricciones de una composición</a>» en el apéndice de demostraciones.</p>
+</section>
+<section id="problema-4.-la-raíz-de-un-cociente" class="level3">
+<h3 class="anchored" data-anchor-id="problema-4.-la-raíz-de-un-cociente">Problema 4. La raíz de un cociente</h3>
+<p>Determinar el dominio de <span class="math inline">\(F(x)=\sqrt{(x-1)/(x+2)}\)</span>.</p>
+<p><strong>Solución.</strong> El cociente exige <span class="math inline">\(x\ne-2\)</span> y la raíz exige <span class="math inline">\((x-1)/(x+2)\geq0\)</span>. Los puntos <span class="math inline">\(-2\)</span> y <span class="math inline">\(1\)</span> separan los intervalos de signo. A la izquierda de <span class="math inline">\(-2\)</span> ambos factores son negativos; entre <span class="math inline">\(-2\)</span> y <span class="math inline">\(1\)</span> tienen signos opuestos; a la derecha de <span class="math inline">\(1\)</span> son positivos. Se incluye <span class="math inline">\(1\)</span>, cuyo cociente es cero, y se excluye <span class="math inline">\(-2\)</span>. El dominio es <span class="math inline">\((-\infty,-2)\cup[1,\infty)\)</span>. Por ejemplo, <span class="math inline">\(F(-3)=2\)</span> y <span class="math inline">\(F(1)=0\)</span> comprueban las dos componentes.</p>
+</section>
+<section id="problema-5.-logaritmo-después-de-una-raíz" class="level3">
+<h3 class="anchored" data-anchor-id="problema-5.-logaritmo-después-de-una-raíz">Problema 5. Logaritmo después de una raíz</h3>
+<p>Hallar el dominio de <span class="math inline">\(G(x)=\ln(\sqrt{5-2x}-1)\)</span>.</p>
+<p><strong>Solución.</strong> Primero se requiere <span class="math inline">\(5-2x\geq0\)</span>. El logaritmo añade <span class="math inline">\(\sqrt{5-2x}&gt;1\)</span>. Como ambos lados son no negativos, elevar al cuadrado conserva esa desigualdad y da <span class="math inline">\(5-2x&gt;1\)</span>, es decir, <span class="math inline">\(x&lt;2\)</span>. Esta condición ya garantiza la existencia de la raíz. El dominio es <span class="math inline">\((-\infty,2)\)</span>. No hay una ley que convierta el logaritmo de esta diferencia en diferencia de logaritmos; la expresión dada describe adecuadamente la regla. En <span class="math inline">\(x=0\)</span> se obtiene <span class="math inline">\(\ln(\sqrt5-1)\)</span>, y en <span class="math inline">\(x=2\)</span> el argumento logarítmico es cero, fuera del dominio.</p>
+</section>
+<section id="problema-6.-cancelar-con-memoria-del-dominio" class="level3">
+<h3 class="anchored" data-anchor-id="problema-6.-cancelar-con-memoria-del-dominio">Problema 6. Cancelar con memoria del dominio</h3>
+<p>Sean <span class="math inline">\(g(x)=1/(x-1)\)</span> y <span class="math inline">\(f(u)=u/(u+1)\)</span>. Determinar <span class="math inline">\(f\circ g\)</span> y compararla con <span class="math inline">\(q(x)=1/x\)</span> en su dominio natural.</p>
+<p><strong>Solución.</strong> Se exige <span class="math inline">\(x\ne1\)</span> y <span class="math inline">\(g(x)\ne-1\)</span>. La ecuación <span class="math inline">\(1/(x-1)=-1\)</span> tiene solución <span class="math inline">\(x=0\)</span>. Para <span class="math inline">\(x\notin\{0,1\}\)</span>,</p>
+<p><span class="math display">\[f(g(x))=\frac{1/(x-1)}{1/(x-1)+1}=\frac1x.\]</span></p>
+<p>La composición es la restricción de <span class="math inline">\(q\)</span> a <span class="math inline">\(\mathbb R\setminus\{0,1\}\)</span>. La función <span class="math inline">\(q\)</span> también admite <span class="math inline">\(x=1\)</span> y vale allí <span class="math inline">\(1\)</span>; asignar ese valor extiende la composición. El proceso original sigue sin tener primera salida en <span class="math inline">\(x=1\)</span>.</p>
+</section>
+</section>
+<section id="volver-desde-la-salida" class="level2">
+<h2 class="anchored" data-anchor-id="volver-desde-la-salida">Volver desde la salida</h2>
+<p>Una función <span class="math inline">\(f:D\to C\)</span> es inyectiva cuando <span class="math inline">\(f(x_1)=f(x_2)\)</span> implica <span class="math inline">\(x_1=x_2\)</span>. Es sobreyectiva sobre <span class="math inline">\(C\)</span> cuando <span class="math inline">\(f(D)=C\)</span>. Es biyectiva cuando cumple ambas condiciones. Si <span class="math inline">\(f\)</span> es inyectiva, cada <span class="math inline">\(y\in f(D)\)</span> tiene una única entrada <span class="math inline">\(x\in D\)</span>; la función inversa sobre la imagen, <span class="math inline">\(f^{-1}:f(D)\to D\)</span>, asigna esa entrada a <span class="math inline">\(y\)</span>. Para hablar de inversa sobre todo un codominio declarado <span class="math inline">\(C\)</span> se exige además sobreyectividad sobre <span class="math inline">\(C\)</span>.</p>
+<p>La gráfica de la inversa contiene el punto <span class="math inline">\((y,x)\)</span> por cada punto <span class="math inline">\((x,y)\)</span> de la gráfica original. Por ello las dos gráficas se reflejan en la recta <span class="math inline">\(y=x\)</span>, con sus dominios e imágenes intercambiados. El símbolo <span class="math inline">\(f^{-1}\)</span> representa la función inversa; el recíproco <span class="math inline">\(1/f(x)\)</span> representa otra operación.</p>
+<div id="fig-mp-ramas-e-inversa" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Una rama creciente de la parábola y su inversa reflejadas en la recta de intercambio.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-ramas-e-inversa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Ramas_e_inversa.svg" class="img-fluid figure-img" alt="Una rama creciente de la parábola y su inversa reflejadas en la recta de intercambio.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-ramas-e-inversa-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Una rama creciente de la parábola y su inversa reflejadas en la recta de intercambio.
+</figcaption>
+</figure>
+</div>
+<section id="propiedades-de-la-inversión" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-la-inversión">Propiedades de la inversión</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Hipótesis y alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Existencia y unicidad</td>
+<td><span class="math inline">\(f:D\to f(D)\)</span> admite inversa exactamente cuando es inyectiva.</td>
+</tr>
+<tr class="even">
+<td>Comprobación bilateral</td>
+<td><span class="math inline">\(f^{-1}(f(x))=x\)</span> para <span class="math inline">\(x\in D\)</span> y <span class="math inline">\(f(f^{-1}(y))=y\)</span> para <span class="math inline">\(y\in f(D)\)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Orden estricto</td>
+<td>Una función estrictamente creciente o estrictamente decreciente en un conjunto ordenado es inyectiva.</td>
+</tr>
+<tr class="even">
+<td>Inversa de una cadena</td>
+<td>Para biyecciones compatibles <span class="math inline">\(g:A\to B\)</span> y <span class="math inline">\(f:B\to C\)</span>, <span class="math inline">\((f\circ g)^{-1}=g^{-1}\circ f^{-1}\)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Reflexión de gráficas</td>
+<td>La gráfica inversa intercambia ambas coordenadas; el nuevo dominio es <span class="math inline">\(f(D)\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#inyectividad-inversa-y-orden-de-recuperación">Inyectividad, inversa y orden de recuperación</a>» en el apéndice de demostraciones.</p>
+</section>
+<section id="problema-7.-deshacer-una-calibración-afín" class="level3">
+<h3 class="anchored" data-anchor-id="problema-7.-deshacer-una-calibración-afín">Problema 7. Deshacer una calibración afín</h3>
+<p>Un sensor admite <span class="math inline">\(T\in[-10,50]\)</span> grados Celsius y entrega <span class="math inline">\(V=0{,}04T+1{,}2\)</span> voltios. Hallar la imagen y la función que recupera la temperatura.</p>
+<p><strong>Solución.</strong> El coeficiente positivo hace la función estrictamente creciente. Las salidas extremas son <span class="math inline">\(0{,}8\)</span> y <span class="math inline">\(3{,}2\)</span> voltios; su imagen es <span class="math inline">\([0{,}8,3{,}2]\)</span>. Despejar da <span class="math inline">\(T=(V-1{,}2)/0{,}04=25V-30\)</span>, con <span class="math inline">\(V\)</span> expresado en voltios. Sustituir en la fórmula inicial produce <span class="math inline">\(V\)</span>, y sustituir la lectura inicial en la inversa produce <span class="math inline">\(T\)</span>. Para <span class="math inline">\(V=2\)</span>, se recuperan <span class="math inline">\(20\)</span> grados. Una lectura de <span class="math inline">\(4\)</span> voltios queda fuera del intervalo de calibración y exige investigar el modelo o el sensor.</p>
+</section>
+<section id="problema-8.-elegir-una-rama-de-la-parábola" class="level3">
+<h3 class="anchored" data-anchor-id="problema-8.-elegir-una-rama-de-la-parábola">Problema 8. Elegir una rama de la parábola</h3>
+<p>Para <span class="math inline">\(f(x)=(x-2)^2+1\)</span>, hallar las inversas de sus restricciones a <span class="math inline">\([2,\infty)\)</span> y a <span class="math inline">\((-\infty,2]\)</span>.</p>
+<p><strong>Solución.</strong> Cada restricción tiene imagen <span class="math inline">\([1,\infty)\)</span>. En la primera, <span class="math inline">\(x-2\geq0\)</span>, de modo que <span class="math inline">\(y-1=(x-2)^2\)</span> equivale a <span class="math inline">\(x=2+\sqrt{y-1}\)</span>. En la segunda se cumple <span class="math inline">\(x-2\leq0\)</span> y se obtiene <span class="math inline">\(x=2-\sqrt{y-1}\)</span>. Cada fórmula lleva <span class="math inline">\([1,\infty)\)</span> a su rama correspondiente. La función sobre <span class="math inline">\(\mathbb R\)</span> repite, por ejemplo, el valor <span class="math inline">\(2\)</span> en <span class="math inline">\(x=1\)</span> y <span class="math inline">\(x=3\)</span>; escoger una rama aporta la unicidad requerida.</p>
+</section>
+<section id="problema-9.-inversa-racional-con-un-valor-excluido" class="level3">
+<h3 class="anchored" data-anchor-id="problema-9.-inversa-racional-con-un-valor-excluido">Problema 9. Inversa racional con un valor excluido</h3>
+<p>Determinar la inversa de <span class="math inline">\(f(x)=(2x+1)/(x-3)\)</span> en <span class="math inline">\(D=\mathbb R\setminus\{3\}\)</span>.</p>
+<p><strong>Solución.</strong> De <span class="math inline">\(y(x-3)=2x+1\)</span> se deduce <span class="math inline">\((y-2)x=3y+1\)</span>. El valor <span class="math inline">\(y=2\)</span> llevaría a <span class="math inline">\(-6=1\)</span>, imposible. Para <span class="math inline">\(y\ne2\)</span> existe el único candidato <span class="math inline">\(x=(3y+1)/(y-2)\)</span>, que nunca vale <span class="math inline">\(3\)</span>, pues eso exigiría <span class="math inline">\(1=-6\)</span>. Así, la imagen es <span class="math inline">\(\mathbb R\setminus\{2\}\)</span> y <span class="math inline">\(f^{-1}(y)=(3y+1)/(y-2)\)</span>. Estas equivalencias demuestran existencia y unicidad; sustituir <span class="math inline">\(y=5\)</span> da <span class="math inline">\(x=16/3\)</span>, cuya imagen es <span class="math inline">\(5\)</span>.</p>
+</section>
+<section id="problema-10.-una-cadena-exponencial-hacia-atrás" class="level3">
+<h3 class="anchored" data-anchor-id="problema-10.-una-cadena-exponencial-hacia-atrás">Problema 10. Una cadena exponencial hacia atrás</h3>
+<p>Sea <span class="math inline">\(F(x)=5+2e^{3x-1}\)</span> en <span class="math inline">\(\mathbb R\)</span>. Hallar su inversa y resolver <span class="math inline">\(F(x)=9\)</span>.</p>
+<p><strong>Solución.</strong> La cadena multiplica por <span class="math inline">\(3\)</span>, resta <span class="math inline">\(1\)</span>, exponencia, multiplica por <span class="math inline">\(2\)</span> y suma <span class="math inline">\(5\)</span>. Es estrictamente creciente y su imagen es <span class="math inline">\((5,\infty)\)</span>. Para recuperar <span class="math inline">\(x\)</span> se resta <span class="math inline">\(5\)</span>, se divide por <span class="math inline">\(2\)</span>, se toma logaritmo, se suma <span class="math inline">\(1\)</span> y se divide por <span class="math inline">\(3\)</span>:</p>
+<p><span class="math display">\[F^{-1}(y)=\frac{1+\ln((y-5)/2)}3,\qquad y&gt;5.\]</span></p>
+<p>La ecuación tiene solución única <span class="math inline">\(x=(1+\ln2)/3\)</span>. Al sustituir, <span class="math inline">\(3x-1=\ln2\)</span> y la salida es <span class="math inline">\(5+2\cdot2=9\)</span>. La inversa invierte el orden de las etapas además de invertir cada operación.</p>
+</section>
+</section>
+<section id="un-problema-inverso-puede-tener-varias-respuestas" class="level2">
+<h2 class="anchored" data-anchor-id="un-problema-inverso-puede-tener-varias-respuestas">Un problema inverso puede tener varias respuestas</h2>
+<p>Dada una salida <span class="math inline">\(b\)</span>, el problema inverso consiste en encontrar el conjunto <span class="math inline">\(f^{-1}(\{b\})\)</span> de entradas que la producen. Ese conjunto puede ser vacío, unitario o tener varios elementos. Una función inversa selecciona la única entrada de cada salida en la imagen de una función inyectiva. En una aplicación, restricciones como tiempo positivo, intervalo de observación o rama de movimiento pueden reducir el conjunto de candidatos.</p>
+<section id="propiedades-de-las-preimágenes-y-las-ramas" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-las-preimágenes-y-las-ramas">Propiedades de las preimágenes y las ramas</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Hipótesis y alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Clasificación de soluciones</td>
+<td><span class="math inline">\(f(x)=b\)</span> se resuelve describiendo <span class="math inline">\(f^{-1}(\{b\})\)</span> dentro del dominio declarado.</td>
+</tr>
+<tr class="even">
+<td>Cadena inversa por conjuntos</td>
+<td><span class="math inline">\((f\circ g)^{-1}(S)=g^{-1}(f^{-1}(S))\)</span> para las preimágenes compatibles.</td>
+</tr>
+<tr class="odd">
+<td>Restricción inyectiva</td>
+<td>Si <span class="math inline">\(f\)</span> es inyectiva sobre <span class="math inline">\(I\subseteq D\)</span>, la ecuación tiene a lo sumo una solución en <span class="math inline">\(I\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Ramas exhaustivas</td>
+<td>Si <span class="math inline">\(D=\bigcup I_j\)</span>, la unión de las soluciones halladas en cada <span class="math inline">\(I_j\)</span> da todas las soluciones en <span class="math inline">\(D\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#preimágenes-candidatos-y-ramas-exhaustivas">Preimágenes, candidatos y ramas exhaustivas</a>» en el apéndice de demostraciones.</p>
+</section>
+<section id="problema-11.-altura-y-dos-instantes" class="level3">
+<h3 class="anchored" data-anchor-id="problema-11.-altura-y-dos-instantes">Problema 11. Altura y dos instantes</h3>
+<p>En un modelo de lanzamiento, <span class="math inline">\(h(t)=20t-5t^2\)</span> metros para <span class="math inline">\(t\in[0,4]\)</span> segundos. Determinar los instantes con altura <span class="math inline">\(15\)</span> metros y explicar la recuperación de tiempo.</p>
+<p><strong>Solución.</strong> La ecuación equivale a <span class="math inline">\(t^2-4t+3=0\)</span>, cuyas raíces son <span class="math inline">\(1\)</span> y <span class="math inline">\(3\)</span>. Ambas pertenecen al intervalo y dan <span class="math inline">\(15\)</span> metros. Como <span class="math inline">\(h(t)=20-5(t-2)^2\)</span>, la altura aumenta hasta <span class="math inline">\(t=2\)</span> y disminuye después. La rama ascendente recupera <span class="math inline">\(t=2-\sqrt{(20-h)/5}\)</span>; la descendente recupera <span class="math inline">\(t=2+\sqrt{(20-h)/5}\)</span>, ambas para <span class="math inline">\(0\leq h\leq20\)</span>. Una altura aislada de <span class="math inline">\(15\)</span> metros exige conocer la rama para fijar un instante único.</p>
+</section>
+<section id="problema-12.-un-sensor-que-satura" class="level3">
+<h3 class="anchored" data-anchor-id="problema-12.-un-sensor-que-satura">Problema 12. Un sensor que satura</h3>
+<p>Un dispositivo entrega <span class="math inline">\(r(T)=T\)</span> para <span class="math inline">\(0\leq T\leq80\)</span> y <span class="math inline">\(r(T)=80\)</span> para <span class="math inline">\(80&lt;T\leq120\)</span>. Hallar las preimágenes de <span class="math inline">\(50\)</span>, <span class="math inline">\(80\)</span> y <span class="math inline">\(90\)</span>.</p>
+<p><strong>Solución.</strong> La salida <span class="math inline">\(50\)</span> procede sólo de <span class="math inline">\(T=50\)</span>, por la primera regla. La salida <span class="math inline">\(80\)</span> procede de cada <span class="math inline">\(T\in[80,120]\)</span>: incluye el extremo de la primera regla y toda la segunda región. La salida <span class="math inline">\(90\)</span> carece de preimagen porque la imagen del dispositivo es <span class="math inline">\([0,80]\)</span>. El modelo admite inversión sobre <span class="math inline">\([0,80]\)</span> si se restringe la temperatura a ese mismo intervalo; una lectura saturada en el dominio completo informa un intervalo de temperaturas.</p>
+</section>
+<section id="problema-13.-recuperar-una-fase-dentro-del-intervalo" class="level3">
+<h3 class="anchored" data-anchor-id="problema-13.-recuperar-una-fase-dentro-del-intervalo">Problema 13. Recuperar una fase dentro del intervalo</h3>
+<p>Una señal satisface <span class="math inline">\(s(t)=2+\sin(\pi t/6)\)</span> para <span class="math inline">\(0\leq t\leq12\)</span> segundos. Hallar todas las entradas que producen <span class="math inline">\(s=5/2\)</span>.</p>
+<p><strong>Solución.</strong> El ángulo <span class="math inline">\(\theta=\pi t/6\)</span> recorre <span class="math inline">\([0,2\pi]\)</span>. La ecuación <span class="math inline">\(\sin\theta=1/2\)</span> da <span class="math inline">\(\theta=\pi/6\)</span> o <span class="math inline">\(5\pi/6\)</span> dentro de ese intervalo. Por tanto <span class="math inline">\(t=1\)</span> o <span class="math inline">\(t=5\)</span> segundos. Las otras familias periódicas quedan fuera de la ventana. La inversa principal <span class="math inline">\(\arcsin(1/2)=\pi/6\)</span> encuentra la primera rama; la simetría del seno aporta la segunda. Sustituir ambos tiempos confirma la salida <span class="math inline">\(5/2\)</span>.</p>
+</section>
+</section>
+<section id="unidades-y-parámetros-que-dicen-algo-del-fenómeno" class="level2">
+<h2 class="anchored" data-anchor-id="unidades-y-parámetros-que-dicen-algo-del-fenómeno">Unidades y parámetros que dicen algo del fenómeno</h2>
+<p>Un modelo funcional representa una relación entre magnitudes bajo supuestos explícitos. Debe declarar variable de entrada, variable de salida, unidades, parámetros, intervalo de uso y origen de sus datos. En <span class="math inline">\(C(t)=Ae^{-kt}\)</span>, el argumento <span class="math inline">\(kt\)</span> es adimensional; si <span class="math inline">\(t\)</span> se expresa en horas, <span class="math inline">\(k\)</span> se expresa en horas inversas. El parámetro <span class="math inline">\(A\)</span> tiene las unidades de <span class="math inline">\(C\)</span>. Una suma combina magnitudes con las mismas unidades; una razón puede normalizar una magnitud mediante una escala de su misma dimensión.</p>
+<p>Cambiar la unidad o el origen temporal puede cambiar los valores numéricos de los parámetros y conservar la misma predicción física. Conviene distinguir parámetros identificables por los datos de combinaciones que los datos dejan indeterminadas.</p>
+<section id="propiedades-de-las-escalas-y-los-parámetros" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-las-escalas-y-los-parámetros">Propiedades de las escalas y los parámetros</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Hipótesis y alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Escala de entrada</td>
+<td>Si <span class="math inline">\(t=a\tau+b\)</span>, <span class="math inline">\(a\ne0\)</span>, la nueva representación es <span class="math inline">\(\widetilde f(\tau)=f(a\tau+b)\)</span> sobre las entradas transformadas.</td>
+</tr>
+<tr class="even">
+<td>Escala de salida</td>
+<td>Si <span class="math inline">\(z=(y-c)/d\)</span>, <span class="math inline">\(d\ne0\)</span>, se obtiene <span class="math inline">\(z=(f(t)-c)/d\)</span>; recuperar <span class="math inline">\(y\)</span> exige <span class="math inline">\(y=c+dz\)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Normalización</td>
+<td><span class="math inline">\(\tau=(t-t_0)/T\)</span> es adimensional cuando <span class="math inline">\(T\ne0\)</span> tiene la unidad de <span class="math inline">\(t\)</span>; <span class="math inline">\(z=(y-y_0)/Y\)</span> procede análogamente.</td>
+</tr>
+<tr class="even">
+<td>Identificabilidad</td>
+<td>Un parámetro es identificable respecto de los datos cuando todos los parámetros admisibles que reproducen esos datos le asignan el mismo valor.</td>
+</tr>
+<tr class="odd">
+<td>Coherencia dimensional</td>
+<td>Los términos sumados tienen una unidad común y los argumentos de exponenciales y logaritmos son adimensionales.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#escalas-normalización-e-identificabilidad">Escalas, normalización e identificabilidad</a>» en el apéndice de demostraciones.</p>
+</section>
+<section id="problema-14.-caudal-concentración-y-unidades" class="level3">
+<h3 class="anchored" data-anchor-id="problema-14.-caudal-concentración-y-unidades">Problema 14. Caudal, concentración y unidades</h3>
+<p>En un modelo, una sustancia entra con caudal constante <span class="math inline">\(q=3\)</span> litros por minuto y concentración <span class="math inline">\(c=2\)</span> gramos por litro. Expresar la masa acumulada tras <span class="math inline">\(t\)</span> minutos, suponiendo depósito inicialmente vacío y ausencia de pérdidas.</p>
+<p><strong>Solución.</strong> El volumen es <span class="math inline">\(V(t)=3t\)</span> litros para <span class="math inline">\(t\geq0\)</span>. La masa se obtiene componiendo con <span class="math inline">\(M(V)=2V\)</span> gramos: <span class="math inline">\(M(t)=6t\)</span> gramos. Las unidades se multiplican como <span class="math inline">\((\mathrm{g}/\mathrm L)(\mathrm L/\mathrm{min})\mathrm{min}=\mathrm g\)</span>. Tras <span class="math inline">\(5\)</span> minutos hay <span class="math inline">\(30\)</span> gramos. Un depósito de capacidad <span class="math inline">\(60\)</span> litros limita la validez sin rebalse a <span class="math inline">\(0\leq t\leq20\)</span>. La acumulación supone que la sustancia permanece en el depósito y que ambos parámetros conservan sus valores.</p>
+</section>
+<section id="problema-15.-pasar-de-minutos-a-segundos" class="level3">
+<h3 class="anchored" data-anchor-id="problema-15.-pasar-de-minutos-a-segundos">Problema 15. Pasar de minutos a segundos</h3>
+<p>La concentración <span class="math inline">\(C(t)=80e^{-0{,}2t}\)</span> se expresa en miligramos por litro y <span class="math inline">\(t\)</span> en minutos. Reescribir el modelo con <span class="math inline">\(s\)</span> en segundos y hallar el tiempo en que alcanza <span class="math inline">\(40\)</span>.</p>
+<p><strong>Solución.</strong> Como <span class="math inline">\(t=s/60\)</span>, se obtiene <span class="math inline">\(C(s)=80e^{-s/300}\)</span>. El nuevo coeficiente es <span class="math inline">\(1/300\)</span> por segundo; ambos exponentes son adimensionales. Para <span class="math inline">\(C=40\)</span>, <span class="math inline">\(e^{-s/300}=1/2\)</span> da <span class="math inline">\(s=300\ln2\)</span> segundos, aproximadamente <span class="math inline">\(208\)</span> segundos al segundo más próximo. El error de redondeo es menor que medio segundo. En minutos el valor exacto es <span class="math inline">\(5\ln2\)</span>, y multiplicarlo por <span class="math inline">\(60\)</span> confirma la equivalencia.</p>
+</section>
+<section id="problema-16.-medir-desde-un-nuevo-origen" class="level3">
+<h3 class="anchored" data-anchor-id="problema-16.-medir-desde-un-nuevo-origen">Problema 16. Medir desde un nuevo origen</h3>
+<p>Una temperatura cumple <span class="math inline">\(T(t)=18+42e^{-t/10}\)</span>, con <span class="math inline">\(t\geq0\)</span> en minutos. Tomar <span class="math inline">\(\tau=t-5\)</span> y normalizar la diferencia respecto del ambiente mediante <span class="math inline">\(z=(T-18)/42\)</span>.</p>
+<p><strong>Solución.</strong> Con <span class="math inline">\(t=\tau+5\)</span>, el modelo pasa a <span class="math inline">\(T(\tau)=18+42e^{-1/2}e^{-\tau/10}\)</span>, con <span class="math inline">\(\tau\geq-5\)</span>. El nuevo coeficiente de la parte exponencial es la diferencia térmica existente en el instante que ahora llamamos cero. La variable normalizada satisface <span class="math inline">\(z=e^{-(\tau+5)/10}\)</span>. Si además se usa <span class="math inline">\(u=t/10\)</span>, resulta <span class="math inline">\(z=e^{-u}\)</span>. Recuperar la temperatura exige <span class="math inline">\(T=18+42z\)</span>. Estas representaciones conservan las mismas predicciones cuando se transforman las entradas y las unidades de manera coherente.</p>
+</section>
+<section id="problema-17.-datos-que-identifican-una-combinación" class="level3">
+<h3 class="anchored" data-anchor-id="problema-17.-datos-que-identifican-una-combinación">Problema 17. Datos que identifican una combinación</h3>
+<p>Un instrumento se representa por <span class="math inline">\(R(t)=ab\,t\)</span>, con <span class="math inline">\(a&gt;0\)</span> y <span class="math inline">\(b&gt;0\)</span>. Se observa <span class="math inline">\(R(1)=6\)</span> y <span class="math inline">\(R(2)=12\)</span>. ¿Se determinan <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>?</p>
+<p><strong>Solución.</strong> La primera observación impone <span class="math inline">\(ab=6\)</span> y la segunda repite esa condición. Todos los pares <span class="math inline">\((a,b)=(u,6/u)\)</span>, <span class="math inline">\(u&gt;0\)</span>, reproducen los datos y generan exactamente la misma función <span class="math inline">\(R(t)=6t\)</span>. El producto es identificable, mientras que los factores individuales quedan indeterminados. Una medición independiente de <span class="math inline">\(a=2\)</span>, por ejemplo, fijaría <span class="math inline">\(b=3\)</span>. Repetir lecturas del mismo tipo puede comprobar la regla lineal, pero esas lecturas dependen siempre de la misma combinación de parámetros.</p>
+</section>
+</section>
+<section id="qué-afirman-los-datos-y-qué-añade-el-modelo" class="level2">
+<h2 class="anchored" data-anchor-id="qué-afirman-los-datos-y-qué-añade-el-modelo">Qué afirman los datos y qué añade el modelo</h2>
+<p>Cuando disponemos de varios datos podemos buscar una función que pase por todos ellos y usarla dentro del intervalo observado: esa tarea se llama interpolar. Si los datos presentan discrepancias respecto de una familia elegida, podemos fijar un criterio de proximidad y buscar los parámetros que lo satisfacen mejor; estamos ajustando un modelo. Evaluar cualquiera de esas reglas fuera del intervalo observado es extrapolar. En cada caso conservaremos qué información procede de los datos y qué decisiones añade la construcción, porque funciones que coinciden exactamente en una muestra pueden diferir entre sus entradas o fuera del intervalo.</p>
+<p>Para un dato <span class="math inline">\((t_i,y_i)\)</span> definiremos el residuo <span class="math inline">\(r_i=y_i-\widehat y_i\)</span>, donde <span class="math inline">\(\widehat y_i\)</span> es la predicción. La suma de cuadrados <span class="math inline">\(\sum r_i^2\)</span> es un criterio de ajuste: penaliza residuos grandes y evita cancelaciones entre signos. Su valor depende de la escala usada para medir la salida. Un criterio debe compararse en la misma escala y sobre los mismos datos.</p>
+<div id="fig-mp-interpolacion-y-extrapolacion" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dos interpolaciones coinciden en los datos y hacen predicciones distintas entre ellos y fuera del intervalo observado.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-interpolacion-y-extrapolacion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Interpolacion_y_extrapolacion.svg" class="img-fluid figure-img" alt="Dos interpolaciones coinciden en los datos y hacen predicciones distintas entre ellos y fuera del intervalo observado.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-interpolacion-y-extrapolacion-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Dos interpolaciones coinciden en los datos y hacen predicciones distintas entre ellos y fuera del intervalo observado.
+</figcaption>
+</figure>
+</div>
+<section id="propiedades-del-ajuste-y-su-alcance" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-del-ajuste-y-su-alcance">Propiedades del ajuste y su alcance</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Hipótesis y alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Recta por dos puntos</td>
+<td>Si <span class="math inline">\(t_1\ne t_2\)</span>, existe una única función afín que pasa por ambos datos, de pendiente <span class="math inline">\((y_2-y_1)/(t_2-t_1)\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Interpolaciones múltiples</td>
+<td>Si <span class="math inline">\(p\)</span> interpola nodos distintos <span class="math inline">\(t_i\)</span>, también lo hace <span class="math inline">\(p(t)+q(t)\prod_i(t-t_i)\)</span> para cualquier función <span class="math inline">\(q\)</span> definida allí.</td>
+</tr>
+<tr class="odd">
+<td>Ajuste constante por cuadrados</td>
+<td>Para <span class="math inline">\(n\geq1\)</span>, el único valor <span class="math inline">\(c\)</span> que minimiza <span class="math inline">\(\sum(y_i-c)^2\)</span> es la media <span class="math inline">\(\bar y\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Predicción y evidencia</td>
+<td>La coincidencia en un conjunto finito de datos verifica esos valores; extender una ley requiere supuestos adicionales y contraste.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#interpolación-residuos-y-alcance-de-un-ajuste">Interpolación, residuos y alcance de un ajuste</a>» en el apéndice de demostraciones.</p>
+</section>
+<section id="problema-18.-interpolar-y-salir-del-intervalo" class="level3">
+<h3 class="anchored" data-anchor-id="problema-18.-interpolar-y-salir-del-intervalo">Problema 18. Interpolar y salir del intervalo</h3>
+<p>Una tabla registra <span class="math inline">\((t,y)=(0,10)\)</span> y <span class="math inline">\((4,18)\)</span>, con tiempo en horas. Construir el modelo afín y clasificar las predicciones para <span class="math inline">\(t=2\)</span> y <span class="math inline">\(t=7\)</span>.</p>
+<p><strong>Solución.</strong> La pendiente es <span class="math inline">\((18-10)/4=2\)</span> unidades de salida por hora, y la ordenada inicial es <span class="math inline">\(10\)</span>. El modelo es <span class="math inline">\(y=10+2t\)</span>. Predice <span class="math inline">\(14\)</span> en <span class="math inline">\(t=2\)</span>, por interpolación dentro de <span class="math inline">\([0,4]\)</span>, y <span class="math inline">\(24\)</span> en <span class="math inline">\(t=7\)</span>, por extrapolación. La unicidad corresponde a la familia afín elegida. Por ejemplo <span class="math inline">\(y=10+2t+t(t-4)\)</span> pasa también por los dos datos y predice <span class="math inline">\(10\)</span> en <span class="math inline">\(t=2\)</span> y <span class="math inline">\(45\)</span> en <span class="math inline">\(t=7\)</span>. Los dos datos solos dejan abierta la elección de familia.</p>
+</section>
+<section id="problema-19.-dos-modelos-tres-coincidencias" class="level3">
+<h3 class="anchored" data-anchor-id="problema-19.-dos-modelos-tres-coincidencias">Problema 19. Dos modelos, tres coincidencias</h3>
+<p>Los datos son <span class="math inline">\((0,1)\)</span>, <span class="math inline">\((1,2)\)</span> y <span class="math inline">\((2,5)\)</span>. Comparar <span class="math inline">\(p(t)=1+t^2\)</span> y <span class="math inline">\(q(t)=1+t^2+t(t-1)(t-2)\)</span> en los datos, en <span class="math inline">\(t=3/2\)</span> y en <span class="math inline">\(t=3\)</span>.</p>
+<p><strong>Solución.</strong> La diferencia <span class="math inline">\(q-p=t(t-1)(t-2)\)</span> se anula en los tres nodos. En <span class="math inline">\(t=3/2\)</span> vale <span class="math inline">\(-3/8\)</span>, de modo que <span class="math inline">\(p=13/4\)</span> y <span class="math inline">\(q=23/8\)</span>. En <span class="math inline">\(t=3\)</span>, <span class="math inline">\(p=10\)</span> y <span class="math inline">\(q=16\)</span>. Las predicciones interiores ya difieren; fuera del intervalo observado la diferencia aumenta en este ejemplo. Los residuos cero en tres puntos certifican sólo esas coincidencias. Una justificación física de forma cuadrática o nuevas observaciones podrían orientar la selección.</p>
+</section>
+<section id="problema-20.-elegir-una-constante-por-residuos" class="level3">
+<h3 class="anchored" data-anchor-id="problema-20.-elegir-una-constante-por-residuos">Problema 20. Elegir una constante por residuos</h3>
+<p>Tres mediciones en la misma unidad dan <span class="math inline">\(8\)</span>, <span class="math inline">\(10\)</span> y <span class="math inline">\(15\)</span>. Ajustar un modelo constante mediante suma de cuadrados y comparar con la constante <span class="math inline">\(10\)</span>.</p>
+<p><strong>Solución.</strong> La media es <span class="math inline">\(\bar y=33/3=11\)</span>. Sus residuos son <span class="math inline">\(-3,-1,4\)</span> y la suma de cuadrados es <span class="math inline">\(9+1+16=26\)</span>. Para la constante <span class="math inline">\(10\)</span> son <span class="math inline">\(-2,0,5\)</span>, con suma <span class="math inline">\(29\)</span>. Para cualquier <span class="math inline">\(c\)</span>,</p>
+<p><span class="math display">\[\sum_{i=1}^3(y_i-c)^2=26+3(c-11)^2.\]</span></p>
+<p>El término adicional es no negativo y se anula sólo en <span class="math inline">\(c=11\)</span>, lo que demuestra el mínimo único. La elección se refiere al criterio cuadrático; si se minimizara la suma de valores absolutos, habría que estudiar otro problema.</p>
+</section>
+<section id="problema-21.-dos-lecturas-de-un-decaimiento" class="level3">
+<h3 class="anchored" data-anchor-id="problema-21.-dos-lecturas-de-un-decaimiento">Problema 21. Dos lecturas de un decaimiento</h3>
+<p>Se propone <span class="math inline">\(C(t)=Ae^{-kt}\)</span> con <span class="math inline">\(A&gt;0\)</span>, <span class="math inline">\(k&gt;0\)</span>, tiempo en horas. Las lecturas exactas para este problema son <span class="math inline">\(C(0)=50\)</span> y <span class="math inline">\(C(2)=20\)</span>. Determinar los parámetros y el instante en que el modelo predice <span class="math inline">\(C=5\)</span>.</p>
+<p><strong>Solución.</strong> La lectura inicial da <span class="math inline">\(A=50\)</span>. La segunda impone <span class="math inline">\(e^{-2k}=2/5\)</span>, así que <span class="math inline">\(k=\tfrac12\ln(5/2)\)</span> por hora. Para <span class="math inline">\(C=5\)</span>, <span class="math inline">\(e^{-kt}=1/10\)</span>, de donde</p>
+<p><span class="math display">\[t=\frac{2\ln10}{\ln(5/2)}\ \text{horas}.\]</span></p>
+<p>Los parámetros son únicos dentro de la familia y de las restricciones dadas. El instante excede las dos horas observadas, pues <span class="math inline">\(5&lt;20\)</span> y el modelo es decreciente; se trata de extrapolación. Las lecturas reales tendrían precisión finita y exigirían considerar su incertidumbre antes de atribuir exactitud a los parámetros.</p>
+</section>
+</section>
+<section id="una-ecuación-puede-describir-una-curva-entera" class="level2">
+<h2 class="anchored" data-anchor-id="una-ecuación-puede-describir-una-curva-entera">Una ecuación puede describir una curva entera</h2>
+<p>Una relación implícita se presenta mediante una condición <span class="math inline">\(F(x,y)=0\)</span> que deben cumplir los pares <span class="math inline">\((x,y)\)</span>. Para que defina una función <span class="math inline">\(y=f(x)\)</span> en un conjunto de entradas, cada entrada debe tener exactamente una salida en la región elegida. La circunferencia <span class="math inline">\(x^2+y^2=1\)</span> contiene dos alturas para <span class="math inline">\(-1&lt;x&lt;1\)</span>. Sus semicircunferencias superior e inferior sí dan funciones sobre <span class="math inline">\([-1,1]\)</span>.</p>
+<p>Otra forma de recorrer una curva consiste en expresar ambas coordenadas mediante un parámetro: <span class="math inline">\((x(t),y(t))\)</span>. Al eliminar el parámetro se obtiene una relación que contiene los puntos recorridos; debe comprobarse además que las restricciones recuperan exactamente el recorrido. Un mismo lugar geométrico admite distintas velocidades y distintos sentidos de recorrido.</p>
+<div id="fig-mp-relacion-implicita-y-parametro" class="quarto-float quarto-figure quarto-figure-center anchored" alt="La circunferencia como relación de dos ramas y como recorrido parametrizado.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-relacion-implicita-y-parametro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Relacion_implicita_y_parametro.svg" class="img-fluid figure-img" alt="La circunferencia como relación de dos ramas y como recorrido parametrizado.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-relacion-implicita-y-parametro-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: La circunferencia como relación de dos ramas y como recorrido parametrizado.
+</figcaption>
+</figure>
+</div>
+<section id="propiedades-de-relaciones-y-parametrizaciones" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-relaciones-y-parametrizaciones">Propiedades de relaciones y parametrizaciones</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Hipótesis y alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Criterio de función</td>
+<td>Una relación define <span class="math inline">\(y=f(x)\)</span> sobre <span class="math inline">\(D\)</span> cuando cada <span class="math inline">\(x\in D\)</span> tiene una única salida admitida.</td>
+</tr>
+<tr class="even">
+<td>Dos ramas circulares</td>
+<td><span class="math inline">\(x^2+y^2=r^2\)</span>, <span class="math inline">\(r&gt;0\)</span>, equivale a <span class="math inline">\(y=\pm\sqrt{r^2-x^2}\)</span> con <span class="math inline">\(\lvert x\rvert \leq r\)</span>; se unen las ramas.</td>
+</tr>
+<tr class="odd">
+<td>Eliminación del parámetro</td>
+<td>Una relación deducida de <span class="math inline">\((x(t),y(t))\)</span> contiene su imagen; la igualdad de conjuntos exige comprobar también el recíproco.</td>
+</tr>
+<tr class="even">
+<td>Nuevo parámetro</td>
+<td>Una biyección <span class="math inline">\(t=\phi(s)\)</span> entre intervalos conserva la imagen de <span class="math inline">\(\gamma(t)\)</span> al formar <span class="math inline">\(\gamma(\phi(s))\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#relaciones-implícitas-y-reparametrización-de-curvas">Relaciones implícitas y reparametrización de curvas</a>» en el apéndice de demostraciones.</p>
+</section>
+<section id="problema-22.-una-elipse-y-sus-ramas" class="level3">
+<h3 class="anchored" data-anchor-id="problema-22.-una-elipse-y-sus-ramas">Problema 22. Una elipse y sus ramas</h3>
+<p>Describir la relación <span class="math inline">\(x^2/9+y^2/4=1\)</span> mediante funciones y decidir para qué entradas hay una o dos alturas.</p>
+<p><strong>Solución.</strong> Despejar da <span class="math inline">\(y^2=4(1-x^2/9)\)</span>. Hay salidas reales exactamente cuando <span class="math inline">\(|x|\leq3\)</span>. Las ramas son <span class="math inline">\(y=2\sqrt{1-x^2/9}\)</span> y <span class="math inline">\(y=-2\sqrt{1-x^2/9}\)</span>. Para <span class="math inline">\(-3&lt;x&lt;3\)</span> la raíz es positiva y hay dos alturas distintas; en <span class="math inline">\(x=\pm3\)</span> ambas valen cero. Fuera de <span class="math inline">\([-3,3]\)</span> no hay salidas. Restringir a <span class="math inline">\(y\geq0\)</span> selecciona la primera función y su imagen es <span class="math inline">\([0,2]\)</span>.</p>
+</section>
+<section id="problema-23.-una-curva-recorrida-parcialmente" class="level3">
+<h3 class="anchored" data-anchor-id="problema-23.-una-curva-recorrida-parcialmente">Problema 23. Una curva recorrida parcialmente</h3>
+<p>Sea <span class="math inline">\(\gamma(t)=(t^2,t^3)\)</span> para <span class="math inline">\(t\in[-1,2]\)</span>. Eliminar el parámetro y describir exactamente la imagen.</p>
+<p><strong>Solución.</strong> Se obtiene <span class="math inline">\(y^2=x^3\)</span>, con <span class="math inline">\(x\geq0\)</span>. Si <span class="math inline">\(t\in[0,2]\)</span>, entonces <span class="math inline">\(0\leq x\leq4\)</span> y <span class="math inline">\(y=x^{3/2}\)</span>. Si <span class="math inline">\(t\in[-1,0]\)</span>, entonces <span class="math inline">\(0\leq x\leq1\)</span> y <span class="math inline">\(y=-x^{3/2}\)</span>. Cada punto de esas ramas se recupera tomando <span class="math inline">\(t=\sqrt x\)</span> o <span class="math inline">\(t=-\sqrt x\)</span> en su intervalo. Así, la imagen es la unión de esas dos ramas restringidas. La ecuación <span class="math inline">\(y^2=x^3\)</span> por sí sola incluiría, por ejemplo, <span class="math inline">\((4,-8)\)</span>, que exigiría <span class="math inline">\(t=-2\)</span> y queda fuera del recorrido.</p>
+</section>
+<section id="problema-24.-igual-trayectoria-distinto-reloj" class="level3">
+<h3 class="anchored" data-anchor-id="problema-24.-igual-trayectoria-distinto-reloj">Problema 24. Igual trayectoria, distinto reloj</h3>
+<p>Dos movimientos son <span class="math inline">\(\gamma(t)=(\cos t,\sin t)\)</span> para <span class="math inline">\(0\leq t\leq2\pi\)</span> y <span class="math inline">\(\eta(s)=(\cos(2s),\sin(2s))\)</span> para <span class="math inline">\(0\leq s\leq\pi\)</span>. Comparar trayectorias, correspondencia temporal y recuperación del parámetro desde la posición inicial.</p>
+<p><strong>Solución.</strong> El cambio <span class="math inline">\(t=2s\)</span> es una biyección de <span class="math inline">\([0,\pi]\)</span> a <span class="math inline">\([0,2\pi]\)</span>, así que ambas imágenes son la circunferencia unidad completa, recorrida en el mismo sentido. La segunda llega a cada fase empleando la mitad del valor de su parámetro: <span class="math inline">\(t=\pi/2\)</span> corresponde a <span class="math inline">\(s=\pi/4\)</span>. En ambos intervalos la posición <span class="math inline">\((1,0)\)</span> aparece en los dos extremos, por lo que la posición sola deja dos parámetros posibles. Usar <span class="math inline">\([0,2\pi)\)</span> y <span class="math inline">\([0,\pi)\)</span> da recorridos inyectivos; recuperar el ángulo requiere entonces determinar el cuadrante y respetar el extremo excluido. La relación geométrica y la ley temporal responden a preguntas distintas del mismo movimiento.</p>
+</section>
+</section>
+<section id="ejercicios-para-trabajar-sin-profesor" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-para-trabajar-sin-profesor">Ejercicios para trabajar sin profesor</h2>
+<p>En cada ejercicio, declare el dominio, justifique las operaciones y compruebe el resultado en la relación inicial. En los modelos, conserve las unidades y distinga las conclusiones algebraicas de las hipótesis de uso.</p>
+<p><strong>1.</strong> Sean <span class="math inline">\(a(x)=x-4\)</span> y <span class="math inline">\(b(x)=3x\)</span>. Calcule <span class="math inline">\(a\circ b\)</span>, <span class="math inline">\(b\circ a\)</span> y su diferencia en <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>2.</strong> Para <span class="math inline">\(f(x)=x^2\)</span> y <span class="math inline">\(g(x)=\sqrt{x+1}\)</span> con sus dominios naturales, determine ambas composiciones y sus dominios.</p>
+<p><strong>3.</strong> Una cadena lleva <span class="math inline">\(x\in[1,3]\)</span> a <span class="math inline">\(2x\)</span>, después a <span class="math inline">\(u+1\)</span> y finalmente a <span class="math inline">\(\ln v\)</span>. Halle la regla, su imagen y la salida en <span class="math inline">\(x=1\)</span>.</p>
+<p><strong>4.</strong> Determine el dominio de <span class="math inline">\(\sqrt{(x+3)/(x-2)}\)</span>.</p>
+<p><strong>5.</strong> Determine el dominio de <span class="math inline">\(\ln(4-\sqrt{x+2})\)</span>.</p>
+<p><strong>6.</strong> Sean <span class="math inline">\(g(x)=1/(x+2)\)</span> y <span class="math inline">\(f(u)=1/u\)</span>. Determine <span class="math inline">\(f\circ g\)</span> como función y compárela con <span class="math inline">\(x+2\)</span> en <span class="math inline">\(\mathbb R\)</span>.</p>
+<p><strong>7.</strong> La calibración <span class="math inline">\(V=0{,}05T+0{,}5\)</span> admite <span class="math inline">\(0\leq T\leq40\)</span>. Halle la inversa y recupere <span class="math inline">\(T\)</span> desde <span class="math inline">\(V=1{,}25\)</span>.</p>
+<p><strong>8.</strong> Halle las inversas de <span class="math inline">\(q(x)=(x+1)^2-2\)</span> en las ramas <span class="math inline">\(x\geq-1\)</span> y <span class="math inline">\(x\leq-1\)</span>.</p>
+<p><strong>9.</strong> Determine la inversa de <span class="math inline">\(f(x)=(x+4)/(2x-1)\)</span> en su dominio natural y precise su imagen.</p>
+<p><strong>10.</strong> Halle la inversa de <span class="math inline">\(F(x)=3+4e^{2x}\)</span> y resuelva <span class="math inline">\(F(x)=11\)</span>.</p>
+<p><strong>11.</strong> Un modelo de altura es <span class="math inline">\(h(t)=12t-3t^2\)</span> para <span class="math inline">\(0\leq t\leq4\)</span>. Halle los tiempos con <span class="math inline">\(h=9\)</span> y la altura máxima.</p>
+<p><strong>12.</strong> Una lectura es <span class="math inline">\(r(x)=\min(x,5)\)</span> para <span class="math inline">\(x\in[0,9]\)</span>. Halle las preimágenes de <span class="math inline">\(3\)</span>, <span class="math inline">\(5\)</span> y <span class="math inline">\(6\)</span>.</p>
+<p><strong>13.</strong> Halle todos los tiempos <span class="math inline">\(t\in[0,8]\)</span> que satisfacen <span class="math inline">\(1+\cos(\pi t/4)=1\)</span>.</p>
+<p><strong>14.</strong> Un líquido entra a <span class="math inline">\(4\)</span> litros por minuto con concentración <span class="math inline">\(3\)</span> gramos por litro. El depósito comienza vacío y admite <span class="math inline">\(48\)</span> litros. Modele la masa y su intervalo de uso sin pérdidas ni rebalse.</p>
+<p><strong>15.</strong> Reescriba <span class="math inline">\(C(t)=60e^{-0{,}1t}\)</span>, con <span class="math inline">\(t\)</span> en horas, usando minutos <span class="math inline">\(m\)</span>. Halle el tiempo exacto para llegar a <span class="math inline">\(20\)</span>.</p>
+<p><strong>16.</strong> Para <span class="math inline">\(y(t)=5+12e^{-t/4}\)</span>, <span class="math inline">\(t\geq0\)</span>, use <span class="math inline">\(\tau=t-2\)</span> y después <span class="math inline">\(u=t/4\)</span>, <span class="math inline">\(z=(y-5)/12\)</span>. Precise dominios y reglas.</p>
+<p><strong>17.</strong> Se propone <span class="math inline">\(S(t)=(a+b)t\)</span> con <span class="math inline">\(a,b&gt;0\)</span>. Las lecturas <span class="math inline">\(S(1)=7\)</span> y <span class="math inline">\(S(3)=21\)</span> son exactas. Determine qué combinación queda identificada y describa todos los pares admisibles.</p>
+<p><strong>18.</strong> Interpole afínmente los datos <span class="math inline">\((1,4)\)</span> y <span class="math inline">\((5,12)\)</span>. Evalúe en <span class="math inline">\(t=3\)</span> y <span class="math inline">\(t=8\)</span> y clasifique las predicciones.</p>
+<p><strong>19.</strong> Los modelos <span class="math inline">\(p(t)=2t+1\)</span> y <span class="math inline">\(q(t)=2t+1+2t(t-2)\)</span> coinciden en dos nodos. Halle esos nodos y compare predicciones en <span class="math inline">\(t=1\)</span> y <span class="math inline">\(t=3\)</span>.</p>
+<p><strong>20.</strong> Ajuste por cuadrados una constante a <span class="math inline">\(4\)</span>, <span class="math inline">\(7\)</span>, <span class="math inline">\(7\)</span> y <span class="math inline">\(10\)</span>. Pruebe el mínimo y calcule la suma de cuadrados.</p>
+<p><strong>21.</strong> En <span class="math inline">\(C(t)=Ae^{-kt}\)</span>, <span class="math inline">\(A,k&gt;0\)</span>, se conocen <span class="math inline">\(C(0)=72\)</span> y <span class="math inline">\(C(3)=9\)</span>. Halle los parámetros y el instante con <span class="math inline">\(C=1\)</span>. Clasifique esta predicción respecto de <span class="math inline">\([0,3]\)</span>.</p>
+<p><strong>22.</strong> Exprese <span class="math inline">\(x^2/4+y^2/9=1\)</span> mediante ramas y determine sus dominios e imágenes.</p>
+<p><strong>23.</strong> Para <span class="math inline">\(\gamma(t)=(t^2,t)\)</span>, <span class="math inline">\(t\in[-2,1]\)</span>, elimine el parámetro y describa las ramas con sus restricciones.</p>
+<p><strong>24.</strong> Compare <span class="math inline">\(\gamma(t)=(t,t^2)\)</span> para <span class="math inline">\(t\in[-1,2]\)</span> con <span class="math inline">\(\eta(s)=(3s-1,(3s-1)^2)\)</span> para <span class="math inline">\(s\in[0,1]\)</span>. Halle la correspondencia y explique si la primera coordenada permite recuperar cada parámetro.</p>
+</section>
+<section id="soluciones-desarrolladas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-desarrolladas">Soluciones desarrolladas</h2>
+<section id="ejercicio-1.-orden-de-cambios-afines" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-1.-orden-de-cambios-afines">Ejercicio 1. Orden de cambios afines</h3>
+<p>Primero multiplicar por tres y luego restar cuatro da <span class="math inline">\((a\circ b)(x)=3x-4\)</span>. En el orden contrario resulta <span class="math inline">\((b\circ a)(x)=3x-12\)</span>. Ambas están definidas en <span class="math inline">\(\mathbb R\)</span> y su diferencia, en el orden escrito, es <span class="math inline">\(8\)</span>. Para <span class="math inline">\(x=0\)</span> las salidas <span class="math inline">\(-4\)</span> y <span class="math inline">\(-12\)</span> comprueban la diferencia. El orden cambia el tratamiento de la resta fija.</p>
+</section>
+<section id="ejercicio-2.-cuadrado-y-raíz-trasladada" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-2.-cuadrado-y-raíz-trasladada">Ejercicio 2. Cuadrado y raíz trasladada</h3>
+<p>El dominio de <span class="math inline">\(g\)</span> es <span class="math inline">\([-1,\infty)\)</span>. En él <span class="math inline">\((f\circ g)(x)=(\sqrt{x+1})^2=x+1\)</span>. En cambio, <span class="math inline">\(g\circ f\)</span> exige <span class="math inline">\(x^2\geq-1\)</span>, condición válida para todo real, y resulta <span class="math inline">\(\sqrt{x^2+1}\)</span> en <span class="math inline">\(\mathbb R\)</span>. Los dominios se obtienen siguiendo la entrada de cada etapa. En <span class="math inline">\(x=0\)</span> ambas salidas valen <span class="math inline">\(1\)</span>, pero esa coincidencia puntual no establece igualdad de funciones.</p>
+</section>
+<section id="ejercicio-3.-tres-etapas-y-una-imagen" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3.-tres-etapas-y-una-imagen">Ejercicio 3. Tres etapas y una imagen</h3>
+<p>La cadena es <span class="math inline">\(x\mapsto2x\mapsto2x+1\mapsto\ln(2x+1)\)</span>. Para <span class="math inline">\(1\leq x\leq3\)</span> el argumento recorre <span class="math inline">\([3,7]\)</span>, siempre positivo. Como cada etapa es creciente, la imagen es <span class="math inline">\([\ln3,\ln7]\)</span>. La salida inicial solicitada es <span class="math inline">\(\ln3\)</span>, correspondiente al extremo <span class="math inline">\(x=1\)</span>. Esta comprobación conserva tanto el dominio de partida como la condición del logaritmo.</p>
+</section>
+<section id="ejercicio-4.-signo-del-cociente" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4.-signo-del-cociente">Ejercicio 4. Signo del cociente</h3>
+<p>Se necesita <span class="math inline">\(x\ne2\)</span> y <span class="math inline">\((x+3)/(x-2)\geq0\)</span>. El cociente es positivo para <span class="math inline">\(x&lt;-3\)</span> y para <span class="math inline">\(x&gt;2\)</span>, negativo entre los puntos críticos y cero en <span class="math inline">\(x=-3\)</span>. Por tanto, el dominio es <span class="math inline">\((-\infty,-3]\cup(2,\infty)\)</span>. El extremo <span class="math inline">\(-3\)</span> produce raíz cero y el extremo <span class="math inline">\(2\)</span> anula el denominador, así que reciben tratamientos distintos.</p>
+</section>
+<section id="ejercicio-5.-dos-restricciones-sucesivas" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5.-dos-restricciones-sucesivas">Ejercicio 5. Dos restricciones sucesivas</h3>
+<p>La raíz exige <span class="math inline">\(x\geq-2\)</span>. El logaritmo requiere <span class="math inline">\(4-\sqrt{x+2}&gt;0\)</span>, equivalente a <span class="math inline">\(\sqrt{x+2}&lt;4\)</span>. Con ambos lados no negativos, esto equivale a <span class="math inline">\(x+2&lt;16\)</span>, o <span class="math inline">\(x&lt;14\)</span>. El dominio es <span class="math inline">\([-2,14)\)</span>. En <span class="math inline">\(-2\)</span> el argumento vale <span class="math inline">\(4\)</span> y el logaritmo existe; en <span class="math inline">\(14\)</span> vale cero y queda excluido.</p>
+</section>
+<section id="ejercicio-6.-una-regla-extendible" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-6.-una-regla-extendible">Ejercicio 6. Una regla extendible</h3>
+<p>La función interior exige <span class="math inline">\(x\ne-2\)</span> y su salida <span class="math inline">\(1/(x+2)\)</span> nunca es cero. La composición vale <span class="math inline">\(1/(1/(x+2))=x+2\)</span> en <span class="math inline">\(\mathbb R\setminus\{-2\}\)</span>. La función afín definida en todo <span class="math inline">\(\mathbb R\)</span> extiende esa composición al asignar el valor cero en <span class="math inline">\(x=-2\)</span>. La primera operación original carece de valor allí, aunque la fórmula simplificada sí lo tenga.</p>
+</section>
+<section id="ejercicio-7.-invertir-con-intervalos" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7.-invertir-con-intervalos">Ejercicio 7. Invertir con intervalos</h3>
+<p>La calibración es creciente y lleva <span class="math inline">\([0,40]\)</span> a <span class="math inline">\([0{,}5,2{,}5]\)</span>. Despejar da <span class="math inline">\(T=20V-10\)</span> para lecturas en ese intervalo. En <span class="math inline">\(V=1{,}25\)</span> resulta <span class="math inline">\(T=15\)</span>. La comprobación <span class="math inline">\(0{,}05\cdot15+0{,}5=1{,}25\)</span> y la pertenencia <span class="math inline">\(15\in[0,40]\)</span> validan la recuperación. El coeficiente <span class="math inline">\(20\)</span> se interpreta en grados por voltio.</p>
+</section>
+<section id="ejercicio-8.-dos-signos-justificados" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8.-dos-signos-justificados">Ejercicio 8. Dos signos justificados</h3>
+<p>Ambas ramas tienen imagen <span class="math inline">\([-2,\infty)\)</span>. De <span class="math inline">\((x+1)^2=y+2\)</span> sale <span class="math inline">\(x+1=\sqrt{y+2}\)</span> en la rama derecha y <span class="math inline">\(x+1=-\sqrt{y+2}\)</span> en la izquierda. Las inversas son <span class="math inline">\(-1+\sqrt{y+2}\)</span> y <span class="math inline">\(-1-\sqrt{y+2}\)</span>, respectivamente, para <span class="math inline">\(y\geq-2\)</span>. En <span class="math inline">\(y=-2\)</span> ambas dan el vértice <span class="math inline">\(x=-1\)</span>; para valores mayores recuperan entradas distintas de la parábola completa.</p>
+</section>
+<section id="ejercicio-9.-un-cociente-invertible" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-9.-un-cociente-invertible">Ejercicio 9. Un cociente invertible</h3>
+<p>El dominio inicial excluye <span class="math inline">\(x=1/2\)</span>. La ecuación <span class="math inline">\(y(2x-1)=x+4\)</span> da <span class="math inline">\((2y-1)x=y+4\)</span>. Si <span class="math inline">\(y=1/2\)</span>, conduciría a <span class="math inline">\(0=9/2\)</span>; si <span class="math inline">\(y\ne1/2\)</span>, tiene el único candidato <span class="math inline">\(x=(y+4)/(2y-1)\)</span>, que tampoco vale <span class="math inline">\(1/2\)</span>. Así la imagen excluye <span class="math inline">\(1/2\)</span> y la inversa es esa fórmula sobre <span class="math inline">\(\mathbb R\setminus\{1/2\}\)</span>. Por ejemplo <span class="math inline">\(f(0)=-4\)</span> y la inversa de <span class="math inline">\(-4\)</span> vale cero.</p>
+</section>
+<section id="ejercicio-10.-desandar-una-exponencial" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10.-desandar-una-exponencial">Ejercicio 10. Desandar una exponencial</h3>
+<p>La imagen es <span class="math inline">\((3,\infty)\)</span> y la función es estrictamente creciente. Restar <span class="math inline">\(3\)</span>, dividir por <span class="math inline">\(4\)</span>, tomar logaritmo y dividir por <span class="math inline">\(2\)</span> da <span class="math inline">\(F^{-1}(y)=\tfrac12\ln((y-3)/4)\)</span> para <span class="math inline">\(y&gt;3\)</span>. Para <span class="math inline">\(y=11\)</span> se obtiene <span class="math inline">\(x=\tfrac12\ln2\)</span>. Al sustituir, <span class="math inline">\(e^{2x}=2\)</span> y la salida es <span class="math inline">\(3+8=11\)</span>. Las dos composiciones con la inversa recuperan su respectiva entrada en los dominios indicados.</p>
+</section>
+<section id="ejercicio-11.-subida-y-bajada" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11.-subida-y-bajada">Ejercicio 11. Subida y bajada</h3>
+<p>La ecuación <span class="math inline">\(12t-3t^2=9\)</span> equivale a <span class="math inline">\(t^2-4t+3=0\)</span>, con raíces <span class="math inline">\(1\)</span> y <span class="math inline">\(3\)</span>, ambas admisibles. Además <span class="math inline">\(h(t)=12-3(t-2)^2\leq12\)</span>, con igualdad en <span class="math inline">\(t=2\)</span>. Por tanto, la altura máxima es <span class="math inline">\(12\)</span> y la altura <span class="math inline">\(9\)</span> se alcanza antes y después del máximo. Sustituir <span class="math inline">\(t=1,3\)</span> produce en ambos casos <span class="math inline">\(9\)</span>.</p>
+</section>
+<section id="ejercicio-12.-una-lectura-constante-en-un-intervalo" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-12.-una-lectura-constante-en-un-intervalo">Ejercicio 12. Una lectura constante en un intervalo</h3>
+<p>Para <span class="math inline">\(0\leq x\leq5\)</span>, la lectura coincide con <span class="math inline">\(x\)</span>; para <span class="math inline">\(5\leq x\leq9\)</span> vale <span class="math inline">\(5\)</span>. Las preimágenes son <span class="math inline">\(\{3\}\)</span>, <span class="math inline">\([5,9]\)</span> y <span class="math inline">\(\varnothing\)</span>, respectivamente. La tercera es vacía porque la imagen completa es <span class="math inline">\([0,5]\)</span>. Conocer una salida saturada determina un intervalo de entradas y permite expresar exactamente la información conservada por el dispositivo.</p>
+</section>
+<section id="ejercicio-13.-todas-las-fases-admisibles" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13.-todas-las-fases-admisibles">Ejercicio 13. Todas las fases admisibles</h3>
+<p>La ecuación exige <span class="math inline">\(\cos(\pi t/4)=0\)</span>. El ángulo recorre <span class="math inline">\([0,2\pi]\)</span>, donde las soluciones son <span class="math inline">\(\pi/2\)</span> y <span class="math inline">\(3\pi/2\)</span>. Multiplicar por <span class="math inline">\(4/\pi\)</span> da <span class="math inline">\(t=2\)</span> y <span class="math inline">\(t=6\)</span>. Ambas pertenecen al intervalo y producen salida <span class="math inline">\(1\)</span>. La enumeración angular completa impide perder la segunda solución al usar una única rama inversa.</p>
+</section>
+<section id="ejercicio-14.-acumulación-limitada-por-capacidad" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14.-acumulación-limitada-por-capacidad">Ejercicio 14. Acumulación limitada por capacidad</h3>
+<p>El volumen es <span class="math inline">\(V(t)=4t\)</span> litros y la masa <span class="math inline">\(M(V)=3V\)</span> gramos; componer da <span class="math inline">\(M(t)=12t\)</span> gramos. La capacidad exige <span class="math inline">\(4t\leq48\)</span> y el tiempo comienza en cero, por lo que el dominio de uso es <span class="math inline">\([0,12]\)</span> minutos. Al llenarse hay <span class="math inline">\(144\)</span> gramos. El coeficiente <span class="math inline">\(12\)</span> tiene unidades de gramos por minuto y la regla supone concentración constante y conservación de toda la sustancia entrante.</p>
+</section>
+<section id="ejercicio-15.-unidades-de-la-tasa" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-15.-unidades-de-la-tasa">Ejercicio 15. Unidades de la tasa</h3>
+<p>Como <span class="math inline">\(t=m/60\)</span>, se obtiene <span class="math inline">\(C(m)=60e^{-m/600}\)</span>. La tasa numérica es <span class="math inline">\(1/600\)</span> por minuto. Para <span class="math inline">\(C=20\)</span> se exige <span class="math inline">\(e^{-m/600}=1/3\)</span> y resulta <span class="math inline">\(m=600\ln3\)</span> minutos. En horas se obtiene <span class="math inline">\(10\ln3\)</span>, cuyo producto por <span class="math inline">\(60\)</span> coincide con el valor anterior. La concentración inicial y las predicciones físicas se conservan tras convertir las entradas.</p>
+</section>
+<section id="ejercicio-16.-traslación-y-normalización" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-16.-traslación-y-normalización">Ejercicio 16. Traslación y normalización</h3>
+<p>Con <span class="math inline">\(t=\tau+2\)</span>, <span class="math inline">\(y=5+12e^{-1/2}e^{-\tau/4}\)</span> y el dominio es <span class="math inline">\(\tau\geq-2\)</span>. Con <span class="math inline">\(u=t/4\)</span>, se tiene <span class="math inline">\(u\geq0\)</span> y <span class="math inline">\(z=(y-5)/12=e^{-u}\)</span>, con imagen <span class="math inline">\((0,1]\)</span>. Recuperar las variables originales requiere <span class="math inline">\(t=4u\)</span> y <span class="math inline">\(y=5+12z\)</span>. En <span class="math inline">\(t=0\)</span> se recuperan <span class="math inline">\(u=0\)</span>, <span class="math inline">\(z=1\)</span> e <span class="math inline">\(y=17\)</span>, lo que comprueba el origen original.</p>
+</section>
+<section id="ejercicio-17.-una-suma-identificada" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17.-una-suma-identificada">Ejercicio 17. Una suma identificada</h3>
+<p>Las observaciones imponen <span class="math inline">\(a+b=7\)</span> y <span class="math inline">\(3(a+b)=21\)</span>, que expresan la misma restricción. Todos los pares son <span class="math inline">\((a,b)=(u,7-u)\)</span> con <span class="math inline">\(0&lt;u&lt;7\)</span>. La suma vale siempre <span class="math inline">\(7\)</span> y es identificable; cada componente varía entre pares admisibles. Las lecturas de esta familia sólo dependen de la suma. Una observación adicional que mida uno de los componentes permitiría separar ambos parámetros.</p>
+</section>
+<section id="ejercicio-18.-una-familia-declarada" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18.-una-familia-declarada">Ejercicio 18. Una familia declarada</h3>
+<p>La pendiente es <span class="math inline">\((12-4)/(5-1)=2\)</span> y la ordenada es <span class="math inline">\(4-2\cdot1=2\)</span>. Así, <span class="math inline">\(y=2t+2\)</span>. Predice <span class="math inline">\(8\)</span> en <span class="math inline">\(t=3\)</span>, por interpolación en <span class="math inline">\([1,5]\)</span>, y <span class="math inline">\(18\)</span> en <span class="math inline">\(t=8\)</span>, por extrapolación. Comprobar <span class="math inline">\(t=1,5\)</span> recupera los datos. La fórmula elegida tiene unicidad dentro de las funciones afines y requiere justificación adicional para describir el fenómeno fuera de las mediciones.</p>
+</section>
+<section id="ejercicio-19.-coincidencias-finitas" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19.-coincidencias-finitas">Ejercicio 19. Coincidencias finitas</h3>
+<p>La diferencia es <span class="math inline">\(2t(t-2)\)</span>, que se anula exactamente en <span class="math inline">\(t=0\)</span> y <span class="math inline">\(t=2\)</span>. En <span class="math inline">\(t=1\)</span>, <span class="math inline">\(p=3\)</span> y <span class="math inline">\(q=1\)</span>; en <span class="math inline">\(t=3\)</span>, <span class="math inline">\(p=7\)</span> y <span class="math inline">\(q=13\)</span>. Si los datos se limitan a los dos nodos comunes, la primera comparación es interior y la segunda es exterior. Las coincidencias en los nodos permiten ambos modelos; sus predicciones distintas muestran la información que falta para elegir una familia.</p>
+</section>
+<section id="ejercicio-20.-mínimo-cuadrático-exacto" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-20.-mínimo-cuadrático-exacto">Ejercicio 20. Mínimo cuadrático exacto</h3>
+<p>La media es <span class="math inline">\((4+7+7+10)/4=7\)</span>. Los residuos son <span class="math inline">\(-3,0,0,3\)</span> y su suma de cuadrados es <span class="math inline">\(18\)</span>. Para cualquier <span class="math inline">\(c\)</span>, escribir <span class="math inline">\(y_i-c=(y_i-7)+(7-c)\)</span> y sumar cuadrados da <span class="math inline">\(18+4(c-7)^2\)</span>, porque <span class="math inline">\(\sum(y_i-7)=0\)</span>. El mínimo vale <span class="math inline">\(18\)</span> y se alcanza únicamente en <span class="math inline">\(c=7\)</span>. Esta identidad demuestra el resultado para toda constante admisible.</p>
+</section>
+<section id="ejercicio-21.-recuperación-de-parámetros-y-umbral" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-21.-recuperación-de-parámetros-y-umbral">Ejercicio 21. Recuperación de parámetros y umbral</h3>
+<p>La primera lectura da <span class="math inline">\(A=72\)</span>. La segunda exige <span class="math inline">\(e^{-3k}=1/8\)</span>, así que <span class="math inline">\(k=\ln2\)</span> por unidad temporal. Para <span class="math inline">\(C=1\)</span>, se tiene <span class="math inline">\(e^{-kt}=1/72\)</span> y <span class="math inline">\(t=\ln72/\ln2\)</span>. Como <span class="math inline">\(72&gt;8\)</span>, este tiempo es mayor que <span class="math inline">\(3\)</span>, de modo que la predicción extrapola el intervalo observado. Sustituir los parámetros reproduce las dos lecturas y el umbral. La unicidad se refiere a la familia exponencial positiva asumida.</p>
+</section>
+<section id="ejercicio-22.-dos-ramas-de-la-elipse" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22.-dos-ramas-de-la-elipse">Ejercicio 22. Dos ramas de la elipse</h3>
+<p>La ecuación equivale a <span class="math inline">\(y=\pm3\sqrt{1-x^2/4}\)</span> con <span class="math inline">\(x\in[-2,2]\)</span>. La rama superior tiene imagen <span class="math inline">\([0,3]\)</span> y la inferior <span class="math inline">\([-3,0]\)</span>. En los extremos <span class="math inline">\(x=\pm2\)</span> comparten la salida cero; en el interior dan dos valores distintos. La unión describe toda la elipse y cada rama por separado define una función. En <span class="math inline">\(x=0\)</span> se alcanzan las alturas extremas <span class="math inline">\(\pm3\)</span>.</p>
+</section>
+<section id="ejercicio-23.-restricciones-tras-eliminar-el-parámetro" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-23.-restricciones-tras-eliminar-el-parámetro">Ejercicio 23. Restricciones tras eliminar el parámetro</h3>
+<p>Como <span class="math inline">\(y=t\)</span>, se obtiene <span class="math inline">\(x=y^2\)</span> con <span class="math inline">\(-2\leq y\leq1\)</span>. En forma de funciones de <span class="math inline">\(x\)</span>, la rama negativa es <span class="math inline">\(y=-\sqrt x\)</span> para <span class="math inline">\(0\leq x\leq4\)</span> y la positiva es <span class="math inline">\(y=\sqrt x\)</span> para <span class="math inline">\(0\leq x\leq1\)</span>. Toda pareja de esas ramas recupera un parámetro admisible tomando <span class="math inline">\(t=y\)</span>. El punto <span class="math inline">\((4,2)\)</span> cumple <span class="math inline">\(x=y^2\)</span> pero queda fuera del recorrido; conservar el intervalo del parámetro evita incluirlo.</p>
+</section>
+<section id="ejercicio-24.-un-cambio-de-reloj-biyectivo" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-24.-un-cambio-de-reloj-biyectivo">Ejercicio 24. Un cambio de reloj biyectivo</h3>
+<p>La sustitución <span class="math inline">\(t=3s-1\)</span> lleva biyectivamente <span class="math inline">\([0,1]\)</span> a <span class="math inline">\([-1,2]\)</span>, y <span class="math inline">\(\eta(s)=\gamma(3s-1)\)</span>. Las dos imágenes son el arco de parábola <span class="math inline">\(y=x^2\)</span> con <span class="math inline">\(-1\leq x\leq2\)</span>. Desde la primera coordenada se recupera <span class="math inline">\(t=x\)</span> y <span class="math inline">\(s=(x+1)/3\)</span>, cada uno único en su intervalo. Las posiciones coinciden para parámetros correspondientes; la proporción entre intervalos del reloj es tres a uno.</p>
+</section>
+</section>
+<section id="diagnóstico-de-salida" class="level2">
+<h2 class="anchored" data-anchor-id="diagnóstico-de-salida">Diagnóstico de salida</h2>
+<p>El lector puede seguir una composición cuando comprueba cada valor intermedio y conserva las restricciones al simplificar. Puede invertir una función cuando establece la unicidad de las entradas sobre el dominio elegido y verifica las dos composiciones. Puede evaluar un modelo cuando explica sus unidades, la información que identifica sus parámetros y el alcance de sus predicciones. Las relaciones implícitas y los cambios de parámetro preparan el estudio de curvas y de tasas de cambio: fijan con precisión qué magnitud depende de cuál y en qué región esa dependencia es una función.</p>
+<hr>
+<p><a href="capitulo-20.html">← Funciones trigonométricas y modelos periódicos</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-22.html">Siguiente →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

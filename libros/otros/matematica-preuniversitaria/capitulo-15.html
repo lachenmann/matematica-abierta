@@ -1,0 +1,2132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Coordenadas, rectas, distancias y vectores – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-cb076892e24e5ecd918925b139627211.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-a27ce7592f35ccc06b5fae55f34b11f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#localizar-y-medir" id="toc-localizar-y-medir" class="nav-link active" data-scroll-target="#localizar-y-medir">Localizar y medir</a>
+  <ul class="collapse">
+  <li><a href="#problema-1.-del-campamento-al-rescate" id="toc-problema-1.-del-campamento-al-rescate" class="nav-link" data-scroll-target="#problema-1.-del-campamento-al-rescate">Problema 1. Del campamento al rescate</a></li>
+  <li><a href="#problema-2.-un-punto-igualmente-alejado-de-dos-estaciones" id="toc-problema-2.-un-punto-igualmente-alejado-de-dos-estaciones" class="nav-link" data-scroll-target="#problema-2.-un-punto-igualmente-alejado-de-dos-estaciones">Problema 2. Un punto igualmente alejado de dos estaciones</a></li>
+  <li><a href="#problema-3.-repartir-un-tramo" id="toc-problema-3.-repartir-un-tramo" class="nav-link" data-scroll-target="#problema-3.-repartir-un-tramo">Problema 3. Repartir un tramo</a></li>
+  <li><a href="#problema-4.-reconocer-una-circunferencia" id="toc-problema-4.-reconocer-una-circunferencia" class="nav-link" data-scroll-target="#problema-4.-reconocer-una-circunferencia">Problema 4. Reconocer una circunferencia</a></li>
+  <li><a href="#propiedades-de-coordenadas-y-distancias" id="toc-propiedades-de-coordenadas-y-distancias" class="nav-link" data-scroll-target="#propiedades-de-coordenadas-y-distancias">Propiedades de coordenadas y distancias</a></li>
+  </ul></li>
+  <li><a href="#describir-un-desplazamiento" id="toc-describir-un-desplazamiento" class="nav-link" data-scroll-target="#describir-un-desplazamiento">Describir un desplazamiento</a>
+  <ul class="collapse">
+  <li><a href="#problema-5.-cambiar-el-lugar-de-una-flecha" id="toc-problema-5.-cambiar-el-lugar-de-una-flecha" class="nav-link" data-scroll-target="#problema-5.-cambiar-el-lugar-de-una-flecha">Problema 5. Cambiar el lugar de una flecha</a></li>
+  <li><a href="#problema-6.-dos-tramos-y-una-resultante" id="toc-problema-6.-dos-tramos-y-una-resultante" class="nav-link" data-scroll-target="#problema-6.-dos-tramos-y-una-resultante">Problema 6. Dos tramos y una resultante</a></li>
+  <li><a href="#problema-7.-un-movimiento-que-deshace-otro" id="toc-problema-7.-un-movimiento-que-deshace-otro" class="nav-link" data-scroll-target="#problema-7.-un-movimiento-que-deshace-otro">Problema 7. Un movimiento que deshace otro</a></li>
+  <li><a href="#problema-8.-una-homotecia-vista-desde-su-centro" id="toc-problema-8.-una-homotecia-vista-desde-su-centro" class="nav-link" data-scroll-target="#problema-8.-una-homotecia-vista-desde-su-centro">Problema 8. Una homotecia vista desde su centro</a></li>
+  <li><a href="#propiedades-de-las-operaciones-vectoriales" id="toc-propiedades-de-las-operaciones-vectoriales" class="nav-link" data-scroll-target="#propiedades-de-las-operaciones-vectoriales">Propiedades de las operaciones vectoriales</a></li>
+  </ul></li>
+  <li><a href="#ángulos-componentes-y-proyecciones" id="toc-ángulos-componentes-y-proyecciones" class="nav-link" data-scroll-target="#ángulos-componentes-y-proyecciones">Ángulos, componentes y proyecciones</a>
+  <ul class="collapse">
+  <li><a href="#problema-9.-una-dirección-del-segundo-cuadrante" id="toc-problema-9.-una-dirección-del-segundo-cuadrante" class="nav-link" data-scroll-target="#problema-9.-una-dirección-del-segundo-cuadrante">Problema 9. Una dirección del segundo cuadrante</a></li>
+  <li><a href="#problema-10.-una-embarcación-y-una-corriente" id="toc-problema-10.-una-embarcación-y-una-corriente" class="nav-link" data-scroll-target="#problema-10.-una-embarcación-y-una-corriente">Problema 10. Una embarcación y una corriente</a></li>
+  <li><a href="#problema-11.-empujar-junto-a-una-rampa" id="toc-problema-11.-empujar-junto-a-una-rampa" class="nav-link" data-scroll-target="#problema-11.-empujar-junto-a-una-rampa">Problema 11. Empujar junto a una rampa</a></li>
+  <li><a href="#problema-12.-proyectar-sobre-una-dirección-oblicua" id="toc-problema-12.-proyectar-sobre-una-dirección-oblicua" class="nav-link" data-scroll-target="#problema-12.-proyectar-sobre-una-dirección-oblicua">Problema 12. Proyectar sobre una dirección oblicua</a></li>
+  <li><a href="#propiedades-del-producto-escalar-y-de-la-proyección" id="toc-propiedades-del-producto-escalar-y-de-la-proyección" class="nav-link" data-scroll-target="#propiedades-del-producto-escalar-y-de-la-proyección">Propiedades del producto escalar y de la proyección</a></li>
+  </ul></li>
+  <li><a href="#una-recta-a-partir-de-un-punto-y-una-dirección" id="toc-una-recta-a-partir-de-un-punto-y-una-dirección" class="nav-link" data-scroll-target="#una-recta-a-partir-de-un-punto-y-una-dirección">Una recta a partir de un punto y una dirección</a>
+  <ul class="collapse">
+  <li><a href="#problema-13.-reconstruir-una-guía-recta" id="toc-problema-13.-reconstruir-una-guía-recta" class="nav-link" data-scroll-target="#problema-13.-reconstruir-una-guía-recta">Problema 13. Reconstruir una guía recta</a></li>
+  <li><a href="#problema-14.-dos-direcciones-de-referencia" id="toc-problema-14.-dos-direcciones-de-referencia" class="nav-link" data-scroll-target="#problema-14.-dos-direcciones-de-referencia">Problema 14. Dos direcciones de referencia</a></li>
+  <li><a href="#problema-15.-cruzar-dos-condiciones" id="toc-problema-15.-cruzar-dos-condiciones" class="nav-link" data-scroll-target="#problema-15.-cruzar-dos-condiciones">Problema 15. Cruzar dos condiciones</a></li>
+  <li><a href="#problema-16.-la-distancia-a-un-borde-recto" id="toc-problema-16.-la-distancia-a-un-borde-recto" class="nav-link" data-scroll-target="#problema-16.-la-distancia-a-un-borde-recto">Problema 16. La distancia a un borde recto</a></li>
+  <li><a href="#problema-17.-paralelas-o-coincidentes" id="toc-problema-17.-paralelas-o-coincidentes" class="nav-link" data-scroll-target="#problema-17.-paralelas-o-coincidentes">Problema 17. Paralelas o coincidentes</a></li>
+  <li><a href="#problema-18.-construir-una-perpendicular" id="toc-problema-18.-construir-una-perpendicular" class="nav-link" data-scroll-target="#problema-18.-construir-una-perpendicular">Problema 18. Construir una perpendicular</a></li>
+  <li><a href="#problema-19.-un-ángulo-entre-rectas" id="toc-problema-19.-un-ángulo-entre-rectas" class="nav-link" data-scroll-target="#problema-19.-un-ángulo-entre-rectas">Problema 19. Un ángulo entre rectas</a></li>
+  <li><a href="#propiedades-de-las-rectas-y-de-la-perpendicularidad" id="toc-propiedades-de-las-rectas-y-de-la-perpendicularidad" class="nav-link" data-scroll-target="#propiedades-de-las-rectas-y-de-la-perpendicularidad">Propiedades de las rectas y de la perpendicularidad</a></li>
+  </ul></li>
+  <li><a href="#mover-una-figura-y-cambiar-la-referencia" id="toc-mover-una-figura-y-cambiar-la-referencia" class="nav-link" data-scroll-target="#mover-una-figura-y-cambiar-la-referencia">Mover una figura y cambiar la referencia</a>
+  <ul class="collapse">
+  <li><a href="#problema-20.-un-giro-seguido-de-una-reflexión" id="toc-problema-20.-un-giro-seguido-de-una-reflexión" class="nav-link" data-scroll-target="#problema-20.-un-giro-seguido-de-una-reflexión">Problema 20. Un giro seguido de una reflexión</a></li>
+  <li><a href="#problema-21.-el-mismo-lugar-desde-otro-origen" id="toc-problema-21.-el-mismo-lugar-desde-otro-origen" class="nav-link" data-scroll-target="#problema-21.-el-mismo-lugar-desde-otro-origen">Problema 21. El mismo lugar desde otro origen</a></li>
+  <li><a href="#propiedades-de-movimientos-y-referencias" id="toc-propiedades-de-movimientos-y-referencias" class="nav-link" data-scroll-target="#propiedades-de-movimientos-y-referencias">Propiedades de movimientos y referencias</a></li>
+  </ul></li>
+  <li><a href="#una-tercera-coordenada" id="toc-una-tercera-coordenada" class="nav-link" data-scroll-target="#una-tercera-coordenada">Una tercera coordenada</a>
+  <ul class="collapse">
+  <li><a href="#problema-22.-la-diagonal-de-un-recinto" id="toc-problema-22.-la-diagonal-de-un-recinto" class="nav-link" data-scroll-target="#problema-22.-la-diagonal-de-un-recinto">Problema 22. La diagonal de un recinto</a></li>
+  <li><a href="#problema-23.-área-y-normal-de-una-placa" id="toc-problema-23.-área-y-normal-de-una-placa" class="nav-link" data-scroll-target="#problema-23.-área-y-normal-de-una-placa">Problema 23. Área y normal de una placa</a></li>
+  <li><a href="#problema-24.-una-normal-oblicua" id="toc-problema-24.-una-normal-oblicua" class="nav-link" data-scroll-target="#problema-24.-una-normal-oblicua">Problema 24. Una normal oblicua</a></li>
+  <li><a href="#propiedades-de-los-vectores-del-espacio" id="toc-propiedades-de-los-vectores-del-espacio" class="nav-link" data-scroll-target="#propiedades-de-los-vectores-del-espacio">Propiedades de los vectores del espacio</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-para-trabajar-sin-profesor" id="toc-ejercicios-para-trabajar-sin-profesor" class="nav-link" data-scroll-target="#ejercicios-para-trabajar-sin-profesor">Ejercicios para trabajar sin profesor</a></li>
+  <li><a href="#soluciones-desarrolladas" id="toc-soluciones-desarrolladas" class="nav-link" data-scroll-target="#soluciones-desarrolladas">Soluciones desarrolladas</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-1.-distancia-y-recorrido" id="toc-ejercicio-1.-distancia-y-recorrido" class="nav-link" data-scroll-target="#ejercicio-1.-distancia-y-recorrido">Ejercicio 1. Distancia y recorrido</a></li>
+  <li><a href="#ejercicio-2.-igual-distancia-sobre-el-eje-vertical" id="toc-ejercicio-2.-igual-distancia-sobre-el-eje-vertical" class="nav-link" data-scroll-target="#ejercicio-2.-igual-distancia-sobre-el-eje-vertical">Ejercicio 2. Igual distancia sobre el eje vertical</a></li>
+  <li><a href="#ejercicio-3.-un-reparto-de-dos-a-uno" id="toc-ejercicio-3.-un-reparto-de-dos-a-uno" class="nav-link" data-scroll-target="#ejercicio-3.-un-reparto-de-dos-a-uno">Ejercicio 3. Un reparto de dos a uno</a></li>
+  <li><a href="#ejercicio-4.-leer-un-centro-al-completar-cuadrados" id="toc-ejercicio-4.-leer-un-centro-al-completar-cuadrados" class="nav-link" data-scroll-target="#ejercicio-4.-leer-un-centro-al-completar-cuadrados">Ejercicio 4. Leer un centro al completar cuadrados</a></li>
+  <li><a href="#ejercicio-5.-trasladar-el-representante" id="toc-ejercicio-5.-trasladar-el-representante" class="nav-link" data-scroll-target="#ejercicio-5.-trasladar-el-representante">Ejercicio 5. Trasladar el representante</a></li>
+  <li><a href="#ejercicio-6.-la-longitud-de-dos-etapas" id="toc-ejercicio-6.-la-longitud-de-dos-etapas" class="nav-link" data-scroll-target="#ejercicio-6.-la-longitud-de-dos-etapas">Ejercicio 6. La longitud de dos etapas</a></li>
+  <li><a href="#ejercicio-7.-deshacer-una-parte" id="toc-ejercicio-7.-deshacer-una-parte" class="nav-link" data-scroll-target="#ejercicio-7.-deshacer-una-parte">Ejercicio 7. Deshacer una parte</a></li>
+  <li><a href="#ejercicio-8.-imagen-desde-el-centro" id="toc-ejercicio-8.-imagen-desde-el-centro" class="nav-link" data-scroll-target="#ejercicio-8.-imagen-desde-el-centro">Ejercicio 8. Imagen desde el centro</a></li>
+  <li><a href="#ejercicio-9.-componentes-del-tercer-cuadrante" id="toc-ejercicio-9.-componentes-del-tercer-cuadrante" class="nav-link" data-scroll-target="#ejercicio-9.-componentes-del-tercer-cuadrante">Ejercicio 9. Componentes del tercer cuadrante</a></li>
+  <li><a href="#ejercicio-10.-velocidad-respecto-de-la-orilla" id="toc-ejercicio-10.-velocidad-respecto-de-la-orilla" class="nav-link" data-scroll-target="#ejercicio-10.-velocidad-respecto-de-la-orilla">Ejercicio 10. Velocidad respecto de la orilla</a></li>
+  <li><a href="#ejercicio-11.-ejes-de-la-rampa" id="toc-ejercicio-11.-ejes-de-la-rampa" class="nav-link" data-scroll-target="#ejercicio-11.-ejes-de-la-rampa">Ejercicio 11. Ejes de la rampa</a></li>
+  <li><a href="#ejercicio-12.-proyección-y-resto" id="toc-ejercicio-12.-proyección-y-resto" class="nav-link" data-scroll-target="#ejercicio-12.-proyección-y-resto">Ejercicio 12. Proyección y resto</a></li>
+  <li><a href="#ejercicio-13.-una-pendiente-negativa" id="toc-ejercicio-13.-una-pendiente-negativa" class="nav-link" data-scroll-target="#ejercicio-13.-una-pendiente-negativa">Ejercicio 13. Una pendiente negativa</a></li>
+  <li><a href="#ejercicio-14.-dos-rectas-por-un-punto" id="toc-ejercicio-14.-dos-rectas-por-un-punto" class="nav-link" data-scroll-target="#ejercicio-14.-dos-rectas-por-un-punto">Ejercicio 14. Dos rectas por un punto</a></li>
+  <li><a href="#ejercicio-15.-resolver-el-cruce" id="toc-ejercicio-15.-resolver-el-cruce" class="nav-link" data-scroll-target="#ejercicio-15.-resolver-el-cruce">Ejercicio 15. Resolver el cruce</a></li>
+  <li><a href="#ejercicio-16.-un-pie-perpendicular-calculado" id="toc-ejercicio-16.-un-pie-perpendicular-calculado" class="nav-link" data-scroll-target="#ejercicio-16.-un-pie-perpendicular-calculado">Ejercicio 16. Un pie perpendicular calculado</a></li>
+  <li><a href="#ejercicio-17.-normalizar-las-ecuaciones" id="toc-ejercicio-17.-normalizar-las-ecuaciones" class="nav-link" data-scroll-target="#ejercicio-17.-normalizar-las-ecuaciones">Ejercicio 17. Normalizar las ecuaciones</a></li>
+  <li><a href="#ejercicio-18.-la-perpendicular-por-un-punto-de-la-recta" id="toc-ejercicio-18.-la-perpendicular-por-un-punto-de-la-recta" class="nav-link" data-scroll-target="#ejercicio-18.-la-perpendicular-por-un-punto-de-la-recta">Ejercicio 18. La perpendicular por un punto de la recta</a></li>
+  <li><a href="#ejercicio-19.-elegir-el-ángulo-menor" id="toc-ejercicio-19.-elegir-el-ángulo-menor" class="nav-link" data-scroll-target="#ejercicio-19.-elegir-el-ángulo-menor">Ejercicio 19. Elegir el ángulo menor</a></li>
+  <li><a href="#ejercicio-20.-componer-en-el-orden-indicado" id="toc-ejercicio-20.-componer-en-el-orden-indicado" class="nav-link" data-scroll-target="#ejercicio-20.-componer-en-el-orden-indicado">Ejercicio 20. Componer en el orden indicado</a></li>
+  <li><a href="#ejercicio-21.-cambiar-el-origen" id="toc-ejercicio-21.-cambiar-el-origen" class="nav-link" data-scroll-target="#ejercicio-21.-cambiar-el-origen">Ejercicio 21. Cambiar el origen</a></li>
+  <li><a href="#ejercicio-22.-distancia-espacial" id="toc-ejercicio-22.-distancia-espacial" class="nav-link" data-scroll-target="#ejercicio-22.-distancia-espacial">Ejercicio 22. Distancia espacial</a></li>
+  <li><a href="#ejercicio-23.-normal-hacia-el-eje-horizontal-espacial" id="toc-ejercicio-23.-normal-hacia-el-eje-horizontal-espacial" class="nav-link" data-scroll-target="#ejercicio-23.-normal-hacia-el-eje-horizontal-espacial">Ejercicio 23. Normal hacia el eje horizontal espacial</a></li>
+  <li><a href="#ejercicio-24.-comprobar-una-normal-espacial" id="toc-ejercicio-24.-comprobar-una-normal-espacial" class="nav-link" data-scroll-target="#ejercicio-24.-comprobar-una-normal-espacial">Ejercicio 24. Comprobar una normal espacial</a></li>
+  </ul></li>
+  <li><a href="#diagnóstico-de-salida" id="toc-diagnóstico-de-salida" class="nav-link" data-scroll-target="#diagnóstico-de-salida">Diagnóstico de salida</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Coordenadas, rectas, distancias y vectores</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">22 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="capitulo-14.html">← Razones trigonométricas, radianes e identidades</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-16.html">Siguiente →</a></p>
+<p>Un equipo de rescate recibe dos referencias: el refugio está dos kilómetros al oeste y uno al norte del campamento; una persona pide ayuda desde un punto situado cuatro kilómetros al este y nueve al norte. El mapa permite señalar ambos lugares. Para organizar el traslado hace falta obtener algo más: la dirección y la longitud del desplazamiento entre ellos. Las coordenadas convierten esas referencias en números con los que podemos razonar, calcular y comprobar una ruta.</p>
+<p>La elección del campamento como origen forma parte de la descripción. Otro equipo podría usar un origen distinto y localizar exactamente los mismos lugares. Esa libertad será útil: escogeremos las coordenadas que hagan visible la estructura de cada problema. Trabajaremos primero en un plano euclidiano con dos ejes perpendiculares, orientados y provistos de la misma unidad de longitud. Esta última condición permite aplicar directamente Pitágoras a las diferencias de coordenadas.</p>
+<section id="localizar-y-medir" class="level2">
+<h2 class="anchored" data-anchor-id="localizar-y-medir">Localizar y medir</h2>
+<p>El punto <span class="math inline">\(P=(x,y)\)</span> queda determinado por sus proyecciones sobre los ejes: <span class="math inline">\(x\)</span> mide la posición horizontal con signo y <span class="math inline">\(y\)</span> la vertical. El orden del par indica qué eje corresponde a cada número. Al pasar de <span class="math inline">\(A=(a,b)\)</span> a <span class="math inline">\(B=(c,d)\)</span>, las variaciones horizontal y vertical son <span class="math inline">\(c-a\)</span> y <span class="math inline">\(d-b\)</span>. El segmento que une los puntos es la hipotenusa de un triángulo cuyos catetos miden <span class="math inline">\(|c-a|\)</span> y <span class="math inline">\(|d-b|\)</span>. Pitágoras da</p>
+<p><span class="math display">\[d(A,B)=\sqrt{(c-a)^2+(d-b)^2}.\]</span></p>
+<div id="fig-mp-distancia-y-desplazamiento-en-el-plano" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Las diferencias de coordenadas forman los catetos del triángulo de distancia.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-distancia-y-desplazamiento-en-el-plano-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Distancia_y_desplazamiento_en_el_plano.svg" class="img-fluid figure-img" alt="Las diferencias de coordenadas forman los catetos del triángulo de distancia.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-distancia-y-desplazamiento-en-el-plano-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Las diferencias de coordenadas forman los catetos del triángulo de distancia.
+</figcaption>
+</figure>
+</div>
+<p>El cuadrado absorbe el signo de cada diferencia; la raíz elegida es la no negativa, como corresponde a una longitud. Si el mapa usa escalas gráficas distintas en ambos ejes, primero se convierten las componentes a una unidad física común. La inclinación aparente de una línea en una pantalla deformada puede cambiar, mientras las coordenadas y la fórmula conservan su significado en el sistema declarado. Por ejemplo, si ambos ejes representan kilómetros, una diferencia horizontal de tres y una vertical de cuatro siguen dando cinco kilómetros, aunque el dibujo aparezca estirado.</p>
+<section id="problema-1.-del-campamento-al-rescate" class="level3">
+<h3 class="anchored" data-anchor-id="problema-1.-del-campamento-al-rescate">Problema 1. Del campamento al rescate</h3>
+<p>En el mapa descrito al comienzo, calcula la distancia recta entre el refugio <span class="math inline">\(A=(-2,1)\)</span> y la persona <span class="math inline">\(B=(4,9)\)</span>. Cada unidad representa un kilómetro.</p>
+<p><strong>Solución.</strong> De oeste a este se avanza <span class="math inline">\(4-(-2)=6\)</span> km y hacia el norte, <span class="math inline">\(9-1=8\)</span> km. La distancia recta es <span class="math inline">\(\sqrt{6^2+8^2}=\sqrt{100}=10\)</span> km. Una ruta que recorra primero la dirección este y luego la norte mide <span class="math inline">\(6+8=14\)</span> km. Ambas cifras responden a recorridos concretos: diez kilómetros corresponden al segmento que une los lugares; catorce, al trayecto quebrado descrito. El terreno determinará cuál puede recorrerse.</p>
+</section>
+<section id="problema-2.-un-punto-igualmente-alejado-de-dos-estaciones" class="level3">
+<h3 class="anchored" data-anchor-id="problema-2.-un-punto-igualmente-alejado-de-dos-estaciones">Problema 2. Un punto igualmente alejado de dos estaciones</h3>
+<p>Encuentra todos los puntos del eje horizontal que están a igual distancia de <span class="math inline">\(A=(-2,3)\)</span> y <span class="math inline">\(B=(4,1)\)</span>.</p>
+<p><strong>Solución.</strong> Escribimos el punto buscado como <span class="math inline">\(P=(x,0)\)</span>: pertenecer al eje horizontal fija la segunda coordenada. Igualar distancias equivale aquí a igualar sus cuadrados, pues ambas son no negativas:</p>
+<p><span class="math display">\[ (x+2)^2+9=(x-4)^2+1.\]</span></p>
+<p>Al desarrollar, <span class="math inline">\(x^2+4x+13=x^2-8x+17\)</span>, de donde <span class="math inline">\(12x=4\)</span> y <span class="math inline">\(x=1/3\)</span>. Hay un solo punto, <span class="math inline">\((1/3,0)\)</span>. Para comprobarlo, ambos cuadrados de distancia valen <span class="math inline">\(130/9\)</span>. La ecuación lineal obtenida muestra además la unicidad.</p>
+<p>Un segmento contiene una sucesión continua de puntos entre sus extremos. Para describirlos podemos repartir el desplazamiento total: una fracción <span class="math inline">\(t\)</span> de la variación horizontal y la misma fracción de la vertical. Así obtenemos</p>
+<p><span class="math display">\[P=A+t(B-A)=((1-t)a+tc,(1-t)b+td).\]</span></p>
+<p>Para <span class="math inline">\(0\le t\le1\)</span>, el punto recorre el segmento de <span class="math inline">\(A\)</span> a <span class="math inline">\(B\)</span>; con <span class="math inline">\(t\)</span> real recorre toda la recta cuando <span class="math inline">\(A\ne B\)</span>. El punto medio corresponde a <span class="math inline">\(t=1/2\)</span>. Si <span class="math inline">\(AP:PB=m:n\)</span>, con <span class="math inline">\(m,n&gt;0\)</span>, la fracción recorrida es <span class="math inline">\(t=m/(m+n)\)</span>: el denominador cuenta las partes totales.</p>
+</section>
+<section id="problema-3.-repartir-un-tramo" class="level3">
+<h3 class="anchored" data-anchor-id="problema-3.-repartir-un-tramo">Problema 3. Repartir un tramo</h3>
+<p>Para <span class="math inline">\(A=(-1,2)\)</span> y <span class="math inline">\(B=(5,-4)\)</span>, calcula el punto medio <span class="math inline">\(M\)</span> y el punto interior <span class="math inline">\(P\)</span> que cumple <span class="math inline">\(AP:PB=1:2\)</span>.</p>
+<p><strong>Solución.</strong> El desplazamiento total es <span class="math inline">\((6,-6)\)</span>. Su mitad lleva a <span class="math inline">\(M=(-1,2)+(3,-3)=(2,-1)\)</span>. El reparto <span class="math inline">\(1:2\)</span> asigna a <span class="math inline">\(AP\)</span> una de las tres partes: <span class="math inline">\(P=(-1,2)+(2,-2)=(1,0)\)</span>. Las longitudes son <span class="math inline">\(AP=2\sqrt2\)</span> y <span class="math inline">\(PB=4\sqrt2\)</span>, por lo que la razón pedida se cumple. Dar a <span class="math inline">\(AP\)</span> dos tercios colocaría el punto en el reparto inverso.</p>
+<p>La circunferencia de centro <span class="math inline">\(C=(h,k)\)</span> y radio <span class="math inline">\(r&gt;0\)</span> reúne los puntos cuya distancia a <span class="math inline">\(C\)</span> es <span class="math inline">\(r\)</span>. La fórmula de distancia transforma esa condición en <span class="math inline">\((x-h)^2+(y-k)^2=r^2\)</span>. Los signos del centro se leen dentro de las diferencias: <span class="math inline">\(y+1\)</span> expresa la distancia con signo respecto de la coordenada <span class="math inline">\(-1\)</span>.</p>
+</section>
+<section id="problema-4.-reconocer-una-circunferencia" class="level3">
+<h3 class="anchored" data-anchor-id="problema-4.-reconocer-una-circunferencia">Problema 4. Reconocer una circunferencia</h3>
+<p>Determina el centro y el radio de <span class="math inline">\(x^2+y^2-4x+2y-20=0\)</span>. Decide si <span class="math inline">\((5,3)\)</span> pertenece a ella.</p>
+<p><strong>Solución.</strong> Agrupamos y completamos cuadrados:</p>
+<p><span class="math display">\[ (x-2)^2-4+(y+1)^2-1=20.\]</span></p>
+<p>Por tanto, <span class="math inline">\((x-2)^2+(y+1)^2=25\)</span>. El centro es <span class="math inline">\((2,-1)\)</span> y el radio es <span class="math inline">\(5\)</span>. Para <span class="math inline">\((5,3)\)</span>, el lado izquierdo vale <span class="math inline">\(3^2+4^2=25\)</span>, así que el punto pertenece a la circunferencia. La misma comprobación dice que su distancia al centro es cinco.</p>
+</section>
+<section id="propiedades-de-coordenadas-y-distancias" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-coordenadas-y-distancias">Propiedades de coordenadas y distancias</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Propiedad</th>
+<th style="text-align: left;">Fórmula y condiciones de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Distancia cartesiana</td>
+<td style="text-align: left;"><span class="math inline">\(d(A,B)=\sqrt{(c-a)^2+(d-b)^2}\)</span> en ejes perpendiculares con unidad común.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">División del segmento</td>
+<td style="text-align: left;"><span class="math inline">\(P=A+t(B-A)\)</span>; <span class="math inline">\(0\le t\le1\)</span> describe el segmento.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Punto medio</td>
+<td style="text-align: left;"><span class="math inline">\(M=((a+c)/2,(b+d)/2)\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Razón interior</td>
+<td style="text-align: left;"><span class="math inline">\(AP:PB=m:n\)</span> implica <span class="math inline">\(t=m/(m+n)\)</span>, para <span class="math inline">\(A\ne B\)</span> y <span class="math inline">\(m,n&gt;0\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Circunferencia</td>
+<td style="text-align: left;"><span class="math inline">\((x-h)^2+(y-k)^2=r^2\)</span>, con centro <span class="math inline">\((h,k)\)</span> y radio <span class="math inline">\(r&gt;0\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> En el apéndice, «<a href="apendice.html#distancias-y-reparto-en-coordenadas">Distancias y reparto en coordenadas</a>».</p>
+</section>
+</section>
+<section id="describir-un-desplazamiento" class="level2">
+<h2 class="anchored" data-anchor-id="describir-un-desplazamiento">Describir un desplazamiento</h2>
+<p>Para volver del rescate al refugio hay que invertir las dos variaciones. El desplazamiento posee componentes con signo y una longitud. Un vector libre representa la clase de todos los desplazamientos que tienen las mismas componentes en los ejes elegidos. Podemos dibujarlo mediante una flecha desde cualquier punto: la cola indica dónde comenzamos y la punta dónde terminamos. Para <span class="math inline">\(A=(a,b)\)</span> y <span class="math inline">\(B=(c,d)\)</span> escribimos <span class="math inline">\(\overrightarrow{AB}=(c-a,d-b)\)</span>.</p>
+<p>La componente horizontal y la vertical son números reales con signo. El módulo <span class="math inline">\(\|u\|=\sqrt{u_x^2+u_y^2}\)</span> es una longitud. El vector cero <span class="math inline">\((0,0)\)</span> tiene módulo cero; su representación es un desplazamiento que termina donde comienza, y su dirección angular queda indeterminada. Para <span class="math inline">\(u\ne0\)</span>, el vector <span class="math inline">\(u/\|u\|\)</span> tiene módulo uno y el mismo sentido.</p>
+<section id="problema-5.-cambiar-el-lugar-de-una-flecha" class="level3">
+<h3 class="anchored" data-anchor-id="problema-5.-cambiar-el-lugar-de-una-flecha">Problema 5. Cambiar el lugar de una flecha</h3>
+<p>Un desplazamiento va de <span class="math inline">\(A=(2,-1)\)</span> a <span class="math inline">\(B=(-1,3)\)</span>. Obtén sus componentes, su módulo y la punta de una flecha equivalente que comience en <span class="math inline">\(C=(5,2)\)</span>.</p>
+<p><strong>Solución.</strong> Restamos final menos inicial: <span class="math inline">\(u=(-1-2,3-(-1))=(-3,4)\)</span>. Su módulo es <span class="math inline">\(\sqrt{9+16}=5\)</span>. La nueva punta es <span class="math inline">\(D=C+u=(2,6)\)</span>. En efecto, <span class="math inline">\(\overrightarrow{CD}=(2-5,6-2)=(-3,4)\)</span>. El número <span class="math inline">\(-3\)</span> expresa tres unidades hacia el lado negativo horizontal; el módulo cinco expresa la longitud total del desplazamiento.</p>
+<p>Si a un desplazamiento <span class="math inline">\(u\)</span> le sigue otro <span class="math inline">\(v\)</span>, las variaciones por eje se acumulan. Esto define <span class="math inline">\(u+v=(u_x+v_x,u_y+v_y)\)</span> y justifica la regla de colocar la cola de la segunda flecha en la punta de la primera. La resultante une el inicio del primer tramo con el final del segundo. La figura del paralelogramo expresa la misma suma al dibujar ambos vectores desde un origen común.</p>
+<div id="fig-mp-suma-de-desplazamientos" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Dos desplazamientos sucesivos y su resultante.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-suma-de-desplazamientos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Suma_de_desplazamientos.svg" class="img-fluid figure-img" alt="Dos desplazamientos sucesivos y su resultante.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-suma-de-desplazamientos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Dos desplazamientos sucesivos y su resultante.
+</figcaption>
+</figure>
+</div>
+<p>Multiplicar <span class="math inline">\(u\)</span> por un real <span class="math inline">\(k\)</span> produce <span class="math inline">\(ku=(ku_x,ku_y)\)</span>. Si <span class="math inline">\(k&gt;0\)</span> conserva el sentido; si <span class="math inline">\(k&lt;0\)</span> lo invierte; su longitud es <span class="math inline">\(|k|\|u\|\)</span>. Para <span class="math inline">\(k=0\)</span> obtenemos el vector cero. Las reglas de suma y producto por escalar heredan las propiedades de los números reales componente a componente: por ejemplo, <span class="math inline">\(k(u+v)=(ku_x+kv_x,ku_y+kv_y)=ku+kv\)</span>.</p>
+</section>
+<section id="problema-6.-dos-tramos-y-una-resultante" class="level3">
+<h3 class="anchored" data-anchor-id="problema-6.-dos-tramos-y-una-resultante">Problema 6. Dos tramos y una resultante</h3>
+<p>Una persona recorre los desplazamientos <span class="math inline">\(u=(4,1)\)</span> y <span class="math inline">\(v=(-1,3)\)</span>, en kilómetros. Calcula el desplazamiento total y la longitud del trayecto quebrado.</p>
+<p><strong>Solución.</strong> La resultante es <span class="math inline">\(u+v=(3,4)\)</span>, de módulo cinco kilómetros. Los tramos miden <span class="math inline">\(\sqrt{17}\)</span> y <span class="math inline">\(\sqrt{10}\)</span> km, de modo que la longitud recorrida es <span class="math inline">\(\sqrt{17}+\sqrt{10}\approx7{,}29\)</span> km. La suma de longitudes conserva el recorrido; la suma vectorial conserva el efecto de ambos tramos sobre la posición final.</p>
+</section>
+<section id="problema-7.-un-movimiento-que-deshace-otro" class="level3">
+<h3 class="anchored" data-anchor-id="problema-7.-un-movimiento-que-deshace-otro">Problema 7. Un movimiento que deshace otro</h3>
+<p>Una plataforma ha sufrido el desplazamiento <span class="math inline">\(u=(-6,8)\)</span> cm. ¿Qué desplazamiento debe aplicarse para volver a su posición inicial? ¿Y para deshacer solamente la cuarta parte del desplazamiento original?</p>
+<p><strong>Solución.</strong> El retorno completo requiere <span class="math inline">\(-u=(6,-8)\)</span> cm, porque <span class="math inline">\(u+(-u)=(0,0)\)</span>. Su longitud es diez centímetros. Para deshacer una cuarta parte aplicamos <span class="math inline">\(-u/4=(3/2,-2)\)</span> cm, cuyo módulo es <span class="math inline">\(10/4=5/2\)</span> cm. Queda entonces un desplazamiento neto de <span class="math inline">\(3u/4=(-9/2,6)\)</span> cm respecto del inicio.</p>
+</section>
+<section id="problema-8.-una-homotecia-vista-desde-su-centro" class="level3">
+<h3 class="anchored" data-anchor-id="problema-8.-una-homotecia-vista-desde-su-centro">Problema 8. Una homotecia vista desde su centro</h3>
+<p>Una homotecia tiene centro <span class="math inline">\(O=(1,-2)\)</span> y razón <span class="math inline">\(k=-2\)</span>. Obtén la imagen de <span class="math inline">\(A=(3,1)\)</span>.</p>
+<p><strong>Solución.</strong> Primero medimos desde el centro: <span class="math inline">\(\overrightarrow{OA}=(2,3)\)</span>. La imagen debe satisfacer <span class="math inline">\(\overrightarrow{OA'}=-2(2,3)=(-4,-6)\)</span>. Sumando de nuevo el centro, <span class="math inline">\(A'=O+(-4,-6)=(-3,-8)\)</span>. El signo sitúa la imagen en el rayo opuesto y el factor dos duplica la distancia al centro. La fórmula <span class="math inline">\(A'=O+k(A-O)\)</span> mantiene visibles ambas decisiones.</p>
+</section>
+<section id="propiedades-de-las-operaciones-vectoriales" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-las-operaciones-vectoriales">Propiedades de las operaciones vectoriales</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Propiedad</th>
+<th style="text-align: left;">Fórmula y condiciones de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Desplazamiento y módulo</td>
+<td style="text-align: left;"><span class="math inline">\(\overrightarrow{AB}=B-A\)</span>; <span class="math inline">\(\lVert u\rVert =\sqrt{u_x^2+u_y^2}\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Suma por componentes</td>
+<td style="text-align: left;"><span class="math inline">\(u+v=(u_x+v_x,u_y+v_y)\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Conmutatividad y asociatividad</td>
+<td style="text-align: left;"><span class="math inline">\(u+v=v+u\)</span>; <span class="math inline">\((u+v)+w=u+(v+w)\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cero y opuesto</td>
+<td style="text-align: left;"><span class="math inline">\(u+0=u\)</span>; <span class="math inline">\(u+(-u)=0\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Escala y longitud</td>
+<td style="text-align: left;"><span class="math inline">\(ku=(ku_x,ku_y)\)</span>; $ku=ku$.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Distributividades</td>
+<td style="text-align: left;"><span class="math inline">\(k(u+v)=ku+kv\)</span>; <span class="math inline">\((k+l)u=ku+lu\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Compatibilidad escalar</td>
+<td style="text-align: left;"><span class="math inline">\(k(lu)=(kl)u\)</span>; <span class="math inline">\(1u=u\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Vector unitario</td>
+<td style="text-align: left;">$u=u/u$, para <span class="math inline">\(u\ne0\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Homotecia</td>
+<td style="text-align: left;"><span class="math inline">\(A'=O+k(A-O)\)</span>; <span class="math inline">\(k\ne0\)</span> para una homotecia invertible.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> En el apéndice, «<a href="apendice.html#operaciones-con-vectores-y-homotecias-en-coordenadas">Operaciones con vectores y homotecias en coordenadas</a>».</p>
+</section>
+</section>
+<section id="ángulos-componentes-y-proyecciones" class="level2">
+<h2 class="anchored" data-anchor-id="ángulos-componentes-y-proyecciones">Ángulos, componentes y proyecciones</h2>
+<p>Un vector de módulo <span class="math inline">\(r&gt;0\)</span> que forma un ángulo orientado <span class="math inline">\(\theta\)</span> desde el eje horizontal positivo tiene componentes <span class="math inline">\((r\cos\theta,r\sin\theta)\)</span>. Basta ampliar por <span class="math inline">\(r\)</span> el radio unitario estudiado en el capítulo anterior. Los signos de seno y coseno incorporan el cuadrante. Si el ángulo se mide desde otro eje, hay que reconstruir el triángulo correspondiente o traducirlo al ángulo orientado declarado.</p>
+<section id="problema-9.-una-dirección-del-segundo-cuadrante" class="level3">
+<h3 class="anchored" data-anchor-id="problema-9.-una-dirección-del-segundo-cuadrante">Problema 9. Una dirección del segundo cuadrante</h3>
+<p>Calcula las componentes de un vector de módulo diez que forma <span class="math inline">\(150^\circ\)</span> con el eje horizontal positivo.</p>
+<p><strong>Solución.</strong> El ángulo tiene coseno <span class="math inline">\(-\sqrt3/2\)</span> y seno <span class="math inline">\(1/2\)</span>. Por tanto, <span class="math inline">\(u=(-5\sqrt3,5)\)</span>. Su componente horizontal es negativa y la vertical positiva, como exige el segundo cuadrante. La comprobación <span class="math inline">\(\|u\|^2=75+25=100\)</span> recupera el módulo diez.</p>
+</section>
+<section id="problema-10.-una-embarcación-y-una-corriente" class="level3">
+<h3 class="anchored" data-anchor-id="problema-10.-una-embarcación-y-una-corriente">Problema 10. Una embarcación y una corriente</h3>
+<p>En un modelo de velocidades constantes, una embarcación avanza respecto del agua a <span class="math inline">\(4\)</span> m/s hacia el norte y la corriente fluye a <span class="math inline">\(3\)</span> m/s hacia el este. Obtén la velocidad respecto de la orilla.</p>
+<p><strong>Solución.</strong> Elegimos este como eje horizontal positivo y norte como vertical positivo. Las contribuciones son <span class="math inline">\((0,4)\)</span> y <span class="math inline">\((3,0)\)</span> m/s, cuya suma es <span class="math inline">\((3,4)\)</span> m/s. Su módulo es cinco metros por segundo. El ángulo al este del norte cumple <span class="math inline">\(\tan\alpha=3/4\)</span>, así que <span class="math inline">\(\alpha\approx36{,}87^\circ\)</span>. El resultado supone que ambas velocidades se componen mediante la suma de desplazamientos durante el mismo intervalo de tiempo; con un segundo, las componentes del desplazamiento son tres y cuatro metros.</p>
+<p>El producto escalar permitirá hacer proyecciones sobre una dirección cualquiera. Lo definimos por <span class="math inline">\(u\cdot v=u_xv_x+u_yv_y\)</span>. Para vectores no nulos, si <span class="math inline">\(\phi\in[0,\pi]\)</span> es el ángulo entre ellos, la ley de cosenos aplicada al triángulo de lados <span class="math inline">\(u,v,u-v\)</span> da</p>
+<p><span class="math display">\[u\cdot v=\|u\|\,\|v\|\cos\phi.\]</span></p>
+<p>La justificación algebraica consiste en desarrollar <span class="math inline">\(\|u-v\|^2=\|u\|^2+\|v\|^2-2(u\cdot v)\)</span> y comparar con la ley de cosenos. Así se unen la definición por coordenadas y la interpretación geométrica. Dos vectores no nulos son perpendiculares precisamente cuando su producto escalar vale cero. Adoptamos también la convención algebraica de que el vector cero es ortogonal a todos los vectores; el ángulo geométrico se reserva a los pares no nulos.</p>
+<p>Si <span class="math inline">\(e\)</span> es unitario, el número <span class="math inline">\(u\cdot e\)</span> es la componente de <span class="math inline">\(u\)</span> en la dirección orientada de <span class="math inline">\(e\)</span>; puede ser negativo. El vector proyectado es <span class="math inline">\((u\cdot e)e\)</span>. Para una dirección dada por <span class="math inline">\(v\ne0\)</span>, sustituimos <span class="math inline">\(e=v/\|v\|\)</span> y obtenemos</p>
+<p><span class="math display">\[\operatorname{proj}_v u=\frac{u\cdot v}{v\cdot v}\,v.\]</span></p>
+<p>Restar esta proyección deja una componente perpendicular a <span class="math inline">\(v\)</span>. La igualdad <span class="math inline">\((u-\operatorname{proj}_v u)\cdot v=0\)</span> lo comprueba directamente y permite verificar cualquier cálculo de proyección.</p>
+</section>
+<section id="problema-11.-empujar-junto-a-una-rampa" class="level3">
+<h3 class="anchored" data-anchor-id="problema-11.-empujar-junto-a-una-rampa">Problema 11. Empujar junto a una rampa</h3>
+<p>Una fuerza horizontal hacia la derecha tiene módulo <span class="math inline">\(20\)</span> N. Una rampa asciende hacia la derecha formando <span class="math inline">\(30^\circ\)</span> con la horizontal. Descompón la fuerza en las direcciones paralela y normal a la rampa, con normal positiva hacia arriba de su superficie.</p>
+<p><strong>Solución.</strong> En los ejes horizontales habituales, <span class="math inline">\(F=(20,0)\)</span>. Elegimos los unitarios <span class="math inline">\(e=(\sqrt3/2,1/2)\)</span> a lo largo de la subida y <span class="math inline">\(n=(-1/2,\sqrt3/2)\)</span> hacia arriba de la superficie. Son perpendiculares, pues <span class="math inline">\(e\cdot n=0\)</span>, y ambos tienen módulo uno. Las componentes con signo son <span class="math inline">\(F\cdot e=10\sqrt3\)</span> N y <span class="math inline">\(F\cdot n=-10\)</span> N. Los vectores correspondientes son <span class="math inline">\((15,5\sqrt3)\)</span> y <span class="math inline">\((5,-5\sqrt3)\)</span> N; su suma recupera <span class="math inline">\((20,0)\)</span>. El signo negativo de la segunda componente expresa que la fuerza empuja hacia la superficie.</p>
+</section>
+<section id="problema-12.-proyectar-sobre-una-dirección-oblicua" class="level3">
+<h3 class="anchored" data-anchor-id="problema-12.-proyectar-sobre-una-dirección-oblicua">Problema 12. Proyectar sobre una dirección oblicua</h3>
+<p>Proyecta <span class="math inline">\(u=(3,4)\)</span> sobre la dirección <span class="math inline">\(v=(1,2)\)</span> y determina la componente perpendicular.</p>
+<p><strong>Solución.</strong> Calculamos <span class="math inline">\(u\cdot v=3+8=11\)</span> y <span class="math inline">\(v\cdot v=1+4=5\)</span>. La proyección vectorial es <span class="math inline">\((11/5)v=(11/5,22/5)\)</span>. Al restar queda <span class="math inline">\(w=(4/5,-2/5)\)</span>. Se verifica <span class="math inline">\(w\cdot v=4/5-4/5=0\)</span>. La componente escalar sobre el unitario que apunta como <span class="math inline">\(v\)</span> vale <span class="math inline">\(11/\sqrt5\)</span>, una longitud con signo; la proyección vectorial tiene además dirección y componentes. Sus cuadrados de módulo satisfacen <span class="math inline">\(121/5+4/5=25=\|u\|^2\)</span>.</p>
+</section>
+<section id="propiedades-del-producto-escalar-y-de-la-proyección" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-del-producto-escalar-y-de-la-proyección">Propiedades del producto escalar y de la proyección</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Propiedad</th>
+<th style="text-align: left;">Fórmula y condiciones de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Componentes desde un ángulo</td>
+<td style="text-align: left;"><span class="math inline">\(u=(r\cos\theta,r\sin\theta)\)</span>; <span class="math inline">\(r&gt;0\)</span>, ángulo desde el eje horizontal positivo.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Producto escalar</td>
+<td style="text-align: left;"><span class="math inline">\(u\cdot v=u_xv_x+u_yv_y\)</span>; <span class="math inline">\(u\cdot u=\lVert u\rVert ^2\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Simetría y linealidad</td>
+<td style="text-align: left;"><span class="math inline">\(u\cdot v=v\cdot u\)</span>; <span class="math inline">\(u\cdot(v+w)=u\cdot v+u\cdot w\)</span>; <span class="math inline">\((ku)\cdot v=k(u\cdot v)\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ángulo y ortogonalidad</td>
+<td style="text-align: left;"><span class="math inline">\(\cos\phi=(u\cdot v)/(\lVert u\rVert \lVert v\rVert )\)</span> para <span class="math inline">\(u,v\ne0\)</span>; ortogonalidad algebraica: <span class="math inline">\(u\cdot v=0\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Proyección escalar</td>
+<td style="text-align: left;"><span class="math inline">\(u\cdot e\)</span>, con <span class="math inline">\(\lVert e\rVert =1\)</span>, en la dirección orientada de <span class="math inline">\(e\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Proyección vectorial</td>
+<td style="text-align: left;"><span class="math inline">\(\operatorname{proj}_v u=((u\cdot v)/(v\cdot v))v\)</span>, para <span class="math inline">\(v\ne0\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Descomposición perpendicular</td>
+<td style="text-align: left;"><span class="math inline">\(u=\operatorname{proj}_v u+w\)</span>, con <span class="math inline">\(w\cdot v=0\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> En el apéndice, «<a href="apendice.html#producto-escalar-ángulos-y-proyecciones-ortogonales">Producto escalar, ángulos y proyecciones ortogonales</a>».</p>
+</section>
+</section>
+<section id="una-recta-a-partir-de-un-punto-y-una-dirección" class="level2">
+<h2 class="anchored" data-anchor-id="una-recta-a-partir-de-un-punto-y-una-dirección">Una recta a partir de un punto y una dirección</h2>
+<p>Imaginemos una guía recta que atraviesa un punto <span class="math inline">\(A\)</span> y sigue una dirección <span class="math inline">\(d\ne0\)</span>. Todos sus puntos se obtienen mediante <span class="math inline">\(P=A+td\)</span>, con <span class="math inline">\(t\)</span> real. El parámetro recorre desplazamientos en ambos sentidos. Si <span class="math inline">\(d=(p,q)\)</span>, esto significa <span class="math inline">\(x=a+tp\)</span>, <span class="math inline">\(y=b+tq\)</span>. La dirección se conserva al sustituir <span class="math inline">\(d\)</span> por cualquier múltiplo no nulo: cambia la manera de recorrer la recta.</p>
+<p>Cuando <span class="math inline">\(p\ne0\)</span>, despejamos <span class="math inline">\(t=(x-a)/p\)</span> y obtenemos <span class="math inline">\(y-b=(q/p)(x-a)\)</span>. La pendiente <span class="math inline">\(m=q/p\)</span> mide la variación vertical por unidad horizontal. Si <span class="math inline">\(p=0\)</span>, todos los puntos tienen <span class="math inline">\(x=a\)</span> y la recta es vertical; su dirección se describe perfectamente con <span class="math inline">\((0,q)\)</span>. Para <span class="math inline">\(q=0\)</span> y <span class="math inline">\(p\ne0\)</span>, la pendiente vale cero y la recta es horizontal.</p>
+<section id="problema-13.-reconstruir-una-guía-recta" class="level3">
+<h3 class="anchored" data-anchor-id="problema-13.-reconstruir-una-guía-recta">Problema 13. Reconstruir una guía recta</h3>
+<p>Encuentra una ecuación de la recta que pasa por <span class="math inline">\(A=(-2,1)\)</span> y <span class="math inline">\(B=(4,4)\)</span>. Da también una parametrización.</p>
+<p><strong>Solución.</strong> La dirección <span class="math inline">\(B-A=(6,3)\)</span> se puede simplificar a <span class="math inline">\((2,1)\)</span>. La pendiente es <span class="math inline">\(1/2\)</span>, y la forma punto-pendiente da <span class="math inline">\(y-1=(x+2)/2\)</span>, equivalente a <span class="math inline">\(y=x/2+2\)</span>. Una parametrización es <span class="math inline">\((x,y)=(-2,1)+t(2,1)\)</span>, con <span class="math inline">\(t\in\mathbb R\)</span>. Para <span class="math inline">\(t=0\)</span> aparece <span class="math inline">\(A\)</span>; para <span class="math inline">\(t=3\)</span> aparece <span class="math inline">\(B\)</span>. Sustituir ambos puntos en la ecuación proporciona una segunda comprobación.</p>
+</section>
+<section id="problema-14.-dos-direcciones-de-referencia" class="level3">
+<h3 class="anchored" data-anchor-id="problema-14.-dos-direcciones-de-referencia">Problema 14. Dos direcciones de referencia</h3>
+<p>Escribe ecuaciones y parametrizaciones de la recta vertical por <span class="math inline">\((3,1)\)</span> y de la horizontal por <span class="math inline">\((1,-2)\)</span>. Encuentra su intersección.</p>
+<p><strong>Solución.</strong> En la vertical, la primera coordenada permanece fija: <span class="math inline">\(x=3\)</span>, o <span class="math inline">\((x,y)=(3,1)+t(0,1)\)</span>. En la horizontal, permanece fija la segunda: <span class="math inline">\(y=-2\)</span>, o <span class="math inline">\((x,y)=(1,-2)+s(1,0)\)</span>. El punto común debe satisfacer ambas condiciones, de modo que es <span class="math inline">\((3,-2)\)</span>. La dirección de la primera forma <span class="math inline">\(90^\circ\)</span> con la de la segunda.</p>
+<p>Otra descripción de una recta es <span class="math inline">\(ax+by+c=0\)</span>, con <span class="math inline">\((a,b)\ne(0,0)\)</span>. Su vector normal es <span class="math inline">\(n=(a,b)\)</span> y una dirección es <span class="math inline">\(d=(-b,a)\)</span>, pues <span class="math inline">\(n\cdot d=0\)</span>. Si <span class="math inline">\(P_0\)</span> pertenece a la recta, la ecuación equivale a <span class="math inline">\(n\cdot(P-P_0)=0\)</span>: el desplazamiento desde <span class="math inline">\(P_0\)</span> es perpendicular a la normal. Multiplicar los tres coeficientes por un mismo real no nulo conserva la recta.</p>
+</section>
+<section id="problema-15.-cruzar-dos-condiciones" class="level3">
+<h3 class="anchored" data-anchor-id="problema-15.-cruzar-dos-condiciones">Problema 15. Cruzar dos condiciones</h3>
+<p>Encuentra el punto común de <span class="math inline">\(x+2y=5\)</span> y <span class="math inline">\(2x-y=0\)</span>.</p>
+<p><strong>Solución.</strong> La segunda condición da <span class="math inline">\(y=2x\)</span>. Sustituida en la primera, produce <span class="math inline">\(x+4x=5\)</span>, luego <span class="math inline">\(x=1\)</span> y <span class="math inline">\(y=2\)</span>. La comprobación entrega <span class="math inline">\(1+4=5\)</span> y <span class="math inline">\(2-2=0\)</span>. Las direcciones <span class="math inline">\((2,-1)\)</span> y <span class="math inline">\((1,2)\)</span> tienen producto escalar cero; estas rectas se cruzan perpendicularmente. Resolver sus ecuaciones ha localizado el mismo cruce que representa la geometría.</p>
+<p>Para medir la distancia de un punto <span class="math inline">\(P=(x_0,y_0)\)</span> a una recta, buscamos el pie perpendicular <span class="math inline">\(H\)</span>. La normal <span class="math inline">\((a,b)\)</span> indica la dirección en la que debemos movernos desde <span class="math inline">\(P\)</span>, así que podemos escribir <span class="math inline">\(H=P-t(a,b)\)</span> y buscar el valor de <span class="math inline">\(t\)</span> que sitúe el punto en la recta. Al sustituir sus coordenadas en <span class="math inline">\(ax+by+c=0\)</span> aparece <span class="math inline">\(ax_0+by_0+c-t(a^2+b^2)=0\)</span>. Si llamamos <span class="math inline">\(f=ax_0+by_0+c\)</span>, obtenemos <span class="math inline">\(t=f/(a^2+b^2)\)</span>, con denominador positivo porque la normal es no nula. El desplazamiento necesario queda entonces expresado por</p>
+<p><span class="math display">\[H=P-\frac{f}{a^2+b^2}(a,b).\]</span></p>
+<p>Al sustituir las coordenadas de <span class="math inline">\(H\)</span> en la ecuación queda <span class="math inline">\(f-f=0\)</span>. Además, <span class="math inline">\(P-H\)</span> es paralelo a la normal y, por ello, perpendicular a la recta. Su módulo es <span class="math inline">\(|f|/\sqrt{a^2+b^2}\)</span>. Este segmento es el más corto: para cualquier otro punto <span class="math inline">\(Q\)</span> de la recta, Pitágoras da <span class="math inline">\(PQ^2=PH^2+HQ^2\ge PH^2\)</span>.</p>
+<div id="fig-mp-distancia-perpendicular-a-una-recta" class="quarto-float quarto-figure quarto-figure-center anchored" alt="El pie perpendicular determina la distancia mínima a una recta.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-distancia-perpendicular-a-una-recta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Distancia_perpendicular_a_una_recta.svg" class="img-fluid figure-img" alt="El pie perpendicular determina la distancia mínima a una recta.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-distancia-perpendicular-a-una-recta-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: El pie perpendicular determina la distancia mínima a una recta.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="problema-16.-la-distancia-a-un-borde-recto" class="level3">
+<h3 class="anchored" data-anchor-id="problema-16.-la-distancia-a-un-borde-recto">Problema 16. La distancia a un borde recto</h3>
+<p>Obtén la distancia de <span class="math inline">\(P=(4,5)\)</span> a la recta <span class="math inline">\(3x+4y-10=0\)</span> y las coordenadas del punto más cercano.</p>
+<p><strong>Solución.</strong> Evaluar la expresión de la recta en <span class="math inline">\(P\)</span> da <span class="math inline">\(f=12+20-10=22\)</span>. El normal <span class="math inline">\((3,4)\)</span> tiene módulo cinco, por lo que la distancia es <span class="math inline">\(22/5\)</span>. El pie es</p>
+<p><span class="math display">\[H=(4,5)-\frac{22}{25}(3,4)=(34/25,37/25).\]</span></p>
+<p>Se comprueba que <span class="math inline">\(3(34/25)+4(37/25)=250/25=10\)</span>. El desplazamiento <span class="math inline">\(P-H=(66/25,88/25)\)</span> es un múltiplo de <span class="math inline">\((3,4)\)</span> y tiene módulo <span class="math inline">\(22/5\)</span>, como debía suceder.</p>
+<p>Dos rectas tienen direcciones paralelas cuando sus vectores directores son proporcionales. Para <span class="math inline">\(u=(u_x,u_y)\)</span> y <span class="math inline">\(v=(v_x,v_y)\)</span> no nulos, esto equivale a <span class="math inline">\(u_xv_y-u_yv_x=0\)</span>. Direcciones perpendiculares satisfacen <span class="math inline">\(u\cdot v=0\)</span>. Estas pruebas incluyen las rectas verticales. Para rectas paralelas distinguiremos además su posición: pueden compartir todos sus puntos o tener conjuntos de puntos disjuntos.</p>
+</section>
+<section id="problema-17.-paralelas-o-coincidentes" class="level3">
+<h3 class="anchored" data-anchor-id="problema-17.-paralelas-o-coincidentes">Problema 17. Paralelas o coincidentes</h3>
+<p>Compara <span class="math inline">\(r:2x-y+1=0\)</span> con <span class="math inline">\(s:4x-2y-6=0\)</span> y con <span class="math inline">\(q:4x-2y+2=0\)</span>. Calcula la distancia entre <span class="math inline">\(r\)</span> y <span class="math inline">\(s\)</span>.</p>
+<p><strong>Solución.</strong> Sus normales son proporcionales. Dividir <span class="math inline">\(s\)</span> por dos da <span class="math inline">\(2x-y-3=0\)</span>, mientras dividir <span class="math inline">\(q\)</span> por dos reproduce <span class="math inline">\(r\)</span>. Así, <span class="math inline">\(q\)</span> y <span class="math inline">\(r\)</span> coinciden, y <span class="math inline">\(s\)</span> es paralela y distinta. El punto <span class="math inline">\((0,1)\)</span> pertenece a <span class="math inline">\(r\)</span>; su distancia a <span class="math inline">\(s\)</span> es <span class="math inline">\(|2(0)-1-3|/\sqrt5=4/\sqrt5\)</span>. Para cualquier punto <span class="math inline">\((x,y)\)</span> de <span class="math inline">\(r\)</span> se cumple <span class="math inline">\(2x-y=-1\)</span>, por lo que el numerador mantiene ese valor absoluto cuatro: la separación es constante.</p>
+</section>
+<section id="problema-18.-construir-una-perpendicular" class="level3">
+<h3 class="anchored" data-anchor-id="problema-18.-construir-una-perpendicular">Problema 18. Construir una perpendicular</h3>
+<p>Encuentra la recta por <span class="math inline">\(P=(2,-1)\)</span> perpendicular a <span class="math inline">\(r:2x+3y-6=0\)</span> y su cruce con <span class="math inline">\(r\)</span>.</p>
+<p><strong>Solución.</strong> El normal de <span class="math inline">\(r\)</span>, <span class="math inline">\((2,3)\)</span>, sirve como dirección de la perpendicular. Un normal para la nueva recta es <span class="math inline">\((3,-2)\)</span>, y su ecuación resulta <span class="math inline">\(3(x-2)-2(y+1)=0\)</span>, es decir, <span class="math inline">\(3x-2y-8=0\)</span>. Para cruzarlas, multiplicamos la primera por dos y la segunda por tres: <span class="math inline">\(4x+6y=12\)</span> y <span class="math inline">\(9x-6y=24\)</span>. Al sumar, <span class="math inline">\(13x=36\)</span>, luego <span class="math inline">\(x=36/13\)</span> y <span class="math inline">\(y=2/13\)</span>. Desde <span class="math inline">\(P\)</span> hasta el cruce, la variación es <span class="math inline">\((10/13,15/13)=(5/13)(2,3)\)</span>, que confirma la perpendicularidad buscada.</p>
+</section>
+<section id="problema-19.-un-ángulo-entre-rectas" class="level3">
+<h3 class="anchored" data-anchor-id="problema-19.-un-ángulo-entre-rectas">Problema 19. Un ángulo entre rectas</h3>
+<p>Obtén el ángulo agudo entre las direcciones <span class="math inline">\(u=(1,2)\)</span> y <span class="math inline">\(v=(2,1)\)</span>.</p>
+<p><strong>Solución.</strong> El producto escalar vale cuatro y ambos módulos valen <span class="math inline">\(\sqrt5\)</span>. El ángulo entre estos vectores tiene coseno <span class="math inline">\(4/5\)</span>, así que <span class="math inline">\(\phi=\arccos(4/5)\approx36{,}87^\circ\)</span>. Para el ángulo agudo entre rectas usamos el valor absoluto del producto escalar: elegir <span class="math inline">\(-v\)</span> describiría la misma recta y daría el ángulo suplementario entre flechas. El valor absoluto selecciona siempre el ángulo menor o igual que <span class="math inline">\(90^\circ\)</span>.</p>
+</section>
+<section id="propiedades-de-las-rectas-y-de-la-perpendicularidad" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-las-rectas-y-de-la-perpendicularidad">Propiedades de las rectas y de la perpendicularidad</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Propiedad</th>
+<th style="text-align: left;">Fórmula y condiciones de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Recta paramétrica</td>
+<td style="text-align: left;"><span class="math inline">\(P=A+td\)</span>, <span class="math inline">\(t\in\mathbb R\)</span>, <span class="math inline">\(d\ne0\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pendiente</td>
+<td style="text-align: left;"><span class="math inline">\(m=q/p\)</span> para <span class="math inline">\(d=(p,q)\)</span> y <span class="math inline">\(p\ne0\)</span>; <span class="math inline">\(y-b=m(x-a)\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Forma general y normal</td>
+<td style="text-align: left;"><span class="math inline">\(ax+by+c=0\)</span>, <span class="math inline">\((a,b)\ne(0,0)\)</span>; normal <span class="math inline">\((a,b)\)</span> y dirección <span class="math inline">\((-b,a)\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Paralelismo de direcciones</td>
+<td style="text-align: left;"><span class="math inline">\(u_xv_y-u_yv_x=0\)</span>, para <span class="math inline">\(u,v\ne0\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Rectas perpendiculares</td>
+<td style="text-align: left;"><span class="math inline">\(u\cdot v=0\)</span> para sus directores no nulos; si ambas pendientes existen, <span class="math inline">\(m_1m_2=-1\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pie perpendicular</td>
+<td style="text-align: left;"><span class="math inline">\(H=P-f(a,b)/(a^2+b^2)\)</span>; <span class="math inline">\(f=ax_0+by_0+c\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Distancia a una recta</td>
+<td style="text-align: left;"><span class="math inline">\(d(P,r)=\lvert ax_0+by_0+c\rvert /\sqrt{a^2+b^2}\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ángulo menor entre rectas</td>
+<td style="text-align: left;"><span class="math inline">\(\cos\phi=\lvert u\cdot v\rvert /(\lVert u\rVert \lVert v\rVert )\)</span>, <span class="math inline">\(0\le\phi\le\pi/2\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> En el apéndice, «<a href="apendice.html#rectas-normales-y-distancia-mínima">Rectas, normales y distancia mínima</a>».</p>
+</section>
+</section>
+<section id="mover-una-figura-y-cambiar-la-referencia" class="level2">
+<h2 class="anchored" data-anchor-id="mover-una-figura-y-cambiar-la-referencia">Mover una figura y cambiar la referencia</h2>
+<p>Una traslación por <span class="math inline">\(v\)</span> lleva cada punto <span class="math inline">\(P\)</span> a <span class="math inline">\(P'=P+v\)</span>. Una reflexión respecto del eje horizontal lleva <span class="math inline">\((x,y)\)</span> a <span class="math inline">\((x,-y)\)</span>; respecto del vertical, a <span class="math inline">\((-x,y)\)</span>. Para girar <span class="math inline">\(\theta\)</span> alrededor del origen, las fórmulas de adición de seno y coseno proporcionan</p>
+<p><span class="math display">\[\begin{aligned}x'&amp;=x\cos\theta-y\sin\theta,\\y'&amp;=x\sin\theta+y\cos\theta.\end{aligned}\]</span></p>
+<p>En efecto, escribimos <span class="math inline">\(P=(r\cos\alpha,r\sin\alpha)\)</span> y reemplazamos <span class="math inline">\(\alpha\)</span> por <span class="math inline">\(\alpha+\theta\)</span>; el origen queda fijo. Para girar alrededor de <span class="math inline">\(C\)</span>, primero usamos <span class="math inline">\(P-C\)</span>, después lo giramos y finalmente sumamos <span class="math inline">\(C\)</span>. Traslaciones, reflexiones y giros conservan distancias: las diferencias entre puntos se conservan en una traslación, cambian signos en una reflexión y conservan la suma de cuadrados en un giro.</p>
+<p>Estas transformaciones tienen forma afín: cada coordenada nueva es una combinación lineal de las originales más una constante. La forma afín describe también homotecias y transformaciones que alteran ángulos o longitudes. Cada propiedad geométrica requiere comprobar el tipo de transformación aplicado.</p>
+<section id="problema-20.-un-giro-seguido-de-una-reflexión" class="level3">
+<h3 class="anchored" data-anchor-id="problema-20.-un-giro-seguido-de-una-reflexión">Problema 20. Un giro seguido de una reflexión</h3>
+<p>Gira <span class="math inline">\(P=(3,1)\)</span> <span class="math inline">\(90^\circ\)</span> en sentido antihorario alrededor de <span class="math inline">\(C=(1,-1)\)</span> y refleja el resultado respecto del eje horizontal. Compara con ejecutar primero la reflexión y después el giro alrededor del mismo centro fijo <span class="math inline">\(C\)</span>.</p>
+<p><strong>Solución.</strong> Respecto de <span class="math inline">\(C\)</span>, el vector es <span class="math inline">\((2,2)\)</span>. Girar <span class="math inline">\(90^\circ\)</span> lo lleva a <span class="math inline">\((-2,2)\)</span>, y sumar <span class="math inline">\(C\)</span> da <span class="math inline">\((-1,1)\)</span>. La reflexión final produce <span class="math inline">\((-1,-1)\)</span>. En el orden inverso, la reflexión inicial da <span class="math inline">\((3,-1)\)</span>, cuyo vector desde <span class="math inline">\(C\)</span> es <span class="math inline">\((2,0)\)</span>. El giro lo transforma en <span class="math inline">\((0,2)\)</span> y la posición final es <span class="math inline">\((1,1)\)</span>. Los dos resultados muestran que el orden forma parte de la composición. En ambos casos se ha mantenido fijo el centro especificado.</p>
+</section>
+<section id="problema-21.-el-mismo-lugar-desde-otro-origen" class="level3">
+<h3 class="anchored" data-anchor-id="problema-21.-el-mismo-lugar-desde-otro-origen">Problema 21. El mismo lugar desde otro origen</h3>
+<p>En un sistema dado, <span class="math inline">\(P=(5,2)\)</span> y <span class="math inline">\(Q=(1,-1)\)</span>. Se elige un nuevo origen situado en <span class="math inline">\(O'=(2,-3)\)</span>, manteniendo orientación y unidad de los ejes. Obtén las nuevas coordenadas y compara la distancia.</p>
+<p><strong>Solución.</strong> Las coordenadas nuevas son los desplazamientos desde <span class="math inline">\(O'\)</span>: <span class="math inline">\(P_{\mathrm{nuevo}}=(3,5)\)</span> y <span class="math inline">\(Q_{\mathrm{nuevo}}=(-1,2)\)</span>. En ambos sistemas, el desplazamiento de <span class="math inline">\(Q\)</span> a <span class="math inline">\(P\)</span> es <span class="math inline">\((4,3)\)</span> y su longitud es cinco. Cambiar la referencia asigna otros pares a los mismos lugares. Trasladar físicamente los puntos en un sistema fijo describe otro problema y se expresa sumándoles el desplazamiento elegido.</p>
+</section>
+<section id="propiedades-de-movimientos-y-referencias" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-movimientos-y-referencias">Propiedades de movimientos y referencias</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Propiedad</th>
+<th style="text-align: left;">Fórmula y condiciones de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Traslación</td>
+<td style="text-align: left;"><span class="math inline">\(P'=P+v\)</span>; conserva diferencias y distancias.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Reflexiones en los ejes</td>
+<td style="text-align: left;"><span class="math inline">\((x,y)\mapsto(x,-y)\)</span> o <span class="math inline">\((x,y)\mapsto(-x,y)\)</span>; conservan distancias.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Giro alrededor del origen</td>
+<td style="text-align: left;"><span class="math inline">\(R_\theta(x,y)=(x\cos\theta-y\sin\theta,x\sin\theta+y\cos\theta)\)</span>; conserva distancias.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Giro de centro arbitrario</td>
+<td style="text-align: left;"><span class="math inline">\(P'=C+R_\theta(P-C)\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cambio de origen paralelo</td>
+<td style="text-align: left;"><span class="math inline">\(P_{\mathrm{nuevo}}=P-O'\)</span> con iguales ejes orientados y unidad.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Composición afín</td>
+<td style="text-align: left;">Sustituir las fórmulas en el orden dado produce otra transformación afín.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> En el apéndice, «<a href="apendice.html#movimientos-del-plano-y-elección-del-origen">Movimientos del plano y elección del origen</a>».</p>
+</section>
+</section>
+<section id="una-tercera-coordenada" class="level2">
+<h2 class="anchored" data-anchor-id="una-tercera-coordenada">Una tercera coordenada</h2>
+<p>Para localizar una carga suspendida necesitamos además la altura. En el espacio elegimos tres ejes perpendiculares con la misma unidad. Un punto tiene coordenadas <span class="math inline">\((x,y,z)\)</span> y los desplazamientos se suman componente a componente. Aplicar Pitágoras primero en la proyección horizontal y después con la altura da <span class="math inline">\(\|u\|=\sqrt{u_x^2+u_y^2+u_z^2}\)</span>. El producto escalar añade un tercer término: <span class="math inline">\(u\cdot v=u_xv_x+u_yv_y+u_zv_z\)</span>; su interpretación angular y la fórmula de proyección se conservan.</p>
+<section id="problema-22.-la-diagonal-de-un-recinto" class="level3">
+<h3 class="anchored" data-anchor-id="problema-22.-la-diagonal-de-un-recinto">Problema 22. La diagonal de un recinto</h3>
+<p>Un recinto rectangular mide <span class="math inline">\(3\)</span>, <span class="math inline">\(4\)</span> y <span class="math inline">\(12\)</span> metros. Calcula la distancia entre dos vértices opuestos y el vector unitario que apunta de <span class="math inline">\((0,0,0)\)</span> a <span class="math inline">\((3,4,12)\)</span>.</p>
+<p><strong>Solución.</strong> La diagonal del piso mide <span class="math inline">\(\sqrt{3^2+4^2}=5\)</span> m. Con la altura forma un triángulo rectángulo, cuya hipotenusa mide <span class="math inline">\(\sqrt{5^2+12^2}=13\)</span> m. El desplazamiento es <span class="math inline">\((3,4,12)\)</span> m y su unitario es <span class="math inline">\((3/13,4/13,12/13)\)</span>. El cuadrado de su módulo es <span class="math inline">\((9+16+144)/169=1\)</span>.</p>
+<p>Dos vectores del espacio pueden determinar una orientación perpendicular a su plano. Para fijarla elegimos ejes con orientación de mano derecha: girar del eje positivo <span class="math inline">\(x\)</span> al positivo <span class="math inline">\(y\)</span> por el ángulo recto menor señala el eje positivo <span class="math inline">\(z\)</span> según la regla de la mano derecha. En esa base ortonormal orientada definimos el producto vectorial por</p>
+<p><span class="math display">\[u\times v=(u_yv_z-u_zv_y,\ u_zv_x-u_xv_z,\ u_xv_y-u_yv_x).\]</span></p>
+<p>Cada componente combina dos productos y su orden controla el signo. El resultado es perpendicular a ambos factores. Su módulo cumple <span class="math inline">\(\|u\times v\|=\|u\|\|v\|\sin\phi\)</span>: mide el área del paralelogramo generado por las dos flechas. Para factores paralelos o alguno cero, ese paralelogramo tiene área cero y el producto es el vector cero. Cambiar el orden invierte el resultado.</p>
+<div id="fig-mp-paralelogramo-y-normal-orientada" class="quarto-float quarto-figure quarto-figure-center anchored" alt="El producto vectorial fija una normal orientada al paralelogramo.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-paralelogramo-y-normal-orientada-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Paralelogramo_y_normal_orientada.svg" class="img-fluid figure-img" alt="El producto vectorial fija una normal orientada al paralelogramo.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-paralelogramo-y-normal-orientada-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: El producto vectorial fija una normal orientada al paralelogramo.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="problema-23.-área-y-normal-de-una-placa" class="level3">
+<h3 class="anchored" data-anchor-id="problema-23.-área-y-normal-de-una-placa">Problema 23. Área y normal de una placa</h3>
+<p>Una placa triangular tiene vértices <span class="math inline">\(A=(0,0,0)\)</span>, <span class="math inline">\(B=(2,0,0)\)</span> y <span class="math inline">\(C=(0,3,0)\)</span>. Obtén su área y la normal orientada determinada por el orden <span class="math inline">\(A,B,C\)</span>.</p>
+<p><strong>Solución.</strong> Los lados desde <span class="math inline">\(A\)</span> son <span class="math inline">\(u=(2,0,0)\)</span> y <span class="math inline">\(v=(0,3,0)\)</span>. La fórmula da <span class="math inline">\(u\times v=(0,0,6)\)</span>. El paralelogramo tiene área seis unidades cuadradas, así que la placa triangular tiene área tres. La normal unitaria orientada es <span class="math inline">\((0,0,1)\)</span>. Elegir el orden <span class="math inline">\(A,C,B\)</span> daría <span class="math inline">\((0,0,-6)\)</span> y conservaría el área.</p>
+</section>
+<section id="problema-24.-una-normal-oblicua" class="level3">
+<h3 class="anchored" data-anchor-id="problema-24.-una-normal-oblicua">Problema 24. Una normal oblicua</h3>
+<p>Para <span class="math inline">\(u=(1,2,0)\)</span> y <span class="math inline">\(v=(0,1,3)\)</span>, calcula <span class="math inline">\(u\times v\)</span>, verifica su perpendicularidad y obtén el área del triángulo generado por esos lados.</p>
+<p><strong>Solución.</strong> Calculamos por componentes: <span class="math inline">\(u\times v=(2\cdot3-0\cdot1,0\cdot0-1\cdot3,1\cdot1-2\cdot0)=(6,-3,1)\)</span>. Sus productos escalares con <span class="math inline">\(u\)</span> y <span class="math inline">\(v\)</span> son <span class="math inline">\(6-6=0\)</span> y <span class="math inline">\(-3+3=0\)</span>. El módulo es <span class="math inline">\(\sqrt{36+9+1}=\sqrt{46}\)</span>, por lo que el área triangular es <span class="math inline">\(\sqrt{46}/2\)</span>. Como control adicional, <span class="math inline">\(\|u\|^2\|v\|^2-(u\cdot v)^2=5\cdot10-2^2=46\)</span>, el cuadrado del módulo calculado.</p>
+</section>
+<section id="propiedades-de-los-vectores-del-espacio" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-los-vectores-del-espacio">Propiedades de los vectores del espacio</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Propiedad</th>
+<th style="text-align: left;">Fórmula y condiciones de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Módulo y distancia espacial</td>
+<td style="text-align: left;"><span class="math inline">\(\lVert u\rVert =\sqrt{u_x^2+u_y^2+u_z^2}\)</span>; $d(A,B)=B-A$.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Operaciones y producto escalar</td>
+<td style="text-align: left;">Suma y escala componente a componente; <span class="math inline">\(u\cdot v=u_xv_x+u_yv_y+u_zv_z\)</span>. Las propiedades escalares del plano se conservan.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Producto vectorial</td>
+<td style="text-align: left;"><span class="math inline">\(u\times v=(u_yv_z-u_zv_y,u_zv_x-u_xv_z,u_xv_y-u_yv_x)\)</span> en base ortonormal de mano derecha.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Orden y distributividad</td>
+<td style="text-align: left;"><span class="math inline">\(v\times u=-(u\times v)\)</span>; <span class="math inline">\(u\times(v+w)=u\times v+u\times w\)</span>; <span class="math inline">\((ku)\times v=k(u\times v)\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Normalidad</td>
+<td style="text-align: left;"><span class="math inline">\((u\times v)\cdot u=(u\times v)\cdot v=0\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Área</td>
+<td style="text-align: left;"><span class="math inline">\(\lVert u\times v\rVert ^2=\lVert u\rVert ^2\lVert v\rVert ^2-(u\cdot v)^2\)</span>; área del paralelogramo $uv$, del triángulo la mitad.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> En el apéndice, «<a href="apendice.html#vectores-espaciales-orientación-y-áreas">Vectores espaciales, orientación y áreas</a>».</p>
+</section>
+</section>
+<section id="ejercicios-para-trabajar-sin-profesor" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-para-trabajar-sin-profesor">Ejercicios para trabajar sin profesor</h2>
+<p><strong>1.</strong> Halla la distancia entre <span class="math inline">\(A=(-3,2)\)</span> y <span class="math inline">\(B=(5,-4)\)</span> y compara con un recorrido horizontal seguido de uno vertical.</p>
+<p><strong>2.</strong> Encuentra los puntos <span class="math inline">\((0,y)\)</span> igualmente alejados de <span class="math inline">\(A=(2,-1)\)</span> y <span class="math inline">\(B=(-4,3)\)</span>.</p>
+<p><strong>3.</strong> Para <span class="math inline">\(A=(2,-3)\)</span> y <span class="math inline">\(B=(8,9)\)</span>, calcula el punto medio y el reparto interior <span class="math inline">\(AP:PB=2:1\)</span>.</p>
+<p><strong>4.</strong> Obtén centro y radio de <span class="math inline">\(x^2+y^2+6x-8y=0\)</span> y decide si <span class="math inline">\((0,0)\)</span> pertenece a la circunferencia.</p>
+<p><strong>5.</strong> Halla el desplazamiento de <span class="math inline">\((4,2)\)</span> a <span class="math inline">\((-2,-6)\)</span>, su módulo y su representante con cola en <span class="math inline">\((1,1)\)</span>.</p>
+<p><strong>6.</strong> Suma los desplazamientos <span class="math inline">\((2,-1)\)</span> y <span class="math inline">\((-5,5)\)</span>. Compara el módulo de la suma con la longitud del trayecto quebrado.</p>
+<p><strong>7.</strong> Un desplazamiento es <span class="math inline">\((8,-6)\)</span>. Aplica el opuesto de sus tres décimas partes y calcula el desplazamiento neto.</p>
+<p><strong>8.</strong> Aplica a <span class="math inline">\(A=(5,-1)\)</span> la homotecia de centro <span class="math inline">\((1,1)\)</span> y razón <span class="math inline">\(-1/2\)</span>. Comprueba la distancia al centro.</p>
+<p><strong>9.</strong> Calcula las componentes de un vector de módulo seis y ángulo <span class="math inline">\(240^\circ\)</span> desde el eje horizontal positivo.</p>
+<p><strong>10.</strong> Una embarcación lleva velocidad <span class="math inline">\((5,0)\)</span> m/s respecto del agua; la corriente aporta <span class="math inline">\((0,-12)\)</span> m/s. Calcula velocidad, rapidez y ángulo al sur del este respecto de la orilla.</p>
+<p><strong>11.</strong> Descompón <span class="math inline">\(F=(0,-12)\)</span> N según <span class="math inline">\(e=(\sqrt3/2,1/2)\)</span> y <span class="math inline">\(n=(-1/2,\sqrt3/2)\)</span>. Comprueba la reconstrucción.</p>
+<p><strong>12.</strong> Proyecta <span class="math inline">\(u=(4,1)\)</span> sobre <span class="math inline">\(v=(2,-1)\)</span> y verifica que el resto es perpendicular a <span class="math inline">\(v\)</span>.</p>
+<p><strong>13.</strong> Encuentra ecuación y parametrización de la recta por <span class="math inline">\((1,3)\)</span> y <span class="math inline">\((5,-5)\)</span>.</p>
+<p><strong>14.</strong> Da las rectas vertical y horizontal por <span class="math inline">\((-2,4)\)</span> y parametrízalas.</p>
+<p><strong>15.</strong> Localiza el cruce de <span class="math inline">\(x-y=1\)</span> y <span class="math inline">\(x+2y=7\)</span>.</p>
+<p><strong>16.</strong> Calcula la distancia desde <span class="math inline">\((1,4)\)</span> a <span class="math inline">\(x+2y-3=0\)</span> y su pie perpendicular.</p>
+<p><strong>17.</strong> Compara <span class="math inline">\(3x+4y-5=0\)</span>, <span class="math inline">\(6x+8y+10=0\)</span> y <span class="math inline">\(6x+8y-10=0\)</span>. Calcula la separación de las dos distintas.</p>
+<p><strong>18.</strong> Construye la perpendicular por <span class="math inline">\((1,2)\)</span> a <span class="math inline">\(x-2y+3=0\)</span> y halla el cruce.</p>
+<p><strong>19.</strong> Determina el ángulo menor entre las rectas de direcciones <span class="math inline">\((1,0)\)</span> y <span class="math inline">\((-1,\sqrt3)\)</span>.</p>
+<p><strong>20.</strong> Gira <span class="math inline">\((4,1)\)</span> <span class="math inline">\(90^\circ\)</span> antihorarios alrededor de <span class="math inline">\((2,1)\)</span> y luego traslada por <span class="math inline">\((-3,2)\)</span>. Calcula el resultado en ambos órdenes, manteniendo fijo el centro del giro.</p>
+<p><strong>21.</strong> Si el nuevo origen es <span class="math inline">\((-1,2)\)</span> y los ejes mantienen orientación y unidad, expresa las coordenadas nuevas de <span class="math inline">\(P=(3,-2)\)</span> y <span class="math inline">\(Q=(0,2)\)</span>. Comprueba su distancia.</p>
+<p><strong>22.</strong> Obtén la distancia entre <span class="math inline">\(A=(1,-1,2)\)</span> y <span class="math inline">\(B=(3,2,8)\)</span> y el unitario de <span class="math inline">\(A\)</span> a <span class="math inline">\(B\)</span>.</p>
+<p><strong>23.</strong> Halla área y normal orientada del triángulo con vértices <span class="math inline">\((0,0,0)\)</span>, <span class="math inline">\((0,2,0)\)</span> y <span class="math inline">\((0,0,5)\)</span>, en ese orden.</p>
+<p><strong>24.</strong> Calcula el producto vectorial de <span class="math inline">\(u=(1,0,2)\)</span> por <span class="math inline">\(v=(2,1,0)\)</span>, comprueba la normalidad y obtén el área triangular.</p>
+</section>
+<section id="soluciones-desarrolladas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-desarrolladas">Soluciones desarrolladas</h2>
+<section id="ejercicio-1.-distancia-y-recorrido" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-1.-distancia-y-recorrido">Ejercicio 1. Distancia y recorrido</h3>
+<p>Las variaciones son <span class="math inline">\(8\)</span> y <span class="math inline">\(-6\)</span>. La distancia es <span class="math inline">\(\sqrt{8^2+(-6)^2}=10\)</span>. El recorrido por tramos ortogonales mide <span class="math inline">\(8+6=14\)</span>. El primero une directamente los puntos; el segundo visita el vértice intermedio <span class="math inline">\((5,2)\)</span> antes de llegar a <span class="math inline">\(B\)</span>.</p>
+</section>
+<section id="ejercicio-2.-igual-distancia-sobre-el-eje-vertical" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-2.-igual-distancia-sobre-el-eje-vertical">Ejercicio 2. Igual distancia sobre el eje vertical</h3>
+<p>La igualdad de cuadrados es <span class="math inline">\(4+(y+1)^2=16+(y-3)^2\)</span>. Desarrollar da <span class="math inline">\(y^2+2y+5=y^2-6y+25\)</span>, luego <span class="math inline">\(8y=20\)</span> y <span class="math inline">\(y=5/2\)</span>. El único punto es <span class="math inline">\((0,5/2)\)</span>. Ambos cuadrados de distancia valen <span class="math inline">\(65/4\)</span>, lo que verifica la condición original.</p>
+</section>
+<section id="ejercicio-3.-un-reparto-de-dos-a-uno" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3.-un-reparto-de-dos-a-uno">Ejercicio 3. Un reparto de dos a uno</h3>
+<p>La diferencia <span class="math inline">\(B-A=(6,12)\)</span> tiene mitad <span class="math inline">\((3,6)\)</span>, por lo que <span class="math inline">\(M=(5,3)\)</span>. El reparto pedido asigna a <span class="math inline">\(AP\)</span> dos tercios: <span class="math inline">\(P=(2,-3)+(4,8)=(6,5)\)</span>. Las longitudes <span class="math inline">\(AP=4\sqrt5\)</span> y <span class="math inline">\(PB=2\sqrt5\)</span> tienen razón dos a uno.</p>
+</section>
+<section id="ejercicio-4.-leer-un-centro-al-completar-cuadrados" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4.-leer-un-centro-al-completar-cuadrados">Ejercicio 4. Leer un centro al completar cuadrados</h3>
+<p>Completamos <span class="math inline">\(x^2+6x=(x+3)^2-9\)</span> y <span class="math inline">\(y^2-8y=(y-4)^2-16\)</span>. La ecuación queda <span class="math inline">\((x+3)^2+(y-4)^2=25\)</span>. El centro es <span class="math inline">\((-3,4)\)</span> y el radio cinco. El origen pertenece porque su distancia al centro es <span class="math inline">\(\sqrt{9+16}=5\)</span>.</p>
+</section>
+<section id="ejercicio-5.-trasladar-el-representante" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5.-trasladar-el-representante">Ejercicio 5. Trasladar el representante</h3>
+<p>Final menos inicial da <span class="math inline">\(u=(-6,-8)\)</span>, de módulo diez. Con cola en <span class="math inline">\((1,1)\)</span>, la punta debe ser <span class="math inline">\((1,1)+(-6,-8)=(-5,-7)\)</span>. Restar esa cola de la nueva punta reproduce las componentes originales y comprueba la equivalencia.</p>
+</section>
+<section id="ejercicio-6.-la-longitud-de-dos-etapas" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-6.-la-longitud-de-dos-etapas">Ejercicio 6. La longitud de dos etapas</h3>
+<p>La suma es <span class="math inline">\((-3,4)\)</span> y su módulo cinco. Los módulos individuales son <span class="math inline">\(\sqrt5\)</span> y <span class="math inline">\(\sqrt{50}=5\sqrt2\)</span>, de modo que el trayecto mide <span class="math inline">\(\sqrt5+5\sqrt2\approx9{,}31\)</span> unidades. La dirección del segundo tramo cambia respecto del primero y el recorrido excede la distancia directa.</p>
+</section>
+<section id="ejercicio-7.-deshacer-una-parte" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7.-deshacer-una-parte">Ejercicio 7. Deshacer una parte</h3>
+<p>Aplicar <span class="math inline">\(-3u/10\)</span> da <span class="math inline">\((-12/5,9/5)\)</span>. El desplazamiento neto es <span class="math inline">\(7u/10=(28/5,-21/5)\)</span>, cuyo módulo es siete porque el original mide diez. También puede verificarse sumando las dos componentes por separado.</p>
+</section>
+<section id="ejercicio-8.-imagen-desde-el-centro" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8.-imagen-desde-el-centro">Ejercicio 8. Imagen desde el centro</h3>
+<p>Desde <span class="math inline">\(O=(1,1)\)</span> a <span class="math inline">\(A\)</span> el vector es <span class="math inline">\((4,-2)\)</span>. Multiplicarlo por <span class="math inline">\(-1/2\)</span> da <span class="math inline">\((-2,1)\)</span>; así <span class="math inline">\(A'=(-1,2)\)</span>. Las distancias al centro son <span class="math inline">\(\sqrt{20}=2\sqrt5\)</span> y <span class="math inline">\(\sqrt5\)</span>. El factor absoluto es la mitad y el signo invierte el sentido.</p>
+</section>
+<section id="ejercicio-9.-componentes-del-tercer-cuadrante" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-9.-componentes-del-tercer-cuadrante">Ejercicio 9. Componentes del tercer cuadrante</h3>
+<p>Para <span class="math inline">\(240^\circ\)</span>, <span class="math inline">\(\cos\theta=-1/2\)</span> y <span class="math inline">\(\sin\theta=-\sqrt3/2\)</span>. El vector es <span class="math inline">\((-3,-3\sqrt3)\)</span>. Las dos componentes negativas concuerdan con el cuadrante y <span class="math inline">\(9+27=36\)</span> recupera el módulo seis al tomar raíz.</p>
+</section>
+<section id="ejercicio-10.-velocidad-respecto-de-la-orilla" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10.-velocidad-respecto-de-la-orilla">Ejercicio 10. Velocidad respecto de la orilla</h3>
+<p>La suma es <span class="math inline">\((5,-12)\)</span> m/s y su módulo es trece metros por segundo. El ángulo al sur del este satisface <span class="math inline">\(\tan\alpha=12/5\)</span>, por lo que <span class="math inline">\(\alpha\approx67{,}38^\circ\)</span>. Se toma el ángulo agudo desde el este y se declara el sentido sur para expresar el signo vertical.</p>
+</section>
+<section id="ejercicio-11.-ejes-de-la-rampa" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11.-ejes-de-la-rampa">Ejercicio 11. Ejes de la rampa</h3>
+<p>Los productos escalares son <span class="math inline">\(F\cdot e=-6\)</span> N y <span class="math inline">\(F\cdot n=-6\sqrt3\)</span> N. Los vectores paralelos a cada eje son <span class="math inline">\(-6e=(-3\sqrt3,-3)\)</span> y <span class="math inline">\(-6\sqrt3 n=(3\sqrt3,-9)\)</span> N. Su suma es <span class="math inline">\((0,-12)\)</span> N. Además, los cuadrados de las componentes dan <span class="math inline">\(36+108=144\)</span>, el cuadrado del módulo de <span class="math inline">\(F\)</span>.</p>
+</section>
+<section id="ejercicio-12.-proyección-y-resto" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-12.-proyección-y-resto">Ejercicio 12. Proyección y resto</h3>
+<p>Tenemos <span class="math inline">\(u\cdot v=8-1=7\)</span> y <span class="math inline">\(v\cdot v=5\)</span>. La proyección es <span class="math inline">\((7/5)(2,-1)=(14/5,-7/5)\)</span>. El resto es <span class="math inline">\(w=(6/5,12/5)\)</span>. Su producto escalar con <span class="math inline">\(v\)</span> vale <span class="math inline">\(12/5-12/5=0\)</span>. Ambas partes suman <span class="math inline">\((4,1)\)</span> y sus módulos al cuadrado suman <span class="math inline">\(49/5+36/5=17\)</span>.</p>
+</section>
+<section id="ejercicio-13.-una-pendiente-negativa" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13.-una-pendiente-negativa">Ejercicio 13. Una pendiente negativa</h3>
+<p>La dirección entre los puntos es <span class="math inline">\((4,-8)\)</span>, equivalente a <span class="math inline">\((1,-2)\)</span>. La ecuación <span class="math inline">\(y-3=-2(x-1)\)</span> se reduce a <span class="math inline">\(y=-2x+5\)</span>. Una parametrización es <span class="math inline">\((x,y)=(1,3)+t(1,-2)\)</span>; el segundo punto aparece para <span class="math inline">\(t=4\)</span>. Ambas coordenadas verifican la ecuación.</p>
+</section>
+<section id="ejercicio-14.-dos-rectas-por-un-punto" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14.-dos-rectas-por-un-punto">Ejercicio 14. Dos rectas por un punto</h3>
+<p>La vertical es <span class="math inline">\(x=-2\)</span>, con parametrización <span class="math inline">\((-2,4)+t(0,1)\)</span>. La horizontal es <span class="math inline">\(y=4\)</span>, con parametrización <span class="math inline">\((-2,4)+s(1,0)\)</span>. Sus directores tienen producto escalar cero y se cruzan en el punto dado, que corresponde a <span class="math inline">\(t=s=0\)</span>.</p>
+</section>
+<section id="ejercicio-15.-resolver-el-cruce" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-15.-resolver-el-cruce">Ejercicio 15. Resolver el cruce</h3>
+<p>La primera ecuación implica <span class="math inline">\(x=y+1\)</span>. Sustituida en la segunda, da <span class="math inline">\(3y+1=7\)</span>, de donde <span class="math inline">\(y=2\)</span> y <span class="math inline">\(x=3\)</span>. El punto <span class="math inline">\((3,2)\)</span> verifica <span class="math inline">\(3-2=1\)</span> y <span class="math inline">\(3+4=7\)</span>. La reducción deja una sola pareja y demuestra unicidad.</p>
+</section>
+<section id="ejercicio-16.-un-pie-perpendicular-calculado" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-16.-un-pie-perpendicular-calculado">Ejercicio 16. Un pie perpendicular calculado</h3>
+<p>En <span class="math inline">\(P=(1,4)\)</span>, el valor de <span class="math inline">\(x+2y-3\)</span> es seis y el normal tiene cuadrado de módulo cinco. La distancia es <span class="math inline">\(6/\sqrt5\)</span>. El pie es <span class="math inline">\(H=(1,4)-(6/5)(1,2)=(-1/5,8/5)\)</span>. Al sustituir, <span class="math inline">\(-1/5+16/5-3=0\)</span>; <span class="math inline">\(P-H=(6/5,12/5)\)</span> es normal a la recta.</p>
+</section>
+<section id="ejercicio-17.-normalizar-las-ecuaciones" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17.-normalizar-las-ecuaciones">Ejercicio 17. Normalizar las ecuaciones</h3>
+<p>Dividir las dos últimas ecuaciones por dos da <span class="math inline">\(3x+4y+5=0\)</span> y <span class="math inline">\(3x+4y-5=0\)</span>. La tercera coincide con la primera. La segunda es paralela y distinta; las constantes difieren en diez y el normal tiene módulo cinco. La separación es <span class="math inline">\(10/5=2\)</span>. Por ejemplo, el punto <span class="math inline">\((5/3,0)\)</span> de la primera tiene distancia dos a la segunda.</p>
+</section>
+<section id="ejercicio-18.-la-perpendicular-por-un-punto-de-la-recta" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18.-la-perpendicular-por-un-punto-de-la-recta">Ejercicio 18. La perpendicular por un punto de la recta</h3>
+<p>Un director perpendicular a la recta dada es su normal <span class="math inline">\((1,-2)\)</span>. La nueva recta tiene normal <span class="math inline">\((2,1)\)</span> y ecuación <span class="math inline">\(2(x-1)+(y-2)=0\)</span>, es decir, <span class="math inline">\(2x+y-4=0\)</span>. El punto <span class="math inline">\((1,2)\)</span> satisface también <span class="math inline">\(1-4+3=0\)</span>, por lo que ya pertenece a la recta original. Es el cruce buscado. Resolver el sistema confirma <span class="math inline">\(x=1\)</span>, <span class="math inline">\(y=2\)</span>.</p>
+</section>
+<section id="ejercicio-19.-elegir-el-ángulo-menor" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19.-elegir-el-ángulo-menor">Ejercicio 19. Elegir el ángulo menor</h3>
+<p>Los módulos son uno y dos y el producto escalar es <span class="math inline">\(-1\)</span>. Para el ángulo menor entre rectas, <span class="math inline">\(\cos\phi=|-1|/2=1/2\)</span>, así que <span class="math inline">\(\phi=60^\circ\)</span>. El ángulo entre los vectores tal como están orientados es <span class="math inline">\(120^\circ\)</span>; invertir el segundo director conserva la recta y permite leer el ángulo agudo.</p>
+</section>
+<section id="ejercicio-20.-componer-en-el-orden-indicado" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-20.-componer-en-el-orden-indicado">Ejercicio 20. Componer en el orden indicado</h3>
+<p>Desde el centro, <span class="math inline">\((4,1)-(2,1)=(2,0)\)</span>. Girar da <span class="math inline">\((0,2)\)</span> y la posición <span class="math inline">\((2,3)\)</span>. Trasladar después produce <span class="math inline">\((-1,5)\)</span>. En el orden inverso se traslada primero a <span class="math inline">\((1,3)\)</span>; desde el centro queda <span class="math inline">\((-1,2)\)</span>, que gira a <span class="math inline">\((-2,-1)\)</span>. Al sumar el centro resulta <span class="math inline">\((0,0)\)</span>. La sustitución ordenada de las operaciones explica la diferencia.</p>
+</section>
+<section id="ejercicio-21.-cambiar-el-origen" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-21.-cambiar-el-origen">Ejercicio 21. Cambiar el origen</h3>
+<p>Restamos <span class="math inline">\(O'=(-1,2)\)</span>: <span class="math inline">\(P_{\mathrm{nuevo}}=(4,-4)\)</span> y <span class="math inline">\(Q_{\mathrm{nuevo}}=(1,0)\)</span>. En la referencia original, <span class="math inline">\(P-Q=(3,-4)\)</span>; en la nueva, la diferencia es la misma. La distancia vale cinco en ambos sistemas porque los ejes conservaron orientación y unidad.</p>
+</section>
+<section id="ejercicio-22.-distancia-espacial" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22.-distancia-espacial">Ejercicio 22. Distancia espacial</h3>
+<p>El desplazamiento es <span class="math inline">\(B-A=(2,3,6)\)</span> y su módulo es <span class="math inline">\(\sqrt{4+9+36}=7\)</span>. Por tanto, el unitario buscado es <span class="math inline">\((2/7,3/7,6/7)\)</span>. Su módulo al cuadrado es <span class="math inline">\(49/49=1\)</span> y apunta en el mismo sentido, pues el factor <span class="math inline">\(1/7\)</span> es positivo.</p>
+</section>
+<section id="ejercicio-23.-normal-hacia-el-eje-horizontal-espacial" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-23.-normal-hacia-el-eje-horizontal-espacial">Ejercicio 23. Normal hacia el eje horizontal espacial</h3>
+<p>Desde el primer vértice, los lados son <span class="math inline">\(u=(0,2,0)\)</span> y <span class="math inline">\(v=(0,0,5)\)</span>. El producto es <span class="math inline">\((10,0,0)\)</span> y su módulo diez. El área triangular vale cinco unidades cuadradas y la normal unitaria orientada es <span class="math inline">\((1,0,0)\)</span>. Ambos lados son perpendiculares a esta normal por su primera componente cero.</p>
+</section>
+<section id="ejercicio-24.-comprobar-una-normal-espacial" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-24.-comprobar-una-normal-espacial">Ejercicio 24. Comprobar una normal espacial</h3>
+<p>La fórmula da <span class="math inline">\(u\times v=(-2,4,1)\)</span>. El producto con <span class="math inline">\(u\)</span> es <span class="math inline">\(-2+2=0\)</span> y con <span class="math inline">\(v\)</span> es <span class="math inline">\(-4+4=0\)</span>. Su módulo es <span class="math inline">\(\sqrt{4+16+1}=\sqrt{21}\)</span> y el área triangular es <span class="math inline">\(\sqrt{21}/2\)</span>. La identidad de control entrega <span class="math inline">\(\|u\|^2\|v\|^2-(u\cdot v)^2=5\cdot5-2^2=21\)</span>.</p>
+</section>
+</section>
+<section id="diagnóstico-de-salida" class="level2">
+<h2 class="anchored" data-anchor-id="diagnóstico-de-salida">Diagnóstico de salida</h2>
+<p>Elige dos puntos y explica qué representa su diferencia. Construye una recta mediante un punto y una dirección, incluyendo un ejemplo vertical. Justifica una proyección comprobando que el resto es perpendicular; después usa esa idea para encontrar el punto más cercano de una recta. En el espacio, verifica una normal mediante dos productos escalares. Si estas comprobaciones acompañan tus cálculos, las coordenadas te permiten sostener cada conclusión geométrica con una razón que puedes volver a examinar.</p>
+<hr>
+<p><a href="capitulo-14.html">← Razones trigonométricas, radianes e identidades</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-16.html">Siguiente →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

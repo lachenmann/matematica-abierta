@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Sistemas de ecuaciones y relaciones lineales – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-cb076892e24e5ecd918925b139627211.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-a27ce7592f35ccc06b5fae55f34b11f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#dos-condiciones-para-una-misma-situación" id="toc-dos-condiciones-para-una-misma-situación" class="nav-link active" data-scroll-target="#dos-condiciones-para-una-misma-situación">Dos condiciones para una misma situación</a>
+  <ul class="collapse">
+  <li><a href="#problema-1.-lo-que-sabe-la-boletería" id="toc-problema-1.-lo-que-sabe-la-boletería" class="nav-link" data-scroll-target="#problema-1.-lo-que-sabe-la-boletería">Problema 1. Lo que sabe la boletería</a></li>
+  <li><a href="#problema-2.-cumplir-una-ecuación-no-basta" id="toc-problema-2.-cumplir-una-ecuación-no-basta" class="nav-link" data-scroll-target="#problema-2.-cumplir-una-ecuación-no-basta">Problema 2. Cumplir una ecuación no basta</a></li>
+  </ul></li>
+  <li><a href="#sustituir-una-relación-dentro-de-otra" id="toc-sustituir-una-relación-dentro-de-otra" class="nav-link" data-scroll-target="#sustituir-una-relación-dentro-de-otra">Sustituir una relación dentro de otra</a>
+  <ul class="collapse">
+  <li><a href="#problema-3.-una-incógnita-escrita-con-la-otra" id="toc-problema-3.-una-incógnita-escrita-con-la-otra" class="nav-link" data-scroll-target="#problema-3.-una-incógnita-escrita-con-la-otra">Problema 3. Una incógnita escrita con la otra</a></li>
+  <li><a href="#problema-4.-fracciones-en-una-de-las-condiciones" id="toc-problema-4.-fracciones-en-una-de-las-condiciones" class="nav-link" data-scroll-target="#problema-4.-fracciones-en-una-de-las-condiciones">Problema 4. Fracciones en una de las condiciones</a></li>
+  </ul></li>
+  <li><a href="#eliminar-sin-perder-una-condición" id="toc-eliminar-sin-perder-una-condición" class="nav-link" data-scroll-target="#eliminar-sin-perder-una-condición">Eliminar sin perder una condición</a>
+  <ul class="collapse">
+  <li><a href="#problema-5.-coeficientes-opuestos" id="toc-problema-5.-coeficientes-opuestos" class="nav-link" data-scroll-target="#problema-5.-coeficientes-opuestos">Problema 5. Coeficientes opuestos</a></li>
+  <li><a href="#problema-6.-preparar-los-coeficientes" id="toc-problema-6.-preparar-los-coeficientes" class="nav-link" data-scroll-target="#problema-6.-preparar-los-coeficientes">Problema 6. Preparar los coeficientes</a></li>
+  <li><a href="#problema-7.-una-suma-con-demasiadas-soluciones" id="toc-problema-7.-una-suma-con-demasiadas-soluciones" class="nav-link" data-scroll-target="#problema-7.-una-suma-con-demasiadas-soluciones">Problema 7. Una suma con demasiadas soluciones</a></li>
+  <li><a href="#transformaciones-que-conservan-un-sistema" id="toc-transformaciones-que-conservan-un-sistema" class="nav-link" data-scroll-target="#transformaciones-que-conservan-un-sistema">Transformaciones que conservan un sistema</a></li>
+  </ul></li>
+  <li><a href="#cada-ecuación-dibuja-un-lugar" id="toc-cada-ecuación-dibuja-un-lugar" class="nav-link" data-scroll-target="#cada-ecuación-dibuja-un-lugar">Cada ecuación dibuja un lugar</a>
+  <ul class="collapse">
+  <li><a href="#problema-8.-una-intersección-que-podemos-verificar" id="toc-problema-8.-una-intersección-que-podemos-verificar" class="nav-link" data-scroll-target="#problema-8.-una-intersección-que-podemos-verificar">Problema 8. Una intersección que podemos verificar</a></li>
+  <li><a href="#problema-9.-una-recta-vertical-también-es-una-condición-lineal" id="toc-problema-9.-una-recta-vertical-también-es-una-condición-lineal" class="nav-link" data-scroll-target="#problema-9.-una-recta-vertical-también-es-una-condición-lineal">Problema 9. Una recta vertical también es una condición lineal</a></li>
+  </ul></li>
+  <li><a href="#una-ninguna-o-infinitas-soluciones" id="toc-una-ninguna-o-infinitas-soluciones" class="nav-link" data-scroll-target="#una-ninguna-o-infinitas-soluciones">Una, ninguna o infinitas soluciones</a>
+  <ul class="collapse">
+  <li><a href="#problema-10.-dos-condiciones-incompatibles" id="toc-problema-10.-dos-condiciones-incompatibles" class="nav-link" data-scroll-target="#problema-10.-dos-condiciones-incompatibles">Problema 10. Dos condiciones incompatibles</a></li>
+  <li><a href="#problema-11.-dos-escrituras-de-la-misma-condición" id="toc-problema-11.-dos-escrituras-de-la-misma-condición" class="nav-link" data-scroll-target="#problema-11.-dos-escrituras-de-la-misma-condición">Problema 11. Dos escrituras de la misma condición</a></li>
+  <li><a href="#problema-12.-una-ecuación-que-no-restringe-nada" id="toc-problema-12.-una-ecuación-que-no-restringe-nada" class="nav-link" data-scroll-target="#problema-12.-una-ecuación-que-no-restringe-nada">Problema 12. Una ecuación que no restringe nada</a></li>
+  </ul></li>
+  <li><a href="#un-criterio-general-y-sus-excepciones" id="toc-un-criterio-general-y-sus-excepciones" class="nav-link" data-scroll-target="#un-criterio-general-y-sus-excepciones">Un criterio general y sus excepciones</a>
+  <ul class="collapse">
+  <li><a href="#problema-13.-usar-el-criterio-después-de-comprenderlo" id="toc-problema-13.-usar-el-criterio-después-de-comprenderlo" class="nav-link" data-scroll-target="#problema-13.-usar-el-criterio-después-de-comprenderlo">Problema 13. Usar el criterio después de comprenderlo</a></li>
+  <li><a href="#problema-14.-tres-ceros-que-no-garantizan-compatibilidad" id="toc-problema-14.-tres-ceros-que-no-garantizan-compatibilidad" class="nav-link" data-scroll-target="#problema-14.-tres-ceros-que-no-garantizan-compatibilidad">Problema 14. Tres ceros que no garantizan compatibilidad</a></li>
+  <li><a href="#clasificación-de-los-sistemas-lineales-de-dos-incógnitas" id="toc-clasificación-de-los-sistemas-lineales-de-dos-incógnitas" class="nav-link" data-scroll-target="#clasificación-de-los-sistemas-lineales-de-dos-incógnitas">Clasificación de los sistemas lineales de dos incógnitas</a></li>
+  </ul></li>
+  <li><a href="#un-parámetro-obliga-a-revisar-la-frontera" id="toc-un-parámetro-obliga-a-revisar-la-frontera" class="nav-link" data-scroll-target="#un-parámetro-obliga-a-revisar-la-frontera">Un parámetro obliga a revisar la frontera</a>
+  <ul class="collapse">
+  <li><a href="#problema-15.-un-valor-del-parámetro-vuelve-imposible-el-sistema" id="toc-problema-15.-un-valor-del-parámetro-vuelve-imposible-el-sistema" class="nav-link" data-scroll-target="#problema-15.-un-valor-del-parámetro-vuelve-imposible-el-sistema">Problema 15. Un valor del parámetro vuelve imposible el sistema</a></li>
+  <li><a href="#problema-16.-una-familia-que-siempre-deja-una-recta" id="toc-problema-16.-una-familia-que-siempre-deja-una-recta" class="nav-link" data-scroll-target="#problema-16.-una-familia-que-siempre-deja-una-recta">Problema 16. Una familia que siempre deja una recta</a></li>
+  </ul></li>
+  <li><a href="#lo-que-un-modelo-permite-aceptar" id="toc-lo-que-un-modelo-permite-aceptar" class="nav-link" data-scroll-target="#lo-que-un-modelo-permite-aceptar">Lo que un modelo permite aceptar</a>
+  <ul class="collapse">
+  <li><a href="#problema-17.-preparar-una-mezcla-con-dos-disoluciones" id="toc-problema-17.-preparar-una-mezcla-con-dos-disoluciones" class="nav-link" data-scroll-target="#problema-17.-preparar-una-mezcla-con-dos-disoluciones">Problema 17. Preparar una mezcla con dos disoluciones</a></li>
+  <li><a href="#problema-18.-contar-patas-y-animales" id="toc-problema-18.-contar-patas-y-animales" class="nav-link" data-scroll-target="#problema-18.-contar-patas-y-animales">Problema 18. Contar patas y animales</a></li>
+  <li><a href="#problema-19.-un-par-exacto-que-no-describe-un-pedido" id="toc-problema-19.-un-par-exacto-que-no-describe-un-pedido" class="nav-link" data-scroll-target="#problema-19.-un-par-exacto-que-no-describe-un-pedido">Problema 19. Un par exacto que no describe un pedido</a></li>
+  <li><a href="#problema-20.-qué-presupuestos-admiten-un-reparto" id="toc-problema-20.-qué-presupuestos-admiten-un-reparto" class="nav-link" data-scroll-target="#problema-20.-qué-presupuestos-admiten-un-reparto">Problema 20. Qué presupuestos admiten un reparto</a></li>
+  </ul></li>
+  <li><a href="#reconstruir-una-relación-a-partir-de-dos-datos" id="toc-reconstruir-una-relación-a-partir-de-dos-datos" class="nav-link" data-scroll-target="#reconstruir-una-relación-a-partir-de-dos-datos">Reconstruir una relación a partir de dos datos</a>
+  <ul class="collapse">
+  <li><a href="#problema-21.-recuperar-una-tarifa" id="toc-problema-21.-recuperar-una-tarifa" class="nav-link" data-scroll-target="#problema-21.-recuperar-una-tarifa">Problema 21. Recuperar una tarifa</a></li>
+  <li><a href="#problema-22.-calibrar-una-lectura" id="toc-problema-22.-calibrar-una-lectura" class="nav-link" data-scroll-target="#problema-22.-calibrar-una-lectura">Problema 22. Calibrar una lectura</a></li>
+  <li><a href="#propiedades-de-las-relaciones-afines" id="toc-propiedades-de-las-relaciones-afines" class="nav-link" data-scroll-target="#propiedades-de-las-relaciones-afines">Propiedades de las relaciones afines</a></li>
+  </ul></li>
+  <li><a href="#guardar-los-coeficientes-sin-cambiar-las-ideas" id="toc-guardar-los-coeficientes-sin-cambiar-las-ideas" class="nav-link" data-scroll-target="#guardar-los-coeficientes-sin-cambiar-las-ideas">Guardar los coeficientes sin cambiar las ideas</a>
+  <ul class="collapse">
+  <li><a href="#problema-23.-las-mismas-operaciones-en-una-matriz" id="toc-problema-23.-las-mismas-operaciones-en-una-matriz" class="nav-link" data-scroll-target="#problema-23.-las-mismas-operaciones-en-una-matriz">Problema 23. Las mismas operaciones en una matriz</a></li>
+  <li><a href="#problema-24.-rectas-que-casi-coinciden" id="toc-problema-24.-rectas-que-casi-coinciden" class="nav-link" data-scroll-target="#problema-24.-rectas-que-casi-coinciden">Problema 24. Rectas que casi coinciden</a></li>
+  <li><a href="#parámetros-y-sensibilidad-de-una-familia" id="toc-parámetros-y-sensibilidad-de-una-familia" class="nav-link" data-scroll-target="#parámetros-y-sensibilidad-de-una-familia">Parámetros y sensibilidad de una familia</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-para-trabajar-sin-profesor" id="toc-ejercicios-para-trabajar-sin-profesor" class="nav-link" data-scroll-target="#ejercicios-para-trabajar-sin-profesor">Ejercicios para trabajar sin profesor</a></li>
+  <li><a href="#soluciones-desarrolladas" id="toc-soluciones-desarrolladas" class="nav-link" data-scroll-target="#soluciones-desarrolladas">Soluciones desarrolladas</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-1.-repartir-las-entradas" id="toc-ejercicio-1.-repartir-las-entradas" class="nav-link" data-scroll-target="#ejercicio-1.-repartir-las-entradas">Ejercicio 1. Repartir las entradas</a></li>
+  <li><a href="#ejercicio-2.-revisar-las-dos-condiciones" id="toc-ejercicio-2.-revisar-las-dos-condiciones" class="nav-link" data-scroll-target="#ejercicio-2.-revisar-las-dos-condiciones">Ejercicio 2. Revisar las dos condiciones</a></li>
+  <li><a href="#ejercicio-3.-reconstruir-la-coordenada" id="toc-ejercicio-3.-reconstruir-la-coordenada" class="nav-link" data-scroll-target="#ejercicio-3.-reconstruir-la-coordenada">Ejercicio 3. Reconstruir la coordenada</a></li>
+  <li><a href="#ejercicio-4.-despejar-sin-perder-el-signo" id="toc-ejercicio-4.-despejar-sin-perder-el-signo" class="nav-link" data-scroll-target="#ejercicio-4.-despejar-sin-perder-el-signo">Ejercicio 4. Despejar sin perder el signo</a></li>
+  <li><a href="#ejercicio-5.-sumar-y-conservar" id="toc-ejercicio-5.-sumar-y-conservar" class="nav-link" data-scroll-target="#ejercicio-5.-sumar-y-conservar">Ejercicio 5. Sumar y conservar</a></li>
+  <li><a href="#ejercicio-6.-una-eliminación-preparada" id="toc-ejercicio-6.-una-eliminación-preparada" class="nav-link" data-scroll-target="#ejercicio-6.-una-eliminación-preparada">Ejercicio 6. Una eliminación preparada</a></li>
+  <li><a href="#ejercicio-7.-la-suma-deja-libre-una-coordenada" id="toc-ejercicio-7.-la-suma-deja-libre-una-coordenada" class="nav-link" data-scroll-target="#ejercicio-7.-la-suma-deja-libre-una-coordenada">Ejercicio 7. La suma deja libre una coordenada</a></li>
+  <li><a href="#ejercicio-8.-un-punto-compartido" id="toc-ejercicio-8.-un-punto-compartido" class="nav-link" data-scroll-target="#ejercicio-8.-un-punto-compartido">Ejercicio 8. Un punto compartido</a></li>
+  <li><a href="#ejercicio-9.-una-coordenada-fija" id="toc-ejercicio-9.-una-coordenada-fija" class="nav-link" data-scroll-target="#ejercicio-9.-una-coordenada-fija">Ejercicio 9. Una coordenada fija</a></li>
+  <li><a href="#ejercicio-10.-una-contradicción-constante" id="toc-ejercicio-10.-una-contradicción-constante" class="nav-link" data-scroll-target="#ejercicio-10.-una-contradicción-constante">Ejercicio 10. Una contradicción constante</a></li>
+  <li><a href="#ejercicio-11.-un-parámetro-recorre-todas-las-soluciones" id="toc-ejercicio-11.-un-parámetro-recorre-todas-las-soluciones" class="nav-link" data-scroll-target="#ejercicio-11.-un-parámetro-recorre-todas-las-soluciones">Ejercicio 11. Un parámetro recorre todas las soluciones</a></li>
+  <li><a href="#ejercicio-12.-intersectar-con-todo-el-plano" id="toc-ejercicio-12.-intersectar-con-todo-el-plano" class="nav-link" data-scroll-target="#ejercicio-12.-intersectar-con-todo-el-plano">Ejercicio 12. Intersectar con todo el plano</a></li>
+  <li><a href="#ejercicio-13.-un-denominador-no-nulo" id="toc-ejercicio-13.-un-denominador-no-nulo" class="nav-link" data-scroll-target="#ejercicio-13.-un-denominador-no-nulo">Ejercicio 13. Un denominador no nulo</a></li>
+  <li><a href="#ejercicio-14.-leer-la-fila-completa" id="toc-ejercicio-14.-leer-la-fila-completa" class="nav-link" data-scroll-target="#ejercicio-14.-leer-la-fila-completa">Ejercicio 14. Leer la fila completa</a></li>
+  <li><a href="#ejercicio-15.-un-caso-singular" id="toc-ejercicio-15.-un-caso-singular" class="nav-link" data-scroll-target="#ejercicio-15.-un-caso-singular">Ejercicio 15. Un caso singular</a></li>
+  <li><a href="#ejercicio-16.-una-fila-redundante-incluso-cuando-se-anula" id="toc-ejercicio-16.-una-fila-redundante-incluso-cuando-se-anula" class="nav-link" data-scroll-target="#ejercicio-16.-una-fila-redundante-incluso-cuando-se-anula">Ejercicio 16. Una fila redundante, incluso cuando se anula</a></li>
+  <li><a href="#ejercicio-17.-litros-de-disolución-y-de-concentrado" id="toc-ejercicio-17.-litros-de-disolución-y-de-concentrado" class="nav-link" data-scroll-target="#ejercicio-17.-litros-de-disolución-y-de-concentrado">Ejercicio 17. Litros de disolución y de concentrado</a></li>
+  <li><a href="#ejercicio-18.-las-patas-adicionales" id="toc-ejercicio-18.-las-patas-adicionales" class="nav-link" data-scroll-target="#ejercicio-18.-las-patas-adicionales">Ejercicio 18. Las patas adicionales</a></li>
+  <li><a href="#ejercicio-19.-un-modelo-sin-compra-admisible" id="toc-ejercicio-19.-un-modelo-sin-compra-admisible" class="nav-link" data-scroll-target="#ejercicio-19.-un-modelo-sin-compra-admisible">Ejercicio 19. Un modelo sin compra admisible</a></li>
+  <li><a href="#ejercicio-20.-presupuestos-discretos" id="toc-ejercicio-20.-presupuestos-discretos" class="nav-link" data-scroll-target="#ejercicio-20.-presupuestos-discretos">Ejercicio 20. Presupuestos discretos</a></li>
+  <li><a href="#ejercicio-21.-precio-por-visita-y-cargo-fijo" id="toc-ejercicio-21.-precio-por-visita-y-cargo-fijo" class="nav-link" data-scroll-target="#ejercicio-21.-precio-por-visita-y-cargo-fijo">Ejercicio 21. Precio por visita y cargo fijo</a></li>
+  <li><a href="#ejercicio-22.-una-calibración-afín" id="toc-ejercicio-22.-una-calibración-afín" class="nav-link" data-scroll-target="#ejercicio-22.-una-calibración-afín">Ejercicio 22. Una calibración afín</a></li>
+  <li><a href="#ejercicio-23.-registrar-una-reducción-de-filas" id="toc-ejercicio-23.-registrar-una-reducción-de-filas" class="nav-link" data-scroll-target="#ejercicio-23.-registrar-una-reducción-de-filas">Ejercicio 23. Registrar una reducción de filas</a></li>
+  <li><a href="#ejercicio-24.-separar-singularidad-y-sensibilidad" id="toc-ejercicio-24.-separar-singularidad-y-sensibilidad" class="nav-link" data-scroll-target="#ejercicio-24.-separar-singularidad-y-sensibilidad">Ejercicio 24. Separar singularidad y sensibilidad</a></li>
+  </ul></li>
+  <li><a href="#diagnóstico-de-salida" id="toc-diagnóstico-de-salida" class="nav-link" data-scroll-target="#diagnóstico-de-salida">Diagnóstico de salida</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Sistemas de ecuaciones y relaciones lineales</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">22 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="capitulo-06.html">← Ecuaciones, inecuaciones y valor absoluto</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-08.html">Siguiente →</a></p>
+<p>Una boletería registra el número de personas que asistieron a una función y la recaudación de esa noche. Entre las entradas vendidas hay dos precios, de adulto e infantil, y queremos reconstruir cuántas correspondieron a cada clase. Podemos ensayar repartos que conserven el total de asistentes, pero algunos producirán demasiado dinero y otros demasiado poco. La respuesta tendrá que cumplir los dos registros al mismo tiempo.</p>
+<p>En el capítulo anterior buscábamos valores sujetos a una condición. La boletería nos pide coordinar varias incógnitas y varias condiciones, y ofrece también una estrategia para empezar: imaginar que todas las entradas tuvieron el precio menor y estudiar qué cambia al sustituir una por una de adulto. Ese razonamiento anticipa la eliminación de una incógnita. Lo compararemos con la sustitución y con la interpretación geométrica de las ecuaciones para comprender cuándo los datos determinan una respuesta y cuándo dejan posibilidades abiertas o resultan incompatibles.</p>
+<section id="dos-condiciones-para-una-misma-situación" class="level2">
+<h2 class="anchored" data-anchor-id="dos-condiciones-para-una-misma-situación">Dos condiciones para una misma situación</h2>
+<section id="problema-1.-lo-que-sabe-la-boletería" class="level3">
+<h3 class="anchored" data-anchor-id="problema-1.-lo-que-sabe-la-boletería">Problema 1. Lo que sabe la boletería</h3>
+<p><strong>Enunciado.</strong> Se vendieron 20 entradas. Las de adulto costaban 5000 pesos y las infantiles, 3000 pesos. La recaudación fue de 84000 pesos. ¿Cuántas entradas de cada clase se vendieron?</p>
+<p><strong>Solución.</strong> Llamemos <span class="math inline">\(a\)</span> a las entradas de adulto e <span class="math inline">\(i\)</span> a las infantiles. Ambas cantidades deben ser enteras no negativas. El número de entradas y la recaudación producen <span class="math display">\[\begin{cases}a+i=20,\\5000a+3000i=84000.\end{cases}\]</span> Podemos comenzar imaginando que todas fueron infantiles. En ese caso se habrían recaudado <span class="math inline">\(20\cdot3000=60000\)</span> pesos. Cada entrada de adulto agrega 2000 pesos respecto de esa base. Faltan <span class="math inline">\(84000-60000=24000\)</span> pesos, por lo que hubo <span class="math inline">\(24000/2000=12\)</span> entradas de adulto y ocho infantiles. Comprobamos las dos condiciones: <span class="math inline">\(12+8=20\)</span> y <span class="math inline">\(5000\cdot12+3000\cdot8=84000\)</span>. El razonamiento ya contiene un método de eliminación: restar 3000 veces la primera ecuación de la segunda deja <span class="math inline">\(2000a=24000\)</span>.</p>
+<p>Una <strong>solución de un sistema de dos incógnitas</strong> es un par ordenado <span class="math inline">\((x,y)\)</span> que satisface todas sus ecuaciones. El orden importa: la primera coordenada corresponde a la primera incógnita. El dominio puede ser <span class="math inline">\(\mathbb R^2\)</span>, el conjunto de pares reales, o una parte de él impuesta por el problema. En la boletería trabajamos con pares de enteros no negativos.</p>
+</section>
+<section id="problema-2.-cumplir-una-ecuación-no-basta" class="level3">
+<h3 class="anchored" data-anchor-id="problema-2.-cumplir-una-ecuación-no-basta">Problema 2. Cumplir una ecuación no basta</h3>
+<p><strong>Enunciado.</strong> Decide cuáles de los pares <span class="math inline">\((2,1)\)</span> y <span class="math inline">\((1,2)\)</span> resuelven el sistema <span class="math inline">\(x+y=3\)</span>, <span class="math inline">\(2x-y=3\)</span>.</p>
+<p><strong>Solución.</strong> Ambos pares cumplen <span class="math inline">\(x+y=3\)</span>. En la segunda ecuación, <span class="math inline">\((2,1)\)</span> da <span class="math inline">\(2\cdot2-1=3\)</span> y sirve; <span class="math inline">\((1,2)\)</span> da <span class="math inline">\(2\cdot1-2=0\)</span> y falla. La primera condición describe muchos pares, entre ellos <span class="math inline">\((0,3)\)</span> y <span class="math inline">\((3,0)\)</span>. La segunda selecciona, entre los que sobreviven a la primera, los que también la cumplen. Más adelante justificaremos que <span class="math inline">\((2,1)\)</span> es la única solución de este sistema.</p>
+<p>Una ecuación lineal de dos incógnitas tiene la forma <span class="math inline">\(ax+by=c\)</span>, con coeficientes reales conocidos. Cada término con incógnita consta de un coeficiente conocido multiplicado por esa incógnita. Una condición como <span class="math inline">\(xy=6\)</span> o <span class="math inline">\(x^2+y=4\)</span> requiere otros métodos. En un sistema lineal exigimos que todas las ecuaciones tengan aquella forma; admitiremos también los casos degenerados en que los coeficientes de las incógnitas se anulan.</p>
+</section>
+</section>
+<section id="sustituir-una-relación-dentro-de-otra" class="level2">
+<h2 class="anchored" data-anchor-id="sustituir-una-relación-dentro-de-otra">Sustituir una relación dentro de otra</h2>
+<p>Si conocemos <span class="math inline">\(y\)</span> en términos de <span class="math inline">\(x\)</span>, podemos usar esa información en la otra ecuación. La expresión usada para reemplazar a <span class="math inline">\(y\)</span> procede de una condición que toda solución debe satisfacer. Después de resolver la ecuación resultante, reconstruimos la coordenada que habíamos expresado en función de la otra.</p>
+<section id="problema-3.-una-incógnita-escrita-con-la-otra" class="level3">
+<h3 class="anchored" data-anchor-id="problema-3.-una-incógnita-escrita-con-la-otra">Problema 3. Una incógnita escrita con la otra</h3>
+<p><strong>Enunciado.</strong> Resuelve <span class="math inline">\(y=2x-1\)</span>, <span class="math inline">\(x+y=8\)</span>.</p>
+<p><strong>Solución.</strong> La primera ecuación obliga a que <span class="math inline">\(y\)</span> sea <span class="math inline">\(2x-1\)</span>. Sustituimos esa expresión en la segunda: <span class="math inline">\(x+(2x-1)=8\)</span>. Reunir términos da <span class="math inline">\(3x=9\)</span>, de donde <span class="math inline">\(x=3\)</span>. Regresamos a la primera relación y obtenemos <span class="math inline">\(y=2\cdot3-1=5\)</span>. El par <span class="math inline">\((3,5)\)</span> cumple ambas ecuaciones. Además, cualquier solución tendría que producir <span class="math inline">\(x=3\)</span> en la ecuación sustituida y, después, <span class="math inline">\(y=5\)</span>; por eso no falta ningún otro par.</p>
+</section>
+<section id="problema-4.-fracciones-en-una-de-las-condiciones" class="level3">
+<h3 class="anchored" data-anchor-id="problema-4.-fracciones-en-una-de-las-condiciones">Problema 4. Fracciones en una de las condiciones</h3>
+<p><strong>Enunciado.</strong> Resuelve <span class="math inline">\(x/2+y/3=3\)</span>, <span class="math inline">\(x-y=1\)</span>.</p>
+<p><strong>Solución.</strong> Los denominadores son constantes no nulas, así que admitimos todo par real. De la segunda ecuación obtenemos <span class="math inline">\(x=y+1\)</span>. Sustituimos en la primera y multiplicamos por 6: <span class="math display">\[3(y+1)+2y=18.\]</span> Entonces <span class="math inline">\(5y+3=18\)</span>, luego <span class="math inline">\(y=3\)</span> y <span class="math inline">\(x=4\)</span>. En la ecuación inicial <span class="math inline">\(4/2+3/3=2+1=3\)</span>; en la otra, <span class="math inline">\(4-3=1\)</span>. El conjunto solución es <span class="math inline">\(\{(4,3)\}\)</span>. Multiplicar por 6 no añade restricciones ni candidatos porque 6 nunca se anula.</p>
+<p>La sustitución es especialmente cómoda cuando una incógnita aparece con coeficiente 1 o <span class="math inline">\(-1\)</span>. Si para despejar tuviéramos que dividir por un parámetro, antes habría que revisar cuándo ese coeficiente puede valer cero. La elección del método depende de la escritura concreta del sistema.</p>
+</section>
+</section>
+<section id="eliminar-sin-perder-una-condición" class="level2">
+<h2 class="anchored" data-anchor-id="eliminar-sin-perder-una-condición">Eliminar sin perder una condición</h2>
+<p>En la boletería restamos del ingreso total el que habrían producido las entradas al precio menor; la diferencia dejó visible la contribución de las entradas de adulto. Esa operación combinaba dos ecuaciones para eliminar una incógnita. En un sistema general buscaremos multiplicadores que hagan iguales u opuestos sus coeficientes y después restaremos o sumaremos las ecuaciones. Conservaremos una de las condiciones originales para reconstruir la incógnita eliminada y regresar al sistema, porque la suma aislada también puede cumplirse en pares que incumplen los datos iniciales.</p>
+<section id="problema-5.-coeficientes-opuestos" class="level3">
+<h3 class="anchored" data-anchor-id="problema-5.-coeficientes-opuestos">Problema 5. Coeficientes opuestos</h3>
+<p><strong>Enunciado.</strong> Resuelve <span class="math inline">\(x+y=7\)</span>, <span class="math inline">\(3x-y=5\)</span>.</p>
+<p><strong>Solución.</strong> Sumamos las ecuaciones y resulta <span class="math inline">\(4x=12\)</span>, así que <span class="math inline">\(x=3\)</span>. Conservamos la primera ecuación: <span class="math inline">\(3+y=7\)</span>, de donde <span class="math inline">\(y=4\)</span>. El par <span class="math inline">\((3,4)\)</span> satisface también <span class="math inline">\(3\cdot3-4=5\)</span>. La transformación completa fue reemplazar la segunda ecuación por la suma, manteniendo la primera. Desde el sistema transformado recuperamos la segunda original restando la primera a la suma; el paso es reversible.</p>
+</section>
+<section id="problema-6.-preparar-los-coeficientes" class="level3">
+<h3 class="anchored" data-anchor-id="problema-6.-preparar-los-coeficientes">Problema 6. Preparar los coeficientes</h3>
+<p><strong>Enunciado.</strong> Resuelve <span class="math inline">\(2x+3y=19\)</span>, <span class="math inline">\(5x-2y=0\)</span>.</p>
+<p><strong>Solución.</strong> Para eliminar <span class="math inline">\(y\)</span>, multiplicamos la primera ecuación completa por 2 y la segunda completa por 3: <span class="math display">\[4x+6y=38,\qquad15x-6y=0.\]</span> La suma da <span class="math inline">\(19x=38\)</span>, luego <span class="math inline">\(x=2\)</span>. Sustituir en <span class="math inline">\(5x-2y=0\)</span> produce <span class="math inline">\(10-2y=0\)</span>, de donde <span class="math inline">\(y=5\)</span>. Comprobamos <span class="math inline">\(2\cdot2+3\cdot5=19\)</span> y <span class="math inline">\(5\cdot2-2\cdot5=0\)</span>. Los multiplicadores 2 y 3 son no nulos, y la recuperación de una ecuación desde la suma y la otra garantiza que el método conserva todas las soluciones.</p>
+</section>
+<section id="problema-7.-una-suma-con-demasiadas-soluciones" class="level3">
+<h3 class="anchored" data-anchor-id="problema-7.-una-suma-con-demasiadas-soluciones">Problema 7. Una suma con demasiadas soluciones</h3>
+<p><strong>Enunciado.</strong> Al sumar <span class="math inline">\(x+y=6\)</span> y <span class="math inline">\(x-y=2\)</span> se obtiene <span class="math inline">\(2x=8\)</span>. ¿Es correcto reemplazar el sistema por esa única ecuación?</p>
+<p><strong>Solución.</strong> La suma obliga a <span class="math inline">\(x=4\)</span>, pero no dice nada sobre <span class="math inline">\(y\)</span>. Por ejemplo, <span class="math inline">\((4,100)\)</span> cumple <span class="math inline">\(2x=8\)</span> y falla en las dos condiciones originales. Debemos conservar una de ellas: con <span class="math inline">\(x+y=6\)</span> obtenemos <span class="math inline">\(y=2\)</span>. El par <span class="math inline">\((4,2)\)</span> cumple también <span class="math inline">\(x-y=2\)</span>. La ecuación sumada es una consecuencia necesaria del sistema; junto con una ecuación conservada forma un sistema equivalente. Esa diferencia explica por qué eliminar una incógnita no autoriza a borrar información sin control.</p>
+</section>
+<section id="transformaciones-que-conservan-un-sistema" class="level3">
+<h3 class="anchored" data-anchor-id="transformaciones-que-conservan-un-sistema">Transformaciones que conservan un sistema</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Fórmula y condiciones de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cambiar el orden</td>
+<td>Intercambiar dos ecuaciones conserva el conjunto solución.</td>
+</tr>
+<tr class="even">
+<td>Escalar una ecuación</td>
+<td>Multiplicar todos sus términos por <span class="math inline">\(c\ne0\)</span> conserva las soluciones. El coeficiente puede depender de un parámetro solo en la rama donde no se anula.</td>
+</tr>
+<tr class="odd">
+<td>Reemplazar por una combinación</td>
+<td>Conservar <span class="math inline">\(E_1\)</span> y reemplazar <span class="math inline">\(E_2\)</span> por <span class="math inline">\(E_2+cE_1\)</span> es reversible para todo real <span class="math inline">\(c\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Sustituir una incógnita</td>
+<td>Si una ecuación equivale a <span class="math inline">\(y=f(x)\)</span>, el sistema equivale a conservar esa igualdad y reemplazar <span class="math inline">\(y\)</span> por <span class="math inline">\(f(x)\)</span> en las otras.</td>
+</tr>
+<tr class="odd">
+<td>Restringir el dominio</td>
+<td>Las soluciones admisibles son las soluciones algebraicas intersectadas con el dominio del modelo.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#equivalencia-de-sistemas-y-operaciones-de-filas">Equivalencia de sistemas y operaciones de filas</a>» en el apéndice.</p>
+</section>
+</section>
+<section id="cada-ecuación-dibuja-un-lugar" class="level2">
+<h2 class="anchored" data-anchor-id="cada-ecuación-dibuja-un-lugar">Cada ecuación dibuja un lugar</h2>
+<p>Un par real puede representarse como un punto del plano: <span class="math inline">\(x\)</span> indica su posición horizontal e <span class="math inline">\(y\)</span>, su posición vertical. Al fijar la ecuación <span class="math inline">\(ax+by=c\)</span>, con al menos uno de <span class="math inline">\(a,b\)</span> distinto de cero, los puntos que la satisfacen forman una recta. Si <span class="math inline">\(b\ne0\)</span>, despejar da <span class="math inline">\(y=-(a/b)x+c/b\)</span>; si <span class="math inline">\(b=0\)</span>, necesariamente <span class="math inline">\(a\ne0\)</span> y obtenemos la recta vertical <span class="math inline">\(x=c/a\)</span>.</p>
+<p>La solución del sistema debe estar en las dos rectas. Por eso la buscamos en su intersección. El dibujo nos ayuda a comprender cuántas soluciones cabe esperar; los cálculos exactos permiten decidir cuáles son sus coordenadas.</p>
+<section id="problema-8.-una-intersección-que-podemos-verificar" class="level3">
+<h3 class="anchored" data-anchor-id="problema-8.-una-intersección-que-podemos-verificar">Problema 8. Una intersección que podemos verificar</h3>
+<p><strong>Enunciado.</strong> Resuelve e interpreta gráficamente <span class="math inline">\(2x+y=7\)</span>, <span class="math inline">\(x-y=2\)</span>.</p>
+<p><strong>Solución.</strong> Las rectas son <span class="math inline">\(y=7-2x\)</span> e <span class="math inline">\(y=x-2\)</span>. Para dibujar la primera podemos usar <span class="math inline">\((0,7)\)</span> y <span class="math inline">\((3,1)\)</span>; para la segunda, <span class="math inline">\((0,-2)\)</span> y <span class="math inline">\((3,1)\)</span>. La intersección sugerida es <span class="math inline">\((3,1)\)</span>. La calculamos sin depender de la escala del dibujo: al sumar las ecuaciones resulta <span class="math inline">\(3x=9\)</span>, luego <span class="math inline">\(x=3\)</span> e <span class="math inline">\(y=1\)</span>. El par cumple <span class="math inline">\(2\cdot3+1=7\)</span> y <span class="math inline">\(3-1=2\)</span>. Cualquier solución debe tener ese valor de <span class="math inline">\(x\)</span> y ese valor de <span class="math inline">\(y\)</span>.</p>
+<div id="fig-mp-dos-condiciones-en-el-plano" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Las rectas de las dos condiciones se encuentran en tres, uno.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-dos-condiciones-en-el-plano-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Dos_condiciones_en_el_plano.svg" class="img-fluid figure-img" alt="Las rectas de las dos condiciones se encuentran en tres, uno.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-dos-condiciones-en-el-plano-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Las rectas de las dos condiciones se encuentran en tres, uno.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="problema-9.-una-recta-vertical-también-es-una-condición-lineal" class="level3">
+<h3 class="anchored" data-anchor-id="problema-9.-una-recta-vertical-también-es-una-condición-lineal">Problema 9. Una recta vertical también es una condición lineal</h3>
+<p><strong>Enunciado.</strong> Resuelve <span class="math inline">\(x=2\)</span>, <span class="math inline">\(3x+2y=10\)</span>.</p>
+<p><strong>Solución.</strong> La primera condición describe todos los puntos de la recta vertical que pasa por <span class="math inline">\(x=2\)</span>. Sustituyendo en la segunda encontramos <span class="math inline">\(6+2y=10\)</span>, por lo que <span class="math inline">\(y=2\)</span>. La única intersección es <span class="math inline">\((2,2)\)</span>. No necesitamos escribir la primera recta como <span class="math inline">\(y=mx+b\)</span>: una recta vertical no admite esa forma porque contiene muchos valores de <span class="math inline">\(y\)</span> para el mismo <span class="math inline">\(x\)</span>.</p>
+</section>
+</section>
+<section id="una-ninguna-o-infinitas-soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="una-ninguna-o-infinitas-soluciones">Una, ninguna o infinitas soluciones</h2>
+<p>Dos rectas pueden cortarse en un punto, ser paralelas distintas o coincidir. En el cálculo, estas posibilidades aparecen como una ecuación que determina la incógnita, una igualdad imposible o una identidad que deja una cantidad libre. También debemos contemplar las ecuaciones que tienen ambos coeficientes nulos: <span class="math inline">\(0x+0y=c\)</span> puede describir todo el plano o ningún punto.</p>
+<section id="problema-10.-dos-condiciones-incompatibles" class="level3">
+<h3 class="anchored" data-anchor-id="problema-10.-dos-condiciones-incompatibles">Problema 10. Dos condiciones incompatibles</h3>
+<p><strong>Enunciado.</strong> Resuelve <span class="math inline">\(2x-y=1\)</span>, <span class="math inline">\(4x-2y=6\)</span>.</p>
+<p><strong>Solución.</strong> El miembro izquierdo de la segunda ecuación es el doble del primero. Si la primera se cumple, ese miembro debe valer 2, pero la segunda exige que valga 6. Restar dos veces la primera a la segunda produce <span class="math inline">\(0=4\)</span>, imposible. No hay solución. En forma despejada las rectas son <span class="math inline">\(y=2x-1\)</span> e <span class="math inline">\(y=2x-3\)</span>: tienen la misma inclinación y distintas posiciones.</p>
+</section>
+<section id="problema-11.-dos-escrituras-de-la-misma-condición" class="level3">
+<h3 class="anchored" data-anchor-id="problema-11.-dos-escrituras-de-la-misma-condición">Problema 11. Dos escrituras de la misma condición</h3>
+<p><strong>Enunciado.</strong> Resuelve <span class="math inline">\(2x-y=1\)</span>, <span class="math inline">\(4x-2y=2\)</span>.</p>
+<p><strong>Solución.</strong> La segunda ecuación es exactamente el doble de la primera. Al restar ese doble queda <span class="math inline">\(0=0\)</span>, que no impone una condición adicional. Elegimos libremente <span class="math inline">\(x=t\)</span>, con <span class="math inline">\(t\in\mathbb R\)</span>. La primera ecuación obliga a <span class="math inline">\(y=2t-1\)</span>. Todas las soluciones, y solo ellas, son <span class="math display">\[\{(t,2t-1):t\in\mathbb R\}.\]</span> Sustituir cualquier <span class="math inline">\(t\)</span> da <span class="math inline">\(2t-(2t-1)=1\)</span> y el doble de esa igualdad. El parámetro describe la recta completa; escoger un par particular no habría resuelto el sistema entero.</p>
+<div id="fig-mp-rectas-y-compatibilidad" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Intersección única, rectas paralelas distintas y rectas coincidentes.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-rectas-y-compatibilidad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Rectas_y_compatibilidad.svg" class="img-fluid figure-img" alt="Intersección única, rectas paralelas distintas y rectas coincidentes.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-rectas-y-compatibilidad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Intersección única, rectas paralelas distintas y rectas coincidentes.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="problema-12.-una-ecuación-que-no-restringe-nada" class="level3">
+<h3 class="anchored" data-anchor-id="problema-12.-una-ecuación-que-no-restringe-nada">Problema 12. Una ecuación que no restringe nada</h3>
+<p><strong>Enunciado.</strong> Resuelve <span class="math inline">\(0x+0y=0\)</span>, <span class="math inline">\(x-y=3\)</span>.</p>
+<p><strong>Solución.</strong> La primera igualdad es verdadera para todo par real. Sobrevive únicamente la segunda condición. Podemos elegir <span class="math inline">\(y=t\)</span> y obtener <span class="math inline">\(x=t+3\)</span>, con <span class="math inline">\(t\in\mathbb R\)</span>. El conjunto solución es <span class="math inline">\(\{(t+3,t):t\in\mathbb R\}\)</span>. La igualdad <span class="math inline">\(0=0\)</span> no es una recta: en el plano, su conjunto de soluciones es todo <span class="math inline">\(\mathbb R^2\)</span>. La intersección de ese plano completo con <span class="math inline">\(x-y=3\)</span> es la recta de la segunda ecuación.</p>
+</section>
+</section>
+<section id="un-criterio-general-y-sus-excepciones" class="level2">
+<h2 class="anchored" data-anchor-id="un-criterio-general-y-sus-excepciones">Un criterio general y sus excepciones</h2>
+<p>Consideremos <span class="math display">\[\begin{cases}ax+by=e,\\cx+dy=f.\end{cases}\]</span> Para eliminar <span class="math inline">\(y\)</span>, sus coeficientes <span class="math inline">\(b\)</span> y <span class="math inline">\(d\)</span> deben producir el mismo término: multiplicamos la primera ecuación por <span class="math inline">\(d\)</span> y la segunda por <span class="math inline">\(b\)</span>, y restamos. El término <span class="math inline">\(bdy\)</span> desaparece y queda <span class="math inline">\((ad-bc)x=ed-bf\)</span>. Otra combinación elimina <span class="math inline">\(x\)</span> y da <span class="math inline">\((ad-bc)y=af-ec\)</span>. Hemos obtenido estas condiciones sin dividir por ningún coeficiente. El mismo número, <span class="math inline">\(D=ad-bc\)</span>, multiplica a ambas incógnitas; lo llamamos <strong>determinante</strong> del sistema.</p>
+<p>Si <span class="math inline">\(D\ne0\)</span>, cualquier solución tiene necesariamente <span class="math display">\[x=\frac{ed-bf}{D},\qquad y=\frac{af-ec}{D}.\]</span> Al sustituir estas expresiones en las dos ecuaciones se comprueba que las cumplen. Tenemos existencia y unicidad. Si <span class="math inline">\(D=0\)</span>, estas divisiones no existen y debemos estudiar la compatibilidad de las condiciones. El determinante cero, por sí solo, no distingue un sistema imposible de uno con infinitas soluciones.</p>
+<section id="problema-13.-usar-el-criterio-después-de-comprenderlo" class="level3">
+<h3 class="anchored" data-anchor-id="problema-13.-usar-el-criterio-después-de-comprenderlo">Problema 13. Usar el criterio después de comprenderlo</h3>
+<p><strong>Enunciado.</strong> Resuelve <span class="math inline">\(3x+2y=7\)</span>, <span class="math inline">\(2x-y=0\)</span> mediante el determinante.</p>
+<p><strong>Solución.</strong> Los coeficientes son <span class="math inline">\(a=3\)</span>, <span class="math inline">\(b=2\)</span>, <span class="math inline">\(c=2\)</span>, <span class="math inline">\(d=-1\)</span>, <span class="math inline">\(e=7\)</span>, <span class="math inline">\(f=0\)</span>. El determinante es <span class="math inline">\(3(-1)-2\cdot2=-7\)</span>, no nulo. Por tanto, <span class="math display">\[x=\frac{7(-1)-2\cdot0}{-7}=1,\qquad y=\frac{3\cdot0-7\cdot2}{-7}=2.\]</span> El par <span class="math inline">\((1,2)\)</span> cumple <span class="math inline">\(3+4=7\)</span> y <span class="math inline">\(2-2=0\)</span>. La fórmula resume las combinaciones de ecuaciones; no reemplaza la revisión de que el denominador sea distinto de cero.</p>
+</section>
+<section id="problema-14.-tres-ceros-que-no-garantizan-compatibilidad" class="level3">
+<h3 class="anchored" data-anchor-id="problema-14.-tres-ceros-que-no-garantizan-compatibilidad">Problema 14. Tres ceros que no garantizan compatibilidad</h3>
+<p><strong>Enunciado.</strong> En el sistema <span class="math inline">\(0x+0y=1\)</span>, <span class="math inline">\(0x+0y=0\)</span>, calcula <span class="math inline">\(ad-bc\)</span>, <span class="math inline">\(ed-bf\)</span> y <span class="math inline">\(af-ec\)</span>. ¿Permiten concluir que hay infinitas soluciones?</p>
+<p><strong>Solución.</strong> Los seis coeficientes, salvo <span class="math inline">\(e=1\)</span>, son cero. Las tres expresiones pedidas valen cero. Sin embargo, la primera condición es <span class="math inline">\(0=1\)</span>, imposible. El sistema no tiene solución. En los casos degenerados hay que leer las ecuaciones originales. Si todos los coeficientes de las incógnitas son cero, las constantes deciden: todas nulas dejan el plano completo; alguna no nula hace el sistema incompatible.</p>
+<p>Para completar la clasificación cuando <span class="math inline">\(D=0\)</span>, supongamos que existe una ecuación con algún coeficiente de incógnita no nulo. Podemos tomarla como primera. La otra fila de coeficientes es proporcional a ella. Si la constante guarda el mismo factor de proporcionalidad, queda una sola recta; si no lo guarda, las condiciones son incompatibles. La palabra «proporcional» significa aquí que existe un número multiplicador común, incluso cero. Así evitamos cocientes como <span class="math inline">\(c/a\)</span> cuando <span class="math inline">\(a=0\)</span>.</p>
+</section>
+<section id="clasificación-de-los-sistemas-lineales-de-dos-incógnitas" class="level3">
+<h3 class="anchored" data-anchor-id="clasificación-de-los-sistemas-lineales-de-dos-incógnitas">Clasificación de los sistemas lineales de dos incógnitas</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Fórmula y condiciones de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Solución única</td>
+<td>Si <span class="math inline">\(D=ad-bc\ne0\)</span>, <span class="math inline">\(x=(ed-bf)/D\)</span> e <span class="math inline">\(y=(af-ec)/D\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Determinante nulo con fila no nula</td>
+<td>Si <span class="math inline">\(D=0\)</span> y <span class="math inline">\((a,b)\ne(0,0)\)</span>, existe <span class="math inline">\(\lambda\)</span> con <span class="math inline">\((c,d)=\lambda(a,b)\)</span>. Hay una recta de soluciones si <span class="math inline">\(f=\lambda e\)</span>; en otro caso no hay solución. Se pueden intercambiar las filas para disponer de una primera fila no nula.</td>
+</tr>
+<tr class="odd">
+<td>Todas las filas nulas</td>
+<td>Si <span class="math inline">\(a=b=c=d=0\)</span> y <span class="math inline">\(e=f=0\)</span>, la solución es <span class="math inline">\(\mathbb R^2\)</span>. Si alguna de <span class="math inline">\(e,f\)</span> es no nula, es <span class="math inline">\(\varnothing\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Interpretación geométrica</td>
+<td>Cuando ambas ecuaciones representan rectas, su intersección es un punto, una recta completa o el conjunto vacío.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#determinante-existencia-y-clasificación-de-sistemas">Determinante, existencia y clasificación de sistemas</a>» en el apéndice.</p>
+</section>
+</section>
+<section id="un-parámetro-obliga-a-revisar-la-frontera" class="level2">
+<h2 class="anchored" data-anchor-id="un-parámetro-obliga-a-revisar-la-frontera">Un parámetro obliga a revisar la frontera</h2>
+<p>Un modelo puede cambiar con una tarifa, una capacidad o un coeficiente. Resolver una familia significa describir las soluciones para todos los valores admisibles del parámetro. Los valores que anulan el determinante merecen una rama propia.</p>
+<section id="problema-15.-un-valor-del-parámetro-vuelve-imposible-el-sistema" class="level3">
+<h3 class="anchored" data-anchor-id="problema-15.-un-valor-del-parámetro-vuelve-imposible-el-sistema">Problema 15. Un valor del parámetro vuelve imposible el sistema</h3>
+<p><strong>Enunciado.</strong> Clasifica y resuelve <span class="math inline">\(x+y=2\)</span>, <span class="math inline">\(x+ky=3\)</span>, según el parámetro real <span class="math inline">\(k\)</span>.</p>
+<p><strong>Solución.</strong> Restando la primera ecuación a la segunda obtenemos <span class="math inline">\((k-1)y=1\)</span>. Si <span class="math inline">\(k\ne1\)</span>, resulta <span class="math inline">\(y=1/(k-1)\)</span> y <span class="math inline">\(x=2-y=(2k-3)/(k-1)\)</span>. Al sustituir, la suma es 2 y <span class="math inline">\(x+ky=2+(k-1)y=3\)</span>. Si <span class="math inline">\(k=1\)</span>, las ecuaciones exigirían simultáneamente <span class="math inline">\(x+y=2\)</span> y <span class="math inline">\(x+y=3\)</span>: no hay solución. La división por <span class="math inline">\(k-1\)</span> solo se empleó en la rama donde ese número es no nulo.</p>
+</section>
+<section id="problema-16.-una-familia-que-siempre-deja-una-recta" class="level3">
+<h3 class="anchored" data-anchor-id="problema-16.-una-familia-que-siempre-deja-una-recta">Problema 16. Una familia que siempre deja una recta</h3>
+<p><strong>Enunciado.</strong> Clasifica <span class="math inline">\(x+y=2\)</span>, <span class="math inline">\(kx+ky=2k\)</span> para todo <span class="math inline">\(k\in\mathbb R\)</span>.</p>
+<p><strong>Solución.</strong> La segunda ecuación es <span class="math inline">\(k\)</span> veces la primera. Para <span class="math inline">\(k\ne0\)</span> aporta la misma condición; para <span class="math inline">\(k=0\)</span> se convierte en <span class="math inline">\(0=0\)</span> y tampoco agrega restricciones. Para todo parámetro hay infinitas soluciones: <span class="math inline">\(\{(t,2-t):t\in\mathbb R\}\)</span>. No necesitamos dividir la segunda ecuación por <span class="math inline">\(k\)</span>; conservar la primera permite tratar todos los casos con un solo argumento.</p>
+</section>
+</section>
+<section id="lo-que-un-modelo-permite-aceptar" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-un-modelo-permite-aceptar">Lo que un modelo permite aceptar</h2>
+<p>La solución algebraica pertenece a un dominio amplio. El relato puede exigir cantidades positivas, números enteros o límites de capacidad. Estas condiciones forman parte del problema y se comprueban sobre el par completo. Las unidades también orientan la construcción: sumar litros con litros es legítimo; sumar litros con porcentajes sin convertirlos en cantidades de sustancia no lo es.</p>
+<section id="problema-17.-preparar-una-mezcla-con-dos-disoluciones" class="level3">
+<h3 class="anchored" data-anchor-id="problema-17.-preparar-una-mezcla-con-dos-disoluciones">Problema 17. Preparar una mezcla con dos disoluciones</h3>
+<p><strong>Enunciado.</strong> Se necesitan 12 litros de una disolución al 15 %, mezclando disoluciones al 30 % y al 10 %. ¿Cuántos litros de cada una se usan? Supón volúmenes aditivos y conservación del concentrado.</p>
+<p><strong>Solución.</strong> Sean <span class="math inline">\(x,y\ge0\)</span> los litros de las disoluciones al 30 % y al 10 %, respectivamente. El volumen total exige <span class="math inline">\(x+y=12\)</span>. Los litros de concentrado exigen <span class="math inline">\(0{,}30x+0{,}10y=0{,}15\cdot12=1{,}8\)</span>. Multiplicando la segunda ecuación por 10 resulta <span class="math inline">\(3x+y=18\)</span>. Restar la primera da <span class="math inline">\(2x=6\)</span>, de donde <span class="math inline">\(x=3\)</span> e <span class="math inline">\(y=9\)</span>. Las cantidades son no negativas, suman 12 litros y contienen <span class="math inline">\(0{,}9+0{,}9=1{,}8\)</span> litros de concentrado. Se usan tres litros de la primera disolución y nueve de la segunda.</p>
+</section>
+<section id="problema-18.-contar-patas-y-animales" class="level3">
+<h3 class="anchored" data-anchor-id="problema-18.-contar-patas-y-animales">Problema 18. Contar patas y animales</h3>
+<p><strong>Enunciado.</strong> En un recinto hay gallinas y vacas: 18 animales y 50 patas en total. ¿Cuántos hay de cada especie?</p>
+<p><strong>Solución.</strong> Sean <span class="math inline">\(g,v\)</span> sus cantidades, enteras no negativas. Tenemos <span class="math inline">\(g+v=18\)</span> y <span class="math inline">\(2g+4v=50\)</span>. Restamos dos veces la primera ecuación de la segunda: <span class="math inline">\(2v=14\)</span>. Entonces <span class="math inline">\(v=7\)</span> y <span class="math inline">\(g=11\)</span>. Son enteros admisibles; <span class="math inline">\(11+7=18\)</span> y <span class="math inline">\(2\cdot11+4\cdot7=50\)</span>. La eliminación tiene una interpretación directa: asignar primero dos patas a cada animal y contar las catorce patas restantes como dos adicionales por cada vaca.</p>
+</section>
+<section id="problema-19.-un-par-exacto-que-no-describe-un-pedido" class="level3">
+<h3 class="anchored" data-anchor-id="problema-19.-un-par-exacto-que-no-describe-un-pedido">Problema 19. Un par exacto que no describe un pedido</h3>
+<p><strong>Enunciado.</strong> Un pedido contiene ocho objetos de dos tipos, cuyos precios son 100 y 200 pesos por unidad. ¿Puede costar 600 pesos?</p>
+<p><strong>Solución.</strong> Si <span class="math inline">\(x,y\)</span> son las cantidades, el modelo sería <span class="math inline">\(x+y=8\)</span>, <span class="math inline">\(100x+200y=600\)</span>. Dividimos la segunda por 100 y restamos la primera: <span class="math inline">\(y=-2\)</span>, de donde <span class="math inline">\(x=10\)</span>. El sistema tiene una única solución real, <span class="math inline">\((10,-2)\)</span>, pero ninguna solución con cantidades no negativas. Además, ocho objetos cuestan al menos <span class="math inline">\(8\cdot100=800\)</span> pesos. Esa cota confirma que el pedido descrito es imposible.</p>
+</section>
+<section id="problema-20.-qué-presupuestos-admiten-un-reparto" class="level3">
+<h3 class="anchored" data-anchor-id="problema-20.-qué-presupuestos-admiten-un-reparto">Problema 20. Qué presupuestos admiten un reparto</h3>
+<p><strong>Enunciado.</strong> Se compran diez paquetes de dos tipos. Un tipo cuesta 2000 pesos y el otro, 4000. Escribe el presupuesto como <span class="math inline">\(B\)</span> miles de pesos y determina cuáles presupuestos permiten una compra exacta.</p>
+<p><strong>Solución.</strong> Si <span class="math inline">\(x,y\)</span> son las cantidades de cada tipo, <span class="math inline">\(x+y=10\)</span> y <span class="math inline">\(2x+4y=B\)</span>. Restar dos veces la primera da <span class="math inline">\(2y=B-20\)</span>. Por tanto, <span class="math display">\[y=\frac{B-20}{2},\qquad x=\frac{40-B}{2}.\]</span> La no negatividad exige <span class="math inline">\(20\le B\le40\)</span>. Pero los paquetes también deben contarse mediante enteros: como <span class="math inline">\(y\)</span> puede ser <span class="math inline">\(0,1,\ldots,10\)</span>, los únicos presupuestos exactos, en miles de pesos, son <span class="math inline">\(20,22,24,\ldots,40\)</span>. Cada uno produce un par admisible y su sustitución reconstruye la compra. El intervalo continuo describe un modelo relajado; la lista discreta responde a la pregunta sobre paquetes.</p>
+</section>
+</section>
+<section id="reconstruir-una-relación-a-partir-de-dos-datos" class="level2">
+<h2 class="anchored" data-anchor-id="reconstruir-una-relación-a-partir-de-dos-datos">Reconstruir una relación a partir de dos datos</h2>
+<p>Una relación de la forma <span class="math inline">\(y=mx+b\)</span> tiene un cambio constante: al aumentar <span class="math inline">\(x\)</span> en <span class="math inline">\(h\)</span>, la cantidad <span class="math inline">\(y\)</span> aumenta en <span class="math inline">\(mh\)</span>. Si <span class="math inline">\(m&gt;0\)</span>, crece; si <span class="math inline">\(m&lt;0\)</span>, decrece; si <span class="math inline">\(m=0\)</span>, permanece constante. El coeficiente <span class="math inline">\(m\)</span> es la pendiente; <span class="math inline">\(b\)</span> coincide con el valor de <span class="math inline">\(y\)</span> en <span class="math inline">\(x=0\)</span> cuando esa entrada pertenece al dominio.</p>
+<p>Llamaremos <strong>afín</strong> a la relación <span class="math inline">\(y=mx+b\)</span> y reservaremos <strong>proporcionalidad directa</strong> para <span class="math inline">\(y=mx\)</span>. En sentido algebraico estricto, esta última es una función lineal; en algunos cursos escolares se usa «lineal» para toda relación cuya gráfica es una recta no vertical. La distinción permite reconocer cuándo hay un costo fijo y cuándo la razón <span class="math inline">\(y/x\)</span> es constante.</p>
+<section id="problema-21.-recuperar-una-tarifa" class="level3">
+<h3 class="anchored" data-anchor-id="problema-21.-recuperar-una-tarifa">Problema 21. Recuperar una tarifa</h3>
+<p><strong>Enunciado.</strong> Un servicio cobra una tarifa fija más una cantidad constante por visita. Cuatro visitas cuestan 6200 pesos y diez cuestan 11000. Encuentra la regla del cobro.</p>
+<p><strong>Solución.</strong> Escribimos <span class="math inline">\(C=mn+b\)</span>, donde <span class="math inline">\(n\)</span> cuenta visitas, <span class="math inline">\(m\)</span> se mide en pesos por visita y <span class="math inline">\(b\)</span> en pesos. Los datos producen <span class="math inline">\(4m+b=6200\)</span> y <span class="math inline">\(10m+b=11000\)</span>. Al restar obtenemos <span class="math inline">\(6m=4800\)</span>, así que <span class="math inline">\(m=800\)</span>. Entonces <span class="math inline">\(b=6200-4\cdot800=3000\)</span>. La regla es <span class="math inline">\(C=800n+3000\)</span>, para <span class="math inline">\(n\)</span> entero no negativo. Verifica ambos datos y predice que cero visitas tienen un cobro fijo de 3000 pesos, según la hipótesis del enunciado. Entre las cantidades positivas de visitas, el cociente <span class="math inline">\(C/n\)</span> varía: el costo fijo se reparte entre más visitas.</p>
+</section>
+<section id="problema-22.-calibrar-una-lectura" class="level3">
+<h3 class="anchored" data-anchor-id="problema-22.-calibrar-una-lectura">Problema 22. Calibrar una lectura</h3>
+<p><strong>Enunciado.</strong> Se adopta un modelo afín <span class="math inline">\(T=mr+b\)</span> entre una lectura <span class="math inline">\(r\)</span> y una temperatura <span class="math inline">\(T\)</span>. Se sabe que <span class="math inline">\(r=2\)</span> corresponde a <span class="math inline">\(T=5\)</span> grados y <span class="math inline">\(r=8\)</span> a <span class="math inline">\(T=23\)</span> grados. Determina la relación y la lectura correspondiente a 14 grados.</p>
+<p><strong>Solución.</strong> Las dos correspondencias dan <span class="math inline">\(2m+b=5\)</span> y <span class="math inline">\(8m+b=23\)</span>. Restando resulta <span class="math inline">\(6m=18\)</span>, luego <span class="math inline">\(m=3\)</span> y <span class="math inline">\(b=-1\)</span>. El modelo es <span class="math inline">\(T=3r-1\)</span>. Para <span class="math inline">\(T=14\)</span> resolvemos <span class="math inline">\(14=3r-1\)</span> y obtenemos <span class="math inline">\(r=5\)</span>. Los datos de calibración se comprueban: <span class="math inline">\(3\cdot2-1=5\)</span> y <span class="math inline">\(3\cdot8-1=23\)</span>. Dos datos determinan la regla dentro de la familia afín adoptada; por sí solos no prueban que un instrumento físico siga esa regla fuera del rango de observación.</p>
+</section>
+<section id="propiedades-de-las-relaciones-afines" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-las-relaciones-afines">Propiedades de las relaciones afines</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Fórmula y condiciones de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cambio constante</td>
+<td>Si <span class="math inline">\(y=mx+b\)</span>, entonces <span class="math inline">\(y(x+h)-y(x)=mh\)</span>, para argumentos del dominio.</td>
+</tr>
+<tr class="even">
+<td>Pendiente entre dos datos</td>
+<td>Si <span class="math inline">\(x_1\ne x_2\)</span>, <span class="math inline">\(m=(y_2-y_1)/(x_2-x_1)\)</span> y <span class="math inline">\(b=y_1-mx_1\)</span> determinan la única relación afín que pasa por ambos puntos.</td>
+</tr>
+<tr class="odd">
+<td>Crecimiento y decrecimiento</td>
+<td>Para <span class="math inline">\(x_1&lt;x_2\)</span>, la diferencia <span class="math inline">\(y_2-y_1=m(x_2-x_1)\)</span> tiene el signo de <span class="math inline">\(m\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Cortes con los ejes</td>
+<td>En el dominio real completo, el corte con el eje vertical es <span class="math inline">\((0,b)\)</span>. Si <span class="math inline">\(m\ne0\)</span>, el corte con el horizontal es <span class="math inline">\((-b/m,0)\)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Relación inversa</td>
+<td>Si <span class="math inline">\(m\ne0\)</span>, <span class="math inline">\(y=mx+b\iff x=(y-b)/m\)</span>. En un dominio restringido se conserva la restricción original.</td>
+</tr>
+<tr class="even">
+<td>Proporcionalidad directa</td>
+<td>Si el dominio contiene cero, una relación afín pasa por <span class="math inline">\((0,0)\)</span> exactamente cuando <span class="math inline">\(b=0\)</span>. En ese caso <span class="math inline">\(y/x=m\)</span> para <span class="math inline">\(x\ne0\)</span> del dominio.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#rectas-pendientes-y-relaciones-afines">Rectas, pendientes y relaciones afines</a>» en el apéndice.</p>
+</section>
+</section>
+<section id="guardar-los-coeficientes-sin-cambiar-las-ideas" class="level2">
+<h2 class="anchored" data-anchor-id="guardar-los-coeficientes-sin-cambiar-las-ideas">Guardar los coeficientes sin cambiar las ideas</h2>
+<p>Al eliminar, repetimos operaciones sobre ecuaciones enteras. Una tabla de coeficientes puede abreviar la escritura. En una <strong>matriz ampliada</strong>, cada fila guarda los coeficientes de las incógnitas y, tras una separación, el término independiente. Debemos fijar primero el orden de las incógnitas y mantenerlo en todas las filas.</p>
+<section id="problema-23.-las-mismas-operaciones-en-una-matriz" class="level3">
+<h3 class="anchored" data-anchor-id="problema-23.-las-mismas-operaciones-en-una-matriz">Problema 23. Las mismas operaciones en una matriz</h3>
+<p><strong>Enunciado.</strong> Resuelve <span class="math inline">\(2x+3y=13\)</span>, <span class="math inline">\(4x+7y=29\)</span>, registrando operaciones de filas.</p>
+<p><strong>Solución.</strong> Con el orden <span class="math inline">\(x,y\)</span>, escribimos <span class="math display">\[\left[\begin{array}{cc|c}2&amp;3&amp;13\\4&amp;7&amp;29\end{array}\right].\]</span> Restamos dos veces la primera fila a la segunda y obtenemos <span class="math display">\[\left[\begin{array}{cc|c}2&amp;3&amp;13\\0&amp;1&amp;3\end{array}\right].\]</span> La segunda fila dice <span class="math inline">\(y=3\)</span>. Restamos tres veces esa fila a la primera y dividimos la primera por 2. Resulta <span class="math display">\[\left[\begin{array}{cc|c}1&amp;0&amp;2\\0&amp;1&amp;3\end{array}\right].\]</span> Ahora leemos <span class="math inline">\(x=2\)</span>, <span class="math inline">\(y=3\)</span>. En las ecuaciones originales, <span class="math inline">\(4+9=13\)</span> y <span class="math inline">\(8+21=29\)</span>. Cada operación actúa sobre la fila completa, incluida la constante. La matriz registra transformaciones reversibles; no supone que toda tabla de coeficientes posea una inversa ni que todo sistema tenga solución única.</p>
+</section>
+<section id="problema-24.-rectas-que-casi-coinciden" class="level3">
+<h3 class="anchored" data-anchor-id="problema-24.-rectas-que-casi-coinciden">Problema 24. Rectas que casi coinciden</h3>
+<p><strong>Enunciado.</strong> Estudia <span class="math inline">\(x+y=2\)</span>, <span class="math inline">\(2x+(2+\varepsilon)y=4+\delta\)</span>, según los parámetros reales <span class="math inline">\(\varepsilon,\delta\)</span>. Compara los casos <span class="math inline">\((\varepsilon,\delta)=(0{,}001,0{,}001)\)</span> y <span class="math inline">\((0{,}001,0{,}002)\)</span>.</p>
+<p><strong>Solución.</strong> Restamos dos veces la primera ecuación de la segunda: <span class="math inline">\(\varepsilon y=\delta\)</span>. Si <span class="math inline">\(\varepsilon\ne0\)</span>, hay una única solución, <span class="math display">\[y=\frac{\delta}{\varepsilon},\qquad x=2-\frac{\delta}{\varepsilon}.\]</span> Si <span class="math inline">\(\varepsilon=0\)</span> y <span class="math inline">\(\delta=0\)</span>, la segunda condición es el doble de la primera y queda la recta <span class="math inline">\(\{(t,2-t):t\in\mathbb R\}\)</span>. Si <span class="math inline">\(\varepsilon=0\)</span> y <span class="math inline">\(\delta\ne0\)</span>, resulta una contradicción y no hay solución. En los dos casos numéricos solicitados obtenemos <span class="math inline">\((1,1)\)</span> y <span class="math inline">\((0,2)\)</span>. Cambiar la constante de la segunda ecuación en solo <span class="math inline">\(0{,}001\)</span> desplazó cada coordenada en una unidad. Aquí la eliminación explica la sensibilidad: el cambio de <span class="math inline">\(y\)</span> es el cambio de <span class="math inline">\(\delta\)</span> dividido por <span class="math inline">\(\varepsilon\)</span>. Un dibujo aproximado o coeficientes redondeados pueden ocultar esa diferencia.</p>
+</section>
+<section id="parámetros-y-sensibilidad-de-una-familia" class="level3">
+<h3 class="anchored" data-anchor-id="parámetros-y-sensibilidad-de-una-familia">Parámetros y sensibilidad de una familia</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Fórmula y condiciones de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rama no singular</td>
+<td>En <span class="math inline">\(x+y=s\)</span>, <span class="math inline">\(2x+(2+\varepsilon)y=2s+\delta\)</span>, si <span class="math inline">\(\varepsilon\ne0\)</span>, la solución única es <span class="math inline">\((s-\delta/\varepsilon,\delta/\varepsilon)\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Rama singular</td>
+<td>Si <span class="math inline">\(\varepsilon=0\)</span>, hay una recta de soluciones cuando <span class="math inline">\(\delta=0\)</span> y ninguna solución cuando <span class="math inline">\(\delta\ne0\)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Cambio de la constante</td>
+<td>Para <span class="math inline">\(s,\varepsilon\)</span> fijos con <span class="math inline">\(\varepsilon\ne0\)</span>, un cambio <span class="math inline">\(\Delta\delta\)</span> produce <span class="math inline">\(\Delta y=\Delta\delta/\varepsilon\)</span> y <span class="math inline">\(\Delta x=-\Delta\delta/\varepsilon\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#parámetros-y-sensibilidad-de-un-sistema">Parámetros y sensibilidad de un sistema</a>» en el apéndice.</p>
+</section>
+</section>
+<section id="ejercicios-para-trabajar-sin-profesor" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-para-trabajar-sin-profesor">Ejercicios para trabajar sin profesor</h2>
+<p>En cada sistema escribe el par o el conjunto completo de soluciones. Comprueba ambas ecuaciones y conserva las restricciones del contexto. En los casos con parámetros, separa las ramas antes de efectuar una división que pueda dejar de existir.</p>
+<p><strong>1.</strong> Se venden 15 entradas de adulto e infantiles, a 6000 y 4000 pesos respectivamente. La recaudación es de 74000 pesos. Determina el reparto.</p>
+<p><strong>2.</strong> Decide cuáles de los pares <span class="math inline">\((1,2)\)</span> y <span class="math inline">\((2,1)\)</span> resuelven <span class="math inline">\(x+y=3\)</span>, <span class="math inline">\(2x+y=4\)</span>.</p>
+<p><strong>3.</strong> Resuelve por sustitución <span class="math inline">\(y=3x+1\)</span>, <span class="math inline">\(x+y=9\)</span>.</p>
+<p><strong>4.</strong> Resuelve <span class="math inline">\(x/3+y/2=4\)</span>, <span class="math inline">\(x-y=-3\)</span>.</p>
+<p><strong>5.</strong> Resuelve por eliminación <span class="math inline">\(x+y=9\)</span>, <span class="math inline">\(2x-y=3\)</span>.</p>
+<p><strong>6.</strong> Resuelve <span class="math inline">\(3x+2y=16\)</span>, <span class="math inline">\(2x-3y=-11\)</span>.</p>
+<p><strong>7.</strong> Al sumar <span class="math inline">\(x+y=8\)</span>, <span class="math inline">\(x-y=4\)</span> queda <span class="math inline">\(2x=12\)</span>. Encuentra el par solución y un par que cumpla la suma pero no el sistema.</p>
+<p><strong>8.</strong> Resuelve <span class="math inline">\(2x+y=8\)</span>, <span class="math inline">\(x-y=1\)</span> y explica su significado gráfico.</p>
+<p><strong>9.</strong> Resuelve <span class="math inline">\(x=-1\)</span>, <span class="math inline">\(2x+3y=7\)</span>.</p>
+<p><strong>10.</strong> Clasifica <span class="math inline">\(x+2y=3\)</span>, <span class="math inline">\(2x+4y=8\)</span>.</p>
+<p><strong>11.</strong> Describe todas las soluciones de <span class="math inline">\(x+2y=3\)</span>, <span class="math inline">\(3x+6y=9\)</span>.</p>
+<p><strong>12.</strong> Resuelve <span class="math inline">\(0x+0y=0\)</span>, <span class="math inline">\(x+2y=5\)</span>.</p>
+<p><strong>13.</strong> Resuelve mediante el determinante <span class="math inline">\(2x+3y=13\)</span>, <span class="math inline">\(3x-y=3\)</span>.</p>
+<p><strong>14.</strong> Clasifica <span class="math inline">\(0x+0y=0\)</span>, <span class="math inline">\(0x+0y=5\)</span>. Explica por qué no basta que <span class="math inline">\(ad-bc=ed-bf=af-ec=0\)</span>.</p>
+<p><strong>15.</strong> Clasifica y resuelve <span class="math inline">\(x+y=4\)</span>, <span class="math inline">\(x+ky=6\)</span>, según <span class="math inline">\(k\in\mathbb R\)</span>.</p>
+<p><strong>16.</strong> Clasifica <span class="math inline">\(kx+ky=3k\)</span>, <span class="math inline">\(x+y=3\)</span>, según <span class="math inline">\(k\in\mathbb R\)</span>.</p>
+<p><strong>17.</strong> Se preparan 10 litros al 8 % mezclando disoluciones al 20 % y al 5 %. Encuentra sus volúmenes, bajo las hipótesis de aditividad y conservación del concentrado.</p>
+<p><strong>18.</strong> Hay gallinas y vacas: 22 animales y 64 patas. Determina sus cantidades.</p>
+<p><strong>19.</strong> ¿Es posible comprar diez objetos, de precios 3000 y 5000 pesos, pagando en total 20000 pesos? Plantea y resuelve el sistema antes de interpretar.</p>
+<p><strong>20.</strong> Se compran doce paquetes que cuestan 3000 o 5000 pesos cada uno. Expresa en miles de pesos todos los presupuestos exactos posibles y las cantidades correspondientes.</p>
+<p><strong>21.</strong> Un servicio con cobro fijo más un precio constante por visita cuesta 3700 pesos para dos visitas y 8200 para siete. Encuentra su tarifa.</p>
+<p><strong>22.</strong> En un modelo afín <span class="math inline">\(T=mr+b\)</span>, las lecturas <span class="math inline">\(r=1\)</span> y <span class="math inline">\(r=5\)</span> corresponden a 6 y 14 grados. Encuentra la regla y la lectura correspondiente a 20 grados.</p>
+<p><strong>23.</strong> Resuelve <span class="math inline">\(3x+y=11\)</span>, <span class="math inline">\(6x+3y=27\)</span> usando una matriz ampliada y operaciones reversibles de filas.</p>
+<p><strong>24.</strong> Clasifica <span class="math inline">\(x+y=3\)</span>, <span class="math inline">\(2x+(2+\varepsilon)y=6+\delta\)</span>. Compara <span class="math inline">\((\varepsilon,\delta)=(0{,}01,0{,}01)\)</span> y <span class="math inline">\((0{,}01,0{,}02)\)</span>.</p>
+</section>
+<section id="soluciones-desarrolladas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-desarrolladas">Soluciones desarrolladas</h2>
+<section id="ejercicio-1.-repartir-las-entradas" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-1.-repartir-las-entradas">Ejercicio 1. Repartir las entradas</h3>
+<p>Sean <span class="math inline">\(a,i\)</span> enteros no negativos. Las condiciones son <span class="math inline">\(a+i=15\)</span> y <span class="math inline">\(6000a+4000i=74000\)</span>. Restar 4000 veces la primera a la segunda da <span class="math inline">\(2000a=14000\)</span>, luego <span class="math inline">\(a=7\)</span> e <span class="math inline">\(i=8\)</span>. Ambos son admisibles: suman 15 y producen <span class="math inline">\(42000+32000=74000\)</span> pesos. Se vendieron siete entradas de adulto y ocho infantiles.</p>
+</section>
+<section id="ejercicio-2.-revisar-las-dos-condiciones" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-2.-revisar-las-dos-condiciones">Ejercicio 2. Revisar las dos condiciones</h3>
+<p>Los dos pares cumplen <span class="math inline">\(x+y=3\)</span>. Para <span class="math inline">\((1,2)\)</span>, la segunda ecuación da <span class="math inline">\(2+2=4\)</span>; para <span class="math inline">\((2,1)\)</span> da <span class="math inline">\(4+1=5\)</span>, que falla. Solo <span class="math inline">\((1,2)\)</span> resuelve el sistema entre los candidatos ofrecidos. Restar la primera ecuación de la segunda da <span class="math inline">\(x=1\)</span> y después <span class="math inline">\(y=2\)</span>, lo que demuestra además que es la única solución real.</p>
+</section>
+<section id="ejercicio-3.-reconstruir-la-coordenada" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3.-reconstruir-la-coordenada">Ejercicio 3. Reconstruir la coordenada</h3>
+<p>Sustituimos <span class="math inline">\(y=3x+1\)</span> en <span class="math inline">\(x+y=9\)</span>: <span class="math inline">\(4x+1=9\)</span>. Entonces <span class="math inline">\(x=2\)</span> y <span class="math inline">\(y=7\)</span>. En las originales, <span class="math inline">\(7=3\cdot2+1\)</span> y <span class="math inline">\(2+7=9\)</span>. La sustitución fue equivalente conservando la relación de <span class="math inline">\(y\)</span>, por lo que el conjunto solución es <span class="math inline">\(\{(2,7)\}\)</span>.</p>
+</section>
+<section id="ejercicio-4.-despejar-sin-perder-el-signo" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4.-despejar-sin-perder-el-signo">Ejercicio 4. Despejar sin perder el signo</h3>
+<p>De <span class="math inline">\(x-y=-3\)</span> obtenemos <span class="math inline">\(x=y-3\)</span>. Sustituimos en la primera ecuación y multiplicamos por 6: <span class="math inline">\(2(y-3)+3y=24\)</span>. Queda <span class="math inline">\(5y=30\)</span>, luego <span class="math inline">\(y=6\)</span> e <span class="math inline">\(x=3\)</span>. Verificamos <span class="math inline">\(3/3+6/2=4\)</span> y <span class="math inline">\(3-6=-3\)</span>. El par es <span class="math inline">\((3,6)\)</span>.</p>
+</section>
+<section id="ejercicio-5.-sumar-y-conservar" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5.-sumar-y-conservar">Ejercicio 5. Sumar y conservar</h3>
+<p>La suma de las ecuaciones es <span class="math inline">\(3x=12\)</span>, por lo que <span class="math inline">\(x=4\)</span>. Conservando <span class="math inline">\(x+y=9\)</span> obtenemos <span class="math inline">\(y=5\)</span>. La segunda original da <span class="math inline">\(2\cdot4-5=3\)</span>. El sistema transformado conserva una ecuación y la suma, de modo que se puede recuperar la otra por resta. La solución única es <span class="math inline">\((4,5)\)</span>.</p>
+</section>
+<section id="ejercicio-6.-una-eliminación-preparada" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-6.-una-eliminación-preparada">Ejercicio 6. Una eliminación preparada</h3>
+<p>Multiplicamos la primera ecuación por 3 y la segunda por 2: <span class="math inline">\(9x+6y=48\)</span>, <span class="math inline">\(4x-6y=-22\)</span>. Sumando obtenemos <span class="math inline">\(13x=26\)</span>, luego <span class="math inline">\(x=2\)</span>. La primera original da <span class="math inline">\(6+2y=16\)</span>, así que <span class="math inline">\(y=5\)</span>. En la segunda, <span class="math inline">\(4-15=-11\)</span>. El par <span class="math inline">\((2,5)\)</span> cumple las dos condiciones y los pasos reversibles aseguran su unicidad.</p>
+</section>
+<section id="ejercicio-7.-la-suma-deja-libre-una-coordenada" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7.-la-suma-deja-libre-una-coordenada">Ejercicio 7. La suma deja libre una coordenada</h3>
+<p>De <span class="math inline">\(2x=12\)</span> sale <span class="math inline">\(x=6\)</span>. La primera ecuación obliga entonces a <span class="math inline">\(y=2\)</span>, y el par <span class="math inline">\((6,2)\)</span> cumple también <span class="math inline">\(6-2=4\)</span>. En cambio, <span class="math inline">\((6,0)\)</span> cumple la suma y falla en ambas originales. Por eso la suma sola no es un sistema equivalente; se debe conservar una de las condiciones para reconstruir el par.</p>
+</section>
+<section id="ejercicio-8.-un-punto-compartido" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8.-un-punto-compartido">Ejercicio 8. Un punto compartido</h3>
+<p>Sumando las ecuaciones obtenemos <span class="math inline">\(3x=9\)</span>, luego <span class="math inline">\(x=3\)</span>. De <span class="math inline">\(x-y=1\)</span> resulta <span class="math inline">\(y=2\)</span>. La primera se comprueba con <span class="math inline">\(2\cdot3+2=8\)</span>. Las rectas son <span class="math inline">\(y=8-2x\)</span> e <span class="math inline">\(y=x-1\)</span> y se cortan únicamente en <span class="math inline">\((3,2)\)</span>. La eliminación proporciona las coordenadas exactas que el gráfico puede sugerir.</p>
+</section>
+<section id="ejercicio-9.-una-coordenada-fija" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-9.-una-coordenada-fija">Ejercicio 9. Una coordenada fija</h3>
+<p>La primera condición fija la recta vertical <span class="math inline">\(x=-1\)</span>. Sustituyendo en la segunda resulta <span class="math inline">\(-2+3y=7\)</span>, de donde <span class="math inline">\(y=3\)</span>. La intersección es <span class="math inline">\(( -1,3)\)</span> y satisface <span class="math inline">\(2(-1)+3\cdot3=7\)</span>. No hace falta una pendiente para representar la primera recta.</p>
+</section>
+<section id="ejercicio-10.-una-contradicción-constante" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10.-una-contradicción-constante">Ejercicio 10. Una contradicción constante</h3>
+<p>Restamos dos veces la primera ecuación de la segunda: el miembro izquierdo se anula y el derecho vale <span class="math inline">\(8-6=2\)</span>. Queda <span class="math inline">\(0=2\)</span>, imposible. Las rectas son paralelas distintas y el conjunto solución es <span class="math inline">\(\varnothing\)</span>. No es lícito interpretar la desaparición de ambas incógnitas como prueba de infinitas soluciones sin leer la constante restante.</p>
+</section>
+<section id="ejercicio-11.-un-parámetro-recorre-todas-las-soluciones" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11.-un-parámetro-recorre-todas-las-soluciones">Ejercicio 11. Un parámetro recorre todas las soluciones</h3>
+<p>La segunda ecuación es tres veces la primera y no agrega una condición. Elegimos <span class="math inline">\(y=t\)</span>, con <span class="math inline">\(t\in\mathbb R\)</span>, y obtenemos <span class="math inline">\(x=3-2t\)</span>. El conjunto solución es <span class="math inline">\(\{(3-2t,t):t\in\mathbb R\}\)</span>. La sustitución produce <span class="math inline">\(3-2t+2t=3\)</span> en la primera y su triple en la segunda. Ambas describen la misma recta.</p>
+</section>
+<section id="ejercicio-12.-intersectar-con-todo-el-plano" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-12.-intersectar-con-todo-el-plano">Ejercicio 12. Intersectar con todo el plano</h3>
+<p>La primera igualdad, <span class="math inline">\(0=0\)</span>, admite todo par real. Solo queda <span class="math inline">\(x+2y=5\)</span>. Al tomar <span class="math inline">\(y=t\)</span> obtenemos <span class="math inline">\(x=5-2t\)</span>. Las soluciones son <span class="math inline">\(\{(5-2t,t):t\in\mathbb R\}\)</span>. La parametrización cubre todos los valores posibles de <span class="math inline">\(y\)</span> y determina para cada uno el único <span class="math inline">\(x\)</span> que exige la condición restante.</p>
+</section>
+<section id="ejercicio-13.-un-denominador-no-nulo" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13.-un-denominador-no-nulo">Ejercicio 13. Un denominador no nulo</h3>
+<p>El determinante es <span class="math inline">\(2(-1)-3\cdot3=-11\)</span>. Entonces <span class="math inline">\(x=[13(-1)-3\cdot3]/(-11)=2\)</span> e <span class="math inline">\(y=[2\cdot3-13\cdot3]/(-11)=3\)</span>. Comprobamos <span class="math inline">\(4+9=13\)</span> y <span class="math inline">\(6-3=3\)</span>. Como el determinante es no nulo, la solución <span class="math inline">\((2,3)\)</span> existe y es única.</p>
+</section>
+<section id="ejercicio-14.-leer-la-fila-completa" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14.-leer-la-fila-completa">Ejercicio 14. Leer la fila completa</h3>
+<p>Aunque las tres expresiones de coeficientes indicadas se anulan, la segunda ecuación es <span class="math inline">\(0=5\)</span> y hace imposible el sistema. El conjunto solución es vacío. Cuando todos los coeficientes de las incógnitas son cero, las constantes deciden entre todo el plano y ningún punto. Los tres ceros del criterio no pueden reemplazar ese examen.</p>
+</section>
+<section id="ejercicio-15.-un-caso-singular" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-15.-un-caso-singular">Ejercicio 15. Un caso singular</h3>
+<p>Restamos la primera ecuación de la segunda: <span class="math inline">\((k-1)y=2\)</span>. Si <span class="math inline">\(k\ne1\)</span>, obtenemos <span class="math inline">\(y=2/(k-1)\)</span> y <span class="math inline">\(x=4-y=(4k-6)/(k-1)\)</span>. Su suma es 4 y <span class="math inline">\(x+ky=4+(k-1)y=6\)</span>. Si <span class="math inline">\(k=1\)</span>, las ecuaciones exigen que la misma suma valga 4 y 6, lo que es imposible. No hay solución en esa rama.</p>
+</section>
+<section id="ejercicio-16.-una-fila-redundante-incluso-cuando-se-anula" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-16.-una-fila-redundante-incluso-cuando-se-anula">Ejercicio 16. Una fila redundante, incluso cuando se anula</h3>
+<p>La primera ecuación es <span class="math inline">\(k\)</span> veces la segunda. Para todo <span class="math inline">\(k\)</span>, cualquier par que cumpla <span class="math inline">\(x+y=3\)</span> cumple la primera. Recíprocamente, el sistema conserva esa segunda ecuación, así que ninguna otra pareja puede servir. Las soluciones son <span class="math inline">\(\{(t,3-t):t\in\mathbb R\}\)</span> para todo parámetro, incluido <span class="math inline">\(k=0\)</span>.</p>
+</section>
+<section id="ejercicio-17.-litros-de-disolución-y-de-concentrado" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17.-litros-de-disolución-y-de-concentrado">Ejercicio 17. Litros de disolución y de concentrado</h3>
+<p>Sean <span class="math inline">\(x,y\ge0\)</span> los litros al 20 % y al 5 %. Tenemos <span class="math inline">\(x+y=10\)</span> y <span class="math inline">\(0{,}20x+0{,}05y=0{,}8\)</span>. Multiplicar la segunda por 20 da <span class="math inline">\(4x+y=16\)</span>. Al restar la primera resulta <span class="math inline">\(3x=6\)</span>, luego <span class="math inline">\(x=2\)</span> e <span class="math inline">\(y=8\)</span>. Suman diez litros y contienen <span class="math inline">\(0{,}4+0{,}4=0{,}8\)</span> litros de concentrado, el 8 % de diez. Los volúmenes respetan el dominio.</p>
+</section>
+<section id="ejercicio-18.-las-patas-adicionales" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18.-las-patas-adicionales">Ejercicio 18. Las patas adicionales</h3>
+<p>Con cantidades enteras no negativas, <span class="math inline">\(g+v=22\)</span> y <span class="math inline">\(2g+4v=64\)</span>. Restamos dos veces la primera: <span class="math inline">\(2v=20\)</span>, luego <span class="math inline">\(v=10\)</span> y <span class="math inline">\(g=12\)</span>. La comprobación da <span class="math inline">\(12+10=22\)</span> y <span class="math inline">\(24+40=64\)</span>. Hay doce gallinas y diez vacas.</p>
+</section>
+<section id="ejercicio-19.-un-modelo-sin-compra-admisible" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19.-un-modelo-sin-compra-admisible">Ejercicio 19. Un modelo sin compra admisible</h3>
+<p>Las condiciones son <span class="math inline">\(x+y=10\)</span> y <span class="math inline">\(3x+5y=20\)</span>, con el precio expresado en miles de pesos y <span class="math inline">\(x,y\)</span> enteros no negativos. Restar tres veces la primera da <span class="math inline">\(2y=-10\)</span>, luego <span class="math inline">\(y=-5\)</span> e <span class="math inline">\(x=15\)</span>. Ese par real no describe una compra. El menor costo de diez objetos es de 30000 pesos, superior a los 20000 propuestos. No existe una compra admisible.</p>
+</section>
+<section id="ejercicio-20.-presupuestos-discretos" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-20.-presupuestos-discretos">Ejercicio 20. Presupuestos discretos</h3>
+<p>Escribimos <span class="math inline">\(x+y=12\)</span> y <span class="math inline">\(3x+5y=B\)</span>, con <span class="math inline">\(B\)</span> en miles de pesos. Restar tres veces la primera da <span class="math inline">\(2y=B-36\)</span>. Así, <span class="math inline">\(y=(B-36)/2\)</span> y <span class="math inline">\(x=(60-B)/2\)</span>. La no negatividad exige <span class="math inline">\(36\le B\le60\)</span>; las cantidades enteras exigen además <span class="math inline">\(B=36+2j\)</span>, con <span class="math inline">\(j\in\{0,1,\ldots,12\}\)</span>. Los presupuestos son <span class="math inline">\(36,38,\ldots,60\)</span> miles de pesos y el reparto correspondiente es <span class="math inline">\((x,y)=(12-j,j)\)</span>. Sustituirlo produce exactamente el presupuesto indicado.</p>
+</section>
+<section id="ejercicio-21.-precio-por-visita-y-cargo-fijo" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-21.-precio-por-visita-y-cargo-fijo">Ejercicio 21. Precio por visita y cargo fijo</h3>
+<p>Sea <span class="math inline">\(C=mn+b\)</span>. Los datos dan <span class="math inline">\(2m+b=3700\)</span> y <span class="math inline">\(7m+b=8200\)</span>. Al restar obtenemos <span class="math inline">\(5m=4500\)</span>, luego <span class="math inline">\(m=900\)</span> pesos por visita. Entonces <span class="math inline">\(b=3700-1800=1900\)</span> pesos. La regla es <span class="math inline">\(C=900n+1900\)</span>, para <span class="math inline">\(n\)</span> entero no negativo. Verifica <span class="math inline">\(C(2)=3700\)</span> y <span class="math inline">\(C(7)=8200\)</span>. Es afín y tiene un cargo fijo, por lo que no es proporcionalidad directa.</p>
+</section>
+<section id="ejercicio-22.-una-calibración-afín" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22.-una-calibración-afín">Ejercicio 22. Una calibración afín</h3>
+<p>Las correspondencias producen <span class="math inline">\(m+b=6\)</span> y <span class="math inline">\(5m+b=14\)</span>. Su diferencia es <span class="math inline">\(4m=8\)</span>, así que <span class="math inline">\(m=2\)</span> y <span class="math inline">\(b=4\)</span>. La regla es <span class="math inline">\(T=2r+4\)</span>. Para <span class="math inline">\(T=20\)</span>, <span class="math inline">\(20=2r+4\)</span> da <span class="math inline">\(r=8\)</span>. La regla reproduce los datos: <span class="math inline">\(T(1)=6\)</span>, <span class="math inline">\(T(5)=14\)</span>. La lectura 8 está fuera del tramo observado de 1 a 5; su cálculo usa la prolongación del modelo afín y no constituye una validación experimental de ella.</p>
+</section>
+<section id="ejercicio-23.-registrar-una-reducción-de-filas" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-23.-registrar-una-reducción-de-filas">Ejercicio 23. Registrar una reducción de filas</h3>
+<p>Con el orden <span class="math inline">\(x,y\)</span> empezamos con <span class="math display">\[\left[\begin{array}{cc|c}3&amp;1&amp;11\\6&amp;3&amp;27\end{array}\right].\]</span> Restar dos veces la primera fila de la segunda produce la fila <span class="math inline">\((0,1,5)\)</span>, que significa <span class="math inline">\(y=5\)</span>. Restar esa fila a la primera produce <span class="math inline">\((3,0,6)\)</span>. Dividir la primera por 3 deja <span class="math inline">\((1,0,2)\)</span>, de modo que <span class="math inline">\(x=2\)</span>. El par <span class="math inline">\((2,5)\)</span> verifica <span class="math inline">\(6+5=11\)</span> y <span class="math inline">\(12+15=27\)</span>. Se operó siempre sobre la constante junto con los demás coeficientes.</p>
+</section>
+<section id="ejercicio-24.-separar-singularidad-y-sensibilidad" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-24.-separar-singularidad-y-sensibilidad">Ejercicio 24. Separar singularidad y sensibilidad</h3>
+<p>Al restar dos veces la primera ecuación de la segunda queda <span class="math inline">\(\varepsilon y=\delta\)</span>. Si <span class="math inline">\(\varepsilon\ne0\)</span>, la solución única es <span class="math inline">\(\bigl(3-\delta/\varepsilon,\delta/\varepsilon\bigr)\)</span>. Si <span class="math inline">\(\varepsilon=0=\delta\)</span>, queda toda la recta <span class="math inline">\(\{(t,3-t):t\in\mathbb R\}\)</span>. Si <span class="math inline">\(\varepsilon=0\)</span> y <span class="math inline">\(\delta\ne0\)</span>, no hay solución. Para los datos numéricos obtenemos <span class="math inline">\((2,1)\)</span> y <span class="math inline">\((1,2)\)</span>. Un cambio de <span class="math inline">\(0{,}01\)</span> en la constante de la segunda ecuación modifica las coordenadas en una unidad, porque la diferencia se divide por <span class="math inline">\(\varepsilon=0{,}01\)</span>.</p>
+</section>
+</section>
+<section id="diagnóstico-de-salida" class="level2">
+<h2 class="anchored" data-anchor-id="diagnóstico-de-salida">Diagnóstico de salida</h2>
+<p>La solución de un sistema debe satisfacer cada condición del problema. Para justificar un procedimiento, explica cómo recuperar las ecuaciones iniciales desde las transformadas. Ante un parámetro, identifica qué divisiones podrían dejar de existir y examina esos valores en el sistema original. Al interpretar un modelo, revisa el par completo: sus unidades, su signo y, cuando corresponde, su carácter entero. La comprobación algebraica y la interpretación del relato deben conducir a la misma respuesta.</p>
+<hr>
+<p><a href="capitulo-06.html">← Ecuaciones, inecuaciones y valor absoluto</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-08.html">Siguiente →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,2105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Combinatoria, muestreo y descripción de datos – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-cb076892e24e5ecd918925b139627211.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-a27ce7592f35ccc06b5fae55f34b11f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#de-las-personas-a-los-registros" id="toc-de-las-personas-a-los-registros" class="nav-link active" data-scroll-target="#de-las-personas-a-los-registros">De las personas a los registros</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-de-las-frecuencias" id="toc-propiedades-de-las-frecuencias" class="nav-link" data-scroll-target="#propiedades-de-las-frecuencias">Propiedades de las frecuencias</a></li>
+  <li><a href="#problema-1.-qué-se-observa-y-a-quién" id="toc-problema-1.-qué-se-observa-y-a-quién" class="nav-link" data-scroll-target="#problema-1.-qué-se-observa-y-a-quién">Problema 1. Qué se observa y a quién</a></li>
+  <li><a href="#problema-2.-una-tabla-de-recuentos" id="toc-problema-2.-una-tabla-de-recuentos" class="nav-link" data-scroll-target="#problema-2.-una-tabla-de-recuentos">Problema 2. Una tabla de recuentos</a></li>
+  <li><a href="#problema-3.-leer-una-acumulación" id="toc-problema-3.-leer-una-acumulación" class="nav-link" data-scroll-target="#problema-3.-leer-una-acumulación">Problema 3. Leer una acumulación</a></li>
+  </ul></li>
+  <li><a href="#dar-forma-visible-a-los-datos" id="toc-dar-forma-visible-a-los-datos" class="nav-link" data-scroll-target="#dar-forma-visible-a-los-datos">Dar forma visible a los datos</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-de-las-representaciones" id="toc-propiedades-de-las-representaciones" class="nav-link" data-scroll-target="#propiedades-de-las-representaciones">Propiedades de las representaciones</a></li>
+  <li><a href="#problema-4.-elegir-una-representación" id="toc-problema-4.-elegir-una-representación" class="nav-link" data-scroll-target="#problema-4.-elegir-una-representación">Problema 4. Elegir una representación</a></li>
+  <li><a href="#problema-5.-una-clase-ancha-con-más-observaciones" id="toc-problema-5.-una-clase-ancha-con-más-observaciones" class="nav-link" data-scroll-target="#problema-5.-una-clase-ancha-con-más-observaciones">Problema 5. Una clase ancha con más observaciones</a></li>
+  </ul></li>
+  <li><a href="#qué-conserva-un-valor-central" id="toc-qué-conserva-un-valor-central" class="nav-link" data-scroll-target="#qué-conserva-un-valor-central">Qué conserva un valor central</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-de-los-centros" id="toc-propiedades-de-los-centros" class="nav-link" data-scroll-target="#propiedades-de-los-centros">Propiedades de los centros</a></li>
+  <li><a href="#problema-6.-calcular-desde-frecuencias" id="toc-problema-6.-calcular-desde-frecuencias" class="nav-link" data-scroll-target="#problema-6.-calcular-desde-frecuencias">Problema 6. Calcular desde frecuencias</a></li>
+  <li><a href="#problema-7.-centro-y-valor-extremo" id="toc-problema-7.-centro-y-valor-extremo" class="nav-link" data-scroll-target="#problema-7.-centro-y-valor-extremo">Problema 7. Centro y valor extremo</a></li>
+  <li><a href="#problema-8.-ponderar-una-calificación" id="toc-problema-8.-ponderar-una-calificación" class="nav-link" data-scroll-target="#problema-8.-ponderar-una-calificación">Problema 8. Ponderar una calificación</a></li>
+  <li><a href="#problema-9.-reunir-dos-cursos" id="toc-problema-9.-reunir-dos-cursos" class="nav-link" data-scroll-target="#problema-9.-reunir-dos-cursos">Problema 9. Reunir dos cursos</a></li>
+  </ul></li>
+  <li><a href="#posiciones-cuartiles-y-cajas" id="toc-posiciones-cuartiles-y-cajas" class="nav-link" data-scroll-target="#posiciones-cuartiles-y-cajas">Posiciones, cuartiles y cajas</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-de-los-cuantiles-declarados" id="toc-propiedades-de-los-cuantiles-declarados" class="nav-link" data-scroll-target="#propiedades-de-los-cuantiles-declarados">Propiedades de los cuantiles declarados</a></li>
+  <li><a href="#problema-10.-un-percentil-entre-posiciones" id="toc-problema-10.-un-percentil-entre-posiciones" class="nav-link" data-scroll-target="#problema-10.-un-percentil-entre-posiciones">Problema 10. Un percentil entre posiciones</a></li>
+  <li><a href="#problema-11.-cuartiles-y-un-dato-exterior" id="toc-problema-11.-cuartiles-y-un-dato-exterior" class="nav-link" data-scroll-target="#problema-11.-cuartiles-y-un-dato-exterior">Problema 11. Cuartiles y un dato exterior</a></li>
+  <li><a href="#problema-12.-dos-convenciones-sobre-cuatro-datos" id="toc-problema-12.-dos-convenciones-sobre-cuatro-datos" class="nav-link" data-scroll-target="#problema-12.-dos-convenciones-sobre-cuatro-datos">Problema 12. Dos convenciones sobre cuatro datos</a></li>
+  </ul></li>
+  <li><a href="#cuánto-se-separan-las-observaciones" id="toc-cuánto-se-separan-las-observaciones" class="nav-link" data-scroll-target="#cuánto-se-separan-las-observaciones">Cuánto se separan las observaciones</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-de-la-dispersión" id="toc-propiedades-de-la-dispersión" class="nav-link" data-scroll-target="#propiedades-de-la-dispersión">Propiedades de la dispersión</a></li>
+  <li><a href="#problema-13.-dispersión-de-una-lista-completa" id="toc-problema-13.-dispersión-de-una-lista-completa" class="nav-link" data-scroll-target="#problema-13.-dispersión-de-una-lista-completa">Problema 13. Dispersión de una lista completa</a></li>
+  <li><a href="#problema-14.-declarar-el-divisor" id="toc-problema-14.-declarar-el-divisor" class="nav-link" data-scroll-target="#problema-14.-declarar-el-divisor">Problema 14. Declarar el divisor</a></li>
+  <li><a href="#problema-15.-convertir-la-escala-de-medición" id="toc-problema-15.-convertir-la-escala-de-medición" class="nav-link" data-scroll-target="#problema-15.-convertir-la-escala-de-medición">Problema 15. Convertir la escala de medición</a></li>
+  <li><a href="#problema-16.-igual-media-e-igual-rango" id="toc-problema-16.-igual-media-e-igual-rango" class="nav-link" data-scroll-target="#problema-16.-igual-media-e-igual-rango">Problema 16. Igual media e igual rango</a></li>
+  </ul></li>
+  <li><a href="#contar-la-estructura-de-las-elecciones" id="toc-contar-la-estructura-de-las-elecciones" class="nav-link" data-scroll-target="#contar-la-estructura-de-las-elecciones">Contar la estructura de las elecciones</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-del-conteo" id="toc-propiedades-del-conteo" class="nav-link" data-scroll-target="#propiedades-del-conteo">Propiedades del conteo</a></li>
+  <li><a href="#problema-17.-alternativas-y-etapas" id="toc-problema-17.-alternativas-y-etapas" class="nav-link" data-scroll-target="#problema-17.-alternativas-y-etapas">Problema 17. Alternativas y etapas</a></li>
+  <li><a href="#problema-18.-claves-y-cargos" id="toc-problema-18.-claves-y-cargos" class="nav-link" data-scroll-target="#problema-18.-claves-y-cargos">Problema 18. Claves y cargos</a></li>
+  <li><a href="#problema-19.-letras-que-se-repiten" id="toc-problema-19.-letras-que-se-repiten" class="nav-link" data-scroll-target="#problema-19.-letras-que-se-repiten">Problema 19. Letras que se repiten</a></li>
+  <li><a href="#problema-20.-comité-y-distribución-de-funciones" id="toc-problema-20.-comité-y-distribución-de-funciones" class="nav-link" data-scroll-target="#problema-20.-comité-y-distribución-de-funciones">Problema 20. Comité y distribución de funciones</a></li>
+  <li><a href="#problema-21.-dos-mecanismos-para-seleccionar-parejas" id="toc-problema-21.-dos-mecanismos-para-seleccionar-parejas" class="nav-link" data-scroll-target="#problema-21.-dos-mecanismos-para-seleccionar-parejas">Problema 21. Dos mecanismos para seleccionar parejas</a></li>
+  </ul></li>
+  <li><a href="#seleccionar-una-muestra-y-explicar-su-alcance" id="toc-seleccionar-una-muestra-y-explicar-su-alcance" class="nav-link" data-scroll-target="#seleccionar-una-muestra-y-explicar-su-alcance">Seleccionar una muestra y explicar su alcance</a>
+  <ul class="collapse">
+  <li><a href="#propiedades-del-muestreo-y-sus-resúmenes" id="toc-propiedades-del-muestreo-y-sus-resúmenes" class="nav-link" data-scroll-target="#propiedades-del-muestreo-y-sus-resúmenes">Propiedades del muestreo y sus resúmenes</a></li>
+  <li><a href="#problema-22.-muchas-respuestas-con-cobertura-parcial" id="toc-problema-22.-muchas-respuestas-con-cobertura-parcial" class="nav-link" data-scroll-target="#problema-22.-muchas-respuestas-con-cobertura-parcial">Problema 22. Muchas respuestas con cobertura parcial</a></li>
+  <li><a href="#problema-23.-recuperar-el-peso-de-cada-estrato" id="toc-problema-23.-recuperar-el-peso-de-cada-estrato" class="nav-link" data-scroll-target="#problema-23.-recuperar-el-peso-de-cada-estrato">Problema 23. Recuperar el peso de cada estrato</a></li>
+  <li><a href="#problema-24.-qué-permite-reconstruir-un-histograma" id="toc-problema-24.-qué-permite-reconstruir-un-histograma" class="nav-link" data-scroll-target="#problema-24.-qué-permite-reconstruir-un-histograma">Problema 24. Qué permite reconstruir un histograma</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-para-trabajar-sin-profesor" id="toc-ejercicios-para-trabajar-sin-profesor" class="nav-link" data-scroll-target="#ejercicios-para-trabajar-sin-profesor">Ejercicios para trabajar sin profesor</a></li>
+  <li><a href="#soluciones-desarrolladas" id="toc-soluciones-desarrolladas" class="nav-link" data-scroll-target="#soluciones-desarrolladas">Soluciones desarrolladas</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-1.-unidades-y-cobertura" id="toc-ejercicio-1.-unidades-y-cobertura" class="nav-link" data-scroll-target="#ejercicio-1.-unidades-y-cobertura">Ejercicio 1. Unidades y cobertura</a></li>
+  <li><a href="#ejercicio-2.-recontar-y-dividir-por-el-total" id="toc-ejercicio-2.-recontar-y-dividir-por-el-total" class="nav-link" data-scroll-target="#ejercicio-2.-recontar-y-dividir-por-el-total">Ejercicio 2. Recontar y dividir por el total</a></li>
+  <li><a href="#ejercicio-3.-diferencias-de-una-acumulación" id="toc-ejercicio-3.-diferencias-de-una-acumulación" class="nav-link" data-scroll-target="#ejercicio-3.-diferencias-de-una-acumulación">Ejercicio 3. Diferencias de una acumulación</a></li>
+  <li><a href="#ejercicio-4.-categorías-y-porcentajes" id="toc-ejercicio-4.-categorías-y-porcentajes" class="nav-link" data-scroll-target="#ejercicio-4.-categorías-y-porcentajes">Ejercicio 4. Categorías y porcentajes</a></li>
+  <li><a href="#ejercicio-5.-alturas-con-bases-distintas" id="toc-ejercicio-5.-alturas-con-bases-distintas" class="nav-link" data-scroll-target="#ejercicio-5.-alturas-con-bases-distintas">Ejercicio 5. Alturas con bases distintas</a></li>
+  <li><a href="#ejercicio-6.-media-desde-una-tabla" id="toc-ejercicio-6.-media-desde-una-tabla" class="nav-link" data-scroll-target="#ejercicio-6.-media-desde-una-tabla">Ejercicio 6. Media desde una tabla</a></li>
+  <li><a href="#ejercicio-7.-modificar-un-extremo" id="toc-ejercicio-7.-modificar-un-extremo" class="nav-link" data-scroll-target="#ejercicio-7.-modificar-un-extremo">Ejercicio 7. Modificar un extremo</a></li>
+  <li><a href="#ejercicio-8.-pesos-y-extremos" id="toc-ejercicio-8.-pesos-y-extremos" class="nav-link" data-scroll-target="#ejercicio-8.-pesos-y-extremos">Ejercicio 8. Pesos y extremos</a></li>
+  <li><a href="#ejercicio-9.-sumas-que-se-reúnen" id="toc-ejercicio-9.-sumas-que-se-reúnen" class="nav-link" data-scroll-target="#ejercicio-9.-sumas-que-se-reúnen">Ejercicio 9. Sumas que se reúnen</a></li>
+  <li><a href="#ejercicio-10.-un-percentil-que-coincide-con-un-dato" id="toc-ejercicio-10.-un-percentil-que-coincide-con-un-dato" class="nav-link" data-scroll-target="#ejercicio-10.-un-percentil-que-coincide-con-un-dato">Ejercicio 10. Un percentil que coincide con un dato</a></li>
+  <li><a href="#ejercicio-11.-cuartiles-y-bigotes" id="toc-ejercicio-11.-cuartiles-y-bigotes" class="nav-link" data-scroll-target="#ejercicio-11.-cuartiles-y-bigotes">Ejercicio 11. Cuartiles y bigotes</a></li>
+  <li><a href="#ejercicio-12.-convención-y-frecuencia-efectiva" id="toc-ejercicio-12.-convención-y-frecuencia-efectiva" class="nav-link" data-scroll-target="#ejercicio-12.-convención-y-frecuencia-efectiva">Ejercicio 12. Convención y frecuencia efectiva</a></li>
+  <li><a href="#ejercicio-13.-una-dispersión-exacta" id="toc-ejercicio-13.-una-dispersión-exacta" class="nav-link" data-scroll-target="#ejercicio-13.-una-dispersión-exacta">Ejercicio 13. Una dispersión exacta</a></li>
+  <li><a href="#ejercicio-14.-los-mismos-cuadrados-y-dos-divisores" id="toc-ejercicio-14.-los-mismos-cuadrados-y-dos-divisores" class="nav-link" data-scroll-target="#ejercicio-14.-los-mismos-cuadrados-y-dos-divisores">Ejercicio 14. Los mismos cuadrados y dos divisores</a></li>
+  <li><a href="#ejercicio-15.-una-escala-que-invierte-el-orden" id="toc-ejercicio-15.-una-escala-que-invierte-el-orden" class="nav-link" data-scroll-target="#ejercicio-15.-una-escala-que-invierte-el-orden">Ejercicio 15. Una escala que invierte el orden</a></li>
+  <li><a href="#ejercicio-16.-dos-formas-de-distribuirse" id="toc-ejercicio-16.-dos-formas-de-distribuirse" class="nav-link" data-scroll-target="#ejercicio-16.-dos-formas-de-distribuirse">Ejercicio 16. Dos formas de distribuirse</a></li>
+  <li><a href="#ejercicio-17.-sumar-talleres-y-completar-la-inscripción" id="toc-ejercicio-17.-sumar-talleres-y-completar-la-inscripción" class="nav-link" data-scroll-target="#ejercicio-17.-sumar-talleres-y-completar-la-inscripción">Ejercicio 17. Sumar talleres y completar la inscripción</a></li>
+  <li><a href="#ejercicio-18.-repetición-y-disponibilidad" id="toc-ejercicio-18.-repetición-y-disponibilidad" class="nav-link" data-scroll-target="#ejercicio-18.-repetición-y-disponibilidad">Ejercicio 18. Repetición y disponibilidad</a></li>
+  <li><a href="#ejercicio-19.-multiplicidades-visibles" id="toc-ejercicio-19.-multiplicidades-visibles" class="nav-link" data-scroll-target="#ejercicio-19.-multiplicidades-visibles">Ejercicio 19. Multiplicidades visibles</a></li>
+  <li><a href="#ejercicio-20.-elegir-personas-y-ordenar-cargos" id="toc-ejercicio-20.-elegir-personas-y-ordenar-cargos" class="nav-link" data-scroll-target="#ejercicio-20.-elegir-personas-y-ordenar-cargos">Ejercicio 20. Elegir personas y ordenar cargos</a></li>
+  <li><a href="#ejercicio-21.-una-unidad-siempre-incluida" id="toc-ejercicio-21.-una-unidad-siempre-incluida" class="nav-link" data-scroll-target="#ejercicio-21.-una-unidad-siempre-incluida">Ejercicio 21. Una unidad siempre incluida</a></li>
+  <li><a href="#ejercicio-22.-cobertura-de-un-horario" id="toc-ejercicio-22.-cobertura-de-un-horario" class="nav-link" data-scroll-target="#ejercicio-22.-cobertura-de-un-horario">Ejercicio 22. Cobertura de un horario</a></li>
+  <li><a href="#ejercicio-23.-peso-de-la-muestra-y-peso-de-la-población" id="toc-ejercicio-23.-peso-de-la-muestra-y-peso-de-la-población" class="nav-link" data-scroll-target="#ejercicio-23.-peso-de-la-muestra-y-peso-de-la-población">Ejercicio 23. Peso de la muestra y peso de la población</a></li>
+  <li><a href="#ejercicio-24.-límites-de-la-agrupación" id="toc-ejercicio-24.-límites-de-la-agrupación" class="nav-link" data-scroll-target="#ejercicio-24.-límites-de-la-agrupación">Ejercicio 24. Límites de la agrupación</a></li>
+  </ul></li>
+  <li><a href="#diagnóstico-de-salida" id="toc-diagnóstico-de-salida" class="nav-link" data-scroll-target="#diagnóstico-de-salida">Diagnóstico de salida</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Combinatoria, muestreo y descripción de datos</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">22 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="capitulo-21.html">← Composición, inversión y modelización funcional</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-23.html">Siguiente →</a></p>
+<p>Dos cursos informan que sus estudiantes tardan, en promedio, veinte minutos en llegar al colegio. En uno casi todos viven a una distancia semejante; en el otro conviven viajes de cinco minutos y viajes de más de una hora. ¿Qué información falta para comparar esas experiencias? Antes de calcular conviene conocer a quiénes se preguntó, cómo se registró el tiempo y qué rasgos del conjunto conserva cada resumen.</p>
+<p>Una colección de datos permite estudiar valores frecuentes, posiciones centrales y diferencias entre observaciones. Para obtenerla debemos elegir unidades y un procedimiento de selección. Contar las selecciones posibles ayuda a describir ese procedimiento con precisión. El capítulo recorrerá ese trayecto: observar y organizar, resumir y comparar, contar posibilidades y examinar el alcance de una muestra. Todos los datos numéricos de los problemas son construidos para el estudio.</p>
+<section id="de-las-personas-a-los-registros" class="level2">
+<h2 class="anchored" data-anchor-id="de-las-personas-a-los-registros">De las personas a los registros</h2>
+<p>La población es el conjunto de unidades al que se refiere una investigación. La unidad estadística es cada entidad sobre la que se observa una característica: una persona, una vivienda, una pieza producida o un trayecto, según la pregunta. Una muestra es un subconjunto de unidades seleccionado de esa población. Un censo procura observar todas sus unidades.</p>
+<p>Una variable asigna a cada unidad un valor de la característica estudiada. Una variable cualitativa registra categorías; sus categorías pueden tener un orden propio, como los niveles de satisfacción, o una organización nominal, como el medio de transporte. Una variable cuantitativa registra cantidades. Los recuentos suelen tomar valores discretos y las mediciones se representan mediante una escala continua, aunque el instrumento las redondee. El dato observado reúne valor, unidad de medida y contexto de registro. Si se mide varias veces a una misma persona, debe precisarse si la unidad de análisis es la persona o cada medición.</p>
+<p>Para una muestra de <span class="math inline">\(n\geq1\)</span> registros, la frecuencia absoluta <span class="math inline">\(f_j\)</span> de una categoría o clase cuenta cuántos registros pertenecen a ella. La frecuencia relativa es <span class="math inline">\(h_j=f_j/n\)</span>. Cuando las clases están ordenadas, la frecuencia acumulada <span class="math inline">\(F_j=f_1+\cdots+f_j\)</span> cuenta los registros hasta la clase <span class="math inline">\(j\)</span>. Los intervalos de una agrupación deben cubrir los datos y asignar cada observación a una única clase; por ejemplo, <span class="math inline">\([0,10)\)</span> incluye cero y deja diez para la clase siguiente.</p>
+<section id="propiedades-de-las-frecuencias" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-las-frecuencias">Propiedades de las frecuencias</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Hipótesis y alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Total absoluto</td>
+<td>Para clases exhaustivas y disjuntas, <span class="math inline">\(\sum_j f_j=n\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Total relativo</td>
+<td><span class="math inline">\(h_j=f_j/n\geq0\)</span> y <span class="math inline">\(\sum_jh_j=1\)</span>; los porcentajes exactos suman cien por ciento.</td>
+</tr>
+<tr class="odd">
+<td>Acumulación</td>
+<td>En clases ordenadas, <span class="math inline">\(F_j=\sum_{i\leq j}f_i\)</span> es creciente en sentido amplio y termina en <span class="math inline">\(n\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Recuperar frecuencias</td>
+<td><span class="math inline">\(f_1=F_1\)</span> y <span class="math inline">\(f_j=F_j-F_{j-1}\)</span> para <span class="math inline">\(j\geq2\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#partición-de-registros-y-frecuencias">Partición de registros y frecuencias</a>» en el apéndice de demostraciones.</p>
+</section>
+<section id="problema-1.-qué-se-observa-y-a-quién" class="level3">
+<h3 class="anchored" data-anchor-id="problema-1.-qué-se-observa-y-a-quién">Problema 1. Qué se observa y a quién</h3>
+<p>Se quiere describir el tiempo de viaje habitual de los 240 estudiantes de un establecimiento. Se eligen 30 estudiantes y se registra, para cada uno, el tiempo de su viaje del lunes en minutos enteros. Identificar población, muestra, unidad y variable; precisar el alcance de la observación.</p>
+<p><strong>Solución.</strong> La población objetivo son los 240 estudiantes, la muestra contiene 30 y la unidad estadística es cada estudiante. La variable observada es el tiempo del viaje del lunes, medido en minutos y redondeado al entero. El tamaño muestral es 30; la amplitud de los tiempos requeriría conocer sus valores extremos. Para estudiar un tiempo habitual convendría registrar varios días o formular una pregunta que lo defina: una única observación del lunes describe ese viaje y puede reflejar condiciones particulares de ese día. El procedimiento de selección de los 30 estudiantes también forma parte de la información necesaria.</p>
+</section>
+<section id="problema-2.-una-tabla-de-recuentos" class="level3">
+<h3 class="anchored" data-anchor-id="problema-2.-una-tabla-de-recuentos">Problema 2. Una tabla de recuentos</h3>
+<p>Los números de libros leídos por diez estudiantes durante un mes son <span class="math inline">\(0,1,1,2,2,2,3,3,4,4\)</span>. Organizar frecuencias y hallar la proporción que leyó al menos tres libros.</p>
+<p><strong>Solución.</strong> Para los valores <span class="math inline">\(0,1,2,3,4\)</span>, las frecuencias absolutas son <span class="math inline">\(1,2,3,2,2\)</span> y las relativas son <span class="math inline">\(1/10,2/10,3/10,2/10,2/10\)</span>. Suman diez y uno, respectivamente. Los valores tres y cuatro reúnen cuatro estudiantes, de modo que la proporción buscada es <span class="math inline">\(4/10=40\%\)</span>. La tabla representa los diez registros del grupo; extender ese porcentaje a todos los estudiantes del establecimiento exigiría estudiar cómo se eligieron estos diez.</p>
+</section>
+<section id="problema-3.-leer-una-acumulación" class="level3">
+<h3 class="anchored" data-anchor-id="problema-3.-leer-una-acumulación">Problema 3. Leer una acumulación</h3>
+<p>Las frecuencias acumuladas para las clases de tiempo <span class="math inline">\([0,10)\)</span>, <span class="math inline">\([10,20)\)</span> y <span class="math inline">\([20,40]\)</span> son <span class="math inline">\(5,17,25\)</span>. Recuperar las frecuencias simples y calcular el porcentaje de tiempos inferiores a veinte minutos.</p>
+<p><strong>Solución.</strong> Las frecuencias simples son <span class="math inline">\(5\)</span>, <span class="math inline">\(17-5=12\)</span> y <span class="math inline">\(25-17=8\)</span>. El total es 25. Las dos primeras clases reúnen los tiempos estrictamente menores que veinte, por lo que el porcentaje es <span class="math inline">\(17/25=68\%\)</span>. Una observación de veinte pertenece a la tercera clase, cuyo extremo inferior está incluido. Las diferencias sucesivas son no negativas, como exige una acumulación válida.</p>
+</section>
+</section>
+<section id="dar-forma-visible-a-los-datos" class="level2">
+<h2 class="anchored" data-anchor-id="dar-forma-visible-a-los-datos">Dar forma visible a los datos</h2>
+<p>Un gráfico de barras representa categorías mediante alturas o longitudes proporcionales a sus frecuencias. El orden de presentación puede elegirse para facilitar una comparación; cuando las categorías tienen un orden sustantivo conviene respetarlo. Un gráfico de líneas enlaza observaciones según una secuencia, como el tiempo, y comunica también esa continuidad o evolución. Los ejes, sus unidades y la escala hacen explícita la relación entre números y dibujo.</p>
+<p>Para representar clases numéricas mediante un histograma, cada intervalo de clase será la base de un rectángulo. Queremos que el área muestre cuántos registros contiene, así que debemos repartir la frecuencia <span class="math inline">\(f_j\)</span> sobre una base de amplitud <span class="math inline">\(a_j&gt;0\)</span>: la altura será <span class="math inline">\(f_j/a_j\)</span>. Al multiplicar altura por base recuperamos la frecuencia. Si usamos <span class="math inline">\(h_j/a_j\)</span>, el área representará la frecuencia relativa. Cuando todas las bases tienen la misma amplitud, las alturas permiten comparar directamente los recuentos; con bases distintas, la división por la amplitud conserva el significado de las áreas.</p>
+<div id="fig-mp-histograma-y-densidad" class="quarto-float quarto-figure quarto-figure-center anchored" alt="En un histograma con clases de distinta amplitud, el área conserva la frecuencia y la altura representa densidad.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-histograma-y-densidad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Histograma_y_densidad.svg" class="img-fluid figure-img" alt="En un histograma con clases de distinta amplitud, el área conserva la frecuencia y la altura representa densidad.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-histograma-y-densidad-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: En un histograma con clases de distinta amplitud, el área conserva la frecuencia y la altura representa densidad.
+</figcaption>
+</figure>
+</div>
+<section id="propiedades-de-las-representaciones" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-las-representaciones">Propiedades de las representaciones</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Hipótesis y alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Barras y frecuencias</td>
+<td>Con escala común y base cero, la altura de cada barra es proporcional a su frecuencia.</td>
+</tr>
+<tr class="even">
+<td>Área del histograma</td>
+<td>Para amplitud <span class="math inline">\(a_j&gt;0\)</span> y altura <span class="math inline">\(f_j/a_j\)</span>, el área del rectángulo es <span class="math inline">\(f_j\)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Densidad relativa</td>
+<td>Con altura <span class="math inline">\(h_j/a_j\)</span>, el área total del histograma es uno.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#escalas-gráficas-y-áreas-de-histogramas">Escalas gráficas y áreas de histogramas</a>» en el apéndice de demostraciones.</p>
+</section>
+<section id="problema-4.-elegir-una-representación" class="level3">
+<h3 class="anchored" data-anchor-id="problema-4.-elegir-una-representación">Problema 4. Elegir una representación</h3>
+<p>En un grupo de veinte estudiantes, doce viajan en bus, cinco caminan y tres van en bicicleta. Elegir un gráfico y explicar qué debe mostrar su escala.</p>
+<p><strong>Solución.</strong> Un gráfico de barras permite comparar las tres categorías. Puede usar frecuencias absolutas <span class="math inline">\(12,5,3\)</span> o porcentajes <span class="math inline">\(60\%,25\%,15\%\)</span>, con eje claramente rotulado y origen cero para representar esas magnitudes mediante longitudes. Las categorías son nominales y el orden elegido sólo organiza la lectura. Unir sus alturas con segmentos sugeriría una evolución entre categorías que la encuesta no establece. Las proporciones suman cien por ciento porque cada estudiante se asignó a un único medio de transporte principal.</p>
+</section>
+<section id="problema-5.-una-clase-ancha-con-más-observaciones" class="level3">
+<h3 class="anchored" data-anchor-id="problema-5.-una-clase-ancha-con-más-observaciones">Problema 5. Una clase ancha con más observaciones</h3>
+<p>Para tiempos en minutos, las clases <span class="math inline">\([0,10)\)</span>, <span class="math inline">\([10,20)\)</span> y <span class="math inline">\([20,40]\)</span> contienen <span class="math inline">\(5,12,8\)</span> observaciones. Hallar las alturas de un histograma de frecuencia por área e identificar la clase más concentrada por unidad de tiempo.</p>
+<p><strong>Solución.</strong> Las amplitudes son <span class="math inline">\(10,10,20\)</span> minutos. Las alturas son <span class="math inline">\(5/10=0{,}5\)</span>, <span class="math inline">\(12/10=1{,}2\)</span> y <span class="math inline">\(8/20=0{,}4\)</span> observaciones por minuto. Sus áreas son <span class="math inline">\(5,12,8\)</span>, que recuperan los recuentos. La clase <span class="math inline">\([10,20)\)</span> tiene la mayor densidad. La última clase contiene ocho observaciones, pero distribuye ese total sobre un intervalo dos veces más ancho que el primero. Las alturas relativas serían estas mismas alturas divididas por 25 y sus áreas sumarían uno.</p>
+</section>
+</section>
+<section id="qué-conserva-un-valor-central" class="level2">
+<h2 class="anchored" data-anchor-id="qué-conserva-un-valor-central">Qué conserva un valor central</h2>
+<p>La media aritmética de <span class="math inline">\(n\)</span> valores reales <span class="math inline">\(x_1,\ldots,x_n\)</span> es <span class="math inline">\(\bar x=(x_1+\cdots+x_n)/n\)</span>. Reparte la suma total en partes iguales. Si los valores se presentan con frecuencias <span class="math inline">\(f_j\)</span>, puede calcularse mediante <span class="math inline">\(\bar x=\sum_j f_jv_j/n\)</span>, donde <span class="math inline">\(v_j\)</span> es cada valor distinto. Esta fórmula usa valores observados exactos; reemplazar una clase de un intervalo por su punto medio produce una estimación que requiere declararse.</p>
+<p>Para hallar la mediana se ordenan los datos <span class="math inline">\(x_{(1)}\leq\cdots\leq x_{(n)}\)</span>. Si <span class="math inline">\(n\)</span> es impar se toma el valor de posición <span class="math inline">\((n+1)/2\)</span>; si es par se promedian las posiciones <span class="math inline">\(n/2\)</span> y <span class="math inline">\(n/2+1\)</span>. La mediana elegida deja al menos la mitad de las observaciones a cada lado, contando las igualdades. La moda es cada valor o categoría con frecuencia máxima; puede haber varias modas. Conocer el centro facilita la comparación y conviene acompañarlo con la forma y la dispersión de los datos.</p>
+<div id="fig-mp-centro-y-dato-extremo" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Un dato extremo modifica con fuerza la media, mientras que la posición central permanece en este ejemplo.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-centro-y-dato-extremo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Centro_y_dato_extremo.svg" class="img-fluid figure-img" alt="Un dato extremo modifica con fuerza la media, mientras que la posición central permanece en este ejemplo.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-centro-y-dato-extremo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: Un dato extremo modifica con fuerza la media, mientras que la posición central permanece en este ejemplo.
+</figcaption>
+</figure>
+</div>
+<section id="propiedades-de-los-centros" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-los-centros">Propiedades de los centros</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Hipótesis y alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Balance de la media</td>
+<td><span class="math inline">\(\sum_i(x_i-\bar x)=0\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Media ponderada</td>
+<td>Para pesos <span class="math inline">\(w_j\geq0\)</span> de suma positiva, <span class="math inline">\(\bar x_w=\sum_j w_jx_j/\sum_jw_j\)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Reunir grupos</td>
+<td>Si los grupos disjuntos tienen tamaños <span class="math inline">\(n_j&gt;0\)</span> y medias <span class="math inline">\(m_j\)</span>, la media conjunta es <span class="math inline">\(\sum_jn_jm_j/\sum_jn_j\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Posición mediana</td>
+<td>La mediana definida por orden deja al menos <span class="math inline">\(n/2\)</span> observaciones menores o iguales y al menos <span class="math inline">\(n/2\)</span> mayores o iguales.</td>
+</tr>
+<tr class="odd">
+<td>Moda</td>
+<td>Las modas corresponden a las frecuencias máximas; su interpretación conserva el tipo de variable y la agrupación usada.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#media-ponderaciones-y-posiciones-centrales">Media, ponderaciones y posiciones centrales</a>» en el apéndice de demostraciones.</p>
+</section>
+<section id="problema-6.-calcular-desde-frecuencias" class="level3">
+<h3 class="anchored" data-anchor-id="problema-6.-calcular-desde-frecuencias">Problema 6. Calcular desde frecuencias</h3>
+<p>Calcular la media del número de libros del problema 2 y comprobar el balance respecto de ella.</p>
+<p><strong>Solución.</strong> La suma es <span class="math inline">\(0\cdot1+1\cdot2+2\cdot3+3\cdot2+4\cdot2=22\)</span>, así que <span class="math inline">\(\bar x=22/10=2{,}2\)</span> libros por estudiante. La suma de las diferencias, con sus frecuencias, es <span class="math inline">\(1(0-2{,}2)+2(1-2{,}2)+3(2-2{,}2)+2(3-2{,}2)+2(4-2{,}2)=0\)</span>. La media admite un valor fraccionario aunque cada recuento individual sea entero: expresa un reparto del total de libros entre los diez estudiantes.</p>
+</section>
+<section id="problema-7.-centro-y-valor-extremo" class="level3">
+<h3 class="anchored" data-anchor-id="problema-7.-centro-y-valor-extremo">Problema 7. Centro y valor extremo</h3>
+<p>Comparar media, mediana y moda en <span class="math inline">\(4,5,5,6,10\)</span> y en <span class="math inline">\(4,5,5,6,30\)</span>.</p>
+<p><strong>Solución.</strong> En el primer conjunto la suma es 30 y la media vale 6; en el segundo la suma es 50 y la media vale 10. Ambos conjuntos están ordenados, tienen cinco datos y conservan el tercer valor <span class="math inline">\(5\)</span>, que es su mediana. El valor <span class="math inline">\(5\)</span> aparece dos veces y cada otro valor una vez, por lo que también es la moda de ambos. El cambio de veinte unidades en un dato aumenta la media en <span class="math inline">\(20/5=4\)</span> y conserva las posiciones centrales de este ejemplo. El efecto sobre una mediana depende de las posiciones que cambien.</p>
+</section>
+<section id="problema-8.-ponderar-una-calificación" class="level3">
+<h3 class="anchored" data-anchor-id="problema-8.-ponderar-una-calificación">Problema 8. Ponderar una calificación</h3>
+<p>Una calificación se obtiene con tres resultados <span class="math inline">\(5,6,4\)</span> y ponderaciones <span class="math inline">\(20\%,30\%,50\%\)</span>. Calcularla e interpretar las ponderaciones.</p>
+<p><strong>Solución.</strong> La suma ponderada es <span class="math inline">\(0{,}2\cdot5+0{,}3\cdot6+0{,}5\cdot4=4{,}8\)</span>. Los pesos suman uno y representan la fracción de la calificación atribuida a cada evaluación. Como son no negativos, el resultado está entre el mínimo 4 y el máximo 6. Usar la media simple daría 5 y correspondería a otro sistema de pesos, con igual aporte de las tres evaluaciones.</p>
+</section>
+<section id="problema-9.-reunir-dos-cursos" class="level3">
+<h3 class="anchored" data-anchor-id="problema-9.-reunir-dos-cursos">Problema 9. Reunir dos cursos</h3>
+<p>Un curso de 20 estudiantes tiene media de viaje de 15 minutos; otro de 30 tiene media de 25 minutos. Hallar la media conjunta.</p>
+<p><strong>Solución.</strong> Las sumas de tiempos son <span class="math inline">\(20\cdot15=300\)</span> y <span class="math inline">\(30\cdot25=750\)</span> minutos. Al reunir los 50 estudiantes, la media es <span class="math inline">\((300+750)/50=21\)</span> minutos. Promediar las dos medias con igual peso produciría 20 y otorgaría el mismo aporte a grupos de tamaños diferentes. El cálculo correcto pondera cada media por la cantidad de observaciones que resume.</p>
+</section>
+</section>
+<section id="posiciones-cuartiles-y-cajas" class="level2">
+<h2 class="anchored" data-anchor-id="posiciones-cuartiles-y-cajas">Posiciones, cuartiles y cajas</h2>
+<p>Un cuantil sitúa un valor dentro de una distribución ordenada. Para que los resultados sean reproducibles declararemos la convención usada. En este capítulo los cuantiles interpolados de una lista de <span class="math inline">\(n\geq1\)</span> datos ordenados se calculan con</p>
+<p><span class="math display">\[h=1+(n-1)p,\qquad 0\leq p\leq1.\]</span></p>
+<p>Si <span class="math inline">\(h\)</span> es entero, se toma <span class="math inline">\(Q(p)=x_{(h)}\)</span>. Si <span class="math inline">\(j&lt;h&lt;j+1\)</span> y <span class="math inline">\(d=h-j\)</span>, se interpola mediante <span class="math inline">\(Q(p)=(1-d)x_{(j)}+dx_{(j+1)}\)</span>. Los extremos dan mínimo y máximo; para <span class="math inline">\(n=1\)</span> todos los cuantiles valen el único dato. El percentil <span class="math inline">\(100p\)</span> corresponde a <span class="math inline">\(Q(p)\)</span>; los cuartiles son <span class="math inline">\(Q_1=Q(1/4)\)</span>, <span class="math inline">\(Q_2=Q(1/2)\)</span> y <span class="math inline">\(Q_3=Q(3/4)\)</span>. Esta convención hace coincidir <span class="math inline">\(Q_2\)</span> con la mediana anterior.</p>
+<p>Otra convención, la de rango próximo superior, elige <span class="math inline">\(x_{(\lceil np\rceil)}\)</span> para <span class="math inline">\(0&lt;p\leq1\)</span>, donde <span class="math inline">\(\lceil u\rceil\)</span> es el menor entero mayor o igual que <span class="math inline">\(u\)</span>. Las dos reglas pueden producir valores distintos en una lista finita. Un percentil interpolado describe la posición calculada por su regla; la proporción efectiva de datos inferiores a él se obtiene contando las observaciones, especialmente en muestras pequeñas o con empates.</p>
+<p>El recorrido intercuartílico es <span class="math inline">\(RIC=Q_3-Q_1\)</span>. Un diagrama de caja representa la caja entre ambos cuartiles y marca la mediana. Usaremos bigotes hasta las observaciones extremas incluidas en las cercas <span class="math inline">\(Q_1-1{,}5RIC\)</span> y <span class="math inline">\(Q_3+1{,}5RIC\)</span>, y dibujaremos separadamente las observaciones exteriores. La denominación «valor atípico» se refiere aquí a esa regla descriptiva; su interpretación requiere conocer el contexto y comprobar el registro.</p>
+<div id="fig-mp-cuartiles-y-caja" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Cuartiles interpolados y regla de bigotes declarada para una misma lista ordenada.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-cuartiles-y-caja-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Cuartiles_y_caja.svg" class="img-fluid figure-img" alt="Cuartiles interpolados y regla de bigotes declarada para una misma lista ordenada.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-cuartiles-y-caja-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;3: Cuartiles interpolados y regla de bigotes declarada para una misma lista ordenada.
+</figcaption>
+</figure>
+</div>
+<section id="propiedades-de-los-cuantiles-declarados" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-los-cuantiles-declarados">Propiedades de los cuantiles declarados</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Hipótesis y alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Interpolación</td>
+<td>Si <span class="math inline">\(h=j+d\)</span>, <span class="math inline">\(0&lt;d&lt;1\)</span>, <span class="math inline">\(Q(p)=(1-d)x_{(j)}+dx_{(j+1)}\)</span> queda entre los datos vecinos.</td>
+</tr>
+<tr class="even">
+<td>Orden de cuantiles</td>
+<td>Con la convención interpolada y datos ordenados, <span class="math inline">\(p\leq q\)</span> implica <span class="math inline">\(Q(p)\leq Q(q)\)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Cuartil central</td>
+<td><span class="math inline">\(Q(1/2)\)</span> coincide con la mediana definida por las posiciones centrales.</td>
+</tr>
+<tr class="even">
+<td>Caja y cercas</td>
+<td><span class="math inline">\(RIC=Q_3-Q_1\geq0\)</span> y las cercas <span class="math inline">\(Q_1-1{,}5RIC\)</span>, <span class="math inline">\(Q_3+1{,}5RIC\)</span> fijan la regla de clasificación adoptada.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#cuantiles-interpolados-y-convención-de-caja">Cuantiles interpolados y convención de caja</a>» en el apéndice de demostraciones.</p>
+</section>
+<section id="problema-10.-un-percentil-entre-posiciones" class="level3">
+<h3 class="anchored" data-anchor-id="problema-10.-un-percentil-entre-posiciones">Problema 10. Un percentil entre posiciones</h3>
+<p>Los datos ordenados son <span class="math inline">\(2,4,6,8,10,12\)</span>. Calcular el percentil 30 mediante la convención interpolada.</p>
+<p><strong>Solución.</strong> Con <span class="math inline">\(n=6\)</span> y <span class="math inline">\(p=0{,}30\)</span>, se obtiene <span class="math inline">\(h=1+5\cdot0{,}30=2{,}5\)</span>. Las posiciones vecinas contienen 4 y 6. La interpolación con <span class="math inline">\(d=0{,}5\)</span> da <span class="math inline">\(Q(0{,}30)=5\)</span>. Hay dos observaciones menores o iguales que 5, es decir, <span class="math inline">\(2/6\)</span> del conjunto. El percentil calculado conserva la posición interpolada; el recuento efectivo se expresa con esa fracción.</p>
+</section>
+<section id="problema-11.-cuartiles-y-un-dato-exterior" class="level3">
+<h3 class="anchored" data-anchor-id="problema-11.-cuartiles-y-un-dato-exterior">Problema 11. Cuartiles y un dato exterior</h3>
+<p>Para <span class="math inline">\(1,2,3,4,5,6,7,8,20\)</span>, calcular cuartiles, recorrido intercuartílico y bigotes con la regla declarada.</p>
+<p><strong>Solución.</strong> Como <span class="math inline">\(n=9\)</span>, las posiciones son <span class="math inline">\(h_1=3\)</span>, <span class="math inline">\(h_2=5\)</span> y <span class="math inline">\(h_3=7\)</span>. Por tanto <span class="math inline">\(Q_1=3\)</span>, mediana <span class="math inline">\(5\)</span>, <span class="math inline">\(Q_3=7\)</span> y <span class="math inline">\(RIC=4\)</span>. Las cercas valen <span class="math inline">\(3-6=-3\)</span> y <span class="math inline">\(7+6=13\)</span>. Los bigotes llegan a las observaciones 1 y 8. El valor 20 queda fuera de la cerca superior y se representa aparte. El máximo de la lista sigue siendo 20, aunque el bigote superior termine en 8.</p>
+</section>
+<section id="problema-12.-dos-convenciones-sobre-cuatro-datos" class="level3">
+<h3 class="anchored" data-anchor-id="problema-12.-dos-convenciones-sobre-cuatro-datos">Problema 12. Dos convenciones sobre cuatro datos</h3>
+<p>Calcular el percentil 90 de <span class="math inline">\(0,10,20,100\)</span> mediante interpolación y mediante rango próximo superior; interpretar los recuentos.</p>
+<p><strong>Solución.</strong> La interpolación usa <span class="math inline">\(h=1+3\cdot0{,}9=3{,}7\)</span> y da <span class="math inline">\(0{,}3\cdot20+0{,}7\cdot100=76\)</span>. El rango próximo superior usa <span class="math inline">\(\lceil4\cdot0{,}9\rceil=4\)</span> y da 100. En la lista hay tres de cuatro valores menores o iguales que 76, y cuatro de cuatro menores o iguales que 100. Ambas reglas son explícitas y producen resultados reproducibles; indicar la convención permite comprender la diferencia. La interpolación por posiciones no impone que exactamente el noventa por ciento de cuatro observaciones quede bajo el valor obtenido.</p>
+</section>
+</section>
+<section id="cuánto-se-separan-las-observaciones" class="level2">
+<h2 class="anchored" data-anchor-id="cuánto-se-separan-las-observaciones">Cuánto se separan las observaciones</h2>
+<p>El rango es la diferencia entre máximo y mínimo. La varianza descriptiva de una lista completa de <span class="math inline">\(n\geq1\)</span> datos se define por</p>
+<p><span class="math display">\[v=\frac1n\sum_{i=1}^n(x_i-\bar x)^2.\]</span></p>
+<p>La desviación típica descriptiva es <span class="math inline">\(\sigma=\sqrt v\)</span>. Si los datos representan toda la población de interés, estas son la varianza y desviación poblacionales. Para una muestra de <span class="math inline">\(n\geq2\)</span> observaciones es frecuente usar también la varianza muestral con divisor <span class="math inline">\(n-1\)</span>,</p>
+<p><span class="math display">\[s^2=\frac1{n-1}\sum_{i=1}^n(x_i-\bar x)^2.\]</span></p>
+<p>Su raíz es <span class="math inline">\(s\)</span>. La elección del divisor debe declararse: <span class="math inline">\(v\)</span> describe la dispersión de la lista usando su tamaño; <span class="math inline">\(s^2\)</span> es la convención de uso inferencial que retomará el estudio de probabilidad. Aquí compararemos ambas fórmulas algebraicamente y reservaremos sus propiedades probabilísticas para ese desarrollo.</p>
+<p>La varianza se expresa en el cuadrado de la unidad de los datos y la desviación en su unidad original. Una traslación común cambia el centro y conserva todas las diferencias respecto de él. Un cambio de escala multiplica esas diferencias y, por tanto, modifica la dispersión de una manera que puede calcularse exactamente.</p>
+<section id="propiedades-de-la-dispersión" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-de-la-dispersión">Propiedades de la dispersión</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Hipótesis y alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Positividad</td>
+<td><span class="math inline">\(v\geq0\)</span> y <span class="math inline">\(v=0\)</span> exactamente cuando todos los datos coinciden.</td>
+</tr>
+<tr class="even">
+<td>Cálculo equivalente</td>
+<td><span class="math inline">\(v=(\sum_i x_i^2)/n-\bar x^2\)</span>; al calcular con redondeos, conviene controlar la pérdida de precisión.</td>
+</tr>
+<tr class="odd">
+<td>Cambio afín</td>
+<td>Para <span class="math inline">\(y_i=ax_i+b\)</span>, <span class="math inline">\(\bar y=a\bar x+b\)</span>, <span class="math inline">\(v_y=a^2v_x\)</span> y <span class="math inline">\(\sigma_y=\lvert a\rvert \sigma_x\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Dos divisores</td>
+<td>Si <span class="math inline">\(n\geq2\)</span>, <span class="math inline">\(s^2=nv/(n-1)\)</span>; para una lista de un solo dato <span class="math inline">\(v=0\)</span> y <span class="math inline">\(s^2\)</span> queda sin definir.</td>
+</tr>
+<tr class="odd">
+<td>Unidades</td>
+<td>Si los datos se miden en una unidad <span class="math inline">\(U\)</span>, <span class="math inline">\(v\)</span> y <span class="math inline">\(s^2\)</span> se expresan en <span class="math inline">\(U^2\)</span> y sus raíces en <span class="math inline">\(U\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#dispersión-divisores-y-cambios-de-escala">Dispersión, divisores y cambios de escala</a>» en el apéndice de demostraciones.</p>
+</section>
+<section id="problema-13.-dispersión-de-una-lista-completa" class="level3">
+<h3 class="anchored" data-anchor-id="problema-13.-dispersión-de-una-lista-completa">Problema 13. Dispersión de una lista completa</h3>
+<p>Los tiempos de tres trayectos son <span class="math inline">\(2,4,6\)</span> minutos. Calcular media, rango, varianza y desviación típica descriptivas.</p>
+<p><strong>Solución.</strong> La media es 4 minutos y el rango es <span class="math inline">\(6-2=4\)</span> minutos. Las diferencias son <span class="math inline">\(-2,0,2\)</span>, con cuadrados <span class="math inline">\(4,0,4\)</span>. Así <span class="math inline">\(v=8/3\)</span> minutos cuadrados y <span class="math inline">\(\sigma=\sqrt{8/3}\)</span> minutos. La aproximación <span class="math inline">\(1{,}63\)</span> minutos tiene error menor que <span class="math inline">\(0{,}005\)</span> minutos, porque <span class="math inline">\(1{,}625^2&lt;8/3&lt;1{,}635^2\)</span>. La fórmula alternativa da <span class="math inline">\((4+16+36)/3-16=8/3\)</span> y comprueba la varianza.</p>
+</section>
+<section id="problema-14.-declarar-el-divisor" class="level3">
+<h3 class="anchored" data-anchor-id="problema-14.-declarar-el-divisor">Problema 14. Declarar el divisor</h3>
+<p>Para la muestra <span class="math inline">\(1,3,5,7\)</span>, calcular la varianza descriptiva de la lista y la varianza muestral con divisor <span class="math inline">\(n-1\)</span>.</p>
+<p><strong>Solución.</strong> La media es 4 y la suma de cuadrados respecto de ella es <span class="math inline">\(9+1+1+9=20\)</span>. Con divisor cuatro se obtiene <span class="math inline">\(v=5\)</span>. Con divisor tres se obtiene <span class="math inline">\(s^2=20/3\)</span>. La relación <span class="math inline">\(s^2=4v/3\)</span> confirma el resultado. Las desviaciones correspondientes son <span class="math inline">\(\sqrt5\)</span> y <span class="math inline">\(\sqrt{20/3}\)</span>. Ambas fórmulas usan las mismas cuatro observaciones; la diferencia procede de la definición elegida y debe acompañar cualquier comparación con otro grupo.</p>
+</section>
+<section id="problema-15.-convertir-la-escala-de-medición" class="level3">
+<h3 class="anchored" data-anchor-id="problema-15.-convertir-la-escala-de-medición">Problema 15. Convertir la escala de medición</h3>
+<p>Una lista de temperaturas Celsius tiene media <span class="math inline">\(20\)</span> y varianza descriptiva <span class="math inline">\(9\)</span>. Se transforma mediante <span class="math inline">\(F=1{,}8C+32\)</span>. Hallar media, varianza y desviación típica en la escala Fahrenheit.</p>
+<p><strong>Solución.</strong> La media pasa a <span class="math inline">\(1{,}8\cdot20+32=68\)</span> grados Fahrenheit. La varianza se multiplica por <span class="math inline">\(1{,}8^2\)</span>, de modo que vale <span class="math inline">\(29{,}16\)</span> grados Fahrenheit cuadrados. La desviación inicial es 3 grados Celsius y la nueva es <span class="math inline">\(1{,}8\cdot3=5{,}4\)</span> grados Fahrenheit. El desplazamiento 32 modifica el origen de la escala; las diferencias se multiplican por <span class="math inline">\(1{,}8\)</span>. Las unidades de los resultados distinguen varianza y desviación.</p>
+</section>
+<section id="problema-16.-igual-media-e-igual-rango" class="level3">
+<h3 class="anchored" data-anchor-id="problema-16.-igual-media-e-igual-rango">Problema 16. Igual media e igual rango</h3>
+<p>Comparar las listas <span class="math inline">\(A=(0,2,2,4)\)</span> y <span class="math inline">\(B=(0,0,4,4)\)</span> mediante media, rango y varianza descriptiva.</p>
+<p><strong>Solución.</strong> Ambas suman ocho, tienen media dos y rango cuatro. En <span class="math inline">\(A\)</span>, los cuadrados de las diferencias son <span class="math inline">\(4,0,0,4\)</span> y la varianza vale <span class="math inline">\(8/4=2\)</span>. En <span class="math inline">\(B\)</span> son <span class="math inline">\(4,4,4,4\)</span> y la varianza vale <span class="math inline">\(16/4=4\)</span>. Sus desviaciones son <span class="math inline">\(\sqrt2\)</span> y 2, respectivamente. La segunda lista concentra todos sus datos en los extremos, mientras que la primera sitúa dos en el centro. La varianza distingue así dos distribuciones que tienen la misma media y el mismo rango.</p>
+</section>
+</section>
+<section id="contar-la-estructura-de-las-elecciones" class="level2">
+<h2 class="anchored" data-anchor-id="contar-la-estructura-de-las-elecciones">Contar la estructura de las elecciones</h2>
+<p>Contar casos exige describir qué constituye un resultado distinto. La regla de la suma reúne alternativas disjuntas: si una elección pertenece a una de dos clases de tamaños <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>, el total es <span class="math inline">\(a+b\)</span>. Si se superponen, hay que descontar las elecciones contadas en ambas. La regla del producto organiza etapas: si cada una de <span class="math inline">\(a\)</span> primeras elecciones admite exactamente <span class="math inline">\(b\)</span> segundas elecciones, existen <span class="math inline">\(ab\)</span> parejas posibles. Cuando la cantidad de continuaciones varía, se suman los recuentos de cada primera elección.</p>
+<p>Una variación ordenada de longitud <span class="math inline">\(k\)</span> elige y ordena <span class="math inline">\(k\)</span> elementos de un conjunto de <span class="math inline">\(n\)</span> elementos distintos. Con repetición, cada posición admite los <span class="math inline">\(n\)</span> elementos y se obtienen <span class="math inline">\(n^k\)</span> secuencias. Sin repetición, para <span class="math inline">\(0\leq k\leq n\)</span>, las cantidades disponibles son <span class="math inline">\(n,n-1,\ldots,n-k+1\)</span> y su producto vale <span class="math inline">\(n!/(n-k)!\)</span>. El factorial <span class="math inline">\(n!\)</span> es el producto <span class="math inline">\(1\cdot2\cdots n\)</span> para <span class="math inline">\(n\geq1\)</span>, con <span class="math inline">\(0!=1\)</span>. Una permutación ordena todos los elementos: corresponde a <span class="math inline">\(k=n\)</span>.</p>
+<p>Una combinación de tamaño <span class="math inline">\(k\)</span> es un subconjunto de <span class="math inline">\(k\)</span> elementos de un conjunto de <span class="math inline">\(n\)</span> elementos distintos. Podemos obtenerlo comenzando por una selección ordenada, pero cada subconjunto aparece entonces una vez por cada orden de sus <span class="math inline">\(k\)</span> elementos: exactamente <span class="math inline">\(k!\)</span> veces. Dividir el número de selecciones ordenadas entre esa cantidad de representaciones da</p>
+<p><span class="math display">\[\binom nk=\frac{n!}{k!(n-k)!},\qquad 0\leq k\leq n.\]</span></p>
+<p>Si se ordenan objetos con repeticiones indistinguibles de multiplicidades <span class="math inline">\(m_1,\ldots,m_r\)</span>, cuya suma es <span class="math inline">\(n\)</span>, se divide <span class="math inline">\(n!\)</span> por <span class="math inline">\(m_1!\cdots m_r!\)</span>. Estas divisiones se justifican al identificar cuántos registros ordenados representan el mismo resultado final.</p>
+<div id="fig-mp-combinaciones-y-diseno" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Seis muestras de dos unidades entre cuatro y una selección restringida a cuatro de ellas.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-combinaciones-y-diseno-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Combinaciones_y_diseno.svg" class="img-fluid figure-img" alt="Seis muestras de dos unidades entre cuatro y una selección restringida a cuatro de ellas.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-combinaciones-y-diseno-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;4: Seis muestras de dos unidades entre cuatro y una selección restringida a cuatro de ellas.
+</figcaption>
+</figure>
+</div>
+<section id="propiedades-del-conteo" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-del-conteo">Propiedades del conteo</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Hipótesis y alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Suma disjunta</td>
+<td>Si <span class="math inline">\(A\cap B=\varnothing\)</span>, $AB=A+B$.</td>
+</tr>
+<tr class="even">
+<td>Producto por etapas</td>
+<td>Si cada primera elección tiene el mismo número <span class="math inline">\(b\)</span> de continuaciones, <span class="math inline">\(a\)</span> primeras elecciones generan <span class="math inline">\(ab\)</span> pares.</td>
+</tr>
+<tr class="odd">
+<td>Variaciones</td>
+<td>Para <span class="math inline">\(n\geq1\)</span>, con repetición hay <span class="math inline">\(n^k\)</span> secuencias; sin repetición hay <span class="math inline">\(n!/(n-k)!\)</span>, para <span class="math inline">\(0\leq k\leq n\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Permutaciones</td>
+<td><span class="math inline">\(n\)</span> elementos distintos admiten <span class="math inline">\(n!\)</span> órdenes; multiplicidades indistinguibles <span class="math inline">\(m_j\)</span> dan <span class="math inline">\(n!/\prod_jm_j!\)</span>.</td>
+</tr>
+<tr class="odd">
+<td>Combinaciones</td>
+<td>Los subconjuntos de tamaño <span class="math inline">\(k\)</span> se cuentan con <span class="math inline">\(\binom nk=n!/[k!(n-k)!]\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Complementos</td>
+<td><span class="math inline">\(\binom nk=\binom n{n-k}\)</span> porque elegir un subconjunto determina su complemento.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#suma-producto-y-orden-en-el-conteo">Suma, producto y orden en el conteo</a>» en el apéndice de demostraciones.</p>
+</section>
+<section id="problema-17.-alternativas-y-etapas" class="level3">
+<h3 class="anchored" data-anchor-id="problema-17.-alternativas-y-etapas">Problema 17. Alternativas y etapas</h3>
+<p>Un taller ofrece cuatro actividades individuales y tres actividades en parejas. Cada participante elige una actividad. Para la actividad elegida puede escoger entre dos horarios. ¿Cuántas inscripciones diferentes hay?</p>
+<p><strong>Solución.</strong> Las actividades individuales y en parejas son dos clases disjuntas de alternativas, con total <span class="math inline">\(4+3=7\)</span>. Cada una admite dos horarios, así que hay <span class="math inline">\(7\cdot2=14\)</span> pares actividad-horario. Se supone que todos los horarios están disponibles para las siete actividades. Si una actividad tuviera un solo horario, habría que contar sus continuaciones por separado; el total bajaría a 13. El conteo distingue elegir una alternativa de completar sus etapas.</p>
+</section>
+<section id="problema-18.-claves-y-cargos" class="level3">
+<h3 class="anchored" data-anchor-id="problema-18.-claves-y-cargos">Problema 18. Claves y cargos</h3>
+<p>Con cinco símbolos distintos, formar claves de tres posiciones permitiendo repetición. Comparar con la asignación de presidencia, secretaría y tesorería a tres personas distintas de un grupo de cinco.</p>
+<p><strong>Solución.</strong> Cada posición de la clave admite los cinco símbolos, de modo que hay <span class="math inline">\(5^3=125\)</span> claves. Para los cargos hay cinco elecciones para presidencia, cuatro para secretaría y tres para tesorería: <span class="math inline">\(5\cdot4\cdot3=60\)</span>. El orden de los cargos distingue resultados, pues intercambiar dos personas cambia sus funciones. La exigencia de personas distintas reduce las alternativas disponibles después de cada elección.</p>
+</section>
+<section id="problema-19.-letras-que-se-repiten" class="level3">
+<h3 class="anchored" data-anchor-id="problema-19.-letras-que-se-repiten">Problema 19. Letras que se repiten</h3>
+<p>Contar los arreglos distintos de las cinco letras de la palabra MAMAS, usando todas las letras.</p>
+<p><strong>Solución.</strong> Hay dos letras M, dos A y una S. Si se etiquetaran las copias como <span class="math inline">\(M_1,M_2,A_1,A_2,S\)</span>, habría <span class="math inline">\(5!=120\)</span> órdenes. Cada arreglo visible se obtiene de <span class="math inline">\(2!\cdot2!=4\)</span> órdenes etiquetados, porque pueden intercambiarse las dos M y las dos A dentro de sus posiciones. Por ello hay <span class="math inline">\(120/4=30\)</span> arreglos visibles. La división tiene un factor constante para cada resultado y conserva exactamente una cuenta por arreglo distinto.</p>
+</section>
+<section id="problema-20.-comité-y-distribución-de-funciones" class="level3">
+<h3 class="anchored" data-anchor-id="problema-20.-comité-y-distribución-de-funciones">Problema 20. Comité y distribución de funciones</h3>
+<p>De ocho personas se eligen tres para un comité. Contar los comités y comparar con las elecciones en que esas tres personas reciben tres cargos diferentes.</p>
+<p><strong>Solución.</strong> Un comité es un subconjunto y se cuenta con <span class="math inline">\(\binom83=8\cdot7\cdot6/(3\cdot2\cdot1)=56\)</span>. Si se asignan tres cargos, cada comité admite <span class="math inline">\(3!=6\)</span> distribuciones y se obtienen <span class="math inline">\(56\cdot6=336\)</span>, que también es <span class="math inline">\(8\cdot7\cdot6\)</span>. Elegir quiénes participan y decidir sus funciones son dos etapas distintas. Como comprobación, elegir un comité de tres equivale a elegir las cinco personas que quedan fuera: <span class="math inline">\(\binom83=\binom85\)</span>.</p>
+</section>
+<section id="problema-21.-dos-mecanismos-para-seleccionar-parejas" class="level3">
+<h3 class="anchored" data-anchor-id="problema-21.-dos-mecanismos-para-seleccionar-parejas">Problema 21. Dos mecanismos para seleccionar parejas</h3>
+<p>Una población tiene cuatro unidades <span class="math inline">\(A,B,C,D\)</span>. Enumerar las muestras de tamaño dos. Comparar seleccionar entre todas ellas con igual oportunidad y seleccionar sólo entre <span class="math inline">\(AB,BC,CD,DA\)</span> con igual oportunidad.</p>
+<p><strong>Solución.</strong> Las seis muestras son <span class="math inline">\(AB,AC,AD,BC,BD,CD\)</span>, en acuerdo con <span class="math inline">\(\binom42=6\)</span>. La primera selección permite las seis y constituye una muestra aleatoria simple de tamaño dos. La segunda permite cuatro parejas; cada unidad aparece en dos de las cuatro, así que todas tienen la misma oportunidad individual de inclusión. Sin embargo, las parejas <span class="math inline">\(AC\)</span> y <span class="math inline">\(BD\)</span> quedan excluidas. La igualdad de oportunidades individuales es compatible con diseños que generan conjuntos de muestras diferentes. Para describir el mecanismo completo debe conocerse qué subconjuntos puede producir.</p>
+</section>
+</section>
+<section id="seleccionar-una-muestra-y-explicar-su-alcance" class="level2">
+<h2 class="anchored" data-anchor-id="seleccionar-una-muestra-y-explicar-su-alcance">Seleccionar una muestra y explicar su alcance</h2>
+<p>El marco de muestreo es la lista o procedimiento que permite acceder a las unidades de la población. Una muestra aleatoria simple de tamaño fijo <span class="math inline">\(k\)</span> se elige dando la misma oportunidad a cada subconjunto de ese tamaño. Un muestreo estratificado separa la población en grupos disjuntos relevantes para la investigación y selecciona unidades dentro de cada grupo mediante un procedimiento declarado. El diseño debe registrar cobertura del marco, selección, respuesta y tratamiento de los datos faltantes.</p>
+<p>El sesgo de selección aparece cuando el mecanismo favorece sistemáticamente ciertas unidades o tipos de respuesta en relación con la característica estudiada. Una encuesta voluntaria puede atraer especialmente a quienes tienen una experiencia intensa; un formulario accesible sólo por internet puede dejar fuera a parte de la población. Aumentar el número de respuestas dentro del mismo mecanismo conserva sus condiciones de acceso. El alcance de la generalización depende del diseño y de supuestos que deben examinarse, además del tamaño obtenido.</p>
+<p>Para reunir los estratos podemos recuperar el total que aporta cada uno: su media multiplicada por su tamaño. Sumar esos totales y dividir por la población completa produce la media conjunta, con los pesos poblacionales de los grupos. El cálculo es exacto cuando conocemos sus verdaderas medias; si las sustituimos por medias muestrales, obtenemos una estimación que conserva la incertidumbre y las condiciones de selección de esas muestras. Conocer el peso de un estrato permite combinar su información, y estudiar cómo se obtuvo esa información permite evaluar el alcance de la estimación.</p>
+<section id="propiedades-del-muestreo-y-sus-resúmenes" class="level3">
+<h3 class="anchored" data-anchor-id="propiedades-del-muestreo-y-sus-resúmenes">Propiedades del muestreo y sus resúmenes</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Propiedad</th>
+<th>Hipótesis y alcance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Espacio de muestras</td>
+<td>Una población de <span class="math inline">\(N\)</span> unidades distintas tiene <span class="math inline">\(\binom Nk\)</span> muestras sin orden de tamaño fijo <span class="math inline">\(k\)</span>.</td>
+</tr>
+<tr class="even">
+<td>Cobertura del marco</td>
+<td>Cada unidad accesible debe vincularse con la población objetivo; omisiones y duplicaciones requieren revisión del marco.</td>
+</tr>
+<tr class="odd">
+<td>Peso por estrato</td>
+<td>Si <span class="math inline">\(N_j\)</span> y <span class="math inline">\(\mu_j\)</span> son tamaño y media reales de cada estrato, <span class="math inline">\(\mu=\sum_jN_j\mu_j/\sum_jN_j\)</span>. Usar medias muestrales produce una estimación.</td>
+</tr>
+<tr class="even">
+<td>Información agrupada</td>
+<td>Con frecuencias y clases se conocen recuentos por intervalo; una media por puntos medios es una estimación de los valores individuales.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Véase «<a href="apendice.html#marcos-estratos-y-datos-agrupados">Marcos, estratos y datos agrupados</a>» en el apéndice de demostraciones.</p>
+</section>
+<section id="problema-22.-muchas-respuestas-con-cobertura-parcial" class="level3">
+<h3 class="anchored" data-anchor-id="problema-22.-muchas-respuestas-con-cobertura-parcial">Problema 22. Muchas respuestas con cobertura parcial</h3>
+<p>Un municipio desea conocer el tiempo de acceso a sus oficinas de todos los vecinos adultos. Publica una encuesta en la aplicación municipal y recibe 2000 respuestas. ¿Qué debe examinarse antes de generalizar?</p>
+<p><strong>Solución.</strong> La población objetivo reúne a todos los vecinos adultos. El marco efectivo alcanza a quienes acceden a la aplicación, ven la encuesta y pueden responder. La participación voluntaria puede relacionarse con experiencias especialmente favorables o desfavorables. Deben examinarse cobertura por sectores y edades, duplicaciones, selección y falta de respuesta. Una mejora sería construir un marco que incluya los distintos sectores, seleccionar unidades con un procedimiento aleatorio declarado y ofrecer medios de respuesta accesibles, registrando quiénes responden. Las 2000 respuestas describen a quienes participaron; el diseño determina qué evidencia aportan sobre la población objetivo.</p>
+</section>
+<section id="problema-23.-recuperar-el-peso-de-cada-estrato" class="level3">
+<h3 class="anchored" data-anchor-id="problema-23.-recuperar-el-peso-de-cada-estrato">Problema 23. Recuperar el peso de cada estrato</h3>
+<p>Una población tiene 900 unidades en el estrato A y 100 en B. Se toman 50 de cada uno y sus medias observadas son 10 y 30. Comparar la media de los cien datos con la estimación ponderada por tamaños poblacionales.</p>
+<p><strong>Solución.</strong> La media de los cien datos es <span class="math inline">\((50\cdot10+50\cdot30)/100=20\)</span>. La estimación ponderada es <span class="math inline">\((900\cdot10+100\cdot30)/1000=12\)</span>. La primera resume la muestra equilibrada entre estratos; la segunda otorga a cada estrato su proporción poblacional. Si 10 y 30 fueran las medias verdaderas de cada estrato, 12 sería la media poblacional exacta. Con medias muestrales, 12 es una estimación cuya calidad depende de la selección y respuesta dentro de cada estrato.</p>
+</section>
+<section id="problema-24.-qué-permite-reconstruir-un-histograma" class="level3">
+<h3 class="anchored" data-anchor-id="problema-24.-qué-permite-reconstruir-un-histograma">Problema 24. Qué permite reconstruir un histograma</h3>
+<p>Las clases de tiempos <span class="math inline">\([0,10)\)</span>, <span class="math inline">\([10,20)\)</span> y <span class="math inline">\([20,40]\)</span> tienen frecuencias <span class="math inline">\(5,12,8\)</span>. Estimar la media con puntos medios, dar un intervalo garantizado para la media de esos 25 registros y decidir qué se sabe de su mediana y de la población.</p>
+<p><strong>Solución.</strong> Los puntos medios son <span class="math inline">\(5,15,30\)</span>. La media estimada es <span class="math inline">\((5\cdot5+12\cdot15+8\cdot30)/25=445/25=17{,}8\)</span> minutos. Reemplazar cada dato por el extremo inferior de su clase da la cota <span class="math inline">\(\bar x\geq(5\cdot0+12\cdot10+8\cdot20)/25=11{,}2\)</span>. Usar los extremos superiores da <span class="math inline">\(\bar x&lt; (5\cdot10+12\cdot20+8\cdot40)/25=24{,}4\)</span>; la desigualdad es estricta porque las dos primeras clases tienen extremos superiores excluidos y frecuencias positivas. La mediana es el dato de posición trece, que pertenece a <span class="math inline">\([10,20)\)</span> porque las acumuladas son 5 y 17. Sus valores exactos se perdieron al agrupar. Estas conclusiones describen los registros; para generalizar a una población falta conocer cómo se obtuvieron.</p>
+</section>
+</section>
+<section id="ejercicios-para-trabajar-sin-profesor" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-para-trabajar-sin-profesor">Ejercicios para trabajar sin profesor</h2>
+<p>En cada ejercicio conserve las unidades, indique el divisor de la varianza y use la convención interpolada de cuantiles, salvo que se solicite otra. En el conteo, explique qué diferencia dos resultados. En las muestras, distinga la población objetivo de las unidades observadas.</p>
+<p><strong>1.</strong> Se estudia el gasto semanal de los 600 hogares de una localidad mediante 40 hogares elegidos de un listado. Identifique población, muestra, unidad y variable; explique qué información requiere el marco.</p>
+<p><strong>2.</strong> Para <span class="math inline">\(0,0,1,1,1,2,2,3\)</span>, construya frecuencias absolutas y relativas y calcule la proporción de valores al menos dos.</p>
+<p><strong>3.</strong> Tres clases ordenadas tienen frecuencias acumuladas <span class="math inline">\(4,11,20\)</span>. Recupere las simples y la frecuencia relativa acumulada hasta la segunda clase.</p>
+<p><strong>4.</strong> Una encuesta registra 9 preferencias por teatro, 6 por música y 5 por danza. Elija un gráfico y calcule porcentajes.</p>
+<p><strong>5.</strong> Un histograma tiene clases de amplitudes <span class="math inline">\(5,10,20\)</span> y frecuencias <span class="math inline">\(10,15,20\)</span>. Halle alturas para representar frecuencias por áreas y densidades relativas.</p>
+<p><strong>6.</strong> Calcule la media de los datos del ejercicio 2 mediante frecuencias y compruebe el balance.</p>
+<p><strong>7.</strong> Compare media, mediana y moda en <span class="math inline">\(2,3,3,4,8\)</span> y <span class="math inline">\(2,3,3,4,28\)</span>.</p>
+<p><strong>8.</strong> Los resultados <span class="math inline">\(4,5,7\)</span> pesan <span class="math inline">\(25\%,25\%,50\%\)</span>. Halle la media ponderada y verifique que queda entre los extremos.</p>
+<p><strong>9.</strong> Un grupo de 12 datos tiene media 8 y otro de 18 datos tiene media 13. Halle la media conjunta.</p>
+<p><strong>10.</strong> Calcule el percentil 40 interpolado de <span class="math inline">\(1,3,5,7,9,11\)</span> y cuente cuántos datos quedan bajo el resultado, incluyendo igualdades.</p>
+<p><strong>11.</strong> Para <span class="math inline">\(0,1,2,3,4,5,6,7,15\)</span>, halle cuartiles, cercas y bigotes con el método declarado.</p>
+<p><strong>12.</strong> Calcule el percentil 80 de <span class="math inline">\(0,5,10,50\)</span> mediante interpolación y rango próximo superior. Compare los recuentos efectivos.</p>
+<p><strong>13.</strong> Para <span class="math inline">\(1,3,5\)</span>, calcule media, rango, varianza descriptiva y desviación típica exacta.</p>
+<p><strong>14.</strong> Para <span class="math inline">\(2,4,6,8\)</span>, calcule las varianzas con divisores <span class="math inline">\(n\)</span> y <span class="math inline">\(n-1\)</span> y sus desviaciones.</p>
+<p><strong>15.</strong> Una lista tiene media 3 y varianza descriptiva 4. Se transforma mediante <span class="math inline">\(y=-2x+7\)</span>. Halle media, varianza y desviación nuevas.</p>
+<p><strong>16.</strong> Compare media, rango y varianza descriptiva de <span class="math inline">\(A=(1,3,3,5)\)</span> y <span class="math inline">\(B=(1,1,5,5)\)</span>.</p>
+<p><strong>17.</strong> Un programa ofrece cinco talleres de mañana y dos de tarde. Cada taller admite tres modalidades de inscripción. Cuente los pares taller-modalidad y explique los supuestos.</p>
+<p><strong>18.</strong> Con seis símbolos forme secuencias de cuatro posiciones con repetición. Compare con cuatro cargos distintos asignados a personas diferentes de un grupo de seis.</p>
+<p><strong>19.</strong> Cuente los arreglos distintos de las seis letras de BANANA, usando todas las letras.</p>
+<p><strong>20.</strong> De nueve personas elija un comité de cuatro. Compare con asignar cuatro cargos distintos y compruebe la simetría por complementos.</p>
+<p><strong>21.</strong> Una población tiene cinco unidades. Cuente las muestras de dos unidades. Compare con un mecanismo que siempre incluye A y elige la otra unidad entre las cuatro restantes.</p>
+<p><strong>22.</strong> Se desea conocer la satisfacción de todos los usuarios de una biblioteca y se encuesta a quienes asisten un sábado por la mañana. Examine cobertura, selección y una mejora del diseño.</p>
+<p><strong>23.</strong> Dos estratos tienen tamaños poblacionales 800 y 200. Se observan 40 unidades de cada uno, con medias 6 y 16. Compare la media de la muestra con la estimación ponderada por población.</p>
+<p><strong>24.</strong> Las clases <span class="math inline">\([0,5)\)</span>, <span class="math inline">\([5,15)\)</span> y <span class="math inline">\([15,25]\)</span> tienen frecuencias <span class="math inline">\(4,10,6\)</span>. Estime la media por puntos medios, acote su valor real y localice la mediana de los veinte datos. Precise el alcance poblacional.</p>
+</section>
+<section id="soluciones-desarrolladas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-desarrolladas">Soluciones desarrolladas</h2>
+<section id="ejercicio-1.-unidades-y-cobertura" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-1.-unidades-y-cobertura">Ejercicio 1. Unidades y cobertura</h3>
+<p>La población está formada por los 600 hogares, la muestra por los 40 elegidos y cada hogar es una unidad estadística. La variable es el gasto semanal, expresado en una moneda y un período que deben declararse. El listado debe revisarse para verificar que incluya la población objetivo, represente cada hogar una sola vez y esté actualizado. También hace falta conocer cómo se eligieron los 40 y cuáles respondieron. El tamaño 40 cuenta unidades observadas; la amplitud de gastos se calcula desde sus valores.</p>
+</section>
+<section id="ejercicio-2.-recontar-y-dividir-por-el-total" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-2.-recontar-y-dividir-por-el-total">Ejercicio 2. Recontar y dividir por el total</h3>
+<p>Los valores <span class="math inline">\(0,1,2,3\)</span> tienen frecuencias <span class="math inline">\(2,3,2,1\)</span> y frecuencias relativas <span class="math inline">\(2/8,3/8,2/8,1/8\)</span>. Las primeras suman ocho y las segundas uno. Los valores al menos dos reúnen tres registros y representan <span class="math inline">\(3/8=37{,}5\%\)</span>. Cada dato pertenece a una única clase de valor y esa partición justifica sumar los recuentos.</p>
+</section>
+<section id="ejercicio-3.-diferencias-de-una-acumulación" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3.-diferencias-de-una-acumulación">Ejercicio 3. Diferencias de una acumulación</h3>
+<p>Las frecuencias simples son <span class="math inline">\(4\)</span>, <span class="math inline">\(11-4=7\)</span> y <span class="math inline">\(20-11=9\)</span>. El total es 20. Hasta la segunda clase se acumulan once registros y la frecuencia relativa acumulada es <span class="math inline">\(11/20=55\%\)</span>. Sumar <span class="math inline">\(4+7+9=20\)</span> y volver a acumular <span class="math inline">\(4,11,20\)</span> comprueba ambas lecturas de la tabla.</p>
+</section>
+<section id="ejercicio-4.-categorías-y-porcentajes" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4.-categorías-y-porcentajes">Ejercicio 4. Categorías y porcentajes</h3>
+<p>El total es veinte. Teatro representa <span class="math inline">\(9/20=45\%\)</span>, música <span class="math inline">\(6/20=30\%\)</span> y danza <span class="math inline">\(5/20=25\%\)</span>. Un gráfico de barras con eje de frecuencia desde cero muestra la comparación. También puede usarse un eje porcentual debidamente rotulado. Las categorías designan preferencias artísticas y el dibujo debe comunicar sus frecuencias; la elección de un orden de presentación organiza la lectura.</p>
+</section>
+<section id="ejercicio-5.-alturas-con-bases-distintas" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5.-alturas-con-bases-distintas">Ejercicio 5. Alturas con bases distintas</h3>
+<p>Las alturas absolutas son <span class="math inline">\(10/5=2\)</span>, <span class="math inline">\(15/10=1{,}5\)</span> y <span class="math inline">\(20/20=1\)</span>. El total es 45 y las densidades relativas son <span class="math inline">\(2/45\)</span>, <span class="math inline">\(1/30\)</span> y <span class="math inline">\(1/45\)</span>. Multiplicar cada altura absoluta por su amplitud recupera <span class="math inline">\(10,15,20\)</span>; al hacerlo con las densidades relativas se obtienen <span class="math inline">\(10/45,15/45,20/45\)</span>, cuya suma es uno. La clase de mayor recuento tiene la menor densidad en este ejemplo porque también tiene la mayor amplitud.</p>
+</section>
+<section id="ejercicio-6.-media-desde-una-tabla" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-6.-media-desde-una-tabla">Ejercicio 6. Media desde una tabla</h3>
+<p>La suma ponderada por frecuencias es <span class="math inline">\(0\cdot2+1\cdot3+2\cdot2+3\cdot1=10\)</span>. La media es <span class="math inline">\(10/8=5/4\)</span>. El balance se verifica mediante <span class="math inline">\(2(0-5/4)+3(1-5/4)+2(2-5/4)+(3-5/4)=0\)</span>. La fórmula con frecuencias agrupa términos iguales de la suma original y conserva el mismo total.</p>
+</section>
+<section id="ejercicio-7.-modificar-un-extremo" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7.-modificar-un-extremo">Ejercicio 7. Modificar un extremo</h3>
+<p>Las sumas de las dos listas son 20 y 40; por tanto sus medias son 4 y 8. La tercera posición vale 3 en ambas y fija su mediana. La moda también es 3 porque aparece dos veces y cada otro dato aparece una. El aumento de veinte unidades en el último valor modifica la media en cuatro unidades y conserva las posiciones centrales de estas listas.</p>
+</section>
+<section id="ejercicio-8.-pesos-y-extremos" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8.-pesos-y-extremos">Ejercicio 8. Pesos y extremos</h3>
+<p>La media ponderada es <span class="math inline">\(\tfrac14\cdot4+\tfrac14\cdot5+\tfrac12\cdot7=23/4=5{,}75\)</span>. Está entre 4 y 7, como se comprueba directamente. Los pesos suman uno y el último resultado aporta la mitad del total. La suma de las distancias ponderadas respecto del mínimo es no negativa, y la suma de las distancias ponderadas hasta el máximo también lo es; ambas observaciones justifican el encierro entre extremos.</p>
+</section>
+<section id="ejercicio-9.-sumas-que-se-reúnen" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-9.-sumas-que-se-reúnen">Ejercicio 9. Sumas que se reúnen</h3>
+<p>El primer grupo suma <span class="math inline">\(12\cdot8=96\)</span> y el segundo <span class="math inline">\(18\cdot13=234\)</span>. La suma conjunta es 330 para treinta registros, con media 11. El promedio simple de las medias sería <span class="math inline">\(10{,}5\)</span> y asignaría igual peso a grupos de tamaños diferentes. Reconstruir las sumas originales establece el peso correcto de cada grupo.</p>
+</section>
+<section id="ejercicio-10.-un-percentil-que-coincide-con-un-dato" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10.-un-percentil-que-coincide-con-un-dato">Ejercicio 10. Un percentil que coincide con un dato</h3>
+<p>Con <span class="math inline">\(n=6\)</span> y <span class="math inline">\(p=0{,}4\)</span>, la posición es <span class="math inline">\(h=1+5\cdot0{,}4=3\)</span>. El percentil interpolado es el tercer dato, 5. Hay tres valores menores o iguales que 5, es decir, <span class="math inline">\(3/6=50\%\)</span> de la lista. La convención de posición produce el percentil solicitado; el recuento real de la muestra se obtiene por separado y admite saltos y empates.</p>
+</section>
+<section id="ejercicio-11.-cuartiles-y-bigotes" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11.-cuartiles-y-bigotes">Ejercicio 11. Cuartiles y bigotes</h3>
+<p>Las posiciones de los cuartiles son 3, 5 y 7. Por ello <span class="math inline">\(Q_1=2\)</span>, mediana 4 y <span class="math inline">\(Q_3=6\)</span>. El recorrido intercuartílico es 4 y las cercas son <span class="math inline">\(-4\)</span> y 12. Los bigotes llegan a 0 y 7, que son las observaciones extremas dentro de las cercas. El 15 se dibuja aparte como dato exterior según la regla adoptada. Su condición requiere interpretación contextual antes de modificar o excluir el registro.</p>
+</section>
+<section id="ejercicio-12.-convención-y-frecuencia-efectiva" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-12.-convención-y-frecuencia-efectiva">Ejercicio 12. Convención y frecuencia efectiva</h3>
+<p>La interpolación usa <span class="math inline">\(h=1+3\cdot0{,}8=3{,}4\)</span> y produce <span class="math inline">\(0{,}6\cdot10+0{,}4\cdot50=26\)</span>. El rango próximo superior usa <span class="math inline">\(\lceil4\cdot0{,}8\rceil=4\)</span> y produce 50. Hay tres de cuatro observaciones menores o iguales que 26 y cuatro de cuatro menores o iguales que 50. Declarar el método explica ambos resultados y permite reproducirlos sobre los mismos datos.</p>
+</section>
+<section id="ejercicio-13.-una-dispersión-exacta" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13.-una-dispersión-exacta">Ejercicio 13. Una dispersión exacta</h3>
+<p>La media es 3 y el rango es 4. Las diferencias respecto de la media son <span class="math inline">\(-2,0,2\)</span>, con suma de cuadrados ocho. La varianza descriptiva es <span class="math inline">\(8/3\)</span> y la desviación típica exacta es <span class="math inline">\(\sqrt{8/3}\)</span>. La fórmula de cuadrados de valores da <span class="math inline">\((1+9+25)/3-9=8/3\)</span>, en acuerdo con el cálculo directo. Si los datos tienen unidad <span class="math inline">\(U\)</span>, las unidades son <span class="math inline">\(U^2\)</span> y <span class="math inline">\(U\)</span>, respectivamente.</p>
+</section>
+<section id="ejercicio-14.-los-mismos-cuadrados-y-dos-divisores" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14.-los-mismos-cuadrados-y-dos-divisores">Ejercicio 14. Los mismos cuadrados y dos divisores</h3>
+<p>La media es 5 y las diferencias son <span class="math inline">\(-3,-1,1,3\)</span>. Su suma de cuadrados vale 20. La varianza descriptiva es <span class="math inline">\(v=20/4=5\)</span> y la muestral con divisor <span class="math inline">\(n-1\)</span> es <span class="math inline">\(s^2=20/3\)</span>. Las desviaciones son <span class="math inline">\(\sqrt5\)</span> y <span class="math inline">\(\sqrt{20/3}\)</span>. La relación <span class="math inline">\(s^2=4v/3\)</span> comprueba la coherencia de ambas fórmulas.</p>
+</section>
+<section id="ejercicio-15.-una-escala-que-invierte-el-orden" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-15.-una-escala-que-invierte-el-orden">Ejercicio 15. Una escala que invierte el orden</h3>
+<p>La media nueva es <span class="math inline">\(-2\cdot3+7=1\)</span>. La varianza nueva es <span class="math inline">\((-2)^2\cdot4=16\)</span> y la desviación es 4. La desviación original era 2 y el cambio la multiplica por <span class="math inline">\(|-2|=2\)</span>. El signo negativo invierte el orden de los valores; sus separaciones se multiplican por dos y los cuadrados de esas separaciones por cuatro.</p>
+</section>
+<section id="ejercicio-16.-dos-formas-de-distribuirse" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-16.-dos-formas-de-distribuirse">Ejercicio 16. Dos formas de distribuirse</h3>
+<p>Las dos listas tienen media 3 y rango 4. En A los cuadrados de las diferencias son <span class="math inline">\(4,0,0,4\)</span>, cuya media es 2. En B son <span class="math inline">\(4,4,4,4\)</span>, cuya media es 4. Las desviaciones típicas son <span class="math inline">\(\sqrt2\)</span> y 2. La segunda lista sitúa todas sus observaciones en los extremos y la primera conserva dos en la media, lo que explica sus dispersiones distintas.</p>
+</section>
+<section id="ejercicio-17.-sumar-talleres-y-completar-la-inscripción" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17.-sumar-talleres-y-completar-la-inscripción">Ejercicio 17. Sumar talleres y completar la inscripción</h3>
+<p>Las alternativas de taller son <span class="math inline">\(5+2=7\)</span>, suponiendo que mañana y tarde designan talleres distintos y que se elige uno solo. Cada taller admite las mismas tres modalidades, de modo que hay <span class="math inline">\(7\cdot3=21\)</span> pares taller-modalidad. Si las modalidades dependieran del taller, se sumarían sus cantidades de continuaciones. Las reglas de suma y producto se aplican a las dos partes de la estructura descrita.</p>
+</section>
+<section id="ejercicio-18.-repetición-y-disponibilidad" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18.-repetición-y-disponibilidad">Ejercicio 18. Repetición y disponibilidad</h3>
+<p>Las secuencias con repetición admiten seis símbolos en cada una de cuatro posiciones: <span class="math inline">\(6^4=1296\)</span>. La asignación de cargos distintos a personas diferentes tiene <span class="math inline">\(6\cdot5\cdot4\cdot3=360\)</span> resultados. En ambos casos las posiciones o funciones distinguen el orden. En los cargos, cada persona elegida reduce en uno el conjunto disponible para la etapa siguiente.</p>
+</section>
+<section id="ejercicio-19.-multiplicidades-visibles" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19.-multiplicidades-visibles">Ejercicio 19. Multiplicidades visibles</h3>
+<p>BANANA contiene tres A, dos N y una B. Al etiquetar todas las copias se obtienen <span class="math inline">\(6!=720\)</span> órdenes. Cada arreglo visible procede de <span class="math inline">\(3!\cdot2!=12\)</span> órdenes etiquetados, por los intercambios de copias iguales. El total de arreglos distintos es <span class="math inline">\(720/12=60\)</span>. La multiplicidad constante de doce justifica la división.</p>
+</section>
+<section id="ejercicio-20.-elegir-personas-y-ordenar-cargos" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-20.-elegir-personas-y-ordenar-cargos">Ejercicio 20. Elegir personas y ordenar cargos</h3>
+<p>Los comités son <span class="math inline">\(\binom94=9\cdot8\cdot7\cdot6/(4\cdot3\cdot2\cdot1)=126\)</span>. Cada comité admite <span class="math inline">\(4!=24\)</span> asignaciones de cargos, con total <span class="math inline">\(126\cdot24=3024\)</span>. El producto directo <span class="math inline">\(9\cdot8\cdot7\cdot6\)</span> confirma el segundo resultado. Elegir las cuatro personas del comité determina las cinco restantes, por lo que <span class="math inline">\(\binom94=\binom95=126\)</span>.</p>
+</section>
+<section id="ejercicio-21.-una-unidad-siempre-incluida" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-21.-una-unidad-siempre-incluida">Ejercicio 21. Una unidad siempre incluida</h3>
+<p>Las muestras de dos unidades entre cinco se cuentan con <span class="math inline">\(\binom52=10\)</span>. El segundo mecanismo sólo produce cuatro muestras: <span class="math inline">\(AB,AC,AD,AE\)</span>. La unidad A aparece en todas; cada otra aparece en una. La selección favorece a A y excluye las seis parejas formadas únicamente por las otras cuatro unidades. Este mecanismo tiene un espacio de muestras distinto del muestreo aleatorio simple de tamaño dos sobre la población completa.</p>
+</section>
+<section id="ejercicio-22.-cobertura-de-un-horario" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22.-cobertura-de-un-horario">Ejercicio 22. Cobertura de un horario</h3>
+<p>La población objetivo incluye a todos los usuarios de la biblioteca, mientras que la encuesta alcanza a quienes asisten el sábado por la mañana y aceptan responder. Horarios laborales, actividades familiares o hábitos de uso pueden relacionarse con la asistencia y con la satisfacción. Una mejora consiste en construir un marco actualizado de usuarios, seleccionar unidades con un procedimiento aleatorio declarado y ofrecer horarios o canales diversos de respuesta, registrando la falta de respuesta. El informe debe conservar la distinción entre respuestas obtenidas y población objetivo.</p>
+</section>
+<section id="ejercicio-23.-peso-de-la-muestra-y-peso-de-la-población" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-23.-peso-de-la-muestra-y-peso-de-la-población">Ejercicio 23. Peso de la muestra y peso de la población</h3>
+<p>La media de los ochenta registros es <span class="math inline">\((40\cdot6+40\cdot16)/80=11\)</span>. La estimación con tamaños poblacionales es <span class="math inline">\((800\cdot6+200\cdot16)/1000=8\)</span>. La primera asigna peso igual a ambos estratos porque sus muestras tienen igual tamaño; la segunda usa proporciones poblacionales de <span class="math inline">\(0{,}8\)</span> y <span class="math inline">\(0{,}2\)</span>. Si las medias observadas fueran las medias verdaderas de los estratos, ocho sería la media poblacional exacta. El uso de medias muestrales conserva la condición de estimación.</p>
+</section>
+<section id="ejercicio-24.-límites-de-la-agrupación" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-24.-límites-de-la-agrupación">Ejercicio 24. Límites de la agrupación</h3>
+<p>Los puntos medios son <span class="math inline">\(2{,}5,10,20\)</span>. La media estimada es <span class="math inline">\((4\cdot2{,}5+10\cdot10+6\cdot20)/20=230/20=11{,}5\)</span>. La cota inferior es <span class="math inline">\((4\cdot0+10\cdot5+6\cdot15)/20=7\)</span> y la superior es <span class="math inline">\((4\cdot5+10\cdot15+6\cdot25)/20=16\)</span>. Por tanto <span class="math inline">\(7\leq\bar x&lt;16\)</span>, con extremo superior estricto por las dos primeras clases. La estimación queda dentro de esas cotas, que ofrecen una comprobación del cálculo. Las posiciones centrales diez y once pertenecen a <span class="math inline">\([5,15)\)</span>, de modo que su promedio, la mediana, pertenece a ese mismo intervalo. Para describir la población hace falta conocer la selección de los veinte registros.</p>
+</section>
+</section>
+<section id="diagnóstico-de-salida" class="level2">
+<h2 class="anchored" data-anchor-id="diagnóstico-de-salida">Diagnóstico de salida</h2>
+<p>El lector puede describir un conjunto de datos cuando identifica unidades, variables y procedimiento de observación, y conserva el total al organizar frecuencias. Puede comparar centros y dispersiones cuando declara fórmulas, unidades y convenciones de cuantiles. Puede contar elecciones cuando explica sus etapas, su orden y las repeticiones admitidas. Al interpretar una muestra, puede examinar el marco, la selección y el alcance de una estimación. Estas decisiones preparan la probabilidad: proporcionan los casos y las variables sobre los que se formularán sus modelos.</p>
+<hr>
+<p><a href="capitulo-21.html">← Composición, inversión y modelización funcional</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-23.html">Siguiente →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

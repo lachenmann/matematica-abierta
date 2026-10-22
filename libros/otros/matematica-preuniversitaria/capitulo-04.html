@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Alevi Peña">
+
+<title>Estimación, aproximación y control del error – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-cb076892e24e5ecd918925b139627211.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark-a27ce7592f35ccc06b5fae55f34b11f4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<!-- Paleta de la interfaz nativa de Chrome/Android para la PWA instalada. -->
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="../../../manifest.webmanifest">
+<script>
+(() => {
+  'use strict';
+
+  const colors = { dark: '#000000', light: '#f7f2e8' };
+  const theme = document.querySelector('meta[name="theme-color"]');
+  const scheme = document.querySelector('meta[name="color-scheme"]');
+
+  const syncSystemUi = () => {
+    const body = document.body;
+    if (!body) return;
+    const dark = body.classList.contains('quarto-dark');
+    const light = body.classList.contains('quarto-light');
+    if (!dark && !light) return;
+
+    const mode = dark ? 'dark' : 'light';
+    theme.setAttribute('content', colors[mode]);
+    scheme.setAttribute('content', mode);
+    document.documentElement.style.colorScheme = mode;
+    document.documentElement.style.backgroundColor = colors[mode];
+  };
+
+  const initialize = () => {
+    syncSystemUi();
+    new MutationObserver(syncSystemUi).observe(document.body, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+    window.addEventListener('pageshow', syncSystemUi);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initialize, { once: true });
+  } else {
+    initialize();
+  }
+})();
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../assets/books/reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#lo-exacto-y-lo-que-decidimos-conservar" id="toc-lo-exacto-y-lo-que-decidimos-conservar" class="nav-link active" data-scroll-target="#lo-exacto-y-lo-que-decidimos-conservar">Lo exacto y lo que decidimos conservar</a>
+  <ul class="collapse">
+  <li><a href="#problema-1.-un-decimal-puede-ser-exacto" id="toc-problema-1.-un-decimal-puede-ser-exacto" class="nav-link" data-scroll-target="#problema-1.-un-decimal-puede-ser-exacto">Problema 1. Un decimal puede ser exacto</a></li>
+  <li><a href="#problema-2.-truncar-un-número-negativo" id="toc-problema-2.-truncar-un-número-negativo" class="nav-link" data-scroll-target="#problema-2.-truncar-un-número-negativo">Problema 2. Truncar un número negativo</a></li>
+  <li><a href="#problema-3.-la-frontera-entre-dos-redondeos" id="toc-problema-3.-la-frontera-entre-dos-redondeos" class="nav-link" data-scroll-target="#problema-3.-la-frontera-entre-dos-redondeos">Problema 3. La frontera entre dos redondeos</a></li>
+  <li><a href="#problema-4.-redondear-dos-veces-puede-cambiar-la-respuesta" id="toc-problema-4.-redondear-dos-veces-puede-cambiar-la-respuesta" class="nav-link" data-scroll-target="#problema-4.-redondear-dos-veces-puede-cambiar-la-respuesta">Problema 4. Redondear dos veces puede cambiar la respuesta</a></li>
+  </ul></li>
+  <li><a href="#qué-dicen-las-cifras-significativas" id="toc-qué-dicen-las-cifras-significativas" class="nav-link" data-scroll-target="#qué-dicen-las-cifras-significativas">Qué dicen las cifras significativas</a>
+  <ul class="collapse">
+  <li><a href="#problema-5.-tres-escrituras-y-una-información-ausente" id="toc-problema-5.-tres-escrituras-y-una-información-ausente" class="nav-link" data-scroll-target="#problema-5.-tres-escrituras-y-una-información-ausente">Problema 5. Tres escrituras y una información ausente</a></li>
+  <li><a href="#garantías-de-truncación-y-redondeo" id="toc-garantías-de-truncación-y-redondeo" class="nav-link" data-scroll-target="#garantías-de-truncación-y-redondeo">Garantías de truncación y redondeo</a></li>
+  </ul></li>
+  <li><a href="#construir-un-intervalo-que-responda-la-pregunta" id="toc-construir-un-intervalo-que-responda-la-pregunta" class="nav-link" data-scroll-target="#construir-un-intervalo-que-responda-la-pregunta">Construir un intervalo que responda la pregunta</a>
+  <ul class="collapse">
+  <li><a href="#problema-6.-saber-de-qué-lado-del-punto-medio-está-una-raíz" id="toc-problema-6.-saber-de-qué-lado-del-punto-medio-está-una-raíz" class="nav-link" data-scroll-target="#problema-6.-saber-de-qué-lado-del-punto-medio-está-una-raíz">Problema 6. Saber de qué lado del punto medio está una raíz</a></li>
+  <li><a href="#problema-7.-una-lectura-truncada-informa-algo-distinto" id="toc-problema-7.-una-lectura-truncada-informa-algo-distinto" class="nav-link" data-scroll-target="#problema-7.-una-lectura-truncada-informa-algo-distinto">Problema 7. Una lectura truncada informa algo distinto</a></li>
+  </ul></li>
+  <li><a href="#medir-el-tamaño-de-la-diferencia" id="toc-medir-el-tamaño-de-la-diferencia" class="nav-link" data-scroll-target="#medir-el-tamaño-de-la-diferencia">Medir el tamaño de la diferencia</a>
+  <ul class="collapse">
+  <li><a href="#problema-8.-el-menor-error-absoluto-puede-pesar-más" id="toc-problema-8.-el-menor-error-absoluto-puede-pesar-más" class="nav-link" data-scroll-target="#problema-8.-el-menor-error-absoluto-puede-pesar-más">Problema 8. El menor error absoluto puede pesar más</a></li>
+  <li><a href="#problema-9.-acotar-un-error-relativo-sin-conocer-el-valor-exacto" id="toc-problema-9.-acotar-un-error-relativo-sin-conocer-el-valor-exacto" class="nav-link" data-scroll-target="#problema-9.-acotar-un-error-relativo-sin-conocer-el-valor-exacto">Problema 9. Acotar un error relativo sin conocer el valor exacto</a></li>
+  <li><a href="#errores-y-sus-denominadores" id="toc-errores-y-sus-denominadores" class="nav-link" data-scroll-target="#errores-y-sus-denominadores">Errores y sus denominadores</a></li>
+  </ul></li>
+  <li><a href="#llevar-las-cotas-a-través-de-las-operaciones" id="toc-llevar-las-cotas-a-través-de-las-operaciones" class="nav-link" data-scroll-target="#llevar-las-cotas-a-través-de-las-operaciones">Llevar las cotas a través de las operaciones</a>
+  <ul class="collapse">
+  <li><a href="#problema-10.-una-suma-y-una-diferencia" id="toc-problema-10.-una-suma-y-una-diferencia" class="nav-link" data-scroll-target="#problema-10.-una-suma-y-una-diferencia">Problema 10. Una suma y una diferencia</a></li>
+  <li><a href="#problema-11.-los-signos-cambian-qué-extremos-hay-que-combinar" id="toc-problema-11.-los-signos-cambian-qué-extremos-hay-que-combinar" class="nav-link" data-scroll-target="#problema-11.-los-signos-cambian-qué-extremos-hay-que-combinar">Problema 11. Los signos cambian qué extremos hay que combinar</a></li>
+  <li><a href="#problema-12.-el-área-que-los-datos-permiten" id="toc-problema-12.-el-área-que-los-datos-permiten" class="nav-link" data-scroll-target="#problema-12.-el-área-que-los-datos-permiten">Problema 12. El área que los datos permiten</a></li>
+  </ul></li>
+  <li><a href="#dividir-exige-alejarse-del-cero" id="toc-dividir-exige-alejarse-del-cero" class="nav-link" data-scroll-target="#dividir-exige-alejarse-del-cero">Dividir exige alejarse del cero</a>
+  <ul class="collapse">
+  <li><a href="#problema-13.-una-rapidez-y-un-redondeo-hacia-afuera" id="toc-problema-13.-una-rapidez-y-un-redondeo-hacia-afuera" class="nav-link" data-scroll-target="#problema-13.-una-rapidez-y-un-redondeo-hacia-afuera">Problema 13. Una rapidez y un redondeo hacia afuera</a></li>
+  <li><a href="#problema-14.-cuando-no-existe-una-cota-finita" id="toc-problema-14.-cuando-no-existe-una-cota-finita" class="nav-link" data-scroll-target="#problema-14.-cuando-no-existe-una-cota-finita">Problema 14. Cuando no existe una cota finita</a></li>
+  <li><a href="#llevar-intervalos-y-errores-a-través-de-las-cuentas" id="toc-llevar-intervalos-y-errores-a-través-de-las-cuentas" class="nav-link" data-scroll-target="#llevar-intervalos-y-errores-a-través-de-las-cuentas">Llevar intervalos y errores a través de las cuentas</a></li>
+  </ul></li>
+  <li><a href="#reconocer-cuándo-se-repite-la-misma-cantidad" id="toc-reconocer-cuándo-se-repite-la-misma-cantidad" class="nav-link" data-scroll-target="#reconocer-cuándo-se-repite-la-misma-cantidad">Reconocer cuándo se repite la misma cantidad</a>
+  <ul class="collapse">
+  <li><a href="#problema-15.-dos-apariciones-un-solo-valor" id="toc-problema-15.-dos-apariciones-un-solo-valor" class="nav-link" data-scroll-target="#problema-15.-dos-apariciones-un-solo-valor">Problema 15. Dos apariciones, un solo valor</a></li>
+  </ul></li>
+  <li><a href="#estimar-lo-que-todavía-no-se-ha-medido" id="toc-estimar-lo-que-todavía-no-se-ha-medido" class="nav-link" data-scroll-target="#estimar-lo-que-todavía-no-se-ha-medido">Estimar lo que todavía no se ha medido</a>
+  <ul class="collapse">
+  <li><a href="#problema-16.-el-agua-de-un-año" id="toc-problema-16.-el-agua-de-un-año" class="nav-link" data-scroll-target="#problema-16.-el-agua-de-un-año">Problema 16. El agua de un año</a></li>
+  <li><a href="#problema-17.-alcanza-el-tiempo-disponible" id="toc-problema-17.-alcanza-el-tiempo-disponible" class="nav-link" data-scroll-target="#problema-17.-alcanza-el-tiempo-disponible">Problema 17. ¿Alcanza el tiempo disponible?</a></li>
+  <li><a href="#problema-18.-redondear-una-compra-puede-dejarla-corta" id="toc-problema-18.-redondear-una-compra-puede-dejarla-corta" class="nav-link" data-scroll-target="#problema-18.-redondear-una-compra-puede-dejarla-corta">Problema 18. Redondear una compra puede dejarla corta</a></li>
+  </ul></li>
+  <li><a href="#un-problema-sensible-y-un-cálculo-que-pierde-información" id="toc-un-problema-sensible-y-un-cálculo-que-pierde-información" class="nav-link" data-scroll-target="#un-problema-sensible-y-un-cálculo-que-pierde-información">Un problema sensible y un cálculo que pierde información</a>
+  <ul class="collapse">
+  <li><a href="#problema-19.-la-misma-incertidumbre-de-entrada-efectos-distintos" id="toc-problema-19.-la-misma-incertidumbre-de-entrada-efectos-distintos" class="nav-link" data-scroll-target="#problema-19.-la-misma-incertidumbre-de-entrada-efectos-distintos">Problema 19. La misma incertidumbre de entrada, efectos distintos</a></li>
+  <li><a href="#problema-20.-una-diferencia-pequeña-que-desaparece" id="toc-problema-20.-una-diferencia-pequeña-que-desaparece" class="nav-link" data-scroll-target="#problema-20.-una-diferencia-pequeña-que-desaparece">Problema 20. Una diferencia pequeña que desaparece</a></li>
+  <li><a href="#problema-21.-los-redondeos-intermedios-también-se-acumulan" id="toc-problema-21.-los-redondeos-intermedios-también-se-acumulan" class="nav-link" data-scroll-target="#problema-21.-los-redondeos-intermedios-también-se-acumulan">Problema 21. Los redondeos intermedios también se acumulan</a></li>
+  </ul></li>
+  <li><a href="#demostrar-la-calidad-de-una-aproximación" id="toc-demostrar-la-calidad-de-una-aproximación" class="nav-link" data-scroll-target="#demostrar-la-calidad-de-una-aproximación">Demostrar la calidad de una aproximación</a>
+  <ul class="collapse">
+  <li><a href="#problema-22.-una-fórmula-sencilla-con-error-garantizado" id="toc-problema-22.-una-fórmula-sencilla-con-error-garantizado" class="nav-link" data-scroll-target="#problema-22.-una-fórmula-sencilla-con-error-garantizado">Problema 22. Una fórmula sencilla con error garantizado</a></li>
+  </ul></li>
+  <li><a href="#detener-un-cálculo-cuando-ya-basta" id="toc-detener-un-cálculo-cuando-ya-basta" class="nav-link" data-scroll-target="#detener-un-cálculo-cuando-ya-basta">Detener un cálculo cuando ya basta</a>
+  <ul class="collapse">
+  <li><a href="#problema-23.-cuántos-pasos-necesita-una-garantía" id="toc-problema-23.-cuántos-pasos-necesita-una-garantía" class="nav-link" data-scroll-target="#problema-23.-cuántos-pasos-necesita-una-garantía">Problema 23. Cuántos pasos necesita una garantía</a></li>
+  <li><a href="#problema-24.-una-diferencia-que-los-datos-no-deciden" id="toc-problema-24.-una-diferencia-que-los-datos-no-deciden" class="nav-link" data-scroll-target="#problema-24.-una-diferencia-que-los-datos-no-deciden">Problema 24. Una diferencia que los datos no deciden</a></li>
+  <li><a href="#identidades-y-criterios-para-controlar-la-aproximación" id="toc-identidades-y-criterios-para-controlar-la-aproximación" class="nav-link" data-scroll-target="#identidades-y-criterios-para-controlar-la-aproximación">Identidades y criterios para controlar la aproximación</a></li>
+  </ul></li>
+  <li><a href="#ejercicios-para-trabajar-sin-profesor" id="toc-ejercicios-para-trabajar-sin-profesor" class="nav-link" data-scroll-target="#ejercicios-para-trabajar-sin-profesor">Ejercicios para trabajar sin profesor</a></li>
+  <li><a href="#soluciones-desarrolladas" id="toc-soluciones-desarrolladas" class="nav-link" data-scroll-target="#soluciones-desarrolladas">Soluciones desarrolladas</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-1.-comprobar-qué-número-se-ha-escrito" id="toc-ejercicio-1.-comprobar-qué-número-se-ha-escrito" class="nav-link" data-scroll-target="#ejercicio-1.-comprobar-qué-número-se-ha-escrito">Ejercicio 1. Comprobar qué número se ha escrito</a></li>
+  <li><a href="#ejercicio-2.-la-distancia-no-lleva-el-signo-del-número" id="toc-ejercicio-2.-la-distancia-no-lleva-el-signo-del-número" class="nav-link" data-scroll-target="#ejercicio-2.-la-distancia-no-lleva-el-signo-del-número">Ejercicio 2. La distancia no lleva el signo del número</a></li>
+  <li><a href="#ejercicio-3.-los-empates-y-los-extremos-del-intervalo" id="toc-ejercicio-3.-los-empates-y-los-extremos-del-intervalo" class="nav-link" data-scroll-target="#ejercicio-3.-los-empates-y-los-extremos-del-intervalo">Ejercicio 3. Los empates y los extremos del intervalo</a></li>
+  <li><a href="#ejercicio-4.-una-aproximación-que-cae-en-el-empate" id="toc-ejercicio-4.-una-aproximación-que-cae-en-el-empate" class="nav-link" data-scroll-target="#ejercicio-4.-una-aproximación-que-cae-en-el-empate">Ejercicio 4. Una aproximación que cae en el empate</a></li>
+  <li><a href="#ejercicio-5.-ceros-que-sitúan-y-ceros-que-se-muestran" id="toc-ejercicio-5.-ceros-que-sitúan-y-ceros-que-se-muestran" class="nav-link" data-scroll-target="#ejercicio-5.-ceros-que-sitúan-y-ceros-que-se-muestran">Ejercicio 5. Ceros que sitúan y ceros que se muestran</a></li>
+  <li><a href="#ejercicio-6.-las-dos-centésimas-no-bastan-para-decidir" id="toc-ejercicio-6.-las-dos-centésimas-no-bastan-para-decidir" class="nav-link" data-scroll-target="#ejercicio-6.-las-dos-centésimas-no-bastan-para-decidir">Ejercicio 6. Las dos centésimas no bastan para decidir</a></li>
+  <li><a href="#ejercicio-7.-el-procedimiento-determina-los-extremos" id="toc-ejercicio-7.-el-procedimiento-determina-los-extremos" class="nav-link" data-scroll-target="#ejercicio-7.-el-procedimiento-determina-los-extremos">Ejercicio 7. El procedimiento determina los extremos</a></li>
+  <li><a href="#ejercicio-8.-comparar-respecto-del-valor-exacto" id="toc-ejercicio-8.-comparar-respecto-del-valor-exacto" class="nav-link" data-scroll-target="#ejercicio-8.-comparar-respecto-del-valor-exacto">Ejercicio 8. Comparar respecto del valor exacto</a></li>
+  <li><a href="#ejercicio-9.-el-denominador-más-pequeño-admisible" id="toc-ejercicio-9.-el-denominador-más-pequeño-admisible" class="nav-link" data-scroll-target="#ejercicio-9.-el-denominador-más-pequeño-admisible">Ejercicio 9. El denominador más pequeño admisible</a></li>
+  <li><a href="#ejercicio-10.-sumar-las-semianchuras" id="toc-ejercicio-10.-sumar-las-semianchuras" class="nav-link" data-scroll-target="#ejercicio-10.-sumar-las-semianchuras">Ejercicio 10. Sumar las semianchuras</a></li>
+  <li><a href="#ejercicio-11.-examinar-las-cuatro-esquinas" id="toc-ejercicio-11.-examinar-las-cuatro-esquinas" class="nav-link" data-scroll-target="#ejercicio-11.-examinar-las-cuatro-esquinas">Ejercicio 11. Examinar las cuatro esquinas</a></li>
+  <li><a href="#ejercicio-12.-el-intervalo-no-es-simétrico-respecto-del-producto-central" id="toc-ejercicio-12.-el-intervalo-no-es-simétrico-respecto-del-producto-central" class="nav-link" data-scroll-target="#ejercicio-12.-el-intervalo-no-es-simétrico-respecto-del-producto-central">Ejercicio 12. El intervalo no es simétrico respecto del producto central</a></li>
+  <li><a href="#ejercicio-13.-el-intervalo-se-redondea-hacia-afuera" id="toc-ejercicio-13.-el-intervalo-se-redondea-hacia-afuera" class="nav-link" data-scroll-target="#ejercicio-13.-el-intervalo-se-redondea-hacia-afuera">Ejercicio 13. El intervalo se redondea hacia afuera</a></li>
+  <li><a href="#ejercicio-14.-excluir-el-cero-no-aleja-los-datos-de-él" id="toc-ejercicio-14.-excluir-el-cero-no-aleja-los-datos-de-él" class="nav-link" data-scroll-target="#ejercicio-14.-excluir-el-cero-no-aleja-los-datos-de-él">Ejercicio 14. Excluir el cero no aleja los datos de él</a></li>
+  <li><a href="#ejercicio-15.-una-identidad-reduce-la-incertidumbre-de-la-expresión" id="toc-ejercicio-15.-una-identidad-reduce-la-incertidumbre-de-la-expresión" class="nav-link" data-scroll-target="#ejercicio-15.-una-identidad-reduce-la-incertidumbre-de-la-expresión">Ejercicio 15. Una identidad reduce la incertidumbre de la expresión</a></li>
+  <li><a href="#ejercicio-16.-una-cifra-anual-ligada-a-sus-supuestos" id="toc-ejercicio-16.-una-cifra-anual-ligada-a-sus-supuestos" class="nav-link" data-scroll-target="#ejercicio-16.-una-cifra-anual-ligada-a-sus-supuestos">Ejercicio 16. Una cifra anual ligada a sus supuestos</a></li>
+  <li><a href="#ejercicio-17.-comparar-plazos-mediante-fracciones" id="toc-ejercicio-17.-comparar-plazos-mediante-fracciones" class="nav-link" data-scroll-target="#ejercicio-17.-comparar-plazos-mediante-fracciones">Ejercicio 17. Comparar plazos mediante fracciones</a></li>
+  <li><a href="#ejercicio-18.-comprar-para-el-extremo-que-exige-más" id="toc-ejercicio-18.-comprar-para-el-extremo-que-exige-más" class="nav-link" data-scroll-target="#ejercicio-18.-comprar-para-el-extremo-que-exige-más">Ejercicio 18. Comprar para el extremo que exige más</a></li>
+  <li><a href="#ejercicio-19.-cambiar-el-nombre-del-punto-no-cambia-el-mecanismo" id="toc-ejercicio-19.-cambiar-el-nombre-del-punto-no-cambia-el-mecanismo" class="nav-link" data-scroll-target="#ejercicio-19.-cambiar-el-nombre-del-punto-no-cambia-el-mecanismo">Ejercicio 19. Cambiar el nombre del punto no cambia el mecanismo</a></li>
+  <li><a href="#ejercicio-20.-conservar-la-pequeña-diferencia-por-otro-camino" id="toc-ejercicio-20.-conservar-la-pequeña-diferencia-por-otro-camino" class="nav-link" data-scroll-target="#ejercicio-20.-conservar-la-pequeña-diferencia-por-otro-camino">Ejercicio 20. Conservar la pequeña diferencia por otro camino</a></li>
+  <li><a href="#ejercicio-21.-cuándo-se-introduce-cada-error" id="toc-ejercicio-21.-cuándo-se-introduce-cada-error" class="nav-link" data-scroll-target="#ejercicio-21.-cuándo-se-introduce-cada-error">Ejercicio 21. Cuándo se introduce cada error</a></li>
+  <li><a href="#ejercicio-22.-una-cota-que-conserva-el-sentido-del-error" id="toc-ejercicio-22.-una-cota-que-conserva-el-sentido-del-error" class="nav-link" data-scroll-target="#ejercicio-22.-una-cota-que-conserva-el-sentido-del-error">Ejercicio 22. Una cota que conserva el sentido del error</a></li>
+  <li><a href="#ejercicio-23.-elegir-el-número-de-bisecciones-antes-de-calcular" id="toc-ejercicio-23.-elegir-el-número-de-bisecciones-antes-de-calcular" class="nav-link" data-scroll-target="#ejercicio-23.-elegir-el-número-de-bisecciones-antes-de-calcular">Ejercicio 23. Elegir el número de bisecciones antes de calcular</a></li>
+  <li><a href="#ejercicio-24.-saber-cuándo-falta-información" id="toc-ejercicio-24.-saber-cuándo-falta-información" class="nav-link" data-scroll-target="#ejercicio-24.-saber-cuándo-falta-información">Ejercicio 24. Saber cuándo falta información</a></li>
+  </ul></li>
+  <li><a href="#diagnóstico-de-salida" id="toc-diagnóstico-de-salida" class="nav-link" data-scroll-target="#diagnóstico-de-salida">Diagnóstico de salida</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Estimación, aproximación y control del error</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Alevi Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">22 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="capitulo-03.html">← Potencias, raíces y notación científica</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-05.html">Siguiente →</a></p>
+<p>Una mesa mide <span class="math inline">\(1{,}20\)</span> metros de largo y <span class="math inline">\(0{,}80\)</span> de ancho. Multiplicar las dos lecturas da <span class="math inline">\(0{,}96\)</span> metros cuadrados. Si la regla solo distingue centímetros, las medidas podrían haber sido algo mayores o menores: la cuenta es exacta para los números escritos, pero el área de la mesa no queda determinada con esa misma exactitud. Una calculadora que mostrara doce decimales no habría medido mejor la mesa.</p>
+<p>También aparece la aproximación cuando los datos son exactos. El lado de un cuadrado de área dos es <span class="math inline">\(\sqrt2\)</span>; al sustituirlo por <span class="math inline">\(1{,}41\)</span> introducimos una diferencia que no estaba en el problema geométrico. Podemos necesitar un decimal para cortar una pieza, comparar precios o decidir si algo cabe. La pregunta matemática consiste entonces en saber cuánto puede cambiar la respuesta y si ese cambio afecta a la decisión.</p>
+<p>Hay situaciones en que basta una estimación de tamaño: cuánta agua consume una casa durante un año, cuántas hojas requiere una tirada. Otras exigen una garantía: si un cable alcanzará, si dos medidas permiten afirmar cuál es mayor. En este capítulo conservaremos esa diferencia. Una estimación depende de supuestos que debemos poder revisar; una cota afirma que el valor buscado permanece dentro de unos límites justificados.</p>
+<section id="lo-exacto-y-lo-que-decidimos-conservar" class="level2">
+<h2 class="anchored" data-anchor-id="lo-exacto-y-lo-que-decidimos-conservar">Lo exacto y lo que decidimos conservar</h2>
+<p>El número <span class="math inline">\(3/8\)</span> tiene una escritura decimal finita, <span class="math inline">\(0{,}375\)</span>, y ambas expresiones son exactamente iguales. El número <span class="math inline">\(\sqrt2\)</span> también está dado exactamente, aunque no podamos escribir todas sus cifras decimales. Una representación exacta identifica el número mediante una expresión igual a él.</p>
+<p>Escribimos <span class="math inline">\(\sqrt2\approx1{,}41\)</span> para señalar una aproximación. El símbolo por sí solo no especifica cuánto difieren ambos números. Si añadimos <span class="math inline">\(1{,}41&lt;\sqrt2&lt;1{,}42\)</span>, sabemos que la diferencia respecto de <span class="math inline">\(1{,}41\)</span> es positiva y menor que <span class="math inline">\(0{,}01\)</span>. Esa información puede ser más útil que muchas cifras sin una garantía.</p>
+<section id="problema-1.-un-decimal-puede-ser-exacto" class="level3">
+<h3 class="anchored" data-anchor-id="problema-1.-un-decimal-puede-ser-exacto">Problema 1. Un decimal puede ser exacto</h3>
+<p><strong>Enunciado.</strong> Clasifica <span class="math inline">\(1/8=0{,}125\)</span> y <span class="math inline">\(\sqrt2\approx1{,}4\)</span>. Si usamos <span class="math inline">\(1{,}4\)</span> como lado de un cuadrado que debía tener área dos, ¿qué área obtenemos y cuánto falta?</p>
+<p><strong>Solución.</strong> La primera igualdad es exacta: multiplicar <span class="math inline">\(0{,}125\)</span> por ocho da uno. La segunda reemplaza la raíz por un número distinto, pues <span class="math inline">\(1{,}4^2=1{,}96\ne2\)</span>. El cuadrado construido con ese lado tiene área <span class="math inline">\(1{,}96\)</span> y le faltan <span class="math inline">\(2-1{,}96=0{,}04\)</span> unidades cuadradas respecto del área prevista. La diferencia en el área no es igual a la diferencia en el lado. El procedimiento de elevar al cuadrado transforma también la aproximación y exige su propio control.</p>
+<p>Para truncar un decimal a una posición elegida conservamos las cifras hasta esa posición y suprimimos las posteriores. En números negativos esto se hace sobre el valor absoluto y después se restituye el signo; truncar acerca el número al cero. Si la posición elegida representa unidades de tamaño <span class="math inline">\(u\)</span>, la distancia entre el número y su truncación es menor que <span class="math inline">\(u\)</span>. Por ejemplo, a centésimas usamos <span class="math inline">\(u=0{,}01\)</span>.</p>
+<p>Redondear consiste en elegir un múltiplo de <span class="math inline">\(u\)</span> cuya distancia al número sea mínima. Si un número cae exactamente a mitad de camino, hay dos candidatos igual de cercanos. En este libro elegiremos en ese empate el que se aleja del cero. Así, a centésimas, <span class="math inline">\(2{,}345\)</span> se redondea a <span class="math inline">\(2{,}35\)</span> y <span class="math inline">\(-2{,}345\)</span> a <span class="math inline">\(-2{,}35\)</span>. Otras convenciones resuelven el empate de otro modo; lo decisivo es declarar cuál se usa y mantenerla.</p>
+</section>
+<section id="problema-2.-truncar-un-número-negativo" class="level3">
+<h3 class="anchored" data-anchor-id="problema-2.-truncar-un-número-negativo">Problema 2. Truncar un número negativo</h3>
+<p><strong>Enunciado.</strong> Trunca y redondea <span class="math inline">\(-2{,}71828\)</span> a centésimas. Calcula la distancia exacta entre el número original y cada resultado.</p>
+<p><strong>Solución.</strong> La truncación conserva el signo y las dos primeras cifras decimales: obtenemos <span class="math inline">\(-2{,}71\)</span>. Su distancia al original es <span class="math inline">\(|-2{,}71828-(-2{,}71)|=0{,}00828\)</span>. Los múltiplos vecinos de una centésima son <span class="math inline">\(-2{,}72\)</span> y <span class="math inline">\(-2{,}71\)</span>; el primero está a distancia <span class="math inline">\(0{,}00172\)</span> y es el más cercano. El redondeo es por tanto <span class="math inline">\(-2{,}72\)</span>. En ambos casos la distancia es positiva; lo que cambia de signo es la diferencia orientada. La truncación queda por encima del número negativo, mientras que el redondeo elegido queda por debajo.</p>
+<p>La garantía del redondeo se deduce de la separación entre múltiplos consecutivos de <span class="math inline">\(u\)</span>. Un número situado entre dos de ellos está, como máximo, a mitad de esa separación del más cercano. Si <span class="math inline">\(r\)</span> es el resultado de redondear <span class="math inline">\(x\)</span>,</p>
+<p><span class="math display">\[|x-r|\le\frac u2.\]</span></p>
+<p>La igualdad puede ocurrir en un empate. Esta cota describe la operación de redondear un número conocido. Para aplicarla a una lectura de instrumento debemos suponer además que el instrumento redondea correctamente y que no intervienen otros errores de calibración, resolución o uso. Una pantalla con dos decimales no proporciona por sí sola esa garantía física.</p>
+</section>
+<section id="problema-3.-la-frontera-entre-dos-redondeos" class="level3">
+<h3 class="anchored" data-anchor-id="problema-3.-la-frontera-entre-dos-redondeos">Problema 3. La frontera entre dos redondeos</h3>
+<p><strong>Enunciado.</strong> Un número positivo, al redondearse a centésimas, da <span class="math inline">\(1{,}36\)</span>. Describe todos los valores posibles del número antes de redondear y explica los extremos.</p>
+<p><strong>Solución.</strong> Los puntos medios con los vecinos <span class="math inline">\(1{,}35\)</span> y <span class="math inline">\(1{,}37\)</span> son <span class="math inline">\(1{,}355\)</span> y <span class="math inline">\(1{,}365\)</span>. Desde <span class="math inline">\(1{,}355\)</span> inclusive se elige <span class="math inline">\(1{,}36\)</span>: en el empate inferior, ese es el candidato más alejado del cero. En <span class="math inline">\(1{,}365\)</span> se elige ya <span class="math inline">\(1{,}37\)</span>. Los valores posibles forman <span class="math inline">\([1{,}355,1{,}365)\)</span>. Todos distan de <span class="math inline">\(1{,}36\)</span> a lo sumo <span class="math inline">\(0{,}005\)</span>, pero la cota simétrica cerrada incluye también el extremo superior que nuestra regla de desempate excluye. Para una garantía de error puede servir esa cota algo más amplia; para describir exactamente la preimagen del redondeo hay que cuidar los extremos.</p>
+<div id="fig-mp-celda-de-redondeo" class="ancho-en-texto quarto-float quarto-figure quarto-figure-center anchored" alt="La celda de redondeo de 1,36 comienza en 1,355 incluido y termina en 1,365 excluido.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-celda-de-redondeo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Celda_de_redondeo.svg" class="ancho-en-texto img-fluid figure-img" alt="La celda de redondeo de 1,36 comienza en 1,355 incluido y termina en 1,365 excluido.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-celda-de-redondeo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: La celda de redondeo de 1,36 comienza en 1,355 incluido y termina en 1,365 excluido.
+</figcaption>
+</figure>
+</div>
+</section>
+<section id="problema-4.-redondear-dos-veces-puede-cambiar-la-respuesta" class="level3">
+<h3 class="anchored" data-anchor-id="problema-4.-redondear-dos-veces-puede-cambiar-la-respuesta">Problema 4. Redondear dos veces puede cambiar la respuesta</h3>
+<p><strong>Enunciado.</strong> Redondea <span class="math inline">\(9{,}949\)</span> directamente a décimas. Compara con redondear primero a centésimas y luego a décimas.</p>
+<p><strong>Solución.</strong> Para la decisión directa, el punto medio entre <span class="math inline">\(9{,}9\)</span> y <span class="math inline">\(10{,}0\)</span> es <span class="math inline">\(9{,}95\)</span>. Como <span class="math inline">\(9{,}949&lt;9{,}95\)</span>, el resultado es <span class="math inline">\(9{,}9\)</span>. Si primero redondeamos a centésimas obtenemos <span class="math inline">\(9{,}95\)</span>. Ese valor cae exactamente en el empate de las décimas y se redondea a <span class="math inline">\(10{,}0\)</span>. La primera operación ha desplazado el número hasta una frontera que antes no alcanzaba. Por eso conviene conservar las cifras de trabajo y efectuar el redondeo solicitado al final, usando el valor original o una aproximación suficientemente controlada.</p>
+</section>
+</section>
+<section id="qué-dicen-las-cifras-significativas" class="level2">
+<h2 class="anchored" data-anchor-id="qué-dicen-las-cifras-significativas">Qué dicen las cifras significativas</h2>
+<p>En <span class="math inline">\(0{,}004760\)</span>, los ceros iniciales sitúan la escala y las cuatro cifras <span class="math inline">\(4\)</span>, <span class="math inline">\(7\)</span>, <span class="math inline">\(6\)</span>, <span class="math inline">\(0\)</span> expresan la precisión de la escritura. El cero final ocupa una posición que hemos decidido mostrar. En cambio, una escritura como <span class="math inline">\(4500\)</span> puede resultar ambigua en un informe de medidas: quizá se contaron exactamente cuatro mil quinientos objetos, quizá se redondeó a centenas, quizá a decenas. La notación científica permite aclarar la intención: <span class="math inline">\(4{,}5\cdot10^3\)</span> muestra dos cifras significativas y <span class="math inline">\(4{,}50\cdot10^3\)</span> muestra tres.</p>
+<p>Para redondear a <span class="math inline">\(s\)</span> cifras significativas un número no nulo, localizamos la primera cifra no nula y contamos desde ella. Si <span class="math inline">\(10^k\le |x|&lt;10^{k+1}\)</span>, la posición de la cifra <span class="math inline">\(s\)</span> corresponde al tamaño <span class="math inline">\(u=10^{k-s+1}\)</span>. Redondeamos a esa posición. Puede producirse un acarreo que cambie la potencia normalizada; la cantidad de cifras que deseamos comunicar debe quedar clara en la escritura final.</p>
+<p>Las cifras significativas comunican las posiciones que se conservan en la escritura de un número. Para vincularlas con una cota de error se necesita especificar cómo se obtuvo esa escritura. Las reglas prácticas que conservan cierta cantidad de cifras en productos o sumas ayudan a evitar resultados extravagantes, pero una cota explícita resulta preferible cuando la decisión necesita una garantía. Los números contados exactamente y los factores de conversión definidos exactamente tampoco adquieren incertidumbre por tener pocas cifras escritas.</p>
+<section id="problema-5.-tres-escrituras-y-una-información-ausente" class="level3">
+<h3 class="anchored" data-anchor-id="problema-5.-tres-escrituras-y-una-información-ausente">Problema 5. Tres escrituras y una información ausente</h3>
+<p><strong>Enunciado.</strong> Indica las cifras significativas que muestran <span class="math inline">\(0{,}004760\)</span>, <span class="math inline">\(4{,}50\cdot10^3\)</span> y <span class="math inline">\(4500\)</span>. Redondea el primer número a tres cifras significativas. ¿Permite alguna de estas escrituras conocer por sí sola el error de un instrumento?</p>
+<p><strong>Solución.</strong> La primera escritura muestra cuatro cifras significativas, incluida la última posición cero; a tres cifras queda <span class="math inline">\(0{,}00476=4{,}76\cdot10^{-3}\)</span>. El valor numérico no cambia en este caso, pero dejamos de mostrar una posición. <span class="math inline">\(4{,}50\cdot10^3\)</span> muestra tres cifras significativas. La escritura <span class="math inline">\(4500\)</span> aislada no aclara la intención de sus ceros ni si procede de una cuenta exacta. Ninguna de ellas especifica por sí sola los errores de un instrumento. Si sabemos adicionalmente que <span class="math inline">\(4500\)</span> es el redondeo correcto a centenas de una cantidad positiva, podremos usar la cota cincuenta; esa información procede del procedimiento declarado.</p>
+</section>
+<section id="garantías-de-truncación-y-redondeo" class="level3">
+<h3 class="anchored" data-anchor-id="garantías-de-truncación-y-redondeo">Garantías de truncación y redondeo</h3>
+<p>Estas cotas describen operaciones sobre un número. Para atribuirlas a una medición hacen falta hipótesis adicionales sobre el instrumento y su uso.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 74%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Propiedad</th>
+<th style="text-align: left;">Fórmula y condiciones de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Truncación hacia cero</td>
+<td style="text-align: left;"><span class="math inline">\(\lvert x-t\rvert&lt;u\)</span>, donde <span class="math inline">\(t\)</span> es la truncación a una posición de tamaño <span class="math inline">\(u&gt;0\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Redondeo al más cercano</td>
+<td style="text-align: left;"><span class="math inline">\(\lvert x-r\rvert\le u/2\)</span>, con <span class="math inline">\(u&gt;0\)</span>. En los empates se elige aquí el múltiplo que se aleja del cero.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cifras significativas</td>
+<td style="text-align: left;">Para <span class="math inline">\(x\ne0\)</span>, si <span class="math inline">\(10^k\le\lvert x\rvert&lt;10^{k+1}\)</span> y se conservan <span class="math inline">\(s\ge1\)</span> cifras, se redondea en la posición <span class="math inline">\(u=10^{k-s+1}\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Apéndice: «<a href="apendice.html#truncación-redondeo-y-cifras-significativas">Truncación, redondeo y cifras significativas</a>».</p>
+</section>
+</section>
+<section id="construir-un-intervalo-que-responda-la-pregunta" class="level2">
+<h2 class="anchored" data-anchor-id="construir-un-intervalo-que-responda-la-pregunta">Construir un intervalo que responda la pregunta</h2>
+<p>Una cota debe poder justificarse sin conocer previamente la respuesta con muchos decimales. Para acotar una raíz positiva basta buscar números cuyos cuadrados queden a ambos lados del radicando. La monotonía del cuadrado en los no negativos convierte esas comparaciones en cotas de la raíz. Podemos estrechar el intervalo cuanto haga falta, sin sustituir una desigualdad por una igualdad decimal.</p>
+<section id="problema-6.-saber-de-qué-lado-del-punto-medio-está-una-raíz" class="level3">
+<h3 class="anchored" data-anchor-id="problema-6.-saber-de-qué-lado-del-punto-medio-está-una-raíz">Problema 6. Saber de qué lado del punto medio está una raíz</h3>
+<p><strong>Enunciado.</strong> Acota <span class="math inline">\(\sqrt7\)</span> entre dos centésimas consecutivas y determina su redondeo a centésimas con una justificación exacta.</p>
+<p><strong>Solución.</strong> Calculamos <span class="math inline">\(2{,}64^2=6{,}9696&lt;7\)</span> y <span class="math inline">\(2{,}65^2=7{,}0225&gt;7\)</span>. Resulta <span class="math inline">\(2{,}64&lt;\sqrt7&lt;2{,}65\)</span>. Ese intervalo por sí solo no decide cuál de las dos centésimas es más cercana. Examinamos el punto medio: <span class="math inline">\(2{,}645^2=6{,}996025&lt;7\)</span>, así que <span class="math inline">\(\sqrt7&gt;2{,}645\)</span>. La raíz está en la mitad superior del intervalo y se redondea a <span class="math inline">\(2{,}65\)</span>. El razonamiento usa únicamente cuadrados de decimales finitos, que son racionales exactos.</p>
+</section>
+<section id="problema-7.-una-lectura-truncada-informa-algo-distinto" class="level3">
+<h3 class="anchored" data-anchor-id="problema-7.-una-lectura-truncada-informa-algo-distinto">Problema 7. Una lectura truncada informa algo distinto</h3>
+<p><strong>Enunciado.</strong> Una pantalla muestra <span class="math inline">\(-1{,}36\)</span>. Describe los valores originales posibles si sabemos que trunca a centésimas y compáralos con los posibles si redondea a centésimas según nuestra convención.</p>
+<p><strong>Solución.</strong> Truncar hacia el cero produce <span class="math inline">\(-1{,}36\)</span> para <span class="math inline">\(-1{,}37&lt;x\le-1{,}36\)</span>: el extremo <span class="math inline">\(-1{,}37\)</span> ya conservaría sus propias centésimas. El intervalo es <span class="math inline">\((-1{,}37,-1{,}36]\)</span>. Si redondea, las fronteras son <span class="math inline">\(-1{,}365\)</span> y <span class="math inline">\(-1{,}355\)</span>. En la inferior el empate se aleja del cero hasta <span class="math inline">\(-1{,}37\)</span>, por lo que se excluye; en la superior se aleja hasta <span class="math inline">\(-1{,}36\)</span>, por lo que se incluye. El intervalo es <span class="math inline">\((-1{,}365,-1{,}355]\)</span>. La misma lectura visible puede corresponder a conjuntos distintos cuando cambia el procedimiento.</p>
+</section>
+</section>
+<section id="medir-el-tamaño-de-la-diferencia" class="level2">
+<h2 class="anchored" data-anchor-id="medir-el-tamaño-de-la-diferencia">Medir el tamaño de la diferencia</h2>
+<p>Si <span class="math inline">\(x\)</span> es el valor exacto y <span class="math inline">\(a\)</span> la aproximación, el <strong>error absoluto</strong> es <span class="math inline">\(|a-x|\)</span>. Tiene las mismas unidades que la cantidad aproximada. Cuando <span class="math inline">\(x\ne0\)</span>, el <strong>error relativo</strong> es <span class="math inline">\(|a-x|/|x|\)</span>; al dividir cantidades de la misma unidad obtenemos un número sin unidad. Multiplicar por cien lo expresa como porcentaje. El denominador es el tamaño del valor exacto, no el de la aproximación, salvo que se anuncie expresamente otra comparación.</p>
+<section id="problema-8.-el-menor-error-absoluto-puede-pesar-más" class="level3">
+<h3 class="anchored" data-anchor-id="problema-8.-el-menor-error-absoluto-puede-pesar-más">Problema 8. El menor error absoluto puede pesar más</h3>
+<p><strong>Enunciado.</strong> Se aproxima una longitud exacta de <span class="math inline">\(1000\)</span> metros por <span class="math inline">\(998\)</span> metros y otra de cuatro metros por <span class="math inline">\(3{,}8\)</span> metros. Compara sus errores absolutos y relativos. ¿Qué ocurre con el error relativo si el valor exacto es cero?</p>
+<p><strong>Solución.</strong> En la primera longitud el error absoluto es dos metros y el relativo es <span class="math inline">\(2/1000=0{,}002=0{,}2\%\)</span>. En la segunda, el error absoluto es <span class="math inline">\(0{,}2\)</span> metros y el relativo <span class="math inline">\(0{,}2/4=0{,}05=5\%\)</span>. Aunque el segundo error absoluto es diez veces menor, representa una fracción mayor de lo que se mide. Si el valor exacto es cero, la fórmula relativa exige dividir por cero y no está definida, incluso cuando la aproximación también sea cero. El error absoluto sigue teniendo sentido.</p>
+<p>Frecuentemente ignoramos <span class="math inline">\(x\)</span>, pero sabemos que <span class="math inline">\(|x-a|\le\delta\)</span>. Esta escritura equivale a <span class="math inline">\(a-\delta\le x\le a+\delta\)</span>, con <span class="math inline">\(\delta\ge0\)</span>. El símbolo <span class="math inline">\(a\pm\delta\)</span> abrevia aquí ese intervalo de valores admisibles. No introduce una distribución de probabilidades ni un nivel de confianza. Puede representar una tolerancia garantizada o una cota derivada de otras cuentas, según los supuestos del problema.</p>
+<p>Si además <span class="math inline">\(|a|&gt;\delta\)</span>, la desigualdad triangular da <span class="math inline">\(|x|\ge |a|-\delta&gt;0\)</span>. Por tanto tenemos la garantía</p>
+<p><span class="math display">\[\frac{|x-a|}{|x|}\le\frac{\delta}{|a|-\delta}.\]</span></p>
+<p>Usar <span class="math inline">\(\delta/|a|\)</span> puede ser una aproximación conveniente cuando <span class="math inline">\(\delta\)</span> es pequeña respecto de <span class="math inline">\(|a|\)</span>, pero no ofrece automáticamente la misma cota superior. Cerca del cero, la diferencia entre ambos denominadores se vuelve decisiva.</p>
+</section>
+<section id="problema-9.-acotar-un-error-relativo-sin-conocer-el-valor-exacto" class="level3">
+<h3 class="anchored" data-anchor-id="problema-9.-acotar-un-error-relativo-sin-conocer-el-valor-exacto">Problema 9. Acotar un error relativo sin conocer el valor exacto</h3>
+<p><strong>Enunciado.</strong> Se sabe que <span class="math inline">\(|x-50|\le0{,}5\)</span>. ¿Garantiza la aproximación cincuenta un error relativo de a lo sumo <span class="math inline">\(1\%\)</span>? Obtén una cota segura.</p>
+<p><strong>Solución.</strong> El valor exacto pertenece a <span class="math inline">\([49{,}5,50{,}5]\)</span>. Su tamaño puede ser menor que cincuenta; por eso <span class="math inline">\(0{,}5/50=1\%\)</span> no basta como garantía. Usando el menor denominador admisible obtenemos <span class="math inline">\(|x-50|/|x|\le0{,}5/49{,}5=1/99\)</span>, aproximadamente <span class="math inline">\(1{,}0101\%\)</span>. El extremo <span class="math inline">\(x=49{,}5\)</span> alcanza esa razón y demuestra que la garantía del uno por ciento sería falsa. La fracción <span class="math inline">\(1/99\)</span> es la cota exacta; el porcentaje decimal escrito después es una aproximación descriptiva.</p>
+</section>
+<section id="errores-y-sus-denominadores" class="level3">
+<h3 class="anchored" data-anchor-id="errores-y-sus-denominadores">Errores y sus denominadores</h3>
+<p>El número <span class="math inline">\(x\)</span> es el valor exacto y <span class="math inline">\(a\)</span> su aproximación. Una cota de error no presupone una distribución de probabilidades.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 74%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Propiedad</th>
+<th style="text-align: left;">Fórmula y condiciones de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Error absoluto</td>
+<td style="text-align: left;"><span class="math inline">\(E_{\mathrm{abs}}=\lvert a-x\rvert\)</span>. Conserva las unidades de la cantidad.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Error relativo</td>
+<td style="text-align: left;"><span class="math inline">\(E_{\mathrm{rel}}=\lvert a-x\rvert/\lvert x\rvert\)</span>, con <span class="math inline">\(x\ne0\)</span>. Como porcentaje es <span class="math inline">\(100E_{\mathrm{rel}}\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cota como intervalo</td>
+<td style="text-align: left;"><span class="math inline">\(\lvert x-a\rvert\le\delta\Longleftrightarrow a-\delta\le x\le a+\delta\)</span>, con <span class="math inline">\(\delta\ge0\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cota relativa segura</td>
+<td style="text-align: left;">Si <span class="math inline">\(\lvert x-a\rvert\le\delta&lt;\lvert a\rvert\)</span>, entonces <span class="math inline">\(E_{\mathrm{rel}}\le\delta/(\lvert a\rvert-\delta)\)</span>. El denominador es una cota inferior positiva para <span class="math inline">\(\lvert x\rvert\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Apéndice: «<a href="apendice.html#errores-y-cotas-relativas-seguras">Errores y cotas relativas seguras</a>».</p>
+</section>
+</section>
+<section id="llevar-las-cotas-a-través-de-las-operaciones" class="level2">
+<h2 class="anchored" data-anchor-id="llevar-las-cotas-a-través-de-las-operaciones">Llevar las cotas a través de las operaciones</h2>
+<p>Supongamos que <span class="math inline">\(x\in[a,b]\)</span> e <span class="math inline">\(y\in[c,d]\)</span>. Sumar conserva el orden, de modo que <span class="math inline">\(x+y\in[a+c,b+d]\)</span>. Para restar, el valor más pequeño de <span class="math inline">\(x-y\)</span> se obtiene combinando el menor <span class="math inline">\(x\)</span> con el mayor <span class="math inline">\(y\)</span>; por tanto <span class="math inline">\(x-y\in[a-d,b-c]\)</span>. También podemos justificarlo escribiendo <span class="math inline">\(-y\in[-d,-c]\)</span> y sumando intervalos.</p>
+<p>Si expresamos las cotas alrededor de valores centrales, <span class="math inline">\(|x-a|\le\alpha\)</span> e <span class="math inline">\(|y-b|\le\beta\)</span>, la desigualdad triangular muestra que tanto el error de <span class="math inline">\(a+b\)</span> como el de <span class="math inline">\(a-b\)</span> está acotado por <span class="math inline">\(\alpha+\beta\)</span>. En efecto, <span class="math inline">\((x+y)-(a+b)=(x-a)+(y-b)\)</span>; el valor absoluto de una suma no supera la suma de los valores absolutos. Para la resta aparece un signo distinto, pero la misma desigualdad. No necesitamos suponer independencia estadística para estas cotas deterministas.</p>
+<section id="problema-10.-una-suma-y-una-diferencia" class="level3">
+<h3 class="anchored" data-anchor-id="problema-10.-una-suma-y-una-diferencia">Problema 10. Una suma y una diferencia</h3>
+<p><strong>Enunciado.</strong> Dos longitudes satisfacen <span class="math inline">\(x=20\pm0{,}2\)</span> metros e <span class="math inline">\(y=19\pm0{,}2\)</span> metros. Obtén intervalos seguros para la suma y la diferencia.</p>
+<p><strong>Solución.</strong> Las longitudes pertenecen a <span class="math inline">\([19{,}8,20{,}2]\)</span> y <span class="math inline">\([18{,}8,19{,}2]\)</span>. La suma está entre <span class="math inline">\(38{,}6\)</span> y <span class="math inline">\(39{,}4\)</span> metros, lo que podemos escribir <span class="math inline">\(39\pm0{,}4\)</span>. La diferencia está entre <span class="math inline">\(19{,}8-19{,}2=0{,}6\)</span> y <span class="math inline">\(20{,}2-18{,}8=1{,}4\)</span> metros: es <span class="math inline">\(1\pm0{,}4\)</span>. La misma cota absoluta pesa mucho más en la diferencia pequeña. Ambos intervalos son alcanzables si no se impone ninguna relación adicional entre las longitudes.</p>
+<p>Para multiplicar intervalos positivos basta multiplicar los extremos inferiores entre sí y los superiores entre sí. Si hay signos distintos, esa receta puede fallar. En general, el producto queda entre el menor y el mayor de <span class="math inline">\(ac\)</span>, <span class="math inline">\(ad\)</span>, <span class="math inline">\(bc\)</span>, <span class="math inline">\(bd\)</span>. Para justificarlo, fijamos primero <span class="math inline">\(y\)</span>: la expresión <span class="math inline">\(xy\)</span> es lineal en <span class="math inline">\(x\)</span> y alcanza sus extremos en <span class="math inline">\(a\)</span> o <span class="math inline">\(b\)</span>. Al variar después <span class="math inline">\(y\)</span>, cada uno de los productos <span class="math inline">\(ay\)</span> y <span class="math inline">\(by\)</span> alcanza sus extremos en <span class="math inline">\(c\)</span> o <span class="math inline">\(d\)</span>. Así bastan las cuatro combinaciones, cualesquiera que sean los signos.</p>
+</section>
+<section id="problema-11.-los-signos-cambian-qué-extremos-hay-que-combinar" class="level3">
+<h3 class="anchored" data-anchor-id="problema-11.-los-signos-cambian-qué-extremos-hay-que-combinar">Problema 11. Los signos cambian qué extremos hay que combinar</h3>
+<p><strong>Enunciado.</strong> Si <span class="math inline">\(x\in[-2,3]\)</span> e <span class="math inline">\(y\in[4,5]\)</span>, encuentra el menor intervalo que contiene todos los productos <span class="math inline">\(xy\)</span> permitidos sin otras restricciones.</p>
+<p><strong>Solución.</strong> Las cuatro combinaciones de extremos son <span class="math inline">\(-2\cdot4=-8\)</span>, <span class="math inline">\(-2\cdot5=-10\)</span>, <span class="math inline">\(3\cdot4=12\)</span> y <span class="math inline">\(3\cdot5=15\)</span>. El mínimo es <span class="math inline">\(-10\)</span> y el máximo quince, de modo que <span class="math inline">\(xy\in[-10,15]\)</span>. Ambos extremos se alcanzan y ningún intervalo menor puede contener todos los productos. Multiplicar simplemente los dos extremos inferiores habría dado <span class="math inline">\(-8\)</span>, perdiendo productos válidos como <span class="math inline">\((-2)5=-10\)</span>.</p>
+<p>Una forma útil de seguir el error del producto consiste en escribir <span class="math inline">\(x=a+e\)</span>, <span class="math inline">\(y=b+f\)</span>, con <span class="math inline">\(|e|\le\alpha\)</span>, <span class="math inline">\(|f|\le\beta\)</span>. Al desarrollar,</p>
+<p><span class="math display">\[xy-ab=af+be+ef.\]</span></p>
+<p>La desigualdad triangular proporciona entonces</p>
+<p><span class="math display">\[|xy-ab|\le |a|\beta+|b|\alpha+\alpha\beta.\]</span></p>
+<p>El último término recoge el producto de las dos perturbaciones. Aunque a veces sea pequeño, descartarlo sin justificación convierte una garantía en una regla aproximada. Si <span class="math inline">\(ab\ne0\)</span>, dividir por <span class="math inline">\(|ab|\)</span> da una cota relativa respecto del producto central: <span class="math inline">\(\alpha/|a|+\beta/|b|+\alpha\beta/|ab|\)</span>. Ese denominador central debe distinguirse del valor exacto <span class="math inline">\(|xy|\)</span> que define el error relativo de la respuesta.</p>
+</section>
+<section id="problema-12.-el-área-que-los-datos-permiten" class="level3">
+<h3 class="anchored" data-anchor-id="problema-12.-el-área-que-los-datos-permiten">Problema 12. El área que los datos permiten</h3>
+<p><strong>Enunciado.</strong> Los lados de una pieza rectangular están en <span class="math inline">\(4{,}8\pm0{,}05\)</span> centímetros y <span class="math inline">\(3{,}2\pm0{,}05\)</span> centímetros. Calcula el intervalo de áreas y una cota simétrica alrededor del producto central.</p>
+<p><strong>Solución.</strong> Los lados son positivos y están en <span class="math inline">\([4{,}75,4{,}85]\)</span> y <span class="math inline">\([3{,}15,3{,}25]\)</span>. El área pertenece a <span class="math inline">\([4{,}75\cdot3{,}15,4{,}85\cdot3{,}25]=[14{,}9625,15{,}7625]\)</span> centímetros cuadrados. El producto central es <span class="math inline">\(4{,}8\cdot3{,}2=15{,}36\)</span>. La distancia al extremo inferior es <span class="math inline">\(0{,}3975\)</span> y al superior es <span class="math inline">\(0{,}4025\)</span>, así que una cota simétrica segura es <span class="math inline">\(15{,}36\pm0{,}4025\)</span> centímetros cuadrados. La fórmula general da la misma cota: <span class="math inline">\(4{,}8(0{,}05)+3{,}2(0{,}05)+0{,}05^2=0{,}4025\)</span>. Los decimales de los extremos son resultados exactos de las cotas estipuladas; no representan nuevas mediciones de la pieza.</p>
+</section>
+</section>
+<section id="dividir-exige-alejarse-del-cero" class="level2">
+<h2 class="anchored" data-anchor-id="dividir-exige-alejarse-del-cero">Dividir exige alejarse del cero</h2>
+<p>Para <span class="math inline">\(0&lt;c\le y\le d\)</span>, invertir cambia el orden: <span class="math inline">\(1/d\le1/y\le1/c\)</span>. Con un numerador positivo <span class="math inline">\(a\le x\le b\)</span>, obtenemos <span class="math inline">\(a/d\le x/y\le b/c\)</span>. La menor razón combina el menor numerador con el mayor denominador, y la mayor combina los otros extremos. Si intervienen signos distintos, podemos construir primero el intervalo recíproco del denominador, siempre que no contenga cero, y usar la regla general del producto.</p>
+<section id="problema-13.-una-rapidez-y-un-redondeo-hacia-afuera" class="level3">
+<h3 class="anchored" data-anchor-id="problema-13.-una-rapidez-y-un-redondeo-hacia-afuera">Problema 13. Una rapidez y un redondeo hacia afuera</h3>
+<p><strong>Enunciado.</strong> Una distancia está entre <span class="math inline">\(99\)</span> y <span class="math inline">\(101\)</span> metros y un tiempo entre <span class="math inline">\(19{,}8\)</span> y <span class="math inline">\(20{,}2\)</span> segundos. Calcula un intervalo exacto para la rapidez media y otro seguro cuyos extremos tengan dos decimales.</p>
+<p><strong>Solución.</strong> Distancia y tiempo son positivos. La rapidez está entre <span class="math inline">\(99/20{,}2=495/101\)</span> y <span class="math inline">\(101/19{,}8=505/99\)</span> metros por segundo. Son aproximadamente <span class="math inline">\(4{,}90099\)</span> y <span class="math inline">\(5{,}10101\)</span>. Para conservar una garantía con dos decimales debemos bajar el extremo inferior y subir el superior: <span class="math inline">\([4{,}90,5{,}11]\)</span> metros por segundo sirve. Redondear ambos al más cercano habría dado <span class="math inline">\([4{,}90,5{,}10]\)</span>, que pierde valores admitidos por el extremo superior exacto. El intervalo también queda contenido en <span class="math inline">\(5{,}00\pm0{,}11\)</span> metros por segundo. Toda esta información depende de que las cotas iniciales sean válidas.</p>
+</section>
+<section id="problema-14.-cuando-no-existe-una-cota-finita" class="level3">
+<h3 class="anchored" data-anchor-id="problema-14.-cuando-no-existe-una-cota-finita">Problema 14. Cuando no existe una cota finita</h3>
+<p><strong>Enunciado.</strong> Se sabe únicamente que <span class="math inline">\(x\in[-0{,}1,0{,}1]\)</span>. ¿Podemos asegurar que <span class="math inline">\(1/x\)</span> está dentro de algún intervalo finito? Examina también el caso en que se añade <span class="math inline">\(x\ne0\)</span>.</p>
+<p><strong>Solución.</strong> El intervalo incluye cero, donde el recíproco no está definido. Añadir <span class="math inline">\(x\ne0\)</span> evita esa falta de definición, pero permite valores no nulos tan próximos al cero como queramos. Para cualquier entero <span class="math inline">\(N\ge10\)</span>, el valor <span class="math inline">\(x=1/N\)</span> está permitido y su recíproco es <span class="math inline">\(N\)</span>, que no tiene cota superior finita al variar <span class="math inline">\(N\)</span>. Con <span class="math inline">\(x=-1/N\)</span> se obtienen recíprocos negativos sin cota inferior finita. Por tanto tampoco la condición adicional produce un intervalo finito seguro. La dificultad procede de la información disponible sobre el denominador; escribir más decimales en una aproximación central no la resuelve.</p>
+</section>
+<section id="llevar-intervalos-y-errores-a-través-de-las-cuentas" class="level3">
+<h3 class="anchored" data-anchor-id="llevar-intervalos-y-errores-a-través-de-las-cuentas">Llevar intervalos y errores a través de las cuentas</h3>
+<p>En las tres primeras filas se supone <span class="math inline">\(x\in[a,b]\)</span>, <span class="math inline">\(y\in[c,d]\)</span>, con <span class="math inline">\(a\le b\)</span> y <span class="math inline">\(c\le d\)</span>. Son envolventes seguras; una dependencia entre las cantidades puede permitir cotas más estrechas.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 74%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Propiedad</th>
+<th style="text-align: left;">Fórmula y condiciones de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Suma de intervalos</td>
+<td style="text-align: left;"><span class="math inline">\(a+c\le x+y\le b+d\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Resta de intervalos</td>
+<td style="text-align: left;"><span class="math inline">\(a-d\le x-y\le b-c\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Producto de intervalos</td>
+<td style="text-align: left;">El menor y el mayor de <span class="math inline">\(ac,ad,bc,bd\)</span> acotan <span class="math inline">\(xy\)</span>. Se examinan las cuatro esquinas, cualquiera que sea el signo.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Recíproco separado de cero</td>
+<td style="text-align: left;">Si <span class="math inline">\(0&lt;c\le y\le d\)</span>, entonces <span class="math inline">\(1/d\le1/y\le1/c\)</span>. Para un intervalo negativo que no contenga cero se invierten también los extremos; no se usa esta regla si el intervalo contiene cero.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cociente positivo</td>
+<td style="text-align: left;">Si <span class="math inline">\(0&lt;a\le x\le b\)</span> y <span class="math inline">\(0&lt;c\le y\le d\)</span>, entonces <span class="math inline">\(a/d\le x/y\le b/c\)</span>. Para otros signos se usa el producto con el intervalo recíproco, si existe.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Error de suma o resta</td>
+<td style="text-align: left;">Si <span class="math inline">\(\lvert x-a\rvert\le\alpha\)</span> y <span class="math inline">\(\lvert y-b\rvert\le\beta\)</span>, entonces el error absoluto de aproximar <span class="math inline">\(x\pm y\)</span> por <span class="math inline">\(a\pm b\)</span> no supera <span class="math inline">\(\alpha+\beta\)</span>, con <span class="math inline">\(\alpha,\beta\ge0\)</span>.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Error del producto</td>
+<td style="text-align: left;">Bajo las mismas cotas, <span class="math inline">\(\lvert xy-ab\rvert\le\lvert a\rvert\beta+\lvert b\rvert\alpha+\alpha\beta\)</span>. El término de segundo orden se conserva.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Relativo al producto central</td>
+<td style="text-align: left;">Si además <span class="math inline">\(ab\ne0\)</span>, la cota para <span class="math inline">\(\lvert xy-ab\rvert/\lvert ab\rvert\)</span> es <span class="math inline">\(\alpha/\lvert a\rvert+\beta/\lvert b\rvert+\alpha\beta/\lvert ab\rvert\)</span>. Su denominador es el producto central, no el producto exacto.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Apéndice: «<a href="apendice.html#intervalos-bajo-las-operaciones">Intervalos bajo las operaciones</a>», «<a href="apendice.html#propagación-determinista-de-errores">Propagación determinista de errores</a>».</p>
+</section>
+</section>
+<section id="reconocer-cuándo-se-repite-la-misma-cantidad" class="level2">
+<h2 class="anchored" data-anchor-id="reconocer-cuándo-se-repite-la-misma-cantidad">Reconocer cuándo se repite la misma cantidad</h2>
+<p>Cuando una cantidad aparece dos veces en una expresión, sus dos apariciones conservan el mismo valor. Por ejemplo, si <span class="math inline">\(x\in[1,2]\)</span>, la diferencia <span class="math inline">\(x-x\)</span> vale cero para cualquier elección de <span class="math inline">\(x\)</span>; aplicar la regla general de resta a dos intervalos <span class="math inline">\([1,2]\)</span> produce en cambio <span class="math inline">\([-1,1]\)</span>, porque esa regla admite que se elija un valor distinto en cada intervalo. La envolvente sigue conteniendo todos los resultados posibles, pero aprovechar la relación entre las apariciones permite estrecharla. Al trasladar las cotas a una cuenta tendremos que reconocer qué cantidades pueden variar por separado y cuáles están ligadas.</p>
+<section id="problema-15.-dos-apariciones-un-solo-valor" class="level3">
+<h3 class="anchored" data-anchor-id="problema-15.-dos-apariciones-un-solo-valor">Problema 15. Dos apariciones, un solo valor</h3>
+<p><strong>Enunciado.</strong> Si <span class="math inline">\(x\in[-1,1]\)</span>, determina los valores posibles de <span class="math inline">\(x-x\)</span> y de <span class="math inline">\(x^2\)</span>. Compara con restar o multiplicar dos intervalos <span class="math inline">\([-1,1]\)</span> sin registrar que se trata del mismo <span class="math inline">\(x\)</span>.</p>
+<p><strong>Solución.</strong> Para cualquier <span class="math inline">\(x\)</span>, la diferencia <span class="math inline">\(x-x\)</span> es exactamente cero; su conjunto de valores es <span class="math inline">\(\{0\}\)</span>. Restar dos valores elegidos separadamente en <span class="math inline">\([-1,1]\)</span> daría el intervalo <span class="math inline">\([-2,2]\)</span>, que contiene cero pero incluye diferencias ajenas a nuestra expresión. Para el cuadrado, <span class="math inline">\(0\le x^2\le1\)</span> y todos los valores de <span class="math inline">\([0,1]\)</span> se obtienen tomando <span class="math inline">\(x=\sqrt t\)</span>. Multiplicar dos intervalos libremente daría <span class="math inline">\([-1,1]\)</span> e incluiría productos negativos. La identidad de las dos apariciones permite mejorar ambas cotas sin adquirir datos nuevos.</p>
+<p>No hay que confundir esta dependencia algebraica con una correlación estadística. Hemos usado que las dos letras designan exactamente el mismo número en la misma expresión. Tampoco una eventual independencia estadística permitiría sustituir sin más una cota máxima de error por una combinación menor: las afirmaciones probabilísticas requieren su propio modelo. Hasta aquí hemos trabajado con conjuntos de valores admisibles.</p>
+</section>
+</section>
+<section id="estimar-lo-que-todavía-no-se-ha-medido" class="level2">
+<h2 class="anchored" data-anchor-id="estimar-lo-que-todavía-no-se-ha-medido">Estimar lo que todavía no se ha medido</h2>
+<p>Para estimar un consumo anual de agua podemos comenzar con una cantidad por persona y día, multiplicarla por el número de personas y después por los días considerados. Cada factor corresponde a un supuesto que podremos revisar: una variación del consumo diario o de la cantidad de personas cambia el producto de una manera visible. Los números cómodos permiten explorar primero el tamaño del resultado; si disponemos de intervalos para esos factores, sus productos proporcionan una envolvente que conserva la incertidumbre de partida. Así podremos explicar de dónde procede la estimación y qué dato convendría precisar para mejorarla.</p>
+<section id="problema-16.-el-agua-de-un-año" class="level3">
+<h3 class="anchored" data-anchor-id="problema-16.-el-agua-de-un-año">Problema 16. El agua de un año</h3>
+<p><strong>Enunciado.</strong> Para planificar una reserva de agua de bebida en un hogar hipotético de cuatro personas, se supone un consumo medio diario de dos litros por persona durante <span class="math inline">\(365\)</span> días. Obtén una estimación anual. ¿Qué intervalo correspondería si el consumo medio por persona estuviera entre <span class="math inline">\(1{,}5\)</span> y <span class="math inline">\(2{,}5\)</span> litros diarios?</p>
+<p><strong>Solución.</strong> El modelo central da <span class="math inline">\(4\cdot2\cdot365=2920\)</span> litros, del orden de tres mil litros. Las unidades lo comprueban: personas por litros por persona y día por días deja litros. Con los supuestos extremos obtenemos <span class="math inline">\(4\cdot1{,}5\cdot365=2190\)</span> y <span class="math inline">\(4\cdot2{,}5\cdot365=3650\)</span> litros. El intervalo <span class="math inline">\([2190,3650]\)</span> es consecuencia del modelo, no una medición ni una recomendación de consumo. Un año de duración distinta, cambios de ocupantes o una definición diferente del consumo requieren modificar los factores correspondientes. La precisión del producto central no elimina esa dependencia de los supuestos.</p>
+</section>
+<section id="problema-17.-alcanza-el-tiempo-disponible" class="level3">
+<h3 class="anchored" data-anchor-id="problema-17.-alcanza-el-tiempo-disponible">Problema 17. ¿Alcanza el tiempo disponible?</h3>
+<p><strong>Enunciado.</strong> En un modelo de viaje sin detenciones, la distancia está en <span class="math inline">\([118,122]\)</span> kilómetros y la rapidez media efectiva en <span class="math inline">\([58,62]\)</span> kilómetros por hora. ¿Garantizan estos datos llegar en dos horas? ¿Y en dos horas y diez minutos?</p>
+<p><strong>Solución.</strong> El tiempo es distancia dividida por rapidez. Sus extremos son <span class="math inline">\(118/62=59/31\)</span> y <span class="math inline">\(122/58=61/29\)</span> horas. El máximo <span class="math inline">\(61/29\)</span> supera dos porque <span class="math inline">\(61&gt;58\)</span>, así que dos horas no ofrecen garantía. Dos horas y diez minutos son <span class="math inline">\(2+10/60=13/6\)</span> horas. Comparamos exactamente: <span class="math inline">\(61/29&lt;13/6\)</span> porque <span class="math inline">\(366&lt;377\)</span>. Ese plazo sí basta dentro del modelo. La garantía no incorpora detenciones ni cambios que invaliden la cota de rapidez; se refiere al problema definido por los datos.</p>
+</section>
+<section id="problema-18.-redondear-una-compra-puede-dejarla-corta" class="level3">
+<h3 class="anchored" data-anchor-id="problema-18.-redondear-una-compra-puede-dejarla-corta">Problema 18. Redondear una compra puede dejarla corta</h3>
+<p><strong>Enunciado.</strong> Debemos cubrir una longitud <span class="math inline">\(L\in[11{,}99,12{,}03]\)</span> metros con piezas de medio metro. Se permite cortar la última y suponemos que no hay pérdidas de corte ni de unión. ¿Cuántas piezas garantizan cubrir la longitud? ¿Es seguro redondear primero <span class="math inline">\(L\)</span> a doce metros y comprar veinticuatro?</p>
+<p><strong>Solución.</strong> Veinticuatro piezas cubren exactamente <span class="math inline">\(24\cdot0{,}5=12\)</span> metros y no bastan cuando <span class="math inline">\(L=12{,}03\)</span>. Para cubrir el mayor valor admisible necesitamos un entero <span class="math inline">\(n\)</span> tal que <span class="math inline">\(0{,}5n\ge12{,}03\)</span>, es decir, <span class="math inline">\(n\ge24{,}06\)</span>. El menor entero que cumple esto es veinticinco, cuya longitud total es <span class="math inline">\(12{,}5\)</span> metros. Si la longitud verdadera fuera menor o igual a doce, veinticuatro alcanzarían; los datos permiten también longitudes mayores. La dirección del redondeo depende aquí de garantizar una cobertura, no de escoger el número más cercano.</p>
+</section>
+</section>
+<section id="un-problema-sensible-y-un-cálculo-que-pierde-información" class="level2">
+<h2 class="anchored" data-anchor-id="un-problema-sensible-y-un-cálculo-que-pierde-información">Un problema sensible y un cálculo que pierde información</h2>
+<p>Una pregunta es sensible a las variaciones de los datos cuando cambios pequeños en ellos pueden provocar cambios importantes en la respuesta. Eso puede ser propio de la relación matemática, aunque calculemos sin errores. En cambio, un procedimiento de cálculo puede perder precisión al operar con aproximaciones, aun cuando exista otra forma equivalente que aproveche mejor los datos. Para estudiar la estabilidad de un procedimiento examinamos cuánto error introducen sus operaciones con la precisión de trabajo elegida y el criterio de error declarado.</p>
+<p>Para ver la sensibilidad cerca de una división por cero, comparemos los recíprocos de dos números próximos. Con denominadores no nulos,</p>
+<p><span class="math display">\[\left|\frac1{x+h}-\frac1x\right|=\frac{|h|}{|x+h|\,|x|}.\]</span></p>
+<p>La identidad sale de llevar las fracciones al denominador común y tomar valores absolutos. Si los denominadores son pequeños, una perturbación <span class="math inline">\(h\)</span> puede amplificarse. No hace falta derivar una función para reconocer el mecanismo.</p>
+<section id="problema-19.-la-misma-incertidumbre-de-entrada-efectos-distintos" class="level3">
+<h3 class="anchored" data-anchor-id="problema-19.-la-misma-incertidumbre-de-entrada-efectos-distintos">Problema 19. La misma incertidumbre de entrada, efectos distintos</h3>
+<p><strong>Enunciado.</strong> Para <span class="math inline">\(f(x)=1/(x-1)\)</span>, compara los intervalos de salida cuando <span class="math inline">\(x\in[1{,}99,2{,}01]\)</span> y cuando <span class="math inline">\(x\in[1{,}09,1{,}11]\)</span>. Ambos intervalos tienen semianchura <span class="math inline">\(0{,}01\)</span>. ¿Se debe la diferencia a un error de calculadora?</p>
+<p><strong>Solución.</strong> En el primer caso el denominador está en <span class="math inline">\([0{,}99,1{,}01]\)</span> y la salida en <span class="math inline">\([100/101,100/99]\)</span>, aproximadamente <span class="math inline">\([0{,}990099,1{,}010101]\)</span>. Respecto del valor central uno, la desviación máxima es <span class="math inline">\(1/99\)</span>. En el segundo, el denominador queda en <span class="math inline">\([0{,}09,0{,}11]\)</span> y la salida en <span class="math inline">\([100/11,100/9]\)</span>, aproximadamente <span class="math inline">\([9{,}090909,11{,}111111]\)</span>. Respecto del valor central diez, la desviación máxima es <span class="math inline">\(10/9\)</span>. La misma semianchura de entrada produce una desviación absoluta mucho mayor al acercarse el denominador al cero. Los intervalos se obtuvieron con fracciones exactas: el efecto pertenece al problema y persistiría con una calculadora perfecta.</p>
+<p>Una resta de números muy próximos plantea otra dificultad. Si cada uno ya fue redondeado, sus errores pueden ocupar una parte grande de la diferencia que buscamos. A veces una identidad permite evitar esa resta. Conservamos el valor exacto de la expresión, pero cambiamos el camino numérico para llegar a él.</p>
+</section>
+<section id="problema-20.-una-diferencia-pequeña-que-desaparece" class="level3">
+<h3 class="anchored" data-anchor-id="problema-20.-una-diferencia-pequeña-que-desaparece">Problema 20. Una diferencia pequeña que desaparece</h3>
+<p><strong>Enunciado.</strong> Queremos calcular <span class="math inline">\(d=\sqrt{1\,000\,001}-1000\)</span>. Un procedimiento redondea primero la raíz a tres decimales y luego resta. Otro transforma la expresión antes de aproximar. Examina ambos y da cotas para <span class="math inline">\(d\)</span>.</p>
+<p><strong>Solución.</strong> La raíz es mayor que mil y menor que <span class="math inline">\(1000{,}0005\)</span>, pues <span class="math inline">\((1000{,}0005)^2=1\,000\,001{,}00000025&gt;1\,000\,001\)</span>. Por tanto se redondea a <span class="math inline">\(1000{,}000\)</span> y la resta calculada vale cero, aunque <span class="math inline">\(d&gt;0\)</span>. Multiplicando por el conjugado obtenemos, en cambio,</p>
+<p><span class="math display">\[d=\frac{1}{\sqrt{1\,000\,001}+1000}.\]</span></p>
+<p>El denominador es positivo, así que esta identidad conserva el valor sin introducir restricciones nuevas. Como <span class="math inline">\(1000&lt;\sqrt{1\,000\,001}&lt;1000{,}001\)</span>, tenemos</p>
+<p><span class="math display">\[\frac1{2000{,}001}&lt;d&lt;\frac1{2000}=0{,}0005.\]</span></p>
+<p>Usar la raíz redondeada en la nueva fórmula produce <span class="math inline">\(0{,}0005\)</span>, próximo a todo el intervalo permitido. La diferencia entre ese valor y <span class="math inline">\(d\)</span> es menor que <span class="math inline">\(1/2000-1/2000{,}001\)</span>, que es menor que <span class="math inline">\(0{,}00000000025\)</span>. Hemos justificado la mejora con una cota, sin apelar al número de cifras de una pantalla. La cancelación de las partes grandes perjudicaba el primer procedimiento; la expresión equivalente evita esa pérdida.</p>
+</section>
+<section id="problema-21.-los-redondeos-intermedios-también-se-acumulan" class="level3">
+<h3 class="anchored" data-anchor-id="problema-21.-los-redondeos-intermedios-también-se-acumulan">Problema 21. Los redondeos intermedios también se acumulan</h3>
+<p><strong>Enunciado.</strong> Una cuenta suma diez términos iguales a <span class="math inline">\(0{,}144\)</span>, todos exactos. Compara redondear cada término a décimas antes de sumar con sumar primero y redondear al final. Acota el error de la primera estrategia.</p>
+<p><strong>Solución.</strong> Cada término se redondea a <span class="math inline">\(0{,}1\)</span>; sumarlos da <span class="math inline">\(1{,}0\)</span>. La suma exacta es <span class="math inline">\(10\cdot0{,}144=1{,}44\)</span>, cuyo redondeo a décimas es <span class="math inline">\(1{,}4\)</span>. La primera estrategia ha introducido un error absoluto de <span class="math inline">\(0{,}44\)</span> antes de cualquier redondeo final. La cota general de cada término es <span class="math inline">\(0{,}05\)</span>, así que la suma de diez errores no supera <span class="math inline">\(0{,}5\)</span>. En este caso todos los errores apuntan en la misma dirección y no se compensan. Conservar los términos exactos hasta el final deja un error de <span class="math inline">\(0{,}04\)</span>, dentro de la cota <span class="math inline">\(0{,}05\)</span> del único redondeo final.</p>
+</section>
+</section>
+<section id="demostrar-la-calidad-de-una-aproximación" class="level2">
+<h2 class="anchored" data-anchor-id="demostrar-la-calidad-de-una-aproximación">Demostrar la calidad de una aproximación</h2>
+<p>Una buena aproximación puede surgir de una identidad. Para <span class="math inline">\(t\ge0\)</span>, el número <span class="math inline">\(1+t/2\)</span> se parece a <span class="math inline">\(\sqrt{1+t}\)</span> cuando <span class="math inline">\(t\)</span> es pequeño. Si ponemos <span class="math inline">\(z=\sqrt{1+t}\)</span>, tenemos <span class="math inline">\(z^2=1+t\)</span> y podemos calcular exactamente la diferencia:</p>
+<p><span class="math display">\[1+\frac t2-z=\frac{z^2+1-2z}{2}=\frac{(z-1)^2}{2}.\]</span></p>
+<p>Es no negativa. Además, <span class="math inline">\((z-1)(z+1)=t\)</span>, con <span class="math inline">\(z+1&gt;0\)</span>, de modo que</p>
+<p><span class="math display">\[0\le1+\frac t2-\sqrt{1+t}=\frac{t^2}{2(\sqrt{1+t}+1)^2}\le\frac{t^2}{8}.\]</span></p>
+<p>La última desigualdad usa <span class="math inline">\(\sqrt{1+t}\ge1\)</span>, por lo que el denominador es al menos ocho. Hemos demostrado una cota válida para todo <span class="math inline">\(t\ge0\)</span>; su utilidad como aproximación mejora cuando <span class="math inline">\(t^2/8\)</span> es pequeño. La prueba también identifica el sentido del error: <span class="math inline">\(1+t/2\)</span> queda por encima de la raíz.</p>
+<section id="problema-22.-una-fórmula-sencilla-con-error-garantizado" class="level3">
+<h3 class="anchored" data-anchor-id="problema-22.-una-fórmula-sencilla-con-error-garantizado">Problema 22. Una fórmula sencilla con error garantizado</h3>
+<p><strong>Enunciado.</strong> Aproxima <span class="math inline">\(\sqrt{1{,}04}\)</span> mediante <span class="math inline">\(1+0{,}04/2\)</span> y da un intervalo seguro sin calcular la raíz con una calculadora.</p>
+<p><strong>Solución.</strong> Tomamos <span class="math inline">\(t=0{,}04\)</span> en la desigualdad demostrada. La aproximación es <span class="math inline">\(1{,}02\)</span> y su exceso sobre la raíz está entre cero y <span class="math inline">\(0{,}04^2/8=0{,}0002\)</span>. Por tanto <span class="math inline">\(1{,}0198\le\sqrt{1{,}04}\le1{,}02\)</span>. Como el valor de <span class="math inline">\(t\)</span> es positivo, el exceso es de hecho positivo. El intervalo cerrado conserva una garantía cómoda. La cuenta <span class="math inline">\(1{,}02^2=1{,}0404\)</span> confirma que la aproximación está por encima; la prueba general explica además cuánto puede excederla.</p>
+</section>
+</section>
+<section id="detener-un-cálculo-cuando-ya-basta" class="level2">
+<h2 class="anchored" data-anchor-id="detener-un-cálculo-cuando-ya-basta">Detener un cálculo cuando ya basta</h2>
+<p>Si sabemos que <span class="math inline">\(x\in[a,b]\)</span>, el punto medio <span class="math inline">\(m=(a+b)/2\)</span> está a distancia de a lo sumo <span class="math inline">\((b-a)/2\)</span> de cualquier valor del intervalo. La garantía se ve en la recta: ambos extremos quedan a esa distancia y los demás puntos quedan entre ellos. Para obtener error absoluto de a lo sumo <span class="math inline">\(\varepsilon\)</span> basta construir un intervalo de ancho no mayor que <span class="math inline">\(2\varepsilon\)</span>.</p>
+<div id="fig-mp-cota-por-semianchura" class="ancho-en-texto quarto-float quarto-figure quarto-figure-center anchored" alt="El punto medio queda a distancia de a lo sumo la semianchura de cualquier punto del intervalo.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mp-cota-por-semianchura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="../../../assets/books/mp/figuras/Cota_por_semianchura.svg" class="ancho-en-texto img-fluid figure-img" alt="El punto medio queda a distancia de a lo sumo la semianchura de cualquier punto del intervalo.">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mp-cota-por-semianchura-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;2: El punto medio queda a distancia de a lo sumo la semianchura de cualquier punto del intervalo.
+</figcaption>
+</figure>
+</div>
+<p>Para una raíz positiva podemos partir de dos cotas no negativas y examinar su punto medio. En ese intervalo, el cuadrado crece con el número. Si el cuadrado del punto medio es menor que el radicando, conservamos la mitad superior; si es mayor, conservamos la inferior; si es igual, hemos encontrado la raíz exacta y podemos detenernos con error cero. Este procedimiento se llama bisección. Cada paso que continúa conserva la raíz y divide por dos el ancho. Tras <span class="math inline">\(n\)</span> divisiones efectivas, un ancho inicial <span class="math inline">\(w\)</span> se convierte en <span class="math inline">\(w/2^n\)</span>, y el error del punto medio final no supera <span class="math inline">\(w/2^{n+1}\)</span>.</p>
+<section id="problema-23.-cuántos-pasos-necesita-una-garantía" class="level3">
+<h3 class="anchored" data-anchor-id="problema-23.-cuántos-pasos-necesita-una-garantía">Problema 23. Cuántos pasos necesita una garantía</h3>
+<p><strong>Enunciado.</strong> Partimos de <span class="math inline">\(1{,}7&lt;\sqrt3&lt;1{,}8\)</span> y aplicamos bisección. ¿Cuántos pasos bastan para que el punto medio final tenga error menor que <span class="math inline">\(0{,}001\)</span>? Muestra los dos primeros pasos.</p>
+<p><strong>Solución.</strong> El ancho inicial es <span class="math inline">\(0{,}1\)</span>. Tras <span class="math inline">\(n\)</span> pasos, la cota de error del punto medio será <span class="math inline">\(0{,}1/2^{n+1}\)</span>. Con cinco pasos vale <span class="math inline">\(0{,}0015625\)</span>, que todavía supera el objetivo; con seis vale <span class="math inline">\(0{,}00078125&lt;0{,}001\)</span>. Seis pasos bastan y son el menor número que asegura el objetivo mediante esta cota de ancho. En el primero, el punto medio es <span class="math inline">\(1{,}75\)</span> y su cuadrado <span class="math inline">\(3{,}0625\)</span>; conservamos <span class="math inline">\([1{,}7,1{,}75]\)</span>. En el segundo, <span class="math inline">\(1{,}725^2=2{,}975625&lt;3\)</span>, por lo que queda <span class="math inline">\([1{,}725,1{,}75]\)</span>. Las cuentas siguientes repiten la misma decisión, sin requerir una lista previa de los decimales de la raíz.</p>
+</section>
+<section id="problema-24.-una-diferencia-que-los-datos-no-deciden" class="level3">
+<h3 class="anchored" data-anchor-id="problema-24.-una-diferencia-que-los-datos-no-deciden">Problema 24. Una diferencia que los datos no deciden</h3>
+<p><strong>Enunciado.</strong> Dos longitudes están dadas por <span class="math inline">\(A=20\pm0{,}1\)</span> centímetros y <span class="math inline">\(B=20{,}15\pm0{,}1\)</span> centímetros. ¿Garantizan las lecturas que <span class="math inline">\(B&gt;A\)</span>? ¿Qué tendría que cumplir la diferencia de los valores centrales para ofrecer esa garantía con las mismas cotas?</p>
+<p><strong>Solución.</strong> Los intervalos son <span class="math inline">\([19{,}9,20{,}1]\)</span> y <span class="math inline">\([20{,}05,20{,}25]\)</span>. La diferencia <span class="math inline">\(B-A\)</span> pertenece a <span class="math inline">\([20{,}05-20{,}1,20{,}25-19{,}9]=[-0{,}05,0{,}35]\)</span>. Puede ser positiva, nula o negativa. Por ejemplo, <span class="math inline">\(B=20{,}05\)</span> y <span class="math inline">\(A=20{,}1\)</span> respetan los datos y dan <span class="math inline">\(B&lt;A\)</span>. Si la diferencia entre centros fuera <span class="math inline">\(d\)</span>, su cota inferior sería <span class="math inline">\(d-0{,}2\)</span>. Para garantizar desigualdad estricta necesitamos <span class="math inline">\(d&gt;0{,}2\)</span> centímetros; con igualdad solo garantizaríamos <span class="math inline">\(B\ge A\)</span>. Los datos actuales no permiten resolver la comparación estricta. Informar esa limitación es una conclusión matemática completa.</p>
+</section>
+<section id="identidades-y-criterios-para-controlar-la-aproximación" class="level3">
+<h3 class="anchored" data-anchor-id="identidades-y-criterios-para-controlar-la-aproximación">Identidades y criterios para controlar la aproximación</h3>
+<p>Las identidades se conservan exactamente; las desigualdades proporcionan garantías bajo las hipótesis indicadas.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 74%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Propiedad</th>
+<th style="text-align: left;">Fórmula y condiciones de uso</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Variación de un recíproco</td>
+<td style="text-align: left;"><span class="math inline">\(\lvert1/(x+h)-1/x\rvert=\lvert h\rvert/(\lvert x+h\rvert\lvert x\rvert)\)</span>, con <span class="math inline">\(x\ne0\)</span> y <span class="math inline">\(x+h\ne0\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Aproximación de una raíz</td>
+<td style="text-align: left;"><span class="math inline">\(0\le1+t/2-\sqrt{1+t}\le t^2/8\)</span>, con <span class="math inline">\(t\ge0\)</span>. La cota se hace útil cuando <span class="math inline">\(t^2/8\)</span> es suficientemente pequeño.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Punto medio</td>
+<td style="text-align: left;">Si <span class="math inline">\(x\in[a,b]\)</span> y <span class="math inline">\(m=(a+b)/2\)</span>, entonces <span class="math inline">\(\lvert x-m\rvert\le(b-a)/2\)</span>. Un ancho de a lo sumo <span class="math inline">\(2\varepsilon\)</span> basta para garantizar error de a lo sumo <span class="math inline">\(\varepsilon&gt;0\)</span>.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bisección</td>
+<td style="text-align: left;">Partiendo de cotas no negativas para una raíz cuadrada, tras <span class="math inline">\(n\ge0\)</span> divisiones efectivas que conservan la raíz, el ancho inicial <span class="math inline">\(w\)</span> pasa a <span class="math inline">\(w/2^n\)</span> y el error del punto medio no supera <span class="math inline">\(w/2^{n+1}\)</span>. Si se encuentra la raíz exacta, se puede detener el cálculo con error cero.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pruebas.</strong> Apéndice: «<a href="apendice.html#recíprocos-y-una-aproximación-radical">Recíprocos y una aproximación radical</a>», «<a href="apendice.html#punto-medio-y-bisección">Punto medio y bisección</a>».</p>
+</section>
+</section>
+<section id="ejercicios-para-trabajar-sin-profesor" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios-para-trabajar-sin-profesor">Ejercicios para trabajar sin profesor</h2>
+<p><strong>1.</strong> Clasifica <span class="math inline">\(3/8=0{,}375\)</span>, <span class="math inline">\(\sqrt3\approx1{,}73\)</span> y <span class="math inline">\(10\pi\approx31{,}4\)</span> como igualdades exactas o aproximaciones. Comprueba que <span class="math inline">\(1{,}73\)</span> no es exactamente la raíz de tres.</p>
+<p><strong>2.</strong> Trunca y redondea <span class="math inline">\(-4{,}56789\)</span> a centésimas. Calcula los dos errores absolutos.</p>
+<p><strong>3.</strong> Redondea <span class="math inline">\(1{,}235\)</span> y <span class="math inline">\(-1{,}235\)</span> a centésimas con la convención del capítulo. Describe los números positivos que se redondean a <span class="math inline">\(3{,}24\)</span>.</p>
+<p><strong>4.</strong> Compara el redondeo directo de <span class="math inline">\(6{,}249\)</span> a décimas con el que pasa primero por centésimas. Explica qué frontera cambia la decisión.</p>
+<p><strong>5.</strong> ¿Cuántas cifras significativas muestran <span class="math inline">\(0{,}006030\)</span> y <span class="math inline">\(1{,}20\cdot10^3\)</span>? Explica qué información falta para interpretar los ceros de <span class="math inline">\(1200\)</span> como resultado de una medición.</p>
+<p><strong>6.</strong> Acota <span class="math inline">\(\sqrt{11}\)</span> entre centésimas consecutivas y decide su redondeo a centésimas examinando el punto medio.</p>
+<p><strong>7.</strong> Una lectura muestra <span class="math inline">\(-2{,}47\)</span>. Describe el intervalo de valores originales si trunca a centésimas y si redondea a centésimas.</p>
+<p><strong>8.</strong> Compara los errores absolutos y relativos de aproximar <span class="math inline">\(250\)</span> por <span class="math inline">\(249\)</span> y <span class="math inline">\(0{,}5\)</span> por <span class="math inline">\(0{,}49\)</span>. Todos los números iniciales se consideran exactos.</p>
+<p><strong>9.</strong> Si <span class="math inline">\(|x-20|\le0{,}2\)</span>, da una cota segura para el error relativo de aproximar <span class="math inline">\(x\)</span> por veinte. ¿Basta afirmar que no supera <span class="math inline">\(1\%\)</span>?</p>
+<p><strong>10.</strong> Con <span class="math inline">\(x=7\pm0{,}05\)</span> e <span class="math inline">\(y=3\pm0{,}02\)</span>, encuentra intervalos para <span class="math inline">\(x+y\)</span> y <span class="math inline">\(x-y\)</span> sin suponer relaciones adicionales.</p>
+<p><strong>11.</strong> Si <span class="math inline">\(x\in[-3,2]\)</span> e <span class="math inline">\(y\in[-2,4]\)</span>, obtén los extremos posibles de <span class="math inline">\(xy\)</span> y explica por qué multiplicar solo extremos inferiores no sirve.</p>
+<p><strong>12.</strong> Los lados de un rectángulo están en <span class="math inline">\(2\pm0{,}01\)</span> metros y <span class="math inline">\(5\pm0{,}02\)</span> metros. Calcula el intervalo de áreas y la menor cota simétrica alrededor del producto central que contenga ese intervalo.</p>
+<p><strong>13.</strong> Una distancia está en <span class="math inline">\(60\pm0{,}5\)</span> metros y un tiempo en <span class="math inline">\(12\pm0{,}1\)</span> segundos. Da el intervalo exacto de rapidez media y otro seguro con extremos de dos decimales.</p>
+<p><strong>14.</strong> Si <span class="math inline">\(x\in[-0{,}02,0{,}03]\)</span> y <span class="math inline">\(x\ne0\)</span>, ¿existe una cota finita para todos los recíprocos <span class="math inline">\(1/x\)</span>? Justifica mediante valores permitidos.</p>
+<p><strong>15.</strong> Si <span class="math inline">\(x\in[2,3]\)</span>, compara el conjunto exacto de valores de <span class="math inline">\(x/x\)</span> con el intervalo que se obtiene dividiendo dos cantidades elegidas libremente en <span class="math inline">\([2,3]\)</span>.</p>
+<p><strong>16.</strong> Un taller hipotético estima cincuenta trabajos de impresión al año y treinta páginas por trabajo. Calcula el consumo estimado. Si los trabajos están entre cuarenta y sesenta y el promedio de páginas por trabajo entre veinte y cuarenta, da el intervalo anual del modelo.</p>
+<p><strong>17.</strong> Para un viaje ideal sin paradas, la distancia está en <span class="math inline">\([178,182]\)</span> kilómetros y la rapidez media en <span class="math inline">\([88,92]\)</span> kilómetros por hora. ¿Bastan con garantía dos horas? ¿Y dos horas y cinco minutos?</p>
+<p><strong>18.</strong> Se necesita una longitud en <span class="math inline">\([9{,}94,10{,}02]\)</span> metros y se dispone de piezas de dos metros, con corte final permitido y sin pérdidas. ¿Cuántas piezas ofrecen garantía? Explica por qué cinco podrían ser insuficientes.</p>
+<p><strong>19.</strong> Para <span class="math inline">\(g(x)=1/(x-2)\)</span>, compara las salidas correspondientes a <span class="math inline">\(x\in[2{,}99,3{,}01]\)</span> y a <span class="math inline">\(x\in[2{,}09,2{,}11]\)</span>. Identifica la causa de la diferencia de sensibilidad.</p>
+<p><strong>20.</strong> Analiza <span class="math inline">\(\sqrt{10\,001}-100\)</span> si primero se redondea la raíz a centésimas. Obtén una fórmula equivalente sin esa resta y un intervalo usando <span class="math inline">\(100&lt;\sqrt{10\,001}&lt;100{,}01\)</span>.</p>
+<p><strong>21.</strong> Suma ocho términos exactos de valor <span class="math inline">\(0{,}126\)</span>. Compara redondear cada término a centésimas antes de sumar con redondear la suma exacta al final. Da los errores respecto de la suma exacta y una cota para la primera estrategia.</p>
+<p><strong>22.</strong> Aplica la cota demostrada para aproximar <span class="math inline">\(\sqrt{1{,}02}\)</span> mediante <span class="math inline">\(1{,}01\)</span>. Da un intervalo garantizado y el sentido del error.</p>
+<p><strong>23.</strong> Parte de <span class="math inline">\(2{,}2&lt;\sqrt5&lt;2{,}3\)</span>. ¿Cuántas bisecciones aseguran que el punto medio final tenga error de a lo sumo <span class="math inline">\(0{,}0005\)</span>? Muestra el primer paso.</p>
+<p><strong>24.</strong> Con <span class="math inline">\(A=5\pm0{,}03\)</span> y <span class="math inline">\(B=5{,}04\pm0{,}03\)</span>, decide si se garantiza <span class="math inline">\(B&gt;A\)</span>. Da un contraejemplo permitido y la separación entre centros que bastaría para garantizarlo con esas mismas cotas.</p>
+</section>
+<section id="soluciones-desarrolladas" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones-desarrolladas">Soluciones desarrolladas</h2>
+<section id="ejercicio-1.-comprobar-qué-número-se-ha-escrito" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-1.-comprobar-qué-número-se-ha-escrito">Ejercicio 1. Comprobar qué número se ha escrito</h3>
+<p><span class="math inline">\(3/8=0{,}375\)</span> es una igualdad exacta, porque ocho veces <span class="math inline">\(0{,}375\)</span> vale tres. Las otras escrituras están señaladas como aproximaciones: reemplazan números dados mediante una raíz o mediante <span class="math inline">\(\pi\)</span> por decimales finitos. En particular, <span class="math inline">\(1{,}73^2=2{,}9929\ne3\)</span> demuestra que ese decimal no es <span class="math inline">\(\sqrt3\)</span>. La escritura exacta de la circunferencia correspondiente puede conservar <span class="math inline">\(10\pi\)</span> sin necesidad de desarrollar sus cifras. La forma simbólica no es menos exacta por no ser decimal.</p>
+</section>
+<section id="ejercicio-2.-la-distancia-no-lleva-el-signo-del-número" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-2.-la-distancia-no-lleva-el-signo-del-número">Ejercicio 2. La distancia no lleva el signo del número</h3>
+<p>Truncar a centésimas da <span class="math inline">\(-4{,}56\)</span>, a distancia <span class="math inline">\(0{,}00789\)</span> del original. Redondear da <span class="math inline">\(-4{,}57\)</span>, cuya distancia es <span class="math inline">\(0{,}00211\)</span>. En efecto, <span class="math inline">\(-4{,}56789\)</span> está más cerca de <span class="math inline">\(-4{,}57\)</span> que de <span class="math inline">\(-4{,}56\)</span>. Ambos errores absolutos son no negativos. La truncación queda hacia el cero, y la cota <span class="math inline">\(0{,}01\)</span> para su error se cumple; el redondeo satisface la cota más pequeña <span class="math inline">\(0{,}005\)</span>.</p>
+</section>
+<section id="ejercicio-3.-los-empates-y-los-extremos-del-intervalo" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3.-los-empates-y-los-extremos-del-intervalo">Ejercicio 3. Los empates y los extremos del intervalo</h3>
+<p>Los dos números están exactamente a mitad entre centésimas vecinas. Nuestra convención elige <span class="math inline">\(1{,}24\)</span> y <span class="math inline">\(-1{,}24\)</span>, los candidatos más alejados del cero. Para la lectura positiva <span class="math inline">\(3{,}24\)</span>, los puntos medios vecinos son <span class="math inline">\(3{,}235\)</span> y <span class="math inline">\(3{,}245\)</span>. El primero se incluye porque se redondea a <span class="math inline">\(3{,}24\)</span>; el segundo se excluye porque se redondea a <span class="math inline">\(3{,}25\)</span>. El intervalo buscado es <span class="math inline">\([3{,}235,3{,}245)\)</span>.</p>
+</section>
+<section id="ejercicio-4.-una-aproximación-que-cae-en-el-empate" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4.-una-aproximación-que-cae-en-el-empate">Ejercicio 4. Una aproximación que cae en el empate</h3>
+<p>El redondeo directo es <span class="math inline">\(6{,}2\)</span>, pues <span class="math inline">\(6{,}249\)</span> es menor que el punto medio <span class="math inline">\(6{,}25\)</span>. Al redondear primero a centésimas obtenemos <span class="math inline">\(6{,}25\)</span>; al pasar después a décimas, el empate se resuelve hacia <span class="math inline">\(6{,}3\)</span>. La primera aproximación cruzó la frontera de decisión al situarse exactamente sobre ella. Las dos operaciones sucesivas no equivalen, en general, al redondeo directo.</p>
+</section>
+<section id="ejercicio-5.-ceros-que-sitúan-y-ceros-que-se-muestran" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5.-ceros-que-sitúan-y-ceros-que-se-muestran">Ejercicio 5. Ceros que sitúan y ceros que se muestran</h3>
+<p>En <span class="math inline">\(0{,}006030\)</span> hay cuatro cifras significativas: <span class="math inline">\(6\)</span>, <span class="math inline">\(0\)</span>, <span class="math inline">\(3\)</span>, <span class="math inline">\(0\)</span>. Los ceros anteriores al seis solo localizan la primera cifra no nula. <span class="math inline">\(1{,}20\cdot10^3\)</span> muestra tres cifras significativas. Para interpretar <span class="math inline">\(1200\)</span> necesitamos saber si es un conteo exacto o una lectura aproximada y, en este último caso, qué procedimiento y posición de redondeo se usaron. Para conocer un error de medida también harían falta las condiciones pertinentes del instrumento. Los ceros aislados no aportan esos datos.</p>
+</section>
+<section id="ejercicio-6.-las-dos-centésimas-no-bastan-para-decidir" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-6.-las-dos-centésimas-no-bastan-para-decidir">Ejercicio 6. Las dos centésimas no bastan para decidir</h3>
+<p><span class="math inline">\(3{,}31^2=10{,}9561&lt;11\)</span> y <span class="math inline">\(3{,}32^2=11{,}0224&gt;11\)</span> dan <span class="math inline">\(3{,}31&lt;\sqrt{11}&lt;3{,}32\)</span>. El punto medio es <span class="math inline">\(3{,}315\)</span> y su cuadrado vale <span class="math inline">\(10{,}989225&lt;11\)</span>. Por tanto la raíz está por encima de ese punto y se redondea a <span class="math inline">\(3{,}32\)</span>. Todas las comparaciones se hicieron entre racionales exactos y luego se trasladaron a números no negativos mediante la monotonía del cuadrado.</p>
+</section>
+<section id="ejercicio-7.-el-procedimiento-determina-los-extremos" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7.-el-procedimiento-determina-los-extremos">Ejercicio 7. El procedimiento determina los extremos</h3>
+<p>Si se trunca hacia el cero, los valores que dan <span class="math inline">\(-2{,}47\)</span> están en <span class="math inline">\((-2{,}48,-2{,}47]\)</span>. El extremo inferior conservaría sus propias centésimas y no sirve. Si se redondea, el intervalo es <span class="math inline">\((-2{,}475,-2{,}465]\)</span>. El empate <span class="math inline">\(-2{,}475\)</span> se va a <span class="math inline">\(-2{,}48\)</span> y queda excluido; el empate <span class="math inline">\(-2{,}465\)</span> se va a <span class="math inline">\(-2{,}47\)</span> y queda incluido. Invertir sin cuidado la regla de los extremos positivos habría producido una descripción incorrecta.</p>
+</section>
+<section id="ejercicio-8.-comparar-respecto-del-valor-exacto" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8.-comparar-respecto-del-valor-exacto">Ejercicio 8. Comparar respecto del valor exacto</h3>
+<p>En el primer caso, el error absoluto es <span class="math inline">\(|249-250|=1\)</span> y el relativo <span class="math inline">\(1/250=0{,}004=0{,}4\%\)</span>. En el segundo, el error absoluto es <span class="math inline">\(|0{,}49-0{,}5|=0{,}01\)</span> y el relativo <span class="math inline">\(0{,}01/0{,}5=0{,}02=2\%\)</span>. El segundo error absoluto es cien veces menor, pero su error relativo es cinco veces mayor. Los denominadores son los valores exactos <span class="math inline">\(250\)</span> y <span class="math inline">\(0{,}5\)</span>, respectivamente.</p>
+</section>
+<section id="ejercicio-9.-el-denominador-más-pequeño-admisible" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-9.-el-denominador-más-pequeño-admisible">Ejercicio 9. El denominador más pequeño admisible</h3>
+<p>El valor exacto pertenece a <span class="math inline">\([19{,}8,20{,}2]\)</span>, un intervalo positivo. La cota relativa segura es <span class="math inline">\(0{,}2/19{,}8=1/99\)</span>, aproximadamente <span class="math inline">\(1{,}0101\%\)</span>. No podemos garantizar el uno por ciento, porque el valor permitido <span class="math inline">\(x=19{,}8\)</span> alcanza precisamente <span class="math inline">\(1/99&gt;1/100\)</span>. Dividir la cota absoluta por el centro veinte habría dado una referencia aproximada, pero no el máximo que exigen los datos.</p>
+</section>
+<section id="ejercicio-10.-sumar-las-semianchuras" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10.-sumar-las-semianchuras">Ejercicio 10. Sumar las semianchuras</h3>
+<p>Los intervalos iniciales son <span class="math inline">\([6{,}95,7{,}05]\)</span> y <span class="math inline">\([2{,}98,3{,}02]\)</span>. La suma está en <span class="math inline">\([9{,}93,10{,}07]\)</span>, o <span class="math inline">\(10\pm0{,}07\)</span>. La resta está en <span class="math inline">\([6{,}95-3{,}02,7{,}05-2{,}98]=[3{,}93,4{,}07]\)</span>, o <span class="math inline">\(4\pm0{,}07\)</span>. La semianchura <span class="math inline">\(0{,}07\)</span> es <span class="math inline">\(0{,}05+0{,}02\)</span>. Estas son cotas máximas deterministas; no hemos supuesto compensación de errores.</p>
+</section>
+<section id="ejercicio-11.-examinar-las-cuatro-esquinas" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11.-examinar-las-cuatro-esquinas">Ejercicio 11. Examinar las cuatro esquinas</h3>
+<p>Los productos de extremos son <span class="math inline">\((-3)(-2)=6\)</span>, <span class="math inline">\((-3)4=-12\)</span>, <span class="math inline">\(2(-2)=-4\)</span> y <span class="math inline">\(2\cdot4=8\)</span>. El intervalo es <span class="math inline">\([-12,8]\)</span>, con ambos extremos alcanzables. El producto de los extremos inferiores es seis, que ni siquiera es el mínimo. Al haber signos distintos, aumentar uno de los factores puede hacer el producto menor; la regla de cuatro combinaciones contempla esa posibilidad.</p>
+</section>
+<section id="ejercicio-12.-el-intervalo-no-es-simétrico-respecto-del-producto-central" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-12.-el-intervalo-no-es-simétrico-respecto-del-producto-central">Ejercicio 12. El intervalo no es simétrico respecto del producto central</h3>
+<p>Los lados positivos están entre <span class="math inline">\(1{,}99\)</span> y <span class="math inline">\(2{,}01\)</span> metros, y entre <span class="math inline">\(4{,}98\)</span> y <span class="math inline">\(5{,}02\)</span> metros. Las áreas extremas son <span class="math inline">\(1{,}99\cdot4{,}98=9{,}9102\)</span> y <span class="math inline">\(2{,}01\cdot5{,}02=10{,}0902\)</span> metros cuadrados. El centro elegido, producto de los valores centrales, es diez. Sus distancias a los extremos son <span class="math inline">\(0{,}0898\)</span> y <span class="math inline">\(0{,}0902\)</span>, así que la menor cota simétrica alrededor de diez es <span class="math inline">\(10\pm0{,}0902\)</span> metros cuadrados. Coincide con <span class="math inline">\(2(0{,}02)+5(0{,}01)+0{,}01(0{,}02)=0{,}0902\)</span>. Quitar el último término habría perdido una parte del exceso superior.</p>
+</section>
+<section id="ejercicio-13.-el-intervalo-se-redondea-hacia-afuera" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13.-el-intervalo-se-redondea-hacia-afuera">Ejercicio 13. El intervalo se redondea hacia afuera</h3>
+<p>La rapidez pertenece a <span class="math inline">\([59{,}5/12{,}1,60{,}5/11{,}9]=[595/121,605/119]\)</span> metros por segundo. Sus extremos son aproximadamente <span class="math inline">\(4{,}917355\)</span> y <span class="math inline">\(5{,}084034\)</span>. Un intervalo seguro con dos decimales es <span class="math inline">\([4{,}91,5{,}09]\)</span>. El límite inferior se baja y el superior se sube; así se conserva la inclusión. El intervalo de extremos más cercanos, <span class="math inline">\([4{,}92,5{,}08]\)</span>, excluiría valores posibles por ambos lados.</p>
+</section>
+<section id="ejercicio-14.-excluir-el-cero-no-aleja-los-datos-de-él" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14.-excluir-el-cero-no-aleja-los-datos-de-él">Ejercicio 14. Excluir el cero no aleja los datos de él</h3>
+<p>Para cualquier entero <span class="math inline">\(N\ge50\)</span>, los valores <span class="math inline">\(x=1/N\)</span> y <span class="math inline">\(x=-1/N\)</span> son no nulos y están dentro de <span class="math inline">\([-0{,}02,0{,}03]\)</span>. Sus recíprocos son <span class="math inline">\(N\)</span> y <span class="math inline">\(-N\)</span>. Al aumentar <span class="math inline">\(N\)</span> superamos cualquier cota finita propuesta, tanto positiva como negativa. Por eso no existe un intervalo finito que contenga todos los recíprocos. Haría falta una distancia positiva garantizada entre el denominador y cero.</p>
+</section>
+<section id="ejercicio-15.-una-identidad-reduce-la-incertidumbre-de-la-expresión" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-15.-una-identidad-reduce-la-incertidumbre-de-la-expresión">Ejercicio 15. Una identidad reduce la incertidumbre de la expresión</h3>
+<p>Como <span class="math inline">\(x\ge2&gt;0\)</span>, el cociente <span class="math inline">\(x/x\)</span> está definido y vale uno para todos los valores permitidos; su conjunto de valores es <span class="math inline">\(\{1\}\)</span>. Si elegimos separadamente numerador y denominador en <span class="math inline">\([2,3]\)</span>, el intervalo de cocientes será <span class="math inline">\([2/3,3/2]\)</span>. Ese intervalo es seguro pero mucho más amplio para la expresión original. La simplificación usa que se trata del mismo valor no nulo, no de dos mediciones sin relación.</p>
+</section>
+<section id="ejercicio-16.-una-cifra-anual-ligada-a-sus-supuestos" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-16.-una-cifra-anual-ligada-a-sus-supuestos">Ejercicio 16. Una cifra anual ligada a sus supuestos</h3>
+<p>El modelo central da <span class="math inline">\(50\cdot30=1500\)</span> páginas por año. Con los límites propuestos, el mínimo es <span class="math inline">\(40\cdot20=800\)</span> y el máximo <span class="math inline">\(60\cdot40=2400\)</span> páginas. Si el número de trabajos y el promedio de páginas por trabajo cumplen los intervalos, el total pertenece a <span class="math inline">\([800,2400]\)</span>. No hemos observado esa tirada anual ni asignado probabilidades a los valores del intervalo. La estimación central permite planificar una primera escala y los límites muestran qué cambios de los supuestos pueden importar.</p>
+</section>
+<section id="ejercicio-17.-comparar-plazos-mediante-fracciones" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17.-comparar-plazos-mediante-fracciones">Ejercicio 17. Comparar plazos mediante fracciones</h3>
+<p>El tiempo de viaje está entre <span class="math inline">\(178/92=89/46\)</span> y <span class="math inline">\(182/88=91/44\)</span> horas. El máximo supera dos horas porque <span class="math inline">\(91&gt;88\)</span>, por lo que ese plazo no basta como garantía. Dos horas y cinco minutos son <span class="math inline">\(2+5/60=25/12\)</span> horas. El máximo es menor que ese plazo, pues <span class="math inline">\(91\cdot12=1092&lt;1100=25\cdot44\)</span>. Así, dos horas y cinco minutos bastan bajo los supuestos del modelo sin detenciones y con la rapidez media indicada.</p>
+</section>
+<section id="ejercicio-18.-comprar-para-el-extremo-que-exige-más" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18.-comprar-para-el-extremo-que-exige-más">Ejercicio 18. Comprar para el extremo que exige más</h3>
+<p>Cinco piezas tienen longitud total diez metros. No cubren el valor admisible <span class="math inline">\(10{,}02\)</span>, aunque podrían cubrir otras longitudes del intervalo. La garantía exige <span class="math inline">\(2n\ge10{,}02\)</span>, de donde <span class="math inline">\(n\ge5{,}01\)</span>. El menor entero permitido es seis, con doce metros en total y corte del sobrante. El resultado no es el entero más cercano al cociente: es el menor entero que satisface la desigualdad de cobertura.</p>
+</section>
+<section id="ejercicio-19.-cambiar-el-nombre-del-punto-no-cambia-el-mecanismo" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19.-cambiar-el-nombre-del-punto-no-cambia-el-mecanismo">Ejercicio 19. Cambiar el nombre del punto no cambia el mecanismo</h3>
+<p>En el primer intervalo, <span class="math inline">\(x-2\in[0{,}99,1{,}01]\)</span>, así que <span class="math inline">\(g(x)\in[100/101,100/99]\)</span>. En el segundo, <span class="math inline">\(x-2\in[0{,}09,0{,}11]\)</span> y <span class="math inline">\(g(x)\in[100/11,100/9]\)</span>. Los valores centrales son uno y diez, con desviaciones máximas <span class="math inline">\(1/99\)</span> y <span class="math inline">\(10/9\)</span>. La segunda entrada se acerca más al punto dos, donde el denominador se anula. Esa proximidad amplifica la perturbación antes de que intervenga cualquier redondeo de cálculo.</p>
+</section>
+<section id="ejercicio-20.-conservar-la-pequeña-diferencia-por-otro-camino" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-20.-conservar-la-pequeña-diferencia-por-otro-camino">Ejercicio 20. Conservar la pequeña diferencia por otro camino</h3>
+<p><span class="math inline">\(100^2&lt;10\,001\)</span> y <span class="math inline">\(100{,}005^2=10\,001{,}000025&gt;10\,001\)</span> muestran que la raíz se redondea a <span class="math inline">\(100{,}00\)</span> a centésimas. La resta con cien produciría cero. El conjugado da la identidad <span class="math inline">\(\sqrt{10\,001}-100=1/(\sqrt{10\,001}+100)\)</span>, cuyo denominador es positivo. Las cotas estipuladas conducen a <span class="math inline">\(1/200{,}01&lt;d&lt;1/200=0{,}005\)</span>. Usar la raíz redondeada en esta fórmula produce <span class="math inline">\(0{,}005\)</span>, una aproximación por exceso próxima al intervalo. La identidad mantiene la diferencia pequeña que el primer redondeo había borrado.</p>
+</section>
+<section id="ejercicio-21.-cuándo-se-introduce-cada-error" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-21.-cuándo-se-introduce-cada-error">Ejercicio 21. Cuándo se introduce cada error</h3>
+<p>La suma exacta es <span class="math inline">\(8\cdot0{,}126=1{,}008\)</span>. Cada término redondeado a centésimas vale <span class="math inline">\(0{,}13\)</span>, de modo que sumar después da <span class="math inline">\(1{,}04\)</span>, con error absoluto <span class="math inline">\(0{,}032\)</span>. La cota general es ocho veces <span class="math inline">\(0{,}005\)</span>, es decir, <span class="math inline">\(0{,}04\)</span>, y el error calculado la respeta. Redondear la suma exacta al final da <span class="math inline">\(1{,}01\)</span>, con error <span class="math inline">\(0{,}002\)</span>. Este último cumple la cota <span class="math inline">\(0{,}005\)</span> correspondiente a un único redondeo a centésimas. La comparación se refiere siempre a la suma exacta, no a la diferencia entre los dos resultados aproximados.</p>
+</section>
+<section id="ejercicio-22.-una-cota-que-conserva-el-sentido-del-error" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22.-una-cota-que-conserva-el-sentido-del-error">Ejercicio 22. Una cota que conserva el sentido del error</h3>
+<p>Con <span class="math inline">\(t=0{,}02\)</span>, la fórmula aproximada es <span class="math inline">\(1+t/2=1{,}01\)</span>. Su exceso respecto de la raíz está entre cero y <span class="math inline">\(t^2/8=0{,}00005\)</span>. Por tanto <span class="math inline">\(1{,}00995\le\sqrt{1{,}02}\le1{,}01\)</span>. La aproximación es por exceso, y el error absoluto no supera cinco cienmilésimas. La cota procede de una identidad válida para todo <span class="math inline">\(t\ge0\)</span>; sustituir el valor concreto solo especializa la garantía ya demostrada.</p>
+</section>
+<section id="ejercicio-23.-elegir-el-número-de-bisecciones-antes-de-calcular" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-23.-elegir-el-número-de-bisecciones-antes-de-calcular">Ejercicio 23. Elegir el número de bisecciones antes de calcular</h3>
+<p>El ancho inicial es <span class="math inline">\(0{,}1\)</span> y la cota del error del punto medio tras <span class="math inline">\(n\)</span> bisecciones es <span class="math inline">\(0{,}1/2^{n+1}\)</span>. Necesitamos que no supere <span class="math inline">\(0{,}0005\)</span>, lo que equivale a <span class="math inline">\(2^n\ge100\)</span>. Como <span class="math inline">\(2^6=64&lt;100\)</span> y <span class="math inline">\(2^7=128\ge100\)</span>, bastan siete pasos; la cota será <span class="math inline">\(0{,}000390625\)</span>. En el primero probamos el punto medio <span class="math inline">\(2{,}25\)</span>. Su cuadrado es <span class="math inline">\(5{,}0625&gt;5\)</span>, por lo que conservamos <span class="math inline">\([2{,}2,2{,}25]\)</span>. El criterio de parada se decidió mediante el ancho, sin conocer todavía la aproximación final.</p>
+</section>
+<section id="ejercicio-24.-saber-cuándo-falta-información" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-24.-saber-cuándo-falta-información">Ejercicio 24. Saber cuándo falta información</h3>
+<p>Los intervalos son <span class="math inline">\([4{,}97,5{,}03]\)</span> y <span class="math inline">\([5{,}01,5{,}07]\)</span>. La diferencia <span class="math inline">\(B-A\)</span> está en <span class="math inline">\([-0{,}02,0{,}10]\)</span> y no garantiza un signo positivo. Los valores <span class="math inline">\(A=5{,}03\)</span> y <span class="math inline">\(B=5{,}01\)</span> respetan los datos y dan <span class="math inline">\(B&lt;A\)</span>. Las dos semianchuras suman <span class="math inline">\(0{,}06\)</span>; para garantizar <span class="math inline">\(B&gt;A\)</span>, la diferencia de los centros tendría que ser estrictamente mayor que <span class="math inline">\(0{,}06\)</span>. Con una separación igual solo se garantizaría una diferencia no negativa. Obtener una comparación estricta requeriría medidas más ajustadas o centros más separados.</p>
+</section>
+</section>
+<section id="diagnóstico-de-salida" class="level2">
+<h2 class="anchored" data-anchor-id="diagnóstico-de-salida">Diagnóstico de salida</h2>
+<p>Explica qué información adicional aporta una cota a la escritura <span class="math inline">\(\sqrt7\approx2{,}65\)</span>. Después construye un ejemplo en que un intervalo de denominadores se acerque al cero y otro en que una identidad permita calcular mejor una diferencia pequeña. En el primero debes poder señalar la información insuficiente; en el segundo, el paso del procedimiento que perdía precisión.</p>
+<p>Al resolver un problema de medida, conserva junto a la respuesta los supuestos y las unidades que la sostienen. Si la incertidumbre permite decisiones opuestas, una cifra central no basta para elegir entre ellas. El álgebra que estudiaremos a continuación ofrecerá más maneras de transformar expresiones y reconocer identidades; cada transformación podrá examinarse tanto por su valor exacto como por su comportamiento al calcular con aproximaciones.</p>
+<hr>
+<p><a href="capitulo-03.html">← Potencias, raíces y notación científica</a> · <a href="index.html">Índice del libro</a> · <a href="capitulo-05.html">Siguiente →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
