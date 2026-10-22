@@ -1,0 +1,40 @@
+name: Física preuniversitaria QA
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'libros/otros/fisica-preuniversitaria/**'
+      - 'assets/books/fisica-preuniversitaria/**'
+      - 'tests/fp_web_browser.py'
+      - '.github/workflows/fp-web-check.yml'
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Check publication whitespace
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: git diff --check "$BASE_SHA"...HEAD
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.10.18
+      - name: Render book
+        run: quarto render libros/otros/fisica-preuniversitaria
+      - name: Install browser QA
+        run: |
+          python3 -m pip install playwright==1.56.0
+          python3 -m playwright install --with-deps chromium
+      - name: Check all chapters on phone and desktop
+        run: python3 tests/fp_web_browser.py
+      - name: Preserve visual evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fp-web-visual-qa
+          path: .ma-build/fp-visual/
+          include-hidden-files: true
+          retention-days: 7
+          if-no-files-found: error
