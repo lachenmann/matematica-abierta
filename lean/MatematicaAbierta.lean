@@ -31,6 +31,7 @@ import MatematicaAbierta.Continuo.CompletitudCertificadosSuma
 import MatematicaAbierta.Continuo.IndicesSumaIrracional
 import MatematicaAbierta.MCL.U00.L01_Proposiciones
 import MatematicaAbierta.MCL.U00.L02_Igualdad
+import MatematicaAbierta.TLOG.CH01
 
 /-!
 # Matemática Abierta: biblioteca formal
