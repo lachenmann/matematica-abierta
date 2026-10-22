@@ -3,7 +3,7 @@ title: "Energía potencial, fuerzas conservativas y estabilidad"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 13"
 author: "A. Peña"
 description: "Capítulo 13 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0353
+archived-content-id: MA-BCH-0353
 source-id: FISPM-T1-C13
 editorial-id: FPM-I-13
 content-type: book-chapter

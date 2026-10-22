@@ -3,7 +3,7 @@ title: "Tiempo, movimiento y curvas"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 5"
 author: "A. Peña"
 description: "Capítulo 5 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0345
+archived-content-id: MA-BCH-0345
 source-id: FISPM-T1-C05
 editorial-id: FPM-I-05
 content-type: book-chapter

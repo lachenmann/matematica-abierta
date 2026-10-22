@@ -3,7 +3,7 @@ title: "Dispersión clásica y reducción efectiva"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 19"
 author: "A. Peña"
 description: "Capítulo 19 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0359
+archived-content-id: MA-BCH-0359
 source-id: FISPM-T1-C19
 editorial-id: FPM-I-19
 content-type: book-chapter

@@ -3,7 +3,7 @@ title: "Teorías físicas: fenómenos, modelos y leyes"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 1"
 author: "A. Peña"
 description: "Capítulo 1 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0009
+archived-content-id: MA-BCH-0009
 source-id: FISPM-T1-C01
 editorial-id: FPM-I-01
 content-type: book-chapter

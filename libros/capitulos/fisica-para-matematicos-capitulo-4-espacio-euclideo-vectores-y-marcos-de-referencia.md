@@ -3,7 +3,7 @@ title: "Espacio euclídeo, vectores y marcos de referencia"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 4"
 author: "A. Peña"
 description: "Capítulo 4 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0344
+archived-content-id: MA-BCH-0344
 source-id: FISPM-T1-C04
 editorial-id: FPM-I-04
 content-type: book-chapter

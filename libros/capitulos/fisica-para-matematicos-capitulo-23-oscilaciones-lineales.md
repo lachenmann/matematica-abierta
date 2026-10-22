@@ -3,7 +3,7 @@ title: "Oscilaciones lineales"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 23"
 author: "A. Peña"
 description: "Capítulo 23 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0363
+archived-content-id: MA-BCH-0363
 source-id: FISPM-T1-C23
 editorial-id: FPM-I-23
 content-type: book-chapter

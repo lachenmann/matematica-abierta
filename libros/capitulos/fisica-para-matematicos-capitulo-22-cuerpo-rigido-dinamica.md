@@ -3,7 +3,7 @@ title: "Cuerpo rígido: dinámica"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 22"
 author: "A. Peña"
 description: "Capítulo 22 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0362
+archived-content-id: MA-BCH-0362
 source-id: FISPM-T1-C22
 editorial-id: FPM-I-22
 content-type: book-chapter

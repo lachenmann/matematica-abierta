@@ -3,7 +3,7 @@ title: "Configuración, trabajo virtual y principios variacionales"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 25"
 author: "A. Peña"
 description: "Capítulo 25 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0365
+archived-content-id: MA-BCH-0365
 source-id: FISPM-T1-C25
 editorial-id: FPM-I-25
 content-type: book-chapter

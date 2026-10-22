@@ -3,7 +3,7 @@ title: "Gravitación newtoniana"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 16"
 author: "A. Peña"
 description: "Capítulo 16 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0356
+archived-content-id: MA-BCH-0356
 source-id: FISPM-T1-C16
 editorial-id: FPM-I-16
 content-type: book-chapter

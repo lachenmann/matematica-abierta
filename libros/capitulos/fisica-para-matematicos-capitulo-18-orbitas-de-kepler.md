@@ -3,7 +3,7 @@ title: "Órbitas de Kepler"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 18"
 author: "A. Peña"
 description: "Capítulo 18 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0358
+archived-content-id: MA-BCH-0358
 source-id: FISPM-T1-C18
 editorial-id: FPM-I-18
 content-type: book-chapter

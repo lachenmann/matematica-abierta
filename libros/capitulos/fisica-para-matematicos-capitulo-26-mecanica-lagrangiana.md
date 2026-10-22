@@ -3,7 +3,7 @@ title: "Mecánica lagrangiana"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 26"
 author: "A. Peña"
 description: "Capítulo 26 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0366
+archived-content-id: MA-BCH-0366
 source-id: FISPM-T1-C26
 editorial-id: FPM-I-26
 content-type: book-chapter

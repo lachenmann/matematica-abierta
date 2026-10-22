@@ -3,7 +3,7 @@ title: "Corchetes de Poisson y estructura simpléctica elemental"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 29"
 author: "A. Peña"
 description: "Capítulo 29 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0369
+archived-content-id: MA-BCH-0369
 source-id: FISPM-T1-C29
 editorial-id: FPM-I-29
 content-type: book-chapter

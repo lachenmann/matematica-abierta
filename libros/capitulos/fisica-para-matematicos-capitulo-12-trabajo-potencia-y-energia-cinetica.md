@@ -3,7 +3,7 @@ title: "Trabajo, potencia y energía cinética"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 12"
 author: "A. Peña"
 description: "Capítulo 12 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0352
+archived-content-id: MA-BCH-0352
 source-id: FISPM-T1-C12
 editorial-id: FPM-I-12
 content-type: book-chapter

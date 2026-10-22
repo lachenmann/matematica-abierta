@@ -1,7 +1,7 @@
 ---
 title: "Física para matemáticos"
 description: "Curso-libro autocontenido de física para estudiantes de matemática pura, organizado alrededor de la relación entre fenómeno físico, modelo matemático y estructura matemática."
-content-id: MA-BOK-0005
+archived-content-id: MA-BOK-0005
 content-type: book
 collection: PM-FIS
 status: published

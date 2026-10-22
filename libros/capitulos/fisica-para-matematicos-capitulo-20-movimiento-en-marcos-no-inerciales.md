@@ -3,7 +3,7 @@ title: "Movimiento en marcos no inerciales"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 20"
 author: "A. Peña"
 description: "Capítulo 20 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0360
+archived-content-id: MA-BCH-0360
 source-id: FISPM-T1-C20
 editorial-id: FPM-I-20
 content-type: book-chapter

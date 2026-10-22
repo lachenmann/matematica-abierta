@@ -3,7 +3,7 @@ title: "Cinemática en una dimensión"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 7"
 author: "A. Peña"
 description: "Capítulo 7 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0347
+archived-content-id: MA-BCH-0347
 source-id: FISPM-T1-C07
 editorial-id: FPM-I-07
 content-type: book-chapter

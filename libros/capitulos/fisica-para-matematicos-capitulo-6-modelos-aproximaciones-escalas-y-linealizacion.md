@@ -3,7 +3,7 @@ title: "Modelos, aproximaciones, escalas y linealización"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 6"
 author: "A. Peña"
 description: "Capítulo 6 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0346
+archived-content-id: MA-BCH-0346
 source-id: FISPM-T1-C06
 editorial-id: FPM-I-06
 content-type: book-chapter

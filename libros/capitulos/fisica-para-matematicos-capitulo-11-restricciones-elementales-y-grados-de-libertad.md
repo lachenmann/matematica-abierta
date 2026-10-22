@@ -3,7 +3,7 @@ title: "Restricciones elementales y grados de libertad"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 11"
 author: "A. Peña"
 description: "Capítulo 11 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0351
+archived-content-id: MA-BCH-0351
 source-id: FISPM-T1-C11
 editorial-id: FPM-I-11
 content-type: book-chapter

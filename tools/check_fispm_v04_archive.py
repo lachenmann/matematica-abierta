@@ -24,7 +24,7 @@ def main():
  sources={r['chapter']:(ROOT/r['path']).read_text(encoding='utf-8') for r in rows}
  for r in rows:
   s=sources[r['chapter']]
-  assert 'content-id: '+r['content_id'] in s and 'source-id: '+r['source_id'] in s
+  assert 'archived-content-id: '+r['content_id'] in s and 'source-id: '+r['source_id'] in s
   assert '[[' not in s and '[!' not in s
   assert not re.search(r'\\(?:parbox|linewidth|centering)\b',s),(r['chapter'],'print-only LaTeX layout command in web source')
   assert not re.search(r'PRIVATE|QA_PASS|EDITORIAL_PROVISIONAL_CLOSE|MASTER_CANONICO',s)

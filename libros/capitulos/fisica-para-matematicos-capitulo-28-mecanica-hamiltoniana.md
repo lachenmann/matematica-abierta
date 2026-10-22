@@ -3,7 +3,7 @@ title: "Mecánica hamiltoniana"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 28"
 author: "A. Peña"
 description: "Capítulo 28 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0368
+archived-content-id: MA-BCH-0368
 source-id: FISPM-T1-C28
 editorial-id: FPM-I-28
 content-type: book-chapter

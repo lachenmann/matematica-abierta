@@ -3,7 +3,7 @@ title: "Magnitudes, unidades y análisis dimensional"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 2"
 author: "A. Peña"
 description: "Capítulo 2 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0031
+archived-content-id: MA-BCH-0031
 source-id: FISPM-T1-C02
 editorial-id: FPM-I-02
 content-type: book-chapter

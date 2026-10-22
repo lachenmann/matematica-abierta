@@ -3,7 +3,7 @@ title: "Leyes de Newton y estructura de la dinámica"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 9"
 author: "A. Peña"
 description: "Capítulo 9 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0349
+archived-content-id: MA-BCH-0349
 source-id: FISPM-T1-C09
 editorial-id: FPM-I-09
 content-type: book-chapter

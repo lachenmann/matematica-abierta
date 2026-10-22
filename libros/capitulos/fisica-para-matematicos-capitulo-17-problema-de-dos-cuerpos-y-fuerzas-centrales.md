@@ -3,7 +3,7 @@ title: "Problema de dos cuerpos y fuerzas centrales"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 17"
 author: "A. Peña"
 description: "Capítulo 17 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0357
+archived-content-id: MA-BCH-0357
 source-id: FISPM-T1-C17
 editorial-id: FPM-I-17
 content-type: book-chapter

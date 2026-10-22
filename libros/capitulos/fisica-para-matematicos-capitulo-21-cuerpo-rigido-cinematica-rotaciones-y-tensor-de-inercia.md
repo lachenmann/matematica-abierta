@@ -3,7 +3,7 @@ title: "Cuerpo rígido: cinemática, rotaciones y tensor de inercia"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 21"
 author: "A. Peña"
 description: "Capítulo 21 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0361
+archived-content-id: MA-BCH-0361
 source-id: FISPM-T1-C21
 editorial-id: FPM-I-21
 content-type: book-chapter

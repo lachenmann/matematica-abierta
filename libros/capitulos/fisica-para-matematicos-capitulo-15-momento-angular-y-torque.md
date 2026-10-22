@@ -3,7 +3,7 @@ title: "Momento angular y torque"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 15"
 author: "A. Peña"
 description: "Capítulo 15 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0355
+archived-content-id: MA-BCH-0355
 source-id: FISPM-T1-C15
 editorial-id: FPM-I-15
 content-type: book-chapter

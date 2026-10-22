@@ -605,4 +605,4 @@ Se conservan los IDs y URLs publicados de C00–C05. Se incorporan C06–C31, su
 
 | MA-BCH-0395 | book-chapter | FISPM-r20261021-C27 — Sistemas abiertos y transferencia de masa | `libros/capitulos/fisica-para-matematicos-27-sistemas-abiertos-y-transferencia-de-masa.md` | published |
 
-La edición FISPM v04 conserva sus IDs históricos cualificados por edición en el archivo. La edición r20261021 mantiene los IDs de sus unidades temáticas; MA-BCH-0009, MA-BCH-0031, MA-BCH-0344 y MA-BCH-0346 permanecen asociados a la edición archivada.
+La edición FISPM v04 conserva sus IDs históricos en archived-content-id, cualificados por edición en el archivo. La edición r20261021 mantiene los IDs de sus unidades temáticas; MA-BCH-0009, MA-BCH-0031, MA-BCH-0344 y MA-BCH-0346 permanecen asociados a la edición archivada.

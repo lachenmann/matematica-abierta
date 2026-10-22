@@ -3,7 +3,7 @@ title: "Momento lineal, impulso y centro de masa"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 14"
 author: "A. Peña"
 description: "Capítulo 14 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0354
+archived-content-id: MA-BCH-0354
 source-id: FISPM-T1-C14
 editorial-id: FPM-I-14
 content-type: book-chapter

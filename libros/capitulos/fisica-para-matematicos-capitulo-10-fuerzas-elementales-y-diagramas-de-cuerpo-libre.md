@@ -3,7 +3,7 @@ title: "Fuerzas elementales y diagramas de cuerpo libre"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 10"
 author: "A. Peña"
 description: "Capítulo 10 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0350
+archived-content-id: MA-BCH-0350
 source-id: FISPM-T1-C10
 editorial-id: FPM-I-10
 content-type: book-chapter

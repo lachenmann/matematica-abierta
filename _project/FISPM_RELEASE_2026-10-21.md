@@ -8,7 +8,7 @@ Contrato de esta entrega: 28 capítulos, 565 pares enunciado–solución, 200 fi
 
 Se consultaron directamente en Drive MA-STYLE 2.1, MA-PED 1.1 y MA-CALIBRO 3.2 antes de adaptar la edición. La auditoría editorial interna está completa; revisión externa y validación con estudiantes mantienen su estado pendiente. La canonización pública procede de la orden expresa del autor.
 
-Los IDs se conservan por unidad temática. Disipación y respuesta forzada y Sistemas abiertos reciben MA-BCH-0394 y MA-BCH-0395. Las identidades históricas de la v04 se conservan cualificadas por edición. El catálogo y los paquetes offline excluyen explícitamente `archive: true`; las páginas antiguas mantienen URLs y contenido, con aviso y navegación hacia su índice archivado. La portada canónica conserva MA-BOK-0005 y su URL.
+Los IDs se conservan por unidad temática. Disipación y respuesta forzada y Sistemas abiertos reciben MA-BCH-0394 y MA-BCH-0395. Las identidades históricas de la v04 se conservan en `archived-content-id`, cualificadas por edición; el campo activo `content-id` permanece globalmente único. El catálogo y los paquetes offline excluyen explícitamente `archive: true`; las páginas antiguas mantienen URLs y contenido, con aviso y navegación hacia su índice archivado. La portada canónica conserva MA-BOK-0005 y su URL.
 
 `data/fispm-tome-i-manifest.json` identifica capítulos, huellas, imágenes y descargas de la edición vigente. `data/fispm-tome-i-v04-archive.json` conserva el contrato previo. Las partes binarias de descarga se ensamblan y verifican mediante SHA-256 antes de publicar.
 

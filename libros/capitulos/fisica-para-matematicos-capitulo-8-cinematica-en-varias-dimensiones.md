@@ -3,7 +3,7 @@ title: "Cinemática en varias dimensiones"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 8"
 author: "A. Peña"
 description: "Capítulo 8 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0348
+archived-content-id: MA-BCH-0348
 source-id: FISPM-T1-C08
 editorial-id: FPM-I-08
 content-type: book-chapter

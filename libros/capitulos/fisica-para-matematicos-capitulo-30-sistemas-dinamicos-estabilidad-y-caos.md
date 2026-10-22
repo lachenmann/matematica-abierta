@@ -3,7 +3,7 @@ title: "Sistemas dinámicos, estabilidad y caos"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 30"
 author: "A. Peña"
 description: "Capítulo 30 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0370
+archived-content-id: MA-BCH-0370
 source-id: FISPM-T1-C30
 editorial-id: FPM-I-30
 content-type: book-chapter

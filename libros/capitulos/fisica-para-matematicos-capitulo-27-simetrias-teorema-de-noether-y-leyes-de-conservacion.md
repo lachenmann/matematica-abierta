@@ -3,7 +3,7 @@ title: "Simetrías, teorema de Noether y leyes de conservación"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 27"
 author: "A. Peña"
 description: "Capítulo 27 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0367
+archived-content-id: MA-BCH-0367
 source-id: FISPM-T1-C27
 editorial-id: FPM-I-27
 content-type: book-chapter

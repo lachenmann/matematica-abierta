@@ -3,7 +3,7 @@ title: "Oscilaciones acopladas y modos normales"
 subtitle: "Física para matemáticos · Tomo I · Capítulo 24"
 author: "A. Peña"
 description: "Capítulo 24 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas."
-content-id: MA-BCH-0364
+archived-content-id: MA-BCH-0364
 source-id: FISPM-T1-C24
 editorial-id: FPM-I-24
 content-type: book-chapter
