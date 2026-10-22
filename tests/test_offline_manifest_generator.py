@@ -113,6 +113,33 @@ class OfflineManifestGeneratorTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'unreviewed canonical script'):
                 CanonicalAssets(site).chapter('/libros/capitulos/image.html', 'MA-BCH-0343')
 
+    def test_hosted_pwa_manifest_is_excluded_from_file_reader(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            chapter = site / 'libros/capitulos/pwa.html'
+            chapter.parent.mkdir(parents=True)
+            (site / 'theme.css').write_text('body { color: black; }')
+            chapter.write_text(
+                '<html lang="es"><head>'
+                '<script id="ma-math-font-ready">window.MathJax={startup:{}};</script>'
+                '<link rel="manifest" href="/manifest.webmanifest">'
+                '<link rel="stylesheet" href="../../theme.css">'
+                '</head><body><script id="quarto-html-before-body">window.theme=true;</script>'
+                '<div id="quarto-content">'
+                '<main id="quarto-document-content"><p>Contenido del libro</p>'
+                '</main></div></body></html>')
+            assets = CanonicalAssets(site)
+            html = assets.chapter('/libros/capitulos/pwa.html', 'MA-BCH-0009').decode()
+            self.assertNotIn('manifest.webmanifest', html)
+            self.assertNotIn('rel="manifest"', html)
+            self.assertIn('Contenido del libro', html)
+            self.assertIn('rel="stylesheet"', html)
+            self.assertEqual(list(assets.assets.values()), [b'body { color: black; }'])
+            # The resource allowlist stays closed; only the hosted link is omitted.
+            (site / 'manifest.webmanifest').write_text('{}')
+            with self.assertRaisesRegex(ValueError, 'unsupported canonical media'):
+                assets.resource('/manifest.webmanifest', chapter.as_uri())
+
     def test_runtime_distribution_integrity_is_checked_before_extraction(self):
         with tempfile.TemporaryDirectory() as tmp, patch('canonical_offline.download', return_value=b'corrupt archive'):
             with self.assertRaisesRegex(ValueError, 'integrity failed'):
