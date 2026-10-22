@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 7 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>Trabajo y energía cinética – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#acumular-el-efecto-de-la-fuerza-durante-el-recorrido" id="toc-acumular-el-efecto-de-la-fuerza-durante-el-recorrido" class="nav-link active" data-scroll-target="#acumular-el-efecto-de-la-fuerza-durante-el-recorrido">Acumular el efecto de la fuerza durante el recorrido</a></li>
+  <li><a href="#la-detención-después-de-retirar-el-tirón" id="toc-la-detención-después-de-retirar-el-tirón" class="nav-link" data-scroll-target="#la-detención-después-de-retirar-el-tirón">La detención después de retirar el tirón</a></li>
+  <li><a href="#qué-llamamos-trabajo" id="toc-qué-llamamos-trabajo" class="nav-link" data-scroll-target="#qué-llamamos-trabajo">Qué llamamos trabajo</a></li>
+  <li><a href="#la-cantidad-que-cambia-cuando-hay-trabajo-neto" id="toc-la-cantidad-que-cambia-cuando-hay-trabajo-neto" class="nav-link" data-scroll-target="#la-cantidad-que-cambia-cuando-hay-trabajo-neto">La cantidad que cambia cuando hay trabajo neto</a></li>
+  <li><a href="#resolver-una-rapidez-y-reconocer-el-tramo-que-existe" id="toc-resolver-una-rapidez-y-reconocer-el-tramo-que-existe" class="nav-link" data-scroll-target="#resolver-una-rapidez-y-reconocer-el-tramo-que-existe">Resolver una rapidez y reconocer el tramo que existe</a></li>
+  <li><a href="#un-resorte-como-fuerza-variable" id="toc-un-resorte-como-fuerza-variable" class="nav-link" data-scroll-target="#un-resorte-como-fuerza-variable">Un resorte como fuerza variable</a></li>
+  <li><a href="#sumar-energías-de-cuerpos-conectados" id="toc-sumar-energías-de-cuerpos-conectados" class="nav-link" data-scroll-target="#sumar-energías-de-cuerpos-conectados">Sumar energías de cuerpos conectados</a></li>
+  <li><a href="#la-rapidez-con-que-se-realiza-trabajo" id="toc-la-rapidez-con-que-se-realiza-trabajo" class="nav-link" data-scroll-target="#la-rapidez-con-que-se-realiza-trabajo">La rapidez con que se realiza trabajo</a></li>
+  <li><a href="#lo-que-una-medición-de-trabajo-permite-inferir" id="toc-lo-que-una-medición-de-trabajo-permite-inferir" class="nav-link" data-scroll-target="#lo-que-una-medición-de-trabajo-permite-inferir">Lo que una medición de trabajo permite inferir</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-7-1" id="toc-ejercicio-7-1" class="nav-link" data-scroll-target="#ejercicio-7-1">1. El tirón oblicuo</a></li>
+  <li><a href="#ejercicio-7-2" id="toc-ejercicio-7-2" class="nav-link" data-scroll-target="#ejercicio-7-2">2. El trabajo de un agente y el trabajo neto</a></li>
+  <li><a href="#ejercicio-7-3" id="toc-ejercicio-7-3" class="nav-link" data-scroll-target="#ejercicio-7-3">3. Elegir una fuerza representativa</a></li>
+  <li><a href="#ejercicio-7-4" id="toc-ejercicio-7-4" class="nav-link" data-scroll-target="#ejercicio-7-4">4. Un perfil con áreas positivas y negativas</a></li>
+  <li><a href="#ejercicio-7-5" id="toc-ejercicio-7-5" class="nav-link" data-scroll-target="#ejercicio-7-5">5. Una energía final imposible</a></li>
+  <li><a href="#ejercicio-7-6" id="toc-ejercicio-7-6" class="nav-link" data-scroll-target="#ejercicio-7-6">6. Dos métodos sobre el mismo recorrido</a></li>
+  <li><a href="#ejercicio-7-7" id="toc-ejercicio-7-7" class="nav-link" data-scroll-target="#ejercicio-7-7">7. Una guía curva y el peso</a></li>
+  <li><a href="#ejercicio-7-8" id="toc-ejercicio-7-8" class="nav-link" data-scroll-target="#ejercicio-7-8">8. Los mismos extremos, otro recorrido</a></li>
+  <li><a href="#ejercicio-7-9" id="toc-ejercicio-7-9" class="nav-link" data-scroll-target="#ejercicio-7-9">9. La primera compresión máxima</a></li>
+  <li><a href="#ejercicio-7-10" id="toc-ejercicio-7-10" class="nav-link" data-scroll-target="#ejercicio-7-10">10. Mover un resorte sin cambiar la rapidez</a></li>
+  <li><a href="#ejercicio-7-11" id="toc-ejercicio-7-11" class="nav-link" data-scroll-target="#ejercicio-7-11">11. Subir por un plano con rozamiento</a></li>
+  <li><a href="#ejercicio-7-12" id="toc-ejercicio-7-12" class="nav-link" data-scroll-target="#ejercicio-7-12">12. Rozamiento que hace trabajo positivo</a></li>
+  <li><a href="#ejercicio-7-13" id="toc-ejercicio-7-13" class="nav-link" data-scroll-target="#ejercicio-7-13">13. Trabajo de la fricción estática</a></li>
+  <li><a href="#ejercicio-7-14" id="toc-ejercicio-7-14" class="nav-link" data-scroll-target="#ejercicio-7-14">14. Del arco del péndulo a la tensión</a></li>
+  <li><a href="#ejercicio-7-15" id="toc-ejercicio-7-15" class="nav-link" data-scroll-target="#ejercicio-7-15">15. Los trabajos de la tensión se reparten</a></li>
+  <li><a href="#ejercicio-7-16" id="toc-ejercicio-7-16" class="nav-link" data-scroll-target="#ejercicio-7-16">16. Potencia de un ascenso uniforme</a></li>
+  <li><a href="#ejercicio-7-17" id="toc-ejercicio-7-17" class="nav-link" data-scroll-target="#ejercicio-7-17">17. Potencia media e instantánea</a></li>
+  <li><a href="#ejercicio-7-18" id="toc-ejercicio-7-18" class="nav-link" data-scroll-target="#ejercicio-7-18">18. Igual trabajo, distinto tiempo</a></li>
+  <li><a href="#ejercicio-7-19" id="toc-ejercicio-7-19" class="nav-link" data-scroll-target="#ejercicio-7-19">19. Inferir un coeficiente con cotas</a></li>
+  <li><a href="#ejercicio-7-20" id="toc-ejercicio-7-20" class="nav-link" data-scroll-target="#ejercicio-7-20">20. Dos sentidos de trabajo nulo</a></li>
+  <li><a href="#ejercicio-7-21" id="toc-ejercicio-7-21" class="nav-link" data-scroll-target="#ejercicio-7-21">21. Una energía nula en un extremo inaccesible</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#solucion-7-1" id="toc-solucion-7-1" class="nav-link" data-scroll-target="#solucion-7-1">1. El tirón oblicuo</a></li>
+  <li><a href="#solucion-7-2" id="toc-solucion-7-2" class="nav-link" data-scroll-target="#solucion-7-2">2. El trabajo de un agente y el trabajo neto</a></li>
+  <li><a href="#solucion-7-3" id="toc-solucion-7-3" class="nav-link" data-scroll-target="#solucion-7-3">3. Elegir una fuerza representativa</a></li>
+  <li><a href="#solucion-7-4" id="toc-solucion-7-4" class="nav-link" data-scroll-target="#solucion-7-4">4. Un perfil con áreas positivas y negativas</a></li>
+  <li><a href="#solucion-7-5" id="toc-solucion-7-5" class="nav-link" data-scroll-target="#solucion-7-5">5. Una energía final imposible</a></li>
+  <li><a href="#solucion-7-6" id="toc-solucion-7-6" class="nav-link" data-scroll-target="#solucion-7-6">6. Dos métodos sobre el mismo recorrido</a></li>
+  <li><a href="#solucion-7-7" id="toc-solucion-7-7" class="nav-link" data-scroll-target="#solucion-7-7">7. Una guía curva y el peso</a></li>
+  <li><a href="#solucion-7-8" id="toc-solucion-7-8" class="nav-link" data-scroll-target="#solucion-7-8">8. Los mismos extremos, otro recorrido</a></li>
+  <li><a href="#solucion-7-9" id="toc-solucion-7-9" class="nav-link" data-scroll-target="#solucion-7-9">9. La primera compresión máxima</a></li>
+  <li><a href="#solucion-7-10" id="toc-solucion-7-10" class="nav-link" data-scroll-target="#solucion-7-10">10. Mover un resorte sin cambiar la rapidez</a></li>
+  <li><a href="#solucion-7-11" id="toc-solucion-7-11" class="nav-link" data-scroll-target="#solucion-7-11">11. Subir por un plano con rozamiento</a></li>
+  <li><a href="#solucion-7-12" id="toc-solucion-7-12" class="nav-link" data-scroll-target="#solucion-7-12">12. Rozamiento que hace trabajo positivo</a></li>
+  <li><a href="#solucion-7-13" id="toc-solucion-7-13" class="nav-link" data-scroll-target="#solucion-7-13">13. Trabajo de la fricción estática</a></li>
+  <li><a href="#solucion-7-14" id="toc-solucion-7-14" class="nav-link" data-scroll-target="#solucion-7-14">14. Del arco del péndulo a la tensión</a></li>
+  <li><a href="#solucion-7-15" id="toc-solucion-7-15" class="nav-link" data-scroll-target="#solucion-7-15">15. Los trabajos de la tensión se reparten</a></li>
+  <li><a href="#solucion-7-16" id="toc-solucion-7-16" class="nav-link" data-scroll-target="#solucion-7-16">16. Potencia de un ascenso uniforme</a></li>
+  <li><a href="#solucion-7-17" id="toc-solucion-7-17" class="nav-link" data-scroll-target="#solucion-7-17">17. Potencia media e instantánea</a></li>
+  <li><a href="#solucion-7-18" id="toc-solucion-7-18" class="nav-link" data-scroll-target="#solucion-7-18">18. Igual trabajo, distinto tiempo</a></li>
+  <li><a href="#solucion-7-19" id="toc-solucion-7-19" class="nav-link" data-scroll-target="#solucion-7-19">19. Inferir un coeficiente con cotas</a></li>
+  <li><a href="#solucion-7-20" id="toc-solucion-7-20" class="nav-link" data-scroll-target="#solucion-7-20">20. Dos sentidos de trabajo nulo</a></li>
+  <li><a href="#solucion-7-21" id="toc-solucion-7-21" class="nav-link" data-scroll-target="#solucion-7-21">21. Una energía nula en un extremo inaccesible</a></li>
+  </ul></li>
+  <li><a href="#lecturas-de-apoyo" id="toc-lecturas-de-apoyo" class="nav-link" data-scroll-target="#lecturas-de-apoyo">Lecturas de apoyo</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Trabajo y energía cinética</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 7</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 7 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-06-cuerpos-conectados-y-restricciones.html">← 6. Cuerpos conectados y restricciones</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-08-potencial-equilibrio-y-estabilidad.html">8. Potencial, equilibrio y estabilidad →</a></p>
+<p>Un carro de dos kilogramos cruza una marca del riel con rapidez de dos metros por segundo. Durante los cuatro metros siguientes recibe un tirón horizontal que se debilita al avanzar: comienza en doce newtons y disminuye dos newtons por cada metro recorrido. El contacto ofrece una resistencia de cuatro newtons, opuesta al deslizamiento. Queremos conocer la rapidez del carro al terminar ese tramo y la distancia adicional que recorrerá si allí se retira el tirón.</p>
+<p>Podríamos intentar encontrar la posición en función del tiempo. La aceleración, sin embargo, cambia con la posición, de modo que las fórmulas de aceleración constante no describen el primer tramo. La pregunta que hicimos pide comparar dos lugares del recorrido. Conviene buscar una relación que use directamente la fuerza y el desplazamiento entre esos lugares.</p>
+<p>Tomemos el laboratorio como marco inercial y el carro como una partícula de masa constante <span class="math inline">\(m=2\,\mathrm{kg}\)</span>. El eje <span class="math inline">\(x\)</span> apunta en el sentido inicial de movimiento y su origen es la primera marca. El riel es horizontal y fijo. Usaremos <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span>; el peso y la normal se equilibran verticalmente. La resistencia representa rozamiento cinético con <span class="math inline">\(\mu_k=0{,}20\)</span>, pues <span class="math inline">\(\mu_kmg=4\,\mathrm N\)</span>. El carro ya está deslizando al entrar en el tramo, así que no hay que decidir cómo arrancó desde el reposo. El modelo omite el aire, la rotación y cualquier deformación apreciable del carro.</p>
+<p>Mientras <span class="math inline">\(0\leq x\leq4\,\mathrm m\)</span> y la velocidad sea positiva, el tirón y la fuerza neta tienen componentes</p>
+<p><span class="math display">\[
+F(x)=12\,\mathrm N-(2\,\mathrm{N/m})x,
+\qquad F_{\mathrm{net},x}(x)=8\,\mathrm N-(2\,\mathrm{N/m})x.
+\]</span></p>
+<figure id="fig-fispm-r20261021-7-1" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/trabajo_carro.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="../../assets/books/fispm/r20261021/trabajo_carro.svg" alt="El carro se desplaza a la derecha sobre un riel fijo; el tirón disminuye con x y el rozamiento mantiene cuatro newtons hacia la izquierda." class="fpm-v04-figure img-fluid figure-img" width="680" height="500" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 7.1.</em> El diagrama identifica al receptor de las fuerzas. La normal y el peso no tienen componente horizontal. Las flechas del tirón y del rozamiento son esquemáticas; sus valores a lo largo del recorrido se comparan en la figura siguiente.</p>
+</figcaption>
+</figure>
+<section id="acumular-el-efecto-de-la-fuerza-durante-el-recorrido" class="level2">
+<h2 class="anchored" data-anchor-id="acumular-el-efecto-de-la-fuerza-durante-el-recorrido">Acumular el efecto de la fuerza durante el recorrido</h2>
+<p>En un intervalo donde el carro sigue avanzando podemos considerar su velocidad como función de <span class="math inline">\(x\)</span>. La regla de la cadena da <span class="math inline">\(\dot v=(dv/dx)\dot x=v\,dv/dx\)</span>. La ecuación de Newton se convierte entonces en</p>
+<p><span class="math display">\[
+mv\frac{dv}{dx}=F_{\mathrm{net},x}(x).
+\]</span></p>
+<p>El miembro izquierdo es la derivada respecto de <span class="math inline">\(x\)</span> de <span class="math inline">\(mv^2/2\)</span>. Integrar entre la primera marca y una posición posterior reúne el efecto de toda la fuerza encontrada durante el trayecto:</p>
+<p><span class="math display">\[
+\frac12mv(x)^2-\frac12mv(0)^2
+=\int_0^x F_{\mathrm{net},x}(\xi)\,d\xi.
+\]</span></p>
+<p>La letra <span class="math inline">\(\xi\)</span> sólo distingue la variable que recorre la integral de la posición final <span class="math inline">\(x\)</span>. En nuestro caso, la cantidad acumulada hasta cuatro metros es</p>
+<p><span class="math display">\[
+\int_0^{4\,\mathrm m}\bigl[8\,\mathrm N-(2\,\mathrm{N/m})\xi\bigr]\,d\xi
+=32\,\mathrm{N\,m}-16\,\mathrm{N\,m}=16\,\mathrm J.
+\]</span></p>
+<p>La unidad <span class="math inline">\(\mathrm J\)</span>, joule, equivale a <span class="math inline">\(\mathrm{N\,m}=\mathrm{kg\,m^2/s^2}\)</span>. La cantidad inicial <span class="math inline">\(mv(0)^2/2\)</span> es cuatro joules; la final será veinte. Como <span class="math inline">\(m=2\,\mathrm{kg}\)</span>, obtenemos</p>
+<p><span class="math display">\[
+v(4\,\mathrm m)=\sqrt{20}\,\mathrm{m/s}=2\sqrt5\,\mathrm{m/s}.
+\]</span></p>
+<p>Escogimos la raíz positiva porque seguimos el tramo de avance. Podemos comprobar esa elección sin circularidad: la fuerza neta es no negativa entre cero y cuatro metros, por lo que una velocidad inicialmente positiva no puede disminuir allí hasta cero. La hipótesis de deslizamiento hacia la derecha se mantiene en todo el intervalo.</p>
+<p>El área bajo la recta de fuerza neta es un triángulo de base cuatro metros y altura ocho newtons. Su área da los mismos dieciséis joules. Si separamos agentes, el tirón aporta treinta y dos joules —el área de un trapecio— y el rozamiento aporta menos dieciséis. La normal y el peso aportan cero en este recorrido horizontal.</p>
+<figure id="fig-fispm-r20261021-7-2" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/trabajo_areas.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="../../assets/books/fispm/r20261021/trabajo_areas.svg" alt="Gráficas del tirón, el rozamiento y la fuerza neta frente a la posición. Las áreas con signo dan sus trabajos." class="fpm-v04-figure img-fluid figure-img" width="680" height="670" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 7.2.</em> Las tres gráficas utilizan la misma escala de posición. La ordenada es una componente de fuerza, no una rapidez. Una región bajo el eje aporta trabajo negativo; el balance neto es <span class="math inline">\(32\,\mathrm J-16\,\mathrm J=16\,\mathrm J\)</span>.</p>
+</figcaption>
+</figure>
+</section>
+<section id="la-detención-después-de-retirar-el-tirón" class="level2">
+<h2 class="anchored" data-anchor-id="la-detención-después-de-retirar-el-tirón">La detención después de retirar el tirón</h2>
+<p>Al llegar a cuatro metros retiramos la fuerza aplicada. El carro conserva su velocidad en ese instante; el modelo de retirada no incluye un impulso. Mientras continúa deslizándose, sólo el rozamiento realiza trabajo. Si recorre una distancia adicional <span class="math inline">\(d&gt;0\)</span> hacia la derecha, la misma identidad da</p>
+<p><span class="math display">\[
+\frac12mv^2-20\,\mathrm J=-(4\,\mathrm N)d.
+\]</span></p>
+<p>La primera rapidez nula ocurre cuando <span class="math inline">\(d=5\,\mathrm m\)</span>. El carro se detiene en <span class="math inline">\(x=9\,\mathrm m\)</span>. Con la fuerza aplicada ya retirada, mantener el reposo sólo requiere rozamiento tangencial nulo, que el régimen estático admite. Como en el capítulo 5, no prolongamos la fuerza cinética hacia un movimiento de regreso que ella misma inventaría.</p>
+<p>El primer tramo tenía aceleración variable y el segundo aceleración constante. Un mismo balance permitió enlazarlos porque conservamos el estado al cambiar la fuerza. Todavía no hemos calculado cuánto tarda el carro en llegar a cuatro metros. La rapidez final y la distancia de detención se obtuvieron sin necesitar ese tiempo.</p>
+</section>
+<section id="qué-llamamos-trabajo" class="level2">
+<h2 class="anchored" data-anchor-id="qué-llamamos-trabajo">Qué llamamos trabajo</h2>
+<p>La integral anterior sugiere un concepto que también sirve cuando las fuerzas cambian de dirección o el movimiento sigue una curva. Sea <span class="math inline">\(\mathbf r(t)\)</span> la posición de una partícula en un marco elegido y <span class="math inline">\(\mathbf v(t)=\dot{\mathbf r}(t)\)</span> su velocidad. Consideremos una fuerza <span class="math inline">\(\mathbf F(t)\)</span> recibida por ella, evaluada a lo largo de su movimiento; puede depender de posición, velocidad y tiempo.</p>
+<p><strong>Definición.</strong> El <em>trabajo</em> realizado por esa fuerza sobre la partícula entre los instantes <span class="math inline">\(t_0\)</span> y <span class="math inline">\(t_1\)</span> es</p>
+<p><span class="math display">\[
+W_{\mathbf F}=\int_{t_0}^{t_1}\mathbf F(t)\cdot\mathbf v(t)\,dt.
+\]</span></p>
+<p>Suponemos que el integrando es integrable; bastará en nuestros problemas que sea continuo a trozos en un intervalo finito. El producto escalar selecciona la componente de fuerza en la dirección del movimiento y conserva su signo.</p>
+<p>También se escribe <span class="math inline">\(W_{\mathbf F}=\int_\gamma\mathbf F\cdot d\mathbf r\)</span>, donde <span class="math inline">\(\gamma\)</span> es el recorrido orientado de la partícula. Esta <em>integral de línea</em> se entiende aquí mediante la integral temporal que acabamos de definir. Para calcularla con otro parámetro <span class="math inline">\(u\)</span>, en un recorrido suave que conserva la orientación, se usa</p>
+<p><span class="math display">\[
+W_{\mathbf F}=\int_{u_0}^{u_1}\mathbf F(\mathbf r(u),\ldots)\cdot\frac{d\mathbf r}{du}\,du.
+\]</span></p>
+<p>Si la fuerza depende de la velocidad o del tiempo, al cambiar de parámetro también debemos conservar la ley temporal necesaria para evaluarla. Un dibujo de la trayectoria no determina por sí solo una fuerza de ese tipo. Para una fuerza que depende únicamente de la posición, la curva orientada contiene la información geométrica suficiente para calcular su trabajo.</p>
+<p>En una recta, para <span class="math inline">\(F_x=F_x(x)\)</span>, la definición se reduce a <span class="math inline">\(\int F_x(x)\,dx\)</span> entre los extremos orientados de cada tramo. Una vuelta invierte los límites y puede cambiar también la propia ley de fuerza. El rozamiento cinético, por ejemplo, cambia de signo al invertirse el deslizamiento. No se describe la ida y la vuelta manteniendo sin examen la misma componente de rozamiento.</p>
+<p>El trabajo es escalar y puede ser positivo, negativo o cero. Una fuerza perpendicular a la velocidad en todo instante hace trabajo nulo, aunque desvíe el movimiento. Una fuerza aplicada a un punto que permanece fijo tampoco hace trabajo sobre ese punto durante ese intervalo. Estas afirmaciones se refieren al trabajo mecánico definido, no al esfuerzo fisiológico de una persona que sostiene una carga.</p>
+<p><strong>Proposición.</strong> Para una fuerza vectorial constante <span class="math inline">\(\mathbf F_0\)</span>, el trabajo sobre cualquier recorrido suave a trozos entre posiciones <span class="math inline">\(\mathbf r_0\)</span> y <span class="math inline">\(\mathbf r_1\)</span> es</p>
+<p><span class="math display">\[
+W_{\mathbf F_0}=\mathbf F_0\cdot(\mathbf r_1-\mathbf r_0).
+\]</span></p>
+<p><strong>Demostración.</strong> Como las componentes de <span class="math inline">\(\mathbf F_0\)</span> no cambian, pueden salir de las integrales correspondientes. La integral de cada componente de <span class="math inline">\(\dot{\mathbf r}\)</span> es el cambio de esa coordenada. Reunir los resultados da <span class="math inline">\(\int\mathbf F_0\cdot\dot{\mathbf r}\,dt=\mathbf F_0\cdot\int\dot{\mathbf r}\,dt=\mathbf F_0\cdot(\mathbf r_1-\mathbf r_0)\)</span>.</p>
+<p>Para un desplazamiento recto de longitud <span class="math inline">\(d\)</span> que forma un ángulo <span class="math inline">\(\alpha\)</span> con la fuerza constante, obtenemos <span class="math inline">\(W=Fd\cos\alpha\)</span>. Usar sólo <span class="math inline">\(Fd\)</span> supone que fuerza y desplazamiento comparten sentido. Tampoco basta que el módulo de la fuerza sea constante para aplicar la proposición: su dirección debe permanecer constante. La tensión de un péndulo cambia de dirección durante la oscilación y es perpendicular a la velocidad; su trabajo se decide por esa perpendicularidad.</p>
+<figure id="fig-fispm-r20261021-7-3" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/trabajo_signos.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="../../assets/books/fispm/r20261021/trabajo_signos.svg" alt="Un desplazamiento horizontal distingue un tirón oblicuo, una fuerza opuesta y una fuerza perpendicular." class="fpm-v04-figure img-fluid figure-img" width="680" height="500" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 7.3.</em> El signo corresponde a la proyección de cada fuerza sobre el desplazamiento. El trabajo positivo y el negativo pueden provenir de fuerzas simultáneas sobre la misma partícula. Las componentes auxiliares del tirón no se agregan como fuerzas nuevas.</p>
+</figcaption>
+</figure>
+</section>
+<section id="la-cantidad-que-cambia-cuando-hay-trabajo-neto" class="level2">
+<h2 class="anchored" data-anchor-id="la-cantidad-que-cambia-cuando-hay-trabajo-neto">La cantidad que cambia cuando hay trabajo neto</h2>
+<p><strong>Definición.</strong> Para una partícula de masa constante <span class="math inline">\(m&gt;0\)</span>, su <em>energía cinética</em> en el marco considerado es</p>
+<p><span class="math display">\[
+K=\frac12m\|\mathbf v\|^2.
+\]</span></p>
+<p>Es no negativa y se anula exactamente cuando la partícula está en reposo en ese marco. Dos velocidades de igual módulo y direcciones distintas tienen la misma energía cinética. La fórmula pertenece a la mecánica newtoniana utilizada en el libro; no la extendemos a regímenes donde esa mecánica deja de ser adecuada.</p>
+<p><strong>Teorema del trabajo y la energía cinética.</strong> Sea una partícula de masa constante <span class="math inline">\(m&gt;0\)</span> cuyo movimiento satisface <span class="math inline">\(m\dot{\mathbf v}=\sum_j\mathbf F_j\)</span> en un marco inercial. Supongamos que posición y velocidad son continuas, que el movimiento es dos veces continuamente derivable en cada uno de un número finito de tramos y que las fuerzas son integrables en ellos. Entonces</p>
+<p><span class="math display">\[
+K(t_1)-K(t_0)=\sum_j W_{\mathbf F_j}=W_{\mathrm{neto}}.
+\]</span></p>
+<p><strong>Demostración.</strong> La derivada del cuadrado del módulo de la velocidad contiene precisamente el producto que aparece en el trabajo:</p>
+<p><span class="math display">\[
+\frac{d}{dt}\left(\frac12m\mathbf v\cdot\mathbf v\right)
+=m\dot{\mathbf v}\cdot\mathbf v
+=\left(\sum_j\mathbf F_j\right)\cdot\mathbf v
+=\sum_j\mathbf F_j\cdot\mathbf v.
+\]</span></p>
+<p>Integrar en cada tramo convierte el miembro izquierdo en la diferencia de sus energías cinéticas extremas. Al sumar los tramos, los valores interiores se cancelan porque la velocidad es continua en los puntos de enlace. Las integrales del miembro derecho son los trabajos de las fuerzas sobre el intervalo completo. Así se obtiene la igualdad anunciada.</p>
+<p>Esta demostración no divide por la velocidad y sigue siendo válida cuando la partícula se detiene o cambia de sentido suavemente. El cálculo inicial con <span class="math inline">\(v\,dv/dx\)</span> era cómodo en el tramo donde el carro avanzaba, pero no necesitamos adoptarlo como una operación válida en cualquier punto de retorno. Los choques con cambios instantáneos de velocidad requieren otro tratamiento y no están incluidos entre los enlaces suaves del teorema.</p>
+<p>La igualdad se refiere al trabajo de <strong>todas</strong> las fuerzas sobre la partícula. Si un motor aporta treinta joules y el rozamiento realiza menos diez, la energía cinética aumenta veinte. Identificar el trabajo de un solo agente con <span class="math inline">\(\Delta K\)</span> omitiría parte de la ecuación de Newton.</p>
+<p>El teorema es una consecuencia de esa ecuación y de la definición de trabajo. No afirma que <span class="math inline">\(K\)</span> se conserve en cualquier movimiento. Cuando <span class="math inline">\(W_{\mathrm{neto}}=0\)</span>, las energías cinéticas de los dos estados comparados coinciden; entre ellos la rapidez puede haber cambiado. Si la potencia neta es cero en todo el intervalo, entonces <span class="math inline">\(K\)</span> permanece constante durante todo él.</p>
+</section>
+<section id="resolver-una-rapidez-y-reconocer-el-tramo-que-existe" class="level2">
+<h2 class="anchored" data-anchor-id="resolver-una-rapidez-y-reconocer-el-tramo-que-existe">Resolver una rapidez y reconocer el tramo que existe</h2>
+<p>Para un movimiento rectilíneo con fuerza neta dependiente sólo de <span class="math inline">\(x\)</span>, el balance permite construir</p>
+<p><span class="math display">\[
+K(x)=K(x_0)+\int_{x_0}^{x}F_{\mathrm{net},x}(\xi)\,d\xi.
+\]</span></p>
+<p>Una posición con <span class="math inline">\(K(x)&lt;0\)</span> es incompatible con el modelo y los datos iniciales. Antes de alcanzarla, la partícula habrá tenido que detenerse o cambiar de régimen. Una posición con <span class="math inline">\(K(x)=0\)</span> exige volver a las fuerzas para decidir la continuación: un resorte comprimido puede impulsar un regreso, mientras una caja frenada por rozamiento sobre una mesa horizontal puede quedar en reposo.</p>
+<p>En un tramo donde el movimiento avanza y <span class="math inline">\(K(x)&gt;0\)</span>, podemos escribir <span class="math inline">\(v(x)=+\sqrt{2K(x)/m}\)</span>. Para reconstruir el tiempo hay que efectuar una operación adicional:</p>
+<p><span class="math display">\[
+t(x)-t(x_0)=\int_{x_0}^{x}\frac{d\xi}{\sqrt{2K(\xi)/m}}.
+\]</span></p>
+<p>La fórmula procede de <span class="math inline">\(dt=dx/v\)</span> y requiere esa elección de sentido. Si la rapidez llega a cero en un extremo, la integral puede converger o divergir; no declaramos alcanzado el extremo en tiempo finito sólo porque <span class="math inline">\(K\)</span> se anule. El ejercicio 18 muestra, incluso con fuerzas constantes a trozos, que igual trabajo y rapidez final pueden corresponder a tiempos diferentes. El ejercicio 21 compara un cero simple de la energía con un cero cuadrático y calcula el tiempo de aproximación en cada caso.</p>
+<p>Un trabajo nulo de una normal se justifica por el movimiento permitido. Una guía fija y lisa obliga a que su fuerza normal sea perpendicular a la velocidad de la partícula. Si la guía se mueve, esa perpendicularidad respecto de la velocidad del laboratorio ya no está garantizada. También la fricción puede realizar trabajo positivo sobre un cuerpo al acelerarlo una cinta transportadora. Para decidir el signo volvemos al producto fuerza por velocidad del receptor, evaluados en el mismo marco.</p>
+</section>
+<section id="un-resorte-como-fuerza-variable" class="level2">
+<h2 class="anchored" data-anchor-id="un-resorte-como-fuerza-variable">Un resorte como fuerza variable</h2>
+<p>Un resorte horizontal fijo a una pared ejerce sobre una partícula una fuerza <span class="math inline">\(F_x=-kx\)</span>, donde <span class="math inline">\(x\)</span> mide la extensión respecto de su longitud natural y <span class="math inline">\(k&gt;0\)</span> tiene unidades <span class="math inline">\(\mathrm{N/m}\)</span>. Usaremos esta ley lineal como un modelo constitutivo válido dentro de un intervalo de deformaciones especificado; no es una propiedad exacta de cualquier resorte bajo cualquier carga.</p>
+<p>El trabajo del resorte desde <span class="math inline">\(x_i\)</span> hasta <span class="math inline">\(x_f\)</span> es</p>
+<p><span class="math display">\[
+W_s=\int_{x_i}^{x_f}(-kx)\,dx
+=\frac{k}{2}(x_i^2-x_f^2).
+\]</span></p>
+<p>Al alejar la partícula de la posición natural, el resorte hace trabajo negativo. Al acercarla, hace trabajo positivo. Es importante distinguir su fuerza de la del agente que estira el resorte: en un desplazamiento lento controlado, o en uno con velocidad constante y sin otras fuerzas horizontales, ese agente debe ejercer una fuerza aproximadamente opuesta o exactamente opuesta, respectivamente. Sus trabajos corresponden a receptores e interacciones identificables.</p>
+<figure id="fig-fispm-r20261021-7-4" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/trabajo_resorte.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="../../assets/books/fispm/r20261021/trabajo_resorte.svg" alt="La fuerza lineal del resorte se opone a la deformación; el área orientada determina el trabajo." class="fpm-v04-figure img-fluid figure-img" width="680" height="500" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 7.4.</em> El módulo de la fuerza crece con la deformación. Al comprimir desde <span class="math inline">\(x=0\)</span> hacia valores negativos, la fuerza es positiva pero <span class="math inline">\(dx&lt;0\)</span>, de modo que el trabajo del resorte es negativo. La orientación de los límites importa tanto como el signo de la gráfica.</p>
+</figcaption>
+</figure>
+</section>
+<section id="sumar-energías-de-cuerpos-conectados" class="level2">
+<h2 class="anchored" data-anchor-id="sumar-energías-de-cuerpos-conectados">Sumar energías de cuerpos conectados</h2>
+<p>Para varias partículas, sumamos las identidades individuales y obtenemos el cambio de <span class="math inline">\(K_{\mathrm{total}}=\sum_i m_i\|\mathbf v_i\|^2/2\)</span>. Cada trabajo se evalúa usando el movimiento de la partícula que recibe la fuerza. Que dos fuerzas internas sean opuestas no basta para cancelar sus trabajos: actúan sobre receptores que pueden tener velocidades diferentes. Para un par con fuerzas <span class="math inline">\(\mathbf F\)</span> y <span class="math inline">\(-\mathbf F\)</span>, la suma de potencias es <span class="math inline">\(\mathbf F\cdot(\mathbf v_1-\mathbf v_2)\)</span>, que en general no es cero.</p>
+<p>En las conexiones ideales del capítulo 6 podemos demostrar cancelaciones más precisas. Consideremos su polea móvil con carga <span class="math inline">\(M\)</span>, pesa <span class="math inline">\(m\)</span>, anclaje y polea superior fijos. Las coordenadas <span class="math inline">\(y,z\)</span> apuntan hacia abajo y cumplen <span class="math inline">\(2y+z=C\)</span>. La tensión tiene módulo común <span class="math inline">\(T(t)\)</span> y las fuerzas que transmite a los cuerpos son <span class="math inline">\(-2T\)</span> y <span class="math inline">\(-T\)</span> en esas coordenadas.</p>
+<p><strong>Proposición.</strong> Mientras esa máquina mantenga el recorrido tenso ideal, la suma de los trabajos de la tensión sobre la carga y la pesa es cero.</p>
+<p><strong>Demostración.</strong> La suma de las potencias recibidas es <span class="math inline">\(-2T\dot y-T\dot z=-T(2\dot y+\dot z)\)</span>. La derivada de la restricción anula el paréntesis en cada instante. Integrar da una suma de trabajos nula, incluso si <span class="math inline">\(T\)</span> varía con el tiempo. Intervienen tanto la igualdad de los módulos de tensión como la relación geométrica; la tercera ley por sí sola no habría producido esta conclusión.</p>
+<p>Si la carga desciende <span class="math inline">\(h&gt;0\)</span> desde el reposo, la pesa sube <span class="math inline">\(2h\)</span>. Los trabajos gravitatorios suman <span class="math inline">\(Mgh-2mgh\)</span>. Como <span class="math inline">\(\dot z=-2\dot y\)</span>, si <span class="math inline">\(v=\dot y&gt;0\)</span> al final,</p>
+<p><span class="math display">\[
+\frac12(M+4m)v^2=(M-2m)gh.
+\]</span></p>
+<p>Para <span class="math inline">\(M=6\,\mathrm{kg}\)</span>, <span class="math inline">\(m=2\,\mathrm{kg}\)</span> y <span class="math inline">\(h=0{,}70\,\mathrm m\)</span>, el miembro derecho vale catorce joules y resulta <span class="math inline">\(v=\sqrt2\,\mathrm{m/s}\)</span>. El coeficiente <span class="math inline">\(M+4m\)</span> aparece porque la energía cinética usa el cuadrado de la rapidez y la pesa se mueve con rapidez <span class="math inline">\(2v\)</span>. Coincide con el cálculo de Newton del capítulo anterior: <span class="math inline">\(v^2=2(10/7\,\mathrm{m/s^2})(0{,}70\,\mathrm m)=2\,\mathrm{m^2/s^2}\)</span>.</p>
+<figure id="fig-fispm-r20261021-7-5" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/trabajo_polea.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="../../assets/books/fispm/r20261021/trabajo_polea.svg" alt="La carga baja h, la pesa sube 2h y los trabajos de la tensión se cancelan en la suma, aunque no se anulan por separado." class="fpm-v04-figure img-fluid figure-img" width="680" height="635" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 7.5.</em> Para los valores del texto, la tensión realiza menos treinta y seis joules sobre la carga y más treinta y seis sobre la pesa. Los trabajos gravitatorios son cuarenta y dos y menos veintiocho joules. Las energías cinéticas finales suman seis y ocho joules. La figura usa el recorrido de la polea móvil, no el de una polea fija sencilla.</p>
+</figcaption>
+</figure>
+<p>La fórmula de energía no proporciona por sí sola la tensión. Para recuperarla necesitamos una ecuación de Newton o información equivalente. También se debe verificar que la cuerda permanezca tensa y que no haya obstáculos antes del desplazamiento utilizado. El balance simplifica una pregunta concreta sin eliminar las demás condiciones del modelo.</p>
+</section>
+<section id="la-rapidez-con-que-se-realiza-trabajo" class="level2">
+<h2 class="anchored" data-anchor-id="la-rapidez-con-que-se-realiza-trabajo">La rapidez con que se realiza trabajo</h2>
+<p>Dos motores pueden elevar la misma carga hasta la misma altura y realizar el mismo trabajo en tiempos muy distintos. Para comparar esa diferencia necesitamos medir trabajo por unidad de tiempo.</p>
+<p><strong>Definición.</strong> La <em>potencia instantánea</em> de una fuerza sobre una partícula es</p>
+<p><span class="math display">\[
+P_{\mathbf F}(t)=\mathbf F(t)\cdot\mathbf v(t).
+\]</span></p>
+<p>La potencia media durante un intervalo de duración <span class="math inline">\(\Delta t&gt;0\)</span> es <span class="math inline">\(\overline P_{\mathbf F}=W_{\mathbf F}/\Delta t\)</span>. La unidad SI es el watt, <span class="math inline">\(1\,\mathrm W=1\,\mathrm{J/s}\)</span>. La potencia puede ser negativa: entonces la fuerza realiza trabajo negativo sobre ese receptor en ese instante.</p>
+<p>Al sumar agentes, el teorema demostrado da <span class="math inline">\(\sum_jP_{\mathbf F_j}=dK/dt\)</span>. Un ascensor que ya sube a velocidad constante tiene potencia neta nula, aunque el motor aporte potencia positiva y la gravedad aporte la opuesta. No se deduce el consumo eléctrico del motor con sólo este balance mecánico: las pérdidas y la conversión entre formas de energía necesitarían otro modelo.</p>
+<figure id="fig-fispm-r20261021-7-6" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/trabajo_potencia.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="../../assets/books/fispm/r20261021/trabajo_potencia.svg" alt="Una potencia creciente tiene un área que corresponde al trabajo; la potencia media es la altura del rectángulo de la misma área." class="fpm-v04-figure img-fluid figure-img" width="680" height="500" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 7.6.</em> En el ejemplo del ejercicio 17, <span class="math inline">\(P(t)=4\,\mathrm W+(8\,\mathrm{W/s})t\)</span>. El trabajo de cero a tres segundos es cuarenta y ocho joules. La potencia final, veintiocho watts, no es la potencia media de dieciséis watts.</p>
+</figcaption>
+</figure>
+</section>
+<section id="lo-que-una-medición-de-trabajo-permite-inferir" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-una-medición-de-trabajo-permite-inferir">Lo que una medición de trabajo permite inferir</h2>
+<p>Podemos contrastar un modelo de frenado midiendo una rapidez inicial y una distancia de detención. Si la única fuerza tangencial es un rozamiento cinético constante sobre una mesa fija horizontal, el balance <span class="math inline">\(-\mu_kmgd=-mv_0^2/2\)</span> da <span class="math inline">\(\mu_k=v_0^2/(2gd)\)</span>. La masa se cancela dentro de ese modelo. Un único ensayo identifica un valor efectivo compatible con las hipótesis; no distingue automáticamente rozamiento seco de otras resistencias que produzcan el mismo trabajo en ese recorrido.</p>
+<p>Las mediciones repetidas a diferentes rapideces permiten examinar si el mismo coeficiente sigue describiendo los resultados. También hay que revisar inclinación, calibración de rapidez, resolución de la distancia y transición al reposo antes de adjudicar una discrepancia a una sola causa. El trabajo integra el efecto de las fuerzas a lo largo de un recorrido y por eso mismo puede ocultar diferencias entre sus perfiles locales.</p>
+<p>Una fuerza constante como el peso uniforme ofrece un contraste interesante: su trabajo depende únicamente del cambio de altura, incluso si la trayectoria es curva. El resorte lineal produce otra expresión que sólo usa las posiciones extremas. Estudiar cuándo existe una función de posición capaz de recoger ese trabajo nos llevará a la energía potencial. Aquí hemos utilizado directamente las fuerzas y mantenido explícita su contribución al cambio de energía cinética.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Se usa <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span>. Los cuerpos se modelan como partículas de masa constante en el laboratorio inercial; las guías son fijas y lisas salvo indicación contraria. No hay choques dentro de los tramos estudiados. Cada uso de rozamiento se limita al régimen indicado.</p>
+<section id="ejercicio-7-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-1">1. El tirón oblicuo</h3>
+<p>Una partícula de dos kilogramos se desplaza cinco metros hacia la derecha sobre una mesa horizontal lisa. Recibe una fuerza constante de diez newtons que forma un ángulo hacia arriba con <span class="math inline">\(\cos\alpha=3/5\)</span> y <span class="math inline">\(\sin\alpha=4/5\)</span>. Su rapidez inicial es un metro por segundo. Calcule los trabajos de las fuerzas, la normal y la rapidez final. Compruebe que el contacto se mantiene.</p>
+</section>
+<section id="ejercicio-7-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-2">2. El trabajo de un agente y el trabajo neto</h3>
+<p>Una caja de dos kilogramos ya desliza hacia la derecha a un metro por segundo. Durante tres metros recibe un tirón horizontal de doce newtons y rozamiento cinético de cuatro newtons hacia la izquierda. Determine el trabajo de cada fuerza y la rapidez final. Diagnostique la respuesta que usa sólo los treinta y seis joules del tirón como incremento de energía cinética.</p>
+</section>
+<section id="ejercicio-7-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-3">3. Elegir una fuerza representativa</h3>
+<p>En el carro del problema inicial, calcule los trabajos y la rapidez al llegar a <span class="math inline">\(x=3\,\mathrm m\)</span>. Compare el trabajo del tirón con el producto de su fuerza final por los tres metros. Encuentre la fuerza media respecto del desplazamiento que sí reproduce ese trabajo. ¿Es necesariamente una media temporal?</p>
+</section>
+<section id="ejercicio-7-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-4">4. Un perfil con áreas positivas y negativas</h3>
+<p>Una partícula de un kilogramo parte de <span class="math inline">\(x=0\)</span> hacia la derecha con rapidez de dos metros por segundo. La fuerza neta vale seis newtons entre cero y dos metros; disminuye linealmente de seis a menos dos newtons entre dos y cuatro metros; y vale menos dos newtons entre cuatro y cinco metros. Calcule el trabajo total, la rapidez final y compruebe que puede llegar al extremo sin detenerse antes.</p>
+</section>
+<section id="ejercicio-7-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-5">5. Una energía final imposible</h3>
+<p>Una caja de dos kilogramos desliza a cuatro metros por segundo sobre una mesa horizontal y sólo recibe una fuerza de rozamiento cinético de ocho newtons en contra del movimiento. Se pide su rapidez después de avanzar tres metros. Determine qué impide responder con una raíz real y dónde termina el tramo deslizante. Decida la evolución posterior si no existe otra fuerza tangencial.</p>
+</section>
+<section id="ejercicio-7-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-6">6. Dos métodos sobre el mismo recorrido</h3>
+<p>Una partícula de dos kilogramos se mueve hacia la derecha a un metro por segundo y recibe una fuerza neta constante de seis newtons en ese sentido durante cuatro metros. Calcule la rapidez final por trabajo y energía y por Newton con aceleración constante. Obtenga después el tiempo. Identifique qué información del segundo cálculo no necesitó el primero.</p>
+</section>
+<section id="ejercicio-7-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-7">7. Una guía curva y el peso</h3>
+<p>Una cuenta de un kilogramo, ensartada en un alambre fijo liso, parte del reposo a tres metros por encima de un punto final. El alambre desciende suavemente sin remontadas hasta ese punto, su tangente inicial tiene una componente descendente no nula y mantiene la cuenta guiada. Calcule el trabajo del peso, el de la guía y la rapidez final. Explique qué condición geométrica permite omitir el trabajo de la guía sin omitir su fuerza.</p>
+</section>
+<section id="ejercicio-7-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-8">8. Los mismos extremos, otro recorrido</h3>
+<p>En un plano una fuerza depende de la posición como <span class="math inline">\(\mathbf F(x,y)=((2\,\mathrm{N/m})y,0)\)</span>. Calcule su trabajo entre <span class="math inline">\((0,0)\)</span> y <span class="math inline">\((2\,\mathrm m,1\,\mathrm m)\)</span> por dos recorridos: primero horizontal y después vertical, o primero vertical y después horizontal. Los recorridos se prescriben mediante agentes no especificados. ¿Basta este cálculo para obtener el cambio de energía cinética de una partícula que los siga?</p>
+</section>
+<section id="ejercicio-7-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-9">9. La primera compresión máxima</h3>
+<p>Una partícula de dos kilogramos está unida a un resorte horizontal sobre una mesa lisa. Cruza la posición natural hacia la compresión con rapidez de tres metros por segundo. La ley <span class="math inline">\(F_x=-kx\)</span>, con <span class="math inline">\(k=100\,\mathrm{N/m}\)</span> y <span class="math inline">\(x\)</span> la extensión, vale para <span class="math inline">\(|x|\leq0{,}50\,\mathrm m\)</span>. Calcule la primera compresión máxima y el trabajo del resorte hasta allí. ¿Queda en reposo al alcanzarla?</p>
+</section>
+<section id="ejercicio-7-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-10">10. Mover un resorte sin cambiar la rapidez</h3>
+<p>Un actuador mantiene constante la rapidez de una partícula unida a un resorte horizontal de <span class="math inline">\(k=200\,\mathrm{N/m}\)</span> sobre una mesa lisa. En el tramo considerado la extensión crece de <span class="math inline">\(0{,}10\)</span> a <span class="math inline">\(0{,}30\,\mathrm m\)</span>, dentro del régimen lineal. Determine los trabajos del resorte y del actuador y el cambio de energía cinética. No se incluyen el arranque ni el frenado del dispositivo.</p>
+</section>
+<section id="ejercicio-7-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-11">11. Subir por un plano con rozamiento</h3>
+<p>Un bloque de dos kilogramos sube por un plano fijo de longitud cinco metros con rapidez inicial de diez metros por segundo. Se tiene <span class="math inline">\(\sin\theta=3/5\)</span>, <span class="math inline">\(\cos\theta=4/5\)</span> y <span class="math inline">\(\mu_k=0{,}25\)</span>. No recibe tirón. Determine los trabajos y la rapidez al completar los cinco metros. Compruebe que no se detiene antes. No prolongue el recorrido fuera del plano descrito.</p>
+</section>
+<section id="ejercicio-7-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-12">12. Rozamiento que hace trabajo positivo</h3>
+<p>Una caja de dos kilogramos entra en una cinta que se mueve a rapidez constante de tres metros por segundo hacia la derecha. La caja lleva inicialmente un metro por segundo en ese mismo sentido; <span class="math inline">\(\mu_k=0{,}20\)</span>. Calcule el tiempo hasta igualar velocidades, el desplazamiento de la caja y el trabajo del rozamiento sobre ella. Obtenga además el trabajo de la fuerza opuesta recibida por la cinta durante el deslizamiento y compare ambos trabajos.</p>
+</section>
+<section id="ejercicio-7-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-13">13. Trabajo de la fricción estática</h3>
+<p>Una plataforma horizontal traslada una caja de dos kilogramos sin deslizamiento. Ambas parten del reposo y aceleran hacia la derecha a un metro por segundo cuadrado durante dos segundos. La única fuerza horizontal sobre la caja es la fricción; <span class="math inline">\(\mu_s=0{,}20\)</span>. Compruebe la adherencia y calcule su trabajo sobre la caja en el laboratorio. ¿Permite afirmar que toda fricción estática hace trabajo nulo?</p>
+</section>
+<section id="ejercicio-7-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-14">14. Del arco del péndulo a la tensión</h3>
+<p>Un péndulo ideal de un kilogramo y cuerda de dos metros se libera del reposo a sesenta grados de la vertical inferior. El pivote está fijo y no hay resistencia. Halle la rapidez y la tensión al pasar por el punto inferior. Compruebe también que la tensión no necesita ser negativa durante el descenso. Use trabajo del peso y la aceleración radial, sin aproximación de ángulo pequeño.</p>
+</section>
+<section id="ejercicio-7-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-15">15. Los trabajos de la tensión se reparten</h3>
+<p>En la polea móvil del capítulo 6 se tiene <span class="math inline">\(M=6\,\mathrm{kg}\)</span> y <span class="math inline">\(m=2\,\mathrm{kg}\)</span>. Desde el reposo, la carga desciende <span class="math inline">\(0{,}70\,\mathrm m\)</span> sin encontrar obstáculos. Calcule ambas rapideces sumando energías cinéticas. Con el valor de tensión obtenido por Newton, determine después el trabajo de cada fuerza sobre cada masa y compruebe los dos balances individuales.</p>
+</section>
+<section id="ejercicio-7-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-16">16. Potencia de un ascenso uniforme</h3>
+<p>Una carga de cincuenta kilogramos sube seis metros en tres segundos a velocidad constante mediante un motor y un cable ideal. Calcule tensión, trabajo del motor, potencia mecánica entregada a la carga y trabajo del peso. Explique por qué la potencia neta es nula aunque el motor esté aportando potencia. Considere sólo ese tramo uniforme.</p>
+</section>
+<section id="ejercicio-7-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-17">17. Potencia media e instantánea</h3>
+<p>Una partícula de dos kilogramos sigue en línea recta la ley <span class="math inline">\(v(t)=1\,\mathrm{m/s}+(2\,\mathrm{m/s^2})t\)</span> durante tres segundos. Determine fuerza neta, potencia neta instantánea, trabajo total y potencia media. Compruebe el trabajo con el cambio de energía cinética y con fuerza por desplazamiento.</p>
+</section>
+<section id="ejercicio-7-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-18">18. Igual trabajo, distinto tiempo</h3>
+<p>Una partícula de dos kilogramos entra en un recorrido horizontal de cuatro metros con rapidez de dos metros por segundo. Compare dos perfiles de fuerza neta hacia delante: A, dos newtons durante todo el recorrido; B, cuatro newtons durante los dos primeros metros y cero durante los dos restantes. Determine las rapideces finales y los tiempos de recorrido. ¿Qué información pierde la comparación que usa únicamente el trabajo total?</p>
+</section>
+<section id="ejercicio-7-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-19">19. Inferir un coeficiente con cotas</h3>
+<p>En un ensayo de frenado horizontal se mide <span class="math inline">\(v_0\in[3{,}9;4{,}1]\,\mathrm{m/s}\)</span> y <span class="math inline">\(d\in[1{,}9;2{,}1]\,\mathrm m\)</span>. Dentro del modelo de rozamiento cinético constante como única fuerza tangencial, acote <span class="math inline">\(\mu_k\)</span>. Trate los intervalos como cotas deterministas independientes y redondee hacia fuera a cuatro decimales. ¿Qué permitiría contrastar mejor el modelo que un único ensayo?</p>
+</section>
+<section id="ejercicio-7-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-20">20. Dos sentidos de trabajo nulo</h3>
+<p>Justifique que una fuerza neta perpendicular a la velocidad durante todo un intervalo conserva la rapidez de una partícula de masa constante. ¿Implica que la fuerza sea cero? Examine después esta afirmación distinta: «Si el trabajo neto entre dos posiciones es cero, la rapidez fue constante durante todo el recorrido». Construya un contraejemplo con una partícula de un kilogramo que entra a dos metros por segundo y fuerzas constantes a trozos en un recorrido recto de dos metros.</p>
+</section>
+<section id="ejercicio-7-21" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-7-21">21. Una energía nula en un extremo inaccesible</h3>
+<p>Una partícula de masa <span class="math inline">\(2\,\mathrm{kg}\)</span> parte de <span class="math inline">\(x=0\)</span> hacia la derecha con velocidad <span class="math inline">\(2\,\mathrm{m/s}\)</span>. En el intervalo <span class="math inline">\(0\leq x\leq L\)</span>, con <span class="math inline">\(L=2\,\mathrm m\)</span>, recibe la fuerza neta</p>
+<p><span class="math display">\[
+F_x(x)=-4\,\mathrm N\left(1-\frac{x}{L}\right).
+\]</span></p>
+<p>La ley se mantiene en ese intervalo y no hay choques ni cambios de régimen anteriores. Obtenga <span class="math inline">\(K(x)\)</span> y determine si la partícula alcanza <span class="math inline">\(x=L\)</span> en tiempo finito. Reconstruya <span class="math inline">\(x(t)\)</span> y compruebe Newton y los datos iniciales. Después conserve la fuerza y compare las preparaciones con velocidades iniciales de uno y tres metros por segundo: decida si llegan a <span class="math inline">\(L\)</span> y, cuando lleguen, calcule su rapidez allí. Relacione el primer caso con el frenado del ejercicio 14 del capítulo 1.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-7-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-1">1. El tirón oblicuo</h3>
+<p>La componente horizontal del tirón es <span class="math inline">\(10(3/5)=6\,\mathrm N\)</span> y su componente vertical es ocho newtons hacia arriba. Como la mesa mantiene la altura, <span class="math inline">\(N+8\,\mathrm N-20\,\mathrm N=0\)</span>, por lo que <span class="math inline">\(N=12\,\mathrm N&gt;0\)</span>. No se exige al apoyo que atraiga al cuerpo; el contacto es admisible.</p>
+<p>El trabajo del tirón es <span class="math inline">\(W_F=(6\,\mathrm N)(5\,\mathrm m)=30\,\mathrm J\)</span>. Peso y normal son perpendiculares al desplazamiento y hacen trabajo cero. La energía cinética inicial es un joule y la final treinta y uno. De <span class="math inline">\(K_f=(2\,\mathrm{kg})v_f^2/2\)</span> se obtiene <span class="math inline">\(v_f=\sqrt{31}\,\mathrm{m/s}\)</span>. El tirón hacia arriba modifica la normal, aunque esa componente no contribuya al trabajo en este recorrido horizontal.</p>
+</section>
+<section id="solucion-7-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-2">2. El trabajo de un agente y el trabajo neto</h3>
+<p>El tirón aporta <span class="math inline">\(36\,\mathrm J\)</span> y el rozamiento <span class="math inline">\(-12\,\mathrm J\)</span>. Peso y normal aportan cero. El trabajo neto es veinticuatro joules y se suma al joule de energía cinética inicial: <span class="math inline">\(K_f=25\,\mathrm J\)</span>, de donde <span class="math inline">\(v_f=5\,\mathrm{m/s}\)</span>.</p>
+<p>La respuesta que usa sólo el tirón obtendría <span class="math inline">\(K_f=37\,\mathrm J\)</span> y <span class="math inline">\(v_f=\sqrt{37}\,\mathrm{m/s}\)</span>. Ese valor corresponde a una caja sin el rozamiento declarado. Como la fuerza neta real es ocho newtons hacia la derecha y la caja ya avanza, no hay inversión de deslizamiento dentro del tramo.</p>
+</section>
+<section id="solucion-7-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-3">3. Elegir una fuerza representativa</h3>
+<p>La integral del tirón hasta tres metros vale <span class="math inline">\(12(3)-3^2=27\,\mathrm J\)</span>, con las unidades SI de los coeficientes del enunciado. El rozamiento aporta <span class="math inline">\(-4(3)=-12\,\mathrm J\)</span> y el trabajo neto es quince joules. Sumando los cuatro joules iniciales, <span class="math inline">\(K_f=19\,\mathrm J\)</span> y <span class="math inline">\(v_f=\sqrt{19}\,\mathrm{m/s}\)</span>.</p>
+<p>La fuerza final del tirón es seis newtons. Multiplicarla por tres metros daría dieciocho joules y subestimaría el trabajo, pues el tirón tuvo valores mayores durante todo el interior del recorrido. La fuerza media respecto de <span class="math inline">\(x\)</span> es <span class="math inline">\(\overline F_x=W_F/\Delta x=9\,\mathrm N\)</span>, también la media aritmética de los valores extremos por ser una función lineal de <span class="math inline">\(x\)</span>.</p>
+<p>Una media temporal utiliza <span class="math inline">\(\int F(t)\,dt/\Delta t\)</span> y pondera los lugares según cuánto tiempo se permanece en ellos. Como el carro cambia su rapidez, esa ponderación no coincide en general con la media respecto del desplazamiento. Aquí nueve newtons es la altura de un rectángulo con el área correcta en la gráfica fuerza–posición.</p>
+</section>
+<section id="solucion-7-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-4">4. Un perfil con áreas positivas y negativas</h3>
+<p>El primer trabajo es <span class="math inline">\(6(2)=12\,\mathrm J\)</span>. En el tramo lineal de dos metros, el área con signo del trapecio es <span class="math inline">\((6-2)(2)/2=4\,\mathrm J\)</span>. El último tramo aporta <span class="math inline">\(-2(1)=-2\,\mathrm J\)</span>. En total, <span class="math inline">\(W=14\,\mathrm J\)</span>. La energía cinética inicial es dos joules, así que <span class="math inline">\(K_f=16\,\mathrm J\)</span> y <span class="math inline">\(v_f=\sqrt{32}\,\mathrm{m/s}=4\sqrt2\,\mathrm{m/s}\)</span>.</p>
+<p>Para comprobar el acceso no basta mirar el valor final. La energía sube de dos a catorce joules durante el primer tramo. En el segundo la fuerza se anula en <span class="math inline">\(x=3{,}5\,\mathrm m\)</span>; hasta allí <span class="math inline">\(K\)</span> crece y después decrece hasta dieciocho joules en cuatro metros. En el último metro baja de dieciocho a dieciséis. Su mínimo en todo el recorrido es el valor inicial positivo, por lo que la velocidad de avance nunca se anula.</p>
+</section>
+<section id="solucion-7-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-5">5. Una energía final imposible</h3>
+<p>La caja entra con <span class="math inline">\(K_0=(2\,\mathrm{kg})(4\,\mathrm{m/s})^2/2=16\,\mathrm J\)</span>. Mientras desliza hacia delante, <span class="math inline">\(K(d)=16\,\mathrm J-(8\,\mathrm N)d\)</span>. En tres metros esa expresión daría menos ocho joules, incompatible con <span class="math inline">\(mv^2/2\geq0\)</span>.</p>
+<p>La primera anulación ocurre a los dos metros. Hasta allí <span class="math inline">\(v(d)=\sqrt{16\,\mathrm{m^2/s^2}-(8\,\mathrm{m/s^2})d}\)</span> en la rama de avance. Después no hay otra fuerza tangencial y el reposo requiere fricción nula, admisible estáticamente. La caja no llega a los tres metros bajo las condiciones dadas. El resultado negativo diagnostica el uso de una ley deslizante fuera de su tramo, no una energía cinética negativa realizable.</p>
+</section>
+<section id="solucion-7-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-6">6. Dos métodos sobre el mismo recorrido</h3>
+<p>El trabajo neto es <span class="math inline">\(W=(6\,\mathrm N)(4\,\mathrm m)=24\,\mathrm J\)</span>. Sumado al joule inicial produce <span class="math inline">\(K_f=25\,\mathrm J\)</span>, de modo que <span class="math inline">\(v_f=5\,\mathrm{m/s}\)</span>. Por Newton, <span class="math inline">\(a=6\,\mathrm N/(2\,\mathrm{kg})=3\,\mathrm{m/s^2}\)</span> y la identidad de aceleración constante da <span class="math inline">\(v_f^2=v_0^2+2a\Delta x=1+24=25\)</span> en unidades de rapidez al cuadrado.</p>
+<p>El tiempo se obtiene de <span class="math inline">\(v_f=v_0+at\)</span>: <span class="math inline">\(\Delta t=(5-1)/3\,\mathrm s=4/3\,\mathrm s\)</span>. Al sustituirlo en <span class="math inline">\(\Delta x=v_0\Delta t+a\Delta t^2/2\)</span> se recuperan cuatro metros. El balance energético comparó estados sin calcular <span class="math inline">\(a\)</span> ni <span class="math inline">\(\Delta t\)</span>; la reconstrucción temporal aporta el instante en que se alcanza el segundo estado.</p>
+</section>
+<section id="solucion-7-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-7">7. Una guía curva y el peso</h3>
+<p>Sea <span class="math inline">\(y\)</span> una coordenada vertical positiva hacia arriba. El peso uniforme es <span class="math inline">\(\mathbf P=(0,-mg)\)</span>, por lo que <span class="math inline">\(W_g=-mg(y_f-y_i)=30\,\mathrm J\)</span>. La fuerza de la guía es normal a la tangente de la trayectoria y la velocidad es tangente: su producto escalar es cero en cada instante. Así, <span class="math inline">\(W_N=0\)</span>.</p>
+<p>Desde el reposo, <span class="math inline">\(mv_f^2/2=30\,\mathrm J\)</span> y <span class="math inline">\(v_f=\sqrt{60}\,\mathrm{m/s}\)</span>. El descenso sin remontadas permite adquirir energía cinética sin encontrar una barrera intermedia; se presupone que el alambre conserva la guía indicada. La normal puede cambiar la dirección de la velocidad y ser grande en regiones muy curvas. Su trabajo nulo no la elimina de una ecuación de fuerzas ni garantiza, para un apoyo unilateral diferente, que el contacto pudiera mantenerse.</p>
+</section>
+<section id="solucion-7-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-8">8. Los mismos extremos, otro recorrido</h3>
+<p>En el primer recorrido, el segmento horizontal tiene <span class="math inline">\(y=0\)</span>, por lo que la fuerza es cero y no realiza trabajo. En el segmento vertical <span class="math inline">\(dx=0\)</span> y la fuerza es horizontal, así que tampoco lo realiza. Resulta <span class="math inline">\(W_A=0\)</span>.</p>
+<p>En el segundo recorrido, el segmento vertical vuelve a dar cero. El horizontal se encuentra en <span class="math inline">\(y=1\,\mathrm m\)</span>, donde <span class="math inline">\(F_x=2\,\mathrm N\)</span>; sus dos metros aportan <span class="math inline">\(W_B=4\,\mathrm J\)</span>. La fuerza tiene trabajos diferentes entre los mismos extremos porque cambia el recorrido.</p>
+<p>Los agentes que prescriben esas trayectorias no se han especificado. Pueden hacer trabajo adicional. Por tanto, estos cálculos dan el trabajo de la fuerza indicada, pero no necesariamente <span class="math inline">\(\Delta K\)</span>. Para aplicar el teorema a una partícula concreta tendríamos que incluir las otras fuerzas o justificar por qué su trabajo es cero.</p>
+</section>
+<section id="solucion-7-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-9">9. La primera compresión máxima</h3>
+<p>Tomemos <span class="math inline">\(x\)</span> positivo hacia la extensión. El movimiento inicial entra en <span class="math inline">\(x&lt;0\)</span>, pero la energía cinética depende de la rapidez y empieza en nueve joules. Si la compresión tiene módulo <span class="math inline">\(d\)</span>, el resorte realiza <span class="math inline">\(W_s=-kd^2/2\)</span>. El primer reposo exige <span class="math inline">\(0-9\,\mathrm J=-(100\,\mathrm{N/m})d^2/2\)</span>, de donde</p>
+<p><span class="math display">\[
+d=\sqrt{0{,}18}\,\mathrm m=\frac{3\sqrt2}{10}\,\mathrm m\approx0{,}4243\,\mathrm m.
+\]</span></p>
+<p>El valor queda dentro de los cincuenta centímetros del modelo lineal. El trabajo hasta allí es menos nueve joules. En <span class="math inline">\(x=-d\)</span> la fuerza del resorte es positiva y no nula: acelera la partícula hacia la posición natural. El reposo es instantáneo y el movimiento se invierte. Esto contrasta con la caja del ejercicio 5, cuya fuerza resistente desaparecía al mantenerse en reposo.</p>
+</section>
+<section id="solucion-7-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-10">10. Mover un resorte sin cambiar la rapidez</h3>
+<p>La fuerza del resorte hace</p>
+<p><span class="math display">\[
+W_s=\frac{200\,\mathrm{N/m}}{2}\bigl[(0{,}10\,\mathrm m)^2-(0{,}30\,\mathrm m)^2\bigr]=-8\,\mathrm J.
+\]</span></p>
+<p>La rapidez y la dirección se mantienen constantes en la recta, por lo que la aceleración es cero. El actuador ejerce <span class="math inline">\(F_a=kx\)</span> en ese tramo y su trabajo es <span class="math inline">\(+8\,\mathrm J\)</span>. El trabajo neto y <span class="math inline">\(\Delta K\)</span> son cero. No hemos utilizado «lentitud» para igualar las fuerzas: aquí la velocidad constante justifica exactamente el balance dentro del modelo. El arranque y la detención requerirían sus propios intervalos y trabajos.</p>
+</section>
+<section id="solucion-7-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-11">11. Subir por un plano con rozamiento</h3>
+<p>La normal vale <span class="math inline">\(N=mg\cos\theta=16\,\mathrm N\)</span> y el rozamiento cinético cuatro newtons hacia abajo del plano. En cinco metros, el bloque sube tres metros de altura, de modo que <span class="math inline">\(W_g=-60\,\mathrm J\)</span>, <span class="math inline">\(W_f=-20\,\mathrm J\)</span> y <span class="math inline">\(W_N=0\)</span>.</p>
+<p>La energía cinética inicial es cien joules y la final veinte, de donde <span class="math inline">\(v_f=\sqrt{20}\,\mathrm{m/s}\)</span>. La fuerza tangencial neta vale menos dieciséis newtons respecto del sentido de subida. Por tanto, a una distancia <span class="math inline">\(s\)</span> sobre el plano se tiene <span class="math inline">\(K(s)=100\,\mathrm J-(16\,\mathrm N)s\)</span>. Se anularía a los <span class="math inline">\(6{,}25\,\mathrm m\)</span> si el mismo plano continuara. Como el tramo descrito termina en cinco metros, no hay detención interior; no hemos calculado qué ocurre al abandonar su extremo.</p>
+</section>
+<section id="solucion-7-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-12">12. Rozamiento que hace trabajo positivo</h3>
+<p>La caja desliza hacia atrás respecto de la cinta, por lo que la fricción sobre ella apunta hacia la derecha. Su módulo es <span class="math inline">\(f=\mu_kmg=4\,\mathrm N\)</span> y su aceleración <span class="math inline">\(2\,\mathrm{m/s^2}\)</span>. Iguala los tres metros por segundo de la cinta en <span class="math inline">\(t=(3-1)/2\,\mathrm s=1\,\mathrm s\)</span>. En ese tiempo avanza <span class="math inline">\(\Delta x=(1\,\mathrm{m/s})(1\,\mathrm s)+(2\,\mathrm{m/s^2})(1\,\mathrm s)^2/2=2\,\mathrm m\)</span>.</p>
+<p>El trabajo de fricción sobre la caja es <span class="math inline">\(+8\,\mathrm J\)</span>, igual a <span class="math inline">\(K_f-K_i=9\,\mathrm J-1\,\mathrm J\)</span>. La fuerza opuesta sobre la cinta hace trabajo <span class="math inline">\(-(4\,\mathrm N)(3\,\mathrm m)=-12\,\mathrm J\)</span>, pues la superficie recorre tres metros en ese segundo. En el modelo de cinta ideal, la potencia de esa interacción se evalúa con la velocidad de la superficie que recibe la fuerza.</p>
+<p>Los trabajos de la pareja suman menos cuatro joules. Podemos reconstruir ese valor siguiendo el deslizamiento: la cinta adelanta a la caja <span class="math inline">\(3\,\mathrm m-2\,\mathrm m=1\,\mathrm m\)</span>, y el módulo de la fuerza de contacto es cuatro newtons. La suma es, por tanto, <span class="math inline">\(-(4\,\mathrm N)(1\,\mathrm m)=-4\,\mathrm J\)</span>. Las fuerzas opuestas actúan sobre receptores que recorren distancias diferentes. La pérdida de energía cinética mecánica asociada al deslizamiento requiere considerar la energía interna al ampliar el sistema; no representa una desaparición de energía. El motor que mantiene la cinta uniforme aporta además su propio trabajo. Cuando las velocidades se igualan, mantener el movimiento uniforme de la caja requiere fricción tangencial nula en esta situación.</p>
+<figure id="fig-fispm-r20261021-7-7" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/trabajo_cinta.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="../../assets/books/fispm/r20261021/trabajo_cinta.svg" alt="La caja y la cinta avanzan distancias diferentes durante el deslizamiento, aunque las fuerzas de contacto sean opuestas." class="fpm-v04-figure img-fluid figure-img" width="680" height="500" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 7.7.</em> En un segundo, la caja avanza dos metros y la superficie tres. La fricción entrega ocho joules a la caja y realiza menos doce joules sobre la cinta. Las flechas de fuerza están separadas de los desplazamientos para no confundir sus módulos.</p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-7-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-13">13. Trabajo de la fricción estática</h3>
+<p>La caja necesita <span class="math inline">\(f=ma=2\,\mathrm N\)</span> hacia la derecha. La normal es veinte newtons y el máximo estático es <span class="math inline">\(\mu_sN=4\,\mathrm N\)</span>, así que la adherencia es admisible. Su desplazamiento en dos segundos es <span class="math inline">\(\Delta x=at^2/2=2\,\mathrm m\)</span> y su velocidad final dos metros por segundo.</p>
+<p>La fricción realiza <span class="math inline">\(W_f=(2\,\mathrm N)(2\,\mathrm m)=4\,\mathrm J\)</span>, igual al incremento desde cero de <span class="math inline">\(mv^2/2\)</span>. La velocidad relativa tangencial es nula, pero la velocidad de la caja respecto del laboratorio no lo es durante el intervalo. La fuerza estática puede transferir energía cinética al receptor en este marco. La afirmación universal de trabajo estático nulo confundiría ausencia de deslizamiento con ausencia de desplazamiento del receptor.</p>
+</section>
+<section id="solucion-7-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-14">14. Del arco del péndulo a la tensión</h3>
+<p>La caída vertical desde sesenta grados hasta el punto inferior es <span class="math inline">\(h=\ell(1-\cos60^\circ)=1\,\mathrm m\)</span>. La tensión es perpendicular a la velocidad porque el pivote está fijo y la cuerda conserva longitud; no hace trabajo. El peso aporta diez joules, por lo que <span class="math inline">\(v_b^2=2gh=20\,\mathrm{m^2/s^2}\)</span> y <span class="math inline">\(v_b=\sqrt{20}\,\mathrm{m/s}\)</span>.</p>
+<p>Abajo, la ecuación radial es <span class="math inline">\(T_b-mg=mv_b^2/\ell\)</span>, que da <span class="math inline">\(T_b=20\,\mathrm N\)</span>. Para comprobar el tramo completo, sea <span class="math inline">\(\theta\)</span> el ángulo instantáneo con la vertical inferior, entre cero y sesenta grados. El mismo trabajo da <span class="math inline">\(v^2=2g\ell(\cos\theta-1/2)\)</span>. Hacia el centro, <span class="math inline">\(T-mg\cos\theta=mv^2/\ell\)</span>. Sustituyendo,</p>
+<p><span class="math display">\[
+T=mg(3\cos\theta-1).
+\]</span></p>
+<p>Como <span class="math inline">\(1/2\leq\cos\theta\leq1\)</span>, la tensión permanece entre cinco y veinte newtons. El régimen tenso es admisible durante el descenso. El cálculo no utilizó <span class="math inline">\(\sin\theta\approx\theta\)</span> ni necesitó resolver el ángulo en función del tiempo.</p>
+</section>
+<section id="solucion-7-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-15">15. Los trabajos de la tensión se reparten</h3>
+<p>La longitud impone una rapidez de la pesa igual a <span class="math inline">\(2v\)</span>, si <span class="math inline">\(v\)</span> es la de la carga. Los trabajos del peso suman <span class="math inline">\((6-4)\,\mathrm{kg}\,(10\,\mathrm{m/s^2})(0{,}70\,\mathrm m)=14\,\mathrm J\)</span> y los de la tensión se cancelan en la suma. Desde el reposo,</p>
+<p><span class="math display">\[
+\frac12\bigl[6\,\mathrm{kg}+4(2\,\mathrm{kg})\bigr]v^2=14\,\mathrm J.
+\]</span></p>
+<p>Así, la carga baja a <span class="math inline">\(\sqrt2\,\mathrm{m/s}\)</span> y la pesa sube a <span class="math inline">\(2\sqrt2\,\mathrm{m/s}\)</span>. El análisis de Newton da <span class="math inline">\(T=180/7\,\mathrm N&gt;0\)</span>. Sobre la carga, el peso realiza <span class="math inline">\(42\,\mathrm J\)</span> y la tensión efectiva <span class="math inline">\(2T\)</span> realiza <span class="math inline">\(-2T(0{,}70\,\mathrm m)=-36\,\mathrm J\)</span>. El incremento de energía cinética es seis joules, igual a <span class="math inline">\((6\,\mathrm{kg})(\sqrt2\,\mathrm{m/s})^2/2\)</span>.</p>
+<p>La pesa sube <span class="math inline">\(1{,}40\,\mathrm m\)</span>: su peso hace <span class="math inline">\(-28\,\mathrm J\)</span> y la tensión hace <span class="math inline">\(+36\,\mathrm J\)</span>. Su incremento es ocho joules, igual a <span class="math inline">\((2\,\mathrm{kg})(2\sqrt2\,\mathrm{m/s})^2/2\)</span>. Los dos balances recuperan los catorce joules totales y muestran qué términos desaparecieron al reunir el sistema.</p>
+</section>
+<section id="solucion-7-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-16">16. Potencia de un ascenso uniforme</h3>
+<p>La rapidez es <span class="math inline">\(v=6\,\mathrm m/(3\,\mathrm s)=2\,\mathrm{m/s}\)</span> hacia arriba. Como la aceleración es cero, la tensión es <span class="math inline">\(T=mg=500\,\mathrm N\)</span>. El cable entrega <span class="math inline">\(W_T=(500\,\mathrm N)(6\,\mathrm m)=3000\,\mathrm J\)</span> y una potencia constante <span class="math inline">\(P_T=Tv=1000\,\mathrm W\)</span>.</p>
+<p>El peso realiza <span class="math inline">\(-3000\,\mathrm J\)</span> y tiene potencia <span class="math inline">\(-1000\,\mathrm W\)</span>. La suma es cero, de acuerdo con la energía cinética constante. Se está elevando la carga aunque su rapidez no cambie. El valor calculado es potencia mecánica entregada a ella; no hemos identificado la potencia eléctrica consumida ni supuesto un rendimiento del motor.</p>
+</section>
+<section id="solucion-7-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-17">17. Potencia media e instantánea</h3>
+<p>La aceleración es constante e igual a <span class="math inline">\(2\,\mathrm{m/s^2}\)</span>; por Newton, <span class="math inline">\(F_{\mathrm{net}}=4\,\mathrm N\)</span>. La potencia neta resulta</p>
+<p><span class="math display">\[
+P(t)=(4\,\mathrm N)\bigl[1\,\mathrm{m/s}+(2\,\mathrm{m/s^2})t\bigr]
+=4\,\mathrm W+(8\,\mathrm{W/s})t.
+\]</span></p>
+<p>Integrarla de cero a tres segundos da <span class="math inline">\(W=12\,\mathrm J+36\,\mathrm J=48\,\mathrm J\)</span>. La potencia media es dieciséis watts y la final veintiocho watts. La velocidad final vale siete metros por segundo, así que <span class="math inline">\(\Delta K=(2\,\mathrm{kg})[(7\,\mathrm{m/s})^2-(1\,\mathrm{m/s})^2]/2=48\,\mathrm J\)</span>.</p>
+<p>Por la integral de la velocidad, el desplazamiento es doce metros, que multiplicados por los cuatro newtons dan otra vez cuarenta y ocho joules. Multiplicar la potencia final por tres segundos daría ochenta y cuatro joules: usaría un valor máximo como si hubiera actuado durante todo el intervalo.</p>
+</section>
+<section id="solucion-7-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-18">18. Igual trabajo, distinto tiempo</h3>
+<p>En A, <span class="math inline">\(W_A=(2\,\mathrm N)(4\,\mathrm m)=8\,\mathrm J\)</span>. En B, <span class="math inline">\(W_B=(4\,\mathrm N)(2\,\mathrm m)=8\,\mathrm J\)</span>. Ambos suman ocho joules a los cuatro iniciales, de modo que <span class="math inline">\(K_f=12\,\mathrm J\)</span> y <span class="math inline">\(v_f=\sqrt{12}\,\mathrm{m/s}\)</span>.</p>
+<p>El perfil A tiene <span class="math inline">\(a_A=1\,\mathrm{m/s^2}\)</span> durante todo el tramo y tarda <span class="math inline">\(t_A=(\sqrt{12}-2)\,\mathrm s\approx1{,}464\,\mathrm s\)</span>. En B, durante los dos primeros metros <span class="math inline">\(a_B=2\,\mathrm{m/s^2}\)</span> y ya se alcanza la rapidez final. Ese tramo tarda <span class="math inline">\((\sqrt{12}-2)/2\,\mathrm s\)</span>. Los dos metros restantes se recorren uniformemente en <span class="math inline">\(2/\sqrt{12}\,\mathrm s\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+t_B=\left(\frac{\sqrt{12}-2}{2}+\frac{2}{\sqrt{12}}\right)\mathrm s
+\approx1{,}309\,\mathrm s.
+\]</span></p>
+<p>La fuerza B entrega antes el mismo trabajo, así que el cuerpo conserva una rapidez mayor durante buena parte del recorrido. La comparación de trabajos totales pierde la distribución espacial de esa entrega. Los perfiles completos de <span class="math inline">\(K(x)\)</span> sí conservan información suficiente para calcular los tiempos mediante una integral en el tramo de avance.</p>
+<figure id="fig-fispm-r20261021-7-8" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/trabajo_perfiles.svg" class="lightbox" data-gallery="fispm-r20261021-c7"><img src="../../assets/books/fispm/r20261021/trabajo_perfiles.svg" alt="Dos perfiles de fuerza tienen áreas iguales y producen energías cinéticas finales iguales, pero diferentes valores intermedios." class="fpm-v04-figure img-fluid figure-img" width="680" height="640" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 7.8.</em> En el perfil B se adquieren los ocho joules durante la primera mitad del recorrido. Para cada posición interior posterior al origen, su energía cinética es mayor que la del perfil A, hasta coincidir al final. Por ello la integral de tiempo es menor para B.</p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-7-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-19">19. Inferir un coeficiente con cotas</h3>
+<p>El balance de detención da <span class="math inline">\(\mu_k=v_0^2/(2gd)\)</span>. Para valores positivos, la expresión crece con <span class="math inline">\(v_0\)</span> y disminuye con <span class="math inline">\(d\)</span>. Por ello,</p>
+<p><span class="math display">\[
+\mu_k\in\left[\frac{(3{,}9)^2}{20(2{,}1)};\frac{(4{,}1)^2}{20(1{,}9)}\right]
+=\left[\frac{15{,}21}{42};\frac{16{,}81}{38}\right]
+\subset[0{,}3621;0{,}4424].
+\]</span></p>
+<p>El coeficiente es adimensional. El redondeo inferior baja la cota y el superior la sube, de modo que no se excluyen valores permitidos por los intervalos originales. No son intervalos probabilísticos ni hemos asignado un nivel de confianza.</p>
+<p>Repetir ensayos con varias rapideces iniciales pondría a prueba si un mismo coeficiente describe la relación <span class="math inline">\(d=v_0^2/(2\mu_kg)\)</span>. Conviene controlar superficie, horizontalidad y calibración para que ese contraste tenga sentido. Ajustar un coeficiente con este ensayo y recuperar su misma distancia no constituiría una predicción independiente.</p>
+</section>
+<section id="solucion-7-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-20">20. Dos sentidos de trabajo nulo</h3>
+<p>Si <span class="math inline">\(\mathbf F_{\mathrm{neta}}\cdot\mathbf v=0\)</span> durante todo el intervalo, la demostración del teorema da <span class="math inline">\(dK/dt=0\)</span>. Para masa constante positiva, <span class="math inline">\(K\)</span> constante implica <span class="math inline">\(\|\mathbf v\|\)</span> constante. La fuerza puede ser no nula: en el movimiento circular uniforme actúa una fuerza radial perpendicular a la velocidad que cambia su dirección.</p>
+<p>La afirmación sobre un trabajo total nulo sólo compara los estados extremos. Como contraejemplo, tomemos una fuerza neta de <span class="math inline">\(+2\,\mathrm N\)</span> durante el primer metro y <span class="math inline">\(-2\,\mathrm N\)</span> durante el segundo, con velocidad inicial <span class="math inline">\(+2\,\mathrm{m/s}\)</span> y masa de un kilogramo. Los trabajos son <span class="math inline">\(+2\,\mathrm J\)</span> y <span class="math inline">\(-2\,\mathrm J\)</span>; la energía cinética pasa de dos a cuatro joules y vuelve a dos. La rapidez pasa de dos a <span class="math inline">\(2\sqrt2\)</span> metros por segundo y regresa a dos. Permanece positiva, así que los dos tramos son accesibles y el cambio de signo de la fuerza no requiere un choque.</p>
+<p>Una integral nula puede contener contribuciones locales que se compensan. La hipótesis de perpendicularidad instantánea anulaba cada contribución, una condición más fuerte que la igualdad final de energías cinéticas.</p>
+</section>
+<section id="solucion-7-21" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-7-21">21. Una energía nula en un extremo inaccesible</h3>
+<p>El balance da primero una rapidez en función de la posición. Para simplificar la cuenta escribamos <span class="math inline">\(q=x/L\)</span>, que es adimensional. El trabajo acumulado es <span class="math inline">\(-8q\,\mathrm J+4q^2\,\mathrm J\)</span> y la energía inicial vale cuatro joules. Así,</p>
+<p><span class="math display">\[
+K(x)=4(1-q)^2\,\mathrm J.
+\]</span></p>
+<p>En el tramo de avance con <span class="math inline">\(0\leq q&lt;1\)</span>, la raíz compatible con la velocidad inicial es <span class="math inline">\(v(x)=2(1-q)\,\mathrm{m/s}\)</span>. La energía se anula en <span class="math inline">\(L\)</span>, pero todavía falta averiguar cuánto tiempo exige acercarse a ese punto. Usando <span class="math inline">\(dx=L\,dq\)</span> en la integral temporal,</p>
+<p><span class="math display">\[
+t(x)=\frac{L}{2\,\mathrm{m/s}}\int_0^{x/L}\frac{dq}{1-q}
+=-(1\,\mathrm s)\ln\left(1-\frac{x}{L}\right).
+\]</span></p>
+<p>La integral crece sin cota cuando <span class="math inline">\(x\)</span> tiende a <span class="math inline">\(L\)</span> desde la izquierda. Cada posición anterior se alcanza en tiempo finito, mientras que <span class="math inline">\(L\)</span> es una posición límite. Invertir la relación produce</p>
+<p><span class="math display">\[
+x(t)=L\left(1-e^{-t/(1\,\mathrm s)}\right),\qquad
+v(t)=(2\,\mathrm{m/s})e^{-t/(1\,\mathrm s)}.
+\]</span></p>
+<p>Otra derivada da <span class="math inline">\(a(t)=-(2\,\mathrm{m/s^2})e^{-t/(1\,\mathrm s)}\)</span>. Por tanto, <span class="math inline">\(ma=-(4\,\mathrm N)e^{-t/(1\,\mathrm s)}=F_x(x(t))\)</span>; además, <span class="math inline">\(x(0)=0\)</span> y <span class="math inline">\(v(0)=2\,\mathrm{m/s}\)</span>. Se han comprobado la dinámica y los datos iniciales durante toda la aproximación.</p>
+<p>Con velocidad inicial de un metro por segundo, la energía sería <span class="math inline">\(K=[1-8q+4q^2]\,\mathrm J\)</span>. Su primer cero es <span class="math inline">\(q=1-\sqrt3/2\)</span>, es decir, <span class="math inline">\(x=(2-\sqrt3)\,\mathrm m&lt;L\)</span>. Allí la fuerza sigue apuntando hacia la izquierda con valor <span class="math inline">\(-2\sqrt3\,\mathrm N\)</span>, de modo que la partícula invierte el movimiento. El cero de <span class="math inline">\(K\)</span> es simple: su pendiente es la fuerza no nula. La integral de tiempo cerca de ese extremo se comporta como la integral de <span class="math inline">\(1/\sqrt{x_*-x}\)</span>, que converge. Esa primera detención sí ocurre en tiempo finito.</p>
+<p>Con velocidad inicial de tres metros por segundo, se obtiene <span class="math inline">\(K=[9-8q+4q^2]\,\mathrm J=[5+4(q-1)^2]\,\mathrm J\)</span>. En todo el tramo <span class="math inline">\(K\geq5\,\mathrm J\)</span>, y por ello <span class="math inline">\(v\geq\sqrt5\,\mathrm{m/s}\)</span>. La partícula llega a <span class="math inline">\(L\)</span> en un tiempo no mayor que <span class="math inline">\(L/(\sqrt5\,\mathrm{m/s})\)</span> y lo hace con rapidez <span class="math inline">\(\sqrt5\,\mathrm{m/s}\)</span>. La ley declarada termina allí.</p>
+<p>Las tres preparaciones distinguen un retorno, una aproximación asintótica y un paso por el extremo. La forma local de la energía, junto con la rama de movimiento y las fuerzas, permite decidir cuál ocurre. El caso intermedio recupera el mecanismo matemático del capítulo 1: velocidad exponencial positiva en cada tiempo finito y distancia total límite finita. Aquí esa evolución se obtuvo a partir de una fuerza dependiente de la posición.</p>
+</section>
+</section>
+<section id="lecturas-de-apoyo" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-de-apoyo">Lecturas de apoyo</h2>
+<p>Sears y Zemansky, <em>Física universitaria</em>, volumen 1, Young y Freedman, 13.ª edición, capítulo 6, especialmente §6.3, pp.&nbsp;187–192, permite cotejar el trabajo como área, las fuerzas variables y la extensión a trayectorias curvas. Serway y Jewett, <em>Física para ciencias e ingeniería</em>, volumen 1, 10.ª edición española, §§7.4–7.5, pp.&nbsp;156–163, desarrolla las integrales de trabajo y el cambio de energía cinética. En este capítulo se distingue cuidadosamente el balance de una partícula de la suma para varios receptores, cuyos trabajos internos requieren examen propio.</p>
+<p>Spivak, <em>Physics for Mathematicians. Mechanics I</em>, capítulo 3, pp.&nbsp;87–89, construye una primera integral al multiplicar Newton por la velocidad. El argumento temporal de nuestro teorema recoge esa idea sin dividir por una velocidad que podría anularse. La energía potencial y las condiciones de conservación se desarrollarán en el capítulo siguiente. Los problemas y datos de este capítulo son de construcción propia; el cotejo indicado se limita a esos pasajes y no constituye una auditoría completa de las obras.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-06-cuerpos-conectados-y-restricciones.html">← 6. Cuerpos conectados y restricciones</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-08-potencial-equilibrio-y-estabilidad.html">8. Potencial, equilibrio y estabilidad →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

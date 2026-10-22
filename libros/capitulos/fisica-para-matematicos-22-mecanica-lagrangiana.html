@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 22 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>Mecánica lagrangiana – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#dos-velocidades-contribuyen-al-movimiento-del-bloque" id="toc-dos-velocidades-contribuyen-al-movimiento-del-bloque" class="nav-link active" data-scroll-target="#dos-velocidades-contribuyen-al-movimiento-del-bloque">Dos velocidades contribuyen al movimiento del bloque</a></li>
+  <li><a href="#la-matriz-cinética-determina-las-aceleraciones" id="toc-la-matriz-cinética-determina-las-aceleraciones" class="nav-link" data-scroll-target="#la-matriz-cinética-determina-las-aceleraciones">La matriz cinética determina las aceleraciones</a></li>
+  <li><a href="#usar-una-coordenada-cíclica-y-reconstruirla" id="toc-usar-una-coordenada-cíclica-y-reconstruirla" class="nav-link" data-scroll-target="#usar-una-coordenada-cíclica-y-reconstruirla">Usar una coordenada cíclica y reconstruirla</a></li>
+  <li><a href="#recuperar-la-reacción-y-comprobar-el-contacto" id="toc-recuperar-la-reacción-y-comprobar-el-contacto" class="nav-link" data-scroll-target="#recuperar-la-reacción-y-comprobar-el-contacto">Recuperar la reacción y comprobar el contacto</a></li>
+  <li><a href="#cambiar-coordenadas-conservando-las-ecuaciones" id="toc-cambiar-coordenadas-conservando-las-ecuaciones" class="nav-link" data-scroll-target="#cambiar-coordenadas-conservando-las-ecuaciones">Cambiar coordenadas conservando las ecuaciones</a></li>
+  <li><a href="#hacer-la-cuenta-de-energía-del-aparato-correcto" id="toc-hacer-la-cuenta-de-energía-del-aparato-correcto" class="nav-link" data-scroll-target="#hacer-la-cuenta-de-energía-del-aparato-correcto">Hacer la cuenta de energía del aparato correcto</a></li>
+  <li><a href="#usar-el-formalismo-en-un-mecanismo-con-ángulos" id="toc-usar-el-formalismo-en-un-mecanismo-con-ángulos" class="nav-link" data-scroll-target="#usar-el-formalismo-en-un-mecanismo-con-ángulos">Usar el formalismo en un mecanismo con ángulos</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-22-1" id="toc-ejercicio-22-1" class="nav-link" data-scroll-target="#ejercicio-22-1">1. Encontrar el término que acopla dos velocidades</a></li>
+  <li><a href="#ejercicio-22-2" id="toc-ejercicio-22-2" class="nav-link" data-scroll-target="#ejercicio-22-2">2. Despejar las aceleraciones del mecanismo libre</a></li>
+  <li><a href="#ejercicio-22-3" id="toc-ejercicio-22-3" class="nav-link" data-scroll-target="#ejercicio-22-3">3. Reconstruir el estado desde un momento dado</a></li>
+  <li><a href="#ejercicio-22-4" id="toc-ejercicio-22-4" class="nav-link" data-scroll-target="#ejercicio-22-4">4. Recuperar la fuerza normal y examinar límites</a></li>
+  <li><a href="#ejercicio-22-5" id="toc-ejercicio-22-5" class="nav-link" data-scroll-target="#ejercicio-22-5">5. Imponer el movimiento de la cuña</a></li>
+  <li><a href="#ejercicio-22-6" id="toc-ejercicio-22-6" class="nav-link" data-scroll-target="#ejercicio-22-6">6. Aplicar una fuerza horizontal a la cuña</a></li>
+  <li><a href="#ejercicio-22-7" id="toc-ejercicio-22-7" class="nav-link" data-scroll-target="#ejercicio-22-7">7. Añadir un amortiguador relativo</a></li>
+  <li><a href="#ejercicio-22-8" id="toc-ejercicio-22-8" class="nav-link" data-scroll-target="#ejercicio-22-8">8. Rodar en una pendiente y comprobar la fricción disponible</a></li>
+  <li><a href="#ejercicio-22-9" id="toc-ejercicio-22-9" class="nav-link" data-scroll-target="#ejercicio-22-9">9. Una polea que almacena energía de rotación</a></li>
+  <li><a href="#ejercicio-22-10" id="toc-ejercicio-22-10" class="nav-link" data-scroll-target="#ejercicio-22-10">10. Resolver el carrito con péndulo</a></li>
+  <li><a href="#ejercicio-22-11" id="toc-ejercicio-22-11" class="nav-link" data-scroll-target="#ejercicio-22-11">11. Sujetar el carrito con un resorte</a></li>
+  <li><a href="#ejercicio-22-12" id="toc-ejercicio-22-12" class="nav-link" data-scroll-target="#ejercicio-22-12">12. Aplicar una fuerza sobre la masa suspendida</a></li>
+  <li><a href="#ejercicio-22-13" id="toc-ejercicio-22-13" class="nav-link" data-scroll-target="#ejercicio-22-13">13. Un oscilador con equilibrio acelerado</a></li>
+  <li><a href="#ejercicio-22-14" id="toc-ejercicio-22-14" class="nav-link" data-scroll-target="#ejercicio-22-14">14. Un cambio regular de escala curvilínea</a></li>
+  <li><a href="#ejercicio-22-15" id="toc-ejercicio-22-15" class="nav-link" data-scroll-target="#ejercicio-22-15">15. La reacción circular mediante un multiplicador</a></li>
+  <li><a href="#ejercicio-22-16" id="toc-ejercicio-22-16" class="nav-link" data-scroll-target="#ejercicio-22-16">16. Un vínculo móvil transmite potencia</a></li>
+  <li><a href="#ejercicio-22-17" id="toc-ejercicio-22-17" class="nav-link" data-scroll-target="#ejercicio-22-17">17. Dos restricciones y dos multiplicadores</a></li>
+  <li><a href="#ejercicio-22-18" id="toc-ejercicio-22-18" class="nav-link" data-scroll-target="#ejercicio-22-18">18. Detectar el momento de perder contacto</a></li>
+  <li><a href="#ejercicio-22-19" id="toc-ejercicio-22-19" class="nav-link" data-scroll-target="#ejercicio-22-19">19. Una energía conservada puede ocultar un modelo mal construido</a></li>
+  <li><a href="#ejercicio-22-20" id="toc-ejercicio-22-20" class="nav-link" data-scroll-target="#ejercicio-22-20">20. Reducir una coordenada cíclica con el signo correcto</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#solucion-22-1" id="toc-solucion-22-1" class="nav-link" data-scroll-target="#solucion-22-1">1. Encontrar el término que acopla dos velocidades</a></li>
+  <li><a href="#solucion-22-2" id="toc-solucion-22-2" class="nav-link" data-scroll-target="#solucion-22-2">2. Despejar las aceleraciones del mecanismo libre</a></li>
+  <li><a href="#solucion-22-3" id="toc-solucion-22-3" class="nav-link" data-scroll-target="#solucion-22-3">3. Reconstruir el estado desde un momento dado</a></li>
+  <li><a href="#solucion-22-4" id="toc-solucion-22-4" class="nav-link" data-scroll-target="#solucion-22-4">4. Recuperar la fuerza normal y examinar límites</a></li>
+  <li><a href="#solucion-22-5" id="toc-solucion-22-5" class="nav-link" data-scroll-target="#solucion-22-5">5. Imponer el movimiento de la cuña</a></li>
+  <li><a href="#solucion-22-6" id="toc-solucion-22-6" class="nav-link" data-scroll-target="#solucion-22-6">6. Aplicar una fuerza horizontal a la cuña</a></li>
+  <li><a href="#solucion-22-7" id="toc-solucion-22-7" class="nav-link" data-scroll-target="#solucion-22-7">7. Añadir un amortiguador relativo</a></li>
+  <li><a href="#solucion-22-8" id="toc-solucion-22-8" class="nav-link" data-scroll-target="#solucion-22-8">8. Rodar en una pendiente y comprobar la fricción disponible</a></li>
+  <li><a href="#solucion-22-9" id="toc-solucion-22-9" class="nav-link" data-scroll-target="#solucion-22-9">9. Una polea que almacena energía de rotación</a></li>
+  <li><a href="#solucion-22-10" id="toc-solucion-22-10" class="nav-link" data-scroll-target="#solucion-22-10">10. Resolver el carrito con péndulo</a></li>
+  <li><a href="#solucion-22-11" id="toc-solucion-22-11" class="nav-link" data-scroll-target="#solucion-22-11">11. Sujetar el carrito con un resorte</a></li>
+  <li><a href="#solucion-22-12" id="toc-solucion-22-12" class="nav-link" data-scroll-target="#solucion-22-12">12. Aplicar una fuerza sobre la masa suspendida</a></li>
+  <li><a href="#solucion-22-13" id="toc-solucion-22-13" class="nav-link" data-scroll-target="#solucion-22-13">13. Un oscilador con equilibrio acelerado</a></li>
+  <li><a href="#solucion-22-14" id="toc-solucion-22-14" class="nav-link" data-scroll-target="#solucion-22-14">14. Un cambio regular de escala curvilínea</a></li>
+  <li><a href="#solucion-22-15" id="toc-solucion-22-15" class="nav-link" data-scroll-target="#solucion-22-15">15. La reacción circular mediante un multiplicador</a></li>
+  <li><a href="#solucion-22-16" id="toc-solucion-22-16" class="nav-link" data-scroll-target="#solucion-22-16">16. Un vínculo móvil transmite potencia</a></li>
+  <li><a href="#solucion-22-17" id="toc-solucion-22-17" class="nav-link" data-scroll-target="#solucion-22-17">17. Dos restricciones y dos multiplicadores</a></li>
+  <li><a href="#solucion-22-18" id="toc-solucion-22-18" class="nav-link" data-scroll-target="#solucion-22-18">18. Detectar el momento de perder contacto</a></li>
+  <li><a href="#solucion-22-19" id="toc-solucion-22-19" class="nav-link" data-scroll-target="#solucion-22-19">19. Una energía conservada puede ocultar un modelo mal construido</a></li>
+  <li><a href="#solucion-22-20" id="toc-solucion-22-20" class="nav-link" data-scroll-target="#solucion-22-20">20. Reducir una coordenada cíclica con el signo correcto</a></li>
+  </ul></li>
+  <li><a href="#lecturas-y-conexiones" id="toc-lecturas-y-conexiones" class="nav-link" data-scroll-target="#lecturas-y-conexiones">Lecturas y conexiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mecánica lagrangiana</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 22</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 22 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-21-trabajo-virtual-coordenadas-generalizadas-y-accion.html">← 21. Trabajo virtual, coordenadas generalizadas y acción</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-23-simetrias-y-conservacion.html">23. Simetrías y conservación →</a></p>
+<p>Un bloque baja por una cuña que puede deslizarse horizontalmente sobre el suelo. Si la cuña está fija, basta la componente del peso a lo largo de su cara inclinada. Al liberarla, esa cuenta cambia: la superficie se desplaza mientras el bloque la recorre y la reacción acelera también a la cuña. La velocidad del bloque incorpora ambos movimientos. Construirla correctamente será el paso que decida las ecuaciones.</p>
+<p>El capítulo anterior obtuvo las ecuaciones de Lagrange mediante el trabajo virtual y la acción. Las usaremos para resolver este mecanismo y seguir lo que sucede al modificar sus apoyos, aplicar una fuerza o introducir rozamiento. La energía cinética conservará las relaciones geométricas entre las velocidades, y las ecuaciones reducidas permitirán recuperar después las fuerzas de los vínculos. Un problema estará resuelto cuando sus posiciones, sus fuerzas y su régimen físico concuerden entre sí.</p>
+<section id="dos-velocidades-contribuyen-al-movimiento-del-bloque" class="level2">
+<h2 class="anchored" data-anchor-id="dos-velocidades-contribuyen-al-movimiento-del-bloque">Dos velocidades contribuyen al movimiento del bloque</h2>
+<p>La cuña tiene masa <span class="math inline">\(M&gt;0\)</span> y se traslada horizontalmente con orientación fija sobre una base lisa. Su cara forma un ángulo <span class="math inline">\(\alpha\in(0,\pi/2)\)</span> con la horizontal. El bloque, de masa <span class="math inline">\(m&gt;0\)</span>, se desliza por esa cara, también lisa. Durante el tramo considerado se mantiene el contacto y el bloque permanece dentro de la superficie disponible. Tomamos un marco inercial, un eje vertical ascendente y las coordenadas <span class="math inline">\(X\)</span>, posición horizontal de la cuña, y <span class="math inline">\(s\)</span>, distancia recorrida por el bloque hacia abajo a lo largo de la cara. Su posición es</p>
+<p><span class="math display">\[
+x=X+s\cos\alpha,\qquad y=h-s\sin\alpha,
+\]</span></p>
+<p>con <span class="math inline">\(h\)</span> constante. Derivar ambas componentes da <span class="math inline">\(\dot x=\dot X+\dot s\cos\alpha\)</span>, <span class="math inline">\(\dot y=-\dot s\sin\alpha\)</span>. La energía cinética de la cuña es <span class="math inline">\(M\dot X^2/2\)</span>; la del bloque requiere elevar al cuadrado su velocidad completa. Al sumar,</p>
+<p><span class="math display">\[
+T=\frac12(M+m)\dot X^2+m\cos\alpha\,\dot X\dot s+\frac12m\dot s^2,
+\qquad U=-mg s\sin\alpha.
+\]</span></p>
+<p>Se ha elegido el cero del potencial para omitir su constante. El término cruzado procede de que ambas velocidades contribuyen a la misma componente horizontal del bloque. Cuando sus signos se oponen, sus contribuciones pueden compensarse parcialmente. Esa información desaparecería si se sumaran sólo los cuadrados de las velocidades de las coordenadas.</p>
+<p>El lagrangiano <span class="math inline">\(L=T-U\)</span> produce</p>
+<p><span class="math display">\[
+\begin{aligned}
+(M+m)\ddot X+m\cos\alpha\,\ddot s&amp;=0,\\
+m\cos\alpha\,\ddot X+m\ddot s&amp;=mg\sin\alpha.
+\end{aligned}
+\]</span></p>
+<p>La primera ecuación conserva la cantidad <span class="math inline">\((M+m)\dot X+m\cos\alpha\dot s\)</span>, que coincide con el momento horizontal total. En la segunda, la aceleración de la cuña contribuye al movimiento relativo del bloque. Al resolver el sistema,</p>
+<p><span class="math display">\[
+\ddot X=-\frac{mg\sin\alpha\cos\alpha}{M+m\sin^2\alpha},
+\qquad
+\ddot s=\frac{(M+m)g\sin\alpha}{M+m\sin^2\alpha}.
+\]</span></p>
+<p>La cuña retrocede y el bloque aumenta su coordenada descendente. Con masas y ángulo constantes, ambas aceleraciones son constantes mientras se mantenga este modelo de contacto. Los datos iniciales determinan las posiciones y velocidades mediante dos integraciones.</p>
+<figure id="fig-fispm-r20261021-22-1" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/lagrange_cuna.svg" class="lightbox" data-gallery="fispm-r20261021-c22"><img src="../../assets/books/fispm/r20261021/lagrange_cuna.svg" alt="Geometría de la cuña móvil. Esquema del capítulo 22; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid figure-img" width="414.886246" height="319.68" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 22.1.</em> La velocidad horizontal del bloque combina la traslación de la cuña y su movimiento relativo sobre la cara. El término cruzado de la energía cinética conserva esa combinación.</p>
+</figcaption>
+</figure>
+</section>
+<section id="la-matriz-cinética-determina-las-aceleraciones" class="level2">
+<h2 class="anchored" data-anchor-id="la-matriz-cinética-determina-las-aceleraciones">La matriz cinética determina las aceleraciones</h2>
+<p>Las ecuaciones anteriores forman un sistema lineal en las aceleraciones, aunque otros mecanismos pueden tener coeficientes que dependan de las posiciones y velocidades. Es útil reconocer esa estructura antes de intentar despejar una ecuación a la vez.</p>
+<p><strong>Definición.</strong> El lagrangiano de un modelo mecánico natural con vínculos fijos es una función <span class="math inline">\(L(q,\dot q)=\frac12\dot q^{\mathsf T}G(q)\dot q-U(q)\)</span>, donde <span class="math inline">\(G\)</span> es la matriz cinética simétrica definida positiva. Un lagrangiano es regular respecto de las velocidades en una región cuando su Hessiana <span class="math inline">\(W_{ij}=\partial^2L/(\partial\dot q_i\partial\dot q_j)\)</span> es invertible allí.</p>
+<p>Para el modelo natural, <span class="math inline">\(W=G\)</span>. En coordenadas con unidades diferentes, las entradas de esta matriz llevan las unidades que necesita cada producto; la positividad se interpreta después de fijar unidades coherentes para las coordenadas. El contenido físico permanece en la energía que representa la forma cuadrática.</p>
+<p><strong>Proposición.</strong> Para un modelo natural con <span class="math inline">\(G\)</span> y <span class="math inline">\(U\)</span> de clase <span class="math inline">\(C^1\)</span>, las ecuaciones de Lagrange con fuerzas adicionales <span class="math inline">\(Q_i\)</span> equivalen al sistema</p>
+<p><span class="math display">\[
+\sum_jG_{ij}\ddot q_j+\sum_{j,k}\Gamma_{ijk}\dot q_j\dot q_k+U_{q_i}=Q_i,
+\qquad
+\Gamma_{ijk}=\frac12\left(\partial_jG_{ik}+\partial_kG_{ij}-\partial_iG_{jk}\right).
+\]</span></p>
+<p>La positividad de <span class="math inline">\(G\)</span> determina de manera única las aceleraciones para cada posición y velocidad de esa región y cada valor de las fuerzas.</p>
+<p><strong>Demostración.</strong> La derivada respecto de <span class="math inline">\(\dot q_i\)</span> es <span class="math inline">\(\sum_jG_{ij}\dot q_j\)</span>. Su derivada temporal aporta <span class="math inline">\(\sum_jG_{ij}\ddot q_j+\sum_{j,k}(\partial_kG_{ij})\dot q_k\dot q_j\)</span>. Por otro lado, <span class="math inline">\(\partial T/\partial q_i=\frac12\sum_{j,k}(\partial_iG_{jk})\dot q_j\dot q_k\)</span>. Al restar estas expresiones, podemos promediar los coeficientes con los índices <span class="math inline">\(j,k\)</span> intercambiados, pues multiplican el mismo producto de velocidades. El resultado es precisamente <span class="math inline">\(\Gamma_{ijk}\)</span>. El término del potencial entra con signo positivo en Euler–Lagrange. Finalmente, una matriz definida positiva tiene núcleo cero y es invertible; multiplicar por <span class="math inline">\(G^{-1}\)</span> despeja un único vector de aceleraciones. <span class="math inline">\(\square\)</span></p>
+<p>La afirmación final es una propiedad algebraica en cada estado. La continuación de una trayectoria requiere además conservar la regularidad y las condiciones físicas del aparato. Para la cuña,</p>
+<p><span class="math display">\[
+G=\begin{pmatrix}M+m&amp;m\cos\alpha\\m\cos\alpha&amp;m\end{pmatrix},
+\qquad \det G=m(M+m\sin^2\alpha)&gt;0.
+\]</span></p>
+<p>La energía también muestra directamente la positividad: es la suma de las energías cartesianas de dos cuerpos de masas positivas. Si una parametrización vuelve singular la matriz, se examina la independencia de las coordenadas y las idealizaciones empleadas antes de invertirla.</p>
+</section>
+<section id="usar-una-coordenada-cíclica-y-reconstruirla" class="level2">
+<h2 class="anchored" data-anchor-id="usar-una-coordenada-cíclica-y-reconstruirla">Usar una coordenada cíclica y reconstruirla</h2>
+<p>En la cuña libre, <span class="math inline">\(X\)</span> aparece a través de su velocidad. Su ecuación ya está integrada una vez. Mantener esa información permite reducir el cálculo y reconstruir luego el movimiento completo.</p>
+<p><strong>Definición.</strong> El momento conjugado a <span class="math inline">\(q_i\)</span> es <span class="math inline">\(p_i=\partial L/\partial\dot q_i\)</span>. Una coordenada es cíclica en la representación elegida cuando <span class="math inline">\(\partial L/\partial q_i=0\)</span> en su dominio.</p>
+<p>Su ecuación es <span class="math inline">\(\dot p_i=Q_i\)</span>. Si la fuerza generalizada adicional correspondiente es cero, ese momento es constante. La expresión concreta de <span class="math inline">\(p_i\)</span> procede del lagrangiano: en la cuña combina dos velocidades, mientras que un ángulo polar tiene como momento conjugado una componente del momento angular.</p>
+<p>Consideremos un modelo de dos coordenadas <span class="math inline">\((X,s)\)</span> de la forma</p>
+<p><span class="math display">\[
+L=\frac12A(s)\dot X^2+B(s)\dot X\dot s+\frac12C(s)\dot s^2-U(s),
+\]</span></p>
+<p>con <span class="math inline">\(A,B,C,U\)</span> de clase <span class="math inline">\(C^2\)</span>, <span class="math inline">\(A&gt;0\)</span> y <span class="math inline">\(AC-B^2&gt;0\)</span>. Supongamos fuerzas adicionales nulas y fijemos el momento conservado <span class="math inline">\(P=A\dot X+B\dot s\)</span>. Podemos recuperar <span class="math inline">\(\dot X=(P-B\dot s)/A\)</span>. Para deducir la ecuación restante hay que conservar qué cantidad se mantiene fija al efectuar la reducción.</p>
+<p><strong>Proposición.</strong> Las ecuaciones con momento <span class="math inline">\(P\)</span> fijado se reducen a la ecuación de Lagrange de</p>
+<p><span class="math display">\[
+\mathcal R_0(s,\dot s;P)=\frac12\left(C-\frac{B^2}{A}\right)\dot s^2
+-\left(U+\frac{P^2}{2A}\right),
+\]</span></p>
+<p>junto con la reconstrucción <span class="math inline">\(\dot X=(P-B\dot s)/A\)</span>. La masa reducida <span class="math inline">\(C-B^2/A\)</span> es positiva.</p>
+<p><strong>Demostración.</strong> Llamemos <span class="math inline">\(v(X,s,\dot s;P)=(P-B\dot s)/A\)</span> a la velocidad eliminada; en este caso es independiente de <span class="math inline">\(X\)</span>. Formamos <span class="math inline">\(\mathcal R=L(s,v,\dot s)-Pv\)</span>. Al derivar respecto de <span class="math inline">\(s\)</span> o de <span class="math inline">\(\dot s\)</span>, las contribuciones que contienen derivadas de <span class="math inline">\(v\)</span> llevan el factor <span class="math inline">\(\partial L/\partial\dot X-P\)</span>, que vale cero por la elección de <span class="math inline">\(v\)</span>. Por ello <span class="math inline">\(\mathcal R_s=L_s\)</span> y <span class="math inline">\(\mathcal R_{\dot s}=L_{\dot s}\)</span> evaluados en esa velocidad. La ecuación de <span class="math inline">\(s\)</span> conserva exactamente su forma original. La otra ecuación queda satisfecha al reconstruir <span class="math inline">\(X\)</span> con momento constante.</p>
+<p>Expandir la expresión da</p>
+<p><span class="math display">\[
+\mathcal R=\frac12\left(C-\frac{B^2}{A}\right)\dot s^2+
+\frac{PB}{A}\dot s-U-\frac{P^2}{2A}.
+\]</span></p>
+<p>En un intervalo de la coordenada <span class="math inline">\(s\)</span>, el término lineal es la derivada temporal de <span class="math inline">\(P\int^s B(\sigma)/A(\sigma)\,d\sigma\)</span>. El resultado sobre términos de borde del capítulo 21 permite retirarlo y obtener <span class="math inline">\(\mathcal R_0\)</span>. Finalmente, <span class="math inline">\(C-B^2/A=(AC-B^2)/A&gt;0\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>En la cuña, <span class="math inline">\(A=M+m\)</span>, <span class="math inline">\(B=m\cos\alpha\)</span> y <span class="math inline">\(C=m\)</span>. La masa reducida es <span class="math inline">\(m(M+m\sin^2\alpha)/(M+m)\)</span> y el término <span class="math inline">\(P^2/(2A)\)</span> es constante. La ecuación reducida recupera la aceleración de <span class="math inline">\(s\)</span> y el momento proporciona después <span class="math inline">\(\dot X\)</span>. El término cuadrático de <span class="math inline">\(P\)</span> puede variar con <span class="math inline">\(s\)</span> en otros mecanismos y producir una fuerza efectiva, como mostrará el ejercicio 20. Esta operación se denomina reducción de Routh para la coordenada cíclica eliminada.</p>
+</section>
+<section id="recuperar-la-reacción-y-comprobar-el-contacto" class="level2">
+<h2 class="anchored" data-anchor-id="recuperar-la-reacción-y-comprobar-el-contacto">Recuperar la reacción y comprobar el contacto</h2>
+<p>El movimiento reducido todavía permite preguntar qué fuerza debe ejercer la cara de la cuña. Su normal exterior hacia el bloque es <span class="math inline">\(\mathbf n=(\sin\alpha,\cos\alpha)\)</span>. La aceleración del bloque es <span class="math inline">\((\ddot X+\ddot s\cos\alpha,-\ddot s\sin\alpha)\)</span> y su proyección normal vale <span class="math inline">\(\ddot X\sin\alpha\)</span>. Así,</p>
+<p><span class="math display">\[
+N-mg\cos\alpha=m\ddot X\sin\alpha,
+\qquad
+N=\frac{mMg\cos\alpha}{M+m\sin^2\alpha}.
+\]</span></p>
+<p>El valor es positivo para las hipótesis usadas y confirma la fuerza compresiva del contacto. Su componente horizontal sobre la cuña es <span class="math inline">\(-N\sin\alpha\)</span> y satisface <span class="math inline">\(M\ddot X=-N\sin\alpha\)</span>. Esa comprobación conecta la solución de Lagrange con Newton para cada cuerpo.</p>
+<p>La recuperación puede organizarse también con todas las coordenadas cartesianas. Escribamos <span class="math inline">\(r\)</span> para el vector que reúne sus componentes, <span class="math inline">\(\mathsf M\)</span> para la matriz diagonal de masas y <span class="math inline">\(J\)</span> para la matriz cuyas filas son los gradientes de los vínculos <span class="math inline">\(f_\alpha(r,t)=0\)</span>.</p>
+<p><strong>Definición.</strong> Los multiplicadores de reacción de un sistema regular de vínculos son los coeficientes <span class="math inline">\(\lambda_\alpha\)</span> que representan la reacción ideal mediante <span class="math inline">\(R=J^{\mathsf T}\lambda\)</span>, es decir, como combinación de los gradientes de las restricciones.</p>
+<p>La representación usa que el espacio normal está generado por esos gradientes independientes. El significado numérico de cada multiplicador depende de la normalización de su función <span class="math inline">\(f_\alpha\)</span>. La fuerza física se obtiene multiplicándolo por el gradiente correspondiente.</p>
+<p><strong>Proposición.</strong> Para masas constantes positivas y vínculos de clase <span class="math inline">\(C^2\)</span> con filas de <span class="math inline">\(J\)</span> independientes, la recuperación de las aceleraciones y reacciones satisface</p>
+<p><span class="math display">\[
+\mathsf M\ddot r=F+J^{\mathsf T}\lambda,\qquad
+(J\mathsf M^{-1}J^{\mathsf T})\lambda=b-J\mathsf M^{-1}F,
+\]</span></p>
+<p>con</p>
+<p><span class="math display">\[
+b_\alpha=-\dot r^{\mathsf T}(\nabla_r^2f_\alpha)\dot r
+-2\,\nabla_r(\partial_tf_\alpha)\cdot\dot r-\partial_t^2f_\alpha.
+\]</span></p>
+<p>La matriz que multiplica a <span class="math inline">\(\lambda\)</span> es definida positiva y la reacción queda determinada de manera única en un estado compatible.</p>
+<p><strong>Demostración.</strong> Derivar dos veces <span class="math inline">\(f_\alpha(r(t),t)=0\)</span> produce <span class="math inline">\(J\ddot r=b\)</span> con los términos escritos. Sustituir <span class="math inline">\(\ddot r=\mathsf M^{-1}(F+J^{\mathsf T}\lambda)\)</span> da la ecuación lineal de los multiplicadores. Para un vector <span class="math inline">\(z\)</span> de coeficientes,</p>
+<p><span class="math display">\[
+z^{\mathsf T}J\mathsf M^{-1}J^{\mathsf T}z
+=(J^{\mathsf T}z)^{\mathsf T}\mathsf M^{-1}(J^{\mathsf T}z).
+\]</span></p>
+<p>La positividad de las masas hace positiva esta forma siempre que <span class="math inline">\(J^{\mathsf T}z\ne0\)</span>. La independencia de las filas de <span class="math inline">\(J\)</span> asegura precisamente esa condición para <span class="math inline">\(z\ne0\)</span>. Se puede, pues, resolver de manera única por <span class="math inline">\(\lambda\)</span> y recuperar luego la aceleración. <span class="math inline">\(\square\)</span></p>
+<p>Los datos iniciales deben satisfacer tanto <span class="math inline">\(f=0\)</span> como <span class="math inline">\(J\dot r+f_t=0\)</span>. Para un vínculo unilateral se comprueba además el sentido de la reacción. Si el cálculo exige una reacción atractiva de la superficie, el tramo de contacto supuesto ha terminado. La ecuación geométrica debe entonces dejar paso al movimiento libre apropiado.</p>
+<figure id="fig-fispm-r20261021-22-2" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/lagrange_reaccion.svg" class="lightbox" data-gallery="fispm-r20261021-c22"><img src="../../assets/books/fispm/r20261021/lagrange_reaccion.svg" alt="Reacción normal sobre bloque y cuña" class="fpm-v04-figure img-fluid figure-img" width="433.575853" height="319.68" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 22.2.</em> La reacción normal aparece en sentidos opuestos sobre ambos cuerpos. Proyectar Newton permite recuperar su módulo después de resolver las coordenadas independientes.</p>
+</figcaption>
+</figure>
+</section>
+<section id="cambiar-coordenadas-conservando-las-ecuaciones" class="level2">
+<h2 class="anchored" data-anchor-id="cambiar-coordenadas-conservando-las-ecuaciones">Cambiar coordenadas conservando las ecuaciones</h2>
+<p>La cuña podría describirse mediante la posición horizontal del bloque y la de su apoyo. Un mecanismo impulsado puede resultar más sencillo al medir desplazamientos respecto de una referencia móvil. Estos cambios modifican las fórmulas de <span class="math inline">\(T\)</span> y de las fuerzas generalizadas y conservan la trayectoria física cuando se aplican de manera completa.</p>
+<p><strong>Proposición.</strong> Para un lagrangiano <span class="math inline">\(L\)</span> de clase <span class="math inline">\(C^2\)</span>, sea <span class="math inline">\(q=\psi(Q,t)\)</span> un cambio suave de coordenadas con Jacobiana invertible <span class="math inline">\(\psi_{,a}=\partial\psi/\partial Q_a\)</span>. Definamos</p>
+<p><span class="math display">\[
+\widetilde L(Q,\dot Q,t)=L(\psi(Q,t),\psi_{,Q}\dot Q+\psi_{,t},t).
+\]</span></p>
+<p>Entonces los residuos de Euler–Lagrange se transforman como</p>
+<p><span class="math display">\[
+\frac d{dt}\frac{\partial\widetilde L}{\partial\dot Q_a}
+-\frac{\partial\widetilde L}{\partial Q_a}
+=\sum_i\psi_{i,a}\left(\frac d{dt}\frac{\partial L}{\partial\dot q_i}-\frac{\partial L}{\partial q_i}\right).
+\]</span></p>
+<p>Las fuerzas adicionales se transforman con el mismo factor: <span class="math inline">\(\widetilde Q_a=\sum_iQ_i\psi_{i,a}\)</span>.</p>
+<p><strong>Demostración.</strong> La regla de la cadena da <span class="math inline">\(\partial\widetilde L/\partial\dot Q_a=\sum_ip_i\psi_{i,a}\)</span>. Su derivada temporal contiene <span class="math inline">\(\sum_i\dot p_i\psi_{i,a}+\sum_ip_i\,d\psi_{i,a}/dt\)</span>. Al derivar <span class="math inline">\(\widetilde L\)</span> respecto de <span class="math inline">\(Q_a\)</span>, la contribución de las posiciones es <span class="math inline">\(\sum_iL_{q_i}\psi_{i,a}\)</span>. La de las velocidades es <span class="math inline">\(\sum_ip_i\,d\psi_{i,a}/dt\)</span>, porque las derivadas mixtas de <span class="math inline">\(\psi\)</span> conmutan, incluyendo su dependencia explícita de <span class="math inline">\(t\)</span>. Estos últimos términos se cancelan al restar y queda la identidad. El trabajo virtual conserva <span class="math inline">\(\sum_iQ_i\delta q_i=\sum_a\widetilde Q_a\delta Q_a\)</span>, que prueba la fórmula de las fuerzas. La invertibilidad permite recuperar también las ecuaciones iniciales. <span class="math inline">\(\square\)</span></p>
+<p>Por ejemplo, para un oscilador cuya posición de equilibrio es <span class="math inline">\(a(t)\)</span>, el potencial cartesiano es <span class="math inline">\(k(x-a(t))^2/2\)</span>. La coordenada relativa <span class="math inline">\(q=x-a(t)\)</span> produce</p>
+<p><span class="math display">\[
+L=\frac m2(\dot q+\dot a)^2-\frac k2q^2,
+\qquad m\ddot q+kq=-m\ddot a.
+\]</span></p>
+<p>El término de aceleración del apoyo nace de derivar la energía cinética transformada. Si se conserva únicamente <span class="math inline">\(m\dot q^2/2\)</span>, se está cambiando el modelo. Restar la derivada total de <span class="math inline">\(m\dot a q\)</span> permite escribir, además de un término que sólo depende del tiempo, el lagrangiano equivalente <span class="math inline">\(m\dot q^2/2-kq^2/2-m\ddot a q\)</span>.</p>
+<figure id="fig-fispm-r20261021-22-3" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/lagrange_apoyo.svg" class="lightbox" data-gallery="fispm-r20261021-c22"><img src="../../assets/books/fispm/r20261021/lagrange_apoyo.svg" alt="Oscilador con equilibrio móvil" class="fpm-v04-figure img-fluid figure-img" width="611.401875" height="344.736" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 22.3.</em> La posición cartesiana y el desplazamiento relativo se relacionan por <span class="math inline">\(x=a+q\)</span>. El movimiento prescrito del apoyo entra en la ecuación relativa mediante su aceleración.</p>
+</figcaption>
+</figure>
+</section>
+<section id="hacer-la-cuenta-de-energía-del-aparato-correcto" class="level2">
+<h2 class="anchored" data-anchor-id="hacer-la-cuenta-de-energía-del-aparato-correcto">Hacer la cuenta de energía del aparato correcto</h2>
+<p>Para la cuña libre, el sistema incluye bloque y cuña y su energía <span class="math inline">\(T+U\)</span> se conserva. La reacción transfiere energía entre ambos cuerpos; la suma de sus potencias es cero porque sus velocidades tienen la misma componente normal en el contacto. Si imponemos <span class="math inline">\(X=a(t)\)</span>, el actuador que mueve la cuña puede transferir energía al bloque y debe figurar en el balance.</p>
+<p><strong>Proposición.</strong> Para partículas de masas constantes con potencial cartesiano <span class="math inline">\(U(r,t)\)</span> de clase <span class="math inline">\(C^1\)</span>, fuerzas adicionales <span class="math inline">\(F^{\mathrm{ad}}\)</span> y reacciones ideales <span class="math inline">\(R=J^{\mathsf T}\lambda\)</span>, la energía física satisface</p>
+<p><span class="math display">\[
+\frac d{dt}(T+U)=F^{\mathrm{ad}}\cdot\dot r+\partial_tU-\lambda^{\mathsf T}f_t.
+\]</span></p>
+<p>La derivada parcial del potencial se toma aquí con las posiciones cartesianas fijas.</p>
+<p><strong>Demostración.</strong> Newton da <span class="math inline">\(\mathsf M\ddot r=-\nabla_rU+F^{\mathrm{ad}}+J^{\mathsf T}\lambda\)</span>. Multiplicar por <span class="math inline">\(\dot r\)</span> y sumar la derivada del potencial produce <span class="math inline">\(\dot T+\dot U=F^{\mathrm{ad}}\cdot\dot r+\partial_tU+\lambda^{\mathsf T}J\dot r\)</span>. La primera derivada de los vínculos es <span class="math inline">\(J\dot r+f_t=0\)</span>. Sustituirla transforma el último término en <span class="math inline">\(-\lambda^{\mathsf T}f_t\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Para vínculos fijos, el último término es cero. Para vínculos móviles, representa la potencia de las reacciones sobre las partículas modeladas. La integral lagrangiana <span class="math inline">\(\mathcal E=\dot q\cdot L_{\dot q}-L\)</span>, estudiada en el capítulo anterior, conserva su propio balance. Su comparación con <span class="math inline">\(T+U\)</span> exige reconstruir las velocidades cartesianas y fijar qué aparato se incluye en el sistema.</p>
+<p>El procedimiento ya permite incorporar disipación. Si un amortiguador entre el bloque y la cuña ejerce una fuerza relativa <span class="math inline">\(-b\dot s\)</span>, su contribución generalizada es <span class="math inline">\(Q_s=-b\dot s\)</span> y <span class="math inline">\(Q_X=0\)</span>. El momento horizontal total sigue siendo constante y la energía pierde potencia <span class="math inline">\(b\dot s^2\)</span>. El cálculo puede conservar una cantidad mientras otra cambia, porque cada balance responde a una interacción concreta.</p>
+</section>
+<section id="usar-el-formalismo-en-un-mecanismo-con-ángulos" class="level2">
+<h2 class="anchored" data-anchor-id="usar-el-formalismo-en-un-mecanismo-con-ángulos">Usar el formalismo en un mecanismo con ángulos</h2>
+<p>Un carrito de masa <span class="math inline">\(M\)</span> sostiene un péndulo de masa <span class="math inline">\(m\)</span> y longitud <span class="math inline">\(\ell\)</span>. El carro se mueve horizontalmente y el ángulo <span class="math inline">\(\theta\)</span> se mide desde la vertical inferior. Para la masa suspendida, <span class="math inline">\(x=X+\ell\sin\theta\)</span>, <span class="math inline">\(y=-\ell\cos\theta\)</span>. La suma de energías proporciona</p>
+<p><span class="math display">\[
+T=\frac12(M+m)\dot X^2+m\ell\cos\theta\dot X\dot\theta+
+\frac12m\ell^2\dot\theta^2,
+\qquad U=-mg\ell\cos\theta.
+\]</span></p>
+<p>El parentesco con la cuña es visible en el término cruzado. Su coeficiente depende ahora del ángulo y sus derivadas generan términos cuadráticos en las velocidades. Los ejercicios desarrollarán las ecuaciones exactas, su aproximación de pequeño ángulo y la modificación producida por un resorte en el carro. La misma geometría cinética conectará el mecanismo con los modos del capítulo 20.</p>
+<figure id="fig-fispm-r20261021-22-4" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/lagrange_carrito.svg" class="lightbox" data-gallery="fispm-r20261021-c22"><img src="../../assets/books/fispm/r20261021/lagrange_carrito.svg" alt="Carrito y péndulo. Esquema del capítulo 22; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid figure-img" width="448.568471" height="319.68" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 22.4.</em> El ángulo y la posición del carro describen conjuntamente la posición de la masa suspendida. Derivar su posición antes de construir <span class="math inline">\(T\)</span> permite conservar el arrastre del soporte.</p>
+</figcaption>
+</figure>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Use unidades SI y declare las posiciones cartesianas antes de escribir las energías. Las fuerzas de fricción indicadas en los ejercicios 7 y 8 tienen sus leyes propias; los demás contactos se suponen lisos. Las fórmulas se usan durante el tramo físico en que se mantienen los vínculos.</p>
+<section id="ejercicio-22-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-1">1. Encontrar el término que acopla dos velocidades</h3>
+<p>Construya desde las posiciones la energía cinética de la cuña móvil. Compare la rapidez del bloque con <span class="math inline">\(\dot X=1\)</span>, <span class="math inline">\(\dot s=-1\)</span> y <span class="math inline">\(\alpha=\pi/3\)</span> frente a la que se obtendría omitiendo el término cruzado. Identifique qué velocidades son relativas y cuáles son cartesianas.</p>
+</section>
+<section id="ejercicio-22-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-2">2. Despejar las aceleraciones del mecanismo libre</h3>
+<p>Para <span class="math inline">\(M=3\)</span>, <span class="math inline">\(m=1\)</span>, <span class="math inline">\(\alpha=\pi/6\)</span> y <span class="math inline">\(g=10\)</span>, derive y resuelva las dos ecuaciones. Halle también las componentes cartesianas de la aceleración del bloque y compruebe la conservación del momento horizontal.</p>
+</section>
+<section id="ejercicio-22-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-3">3. Reconstruir el estado desde un momento dado</h3>
+<p>En el aparato del ejercicio 2, se prepara <span class="math inline">\(s(0)=0\)</span>, <span class="math inline">\(\dot s(0)=0\)</span> y momento horizontal total <span class="math inline">\(P=2\,\mathrm{kg\,m/s}\)</span>. Obtenga <span class="math inline">\(s(t)\)</span> y <span class="math inline">\(X(t)\)</span> para <span class="math inline">\(X(0)=0\)</span>. Halle las velocidades cuando <span class="math inline">\(s=0{,}2\,\mathrm m\)</span>, mediante la solución y mediante energía reducida.</p>
+</section>
+<section id="ejercicio-22-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-4">4. Recuperar la fuerza normal y examinar límites</h3>
+<p>Calcule la reacción del aparato libre y evalúela para el ejercicio 2. Examine los límites <span class="math inline">\(M\to\infty\)</span> y <span class="math inline">\(M\to0^+\)</span> con <span class="math inline">\(m,\alpha\)</span> fijos. Interprete las aceleraciones cartesianas del bloque en el segundo límite.</p>
+</section>
+<section id="ejercicio-22-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-5">5. Imponer el movimiento de la cuña</h3>
+<p>Si un motor prescribe <span class="math inline">\(X=a(t)\)</span>, deduzca la ecuación de <span class="math inline">\(s\)</span>, la reacción y la potencia de esa reacción sobre el bloque. Determine el requisito de contacto. Evalúe su admisibilidad con <span class="math inline">\(\alpha=\pi/6\)</span>, <span class="math inline">\(g=10\)</span> y <span class="math inline">\(\ddot a=-20\,\mathrm{m/s^2}\)</span>.</p>
+</section>
+<section id="ejercicio-22-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-6">6. Aplicar una fuerza horizontal a la cuña</h3>
+<p>Una fuerza externa constante <span class="math inline">\(F\)</span> actúa hacia la derecha sobre la cuña. Derive las aceleraciones y el valor de <span class="math inline">\(F\)</span> que mantiene <span class="math inline">\(s\)</span> constante si inicialmente <span class="math inline">\(\dot s=0\)</span>. Calcule la reacción en esa preparación.</p>
+</section>
+<section id="ejercicio-22-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-7">7. Añadir un amortiguador relativo</h3>
+<p>En la cuña libre se añade un amortiguador viscoso con <span class="math inline">\(Q_s=-b\dot s\)</span>, <span class="math inline">\(b&gt;0\)</span>, y <span class="math inline">\(Q_X=0\)</span>. Obtenga <span class="math inline">\(\dot s(t)\)</span> y <span class="math inline">\(s(t)\)</span> desde reposo relativo. Halle la velocidad relativa límite y compruebe el balance energético del sistema completo.</p>
+</section>
+<section id="ejercicio-22-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-8">8. Rodar en una pendiente y comprobar la fricción disponible</h3>
+<p>Un cuerpo de masa <span class="math inline">\(m\)</span>, radio <span class="math inline">\(R\)</span> e inercia <span class="math inline">\(I=\beta mR^2\)</span>, con <span class="math inline">\(\beta&gt;0\)</span>, rueda por una pendiente fija de ángulo <span class="math inline">\(\alpha\)</span>. Su eje mantiene dirección fija y se cumple <span class="math inline">\(s-R\varphi=\mathrm{constante}\)</span>. Deduzca la aceleración por Lagrange. Recupere la fricción estática y el mínimo coeficiente necesario. Evalúe para <span class="math inline">\(\beta=1/2\)</span> y <span class="math inline">\(\alpha=\pi/6\)</span>.</p>
+</section>
+<section id="ejercicio-22-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-9">9. Una polea que almacena energía de rotación</h3>
+<p>Dos masas <span class="math inline">\(m_1=2\)</span>, <span class="math inline">\(m_2=3\)</span> cuelgan de una polea fija con <span class="math inline">\(I/R^2=1\,\mathrm{kg}\)</span>. La cuerda mantiene contacto adherente y <span class="math inline">\(g=10\)</span>. Halle la aceleración mediante una coordenada, recupere ambas tensiones y compruebe el torque sobre la polea.</p>
+</section>
+<section id="ejercicio-22-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-10">10. Resolver el carrito con péndulo</h3>
+<p>Deduzca las dos ecuaciones exactas del mecanismo del texto, sin fuerzas horizontales externas. Despeje las aceleraciones. Para <span class="math inline">\(M=3\)</span>, <span class="math inline">\(m=1\)</span>, <span class="math inline">\(\ell=0{,}5\)</span> y <span class="math inline">\(g=10\)</span>, halle la frecuencia de la oscilación pequeña respecto del reposo inferior y la relación entre los desplazamientos del carro y del ángulo en el modo oscilatorio.</p>
+</section>
+<section id="ejercicio-22-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-11">11. Sujetar el carrito con un resorte</h3>
+<p>Para el carrito con péndulo, añada un resorte horizontal de constante <span class="math inline">\(k\)</span>, con equilibrio en <span class="math inline">\(X=0\)</span>. Use <span class="math inline">\(M=3\)</span>, <span class="math inline">\(m=1\)</span>, <span class="math inline">\(\ell=1\)</span>, <span class="math inline">\(g=10\)</span> y <span class="math inline">\(k=8\)</span>. Construya las matrices lineales y halle los cuadrados de las frecuencias y dos razones de amplitud. Explique por qué desaparece el modo de traslación libre.</p>
+</section>
+<section id="ejercicio-22-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-12">12. Aplicar una fuerza sobre la masa suspendida</h3>
+<p>Una fuerza horizontal prescrita <span class="math inline">\(f(t)\)</span> actúa sobre la masa del péndulo del carrito. Halle las dos fuerzas generalizadas, las ecuaciones modificadas y la potencia. Para <span class="math inline">\(f\)</span> constante, construya un potencial local que incorpore esa fuerza y explique el balance de energía correspondiente.</p>
+</section>
+<section id="ejercicio-22-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-13">13. Un oscilador con equilibrio acelerado</h3>
+<p>Una partícula horizontal tiene potencial <span class="math inline">\(U(x,t)=k(x-a(t))^2/2\)</span>. Derive la ecuación en <span class="math inline">\(x\)</span> y en <span class="math inline">\(q=x-a\)</span>. Compare la energía física con la energía relativa <span class="math inline">\(E_{\mathrm{rel}}=m\dot q^2/2+kq^2/2\)</span>. Para <span class="math inline">\(a(t)=a_0+v_0t+ct^2/2\)</span>, encuentre una solución con <span class="math inline">\(q\)</span> constante y compruebe el trabajo del agente externo.</p>
+</section>
+<section id="ejercicio-22-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-14">14. Un cambio regular de escala curvilínea</h3>
+<p>Para un oscilador cartesiano, tome <span class="math inline">\(x=a\sinh Q\)</span>, con <span class="math inline">\(a&gt;0\)</span>. Construya el lagrangiano, su matriz cinética y la ecuación en <span class="math inline">\(Q\)</span>. Muestre que reconstruye <span class="math inline">\(\ddot x+(k/m)x=0\)</span> para toda posición. Compare su regularidad con la coordenada singular estudiada en el capítulo 21.</p>
+</section>
+<section id="ejercicio-22-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-15">15. La reacción circular mediante un multiplicador</h3>
+<p>Una masa <span class="math inline">\(m=1\)</span> está sujeta a la circunferencia <span class="math inline">\(x^2+y^2=1\)</span> bajo gravedad <span class="math inline">\(g=10\)</span>. Use <span class="math inline">\(f=(x^2+y^2-1)/2\)</span> y <span class="math inline">\(R=\lambda(x,y)\)</span>. En el estado <span class="math inline">\(r=(0{,}6,-0{,}8)\,\mathrm m\)</span>, <span class="math inline">\(\dot r=(1{,}6,1{,}2)\,\mathrm{m/s}\)</span>, calcule <span class="math inline">\(\lambda\)</span>, la reacción, la aceleración y la tensión equivalente.</p>
+</section>
+<section id="ejercicio-22-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-16">16. Un vínculo móvil transmite potencia</h3>
+<p>Una guía plana satisface <span class="math inline">\(f(x,y,t)=y-b(t)x=0\)</span>, con <span class="math inline">\(b(t)=\nu t\)</span>, donde <span class="math inline">\(\nu=1\,\mathrm{s^{-1}}\)</span>. Con <span class="math inline">\(m=1\)</span>, <span class="math inline">\(g=10\)</span>, evalúe en <span class="math inline">\(t=0\)</span>, <span class="math inline">\(r=(1,0)\,\mathrm m\)</span> y <span class="math inline">\(\dot r=(0,1)\,\mathrm{m/s}\)</span>. Compruebe la compatibilidad del estado, calcule la reacción y compare su potencia con <span class="math inline">\(-\lambda f_t\)</span>.</p>
+</section>
+<section id="ejercicio-22-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-17">17. Dos restricciones y dos multiplicadores</h3>
+<p>Una masa describe una circunferencia horizontal de radio <span class="math inline">\(R\)</span> en el plano <span class="math inline">\(z=0\)</span>. Use <span class="math inline">\(f_1=(x^2+y^2+z^2-R^2)/2\)</span> y <span class="math inline">\(f_2=z\)</span>. Para <span class="math inline">\(r=(R,0,0)\)</span>, <span class="math inline">\(\dot r=(0,v,0)\)</span> y peso <span class="math inline">\((0,0,-mg)\)</span>, calcule los multiplicadores y la reacción completa. Compruebe la independencia de los dos gradientes.</p>
+</section>
+<section id="ejercicio-22-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-18">18. Detectar el momento de perder contacto</h3>
+<p>Una partícula desliza por la cara exterior lisa de una esfera fija de radio <span class="math inline">\(R\)</span>, en un plano vertical que pasa por el centro. El ángulo <span class="math inline">\(\theta\)</span> parte de la vertical superior. Se libera desde reposo con <span class="math inline">\(0&lt;\theta_0&lt;\pi/2\)</span>. Halle la rapidez, la reacción y el ángulo de separación. Examine el límite <span class="math inline">\(\theta_0\to0^+\)</span> y la preparación exacta <span class="math inline">\(\theta_0=0\)</span>, <span class="math inline">\(\dot\theta_0=0\)</span>.</p>
+</section>
+<section id="ejercicio-22-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-19">19. Una energía conservada puede ocultar un modelo mal construido</h3>
+<p>Para la cuña libre, alguien propone <span class="math inline">\(L_{\mathrm{err}}=(M+m)\dot X^2/2+m\dot s^2/2+mg s\sin\alpha\)</span>. Derive sus predicciones desde reposo y examine la energía cartesiana y el momento horizontal físico. Determine qué comprobación descubre el error y cuál podría pasarlo por alto.</p>
+</section>
+<section id="ejercicio-22-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-22-20">20. Reducir una coordenada cíclica con el signo correcto</h3>
+<p>Para <span class="math inline">\(L=m(\dot r^2+r^2\dot\varphi^2)/2-U(r)\)</span>, con <span class="math inline">\(r&gt;0\)</span> y momento <span class="math inline">\(J=mr^2\dot\varphi\)</span> fijado, compare la sustitución directa en <span class="math inline">\(L\)</span> con la reducción <span class="math inline">\(\mathcal R=L-J\dot\varphi\)</span>. Halle el potencial efectivo correcto. Para <span class="math inline">\(U=kr^2/2\)</span>, <span class="math inline">\(k&gt;0\)</span> y <span class="math inline">\(J\ne0\)</span>, determine el radio circular y la frecuencia de pequeñas oscilaciones radiales con <span class="math inline">\(J\)</span> fijo. Para <span class="math inline">\(m=1\,\mathrm{kg}\)</span>, <span class="math inline">\(k=1\,\mathrm{N/m}\)</span> y <span class="math inline">\(J=2\,\mathrm{kg\,m^2/s}\)</span>, prepare un estado de energía radial total <span class="math inline">\(E=2{,}5\,\mathrm J\)</span>. Determine el intervalo exacto de radios. Use <span class="math inline">\(z=r^2\)</span> para obtener una ecuación lineal y hallar el período radial exacto. Compare su alcance con el cálculo de pequeña amplitud.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-22-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-1">1. Encontrar el término que acopla dos velocidades</h3>
+<p>El bloque tiene <span class="math inline">\(\dot r=(\dot X+\dot s\cos\alpha,-\dot s\sin\alpha)\)</span>. Elevar al cuadrado da <span class="math inline">\(\|\dot r\|^2=\dot X^2+2\cos\alpha\dot X\dot s+\dot s^2\)</span>. Al añadir <span class="math inline">\(M\dot X^2/2\)</span> se obtiene la energía del texto. El valor <span class="math inline">\(\dot s\)</span> es una velocidad relativa sobre la cuña; sus componentes deben sumarse a las del apoyo para obtener la velocidad en el marco inercial.</p>
+<p>Para los datos, <span class="math inline">\(\dot r=(1/2,\sqrt3/2)\,\mathrm{m/s}\)</span> y su rapidez es <span class="math inline">\(1\,\mathrm{m/s}\)</span>. Omitir el término cruzado produciría una rapidez calculada de <span class="math inline">\(\sqrt2\,\mathrm{m/s}\)</span>. La diferencia procede de la compensación parcial en la componente horizontal, que puede comprobarse directamente con las posiciones, antes de usar cualquier ecuación dinámica.</p>
+</section>
+<section id="solucion-22-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-2">2. Despejar las aceleraciones del mecanismo libre</h3>
+<p>Las ecuaciones son <span class="math inline">\(4\ddot X+(\sqrt3/2)\ddot s=0\)</span> y <span class="math inline">\((\sqrt3/2)\ddot X+\ddot s=5\)</span>, en unidades coherentes. La primera permite sustituir <span class="math inline">\(\ddot X=-(\sqrt3/8)\ddot s\)</span> en la segunda y obtener <span class="math inline">\((13/16)\ddot s=5\)</span>. Así,</p>
+<p><span class="math display">\[
+\ddot s=\frac{80}{13}\,\mathrm{m/s^2},\qquad
+\ddot X=-\frac{10\sqrt3}{13}\,\mathrm{m/s^2}.
+\]</span></p>
+<p>El bloque tiene <span class="math inline">\(\ddot x=\ddot X+\ddot s\cos\alpha=30\sqrt3/13\,\mathrm{m/s^2}\)</span> y <span class="math inline">\(\ddot y=-40/13\,\mathrm{m/s^2}\)</span>. La derivada del momento horizontal total es <span class="math inline">\(M\ddot X+m\ddot x=3(-10\sqrt3/13)+30\sqrt3/13=0\)</span>. El bloque acelera horizontalmente aunque la resultante horizontal sobre el sistema completo sea cero: la reacción distribuye ese movimiento entre sus componentes.</p>
+</section>
+<section id="solucion-22-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-3">3. Reconstruir el estado desde un momento dado</h3>
+<p>El momento da <span class="math inline">\(\dot X=P/4-(\sqrt3/8)\dot s\)</span>. Desde reposo relativo, <span class="math inline">\(s(t)=40t^2/13\)</span> y</p>
+<p><span class="math display">\[
+X(t)=\frac{P}{4}t-\frac{\sqrt3}{8}s(t),
+\qquad \dot X(t)=\frac{P}{4}-\frac{\sqrt3}{8}\dot s(t),
+\]</span></p>
+<p>al expresar <span class="math inline">\(P\)</span> y los demás parámetros por sus valores SI. La cuña comienza con velocidad <span class="math inline">\(0{,}5\,\mathrm{m/s}\)</span>; el sistema completo tiene momento distinto de cero aunque el bloque empiece en reposo relativo.</p>
+<p>Cuando <span class="math inline">\(s=0{,}2\)</span>, el tiempo es <span class="math inline">\(t=\sqrt{13/200}\approx0{,}254951\,\mathrm s\)</span>. Se obtiene <span class="math inline">\(\dot s=\sqrt{32/13}\approx1{,}568929\,\mathrm{m/s}\)</span> y <span class="math inline">\(\dot X=1/2-(\sqrt3/8)\sqrt{32/13}\approx0{,}160317\,\mathrm{m/s}\)</span>. Para comprobarlo por energía, completar el cuadrado en <span class="math inline">\(T\)</span> separa <span class="math inline">\(P^2/8\)</span> de <span class="math inline">\(\frac12(13/16)\dot s^2\)</span>. El descenso del potencial es <span class="math inline">\(5s\)</span>, por lo que <span class="math inline">\(\frac12(13/16)\dot s^2=5s\)</span>. La contribución constante del momento se conserva y el movimiento relativo recupera el mismo valor.</p>
+</section>
+<section id="solucion-22-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-4">4. Recuperar la fuerza normal y examinar límites</h3>
+<p>La proyección normal de la aceleración del bloque es <span class="math inline">\(\ddot X\sin\alpha\)</span>. De <span class="math inline">\(N-mg\cos\alpha=m\ddot X\sin\alpha\)</span> resulta <span class="math inline">\(N=mMg\cos\alpha/(M+m\sin^2\alpha)\)</span>. Para los datos, <span class="math inline">\(N=60\sqrt3/13\approx7{,}994081\,\mathrm N\)</span>. La fuerza horizontal sobre la cuña es <span class="math inline">\(-N\sin\alpha=-30\sqrt3/13\,\mathrm N\)</span>, igual a <span class="math inline">\(M\ddot X\)</span>.</p>
+<p>Si <span class="math inline">\(M\to\infty\)</span>, se obtiene <span class="math inline">\(\ddot X\to0\)</span>, <span class="math inline">\(\ddot s\to g\sin\alpha\)</span> y <span class="math inline">\(N\to mg\cos\alpha\)</span>, los valores de un plano fijo. Si <span class="math inline">\(M\to0^+\)</span> a ángulo fijo, <span class="math inline">\(\ddot X\to-g\cot\alpha\)</span>, <span class="math inline">\(\ddot s\to g/\sin\alpha\)</span> y <span class="math inline">\(N\to0\)</span>. Al reconstruir el bloque, <span class="math inline">\(\ddot x\to0\)</span> y <span class="math inline">\(\ddot y\to-g\)</span>. Ese límite se aproxima a caída libre mientras la cuña muy ligera se retira. El modelo original mantiene <span class="math inline">\(M&gt;0\)</span>; la interpretación del límite exige además que la geometría disponible permita el tramo calculado.</p>
+</section>
+<section id="solucion-22-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-5">5. Imponer el movimiento de la cuña</h3>
+<p>Sustituir <span class="math inline">\(X=a(t)\)</span> en la velocidad antes de formar <span class="math inline">\(T\)</span> da <span class="math inline">\(L=m(\dot a^2+2\cos\alpha\dot a\dot s+\dot s^2)/2+mg s\sin\alpha\)</span>, hasta términos que sólo dependen del tiempo si se incluye el apoyo. La ecuación es</p>
+<p><span class="math display">\[
+\ddot s=g\sin\alpha-\ddot a\cos\alpha,
+\qquad N=m(g\cos\alpha+\ddot a\sin\alpha).
+\]</span></p>
+<p>El contacto compresivo requiere <span class="math inline">\(N\ge0\)</span>, equivalente a <span class="math inline">\(\ddot a\ge-g\cot\alpha\)</span>. La reacción tiene potencia <span class="math inline">\(N\mathbf n\cdot\dot r=N\dot a\sin\alpha\)</span>. Puede verificarse al derivar la energía cartesiana del bloque y sustituir su ecuación.</p>
+<p>Con la aceleración indicada, <span class="math inline">\(N/m=5\sqrt3-10&lt;0\)</span>. La superficie exterior exigiría una tracción sobre el bloque y el supuesto de contacto falla. Una guía bilateral que lo sujetara sí podría realizar esa reacción, pero correspondería a otro aparato. Para la superficie de apoyo, se determina el instante de separación y se continúa con el vuelo libre desde su posición y velocidad.</p>
+</section>
+<section id="solucion-22-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-6">6. Aplicar una fuerza horizontal a la cuña</h3>
+<p>El trabajo virtual es <span class="math inline">\(F\delta X\)</span>, de modo que <span class="math inline">\(Q_X=F\)</span> y <span class="math inline">\(Q_s=0\)</span>. Las ecuaciones cambian a <span class="math inline">\((M+m)\ddot X+m\cos\alpha\ddot s=F\)</span> y <span class="math inline">\(\cos\alpha\ddot X+\ddot s=g\sin\alpha\)</span>. Resolverlas produce</p>
+<p><span class="math display">\[
+\ddot X=\frac{F-mg\sin\alpha\cos\alpha}{M+m\sin^2\alpha},
+\qquad \ddot s=g\sin\alpha-\ddot X\cos\alpha.
+\]</span></p>
+<p>Para mantener <span class="math inline">\(s\)</span> constante hace falta <span class="math inline">\(\ddot X=g\tan\alpha\)</span>. La primera ecuación, con <span class="math inline">\(\ddot s=0\)</span>, fija <span class="math inline">\(F=(M+m)g\tan\alpha\)</span>. El bloque acompaña la traslación del apoyo, y la normal vale <span class="math inline">\(N=m(g\cos\alpha+g\tan\alpha\sin\alpha)=mg/\cos\alpha\)</span>. La fuerza aplicada acelera horizontalmente toda la masa mientras la reacción sostiene la componente vertical del peso del bloque.</p>
+</section>
+<section id="solucion-22-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-7">7. Añadir un amortiguador relativo</h3>
+<p>La primera ecuación sigue conservando <span class="math inline">\(P=(M+m)\dot X+m\cos\alpha\dot s\)</span>. Eliminar <span class="math inline">\(\ddot X\)</span> de la segunda deja <span class="math inline">\(D\ddot s+b\dot s=mg\sin\alpha\)</span>, con <span class="math inline">\(D=m(M+m\sin^2\alpha)/(M+m)\)</span>. Su positividad fija el tiempo <span class="math inline">\(\tau=D/b\)</span>. Con reposo relativo inicial,</p>
+<p><span class="math display">\[
+\dot s(t)=v_\infty(1-e^{-t/\tau}),\qquad
+s(t)-s(0)=v_\infty[t-\tau(1-e^{-t/\tau})],
+\qquad v_\infty=\frac{mg\sin\alpha}{b}.
+\]</span></p>
+<p>Se comprueban los datos y la ecuación al derivar la expresión. El momento reconstruye <span class="math inline">\(\dot X=[P-m\cos\alpha\dot s]/(M+m)\)</span>. La energía total satisface <span class="math inline">\(\dot E=Q_s\dot s=-b\dot s^2\)</span>. La fuerza viscosa actúa internamente entre bloque y cuña: sus contribuciones al momento horizontal se cancelan, mientras su potencia total depende de la velocidad relativa. La velocidad límite pertenece al modelo de pendiente prolongada; en una cuña finita puede alcanzarse el extremo antes de observarla.</p>
+</section>
+<section id="solucion-22-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-8">8. Rodar en una pendiente y comprobar la fricción disponible</h3>
+<p>La relación integrada permite usar <span class="math inline">\(s\)</span> como coordenada única y escribir <span class="math inline">\(\dot\varphi=\dot s/R\)</span>. Entonces <span class="math inline">\(T=\frac12m(1+\beta)\dot s^2\)</span>, <span class="math inline">\(U=-mgs\sin\alpha\)</span> y <span class="math inline">\(\ddot s=g\sin\alpha/(1+\beta)\)</span>. La traslación del centro cumple <span class="math inline">\(m\ddot s=mg\sin\alpha-f\)</span>, donde <span class="math inline">\(f\)</span> es la fricción ascendente. Por ello</p>
+<p><span class="math display">\[
+f=\frac{\beta}{1+\beta}mg\sin\alpha,
+\qquad \mu_s\ge\frac{\beta}{1+\beta}\tan\alpha.
+\]</span></p>
+<p>Se usó <span class="math inline">\(N=mg\cos\alpha\)</span> y la cota de fricción estática <span class="math inline">\(f\le\mu_sN\)</span>. Para un cilindro homogéneo, <span class="math inline">\(\beta=1/2\)</span>, se obtiene <span class="math inline">\(\ddot s=(2/3)g\sin\alpha\)</span> y <span class="math inline">\(\mu_s\ge1/(3\sqrt3)\approx0{,}192450\)</span>. El torque <span class="math inline">\(fR=I\ddot\varphi\)</span> verifica la rotación. El punto de contacto está instantáneamente en reposo sobre el plano fijo y la potencia de la fricción estática es cero. Se ha usado la restricción integrable de rodadura en una dirección fija; la rodadura con cambios libres de orientación exige examinar sus vínculos por separado.</p>
+</section>
+<section id="solucion-22-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-9">9. Una polea que almacena energía de rotación</h3>
+<p>Tomando <span class="math inline">\(q\)</span> descendente para la masa 2, las velocidades de las masas son opuestas y <span class="math inline">\(\dot\varphi=\dot q/R\)</span>. La energía cinética es <span class="math inline">\([m_1+m_2+I/R^2]\dot q^2/2\)</span> y el potencial <span class="math inline">\((m_1-m_2)gq\)</span>. Así,</p>
+<p><span class="math display">\[
+\ddot q=\frac{(m_2-m_1)g}{m_1+m_2+I/R^2}=\frac53\,\mathrm{m/s^2}.
+\]</span></p>
+<p>Newton para cada masa da <span class="math inline">\(T_1=m_1(g+\ddot q)=70/3\,\mathrm N\)</span> y <span class="math inline">\(T_2=m_2(g-\ddot q)=25\,\mathrm N\)</span>. Su diferencia es <span class="math inline">\(T_2-T_1=5/3\,\mathrm N=(I/R^2)\ddot q\)</span>. Multiplicar por <span class="math inline">\(R\)</span> verifica el torque <span class="math inline">\(I\ddot\varphi\)</span>. Las tensiones son distintas porque la polea recibe aceleración angular y almacena energía; la ley de contacto adherente se supone realizable por la cuerda y el material de la polea en ese régimen.</p>
+</section>
+<section id="solucion-22-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-10">10. Resolver el carrito con péndulo</h3>
+<p>Las ecuaciones exactas son</p>
+<p><span class="math display">\[
+\begin{aligned}
+(M+m)\ddot X+m\ell\cos\theta\ddot\theta-m\ell\sin\theta\dot\theta^2&amp;=0,\\
+\cos\theta\ddot X+\ell\ddot\theta+g\sin\theta&amp;=0.
+\end{aligned}
+\]</span></p>
+<p>El término cuadrático de la primera procede de derivar <span class="math inline">\(\cos\theta\dot\theta\)</span>. En la segunda se cancelan los términos que contienen <span class="math inline">\(\dot X\dot\theta\)</span>. Al despejar,</p>
+<p><span class="math display">\[
+\ddot X=\frac{m\sin\theta(\ell\dot\theta^2+g\cos\theta)}{M+m\sin^2\theta},
+\quad
+\ddot\theta=-\frac{\sin\theta[(M+m)g+m\ell\dot\theta^2\cos\theta]}
+{\ell(M+m\sin^2\theta)}.
+\]</span></p>
+<p>Al linealizar alrededor de un reposo inferior se obtiene <span class="math inline">\((M+m)\ddot X+m\ell\ddot\theta=0\)</span>, <span class="math inline">\(\ddot X+\ell\ddot\theta+g\theta=0\)</span>. El modo oscilatorio tiene <span class="math inline">\(\omega^2=(M+m)g/(M\ell)=80/3\,\mathrm{s^{-2}}\)</span>, y <span class="math inline">\(\omega\approx5{,}163978\,\mathrm{s^{-1}}\)</span>. Sus amplitudes satisfacen <span class="math inline">\(X=-m\ell\theta/(M+m)=-\theta/8\,\mathrm m\)</span> cuando el ángulo se expresa en radianes. Además existe la traslación uniforme del sistema, con <span class="math inline">\(\theta=0\)</span>. Su preparación inicial determina cuánto de cada comportamiento aparece.</p>
+<figure id="fig-fispm-r20261021-22-5" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/lagrange_modos.svg" class="lightbox" data-gallery="fispm-r20261021-c22"><img src="../../assets/books/fispm/r20261021/lagrange_modos.svg" alt="Perfiles del carrito con resorte" class="fpm-v04-figure img-fluid figure-img" width="479.488276" height="339.602578" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 22.5.</em> Las amplitudes de traslación y ángulo tienen unidades diferentes. El dibujo representa dos configuraciones de los perfiles del ejercicio 11 y conserva su relación de signos; las amplitudes de traslación y ángulo se amplían por separado.</p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-22-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-11">11. Sujetar el carrito con un resorte</h3>
+<p>La aproximación cuadrática añade <span class="math inline">\(kX^2/2\)</span> al potencial y deja</p>
+<p><span class="math display">\[
+G_0=\begin{pmatrix}4&amp;1\\1&amp;1\end{pmatrix},\qquad
+K_0=\begin{pmatrix}8&amp;0\\0&amp;10\end{pmatrix},
+\]</span></p>
+<p>con unidades por entrada determinadas por las coordenadas <span class="math inline">\((X,\theta)\)</span>. Para valores numéricos en SI, <span class="math inline">\(\det(K_0-\lambda G_0)=3\lambda^2-48\lambda+80\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\lambda_{1,2}=8\mp\frac43\sqrt{21}\quad\mathrm{s^{-2}},
+\qquad \omega_{1,2}\approx1{,}374736,\ 3{,}756341\quad\mathrm{s^{-1}}.
+\]</span></p>
+<p>La segunda fila da <span class="math inline">\(\theta/X=\lambda/(10-\lambda)\)</span> en <span class="math inline">\(\mathrm{m^{-1}}\)</span>, positiva en el modo lento y negativa en el rápido. Elegir una amplitud de longitud para <span class="math inline">\(X\)</span> fija el ángulo correspondiente; las componentes de este perfil llevan unidades diferentes. Ambas formas cuadráticas son positivas y los dos cuadrados de frecuencia son positivos. El resorte añade una fuerza restauradora a la traslación que antes era libre, de modo que el modo cero adquiere frecuencia positiva.</p>
+</section>
+<section id="solucion-22-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-12">12. Aplicar una fuerza sobre la masa suspendida</h3>
+<p>La variación horizontal de la masa es <span class="math inline">\(\delta x=\delta X+\ell\cos\theta\delta\theta\)</span>. El trabajo <span class="math inline">\(f\delta x\)</span> identifica <span class="math inline">\(Q_X=f\)</span> y <span class="math inline">\(Q_\theta=f\ell\cos\theta\)</span>. La primera ecuación del ejercicio 10 recibe <span class="math inline">\(f\)</span> en el miembro derecho; la segunda, antes de dividir por <span class="math inline">\(m\ell\)</span>, recibe <span class="math inline">\(f\ell\cos\theta\)</span> en la forma <span class="math inline">\(m\ell\cos\theta\ddot X+m\ell^2\ddot\theta+mg\ell\sin\theta=Q_\theta\)</span>.</p>
+<p>La potencia es <span class="math inline">\(f(\dot X+\ell\cos\theta\dot\theta)\)</span>, igual a la fuerza por la velocidad cartesiana del punto de aplicación. Para <span class="math inline">\(f\)</span> constante se puede incluir <span class="math inline">\(U_f=-f(X+\ell\sin\theta)\)</span> en el potencial. Entonces <span class="math inline">\(T+U_g+U_f\)</span> se conserva, mientras la energía mecánica que sólo incluye gravedad cumple <span class="math inline">\(d(T+U_g)/dt=f\dot x\)</span>. Dar únicamente <span class="math inline">\(Q_X=f\)</span> habría colocado la fuerza en el carro y habría descrito otra aplicación física.</p>
+</section>
+<section id="solucion-22-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-13">13. Un oscilador con equilibrio acelerado</h3>
+<p>En el marco inercial, <span class="math inline">\(m\ddot x+k(x-a)=0\)</span>. Con <span class="math inline">\(q=x-a\)</span> se obtiene <span class="math inline">\(m\ddot q+kq=-m\ddot a\)</span>. Las dos cuentas de energía satisfacen</p>
+<p><span class="math display">\[
+\frac d{dt}\left[\frac m2\dot x^2+\frac k2(x-a)^2\right]=-kq\dot a,
+\qquad
+\dot E_{\mathrm{rel}}=-m\ddot a\dot q.
+\]</span></p>
+<p>La primera usa la dependencia explícita del potencial en el marco cartesiano; la segunda multiplica la ecuación relativa por <span class="math inline">\(\dot q\)</span>. Cuando <span class="math inline">\(\ddot a=c\)</span> es constante, <span class="math inline">\(q_*=-mc/k\)</span> es una solución constante si se preparan <span class="math inline">\(q(0)=q_*\)</span> y <span class="math inline">\(\dot q(0)=0\)</span>. La partícula tiene <span class="math inline">\(x=a-mc/k\)</span> y acelera con el apoyo. La fuerza es <span class="math inline">\(-kq_*=mc\)</span> y la potencia recibida es <span class="math inline">\(mc\dot a\)</span>, igual a la derivada de su energía física. Su energía relativa permanece constante porque la distancia al equilibrio móvil y la velocidad relativa permanecen fijas.</p>
+</section>
+<section id="solucion-22-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-14">14. Un cambio regular de escala curvilínea</h3>
+<p>Se tiene <span class="math inline">\(\dot x=a\cosh Q\dot Q\)</span>, de modo que <span class="math inline">\(L=ma^2\cosh^2Q\dot Q^2/2-ka^2\sinh^2Q/2\)</span>. La matriz cinética de una entrada es <span class="math inline">\(G=ma^2\cosh^2Q&gt;0\)</span> para todo <span class="math inline">\(Q\)</span>. Euler–Lagrange da</p>
+<p><span class="math display">\[
+\cosh^2Q\ddot Q+\sinh Q\cosh Q\dot Q^2+
+\frac km\sinh Q\cosh Q=0.
+\]</span></p>
+<p>Dividir por <span class="math inline">\(\cosh Q\)</span> y multiplicar por <span class="math inline">\(a\)</span> identifica <span class="math inline">\(\ddot x+(k/m)x=0\)</span>, pues <span class="math inline">\(\ddot x=a(\cosh Q\ddot Q+\sinh Q\dot Q^2)\)</span>. El mapa <span class="math inline">\(Q\mapsto a\sinh Q\)</span> tiene derivada estrictamente positiva y una inversa suave en toda la recta. Su matriz cinética conserva la regularidad, incluso al pasar por el origen. La coordenada es adimensional y su fuerza generalizada tiene unidades de energía.</p>
+</section>
+<section id="solucion-22-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-15">15. La reacción circular mediante un multiplicador</h3>
+<p>La posición tiene módulo uno y <span class="math inline">\(r\cdot\dot r=0{,}96-0{,}96=0\)</span>, por lo que los datos satisfacen el vínculo y su primera derivada. La segunda impone <span class="math inline">\(r\cdot\ddot r=-\|\dot r\|^2=-4\)</span>. Como <span class="math inline">\(m\ddot r=(0,-mg)+\lambda r\)</span>,</p>
+<p><span class="math display">\[
+\lambda=\frac{mg y-m\|\dot r\|^2}{\|r\|^2}=-12\,\mathrm{N/m}.
+\]</span></p>
+<p>La reacción es <span class="math inline">\((-7{,}2,9{,}6)\,\mathrm N\)</span>, la aceleración <span class="math inline">\((-7{,}2,-0{,}4)\,\mathrm{m/s^2}\)</span> y la tensión equivalente es <span class="math inline">\(12\,\mathrm N\)</span>. Al comprobar <span class="math inline">\(0{,}6(-7{,}2)-0{,}8(-0{,}4)=-4\)</span> se recupera la compatibilidad acelerada. El multiplicador tiene unidades de fuerza por longitud por la normalización cuadrática de <span class="math inline">\(f\)</span>; su producto por <span class="math inline">\(r\)</span> da la fuerza.</p>
+</section>
+<section id="solucion-22-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-16">16. Un vínculo móvil transmite potencia</h3>
+<p>En el instante indicado, <span class="math inline">\(J=(-b,1)=(0,1)\)</span> y <span class="math inline">\(f_t=-\nu x=-1\,\mathrm{m/s}\)</span>. Se cumple <span class="math inline">\(f=0\)</span> y <span class="math inline">\(J\dot r+f_t=1-1=0\)</span>. Derivar otra vez da <span class="math inline">\(\ddot y-b\ddot x=2\nu\dot x=0\)</span> en ese estado. Por tanto, <span class="math inline">\(\ddot y=0\)</span> y Newton vertical exige <span class="math inline">\(\lambda=mg=10\,\mathrm N\)</span>.</p>
+<p>La reacción es <span class="math inline">\((0,10)\,\mathrm N\)</span>, la aceleración cartesiana es cero en ese instante y la potencia de la reacción es <span class="math inline">\(R\cdot\dot r=10\,\mathrm W\)</span>. El balance de vínculos da el mismo valor: <span class="math inline">\(-\lambda f_t=10\,\mathrm W\)</span>. Aunque la variación virtual a tiempo fijo sea horizontal, la velocidad real contiene la componente vertical impuesta por el giro de la recta. La energía potencial aumenta con potencia <span class="math inline">\(mg\dot y\)</span> y la energía cinética tiene derivada cero en ese instante.</p>
+</section>
+<section id="solucion-22-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-17">17. Dos restricciones y dos multiplicadores</h3>
+<p>Los gradientes son <span class="math inline">\((R,0,0)\)</span> y <span class="math inline">\((0,0,1)\)</span>, independientes para <span class="math inline">\(R&gt;0\)</span>. La matriz de recuperación es diagonal con entradas <span class="math inline">\(R^2/m\)</span> y <span class="math inline">\(1/m\)</span>. Las segundas derivadas de los vínculos requieren <span class="math inline">\(r\cdot\ddot r=-v^2\)</span> y <span class="math inline">\(\ddot z=0\)</span>. Se obtiene</p>
+<p><span class="math display">\[
+\lambda_1=-\frac{mv^2}{R^2},\qquad
+\lambda_2=mg,\qquad
+R_{\mathrm{total}}=\left(-\frac{mv^2}{R},0,mg\right).
+\]</span></p>
+<p>La primera contribución mantiene la curvatura horizontal y la segunda equilibra el peso. Sus unidades son distintas, porque <span class="math inline">\(f_1\)</span> tiene unidades de longitud al cuadrado y <span class="math inline">\(f_2\)</span> de longitud. La fuerza total es inequívoca. Su potencia es cero al multiplicar por <span class="math inline">\((0,v,0)\)</span>, en acuerdo con los vínculos fijos y con la rapidez constante del movimiento circular.</p>
+</section>
+<section id="solucion-22-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-18">18. Detectar el momento de perder contacto</h3>
+<p>Durante el contacto, la energía conservada da <span class="math inline">\(v^2=R^2\dot\theta^2=2gR(\cos\theta_0-\cos\theta)\)</span>. La normal exterior y la proyección radial de Newton producen</p>
+<p><span class="math display">\[
+N=mg\cos\theta-\frac{mv^2}{R}
+=mg(3\cos\theta-2\cos\theta_0).
+\]</span></p>
+<p>La reacción parte del valor positivo <span class="math inline">\(mg\cos\theta_0\)</span> y llega a cero cuando <span class="math inline">\(\cos\theta_*=2\cos\theta_0/3\)</span>. El ángulo de separación es <span class="math inline">\(\theta_*=\arccos(2\cos\theta_0/3)\)</span>, mayor que el inicial y menor que <span class="math inline">\(\pi/2\)</span>. Desde ese estado se continúa en vuelo libre.</p>
+<p>Al tomar <span class="math inline">\(\theta_0\to0^+\)</span>, el ángulo tiende a <span class="math inline">\(\arccos(2/3)\)</span>. La preparación exacta en la cima con velocidad cero conserva el equilibrio del modelo: la ecuación angular <span class="math inline">\(\ddot\theta=(g/R)\sin\theta\)</span> admite <span class="math inline">\(\theta(t)=0\)</span>, y sus datos exactos determinan esa solución. En efecto, la integral de tiempo para una salida desde la cima contiene <span class="math inline">\(d\theta/\sqrt{2g(1-\cos\theta)/R}\)</span>; como <span class="math inline">\(1-\cos\theta\le\theta^2/2\)</span>, esa integral diverge al comenzar en cero. El valor límite del ángulo de separación corresponde a preparaciones perturbadas que sí empiezan a deslizar. El tiempo para abandonar una vecindad de la cima crece al reducir la perturbación inicial. Distinguir ambas preparaciones evita atribuir movimiento espontáneo a un estado de equilibrio ideal.</p>
+<figure id="fig-fispm-r20261021-22-6" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/lagrange_contacto.svg" class="lightbox" data-gallery="fispm-r20261021-c22"><img src="../../assets/books/fispm/r20261021/lagrange_contacto.svg" alt="Pérdida de contacto en una esfera" class="fpm-v04-figure img-fluid figure-img" width="611.20125" height="337.704" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 22.6.</em> La reacción compresiva disminuye hasta cero. La ecuación de contacto se usa hasta ese punto y el movimiento posterior se reconstruye como vuelo libre.</p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-22-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-19">19. Una energía conservada puede ocultar un modelo mal construido</h3>
+<p>El lagrangiano propuesto da <span class="math inline">\(\ddot X=0\)</span>, <span class="math inline">\(\ddot s=g\sin\alpha\)</span>. Desde reposo, la cuña queda fija y el bloque sigue la aceleración tangencial de un plano fijo. El momento horizontal físico es <span class="math inline">\(P=(M+m)\dot X+m\cos\alpha\dot s\)</span>, por lo que <span class="math inline">\(\dot P=mg\sin\alpha\cos\alpha&gt;0\)</span>. Esa variación exige una fuerza horizontal externa, ausente en el aparato libre.</p>
+<p>En cambio, a lo largo de esta trayectoria errónea se tiene <span class="math inline">\(\dot X=0\)</span>, y el término cruzado de la energía cartesiana vale cero. La energía física coincide allí con <span class="math inline">\(m\dot s^2/2-mgs\sin\alpha\)</span> y permanece constante. Un control basado sólo en energía habría pasado por alto el error. Newton para la cuña descubre también el problema: una normal positiva ejerce fuerza horizontal sobre ella, incompatible con su aceleración nula. Construir las velocidades y comprobar el momento total detecta lo que ese balance energético particular deja indeterminado.</p>
+</section>
+<section id="solucion-22-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-22-20">20. Reducir una coordenada cíclica con el signo correcto</h3>
+<p>La sustitución directa de <span class="math inline">\(\dot\varphi=J/(mr^2)\)</span> produce <span class="math inline">\(L_{\mathrm{dir}}=m\dot r^2/2+J^2/(2mr^2)-U(r)\)</span>. Variarlo como un lagrangiano radial ordinario daría <span class="math inline">\(m\ddot r=-J^2/(mr^3)-U'(r)\)</span>, con signo centrípeto en el término que debe provenir del momento conservado. La operación correcta conserva fijo <span class="math inline">\(J\)</span> mediante</p>
+<p><span class="math display">\[
+\mathcal R=L-J\dot\varphi=
+\frac m2\dot r^2-\left(U(r)+\frac{J^2}{2mr^2}\right).
+\]</span></p>
+<p>Su ecuación es <span class="math inline">\(m\ddot r=J^2/(mr^3)-U'(r)\)</span>, igual a la ecuación radial original. El potencial efectivo es <span class="math inline">\(U_{\mathrm{ef}}=U+J^2/(2mr^2)\)</span> y la reconstrucción angular sigue siendo <span class="math inline">\(\dot\varphi=J/(mr^2)\)</span>. La resta corrige precisamente los términos que surgirían al variar una velocidad eliminada manteniendo fijo su momento.</p>
+<p>Para el potencial armónico, <span class="math inline">\(kr_0-J^2/(mr_0^3)=0\)</span> da <span class="math inline">\(r_0=(J^2/(mk))^{1/4}\)</span>. La segunda derivada del potencial efectivo en ese radio vale <span class="math inline">\(k+3J^2/(mr_0^4)=4k\)</span>. Las pequeñas oscilaciones radiales con <span class="math inline">\(J\)</span> fijo tienen frecuencia <span class="math inline">\(\omega_r=2\sqrt{k/m}\)</span>. El movimiento circular tiene rapidez angular <span class="math inline">\(|\dot\varphi|=\sqrt{k/m}\)</span>, y su signo coincide con el de <span class="math inline">\(J\)</span>. Las dos frecuencias responden a observaciones diferentes del mismo sistema.</p>
+<figure id="fig-fispm-r20261021-22-7" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/lagrange_routh.svg" class="lightbox" data-gallery="fispm-r20261021-c22"><img src="../../assets/books/fispm/r20261021/lagrange_routh.svg" alt="Potencial efectivo radial. Esquema del capítulo 22; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid figure-img" width="611.233125" height="337.824" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 22.7.</em> La energía de momento angular produce una barrera al acercarse al origen y un mínimo de radio positivo en el oscilador central. La curvatura de ese mínimo determina la oscilación radial pequeña.</p>
+</figcaption>
+</figure>
+<p>Para precisar el regreso al potencial efectivo del capítulo 15, conservemos la energía</p>
+<p><span class="math display">\[
+E=\frac m2\dot r^2+\frac k2r^2+\frac{J^2}{2mr^2}.
+\]</span></p>
+<p>Con <span class="math inline">\(J\ne0\)</span>, los radios positivos admisibles cumplen <span class="math inline">\(kr^4-2Er^2+J^2/m\leq0\)</span>. Al usar <span class="math inline">\(z=r^2\)</span> se obtiene una desigualdad cuadrática con raíces</p>
+<p><span class="math display">\[
+z_\pm=\frac{E\pm\sqrt{E^2-kJ^2/m}}{k}.
+\]</span></p>
+<p>La condición <span class="math inline">\(E\geq|J|\sqrt{k/m}\)</span> asegura un intervalo admisible; la igualdad corresponde al círculo. Para los datos nuevos, el mínimo de energía es <span class="math inline">\(2\,\mathrm J\)</span>, mientras <span class="math inline">\(z_-=1\,\mathrm{m^2}\)</span> y <span class="math inline">\(z_+=4\,\mathrm{m^2}\)</span>. Los radios recorren <span class="math inline">\([1,2]\,\mathrm m\)</span> y sus extremos son retornos con velocidad radial cero.</p>
+<p>El cuadrado del radio permite resolver también el reloj de esos retornos. Derivar dos veces y usar la ecuación radial da <span class="math inline">\(\ddot z=2\dot r^2+2J^2/(m^2r^2)-2(k/m)r^2\)</span>. La energía elimina los dos primeros términos y resulta</p>
+<p><span class="math display">\[
+\ddot z+\frac{4k}{m}z=\frac{4E}{m},\qquad
+z(t)=\frac Ek+\frac{\sqrt{E^2-kJ^2/m}}{k}
+\cos\left(2\sqrt{\frac km}(t-t_*)\right).
+\]</span></p>
+<p>Aquí <span class="math inline">\(t_*\)</span> es un instante de radio máximo; el signo de la velocidad en otro estado selecciona la fase. Como <span class="math inline">\(z&gt;0\)</span>, recuperar <span class="math inline">\(r=\sqrt z\)</span> conserva la solución y su período. Para los datos, <span class="math inline">\(r(t)=\sqrt{2{,}5+1{,}5\cos(2(t-t_*))}\,\mathrm m\)</span> cuando los tiempos se expresan en segundos. El período radial exacto es <span class="math inline">\(\pi\,\mathrm s\)</span>. La frecuencia <span class="math inline">\(2\sqrt{k/m}\)</span> coincide con la obtenida cerca del círculo y, en este potencial armónico particular, sigue gobernando <span class="math inline">\(r^2\)</span> a amplitud finita. La transformación y la energía explican esa coincidencia; otros potenciales requieren su propio análisis del tiempo entre retornos. El ángulo se reconstruye mediante <span class="math inline">\(\dot\varphi=J/(mr^2)\)</span> y conserva el dato angular inicial.</p>
+</section>
+</section>
+<section id="lecturas-y-conexiones" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-conexiones">Lecturas y conexiones</h2>
+<p>Spivak, <em>Physics for Mathematicians. Mechanics I</em>, capítulo 12, pp.&nbsp;443–447, desarrolla las coordenadas polares, los momentos conjugados, la cuña móvil y la rodadura sobre una pendiente. El mecanismo de la cuña conserva aquí esas elecciones geométricas y se amplía con preparación inicial, recuperación de reacciones, apoyos prescritos y fuerzas adicionales. La reducción de Routh se demuestra localmente para dos coordenadas y prepara el examen posterior de la relación entre momentos y velocidades.</p>
+<p>Sears y Zemansky, <em>Física universitaria</em>, volumen 1, §10.3, pp.&nbsp;316–317, permite cotejar la velocidad del punto de contacto y la suma de energías traslacional y rotacional. Serway y Jewett, <em>Física para ciencias e ingeniería</em>, volumen 1, ejemplo 10.14, pp.&nbsp;275–277, distingue el trabajo externo y el movimiento del punto de aplicación en un carrete. Esos pasajes sostienen el contraste físico de los ejercicios de rodadura: la restricción debe ser realizable y cada potencia debe referirse al punto que recibe la fuerza. Los ejercicios y figuras de este capítulo son de elaboración propia.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-21-trabajo-virtual-coordenadas-generalizadas-y-accion.html">← 21. Trabajo virtual, coordenadas generalizadas y acción</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-23-simetrias-y-conservacion.html">23. Simetrías y conservación →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 13 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>Rotación plana y rodadura – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#la-posición-de-cada-punto-de-un-cuerpo-que-gira" id="toc-la-posición-de-cada-punto-de-un-cuerpo-que-gira" class="nav-link active" data-scroll-target="#la-posición-de-cada-punto-de-un-cuerpo-que-gira">La posición de cada punto de un cuerpo que gira</a></li>
+  <li><a href="#calcular-el-momento-de-inercia-desde-la-distribución" id="toc-calcular-el-momento-de-inercia-desde-la-distribución" class="nav-link" data-scroll-target="#calcular-el-momento-de-inercia-desde-la-distribución">Calcular el momento de inercia desde la distribución</a></li>
+  <li><a href="#las-dos-ecuaciones-de-movimiento" id="toc-las-dos-ecuaciones-de-movimiento" class="nav-link" data-scroll-target="#las-dos-ecuaciones-de-movimiento">Las dos ecuaciones de movimiento</a></li>
+  <li><a href="#qué-significa-rodar-sin-deslizar" id="toc-qué-significa-rodar-sin-deslizar" class="nav-link" data-scroll-target="#qué-significa-rodar-sin-deslizar">Qué significa rodar sin deslizar</a></li>
+  <li><a href="#descender-por-una-rampa-sin-deslizar" id="toc-descender-por-una-rampa-sin-deslizar" class="nav-link" data-scroll-target="#descender-por-una-rampa-sin-deslizar">Descender por una rampa sin deslizar</a></li>
+  <li><a href="#cómo-actúa-la-fricción-sin-quitar-energía-mecánica" id="toc-cómo-actúa-la-fricción-sin-quitar-energía-mecánica" class="nav-link" data-scroll-target="#cómo-actúa-la-fricción-sin-quitar-energía-mecánica">Cómo actúa la fricción sin quitar energía mecánica</a></li>
+  <li><a href="#determinar-el-sentido-de-la-fricción-en-otro-experimento" id="toc-determinar-el-sentido-de-la-fricción-en-otro-experimento" class="nav-link" data-scroll-target="#determinar-el-sentido-de-la-fricción-en-otro-experimento">Determinar el sentido de la fricción en otro experimento</a></li>
+  <li><a href="#cuando-la-rueda-comienza-deslizando" id="toc-cuando-la-rueda-comienza-deslizando" class="nav-link" data-scroll-target="#cuando-la-rueda-comienza-deslizando">Cuando la rueda comienza deslizando</a></li>
+  <li><a href="#una-polea-con-inercia" id="toc-una-polea-con-inercia" class="nav-link" data-scroll-target="#una-polea-con-inercia">Una polea con inercia</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-13-1" id="toc-ejercicio-13-1" class="nav-link" data-scroll-target="#ejercicio-13-1">1. Cuatro masas y un eje</a></li>
+  <li><a href="#ejercicio-13-2" id="toc-ejercicio-13-2" class="nav-link" data-scroll-target="#ejercicio-13-2">2. Mismo contorno, distinta distribución</a></li>
+  <li><a href="#ejercicio-13-3" id="toc-ejercicio-13-3" class="nav-link" data-scroll-target="#ejercicio-13-3">3. Un eje que pasa por el extremo</a></li>
+  <li><a href="#ejercicio-13-4" id="toc-ejercicio-13-4" class="nav-link" data-scroll-target="#ejercicio-13-4">4. Una esfera a partir de discos</a></li>
+  <li><a href="#ejercicio-13-5" id="toc-ejercicio-13-5" class="nav-link" data-scroll-target="#ejercicio-13-5">5. Tres puntos de una rueda</a></li>
+  <li><a href="#ejercicio-13-6" id="toc-ejercicio-13-6" class="nav-link" data-scroll-target="#ejercicio-13-6">6. La energía de un disco que avanza</a></li>
+  <li><a href="#ejercicio-13-7" id="toc-ejercicio-13-7" class="nav-link" data-scroll-target="#ejercicio-13-7">7. Comprobar la rampa inicial</a></li>
+  <li><a href="#ejercicio-13-8" id="toc-ejercicio-13-8" class="nav-link" data-scroll-target="#ejercicio-13-8">8. Velocidad nula no significa aceleración nula</a></li>
+  <li><a href="#ejercicio-13-9" id="toc-ejercicio-13-9" class="nav-link" data-scroll-target="#ejercicio-13-9">9. Empujar desde el centro</a></li>
+  <li><a href="#ejercicio-13-10" id="toc-ejercicio-13-10" class="nav-link" data-scroll-target="#ejercicio-13-10">10. Accionar un motor</a></li>
+  <li><a href="#ejercicio-13-11" id="toc-ejercicio-13-11" class="nav-link" data-scroll-target="#ejercicio-13-11">11. Una superficie que no sostiene la rodadura</a></li>
+  <li><a href="#ejercicio-13-12" id="toc-ejercicio-13-12" class="nav-link" data-scroll-target="#ejercicio-13-12">12. Entrar deslizando sin giro</a></li>
+  <li><a href="#ejercicio-13-13" id="toc-ejercicio-13-13" class="nav-link" data-scroll-target="#ejercicio-13-13">13. Entrar girando sin traslación</a></li>
+  <li><a href="#ejercicio-13-14" id="toc-ejercicio-13-14" class="nav-link" data-scroll-target="#ejercicio-13-14">14. Contacto estático con una cinta móvil</a></li>
+  <li><a href="#ejercicio-13-15" id="toc-ejercicio-13-15" class="nav-link" data-scroll-target="#ejercicio-13-15">15. Una máquina con polea pesada</a></li>
+  <li><a href="#ejercicio-13-16" id="toc-ejercicio-13-16" class="nav-link" data-scroll-target="#ejercicio-13-16">16. Medir la inercia de la polea</a></li>
+  <li><a href="#ejercicio-13-17" id="toc-ejercicio-13-17" class="nav-link" data-scroll-target="#ejercicio-13-17">17. El trabajo de la fricción en dos balances</a></li>
+  <li><a href="#ejercicio-13-18" id="toc-ejercicio-13-18" class="nav-link" data-scroll-target="#ejercicio-13-18">18. Usar el contacto sin convertirlo en pivote fijo</a></li>
+  <li><a href="#ejercicio-13-19" id="toc-ejercicio-13-19" class="nav-link" data-scroll-target="#ejercicio-13-19">19. Inferir la distribución desde una rapidez</a></li>
+  <li><a href="#ejercicio-13-20" id="toc-ejercicio-13-20" class="nav-link" data-scroll-target="#ejercicio-13-20">20. Un cuerpo compuesto y una condición marginal</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#solucion-13-1" id="toc-solucion-13-1" class="nav-link" data-scroll-target="#solucion-13-1">1. Cuatro masas y un eje</a></li>
+  <li><a href="#solucion-13-2" id="toc-solucion-13-2" class="nav-link" data-scroll-target="#solucion-13-2">2. Mismo contorno, distinta distribución</a></li>
+  <li><a href="#solucion-13-3" id="toc-solucion-13-3" class="nav-link" data-scroll-target="#solucion-13-3">3. Un eje que pasa por el extremo</a></li>
+  <li><a href="#solucion-13-4" id="toc-solucion-13-4" class="nav-link" data-scroll-target="#solucion-13-4">4. Una esfera a partir de discos</a></li>
+  <li><a href="#solucion-13-5" id="toc-solucion-13-5" class="nav-link" data-scroll-target="#solucion-13-5">5. Tres puntos de una rueda</a></li>
+  <li><a href="#solucion-13-6" id="toc-solucion-13-6" class="nav-link" data-scroll-target="#solucion-13-6">6. La energía de un disco que avanza</a></li>
+  <li><a href="#solucion-13-7" id="toc-solucion-13-7" class="nav-link" data-scroll-target="#solucion-13-7">7. Comprobar la rampa inicial</a></li>
+  <li><a href="#solucion-13-8" id="toc-solucion-13-8" class="nav-link" data-scroll-target="#solucion-13-8">8. Velocidad nula no significa aceleración nula</a></li>
+  <li><a href="#solucion-13-9" id="toc-solucion-13-9" class="nav-link" data-scroll-target="#solucion-13-9">9. Empujar desde el centro</a></li>
+  <li><a href="#solucion-13-10" id="toc-solucion-13-10" class="nav-link" data-scroll-target="#solucion-13-10">10. Accionar un motor</a></li>
+  <li><a href="#solucion-13-11" id="toc-solucion-13-11" class="nav-link" data-scroll-target="#solucion-13-11">11. Una superficie que no sostiene la rodadura</a></li>
+  <li><a href="#solucion-13-12" id="toc-solucion-13-12" class="nav-link" data-scroll-target="#solucion-13-12">12. Entrar deslizando sin giro</a></li>
+  <li><a href="#solucion-13-13" id="toc-solucion-13-13" class="nav-link" data-scroll-target="#solucion-13-13">13. Entrar girando sin traslación</a></li>
+  <li><a href="#solucion-13-14" id="toc-solucion-13-14" class="nav-link" data-scroll-target="#solucion-13-14">14. Contacto estático con una cinta móvil</a></li>
+  <li><a href="#solucion-13-15" id="toc-solucion-13-15" class="nav-link" data-scroll-target="#solucion-13-15">15. Una máquina con polea pesada</a></li>
+  <li><a href="#solucion-13-16" id="toc-solucion-13-16" class="nav-link" data-scroll-target="#solucion-13-16">16. Medir la inercia de la polea</a></li>
+  <li><a href="#solucion-13-17" id="toc-solucion-13-17" class="nav-link" data-scroll-target="#solucion-13-17">17. El trabajo de la fricción en dos balances</a></li>
+  <li><a href="#solucion-13-18" id="toc-solucion-13-18" class="nav-link" data-scroll-target="#solucion-13-18">18. Usar el contacto sin convertirlo en pivote fijo</a></li>
+  <li><a href="#solucion-13-19" id="toc-solucion-13-19" class="nav-link" data-scroll-target="#solucion-13-19">19. Inferir la distribución desde una rapidez</a></li>
+  <li><a href="#solucion-13-20" id="toc-solucion-13-20" class="nav-link" data-scroll-target="#solucion-13-20">20. Un cuerpo compuesto y una condición marginal</a></li>
+  </ul></li>
+  <li><a href="#lecturas-y-conexiones" id="toc-lecturas-y-conexiones" class="nav-link" data-scroll-target="#lecturas-y-conexiones">Lecturas y conexiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Rotación plana y rodadura</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 13</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 13 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-12-momento-angular-y-torque.html">← 12. Momento angular y torque</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-14-gravitacion-y-campo.html">14. Gravitación y campo →</a></p>
+<p>Un disco homogéneo y un aro, de la misma masa y del mismo radio, se sueltan juntos en una rampa. Ambos parten del reposo y disponen de la misma caída vertical. Si llegan abajo con energías mecánicas iguales, ¿por qué no tienen que llegar con la misma rapidez? La respuesta exige averiguar cómo se reparte el movimiento entre el avance del centro de masa y el giro.</p>
+<p>Estudiaremos primero un disco de masa <span class="math inline">\(M=2\,\mathrm{kg}\)</span> y radio <span class="math inline">\(R=0{,}10\,\mathrm m\)</span> que desciende por un plano fijo inclinado <span class="math inline">\(30^\circ\)</span>. Tomaremos <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span> y una caída vertical de <span class="math inline">\(0{,}75\,\mathrm m\)</span>. El laboratorio es inercial. El eje <span class="math inline">\(x\)</span> apunta cuesta abajo, el eje <span class="math inline">\(y\)</span> sale perpendicularmente del plano y <span class="math inline">\(z\)</span> completa una base de orientación derecha. El sentido angular positivo es el antihorario en el dibujo: un disco que baja hacia <span class="math inline">\(+x\)</span> gira con velocidad angular negativa.</p>
+<p>Modelaremos el disco como un cuerpo rígido y axisimétrico, sin deformación apreciable ni resistencia del aire o a la rodadura. El contacto se describe con una normal y rozamiento de Coulomb; la superficie y el disco no intercambian materia. Intentaremos una solución sin deslizamiento, pero después tendremos que comprobar que la fricción estática disponible puede sostenerla. No basta con escribir esa condición como si cualquier superficie pudiera imponerla.</p>
+<figure id="fig-fispm-r20261021-13-1" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/rodadura_rampa.svg" class="lightbox" data-gallery="fispm-r20261021-c13"><img src="../../assets/books/fispm/r20261021/rodadura_rampa.svg" alt="Disco sobre una rampa con peso, normal y una fricción de sentido inicialmente desconocido." class="fpm-v04-figure img-fluid figure-img" width="900" height="560" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 13.1.</em> El eje tangencial apunta cuesta abajo. La fuerza de rozamiento se tratará como una componente firmada; su sentido saldrá de las ecuaciones. El peso actúa en el centro de masa y la normal en el contacto ideal.</p>
+</figcaption>
+</figure>
+<section id="la-posición-de-cada-punto-de-un-cuerpo-que-gira" class="level2">
+<h2 class="anchored" data-anchor-id="la-posición-de-cada-punto-de-un-cuerpo-que-gira">La posición de cada punto de un cuerpo que gira</h2>
+<p>En el capítulo 12 calculamos el momento angular de varias partículas y lo separamos en una contribución del centro de masa y otra interna. Para un cuerpo que conserva su forma, las velocidades internas están relacionadas. Esa relación permite reunir una suma de muchos términos en una sola constante geométrica.</p>
+<p><strong>Definición.</strong> Un movimiento plano rígido puede representarse como <span class="math inline">\(\mathbf r_i(t)=\mathbf R(t)+Q(\theta(t))\boldsymbol\rho_i^0\)</span>, donde <span class="math inline">\(\mathbf R\)</span> es el centro de masa, las posiciones <span class="math inline">\(\boldsymbol\rho_i^0\)</span> son constantes en el cuerpo y <span class="math inline">\(Q(\theta)\)</span> es la rotación del plano por el ángulo <span class="math inline">\(\theta\)</span>. La velocidad angular es <span class="math inline">\(\omega=\dot\theta\)</span> y la aceleración angular es <span class="math inline">\(\alpha=\dot\omega\)</span>, con signo respecto del eje <span class="math inline">\(z\)</span>.</p>
+<p>Para un cuerpo con espesor, la rotación deja fija la coordenada paralela al eje y actúa sobre las dos coordenadas perpendiculares. La matriz de rotación de ese plano tiene filas <span class="math inline">\((\cos\theta,-\sin\theta)\)</span> y <span class="math inline">\((\sin\theta,\cos\theta)\)</span>. Conserva productos escalares y distancias; por eso esta representación mantiene la forma. Si <span class="math inline">\(\boldsymbol\rho_i=\mathbf r_i-\mathbf R\)</span>, derivarla da</p>
+<p><span class="math display">\[
+\mathbf v_i=\mathbf V+\omega\,\mathbf e_z\times\boldsymbol\rho_i,
+\qquad \mathbf V=\dot{\mathbf R}.
+\]</span></p>
+<p>No todos los puntos tienen la misma velocidad. Comparten <span class="math inline">\(\omega\)</span>, pero la contribución del giro depende de su distancia al eje. En un cilindro, los puntos situados a lo largo de una misma generatriz tienen la misma distancia al eje y la misma velocidad de giro; para un cuerpo de espesor finito usaremos la distancia perpendicular al eje, no la distancia espacial completa al centro de masa.</p>
+<p><strong>Definición.</strong> El momento de inercia de una distribución de masa respecto de un eje es <span class="math inline">\(I=\sum_i m_i s_i^2\)</span> para partículas, o <span class="math inline">\(I=\int s^2\,dm\)</span> en un modelo continuo, donde <span class="math inline">\(s\)</span> es la distancia perpendicular al eje. Supondremos masa total finita y segundo momento finito. Se escribe <span class="math inline">\(I_C\)</span> cuando el eje pasa por el centro de masa y es perpendicular al plano de movimiento.</p>
+<p>El momento de inercia tiene unidades <span class="math inline">\(\mathrm{kg\,m^2}\)</span>. No depende de la velocidad angular; expresa cómo se distribuye la masa respecto de un eje especificado. Un mismo cuerpo tiene distintos momentos de inercia respecto de distintos ejes. Para masas situadas exactamente sobre el eje, la contribución es cero.</p>
+<p><strong>Proposición.</strong> En un movimiento plano rígido con masa total <span class="math inline">\(M\)</span>, centro de masa de velocidad <span class="math inline">\(\mathbf V\)</span> y momento de inercia <span class="math inline">\(I_C\)</span> constante,</p>
+<p><span class="math display">\[
+K=\frac12M\|\mathbf V\|^2+\frac12 I_C\omega^2,
+\qquad L_{C,z}=I_C\omega.
+\]</span></p>
+<p><strong>Demostración.</strong> Al sustituir <span class="math inline">\(\mathbf v_i=\mathbf V+\omega\mathbf e_z\times\boldsymbol\rho_i\)</span> en <span class="math inline">\(\sum_i m_i\|\mathbf v_i\|^2/2\)</span>, el término cruzado contiene <span class="math inline">\(\sum_i m_i\boldsymbol\rho_i=0\)</span> y desaparece. La suma de los cuadrados de las velocidades de giro es <span class="math inline">\(\omega^2\sum_i m_i s_i^2\)</span>. Para el momento angular interno, la componente <span class="math inline">\(z\)</span> de <span class="math inline">\(\boldsymbol\rho_i\times m_i(\omega\mathbf e_z\times\boldsymbol\rho_i)\)</span> vale <span class="math inline">\(m_i s_i^2\omega\)</span>; sumarla produce la segunda identidad. Las mismas expansiones se integran en el modelo continuo cuando sus integrales son finitas.</p>
+<p>La energía depende de <span class="math inline">\(\omega^2\)</span>, mientras que el momento angular sobre el eje conserva el signo de <span class="math inline">\(\omega\)</span>. Estas fórmulas se refieren al movimiento plano y a la componente sobre <span class="math inline">\(z\)</span>; no establecen que el momento angular vectorial de un cuerpo tridimensional cualquiera sea siempre paralelo a su velocidad angular.</p>
+</section>
+<section id="calcular-el-momento-de-inercia-desde-la-distribución" class="level2">
+<h2 class="anchored" data-anchor-id="calcular-el-momento-de-inercia-desde-la-distribución">Calcular el momento de inercia desde la distribución</h2>
+<p>En un aro delgado de radio <span class="math inline">\(R\)</span>, toda la masa se encuentra a distancia <span class="math inline">\(R\)</span> del eje central. Por tanto <span class="math inline">\(I_C=MR^2\)</span>. Para un disco homogéneo, una parte de la masa está más cerca del eje y debemos integrar.</p>
+<p>Si la densidad superficial es <span class="math inline">\(\sigma=M/(\pi R^2)\)</span>, una corona de radio <span class="math inline">\(r\)</span> y espesor <span class="math inline">\(dr\)</span> tiene masa <span class="math inline">\(dm=2\pi\sigma r\,dr\)</span>. Su contribución al momento es <span class="math inline">\(r^2dm\)</span>, de modo que</p>
+<p><span class="math display">\[
+I_C=2\pi\sigma\int_0^R r^3\,dr
+=\frac{\pi\sigma R^4}{2}
+=\frac12MR^2.
+\]</span></p>
+<p>El mismo resultado vale para un cilindro macizo homogéneo respecto de su eje longitudinal: integrar además en la dirección axial suma discos con el mismo radio. Que el cuerpo tenga el mismo contorno exterior que un aro no determina su momento de inercia. La masa distribuida cerca del eje requiere menos energía para alcanzar una misma velocidad angular.</p>
+<p>Para una varilla delgada homogénea de longitud <span class="math inline">\(\ell\)</span>, respecto de un eje perpendicular a ella que pasa por su centro,</p>
+<p><span class="math display">\[
+I_C=\frac{M}{\ell}\int_{-\ell/2}^{\ell/2}x^2\,dx
+=\frac1{12}M\ell^2.
+\]</span></p>
+<p>En estas integrales el elemento de masa proviene de la geometría y de la hipótesis de homogeneidad. Sustituir <span class="math inline">\(dm\)</span> por <span class="math inline">\(M\,dr\)</span> sin normalizar la densidad introduciría unidades incorrectas y una masa total que no sería la del cuerpo.</p>
+<p><strong>Proposición.</strong> Sean dos ejes paralelos, uno por el centro de masa y otro a distancia perpendicular <span class="math inline">\(d\)</span>. Entonces</p>
+<p><span class="math display">\[
+I_A=I_C+Md^2.
+\]</span></p>
+<p><strong>Demostración.</strong> Proyectemos cada posición sobre el plano perpendicular a los ejes. Si <span class="math inline">\(\boldsymbol s_i\)</span> se mide desde el eje central y <span class="math inline">\(\mathbf d\)</span> une ese eje al otro, la distancia al cuadrado desde el segundo eje es <span class="math inline">\(\|\boldsymbol s_i-\mathbf d\|^2\)</span>. Al expandir y sumar con pesos <span class="math inline">\(m_i\)</span>, el término cruzado se anula porque la proyección de <span class="math inline">\(\sum_i m_i\boldsymbol\rho_i\)</span> es cero. Restan <span class="math inline">\(\sum_i m_i\|\boldsymbol s_i\|^2\)</span> y <span class="math inline">\(M\|\mathbf d\|^2\)</span>. El argumento con integrales es idéntico.</p>
+<p>El teorema exige que uno de los ejes sea central. No permite sumar <span class="math inline">\(Md^2\)</span> entre dos ejes arbitrarios usando solamente la distancia entre ellos. Para la varilla, el eje por un extremo está a <span class="math inline">\(\ell/2\)</span> del central y da <span class="math inline">\(I_{\rm extremo}=M\ell^2/3\)</span>. El aumento es consistente con haber alejado del eje una parte importante de la masa.</p>
+<figure id="fig-fispm-r20261021-13-2" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/rodadura_inercias.svg" class="lightbox" data-gallery="fispm-r20261021-c13"><img src="../../assets/books/fispm/r20261021/rodadura_inercias.svg" alt="Aro, disco y varilla muestran distribuciones de masa diferentes respecto de sus ejes." class="fpm-v04-figure img-fluid figure-img" width="900" height="520" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 13.2.</em> Las fórmulas corresponden a distribuciones homogéneas ideales y a los ejes señalados. La distancia usada en el teorema de ejes paralelos es perpendicular a los ejes.</p>
+</figcaption>
+</figure>
+</section>
+<section id="las-dos-ecuaciones-de-movimiento" class="level2">
+<h2 class="anchored" data-anchor-id="las-dos-ecuaciones-de-movimiento">Las dos ecuaciones de movimiento</h2>
+<p>El balance lineal determina cómo acelera el centro de masa. El balance angular respecto de él determina cómo cambia el giro. Para los modelos newtonianos de partículas con cancelación de torques internos del capítulo anterior,</p>
+<p><span class="math display">\[
+M\mathbf a_C=\sum\mathbf F_{\rm ext},
+\qquad
+I_C\alpha=\tau_{C,z}^{\rm ext}.
+\]</span></p>
+<p>La segunda ecuación se obtiene derivando <span class="math inline">\(L_{C,z}=I_C\omega\)</span> y usando que <span class="math inline">\(I_C\)</span> es constante. Sigue siendo válida aunque el centro de masa acelere, porque ya demostramos el balance especial respecto de él. Para una rotación alrededor de un eje fijo en el laboratorio puede utilizarse, en cambio, el momento de inercia respecto de ese eje fijo y su torque correspondiente.</p>
+<p>Hay que evitar una combinación incompleta: usar <span class="math inline">\(I_C\)</span> y calcular el torque respecto de otro punto. Tampoco un eje instantáneo de velocidad nula es automáticamente un pivote fijo para todo el movimiento. Las relaciones cinemáticas instantáneas no eliminan los términos de transporte que aparecieron en el capítulo 12.</p>
+<p>Una polea de masa apreciable ofrece un ejemplo sin rodadura sobre un suelo. Si una cuerda ideal no desliza sobre su borde, su aceleración tangencial es <span class="math inline">\(R\alpha\)</span>. Para producir una aceleración angular se requiere un torque neto. Por ello las tensiones de los dos ramales pueden ser diferentes aunque la cuerda sea ligera; la igualdad de tensiones que se usaba con poleas sin inercia era parte de aquella idealización.</p>
+</section>
+<section id="qué-significa-rodar-sin-deslizar" class="level2">
+<h2 class="anchored" data-anchor-id="qué-significa-rodar-sin-deslizar">Qué significa rodar sin deslizar</h2>
+<p>En los cuerpos circulares que consideraremos, el centro de masa coincide con el centro geométrico; esta hipótesis excluye ruedas excéntricas. En una rueda que avanza sobre un suelo horizontal fijo, el centro de masa tiene velocidad <span class="math inline">\(V\mathbf e_x\)</span>. La posición del punto material que toca el suelo en ese instante, respecto del centro, es <span class="math inline">\(-R\mathbf e_y\)</span>. Su velocidad tangencial respecto del laboratorio es</p>
+<p><span class="math display">\[
+v_{P,x}=V+R\omega.
+\]</span></p>
+<p>Una rueda que avanza hacia la derecha gira en sentido horario, de modo que <span class="math inline">\(\omega&lt;0\)</span>. La suma anterior puede anularse sin que sus dos términos sean nulos.</p>
+<p><strong>Definición.</strong> Hay rodadura sin deslizamiento sobre una superficie fija cuando la velocidad relativa tangencial del punto material en contacto es cero. Para una rueda circular de radio constante que avanza por una recta, esta condición es <span class="math inline">\(V+R\omega=0\)</span>. Si se mantiene en un intervalo diferenciable, entonces <span class="math inline">\(a_C+R\alpha=0\)</span>.</p>
+<p><strong>Proposición.</strong> Para esa rueda, si el centro permanece a distancia <span class="math inline">\(R\)</span> del plano, la rodadura sin deslizamiento implica que la velocidad del punto superior es <span class="math inline">\(2V\mathbf e_x\)</span> y la del punto de contacto es cero. Sin embargo, la aceleración del punto material que ocupa el contacto es <span class="math inline">\(R\omega^2\mathbf e_y\)</span> en ese instante.</p>
+<p><strong>Demostración.</strong> La fórmula de velocidades aplicada a <span class="math inline">\(\boldsymbol\rho=\pm R\mathbf e_y\)</span> da <span class="math inline">\(V\mathbf e_x\mp R\omega\mathbf e_x\)</span>. Sustituir <span class="math inline">\(R\omega=-V\)</span> proporciona ambos valores. Para la aceleración de un punto material del cuerpo derivamos su velocidad siguiendo ese mismo punto:</p>
+<p><span class="math display">\[
+\mathbf a_i=\mathbf a_C+\alpha\mathbf e_z\times\boldsymbol\rho_i
++\omega^2\mathbf e_z\times(\mathbf e_z\times\boldsymbol\rho_i).
+\]</span></p>
+<p>En el contacto instantáneo, los dos primeros términos tangenciales suman <span class="math inline">\((a_C+R\alpha)\mathbf e_x=0\)</span>, mientras que el último vale <span class="math inline">\(R\omega^2\mathbf e_y\)</span>.</p>
+<p>El punto material que toca el suelo cambia a medida que la rueda avanza. No podemos derivar «la velocidad del contacto es cero» como si se tratara siempre de la misma partícula. La aceleración no nula explica cómo el punto que estaba abajo comienza a separarse de la superficie.</p>
+<figure id="fig-fispm-r20261021-13-3" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/rodadura_velocidades.svg" class="lightbox" data-gallery="fispm-r20261021-c13"><img src="../../assets/books/fispm/r20261021/rodadura_velocidades.svg" alt="Suma de traslación y giro para los puntos superior e inferior de una rueda." class="fpm-v04-figure img-fluid figure-img" width="900" height="560" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 13.3.</em> Con <span class="math inline">\(V&gt;0\)</span> y <span class="math inline">\(\omega=-V/R\)</span>, la velocidad del punto inferior se anula y la del superior se duplica. Las flechas de las contribuciones se suman vectorialmente.</p>
+</figcaption>
+</figure>
+<p>Sobre una cinta que se mueve con velocidad <span class="math inline">\(U\mathbf e_x\)</span>, la condición es <span class="math inline">\(V+R\omega=U\)</span>. La velocidad del punto de contacto en el laboratorio ya no es cero. Esa diferencia afectará también al trabajo de la fricción: estática se refiere a ausencia de deslizamiento relativo, no necesariamente a potencia nula en cualquier marco.</p>
+</section>
+<section id="descender-por-una-rampa-sin-deslizar" class="level2">
+<h2 class="anchored" data-anchor-id="descender-por-una-rampa-sin-deslizar">Descender por una rampa sin deslizar</h2>
+<p>Volvamos al disco y tomemos <span class="math inline">\(f\)</span> como la componente firmada de la fricción según <span class="math inline">\(+x\)</span>, cuesta abajo. La normal no tiene componente tangencial y el peso actúa en el centro. Los balances son</p>
+<p><span class="math display">\[
+Ma_C=Mg\sin\varphi+f,\qquad
+I_C\alpha=Rf,\qquad
+a_C+R\alpha=0.
+\]</span></p>
+<p>El signo del torque <span class="math inline">\(Rf\)</span> se obtiene de <span class="math inline">\((-R\mathbf e_y)\times(f\mathbf e_x)=Rf\mathbf e_z\)</span>. La condición de rodadura hará que la aceleración angular sea negativa cuando <span class="math inline">\(a_C&gt;0\)</span>.</p>
+<p>Introduzcamos <span class="math inline">\(\beta=I_C/(MR^2)&gt;0\)</span>, una razón adimensional que caracteriza la distribución de masa respecto del eje central y del radio de contacto.</p>
+<p><strong>Proposición.</strong> Para un cuerpo circular rígido cuyo centro de masa coincide con el centro geométrico, de masa <span class="math inline">\(M&gt;0\)</span>, radio de contacto <span class="math inline">\(R&gt;0\)</span> y <span class="math inline">\(I_C=\beta MR^2\)</span> constante, que desciende bajo gravedad por una rampa recta fija de ángulo <span class="math inline">\(0&lt;\varphi&lt;\pi/2\)</span>, la solución de rodadura sin deslizamiento exige</p>
+<p><span class="math display">\[
+a_C=\frac{g\sin\varphi}{1+\beta},\qquad
+f=-\frac{\beta}{1+\beta}Mg\sin\varphi,\qquad
+N=Mg\cos\varphi.
+\]</span></p>
+<p>Bajo el modelo de fricción estática de Coulomb, esta solución es admisible si</p>
+<p><span class="math display">\[
+\mu_s\geq\frac{\beta}{1+\beta}\tan\varphi.
+\]</span></p>
+<p><strong>Demostración.</strong> De la ecuación angular y de <span class="math inline">\(\alpha=-a_C/R\)</span> resulta <span class="math inline">\(f=-I_Ca_C/R^2=-\beta Ma_C\)</span>. Sustituir en el balance lineal da <span class="math inline">\(M(1+\beta)a_C=Mg\sin\varphi\)</span> y las expresiones indicadas. El centro no acelera perpendicularmente al plano, por lo que <span class="math inline">\(N=Mg\cos\varphi\)</span>. La fricción estática puede tomar el valor requerido sólo si <span class="math inline">\(|f|\leq\mu_sN\)</span>; dividir por <span class="math inline">\(Mg\cos\varphi&gt;0\)</span> produce la condición.</p>
+<p>La fricción apunta cuesta arriba. No se ha decidido oponiéndola al movimiento del centro: se ha obtenido como la fuerza que permite que el giro y la traslación satisfagan simultáneamente la restricción. Sin rozamiento, el peso aceleraría el centro sin producir torque respecto de él. Una rueda inicialmente sin giro comenzaría a deslizar, no a rodar.</p>
+<p>Para el disco, <span class="math inline">\(\beta=1/2\)</span>. Entonces <span class="math inline">\(a_C=10/3\,\mathrm{m/s^2}\)</span>, <span class="math inline">\(f=-10/3\,\mathrm N\)</span> y <span class="math inline">\(N=10\sqrt3\,\mathrm N\)</span>. Se requiere <span class="math inline">\(\mu_s\geq1/(3\sqrt3)\approx0{,}1925\)</span>. Si la superficie no alcanza ese umbral, no pueden conservarse a la vez estas aceleraciones y la condición de rodadura.</p>
+<p>La caída de <span class="math inline">\(0{,}75\,\mathrm m\)</span> corresponde a <span class="math inline">\(1{,}50\,\mathrm m\)</span> de recorrido por la rampa. Desde el reposo, el tiempo es <span class="math inline">\(\sqrt{0{,}90}\,\mathrm s\approx0{,}949\,\mathrm s\)</span> y la rapidez final es <span class="math inline">\(\sqrt{10}\,\mathrm{m/s}\approx3{,}162\,\mathrm{m/s}\)</span>. La velocidad angular final es <span class="math inline">\(\omega=-V/R\approx-31{,}62\,\mathrm{s^{-1}}\)</span>.</p>
+</section>
+<section id="cómo-actúa-la-fricción-sin-quitar-energía-mecánica" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-actúa-la-fricción-sin-quitar-energía-mecánica">Cómo actúa la fricción sin quitar energía mecánica</h2>
+<p>En el contacto ideal con un plano fijo, la fricción estática actúa sobre un punto de velocidad instantánea nula. Su potencia total sobre el cuerpo es cero. Aun así, aparece en cada uno de los dos balances de energía cinética:</p>
+<p><span class="math display">\[
+\frac{dK_{\rm tras}}{dt}=(Mg\sin\varphi+f)V,
+\qquad
+\frac{dK_{\rm rot}}{dt}=(Rf)\omega=-fV.
+\]</span></p>
+<p>Las dos contribuciones de fricción se cancelan al sumar. Durante el descenso, <span class="math inline">\(fV&lt;0\)</span> y <span class="math inline">\(-fV&gt;0\)</span>: la fricción reduce la transferencia a traslación y permite aumentar la energía de giro. No extrae energía mecánica del conjunto ideal.</p>
+<p>La energía potencial gravitatoria perdida se convierte en</p>
+<p><span class="math display">\[
+Mgh=\frac12MV^2+\frac12I_C\frac{V^2}{R^2}
+=\frac12M(1+\beta)V^2.
+\]</span></p>
+<p>Para una liberación desde el reposo, <span class="math inline">\(V=\sqrt{2gh/(1+\beta)}\)</span>. Esta segunda vía confirma la rapidez sin reconstruir el tiempo. No sustituye la comprobación de fricción: una fórmula energética obtenida imponiendo rodadura sólo describe un movimiento físicamente admisible cuando la restricción puede sostenerse.</p>
+<p>En el disco inicial se pierden <span class="math inline">\(15\,\mathrm J\)</span> de energía potencial. Diez joules quedan en traslación y cinco en giro. Un aro tiene <span class="math inline">\(\beta=1\)</span> y destina la mitad a cada contribución; con la misma caída llega con rapidez <span class="math inline">\(\sqrt{7{,}5}\,\mathrm{m/s}\)</span>, menor que la del disco. Esta comparación supone que ambas superficies pueden suministrar las fricciones necesarias.</p>
+<figure id="fig-fispm-r20261021-13-4" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/rodadura_energia.svg" class="lightbox" data-gallery="fispm-r20261021-c13"><img src="../../assets/books/fispm/r20261021/rodadura_energia.svg" alt="Reparto de una misma pérdida de energía potencial entre traslación y giro." class="fpm-v04-figure img-fluid figure-img" width="900" height="500" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 13.4.</em> Para un disco homogéneo, las fracciones son <span class="math inline">\(2/3\)</span> y <span class="math inline">\(1/3\)</span>; para un aro delgado, <span class="math inline">\(1/2\)</span> y <span class="math inline">\(1/2\)</span>. La masa y la caída son iguales, pero la rapidez final depende de la distribución de masa.</p>
+</figcaption>
+</figure>
+<p>La frase «la fricción estática no realiza trabajo» necesita sus condiciones. Sobre una cinta móvil, el punto de contacto puede tener velocidad no nula en el laboratorio y la potencia puede ser <span class="math inline">\(fU\)</span>. Si hay deformaciones, pérdidas internas o resistencia a la rodadura, el modelo de un único contacto puntual rígido deja de describir toda la transferencia.</p>
+</section>
+<section id="determinar-el-sentido-de-la-fricción-en-otro-experimento" class="level2">
+<h2 class="anchored" data-anchor-id="determinar-el-sentido-de-la-fricción-en-otro-experimento">Determinar el sentido de la fricción en otro experimento</h2>
+<p>Una fuerza horizontal <span class="math inline">\(F&gt;0\)</span> aplicada al centro de un disco sobre un suelo fijo no produce torque respecto de su centro. Si el disco rueda sin deslizar, el torque que inicia el giro tiene que proceder de la fricción. Las ecuaciones son</p>
+<p><span class="math display">\[
+Ma_C=F+f,\qquad I_C\alpha=Rf,\qquad \alpha=-a_C/R.
+\]</span></p>
+<p>De nuevo <span class="math inline">\(a_C=F/[M(1+\beta)]\)</span> y <span class="math inline">\(f=-\beta F/(1+\beta)\)</span>. La fricción apunta hacia la izquierda. En cambio, si un motor aplica un torque horario de magnitud <span class="math inline">\(T&gt;0\)</span>, sin fuerza horizontal aplicada en el centro,</p>
+<p><span class="math display">\[
+Ma_C=f,\qquad I_C\alpha=-T+Rf,\qquad \alpha=-a_C/R,
+\]</span></p>
+<p>lo que da <span class="math inline">\(a_C=T/[MR(1+\beta)]\)</span> y <span class="math inline">\(f=Ma_C&gt;0\)</span>. La fricción apunta hacia la derecha y acelera el centro. No hay una regla correcta que la obligue siempre a oponerse a la velocidad del centro de masa.</p>
+<figure id="fig-fispm-r20261021-13-5" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/rodadura_friccion.svg" class="lightbox" data-gallery="fispm-r20261021-c13"><img src="../../assets/books/fispm/r20261021/rodadura_friccion.svg" alt="Fuerza aplicada al centro y torque motor requieren fricciones de sentidos distintos." class="fpm-v04-figure img-fluid figure-img" width="900" height="535" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 13.5.</em> Las ecuaciones se refieren a rodadura sin deslizamiento sobre un suelo fijo. La fuerza de contacto se obtiene al resolver los balances y después se compara con el límite de fricción estática.</p>
+</figcaption>
+</figure>
+</section>
+<section id="cuando-la-rueda-comienza-deslizando" class="level2">
+<h2 class="anchored" data-anchor-id="cuando-la-rueda-comienza-deslizando">Cuando la rueda comienza deslizando</h2>
+<p>Consideremos un disco que llega a una superficie horizontal con <span class="math inline">\(V_0&gt;0\)</span> y <span class="math inline">\(\omega_0=0\)</span>. Inicialmente la velocidad relativa tangencial del contacto es <span class="math inline">\(u=V+R\omega&gt;0\)</span>. El rozamiento cinético actúa hacia la izquierda, de modo que <span class="math inline">\(f=-\mu_kMg\)</span>, mientras se mantenga ese signo.</p>
+<p>Los balances producen <span class="math inline">\(\dot V=-\mu_kg\)</span> y <span class="math inline">\(\dot\omega=-\mu_kg/(\beta R)\)</span>. La rapidez de deslizamiento disminuye según</p>
+<p><span class="math display">\[
+\dot u=-\mu_kg(1+1/\beta).
+\]</span></p>
+<p>En este tramo el trabajo total de fricción es negativo. Su potencia no es sólo <span class="math inline">\(fV\)</span>, porque también cambia el giro: al sumar ambas contribuciones resulta <span class="math inline">\(P_f=f(V+R\omega)=fu=-\mu_kMg|u|\)</span>.</p>
+<p><strong>Proposición.</strong> En un plano horizontal fijo, un cuerpo circular de parámetro <span class="math inline">\(\beta&gt;0\)</span> con datos <span class="math inline">\(V_0&gt;0\)</span>, <span class="math inline">\(\omega_0=0\)</span> y fricción cinética constante <span class="math inline">\(\mu_k&gt;0\)</span> alcanza por primera vez la condición de rodadura en</p>
+<p><span class="math display">\[
+t_*=\frac{\beta V_0}{\mu_kg(1+\beta)}.
+\]</span></p>
+<p>En ese instante,</p>
+<p><span class="math display">\[
+V_*=\frac{V_0}{1+\beta},\qquad
+\omega_*=-\frac{V_0}{R(1+\beta)},\qquad
+K_0-K_*=\frac12MV_0^2\frac{\beta}{1+\beta}.
+\]</span></p>
+<p><strong>Demostración.</strong> Integrar las aceleraciones constantes da <span class="math inline">\(u(t)=V_0-\mu_kg(1+1/\beta)t\)</span>. Su primera raíz positiva es <span class="math inline">\(t_*\)</span> y, antes de ella, <span class="math inline">\(u&gt;0\)</span>, por lo que el sentido supuesto del rozamiento es coherente. Sustituir <span class="math inline">\(t_*\)</span> en <span class="math inline">\(V(t)=V_0-\mu_kgt\)</span> y en <span class="math inline">\(\omega(t)=-\mu_kgt/(\beta R)\)</span> produce las velocidades. La energía final es <span class="math inline">\(M V_*^2(1+\beta)/2\)</span>; restarla de <span class="math inline">\(K_0=MV_0^2/2\)</span> da la pérdida indicada.</p>
+<p>Después de <span class="math inline">\(t_*\)</span> no se prolonga automáticamente la fuerza cinética con el mismo signo. Sin otras fuerzas horizontales ni torques aplicados, una rodadura uniforme requiere <span class="math inline">\(f=0\)</span>, valor admisible dentro de cualquier cono estático con <span class="math inline">\(\mu_s\geq0\)</span>. El cuerpo puede continuar rodando uniformemente en el modelo ideal. No queda detenido porque una parte del movimiento inicial se haya disipado.</p>
+<figure id="fig-fispm-r20261021-13-6" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/rodadura_transicion.svg" class="lightbox" data-gallery="fispm-r20261021-c13"><img src="../../assets/books/fispm/r20261021/rodadura_transicion.svg" alt="Velocidad del centro, contribución angular y deslizamiento hasta el inicio de rodadura." class="fpm-v04-figure img-fluid figure-img" width="900" height="580" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 13.6.</em> La transición se localiza mediante <span class="math inline">\(u=V+R\omega=0\)</span>, no mediante <span class="math inline">\(V=0\)</span>. El cambio de ley de contacto impide extender el tramo de fricción cinética más allá de su dominio.</p>
+</figcaption>
+</figure>
+</section>
+<section id="una-polea-con-inercia" class="level2">
+<h2 class="anchored" data-anchor-id="una-polea-con-inercia">Una polea con inercia</h2>
+<p>Dos masas colgantes <span class="math inline">\(m_1\)</span> y <span class="math inline">\(m_2&gt;m_1\)</span> comparten una cuerda inextensible que no desliza sobre una polea de radio <span class="math inline">\(R\)</span>, momento de inercia <span class="math inline">\(I\)</span> y eje fijo sin rozamiento. El eje sostiene la polea y no realiza trabajo. Tomamos positiva la aceleración <span class="math inline">\(a\)</span> de <span class="math inline">\(m_2\)</span> hacia abajo y de <span class="math inline">\(m_1\)</span> hacia arriba. Las ecuaciones de las masas y la magnitud del balance angular son</p>
+<p><span class="math display">\[
+m_2g-T_2=m_2a,\qquad T_1-m_1g=m_1a,\qquad
+(T_2-T_1)R=I\frac aR.
+\]</span></p>
+<p>Sumarlas después de eliminar las tensiones da</p>
+<p><span class="math display">\[
+a=\frac{(m_2-m_1)g}{m_1+m_2+I/R^2}.
+\]</span></p>
+<p>La razón <span class="math inline">\(I/R^2\)</span> tiene unidades de masa y aumenta la inercia efectiva del movimiento. No representa materia adicional en la cuerda: proviene de la energía y del torque necesarios para acelerar la polea. Si <span class="math inline">\(I\to0\)</span>, recuperamos el resultado de la polea ideal sin inercia, y <span class="math inline">\(T_1=T_2\)</span>. Para <span class="math inline">\(I&gt;0\)</span> y <span class="math inline">\(a&gt;0\)</span>, <span class="math inline">\(T_2-T_1=Ia/R^2&gt;0\)</span>.</p>
+<figure id="fig-fispm-r20261021-13-7" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/rodadura_polea.svg" class="lightbox" data-gallery="fispm-r20261021-c13"><img src="../../assets/books/fispm/r20261021/rodadura_polea.svg" alt="Dos tensiones diferentes aceleran una polea de eje fijo y momento de inercia no nulo." class="fpm-v04-figure img-fluid figure-img" width="900" height="600" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 13.7.</em> Las aceleraciones de las masas tienen igual magnitud por inextensibilidad, y <span class="math inline">\(|\alpha|=a/R\)</span> por ausencia de deslizamiento entre cuerda y polea. La cuerda ligera puede transmitir tensiones distintas a través del contacto distribuido con la polea.</p>
+</figcaption>
+</figure>
+<p>La reconstrucción de cada movimiento ha combinado una ley dinámica, una representación del cuerpo y una ley de contacto. Si una predicción falla, debemos revisar ese conjunto de hipótesis: rigidez, distribución de masa, fuerza disponible y ausencia de deslizamiento tienen funciones distintas y pueden contrastarse con observaciones diferentes.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Se usará <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span> en todos los cálculos numéricos. Los ejes de giro son perpendiculares al plano de movimiento. En un avance hacia <span class="math inline">\(+x\)</span> sobre un plano fijo, la rodadura tiene <span class="math inline">\(\omega=-V/R\)</span>. Antes de usar esa restricción se indicará o se comprobará que no hay deslizamiento.</p>
+<section id="ejercicio-13-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-1">1. Cuatro masas y un eje</h3>
+<p>Cuatro partículas de <span class="math inline">\(0{,}50\,\mathrm{kg}\)</span> están fijadas a distancias <span class="math inline">\(0{,}20\,\mathrm m\)</span> de un eje mediante soportes de masa despreciable. Calcule el momento de inercia, la energía de giro y el momento angular sobre el eje para <span class="math inline">\(\omega=5\,\mathrm{s^{-1}}\)</span>. Compare el momento de inercia con el que tendrían si todas las distancias fueran la mitad.</p>
+</section>
+<section id="ejercicio-13-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-2">2. Mismo contorno, distinta distribución</h3>
+<p>Un disco homogéneo y un aro delgado tienen masa <span class="math inline">\(3\,\mathrm{kg}\)</span> y radio <span class="math inline">\(0{,}20\,\mathrm m\)</span>. Calcule sus momentos de inercia centrales y sus energías para una velocidad angular de magnitud <span class="math inline">\(10\,\mathrm{s^{-1}}\)</span>. Explique qué supuesto incorrecto haría iguales ambos resultados.</p>
+</section>
+<section id="ejercicio-13-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-3">3. Un eje que pasa por el extremo</h3>
+<p>Una varilla homogénea tiene masa <span class="math inline">\(2\,\mathrm{kg}\)</span> y longitud <span class="math inline">\(1{,}20\,\mathrm m\)</span>. Determine los momentos de inercia respecto de ejes perpendiculares a ella que pasan por su centro, por un extremo y por un punto a <span class="math inline">\(0{,}30\,\mathrm m\)</span> del centro. Examine si la diferencia entre los dos últimos puede obtenerse como <span class="math inline">\(M\)</span> por el cuadrado de la distancia entre ellos.</p>
+</section>
+<section id="ejercicio-13-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-4">4. Una esfera a partir de discos</h3>
+<p>Una esfera maciza homogénea de radio <span class="math inline">\(R\)</span> tiene densidad volumétrica constante <span class="math inline">\(\rho\)</span>. Una sección perpendicular a <span class="math inline">\(z\)</span> a altura <span class="math inline">\(z\)</span> es un disco de radio <span class="math inline">\(\sqrt{R^2-z^2}\)</span>. Deduzca el momento de inercia respecto de un diámetro usando secciones delgadas. Compare su parámetro <span class="math inline">\(\beta\)</span> con los del disco y del aro.</p>
+</section>
+<section id="ejercicio-13-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-5">5. Tres puntos de una rueda</h3>
+<p>Una rueda de radio <span class="math inline">\(0{,}20\,\mathrm m\)</span> rueda sin deslizar hacia la derecha con <span class="math inline">\(V=0{,}60\,\mathrm{m/s}\)</span>. Determine la velocidad angular y las velocidades de sus puntos superior, inferior y derecho en el instante considerado. Compare sus rapideces.</p>
+</section>
+<section id="ejercicio-13-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-6">6. La energía de un disco que avanza</h3>
+<p>Un disco homogéneo de <span class="math inline">\(2\,\mathrm{kg}\)</span> y radio <span class="math inline">\(0{,}10\,\mathrm m\)</span> rueda sin deslizar con <span class="math inline">\(V=3\,\mathrm{m/s}\)</span>. Calcule por separado sus energías de traslación y de giro y su momento angular respecto del centro. ¿Qué error se cometería al tratarlo como una partícula de igual masa y velocidad?</p>
+</section>
+<section id="ejercicio-13-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-7">7. Comprobar la rampa inicial</h3>
+<p>Resuelva el descenso del disco del comienzo y determine si la solución sin deslizamiento es admisible para <span class="math inline">\(\mu_s=0{,}20\)</span> y para <span class="math inline">\(\mu_s=0{,}19\)</span>. Calcule la rapidez al final de la caída de <span class="math inline">\(0{,}75\,\mathrm m\)</span> y el tiempo para alcanzarla en el caso admisible.</p>
+</section>
+<section id="ejercicio-13-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-8">8. Velocidad nula no significa aceleración nula</h3>
+<p>Una rueda de radio <span class="math inline">\(0{,}25\,\mathrm m\)</span> rueda sin deslizar por un suelo horizontal. En cierto instante <span class="math inline">\(V=2\,\mathrm{m/s}\)</span> y <span class="math inline">\(a_C=1{,}5\,\mathrm{m/s^2}\)</span>. Calcule la aceleración del punto material que ocupa el contacto y explique por qué no puede deducirse su aceleración derivando simplemente la frase «el contacto tiene velocidad cero».</p>
+</section>
+<section id="ejercicio-13-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-9">9. Empujar desde el centro</h3>
+<p>Un disco homogéneo de <span class="math inline">\(2\,\mathrm{kg}\)</span> recibe una fuerza horizontal de <span class="math inline">\(6\,\mathrm N\)</span> aplicada en su centro. El suelo fijo tiene <span class="math inline">\(\mu_s=0{,}15\)</span>. Calcule la aceleración y la fricción requeridas para rodar sin deslizar y compruebe su admisibilidad.</p>
+</section>
+<section id="ejercicio-13-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-10">10. Accionar un motor</h3>
+<p>Un disco de <span class="math inline">\(2\,\mathrm{kg}\)</span>, radio <span class="math inline">\(0{,}10\,\mathrm m\)</span> y <span class="math inline">\(\beta=1/2\)</span> recibe un torque motor horario de magnitud <span class="math inline">\(0{,}60\,\mathrm{N\,m}\)</span>. No recibe otra fuerza horizontal externa aparte de la fricción. Calcule la aceleración y la fricción si rueda sin deslizar sobre un suelo fijo. ¿Basta <span class="math inline">\(\mu_s=0{,}20\)</span>? Determine la potencia del motor cuando <span class="math inline">\(V=0{,}50\,\mathrm{m/s}\)</span>.</p>
+</section>
+<section id="ejercicio-13-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-11">11. Una superficie que no sostiene la rodadura</h3>
+<p>El disco del problema inicial se libera sobre la rampa de <span class="math inline">\(30^\circ\)</span> con <span class="math inline">\(\mu_s=0{,}10\)</span> y <span class="math inline">\(\mu_k=0{,}08\)</span>. Muestre que la solución de rodadura es imposible y construya el tramo inicial con deslizamiento: aceleración del centro, aceleración angular y signo de la velocidad relativa que comienza a desarrollarse.</p>
+</section>
+<section id="ejercicio-13-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-12">12. Entrar deslizando sin giro</h3>
+<p>Un disco de <span class="math inline">\(1\,\mathrm{kg}\)</span> y radio <span class="math inline">\(0{,}20\,\mathrm m\)</span> entra en un suelo horizontal con <span class="math inline">\(V_0=6\,\mathrm{m/s}\)</span> y <span class="math inline">\(\omega_0=0\)</span>. Tome <span class="math inline">\(\mu_k=0{,}20\)</span>. Encuentre el tiempo hasta rodar sin deslizar, las velocidades en ese instante, el recorrido del centro y la energía disipada.</p>
+</section>
+<section id="ejercicio-13-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-13">13. Entrar girando sin traslación</h3>
+<p>En el mismo suelo se coloca el mismo disco, ahora con <span class="math inline">\(V_0=0\)</span> y <span class="math inline">\(\omega_0=-30\,\mathrm{s^{-1}}\)</span>. Determine el sentido inicial de la fricción, el tiempo hasta la rodadura y los valores finales de <span class="math inline">\(V\)</span>, <span class="math inline">\(\omega\)</span> y energía cinética.</p>
+</section>
+<section id="ejercicio-13-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-14">14. Contacto estático con una cinta móvil</h3>
+<p>Una cinta horizontal se mueve a <span class="math inline">\(U=1\,\mathrm{m/s}\)</span>. Un dispositivo externo mantiene el centro de una rueda de radio <span class="math inline">\(0{,}20\,\mathrm m\)</span> a velocidad <span class="math inline">\(V=0{,}40\,\mathrm{m/s}\)</span> y regula su giro para que no deslice respecto de la cinta. En el estado considerado, la fricción sobre la rueda es <span class="math inline">\(f=+2\,\mathrm N\)</span>. Calcule <span class="math inline">\(\omega\)</span> y la potencia de esa fricción, separando traslación y giro. El dispositivo puede ejercer las fuerzas y los torques adicionales necesarios.</p>
+</section>
+<section id="ejercicio-13-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-15">15. Una máquina con polea pesada</h3>
+<p>Dos masas <span class="math inline">\(m_1=1\,\mathrm{kg}\)</span> y <span class="math inline">\(m_2=3\,\mathrm{kg}\)</span> están unidas por una cuerda ideal que no desliza sobre una polea de radio <span class="math inline">\(0{,}20\,\mathrm m\)</span> y momento de inercia <span class="math inline">\(0{,}040\,\mathrm{kg\,m^2}\)</span>. Calcule la aceleración, ambas tensiones y la rapidez tras un descenso de <span class="math inline">\(0{,}50\,\mathrm m\)</span> de la masa mayor, desde el reposo. Compruebe el balance energético.</p>
+</section>
+<section id="ejercicio-13-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-16">16. Medir la inercia de la polea</h3>
+<p>En el aparato anterior se conocen exactamente masas, radio y <span class="math inline">\(g\)</span>, pero se desconoce <span class="math inline">\(I\)</span>. Se mide <span class="math inline">\(a=(4{,}0\pm0{,}1)\,\mathrm{m/s^2}\)</span>. Deduzca una estimación y un intervalo de <span class="math inline">\(I\)</span> usando esas cotas. Examine qué significaría medir <span class="math inline">\(a=6\,\mathrm{m/s^2}\)</span> con los restantes supuestos intactos.</p>
+</section>
+<section id="ejercicio-13-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-17">17. El trabajo de la fricción en dos balances</h3>
+<p>Para el disco del problema inicial, calcule la contribución de fricción al cambio de energía cinética de traslación y al de giro durante los <span class="math inline">\(1{,}50\,\mathrm m\)</span> de descenso. Compare su suma con la potencia de la fuerza de contacto aplicada al punto material que toca la rampa.</p>
+</section>
+<section id="ejercicio-13-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-18">18. Usar el contacto sin convertirlo en pivote fijo</h3>
+<p>En una rodadura rectilínea ideal sobre la rampa, sea <span class="math inline">\(A(t)\)</span> el punto geométrico del plano situado bajo el centro, de modo que <span class="math inline">\(\overrightarrow{AC}=R\mathbf e_y\)</span>. Justifique el balance angular respecto de <span class="math inline">\(A(t)\)</span> usando el término de transporte del capítulo 12 y momentos lineales del laboratorio. Recupere la aceleración de descenso. Distinga este punto geométrico móvil de un pivote fijo y del punto material de la rueda que toca la superficie.</p>
+</section>
+<section id="ejercicio-13-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-19">19. Inferir la distribución desde una rapidez</h3>
+<p>Un cuerpo circular se libera del reposo y desciende una altura de <span class="math inline">\(0{,}60\,\mathrm m\)</span> rodando sin deslizar, sin otras pérdidas. Abajo se mide <span class="math inline">\(V^2=8\,\mathrm{m^2/s^2}\)</span>. Determine <span class="math inline">\(\beta\)</span>. ¿Sería compatible medir <span class="math inline">\(V=4\,\mathrm{m/s}\)</span> bajo los mismos supuestos? Si el ángulo de la rampa es <span class="math inline">\(20^\circ\)</span>, calcule el coeficiente estático mínimo para la primera medida.</p>
+</section>
+<section id="ejercicio-13-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-13-20">20. Un cuerpo compuesto y una condición marginal</h3>
+<p>Un disco homogéneo de <span class="math inline">\(1\,\mathrm{kg}\)</span> y un aro delgado de <span class="math inline">\(1\,\mathrm{kg}\)</span>, ambos de radio <span class="math inline">\(0{,}20\,\mathrm m\)</span>, se fijan coaxialmente y giran como un solo cuerpo rígido. Descienden una rampa de <span class="math inline">\(30^\circ\)</span> desde el reposo. Calcule <span class="math inline">\(\beta\)</span>, la aceleración de rodadura y la fricción necesaria. Para una caída de <span class="math inline">\(0{,}70\,\mathrm m\)</span>, halle rapidez y reparto de energía. Examine si las cotas garantizadas <span class="math inline">\(0{,}23\leq\mu_s\leq0{,}27\)</span>, resumidas como <span class="math inline">\(\mu_s=0{,}25\pm0{,}02\)</span>, garantizan el régimen supuesto. Obtenga también el mayor ángulo de una rampa recta para el que ese intervalo garantiza la rodadura desde el reposo, conservando las demás hipótesis.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-13-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-1">1. Cuatro masas y un eje</h3>
+<p>Cada partícula aporta <span class="math inline">\(mR^2=(0{,}50)(0{,}20)^2=0{,}020\,\mathrm{kg\,m^2}\)</span>. La suma es <span class="math inline">\(I=0{,}080\,\mathrm{kg\,m^2}\)</span>. Para la velocidad angular dada, <span class="math inline">\(K_{\rm rot}=I\omega^2/2=1\,\mathrm J\)</span> y <span class="math inline">\(L_z=I\omega=0{,}40\,\mathrm{kg\,m^2/s}\)</span>.</p>
+<p>Al reducir todas las distancias a la mitad, cada cuadrado se reduce a la cuarta parte y el nuevo momento es <span class="math inline">\(0{,}020\,\mathrm{kg\,m^2}\)</span>. No se ha reducido la masa total, que sigue siendo dos kilogramos. La modificación cambia la distribución respecto del eje. Si se quisiera comparar velocidades antes y después de una contracción real, habría que indicar qué torque externo y qué trabajo intervienen; la comparación geométrica de momentos de inercia no proporciona por sí sola una ley de evolución.</p>
+</section>
+<section id="solucion-13-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-2">2. Mismo contorno, distinta distribución</h3>
+<p>El disco tiene <span class="math inline">\(I_C=MR^2/2=0{,}060\,\mathrm{kg\,m^2}\)</span> y el aro <span class="math inline">\(I_C=MR^2=0{,}120\,\mathrm{kg\,m^2}\)</span>. Para la misma magnitud de velocidad angular, sus energías son tres y seis joules, respectivamente.</p>
+<p>Asignar a toda la masa del disco la distancia exterior <span class="math inline">\(R\)</span> lo convertiría, a efectos del cálculo, en un aro. Las coronas interiores del disco se mueven con menores velocidades lineales de giro y contribuyen menos a la suma de energías. La igualdad de masa, radio exterior y velocidad angular no basta para igualar la energía de rotación. Si se compararan cuerpos con el mismo momento angular en lugar de la misma velocidad angular, se usaría <span class="math inline">\(K_{\rm rot}=L_z^2/(2I_C)\)</span> y la comparación tendría otro resultado.</p>
+</section>
+<section id="solucion-13-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-3">3. Un eje que pasa por el extremo</h3>
+<p>El eje central da <span class="math inline">\(I_C=M\ell^2/12=0{,}240\,\mathrm{kg\,m^2}\)</span>. Para el extremo, <span class="math inline">\(d=0{,}60\,\mathrm m\)</span>, así que <span class="math inline">\(I_{\rm extremo}=0{,}240+2(0{,}60)^2=0{,}960\,\mathrm{kg\,m^2}\)</span>. Para el punto a <span class="math inline">\(0{,}30\,\mathrm m\)</span> del centro, el resultado es <span class="math inline">\(0{,}240+2(0{,}30)^2=0{,}420\,\mathrm{kg\,m^2}\)</span>.</p>
+<p>Si ambos puntos están en la misma mitad de la varilla, la distancia entre sus ejes es <span class="math inline">\(0{,}30\,\mathrm m\)</span>. Multiplicar su cuadrado por <span class="math inline">\(M\)</span> daría <span class="math inline">\(0{,}180\,\mathrm{kg\,m^2}\)</span>, mientras que la diferencia real es <span class="math inline">\(0{,}540\,\mathrm{kg\,m^2}\)</span>. Si están en mitades distintas, tampoco se cumple esa regla. El teorema se aplica desde el eje central a cada uno, no mediante una suma arbitraria entre dos ejes no centrales.</p>
+</section>
+<section id="solucion-13-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-4">4. Una esfera a partir de discos</h3>
+<p>La sección a altura <span class="math inline">\(z\)</span> tiene masa <span class="math inline">\(dm=\rho\pi(R^2-z^2)\,dz\)</span>. Como es un disco homogéneo delgado, su contribución al momento sobre <span class="math inline">\(z\)</span> es la mitad de su masa por el cuadrado de su radio. Por tanto,</p>
+<p><span class="math display">\[
+I_C=\frac{\rho\pi}{2}\int_{-R}^{R}(R^2-z^2)^2\,dz
+=\frac{\rho\pi}{2}\frac{16R^5}{15}
+=\frac{8\pi\rho R^5}{15}.
+\]</span></p>
+<p>La masa total es <span class="math inline">\(M=4\pi\rho R^3/3\)</span>, y al sustituir resulta <span class="math inline">\(I_C=2MR^2/5\)</span>. Así, <span class="math inline">\(\beta_{\rm esfera}=2/5&lt;\beta_{\rm disco}=1/2&lt;\beta_{\rm aro}=1\)</span>. En una misma rampa, si los tres pueden rodar sin deslizar y se omiten pérdidas, la esfera tiene mayor aceleración y el aro menor. La conclusión utiliza las distribuciones homogéneas y los radios de contacto correspondientes.</p>
+</section>
+<section id="solucion-13-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-5">5. Tres puntos de una rueda</h3>
+<p>La restricción da <span class="math inline">\(\omega=-V/R=-3\,\mathrm{s^{-1}}\)</span>. El punto superior tiene velocidad <span class="math inline">\((1{,}20,0)\,\mathrm{m/s}\)</span> y el inferior velocidad cero. Para el punto derecho, <span class="math inline">\(\boldsymbol\rho=R\mathbf e_x\)</span> y la velocidad de giro es <span class="math inline">\(\omega R\mathbf e_y=-0{,}60\mathbf e_y\,\mathrm{m/s}\)</span>. Su velocidad total es <span class="math inline">\((0{,}60,-0{,}60)\,\mathrm{m/s}\)</span> y su rapidez es <span class="math inline">\(0{,}60\sqrt2\,\mathrm{m/s}\)</span>.</p>
+<p>Las rapideces no se suman como números en el punto derecho, porque las dos contribuciones son perpendiculares. En el punto superior sí coinciden sus direcciones y en el inferior se oponen. El ejemplo muestra por qué asignar la rapidez del centro a todos los puntos del cuerpo perdería tanto el contacto instantáneamente inmóvil como la rapidez duplicada en la parte superior.</p>
+</section>
+<section id="solucion-13-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-6">6. La energía de un disco que avanza</h3>
+<p>El momento de inercia central es <span class="math inline">\(I_C=0{,}010\,\mathrm{kg\,m^2}\)</span> y la velocidad angular es <span class="math inline">\(-30\,\mathrm{s^{-1}}\)</span>. La energía de traslación es <span class="math inline">\(MV^2/2=9\,\mathrm J\)</span>; la de giro es <span class="math inline">\(I_C\omega^2/2=4{,}5\,\mathrm J\)</span>. En total, <span class="math inline">\(K=13{,}5\,\mathrm J\)</span>, y el momento angular central es <span class="math inline">\(L_{C,z}=-0{,}30\,\mathrm{kg\,m^2/s}\)</span>.</p>
+<p>Tratarlo como partícula conservaría los nueve joules asociados al movimiento del centro, pero omitiría cuatro joules y medio de movimiento interno. La energía de giro es positiva aunque <span class="math inline">\(\omega\)</span> sea negativa. El signo reaparece en el momento angular y permite distinguir los dos sentidos de rotación sin introducir energías cinéticas negativas.</p>
+</section>
+<section id="solucion-13-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-7">7. Comprobar la rampa inicial</h3>
+<p>Con <span class="math inline">\(\beta=1/2\)</span> y <span class="math inline">\(\sin30^\circ=1/2\)</span>, la aceleración es <span class="math inline">\(a_C=10/3\,\mathrm{m/s^2}\)</span>. El rozamiento requerido vale <span class="math inline">\(-10/3\,\mathrm N\)</span> y la normal <span class="math inline">\(10\sqrt3\,\mathrm N\)</span>. Su razón es <span class="math inline">\(1/(3\sqrt3)\approx0{,}19245\)</span>.</p>
+<p>Para <span class="math inline">\(\mu_s=0{,}20\)</span> el valor requerido está dentro del intervalo estático; para <span class="math inline">\(0{,}19\)</span> lo supera. La segunda superficie no permite mantener la solución supuesta. En la primera, el balance de energía da <span class="math inline">\(V^2=2gh/(1+\beta)=10\,\mathrm{m^2/s^2}\)</span>. El recorrido por la rampa es <span class="math inline">\(h/\sin30^\circ=1{,}50\,\mathrm m\)</span> y, desde el reposo, <span class="math inline">\(t=\sqrt{2s/a_C}=\sqrt{0{,}90}\,\mathrm s\)</span>.</p>
+<p>La comprobación de contacto debe preceder a la interpretación física de esos números: las fórmulas energéticas que imponen rodadura no reparan una fricción insuficiente.</p>
+</section>
+<section id="solucion-13-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-8">8. Velocidad nula no significa aceleración nula</h3>
+<p>La velocidad angular es <span class="math inline">\(\omega=-8\,\mathrm{s^{-1}}\)</span> y la aceleración angular <span class="math inline">\(\alpha=-a_C/R=-6\,\mathrm{s^{-2}}\)</span>. Para el punto que está abajo, la componente tangencial de aceleración es <span class="math inline">\(a_C+R\alpha=1{,}5-1{,}5=0\)</span>. La componente normal es <span class="math inline">\(R\omega^2=16\,\mathrm{m/s^2}\)</span> y apunta hacia arriba.</p>
+<p>En el instante considerado el punto tiene velocidad cero, pero empieza a despegarse del suelo con aceleración normal no nula. Una fracción de segundo después otro punto material ocupará el contacto. La frase «el contacto tiene velocidad cero» compara distintos puntos materiales en distintos instantes; derivarla como si describiera la trayectoria de una sola partícula confundiría esa selección geométrica con una historia material.</p>
+</section>
+<section id="solucion-13-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-9">9. Empujar desde el centro</h3>
+<p>Para un disco, <span class="math inline">\(a_C=F/[M(1+\beta)]=6/[2(1{,}5)]=2\,\mathrm{m/s^2}\)</span>. La fricción vale <span class="math inline">\(f=-\beta Ma_C=-2\,\mathrm N\)</span>. La fuerza aplicada en el centro no proporciona torque central; el contacto hacia la izquierda produce el torque horario necesario.</p>
+<p>La normal es <span class="math inline">\(Mg=20\,\mathrm N\)</span> y el límite estático disponible <span class="math inline">\(0{,}15(20)=3\,\mathrm N\)</span>. Como dos es menor que tres, el contacto puede sostener la rodadura. Usar de entrada <span class="math inline">\(|f|=\mu_sN\)</span> daría tres newtons y unas aceleraciones incompatibles con la restricción. La igualdad sólo corresponde al umbral de deslizamiento inminente, no a cualquier contacto estático.</p>
+</section>
+<section id="solucion-13-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-10">10. Accionar un motor</h3>
+<p>La aceleración es <span class="math inline">\(a_C=T/[MR(1+\beta)]=0{,}60/[2(0{,}10)(1{,}5)]=2\,\mathrm{m/s^2}\)</span>. La fricción es <span class="math inline">\(f=Ma_C=+4\,\mathrm N\)</span> y la aceleración angular <span class="math inline">\(-20\,\mathrm{s^{-2}}\)</span>. El contacto empuja al centro hacia la derecha, aunque el motor aporta un torque horario.</p>
+<p>El límite <span class="math inline">\(\mu_sMg=0{,}20(20)=4\,\mathrm N\)</span> coincide con lo requerido: la solución está en el umbral ideal. Cuando <span class="math inline">\(V=0{,}50\,\mathrm{m/s}\)</span>, <span class="math inline">\(\omega=-5\,\mathrm{s^{-1}}\)</span> y la potencia del motor es <span class="math inline">\((-T)\omega=3\,\mathrm W\)</span>. La contribución a traslación es <span class="math inline">\(fV=2\,\mathrm W\)</span>. El torque central neto es <span class="math inline">\(-0{,}60+0{,}10(4)=-0{,}20\,\mathrm{N\,m}\)</span> y su potencia es un watt. La suma confirma los tres watts del motor; la potencia total de la fricción es cero.</p>
+</section>
+<section id="solucion-13-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-11">11. Una superficie que no sostiene la rodadura</h3>
+<p>El umbral estático requerido es aproximadamente <span class="math inline">\(0{,}19245\)</span>, mayor que <span class="math inline">\(0{,}10\)</span>. Si la superficie no puede suministrarlo, el cálculo de rodadura deja de ser admisible. Para el disco de masa dos kilogramos y radio <span class="math inline">\(0{,}10\,\mathrm m\)</span>, <span class="math inline">\(N=10\sqrt3\,\mathrm N\)</span> y el rozamiento cinético cuesta arriba es <span class="math inline">\(f=-0{,}08N\approx-1{,}386\,\mathrm N\)</span>.</p>
+<p>El balance lineal da <span class="math inline">\(a_C=g(\sin30^\circ-\mu_k\cos30^\circ)\approx4{,}307\,\mathrm{m/s^2}\)</span>. El angular da <span class="math inline">\(\alpha=Rf/I_C\approx-13{,}856\,\mathrm{s^{-2}}\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\dot u=a_C+R\alpha
+=g(\sin30^\circ-3\mu_k\cos30^\circ)
+\approx2{,}922\,\mathrm{m/s^2}&gt;0.
+\]</span></p>
+<p>La velocidad relativa comienza a crecer cuesta abajo, de modo que la fricción cuesta arriba supuesta es coherente para el tramo que sigue a la liberación. No se ha utilizado <span class="math inline">\(\alpha=-a_C/R\)</span>, porque precisamente ha fallado la restricción que la justificaba.</p>
+</section>
+<section id="solucion-13-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-12">12. Entrar deslizando sin giro</h3>
+<p>Para el disco <span class="math inline">\(\beta=1/2\)</span> y <span class="math inline">\(\mu_kg=2\,\mathrm{m/s^2}\)</span>. La rapidez de deslizamiento cae como <span class="math inline">\(u=6-6t/\mathrm s\)</span> en metros por segundo. Se anula por primera vez en <span class="math inline">\(t_*=1\,\mathrm s\)</span>.</p>
+<p>La velocidad del centro queda en <span class="math inline">\(V_*=6-2=4\,\mathrm{m/s}\)</span> y <span class="math inline">\(\omega_*=-20\,\mathrm{s^{-1}}\)</span>. El centro recorrió <span class="math inline">\(V_0t_*-\mu_kgt_*^2/2=5\,\mathrm m\)</span>. La energía inicial era <span class="math inline">\(18\,\mathrm J\)</span>; la final es <span class="math inline">\(M(1+\beta)V_*^2/2=12\,\mathrm J\)</span>, por lo que se disiparon seis.</p>
+<p>La distancia de deslizamiento relativo es el área bajo la recta <span class="math inline">\(u(t)\)</span>: tres metros. Multiplicarla por <span class="math inline">\(\mu_kMg=2\,\mathrm N\)</span> reproduce los seis joules disipados. Multiplicar esa fuerza sólo por los cinco metros del centro daría diez joules y omitiría que, al mismo tiempo, el rozamiento aumentó la energía de giro.</p>
+</section>
+<section id="solucion-13-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-13">13. Entrar girando sin traslación</h3>
+<p>Inicialmente <span class="math inline">\(u_0=R\omega_0=-6\,\mathrm{m/s}\)</span>. El punto inferior desliza hacia la izquierda, de modo que la fricción apunta hacia la derecha: <span class="math inline">\(f=+2\,\mathrm N\)</span>. Así, <span class="math inline">\(\dot V=+2\,\mathrm{m/s^2}\)</span> y <span class="math inline">\(\dot\omega=Rf/I_C=+20\,\mathrm{s^{-2}}\)</span>, porque <span class="math inline">\(I_C=0{,}020\,\mathrm{kg\,m^2}\)</span>.</p>
+<p>La velocidad relativa es <span class="math inline">\(u=-6+6t/\mathrm s\)</span> en metros por segundo y vuelve a anularse en un segundo. Entonces <span class="math inline">\(V_*=2\,\mathrm{m/s}\)</span> y <span class="math inline">\(\omega_*=-10\,\mathrm{s^{-1}}\)</span>. La fricción ha frenado el giro y acelerado el centro. Podemos comprobar el resultado eliminando la fuerza de contacto entre los dos balances: <span class="math inline">\(M\dot V=f\)</span> e <span class="math inline">\(I_C\dot\omega=Rf\)</span> dan <span class="math inline">\(\dot V-\beta R\dot\omega=0\)</span>. Se conserva, por tanto, <span class="math inline">\(V-\beta R\omega\)</span>, cuyo valor inicial es <span class="math inline">\(3\,\mathrm{m/s}\)</span>. Al comenzar la rodadura, <span class="math inline">\(\omega_*=-V_*/R\)</span> convierte esa igualdad en <span class="math inline">\((1+\beta)V_*=3\,\mathrm{m/s}\)</span> y recupera <span class="math inline">\(V_*=2\,\mathrm{m/s}\)</span>. Este control usa el impulso de contacto y permite verificar la transición por una vía distinta de la integración temporal.</p>
+<p>La energía inicial es <span class="math inline">\(I_C\omega_0^2/2=9\,\mathrm J\)</span>; la final es <span class="math inline">\(M(1+\beta)V_*^2/2=3\,\mathrm J\)</span>. Se han disipado seis joules. La transferencia de parte del giro a traslación no impide una pérdida total: la potencia de contacto es negativa mientras existe deslizamiento relativo.</p>
+</section>
+<section id="solucion-13-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-14">14. Contacto estático con una cinta móvil</h3>
+<p>La ausencia de deslizamiento exige <span class="math inline">\(V+R\omega=U\)</span>, de donde <span class="math inline">\(\omega=(1-0{,}40)/0{,}20=+3\,\mathrm{s^{-1}}\)</span>. El giro es antihorario, aun cuando el centro avanza a la derecha; la cinta corre más deprisa que él.</p>
+<p>La potencia de fricción asociada a traslación es <span class="math inline">\(fV=0{,}80\,\mathrm W\)</span>. Su torque central es <span class="math inline">\(Rf=0{,}40\,\mathrm{N\,m}\)</span> y su potencia de giro es <span class="math inline">\(Rf\omega=1{,}20\,\mathrm W\)</span>. En total entrega <span class="math inline">\(2\,\mathrm W\)</span>, igual a <span class="math inline">\(fU\)</span>.</p>
+<p>No hay deslizamiento relativo ni disipación cinética en el contacto ideal, pero sí transferencia de energía entre la cinta y la rueda en el laboratorio. El dispositivo que mantiene constantes las velocidades debe compensar esa potencia. Sin sus fuerzas y torques, estos datos de velocidad y fricción no describirían por sí solos una rodadura estacionaria.</p>
+</section>
+<section id="solucion-13-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-15">15. Una máquina con polea pesada</h3>
+<p>La masa efectiva adicional es <span class="math inline">\(I/R^2=0{,}040/(0{,}20)^2=1\,\mathrm{kg}\)</span>. Por tanto <span class="math inline">\(a=(3-1)10/(1+3+1)=4\,\mathrm{m/s^2}\)</span>. Las tensiones son <span class="math inline">\(T_1=m_1(g+a)=14\,\mathrm N\)</span> y <span class="math inline">\(T_2=m_2(g-a)=18\,\mathrm N\)</span>.</p>
+<p>La diferencia produce el torque <span class="math inline">\((T_2-T_1)R=0{,}80\,\mathrm{N\,m}\)</span>, coherente con <span class="math inline">\(I\alpha\)</span> para <span class="math inline">\(\alpha=a/R=20\,\mathrm{s^{-2}}\)</span>. Tras medio metro de descenso desde el reposo, <span class="math inline">\(v=\sqrt{2a(0{,}50\,\mathrm m)}=2\,\mathrm{m/s}\)</span> y la polea tiene velocidad angular de magnitud diez por segundo.</p>
+<p>Las masas suman ocho joules de energía cinética y la polea dos. La pérdida potencial neta es <span class="math inline">\((m_2-m_1)gh=10\,\mathrm J\)</span>, igual a esos diez joules. Omitir la energía de la polea daría una rapidez excesiva.</p>
+</section>
+<section id="solucion-13-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-16">16. Medir la inercia de la polea</h3>
+<p>Despejar la fórmula dinámica da</p>
+<p><span class="math display">\[
+I=R^2\left[\frac{(m_2-m_1)g}{a}-(m_1+m_2)\right].
+\]</span></p>
+<p>Con el valor central resulta <span class="math inline">\(I=0{,}040\,\mathrm{kg\,m^2}\)</span>. La función disminuye al aumentar <span class="math inline">\(a&gt;0\)</span>; por eso la cota inferior se obtiene con <span class="math inline">\(a=4{,}1\)</span> y la superior con <span class="math inline">\(a=3{,}9\,\mathrm{m/s^2}\)</span>. Al sustituir los extremos, las cotas exactas son <span class="math inline">\([36/1025,44/975]\,\mathrm{kg\,m^2}\)</span>. Redondeando hacia fuera a cinco decimales obtenemos la envolvente <span class="math inline">\([0{,}03512,0{,}04513]\,\mathrm{kg\,m^2}\)</span>.</p>
+<p>Si se midiera <span class="math inline">\(a=6\,\mathrm{m/s^2}\)</span>, el cálculo daría un momento de inercia negativo. El modelo con <span class="math inline">\(I\geq0\)</span> tiene como aceleración máxima la de la polea sin inercia, <span class="math inline">\((m_2-m_1)g/(m_1+m_2)=5\,\mathrm{m/s^2}\)</span>. La medida sería incompatible con el conjunto de supuestos. Habría que revisar datos, fuerzas adicionales y restricciones; no interpretar una inercia negativa como propiedad del aparato.</p>
+</section>
+<section id="solucion-13-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-17">17. El trabajo de la fricción en dos balances</h3>
+<p>La contribución de fricción a la ecuación de energía de traslación se integra como <span class="math inline">\(\int f\,dx_C=f\,s=(-10/3)(1{,}50)=-5\,\mathrm J\)</span>. En la ecuación de giro, <span class="math inline">\(\int Rf\omega\,dt=-\int fV\,dt=+5\,\mathrm J\)</span>.</p>
+<p>La suma es cero, de acuerdo con la velocidad nula del contacto sobre la rampa fija. Los quince joules gravitatorios quedan repartidos en diez de traslación y cinco de giro. El término <span class="math inline">\(f\,s\)</span> no es por sí solo el trabajo total de la fuerza de contacto sobre el cuerpo rígido: aparece en el balance del movimiento del centro. Completarlo con la contribución angular impide atribuir al rozamiento estático una disipación que este modelo no contiene.</p>
+</section>
+<section id="solucion-13-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-18">18. Usar el contacto sin convertirlo en pivote fijo</h3>
+<p>El punto geométrico <span class="math inline">\(A(t)\)</span> se desplaza por la rampa con velocidad <span class="math inline">\(V\mathbf e_x\)</span>. El momento lineal total es <span class="math inline">\(MV\mathbf e_x\)</span>, paralelo a esa velocidad. El término de transporte del capítulo 12 se anula: <span class="math inline">\(-\dot{\mathbf a}\times\mathbf P=0\)</span>. Por tanto, para este movimiento particular, <span class="math inline">\(\dot L_{A,z}=\tau_{A,z}\)</span> aunque <span class="math inline">\(A\)</span> no esté fijo.</p>
+<p>La descomposición respecto del centro da <span class="math inline">\(L_{A,z}=I_C\omega-RMV\)</span>. Usando <span class="math inline">\(V=-R\omega\)</span> resulta <span class="math inline">\(L_{A,z}=(I_C+MR^2)\omega\)</span>. El contacto tiene torque cero respecto de <span class="math inline">\(A\)</span> y el peso produce <span class="math inline">\(-RMg\sin\varphi\)</span>. Así,</p>
+<p><span class="math display">\[
+(I_C+MR^2)\alpha=-RMg\sin\varphi,
+\qquad a_C=\frac{g\sin\varphi}{1+\beta}.
+\]</span></p>
+<p>El método funciona porque se ha justificado el término de transporte y la geometría rectilínea. No hemos convertido el contacto en un pivote material fijo. El punto de la rueda que lo ocupa cambia, y el punto geométrico del suelo elegido como referencia también cambia con el avance del centro.</p>
+</section>
+<section id="solucion-13-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-19">19. Inferir la distribución desde una rapidez</h3>
+<p>El balance energético despejado da <span class="math inline">\(\beta=2gh/V^2-1=12/8-1=1/2\)</span>. Esa medida es compatible con el valor de un disco homogéneo, pero no identifica de manera única toda la distribución de masa: distintas distribuciones pueden compartir un mismo segundo momento.</p>
+<p>Si se midiera <span class="math inline">\(V=4\,\mathrm{m/s}\)</span>, resultaría <span class="math inline">\(\beta=12/16-1=-1/4\)</span>, imposible para una masa positiva y un momento de inercia no negativo. Bajo los supuestos declarados se requiere <span class="math inline">\(V^2\leq2gh\)</span>. Una discrepancia obligaría a revisar energía inicial, aporte de un actuador, geometría o medidas, además del régimen de contacto.</p>
+<p>Para el primer resultado y una rampa de <span class="math inline">\(20^\circ\)</span>, el umbral es <span class="math inline">\(\mu_{s,\min}=\beta\tan20^\circ/(1+\beta)=\tan20^\circ/3\approx0{,}1213\)</span>. La inferencia energética debe acompañarse de esta comprobación de contacto.</p>
+</section>
+<section id="solucion-13-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-13-20">20. Un cuerpo compuesto y una condición marginal</h3>
+<p>Los momentos de inercia se suman porque las dos partes comparten el eje y la velocidad angular. El disco aporta <span class="math inline">\(0{,}020\,\mathrm{kg\,m^2}\)</span> y el aro <span class="math inline">\(0{,}040\,\mathrm{kg\,m^2}\)</span>. Con <span class="math inline">\(M=2\,\mathrm{kg}\)</span> y <span class="math inline">\(MR^2=0{,}080\,\mathrm{kg\,m^2}\)</span>, resulta <span class="math inline">\(\beta=3/4\)</span>.</p>
+<p>La aceleración de rodadura es <span class="math inline">\(a_C=5/(7/4)=20/7\,\mathrm{m/s^2}\)</span> y la fricción requerida <span class="math inline">\(f=-\beta Ma_C=-30/7\,\mathrm N\)</span>. El umbral estático es <span class="math inline">\(3/(7\sqrt3)\approx0{,}2474\)</span>.</p>
+<p>Para la caída dada, <span class="math inline">\(V^2=2gh/(1+\beta)=8\,\mathrm{m^2/s^2}\)</span>. Los catorce joules potenciales se reparten en ocho de traslación y seis de giro. Estos números son predicciones condicionadas a la ausencia de deslizamiento.</p>
+<p>La medida de fricción permite valores entre <span class="math inline">\(0{,}23\)</span> y <span class="math inline">\(0{,}27\)</span>. Algunos superan el umbral y otros no. El valor central <span class="math inline">\(0{,}25\)</span> sería suficiente en el modelo ideal, pero el intervalo completo no garantiza la rodadura. Una predicción robusta exigiría mejorar la medida o reducir el ángulo hasta que el peor valor admisible de fricción bastara.</p>
+<p>Para diseñar una rampa que funcione con toda la banda de fricción usamos su menor valor, <span class="math inline">\(\mu_s=0{,}23\)</span>. Con <span class="math inline">\(\beta=3/4\)</span>, la condición es</p>
+<p><span class="math display">\[
+\frac37\tan\varphi\leq0{,}23,
+\qquad
+0&lt;\varphi\leq\arctan\left(\frac{161}{300}\right).
+\]</span></p>
+<p>El extremo angular es aproximadamente <span class="math inline">\(28{,}22^\circ\)</span>. La expresión exacta determina la frontera; si se necesita un ajuste decimal que conserve la garantía, un ángulo de <span class="math inline">\(28{,}2^\circ\)</span> queda por debajo de ella. En la frontera, el menor coeficiente admitido trabaja justo en el límite estático, que el modelo permite. La decisión usa una desigualdad para toda una familia de superficies, además del cálculo energético de una historia particular.</p>
+</section>
+</section>
+<section id="lecturas-y-conexiones" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-conexiones">Lecturas y conexiones</h2>
+<p>En Sears y Zemansky, <em>Física universitaria</em>, volumen 1, capítulos 9 y 10, se desarrollan el momento de inercia, los ejes paralelos y la combinación de traslación y rotación. La sección 10.9 de Serway y Jewett, <em>Física para ciencias e ingeniería</em>, volumen 1, permite comparar la construcción cinemática de la rodadura y la energía de una rueda. En ambos casos debe conservarse la condición de ausencia de deslizamiento al usar la relación entre rapidez y velocidad angular.</p>
+<p>Spivak, <em>Physics for Mathematicians. Mechanics I</em>, capítulos 5 y 6, ofrece otra formulación de los ejes paralelos, la rotación y las restricciones de rodadura. Aquí las convenciones de signo y las fuerzas de contacto se reconstruyen desde el modelo de cada aparato. La relación entre una medición, el parámetro inferido y una predicción independiente vuelve al capítulo 0.</p>
+<p>El capítulo siguiente estudiará la gravitación y el campo: una fuerza resultante podrá provenir de una distribución extensa de masa, y habrá que decidir cuándo es adecuado reemplazarla por una fuente puntual.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-12-momento-angular-y-torque.html">← 12. Momento angular y torque</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-14-gravitacion-y-campo.html">14. Gravitación y campo →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

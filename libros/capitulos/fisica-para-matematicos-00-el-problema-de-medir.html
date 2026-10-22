@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 0 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>El problema de medir – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#la-magnitud-el-número-y-la-unidad" id="toc-la-magnitud-el-número-y-la-unidad" class="nav-link active" data-scroll-target="#la-magnitud-el-número-y-la-unidad">La magnitud, el número y la unidad</a></li>
+  <li><a href="#unidades-dimensiones-y-ecuaciones-que-pueden-tener-sentido" id="toc-unidades-dimensiones-y-ecuaciones-que-pueden-tener-sentido" class="nav-link" data-scroll-target="#unidades-dimensiones-y-ecuaciones-que-pueden-tener-sentido">Unidades, dimensiones y ecuaciones que pueden tener sentido</a></li>
+  <li><a href="#qué-sabemos-después-de-leer-una-escala" id="toc-qué-sabemos-después-de-leer-una-escala" class="nav-link" data-scroll-target="#qué-sabemos-después-de-leer-una-escala">Qué sabemos después de leer una escala</a></li>
+  <li><a href="#calibrar-una-indicación" id="toc-calibrar-una-indicación" class="nav-link" data-scroll-target="#calibrar-una-indicación">Calibrar una indicación</a></li>
+  <li><a href="#precisión-y-exactitud" id="toc-precisión-y-exactitud" class="nav-link" data-scroll-target="#precisión-y-exactitud">Precisión y exactitud</a></li>
+  <li><a href="#hacer-medible-un-intervalo-pequeño" id="toc-hacer-medible-un-intervalo-pequeño" class="nav-link" data-scroll-target="#hacer-medible-un-intervalo-pequeño">Hacer medible un intervalo pequeño</a></li>
+  <li><a href="#una-magnitud-calculada-a-partir-de-otras" id="toc-una-magnitud-calculada-a-partir-de-otras" class="nav-link" data-scroll-target="#una-magnitud-calculada-a-partir-de-otras">Una magnitud calculada a partir de otras</a></li>
+  <li><a href="#el-resultado-como-conjunto-de-valores-admisibles" id="toc-el-resultado-como-conjunto-de-valores-admisibles" class="nav-link" data-scroll-target="#el-resultado-como-conjunto-de-valores-admisibles">El resultado como conjunto de valores admisibles</a></li>
+  <li><a href="#qué-puede-identificar-una-calibración" id="toc-qué-puede-identificar-una-calibración" class="nav-link" data-scroll-target="#qué-puede-identificar-una-calibración">Qué puede identificar una calibración</a></li>
+  <li><a href="#elegir-una-escala-para-juzgar-el-resultado" id="toc-elegir-una-escala-para-juzgar-el-resultado" class="nav-link" data-scroll-target="#elegir-una-escala-para-juzgar-el-resultado">Elegir una escala para juzgar el resultado</a></li>
+  <li><a href="#conservar-cifras-sin-inventar-certidumbre" id="toc-conservar-cifras-sin-inventar-certidumbre" class="nav-link" data-scroll-target="#conservar-cifras-sin-inventar-certidumbre">Conservar cifras sin inventar certidumbre</a></li>
+  <li><a href="#medir-como-parte-del-fenómeno" id="toc-medir-como-parte-del-fenómeno" class="nav-link" data-scroll-target="#medir-como-parte-del-fenómeno">Medir como parte del fenómeno</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-0-1" id="toc-ejercicio-0-1" class="nav-link" data-scroll-target="#ejercicio-0-1">1. Cambiar el cero y cambiar la unidad</a></li>
+  <li><a href="#ejercicio-0-2" id="toc-ejercicio-0-2" class="nav-link" data-scroll-target="#ejercicio-0-2">2. Revisar un conteo</a></li>
+  <li><a href="#ejercicio-0-3" id="toc-ejercicio-0-3" class="nav-link" data-scroll-target="#ejercicio-0-3">3. Repeticiones concentradas</a></li>
+  <li><a href="#ejercicio-0-4" id="toc-ejercicio-0-4" class="nav-link" data-scroll-target="#ejercicio-0-4">4. Dos referencias de calibración</a></li>
+  <li><a href="#ejercicio-0-5" id="toc-ejercicio-0-5" class="nav-link" data-scroll-target="#ejercicio-0-5">5. El espesor de una pared</a></li>
+  <li><a href="#ejercicio-0-6" id="toc-ejercicio-0-6" class="nav-link" data-scroll-target="#ejercicio-0-6">6. Qué garantiza el redondeo</a></li>
+  <li><a href="#ejercicio-0-7" id="toc-ejercicio-0-7" class="nav-link" data-scroll-target="#ejercicio-0-7">7. Densidad media de un cilindro</a></li>
+  <li><a href="#ejercicio-0-8" id="toc-ejercicio-0-8" class="nav-link" data-scroll-target="#ejercicio-0-8">8. Dos resultados incompatibles</a></li>
+  <li><a href="#ejercicio-0-9" id="toc-ejercicio-0-9" class="nav-link" data-scroll-target="#ejercicio-0-9">9. Convertir una densidad</a></li>
+  <li><a href="#ejercicio-0-10" id="toc-ejercicio-0-10" class="nav-link" data-scroll-target="#ejercicio-0-10">10. Fórmulas que dependen de la unidad</a></li>
+  <li><a href="#ejercicio-0-11" id="toc-ejercicio-0-11" class="nav-link" data-scroll-target="#ejercicio-0-11">11. Un período construido con dos magnitudes</a></li>
+  <li><a href="#ejercicio-0-12" id="toc-ejercicio-0-12" class="nav-link" data-scroll-target="#ejercicio-0-12">12. Invertir una calibración no lineal</a></li>
+  <li><a href="#ejercicio-0-13" id="toc-ejercicio-0-13" class="nav-link" data-scroll-target="#ejercicio-0-13">13. El mismo factor de escala</a></li>
+  <li><a href="#ejercicio-0-14" id="toc-ejercicio-0-14" class="nav-link" data-scroll-target="#ejercicio-0-14">14. Promediar con cotas absolutas</a></li>
+  <li><a href="#ejercicio-0-15" id="toc-ejercicio-0-15" class="nav-link" data-scroll-target="#ejercicio-0-15">15. Medir láminas con un término desconocido</a></li>
+  <li><a href="#ejercicio-0-16" id="toc-ejercicio-0-16" class="nav-link" data-scroll-target="#ejercicio-0-16">16. Dos marcas de un reloj</a></li>
+  <li><a href="#ejercicio-0-17" id="toc-ejercicio-0-17" class="nav-link" data-scroll-target="#ejercicio-0-17">17. Pasar de período a frecuencia</a></li>
+  <li><a href="#ejercicio-0-18" id="toc-ejercicio-0-18" class="nav-link" data-scroll-target="#ejercicio-0-18">18. Diseñar el número de ciclos</a></li>
+  <li><a href="#ejercicio-0-19" id="toc-ejercicio-0-19" class="nav-link" data-scroll-target="#ejercicio-0-19">19. Redondear un área y conservar su cota</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#solucion-0-1" id="toc-solucion-0-1" class="nav-link" data-scroll-target="#solucion-0-1">1. Cambiar el cero y cambiar la unidad</a></li>
+  <li><a href="#solucion-0-2" id="toc-solucion-0-2" class="nav-link" data-scroll-target="#solucion-0-2">2. Revisar un conteo</a></li>
+  <li><a href="#solucion-0-3" id="toc-solucion-0-3" class="nav-link" data-scroll-target="#solucion-0-3">3. Repeticiones concentradas</a></li>
+  <li><a href="#solucion-0-4" id="toc-solucion-0-4" class="nav-link" data-scroll-target="#solucion-0-4">4. Dos referencias de calibración</a></li>
+  <li><a href="#solucion-0-5" id="toc-solucion-0-5" class="nav-link" data-scroll-target="#solucion-0-5">5. El espesor de una pared</a></li>
+  <li><a href="#solucion-0-6" id="toc-solucion-0-6" class="nav-link" data-scroll-target="#solucion-0-6">6. Qué garantiza el redondeo</a></li>
+  <li><a href="#solucion-0-7" id="toc-solucion-0-7" class="nav-link" data-scroll-target="#solucion-0-7">7. Densidad media de un cilindro</a></li>
+  <li><a href="#solucion-0-8" id="toc-solucion-0-8" class="nav-link" data-scroll-target="#solucion-0-8">8. Dos resultados incompatibles</a></li>
+  <li><a href="#solucion-0-9" id="toc-solucion-0-9" class="nav-link" data-scroll-target="#solucion-0-9">9. Convertir una densidad</a></li>
+  <li><a href="#solucion-0-10" id="toc-solucion-0-10" class="nav-link" data-scroll-target="#solucion-0-10">10. Fórmulas que dependen de la unidad</a></li>
+  <li><a href="#solucion-0-11" id="toc-solucion-0-11" class="nav-link" data-scroll-target="#solucion-0-11">11. Un período construido con dos magnitudes</a></li>
+  <li><a href="#solucion-0-12" id="toc-solucion-0-12" class="nav-link" data-scroll-target="#solucion-0-12">12. Invertir una calibración no lineal</a></li>
+  <li><a href="#solucion-0-13" id="toc-solucion-0-13" class="nav-link" data-scroll-target="#solucion-0-13">13. El mismo factor de escala</a></li>
+  <li><a href="#solucion-0-14" id="toc-solucion-0-14" class="nav-link" data-scroll-target="#solucion-0-14">14. Promediar con cotas absolutas</a></li>
+  <li><a href="#solucion-0-15" id="toc-solucion-0-15" class="nav-link" data-scroll-target="#solucion-0-15">15. Medir láminas con un término desconocido</a></li>
+  <li><a href="#solucion-0-16" id="toc-solucion-0-16" class="nav-link" data-scroll-target="#solucion-0-16">16. Dos marcas de un reloj</a></li>
+  <li><a href="#solucion-0-17" id="toc-solucion-0-17" class="nav-link" data-scroll-target="#solucion-0-17">17. Pasar de período a frecuencia</a></li>
+  <li><a href="#solucion-0-18" id="toc-solucion-0-18" class="nav-link" data-scroll-target="#solucion-0-18">18. Diseñar el número de ciclos</a></li>
+  <li><a href="#solucion-0-19" id="toc-solucion-0-19" class="nav-link" data-scroll-target="#solucion-0-19">19. Redondear un área y conservar su cota</a></li>
+  </ul></li>
+  <li><a href="#lecturas-de-apoyo" id="toc-lecturas-de-apoyo" class="nav-link" data-scroll-target="#lecturas-de-apoyo">Lecturas de apoyo</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">El problema de medir</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 0</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 0 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-01-describir-medir-y-estimar-un-movimiento.html">1. Describir, medir y estimar un movimiento →</a></p>
+<p>Medir la longitud de una barra parece consistir en apoyar una regla y leer un número. Pero si dos personas obtienen resultados distintos, la lectura deja de ser suficiente: necesitamos saber qué extremos eligieron, cómo colocaron la regla y qué cambios pudo sufrir la barra entre ambas mediciones. Antes de decidir cuál número aceptar, tenemos que precisar qué se quiso medir y cómo se obtuvo cada resultado.</p>
+<p>La cantidad que buscamos no se identifica con la indicación del aparato. Una barra puede dilatarse al calentarse; un borde irregular puede admitir distintas maneras de definir su posición; una regla puede tener desplazado el cero. Algunos desacuerdos proceden del instrumento, otros de las condiciones físicas y otros de una pregunta todavía imprecisa. El problema de medir comienza al construir una relación controlable entre el objeto y el resultado que escribimos.</p>
+<p>Consideremos una barra apoyada junto a una regla cuyo extremo se ha roto. El borde izquierdo coincide con la lectura de <span class="math inline">\(2{,}30\,\mathrm{cm}\)</span> y el derecho con la de <span class="math inline">\(14{,}70\,\mathrm{cm}\)</span>. La regla sigue siendo útil: la longitud entre esos bordes es la diferencia de las lecturas,</p>
+<p><span class="math display">\[
+L=14{,}70\,\mathrm{cm}-2{,}30\,\mathrm{cm}=12{,}40\,\mathrm{cm}.
+\]</span></p>
+<p>Para obtener ese resultado tuvimos que identificar dos bordes, alinear la regla y relacionar cada extremo con una marca. Si uno de los bordes es irregular o la barra está inclinada respecto de la escala, el procedimiento requiere una decisión adicional. La expresión «longitud de la barra» se vuelve una pregunta precisa cuando hemos determinado qué extremos se comparan y en qué condiciones. A esa magnitud que pretendemos medir, definida con el detalle necesario para el problema, la llamaremos <em>mensurando</em>. El término permite distinguir lo que buscamos de la señal que utilizamos para conocerlo.</p>
+<figure id="fig-fispm-r20261021-0-1" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/medida_regla.svg" class="lightbox" data-gallery="fispm-r20261021-c0"><img src="../../assets/books/fispm/r20261021/medida_regla.svg" alt="Una barra alineada con una regla; sus extremos corresponden a 2,30 y 14,70 centímetros, y una llave marca la diferencia de 12,40 centímetros." class="fpm-v04-figure img-fluid figure-img" width="900" height="550" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 0.1.</em> La longitud es la separación entre los extremos elegidos. El cero de la regla no tiene que coincidir con uno de ellos para que podamos medirla mediante una diferencia.</p>
+</figcaption>
+</figure>
+<section id="la-magnitud-el-número-y-la-unidad" class="level2">
+<h2 class="anchored" data-anchor-id="la-magnitud-el-número-y-la-unidad">La magnitud, el número y la unidad</h2>
+<p>La barra puede describirse por su longitud, su masa o su temperatura. Elegir la longitud determina qué aspecto investigamos; escoger el centímetro determina la referencia con la que expresamos el resultado. Si cambiamos de unidad y escribimos <span class="math inline">\(L=0{,}1240\,\mathrm m\)</span>, hemos cambiado el número sin cambiar la longitud.</p>
+<p>Para una longitud podemos escribir <span class="math inline">\(L=\ell u\)</span>, donde <span class="math inline">\(u\)</span> es la unidad y <span class="math inline">\(\ell\)</span> su valor numérico en esa unidad. Si reemplazamos <span class="math inline">\(u\)</span> por otra unidad cien veces mayor, el número se divide por cien. Esta dependencia importa al calcular: sumar <span class="math inline">\(12{,}4\,\mathrm{cm}\)</span> y <span class="math inline">\(0{,}5\,\mathrm m\)</span> exige expresar ambas longitudes en una unidad común, de modo que</p>
+<p><span class="math display">\[
+12{,}4\,\mathrm{cm}+0{,}5\,\mathrm m
+=12{,}4\,\mathrm{cm}+50\,\mathrm{cm}=62{,}4\,\mathrm{cm}.
+\]</span></p>
+<p>Sumar directamente los valores <span class="math inline">\(12{,}4\)</span> y <span class="math inline">\(0{,}5\)</span> daría un número sin la relación que queremos representar. Las unidades acompañan a las magnitudes durante la cuenta, y al multiplicarlas o dividirlas producen las unidades de la magnitud resultante. Por ejemplo, un área rectangular calculada como longitud por anchura se expresa en unidades de longitud al cuadrado. Puesto que <span class="math inline">\(1\,\mathrm m=100\,\mathrm{cm}\)</span>, un metro cuadrado equivale a <span class="math inline">\(10\,000\,\mathrm{cm^2}\)</span>, no a cien centímetros cuadrados.</p>
+<p>La dimensión física recoge el tipo de magnitud, con independencia de la unidad elegida. Una longitud expresada en metros y otra expresada en centímetros tienen dimensión de longitud, que denotaremos por <span class="math inline">\(\mathsf L\)</span>. Un tiempo tiene dimensión <span class="math inline">\(\mathsf T\)</span> y una masa, <span class="math inline">\(\mathsf M\)</span>. El cociente entre un desplazamiento y un intervalo temporal tiene dimensión <span class="math inline">\(\mathsf L/\mathsf T\)</span>; cambiar segundos por milisegundos modifica su valor numérico, pero conserva esa dimensión. La igualdad de dimensiones es una condición necesaria de una suma física: una longitud y un tiempo no se suman para producir otra longitud.</p>
+<p>La comprobación dimensional permite detectar algunas equivocaciones antes de conocer el resultado. No decide por sí sola si la fórmula corresponde al fenómeno: dos expresiones dimensionalmente correctas pueden dar predicciones distintas porque describen modelos diferentes.</p>
+</section>
+<section id="unidades-dimensiones-y-ecuaciones-que-pueden-tener-sentido" class="level2">
+<h2 class="anchored" data-anchor-id="unidades-dimensiones-y-ecuaciones-que-pueden-tener-sentido">Unidades, dimensiones y ecuaciones que pueden tener sentido</h2>
+<p>La longitud de una barra conserva su identidad cuando cambiamos de centímetros a metros. Si <span class="math inline">\(u\)</span> es una unidad, escribimos <span class="math inline">\(Q=\{Q\}_u u\)</span>, donde <span class="math inline">\(\{Q\}_u\)</span> es su valor numérico. Al escoger <span class="math inline">\(u'=cu\)</span>, con <span class="math inline">\(c&gt;0\)</span>, la igualdad física exige <span class="math inline">\(\{Q\}_{u'}=\{Q\}_u/c\)</span>. Así se explica que convertir una medida transforme también su cota, sin cambiar la razón entre ambas.</p>
+<p><strong>Definición (dimensión).</strong> En el sistema mecánico basado en longitud, masa y tiempo, representamos la dimensión de una magnitud mediante <span class="math inline">\(L^\alpha M^\beta T^\gamma\)</span>. Los productos suman los exponentes, los cocientes los restan y una potencia multiplica los exponentes por esa potencia. La dimensión registra cómo responde una magnitud al cambio de las unidades básicas; varias magnitudes físicamente distintas pueden compartirla.</p>
+<p>Una suma requiere términos de la misma dimensión. Además, el argumento de una exponencial, un logaritmo o una función trigonométrica en las expresiones que utilizaremos debe ser adimensional. Por ejemplo, <span class="math inline">\(\exp(-t/\tau)\)</span> admite cualquier unidad temporal común a <span class="math inline">\(t\)</span> y <span class="math inline">\(\tau\)</span>; escribir <span class="math inline">\(\exp(-t)\)</span> con <span class="math inline">\(t\)</span> entendido como una magnitud temporal deja incompleta la fórmula. Si en una gráfica escribimos el tiempo numérico <span class="math inline">\(\theta=t/(1\,\mathrm s)\)</span>, entonces <span class="math inline">\(\exp(-\theta)\)</span> sí tiene un argumento definido.</p>
+<p><strong>Conclusión (alcance del análisis dimensional).</strong> La homogeneidad dimensional es una condición necesaria para las ecuaciones entre las magnitudes aquí consideradas. No determina por sí sola una ley ni sus factores numéricos adimensionales. Las expresiones <span class="math inline">\(v_0t+at^2\)</span> y <span class="math inline">\(v_0t+at^2/2\)</span> tienen la misma dimensión. La segunda satisface <span class="math inline">\(x(0)=0\)</span>, <span class="math inline">\(x'(0)=v_0\)</span> y <span class="math inline">\(x''=a\)</span> para todo valor constante de <span class="math inline">\(a\)</span>. La primera tiene segunda derivada <span class="math inline">\(2a\)</span>, que coincide con la aceleración prescrita sólo en el caso <span class="math inline">\(a=0\)</span>. Esa distinción adquirirá contenido físico en el capítulo 1.</p>
+</section>
+<section id="qué-sabemos-después-de-leer-una-escala" class="level2">
+<h2 class="anchored" data-anchor-id="qué-sabemos-después-de-leer-una-escala">Qué sabemos después de leer una escala</h2>
+<p>Las dos lecturas de la barra no tienen por qué coincidir exactamente con las posiciones buscadas. Supongamos que el procedimiento permite asegurar, para este ejemplo,</p>
+<p><span class="math display">\[
+x_1\in[2{,}25,2{,}35]\,\mathrm{cm},\qquad
+x_2\in[14{,}65,14{,}75]\,\mathrm{cm}.
+\]</span></p>
+<p>La longitud es <span class="math inline">\(L=x_2-x_1\)</span>. Para encontrar una cota inferior tomamos el menor extremo derecho y restamos el mayor extremo izquierdo; para la superior hacemos las elecciones opuestas. Resulta</p>
+<p><span class="math display">\[
+L\in[14{,}65-2{,}35,14{,}75-2{,}25]\,\mathrm{cm}
+  =[12{,}30,12{,}50]\,\mathrm{cm}.
+\]</span></p>
+<p>Podemos resumir esa información mediante <span class="math inline">\(L=(12{,}40\pm0{,}10)\,\mathrm{cm}\)</span>, siempre que expliquemos que aquí el signo <span class="math inline">\(\pm\)</span> representa una cota absoluta. En otras mediciones puede acompañar una incertidumbre estándar o una declaración probabilística; la escritura, por sí sola, no permite decidir qué significa. En este capítulo trabajaremos con intervalos y cotas cuando el enunciado los proporcione. No asignaremos a esos intervalos un porcentaje de confianza que no esté justificado por un modelo estadístico.</p>
+<p>La cota no se obtiene simplemente contando decimales. Un dispositivo ideal que únicamente redondea a la décima de centímetro introduce una diferencia de, a lo sumo, media décima. Un instrumento real puede añadir un desplazamiento del cero, un error de escala o una lectura oblicua. La resolución de la indicación informa sobre qué cambios podemos distinguir; para acotar la medición completa necesitamos considerar también los demás efectos relevantes.</p>
+<p>Una relación entre los errores puede permitir un cálculo mejor que el de los extremos independientes. Si ambas posiciones recibieran exactamente el mismo desplazamiento desconocido <span class="math inline">\(c\)</span>, sus indicaciones serían <span class="math inline">\(r_1=x_1+c\)</span> y <span class="math inline">\(r_2=x_2+c\)</span>. Al restar,</p>
+<p><span class="math display">\[
+r_2-r_1=(x_2+c)-(x_1+c)=x_2-x_1.
+\]</span></p>
+<p>El desplazamiento común se cancela. Esa ventaja depende de que sea realmente el mismo en ambas lecturas. Si la regla tiene además un factor de escala equivocado, <span class="math inline">\(r=\alpha x+c\)</span>, la diferencia se convierte en <span class="math inline">\(r_2-r_1=\alpha(x_2-x_1)\)</span> y conserva el factor <span class="math inline">\(\alpha\)</span>. Conocer la estructura del error puede ser tan útil como conseguir un instrumento con más cifras.</p>
+</section>
+<section id="calibrar-una-indicación" class="level2">
+<h2 class="anchored" data-anchor-id="calibrar-una-indicación">Calibrar una indicación</h2>
+<p>Una balanza no muestra directamente una masa libre de toda suposición. La indicación depende de cómo se ha calibrado el aparato. Podemos investigar esa relación comparando sus lecturas con masas de referencia cuyo valor conocemos con una incertidumbre adecuada. Para aislar la estructura del cálculo, trataremos como exactos los valores de las referencias y las indicaciones de la siguiente tabla simulada.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Masa de referencia <span class="math inline">\(m\)</span> en gramos</th>
+<th>Indicación <span class="math inline">\(r\)</span> en gramos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>5,00</td>
+<td>5,04</td>
+</tr>
+<tr class="even">
+<td>25,00</td>
+<td>25,12</td>
+</tr>
+</tbody>
+</table>
+<p>Supongamos que, entre esas masas, la relación puede representarse por <span class="math inline">\(r=\alpha m+\beta\)</span>. El factor <span class="math inline">\(\alpha\)</span> es adimensional y <span class="math inline">\(\beta\)</span> tiene unidades de masa. Restar las dos condiciones elimina <span class="math inline">\(\beta\)</span> y determina la pendiente:</p>
+<p><span class="math display">\[
+\alpha=\frac{25{,}12\,\mathrm g-5{,}04\,\mathrm g}
+                 {25{,}00\,\mathrm g-5{,}00\,\mathrm g}
+       =1{,}004.
+\]</span></p>
+<p>Al volver a la primera referencia obtenemos <span class="math inline">\(\beta=0{,}02\,\mathrm g\)</span>. Si un objeto produce la indicación <span class="math inline">\(r=12{,}57\,\mathrm g\)</span>, debemos invertir la relación para hallar la masa correspondiente:</p>
+<p><span class="math display">\[
+m=\frac{r-\beta}{\alpha}
+=\frac{12{,}57\,\mathrm g-0{,}02\,\mathrm g}{1{,}004}
+=12{,}50\,\mathrm g.
+\]</span></p>
+<p>Una corrección constante del cero no habría corregido el factor de escala. El modelo distingue ambos efectos y permite ver por qué restar siempre la misma cantidad puede funcionar cerca de una referencia y fallar más lejos.</p>
+<p>Las dos referencias determinaron la recta porque habíamos supuesto una relación afín. Todavía no justifican esa relación para cualquier masa. Si intentamos extenderla y una referencia adicional de <span class="math inline">\(50\,\mathrm g\)</span> produce una lectura entre <span class="math inline">\(50{,}79\)</span> y <span class="math inline">\(50{,}81\,\mathrm g\)</span>, el modelo predice <span class="math inline">\(50{,}22\,\mathrm g\)</span> y queda fuera de ese intervalo. La discrepancia impide aceptar sin revisión aquella extensión. Habrá que examinar el rango del aparato, la calibración, la referencia y las condiciones de lectura; los dos puntos usados para ajustar la recta no constituían una prueba independiente de ella.</p>
+<figure id="fig-fispm-r20261021-0-2" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/medida_calibracion.svg" class="lightbox" data-gallery="fispm-r20261021-c0"><img src="../../assets/books/fispm/r20261021/medida_calibracion.svg" alt="Recta de calibración fijada por las masas de cinco y veinticinco gramos. Una tercera referencia de cincuenta gramos queda fuera de la prolongación predicha; un panel de residuos muestra la diferencia de 0,58 gramos." class="fpm-v04-figure img-fluid figure-img" width="900" height="550" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 0.2.</em> Las dos primeras referencias fijan el modelo afín. El tercer punto prueba una extensión de su dominio. La escala ampliada del residuo permite apreciar una discrepancia que el dibujo general deja poco visible.</p>
+</figcaption>
+</figure>
+</section>
+<section id="precisión-y-exactitud" class="level2">
+<h2 class="anchored" data-anchor-id="precisión-y-exactitud">Precisión y exactitud</h2>
+<p>Midamos varias veces la misma barra, procurando mantener el procedimiento. Consideremos las lecturas simuladas <span class="math inline">\(12{,}40\)</span>, <span class="math inline">\(12{,}42\)</span>, <span class="math inline">\(12{,}39\)</span>, <span class="math inline">\(12{,}41\)</span> y <span class="math inline">\(12{,}38\)</span> centímetros. Su media aritmética es</p>
+<p><span class="math display">\[
+\overline L=\frac{12{,}40+12{,}42+12{,}39+12{,}41+12{,}38}{5}\,\mathrm{cm}
+           =12{,}40\,\mathrm{cm}.
+\]</span></p>
+<p>El mínimo y el máximo de esta serie son <span class="math inline">\(12{,}38\)</span> y <span class="math inline">\(12{,}42\,\mathrm{cm}\)</span>, con un rango observado de <span class="math inline">\(0{,}04\,\mathrm{cm}\)</span>. La repetición permite describir la dispersión de las lecturas bajo esas condiciones. No demuestra que la longitud esté comprendida entre el mínimo y el máximo observados: un sesgo común podría desplazar todas las lecturas sin ensanchar el grupo.</p>
+<p>Si una calibración independiente justificara añadir <span class="math inline">\(0{,}20\,\mathrm{cm}\)</span> a cada resultado, la media corregida sería <span class="math inline">\(12{,}60\,\mathrm{cm}\)</span> y el rango observado seguiría siendo <span class="math inline">\(0{,}04\,\mathrm{cm}\)</span>. La dispersión y la corrección por sesgo describen propiedades diferentes. Por eso una serie muy concentrada puede dar una impresión engañosa de exactitud cuando todavía no se ha contrastado el procedimiento.</p>
+<p>La <em>precisión</em> describe la proximidad entre los resultados de mediciones repetidas bajo condiciones especificadas. En esta serie la apreciamos mediante la pequeña dispersión de las lecturas. La <em>exactitud</em> se refiere a la cercanía de un valor medido al valor verdadero de la magnitud. Como ese valor verdadero normalmente no se conoce exactamente, el contraste práctico utiliza valores de referencia y debe considerar también la incertidumbre de esas referencias. Que las lecturas se agrupen mucho no demuestra que estén cerca de lo que buscamos.</p>
+<p>Podemos hacer visible la diferencia con una comparación simulada. Tratemos como exacta, solo dentro de este ejemplo, una longitud de referencia de <span class="math inline">\(12{,}60\,\mathrm{cm}\)</span>. El procedimiento A produce las cinco lecturas anteriores. Otro procedimiento, B, produce <span class="math inline">\(12{,}56\)</span>, <span class="math inline">\(12{,}62\)</span>, <span class="math inline">\(12{,}60\)</span>, <span class="math inline">\(12{,}64\)</span> y <span class="math inline">\(12{,}58\,\mathrm{cm}\)</span>. Los resultados resumidos son:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Procedimiento</th>
+<th>Media en centímetros</th>
+<th>Rango observado en centímetros</th>
+<th>Distancia de la media a la referencia en centímetros</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>12,40</td>
+<td>0,04</td>
+<td>0,20</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>12,60</td>
+<td>0,08</td>
+<td>0,00</td>
+</tr>
+</tbody>
+</table>
+<p>A tiene menor dispersión en esta comparación, pero todas sus lecturas están más lejos de la referencia que las de B. B ofrece aquí resultados más próximos a ella aunque varían más entre sí. La coincidencia exacta de su media con la referencia es una propiedad de los datos elegidos; cinco observaciones no garantizan que las mediciones futuras mantengan esa coincidencia. El contraste permite separar las dos preguntas sin atribuir al aparato una perfección que no hemos demostrado.</p>
+<figure id="fig-fispm-r20261021-0-3" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/precision_exactitud.svg" class="lightbox" data-gallery="fispm-r20261021-c0"><img src="../../assets/books/fispm/r20261021/precision_exactitud.svg" alt="Dos series simuladas sobre una misma escala de longitudes. A se concentra alrededor de 12,40 centímetros; B se dispersa más alrededor de la referencia idealizada de 12,60 centímetros." class="fpm-v04-figure img-fluid figure-img" width="900" height="550" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 0.3.</em> La concentración de una serie y su cercanía a la referencia se juzgan mediante comparaciones distintas. Los puntos muestran todas las lecturas de este ejemplo; los segmentos señalan sus rangos observados.</p>
+</figcaption>
+</figure>
+<p>Para referirse específicamente al acuerdo entre el promedio ideal de repeticiones y una referencia, la metrología utiliza además el término <em>veracidad</em>. Esta distinción permite estudiar el sesgo sin confundirlo con la dispersión. Una media finita ayuda a investigarlo, pero no coincide por definición con ese promedio ideal. La exactitud, por su parte, no se expresa mediante un número propio como «exactitud de 0,02 centímetros»: esa cifra podría describir un error o una cota, y habría que precisar cuál.</p>
+<p>La <em>incertidumbre de medida</em> es un parámetro de valor cero o positivo que caracteriza la dispersión de los valores atribuidos al mensurando a partir de la información disponible. Puede recoger contribuciones evaluadas mediante repeticiones y otras obtenidas de calibraciones, especificaciones o modelos. Por eso no se identifica con el rango de cinco lecturas ni con un error cuyo valor ya conociéramos. Las cotas de los ejemplos de este capítulo son condiciones explícitas de sus modelos; una evaluación de incertidumbre estadística requiere justificar su propio procedimiento.</p>
+<p>Tampoco conocemos, a partir de cinco repeticiones, una cota garantizada para todas las lecturas futuras. Inferir cómo mejora la estimación al aumentar el número de repeticiones exige hipótesis sobre las variaciones y las relaciones entre ellas. Promediar no elimina automáticamente un desplazamiento común ni autoriza a dividir cualquier incertidumbre por el número de observaciones.</p>
+</section>
+<section id="hacer-medible-un-intervalo-pequeño" class="level2">
+<h2 class="anchored" data-anchor-id="hacer-medible-un-intervalo-pequeño">Hacer medible un intervalo pequeño</h2>
+<p>Un cronómetro manual puede dar resultados poco informativos al medir una sola oscilación. Si la duración indicada es <span class="math inline">\(1{,}5\,\mathrm s\)</span> y el error total del intervalo medido está acotado por <span class="math inline">\(0{,}2\,\mathrm s\)</span>, la duración queda entre <span class="math inline">\(1{,}3\)</span> y <span class="math inline">\(1{,}7\,\mathrm s\)</span>. La contribución del inicio y la detención del cronómetro pesa mucho en comparación con el tiempo buscado.</p>
+<p>Podemos iniciar el registro en un paso identificable del movimiento y detenerlo después de diez oscilaciones completas, al volver a la misma posición con el mismo sentido de paso. Si el intervalo indicado es <span class="math inline">\(15{,}2\,\mathrm s\)</span> y mantenemos la misma cota total de <span class="math inline">\(0{,}2\,\mathrm s\)</span> para ese intervalo, el tiempo medio por oscilación satisface</p>
+<p><span class="math display">\[
+\overline T=\frac{\Delta t}{10}
+\in\left[\frac{15{,}0}{10},\frac{15{,}4}{10}\right]\,\mathrm s
+=[1{,}50,1{,}54]\,\mathrm s.
+\]</span></p>
+<p>La cota absoluta por ciclo se ha reducido a <span class="math inline">\(0{,}02\,\mathrm s\)</span> porque el mismo error total se distribuye entre diez ciclos contados. La mejora depende de que la cota total se mantenga y el conteo sea correcto. No proviene de suponer que diez errores independientes se cancelan.</p>
+<figure id="fig-fispm-r20261021-0-4" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/medida_ciclos.svg" class="lightbox" data-gallery="fispm-r20261021-c0"><img src="../../assets/books/fispm/r20261021/medida_ciclos.svg" alt="Curva periódica esquemática con diez ciclos completos, marcados desde un paso por el origen con sentido positivo hasta el siguiente paso equivalente tras diez ciclos." class="fpm-v04-figure img-fluid figure-img" width="900" height="550" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 0.4.</em> Para contar ciclos elegimos eventos equivalentes. Dos pasos por la misma posición con sentidos opuestos pueden estar separados por medio ciclo. La curva ilustra la periodicidad; no es un registro experimental del oscilador.</p>
+</figcaption>
+</figure>
+<p>Si los ciclos duran exactamente lo mismo, <span class="math inline">\(\overline T\)</span> coincide con ese período común. Si sus duraciones cambian, el cociente proporciona su media. Una disminución de amplitud, un cambio del dispositivo o una variación del ritmo pueden exigir comprobar qué duración estamos promediando. Medir durante más tiempo amplía la observación y puede hacer visibles efectos que antes eran despreciables.</p>
+</section>
+<section id="una-magnitud-calculada-a-partir-de-otras" class="level2">
+<h2 class="anchored" data-anchor-id="una-magnitud-calculada-a-partir-de-otras">Una magnitud calculada a partir de otras</h2>
+<p>La medida indirecta incorpora una relación entre magnitudes. Para obtener el área de una placa rectangular usamos <span class="math inline">\(A=Lw\)</span>, donde <span class="math inline">\(L\)</span> y <span class="math inline">\(w\)</span> son los lados. La fórmula exige que el modelo geométrico sea adecuado: si la placa tiene un recorte importante, multiplicar las dimensiones exteriores no da el área del material.</p>
+<p>Supongamos una placa rectangular con</p>
+<p><span class="math display">\[
+L\in[12{,}3,12{,}5]\,\mathrm{cm},\qquad
+w\in[4{,}9,5{,}1]\,\mathrm{cm}.
+\]</span></p>
+<p>Ambos lados son positivos, de modo que aumentar cualquiera de ellos aumenta el producto. Las cotas proporcionan</p>
+<p><span class="math display">\[
+A\in[12{,}3\cdot4{,}9,12{,}5\cdot5{,}1]\,\mathrm{cm^2}
+  =[60{,}27,63{,}75]\,\mathrm{cm^2}.
+\]</span></p>
+<p>El producto de los valores centrales es <span class="math inline">\(12{,}4\cdot5{,}0=62{,}0\,\mathrm{cm^2}\)</span>. Sus distancias a los extremos del intervalo son <span class="math inline">\(1{,}73\)</span> y <span class="math inline">\(1{,}75\,\mathrm{cm^2}\)</span>: una fórmula no lineal puede transformar intervalos simétricos en una envolvente que no está centrada en el resultado nominal. Si quisiéramos una cota simétrica alrededor de <span class="math inline">\(62{,}0\)</span>, tendría que ser al menos la mayor de esas dos diferencias. La escritura <span class="math inline">\(A=(62{,}0\pm1{,}8)\,\mathrm{cm^2}\)</span> sería una envolvente conservadora redondeada.</p>
+<figure id="fig-fispm-r20261021-0-5" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/medida_area.svg" class="lightbox" data-gallery="fispm-r20261021-c0"><img src="../../assets/books/fispm/r20261021/medida_area.svg" alt="Intervalo de áreas admisibles entre 60,27 y 63,75 centímetros cuadrados. El valor nominal de 62,0 está marcado, con distancias diferentes de 1,73 y 1,75 a los extremos." class="fpm-v04-figure img-fluid figure-img" width="900" height="550" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 0.5.</em> La cota del producto se obtiene de los extremos de las magnitudes positivas. El punto nominal no ocupa exactamente el centro de la banda.</p>
+</figcaption>
+</figure>
+<p>El procedimiento no necesita independencia estadística. Si existen relaciones adicionales entre <span class="math inline">\(L\)</span> y <span class="math inline">\(w\)</span>, la banda puede ser más ancha que el conjunto realmente posible, pero sigue conteniéndolo. Para estrecharla haría falta usar esas relaciones con una justificación física o instrumental.</p>
+</section>
+<section id="el-resultado-como-conjunto-de-valores-admisibles" class="level2">
+<h2 class="anchored" data-anchor-id="el-resultado-como-conjunto-de-valores-admisibles">El resultado como conjunto de valores admisibles</h2>
+<p>Las cotas utilizadas en los ejemplos permiten precisar la relación entre una indicación y la magnitud buscada. Fijado un procedimiento y sus condiciones de aplicación, podemos representar la información disponible por un conjunto de valores compatibles. Para una longitud suele bastar un intervalo; cuando intervienen varias magnitudes, importa también qué combinaciones de valores admitimos.</p>
+<p><strong>Definición (modelo de medida y conjunto admisible).</strong> Un modelo de medida es una relación <span class="math inline">\(y=f(q_1,\ldots,q_n)\)</span> que expresa la magnitud de salida <span class="math inline">\(y\)</span> mediante magnitudes de entrada. Llamaremos conjunto admisible a un conjunto <span class="math inline">\(S\)</span> de valores de las entradas que recoge las restricciones declaradas. El conjunto de salidas compatibles con esa información es</p>
+<p><span class="math display">\[
+f(S)=\{f(q):q\in S\}.
+\]</span></p>
+<p>Aquí <span class="math inline">\(q\)</span> abrevia la lista de entradas y todas las operaciones se realizan con unidades coherentes. Un intervalo <span class="math inline">\(J\)</span> es una envolvente válida si <span class="math inline">\(f(S)\subseteq J\)</span>. La inclusión admite que ciertos puntos de <span class="math inline">\(J\)</span> no sean físicamente posibles: una envolvente puede proporcionar una garantía útil sin describir exactamente todas las dependencias.</p>
+<p><strong>Proposición (propagación de cotas).</strong> Si las entradas reales pertenecen a <span class="math inline">\(S\)</span> y el modelo <span class="math inline">\(y=f(q)\)</span> es aplicable, toda envolvente de <span class="math inline">\(f(S)\)</span> contiene el valor de salida. Si además <span class="math inline">\(S\)</span> es un producto de intervalos cerrados y <span class="math inline">\(f\)</span> es monótona en cada variable, con sentido de monotonía fijo en todo <span class="math inline">\(S\)</span>, sus cotas extremas se obtienen eligiendo en cada variable el extremo correspondiente.</p>
+<p><strong>Demostración.</strong> La primera afirmación es la definición de imagen: para la entrada real <span class="math inline">\(q\in S\)</span>, el valor <span class="math inline">\(f(q)\)</span> pertenece a <span class="math inline">\(f(S)\)</span> y, por inclusión, a su envolvente. Para la segunda, sustituyamos sucesivamente cada coordenada por el extremo que disminuye <span class="math inline">\(f\)</span>. La monotonía asegura que ninguna sustitución aumenta el resultado. El vértice final proporciona una cota inferior, que además se alcanza porque ese vértice pertenece al producto. Las sustituciones opuestas producen la cota superior. Si la función es constante en alguna coordenada, ambos extremos sirven.</p>
+<p>El producto de intervalos expresa que todas sus combinaciones se conservan como posibles en el cálculo; no afirma independencia probabilística. Si dos longitudes comparten exactamente el mismo factor de escala, sus pares admisibles pueden ocupar una curva dentro de ese rectángulo. La envolvente rectangular seguirá siendo segura cuando contenga esa curva, aunque pierda información. El ejercicio 13 permite ver cuánto puede ensancharse un resultado por ignorar esa dependencia.</p>
+<p>Tampoco toda declaración de incertidumbre es una cota garantizada. En este capítulo, <span class="math inline">\(|q-q_0|\leq\delta\)</span> significa una restricción determinista asumida. Un intervalo de cobertura probabilística exigiría especificar el modelo y el nivel de cobertura. Esa información adicional no puede recuperarse del signo <span class="math inline">\(\pm\)</span> por sí solo.</p>
+</section>
+<section id="qué-puede-identificar-una-calibración" class="level2">
+<h2 class="anchored" data-anchor-id="qué-puede-identificar-una-calibración">Qué puede identificar una calibración</h2>
+<p>Dos referencias determinaron una función afín porque habíamos elegido esa familia. La misma información deja de ser suficiente si permitimos funciones arbitrarias. Supongamos que <span class="math inline">\(f\)</span> reproduce dos referencias distintas <span class="math inline">\(q_1,q_2\)</span>. Para una constante <span class="math inline">\(\lambda\)</span> de unidades adecuadas, la función</p>
+<p><span class="math display">\[
+g(q)=f(q)+\lambda(q-q_1)(q-q_2)
+\]</span></p>
+<p>reproduce esas mismas referencias. Fuera de ellas, en general produce indicaciones diferentes. Dos puntos no demuestran la linealidad del instrumento.</p>
+<p><strong>Definición (identificabilidad respecto de unos datos).</strong> Un parámetro, o una familia de parámetros, es identificable dentro de un modelo cuando dos elecciones admisibles que producen los mismos datos necesariamente coinciden. La definición se refiere a la familia elegida y a los datos disponibles. Una identificación exacta dentro del modelo no prueba que esa familia represente adecuadamente al aparato.</p>
+<p>En una calibración afín <span class="math inline">\(r=\alpha q+\beta\)</span>, dos referencias de distinto valor identifican <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span>: al restar sus ecuaciones obtenemos <span class="math inline">\(\alpha=(r_2-r_1)/(q_2-q_1)\)</span>, y después cualquiera de ellas fija <span class="math inline">\(\beta\)</span>. Invertir la calibración requiere además <span class="math inline">\(\alpha\ne0\)</span>. Una tercera referencia permite contrastar una consecuencia que no utilizamos para fijar esos dos parámetros. La distinción entre ajuste y contraste será igual de necesaria cuando nuestros datos sean posiciones de un móvil.</p>
+</section>
+<section id="elegir-una-escala-para-juzgar-el-resultado" class="level2">
+<h2 class="anchored" data-anchor-id="elegir-una-escala-para-juzgar-el-resultado">Elegir una escala para juzgar el resultado</h2>
+<p>Una cota absoluta adquiere significado al compararla con la magnitud que queremos conocer. En la barra de longitud nominal <span class="math inline">\(12{,}40\,\mathrm{cm}\)</span>, una cota de <span class="math inline">\(0{,}10\,\mathrm{cm}\)</span> corresponde a la razón</p>
+<p><span class="math display">\[
+\frac{0{,}10\,\mathrm{cm}}{12{,}40\,\mathrm{cm}}
+\approx0{,}00806,
+\]</span></p>
+<p>aproximadamente el <span class="math inline">\(0{,}81\,\%\)</span> del valor nominal. Expresar el resultado en metros divide por cien tanto la longitud como su cota: <span class="math inline">\(L=(0{,}1240\pm0{,}0010)\,\mathrm m\)</span>. La razón permanece igual. Cambiar de unidad no mejora la medición, aunque el aspecto de sus números sea distinto.</p>
+<p>Para anticipar una cuenta puede bastar una estimación de escala. Una placa de unos doce centímetros por unos cinco tiene un área de unas decenas de centímetros cuadrados; un resultado de seiscientos obligaría a revisar unidades y operaciones. Esa estimación puede detectar un error grande sin decidir entre <span class="math inline">\(60{,}27\)</span> y <span class="math inline">\(63{,}75\)</span>. La incertidumbre admisible depende de la pregunta: distinguir entre dos piezas separadas por una décima de centímetro exige más información que decidir si una placa cabe en una mesa de un metro.</p>
+<p>Una medición útil deja determinado qué magnitud se buscaba, cómo se relacionan las indicaciones con ella y qué alcance tiene el resultado. Al comparar dos procedimientos, la coincidencia o la discrepancia debe juzgarse junto con sus unidades, sus cotas y los supuestos que permitieron obtenerlas. Esa información es la que nos permite utilizar un número para responder una pregunta sobre el objeto medido.</p>
+</section>
+<section id="conservar-cifras-sin-inventar-certidumbre" class="level2">
+<h2 class="anchored" data-anchor-id="conservar-cifras-sin-inventar-certidumbre">Conservar cifras sin inventar certidumbre</h2>
+<p>Una calculadora puede mostrar más dígitos de los que una medición permite sostener. Las reglas de cifras significativas ofrecen una convención práctica para presentar resultados: al multiplicar o dividir suele conservarse el número de cifras significativas del dato que tenga menos; al sumar o restar se atiende a la posición decimal menos resuelta. Estas reglas orientan la escritura cuando no se dispone de una descripción más completa de la incertidumbre. Su aplicación no sustituye una propagación de cotas explícitas.</p>
+<p>Si declaramos <span class="math inline">\(L\in[L_-,L_+]\)</span>, redondear hacia dentro puede excluir longitudes que la declaración inicial admitía. Una envolvente decimal conserva la garantía cuando su extremo inferior no supera <span class="math inline">\(L_-\)</span> y el superior no es menor que <span class="math inline">\(L_+\)</span>. En cambio, redondear un valor nominal al más próximo sólo elige una representación de ese valor; todavía falta declarar qué banda acompaña al número publicado. La cantidad de cifras de una respuesta y la anchura de una banda cumplen funciones diferentes.</p>
+<p>Los factores de conversión definidos exactamente tampoco limitan por sí mismos las cifras de una medición. La igualdad <span class="math inline">\(1\,\mathrm{cm}=10^{-2}\,\mathrm m\)</span> transforma todos los valores admisibles sin añadir error. Para evitar que un redondeo intermedio domine la cuenta, conservaremos suficientes dígitos durante las operaciones y ajustaremos al final la escritura del valor y de su cota. Cuando se conocen cotas, comprobaremos además que la banda redondeada contiene la calculada. El ejercicio 19 confronta ambas decisiones en un producto de medidas.</p>
+</section>
+<section id="medir-como-parte-del-fenómeno" class="level2">
+<h2 class="anchored" data-anchor-id="medir-como-parte-del-fenómeno">Medir como parte del fenómeno</h2>
+<p>La medición utiliza interacciones físicas. Un termómetro necesita intercambiar energía con lo que mide, y ese intercambio puede cambiar la temperatura que queríamos conocer. En muchos problemas clásicos podemos reducir ese efecto o incluirlo en el modelo. La confianza en el resultado depende también de haber comprobado cuándo esa aproximación es suficiente.</p>
+<p>En física cuántica, una preparación y un procedimiento de medida determinan probabilidades de resultados; la dispersión no se atribuye en general solo a imperfecciones del instrumento. La interacción con el aparato forma parte de la descripción. El <em>problema de la medida cuántica</em> incluye explicar cómo esa descripción se relaciona con los resultados definidos que registramos. No se resuelve mejorando la calibración ni se identifica con la distinción entre precisión y exactitud.</p>
+<p>La continuidad entre ambos estudios está en preguntar qué sistema se prepara, qué se mide y cómo se produce un registro. La teoría necesaria para responder cambia. Aquí podemos aprender a formular esas preguntas sin anticipar una respuesta que exigirá conceptos cuánticos.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Los primeros problemas permiten practicar lecturas, conteos y calibración sin utilizar cálculo diferencial. Para una primera sesión pueden trabajarse 1, 2, 3, 4, 6 y 9; después, 5, 7, 8, 15 y 18 conectan esas operaciones con decisiones sobre el procedimiento. Los restantes examinan dependencias entre medidas, modelos no lineales y redondeos. En el 14 vale la pena conservar por escrito la primera cota obtenida: al reunir las tres restricciones se descubre qué información se había dejado sin usar.</p>
+<section id="ejercicio-0-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-1">1. Cambiar el cero y cambiar la unidad</h3>
+<p>Los extremos de una varilla producen lecturas nominales de <span class="math inline">\(4{,}20\)</span> y <span class="math inline">\(17{,}60\,\mathrm{cm}\)</span>. Cada lectura tiene una cota absoluta de <span class="math inline">\(0{,}05\,\mathrm{cm}\)</span>. Obtén un intervalo para la longitud y exprésalo en milímetros. Explica qué ocurriría con la diferencia si ambas lecturas incluyeran el mismo desplazamiento desconocido del cero. No supongas que ese desplazamiento es la única fuente de error.</p>
+</section>
+<section id="ejercicio-0-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-2">2. Revisar un conteo</h3>
+<p>Un registro temporal de oscilaciones indica <span class="math inline">\(30{,}6\,\mathrm s\)</span>, con una cota total de <span class="math inline">\(0{,}2\,\mathrm s\)</span>. Se anotaron veinte ciclos completos. Calcula el intervalo del tiempo medio por ciclo. Una revisión del video muestra que solo habían transcurrido diecinueve ciclos: calcula el intervalo corregido y decide si la primera cota cubría ese error de conteo.</p>
+</section>
+<section id="ejercicio-0-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-3">3. Repeticiones concentradas</h3>
+<p>Tres indicaciones de una balanza son <span class="math inline">\(100{,}1\)</span>, <span class="math inline">\(100{,}2\)</span> y <span class="math inline">\(100{,}0\,\mathrm g\)</span>. Calcula la media y el rango observado. Decide si esos datos bastan para afirmar que la masa está entre <span class="math inline">\(100{,}0\)</span> y <span class="math inline">\(100{,}2\,\mathrm g\)</span>. Construye una descripción del instrumento compatible con las lecturas y con una masa que quede fuera de ese intervalo. Explica qué permite juzgar la concentración de estas lecturas acerca de la precisión y qué falta para juzgar su exactitud.</p>
+</section>
+<section id="ejercicio-0-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-4">4. Dos referencias de calibración</h3>
+<p>Una balanza indica <span class="math inline">\(10{,}20\,\mathrm g\)</span> para una referencia de <span class="math inline">\(10{,}00\,\mathrm g\)</span> y <span class="math inline">\(50{,}60\,\mathrm g\)</span> para otra de <span class="math inline">\(50{,}00\,\mathrm g\)</span>. Trata estos datos como exactos dentro del problema y supone <span class="math inline">\(r=\alpha m+\beta\)</span> en el intervalo de calibración. Determina <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(\beta\)</span> y la masa que corresponde a una indicación de <span class="math inline">\(30{,}40\,\mathrm g\)</span>. Compara con la corrección que consistiría en restar siempre <span class="math inline">\(0{,}20\,\mathrm g\)</span>.</p>
+</section>
+<section id="ejercicio-0-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-5">5. El espesor de una pared</h3>
+<p>La sección de un tubo es una corona circular concéntrica. Su diámetro exterior pertenece a <span class="math inline">\([1{,}99,2{,}01]\,\mathrm{cm}\)</span> y el interior a <span class="math inline">\([1{,}79,1{,}81]\,\mathrm{cm}\)</span>. Encuentra un intervalo para el espesor de la pared. Compara la cota relativa respecto del espesor nominal con las cotas relativas de los diámetros respecto de sus valores nominales.</p>
+</section>
+<section id="ejercicio-0-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-6">6. Qué garantiza el redondeo</h3>
+<p>Un dispositivo ideal muestra una longitud redondeada a la décima de centímetro más próxima y no tiene otro error. Su indicación es <span class="math inline">\(10{,}2\,\mathrm{cm}\)</span>. Obtén una cota para la longitud. Considera después un aparato que, antes de redondear del mismo modo, suma <span class="math inline">\(0{,}30\,\mathrm{cm}\)</span> a la longitud: determina la cota corregida para la misma indicación y explica qué no autorizaba a concluir la resolución por sí sola.</p>
+</section>
+<section id="ejercicio-0-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-7">7. Densidad media de un cilindro</h3>
+<p>Una pieza maciza se modela como un cilindro circular de diámetro <span class="math inline">\(d\)</span> y altura <span class="math inline">\(h\)</span>, con volumen <span class="math inline">\(V=\pi d^2h/4\)</span>. Se conocen las cotas</p>
+<p><span class="math display">\[
+m\in[47{,}5,48{,}5]\,\mathrm g,\quad
+d\in[1{,}98,2{,}02]\,\mathrm{cm},\quad
+h\in[2{,}97,3{,}03]\,\mathrm{cm}.
+\]</span></p>
+<p>Calcula la densidad media nominal, usando los puntos medios de los intervalos, y una envolvente para <span class="math inline">\(\rho=m/V\)</span>. Justifica qué extremos eliges y escribe las unidades. No se supone una distribución probabilística de los valores.</p>
+</section>
+<section id="ejercicio-0-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-8">8. Dos resultados incompatibles</h3>
+<p>Dos procedimientos para medir la misma longitud, bajo las mismas condiciones físicas, proporcionan las cotas <span class="math inline">\(L\in[12{,}30,12{,}50]\,\mathrm{cm}\)</span> y <span class="math inline">\(L\in[12{,}52,12{,}72]\,\mathrm{cm}\)</span>. Determina qué puede concluirse de su comparación y si promediar los puntos medios resuelve la discrepancia. Calcula cuánto habría que aumentar, como mínimo, la cota simétrica de <span class="math inline">\(0{,}10\,\mathrm{cm}\)</span> del primer resultado, conservando su punto medio, para que los intervalos lleguen a intersectarse.</p>
+</section>
+<section id="ejercicio-0-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-9">9. Convertir una densidad</h3>
+<p>Una ficha técnica declara una densidad media de <span class="math inline">\((2{,}70\pm0{,}03)\,\mathrm{g/cm^3}\)</span>, donde el signo <span class="math inline">\(\pm\)</span> representa una cota garantizada bajo las condiciones de la ficha. Exprésala en <span class="math inline">\(\mathrm{kg/m^3}\)</span>. Un estudiante multiplica el valor numérico por cien porque «un metro tiene cien centímetros». Identifica el error y comprueba que la cota relativa se conserva.</p>
+</section>
+<section id="ejercicio-0-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-10">10. Fórmulas que dependen de la unidad</h3>
+<p>Se propone describir la indicación de un sensor mediante <span class="math inline">\(r=A\exp(-t)+B\)</span>, donde <span class="math inline">\(r,A,B\)</span> son longitudes y <span class="math inline">\(t\)</span> es tiempo. Explica qué falta en la expresión. Repárala mediante una constante temporal <span class="math inline">\(\tau&gt;0\)</span> y convierte la fórmula al tiempo numérico en milisegundos si <span class="math inline">\(\tau=0{,}25\,\mathrm s\)</span>. Decide si la corrección dimensional basta para demostrar que el sensor sigue esa ley.</p>
+</section>
+<section id="ejercicio-0-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-11">11. Un período construido con dos magnitudes</h3>
+<p>Se busca un tiempo característico de un sistema que sólo depende de una longitud <span class="math inline">\(\ell&gt;0\)</span> y una aceleración <span class="math inline">\(g&gt;0\)</span>. Dentro de la familia <span class="math inline">\(T=C\ell^\alpha g^\beta\)</span>, con <span class="math inline">\(C\)</span> adimensional, determina los exponentes. Explica por qué el análisis no determina <span class="math inline">\(C\)</span> y qué hipótesis se añade al excluir otras magnitudes o parámetros adimensionales.</p>
+</section>
+<section id="ejercicio-0-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-12">12. Invertir una calibración no lineal</h3>
+<p>Dentro del intervalo <span class="math inline">\(0\leq q\leq10\,\mathrm{cm}\)</span>, una calibración se representa por</p>
+<p><span class="math display">\[
+r=q+\kappa q^2,\qquad \kappa=0{,}01\,\mathrm{cm^{-1}}.
+\]</span></p>
+<p>El modelo y <span class="math inline">\(\kappa\)</span> se consideran exactos en este ejercicio. La indicación pertenece a <span class="math inline">\([5{,}24,5{,}26]\,\mathrm{cm}\)</span>. Justifica que la longitud compatible es única para cada indicación y encuentra una envolvente de su intervalo redondeada hacia fuera a la milésima de centímetro. Compara con identificar <span class="math inline">\(q\)</span> y <span class="math inline">\(r\)</span>.</p>
+</section>
+<section id="ejercicio-0-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-13">13. El mismo factor de escala</h3>
+<p>Dos lados de una placa se obtienen con el mismo instrumento, cuyo único error es un factor de escala desconocido <span class="math inline">\(k\in[0{,}99,1{,}01]\)</span>. Las indicaciones exactas dentro del problema son <span class="math inline">\(r_L=20{,}0\,\mathrm{cm}\)</span> y <span class="math inline">\(r_w=8{,}0\,\mathrm{cm}\)</span> y satisfacen <span class="math inline">\(r_L=kL\)</span>, <span class="math inline">\(r_w=kw\)</span>. Determina los valores compatibles con <span class="math inline">\(L/w\)</span>. Compara con el resultado de propagar por separado los dos intervalos de longitud y explica la pérdida de información.</p>
+</section>
+<section id="ejercicio-0-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-14">14. Promediar con cotas absolutas</h3>
+<p>Tres indicaciones de una longitud son <span class="math inline">\(10{,}1\)</span>, <span class="math inline">\(10{,}2\)</span> y <span class="math inline">\(10{,}3\,\mathrm{cm}\)</span>. Para cada lectura se garantiza <span class="math inline">\(|r_i-L|\leq0{,}2\,\mathrm{cm}\)</span>, sin un modelo probabilístico. Obtén una cota válida para el error de la media. Obtén también toda la información conjunta sobre <span class="math inline">\(L\)</span> usando la intersección de las tres restricciones. Decide si puede justificarse dividir automáticamente <span class="math inline">\(0{,}2\)</span> por <span class="math inline">\(\sqrt3\)</span>.</p>
+</section>
+<section id="ejercicio-0-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-15">15. Medir láminas con un término desconocido</h3>
+<p>Un dispositivo mide el espesor de una pila de <span class="math inline">\(N\)</span> láminas mediante <span class="math inline">\(R_N=Nh+c\)</span>, donde <span class="math inline">\(h\)</span> es el espesor común y <span class="math inline">\(c\)</span> es un término fijo de contacto. Se registran <span class="math inline">\(R_{20}=2{,}30\,\mathrm{mm}\)</span> y <span class="math inline">\(R_{50}=5{,}30\,\mathrm{mm}\)</span>, tratados como exactos dentro del modelo. Determina <span class="math inline">\(h,c\)</span> y predice <span class="math inline">\(R_{35}\)</span>. Explica por qué dividir una sola lectura por <span class="math inline">\(N\)</span> no identifica <span class="math inline">\(h\)</span> y qué comprobaría una tercera pila.</p>
+</section>
+<section id="ejercicio-0-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-16">16. Dos marcas de un reloj</h3>
+<p>Un reloj registra <span class="math inline">\(r_i=t_i+b+e_i\)</span>, con el mismo desplazamiento desconocido <span class="math inline">\(b\)</span> en ambas marcas y con <span class="math inline">\(|e_i|\leq0{,}03\,\mathrm s\)</span>. Las indicaciones son <span class="math inline">\(r_1=12{,}40\,\mathrm s\)</span> y <span class="math inline">\(r_2=15{,}10\,\mathrm s\)</span>. Acota <span class="math inline">\(t_2-t_1\)</span> sin imponer una cota a <span class="math inline">\(b\)</span>. Si además el reloj tiene un factor de escala <span class="math inline">\(\alpha\in[0{,}999,1{,}001]\)</span>, de modo que <span class="math inline">\(r_i=\alpha t_i+b+e_i\)</span>, obtiene una nueva envolvente del intervalo temporal.</p>
+</section>
+<section id="ejercicio-0-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-17">17. Pasar de período a frecuencia</h3>
+<p>El período de una señal está acotado por <span class="math inline">\(T\in[0{,}98,1{,}02]\,\mathrm s\)</span>. Define la frecuencia mediante <span class="math inline">\(f=1/T\)</span> y determina su intervalo. Compara con escribir <span class="math inline">\((1{,}00\pm0{,}02)\,\mathrm{s^{-1}}\)</span> como cota garantizada. Explica por qué la inversión de una banda simétrica no tiene por qué dar una banda simétrica alrededor del recíproco del centro.</p>
+</section>
+<section id="ejercicio-0-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-18">18. Diseñar el número de ciclos</h3>
+<p>Para estimar el tiempo medio por ciclo se mide el tiempo total de <span class="math inline">\(N\)</span> ciclos completos y se divide por el entero exacto <span class="math inline">\(N\)</span>. La cota absoluta total del cronometraje es <span class="math inline">\(0{,}24\,\mathrm s\)</span>, cualquiera que sea <span class="math inline">\(N\)</span>, dentro del rango de uso del aparato. Encuentra el menor <span class="math inline">\(N\)</span> que asegure una cota absoluta no mayor que <span class="math inline">\(0{,}01\,\mathrm s\)</span> en esa media. Discute qué cambia si se omite un ciclo o si los períodos varían durante el registro.</p>
+</section>
+<section id="ejercicio-0-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-0-19">19. Redondear un área y conservar su cota</h3>
+<p>Las dimensiones de una placa tienen cotas <span class="math inline">\(L=(12{,}34\pm0{,}01)\,\mathrm{cm}\)</span> y <span class="math inline">\(w=(5{,}6\pm0{,}05)\,\mathrm{cm}\)</span>. Se admiten todas las combinaciones de sus intervalos. Calcula el área nominal y su intervalo. Un estudiante publica únicamente <span class="math inline">\(69\,\mathrm{cm^2}\)</span> siguiendo la regla de dos cifras significativas. Decide qué información proporciona esa escritura y si sería válido interpretarla como una cota de redondeo <span class="math inline">\([68{,}5,69{,}5]\,\mathrm{cm^2}\)</span>. Propón una declaración decimal breve que preserve la envolvente completa.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-0-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-1">1. Cambiar el cero y cambiar la unidad</h3>
+<p>La longitud buscada es la separación entre dos posiciones, de modo que escribimos primero <span class="math inline">\(L=x_2-x_1\)</span>. Restar las lecturas centrales da <span class="math inline">\(13{,}40\,\mathrm{cm}\)</span>, pero aún falta saber cuánto puede apartarse de ese valor. El caso que acorta la varilla combina un extremo derecho menor con uno izquierdo mayor; el que la alarga hace las elecciones contrarias.</p>
+<p>El menor extremo derecho es <span class="math inline">\(17{,}55\,\mathrm{cm}\)</span> y el mayor izquierdo, <span class="math inline">\(4{,}25\,\mathrm{cm}\)</span>; las elecciones opuestas dan la cota superior. Así,</p>
+<p><span class="math display">\[
+L\in[17{,}55-4{,}25,17{,}65-4{,}15]\,\mathrm{cm}
+=[13{,}30,13{,}50]\,\mathrm{cm}
+=[133{,}0,135{,}0]\,\mathrm{mm}.
+\]</span></p>
+<p>El desplazamiento común del cero se cancela al restar las dos indicaciones, como muestra la identidad de la exposición. Eso no elimina las demás diferencias de lectura, una posible inclinación ni un factor de escala incorrecto. Si las cotas individuales ya contienen varios efectos sin información adicional, el intervalo calculado sigue siendo una envolvente válida.</p>
+</section>
+<section id="solucion-0-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-2">2. Revisar un conteo</h3>
+<p>El intervalo temporal es <span class="math inline">\([30{,}4,30{,}8]\,\mathrm s\)</span>. Si el conteo fuera veinte, el tiempo medio pertenecería a <span class="math inline">\([1{,}52,1{,}54]\,\mathrm s\)</span>. Con diecinueve ciclos, la información corregida es</p>
+<p><span class="math display">\[
+\overline T\in\left[\frac{30{,}4}{19},\frac{30{,}8}{19}\right]\,\mathrm s
+=[1{,}6,154/95]\,\mathrm s
+\subset[1{,}600,1{,}622]\,\mathrm s.
+\]</span></p>
+<p>Los dos intervalos no se intersectan. La cota de <span class="math inline">\(0{,}2\,\mathrm s\)</span> describía el error del intervalo temporal, no un conteo equivocado. El resultado anterior no podía proteger frente a un fallo que sus hipótesis excluían.</p>
+</section>
+<section id="solucion-0-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-3">3. Repeticiones concentradas</h3>
+<p>La media es <span class="math inline">\(100{,}1\,\mathrm g\)</span> y el rango observado es <span class="math inline">\(0{,}2\,\mathrm g\)</span>. Para ver por qué el rango no acota por sí solo la masa, supongamos una masa de <span class="math inline">\(101{,}1\,\mathrm g\)</span> y un instrumento cuya indicación tiene un desplazamiento común de <span class="math inline">\(-1{,}0\,\mathrm g\)</span>, más variaciones de <span class="math inline">\(0\)</span>, <span class="math inline">\(0{,}1\)</span> y <span class="math inline">\(-0{,}1\,\mathrm g\)</span>. Produce exactamente las tres indicaciones dadas. La masa queda fuera de su rango, aunque las repeticiones sean muy próximas.</p>
+<p>La construcción no afirma que esa sea la causa real. Demuestra que las lecturas no bastan para excluirla y, por tanto, que la cota pretendida necesita información adicional de calibración o del procedimiento. Su concentración informa sobre la precisión bajo las condiciones de repetición; no demuestra exactitud, pues el mismo conjunto admite un sesgo común. Para juzgar la cercanía a la magnitud buscada necesitamos un contraste adicional, con una referencia adecuada y su incertidumbre.</p>
+</section>
+<section id="solucion-0-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-4">4. Dos referencias de calibración</h3>
+<p>Restar las dos relaciones afines da</p>
+<p><span class="math display">\[
+\alpha=\frac{50{,}60-10{,}20}{50{,}00-10{,}00}=1{,}01.
+\]</span></p>
+<p>La primera referencia determina <span class="math inline">\(\beta=10{,}20\,\mathrm g-1{,}01(10{,}00\,\mathrm g)=0{,}10\,\mathrm g\)</span>. Para la indicación del objeto,</p>
+<p><span class="math display">\[
+m=\frac{30{,}40\,\mathrm g-0{,}10\,\mathrm g}{1{,}01}
+=30{,}00\,\mathrm g.
+\]</span></p>
+<p>Restar siempre <span class="math inline">\(0{,}20\,\mathrm g\)</span> daría <span class="math inline">\(30{,}20\,\mathrm g\)</span>. Esa corrección coincide con la primera referencia porque fue obtenida en ella, pero no representa el cambio de escala que muestran los dos datos. La masa calculada pertenece al intervalo de calibración y conserva la hipótesis afín del enunciado.</p>
+</section>
+<section id="solucion-0-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-5">5. El espesor de una pared</h3>
+<p>La diferencia entre los diámetros incluye dos paredes. Si <span class="math inline">\(D\)</span> es el exterior y <span class="math inline">\(d\)</span> el interior, el espesor es <span class="math inline">\(e=(D-d)/2\)</span>, por lo que</p>
+<p><span class="math display">\[
+e\in\left[\frac{1{,}99-1{,}81}{2},\frac{2{,}01-1{,}79}{2}\right]\,\mathrm{cm}
+=[0{,}09,0{,}11]\,\mathrm{cm}.
+\]</span></p>
+<p>El espesor nominal es <span class="math inline">\(0{,}10\,\mathrm{cm}\)</span> con una cota absoluta de <span class="math inline">\(0{,}01\,\mathrm{cm}\)</span>, igual al <span class="math inline">\(10\,\%\)</span> del nominal. Para los diámetros, la misma cota absoluta de <span class="math inline">\(0{,}01\,\mathrm{cm}\)</span> representa el <span class="math inline">\(0{,}5\,\%\)</span> de <span class="math inline">\(2{,}00\,\mathrm{cm}\)</span> y aproximadamente el <span class="math inline">\(0{,}56\,\%\)</span> de <span class="math inline">\(1{,}80\,\mathrm{cm}\)</span>. Al restar magnitudes próximas podemos obtener una magnitud pequeña cuya cota relativa sea mucho mayor.</p>
+</section>
+<section id="solucion-0-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-6">6. Qué garantiza el redondeo</h3>
+<p>En el dispositivo ideal, redondear a la décima más próxima cambia la longitud en, a lo sumo, <span class="math inline">\(0{,}05\,\mathrm{cm}\)</span>. Una envolvente válida es <span class="math inline">\(L\in[10{,}15,10{,}25]\,\mathrm{cm}\)</span>; incluir ambos extremos conserva una cota aunque el aparato use una regla particular para resolver empates.</p>
+<p>En el segundo dispositivo la indicación redondeada corresponde a <span class="math inline">\(L+0{,}30\,\mathrm{cm}\)</span>. Restamos esa cantidad de los extremos y obtenemos <span class="math inline">\(L\in[9{,}85,9{,}95]\,\mathrm{cm}\)</span>. La resolución es idéntica, pero el intervalo de la longitud cambió. La cota del primer dispositivo utilizaba la ausencia de otros errores, no solamente su última cifra.</p>
+</section>
+<section id="solucion-0-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-7">7. Densidad media de un cilindro</h3>
+<p>Antes de introducir los números conviene identificar la salida: la densidad media es masa total dividida por volumen. La base tiene radio <span class="math inline">\(d/2\)</span>, así que su área es <span class="math inline">\(\pi(d/2)^2=\pi d^2/4\)</span>. Multiplicarla por la altura da el volumen del enunciado. Usar <span class="math inline">\(\pi d^2h\)</span> daría un volumen cuatro veces mayor y una densidad cuatro veces menor. Las cotas se propagan sobre la expresión que corresponde al cilindro declarado.</p>
+<p>El modelo da <span class="math inline">\(\rho=4m/(\pi d^2h)\)</span>. Aumentar la masa aumenta la razón; aumentar el diámetro o la altura positivos aumenta el denominador y disminuye la densidad media. Por eso,</p>
+<p><span class="math display">\[
+\frac{4(47{,}5)}{\pi(2{,}02)^2(3{,}03)}\,\mathrm{g/cm^3}
+\leq\rho\leq
+\frac{4(48{,}5)}{\pi(1{,}98)^2(2{,}97)}\,\mathrm{g/cm^3}.
+\]</span></p>
+<p>Los extremos son aproximadamente <span class="math inline">\(4{,}89168\)</span> y <span class="math inline">\(5{,}30353\,\mathrm{g/cm^3}\)</span>, contenidos en la envolvente redondeada hacia fuera <span class="math inline">\([4{,}89,5{,}31]\,\mathrm{g/cm^3}\)</span>. Con los valores nominales, <span class="math inline">\(V=3\pi\,\mathrm{cm^3}\)</span> y <span class="math inline">\(\rho=16/\pi\,\mathrm{g/cm^3}\)</span>, aproximadamente <span class="math inline">\(5{,}093\,\mathrm{g/cm^3}\)</span>.</p>
+<p>La densidad media sigue siendo masa total dividida por volumen. Para atribuir ese mismo valor a cualquier porción del material haría falta una hipótesis de homogeneidad adicional. La envolvente también presupone que la geometría de cilindro macizo representa adecuadamente la pieza.</p>
+</section>
+<section id="solucion-0-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-8">8. Dos resultados incompatibles</h3>
+<p>Los intervalos están separados por <span class="math inline">\(0{,}02\,\mathrm{cm}\)</span>: no hay un valor de <span class="math inline">\(L\)</span> que satisfaga ambos. Si pretenden ser cotas garantizadas para la misma magnitud en las mismas condiciones, al menos una de las declaraciones o de sus condiciones de aplicación requiere revisión. La comparación no identifica por sí sola cuál falló.</p>
+<p>Los puntos medios son <span class="math inline">\(12{,}40\)</span> y <span class="math inline">\(12{,}62\,\mathrm{cm}\)</span>, cuyo promedio es <span class="math inline">\(12{,}51\,\mathrm{cm}\)</span>. Ese valor queda fuera de ambos intervalos. Promediar no repara la incompatibilidad ni proporciona una nueva garantía.</p>
+<p>Para que el primer intervalo alcance el borde inferior del segundo, su extremo superior debe llegar a <span class="math inline">\(12{,}52\,\mathrm{cm}\)</span>. Conservando el centro <span class="math inline">\(12{,}40\)</span>, la semianchura mínima es <span class="math inline">\(0{,}12\,\mathrm{cm}\)</span>: habría que aumentar la cota en <span class="math inline">\(0{,}02\,\mathrm{cm}\)</span>. Los intervalos se tocarían entonces en un punto. Esa ampliación matemática muestra el tamaño de la discrepancia; adoptarla como cota física requeriría justificar qué efecto estaba omitido.</p>
+</section>
+<section id="solucion-0-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-9">9. Convertir una densidad</h3>
+<p>La conversión debe afectar al cociente completo. Un gramo equivale a <span class="math inline">\(10^{-3}\,\mathrm{kg}\)</span> y un centímetro cúbico a <span class="math inline">\((10^{-2}\,\mathrm m)^3=10^{-6}\,\mathrm{m^3}\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+1\,\mathrm{g/cm^3}=10^3\,\mathrm{kg/m^3},\qquad
+\rho=(2700\pm30)\,\mathrm{kg/m^3}.
+\]</span></p>
+<p>La confusión proviene de tratar una unidad de volumen como una de longitud y de omitir la conversión de masa. La razón <span class="math inline">\(30/2700=0{,}03/2{,}70=1/90\)</span>, aproximadamente <span class="math inline">\(1{,}11\,\%\)</span>, confirma que cambió la representación numérica de la misma banda física. La conversión no añade información sobre la homogeneidad del material ni sobre la calidad de la medición original.</p>
+</section>
+<section id="solucion-0-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-10">10. Fórmulas que dependen de la unidad</h3>
+<p>El argumento de la exponencial debe ser un número adimensional. Si se pretende que <span class="math inline">\(t\)</span> sea una magnitud temporal, la fórmula queda completa como <span class="math inline">\(r=A\exp(-t/\tau)+B\)</span>. La constante <span class="math inline">\(\tau\)</span> establece la escala en que cambia la respuesta. Con <span class="math inline">\(\theta=t/(1\,\mathrm{ms})\)</span> y <span class="math inline">\(\tau=250\,\mathrm{ms}\)</span>,</p>
+<p><span class="math display">\[
+r=A\exp(-\theta/250)+B.
+\]</span></p>
+<p>El número 250 acompaña al tiempo expresado en milisegundos; al usar segundos aparecería <span class="math inline">\(t/(0{,}25\,\mathrm s)\)</span>. Una expresión escrita originalmente con <span class="math inline">\(t\)</span> como número de segundos podría describir una fórmula numérica legítima, pero debería declarar ese convenio. La homogeneidad permite interpretar la expresión y convertir unidades. Que el sensor la cumpla exige calibración y contraste dentro de su régimen de uso.</p>
+</section>
+<section id="solucion-0-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-11">11. Un período construido con dos magnitudes</h3>
+<p>Las dimensiones del miembro derecho son <span class="math inline">\(L^{\alpha+\beta}T^{-2\beta}\)</span>. Para obtener tiempo, los exponentes deben satisfacer <span class="math inline">\(\alpha+\beta=0\)</span> y <span class="math inline">\(-2\beta=1\)</span>. Así, <span class="math inline">\(\beta=-1/2\)</span>, <span class="math inline">\(\alpha=1/2\)</span> y</p>
+<p><span class="math display">\[
+T=C\sqrt{\ell/g}.
+\]</span></p>
+<p>Cambiar <span class="math inline">\(C\)</span> no altera dimensiones, de modo que ninguna comparación de exponentes podrá fijarlo. Incluso esta forma requiere la hipótesis de que la dependencia es monomial y sólo utiliza <span class="math inline">\(\ell,g\)</span>. Si el sistema incluye un ángulo adimensional <span class="math inline">\(\varphi\)</span>, una expresión <span class="math inline">\(T=F(\varphi)\sqrt{\ell/g}\)</span> pasa el mismo control para cualquier función adimensional <span class="math inline">\(F\)</span>. La elección de magnitudes relevantes forma parte de la construcción del modelo; el análisis dimensional trabaja después de esa elección.</p>
+</section>
+<section id="solucion-0-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-12">12. Invertir una calibración no lineal</h3>
+<p>Para <span class="math inline">\(q_2&gt;q_1\geq0\)</span>, la diferencia de indicaciones es <span class="math inline">\((q_2-q_1)[1+\kappa(q_1+q_2)]&gt;0\)</span>. La calibración es estrictamente creciente y continua, así que cada indicación de su imagen tiene una única preimagen. El intervalo de indicaciones está dentro de <span class="math inline">\([0,11]\,\mathrm{cm}\)</span>, la imagen del intervalo calibrado. La raíz no negativa de la ecuación cuadrática es</p>
+<p><span class="math display">\[
+q(r)=\frac{-1+\sqrt{1+4\kappa r}}{2\kappa}.
+\]</span></p>
+<p>La otra raíz es negativa y queda fuera del dominio. Por monotonía basta invertir los extremos: son aproximadamente <span class="math inline">\(4{,}991\)</span> y <span class="math inline">\(5{,}009\,\mathrm{cm}\)</span>, más precisamente <span class="math inline">\(4{,}990908\)</span> y <span class="math inline">\(5{,}009090\,\mathrm{cm}\)</span>. Una envolvente a la milésima es <span class="math inline">\([4{,}990,5{,}010]\,\mathrm{cm}\)</span>. Identificar indicación y longitud daría <span class="math inline">\([5{,}24,5{,}26]\,\mathrm{cm}\)</span>, una banda ajena a la calibración. La anchura de una lectura y su corrección son informaciones distintas.</p>
+</section>
+<section id="solucion-0-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-13">13. El mismo factor de escala</h3>
+<p>Al dividir las dos ecuaciones, el mismo <span class="math inline">\(k&gt;0\)</span> se cancela: <span class="math inline">\(L/w=r_L/r_w=2{,}5\)</span>. Todos los pares admisibles dan esa razón. Por separado tendríamos <span class="math inline">\(L\in[20/1{,}01,20/0{,}99]\,\mathrm{cm}\)</span> y <span class="math inline">\(w\in[8/1{,}01,8/0{,}99]\,\mathrm{cm}\)</span>. Si conservamos sólo esas bandas y admitimos todas sus combinaciones,</p>
+<p><span class="math display">\[
+\frac Lw\in
+\left[2{,}5\frac{0{,}99}{1{,}01},
+2{,}5\frac{1{,}01}{0{,}99}\right]
+\subset[2{,}450,2{,}551].
+\]</span></p>
+<p>Esta envolvente contiene el valor correcto, pero sus extremos combinan factores de escala distintos para los dos lados. El modelo del enunciado exige uno solo. Recuperar esa relación elimina la incertidumbre de la razón dentro de este modelo ideal; otros errores de lectura o de orientación impedirían esa cancelación exacta.</p>
+<figure id="fig-fispm-r20261021-0-6" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/escala_comun.svg" class="lightbox" data-gallery="fispm-r20261021-c0"><img src="../../assets/books/fispm/r20261021/escala_comun.svg" alt="La dependencia común restringe los pares a un segmento. Combinar libremente sus cotas individuales admite pares que ningún factor común puede producir." class="fpm-v04-figure img-fluid figure-img" width="800" height="430" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 0.6.</em> La dependencia común restringe los pares a un segmento. Combinar libremente sus cotas individuales admite pares que ningún factor común puede producir.</p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-0-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-14">14. Promediar con cotas absolutas</h3>
+<p>La media de las indicaciones es <span class="math inline">\(10{,}2\,\mathrm{cm}\)</span>. Hay dos preguntas diferentes: qué garantía ofrecería promediar cualesquiera tres lecturas con la cota dada y qué información añaden estas tres lecturas concretas sobre la misma longitud. Para responder la segunda, escribimos cada restricción como una banda para <span class="math inline">\(L\)</span>; un valor aceptable debe pertenecer a las tres simultáneamente.</p>
+<p>Si <span class="math inline">\(\overline r\)</span> es la media, la desigualdad triangular da <span class="math inline">\(|\overline r-L|\leq\sum|r_i-L|/3\leq0{,}2\,\mathrm{cm}\)</span>. Las tres bandas individuales son <span class="math inline">\([9{,}9,10{,}3]\)</span>, <span class="math inline">\([10{,}0,10{,}4]\)</span> y <span class="math inline">\([10{,}1,10{,}5]\,\mathrm{cm}\)</span>. Su intersección es <span class="math inline">\([10{,}1,10{,}3]\,\mathrm{cm}\)</span>. Como <span class="math inline">\(\overline r=10{,}2\,\mathrm{cm}\)</span>, los datos concretos permiten mejorar la cota de su error a <span class="math inline">\(0{,}1\,\mathrm{cm}\)</span>.</p>
+<p>Esa mejora procede de la intersección, no de una regla universal sobre tres repeticiones. Para ver por qué no cabe prometer en general <span class="math inline">\(0{,}2/\sqrt3\)</span>, bastaría repetir tres veces una indicación con el mismo error de <span class="math inline">\(0{,}2\,\mathrm{cm}\)</span>: el error de la media seguiría siendo <span class="math inline">\(0{,}2\,\mathrm{cm}\)</span>. Un resultado estadístico de reducción exige hipótesis sobre las fluctuaciones y un significado probabilístico de la incertidumbre.</p>
+</section>
+<section id="solucion-0-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-15">15. Medir láminas con un término desconocido</h3>
+<p>Restar las lecturas elimina el término de contacto: <span class="math inline">\(R_{50}-R_{20}=30h=3{,}00\,\mathrm{mm}\)</span>. Resulta <span class="math inline">\(h=0{,}100\,\mathrm{mm}\)</span> y <span class="math inline">\(c=2{,}30-20(0{,}100)=0{,}30\,\mathrm{mm}\)</span>. La predicción es <span class="math inline">\(R_{35}=3{,}80\,\mathrm{mm}\)</span>.</p>
+<p>Una sola pila proporciona una ecuación con dos incógnitas; <span class="math inline">\(R_N/N=h+c/N\)</span> coincide con <span class="math inline">\(h\)</span> únicamente si el contacto es nulo o se corrige. El dato de una tercera pila permite contrastar la hipótesis de un espesor constante y un mismo término de contacto. Si no concuerda, habría que revisar, por ejemplo, la compresión o la uniformidad de las láminas. La cuenta identifica los parámetros de la familia afín; no demuestra por sí misma esas hipótesis físicas.</p>
+<p>La resta se eligió porque conserva el cambio de espesor al añadir láminas y elimina el contacto común. También podemos comprobar la predicción sin volver a calcular los parámetros: treinta y cinco es el punto medio de veinte y cincuenta, y una función afín conserva ese punto medio. Por eso <span class="math inline">\(R_{35}=(R_{20}+R_{50})/2=3{,}80\,\mathrm{mm}\)</span>. Si cada pila tuviera su propio término de contacto desconocido, la resta contendría además la diferencia entre esos términos. La posibilidad de medir un espesor mediante dos pilas depende de preparar un contacto reproducible.</p>
+</section>
+<section id="solucion-0-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-16">16. Dos marcas de un reloj</h3>
+<p>Restar elimina el desplazamiento <span class="math inline">\(b\)</span>, aunque sea grande. La diferencia de errores está entre <span class="math inline">\(-0{,}06\)</span> y <span class="math inline">\(0{,}06\,\mathrm s\)</span>, así que</p>
+<p><span class="math display">\[
+t_2-t_1\in[2{,}64,2{,}76]\,\mathrm s.
+\]</span></p>
+<p>Con factor de escala, <span class="math inline">\(r_2-r_1=\alpha(t_2-t_1)+e_2-e_1\)</span>. Primero acotamos el numerador corregido y luego dividimos por el factor positivo:</p>
+<p><span class="math display">\[
+t_2-t_1\in
+\left[\frac{2{,}64}{1{,}001},\frac{2{,}76}{0{,}999}\right]\,\mathrm s
+\subset[2{,}637,2{,}763]\,\mathrm s.
+\]</span></p>
+<p>Los extremos decimales se redondearon hacia fuera. Un cero común puede cancelarse mientras un error común de escala permanece. Esto explica por qué dos marcas temporales pueden medir bien un intervalo aunque ninguna de ellas indique correctamente la hora absoluta.</p>
+</section>
+<section id="solucion-0-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-17">17. Pasar de período a frecuencia</h3>
+<p>El recíproco es estrictamente decreciente para valores positivos. Intercambiamos los extremos al invertir:</p>
+<p><span class="math display">\[
+f\in\left[\frac1{1{,}02},\frac1{0{,}98}\right]\,\mathrm{s^{-1}}
+=\left[\frac{50}{51},\frac{50}{49}\right]\,\mathrm{s^{-1}}.
+\]</span></p>
+<p>La banda va aproximadamente de <span class="math inline">\(0{,}980392\)</span> a <span class="math inline">\(1{,}020408\,\mathrm{s^{-1}}\)</span>. La declaración simétrica propuesta termina en <span class="math inline">\(1{,}02\)</span> y excluye valores permitidos próximos al extremo superior; por tanto, no constituye una cota garantizada. Una envolvente simétrica válida alrededor de uno es <span class="math inline">\((1{,}000\pm0{,}021)\,\mathrm{s^{-1}}\)</span>. La asimetría procede de una función no lineal y puede surgir aun sin probabilidades ni errores adicionales.</p>
+</section>
+<section id="solucion-0-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-18">18. Diseñar el número de ciclos</h3>
+<p>Si el tiempo real total es <span class="math inline">\(T_N\)</span> y la lectura es <span class="math inline">\(R_N\)</span>, se conoce <span class="math inline">\(|R_N-T_N|\leq0{,}24\,\mathrm s\)</span>. Al dividir por el entero positivo exacto <span class="math inline">\(N\)</span> obtenemos una cota <span class="math inline">\(0{,}24/N\,\mathrm s\)</span> para la media. La condición solicitada es <span class="math inline">\(0{,}24/N\leq0{,}01\)</span>, equivalente a <span class="math inline">\(N\geq24\)</span>. El menor entero admisible es 24.</p>
+<p>Un ciclo omitido cambia el denominador correcto y queda fuera de la hipótesis de conteo exacto. Si los períodos individuales son distintos, <span class="math inline">\(T_N/N\)</span> sigue siendo su media aritmética real; ya no tiene por qué representar un período constante ni el del último ciclo. Aumentar <span class="math inline">\(N\)</span> reduce el efecto de la cota de cronometraje asumida, pero puede cambiar la pregunta física si la señal deriva con el tiempo.</p>
+</section>
+<section id="solucion-0-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-0-19">19. Redondear un área y conservar su cota</h3>
+<p>El producto nominal es <span class="math inline">\(A_0=12{,}34(5{,}6)=69{,}104\,\mathrm{cm^2}\)</span>. Ambas longitudes son positivas, por lo que el área crece con cada entrada. Los extremos son</p>
+<p><span class="math display">\[
+A\in[12{,}33(5{,}55),12{,}35(5{,}65)]\,\mathrm{cm^2}
+=[68{,}4315,69{,}7775]\,\mathrm{cm^2}.
+\]</span></p>
+<p>La escritura <span class="math inline">\(69\,\mathrm{cm^2}\)</span> da un valor nominal redondeado; por sí sola no declara una banda garantizada. La banda propuesta por el estudiante excluye valores admisibles en ambos extremos: <span class="math inline">\(68{,}4315&lt;68{,}5\)</span> y <span class="math inline">\(69{,}7775&gt;69{,}5\)</span>. La regla práctica sobre cifras no prueba esa nueva cota. Una declaración breve que sí conserva la información como envolvente es <span class="math inline">\(A=(69{,}1\pm0{,}7)\,\mathrm{cm^2}\)</span>, pues <span class="math inline">\([68{,}4,69{,}8]\)</span> contiene todo el intervalo calculado.</p>
+<p>El centro de la banda exacta es <span class="math inline">\(69{,}1045\,\mathrm{cm^2}\)</span> y difiere ligeramente del producto nominal. La diferencia viene del término cruzado <span class="math inline">\(\delta L\,\delta w\)</span> al multiplicar los extremos; no cabe suponer que una transformación no lineal conserva el centro de una banda. Convertir el área a metros cuadrados multiplicaría ambos extremos por el factor exacto <span class="math inline">\(10^{-4}\)</span>, conservando la misma información.</p>
+</section>
+</section>
+<section id="lecturas-de-apoyo" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-de-apoyo">Lecturas de apoyo</h2>
+<p>La distinción entre exactitud, veracidad, precisión e incertidumbre sigue el <em>Vocabulario Internacional de Metrología</em>, <a href="https://jcgm.bipm.org/vim/en/">JCGM 200:2012, §§2.13–2.15 y 2.26</a>. Los ejemplos numéricos y los problemas están redactados para esta obra. La selección de familias de la ampliación se contrastó con las colecciones indicadas a continuación.</p>
+<p>La breve conexión con la física cuántica puede ampliarse en John Preskill, <a href="https://www.preskill.caltech.edu/ph229/notes/chap3.pdf"><em>Lecture Notes for Physics 229: Quantum Information and Computation</em>, capítulo 3, §§3.1 y 3.6</a>. La referencia presenta un tratamiento y una discusión de la medida; no se adopta aquí una interpretación de la teoría cuántica.</p>
+<p>Para ampliar la práctica se consultaron Bueche y Hecht, <em>Física general</em>, 10.ª ed.&nbsp;(Schaum), capítulo 1; Cristian Quinzacara, <em>Problemas resueltos de mecánica</em> (2021), §§1.1–1.2 y 2.1–2.2; Atilio del C. Fabián, <em>Problemas resueltos de Física I</em>, temas 1–2; y Rodrigo Sabaj Saavedra, <em>Problemas resueltos para el curso FI1001 Introducción a la física newtoniana</em> (2013), unidades de análisis dimensional y cinemática. Las situaciones, datos y soluciones añadidos aquí se desarrollan para este libro a partir de familias habituales de problemas, con atención al análisis de hipótesis y a la comprobación física.</p>
+<p>El cotejo de teoría y práctica incluye también Young y Freedman, <em>Sears y Zemansky. Física universitaria</em>, vol.&nbsp;1, 13.ª ed.&nbsp;(Pearson, 2013), §§1.3–1.6 y 2.1–2.6, con consulta complementaria de la 12.ª ed.; Serway y Jewett, <em>Física para ciencias e ingeniería</em>, vol.&nbsp;1, 10.ª ed.&nbsp;en español (Cengage, 2019), §§1.2–1.6 y 2.1–2.9; y Serway y Vuille, <em>Fundamentos de física</em>, vol.&nbsp;1, 9.ª ed., §§1.3–1.6 y capítulo 2. Las precisiones metrológicas conservan el criterio del VIM citado en el capítulo 0.</p>
+<hr>
+<p><a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-01-describir-medir-y-estimar-un-movimiento.html">1. Describir, medir y estimar un movimiento →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

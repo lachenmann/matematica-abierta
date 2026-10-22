@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 5 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>Contactos, tensiones y rozamiento – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#la-fuerza-que-permite-seguir-en-reposo" id="toc-la-fuerza-que-permite-seguir-en-reposo" class="nav-link active" data-scroll-target="#la-fuerza-que-permite-seguir-en-reposo">La fuerza que permite seguir en reposo</a></li>
+  <li><a href="#seguir-la-caja-hasta-que-vuelva-a-detenerse" id="toc-seguir-la-caja-hasta-que-vuelva-a-detenerse" class="nav-link" data-scroll-target="#seguir-la-caja-hasta-que-vuelva-a-detenerse">Seguir la caja hasta que vuelva a detenerse</a></li>
+  <li><a href="#qué-contiene-el-modelo-de-rozamiento" id="toc-qué-contiene-el-modelo-de-rozamiento" class="nav-link" data-scroll-target="#qué-contiene-el-modelo-de-rozamiento">Qué contiene el modelo de rozamiento</a></li>
+  <li><a href="#separar-la-normal-de-la-condición-de-contacto" id="toc-separar-la-normal-de-la-condición-de-contacto" class="nav-link" data-scroll-target="#separar-la-normal-de-la-condición-de-contacto">Separar la normal de la condición de contacto</a></li>
+  <li><a href="#la-pendiente-decide-qué-fricción-se-necesita" id="toc-la-pendiente-decide-qué-fricción-se-necesita" class="nav-link" data-scroll-target="#la-pendiente-decide-qué-fricción-se-necesita">La pendiente decide qué fricción se necesita</a></li>
+  <li><a href="#lo-que-una-cuerda-puede-transmitir" id="toc-lo-que-una-cuerda-puede-transmitir" class="nav-link" data-scroll-target="#lo-que-una-cuerda-puede-transmitir">Lo que una cuerda puede transmitir</a></li>
+  <li><a href="#unir-dos-ecuaciones-sin-perder-sus-direcciones" id="toc-unir-dos-ecuaciones-sin-perder-sus-direcciones" class="nav-link" data-scroll-target="#unir-dos-ecuaciones-sin-perder-sus-direcciones">Unir dos ecuaciones sin perder sus direcciones</a></li>
+  <li><a href="#fricción-que-acelera-en-el-sentido-de-la-marcha" id="toc-fricción-que-acelera-en-el-sentido-de-la-marcha" class="nav-link" data-scroll-target="#fricción-que-acelera-en-el-sentido-de-la-marcha">Fricción que acelera en el sentido de la marcha</a></li>
+  <li><a href="#una-desigualdad-también-puede-resolver-un-problema" id="toc-una-desigualdad-también-puede-resolver-un-problema" class="nav-link" data-scroll-target="#una-desigualdad-también-puede-resolver-un-problema">Una desigualdad también puede resolver un problema</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-5-1" id="toc-ejercicio-5-1" class="nav-link" data-scroll-target="#ejercicio-5-1">1. Una fricción que todavía no llegó al límite</a></li>
+  <li><a href="#ejercicio-5-2" id="toc-ejercicio-5-2" class="nav-link" data-scroll-target="#ejercicio-5-2">2. Retirar el tirón</a></li>
+  <li><a href="#ejercicio-5-3" id="toc-ejercicio-5-3" class="nav-link" data-scroll-target="#ejercicio-5-3">3. Frenar mientras la fuerza apunta hacia la derecha</a></li>
+  <li><a href="#ejercicio-5-4" id="toc-ejercicio-5-4" class="nav-link" data-scroll-target="#ejercicio-5-4">4. Tirar y empujar en ángulo</a></li>
+  <li><a href="#ejercicio-5-5" id="toc-ejercicio-5-5" class="nav-link" data-scroll-target="#ejercicio-5-5">5. Reposo en una pendiente</a></li>
+  <li><a href="#ejercicio-5-6" id="toc-ejercicio-5-6" class="nav-link" data-scroll-target="#ejercicio-5-6">6. Subir, detenerse y decidir si vuelve</a></li>
+  <li><a href="#ejercicio-5-7" id="toc-ejercicio-5-7" class="nav-link" data-scroll-target="#ejercicio-5-7">7. Sostener un bloque contra una pared</a></li>
+  <li><a href="#ejercicio-5-8" id="toc-ejercicio-5-8" class="nav-link" data-scroll-target="#ejercicio-5-8">8. Una tensión horizontal</a></li>
+  <li><a href="#ejercicio-5-9" id="toc-ejercicio-5-9" class="nav-link" data-scroll-target="#ejercicio-5-9">9. Dos masas a ambos lados de una polea</a></li>
+  <li><a href="#ejercicio-5-10" id="toc-ejercicio-5-10" class="nav-link" data-scroll-target="#ejercicio-5-10">10. Probar el reposo antes de despejar una aceleración</a></li>
+  <li><a href="#ejercicio-5-11" id="toc-ejercicio-5-11" class="nav-link" data-scroll-target="#ejercicio-5-11">11. Una caja que acompaña a un vehículo</a></li>
+  <li><a href="#ejercicio-5-12" id="toc-ejercicio-5-12" class="nav-link" data-scroll-target="#ejercicio-5-12">12. Alcanzar la velocidad de una cinta</a></li>
+  <li><a href="#ejercicio-5-13" id="toc-ejercicio-5-13" class="nav-link" data-scroll-target="#ejercicio-5-13">13. Arrastrar dos bloques apilados</a></li>
+  <li><a href="#ejercicio-5-14" id="toc-ejercicio-5-14" class="nav-link" data-scroll-target="#ejercicio-5-14">14. Una cuerda que tendría que empujar</a></li>
+  <li><a href="#ejercicio-5-15" id="toc-ejercicio-5-15" class="nav-link" data-scroll-target="#ejercicio-5-15">15. Cuándo no hay una sola tensión</a></li>
+  <li><a href="#ejercicio-5-16" id="toc-ejercicio-5-16" class="nav-link" data-scroll-target="#ejercicio-5-16">16. Una decisión con datos acotados</a></li>
+  <li><a href="#ejercicio-5-17" id="toc-ejercicio-5-17" class="nav-link" data-scroll-target="#ejercicio-5-17">17. Medir dos coeficientes mediante dos ensayos</a></li>
+  <li><a href="#ejercicio-5-18" id="toc-ejercicio-5-18" class="nav-link" data-scroll-target="#ejercicio-5-18">18. Reposo relativo en una plataforma que gira</a></li>
+  <li><a href="#ejercicio-5-19" id="toc-ejercicio-5-19" class="nav-link" data-scroll-target="#ejercicio-5-19">19. La misma fuerza y dos preparaciones</a></li>
+  <li><a href="#ejercicio-5-20" id="toc-ejercicio-5-20" class="nav-link" data-scroll-target="#ejercicio-5-20">20. Elegir el ángulo del tirón</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#solucion-5-1" id="toc-solucion-5-1" class="nav-link" data-scroll-target="#solucion-5-1">1. Una fricción que todavía no llegó al límite</a></li>
+  <li><a href="#solucion-5-2" id="toc-solucion-5-2" class="nav-link" data-scroll-target="#solucion-5-2">2. Retirar el tirón</a></li>
+  <li><a href="#solucion-5-3" id="toc-solucion-5-3" class="nav-link" data-scroll-target="#solucion-5-3">3. Frenar mientras la fuerza apunta hacia la derecha</a></li>
+  <li><a href="#solucion-5-4" id="toc-solucion-5-4" class="nav-link" data-scroll-target="#solucion-5-4">4. Tirar y empujar en ángulo</a></li>
+  <li><a href="#solucion-5-5" id="toc-solucion-5-5" class="nav-link" data-scroll-target="#solucion-5-5">5. Reposo en una pendiente</a></li>
+  <li><a href="#solucion-5-6" id="toc-solucion-5-6" class="nav-link" data-scroll-target="#solucion-5-6">6. Subir, detenerse y decidir si vuelve</a></li>
+  <li><a href="#solucion-5-7" id="toc-solucion-5-7" class="nav-link" data-scroll-target="#solucion-5-7">7. Sostener un bloque contra una pared</a></li>
+  <li><a href="#solucion-5-8" id="toc-solucion-5-8" class="nav-link" data-scroll-target="#solucion-5-8">8. Una tensión horizontal</a></li>
+  <li><a href="#solucion-5-9" id="toc-solucion-5-9" class="nav-link" data-scroll-target="#solucion-5-9">9. Dos masas a ambos lados de una polea</a></li>
+  <li><a href="#solucion-5-10" id="toc-solucion-5-10" class="nav-link" data-scroll-target="#solucion-5-10">10. Probar el reposo antes de despejar una aceleración</a></li>
+  <li><a href="#solucion-5-11" id="toc-solucion-5-11" class="nav-link" data-scroll-target="#solucion-5-11">11. Una caja que acompaña a un vehículo</a></li>
+  <li><a href="#solucion-5-12" id="toc-solucion-5-12" class="nav-link" data-scroll-target="#solucion-5-12">12. Alcanzar la velocidad de una cinta</a></li>
+  <li><a href="#solucion-5-13" id="toc-solucion-5-13" class="nav-link" data-scroll-target="#solucion-5-13">13. Arrastrar dos bloques apilados</a></li>
+  <li><a href="#solucion-5-14" id="toc-solucion-5-14" class="nav-link" data-scroll-target="#solucion-5-14">14. Una cuerda que tendría que empujar</a></li>
+  <li><a href="#solucion-5-15" id="toc-solucion-5-15" class="nav-link" data-scroll-target="#solucion-5-15">15. Cuándo no hay una sola tensión</a></li>
+  <li><a href="#solucion-5-16" id="toc-solucion-5-16" class="nav-link" data-scroll-target="#solucion-5-16">16. Una decisión con datos acotados</a></li>
+  <li><a href="#solucion-5-17" id="toc-solucion-5-17" class="nav-link" data-scroll-target="#solucion-5-17">17. Medir dos coeficientes mediante dos ensayos</a></li>
+  <li><a href="#solucion-5-18" id="toc-solucion-5-18" class="nav-link" data-scroll-target="#solucion-5-18">18. Reposo relativo en una plataforma que gira</a></li>
+  <li><a href="#solucion-5-19" id="toc-solucion-5-19" class="nav-link" data-scroll-target="#solucion-5-19">19. La misma fuerza y dos preparaciones</a></li>
+  <li><a href="#solucion-5-20" id="toc-solucion-5-20" class="nav-link" data-scroll-target="#solucion-5-20">20. Elegir el ángulo del tirón</a></li>
+  </ul></li>
+  <li><a href="#lecturas-de-apoyo" id="toc-lecturas-de-apoyo" class="nav-link" data-scroll-target="#lecturas-de-apoyo">Lecturas de apoyo</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Contactos, tensiones y rozamiento</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 5</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 5 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-04-fuerzas-y-leyes-de-newton.html">← 4. Fuerzas y leyes de Newton</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-06-cuerpos-conectados-y-restricciones.html">6. Cuerpos conectados y restricciones →</a></p>
+<p>Una caja de cuatro kilogramos descansa sobre una mesa horizontal. Tiramos de ella con una cuerda horizontal que ejerce dieciséis newtons, pero la caja no se mueve. Aumentamos la fuerza hasta veinticuatro newtons y comienza a deslizar. Queremos saber cuánto avanzará si mantenemos ese tirón durante dos segundos y después soltamos la cuerda. La ecuación de Newton sigue siendo la misma; lo que necesitamos determinar es cómo responde el contacto con la mesa en cada parte de la historia.</p>
+<p>Representaremos la caja por una partícula y despreciaremos su posible vuelco. La mesa permanece fija respecto del laboratorio, que tratamos como inercial, y la cuerda tira sin levantar la caja. Usaremos <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span>. Un ensayo previo del par de superficies proporciona, dentro del modelo que vamos a utilizar, un coeficiente de rozamiento estático <span class="math inline">\(\mu_s=0{,}50\)</span> y uno cinético <span class="math inline">\(\mu_k=0{,}30\)</span>. Son parámetros didácticos que aquí tratamos como exactos, no constantes universales de una clase de material.</p>
+<section id="la-fuerza-que-permite-seguir-en-reposo" class="level2">
+<h2 class="anchored" data-anchor-id="la-fuerza-que-permite-seguir-en-reposo">La fuerza que permite seguir en reposo</h2>
+<p>Elegimos la caja como sistema, <span class="math inline">\(x\)</span> horizontal en el sentido del tirón e <span class="math inline">\(y\)</span> hacia arriba. La mesa ejerce una fuerza de contacto con una componente normal <span class="math inline">\(N\)</span> y otra tangencial <span class="math inline">\(f\)</span>, a la que llamaremos rozamiento o fricción. Son componentes de una misma interacción entre caja y mesa; las dibujamos por separado porque las ecuaciones distinguen sus direcciones. Sobre la caja actúan además el peso y el tirón <span class="math inline">\(F\)</span> de la cuerda.</p>
+<p>Mientras la caja mantiene su altura, la ecuación vertical es <span class="math inline">\(N-mg=0\)</span>, de donde <span class="math inline">\(N=40\,\mathrm N\)</span>. En la dirección horizontal,</p>
+<p><span class="math display">\[
+F+f=m\ddot x.
+\]</span></p>
+<p>La observación de reposo exige <span class="math inline">\(\ddot x=0\)</span>, por lo que con el primer tirón se necesita <span class="math inline">\(f=-16\,\mathrm N\)</span>. El signo expresa que la mesa ejerce esa componente hacia la izquierda. Para saber si puede hacerlo tenemos que añadir una ley del contacto: en el régimen sin deslizamiento, el modelo admite cualquier fuerza tangencial cuyo módulo no exceda <span class="math inline">\(\mu_sN\)</span>. El límite es aquí veinte newtons, así que los dieciséis requeridos son admisibles.</p>
+<p>La igualdad <span class="math inline">\(|f|=\mu_sN\)</span> daría veinte newtons de fricción y una fuerza neta de cuatro hacia la izquierda, pese a que la caja permanece en reposo. Ese resultado diagnostica la elección equivocada de la ley: hemos utilizado el máximo disponible como si fuera el valor que el contacto debe ejercer siempre. La ecuación del movimiento determina cuánto rozamiento se necesita; el límite decide si esa demanda puede satisfacerse.</p>
+<figure id="fig-fispm-r20261021-5-1" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/contacto_caja_regimenes.svg" class="lightbox" data-gallery="fispm-r20261021-c5"><img src="../../assets/books/fispm/r20261021/contacto_caja_regimenes.svg" alt="Dos diagramas de la misma caja distinguen el tirón de dieciséis newtons en reposo y el de veinticuatro durante el deslizamiento." class="fpm-v04-figure img-fluid figure-img" width="503.411003" height="346.79952" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 5.1.</em> En reposo, el rozamiento requerido es de dieciséis newtons, inferior a su límite de veinte. Al deslizar hacia la derecha se utiliza otro parámetro y su módulo es de doce newtons. El peso y la normal se equilibran en ambos diagramas; las escalas de las flechas de cada panel son comunes.</p>
+</figcaption>
+</figure>
+</section>
+<section id="seguir-la-caja-hasta-que-vuelva-a-detenerse" class="level2">
+<h2 class="anchored" data-anchor-id="seguir-la-caja-hasta-que-vuelva-a-detenerse">Seguir la caja hasta que vuelva a detenerse</h2>
+<p>Con <span class="math inline">\(F=24\,\mathrm N\)</span>, mantener el reposo exigiría <span class="math inline">\(f=-24\,\mathrm N\)</span>, fuera del intervalo admisible. La caja empieza a deslizar hacia la derecha. En ese régimen el modelo aproxima el módulo de la fricción por <span class="math inline">\(\mu_kN=12\,\mathrm N\)</span>, opuesta al deslizamiento respecto de la mesa. La aceleración pasa a ser</p>
+<p><span class="math display">\[
+a_x=\frac{24\,\mathrm N-12\,\mathrm N}{4\,\mathrm{kg}}
+=3\,\mathrm{m/s^2}.
+\]</span></p>
+<p>Fijemos <span class="math inline">\(t=0\)</span> en el comienzo de este tirón, con <span class="math inline">\(x(0)=0\)</span> y <span class="math inline">\(v(0)=0\)</span>. Durante los dos primeros segundos,</p>
+<p><span class="math display">\[
+v(t)=(3\,\mathrm{m/s^2})t,
+\qquad x(t)=\frac12(3\,\mathrm{m/s^2})t^2.
+\]</span></p>
+<p>Al soltar la cuerda, la caja está en seis metros y lleva seis metros por segundo. La tensión desaparece, pero no desaparece el contacto con la mesa: mientras continúe deslizando a la derecha queda una fuerza horizontal de doce newtons hacia la izquierda. Para <span class="math inline">\(\tau=t-2\,\mathrm s\)</span>,</p>
+<p><span class="math display">\[
+v=6\,\mathrm{m/s}-(3\,\mathrm{m/s^2})\tau,
+\qquad
+x=6\,\mathrm m+(6\,\mathrm{m/s})\tau
+-\frac12(3\,\mathrm{m/s^2})\tau^2.
+\]</span></p>
+<p>La primera velocidad nula de este segundo tramo ocurre en <span class="math inline">\(\tau=2\,\mathrm s\)</span>, a los cuatro segundos del reloj original, en <span class="math inline">\(x=12\,\mathrm m\)</span>. En ese instante hay que revisar el régimen. Ya no existe tirón ni otra fuerza tangencial: el reposo sólo requiere <span class="math inline">\(f=0\)</span>, que el modelo estático permite. La caja queda detenida.</p>
+<p>Mantener después <span class="math inline">\(f=-12\,\mathrm N\)</span> produciría una velocidad negativa, pero esa prolongación asignaría a la fricción el mismo sentido que el nuevo deslizamiento. El signo de la ley cinética había sido elegido para velocidades positivas. El cero de la velocidad obliga a volver al problema físico; no autoriza a seguir usando la misma recta indefinidamente.</p>
+<figure id="fig-fispm-r20261021-5-2" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/contacto_historia_caja.svg" class="lightbox" data-gallery="fispm-r20261021-c5"><img src="../../assets/books/fispm/r20261021/contacto_historia_caja.svg" alt="La fuerza aplicada se retira a los dos segundos; la fricción permanece hasta los cuatro, cuando la caja se detiene. La velocidad y la posición enlazan de forma continua." class="fpm-v04-figure img-fluid figure-img" width="533.99952" height="526.79952" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 5.2.</em> Los cambios de ley están alineados en el mismo reloj. La posición llega a doce metros y permanece allí. En los instantes de cambio representamos límites laterales; el modelo no describe la transición microscópica del contacto.</p>
+</figcaption>
+</figure>
+</section>
+<section id="qué-contiene-el-modelo-de-rozamiento" class="level2">
+<h2 class="anchored" data-anchor-id="qué-contiene-el-modelo-de-rozamiento">Qué contiene el modelo de rozamiento</h2>
+<p>La mesa y la caja pueden moverse ambas respecto del laboratorio. Para identificar el régimen importa su movimiento relativo en el contacto. En una dirección tangencial elegida, escribiremos <span class="math inline">\(u=v_{\text{caja}}-v_{\text{superficie}}\)</span>. La velocidad de la superficie se evalúa en la región de contacto; no tiene que ser la de un origen distante de un cuerpo que gira.</p>
+<p><strong>Definición.</strong> Hay <em>adherencia</em> en el contacto cuando la velocidad tangencial relativa de las superficies es nula, <span class="math inline">\(u=0\)</span>. Hay <em>deslizamiento</em> cuando esa velocidad tiene módulo positivo, <span class="math inline">\(|u|&gt;0\)</span>.</p>
+<p>Ambos términos describen el movimiento tangencial relativo. La fuerza normal se determina mediante el modelo de compresión entre las superficies; la adherencia puede mantenerse mientras ese contacto transmite una fuerza tangencial dentro de su límite estático.</p>
+<p>Para un contacto seco, sin adhesión normal, utilizaremos la siguiente ley idealizada de Coulomb, con coeficientes adimensionales <span class="math inline">\(0\leq\mu_k\leq\mu_s\)</span>:</p>
+<p><span class="math display">\[
+\begin{cases}
+|f|\leq\mu_sN,&amp;u=0,\\
+f=-\mu_kN,&amp;u&gt;0,\\
+f=+\mu_kN,&amp;u&lt;0.
+\end{cases}
+\]</span></p>
+<p>En una superficie con dos direcciones tangenciales, la condición estática pasa a ser <span class="math inline">\(\|\mathbf f\|\leq\mu_sN\)</span>, y durante el deslizamiento <span class="math inline">\(\mathbf f\)</span> apunta en sentido opuesto a la velocidad relativa tangencial. Los coeficientes pertenecen al par de superficies y al régimen de calibración. Humedad, temperatura, desgaste o rapidez pueden hacer insuficiente la aproximación de coeficientes constantes.</p>
+<p>La primera línea es una desigualdad que debe combinarse con las ecuaciones de movimiento. Por sí sola no selecciona una historia completa cuando <span class="math inline">\(u=0\)</span>. En los problemas de este capítulo supondremos que, si la adherencia es compatible con los datos y las ecuaciones, se mantiene sin una perturbación que inicie el deslizamiento; cuando deja de ser admisible, examinaremos el régimen deslizante. No deducimos de esta convención un teorema general de existencia o unicidad para todo sistema con fricción.</p>
+<p>En el valor límite <span class="math inline">\(|f|=\mu_sN\)</span>, la adherencia todavía es admisible. Alcanzarlo no demuestra que el cuerpo deba empezar a moverse exactamente entonces. Describe una frontera que una demanda mayor ya no puede satisfacer. Con <span class="math inline">\(\mu_k&lt;\mu_s\)</span>, un cuerpo que ya desliza puede tener un rozamiento menor que el requerido para sostener en reposo otra historia bajo la misma fuerza aplicada. El ejercicio 19 compara esas dos preparaciones.</p>
+</section>
+<section id="separar-la-normal-de-la-condición-de-contacto" class="level2">
+<h2 class="anchored" data-anchor-id="separar-la-normal-de-la-condición-de-contacto">Separar la normal de la condición de contacto</h2>
+<p>El capítulo anterior encontró normales negativas al imponer contactos que no podían mantenerse. Podemos expresar con más precisión la restricción que estaba detrás de ese diagnóstico.</p>
+<p><strong>Definición.</strong> En un contacto unilateral sin adhesión, llamaremos <span class="math inline">\(d\geq0\)</span> a la separación normal entre las superficies y <span class="math inline">\(N\geq0\)</span> al módulo de la fuerza normal de compresión. El modelo exige</p>
+<p><span class="math display">\[
+d\geq0,\qquad N\geq0,\qquad Nd=0.
+\]</span></p>
+<p>Una separación positiva implica fuerza normal nula. Cuando las superficies están juntas, puede haber compresión o una normal nula en el límite. Estas condiciones describen admisibilidad geométrica y de fuerza; para decidir si se separan también importan sus velocidades, aceleraciones y fuerzas restantes. No resuelven un choque ni una deformación del apoyo.</p>
+<p>Si tiramos de la caja oblicuamente hacia arriba, una parte de la fuerza reduce la normal. Para una fuerza de módulo <span class="math inline">\(F\)</span> que forma un ángulo <span class="math inline">\(\alpha\)</span> con la horizontal, mientras se conserve el contacto con una mesa fija,</p>
+<p><span class="math display">\[
+N=mg-F\sin\alpha,
+\qquad F_x=F\cos\alpha.
+\]</span></p>
+<p>Con <span class="math inline">\(m=4\,\mathrm{kg}\)</span>, <span class="math inline">\(F=20\,\mathrm N\)</span>, <span class="math inline">\(\sin\alpha=3/5\)</span> y <span class="math inline">\(\cos\alpha=4/5\)</span>, obtenemos <span class="math inline">\(N=28\,\mathrm N\)</span>. Mantener el reposo exige dieciséis newtons tangenciales, mientras que <span class="math inline">\(\mu_sN=14\,\mathrm N\)</span>: no basta. Una vez que desliza hacia la derecha, la fricción es <span class="math inline">\(8{,}4\,\mathrm N\)</span> y la aceleración horizontal, <span class="math inline">\((16-8{,}4)/4=1{,}9\,\mathrm{m/s^2}\)</span>.</p>
+<p>Usar <span class="math inline">\(N=mg\)</span> habría dado un límite estático de veinte newtons y una conclusión equivocada de reposo. La dirección del tirón modifica simultáneamente la demanda tangencial y la capacidad del contacto. Si una cuenta diera <span class="math inline">\(N&lt;0\)</span>, antes de usarla en <span class="math inline">\(\mu N\)</span> habría que abandonar la hipótesis de apoyo mantenido.</p>
+<figure id="fig-fispm-r20261021-5-3" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/contacto_tiron_oblicuo.svg" class="lightbox" data-gallery="fispm-r20261021-c5"><img src="../../assets/books/fispm/r20261021/contacto_tiron_oblicuo.svg" alt="El tirón oblicuo tiene componentes dieciséis y doce newtons. La normal resultante es veintiocho newtons y la fricción cinética, ocho coma cuatro." class="fpm-v04-figure img-fluid figure-img" width="534.43142" height="354.55952" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 5.3.</em> El diagrama contiene la fuerza oblicua completa. Sus proyecciones se muestran en otro panel para evitar contarlas como dos fuerzas adicionales. La normal se obtiene de la ecuación vertical.</p>
+</figcaption>
+</figure>
+</section>
+<section id="la-pendiente-decide-qué-fricción-se-necesita" class="level2">
+<h2 class="anchored" data-anchor-id="la-pendiente-decide-qué-fricción-se-necesita">La pendiente decide qué fricción se necesita</h2>
+<p>Coloquemos un bloque de tres kilogramos sobre un plano fijo con <span class="math inline">\(\sin\alpha=3/5\)</span> y <span class="math inline">\(\cos\alpha=4/5\)</span>. Elegimos el eje tangencial hacia arriba y el normal hacia afuera. Mientras se mantenga el apoyo, <span class="math inline">\(N=mg\cos\alpha=24\,\mathrm N\)</span>. La componente del peso hacia abajo del plano es de dieciocho newtons. Para permanecer en reposo necesita una fuerza de fricción de dieciocho newtons hacia arriba.</p>
+<p>Con <span class="math inline">\(\mu_s=0{,}80\)</span>, el límite estático es <span class="math inline">\(19{,}2\,\mathrm N\)</span> y esa situación es admisible. Si otro par de superficies tuviera <span class="math inline">\(\mu_s=0{,}50\)</span> y <span class="math inline">\(\mu_k=0{,}40\)</span>, el límite sería doce newtons: el bloque comenzaría a bajar. Durante ese descenso, la fricción sería <span class="math inline">\(9{,}6\,\mathrm N\)</span> hacia arriba y la aceleración tendría módulo <span class="math inline">\((18-9{,}6)/3=2{,}8\,\mathrm{m/s^2}\)</span> hacia abajo.</p>
+<p>El signo de la fricción se decide comprobando la tendencia al deslizamiento o el deslizamiento que ya existe. Si el bloque llegara moviéndose hacia arriba, la fricción cinética apuntaría hacia abajo junto con la componente del peso. La condición de reposo debe revisarse después de la primera detención; no se puede tomar sin examen la solución de bajada para describir la subida.</p>
+<figure id="fig-fispm-r20261021-5-4" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/contacto_plano_inclinado.svg" class="lightbox" data-gallery="fispm-r20261021-c5"><img src="../../assets/books/fispm/r20261021/contacto_plano_inclinado.svg" alt="El peso vertical se proyecta sobre ejes paralelo y normal al plano; la fricción estática necesaria apunta hacia arriba y vale dieciocho newtons." class="fpm-v04-figure img-fluid figure-img" width="548.39952" height="318.727297" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 5.4.</em> En este ejemplo la normal es de veinticuatro newtons y el peso, de treinta. La fricción requerida se compara con su límite; sus componentes no se añaden como otras fuerzas al diagrama.</p>
+</figcaption>
+</figure>
+<p><strong>Proposición.</strong> Sea un bloque de masa <span class="math inline">\(m&gt;0\)</span> sobre un plano fijo de inclinación <span class="math inline">\(0\leq\alpha&lt;\pi/2\)</span>. Supongamos un modelo de partícula, contacto mantenido, peso, una fuerza aplicada de componente <span class="math inline">\(F\)</span> paralela al plano hacia arriba —sin componente normal— y rozamiento estático de coeficiente <span class="math inline">\(\mu_s\geq0\)</span>. El reposo es admisible exactamente cuando</p>
+<p><span class="math display">\[
+mg(\sin\alpha-\mu_s\cos\alpha)
+\leq F\leq
+mg(\sin\alpha+\mu_s\cos\alpha).
+\]</span></p>
+<p><em>Demostración.</em> La ecuación normal fija <span class="math inline">\(N=mg\cos\alpha&gt;0\)</span>. En la dirección tangencial, el reposo exige <span class="math inline">\(F+f-mg\sin\alpha=0\)</span>, por lo que sólo hay un valor posible de la fuerza estática: <span class="math inline">\(f=mg\sin\alpha-F\)</span>. Ese valor pertenece al intervalo <span class="math inline">\([-\mu_sN,\mu_sN]\)</span> exactamente cuando se cumplen las dos desigualdades enunciadas. Si se cumplen, las fuerzas así asignadas satisfacen ambas ecuaciones y el límite del contacto; si alguna falla, ninguna otra elección de <span class="math inline">\(f\)</span> puede producir reposo. <span class="math inline">\(\square\)</span></p>
+<p>La fuerza <span class="math inline">\(F\)</span> de este enunciado es una componente con signo, no un módulo que deba ser positivo. Si procede de una cuerda que sólo tira hacia arriba, hay que intersectar el intervalo obtenido con <span class="math inline">\(F\geq0\)</span>. Sin fuerza aplicada, el criterio se reduce a <span class="math inline">\(\tan\alpha\leq\mu_s\)</span>. Aumentar lentamente el ángulo hasta el umbral permite estimar <span class="math inline">\(\mu_s\)</span>, siempre que el ensayo corresponda al régimen del modelo. Una medición del ángulo crítico no justifica usar el mismo coeficiente en deslizamiento.</p>
+</section>
+<section id="lo-que-una-cuerda-puede-transmitir" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-una-cuerda-puede-transmitir">Lo que una cuerda puede transmitir</h2>
+<p>Una cuerda flexible tira de los cuerpos unidos a sus extremos a lo largo de su dirección local. Una cuerda floja no sostiene una fuerza de compresión que empuje sus extremos separándolos. Llamaremos <span class="math inline">\(T\geq0\)</span> a su tensión; si la hipótesis de cuerda tensa exige <span class="math inline">\(T&lt;0\)</span>, habrá que cambiar de régimen. Un tirante rígido capaz de empujar sería otro elemento mecánico.</p>
+<p><strong>Definición.</strong> En este capítulo, una <em>cuerda ideal</em> tiene masa despreciable, longitud constante cuando está tensa y resistencia nula a la flexión. Una <em>polea fija ideal</em> sólo redirige la cuerda: despreciamos su inercia y el rozamiento que pudiera exigir tensiones distintas a ambos lados. Estas hipótesis permiten utilizar un mismo módulo <span class="math inline">\(T\)</span> en los tramos de una misma cuerda que pasa por esa polea.</p>
+<p>La igualdad de tensiones y la relación entre movimientos proceden de hipótesis diferentes. La masa despreciable y la guía ideal permiten igualar los módulos transmitidos; la longitud constante relaciona desplazamientos. Una cuerda con masa puede necesitar tensiones diferentes para sostener y acelerar sus partes. Una guía rugosa puede ejercer fuerzas tangenciales sobre la cuerda. En cualquiera de esos casos no bastaría afirmar que se trata de «la misma cuerda» para igualar las tensiones.</p>
+<p>La tensión tampoco se iguala automáticamente al peso de la masa que cuelga. Si esa masa acelera hacia abajo, su ecuación es <span class="math inline">\(Mg-T=Ma_y\)</span>; con <span class="math inline">\(a_y&gt;0\)</span>, la tensión es menor que <span class="math inline">\(Mg\)</span>. El peso y la tensión recibidos por la masa no forman una pareja de tercera ley. La pareja de la tensión sobre la masa es la fuerza que esa masa ejerce sobre la cuerda.</p>
+</section>
+<section id="unir-dos-ecuaciones-sin-perder-sus-direcciones" class="level2">
+<h2 class="anchored" data-anchor-id="unir-dos-ecuaciones-sin-perder-sus-direcciones">Unir dos ecuaciones sin perder sus direcciones</h2>
+<p>Un bloque de masa <span class="math inline">\(m=3\,\mathrm{kg}\)</span> descansa sobre una mesa y está unido, por una cuerda ideal sobre una polea fija ideal en su borde, a una masa colgante <span class="math inline">\(M=2\,\mathrm{kg}\)</span>. El tramo de cuerda sobre la mesa es horizontal. Para ese contacto tomamos <span class="math inline">\(\mu_s=0{,}40\)</span> y <span class="math inline">\(\mu_k=0{,}20\)</span>. La guía es suficientemente larga y la masa colgante no toca el suelo durante el intervalo que analizamos.</p>
+<p>Antes de suponer movimiento, probamos el reposo. La masa colgante necesitaría <span class="math inline">\(T=Mg=20\,\mathrm N\)</span>. El bloque sobre la mesa necesitaría una fricción opuesta de veinte newtons, pero su normal es treinta y el límite estático, doce. El reposo es imposible dentro de esas hipótesis. La masa colgante comenzará a bajar y el bloque se moverá hacia la polea.</p>
+<p>Elegimos <span class="math inline">\(x\)</span> positivo hacia la polea para el bloque e <span class="math inline">\(y\)</span> positivo hacia abajo para la masa. Si el tramo horizontal tiene longitud <span class="math inline">\(b-x\)</span> y el vertical longitud <span class="math inline">\(y\)</span>, la longitud total satisface</p>
+<p><span class="math display">\[
+b-x+y+c=L,
+\]</span></p>
+<p>donde <span class="math inline">\(b,c,L\)</span> son constantes que incorporan la geometría fija. Por tanto, <span class="math inline">\(\dot y=\dot x\)</span> y <span class="math inline">\(\ddot y=\ddot x=a\)</span>. Las componentes coinciden con estos ejes; los vectores de aceleración siguen apuntando en direcciones distintas.</p>
+<p>El rozamiento cinético del bloque es de seis newtons. Escribimos una ecuación para cada receptor:</p>
+<p><span class="math display">\[
+T-\mu_kmg=ma,
+\qquad Mg-T=Ma.
+\]</span></p>
+<p>Al sumarlas se elimina la incógnita <span class="math inline">\(T\)</span>. Estamos sumando ecuaciones escalares proyectadas sobre ejes diferentes; las fuerzas de tensión sobre esos dos cuerpos no son vectores opuestos en el laboratorio. La polea y su soporte cambian la dirección de la interacción transmitida. El cálculo da</p>
+<p><span class="math display">\[
+a=\frac{Mg-\mu_kmg}{m+M}
+=\frac{14}{5}\,\mathrm{m/s^2},
+\qquad T=ma+\mu_kmg=\frac{72}{5}\,\mathrm N.
+\]</span></p>
+<p>La tensión es positiva y menor que los veinte newtons del peso colgante. La aceleración positiva confirma el sentido de deslizamiento supuesto. El sistema se puede seguir con esa ley hasta que cambie una condición: la masa llegue al suelo, el bloque alcance la polea, se retire un agente o aparezca holgura. La relación de longitud seguirá siendo necesaria en otras geometrías, pero ya no se puede anticipar que todas las aceleraciones tendrán el mismo módulo.</p>
+<figure id="fig-fispm-r20261021-5-5" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/contacto_polea_fija.svg" class="lightbox" data-gallery="fispm-r20261021-c5"><img src="../../assets/books/fispm/r20261021/contacto_polea_fija.svg" alt="Una polea fija conecta un bloque horizontal con una masa colgante. Los diagramas individuales usan ejes distintos y conservan el mismo módulo de tensión." class="fpm-v04-figure img-fluid figure-img" width="487.705777" height="497.99952" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 5.5.</em> La cuerda tensa impone una relación entre sus tramos. Las ecuaciones usan el mismo valor de <span class="math inline">\(a\)</span> después de derivar esa relación; no porque ambos cuerpos reciban las mismas fuerzas. Las longitudes de las flechas de fuerza son esquemáticas.</p>
+</figcaption>
+</figure>
+</section>
+<section id="fricción-que-acelera-en-el-sentido-de-la-marcha" class="level2">
+<h2 class="anchored" data-anchor-id="fricción-que-acelera-en-el-sentido-de-la-marcha">Fricción que acelera en el sentido de la marcha</h2>
+<p>Una caja se transporta sobre la plataforma horizontal de un vehículo que acelera hacia la derecha. Si la caja acompaña al vehículo sin deslizar, también debe acelerar hacia la derecha. Cuando la única fuerza horizontal sobre ella es el contacto con la plataforma, la segunda ley exige <span class="math inline">\(f=ma\)</span> hacia la derecha. La fricción estática puede apuntar en el mismo sentido que la velocidad de la caja respecto del suelo.</p>
+<p>Con una plataforma que se traslada horizontalmente, sin otras fuerzas verticales sobre la caja, <span class="math inline">\(N=mg\)</span>. La adherencia exige</p>
+<p><span class="math display">\[
+|ma|\leq\mu_smg,
+\qquad |a|\leq\mu_sg.
+\]</span></p>
+<p><strong>Proposición.</strong> Sea una caja de masa <span class="math inline">\(m&gt;0\)</span>, inicialmente en reposo relativo sobre una plataforma horizontal que realiza una traslación horizontal de clase <span class="math inline">\(C^2\)</span> respecto de un marco inercial. Supongamos contacto mantenido, peso y contacto como únicas fuerzas sobre la caja, con coeficiente estático <span class="math inline">\(\mu_s\)</span>. La historia que conserva la posición de la caja respecto de la plataforma es admisible en un intervalo exactamente cuando <span class="math inline">\(|a_{\mathrm{plataforma}}(t)|\leq\mu_sg\)</span> para todos sus instantes.</p>
+<p><em>Demostración.</em> Conservar la posición relativa implica igualdad de velocidades y aceleraciones horizontales. La ecuación de la caja determina <span class="math inline">\(f(t)=ma_{\mathrm{plataforma}}(t)\)</span> y la vertical fija <span class="math inline">\(N=mg\)</span>. Aplicar el límite estático da la condición necesaria. Recíprocamente, si esa condición vale en todo el intervalo, asignar esa fuerza de contacto a la historia de traslación compartida satisface Newton y la ley estática, con las condiciones iniciales relativas dadas. Se ha demostrado admisibilidad de esa historia, sin formular un resultado general de unicidad para otras leyes de contacto. <span class="math inline">\(\square\)</span></p>
+<p>Si se supera la cota, la caja puede deslizar hacia atrás respecto del vehículo mientras todavía avanza respecto del suelo. Una cinta transportadora ofrece otro ejemplo: una caja inicialmente quieta respecto del laboratorio es acelerada por la fricción de una cinta que pasa bajo ella. El sentido se decide comparando velocidades de las dos superficies, no mirando sólo la flecha de velocidad de la caja.</p>
+<figure id="fig-fispm-r20261021-5-6" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/contacto_velocidad_relativa.svg" class="lightbox" data-gallery="fispm-r20261021-c5"><img src="../../assets/books/fispm/r20261021/contacto_velocidad_relativa.svg" alt="Una caja que se mueve hacia la derecha más lentamente que la cinta desliza hacia la izquierda respecto de ella y recibe fricción hacia la derecha." class="fpm-v04-figure img-fluid figure-img" width="474.343059" height="397.19952" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 5.6.</em> Las velocidades están expresadas respecto del laboratorio y utilizan su propia escala. La fuerza pertenece al diagrama de la caja. La comparación de velocidades determina el signo del deslizamiento relativo.</p>
+</figcaption>
+</figure>
+</section>
+<section id="una-desigualdad-también-puede-resolver-un-problema" class="level2">
+<h2 class="anchored" data-anchor-id="una-desigualdad-también-puede-resolver-un-problema">Una desigualdad también puede resolver un problema</h2>
+<p>En una cuenta de equilibrio, la fricción desconocida se obtiene de una igualdad y luego se comprueba mediante una desigualdad. Esa comprobación puede producir un intervalo completo de fuerzas aplicadas, en lugar de un único número. El criterio de reposo demostrado para el plano inclinado identifica precisamente ese intervalo. Sus extremos indican fricción estática límite en sentidos contrarios; en su interior puede cambiar incluso el signo de la fuerza requerida.</p>
+<figure id="fig-fispm-r20261021-5-7" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/contacto_intervalo_estatico.svg" class="lightbox" data-gallery="fispm-r20261021-c5"><img src="../../assets/books/fispm/r20261021/contacto_intervalo_estatico.svg" alt="Un intervalo de fuerzas paralelas permite el reposo en una pendiente. La fricción requerida cambia de sentido al pasar por la componente tangencial del peso." class="fpm-v04-figure img-fluid figure-img" width="533.99952" height="433.19952" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 5.7.</em> Para <span class="math inline">\(m=3\,\mathrm{kg}\)</span>, <span class="math inline">\(\sin\alpha=3/5\)</span>, <span class="math inline">\(\cos\alpha=4/5\)</span> y <span class="math inline">\(\mu_s=0{,}50\)</span>, el reposo admite <span class="math inline">\(6\leq F/(1\,\mathrm N)\leq30\)</span>. En <span class="math inline">\(F=18\,\mathrm N\)</span> no se necesita fricción; en los extremos se requieren doce newtons en sentidos opuestos. Si el agente es una cuerda, también hay que respetar que sólo puede tirar.</p>
+</figcaption>
+</figure>
+<p>Esta forma de resolver conserva la pregunta física: qué debe proporcionar un contacto y qué valores permite su modelo. La masa no necesita empezar a deslizar para que aprendamos algo sobre ella. Un reposo observado sólo impone una cota inferior a la fricción máxima disponible; una historia deslizante permite investigar otro parámetro. Para distinguirlos harán falta ensayos preparados en regímenes distintos y mediciones cuyas incertidumbres no se confundan con un cambio real de contacto.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Utiliza <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span> y el modelo de Coulomb del capítulo. Los coeficientes y demás datos son exactos dentro de cada problema, salvo indicación contraria. Los cuerpos se modelan como partículas o como bloques en traslación sin vuelco; se desprecian aire y deformaciones. Las cuerdas y poleas son ideales cuando se indica, y los apoyos no ejercen tracción normal. Los cambios instantáneos de fuerzas se interpretan mediante límites laterales. En las expresiones temporales, <span class="math inline">\(\theta=t/(1\,\mathrm s)\)</span>.</p>
+<p>Los problemas 1–7 permiten consolidar el cambio entre reposo y deslizamiento con una sola masa. El 8 y el 9 introducen tensiones antes de combinarlas con rozamiento en el 10. Los restantes requieren elegir el movimiento relativo, comparar restricciones o utilizar datos acotados. Antes de mirar las soluciones de 3, 10 y 13, conviene dejar escrito qué régimen se está suponiendo y qué resultado obligaría a rechazarlo.</p>
+<section id="ejercicio-5-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-1">1. Una fricción que todavía no llegó al límite</h3>
+<p>Un bloque de tres kilogramos está inicialmente en reposo sobre una mesa horizontal. Se aplica una fuerza horizontal de ocho newtons hacia la derecha. Los coeficientes son <span class="math inline">\(\mu_s=0{,}40\)</span> y <span class="math inline">\(\mu_k=0{,}25\)</span>. Determina la normal, la fricción y la aceleración. Un estudiante calcula primero <span class="math inline">\(f=\mu_smg\)</span> y obtiene aceleración hacia la izquierda. Explica qué condición dejó de comprobar.</p>
+</section>
+<section id="ejercicio-5-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-2">2. Retirar el tirón</h3>
+<p>Un bloque de dos kilogramos parte del reposo en <span class="math inline">\(x=0\)</span> sobre una mesa horizontal, con <span class="math inline">\(\mu_s=0{,}40\)</span> y <span class="math inline">\(\mu_k=0{,}30\)</span>. Desde <span class="math inline">\(t=0\)</span> recibe una fuerza horizontal de diez newtons hacia la derecha durante un segundo; después se retira. Obtén velocidad y posición hasta la detención definitiva, su tiempo y la distancia total. Justifica el régimen posterior al primer cero de la velocidad.</p>
+</section>
+<section id="ejercicio-5-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-3">3. Frenar mientras la fuerza apunta hacia la derecha</h3>
+<p>Un bloque de dos kilogramos desliza inicialmente hacia la izquierda a tres metros por segundo sobre una mesa fija. Actúa una fuerza horizontal constante de dos newtons hacia la derecha. Se conocen <span class="math inline">\(\mu_s=0{,}30\)</span> y <span class="math inline">\(\mu_k=0{,}20\)</span>. Determina la fricción inicial, el instante y la posición de la primera detención, tomando <span class="math inline">\(x(0)=0\)</span>, y decide qué ocurre después. Explica por qué el rozamiento inicial no apunta hacia la izquierda.</p>
+</section>
+<section id="ejercicio-5-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-4">4. Tirar y empujar en ángulo</h3>
+<p>Un bloque de cinco kilogramos está en reposo sobre una mesa, con <span class="math inline">\(\mu_s=0{,}50\)</span> y <span class="math inline">\(\mu_k=0{,}40\)</span>. Se aplica una fuerza de veinticinco newtons con componente horizontal hacia la derecha y formando un ángulo cuyo seno es <span class="math inline">\(3/5\)</span> y coseno <span class="math inline">\(4/5\)</span>. Estudia primero un tirón hacia arriba y después un empuje hacia abajo con el mismo módulo y ángulo. Calcula en cada ensayo la normal, el régimen inicial y la fricción; si empieza a deslizar, calcula la aceleración.</p>
+</section>
+<section id="ejercicio-5-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-5">5. Reposo en una pendiente</h3>
+<p>Un bloque de dos kilogramos está inicialmente en reposo sobre un plano de <span class="math inline">\(30^\circ\)</span>, con <span class="math inline">\(\mu_s=0{,}70\)</span>. No hay cuerda ni otra fuerza aplicada. Calcula la normal y la fricción necesaria, comprueba si se mantiene el reposo y decide si observarlo basta para identificar exactamente <span class="math inline">\(\mu_s\)</span>.</p>
+</section>
+<section id="ejercicio-5-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-6">6. Subir, detenerse y decidir si vuelve</h3>
+<p>Un bloque se lanza hacia arriba de un plano largo con rapidez inicial de cinco metros por segundo. La inclinación tiene seno <span class="math inline">\(3/5\)</span> y coseno <span class="math inline">\(4/5\)</span>; los coeficientes son <span class="math inline">\(\mu_k=0{,}25\)</span> y <span class="math inline">\(\mu_s=0{,}80\)</span>. No actúa otra fuerza que peso y contacto. Determina la aceleración durante la subida, el tiempo y la distancia hasta detenerse. Decide si inicia un descenso después.</p>
+</section>
+<section id="ejercicio-5-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-7">7. Sostener un bloque contra una pared</h3>
+<p>Una fuerza horizontal presiona un bloque de dos kilogramos contra una pared vertical fija. Los coeficientes son <span class="math inline">\(\mu_s=0{,}50\)</span> y <span class="math inline">\(\mu_k=0{,}30\)</span>. Encuentra el módulo mínimo del empuje que permite sostenerlo en reposo. Si se mantiene un empuje de treinta newtons y el bloque se libera desde el reposo, determina el sentido de la fricción y la aceleración inicial de deslizamiento. No hay ningún apoyo por debajo.</p>
+</section>
+<section id="ejercicio-5-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-8">8. Una tensión horizontal</h3>
+<p>Dos bloques A y B, de dos y tres kilogramos respectivamente, están unidos por una cuerda ideal horizontal y tensa sobre una mesa lisa. A está a la izquierda de B. Se aplica sobre B una fuerza de quince newtons hacia la derecha, partiendo ambos del reposo. Halla la aceleración común y la tensión. Identifica los dos receptores de las fuerzas que ejerce la cuerda y explica por qué su tensión no es el peso de ninguno de los bloques.</p>
+</section>
+<section id="ejercicio-5-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-9">9. Dos masas a ambos lados de una polea</h3>
+<p>Dos masas de dos y tres kilogramos cuelgan de los extremos de una misma cuerda ideal sobre una polea fija ideal. Parten del reposo y no encuentran obstáculos durante el intervalo de estudio. Calcula sus aceleraciones y la tensión. Escribe claramente los sentidos positivos y comprueba que la tensión obtenida satisface las dos ecuaciones.</p>
+</section>
+<section id="ejercicio-5-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-10">10. Probar el reposo antes de despejar una aceleración</h3>
+<p>Un bloque de cuatro kilogramos está sobre una mesa con <span class="math inline">\(\mu_s=0{,}40\)</span> y <span class="math inline">\(\mu_k=0{,}25\)</span>. Una cuerda ideal horizontal pasa por una polea fija ideal y sostiene una masa colgante. Determina tensión y fricción si esa masa es de un kilogramo y todo parte del reposo. Repite el análisis si se sustituye por una masa de tres kilogramos: decide el régimen y calcula la aceleración y la tensión antes de que algún cuerpo alcance un obstáculo.</p>
+</section>
+<section id="ejercicio-5-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-11">11. Una caja que acompaña a un vehículo</h3>
+<p>Una caja de cinco kilogramos está inicialmente en reposo relativo sobre una plataforma horizontal que se traslada hacia la derecha. El contacto tiene <span class="math inline">\(\mu_s=0{,}40\)</span> y <span class="math inline">\(\mu_k=0{,}30\)</span>. Calcula la fricción cuando la plataforma acelera a <span class="math inline">\(3\,\mathrm{m/s^2}\)</span>. Examina después un ensayo que comienza con la misma velocidad de caja y plataforma y aceleración de ésta de <span class="math inline">\(5\,\mathrm{m/s^2}\)</span>. Si pierde adherencia, determina la aceleración de la caja respecto del laboratorio y la aceleración horizontal relativa respecto de la plataforma. La caja permanece sobre ella durante el tramo considerado.</p>
+</section>
+<section id="ejercicio-5-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-12">12. Alcanzar la velocidad de una cinta</h3>
+<p>Una cinta horizontal muy larga se mueve uniformemente hacia la derecha a tres metros por segundo. En <span class="math inline">\(t=0\)</span> una caja de dos kilogramos entra en contacto con ella, con velocidad horizontal nula respecto del laboratorio. El establecimiento del apoyo no aporta impulso horizontal. Los coeficientes son <span class="math inline">\(\mu_k=0{,}20\)</span> y <span class="math inline">\(\mu_s=0{,}40\)</span>. Calcula cuándo deja de deslizar respecto de la cinta, la distancia que ha recorrido hasta entonces y su posición en <span class="math inline">\(t=3\,\mathrm s\)</span>, tomando <span class="math inline">\(x(0)=0\)</span>. Determina la fricción una vez que comparten velocidad.</p>
+</section>
+<section id="ejercicio-5-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-13">13. Arrastrar dos bloques apilados</h3>
+<p>Un bloque superior de dos kilogramos descansa sobre otro inferior de tres, sobre una mesa horizontal lisa. Entre los dos bloques hay <span class="math inline">\(\mu_s=0{,}50\)</span> y <span class="math inline">\(\mu_k=0{,}40\)</span>. Ambos parten del reposo. Se tira horizontalmente del bloque inferior hacia la derecha. Encuentra el mayor módulo de fuerza aplicada compatible con que se muevan juntos. Para una fuerza de treinta newtons, calcula las aceleraciones de ambos durante el deslizamiento relativo y comprueba su sentido. Supón que los bloques siguen solapándose y no vuelcan en el intervalo estudiado.</p>
+</section>
+<section id="ejercicio-5-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-14">14. Una cuerda que tendría que empujar</h3>
+<p>Dos partículas A y B están sobre una guía horizontal lisa, con A a la izquierda de B y una cuerda ideal de un metro entre ellas, inicialmente recta y tensa. Sus masas son dos y un kilogramo. Parten del reposo; sólo se aplica a A una fuerza de seis newtons hacia la derecha. Prueba la hipótesis de cuerda tensa y examina el signo de la tensión. Determina las aceleraciones inmediatamente después de comenzar la fuerza si la cuerda no puede empujar, y describe cómo cambia la separación antes de que se produzca cualquier otro contacto.</p>
+</section>
+<section id="ejercicio-5-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-15">15. Cuándo no hay una sola tensión</h3>
+<p>Una cuerda vertical uniforme de masa un kilogramo y longitud dos metros sostiene en su extremo inferior una masa de tres kilogramos. Un agente tira del extremo superior y todo acelera hacia arriba a <span class="math inline">\(2\,\mathrm{m/s^2}\)</span>, sin estiramiento apreciable. Calcula las tensiones en los extremos inferior y superior de la cuerda, y en una sección situada a una distancia <span class="math inline">\(z\in[0,2]\,\mathrm m\)</span> por encima del extremo inferior. Explica qué idealización del capítulo ya no puede utilizarse.</p>
+</section>
+<section id="ejercicio-5-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-16">16. Una decisión con datos acotados</h3>
+<p>Un bloque de cuatro kilogramos está inicialmente en reposo en una mesa horizontal. El coeficiente estático pertenece a <span class="math inline">\([0{,}35,0{,}45]\)</span> y el tirón horizontal aplicado a <span class="math inline">\([14,18]\,\mathrm N\)</span>; todas las combinaciones son admisibles. Decide si se garantiza el reposo para toda la familia. Construye una elección compatible con reposo y otra incompatible. Explica qué se concluye en una combinación que satisface exactamente <span class="math inline">\(F=\mu_smg\)</span> y si las cotas permiten asignar una probabilidad de deslizamiento.</p>
+</section>
+<section id="ejercicio-5-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-17">17. Medir dos coeficientes mediante dos ensayos</h3>
+<p>En un ensayo cuasiestático, el ángulo crítico de inicio del deslizamiento de un bloque está acotado por <span class="math inline">\(\alpha_c\in[20^\circ,22^\circ]\)</span>. Adopta el criterio límite de Coulomb para inferir una banda de <span class="math inline">\(\mu_s\)</span>. En otro ensayo, el bloque ya desliza hacia abajo por un plano fijo de <span class="math inline">\(30^\circ\)</span> y su aceleración hacia abajo pertenece a <span class="math inline">\([2{,}0,2{,}2]\,\mathrm{m/s^2}\)</span>. El ángulo y <span class="math inline">\(g\)</span> se tratan como exactos en este segundo ensayo. Obtén una banda para <span class="math inline">\(\mu_k\)</span> y explica por qué no basta el primer ensayo para medir ambos coeficientes.</p>
+</section>
+<section id="ejercicio-5-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-18">18. Reposo relativo en una plataforma que gira</h3>
+<p>Una pieza de dos kilogramos descansa a dos metros del centro de una plataforma horizontal que gira con velocidad angular constante alrededor de un eje vertical. Inicialmente la pieza comparte su giro y no desliza. El coeficiente estático es <span class="math inline">\(\mu_s=0{,}45\)</span>; no hay cuerda ni tope lateral. Calcula la fricción requerida para <span class="math inline">\(\omega=1\,\mathrm{s^{-1}}\)</span> y el mayor <span class="math inline">\(|\omega|\)</span> compatible con la trayectoria circular sin deslizamiento. Decide qué puede afirmarse para <span class="math inline">\(\omega=2\,\mathrm{s^{-1}}\)</span> sin suponer que la pieza sigue obligatoriamente en el mismo círculo.</p>
+</section>
+<section id="ejercicio-5-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-19">19. La misma fuerza y dos preparaciones</h3>
+<p>Sobre un bloque de dos kilogramos en una mesa fija actúa una fuerza horizontal constante de seis newtons hacia la derecha. Se conocen <span class="math inline">\(\mu_s=0{,}40\)</span> y <span class="math inline">\(\mu_k=0{,}20\)</span>. Compara un ensayo en que comienza en reposo con otro en que comienza deslizando hacia la derecha a un metro por segundo. Determina la fricción y el movimiento en cada uno durante dos segundos. Aplica la convención de mantener la adherencia cuando sea admisible. Explica por qué la fuerza aplicada no determina por sí sola la respuesta.</p>
+</section>
+<section id="ejercicio-5-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-5-20">20. Elegir el ángulo del tirón</h3>
+<p>Se quiere iniciar el deslizamiento hacia la derecha de un bloque de masa <span class="math inline">\(m&gt;0\)</span>, inicialmente en reposo sobre una mesa, tirando mediante una cuerda que forma un ángulo <span class="math inline">\(0\leq\alpha&lt;\pi/2\)</span> hacia arriba. El coeficiente estático es <span class="math inline">\(\mu_s&gt;0\)</span> y se exige conservar normal positiva. Obtén el módulo crítico <span class="math inline">\(F_c(\alpha)\)</span> en que la fricción requerida alcanza su máximo y encuentra el ángulo que minimiza ese módulo. Evalúa el resultado para <span class="math inline">\(m=4\,\mathrm{kg}\)</span> y <span class="math inline">\(\mu_s=0{,}50\)</span>, comprueba la normal en ese umbral y distingue alcanzar el límite de sobrepasarlo.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-5-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-1">1. Una fricción que todavía no llegó al límite</h3>
+<p>El reposo es la primera hipótesis que debemos comprobar porque el bloque parte sin deslizamiento. En vertical, la mesa impide el movimiento y no hay otra fuerza con componente vertical: <span class="math inline">\(N=mg=30\,\mathrm N\)</span>. En horizontal, el reposo exige <span class="math inline">\(8\,\mathrm N+f=0\)</span>, por lo que <span class="math inline">\(f=-8\,\mathrm N\)</span>.</p>
+<p>El máximo estático es <span class="math inline">\(\mu_sN=12\,\mathrm N\)</span>. El valor requerido tiene módulo menor, así que es admisible y la aceleración es cero. El coeficiente cinético no interviene en esta historia. Usar siempre doce newtons hacia la izquierda produciría <span class="math inline">\((8-12)/3=-4/3\,\mathrm{m/s^2}\)</span>: esa cuenta cumple Newton para una fuerza mal asignada, pero no la condición de contacto estático ajustado a los datos. La caja no necesita que la mesa ejerza su fuerza tangencial máxima.</p>
+</section>
+<section id="solucion-5-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-2">2. Retirar el tirón</h3>
+<p>La normal es veinte newtons y el máximo estático, ocho. Como la fuerza aplicada es diez, el reposo no puede mantenerse. Al deslizar a la derecha, la fricción es seis newtons hacia la izquierda y la aceleración, <span class="math inline">\((10-6)/2=2\,\mathrm{m/s^2}\)</span>. Durante el primer segundo,</p>
+<p><span class="math display">\[
+v=2\theta\,\mathrm{m/s},\qquad x=\theta^2\,\mathrm m.
+\]</span></p>
+<p>En el cambio de fuerza, <span class="math inline">\(v=2\,\mathrm{m/s}\)</span> y <span class="math inline">\(x=1\,\mathrm m\)</span>. Después sólo queda fricción horizontal, de modo que <span class="math inline">\(a=-3\,\mathrm{m/s^2}\)</span>. Con <span class="math inline">\(\tau=t-1\,\mathrm s\)</span>,</p>
+<p><span class="math display">\[
+v=2\,\mathrm{m/s}-(3\,\mathrm{m/s^2})\tau,
+\qquad x=1\,\mathrm m+(2\,\mathrm{m/s})\tau
+-\frac12(3\,\mathrm{m/s^2})\tau^2.
+\]</span></p>
+<p>La velocidad se anula después de <span class="math inline">\(2/3\,\mathrm s\)</span>. La caja avanza en este tramo <span class="math inline">\(2/3\,\mathrm m\)</span>, por lo que queda en <span class="math inline">\(x=5/3\,\mathrm m\)</span> a los <span class="math inline">\(5/3\,\mathrm s\)</span> del reloj original. No cambió de sentido antes de detenerse, así que esa posición también es la distancia total desde el origen.</p>
+<p>Al llegar a velocidad cero, el tirón ya no actúa y la fricción necesaria para conservar reposo es cero, dentro de la banda estática. Para tiempos posteriores, <span class="math inline">\(v=0\)</span> y <span class="math inline">\(x=5/3\,\mathrm m\)</span>. La prolongación del segundo polinomio predeciría regreso y utilizaría una ley de fricción cuyo signo ya no correspondería al movimiento.</p>
+</section>
+<section id="solucion-5-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-3">3. Frenar mientras la fuerza apunta hacia la derecha</h3>
+<p>El bloque desliza hacia la izquierda respecto de una mesa fija: su velocidad relativa es negativa. La fricción cinética apunta a la derecha, con módulo <span class="math inline">\(\mu_kmg=4\,\mathrm N\)</span>. Junto con los dos newtons aplicados produce seis newtons hacia la derecha y <span class="math inline">\(a=3\,\mathrm{m/s^2}\)</span>.</p>
+<p>Hasta la primera detención,</p>
+<p><span class="math display">\[
+v=(-3+3\theta)\,\mathrm{m/s},
+\qquad x=(-3\theta+\tfrac32\theta^2)\,\mathrm m.
+\]</span></p>
+<p>La raíz admisible es <span class="math inline">\(t=1\,\mathrm s\)</span>, en <span class="math inline">\(x=-1{,}5\,\mathrm m\)</span>. La aceleración positiva redujo una rapidez asociada a una velocidad negativa. Para decidir el tramo siguiente escribimos otra vez la ecuación de reposo: ahora basta una fricción de dos newtons hacia la izquierda, menor que el máximo estático de seis. El bloque queda allí detenido bajo la convención de adherencia adoptada. La fricción cambia de sentido entre el deslizamiento y el reposo; el signo del tirón no bastaba para determinar su signo inicial.</p>
+</section>
+<section id="solucion-5-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-4">4. Tirar y empujar en ángulo</h3>
+<p>En ambos ensayos la componente horizontal aplicada es veinte newtons y el módulo de la vertical, quince. Al tirar hacia arriba, <span class="math inline">\(N=50-15=35\,\mathrm N\)</span>. El reposo requeriría <span class="math inline">\(f=-20\,\mathrm N\)</span>, pero el límite estático es <span class="math inline">\(17{,}5\,\mathrm N\)</span>. Empieza a deslizar a la derecha, la fricción pasa a catorce newtons hacia la izquierda y</p>
+<p><span class="math display">\[
+a=\frac{20-14}{5}\,\mathrm{m/s^2}=1{,}2\,\mathrm{m/s^2}.
+\]</span></p>
+<p>Al empujar hacia abajo, la normal aumenta a <span class="math inline">\(N=50+15=65\,\mathrm N\)</span>. Su límite estático es <span class="math inline">\(32{,}5\,\mathrm N\)</span>, suficiente para proporcionar los veinte requeridos. La fricción es veinte hacia la izquierda y la aceleración es cero. Ambas normales son positivas; no se pierde contacto. Comparar sólo la componente horizontal habría ocultado que el empuje cambia la capacidad de la mesa para mantener adherencia.</p>
+</section>
+<section id="solucion-5-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-5">5. Reposo en una pendiente</h3>
+<p>Los ejes paralelo y normal al plano separan la tendencia a bajar de la compresión contra la superficie. La normal es <span class="math inline">\(mg\cos30^\circ=10\sqrt3\,\mathrm N\)</span>. La componente del peso hacia abajo es <span class="math inline">\(mg\sin30^\circ=10\,\mathrm N\)</span>, por lo que la fricción requerida apunta hacia arriba con ese mismo módulo.</p>
+<p>El límite vale <span class="math inline">\(\mu_sN=7\sqrt3\,\mathrm N\approx12{,}124\,\mathrm N\)</span>, superior a diez. El reposo es admisible. Ese resultado no significa que la fricción real sea <span class="math inline">\(7\sqrt3\)</span>; sigue siendo diez. Observar el reposo bajo estas condiciones sólo permite inferir <span class="math inline">\(\mu_s\geq\tan30^\circ=1/\sqrt3\)</span>. Todos los valores superiores satisfacen la misma observación; identificar exactamente el coeficiente requeriría información adicional de umbral.</p>
+</section>
+<section id="solucion-5-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-6">6. Subir, detenerse y decidir si vuelve</h3>
+<p>Orientamos el eje hacia arriba del plano. Durante la subida, tanto la componente del peso como la fricción apuntan hacia abajo. La normal es <span class="math inline">\(mg(4/5)\)</span> y, al dividir la ecuación tangencial por la masa,</p>
+<p><span class="math display">\[
+a=-g\left(\frac35+\mu_k\frac45\right)
+=-8\,\mathrm{m/s^2}.
+\]</span></p>
+<p>La masa se cancela porque ambas contribuciones de fuerza son proporcionales a ella en este modelo. Integrar desde <span class="math inline">\(v_0=5\,\mathrm{m/s}\)</span> da el primer cero en <span class="math inline">\(t_*=5/8\,\mathrm s\)</span> y una distancia de subida</p>
+<p><span class="math display">\[
+s_* =\frac{v_0^2}{2(8\,\mathrm{m/s^2})}
+=\frac{25}{16}\,\mathrm m.
+\]</span></p>
+<p>En la detención, permanecer allí requiere fricción hacia arriba de módulo <span class="math inline">\((3/5)mg\)</span>. El máximo estático es <span class="math inline">\(\mu_sN=(16/25)mg\)</span>, y <span class="math inline">\(3/5=15/25&lt;16/25\)</span>. Por tanto, puede quedarse en reposo y así continúa según la convención del capítulo. La cuenta de bajada no debe iniciarse hasta haber comprobado esta condición. Una aceleración dirigida hacia abajo durante la subida no garantiza que exista después un descenso.</p>
+</section>
+<section id="solucion-5-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-7">7. Sostener un bloque contra una pared</h3>
+<p>La normal es horizontal: la proporciona la pared y equilibra el empuje. Si su módulo es <span class="math inline">\(F\)</span>, entonces <span class="math inline">\(N=F\)</span>. En vertical el peso de veinte newtons debe ser equilibrado por fricción estática hacia arriba. Se exige <span class="math inline">\(20\,\mathrm N\leq0{,}50F\)</span>, es decir, <span class="math inline">\(F\geq40\,\mathrm N\)</span>. Cuarenta es el mínimo admisible; en ese umbral el reposo sigue siendo posible.</p>
+<p>Con <span class="math inline">\(F=30\,\mathrm N\)</span>, el límite estático es quince, insuficiente para sostener el bloque. Empieza a bajar. La fricción cinética apunta hacia arriba y vale <span class="math inline">\(0{,}30(30)=9\,\mathrm N\)</span>. Quedan once newtons hacia abajo, de modo que la aceleración de deslizamiento es <span class="math inline">\(11/2=5{,}5\,\mathrm{m/s^2}\)</span> hacia abajo. No se utiliza <span class="math inline">\(N=mg\)</span>: aquí normal y peso apuntan en direcciones perpendiculares.</p>
+</section>
+<section id="solucion-5-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-8">8. Una tensión horizontal</h3>
+<p>El sistema A y B recibe quince newtons externos en horizontal; sobre la mesa lisa no hay rozamiento. La cuerda tensa y de longitud constante obliga a conservar la separación, así que ambos comparten aceleración. Al sumar sus ecuaciones,</p>
+<p><span class="math display">\[
+(2+3)\,\mathrm{kg}\,a=15\,\mathrm N,
+\qquad a=3\,\mathrm{m/s^2}.
+\]</span></p>
+<p>Para recuperar la tensión escogemos A solo: su única fuerza horizontal es la que la cuerda ejerce hacia la derecha. Por tanto, <span class="math inline">\(T=(2\,\mathrm{kg})a=6\,\mathrm N\)</span>. En B, la cuerda tira hacia la izquierda y la ecuación es <span class="math inline">\(15-6=3(3)\)</span> en newtons, que comprueba el resultado.</p>
+<p>La cuerda ejerce seis newtons sobre cada bloque, con receptores y sentidos diferentes. La igualdad de módulos responde a su idealización. Ninguno de esos módulos se obtiene del equilibrio vertical: los pesos, veinte y treinta newtons, son equilibrados por las normales. Aquí la tensión es una fuerza horizontal necesaria para acelerar A.</p>
+</section>
+<section id="solucion-5-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-9">9. Dos masas a ambos lados de una polea</h3>
+<p>La masa mayor bajará y la menor subirá si la tensión que resulte es admisible. Elegimos positivo hacia arriba para la masa de dos kilogramos y hacia abajo para la de tres. La cuerda tensa sobre una polea fija conserva la suma de las longitudes verticales: los desplazamientos tienen el mismo módulo en sentidos contrarios, y las componentes en estos dos ejes comparten un valor <span class="math inline">\(a\)</span>.</p>
+<p>Las ecuaciones son</p>
+<p><span class="math display">\[
+T-20\,\mathrm N=(2\,\mathrm{kg})a,
+\qquad 30\,\mathrm N-T=(3\,\mathrm{kg})a.
+\]</span></p>
+<p>Sumarlas da <span class="math inline">\(a=2\,\mathrm{m/s^2}\)</span>. La primera proporciona <span class="math inline">\(T=24\,\mathrm N\)</span>; la segunda comprueba <span class="math inline">\(30-24=3(2)\)</span> en newtons. Es positiva, mayor que el peso de la masa que sube y menor que el de la que baja. Esas desigualdades permiten que ambas aceleren en los sentidos elegidos. Suponer <span class="math inline">\(T=30\,\mathrm N\)</span> habría dejado a la masa mayor sin aceleración y habría resultado incompatible con la primera ecuación y la restricción de cuerda.</p>
+</section>
+<section id="solucion-5-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-10">10. Probar el reposo antes de despejar una aceleración</h3>
+<p>Con la masa colgante de un kilogramo, el reposo de ésta requiere <span class="math inline">\(T=10\,\mathrm N\)</span>. El bloque horizontal necesita una fricción de diez newtons que se oponga al tirón. Su normal es cuarenta y su límite estático, dieciséis: esa fricción es admisible. Ambos permanecen en reposo, <span class="math inline">\(f=-10\,\mathrm N\)</span> tomando positivo hacia la polea. El coeficiente cinético no interviene.</p>
+<p>Con la masa colgante de tres kilogramos, la prueba de reposo exigiría <span class="math inline">\(T=30\,\mathrm N\)</span> y una fricción horizontal del mismo módulo, superior a dieciséis. En el nuevo régimen el bloque desliza hacia la polea y la fricción es diez newtons. Elegimos ese sentido positivo para él y hacia abajo para la masa. La longitud de la cuerda relaciona sus aceleraciones como en el texto. Resulta</p>
+<p><span class="math display">\[
+T-10\,\mathrm N=(4\,\mathrm{kg})a,
+\qquad 30\,\mathrm N-T=(3\,\mathrm{kg})a.
+\]</span></p>
+<p>Por tanto, <span class="math inline">\(a=20/7\,\mathrm{m/s^2}\)</span> y <span class="math inline">\(T=150/7\,\mathrm N\)</span>. La aceleración confirma el sentido supuesto y la tensión es positiva. Su sustitución produce veinte newtons de fuerza motriz conjunta sobre siete kilogramos en estas ecuaciones escalares. Aplicar fricción cinética desde el comienzo del primer ensayo habría predicho un movimiento que sus condiciones iniciales y su contacto no exigen.</p>
+</section>
+<section id="solucion-5-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-11">11. Una caja que acompaña a un vehículo</h3>
+<p>Para acompañar la primera aceleración, la caja necesita <span class="math inline">\(f=ma=15\,\mathrm N\)</span> hacia la derecha. La normal es cincuenta y el límite estático, veinte; no desliza. La fuerza no apunta contra la velocidad de la caja respecto del suelo: proporciona precisamente su aumento hacia la derecha.</p>
+<p>En el segundo ensayo, la adherencia requeriría veinticinco newtons, más de los veinte permitidos. La plataforma comienza a adelantarse a la caja y el deslizamiento de ésta respecto de aquélla es hacia atrás. La fricción cinética sobre la caja apunta hacia la derecha y vale quince newtons. Su aceleración en el laboratorio es <span class="math inline">\(15/5=3\,\mathrm{m/s^2}\)</span>, mientras que la aceleración relativa es</p>
+<p><span class="math display">\[
+a_{\text{caja/plataforma}}=3-5=-2\,\mathrm{m/s^2}.
+\]</span></p>
+<p>Parten con velocidad relativa cero y esa aceleración negativa genera la velocidad relativa hacia atrás que utilizamos para escoger el signo. El cálculo es consistente hasta que cambie la aceleración del vehículo o la caja deje de apoyarse en su plataforma. Todas las ecuaciones de fuerzas de esta solución se escribieron en el laboratorio inercial.</p>
+</section>
+<section id="solucion-5-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-12">12. Alcanzar la velocidad de una cinta</h3>
+<p>Al comienzo, <span class="math inline">\(u=0-3=-3\,\mathrm{m/s}\)</span>. La fricción cinética sobre la caja apunta hacia la derecha y tiene módulo <span class="math inline">\(\mu_kmg=4\,\mathrm N\)</span>, con aceleración <span class="math inline">\(2\,\mathrm{m/s^2}\)</span>. Hasta compartir la velocidad de la cinta,</p>
+<p><span class="math display">\[
+v=2\theta\,\mathrm{m/s},\qquad x=\theta^2\,\mathrm m.
+\]</span></p>
+<p>La igualdad <span class="math inline">\(v=3\,\mathrm{m/s}\)</span> ocurre en <span class="math inline">\(t=1{,}5\,\mathrm s\)</span>, con <span class="math inline">\(x=2{,}25\,\mathrm m\)</span>. En ese instante desaparece el deslizamiento relativo. Para conservar la velocidad común, constante, la fricción requerida es cero, admisible en el régimen estático. Después <span class="math inline">\(v=3\,\mathrm{m/s}\)</span> y</p>
+<p><span class="math display">\[
+x=2{,}25\,\mathrm m+(3\,\mathrm{m/s})(t-1{,}5\,\mathrm s).
+\]</span></p>
+<p>En tres segundos la posición es <span class="math inline">\(6{,}75\,\mathrm m\)</span>. La caja nunca estuvo en reposo respecto del laboratorio durante este segundo tramo; lo está respecto de la cinta. Continuar aplicando cuatro newtons la haría superar la velocidad de ésta y contradiría la ley elegida para el deslizamiento anterior.</p>
+</section>
+<section id="solucion-5-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-13">13. Arrastrar dos bloques apilados</h3>
+<p>Si no deslizan entre sí, los dos bloques comparten <span class="math inline">\(a=F/[(2+3)\,\mathrm{kg}]\)</span>. La única fuerza horizontal sobre el superior es la fricción que le transmite el inferior, por lo que requiere <span class="math inline">\(f=2\,\mathrm{kg}\,a=2F/5\)</span> hacia la derecha. La normal entre ambos es veinte newtons y el máximo estático, diez. Así, <span class="math inline">\(2F/5\leq10\,\mathrm N\)</span> equivale a <span class="math inline">\(F\leq25\,\mathrm N\)</span>. Para fuerzas hacia la derecha, el mayor módulo compatible es veinticinco newtons.</p>
+<p>Con treinta, la aceleración común supuesta requeriría doce newtons sobre el superior, que el contacto no puede proporcionar estáticamente. El inferior comienza a adelantarse y la fricción cinética sobre el superior es ocho newtons hacia la derecha. Sobre el inferior actúa la fuerza opuesta de ocho hacia la izquierda. Las aceleraciones son</p>
+<p><span class="math display">\[
+a_{\mathrm{sup}}=\frac8{2}\,\mathrm{m/s^2}=4\,\mathrm{m/s^2},
+\qquad a_{\mathrm{inf}}=\frac{30-8}{3}\,\mathrm{m/s^2}
+=\frac{22}{3}\,\mathrm{m/s^2}.
+\]</span></p>
+<p>Su diferencia es <span class="math inline">\(a_{\mathrm{sup}}-a_{\mathrm{inf}}=-10/3\,\mathrm{m/s^2}\)</span>, que produce desde el reposo relativo un deslizamiento del superior hacia atrás respecto del inferior. La dirección escogida queda comprobada. La normal de la mesa bajo el bloque inferior es cincuenta newtons, pero no se utiliza para la fricción entre bloques: esa interacción depende de su propia normal, de veinte.</p>
+</section>
+<section id="solucion-5-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-14">14. Una cuerda que tendría que empujar</h3>
+<p>Tomemos positivo hacia la derecha para ambos. Una cuerda tensa tiraría de A hacia B, con fuerza <span class="math inline">\(+T\)</span>, y de B hacia A, con <span class="math inline">\(-T\)</span>. Si se mantuviera la separación, compartirían aceleración y deberían satisfacer</p>
+<p><span class="math display">\[
+6\,\mathrm N+T=(2\,\mathrm{kg})a,
+\qquad -T=(1\,\mathrm{kg})a.
+\]</span></p>
+<p>Sumar da <span class="math inline">\(a=2\,\mathrm{m/s^2}\)</span> y la segunda ecuación, <span class="math inline">\(T=-2\,\mathrm N\)</span>. Es una compresión, excluida para la cuerda flexible. El resultado rechaza la hipótesis de cuerda tensa.</p>
+<p>Con holgura, <span class="math inline">\(T=0\)</span>. A tiene aceleración <span class="math inline">\(3\,\mathrm{m/s^2}\)</span> y B permanece con aceleración cero. Mientras no se produzca otro contacto, la separación inicial disminuye según <span class="math inline">\(x_B-x_A=1\,\mathrm m-(3/2\,\mathrm{m/s^2})t^2\)</span>. Es menor que la longitud disponible de cuerda para tiempos positivos pequeños, consistente con la holgura. Para fijar ese intervalo exigimos <span class="math inline">\(x_B-x_A&gt;0\)</span>. Escribiendo <span class="math inline">\(\theta=t/(1\,\mathrm s)\)</span>, la condición es <span class="math inline">\(1-3\theta^2/2&gt;0\)</span>, por lo que el tramo de holgura con A a la izquierda de B corresponde a <span class="math inline">\(0&lt;t&lt;\sqrt{2/3}\,\mathrm s\)</span>. La separación tiende a cero en el extremo superior: las partículas llegan a una coincidencia espacial y la continuación exigiría precisar su interacción en ese encuentro. En todo el intervalo abierto la separación permanece entre cero y un metro, de modo que la tensión nula es consistente con una cuerda cuya longitud es un metro.</p>
+</section>
+<section id="solucion-5-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-15">15. Cuándo no hay una sola tensión</h3>
+<p>Para la masa inferior, la ecuación hacia arriba es <span class="math inline">\(T_0-(3\,\mathrm{kg})g=(3\,\mathrm{kg})a\)</span>. Resulta <span class="math inline">\(T_0=(3\,\mathrm{kg})(g+a)=36\,\mathrm N\)</span>. Para el sistema formado por masa y cuerda, la fuerza superior debe acelerar cuatro kilogramos y sostener su peso: <span class="math inline">\(T_{\mathrm{sup}}=(4\,\mathrm{kg})(g+a)=48\,\mathrm N\)</span>.</p>
+<p>En una sección intermedia elegimos todo lo situado debajo. La densidad lineal de la cuerda es <span class="math inline">\(\lambda=1\,\mathrm{kg}/(2\,\mathrm m)=0{,}5\,\mathrm{kg/m}\)</span>. La masa del sistema inferior es <span class="math inline">\(3\,\mathrm{kg}+\lambda z\)</span>. Su ecuación da</p>
+<p><span class="math display">\[
+T(z)=(3\,\mathrm{kg}+\lambda z)(g+a)
+=36\,\mathrm N+(6\,\mathrm{N/m})z.
+\]</span></p>
+<p>En <span class="math inline">\(z=0\)</span> y <span class="math inline">\(z=2\,\mathrm m\)</span> se recuperan los dos extremos. La diferencia de tensiones proporciona el peso y la aceleración de la parte de cuerda que queda entre las secciones. La aproximación de masa despreciable ya no es válida. Una cuerda puede ser prácticamente inextensible y, sin embargo, tener masa suficiente para que la tensión varíe a lo largo de ella.</p>
+</section>
+<section id="solucion-5-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-16">16. Una decisión con datos acotados</h3>
+<p>La normal es cuarenta newtons y el máximo estático varía entre catorce y dieciocho. Para garantizar el reposo en todas las combinaciones, el mayor tirón tendría que ser a lo sumo el menor límite disponible: <span class="math inline">\(18\leq14\)</span> en newtons. La condición no se cumple.</p>
+<p>Hay reposo admisible, por ejemplo, con <span class="math inline">\(F=14\,\mathrm N\)</span> y <span class="math inline">\(\mu_s=0{,}45\)</span>, pues se requieren catorce y se permiten dieciocho. Con <span class="math inline">\(F=18\,\mathrm N\)</span> y <span class="math inline">\(\mu_s=0{,}35\)</span>, se requieren dieciocho y sólo se permiten catorce: no puede mantenerse adherencia. Las dos elecciones pertenecen al rectángulo declarado, por lo que tampoco puede afirmarse que toda la familia desliza.</p>
+<p>Cuando <span class="math inline">\(F=\mu_smg\)</span>, el reposo pertenece al límite admisible; esa igualdad no obliga por sí sola a iniciar movimiento. No se pueden asignar probabilidades a las partes de este rectángulo sin un modelo probabilístico adicional. Las bandas sólo especifican restricciones deterministas.</p>
+<p>Podemos reunir la decisión en el margen <span class="math inline">\(S=\mu_smg-F\)</span>. La adherencia requiere <span class="math inline">\(S\geq0\)</span>. Como el margen aumenta con <span class="math inline">\(\mu_s\)</span> y disminuye con <span class="math inline">\(F\)</span>, sus extremos sobre el rectángulo son <span class="math inline">\(S_{\min}=-4\,\mathrm N\)</span> y <span class="math inline">\(S_{\max}=4\,\mathrm N\)</span>. Una familia con margen mínimo no negativo admitiría reposo en todas sus combinaciones; una con margen máximo negativo lo excluiría en todas. Los signos opuestos de este caso explican por qué hacen falta datos más precisos para decidir el régimen de un ensayo particular. La comparación utiliza la misma propagación de cotas del capítulo 0, aplicada ahora a una desigualdad física.</p>
+</section>
+<section id="solucion-5-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-17">17. Medir dos coeficientes mediante dos ensayos</h3>
+<p>En el primer ensayo, el criterio de reposo sin fuerza aplicada es <span class="math inline">\(\tan\alpha\leq\mu_s\)</span>, con el límite en <span class="math inline">\(\mu_s=\tan\alpha_c\)</span>. La tangente es creciente entre veinte y veintidós grados. Por tanto,</p>
+<p><span class="math display">\[
+\mu_s\in[\tan20^\circ,\tan22^\circ]
+\subset[0{,}363,0{,}405].
+\]</span></p>
+<p>La última banda está redondeada hacia fuera. La inferencia utiliza el ensayo cuasiestático y el criterio límite adoptado; si la inclinación se cambiara deprisa o el inicio no se identificara adecuadamente, habría que revisar el procedimiento.</p>
+<p>En el ensayo deslizante, elegimos positivo hacia abajo. La segunda ley da <span class="math inline">\(a=g\sin30^\circ-\mu_kg\cos30^\circ\)</span>. Despejando,</p>
+<p><span class="math display">\[
+\mu_k=\frac{5\,\mathrm{m/s^2}-a}{5\sqrt3\,\mathrm{m/s^2}}
+\in\left[\frac{2{,}8}{5\sqrt3},\frac{3{,}0}{5\sqrt3}\right]
+\subset[0{,}323,0{,}347].
+\]</span></p>
+<p>Aumentar la aceleración observada reduce el coeficiente inferido, por lo que los extremos cambian de orden al despejar. Se conserva <span class="math inline">\(\mu_k&lt;\mu_s\)</span> en toda esta pareja de bandas. El primer ensayo investiga el umbral estático; no contiene una medición de la fuerza mientras las superficies deslizan. Los dos parámetros requieren información de regímenes diferentes.</p>
+</section>
+<section id="solucion-5-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-18">18. Reposo relativo en una plataforma que gira</h3>
+<p>La pieza está en reposo respecto de la plataforma, pero en el laboratorio describe un círculo. Su aceleración es radial hacia el centro, de módulo <span class="math inline">\(\omega^2R\)</span>. La normal es veinte newtons y el máximo estático, nueve. La única fuerza horizontal es la fricción, por lo que, con <span class="math inline">\(\omega=1\,\mathrm{s^{-1}}\)</span>,</p>
+<p><span class="math display">\[
+\|\mathbf f\|=m\omega^2R=4\,\mathrm N,
+\]</span></p>
+<p>dirigida hacia el centro. Es menor que nueve y la trayectoria sin deslizamiento es admisible. En general se requiere <span class="math inline">\(m\omega^2R\leq\mu_smg\)</span>, de donde</p>
+<p><span class="math display">\[
+|\omega|\leq\sqrt{\frac{\mu_sg}{R}}=1{,}5\,\mathrm{s^{-1}}.
+\]</span></p>
+<p>Para <span class="math inline">\(\omega=2\,\mathrm{s^{-1}}\)</span> se necesitarían dieciséis newtons, más de los nueve disponibles estáticamente. La historia circular compartida es inadmisible. No se ha dado el coeficiente cinético ni se ha resuelto el movimiento relativo posterior, así que no podemos deducir de esa prueba una trayectoria completa después de perder adherencia. Tampoco se añade otra fuerza llamada centrípeta: el módulo calculado era la demanda radial sobre el contacto.</p>
+</section>
+<section id="solucion-5-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-19">19. La misma fuerza y dos preparaciones</h3>
+<p>La normal es veinte newtons, el máximo estático ocho y el módulo cinético cuatro. En la preparación en reposo se necesita <span class="math inline">\(f=-6\,\mathrm N\)</span>, dentro de la banda estática. Bajo la convención de conservar adherencia, <span class="math inline">\(v=0\)</span> y la posición no cambia durante los dos segundos.</p>
+<p>En la preparación que ya desliza a la derecha, <span class="math inline">\(f=-4\,\mathrm N\)</span> y la fuerza neta es dos newtons hacia la derecha. La aceleración es <span class="math inline">\(1\,\mathrm{m/s^2}\)</span>. Midiendo la posición desde el lugar inicial de ese ensayo,</p>
+<p><span class="math display">\[
+v=(1+\theta)\,\mathrm{m/s},
+\qquad x=(\theta+\theta^2/2)\,\mathrm m.
+\]</span></p>
+<p>En dos segundos la velocidad es tres metros por segundo y el desplazamiento, cuatro metros. La velocidad se conserva positiva en todo el tramo y no hay cambio de régimen. La fuerza aplicada y las propiedades del contacto coinciden entre ensayos, pero el estado inicial selecciona situaciones diferentes. Una curva que pretendiera asignar una única fricción a cada fuerza aplicada, sin indicar la preparación y el movimiento relativo, perdería esa información.</p>
+</section>
+<section id="solucion-5-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-5-20">20. Elegir el ángulo del tirón</h3>
+<p>Para conservar contacto sin aceleración vertical, <span class="math inline">\(N=mg-F\sin\alpha\)</span>. El reposo horizontal exige una fricción opuesta de módulo <span class="math inline">\(F\cos\alpha\)</span>. En el límite estático,</p>
+<p><span class="math display">\[
+F\cos\alpha=\mu_s(mg-F\sin\alpha),
+\qquad
+F_c(\alpha)=\frac{\mu_smg}{\cos\alpha+\mu_s\sin\alpha}.
+\]</span></p>
+<p>El denominador es positivo en el dominio. Minimizar el cociente equivale a maximizar ese denominador, porque el numerador permanece fijo y positivo. El producto escalar de <span class="math inline">\((\cos\alpha,\sin\alpha)\)</span> con <span class="math inline">\((1,\mu_s)\)</span> es a lo sumo <span class="math inline">\(\sqrt{1+\mu_s^2}\)</span>, ya que el primer vector es unitario. La igualdad se alcanza cuando ambos tienen la misma dirección, es decir, cuando <span class="math inline">\(\tan\alpha=\mu_s\)</span>. Ese ángulo pertenece al dominio, por lo que</p>
+<p><span class="math display">\[
+\alpha_* =\arctan\mu_s,
+\qquad F_{c,\min}=\frac{\mu_smg}{\sqrt{1+\mu_s^2}}.
+\]</span></p>
+<p>La desigualdad utilizada también se comprueba expandiendo <span class="math inline">\((\sin\alpha-\mu_s\cos\alpha)^2\geq0\)</span>, que da <span class="math inline">\((\cos\alpha+\mu_s\sin\alpha)^2\leq1+\mu_s^2\)</span>. El argumento identifica el máximo global y su igualdad, no sólo un punto crítico local.</p>
+<p>Con los datos numéricos, <span class="math inline">\(\alpha_*\approx26{,}565^\circ\)</span> y <span class="math inline">\(F_{c,\min}=8\sqrt5\,\mathrm N\approx17{,}889\,\mathrm N\)</span>, frente a veinte newtons para un tirón horizontal. En el óptimo, <span class="math inline">\(\sin\alpha_*=1/\sqrt5\)</span> y <span class="math inline">\(\cos\alpha_*=2/\sqrt5\)</span>. La componente vertical es ocho newtons, de modo que <span class="math inline">\(N=32\,\mathrm N&gt;0\)</span>; la horizontal vale dieciséis y coincide con <span class="math inline">\(\mu_sN\)</span>.</p>
+<p>En general, al sustituir <span class="math inline">\(F_c(\alpha)\)</span>, la normal es <span class="math inline">\(mg\cos\alpha/(\cos\alpha+\mu_s\sin\alpha)&gt;0\)</span> en todo el dominio dado. El mínimo no se ha obtenido levantando el bloque. En la igualdad crítica aún existe un reposo admisible; para excluirlo con ese ángulo hay que superar el umbral, manteniendo la normal positiva. La cuenta determina la frontera de adherencia y la dirección que exige el menor tirón para llegar a ella.</p>
+</section>
+</section>
+<section id="lecturas-de-apoyo" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-de-apoyo">Lecturas de apoyo</h2>
+<p>El inventario de fuerzas, los sistemas y las normales admisibles se construyen en el <a href="04_Fuerzas_y_leyes_de_Newton.md">capítulo 4, «Fuerzas y leyes de Newton»</a>. Las historias por tramos y sus fronteras retoman los capítulos 1 y 2; las velocidades relativas y la aceleración circular, el capítulo 3. El capítulo 0 permite interpretar las cotas de los ejercicios 16 y 17. Se utilizan álgebra, proyecciones, derivadas e integrales elementales. Los dos criterios formales de admisibilidad se demuestran en el texto; la ley de Coulomb y la cuerda ideal son modelos físicos declarados.</p>
+<p>Se consultaron pasajes de Young y Freedman, <em>Sears y Zemansky. Física universitaria</em>, vol.&nbsp;1, 13.ª ed.&nbsp;(Pearson, 2013), §5.2 en el ejemplo del deslizador y la pesa, y §5.3 sobre contacto, fricción estática y cinética; y de Serway y Jewett, <em>Física para ciencias e ingeniería</em>, vol.&nbsp;1, 10.ª ed.&nbsp;española (Cengage, 2019 según créditos), ejemplo 5.9, sobre dos masas unidas por una polea fija, y el apartado de fuerzas de fricción con ecuaciones 5.9–5.10 y ejemplo 5.11. Los enunciados, datos, soluciones y figuras de este capítulo se desarrollaron para esta obra; no son traducciones ni reproducciones de ejercicios específicos de esas fuentes.</p>
+<p>El cotejo con Michael Spivak, <em>Physics for Mathematicians. Mechanics I</em> (Publish or Perish, 2010), se concentra en el capítulo 6, pp.&nbsp;241–243, sobre restricciones de cuerda y el límite de masa despreciable, y el comienzo del capítulo 11, pp.&nbsp;409–412, sobre el carácter empírico y simplificado de las leyes de fricción. Esos pasajes ayudan a precisar las hipótesis del elemento mecánico y el alcance del modelo; no se trasladan aquí sus desarrollos posteriores sobre cuerpos rígidos o paradojas de contacto.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-04-fuerzas-y-leyes-de-newton.html">← 4. Fuerzas y leyes de Newton</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-06-cuerpos-conectados-y-restricciones.html">6. Cuerpos conectados y restricciones →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

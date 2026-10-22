@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 17 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>Dispersión clásica – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#preparar-un-encuentro-desde-lejos" id="toc-preparar-un-encuentro-desde-lejos" class="nav-link active" data-scroll-target="#preparar-un-encuentro-desde-lejos">Preparar un encuentro desde lejos</a></li>
+  <li><a href="#obtener-la-desviación-a-partir-del-movimiento-radial" id="toc-obtener-la-desviación-a-partir-del-movimiento-radial" class="nav-link" data-scroll-target="#obtener-la-desviación-a-partir-del-movimiento-radial">Obtener la desviación a partir del movimiento radial</a></li>
+  <li><a href="#resolver-la-interacción-inversa-del-radio" id="toc-resolver-la-interacción-inversa-del-radio" class="nav-link" data-scroll-target="#resolver-la-interacción-inversa-del-radio">Resolver la interacción inversa del radio</a></li>
+  <li><a href="#del-área-de-preparación-al-ángulo-sólido" id="toc-del-área-de-preparación-al-ángulo-sólido" class="nav-link" data-scroll-target="#del-área-de-preparación-al-ángulo-sólido">Del área de preparación al ángulo sólido</a></li>
+  <li><a href="#contar-partículas-dentro-de-una-ventana-finita" id="toc-contar-partículas-dentro-de-una-ventana-finita" class="nav-link" data-scroll-target="#contar-partículas-dentro-de-una-ventana-finita">Contar partículas dentro de una ventana finita</a></li>
+  <li><a href="#reconstruir-lo-que-mide-el-laboratorio" id="toc-reconstruir-lo-que-mide-el-laboratorio" class="nav-link" data-scroll-target="#reconstruir-lo-que-mide-el-laboratorio">Reconstruir lo que mide el laboratorio</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-17-1" id="toc-ejercicio-17-1" class="nav-link" data-scroll-target="#ejercicio-17-1">1. Traducir la preparación a conservaciones</a></li>
+  <li><a href="#ejercicio-17-2" id="toc-ejercicio-17-2" class="nav-link" data-scroll-target="#ejercicio-17-2">2. Una desviación que cambia con la preparación</a></li>
+  <li><a href="#ejercicio-17-3" id="toc-ejercicio-17-3" class="nav-link" data-scroll-target="#ejercicio-17-3">3. Atracción y repulsión con el mismo giro</a></li>
+  <li><a href="#ejercicio-17-4" id="toc-ejercicio-17-4" class="nav-link" data-scroll-target="#ejercicio-17-4">4. Inferir el coeficiente de interacción</a></li>
+  <li><a href="#ejercicio-17-5" id="toc-ejercicio-17-5" class="nav-link" data-scroll-target="#ejercicio-17-5">5. Cambiar energía sin cambiar el blanco</a></li>
+  <li><a href="#ejercicio-17-6" id="toc-ejercicio-17-6" class="nav-link" data-scroll-target="#ejercicio-17-6">6. Integrar una aceptación completa en azimut</a></li>
+  <li><a href="#ejercicio-17-7" id="toc-ejercicio-17-7" class="nav-link" data-scroll-target="#ejercicio-17-7">7. Del área a un conteo esperado</a></li>
+  <li><a href="#ejercicio-17-8" id="toc-ejercicio-17-8" class="nav-link" data-scroll-target="#ejercicio-17-8">8. Propagar una cota angular</a></li>
+  <li><a href="#ejercicio-17-9" id="toc-ejercicio-17-9" class="nav-link" data-scroll-target="#ejercicio-17-9">9. Una energía de laboratorio que no es la relativa</a></li>
+  <li><a href="#ejercicio-17-10" id="toc-ejercicio-17-10" class="nav-link" data-scroll-target="#ejercicio-17-10">10. Estimar el impulso en una trayectoria casi recta</a></li>
+  <li><a href="#ejercicio-17-11" id="toc-ejercicio-17-11" class="nav-link" data-scroll-target="#ejercicio-17-11">11. Cortar un haz de radio finito</a></li>
+  <li><a href="#ejercicio-17-12" id="toc-ejercicio-17-12" class="nav-link" data-scroll-target="#ejercicio-17-12">12. Comparar con una esfera rígida</a></li>
+  <li><a href="#ejercicio-17-13" id="toc-ejercicio-17-13" class="nav-link" data-scroll-target="#ejercicio-17-13">13. Captura por atracción gravitatoria</a></li>
+  <li><a href="#ejercicio-17-14" id="toc-ejercicio-17-14" class="nav-link" data-scroll-target="#ejercicio-17-14">14. Llegar a una superficie repulsiva</a></li>
+  <li><a href="#ejercicio-17-15" id="toc-ejercicio-17-15" class="nav-link" data-scroll-target="#ejercicio-17-15">15. Sumar dos ramas de preparación</a></li>
+  <li><a href="#ejercicio-17-16" id="toc-ejercicio-17-16" class="nav-link" data-scroll-target="#ejercicio-17-16">16. Lo que la distribución identifica</a></li>
+  <li><a href="#ejercicio-17-17" id="toc-ejercicio-17-17" class="nav-link" data-scroll-target="#ejercicio-17-17">17. Reconstruir un encuentro con retroceso</a></li>
+  <li><a href="#ejercicio-17-18" id="toc-ejercicio-17-18" class="nav-link" data-scroll-target="#ejercicio-17-18">18. Transformar la densidad para masas iguales</a></li>
+  <li><a href="#ejercicio-17-19" id="toc-ejercicio-17-19" class="nav-link" data-scroll-target="#ejercicio-17-19">19. Dos encuentros vistos bajo el mismo ángulo</a></li>
+  <li><a href="#ejercicio-17-20" id="toc-ejercicio-17-20" class="nav-link" data-scroll-target="#ejercicio-17-20">20. Controlar la aproximación de ángulo pequeño</a></li>
+  <li><a href="#ejercicio-17-21" id="toc-ejercicio-17-21" class="nav-link" data-scroll-target="#ejercicio-17-21">21. Una ventana que reúne dos ramas</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#solucion-17-1" id="toc-solucion-17-1" class="nav-link" data-scroll-target="#solucion-17-1">1. Traducir la preparación a conservaciones</a></li>
+  <li><a href="#solucion-17-2" id="toc-solucion-17-2" class="nav-link" data-scroll-target="#solucion-17-2">2. Una desviación que cambia con la preparación</a></li>
+  <li><a href="#solucion-17-3" id="toc-solucion-17-3" class="nav-link" data-scroll-target="#solucion-17-3">3. Atracción y repulsión con el mismo giro</a></li>
+  <li><a href="#solucion-17-4" id="toc-solucion-17-4" class="nav-link" data-scroll-target="#solucion-17-4">4. Inferir el coeficiente de interacción</a></li>
+  <li><a href="#solucion-17-5" id="toc-solucion-17-5" class="nav-link" data-scroll-target="#solucion-17-5">5. Cambiar energía sin cambiar el blanco</a></li>
+  <li><a href="#solucion-17-6" id="toc-solucion-17-6" class="nav-link" data-scroll-target="#solucion-17-6">6. Integrar una aceptación completa en azimut</a></li>
+  <li><a href="#solucion-17-7" id="toc-solucion-17-7" class="nav-link" data-scroll-target="#solucion-17-7">7. Del área a un conteo esperado</a></li>
+  <li><a href="#solucion-17-8" id="toc-solucion-17-8" class="nav-link" data-scroll-target="#solucion-17-8">8. Propagar una cota angular</a></li>
+  <li><a href="#solucion-17-9" id="toc-solucion-17-9" class="nav-link" data-scroll-target="#solucion-17-9">9. Una energía de laboratorio que no es la relativa</a></li>
+  <li><a href="#solucion-17-10" id="toc-solucion-17-10" class="nav-link" data-scroll-target="#solucion-17-10">10. Estimar el impulso en una trayectoria casi recta</a></li>
+  <li><a href="#solucion-17-11" id="toc-solucion-17-11" class="nav-link" data-scroll-target="#solucion-17-11">11. Cortar un haz de radio finito</a></li>
+  <li><a href="#solucion-17-12" id="toc-solucion-17-12" class="nav-link" data-scroll-target="#solucion-17-12">12. Comparar con una esfera rígida</a></li>
+  <li><a href="#solucion-17-13" id="toc-solucion-17-13" class="nav-link" data-scroll-target="#solucion-17-13">13. Captura por atracción gravitatoria</a></li>
+  <li><a href="#solucion-17-14" id="toc-solucion-17-14" class="nav-link" data-scroll-target="#solucion-17-14">14. Llegar a una superficie repulsiva</a></li>
+  <li><a href="#solucion-17-15" id="toc-solucion-17-15" class="nav-link" data-scroll-target="#solucion-17-15">15. Sumar dos ramas de preparación</a></li>
+  <li><a href="#solucion-17-16" id="toc-solucion-17-16" class="nav-link" data-scroll-target="#solucion-17-16">16. Lo que la distribución identifica</a></li>
+  <li><a href="#solucion-17-17" id="toc-solucion-17-17" class="nav-link" data-scroll-target="#solucion-17-17">17. Reconstruir un encuentro con retroceso</a></li>
+  <li><a href="#solucion-17-18" id="toc-solucion-17-18" class="nav-link" data-scroll-target="#solucion-17-18">18. Transformar la densidad para masas iguales</a></li>
+  <li><a href="#solucion-17-19" id="toc-solucion-17-19" class="nav-link" data-scroll-target="#solucion-17-19">19. Dos encuentros vistos bajo el mismo ángulo</a></li>
+  <li><a href="#solucion-17-20" id="toc-solucion-17-20" class="nav-link" data-scroll-target="#solucion-17-20">20. Controlar la aproximación de ángulo pequeño</a></li>
+  <li><a href="#solucion-17-21" id="toc-solucion-17-21" class="nav-link" data-scroll-target="#solucion-17-21">21. Una ventana que reúne dos ramas</a></li>
+  </ul></li>
+  <li><a href="#lecturas-y-conexiones" id="toc-lecturas-y-conexiones" class="nav-link" data-scroll-target="#lecturas-y-conexiones">Lecturas y conexiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Dispersión clásica</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 17</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 17 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-16-orbitas-de-kepler.html">← 16. Órbitas de Kepler</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-18-marcos-acelerados-y-giratorios.html">18. Marcos acelerados y giratorios →</a></p>
+<p>Un haz de partículas llega con rapidez conocida a una región donde una interacción central modifica sus trayectorias. Un detector situado lejos registra las direcciones de salida. Queremos relacionar esa distribución con la fuerza que actuó durante el encuentro. La pregunta obliga a unir dos cálculos: la desviación de una trayectoria preparada y el número de partículas que acaba dentro de una ventana angular.</p>
+<p>Tomemos como primer modelo una interacción repulsiva de energía potencial <span class="math inline">\(U(r)=\alpha/r\)</span>, con <span class="math inline">\(\alpha=4\,\mathrm{J\,m}\)</span>. La masa reducida es <span class="math inline">\(m_r=1\,\mathrm{kg}\)</span> y la rapidez relativa lejana es <span class="math inline">\(v_\infty=2\,\mathrm{m/s}\)</span>. Una trayectoria incidente pasa, en su prolongación asintótica, a distancia <span class="math inline">\(b=\sqrt3\,\mathrm m\)</span> del centro. Calcularemos cuánto gira su velocidad y qué conjunto de preparaciones produce desviaciones entre <span class="math inline">\(60^\circ\)</span> y <span class="math inline">\(90^\circ\)</span>. La segunda pregunta convertirá un ángulo en un área y dará sentido a la sección eficaz.</p>
+<p>El capítulo puede leerse como una profundización del problema de dos cuerpos. Se mantienen sus conservaciones, la masa reducida y la reconstrucción del laboratorio. El desarrollo supone encuentros clásicos, no relativistas, con interacción conservativa central y datos asintóticos bien definidos. La comparación con un detector real requiere además especificar su aceptación, el ancho del haz y las condiciones en que pueden despreciarse otros encuentros.</p>
+<section id="preparar-un-encuentro-desde-lejos" class="level2">
+<h2 class="anchored" data-anchor-id="preparar-un-encuentro-desde-lejos">Preparar un encuentro desde lejos</h2>
+<p>Denotemos por <span class="math inline">\(m_p\)</span> la masa del proyectil y por <span class="math inline">\(m_t\)</span> la del blanco. Conservamos la convención relativa de los capítulos anteriores tomando el blanco como cuerpo 1 y el proyectil como cuerpo 2:</p>
+<p><span class="math display">\[
+\mathbf r=\mathbf x_p-\mathbf x_t,
+\qquad m_r=\frac{m_pm_t}{m_p+m_t},
+\qquad m_r\ddot{\mathbf r}=-U'(r)\mathbf e_r.
+\]</span></p>
+<p>Al elegir la referencia <span class="math inline">\(U(\infty)=0\)</span>, un encuentro que llega desde el infinito tiene energía relativa positiva <span class="math inline">\(E=m_rv_\infty^2/2\)</span>. En el marco relativo elegimos la velocidad incidente <span class="math inline">\(v_\infty\mathbf e_x\)</span> y una trayectoria que entra por encima del centro. Su momento angular apunta hacia <span class="math inline">\(-\mathbf e_z\)</span>. El módulo conserva la información que necesitaremos para el radio mínimo.</p>
+<p><strong>Definición.</strong> El parámetro de impacto <span class="math inline">\(b\ge0\)</span> es la distancia perpendicular entre el centro de fuerza y la asíntota incidente; equivalentemente, <span class="math inline">\(b=L/(m_rv_\infty)\)</span>, donde <span class="math inline">\(L\)</span> es el módulo del momento angular relativo. El ángulo de dispersión <span class="math inline">\(\chi\in[0,\pi]\)</span> es el ángulo entre las velocidades relativas incidente y saliente:</p>
+<p><span class="math display">\[
+\cos\chi=\frac{\mathbf u_{\mathrm{in}}\cdot\mathbf u_{\mathrm{out}}}{v_\infty^2}.
+\]</span></p>
+<p>La igualdad de sus módulos proviene de la conservación de energía y de <span class="math inline">\(U(\infty)=0\)</span>. Para encuentros que admiten dirección asintótica e intercepto transversal, la identidad del parámetro se obtiene tomando el producto vectorial de la recta incidente con su velocidad. El parámetro de impacto tiene unidades de longitud; describe la preparación lejana y suele diferir de la distancia mínima alcanzada durante la interacción.</p>
+<p>Usaremos también un ángulo orientado <span class="math inline">\(\psi\)</span> en el plano dibujado, desde <span class="math inline">\(+x\)</span> hacia la velocidad saliente, positivo hacia <span class="math inline">\(+y\)</span>. Para el haz situado por encima del centro, una repulsión produce una desviación positiva y una atracción una negativa en los encuentros sencillos. El detector angular que integra todos los azimuts registra su magnitud <span class="math inline">\(\chi\)</span>; conocer además el lado de salida puede aportar información sobre el signo de la interacción.</p>
+<figure id="fig-fispm-r20261021-17-1" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/dispersion_encuentro.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="../../assets/books/fispm/r20261021/dispersion_encuentro.svg" alt="Preparación y desviación de un encuentro" class="fpm-v04-figure img-fluid figure-img" width="900" height="640" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 17.1.</em> Trayectoria repulsiva del ejemplo inicial y sus asíntotas. El parámetro de impacto se mide respecto de la preparación incidente; el giro compara las direcciones de las velocidades, no los radios de los puntos lejanos de entrada y salida.</p>
+</figcaption>
+</figure>
+</section>
+<section id="obtener-la-desviación-a-partir-del-movimiento-radial" class="level2">
+<h2 class="anchored" data-anchor-id="obtener-la-desviación-a-partir-del-movimiento-radial">Obtener la desviación a partir del movimiento radial</h2>
+<p>La energía separa el acercamiento y el alejamiento mediante</p>
+<p><span class="math display">\[
+\dot r^2=v_\infty^2
+\left(1-\frac{U(r)}E-\frac{b^2}{r^2}\right).
+\]</span></p>
+<p>La expresión entre paréntesis determina los radios accesibles. Su primer cero encontrado al entrar desde el infinito es el radio de retorno, siempre que el encuentro efectivamente vuelva a salir. Una raíz doble o una caída al centro requieren otro examen; la construcción siguiente declara un retorno simple y una rama conectada con el infinito.</p>
+<p><strong>Proposición.</strong> Sea <span class="math inline">\(b&gt;0\)</span> y sea <span class="math inline">\(U\)</span> continuamente diferenciable para <span class="math inline">\(r\ge r_{\min}&gt;0\)</span>, con límite cero en el infinito. Supongamos que</p>
+<p><span class="math display">\[
+Q(r)=1-\frac{U(r)}E-\frac{b^2}{r^2}
+\]</span></p>
+<p>cumple <span class="math inline">\(Q(r_{\min})=0\)</span>, <span class="math inline">\(Q'(r_{\min})&gt;0\)</span> y <span class="math inline">\(Q(r)&gt;0\)</span> para <span class="math inline">\(r&gt;r_{\min}\)</span>. Supongamos además que el encuentro admite las direcciones asintóticas descritas y que converge la integral</p>
+<p><span class="math display">\[
+I(b,E)=\int_{r_{\min}}^\infty
+\frac{b\,dr}{r^2\sqrt{Q(r)}}.
+\]</span></p>
+<p>El ángulo total barrido por el radio durante el encuentro es <span class="math inline">\(2I\)</span>. Para la entrada por encima del centro, un representante continuo del giro de la velocidad es <span class="math inline">\(\psi=\pi-2I\)</span>; su ángulo no orientado es</p>
+<p><span class="math display">\[
+\chi=\arccos\big(\cos(\pi-2I)\big).
+\]</span></p>
+<p><strong>Demostración.</strong> La conservación angular da <span class="math inline">\(|\dot\theta|=bv_\infty/r^2\)</span>. En el tramo saliente, <span class="math inline">\(\dot r=v_\infty\sqrt{Q(r)}\)</span>, por lo que el módulo del cambio angular entre el retorno y el infinito es la integral indicada. La raíz simple implica <span class="math inline">\(Q(r)\sim Q'(r_{\min})(r-r_{\min})\)</span> cerca del retorno: la singularidad inversa de su raíz cuadrada es integrable y el retorno se alcanza en tiempo finito desde cualquier radio mayor fijo. En el acercamiento, el signo negativo de <span class="math inline">\(\dot r\)</span> reproduce la misma integral angular entre el infinito y el retorno. Los dos barridos tienen igual módulo y el total es <span class="math inline">\(2I\)</span>. En la entrada lejana, el radio apunta hacia la izquierda mientras la velocidad apunta hacia la derecha. En la salida, radio y velocidad tienen la misma dirección límite. Como el radio gira en sentido horario para la preparación elegida, la dirección final, continuada angularmente, es <span class="math inline">\(\pi-2I\)</span>. Pasar al ángulo entre dos vectores da la expresión con arcocoseno. <span class="math inline">\(\square\)</span></p>
+<p>Para un encuentro con <span class="math inline">\(0&lt;2I&lt;2\pi\)</span>, se puede escribir <span class="math inline">\(\chi=|\pi-2I|\)</span>. La forma con coseno conserva su significado si una interacción produce vueltas adicionales. En esos casos, distintos parámetros de impacto pueden terminar en una misma dirección: el conteo posterior tendrá que sumar sus contribuciones. En el potencial inverso del radio, cada <span class="math inline">\(b&gt;0\)</span> determina una desviación de magnitud única y monótona.</p>
+</section>
+<section id="resolver-la-interacción-inversa-del-radio" class="level2">
+<h2 class="anchored" data-anchor-id="resolver-la-interacción-inversa-del-radio">Resolver la interacción inversa del radio</h2>
+<p>Escribamos <span class="math inline">\(U(r)=\alpha/r\)</span> con <span class="math inline">\(\alpha\ne0\)</span>. La fuerza relativa es <span class="math inline">\(\alpha\mathbf e_r/r^2\)</span>: el signo positivo corresponde a repulsión y el negativo a atracción. Separar el signo de la intensidad evita trasladar sin modificación una fórmula gravitatoria a un encuentro repulsivo. Introducimos la longitud positiva</p>
+<p><span class="math display">\[
+a_* =\frac{|\alpha|}{2E}
+=\frac{|\alpha|}{m_rv_\infty^2}.
+\]</span></p>
+<p><strong>Proposición.</strong> Para <span class="math inline">\(b&gt;0\)</span>, el encuentro con <span class="math inline">\(U(r)=\alpha/r\)</span> tiene</p>
+<p><span class="math display">\[
+\chi=2\arctan\frac{a_*}{b},
+\qquad b=a_*\cot\frac\chi2,
+\qquad 0&lt;\chi&lt;\pi,
+\]</span></p>
+<p><span class="math display">\[
+r_{\min}=\frac{\alpha}{2E}
++\sqrt{\left(\frac{\alpha}{2E}\right)^2+b^2}.
+\]</span></p>
+<p>Para la entrada por encima del centro, <span class="math inline">\(\psi=\operatorname{sgn}(\alpha)\chi\)</span>.</p>
+<p><strong>Demostración.</strong> La condición <span class="math inline">\(Q(r)=0\)</span>, multiplicada por <span class="math inline">\(r^2\)</span>, es <span class="math inline">\(r^2-(\alpha/E)r-b^2=0\)</span>. Sus raíces tienen producto <span class="math inline">\(-b^2&lt;0\)</span>, así que sólo una es positiva; es la expresión enunciada y constituye un retorno simple. Para evaluar el barrido introducimos <span class="math inline">\(z=b/r\)</span>, <span class="math inline">\(s=\operatorname{sgn}(\alpha)\)</span> y <span class="math inline">\(x=a_*/b&gt;0\)</span>. La integral se convierte en</p>
+<p><span class="math display">\[
+I=\int_0^{z_{\max}}\frac{dz}{\sqrt{1-2sxz-z^2}},
+\qquad z_{\max}=-sx+\sqrt{1+x^2}.
+\]</span></p>
+<p>Completar el cuadrado deja el radicando <span class="math inline">\(1+x^2-(z+sx)^2\)</span>. Una primitiva es <span class="math inline">\(\arcsin((z+sx)/\sqrt{1+x^2})\)</span>; evaluar entre los extremos da <span class="math inline">\(I=\pi/2-s\arctan x\)</span>. La identidad trigonométrica usada es <span class="math inline">\(\arcsin(x/\sqrt{1+x^2})=\arctan x\)</span> para <span class="math inline">\(x&gt;0\)</span>. En consecuencia, <span class="math inline">\(\psi=\pi-2I=2s\arctan x\)</span>, cuyo módulo está entre cero y <span class="math inline">\(\pi\)</span>. Despejar la tangente de la mitad del ángulo proporciona la relación inversa. <span class="math inline">\(\square\)</span></p>
+<p>En el ejemplo de apertura, <span class="math inline">\(E=2\,\mathrm J\)</span> y <span class="math inline">\(a_*=1\,\mathrm m\)</span>. El parámetro <span class="math inline">\(b=\sqrt3\,\mathrm m\)</span> produce <span class="math inline">\(\chi=\pi/3\)</span>, y la distancia mínima es <span class="math inline">\(1+\sqrt{1+3}=3\,\mathrm m\)</span>. Si se cambia el signo de <span class="math inline">\(\alpha\)</span> conservando su módulo y la preparación, la magnitud del giro sigue siendo <span class="math inline">\(\pi/3\)</span>, pero la partícula sale hacia abajo y alcanza <span class="math inline">\(r_{\min}=1\,\mathrm m\)</span>. El radio mínimo y el lado de salida permiten distinguir dos interacciones que producen la misma distribución de magnitudes angulares.</p>
+<figure id="fig-fispm-r20261021-17-2" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/dispersion_retornos.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="../../assets/books/fispm/r20261021/dispersion_retornos.svg" alt="Distancia mínima para atracción y repulsión" class="fpm-v04-figure img-fluid figure-img" width="900" height="610" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 17.2.</em> Radios mínimos para el mismo valor de <span class="math inline">\(a_*\)</span> y distintos parámetros de impacto. La rama atractiva se aproxima al centro cuando <span class="math inline">\(b\)</span> tiende a cero; el encuentro radial atractivo alcanza una singularidad y necesita tratamiento separado.</p>
+</figcaption>
+</figure>
+<p>La conexión con Kepler también es explícita. La órbita atractiva es una hipérbola de excentricidad <span class="math inline">\(e=\sqrt{1+(b/a_*)^2}\)</span> y satisface <span class="math inline">\(\sin(\chi/2)=1/e\)</span>. La repulsión recorre una rama hiperbólica con el mismo valor de esa excentricidad, aunque el foco de fuerza queda al otro lado de la geometría pertinente. La igualdad de magnitudes angulares procede de ambas geometrías y queda justificada por la integral, sin tener que identificar sus ramas.</p>
+<p>En el límite <span class="math inline">\(b\to0\)</span>, el ángulo tiende a <span class="math inline">\(\pi\)</span>. Para repulsión, el encuentro frontal se detiene a distancia <span class="math inline">\(2a_*\)</span> y regresa. Para atracción puntual, <span class="math inline">\(b=0\)</span> conduce al centro y la ecuación singular no determina por sí sola una trayectoria saliente. El valor límite de la fórmula angular conserva la información de encuentros con <span class="math inline">\(b&gt;0\)</span>; extenderlo a una colisión central exige especificar otra física.</p>
+</section>
+<section id="del-área-de-preparación-al-ángulo-sólido" class="level2">
+<h2 class="anchored" data-anchor-id="del-área-de-preparación-al-ángulo-sólido">Del área de preparación al ángulo sólido</h2>
+<p>Un haz uniforme contiene más partículas en una corona ancha que en una estrecha. El radio de esa corona es el parámetro de impacto, de modo que la ley <span class="math inline">\(b\mapsto\chi\)</span> transforma áreas de preparación en intervalos de direcciones. Para efectuar el conteo en el espacio necesitamos medir las direcciones por ángulo sólido.</p>
+<p><strong>Definición.</strong> La sección eficaz <span class="math inline">\(\sigma(A)\)</span> de un conjunto de direcciones salientes <span class="math inline">\(A\)</span> es el área del plano de impacto formada por las preparaciones que salen en esas direcciones. En coordenadas polares alrededor del eje incidente, el elemento de ángulo sólido es <span class="math inline">\(d\Omega=\sin\chi\,d\chi\,d\varphi\)</span>. Cuando existe una densidad respecto de esa medida, la denotamos <span class="math inline">\(D(\chi)=d\sigma/d\Omega\)</span> para una interacción con simetría axial.</p>
+<p>El ángulo sólido de una región es su área sobre la esfera de radio unidad. En una esfera de radio <span class="math inline">\(R\)</span>, el área correspondiente es <span class="math inline">\(R^2d\Omega\)</span>; un detector pequeño y perpendicular al radio subtiene aproximadamente su área dividida por <span class="math inline">\(R^2\)</span>. La unidad habitual es el estereorradián, adimensional en el análisis dimensional. La densidad <span class="math inline">\(D\)</span> se expresa en <span class="math inline">\(\mathrm{m^2/sr}\)</span>, mientras que <span class="math inline">\(\sigma(A)\)</span> se expresa en <span class="math inline">\(\mathrm{m^2}\)</span>.</p>
+<p>La forma <span class="math inline">\(d\Omega=\sin\chi\,d\chi\,d\varphi\)</span> puede reconstruirse tomando una banda de la esfera unidad: su ancho meridiano es <span class="math inline">\(d\chi\)</span> y su longitud en azimut es <span class="math inline">\(\sin\chi\,d\varphi\)</span>. Integrar todo el azimut da <span class="math inline">\(2\pi\sin\chi\,d\chi\)</span>. La geometría del plano de impacto produce, por su parte, una corona de área <span class="math inline">\(2\pi b\,db\)</span>.</p>
+<p><strong>Proposición.</strong> Supongamos dispersión central con simetría axial y una ley angular que admite, cerca de <span class="math inline">\(\chi\in(0,\pi)\)</span>, un número finito de ramas inversas diferenciables <span class="math inline">\(b_i(\chi)&gt;0\)</span>, sin puntos críticos. Entonces</p>
+<p><span class="math display">\[
+D(\chi)=\sum_i\frac{b_i(\chi)}{\sin\chi}
+\left|\frac{db_i}{d\chi}\right|.
+\]</span></p>
+<p><strong>Demostración.</strong> En una rama monótona, las preparaciones que llegan a una banda angular de ancho <span class="math inline">\(d\chi\)</span> ocupan una corona de área <span class="math inline">\(2\pi b_i|db_i/d\chi|d\chi\)</span> a primer orden. Esa banda ocupa ángulo sólido <span class="math inline">\(2\pi\sin\chi\,d\chi\)</span>. El cociente proporciona la contribución de la rama a la densidad. El valor absoluto conserva un área positiva tanto si el parámetro aumenta como si disminuye con el ángulo. Cuando varias coronas disjuntas llegan a la misma banda, sus áreas se suman; las hipótesis de finitud y regularidad permiten efectuar esa suma local. Dividir por el ángulo sólido da la fórmula enunciada. <span class="math inline">\(\square\)</span></p>
+<figure id="fig-fispm-r20261021-17-3" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/dispersion_jacobiano.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="../../assets/books/fispm/r20261021/dispersion_jacobiano.svg" alt="Transformación de coronas en bandas angulares" class="fpm-v04-figure img-fluid figure-img" width="900" height="650" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 17.3.</em> El área <span class="math inline">\(2\pi b|db|\)</span> y la banda angular <span class="math inline">\(2\pi\sin\chi|d\chi|\)</span> describen el mismo conjunto de encuentros mediante dos variables diferentes. La representación de la esfera es esquemática.</p>
+</figcaption>
+</figure>
+<p>La sección eficaz tiene una interpretación geométrica aun cuando la fuerza actúe sin contacto. Una interacción puede desviar partículas que estaban preparadas a distancias muy superiores al tamaño del blanco. El área de un disco material aparece como sección eficaz sólo cuando el modelo de interacción y la condición observada conducen precisamente a ese disco de preparaciones.</p>
+</section>
+<section id="contar-partículas-dentro-de-una-ventana-finita" class="level2">
+<h2 class="anchored" data-anchor-id="contar-partículas-dentro-de-una-ventana-finita">Contar partículas dentro de una ventana finita</h2>
+<p><strong>Proposición.</strong> Para <span class="math inline">\(U(r)=\alpha/r\)</span>, con las hipótesis anteriores y <span class="math inline">\(b&gt;0\)</span>, la densidad angular es</p>
+<p><span class="math display">\[
+D(\chi)=\frac{a_*^2}{4\sin^4(\chi/2)}.
+\]</span></p>
+<p>Si se acepta todo el azimut y <span class="math inline">\(0&lt;\chi_1&lt;\chi_2\le\pi\)</span>, la sección eficaz de la ventana es</p>
+<p><span class="math display">\[
+\sigma_{[\chi_1,\chi_2]}=
+\pi a_*^2\left[\cot^2\frac{\chi_1}{2}
+-\cot^2\frac{\chi_2}{2}\right].
+\]</span></p>
+<p><strong>Demostración.</strong> La relación inversa tiene derivada <span class="math inline">\(db/d\chi=-(a_*/2)\csc^2(\chi/2)\)</span>. Sustituirla en el cambio de variables y usar <span class="math inline">\(\sin\chi=2\sin(\chi/2)\cos(\chi/2)\)</span> reduce la densidad a la fórmula indicada para <span class="math inline">\(0&lt;\chi&lt;\pi\)</span>; su límite en <span class="math inline">\(\pi\)</span> es <span class="math inline">\(a_*^2/4\)</span>. La ventana angular corresponde a la corona comprendida entre <span class="math inline">\(b(\chi_2)\)</span> y <span class="math inline">\(b(\chi_1)\)</span>, cuyo área es <span class="math inline">\(\pi[b(\chi_1)^2-b(\chi_2)^2]\)</span>. Esta área da directamente la expresión integrada y coincide con integrar <span class="math inline">\(D\,d\Omega\)</span>. Incluir el extremo <span class="math inline">\(\pi\)</span> no cambia el área. <span class="math inline">\(\square\)</span></p>
+<p>Ésta es la forma clásica de la ley de Rutherford para una interacción inversa del radio. En una aplicación electrostática, <span class="math inline">\(\alpha\)</span> contiene las cargas y la constante de la convención de unidades; aquí se toma como el coeficiente definido en <span class="math inline">\(U\)</span>. La deducción conserva la masa reducida y la energía relativa, por lo que permite después incorporar el retroceso del blanco.</p>
+<p>Para la ventana de apertura, <span class="math inline">\([\pi/3,\pi/2]\)</span>, el área es <span class="math inline">\(\pi a_*^2(3-1)=2\pi\,\mathrm{m^2}\)</span>. Es mayor que la sección de algunos blancos materiales posibles porque mide preparaciones que se desvían, sin imponer una condición de contacto.</p>
+<figure id="fig-fispm-r20261021-17-4" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/dispersion_densidades.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="../../assets/books/fispm/r20261021/dispersion_densidades.svg" alt="Densidades angulares de dos modelos" class="fpm-v04-figure img-fluid figure-img" width="900" height="640" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 17.4.</em> Densidad de Rutherford y densidad constante de una esfera rígida de radio <span class="math inline">\(2a_*\)</span>. El eje vertical es logarítmico y la curva inversa del radio se trunca antes del ángulo cero.</p>
+</figcaption>
+</figure>
+<p>Al aceptar todos los ángulos mayores que <span class="math inline">\(\chi_0&gt;0\)</span>, se obtiene <span class="math inline">\(\sigma_{\chi\ge\chi_0}=\pi a_*^2\cot^2(\chi_0/2)\)</span>. Esta cantidad crece sin cota cuando <span class="math inline">\(\chi_0\to0\)</span>. El modelo atribuye desviaciones pequeñas a preparaciones con <span class="math inline">\(b\)</span> arbitrariamente grande: la sección total de desviación no nula resulta infinita. En una preparación de radio finito o en una interacción modificada a gran distancia, aparece un corte que debe incluirse en el cálculo. Las secciones integradas sobre ventanas separadas de cero permanecen finitas.</p>
+<p><strong>Definición.</strong> La fluencia incidente <span class="math inline">\(\mathcal F\)</span> es el número de partículas que cruza una unidad de área durante una exposición. La densidad areal de blancos <span class="math inline">\(n_s\)</span> es su número por unidad de área transversal. La eficiencia <span class="math inline">\(\eta\in[0,1]\)</span> es la fracción de eventos aceptados que el detector registra en las condiciones especificadas.</p>
+<p>Para un centro y una fluencia uniforme, el número esperado en una ventana es <span class="math inline">\(\mathcal F\sigma_A\)</span>. Para una lámina con <span class="math inline">\(n_s\)</span> uniforme, atravesada por <span class="math inline">\(N_{\mathrm{inc}}\)</span> partículas, el número esperado registrado es</p>
+<p><span class="math display">\[
+\langle N_A\rangle=N_{\mathrm{inc}}n_s\eta\sigma_A.
+\]</span></p>
+<p>La fórmula describe una lámina suficientemente diluida para despreciar encuentros múltiples que alteren la ventana estudiada, con eficiencia uniforme allí y preparación homogénea sobre las escalas relevantes. Se obtiene sumando el conteo de centros independientes: la probabilidad aproximada por proyectil es <span class="math inline">\(n_s\sigma_A\)</span>, y la eficiencia multiplica los eventos aceptados. Un número esperado puede ser no entero; las observaciones concretas son conteos enteros que fluctúan entre exposiciones.</p>
+<p>Si la eficiencia o la cobertura dependen de la dirección, se integra <span class="math inline">\(\eta(\chi,\varphi)D(\chi)\,d\Omega\)</span> sobre la aceptación real. Reemplazar una ventana ancha por <span class="math inline">\(D\)</span> en su centro multiplicada por su ángulo sólido puede sesgar el conteo, sobre todo cerca de la dirección incidente, donde la densidad varía rápidamente.</p>
+<figure id="fig-fispm-r20261021-17-5" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/dispersion_aceptacion.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="../../assets/books/fispm/r20261021/dispersion_aceptacion.svg" alt="Aceptación angular y preparaciones" class="fpm-v04-figure img-fluid figure-img" width="900" height="600" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 17.5.</em> Para <span class="math inline">\(a_*=1\,\mathrm m\)</span>, aceptar entre <span class="math inline">\(60^\circ\)</span> y <span class="math inline">\(90^\circ\)</span> equivale a una corona entre <span class="math inline">\(b=1\,\mathrm m\)</span> y <span class="math inline">\(b=\sqrt3\,\mathrm m\)</span>. El área es <span class="math inline">\(2\pi\,\mathrm{m^2}\)</span>.</p>
+</figcaption>
+</figure>
+</section>
+<section id="reconstruir-lo-que-mide-el-laboratorio" class="level2">
+<h2 class="anchored" data-anchor-id="reconstruir-lo-que-mide-el-laboratorio">Reconstruir lo que mide el laboratorio</h2>
+<p>El ángulo de la velocidad relativa coincide con el del proyectil en la aproximación de blanco inmóvil. Para masas comparables, el detector observa una velocidad a la que se suma el movimiento del centro de masa. Consideremos un blanco inicialmente en reposo y un proyectil con velocidad <span class="math inline">\(v\mathbf e_x\)</span> lejos de él. La rapidez relativa incidente es <span class="math inline">\(v_\infty=v\)</span>, pero la energía relativa es</p>
+<p><span class="math display">\[
+E=\frac12m_rv^2
+=\frac{m_t}{m_p+m_t}E_{\mathrm{lab}},
+\qquad E_{\mathrm{lab}}=\frac12m_pv^2.
+\]</span></p>
+<p>Para esta reconstrucción elegimos el eje transversal del lado de la salida, de modo que su componente sea positiva.</p>
+<p><strong>Proposición.</strong> En un encuentro elástico de dos partículas, con blanco inicialmente en reposo, sea la velocidad relativa saliente <span class="math inline">\(v(\cos\chi,\sin\chi)\)</span> para un plano de salida elegido. Las velocidades finales de laboratorio son</p>
+<p><span class="math display">\[
+\mathbf v_{p,f}=\frac{v}{m_p+m_t}
+(m_p+m_t\cos\chi,\,m_t\sin\chi),
+\]</span></p>
+<p><span class="math display">\[
+\mathbf v_{t,f}=\frac{m_pv}{m_p+m_t}
+(1-\cos\chi,\,-\sin\chi).
+\]</span></p>
+<p>Con <span class="math inline">\(q=m_p/m_t\)</span>, el ángulo del proyectil es</p>
+<p><span class="math display">\[
+\beta=\operatorname{atan2}(\sin\chi,q+\cos\chi).
+\]</span></p>
+<p>Para <span class="math inline">\(q&lt;1\)</span>, esta correspondencia es creciente de <span class="math inline">\(0\)</span> a <span class="math inline">\(\pi\)</span>. Para <span class="math inline">\(q=1\)</span>, vale <span class="math inline">\(\beta=\chi/2\)</span> cuando <span class="math inline">\(0\le\chi&lt;\pi\)</span>; en <span class="math inline">\(\chi=\pi\)</span> el proyectil se detiene y su dirección queda indefinida. Para <span class="math inline">\(q&gt;1\)</span>, el ángulo máximo es <span class="math inline">\(\beta_{\max}=\arcsin(1/q)\)</span> y cada <span class="math inline">\(0&lt;\beta&lt;\beta_{\max}\)</span> tiene dos preimágenes.</p>
+<p><strong>Demostración.</strong> El centro de masa se mueve con <span class="math inline">\(\mathbf V=m_pv\mathbf e_x/(m_p+m_t)\)</span>. Las velocidades de reconstrucción del capítulo 15 son <span class="math inline">\(\mathbf v_p=\mathbf V+(m_t/(m_p+m_t))\mathbf u\)</span> y <span class="math inline">\(\mathbf v_t=\mathbf V-(m_p/(m_p+m_t))\mathbf u\)</span>. Sustituir la velocidad relativa saliente da las expresiones enunciadas, que conservan directamente el momento total. El módulo de <span class="math inline">\(\mathbf u\)</span> conserva la energía cinética relativa y, con ella, la energía cinética total lejana. La dirección del proyectil se obtiene usando sus dos componentes. En los puntos donde su velocidad no se anula, derivar el argumento da</p>
+<p><span class="math display">\[
+\frac{d\beta}{d\chi}=
+\frac{1+q\cos\chi}{1+q^2+2q\cos\chi}.
+\]</span></p>
+<p>Para <span class="math inline">\(q&lt;1\)</span> el numerador es positivo y el recorrido va de la dirección delantera a la trasera. Si <span class="math inline">\(q=1\)</span>, las identidades de ángulo mitad dan directamente <span class="math inline">\(\beta=\chi/2\)</span> en el intervalo indicado. Para <span class="math inline">\(q&gt;1\)</span>, el denominador sigue positivo y la derivada cambia de signo una sola vez, en <span class="math inline">\(\cos\chi=-1/q\)</span>. Evaluar la dirección allí da <span class="math inline">\(\sin\beta_{\max}=1/q\)</span>. La función parte de cero, alcanza ese máximo y vuelve a cero en <span class="math inline">\(\chi=\pi\)</span>, por lo que cada ángulo interior tiene una preimagen a cada lado del máximo. <span class="math inline">\(\square\)</span></p>
+<figure id="fig-fispm-r20261021-17-6" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/dispersion_laboratorio.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="../../assets/books/fispm/r20261021/dispersion_laboratorio.svg" alt="Triángulo de velocidades de laboratorio" class="fpm-v04-figure img-fluid figure-img" width="900" height="640" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 17.6.</em> Sumar la velocidad del centro de masa transforma la dirección relativa en la del proyectil. Con <span class="math inline">\(m_t=2m_p\)</span> y <span class="math inline">\(\chi=120^\circ\)</span>, el proyectil sale a <span class="math inline">\(\beta=90^\circ\)</span> en el laboratorio.</p>
+</figcaption>
+</figure>
+<p>La densidad angular también debe transformarse. En cada rama regular se conservan los eventos y el azimut, con lo que</p>
+<p><span class="math display">\[
+D_{\mathrm{lab}}(\beta)=
+\sum_i D(\chi_i)\frac{\sin\chi_i}{\sin\beta}
+\left|\frac{d\chi_i}{d\beta}\right|,
+\qquad 0&lt;\beta&lt;\pi.
+\]</span></p>
+<p>La suma se restringe a las ramas físicamente accesibles. Para masas iguales, <span class="math inline">\(D_{\mathrm{lab}}(\beta)=4\cos\beta\,D(2\beta)\)</span> en <span class="math inline">\(0&lt;\beta&lt;\pi/2\)</span>. En un extremo donde la derivada angular se anula, la densidad puede divergir aunque la sección integrada sobre una ventana sea finita. Los conteos experimentales involucran justamente esas ventanas, con sus coberturas y eficiencias.</p>
+<figure id="fig-fispm-r20261021-17-7" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/dispersion_ramas.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="../../assets/books/fispm/r20261021/dispersion_ramas.svg" alt="Ramas del ángulo de laboratorio" class="fpm-v04-figure img-fluid figure-img" width="900" height="660" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 17.7.</em> El ángulo de laboratorio puede corresponder a dos desviaciones relativas distintas cuando el proyectil es más pesado que el blanco. La energía final del proyectil permite distinguirlas.</p>
+</figcaption>
+</figure>
+<p>La inferencia física reúne así la preparación, la ley angular, el cambio de variables y el modelo de detector. Una misma distribución de magnitudes puede conservar ambigüedades: el signo de <span class="math inline">\(\alpha\)</span>, una normalización de blancos desconocida o dos ramas que el detector angular no separa. Medir otra magnitud, variar la energía o precisar el rango de validez permite decidir qué parte de la interacción ha sido realmente identificada.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Los parámetros numéricos son ideales y se expresan en SI. Salvo indicación contraria, los ángulos pertenecen al movimiento relativo, el haz es uniforme, se acepta todo el azimut y la interacción es <span class="math inline">\(U=\alpha/r\)</span>. Los conteos suponen una lámina diluida y encuentros múltiples despreciables en la aceptación indicada. Para cálculos gravitatorios use <span class="math inline">\(G=6{,}67\times10^{-11}\,\mathrm{m^3/(kg\,s^2)}\)</span>.</p>
+<section id="ejercicio-17-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-1">1. Traducir la preparación a conservaciones</h3>
+<p>Para <span class="math inline">\(m_r=1\,\mathrm{kg}\)</span>, <span class="math inline">\(v_\infty=2\,\mathrm{m/s}\)</span>, <span class="math inline">\(\alpha=4\,\mathrm{J\,m}\)</span> y <span class="math inline">\(b=\sqrt3\,\mathrm m\)</span>, calcule <span class="math inline">\(E,L,a_*,r_{\min}\)</span> y <span class="math inline">\(\chi\)</span>. Indique la dirección del momento angular si la entrada pasa por encima del centro.</p>
+</section>
+<section id="ejercicio-17-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-2">2. Una desviación que cambia con la preparación</h3>
+<p>Con <span class="math inline">\(a_*=1\,\mathrm m\)</span>, calcule <span class="math inline">\(\chi\)</span> para <span class="math inline">\(b=0{,}5,1,\sqrt3,3\,\mathrm m\)</span>. Determine qué intervalo de parámetros produce <span class="math inline">\(\chi\ge\pi/2\)</span> y describa los límites de la relación angular.</p>
+</section>
+<section id="ejercicio-17-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-3">3. Atracción y repulsión con el mismo giro</h3>
+<p>Cambie <span class="math inline">\(\alpha=4\,\mathrm{J\,m}\)</span> por <span class="math inline">\(-4\,\mathrm{J\,m}\)</span> en el ejercicio 1. Compare las desviaciones orientadas y las distancias mínimas. Explique por qué una distribución que integra el azimut puede perder la información sobre el signo.</p>
+</section>
+<section id="ejercicio-17-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-4">4. Inferir el coeficiente de interacción</h3>
+<p>Se prepara <span class="math inline">\(b=2\,\mathrm m\)</span>, <span class="math inline">\(m_r=0{,}5\,\mathrm{kg}\)</span> y <span class="math inline">\(v_\infty=4\,\mathrm{m/s}\)</span>. La desviación es <span class="math inline">\(\chi=60^\circ\)</span>. Obtenga <span class="math inline">\(|\alpha|\)</span> y diga qué medición adicional permitiría conocer su signo para una trayectoria cuya preparación transversal es conocida.</p>
+</section>
+<section id="ejercicio-17-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-5">5. Cambiar energía sin cambiar el blanco</h3>
+<p>Para el mismo <span class="math inline">\(\alpha\)</span> y <span class="math inline">\(m_r\)</span>, se duplica <span class="math inline">\(E\)</span>. Determine cómo cambian <span class="math inline">\(a_*\)</span>, la sección diferencial a un ángulo fijo y la sección integrada sobre una ventana angular fija. Compare con el cambio producido al duplicar <span class="math inline">\(v_\infty\)</span>.</p>
+</section>
+<section id="ejercicio-17-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-6">6. Integrar una aceptación completa en azimut</h3>
+<p>Con <span class="math inline">\(a_*=1\,\mathrm m\)</span>, calcule las secciones eficaces para <span class="math inline">\(\chi\ge60^\circ\)</span> y para <span class="math inline">\(60^\circ\le\chi\le90^\circ\)</span>. Reobtenga la segunda mediante las áreas de las coronas del plano de impacto.</p>
+</section>
+<section id="ejercicio-17-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-7">7. Del área a un conteo esperado</h3>
+<p>Un haz de <span class="math inline">\(N_{\mathrm{inc}}=2{,}00\times10^6\)</span> partículas atraviesa una lámina con <span class="math inline">\(n_s=2{,}00\times10^{-5}\,\mathrm{m^{-2}}\)</span>. Para <span class="math inline">\(a_*=1\,\mathrm m\)</span>, un detector acepta <span class="math inline">\(30^\circ\le\chi\le60^\circ\)</span>, todo el azimut y tiene eficiencia uniforme <span class="math inline">\(\eta=0{,}75\)</span>. Halle el conteo esperado y la probabilidad registrada aproximada por proyectil.</p>
+</section>
+<section id="ejercicio-17-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-8">8. Propagar una cota angular</h3>
+<p>Con <span class="math inline">\(b=1\,\mathrm m\)</span>, <span class="math inline">\(m_r=1\,\mathrm{kg}\)</span> y <span class="math inline">\(v_\infty=2\,\mathrm{m/s}\)</span> exactos, se acota <span class="math inline">\(\chi\in[58^\circ,62^\circ]\)</span>. Determine un intervalo garantizado para <span class="math inline">\(|\alpha|\)</span> y explique la monotonía utilizada. Considere por separado la información sobre el signo.</p>
+</section>
+<section id="ejercicio-17-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-9">9. Una energía de laboratorio que no es la relativa</h3>
+<p>Un proyectil de masa <span class="math inline">\(m_p=2\,\mathrm{kg}\)</span> llega con rapidez <span class="math inline">\(3\,\mathrm{m/s}\)</span> a un blanco inicialmente en reposo de masa <span class="math inline">\(m_t=1\,\mathrm{kg}\)</span>. Calcule <span class="math inline">\(E_{\mathrm{lab}},E,m_r\)</span>. Para <span class="math inline">\(\alpha=6\,\mathrm{J\,m}\)</span> y <span class="math inline">\(b=1\,\mathrm m\)</span>, compare la desviación relativa correcta con la que resultaría de sustituir indebidamente <span class="math inline">\(E_{\mathrm{lab}}\)</span> por <span class="math inline">\(E\)</span>.</p>
+</section>
+<section id="ejercicio-17-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-10">10. Estimar el impulso en una trayectoria casi recta</h3>
+<p>Para repulsión débil, aproxime la trayectoria por <span class="math inline">\((x,y)=(v_\infty t,b)\)</span> e integre la componente transversal de la fuerza <span class="math inline">\(\alpha b/[(v_\infty t)^2+b^2]^{3/2}\)</span>. Compare el impulso obtenido con la componente transversal exacta del cambio de momento relativo. Evalúe su error relativo cuando <span class="math inline">\(a_*/b=0{,}05\)</span>, usando el valor exacto como referencia.</p>
+</section>
+<section id="ejercicio-17-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-11">11. Cortar un haz de radio finito</h3>
+<p>Un haz ocupa uniformemente el disco <span class="math inline">\(0\le b\le B\)</span>, con <span class="math inline">\(B=4a_*\)</span>. Para una interacción repulsiva, determine el menor ángulo de salida y la sección eficaz total correspondiente a ese disco. Obtenga una densidad de probabilidad angular normalizada respecto de <span class="math inline">\(d\chi\)</span>.</p>
+</section>
+<section id="ejercicio-17-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-12">12. Comparar con una esfera rígida</h3>
+<p>Considere un blanco esférico inmóvil de radio <span class="math inline">\(R\)</span>, con reflexión especular elástica: la componente normal de la velocidad se invierte y la tangencial se conserva. Para <span class="math inline">\(0&lt;b&lt;R\)</span>, derive <span class="math inline">\(b=R\cos(\chi/2)\)</span> y demuestre que <span class="math inline">\(D(\chi)=R^2/4\)</span>. Calcule la sección total de encuentros que chocan con la esfera. Las trayectorias con <span class="math inline">\(b&gt;R\)</span> siguen rectas.</p>
+</section>
+<section id="ejercicio-17-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-13">13. Captura por atracción gravitatoria</h3>
+<p>Una esfera inmóvil de radio <span class="math inline">\(R\)</span> y masa <span class="math inline">\(M\)</span> absorbe toda partícula de prueba que llega a su superficie. Fuera de ella, <span class="math inline">\(U=-GMm/r\)</span>. Derive la sección de captura para partículas incidentes de rapidez <span class="math inline">\(v_\infty\)</span>. Evalúela para <span class="math inline">\(R=1\,\mathrm m\)</span>, <span class="math inline">\(GM=2\,\mathrm{m^3/s^2}\)</span> y <span class="math inline">\(v_\infty=2\,\mathrm{m/s}\)</span>. Declare qué cambia si la masa incidente deja de ser despreciable.</p>
+</section>
+<section id="ejercicio-17-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-14">14. Llegar a una superficie repulsiva</h3>
+<p>Un centro tiene <span class="math inline">\(U=\alpha/r\)</span>, <span class="math inline">\(\alpha=4\,\mathrm{J\,m}&gt;0\)</span>, y una superficie absorbente de radio <span class="math inline">\(R=1\,\mathrm m\)</span>. Para un parámetro fijo <span class="math inline">\(b=0{,}5\,\mathrm m\)</span>, determine la energía relativa mínima para alcanzar la superficie. Obtenga la sección de acceso a esa superficie como función de <span class="math inline">\(E\)</span> y explique qué ocurre si <span class="math inline">\(b\ge R\)</span>.</p>
+</section>
+<section id="ejercicio-17-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-15">15. Sumar dos ramas de preparación</h3>
+<p>Se da una ley angular idealizada, sin asignarle un potencial,</p>
+<p><span class="math display">\[
+\chi(b)=4\chi_m\frac bB\left(1-\frac bB\right),
+\qquad 0\le b\le B,\qquad \chi_m=\frac\pi3.
+\]</span></p>
+<p>Halle sus dos ramas inversas y la densidad <span class="math inline">\(D(\chi)\)</span> para <span class="math inline">\(0&lt;\chi&lt;\chi_m\)</span>. Examine el comportamiento cerca del máximo angular y compruebe que la sección integrada es <span class="math inline">\(\pi B^2\)</span>.</p>
+</section>
+<section id="ejercicio-17-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-16">16. Lo que la distribución identifica</h3>
+<p>Se conoce <span class="math inline">\(D(90^\circ)=9\,\mathrm{m^2/sr}\)</span>, <span class="math inline">\(m_r=1\,\mathrm{kg}\)</span> y <span class="math inline">\(v_\infty=2\,\mathrm{m/s}\)</span>. Determine <span class="math inline">\(|\alpha|\)</span>. Explique qué ambigüedad queda respecto de su signo y qué ocurre con la identificación de su módulo si sólo se conocen conteos y la densidad areal de blancos es desconocida.</p>
+</section>
+<section id="ejercicio-17-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-17">17. Reconstruir un encuentro con retroceso</h3>
+<p>Un proyectil de masa <span class="math inline">\(1\,\mathrm{kg}\)</span> y rapidez incidente <span class="math inline">\(3\,\mathrm{m/s}\)</span> encuentra un blanco de masa <span class="math inline">\(2\,\mathrm{kg}\)</span> inicialmente en reposo. Para una velocidad relativa saliente con <span class="math inline">\(\chi=120^\circ\)</span> y componente transversal positiva, calcule ambas velocidades de laboratorio, el ángulo del proyectil y las energías cinéticas finales. Compruebe el momento y la energía totales.</p>
+</section>
+<section id="ejercicio-17-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-18">18. Transformar la densidad para masas iguales</h3>
+<p>Para <span class="math inline">\(m_p=m_t\)</span> y <span class="math inline">\(a_*=1\,\mathrm m\)</span>, obtenga <span class="math inline">\(D_{\mathrm{lab}}(\beta)\)</span> en el hemisferio delantero. Evalúela en <span class="math inline">\(\beta=60^\circ\)</span> e indique la fracción de energía cinética incidente que conserva el proyectil a ese ángulo. Trate el extremo donde se detiene.</p>
+</section>
+<section id="ejercicio-17-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-19">19. Dos encuentros vistos bajo el mismo ángulo</h3>
+<p>Para <span class="math inline">\(q=m_p/m_t=2\)</span>, calcule el ángulo máximo del proyectil en el laboratorio. Encuentre las dos desviaciones relativas que producen <span class="math inline">\(\beta=\arctan(1/2)\)</span>. Determine las dos razones entre rapidez final e inicial del proyectil y explique cómo una medición de energía separa las ramas.</p>
+</section>
+<section id="ejercicio-17-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-20">20. Controlar la aproximación de ángulo pequeño</h3>
+<p>Con <span class="math inline">\(x=a_*/b&gt;0\)</span>, la desviación exacta es <span class="math inline">\(\chi=2\arctan x\)</span>. Demuestre</p>
+<p><span class="math display">\[
+0\le2x-\chi\le\frac{2x^3}{3}.
+\]</span></p>
+<p>Obtenga una cota del error relativo de aproximar <span class="math inline">\(\chi\)</span> por <span class="math inline">\(2x\)</span>, referido al ángulo exacto, válida para todo <span class="math inline">\(x&gt;0\)</span>. Evalúe la garantía en <span class="math inline">\(x=0{,}05\)</span> e identifique el parámetro que debe mantenerse pequeño.</p>
+</section>
+<section id="ejercicio-17-21" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-17-21">21. Una ventana que reúne dos ramas</h3>
+<p>Un proyectil tiene el doble de masa que un blanco inicialmente en reposo. La interacción repulsiva es <span class="math inline">\(U=\alpha/r\)</span> y la preparación relativa satisface <span class="math inline">\(a_* =\alpha/(2E)=1\,\mathrm m\)</span>. Un detector acepta todo el azimut y los ángulos de laboratorio</p>
+<p><span class="math display">\[
+\arctan(1/2)\leq\beta\leq\pi/6.
+\]</span></p>
+<p>Determine las dos bandas de desviación relativa que contribuyen, sus intervalos de parámetro de impacto y la sección eficaz total de la ventana. Compare con el resultado de conservar sólo una rama. Examine el comportamiento de la densidad de laboratorio al aproximarse al ángulo máximo y explique por qué el conteo de la ventana permanece finito. Suponga haz uniforme en todo el plano de impacto relevante y las hipótesis de un único encuentro del capítulo.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-17-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-1">1. Traducir la preparación a conservaciones</h3>
+<p>La energía relativa es <span class="math inline">\(E=m_rv_\infty^2/2=2\,\mathrm J\)</span> y el módulo angular es <span class="math inline">\(L=m_rbv_\infty=2\sqrt3\,\mathrm{kg\,m^2/s}\)</span>. El producto vectorial de una posición incidente con componente transversal positiva y una velocidad hacia <span class="math inline">\(+x\)</span> apunta hacia <span class="math inline">\(-z\)</span>. La longitud de interacción es <span class="math inline">\(a_*=|\alpha|/(2E)=1\,\mathrm m\)</span>.</p>
+<p>La relación angular da <span class="math inline">\(\chi=2\arctan(1/\sqrt3)=\pi/3\)</span>. Para la repulsión, <span class="math inline">\(r_{\min}=a_*+\sqrt{a_*^2+b^2}=3\,\mathrm m\)</span>. La distancia mínima supera el parámetro de impacto: la fuerza aleja la trayectoria del centro antes de que llegue a la región donde la recta incidente habría pasado más cerca.</p>
+</section>
+<section id="solucion-17-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-2">2. Una desviación que cambia con la preparación</h3>
+<p>Los cuatro valores son <span class="math inline">\(2\arctan2\approx126{,}87^\circ\)</span>, <span class="math inline">\(90^\circ\)</span>, <span class="math inline">\(60^\circ\)</span> y <span class="math inline">\(2\arctan(1/3)\approx36{,}87^\circ\)</span>. La función decrece estrictamente con <span class="math inline">\(b&gt;0\)</span>. Para <span class="math inline">\(\chi\ge\pi/2\)</span> se requiere <span class="math inline">\(a_*/b\ge1\)</span>, es decir, <span class="math inline">\(0&lt;b\le1\,\mathrm m\)</span> dentro del dominio no radial.</p>
+<p>Cuando <span class="math inline">\(b\to\infty\)</span>, la desviación tiende a cero; cuando <span class="math inline">\(b\to0^+\)</span>, tiende a <span class="math inline">\(\pi\)</span>. En repulsión el límite frontal se realiza como un retorno radial regular a distancia positiva. En atracción puntual habría que examinar la colisión central por separado. Esas diferencias físicas permanecen aunque los límites de la magnitud angular coincidan.</p>
+</section>
+<section id="solucion-17-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-3">3. Atracción y repulsión con el mismo giro</h3>
+<p>El módulo <span class="math inline">\(|\alpha|\)</span> conserva <span class="math inline">\(a_*=1\,\mathrm m\)</span> y, con ello, <span class="math inline">\(\chi=60^\circ\)</span>. La desviación orientada pasa de <span class="math inline">\(+60^\circ\)</span> a <span class="math inline">\(-60^\circ\)</span>. El radio mínimo atractivo es <span class="math inline">\(-1+\sqrt{1+3}=1\,\mathrm m\)</span>, frente a <span class="math inline">\(3\,\mathrm m\)</span> en la repulsión.</p>
+<p>En un haz axialmente simétrico, cada preparación puede rotarse alrededor del eje incidente. Cambiar el signo de la desviación transversal reorganiza sus azimuts, mientras conserva el número de eventos en cada valor de <span class="math inline">\(\chi\)</span>. Por ello la densidad angular integrada sobre azimut depende de <span class="math inline">\(\alpha^2\)</span>. Una trayectoria preparada con desplazamiento transversal conocido sí permite usar el lado de salida para distinguir los signos.</p>
+</section>
+<section id="solucion-17-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-4">4. Inferir el coeficiente de interacción</h3>
+<p>Despejamos primero la longitud: <span class="math inline">\(a_*=b\tan(\chi/2)=2/\sqrt3\,\mathrm m\)</span>. Como <span class="math inline">\(m_rv_\infty^2=8\,\mathrm J\)</span>, resulta</p>
+<p><span class="math display">\[
+|\alpha|=m_rv_\infty^2b\tan\frac\chi2
+=\frac{16}{\sqrt3}\,\mathrm{J\,m}
+\approx9{,}238\,\mathrm{J\,m}.
+\]</span></p>
+<p>El lado de salida respecto del desplazamiento transversal incidente distingue atracción y repulsión en este modelo. El valor angular sin esa orientación sólo determina el módulo. La fórmula usa una energía relativa reconstruida y un parámetro de impacto físico, condiciones que forman parte de la inferencia.</p>
+</section>
+<section id="solucion-17-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-5">5. Cambiar energía sin cambiar el blanco</h3>
+<p>Con <span class="math inline">\(\alpha\)</span> fijo, <span class="math inline">\(a_*=|\alpha|/(2E)\)</span> se reduce a la mitad cuando se duplica <span class="math inline">\(E\)</span>. Tanto <span class="math inline">\(D(\chi)\)</span> como una sección de ventana fija son proporcionales a <span class="math inline">\(a_*^2\)</span>, así que se reducen a un cuarto. La comparación mantiene exactamente los mismos límites angulares.</p>
+<p>Si se duplica <span class="math inline">\(v_\infty\)</span> manteniendo <span class="math inline">\(m_r\)</span>, la energía se multiplica por cuatro, <span class="math inline">\(a_*\)</span> se divide por cuatro y ambas secciones se dividen por dieciséis. Confundir energía con rapidez llevaría a una dependencia incorrecta. En particular, la ley inversa del radio predice <span class="math inline">\(D\propto v_\infty^{-4}\)</span> para un ángulo fijo y parámetros restantes constantes.</p>
+</section>
+<section id="solucion-17-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-6">6. Integrar una aceptación completa en azimut</h3>
+<p>Para <span class="math inline">\(\chi\ge60^\circ\)</span>, el máximo parámetro es <span class="math inline">\(b=a_*\cot30^\circ=\sqrt3\,\mathrm m\)</span>, y la sección vale <span class="math inline">\(3\pi\,\mathrm{m^2}\)</span>. La ventana entre <span class="math inline">\(60^\circ\)</span> y <span class="math inline">\(90^\circ\)</span> corresponde a <span class="math inline">\(1\le b\le\sqrt3\)</span> metros; su área es</p>
+<p><span class="math display">\[
+\pi\big[(\sqrt3\,\mathrm m)^2-(1\,\mathrm m)^2\big]
+=2\pi\,\mathrm{m^2}.
+\]</span></p>
+<p>Integrar la densidad con <span class="math inline">\(2\pi\sin\chi\,d\chi\)</span> da el mismo resultado. La corona permite comprobar el jacobiano sin depender de una segunda manipulación trigonométrica. La unidad final es área, pues el ángulo sólido ya se integró.</p>
+</section>
+<section id="solucion-17-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-7">7. Del área a un conteo esperado</h3>
+<p>La sección aceptada es <span class="math inline">\(\pi a_*^2[\cot^2(15^\circ)-\cot^2(30^\circ)]\)</span>. Con <span class="math inline">\(\cot15^\circ=2+\sqrt3\)</span>, el corchete vale <span class="math inline">\(4+4\sqrt3\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\sigma_A=4\pi(1+\sqrt3)\,\mathrm{m^2}
+\approx34{,}332\,\mathrm{m^2}.
+\]</span></p>
+<p>El producto <span class="math inline">\(N_{\mathrm{inc}}n_s\eta\)</span> vale <span class="math inline">\(30\,\mathrm{m^{-2}}\)</span>. El conteo esperado es <span class="math inline">\(120\pi(1+\sqrt3)\approx1030\)</span> eventos, y la probabilidad registrada aproximada por proyectil es <span class="math inline">\(n_s\eta\sigma_A\approx5{,}150\times10^{-4}\)</span>. Su pequeñez es compatible con el supuesto de eventos raros dentro de la aceptación. La validez física de despreciar desviaciones acumuladas fuera de ella requiere además las condiciones de preparación declaradas.</p>
+</section>
+<section id="solucion-17-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-8">8. Propagar una cota angular</h3>
+<p>En <span class="math inline">\(0&lt;\chi&lt;\pi\)</span>, la función <span class="math inline">\(\tan(\chi/2)\)</span> crece estrictamente. Con los demás datos fijos, se obtiene</p>
+<p><span class="math display">\[
+4\tan29^\circ\le
+\frac{|\alpha|}{\mathrm{J\,m}}
+\le4\tan31^\circ.
+\]</span></p>
+<p>Un intervalo con redondeo hacia afuera es <span class="math inline">\(|\alpha|\in[2{,}217,2{,}404]\,\mathrm{J\,m}\)</span>. Las cotas se propagan evaluando extremos y no requieren una linealización. Si el signo sigue desconocido, el conjunto de valores admisibles de <span class="math inline">\(\alpha\)</span> es la unión del intervalo positivo y su reflejo negativo; llenar el espacio entre ambos incluiría coeficientes incompatibles con el dato angular.</p>
+</section>
+<section id="solucion-17-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-9">9. Una energía de laboratorio que no es la relativa</h3>
+<p>La masa reducida es <span class="math inline">\(m_r=2/3\,\mathrm{kg}\)</span>. La energía del proyectil incidente es <span class="math inline">\(E_{\mathrm{lab}}=(1/2)(2)(3^2)=9\,\mathrm J\)</span>, mientras que la relativa vale <span class="math inline">\((1/2)(2/3)(3^2)=3\,\mathrm J\)</span>. La diferencia es la energía de traslación del centro de masa, que permanece durante el encuentro.</p>
+<p>Usando la energía relativa, <span class="math inline">\(a_*=6/(2\cdot3)=1\,\mathrm m\)</span> y <span class="math inline">\(\chi=2\arctan1=90^\circ\)</span>. Si se usara indebidamente <span class="math inline">\(9\,\mathrm J\)</span>, se obtendría <span class="math inline">\(a_*=1/3\,\mathrm m\)</span> y <span class="math inline">\(\chi\approx36{,}87^\circ\)</span>. La conservación de la rapidez relativa no autoriza a identificar sus energías con las de un proyectil de masa diferente de <span class="math inline">\(m_r\)</span>.</p>
+</section>
+<section id="solucion-17-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-10">10. Estimar el impulso en una trayectoria casi recta</h3>
+<p>Con <span class="math inline">\(z=v_\infty t/b\)</span>, la integral propuesta queda</p>
+<p><span class="math display">\[
+\Delta p_y^{\mathrm{recta}}
+=\frac{\alpha}{bv_\infty}
+\int_{-\infty}^\infty\frac{dz}{(1+z^2)^{3/2}}
+=\frac{2\alpha}{bv_\infty}.
+\]</span></p>
+<p>Una primitiva del integrando es <span class="math inline">\(z/\sqrt{1+z^2}\)</span>; sus límites son <span class="math inline">\(-1\)</span> y <span class="math inline">\(1\)</span>. Para el resultado exacto, la velocidad saliente tiene componente <span class="math inline">\(v_\infty\sin\chi\)</span>, así que <span class="math inline">\(\Delta p_y=m_rv_\infty\sin\chi\)</span>. Al usar <span class="math inline">\(\chi=2\arctan x\)</span>, con <span class="math inline">\(x=a_*/b\)</span>, obtenemos</p>
+<p><span class="math display">\[
+\Delta p_y=\frac{2\alpha}{bv_\infty}\frac{1}{1+x^2}.
+\]</span></p>
+<p>El error relativo del impulso rectilíneo, referido al exacto, es <span class="math inline">\(x^2\)</span>. Para <span class="math inline">\(x=0{,}05\)</span>, vale <span class="math inline">\(0{,}0025\)</span>, esto es, <span class="math inline">\(0{,}25\%\)</span>. La componente longitudinal exacta también cambia; es de orden <span class="math inline">\(x^2\)</span> en unidades del momento incidente, mientras la transversal comienza en orden <span class="math inline">\(x\)</span>. La aproximación conserva el término transversal dominante bajo ese control.</p>
+</section>
+<section id="solucion-17-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-11">11. Cortar un haz de radio finito</h3>
+<p>La desviación decrece con <span class="math inline">\(b\)</span>, por lo que el ángulo mínimo es <span class="math inline">\(\chi_{\min}=2\arctan(a_*/B)=2\arctan(1/4)\approx28{,}07^\circ\)</span>. El disco contiene sección <span class="math inline">\(\pi B^2=16\pi a_*^2\)</span>. Todos sus encuentros repulsivos tienen una dirección saliente; el punto frontal no altera el área.</p>
+<p>La densidad respecto de <span class="math inline">\(d\chi\)</span> se obtiene dividiendo la sección de una banda por el área total:</p>
+<p><span class="math display">\[
+p(\chi)=\frac{2\pi\sin\chi\,D(\chi)}{\pi B^2}
+=\frac{a_*^2\sin\chi}{2B^2\sin^4(\chi/2)},
+\qquad \chi_{\min}\le\chi\le\pi.
+\]</span></p>
+<p>Fuera de ese intervalo vale cero. Su integral es uno porque la sección angular integrada es <span class="math inline">\(\pi B^2\)</span>. El corte en el plano de preparación elimina las desviaciones arbitrariamente pequeñas y vuelve finito el conjunto de encuentros considerado.</p>
+</section>
+<section id="solucion-17-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-12">12. Comparar con una esfera rígida</h3>
+<p>La normal exterior en el primer contacto es <span class="math inline">\(\mathbf n=(-\sqrt{R^2-b^2},b)/R\)</span>. La ley de reflexión es <span class="math inline">\(\mathbf v_f=\mathbf v_i-2(\mathbf v_i\cdot\mathbf n)\mathbf n\)</span>. Para <span class="math inline">\(\mathbf v_i=v\mathbf e_x\)</span> se obtiene <span class="math inline">\(\cos\chi=1-2n_x^2=2b^2/R^2-1\)</span>. Así <span class="math inline">\(b=R\cos(\chi/2)\)</span> para <span class="math inline">\(0&lt;\chi&lt;\pi\)</span>.</p>
+<p>Su derivada tiene módulo <span class="math inline">\((R/2)\sin(\chi/2)\)</span>; el cambio de variables da</p>
+<p><span class="math display">\[
+D(\chi)=\frac{R\cos(\chi/2)}{\sin\chi}
+\frac R2\sin(\chi/2)=\frac{R^2}{4}.
+\]</span></p>
+<p>Integrar sobre la esfera de direcciones produce <span class="math inline">\(4\pi(R^2/4)=\pi R^2\)</span>, igual al disco de preparaciones que golpea el blanco. Las preparaciones exteriores continúan hacia adelante y no pertenecen a esa sección de choque. El modelo de contacto usa una regla de reflexión ideal; su fuerza impulsiva no satisface las hipótesis suaves del resultado de cuadratura radial y se ha resuelto directamente.</p>
+</section>
+<section id="solucion-17-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-13">13. Captura por atracción gravitatoria</h3>
+<p>La llegada a la superficie requiere que la raíz radial atractiva no quede por fuera de <span class="math inline">\(R\)</span>. Con <span class="math inline">\(a_*=GM/v_\infty^2\)</span>, la condición <span class="math inline">\(-a_*+\sqrt{a_*^2+b^2}\le R\)</span> equivale a</p>
+<p><span class="math display">\[
+b^2\le R^2+2a_*R.
+\]</span></p>
+<p>La sección de captura es</p>
+<p><span class="math display">\[
+\sigma_{\mathrm{cap}}=\pi R^2
+\left(1+\frac{2GM}{Rv_\infty^2}\right).
+\]</span></p>
+<p>El factor adicional describe el enfoque gravitatorio: trayectorias cuya preparación pasaría fuera del disco geométrico llegan a la superficie por atracción. Para los datos dados, <span class="math inline">\(a_*=1/2\,\mathrm m\)</span> y <span class="math inline">\(\sigma_{\mathrm{cap}}=2\pi\,\mathrm{m^2}\)</span>. La absorción es una condición de frontera; la energía mecánica conservada describe el tramo exterior anterior al impacto. Si la masa incidente es apreciable, se usa el movimiento relativo con parámetro gravitatorio <span class="math inline">\(G(M+m)\)</span> y radio de contacto apropiado, y se reconstruye el retroceso del blanco.</p>
+</section>
+<section id="solucion-17-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-14">14. Llegar a una superficie repulsiva</h3>
+<p>La energía radial en <span class="math inline">\(R\)</span> exige <span class="math inline">\(Q(R)=1-\alpha/(ER)-b^2/R^2\ge0\)</span>. Para <span class="math inline">\(b&lt;R\)</span>, esto equivale a</p>
+<p><span class="math display">\[
+E\ge\frac{\alpha R}{R^2-b^2}.
+\]</span></p>
+<p>Con <span class="math inline">\(R=1\,\mathrm m\)</span>, <span class="math inline">\(b=0{,}5\,\mathrm m\)</span> y <span class="math inline">\(\alpha=4\,\mathrm{J\,m}\)</span>, la energía mínima es <span class="math inline">\(16/3\,\mathrm J\)</span>. A igualdad se llega con velocidad radial nula; la superficie absorbente determina el destino posterior.</p>
+<p>A energía fija, el disco de acceso tiene <span class="math inline">\(b_{\max}^2=R^2-\alpha R/E\)</span>, siempre que <span class="math inline">\(E\ge\alpha/R\)</span>. Por ello <span class="math inline">\(\sigma_{\mathrm{acc}}=\pi R^2\max(0,1-\alpha/(ER))\)</span>. En el umbral sólo el encuentro frontal puede alcanzar la superficie y su sección es cero. Si <span class="math inline">\(b\ge R\)</span>, la repulsión mantiene el radio mínimo estrictamente mayor que <span class="math inline">\(b\)</span> a toda energía finita, por lo que no se llega a la superficie.</p>
+</section>
+<section id="solucion-17-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-15">15. Sumar dos ramas de preparación</h3>
+<p>Resolver la cuadrática da</p>
+<p><span class="math display">\[
+b_\pm=\frac B2\left(1\pm\sqrt{1-\frac\chi{\chi_m}}\right),
+\qquad
+\left|\frac{db_\pm}{d\chi}\right|
+=\frac{B}{4\chi_m\sqrt{1-\chi/\chi_m}}.
+\]</span></p>
+<p>Las ramas tienen suma <span class="math inline">\(B\)</span>. Su contribución conjunta es</p>
+<p><span class="math display">\[
+D(\chi)=\frac{B^2}{4\chi_m\sin\chi
+\sqrt{1-\chi/\chi_m}},
+\qquad 0&lt;\chi&lt;\chi_m.
+\]</span></p>
+<p>Al aproximarse al máximo angular, la densidad crece como <span class="math inline">\((\chi_m-\chi)^{-1/2}\)</span>, pues <span class="math inline">\(\sin\chi_m&gt;0\)</span>. Esa divergencia es integrable: multiplicar por <span class="math inline">\(2\pi\sin\chi\)</span> y efectuar <span class="math inline">\(z=1-\chi/\chi_m\)</span> da</p>
+<p><span class="math display">\[
+\sigma=\frac{\pi B^2}{2}\int_0^1z^{-1/2}\,dz=\pi B^2.
+\]</span></p>
+<p>El factor singular indica que una banda angular pequeña recoge preparaciones de ambos lados del máximo. El ejercicio usa una ley angular prescrita y no demuestra que un potencial central particular la produzca.</p>
+</section>
+<section id="solucion-17-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-16">16. Lo que la distribución identifica</h3>
+<p>En <span class="math inline">\(\chi=90^\circ\)</span>, se cumple <span class="math inline">\(\sin^4(\chi/2)=1/4\)</span>, así que <span class="math inline">\(D(90^\circ)=a_*^2\)</span>. El dato da <span class="math inline">\(a_*=3\,\mathrm m\)</span> y <span class="math inline">\(|\alpha|=m_rv_\infty^2a_*=12\,\mathrm{J\,m}\)</span>. La distribución de magnitudes angulares deja posibles ambos signos; el seguimiento orientado de una preparación conocida o una medición de distancia mínima puede separarlos.</p>
+<p>Si sólo se conocen conteos, con eficiencia y fluencia calibradas pero <span class="math inline">\(n_s\)</span> desconocido, la normalización es proporcional a <span class="math inline">\(n_s\alpha^2\)</span>. Multiplicar <span class="math inline">\(|\alpha|\)</span> por un factor <span class="math inline">\(c&gt;0\)</span> y dividir <span class="math inline">\(n_s\)</span> por <span class="math inline">\(c^2\)</span> deja esos conteos invariantes. La forma angular comprueba una dependencia del modelo, pero no rompe por sí sola esta degeneración de parámetros. Una medición independiente de <span class="math inline">\(n_s\)</span> permite recuperar el módulo.</p>
+</section>
+<section id="solucion-17-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-17">17. Reconstruir un encuentro con retroceso</h3>
+<p>El centro de masa se mueve con <span class="math inline">\((1,0)\,\mathrm{m/s}\)</span>. La velocidad relativa saliente es <span class="math inline">\(3(-1/2,\sqrt3/2)\,\mathrm{m/s}\)</span>. Al reconstruir,</p>
+<p><span class="math display">\[
+\mathbf v_{p,f}=(0,\sqrt3)\,\mathrm{m/s},
+\qquad
+\mathbf v_{t,f}=(3/2,-\sqrt3/2)\,\mathrm{m/s}.
+\]</span></p>
+<p>El proyectil sale a <span class="math inline">\(\beta=90^\circ\)</span>. Su energía cinética final es <span class="math inline">\(3/2\,\mathrm J\)</span> y la del blanco <span class="math inline">\(3\,\mathrm J\)</span>; suman <span class="math inline">\(9/2\,\mathrm J\)</span>, igual a la energía inicial. El momento total final es <span class="math inline">\((0,\sqrt3)+2(3/2,-\sqrt3/2)=(3,0)\,\mathrm{kg\,m/s}\)</span>, que también coincide con el inicial. El ángulo relativo de <span class="math inline">\(120^\circ\)</span> y el de laboratorio de <span class="math inline">\(90^\circ\)</span> describen velocidades diferentes dentro del mismo encuentro.</p>
+</section>
+<section id="solucion-17-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-18">18. Transformar la densidad para masas iguales</h3>
+<p>La relación es <span class="math inline">\(\chi=2\beta\)</span> para <span class="math inline">\(0&lt;\beta&lt;\pi/2\)</span>. El jacobiano angular da</p>
+<p><span class="math display">\[
+D_{\mathrm{lab}}(\beta)=4\cos\beta\,D(2\beta)
+=\frac{a_*^2\cos\beta}{\sin^4\beta}.
+\]</span></p>
+<p>En <span class="math inline">\(\beta=60^\circ\)</span>, resulta <span class="math inline">\(D_{\mathrm{lab}}=8/9\,\mathrm{m^2/sr}\)</span>. La rapidez del proyectil es <span class="math inline">\(v\cos\beta\)</span>, de modo que conserva una fracción <span class="math inline">\(\cos^2\beta=1/4\)</span> de su energía cinética incidente; el resto queda en el blanco.</p>
+<p>Al tender <span class="math inline">\(\chi\)</span> a <span class="math inline">\(\pi\)</span>, el proyectil se detiene y su dirección deja de estar definida en el extremo exacto. La fórmula se usa en el intervalo abierto y su límite cuando <span class="math inline">\(\beta\to\pi/2\)</span> es cero. El encuentro frontal corresponde a un punto del plano de impacto, de área nula, por lo que no añade una masa angular finita de eventos.</p>
+</section>
+<section id="solucion-17-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-19">19. Dos encuentros vistos bajo el mismo ángulo</h3>
+<p>El máximo es <span class="math inline">\(\beta_{\max}=\arcsin(1/2)=30^\circ\)</span>. Para el ángulo dado, <span class="math inline">\(\sin\beta=1/\sqrt5\)</span> y <span class="math inline">\(\cos\beta=2/\sqrt5\)</span>. La relación de direcciones puede escribirse</p>
+<p><span class="math display">\[
+\sin(\chi-\beta)=q\sin\beta=\frac2{\sqrt5}.
+\]</span></p>
+<p>Una solución es <span class="math inline">\(\chi_1=90^\circ\)</span>. La segunda tiene <span class="math inline">\(\cos\chi_2=-4/5\)</span>, <span class="math inline">\(\sin\chi_2=3/5\)</span>, es decir, <span class="math inline">\(\chi_2\approx143{,}13^\circ\)</span>. En ambas, el vector <span class="math inline">\(q+\cos\chi,\sin\chi\)</span> apunta al primer cuadrante y tiene tangente <span class="math inline">\(1/2\)</span>, de modo que no se introdujo una dirección opuesta al despejar el seno.</p>
+<p>La razón de rapideces es <span class="math inline">\(\sqrt{q^2+1+2q\cos\chi}/(q+1)\)</span>. Para la primera rama vale <span class="math inline">\(\sqrt5/3\)</span> y para la segunda <span class="math inline">\(1/\sqrt5\)</span>. Las fracciones de energía son <span class="math inline">\(5/9\)</span> y <span class="math inline">\(1/5\)</span>. Un detector de energía puede distinguir eventos con el mismo ángulo de laboratorio; un conteo puramente angular debe sumar ambas ramas con sus jacobianos.</p>
+</section>
+<section id="solucion-17-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-20">20. Controlar la aproximación de ángulo pequeño</h3>
+<p>La diferencia se expresa mediante una integral de signo conocido:</p>
+<p><span class="math display">\[
+x-\arctan x=\int_0^x\frac{t^2}{1+t^2}\,dt.
+\]</span></p>
+<p>Para <span class="math inline">\(0\le t\le x\)</span>, el integrando está entre cero y <span class="math inline">\(t^2\)</span>. Integrar esas cotas y multiplicar por dos da <span class="math inline">\(0\le2x-\chi\le2x^3/3\)</span>. Para convertirla en una cota relativa, necesitamos además un límite inferior del denominador exacto. Como <span class="math inline">\(1/(1+t^2)\ge1/(1+x^2)\)</span> en ese intervalo,</p>
+<p><span class="math display">\[
+\arctan x\ge\frac{x}{1+x^2},
+\qquad
+\frac{2x-\chi}{\chi}
+\le\frac{x^2(1+x^2)}3.
+\]</span></p>
+<p>En <span class="math inline">\(x=0{,}05\)</span>, la cota es <span class="math inline">\(0{,}00083542\)</span>, aproximadamente <span class="math inline">\(0{,}08355\%\)</span>. El ángulo aproximado es <span class="math inline">\(0{,}1\)</span> radianes y el exacto <span class="math inline">\(2\arctan(0{,}05)\approx0{,}0999168\)</span> radianes. El parámetro de control es <span class="math inline">\(a_*/b=|\alpha|/(m_rv_\infty^2b)\)</span>: reducirlo puede lograrse aumentando la energía o el parámetro de impacto, mientras se mantiene el régimen físico de la interacción.</p>
+</section>
+<section id="solucion-17-21" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-17-21">21. Una ventana que reúne dos ramas</h3>
+<p>La preparación fija la razón <span class="math inline">\(q=2\)</span>, por lo que el máximo angular ocurre en <span class="math inline">\(\cos\chi_*=-1/2\)</span>: <span class="math inline">\(\chi_*=2\pi/3\)</span> y <span class="math inline">\(\beta_{\max}=\pi/6\)</span>. El ejercicio 19 ya identificó las dos preimágenes del extremo inferior de esta ventana: <span class="math inline">\(\chi_1=\pi/2\)</span> y <span class="math inline">\(\chi_2=\arccos(-4/5)\)</span>, con seno positivo. Entre ambas, el ángulo de laboratorio sube hasta su máximo y vuelve a bajar. La ventana recibe las bandas <span class="math inline">\([\chi_1,\chi_*]\)</span> y <span class="math inline">\([\chi_*,\chi_2]\)</span>.</p>
+<p>Para contar los encuentros conservamos el área de preparación. La ley <span class="math inline">\(b=a_*\cot(\chi/2)\)</span> es decreciente y transforma esos límites en</p>
+<p><span class="math display">\[
+b(\chi_1)=a_*,\qquad
+b(\chi_*)=\frac{a_*}{\sqrt3},\qquad
+b(\chi_2)=\frac{a_*}{3}.
+\]</span></p>
+<p>La última igualdad utiliza <span class="math inline">\(\cot(\chi_2/2)=\sin\chi_2/(1-\cos\chi_2)=(3/5)/(9/5)=1/3\)</span>. Las dos coronas tienen áreas</p>
+<p><span class="math display">\[
+\sigma_1=\pi\left(a_*^2-\frac{a_*^2}{3}\right)
+=\frac{2\pi a_*^2}{3},\qquad
+\sigma_2=\pi\left(\frac{a_*^2}{3}-\frac{a_*^2}{9}\right)
+=\frac{2\pi a_*^2}{9}.
+\]</span></p>
+<p>Su unión es la corona entre <span class="math inline">\(a_*/3\)</span> y <span class="math inline">\(a_*\)</span>; el borde común tiene área nula. Por tanto, <span class="math inline">\(\sigma_A=8\pi a_*^2/9=8\pi/9\,\mathrm{m^2}\)</span>. Usar sólo la primera rama produciría <span class="math inline">\(2\pi/3\,\mathrm{m^2}\)</span> y omitiría la cuarta parte del área total. Conservar sólo la segunda omitiría tres cuartas partes. La eficiencia y la densidad de blancos multiplicarían la sección completa al calcular un conteo esperado.</p>
+<p>El máximo angular requiere examinar el límite de la transformación. La derivada <span class="math inline">\(d\beta/d\chi\)</span> se anula en <span class="math inline">\(\chi_*\)</span> y, al derivarla otra vez, resulta <span class="math inline">\(\beta''(\chi_*)=-1/\sqrt3\)</span>. El desarrollo local, con ángulos en radianes, es</p>
+<p><span class="math display">\[
+\beta_{\max}-\beta(\chi)
+=\frac{(\chi-\chi_*)^2}{2\sqrt3}
++o\big((\chi-\chi_*)^2\big).
+\]</span></p>
+<p>En cada rama, el valor absoluto de <span class="math inline">\(d\chi/d\beta\)</span> crece como una constante positiva por <span class="math inline">\((\beta_{\max}-\beta)^{-1/2}\)</span>. Los otros factores de la densidad, <span class="math inline">\(D(\chi)\)</span> y <span class="math inline">\(\sin\chi/\sin\beta\)</span>, tienen límites finitos y positivos allí. La densidad de laboratorio diverge con esa potencia al acercarse al máximo desde abajo. Su integral es finita porque <span class="math inline">\(\int_0^\delta s^{-1/2}\,ds=2\sqrt\delta\)</span> y <span class="math inline">\(\sin\beta\)</span> permanece acotado y positivo cerca del máximo.</p>
+<p>La corona calculada conserva exactamente esa área finita y permite evaluar la ventana sin integrar una expresión singular. Para una medición que incluya el máximo, la preparación y las ramas aportan una descripción más cómoda que el valor puntual de la densidad. Los encuentros situados exactamente en el borde angular corresponden a una circunferencia del plano de impacto y su área es cero.</p>
+<figure id="fig-fispm-r20261021-17-8" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/dispersion_ventana_doble.svg" class="lightbox" data-gallery="fispm-r20261021-c17"><img src="../../assets/books/fispm/r20261021/dispersion_ventana_doble.svg" alt="Dos ramas de la relación angular llegan a una misma ventana del laboratorio y corresponden a dos coronas adyacentes del plano de impacto." class="fpm-v04-figure img-fluid figure-img" width="518.4" height="255.6" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 17.8.</em> La ventana va de <span class="math inline">\(\arctan(1/2)\)</span> a <span class="math inline">\(30^\circ\)</span> en el laboratorio. La rama 1 ocupa la corona exterior, entre <span class="math inline">\(a_*/\sqrt3\)</span> y <span class="math inline">\(a_*\)</span>; la rama 2 ocupa la interior, entre <span class="math inline">\(a_*/3\)</span> y <span class="math inline">\(a_*/\sqrt3\)</span>. El borde discontinuo separa las preparaciones de ambas ramas. Las áreas se suman y dan <span class="math inline">\(8\pi a_*^2/9\)</span>, aunque la densidad angular crezca sin cota al aproximarse al máximo.</p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="lecturas-y-conexiones" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-conexiones">Lecturas y conexiones</h2>
+<p>Spivak, <em>Physics for Mathematicians. Mechanics I</em>, addendum 4C, relaciona la hipérbola, el parámetro de impacto y la distribución de Rutherford. La deducción presente explicita la energía relativa, conserva las ramas del cambio de variables y compara ventanas finitas con las limitaciones de una sección total idealizada. El paso al laboratorio permite reconocer cuándo una misma dirección reúne encuentros físicamente distintos.</p>
+<p>Sears y Zemansky, <em>Física universitaria</em>, volumen 1, §8.4, y Serway y Jewett, <em>Física para ciencias e ingeniería</em>, volumen 1, §§9.4–9.5, ofrecen problemas de choques elásticos y conservación del momento y la energía. Esas conservaciones controlan aquí el retroceso y la reconstrucción de velocidades; la ley de interacción aporta la información adicional que fija la desviación. La comparación entre marcos se ampliará a observadores acelerados y giratorios.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-16-orbitas-de-kepler.html">← 16. Órbitas de Kepler</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-18-marcos-acelerados-y-giratorios.html">18. Marcos acelerados y giratorios →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

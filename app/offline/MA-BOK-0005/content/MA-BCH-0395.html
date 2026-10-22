@@ -1,0 +1,996 @@
+<!DOCTYPE html><html lang="es"><head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' file: 'unsafe-inline'; style-src 'self' file: data: 'unsafe-inline'; font-src 'self' file: data:; img-src 'self' file: data:; connect-src 'none'; base-uri 'none'; form-action 'none'; worker-src blob:">
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 27 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>Sistemas abiertos y transferencia de masa – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+
+
+
+
+
+
+<meta name="quarto:offset" content="../../">
+<link href="../assets/8eb201055a4f4d43a0dc1bd6.svg" rel="icon" type="image/svg+xml">
+
+
+
+
+<script src="../assets/69098e105d990f834cff1b78.js"></script>
+<link href="../assets/5969f497d9158d7682f8219c.css" rel="stylesheet">
+<link href="../assets/4973a76eb0de3b99bc67687a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../assets/7f7cb0230277ec2bc5294f4d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+
+
+<link href="../assets/quarto-bootstrap-light.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../assets/quarto-bootstrap-dark.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  
+  <script src="../assets/mathjax-offline-speech.js"></script><script>(function(){const fontRoot=new URL("../assets/mathjax-newcm",location.href).href;window.MathJax=Object.assign(window.MathJax||{}, {loader:{paths:{"mathjax-newcm":fontRoot}},startup:{ready:function(){MathJax.startup.defaultReady();MathJax.startup.adaptor.createWorker=window.__maCreateSpeechWorker;},pageReady:window.MathJax.startup.pageReady},output:{fontPath:fontRoot},chtml:{fontURL:fontRoot+"/chtml/woff2",dynamicPrefix:fontRoot+"/chtml/dynamic"}});})();</script><script defer src="../assets/mathjax/tex-chtml.js"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../assets/87b4f5e6a115d51d92f5ea1a.css">
+<link rel="stylesheet" href="../assets/2360bb7a7cd037ebd3e65b07.css">
+<style id="ma-reader-mode-v1-style">/* Reader contract: app readerMode.ts, ma-reader-mode-v1. */
+
+#quarto-header,
+#quarto-sidebar,
+#quarto-margin-sidebar,
+.quarto-secondary-nav,
+.quarto-page-breadcrumbs,
+#quarto-search,
+.quarto-search-button,
+.quarto-navigation-tool,
+.quarto-back-to-top,
+#quarto-footer,
+.nav-footer {
+  display: none !important;
+}
+
+body.quarto-page-columns #quarto-content,
+#quarto-content.page-columns {
+  display: block !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+#quarto-content {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  padding-left: max(1rem, env(safe-area-inset-left)) !important;
+  padding-right: max(1rem, env(safe-area-inset-right)) !important;
+}
+
+#quarto-content > main.content,
+#quarto-content .content {
+  box-sizing: border-box !important;
+  grid-column: 1 / -1 !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+#quarto-content img,
+#quarto-content figure img {
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+#quarto-content table,
+#quarto-content pre,
+#quarto-content mjx-container[display="true"],
+#quarto-content .math.display {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+}
+
+#quarto-content table {
+  display: block;
+}
+
+#quarto-content .callout,
+#quarto-content .theorem,
+#quarto-content .proof {
+  max-width: 100% !important;
+}
+</style><style>body.nav-fixed{padding-top:0!important}</style></head><body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar"><main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Sistemas abiertos y transferencia de masa</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 27</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 27 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-26-estabilidad-y-dinamica-no-lineal.html">← 26. Estabilidad y dinámica no lineal</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a></p>
+<p>Un carro avanza por un riel horizontal y recibe arena de una tolva fija. La arena cae con velocidad horizontal nula y queda dentro del carro. Aunque el riel ejerza una fuerza horizontal despreciable, la velocidad del carro disminuye: cada porción recogida necesita adquirir movimiento horizontal. Podemos seguir el carro y toda la arena que llegará a él, como un conjunto material de composición fija, o estudiar en cada instante el carro con la arena ya recogida. La segunda elección mantiene un objeto reconocible en el laboratorio y obliga a registrar el momento que cruza su frontera.</p>
+<p>El capítulo 9 obtuvo el balance de momento siguiendo las mismas partículas. Aquí cambia la selección de materia: primero entra arena, después sale gas de un cohete y, finalmente, un chorro atraviesa una región elegida. La pregunta que permanece es cuánto momento gana el contenido y cuánto llega o se lleva la materia que atraviesa su borde. La masa y las velocidades de cruce aportan información física diferente.</p>
+<p>Usaremos mecánica newtoniana y marcos inerciales. La masa de cada porción material se conserva durante el proceso; la masa reunida dentro de la frontera cambia por transporte. Los modelos concentrados omitirán el tiempo y la distribución interna de la captura o la expulsión. Declararemos cuándo esa aproximación permite representar todo el contenido mediante una masa y una velocidad comunes. Las conversiones entre energía cinética e interna se contabilizarán por separado.</p>
+<section id="del-choque-aislado-a-la-recogida-continua" class="level2">
+<h2 class="anchored" data-anchor-id="del-choque-aislado-a-la-recogida-continua">Del choque aislado a la recogida continua</h2>
+<p>El primer cálculo puede hacerse sin derivadas. Un carro de masa <span class="math inline">\(m\)</span> y velocidad horizontal <span class="math inline">\(v\)</span> captura una porción de masa <span class="math inline">\(\Delta m&gt;0\)</span>, que antes del contacto tiene velocidad horizontal <span class="math inline">\(w\)</span>. Si el impulso externo horizontal durante la captura es despreciable y ambas partes quedan con velocidad <span class="math inline">\(v+\Delta v\)</span>, el momento del conjunto material da</p>
+<p><span class="math display">\[
+mv+\Delta m\,w=(m+\Delta m)(v+\Delta v).
+\]</span></p>
+<p>Reorganizando,</p>
+<p><span class="math display">\[
+(m+\Delta m)\Delta v=\Delta m(w-v).
+\]</span></p>
+<p>Con arena que cae verticalmente, <span class="math inline">\(w=0\)</span>: el carro entrega parte de su momento horizontal a cada porción entrante. Si la arena llega con <span class="math inline">\(w=v\)</span>, la captura mantiene la velocidad común. Esa comparación identifica la magnitud relevante para la aceleración: la velocidad de llegada respecto del receptor.</p>
+<p><strong>Definición.</strong> Un sistema material es una colección de porciones de materia que seguimos durante el intervalo considerado. Un sistema abierto es una selección de contenido mediante una frontera que permite el paso de materia; su composición en cada instante queda determinada por esa frontera y por el movimiento de la materia.</p>
+<p>La elección admite una frontera fija en el laboratorio o una frontera que acompañe al aparato. El conjunto material permite aplicar directamente la ley de balance ya conocida; el contenido abierto permite formular la pregunta experimental sobre el carro. Pasar de una descripción a otra exige incluir las porciones que cruzan.</p>
+<figure id="fig-fispm-r20261021-27-1" class="fpm-v04-panel figure">
+<p><a href="../assets/a47d4dcb72570f5bd37d8255.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="../assets/a47d4dcb72570f5bd37d8255.svg" alt="Captura de una porción y elección del sistema" class="fpm-v04-figure img-fluid figure-img" width="643.68" height="260.064" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 27.1.</em> La frontera material reúne el carro y la porción que será capturada. Tras el contacto ambos comparten velocidad. La frontera abierta que sigue al carro incorpora la porción al cruzar su borde. Las flechas representan velocidades horizontales.</p>
+</figcaption>
+</figure>
+<p>Dividamos la ecuación anterior por el tiempo de captura <span class="math inline">\(\Delta t\)</span>. Si <span class="math inline">\(\Delta m/\Delta t\to\mu(t)\)</span>, las velocidades son continuas y el incremento de velocidad es de orden <span class="math inline">\(\Delta t\)</span>, obtenemos <span class="math inline">\(m\dot v=\mu(w-v)\)</span>. El producto <span class="math inline">\(\Delta m\Delta v\)</span> es de orden <span class="math inline">\(\Delta t^2\)</span>; al dividir por <span class="math inline">\(\Delta t\)</span> tiende a cero. El límite declara la aproximación continua que sustituye muchos impactos pequeños.</p>
+<p><strong>Definición.</strong> El caudal másico de una entrada es la tasa <span class="math inline">\(\mu\ge0\)</span>, dada por <span class="math inline">\(\mu=\lim_{\Delta t\to0^+}\Delta m_{\rm entrada}/\Delta t\)</span> de masa que atraviesa la frontera hacia el contenido. Para una salida usaremos la tasa <span class="math inline">\(\nu\ge0\)</span> orientada hacia fuera. Ambos se expresan en <span class="math inline">\(\mathrm{kg/s}\)</span>. Las velocidades de cruce se medirán en un mismo marco inercial, inmediatamente antes de la captura o después de la expulsión, según el proceso.</p>
+<p>Cada tasa cuenta la masa por unidad de tiempo en la orientación elegida; la derivada de la masa contenida llevará el signo correspondiente. Un valor de <span class="math inline">\(\dot m\)</span> sólo proporciona el saldo. Si entran y salen cantidades iguales por segundo, el contenido puede tener masa constante mientras el transporte de momento permanece activo.</p>
+</section>
+<section id="el-balance-incluye-lo-que-atraviesa-la-frontera" class="level2">
+<h2 class="anchored" data-anchor-id="el-balance-incluye-lo-que-atraviesa-la-frontera">El balance incluye lo que atraviesa la frontera</h2>
+<p>Supongamos que el contenido puede modelarse con masa <span class="math inline">\(m(t)&gt;0\)</span> y velocidad común <span class="math inline">\(\mathbf v(t)\)</span>, de modo que su momento sea <span class="math inline">\(m\mathbf v\)</span>. Hay un número finito de entradas con tasas <span class="math inline">\(\mu_a\)</span> y velocidades <span class="math inline">\(\mathbf w_a\)</span>, y de salidas con tasas <span class="math inline">\(\nu_b\)</span> y velocidades <span class="math inline">\(\mathbf s_b\)</span>. La fuerza <span class="math inline">\(\mathbf F\)</span> es la resultante de las acciones externas sobre el conjunto material usado en el balance, evaluadas en el límite del intervalo: peso, reacciones, tracciones y fuerzas de presión que correspondan a la frontera elegida. Cuando el empuje ya esté representado por el flujo expulsado, su contribución no se añadirá otra vez a <span class="math inline">\(\mathbf F\)</span>.</p>
+<p><strong>Proposición.</strong> Bajo esas hipótesis y con tasas y velocidades continuas, los balances concentrados son</p>
+<p><span class="math display">\[
+\dot m=\sum_a\mu_a-\sum_b\nu_b,
+\]</span></p>
+<p><span class="math display">\[
+\frac{d}{dt}(m\mathbf v)=\mathbf F+
+\sum_a\mu_a\mathbf w_a-\sum_b\nu_b\mathbf s_b.
+\]</span></p>
+<p>Equivalentemente,</p>
+<p><span class="math display">\[
+m\dot{\mathbf v}=\mathbf F+
+\sum_a\mu_a(\mathbf w_a-\mathbf v)
+-\sum_b\nu_b(\mathbf s_b-\mathbf v).
+\]</span></p>
+<p><strong>Demostración.</strong> Durante <span class="math inline">\([t,t+h]\)</span> tomemos el conjunto material formado por el contenido inicial y las porciones que entrarán durante el intervalo. Al final lo forman el contenido final y las porciones que salieron. Con tasas continuas, las masas transportadas son <span class="math inline">\(\mu_a(t)h+o(h)\)</span> y <span class="math inline">\(\nu_b(t)h+o(h)\)</span>. Igualar la masa de ese mismo conjunto en los dos extremos y dividir por <span class="math inline">\(h\)</span> produce el primer balance.</p>
+<p>Su momento inicial es <span class="math inline">\(m\mathbf v+h\sum_a\mu_a\mathbf w_a+o(h)\)</span>. Al final vale <span class="math inline">\((m\mathbf v)(t+h)+h\sum_b\nu_b\mathbf s_b+o(h)\)</span>. La diferencia es el impulso externo <span class="math inline">\(h\mathbf F(t)+o(h)\)</span>, suponiendo acotadas las interacciones adicionales sobre las pequeñas porciones durante su tránsito. La región breve de interacción que produce captura o eyección está incluida en el balance; sus transferencias internas se cancelan al considerar el conjunto material. Restar, dividir por <span class="math inline">\(h\)</span> y tomar el límite da la ecuación de momento. Finalmente expandimos <span class="math inline">\(d(m\mathbf v)/dt=m\dot{\mathbf v}+\dot m\mathbf v\)</span> y sustituimos el balance de masa. <span class="math inline">\(\square\)</span></p>
+<p>El resultado exige que podamos omitir el momento almacenado en una zona interna de tránsito, o incorporarlo al contenido. Un conducto largo con una distribución de velocidades apreciable requerirá una descripción distribuida. También admite fuerzas de presión en una sección de salida; esas tracciones siguen siendo fuerzas aplicadas y se contabilizan con la frontera elegida.</p>
+<p>En el carro que recoge arena verticalmente, <span class="math inline">\(\dot m=\mu\)</span>, <span class="math inline">\(w=0\)</span> y <span class="math inline">\(F_x=0\)</span>, así que <span class="math inline">\(d(mv)/dt=0\)</span>. Si <span class="math inline">\(\mu\)</span> es constante,</p>
+<p><span class="math display">\[
+m(t)=m_0+\mu t,\qquad
+v(t)=\frac{m_0v_0}{m_0+\mu t}.
+\]</span></p>
+<p>La aceleración es negativa para <span class="math inline">\(v_0&gt;0\)</span>; el momento contenido conserva su valor horizontal porque la materia entrante aporta momento horizontal nulo. Si la tolva imprime una velocidad horizontal <span class="math inline">\(w\)</span> constante, el resultado cambia a</p>
+<p><span class="math display">\[
+v(t)=w+\frac{m_0(v_0-w)}{m_0+\mu t}.
+\]</span></p>
+<p>El movimiento se aproxima al de la corriente entrante mientras la recogida continúa. Las ecuaciones incluyen un mecanismo de relajación producido por incorporación de masa, con una evolución algebraica característica.</p>
+<figure id="fig-fispm-r20261021-27-2" class="fpm-v04-panel figure">
+<p><a href="../assets/4c2dda670393bc626820a67a.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="../assets/4c2dda670393bc626820a67a.svg" alt="Velocidad y masa durante una recogida continua" class="fpm-v04-figure img-fluid figure-img" width="605.9775" height="299.2755" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 27.2.</em> Para <span class="math inline">\(m_0=2\,\mathrm{kg}\)</span>, <span class="math inline">\(v_0=3\,\mathrm{m/s}\)</span> y <span class="math inline">\(\mu=0{,}5\,\mathrm{kg/s}\)</span> se comparan corrientes con velocidad horizontal cero y un metro por segundo. La masa aumenta al mismo ritmo; las velocidades finales difieren por el momento transportado hacia el carro.</p>
+</figcaption>
+</figure>
+</section>
+<section id="comprobar-la-ecuación-desde-otro-laboratorio" class="level2">
+<h2 class="anchored" data-anchor-id="comprobar-la-ecuación-desde-otro-laboratorio">Comprobar la ecuación desde otro laboratorio</h2>
+<p>Un observador que se mueve con velocidad constante <span class="math inline">\(\mathbf U\)</span> mide <span class="math inline">\(\widetilde{\mathbf v}=\mathbf v-\mathbf U\)</span> y transforma del mismo modo cada velocidad de cruce. Las tasas conservan su valor porque describen materia que cruza una misma frontera física, vista desde los dos marcos. El balance debe predecir la misma aceleración.</p>
+<p><strong>Proposición.</strong> Los balances anteriores conservan su forma bajo un cambio galileano de velocidad constante, con las fuerzas newtonianas transformadas de manera consistente.</p>
+<p><strong>Demostración.</strong> La derivada del momento contenido se transforma como</p>
+<p><span class="math display">\[
+\frac{d}{dt}(m\widetilde{\mathbf v})=
+\frac{d}{dt}(m\mathbf v)-\dot m\mathbf U.
+\]</span></p>
+<p>Los transportes del otro miembro cambian en</p>
+<p><span class="math display">\[
+-\left(\sum_a\mu_a-\sum_b\nu_b\right)\mathbf U
+=-\dot m\mathbf U.
+\]</span></p>
+<p>Ambos lados adquieren el mismo término y el balance se mantiene. En la forma de aceleración, las diferencias <span class="math inline">\(\mathbf w_a-\mathbf v\)</span> y <span class="math inline">\(\mathbf s_b-\mathbf v\)</span> son directamente invariantes, mientras <span class="math inline">\(\dot{\widetilde{\mathbf v}}=\dot{\mathbf v}\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>El cambio de observador permite comprobar también una ecuación propuesta. Escribir <span class="math inline">\(d(m\mathbf v)/dt=\mathbf F\)</span> para un contenido de masa variable y omitir sus transportes dejaría un término extra <span class="math inline">\(-\dot m\mathbf U\)</span> al cambiar de marco. En el carro con <span class="math inline">\(w=0\)</span>, esa igualdad es válida en el laboratorio donde la materia entrante tiene momento horizontal nulo. El balance completo registra cómo cambia ese aporte entre observadores.</p>
+</section>
+<section id="la-energía-de-la-captura" class="level2">
+<h2 class="anchored" data-anchor-id="la-energía-de-la-captura">La energía de la captura</h2>
+<p>Recoger materia puede conservar el momento del conjunto y convertir energía cinética en energía interna. El choque elemental del comienzo tiene una pérdida exacta de energía cinética traslacional</p>
+<p><span class="math display">\[
+D=\frac12\frac{m\Delta m}{m+\Delta m}|\mathbf w-\mathbf v|^2.
+\]</span></p>
+<p>Se obtiene sustituyendo la velocidad común en las energías antes y después del contacto. El límite continuo relaciona esta pérdida con una potencia y permite comprobar cuánto trabajo necesita un dispositivo que sostenga la velocidad del receptor.</p>
+<p><strong>Proposición.</strong> Para un contenido de velocidad uniforme que captura una corriente a tasa <span class="math inline">\(\mu\ge0\)</span>, sin salidas, sea <span class="math inline">\(K=m|\mathbf v|^2/2\)</span>. Su balance cinético es</p>
+<p><span class="math display">\[
+\dot K=\mathbf F\cdot\mathbf v+
+\frac{\mu}{2}|\mathbf w|^2-
+\frac{\mu}{2}|\mathbf w-\mathbf v|^2.
+\]</span></p>
+<p>El último término representa la tasa de pérdida de energía cinética en una captura perfectamente inelástica bajo este modelo. El primer término presupone que la potencia mecánica externa sobre el contenido se representa por <span class="math inline">\(\mathbf F\cdot\mathbf v\)</span>. El modelo concentra el contenido en una traslación común y omite energía de rotación o movimiento interno resuelto; esas contribuciones requerirían sus propios balances.</p>
+<p><strong>Demostración.</strong> Derivamos <span class="math inline">\(K\)</span> y usamos <span class="math inline">\(\dot m=\mu\)</span> y <span class="math inline">\(m\dot{\mathbf v}=\mathbf F+\mu(\mathbf w-\mathbf v)\)</span>:</p>
+<p><span class="math display">\[
+\dot K=\frac{\mu}{2}|\mathbf v|^2+
+\mathbf v\cdot[\mathbf F+\mu(\mathbf w-\mathbf v)]
+=\mathbf F\cdot\mathbf v+
+\mu\mathbf v\cdot\mathbf w-\frac{\mu}{2}|\mathbf v|^2.
+\]</span></p>
+<p>La identidad <span class="math inline">\(|\mathbf w-\mathbf v|^2=|\mathbf w|^2-2\mathbf w\cdot\mathbf v+|\mathbf v|^2\)</span> produce el balance. Para identificar la conversión en la captura, dividimos la pérdida finita <span class="math inline">\(D\)</span> por el tiempo del contacto. Como <span class="math inline">\(\Delta m/\Delta t\to\mu\)</span> y <span class="math inline">\(m/(m+\Delta m)\to1\)</span>, su límite es <span class="math inline">\(\mu|\mathbf w-\mathbf v|^2/2\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Si trabajamos sólo con la componente horizontal del carro, la misma identidad describe la energía cinética horizontal y su pérdida correspondiente. La arena que cae transporta también energía vertical; el balance energético completo del aparato necesita incluirla, junto con las reacciones y la deformación durante la recogida. El experimento horizontal permite inferir una parte de la conversión energética, con un alcance preciso.</p>
+<p>Para mantener <span class="math inline">\(v&gt;0\)</span> constante frente a una entrada con <span class="math inline">\(w=0\)</span>, el motor debe ejercer <span class="math inline">\(F_x=\mu v\)</span>. Su potencia es <span class="math inline">\(\mu v^2\)</span>; la energía cinética horizontal almacenada crece a tasa <span class="math inline">\(\mu v^2/2\)</span> y la otra mitad se convierte en energía interna durante la captura. La fuerza, la potencia suministrada y la energía almacenada responden a preguntas distintas sobre el mismo proceso.</p>
+<figure id="fig-fispm-r20261021-27-3" class="fpm-v04-panel figure">
+<p><a href="../assets/8ff76b259afb48f69b135a3e.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="../assets/8ff76b259afb48f69b135a3e.svg" alt="Momento y energía durante la captura a velocidad sostenida" class="fpm-v04-figure img-fluid figure-img" width="593.9925" height="257.3715" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 27.3.</em> Con <span class="math inline">\(v=3\,\mathrm{m/s}\)</span> y <span class="math inline">\(\mu=0{,}5\,\mathrm{kg/s}\)</span>, la potencia horizontal suministrada es <span class="math inline">\(4{,}5\,\mathrm W\)</span>. La mitad incrementa la energía cinética horizontal del contenido y la otra mitad se convierte durante la captura. Se representa sólo este balance horizontal.</p>
+</figcaption>
+</figure>
+</section>
+<section id="expulsar-materia-el-cohete-ideal" class="level2">
+<h2 class="anchored" data-anchor-id="expulsar-materia-el-cohete-ideal">Expulsar materia: el cohete ideal</h2>
+<p>Tomemos un cohete de movimiento rectilíneo. Su masa <span class="math inline">\(m\)</span> reúne estructura, carga y propelente restante. La salida tiene tasa <span class="math inline">\(\nu=-\dot m&gt;0\)</span> y velocidad inercial <span class="math inline">\(s=v-c\)</span>, donde <span class="math inline">\(c&gt;0\)</span> es la rapidez de expulsión hacia atrás respecto del vehículo. La ecuación de aceleración resulta</p>
+<p><span class="math display">\[
+m\dot v=F+\nu c=F-c\dot m.
+\]</span></p>
+<p>Aquí <span class="math inline">\(F\)</span> incluye gravedad, resistencia u otras fuerzas externas especificadas aparte del transporte del chorro. La energía que acelera el gas proviene del mecanismo propulsor; los balances de momento fijan el movimiento una vez dados <span class="math inline">\(\nu\)</span> y <span class="math inline">\(c\)</span>, pero determinar esas dos funciones exige un modelo del motor o mediciones.</p>
+<p><strong>Proposición.</strong> En un tramo con <span class="math inline">\(m&gt;0\)</span>, expulsión colineal y rapidez relativa constante <span class="math inline">\(c\)</span>, la velocidad satisface</p>
+<p><span class="math display">\[
+v(t)-v_0=c\log\frac{m_0}{m(t)}+
+\int_0^t\frac{F(s)}{m(s)}\,ds.
+\]</span></p>
+<p>Si <span class="math inline">\(F=0\)</span>, el cambio de velocidad depende sólo de la razón de masas y de <span class="math inline">\(c\)</span>. Con gravedad uniforme vertical y resistencia omitida, <span class="math inline">\(F=-mg\)</span> y se añade el término <span class="math inline">\(-gt\)</span>.</p>
+<p><strong>Demostración.</strong> Dividir la ecuación por <span class="math inline">\(m\)</span> da <span class="math inline">\(\dot v=F/m-c\dot m/m\)</span>. Integramos entre cero y <span class="math inline">\(t\)</span>. La positividad de <span class="math inline">\(m\)</span> permite usar <span class="math inline">\(d(\log m)/dt=\dot m/m\)</span>; con <span class="math inline">\(c\)</span> constante, el segundo término integrado es <span class="math inline">\(c\log(m_0/m(t))\)</span>. Para <span class="math inline">\(F=-mg\)</span>, el integrando adicional vale <span class="math inline">\(-g\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>La razón <span class="math inline">\(m_0/m\)</span> es adimensional y <span class="math inline">\(c\)</span> fija la escala de velocidad. Un cohete puede adquirir una velocidad mayor que <span class="math inline">\(c\)</span> en el laboratorio, pues cada porción de gas sale respecto de un vehículo cuya velocidad va cambiando. Cuando se agota el propelente, el modelo cambia de tramo: la masa llega a un valor seco positivo y la expulsión cesa. Extrapolar una tasa constante hasta masa nula eliminaría el propio aparato que describimos.</p>
+<p>Con tasa constante <span class="math inline">\(\nu\)</span>, el dominio propulsado termina en <span class="math inline">\(t_b=(m_0-m_f)/\nu\)</span> y <span class="math inline">\(m=m_0-\nu t\)</span>. En ascenso libre, para gravedad uniforme,</p>
+<p><span class="math display">\[
+v(t)=v_0+c\log\frac{m_0}{m_0-\nu t}-gt.
+\]</span></p>
+<p>Integrar una vez más recupera la altura:</p>
+<p><span class="math display">\[
+y(t)-y_0=v_0t+
+c\left[t-\frac{m(t)}{\nu}\log\frac{m_0}{m(t)}\right]
+-\frac12gt^2.
+\]</span></p>
+<p>Estas fórmulas presuponen vuelo libre durante el tramo. Si el vehículo está apoyado en una plataforma, la reacción del apoyo debe incluirse hasta que las condiciones permitan el despegue. La ecuación de vuelo libre por sí sola no determina el instante de separación del soporte.</p>
+<figure id="fig-fispm-r20261021-27-4" class="fpm-v04-panel figure">
+<p><a href="../assets/38927f863df76a8fe60669fb.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="../assets/38927f863df76a8fe60669fb.svg" alt="Masa positiva y aceleración durante la expulsión" class="fpm-v04-figure img-fluid figure-img" width="663.802385" height="292.2915" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 27.4.</em> En un ejemplo sin fuerza externa, <span class="math inline">\(m_0=100\,\mathrm{kg}\)</span>, <span class="math inline">\(\nu=2\,\mathrm{kg/s}\)</span> y <span class="math inline">\(c=200\,\mathrm{m/s}\)</span>. La expulsión termina a los veinte segundos, con masa seca de sesenta kilogramos. El empuje constante produce una aceleración creciente mientras disminuye la masa.</p>
+</figcaption>
+</figure>
+<p>En una tobera puede intervenir una diferencia de presión entre la sección de salida y el ambiente. Para un chorro axial uniforme, una aproximación habitual reúne la contribución de momento y la tracción neta de presión en</p>
+<p><span class="math display">\[
+T=\nu c+(p_e-p_a)A_e.
+\]</span></p>
+<p>El término de presión resulta de la fuerza neta de las tracciones sobre la sección abierta, comparada con la presión ambiente uniforme sobre la frontera restante. La sección y la orientación fijan el signo: el gas sale hacia atrás y una presión de salida mayor que la ambiente añade empuje hacia delante. La expresión supone una geometría y un estado de salida dados. Si cambia el ambiente y con él cambia el flujo del motor, hacen falta nuevos valores de <span class="math inline">\(\nu,c,p_e\)</span>; mantenerlos constantes es una comparación idealizada explícita.</p>
+</section>
+<section id="de-la-corriente-discreta-a-una-región-del-espacio" class="level2">
+<h2 class="anchored" data-anchor-id="de-la-corriente-discreta-a-una-región-del-espacio">De la corriente discreta a una región del espacio</h2>
+<p>Un chorro que golpea una placa puede atravesar el aparato sin quedar almacenado. La masa dentro de una región puede mantenerse constante, aunque el aparato reciba una fuerza permanente. El balance concentrado muestra ya el mecanismo: entrada y salida pueden compensar masa y transportar momentos diferentes. Para calcular las tasas necesitamos comparar la velocidad de la materia con la de la frontera.</p>
+<p>En una corriente uniforme de densidad <span class="math inline">\(\rho\)</span>, sección <span class="math inline">\(A\)</span> y rapidez axial <span class="math inline">\(U\)</span>, el caudal a través de una sección fija perpendicular al eje es <span class="math inline">\(\rho AU\)</span>. Si la sección se desplaza con rapidez <span class="math inline">\(V&lt;U\)</span> hacia delante, sólo atraviesa la sección la columna de longitud <span class="math inline">\((U-V)\Delta t\)</span> durante el intervalo <span class="math inline">\(\Delta t\)</span>. La tasa es entonces <span class="math inline">\(\rho A(U-V)\)</span>. La velocidad inercial transportada sigue siendo <span class="math inline">\(U\)</span>; <span class="math inline">\(U-V\)</span> decide cuánta materia cruza cada segundo.</p>
+<figure id="fig-fispm-r20261021-27-5" class="fpm-v04-panel figure">
+<p><a href="../assets/8a2c3c3d47d03a1dbea94027.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="../assets/8a2c3c3d47d03a1dbea94027.svg" alt="Frontera móvil y longitud interceptada del chorro" class="fpm-v04-figure img-fluid figure-img" width="598.529752" height="294.984" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 27.5.</em> Durante el mismo intervalo, el fluido recorre <span class="math inline">\(U\Delta t\)</span> y la placa avanza <span class="math inline">\(V\Delta t\)</span>. La longitud de corriente que alcanza la placa es <span class="math inline">\((U-V)\Delta t\)</span>. Se supone <span class="math inline">\(0\le V&lt;U\)</span> y un chorro uniforme que la placa intercepta por completo.</p>
+</figcaption>
+</figure>
+<p><strong>Definición.</strong> Un volumen de control <span class="math inline">\(V(t)\)</span> es una región espacial elegida para contabilizar el contenido y sus transportes. Si su frontera tiene velocidad <span class="math inline">\(\mathbf b\)</span> y normal exterior unitaria <span class="math inline">\(\mathbf n\)</span>, la densidad superficial de flujo másico saliente es <span class="math inline">\(j_m=\rho(\mathbf u-\mathbf b)\cdot\mathbf n\)</span>, donde <span class="math inline">\(\mathbf u\)</span> es la velocidad local de la materia. La integral de <span class="math inline">\(j_m\)</span> sobre una parte de la frontera proporciona su flujo neto de masa hacia fuera.</p>
+<p>Un valor positivo expresa salida y uno negativo, entrada. La velocidad <span class="math inline">\(\mathbf b\)</span> de la frontera y la velocidad <span class="math inline">\(\mathbf u\)</span> del fluido son campos diferentes. Si coinciden en la componente normal, la frontera acompaña materialmente a la materia. La densidad de flujo tiene unidades de <span class="math inline">\(\mathrm{kg/(m^2s)}\)</span>; al integrar en superficie recuperamos <span class="math inline">\(\mathrm{kg/s}\)</span>.</p>
+<p>La siguiente formulación usa integrales de volumen y superficie, cambio de variables y el teorema de la divergencia. Para un campo <span class="math inline">\(\mathbf q\)</span>, escribimos <span class="math inline">\(\nabla\cdot\mathbf q=\sum_i\partial q_i/\partial x_i\)</span>; el teorema identifica su integral sobre una región con el flujo <span class="math inline">\(\int_{\partial V}\mathbf q\cdot\mathbf n\,dS\)</span> por la frontera, bajo las condiciones usuales de regularidad que declaramos en el resultado. Entender su derivación permite reconocer la misma contabilidad de los paquetes en una descripción distribuida. Los ejemplos anteriores y los balances de puertos pueden seguirse con sus versiones unidimensionales.</p>
+<p><strong>Proposición.</strong> Sea <span class="math inline">\(V(t)\)</span> una región acotada que se mueve mediante un campo suave <span class="math inline">\(\mathbf b\)</span>, con frontera suave por partes, y sea <span class="math inline">\(a(\mathbf x,t)\)</span> una densidad de clase <span class="math inline">\(C^1\)</span> en una vecindad de la clausura de las regiones durante el intervalo. Las mismas condiciones de regularidad se suponen para <span class="math inline">\(\rho\)</span> y <span class="math inline">\(\mathbf u\)</span> al escribir los balances siguientes. Entonces</p>
+<p><span class="math display">\[
+\frac{d}{dt}\int_{V(t)}a\,dV
+=\int_{V(t)}\partial_ta\,dV+
+\int_{\partial V(t)}a\,\mathbf b\cdot\mathbf n\,dS.
+\]</span></p>
+<p>Si la materia conserva masa y satisface el balance newtoniano de momento para regiones materiales, los balances de un volumen de control son</p>
+<p><span class="math display">\[
+\frac{d}{dt}\int_{V(t)}\rho\,dV
+=-\int_{\partial V(t)}\rho(\mathbf u-\mathbf b)\cdot\mathbf n\,dS,
+\]</span></p>
+<p><span class="math display">\[
+\frac{d}{dt}\int_{V(t)}\rho\mathbf u\,dV
+=\mathbf F_{V(t)}-
+\int_{\partial V(t)}\rho\mathbf u
+[(\mathbf u-\mathbf b)\cdot\mathbf n]\,dS.
+\]</span></p>
+<p>La fuerza <span class="math inline">\(\mathbf F_{V(t)}\)</span> incluye las fuerzas de volumen y las tracciones de superficie sobre el contenido. La regularidad se exige durante el tramo analizado; los choques y discontinuidades necesitan una formulación integral con condiciones de salto.</p>
+<p><strong>Demostración.</strong> Fijemos un instante y transportemos cada punto <span class="math inline">\(\mathbf x\)</span> de la región durante un tiempo <span class="math inline">\(h\)</span> mediante el flujo de <span class="math inline">\(\mathbf b\)</span>. El cambio de posición es <span class="math inline">\(\mathbf x\mapsto\mathbf x+h\mathbf b(\mathbf x,t)+o(h)\)</span> y su Jacobiano vale <span class="math inline">\(1+h\nabla\cdot\mathbf b+o(h)\)</span>. Esta última identidad se obtiene expandiendo el determinante de <span class="math inline">\(I+hD\mathbf b\)</span>. El cambio de variables a la región fija inicial y la regla de la cadena dan</p>
+<p><span class="math display">\[
+\frac{d}{dt}\int_{V(t)}a\,dV
+=\int_{V(t)}[\partial_ta+\mathbf b\cdot\nabla a
++a\nabla\cdot\mathbf b]\,dV.
+\]</span></p>
+<p>La suma de los dos últimos términos es <span class="math inline">\(\nabla\cdot(a\mathbf b)\)</span>. El teorema de la divergencia la convierte en la integral de frontera y prueba la primera identidad. La regularidad y la región acotada permiten tomar los restos uniformes en la clausura durante el paso local.</p>
+<p>Apliquemos la identidad a una región material, cuya frontera tiene <span class="math inline">\(\mathbf b=\mathbf u\)</span>. La conservación de su masa implica <span class="math inline">\(\int[\partial_t\rho+\nabla\cdot(\rho\mathbf u)]dV=0\)</span> en cualquier región material inicial. Por continuidad del integrando y arbitrariedad de esas regiones,</p>
+<p><span class="math display">\[
+\partial_t\rho+\nabla\cdot(\rho\mathbf u)=0.
+\]</span></p>
+<p>Sustituir esta ecuación en la primera identidad, ahora para la frontera elegida <span class="math inline">\(\mathbf b\)</span>, proporciona el balance de masa. Para el momento aplicamos la misma identidad componente por componente a <span class="math inline">\(a=\rho u_i\)</span>. La ley de Newton de una región material identifica</p>
+<p><span class="math display">\[
+\int_{V(t)}[\partial_t(\rho u_i)+
+\nabla\cdot(\rho u_i\mathbf u)]dV=(\mathbf F_{V(t)})_i.
+\]</span></p>
+<p>Al cambiar a la frontera de velocidad <span class="math inline">\(\mathbf b\)</span>, restamos el transporte con <span class="math inline">\(\mathbf u\)</span> y añadimos el transporte con <span class="math inline">\(\mathbf b\)</span>. La diferencia es la integral saliente con <span class="math inline">\(\mathbf u-\mathbf b\)</span>, y reunir las componentes da la ecuación vectorial. <span class="math inline">\(\square\)</span></p>
+<p>En una sección de flujo uniforme, la integral de momento es el producto del caudal másico por la velocidad inercial de la corriente. Sumando secciones recuperamos los balances de puertos. Esta deducción explica por qué aparecen dos velocidades en el mismo término: una transporta momento por unidad de masa y la otra determina la masa que atraviesa el borde.</p>
+<figure id="fig-fispm-r20261021-27-6" class="fpm-v04-panel figure">
+<p><a href="../assets/f2b98ad78594186657051996.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="../assets/f2b98ad78594186657051996.svg" alt="Un codo desvía el flujo y recibe una reacción" class="fpm-v04-figure img-fluid figure-img" width="409.539349" height="343.872" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 27.6.</em> Un flujo estacionario entra horizontalmente y sale verticalmente. Con igual rapidez en ambas secciones y presiones manométricas nulas, la fuerza del conducto sobre el fluido tiene la dirección de la variación de momento. El fluido ejerce sobre el conducto la fuerza opuesta.</p>
+</figcaption>
+</figure>
+</section>
+<section id="qué-se-mide-al-contrastar-un-sistema-abierto" class="level2">
+<h2 class="anchored" data-anchor-id="qué-se-mide-al-contrastar-un-sistema-abierto">Qué se mide al contrastar un sistema abierto</h2>
+<p>Para el carro bastan una balanza, un registro de posición y una estimación independiente de la velocidad de llegada. El cohete requiere además masa seca, historia de consumo y estado del chorro; una placa exige distinguir sección del chorro y área efectiva de salida. Ajustar sólo <span class="math inline">\(m(t)\)</span> y <span class="math inline">\(v(t)\)</span> puede dejar varias corrientes compatibles con el mismo movimiento. Las condiciones de frontera son parte de la información física del problema.</p>
+<p>Una comparación útil combina el balance de momento con el energético. Dos entradas con la misma suma de momentos pueden entregar energías cinéticas diferentes. El movimiento del receptor permite inferir una media de velocidades de llegada; la energía convertida durante la mezcla depende también de su dispersión. Los ejercicios finales recuperan así el problema de inferir lo que un registro realmente determina.</p>
+<figure id="fig-fispm-r20261021-27-7" class="fpm-v04-panel figure">
+<p><a href="../assets/80adeeb7c4113cdfd598b3df.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="../assets/80adeeb7c4113cdfd598b3df.svg" alt="Igual entrada de momento y distinta conversión de energía" class="fpm-v04-figure img-fluid figure-img" width="614.93625" height="306.2595" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 27.7.</em> Dos preparaciones tienen caudal total <span class="math inline">\(0{,}5\,\mathrm{kg/s}\)</span> y velocidad media de entrada <span class="math inline">\(1{,}8\,\mathrm{m/s}\)</span>. Con receptor a tres metros por segundo, la corriente uniforme y las dos corrientes separadas producen la misma aceleración instantánea y distintas tasas de conversión cinética en la captura.</p>
+</figcaption>
+</figure>
+<p>Podemos expresar con precisión qué añade una medición de energía a la trayectoria del receptor. Consideremos entradas de velocidades horizontales <span class="math inline">\(w_a\)</span>, tasas <span class="math inline">\(\mu_a\geq0\)</span> y tasa total <span class="math inline">\(\mu=\sum_a\mu_a&gt;0\)</span>, capturadas sin mezclarse antes en otro aparato.</p>
+<p><strong>Definición.</strong> La media de velocidades de entrada es <span class="math inline">\(\overline w=\sum_a\mu_aw_a/\mu\)</span> y su varianza ponderada por caudal es <span class="math inline">\(\sigma_w^2=\sum_a\mu_a(w_a-\overline w)^2/\mu\)</span>. La varianza tiene unidades de velocidad al cuadrado y mide la dispersión de las corrientes respecto de su media.</p>
+<p><strong>Proposición.</strong> En el modelo concentrado de captura perfectamente inelástica, la conversión de energía cinética horizontal por unidad de tiempo es</p>
+<p><span class="math display">\[
+D=\frac12\sum_a\mu_a(w_a-v)^2
+=\frac\mu2\left[(\overline w-v)^2+\sigma_w^2\right].
+\]</span></p>
+<p>A tasa total y media fijadas, su mínimo es <span class="math inline">\(\mu(\overline w-v)^2/2\)</span>, alcanzado cuando todas las entradas de caudal positivo comparten esa media. La energía cinética horizontal entrante por unidad de tiempo es <span class="math inline">\(\mu(\overline w^2+\sigma_w^2)/2\)</span>.</p>
+<p><strong>Demostración.</strong> Escribamos <span class="math inline">\(w_a-v=(w_a-\overline w)+(\overline w-v)\)</span> y expandamos el cuadrado. El término cruzado contiene <span class="math inline">\(\sum_a\mu_a(w_a-\overline w)=0\)</span>. Los otros dos sumandos dan la identidad. La varianza es una suma de cuadrados con pesos no negativos; su anulación equivale a <span class="math inline">\(w_a=\overline w\)</span> en todas las entradas de peso positivo. Expandir <span class="math inline">\(w_a=(w_a-\overline w)+\overline w\)</span> del mismo modo prueba la fórmula energética entrante. <span class="math inline">\(\square\)</span></p>
+<p>La masa, la velocidad y la aceleración del receptor permiten inferir la media mediante el balance de momento cuando las fuerzas externas son conocidas. Una medición independiente de <span class="math inline">\(D\)</span>, con los demás intercambios controlados, añade la varianza. Diferentes familias de corrientes pueden compartir ambas cantidades. Los ejercicios 20 y 21 separan esas dos etapas de inferencia y recuperan, al final del tomo, la pregunta del capítulo cero sobre qué determina una operación de medida.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<section id="ejercicio-27-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-1">1. Una porción de arena</h3>
+<p>Un carro de <span class="math inline">\(2\,\mathrm{kg}\)</span> avanza a <span class="math inline">\(3\,\mathrm{m/s}\)</span> y captura <span class="math inline">\(0{,}5\,\mathrm{kg}\)</span> de material con velocidad horizontal nula. Omita el impulso externo horizontal. Obtenga la velocidad común y la pérdida de energía cinética horizontal. Explique qué materia debe incluir la conservación utilizada.</p>
+</section>
+<section id="ejercicio-27-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-2">2. La tolva permanece abierta</h3>
+<p>El mismo carro recibe arena con caudal constante <span class="math inline">\(0{,}5\,\mathrm{kg/s}\)</span> durante cuatro segundos. Calcule masa, velocidad y distancia recorrida al final, y la conversión acumulada de energía cinética horizontal. Compare con la captura de una sola porción de masa igual a toda la arena recogida.</p>
+</section>
+<section id="ejercicio-27-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-3">3. La arena llega en movimiento</h3>
+<p>Repita la recogida del problema 2 con velocidad horizontal de llegada <span class="math inline">\(w=1\,\mathrm{m/s}\)</span>. Determine la velocidad final, la energía cinética que entra y la energía convertida durante la captura. Compruebe el balance de momento del contenido.</p>
+</section>
+<section id="ejercicio-27-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-4">4. Una fuerza constante durante la recogida</h3>
+<p>Un carro parte del reposo con <span class="math inline">\(m_0=2\,\mathrm{kg}\)</span>, recibe arena vertical a <span class="math inline">\(\mu=0{,}5\,\mathrm{kg/s}\)</span> y es tirado horizontalmente con <span class="math inline">\(F=2\,\mathrm N\)</span>. Obtenga <span class="math inline">\(v(t)\)</span>, <span class="math inline">\(x(t)-x_0\)</span> y la aceleración. A los cuatro segundos compare trabajo, energía cinética y conversión durante la captura.</p>
+</section>
+<section id="ejercicio-27-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-5">5. Mantener la velocidad</h3>
+<p>El motor mantiene un carro a <span class="math inline">\(3\,\mathrm{m/s}\)</span> mientras recoge arena vertical a <span class="math inline">\(0{,}5\,\mathrm{kg/s}\)</span>. Calcule fuerza, potencia del motor, crecimiento de energía cinética horizontal y potencia convertida durante la captura. Indique qué habría que añadir para un balance energético tridimensional de la arena que cae.</p>
+</section>
+<section id="ejercicio-27-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-6">6. Soltar carga que acompaña al vehículo</h3>
+<p>Un vehículo de <span class="math inline">\(10\,\mathrm{kg}\)</span> viaja a <span class="math inline">\(4\,\mathrm{m/s}\)</span> y deja caer carga a <span class="math inline">\(1\,\mathrm{kg/s}\)</span>, con velocidad horizontal de salida igual a la del vehículo. Se omiten fuerzas externas horizontales. Calcule aceleración y derivada del momento del contenido. Explique la diferencia entre ambas respuestas.</p>
+</section>
+<section id="ejercicio-27-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-7">7. Una expulsión con final físico</h3>
+<p>Un cohete ideal parte del reposo con <span class="math inline">\(m_0=100\,\mathrm{kg}\)</span>, masa seca <span class="math inline">\(60\,\mathrm{kg}\)</span>, <span class="math inline">\(\nu=2\,\mathrm{kg/s}\)</span> y <span class="math inline">\(c=200\,\mathrm{m/s}\)</span>. Omita fuerzas externas. Obtenga tiempo de combustión, velocidad final, empuje y aceleraciones inicial y final. Especifique el movimiento posterior al agotamiento.</p>
+</section>
+<section id="ejercicio-27-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-8">8. El combustible que exige una maniobra</h3>
+<p>Para lograr <span class="math inline">\(\Delta v=300\,\mathrm{m/s}\)</span> con <span class="math inline">\(c=200\,\mathrm{m/s}\)</span>, encuentre la razón inicial/final de masas y la fracción inicial consumida. Calcule la masa inicial necesaria si estructura y carga final suman <span class="math inline">\(20\,\mathrm{kg}\)</span>. Revise el límite cuando <span class="math inline">\(\Delta v/c\)</span> es pequeño.</p>
+</section>
+<section id="ejercicio-27-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-9">9. Dos historias de consumo</h3>
+<p>Dos vehículos en vuelo libre vertical parten con <span class="math inline">\(v_0=200\,\mathrm{m/s}\)</span> y masa <span class="math inline">\(100\,\mathrm{kg}\)</span>; ambos terminan con <span class="math inline">\(60\,\mathrm{kg}\)</span> y expulsan con <span class="math inline">\(c=200\,\mathrm{m/s}\)</span>. Uno completa la expulsión en diez segundos y otro en veinte. Con gravedad uniforme <span class="math inline">\(g=9{,}81\,\mathrm{m/s^2}\)</span> y resistencia omitida, compare sus velocidades al término de cada combustión. Compare también el caso sin gravedad. Suponga altura inicial suficiente para evitar contacto con el suelo.</p>
+</section>
+<section id="ejercicio-27-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-10">10. El apoyo antes del vuelo</h3>
+<p>Un pequeño vehículo descansa en una plataforma horizontal. Su masa inicial es <span class="math inline">\(10\,\mathrm{kg}\)</span>, la seca es <span class="math inline">\(5\,\mathrm{kg}\)</span> y expulsa hacia abajo a <span class="math inline">\(\nu=0{,}1\,\mathrm{kg/s}\)</span> con <span class="math inline">\(c=200\,\mathrm{m/s}\)</span>. Con <span class="math inline">\(g=9{,}81\,\mathrm{m/s^2}\)</span>, estudie si despega y determine la reacción mientras permanezca apoyado. Compare con la aceleración que se obtendría al suponer vuelo libre desde el inicio.</p>
+</section>
+<section id="ejercicio-27-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-11">11. La sección de presión</h3>
+<p>Una tobera tiene <span class="math inline">\(\nu=2\,\mathrm{kg/s}\)</span>, <span class="math inline">\(c=300\,\mathrm{m/s}\)</span>, <span class="math inline">\(A_e=0{,}01\,\mathrm{m^2}\)</span> y <span class="math inline">\(p_e-p_a=20\,\mathrm{kPa}\)</span>. Calcule el empuje total y sus contribuciones. Si disminuye <span class="math inline">\(p_a\)</span> en <span class="math inline">\(10\,\mathrm{kPa}\)</span> manteniendo idealmente los demás datos, calcule el nuevo empuje. Explique la hipótesis de esa comparación.</p>
+</section>
+<section id="ejercicio-27-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-12">12. Tres sentidos de una expulsión</h3>
+<p>Un vehículo inicialmente en reposo tiene masa <span class="math inline">\(10\,\mathrm{kg}\)</span> y expulsa una porción de <span class="math inline">\(2\,\mathrm{kg}\)</span>. Calcule su velocidad final si la porción queda con velocidad relativa <span class="math inline">\(-5\,\mathrm{m/s}\)</span> respecto del vehículo final. Repita si la velocidad de la porción es <span class="math inline">\(-5\,\mathrm{m/s}\)</span> respecto del laboratorio inicial. Compare con una expulsión continua de masa desde diez hasta ocho kilogramos a rapidez relativa constante de cinco metros por segundo.</p>
+</section>
+<section id="ejercicio-27-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-13">13. Separar una etapa</h3>
+<p>Un vehículo parte con <span class="math inline">\(120\,\mathrm{kg}\)</span>. Consume <span class="math inline">\(40\,\mathrm{kg}\)</span> de propelente, desprende sin impulso relativo una estructura seca de <span class="math inline">\(10\,\mathrm{kg}\)</span> y consume después otros <span class="math inline">\(30\,\mathrm{kg}\)</span>. Ambas expulsiones tienen <span class="math inline">\(c=200\,\mathrm{m/s}\)</span>; omita fuerzas externas. Calcule el cambio total de velocidad y compárelo con conservar la estructura hasta terminar ambas combustiones. Identifique las masas que entran en cada logaritmo.</p>
+</section>
+<section id="ejercicio-27-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-14">14. Una placa fija frente al chorro</h3>
+<p>Agua de densidad <span class="math inline">\(1000\,\mathrm{kg/m^3}\)</span> llega a una placa fija con sección de chorro <span class="math inline">\(10^{-4}\,\mathrm{m^2}\)</span> y rapidez <span class="math inline">\(10\,\mathrm{m/s}\)</span>. El agua sale con componente axial nula, en un régimen estacionario con presiones manométricas nulas en las secciones y peso omitido. Determine caudal, fuerza axial sobre la placa y potencia mecánica recibida por una placa inmóvil. Decida si estos datos determinan la energía disipada en el flujo.</p>
+</section>
+<section id="ejercicio-27-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-15">15. La placa se desplaza</h3>
+<p>La placa del problema anterior se mueve en la dirección del chorro a velocidad constante <span class="math inline">\(V=4\,\mathrm{m/s}\)</span>. Suponga que intercepta toda la corriente que la alcanza y que la velocidad axial de salida es <span class="math inline">\(V\)</span> en el laboratorio. Obtenga el caudal interceptado, la fuerza axial del agua y la potencia que puede entregar a una carga que mantiene esa velocidad. Declare qué frontera usa para el cálculo.</p>
+</section>
+<section id="ejercicio-27-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-16">16. Elegir la velocidad de extracción</h3>
+<p>Para una placa móvil con las hipótesis del problema 15 y <span class="math inline">\(0\le V\le U\)</span>, maximice <span class="math inline">\(P(V)=\rho AV(U-V)^2\)</span>. Compare la potencia máxima con el flujo cinético <span class="math inline">\(\rho AU^3/2\)</span> del chorro completo. Obtenga los valores numéricos con los datos anteriores y explique qué parte del chorro participa en cada segundo.</p>
+</section>
+<section id="ejercicio-27-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-17">17. El conducto gira noventa grados</h3>
+<p>Un flujo estacionario con caudal <span class="math inline">\(1\,\mathrm{kg/s}\)</span> entra en un codo con velocidad <span class="math inline">\((10,0)\,\mathrm{m/s}\)</span> y sale con <span class="math inline">\((0,10)\,\mathrm{m/s}\)</span>. Omita peso y tome presiones manométricas nulas en las dos secciones. Determine la fuerza del codo sobre el fluido y la del fluido sobre el codo. Compare los flujos de energía cinética y decida si la desviación requiere por sí misma una pérdida de esa energía.</p>
+</section>
+<section id="ejercicio-27-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-18">18. Un volumen que se alarga</h3>
+<p>Un fluido de densidad constante <span class="math inline">\(\rho\)</span> se mueve con velocidad uniforme <span class="math inline">\(U&gt;0\)</span> en un conducto recto de sección <span class="math inline">\(A\)</span>. El volumen de control ocupa <span class="math inline">\(0&lt;x&lt;L_0+Vt\)</span>, con <span class="math inline">\(0&lt;V&lt;U\)</span>. Calcule la derivada de su masa y de su momento axial. Compruebe ambos balances mediante los flujos y explique por qué puede crecer el momento contenido con fuerza neta nula.</p>
+</section>
+<section id="ejercicio-27-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-19">19. La misma corriente en dos fronteras</h3>
+<p>En un conducto de sección constante <span class="math inline">\(A\)</span> tome <span class="math inline">\(u(x,t)=ax\)</span> y <span class="math inline">\(\rho(t)=\rho_0e^{-at}\)</span>, con <span class="math inline">\(a&gt;0\)</span> y <span class="math inline">\(x\ge0\)</span>. Compruebe continuidad. Compare la masa en el intervalo fijo <span class="math inline">\([0,L_0]\)</span> con la de la región material <span class="math inline">\([0,L_0e^{at}]\)</span>. Calcule el flujo másico saliente en la frontera fija y en la frontera material.</p>
+</section>
+<section id="ejercicio-27-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-20">20. Lo que el movimiento permite inferir</h3>
+<p>Un receptor incorpora masa a tasa total <span class="math inline">\(\mu&gt;0\)</span>, sin fuerza externa horizontal. Se mide <span class="math inline">\(m(t)\)</span> y <span class="math inline">\(v(t)\)</span>. Deduzca la velocidad horizontal media de entrada que esos datos determinan. Para <span class="math inline">\(m=2\,\mathrm{kg}\)</span>, <span class="math inline">\(v=3\,\mathrm{m/s}\)</span>, <span class="math inline">\(\mu=0{,}5\,\mathrm{kg/s}\)</span> y <span class="math inline">\(\dot v=-0{,}3\,\mathrm{m/s^2}\)</span>, calcule esa media. Compare una entrada uniforme con dos entradas iguales de velocidades cero y <span class="math inline">\(3{,}6\,\mathrm{m/s}\)</span>, tanto en aceleración como en conversión de energía cinética horizontal. Identifique qué medición adicional permitiría distinguirlas.</p>
+</section>
+<section id="ejercicio-27-21" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-27-21">21. Dos entradas con el mismo movimiento y la misma conversión</h3>
+<p>Un receptor horizontal de masa inicial <span class="math inline">\(2\,\mathrm{kg}\)</span> y velocidad inicial <span class="math inline">\(3\,\mathrm{m/s}\)</span> captura corrientes de tasa total constante <span class="math inline">\(\mu=0{,}5\,\mathrm{kg/s}\)</span>, sin fuerza externa horizontal. Compare dos preparaciones que conservan sus tasas y velocidades mientras dura la captura. En A llegan dos corrientes iguales con velocidades <span class="math inline">\(0\)</span> y <span class="math inline">\(3{,}6\,\mathrm{m/s}\)</span>. En B llegan tres corrientes con fracciones de caudal <span class="math inline">\(1/4,1/2,1/4\)</span> y velocidades <span class="math inline">\(1{,}8-1{,}8\sqrt2\)</span>, <span class="math inline">\(1{,}8\)</span> y <span class="math inline">\(1{,}8+1{,}8\sqrt2\,\mathrm{m/s}\)</span>. Las velocidades negativas corresponden a entradas desde el sentido opuesto y las corrientes permanecen separadas hasta su captura. Obtenga la media, la varianza, el movimiento del receptor y los balances cinéticos horizontales. Calcule en ambas preparaciones el cuarto momento central ponderado <span class="math inline">\(\sum_a\mu_a(w_a-\overline w)^4/\mu\)</span> y proponga una observación que las distinga.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-27-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-1">1. Una porción de arena</h3>
+<p>El sistema material contiene el carro y la porción que llegará a él. Su momento horizontal inicial es <span class="math inline">\(6\,\mathrm{kg\,m/s}\)</span> y el final es <span class="math inline">\(2{,}5v_f\)</span>, de donde <span class="math inline">\(v_f=2{,}4\,\mathrm{m/s}\)</span>. Las energías cinéticas horizontales son <span class="math inline">\(K_i=9\,\mathrm J\)</span> y <span class="math inline">\(K_f=\tfrac12(2{,}5)(2{,}4)^2=7{,}2\,\mathrm J\)</span>. Se convierten <span class="math inline">\(1{,}8\,\mathrm J\)</span> en otras formas de energía.</p>
+<p>La pérdida también se obtiene de <span class="math inline">\(D=\tfrac12[2(0{,}5)/2{,}5](3-0)^2\)</span>. El carro solo recibe una interacción de la arena; incluir ambos permite cancelar la transferencia interna de momento durante la captura. La afirmación sobre energía horizontal deja abierta la energía asociada a la caída vertical.</p>
+</section>
+<section id="solucion-27-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-2">2. La tolva permanece abierta</h3>
+<p>La masa al final es <span class="math inline">\(m_f=2+0{,}5(4)=4\,\mathrm{kg}\)</span>. Como el flujo de momento horizontal entrante es cero, <span class="math inline">\(mv=6\)</span> y <span class="math inline">\(v_f=1{,}5\,\mathrm{m/s}\)</span>. Integramos la velocidad:</p>
+<p><span class="math display">\[
+x(t)-x_0=\frac{m_0v_0}{\mu}\log\frac{m_0+\mu t}{m_0},
+\qquad x(4)-x_0=12\log2\simeq8{,}3178\,\mathrm m.
+\]</span></p>
+<p>La energía final es <span class="math inline">\(4{,}5\,\mathrm J\)</span>; se convierten los otros <span class="math inline">\(4{,}5\,\mathrm J\)</span>, pues faltan trabajo externo horizontal y aporte cinético horizontal de la arena. Una captura única de los dos kilogramos produce la misma velocidad final por conservación de momento y la misma conversión total. Las historias de velocidad, posición y fuerza durante el proceso difieren: la recogida continua distribuye el intercambio en el tiempo.</p>
+</section>
+<section id="solucion-27-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-3">3. La arena llega en movimiento</h3>
+<p>La fórmula general da <span class="math inline">\(v_f=1+[2(3-1)]/4=2\,\mathrm{m/s}\)</span>. Entran dos kilogramos con energía cinética horizontal de un joule y momento de <span class="math inline">\(2\,\mathrm{kg\,m/s}\)</span>. El momento contenido crece de seis a ocho y coincide con <span class="math inline">\(m_fv_f=8\)</span>. La energía final vale <span class="math inline">\(8\,\mathrm J\)</span>; del total disponible de <span class="math inline">\(9+1=10\,\mathrm J\)</span> se convierten dos joules.</p>
+<p>Podemos comprobarlo integrando la potencia de captura: <span class="math inline">\(v-w=m_0(v_0-w)/m=4/m\)</span>, por lo que <span class="math inline">\(D=\int_0^4\mu(4/m(t))^2/2\,dt=2\,\mathrm J\)</span>. La velocidad de llegada modifica simultáneamente el flujo de momento, el aporte cinético y la conversión en el contacto.</p>
+</section>
+<section id="solucion-27-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-4">4. Una fuerza constante durante la recogida</h3>
+<p>El balance es <span class="math inline">\(d(mv)/dt=F\)</span>, con momento inicial cero. Por tanto</p>
+<p><span class="math display">\[
+v(t)=\frac{Ft}{m_0+\mu t},\qquad
+\dot v(t)=\frac{Fm_0}{(m_0+\mu t)^2},
+\]</span></p>
+<p><span class="math display">\[
+x(t)-x_0=\frac F\mu\left[t-
+\frac{m_0}{\mu}\log\left(1+\frac{\mu t}{m_0}\right)\right].
+\]</span></p>
+<p>A los cuatro segundos, <span class="math inline">\(v=2\,\mathrm{m/s}\)</span>, <span class="math inline">\(\dot v=0{,}25\,\mathrm{m/s^2}\)</span> y la distancia es <span class="math inline">\(16(1-\log2)\simeq4{,}90965\,\mathrm m\)</span>. El trabajo externo es <span class="math inline">\(W=F\Delta x\simeq9{,}81929\,\mathrm J\)</span> y la energía cinética final es <span class="math inline">\(8\,\mathrm J\)</span>. La diferencia <span class="math inline">\(D\simeq1{,}81929\,\mathrm J\)</span> coincide con <span class="math inline">\(\int_0^4\mu v^2/2\,dt\)</span>. Aplicar <span class="math inline">\(m\dot v=F\)</span> sin el término de captura sobreestimaría la aceleración: una parte del impulso acelera la materia que va incorporándose.</p>
+</section>
+<section id="solucion-27-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-5">5. Mantener la velocidad</h3>
+<p>Como <span class="math inline">\(\dot v=0\)</span>, la fuerza externa debe satisfacer <span class="math inline">\(F_x=\mu v=1{,}5\,\mathrm N\)</span>. Su potencia es <span class="math inline">\(F_xv=4{,}5\,\mathrm W\)</span>. La masa almacenada crece con velocidad fija, así que <span class="math inline">\(\dot K_x=\mu v^2/2=2{,}25\,\mathrm W\)</span>; la captura convierte otros <span class="math inline">\(2{,}25\,\mathrm W\)</span> de energía cinética horizontal.</p>
+<p>El balance tridimensional necesita la velocidad vertical de llegada, el cambio de energía gravitatoria y las transferencias durante la detención vertical. Conocer la fuerza horizontal y el crecimiento de masa permite cerrar el balance horizontal desarrollado, pero no determina por sí solo esas contribuciones adicionales.</p>
+</section>
+<section id="solucion-27-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-6">6. Soltar carga que acompaña al vehículo</h3>
+<p>La salida tiene <span class="math inline">\(s=v\)</span> en la componente horizontal, de modo que <span class="math inline">\(m\dot v=-\nu(s-v)=0\)</span>. El vehículo mantiene <span class="math inline">\(v=4\,\mathrm{m/s}\)</span> mientras la masa siga positiva y la descarga se sostenga. En cambio,</p>
+<p><span class="math display">\[
+\frac{d}{dt}(mv)=\dot m v=-\nu v=-4\,\mathrm N.
+\]</span></p>
+<p>El contenido pierde momento porque parte de la materia que ya se movía con él cruza la frontera. Esa materia continúa llevando el momento faltante. Desprenderla con velocidad horizontal común deja intacta la velocidad del receptor. El descenso vertical posterior exige su balance propio y no añade automáticamente propulsión horizontal.</p>
+</section>
+<section id="solucion-27-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-7">7. Una expulsión con final físico</h3>
+<p>La duración es <span class="math inline">\(t_b=(100-60)/2=20\,\mathrm s\)</span>. El empuje de momento vale <span class="math inline">\(\nu c=400\,\mathrm N\)</span> y</p>
+<p><span class="math display">\[
+v_f=200\log\frac{100}{60}\simeq102{,}1651\,\mathrm{m/s}.
+\]</span></p>
+<p>Las aceleraciones durante el tramo son <span class="math inline">\(400/100=4\,\mathrm{m/s^2}\)</span> al inicio y <span class="math inline">\(400/60\simeq6{,}6667\,\mathrm{m/s^2}\)</span> justo antes del agotamiento. Después, el motor cesa, la masa queda en sesenta kilogramos y, bajo la hipótesis de fuerza externa nula, el vehículo mantiene su velocidad final. El cambio de ecuación evita extrapolar la combustión a un estado sin propelente.</p>
+</section>
+<section id="solucion-27-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-8">8. El combustible que exige una maniobra</h3>
+<p>Despejando el logaritmo, <span class="math inline">\(m_0/m_f=e^{\Delta v/c}=e^{1{,}5}\simeq4{,}48169\)</span>. La fracción consumida respecto de la masa inicial es <span class="math inline">\(1-m_f/m_0=1-e^{-1{,}5}\simeq0{,}77687\)</span>. Para masa final de veinte kilogramos, <span class="math inline">\(m_0=20e^{1{,}5}\simeq89{,}6338\,\mathrm{kg}\)</span> y el propelente suma aproximadamente <span class="math inline">\(69{,}6338\,\mathrm{kg}\)</span>.</p>
+<p>Si <span class="math inline">\(\epsilon=\Delta v/c\)</span> es pequeño, <span class="math inline">\(e^\epsilon=1+\epsilon+O(\epsilon^2)\)</span> y <span class="math inline">\(1-e^{-\epsilon}=\epsilon+O(\epsilon^2)\)</span>. La fracción inicial requerida es aproximadamente <span class="math inline">\(\Delta v/c\)</span> en ese régimen. Para <span class="math inline">\(\epsilon=1{,}5\)</span> el término cuadrático y los siguientes tienen un efecto grande, y la aproximación lineal daría una fracción imposible mayor que uno; ese diagnóstico señala el fallo del régimen supuesto.</p>
+</section>
+<section id="solucion-27-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-9">9. Dos historias de consumo</h3>
+<p>Ambos vehículos ganan por expulsión <span class="math inline">\(200\log(5/3)\simeq102{,}1651\,\mathrm{m/s}\)</span>. El primero pierde <span class="math inline">\(98{,}1\,\mathrm{m/s}\)</span> por gravedad y termina con <span class="math inline">\(204{,}0651\,\mathrm{m/s}\)</span>. El segundo pierde <span class="math inline">\(196{,}2\,\mathrm{m/s}\)</span> y termina con <span class="math inline">\(105{,}9651\,\mathrm{m/s}\)</span>. La comparación se hace al final de cada combustión, en instantes diferentes.</p>
+<p>Sin gravedad, ambos terminarían con <span class="math inline">\(302{,}1651\,\mathrm{m/s}\)</span>. La razón de masas decide el incremento ideal cuando falta fuerza externa. La gravedad añade una contribución acumulada durante el tiempo transcurrido; por eso cambiar la tasa y la duración puede cambiar el resultado, aunque la masa consumida sea la misma. Esta comparación omite resistencia y supone vuelo libre en ambos casos.</p>
+</section>
+<section id="solucion-27-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-10">10. El apoyo antes del vuelo</h3>
+<p>El empuje es <span class="math inline">\(20\,\mathrm N\)</span>. Mientras permanece apoyado, la aceleración vertical es cero y el balance da</p>
+<p><span class="math display">\[
+N(t)=m(t)g-20,\qquad m(t)=10-0{,}1t,
+\qquad0\le t\le50\,\mathrm s.
+\]</span></p>
+<p>La reacción disminuye desde <span class="math inline">\(78{,}1\,\mathrm N\)</span> hasta <span class="math inline">\(29{,}05\,\mathrm N\)</span> y sigue siendo positiva. El vehículo no despega. La masa crítica que igualaría empuje y peso es <span class="math inline">\(20/9{,}81\simeq2{,}03874\,\mathrm{kg}\)</span>, inferior a la masa seca de cinco kilogramos y, por ello, fuera del tramo accesible.</p>
+<p>Al suponer vuelo libre desde el inicio se obtendría <span class="math inline">\(a(0)=20/10-9{,}81=-7{,}81\,\mathrm{m/s^2}\)</span>, que conduciría hacia el soporte. El contacto proporciona la fuerza que esa hipótesis omite. El agotamiento termina la expulsión; después la reacción vuelve al peso de la masa seca.</p>
+</section>
+<section id="solucion-27-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-11">11. La sección de presión</h3>
+<p>El transporte de momento aporta <span class="math inline">\(\nu c=600\,\mathrm N\)</span>. La presión añade <span class="math inline">\((20000\,\mathrm{Pa})(0{,}01\,\mathrm{m^2})=200\,\mathrm N\)</span>. El total es <span class="math inline">\(800\,\mathrm N\)</span>. Una reducción de presión ambiente de <span class="math inline">\(10000\,\mathrm{Pa}\)</span> añade otros cien newtons y da <span class="math inline">\(900\,\mathrm N\)</span> si los demás datos permanecen fijos.</p>
+<p>Esta segunda respuesta compara dos estados ideales con igual caudal, velocidad relativa y presión de salida. Una tobera real puede modificar su flujo al cambiar el entorno. La fórmula sigue exigiendo los valores de salida adecuados al nuevo estado; la comparación realizada aísla sólo la contribución explícita de <span class="math inline">\(p_a\)</span>.</p>
+</section>
+<section id="solucion-27-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-12">12. Tres sentidos de una expulsión</h3>
+<p>En la primera preparación, si <span class="math inline">\(V\)</span> es la velocidad final del vehículo, la porción expulsada tiene velocidad inercial <span class="math inline">\(V-5\)</span>. Conservar el momento del conjunto da <span class="math inline">\(0=8V+2(V-5)\)</span> y <span class="math inline">\(V=1\,\mathrm{m/s}\)</span>. En la segunda, la velocidad de la porción es directamente <span class="math inline">\(-5\)</span> en el laboratorio; el balance es <span class="math inline">\(0=8V+2(-5)\)</span> y resulta <span class="math inline">\(V=1{,}25\,\mathrm{m/s}\)</span>.</p>
+<p>En la expulsión continua, cada porción sale con velocidad relativa instantánea <span class="math inline">\(-5\)</span>, desde un vehículo cuya velocidad cambia. Por tanto <span class="math inline">\(\Delta v=5\log(10/8)\simeq1{,}11572\,\mathrm{m/s}\)</span>. Las tres respuestas describen tres condiciones de salida distintas. Declarar el instante y el cuerpo respecto de los cuales se especifica una velocidad permite elegir la ecuación correcta y evita tratar un cambio finito como una identidad diferencial exacta.</p>
+</section>
+<section id="solucion-27-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-13">13. Separar una etapa</h3>
+<p>La primera combustión lleva de <span class="math inline">\(120\)</span> a <span class="math inline">\(80\,\mathrm{kg}\)</span>. La separación deja <span class="math inline">\(70\,\mathrm{kg}\)</span> y la segunda combustión termina en <span class="math inline">\(40\,\mathrm{kg}\)</span>. Al desprender la estructura con velocidad común no aparece un salto de velocidad, como en el problema 6. Así,</p>
+<p><span class="math display">\[
+\Delta v=200\left(\log\frac{120}{80}+\log\frac{70}{40}\right)
+=200\log\frac{21}{8}\simeq193{,}0162\,\mathrm{m/s}.
+\]</span></p>
+<p>Si se conserva la estructura durante las dos combustiones, la segunda lleva de <span class="math inline">\(80\)</span> a <span class="math inline">\(50\,\mathrm{kg}\)</span> y el incremento total es <span class="math inline">\(200\log(120/50)\simeq175{,}0937\,\mathrm{m/s}\)</span>. La separación permite aproximadamente <span class="math inline">\(17{,}9224\,\mathrm{m/s}\)</span> adicionales. El beneficio aparece durante la segunda expulsión porque se acelera una masa menor, aunque la separación ideal misma carezca de impulso relativo.</p>
+</section>
+<section id="solucion-27-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-14">14. Una placa fija frente al chorro</h3>
+<p>El caudal es <span class="math inline">\(\mu=\rho AU=1\,\mathrm{kg/s}\)</span>. En un volumen de control fijo y estacionario, el fluido pierde momento axial a tasa <span class="math inline">\(\mu U=10\,\mathrm N\)</span>. La placa ejerce esa fuerza hacia atrás sobre el agua; el agua ejerce <span class="math inline">\(10\,\mathrm N\)</span> hacia delante sobre la placa. Como la placa está inmóvil, la potencia mecánica de esa fuerza sobre ella es cero.</p>
+<p>La entrada trae <span class="math inline">\(\mu U^2/2=50\,\mathrm W\)</span> de energía cinética. La salida tiene componente axial cero, pero puede conservar velocidad lateral. Sin conocer esa velocidad y los demás intercambios energéticos, no podemos adjudicar los cincuenta watts a disipación. Un desvío ideal lateral con rapidez final igual a la inicial conserva el flujo cinético; una captura seguida de salida con rapidez despreciable admite una conversión grande. El balance axial de momento es compatible con ambas situaciones.</p>
+</section>
+<section id="solucion-27-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-15">15. La placa se desplaza</h3>
+<p>Elegimos una frontera que acompaña a la placa a velocidad constante <span class="math inline">\(V\)</span>. La tasa que la alcanza es <span class="math inline">\(\mu=\rho A(U-V)=0{,}6\,\mathrm{kg/s}\)</span>. Cada kilogramo cambia su velocidad axial de <span class="math inline">\(U\)</span> a <span class="math inline">\(V\)</span>; en régimen sin acumulación apreciable de momento en la zona de desvío, la fuerza axial del agua sobre la placa es</p>
+<p><span class="math display">\[
+T=\mu(U-V)=\rho A(U-V)^2=3{,}6\,\mathrm N.
+\]</span></p>
+<p>Para mantener <span class="math inline">\(V\)</span> constante, una carga ejerce sobre ella la fuerza opuesta; la potencia transferible a esa carga es <span class="math inline">\(TV=14{,}4\,\mathrm W\)</span>. Usar <span class="math inline">\(\rho AU\)</span> como caudal interceptado contaría también materia que durante ese segundo todavía no alcanza la frontera móvil. Las componentes laterales de salida siguen siendo necesarias para cerrar el balance energético completo del fluido.</p>
+</section>
+<section id="solucion-27-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-16">16. Elegir la velocidad de extracción</h3>
+<p>Al derivar, <span class="math inline">\(P'(V)=\rho A(U-V)(U-3V)\)</span>. En el intervalo físico, la potencia crece hasta <span class="math inline">\(V=U/3\)</span> y decrece después hasta cero en <span class="math inline">\(V=U\)</span>. El otro extremo también da potencia nula. Por tanto</p>
+<p><span class="math display">\[
+V_*=\frac U3,\qquad P_{\max}=\frac4{27}\rho AU^3,
+\qquad \frac{P_{\max}}{\rho AU^3/2}=\frac8{27}.
+\]</span></p>
+<p>Con los datos del chorro, <span class="math inline">\(V_*=10/3\,\mathrm{m/s}\)</span> y <span class="math inline">\(P_{\max}\simeq14{,}8148\,\mathrm W\)</span>, frente a <span class="math inline">\(50\,\mathrm W\)</span> del chorro completo. El cociente es aproximadamente <span class="math inline">\(29{,}63\%\)</span>. En esa preparación la frontera recibe sólo un caudal <span class="math inline">\(\rho A(2U/3)\)</span>; el cociente pedido usa como referencia toda la corriente que atravesaría una sección fija. La diferencia de fronteras explica qué masa se cuenta en cada tasa y evita interpretar el cociente como una eficiencia universal de cualquier dispositivo hidráulico.</p>
+</section>
+<section id="solucion-27-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-17">17. El conducto gira noventa grados</h3>
+<p>El momento dentro del volumen fijo es constante. La fuerza del codo sobre el fluido compensa el transporte neto:</p>
+<p><span class="math display">\[
+\mathbf F=\mu(\mathbf u_{\rm salida}-\mathbf u_{\rm entrada})
+=(-10,10)\,\mathrm N.
+\]</span></p>
+<p>El fluido ejerce sobre el codo <span class="math inline">\((10,-10)\,\mathrm N\)</span>, de módulo <span class="math inline">\(10\sqrt2\simeq14{,}1421\,\mathrm N\)</span>. La fuerza de sostén externa del conjunto debe considerarla con su signo correspondiente. Las presiones manométricas nulas y el peso omitido hacen que no haya otras contribuciones en el balance especificado.</p>
+<p>Ambos flujos de energía cinética valen <span class="math inline">\(50\,\mathrm W\)</span>. Girar una velocidad puede cambiar su vector sin cambiar su módulo; una descripción ideal de desvío por paredes fijas puede conservar energía cinética mientras transfiere momento. Las pérdidas reales requieren describir rozamiento, turbulencia u otros mecanismos y, si las hay, ajustar los datos de velocidad, presión o aporte energético del flujo.</p>
+</section>
+<section id="solucion-27-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-18">18. Un volumen que se alarga</h3>
+<p>La masa contenida es <span class="math inline">\(M=\rho A(L_0+Vt)\)</span> y su momento es <span class="math inline">\(P=MU\)</span>. Sus derivadas son <span class="math inline">\(\dot M=\rho AV\)</span> y <span class="math inline">\(\dot P=\rho AUV\)</span>. En la entrada fija entra masa a tasa <span class="math inline">\(\rho AU\)</span>; por la salida móvil sale a tasa <span class="math inline">\(\rho A(U-V)\)</span>. Su diferencia es <span class="math inline">\(\rho AV\)</span>.</p>
+<p>El momento entrante por segundo es <span class="math inline">\(\rho AU^2\)</span> y el saliente es <span class="math inline">\(\rho AU(U-V)\)</span>. Restarlos da exactamente <span class="math inline">\(\rho AUV\)</span>, igual al crecimiento del momento contenido cuando <span class="math inline">\(F=0\)</span>. La región incorpora una porción de una corriente que ya se mueve con velocidad <span class="math inline">\(U\)</span>. Crece el inventario porque se amplía la selección espacial; cada elemento fluido mantiene su velocidad.</p>
+</section>
+<section id="solucion-27-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-19">19. La misma corriente en dos fronteras</h3>
+<p>La densidad cumple <span class="math inline">\(\partial_t\rho=-a\rho\)</span> y <span class="math inline">\(\partial_x(\rho u)=a\rho\)</span>, de modo que su suma es cero. Para el intervalo fijo,</p>
+<p><span class="math display">\[
+M_{\rm fijo}=\rho_0e^{-at}AL_0,\qquad
+\dot M_{\rm fijo}=-a\rho_0e^{-at}AL_0.
+\]</span></p>
+<p>El extremo izquierdo tiene velocidad fluida cero. Por el derecho sale masa a tasa <span class="math inline">\(\rho aL_0A\)</span>, justamente <span class="math inline">\(-\dot M_{\rm fijo}\)</span>. En la región material, el extremo derecho se mueve con <span class="math inline">\(\dot L=aL=u(L,t)\)</span>; la velocidad relativa de cruce es cero y la masa <span class="math inline">\(\rho_0e^{-at}A L_0e^{at}=\rho_0AL_0\)</span> permanece constante.</p>
+<p>Esta corriente describe una dilatación cinemática compatible con conservación de masa. Para determinar las fuerzas que la producen haría falta además el balance de momento: la aceleración material es <span class="math inline">\(\partial_tu+u\partial_xu=a^2x\)</span>. La continuidad por sí sola establece la contabilidad de masa del ejemplo.</p>
+</section>
+<section id="solucion-27-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-20">20. Lo que el movimiento permite inferir</h3>
+<p>El balance horizontal da <span class="math inline">\(m\dot v=\sum_a\mu_a(w_a-v)\)</span>. Con <span class="math inline">\(\mu=\sum_a\mu_a=\dot m&gt;0\)</span>, se despeja la media ponderada</p>
+<p><span class="math display">\[
+\overline w=\frac{\sum_a\mu_aw_a}{\mu}
+=v+\frac{m\dot v}{\mu}.
+\]</span></p>
+<p>Los valores medidos dan <span class="math inline">\(\overline w=3+2(-0{,}3)/0{,}5=1{,}8\,\mathrm{m/s}\)</span>. Una corriente única con esa velocidad y dos corrientes de <span class="math inline">\(0{,}25\,\mathrm{kg/s}\)</span> a cero y <span class="math inline">\(3{,}6\,\mathrm{m/s}\)</span> producen el mismo momento entrante <span class="math inline">\(0{,}9\,\mathrm N\)</span> y la misma aceleración del receptor.</p>
+<p>La conversión cinética horizontal en la corriente uniforme es <span class="math inline">\(D_1=\tfrac12(0{,}5)(1{,}8-3)^2=0{,}36\,\mathrm W\)</span>. Para las corrientes separadas,</p>
+<p><span class="math display">\[
+D_2=\frac12(0{,}25)(0-3)^2+
+\frac12(0{,}25)(3{,}6-3)^2=1{,}17\,\mathrm W.
+\]</span></p>
+<p>La diferencia admite una expresión general. Expandir <span class="math inline">\(w_a-v=(w_a-\overline w)+(\overline w-v)\)</span> y usar <span class="math inline">\(\sum_a\mu_a(w_a-\overline w)=0\)</span> produce</p>
+<p><span class="math display">\[
+\frac12\sum_a\mu_a(w_a-v)^2=
+\frac\mu2(\overline w-v)^2+
+\frac12\sum_a\mu_a(w_a-\overline w)^2.
+\]</span></p>
+<p>El segundo término registra la dispersión de velocidades de entrada y vale <span class="math inline">\(0{,}81\,\mathrm W\)</span> en el ejemplo. Un registro independiente de las velocidades de llegada o de la energía horizontal convertida, con las otras transferencias controladas, permitiría distinguir las preparaciones. Medir sólo masa y trayectoria fija la media de momento entrante y deja esa dispersión indeterminada.</p>
+</section>
+<section id="solucion-27-21" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-27-21">21. Dos entradas con el mismo movimiento y la misma conversión</h3>
+<p>La preparación A tiene media <span class="math inline">\(1{,}8\,\mathrm{m/s}\)</span> y varianza <span class="math inline">\((1{,}8)^2=3{,}24\,\mathrm{m^2/s^2}\)</span>. En B, los desvíos respecto de la misma media son <span class="math inline">\(-1{,}8\sqrt2\)</span>, cero y <span class="math inline">\(1{,}8\sqrt2\)</span>. Sus pesos cancelan el primer momento y la varianza es <span class="math inline">\((1/4+1/4)(1{,}8\sqrt2)^2=3{,}24\,\mathrm{m^2/s^2}\)</span>. Ambas preparaciones transportan el mismo momento horizontal por segundo: <span class="math inline">\(\mu\overline w=0{,}9\,\mathrm N\)</span>.</p>
+<p>El balance <span class="math inline">\(m\dot v=\mu(\overline w-v)\)</span> es por tanto idéntico en todo el tramo. Con los mismos datos iniciales, da, con tiempo en segundos,</p>
+<p><span class="math display">\[
+m(t)=2+0{,}5t\quad\text{en kilogramos},\qquad
+v(t)=1{,}8+\frac{2{,}4}{2+0{,}5t}\quad\text{en metros por segundo}.
+\]</span></p>
+<p>La igualdad se refiere a la función temporal completa, dentro del modelo de captura y de su intervalo físico. La potencia cinética horizontal entrante es <span class="math inline">\(\mu(\overline w^2+\sigma_w^2)/2=1{,}62\,\mathrm W\)</span> en ambos casos. La conversión es también la misma función,</p>
+<p><span class="math display">\[
+D(t)=\frac\mu2\left[(\overline w-v(t))^2+\sigma_w^2\right],
+\qquad \dot K=1{,}62\,\mathrm W-D(t).
+\]</span></p>
+<p>Al comenzar, <span class="math inline">\(D(0)=1{,}17\,\mathrm W\)</span> y <span class="math inline">\(\dot K(0)=0{,}45\,\mathrm W\)</span>. Los registros del receptor y estos balances horizontales completos conservan los dos primeros momentos de las entradas.</p>
+<p>El cuarto momento central retiene otra propiedad. En A vale <span class="math inline">\((1{,}8)^4=10{,}4976\,\mathrm{m^4/s^4}\)</span>. En B vale <span class="math inline">\((1/2)(1{,}8\sqrt2)^4=20{,}9952\,\mathrm{m^4/s^4}\)</span>. Un registro de velocidades individuales inmediatamente antes de la captura distingue las dos familias y permite estimar esa magnitud con una calibración y un muestreo declarados. También las distingue el registro separado de los caudales por puerto. Las dos preparaciones muestran que ajustar trayectoria y conversión energética fija más información que la trayectoria sola, mientras la estructura de las corrientes continúa requiriendo observaciones adicionales.</p>
+<figure id="fig-fispm-r20261021-27-8" class="fpm-v04-panel figure">
+<p><a href="../assets/a0690119a649a07c53f11081.svg" class="lightbox" data-gallery="fispm-r20261021-c27"><img src="../assets/a0690119a649a07c53f11081.svg" alt="Caudales por velocidad en dos familias de corrientes con igual media y varianza." class="fpm-v04-figure img-fluid figure-img" width="518.4" height="216" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 27.8.</em> Las barras representan caudales por puerto. Las dos familias comparten tasa total, media y varianza de velocidad, y producen los mismos registros del receptor dentro del modelo. El cuarto momento central y las velocidades de cada puerto permiten distinguirlas.</p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="lecturas-y-relaciones" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-relaciones">Lecturas y relaciones</h2>
+<p>Spivak examina el cohete y la incorporación de materia en el añadido 1A de <em>Physics for Mathematicians. Mechanics I</em>. La discusión insiste en identificar las porciones materiales y sus velocidades de intercambio. Aquí la captura del capítulo 9 construye primero el balance abierto; el cambio de observador comprueba su consistencia y la forma distribuida explica el papel de una frontera móvil.</p>
+<p>Sears–Zemansky desarrolla la propulsión en la sección 8.6 y Serway–Jewett en la sección 9.9 de los volúmenes consultados. Ambos deducen la relación logarítmica mediante conservación de momento. Los problemas de este capítulo añaden condiciones de agotamiento, apoyo, tasas, energía e inferencia para que el cálculo termine en una predicción físicamente interpretable.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-26-estabilidad-y-dinamica-no-lineal.html">← 26. Estabilidad y dinámica no lineal</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main></div><script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script><script>document.addEventListener("DOMContentLoaded",function(){const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');});</script></body></html>

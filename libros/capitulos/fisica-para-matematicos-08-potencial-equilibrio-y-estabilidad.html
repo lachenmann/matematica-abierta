@@ -1,0 +1,2010 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 8 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>Potencial, equilibrio y estabilidad – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#la-misma-integral-leída-desde-sus-extremos" id="toc-la-misma-integral-leída-desde-sus-extremos" class="nav-link active" data-scroll-target="#la-misma-integral-leída-desde-sus-extremos">La misma integral, leída desde sus extremos</a></li>
+  <li><a href="#construir-un-potencial-y-elegir-su-referencia" id="toc-construir-un-potencial-y-elegir-su-referencia" class="nav-link" data-scroll-target="#construir-un-potencial-y-elegir-su-referencia">Construir un potencial y elegir su referencia</a></li>
+  <li><a href="#cuándo-el-trabajo-depende-sólo-de-los-extremos" id="toc-cuándo-el-trabajo-depende-sólo-de-los-extremos" class="nav-link" data-scroll-target="#cuándo-el-trabajo-depende-sólo-de-los-extremos">Cuándo el trabajo depende sólo de los extremos</a></li>
+  <li><a href="#energía-mecánica-y-trabajo-de-las-otras-fuerzas" id="toc-energía-mecánica-y-trabajo-de-las-otras-fuerzas" class="nav-link" data-scroll-target="#energía-mecánica-y-trabajo-de-las-otras-fuerzas">Energía mecánica y trabajo de las otras fuerzas</a></li>
+  <li><a href="#leer-una-línea-de-energía-sin-confundirla-con-una-trayectoria" id="toc-leer-una-línea-de-energía-sin-confundirla-con-una-trayectoria" class="nav-link" data-scroll-target="#leer-una-línea-de-energía-sin-confundirla-con-una-trayectoria">Leer una línea de energía sin confundirla con una trayectoria</a></li>
+  <li><a href="#qué-se-perturba-cuando-se-habla-de-estabilidad" id="toc-qué-se-perturba-cuando-se-habla-de-estabilidad" class="nav-link" data-scroll-target="#qué-se-perturba-cuando-se-habla-de-estabilidad">Qué se perturba cuando se habla de estabilidad</a></li>
+  <li><a href="#la-segunda-derivada-y-los-casos-que-deja-abiertos" id="toc-la-segunda-derivada-y-los-casos-que-deja-abiertos" class="nav-link" data-scroll-target="#la-segunda-derivada-y-los-casos-que-deja-abiertos">La segunda derivada y los casos que deja abiertos</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-8-1" id="toc-ejercicio-8-1" class="nav-link" data-scroll-target="#ejercicio-8-1">1. Cambiar el estado inicial del carro</a></li>
+  <li><a href="#ejercicio-8-2" id="toc-ejercicio-8-2" class="nav-link" data-scroll-target="#ejercicio-8-2">2. Una fuerza con potencial cuártico</a></li>
+  <li><a href="#ejercicio-8-3" id="toc-ejercicio-8-3" class="nav-link" data-scroll-target="#ejercicio-8-3">3. Subir bajo gravedad uniforme</a></li>
+  <li><a href="#ejercicio-8-4" id="toc-ejercicio-8-4" class="nav-link" data-scroll-target="#ejercicio-8-4">4. La mayor extensión no es el equilibrio</a></li>
+  <li><a href="#ejercicio-8-5" id="toc-ejercicio-8-5" class="nav-link" data-scroll-target="#ejercicio-8-5">5. Dos intervalos permitidos</a></li>
+  <li><a href="#ejercicio-8-6" id="toc-ejercicio-8-6" class="nav-link" data-scroll-target="#ejercicio-8-6">6. Cruzar con energía superior a la barrera</a></li>
+  <li><a href="#ejercicio-8-7" id="toc-ejercicio-8-7" class="nav-link" data-scroll-target="#ejercicio-8-7">7. Llegar al máximo con la energía justa</a></li>
+  <li><a href="#ejercicio-8-8" id="toc-ejercicio-8-8" class="nav-link" data-scroll-target="#ejercicio-8-8">8. Una detención en tiempo finito</a></li>
+  <li><a href="#ejercicio-8-9" id="toc-ejercicio-8-9" class="nav-link" data-scroll-target="#ejercicio-8-9">9. Dos sentidos en la misma línea de energía</a></li>
+  <li><a href="#ejercicio-8-10" id="toc-ejercicio-8-10" class="nav-link" data-scroll-target="#ejercicio-8-10">10. Una cota concreta de estabilidad</a></li>
+  <li><a href="#ejercicio-8-11" id="toc-ejercicio-8-11" class="nav-link" data-scroll-target="#ejercicio-8-11">11. Salir de la vecindad de un máximo</a></li>
+  <li><a href="#ejercicio-8-12" id="toc-ejercicio-8-12" class="nav-link" data-scroll-target="#ejercicio-8-12">12. Cuando la segunda derivada se anula</a></li>
+  <li><a href="#ejercicio-8-13" id="toc-ejercicio-8-13" class="nav-link" data-scroll-target="#ejercicio-8-13">13. Un potencial y una resistencia viscosa</a></li>
+  <li><a href="#ejercicio-8-14" id="toc-ejercicio-8-14" class="nav-link" data-scroll-target="#ejercicio-8-14">14. Preparar una partícula para cruzar la barrera</a></li>
+  <li><a href="#ejercicio-8-15" id="toc-ejercicio-8-15" class="nav-link" data-scroll-target="#ejercicio-8-15">15. Una interacción atractiva que se debilita</a></li>
+  <li><a href="#ejercicio-8-16" id="toc-ejercicio-8-16" class="nav-link" data-scroll-target="#ejercicio-8-16">16. Reposo fuera del mínimo por rozamiento</a></li>
+  <li><a href="#ejercicio-8-17" id="toc-ejercicio-8-17" class="nav-link" data-scroll-target="#ejercicio-8-17">17. Un umbral con incertidumbre</a></li>
+  <li><a href="#ejercicio-8-18" id="toc-ejercicio-8-18" class="nav-link" data-scroll-target="#ejercicio-8-18">18. Tres valores de potencial no fijan la fuerza</a></li>
+  <li><a href="#ejercicio-8-19" id="toc-ejercicio-8-19" class="nav-link" data-scroll-target="#ejercicio-8-19">19. Reconocer un potencial en el plano</a></li>
+  <li><a href="#ejercicio-8-20" id="toc-ejercicio-8-20" class="nav-link" data-scroll-target="#ejercicio-8-20">20. El parámetro del potencial cambia con el tiempo</a></li>
+  <li><a href="#ejercicio-8-21" id="toc-ejercicio-8-21" class="nav-link" data-scroll-target="#ejercicio-8-21">21. Un apoyo que entrega y recupera energía</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#solucion-8-1" id="toc-solucion-8-1" class="nav-link" data-scroll-target="#solucion-8-1">1. Cambiar el estado inicial del carro</a></li>
+  <li><a href="#solucion-8-2" id="toc-solucion-8-2" class="nav-link" data-scroll-target="#solucion-8-2">2. Una fuerza con potencial cuártico</a></li>
+  <li><a href="#solucion-8-3" id="toc-solucion-8-3" class="nav-link" data-scroll-target="#solucion-8-3">3. Subir bajo gravedad uniforme</a></li>
+  <li><a href="#solucion-8-4" id="toc-solucion-8-4" class="nav-link" data-scroll-target="#solucion-8-4">4. La mayor extensión no es el equilibrio</a></li>
+  <li><a href="#solucion-8-5" id="toc-solucion-8-5" class="nav-link" data-scroll-target="#solucion-8-5">5. Dos intervalos permitidos</a></li>
+  <li><a href="#solucion-8-6" id="toc-solucion-8-6" class="nav-link" data-scroll-target="#solucion-8-6">6. Cruzar con energía superior a la barrera</a></li>
+  <li><a href="#solucion-8-7" id="toc-solucion-8-7" class="nav-link" data-scroll-target="#solucion-8-7">7. Llegar al máximo con la energía justa</a></li>
+  <li><a href="#solucion-8-8" id="toc-solucion-8-8" class="nav-link" data-scroll-target="#solucion-8-8">8. Una detención en tiempo finito</a></li>
+  <li><a href="#solucion-8-9" id="toc-solucion-8-9" class="nav-link" data-scroll-target="#solucion-8-9">9. Dos sentidos en la misma línea de energía</a></li>
+  <li><a href="#solucion-8-10" id="toc-solucion-8-10" class="nav-link" data-scroll-target="#solucion-8-10">10. Una cota concreta de estabilidad</a></li>
+  <li><a href="#solucion-8-11" id="toc-solucion-8-11" class="nav-link" data-scroll-target="#solucion-8-11">11. Salir de la vecindad de un máximo</a></li>
+  <li><a href="#solucion-8-12" id="toc-solucion-8-12" class="nav-link" data-scroll-target="#solucion-8-12">12. Cuando la segunda derivada se anula</a></li>
+  <li><a href="#solucion-8-13" id="toc-solucion-8-13" class="nav-link" data-scroll-target="#solucion-8-13">13. Un potencial y una resistencia viscosa</a></li>
+  <li><a href="#solucion-8-14" id="toc-solucion-8-14" class="nav-link" data-scroll-target="#solucion-8-14">14. Preparar una partícula para cruzar la barrera</a></li>
+  <li><a href="#solucion-8-15" id="toc-solucion-8-15" class="nav-link" data-scroll-target="#solucion-8-15">15. Una interacción atractiva que se debilita</a></li>
+  <li><a href="#solucion-8-16" id="toc-solucion-8-16" class="nav-link" data-scroll-target="#solucion-8-16">16. Reposo fuera del mínimo por rozamiento</a></li>
+  <li><a href="#solucion-8-17" id="toc-solucion-8-17" class="nav-link" data-scroll-target="#solucion-8-17">17. Un umbral con incertidumbre</a></li>
+  <li><a href="#solucion-8-18" id="toc-solucion-8-18" class="nav-link" data-scroll-target="#solucion-8-18">18. Tres valores de potencial no fijan la fuerza</a></li>
+  <li><a href="#solucion-8-19" id="toc-solucion-8-19" class="nav-link" data-scroll-target="#solucion-8-19">19. Reconocer un potencial en el plano</a></li>
+  <li><a href="#solucion-8-20" id="toc-solucion-8-20" class="nav-link" data-scroll-target="#solucion-8-20">20. El parámetro del potencial cambia con el tiempo</a></li>
+  <li><a href="#solucion-8-21" id="toc-solucion-8-21" class="nav-link" data-scroll-target="#solucion-8-21">21. Un apoyo que entrega y recupera energía</a></li>
+  </ul></li>
+  <li><a href="#lecturas-de-apoyo" id="toc-lecturas-de-apoyo" class="nav-link" data-scroll-target="#lecturas-de-apoyo">Lecturas de apoyo</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Potencial, equilibrio y estabilidad</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 8</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 8 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-07-trabajo-y-energia-cinetica.html">← 7. Trabajo y energía cinética</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-09-impulso-colisiones-y-centro-de-masa.html">9. Impulso, colisiones y centro de masa →</a></p>
+<p>Un carro de dos kilogramos está unido a un resorte horizontal sobre un riel liso. Al principio el resorte tiene su longitud natural y el carro está en reposo. Un mecanismo comienza a tirar de él hacia la derecha con una fuerza constante de ocho newtons. El resorte ejerce una fuerza contraria que crece ocho newtons por cada metro de extensión. ¿Dónde volverá a detenerse el carro? ¿Coincide ese lugar con la posición donde se equilibran las fuerzas?</p>
+<p>Tomaremos el laboratorio como marco inercial y la extensión del resorte como coordenada <span class="math inline">\(x\)</span>, positiva hacia la derecha. El carro se representa por una partícula de masa constante <span class="math inline">\(m=2\,\mathrm{kg}\)</span>; el peso y la normal se equilibran verticalmente. El resorte obedece <span class="math inline">\(F_s=-kx\)</span>, con <span class="math inline">\(k=8\,\mathrm{N/m}\)</span>, en el intervalo <span class="math inline">\(-1\,\mathrm m&lt;x&lt;3\,\mathrm m\)</span>. Omitimos rozamiento, aire y rotación. El mecanismo sostiene <span class="math inline">\(f_0=8\,\mathrm N\)</span> durante todo el movimiento estudiado. Su fuerza neta horizontal es</p>
+<p><span class="math display">\[
+F(x)=f_0-kx.
+\]</span></p>
+<p>En un metro de extensión ambas fuerzas se equilibran. Pero el carro ha sido acelerado antes de llegar allí: no hay motivo para que pierda de golpe la velocidad que adquirió.</p>
+<figure id="fig-fispm-r20261021-8-1" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/potencial_carro.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="../../assets/books/fispm/r20261021/potencial_carro.svg" alt="Un resorte y un tirón constante actúan sobre un carro en un riel horizontal liso." class="fpm-v04-figure img-fluid figure-img" width="680" height="500" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 8.1.</em> El eje mide extensión respecto de la longitud natural. La posición <span class="math inline">\(x=1\,\mathrm m\)</span> equilibra el tirón y la fuerza elástica. La posición de reposo inicial es <span class="math inline">\(x=0\)</span>, donde la fuerza neta apunta a la derecha. El esquema no representa módulos mediante longitudes de flecha.</p>
+</figcaption>
+</figure>
+<section id="la-misma-integral-leída-desde-sus-extremos" class="level2">
+<h2 class="anchored" data-anchor-id="la-misma-integral-leída-desde-sus-extremos">La misma integral, leída desde sus extremos</h2>
+<p>El trabajo acumulado desde el origen es</p>
+<p><span class="math display">\[
+W(0\to x)=\int_0^x(f_0-k\xi)\,d\xi
+=f_0x-\frac12kx^2.
+\]</span></p>
+<p>Como el carro parte del reposo, el teorema del capítulo anterior da <span class="math inline">\(K(x)=f_0x-kx^2/2\)</span>. Esta expresión se anula en <span class="math inline">\(x=0\)</span> y en <span class="math inline">\(x=2f_0/k=2\,\mathrm m\)</span>. Entre esos puntos es positiva. El segundo cero corresponde a la primera detención después de salir del origen. Allí la fuerza neta es ocho newtons hacia la izquierda, de modo que el carro inicia el regreso; no permanece en reposo.</p>
+<p>Podemos recoger la integral en una función</p>
+<p><span class="math display">\[
+U(x)=\frac12kx^2-f_0x,
+\]</span></p>
+<p>que satisface <span class="math inline">\(F(x)=-U'(x)\)</span>. El trabajo entre dos posiciones cualesquiera del intervalo es entonces <span class="math inline">\(W(x_i\to x_f)=U(x_i)-U(x_f)\)</span>. En vez de calcular una nueva integral para cada recorrido, evaluamos la misma función en sus extremos.</p>
+<p>En el estado inicial, <span class="math inline">\(K=0\)</span> y <span class="math inline">\(U(0)=0\)</span>. Por tanto, durante este movimiento</p>
+<p><span class="math display">\[
+K(x)+U(x)=0.
+\]</span></p>
+<p>La gráfica de <span class="math inline">\(U\)</span> es una parábola cuyo mínimo está en un metro y vale menos cuatro joules. La separación vertical entre la línea horizontal <span class="math inline">\(E=0\)</span> y esa parábola es <span class="math inline">\(K=E-U\)</span>. En el mínimo la energía cinética es máxima, cuatro joules, y la rapidez es dos metros por segundo. El carro cruza la posición de fuerzas equilibradas con su mayor rapidez.</p>
+<figure id="fig-fispm-r20261021-8-2" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/potencial_parabola.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="../../assets/books/fispm/r20261021/potencial_parabola.svg" alt="La parábola del potencial efectivo y la recta de energía delimitan los extremos del movimiento y la energía cinética intermedia." class="fpm-v04-figure img-fluid figure-img" width="680" height="525" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 8.2.</em> La ordenada es energía, no altura física del riel. Los extremos <span class="math inline">\(x=0\)</span> y <span class="math inline">\(x=2\,\mathrm m\)</span> tienen rapidez nula; en <span class="math inline">\(x=1\,\mathrm m\)</span> la pendiente del potencial y la fuerza neta son cero, pero la rapidez no lo es. La diferencia <span class="math inline">\(E-U\)</span> se mide en joules.</p>
+</figcaption>
+</figure>
+<p>La función <span class="math inline">\(U\)</span> incorpora tanto el resorte como el tirón constante: <span class="math inline">\(U=U_s+U_f\)</span>, con <span class="math inline">\(U_s=kx^2/2\)</span> y <span class="math inline">\(U_f=-f_0x\)</span>. Esta elección no borra el trabajo del mecanismo. Para el subsistema carro–resorte, <span class="math inline">\(K+U_s\)</span> aumenta en <span class="math inline">\(f_0x\)</span> mientras el carro avanza. Al incluir también <span class="math inline">\(U_f\)</span> obtenemos una constante matemática del modelo de fuerzas considerado. Debemos indicar qué interacciones están incluidas antes de interpretar una energía mecánica como la de un sistema físicamente aislado.</p>
+</section>
+<section id="construir-un-potencial-y-elegir-su-referencia" class="level2">
+<h2 class="anchored" data-anchor-id="construir-un-potencial-y-elegir-su-referencia">Construir un potencial y elegir su referencia</h2>
+<p><strong>Definición.</strong> En un intervalo abierto <span class="math inline">\(I\)</span> de posiciones, una función diferenciable <span class="math inline">\(U:I\to\mathbb R\)</span> es un <em>potencial</em> para la componente de fuerza <span class="math inline">\(F(x)\)</span> si</p>
+<p><span class="math display">\[
+F(x)=-\frac{dU}{dx}(x).
+\]</span></p>
+<p>Sus valores tienen unidades de energía. El potencial describe la interacción representada por esa fuerza en las condiciones fijadas del modelo. Para la gravedad terrestre uniforme puede utilizarse <span class="math inline">\(U_g=mgy\)</span>, con <span class="math inline">\(y\)</span> hacia arriba; para un resorte lineal, <span class="math inline">\(U_s=kx^2/2\)</span>. En ambos casos se mantienen fijos los parámetros y apoyos supuestos. Cuando se usa un campo gravitatorio externo, esta descripción recoge la interacción con su fuente sin calcular el movimiento de esa fuente.</p>
+<p>Si <span class="math inline">\(F\)</span> es continua en <span class="math inline">\(I\)</span>, el teorema fundamental del cálculo proporciona un potencial:</p>
+<p><span class="math display">\[
+U(x)=U(x_*)-\int_{x_*}^{x}F(\xi)\,d\xi,
+\]</span></p>
+<p>con <span class="math inline">\(x_*\in I\)</span> como referencia. Además,</p>
+<p><span class="math display">\[
+\int_{x_i}^{x_f}F(x)\,dx=U(x_i)-U(x_f).
+\]</span></p>
+<p><strong>Proposición.</strong> Dos potenciales de una misma fuerza en un intervalo difieren en una constante. Recíprocamente, añadir una constante a un potencial conserva la fuerza y todos sus trabajos.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(U_1'=-F=U_2'\)</span>, la diferencia <span class="math inline">\(U_1-U_2\)</span> tiene derivada nula. Por el teorema del valor medio es constante en el intervalo. En sentido inverso, la derivada de <span class="math inline">\(U+C\)</span> es <span class="math inline">\(U'\)</span>, mientras que <span class="math inline">\((U(x_i)+C)-(U(x_f)+C)=U(x_i)-U(x_f)\)</span>. Ni la fuerza ni el trabajo cambian.</p>
+<p>En el ejemplo inicial podemos sumar cuatro joules y escribir</p>
+<p><span class="math display">\[
+\widetilde U(x)=\frac12k(x-1\,\mathrm m)^2,
+\qquad \widetilde E=4\,\mathrm J.
+\]</span></p>
+<p>La nueva parábola tiene mínimo cero, pero conserva las pendientes y la diferencia <span class="math inline">\(\widetilde E-\widetilde U=E-U\)</span>. Las detenciones, rapideces y fuerzas son las mismas. Un potencial negativo no significa fuerza hacia la izquierda ni energía cinética negativa: el sentido de la fuerza se obtiene de la pendiente con signo contrario.</p>
+<p>Para un potencial con unidades de joules y una coordenada en metros, <span class="math inline">\(U'\)</span> tiene unidades <span class="math inline">\(\mathrm{J/m}=\mathrm N\)</span> y <span class="math inline">\(U''\)</span> unidades <span class="math inline">\(\mathrm{N/m}\)</span>. Una derivada numérica sin respetar las escalas de los ejes puede dar un módulo de fuerza equivocado aunque reconozca bien su signo.</p>
+</section>
+<section id="cuándo-el-trabajo-depende-sólo-de-los-extremos" class="level2">
+<h2 class="anchored" data-anchor-id="cuándo-el-trabajo-depende-sólo-de-los-extremos">Cuándo el trabajo depende sólo de los extremos</h2>
+<p><strong>Definición.</strong> Una fuerza que depende únicamente de la posición es <em>conservativa</em> en un dominio si su trabajo es el mismo para todos los recorridos suaves a trozos de ese dominio que unen los mismos extremos. El dominio y los recorridos permitidos forman parte de la afirmación.</p>
+<p>En un intervalo rectilíneo, una fuerza continua <span class="math inline">\(F(x)\)</span> tiene el potencial que acabamos de construir. Si la partícula va y vuelve por la misma recta, el trabajo de esa fuerza en el recorrido cerrado es cero: las integrales de ida y vuelta tienen límites opuestos. El rozamiento cinético no contradice esta conclusión. Su componente cambia con el sentido del deslizamiento; no es una única función <span class="math inline">\(F(x)\)</span> que conserve los mismos valores al invertir la marcha. Sobre una mesa fija, una ida y vuelta de distancia <span class="math inline">\(d\)</span> en cada sentido disipa trabajo <span class="math inline">\(-2\mu_kmgd\)</span>.</p>
+<p>En un plano hay recorridos distintos que pueden dar trabajos diferentes. En el capítulo 7 encontramos ese comportamiento para <span class="math inline">\(\mathbf F=(\kappa y,0)\)</span>: cambiar el orden de un tramo horizontal y uno vertical cambió su trabajo. No existe un potencial de posición que reproduzca ambos resultados mediante una misma diferencia de extremos.</p>
+<p>Para comprobar un potencial explícito <span class="math inline">\(U(x,y)\)</span> se derivan sus componentes manteniendo fija la otra coordenada:</p>
+<p><span class="math display">\[
+F_x=-\frac{\partial U}{\partial x},\qquad
+F_y=-\frac{\partial U}{\partial y}.
+\]</span></p>
+<p>La notación <span class="math inline">\(\partial U/\partial x\)</span> designa la derivada de <span class="math inline">\(U\)</span> respecto de <span class="math inline">\(x\)</span> con <span class="math inline">\(y\)</span> constante. Si estas relaciones se cumplen y <span class="math inline">\(U\)</span> es continuamente diferenciable, la regla de la cadena a lo largo de un recorrido da <span class="math inline">\(dU/dt=-\mathbf F\cdot\mathbf v\)</span>. Su integral produce otra vez <span class="math inline">\(W=U_i-U_f\)</span>. Basta verificar esas derivadas para el ejercicio 19; no necesitamos todavía un criterio general de cálculo vectorial para decidir la existencia de potenciales en dominios arbitrarios.</p>
+</section>
+<section id="energía-mecánica-y-trabajo-de-las-otras-fuerzas" class="level2">
+<h2 class="anchored" data-anchor-id="energía-mecánica-y-trabajo-de-las-otras-fuerzas">Energía mecánica y trabajo de las otras fuerzas</h2>
+<p><strong>Definición.</strong> Para una partícula de masa constante <span class="math inline">\(m&gt;0\)</span>, con un potencial de posición <span class="math inline">\(U\)</span> elegido para ciertas fuerzas, llamaremos <em>energía mecánica</em> de esta descripción a</p>
+<p><span class="math display">\[
+E=K+U=\frac12m\dot x^2+U(x).
+\]</span></p>
+<p>Se declara qué fuerzas están representadas en <span class="math inline">\(U\)</span> y cuál es su referencia. Varias fuerzas conservativas se incorporan sumando sus potenciales. Las fuerzas restantes se contabilizan por su trabajo.</p>
+<p><strong>Teorema.</strong> Supongamos que <span class="math inline">\(U\)</span> no depende explícitamente del tiempo, que el movimiento satisface <span class="math inline">\(m\ddot x=-U'(x)+F_o\)</span> y que cumple las condiciones de regularidad del teorema del trabajo del capítulo 7. Entonces</p>
+<p><span class="math display">\[
+E(t_1)-E(t_0)=W_o,
+\]</span></p>
+<p>con <span class="math inline">\(W_o=\int_{t_0}^{t_1}F_o\dot x\,dt\)</span>. En particular, si <span class="math inline">\(W_o=0\)</span> en cada subintervalo del movimiento, <span class="math inline">\(E\)</span> permanece constante.</p>
+<p><strong>Demostración.</strong> El teorema del trabajo da <span class="math inline">\(K_f-K_i=W_U+W_o\)</span>. La fuerza representada por <span class="math inline">\(U\)</span> realiza <span class="math inline">\(W_U=U_i-U_f\)</span>. Sustituir y reunir los valores del mismo estado produce <span class="math inline">\((K_f+U_f)-(K_i+U_i)=W_o\)</span>. Aplicar esta identidad a cualquier subintervalo da la constancia cuando su segundo miembro es cero. De forma local, la misma igualdad se lee <span class="math inline">\(dE/dt=F_o\dot x\)</span>.</p>
+<p>La fricción viscosa <span class="math inline">\(F_o=-b\dot x\)</span>, con <span class="math inline">\(b&gt;0\)</span>, produce <span class="math inline">\(dE/dt=-b\dot x^2\leq0\)</span>. La energía mecánica de esta descripción no aumenta, aunque el sistema ampliado requiera contabilizar la energía interna y sus intercambios. Decrecer tampoco significa que el movimiento deba terminar exactamente en el mínimo del potencial: esa conclusión necesita información adicional sobre las fuerzas y la evolución. Con rozamiento estático, por ejemplo, pueden existir estados de reposo alejados del mínimo.</p>
+<p>Las guías fijas ideales y las tensiones que no hacen trabajo, bajo las condiciones ya justificadas, pueden quedar entre las otras fuerzas con trabajo nulo. Si cambian los apoyos, los parámetros o el régimen de contacto, se revisa el balance. La mera presencia de un resorte no autoriza a escribir conservación de energía mecánica ignorando un motor o una resistencia.</p>
+<p>El cambio de un apoyo puede modificar el potencial incluso si la ley elástica conserva la misma constante. Para seguir esa modificación necesitamos mantener las dos dependencias de la función: la posición de la partícula y el tiempo del aparato que la rodea.</p>
+<p><strong>Proposición (potencial con dependencia temporal).</strong> Sea <span class="math inline">\(U(x,t)\)</span> una función con derivadas parciales primeras continuas, y supongamos que una partícula de masa constante satisface <span class="math inline">\(m\ddot x=-\partial U/\partial x+F_o\)</span> en un intervalo de movimiento suave. La función <span class="math inline">\(E(t)=m\dot x^2/2+U(x(t),t)\)</span> cumple</p>
+<p><span class="math display">\[
+\frac{dE}{dt}=F_o\dot x+\frac{\partial U}{\partial t}(x(t),t).
+\]</span></p>
+<p><strong>Demostración.</strong> La regla de la cadena da <span class="math inline">\(\dot E=m\dot x\ddot x+(\partial U/\partial x)\dot x+\partial U/\partial t\)</span>. Sustituir Newton cancela los términos que contienen la derivada espacial y deja la identidad. Integrarla proporciona el balance entre dos instantes.</p>
+<p>La derivada parcial temporal mantiene fija la posición <span class="math inline">\(x\)</span> mientras cambia el aparato. Si el extremo de un resorte está en una posición prescrita <span class="math inline">\(X(t)\)</span>, con <span class="math inline">\(k\)</span> constante, podemos elegir <span class="math inline">\(U=k(x-X(t))^2/2\)</span>. Entonces <span class="math inline">\(\partial U/\partial t=-k(x-X)\dot X\)</span>. Esa cantidad describe, con esta elección de energía elástica, la potencia que el movimiento del apoyo entrega al conjunto formado por partícula y resorte ideal. El ejercicio 21 calcula un movimiento completo en el que esa entrega cambia de signo.</p>
+<p>La referencia también debe quedar declarada. Reemplazar <span class="math inline">\(U(x,t)\)</span> por <span class="math inline">\(U(x,t)+C(t)\)</span> conserva la fuerza y suma <span class="math inline">\(\dot C(t)\)</span> a la derivada de la energía escrita. Una referencia temporal arbitraria cambia la contabilidad de esa función. Para interpretar la tasa como energía transferida por un agente utilizamos la reserva física especificada y una referencia fija, como la energía elástica nula en un resorte sin deformación. El ejercicio 20 estudia otra modificación física: una rigidez que cambia con el tiempo.</p>
+</section>
+<section id="leer-una-línea-de-energía-sin-confundirla-con-una-trayectoria" class="level2">
+<h2 class="anchored" data-anchor-id="leer-una-línea-de-energía-sin-confundirla-con-una-trayectoria">Leer una línea de energía sin confundirla con una trayectoria</h2>
+<p>Cuando <span class="math inline">\(E\)</span> es constante,</p>
+<p><span class="math display">\[
+\frac12m\dot x^2=E-U(x).
+\]</span></p>
+<p>La desigualdad <span class="math inline">\(U(x)\leq E\)</span> es necesaria para una posición visitada. En un punto donde <span class="math inline">\(U(x)&lt;E\)</span>, la rapidez es <span class="math inline">\(\sqrt{2(E-U(x))/m}\)</span>. La ecuación admite ambos signos de velocidad: el sentido inicial y los cambios de tramo seleccionan cuál corresponde al movimiento. Una línea de energía no reemplaza el estado inicial completo.</p>
+<p>Si un intervalo con <span class="math inline">\(U&gt;E\)</span> separa dos regiones permitidas, la partícula clásica de este modelo no puede atravesarlo. La continuidad de la posición la obligaría a visitar puntos con energía cinética negativa. Aun cuando no haya un intervalo prohibido, puede existir un equilibrio que se alcanza sólo como límite para tiempo infinito.</p>
+<p>Consideremos el potencial de dos pozos</p>
+<p><span class="math display">\[
+U(x)=U_b\left[\left(\frac{x}{a}\right)^2-1\right]^2,
+\qquad U_b=4\,\mathrm J,\quad a=1\,\mathrm m,
+\]</span></p>
+<p>para una partícula de dos kilogramos. Es una interacción idealizada definida por esta función; no suponemos que la curva sea la forma de una pista. Los mínimos están en <span class="math inline">\(x=\pm a\)</span>, donde <span class="math inline">\(U=0\)</span>, y entre ellos aparece una barrera en <span class="math inline">\(x=0\)</span>, donde <span class="math inline">\(U=U_b\)</span>.</p>
+<p>Con <span class="math inline">\(E=1\,\mathrm J\)</span>, una partícula que comienza en el pozo derecho queda entre <span class="math inline">\(a/\sqrt2\)</span> y <span class="math inline">\(a\sqrt{3/2}\)</span>. Hay otra región permitida a la izquierda, pero el intervalo alrededor del origen está prohibido y la separa de ella. Con <span class="math inline">\(E=5\,\mathrm J\)</span>, en cambio, la energía cinética en el origen vale un joule. Una partícula que se dirige hacia la barrera desde el pozo derecho puede cruzarla con rapidez de un metro por segundo.</p>
+<figure id="fig-fispm-r20261021-8-3" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/potencial_dos_pozos.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="../../assets/books/fispm/r20261021/potencial_dos_pozos.svg" alt="El mismo potencial de dos pozos se compara con tres líneas de energía: por debajo, en la altura y por encima de la barrera." class="fpm-v04-figure img-fluid figure-img" width="680" height="720" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 8.3.</em> A energía de un joule hay dos intervalos permitidos separados. A cinco joules el origen se atraviesa con rapidez positiva. La línea de cuatro joules toca el máximo: requiere examinar el tiempo de aproximación antes de afirmar que hay cruce.</p>
+</figcaption>
+</figure>
+<p>En el caso límite <span class="math inline">\(E=U_b\)</span>, escribir <span class="math inline">\(\xi=x/a\)</span> da</p>
+<p><span class="math display">\[
+E-U(x)=U_b\,\xi^2(2-\xi^2).
+\]</span></p>
+<p>Para aproximarse al origen desde la derecha, el tiempo contiene la integral</p>
+<p><span class="math display">\[
+\sqrt{\frac{m}{2U_b}}\,a
+\int_{\xi}^{\xi_0}\frac{d\eta}{\eta\sqrt{2-\eta^2}},
+\qquad 0&lt;\xi&lt;\xi_0&lt;\sqrt2.
+\]</span></p>
+<p>Cerca de cero, el factor <span class="math inline">\(\sqrt{2-\eta^2}\)</span> tiende a <span class="math inline">\(\sqrt2\)</span>, por lo que el integrando crece como <span class="math inline">\(1/(\sqrt2\eta)\)</span>. La integral diverge logarítmicamente cuando <span class="math inline">\(\xi\to0^+\)</span>. La partícula se acerca al equilibrio superior sin alcanzarlo en tiempo finito. El punto satisface <span class="math inline">\(U=E\)</span>, pero no es una detención ordinaria seguida de un regreso o un cruce en un instante finito.</p>
+<p>En una detención ordinaria con <span class="math inline">\(U(x_t)=E\)</span> y <span class="math inline">\(U'(x_t)\ne0\)</span>, la diferencia <span class="math inline">\(E-U\)</span> tiene un cero simple en el lado permitido. La rapidez se anula como la raíz cuadrada de la distancia al extremo y la integral de tiempo converge localmente. La fuerza no nula indica el sentido de la continuación. Esta es la situación de las detenciones del carro inicial, en contraste con la aproximación al máximo del doble pozo.</p>
+</section>
+<section id="qué-se-perturba-cuando-se-habla-de-estabilidad" class="level2">
+<h2 class="anchored" data-anchor-id="qué-se-perturba-cuando-se-habla-de-estabilidad">Qué se perturba cuando se habla de estabilidad</h2>
+<p>En un sistema sin otras fuerzas tangenciales, una posición de equilibrio satisface <span class="math inline">\(U'(x_e)=0\)</span>. El estado de equilibrio incluye además <span class="math inline">\(\dot x=0\)</span>. Pasar por <span class="math inline">\(x_e\)</span> con velocidad distinta de cero no es permanecer en equilibrio, como mostró el carro en un metro de extensión.</p>
+<p><strong>Definición.</strong> El equilibrio <span class="math inline">\((x_e,0)\)</span> es <em>estable</em> si, para cualesquiera tolerancias positivas <span class="math inline">\(\varepsilon_x\)</span> de posición y <span class="math inline">\(\varepsilon_v\)</span> de velocidad, existen tolerancias iniciales positivas <span class="math inline">\(\delta_x,\delta_v\)</span> tales que todos los movimientos con</p>
+<p><span class="math display">\[
+|x(0)-x_e|&lt;\delta_x,\qquad |\dot x(0)|&lt;\delta_v
+\]</span></p>
+<p>satisfacen <span class="math inline">\(|x(t)-x_e|&lt;\varepsilon_x\)</span> y <span class="math inline">\(|\dot x(t)|&lt;\varepsilon_v\)</span> para todo tiempo futuro, con soluciones definidas durante ese futuro. El equilibrio es <em>inestable</em> si existe una tolerancia fija de posición o de velocidad para la cual datos iniciales arbitrariamente próximos al equilibrio producen una trayectoria que alcanza o supera esa tolerancia en algún tiempo futuro.</p>
+<p>Las tolerancias de posición y velocidad tienen unidades distintas; no las sumamos sin introducir una escala de comparación. La definición exige elegir los datos iniciales una vez para controlar todos los tiempos posteriores. No basta demostrar que la trayectoria permanece cerca durante un tiempo breve.</p>
+<p>Para los criterios siguientes suponemos que <span class="math inline">\(U\)</span> es dos veces continuamente diferenciable cerca del equilibrio, que no hay otras fuerzas tangenciales y que las soluciones de Newton existen, son únicas y pueden continuarse mientras posición y velocidad permanezcan en una región compacta del dominio regular. Esta propiedad usual para fuerzas continuamente diferenciables fija el marco de los argumentos; no desarrollaremos aquí una teoría general de existencia de ecuaciones diferenciales.</p>
+<p><strong>Teorema del mínimo estricto.</strong> Bajo esas hipótesis, si <span class="math inline">\(U\)</span> tiene un mínimo local estricto en <span class="math inline">\(x_e\)</span>, el equilibrio <span class="math inline">\((x_e,0)\)</span> es estable.</p>
+<p><strong>Demostración.</strong> Un mínimo estricto significa que <span class="math inline">\(U(x)&gt;U(x_e)\)</span> para todo <span class="math inline">\(x\ne x_e\)</span> suficientemente próximo. Dadas las dos tolerancias de la definición, elegimos <span class="math inline">\(r&lt;\varepsilon_x\)</span> tan pequeño que el intervalo cerrado <span class="math inline">\([x_e-r,x_e+r]\)</span> quede dentro de esa región. La diferencia de potencial en cada uno de sus dos extremos es positiva. Llamemos <span class="math inline">\(B\)</span> a la menor de esas diferencias.</p>
+<p>Elegimos un incremento de energía <span class="math inline">\(h&gt;0\)</span> menor que <span class="math inline">\(B\)</span> y que <span class="math inline">\(m\varepsilon_v^2/2\)</span>. Para construir las tolerancias iniciales, repartimos ese margen entre las dos contribuciones a la energía. Por continuidad de <span class="math inline">\(U\)</span>, existe <span class="math inline">\(0&lt;\delta_x&lt;r\)</span> tal que <span class="math inline">\(|x(0)-x_e|&lt;\delta_x\)</span> implica <span class="math inline">\(0\leq U(x(0))-U(x_e)&lt;h/2\)</span>. Elegimos además <span class="math inline">\(\delta_v=\sqrt{h/m}\)</span>: si <span class="math inline">\(|\dot x(0)|&lt;\delta_v\)</span>, entonces <span class="math inline">\(m\dot x(0)^2/2&lt;h/2\)</span>. Al sumar, obtenemos <span class="math inline">\(E(0)-U(x_e)&lt;h\)</span> para todos esos datos iniciales. La energía se conserva. Si la posición alcanzara uno de sus extremos, tendría que cumplir <span class="math inline">\(E\geq U(x_e)+B\)</span>, contradiciendo la elección de <span class="math inline">\(h\)</span>. Por continuidad del movimiento no puede salir sin alcanzar antes un extremo, de modo que <span class="math inline">\(|x(t)-x_e|&lt;r&lt;\varepsilon_x\)</span>.</p>
+<p>Dentro del intervalo, <span class="math inline">\(U(x)\geq U(x_e)\)</span>; por tanto, <span class="math inline">\(m\dot x^2/2=E-U(x)\leq E-U(x_e)&lt;h&lt;m\varepsilon_v^2/2\)</span>. También la velocidad permanece dentro de su tolerancia. Posición y velocidad quedan acotadas en una región compacta regular, lo que permite continuar la solución según la hipótesis declarada. Esas dos cotas prueban la estabilidad para todo tiempo futuro.</p>
+<p>El argumento encierra la trayectoria mediante barreras de energía. No demuestra que termine en el equilibrio. Un resorte ideal, después de una pequeña perturbación, puede continuar oscilando indefinidamente sin alejarse mucho y sin asentarse. La aproximación al reposo requiere otra pregunta y otras hipótesis.</p>
+<p>Podemos expresar las dos tolerancias en un estado con coordenadas adimensionales: elegimos una longitud de referencia <span class="math inline">\(a&gt;0\)</span> y una rapidez de referencia <span class="math inline">\(b&gt;0\)</span>, y escribimos <span class="math inline">\(z=((x-x_e)/a,\dot x/b)\)</span>. Una cota de la norma de <span class="math inline">\(z\)</span> controla posición y velocidad, y sendas cotas de ambas componentes controlan esa norma. Esta equivalencia permitirá conservar la misma definición cuando el capítulo 19 compare componentes de velocidad angular y el 26 estudie estados de varias variables. En cada caso habrá que indicar cuáles son las variables cuya proximidad se desea controlar.</p>
+<figure id="fig-fispm-r20261021-8-4" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/potencial_barreras.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="../../assets/books/fispm/r20261021/potencial_barreras.svg" alt="Un mínimo estricto ofrece dos barreras positivas alrededor del equilibrio; una energía inicial suficientemente pequeña no permite alcanzarlas." class="fpm-v04-figure img-fluid figure-img" width="680" height="525" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 8.4.</em> La prueba utiliza el menor de los incrementos de potencial en los dos extremos de un intervalo. La condición de energía también controla la velocidad. El dibujo ilustra la barrera del argumento, no supone que todo potencial sea parabólico.</p>
+</figcaption>
+</figure>
+</section>
+<section id="la-segunda-derivada-y-los-casos-que-deja-abiertos" class="level2">
+<h2 class="anchored" data-anchor-id="la-segunda-derivada-y-los-casos-que-deja-abiertos">La segunda derivada y los casos que deja abiertos</h2>
+<p><strong>Proposición.</strong> Si <span class="math inline">\(U'(x_e)=0\)</span> y <span class="math inline">\(U\)</span> es dos veces continuamente diferenciable, entonces <span class="math inline">\(U''(x_e)&gt;0\)</span> implica estabilidad y <span class="math inline">\(U''(x_e)&lt;0\)</span> implica inestabilidad, bajo las hipótesis dinámicas anteriores. La igualdad <span class="math inline">\(U''(x_e)=0\)</span> no decide por sí sola.</p>
+<p><strong>Demostración.</strong> Si <span class="math inline">\(U''(x_e)&gt;0\)</span>, la continuidad conserva su signo positivo en un intervalo suficientemente pequeño. Por ello <span class="math inline">\(U'\)</span> crece desde cero: es negativa a la izquierda de <span class="math inline">\(x_e\)</span> y positiva a la derecha. Integrar esos signos muestra que <span class="math inline">\(U\)</span> tiene un mínimo estricto en <span class="math inline">\(x_e\)</span>. Se aplica el teorema anterior.</p>
+<p>Si <span class="math inline">\(U''(x_e)&lt;0\)</span>, podemos elegir una constante <span class="math inline">\(k&gt;0\)</span>, con unidades de fuerza por longitud, y un intervalo <span class="math inline">\(|q|\leq r\)</span>, donde <span class="math inline">\(q=x-x_e\)</span>, tales que <span class="math inline">\(U''(x_e+q)\leq-k\)</span>. Para <span class="math inline">\(0&lt;q\leq r\)</span>, integrar desde cero da <span class="math inline">\(-U'(x_e+q)\geq kq\)</span>. Preparemos <span class="math inline">\(q(0)=q_0&gt;0\)</span> arbitrariamente pequeño y velocidad inicial cero. Mientras permanezca en ese lado del intervalo, la aceleración es positiva, la posición crece y</p>
+<p><span class="math display">\[
+\ddot q\geq\frac{kq_0}{m},\qquad
+q(t)\geq q_0+\frac{kq_0}{2m}t^2.
+\]</span></p>
+<p>Esta cota obliga a llegar a <span class="math inline">\(r\)</span> en un tiempo finito o a haber salido antes. Por pequeños que sean los datos iniciales, hay perturbaciones que abandonan una misma vecindad fijada del equilibrio. Esto niega la estabilidad. Finalmente, los potenciales <span class="math inline">\(+\beta q^4\)</span> y <span class="math inline">\(-\beta q^4\)</span>, con <span class="math inline">\(\beta&gt;0\)</span>, tienen ambos segunda derivada nula en cero, pero el primero tiene mínimo estricto y el segundo empuja hacia fuera cualquier desplazamiento no nulo. Sus comportamientos distintos muestran que la igualdad no decide.</p>
+<figure id="fig-fispm-r20261021-8-5" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/potencial_estabilidad.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="../../assets/books/fispm/r20261021/potencial_estabilidad.svg" alt="Potenciales con mínimo, máximo y extremos degenerados muestran qué informa el signo de la segunda derivada y cuándo resulta insuficiente." class="fpm-v04-figure img-fluid figure-img" width="680" height="625" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 8.5.</em> Las curvas representan energía frente a posición. El mínimo cuártico tiene equilibrio estable aunque su segunda derivada sea cero. Los ejemplos se comparan con escalas normalizadas y no representan la misma ley de fuerza.</p>
+</figcaption>
+</figure>
+<p>En los textos elementales suele llamarse <em>equilibrio neutro</em> a una región de potencial constante: trasladar una partícula y volver a dejarla en reposo produce otro reposo. Conviene distinguir esa clasificación estática de la definición anterior. Con <span class="math inline">\(U\)</span> constante, una velocidad inicial no nula, por pequeña que sea, produce <span class="math inline">\(x(t)=x(0)+v_0t\)</span>. En una recta libre acaba por salir de cualquier vecindad acotada de una posición individual. Por tanto, ese estado individual no es estable frente a todas las perturbaciones de posición y velocidad. Al hablar de estabilidad debemos mantener explícitas las perturbaciones que admitimos.</p>
+<p>La energía también deja de ser un criterio completo si agregamos contactos o fricción. Un resorte que tira de un bloque puede quedar equilibrado por rozamiento estático en varias posiciones. Se resuelve entonces la admisibilidad de las fuerzas, no sólo <span class="math inline">\(U'=0\)</span>. Los potenciales organizan una parte de la dinámica; las restricciones y leyes del contacto siguen determinando qué estados pertenecen al modelo.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Se usa <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span>. Salvo indicación contraria, las partículas tienen masa constante, se mueven sobre una recta sin rozamiento y sólo reciben la fuerza <span class="math inline">\(F=-U'\)</span>. Las funciones de potencial no dependen del tiempo. Un cambio de referencia se aplica a <span class="math inline">\(U\)</span> y a <span class="math inline">\(E\)</span> conjuntamente. Los ejemplos polinómicos se consideran modelos ideales dentro de las regiones utilizadas.</p>
+<section id="ejercicio-8-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-1">1. Cambiar el estado inicial del carro</h3>
+<p>En el carro inicial, prepare <span class="math inline">\(x(0)=1\,\mathrm m\)</span> y <span class="math inline">\(v(0)=+3\,\mathrm{m/s}\)</span>. Calcule la energía con la referencia <span class="math inline">\(U(0)=0\)</span>, los dos extremos de posición y la rapidez al cruzar el mínimo. Compruebe el intervalo de validez declarado para el resorte.</p>
+</section>
+<section id="ejercicio-8-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-2">2. Una fuerza con potencial cuártico</h3>
+<p>Una partícula recibe <span class="math inline">\(F(x)=-(4\,\mathrm{N/m^3})x^3\)</span>. Construya un potencial con <span class="math inline">\(U(0)=0\)</span> y calcule el trabajo de la fuerza entre uno y dos metros. Si parte de un metro hacia la derecha con cinco joules de energía cinética, determine si puede llegar a dos metros y localice su primera detención futura.</p>
+</section>
+<section id="ejercicio-8-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-3">3. Subir bajo gravedad uniforme</h3>
+<p>Una partícula de dos kilogramos se lanza verticalmente hacia arriba con rapidez de ocho metros por segundo desde <span class="math inline">\(y=2\,\mathrm m\)</span>. Sólo actúa el peso. Use <span class="math inline">\(U=mgy\)</span> para calcular su rapidez al pasar por <span class="math inline">\(y=5\,\mathrm m\)</span> durante la subida y la altura máxima. Repita la interpretación usando como cero del potencial el punto de lanzamiento.</p>
+</section>
+<section id="ejercicio-8-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-4">4. La mayor extensión no es el equilibrio</h3>
+<p>Una masa de dos kilogramos cuelga de un resorte vertical de <span class="math inline">\(k=100\,\mathrm{N/m}\)</span> cuyo extremo superior está fijo. Se libera del reposo cuando el resorte no está deformado. Tome <span class="math inline">\(y\)</span> hacia abajo desde esa posición y suponga válida la ley lineal hasta <span class="math inline">\(y=0{,}50\,\mathrm m\)</span>. Calcule el potencial total, la extensión de equilibrio, la primera extensión máxima y la rapidez en el equilibrio.</p>
+</section>
+<section id="ejercicio-8-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-5">5. Dos intervalos permitidos</h3>
+<p>En el doble pozo del texto, una partícula de dos kilogramos está en <span class="math inline">\(x=a\)</span> con velocidad hacia la derecha de un metro por segundo. Calcule la energía, todos los intervalos con <span class="math inline">\(U\leq E\)</span> y los extremos del movimiento que parte de ese estado. ¿Puede visitar un punto del intervalo permitido izquierdo?</p>
+</section>
+<section id="ejercicio-8-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-6">6. Cruzar con energía superior a la barrera</h3>
+<p>En el mismo potencial, una partícula tiene <span class="math inline">\(E=5\,\mathrm J\)</span> y cruza <span class="math inline">\(x=a\)</span> hacia la izquierda. Calcule su rapidez allí, su rapidez en el origen y los extremos exteriores permitidos. Explique por qué el origen se cruza en un tiempo finito.</p>
+</section>
+<section id="ejercicio-8-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-7">7. Llegar al máximo con la energía justa</h3>
+<p>En el doble pozo, prepare <span class="math inline">\(x=a\)</span> y velocidad hacia la izquierda de dos metros por segundo. Determine <span class="math inline">\(E\)</span> y pruebe que el tiempo para llegar al origen es infinito. ¿Hay contradicción entre esa conclusión y la desigualdad <span class="math inline">\(U(0)\leq E\)</span>?</p>
+</section>
+<section id="ejercicio-8-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-8">8. Una detención en tiempo finito</h3>
+<p>Una partícula de dos kilogramos entra en <span class="math inline">\(x=0\)</span> con velocidad de tres metros por segundo y potencial <span class="math inline">\(U(x)=(3\,\mathrm N)x\)</span>. Calcule la posición y el tiempo de la primera detención. Compruebe la convergencia de la integral temporal y determine hacia dónde continúa el movimiento.</p>
+</section>
+<section id="ejercicio-8-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-9">9. Dos sentidos en la misma línea de energía</h3>
+<p>Para <span class="math inline">\(U(x)=(4\,\mathrm{N/m})x^2\)</span>, una partícula de dos kilogramos tiene <span class="math inline">\(E=4\,\mathrm J\)</span> y se encuentra en <span class="math inline">\(x=0{,}50\,\mathrm m\)</span>. Halle las dos velocidades posibles, el equilibrio y los extremos permitidos. Determine cuál extremo visita primero en cada caso. ¿Qué dato falta si sólo conocemos posición y energía?</p>
+</section>
+<section id="ejercicio-8-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-10">10. Una cota concreta de estabilidad</h3>
+<p>Alrededor de un equilibrio escriba <span class="math inline">\(q=x-x_e\)</span> y <span class="math inline">\(U-U(x_e)=kq^2/2\)</span>, con <span class="math inline">\(m=2\,\mathrm{kg}\)</span> y <span class="math inline">\(k=8\,\mathrm{N/m}\)</span>. Se preparan <span class="math inline">\(|q(0)|\leq0{,}05\,\mathrm m\)</span> y <span class="math inline">\(|v(0)|\leq0{,}10\,\mathrm{m/s}\)</span>. Obtenga cotas válidas para todo tiempo de <span class="math inline">\(|q|\)</span> y <span class="math inline">\(|v|\)</span>. ¿Garantizan <span class="math inline">\(|q|&lt;0{,}10\,\mathrm m\)</span> y <span class="math inline">\(|v|&lt;0{,}30\,\mathrm{m/s}\)</span>?</p>
+</section>
+<section id="ejercicio-8-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-11">11. Salir de la vecindad de un máximo</h3>
+<p>Considere <span class="math inline">\(U(q)=-(4\,\mathrm{N/m})q^2\)</span> y <span class="math inline">\(m=2\,\mathrm{kg}\)</span>. Prepare <span class="math inline">\(q(0)=q_0&gt;0\)</span> y <span class="math inline">\(v(0)=0\)</span>. Sin resolver la ecuación diferencial de forma explícita, pruebe que abandona <span class="math inline">\(0\leq q&lt;r\)</span> para cualquier <span class="math inline">\(r&gt;q_0\)</span>. Para <span class="math inline">\(q_0=0{,}001\,\mathrm m\)</span> y <span class="math inline">\(r=0{,}10\,\mathrm m\)</span>, dé una cota superior del tiempo de llegada a <span class="math inline">\(r\)</span> y explique la conclusión de inestabilidad.</p>
+</section>
+<section id="ejercicio-8-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-12">12. Cuando la segunda derivada se anula</h3>
+<p>En una recta, clasifique el equilibrio en <span class="math inline">\(q=0\)</span> para <span class="math inline">\(U_1=\beta q^4\)</span>, <span class="math inline">\(U_2=-\beta q^4\)</span>, <span class="math inline">\(U_3=\gamma q^3\)</span> y <span class="math inline">\(U_4=0\)</span>, con <span class="math inline">\(\beta&gt;0\)</span> en <span class="math inline">\(\mathrm{J/m^4}\)</span> y <span class="math inline">\(\gamma&gt;0\)</span> en <span class="math inline">\(\mathrm{J/m^3}\)</span>. Distinga estabilidad frente a posición y velocidad de la denominación estática de equilibrio neutro. Justifique las inestabilidades mediante perturbaciones concretas.</p>
+</section>
+<section id="ejercicio-8-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-13">13. Un potencial y una resistencia viscosa</h3>
+<p>Una partícula de dos kilogramos tiene <span class="math inline">\(U(q)=kq^2/2\)</span>, con <span class="math inline">\(k=8\,\mathrm{N/m}\)</span>, y recibe además <span class="math inline">\(F_o=-bv\)</span>, con <span class="math inline">\(b=1\,\mathrm{kg/s}\)</span>. En un instante <span class="math inline">\(q=0{,}50\,\mathrm m\)</span> y <span class="math inline">\(v=2\,\mathrm{m/s}\)</span>. Calcule la energía mecánica, la aceleración y <span class="math inline">\(dE/dt\)</span>. ¿Puede tratarse esa energía como una constante para calcular otro estado?</p>
+</section>
+<section id="ejercicio-8-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-14">14. Preparar una partícula para cruzar la barrera</h3>
+<p>En el doble pozo, una preparación mediante un actuador comienza en reposo en <span class="math inline">\(x=a\)</span> y termina de nuevo allí con velocidad hacia la izquierda. El actuador realiza tres joules de trabajo en un caso y cinco en otro; no hay otras fuerzas adicionales. Después se desconecta. Determine si la partícula puede cruzar al pozo izquierdo y su rapidez en el origen cuando el cruce sea posible. Explique por qué se compara trabajo con una diferencia de potencial.</p>
+</section>
+<section id="ejercicio-8-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-15">15. Una interacción atractiva que se debilita</h3>
+<p>Una partícula de un kilogramo se mueve sobre una semirrecta <span class="math inline">\(r&gt;0\)</span> con <span class="math inline">\(U(r)=-A/r\)</span>, donde <span class="math inline">\(A=20\,\mathrm{J\,m}\)</span>. Parte de <span class="math inline">\(r_0=2\,\mathrm m\)</span> hacia fuera con rapidez de tres metros por segundo. Obtenga la fuerza, la energía y la distancia máxima. Halle el umbral de rapidez inicial para no tener un extremo exterior finito. No se incluye el movimiento angular ni un paso por <span class="math inline">\(r=0\)</span>.</p>
+</section>
+<section id="ejercicio-8-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-16">16. Reposo fuera del mínimo por rozamiento</h3>
+<p>Un bloque de un kilogramo sobre una mesa horizontal está unido a un resorte de <span class="math inline">\(k=20\,\mathrm{N/m}\)</span>. La extensión es <span class="math inline">\(x\)</span>, <span class="math inline">\(\mu_s=0{,}40\)</span> y <span class="math inline">\(\mu_k=0{,}30\)</span>. Determine todas las extensiones que permiten reposo. Calcule la fricción requerida en <span class="math inline">\(x=0{,}10\,\mathrm m\)</span>. Si se libera en reposo desde <span class="math inline">\(x=0{,}30\,\mathrm m\)</span>, determine si puede quedarse allí y el sentido y aceleración inicial del deslizamiento que comienza.</p>
+</section>
+<section id="ejercicio-8-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-17">17. Un umbral con incertidumbre</h3>
+<p>En una preparación del doble pozo, la energía es <span class="math inline">\(E\in[3{,}90;4{,}10]\,\mathrm J\)</span> y la altura de la barrera respecto de la misma referencia es <span class="math inline">\(U_b\in[3{,}95;4{,}05]\,\mathrm J\)</span>. Trate las cotas como independientes. Acote <span class="math inline">\(E-U_b\)</span> y decida si se puede afirmar un cruce con rapidez positiva. ¿Qué desigualdad entre cotas permitiría garantizarlo para una partícula que se dirige hacia la barrera sin otros obstáculos?</p>
+</section>
+<section id="ejercicio-8-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-18">18. Tres valores de potencial no fijan la fuerza</h3>
+<p>Se conoce <span class="math inline">\(U(-a)=U(a)=4\,\mathrm J\)</span> y <span class="math inline">\(U(0)=0\)</span>, con <span class="math inline">\(a=1\,\mathrm m\)</span>. Compare las funciones</p>
+<p><span class="math display">\[
+U_A(x)=4\,\mathrm J\left(\frac{x}{a}\right)^2,
+\qquad
+U_B(x)=U_A(x)+(1\,\mathrm J)\frac{x}{a}\left[\left(\frac{x}{a}\right)^2-1\right].
+\]</span></p>
+<p>Compruebe los tres valores y calcule la fuerza de cada modelo en el origen. ¿Permiten esas tres mediciones demostrar que el origen es un equilibrio?</p>
+</section>
+<section id="ejercicio-8-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-19">19. Reconocer un potencial en el plano</h3>
+<p>Sean <span class="math inline">\(\mathbf F_A=(\kappa y,\kappa x)\)</span> y <span class="math inline">\(\mathbf F_B=(\kappa y,0)\)</span>, con <span class="math inline">\(\kappa=2\,\mathrm{N/m}\)</span>. Compruebe que <span class="math inline">\(U_A=-\kappa xy\)</span> reproduce la primera fuerza. Calcule los trabajos de ambas fuerzas de <span class="math inline">\((0,0)\)</span> a <span class="math inline">\((2\,\mathrm m,1\,\mathrm m)\)</span> por los dos recorridos rectangulares del capítulo 7. Para la segunda, obtenga el trabajo sobre el rectángulo cerrado recorrido primero hacia la derecha, luego arriba, izquierda y abajo, y decida si puede tener un potencial de posición en todo ese dominio.</p>
+</section>
+<section id="ejercicio-8-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-20">20. El parámetro del potencial cambia con el tiempo</h3>
+<p>Una partícula de masa constante satisface <span class="math inline">\(m\ddot x=-k(t)x\)</span>. Se elige <span class="math inline">\(U(x,t)=k(t)x^2/2\)</span>, con <span class="math inline">\(k\)</span> diferenciable y positivo. Derive <span class="math inline">\(d(K+U)/dt\)</span>. En un instante con <span class="math inline">\(x=1\,\mathrm m\)</span>, <span class="math inline">\(v=0\)</span> y <span class="math inline">\(\dot k=2\,\mathrm{N/(m\,s)}\)</span>, calcule esa tasa de cambio. Explique por qué la conservación anterior no se aplica pese a que la fuerza es el negativo de una derivada espacial del potencial en cada instante.</p>
+</section>
+<section id="ejercicio-8-21" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-8-21">21. Un apoyo que entrega y recupera energía</h3>
+<p>Un carro de masa <span class="math inline">\(m=1\,\mathrm{kg}\)</span> se mueve sobre una guía horizontal lisa. Un resorte ideal de constante <span class="math inline">\(k=4\,\mathrm{N/m}\)</span> conecta el carro con un apoyo cuyo movimiento se prescribe desde fuera. La coordenada <span class="math inline">\(X(t)\)</span> representa la posición que tendría el carro con el resorte sin deformar; así, la extensión con signo es <span class="math inline">\(x-X\)</span> y la fuerza sobre el carro es <span class="math inline">\(-k(x-X)\)</span>. Desde <span class="math inline">\(t=0\)</span> se impone <span class="math inline">\(X(t)=ut\)</span>, con <span class="math inline">\(u=0{,}20\,\mathrm{m/s}\)</span>, y el carro parte de <span class="math inline">\(x(0)=\dot x(0)=0\)</span>. La fuerza es finita al conectar el movimiento; la preparación no comunica un impulso al carro. Suponga válida la ley lineal para <span class="math inline">\(|x-X|&lt;0{,}15\,\mathrm m\)</span>.</p>
+<p>Obtenga la extensión y el movimiento del carro. Calcule la energía <span class="math inline">\(E=K+k(x-X)^2/2\)</span> y la potencia entregada por el apoyo. Compare los estados en <span class="math inline">\(t=\pi/2\,\mathrm s\)</span> y <span class="math inline">\(t=\pi\,\mathrm s\)</span>, e identifique los intervalos de entrega y recuperación de energía durante ese primer ciclo. Compruebe el régimen del resorte y explique cómo puede ser nulo el trabajo neto del ciclo aunque haya transferencia intermedia.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-8-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-1">1. Cambiar el estado inicial del carro</h3>
+<p>En el mínimo <span class="math inline">\(U(1\,\mathrm m)=-4\,\mathrm J\)</span>. La energía cinética inicial es nueve joules, de modo que <span class="math inline">\(E=5\,\mathrm J\)</span>. Completar el cuadrado da</p>
+<p><span class="math display">\[
+U(x)=(4\,\mathrm{N/m})(x-1\,\mathrm m)^2-4\,\mathrm J.
+\]</span></p>
+<p>Las detenciones cumplen <span class="math inline">\((x-1\,\mathrm m)^2=9\,\mathrm J/(4\,\mathrm{N/m})=(1{,}5\,\mathrm m)^2\)</span>. Los extremos son <span class="math inline">\(-0{,}50\,\mathrm m\)</span> y <span class="math inline">\(2{,}50\,\mathrm m\)</span>, ambos dentro del intervalo de validez del resorte. La velocidad inicial positiva lleva primero al extremo derecho. Al cruzar de nuevo el mínimo, la rapidez vuelve a ser tres metros por segundo, porque allí <span class="math inline">\(K=E-U=9\,\mathrm J\)</span>. Puede cruzarlo en ambos sentidos; su velocidad cambia de signo entre cruces.</p>
+</section>
+<section id="solucion-8-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-2">2. Una fuerza con potencial cuártico</h3>
+<p>La integral con signo opuesto da <span class="math inline">\(U(x)=(1\,\mathrm{J/m^4})x^4\)</span> con la referencia pedida. Entre uno y dos metros, el trabajo es <span class="math inline">\(U(1)-U(2)=1\,\mathrm J-16\,\mathrm J=-15\,\mathrm J\)</span>.</p>
+<p>La preparación tiene <span class="math inline">\(E=5\,\mathrm J+1\,\mathrm J=6\,\mathrm J\)</span>. En dos metros necesitaría <span class="math inline">\(K=6-16=-10\,\mathrm J\)</span>, imposible. En el sentido inicial, el primer cero de <span class="math inline">\(E-U\)</span> aparece en <span class="math inline">\(x=6^{1/4}\,\mathrm m\approx1{,}565\,\mathrm m\)</span>. Allí la fuerza es negativa y no nula, por lo que se inicia un regreso. Este potencial tiene mínimo estricto en el origen pese a que su segunda derivada se anula allí.</p>
+</section>
+<section id="solucion-8-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-3">3. Subir bajo gravedad uniforme</h3>
+<p>Al partir, <span class="math inline">\(K_0=64\,\mathrm J\)</span> y <span class="math inline">\(U_0=(2\,\mathrm{kg})(10\,\mathrm{m/s^2})(2\,\mathrm m)=40\,\mathrm J\)</span>. La energía es <span class="math inline">\(E=104\,\mathrm J\)</span>. En cinco metros, <span class="math inline">\(U=100\,\mathrm J\)</span>, por lo que <span class="math inline">\(K=4\,\mathrm J\)</span> y la rapidez es dos metros por segundo. Durante el primer paso por esa altura la velocidad sigue apuntando hacia arriba.</p>
+<p>El máximo satisface <span class="math inline">\(mgy_{\max}=104\,\mathrm J\)</span>, de donde <span class="math inline">\(y_{\max}=5{,}20\,\mathrm m\)</span>. Si se cambia a <span class="math inline">\(\widetilde U=mg(y-2\,\mathrm m)\)</span>, se resta cuarenta joules tanto a <span class="math inline">\(U\)</span> como a <span class="math inline">\(E\)</span>. La nueva energía es sesenta y cuatro joules; la subida máxima respecto del lanzamiento es <span class="math inline">\(3{,}20\,\mathrm m\)</span>. Las alturas y rapideces físicas no cambian.</p>
+</section>
+<section id="solucion-8-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-4">4. La mayor extensión no es el equilibrio</h3>
+<p>Como <span class="math inline">\(y\)</span> crece hacia abajo, la gravedad tiene potencial <span class="math inline">\(-mgy\)</span>. Con <span class="math inline">\(U(0)=0\)</span>,</p>
+<p><span class="math display">\[
+U(y)=\frac12ky^2-mgy
+=(50\,\mathrm{N/m})y^2-(20\,\mathrm N)y.
+\]</span></p>
+<p>La fuerza se anula en <span class="math inline">\(y_e=mg/k=0{,}20\,\mathrm m\)</span>. La liberación desde el reposo no da <span class="math inline">\(E=U(y_e)\)</span>, sino <span class="math inline">\(E=U(0)=0\)</span>. El segundo cero de <span class="math inline">\(U\)</span> está en <span class="math inline">\(y_t=2mg/k=0{,}40\,\mathrm m\)</span>, la primera extensión máxima. Ambos puntos están dentro del régimen lineal declarado.</p>
+<p>En el equilibrio, <span class="math inline">\(U(y_e)=-2\,\mathrm J\)</span>, así que <span class="math inline">\(K=2\,\mathrm J\)</span> y la rapidez es <span class="math inline">\(\sqrt2\,\mathrm{m/s}\)</span>. Igualar <span class="math inline">\(mg=ky\)</span> identifica el equilibrio de fuerzas, no una detención de esta historia. En la extensión máxima, el resorte tira hacia arriba con cuarenta newtons mientras el peso tira hacia abajo con veinte; esa fuerza neta inicia el retorno.</p>
+</section>
+<section id="solucion-8-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-5">5. Dos intervalos permitidos</h3>
+<p>En <span class="math inline">\(x=a\)</span>, <span class="math inline">\(U=0\)</span> y <span class="math inline">\(K=(2\,\mathrm{kg})(1\,\mathrm{m/s})^2/2=1\,\mathrm J\)</span>. Por tanto, <span class="math inline">\(E=1\,\mathrm J\)</span>. La desigualdad <span class="math inline">\(U\leq E\)</span> equivale a</p>
+<p><span class="math display">\[
+\left|\left(\frac{x}{a}\right)^2-1\right|\leq\frac12,
+\]</span></p>
+<p>es decir, <span class="math inline">\(a/\sqrt2\leq|x|\leq a\sqrt{3/2}\)</span>. Existen los dos intervalos cerrados</p>
+<p><span class="math display">\[
+[-a\sqrt{3/2},-a/\sqrt2]\ \cup\ [a/\sqrt2,a\sqrt{3/2}].
+\]</span></p>
+<p>La preparación está en el derecho. Visita primero su extremo exterior por llevar velocidad positiva y permanece entre esos dos extremos. Sus ceros de energía cinética tienen fuerza no nula y son retornos ordinarios. No alcanza el intervalo izquierdo: tendría que atravesar el intervalo central prohibido. La palabra «permitido» por la desigualdad no significa accesible desde cualquier estado con esa energía.</p>
+</section>
+<section id="solucion-8-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-6">6. Cruzar con energía superior a la barrera</h3>
+<p>En el mínimo derecho, <span class="math inline">\(K=5\,\mathrm J\)</span>, por lo que la rapidez es <span class="math inline">\(\sqrt5\,\mathrm{m/s}\)</span> y la velocidad apunta a la izquierda. En el origen, <span class="math inline">\(K=5-4=1\,\mathrm J\)</span> y la rapidez es un metro por segundo, todavía hacia la izquierda en el primer cruce.</p>
+<p>Los extremos cumplen <span class="math inline">\([(x/a)^2-1]^2=5/4\)</span>. La solución con <span class="math inline">\((x/a)^2=1-\sqrt5/2\)</span> es negativa y se descarta; los extremos reales son</p>
+<p><span class="math display">\[
+x_\pm=\pm a\sqrt{1+\frac{\sqrt5}{2}}.
+\]</span></p>
+<p>No hay barrera intermedia con <span class="math inline">\(U&gt;E\)</span>. Además, la rapidez es continua y positiva alrededor del origen: no aparece una divergencia de <span class="math inline">\(\int dx/|v|\)</span> allí. Desde <span class="math inline">\(a\)</span> hasta cero, la energía cinética es al menos un joule, de modo que la rapidez es al menos un metro por segundo y el tiempo de ese tramo es finito.</p>
+</section>
+<section id="solucion-8-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-7">7. Llegar al máximo con la energía justa</h3>
+<p>La preparación da <span class="math inline">\(E=(2\,\mathrm{kg})(2\,\mathrm{m/s})^2/2=4\,\mathrm J=U_b\)</span>. En el lado derecho, con <span class="math inline">\(\xi=x/a\)</span>, la rapidez vale <span class="math inline">\(\sqrt{2U_b/m}\,\xi\sqrt{2-\xi^2}\)</span>. El sentido inicial selecciona velocidad negativa.</p>
+<p>El tiempo hasta <span class="math inline">\(\xi&gt;0\)</span> desde <span class="math inline">\(\xi_0=1\)</span> es la integral del texto. Para <span class="math inline">\(0&lt;\eta\leq1\)</span> se tiene <span class="math inline">\(\sqrt{2-\eta^2}\leq\sqrt2\)</span>, así que su integrando es al menos <span class="math inline">\(1/(\sqrt2\eta)\)</span>. La integral de esta cota diverge al aproximarse a cero. Por tanto, ningún tiempo finito lleva al origen.</p>
+<p>La desigualdad <span class="math inline">\(U(0)\leq E\)</span> es necesaria, pero no afirma un tiempo de llegada. El estado <span class="math inline">\((0,0)\)</span> es por sí mismo otro movimiento posible: el equilibrio superior exacto. La historia preparada en <span class="math inline">\(x=a\)</span> se aproxima a ese estado sin coincidir con él en tiempo finito.</p>
+<figure id="fig-fispm-r20261021-8-6" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/potencial_tiempo_critico.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="../../assets/books/fispm/r20261021/potencial_tiempo_critico.svg" alt="La posición positiva disminuye hacia el origen sin alcanzarlo en ningún tiempo finito." class="fpm-v04-figure img-fluid figure-img" width="680" height="525" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 8.6.</em> Aproximación crítica para la masa y el doble pozo del problema. El eje horizontal es tiempo, a diferencia de los diagramas de energía anteriores. El extremo dibujado de la curva todavía tiene posición positiva; el recorte de la gráfica no representa un instante de llegada al origen.</p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-8-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-8">8. Una detención en tiempo finito</h3>
+<p>La energía inicial es nueve joules. Como <span class="math inline">\(U=3\,\mathrm N\,x\)</span>, el primer cero de <span class="math inline">\(K=9\,\mathrm J-(3\,\mathrm N)x\)</span> ocurre en <span class="math inline">\(x_t=3\,\mathrm m\)</span>. La fuerza constante es <span class="math inline">\(-3\,\mathrm N\)</span> y la aceleración <span class="math inline">\(-1{,}5\,\mathrm{m/s^2}\)</span>. Por Newton, el reposo se alcanza en dos segundos.</p>
+<p>La comprobación energética utiliza</p>
+<p><span class="math display">\[
+\Delta t=\int_0^{3\,\mathrm m}\frac{dx}{\sqrt{9\,\mathrm{m^2/s^2}-(3\,\mathrm{m/s^2})x}}=2\,\mathrm s.
+\]</span></p>
+<p>El integrando tiene una singularidad de tipo <span class="math inline">\((x_t-x)^{-1/2}\)</span>, cuya integral converge. En el extremo la fuerza permanece hacia la izquierda, así que comienza el regreso. Una rapidez nula no implica fuerza nula; en este ejemplo tampoco significa un estado de equilibrio.</p>
+</section>
+<section id="solucion-8-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-9">9. Dos sentidos en la misma línea de energía</h3>
+<p>En medio metro, <span class="math inline">\(U=1\,\mathrm J\)</span> y <span class="math inline">\(K=3\,\mathrm J\)</span>. Las dos velocidades son <span class="math inline">\(v=\pm\sqrt3\,\mathrm{m/s}\)</span>. El equilibrio es <span class="math inline">\(x=0\)</span> y los extremos de energía son <span class="math inline">\(x=\pm1\,\mathrm m\)</span>.</p>
+<p>Con velocidad positiva se visita primero el extremo derecho; con velocidad negativa, el izquierdo. No hay otros ceros interiores de <span class="math inline">\(K\)</span> que puedan cambiar el sentido antes. La posición y la energía no distinguen las dos preparaciones: falta el signo de la velocidad. En el equilibrio podría además haber movimiento con rapidez máxima; «posición de equilibrio» identifica dónde puede existir reposo, no obliga a que todo paso por ella sea reposo.</p>
+</section>
+<section id="solucion-8-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-10">10. Una cota concreta de estabilidad</h3>
+<p>El incremento de energía respecto del mínimo satisface</p>
+<p><span class="math display">\[
+E-U(x_e)\leq\frac12(2\,\mathrm{kg})(0{,}10\,\mathrm{m/s})^2
++\frac12(8\,\mathrm{N/m})(0{,}05\,\mathrm m)^2
+=0{,}02\,\mathrm J.
+\]</span></p>
+<p>Como cada término de <span class="math inline">\(mv^2/2+kq^2/2\)</span> es no negativo, la conservación da <span class="math inline">\(|q|\leq\sqrt{2(0{,}02\,\mathrm J)/k}=\sqrt{0{,}005}\,\mathrm m\approx0{,}07071\,\mathrm m\)</span> y <span class="math inline">\(|v|\leq\sqrt{2(0{,}02\,\mathrm J)/m}=\sqrt{0{,}02}\,\mathrm{m/s}\approx0{,}14142\,\mathrm{m/s}\)</span> para todo tiempo. Son menores que las dos tolerancias pedidas.</p>
+<p>Controlar sólo la posición inicial no habría bastado. Una velocidad inicial grande puede aportar una energía cinética grande incluso en <span class="math inline">\(q=0\)</span> y producir una excursión muy extensa. La prueba del mínimo estricto necesita la cercanía del estado completo.</p>
+<figure id="fig-fispm-r20261021-8-7" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/potencial_estado.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="../../assets/books/fispm/r20261021/potencial_estado.svg" alt="El rectángulo de preparaciones iniciales está dentro de una elipse de energía, y ésta queda dentro de las tolerancias de posición y velocidad." class="fpm-v04-figure img-fluid figure-img" width="680" height="560" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 8.7.</em> Cada punto del plano representa un estado <span class="math inline">\((q,v)\)</span>. Las dos coordenadas tienen unidades y escalas distintas. La región de energía no mayor de <span class="math inline">\(0{,}02\,\mathrm J\)</span> encierra todas las preparaciones dadas y controla su evolución posterior; no se afirma que los movimientos recorran el borde de los rectángulos.</p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-8-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-11">11. Salir de la vecindad de un máximo</h3>
+<p>La fuerza es <span class="math inline">\((8\,\mathrm{N/m})q\)</span> y la ecuación da <span class="math inline">\(\ddot q=(4\,\mathrm{s^{-2}})q\)</span>. Desde <span class="math inline">\(q_0&gt;0\)</span> y reposo, la aceleración es positiva y <span class="math inline">\(q\)</span> crece. Mientras permanezca antes de <span class="math inline">\(r\)</span>,</p>
+<p><span class="math display">\[
+q(t)\geq q_0+(2\,\mathrm{s^{-2}})q_0t^2.
+\]</span></p>
+<p>Por tanto, el tiempo de llegada a <span class="math inline">\(r\)</span> no puede superar</p>
+<p><span class="math display">\[
+t_r\leq\sqrt{\frac{r/q_0-1}{2\,\mathrm{s^{-2}}}}.
+\]</span></p>
+<p>Para los datos, la cota es <span class="math inline">\(\sqrt{49{,}5}\,\mathrm s\approx7{,}036\,\mathrm s\)</span>. Es una cota, no el tiempo exacto. Al elegir <span class="math inline">\(q_0\)</span> cada vez menor la cota aumenta, pero para cada <span class="math inline">\(q_0&gt;0\)</span> sigue siendo finita. Una misma vecindad se abandona mediante datos iniciales arbitrariamente próximos al equilibrio. La definición de estabilidad exige control para todo tiempo y por eso falla.</p>
+</section>
+<section id="solucion-8-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-12">12. Cuando la segunda derivada se anula</h3>
+<p>En los cuatro modelos <span class="math inline">\(U'(0)=0\)</span> y <span class="math inline">\(U''(0)=0\)</span>. Para <span class="math inline">\(U_1\)</span>, el mínimo es estricto, por lo que el teorema garantiza estabilidad frente a posición y velocidad. La restauración es débil cerca del origen, pero la barrera energética basta para la conclusión.</p>
+<p>Para <span class="math inline">\(U_2\)</span>, prepare <span class="math inline">\(q_0&gt;0\)</span> y reposo. La fuerza es <span class="math inline">\(4\beta q^3&gt;0\)</span> y, mientras <span class="math inline">\(q\geq q_0\)</span>, la aceleración es al menos <span class="math inline">\(4\beta q_0^3/m\)</span>. La cota <span class="math inline">\(q(t)\geq q_0+(2\beta q_0^3/m)t^2\)</span> obliga a salir de cualquier intervalo derecho fijo en tiempo finito. Como <span class="math inline">\(q_0\)</span> puede ser arbitrariamente pequeño, el equilibrio es inestable.</p>
+<p>Para <span class="math inline">\(U_3\)</span>, la fuerza <span class="math inline">\(-3\gamma q^2\)</span> apunta hacia la izquierda a ambos lados. Elija <span class="math inline">\(q(0)=-q_0&lt;0\)</span> y reposo, con <span class="math inline">\(q_0&gt;0\)</span>. La partícula empieza a alejarse hacia la izquierda; mientras <span class="math inline">\(q\leq-q_0\)</span>, su aceleración es como máximo <span class="math inline">\(-3\gamma q_0^2/m\)</span>. De nuevo una cota cuadrática en el tiempo obliga a abandonar una vecindad izquierda fija. El equilibrio es inestable aunque no sea un máximo local.</p>
+<p>Para <span class="math inline">\(U_4\)</span>, una traslación con nueva velocidad inicial cero deja otro reposo: es el caso llamado neutro en la clasificación estática. Sin embargo, la preparación <span class="math inline">\(q(0)=0\)</span>, <span class="math inline">\(v(0)=v_0\ne0\)</span> produce <span class="math inline">\(q=v_0t\)</span> y acaba por abandonar cualquier intervalo acotado, por pequeño que sea <span class="math inline">\(v_0\)</span>. El estado individual es inestable con la definición dinámica del capítulo. El criterio de segunda derivada nula no identifica un comportamiento único.</p>
+</section>
+<section id="solucion-8-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-13">13. Un potencial y una resistencia viscosa</h3>
+<p>La energía cinética vale cuatro joules y el potencial un joule: <span class="math inline">\(E=5\,\mathrm J\)</span>. La fuerza elástica es menos cuatro newtons y la resistencia menos dos, ambas hacia la izquierda. La aceleración es <span class="math inline">\((-6\,\mathrm N)/(2\,\mathrm{kg})=-3\,\mathrm{m/s^2}\)</span>.</p>
+<p>El balance da <span class="math inline">\(dE/dt=-bv^2=-4\,\mathrm W\)</span>. Como comprobación, <span class="math inline">\(dK/dt=mv\ddot q=-12\,\mathrm W\)</span> y <span class="math inline">\(dU/dt=kqv=+8\,\mathrm W\)</span>; su suma es menos cuatro watts. El potencial está creciendo en ese instante porque la partícula se aleja del mínimo, pero la energía mecánica total disminuye. No podemos conservar los cinco joules para otro estado sin contabilizar el trabajo posterior de la resistencia.</p>
+</section>
+<section id="solucion-8-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-14">14. Preparar una partícula para cruzar la barrera</h3>
+<p>Al principio <span class="math inline">\(K=0\)</span> y <span class="math inline">\(U(a)=0\)</span>, de modo que <span class="math inline">\(E_i=0\)</span>. El trabajo del actuador cambia la energía mecánica en tres o cinco joules. Al terminar otra vez en <span class="math inline">\(x=a\)</span>, ese incremento está en la energía cinética, pues el potencial tiene el mismo valor inicial y final.</p>
+<p>Con <span class="math inline">\(E=3\,\mathrm J\)</span>, la barrera de cuatro joules deja un intervalo central prohibido; no hay cruce. Con <span class="math inline">\(E=5\,\mathrm J\)</span> y velocidad hacia la izquierda, el movimiento sí cruza el origen con <span class="math inline">\(K=1\,\mathrm J\)</span> y rapidez de un metro por segundo. Se compara el trabajo con <span class="math inline">\(U(0)-U(a)\)</span>, que no cambia si se añade una constante a todo el potencial. Compararlo con un valor absoluto de <span class="math inline">\(U(0)\)</span> sin declarar la referencia podría cambiar falsamente la conclusión.</p>
+</section>
+<section id="solucion-8-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-15">15. Una interacción atractiva que se debilita</h3>
+<p>La derivada es <span class="math inline">\(U'=A/r^2\)</span>, así que <span class="math inline">\(F_r=-A/r^2\)</span> apunta hacia la fuente. La energía inicial es <span class="math inline">\(E=(1\,\mathrm{kg})(3\,\mathrm{m/s})^2/2-20\,\mathrm{J\,m}/(2\,\mathrm m)=-5{,}5\,\mathrm J\)</span>. Al salir, <span class="math inline">\(U\)</span> aumenta y la rapidez disminuye. La detención cumple <span class="math inline">\(-A/r_{\max}=E\)</span>, de donde <span class="math inline">\(r_{\max}=40/11\,\mathrm m\approx3{,}636\,\mathrm m\)</span>.</p>
+<p>Para no encontrar un extremo exterior finito se requiere <span class="math inline">\(E\geq0\)</span>, que en la preparación dada equivale a <span class="math inline">\(v_0\geq\sqrt{2A/(mr_0)}=\sqrt{20}\,\mathrm{m/s}\)</span>. En la igualdad la rapidez tiende a cero cuando <span class="math inline">\(r\)</span> tiende a infinito, sin anularse a una distancia finita. Esto no afirma una llegada a infinito en tiempo finito. Para <span class="math inline">\(E&gt;0\)</span>, la rapidez tiene un límite positivo hacia fuera. Todo el argumento se limita al movimiento radial sobre <span class="math inline">\(r&gt;0\)</span>.</p>
+</section>
+<section id="solucion-8-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-16">16. Reposo fuera del mínimo por rozamiento</h3>
+<p>La normal es diez newtons y la fricción estática puede tener módulo hasta cuatro. Mantener reposo exige <span class="math inline">\(f=kx\)</span>, de sentido contrario a la fuerza del resorte. Es admisible exactamente cuando <span class="math inline">\(|kx|\leq4\,\mathrm N\)</span>, es decir, <span class="math inline">\(|x|\leq0{,}20\,\mathrm m\)</span>.</p>
+<p>En <span class="math inline">\(x=0{,}10\,\mathrm m\)</span> se necesitan dos newtons hacia la derecha, admisibles. El bloque está en reposo aunque no esté en el mínimo del potencial elástico. En <span class="math inline">\(x=0{,}30\,\mathrm m\)</span> harían falta seis newtons estáticos, imposibles. Empieza a deslizar hacia la izquierda; la fricción cinética pasa a tres newtons hacia la derecha. La fuerza neta inicial del régimen deslizante es <span class="math inline">\(-6+3=-3\,\mathrm N\)</span> y su aceleración <span class="math inline">\(-3\,\mathrm{m/s^2}\)</span>. La ecuación <span class="math inline">\(U'=0\)</span> sola habría ignorado la interacción adicional que permite todo el intervalo de reposos.</p>
+<figure id="fig-fispm-r20261021-8-8" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/potencial_reposo_rozamiento.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="../../assets/books/fispm/r20261021/potencial_reposo_rozamiento.svg" alt="La fricción requerida kx sólo pertenece al intervalo estático permitido cuando la extensión está entre menos y más veinte centímetros." class="fpm-v04-figure img-fluid figure-img" width="680" height="540" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 8.8.</em> La banda horizontal corresponde a fuerzas entre menos y más cuatro newtons. Su intersección con <span class="math inline">\(f_{\mathrm{requerida}}=kx\)</span> determina el intervalo de reposos. El modelo admite los extremos de la banda; superarlos obliga a revisar el régimen.</p>
+</figcaption>
+</figure>
+</section>
+<section id="solucion-8-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-17">17. Un umbral con incertidumbre</h3>
+<p>Restar las cotas en los sentidos correspondientes da</p>
+<p><span class="math display">\[
+E-U_b\in[3{,}90-4{,}05;\ 4{,}10-3{,}95]\,\mathrm J
+=[-0{,}15;0{,}15]\,\mathrm J.
+\]</span></p>
+<p>Los datos admiten energías por debajo, por encima y exactamente en el umbral. No permiten afirmar un cruce con rapidez positiva. Para garantizarlo con estas hipótesis se necesita <span class="math inline">\(E_{\min}&gt;U_{b,\max}\)</span>, además del sentido inicial hacia la barrera y de la ausencia de otros límites del recorrido. La igualdad entre las cotas no basta: la preparación crítica puede aproximarse al máximo sólo en tiempo infinito. Las cotas se refieren a una misma referencia de energía; un desplazamiento común de ese cero no cambia la comparación.</p>
+</section>
+<section id="solucion-8-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-18">18. Tres valores de potencial no fijan la fuerza</h3>
+<p>El término añadido a <span class="math inline">\(U_A\)</span> se anula en <span class="math inline">\(x=-a,0,a\)</span>, de modo que ambos modelos reproducen los tres valores. Sus derivadas en cero son distintas. Para <span class="math inline">\(U_A\)</span>, <span class="math inline">\(U_A'(0)=0\)</span> y <span class="math inline">\(F_A(0)=0\)</span>. El término añadido tiene derivada <span class="math inline">\((1\,\mathrm J)[3(x/a)^2-1]/a\)</span>, así que <span class="math inline">\(U_B'(0)=-1\,\mathrm J/a\)</span> y <span class="math inline">\(F_B(0)=+1\,\mathrm N\)</span>.</p>
+<p>Por tanto, las mediciones finitas indicadas no demuestran equilibrio en el origen. Permiten modelos que coinciden en esos puntos y tienen pendientes diferentes entre ellos. Para inferir la fuerza local harían falta más información sobre la función, un modelo de interpolación justificado o mediciones dinámicas. Elegir una parábola que ajuste los tres valores no la convierte en una predicción independiente de esos mismos datos.</p>
+</section>
+<section id="solucion-8-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-19">19. Reconocer un potencial en el plano</h3>
+<p>Las derivadas de <span class="math inline">\(U_A=-\kappa xy\)</span> son <span class="math inline">\(\partial_xU_A=-\kappa y\)</span> y <span class="math inline">\(\partial_yU_A=-\kappa x\)</span>, de modo que su negativo reproduce ambas componentes de <span class="math inline">\(\mathbf F_A\)</span>. El trabajo de cero al punto final es <span class="math inline">\(-\Delta U_A=\kappa(2\,\mathrm m)(1\,\mathrm m)=4\,\mathrm J\)</span>.</p>
+<p>Por el recorrido horizontal y luego vertical, el primer tramo de <span class="math inline">\(\mathbf F_A\)</span> da cero porque <span class="math inline">\(y=0\)</span>; el segundo tiene <span class="math inline">\(F_y=\kappa(2\,\mathrm m)=4\,\mathrm N\)</span> y aporta cuatro joules. Por el orden contrario, el tramo vertical inicial da cero porque <span class="math inline">\(x=0\)</span> y el horizontal superior aporta también cuatro joules. La coincidencia aquí está justificada por el potencial explícito, no sólo por haber comprobado dos caminos.</p>
+<p>Para <span class="math inline">\(\mathbf F_B\)</span>, el recorrido horizontal inferior y luego vertical da cero; el vertical inicial y luego horizontal superior da cuatro joules. En el rectángulo cerrado indicado, sólo el tramo superior hacia la izquierda contribuye: <span class="math inline">\(W=-4\,\mathrm J\)</span>. Si existiera un potencial en todo ese dominio, su diferencia entre el inicio y el final del recorrido cerrado sería cero, contradiciendo el trabajo calculado. Por tanto, no existe ese potencial global para la segunda fuerza.</p>
+</section>
+<section id="solucion-8-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-20">20. El parámetro del potencial cambia con el tiempo</h3>
+<p>La regla del producto y la ecuación de Newton dan</p>
+<p><span class="math display">\[
+\frac{d}{dt}\left(\frac12mv^2+\frac12k(t)x^2\right)
+=mv\dot v+k(t)xv+\frac12\dot k(t)x^2
+=\frac12\dot k(t)x^2.
+\]</span></p>
+<p>Los dos primeros términos se cancelan, pero queda el cambio explícito del parámetro. Con los datos indicados la tasa es <span class="math inline">\(1\,\mathrm{J/s}=1\,\mathrm W\)</span>. La potencia de la fuerza sobre la partícula es cero en ese instante porque <span class="math inline">\(v=0\)</span>, mientras cambia el valor del potencial elegido.</p>
+<p>El teorema de conservación suponía que <span class="math inline">\(U\)</span> no dependía explícitamente del tiempo. Aquí un agente modifica el parámetro del modelo y esa hipótesis falla. La identidad obtenida corresponde a la función <span class="math inline">\(U(x,t)\)</span> especificada y obliga a contabilizar esa modificación al interpretar el sistema ampliado. Ser el negativo de una derivada espacial en cada instante no basta para conservar <span class="math inline">\(K+U\)</span> a lo largo de una evolución con parámetros variables.</p>
+</section>
+<section id="solucion-8-21" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-8-21">21. Un apoyo que entrega y recupera energía</h3>
+<p>La fuerza depende de la separación respecto del apoyo, de modo que elegimos esa separación como incógnita: <span class="math inline">\(q=x-X\)</span>. Como <span class="math inline">\(\ddot X=0\)</span> para <span class="math inline">\(t&gt;0\)</span>, Newton da <span class="math inline">\(\ddot q+\omega^2q=0\)</span>, con <span class="math inline">\(\omega=\sqrt{k/m}=2\,\mathrm{s^{-1}}\)</span>. Sus datos son <span class="math inline">\(q(0)=0\)</span> y <span class="math inline">\(\dot q(0)=-u\)</span>. La solución es</p>
+<p><span class="math display">\[
+q(t)=-\frac{u}{\omega}\sin(\omega t),\qquad
+x(t)=ut-\frac{u}{\omega}\sin(\omega t),\qquad
+\dot x(t)=u[1-\cos(\omega t)].
+\]</span></p>
+<p>Estas fórmulas se comprueban derivando: <span class="math inline">\(m\ddot x=mu\omega\sin(\omega t)=-kq\)</span>, y en cero se recuperan posición y velocidad nulas. La extensión tiene módulo máximo <span class="math inline">\(u/\omega=0{,}10\,\mathrm m\)</span>, dentro del intervalo lineal declarado. El movimiento ideal del apoyo está prescrito; la fuerza necesaria para producir su cambio inicial de velocidad pertenece a ese mecanismo externo.</p>
+<p>Sustituir en las dos reservas de energía da</p>
+<p><span class="math display">\[
+\begin{aligned}
+E(t)&amp;=\frac12mu^2[1-\cos(\omega t)]^2
+      +\frac12mu^2\sin^2(\omega t)\\
+&amp;=mu^2[1-\cos(\omega t)].
+\end{aligned}
+\]</span></p>
+<p>La potencia del apoyo se obtiene manteniendo fija <span class="math inline">\(x\)</span> al derivar el potencial:</p>
+<p><span class="math display">\[
+P_{\mathrm{apoyo}}=-kq\dot X
+=mu^2\omega\sin(\omega t)=\frac{dE}{dt}.
+\]</span></p>
+<p>En <span class="math inline">\(t=\pi/2\,\mathrm s\)</span>, la extensión vuelve a cero, el carro lleva velocidad <span class="math inline">\(2u=0{,}40\,\mathrm{m/s}\)</span> y <span class="math inline">\(E=2mu^2=0{,}08\,\mathrm J\)</span>. Su posición es <span class="math inline">\(x=\pi/10\,\mathrm m\)</span>. En <span class="math inline">\(t=\pi\,\mathrm s\)</span>, la extensión y la velocidad del carro son cero y <span class="math inline">\(E=0\)</span>, aunque carro y apoyo han avanzado hasta <span class="math inline">\(x=X=\pi/5\,\mathrm m\)</span>.</p>
+<p>Durante la primera mitad, <span class="math inline">\(0&lt;t&lt;\pi/2\,\mathrm s\)</span>, la potencia es positiva; durante la segunda, <span class="math inline">\(\pi/2\,\mathrm s&lt;t&lt;\pi\,\mathrm s\)</span>, es negativa. El agente entrega ocho centésimas de joule y después las recupera. La integral del ciclo vale cero porque las energías extremas coinciden. La identidad instantánea conserva la información sobre los intercambios interiores que esa comparación de extremos resume.</p>
+<figure id="fig-fispm-r20261021-8-9" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/potencial_apoyo_movil.svg" class="lightbox" data-gallery="fispm-r20261021-c8"><img src="../../assets/books/fispm/r20261021/potencial_apoyo_movil.svg" alt="La energía crece hasta ocho centésimas de joule y vuelve a cero, mientras la potencia del apoyo cambia de positiva a negativa a mitad del ciclo." class="fpm-v04-figure img-fluid figure-img" width="475.2" height="316.8" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 8.9.</em> La energía corresponde al carro y al resorte ideal. La potencia positiva entrega energía a ese conjunto y la negativa la devuelve al mecanismo que mueve el apoyo. Las ordenadas tienen unidades distintas y comparten el mismo reloj. El área con signo de la potencia da el cambio de energía; las áreas de ambos medios ciclos se compensan.</p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="lecturas-de-apoyo" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-de-apoyo">Lecturas de apoyo</h2>
+<p>Sears y Zemansky, <em>Física universitaria</em>, volumen 1, Young y Freedman, 13.ª edición, §§7.4–7.5, pp.&nbsp;225–229, permite cotejar la relación entre fuerza y pendiente del potencial y la lectura de diagramas de energía. Serway y Jewett, <em>Física para ciencias e ingeniería</em>, volumen 1, 10.ª edición española, §§7.8–7.9, pp.&nbsp;171–174, desarrolla la relación fuerza–potencial y la clasificación elemental del equilibrio. La definición dinámica utilizada aquí precisa las perturbaciones admitidas y distingue el mínimo estricto de una región plana.</p>
+<p>Spivak, <em>Physics for Mathematicians. Mechanics I</em>, capítulo 6, pp.&nbsp;213–215, destaca el estado de reposo y las perturbaciones de posición y velocidad al discutir equilibrio y estabilidad. Nuestro tratamiento se limita a la recta y construye el argumento de barrera energética sin usar el formalismo general de restricciones ni criterios multidimensionales antes de introducirlos. Los desarrollos, datos y ejercicios son propios; el cotejo es selectivo y no una auditoría completa de las obras.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-07-trabajo-y-energia-cinetica.html">← 7. Trabajo y energía cinética</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-09-impulso-colisiones-y-centro-de-masa.html">9. Impulso, colisiones y centro de masa →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

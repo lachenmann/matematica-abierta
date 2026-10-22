@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 10 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>El oscilador armónico – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#una-función-que-conserva-su-forma-al-derivar-dos-veces" id="toc-una-función-que-conserva-su-forma-al-derivar-dos-veces" class="nav-link active" data-scroll-target="#una-función-que-conserva-su-forma-al-derivar-dos-veces">Una función que conserva su forma al derivar dos veces</a></li>
+  <li><a href="#amplitud-fase-y-reloj" id="toc-amplitud-fase-y-reloj" class="nav-link" data-scroll-target="#amplitud-fase-y-reloj">Amplitud, fase y reloj</a></li>
+  <li><a href="#la-energía-dibuja-los-estados-posibles" id="toc-la-energía-dibuja-los-estados-posibles" class="nav-link" data-scroll-target="#la-energía-dibuja-los-estados-posibles">La energía dibuja los estados posibles</a></li>
+  <li><a href="#medir-desde-un-equilibrio-desplazado" id="toc-medir-desde-un-equilibrio-desplazado" class="nav-link" data-scroll-target="#medir-desde-un-equilibrio-desplazado">Medir desde un equilibrio desplazado</a></li>
+  <li><a href="#hasta-dónde-vale-una-aproximación-armónica" id="toc-hasta-dónde-vale-una-aproximación-armónica" class="nav-link" data-scroll-target="#hasta-dónde-vale-una-aproximación-armónica">Hasta dónde vale una aproximación armónica</a></li>
+  <li><a href="#lo-que-permiten-reconstruir-unas-observaciones" id="toc-lo-que-permiten-reconstruir-unas-observaciones" class="nav-link" data-scroll-target="#lo-que-permiten-reconstruir-unas-observaciones">Lo que permiten reconstruir unas observaciones</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-10-1" id="toc-ejercicio-10-1" class="nav-link" data-scroll-target="#ejercicio-10-1">1. Soltar desde el reposo</a></li>
+  <li><a href="#ejercicio-10-2" id="toc-ejercicio-10-2" class="nav-link" data-scroll-target="#ejercicio-10-2">2. Comenzar cruzando el equilibrio</a></li>
+  <li><a href="#ejercicio-10-3" id="toc-ejercicio-10-3" class="nav-link" data-scroll-target="#ejercicio-10-3">3. Resolver el reloj del ejemplo inicial</a></li>
+  <li><a href="#ejercicio-10-4" id="toc-ejercicio-10-4" class="nav-link" data-scroll-target="#ejercicio-10-4">4. Distinguir hertz de radianes por segundo</a></li>
+  <li><a href="#ejercicio-10-5" id="toc-ejercicio-10-5" class="nav-link" data-scroll-target="#ejercicio-10-5">5. Recorrer la mitad de la amplitud</a></li>
+  <li><a href="#ejercicio-10-6" id="toc-ejercicio-10-6" class="nav-link" data-scroll-target="#ejercicio-10-6">6. Una rapidez deja dos estados posibles</a></li>
+  <li><a href="#ejercicio-10-7" id="toc-ejercicio-10-7" class="nav-link" data-scroll-target="#ejercicio-10-7">7. Una proporción entre energías</a></li>
+  <li><a href="#ejercicio-10-8" id="toc-ejercicio-10-8" class="nav-link" data-scroll-target="#ejercicio-10-8">8. Cambiar masa y rigidez</a></li>
+  <li><a href="#ejercicio-10-9" id="toc-ejercicio-10-9" class="nav-link" data-scroll-target="#ejercicio-10-9">9. La longitud natural no es el equilibrio cargado</a></li>
+  <li><a href="#ejercicio-10-10" id="toc-ejercicio-10-10" class="nav-link" data-scroll-target="#ejercicio-10-10">10. Encender una fuerza constante</a></li>
+  <li><a href="#ejercicio-10-11" id="toc-ejercicio-10-11" class="nav-link" data-scroll-target="#ejercicio-10-11">11. Preparar y detener con impulsos</a></li>
+  <li><a href="#ejercicio-10-12" id="toc-ejercicio-10-12" class="nav-link" data-scroll-target="#ejercicio-10-12">12. Un impacto que prepara la oscilación</a></li>
+  <li><a href="#ejercicio-10-13" id="toc-ejercicio-10-13" class="nav-link" data-scroll-target="#ejercicio-10-13">13. Ambos extremos pueden moverse</a></li>
+  <li><a href="#ejercicio-10-14" id="toc-ejercicio-10-14" class="nav-link" data-scroll-target="#ejercicio-10-14">14. Dos resortes restauran el mismo desplazamiento</a></li>
+  <li><a href="#ejercicio-10-15" id="toc-ejercicio-10-15" class="nav-link" data-scroll-target="#ejercicio-10-15">15. Un péndulo y el error de la fuerza aproximada</a></li>
+  <li><a href="#ejercicio-10-16" id="toc-ejercicio-10-16" class="nav-link" data-scroll-target="#ejercicio-10-16">16. Un resorte que no es exactamente lineal</a></li>
+  <li><a href="#ejercicio-10-17" id="toc-ejercicio-10-17" class="nav-link" data-scroll-target="#ejercicio-10-17">17. Inferir una rigidez con cotas</a></li>
+  <li><a href="#ejercicio-10-18" id="toc-ejercicio-10-18" class="nav-link" data-scroll-target="#ejercicio-10-18">18. Dos frecuencias, el mismo registro</a></li>
+  <li><a href="#ejercicio-10-19" id="toc-ejercicio-10-19" class="nav-link" data-scroll-target="#ejercicio-10-19">19. Un control uniforme de la preparación</a></li>
+  <li><a href="#ejercicio-10-20" id="toc-ejercicio-10-20" class="nav-link" data-scroll-target="#ejercicio-10-20">20. Un pequeño error de frecuencia se acumula</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#solucion-10-1" id="toc-solucion-10-1" class="nav-link" data-scroll-target="#solucion-10-1">1. Soltar desde el reposo</a></li>
+  <li><a href="#solucion-10-2" id="toc-solucion-10-2" class="nav-link" data-scroll-target="#solucion-10-2">2. Comenzar cruzando el equilibrio</a></li>
+  <li><a href="#solucion-10-3" id="toc-solucion-10-3" class="nav-link" data-scroll-target="#solucion-10-3">3. Resolver el reloj del ejemplo inicial</a></li>
+  <li><a href="#solucion-10-4" id="toc-solucion-10-4" class="nav-link" data-scroll-target="#solucion-10-4">4. Distinguir hertz de radianes por segundo</a></li>
+  <li><a href="#solucion-10-5" id="toc-solucion-10-5" class="nav-link" data-scroll-target="#solucion-10-5">5. Recorrer la mitad de la amplitud</a></li>
+  <li><a href="#solucion-10-6" id="toc-solucion-10-6" class="nav-link" data-scroll-target="#solucion-10-6">6. Una rapidez deja dos estados posibles</a></li>
+  <li><a href="#solucion-10-7" id="toc-solucion-10-7" class="nav-link" data-scroll-target="#solucion-10-7">7. Una proporción entre energías</a></li>
+  <li><a href="#solucion-10-8" id="toc-solucion-10-8" class="nav-link" data-scroll-target="#solucion-10-8">8. Cambiar masa y rigidez</a></li>
+  <li><a href="#solucion-10-9" id="toc-solucion-10-9" class="nav-link" data-scroll-target="#solucion-10-9">9. La longitud natural no es el equilibrio cargado</a></li>
+  <li><a href="#solucion-10-10" id="toc-solucion-10-10" class="nav-link" data-scroll-target="#solucion-10-10">10. Encender una fuerza constante</a></li>
+  <li><a href="#solucion-10-11" id="toc-solucion-10-11" class="nav-link" data-scroll-target="#solucion-10-11">11. Preparar y detener con impulsos</a></li>
+  <li><a href="#solucion-10-12" id="toc-solucion-10-12" class="nav-link" data-scroll-target="#solucion-10-12">12. Un impacto que prepara la oscilación</a></li>
+  <li><a href="#solucion-10-13" id="toc-solucion-10-13" class="nav-link" data-scroll-target="#solucion-10-13">13. Ambos extremos pueden moverse</a></li>
+  <li><a href="#solucion-10-14" id="toc-solucion-10-14" class="nav-link" data-scroll-target="#solucion-10-14">14. Dos resortes restauran el mismo desplazamiento</a></li>
+  <li><a href="#solucion-10-15" id="toc-solucion-10-15" class="nav-link" data-scroll-target="#solucion-10-15">15. Un péndulo y el error de la fuerza aproximada</a></li>
+  <li><a href="#solucion-10-16" id="toc-solucion-10-16" class="nav-link" data-scroll-target="#solucion-10-16">16. Un resorte que no es exactamente lineal</a></li>
+  <li><a href="#solucion-10-17" id="toc-solucion-10-17" class="nav-link" data-scroll-target="#solucion-10-17">17. Inferir una rigidez con cotas</a></li>
+  <li><a href="#solucion-10-18" id="toc-solucion-10-18" class="nav-link" data-scroll-target="#solucion-10-18">18. Dos frecuencias, el mismo registro</a></li>
+  <li><a href="#solucion-10-19" id="toc-solucion-10-19" class="nav-link" data-scroll-target="#solucion-10-19">19. Un control uniforme de la preparación</a></li>
+  <li><a href="#solucion-10-20" id="toc-solucion-10-20" class="nav-link" data-scroll-target="#solucion-10-20">20. Un pequeño error de frecuencia se acumula</a></li>
+  </ul></li>
+  <li><a href="#lecturas-de-apoyo" id="toc-lecturas-de-apoyo" class="nav-link" data-scroll-target="#lecturas-de-apoyo">Lecturas de apoyo</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">El oscilador armónico</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 10</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 10 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-09-impulso-colisiones-y-centro-de-masa.html">← 9. Impulso, colisiones y centro de masa</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-11-disipacion-y-respuesta-forzada.html">11. Disipación y respuesta forzada →</a></p>
+<p>Un carro de dos kilogramos está unido a un resorte horizontal de constante <span class="math inline">\(8\,\mathrm{N/m}\)</span>. Lo preparamos doce centímetros a la derecha de la posición donde el resorte tiene su longitud natural y le damos una velocidad de treinta y dos centímetros por segundo hacia la derecha. En ese instante el resorte ya tira hacia la izquierda, pero el carro todavía avanza. Queremos reconstruir el movimiento: cuánto más se alejará, cuándo comenzará a regresar y cuánto tardará en repetir su estado.</p>
+<p>Seguiremos al carro como una partícula de masa constante en el marco inercial del laboratorio. El eje <span class="math inline">\(x\)</span> apunta hacia la derecha y su origen coincide con la longitud natural del resorte. El riel es horizontal; peso y normal se compensan. Omitimos rozamiento, resistencia del aire, masa del resorte y rotación del carro. Suponemos que la fuerza del resorte es <span class="math inline">\(F=-kx\)</span> en el intervalo <span class="math inline">\(|x|&lt;0{,}30\,\mathrm m\)</span>. Será necesario comprobar que el movimiento calculado permanece allí.</p>
+<p>Tomamos <span class="math inline">\(t=0\)</span> cuando termina la preparación. Los datos y la segunda ley de Newton dan</p>
+<p><span class="math display">\[
+m\ddot x=-kx,\qquad
+x(0)=0{,}12\,\mathrm m,\qquad
+\dot x(0)=0{,}32\,\mathrm{m/s}.
+\]</span></p>
+<p>La aceleración inicial es <span class="math inline">\(-0{,}48\,\mathrm{m/s^2}\)</span>. Ese signo no contradice el sentido de la velocidad: significa que, mientras el carro avanza hacia la derecha, pierde rapidez. Las fórmulas de aceleración constante no describen el movimiento completo, porque la fuerza cambia con la posición. Los capítulos anteriores permitían calcular una rapidez mediante energía o un cambio de velocidad mediante impulso; conocer el instante de cada evento exige resolver ahora la ecuación de movimiento.</p>
+<figure id="fig-fispm-r20261021-10-1" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/oscilador_preparacion.svg" class="lightbox" data-gallery="fispm-r20261021-c10"><img src="../../assets/books/fispm/r20261021/oscilador_preparacion.svg" alt="El carro se prepara a la derecha del equilibrio con velocidad hacia la derecha y fuerza restauradora hacia la izquierda." class="fpm-v04-figure img-fluid figure-img" width="900" height="480" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 10.1.</em> Velocidad y fuerza pueden tener sentidos opuestos. Se dibujan con flechas de distinto color y rótulos explícitos; sus longitudes no comparan magnitudes de unidades diferentes. El origen se refiere al equilibrio del modelo horizontal.</p>
+</figcaption>
+</figure>
+<section id="una-función-que-conserva-su-forma-al-derivar-dos-veces" class="level2">
+<h2 class="anchored" data-anchor-id="una-función-que-conserva-su-forma-al-derivar-dos-veces">Una función que conserva su forma al derivar dos veces</h2>
+<p>Al dividir por la masa aparece la razón <span class="math inline">\(k/m\)</span>, cuyas unidades son <span class="math inline">\(\mathrm{s^{-2}}\)</span>. Su raíz positiva, que denotaremos por <span class="math inline">\(\omega\)</span>, tiene unidades de inverso de tiempo. Para el carro, <span class="math inline">\(\omega=\sqrt{k/m}=2\,\mathrm{s^{-1}}\)</span> y buscamos una función que satisfaga <span class="math inline">\(\ddot x=-\omega^2x\)</span>. Seno y coseno ofrecen precisamente ese comportamiento: derivarlos dos veces devuelve su negativo, acompañado por el cuadrado de la frecuencia de su argumento.</p>
+<p><strong>Definición.</strong> Un movimiento unidimensional es <em>armónico simple</em> respecto de un equilibrio fijo <span class="math inline">\(x_e\)</span> si su desplazamiento <span class="math inline">\(q(t)=x(t)-x_e\)</span> es dos veces continuamente derivable y satisface</p>
+<p><span class="math display">\[
+\ddot q+\omega^2q=0
+\]</span></p>
+<p>para una constante <span class="math inline">\(\omega&gt;0\)</span>, llamada <em>frecuencia angular</em>. En un resorte ideal horizontal con masa <span class="math inline">\(m&gt;0\)</span> y constante <span class="math inline">\(k&gt;0\)</span>, <span class="math inline">\(x_e=0\)</span> y <span class="math inline">\(\omega=\sqrt{k/m}\)</span>.</p>
+<p>La definición incluye la solución de reposo <span class="math inline">\(q=0\)</span>. La palabra oscilación suele reservarse para las soluciones no constantes. El signo positivo de <span class="math inline">\(\omega^2\)</span> en la ecuación es sustantivo: representa una aceleración que apunta hacia el equilibrio. Cambiarlo produciría otra dinámica.</p>
+<p>Podemos ensayar una combinación <span class="math inline">\(q(t)=a\cos(\omega t)+b\sin(\omega t)\)</span>. En <span class="math inline">\(t=0\)</span>, el coseno vale uno y el seno cero, de modo que <span class="math inline">\(a\)</span> debe ser la posición inicial. Al derivar, <span class="math inline">\(\dot q(0)=\omega b\)</span>, lo que fija el segundo coeficiente. Esta construcción encuentra una solución, pero todavía debemos justificar que no deja fuera otros movimientos con los mismos datos.</p>
+<p><strong>Proposición.</strong> Dados <span class="math inline">\(\omega&gt;0\)</span>, <span class="math inline">\(q_0\in\mathbb R\)</span> y <span class="math inline">\(v_0\in\mathbb R\)</span>, la única solución real de clase <span class="math inline">\(C^2\)</span> en <span class="math inline">\(\mathbb R\)</span> de <span class="math inline">\(\ddot q+\omega^2q=0\)</span>, <span class="math inline">\(q(0)=q_0\)</span>, <span class="math inline">\(\dot q(0)=v_0\)</span>, es</p>
+<p><span class="math display">\[
+q(t)=q_0\cos(\omega t)+\frac{v_0}{\omega}\sin(\omega t).
+\]</span></p>
+<p><strong>Demostración.</strong> Derivar dos veces verifica la ecuación y evaluar en cero verifica ambos datos; la fórmula está definida para todo tiempo real. Para demostrar unicidad, supongamos que <span class="math inline">\(q_1\)</span> y <span class="math inline">\(q_2\)</span> son dos soluciones con esos mismos datos y consideremos su diferencia <span class="math inline">\(d=q_1-q_2\)</span>. La linealidad de la ecuación da <span class="math inline">\(\ddot d+\omega^2d=0\)</span>, con <span class="math inline">\(d(0)=\dot d(0)=0\)</span>. Necesitamos convertir esos datos nulos en una afirmación válida en todo el intervalo, y una suma de cuadrados nos permite aprovechar a la vez la ecuación y el signo de <span class="math inline">\(\omega^2\)</span>:</p>
+<p><span class="math display">\[
+\frac{d}{dt}\left(\frac12\dot d^{\,2}+\frac12\omega^2d^2\right)
+=\dot d(\ddot d+\omega^2d)=0.
+\]</span></p>
+<p>La expresión es constante y vale cero al principio. Como sus sumandos son no negativos y <span class="math inline">\(\omega&gt;0\)</span>, necesariamente <span class="math inline">\(d=0\)</span> y <span class="math inline">\(\dot d=0\)</span> en todos los instantes. Por tanto, las dos soluciones coinciden.</p>
+<p>La prueba evita exigir un teorema general de ecuaciones diferenciales como prerrequisito. También muestra por qué fijar sólo la posición inicial sería insuficiente: quedaría libre el coeficiente del seno. Elegir la velocidad inicial determina qué movimiento pasa por esa posición.</p>
+<p>Para el carro obtenemos</p>
+<p><span class="math display">\[
+x(t)=(0{,}12\,\mathrm m)\cos(2t/\mathrm s)
++(0{,}16\,\mathrm m)\sin(2t/\mathrm s).
+\]</span></p>
+<p>Escribir el argumento como <span class="math inline">\(2t/\mathrm s\)</span> hace explícito que es adimensional. Cuando se utiliza <span class="math inline">\(\omega t\)</span>, el factor <span class="math inline">\(\omega\)</span> lleva las unidades necesarias. La derivación da la velocidad y la aceleración sin nuevas hipótesis:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\dot q(t)&amp;=-\omega q_0\sin(\omega t)+v_0\cos(\omega t),\\
+\ddot q(t)&amp;=-\omega^2q(t).
+\end{aligned}
+\]</span></p>
+</section>
+<section id="amplitud-fase-y-reloj" class="level2">
+<h2 class="anchored" data-anchor-id="amplitud-fase-y-reloj">Amplitud, fase y reloj</h2>
+<p>La combinación anterior es correcta, aunque todavía no muestra de inmediato la mayor separación respecto del equilibrio. La identidad del coseno de una suma permite recogerla en una sola función. Si <span class="math inline">\(A&gt;0\)</span> y <span class="math inline">\(\varphi\)</span> satisfacen</p>
+<p><span class="math display">\[
+A=\sqrt{q_0^2+(v_0/\omega)^2},\qquad
+\cos\varphi=\frac{q_0}{A},\qquad
+\sin\varphi=-\frac{v_0}{\omega A},
+\]</span></p>
+<p>entonces <span class="math inline">\(q(t)=A\cos(\omega t+\varphi)\)</span>. Los dos últimos cocientes son adimensionales y sus cuadrados suman uno, por lo que determinan un ángulo módulo <span class="math inline">\(2\pi\)</span>. Utilizar únicamente una tangente perdería la información del cuadrante y fallaría cuando el denominador fuera cero.</p>
+<p><strong>Definición.</strong> Para un movimiento periódico de posición variable, un <em>período</em> es un número <span class="math inline">\(T&gt;0\)</span> tal que <span class="math inline">\(q(t+T)=q(t)\)</span> para todo <span class="math inline">\(t\)</span>. Si existe el menor de esos números, se llama <em>período fundamental</em>. Su inverso <span class="math inline">\(f=1/T\)</span> es la <em>frecuencia</em>, medida en ciclos por segundo o hertz. La <em>amplitud</em> de un movimiento armónico es el máximo de <span class="math inline">\(|q(t)|\)</span>.</p>
+<p><strong>Definición.</strong> En la representación <span class="math inline">\(q(t)=A\cos(\omega t+\varphi)\)</span>, con <span class="math inline">\(A&gt;0\)</span>, llamamos <em>fase</em> al argumento <span class="math inline">\(\omega t+\varphi\)</span>, considerado módulo <span class="math inline">\(2\pi\)</span>, y <em>fase inicial</em> al valor <span class="math inline">\(\varphi\)</span> que corresponde al origen temporal elegido.</p>
+<p><strong>Proposición.</strong> Para toda solución armónica no constante, con <span class="math inline">\(A\)</span> definido arriba,</p>
+<p><span class="math display">\[
+T=\frac{2\pi}{\omega},\qquad
+f=\frac{\omega}{2\pi},\qquad
+|q|_{\max}=A,\qquad
+|\dot q|_{\max}=\omega A,\qquad
+|\ddot q|_{\max}=\omega^2A.
+\]</span></p>
+<p><strong>Demostración.</strong> La representación por un coseno alcanza los valores <span class="math inline">\(\pm A\)</span>, y sus dos derivadas tienen factores <span class="math inline">\(\omega A\)</span> y <span class="math inline">\(\omega^2A\)</span> y factores trigonométricos de módulo máximo uno. Aumentar el tiempo en <span class="math inline">\(2\pi/\omega\)</span> repite la fase y la posición. Para verificar que ése es el menor período, tomemos un instante <span class="math inline">\(t_*\)</span> en que <span class="math inline">\(q(t_*)=A\)</span>. Si <span class="math inline">\(\tau&gt;0\)</span> es cualquier período, <span class="math inline">\(q(t_*+\tau)=A\)</span> obliga a que <span class="math inline">\(\cos(\omega\tau)=1\)</span>. Por tanto, <span class="math inline">\(\omega\tau\)</span> es un múltiplo entero positivo de <span class="math inline">\(2\pi\)</span>; el menor corresponde a uno. La fórmula de <span class="math inline">\(f\)</span> resulta de invertir ese período.</p>
+<p>El reposo <span class="math inline">\(q=0\)</span> requiere un tratamiento aparte. Cualquier tiempo positivo repite ese estado y no hay un menor período positivo; su fase tampoco queda definida por los cocientes anteriores. Estas excepciones evitan asignar información ficticia al estado que no oscila.</p>
+<p>En el carro inicial, <span class="math inline">\(A=0{,}20\,\mathrm m\)</span>, porque <span class="math inline">\(0{,}12^2+0{,}16^2=0{,}20^2\)</span>. Podemos tomar <span class="math inline">\(\varphi=-\delta\)</span>, con <span class="math inline">\(\delta=\arctan(4/3)\)</span> entre cero y <span class="math inline">\(\pi/2\)</span>. Su fase inicial es negativa: primero avanza hasta que la fase alcanza cero. La primera detención ocurre en <span class="math inline">\(t=\delta/\omega\approx0{,}464\,\mathrm s\)</span>, en <span class="math inline">\(x=A\)</span>. El primer paso posterior por el equilibrio ocurre cuando la fase alcanza <span class="math inline">\(\pi/2\)</span>, en</p>
+<p><span class="math display">\[
+t=\frac{\delta+\pi/2}{\omega}\approx1{,}249\,\mathrm s.
+\]</span></p>
+<p>Allí la velocidad es <span class="math inline">\(-0{,}40\,\mathrm{m/s}\)</span>. El estado completo vuelve a repetirse cada <span class="math inline">\(T=\pi\,\mathrm s\)</span>. La amplitud calculada es menor que los treinta centímetros declarados como límite del resorte lineal, de modo que la trayectoria permanece en su dominio supuesto.</p>
+<figure id="fig-fispm-r20261021-10-2" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/oscilador_tiempo.svg" class="lightbox" data-gallery="fispm-r20261021-c10"><img src="../../assets/books/fispm/r20261021/oscilador_tiempo.svg" alt="La posición, la velocidad y la aceleración del carro se muestran contra el mismo tiempo." class="fpm-v04-figure img-fluid figure-img" width="900" height="850" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 10.2.</em> Las tres gráficas representan el mismo movimiento y tienen ejes verticales con unidades distintas. La primera detención, el primer cruce del equilibrio y el período completo se identifican con líneas verticales. Aceleración nula no implica reposo.</p>
+</figcaption>
+</figure>
+<p>La frecuencia angular cuenta radianes de fase por unidad de tiempo; la frecuencia cuenta ciclos. Para este carro, <span class="math inline">\(\omega=2\,\mathrm{rad/s}\)</span> y <span class="math inline">\(f=1/\pi\,\mathrm{Hz}\)</span>. El factor <span class="math inline">\(2\pi\)</span> permite convertir una en otra. Cambiar la amplitud conserva ese período dentro del modelo lineal ideal, pero cambia las velocidades, las aceleraciones y la energía.</p>
+</section>
+<section id="la-energía-dibuja-los-estados-posibles" class="level2">
+<h2 class="anchored" data-anchor-id="la-energía-dibuja-los-estados-posibles">La energía dibuja los estados posibles</h2>
+<p>La misma suma de cuadrados que permitió demostrar unicidad tiene una interpretación física para el resorte. Su potencial, con referencia cero en el equilibrio, es <span class="math inline">\(U=kq^2/2\)</span>; la energía cinética es <span class="math inline">\(K=m\dot q^2/2\)</span>.</p>
+<p><strong>Proposición.</strong> Para el oscilador ideal con <span class="math inline">\(m,k&gt;0\)</span> y <span class="math inline">\(\omega^2=k/m\)</span>, la energía</p>
+<p><span class="math display">\[
+E=\frac12m\dot q^2+\frac12kq^2
+\]</span></p>
+<p>es constante y vale <span class="math inline">\(kA^2/2\)</span>. Si <span class="math inline">\(A&gt;0\)</span>, sus estados satisfacen</p>
+<p><span class="math display">\[
+\frac{q^2}{A^2}+\frac{\dot q^2}{\omega^2A^2}=1.
+\]</span></p>
+<p><strong>Demostración.</strong> Derivar la energía da <span class="math inline">\(\dot E=\dot q(m\ddot q+kq)=0\)</span>. Al evaluar en el dato inicial obtenemos <span class="math inline">\(2E/k=q_0^2+(m/k)v_0^2=q_0^2+(v_0/\omega)^2=A^2\)</span>. Dividir el balance por <span class="math inline">\(kA^2/2\)</span> proporciona la ecuación indicada.</p>
+<p>El plano de estados utiliza posición en un eje y velocidad en el otro. La curva de energía es una elipse en esas coordenadas; si representamos <span class="math inline">\(\dot q/\omega\)</span> frente a <span class="math inline">\(q\)</span>, ambos ejes tienen unidades de longitud y aparece una circunferencia. La posición por sí sola no fija el estado: en cada punto interior al recorrido puede haber movimiento hacia la derecha o hacia la izquierda. El signo de la velocidad distingue esas dos posibilidades.</p>
+<figure id="fig-fispm-r20261021-10-3" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/oscilador_estado.svg" class="lightbox" data-gallery="fispm-r20261021-c10"><img src="../../assets/books/fispm/r20261021/oscilador_estado.svg" alt="Una elipse de estados muestra dos velocidades opuestas para una misma posición y el sentido de recorrido." class="fpm-v04-figure img-fluid figure-img" width="900" height="560" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 10.3.</em> El movimiento del ejemplo pasa inicialmente por <span class="math inline">\((0{,}12\,\mathrm m,0{,}32\,\mathrm{m/s})\)</span>. La misma posición con velocidad negativa pertenece a otro instante. Las flechas de la elipse representan evolución temporal, no fuerzas en el espacio físico.</p>
+</figcaption>
+</figure>
+<p>En los extremos <span class="math inline">\(q=\pm A\)</span>, la energía es enteramente potencial y el carro se detiene sólo un instante, porque allí la fuerza no es nula. Al cruzar el equilibrio, toda la energía de este modelo es cinética y la rapidez alcanza su máximo. Para el ejemplo, <span class="math inline">\(E=(8\,\mathrm{N/m})(0{,}20\,\mathrm m)^2/2=0{,}16\,\mathrm J\)</span>.</p>
+<p>La conservación permite hallar <span class="math inline">\(|\dot q|=\omega\sqrt{A^2-q^2}\)</span>, pero deja pendiente el signo. La solución temporal resuelve qué rama sigue el movimiento y cuándo cambia de rama en un extremo. Ambas descripciones se complementan: la energía controla posiciones y rapideces posibles, mientras que la fase sitúa al sistema sobre esa curva en cada instante.</p>
+<figure id="fig-fispm-r20261021-10-4" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/oscilador_energia.svg" class="lightbox" data-gallery="fispm-r20261021-c10"><img src="../../assets/books/fispm/r20261021/oscilador_energia.svg" alt="La energía potencial y la cinética se intercambian durante un período del carro." class="fpm-v04-figure img-fluid figure-img" width="900" height="500" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 10.4.</em> Las energías suman <span class="math inline">\(0{,}16\,\mathrm J\)</span>. Cada una repite sus valores en medio período del movimiento, porque depende del cuadrado de un seno o un coseno. Esa repetición no significa que posición y velocidad hayan vuelto a su estado inicial.</p>
+</figcaption>
+</figure>
+</section>
+<section id="medir-desde-un-equilibrio-desplazado" class="level2">
+<h2 class="anchored" data-anchor-id="medir-desde-un-equilibrio-desplazado">Medir desde un equilibrio desplazado</h2>
+<p>Una fuerza constante puede cambiar el origen adecuado sin cambiar la frecuencia. Para un carro sometido además a un tirón constante <span class="math inline">\(f_0\)</span>, la ecuación es <span class="math inline">\(m\ddot x=f_0-kx\)</span>. Su equilibrio es <span class="math inline">\(x_e=f_0/k\)</span>. La variable <span class="math inline">\(q=x-x_e\)</span> tiene las mismas derivadas temporales que <span class="math inline">\(x\)</span>, y lleva la ecuación a <span class="math inline">\(m\ddot q=-kq\)</span>.</p>
+<p><strong>Proposición.</strong> Sean <span class="math inline">\(m,k&gt;0\)</span> y <span class="math inline">\(f_0\)</span> constante. Toda solución de <span class="math inline">\(m\ddot x=f_0-kx\)</span> se obtiene trasladando una solución armónica mediante <span class="math inline">\(x=x_e+q\)</span>, con <span class="math inline">\(x_e=f_0/k\)</span>. Para datos <span class="math inline">\(x(0)=x_0\)</span> y <span class="math inline">\(\dot x(0)=v_0\)</span>,</p>
+<p><span class="math display">\[
+x(t)=x_e+(x_0-x_e)\cos(\omega t)
++\frac{v_0}{\omega}\sin(\omega t),\qquad \omega=\sqrt{k/m}.
+\]</span></p>
+<p><strong>Demostración.</strong> Como <span class="math inline">\(x_e\)</span> es constante, <span class="math inline">\(\ddot q=\ddot x\)</span>. Sustituir <span class="math inline">\(x=x_e+q\)</span> cancela <span class="math inline">\(f_0-kx_e\)</span> y deja la ecuación armónica. Los datos de <span class="math inline">\(q\)</span> son <span class="math inline">\(q(0)=x_0-x_e\)</span> y <span class="math inline">\(\dot q(0)=v_0\)</span>; el resultado de existencia y unicidad ya probado determina su solución.</p>
+<p>En un resorte vertical, tomando <span class="math inline">\(y\)</span> hacia abajo desde la longitud natural, <span class="math inline">\(m\ddot y=mg-ky\)</span>. El equilibrio está en <span class="math inline">\(y_e=mg/k\)</span>. La gravedad uniforme desplaza la posición de equilibrio y no modifica <span class="math inline">\(\omega\)</span> en este modelo. Soltar el cuerpo desde la longitud natural equivale a comenzar con <span class="math inline">\(q_0=-y_e\)</span>, no con amplitud cero.</p>
+<figure id="fig-fispm-r20261021-10-5" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/oscilador_vertical.svg" class="lightbox" data-gallery="fispm-r20261021-c10"><img src="../../assets/books/fispm/r20261021/oscilador_vertical.svg" alt="Un resorte vertical distingue longitud natural, equilibrio y desplazamiento respecto de ese equilibrio." class="fpm-v04-figure img-fluid figure-img" width="900" height="550" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 10.5.</em> Las coordenadas <span class="math inline">\(y\)</span> y <span class="math inline">\(q=y-y_e\)</span> tienen orígenes diferentes. En <span class="math inline">\(y=y_e\)</span> se equilibran peso y fuerza del resorte. El esquema utiliza gravedad uniforme, resorte ideal y soporte fijo; no identifica la longitud natural con el equilibrio cargado.</p>
+</figcaption>
+</figure>
+<p>Si los apoyos cambian con el tiempo o la fuerza deja de ser constante, esta traslación por un número fijo ya no resuelve el problema. También puede cambiar la inercia relevante: dos masas libres unidas por un resorte no equivalen a una masa con el otro extremo inmóvil. El ejercicio 13 deduce su ecuación relativa utilizando el centro de masa del capítulo anterior.</p>
+</section>
+<section id="hasta-dónde-vale-una-aproximación-armónica" class="level2">
+<h2 class="anchored" data-anchor-id="hasta-dónde-vale-una-aproximación-armónica">Hasta dónde vale una aproximación armónica</h2>
+<p>Una fuerza restauradora real puede parecer lineal cerca de un equilibrio sin serlo en todo el recorrido. Sea <span class="math inline">\(F(x_e)=0\)</span> y supongamos que, para desplazamientos pequeños,</p>
+<p><span class="math display">\[
+F(x_e+q)=-k_{\rm ef}q+R(q),\qquad k_{\rm ef}&gt;0.
+\]</span></p>
+<p>El término <span class="math inline">\(R(q)\)</span> recoge la parte que estamos omitiendo. Cuando <span class="math inline">\(F\)</span> es derivable, la elección natural es <span class="math inline">\(k_{\rm ef}=-F'(x_e)\)</span>, siempre que esa cantidad sea positiva. La definición de derivada asegura <span class="math inline">\(R(q)/q\to0\)</span> al acercarse al equilibrio. Si <span class="math inline">\(F'\)</span> es cero, este argumento no produce una frecuencia armónica positiva; los mínimos planos del capítulo 8 necesitan otro análisis.</p>
+<p>La ecuación lineal aproximada tiene <span class="math inline">\(\omega=\sqrt{k_{\rm ef}/m}\)</span>. Decir que <span class="math inline">\(R\)</span> es pequeño controla de inmediato la diferencia de aceleraciones evaluadas en una misma posición, pero la posición de cada trayectoria cambia con el tiempo. Para comparar movimientos necesitamos estimar el error acumulado.</p>
+<p><strong>Proposición.</strong> Sea <span class="math inline">\(\omega&gt;0\)</span>. En un intervalo <span class="math inline">\([0,\tau]\)</span>, supongamos que <span class="math inline">\(q\)</span> y <span class="math inline">\(q_h\)</span> son funciones de clase <span class="math inline">\(C^2\)</span> con los mismos datos iniciales, que <span class="math inline">\(q_h\)</span> satisface la ecuación armónica y que</p>
+<p><span class="math display">\[
+\ddot q+\omega^2q=r(t)
+\]</span></p>
+<p>con <span class="math inline">\(r\)</span> continua. Entonces</p>
+<p><span class="math display">\[
+q(t)-q_h(t)=\frac{1}{\omega}\int_0^t
+\sin\big(\omega(t-s)\big)r(s)\,ds.
+\]</span></p>
+<p>En particular, si <span class="math inline">\(|r(s)|\leq r_*\)</span> en todo el intervalo, se cumple <span class="math inline">\(|q(t)-q_h(t)|\leq r_*t/\omega\)</span> para <span class="math inline">\(0\leq t\leq\tau\)</span>.</p>
+<p><strong>Demostración.</strong> Denotemos por <span class="math inline">\(z(t)\)</span> la integral del enunciado. En cero, <span class="math inline">\(z=0\)</span>. Al derivar, el término del extremo superior contiene <span class="math inline">\(\sin0=0\)</span>, y queda <span class="math inline">\(\dot z(t)=\int_0^t\cos(\omega(t-s))r(s)\,ds\)</span>, de modo que también <span class="math inline">\(\dot z(0)=0\)</span>. Una segunda derivación introduce el término <span class="math inline">\(r(t)\)</span> y da <span class="math inline">\(\ddot z=r(t)-\omega^2z\)</span>. Por otra parte, <span class="math inline">\(d=q-q_h\)</span> satisface esa misma ecuación y tiene datos iniciales nulos. La diferencia <span class="math inline">\(d-z\)</span> satisface la ecuación armónica homogénea con datos nulos y por la unicidad ya probada es cero. Finalmente, usar <span class="math inline">\(|\sin|\leq1\)</span> dentro de la integral da la cota <span class="math inline">\(r_*t/\omega\)</span>.</p>
+<p>Para la fuerza anterior, <span class="math inline">\(r(t)=R(q(t))/m\)</span>. Una cota local sobre <span class="math inline">\(R\)</span> sólo puede usarse mientras la trayectoria real permanezca en el intervalo donde esa cota vale. A veces el balance de energía permite garantizar ese confinamiento; el ejercicio 16 lo hace para una fuerza con un término cúbico. La estimación puede ser conservadora, pero declara qué se controla y durante cuánto tiempo.</p>
+<p>Un ejemplo físico familiar es el péndulo simple. Una masa puntual al final de una cuerda ideal de longitud <span class="math inline">\(\ell\)</span> tiene aceleración tangencial <span class="math inline">\(\ell\ddot\theta\)</span>. La componente tangencial del peso es <span class="math inline">\(-mg\sin\theta\)</span> y la tensión no tiene componente tangencial. Por tanto,</p>
+<p><span class="math display">\[
+\ddot\theta+\frac{g}{\ell}\sin\theta=0.
+\]</span></p>
+<p>Para ángulos pequeños en radianes, sustituir <span class="math inline">\(\sin\theta\)</span> por <span class="math inline">\(\theta\)</span> produce la ecuación armónica de frecuencia <span class="math inline">\(\sqrt{g/\ell}\)</span>. El ejercicio 15 estima la discrepancia de los términos restauradores; esa comparación no es, por sí sola, una cota del error del período. La independencia exacta entre período y amplitud corresponde al oscilador lineal, no al péndulo de amplitud arbitraria.</p>
+</section>
+<section id="lo-que-permiten-reconstruir-unas-observaciones" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-permiten-reconstruir-unas-observaciones">Lo que permiten reconstruir unas observaciones</h2>
+<p>Un registro de posición con suficiente resolución puede dar amplitud, período y fase del modelo. Medir sólo posiciones en instantes muy separados puede dejar ambigua incluso la frecuencia: movimientos que completan ciclos adicionales entre las muestras pueden coincidir en todos los puntos registrados. El ejercicio 18 construye dos ejemplos exactos.</p>
+<figure id="fig-fispm-r20261021-10-6" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/oscilador_muestreo.svg" class="lightbox" data-gallery="fispm-r20261021-c10"><img src="../../assets/books/fispm/r20261021/oscilador_muestreo.svg" alt="Dos oscilaciones de frecuencias diferentes coinciden en posiciones registradas cada segundo." class="fpm-v04-figure img-fluid figure-img" width="900" height="570" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 10.6.</em> Los puntos muestran el mismo registro en tiempos enteros para dos movimientos distintos. Una observación intermedia permite separarlos. Las curvas son modelos matemáticos; los puntos no se presentan como mediciones reales.</p>
+</figcaption>
+</figure>
+<p>El período se estima mejor contando varias oscilaciones equivalentes que cronometrando una sola. Sin embargo, la reducción de una cota temporal por ciclo no elimina otras incertidumbres, como una masa mal conocida o el cambio de amplitud por pérdidas. Del período ideal <span class="math inline">\(T=2\pi\sqrt{m/k}\)</span> se obtiene <span class="math inline">\(k=4\pi^2m/T^2\)</span>: una inferencia de rigidez exige conservar las cotas de ambas magnitudes.</p>
+<p>La propia prueba de unicidad permite interpretar qué sucede con pequeñas diferencias de preparación. Para dos soluciones del mismo oscilador, su diferencia vuelve a ser armónica y permanece acotada por una amplitud fijada por las diferencias iniciales. En cambio, un pequeño error de frecuencia puede producir un desfase creciente al comparar durante muchos ciclos. Los dos últimos problemas distinguen estas situaciones; la estabilidad frente a los datos iniciales no convierte un modelo aproximado en exacto para todo tiempo.</p>
+<figure id="fig-fispm-r20261021-10-7" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/oscilador_errores.svg" class="lightbox" data-gallery="fispm-r20261021-c10"><img src="../../assets/books/fispm/r20261021/oscilador_errores.svg" alt="En el plano de desplazamiento y velocidad reescalada, las diferencias iniciales quedan dentro de una circunferencia de error." class="fpm-v04-figure img-fluid figure-img" width="900" height="590" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 10.7.</em> Ambos ejes tienen unidades de longitud al representar <span class="math inline">\(\Delta v/\omega\)</span> frente a <span class="math inline">\(\Delta q\)</span>. Para el mismo valor de <span class="math inline">\(\omega\)</span>, el radio de error se conserva. Comparar dos frecuencias distintas es otro problema, que puede acumular fase.</p>
+</figcaption>
+</figure>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Los primeros cinco problemas fijan la traducción entre preparación, solución y reloj. Del 6 al 10 se combinan datos incompletos, energía y elección del equilibrio. Los restantes introducen impulsos, contactos, dos masas libres, aproximaciones y mediciones. Todos los datos son didácticos. Los resortes se consideran ideales y sin masa, y los soportes fijos, salvo donde el enunciado indique lo contrario. Se omiten pérdidas; para gravedad se usa <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span>.</p>
+<section id="ejercicio-10-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-1">1. Soltar desde el reposo</h3>
+<p>Una masa de <span class="math inline">\(0{,}5\,\mathrm{kg}\)</span> está unida a un resorte horizontal de constante <span class="math inline">\(18\,\mathrm{N/m}\)</span>. Se suelta en reposo a <span class="math inline">\(0{,}10\,\mathrm m\)</span> del equilibrio. Obtén posición, período, rapidez máxima y energía.</p>
+</section>
+<section id="ejercicio-10-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-2">2. Comenzar cruzando el equilibrio</h3>
+<p>Una masa de un kilogramo, unida a un resorte de <span class="math inline">\(9\,\mathrm{N/m}\)</span>, pasa por el equilibrio con velocidad <span class="math inline">\(-0{,}60\,\mathrm{m/s}\)</span> en <span class="math inline">\(t=0\)</span>. Encuentra su solución, amplitud y una fase inicial para la convención del coseno. Calcula cuándo llega por primera vez al extremo negativo y cuándo vuelve a cruzar el equilibrio.</p>
+</section>
+<section id="ejercicio-10-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-3">3. Resolver el reloj del ejemplo inicial</h3>
+<p>Para el carro de dos kilogramos y resorte de <span class="math inline">\(8\,\mathrm{N/m}\)</span>, con <span class="math inline">\(x_0=0{,}12\,\mathrm m\)</span> y <span class="math inline">\(v_0=0{,}32\,\mathrm{m/s}\)</span>, reconstruye amplitud, primera detención y primer cruce posterior del equilibrio. Indica el sentido de movimiento en ese cruce.</p>
+</section>
+<section id="ejercicio-10-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-4">4. Distinguir hertz de radianes por segundo</h3>
+<p>Un oscilador de masa <span class="math inline">\(0{,}20\,\mathrm{kg}\)</span> tiene amplitud de tres centímetros y frecuencia de dos hertz. Calcula frecuencia angular, constante del resorte, rapidez máxima y energía, conservando el factor <span class="math inline">\(2\pi\)</span>.</p>
+</section>
+<section id="ejercicio-10-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-5">5. Recorrer la mitad de la amplitud</h3>
+<p>Un oscilador parte del extremo positivo en reposo. ¿Cuánto tarda en alcanzar por primera vez <span class="math inline">\(q=A/2\)</span>? Expresa el tiempo como fracción de su período y encuentra la velocidad en ese instante.</p>
+</section>
+<section id="ejercicio-10-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-6">6. Una rapidez deja dos estados posibles</h3>
+<p>En un oscilador con <span class="math inline">\(m=2\,\mathrm{kg}\)</span> y <span class="math inline">\(k=8\,\mathrm{N/m}\)</span> se mide <span class="math inline">\(q=0{,}06\,\mathrm m\)</span> y rapidez <span class="math inline">\(0{,}16\,\mathrm{m/s}\)</span>. Tomando ese instante como origen temporal, determina la amplitud y las dos soluciones compatibles. ¿Fija la energía cuál de ellas ocurre?</p>
+</section>
+<section id="ejercicio-10-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-7">7. Una proporción entre energías</h3>
+<p>Un oscilador se suelta desde <span class="math inline">\(q=A&gt;0\)</span>. Determina el primer instante en que su energía potencial es tres veces su energía cinética. Expresa tiempo, posición y velocidad mediante <span class="math inline">\(T\)</span>, <span class="math inline">\(A\)</span> y <span class="math inline">\(\omega\)</span>.</p>
+</section>
+<section id="ejercicio-10-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-8">8. Cambiar masa y rigidez</h3>
+<p>Se comparan dos osciladores con la misma amplitud. El segundo tiene cuatro veces la masa y nueve veces la constante elástica del primero. Compara sus períodos, frecuencias angulares, rapideces máximas y energías. Explica por qué fijar la amplitud no equivale a fijar la energía.</p>
+</section>
+<section id="ejercicio-10-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-9">9. La longitud natural no es el equilibrio cargado</h3>
+<p>Una masa de <span class="math inline">\(0{,}5\,\mathrm{kg}\)</span> cuelga de un resorte vertical de <span class="math inline">\(50\,\mathrm{N/m}\)</span>. Se suelta desde la longitud natural y en reposo. Con <span class="math inline">\(y\)</span> hacia abajo desde esa longitud, calcula equilibrio, solución, mayor extensión y período.</p>
+</section>
+<section id="ejercicio-10-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-10">10. Encender una fuerza constante</h3>
+<p>Un carro de dos kilogramos está inicialmente en reposo en la longitud natural de un resorte horizontal de <span class="math inline">\(8\,\mathrm{N/m}\)</span>. Desde <span class="math inline">\(t=0\)</span> se aplica y mantiene un tirón de <span class="math inline">\(0{,}8\,\mathrm N\)</span> hacia la derecha. Encuentra el movimiento, la primera detención posterior y la rapidez máxima.</p>
+</section>
+<section id="ejercicio-10-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-11">11. Preparar y detener con impulsos</h3>
+<p>Un oscilador de <span class="math inline">\(0{,}5\,\mathrm{kg}\)</span> y <span class="math inline">\(k=8\,\mathrm{N/m}\)</span> parte en reposo en el equilibrio. Recibe un impulso positivo de <span class="math inline">\(0{,}20\,\mathrm{N\,s}\)</span> de duración idealmente despreciable. Obtén el movimiento posterior. ¿Qué impulso lo detendría definitivamente al regresar por primera vez al equilibrio y cuándo habría que aplicarlo?</p>
+</section>
+<section id="ejercicio-10-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-12">12. Un impacto que prepara la oscilación</h3>
+<p>Un proyectil de <span class="math inline">\(0{,}20\,\mathrm{kg}\)</span> llega horizontalmente a <span class="math inline">\(3\,\mathrm{m/s}\)</span> y queda incrustado en un bloque de <span class="math inline">\(0{,}80\,\mathrm{kg}\)</span> unido a un resorte horizontal de <span class="math inline">\(25\,\mathrm{N/m}\)</span>. Antes del impacto, el bloque está en reposo en el equilibrio. El choque es tan breve que el desplazamiento durante él y el impulso del resorte pueden despreciarse. Calcula la amplitud posterior y la energía cinética transformada durante el choque. Después suponga que, durante un impacto de duración a lo sumo <span class="math inline">\(0{,}002\,\mathrm s\)</span>, se garantiza <span class="math inline">\(|x|\leq0{,}001\,\mathrm m\)</span> para el bloque. Acote el efecto del impulso elástico omitido y obtenga una envolvente de la amplitud posterior, conservando los restantes datos.</p>
+</section>
+<section id="ejercicio-10-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-13">13. Ambos extremos pueden moverse</h3>
+<p>Dos masas libres de uno y tres kilogramos están unidas por un resorte de constante <span class="math inline">\(12\,\mathrm{N/m}\)</span> y longitud natural <span class="math inline">\(L&gt;0{,}20\,\mathrm m\)</span>. En <span class="math inline">\(t=0\)</span>, sus posiciones son <span class="math inline">\(r_1=0\)</span>, <span class="math inline">\(r_2=L+0{,}20\,\mathrm m\)</span>, y ambas están en reposo. El riel es liso. Deduce la ecuación de la extensión <span class="math inline">\(q=r_2-r_1-L\)</span> y encuentra frecuencia, amplitudes de cada masa respecto de sus posiciones de equilibrio y energía.</p>
+</section>
+<section id="ejercicio-10-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-14">14. Dos resortes restauran el mismo desplazamiento</h3>
+<p>Un carro de un kilogramo está entre dos resortes horizontales unidos a paredes fijas, de constantes <span class="math inline">\(6\)</span> y <span class="math inline">\(10\,\mathrm{N/m}\)</span>. En el equilibrio sus fuerzas se compensan; al moverlo una distancia <span class="math inline">\(q\)</span> a la derecha, la fuerza de cada resorte cambia en sentido restaurador y ambos siguen conectados. Se suelta desde <span class="math inline">\(q=0{,}05\,\mathrm m\)</span>. Calcula frecuencia angular, período y energía respecto del equilibrio.</p>
+</section>
+<section id="ejercicio-10-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-15">15. Un péndulo y el error de la fuerza aproximada</h3>
+<p>Un péndulo simple de un metro se suelta desde un ángulo de <span class="math inline">\(0{,}10\)</span> radianes. Obtén la solución armónica aproximada y su período. Demuestra <span class="math inline">\(|\theta-\sin\theta|\leq|\theta|^3/6\)</span> y usa esa desigualdad para acotar la discrepancia del término restaurador respecto de su versión lineal en <span class="math inline">\(|\theta|\leq0{,}10\)</span>. ¿Es esa cota automáticamente una cota del error del período?</p>
+</section>
+<section id="ejercicio-10-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-16">16. Un resorte que no es exactamente lineal</h3>
+<p>Una masa de un kilogramo recibe la fuerza <span class="math inline">\(F(q)=-kq-\beta q^3\)</span>, con <span class="math inline">\(k=9\,\mathrm{N/m}\)</span> y <span class="math inline">\(\beta=9\,\mathrm{N/m^3}\)</span>. Parte de <span class="math inline">\(q_0=0{,}10\,\mathrm m\)</span> en reposo; se considera una solución de clase <span class="math inline">\(C^2\)</span> definida al menos hasta dos segundos. Construye el potencial y usa la energía para demostrar <span class="math inline">\(|q(t)|\leq0{,}10\,\mathrm m\)</span> mientras exista la solución. Compara con <span class="math inline">\(q_h(t)=0{,}10\cos(3t/\mathrm s)\,\mathrm m\)</span> y da una cota del error de posición hasta dos segundos.</p>
+</section>
+<section id="ejercicio-10-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-17">17. Inferir una rigidez con cotas</h3>
+<p>Se cronometran veinte ciclos completos equivalentes. El intervalo total está entre <span class="math inline">\(39{,}8\)</span> y <span class="math inline">\(40{,}2\,\mathrm s\)</span>, y la masa entre <span class="math inline">\(0{,}99\)</span> y <span class="math inline">\(1{,}01\,\mathrm{kg}\)</span>. Bajo el modelo ideal, calcula una banda para el período y una banda para la constante elástica. Trata las bandas como cotas, sin añadir un modelo probabilístico.</p>
+</section>
+<section id="ejercicio-10-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-18">18. Dos frecuencias, el mismo registro</h3>
+<p>Se toman posiciones cada segundo de un movimiento que parte del extremo positivo con amplitud <span class="math inline">\(0{,}10\,\mathrm m\)</span>. Demuestra que <span class="math inline">\(\omega_1=\pi/2\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(\omega_2=5\pi/2\,\mathrm{s^{-1}}\)</span> producen exactamente los mismos valores en esos instantes. Encuentra una observación entre cero y un segundo que los distinga. Si la masa es un kilogramo, ¿qué rigidez correspondería a cada modelo?</p>
+</section>
+<section id="ejercicio-10-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-19">19. Un control uniforme de la preparación</h3>
+<p>Dos soluciones del mismo oscilador tienen diferencias iniciales <span class="math inline">\(\Delta q_0\)</span> y <span class="math inline">\(\Delta v_0\)</span>. Demuestra que, para todo tiempo,</p>
+<p><span class="math display">\[
+|\Delta q(t)|\leq\sqrt{(\Delta q_0)^2+(\Delta v_0/\omega)^2},
+\qquad
+|\Delta v(t)|\leq\omega\sqrt{(\Delta q_0)^2+(\Delta v_0/\omega)^2}.
+\]</span></p>
+<p>Evalúa estas cotas para <span class="math inline">\(\omega=2\,\mathrm{s^{-1}}\)</span>, <span class="math inline">\(|\Delta q_0|\leq0{,}001\,\mathrm m\)</span> y <span class="math inline">\(|\Delta v_0|\leq0{,}002\,\mathrm{m/s}\)</span>.</p>
+</section>
+<section id="ejercicio-10-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-10-20">20. Un pequeño error de frecuencia se acumula</h3>
+<p>Compara <span class="math inline">\(q_1=A\cos(\omega t)\)</span> y <span class="math inline">\(q_2=A\cos((\omega+\delta\omega)t)\)</span>, con <span class="math inline">\(A&gt;0\)</span>, <span class="math inline">\(\omega&gt;0\)</span> y <span class="math inline">\(\omega+\delta\omega&gt;0\)</span>. Deduce una cota para <span class="math inline">\(|q_2-q_1|\)</span> que muestre su dependencia temporal. Con <span class="math inline">\(\omega=2\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(\delta\omega=0{,}002\,\mathrm{s^{-1}}\)</span>, encuentra un intervalo en que garantice error no mayor que <span class="math inline">\(0{,}01A\)</span>. Examina además <span class="math inline">\(t=\pi/(0{,}002\,\mathrm{s^{-1}})\)</span>.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-10-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-1">1. Soltar desde el reposo</h3>
+<p>La frecuencia angular es <span class="math inline">\(\omega=\sqrt{18/0{,}5}\,\mathrm{s^{-1}}=6\,\mathrm{s^{-1}}\)</span>. Como la velocidad inicial es cero, el coeficiente del seno se anula y <span class="math inline">\(q(t)=(0{,}10\,\mathrm m)\cos(6t/\mathrm s)\)</span>. El dato de reposo inicial simplificó la fase; no corresponde imponerlo en todos los problemas de resorte.</p>
+<p>El período es <span class="math inline">\(T=2\pi/6\,\mathrm s=\pi/3\,\mathrm s\)</span>. La rapidez máxima vale <span class="math inline">\(\omega A=0{,}60\,\mathrm{m/s}\)</span> y se alcanza al cruzar el equilibrio. La energía es <span class="math inline">\(kA^2/2=(18)(0{,}10)^2/2\,\mathrm J=0{,}09\,\mathrm J\)</span>. La aceleración inicial es negativa y el primer movimiento sale hacia el equilibrio, como exige la fuerza del resorte.</p>
+</section>
+<section id="solucion-10-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-2">2. Comenzar cruzando el equilibrio</h3>
+<p>La posición inicial nula elimina el coseno. Con <span class="math inline">\(\omega=3\,\mathrm{s^{-1}}\)</span>, queda <span class="math inline">\(q(t)=(-0{,}20\,\mathrm m)\sin(3t/\mathrm s)\)</span> y la amplitud es <span class="math inline">\(0{,}20\,\mathrm m\)</span>. En la convención del coseno podemos escribir <span class="math inline">\(q=A\cos(\omega t+\pi/2)\)</span>: esa fase da posición cero y velocidad inicial negativa.</p>
+<p>El primer extremo negativo ocurre cuando <span class="math inline">\(\sin(3t/\mathrm s)=1\)</span>, en <span class="math inline">\(t=\pi/6\,\mathrm s\)</span>. El siguiente cruce del equilibrio ocurre en <span class="math inline">\(t=\pi/3\,\mathrm s\)</span>, con velocidad positiva de <span class="math inline">\(0{,}60\,\mathrm{m/s}\)</span>. Es medio período después del estado inicial: la posición se repite, pero la velocidad tiene el signo contrario. Un registro de posición sin dirección no distinguiría esos dos cruces.</p>
+</section>
+<section id="solucion-10-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-3">3. Resolver el reloj del ejemplo inicial</h3>
+<p>La solución tiene coeficientes de longitud <span class="math inline">\(0{,}12\)</span> y <span class="math inline">\(0{,}16\,\mathrm m\)</span>, de modo que</p>
+<p><span class="math display">\[
+A=\sqrt{0{,}12^2+0{,}16^2}\,\mathrm m=0{,}20\,\mathrm m.
+\]</span></p>
+<p>Para escribirla como <span class="math inline">\(A\cos(\omega t-\delta)\)</span> necesitamos <span class="math inline">\(\cos\delta=3/5\)</span> y <span class="math inline">\(\sin\delta=4/5\)</span>; ambas son positivas y determinan <span class="math inline">\(\delta=\arctan(4/3)\approx0{,}92730\)</span>.</p>
+<p>La fase inicial es <span class="math inline">\(-\delta\)</span>. Al avanzar hasta cero, el carro llega al extremo positivo y se detiene por primera vez. Por tanto, <span class="math inline">\(t_1=\delta/\omega\approx0{,}46365\,\mathrm s\)</span>. Después la fase llega a <span class="math inline">\(\pi/2\)</span> y la posición se anula: <span class="math inline">\(t_2=(\delta+\pi/2)/\omega\approx1{,}24905\,\mathrm s\)</span>. Allí <span class="math inline">\(\dot x=-\omega A=-0{,}40\,\mathrm{m/s}\)</span>, hacia la izquierda. Tomar un cuarto de período desde la preparación habría ignorado que no partimos desde un extremo ni desde el equilibrio.</p>
+</section>
+<section id="solucion-10-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-4">4. Distinguir hertz de radianes por segundo</h3>
+<p>Dos ciclos por segundo corresponden a <span class="math inline">\(\omega=2\pi f=4\pi\,\mathrm{s^{-1}}\)</span>, no a dos radianes por segundo. La constante del resorte resulta</p>
+<p><span class="math display">\[
+k=m\omega^2=(0{,}20\,\mathrm{kg})(16\pi^2\,\mathrm{s^{-2}})
+=3{,}2\pi^2\,\mathrm{N/m}.
+\]</span></p>
+<p>La amplitud se convierte a metros: <span class="math inline">\(A=0{,}03\,\mathrm m\)</span>. Así, <span class="math inline">\(v_{\max}=0{,}12\pi\,\mathrm{m/s}\approx0{,}377\,\mathrm{m/s}\)</span> y <span class="math inline">\(E=kA^2/2=0{,}00144\pi^2\,\mathrm J\approx0{,}0142\,\mathrm J\)</span>. Omitir el factor <span class="math inline">\(2\pi\)</span> alteraría la rigidez por un factor <span class="math inline">\(4\pi^2\)</span>, incluso si todas las unidades parecieran consistentes.</p>
+</section>
+<section id="solucion-10-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-5">5. Recorrer la mitad de la amplitud</h3>
+<p>El dato inicial da <span class="math inline">\(q=A\cos(\omega t)\)</span>. Durante la primera bajada desde <span class="math inline">\(A\)</span> hasta cero, la fase crece de cero a <span class="math inline">\(\pi/2\)</span>. La ecuación <span class="math inline">\(\cos(\omega t)=1/2\)</span> tiene en ese tramo la única solución <span class="math inline">\(\omega t=\pi/3\)</span>. Por tanto, <span class="math inline">\(t=\pi/(3\omega)=T/6\)</span>.</p>
+<p>La velocidad es <span class="math inline">\(\dot q=-\omega A\sin(\pi/3)=-\sqrt3\,\omega A/2\)</span>. Su signo identifica el regreso hacia el equilibrio. El intervalo no es la mitad de un cuarto de período: la rapidez varía, y el movimiento dedica más tiempo a regiones cercanas al extremo, donde comienza con rapidez cero.</p>
+</section>
+<section id="solucion-10-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-6">6. Una rapidez deja dos estados posibles</h3>
+<p>La frecuencia angular es <span class="math inline">\(2\,\mathrm{s^{-1}}\)</span>. La amplitud depende del cuadrado de la velocidad y vale <span class="math inline">\(A=\sqrt{0{,}06^2+(0{,}16/2)^2}\,\mathrm m=0{,}10\,\mathrm m\)</span>. Si la velocidad medida fuese positiva, la solución sería</p>
+<p><span class="math display">\[
+q_+(t)=(0{,}06\,\mathrm m)\cos(2t/\mathrm s)
++(0{,}08\,\mathrm m)\sin(2t/\mathrm s).
+\]</span></p>
+<p>Con velocidad negativa, el último término cambia de signo y obtenemos <span class="math inline">\(q_-(t)\)</span>. Ambas tienen energía <span class="math inline">\(E=kA^2/2=0{,}04\,\mathrm J\)</span> y pasan por la posición observada en <span class="math inline">\(t=0\)</span>. Para decidir cuál describe el ensayo hace falta el sentido de movimiento. La conservación de energía deja precisamente esa información fuera de su ecuación.</p>
+</section>
+<section id="solucion-10-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-7">7. Una proporción entre energías</h3>
+<p>Desde el extremo positivo, <span class="math inline">\(U=E\cos^2(\omega t)\)</span> y <span class="math inline">\(K=E\sin^2(\omega t)\)</span>. La condición <span class="math inline">\(U=3K\)</span> implica <span class="math inline">\(\tan^2(\omega t)=1/3\)</span>. En el primer cuarto de período la fase está entre cero y <span class="math inline">\(\pi/2\)</span>, y su primer valor admisible es <span class="math inline">\(\pi/6\)</span>.</p>
+<p>Resulta <span class="math inline">\(t=T/12\)</span>, <span class="math inline">\(q=\sqrt3 A/2\)</span> y <span class="math inline">\(\dot q=-\omega A/2\)</span>. Comprobamos <span class="math inline">\(U=3E/4\)</span> y <span class="math inline">\(K=E/4\)</span>. La elección del primer instante impide usar otra raíz trigonométrica que satisfaga la proporción en un tramo posterior.</p>
+</section>
+<section id="solucion-10-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-8">8. Cambiar masa y rigidez</h3>
+<p>La frecuencia angular cambia según <span class="math inline">\(\omega_2/\omega_1=\sqrt{9/4}=3/2\)</span>, y el período según <span class="math inline">\(T_2/T_1=2/3\)</span>. Con la misma amplitud, la rapidez máxima también se multiplica por <span class="math inline">\(3/2\)</span>. La energía depende de <span class="math inline">\(kA^2/2\)</span> y se multiplica por nueve.</p>
+<p>La mayor masa por sí sola tendería a alargar el período, pero la rigidez creció más que la masa en la razón relevante <span class="math inline">\(k/m\)</span>. La amplitud mide un recorrido geométrico; preparar ese mismo recorrido con un resorte nueve veces más rígido requiere nueve veces la energía, aunque el período se determine mediante otra combinación de parámetros.</p>
+</section>
+<section id="solucion-10-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-9">9. La longitud natural no es el equilibrio cargado</h3>
+<p>El equilibrio es <span class="math inline">\(y_e=mg/k=(0{,}5)(10)/50\,\mathrm m=0{,}10\,\mathrm m\)</span>. Medir desde él da <span class="math inline">\(q_0=-0{,}10\,\mathrm m\)</span> y <span class="math inline">\(v_0=0\)</span>. Con <span class="math inline">\(\omega=\sqrt{50/0{,}5}=10\,\mathrm{s^{-1}}\)</span>,</p>
+<p><span class="math display">\[
+y(t)=(0{,}10\,\mathrm m)\big[1-\cos(10t/\mathrm s)\big].
+\]</span></p>
+<p>La mayor extensión es <span class="math inline">\(0{,}20\,\mathrm m\)</span>, alcanzada por primera vez en <span class="math inline">\(\pi/10\,\mathrm s\)</span>. El período completo es <span class="math inline">\(T=\pi/5\,\mathrm s\)</span>. Al soltar, el resorte no ejerce fuerza, pero el peso sí; comenzar en la longitud natural no significa comenzar en un equilibrio de fuerzas. El recorrido calculado mantiene <span class="math inline">\(y\geq0\)</span>, sin requerir que un resorte colgante tire en sentido contrario por compresión.</p>
+</section>
+<section id="solucion-10-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-10">10. Encender una fuerza constante</h3>
+<p>El tirón desplaza el equilibrio a <span class="math inline">\(x_e=f_0/k=0{,}10\,\mathrm m\)</span>. Respecto de ese punto el carro parte en <span class="math inline">\(q_0=-0{,}10\,\mathrm m\)</span> y en reposo. Su movimiento es</p>
+<p><span class="math display">\[
+x(t)=(0{,}10\,\mathrm m)\big[1-\cos(2t/\mathrm s)\big].
+\]</span></p>
+<p>La primera detención después de salir ocurre con fase <span class="math inline">\(\pi\)</span>, en <span class="math inline">\(t=\pi/2\,\mathrm s\)</span>, a <span class="math inline">\(x=0{,}20\,\mathrm m\)</span>. La rapidez máxima es <span class="math inline">\(\omega A=0{,}20\,\mathrm{m/s}\)</span> y se alcanza al cruzar <span class="math inline">\(x_e\)</span>. El punto de equilibrio está a mitad del recorrido y no coincide con esa primera detención. La energía cinética más la del resorte aumenta por el trabajo del tirón; la energía armónica constante corresponde al potencial efectivo referido al equilibrio desplazado.</p>
+</section>
+<section id="solucion-10-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-11">11. Preparar y detener con impulsos</h3>
+<p>Durante el impulso ideal la posición no cambia y la velocidad salta en <span class="math inline">\(J/m=0{,}40\,\mathrm{m/s}\)</span>. La evolución posterior tiene <span class="math inline">\(\omega=\sqrt{8/0{,}5}=4\,\mathrm{s^{-1}}\)</span> y es <span class="math inline">\(q(t)=(0{,}10\,\mathrm m)\sin(4t/\mathrm s)\)</span>. El impulso preparó una energía <span class="math inline">\(J^2/(2m)=0{,}04\,\mathrm J\)</span>.</p>
+<p>El primer regreso al equilibrio ocurre en <span class="math inline">\(t=\pi/4\,\mathrm s\)</span>, con velocidad <span class="math inline">\(-0{,}40\,\mathrm{m/s}\)</span>. Para llevarla a cero se necesita otro impulso positivo de <span class="math inline">\(0{,}20\,\mathrm{N\,s}\)</span>. Tras él, posición y velocidad son cero, y la unicidad de la solución implica reposo permanente mientras el modelo no cambie. Aplicar ese impulso en un extremo produciría otra preparación: allí el carro ya está momentáneamente detenido, pero el resorte todavía tiene fuerza y energía.</p>
+</section>
+<section id="solucion-10-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-12">12. Un impacto que prepara la oscilación</h3>
+<p>La fase inicial es un choque y su balance se hace sobre proyectil y bloque. El impulso del resorte se omite sólo durante ese intervalo breve. La conservación aproximada del momento horizontal da la velocidad común <span class="math inline">\(V=(0{,}20)(3)/(1{,}00)\,\mathrm{m/s}=0{,}60\,\mathrm{m/s}\)</span>. La posición sigue prácticamente en el equilibrio.</p>
+<p>Después del impacto, la masa que oscila es un kilogramo, no la masa original del bloque. Su frecuencia angular es <span class="math inline">\(\omega=\sqrt{25/1}=5\,\mathrm{s^{-1}}\)</span>, por lo que <span class="math inline">\(A=V/\omega=0{,}12\,\mathrm m\)</span> y <span class="math inline">\(q(t)=(0{,}12\,\mathrm m)\sin(5t/\mathrm s)\)</span> si reiniciamos el reloj al terminar el contacto.</p>
+<p>La energía cinética anterior era <span class="math inline">\(0{,}90\,\mathrm J\)</span> y la inmediatamente posterior <span class="math inline">\(0{,}18\,\mathrm J\)</span>. Se transformaron <span class="math inline">\(0{,}72\,\mathrm J\)</span> en el choque; los <span class="math inline">\(0{,}18\,\mathrm J\)</span> restantes son la energía del oscilador ideal posterior. Durante la oscilación ya no se conserva el momento del conjunto proyectil–bloque, porque el resorte ejerce una fuerza externa sobre ese subsistema.</p>
+<p>La información adicional permite poner una cota a esa aproximación. Durante el impacto, <span class="math inline">\(|F_s|\leq k|x|\leq0{,}025\,\mathrm N\)</span>, y por integración <span class="math inline">\(|J_s|\leq0{,}00005\,\mathrm{N\,s}\)</span>. La masa final es un kilogramo, de modo que la velocidad común posterior pertenece a</p>
+<p><span class="math display">\[
+V\in[0{,}59995;0{,}60005]\,\mathrm{m/s}.
+\]</span></p>
+<p>También debemos conservar la posible posición de salida: <span class="math inline">\(|q_0|\leq0{,}001\,\mathrm m\)</span>. La amplitud utiliza ambos datos, <span class="math inline">\(A=\sqrt{q_0^2+(V/\omega)^2}\)</span>. Como <span class="math inline">\(V\)</span> es positivo en toda su banda,</p>
+<p><span class="math display">\[
+0{,}11999\,\mathrm m\leq A\leq
+\sqrt{(0{,}001\,\mathrm m)^2+(0{,}12001\,\mathrm m)^2}
+&lt;0{,}120015\,\mathrm m.
+\]</span></p>
+<p>La banda es una envolvente segura: combina todas las cotas disponibles y puede incluir pares de posición y velocidad que un contacto concreto no produzca. El valor inicial <span class="math inline">\(0{,}12\,\mathrm m\)</span> queda así acompañado por una estimación de lo que se omitió. Una duración breve adquiere utilidad física al combinarse con una cota de fuerza y con la tolerancia de la amplitud que queremos predecir.</p>
+</section>
+<section id="solucion-10-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-13">13. Ambos extremos pueden moverse</h3>
+<p>La extensión positiva ejerce fuerza hacia la derecha sobre la primera masa y hacia la izquierda sobre la segunda. Sus ecuaciones son <span class="math inline">\(m_1\ddot r_1=kq\)</span> y <span class="math inline">\(m_2\ddot r_2=-kq\)</span>. Al restarlas en el orden que define <span class="math inline">\(q\)</span> obtenemos</p>
+<p><span class="math display">\[
+\ddot q=\ddot r_2-\ddot r_1
+=-k\left(\frac1{m_2}+\frac1{m_1}\right)q.
+\]</span></p>
+<p>La masa reducida es <span class="math inline">\(\mu=m_1m_2/(m_1+m_2)=3/4\,\mathrm{kg}\)</span> y la frecuencia relativa <span class="math inline">\(\omega=\sqrt{k/\mu}=4\,\mathrm{s^{-1}}\)</span>. Los datos dan <span class="math inline">\(q(t)=(0{,}20\,\mathrm m)\cos(4t/\mathrm s)\)</span>.</p>
+<p>El centro de masa permanece fijo porque no hay fuerza externa horizontal y parte del reposo. Su posición es <span class="math inline">\(R=3(L+0{,}20\,\mathrm m)/4\)</span>. Resolver conjuntamente <span class="math inline">\(r_2-r_1=L+q\)</span> y <span class="math inline">\(m_1r_1+m_2r_2=(m_1+m_2)R\)</span> da</p>
+<p><span class="math display">\[
+r_1=R-\frac34(L+q),\qquad
+r_2=R+\frac14(L+q).
+\]</span></p>
+<p>La separación es <span class="math inline">\(L+q(t)\geq L-0{,}20\,\mathrm m&gt;0\)</span>: la hipótesis sobre <span class="math inline">\(L\)</span> conserva el orden de las masas durante todo el movimiento. Las amplitudes respecto de las posiciones de equilibrio son <span class="math inline">\(0{,}15\)</span> y <span class="math inline">\(0{,}05\,\mathrm m\)</span>. Las masas se mueven en sentidos opuestos, y las amplitudes ponderadas satisfacen <span class="math inline">\(1(0{,}15)=3(0{,}05)\)</span>, en kilogramos metro. La energía es <span class="math inline">\(k(0{,}20\,\mathrm m)^2/2=0{,}24\,\mathrm J\)</span>. Usar <span class="math inline">\(\sqrt{k/m_1}\)</span> habría supuesto inmóvil el otro extremo y habría descrito otro sistema.</p>
+</section>
+<section id="solucion-10-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-14">14. Dos resortes restauran el mismo desplazamiento</h3>
+<p>Una vez restadas las fuerzas que se compensan en el equilibrio, cada resorte aporta una variación <span class="math inline">\(-k_iq\)</span>. Por tanto, la fuerza neta es <span class="math inline">\(-(k_1+k_2)q\)</span> y la rigidez efectiva es <span class="math inline">\(16\,\mathrm{N/m}\)</span>. Esto utiliza la geometría especificada de apoyos fijos: no es una regla para sumar cualquier par de resortes en cualquier conexión.</p>
+<p>Con masa de un kilogramo, <span class="math inline">\(\omega=4\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(T=\pi/2\,\mathrm s\)</span>. La solución es <span class="math inline">\(q(t)=(0{,}05\,\mathrm m)\cos(4t/\mathrm s)\)</span> y la energía sobre su valor en el equilibrio es <span class="math inline">\(E=16(0{,}05)^2/2\,\mathrm J=0{,}02\,\mathrm J\)</span>. Las posibles deformaciones previas cambian la energía de referencia, pero no esta variación cuadrática si ambos resortes mantienen su comportamiento lineal.</p>
+</section>
+<section id="solucion-10-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-15">15. Un péndulo y el error de la fuerza aproximada</h3>
+<p>La ecuación aproximada tiene <span class="math inline">\(\omega=\sqrt{10}\,\mathrm{s^{-1}}\)</span>. Los datos proporcionan</p>
+<p><span class="math display">\[
+\theta_h(t)=0{,}10\cos(\sqrt{10}\,t/\mathrm s),
+\]</span></p>
+<p>con período <span class="math inline">\(T_h=2\pi/\sqrt{10}\,\mathrm s\approx1{,}987\,\mathrm s\)</span>.</p>
+<p>Para <span class="math inline">\(\theta\geq0\)</span>, la identidad <span class="math inline">\(\theta-\sin\theta=\int_0^\theta(1-\cos u)\,du\)</span> permite acotar la diferencia. Como <span class="math inline">\(1-\cos u=2\sin^2(u/2)\leq u^2/2\)</span>, integrar da <span class="math inline">\(0\leq\theta-\sin\theta\leq\theta^3/6\)</span>. La simetría impar extiende el resultado a valores negativos con valores absolutos.</p>
+<p>Para <span class="math inline">\(0&lt;|\theta|\leq0{,}10\)</span>, dividir por <span class="math inline">\(|\theta|\)</span> da una discrepancia relativa respecto del término lineal no mayor que <span class="math inline">\(\theta^2/6\leq1/600\approx0{,}00167\)</span>; en cero ambas fuerzas restauradoras se anulan y la comparación se interpreta por continuidad. Es una cota de los términos de la ecuación en una misma posición angular. Para convertirla en una cota de trayectoria o período hace falta analizar la evolución, de modo que no podemos atribuir al período ese porcentaje sin otro argumento.</p>
+</section>
+<section id="solucion-10-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-16">16. Un resorte que no es exactamente lineal</h3>
+<p>Un potencial con referencia cero en el origen es <span class="math inline">\(U(q)=kq^2/2+\beta q^4/4\)</span>, porque <span class="math inline">\(-U'(q)=-kq-\beta q^3\)</span>. La energía inicial es</p>
+<p><span class="math display">\[
+E=\frac12(9\,\mathrm{N/m})(0{,}10\,\mathrm m)^2
++\frac14(9\,\mathrm{N/m^3})(0{,}10\,\mathrm m)^4
+=0{,}045225\,\mathrm J.
+\]</span></p>
+<p>El potencial es par y estrictamente creciente con <span class="math inline">\(|q|\)</span> para <span class="math inline">\(|q|&gt;0\)</span>. Como la energía cinética es no negativa y <span class="math inline">\(E=U(0{,}10\,\mathrm m)\)</span>, la trayectoria no puede alcanzar <span class="math inline">\(|q|&gt;0{,}10\,\mathrm m\)</span>. La energía también acota la velocidad. El enunciado supone que la solución está definida hasta dos segundos; el confinamiento permite usar en todo ese intervalo una única cota del término que se omitió.</p>
+<p>La ecuación puede escribirse <span class="math inline">\(\ddot q+(3\,\mathrm{s^{-1}})^2q=r(t)\)</span>, con <span class="math inline">\(r=-\beta q^3/m\)</span>. El confinamiento recién probado da <span class="math inline">\(|r|\leq0{,}009\,\mathrm{m/s^2}\)</span>. El oscilador lineal tiene los mismos datos iniciales; por la estimación del capítulo,</p>
+<p><span class="math display">\[
+|q(t)-q_h(t)|\leq
+\frac{0{,}009\,\mathrm{m/s^2}}{3\,\mathrm{s^{-1}}}\,t.
+\]</span></p>
+<p>Hasta dos segundos la diferencia queda acotada por <span class="math inline">\(0{,}006\,\mathrm m\)</span>. El término cúbico representa a lo sumo el uno por ciento del término lineal en <span class="math inline">\(0&lt;|q|\leq0{,}10\,\mathrm m\)</span>, pero esta cota conservadora de posición llega al seis por ciento de la amplitud en ese tiempo. Son magnitudes distintas; la cota no afirma que el error alcance efectivamente ese máximo.</p>
+</section>
+<section id="solucion-10-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-17">17. Inferir una rigidez con cotas</h3>
+<p>Dividir el tiempo total por veinte da <span class="math inline">\(T\in[1{,}99,2{,}01]\,\mathrm s\)</span>. En <span class="math inline">\(k=4\pi^2m/T^2\)</span>, aumentar la masa aumenta <span class="math inline">\(k\)</span> y aumentar el período lo disminuye. Si no se conoce otra dependencia entre las bandas, una cota válida es</p>
+<p><span class="math display">\[
+k\in\left[
+\frac{4\pi^2(0{,}99\,\mathrm{kg})}{(2{,}01\,\mathrm s)^2},
+\frac{4\pi^2(1{,}01\,\mathrm{kg})}{(1{,}99\,\mathrm s)^2}
+\right].
+\]</span></p>
+<p>Los extremos valen aproximadamente <span class="math inline">\(9{,}674\)</span> y <span class="math inline">\(10{,}069\,\mathrm{N/m}\)</span>. Conservar la banda evita presentar la rigidez inferida como un valor exacto de <span class="math inline">\(\pi^2\,\mathrm{N/m}\)</span>. Contar más ciclos puede reducir el efecto de una cota fija del cronómetro por ciclo, pero no reduce por ese mecanismo la incertidumbre de la masa ni verifica la idealización lineal.</p>
+</section>
+<section id="solucion-10-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-18">18. Dos frecuencias, el mismo registro</h3>
+<p>Las soluciones son <span class="math inline">\(q_1(t)=(0{,}10\,\mathrm m)\cos(\pi t/(2\,\mathrm s))\)</span> y <span class="math inline">\(q_2(t)=(0{,}10\,\mathrm m)\cos(5\pi t/(2\,\mathrm s))\)</span>. Para cada entero <span class="math inline">\(n\geq0\)</span>, la diferencia de fase en <span class="math inline">\(t=n\,\mathrm s\)</span> es <span class="math inline">\(2\pi n\)</span>, y por periodicidad los cosenos coinciden. Ambas soluciones tienen además velocidad inicial cero.</p>
+<p>En medio segundo, sus fases son <span class="math inline">\(\pi/4\)</span> y <span class="math inline">\(5\pi/4\)</span>. Sus posiciones son respectivamente <span class="math inline">\(+\sqrt2/20\,\mathrm m\)</span> y <span class="math inline">\(-\sqrt2/20\,\mathrm m\)</span>, por lo que esa observación las distingue. Para una masa de un kilogramo, las rigideces serían <span class="math inline">\(k_1=\pi^2/4\,\mathrm{N/m}\)</span> y <span class="math inline">\(k_2=25\pi^2/4\,\mathrm{N/m}\)</span>. La coincidencia en la malla temporal no identifica una única fuerza restauradora; el segundo movimiento completa un ciclo adicional entre muestras consecutivas.</p>
+</section>
+<section id="solucion-10-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-19">19. Un control uniforme de la preparación</h3>
+<p>La diferencia de dos soluciones de la misma ecuación satisface de nuevo la ecuación armónica. Sus coeficientes iniciales son <span class="math inline">\(\Delta q_0\)</span> y <span class="math inline">\(\Delta v_0/\omega\)</span>, por lo que su amplitud es <span class="math inline">\(A_\Delta=\sqrt{(\Delta q_0)^2+(\Delta v_0/\omega)^2}\)</span>. Aplicar los máximos ya demostrados da <span class="math inline">\(|\Delta q|\leq A_\Delta\)</span> y <span class="math inline">\(|\Delta v|\leq\omega A_\Delta\)</span> para todo tiempo.</p>
+<p>Con las cotas indicadas, ambos coeficientes de longitud tienen módulo no mayor que <span class="math inline">\(0{,}001\,\mathrm m\)</span>. Así, <span class="math inline">\(|\Delta q(t)|\leq\sqrt2\,0{,}001\,\mathrm m\approx0{,}001414\,\mathrm m\)</span> y <span class="math inline">\(|\Delta v(t)|\leq\sqrt2\,0{,}002\,\mathrm{m/s}\approx0{,}002828\,\mathrm{m/s}\)</span>. La comparación utiliza el mismo equilibrio y los mismos parámetros del oscilador. El resultado no cubre una frecuencia ligeramente distinta, que cambiaría la ecuación que satisface la diferencia.</p>
+</section>
+<section id="solucion-10-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-10-20">20. Un pequeño error de frecuencia se acumula</h3>
+<p>La identidad de diferencia de cosenos da</p>
+<p><span class="math display">\[
+q_2-q_1=-2A\sin\big((\omega+\delta\omega/2)t\big)
+\sin(\delta\omega\,t/2).
+\]</span></p>
+<p>Usando <span class="math inline">\(|\sin u|\leq\min(1,|u|)\)</span> resulta <span class="math inline">\(|q_2-q_1|\leq\min(2A,A|\delta\omega|t)\)</span> para <span class="math inline">\(t\geq0\)</span>. Para garantizar una discrepancia no mayor que <span class="math inline">\(0{,}01A\)</span> basta <span class="math inline">\(|\delta\omega|t\leq0{,}01\)</span>. Con el valor dado obtenemos <span class="math inline">\(0\leq t\leq5\,\mathrm s\)</span>. Es una garantía suficiente, no una afirmación de que el error aumente monótonamente o exceda la tolerancia inmediatamente después de cinco segundos.</p>
+<p>En <span class="math inline">\(t=\pi/(0{,}002\,\mathrm{s^{-1}})=500\pi\,\mathrm s\)</span>, la fase del primer movimiento es <span class="math inline">\(1000\pi\)</span> y la del segundo <span class="math inline">\(1001\pi\)</span>. Sus posiciones son <span class="math inline">\(+A\)</span> y <span class="math inline">\(-A\)</span>; la diferencia alcanza <span class="math inline">\(2A\)</span>. Una variación relativa de frecuencia de sólo una milésima permite esta oposición tras muchos ciclos. La cota uniforme del problema anterior y este desfase no se contradicen: el primero compara datos iniciales dentro de una misma dinámica; el segundo compara dos dinámicas distintas.</p>
+</section>
+</section>
+<section id="lecturas-de-apoyo" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-de-apoyo">Lecturas de apoyo</h2>
+<p>La interpretación de fuerza restauradora procede de <a href="04_Fuerzas_y_leyes_de_Newton.md">«Fuerzas y leyes de Newton»</a>; el control mediante energía se apoya en <a href="07_Trabajo_y_energia_cinetica.md">«Trabajo y energía cinética»</a> y <a href="08_Potencial_equilibrio_y_estabilidad.md">«Potencial, equilibrio y estabilidad»</a>. El impulso que prepara una oscilación y la reducción de dos masas utilizan <a href="09_Impulso_colisiones_y_centro_de_masa.md">«Impulso, colisiones y centro de masa»</a>. Las cotas y la identificación de un modelo por observaciones retoman <a href="00_La_medida_fisica.md">«El problema de medir»</a>. La solución, su unicidad y la estimación del residuo se justifican localmente, sin presuponer un curso general de ecuaciones diferenciales.</p>
+<p>El contraste selectivo con los clásicos comprende Young y Freedman, <em>Sears y Zemansky. Física universitaria</em>, volumen 1, 13.ª edición (Pearson, 2013), §14.2, pp.&nbsp;439–442; Serway y Jewett, <em>Física para ciencias e ingeniería</em>, volumen 1, 10.ª edición española (Cengage, 2019), §15.2, pp.&nbsp;388–389; y Spivak, <em>Physics for Mathematicians. Mechanics I</em> (2010), comienzo del capítulo 8, p.&nbsp;287. Los problemas, las pruebas y los diagramas de este capítulo son desarrollos propios. La elección de seno o coseno como convención de fase puede variar entre libros; las condiciones iniciales permiten traducir entre ellas.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-09-impulso-colisiones-y-centro-de-masa.html">← 9. Impulso, colisiones y centro de masa</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-11-disipacion-y-respuesta-forzada.html">11. Disipación y respuesta forzada →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

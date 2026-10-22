@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="A. Peña">
-<meta name="description" content="Capítulo 21 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.">
+<meta name="description" content="Capítulo 19 de la edición revisada, con problemas y soluciones desarrolladas.">
 
-<title>Cuerpo rígido: cinemática, rotaciones y tensor de inercia – Matemática Abierta</title>
+<title>Cuerpo rígido en tres dimensiones – Matemática Abierta</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -388,13 +388,13 @@ body.quarto-page-columns #quarto-content,
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Cuerpo rígido: cinemática, rotaciones y tensor de inercia</h1>
-<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 21</p>
+<h1 class="title">Cuerpo rígido en tres dimensiones</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 19</p>
 </div>
 
 <div>
   <div class="description">
-    Capítulo 21 del Tomo I de Física para matemáticos, con ejercicios y soluciones desarrolladas.
+    Capítulo 19 de la edición revisada, con problemas y soluciones desarrolladas.
   </div>
 </div>
 
@@ -412,7 +412,7 @@ body.quarto-page-columns #quarto-content,
     <div>
     <div class="quarto-title-meta-heading">Fecha de última modificación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">17 de octubre de 2026</p>
+      <p class="date-modified">21 de octubre de 2026</p>
     </div>
   </div>
     
@@ -423,506 +423,546 @@ body.quarto-page-columns #quarto-content,
 </header>
 
 
-<p><a href="../../libros/capitulos/fisica-para-matematicos-capitulo-20-movimiento-en-marcos-no-inerciales.html">Capítulo 20</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-capitulo-22-cuerpo-rigido-dinamica.html">Capítulo 22</a></p>
-<p><span id="fispm-c21-cuerpo-ruxedgido-cinemuxe1tica-rotaciones-y-tensor-de-inercia"></span></p>
-<p>Una puerta, una rueda y una herramienta que gira en el aire pueden describirse siguiendo muchos puntos. Si sus deformaciones son despreciables, las distancias entre esos puntos permanecen constantes y sus movimientos dejan de ser independientes. Basta conocer una posición y una orientación para reconstruirlos. La velocidad angular del capítulo 20 se convierte entonces en una descripción simultánea de todo el cuerpo.</p>
-<p>La distribución de masa añade una dificultad distinta. Dos cuerpos que giran con la misma velocidad angular pueden tener energías y momentos angulares diferentes. Incluso en un mismo cuerpo, cambiar la dirección de giro puede cambiar la relación entre esas cantidades. El tensor de inercia organizará esa dependencia y sus ejes principales permitirán leerla con claridad.</p>
-<p>Trabajaremos con el modelo rígido newtoniano, masas positivas y distribuciones con segundo momento finito. La rigidez es una idealización cinemática: no afirma que los materiales reales transmitan perturbaciones instantáneamente ni que puedan soportar cualquier fuerza. Aquí estudiaremos posiciones, velocidades y cantidades mecánicas asociadas. Las ecuaciones que determinan la evolución bajo torque, incluidas las ecuaciones de Euler, quedan para el capítulo 22.</p>
-<p><span id="las-distancias-que-no-cambian"></span></p>
-<p><span id="fispm-t1-c21-s01"></span></p>
-<p><span id="fpm-i-21-s01"></span></p>
-<section id="fispm-c21-las-distancias-que-no-cambian" class="level2">
-<h2 class="anchored" data-anchor-id="fispm-c21-las-distancias-que-no-cambian">1. Las distancias que no cambian</h2>
-<p>Una descripción rígida puede comenzar con puntos marcados en un objeto. Si la separación entre cada pareja permanece igual, queremos demostrar que todos se obtienen mediante una misma traslación y una misma orientación. Cuatro puntos no coplanares permiten fijar esas operaciones sin ambigüedad.</p>
-<p><span id="fispm-t1-c21-d0001"></span></p>
-<p><strong>Definición 21.1 — Configuración rígida de puntos.</strong> Una familia de posiciones etiquetadas <span class="math inline">\(\mathbf x_i(t)\)</span> es rígida si <span class="math inline">\(|\mathbf x_i(t)-\mathbf x_j(t)|\)</span> es independiente de <span class="math inline">\(t\)</span> para cada pareja. La configuración de referencia se denota <span class="math inline">\(\mathbf a_i\)</span>. Se supone continuidad temporal para excluir un salto instantáneo a una imagen reflejada.</p>
-<p><span id="fispm-t1-c21-p0001"></span></p>
-<p><strong>Proposición 21.1 — Representación de un movimiento rígido no degenerado.</strong> Sea una configuración de referencia que contiene cuatro puntos afínmente independientes. En un intervalo conexo, toda familia continua de configuraciones rígidas que coincide con ella en un instante se representa de manera única como</p>
-<p><span class="math display">\[\mathbf x_i(t)=\mathbf X(t)+R(t)\mathbf a_i, \qquad R^TR=I,\quad\det R=1.\]</span></p>
-<p><strong>Demostración.</strong> Elijamos un punto de referencia <span class="math inline">\(\mathbf a_0\)</span> y tres vectores independientes <span class="math inline">\(\mathbf b_j=\mathbf a_j-\mathbf a_0\)</span>. Sus imágenes son <span class="math inline">\(\mathbf c_j=\mathbf x_j-\mathbf x_0\)</span>. Las distancias determinan productos escalares mediante <span class="math inline">\(2\mathbf b_j\cdot\mathbf b_k=|\mathbf b_j|^2+|\mathbf b_k|^2-|\mathbf b_j-\mathbf b_k|^2\)</span>. La rigidez hace que los <span class="math inline">\(\mathbf c_j\)</span> tengan la misma matriz de productos escalares. La aplicación lineal única <span class="math inline">\(R\)</span> que lleva <span class="math inline">\(\mathbf b_j\)</span> a <span class="math inline">\(\mathbf c_j\)</span> conserva, por expansión en esa base, todo producto escalar; por tanto <span class="math inline">\(R^TR=I\)</span>. Su determinante es <span class="math inline">\(\pm1\)</span>, depende continuamente del tiempo y vale uno en el instante de referencia. Es uno en todo el intervalo.</p>
-<p>Para otro punto, sus distancias a los cuatro elegidos fijan sus productos escalares con los tres vectores de base. Así <span class="math inline">\(\mathbf x_i-\mathbf x_0\)</span> y <span class="math inline">\(R(\mathbf a_i-\mathbf a_0)\)</span> tienen los mismos productos escalares con cada <span class="math inline">\(\mathbf c_j\)</span>; su diferencia es perpendicular a una base y debe ser cero. Tomar <span class="math inline">\(\mathbf X=\mathbf x_0-R\mathbf a_0\)</span> prueba la representación para todos. Cualquier otra representación debe coincidir en los tres vectores de base y después en el origen, lo que da unicidad. <span class="math inline">\(\square\)</span></p>
-<p>Un cuerpo idealizado como una sola varilla no fija una orientación completa: girar sus ejes alrededor de la varilla deja sus puntos donde estaban. Se puede elegir una orientación adicional para calcular, pero esa elección no es información que los puntos de la varilla determinen. Las distribuciones degeneradas reaparecerán al estudiar el núcleo del tensor.</p>
-<p><span id="fispm-t1-c21-d0002"></span></p>
-<p><strong>Definición 21.2 — Orientación corporal y coordenadas de centro de masa.</strong> Escribiremos <span class="math inline">\(\mathbf x=\mathbf C+R\mathbf q\)</span>, donde <span class="math inline">\(\mathbf C\)</span> es el centro de masa y <span class="math inline">\(\mathbf q\)</span> identifica un punto en una configuración corporal fija, con centro de masa corporal en el origen. La matriz <span class="math inline">\(R\)</span> lleva componentes corporales a componentes inerciales. El conjunto de matrices con <span class="math inline">\(R^TR=I\)</span> y <span class="math inline">\(\det R=1\)</span> se denota <span class="math inline">\(SO(3)\)</span>.</p>
-<p><span id="fispm-t1-c21-p0002"></span></p>
-<p><strong>Proposición 21.2 — Separación del centro de masa.</strong> Para puntos de masas constantes <span class="math inline">\(m_i&gt;0\)</span>, sea <span class="math inline">\(M=\sum_i m_i\)</span> y <span class="math inline">\(\mathbf a_C=M^{-1}\sum_i m_i\mathbf a_i\)</span>. La representación de la proposición 21.1 se reescribe como</p>
-<p><span class="math display">\[\mathbf C=\mathbf X+R\mathbf a_C, \qquad \mathbf q_i=\mathbf a_i-\mathbf a_C, \qquad \sum_i m_i\mathbf q_i=0.\]</span></p>
-<p><strong>Demostración.</strong> Multiplicar la representación de cada punto por su masa y sumar da <span class="math inline">\(M\mathbf C=M\mathbf X+R\sum_i m_i\mathbf a_i\)</span>. Sustituir <span class="math inline">\(\mathbf a_i=\mathbf a_C+\mathbf q_i\)</span> produce definición 21.2. La suma ponderada de <span class="math inline">\(\mathbf q_i\)</span> es cero por la definición de <span class="math inline">\(\mathbf a_C\)</span>. <span class="math inline">\(\square\)</span></p>
-<p>El centro de masa queda fijo en coordenadas corporales, aunque no pertenezca al material: el centro de un aro está en el hueco. Esa circunstancia no impide usarlo como origen geométrico. La traslación de <span class="math inline">\(\mathbf C\)</span> y la orientación <span class="math inline">\(R\)</span> describen aspectos diferentes de la configuración.</p>
-<p><span id="fispm-t1-c21-mp0001"></span></p>
-<p><strong>Principio metodológico 21.1.</strong> Identifica qué puntos fijan realmente la orientación. Separa la configuración geométrica de la distribución de masa que define su centro.</p>
-<p><span id="ejercicios"></span></p>
-<section id="fispm-c21-ejercicios" class="level3">
-<h3 class="anchored" data-anchor-id="fispm-c21-ejercicios">Ejercicios</h3>
-<p><span id="fispm-t1-c21-e0001"></span></p>
-<p><span id="fispm-t1-c21-e0021"></span></p>
-<p><strong>Ejercicio 21.1.</strong> Tres masas iguales ocupan <span class="math inline">\((a,0,0)\)</span>, <span class="math inline">\((0,a,0)\)</span> y <span class="math inline">\((0,0,a)\)</span> en una configuración corporal. Encuentra su centro de masa y sus coordenadas centradas.</p>
-<p><strong>Solución.</strong> El centro es <span class="math inline">\((a/3,a/3,a/3)\)</span>. Las coordenadas centradas son <span class="math inline">\((2a/3,-a/3,-a/3)\)</span> y sus dos permutaciones. Su suma es cero. Si el conjunto gira y se traslada, su centro físico es <span class="math inline">\(\mathbf X+R(a/3,a/3,a/3)\)</span>; centrar primero evita mezclar luego términos de traslación y giro.</p>
-<p><span id="fispm-t1-c21-e0002"></span></p>
-<p><strong>Ejercicio 21.2.</strong> Dos puntos distintos tienen separación fija. ¿Determinan de forma única una matriz <span class="math inline">\(R\in SO(3)\)</span> que represente su orientación?</p>
-<p><strong>Solución.</strong> No.&nbsp;Determinan la dirección de su segmento, pero una rotación adicional alrededor de esa dirección conserva ambos puntos una vez elegida la traslación. Hay una familia de orientaciones compatible con los mismos datos. Proposición 21.1 usa tres vectores independientes justamente para eliminar esa libertad; la construcción de un marco para una varilla necesita una elección suplementaria.</p>
-<p><span id="una-rotación-finita-tiene-eje-pero-el-orden-importa"></span></p>
-<p><span id="fispm-t1-c21-s02"></span></p>
-<p><span id="fpm-i-21-s02"></span></p>
-</section>
-</section>
-<section id="fispm-c21-una-rotaciuxf3n-finita-tiene-eje-pero-el-orden-importa" class="level2">
-<h2 class="anchored" data-anchor-id="fispm-c21-una-rotaciuxf3n-finita-tiene-eje-pero-el-orden-importa">2. Una rotación finita tiene eje, pero el orden importa</h2>
-<p>Al mover un objeto de una orientación a otra, la matriz relativa es una rotación. En tres dimensiones puede describirse mediante un eje y un ángulo. Esa representación resulta útil para una transformación individual; componer varias exige conservar su orden.</p>
-<p><span id="fispm-t1-c21-p0003"></span></p>
-<p><strong>Proposición 21.3 — Eje de una rotación propia tridimensional.</strong> Toda matriz <span class="math inline">\(R\in SO(3)\)</span> tiene un vector unitario <span class="math inline">\(\mathbf n\)</span> con <span class="math inline">\(R\mathbf n=\mathbf n\)</span>. El plano perpendicular a <span class="math inline">\(\mathbf n\)</span> es invariante y la restricción de <span class="math inline">\(R\)</span> a ese plano es una rotación bidimensional. Si <span class="math inline">\(R\ne I\)</span>, su espacio de vectores fijos es exactamente una recta.</p>
-<p><strong>Demostración.</strong> La identidad <span class="math inline">\(R-I=R(I-R^T)\)</span> y <span class="math inline">\(\det R=1\)</span> dan <span class="math inline">\(\det(R-I)=\det(I-R^T)=\det(I-R)\)</span>. Pero en dimensión tres <span class="math inline">\(\det(I-R)=-\det(R-I)\)</span>. Por tanto <span class="math inline">\(\det(R-I)=0\)</span>: existe un vector no nulo que <span class="math inline">\(R\)</span> deja fijo, y lo normalizamos como <span class="math inline">\(\mathbf n\)</span>. Para <span class="math inline">\(\mathbf u\perp\mathbf n\)</span>, <span class="math inline">\(\mathbf n\cdot R\mathbf u=(R^T\mathbf n)\cdot\mathbf u=0\)</span>, de modo que el plano perpendicular es invariante. Su restricción es ortogonal de determinante uno y tiene la forma de una rotación plana. Si además fijara un vector no nulo en ese plano, esa rotación plana sería la identidad, y entonces <span class="math inline">\(R=I\)</span>. <span class="math inline">\(\square\)</span></p>
-<p><span id="fispm-t1-c21-p0004"></span></p>
-<p><strong>Proposición 21.4 — Fórmula eje-ángulo.</strong> Para un eje unitario orientado <span class="math inline">\(\mathbf n\)</span> y ángulo <span class="math inline">\(\theta\)</span>, la rotación correspondiente actúa mediante</p>
-<p><span class="math display">\[R\mathbf u=\cos\theta\,\mathbf u +(1-\cos\theta)(\mathbf n\cdot\mathbf u)\mathbf n +\sin\theta\,(\mathbf n\times\mathbf u).\]</span></p>
-<p>Su traza es <span class="math inline">\(1+2\cos\theta\)</span>.</p>
-<p><strong>Demostración.</strong> Descompongamos <span class="math inline">\(\mathbf u\)</span> en su proyección axial <span class="math inline">\(\mathbf u_\parallel=(\mathbf n\cdot\mathbf u)\mathbf n\)</span> y su componente perpendicular. La primera permanece fija. La segunda rota en su plano como <span class="math inline">\(\cos\theta\,\mathbf u_\perp+\sin\theta\,\mathbf n\times\mathbf u_\perp\)</span>. Sustituir <span class="math inline">\(\mathbf u_\perp=\mathbf u-\mathbf u_\parallel\)</span> da la fórmula. En una base con tercer eje <span class="math inline">\(\mathbf n\)</span>, la diagonal contiene <span class="math inline">\(\cos\theta,\cos\theta,1\)</span>; la traza no cambia al cambiar de base. <span class="math inline">\(\square\)</span></p>
-<p>La fórmula se conoce como fórmula de Rodrigues.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> El par eje-ángulo tiene convenciones y excepciones: cambiar <span class="math inline">\((\mathbf n,\theta)\)</span> por <span class="math inline">\((-\mathbf n,-\theta)\)</span> da la misma rotación; los ángulos difieren por múltiplos de <span class="math inline">\(2\pi\)</span>; para la identidad el eje es arbitrario. En un giro de <span class="math inline">\(\pi\)</span>, los dos sentidos del eje representan la misma matriz. La traza recupera el coseno, pero no toda la información sobre el eje ni el sentido.</p>
-<p>Si primero aplicamos <span class="math inline">\(R_1\)</span> a un vector y después <span class="math inline">\(R_2\)</span>, la matriz total es <span class="math inline">\(R_2R_1\)</span>. El orden importa porque el primer giro cambia los vectores sobre los que actúa el segundo. La orientación completa vive en <span class="math inline">\(SO(3)\)</span>; no se obtiene sumando sin más tres ángulos de rotaciones finitas.</p>
-<p><span id="fispm-t1-c21-mp0002"></span></p>
-<p><strong>Principio metodológico 21.2.</strong> Escribe qué transformación actúa primero. Distingue un eje de rotación finita de la velocidad angular instantánea de una trayectoria de orientaciones.</p>
-<p><span id="ejercicios-1"></span></p>
-<section id="fispm-c21-ejercicios-1" class="level3">
-<h3 class="anchored" data-anchor-id="fispm-c21-ejercicios-1">Ejercicios</h3>
-<p><span id="fispm-t1-c21-e0003"></span></p>
-<p><strong>Ejercicio 21.3.</strong> Aplica a <span class="math inline">\(\mathbf e_x\)</span> giros positivos de <span class="math inline">\(\pi/2\)</span> alrededor de <span class="math inline">\(x\)</span> y de <span class="math inline">\(y\)</span>, en los dos órdenes.</p>
-<p><strong>Solución.</strong> Si actúa primero el giro alrededor de <span class="math inline">\(y\)</span>, <span class="math inline">\(\mathbf e_x\)</span> pasa a <span class="math inline">\(-\mathbf e_z\)</span>; el giro alrededor de <span class="math inline">\(x\)</span> lleva después ese vector a <span class="math inline">\(\mathbf e_y\)</span>. Si actúa primero el giro alrededor de <span class="math inline">\(x\)</span>, <span class="math inline">\(\mathbf e_x\)</span> permanece igual, y el giro alrededor de <span class="math inline">\(y\)</span> lo lleva a <span class="math inline">\(-\mathbf e_z\)</span>. Por tanto <span class="math inline">\(R_xR_y\mathbf e_x=\mathbf e_y\)</span> mientras <span class="math inline">\(R_yR_x\mathbf e_x=-\mathbf e_z\)</span>. Los ejes usados aquí son fijos; cambiar a giros alrededor de ejes ya movidos exige otra descripción.</p>
-<p><span id="fispm-t1-c21-e0004"></span></p>
-<p><strong>Ejercicio 21.4.</strong> Para <span class="math inline">\(\mathbf n=(1,1,1)/\sqrt3\)</span> y <span class="math inline">\(\theta=2\pi/3\)</span>, calcula <span class="math inline">\(R\mathbf e_x\)</span> mediante proposición 21.4.</p>
-<p><strong>Solución.</strong> Tenemos <span class="math inline">\(\cos\theta=-1/2\)</span>, <span class="math inline">\(\sin\theta=\sqrt3/2\)</span> y <span class="math inline">\((\mathbf n\cdot\mathbf e_x)\mathbf n=(1,1,1)/3\)</span>. El primer término es <span class="math inline">\((-1/2,0,0)\)</span>, el segundo <span class="math inline">\((1/2,1/2,1/2)\)</span> y el tercero <span class="math inline">\((0,1/2,-1/2)\)</span>. Su suma es <span class="math inline">\(\mathbf e_y\)</span>. La misma rotación lleva <span class="math inline">\(\mathbf e_y\)</span> a <span class="math inline">\(\mathbf e_z\)</span> y <span class="math inline">\(\mathbf e_z\)</span> a <span class="math inline">\(\mathbf e_x\)</span>, conservando la diagonal dirigida por <span class="math inline">\(\mathbf n\)</span>.</p>
-<p><span id="la-velocidad-angular-no-es-una-lista-de-tres-derivadas-de-ángulos"></span></p>
-<p><span id="fispm-t1-c21-s03"></span></p>
-<p><span id="fpm-i-21-s03"></span></p>
-</section>
-</section>
-<section id="fispm-c21-la-velocidad-angular-no-es-una-lista-de-tres-derivadas-de-uxe1ngulos" class="level2">
-<h2 class="anchored" data-anchor-id="fispm-c21-la-velocidad-angular-no-es-una-lista-de-tres-derivadas-de-uxe1ngulos">3. La velocidad angular no es una lista de tres derivadas de ángulos</h2>
-<p>Una orientación cambia a lo largo de una curva <span class="math inline">\(R(t)\)</span>. Su velocidad angular se obtiene diferenciando esa curva, como en el capítulo 20. Conviene conservar simultáneamente sus componentes corporales y su vector físico: cada uno simplifica una parte diferente de los cálculos.</p>
-<p><span id="fispm-t1-c21-d0003"></span></p>
-<p><strong>Definición 21.3 — Velocidad angular corporal e inercial.</strong> Para <span class="math inline">\(R(t)\in SO(3)\)</span> de clase <span class="math inline">\(C^1\)</span>, definimos <span class="math inline">\([\boldsymbol\Omega]_\times=R^T\dot R\)</span>, donde <span class="math inline">\([\boldsymbol\Omega]_\times\mathbf u=\boldsymbol\Omega\times\mathbf u\)</span>. El vector inercial es <span class="math inline">\(\boldsymbol\omega=R\boldsymbol\Omega\)</span>.</p>
-<p><span id="fispm-t1-c21-p0005"></span></p>
-<p><strong>Proposición 21.5 — Ecuaciones de orientación y transporte corporal.</strong> La matriz <span class="math inline">\(R^T\dot R\)</span> es antisimétrica y determina un único <span class="math inline">\(\boldsymbol\Omega\)</span>. Se cumple</p>
-<p><span class="math display">\[\dot R=R[\boldsymbol\Omega]_\times=[\boldsymbol\omega]_\times R, \qquad \frac d{dt}(R\mathbf a)=R(\dot{\mathbf a}+\boldsymbol\Omega\times\mathbf a).\]</span></p>
-<p><strong>Demostración.</strong> Diferenciar <span class="math inline">\(R^TR=I\)</span> da <span class="math inline">\(\dot R^TR+R^T\dot R=0\)</span>. Una matriz antisimétrica de orden tres tiene tres entradas independientes y es exactamente la matriz de producto vectorial con un único vector, como se demostró en el capítulo 20. Multiplicar por <span class="math inline">\(R\)</span> da la primera expresión de <span class="math inline">\(\dot R\)</span>. La identidad <span class="math inline">\(R(\boldsymbol\Omega\times\mathbf a)=(R\boldsymbol\Omega)\times(R\mathbf a)\)</span> transforma esa expresión en la segunda. La regla del producto aplicada a <span class="math inline">\(R\mathbf a\)</span> da la fórmula de transporte. <span class="math inline">\(\square\)</span></p>
-<p><span id="fispm-t1-c21-p0006"></span></p>
-<p><strong>Proposición 21.6 — Composición de velocidades angulares.</strong> Sean <span class="math inline">\(R=R_1R_2\)</span> y <span class="math inline">\(\boldsymbol\omega_1,\boldsymbol\omega_2\)</span> los vectores asociados respectivamente a <span class="math inline">\(\dot R_1R_1^T\)</span> y <span class="math inline">\(\dot R_2R_2^T\)</span> en sus espacios de componentes. Entonces</p>
-<p><span class="math display">\[\boldsymbol\omega=\boldsymbol\omega_1+R_1\boldsymbol\omega_2.\]</span></p>
-<p><strong>Demostración.</strong> Diferenciar el producto y multiplicar por <span class="math inline">\(R^T=R_2^TR_1^T\)</span> da <span class="math inline">\(\dot RR^T=\dot R_1R_1^T+R_1(\dot R_2R_2^T)R_1^T\)</span>. El segundo término es la matriz de producto vectorial con <span class="math inline">\(R_1\boldsymbol\omega_2\)</span>. La unicidad de ese vector en la proposición 21.5 permite sumar los dos vectores expresados ahora en el mismo espacio. <span class="math inline">\(\square\)</span></p>
-<p>La suma existe, pero uno de los sumandos necesita ser rotado. Si una parametrización usa giros sucesivos sobre ejes diferentes, sus derivadas multiplican los ejes instantáneos de cada etapa. Los tres coeficientes no son automáticamente las tres componentes de <span class="math inline">\(\boldsymbol\omega\)</span> en una base fija. La composición anterior permite reconstruirlas sin memorizar una convención ambigua de ángulos.</p>
-<p><span id="fispm-t1-c21-mp0003"></span></p>
-<p><strong>Principio metodológico 21.3.</strong> Al componer giros, transforma cada velocidad angular a una base común. La suma vectorial instantánea no hace conmutar las rotaciones finitas.</p>
-<p><span id="ejercicios-2"></span></p>
-<section id="fispm-c21-ejercicios-2" class="level3">
-<h3 class="anchored" data-anchor-id="fispm-c21-ejercicios-2">Ejercicios</h3>
-<p><span id="fispm-t1-c21-e0005"></span></p>
-<p><strong>Ejercicio 21.5.</strong> Sea <span class="math inline">\(R(t)=R_z(\phi(t))R_x(\psi(t))\)</span>. Encuentra la velocidad angular inercial.</p>
-<p><strong>Solución.</strong> La primera etapa tiene <span class="math inline">\(\boldsymbol\omega_1=\dot\phi\mathbf e_z\)</span>. La segunda tiene <span class="math inline">\(\boldsymbol\omega_2=\dot\psi\mathbf e_x\)</span> en las coordenadas sobre las que actúa <span class="math inline">\(R_z\)</span>. Proposición 21.6 da <span class="math inline">\(\boldsymbol\omega=\dot\phi\mathbf e_z+\dot\psi(\cos\phi\mathbf e_x+\sin\phi\mathbf e_y)\)</span>. Aunque solo cambien dos ángulos, el vector puede tener tres componentes inerciales no nulas.</p>
-<p><span id="fispm-t1-c21-e0006"></span></p>
-<p><strong>Ejercicio 21.6.</strong> Un giro tiene eje fijo <span class="math inline">\(\mathbf n\)</span> y ángulo <span class="math inline">\(\theta(t)\)</span>. Determina <span class="math inline">\(\boldsymbol\omega\)</span> y explica qué información falta si solo conocemos la matriz en un instante.</p>
-<p><strong>Solución.</strong> Diferenciar proposición 21.4 o aplicar la rotación plana en el plano perpendicular da <span class="math inline">\(\boldsymbol\omega=\dot\theta\mathbf n\)</span>. Una matriz instantánea fija la orientación, pero no <span class="math inline">\(\dot\theta\)</span> ni la posible variación posterior del eje. Dos movimientos pueden pasar por la misma orientación con velocidades angulares distintas. El eje-ángulo de una matriz aislada no sustituye a su derivada temporal.</p>
-<p><span id="todos-los-puntos-comparten-una-ley-de-velocidades"></span></p>
-<p><span id="fispm-t1-c21-s04"></span></p>
-<p><span id="fpm-i-21-s04"></span></p>
-</section>
-</section>
-<section id="fispm-c21-todos-los-puntos-comparten-una-ley-de-velocidades" class="level2">
-<h2 class="anchored" data-anchor-id="fispm-c21-todos-los-puntos-comparten-una-ley-de-velocidades">4. Todos los puntos comparten una ley de velocidades</h2>
-<p>Los puntos materiales tienen coordenadas corporales constantes. Al derivar <span class="math inline">\(\mathbf x=\mathbf C+R\mathbf q\)</span>, el único cambio relativo procede de la base. La velocidad de cada punto se obtiene de su posición respecto del centro de masa y de un mismo vector angular.</p>
-<p><span id="fig:I-21-N01"></span></p>
-<figure id="fig-fpm-v04-i-21-n01" class="fpm-v04-panel figure">
-<p><a href="../assets/021002245a005d396ea1c869.svg" class="lightbox" data-gallery="fpm-v04-c21"><img src="../assets/021002245a005d396ea1c869.svg" alt="Velocidades en un rígido. Diagrama del capítulo 21; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="351" height="199" loading="lazy" decoding="async"></a></p>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-18-marcos-acelerados-y-giratorios.html">← 18. Marcos acelerados y giratorios</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-20-oscilaciones-acopladas.html">20. Oscilaciones acopladas →</a></p>
+<p>Una rueda bien alineada puede mantener su giro alrededor de un eje sin que los cojinetes deban cambiar continuamente la dirección de su momento angular. Si distribuimos la masa de otra manera y conservamos el mismo eje, puede hacer falta un torque transversal aunque la rapidez de giro sea constante. El cálculo escalar del momento de inercia sigue describiendo una parte de ese movimiento, pero deja sin determinar la dirección del momento angular y el esfuerzo que deben ejercer los apoyos.</p>
+<p>Para ver la dificultad con pocos datos, consideremos cuatro masas iguales en las posiciones <span class="math inline">\((1,0,0)\)</span>, <span class="math inline">\((-1,0,0)\)</span>, <span class="math inline">\((0,2,0)\)</span> y <span class="math inline">\((0,-2,0)\)</span> respecto de su centro. Cuando cada masa vale una unidad y la velocidad angular es <span class="math inline">\((1,1,0)\)</span>, el momento angular resulta <span class="math inline">\((8,2,0)\)</span> en las unidades correspondientes. Ambos vectores pertenecen al mismo plano y forman un ángulo distinto de cero. La distribución de masa responde de manera diferente a cada componente del giro; necesitamos una transformación lineal que reúna esas respuestas.</p>
+<p>Supondremos conocidos los balances de un sistema de partículas, la rotación alrededor de un eje y la regla de transporte del capítulo 18. Introduciremos localmente la descomposición en ejes principales. El modelo rígido conserva las distancias internas: resulta adecuado mientras deformaciones y vibraciones no alteren de manera apreciable el movimiento que se desea estudiar. Las tensiones que mantienen esa rigidez pueden importar para la resistencia del material, aunque el balance global permita eliminar sus torques internos.</p>
+<section id="describir-un-cuerpo-que-se-traslada-y-gira" class="level2">
+<h2 class="anchored" data-anchor-id="describir-un-cuerpo-que-se-traslada-y-gira">Describir un cuerpo que se traslada y gira</h2>
+<p><strong>Definición.</strong> Un cuerpo rígido discreto de masas constantes <span class="math inline">\(m_i&gt;0\)</span> se describe mediante posiciones</p>
+<p><span class="math display">\[
+\mathbf x_i(t)=\mathbf R(t)+Q(t)\mathbf s_i,
+\qquad Q^{\mathsf T}Q=\operatorname{Id}_3,\quad\det Q=1,
+\]</span></p>
+<p>con vectores materiales <span class="math inline">\(\mathbf s_i\)</span> independientes del tiempo y funciones <span class="math inline">\(\mathbf R,Q\)</span> de clase <span class="math inline">\(C^2\)</span>. Si <span class="math inline">\(\mathbf R\)</span> es el centro de masa, se exige <span class="math inline">\(\sum_i m_i\mathbf s_i=0\)</span>. Escribimos <span class="math inline">\(M=\sum_i m_i\)</span>, <span class="math inline">\(\mathbf V=\dot{\mathbf R}\)</span> y definimos las componentes materiales <span class="math inline">\(\boldsymbol\omega\)</span> por <span class="math inline">\(Q^{\mathsf T}\dot Q\,\mathbf a=\boldsymbol\omega\times\mathbf a\)</span> para todo <span class="math inline">\(\mathbf a\)</span>.</p>
+<p>La notación <span class="math inline">\(\operatorname{Id}_3\)</span> designa la identidad de orden tres. La matriz <span class="math inline">\(Q\)</span> conserva longitudes y ángulos. Sus columnas son los ejes ligados al cuerpo expresados en el laboratorio, y <span class="math inline">\(\boldsymbol\Omega=Q\boldsymbol\omega\)</span> es la velocidad angular física. Derivar las posiciones da</p>
+<p><span class="math display">\[
+\dot{\mathbf x}_i=\mathbf V+Q(\boldsymbol\omega\times\mathbf s_i).
+\]</span></p>
+<p>La misma velocidad angular produce velocidades distintas en puntos diferentes: la distancia al eje y la dirección de cada separación intervienen en el producto vectorial. Para recuperar la orientación después de resolver la dinámica de <span class="math inline">\(\boldsymbol\omega\)</span>, también habrá que integrar</p>
+<p><span class="math display">\[
+\dot Q=Q[\boldsymbol\omega]_\times,
+\qquad [\boldsymbol\omega]_\times\mathbf a=\boldsymbol\omega\times\mathbf a,
+\]</span></p>
+<p>con una orientación inicial <span class="math inline">\(Q(0)\)</span>. Conocer las tres componentes de velocidad angular no equivale a conocer dónde se encuentra cada punto del cuerpo.</p>
+<figure id="fig-fispm-r20261021-19-1" class="fpm-v04-panel figure">
+<p><a href="../assets/263570f0f829036a24ee8adc.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="../assets/263570f0f829036a24ee8adc.svg" alt="Traslación y velocidad de un punto material" class="fpm-v04-figure img-fluid figure-img" width="900" height="610" loading="lazy" decoding="async"></a></p>
 <figcaption>
-<p><strong>Figura 21.1.</strong> La diferencia de velocidades de dos puntos de un rígido es perpendicular a su separación. El esquema muestra <span class="math inline">\(\omega\)</span> saliente del plano y un punto <span class="math inline">\(A\)</span> instantáneamente fijo. Véase §<a href="#fispm-c21-todos-los-puntos-comparten-una-ley-de-velocidades">4</a>.</p>
+<p><em>Figura 19.1.</em> La separación material se transporta mediante <span class="math inline">\(Q\)</span>. La velocidad de un punto suma la velocidad del centro y la contribución perpendicular al eje instantáneo de giro; el dibujo representa un instante.</p>
 </figcaption>
 </figure>
-<p><span id="fispm-t1-c21-p0007"></span></p>
-<p><strong>Proposición 21.7 — Campo de velocidades rígido.</strong> Sea <span class="math inline">\(\mathbf V=\dot{\mathbf C}\)</span> y <span class="math inline">\(\mathbf r=R\mathbf q=\mathbf x-\mathbf C\)</span>. Entonces</p>
-<p><span class="math display">\[\mathbf v(\mathbf x)=\mathbf V+\boldsymbol\omega\times\mathbf r.\]</span></p>
-<p>Para dos puntos materiales, <span class="math inline">\(\mathbf v_1-\mathbf v_2=\boldsymbol\omega\times(\mathbf x_1-\mathbf x_2)\)</span> y la distancia entre ellos tiene derivada nula.</p>
-<p><strong>Demostración.</strong> proposición 21.5 con <span class="math inline">\(\dot{\mathbf q}=0\)</span> da <span class="math inline">\(\dot{\mathbf x}=\dot{\mathbf C}+R(\boldsymbol\Omega\times\mathbf q)=\mathbf V+\boldsymbol\omega\times\mathbf r\)</span>. Restar elimina <span class="math inline">\(\mathbf V\)</span>. Si <span class="math inline">\(\mathbf d=\mathbf x_1-\mathbf x_2\)</span>, la derivada de <span class="math inline">\(|\mathbf d|^2\)</span> es <span class="math inline">\(2\mathbf d\cdot(\boldsymbol\omega\times\mathbf d)=0\)</span>. <span class="math inline">\(\square\)</span></p>
-<p><span id="fispm-t1-c21-p0008"></span></p>
-<p><strong>Proposición 21.8 — Aceleración de un punto material.</strong> Para un movimiento rígido de clase <span class="math inline">\(C^2\)</span>, sea <span class="math inline">\(\boldsymbol\alpha=\dot{\boldsymbol\omega}\)</span>. Entonces</p>
-<p><span class="math display">\[\mathbf a(\mathbf x)=\ddot{\mathbf C} +\boldsymbol\alpha\times\mathbf r +\boldsymbol\omega\times(\boldsymbol\omega\times\mathbf r).\]</span></p>
-<p><strong>Demostración.</strong> Diferenciar proposición 21.7 en el marco inercial da <span class="math inline">\(\ddot{\mathbf C}+\dot{\boldsymbol\omega}\times\mathbf r+\boldsymbol\omega\times\dot{\mathbf r}\)</span>. Como el punto está fijado al cuerpo, <span class="math inline">\(\dot{\mathbf r}=\boldsymbol\omega\times\mathbf r\)</span>. Sustituir produce la fórmula. <span class="math inline">\(\square\)</span></p>
-<p>No aparece Coriolis para un punto fijado al cuerpo porque su velocidad corporal es cero. Un punto que se desliza sobre el cuerpo requiere la fórmula completa del capítulo 20. También hay que distinguir <span class="math inline">\(\boldsymbol\alpha\)</span> de una variación de la magnitud de <span class="math inline">\(\boldsymbol\omega\)</span>: cambiar su dirección produce aceleración angular aunque su norma permanezca constante.</p>
-<p>La rigidez restringe posiciones y velocidades, pero las fuerzas necesarias para mantenerla pertenecen a otro análisis. Proposición 21.8 permite calcular qué aceleración requiere cada punto; no asegura que un material real pueda realizarla sin deformarse o romperse.</p>
-<p><span id="fispm-t1-c21-mp0004"></span></p>
-<p><strong>Principio metodológico 21.4.</strong> Determina si el punto está fijado al cuerpo o se mueve respecto de él. Usa la aceleración material y la aceleración relativa con sus respectivas hipótesis.</p>
-<p><span id="ejercicios-3"></span></p>
-<section id="fispm-c21-ejercicios-3" class="level3">
-<h3 class="anchored" data-anchor-id="fispm-c21-ejercicios-3">Ejercicios</h3>
-<p><span id="fispm-t1-c21-e0007"></span></p>
-<p><strong>Ejercicio 21.7.</strong> El centro de masa tiene velocidad <span class="math inline">\(V\mathbf e_x\)</span> y el cuerpo gira con <span class="math inline">\(\boldsymbol\omega=\omega\mathbf e_z\)</span>. Calcula las velocidades de dos puntos que están en <span class="math inline">\(\mathbf r=\pm a\mathbf e_y\)</span>.</p>
-<p><strong>Solución.</strong> Para <span class="math inline">\(+a\mathbf e_y\)</span>, el producto vectorial es <span class="math inline">\(-\omega a\mathbf e_x\)</span> y la velocidad es <span class="math inline">\((V-\omega a)\mathbf e_x\)</span>. Para el otro punto es <span class="math inline">\((V+\omega a)\mathbf e_x\)</span>. Si <span class="math inline">\(V=\omega a\)</span>, uno está instantáneamente quieto y el otro tiene velocidad <span class="math inline">\(2V\mathbf e_x\)</span>. Ambos siguen formando parte del mismo cuerpo rígido.</p>
-<p><span id="fispm-t1-c21-e0008"></span></p>
-<p><strong>Ejercicio 21.8.</strong> Un cuerpo gira con origen fijo alrededor de <span class="math inline">\(z\)</span>, con rapidez <span class="math inline">\(\omega(t)\)</span>. Para un punto en <span class="math inline">\(a\mathbf e_x\)</span> en cierto instante, calcula la aceleración y separa sus componentes.</p>
-<p><strong>Solución.</strong> En ese instante <span class="math inline">\(\boldsymbol\alpha=\dot\omega\mathbf e_z\)</span>. Proposición 21.8 da <span class="math inline">\(\mathbf a=-\omega^2a\mathbf e_x+\dot\omega a\mathbf e_y\)</span>. La primera componente cambia la dirección de la velocidad circular y la segunda cambia su magnitud. Si <span class="math inline">\(\dot\omega=0\)</span>, sigue habiendo aceleración hacia el eje; si <span class="math inline">\(\omega=0\)</span> pero <span class="math inline">\(\dot\omega\ne0\)</span>, hay aceleración tangencial aunque la velocidad angular instantánea se anule.</p>
-<p><span id="el-eje-instantáneo-puede-moverse"></span></p>
-<p><span id="fispm-t1-c21-s05"></span></p>
-<p><span id="fpm-i-21-s05"></span></p>
 </section>
-</section>
-<section id="fispm-c21-el-eje-instantuxe1neo-puede-moverse" class="level2">
-<h2 class="anchored" data-anchor-id="fispm-c21-el-eje-instantuxe1neo-puede-moverse">5. El eje instantáneo puede moverse</h2>
-<p>En ejercicio 21.7 apareció un punto con velocidad cero mientras el resto del cuerpo se movía. Es posible describir el campo de velocidades instantáneo a partir de ese punto. El eje obtenido pertenece a un instante; no obliga a que los mismos puntos permanezcan quietos durante un intervalo.</p>
-<p><span id="fig:I-21-R01"></span></p>
-<figure id="fig-fpm-v04-i-21-r01" class="fpm-v04-panel figure">
-<p><a href="../assets/4981d37f7bdbba80311a6b3e.svg" class="lightbox" data-gallery="fpm-v04-c21"><img src="../assets/4981d37f7bdbba80311a6b3e.svg" alt="Velocidades en rodadura sin deslizamiento. Diagrama del capítulo 21; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="346" height="217" loading="lazy" decoding="async"></a></p>
+<section id="reunir-la-distribución-de-masa-en-una-transformación" class="level2">
+<h2 class="anchored" data-anchor-id="reunir-la-distribución-de-masa-en-una-transformación">Reunir la distribución de masa en una transformación</h2>
+<p>El momento angular relativo al centro se obtiene sumando cada separación vectorial cruzada con su cantidad de movimiento relativa. Al sustituir la velocidad rígida aparece, para cada masa, la expresión <span class="math inline">\(\mathbf s_i\times(\boldsymbol\omega\times\mathbf s_i)\)</span>. El producto triple permite escribirla como <span class="math inline">\(\|\mathbf s_i\|^2\boldsymbol\omega-(\mathbf s_i\cdot\boldsymbol\omega)\mathbf s_i\)</span>: su dependencia de <span class="math inline">\(\boldsymbol\omega\)</span> es lineal.</p>
+<p><strong>Definición.</strong> El tensor de inercia respecto del origen material elegido es la transformación lineal de matriz</p>
+<p><span class="math display">\[
+\mathsf I=\sum_i m_i\left(\|\mathbf s_i\|^2\operatorname{Id}_3-\mathbf s_i\mathbf s_i^{\mathsf T}\right).
+\]</span></p>
+<p>Para una distribución continua no negativa se reemplaza la suma por <span class="math inline">\(\int(\|\mathbf s\|^2\operatorname{Id}_3-\mathbf s\mathbf s^{\mathsf T})\,dm\)</span>, suponiendo masa total y segundos momentos finitos.</p>
+<p>El término tensor designa aquí una transformación del espacio euclídeo; una matriz concreta expresa sus componentes en una base ortonormal. Al escoger coordenadas <span class="math inline">\(\mathbf s_i=(x_i,y_i,z_i)\)</span>, su matriz queda</p>
+<p><span class="math display">\[
+\mathsf I=\begin{pmatrix}
+\sum m_i(y_i^2+z_i^2)&amp;-\sum m_ix_iy_i&amp;-\sum m_ix_iz_i\\
+-\sum m_ix_iy_i&amp;\sum m_i(x_i^2+z_i^2)&amp;-\sum m_iy_iz_i\\
+-\sum m_ix_iz_i&amp;-\sum m_iy_iz_i&amp;\sum m_i(x_i^2+y_i^2)
+\end{pmatrix}.
+\]</span></p>
+<p>Las entradas diagonales son momentos respecto de los ejes coordenados. Las entradas restantes conservan correlaciones geométricas entre coordenadas. Algunas convenciones llaman productos de inercia a las sumas sin el signo menos; mantendremos los signos de la matriz escrita.</p>
+<p><strong>Proposición.</strong> Respecto del centro de masa, las componentes materiales del momento angular son <span class="math inline">\(\boldsymbol\ell=\mathsf I\boldsymbol\omega\)</span>. En el laboratorio y para un origen inercial fijo <span class="math inline">\(O\)</span>,</p>
+<p><span class="math display">\[
+\mathbf L_C=Q\boldsymbol\ell,
+\qquad K=\frac M2\|\mathbf V\|^2+\frac12\boldsymbol\omega\cdot\mathsf I\boldsymbol\omega,
+\]</span></p>
+<p><span class="math display">\[
+\mathbf L_O=\mathbf R\times M\mathbf V+Q\boldsymbol\ell,
+\]</span></p>
+<p>donde <span class="math inline">\(\mathbf R\)</span> se mide desde <span class="math inline">\(O\)</span>.</p>
+<p><strong>Demostración.</strong> La parte relativa del momento angular es <span class="math inline">\(Q\sum_i m_i\mathbf s_i\times(\boldsymbol\omega\times\mathbf s_i)\)</span>, porque una rotación de determinante uno conserva el producto vectorial. El producto triple la convierte en <span class="math inline">\(Q\mathsf I\boldsymbol\omega\)</span>. En la suma <span class="math inline">\(\frac12\sum_i m_i\|\mathbf V+Q(\boldsymbol\omega\times\mathbf s_i)\|^2\)</span>, el término cruzado contiene <span class="math inline">\(\sum_i m_i\mathbf s_i=0\)</span> y se anula. La parte restante usa la identidad <span class="math inline">\(\|\boldsymbol\omega\times\mathbf s\|^2=\boldsymbol\omega\cdot[\mathbf s\times(\boldsymbol\omega\times\mathbf s)]\)</span>, que produce la expresión de energía. Expandir <span class="math inline">\(\sum_i\mathbf x_i\times m_i\dot{\mathbf x}_i\)</span> elimina los dos términos cruzados por la misma condición de centro de masa y deja la fórmula de <span class="math inline">\(\mathbf L_O\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>En el ejemplo de apertura, <span class="math inline">\(\mathsf I=\operatorname{diag}(8,2,10)\)</span>. Multiplicar por <span class="math inline">\((1,1,0)\)</span> da <span class="math inline">\((8,2,0)\)</span>, y la energía rotacional es <span class="math inline">\(5\)</span>. Conservar únicamente el momento escalar alrededor de <span class="math inline">\((1,1,0)\)</span> permitiría calcular esa energía, pero perdería la componente transversal del momento angular.</p>
+<figure id="fig-fispm-r20261021-19-2" class="fpm-v04-panel figure">
+<p><a href="../assets/2a7e8cd20e810293d17b3ced.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="../assets/2a7e8cd20e810293d17b3ced.svg" alt="Velocidad angular y momento angular distintos" class="fpm-v04-figure img-fluid figure-img" width="900" height="610" loading="lazy" decoding="async"></a></p>
 <figcaption>
-<p><strong>Figura 21.2.</strong> Una rueda que avanza hacia la derecha sin deslizar tiene velocidad nula en el contacto instantáneo y velocidad <span class="math inline">\(2V_C\)</span> en el punto superior. La condición es <span class="math inline">\(V_C=R|\omega|\)</span>, con giro horario. Véase §<a href="#fispm-c21-el-eje-instantuxe1neo-puede-moverse">5</a>.</p>
+<p><em>Figura 19.2.</em> Para la distribución de cuatro masas del comienzo, los vectores <span class="math inline">\((1,1,0)\)</span> y <span class="math inline">\((8,2,0)\)</span> tienen direcciones diferentes. Las flechas se normalizan por separado para comparar direcciones; no comparten una escala de magnitud ni unidades.</p>
 </figcaption>
 </figure>
-<p><span id="fispm-t1-c21-p0009"></span></p>
-<p><strong>Proposición 21.9 — Giro instantáneo cuando existe un punto de velocidad cero.</strong> Si <span class="math inline">\(\boldsymbol\omega\ne0\)</span> y el campo rígido tiene velocidad cero en un punto geométrico <span class="math inline">\(O\)</span>, entonces</p>
-<p><span class="math display">\[\mathbf v(\mathbf x)=\boldsymbol\omega\times(\mathbf x-O).\]</span></p>
-<p>El conjunto geométrico de velocidad cero es la recta <span class="math inline">\(O+\lambda\boldsymbol\omega\)</span>.</p>
-<p><strong>Demostración.</strong> proposición 21.7 aplicada al campo en <span class="math inline">\(O\)</span> da <span class="math inline">\(0=\mathbf V+\boldsymbol\omega\times(O-\mathbf C)\)</span>. Restar esa igualdad de la fórmula del campo en <span class="math inline">\(\mathbf x\)</span> produce el resultado. El producto vectorial se anula exactamente para vectores paralelos a <span class="math inline">\(\boldsymbol\omega\)</span>, de donde sale la recta. <span class="math inline">\(\square\)</span></p>
-<p>El campo rígido se extiende geométricamente fuera del material. Su recta de velocidad cero puede atravesar un hueco o no tocar el cuerpo. En un movimiento plano representa el conocido centro instantáneo de rotación al cortar el plano. Usarlo para calcular velocidades no permite afirmar que sea un pivote físico fijo ni que su aceleración sea cero.</p>
-<p><span id="fispm-t1-c21-p0010"></span></p>
-<p><strong>Proposición 21.10 — Eje instantáneo del movimiento general.</strong> Para <span class="math inline">\(\boldsymbol\omega\ne0\)</span>, definamos</p>
-<p><span class="math display">\[\mathbf r_* =\frac{\boldsymbol\omega\times\mathbf V}{|\boldsymbol\omega|^2}, \qquad h=\frac{\boldsymbol\omega\cdot\mathbf V}{|\boldsymbol\omega|^2}.\]</span></p>
-<p>En la recta <span class="math inline">\(\mathbf x=\mathbf C+\mathbf r_*+\lambda\boldsymbol\omega\)</span>, la velocidad vale <span class="math inline">\(h\boldsymbol\omega\)</span>. En cualquier punto,</p>
-<p><span class="math display">\[\mathbf v(\mathbf x)=h\boldsymbol\omega +\boldsymbol\omega\times(\mathbf x-\mathbf C-\mathbf r_*).\]</span></p>
-<p><strong>Demostración.</strong> La identidad de producto doble da <span class="math inline">\(\boldsymbol\omega\times\mathbf r_*=\boldsymbol\omega(\boldsymbol\omega\cdot\mathbf V)/|\boldsymbol\omega|^2-\mathbf V=h\boldsymbol\omega-\mathbf V\)</span>. Sustituirla en la proposición 21.7 produce la descomposición. Sobre la recta, el segundo producto vectorial se anula. Recíprocamente, para que la velocidad sea paralela a <span class="math inline">\(\boldsymbol\omega\)</span> debe anularse su componente perpendicular, y la descomposición exige que <span class="math inline">\(\mathbf x-\mathbf C-\mathbf r_*\)</span> sea paralelo al eje. <span class="math inline">\(\square\)</span></p>
-<p>La descripción es un giro instantáneo acompañado de una traslación sobre su eje. Si <span class="math inline">\(h=0\)</span>, hay una recta de velocidad cero y se recupera proposición 21.9. Si <span class="math inline">\(h\ne0\)</span>, ningún punto del campo está quieto. Si <span class="math inline">\(\boldsymbol\omega=0\)</span>, el movimiento instantáneo es una traslación y no se aplica la división usada en la proposición 21.10. Esta clasificación de velocidades no garantiza que el eje o <span class="math inline">\(h\)</span> sean constantes en el movimiento completo.</p>
-<p><span id="fispm-t1-c21-mp0005"></span></p>
-<p><strong>Principio metodológico 21.5.</strong> Usa el eje instantáneo para velocidades en ese instante. Para aceleraciones conserva la evolución del origen y de la orientación.</p>
-<p><span id="ejercicios-4"></span></p>
-<section id="fispm-c21-ejercicios-4" class="level3">
-<h3 class="anchored" data-anchor-id="fispm-c21-ejercicios-4">Ejercicios</h3>
-<p><span id="fispm-t1-c21-e0009"></span></p>
-<p><strong>Ejercicio 21.9.</strong> Una rueda de radio <span class="math inline">\(a\)</span> rueda sin deslizamiento sobre un suelo horizontal hacia <span class="math inline">\(+x\)</span>. En cierto instante <span class="math inline">\(\mathbf V=V\mathbf e_x\)</span> y <span class="math inline">\(\boldsymbol\omega=-(V/a)\mathbf e_z\)</span>. Encuentra el eje de velocidad cero y la velocidad del punto superior.</p>
-<p><strong>Solución.</strong> proposición 21.10 da <span class="math inline">\(\mathbf r_*=-a\mathbf e_y\)</span> si <span class="math inline">\(y\)</span> apunta hacia arriba. Además <span class="math inline">\(\boldsymbol\omega\cdot\mathbf V=0\)</span>, así que <span class="math inline">\(h=0\)</span>. El eje pasa por el punto inferior de contacto y es paralelo a <span class="math inline">\(z\)</span>. Para el punto superior, <span class="math inline">\(\mathbf r=a\mathbf e_y\)</span>, proposición 21.7 da <span class="math inline">\(\mathbf v=V\mathbf e_x+(V/a)\mathbf e_x=2V\mathbf e_x\)</span>. El punto material que está en contacto cambia a medida que la rueda avanza.</p>
-<p><span id="fispm-t1-c21-e0010"></span></p>
-<p><strong>Ejercicio 21.10.</strong> Toma <span class="math inline">\(\boldsymbol\omega=\omega\mathbf e_z\)</span> y <span class="math inline">\(\mathbf V=U\mathbf e_x+W\mathbf e_z\)</span>, con <span class="math inline">\(\omega\ne0\)</span>. Encuentra la recta de la proposición 21.10 y decide cuándo hay puntos quietos.</p>
-<p><strong>Solución.</strong> Se obtiene <span class="math inline">\(\mathbf r_*=(U/\omega)\mathbf e_y\)</span> y <span class="math inline">\(h=W/\omega\)</span>. La recta pasa por <span class="math inline">\(\mathbf C+(U/\omega)\mathbf e_y\)</span> y es paralela a <span class="math inline">\(z\)</span>; todos sus puntos tienen velocidad <span class="math inline">\(W\mathbf e_z\)</span>. Hay puntos de velocidad cero exactamente cuando <span class="math inline">\(W=0\)</span>. La componente transversal de traslación desplaza el eje; la componente axial permanece como avance sobre él.</p>
-<p><span id="de-la-distribución-de-masa-a-una-matriz"></span></p>
-<p><span id="fispm-t1-c21-s06"></span></p>
-<p><span id="fpm-i-21-s06"></span></p>
 </section>
-</section>
-<section id="fispm-c21-de-la-distribuciuxf3n-de-masa-a-una-matriz" class="level2">
-<h2 class="anchored" data-anchor-id="fispm-c21-de-la-distribuciuxf3n-de-masa-a-una-matriz">6. De la distribución de masa a una matriz</h2>
-<p>El campo de velocidades ya está descrito. Para obtener energía o momento angular debemos ponderarlo con la masa de cada punto. En un giro alrededor de un eje, los puntos alejados de ese eje contribuyen más. En tres dimensiones necesitamos una expresión que permita variar la dirección del eje sin rehacer la integral desde cero.</p>
-<p><span id="fispm-t1-c21-d0004"></span></p>
-<p><strong>Definición 21.4 — Distribución corporal de masa.</strong> La masa se representa por una medida positiva <span class="math inline">\(dm\)</span> sobre coordenadas corporales <span class="math inline">\(\mathbf q\)</span>, con <span class="math inline">\(0&lt;M=\int dm&lt;\infty\)</span> y <span class="math inline">\(\int|\mathbf q|^2dm&lt;\infty\)</span>. Si el origen es el centro de masa, <span class="math inline">\(\int\mathbf q\,dm=0\)</span>. Para puntos, <span class="math inline">\(\int f\,dm=\sum_i m_i f(\mathbf q_i)\)</span>; para un volumen con densidad <span class="math inline">\(\rho\)</span>, es <span class="math inline">\(\int f\rho\,dV\)</span>. Láminas y varillas usan medidas de superficie y longitud.</p>
-<p>La hipótesis de segundo momento finito asegura que las integrales cuadráticas que siguen existen. La masa puede ocupar un volumen, una superficie o una recta; ninguna de esas idealizaciones requiere una densidad volumétrica ordinaria. Su transporte rígido conserva las masas asociadas a las coordenadas corporales.</p>
-<p><span id="fispm-t1-c21-d0005"></span></p>
-<p><strong>Definición 21.5 — Tensor de inercia respecto de un punto.</strong> Para coordenadas <span class="math inline">\(\mathbf q\)</span> medidas desde un punto corporal <span class="math inline">\(O\)</span>, definimos la aplicación lineal</p>
-<p><span class="math display">\[I_O=\int\left(|\mathbf q|^2\mathbf 1-\mathbf q\mathbf q^T\right)dm.\]</span></p>
-<p>Aquí <span class="math inline">\(\mathbf 1\)</span> es la matriz identidad y <span class="math inline">\(\mathbf q\mathbf q^T\)</span> es la aplicación que lleva <span class="math inline">\(\mathbf u\)</span> a <span class="math inline">\(\mathbf q(\mathbf q\cdot\mathbf u)\)</span>. Su dimensión es masa por longitud al cuadrado. Cuando el punto sea el centro de masa, usaremos <span class="math inline">\(I_B\)</span> para su matriz en ejes corporales.</p>
-<p><span id="fispm-t1-c21-p0011"></span></p>
-<p><strong>Proposición 21.11 — Componentes y simetría del tensor.</strong> Si <span class="math inline">\(\mathbf q=(x,y,z)\)</span>, la matriz de la definición 21.5 es</p>
-<p><span class="math display">\[I_O=\begin{pmatrix} \int(y^2+z^2)dm&amp;-\int xy\,dm&amp;-\int xz\,dm\\ -\int xy\,dm&amp;\int(x^2+z^2)dm&amp;-\int yz\,dm\\ -\int xz\,dm&amp;-\int yz\,dm&amp;\int(x^2+y^2)dm \end{pmatrix}.\]</span></p>
-<p>Es una matriz real simétrica.</p>
-<p><strong>Demostración.</strong> Expandir <span class="math inline">\(|\mathbf q|^2\mathbf 1-\mathbf q\mathbf q^T\)</span> deja en cada entrada diagonal la suma de los otros dos cuadrados y en cada entrada exterior el producto negativo. Integrar entrada a entrada da la fórmula. La integrabilidad de los productos mixtos sigue de <span class="math inline">\(2|xy|\leq x^2+y^2\)</span>, y análogamente para los otros. Cada matriz integranda es simétrica, por lo que su integral también. <span class="math inline">\(\square\)</span></p>
-<p>Algunos textos llaman «productos de inercia» a <span class="math inline">\(\int xy\,dm\)</span> y otros a la entrada negativa de la matriz. La fórmula fijada aquí elimina esa ambigüedad. Para una dirección unitaria <span class="math inline">\(\mathbf n\)</span>, la distancia de <span class="math inline">\(\mathbf q\)</span> al eje que pasa por <span class="math inline">\(O\)</span> con esa dirección es <span class="math inline">\(|\mathbf n\times\mathbf q|\)</span>. Esa distancia aparece exactamente en la forma cuadrática del tensor.</p>
-<p><span id="fispm-t1-c21-p0012"></span></p>
-<p><strong>Proposición 21.12 — Positividad y momentos alrededor de ejes.</strong> Para cualquier <span class="math inline">\(\mathbf u\)</span>,</p>
-<p><span class="math display">\[\mathbf u^TI_O\mathbf u=\int|\mathbf u\times\mathbf q|^2dm\geq0.\]</span></p>
-<p>Para <span class="math inline">\(|\mathbf n|=1\)</span>, esta cantidad es el momento escalar <span class="math inline">\(I(\mathbf n)\)</span> alrededor del eje por <span class="math inline">\(O\)</span> de dirección <span class="math inline">\(\mathbf n\)</span>. Un vector no nulo pertenece al núcleo de <span class="math inline">\(I_O\)</span> si y solo si la masa está concentrada, salvo un conjunto de masa nula, en la recta por <span class="math inline">\(O\)</span> paralela a ese vector.</p>
-<p><strong>Demostración.</strong> definición 21.5 da la integral de <span class="math inline">\(|\mathbf u|^2|\mathbf q|^2-(\mathbf u\cdot\mathbf q)^2\)</span>, igual al cuadrado del producto vectorial. Si la masa está en esa recta, el integrando y la acción de cada matriz integranda sobre <span class="math inline">\(\mathbf u\)</span> se anulan, por lo que <span class="math inline">\(I_O\mathbf u=0\)</span>. Recíprocamente, estar en el núcleo hace nula la forma cuadrática. Una función no negativa de integral cero es cero casi en todas partes, así que <span class="math inline">\(\mathbf u\times\mathbf q=0\)</span> para casi toda la masa. <span class="math inline">\(\square\)</span></p>
-<p>El tensor es definido positivo cuando no existe una recta por el punto de referencia que contenga toda la masa. Una lámina no colineal puede tener los tres momentos principales positivos; ser plana no obliga a un momento nulo. En cambio una varilla ideal sin espesor tiene momento cero sobre su propia recta. Es una consecuencia del modelo de masa, además de una degeneración geométrica.</p>
-<p><span id="fispm-t1-c21-mp0006"></span></p>
-<p><strong>Principio metodológico 21.6.</strong> Calcula la matriz y comprueba sus signos mediante la forma cuadrática. El punto de referencia y la distribución de masa pertenecen a la definición del tensor.</p>
-<p><span id="ejercicios-5"></span></p>
-<section id="fispm-c21-ejercicios-5" class="level3">
-<h3 class="anchored" data-anchor-id="fispm-c21-ejercicios-5">Ejercicios</h3>
-<p><span id="fispm-t1-c21-e0011"></span></p>
-<p><strong>Ejercicio 21.11.</strong> Dos masas iguales <span class="math inline">\(m\)</span> están en <span class="math inline">\(\pm a\mathbf e_x\)</span>. Calcula su tensor en el centro de masa y su núcleo.</p>
-<p><strong>Solución.</strong> Cada punto aporta <span class="math inline">\(m\operatorname{diag}(0,a^2,a^2)\)</span>. La suma es <span class="math inline">\(I_B=\operatorname{diag}(0,2ma^2,2ma^2)\)</span>. Para <span class="math inline">\(a\ne0\)</span>, el núcleo es la recta de <span class="math inline">\(\mathbf e_x\)</span>. Girar idealmente sobre esa recta no mueve las dos masas; un giro alrededor de <span class="math inline">\(y\)</span> o <span class="math inline">\(z\)</span> sí les da velocidad.</p>
-<p><span id="fispm-t1-c21-e0012"></span></p>
-<p><strong>Ejercicio 21.12.</strong> Tres masas iguales ocupan <span class="math inline">\((a,0,0)\)</span>, <span class="math inline">\((-a/2,\sqrt3a/2,0)\)</span> y <span class="math inline">\((-a/2,-\sqrt3a/2,0)\)</span>. Calcula el tensor centrado.</p>
-<p><strong>Solución.</strong> La suma de posiciones es cero. Las sumas de <span class="math inline">\(x^2\)</span> e <span class="math inline">\(y^2\)</span> son ambas <span class="math inline">\(3a^2/2\)</span>, la suma de <span class="math inline">\(xy\)</span> es cero y <span class="math inline">\(z=0\)</span>. Por proposición 21.11, <span class="math inline">\(I_B=\operatorname{diag}(3ma^2/2,3ma^2/2,3ma^2)\)</span>. Si <span class="math inline">\(a\ne0\)</span>, los tres valores son positivos aunque las masas sean coplanares. Las distancias a cualquier recta que pasa por el centro no se anulan para los tres puntos simultáneamente.</p>
-<p><span id="el-momento-angular-puede-apuntar-hacia-otro-lado"></span></p>
-<p><span id="fispm-t1-c21-s07"></span></p>
-<p><span id="fpm-i-21-s07"></span></p>
-</section>
-</section>
-<section id="fispm-c21-el-momento-angular-puede-apuntar-hacia-otro-lado" class="level2">
-<h2 class="anchored" data-anchor-id="fispm-c21-el-momento-angular-puede-apuntar-hacia-otro-lado">7. El momento angular puede apuntar hacia otro lado</h2>
-<p>Para una partícula, el momento angular combina posición y velocidad. Al sumar los momentos de un cuerpo rígido, el mismo vector <span class="math inline">\(\boldsymbol\omega\)</span> aparece en todas las velocidades, pero cada posición introduce una proyección diferente. El tensor reúne precisamente esa suma.</p>
-<p><span id="fig:I-21-N03"></span></p>
-<figure id="fig-fpm-v04-i-21-n03" class="fpm-v04-panel figure">
-<p><a href="../assets/d4e548bdd887da86f0a2a73a.svg" class="lightbox" data-gallery="fpm-v04-c21"><img src="../assets/d4e548bdd887da86f0a2a73a.svg" alt="Inercia y dirección de momento. Diagrama del capítulo 21; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="340" height="343" loading="lazy" decoding="async"></a></p>
+<section id="escoger-ejes-que-separen-las-respuestas" class="level2">
+<h2 class="anchored" data-anchor-id="escoger-ejes-que-separen-las-respuestas">Escoger ejes que separen las respuestas</h2>
+<p>Para un vector unitario <span class="math inline">\(\mathbf u\)</span>, el momento alrededor de la recta que pasa por el origen y tiene esa dirección es</p>
+<p><span class="math display">\[
+J(\mathbf u)=\mathbf u\cdot\mathsf I\mathbf u
+=\sum_i m_i\|\mathbf u\times\mathbf s_i\|^2.
+\]</span></p>
+<p>Esta expresión recupera la suma de masa por distancia al eje al cuadrado. También muestra que una lámina plana puede tener inercia positiva para todas las direcciones: lo que anula un momento es que toda la masa esté sobre la propia recta considerada.</p>
+<p><strong>Definición.</strong> Un eje principal es una dirección unitaria <span class="math inline">\(\mathbf e\)</span> para la cual <span class="math inline">\(\mathsf I\mathbf e=I\mathbf e\)</span>. El número <span class="math inline">\(I\)</span> es su momento principal. Una terna principal es una base ortonormal orientada positivamente formada por esas direcciones.</p>
+<p>Los ejes principales convierten el cálculo de <span class="math inline">\(\boldsymbol\ell\)</span> en tres multiplicaciones independientes. Su utilidad proviene de la simetría de la transformación, y admite una justificación breve que también precisa los casos degenerados.</p>
+<p><strong>Proposición.</strong> El tensor de inercia es simétrico y semidefinido positivo; es definido positivo si la distribución de masa no está contenida en una recta que pase por el origen. Posee una terna principal y momentos <span class="math inline">\(I_1,I_2,I_3\ge0\)</span>. Si <span class="math inline">\(P\)</span> tiene como columnas una terna principal,</p>
+<p><span class="math display">\[
+P^{\mathsf T}\mathsf I P=\operatorname{diag}(I_1,I_2,I_3).
+\]</span></p>
+<p>Al rotar físicamente el cuerpo mediante <span class="math inline">\(Q\)</span>, su matriz en el laboratorio es <span class="math inline">\(Q\mathsf I Q^{\mathsf T}\)</span>.</p>
+<p><strong>Demostración.</strong> Cada matriz <span class="math inline">\(\|\mathbf s_i\|^2\operatorname{Id}_3-\mathbf s_i\mathbf s_i^{\mathsf T}\)</span> es simétrica. Para todo <span class="math inline">\(\mathbf a\)</span>,</p>
+<p><span class="math display">\[
+\mathbf a\cdot\mathsf I\mathbf a=\sum_i m_i\|\mathbf a\times\mathbf s_i\|^2\ge0.
+\]</span></p>
+<p>Con masas positivas, esta suma se anula para <span class="math inline">\(\mathbf a\ne0\)</span> exactamente cuando todos los puntos materiales pertenecen a su recta. En el caso continuo la afirmación se entiende salvo conjuntos de masa nula.</p>
+<p>Para construir los ejes, minimizamos la función continua <span class="math inline">\(\mathbf u\cdot\mathsf I\mathbf u\)</span> sobre la esfera unitaria, donde alcanza un mínimo por compacidad. Si <span class="math inline">\(\mathbf e\)</span> es un minimizador y <span class="math inline">\(\mathbf v\perp\mathbf e\)</span>, derivar esa función sobre <span class="math inline">\((\mathbf e+t\mathbf v)/\|\mathbf e+t\mathbf v\|\)</span> en cero da <span class="math inline">\(2\mathbf v\cdot\mathsf I\mathbf e=0\)</span>. Por ello <span class="math inline">\(\mathsf I\mathbf e\)</span> es paralelo a <span class="math inline">\(\mathbf e\)</span>. El plano perpendicular es invariante, pues <span class="math inline">\(\mathbf e\cdot\mathsf I\mathbf v=\mathsf I\mathbf e\cdot\mathbf v=0\)</span>. Repetir el argumento en su circunferencia produce un segundo eje, y el tercero es perpendicular a ambos; se eligen sus signos para obtener orientación positiva. Los autovalores son no negativos por la forma cuadrática. Finalmente, sustituir <span class="math inline">\(\mathbf s_i\)</span> por <span class="math inline">\(Q\mathbf s_i\)</span> en la definición del tensor da <span class="math inline">\(Q\mathsf I Q^{\mathsf T}\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Si dos momentos coinciden, cualquier base ortonormal de su plano propio sirve; si los tres coinciden, toda dirección es principal. Una terna elegida existe en ambos casos, aunque la distribución no determine tres direcciones únicas. Para <span class="math inline">\(\boldsymbol\omega\ne0\)</span>, el paralelismo entre <span class="math inline">\(\boldsymbol\ell\)</span> y <span class="math inline">\(\boldsymbol\omega\)</span> equivale a que el giro use una dirección propia.</p>
+<p>La forma cuadrática también permite visualizar los ejes. Para una energía positiva fijada <span class="math inline">\(E\)</span>, la superficie <span class="math inline">\(\frac12\boldsymbol\omega\cdot\mathsf I\boldsymbol\omega=E\)</span> es un elipsoide si los tres momentos son positivos. En ejes principales sus semiejes son <span class="math inline">\(\sqrt{2E/I_j}\)</span>; un momento mayor corresponde a menor velocidad angular a la misma energía. No deben confundirse esos semiejes con los de una superficie dibujada en componentes de momento angular.</p>
+<figure id="fig-fispm-r20261021-19-3" class="fpm-v04-panel figure">
+<p><a href="../assets/78e696cae21de0c9d5f71181.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="../assets/78e696cae21de0c9d5f71181.svg" alt="Sección de una superficie de energía" class="fpm-v04-figure img-fluid figure-img" width="900" height="590" loading="lazy" decoding="async"></a></p>
 <figcaption>
-<p><strong>Figura 21.3.</strong> Con momentos principales <span class="math inline">\(I_1=1\)</span>, <span class="math inline">\(I_2=2\)</span> y componentes normalizadas <span class="math inline">\(\omega=(1{,}5,1)\)</span>, resulta <span class="math inline">\(L=(1{,}5,2)\)</span>. Fuera de un eje principal, <span class="math inline">\(L\)</span> y <span class="math inline">\(\omega\)</span> pueden no ser paralelos. Véase §<a href="#fispm-c21-el-momento-angular-puede-apuntar-hacia-otro-lado">7</a>.</p>
+<p><em>Figura 19.3.</em> Sección <span class="math inline">\(\omega_3=0\)</span> de la superficie de energía para momentos <span class="math inline">\(2\)</span> y <span class="math inline">\(6\)</span> y energía <span class="math inline">\(3\)</span> en unidades consistentes. El gradiente de la energía tiene dirección <span class="math inline">\(\mathsf I\boldsymbol\omega\)</span>; normalmente es distinto de la dirección radial <span class="math inline">\(\boldsymbol\omega\)</span>.</p>
 </figcaption>
 </figure>
-<p><span id="fispm-t1-c21-p0013"></span></p>
-<p><strong>Proposición 21.13 — Momento angular interno del cuerpo rígido.</strong> En el centro de masa, sea <span class="math inline">\(\mathbf r=\mathbf x-\mathbf C\)</span> y <span class="math inline">\(\mathbf v-\mathbf V=\boldsymbol\omega\times\mathbf r\)</span>. El momento angular interno es</p>
-<p><span class="math display">\[\mathbf H_C=\int\mathbf r\times(\mathbf v-\mathbf V)dm =I_C\boldsymbol\omega, \quad I_C=\int(|\mathbf r|^2\mathbf1-\mathbf r\mathbf r^T)dm.\]</span></p>
-<p>También se obtiene integrando <span class="math inline">\(\mathbf r\times\mathbf v\)</span>, porque <span class="math inline">\(\int\mathbf r\,dm=0\)</span>.</p>
-<p><strong>Demostración.</strong> El producto triple da <span class="math inline">\(\mathbf r\times(\boldsymbol\omega\times\mathbf r)=|\mathbf r|^2\boldsymbol\omega-\mathbf r(\mathbf r\cdot\boldsymbol\omega)\)</span>. Integrar es aplicar <span class="math inline">\(I_C\)</span> a <span class="math inline">\(\boldsymbol\omega\)</span>. La diferencia entre usar <span class="math inline">\(\mathbf v\)</span> y <span class="math inline">\(\mathbf v-\mathbf V\)</span> es <span class="math inline">\((\int\mathbf r\,dm)\times\mathbf V=0\)</span>. <span class="math inline">\(\square\)</span></p>
-<p>La dirección de <span class="math inline">\(I_C\boldsymbol\omega\)</span> puede diferir de la de <span class="math inline">\(\boldsymbol\omega\)</span>. Una matriz simétrica no multiplica todos los vectores por el mismo número; puede cambiar la proporción de sus componentes. Los ejes en los que ambas direcciones coinciden serán los ejes principales.</p>
-<p><span id="fispm-t1-c21-p0014"></span></p>
-<p><strong>Proposición 21.14 — Separación orbital e interna.</strong> Respecto de un origen inercial fijo <span class="math inline">\(O\)</span>, el momento angular total satisface</p>
-<p><span class="math display">\[\mathbf L_O=M(\mathbf C-O)\times\mathbf V+\mathbf H_C.\]</span></p>
-<p><strong>Demostración.</strong> Sustituir <span class="math inline">\(\mathbf x-O=(\mathbf C-O)+\mathbf r\)</span> y <span class="math inline">\(\mathbf v=\mathbf V+\boldsymbol\omega\times\mathbf r\)</span> en la integral de <span class="math inline">\(\mathbf L_O\)</span>. El primer producto da el término orbital. Los dos términos cruzados se anulan: uno contiene <span class="math inline">\(\int\mathbf r\,dm\)</span> y el otro <span class="math inline">\(\int\boldsymbol\omega\times\mathbf r\,dm=\boldsymbol\omega\times\int\mathbf r\,dm\)</span>. El término restante es proposición 21.13. <span class="math inline">\(\square\)</span></p>
-<p>Cambiar el origen modifica el término orbital. El momento interno del centro de masa conserva un significado propio y prepara la ecuación dinámica del capítulo 22. La relación <span class="math inline">\(\mathbf H_C=I_C\boldsymbol\omega\)</span> es cinemática con masa distribuida: todavía no determina cómo cambia <span class="math inline">\(\boldsymbol\omega\)</span> bajo un torque.</p>
-<p><span id="fispm-t1-c21-mp0007"></span></p>
-<p><strong>Principio metodológico 21.7.</strong> Separa momento orbital y momento interno antes de usar el tensor. Un único momento escalar no describe todas las direcciones de giro.</p>
-<p><span id="ejercicios-6"></span></p>
-<section id="fispm-c21-ejercicios-6" class="level3">
-<h3 class="anchored" data-anchor-id="fispm-c21-ejercicios-6">Ejercicios</h3>
-<p><span id="fispm-t1-c21-e0013"></span></p>
-<p><strong>Ejercicio 21.13.</strong> Un tensor corporal diagonal tiene valores <span class="math inline">\((2J,3J,4J)\)</span>, con <span class="math inline">\(J&gt;0\)</span>. Para <span class="math inline">\(\boldsymbol\Omega=(\omega,\omega,0)\)</span>, calcula el momento angular corporal y decide si es paralelo a la velocidad angular.</p>
-<p><strong>Solución.</strong> El momento corporal es <span class="math inline">\(I_B\boldsymbol\Omega=(2J\omega,3J\omega,0)\)</span>. Si <span class="math inline">\(\omega\ne0\)</span>, el cociente entre sus dos primeras componentes es <span class="math inline">\(2/3\)</span>, distinto del cociente uno de las componentes angulares. No son paralelos. Ambos vectores se transforman por <span class="math inline">\(R\)</span> al marco inercial, de modo que la falta de paralelismo es independiente de la base.</p>
-<p><span id="fispm-t1-c21-e0014"></span></p>
-<p><strong>Ejercicio 21.14.</strong> Un cuerpo de masa <span class="math inline">\(M\)</span> tiene <span class="math inline">\(\mathbf C-O=a\mathbf e_x\)</span>, <span class="math inline">\(\mathbf V=V\mathbf e_y\)</span> y <span class="math inline">\(\mathbf H_C=H\mathbf e_z\)</span>. Calcula su momento total y encuentra cuándo se anula.</p>
-<p><strong>Solución.</strong> proposición 21.14 da <span class="math inline">\(\mathbf L_O=(MaV+H)\mathbf e_z\)</span>. Se anula si <span class="math inline">\(H=-MaV\)</span>. Esa cancelación permite momento total cero respecto de ese origen aunque exista giro interno y movimiento del centro de masa. No obliga a que todos los puntos estén quietos.</p>
-<p><span id="cuánto-cuesta-mover-el-cuerpo"></span></p>
-<p><span id="fispm-t1-c21-s08"></span></p>
-<p><span id="fpm-i-21-s08"></span></p>
+<p>Una matriz reconstruida a partir de medidas debe conservar también las restricciones de una distribución de masa. El momento alrededor de cada eje reúne cuadrados de distancias; por ello las tres respuestas principales están relacionadas. Podemos expresar esa relación sin elegir primero los ejes.</p>
+<p><strong>Proposición (realización de una inercia).</strong> Una matriz real simétrica <span class="math inline">\(\mathsf H\)</span> de orden tres es el tensor central de alguna distribución discreta de masa no negativa con segundos momentos finitos si y sólo si</p>
+<p><span class="math display">\[
+\mathsf S=\frac12\operatorname{tr}(\mathsf H)\operatorname{Id}_3-\mathsf H
+\]</span></p>
+<p>es semidefinida positiva. Siempre que esa condición se cumple, la distribución puede construirse con cualquier masa total prescrita <span class="math inline">\(M&gt;0\)</span>. En ejes principales equivale a exigir <span class="math inline">\(I_j\leq I_k+I_l\)</span> para las tres elecciones de índices distintos.</p>
+<p><strong>Demostración.</strong> Para una distribución dada, sea <span class="math inline">\(\mathsf S=\sum_i m_i\mathbf s_i\mathbf s_i^{\mathsf T}\)</span>. Su forma cuadrática es <span class="math inline">\(\sum_i m_i(\mathbf a\cdot\mathbf s_i)^2\geq0\)</span>. La definición de inercia da <span class="math inline">\(\mathsf H=\operatorname{tr}(\mathsf S)\operatorname{Id}_3-\mathsf S\)</span> y, al tomar trazas, <span class="math inline">\(\operatorname{tr}(\mathsf H)=2\operatorname{tr}(\mathsf S)\)</span>. Esto prueba la necesidad y la fórmula enunciada.</p>
+<p>Para la recíproca, diagonalicemos <span class="math inline">\(\mathsf S=\sum_{j=1}^3s_j\mathbf e_j\mathbf e_j^{\mathsf T}\)</span> con <span class="math inline">\(s_j\geq0\)</span> y una base ortonormal. Sobre cada eje situamos dos masas <span class="math inline">\(M/6\)</span> en las posiciones</p>
+<p><span class="math display">\[
+\mathbf s_{j,\pm}=\pm\sqrt{\frac{3s_j}{M}}\,\mathbf e_j.
+\]</span></p>
+<p>Los pares tienen centro cero, masa total <span class="math inline">\(M\)</span> y matriz de segundos momentos igual a <span class="math inline">\(\mathsf S\)</span>. Si <span class="math inline">\(s_j=0\)</span>, su par se sitúa en el origen; masas coincidentes pueden reunirse. La inercia construida es <span class="math inline">\(\operatorname{tr}(\mathsf S)\operatorname{Id}_3-\mathsf S=\mathsf H\)</span>, usando la identidad de trazas. Finalmente, los autovalores de <span class="math inline">\(\mathsf S\)</span> son <span class="math inline">\((I_k+I_l-I_j)/2\)</span>. Su positividad equivale a las tres desigualdades. <span class="math inline">\(\square\)</span></p>
+<p>El criterio incluye las distribuciones planas y lineales. En particular, <span class="math inline">\(I_j=I_k+I_l\)</span> hace cero el segundo momento sobre el eje <span class="math inline">\(j\)</span>; la masa queda en el plano perpendicular a ese eje, salvo conjuntos de masa nula. La positividad de la forma cuadrática de inercia y la realización por masa responden así a dos preguntas que podemos comprobar por separado. El ejercicio 13 construye un caso de frontera y el 20 aplica el criterio a medidas oblicuas.</p>
 </section>
-</section>
-<section id="fispm-c21-cuuxe1nto-cuesta-mover-el-cuerpo" class="level2">
-<h2 class="anchored" data-anchor-id="fispm-c21-cuuxe1nto-cuesta-mover-el-cuerpo">8. Cuánto cuesta mover el cuerpo</h2>
-<p>La energía cinética suma los cuadrados de las velocidades. Centrar el cuerpo hace desaparecer el término cruzado entre traslación y giro, por la misma condición de masa que separó el momento angular. En otros puntos de referencia ese término puede permanecer.</p>
-<p><span id="fispm-t1-c21-p0015"></span></p>
-<p><strong>Proposición 21.15 — Energía cinética en el centro de masa.</strong> Para un cuerpo rígido,</p>
-<p><span class="math display">\[K=\frac12M|\mathbf V|^2+\frac12\boldsymbol\omega^TI_C\boldsymbol\omega =\frac12M|\mathbf V|^2+\frac12\boldsymbol\Omega^TI_B\boldsymbol\Omega.\]</span></p>
-<p><strong>Demostración.</strong> Expandir <span class="math inline">\(\frac12\int|\mathbf V+\boldsymbol\omega\times\mathbf r|^2dm\)</span> da la energía de traslación, un término <span class="math inline">\(\mathbf V\cdot(\boldsymbol\omega\times\int\mathbf r\,dm)=0\)</span> y <span class="math inline">\(\frac12\int|\boldsymbol\omega\times\mathbf r|^2dm\)</span>. Proposición 21.12 identifica el último con la forma cuadrática de <span class="math inline">\(I_C\)</span>. Como <span class="math inline">\(\mathbf r=R\mathbf q\)</span> y <span class="math inline">\(\boldsymbol\omega=R\boldsymbol\Omega\)</span>, la invariancia de normas convierte esa integral en la forma corporal. <span class="math inline">\(\square\)</span></p>
-<p><span id="fispm-t1-c21-p0016"></span></p>
-<p><strong>Proposición 21.16 — Energía desde un punto corporal que puede moverse.</strong> Sea <span class="math inline">\(O(t)\)</span> un punto fijado geométricamente al cuerpo, de velocidad <span class="math inline">\(\mathbf V_O\)</span>, y sea <span class="math inline">\(\mathbf d=\mathbf C-O\)</span>. Su tensor <span class="math inline">\(I_O\)</span> se expresa aquí en ejes inerciales. Entonces</p>
-<p><span class="math display">\[K=\frac12M|\mathbf V_O|^2 +M\mathbf V_O\cdot(\boldsymbol\omega\times\mathbf d) +\frac12\boldsymbol\omega^TI_O\boldsymbol\omega.\]</span></p>
-<p>Si <span class="math inline">\(O\)</span> permanece fijo en el marco inercial, <span class="math inline">\(K=\boldsymbol\omega^TI_O\boldsymbol\omega/2\)</span>.</p>
-<p><strong>Demostración.</strong> La ley de velocidades respecto de ese punto es <span class="math inline">\(\mathbf v=\mathbf V_O+\boldsymbol\omega\times(\mathbf x-O)\)</span>. Expandir el cuadrado dentro de la integral da tres términos. El término cruzado contiene <span class="math inline">\(\int(\mathbf x-O)dm=M\mathbf d\)</span> y el término cuadrático de giro se identifica mediante proposición 21.12. Si <span class="math inline">\(\mathbf V_O=0\)</span>, desaparecen las dos primeras contribuciones. <span class="math inline">\(\square\)</span></p>
-<p>La fórmula de energía puramente rotacional sobre un pivote requiere un pivote fijo. Elegir un punto cualquiera del cuerpo no cumple esa condición. En el centro de masa, <span class="math inline">\(\mathbf d=0\)</span>, así que el término cruzado desaparece aunque el origen se mueva. Estas dos simplificaciones tienen razones diferentes y conviene conservarlas separadas.</p>
-<p><span id="fispm-t1-c21-mp0008"></span></p>
-<p><strong>Principio metodológico 21.8.</strong> Comprueba por qué desaparece cada término energético: centro de masa, origen fijo o vínculo concreto. La notación <span class="math inline">\(I_O\)</span> no garantiza ninguna de esas condiciones.</p>
-<p><span id="ejercicios-7"></span></p>
-<section id="fispm-c21-ejercicios-7" class="level3">
-<h3 class="anchored" data-anchor-id="fispm-c21-ejercicios-7">Ejercicios</h3>
-<p><span id="fispm-t1-c21-e0015"></span></p>
-<p><strong>Ejercicio 21.15.</strong> Para el tensor y velocidad del ejercicio 21.13, calcula la energía de giro y verifica <span class="math inline">\(K_{\mathrm{rot}}=\boldsymbol\Omega\cdot\mathbf H_B/2\)</span>.</p>
-<p><strong>Solución.</strong> La forma cuadrática da <span class="math inline">\(K_{\mathrm{rot}}=(2J\omega^2+3J\omega^2)/2=5J\omega^2/2\)</span>. El producto escalar de <span class="math inline">\((\omega,\omega,0)\)</span> con <span class="math inline">\((2J\omega,3J\omega,0)\)</span> da <span class="math inline">\(5J\omega^2\)</span>. La energía se calcula correctamente aunque los dos vectores no sean paralelos. Sustituir una norma por un producto escalar sin conservar su ángulo sería un paso injustificado.</p>
-<p><span id="fispm-t1-c21-e0016"></span></p>
-<p><strong>Ejercicio 21.16.</strong> Una rueda de masa <span class="math inline">\(M\)</span>, radio <span class="math inline">\(a\)</span> y momento central axial <span class="math inline">\(J\)</span> rueda sin deslizamiento con rapidez <span class="math inline">\(V\)</span>. Calcula la energía desde el centro y explica cómo obtenerla desde el contacto instantáneo.</p>
-<p><strong>Solución.</strong> Desde el centro, proposición 21.15 da <span class="math inline">\(K=MV^2/2+JV^2/(2a^2)\)</span>. En el instante de contacto, la velocidad del punto material inferior es cero, así que la descomposición instantánea de la proposición 21.16 deja <span class="math inline">\(K=I_OV^2/(2a^2)\)</span>. El teorema de ejes paralelos, que demostraremos en §12, da <span class="math inline">\(I_O=J+Ma^2\)</span> y reproduce la respuesta. Esta igualdad energética instantánea no hace del contacto un punto material fijo durante el movimiento; para derivadas temporales debe atenderse a su evolución.</p>
-<p><span id="el-tensor-corporal-permanece-fijo-su-matriz-espacial-cambia"></span></p>
-<p><span id="fispm-t1-c21-s09"></span></p>
-<p><span id="fpm-i-21-s09"></span></p>
-</section>
-</section>
-<section id="fispm-c21-el-tensor-corporal-permanece-fijo-su-matriz-espacial-cambia" class="level2">
-<h2 class="anchored" data-anchor-id="fispm-c21-el-tensor-corporal-permanece-fijo-su-matriz-espacial-cambia">9. El tensor corporal permanece fijo; su matriz espacial cambia</h2>
-<p>La masa no cambia de lugar en las coordenadas del cuerpo. En esas coordenadas, el tensor calculado en un punto corporal es constante. Un observador inercial ve girar sus ejes y, por ello, ve cambiar las entradas de la matriz. Esa variación no significa que el cuerpo esté redistribuyendo su masa.</p>
-<p><span id="fispm-t1-c21-p0017"></span></p>
-<p><strong>Proposición 21.17 — Transformación del tensor al marco inercial.</strong> Para <span class="math inline">\(\mathbf r=R\mathbf q\)</span> y tensor central corporal <span class="math inline">\(I_B\)</span>,</p>
-<p><span class="math display">\[I_C(t)=R(t)I_BR(t)^T.\]</span></p>
-<p>El momento angular corporal es <span class="math inline">\(\mathbf H_B=I_B\boldsymbol\Omega\)</span> y el inercial <span class="math inline">\(\mathbf H_C=R\mathbf H_B\)</span>.</p>
-<p><strong>Demostración.</strong> La norma de <span class="math inline">\(R\mathbf q\)</span> es la de <span class="math inline">\(\mathbf q\)</span> y <span class="math inline">\((R\mathbf q)(R\mathbf q)^T=R\mathbf q\mathbf q^TR^T\)</span>. Como <span class="math inline">\(R\mathbf1R^T=\mathbf1\)</span>, integrar la definición de <span class="math inline">\(I_C\)</span> permite extraer <span class="math inline">\(R\)</span> y <span class="math inline">\(R^T\)</span> y da la fórmula. Sustituir <span class="math inline">\(\boldsymbol\omega=R\boldsymbol\Omega\)</span> en la proposición 21.13 da <span class="math inline">\(\mathbf H_C=RI_B\boldsymbol\Omega\)</span>; multiplicar por <span class="math inline">\(R^T\)</span> identifica las componentes corporales. <span class="math inline">\(\square\)</span></p>
-<p><span id="fispm-t1-c21-p0018"></span></p>
-<p><strong>Proposición 21.18 — Cambio pasivo de base e invariantes.</strong> Si las columnas de una matriz ortogonal <span class="math inline">\(Q\)</span> son los nuevos ejes expresados en los anteriores, la matriz del mismo tensor en la nueva base es <span class="math inline">\(I'=Q^TIQ\)</span>. Su traza, sus autovalores y su forma cuadrática sobre una dirección física no cambian.</p>
-<p><strong>Demostración.</strong> Un vector con nuevas componentes <span class="math inline">\(\mathbf u'\)</span> tiene componentes anteriores <span class="math inline">\(Q\mathbf u'\)</span>. Para expresar <span class="math inline">\(I(Q\mathbf u')\)</span> en la nueva base se multiplica por <span class="math inline">\(Q^T\)</span>, dando <span class="math inline">\(I'\)</span>. La traza es igual por <span class="math inline">\(\operatorname{tr}(Q^TIQ)=\operatorname{tr}(IQQ^T)=\operatorname{tr}I\)</span>. Si <span class="math inline">\(I\mathbf u=\lambda\mathbf u\)</span>, entonces <span class="math inline">\(I'(Q^T\mathbf u)=\lambda Q^T\mathbf u\)</span>, y el argumento inverso muestra igualdad de espectros. Finalmente <span class="math inline">\(\mathbf u'^TI'\mathbf u'=(Q\mathbf u')^TI(Q\mathbf u')\)</span>. <span class="math inline">\(\square\)</span></p>
-<p>Proposición 21.17 describe una orientación física variable en una base espacial fija. Proposición 21.18 describe otra base para el mismo objeto en el mismo instante. Las dos fórmulas contienen matrices ortogonales, pero el significado de sus factores determina dónde va cada transpuesta. Una comprobación útil es transformar también un vector y verificar que el resultado conserve la misma relación física.</p>
-<p><span id="fispm-t1-c21-mp0009"></span></p>
-<p><strong>Principio metodológico 21.9.</strong> Declara si giras el cuerpo o cambias los ejes de descripción. Comprueba conjuntamente la transformación del tensor y la del vector sobre el que actúa.</p>
-<p><span id="ejercicios-8"></span></p>
-<section id="fispm-c21-ejercicios-8" class="level3">
-<h3 class="anchored" data-anchor-id="fispm-c21-ejercicios-8">Ejercicios</h3>
-<p><span id="fispm-t1-c21-e0017"></span></p>
-<p><strong>Ejercicio 21.17.</strong> Un tensor corporal tiene <span class="math inline">\(I_B=\operatorname{diag}(A,B,C)\)</span> y el cuerpo gira respecto de los ejes inerciales mediante <span class="math inline">\(R_z(\phi)\)</span>. Calcula la matriz espacial.</p>
-<p><strong>Solución.</strong> Multiplicar <span class="math inline">\(RI_BR^T\)</span> da <span class="math inline">\(I_{xx}=A\cos^2\phi+B\sin^2\phi\)</span>, <span class="math inline">\(I_{yy}=A\sin^2\phi+B\cos^2\phi\)</span>, <span class="math inline">\(I_{xy}=(A-B)\sin\phi\cos\phi\)</span>, <span class="math inline">\(I_{zz}=C\)</span> y <span class="math inline">\(I_{xz}=I_{yz}=0\)</span>. La suma diagonal sigue siendo <span class="math inline">\(A+B+C\)</span>. Para <span class="math inline">\(A\ne B\)</span>, pueden aparecer entradas mixtas sin que haya deformación; para <span class="math inline">\(A=B\)</span>, el giro alrededor de <span class="math inline">\(z\)</span> deja la matriz igual.</p>
-<p><span id="fispm-t1-c21-e0018"></span></p>
-<p><strong>Ejercicio 21.18.</strong> Comprueba que la energía del ejercicio 21.17 es independiente de la base cuando <span class="math inline">\(\boldsymbol\omega=R\boldsymbol\Omega\)</span>.</p>
-<p><strong>Solución.</strong> La forma inercial es <span class="math inline">\(\boldsymbol\omega^TRI_BR^T\boldsymbol\omega/2\)</span>. Sustituir <span class="math inline">\(\boldsymbol\omega=R\boldsymbol\Omega\)</span> y usar <span class="math inline">\(R^TR=I\)</span> reduce la expresión a <span class="math inline">\(\boldsymbol\Omega^TI_B\boldsymbol\Omega/2\)</span>. La igualdad no exige que <span class="math inline">\(I_B\)</span> sea diagonal: funciona para cualquier tensor transformado con la misma orientación que el vector.</p>
-<p><span id="escoger-los-ejes-que-simplifican-el-giro"></span></p>
-<p><span id="fispm-t1-c21-s10"></span></p>
-<p><span id="fpm-i-21-s10"></span></p>
-</section>
-</section>
-<section id="fispm-c21-escoger-los-ejes-que-simplifican-el-giro" class="level2">
-<h2 class="anchored" data-anchor-id="fispm-c21-escoger-los-ejes-que-simplifican-el-giro">10. Escoger los ejes que simplifican el giro</h2>
-<p>Las entradas mixtas dependen de la base. Podemos elegir una base que las anule porque el tensor es simétrico. La existencia de esa base tiene una prueba geométrica: una dirección que extrema la forma cuadrática en la esfera unitaria es un autovector, y su plano perpendicular queda preservado por la matriz.</p>
-<p><span id="fispm-t1-c21-d0006"></span></p>
-<p><strong>Definición 21.6 — Ejes y momentos principales.</strong> Una dirección unitaria <span class="math inline">\(\mathbf e_i\)</span> es principal respecto del punto elegido si <span class="math inline">\(I\mathbf e_i=J_i\mathbf e_i\)</span>. El número <span class="math inline">\(J_i\)</span> es su momento principal. Una base principal ortonormal diagonaliza el tensor. Los ejes se refieren al punto y a la distribución de masa usados al definirlo.</p>
-<p><span id="fispm-t1-c21-p0019"></span></p>
-<p><strong>Proposición 21.19 — Existencia de una base principal.</strong> Todo tensor de inercia admite una base ortonormal de autovectores con momentos <span class="math inline">\(J_i\geq0\)</span>. La base puede elegirse orientada positivamente.</p>
-<p><strong>Demostración.</strong> La función continua <span class="math inline">\(\mathbf u\mapsto\mathbf u^TI\mathbf u\)</span> alcanza un extremo en la esfera unitaria, que es compacta. Sea <span class="math inline">\(\mathbf e_1\)</span> una dirección extrema. Para cualquier <span class="math inline">\(\mathbf v\perp\mathbf e_1\)</span>, la curva <span class="math inline">\((\mathbf e_1+s\mathbf v)/|\mathbf e_1+s\mathbf v|\)</span> tiene derivada inicial <span class="math inline">\(\mathbf v\)</span>. La derivada de la forma cuadrática allí es <span class="math inline">\(2\mathbf v^TI\mathbf e_1\)</span>, que debe ser cero. Así <span class="math inline">\(I\mathbf e_1\)</span> es paralelo a <span class="math inline">\(\mathbf e_1\)</span>. La simetría implica que su plano perpendicular es invariante: <span class="math inline">\(\mathbf e_1\cdot I\mathbf v=(I\mathbf e_1)\cdot\mathbf v=0\)</span>.</p>
-<p>Repetir el argumento sobre la circunferencia unitaria de ese plano produce un segundo autovector perpendicular. La recta restante es invariante y da un tercero. Sus autovalores son <span class="math inline">\(\mathbf e_i^TI\mathbf e_i\geq0\)</span> por la proposición 21.12. Cambiar el signo de uno de los vectores, si hace falta, conserva su condición de autovector y hace positivo el determinante de la base. <span class="math inline">\(\square\)</span></p>
-<p>Si dos momentos son iguales, cualquier base ortonormal de su plano propio sirve. Si los tres son iguales, todas las direcciones son principales. Cuando los valores son distintos, cada recta propia está determinada, aunque los signos y el orden de los ejes sigan siendo convenciones. Tener ejes principales no exige una simetría visible del contorno: la diagonalización existe para cualquier distribución admitida.</p>
-<p><span id="fispm-t1-c21-p0020"></span></p>
-<p><strong>Proposición 21.20 — Lectura energética y direccional en ejes principales.</strong> En una base principal,</p>
-<p><span class="math display">\[\mathbf H_B=(J_1\Omega_1,J_2\Omega_2,J_3\Omega_3), \qquad K_{\mathrm{rot}}=\frac12\sum_{i=1}^3J_i\Omega_i^2.\]</span></p>
-<p>Si <span class="math inline">\(J_{\min}\)</span> y <span class="math inline">\(J_{\max}\)</span> son los valores extremo, entonces</p>
-<p><span class="math display">\[\frac12J_{\min}|\boldsymbol\Omega|^2 \leq K_{\mathrm{rot}}\leq \frac12J_{\max}|\boldsymbol\Omega|^2.\]</span></p>
-<p>Para <span class="math inline">\(\boldsymbol\Omega\ne0\)</span>, <span class="math inline">\(I_B\boldsymbol\Omega\)</span> es colineal con <span class="math inline">\(\boldsymbol\Omega\)</span> exactamente cuando esta pertenece a un espacio propio.</p>
-<p><strong>Demostración.</strong> En la base diagonal, proposición 21.13 y proposición 21.15 dan las dos primeras fórmulas. Cada coeficiente <span class="math inline">\(J_i\)</span> está entre los extremos y cada <span class="math inline">\(\Omega_i^2\)</span> es no negativo, de donde salen las cotas. La condición <span class="math inline">\(I_B\boldsymbol\Omega=\lambda\boldsymbol\Omega\)</span> equivale a <span class="math inline">\((J_i-\lambda)\Omega_i=0\)</span> para cada componente: las componentes no nulas deben pertenecer al mismo autovalor. Esto caracteriza un espacio propio. Si ese valor es cero, el momento es el vector cero; aquí «colineal» incluye ese caso degenerado. <span class="math inline">\(\square\)</span></p>
-<p>Las cotas comparan giros con una rapidez angular fijada. Si en cambio se fija la magnitud del momento angular, la comparación cambia. Para un tensor definido positivo, <span class="math inline">\(\boldsymbol\Omega=I_B^{-1}\mathbf H_B\)</span> y la energía es <span class="math inline">\(\mathbf H_B^TI_B^{-1}\mathbf H_B/2\)</span>. A momento fijado, una dirección de mayor inercia requiere menor energía. Tampoco estas comparaciones energéticas deciden qué giros libres son estables; esa pregunta dinámica pertenece al capítulo 22.</p>
-<p><span id="fispm-t1-c21-mp0010"></span></p>
-<p><strong>Principio metodológico 21.10.</strong> Especifica qué cantidad mantienes fija al comparar giros. Diagonalizar organiza la cinemática y la energía; la estabilidad requiere la ecuación de evolución.</p>
-<p><span id="ejercicios-9"></span></p>
-<section id="fispm-c21-ejercicios-9" class="level3">
-<h3 class="anchored" data-anchor-id="fispm-c21-ejercicios-9">Ejercicios</h3>
-<p><span id="fispm-t1-c21-e0019"></span></p>
-<p><strong>Ejercicio 21.19.</strong> Diagonaliza <span class="math inline">\(I=J\begin{pmatrix}3&amp;-1&amp;0\\-1&amp;3&amp;0\\0&amp;0&amp;4\end{pmatrix}\)</span>, con <span class="math inline">\(J&gt;0\)</span>.</p>
-<p><strong>Solución.</strong> El vector <span class="math inline">\((1,1,0)/\sqrt2\)</span> tiene autovalor <span class="math inline">\(2J\)</span>. El vector <span class="math inline">\((-1,1,0)/\sqrt2\)</span> tiene autovalor <span class="math inline">\(4J\)</span> y <span class="math inline">\(\mathbf e_z\)</span> también <span class="math inline">\(4J\)</span>. Son ortonormales y, en ese orden, forman una base positiva. El plano perpendicular al primer vector es un espacio propio doble; cualquier base ortonormal orientada compatible dentro de él diagonaliza la matriz. El signo negativo de la entrada mixta determina qué diagonal del plano tiene el momento menor.</p>
-<p><span id="fispm-t1-c21-e0020"></span></p>
-<p><strong>Ejercicio 21.20.</strong> Para momentos principales <span class="math inline">\(2J,3J,4J\)</span>, compara las energías mínima y máxima a rapidez angular <span class="math inline">\(\omega\)</span> fija y a magnitud de momento <span class="math inline">\(H\)</span> fija.</p>
-<p><strong>Solución.</strong> A rapidez fija, las cotas son <span class="math inline">\(J\omega^2\)</span> y <span class="math inline">\(2J\omega^2\)</span>, alcanzadas sobre los ejes de <span class="math inline">\(2J\)</span> y <span class="math inline">\(4J\)</span>. A momento fijo, la energía sobre un eje de momento <span class="math inline">\(J_i\)</span> es <span class="math inline">\(H^2/(2J_i)\)</span>. El mínimo es <span class="math inline">\(H^2/(8J)\)</span> en el eje de <span class="math inline">\(4J\)</span> y el máximo <span class="math inline">\(H^2/(4J)\)</span> en el de <span class="math inline">\(2J\)</span>. Invertir qué se mantiene fijo invierte la comparación.</p>
-<p><span id="la-simetría-puede-ahorrar-integrales"></span></p>
-<p><span id="fispm-t1-c21-s11"></span></p>
-<p><span id="fpm-i-21-s11"></span></p>
-</section>
-</section>
-<section id="fispm-c21-la-simetruxeda-puede-ahorrar-integrales" class="level2">
-<h2 class="anchored" data-anchor-id="fispm-c21-la-simetruxeda-puede-ahorrar-integrales">11. La simetría puede ahorrar integrales</h2>
-<p>Una distribución simétrica hace que ciertas contribuciones se cancelen por parejas. La simetría relevante es la de la masa, no solo la del borde. Una placa de contorno simétrico con densidad desigual puede conservar productos de inercia que el dibujo invita a borrar.</p>
-<p><span id="fispm-t1-c21-d0007"></span></p>
-<p><strong>Definición 21.7 — Simetría ortogonal de la masa respecto de un punto.</strong> Una matriz ortogonal <span class="math inline">\(S\)</span>, propia o impropia, es simetría de la distribución centrada en el punto si <span class="math inline">\(\int f(S\mathbf q)dm=\int f(\mathbf q)dm\)</span> para toda función integrable pertinente. La condición dice que transformar las posiciones por <span class="math inline">\(S\)</span> conserva la medida de masa.</p>
-<p><span id="fispm-t1-c21-p0021"></span></p>
-<p><strong>Proposición 21.21 — Consecuencias tensoriales de una simetría.</strong> Una simetría <span class="math inline">\(S\)</span> cumple <span class="math inline">\(SI_OS^T=I_O\)</span>, y por tanto <span class="math inline">\(SI_O=I_OS\)</span>. La reflexión respecto del plano <span class="math inline">\(x=0\)</span> hace nulas las entradas <span class="math inline">\(I_{xy}\)</span> e <span class="math inline">\(I_{xz}\)</span>. Si la masa es invariante bajo todos los giros alrededor de <span class="math inline">\(z\)</span>, entonces <span class="math inline">\(I_O=\operatorname{diag}(A,A,C)\)</span> en ejes con ese eje <span class="math inline">\(z\)</span>.</p>
-<p><strong>Demostración.</strong> El cambio <span class="math inline">\(\mathbf q\mapsto S\mathbf q\)</span> conserva normas y transforma el integrando de la definición 21.5 en <span class="math display">\[S(|\mathbf q|^2\mathbf1-\mathbf q\mathbf q^T)S^T.\]</span> La simetría de la medida prueba la primera igualdad; multiplicar por <span class="math inline">\(S\)</span> a la derecha da la conmutación. Para la reflexión <span class="math inline">\(S=\operatorname{diag}(-1,1,1)\)</span>, las entradas <span class="math inline">\(xy\)</span> y <span class="math inline">\(xz\)</span> cambian de signo al conjugar, así que deben ser cero. En la simetría axial, el giro de <span class="math inline">\(\pi\)</span> anula <span class="math inline">\(xz\)</span> e <span class="math inline">\(yz\)</span>; el de <span class="math inline">\(\pi/2\)</span> exige <span class="math inline">\(I_{xx}=I_{yy}\)</span> e invierte el signo de <span class="math inline">\(I_{xy}\)</span>, que también se anula. <span class="math inline">\(\square\)</span></p>
-<p>Una reflexión sola no borra <span class="math inline">\(I_{yz}\)</span>. Tres planos coordenados de simetría bastan para diagonalizar, pero esa condición es suficiente y no necesaria. La existencia general de ejes principales procede de la proposición 21.19, incluso cuando no podemos identificarlos por inspección de la distribución.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
-<p><span id="fispm-t1-c21-p0022"></span></p>
-<p><strong>Proposición 21.22 — Teorema de ejes perpendiculares para una distribución plana.</strong> Si toda la masa está en el plano <span class="math inline">\(z=0\)</span> y el punto de referencia pertenece a ese plano, entonces</p>
-<p><span class="math display">\[I_{zz}=I_{xx}+I_{yy},\qquad I_{xz}=I_{yz}=0.\]</span></p>
-<p><strong>Demostración.</strong> En proposición 21.11, <span class="math inline">\(z=0\)</span> para casi toda la masa. Así <span class="math inline">\(I_{xx}=\int y^2dm\)</span>, <span class="math inline">\(I_{yy}=\int x^2dm\)</span> e <span class="math inline">\(I_{zz}=\int(x^2+y^2)dm\)</span>. Los productos que contienen <span class="math inline">\(z\)</span> se anulan. <span class="math inline">\(\square\)</span></p>
-<p>El eje normal al plano es principal, pero los ejes elegidos dentro del plano pueden tener <span class="math inline">\(I_{xy}\ne0\)</span>. El teorema no afirma que todos los momentos de un cuerpo volumétrico satisfagan una igualdad semejante. La posición del punto de referencia también importa: desplazarlo fuera de la lámina introduce cuadrados de la distancia al plano.</p>
-<p><span id="fispm-t1-c21-mp0011"></span></p>
-<p><strong>Principio metodológico 21.11.</strong> Usa una simetría de la medida de masa y expresa qué entradas transforma. Comprueba las condiciones geométricas antes de aplicar una identidad de ejes.</p>
-<p><span id="ejercicios-10"></span></p>
-<section id="fispm-c21-ejercicios-10" class="level3">
-<h3 class="anchored" data-anchor-id="fispm-c21-ejercicios-10">Ejercicios</h3>
-<p><strong>Ejercicio 21.21.</strong> Una distribución es simétrica respecto de <span class="math inline">\(x=0\)</span>, pero no se conoce ninguna otra simetría. Escribe la forma más general de su tensor y determina un eje principal garantizado.</p>
-<p><strong>Solución.</strong> proposición 21.21 da <span class="math inline">\(I=\begin{pmatrix}A&amp;0&amp;0\\0&amp;B&amp;D\\0&amp;D&amp;C\end{pmatrix}\)</span>. El eje <span class="math inline">\(x\)</span> es principal con momento <span class="math inline">\(A\)</span>. El bloque <span class="math inline">\(yz\)</span> necesita diagonalización si <span class="math inline">\(D\ne0\)</span>; la reflexión dada no cambia el signo de <span class="math inline">\(yz\)</span> y no autoriza borrarlo. La positividad del tensor impone además restricciones a ese bloque.</p>
-<p><span id="fispm-t1-c21-e0022"></span></p>
-<p><strong>Ejercicio 21.22.</strong> Una lámina tiene <span class="math inline">\(I_{xx}=2J\)</span>, <span class="math inline">\(I_{yy}=5J\)</span> e <span class="math inline">\(I_{xy}=J\)</span>, con <span class="math inline">\(z\)</span> normal a su plano y origen en él. Calcula el momento normal y los momentos principales del plano.</p>
-<p><strong>Solución.</strong> proposición 21.22 da <span class="math inline">\(I_{zz}=7J\)</span>. Los valores propios del bloque <span class="math inline">\(J\begin{pmatrix}2&amp;1\\1&amp;5\end{pmatrix}\)</span> satisfacen <span class="math inline">\(\lambda^2-7J\lambda+9J^2=0\)</span>, por lo que son <span class="math inline">\(J(7\pm\sqrt{13})/2\)</span>. Su suma es <span class="math inline">\(7J\)</span>, igual al momento normal. El valor mixto rota los ejes principales del plano sin alterar esa suma.</p>
-<p><span id="cambiar-el-punto-conservar-la-dirección-del-eje"></span></p>
-<p><span id="fispm-t1-c21-s12"></span></p>
-<p><span id="fpm-i-21-s12"></span></p>
-</section>
-</section>
-<section id="fispm-c21-cambiar-el-punto-conservar-la-direcciuxf3n-del-eje" class="level2">
-<h2 class="anchored" data-anchor-id="fispm-c21-cambiar-el-punto-conservar-la-direcciuxf3n-del-eje">12. Cambiar el punto, conservar la dirección del eje</h2>
-<p>Hasta aquí los cambios de base conservaron el punto de referencia. Mover el punto cambia las distancias de la masa a los ejes y, por tanto, cambia el tensor físico. El centro de masa hace especialmente simple esa traslación, porque anula los primeros momentos.</p>
-<p><span id="fig:I-21-N02"></span></p>
-<figure id="fig-fpm-v04-i-21-n02" class="fpm-v04-panel figure">
-<p><a href="../assets/14bb485136b0f5cbdbf4fb9c.svg" class="lightbox" data-gallery="fpm-v04-c21"><img src="../assets/14bb485136b0f5cbdbf4fb9c.svg" alt="Ejes paralelos. Diagrama del capítulo 21; el pie describe las variables, las hipótesis y el significado de los trazos." class="fpm-v04-figure img-fluid figure-img" width="345" height="312" loading="lazy" decoding="async"></a></p>
+<section id="trasladar-el-punto-de-referencia" class="level2">
+<h2 class="anchored" data-anchor-id="trasladar-el-punto-de-referencia">Trasladar el punto de referencia</h2>
+<p><strong>Proposición.</strong> Sean <span class="math inline">\(\mathsf I_C\)</span> el tensor respecto del centro y <span class="math inline">\(\mathsf I_O\)</span> el tensor respecto de otro punto, expresados en ejes paralelos. Si <span class="math inline">\(\mathbf d\)</span> va de <span class="math inline">\(O\)</span> al centro,</p>
+<p><span class="math display">\[
+\mathsf I_O=\mathsf I_C+M(\|\mathbf d\|^2\operatorname{Id}_3-\mathbf d\mathbf d^{\mathsf T}).
+\]</span></p>
+<p>Para ejes paralelos de dirección unitaria <span class="math inline">\(\mathbf u\)</span> se obtiene <span class="math inline">\(J_O(\mathbf u)=J_C(\mathbf u)+M\|\mathbf u\times\mathbf d\|^2\)</span>.</p>
+<p><strong>Demostración.</strong> Las separaciones desde <span class="math inline">\(O\)</span> son <span class="math inline">\(\mathbf s_i+\mathbf d\)</span>, con <span class="math inline">\(\sum_i m_i\mathbf s_i=0\)</span>. Al expandir tanto el cuadrado de la norma como el producto exterior en la definición de <span class="math inline">\(\mathsf I_O\)</span>, todos los términos lineales en <span class="math inline">\(\mathbf s_i\)</span> se anulan por esa igualdad. Quedan el tensor central y el término de una masa <span class="math inline">\(M\)</span> situada en <span class="math inline">\(\mathbf d\)</span>. Multiplicar a izquierda y derecha por <span class="math inline">\(\mathbf u^{\mathsf T}\)</span> y <span class="math inline">\(\mathbf u\)</span> reduce ese término a <span class="math inline">\(M(\|\mathbf d\|^2-(\mathbf u\cdot\mathbf d)^2)=M\|\mathbf u\times\mathbf d\|^2\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>El traslado puede crear entradas no diagonales incluso si los ejes originales eran principales en el centro. Suponer que basta sumar <span class="math inline">\(Md^2\)</span> a las tres diagonales pierde tanto las distancias perpendiculares como los términos cruzados.</p>
+<figure id="fig-fispm-r20261021-19-4" class="fpm-v04-panel figure">
+<p><a href="../assets/e9cf3f4c86758bfc74af3006.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="../assets/e9cf3f4c86758bfc74af3006.svg" alt="Traslado del origen y distancias perpendiculares" class="fpm-v04-figure img-fluid figure-img" width="900" height="580" loading="lazy" decoding="async"></a></p>
 <figcaption>
-<p><strong>Figura 21.4.</strong> Para una misma dirección de giro, desplazar el eje una distancia perpendicular <span class="math inline">\(d\)</span> desde el centro de masa añade <span class="math inline">\(Md^2\)</span> al momento de inercia. Véase §<a href="#fispm-c21-cambiar-el-punto-conservar-la-direcciuxf3n-del-eje">12</a>.</p>
+<p><em>Figura 19.4.</em> Dos ejes paralelos separados por la componente de <span class="math inline">\(\mathbf d\)</span> perpendicular a su dirección. La corrección escalar usa esa separación perpendicular; la fórmula tensorial conserva además la información entre direcciones.</p>
 </figcaption>
 </figure>
-<p><span id="fispm-t1-c21-d0008"></span></p>
-<p><strong>Definición 21.8 — Tensor y momento sobre ejes trasladados.</strong> Sean <span class="math inline">\(O\)</span> y <span class="math inline">\(C\)</span> el nuevo punto y el centro de masa, con <span class="math inline">\(\mathbf d=C-O\)</span>. Usaremos ejes paralelos de la misma orientación en ambos puntos, y <span class="math inline">\(\mathbf r\)</span> denotará posición relativa a <span class="math inline">\(C\)</span>. Una dirección unitaria <span class="math inline">\(\mathbf n\)</span> define momentos <span class="math inline">\(I_O(\mathbf n)=\mathbf n^TI_O\mathbf n\)</span> e <span class="math inline">\(I_C(\mathbf n)=\mathbf n^TI_C\mathbf n\)</span>.</p>
-<p><span id="fispm-t1-c21-p0023"></span></p>
-<p><strong>Proposición 21.23 — Teorema tensorial de ejes paralelos.</strong> Bajo definición 21.8,</p>
-<p><span class="math display">\[I_O=I_C+M\left(|\mathbf d|^2\mathbf1-\mathbf d\mathbf d^T\right),\]</span></p>
-<p>y para la misma dirección unitaria, <span class="math inline">\(I_O(\mathbf n)=I_C(\mathbf n)+M|\mathbf n\times\mathbf d|^2.\)</span></p>
-<p><strong>Demostración.</strong> La posición desde <span class="math inline">\(O\)</span> es <span class="math inline">\(\mathbf r+\mathbf d\)</span>. Al expandir <span class="math inline">\(|\mathbf r+\mathbf d|^2\mathbf1-(\mathbf r+\mathbf d)(\mathbf r+\mathbf d)^T\)</span>, queda el integrando central, el término constante <span class="math inline">\(|\mathbf d|^2\mathbf1-\mathbf d\mathbf d^T\)</span> y términos lineales en <span class="math inline">\(\mathbf r\)</span>. Los últimos integran a cero porque <span class="math inline">\(\int\mathbf r\,dm=0\)</span>. La integral del término constante multiplica por <span class="math inline">\(M\)</span> y da la primera fórmula. Multiplicarla por <span class="math inline">\(\mathbf n^T\)</span> y <span class="math inline">\(\mathbf n\)</span> usa proposición 21.12 para obtener la segunda. <span class="math inline">\(\square\)</span></p>
-<p>La distancia que importa en la fórmula escalar es la separación perpendicular de los ejes. Si <span class="math inline">\(\mathbf d\)</span> es paralelo a <span class="math inline">\(\mathbf n\)</span>, ambos puntos definen la misma recta y el momento escalar no cambia. El tensor completo sí puede cambiar: las otras direcciones pasan por rectas diferentes. Para trasladar entre dos puntos que no sean el centro de masa, se puede aplicar proposición 21.23 dos veces, conservando las orientaciones.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
-<p>Las entradas mixtas también cambian. En particular, <span class="math inline">\(I_{O,xy}=I_{C,xy}-Md_xd_y\)</span>. Trasladar todos los momentos diagonales correctamente y conservar sin justificación las entradas mixtas puede producir un tensor inconsistente. El término añadido es semidefinido positivo, de modo que el momento sobre cada dirección no disminuye al pasar del eje central al paralelo desplazado.</p>
-<p><span id="fispm-t1-c21-mp0012"></span></p>
-<p><strong>Principio metodológico 21.12.</strong> Distingue rotación de base y traslación del punto. En ejes paralelos usa la distancia perpendicular y aplica la corrección a la matriz completa.</p>
-<p><span id="ejercicios-11"></span></p>
-<section id="fispm-c21-ejercicios-11" class="level3">
-<h3 class="anchored" data-anchor-id="fispm-c21-ejercicios-11">Ejercicios</h3>
-<p><span id="fispm-t1-c21-e0023"></span></p>
-<p><strong>Ejercicio 21.23.</strong> Una varilla uniforme de longitud <span class="math inline">\(l\)</span> y masa <span class="math inline">\(M\)</span> está sobre <span class="math inline">\(x\)</span>, centrada en el origen. Calcula su tensor central y el tensor en un extremo.</p>
-<p><strong>Solución.</strong> La densidad lineal es <span class="math inline">\(M/l\)</span> y <span class="math inline">\(\int x^2dm=(M/l)\int_{-l/2}^{l/2}x^2dx=Ml^2/12\)</span>. Por proposición 21.11, <span class="math inline">\(I_C=\operatorname{diag}(0,Ml^2/12,Ml^2/12)\)</span>. Para un extremo, <span class="math inline">\(|d_x|=l/2\)</span> y proposición 21.23 añade <span class="math inline">\(\operatorname{diag}(0,Ml^2/4,Ml^2/4)\)</span>. El resultado es <span class="math inline">\(\operatorname{diag}(0,Ml^2/3,Ml^2/3)\)</span>. La recta longitudinal es la misma en ambos puntos y su momento sigue siendo cero.</p>
-<p><span id="fispm-t1-c21-e0024"></span></p>
-<p><strong>Ejercicio 21.24.</strong> Un cuerpo tiene tensor central <span class="math inline">\(I_C=J\mathbf1\)</span> y se cambia el punto mediante <span class="math inline">\(\mathbf d=a(\mathbf e_x+\mathbf e_y)\)</span>. Calcula <span class="math inline">\(I_O\)</span> y sus ejes principales.</p>
-<p><strong>Solución.</strong> La corrección es <span class="math inline">\(Ma^2\begin{pmatrix}1&amp;-1&amp;0\\-1&amp;1&amp;0\\0&amp;0&amp;2\end{pmatrix}\)</span>. La dirección <span class="math inline">\((1,1,0)/\sqrt2\)</span>, paralela a <span class="math inline">\(\mathbf d\)</span>, conserva el momento <span class="math inline">\(J\)</span>. Las dos direcciones perpendiculares tienen momento <span class="math inline">\(J+2Ma^2\)</span>. Una distribución isotrópica en el centro puede, por tanto, tener un tensor no isotrópico respecto de otro punto, con entradas mixtas en los ejes anteriores.</p>
-<p><span id="integrar-cuerpos-sencillos-con-una-idea-común"></span></p>
-<p><span id="fispm-t1-c21-s13"></span></p>
-<p><span id="fpm-i-21-s13"></span></p>
+</section>
+<section id="escribir-el-balance-en-los-ejes-del-cuerpo" class="level2">
+<h2 class="anchored" data-anchor-id="escribir-el-balance-en-los-ejes-del-cuerpo">Escribir el balance en los ejes del cuerpo</h2>
+<p>Usaremos el balance angular respecto del centro de masa, incluso cuando éste acelere, o respecto de un punto del cuerpo fijo en un marco inercial. En el centro, las contribuciones de la aceleración del origen desaparecen porque <span class="math inline">\(\sum_i m_i\mathbf s_i=0\)</span>. En un punto arbitrario que se mueve de otra manera hay términos adicionales; trasladar geométricamente un tensor no basta para trasladar la ley dinámica.</p>
+<p>Supondremos que el balance del sistema elimina los torques internos, como sucede con fuerzas internas centrales por pares, y que los torques restantes se incluyen en el torque externo total. En un pivote ideal fijo, su reacción no tiene brazo respecto del pivote, pero una fricción o un par aplicado allí sí debe contarse.</p>
+<p><strong>Proposición.</strong> Sea <span class="math inline">\(\boldsymbol\tau=Q^{\mathsf T}\boldsymbol\tau_{\mathrm{ext}}\)</span> el torque externo en componentes materiales, respecto de uno de los puntos admitidos. El balance angular equivale a</p>
+<p><span class="math display">\[
+\mathsf I\dot{\boldsymbol\omega}
++\boldsymbol\omega\times(\mathsf I\boldsymbol\omega)=\boldsymbol\tau.
+\]</span></p>
+<p>En una terna principal,</p>
+<p><span class="math display">\[
+\begin{aligned}
+I_1\dot\omega_1+(I_3-I_2)\omega_2\omega_3&amp;=\tau_1,\\
+I_2\dot\omega_2+(I_1-I_3)\omega_3\omega_1&amp;=\tau_2,\\
+I_3\dot\omega_3+(I_2-I_1)\omega_1\omega_2&amp;=\tau_3.
+\end{aligned}
+\]</span></p>
+<p>La energía rotacional cumple <span class="math inline">\(\dot K_{\mathrm{rot}}=\boldsymbol\tau\cdot\boldsymbol\omega\)</span>. Si el torque es cero, <span class="math inline">\(K_{\mathrm{rot}}\)</span> y <span class="math inline">\(\|\boldsymbol\ell\|\)</span> se conservan, y <span class="math inline">\(Q\boldsymbol\ell\)</span> es constante en el laboratorio.</p>
+<p><strong>Demostración.</strong> La regla de transporte aplicada a <span class="math inline">\(\mathbf L=Q\boldsymbol\ell\)</span> da <span class="math inline">\(\dot{\mathbf L}=Q(\dot{\boldsymbol\ell}+\boldsymbol\omega\times\boldsymbol\ell)\)</span>. El tensor material es constante por rigidez, de modo que <span class="math inline">\(\dot{\boldsymbol\ell}=\mathsf I\dot{\boldsymbol\omega}\)</span>. Sustituir en el balance angular produce la ecuación vectorial y sus tres componentes. Por simetría de <span class="math inline">\(\mathsf I\)</span>, la derivada de <span class="math inline">\(K_{\mathrm{rot}}\)</span> es <span class="math inline">\(\boldsymbol\omega\cdot\mathsf I\dot{\boldsymbol\omega}\)</span>; el término cruzado tiene producto escalar cero con <span class="math inline">\(\boldsymbol\omega\)</span>, y queda la potencia anunciada. Con torque nulo, <span class="math inline">\(\dot{\boldsymbol\ell}=-\boldsymbol\omega\times\boldsymbol\ell\)</span>, por lo que <span class="math inline">\(\frac{d}{dt}\|\boldsymbol\ell\|^2=2\boldsymbol\ell\cdot\dot{\boldsymbol\ell}=0\)</span>. La constancia de <span class="math inline">\(Q\boldsymbol\ell\)</span> es el propio balance en el laboratorio. <span class="math inline">\(\square\)</span></p>
+<p>La ecuación contiene una derivada de componentes y una corrección por rotación de la base. Cuando <span class="math inline">\(\mathsf I\)</span> es invertible determina <span class="math inline">\(\dot{\boldsymbol\omega}\)</span> a partir del estado y del torque. Para describir un cuerpo libre completo se añaden <span class="math inline">\(M\ddot{\mathbf R}=\mathbf F_{\mathrm{ext}}\)</span> y la ecuación de orientación, junto con sus datos iniciales.</p>
+<p>Un giro uniforme impuesto cumple <span class="math inline">\(\dot{\boldsymbol\omega}=0\)</span> en el cuerpo, pero puede requerir <span class="math inline">\(\boldsymbol\tau=\boldsymbol\omega\times\mathsf I\boldsymbol\omega\)</span>. Ese torque es perpendicular al giro y tiene potencia rotacional nula: cambia la dirección del momento angular en el laboratorio sin cambiar su energía. Si se suprimen los apoyos que lo ejercían, las condiciones iniciales permanecen, pero el movimiento posterior debe satisfacer Euler con torque cero.</p>
+</section>
+<section id="resolver-un-giro-libre-y-precisar-su-estabilidad" class="level2">
+<h2 class="anchored" data-anchor-id="resolver-un-giro-libre-y-precisar-su-estabilidad">Resolver un giro libre y precisar su estabilidad</h2>
+<p>Para un cuerpo de momentos <span class="math inline">\(I_1=I_2=A&gt;0\)</span>, <span class="math inline">\(I_3=C&gt;0\)</span>, las ecuaciones libres dan <span class="math inline">\(\omega_3=s\)</span> constante. Al escribir <span class="math inline">\(\nu=(C-A)s/A\)</span>, las otras dos son <span class="math inline">\(\dot\omega_1=-\nu\omega_2\)</span> y <span class="math inline">\(\dot\omega_2=\nu\omega_1\)</span>. Por derivación directa se verifica la solución</p>
+<p><span class="math display">\[
+\begin{aligned}
+\omega_1(t)&amp;=a\cos\nu t-b\sin\nu t,\\
+\omega_2(t)&amp;=a\sin\nu t+b\cos\nu t,\\
+\omega_3(t)&amp;=s.
+\end{aligned}
+\]</span></p>
+<p>Las componentes transversales giran en los ejes del cuerpo. El eje material de simetría <span class="math inline">\(\mathbf n=Q\mathbf e_3\)</span> realiza otro movimiento en el laboratorio. En efecto,</p>
+<p><span class="math display">\[
+\mathbf L=A\boldsymbol\Omega+(C-A)s\mathbf n,
+\qquad
+\dot{\mathbf n}=\boldsymbol\Omega\times\mathbf n
+=\frac{\mathbf L}{A}\times\mathbf n.
+\]</span></p>
+<p>Como <span class="math inline">\(\mathbf L\)</span> es fijo, <span class="math inline">\(\mathbf n\)</span> describe un cono alrededor de él con rapidez angular <span class="math inline">\(\|\mathbf L\|/A\)</span>, salvo el caso de alineación, en que el eje permanece fijo. Esa rapidez y <span class="math inline">\(\nu\)</span> responden a observaciones distintas.</p>
+<figure id="fig-fispm-r20261021-19-5" class="fpm-v04-panel figure">
+<p><a href="../assets/4133942d594caaa4746a79ac.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="../assets/4133942d594caaa4746a79ac.svg" alt="Componentes materiales y eje en el laboratorio" class="fpm-v04-figure img-fluid figure-img" width="900" height="620" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 19.5.</em> En el cuerpo simétrico libre, las componentes transversales recorren una circunferencia a tasa <span class="math inline">\(\nu\)</span>; en el laboratorio, el eje de simetría precesa alrededor del momento angular constante. Los paneles representan espacios diferentes.</p>
+</figcaption>
+</figure>
+<p>Para tres momentos distintos, los giros puros <span class="math inline">\(\boldsymbol\omega=\Omega\mathbf e_j\)</span> también son soluciones libres. Estudiar su estabilidad exige decir qué permanece próximo: trabajaremos con las componentes materiales de velocidad angular. Una diferencia pequeña de rapidez puede acumular una diferencia grande de orientación tras mucho tiempo, aunque esas velocidades permanezcan próximas.</p>
+<p>Usaremos la definición del capítulo 8 sobre este estado reducido. Para el giro <span class="math inline">\(\boldsymbol\omega_*=\Omega\mathbf e_j\)</span>, con <span class="math inline">\(\Omega\ne0\)</span>, la distancia adimensional es <span class="math inline">\(\|\boldsymbol\omega-\boldsymbol\omega_*\|/|\Omega|\)</span>. La estabilidad exige que cada tolerancia positiva suficientemente pequeña admita una tolerancia inicial que mantenga esa distancia por debajo de la elegida durante todo el futuro. Las ecuaciones libres tienen soluciones globales en estas variables: su campo es suave y la conservación de la energía, con los tres momentos positivos, acota todas las componentes.</p>
+<p><strong>Proposición.</strong> Si <span class="math inline">\(0&lt;I_1&lt;I_2&lt;I_3\)</span> y <span class="math inline">\(\Omega\ne0\)</span>, los giros puros alrededor de los ejes de menor y mayor momento son estables en el sentido de Lyapunov para las ecuaciones libres de <span class="math inline">\(\boldsymbol\omega\)</span>. El giro alrededor del eje intermedio es inestable.</p>
+<p><strong>Demostración.</strong> Denotemos <span class="math inline">\(H=2K_{\mathrm{rot}}\)</span> y <span class="math inline">\(B=\|\boldsymbol\ell\|^2\)</span>, ambos conservados. Cerca del giro sobre el tercer eje, la combinación</p>
+<p><span class="math display">\[
+H-\frac B{I_3}
+=I_1\left(1-\frac{I_1}{I_3}\right)\omega_1^2
++I_2\left(1-\frac{I_2}{I_3}\right)\omega_2^2
+\]</span></p>
+<p>es una suma con coeficientes positivos. Si el estado inicial está cerca del giro puro, esa constante es pequeña y mantiene pequeñas las dos componentes transversales para todo tiempo. La conservación de <span class="math inline">\(B\)</span> controla entonces <span class="math inline">\(\omega_3^2\)</span> cerca de <span class="math inline">\(\Omega^2\)</span>; para datos suficientemente próximos, <span class="math inline">\(\omega_3\)</span> no puede pasar por cero, y su signo inicial selecciona el valor próximo a <span class="math inline">\(\Omega\)</span>. Esto prueba que toda vecindad del giro contiene una vecindad inicial cuyas trayectorias permanecen dentro de la primera. En el primer eje se usa <span class="math inline">\(B/I_1-H\)</span>, cuya expresión es una suma positiva en <span class="math inline">\(\omega_2^2\)</span> y <span class="math inline">\(\omega_3^2\)</span>, y se repite el control de magnitud y signo.</p>
+<p>También podemos reunir las cotas del tercer eje en una sola función conservada. Definamos <span class="math inline">\(h_3=H/(I_3\Omega^2)\)</span> y <span class="math inline">\(b_3=B/(I_3^2\Omega^2)\)</span>, ambos adimensionales. La función</p>
+<p><span class="math display">\[
+V_3=h_3-b_3+(b_3-1)^2
+\]</span></p>
+<p>es positiva en una vecindad del giro <span class="math inline">\(\Omega\mathbf e_3\)</span>, salvo en el propio giro, donde vale cero. En efecto, al poner <span class="math inline">\(u_i=\omega_i/|\Omega|\)</span> y <span class="math inline">\(a_i=I_i/I_3\)</span>, su primer término es <span class="math inline">\(h_3-b_3=\sum_{i=1}^2a_i(1-a_i)u_i^2\)</span>. Sus coeficientes son positivos; su anulación exige <span class="math inline">\(u_1=u_2=0\)</span>, y el término restante exige <span class="math inline">\(u_3^2=1\)</span>. Una vecindad que conserve el signo de <span class="math inline">\(\Omega\)</span> selecciona el giro estudiado. Para el primer eje se define <span class="math inline">\(h_1=H/(I_1\Omega^2)\)</span>, <span class="math inline">\(b_1=B/(I_1^2\Omega^2)\)</span> y se usa <span class="math inline">\(V_1=b_1-h_1+(b_1-1)^2\)</span>, con el mismo argumento. Sobre una esfera pequeña alrededor de cada giro, la función correspondiente alcanza un mínimo positivo. Preparar su valor por debajo de ese mínimo impide llegar a la esfera por conservación y continuidad. Así reaparece la barrera del capítulo 8 sobre un estado de tres componentes.</p>
+<p>Para el eje intermedio podemos exhibir soluciones que salen de cualquier vecindad inicial pequeña. Tomemos primero <span class="math inline">\(\Omega&gt;0\)</span> y definamos</p>
+<p><span class="math display">\[
+c=\sqrt{\frac{I_1(I_2-I_1)}{I_3(I_3-I_2)}},
+\qquad
+\gamma=\sqrt{\frac{(I_3-I_2)(I_2-I_1)}{I_1I_3}},
+\qquad D=\sqrt{\frac{I_2}{I_1+I_3c^2}}.
+\]</span></p>
+<p>Con <span class="math inline">\(\operatorname{sech}u=1/\cosh u\)</span>, la curva</p>
+<p><span class="math display">\[
+\begin{aligned}
+\omega_1(t)&amp;=\Omega D\operatorname{sech}(\Omega\gamma t),\\
+\omega_2(t)&amp;=-\Omega\tanh(\Omega\gamma t),\\
+\omega_3(t)&amp;=-c\Omega D\operatorname{sech}(\Omega\gamma t)
+\end{aligned}
+\]</span></p>
+<p>satisface Euler: se comprueba usando <span class="math inline">\((\tanh u)'=\operatorname{sech}^2u\)</span>, <span class="math inline">\((\operatorname{sech}u)'=-\operatorname{sech}u\tanh u\)</span> y las definiciones de <span class="math inline">\(c,\gamma,D\)</span>. Para entender la elección, imponer <span class="math inline">\(\omega_3=-c\omega_1\)</span> hace <span class="math inline">\(B-I_2H=0\)</span>; fijar <span class="math inline">\(H=I_2\Omega^2\)</span> reduce la segunda ecuación a <span class="math inline">\(\dot\omega_2=-\gamma(\Omega^2-\omega_2^2)\)</span>, que resuelve la tangente hiperbólica escrita. Cuando <span class="math inline">\(t\to-\infty\)</span>, el estado tiende a <span class="math inline">\((0,\Omega,0)\)</span>, pero en <span class="math inline">\(t=0\)</span> alcanza <span class="math inline">\((\Omega D,0,-c\Omega D)\)</span>, a distancia fija positiva de ese giro. Desplazar el tiempo permite comenzar tan cerca como se quiera y alcanzar después ese estado separado. Para <span class="math inline">\(\Omega&lt;0\)</span>, se aplica a la solución con rapidez <span class="math inline">\(|\Omega|\)</span> la transformación <span class="math inline">\((\omega_1,\omega_2,\omega_3)\mapsto(-\omega_1,-\omega_2,\omega_3)\)</span>. Sustituirla en Euler verifica que preserva las ecuaciones y cambia el signo del giro intermedio inicial. <span class="math inline">\(\square\)</span></p>
+<p>La linealización permite calcular una escala de crecimiento. Cerca de <span class="math inline">\(\Omega\mathbf e_2\)</span>, conservando sólo términos de primer orden en las componentes transversales,</p>
+<p><span class="math display">\[
+\ddot\omega_1=\Omega^2\frac{(I_3-I_2)(I_2-I_1)}{I_1I_3}\omega_1.
+\]</span></p>
+<p>Su tasa exponencial es <span class="math inline">\(|\Omega|\gamma\)</span>. La solución exacta de la prueba muestra que la inestabilidad pertenece al sistema completo; la ecuación lineal aproxima su comienzo mientras las perturbaciones son pequeñas respecto de <span class="math inline">\(|\Omega|\)</span>. Los momentos repetidos requieren otro examen, porque los coeficientes estrictamente positivos usados en la prueba pueden anularse.</p>
+<figure id="fig-fispm-r20261021-19-6" class="fpm-v04-panel figure">
+<p><a href="../assets/3bfc1d7d368c2882d3622bbd.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="../assets/3bfc1d7d368c2882d3622bbd.svg" alt="Estabilidad y eje intermedio. Esquema del capítulo 19; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid figure-img" width="900" height="610" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 19.6.</em> Retratos de fase de las ecuaciones transversales linealizadas para momentos <span class="math inline">\(1,2,3\)</span> y giro base de módulo uno. Las curvas cerradas y las ramas hiperbólicas muestran mecanismos locales diferentes; la estabilidad no se define como constancia de la orientación completa.</p>
+</figcaption>
+</figure>
+</section>
+<section id="contrastar-una-aproximación-para-el-giróscopo" class="level2">
+<h2 class="anchored" data-anchor-id="contrastar-una-aproximación-para-el-giróscopo">Contrastar una aproximación para el giróscopo</h2>
+<p>Un cuerpo simétrico con pivote fijo permite distinguir conservación libre y precesión causada por gravedad. Sea <span class="math inline">\(\mathbf n\)</span> el eje desde el pivote hacia el centro, a distancia <span class="math inline">\(d&gt;0\)</span>, y <span class="math inline">\(\mathbf z\)</span> la vertical ascendente. Usaremos los momentos <span class="math inline">\(A,A,C\)</span> respecto del pivote y gravedad uniforme. En una precesión regular, el ángulo <span class="math inline">\(0&lt;\theta&lt;\pi\)</span> entre <span class="math inline">\(\mathbf n\)</span> y <span class="math inline">\(\mathbf z\)</span> es constante, <span class="math inline">\(\dot{\mathbf n}=p\mathbf z\times\mathbf n\)</span> y la componente axial del giro es <span class="math inline">\(s=\boldsymbol\Omega\cdot\mathbf n\)</span>, constante. La velocidad angular puede escribirse</p>
+<p><span class="math display">\[
+\boldsymbol\Omega=p\mathbf z+(s-p\cos\theta)\mathbf n,
+\]</span></p>
+<p>por lo que</p>
+<p><span class="math display">\[
+\mathbf L=A p\mathbf z+(Cs-Ap\cos\theta)\mathbf n.
+\]</span></p>
+<p>Derivarla y compararla con <span class="math inline">\(\boldsymbol\tau=Mg d\,\mathbf z\times\mathbf n\)</span> da</p>
+<p><span class="math display">\[
+p(Cs-Ap\cos\theta)=Mg d.
+\]</span></p>
+<p>La fórmula <span class="math inline">\(p\approx Mg d/(Cs)\)</span> corresponde a despreciar el término cuadrático en <span class="math inline">\(p\)</span>. Para <span class="math inline">\(Cs&gt;0\)</span> y <span class="math inline">\(\cos\theta&gt;0\)</span>, la rama lenta puede escribirse sin restar números casi iguales:</p>
+<p><span class="math display">\[
+p_{\mathrm{lento}}=
+\frac{2Mg d}{Cs+\sqrt{(Cs)^2-4A\cos\theta\,Mg d}}.
+\]</span></p>
+<p>Exige discriminante no negativo. La comparación <span class="math inline">\(4A\cos\theta\,Mg d/(Cs)^2\ll1\)</span> controla la expansión de esa raíz; también debe comprobarse la separación entre precesión y giro cuando se interprete como giro rápido. La precesión regular requiere datos iniciales preparados para ella. Soltar un giróscopo con otra velocidad inicial puede producir nutación, es decir, variación de <span class="math inline">\(\theta\)</span>, aunque los parámetros permitan una rama regular lenta.</p>
+<figure id="fig-fispm-r20261021-19-7" class="fpm-v04-panel figure">
+<p><a href="../assets/e92f228c589d231e987e6ec6.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="../assets/e92f228c589d231e987e6ec6.svg" alt="Torque gravitatorio y precesión regular" class="fpm-v04-figure img-fluid figure-img" width="900" height="610" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 19.7.</em> El peso actúa en el centro y produce torque respecto del pivote. El dibujo sitúa eje y vertical en el plano de la hoja, con el torque entrando en ella; una precesión regular mantiene el ángulo y satisface el balance vectorial desarrollado en el texto.</p>
+</figcaption>
+</figure>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Salvo indicación contraria, use unidades SI, ejes ortonormales con orientación positiva y componentes materiales. Los torques se toman respecto del centro o del pivote inercial fijo indicado. Los cuerpos discretos se unen mediante vínculos ideales sin masa.</p>
+<section id="ejercicio-19-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-1">1. Reconstruir el ejemplo de apertura</h3>
+<p>Cuatro masas de <span class="math inline">\(1\,\mathrm{kg}\)</span> ocupan <span class="math inline">\((\pm1,0,0)\)</span> y <span class="math inline">\((0,\pm2,0)\)</span>, en metros. Calcule el tensor central directamente desde la definición. Para <span class="math inline">\(\boldsymbol\omega=(1,1,0)\,\mathrm{s^{-1}}\)</span>, halle momento angular, energía rotacional y ángulo entre momento y velocidad angular.</p>
+</section>
+<section id="ejercicio-19-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-2">2. Encontrar términos no diagonales</h3>
+<p>Tres masas de <span class="math inline">\(1\,\mathrm{kg}\)</span> están en <span class="math inline">\((1,0,0)\)</span>, <span class="math inline">\((0,1,0)\)</span> y <span class="math inline">\((-1,-1,0)\)</span> metros. Verifique el centro de masa, construya <span class="math inline">\(\mathsf I\)</span> y calcule <span class="math inline">\(\boldsymbol\ell\)</span> para <span class="math inline">\(\boldsymbol\omega=(1,0,0)\,\mathrm{s^{-1}}\)</span>. Interprete el signo de su componente transversal.</p>
+</section>
+<section id="ejercicio-19-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-3">3. Integrar una lámina rectangular</h3>
+<p>Una lámina homogénea de masa <span class="math inline">\(3\,\mathrm{kg}\)</span> ocupa <span class="math inline">\(-1\le x\le1\)</span>, <span class="math inline">\(-2\le y\le2\)</span>, <span class="math inline">\(z=0\)</span>, en metros. Obtenga su tensor central integrando sobre el rectángulo. Explique qué simetrías anulan entradas cruzadas y qué relación cumplen los tres momentos.</p>
+</section>
+<section id="ejercicio-19-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-4">4. Construir una terna principal orientada</h3>
+<p>Diagonalice el tensor del ejercicio 2. Elija una terna principal de determinante positivo y exprese en ella el estado <span class="math inline">\(\boldsymbol\omega=(1,0,0)\)</span>. Reconstruya <span class="math inline">\(\boldsymbol\ell\)</span> en los ejes originales para comprobar el cambio de base.</p>
+</section>
+<section id="ejercicio-19-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-5">5. Medir alrededor de un eje oblicuo</h3>
+<p>Para el cuerpo del ejercicio 2, use <span class="math inline">\(\mathbf u=(1,1,1)/\sqrt3\)</span>. Halle <span class="math inline">\(J(\mathbf u)\)</span> y la energía cuando el giro impuesto es <span class="math inline">\(\boldsymbol\omega=3\mathbf u\,\mathrm{s^{-1}}\)</span>. Determine si el momento angular es paralelo al eje y calcule el torque necesario para mantener ese giro uniforme.</p>
+</section>
+<section id="ejercicio-19-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-6">6. Llevar el tensor a una esquina</h3>
+<p>Para la lámina del ejercicio 3, cambie el origen del centro a la esquina <span class="math inline">\(O=(-1,-2,0)\)</span>. Mantenga ejes paralelos y calcule el tensor completo. Verifique el momento respecto de la perpendicular a la lámina por esa esquina mediante el teorema escalar.</p>
+</section>
+<section id="ejercicio-19-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-7">7. Rotar el cuerpo y cambiar componentes</h3>
+<p>Rote físicamente <span class="math inline">\(45^\circ\)</span> alrededor de <span class="math inline">\(+z\)</span> el cuerpo del ejercicio 2. Halle su tensor en el laboratorio. Si <span class="math inline">\(Q\)</span> es esa rotación y <span class="math inline">\(\boldsymbol\omega=\mathbf e_1\,\mathrm{s^{-1}}\)</span> en el cuerpo, calcule <span class="math inline">\(\boldsymbol\Omega\)</span> y <span class="math inline">\(\mathbf L_C\)</span> en el laboratorio. Distinga esta operación de un cambio pasivo de base.</p>
+</section>
+<section id="ejercicio-19-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-8">8. Mantener un giro que necesita apoyos</h3>
+<p>Un cuerpo tiene tensor principal <span class="math inline">\(\operatorname{diag}(1,2,3)\,\mathrm{kg\,m^2}\)</span>. Un mecanismo mantiene <span class="math inline">\(\boldsymbol\omega=(1,2,0)\,\mathrm{s^{-1}}\)</span> constante en el cuerpo, con centro fijo. Calcule el torque y su potencia. Explique qué sucedería al retirar el mecanismo conservando el estado inicial.</p>
+</section>
+<section id="ejercicio-19-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-9">9. Obtener la derivada libre instantánea</h3>
+<p>Para el mismo tensor, el cuerpo gira libremente con <span class="math inline">\(\boldsymbol\omega=(1,2,3)\,\mathrm{s^{-1}}\)</span> en un instante. Obtenga <span class="math inline">\(\dot{\boldsymbol\omega}\)</span>, <span class="math inline">\(K_{\mathrm{rot}}\)</span> y <span class="math inline">\(\|\boldsymbol\ell\|^2\)</span>. Verifique directamente las derivadas nulas de esas dos cantidades conservadas.</p>
+</section>
+<section id="ejercicio-19-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-10">10. Inferir el torque a partir de datos</h3>
+<p>En el estado del ejercicio 9 se observa <span class="math inline">\(\dot{\boldsymbol\omega}=(1,0,-1)\,\mathrm{s^{-2}}\)</span>. Halle el torque y la potencia rotacional. Compare con el resultado de sustituir solamente <span class="math inline">\(\boldsymbol\tau=\mathsf I\dot{\boldsymbol\omega}\)</span>.</p>
+</section>
+<section id="ejercicio-19-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-11">11. Separar traslación y giro</h3>
+<p>Un cuerpo de masa <span class="math inline">\(2\,\mathrm{kg}\)</span> tiene el tensor central y el estado angular del ejercicio 9. En el instante considerado <span class="math inline">\(Q=\operatorname{Id}_3\)</span>, <span class="math inline">\(\mathbf R=(0,2,0)\,\mathrm m\)</span> y <span class="math inline">\(\mathbf V=(3,0,0)\,\mathrm{m/s}\)</span>. Calcule la energía cinética total y el momento angular respecto del origen fijo del laboratorio.</p>
+</section>
+<section id="ejercicio-19-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-12">12. Rechazar datos incompatibles con la energía</h3>
+<p>Un cuerpo de momentos principales <span class="math inline">\(1,2,3\,\mathrm{kg\,m^2}\)</span> tiene momento angular de módulo <span class="math inline">\(4\,\mathrm{kg\,m^2/s}\)</span>. Determine el intervalo posible de energía rotacional y los estados que alcanzan sus extremos. Decida si una energía de <span class="math inline">\(2\,\mathrm J\)</span> es admisible.</p>
+</section>
+<section id="ejercicio-19-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-13">13. Comprobar si una matriz puede ser una inercia</h3>
+<p>Se propone <span class="math inline">\(\mathsf I=\operatorname{diag}(1,2,4)\,\mathrm{kg\,m^2}\)</span> para una distribución de masa no negativa. Determine si puede realizarse. Examine después <span class="math inline">\(\operatorname{diag}(1,2,3)\)</span> y construya una distribución discreta central que la realice.</p>
+</section>
+<section id="ejercicio-19-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-14">14. Examinar el límite de una varilla sin espesor</h3>
+<p>Una varilla homogénea de masa <span class="math inline">\(2\,\mathrm{kg}\)</span> ocupa <span class="math inline">\(-1\le x\le1\)</span>, <span class="math inline">\(y=z=0\)</span>, en metros. Calcule su tensor. Indique qué componente de velocidad angular no puede recuperarse de <span class="math inline">\(\boldsymbol\ell\)</span> y qué idealización explica la degeneración.</p>
+</section>
+<section id="ejercicio-19-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-15">15. Resolver el cuerpo simétrico libre</h3>
+<p>Un cuerpo tiene momentos <span class="math inline">\(A=2\)</span>, <span class="math inline">\(C=3\,\mathrm{kg\,m^2}\)</span>, torque cero, <span class="math inline">\(Q(0)=\operatorname{Id}_3\)</span> y <span class="math inline">\(\boldsymbol\omega(0)=(1,0,4)\,\mathrm{s^{-1}}\)</span>. Halle las componentes materiales de velocidad y momento angular, la energía, el ángulo entre el eje de simetría y <span class="math inline">\(\mathbf L\)</span>, y las dos tasas de giro descritas en el texto.</p>
+</section>
+<section id="ejercicio-19-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-16">16. Reconstruir el eje observado</h3>
+<p>Para el ejercicio 15, obtenga <span class="math inline">\(\mathbf n(t)\)</span> mediante una rotación alrededor de <span class="math inline">\(\mathbf L\)</span> fijo. Calcule <span class="math inline">\(\dot{\mathbf n}(0)\)</span> y <span class="math inline">\(\mathbf n(\pi/\sqrt{37}\,\mathrm s)\)</span>. Explique qué información sigue faltando para orientar un punto que no pertenece al eje de simetría.</p>
+</section>
+<section id="ejercicio-19-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-17">17. Comparar escalas de perturbación</h3>
+<p>Para momentos <span class="math inline">\(1,2,3\,\mathrm{kg\,m^2}\)</span>, linealice alrededor de cada giro puro de rapidez <span class="math inline">\(4\,\mathrm{s^{-1}}\)</span>. Halle las frecuencias transversales estables y la tasa de crecimiento intermedia. En el modo creciente, estime cuánto tarda una perturbación de amplitud <span class="math inline">\(10^{-4}\,\mathrm{s^{-1}}\)</span> en alcanzar <span class="math inline">\(10^{-2}\,\mathrm{s^{-1}}\)</span>.</p>
+</section>
+<section id="ejercicio-19-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-18">18. Seguir una salida exacta del eje intermedio</h3>
+<p>Para los mismos momentos, verifique que</p>
+<p><span class="math display">\[
+\boldsymbol\omega(t)=\left(4\operatorname{sech}kt,
+-4\tanh kt,-\frac4{\sqrt3}\operatorname{sech}kt\right),
+\qquad k=\frac4{\sqrt3}\,\mathrm{s^{-1}},
+\]</span></p>
+<p>resuelve Euler sin torque, con los números de las componentes expresados en <span class="math inline">\(\mathrm{s^{-1}}\)</span>. Calcule sus invariantes, sus límites temporales y el tiempo desde un estado inicial con <span class="math inline">\(\omega_1=10^{-4}\,\mathrm{s^{-1}}\)</span> en la rama <span class="math inline">\(t&lt;0\)</span> hasta <span class="math inline">\(t=0\)</span>.</p>
+</section>
+<section id="ejercicio-19-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-19">19. Controlar la rama lenta del giróscopo</h3>
+<p>Un giróscopo ideal de pivote fijo tiene <span class="math inline">\(M=0{,}5\,\mathrm{kg}\)</span>, <span class="math inline">\(d=0{,}1\,\mathrm m\)</span>, <span class="math inline">\(A=0{,}02\)</span>, <span class="math inline">\(C=0{,}01\,\mathrm{kg\,m^2}\)</span>, <span class="math inline">\(s=100\,\mathrm{s^{-1}}\)</span>, <span class="math inline">\(\theta=60^\circ\)</span> y <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span>. Calcule la rama regular lenta, la rápida y la aproximación <span class="math inline">\(Mg d/(Cs)\)</span>. Compare el error relativo respecto de la rama lenta y declare qué preparación del movimiento se está suponiendo.</p>
+</section>
+<section id="ejercicio-19-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-20">20. Reconstruir una inercia desde seis medidas</h3>
+<p>Con ejes fijos se miden los momentos <span class="math inline">\(J(\mathbf e_1)=2\)</span>, <span class="math inline">\(J(\mathbf e_2)=3\)</span>, <span class="math inline">\(J(\mathbf e_3)=4\)</span> y los momentos sobre las bisectrices positivas <span class="math inline">\(J((\mathbf e_1+\mathbf e_2)/\sqrt2)=2\)</span>, <span class="math inline">\(J((\mathbf e_1+\mathbf e_3)/\sqrt2)=3{,}5\)</span>, <span class="math inline">\(J((\mathbf e_2+\mathbf e_3)/\sqrt2)=3{,}25\)</span>, todos en <span class="math inline">\(\mathrm{kg\,m^2}\)</span>. Reconstruya la matriz. Explique por qué seis direcciones bastan en este diseño y cómo comprobar que el resultado puede provenir de masa no negativa. Suponga después que cada una de las seis lecturas difiere de su valor verdadero en no más de <span class="math inline">\(0{,}01\,\mathrm{kg\,m^2}\)</span> y que los ejes se conocen exactamente. Certifique si todas las matrices reconstruidas compatibles con esas cotas admiten una distribución de masa. Separe el error de lectura del error de orientación del aparato.</p>
 </section>
 </section>
-<section id="fispm-c21-integrar-cuerpos-sencillos-con-una-idea-comuxfan" class="level2">
-<h2 class="anchored" data-anchor-id="fispm-c21-integrar-cuerpos-sencillos-con-una-idea-comuxfan">13. Integrar cuerpos sencillos con una idea común</h2>
-<p>La fórmula del tensor parece contener seis integrales independientes. Las simetrías suelen reducirlas a dos o una, y las coordenadas adaptadas a la forma vuelven visible qué distancia se está promediando. Conviene hacer al menos un cálculo completo antes de usar tablas de momentos.</p>
-<p><span id="fispm-t1-c21-p0024"></span></p>
-<p><strong>Proposición 21.24 — Tres distribuciones homogéneas centradas.</strong> Con los ejes indicados, los tensores centrales son:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Distribución</th>
-<th style="text-align: left;">Tensor central</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Lámina rectangular, <span class="math inline">\(-a\leq x\leq a\)</span>, <span class="math inline">\(-b\leq y\leq b\)</span>, <span class="math inline">\(z=0\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\frac M3\operatorname{diag}(b^2,a^2,a^2+b^2)\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Disco delgado de radio <span class="math inline">\(a\)</span> en <span class="math inline">\(z=0\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(Ma^2\operatorname{diag}(1/4,1/4,1/2)\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Esfera maciza de radio <span class="math inline">\(a\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\frac25Ma^2\mathbf1\)</span></td>
-</tr>
-</tbody>
-</table>
-<p><strong>Demostración.</strong> En el rectángulo, la densidad superficial es <span class="math inline">\(M/(4ab)\)</span>, suponiendo <span class="math inline">\(a,b&gt;0\)</span>. Las reflexiones hacen nulos los productos mixtos. La integral de <span class="math inline">\(x^2\)</span> es <span class="math inline">\([M/(4ab)](2a^3/3)(2b)=Ma^2/3\)</span>, y la de <span class="math inline">\(y^2\)</span> es <span class="math inline">\(Mb^2/3\)</span>. Proposición 21.11 y proposición 21.22 dan la primera fila.</p>
-<p>En el disco, la densidad es <span class="math inline">\(M/(\pi a^2)\)</span>. En coordenadas polares, <span class="math inline">\(x=r\cos\varphi\)</span> y <span class="math inline">\(dA=r\,dr\,d\varphi\)</span>. Así <span class="math inline">\(\int x^2dm=[M/(\pi a^2)]\int_0^a r^3dr\int_0^{2\pi}\cos^2\varphi\,d\varphi=Ma^2/4\)</span>. La simetría hace igual la integral de <span class="math inline">\(y^2\)</span> y anula la mixta. La suma da el momento normal <span class="math inline">\(Ma^2/2\)</span>.</p>
-<p>En la esfera, las reflexiones anulan las entradas mixtas y la simetría hace iguales las integrales de los tres cuadrados. La densidad volumétrica es <span class="math inline">\(3M/(4\pi a^3)\)</span>. La integral de <span class="math inline">\(|\mathbf q|^2\)</span> es <span class="math inline">\([3M/(4\pi a^3)]4\pi\int_0^a r^4dr=3Ma^2/5\)</span>. Cada cuadrado aporta <span class="math inline">\(Ma^2/5\)</span>, y cada momento diagonal suma dos de ellos, dando <span class="math inline">\(2Ma^2/5\)</span>. <span class="math inline">\(\square\)</span></p>
-<p>La esfera maciza y una cáscara esférica no distribuyen la masa de la misma manera. En una cáscara de radio <span class="math inline">\(a\)</span>, todos los puntos tienen <span class="math inline">\(|\mathbf q|^2=a^2\)</span>, por lo que las tres integrales iguales valen <span class="math inline">\(Ma^2/3\)</span> y el tensor es <span class="math inline">\(2Ma^2\mathbf1/3\)</span>. Concentrar masa más lejos del centro aumenta la inercia sin cambiar la masa total ni el radio exterior.</p>
-<p>Para cuerpos compuestos, el tensor se suma una vez que todas las piezas se han expresado respecto del mismo punto y en la misma base. Si una tabla da el tensor central de cada pieza, antes de sumar hay que trasladarlo por la proposición 21.23 y orientarlo por la proposición 21.18 o proposición 21.17. La suma de matrices no corrige por sí sola diferencias de origen.</p>
-<p><span id="fispm-t1-c21-mp0013"></span></p>
-<p><strong>Principio metodológico 21.13.</strong> Empieza por simetría, normalización de masa y coordenadas de integración. Para ensamblar piezas, unifica punto y base antes de sumar sus tensores.</p>
-<p><span id="ejercicios-12"></span></p>
-<section id="fispm-c21-ejercicios-12" class="level3">
-<h3 class="anchored" data-anchor-id="fispm-c21-ejercicios-12">Ejercicios</h3>
-<p><span id="fispm-t1-c21-e0025"></span></p>
-<p><strong>Ejercicio 21.25.</strong> Calcula el momento de una lámina rectangular de la proposición 21.24 sobre una dirección unitaria <span class="math inline">\(\mathbf n=(\cos\beta,\sin\beta,0)\)</span> que pasa por el centro.</p>
-<p><strong>Solución.</strong> proposición 21.12 da <span class="math inline">\(I(\mathbf n)=M[b^2\cos^2\beta+a^2\sin^2\beta]/3\)</span>. Para <span class="math inline">\(\beta=0\)</span> se obtiene el momento sobre <span class="math inline">\(x\)</span> y para <span class="math inline">\(\beta=\pi/2\)</span> el de <span class="math inline">\(y\)</span>. Si <span class="math inline">\(a=b\)</span>, la respuesta es independiente de la dirección del eje en el plano, aunque el cuadrado no tenga simetría geométrica bajo todos los ángulos de giro. El tensor puede tener una simetría mayor que la forma material.</p>
-<p><span id="fispm-t1-c21-e0026"></span></p>
-<p><strong>Ejercicio 21.26.</strong> Dos esferas macizas iguales, cada una de masa <span class="math inline">\(m\)</span> y radio <span class="math inline">\(a\)</span>, tienen centros en <span class="math inline">\(\pm d\mathbf e_x\)</span> y se unen rígidamente con un soporte de masa despreciable. Calcula el tensor total sobre su centro común.</p>
-<p><strong>Solución.</strong> Cada tensor central es <span class="math inline">\(2ma^2\mathbf1/5\)</span>. Proposición 21.23 añade para cada esfera <span class="math inline">\(md^2\operatorname{diag}(0,1,1)\)</span>. Sumar las dos matrices da <span class="math inline">\(I=\operatorname{diag}(4ma^2/5,4ma^2/5+2md^2,4ma^2/5+2md^2)\)</span>. La dirección de los centros tiene el momento menor. Para un modelo material de esferas no superpuestas se requiere <span class="math inline">\(d\geq a\)</span>; la suma algebraica representa la medida indicada incluso si se superponen idealmente.</p>
-<p><span id="qué-matrices-pueden-ser-una-inercia"></span></p>
-<p><span id="fispm-t1-c21-s14"></span></p>
-<p><span id="fpm-i-21-s14"></span></p>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-19-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-1">1. Reconstruir el ejemplo de apertura</h3>
+<p>El centro es cero por las parejas opuestas. Las dos masas sobre <span class="math inline">\(x\)</span> aportan <span class="math inline">\(\operatorname{diag}(0,2,2)\)</span> y las dos sobre <span class="math inline">\(y\)</span> aportan <span class="math inline">\(\operatorname{diag}(8,0,8)\)</span>, en <span class="math inline">\(\mathrm{kg\,m^2}\)</span>. Así,</p>
+<p><span class="math display">\[
+\mathsf I=\operatorname{diag}(8,2,10),\qquad
+\boldsymbol\ell=(8,2,0)\,\mathrm{kg\,m^2/s},\qquad
+K_{\mathrm{rot}}=5\,\mathrm J.
+\]</span></p>
+<p>El ángulo <span class="math inline">\(\beta\)</span> cumple <span class="math inline">\(\cos\beta=10/(\sqrt2\sqrt{68})\)</span>, de donde <span class="math inline">\(\beta\approx30{,}96^\circ\)</span>. Su origen es la respuesta desigual de las dos direcciones: el giro suma componentes iguales, pero la distribución de masa multiplica una por ocho y otra por dos. Una masa total por sí sola no conserva esa información.</p>
+</section>
+<section id="solucion-19-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-2">2. Encontrar términos no diagonales</h3>
+<p>La suma de los tres vectores posición es cero. Las sumas <span class="math inline">\(\sum x_i^2=2\)</span>, <span class="math inline">\(\sum y_i^2=2\)</span> y <span class="math inline">\(\sum x_iy_i=1\)</span> dan</p>
+<p><span class="math display">\[
+\mathsf I=\begin{pmatrix}2&amp;-1&amp;0\\-1&amp;2&amp;0\\0&amp;0&amp;4\end{pmatrix}\,\mathrm{kg\,m^2}.
+\]</span></p>
+<p>Para el giro dado, <span class="math inline">\(\boldsymbol\ell=(2,-1,0)\,\mathrm{kg\,m^2/s}\)</span>. La componente negativa viene del término <span class="math inline">\(-\sum m_ix_iy_i\)</span>: la masa en <span class="math inline">\((-1,-1,0)\)</span> tiene producto de coordenadas positivo y produce una contribución transversal negativa. El ángulo con el giro es <span class="math inline">\(\arctan(1/2)\approx26{,}57^\circ\)</span>, y la energía es <span class="math inline">\(1\,\mathrm J\)</span>. El signo aparece al calcular el producto vectorial; sustituir todos los productos de inercia por sus módulos cambiaría el modelo.</p>
+</section>
+<section id="solucion-19-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-3">3. Integrar una lámina rectangular</h3>
+<p>La densidad superficial es <span class="math inline">\(3/8\,\mathrm{kg/m^2}\)</span>. Respecto de <span class="math inline">\(x\)</span>, la distancia al eje es <span class="math inline">\(|y|\)</span>, por lo que</p>
+<p><span class="math display">\[
+I_{xx}=\frac38\int_{-1}^{1}\int_{-2}^{2}y^2\,dy\,dx
+=\frac38\,2\,\frac{16}{3}=4\,\mathrm{kg\,m^2}.
+\]</span></p>
+<p>Análogamente, integrar <span class="math inline">\(x^2\)</span> da <span class="math inline">\(I_{yy}=1\,\mathrm{kg\,m^2}\)</span>. La integral de <span class="math inline">\(xy\)</span> es cero porque cambia de signo bajo <span class="math inline">\(x\mapsto-x\)</span> en un dominio simétrico; las otras entradas cruzadas contienen <span class="math inline">\(z=0\)</span>. Resulta <span class="math inline">\(\mathsf I=\operatorname{diag}(4,1,5)\,\mathrm{kg\,m^2}\)</span>. La igualdad <span class="math inline">\(I_{zz}=I_{xx}+I_{yy}\)</span> proviene de que toda la masa está en el plano <span class="math inline">\(z=0\)</span>; para una distribución tridimensional general aparece <span class="math inline">\(I_{xx}+I_{yy}-I_{zz}=2\int z^2dm\)</span>, que puede ser positivo.</p>
+</section>
+<section id="solucion-19-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-4">4. Construir una terna principal orientada</h3>
+<p>En el plano, multiplicar la matriz del ejercicio 2 por <span class="math inline">\((1,1)\)</span> da <span class="math inline">\((1,1)\)</span> y por <span class="math inline">\((-1,1)\)</span> da <span class="math inline">\(3(-1,1)\)</span>. Podemos elegir</p>
+<p><span class="math display">\[
+\mathbf f_1=\frac{(1,1,0)}{\sqrt2},\quad
+\mathbf f_2=\frac{(-1,1,0)}{\sqrt2},\quad
+\mathbf f_3=(0,0,1),
+\]</span></p>
+<p>con momentos <span class="math inline">\(1,3,4\,\mathrm{kg\,m^2}\)</span>. El producto <span class="math inline">\(\mathbf f_1\times\mathbf f_2=\mathbf f_3\)</span> verifica orientación positiva. Las componentes principales del giro son <span class="math inline">\(P^{\mathsf T}\boldsymbol\omega=(1/\sqrt2,-1/\sqrt2,0)\,\mathrm{s^{-1}}\)</span>. Multiplicar por los momentos da <span class="math inline">\((1/\sqrt2,-3/\sqrt2,0)\)</span>; reconstruir el vector mediante esa combinación de <span class="math inline">\(\mathbf f_1,\mathbf f_2\)</span> produce <span class="math inline">\((2,-1,0)\)</span> en los ejes originales, como exigía el cálculo directo.</p>
+</section>
+<section id="solucion-19-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-5">5. Medir alrededor de un eje oblicuo</h3>
+<p>Multiplicar por el vector unitario da <span class="math inline">\(\mathsf I\mathbf u=(1,1,4)/\sqrt3\)</span> y, por tanto, <span class="math inline">\(J(\mathbf u)=2\,\mathrm{kg\,m^2}\)</span>. La energía es <span class="math inline">\(\frac12J(\mathbf u)3^2=9\,\mathrm J\)</span>. En cambio, el momento angular completo es <span class="math inline">\((\sqrt3,\sqrt3,4\sqrt3)\,\mathrm{kg\,m^2/s}\)</span>, que no es paralelo a <span class="math inline">\(\mathbf u\)</span>.</p>
+<p>Para mantener constantes las componentes materiales del giro se necesita</p>
+<p><span class="math display">\[
+\boldsymbol\tau=\boldsymbol\omega\times\mathsf I\boldsymbol\omega
+=(9,-9,0)\,\mathrm{N\,m}.
+\]</span></p>
+<p>El torque tiene producto escalar cero con <span class="math inline">\(\boldsymbol\omega\)</span>. El motor y los apoyos deben sostener una dirección de giro que no es principal, aunque el balance rotacional no exija potencia neta. La energía escalar calculada correctamente no autoriza a reemplazar el vector momento por <span class="math inline">\(J(\mathbf u)\boldsymbol\omega\)</span>.</p>
+</section>
+<section id="solucion-19-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-6">6. Llevar el tensor a una esquina</h3>
+<p>El desplazamiento desde la esquina hasta el centro es <span class="math inline">\(\mathbf d=(1,2,0)\,\mathrm m\)</span>. El término que se añade es</p>
+<p><span class="math display">\[
+3\begin{pmatrix}4&amp;-2&amp;0\\-2&amp;1&amp;0\\0&amp;0&amp;5\end{pmatrix},
+\qquad
+\mathsf I_O=\begin{pmatrix}16&amp;-6&amp;0\\-6&amp;4&amp;0\\0&amp;0&amp;20\end{pmatrix}\,\mathrm{kg\,m^2}.
+\]</span></p>
+<p>La perpendicular por la esquina está a distancia <span class="math inline">\(\sqrt5\,\mathrm m\)</span> de la perpendicular central, así que su momento es <span class="math inline">\(5+3\cdot5=20\,\mathrm{kg\,m^2}\)</span>. El traslado preserva el carácter principal de <span class="math inline">\(z\)</span> en este ejemplo, pero introduce una entrada <span class="math inline">\(xy\)</span> y cambia los ejes principales dentro de la lámina.</p>
+</section>
+<section id="solucion-19-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-7">7. Rotar el cuerpo y cambiar componentes</h3>
+<p>Con <span class="math inline">\(Q\)</span> igual a la rotación positiva de <span class="math inline">\(45^\circ\)</span>, el tensor espacial es <span class="math inline">\(Q\mathsf I Q^{\mathsf T}=\operatorname{diag}(3,1,4)\,\mathrm{kg\,m^2}\)</span>. Puede comprobarse sin multiplicar nueve entradas: el eje de momento uno, antes orientado a <span class="math inline">\(45^\circ\)</span>, pasa a <span class="math inline">\(90^\circ\)</span>, mientras el de momento tres pasa a la dirección de <span class="math inline">\(x\)</span> con signo contrario.</p>
+<p>Los vectores espaciales son <span class="math inline">\(\boldsymbol\Omega=(1,1,0)/\sqrt2\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(\mathbf L_C=(3,1,0)/\sqrt2\,\mathrm{kg\,m^2/s}\)</span>, que cumplen la relación con el tensor espacial. Un cambio pasivo con columnas de base <span class="math inline">\(Q\)</span> usaría <span class="math inline">\(Q^{\mathsf T}\mathsf I Q\)</span> para expresar el mismo cuerpo en otra base; en este caso daría <span class="math inline">\(\operatorname{diag}(1,3,4)\)</span>. Las fórmulas difieren porque describen operaciones diferentes y sus vectores deben transformarse de manera consistente.</p>
+</section>
+<section id="solucion-19-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-8">8. Mantener un giro que necesita apoyos</h3>
+<p>El momento material vale <span class="math inline">\((1,4,0)\,\mathrm{kg\,m^2/s}\)</span>, y Euler exige <span class="math inline">\(\boldsymbol\tau=(1,2,0)\times(1,4,0)=(0,0,2)\,\mathrm{N\,m}\)</span>. Su potencia es cero y la energía constante es <span class="math inline">\(\frac12(1+8)=4{,}5\,\mathrm J\)</span>. El torque espacial es <span class="math inline">\(Q(t)\boldsymbol\tau\)</span> y, en general, cambia de dirección mientras gira el cuerpo.</p>
+<p>Al retirar el mecanismo, el torque pasa a cero y la derivada inicial cumple <span class="math inline">\(\mathsf I\dot{\boldsymbol\omega}=-(0,0,2)\)</span>. Resulta <span class="math inline">\(\dot{\boldsymbol\omega}(0)=(0,0,-2/3)\,\mathrm{s^{-2}}\)</span>. El cuerpo abandona el giro impuesto; conservar la velocidad inicial no conserva la fuerza que lo mantenía.</p>
+</section>
+<section id="solucion-19-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-9">9. Obtener la derivada libre instantánea</h3>
+<p>Las tres ecuaciones dan</p>
+<p><span class="math display">\[
+\dot{\boldsymbol\omega}=\left(-6,3,-\frac23\right)\,\mathrm{s^{-2}},
+\qquad K_{\mathrm{rot}}=18\,\mathrm J,
+\qquad \|\boldsymbol\ell\|^2=98\,(\mathrm{kg\,m^2/s})^2.
+\]</span></p>
+<p>Para revisar la energía se calcula <span class="math inline">\(\sum I_j\omega_j\dot\omega_j=-6+12-6=0\)</span>. Para el cuadrado del momento, la mitad de la derivada es <span class="math inline">\(\sum I_j^2\omega_j\dot\omega_j=-6+24-18=0\)</span>. Las componentes materiales de momento varían, pues <span class="math inline">\(\dot{\boldsymbol\ell}=(-6,6,-2)\)</span> en las unidades correspondientes; la corrección <span class="math inline">\(\boldsymbol\omega\times\boldsymbol\ell=(6,-6,2)\)</span> las compensa al reconstruir la derivada espacial.</p>
+</section>
+<section id="solucion-19-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-10">10. Inferir el torque a partir de datos</h3>
+<p>El término de derivada material es <span class="math inline">\(\mathsf I\dot{\boldsymbol\omega}=(1,0,-3)\,\mathrm{N\,m}\)</span>. Al sumar la corrección <span class="math inline">\((6,-6,2)\)</span> se obtiene <span class="math inline">\(\boldsymbol\tau=(7,-6,-1)\,\mathrm{N\,m}\)</span>. La potencia es <span class="math inline">\(7-12-3=-8\,\mathrm W\)</span>, y coincide con <span class="math inline">\(\boldsymbol\omega\cdot\mathsf I\dot{\boldsymbol\omega}=1-9=-8\,\mathrm W\)</span>.</p>
+<p>Omitir la corrección produciría el vector torque equivocado aunque, en este caso y en general para esa omisión, dejara correcta la potencia, porque <span class="math inline">\(\boldsymbol\omega\cdot(\boldsymbol\omega\times\boldsymbol\ell)=0\)</span>. Comprobar solamente energía no detecta todos los errores del balance angular.</p>
+</section>
+<section id="solucion-19-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-11">11. Separar traslación y giro</h3>
+<p>La traslación aporta <span class="math inline">\(M\|\mathbf V\|^2/2=9\,\mathrm J\)</span> y el giro aporta <span class="math inline">\(18\,\mathrm J\)</span>, de modo que <span class="math inline">\(K=27\,\mathrm J\)</span>. Respecto del origen fijo,</p>
+<p><span class="math display">\[
+\mathbf R\times M\mathbf V=(0,0,-12)\,\mathrm{kg\,m^2/s},
+\qquad \mathbf L_O=(1,4,-3)\,\mathrm{kg\,m^2/s}.
+\]</span></p>
+<p>El signo de la tercera componente total difiere del momento respecto del centro, que era positivo. Cada vector responde a un origen distinto; sumar la traslación a la energía y olvidarla en el momento angular mezclaría dos descripciones incompatibles.</p>
+</section>
+<section id="solucion-19-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-12">12. Rechazar datos incompatibles con la energía</h3>
+<p>En ejes principales, <span class="math inline">\(2K_{\mathrm{rot}}=\sum\ell_j^2/I_j\)</span>. Como <span class="math inline">\(1/3\le1/I_j\le1\)</span>, la suma se encuentra entre <span class="math inline">\(\|\boldsymbol\ell\|^2/3\)</span> y <span class="math inline">\(\|\boldsymbol\ell\|^2\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\frac83\,\mathrm J\le K_{\mathrm{rot}}\le8\,\mathrm J.
+\]</span></p>
+<p>El mínimo ocurre con momento angular sobre el tercer eje y el máximo sobre el primero. Todos los valores intermedios se obtienen variando continuamente la dirección entre esos ejes a módulo fijo. Una energía de <span class="math inline">\(2\,\mathrm J\)</span> queda por debajo del mínimo: los datos no pueden corresponder al estado del cuerpo ideal descrito.</p>
+</section>
+<section id="solucion-19-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-13">13. Comprobar si una matriz puede ser una inercia</h3>
+<p>Para cualquier distribución no negativa, <span class="math inline">\(I_1+I_2-I_3=2\int s_3^2dm\ge0\)</span> en ejes principales. La terna <span class="math inline">\(1,2,4\)</span> daría <span class="math inline">\(-1\)</span>, por lo que es imposible, aunque la matriz sea simétrica y definida positiva. La positividad algebraica del tensor es necesaria, pero las entradas también deben ser compatibles con segundos momentos de masa.</p>
+<p>La terna <span class="math inline">\(1,2,3\)</span> sí se realiza: sitúe masas de <span class="math inline">\(1/2\,\mathrm{kg}\)</span> en <span class="math inline">\((\pm\sqrt2,0,0)\)</span> y <span class="math inline">\((0,\pm1,0)\)</span> metros. El centro es cero, las sumas ponderadas de cuadrados son <span class="math inline">\(\sum mx^2=2\)</span>, <span class="math inline">\(\sum my^2=1\)</span>, <span class="math inline">\(\sum mz^2=0\)</span>, y el tensor es <span class="math inline">\(\operatorname{diag}(1,2,3)\,\mathrm{kg\,m^2}\)</span>. La igualdad en la desigualdad anterior identifica una distribución plana, compatible con momentos positivos en todas las direcciones.</p>
+</section>
+<section id="solucion-19-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-14">14. Examinar el límite de una varilla sin espesor</h3>
+<p>La densidad lineal es <span class="math inline">\(1\,\mathrm{kg/m}\)</span>. La distancia al eje de la varilla es cero para todas sus masas, mientras que <span class="math inline">\(\int_{-1}^{1}x^2dx=2/3\)</span>. Resulta <span class="math inline">\(\mathsf I=\operatorname{diag}(0,2/3,2/3)\,\mathrm{kg\,m^2}\)</span>. El momento angular no contiene información sobre <span class="math inline">\(\omega_1\)</span>: un giro ideal alrededor de la propia recta no mueve ninguno de sus puntos.</p>
+<p>Esa degeneración pertenece al modelo sin espesor. Una varilla real tiene un momento axial pequeño y positivo, y entonces la reconstrucción divide la componente axial de momento por ese número pequeño. Recuperar la velocidad axial puede volverse muy sensible a errores de medida, aun cuando el tensor ya sea invertible.</p>
+</section>
+<section id="solucion-19-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-15">15. Resolver el cuerpo simétrico libre</h3>
+<p>Se tiene <span class="math inline">\(s=4\)</span> y <span class="math inline">\(\nu=(3-2)4/2=2\,\mathrm{s^{-1}}\)</span>. La solución y el momento material son</p>
+<p><span class="math display">\[
+\boldsymbol\omega=(\cos2t,\sin2t,4)\,\mathrm{s^{-1}},
+\qquad
+\boldsymbol\ell=(2\cos2t,2\sin2t,12)\,\mathrm{kg\,m^2/s},
+\]</span></p>
+<p>donde <span class="math inline">\(t\)</span> se expresa en segundos. La energía es <span class="math inline">\(\frac12(2+48)=25\,\mathrm J\)</span> y <span class="math inline">\(\|\mathbf L\|=\sqrt{148}\,\mathrm{kg\,m^2/s}\)</span>. La proyección de <span class="math inline">\(\mathbf L\)</span> sobre el eje de simetría es siempre <span class="math inline">\(Cs=12\)</span>, de modo que <span class="math inline">\(\cos\theta=12/\sqrt{148}\)</span> y <span class="math inline">\(\theta\approx9{,}46^\circ\)</span>.</p>
+<p>La tasa material es <span class="math inline">\(2\,\mathrm{s^{-1}}\)</span>, mientras la precesión del eje observado tiene rapidez <span class="math inline">\(\sqrt{148}/2=\sqrt{37}\approx6{,}083\,\mathrm{s^{-1}}\)</span>. Igualarlas confundiría el giro de componentes en el cuerpo con el movimiento de una dirección material en el laboratorio.</p>
+</section>
+<section id="solucion-19-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-16">16. Reconstruir el eje observado</h3>
+<p>Al inicio <span class="math inline">\(\mathbf L=(2,0,12)\)</span> y su dirección unitaria es <span class="math inline">\(\mathbf h=(1,0,6)/\sqrt{37}\)</span>. La ecuación <span class="math inline">\(\dot{\mathbf n}=\sqrt{37}\,\mathbf h\times\mathbf n\)</span> tiene solución</p>
+<p><span class="math display">\[
+\mathbf n(t)=\mathbf e_3\cos\alpha
++(\mathbf h\times\mathbf e_3)\sin\alpha
++\mathbf h(\mathbf h\cdot\mathbf e_3)(1-\cos\alpha),
+\qquad \alpha=\sqrt{37}\,t,
+\]</span></p>
+<p>que se verifica al derivar y evaluar en cero. Es la fórmula de rotación de un vector alrededor de un eje fijo: su componente paralela permanece y las dos perpendiculares giran. Da <span class="math inline">\(\dot{\mathbf n}(0)=(0,-1,0)\,\mathrm{s^{-1}}\)</span>, en acuerdo con <span class="math inline">\(\boldsymbol\Omega(0)\times\mathbf e_3\)</span>.</p>
+<p>En el tiempo indicado, <span class="math inline">\(\alpha=\pi\)</span> y <span class="math inline">\(\mathbf n=(12/37,0,35/37)\)</span>, de norma uno. La trayectoria de <span class="math inline">\(\mathbf n\)</span> determina dos grados de orientación; falta el giro del cuerpo alrededor de ese eje para localizar una marca fuera de él. El estado angular y <span class="math inline">\(Q(0)\)</span> sí determinan ese giro al integrar la ecuación completa de <span class="math inline">\(Q\)</span>.</p>
+</section>
+<section id="solucion-19-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-17">17. Comparar escalas de perturbación</h3>
+<p>Alrededor del primer eje, las ecuaciones transversales son <span class="math inline">\(\dot\omega_2=4\omega_3\)</span> y <span class="math inline">\(\dot\omega_3=-(4/3)\omega_2\)</span>, de donde la frecuencia es <span class="math inline">\(4/\sqrt3\,\mathrm{s^{-1}}\)</span>. Alrededor del tercero son <span class="math inline">\(\dot\omega_1=-4\omega_2\)</span> y <span class="math inline">\(\dot\omega_2=4\omega_1\)</span>, con frecuencia <span class="math inline">\(4\,\mathrm{s^{-1}}\)</span>. Ambas producen oscilaciones en el sistema lineal.</p>
+<p>Alrededor del segundo eje aparecen <span class="math inline">\(\dot\omega_1=-4\omega_3\)</span> y <span class="math inline">\(\dot\omega_3=-(4/3)\omega_1\)</span>. La tasa creciente es <span class="math inline">\(\lambda=4/\sqrt3\,\mathrm{s^{-1}}\)</span>. Para un dato en su modo creciente, la amplitud se multiplica por <span class="math inline">\(e^{\lambda t}\)</span>, y aumentar por un factor cien requiere</p>
+<p><span class="math display">\[
+t=\frac{\log100}{\lambda}\approx1{,}994\,\mathrm s.
+\]</span></p>
+<p>La estimación supone una componente inicial en ese modo y amplitudes pequeñas respecto del giro de base. El dato final <span class="math inline">\(10^{-2}\)</span> todavía es pequeño frente a <span class="math inline">\(4\)</span>; prolongar la exponencial hasta amplitudes arbitrariamente grandes excedería la linealización. Un dato situado exactamente en la dirección decreciente del sistema lineal no sigue esta estimación creciente.</p>
+</section>
+<section id="solucion-19-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-18">18. Seguir una salida exacta del eje intermedio</h3>
+<p>Escribiendo <span class="math inline">\(u=kt\)</span>, las derivadas de las componentes son <span class="math inline">\(-4k\operatorname{sech}u\tanh u\)</span>, <span class="math inline">\(-4k\operatorname{sech}^2u\)</span> y <span class="math inline">\((4k/\sqrt3)\operatorname{sech}u\tanh u\)</span>. Sustituir en las tres ecuaciones libres produce, respectivamente, <span class="math inline">\(-\omega_2\omega_3\)</span>, <span class="math inline">\(\omega_3\omega_1\)</span> y <span class="math inline">\(-\omega_1\omega_2/3\)</span>, con los mismos valores. La identidad <span class="math inline">\(\tanh^2u+\operatorname{sech}^2u=1\)</span> da <span class="math inline">\(K_{\mathrm{rot}}=16\,\mathrm J\)</span> y <span class="math inline">\(\|\boldsymbol\ell\|^2=64\,(\mathrm{kg\,m^2/s})^2\)</span>.</p>
+<p>Los límites son <span class="math inline">\((0,4,0)\)</span> cuando <span class="math inline">\(t\to-\infty\)</span> y <span class="math inline">\((0,-4,0)\)</span> cuando <span class="math inline">\(t\to+\infty\)</span>, en <span class="math inline">\(\mathrm{s^{-1}}\)</span>. En medio, la solución pasa por <span class="math inline">\((4,0,-4/\sqrt3)\)</span>, muy separada de ambos giros. Para comenzar en la rama negativa con <span class="math inline">\(\omega_1=10^{-4}\)</span>, se necesita <span class="math inline">\(\cosh(kT)=40000\)</span>, donde <span class="math inline">\(t=-T\)</span>. Así,</p>
+<p><span class="math display">\[
+T=\frac{\operatorname{arcosh}(40000)}{k},
+\qquad \operatorname{arcosh}x=\log\left(x+\sqrt{x^2-1}\right).
+\]</span></p>
+<p>Resulta aproximadamente <span class="math inline">\(4{,}889\,\mathrm s\)</span>. Esta expresión se obtiene resolviendo <span class="math inline">\(x=(e^v+e^{-v})/2\)</span> para <span class="math inline">\(e^v\ge1\)</span>. El recorrido es exacto en el modelo rígido y muestra una salida de tamaño finito desde datos arbitrariamente próximos al eje intermedio; no depende de extender una aproximación exponencial fuera de su régimen.</p>
+</section>
+<section id="solucion-19-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-19">19. Controlar la rama lenta del giróscopo</h3>
+<p>Los datos dan <span class="math inline">\(Mg d=0{,}5\,\mathrm{N\,m}\)</span>, <span class="math inline">\(Cs=1\,\mathrm{kg\,m^2/s}\)</span> y <span class="math inline">\(A\cos\theta=0{,}01\,\mathrm{kg\,m^2}\)</span>. La ecuación regular es <span class="math inline">\(0{,}01p^2-p+0{,}5=0\)</span> en unidades consistentes. Sus raíces son</p>
+<p><span class="math display">\[
+p_{\mathrm{lento}}=\frac1{1+\sqrt{0{,}98}}
+\approx0{,}502525\,\mathrm{s^{-1}},
+\qquad
+p_{\text{rápido}}\approx99{,}4975\,\mathrm{s^{-1}}.
+\]</span></p>
+<p>La aproximación da <span class="math inline">\(p_0=0{,}5\,\mathrm{s^{-1}}\)</span>. Su error relativo respecto de la raíz lenta es <span class="math inline">\((p_{\mathrm{lento}}-p_0)/p_{\mathrm{lento}}\approx0{,}005025\)</span>, cerca de <span class="math inline">\(0{,}503\%\)</span>. El parámetro de la raíz es <span class="math inline">\(0{,}02\)</span>, y <span class="math inline">\(p_{\mathrm{lento}}/s\approx0{,}00503\)</span> confirma separación de tasas para esa rama. La raíz rápida no cumple esa separación.</p>
+<p>La comparación describe un movimiento con ángulo constante y velocidades iniciales ajustadas a la precesión regular. No predice que cualquier liberación real adopte de inmediato esa rama. Rozamiento, deformación y una preparación que excite nutación requieren revisar las hipótesis antes de atribuir una diferencia experimental al error de la aproximación algebraica.</p>
+</section>
+<section id="solucion-19-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-20">20. Reconstruir una inercia desde seis medidas</h3>
+<p>En una bisectriz positiva, <span class="math inline">\(J((\mathbf e_i+\mathbf e_j)/\sqrt2)=(I_{ii}+I_{jj})/2+I_{ij}\)</span>. Las tres medidas coordenadas fijan la diagonal y las otras tres despejan, una por una, las entradas independientes restantes:</p>
+<p><span class="math display">\[
+\mathsf I=\begin{pmatrix}
+2&amp;-1/2&amp;1/2\\-1/2&amp;3&amp;-1/4\\1/2&amp;-1/4&amp;4
+\end{pmatrix}\,\mathrm{kg\,m^2}.
+\]</span></p>
+<p>Seis números bastan porque una matriz simétrica de orden tres tiene seis entradas independientes y este diseño las separa. Seis direcciones arbitrarias no garantizarían lo mismo: repetir ejes o elegir medidas dependientes puede perder información.</p>
+<p>Para comprobar realización física, reconstruimos la matriz de segundos momentos <span class="math inline">\(\mathsf S=\int\mathbf s\mathbf s^{\mathsf T}dm\)</span>. La definición implica <span class="math inline">\(\mathsf I=\operatorname{tr}(\mathsf S)\operatorname{Id}_3-\mathsf S\)</span> y, al tomar trazas, <span class="math inline">\(\mathsf S=\frac12\operatorname{tr}(\mathsf I)\operatorname{Id}_3-\mathsf I\)</span>. Con los datos,</p>
+<p><span class="math display">\[
+\mathsf S=\begin{pmatrix}5/2&amp;1/2&amp;-1/2\\1/2&amp;3/2&amp;1/4\\-1/2&amp;1/4&amp;1/2\end{pmatrix}
+=\frac52\mathbf v_1\mathbf v_1^{\mathsf T}
++\frac75\mathbf v_2\mathbf v_2^{\mathsf T}
++\frac5{16}\mathbf v_3\mathbf v_3^{\mathsf T},
+\]</span></p>
+<p>con <span class="math inline">\(\mathbf v_1=(1,1/5,-1/5)\)</span>, <span class="math inline">\(\mathbf v_2=(0,1,1/4)\)</span> y <span class="math inline">\(\mathbf v_3=(0,0,1)\)</span>. La igualdad se comprueba multiplicando cada columna por su traspuesta. Todos los coeficientes son positivos; situar pares de masas de <span class="math inline">\(1/2\,\mathrm{kg}\)</span> en <span class="math inline">\(\pm\sqrt{5/2}\,\mathbf v_1\)</span>, <span class="math inline">\(\pm\sqrt{7/5}\,\mathbf v_2\)</span> y <span class="math inline">\(\pm\sqrt{5/16}\,\mathbf v_3\)</span>, en metros, realiza esa matriz de segundos momentos y tiene centro cero. Hemos construido una distribución admisible, además de ajustar formalmente las seis medidas. Si las medidas contienen incertidumbre, tanto la reconstrucción como esta comprobación deben aplicarse a sus intervalos o al modelo estadístico declarado.</p>
+<p>Para controlar las lecturas conservamos el mismo diseño de reconstrucción. Sea <span class="math inline">\(\varepsilon=0{,}01\,\mathrm{kg\,m^2}\)</span>. Cada entrada diagonal de la perturbación <span class="math inline">\(\Delta\mathsf I\)</span> tiene módulo a lo sumo <span class="math inline">\(\varepsilon\)</span>; cada entrada cruzada combina una bisectriz y dos mitades de diagonales, de modo que su módulo es a lo sumo <span class="math inline">\(2\varepsilon\)</span>. En la matriz de segundos momentos,</p>
+<p><span class="math display">\[
+\Delta\mathsf S=\frac12\operatorname{tr}(\Delta\mathsf I)\operatorname{Id}_3-\Delta\mathsf I,
+\]</span></p>
+<p>la diagonal tiene cotas <span class="math inline">\(3\varepsilon/2\)</span> y los términos cruzados <span class="math inline">\(2\varepsilon\)</span>. Cada suma de valores absolutos de una fila es a lo sumo <span class="math inline">\(11\varepsilon/2\)</span>. Para una matriz simétrica, esta cota controla su forma cuadrática: usar <span class="math inline">\(2|u_iu_j|\leq u_i^2+u_j^2\)</span> en la suma de los términos cruzados da</p>
+<p><span class="math display">\[
+|\mathbf u^{\mathsf T}\Delta\mathsf S\mathbf u|
+\leq\frac{11\varepsilon}{2}\|\mathbf u\|^2.
+\]</span></p>
+<p>Busquemos una cota positiva para la matriz nominal. En valores numéricos SI, los menores principales sucesivos de <span class="math inline">\(\mathsf S-0{,}1\operatorname{Id}_3\)</span> son <span class="math inline">\(12/5\)</span>, <span class="math inline">\(311/100\)</span> y <span class="math inline">\(619/1000\)</span>. La eliminación simétrica tiene por tanto tres pivotes positivos: <span class="math inline">\(12/5\)</span>, <span class="math inline">\(311/240\)</span> y <span class="math inline">\(619/3110\)</span>. Su factorización como una matriz triangular, una diagonal positiva y la traspuesta triangular prueba que su forma cuadrática es positiva. Así, la matriz nominal cumple <span class="math inline">\(\mathbf u^{\mathsf T}\mathsf S\mathbf u\geq0{,}1\|\mathbf u\|^2\)</span> en esas unidades. Para cualquier lectura admisible,</p>
+<p><span class="math display">\[
+\mathbf u^{\mathsf T}(\mathsf S+\Delta\mathsf S)\mathbf u
+\geq(0{,}1-0{,}055)\|\mathbf u\|^2
+=0{,}045\|\mathbf u\|^2.
+\]</span></p>
+<p>La cota es estrictamente positiva para <span class="math inline">\(\mathbf u\ne0\)</span>. El criterio demostrado en el núcleo teórico certifica la realización de todas las matrices de esta familia, además de la nominal. El resultado supone direcciones exactas: una incertidumbre angular altera las ecuaciones que relacionan las lecturas con las entradas y necesita una cota adicional. La calibración de los ejes forma parte del experimento que permite interpretar las seis medidas.</p>
 </section>
 </section>
-<section id="fispm-c21-quuxe9-matrices-pueden-ser-una-inercia" class="level2">
-<h2 class="anchored" data-anchor-id="fispm-c21-quuxe9-matrices-pueden-ser-una-inercia">14. Qué matrices pueden ser una inercia</h2>
-<p>La simetría y la positividad son necesarias, pero aún no bastan para cualquier matriz candidata. Cada momento principal suma dos promedios de cuadrados y esos promedios deben ser no negativos. Esta observación proporciona una comprobación adicional y una pequeña reconstrucción de distribuciones.</p>
-<p><span id="fispm-t1-c21-p0025"></span></p>
-<p><strong>Proposición 21.25 — Desigualdades y realización de momentos principales.</strong> Los momentos principales de una distribución de masa satisfacen</p>
-<p><span class="math display">\[J_1+J_2\geq J_3,\qquad J_2+J_3\geq J_1,\qquad J_3+J_1\geq J_2.\]</span></p>
-<p>La igualdad <span class="math inline">\(J_1+J_2=J_3\)</span> equivale a que la masa esté concentrada en el plano corporal <span class="math inline">\(q_3=0\)</span>, salvo un conjunto de masa nula. Recíprocamente, toda terna no negativa que cumpla esas desigualdades se realiza como momentos centrales de una distribución puntual de cualquier masa total prescrita <span class="math inline">\(M&gt;0\)</span>.</p>
-<p><strong>Demostración.</strong> En ejes principales, proposición 21.11 da <span class="math inline">\(J_1+J_2-J_3=2\int q_3^2dm\geq0\)</span>, y las otras relaciones resultan por permutación. La integral se anula exactamente cuando <span class="math inline">\(q_3=0\)</span> para casi toda la masa.</p>
-<p>Para la realización, pongamos <span class="math inline">\(Q_i=(J_j+J_k-J_i)/2\)</span> con <span class="math inline">\(\{i,j,k\}=\{1,2,3\}\)</span>. Las desigualdades aseguran <span class="math inline">\(Q_i\geq0\)</span>. Coloquemos dos masas de <span class="math inline">\(M/6\)</span> en cada pareja de puntos <span class="math inline">\(\pm\sqrt{3Q_i/M}\,\mathbf e_i\)</span>. La suma de masas es <span class="math inline">\(M\)</span> y su centro es cero por parejas. Las integrales de <span class="math inline">\(q_i^2\)</span> valen <span class="math inline">\(Q_i\)</span> y las mixtas son cero. El momento sobre el eje <span class="math inline">\(i\)</span> es <span class="math inline">\(Q_j+Q_k=J_i\)</span>. Si algún <span class="math inline">\(Q_i\)</span> es cero, la pareja coincide en el origen, lo que sigue definiendo una medida positiva válida. <span class="math inline">\(\square\)</span></p>
-<p>La realización puntual no reconstruye de forma única un cuerpo real. Muchos objetos comparten tensor; el tensor registra segundos momentos y omite otros detalles de la distribución. Tampoco la demostración exige que la medida tenga volumen o superficie continua. Es una caracterización de los datos de inercia dentro del modelo de masa admitido.</p>
-<p>La orientación seguirá describiéndose por una curva en <span class="math inline">\(SO(3)\)</span>. En un instante, sus posibles velocidades se identifican con matrices antisimétricas de tres entradas independientes, o con un vector angular. La composición finita conserva la información del orden que vimos en §2. Esta relación entre orientación y velocidad angular ofrece una primera entrada geométrica al espacio de rotaciones; no convierte todo giro finito en una suma de vectores. Para usarla dinámicamente habrá que transportar también el momento angular y relacionar su derivada con el torque.</p>
-<p><span id="fispm-t1-c21-mp0014"></span></p>
-<p><strong>Principio metodológico 21.14.</strong> Comprueba simetría, positividad y desigualdades principales de una matriz candidata. Distingue los datos que determina el tensor de la forma material y de la ley dinámica que todavía falta.</p>
-<p><span id="problemas-de-integración"></span></p>
-<section id="fispm-c21-problemas-de-integraciuxf3n" class="level3">
-<h3 class="anchored" data-anchor-id="fispm-c21-problemas-de-integraciuxf3n">Problemas de integración</h3>
-<p><span id="fispm-t1-c21-e0027"></span></p>
-<p><strong>Ejercicio 21.27.</strong> Un tensor central tiene momentos principales <span class="math inline">\(2J,3J,4J\)</span>. El cuerpo gira con rapidez <span class="math inline">\(\omega\)</span> sobre una dirección que forma ángulos iguales con los tres ejes principales. Calcula energía y norma del momento angular, y decide si ambos vectores son colineales.</p>
-<p><strong>Solución.</strong> Podemos tomar <span class="math inline">\(\boldsymbol\Omega=\omega(1,1,1)/\sqrt3\)</span>; otras elecciones de signos dan las mismas dos cantidades escalares. Proposición 21.20 da <span class="math inline">\(K_{\mathrm{rot}}=(\omega^2/6)(2J+3J+4J)=3J\omega^2/2\)</span>. El momento es <span class="math inline">\(J\omega(2,3,4)/\sqrt3\)</span> y su norma <span class="math inline">\(J|\omega|\sqrt{29/3}\)</span>. Si <span class="math inline">\(\omega\ne0\)</span>, sus componentes no son proporcionales a las de <span class="math inline">\(\boldsymbol\Omega\)</span>, así que no son colineales. Usar <span class="math inline">\(|\mathbf H||\boldsymbol\Omega|/2\)</span> para la energía daría un valor incorrecto porque omitiría el ángulo entre ambos.</p>
-<p><span id="fispm-t1-c21-e0028"></span></p>
-<p><strong>Ejercicio 21.28.</strong> Un disco delgado homogéneo de masa <span class="math inline">\(M\)</span> y radio <span class="math inline">\(a\)</span> gira sobre un eje fijo contenido en su plano y tangente a su circunferencia. Calcula su momento y energía a rapidez angular <span class="math inline">\(\omega\)</span>.</p>
-<p><strong>Solución.</strong> El eje es una recta en el plano del disco, paralela a un diámetro y a distancia <span class="math inline">\(a\)</span> del centro, tangente al borde. El momento central sobre la dirección del diámetro es <span class="math inline">\(Ma^2/4\)</span> por la proposición 21.24. Proposición 21.23 añade <span class="math inline">\(Ma^2\)</span>, así que <span class="math inline">\(I_O=5Ma^2/4\)</span>. Como el eje es fijo en el marco inercial, proposición 21.16 da <span class="math inline">\(K=5Ma^2\omega^2/8\)</span>. No debe usarse el momento normal <span class="math inline">\(Ma^2/2\)</span>: la dirección del eje especificado está en el plano.</p>
-<p><span id="fispm-t1-c21-e0029"></span></p>
-<p><strong>Ejercicio 21.29.</strong> Para momentos principales <span class="math inline">\((6J,8J,10J)\)</span> y masa total <span class="math inline">\(M\)</span>, construye la distribución de seis puntos de la proposición 21.25.</p>
-<p><strong>Solución.</strong> Las integrales cuadráticas requeridas son <span class="math inline">\(Q_1=(8+10-6)J/2=6J\)</span>, <span class="math inline">\(Q_2=4J\)</span> y <span class="math inline">\(Q_3=2J\)</span>. Cada punto tiene masa <span class="math inline">\(M/6\)</span>. Las parejas están en <span class="math inline">\(\pm\sqrt{18J/M}\,\mathbf e_1\)</span>, <span class="math inline">\(\pm\sqrt{12J/M}\,\mathbf e_2\)</span> y <span class="math inline">\(\pm\sqrt{6J/M}\,\mathbf e_3\)</span>. Las sumas de primeros momentos son cero y las integrales de cuadrados son respectivamente <span class="math inline">\(6J,4J,2J\)</span>. Por proposición 21.11, los momentos son <span class="math inline">\(4J+2J\)</span>, <span class="math inline">\(6J+2J\)</span> y <span class="math inline">\(6J+4J\)</span>, como se pidió.</p>
-<p><span id="fispm-t1-c21-e0030"></span></p>
-<p><strong>Ejercicio 21.30.</strong> Revisa la afirmación defectuosa: «Toda matriz simétrica definida positiva puede representar un tensor de inercia». Usa la matriz <span class="math inline">\(J\operatorname{diag}(1,1,3)\)</span>, con <span class="math inline">\(J&gt;0\)</span>, para localizar la falla y formular un criterio correcto en el modelo de la definición 21.4.</p>
-<p><strong>Solución.</strong> La matriz es simétrica y su forma cuadrática es positiva para todo vector no nulo. Sin embargo <span class="math inline">\(J_1+J_2=2J&lt;3J=J_3\)</span>, contradiciendo proposición 21.25. Equivalentemente, exigiría <span class="math inline">\(\int q_3^2dm=(J_1+J_2-J_3)/2=-J/2\)</span>, imposible para masa positiva. El criterio correcto es simetría, autovalores no negativos y las tres desigualdades triangulares de momentos. Son necesarios por la proposición 21.11, proposición 21.12 y proposición 21.25, y suficientes para una realización puntual por la construcción de la proposición 21.25 después de orientar los ejes mediante una matriz ortogonal. El tensor no puede elegirse ignorando que procede de una distribución de masa.</p>
-<p>Tenemos una orientación, una velocidad angular y una aplicación que convierte esa velocidad en momento angular. En el capítulo 22 la distribución permanecerá fija en ejes corporales mientras el momento angular cambiará según el torque. La regla de transporte del capítulo 20 permitirá reunir esos dos hechos y obtener las ecuaciones de dinámica del cuerpo rígido.</p>
-<p><span id="fispm-c21-notas-y-referencias" data-label="fispm-c21-notas-y-referencias"></span></p>
+<section id="lecturas-y-conexiones" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-conexiones">Lecturas y conexiones</h2>
+<p>Spivak, <em>Physics for Mathematicians. Mechanics I</em>, capítulo 5, pp.&nbsp;186–194, desarrolla el tensor, los ejes principales, el traslado y la energía; el capítulo 9, pp.&nbsp;332–339, conecta la derivada en ejes móviles con Euler y la geometría del giro libre. Aquí la regla de transporte se retoma del capítulo anterior y la estabilidad se precisa en el espacio de componentes de velocidad angular, con una trayectoria exacta que permite comprobar el mecanismo de salida.</p>
+<p>Sears y Zemansky, <em>Física universitaria</em>, volumen 1, §10.5, distingue giro de simetría y momento angular oblicuo; §10.7 analiza la precesión. Serway y Jewett, <em>Física para ciencias e ingeniería</em>, volumen 1, §11.3 y §11.5, permite cotejar el alcance de la fórmula escalar y la aproximación de giro rápido. El cálculo de seis medidas recupera la relación del capítulo cero entre operación de medida, parámetros inferidos y consistencia del modelo: una matriz ajustada debe conservar las restricciones que provienen de una distribución de masa real.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-18-marcos-acelerados-y-giratorios.html">← 18. Marcos acelerados y giratorios</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-20-oscilaciones-acopladas.html">20. Oscilaciones acopladas →</a></p>
 
 
 </section>
-</section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
-
-<ol>
-<li id="fn1"><p>MIT OpenCourseWare, <em>16.485 Visual Navigation for Autonomous Vehicles</em>, Lecture 2–3, 2020, representación eje-ángulo y fórmula de Rodrigues: <a href="https://ocw.mit.edu/courses/16-485-visual-navigation-for-autonomous-vehicles-vnav-fall-2020/3d420ad5fb33e6cd304834b3ede12f6f_MIT16_485F20_lec02and03.pdf" class="uri">https://ocw.mit.edu/courses/16-485-visual-navigation-for-autonomous-vehicles-vnav-fall-2020/3d420ad5fb33e6cd304834b3ede12f6f_MIT16_485F20_lec02and03.pdf</a> . Contraste de convenciones matriciales. Las demostraciones presentes parten de ortogonalidad, determinante y descomposición axial.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>MIT OpenCourseWare, <em>16.07 Dynamics</em>, Lecture L26, <em>3D Rigid Body Dynamics: The Inertia Tensor</em>: <a href="https://ocw.mit.edu/courses/16-07-dynamics-fall-2009/dd277ec654440f4c2b5b07d6c286c3fd_MIT16_07F09_Lec26.pdf" class="uri">https://ocw.mit.edu/courses/16-07-dynamics-fall-2009/dd277ec654440f4c2b5b07d6c286c3fd_MIT16_07F09_Lec26.pdf</a> ; G. J. Sussman y J. Wisdom, <em>Structure and Interpretation of Classical Mechanics</em>, segunda edición, capítulo 2: <a href="https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/9579/sicm_edition_2.zip/chapter002.html" class="uri">https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/9579/sicm_edition_2.zip/chapter002.html</a> . Contraste de tensor, base principal y energía. En la lectura de L26 debe corregirse una inversión verbal en la descripción del problema característico: los autovectores dan direcciones y los autovalores dan momentos. Proposición 21.19 fija aquí esa correspondencia mediante prueba propia.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>MIT OpenCourseWare, <em>8.09 Classical Mechanics III</em>, capítulo 2, <em>Rigid Body Dynamics</em>, ecuación 2.49: <a href="https://ocw.mit.edu/courses/8-09-classical-mechanics-iii-fall-2014/6fe39e8d5ce4ce746ca256dfea665eda_MIT8_09F14_Chapter_2.pdf" class="uri">https://ocw.mit.edu/courses/8-09-classical-mechanics-iii-fall-2014/6fe39e8d5ce4ce746ca256dfea665eda_MIT8_09F14_Chapter_2.pdf</a> . Contraste de traslación tensorial del punto. El teorema se demuestra en la proposición 21.23 expandiendo la integral y usando los primeros momentos centrales nulos.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main></div><script>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main></div><script>
 (() => {
   'use strict';
 

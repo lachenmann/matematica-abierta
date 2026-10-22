@@ -1,0 +1,2064 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 19 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>Cuerpo rígido en tres dimensiones – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#describir-un-cuerpo-que-se-traslada-y-gira" id="toc-describir-un-cuerpo-que-se-traslada-y-gira" class="nav-link active" data-scroll-target="#describir-un-cuerpo-que-se-traslada-y-gira">Describir un cuerpo que se traslada y gira</a></li>
+  <li><a href="#reunir-la-distribución-de-masa-en-una-transformación" id="toc-reunir-la-distribución-de-masa-en-una-transformación" class="nav-link" data-scroll-target="#reunir-la-distribución-de-masa-en-una-transformación">Reunir la distribución de masa en una transformación</a></li>
+  <li><a href="#escoger-ejes-que-separen-las-respuestas" id="toc-escoger-ejes-que-separen-las-respuestas" class="nav-link" data-scroll-target="#escoger-ejes-que-separen-las-respuestas">Escoger ejes que separen las respuestas</a></li>
+  <li><a href="#trasladar-el-punto-de-referencia" id="toc-trasladar-el-punto-de-referencia" class="nav-link" data-scroll-target="#trasladar-el-punto-de-referencia">Trasladar el punto de referencia</a></li>
+  <li><a href="#escribir-el-balance-en-los-ejes-del-cuerpo" id="toc-escribir-el-balance-en-los-ejes-del-cuerpo" class="nav-link" data-scroll-target="#escribir-el-balance-en-los-ejes-del-cuerpo">Escribir el balance en los ejes del cuerpo</a></li>
+  <li><a href="#resolver-un-giro-libre-y-precisar-su-estabilidad" id="toc-resolver-un-giro-libre-y-precisar-su-estabilidad" class="nav-link" data-scroll-target="#resolver-un-giro-libre-y-precisar-su-estabilidad">Resolver un giro libre y precisar su estabilidad</a></li>
+  <li><a href="#contrastar-una-aproximación-para-el-giróscopo" id="toc-contrastar-una-aproximación-para-el-giróscopo" class="nav-link" data-scroll-target="#contrastar-una-aproximación-para-el-giróscopo">Contrastar una aproximación para el giróscopo</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-19-1" id="toc-ejercicio-19-1" class="nav-link" data-scroll-target="#ejercicio-19-1">1. Reconstruir el ejemplo de apertura</a></li>
+  <li><a href="#ejercicio-19-2" id="toc-ejercicio-19-2" class="nav-link" data-scroll-target="#ejercicio-19-2">2. Encontrar términos no diagonales</a></li>
+  <li><a href="#ejercicio-19-3" id="toc-ejercicio-19-3" class="nav-link" data-scroll-target="#ejercicio-19-3">3. Integrar una lámina rectangular</a></li>
+  <li><a href="#ejercicio-19-4" id="toc-ejercicio-19-4" class="nav-link" data-scroll-target="#ejercicio-19-4">4. Construir una terna principal orientada</a></li>
+  <li><a href="#ejercicio-19-5" id="toc-ejercicio-19-5" class="nav-link" data-scroll-target="#ejercicio-19-5">5. Medir alrededor de un eje oblicuo</a></li>
+  <li><a href="#ejercicio-19-6" id="toc-ejercicio-19-6" class="nav-link" data-scroll-target="#ejercicio-19-6">6. Llevar el tensor a una esquina</a></li>
+  <li><a href="#ejercicio-19-7" id="toc-ejercicio-19-7" class="nav-link" data-scroll-target="#ejercicio-19-7">7. Rotar el cuerpo y cambiar componentes</a></li>
+  <li><a href="#ejercicio-19-8" id="toc-ejercicio-19-8" class="nav-link" data-scroll-target="#ejercicio-19-8">8. Mantener un giro que necesita apoyos</a></li>
+  <li><a href="#ejercicio-19-9" id="toc-ejercicio-19-9" class="nav-link" data-scroll-target="#ejercicio-19-9">9. Obtener la derivada libre instantánea</a></li>
+  <li><a href="#ejercicio-19-10" id="toc-ejercicio-19-10" class="nav-link" data-scroll-target="#ejercicio-19-10">10. Inferir el torque a partir de datos</a></li>
+  <li><a href="#ejercicio-19-11" id="toc-ejercicio-19-11" class="nav-link" data-scroll-target="#ejercicio-19-11">11. Separar traslación y giro</a></li>
+  <li><a href="#ejercicio-19-12" id="toc-ejercicio-19-12" class="nav-link" data-scroll-target="#ejercicio-19-12">12. Rechazar datos incompatibles con la energía</a></li>
+  <li><a href="#ejercicio-19-13" id="toc-ejercicio-19-13" class="nav-link" data-scroll-target="#ejercicio-19-13">13. Comprobar si una matriz puede ser una inercia</a></li>
+  <li><a href="#ejercicio-19-14" id="toc-ejercicio-19-14" class="nav-link" data-scroll-target="#ejercicio-19-14">14. Examinar el límite de una varilla sin espesor</a></li>
+  <li><a href="#ejercicio-19-15" id="toc-ejercicio-19-15" class="nav-link" data-scroll-target="#ejercicio-19-15">15. Resolver el cuerpo simétrico libre</a></li>
+  <li><a href="#ejercicio-19-16" id="toc-ejercicio-19-16" class="nav-link" data-scroll-target="#ejercicio-19-16">16. Reconstruir el eje observado</a></li>
+  <li><a href="#ejercicio-19-17" id="toc-ejercicio-19-17" class="nav-link" data-scroll-target="#ejercicio-19-17">17. Comparar escalas de perturbación</a></li>
+  <li><a href="#ejercicio-19-18" id="toc-ejercicio-19-18" class="nav-link" data-scroll-target="#ejercicio-19-18">18. Seguir una salida exacta del eje intermedio</a></li>
+  <li><a href="#ejercicio-19-19" id="toc-ejercicio-19-19" class="nav-link" data-scroll-target="#ejercicio-19-19">19. Controlar la rama lenta del giróscopo</a></li>
+  <li><a href="#ejercicio-19-20" id="toc-ejercicio-19-20" class="nav-link" data-scroll-target="#ejercicio-19-20">20. Reconstruir una inercia desde seis medidas</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#solucion-19-1" id="toc-solucion-19-1" class="nav-link" data-scroll-target="#solucion-19-1">1. Reconstruir el ejemplo de apertura</a></li>
+  <li><a href="#solucion-19-2" id="toc-solucion-19-2" class="nav-link" data-scroll-target="#solucion-19-2">2. Encontrar términos no diagonales</a></li>
+  <li><a href="#solucion-19-3" id="toc-solucion-19-3" class="nav-link" data-scroll-target="#solucion-19-3">3. Integrar una lámina rectangular</a></li>
+  <li><a href="#solucion-19-4" id="toc-solucion-19-4" class="nav-link" data-scroll-target="#solucion-19-4">4. Construir una terna principal orientada</a></li>
+  <li><a href="#solucion-19-5" id="toc-solucion-19-5" class="nav-link" data-scroll-target="#solucion-19-5">5. Medir alrededor de un eje oblicuo</a></li>
+  <li><a href="#solucion-19-6" id="toc-solucion-19-6" class="nav-link" data-scroll-target="#solucion-19-6">6. Llevar el tensor a una esquina</a></li>
+  <li><a href="#solucion-19-7" id="toc-solucion-19-7" class="nav-link" data-scroll-target="#solucion-19-7">7. Rotar el cuerpo y cambiar componentes</a></li>
+  <li><a href="#solucion-19-8" id="toc-solucion-19-8" class="nav-link" data-scroll-target="#solucion-19-8">8. Mantener un giro que necesita apoyos</a></li>
+  <li><a href="#solucion-19-9" id="toc-solucion-19-9" class="nav-link" data-scroll-target="#solucion-19-9">9. Obtener la derivada libre instantánea</a></li>
+  <li><a href="#solucion-19-10" id="toc-solucion-19-10" class="nav-link" data-scroll-target="#solucion-19-10">10. Inferir el torque a partir de datos</a></li>
+  <li><a href="#solucion-19-11" id="toc-solucion-19-11" class="nav-link" data-scroll-target="#solucion-19-11">11. Separar traslación y giro</a></li>
+  <li><a href="#solucion-19-12" id="toc-solucion-19-12" class="nav-link" data-scroll-target="#solucion-19-12">12. Rechazar datos incompatibles con la energía</a></li>
+  <li><a href="#solucion-19-13" id="toc-solucion-19-13" class="nav-link" data-scroll-target="#solucion-19-13">13. Comprobar si una matriz puede ser una inercia</a></li>
+  <li><a href="#solucion-19-14" id="toc-solucion-19-14" class="nav-link" data-scroll-target="#solucion-19-14">14. Examinar el límite de una varilla sin espesor</a></li>
+  <li><a href="#solucion-19-15" id="toc-solucion-19-15" class="nav-link" data-scroll-target="#solucion-19-15">15. Resolver el cuerpo simétrico libre</a></li>
+  <li><a href="#solucion-19-16" id="toc-solucion-19-16" class="nav-link" data-scroll-target="#solucion-19-16">16. Reconstruir el eje observado</a></li>
+  <li><a href="#solucion-19-17" id="toc-solucion-19-17" class="nav-link" data-scroll-target="#solucion-19-17">17. Comparar escalas de perturbación</a></li>
+  <li><a href="#solucion-19-18" id="toc-solucion-19-18" class="nav-link" data-scroll-target="#solucion-19-18">18. Seguir una salida exacta del eje intermedio</a></li>
+  <li><a href="#solucion-19-19" id="toc-solucion-19-19" class="nav-link" data-scroll-target="#solucion-19-19">19. Controlar la rama lenta del giróscopo</a></li>
+  <li><a href="#solucion-19-20" id="toc-solucion-19-20" class="nav-link" data-scroll-target="#solucion-19-20">20. Reconstruir una inercia desde seis medidas</a></li>
+  </ul></li>
+  <li><a href="#lecturas-y-conexiones" id="toc-lecturas-y-conexiones" class="nav-link" data-scroll-target="#lecturas-y-conexiones">Lecturas y conexiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Cuerpo rígido en tres dimensiones</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 19</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 19 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-18-marcos-acelerados-y-giratorios.html">← 18. Marcos acelerados y giratorios</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-20-oscilaciones-acopladas.html">20. Oscilaciones acopladas →</a></p>
+<p>Una rueda bien alineada puede mantener su giro alrededor de un eje sin que los cojinetes deban cambiar continuamente la dirección de su momento angular. Si distribuimos la masa de otra manera y conservamos el mismo eje, puede hacer falta un torque transversal aunque la rapidez de giro sea constante. El cálculo escalar del momento de inercia sigue describiendo una parte de ese movimiento, pero deja sin determinar la dirección del momento angular y el esfuerzo que deben ejercer los apoyos.</p>
+<p>Para ver la dificultad con pocos datos, consideremos cuatro masas iguales en las posiciones <span class="math inline">\((1,0,0)\)</span>, <span class="math inline">\((-1,0,0)\)</span>, <span class="math inline">\((0,2,0)\)</span> y <span class="math inline">\((0,-2,0)\)</span> respecto de su centro. Cuando cada masa vale una unidad y la velocidad angular es <span class="math inline">\((1,1,0)\)</span>, el momento angular resulta <span class="math inline">\((8,2,0)\)</span> en las unidades correspondientes. Ambos vectores pertenecen al mismo plano y forman un ángulo distinto de cero. La distribución de masa responde de manera diferente a cada componente del giro; necesitamos una transformación lineal que reúna esas respuestas.</p>
+<p>Supondremos conocidos los balances de un sistema de partículas, la rotación alrededor de un eje y la regla de transporte del capítulo 18. Introduciremos localmente la descomposición en ejes principales. El modelo rígido conserva las distancias internas: resulta adecuado mientras deformaciones y vibraciones no alteren de manera apreciable el movimiento que se desea estudiar. Las tensiones que mantienen esa rigidez pueden importar para la resistencia del material, aunque el balance global permita eliminar sus torques internos.</p>
+<section id="describir-un-cuerpo-que-se-traslada-y-gira" class="level2">
+<h2 class="anchored" data-anchor-id="describir-un-cuerpo-que-se-traslada-y-gira">Describir un cuerpo que se traslada y gira</h2>
+<p><strong>Definición.</strong> Un cuerpo rígido discreto de masas constantes <span class="math inline">\(m_i&gt;0\)</span> se describe mediante posiciones</p>
+<p><span class="math display">\[
+\mathbf x_i(t)=\mathbf R(t)+Q(t)\mathbf s_i,
+\qquad Q^{\mathsf T}Q=\operatorname{Id}_3,\quad\det Q=1,
+\]</span></p>
+<p>con vectores materiales <span class="math inline">\(\mathbf s_i\)</span> independientes del tiempo y funciones <span class="math inline">\(\mathbf R,Q\)</span> de clase <span class="math inline">\(C^2\)</span>. Si <span class="math inline">\(\mathbf R\)</span> es el centro de masa, se exige <span class="math inline">\(\sum_i m_i\mathbf s_i=0\)</span>. Escribimos <span class="math inline">\(M=\sum_i m_i\)</span>, <span class="math inline">\(\mathbf V=\dot{\mathbf R}\)</span> y definimos las componentes materiales <span class="math inline">\(\boldsymbol\omega\)</span> por <span class="math inline">\(Q^{\mathsf T}\dot Q\,\mathbf a=\boldsymbol\omega\times\mathbf a\)</span> para todo <span class="math inline">\(\mathbf a\)</span>.</p>
+<p>La notación <span class="math inline">\(\operatorname{Id}_3\)</span> designa la identidad de orden tres. La matriz <span class="math inline">\(Q\)</span> conserva longitudes y ángulos. Sus columnas son los ejes ligados al cuerpo expresados en el laboratorio, y <span class="math inline">\(\boldsymbol\Omega=Q\boldsymbol\omega\)</span> es la velocidad angular física. Derivar las posiciones da</p>
+<p><span class="math display">\[
+\dot{\mathbf x}_i=\mathbf V+Q(\boldsymbol\omega\times\mathbf s_i).
+\]</span></p>
+<p>La misma velocidad angular produce velocidades distintas en puntos diferentes: la distancia al eje y la dirección de cada separación intervienen en el producto vectorial. Para recuperar la orientación después de resolver la dinámica de <span class="math inline">\(\boldsymbol\omega\)</span>, también habrá que integrar</p>
+<p><span class="math display">\[
+\dot Q=Q[\boldsymbol\omega]_\times,
+\qquad [\boldsymbol\omega]_\times\mathbf a=\boldsymbol\omega\times\mathbf a,
+\]</span></p>
+<p>con una orientación inicial <span class="math inline">\(Q(0)\)</span>. Conocer las tres componentes de velocidad angular no equivale a conocer dónde se encuentra cada punto del cuerpo.</p>
+<figure id="fig-fispm-r20261021-19-1" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/rigido_cinematica.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="../../assets/books/fispm/r20261021/rigido_cinematica.svg" alt="Traslación y velocidad de un punto material" class="fpm-v04-figure img-fluid figure-img" width="900" height="610" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 19.1.</em> La separación material se transporta mediante <span class="math inline">\(Q\)</span>. La velocidad de un punto suma la velocidad del centro y la contribución perpendicular al eje instantáneo de giro; el dibujo representa un instante.</p>
+</figcaption>
+</figure>
+</section>
+<section id="reunir-la-distribución-de-masa-en-una-transformación" class="level2">
+<h2 class="anchored" data-anchor-id="reunir-la-distribución-de-masa-en-una-transformación">Reunir la distribución de masa en una transformación</h2>
+<p>El momento angular relativo al centro se obtiene sumando cada separación vectorial cruzada con su cantidad de movimiento relativa. Al sustituir la velocidad rígida aparece, para cada masa, la expresión <span class="math inline">\(\mathbf s_i\times(\boldsymbol\omega\times\mathbf s_i)\)</span>. El producto triple permite escribirla como <span class="math inline">\(\|\mathbf s_i\|^2\boldsymbol\omega-(\mathbf s_i\cdot\boldsymbol\omega)\mathbf s_i\)</span>: su dependencia de <span class="math inline">\(\boldsymbol\omega\)</span> es lineal.</p>
+<p><strong>Definición.</strong> El tensor de inercia respecto del origen material elegido es la transformación lineal de matriz</p>
+<p><span class="math display">\[
+\mathsf I=\sum_i m_i\left(\|\mathbf s_i\|^2\operatorname{Id}_3-\mathbf s_i\mathbf s_i^{\mathsf T}\right).
+\]</span></p>
+<p>Para una distribución continua no negativa se reemplaza la suma por <span class="math inline">\(\int(\|\mathbf s\|^2\operatorname{Id}_3-\mathbf s\mathbf s^{\mathsf T})\,dm\)</span>, suponiendo masa total y segundos momentos finitos.</p>
+<p>El término tensor designa aquí una transformación del espacio euclídeo; una matriz concreta expresa sus componentes en una base ortonormal. Al escoger coordenadas <span class="math inline">\(\mathbf s_i=(x_i,y_i,z_i)\)</span>, su matriz queda</p>
+<p><span class="math display">\[
+\mathsf I=\begin{pmatrix}
+\sum m_i(y_i^2+z_i^2)&amp;-\sum m_ix_iy_i&amp;-\sum m_ix_iz_i\\
+-\sum m_ix_iy_i&amp;\sum m_i(x_i^2+z_i^2)&amp;-\sum m_iy_iz_i\\
+-\sum m_ix_iz_i&amp;-\sum m_iy_iz_i&amp;\sum m_i(x_i^2+y_i^2)
+\end{pmatrix}.
+\]</span></p>
+<p>Las entradas diagonales son momentos respecto de los ejes coordenados. Las entradas restantes conservan correlaciones geométricas entre coordenadas. Algunas convenciones llaman productos de inercia a las sumas sin el signo menos; mantendremos los signos de la matriz escrita.</p>
+<p><strong>Proposición.</strong> Respecto del centro de masa, las componentes materiales del momento angular son <span class="math inline">\(\boldsymbol\ell=\mathsf I\boldsymbol\omega\)</span>. En el laboratorio y para un origen inercial fijo <span class="math inline">\(O\)</span>,</p>
+<p><span class="math display">\[
+\mathbf L_C=Q\boldsymbol\ell,
+\qquad K=\frac M2\|\mathbf V\|^2+\frac12\boldsymbol\omega\cdot\mathsf I\boldsymbol\omega,
+\]</span></p>
+<p><span class="math display">\[
+\mathbf L_O=\mathbf R\times M\mathbf V+Q\boldsymbol\ell,
+\]</span></p>
+<p>donde <span class="math inline">\(\mathbf R\)</span> se mide desde <span class="math inline">\(O\)</span>.</p>
+<p><strong>Demostración.</strong> La parte relativa del momento angular es <span class="math inline">\(Q\sum_i m_i\mathbf s_i\times(\boldsymbol\omega\times\mathbf s_i)\)</span>, porque una rotación de determinante uno conserva el producto vectorial. El producto triple la convierte en <span class="math inline">\(Q\mathsf I\boldsymbol\omega\)</span>. En la suma <span class="math inline">\(\frac12\sum_i m_i\|\mathbf V+Q(\boldsymbol\omega\times\mathbf s_i)\|^2\)</span>, el término cruzado contiene <span class="math inline">\(\sum_i m_i\mathbf s_i=0\)</span> y se anula. La parte restante usa la identidad <span class="math inline">\(\|\boldsymbol\omega\times\mathbf s\|^2=\boldsymbol\omega\cdot[\mathbf s\times(\boldsymbol\omega\times\mathbf s)]\)</span>, que produce la expresión de energía. Expandir <span class="math inline">\(\sum_i\mathbf x_i\times m_i\dot{\mathbf x}_i\)</span> elimina los dos términos cruzados por la misma condición de centro de masa y deja la fórmula de <span class="math inline">\(\mathbf L_O\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>En el ejemplo de apertura, <span class="math inline">\(\mathsf I=\operatorname{diag}(8,2,10)\)</span>. Multiplicar por <span class="math inline">\((1,1,0)\)</span> da <span class="math inline">\((8,2,0)\)</span>, y la energía rotacional es <span class="math inline">\(5\)</span>. Conservar únicamente el momento escalar alrededor de <span class="math inline">\((1,1,0)\)</span> permitiría calcular esa energía, pero perdería la componente transversal del momento angular.</p>
+<figure id="fig-fispm-r20261021-19-2" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/rigido_vectores.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="../../assets/books/fispm/r20261021/rigido_vectores.svg" alt="Velocidad angular y momento angular distintos" class="fpm-v04-figure img-fluid figure-img" width="900" height="610" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 19.2.</em> Para la distribución de cuatro masas del comienzo, los vectores <span class="math inline">\((1,1,0)\)</span> y <span class="math inline">\((8,2,0)\)</span> tienen direcciones diferentes. Las flechas se normalizan por separado para comparar direcciones; no comparten una escala de magnitud ni unidades.</p>
+</figcaption>
+</figure>
+</section>
+<section id="escoger-ejes-que-separen-las-respuestas" class="level2">
+<h2 class="anchored" data-anchor-id="escoger-ejes-que-separen-las-respuestas">Escoger ejes que separen las respuestas</h2>
+<p>Para un vector unitario <span class="math inline">\(\mathbf u\)</span>, el momento alrededor de la recta que pasa por el origen y tiene esa dirección es</p>
+<p><span class="math display">\[
+J(\mathbf u)=\mathbf u\cdot\mathsf I\mathbf u
+=\sum_i m_i\|\mathbf u\times\mathbf s_i\|^2.
+\]</span></p>
+<p>Esta expresión recupera la suma de masa por distancia al eje al cuadrado. También muestra que una lámina plana puede tener inercia positiva para todas las direcciones: lo que anula un momento es que toda la masa esté sobre la propia recta considerada.</p>
+<p><strong>Definición.</strong> Un eje principal es una dirección unitaria <span class="math inline">\(\mathbf e\)</span> para la cual <span class="math inline">\(\mathsf I\mathbf e=I\mathbf e\)</span>. El número <span class="math inline">\(I\)</span> es su momento principal. Una terna principal es una base ortonormal orientada positivamente formada por esas direcciones.</p>
+<p>Los ejes principales convierten el cálculo de <span class="math inline">\(\boldsymbol\ell\)</span> en tres multiplicaciones independientes. Su utilidad proviene de la simetría de la transformación, y admite una justificación breve que también precisa los casos degenerados.</p>
+<p><strong>Proposición.</strong> El tensor de inercia es simétrico y semidefinido positivo; es definido positivo si la distribución de masa no está contenida en una recta que pase por el origen. Posee una terna principal y momentos <span class="math inline">\(I_1,I_2,I_3\ge0\)</span>. Si <span class="math inline">\(P\)</span> tiene como columnas una terna principal,</p>
+<p><span class="math display">\[
+P^{\mathsf T}\mathsf I P=\operatorname{diag}(I_1,I_2,I_3).
+\]</span></p>
+<p>Al rotar físicamente el cuerpo mediante <span class="math inline">\(Q\)</span>, su matriz en el laboratorio es <span class="math inline">\(Q\mathsf I Q^{\mathsf T}\)</span>.</p>
+<p><strong>Demostración.</strong> Cada matriz <span class="math inline">\(\|\mathbf s_i\|^2\operatorname{Id}_3-\mathbf s_i\mathbf s_i^{\mathsf T}\)</span> es simétrica. Para todo <span class="math inline">\(\mathbf a\)</span>,</p>
+<p><span class="math display">\[
+\mathbf a\cdot\mathsf I\mathbf a=\sum_i m_i\|\mathbf a\times\mathbf s_i\|^2\ge0.
+\]</span></p>
+<p>Con masas positivas, esta suma se anula para <span class="math inline">\(\mathbf a\ne0\)</span> exactamente cuando todos los puntos materiales pertenecen a su recta. En el caso continuo la afirmación se entiende salvo conjuntos de masa nula.</p>
+<p>Para construir los ejes, minimizamos la función continua <span class="math inline">\(\mathbf u\cdot\mathsf I\mathbf u\)</span> sobre la esfera unitaria, donde alcanza un mínimo por compacidad. Si <span class="math inline">\(\mathbf e\)</span> es un minimizador y <span class="math inline">\(\mathbf v\perp\mathbf e\)</span>, derivar esa función sobre <span class="math inline">\((\mathbf e+t\mathbf v)/\|\mathbf e+t\mathbf v\|\)</span> en cero da <span class="math inline">\(2\mathbf v\cdot\mathsf I\mathbf e=0\)</span>. Por ello <span class="math inline">\(\mathsf I\mathbf e\)</span> es paralelo a <span class="math inline">\(\mathbf e\)</span>. El plano perpendicular es invariante, pues <span class="math inline">\(\mathbf e\cdot\mathsf I\mathbf v=\mathsf I\mathbf e\cdot\mathbf v=0\)</span>. Repetir el argumento en su circunferencia produce un segundo eje, y el tercero es perpendicular a ambos; se eligen sus signos para obtener orientación positiva. Los autovalores son no negativos por la forma cuadrática. Finalmente, sustituir <span class="math inline">\(\mathbf s_i\)</span> por <span class="math inline">\(Q\mathbf s_i\)</span> en la definición del tensor da <span class="math inline">\(Q\mathsf I Q^{\mathsf T}\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>Si dos momentos coinciden, cualquier base ortonormal de su plano propio sirve; si los tres coinciden, toda dirección es principal. Una terna elegida existe en ambos casos, aunque la distribución no determine tres direcciones únicas. Para <span class="math inline">\(\boldsymbol\omega\ne0\)</span>, el paralelismo entre <span class="math inline">\(\boldsymbol\ell\)</span> y <span class="math inline">\(\boldsymbol\omega\)</span> equivale a que el giro use una dirección propia.</p>
+<p>La forma cuadrática también permite visualizar los ejes. Para una energía positiva fijada <span class="math inline">\(E\)</span>, la superficie <span class="math inline">\(\frac12\boldsymbol\omega\cdot\mathsf I\boldsymbol\omega=E\)</span> es un elipsoide si los tres momentos son positivos. En ejes principales sus semiejes son <span class="math inline">\(\sqrt{2E/I_j}\)</span>; un momento mayor corresponde a menor velocidad angular a la misma energía. No deben confundirse esos semiejes con los de una superficie dibujada en componentes de momento angular.</p>
+<figure id="fig-fispm-r20261021-19-3" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/rigido_elipse.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="../../assets/books/fispm/r20261021/rigido_elipse.svg" alt="Sección de una superficie de energía" class="fpm-v04-figure img-fluid figure-img" width="900" height="590" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 19.3.</em> Sección <span class="math inline">\(\omega_3=0\)</span> de la superficie de energía para momentos <span class="math inline">\(2\)</span> y <span class="math inline">\(6\)</span> y energía <span class="math inline">\(3\)</span> en unidades consistentes. El gradiente de la energía tiene dirección <span class="math inline">\(\mathsf I\boldsymbol\omega\)</span>; normalmente es distinto de la dirección radial <span class="math inline">\(\boldsymbol\omega\)</span>.</p>
+</figcaption>
+</figure>
+<p>Una matriz reconstruida a partir de medidas debe conservar también las restricciones de una distribución de masa. El momento alrededor de cada eje reúne cuadrados de distancias; por ello las tres respuestas principales están relacionadas. Podemos expresar esa relación sin elegir primero los ejes.</p>
+<p><strong>Proposición (realización de una inercia).</strong> Una matriz real simétrica <span class="math inline">\(\mathsf H\)</span> de orden tres es el tensor central de alguna distribución discreta de masa no negativa con segundos momentos finitos si y sólo si</p>
+<p><span class="math display">\[
+\mathsf S=\frac12\operatorname{tr}(\mathsf H)\operatorname{Id}_3-\mathsf H
+\]</span></p>
+<p>es semidefinida positiva. Siempre que esa condición se cumple, la distribución puede construirse con cualquier masa total prescrita <span class="math inline">\(M&gt;0\)</span>. En ejes principales equivale a exigir <span class="math inline">\(I_j\leq I_k+I_l\)</span> para las tres elecciones de índices distintos.</p>
+<p><strong>Demostración.</strong> Para una distribución dada, sea <span class="math inline">\(\mathsf S=\sum_i m_i\mathbf s_i\mathbf s_i^{\mathsf T}\)</span>. Su forma cuadrática es <span class="math inline">\(\sum_i m_i(\mathbf a\cdot\mathbf s_i)^2\geq0\)</span>. La definición de inercia da <span class="math inline">\(\mathsf H=\operatorname{tr}(\mathsf S)\operatorname{Id}_3-\mathsf S\)</span> y, al tomar trazas, <span class="math inline">\(\operatorname{tr}(\mathsf H)=2\operatorname{tr}(\mathsf S)\)</span>. Esto prueba la necesidad y la fórmula enunciada.</p>
+<p>Para la recíproca, diagonalicemos <span class="math inline">\(\mathsf S=\sum_{j=1}^3s_j\mathbf e_j\mathbf e_j^{\mathsf T}\)</span> con <span class="math inline">\(s_j\geq0\)</span> y una base ortonormal. Sobre cada eje situamos dos masas <span class="math inline">\(M/6\)</span> en las posiciones</p>
+<p><span class="math display">\[
+\mathbf s_{j,\pm}=\pm\sqrt{\frac{3s_j}{M}}\,\mathbf e_j.
+\]</span></p>
+<p>Los pares tienen centro cero, masa total <span class="math inline">\(M\)</span> y matriz de segundos momentos igual a <span class="math inline">\(\mathsf S\)</span>. Si <span class="math inline">\(s_j=0\)</span>, su par se sitúa en el origen; masas coincidentes pueden reunirse. La inercia construida es <span class="math inline">\(\operatorname{tr}(\mathsf S)\operatorname{Id}_3-\mathsf S=\mathsf H\)</span>, usando la identidad de trazas. Finalmente, los autovalores de <span class="math inline">\(\mathsf S\)</span> son <span class="math inline">\((I_k+I_l-I_j)/2\)</span>. Su positividad equivale a las tres desigualdades. <span class="math inline">\(\square\)</span></p>
+<p>El criterio incluye las distribuciones planas y lineales. En particular, <span class="math inline">\(I_j=I_k+I_l\)</span> hace cero el segundo momento sobre el eje <span class="math inline">\(j\)</span>; la masa queda en el plano perpendicular a ese eje, salvo conjuntos de masa nula. La positividad de la forma cuadrática de inercia y la realización por masa responden así a dos preguntas que podemos comprobar por separado. El ejercicio 13 construye un caso de frontera y el 20 aplica el criterio a medidas oblicuas.</p>
+</section>
+<section id="trasladar-el-punto-de-referencia" class="level2">
+<h2 class="anchored" data-anchor-id="trasladar-el-punto-de-referencia">Trasladar el punto de referencia</h2>
+<p><strong>Proposición.</strong> Sean <span class="math inline">\(\mathsf I_C\)</span> el tensor respecto del centro y <span class="math inline">\(\mathsf I_O\)</span> el tensor respecto de otro punto, expresados en ejes paralelos. Si <span class="math inline">\(\mathbf d\)</span> va de <span class="math inline">\(O\)</span> al centro,</p>
+<p><span class="math display">\[
+\mathsf I_O=\mathsf I_C+M(\|\mathbf d\|^2\operatorname{Id}_3-\mathbf d\mathbf d^{\mathsf T}).
+\]</span></p>
+<p>Para ejes paralelos de dirección unitaria <span class="math inline">\(\mathbf u\)</span> se obtiene <span class="math inline">\(J_O(\mathbf u)=J_C(\mathbf u)+M\|\mathbf u\times\mathbf d\|^2\)</span>.</p>
+<p><strong>Demostración.</strong> Las separaciones desde <span class="math inline">\(O\)</span> son <span class="math inline">\(\mathbf s_i+\mathbf d\)</span>, con <span class="math inline">\(\sum_i m_i\mathbf s_i=0\)</span>. Al expandir tanto el cuadrado de la norma como el producto exterior en la definición de <span class="math inline">\(\mathsf I_O\)</span>, todos los términos lineales en <span class="math inline">\(\mathbf s_i\)</span> se anulan por esa igualdad. Quedan el tensor central y el término de una masa <span class="math inline">\(M\)</span> situada en <span class="math inline">\(\mathbf d\)</span>. Multiplicar a izquierda y derecha por <span class="math inline">\(\mathbf u^{\mathsf T}\)</span> y <span class="math inline">\(\mathbf u\)</span> reduce ese término a <span class="math inline">\(M(\|\mathbf d\|^2-(\mathbf u\cdot\mathbf d)^2)=M\|\mathbf u\times\mathbf d\|^2\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>El traslado puede crear entradas no diagonales incluso si los ejes originales eran principales en el centro. Suponer que basta sumar <span class="math inline">\(Md^2\)</span> a las tres diagonales pierde tanto las distancias perpendiculares como los términos cruzados.</p>
+<figure id="fig-fispm-r20261021-19-4" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/rigido_traslado.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="../../assets/books/fispm/r20261021/rigido_traslado.svg" alt="Traslado del origen y distancias perpendiculares" class="fpm-v04-figure img-fluid figure-img" width="900" height="580" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 19.4.</em> Dos ejes paralelos separados por la componente de <span class="math inline">\(\mathbf d\)</span> perpendicular a su dirección. La corrección escalar usa esa separación perpendicular; la fórmula tensorial conserva además la información entre direcciones.</p>
+</figcaption>
+</figure>
+</section>
+<section id="escribir-el-balance-en-los-ejes-del-cuerpo" class="level2">
+<h2 class="anchored" data-anchor-id="escribir-el-balance-en-los-ejes-del-cuerpo">Escribir el balance en los ejes del cuerpo</h2>
+<p>Usaremos el balance angular respecto del centro de masa, incluso cuando éste acelere, o respecto de un punto del cuerpo fijo en un marco inercial. En el centro, las contribuciones de la aceleración del origen desaparecen porque <span class="math inline">\(\sum_i m_i\mathbf s_i=0\)</span>. En un punto arbitrario que se mueve de otra manera hay términos adicionales; trasladar geométricamente un tensor no basta para trasladar la ley dinámica.</p>
+<p>Supondremos que el balance del sistema elimina los torques internos, como sucede con fuerzas internas centrales por pares, y que los torques restantes se incluyen en el torque externo total. En un pivote ideal fijo, su reacción no tiene brazo respecto del pivote, pero una fricción o un par aplicado allí sí debe contarse.</p>
+<p><strong>Proposición.</strong> Sea <span class="math inline">\(\boldsymbol\tau=Q^{\mathsf T}\boldsymbol\tau_{\mathrm{ext}}\)</span> el torque externo en componentes materiales, respecto de uno de los puntos admitidos. El balance angular equivale a</p>
+<p><span class="math display">\[
+\mathsf I\dot{\boldsymbol\omega}
++\boldsymbol\omega\times(\mathsf I\boldsymbol\omega)=\boldsymbol\tau.
+\]</span></p>
+<p>En una terna principal,</p>
+<p><span class="math display">\[
+\begin{aligned}
+I_1\dot\omega_1+(I_3-I_2)\omega_2\omega_3&amp;=\tau_1,\\
+I_2\dot\omega_2+(I_1-I_3)\omega_3\omega_1&amp;=\tau_2,\\
+I_3\dot\omega_3+(I_2-I_1)\omega_1\omega_2&amp;=\tau_3.
+\end{aligned}
+\]</span></p>
+<p>La energía rotacional cumple <span class="math inline">\(\dot K_{\mathrm{rot}}=\boldsymbol\tau\cdot\boldsymbol\omega\)</span>. Si el torque es cero, <span class="math inline">\(K_{\mathrm{rot}}\)</span> y <span class="math inline">\(\|\boldsymbol\ell\|\)</span> se conservan, y <span class="math inline">\(Q\boldsymbol\ell\)</span> es constante en el laboratorio.</p>
+<p><strong>Demostración.</strong> La regla de transporte aplicada a <span class="math inline">\(\mathbf L=Q\boldsymbol\ell\)</span> da <span class="math inline">\(\dot{\mathbf L}=Q(\dot{\boldsymbol\ell}+\boldsymbol\omega\times\boldsymbol\ell)\)</span>. El tensor material es constante por rigidez, de modo que <span class="math inline">\(\dot{\boldsymbol\ell}=\mathsf I\dot{\boldsymbol\omega}\)</span>. Sustituir en el balance angular produce la ecuación vectorial y sus tres componentes. Por simetría de <span class="math inline">\(\mathsf I\)</span>, la derivada de <span class="math inline">\(K_{\mathrm{rot}}\)</span> es <span class="math inline">\(\boldsymbol\omega\cdot\mathsf I\dot{\boldsymbol\omega}\)</span>; el término cruzado tiene producto escalar cero con <span class="math inline">\(\boldsymbol\omega\)</span>, y queda la potencia anunciada. Con torque nulo, <span class="math inline">\(\dot{\boldsymbol\ell}=-\boldsymbol\omega\times\boldsymbol\ell\)</span>, por lo que <span class="math inline">\(\frac{d}{dt}\|\boldsymbol\ell\|^2=2\boldsymbol\ell\cdot\dot{\boldsymbol\ell}=0\)</span>. La constancia de <span class="math inline">\(Q\boldsymbol\ell\)</span> es el propio balance en el laboratorio. <span class="math inline">\(\square\)</span></p>
+<p>La ecuación contiene una derivada de componentes y una corrección por rotación de la base. Cuando <span class="math inline">\(\mathsf I\)</span> es invertible determina <span class="math inline">\(\dot{\boldsymbol\omega}\)</span> a partir del estado y del torque. Para describir un cuerpo libre completo se añaden <span class="math inline">\(M\ddot{\mathbf R}=\mathbf F_{\mathrm{ext}}\)</span> y la ecuación de orientación, junto con sus datos iniciales.</p>
+<p>Un giro uniforme impuesto cumple <span class="math inline">\(\dot{\boldsymbol\omega}=0\)</span> en el cuerpo, pero puede requerir <span class="math inline">\(\boldsymbol\tau=\boldsymbol\omega\times\mathsf I\boldsymbol\omega\)</span>. Ese torque es perpendicular al giro y tiene potencia rotacional nula: cambia la dirección del momento angular en el laboratorio sin cambiar su energía. Si se suprimen los apoyos que lo ejercían, las condiciones iniciales permanecen, pero el movimiento posterior debe satisfacer Euler con torque cero.</p>
+</section>
+<section id="resolver-un-giro-libre-y-precisar-su-estabilidad" class="level2">
+<h2 class="anchored" data-anchor-id="resolver-un-giro-libre-y-precisar-su-estabilidad">Resolver un giro libre y precisar su estabilidad</h2>
+<p>Para un cuerpo de momentos <span class="math inline">\(I_1=I_2=A&gt;0\)</span>, <span class="math inline">\(I_3=C&gt;0\)</span>, las ecuaciones libres dan <span class="math inline">\(\omega_3=s\)</span> constante. Al escribir <span class="math inline">\(\nu=(C-A)s/A\)</span>, las otras dos son <span class="math inline">\(\dot\omega_1=-\nu\omega_2\)</span> y <span class="math inline">\(\dot\omega_2=\nu\omega_1\)</span>. Por derivación directa se verifica la solución</p>
+<p><span class="math display">\[
+\begin{aligned}
+\omega_1(t)&amp;=a\cos\nu t-b\sin\nu t,\\
+\omega_2(t)&amp;=a\sin\nu t+b\cos\nu t,\\
+\omega_3(t)&amp;=s.
+\end{aligned}
+\]</span></p>
+<p>Las componentes transversales giran en los ejes del cuerpo. El eje material de simetría <span class="math inline">\(\mathbf n=Q\mathbf e_3\)</span> realiza otro movimiento en el laboratorio. En efecto,</p>
+<p><span class="math display">\[
+\mathbf L=A\boldsymbol\Omega+(C-A)s\mathbf n,
+\qquad
+\dot{\mathbf n}=\boldsymbol\Omega\times\mathbf n
+=\frac{\mathbf L}{A}\times\mathbf n.
+\]</span></p>
+<p>Como <span class="math inline">\(\mathbf L\)</span> es fijo, <span class="math inline">\(\mathbf n\)</span> describe un cono alrededor de él con rapidez angular <span class="math inline">\(\|\mathbf L\|/A\)</span>, salvo el caso de alineación, en que el eje permanece fijo. Esa rapidez y <span class="math inline">\(\nu\)</span> responden a observaciones distintas.</p>
+<figure id="fig-fispm-r20261021-19-5" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/rigido_giro_libre.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="../../assets/books/fispm/r20261021/rigido_giro_libre.svg" alt="Componentes materiales y eje en el laboratorio" class="fpm-v04-figure img-fluid figure-img" width="900" height="620" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 19.5.</em> En el cuerpo simétrico libre, las componentes transversales recorren una circunferencia a tasa <span class="math inline">\(\nu\)</span>; en el laboratorio, el eje de simetría precesa alrededor del momento angular constante. Los paneles representan espacios diferentes.</p>
+</figcaption>
+</figure>
+<p>Para tres momentos distintos, los giros puros <span class="math inline">\(\boldsymbol\omega=\Omega\mathbf e_j\)</span> también son soluciones libres. Estudiar su estabilidad exige decir qué permanece próximo: trabajaremos con las componentes materiales de velocidad angular. Una diferencia pequeña de rapidez puede acumular una diferencia grande de orientación tras mucho tiempo, aunque esas velocidades permanezcan próximas.</p>
+<p>Usaremos la definición del capítulo 8 sobre este estado reducido. Para el giro <span class="math inline">\(\boldsymbol\omega_*=\Omega\mathbf e_j\)</span>, con <span class="math inline">\(\Omega\ne0\)</span>, la distancia adimensional es <span class="math inline">\(\|\boldsymbol\omega-\boldsymbol\omega_*\|/|\Omega|\)</span>. La estabilidad exige que cada tolerancia positiva suficientemente pequeña admita una tolerancia inicial que mantenga esa distancia por debajo de la elegida durante todo el futuro. Las ecuaciones libres tienen soluciones globales en estas variables: su campo es suave y la conservación de la energía, con los tres momentos positivos, acota todas las componentes.</p>
+<p><strong>Proposición.</strong> Si <span class="math inline">\(0&lt;I_1&lt;I_2&lt;I_3\)</span> y <span class="math inline">\(\Omega\ne0\)</span>, los giros puros alrededor de los ejes de menor y mayor momento son estables en el sentido de Lyapunov para las ecuaciones libres de <span class="math inline">\(\boldsymbol\omega\)</span>. El giro alrededor del eje intermedio es inestable.</p>
+<p><strong>Demostración.</strong> Denotemos <span class="math inline">\(H=2K_{\mathrm{rot}}\)</span> y <span class="math inline">\(B=\|\boldsymbol\ell\|^2\)</span>, ambos conservados. Cerca del giro sobre el tercer eje, la combinación</p>
+<p><span class="math display">\[
+H-\frac B{I_3}
+=I_1\left(1-\frac{I_1}{I_3}\right)\omega_1^2
++I_2\left(1-\frac{I_2}{I_3}\right)\omega_2^2
+\]</span></p>
+<p>es una suma con coeficientes positivos. Si el estado inicial está cerca del giro puro, esa constante es pequeña y mantiene pequeñas las dos componentes transversales para todo tiempo. La conservación de <span class="math inline">\(B\)</span> controla entonces <span class="math inline">\(\omega_3^2\)</span> cerca de <span class="math inline">\(\Omega^2\)</span>; para datos suficientemente próximos, <span class="math inline">\(\omega_3\)</span> no puede pasar por cero, y su signo inicial selecciona el valor próximo a <span class="math inline">\(\Omega\)</span>. Esto prueba que toda vecindad del giro contiene una vecindad inicial cuyas trayectorias permanecen dentro de la primera. En el primer eje se usa <span class="math inline">\(B/I_1-H\)</span>, cuya expresión es una suma positiva en <span class="math inline">\(\omega_2^2\)</span> y <span class="math inline">\(\omega_3^2\)</span>, y se repite el control de magnitud y signo.</p>
+<p>También podemos reunir las cotas del tercer eje en una sola función conservada. Definamos <span class="math inline">\(h_3=H/(I_3\Omega^2)\)</span> y <span class="math inline">\(b_3=B/(I_3^2\Omega^2)\)</span>, ambos adimensionales. La función</p>
+<p><span class="math display">\[
+V_3=h_3-b_3+(b_3-1)^2
+\]</span></p>
+<p>es positiva en una vecindad del giro <span class="math inline">\(\Omega\mathbf e_3\)</span>, salvo en el propio giro, donde vale cero. En efecto, al poner <span class="math inline">\(u_i=\omega_i/|\Omega|\)</span> y <span class="math inline">\(a_i=I_i/I_3\)</span>, su primer término es <span class="math inline">\(h_3-b_3=\sum_{i=1}^2a_i(1-a_i)u_i^2\)</span>. Sus coeficientes son positivos; su anulación exige <span class="math inline">\(u_1=u_2=0\)</span>, y el término restante exige <span class="math inline">\(u_3^2=1\)</span>. Una vecindad que conserve el signo de <span class="math inline">\(\Omega\)</span> selecciona el giro estudiado. Para el primer eje se define <span class="math inline">\(h_1=H/(I_1\Omega^2)\)</span>, <span class="math inline">\(b_1=B/(I_1^2\Omega^2)\)</span> y se usa <span class="math inline">\(V_1=b_1-h_1+(b_1-1)^2\)</span>, con el mismo argumento. Sobre una esfera pequeña alrededor de cada giro, la función correspondiente alcanza un mínimo positivo. Preparar su valor por debajo de ese mínimo impide llegar a la esfera por conservación y continuidad. Así reaparece la barrera del capítulo 8 sobre un estado de tres componentes.</p>
+<p>Para el eje intermedio podemos exhibir soluciones que salen de cualquier vecindad inicial pequeña. Tomemos primero <span class="math inline">\(\Omega&gt;0\)</span> y definamos</p>
+<p><span class="math display">\[
+c=\sqrt{\frac{I_1(I_2-I_1)}{I_3(I_3-I_2)}},
+\qquad
+\gamma=\sqrt{\frac{(I_3-I_2)(I_2-I_1)}{I_1I_3}},
+\qquad D=\sqrt{\frac{I_2}{I_1+I_3c^2}}.
+\]</span></p>
+<p>Con <span class="math inline">\(\operatorname{sech}u=1/\cosh u\)</span>, la curva</p>
+<p><span class="math display">\[
+\begin{aligned}
+\omega_1(t)&amp;=\Omega D\operatorname{sech}(\Omega\gamma t),\\
+\omega_2(t)&amp;=-\Omega\tanh(\Omega\gamma t),\\
+\omega_3(t)&amp;=-c\Omega D\operatorname{sech}(\Omega\gamma t)
+\end{aligned}
+\]</span></p>
+<p>satisface Euler: se comprueba usando <span class="math inline">\((\tanh u)'=\operatorname{sech}^2u\)</span>, <span class="math inline">\((\operatorname{sech}u)'=-\operatorname{sech}u\tanh u\)</span> y las definiciones de <span class="math inline">\(c,\gamma,D\)</span>. Para entender la elección, imponer <span class="math inline">\(\omega_3=-c\omega_1\)</span> hace <span class="math inline">\(B-I_2H=0\)</span>; fijar <span class="math inline">\(H=I_2\Omega^2\)</span> reduce la segunda ecuación a <span class="math inline">\(\dot\omega_2=-\gamma(\Omega^2-\omega_2^2)\)</span>, que resuelve la tangente hiperbólica escrita. Cuando <span class="math inline">\(t\to-\infty\)</span>, el estado tiende a <span class="math inline">\((0,\Omega,0)\)</span>, pero en <span class="math inline">\(t=0\)</span> alcanza <span class="math inline">\((\Omega D,0,-c\Omega D)\)</span>, a distancia fija positiva de ese giro. Desplazar el tiempo permite comenzar tan cerca como se quiera y alcanzar después ese estado separado. Para <span class="math inline">\(\Omega&lt;0\)</span>, se aplica a la solución con rapidez <span class="math inline">\(|\Omega|\)</span> la transformación <span class="math inline">\((\omega_1,\omega_2,\omega_3)\mapsto(-\omega_1,-\omega_2,\omega_3)\)</span>. Sustituirla en Euler verifica que preserva las ecuaciones y cambia el signo del giro intermedio inicial. <span class="math inline">\(\square\)</span></p>
+<p>La linealización permite calcular una escala de crecimiento. Cerca de <span class="math inline">\(\Omega\mathbf e_2\)</span>, conservando sólo términos de primer orden en las componentes transversales,</p>
+<p><span class="math display">\[
+\ddot\omega_1=\Omega^2\frac{(I_3-I_2)(I_2-I_1)}{I_1I_3}\omega_1.
+\]</span></p>
+<p>Su tasa exponencial es <span class="math inline">\(|\Omega|\gamma\)</span>. La solución exacta de la prueba muestra que la inestabilidad pertenece al sistema completo; la ecuación lineal aproxima su comienzo mientras las perturbaciones son pequeñas respecto de <span class="math inline">\(|\Omega|\)</span>. Los momentos repetidos requieren otro examen, porque los coeficientes estrictamente positivos usados en la prueba pueden anularse.</p>
+<figure id="fig-fispm-r20261021-19-6" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/rigido_estabilidad.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="../../assets/books/fispm/r20261021/rigido_estabilidad.svg" alt="Estabilidad y eje intermedio. Esquema del capítulo 19; el pie precisa las magnitudes y las condiciones representadas." class="fpm-v04-figure img-fluid figure-img" width="900" height="610" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 19.6.</em> Retratos de fase de las ecuaciones transversales linealizadas para momentos <span class="math inline">\(1,2,3\)</span> y giro base de módulo uno. Las curvas cerradas y las ramas hiperbólicas muestran mecanismos locales diferentes; la estabilidad no se define como constancia de la orientación completa.</p>
+</figcaption>
+</figure>
+</section>
+<section id="contrastar-una-aproximación-para-el-giróscopo" class="level2">
+<h2 class="anchored" data-anchor-id="contrastar-una-aproximación-para-el-giróscopo">Contrastar una aproximación para el giróscopo</h2>
+<p>Un cuerpo simétrico con pivote fijo permite distinguir conservación libre y precesión causada por gravedad. Sea <span class="math inline">\(\mathbf n\)</span> el eje desde el pivote hacia el centro, a distancia <span class="math inline">\(d&gt;0\)</span>, y <span class="math inline">\(\mathbf z\)</span> la vertical ascendente. Usaremos los momentos <span class="math inline">\(A,A,C\)</span> respecto del pivote y gravedad uniforme. En una precesión regular, el ángulo <span class="math inline">\(0&lt;\theta&lt;\pi\)</span> entre <span class="math inline">\(\mathbf n\)</span> y <span class="math inline">\(\mathbf z\)</span> es constante, <span class="math inline">\(\dot{\mathbf n}=p\mathbf z\times\mathbf n\)</span> y la componente axial del giro es <span class="math inline">\(s=\boldsymbol\Omega\cdot\mathbf n\)</span>, constante. La velocidad angular puede escribirse</p>
+<p><span class="math display">\[
+\boldsymbol\Omega=p\mathbf z+(s-p\cos\theta)\mathbf n,
+\]</span></p>
+<p>por lo que</p>
+<p><span class="math display">\[
+\mathbf L=A p\mathbf z+(Cs-Ap\cos\theta)\mathbf n.
+\]</span></p>
+<p>Derivarla y compararla con <span class="math inline">\(\boldsymbol\tau=Mg d\,\mathbf z\times\mathbf n\)</span> da</p>
+<p><span class="math display">\[
+p(Cs-Ap\cos\theta)=Mg d.
+\]</span></p>
+<p>La fórmula <span class="math inline">\(p\approx Mg d/(Cs)\)</span> corresponde a despreciar el término cuadrático en <span class="math inline">\(p\)</span>. Para <span class="math inline">\(Cs&gt;0\)</span> y <span class="math inline">\(\cos\theta&gt;0\)</span>, la rama lenta puede escribirse sin restar números casi iguales:</p>
+<p><span class="math display">\[
+p_{\mathrm{lento}}=
+\frac{2Mg d}{Cs+\sqrt{(Cs)^2-4A\cos\theta\,Mg d}}.
+\]</span></p>
+<p>Exige discriminante no negativo. La comparación <span class="math inline">\(4A\cos\theta\,Mg d/(Cs)^2\ll1\)</span> controla la expansión de esa raíz; también debe comprobarse la separación entre precesión y giro cuando se interprete como giro rápido. La precesión regular requiere datos iniciales preparados para ella. Soltar un giróscopo con otra velocidad inicial puede producir nutación, es decir, variación de <span class="math inline">\(\theta\)</span>, aunque los parámetros permitan una rama regular lenta.</p>
+<figure id="fig-fispm-r20261021-19-7" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/rigido_giroscopo.svg" class="lightbox" data-gallery="fispm-r20261021-c19"><img src="../../assets/books/fispm/r20261021/rigido_giroscopo.svg" alt="Torque gravitatorio y precesión regular" class="fpm-v04-figure img-fluid figure-img" width="900" height="610" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 19.7.</em> El peso actúa en el centro y produce torque respecto del pivote. El dibujo sitúa eje y vertical en el plano de la hoja, con el torque entrando en ella; una precesión regular mantiene el ángulo y satisface el balance vectorial desarrollado en el texto.</p>
+</figcaption>
+</figure>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Salvo indicación contraria, use unidades SI, ejes ortonormales con orientación positiva y componentes materiales. Los torques se toman respecto del centro o del pivote inercial fijo indicado. Los cuerpos discretos se unen mediante vínculos ideales sin masa.</p>
+<section id="ejercicio-19-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-1">1. Reconstruir el ejemplo de apertura</h3>
+<p>Cuatro masas de <span class="math inline">\(1\,\mathrm{kg}\)</span> ocupan <span class="math inline">\((\pm1,0,0)\)</span> y <span class="math inline">\((0,\pm2,0)\)</span>, en metros. Calcule el tensor central directamente desde la definición. Para <span class="math inline">\(\boldsymbol\omega=(1,1,0)\,\mathrm{s^{-1}}\)</span>, halle momento angular, energía rotacional y ángulo entre momento y velocidad angular.</p>
+</section>
+<section id="ejercicio-19-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-2">2. Encontrar términos no diagonales</h3>
+<p>Tres masas de <span class="math inline">\(1\,\mathrm{kg}\)</span> están en <span class="math inline">\((1,0,0)\)</span>, <span class="math inline">\((0,1,0)\)</span> y <span class="math inline">\((-1,-1,0)\)</span> metros. Verifique el centro de masa, construya <span class="math inline">\(\mathsf I\)</span> y calcule <span class="math inline">\(\boldsymbol\ell\)</span> para <span class="math inline">\(\boldsymbol\omega=(1,0,0)\,\mathrm{s^{-1}}\)</span>. Interprete el signo de su componente transversal.</p>
+</section>
+<section id="ejercicio-19-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-3">3. Integrar una lámina rectangular</h3>
+<p>Una lámina homogénea de masa <span class="math inline">\(3\,\mathrm{kg}\)</span> ocupa <span class="math inline">\(-1\le x\le1\)</span>, <span class="math inline">\(-2\le y\le2\)</span>, <span class="math inline">\(z=0\)</span>, en metros. Obtenga su tensor central integrando sobre el rectángulo. Explique qué simetrías anulan entradas cruzadas y qué relación cumplen los tres momentos.</p>
+</section>
+<section id="ejercicio-19-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-4">4. Construir una terna principal orientada</h3>
+<p>Diagonalice el tensor del ejercicio 2. Elija una terna principal de determinante positivo y exprese en ella el estado <span class="math inline">\(\boldsymbol\omega=(1,0,0)\)</span>. Reconstruya <span class="math inline">\(\boldsymbol\ell\)</span> en los ejes originales para comprobar el cambio de base.</p>
+</section>
+<section id="ejercicio-19-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-5">5. Medir alrededor de un eje oblicuo</h3>
+<p>Para el cuerpo del ejercicio 2, use <span class="math inline">\(\mathbf u=(1,1,1)/\sqrt3\)</span>. Halle <span class="math inline">\(J(\mathbf u)\)</span> y la energía cuando el giro impuesto es <span class="math inline">\(\boldsymbol\omega=3\mathbf u\,\mathrm{s^{-1}}\)</span>. Determine si el momento angular es paralelo al eje y calcule el torque necesario para mantener ese giro uniforme.</p>
+</section>
+<section id="ejercicio-19-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-6">6. Llevar el tensor a una esquina</h3>
+<p>Para la lámina del ejercicio 3, cambie el origen del centro a la esquina <span class="math inline">\(O=(-1,-2,0)\)</span>. Mantenga ejes paralelos y calcule el tensor completo. Verifique el momento respecto de la perpendicular a la lámina por esa esquina mediante el teorema escalar.</p>
+</section>
+<section id="ejercicio-19-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-7">7. Rotar el cuerpo y cambiar componentes</h3>
+<p>Rote físicamente <span class="math inline">\(45^\circ\)</span> alrededor de <span class="math inline">\(+z\)</span> el cuerpo del ejercicio 2. Halle su tensor en el laboratorio. Si <span class="math inline">\(Q\)</span> es esa rotación y <span class="math inline">\(\boldsymbol\omega=\mathbf e_1\,\mathrm{s^{-1}}\)</span> en el cuerpo, calcule <span class="math inline">\(\boldsymbol\Omega\)</span> y <span class="math inline">\(\mathbf L_C\)</span> en el laboratorio. Distinga esta operación de un cambio pasivo de base.</p>
+</section>
+<section id="ejercicio-19-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-8">8. Mantener un giro que necesita apoyos</h3>
+<p>Un cuerpo tiene tensor principal <span class="math inline">\(\operatorname{diag}(1,2,3)\,\mathrm{kg\,m^2}\)</span>. Un mecanismo mantiene <span class="math inline">\(\boldsymbol\omega=(1,2,0)\,\mathrm{s^{-1}}\)</span> constante en el cuerpo, con centro fijo. Calcule el torque y su potencia. Explique qué sucedería al retirar el mecanismo conservando el estado inicial.</p>
+</section>
+<section id="ejercicio-19-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-9">9. Obtener la derivada libre instantánea</h3>
+<p>Para el mismo tensor, el cuerpo gira libremente con <span class="math inline">\(\boldsymbol\omega=(1,2,3)\,\mathrm{s^{-1}}\)</span> en un instante. Obtenga <span class="math inline">\(\dot{\boldsymbol\omega}\)</span>, <span class="math inline">\(K_{\mathrm{rot}}\)</span> y <span class="math inline">\(\|\boldsymbol\ell\|^2\)</span>. Verifique directamente las derivadas nulas de esas dos cantidades conservadas.</p>
+</section>
+<section id="ejercicio-19-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-10">10. Inferir el torque a partir de datos</h3>
+<p>En el estado del ejercicio 9 se observa <span class="math inline">\(\dot{\boldsymbol\omega}=(1,0,-1)\,\mathrm{s^{-2}}\)</span>. Halle el torque y la potencia rotacional. Compare con el resultado de sustituir solamente <span class="math inline">\(\boldsymbol\tau=\mathsf I\dot{\boldsymbol\omega}\)</span>.</p>
+</section>
+<section id="ejercicio-19-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-11">11. Separar traslación y giro</h3>
+<p>Un cuerpo de masa <span class="math inline">\(2\,\mathrm{kg}\)</span> tiene el tensor central y el estado angular del ejercicio 9. En el instante considerado <span class="math inline">\(Q=\operatorname{Id}_3\)</span>, <span class="math inline">\(\mathbf R=(0,2,0)\,\mathrm m\)</span> y <span class="math inline">\(\mathbf V=(3,0,0)\,\mathrm{m/s}\)</span>. Calcule la energía cinética total y el momento angular respecto del origen fijo del laboratorio.</p>
+</section>
+<section id="ejercicio-19-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-12">12. Rechazar datos incompatibles con la energía</h3>
+<p>Un cuerpo de momentos principales <span class="math inline">\(1,2,3\,\mathrm{kg\,m^2}\)</span> tiene momento angular de módulo <span class="math inline">\(4\,\mathrm{kg\,m^2/s}\)</span>. Determine el intervalo posible de energía rotacional y los estados que alcanzan sus extremos. Decida si una energía de <span class="math inline">\(2\,\mathrm J\)</span> es admisible.</p>
+</section>
+<section id="ejercicio-19-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-13">13. Comprobar si una matriz puede ser una inercia</h3>
+<p>Se propone <span class="math inline">\(\mathsf I=\operatorname{diag}(1,2,4)\,\mathrm{kg\,m^2}\)</span> para una distribución de masa no negativa. Determine si puede realizarse. Examine después <span class="math inline">\(\operatorname{diag}(1,2,3)\)</span> y construya una distribución discreta central que la realice.</p>
+</section>
+<section id="ejercicio-19-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-14">14. Examinar el límite de una varilla sin espesor</h3>
+<p>Una varilla homogénea de masa <span class="math inline">\(2\,\mathrm{kg}\)</span> ocupa <span class="math inline">\(-1\le x\le1\)</span>, <span class="math inline">\(y=z=0\)</span>, en metros. Calcule su tensor. Indique qué componente de velocidad angular no puede recuperarse de <span class="math inline">\(\boldsymbol\ell\)</span> y qué idealización explica la degeneración.</p>
+</section>
+<section id="ejercicio-19-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-15">15. Resolver el cuerpo simétrico libre</h3>
+<p>Un cuerpo tiene momentos <span class="math inline">\(A=2\)</span>, <span class="math inline">\(C=3\,\mathrm{kg\,m^2}\)</span>, torque cero, <span class="math inline">\(Q(0)=\operatorname{Id}_3\)</span> y <span class="math inline">\(\boldsymbol\omega(0)=(1,0,4)\,\mathrm{s^{-1}}\)</span>. Halle las componentes materiales de velocidad y momento angular, la energía, el ángulo entre el eje de simetría y <span class="math inline">\(\mathbf L\)</span>, y las dos tasas de giro descritas en el texto.</p>
+</section>
+<section id="ejercicio-19-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-16">16. Reconstruir el eje observado</h3>
+<p>Para el ejercicio 15, obtenga <span class="math inline">\(\mathbf n(t)\)</span> mediante una rotación alrededor de <span class="math inline">\(\mathbf L\)</span> fijo. Calcule <span class="math inline">\(\dot{\mathbf n}(0)\)</span> y <span class="math inline">\(\mathbf n(\pi/\sqrt{37}\,\mathrm s)\)</span>. Explique qué información sigue faltando para orientar un punto que no pertenece al eje de simetría.</p>
+</section>
+<section id="ejercicio-19-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-17">17. Comparar escalas de perturbación</h3>
+<p>Para momentos <span class="math inline">\(1,2,3\,\mathrm{kg\,m^2}\)</span>, linealice alrededor de cada giro puro de rapidez <span class="math inline">\(4\,\mathrm{s^{-1}}\)</span>. Halle las frecuencias transversales estables y la tasa de crecimiento intermedia. En el modo creciente, estime cuánto tarda una perturbación de amplitud <span class="math inline">\(10^{-4}\,\mathrm{s^{-1}}\)</span> en alcanzar <span class="math inline">\(10^{-2}\,\mathrm{s^{-1}}\)</span>.</p>
+</section>
+<section id="ejercicio-19-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-18">18. Seguir una salida exacta del eje intermedio</h3>
+<p>Para los mismos momentos, verifique que</p>
+<p><span class="math display">\[
+\boldsymbol\omega(t)=\left(4\operatorname{sech}kt,
+-4\tanh kt,-\frac4{\sqrt3}\operatorname{sech}kt\right),
+\qquad k=\frac4{\sqrt3}\,\mathrm{s^{-1}},
+\]</span></p>
+<p>resuelve Euler sin torque, con los números de las componentes expresados en <span class="math inline">\(\mathrm{s^{-1}}\)</span>. Calcule sus invariantes, sus límites temporales y el tiempo desde un estado inicial con <span class="math inline">\(\omega_1=10^{-4}\,\mathrm{s^{-1}}\)</span> en la rama <span class="math inline">\(t&lt;0\)</span> hasta <span class="math inline">\(t=0\)</span>.</p>
+</section>
+<section id="ejercicio-19-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-19">19. Controlar la rama lenta del giróscopo</h3>
+<p>Un giróscopo ideal de pivote fijo tiene <span class="math inline">\(M=0{,}5\,\mathrm{kg}\)</span>, <span class="math inline">\(d=0{,}1\,\mathrm m\)</span>, <span class="math inline">\(A=0{,}02\)</span>, <span class="math inline">\(C=0{,}01\,\mathrm{kg\,m^2}\)</span>, <span class="math inline">\(s=100\,\mathrm{s^{-1}}\)</span>, <span class="math inline">\(\theta=60^\circ\)</span> y <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span>. Calcule la rama regular lenta, la rápida y la aproximación <span class="math inline">\(Mg d/(Cs)\)</span>. Compare el error relativo respecto de la rama lenta y declare qué preparación del movimiento se está suponiendo.</p>
+</section>
+<section id="ejercicio-19-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-19-20">20. Reconstruir una inercia desde seis medidas</h3>
+<p>Con ejes fijos se miden los momentos <span class="math inline">\(J(\mathbf e_1)=2\)</span>, <span class="math inline">\(J(\mathbf e_2)=3\)</span>, <span class="math inline">\(J(\mathbf e_3)=4\)</span> y los momentos sobre las bisectrices positivas <span class="math inline">\(J((\mathbf e_1+\mathbf e_2)/\sqrt2)=2\)</span>, <span class="math inline">\(J((\mathbf e_1+\mathbf e_3)/\sqrt2)=3{,}5\)</span>, <span class="math inline">\(J((\mathbf e_2+\mathbf e_3)/\sqrt2)=3{,}25\)</span>, todos en <span class="math inline">\(\mathrm{kg\,m^2}\)</span>. Reconstruya la matriz. Explique por qué seis direcciones bastan en este diseño y cómo comprobar que el resultado puede provenir de masa no negativa. Suponga después que cada una de las seis lecturas difiere de su valor verdadero en no más de <span class="math inline">\(0{,}01\,\mathrm{kg\,m^2}\)</span> y que los ejes se conocen exactamente. Certifique si todas las matrices reconstruidas compatibles con esas cotas admiten una distribución de masa. Separe el error de lectura del error de orientación del aparato.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-19-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-1">1. Reconstruir el ejemplo de apertura</h3>
+<p>El centro es cero por las parejas opuestas. Las dos masas sobre <span class="math inline">\(x\)</span> aportan <span class="math inline">\(\operatorname{diag}(0,2,2)\)</span> y las dos sobre <span class="math inline">\(y\)</span> aportan <span class="math inline">\(\operatorname{diag}(8,0,8)\)</span>, en <span class="math inline">\(\mathrm{kg\,m^2}\)</span>. Así,</p>
+<p><span class="math display">\[
+\mathsf I=\operatorname{diag}(8,2,10),\qquad
+\boldsymbol\ell=(8,2,0)\,\mathrm{kg\,m^2/s},\qquad
+K_{\mathrm{rot}}=5\,\mathrm J.
+\]</span></p>
+<p>El ángulo <span class="math inline">\(\beta\)</span> cumple <span class="math inline">\(\cos\beta=10/(\sqrt2\sqrt{68})\)</span>, de donde <span class="math inline">\(\beta\approx30{,}96^\circ\)</span>. Su origen es la respuesta desigual de las dos direcciones: el giro suma componentes iguales, pero la distribución de masa multiplica una por ocho y otra por dos. Una masa total por sí sola no conserva esa información.</p>
+</section>
+<section id="solucion-19-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-2">2. Encontrar términos no diagonales</h3>
+<p>La suma de los tres vectores posición es cero. Las sumas <span class="math inline">\(\sum x_i^2=2\)</span>, <span class="math inline">\(\sum y_i^2=2\)</span> y <span class="math inline">\(\sum x_iy_i=1\)</span> dan</p>
+<p><span class="math display">\[
+\mathsf I=\begin{pmatrix}2&amp;-1&amp;0\\-1&amp;2&amp;0\\0&amp;0&amp;4\end{pmatrix}\,\mathrm{kg\,m^2}.
+\]</span></p>
+<p>Para el giro dado, <span class="math inline">\(\boldsymbol\ell=(2,-1,0)\,\mathrm{kg\,m^2/s}\)</span>. La componente negativa viene del término <span class="math inline">\(-\sum m_ix_iy_i\)</span>: la masa en <span class="math inline">\((-1,-1,0)\)</span> tiene producto de coordenadas positivo y produce una contribución transversal negativa. El ángulo con el giro es <span class="math inline">\(\arctan(1/2)\approx26{,}57^\circ\)</span>, y la energía es <span class="math inline">\(1\,\mathrm J\)</span>. El signo aparece al calcular el producto vectorial; sustituir todos los productos de inercia por sus módulos cambiaría el modelo.</p>
+</section>
+<section id="solucion-19-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-3">3. Integrar una lámina rectangular</h3>
+<p>La densidad superficial es <span class="math inline">\(3/8\,\mathrm{kg/m^2}\)</span>. Respecto de <span class="math inline">\(x\)</span>, la distancia al eje es <span class="math inline">\(|y|\)</span>, por lo que</p>
+<p><span class="math display">\[
+I_{xx}=\frac38\int_{-1}^{1}\int_{-2}^{2}y^2\,dy\,dx
+=\frac38\,2\,\frac{16}{3}=4\,\mathrm{kg\,m^2}.
+\]</span></p>
+<p>Análogamente, integrar <span class="math inline">\(x^2\)</span> da <span class="math inline">\(I_{yy}=1\,\mathrm{kg\,m^2}\)</span>. La integral de <span class="math inline">\(xy\)</span> es cero porque cambia de signo bajo <span class="math inline">\(x\mapsto-x\)</span> en un dominio simétrico; las otras entradas cruzadas contienen <span class="math inline">\(z=0\)</span>. Resulta <span class="math inline">\(\mathsf I=\operatorname{diag}(4,1,5)\,\mathrm{kg\,m^2}\)</span>. La igualdad <span class="math inline">\(I_{zz}=I_{xx}+I_{yy}\)</span> proviene de que toda la masa está en el plano <span class="math inline">\(z=0\)</span>; para una distribución tridimensional general aparece <span class="math inline">\(I_{xx}+I_{yy}-I_{zz}=2\int z^2dm\)</span>, que puede ser positivo.</p>
+</section>
+<section id="solucion-19-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-4">4. Construir una terna principal orientada</h3>
+<p>En el plano, multiplicar la matriz del ejercicio 2 por <span class="math inline">\((1,1)\)</span> da <span class="math inline">\((1,1)\)</span> y por <span class="math inline">\((-1,1)\)</span> da <span class="math inline">\(3(-1,1)\)</span>. Podemos elegir</p>
+<p><span class="math display">\[
+\mathbf f_1=\frac{(1,1,0)}{\sqrt2},\quad
+\mathbf f_2=\frac{(-1,1,0)}{\sqrt2},\quad
+\mathbf f_3=(0,0,1),
+\]</span></p>
+<p>con momentos <span class="math inline">\(1,3,4\,\mathrm{kg\,m^2}\)</span>. El producto <span class="math inline">\(\mathbf f_1\times\mathbf f_2=\mathbf f_3\)</span> verifica orientación positiva. Las componentes principales del giro son <span class="math inline">\(P^{\mathsf T}\boldsymbol\omega=(1/\sqrt2,-1/\sqrt2,0)\,\mathrm{s^{-1}}\)</span>. Multiplicar por los momentos da <span class="math inline">\((1/\sqrt2,-3/\sqrt2,0)\)</span>; reconstruir el vector mediante esa combinación de <span class="math inline">\(\mathbf f_1,\mathbf f_2\)</span> produce <span class="math inline">\((2,-1,0)\)</span> en los ejes originales, como exigía el cálculo directo.</p>
+</section>
+<section id="solucion-19-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-5">5. Medir alrededor de un eje oblicuo</h3>
+<p>Multiplicar por el vector unitario da <span class="math inline">\(\mathsf I\mathbf u=(1,1,4)/\sqrt3\)</span> y, por tanto, <span class="math inline">\(J(\mathbf u)=2\,\mathrm{kg\,m^2}\)</span>. La energía es <span class="math inline">\(\frac12J(\mathbf u)3^2=9\,\mathrm J\)</span>. En cambio, el momento angular completo es <span class="math inline">\((\sqrt3,\sqrt3,4\sqrt3)\,\mathrm{kg\,m^2/s}\)</span>, que no es paralelo a <span class="math inline">\(\mathbf u\)</span>.</p>
+<p>Para mantener constantes las componentes materiales del giro se necesita</p>
+<p><span class="math display">\[
+\boldsymbol\tau=\boldsymbol\omega\times\mathsf I\boldsymbol\omega
+=(9,-9,0)\,\mathrm{N\,m}.
+\]</span></p>
+<p>El torque tiene producto escalar cero con <span class="math inline">\(\boldsymbol\omega\)</span>. El motor y los apoyos deben sostener una dirección de giro que no es principal, aunque el balance rotacional no exija potencia neta. La energía escalar calculada correctamente no autoriza a reemplazar el vector momento por <span class="math inline">\(J(\mathbf u)\boldsymbol\omega\)</span>.</p>
+</section>
+<section id="solucion-19-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-6">6. Llevar el tensor a una esquina</h3>
+<p>El desplazamiento desde la esquina hasta el centro es <span class="math inline">\(\mathbf d=(1,2,0)\,\mathrm m\)</span>. El término que se añade es</p>
+<p><span class="math display">\[
+3\begin{pmatrix}4&amp;-2&amp;0\\-2&amp;1&amp;0\\0&amp;0&amp;5\end{pmatrix},
+\qquad
+\mathsf I_O=\begin{pmatrix}16&amp;-6&amp;0\\-6&amp;4&amp;0\\0&amp;0&amp;20\end{pmatrix}\,\mathrm{kg\,m^2}.
+\]</span></p>
+<p>La perpendicular por la esquina está a distancia <span class="math inline">\(\sqrt5\,\mathrm m\)</span> de la perpendicular central, así que su momento es <span class="math inline">\(5+3\cdot5=20\,\mathrm{kg\,m^2}\)</span>. El traslado preserva el carácter principal de <span class="math inline">\(z\)</span> en este ejemplo, pero introduce una entrada <span class="math inline">\(xy\)</span> y cambia los ejes principales dentro de la lámina.</p>
+</section>
+<section id="solucion-19-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-7">7. Rotar el cuerpo y cambiar componentes</h3>
+<p>Con <span class="math inline">\(Q\)</span> igual a la rotación positiva de <span class="math inline">\(45^\circ\)</span>, el tensor espacial es <span class="math inline">\(Q\mathsf I Q^{\mathsf T}=\operatorname{diag}(3,1,4)\,\mathrm{kg\,m^2}\)</span>. Puede comprobarse sin multiplicar nueve entradas: el eje de momento uno, antes orientado a <span class="math inline">\(45^\circ\)</span>, pasa a <span class="math inline">\(90^\circ\)</span>, mientras el de momento tres pasa a la dirección de <span class="math inline">\(x\)</span> con signo contrario.</p>
+<p>Los vectores espaciales son <span class="math inline">\(\boldsymbol\Omega=(1,1,0)/\sqrt2\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(\mathbf L_C=(3,1,0)/\sqrt2\,\mathrm{kg\,m^2/s}\)</span>, que cumplen la relación con el tensor espacial. Un cambio pasivo con columnas de base <span class="math inline">\(Q\)</span> usaría <span class="math inline">\(Q^{\mathsf T}\mathsf I Q\)</span> para expresar el mismo cuerpo en otra base; en este caso daría <span class="math inline">\(\operatorname{diag}(1,3,4)\)</span>. Las fórmulas difieren porque describen operaciones diferentes y sus vectores deben transformarse de manera consistente.</p>
+</section>
+<section id="solucion-19-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-8">8. Mantener un giro que necesita apoyos</h3>
+<p>El momento material vale <span class="math inline">\((1,4,0)\,\mathrm{kg\,m^2/s}\)</span>, y Euler exige <span class="math inline">\(\boldsymbol\tau=(1,2,0)\times(1,4,0)=(0,0,2)\,\mathrm{N\,m}\)</span>. Su potencia es cero y la energía constante es <span class="math inline">\(\frac12(1+8)=4{,}5\,\mathrm J\)</span>. El torque espacial es <span class="math inline">\(Q(t)\boldsymbol\tau\)</span> y, en general, cambia de dirección mientras gira el cuerpo.</p>
+<p>Al retirar el mecanismo, el torque pasa a cero y la derivada inicial cumple <span class="math inline">\(\mathsf I\dot{\boldsymbol\omega}=-(0,0,2)\)</span>. Resulta <span class="math inline">\(\dot{\boldsymbol\omega}(0)=(0,0,-2/3)\,\mathrm{s^{-2}}\)</span>. El cuerpo abandona el giro impuesto; conservar la velocidad inicial no conserva la fuerza que lo mantenía.</p>
+</section>
+<section id="solucion-19-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-9">9. Obtener la derivada libre instantánea</h3>
+<p>Las tres ecuaciones dan</p>
+<p><span class="math display">\[
+\dot{\boldsymbol\omega}=\left(-6,3,-\frac23\right)\,\mathrm{s^{-2}},
+\qquad K_{\mathrm{rot}}=18\,\mathrm J,
+\qquad \|\boldsymbol\ell\|^2=98\,(\mathrm{kg\,m^2/s})^2.
+\]</span></p>
+<p>Para revisar la energía se calcula <span class="math inline">\(\sum I_j\omega_j\dot\omega_j=-6+12-6=0\)</span>. Para el cuadrado del momento, la mitad de la derivada es <span class="math inline">\(\sum I_j^2\omega_j\dot\omega_j=-6+24-18=0\)</span>. Las componentes materiales de momento varían, pues <span class="math inline">\(\dot{\boldsymbol\ell}=(-6,6,-2)\)</span> en las unidades correspondientes; la corrección <span class="math inline">\(\boldsymbol\omega\times\boldsymbol\ell=(6,-6,2)\)</span> las compensa al reconstruir la derivada espacial.</p>
+</section>
+<section id="solucion-19-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-10">10. Inferir el torque a partir de datos</h3>
+<p>El término de derivada material es <span class="math inline">\(\mathsf I\dot{\boldsymbol\omega}=(1,0,-3)\,\mathrm{N\,m}\)</span>. Al sumar la corrección <span class="math inline">\((6,-6,2)\)</span> se obtiene <span class="math inline">\(\boldsymbol\tau=(7,-6,-1)\,\mathrm{N\,m}\)</span>. La potencia es <span class="math inline">\(7-12-3=-8\,\mathrm W\)</span>, y coincide con <span class="math inline">\(\boldsymbol\omega\cdot\mathsf I\dot{\boldsymbol\omega}=1-9=-8\,\mathrm W\)</span>.</p>
+<p>Omitir la corrección produciría el vector torque equivocado aunque, en este caso y en general para esa omisión, dejara correcta la potencia, porque <span class="math inline">\(\boldsymbol\omega\cdot(\boldsymbol\omega\times\boldsymbol\ell)=0\)</span>. Comprobar solamente energía no detecta todos los errores del balance angular.</p>
+</section>
+<section id="solucion-19-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-11">11. Separar traslación y giro</h3>
+<p>La traslación aporta <span class="math inline">\(M\|\mathbf V\|^2/2=9\,\mathrm J\)</span> y el giro aporta <span class="math inline">\(18\,\mathrm J\)</span>, de modo que <span class="math inline">\(K=27\,\mathrm J\)</span>. Respecto del origen fijo,</p>
+<p><span class="math display">\[
+\mathbf R\times M\mathbf V=(0,0,-12)\,\mathrm{kg\,m^2/s},
+\qquad \mathbf L_O=(1,4,-3)\,\mathrm{kg\,m^2/s}.
+\]</span></p>
+<p>El signo de la tercera componente total difiere del momento respecto del centro, que era positivo. Cada vector responde a un origen distinto; sumar la traslación a la energía y olvidarla en el momento angular mezclaría dos descripciones incompatibles.</p>
+</section>
+<section id="solucion-19-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-12">12. Rechazar datos incompatibles con la energía</h3>
+<p>En ejes principales, <span class="math inline">\(2K_{\mathrm{rot}}=\sum\ell_j^2/I_j\)</span>. Como <span class="math inline">\(1/3\le1/I_j\le1\)</span>, la suma se encuentra entre <span class="math inline">\(\|\boldsymbol\ell\|^2/3\)</span> y <span class="math inline">\(\|\boldsymbol\ell\|^2\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\frac83\,\mathrm J\le K_{\mathrm{rot}}\le8\,\mathrm J.
+\]</span></p>
+<p>El mínimo ocurre con momento angular sobre el tercer eje y el máximo sobre el primero. Todos los valores intermedios se obtienen variando continuamente la dirección entre esos ejes a módulo fijo. Una energía de <span class="math inline">\(2\,\mathrm J\)</span> queda por debajo del mínimo: los datos no pueden corresponder al estado del cuerpo ideal descrito.</p>
+</section>
+<section id="solucion-19-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-13">13. Comprobar si una matriz puede ser una inercia</h3>
+<p>Para cualquier distribución no negativa, <span class="math inline">\(I_1+I_2-I_3=2\int s_3^2dm\ge0\)</span> en ejes principales. La terna <span class="math inline">\(1,2,4\)</span> daría <span class="math inline">\(-1\)</span>, por lo que es imposible, aunque la matriz sea simétrica y definida positiva. La positividad algebraica del tensor es necesaria, pero las entradas también deben ser compatibles con segundos momentos de masa.</p>
+<p>La terna <span class="math inline">\(1,2,3\)</span> sí se realiza: sitúe masas de <span class="math inline">\(1/2\,\mathrm{kg}\)</span> en <span class="math inline">\((\pm\sqrt2,0,0)\)</span> y <span class="math inline">\((0,\pm1,0)\)</span> metros. El centro es cero, las sumas ponderadas de cuadrados son <span class="math inline">\(\sum mx^2=2\)</span>, <span class="math inline">\(\sum my^2=1\)</span>, <span class="math inline">\(\sum mz^2=0\)</span>, y el tensor es <span class="math inline">\(\operatorname{diag}(1,2,3)\,\mathrm{kg\,m^2}\)</span>. La igualdad en la desigualdad anterior identifica una distribución plana, compatible con momentos positivos en todas las direcciones.</p>
+</section>
+<section id="solucion-19-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-14">14. Examinar el límite de una varilla sin espesor</h3>
+<p>La densidad lineal es <span class="math inline">\(1\,\mathrm{kg/m}\)</span>. La distancia al eje de la varilla es cero para todas sus masas, mientras que <span class="math inline">\(\int_{-1}^{1}x^2dx=2/3\)</span>. Resulta <span class="math inline">\(\mathsf I=\operatorname{diag}(0,2/3,2/3)\,\mathrm{kg\,m^2}\)</span>. El momento angular no contiene información sobre <span class="math inline">\(\omega_1\)</span>: un giro ideal alrededor de la propia recta no mueve ninguno de sus puntos.</p>
+<p>Esa degeneración pertenece al modelo sin espesor. Una varilla real tiene un momento axial pequeño y positivo, y entonces la reconstrucción divide la componente axial de momento por ese número pequeño. Recuperar la velocidad axial puede volverse muy sensible a errores de medida, aun cuando el tensor ya sea invertible.</p>
+</section>
+<section id="solucion-19-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-15">15. Resolver el cuerpo simétrico libre</h3>
+<p>Se tiene <span class="math inline">\(s=4\)</span> y <span class="math inline">\(\nu=(3-2)4/2=2\,\mathrm{s^{-1}}\)</span>. La solución y el momento material son</p>
+<p><span class="math display">\[
+\boldsymbol\omega=(\cos2t,\sin2t,4)\,\mathrm{s^{-1}},
+\qquad
+\boldsymbol\ell=(2\cos2t,2\sin2t,12)\,\mathrm{kg\,m^2/s},
+\]</span></p>
+<p>donde <span class="math inline">\(t\)</span> se expresa en segundos. La energía es <span class="math inline">\(\frac12(2+48)=25\,\mathrm J\)</span> y <span class="math inline">\(\|\mathbf L\|=\sqrt{148}\,\mathrm{kg\,m^2/s}\)</span>. La proyección de <span class="math inline">\(\mathbf L\)</span> sobre el eje de simetría es siempre <span class="math inline">\(Cs=12\)</span>, de modo que <span class="math inline">\(\cos\theta=12/\sqrt{148}\)</span> y <span class="math inline">\(\theta\approx9{,}46^\circ\)</span>.</p>
+<p>La tasa material es <span class="math inline">\(2\,\mathrm{s^{-1}}\)</span>, mientras la precesión del eje observado tiene rapidez <span class="math inline">\(\sqrt{148}/2=\sqrt{37}\approx6{,}083\,\mathrm{s^{-1}}\)</span>. Igualarlas confundiría el giro de componentes en el cuerpo con el movimiento de una dirección material en el laboratorio.</p>
+</section>
+<section id="solucion-19-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-16">16. Reconstruir el eje observado</h3>
+<p>Al inicio <span class="math inline">\(\mathbf L=(2,0,12)\)</span> y su dirección unitaria es <span class="math inline">\(\mathbf h=(1,0,6)/\sqrt{37}\)</span>. La ecuación <span class="math inline">\(\dot{\mathbf n}=\sqrt{37}\,\mathbf h\times\mathbf n\)</span> tiene solución</p>
+<p><span class="math display">\[
+\mathbf n(t)=\mathbf e_3\cos\alpha
++(\mathbf h\times\mathbf e_3)\sin\alpha
++\mathbf h(\mathbf h\cdot\mathbf e_3)(1-\cos\alpha),
+\qquad \alpha=\sqrt{37}\,t,
+\]</span></p>
+<p>que se verifica al derivar y evaluar en cero. Es la fórmula de rotación de un vector alrededor de un eje fijo: su componente paralela permanece y las dos perpendiculares giran. Da <span class="math inline">\(\dot{\mathbf n}(0)=(0,-1,0)\,\mathrm{s^{-1}}\)</span>, en acuerdo con <span class="math inline">\(\boldsymbol\Omega(0)\times\mathbf e_3\)</span>.</p>
+<p>En el tiempo indicado, <span class="math inline">\(\alpha=\pi\)</span> y <span class="math inline">\(\mathbf n=(12/37,0,35/37)\)</span>, de norma uno. La trayectoria de <span class="math inline">\(\mathbf n\)</span> determina dos grados de orientación; falta el giro del cuerpo alrededor de ese eje para localizar una marca fuera de él. El estado angular y <span class="math inline">\(Q(0)\)</span> sí determinan ese giro al integrar la ecuación completa de <span class="math inline">\(Q\)</span>.</p>
+</section>
+<section id="solucion-19-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-17">17. Comparar escalas de perturbación</h3>
+<p>Alrededor del primer eje, las ecuaciones transversales son <span class="math inline">\(\dot\omega_2=4\omega_3\)</span> y <span class="math inline">\(\dot\omega_3=-(4/3)\omega_2\)</span>, de donde la frecuencia es <span class="math inline">\(4/\sqrt3\,\mathrm{s^{-1}}\)</span>. Alrededor del tercero son <span class="math inline">\(\dot\omega_1=-4\omega_2\)</span> y <span class="math inline">\(\dot\omega_2=4\omega_1\)</span>, con frecuencia <span class="math inline">\(4\,\mathrm{s^{-1}}\)</span>. Ambas producen oscilaciones en el sistema lineal.</p>
+<p>Alrededor del segundo eje aparecen <span class="math inline">\(\dot\omega_1=-4\omega_3\)</span> y <span class="math inline">\(\dot\omega_3=-(4/3)\omega_1\)</span>. La tasa creciente es <span class="math inline">\(\lambda=4/\sqrt3\,\mathrm{s^{-1}}\)</span>. Para un dato en su modo creciente, la amplitud se multiplica por <span class="math inline">\(e^{\lambda t}\)</span>, y aumentar por un factor cien requiere</p>
+<p><span class="math display">\[
+t=\frac{\log100}{\lambda}\approx1{,}994\,\mathrm s.
+\]</span></p>
+<p>La estimación supone una componente inicial en ese modo y amplitudes pequeñas respecto del giro de base. El dato final <span class="math inline">\(10^{-2}\)</span> todavía es pequeño frente a <span class="math inline">\(4\)</span>; prolongar la exponencial hasta amplitudes arbitrariamente grandes excedería la linealización. Un dato situado exactamente en la dirección decreciente del sistema lineal no sigue esta estimación creciente.</p>
+</section>
+<section id="solucion-19-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-18">18. Seguir una salida exacta del eje intermedio</h3>
+<p>Escribiendo <span class="math inline">\(u=kt\)</span>, las derivadas de las componentes son <span class="math inline">\(-4k\operatorname{sech}u\tanh u\)</span>, <span class="math inline">\(-4k\operatorname{sech}^2u\)</span> y <span class="math inline">\((4k/\sqrt3)\operatorname{sech}u\tanh u\)</span>. Sustituir en las tres ecuaciones libres produce, respectivamente, <span class="math inline">\(-\omega_2\omega_3\)</span>, <span class="math inline">\(\omega_3\omega_1\)</span> y <span class="math inline">\(-\omega_1\omega_2/3\)</span>, con los mismos valores. La identidad <span class="math inline">\(\tanh^2u+\operatorname{sech}^2u=1\)</span> da <span class="math inline">\(K_{\mathrm{rot}}=16\,\mathrm J\)</span> y <span class="math inline">\(\|\boldsymbol\ell\|^2=64\,(\mathrm{kg\,m^2/s})^2\)</span>.</p>
+<p>Los límites son <span class="math inline">\((0,4,0)\)</span> cuando <span class="math inline">\(t\to-\infty\)</span> y <span class="math inline">\((0,-4,0)\)</span> cuando <span class="math inline">\(t\to+\infty\)</span>, en <span class="math inline">\(\mathrm{s^{-1}}\)</span>. En medio, la solución pasa por <span class="math inline">\((4,0,-4/\sqrt3)\)</span>, muy separada de ambos giros. Para comenzar en la rama negativa con <span class="math inline">\(\omega_1=10^{-4}\)</span>, se necesita <span class="math inline">\(\cosh(kT)=40000\)</span>, donde <span class="math inline">\(t=-T\)</span>. Así,</p>
+<p><span class="math display">\[
+T=\frac{\operatorname{arcosh}(40000)}{k},
+\qquad \operatorname{arcosh}x=\log\left(x+\sqrt{x^2-1}\right).
+\]</span></p>
+<p>Resulta aproximadamente <span class="math inline">\(4{,}889\,\mathrm s\)</span>. Esta expresión se obtiene resolviendo <span class="math inline">\(x=(e^v+e^{-v})/2\)</span> para <span class="math inline">\(e^v\ge1\)</span>. El recorrido es exacto en el modelo rígido y muestra una salida de tamaño finito desde datos arbitrariamente próximos al eje intermedio; no depende de extender una aproximación exponencial fuera de su régimen.</p>
+</section>
+<section id="solucion-19-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-19">19. Controlar la rama lenta del giróscopo</h3>
+<p>Los datos dan <span class="math inline">\(Mg d=0{,}5\,\mathrm{N\,m}\)</span>, <span class="math inline">\(Cs=1\,\mathrm{kg\,m^2/s}\)</span> y <span class="math inline">\(A\cos\theta=0{,}01\,\mathrm{kg\,m^2}\)</span>. La ecuación regular es <span class="math inline">\(0{,}01p^2-p+0{,}5=0\)</span> en unidades consistentes. Sus raíces son</p>
+<p><span class="math display">\[
+p_{\mathrm{lento}}=\frac1{1+\sqrt{0{,}98}}
+\approx0{,}502525\,\mathrm{s^{-1}},
+\qquad
+p_{\text{rápido}}\approx99{,}4975\,\mathrm{s^{-1}}.
+\]</span></p>
+<p>La aproximación da <span class="math inline">\(p_0=0{,}5\,\mathrm{s^{-1}}\)</span>. Su error relativo respecto de la raíz lenta es <span class="math inline">\((p_{\mathrm{lento}}-p_0)/p_{\mathrm{lento}}\approx0{,}005025\)</span>, cerca de <span class="math inline">\(0{,}503\%\)</span>. El parámetro de la raíz es <span class="math inline">\(0{,}02\)</span>, y <span class="math inline">\(p_{\mathrm{lento}}/s\approx0{,}00503\)</span> confirma separación de tasas para esa rama. La raíz rápida no cumple esa separación.</p>
+<p>La comparación describe un movimiento con ángulo constante y velocidades iniciales ajustadas a la precesión regular. No predice que cualquier liberación real adopte de inmediato esa rama. Rozamiento, deformación y una preparación que excite nutación requieren revisar las hipótesis antes de atribuir una diferencia experimental al error de la aproximación algebraica.</p>
+</section>
+<section id="solucion-19-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-19-20">20. Reconstruir una inercia desde seis medidas</h3>
+<p>En una bisectriz positiva, <span class="math inline">\(J((\mathbf e_i+\mathbf e_j)/\sqrt2)=(I_{ii}+I_{jj})/2+I_{ij}\)</span>. Las tres medidas coordenadas fijan la diagonal y las otras tres despejan, una por una, las entradas independientes restantes:</p>
+<p><span class="math display">\[
+\mathsf I=\begin{pmatrix}
+2&amp;-1/2&amp;1/2\\-1/2&amp;3&amp;-1/4\\1/2&amp;-1/4&amp;4
+\end{pmatrix}\,\mathrm{kg\,m^2}.
+\]</span></p>
+<p>Seis números bastan porque una matriz simétrica de orden tres tiene seis entradas independientes y este diseño las separa. Seis direcciones arbitrarias no garantizarían lo mismo: repetir ejes o elegir medidas dependientes puede perder información.</p>
+<p>Para comprobar realización física, reconstruimos la matriz de segundos momentos <span class="math inline">\(\mathsf S=\int\mathbf s\mathbf s^{\mathsf T}dm\)</span>. La definición implica <span class="math inline">\(\mathsf I=\operatorname{tr}(\mathsf S)\operatorname{Id}_3-\mathsf S\)</span> y, al tomar trazas, <span class="math inline">\(\mathsf S=\frac12\operatorname{tr}(\mathsf I)\operatorname{Id}_3-\mathsf I\)</span>. Con los datos,</p>
+<p><span class="math display">\[
+\mathsf S=\begin{pmatrix}5/2&amp;1/2&amp;-1/2\\1/2&amp;3/2&amp;1/4\\-1/2&amp;1/4&amp;1/2\end{pmatrix}
+=\frac52\mathbf v_1\mathbf v_1^{\mathsf T}
++\frac75\mathbf v_2\mathbf v_2^{\mathsf T}
++\frac5{16}\mathbf v_3\mathbf v_3^{\mathsf T},
+\]</span></p>
+<p>con <span class="math inline">\(\mathbf v_1=(1,1/5,-1/5)\)</span>, <span class="math inline">\(\mathbf v_2=(0,1,1/4)\)</span> y <span class="math inline">\(\mathbf v_3=(0,0,1)\)</span>. La igualdad se comprueba multiplicando cada columna por su traspuesta. Todos los coeficientes son positivos; situar pares de masas de <span class="math inline">\(1/2\,\mathrm{kg}\)</span> en <span class="math inline">\(\pm\sqrt{5/2}\,\mathbf v_1\)</span>, <span class="math inline">\(\pm\sqrt{7/5}\,\mathbf v_2\)</span> y <span class="math inline">\(\pm\sqrt{5/16}\,\mathbf v_3\)</span>, en metros, realiza esa matriz de segundos momentos y tiene centro cero. Hemos construido una distribución admisible, además de ajustar formalmente las seis medidas. Si las medidas contienen incertidumbre, tanto la reconstrucción como esta comprobación deben aplicarse a sus intervalos o al modelo estadístico declarado.</p>
+<p>Para controlar las lecturas conservamos el mismo diseño de reconstrucción. Sea <span class="math inline">\(\varepsilon=0{,}01\,\mathrm{kg\,m^2}\)</span>. Cada entrada diagonal de la perturbación <span class="math inline">\(\Delta\mathsf I\)</span> tiene módulo a lo sumo <span class="math inline">\(\varepsilon\)</span>; cada entrada cruzada combina una bisectriz y dos mitades de diagonales, de modo que su módulo es a lo sumo <span class="math inline">\(2\varepsilon\)</span>. En la matriz de segundos momentos,</p>
+<p><span class="math display">\[
+\Delta\mathsf S=\frac12\operatorname{tr}(\Delta\mathsf I)\operatorname{Id}_3-\Delta\mathsf I,
+\]</span></p>
+<p>la diagonal tiene cotas <span class="math inline">\(3\varepsilon/2\)</span> y los términos cruzados <span class="math inline">\(2\varepsilon\)</span>. Cada suma de valores absolutos de una fila es a lo sumo <span class="math inline">\(11\varepsilon/2\)</span>. Para una matriz simétrica, esta cota controla su forma cuadrática: usar <span class="math inline">\(2|u_iu_j|\leq u_i^2+u_j^2\)</span> en la suma de los términos cruzados da</p>
+<p><span class="math display">\[
+|\mathbf u^{\mathsf T}\Delta\mathsf S\mathbf u|
+\leq\frac{11\varepsilon}{2}\|\mathbf u\|^2.
+\]</span></p>
+<p>Busquemos una cota positiva para la matriz nominal. En valores numéricos SI, los menores principales sucesivos de <span class="math inline">\(\mathsf S-0{,}1\operatorname{Id}_3\)</span> son <span class="math inline">\(12/5\)</span>, <span class="math inline">\(311/100\)</span> y <span class="math inline">\(619/1000\)</span>. La eliminación simétrica tiene por tanto tres pivotes positivos: <span class="math inline">\(12/5\)</span>, <span class="math inline">\(311/240\)</span> y <span class="math inline">\(619/3110\)</span>. Su factorización como una matriz triangular, una diagonal positiva y la traspuesta triangular prueba que su forma cuadrática es positiva. Así, la matriz nominal cumple <span class="math inline">\(\mathbf u^{\mathsf T}\mathsf S\mathbf u\geq0{,}1\|\mathbf u\|^2\)</span> en esas unidades. Para cualquier lectura admisible,</p>
+<p><span class="math display">\[
+\mathbf u^{\mathsf T}(\mathsf S+\Delta\mathsf S)\mathbf u
+\geq(0{,}1-0{,}055)\|\mathbf u\|^2
+=0{,}045\|\mathbf u\|^2.
+\]</span></p>
+<p>La cota es estrictamente positiva para <span class="math inline">\(\mathbf u\ne0\)</span>. El criterio demostrado en el núcleo teórico certifica la realización de todas las matrices de esta familia, además de la nominal. El resultado supone direcciones exactas: una incertidumbre angular altera las ecuaciones que relacionan las lecturas con las entradas y necesita una cota adicional. La calibración de los ejes forma parte del experimento que permite interpretar las seis medidas.</p>
+</section>
+</section>
+<section id="lecturas-y-conexiones" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-conexiones">Lecturas y conexiones</h2>
+<p>Spivak, <em>Physics for Mathematicians. Mechanics I</em>, capítulo 5, pp.&nbsp;186–194, desarrolla el tensor, los ejes principales, el traslado y la energía; el capítulo 9, pp.&nbsp;332–339, conecta la derivada en ejes móviles con Euler y la geometría del giro libre. Aquí la regla de transporte se retoma del capítulo anterior y la estabilidad se precisa en el espacio de componentes de velocidad angular, con una trayectoria exacta que permite comprobar el mecanismo de salida.</p>
+<p>Sears y Zemansky, <em>Física universitaria</em>, volumen 1, §10.5, distingue giro de simetría y momento angular oblicuo; §10.7 analiza la precesión. Serway y Jewett, <em>Física para ciencias e ingeniería</em>, volumen 1, §11.3 y §11.5, permite cotejar el alcance de la fórmula escalar y la aproximación de giro rápido. El cálculo de seis medidas recupera la relación del capítulo cero entre operación de medida, parámetros inferidos y consistencia del modelo: una matriz ajustada debe conservar las restricciones que provienen de una distribución de masa real.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-18-marcos-acelerados-y-giratorios.html">← 18. Marcos acelerados y giratorios</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-20-oscilaciones-acopladas.html">20. Oscilaciones acopladas →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

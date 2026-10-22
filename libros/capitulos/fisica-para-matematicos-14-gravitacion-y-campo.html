@@ -1,0 +1,1992 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 14 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>Gravitación y campo – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#de-una-interacción-entre-masas-a-un-campo" id="toc-de-una-interacción-entre-masas-a-un-campo" class="nav-link active" data-scroll-target="#de-una-interacción-entre-masas-a-un-campo">De una interacción entre masas a un campo</a></li>
+  <li><a href="#un-potencial-que-conserva-la-información-sobre-el-trabajo" id="toc-un-potencial-que-conserva-la-información-sobre-el-trabajo" class="nav-link" data-scroll-target="#un-potencial-que-conserva-la-información-sobre-el-trabajo">Un potencial que conserva la información sobre el trabajo</a></li>
+  <li><a href="#cuánto-cuesta-aproximar-la-gravedad-por-una-constante" id="toc-cuánto-cuesta-aproximar-la-gravedad-por-una-constante" class="nav-link" data-scroll-target="#cuánto-cuesta-aproximar-la-gravedad-por-una-constante">Cuánto cuesta aproximar la gravedad por una constante</a></li>
+  <li><a href="#construir-una-fuente-extensa-sin-concentrarla-de-antemano" id="toc-construir-una-fuente-extensa-sin-concentrarla-de-antemano" class="nav-link" data-scroll-target="#construir-una-fuente-extensa-sin-concentrarla-de-antemano">Construir una fuente extensa sin concentrarla de antemano</a></li>
+  <li><a href="#por-qué-funciona-una-fuente-puntual-fuera-de-una-esfera" id="toc-por-qué-funciona-una-fuente-puntual-fuera-de-una-esfera" class="nav-link" data-scroll-target="#por-qué-funciona-una-fuente-puntual-fuera-de-una-esfera">Por qué funciona una fuente puntual fuera de una esfera</a></li>
+  <li><a href="#usar-energía-para-una-caída-extensa-o-un-escape" id="toc-usar-energía-para-una-caída-extensa-o-un-escape" class="nav-link" data-scroll-target="#usar-energía-para-una-caída-extensa-o-un-escape">Usar energía para una caída extensa o un escape</a></li>
+  <li><a href="#qué-puede-inferirse-de-una-medición-del-campo" id="toc-qué-puede-inferirse-de-una-medición-del-campo" class="nav-link" data-scroll-target="#qué-puede-inferirse-de-una-medición-del-campo">Qué puede inferirse de una medición del campo</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-14-1" id="toc-ejercicio-14-1" class="nav-link" data-scroll-target="#ejercicio-14-1">1. Una ley con dirección y unidades</a></li>
+  <li><a href="#ejercicio-14-2" id="toc-ejercicio-14-2" class="nav-link" data-scroll-target="#ejercicio-14-2">2. Cancelar campos de masas distintas</a></li>
+  <li><a href="#ejercicio-14-3" id="toc-ejercicio-14-3" class="nav-link" data-scroll-target="#ejercicio-14-3">3. Sobre la mediatriz</a></li>
+  <li><a href="#ejercicio-14-4" id="toc-ejercicio-14-4" class="nav-link" data-scroll-target="#ejercicio-14-4">4. Sonda sostenida y sonda libre</a></li>
+  <li><a href="#ejercicio-14-5" id="toc-ejercicio-14-5" class="nav-link" data-scroll-target="#ejercicio-14-5">5. Cuándo basta una gravedad constante</a></li>
+  <li><a href="#ejercicio-14-6" id="toc-ejercicio-14-6" class="nav-link" data-scroll-target="#ejercicio-14-6">6. Subir una masa sin acelerar sus extremos</a></li>
+  <li><a href="#ejercicio-14-7" id="toc-ejercicio-14-7" class="nav-link" data-scroll-target="#ejercicio-14-7">7. Caer desde una altura planetaria</a></li>
+  <li><a href="#ejercicio-14-8" id="toc-ejercicio-14-8" class="nav-link" data-scroll-target="#ejercicio-14-8">8. Lanzar sin alcanzar el escape</a></li>
+  <li><a href="#ejercicio-14-9" id="toc-ejercicio-14-9" class="nav-link" data-scroll-target="#ejercicio-14-9">9. La energía en el umbral</a></li>
+  <li><a href="#ejercicio-14-10" id="toc-ejercicio-14-10" class="nav-link" data-scroll-target="#ejercicio-14-10">10. Escapar con rapidez residual</a></li>
+  <li><a href="#ejercicio-14-11" id="toc-ejercicio-14-11" class="nav-link" data-scroll-target="#ejercicio-14-11">11. Mismo campo superficial, distinto escape</a></li>
+  <li><a href="#ejercicio-14-12" id="toc-ejercicio-14-12" class="nav-link" data-scroll-target="#ejercicio-14-12">12. Dentro de un cascarón</a></li>
+  <li><a href="#ejercicio-14-13" id="toc-ejercicio-14-13" class="nav-link" data-scroll-target="#ejercicio-14-13">13. Atravesar una esfera homogénea</a></li>
+  <li><a href="#ejercicio-14-14" id="toc-ejercicio-14-14" class="nav-link" data-scroll-target="#ejercicio-14-14">14. Una densidad que disminuye hacia afuera</a></li>
+  <li><a href="#ejercicio-14-15" id="toc-ejercicio-14-15" class="nav-link" data-scroll-target="#ejercicio-14-15">15. Un aro no es una esfera</a></li>
+  <li><a href="#ejercicio-14-16" id="toc-ejercicio-14-16" class="nav-link" data-scroll-target="#ejercicio-14-16">16. Una rapidez que exige una órbita circular</a></li>
+  <li><a href="#ejercicio-14-17" id="toc-ejercicio-14-17" class="nav-link" data-scroll-target="#ejercicio-14-17">17. Un cero de campo que no es estable</a></li>
+  <li><a href="#ejercicio-14-18" id="toc-ejercicio-14-18" class="nav-link" data-scroll-target="#ejercicio-14-18">18. Medir una masa con intervalos</a></li>
+  <li><a href="#ejercicio-14-19" id="toc-ejercicio-14-19" class="nav-link" data-scroll-target="#ejercicio-14-19">19. Comprobar una fuente fija</a></li>
+  <li><a href="#ejercicio-14-20" id="toc-ejercicio-14-20" class="nav-link" data-scroll-target="#ejercicio-14-20">20. Una inferencia que no reconstruye el interior</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#solucion-14-1" id="toc-solucion-14-1" class="nav-link" data-scroll-target="#solucion-14-1">1. Una ley con dirección y unidades</a></li>
+  <li><a href="#solucion-14-2" id="toc-solucion-14-2" class="nav-link" data-scroll-target="#solucion-14-2">2. Cancelar campos de masas distintas</a></li>
+  <li><a href="#solucion-14-3" id="toc-solucion-14-3" class="nav-link" data-scroll-target="#solucion-14-3">3. Sobre la mediatriz</a></li>
+  <li><a href="#solucion-14-4" id="toc-solucion-14-4" class="nav-link" data-scroll-target="#solucion-14-4">4. Sonda sostenida y sonda libre</a></li>
+  <li><a href="#solucion-14-5" id="toc-solucion-14-5" class="nav-link" data-scroll-target="#solucion-14-5">5. Cuándo basta una gravedad constante</a></li>
+  <li><a href="#solucion-14-6" id="toc-solucion-14-6" class="nav-link" data-scroll-target="#solucion-14-6">6. Subir una masa sin acelerar sus extremos</a></li>
+  <li><a href="#solucion-14-7" id="toc-solucion-14-7" class="nav-link" data-scroll-target="#solucion-14-7">7. Caer desde una altura planetaria</a></li>
+  <li><a href="#solucion-14-8" id="toc-solucion-14-8" class="nav-link" data-scroll-target="#solucion-14-8">8. Lanzar sin alcanzar el escape</a></li>
+  <li><a href="#solucion-14-9" id="toc-solucion-14-9" class="nav-link" data-scroll-target="#solucion-14-9">9. La energía en el umbral</a></li>
+  <li><a href="#solucion-14-10" id="toc-solucion-14-10" class="nav-link" data-scroll-target="#solucion-14-10">10. Escapar con rapidez residual</a></li>
+  <li><a href="#solucion-14-11" id="toc-solucion-14-11" class="nav-link" data-scroll-target="#solucion-14-11">11. Mismo campo superficial, distinto escape</a></li>
+  <li><a href="#solucion-14-12" id="toc-solucion-14-12" class="nav-link" data-scroll-target="#solucion-14-12">12. Dentro de un cascarón</a></li>
+  <li><a href="#solucion-14-13" id="toc-solucion-14-13" class="nav-link" data-scroll-target="#solucion-14-13">13. Atravesar una esfera homogénea</a></li>
+  <li><a href="#solucion-14-14" id="toc-solucion-14-14" class="nav-link" data-scroll-target="#solucion-14-14">14. Una densidad que disminuye hacia afuera</a></li>
+  <li><a href="#solucion-14-15" id="toc-solucion-14-15" class="nav-link" data-scroll-target="#solucion-14-15">15. Un aro no es una esfera</a></li>
+  <li><a href="#solucion-14-16" id="toc-solucion-14-16" class="nav-link" data-scroll-target="#solucion-14-16">16. Una rapidez que exige una órbita circular</a></li>
+  <li><a href="#solucion-14-17" id="toc-solucion-14-17" class="nav-link" data-scroll-target="#solucion-14-17">17. Un cero de campo que no es estable</a></li>
+  <li><a href="#solucion-14-18" id="toc-solucion-14-18" class="nav-link" data-scroll-target="#solucion-14-18">18. Medir una masa con intervalos</a></li>
+  <li><a href="#solucion-14-19" id="toc-solucion-14-19" class="nav-link" data-scroll-target="#solucion-14-19">19. Comprobar una fuente fija</a></li>
+  <li><a href="#solucion-14-20" id="toc-solucion-14-20" class="nav-link" data-scroll-target="#solucion-14-20">20. Una inferencia que no reconstruye el interior</a></li>
+  </ul></li>
+  <li><a href="#lecturas-y-conexiones" id="toc-lecturas-y-conexiones" class="nav-link" data-scroll-target="#lecturas-y-conexiones">Lecturas y conexiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Gravitación y campo</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 14</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 14 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-13-rotacion-plana-y-rodadura.html">← 13. Rotación plana y rodadura</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-15-dos-cuerpos-y-fuerzas-centrales.html">15. Dos cuerpos y fuerzas centrales →</a></p>
+<p>En la superficie de un planeta se mide una aceleración de caída de <span class="math inline">\(10{,}00\,\mathrm{m/s^2}\)</span>. Una segunda sonda, situada seiscientos kilómetros más arriba, registra <span class="math inline">\((8{,}27\pm0{,}03)\,\mathrm{m/s^2}\)</span>. La diferencia supera ampliamente la incertidumbre indicada. Para interpretar las medidas necesitamos decidir qué significa «más arriba», desde dónde se mide la distancia y qué parte del planeta interviene en la atracción. La aproximación de gravedad constante que sirvió para una caída de pocos metros ya no describe ambos experimentos.</p>
+<p>Trabajaremos con un planeta ideal esféricamente simétrico, de radio <span class="math inline">\(R=6{,}00\times10^6\,\mathrm m\)</span>, sin atmósfera ni rotación. Su centro se considerará fijo en un marco inercial durante el experimento; las sondas tienen masas despreciables frente a la del planeta. Los números describen un aparato matemático de referencia, no una determinación de las propiedades de un planeta real. Tomaremos el primer valor como dato nominal <span class="math inline">\(g_0=10{,}00\,\mathrm{m/s^2}\)</span> y examinaremos después qué cambia si también tiene incertidumbre.</p>
+<p>En cada medida se libera brevemente una sonda y se reconstruye su aceleración inicial respecto de ese marco. Una sonda sostenida a altura fija tendría aceleración cero: su soporte compensaría la gravedad. La lectura de un acelerómetro transportado en caída libre tampoco se identifica sin más con la aceleración de su posición respecto del planeta. El procedimiento de observación forma parte del problema.</p>
+<figure id="fig-fispm-r20261021-14-1" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/gravedad_alturas.svg" class="lightbox" data-gallery="fispm-r20261021-c14"><img src="../../assets/books/fispm/r20261021/gravedad_alturas.svg" alt="El radio se mide desde el centro del planeta; la altura se mide desde su superficie." class="fpm-v04-figure img-fluid figure-img" width="900" height="550" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 14.1.</em> Los dos radios de observación son <span class="math inline">\(R\)</span> y <span class="math inline">\(R+h\)</span>. La altura de la segunda sonda es <span class="math inline">\(h=0{,}10R\)</span>. Las flechas indican el sentido del campo; la figura no representa distancias planetarias a escala.</p>
+</figcaption>
+</figure>
+<section id="de-una-interacción-entre-masas-a-un-campo" class="level2">
+<h2 class="anchored" data-anchor-id="de-una-interacción-entre-masas-a-un-campo">De una interacción entre masas a un campo</h2>
+<p>La ley newtoniana de gravitación proporciona una interacción que antes no habíamos especificado. Para dos partículas de masas positivas <span class="math inline">\(M\)</span> y <span class="math inline">\(m\)</span>, en posiciones <span class="math inline">\(\mathbf a\)</span> y <span class="math inline">\(\mathbf x\)</span>, la fuerza sobre la segunda es</p>
+<p><span class="math display">\[
+\mathbf F_{M\to m}
+=-GMm\frac{\mathbf x-\mathbf a}{\|\mathbf x-\mathbf a\|^3},
+\qquad \mathbf x\ne\mathbf a.
+\]</span></p>
+<p>El vector <span class="math inline">\(\mathbf x-\mathbf a\)</span> apunta desde la fuente hacia la partícula; el signo menos hace atractiva la fuerza. Su magnitud es <span class="math inline">\(GMm/r^2\)</span>, con <span class="math inline">\(r=\|\mathbf x-\mathbf a\|\)</span>. La fuerza sobre la fuente tiene igual magnitud y sentido contrario. Esta ley es una hipótesis física contrastable del modelo newtoniano, no una consecuencia de la definición de fuerza o de la geometría del espacio.</p>
+<p>La constante <span class="math inline">\(G\)</span> tiene unidades <span class="math inline">\(\mathrm{m^3/(kg\,s^2)}\)</span>. Cuando un ejercicio requiera su valor numérico utilizaremos <span class="math inline">\(G=6{,}67\times10^{-11}\,\mathrm{m^3/(kg\,s^2)}\)</span> como dato redondeado de cálculo. La letra <span class="math inline">\(G\)</span> no designa una aceleración. En cambio, la aceleración gravitatoria que una fuente produce depende de la posición y tiene unidades <span class="math inline">\(\mathrm{m/s^2}\)</span>.</p>
+<p><strong>Definición.</strong> El campo gravitatorio externo <span class="math inline">\(\mathbf g(\mathbf x)\)</span> es la fuerza gravitatoria que una distribución de fuentes dada ejerce por unidad de masa de una partícula de prueba situada en <span class="math inline">\(\mathbf x\)</span>: <span class="math inline">\(\mathbf F_g=m\mathbf g(\mathbf x)\)</span>. La partícula de prueba se toma suficientemente pequeña para que su presencia no modifique apreciablemente el estado de las fuentes durante la observación. El dominio del campo de fuentes puntuales comprende las posiciones a distancia positiva de cada fuente.</p>
+<p>Que el mismo <span class="math inline">\(m\)</span> aparezca en <span class="math inline">\(\mathbf F_g=m\mathbf g\)</span> y en la ley inercial <span class="math inline">\(m\mathbf a=\mathbf F\)</span> incorpora la proporcionalidad empírica entre masa gravitatoria e inercial, con la elección usual de unidades. Esta identificación permite obtener <span class="math inline">\(\mathbf a=\mathbf g\)</span> cuando la gravedad es la única fuerza. Si hay un soporte, un motor o un contacto, la aceleración se calcula con la fuerza neta y ya no coincide necesariamente con el campo.</p>
+<p>Para varias fuentes puntuales fijas se adopta superposición: se suman sus fuerzas vectoriales. Por tanto,</p>
+<p><span class="math display">\[
+\mathbf g(\mathbf x)
+=-G\sum_j M_j\frac{\mathbf x-\mathbf a_j}{\|\mathbf x-\mathbf a_j\|^3}.
+\]</span></p>
+<p>Una fuente distante y otra cercana pueden tirar en direcciones distintas. Sumar solamente sus magnitudes perdería la posibilidad de cancelación. Dos masas iguales mantenidas en <span class="math inline">\(x=-a\)</span> y <span class="math inline">\(x=a\)</span> producen campo cero en el origen, aunque cada una atraiga una partícula situada allí. Ese cero depende de la posición; no elimina la interacción en los puntos vecinos.</p>
+<figure id="fig-fispm-r20261021-14-2" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/gravedad_superposicion.svg" class="lightbox" data-gallery="fispm-r20261021-c14"><img src="../../assets/books/fispm/r20261021/gravedad_superposicion.svg" alt="En un punto situado sobre la mediatriz de dos fuentes iguales, se cancelan las componentes horizontales del campo." class="fpm-v04-figure img-fluid figure-img" width="900" height="570" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 14.2.</em> Las fuentes están sostenidas en posiciones fijas. En el punto superior, las componentes verticales se suman hacia abajo y las horizontales se cancelan. En el punto medio de las fuentes se anula el campo total.</p>
+</figcaption>
+</figure>
+<p>Considerar fija una fuente de masa grande es una aproximación dinámica adicional. En la interacción de dos partículas, las aceleraciones tienen razón <span class="math inline">\(m/M\)</span>, porque las fuerzas tienen igual magnitud. Esa razón pequeña justifica despreciar el retroceso para muchas preguntas, pero la precisión buscada y la duración del experimento deben permitirlo. Si ambas masas se mueven de forma apreciable, habrá que resolver sus dos trayectorias. El campo no convierte a la fuente en un cuerpo exento de la tercera ley.</p>
+</section>
+<section id="un-potencial-que-conserva-la-información-sobre-el-trabajo" class="level2">
+<h2 class="anchored" data-anchor-id="un-potencial-que-conserva-la-información-sobre-el-trabajo">Un potencial que conserva la información sobre el trabajo</h2>
+<p>Sumar campos exige conservar direcciones. Para calcular trabajo puede resultar más sencillo sumar funciones escalares. Recuperemos el potencial del capítulo 8, separando la masa de la partícula que explora el campo.</p>
+<p><strong>Definición.</strong> Un potencial gravitatorio <span class="math inline">\(\Phi\)</span> en una región es una función escalar diferenciable que satisface <span class="math inline">\(\mathbf g=-\nabla\Phi\)</span>. La energía potencial de una partícula de prueba de masa constante <span class="math inline">\(m\)</span> es <span class="math inline">\(U=m\Phi\)</span>, hasta una constante aditiva. El gradiente es el vector de derivadas parciales <span class="math inline">\((\partial_x\Phi,\partial_y\Phi,\partial_z\Phi)\)</span>; su producto escalar con una velocidad da la derivada de <span class="math inline">\(\Phi\)</span> a lo largo del movimiento cuando el potencial no depende explícitamente del tiempo.</p>
+<p>El potencial tiene unidades <span class="math inline">\(\mathrm{J/kg}=\mathrm{m^2/s^2}\)</span> y no es una fuerza. En una trayectoria diferenciable <span class="math inline">\(\mathbf x(t)\)</span> que evita las singularidades, la regla de la cadena da <span class="math inline">\(d\Phi(\mathbf x(t))/dt=\nabla\Phi\cdot\dot{\mathbf x}\)</span>. Esa identidad relaciona el cálculo escalar con el trabajo de <span class="math inline">\(m\mathbf g\)</span> y explica por qué aparece el signo menos.</p>
+<p><strong>Proposición.</strong> Para una masa puntual fija <span class="math inline">\(M\)</span> en <span class="math inline">\(\mathbf a\)</span>, el potencial que tiende a cero al alejarse indefinidamente es <span class="math inline">\(\Phi(\mathbf x)=-GM/\|\mathbf x-\mathbf a\|\)</span>. En una distribución finita de fuentes puntuales fijas, se suman estos potenciales. Una partícula de prueba sometida solamente a ese campo conserva la energía mecánica específica <span class="math inline">\(e=\|\mathbf v\|^2/2+\Phi\)</span> mientras su trayectoria evite las fuentes.</p>
+<p><strong>Demostración.</strong> Escribamos <span class="math inline">\(r=\|\mathbf x-\mathbf a\|&gt;0\)</span>. Derivar <span class="math inline">\(r^2=(\mathbf x-\mathbf a)\cdot(\mathbf x-\mathbf a)\)</span> respecto de cada coordenada da <span class="math inline">\(\nabla r=(\mathbf x-\mathbf a)/r\)</span>. Por ello <span class="math inline">\(\nabla(-GM/r)=GM(\mathbf x-\mathbf a)/r^3\)</span>, cuyo negativo es el campo de la fuente. La derivación es lineal, así que la suma de potenciales produce la suma de campos. Para la conservación, derivamos a lo largo de una solución de <span class="math inline">\(\dot{\mathbf v}=\mathbf g\)</span>:</p>
+<p><span class="math display">\[
+\frac{de}{dt}
+=\mathbf v\cdot\dot{\mathbf v}+\nabla\Phi\cdot\mathbf v
+=\mathbf v\cdot(\mathbf g+\nabla\Phi)=0.
+\]</span></p>
+<p>La elección del cero fija una referencia útil para fuentes localizadas, pero las diferencias de potencial y el campo no cambian al sumar una constante. En el punto medio de las dos fuentes iguales anteriores, <span class="math inline">\(\mathbf g=0\)</span> y <span class="math inline">\(\Phi=-2GM/a\)</span>. Un gradiente nulo en un punto no obliga a que el valor de la función sea cero allí. Tampoco obliga a que ese punto sea estable.</p>
+<p>Si las fuentes cambian de posición, el campo puede depender del tiempo. Aun cuando se escriba <span class="math inline">\(\mathbf g=-\nabla\Phi(\mathbf x,t)\)</span> en el modelo newtoniano, la derivada anterior pasa a ser <span class="math inline">\(de/dt=\partial\Phi/\partial t\)</span>. La energía de la partícula de prueba por sí sola no tiene entonces por qué conservarse. En este capítulo mantendremos estacionarias las fuentes salvo cuando examinemos explícitamente el alcance de esa aproximación.</p>
+</section>
+<section id="cuánto-cuesta-aproximar-la-gravedad-por-una-constante" class="level2">
+<h2 class="anchored" data-anchor-id="cuánto-cuesta-aproximar-la-gravedad-por-una-constante">Cuánto cuesta aproximar la gravedad por una constante</h2>
+<p>Por el momento representemos el planeta mediante una masa puntual central y escribamos <span class="math inline">\(\mu=GM\)</span>, de unidades <span class="math inline">\(\mathrm{m^3/s^2}\)</span>. Más adelante justificaremos exactamente este reemplazo para la región exterior de una distribución esférica. Sobre una misma dirección radial, con altura <span class="math inline">\(h\geq0\)</span> medida desde una superficie de radio <span class="math inline">\(R\)</span>,</p>
+<p><span class="math display">\[
+g(h)=\frac{\mu}{(R+h)^2},
+\qquad g_0=\frac{\mu}{R^2}.
+\]</span></p>
+<p>Aquí <span class="math inline">\(g(h)\)</span> es la magnitud positiva del campo; su componente radial es <span class="math inline">\(-g(h)\)</span>. La altura <span class="math inline">\(h\)</span> y la distancia central <span class="math inline">\(r=R+h\)</span> cumplen funciones distintas. Sustituir <span class="math inline">\(h\)</span> por <span class="math inline">\(r\)</span> colocaría una singularidad artificial en la superficie del planeta.</p>
+<p><strong>Proposición.</strong> En el modelo central, sean <span class="math inline">\(R&gt;0\)</span>, <span class="math inline">\(h&gt;0\)</span> y <span class="math inline">\(\eta=h/R\)</span>. El incremento de potencial desde la superficie es</p>
+<p><span class="math display">\[
+\Delta\Phi=\mu\left(\frac1R-\frac1{R+h}\right)
+=\frac{g_0h}{1+\eta}.
+\]</span></p>
+<p>Si se usa <span class="math inline">\(g_0\)</span> en lugar de <span class="math inline">\(g(h)\)</span>, el error relativo respecto del valor exacto del campo es <span class="math inline">\(2\eta+\eta^2\)</span>. Si se usa <span class="math inline">\(g_0h\)</span> en lugar de <span class="math inline">\(\Delta\Phi\)</span>, el error relativo respecto del incremento exacto es <span class="math inline">\(\eta\)</span>.</p>
+<p><strong>Demostración.</strong> Restar <span class="math inline">\(-\mu/R\)</span> a <span class="math inline">\(-\mu/(R+h)\)</span> y usar <span class="math inline">\(\mu=g_0R^2\)</span> produce la primera igualdad. Como <span class="math inline">\(g(h)=g_0/(1+\eta)^2\)</span>,</p>
+<p><span class="math display">\[
+\frac{g_0-g(h)}{g(h)}=(1+\eta)^2-1=2\eta+\eta^2.
+\]</span></p>
+<p>De la expresión exacta del incremento se obtiene asimismo <span class="math inline">\((g_0h-\Delta\Phi)/\Delta\Phi=\eta\)</span>. Ambos numeradores son positivos para <span class="math inline">\(h&gt;0\)</span>, por lo que no hace falta introducir valores absolutos adicionales.</p>
+<p>La tolerancia depende de qué queremos predecir. Para aproximar el campo con un error relativo no mayor que <span class="math inline">\(\delta&gt;0\)</span> se necesita <span class="math inline">\(h/R\leq\sqrt{1+\delta}-1\)</span>. Para aproximar el incremento de potencial con la misma tolerancia basta <span class="math inline">\(h/R\leq\delta\)</span>. La aproximación energética puede cumplir una exigencia que la aceleración local ya incumple; ambas decisiones deben referirse a la magnitud observada.</p>
+<p>En el experimento inicial, <span class="math inline">\(\eta=0{,}10\)</span> y <span class="math inline">\(\mu=g_0R^2=3{,}60\times10^{14}\,\mathrm{m^3/s^2}\)</span>. La predicción de magnitud del campo es <span class="math inline">\(g(h)=1000/121\,\mathrm{m/s^2}\approx8{,}2645\,\mathrm{m/s^2}\)</span>, dentro del intervalo medido <span class="math inline">\([8{,}24,8{,}30]\,\mathrm{m/s^2}\)</span>. Usar diez a esa altura sobreestimaría la aceleración exacta un <span class="math inline">\(21\%\)</span>. El dato superficial ajustó <span class="math inline">\(\mu\)</span>; la segunda medida es el contraste independiente de la variación radial, condicionado a las hipótesis de radio, simetría y observación.</p>
+<figure id="fig-fispm-r20261021-14-3" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/gravedad_aproximacion.svg" class="lightbox" data-gallery="fispm-r20261021-c14"><img src="../../assets/books/fispm/r20261021/gravedad_aproximacion.svg" alt="El campo central disminuye con la altura, mientras que la aproximación uniforme mantiene su valor superficial." class="fpm-v04-figure img-fluid figure-img" width="900" height="550" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 14.3.</em> Se representa <span class="math inline">\(g(h)/g_0\)</span> frente a <span class="math inline">\(h/R\)</span>. La curva es <span class="math inline">\(1/(1+h/R)^2\)</span>. La discrepancia se mide aquí respecto del campo exacto; usar otra referencia en el denominador daría otro porcentaje.</p>
+</figcaption>
+</figure>
+<p>El modelo uniforme sobre una región tridimensional requiere además que la dirección cambie poco. Dos puntos separados lateralmente una longitud pequeña <span class="math inline">\(\ell\)</span> sobre una esfera tienen direcciones radiales que difieren un ángulo del orden de <span class="math inline">\(\ell/R\)</span>. Controlar únicamente la altura no vuelve paralelas todas las verticales de un planeta. En el laboratorio pequeño las dos comparaciones, <span class="math inline">\(h/R\)</span> y <span class="math inline">\(\ell/R\)</span>, pueden ser diminutas; a escala planetaria hay que conservar la geometría.</p>
+</section>
+<section id="construir-una-fuente-extensa-sin-concentrarla-de-antemano" class="level2">
+<h2 class="anchored" data-anchor-id="construir-una-fuente-extensa-sin-concentrarla-de-antemano">Construir una fuente extensa sin concentrarla de antemano</h2>
+<p>La masa del planeta ocupa una región del espacio. Para averiguar cuándo podemos reemplazarla por un punto, debemos sumar las contribuciones de sus partes. La expresión «distancia al centro de masa» no basta, por sí sola, para justificar el reemplazo.</p>
+<p><strong>Definición.</strong> Una densidad volumétrica <span class="math inline">\(\rho(\mathbf y)\geq0\)</span> asigna masa al elemento de volumen mediante <span class="math inline">\(dm=\rho(\mathbf y)\,d^3y\)</span>. La masa total es <span class="math inline">\(M=\int\rho(\mathbf y)\,d^3y\)</span>. Usaremos densidades acotadas, integrables y de soporte compacto. Para láminas o cascarones ideales se usa en cambio una densidad superficial y el elemento de área; no se mezcla ese elemento con uno de volumen.</p>
+<p>Por superposición, en un punto exterior al soporte,</p>
+<p><span class="math display">\[
+\Phi(\mathbf x)=-G\int\frac{dm(\mathbf y)}{\|\mathbf x-\mathbf y\|},
+\qquad
+\mathbf g(\mathbf x)
+=-G\int\frac{\mathbf x-\mathbf y}{\|\mathbf x-\mathbf y\|^3}\,dm(\mathbf y).
+\]</span></p>
+<p>El punto de observación <span class="math inline">\(\mathbf x\)</span> se mantiene fijo durante la suma; <span class="math inline">\(\mathbf y\)</span> recorre las fuentes. Una separación positiva del soporte permite derivar el núcleo bajo la integral: el núcleo y sus derivadas están uniformemente acotados en un entorno pequeño de <span class="math inline">\(\mathbf x\)</span>, y la masa total es finita. Así se conserva <span class="math inline">\(\mathbf g=-\nabla\Phi\)</span>. Para puntos interiores habrá que examinar la integral; la simetría esférica permitirá hacerlo sin introducir aquí teoría general de integrales singulares.</p>
+<p>Dos fuentes con el mismo centro de masa pueden producir campos distintos cerca de ellas. La simetría relevante debe imponerse sobre toda la distribución, no únicamente sobre su centro. Una barra, un aro y una esfera tienen geometrías diferentes aun cuando coincidan sus masas totales y sus centros.</p>
+</section>
+<section id="por-qué-funciona-una-fuente-puntual-fuera-de-una-esfera" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-funciona-una-fuente-puntual-fuera-de-una-esfera">Por qué funciona una fuente puntual fuera de una esfera</h2>
+<p>Comencemos por un cascarón esférico delgado y homogéneo de radio <span class="math inline">\(a&gt;0\)</span> y masa <span class="math inline">\(M\)</span>. Elegimos el eje polar desde su centro hacia el punto de observación, situado a distancia <span class="math inline">\(r\)</span>. Todos los elementos de una banda de ángulo polar <span class="math inline">\(\theta\)</span> están a la misma distancia <span class="math inline">\(s\)</span> del observador. Esa elección convierte una suma sobre la superficie en una integral de una variable.</p>
+<figure id="fig-fispm-r20261021-14-4" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/gravedad_cascaron.svg" class="lightbox" data-gallery="fispm-r20261021-c14"><img src="../../assets/books/fispm/r20261021/gravedad_cascaron.svg" alt="Una banda esférica de ángulo polar común tiene distancia constante al punto de observación." class="fpm-v04-figure img-fluid figure-img" width="900" height="580" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 14.4.</em> La sección meridiana muestra <span class="math inline">\(s^2=r^2+a^2-2ra\cos\theta\)</span>. La banda completa gira alrededor del eje que une el centro y el observador; no es sólo el pequeño arco visible en la sección.</p>
+</figcaption>
+</figure>
+<p><strong>Proposición.</strong> El potencial de un cascarón esférico homogéneo, con cero en el infinito, es</p>
+<p><span class="math display">\[
+\Phi(r)=
+\begin{cases}
+-GM/a,&amp;0\leq r&lt;a,\\
+-GM/r,&amp;r&gt;a.
+\end{cases}
+\]</span></p>
+<p>El potencial se prolonga continuamente a <span class="math inline">\(r=a\)</span>. El campo es cero en el interior y coincide con el de una masa puntual central en el exterior. En la superficie ideal no asignaremos un valor de campo mediante estas dos fórmulas, pues sus límites laterales son distintos.</p>
+<p><strong>Demostración.</strong> La banda tiene área <span class="math inline">\(2\pi a^2\sin\theta\,d\theta\)</span> y, por homogeneidad, masa <span class="math inline">\(dm=(M/2)\sin\theta\,d\theta\)</span>. Para <span class="math inline">\(r&gt;0\)</span> y <span class="math inline">\(r\ne a\)</span>, integrar sus contribuciones al potencial da</p>
+<p><span class="math display">\[
+\Phi(r)=-\frac{GM}{2}\int_0^\pi
+\frac{\sin\theta\,d\theta}{\sqrt{r^2+a^2-2ra\cos\theta}}.
+\]</span></p>
+<p>El cambio <span class="math inline">\(s^2=r^2+a^2-2ra\cos\theta\)</span> satisface <span class="math inline">\(s\,ds=ra\sin\theta\,d\theta\)</span>. Los extremos se transforman en <span class="math inline">\(|r-a|\)</span> y <span class="math inline">\(r+a\)</span>, de modo que</p>
+<p><span class="math display">\[
+\Phi(r)=-\frac{GM}{2ra}\int_{|r-a|}^{r+a}ds
+=-\frac{GM}{2ra}\bigl(r+a-|r-a|\bigr).
+\]</span></p>
+<p>Si <span class="math inline">\(r&gt;a\)</span>, el paréntesis vale <span class="math inline">\(2a\)</span>; si <span class="math inline">\(0&lt;r&lt;a\)</span>, vale <span class="math inline">\(2r\)</span>. Resultan las expresiones anunciadas. En el centro todos los elementos están a distancia <span class="math inline">\(a\)</span>, lo que da directamente <span class="math inline">\(-GM/a\)</span>. La simetría hace radial el campo, y su componente es <span class="math inline">\(-d\Phi/dr\)</span> fuera de la superficie: cero dentro y <span class="math inline">\(-GM/r^2\)</span> fuera. Los dos potenciales tienen el mismo límite en <span class="math inline">\(a\)</span>, mientras sus derivadas no coinciden.</p>
+<p>El cero interior del campo resulta de la suma sobre toda la superficie. Una porción cercana tira más intensamente por unidad de masa, pero su contribución no se compara con una porción lejana de igual área elegida arbitrariamente. El cálculo de las bandas resuelve simultáneamente la distancia, la masa y la dirección. Además, un campo interior nulo permite un potencial interior constante distinto de cero, como ya anticipaba el ejemplo de dos fuentes.</p>
+<p>Una esfera con densidad dependiente sólo de la distancia al centro puede descomponerse en cascarones concéntricos. Una capa situada por fuera del observador produce campo cero allí; una capa interior actúa como si estuviera concentrada en el centro. Esta separación permite obtener el campo interior, donde la masa total del cuerpo ya no puede usarse indiscriminadamente.</p>
+<p><strong>Proposición.</strong> Sea una distribución esférica de radio exterior <span class="math inline">\(R\)</span>, con densidad radial acotada <span class="math inline">\(\rho(s)\geq0\)</span>. Escribamos</p>
+<p><span class="math display">\[
+M(r)=4\pi\int_0^r\rho(s)s^2\,ds\quad(0\leq r\leq R),
+\qquad M=M(R).
+\]</span></p>
+<p>Para <span class="math inline">\(0&lt;r&lt;R\)</span> su campo y su potencial son</p>
+<p><span class="math display">\[
+\mathbf g(r)=-\frac{GM(r)}{r^2}\mathbf e_r,
+\qquad
+\Phi(r)=-G\left[\frac{M(r)}r+
+4\pi\int_r^R\rho(s)s\,ds\right].
+\]</span></p>
+<p>Para <span class="math inline">\(r\geq R\)</span>, con prolongación continua desde el interior, valen <span class="math inline">\(\mathbf g=-GM\mathbf e_r/r^2\)</span> y <span class="math inline">\(\Phi=-GM/r\)</span>. En el centro el campo es cero y el potencial es el límite finito de la expresión interior.</p>
+<p><strong>Demostración.</strong> Cada cascarón de radio <span class="math inline">\(s&lt;r\)</span> aporta <span class="math inline">\(-G\,dM/r\)</span> al potencial y <span class="math inline">\(-G\,dM/r^2\)</span> al campo radial. Los de radio <span class="math inline">\(s&gt;r\)</span> aportan <span class="math inline">\(-G\,dM/s\)</span> al potencial y campo cero. Sumar ambos grupos, usando <span class="math inline">\(dM=4\pi\rho(s)s^2ds\)</span>, da las fórmulas. Para un observador exterior todos los cascarones pertenecen al primer grupo y sus masas suman <span class="math inline">\(M\)</span>. Al acercarnos al centro, la acotación de <span class="math inline">\(\rho\)</span> implica <span class="math inline">\(M(r)=O(r^3)\)</span>, por lo que <span class="math inline">\(GM(r)/r^2=O(r)\)</span> tiende a cero y <span class="math inline">\(M(r)/r\)</span> también. La integral restante tiene límite finito porque <span class="math inline">\(\rho(s)s\)</span> es integrable en <span class="math inline">\([0,R]\)</span>.</p>
+<p>La simetría esférica no exige densidad constante. Planetas con distintas estratificaciones radiales y la misma masa producen el mismo campo exterior en este modelo. Por tanto, una medición exterior del campo no reconstruye por sí sola toda la densidad interna. El resultado exterior es exacto bajo simetría; para una fuente no esférica, concentrarla en su centro de masa requiere una aproximación adicional de observación lejana.</p>
+<p>Si la esfera es homogénea, <span class="math inline">\(M(r)=M(r/R)^3\)</span>. Sustituir y efectuar la integral interior proporciona</p>
+<p><span class="math display">\[
+\mathbf g(r)=-\frac{GM}{R^3}\mathbf x,
+\qquad
+\Phi(r)=-\frac{GM}{2R}\left(3-\frac{r^2}{R^2}\right),
+\qquad 0\leq r\leq R.
+\]</span></p>
+<p>Dentro de esa esfera la magnitud del campo crece linealmente desde cero; fuera decrece como <span class="math inline">\(r^{-2}\)</span>. La gráfica tiene su máximo superficial, mientras que el potencial es más negativo en el centro. Estas formas permiten comprobar signos y continuidad sin memorizar dos fórmulas desconectadas.</p>
+<figure id="fig-fispm-r20261021-14-5" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/gravedad_esfera.svg" class="lightbox" data-gallery="fispm-r20261021-c14"><img src="../../assets/books/fispm/r20261021/gravedad_esfera.svg" alt="El campo y el potencial de una esfera homogénea se comparan dentro y fuera de la superficie." class="fpm-v04-figure img-fluid figure-img" width="900" height="690" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 14.5.</em> Se representan la magnitud <span class="math inline">\(g/(GM/R^2)\)</span> y el potencial <span class="math inline">\(\Phi/(GM/R)\)</span> frente a <span class="math inline">\(r/R\)</span>. El campo es continuo en la superficie de esta esfera de densidad finita; el salto del cascarón infinitamente delgado pertenece a un modelo distinto.</p>
+</figcaption>
+</figure>
+</section>
+<section id="usar-energía-para-una-caída-extensa-o-un-escape" class="level2">
+<h2 class="anchored" data-anchor-id="usar-energía-para-una-caída-extensa-o-un-escape">Usar energía para una caída extensa o un escape</h2>
+<p>El campo exterior ya está justificado sin exigir que el planeta sea una partícula. Para un movimiento exterior bajo su gravedad, la energía específica es <span class="math inline">\(e=v^2/2-\mu/r\)</span>. Una caída desde el reposo a distancia <span class="math inline">\(r_0&gt;R\)</span> alcanza la superficie con</p>
+<p><span class="math display">\[
+v^2=2\mu\left(\frac1R-\frac1{r_0}\right).
+\]</span></p>
+<p>Esta expresión evita suponer una aceleración constante durante toda la caída. Si <span class="math inline">\(r_0=R+h\)</span>, se obtiene <span class="math inline">\(v^2=2g_0h/(1+h/R)\)</span>, menor que <span class="math inline">\(2g_0h\)</span>. La comparación no calcula el tiempo de caída; para eso habría que integrar la relación entre velocidad y posición.</p>
+<p><strong>Proposición.</strong> Una partícula de prueba lanzada radialmente hacia afuera desde <span class="math inline">\(r_0\geq R\)</span>, con rapidez <span class="math inline">\(v_0&gt;0\)</span>, bajo el campo exterior de una fuente esférica fija, alcanza distancias arbitrariamente grandes si y sólo si <span class="math inline">\(v_0\geq\sqrt{2\mu/r_0}\)</span>. Si la rapidez es menor, su radio máximo es</p>
+<p><span class="math display">\[
+r_{\max}=\left(\frac1{r_0}-\frac{v_0^2}{2\mu}\right)^{-1}.
+\]</span></p>
+<p>En el umbral, la rapidez tiende a cero al alejarse indefinidamente; el infinito no se alcanza en tiempo finito.</p>
+<p><strong>Demostración.</strong> El torque central es cero, así que el lanzamiento radial conserva momento angular nulo y sigue siendo radial. La energía da</p>
+<p><span class="math display">\[
+\dot r^2=v_0^2+2\mu\left(\frac1r-\frac1{r_0}\right)
+=2e+\frac{2\mu}{r}.
+\]</span></p>
+<p>Si <span class="math inline">\(e&lt;0\)</span>, el miembro derecho se anula en el radio positivo indicado; es positivo hasta allí y negativo después. La raíz es simple y la integral temporal cerca de ella tiene la forma integrable de una constante por <span class="math inline">\(dr/\sqrt{r_{\max}-r}\)</span>; la rama saliente llega al retorno en tiempo finito y no puede cruzar a la región prohibida. Si <span class="math inline">\(e\geq0\)</span>, el miembro derecho es positivo para todo radio finito <span class="math inline">\(r\geq r_0\)</span>; la rama saliente puede prolongarse hasta cualquier radio prefijado. Para <span class="math inline">\(e=0\)</span>, <span class="math inline">\(dt=\sqrt{r/(2\mu)}\,dr\)</span> y su integral diverge al enviar el extremo a infinito. La condición <span class="math inline">\(e\geq0\)</span> equivale a la desigualdad anunciada.</p>
+<p>La rapidez de escape depende del lugar de lanzamiento y de la elección de energía inicial. No es una rapidez que un motor deba mantener durante todo el viaje. Un lanzamiento impulsivo, seguido de movimiento libre, y un ascenso sostenido por un propulsor son problemas distintos. Para el planeta de referencia, el umbral superficial es <span class="math inline">\(\sqrt{2g_0R}=\sqrt{1{,}20\times10^8}\,\mathrm{m/s}\approx10{,}95\,\mathrm{km/s}\)</span>, sin atmósfera ni rotación.</p>
+<figure id="fig-fispm-r20261021-14-6" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/gravedad_escape.svg" class="lightbox" data-gallery="fispm-r20261021-c14"><img src="../../assets/books/fispm/r20261021/gravedad_escape.svg" alt="En un lanzamiento radial, la energía específica determina si existe un radio de retorno finito." class="fpm-v04-figure img-fluid figure-img" width="900" height="550" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 14.6.</em> El potencial exterior es <span class="math inline">\(-\mu/r\)</span>. Las rectas de energía negativa, nula y positiva distinguen retorno, escape marginal y escape con rapidez asintótica no nula. El análisis se refiere a la rama radial saliente.</p>
+</figcaption>
+</figure>
+</section>
+<section id="qué-puede-inferirse-de-una-medición-del-campo" class="level2">
+<h2 class="anchored" data-anchor-id="qué-puede-inferirse-de-una-medición-del-campo">Qué puede inferirse de una medición del campo</h2>
+<p>El experimento inicial determina <span class="math inline">\(\mu\)</span> a partir de un radio y una aceleración, porque <span class="math inline">\(\mu=gr^2\)</span>. Obtener después <span class="math inline">\(M=\mu/G\)</span> requiere además un valor de <span class="math inline">\(G\)</span>. La masa inferida hereda la incertidumbre de los datos y de esa constante; no aumenta su precisión porque la expresión algebraica sea exacta.</p>
+<p>Una segunda medida a otro radio contrasta la dependencia inversa cuadrática sin necesitar separar <span class="math inline">\(G\)</span> y <span class="math inline">\(M\)</span>. Si ambos radios y campos se conocen, la predicción es <span class="math inline">\(g_2/g_1=(r_1/r_2)^2\)</span>. Una discrepancia podría señalar un radio mal identificado, una aceleración de soporte confundida con gravedad, una distribución no esférica, otras fuentes o una precisión insuficiente. Revisar esos supuestos exige observaciones diferentes: cambiar el material de la sonda no prueba lo mismo que cambiar su posición.</p>
+<p>Una medida de <span class="math inline">\(g\)</span> tampoco determina por sí sola el radio y la masa de un cuerpo. Dos esferas de radios distintos pueden compartir el mismo campo superficial y tener distintas rapideces de escape, porque <span class="math inline">\(v_{\rm esc}^2=2g_0R\)</span>. La interpretación física depende de qué parámetros se conocen de manera independiente.</p>
+<figure id="fig-fispm-r20261021-14-7" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/gravedad_medicion.svg" class="lightbox" data-gallery="fispm-r20261021-c14"><img src="../../assets/books/fispm/r20261021/gravedad_medicion.svg" alt="Una medida ajusta el parámetro gravitatorio y una segunda posición permite contrastar el modelo." class="fpm-v04-figure img-fluid figure-img" width="900" height="540" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 14.7.</em> Para el planeta de referencia, <span class="math inline">\(g_0\)</span> y <span class="math inline">\(R\)</span> fijan <span class="math inline">\(\mu\)</span>. El intervalo de la segunda medición contiene la predicción central y excluye el campo uniforme. La banda de predicción incorpora las cotas superficiales del ejercicio 18. La compatibilidad no elimina la necesidad de examinar las hipótesis del aparato.</p>
+</figcaption>
+</figure>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Se usarán el planeta ideal de referencia <span class="math inline">\(R=6{,}00\times10^6\,\mathrm m\)</span>, <span class="math inline">\(\mu=3{,}60\times10^{14}\,\mathrm{m^3/s^2}\)</span> y <span class="math inline">\(g_0=10{,}00\,\mathrm{m/s^2}\)</span> cuando se lo mencione. Los valores se tratan como exactos en el modelo de cada ejercicio, salvo indicación expresa de intervalos. Se omiten atmósfera, rotación y retroceso de la fuente, a menos que el problema examine precisamente esa idealización.</p>
+<section id="ejercicio-14-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-1">1. Una ley con dirección y unidades</h3>
+<p>Una masa puntual <span class="math inline">\(M=3{,}0\,\mathrm{kg}\)</span> está en el origen y otra <span class="math inline">\(m=2{,}0\,\mathrm{kg}\)</span> en <span class="math inline">\(x=0{,}20\,\mathrm m\)</span>. Calcule las fuerzas mutuas y sus aceleraciones iniciales si no actúan otras fuerzas. Compruebe las unidades de <span class="math inline">\(G\)</span> y explique por qué fuerzas iguales no implican aceleraciones iguales.</p>
+</section>
+<section id="ejercicio-14-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-2">2. Cancelar campos de masas distintas</h3>
+<p>Dos fuentes puntuales mantenidas fijas están en <span class="math inline">\(x=0\)</span> y <span class="math inline">\(x=d\)</span>, con masas <span class="math inline">\(M\)</span> y <span class="math inline">\(4M\)</span>. Encuentre el único punto del segmento abierto donde el campo se anula. Determine el potencial allí con cero en el infinito y explique por qué no puede existir otro cero sobre los tramos exteriores del eje.</p>
+</section>
+<section id="ejercicio-14-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-3">3. Sobre la mediatriz</h3>
+<p>Dos masas iguales <span class="math inline">\(M\)</span> permanecen fijas en <span class="math inline">\((a,0,0)\)</span> y <span class="math inline">\((-a,0,0)\)</span>. Obtenga el campo y el potencial en <span class="math inline">\((0,y,0)\)</span>, con <span class="math inline">\(a&gt;0\)</span>. Para <span class="math inline">\(y=a\)</span>, exprese el resultado usando las escalas <span class="math inline">\(GM/a^2\)</span> y <span class="math inline">\(GM/a\)</span>. Compare el campo en el origen con el potencial en ese punto.</p>
+</section>
+<section id="ejercicio-14-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-4">4. Sonda sostenida y sonda libre</h3>
+<p>Una sonda de <span class="math inline">\(2{,}0\,\mathrm{kg}\)</span> se mantiene fija a altura <span class="math inline">\(h=0{,}10R\)</span> sobre el planeta de referencia mediante un soporte radial. Calcule su peso gravitatorio y la fuerza de soporte. Determine su aceleración inmediatamente después de retirar el soporte, antes de que cambie apreciablemente su posición.</p>
+</section>
+<section id="ejercicio-14-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-5">5. Cuándo basta una gravedad constante</h3>
+<p>Determine la altura máxima sobre el planeta de referencia para que sustituir <span class="math inline">\(g(h)\)</span> por <span class="math inline">\(g_0\)</span> tenga error relativo no mayor que <span class="math inline">\(1\%\)</span>, tomando el campo exacto como denominador. Compare con la altura permitida para aproximar el incremento de potencial por <span class="math inline">\(g_0h\)</span> con la misma tolerancia.</p>
+</section>
+<section id="ejercicio-14-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-6">6. Subir una masa sin acelerar sus extremos</h3>
+<p>Un dispositivo eleva lentamente una masa de <span class="math inline">\(2{,}0\,\mathrm{kg}\)</span> desde la superficie hasta <span class="math inline">\(h=0{,}10R\)</span>, dejándola en reposo. Calcule el trabajo del dispositivo en el límite cuasiestático y el trabajo de la gravedad. Compare con <span class="math inline">\(mg_0h\)</span> y precise el sistema y los intercambios del balance.</p>
+</section>
+<section id="ejercicio-14-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-7">7. Caer desde una altura planetaria</h3>
+<p>Una partícula se suelta del reposo a radio <span class="math inline">\(2R\)</span> y cae radialmente hasta la superficie del planeta de referencia. Halle su rapidez de llegada. Compare con el resultado de suponer aceleración <span class="math inline">\(g_0\)</span> durante todo el recorrido y calcule el error relativo en la rapidez.</p>
+</section>
+<section id="ejercicio-14-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-8">8. Lanzar sin alcanzar el escape</h3>
+<p>Una partícula parte radialmente hacia afuera desde la superficie con rapidez <span class="math inline">\(v_0=\sqrt{\mu/R}\)</span>. Determine su energía específica, su radio máximo y la altura máxima. Halle su rapidez cuando pasa hacia afuera por <span class="math inline">\(r=3R/2\)</span>.</p>
+</section>
+<section id="ejercicio-14-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-9">9. La energía en el umbral</h3>
+<p>Calcule la rapidez de escape superficial del planeta de referencia. Una sonda de <span class="math inline">\(5\,\mathrm{kg}\)</span> se lanza radialmente justo a esa rapidez. Halle la energía cinética inicial, la rapidez a radio <span class="math inline">\(4R\)</span> y el trabajo de la gravedad entre <span class="math inline">\(R\)</span> y <span class="math inline">\(4R\)</span>. Explique qué significa llegar al infinito con rapidez nula.</p>
+</section>
+<section id="ejercicio-14-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-10">10. Escapar con rapidez residual</h3>
+<p>Se desea que una partícula lanzada radialmente desde la superficie del planeta de referencia tenga rapidez asintótica <span class="math inline">\(v_\infty=4{,}00\,\mathrm{km/s}\)</span>. Halle la rapidez inicial necesaria y la energía adicional por unidad de masa respecto del escape marginal. Determine su rapidez a radio <span class="math inline">\(2R\)</span>.</p>
+</section>
+<section id="ejercicio-14-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-11">11. Mismo campo superficial, distinto escape</h3>
+<p>Dos planetas esféricos tienen el mismo campo superficial <span class="math inline">\(g_0\)</span>. El segundo tiene el doble de radio del primero. Compare sus masas y sus rapideces de escape. Decida si una medida de <span class="math inline">\(g_0\)</span> sin una medida de radio puede distinguirlos.</p>
+</section>
+<section id="ejercicio-14-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-12">12. Dentro de un cascarón</h3>
+<p>Un cascarón esférico homogéneo de masa <span class="math inline">\(M\)</span> y radio <span class="math inline">\(a\)</span> permanece fijo. Halle campo y potencial a radio <span class="math inline">\(a/2\)</span> y a radio <span class="math inline">\(2a\)</span>. Calcule el trabajo gravitatorio por unidad de masa al llevar una partícula de prueba desde el centro hasta <span class="math inline">\(2a\)</span>. Examine el error de asignar potencial cero a todo punto interior sólo porque allí el campo es nulo.</p>
+</section>
+<section id="ejercicio-14-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-13">13. Atravesar una esfera homogénea</h3>
+<p>Un planeta homogéneo tiene radio <span class="math inline">\(R\)</span> y campo superficial <span class="math inline">\(g_0\)</span>. En una idealización, se abre un túnel recto diametral de sección despreciable y se suelta una partícula desde un extremo, sin rozamiento ni contacto lateral. Desprecie la masa retirada y determine la ecuación de movimiento, el período, el tiempo hasta el centro y la rapidez máxima. Evalúe estos resultados para el planeta de referencia.</p>
+</section>
+<section id="ejercicio-14-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-14">14. Una densidad que disminuye hacia afuera</h3>
+<p>Una esfera de radio <span class="math inline">\(R\)</span> tiene densidad <span class="math inline">\(\rho(r)=\rho_c(1-r/R)\)</span> para <span class="math inline">\(0\leq r\leq R\)</span>, con <span class="math inline">\(\rho_c&gt;0\)</span>. Calcule su masa total, su campo interior y el radio donde la magnitud del campo es máxima. Exprese el máximo como múltiplo del campo superficial. Compruebe el comportamiento central y la continuidad en <span class="math inline">\(R\)</span>.</p>
+</section>
+<section id="ejercicio-14-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-15">15. Un aro no es una esfera</h3>
+<p>Un aro delgado homogéneo, de masa <span class="math inline">\(M\)</span> y radio <span class="math inline">\(a\)</span>, está fijo en el plano <span class="math inline">\(xy\)</span>. Obtenga potencial y campo sobre el eje <span class="math inline">\(z\)</span>. Para <span class="math inline">\(z&gt;0\)</span>, compare la magnitud exacta con <span class="math inline">\(GM/z^2\)</span> y encuentre la distancia mínima para que la aproximación puntual tenga error relativo no mayor que <span class="math inline">\(5\%\)</span> respecto del campo exacto. Examine la predicción de ambos modelos cerca de <span class="math inline">\(z=0\)</span>.</p>
+</section>
+<section id="ejercicio-14-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-16">16. Una rapidez que exige una órbita circular</h3>
+<p>Un satélite de masa despreciable describe una órbita circular a radio <span class="math inline">\(r=3R/2\)</span> alrededor del planeta de referencia. Deduzca su rapidez y período a partir del balance radial. Halle su energía específica y la rapidez de escape desde ese mismo radio. Explique por qué no basta elegir cualquier rapidez tangencial para conservar el radio. Desde ese mismo radio, considere otros dos lanzamientos tangenciales con rapidez <span class="math inline">\(0{,}90v_c\)</span> y <span class="math inline">\(1{,}10v_c\)</span>, donde <span class="math inline">\(v_c\)</span> es la rapidez circular calculada. Halle la segunda derivada inicial de la distancia al centro y decida hacia dónde comienza a cambiar esa distancia, sin clasificar todavía las órbitas completas.</p>
+</section>
+<section id="ejercicio-14-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-17">17. Un cero de campo que no es estable</h3>
+<p>Para las dos fuentes iguales del ejercicio 3, examine un pequeño desplazamiento desde el origen a lo largo del eje <span class="math inline">\(x\)</span> y otro a lo largo de <span class="math inline">\(y\)</span>. Calcule las derivadas de las componentes correspondientes del campo en cero y determine si cada desplazamiento produce una fuerza restauradora o una fuerza que aleja del origen. ¿Hay estabilidad espacial del equilibrio?</p>
+</section>
+<section id="ejercicio-14-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-18">18. Medir una masa con intervalos</h3>
+<p>En la superficie del planeta de referencia se obtiene <span class="math inline">\(g_0\in[9{,}98,10{,}02]\,\mathrm{m/s^2}\)</span>; el radio se considera exacto. Tome también <span class="math inline">\(G\in[6{,}66,6{,}68]\times10^{-11}\,\mathrm{m^3/(kg\,s^2)}\)</span>. Halle intervalos garantizados para <span class="math inline">\(\mu\)</span> y <span class="math inline">\(M\)</span>. Prediga el intervalo de campo a <span class="math inline">\(r=1{,}10R\)</span> y compárelo con la medida inicial <span class="math inline">\([8{,}24,8{,}30]\,\mathrm{m/s^2}\)</span>.</p>
+</section>
+<section id="ejercicio-14-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-19">19. Comprobar una fuente fija</h3>
+<p>Dos partículas de masas <span class="math inline">\(M\)</span> y <span class="math inline">\(m=M/10\)</span>, inicialmente separadas por <span class="math inline">\(r\)</span>, interactúan sólo por gravitación. Compare las aceleraciones iniciales de ambas y la aceleración de su separación con la calculada al inmovilizar la fuente <span class="math inline">\(M\)</span>. Exprese el error relativo de esta última usando la aceleración relativa exacta como referencia. Explique qué conservación se perdería si se inmovilizara físicamente la fuente mediante un soporte externo y se siguiera llamando aislado al par.</p>
+</section>
+<section id="ejercicio-14-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-14-20">20. Una inferencia que no reconstruye el interior</h3>
+<p>Un observador conoce el radio exterior <span class="math inline">\(R\)</span> de una fuente esférica y mide a <span class="math inline">\(r=2R\)</span> un campo de magnitud <span class="math inline">\(g_2\)</span>. Obtenga <span class="math inline">\(\mu\)</span> y prediga el campo a <span class="math inline">\(3R\)</span>. Compare dos modelos de igual masa total y radio exterior: una esfera homogénea y un cascarón delgado. Halle sus campos y potenciales a <span class="math inline">\(r=R/2\)</span>, con cero en el infinito. Decida qué observación distinguiría los dos modelos y qué permite inferir realmente el dato exterior.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-14-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-1">1. Una ley con dirección y unidades</h3>
+<p>La distancia es <span class="math inline">\(0{,}20\,\mathrm m\)</span>, no una altura respecto de una superficie. La magnitud de la fuerza es <span class="math inline">\(GMm/r^2=(6{,}67\times10^{-11})(3)(2)/(0{,}20)^2=1{,}0005\times10^{-8}\,\mathrm N\)</span>. Sobre <span class="math inline">\(m\)</span> apunta hacia <span class="math inline">\(-x\)</span> y sobre <span class="math inline">\(M\)</span> hacia <span class="math inline">\(+x\)</span>. Las dos fuerzas actúan sobre cuerpos diferentes y no se cancelan en la ecuación de uno solo.</p>
+<p>Las aceleraciones iniciales son <span class="math inline">\(a_m=-5{,}0025\times10^{-9}\,\mathrm{m/s^2}\)</span> y <span class="math inline">\(a_M=+3{,}3350\times10^{-9}\,\mathrm{m/s^2}\)</span>. Al sumar los momentos lineales ponderados se comprueba <span class="math inline">\(ma_m+Ma_M=0\)</span>. Las fuerzas iguales producen aceleraciones distintas porque la resistencia inercial de los cuerpos es distinta.</p>
+<p>En unidades, <span class="math inline">\([G]=[F][r]^2/[M]^2=\mathrm{N\,m^2/kg^2}=\mathrm{m^3/(kg\,s^2)}\)</span>. El pequeño valor de la fuerza corresponde a masas de laboratorio; no autoriza a sustituir la gravitación por una fuerza de contacto ni a olvidar su dirección.</p>
+</section>
+<section id="solucion-14-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-2">2. Cancelar campos de masas distintas</h3>
+<p>Dentro del segmento, la fuente izquierda tira hacia <span class="math inline">\(-x\)</span> y la derecha hacia <span class="math inline">\(+x\)</span>. La cancelación exige <span class="math inline">\(GM/x^2=4GM/(d-x)^2\)</span>. Como <span class="math inline">\(0&lt;x&lt;d\)</span>, podemos tomar raíces positivas y escribir <span class="math inline">\(d-x=2x\)</span>, de donde <span class="math inline">\(x=d/3\)</span>. El cero queda más cerca de la fuente de menor masa, que necesita menor distancia para igualar la atracción de la mayor.</p>
+<p>El potencial se suma sin signos direccionales de fuerza:</p>
+<p><span class="math display">\[
+\Phi(d/3)=-\frac{GM}{d/3}-\frac{4GM}{2d/3}
+=-\frac{9GM}{d}.
+\]</span></p>
+<p>En cada tramo exterior ambas fuerzas apuntan hacia el segmento, en el mismo sentido, y no pueden cancelarse. El campo cero y el potencial negativo son compatibles: el primero describe una derivada y el segundo un valor relativo al infinito.</p>
+</section>
+<section id="solucion-14-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-3">3. Sobre la mediatriz</h3>
+<p>Las dos distancias al observador son <span class="math inline">\(s=\sqrt{a^2+y^2}\)</span>. Los vectores desde las fuentes son <span class="math inline">\((-a,y,0)\)</span> y <span class="math inline">\((a,y,0)\)</span>; sumarlos elimina sus componentes horizontales. Resulta</p>
+<p><span class="math display">\[
+\mathbf g(0,y,0)=-\frac{2GM y}{(a^2+y^2)^{3/2}}\mathbf e_y,
+\qquad
+\Phi(0,y,0)=-\frac{2GM}{\sqrt{a^2+y^2}}.
+\]</span></p>
+<p>Para <span class="math inline">\(y=a\)</span>, el campo es <span class="math inline">\(-[GM/(\sqrt2a^2)]\mathbf e_y\)</span> y el potencial <span class="math inline">\(-\sqrt2GM/a\)</span>. En el origen el campo es cero, mientras que <span class="math inline">\(\Phi=-2GM/a\)</span>. Las fórmulas también describen <span class="math inline">\(y&lt;0\)</span>: entonces el campo apunta hacia arriba, hacia la línea que contiene las fuentes. Esa comprobación de signo evita interpretar la magnitud positiva como una componente válida en ambos semiejes.</p>
+</section>
+<section id="solucion-14-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-4">4. Sonda sostenida y sonda libre</h3>
+<p>El radio central es <span class="math inline">\(1{,}10R\)</span>, de modo que <span class="math inline">\(g=10/(1{,}10)^2=1000/121\,\mathrm{m/s^2}\)</span>. Su peso gravitatorio tiene magnitud <span class="math inline">\(2000/121\,\mathrm N\approx16{,}529\,\mathrm N\)</span> y apunta al centro. El soporte debe ejercer esa misma magnitud hacia afuera para mantener aceleración cero.</p>
+<p>Al retirar el soporte, la posición y la velocidad no saltan, pero cambia la fuerza neta. La aceleración inicial es <span class="math inline">\(\mathbf a=-(1000/121)\mathbf e_r\,\mathrm{m/s^2}\)</span>. En el instante de liberación la rapidez puede ser cero y la aceleración no. La distinción entre peso, reacción y aceleración es la misma que ya encontramos al analizar contactos; el campo variable sólo cambia el valor del peso.</p>
+</section>
+<section id="solucion-14-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-5">5. Cuándo basta una gravedad constante</h3>
+<p>La comparación solicitada usa <span class="math inline">\((g_0-g)/g\)</span>, así que debemos resolver <span class="math inline">\(2\eta+\eta^2\leq0{,}01\)</span>. Como <span class="math inline">\(\eta\geq0\)</span>, la cota es <span class="math inline">\(\eta\leq\sqrt{1{,}01}-1\approx0{,}00498756\)</span>. La altura máxima vale aproximadamente <span class="math inline">\(2{,}9925\times10^4\,\mathrm m\)</span>, unos <span class="math inline">\(29{,}93\,\mathrm{km}\)</span>.</p>
+<p>Para el incremento de potencial, el error relativo es exactamente <span class="math inline">\(\eta\)</span> cuando <span class="math inline">\(h&gt;0\)</span>. La misma tolerancia permite <span class="math inline">\(h\leq0{,}01R=6{,}00\times10^4\,\mathrm m\)</span>, sesenta kilómetros. Los dos resultados no discrepan: evalúan magnitudes diferentes. Si se dividiera el error del campo por <span class="math inline">\(g_0\)</span> en lugar de <span class="math inline">\(g(h)\)</span>, cambiaría la desigualdad y la altura límite; indicar la referencia forma parte de presentar un porcentaje.</p>
+</section>
+<section id="solucion-14-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-6">6. Subir una masa sin acelerar sus extremos</h3>
+<p>La energía cinética no cambia entre extremos. Para la partícula sola, el balance es <span class="math inline">\(W_{\rm disp}+W_g=0\)</span>. El trabajo gravitatorio vale <span class="math inline">\(-m\Delta\Phi\)</span>, y el dispositivo suministra <span class="math inline">\(m\Delta\Phi\)</span>. Con <span class="math inline">\(h/R=0{,}10\)</span>,</p>
+<p><span class="math display">\[
+W_{\rm disp}=\frac{(2)(10)(6{,}00\times10^5)}{1{,}10}\,\mathrm J
+\approx1{,}09091\times10^7\,\mathrm J,
+\qquad W_g=-W_{\rm disp}.
+\]</span></p>
+<p>La estimación uniforme da <span class="math inline">\(1{,}20\times10^7\,\mathrm J\)</span>, un <span class="math inline">\(10\%\)</span> por encima del incremento exacto. Si incluimos la interacción planeta–partícula en el sistema energético, el mismo trabajo del dispositivo aumenta la energía potencial del par. El planeta se aproxima como inmóvil y no absorbe energía cinética apreciable. «Lentamente» permite aproximar la fuerza del dispositivo por la que equilibra el peso en cada radio; no convierte en constante ese peso.</p>
+</section>
+<section id="solucion-14-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-7">7. Caer desde una altura planetaria</h3>
+<p>La partícula empieza en <span class="math inline">\(r_0=2R\)</span> y termina en <span class="math inline">\(R\)</span>, sin abandonar el campo exterior. La energía específica inicial es <span class="math inline">\(-\mu/(2R)\)</span>. Al llegar,</p>
+<p><span class="math display">\[
+\frac{v^2}{2}-\frac\mu R=-\frac\mu{2R},
+\qquad v=\sqrt{\frac\mu R}=\sqrt{6{,}00\times10^7}\,\mathrm{m/s}
+\approx7{,}746\,\mathrm{km/s}.
+\]</span></p>
+<p>Una caída de distancia <span class="math inline">\(R\)</span> con aceleración constante <span class="math inline">\(g_0\)</span> daría <span class="math inline">\(v_{\rm unif}=\sqrt{2g_0R}=\sqrt2\,v\approx10{,}954\,\mathrm{km/s}\)</span>. El error relativo en rapidez es <span class="math inline">\(\sqrt2-1\approx41{,}42\%\)</span>. La aceleración real aumenta desde <span class="math inline">\(g_0/4\)</span> hasta <span class="math inline">\(g_0\)</span>; asignarle desde el comienzo su valor final sobreestima todo el trabajo acumulado.</p>
+</section>
+<section id="solucion-14-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-8">8. Lanzar sin alcanzar el escape</h3>
+<p>La energía específica inicial es <span class="math inline">\(e=\mu/(2R)-\mu/R=-\mu/(2R)=-3{,}00\times10^7\,\mathrm{J/kg}\)</span>. Es negativa con la referencia en el infinito y el lanzamiento es radial saliente. Al imponer rapidez cero resulta <span class="math inline">\(-\mu/r_{\max}=e\)</span>, de donde <span class="math inline">\(r_{\max}=2R\)</span> y <span class="math inline">\(h_{\max}=R\)</span>.</p>
+<p>En <span class="math inline">\(r=3R/2\)</span>, la conservación da <span class="math inline">\(v^2=2[e+\mu/(3R/2)]=\mu/(3R)=2{,}00\times10^7\,\mathrm{m^2/s^2}\)</span>. La rapidez es aproximadamente <span class="math inline">\(4{,}472\,\mathrm{km/s}\)</span>. Hay un paso saliente y otro entrante por ese radio con la misma rapidez y velocidades radiales opuestas. El signo de la energía determina el radio de retorno, pero por sí solo no identifica en cuál de esos pasos está la partícula.</p>
+</section>
+<section id="solucion-14-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-9">9. La energía en el umbral</h3>
+<p>El umbral es <span class="math inline">\(v_{\rm esc}=\sqrt{2\mu/R}\approx10{,}954\,\mathrm{km/s}\)</span>. Para cinco kilogramos, la energía cinética inicial es <span class="math inline">\(mv_{\rm esc}^2/2=m\mu/R=3{,}00\times10^8\,\mathrm J\)</span>. Esa energía compensa exactamente el valor negativo de la energía potencial inicial, por lo que <span class="math inline">\(e=0\)</span>.</p>
+<p>A radio <span class="math inline">\(4R\)</span>, <span class="math inline">\(v^2=2\mu/(4R)=3{,}00\times10^7\,\mathrm{m^2/s^2}\)</span> y <span class="math inline">\(v\approx5{,}477\,\mathrm{km/s}\)</span>, la mitad del valor inicial. El trabajo gravitatorio es</p>
+<p><span class="math display">\[
+W_g=m\mu\left(\frac1{4R}-\frac1R\right)
+=-\frac{3m\mu}{4R}=-2{,}25\times10^8\,\mathrm J.
+\]</span></p>
+<p>La energía cinética final es <span class="math inline">\(7{,}50\times10^7\,\mathrm J\)</span>, en acuerdo con ese trabajo. En el escape marginal la rapidez disminuye sin llegar a cero a un radio finito; la expresión «en el infinito» designa un límite de radios y tiempos crecientes, no un punto final alcanzado al cabo de cierto número de segundos.</p>
+</section>
+<section id="solucion-14-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-10">10. Escapar con rapidez residual</h3>
+<p>En el límite lejano el potencial tiende a cero y <span class="math inline">\(e=v_\infty^2/2=8{,}00\times10^6\,\mathrm{J/kg}\)</span>. Igualar esa energía a la inicial da <span class="math inline">\(v_0^2=2\mu/R+v_\infty^2=1{,}36\times10^8\,\mathrm{m^2/s^2}\)</span>, de donde <span class="math inline">\(v_0\approx11{,}662\,\mathrm{km/s}\)</span>.</p>
+<p>La energía adicional específica respecto del umbral es precisamente <span class="math inline">\(8{,}00\times10^6\,\mathrm{J/kg}\)</span>; no se obtiene sumando las rapideces <span class="math inline">\(v_{\rm esc}\)</span> y <span class="math inline">\(v_\infty\)</span>. En <span class="math inline">\(2R\)</span>, <span class="math inline">\(v^2=v_\infty^2+2\mu/(2R)=7{,}60\times10^7\,\mathrm{m^2/s^2}\)</span> y <span class="math inline">\(v\approx8{,}718\,\mathrm{km/s}\)</span>. Queda todavía energía potencial negativa por recuperar al seguir alejándose, así que la rapidez allí supera la residual.</p>
+</section>
+<section id="solucion-14-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-11">11. Mismo campo superficial, distinto escape</h3>
+<p>Como <span class="math inline">\(g_0=GM/R^2\)</span> y <span class="math inline">\(G\)</span> es el mismo, duplicar el radio manteniendo <span class="math inline">\(g_0\)</span> exige cuadruplicar la masa: <span class="math inline">\(M_2/M_1=4\)</span>. Para el escape, <span class="math inline">\(v_{\rm esc}^2=2g_0R\)</span>, por lo que <span class="math inline">\(v_{{\rm esc},2}/v_{{\rm esc},1}=\sqrt2\)</span>.</p>
+<p>Una medida local de aceleración superficial no distingue estos dos pares de parámetros. Hace falta otra observación, como el radio o la variación del campo con una altura conocida. El ejemplo muestra por qué «gravedad superficial igual» no equivale a «pozo de potencial igual»: la extensión espacial del campo interviene en el trabajo hasta radios lejanos.</p>
+</section>
+<section id="solucion-14-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-12">12. Dentro de un cascarón</h3>
+<p>En <span class="math inline">\(a/2\)</span> se tiene <span class="math inline">\(\mathbf g=0\)</span> y <span class="math inline">\(\Phi=-GM/a\)</span>. En <span class="math inline">\(2a\)</span> el campo es radial entrante, <span class="math inline">\(\mathbf g=-[GM/(4a^2)]\mathbf e_r\)</span>, y el potencial es <span class="math inline">\(-GM/(2a)\)</span>. La diferencia de potencial entre centro y destino es <span class="math inline">\(GM/(2a)\)</span>; por tanto el trabajo gravitatorio específico es <span class="math inline">\(-GM/(2a)\)</span>.</p>
+<p>El recorrido interior no requiere trabajo contra la gravedad ideal del cascarón. Todo el incremento de potencial ocurre después de cruzar su superficie. Elegir potencial interior cero sería posible sólo sumando <span class="math inline">\(GM/a\)</span> a la función completa, incluida la exterior y su límite lejano; no puede cambiarse la constante en una región y conservar simultáneamente el cero exterior original. El salto del campo en la superficie ideal no produce un salto de potencial ni un trabajo finito en un desplazamiento de longitud nula.</p>
+</section>
+<section id="solucion-14-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-13">13. Atravesar una esfera homogénea</h3>
+<p>Usamos una coordenada firmada <span class="math inline">\(x\)</span> sobre el diámetro, con el centro en cero. El resultado interior da <span class="math inline">\(\ddot x=-(g_0/R)x\)</span>, de modo que <span class="math inline">\(\omega=\sqrt{g_0/R}\)</span> y, con <span class="math inline">\(x(0)=R\)</span>, <span class="math inline">\(\dot x(0)=0\)</span>, la solución es <span class="math inline">\(x(t)=R\cos(\omega t)\)</span>. Recuperamos el oscilador armónico del capítulo 10 a partir de una interacción que no es un resorte.</p>
+<p>El período es <span class="math inline">\(T=2\pi\sqrt{R/g_0}\approx4866{,}9\,\mathrm s\)</span>, unos <span class="math inline">\(81{,}12\)</span> minutos. El centro se alcanza por primera vez en <span class="math inline">\(T/4\approx1216{,}7\,\mathrm s\)</span>, unos <span class="math inline">\(20{,}28\)</span> minutos. La rapidez máxima es <span class="math inline">\(\omega R=\sqrt{g_0R}\approx7{,}746\,\mathrm{km/s}\)</span> y ocurre al pasar por el centro.</p>
+<p>La diferencia entre potencial central y superficial es <span class="math inline">\(-g_0R/2\)</span>; la ganancia cinética específica <span class="math inline">\(g_0R/2\)</span> comprueba esa rapidez. Este resultado depende de homogeneidad, ausencia de rotación, vacío y eliminación despreciable de masa. No describe un túnel real con la densidad interna de la Tierra ni justifica atravesar materia sin fuerzas de contacto.</p>
+</section>
+<section id="solucion-14-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-14">14. Una densidad que disminuye hacia afuera</h3>
+<p>La masa encerrada se obtiene con el volumen de cada capa, no integrando directamente la densidad en una longitud:</p>
+<p><span class="math display">\[
+M(r)=4\pi\rho_c\left(\frac{r^3}{3}-\frac{r^4}{4R}\right),
+\qquad M=\frac{\pi\rho_cR^3}{3}.
+\]</span></p>
+<p>La magnitud interior es <span class="math inline">\(g(r)=4\pi G\rho_c(r/3-r^2/(4R))\)</span>. Su derivada se anula en <span class="math inline">\(r=2R/3\)</span>, pues <span class="math inline">\(g'(r)=4\pi G\rho_c(1/3-r/(2R))\)</span>. La segunda derivada es negativa, así que ese radio proporciona el máximo interior. Su valor es <span class="math inline">\(4\pi G\rho_cR/9\)</span>.</p>
+<p>El campo superficial tiene magnitud <span class="math inline">\(g(R)=\pi G\rho_cR/3=GM/R^2\)</span>; por tanto <span class="math inline">\(g_{\max}/g(R)=4/3\)</span>. Cerca del centro el campo crece linealmente y tiende a cero, mientras que en <span class="math inline">\(R\)</span> coincide con la rama exterior. El máximo ya no está en la superficie: esa propiedad de la esfera homogénea no se conserva para cualquier densidad radial. Como el campo exterior decrece desde <span class="math inline">\(R\)</span>, el máximo interior encontrado es también el máximo global.</p>
+</section>
+<section id="solucion-14-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-15">15. Un aro no es una esfera</h3>
+<p>Todos los elementos del aro están a distancia <span class="math inline">\(s=\sqrt{a^2+z^2}\)</span> del punto axial. La integral del potencial se reduce a sumar sus masas, y la simetría cancela las componentes transversales del campo:</p>
+<p><span class="math display">\[
+\Phi(z)=-\frac{GM}{\sqrt{a^2+z^2}},
+\qquad
+\mathbf g(z)=-\frac{GMz}{(a^2+z^2)^{3/2}}\mathbf e_z.
+\]</span></p>
+<p>Para <span class="math inline">\(z&gt;0\)</span>, la aproximación puntual sobreestima la magnitud exacta. La razón entre aproximación y valor exacto es <span class="math inline">\((1+a^2/z^2)^{3/2}\)</span>. Exigir un error no mayor que <span class="math inline">\(0{,}05\)</span> lleva a</p>
+<p><span class="math display">\[
+\frac za\geq\left(1{,}05^{2/3}-1\right)^{-1/2}
+\approx5{,}50.
+\]</span></p>
+<p>En el centro del aro, el campo axial exacto vale cero y el potencial <span class="math inline">\(-GM/a\)</span> es finito; la fuente puntual predeciría una singularidad. Compartir masa y centro no hizo exacto el reemplazo. La comparación cuantitativa muestra cuándo la distancia es suficientemente grande para la tolerancia y la magnitud elegidas.</p>
+</section>
+<section id="solucion-14-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-16">16. Una rapidez que exige una órbita circular</h3>
+<p>El movimiento circular exige aceleración radial <span class="math inline">\(v^2/r\)</span>. La única fuerza es gravitatoria, así que <span class="math inline">\(v^2/r=\mu/r^2\)</span> y <span class="math inline">\(v=\sqrt{\mu/r}\)</span>. Para <span class="math inline">\(r=3R/2=9{,}00\times10^6\,\mathrm m\)</span>, resulta <span class="math inline">\(v=\sqrt{4{,}00\times10^7}\,\mathrm{m/s}\approx6{,}325\,\mathrm{km/s}\)</span>.</p>
+<p>El período es <span class="math inline">\(T=2\pi r/v=2\pi\sqrt{r^3/\mu}\approx8941{,}1\,\mathrm s\)</span>, unos <span class="math inline">\(149{,}02\)</span> minutos. La energía específica vale <span class="math inline">\(e=\mu/(2r)-\mu/r=-\mu/(2r)=-2{,}00\times10^7\,\mathrm{J/kg}\)</span>. La rapidez de escape desde ese radio es <span class="math inline">\(\sqrt2\,v\approx8{,}944\,\mathrm{km/s}\)</span>.</p>
+<p>Una rapidez tangencial diferente no proporciona la aceleración geométrica necesaria para mantener ese mismo radio. La trayectoria posterior se decidirá con las ecuaciones y conservaciones de una fuerza central; no se puede declarar circular por haber dibujado inicialmente un vector tangente. Este cálculo prepara ese estudio sin clasificar todavía todas las órbitas.</p>
+<p>Para seguir el radio de los otros lanzamientos, lo tratamos como una función: <span class="math inline">\(r(t)=\|\mathbf x(t)\|\)</span>. Su segunda derivada expresa cómo cambia la distancia al centro. Podemos obtenerla sin introducir una fórmula nueva de coordenadas polares. Derivar <span class="math inline">\(r^2=\mathbf x\cdot\mathbf x\)</span> una vez y luego otra da</p>
+<p><span class="math display">\[
+r\dot r=\mathbf x\cdot\mathbf v,
+\qquad
+\dot r^2+r\ddot r=\|\mathbf v\|^2+\mathbf x\cdot\ddot{\mathbf x}.
+\]</span></p>
+<p>En el lanzamiento tangencial, <span class="math inline">\(\dot r(0)=0\)</span>. La gravedad satisface <span class="math inline">\(\ddot{\mathbf x}=-\mu\mathbf x/r^3\)</span>, por lo que, si <span class="math inline">\(r_0=3R/2\)</span> y <span class="math inline">\(v(0)=(1+\varepsilon)v_c\)</span>,</p>
+<p><span class="math display">\[
+\ddot r(0)=\frac{v(0)^2}{r_0}-\frac{\mu}{r_0^2}
+=(2\varepsilon+\varepsilon^2)\frac{\mu}{r_0^2}.
+\]</span></p>
+<p>El campo en ese radio tiene magnitud <span class="math inline">\(\mu/r_0^2=40/9\,\mathrm{m/s^2}\)</span>. Para <span class="math inline">\(\varepsilon=-0{,}10\)</span>, resulta <span class="math inline">\(\ddot r(0)=-38/45\,\mathrm{m/s^2}\)</span>: el radio comienza a disminuir. Para <span class="math inline">\(\varepsilon=+0{,}10\)</span>, resulta <span class="math inline">\(\ddot r(0)=14/15\,\mathrm{m/s^2}\)</span>: comienza a aumentar. En efecto, <span class="math inline">\(r(t)=r_0+\ddot r(0)t^2/2+o(t^2)\)</span> cerca del lanzamiento, y el término cuadrático decide el primer cambio porque la derivada inicial es cero.</p>
+<p>La aceleración vectorial gravitatoria apunta hacia el centro en ambos casos. La segunda derivada de la distancia incorpora también el movimiento tangencial mediante <span class="math inline">\(v(0)^2/r_0\)</span>. El caso circular hace que ambos términos se compensen exactamente. Estos datos determinan la salida inicial del radio; la clasificación y el recorrido posterior requieren continuar la dinámica central.</p>
+</section>
+<section id="solucion-14-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-17">17. Un cero de campo que no es estable</h3>
+<p>Para <span class="math inline">\(|x|&lt;a\)</span>, sobre el eje de las fuentes,</p>
+<p><span class="math display">\[
+g_x(x)=GM\left[\frac1{(a-x)^2}-\frac1{(a+x)^2}\right],
+\qquad g_x'(0)=\frac{4GM}{a^3}&gt;0.
+\]</span></p>
+<p>Un desplazamiento pequeño positivo produce campo positivo y aleja aún más del origen; uno negativo se amplifica hacia la otra fuente. En cambio, del ejercicio 3 se obtiene <span class="math inline">\(g_y'(0)=-2GM/a^3&lt;0\)</span>. Un desplazamiento transversal pequeño produce una fuerza restauradora. La dirección <span class="math inline">\(z\)</span> tiene el mismo comportamiento que <span class="math inline">\(y\)</span> por simetría.</p>
+<p>El origen es un equilibrio exacto, pero no estable en el espacio: una perturbación a lo largo de <span class="math inline">\(x\)</span> crece bajo la dinámica linealizada <span class="math inline">\(\ddot x=(4GM/a^3)x\)</span>. La forma exponencial de sus soluciones describe esa separación inicial. La fórmula exacta de <span class="math inline">\(g_x\)</span> conserva el signo de <span class="math inline">\(x\)</span> en <span class="math inline">\((-a,a)\)</span>: una partícula soltada ligeramente a la derecha sigue acelerando hacia la fuente derecha, en lugar de regresar al origen. El campo cero no basta para concluir estabilidad; hay que estudiar cómo cambia alrededor del punto.</p>
+</section>
+<section id="solucion-14-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-18">18. Medir una masa con intervalos</h3>
+<p>La función <span class="math inline">\(\mu=g_0R^2\)</span> es creciente en <span class="math inline">\(g_0&gt;0\)</span>, por lo que</p>
+<p><span class="math display">\[
+\mu\in[3{,}5928,3{,}6072]\times10^{14}\,\mathrm{m^3/s^2}.
+\]</span></p>
+<p>Para <span class="math inline">\(M=\mu/G\)</span>, la cota inferior combina el menor numerador con el mayor denominador y la superior hace lo contrario. Resulta</p>
+<p><span class="math display">\[
+M\in\left[\frac{3{,}5928\times10^{14}}{6{,}68\times10^{-11}},
+\frac{3{,}6072\times10^{14}}{6{,}66\times10^{-11}}\right]\mathrm{kg}
+\subset[5{,}3784,5{,}4163]\times10^{24}\,\mathrm{kg}.
+\]</span></p>
+<p>El último intervalo se redondea hacia afuera para conservar la garantía. No hemos supuesto distribuciones gaussianas ni independencia estadística: se propagan cotas positivas y monotonía.</p>
+<p>A <span class="math inline">\(1{,}10R\)</span>, la predicción queda en el intervalo</p>
+<p><span class="math display">\[
+g\in[9{,}98/1{,}21,10{,}02/1{,}21]\,\mathrm{m/s^2}.
+\]</span></p>
+<p>Al redondear sus extremos hacia afuera se obtiene <span class="math inline">\([8{,}2479,8{,}2810]\,\mathrm{m/s^2}\)</span>. Ese intervalo queda dentro de <span class="math inline">\([8{,}24,8{,}30]\)</span>, así que los datos son compatibles. La incertidumbre de <span class="math inline">\(G\)</span> afecta la masa inferida, pero se cancela de esta predicción cuando se usa el mismo parámetro <span class="math inline">\(\mu\)</span> ajustado superficialmente.</p>
+</section>
+<section id="solucion-14-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-19">19. Comprobar una fuente fija</h3>
+<p>Tomemos <span class="math inline">\(x\)</span> desde la masa mayor hacia la menor. Inicialmente <span class="math inline">\(a_m=-GM/r^2\)</span> y <span class="math inline">\(a_M=+Gm/r^2=+0{,}10GM/r^2\)</span>. La separación <span class="math inline">\(r=x_m-x_M\)</span> tiene entonces aceleración <span class="math inline">\(\ddot r=a_m-a_M=-G(M+m)/r^2=-1{,}10GM/r^2\)</span>.</p>
+<p>La fuente inmóvil daría magnitud <span class="math inline">\(GM/r^2\)</span>. Respecto de la magnitud relativa exacta, el error es <span class="math inline">\(0{,}10/1{,}10=1/11\approx9{,}09\%\)</span>. El porcentaje <span class="math inline">\(m/M=10\%\)</span> compara las aceleraciones de los cuerpos y también el término omitido con el retenido; no es el mismo denominador que el solicitado para el error.</p>
+<p>Si un soporte externo inmoviliza físicamente <span class="math inline">\(M\)</span>, ejerce sobre ella una fuerza que compensa su atracción hacia <span class="math inline">\(m\)</span>. El par de masas deja de estar aislado y su momento lineal puede cambiar por esa fuerza externa. Suponer una fuente casi fija como aproximación de un sistema aislado y sujetarla mediante un aparato son idealizaciones distintas que requieren balances diferentes.</p>
+</section>
+<section id="solucion-14-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-14-20">20. Una inferencia que no reconstruye el interior</h3>
+<p>El dato exterior da <span class="math inline">\(\mu=g_2(2R)^2=4g_2R^2\)</span>. A <span class="math inline">\(3R\)</span>, la predicción es <span class="math inline">\(g_3=\mu/(9R^2)=4g_2/9\)</span>. Ambos modelos esféricos comparten esa predicción y todo el campo exterior, pues tienen la misma masa total.</p>
+<p>En la esfera homogénea, a <span class="math inline">\(r=R/2\)</span> la magnitud interior vale <span class="math inline">\(GM/(2R^2)\)</span> y el campo apunta hacia el centro. Su potencial es <span class="math inline">\(-11GM/(8R)\)</span>. En el cascarón, el campo allí es cero y el potencial <span class="math inline">\(-GM/R\)</span>. Son resultados distintos aun cuando el observador exterior no pueda diferenciarlos.</p>
+<p>Una medición de aceleración inicial en un punto interior, en una idealización que permita acceder sin modificar apreciablemente las fuentes, distinguiría esos modelos. También lo haría una medida de diferencia de potencial entre dos radios interiores. El dato exterior identifica <span class="math inline">\(\mu\)</span>, y una medida independiente de <span class="math inline">\(G\)</span> permite inferir <span class="math inline">\(M\)</span>; no identifica la densidad interna. La respuesta inversa debe conservar esa falta de unicidad en lugar de presentar una distribución supuesta como si hubiera sido medida.</p>
+</section>
+</section>
+<section id="lecturas-y-conexiones" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-conexiones">Lecturas y conexiones</h2>
+<p>Sears y Zemansky, <em>Física universitaria</em>, volumen 1, capítulo 13, permite contrastar la ley de gravitación, el potencial y la demostración para distribuciones esféricas. Serway y Jewett, <em>Física para ciencias e ingeniería</em>, volumen 1, §§13.1–13.3 y 13.5–13.6, organiza la entrada al concepto de campo y su uso energético. Las integrales y los problemas de este capítulo se han construido con convenciones de signo y procedimientos de medición explícitos.</p>
+<p>En Spivak, <em>Physics for Mathematicians. Mechanics I</em>, el addendum 1B distingue peso y masa y examina la proporcionalidad que permite identificar aceleración gravitatoria con fuerza por unidad de masa; el capítulo 3 relaciona fuerzas centrales, trabajo y conservación de energía. La reducción completa de dos cuerpos se desarrollará en el capítulo siguiente. Allí la fuente dejará de fijarse por aproximación y habrá que reconstruir el movimiento de ambos cuerpos a partir de la interacción.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-13-rotacion-plana-y-rodadura.html">← 13. Rotación plana y rodadura</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-15-dos-cuerpos-y-fuerzas-centrales.html">15. Dos cuerpos y fuerzas centrales →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

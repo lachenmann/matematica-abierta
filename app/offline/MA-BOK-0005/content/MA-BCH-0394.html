@@ -1,0 +1,1013 @@
+<!DOCTYPE html><html lang="es"><head><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' file: 'unsafe-inline'; style-src 'self' file: data: 'unsafe-inline'; font-src 'self' file: data:; img-src 'self' file: data:; connect-src 'none'; base-uri 'none'; form-action 'none'; worker-src blob:">
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 11 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>Disipación y respuesta forzada – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+
+
+
+
+
+
+<meta name="quarto:offset" content="../../">
+<link href="../assets/8eb201055a4f4d43a0dc1bd6.svg" rel="icon" type="image/svg+xml">
+
+
+
+
+<script src="../assets/69098e105d990f834cff1b78.js"></script>
+<link href="../assets/5969f497d9158d7682f8219c.css" rel="stylesheet">
+<link href="../assets/4973a76eb0de3b99bc67687a.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../assets/7f7cb0230277ec2bc5294f4d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+
+
+<link href="../assets/quarto-bootstrap-light.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../assets/quarto-bootstrap-dark.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  
+  <script src="../assets/mathjax-offline-speech.js"></script><script>(function(){const fontRoot=new URL("../assets/mathjax-newcm",location.href).href;window.MathJax=Object.assign(window.MathJax||{}, {loader:{paths:{"mathjax-newcm":fontRoot}},startup:{ready:function(){MathJax.startup.defaultReady();MathJax.startup.adaptor.createWorker=window.__maCreateSpeechWorker;},pageReady:window.MathJax.startup.pageReady},output:{fontPath:fontRoot},chtml:{fontURL:fontRoot+"/chtml/woff2",dynamicPrefix:fontRoot+"/chtml/dynamic"}});})();</script><script defer src="../assets/mathjax/tex-chtml.js"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../assets/87b4f5e6a115d51d92f5ea1a.css">
+<link rel="stylesheet" href="../assets/2360bb7a7cd037ebd3e65b07.css">
+<style id="ma-reader-mode-v1-style">/* Reader contract: app readerMode.ts, ma-reader-mode-v1. */
+
+#quarto-header,
+#quarto-sidebar,
+#quarto-margin-sidebar,
+.quarto-secondary-nav,
+.quarto-page-breadcrumbs,
+#quarto-search,
+.quarto-search-button,
+.quarto-navigation-tool,
+.quarto-back-to-top,
+#quarto-footer,
+.nav-footer {
+  display: none !important;
+}
+
+body.quarto-page-columns #quarto-content,
+#quarto-content.page-columns {
+  display: block !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+#quarto-content {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  padding-left: max(1rem, env(safe-area-inset-left)) !important;
+  padding-right: max(1rem, env(safe-area-inset-right)) !important;
+}
+
+#quarto-content > main.content,
+#quarto-content .content {
+  box-sizing: border-box !important;
+  grid-column: 1 / -1 !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+#quarto-content img,
+#quarto-content figure img {
+  height: auto !important;
+  max-width: 100% !important;
+}
+
+#quarto-content table,
+#quarto-content pre,
+#quarto-content mjx-container[display="true"],
+#quarto-content .math.display {
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+}
+
+#quarto-content table {
+  display: block;
+}
+
+#quarto-content .callout,
+#quarto-content .theorem,
+#quarto-content .proof {
+  max-width: 100% !important;
+}
+</style><style>body.nav-fixed{padding-top:0!important}</style></head><body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar"><main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Disipación y respuesta forzada</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 11</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 11 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-10-el-oscilador-armonico.html">← 10. El oscilador armónico</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-12-momento-angular-y-torque.html">12. Momento angular y torque →</a></p>
+<p>Un carro unido a un resorte vuelve cada vez menos lejos después de que lo soltamos. La primera excursión hacia la derecha llega a diez centímetros del equilibrio; la siguiente, al mismo lado, apenas supera cuatro milímetros. El resorte sigue tirando hacia el equilibrio y la masa sigue siendo la misma. ¿Qué cambió respecto del oscilador del capítulo anterior? ¿Podemos reconstruir el movimiento y averiguar qué fuerza haría falta para sostenerlo?</p>
+<p>Consideremos un carro de masa <span class="math inline">\(m=1\,\mathrm{kg}\)</span>, un resorte horizontal de constante <span class="math inline">\(k=5\,\mathrm{N/m}\)</span> y un amortiguador sujeto al laboratorio. El eje <span class="math inline">\(x\)</span> apunta hacia la derecha y su cero coincide con el equilibrio del resorte. Peso y normal se compensan. Modelaremos la fuerza del amortiguador como <span class="math inline">\(-b\dot x\)</span>, con <span class="math inline">\(b=2\,\mathrm{kg/s}\)</span>. Suponemos válidas ambas leyes de fuerza mientras <span class="math inline">\(|x|&lt;0{,}15\,\mathrm m\)</span> y <span class="math inline">\(|\dot x|&lt;0{,}50\,\mathrm{m/s}\)</span>. Despreciamos masa del resorte, rotación del carro y otras resistencias. Soltamos el carro desde <span class="math inline">\(x(0)=0{,}10\,\mathrm m\)</span>, con velocidad inicial nula.</p>
+<p>La segunda ley da</p>
+<p><span class="math display">\[
+m\ddot x+b\dot x+kx=0.
+\]</span></p>
+<p>El término nuevo depende de la velocidad. Su signo cambia cuando el carro cambia de sentido: siempre se opone al movimiento relativo al laboratorio. En cambio, la fuerza del resorte cambia de signo al atravesar el equilibrio. Confundir estas dos dependencias impediría incluso dibujar correctamente las fuerzas durante un ciclo.</p>
+<figure id="fig-fispm-r20261021-11-1" class="fpm-v04-panel figure">
+<p><a href="../assets/80f9fc3fcfce40ce08cee292.svg" class="lightbox" data-gallery="fispm-r20261021-c11"><img src="../assets/80f9fc3fcfce40ce08cee292.svg" alt="El resorte y el amortiguador actúan en paralelo sobre un carro; un actuador externo puede agregar una fuerza horizontal." class="fpm-v04-figure img-fluid figure-img" width="900" height="520" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 11.1.</em> El amortiguador se refiere a un soporte fijo. La fuerza aplicada se incorpora después. Las flechas indican el eje y una fuerza aplicada positiva; la fuerza viscosa debe determinarse a partir del signo de la velocidad.</p>
+</figcaption>
+</figure>
+<section id="lo-que-dice-la-energía-antes-de-resolver-la-trayectoria" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-dice-la-energía-antes-de-resolver-la-trayectoria">Lo que dice la energía antes de resolver la trayectoria</h2>
+<p>La energía mecánica que seguiremos es la suma de energía cinética del carro y energía potencial elástica:</p>
+<p><span class="math display">\[
+E(t)=\frac12m\dot x(t)^2+\frac12kx(t)^2.
+\]</span></p>
+<p>El amortiguador queda fuera de esta reserva de energía mecánica. La energía que recibe puede convertirse en energía interna del fluido y de sus paredes; describir ese calentamiento exigiría ampliar el sistema. Por eso una disminución de <span class="math inline">\(E\)</span> es compatible con la conservación de energía de un sistema más amplio.</p>
+<p>Si un actuador agrega una fuerza continua <span class="math inline">\(F(t)\)</span>, la ecuación y el balance son</p>
+<p><span class="math display">\[
+m\ddot x+b\dot x+kx=F(t),\qquad
+\frac{dE}{dt}=F(t)\dot x-b\dot x^2.
+\]</span></p>
+<p><strong>Proposición.</strong> Sean <span class="math inline">\(m,k&gt;0\)</span>, <span class="math inline">\(b\geq0\)</span> y <span class="math inline">\(x\)</span> una solución de clase <span class="math inline">\(C^2\)</span> de la ecuación anterior para <span class="math inline">\(t\geq0\)</span>. Para cualesquiera <span class="math inline">\(t_2\geq t_1\geq0\)</span>,</p>
+<p><span class="math display">\[
+E(t_2)-E(t_1)=\int_{t_1}^{t_2}F(t)\dot x(t)\,dt
+-\int_{t_1}^{t_2}b\dot x(t)^2\,dt.
+\]</span></p>
+<p>En particular, si <span class="math inline">\(F=0\)</span>, <span class="math inline">\(E\)</span> es no creciente. Dos soluciones con la misma fuerza y los mismos datos iniciales coinciden para todo <span class="math inline">\(t\geq0\)</span> donde estén definidas.</p>
+<p><strong>Demostración.</strong> La regla de la cadena permite reunir la derivada de ambas energías como <span class="math inline">\(\dot E=\dot x(m\ddot x+kx)\)</span>. La ecuación de movimiento sustituye el paréntesis por <span class="math inline">\(F-b\dot x\)</span>; integrar esa identidad produce el balance. Si <span class="math inline">\(F=0\)</span>, el integrando disipativo es no negativo y la energía no puede aumentar. Para la unicidad, la diferencia <span class="math inline">\(d\)</span> de dos soluciones satisface la ecuación sin fuerza, con <span class="math inline">\(d(0)=\dot d(0)=0\)</span>. Su energía <span class="math inline">\(E_d\)</span> parte de cero y no crece. Puesto que <span class="math inline">\(E_d\geq0\)</span>, debe seguir siendo cero, lo que obliga a <span class="math inline">\(d=0\)</span> porque <span class="math inline">\(k&gt;0\)</span>.</p>
+<p>La prueba de unicidad justifica una estrategia útil: encontrar una fórmula que satisfaga la ecuación y los dos datos basta para identificar el movimiento. La disminución de energía, por sí sola, todavía no demuestra que la posición tienda a cero; esa conclusión se verá en las soluciones explícitas.</p>
+<p>Para el carro inicial, <span class="math inline">\(E(0)=0{,}025\,\mathrm J\)</span>. Como <span class="math inline">\(E(t)\leq E(0)\)</span>, tenemos <span class="math inline">\(|x(t)|\leq0{,}10\,\mathrm m\)</span> y <span class="math inline">\(|\dot x(t)|\leq\sqrt{0{,}05}\,\mathrm{m/s}&lt;0{,}224\,\mathrm{m/s}\)</span>. Ambas cotas quedan dentro del régimen declarado. Hemos comprobado la coherencia del modelo sin conocer todavía cuándo ocurren los extremos.</p>
+</section>
+<section id="separar-la-caída-de-la-oscilación" class="level2">
+<h2 class="anchored" data-anchor-id="separar-la-caída-de-la-oscilación">Separar la caída de la oscilación</h2>
+<p>Dividir la ecuación libre por <span class="math inline">\(m\)</span> sugiere introducir</p>
+<p><span class="math display">\[
+\omega_0=\sqrt{k/m},\qquad \gamma=\frac{b}{2m}.
+\]</span></p>
+<p>Ambas constantes tienen unidades <span class="math inline">\(\mathrm{s^{-1}}\)</span>; <span class="math inline">\(\omega_0\)</span> es la frecuencia angular que tendría el mismo conjunto masa–resorte sin amortiguador. El coeficiente <span class="math inline">\(b\)</span> tiene unidades de masa dividida por tiempo, no de fuerza ni de frecuencia. El factor dos en la definición de <span class="math inline">\(\gamma\)</span> simplifica la siguiente sustitución.</p>
+<p>Busquemos <span class="math inline">\(x(t)=e^{-\gamma t}y(t)\)</span>. Las dos derivadas son</p>
+<p><span class="math display">\[
+\dot x=e^{-\gamma t}(\dot y-\gamma y),\qquad
+\ddot x=e^{-\gamma t}(\ddot y-2\gamma\dot y+\gamma^2y).
+\]</span></p>
+<p>Al sustituir, los términos con <span class="math inline">\(\dot y\)</span> se cancelan y queda</p>
+<p><span class="math display">\[
+\ddot y+(\omega_0^2-\gamma^2)y=0.
+\]</span></p>
+<p>La transformación es reversible, pues la exponencial nunca se anula. Si <span class="math inline">\(\gamma&lt;\omega_0\)</span>, hemos recuperado la ecuación del capítulo anterior, con una frecuencia menor. Los datos de <span class="math inline">\(y\)</span> son <span class="math inline">\(y(0)=x_0\)</span> y <span class="math inline">\(\dot y(0)=v_0+\gamma x_0\)</span>: el segundo dato cambia porque hemos extraído una exponencial que también contribuye a la velocidad.</p>
+<p><strong>Definición.</strong> Para <span class="math inline">\(m,k&gt;0\)</span> y <span class="math inline">\(b&gt;0\)</span>, el oscilador lineal libre es <em>subamortiguado</em> si <span class="math inline">\(\gamma&lt;\omega_0\)</span>, <em>críticamente amortiguado</em> si <span class="math inline">\(\gamma=\omega_0\)</span> y <em>sobreamortiguado</em> si <span class="math inline">\(\gamma&gt;\omega_0\)</span>. En el primer caso denotaremos por <span class="math inline">\(\omega_d=\sqrt{\omega_0^2-\gamma^2}\)</span> su frecuencia angular amortiguada.</p>
+<p><strong>Proposición.</strong> En el caso subamortiguado, la solución con posición <span class="math inline">\(x_0\)</span> y velocidad <span class="math inline">\(v_0\)</span> en <span class="math inline">\(t=0\)</span> es</p>
+<p><span class="math display">\[
+x(t)=e^{-\gamma t}\left[x_0\cos(\omega_dt)
++\frac{v_0+\gamma x_0}{\omega_d}\sin(\omega_dt)\right].
+\]</span></p>
+<p><strong>Demostración.</strong> La expresión entre corchetes resuelve la ecuación de <span class="math inline">\(y\)</span> y toma los datos que acabamos de calcular. La sustitución reversible produce una solución de la ecuación original con los datos pedidos. La unicidad ya demostrada descarta otras soluciones con esos datos.</p>
+<p>Para nuestro carro, <span class="math inline">\(\omega_0=\sqrt5\,\mathrm{s^{-1}}\)</span>, <span class="math inline">\(\gamma=1\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(\omega_d=2\,\mathrm{s^{-1}}\)</span>. Si escribimos <span class="math inline">\(u=t/(1\,\mathrm s)\)</span>, una variable adimensional, obtenemos</p>
+<p><span class="math display">\[
+x(t)=(0{,}10\,\mathrm m)e^{-u}\left(\cos2u+\frac12\sin2u\right),\qquad
+\dot x(t)=-(0{,}25\,\mathrm{m/s})e^{-u}\sin2u.
+\]</span></p>
+<p>La velocidad se anula cuando <span class="math inline">\(u=n\pi/2\)</span>. El primer extremo negativo ocurre en <span class="math inline">\(t=\pi\,\mathrm s/2\)</span> y vale <span class="math inline">\(-(0{,}10\,\mathrm m)e^{-\pi/2}\)</span>. El siguiente extremo positivo llega en <span class="math inline">\(t=\pi\,\mathrm s\)</span> y vale <span class="math inline">\((0{,}10\,\mathrm m)e^{-\pi}\approx0{,}00432\,\mathrm m\)</span>. Ya podemos explicar los cuatro milímetros del comienzo.</p>
+<figure id="fig-fispm-r20261021-11-2" class="fpm-v04-panel figure">
+<p><a href="../assets/d61e7a1947d407e36a235bbc.svg" class="lightbox" data-gallery="fispm-r20261021-c11"><img src="../assets/d61e7a1947d407e36a235bbc.svg" alt="Movimiento libre del carro inicial y curvas exponenciales que lo acotan." class="fpm-v04-figure img-fluid figure-img" width="900" height="520" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 11.2.</em> Se representa la solución con los datos del problema de apertura. Las curvas discontinuas son cotas de la posición, no trayectorias adicionales. Se señalan extremos reales del movimiento.</p>
+</figcaption>
+</figure>
+<p>La misma solución puede escribirse <span class="math inline">\(x=Re^{-\gamma t}\cos(\omega_dt-\alpha)\)</span>, con <span class="math inline">\(R\geq0\)</span> constante. La cantidad <span class="math inline">\(Re^{-\gamma t}\)</span> es una envolvente: acota <span class="math inline">\(|x|\)</span>. Sin embargo, cuando el coseno vale uno su derivada total es <span class="math inline">\(-\gamma Re^{-\gamma t}\)</span>, que no es cero si <span class="math inline">\(\gamma R&gt;0\)</span>. Por ello los máximos de posición no se obtienen simplemente haciendo uno al coseno. La pendiente de la envolvente desplaza los extremos.</p>
+<p>Una solución libre subamortiguada satisface <span class="math inline">\(x(t+T_d)=e^{-\gamma T_d}x(t)\)</span>, donde <span class="math inline">\(T_d=2\pi/\omega_d\)</span>. También lo satisface su velocidad. Los estados se repiten a escala, pero no se repiten idénticos: el movimiento amortiguado no es periódico salvo en la solución de reposo. Llamar período amortiguado a <span class="math inline">\(T_d\)</span> significa aquí el intervalo entre máximos sucesivos del mismo signo.</p>
+</section>
+<section id="regresar-sin-una-sucesión-de-oscilaciones" class="level2">
+<h2 class="anchored" data-anchor-id="regresar-sin-una-sucesión-de-oscilaciones">Regresar sin una sucesión de oscilaciones</h2>
+<p>Si <span class="math inline">\(\gamma=\omega_0\)</span>, la ecuación transformada es <span class="math inline">\(\ddot y=0\)</span>. Integrarla dos veces da <span class="math inline">\(y=C+Dt\)</span>, y los datos fijan</p>
+<p><span class="math display">\[
+x(t)=e^{-\omega_0t}\left[x_0+(v_0+\omega_0x_0)t\right].
+\]</span></p>
+<p>El factor <span class="math inline">\(t\)</span> no puede eliminarse: sin él sólo quedaría un parámetro para imponer dos datos iniciales. Esta solución no contiene seno ni coseno. Para <span class="math inline">\(x_0&gt;0\)</span> y <span class="math inline">\(v_0=0\)</span>, su derivada es <span class="math inline">\(-\omega_0^2x_0te^{-\omega_0t}\)</span>, negativa para <span class="math inline">\(t&gt;0\)</span>; la posición se acerca a cero desde el mismo lado.</p>
+<p>En el caso sobreamortiguado, pongamos <span class="math inline">\(\lambda=\sqrt{\gamma^2-\omega_0^2}\)</span>. La ecuación transformada se resuelve con exponenciales y resulta</p>
+<p><span class="math display">\[
+x(t)=C e^{r_+t}+D e^{r_-t},\qquad
+r_\pm=-\gamma\pm\lambda.
+\]</span></p>
+<p>Ambas raíces son negativas porque <span class="math inline">\(0&lt;\lambda&lt;\gamma\)</span>. Los coeficientes se encuentran resolviendo <span class="math inline">\(C+D=x_0\)</span> y <span class="math inline">\(r_+C+r_-D=v_0\)</span>; el determinante es distinto de cero. La sustitución verifica estas soluciones y la unicidad vuelve a garantizar que no faltan otras. En los tres regímenes, cuando <span class="math inline">\(b&gt;0\)</span>, posición y velocidad tienden a cero.</p>
+<figure id="fig-fispm-r20261021-11-3" class="fpm-v04-panel figure">
+<p><a href="../assets/190f680aaa3491edaac63319.svg" class="lightbox" data-gallery="fispm-r20261021-c11"><img src="../assets/190f680aaa3491edaac63319.svg" alt="Comparación de tres movimientos con los mismos datos iniciales y distintos amortiguamientos." class="fpm-v04-figure img-fluid figure-img" width="900" height="520" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 11.3.</em> Se mantienen <span class="math inline">\(m=k=1\)</span> en unidades SI, <span class="math inline">\(x_0=0{,}10\,\mathrm m\)</span> y <span class="math inline">\(v_0=0\)</span>. Se comparan <span class="math inline">\(b=0{,}6\)</span>, <span class="math inline">\(b=2\)</span> y <span class="math inline">\(b=4\,\mathrm{kg/s}\)</span>. La afirmación de regreso sin cruce se refiere a estos datos de liberación desde el reposo.</p>
+</figcaption>
+</figure>
+<p>La clasificación de la ecuación no determina todos los detalles de una trayectoria. Un sistema crítico puede atravesar el equilibrio si se lanza hacia él con suficiente rapidez; lo que no presenta es una sucesión sostenida de cruces oscilatorios. También es incorrecto concluir que aumentar <span class="math inline">\(b\)</span> siempre acelera el retorno. En el régimen muy sobreamortiguado,</p>
+<p><span class="math display">\[
+r_+=-\frac{\omega_0^2}{\gamma+\sqrt{\gamma^2-\omega_0^2}}
+\approx-\frac{k}{b}.
+\]</span></p>
+<p>La igualdad proviene de racionalizar la raíz. La aproximación requiere <span class="math inline">\(\gamma\gg\omega_0\)</span> y revela un modo lento cuya escala temporal crece como <span class="math inline">\(b/k\)</span>. La fuerte resistencia puede retardar el regreso. Tampoco se alcanza exactamente el reposo en un tiempo finito en estas soluciones no triviales: cualquier tiempo de asentamiento debe especificar una tolerancia.</p>
+</section>
+<section id="medir-el-amortiguamiento" class="level2">
+<h2 class="anchored" data-anchor-id="medir-el-amortiguamiento">Medir el amortiguamiento</h2>
+<p>Dos máximos positivos consecutivos de una oscilación subamortiguada, medidos respecto del equilibrio, permiten calcular</p>
+<p><span class="math display">\[
+\Lambda=\log\frac{x_n}{x_{n+1}}=\gamma T_d.
+\]</span></p>
+<p>Se llama <em>decremento logarítmico</em> a <span class="math inline">\(\Lambda\)</span>. El cociente exige extremos del mismo signo separados por un ciclo completo; con valores absolutos de extremos consecutivos, separados por medio ciclo, aparece la mitad de ese decremento. La relación es exacta para el modelo lineal, incluso si el amortiguamiento no es pequeño dentro del régimen subamortiguado.</p>
+<p>Con <span class="math inline">\(T_d\)</span> y <span class="math inline">\(\Lambda\)</span> podemos reconstruir <span class="math inline">\(\gamma=\Lambda/T_d\)</span>, <span class="math inline">\(\omega_d=2\pi/T_d\)</span> y <span class="math inline">\(\omega_0=\sqrt{\omega_d^2+\gamma^2}\)</span>. Si además conocemos <span class="math inline">\(m\)</span>, obtenemos <span class="math inline">\(b=2m\gamma\)</span> y <span class="math inline">\(k=m\omega_0^2\)</span>. Sin una masa conocida, esos datos sólo identifican las razones <span class="math inline">\(b/m\)</span> y <span class="math inline">\(k/m\)</span>.</p>
+<p>El ajuste no constituye una comprobación independiente de las leyes de fuerza. Después de usar dos picos para determinar parámetros, debemos predecir otros picos o cambiar la preparación. Un descenso aproximadamente constante de los picos, en lugar de un cociente constante, sugeriría revisar el modelo viscoso. El rozamiento seco del capítulo 5 y una resistencia proporcional al cuadrado de la rapidez producen otras leyes de pérdida.</p>
+<p>También debe distinguirse la envolvente de la energía instantánea. Sustituir <span class="math inline">\(x=Re^{-\gamma t}\cos\theta\)</span>, <span class="math inline">\(\theta=\omega_dt-\alpha\)</span>, da exactamente</p>
+<p><span class="math display">\[
+E(t)=\frac{mR^2}{2}e^{-2\gamma t}
+\left[(\gamma\cos\theta+\omega_d\sin\theta)^2
++\omega_0^2\cos^2\theta\right].
+\]</span></p>
+<p>El corchete varía con el tiempo. Aunque <span class="math inline">\(E\)</span> no aumenta, no es en general igual a <span class="math inline">\(E(0)e^{-2\gamma t}\)</span>. En dos instantes separados por <span class="math inline">\(T_d\)</span>, sí se cumple la relación exacta <span class="math inline">\(E(t+T_d)=e^{-2\gamma T_d}E(t)\)</span>. Si <span class="math inline">\(\gamma/\omega_0\ll1\)</span>, reemplazar el corchete por <span class="math inline">\(\omega_0^2\)</span> introduce correcciones relativas del orden de <span class="math inline">\(\gamma/\omega_0\)</span> y permite la descripción aproximada por una exponencial de energía. No usaremos esa aproximación para localizar un extremo ni para verificar un balance instantáneo.</p>
+</section>
+<section id="sostener-el-movimiento-con-una-fuerza-periódica" class="level2">
+<h2 class="anchored" data-anchor-id="sostener-el-movimiento-con-una-fuerza-periódica">Sostener el movimiento con una fuerza periódica</h2>
+<p>Agreguemos un actuador que ejerce <span class="math inline">\(F(t)=F_0\cos(\Omega t)\)</span>, con <span class="math inline">\(F_0&gt;0\)</span> y <span class="math inline">\(\Omega&gt;0\)</span>. Suponemos que su amplitud se mantiene fija al variar la frecuencia. Esta precisión será necesaria al comparar resonancias. El movimiento completo satisface</p>
+<p><span class="math display">\[
+m\ddot x+b\dot x+kx=F_0\cos(\Omega t).
+\]</span></p>
+<p>La fuerza contiene una frecuencia, pero los datos iniciales todavía pueden agregar otras componentes al movimiento. Para encontrar una respuesta que siga al actuador ensayemos <span class="math inline">\(x_s=a\cos(\Omega t)+c\sin(\Omega t)\)</span>. La sustitución y la igualdad de los coeficientes del seno y del coseno dan</p>
+<p><span class="math display">\[
+(k-m\Omega^2)a+b\Omega c=F_0,\qquad
+(k-m\Omega^2)c-b\Omega a=0.
+\]</span></p>
+<p>Es un sistema de dos ecuaciones lineales. Su determinante <span class="math inline">\(D=(k-m\Omega^2)^2+(b\Omega)^2\)</span> es positivo si <span class="math inline">\(b&gt;0\)</span>. Así,</p>
+<p><span class="math display">\[
+a=\frac{F_0(k-m\Omega^2)}{D},\qquad
+c=\frac{F_0b\Omega}{D}.
+\]</span></p>
+<p>Podemos reunir ambos coeficientes en <span class="math inline">\(x_s=A\cos(\Omega t-\delta)\)</span>, donde</p>
+<p><span class="math display">\[
+A=\frac{F_0}{\sqrt{(k-m\Omega^2)^2+(b\Omega)^2}},
+\qquad
+\cos\delta=\frac{k-m\Omega^2}{\sqrt D},\quad
+\sin\delta=\frac{b\Omega}{\sqrt D}.
+\]</span></p>
+<p>Elegimos <span class="math inline">\(0&lt;\delta&lt;\pi\)</span>. La fase <span class="math inline">\(\delta\)</span> representa un retraso del desplazamiento respecto de la fuerza. Los dos cocientes fijan su cuadrante, incluso cuando <span class="math inline">\(k-m\Omega^2\)</span> cambia de signo; utilizar sólo una tangente podría convertir un retraso mayor que un cuarto de ciclo en un adelanto aparente.</p>
+<p><strong>Definición.</strong> Para una fuerza <span class="math inline">\(F_0\cos(\Omega t)\)</span> con <span class="math inline">\(\Omega&gt;0\)</span> y <span class="math inline">\(b&gt;0\)</span>, llamaremos <em>respuesta estacionaria</em> a la solución periódica <span class="math inline">\(x_s\)</span> de período <span class="math inline">\(2\pi/\Omega\)</span>. Llamaremos <em>transitorio</em> a la diferencia <span class="math inline">\(h=x-x_s\)</span> entre un movimiento completo y esa respuesta.</p>
+<p><strong>Proposición.</strong> Para <span class="math inline">\(m,k,b,F_0,\Omega&gt;0\)</span>, la respuesta estacionaria es única y tiene la amplitud y la fase anteriores. Toda solución con datos iniciales finitos se escribe <span class="math inline">\(x=x_s+h\)</span>, donde <span class="math inline">\(h\)</span> resuelve la ecuación libre y <span class="math inline">\(h,\dot h\)</span> tienden a cero cuando <span class="math inline">\(t\to\infty\)</span>.</p>
+<p><strong>Demostración.</strong> El sistema lineal construye una solución periódica. Al restar su ecuación de la ecuación de <span class="math inline">\(x\)</span>, queda <span class="math inline">\(m\ddot h+b\dot h+kh=0\)</span>; las fórmulas de los tres regímenes prueban el decaimiento de <span class="math inline">\(h\)</span> y de su derivada. Si existieran dos soluciones periódicas con el período de la fuerza, su diferencia sería también periódica y tendería a cero. Evaluarla en <span class="math inline">\(t+n(2\pi/\Omega)\)</span> y hacer <span class="math inline">\(n\to\infty\)</span> muestra que vale cero en cada <span class="math inline">\(t\)</span>, por lo que ambas soluciones coinciden.</p>
+<p>La palabra estacionaria describe una forma de respuesta sostenida, no una posición inmóvil. El tiempo que debemos esperar para observarla depende del modo libre más lento y de la tolerancia del experimento. En un sistema sobreamortiguado no basta estimarlo con <span class="math inline">\(1/\gamma\)</span>.</p>
+<figure id="fig-fispm-r20261021-11-4" class="fpm-v04-panel figure">
+<p><a href="../assets/a154ddf456b3794955478e3b.svg" class="lightbox" data-gallery="fispm-r20261021-c11"><img src="../assets/a154ddf456b3794955478e3b.svg" alt="La solución completa se descompone en un transitorio decreciente y una respuesta periódica sostenida." class="fpm-v04-figure img-fluid figure-img" width="900" height="520" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 11.4.</em> Para <span class="math inline">\(m=1\,\mathrm{kg}\)</span>, <span class="math inline">\(k=5\,\mathrm{N/m}\)</span>, <span class="math inline">\(b=2\,\mathrm{kg/s}\)</span> y <span class="math inline">\(F(t)=(0{,}5\,\mathrm N)\cos(2t/\mathrm s)\)</span>, se conecta la fuerza con el carro inicialmente en reposo en el equilibrio. La respuesta estacionaria no satisface por sí sola esos datos iniciales.</p>
+</figcaption>
+</figure>
+<p>En ese ejemplo, <span class="math inline">\(D=17\,\mathrm{(N/m)^2}\)</span>, <span class="math inline">\(a=(1/34)\,\mathrm m\)</span> y <span class="math inline">\(c=(2/17)\,\mathrm m\)</span>. La amplitud es <span class="math inline">\(A=(0{,}5/\sqrt{17})\,\mathrm m\approx0{,}121\,\mathrm m\)</span> y el retraso satisface <span class="math inline">\(\tan\delta=4\)</span>, en el primer cuadrante. Pero <span class="math inline">\(x_s(0)=a\)</span> y <span class="math inline">\(\dot x_s(0)=2c/\mathrm s\)</span> no son nulos. El transitorio debe empezar en <span class="math inline">\(h(0)=-a\)</span> y <span class="math inline">\(\dot h(0)=-2c/\mathrm s\)</span> para corregir ambos datos. Aplicar mecánicamente la fórmula de amplitud al instante de conexión omitiría esa preparación.</p>
+</section>
+<section id="qué-magnitud-alcanza-su-máximo" class="level2">
+<h2 class="anchored" data-anchor-id="qué-magnitud-alcanza-su-máximo">Qué magnitud alcanza su máximo</h2>
+<p><strong>Definición.</strong> Al variar <span class="math inline">\(\Omega\geq0\)</span> manteniendo fijos <span class="math inline">\(m,k,b,F_0\)</span>, llamaremos <em>resonancia de desplazamiento</em> a un máximo de <span class="math inline">\(A(\Omega)\)</span> situado en una frecuencia positiva. La resonancia de velocidad y la de potencia se referirán, respectivamente, a máximos de la amplitud de velocidad <span class="math inline">\(\Omega A\)</span> y de la potencia media absorbida. En <span class="math inline">\(\Omega=0\)</span> interpretamos <span class="math inline">\(A(0)=F_0/k\)</span> como respuesta estática.</p>
+<p>Para maximizar <span class="math inline">\(A\)</span> podemos minimizar su denominador al cuadrado. Con <span class="math inline">\(z=\Omega^2\geq0\)</span>,</p>
+<p><span class="math display">\[
+D(z)=(k-mz)^2+b^2z
+=m^2z^2+(b^2-2mk)z+k^2.
+\]</span></p>
+<p><strong>Proposición.</strong> Con <span class="math inline">\(m,k,b,F_0&gt;0\)</span>, existe una resonancia de desplazamiento si y sólo si <span class="math inline">\(\gamma&lt;\omega_0/\sqrt2\)</span>. En ese caso su frecuencia es</p>
+<p><span class="math display">\[
+\Omega_r=\sqrt{\omega_0^2-2\gamma^2}.
+\]</span></p>
+<p>Si <span class="math inline">\(\gamma\geq\omega_0/\sqrt2\)</span>, <span class="math inline">\(A(\Omega)\)</span> disminuye para <span class="math inline">\(\Omega&gt;0\)</span> y su máximo en <span class="math inline">\([0,\infty)\)</span> está en cero.</p>
+<p><strong>Demostración.</strong> La derivada del polinomio <span class="math inline">\(D\)</span> respecto de <span class="math inline">\(z\)</span> se anula únicamente en <span class="math inline">\(z_*=k/m-b^2/(2m^2)=\omega_0^2-2\gamma^2\)</span>. Como su coeficiente cuadrático es positivo, ese punto es el mínimo cuando pertenece al interior <span class="math inline">\(z&gt;0\)</span>. Si <span class="math inline">\(z_*\leq0\)</span>, <span class="math inline">\(D\)</span> es estrictamente creciente para <span class="math inline">\(z&gt;0\)</span>, incluso cuando su derivada en cero es nula. Esto prueba ambos casos.</p>
+<p>La condición de subamortiguamiento es más amplia. Un sistema puede oscilar al soltarlo y no presentar un pico de desplazamiento al barrer frecuencias. Cuando el pico existe y <span class="math inline">\(b&gt;0\)</span>, tenemos <span class="math inline">\(\Omega_r&lt;\omega_d&lt;\omega_0\)</span>. Para amortiguamiento muy pequeño las diferencias pueden quedar por debajo de la resolución experimental; eso explica la utilidad de una frecuencia de resonancia aproximada, pero no convierte las tres expresiones en una identidad.</p>
+<figure id="fig-fispm-r20261021-11-5" class="fpm-v04-panel figure">
+<p><a href="../assets/a693e164811e600598143f78.svg" class="lightbox" data-gallery="fispm-r20261021-c11"><img src="../assets/a693e164811e600598143f78.svg" alt="Amplitud de desplazamiento normalizada al variar la frecuencia aplicada para varios amortiguamientos." class="fpm-v04-figure img-fluid figure-img" width="900" height="520" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 11.5.</em> Se dibuja <span class="math inline">\(kA/F_0\)</span> en función de <span class="math inline">\(\Omega/\omega_0\)</span> para valores indicados de <span class="math inline">\(\zeta=\gamma/\omega_0\)</span>. Con <span class="math inline">\(\zeta=0{,}8\)</span> la respuesta libre todavía es oscilatoria, aunque ya no existe un pico de desplazamiento a frecuencia positiva.</p>
+</figcaption>
+</figure>
+<p>En el límite de baja frecuencia, <span class="math inline">\(A\to F_0/k\)</span> y <span class="math inline">\(\delta\to0\)</span>: el carro sigue casi el equilibrio instantáneo. Para frecuencias muy altas, <span class="math inline">\(A\sim F_0/(m\Omega^2)\)</span> y <span class="math inline">\(\delta\to\pi\)</span>: la inercia domina y la posición queda casi opuesta a la fuerza. En <span class="math inline">\(\Omega=\omega_0\)</span>, <span class="math inline">\(\delta=\pi/2\)</span> y <span class="math inline">\(A=F_0/(b\omega_0)\)</span>. Este último punto será especial para la transferencia de energía, aunque no maximice el desplazamiento.</p>
+</section>
+<section id="potencia-fase-y-ancho-de-la-respuesta" class="level2">
+<h2 class="anchored" data-anchor-id="potencia-fase-y-ancho-de-la-respuesta">Potencia, fase y ancho de la respuesta</h2>
+<p>Para una función periódica <span class="math inline">\(g\)</span> de período <span class="math inline">\(T=2\pi/\Omega\)</span>, escribiremos <span class="math inline">\(\langle g\rangle=T^{-1}\int_{t_0}^{t_0+T}g(t)\,dt\)</span>. El resultado no depende de <span class="math inline">\(t_0\)</span>. En la respuesta estacionaria, la energía mecánica vuelve al mismo valor después de un ciclo; promediar el balance elimina <span class="math inline">\(\langle\dot E\rangle\)</span>.</p>
+<p><strong>Proposición.</strong> En la respuesta estacionaria con <span class="math inline">\(m,k,b,F_0,\Omega&gt;0\)</span>,</p>
+<p><span class="math display">\[
+\langle P\rangle=\langle F\dot x_s\rangle
+=\frac12F_0\Omega A\sin\delta
+=\frac12b\Omega^2A^2.
+\]</span></p>
+<p>La amplitud de velocidad y la potencia media tienen su único máximo para <span class="math inline">\(\Omega&gt;0\)</span> en <span class="math inline">\(\Omega=\omega_0\)</span>. Allí <span class="math inline">\(\langle P\rangle_{\max}=F_0^2/(2b)\)</span>.</p>
+<p><strong>Demostración.</strong> Derivar <span class="math inline">\(x_s\)</span> y expandir el seno de una diferencia da</p>
+<p><span class="math display">\[
+\dot x_s=-\Omega A\sin(\Omega t)\cos\delta
++\Omega A\cos(\Omega t)\sin\delta.
+\]</span></p>
+<p>El producto con <span class="math inline">\(F_0\cos(\Omega t)\)</span> tiene promedio <span class="math inline">\(F_0\Omega A\sin\delta/2\)</span>, porque el producto seno–coseno promedia cero y el cuadrado del coseno promedia <span class="math inline">\(1/2\)</span>. La expresión de <span class="math inline">\(\sin\delta\)</span> da el balance con la disipación. Para localizar el máximo, dividimos numerador y denominador de <span class="math inline">\(\Omega^2A^2\)</span> por <span class="math inline">\(\Omega^2\)</span>:</p>
+<p><span class="math display">\[
+\Omega^2A^2=\frac{F_0^2}{(k/\Omega-m\Omega)^2+b^2}.
+\]</span></p>
+<p>El denominador alcanza su mínimo <span class="math inline">\(b^2\)</span> únicamente cuando <span class="math inline">\(k/\Omega=m\Omega\)</span>, es decir, en <span class="math inline">\(\Omega=\omega_0\)</span>. La potencia es un múltiplo positivo de la misma cantidad; sustituir esa frecuencia produce el valor anunciado.</p>
+<p>En esa frecuencia, la velocidad está en fase con la fuerza y <span class="math inline">\(F\dot x_s=(F_0^2/b)\cos^2(\omega_0t)\geq0\)</span>. Fuera de ella, el actuador puede recibir energía durante parte del ciclo, aunque la transferencia media siga siendo positiva. Tampoco una amplitud constante de posición implica energía mecánica instantánea constante: la fuerza aplicada y la disipación no tienen por qué compensarse en cada instante.</p>
+<figure id="fig-fispm-r20261021-11-6" class="fpm-v04-panel figure">
+<p><a href="../assets/ff2082f3903af6d7cc5481f0.svg" class="lightbox" data-gallery="fispm-r20261021-c11"><img src="../assets/ff2082f3903af6d7cc5481f0.svg" alt="Retraso de fase y potencia media normalizada de una respuesta con amortiguamiento positivo." class="fpm-v04-figure img-fluid figure-img" width="900" height="735" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 11.6.</em> Para <span class="math inline">\(\zeta=0{,}25\)</span>, el retraso cruza <span class="math inline">\(\pi/2\)</span> en <span class="math inline">\(\Omega/\omega_0=1\)</span>, donde la potencia media es máxima. Las dos gráficas comparten el eje de frecuencia y tienen escalas verticales diferentes.</p>
+</figcaption>
+</figure>
+<p>Se define el factor de calidad por <span class="math inline">\(Q=m\omega_0/b=\omega_0/(2\gamma)\)</span>. Es adimensional. Para expresar su relación con un ancho de respuesta, usemos los dos puntos donde la potencia media es la mitad de su máximo. La fórmula anterior exige <span class="math inline">\((k/\Omega-m\Omega)^2=b^2\)</span> y da</p>
+<p><span class="math display">\[
+\Omega_- =\frac{\sqrt{b^2+4mk}-b}{2m},\qquad
+\Omega_+ =\frac{\sqrt{b^2+4mk}+b}{2m}.
+\]</span></p>
+<p>Por tanto <span class="math inline">\(\Omega_+-\Omega_-=b/m\)</span> y <span class="math inline">\(Q=\omega_0/(\Omega_+-\Omega_-)\)</span>. Es una identidad exacta para la potencia media de este modelo con amplitud de fuerza fija. No hemos demostrado una identidad semejante para el ancho a media altura de la curva de desplazamiento. Para <span class="math inline">\(Q\)</span> grande, los dos puntos de media potencia están cerca de <span class="math inline">\(\omega_0\)</span> y el pico es estrecho en relación con esa frecuencia.</p>
+</section>
+<section id="qué-cambia-cuando-se-elimina-la-disipación" class="level2">
+<h2 class="anchored" data-anchor-id="qué-cambia-cuando-se-elimina-la-disipación">Qué cambia cuando se elimina la disipación</h2>
+<p>Si <span class="math inline">\(b=0\)</span>, una respuesta particular para <span class="math inline">\(\Omega\ne\omega_0\)</span> es</p>
+<p><span class="math display">\[
+x_p(t)=\frac{F_0}{m(\omega_0^2-\Omega^2)}\cos(\Omega t).
+\]</span></p>
+<p>Pero la parte libre ya no decae. Con datos iniciales nulos, el movimiento completo es</p>
+<p><span class="math display">\[
+x(t)=\frac{F_0}{m(\omega_0^2-\Omega^2)}
+\left[\cos(\Omega t)-\cos(\omega_0t)\right].
+\]</span></p>
+<p>Tiene dos frecuencias que persisten. En consecuencia, no podemos hablar de una respuesta atractora independiente de la preparación. Si <span class="math inline">\(\Omega\)</span> está cerca de <span class="math inline">\(\omega_0\)</span>, la identidad de diferencia de cosenos muestra batimientos: una oscilación rápida modulada por una escala lenta relacionada con <span class="math inline">\(|\Omega-\omega_0|\)</span>.</p>
+<p>Cuando <span class="math inline">\(\Omega=\omega_0\)</span>, el ensayo de un coseno falla porque coincide con una solución libre. Un ensayo con un factor temporal permite satisfacer la ecuación y los datos nulos:</p>
+<p><span class="math display">\[
+x(t)=\frac{F_0}{2m\omega_0}\,t\sin(\omega_0t).
+\]</span></p>
+<p>Derivar dos veces deja <span class="math inline">\(\ddot x+\omega_0^2x=(F_0/m)\cos(\omega_0t)\)</span> y en cero se anulan posición y velocidad. La envolvente crece linealmente. No hay una amplitud infinita en un instante finito: hay crecimiento sin cota cuando el tiempo crece dentro de un modelo ideal. En un aparato real, antes pueden fallar la linealidad del resorte, el control del actuador o la omisión de disipación.</p>
+<figure id="fig-fispm-r20261021-11-7" class="fpm-v04-panel figure">
+<p><a href="../assets/3f75dfa9815a75bd945eacd7.svg" class="lightbox" data-gallery="fispm-r20261021-c11"><img src="../assets/3f75dfa9815a75bd945eacd7.svg" alt="Respuesta resonante sin amortiguamiento, conectada desde datos iniciales nulos." class="fpm-v04-figure img-fluid figure-img" width="900" height="520" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 11.7.</em> Ejemplo con <span class="math inline">\(m=1\,\mathrm{kg}\)</span>, <span class="math inline">\(\omega_0=2\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(F_0=0{,}2\,\mathrm N\)</span>. Las líneas discontinuas son las envolventes <span class="math inline">\(\pm(0{,}05\,\mathrm{m/s})t\)</span>. El crecimiento debe contrastarse con el intervalo de validez de las leyes de fuerza.</p>
+</figcaption>
+</figure>
+<p>Para <span class="math inline">\(b&gt;0\)</span>, incluso muy pequeño, la respuesta estacionaria en <span class="math inline">\(\omega_0\)</span> es finita, pero el tiempo necesario para aproximarse a ella aumenta al reducir <span class="math inline">\(b\)</span> en el régimen subamortiguado. Tomar primero un tiempo muy largo y después hacer pequeño el amortiguamiento describe una pregunta diferente de conectar una fuerza a un oscilador sin disipación y observarlo durante un tiempo fijo. La distinción entre preparación, transitorio y respuesta sostenida evita atribuir al experimento un límite que todavía no ha alcanzado.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Los datos numéricos se refieren a modelos lineales en el marco del laboratorio. Cuando se indica una respuesta estacionaria, se supone que el transitorio ha decaído por debajo de la tolerancia relevante. Las unidades SI acompañan a los parámetros aunque una ecuación auxiliar use la variable adimensional <span class="math inline">\(u=t/(1\,\mathrm s)\)</span>.</p>
+<section id="ejercicio-11-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-1">1. Dos fuerzas que cambian de signo por razones distintas</h3>
+<p>Un carro tiene <span class="math inline">\(m=2\,\mathrm{kg}\)</span>, <span class="math inline">\(k=18\,\mathrm{N/m}\)</span> y <span class="math inline">\(b=4\,\mathrm{kg/s}\)</span>. En un instante está en <span class="math inline">\(x=0{,}050\,\mathrm m\)</span> con <span class="math inline">\(\dot x=-0{,}20\,\mathrm{m/s}\)</span>, sin fuerza aplicada. Determine ambas fuerzas, la aceleración y la potencia disipada. Decida si el carro está aumentando su rapidez.</p>
+</section>
+<section id="ejercicio-11-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-2">2. Clasificar antes de calcular</h3>
+<p>Para <span class="math inline">\(m=1\,\mathrm{kg}\)</span> y <span class="math inline">\(k=9\,\mathrm{N/m}\)</span> se dispone de amortiguadores con <span class="math inline">\(b=2\)</span>, <span class="math inline">\(6\)</span> y <span class="math inline">\(10\,\mathrm{kg/s}\)</span>. Clasifique los tres casos y determine las frecuencias o tasas exponenciales pertinentes. Explique qué ocurre si se introduce una frecuencia imaginaria en una fórmula trigonométrica sin reinterpretarla.</p>
+</section>
+<section id="ejercicio-11-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-3">3. Lanzamiento de un oscilador subamortiguado</h3>
+<p>Con <span class="math inline">\(m=1\,\mathrm{kg}\)</span>, <span class="math inline">\(k=5\,\mathrm{N/m}\)</span> y <span class="math inline">\(b=2\,\mathrm{kg/s}\)</span>, prepare <span class="math inline">\(x_0=0\)</span> y <span class="math inline">\(v_0=0{,}20\,\mathrm{m/s}\)</span>. Encuentre <span class="math inline">\(x(t)\)</span>, el primer extremo positivo y el primer retorno al equilibrio.</p>
+</section>
+<section id="ejercicio-11-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-4">4. Un tiempo de asentamiento garantizado</h3>
+<p>Para el carro del problema de apertura, encuentre un tiempo a partir del cual <span class="math inline">\(|x(t)|&lt;1\,\mathrm{mm}\)</span> quede garantizado por la envolvente. Distinga esa garantía del primer instante en que el carro entra en la franja.</p>
+</section>
+<section id="ejercicio-11-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-5">5. Reconstruir parámetros desde picos</h3>
+<p>Un carro de masa <span class="math inline">\(0{,}50\,\mathrm{kg}\)</span> presenta dos máximos positivos consecutivos de <span class="math inline">\(40\,\mathrm{mm}\)</span> y <span class="math inline">\(20\,\mathrm{mm}\)</span>, separados por <span class="math inline">\(2{,}0\,\mathrm s\)</span>. Bajo el modelo viscoso, calcule <span class="math inline">\(\gamma\)</span>, <span class="math inline">\(\omega_d\)</span>, <span class="math inline">\(b\)</span> y <span class="math inline">\(k\)</span>. Prediga el tercer máximo positivo y declare qué parte del procedimiento constituye una prueba nueva del ajuste.</p>
+</section>
+<section id="ejercicio-11-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-6">6. La energía no sigue exactamente la envolvente</h3>
+<p>Alguien propone <span class="math inline">\(E(t)=E(0)e^{-2\gamma t}\)</span> como identidad exacta para cualquier oscilación libre subamortiguada. Refútela usando una liberación desde el reposo fuera del equilibrio. Encuentre una relación exponencial de energía que sí sea exacta.</p>
+</section>
+<section id="ejercicio-11-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-7">7. Liberación crítica</h3>
+<p>Un sistema tiene <span class="math inline">\(m=1\,\mathrm{kg}\)</span>, <span class="math inline">\(k=4\,\mathrm{N/m}\)</span> y <span class="math inline">\(b=4\,\mathrm{kg/s}\)</span>. Se libera desde <span class="math inline">\(x_0=0{,}10\,\mathrm m\)</span> y <span class="math inline">\(v_0=0\)</span>. Encuentre la trayectoria, demuestre que no cruza el equilibrio y estime cuándo queda por debajo de <span class="math inline">\(1\,\mathrm{mm}\)</span>.</p>
+</section>
+<section id="ejercicio-11-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-8">8. Un cruce en el régimen crítico</h3>
+<p>En el mismo sistema crítico, cambie la velocidad inicial a <span class="math inline">\(v_0=-0{,}50\,\mathrm{m/s}\)</span>. Determine cuándo cruza el equilibrio y explique por qué ese cruce no contradice la clasificación del régimen.</p>
+</section>
+<section id="ejercicio-11-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-9">9. La resistencia que retrasa el regreso</h3>
+<p>Para <span class="math inline">\(m=1\,\mathrm{kg}\)</span>, <span class="math inline">\(k=3\,\mathrm{N/m}\)</span> y <span class="math inline">\(b=4\,\mathrm{kg/s}\)</span>, libere el carro desde <span class="math inline">\(x_0=0{,}10\,\mathrm m\)</span> con velocidad nula. Calcule las dos componentes exponenciales y la tasa que gobierna el final del retorno. Compare la expresión exacta de la raíz lenta con <span class="math inline">\(-k/b\)</span> y evalúe si la aproximación es buena.</p>
+</section>
+<section id="ejercicio-11-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-10">10. Una cota sin resolver la ecuación</h3>
+<p>Un oscilador libre con <span class="math inline">\(m=2\,\mathrm{kg}\)</span>, <span class="math inline">\(k=8\,\mathrm{N/m}\)</span> y <span class="math inline">\(b&gt;0\)</span> parte de <span class="math inline">\(x_0=0{,}10\,\mathrm m\)</span> y <span class="math inline">\(v_0=0{,}30\,\mathrm{m/s}\)</span>. Su modelo exige <span class="math inline">\(|x|&lt;0{,}20\,\mathrm m\)</span> y <span class="math inline">\(|\dot x|&lt;0{,}50\,\mathrm{m/s}\)</span>. Compruebe su coherencia para todo <span class="math inline">\(t\geq0\)</span> sin calcular la trayectoria.</p>
+</section>
+<section id="ejercicio-11-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-11">11. Resolver también el cuadrante</h3>
+<p>Para <span class="math inline">\(m=1\,\mathrm{kg}\)</span>, <span class="math inline">\(k=4\,\mathrm{N/m}\)</span>, <span class="math inline">\(b=2\,\mathrm{kg/s}\)</span> y <span class="math inline">\(F(t)=(1\,\mathrm N)\cos(3t/\mathrm s)\)</span>, calcule la respuesta estacionaria mediante coeficientes reales. Determine su amplitud y el cuadrante del retraso.</p>
+</section>
+<section id="ejercicio-11-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-12">12. Conectar desde el reposo</h3>
+<p>Obtenga la solución completa del ejemplo de la figura 11.4, con <span class="math inline">\(x(0)=\dot x(0)=0\)</span>. Verifique los dos datos y señale una cota explícita para el error que se cometería al utilizar sólo la respuesta estacionaria.</p>
+</section>
+<section id="ejercicio-11-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-13">13. Tres frecuencias de un mismo aparato</h3>
+<p>Un aparato tiene <span class="math inline">\(m=1\,\mathrm{kg}\)</span>, <span class="math inline">\(k=10\,\mathrm{N/m}\)</span> y <span class="math inline">\(b=2\,\mathrm{kg/s}\)</span>. Calcule <span class="math inline">\(\omega_0\)</span>, <span class="math inline">\(\omega_d\)</span> y <span class="math inline">\(\Omega_r\)</span>. Determine en cuál de ellas se maximiza la potencia media cuando <span class="math inline">\(F_0\)</span> se mantiene fijo.</p>
+</section>
+<section id="ejercicio-11-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-14">14. Oscilar sin pico de desplazamiento</h3>
+<p>Construya un ejemplo con <span class="math inline">\(m=k=1\)</span> en unidades SI que sea subamortiguado y, sin embargo, carezca de resonancia de desplazamiento a frecuencia positiva. Demuestre las dos afirmaciones y decida si conserva una resonancia de potencia.</p>
+</section>
+<section id="ejercicio-11-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-15">15. Dimensionar un actuador</h3>
+<p>Se desea sostener una amplitud de <span class="math inline">\(0{,}020\,\mathrm m\)</span> en un sistema con <span class="math inline">\(m=2\,\mathrm{kg}\)</span>, <span class="math inline">\(k=18\,\mathrm{N/m}\)</span> y <span class="math inline">\(b=3\,\mathrm{kg/s}\)</span>, excitado a <span class="math inline">\(\Omega=3\,\mathrm{s^{-1}}\)</span>. Determine la amplitud de fuerza, su fase respecto de la velocidad y la potencia media que debe suministrar.</p>
+</section>
+<section id="ejercicio-11-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-16">16. Una fuerza que recibe energía durante parte del ciclo</h3>
+<p>Para una respuesta con <span class="math inline">\(\delta=\pi/4\)</span>, determine el signo de la potencia aplicada en los instantes de fase <span class="math inline">\(\theta=\Omega t=0\)</span> y <span class="math inline">\(\theta=3\pi/8\)</span>. Compare ese signo con el de la potencia media. No confunda potencia aplicada con potencia disipada.</p>
+</section>
+<section id="ejercicio-11-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-17">17. Ancho de media potencia y calidad</h3>
+<p>Un sistema tiene <span class="math inline">\(m=1\,\mathrm{kg}\)</span>, <span class="math inline">\(k=16\,\mathrm{N/m}\)</span> y <span class="math inline">\(b=2\,\mathrm{kg/s}\)</span>. Calcule <span class="math inline">\(Q\)</span>, los dos puntos de media potencia y su separación. ¿Están situados exactamente a igual distancia de <span class="math inline">\(\omega_0\)</span>?</p>
+</section>
+<section id="ejercicio-11-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-18">18. Reconstruir el amortiguamiento mediante una fase</h3>
+<p>Se conocen <span class="math inline">\(m=1\,\mathrm{kg}\)</span> y <span class="math inline">\(k=9\,\mathrm{N/m}\)</span>. A <span class="math inline">\(\Omega=2\,\mathrm{s^{-1}}\)</span> se mide un retraso estacionario <span class="math inline">\(\delta=\pi/4\)</span>. Deduzca <span class="math inline">\(b\)</span>. Explique por qué medir sólo <span class="math inline">\(\delta=\pi/2\)</span> a <span class="math inline">\(\Omega=\omega_0\)</span> no permitiría identificarlo.</p>
+</section>
+<section id="ejercicio-11-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-19">19. Resonancia ideal durante un tiempo finito</h3>
+<p>Un carro ideal sin disipación tiene <span class="math inline">\(m=1\,\mathrm{kg}\)</span>, <span class="math inline">\(k=4\,\mathrm{N/m}\)</span> y datos iniciales nulos. Se conecta <span class="math inline">\(F(t)=(0{,}20\,\mathrm N)\cos(2t/\mathrm s)\)</span>. Calcule <span class="math inline">\(x(t)\)</span> y <span class="math inline">\(E(t)\)</span> en <span class="math inline">\(t=\pi\,\mathrm s\)</span>. Si la ley del resorte exige <span class="math inline">\(|x|&lt;0{,}20\,\mathrm m\)</span>, dé un intervalo temporal que garantice esa condición y explique qué no puede inferirse fuera de él.</p>
+</section>
+<section id="ejercicio-11-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-11-20">20. Un dato que no confirma su propio ajuste</h3>
+<p>En un primer ensayo libre, tres máximos positivos consecutivos separados por iguales intervalos valen <span class="math inline">\(50\)</span>, <span class="math inline">\(40\)</span> y <span class="math inline">\(30\,\mathrm{mm}\)</span>. En un segundo ensayo del mismo aparato valen <span class="math inline">\(30\)</span>, <span class="math inline">\(20\)</span> y <span class="math inline">\(10\,\mathrm{mm}\)</span>. Cada pico queda acotado por un intervalo determinista de semiancho <span class="math inline">\(0{,}2\,\mathrm{mm}\)</span> alrededor del valor indicado. Suponga parámetros físicos constantes. Examine el modelo viscoso ajustándolo con los dos primeros picos del primer ensayo; compare con las otras observaciones y proponga un modelo rival que merezca investigarse.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-11-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-1">1. Dos fuerzas que cambian de signo por razones distintas</h3>
+<p>El resorte ejerce <span class="math inline">\(-kx=-0{,}90\,\mathrm N\)</span>, hacia la izquierda. El amortiguador ejerce <span class="math inline">\(-b\dot x=+0{,}80\,\mathrm N\)</span>, hacia la derecha, porque el carro se mueve hacia la izquierda. La fuerza neta es <span class="math inline">\(-0{,}10\,\mathrm N\)</span> y la aceleración es <span class="math inline">\(-0{,}050\,\mathrm{m/s^2}\)</span>. Velocidad y aceleración tienen el mismo signo; por tanto la rapidez está aumentando en ese instante.</p>
+<p>La potencia que recibe el amortiguador es <span class="math inline">\(b\dot x^2=0{,}16\,\mathrm W\)</span>, positiva. La potencia de su fuerza sobre el carro es su negativo. No hay contradicción con el aumento de rapidez: la energía potencial elástica disminuye y puede alimentar simultáneamente energía cinética y disipación. El signo de la aceleración se obtiene sumando fuerzas, mientras que el signo de la pérdida mecánica depende del producto fuerza–velocidad.</p>
+</section>
+<section id="solucion-11-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-2">2. Clasificar antes de calcular</h3>
+<p>La frecuencia natural es <span class="math inline">\(\omega_0=3\,\mathrm{s^{-1}}\)</span> y el umbral crítico es <span class="math inline">\(b_c=2\sqrt{mk}=6\,\mathrm{kg/s}\)</span>. Con <span class="math inline">\(b=2\)</span>, <span class="math inline">\(\gamma=1\,\mathrm{s^{-1}}&lt;\omega_0\)</span> y <span class="math inline">\(\omega_d=\sqrt8\,\mathrm{s^{-1}}\)</span>. Con <span class="math inline">\(b=6\)</span>, la raíz es doble y las soluciones son <span class="math inline">\(e^{-3u}(C+D u)\)</span>, con <span class="math inline">\(u=t/(1\,\mathrm s)\)</span> y ambos coeficientes expresados en longitud.</p>
+<p>Con <span class="math inline">\(b=10\)</span>, <span class="math inline">\(\gamma=5\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(\lambda=4\,\mathrm{s^{-1}}\)</span>, de modo que <span class="math inline">\(r_+=-1\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(r_-=-9\,\mathrm{s^{-1}}\)</span>. La solución es una combinación de <span class="math inline">\(e^{-u}\)</span> y <span class="math inline">\(e^{-9u}\)</span>. La raíz de <span class="math inline">\(\omega_0^2-\gamma^2\)</span> ya no define una frecuencia angular real; reemplazarla formalmente por una raíz imaginaria exige transformar senos y cosenos en funciones hiperbólicas o exponenciales. No describe una oscilación de frecuencia imaginaria observable. La ecuación transformada permite cambiar de régimen sin esa ambigüedad.</p>
+</section>
+<section id="solucion-11-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-3">3. Lanzamiento de un oscilador subamortiguado</h3>
+<p>Aquí <span class="math inline">\(\gamma=1\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(\omega_d=2\,\mathrm{s^{-1}}\)</span>. Como <span class="math inline">\(x_0=0\)</span>, la solución se reduce a</p>
+<p><span class="math display">\[
+x(t)=(0{,}10\,\mathrm m)e^{-u}\sin2u,\qquad
+\dot x(t)=(0{,}10\,\mathrm{m/s})e^{-u}(2\cos2u-\sin2u).
+\]</span></p>
+<p>El primer extremo positivo satisface <span class="math inline">\(\tan2u=2\)</span> en el primer cuadrante: <span class="math inline">\(u_*=\tfrac12\arctan2\approx0{,}5536\)</span>. Su posición es <span class="math inline">\((0{,}10\,\mathrm m)e^{-u_*}(2/\sqrt5)\approx0{,}0514\,\mathrm m\)</span>. En ese extremo la aceleración es <span class="math inline">\(-kx/m&lt;0\)</span>, lo que confirma que es un máximo. El primer retorno a cero sucede cuando <span class="math inline">\(2u=\pi\)</span>, es decir, <span class="math inline">\(t=\pi\,\mathrm s/2\)</span>. El máximo llega antes que la cuarta parte de <span class="math inline">\(T_d\)</span>: derivar la exponencial altera el instante que se obtendría mirando sólo el seno.</p>
+</section>
+<section id="solucion-11-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-4">4. Un tiempo de asentamiento garantizado</h3>
+<p>La combinación <span class="math inline">\(\cos2u+\tfrac12\sin2u\)</span> tiene amplitud <span class="math inline">\(\sqrt5/2\)</span>. Por tanto</p>
+<p><span class="math display">\[
+|x(t)|\leq(0{,}05\sqrt5\,\mathrm m)e^{-u}.
+\]</span></p>
+<p>Para que la cota sea menor que <span class="math inline">\(0{,}001\,\mathrm m\)</span> basta exigir <span class="math inline">\(u&gt;\log(50\sqrt5)\approx4{,}717\)</span>. Así, cualquier tiempo posterior a <span class="math inline">\(4{,}72\,\mathrm s\)</span> queda garantizado por esta estimación. La cota disminuye monótonamente, lo que permite afirmar que el carro permanecerá en la franja.</p>
+<p>El primer ingreso puede suceder mucho antes, cerca del primer cruce por cero, y ser seguido por una salida. No es el tiempo solicitado. La estimación por envolvente es suficiente y puede ser conservadora; hallar el último cruce exacto de la frontera de la franja exigiría resolver una ecuación trascendente y comprobar las excursiones posteriores.</p>
+</section>
+<section id="solucion-11-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-5">5. Reconstruir parámetros desde picos</h3>
+<p>Los picos son del mismo signo, por lo que <span class="math inline">\(T_d=2{,}0\,\mathrm s\)</span> y <span class="math inline">\(\Lambda=\log2\)</span>. Resultan</p>
+<p><span class="math display">\[
+\gamma=\frac{\log2}{2}\,\mathrm{s^{-1}}\approx0{,}3466\,\mathrm{s^{-1}},\qquad
+\omega_d=\pi\,\mathrm{s^{-1}}.
+\]</span></p>
+<p>Con la masa conocida, <span class="math inline">\(b=2m\gamma\approx0{,}3466\,\mathrm{kg/s}\)</span> y</p>
+<p><span class="math display">\[
+k=m(\omega_d^2+\gamma^2)\approx4{,}995\,\mathrm{N/m}.
+\]</span></p>
+<p>La frecuencia natural es aproximadamente <span class="math inline">\(3{,}161\,\mathrm{s^{-1}}\)</span>. El tercer máximo positivo se predice en <span class="math inline">\(10\,\mathrm{mm}\)</span>, otros dos segundos después del segundo. Los primeros dos picos se utilizaron para ajustar; reproducirlos no prueba el modelo. Medir el tercer pico, comparar su tiempo y repetir con otra amplitud sí aporta observaciones no utilizadas en ese ajuste. Las cifras calculadas no representan por sí solas una incertidumbre experimental: haría falta conocer la resolución y los errores de posición, tiempo y masa.</p>
+</section>
+<section id="solucion-11-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-6">6. La energía no sigue exactamente la envolvente</h3>
+<p>Al soltar desde el reposo con <span class="math inline">\(x_0\ne0\)</span> y <span class="math inline">\(b&gt;0\)</span>, el balance exacto da <span class="math inline">\(\dot E(0)=-b v_0^2=0\)</span>. La fórmula propuesta daría <span class="math inline">\(\dot E(0)=-2\gamma E(0)&lt;0\)</span>. Las derivadas iniciales son incompatibles y bastan para refutar la identidad.</p>
+<p>En el caso subamortiguado, tanto <span class="math inline">\(x\)</span> como <span class="math inline">\(\dot x\)</span> se multiplican por <span class="math inline">\(e^{-\gamma T_d}\)</span> al desplazar el tiempo en un ciclo <span class="math inline">\(T_d\)</span>. Como cada término de <span class="math inline">\(E\)</span> es cuadrático, sí se cumple</p>
+<p><span class="math display">\[
+E(t+T_d)=e^{-2\gamma T_d}E(t).
+\]</span></p>
+<p>Para <span class="math inline">\(n\)</span> ciclos, el factor es <span class="math inline">\(e^{-2n\gamma T_d}\)</span>. Esta afirmación compara estados con la misma fase; no reemplaza la evolución continua entre ellos por una exponencial exacta. En particular, la derivada de energía se anula en cada punto de retorno, aunque la pérdida total entre dos retornos sea positiva.</p>
+</section>
+<section id="solucion-11-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-7">7. Liberación crítica</h3>
+<p>Tenemos <span class="math inline">\(\gamma=\omega_0=2\,\mathrm{s^{-1}}\)</span>. Los datos producen</p>
+<p><span class="math display">\[
+x(t)=(0{,}10\,\mathrm m)(1+2u)e^{-2u},\qquad
+\dot x(t)=-(0{,}40\,\mathrm{m/s})u e^{-2u}.
+\]</span></p>
+<p>Para <span class="math inline">\(u\geq0\)</span>, la posición es positiva y su derivada es negativa salvo en el instante inicial. Se aproxima al equilibrio desde la derecha y nunca lo cruza. Para localizar la tolerancia resolvemos <span class="math inline">\((1+2u)e^{-2u}=0{,}01\)</span>. La función del lado izquierdo es estrictamente decreciente para <span class="math inline">\(u&gt;0\)</span>; no hay raíces posteriores que puedan devolver el movimiento fuera de la franja.</p>
+<p>En <span class="math inline">\(u=3{,}3\)</span> el producto vale aproximadamente <span class="math inline">\(0{,}01034\)</span> y en <span class="math inline">\(u=3{,}4\)</span> vale <span class="math inline">\(0{,}00869\)</span>. Una interpolación o bisección afina el cruce a <span class="math inline">\(u\approx3{,}319\)</span>. Por tanto, después de unos <span class="math inline">\(3{,}32\,\mathrm s\)</span> queda por debajo del milímetro. El equilibrio exacto sólo se alcanza en el límite temporal.</p>
+</section>
+<section id="solucion-11-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-8">8. Un cruce en el régimen crítico</h3>
+<p>El coeficiente lineal es <span class="math inline">\(v_0+\omega_0x_0=-0{,}30\,\mathrm{m/s}\)</span>. Por eso</p>
+<p><span class="math display">\[
+x(t)=(0{,}10\,\mathrm m-0{,}30\,\mathrm{m/s}\,t)e^{-2t/\mathrm s}.
+\]</span></p>
+<p>La exponencial es positiva y el cambio de signo ocurre cuando el paréntesis se anula: <span class="math inline">\(t=(1/3)\,\mathrm s\)</span>. La velocidad allí es <span class="math inline">\(-(0{,}30\,\mathrm{m/s})e^{-2/3}\ne0\)</span>, de modo que existe un cruce real. Después la posición permanece negativa y tiende a cero.</p>
+<p>El amortiguamiento crítico caracteriza las raíces de la ecuación y la ausencia de una secuencia oscilatoria, no prohíbe cualquier cruce para cualquier preparación. La afirmación de retorno sin sobrepasar el equilibrio que usamos en la liberación crítica exigía <span class="math inline">\(v_0=0\)</span> y <span class="math inline">\(x_0&gt;0\)</span>. El nuevo dato inicial queda fuera de esa afirmación y proporciona un contraejemplo a su generalización indiscriminada.</p>
+</section>
+<section id="solucion-11-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-9">9. La resistencia que retrasa el regreso</h3>
+<p>Ahora <span class="math inline">\(\gamma=2\,\mathrm{s^{-1}}\)</span>, <span class="math inline">\(\omega_0=\sqrt3\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(\lambda=1\,\mathrm{s^{-1}}\)</span>. Las raíces son <span class="math inline">\(-1\)</span> y <span class="math inline">\(-3\,\mathrm{s^{-1}}\)</span>. Resolver <span class="math inline">\(C+D=0{,}10\,\mathrm m\)</span> y <span class="math inline">\(-C-3D=0\)</span> da <span class="math inline">\(C=0{,}15\,\mathrm m\)</span>, <span class="math inline">\(D=-0{,}05\,\mathrm m\)</span>. Así,</p>
+<p><span class="math display">\[
+x(t)=(0{,}15\,\mathrm m)e^{-u}-(0{,}05\,\mathrm m)e^{-3u}.
+\]</span></p>
+<p>El segundo término desaparece más deprisa y el final del retorno está gobernado por <span class="math inline">\(e^{-u}\)</span>, cuya escala temporal es un segundo. La aproximación <span class="math inline">\(-k/b\)</span> predice <span class="math inline">\(-0{,}75\,\mathrm{s^{-1}}\)</span>, frente al valor exacto <span class="math inline">\(-1\,\mathrm{s^{-1}}\)</span>: un error relativo del <span class="math inline">\(25\%\)</span> respecto de la tasa exacta. Aquí <span class="math inline">\(\omega_0/\gamma\approx0{,}866\)</span> no es pequeño; la condición de sobreamortiguamiento se cumple, pero la condición mucho más exigente de fuerte sobreamortiguamiento no. Una clasificación cualitativa no autoriza automáticamente una aproximación asintótica.</p>
+</section>
+<section id="solucion-11-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-10">10. Una cota sin resolver la ecuación</h3>
+<p>La energía inicial es</p>
+<p><span class="math display">\[
+E(0)=\tfrac12(2)(0{,}30)^2+\tfrac12(8)(0{,}10)^2
+=0{,}13\,\mathrm J.
+\]</span></p>
+<p>Al no existir fuerza aplicada, el balance impone <span class="math inline">\(E(t)\leq0{,}13\,\mathrm J\)</span>. Cada término positivo de la energía es menor o igual que esa cantidad. Se sigue que</p>
+<p><span class="math display">\[
+|x(t)|\leq\sqrt{\frac{2(0{,}13\,\mathrm J)}{8\,\mathrm{N/m}}}
+\approx0{,}1803\,\mathrm m,
+\quad
+|\dot x(t)|\leq\sqrt{\frac{2(0{,}13\,\mathrm J)}{2\,\mathrm{kg}}}
+\approx0{,}3606\,\mathrm{m/s}.
+\]</span></p>
+<p>Ambas cotas son estrictamente menores que los límites declarados. No necesitamos conocer <span class="math inline">\(b\)</span> para esta conclusión, sólo su signo no negativo. Las dos cotas no afirman que posición y rapidez alcancen simultáneamente esos valores: provienen de asignar por separado toda la energía disponible a cada término. Una cota suficiente puede ser útil aun cuando no sea alcanzable.</p>
+</section>
+<section id="solucion-11-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-11">11. Resolver también el cuadrante</h3>
+<p>Tenemos <span class="math inline">\(k-m\Omega^2=-5\,\mathrm{N/m}\)</span>, <span class="math inline">\(b\Omega=6\,\mathrm{N/m}\)</span> y <span class="math inline">\(D=61\,\mathrm{(N/m)^2}\)</span>. Por tanto</p>
+<p><span class="math display">\[
+x_s(t)=-(5/61\,\mathrm m)\cos(3u)
++(6/61\,\mathrm m)\sin(3u).
+\]</span></p>
+<p>Su amplitud es <span class="math inline">\(A=(1/\sqrt{61})\,\mathrm m\approx0{,}1280\,\mathrm m\)</span>. La fase cumple <span class="math inline">\(\cos\delta=-5/\sqrt{61}\)</span> y <span class="math inline">\(\sin\delta=6/\sqrt{61}\)</span>; está en el segundo cuadrante y vale <span class="math inline">\(\pi-\arctan(6/5)\approx2{,}266\,\mathrm{rad}\)</span>. La respuesta se retrasa más de un cuarto de ciclo respecto de la fuerza. Tomar el valor principal de <span class="math inline">\(\arctan(-6/5)\)</span> daría un ángulo negativo y no reproduciría los signos de ambos coeficientes con amplitud positiva. La comprobación por seno y coseno evita ese error.</p>
+</section>
+<section id="solucion-11-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-12">12. Conectar desde el reposo</h3>
+<p>Escribamos <span class="math inline">\(u=t/(1\,\mathrm s)\)</span>. La respuesta estacionaria es <span class="math inline">\(x_s=[\cos2u+4\sin2u](1/34\,\mathrm m)\)</span>. Para anular sus datos iniciales, el transitorio subamortiguado debe tener <span class="math inline">\(h(0)=-1/34\,\mathrm m\)</span> y <span class="math inline">\(\dot h(0)=-4/17\,\mathrm{m/s}\)</span>. Su coeficiente del seno resulta <span class="math inline">\(-9/68\,\mathrm m\)</span>. La solución completa es</p>
+<p><span class="math display">\[
+\begin{aligned}
+x(t)={}&amp;(1/34\,\mathrm m)\cos2u+(2/17\,\mathrm m)\sin2u\\
+&amp;-e^{-u}\left[(1/34\,\mathrm m)\cos2u
++(9/68\,\mathrm m)\sin2u\right].
+\end{aligned}
+\]</span></p>
+<p>En cero, las posiciones se cancelan. Derivar el transitorio da <span class="math inline">\(\dot h(0)=-(4/17)\,\mathrm{m/s}\)</span>, que cancela la velocidad estacionaria. Ambas partes satisfacen sus ecuaciones, por lo que la suma es la solución pedida.</p>
+<p>El error de posición por omitir <span class="math inline">\(h\)</span> está acotado por <span class="math inline">\((\sqrt{85}/68\,\mathrm m)e^{-u}\approx(0{,}1356\,\mathrm m)e^{-u}\)</span>. Después de <span class="math inline">\(4{,}91\,\mathrm s\)</span> queda por debajo de un milímetro. Para comprobar el régimen durante la conexión, acotaremos también la suma completa.</p>
+<p>Pongamos <span class="math inline">\(r=e^{-u}\)</span>, con <span class="math inline">\(0&lt;r\leq1\)</span>. Reunir los coeficientes de seno y coseno antes de tomar módulos conserva la compensación entre la respuesta estacionaria y el transitorio:</p>
+<p><span class="math display">\[
+\begin{aligned}
+x(t)&amp;=\frac{\mathrm m}{68}\big[2(1-r)\cos2u+(8-9r)\sin2u\big],\\
+\dot x(t)&amp;=\frac{\mathrm{m/s}}{68}\big[16(1-r)\cos2u+(13r-4)\sin2u\big].
+\end{aligned}
+\]</span></p>
+<p>Para cualesquiera coeficientes <span class="math inline">\(a,c\)</span>, la desigualdad de Cauchy–Schwarz da <span class="math inline">\(|a\cos2u+c\sin2u|\leq\sqrt{a^2+c^2}\)</span>. Los cuadrados de las cotas que aparecen aquí son polinomios convexos de <span class="math inline">\(r\)</span>. En <span class="math inline">\(0\leq r\leq1\)</span>, cada valor de un polinomio convexo queda por debajo o al nivel del mayor de sus valores extremos. En este caso basta comprobarlo para un polinomio cuadrático <span class="math inline">\(p(r)=ar^2+cr+d\)</span>, con <span class="math inline">\(a&gt;0\)</span>: la diferencia entre <span class="math inline">\((1-r)p(0)+rp(1)\)</span> y <span class="math inline">\(p(r)\)</span> es <span class="math inline">\(ar(1-r)\geq0\)</span>. Para la posición, esos valores son <span class="math inline">\(68\)</span> y <span class="math inline">\(1\)</span>; para la velocidad, <span class="math inline">\(272\)</span> y <span class="math inline">\(81\)</span>. En consecuencia,</p>
+<p><span class="math display">\[
+|x(t)|\leq\frac{1}{\sqrt{68}}\,\mathrm m&lt;0{,}122\,\mathrm m,
+\qquad
+|\dot x(t)|\leq\frac{1}{\sqrt{17}}\,\mathrm{m/s}&lt;0{,}243\,\mathrm{m/s}.
+\]</span></p>
+<p>Las cotas mantienen la posición por debajo de <span class="math inline">\(0{,}15\,\mathrm m\)</span> y la rapidez por debajo de <span class="math inline">\(0{,}50\,\mathrm{m/s}\)</span> durante toda la conexión y la evolución posterior. Por tanto, el movimiento completo permanece dentro del régimen declarado para el resorte y el amortiguador. Acotar por separado ambas partes habría perdido una cancelación útil; reunir primero sus coeficientes permitió cerrar la comprobación.</p>
+</section>
+<section id="solucion-11-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-13">13. Tres frecuencias de un mismo aparato</h3>
+<p>Se obtiene <span class="math inline">\(\gamma=1\,\mathrm{s^{-1}}\)</span>, <span class="math inline">\(\omega_0=\sqrt{10}\,\mathrm{s^{-1}}\approx3{,}162\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(\omega_d=3\,\mathrm{s^{-1}}\)</span>. La condición para un pico de desplazamiento es <span class="math inline">\(\omega_0^2&gt;2\gamma^2\)</span> y aquí se cumple. Su frecuencia es <span class="math inline">\(\Omega_r=\sqrt8\,\mathrm{s^{-1}}\approx2{,}828\,\mathrm{s^{-1}}\)</span>.</p>
+<p>Al variar la frecuencia de una fuerza de amplitud fija, el desplazamiento es máximo en <span class="math inline">\(\Omega_r\)</span>. La potencia media y la amplitud de velocidad lo son en <span class="math inline">\(\omega_0\)</span>. La frecuencia <span class="math inline">\(\omega_d\)</span> se mide en el movimiento libre, por ejemplo mediante el intervalo entre dos máximos positivos después de apagar el actuador. Son tres experimentos o criterios diferentes sobre el mismo aparato. La diferencia entre <span class="math inline">\(\omega_d\)</span> y <span class="math inline">\(\Omega_r\)</span> no es una corrección de unidades: ambas son frecuencias angulares reales y corresponden a preguntas físicas distintas.</p>
+</section>
+<section id="solucion-11-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-14">14. Oscilar sin pico de desplazamiento</h3>
+<p>Elijamos <span class="math inline">\(b=1{,}6\,\mathrm{kg/s}\)</span>. Entonces <span class="math inline">\(\omega_0=1\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(\gamma=0{,}8\,\mathrm{s^{-1}}\)</span>. Como <span class="math inline">\(\gamma&lt;\omega_0\)</span>, la respuesta libre no trivial es subamortiguada, con <span class="math inline">\(\omega_d=0{,}6\,\mathrm{s^{-1}}\)</span>. Sin embargo, <span class="math inline">\(\omega_0^2-2\gamma^2=-0{,}28\,\mathrm{s^{-2}}&lt;0\)</span>.</p>
+<p>La amplitud estacionaria disminuye para toda frecuencia positiva y alcanza su máximo estático en cero. No existe <span class="math inline">\(\Omega_r\)</span> real y positivo. La potencia media sí tiene su máximo en <span class="math inline">\(\Omega=1\,\mathrm{s^{-1}}\)</span>, porque el denominador de <span class="math inline">\(\Omega^2A^2\)</span> se minimiza allí para cualquier <span class="math inline">\(b&gt;0\)</span>. En cero la potencia media tiende a cero: una deformación estática no exige movimiento viscoso sostenido. El ejemplo separa la existencia de oscilaciones libres, de un pico de desplazamiento y de un pico de potencia.</p>
+</section>
+<section id="solucion-11-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-15">15. Dimensionar un actuador</h3>
+<p>La frecuencia aplicada coincide con <span class="math inline">\(\omega_0=\sqrt{k/m}=3\,\mathrm{s^{-1}}\)</span>. Por eso <span class="math inline">\(k-m\Omega^2=0\)</span> y <span class="math inline">\(A=F_0/(b\Omega)\)</span>. Para la amplitud pedida necesitamos <span class="math inline">\(F_0=b\Omega A=0{,}18\,\mathrm N\)</span>.</p>
+<p>El retraso del desplazamiento es <span class="math inline">\(\delta=\pi/2\)</span>, de modo que <span class="math inline">\(x_s=A\sin(\Omega t)\)</span> y <span class="math inline">\(\dot x_s=\Omega A\cos(\Omega t)\)</span>. La velocidad está en fase con la fuerza y tiene amplitud <span class="math inline">\(0{,}060\,\mathrm{m/s}\)</span>. La potencia media es</p>
+<p><span class="math display">\[
+\langle P\rangle=\tfrac12b(\Omega A)^2
+=0{,}0054\,\mathrm W.
+\]</span></p>
+<p>La potencia máxima instantánea es el doble de ese promedio. Estos valores sostienen el régimen estacionario; no especifican la fuerza o energía adicional que podría requerir otra preparación del movimiento, ni las pérdidas internas del propio actuador. La comprobación dimensional <span class="math inline">\(b\Omega A\sim(\mathrm{kg/s})(\mathrm{s^{-1}})\mathrm m=\mathrm N\)</span> confirma que la amplitud de fuerza se calculó con unidades coherentes.</p>
+</section>
+<section id="solucion-11-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-16">16. Una fuerza que recibe energía durante parte del ciclo</h3>
+<p>La potencia aplicada es <span class="math inline">\(P=F_0\cos\theta[-\Omega A\sin(\theta-\delta)]\)</span>. Con <span class="math inline">\(\delta=\pi/4\)</span> y <span class="math inline">\(\theta=0\)</span>, ambos factores son positivos y <span class="math inline">\(P=F_0\Omega A/\sqrt2&gt;0\)</span>. En <span class="math inline">\(\theta=3\pi/8\)</span>, la fuerza sigue siendo positiva, pero <span class="math inline">\(\theta-\delta=\pi/8\)</span> y la velocidad es negativa. Por tanto <span class="math inline">\(P&lt;0\)</span>: el carro entrega energía al actuador en ese instante.</p>
+<p>El promedio sigue siendo <span class="math inline">\(F_0\Omega A/(2\sqrt2)&gt;0\)</span>. La potencia disipada, <span class="math inline">\(b\dot x_s^2\)</span>, es no negativa en todo momento y no cambia de signo cuando lo hace <span class="math inline">\(P\)</span>. El balance instantáneo es <span class="math inline">\(\dot E=P-b\dot x_s^2\)</span>; el promedio estacionario exige igualdad de las transferencias acumuladas en un ciclo. El signo medio no permite reemplazar ese balance por una igualdad instantánea entre fuerza aplicada y fuerza viscosa.</p>
+</section>
+<section id="solucion-11-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-17">17. Ancho de media potencia y calidad</h3>
+<p>La frecuencia natural es <span class="math inline">\(4\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(Q=m\omega_0/b=2\)</span>. La fórmula exacta proporciona</p>
+<p><span class="math display">\[
+\Omega_-=(\sqrt{17}-1)\,\mathrm{s^{-1}}\approx3{,}123\,\mathrm{s^{-1}},\qquad
+\Omega_+=(\sqrt{17}+1)\,\mathrm{s^{-1}}\approx5{,}123\,\mathrm{s^{-1}}.
+\]</span></p>
+<p>La separación es <span class="math inline">\(2\,\mathrm{s^{-1}}=b/m\)</span>. El cociente de <span class="math inline">\(\omega_0\)</span> por esa separación da <span class="math inline">\(Q=2\)</span>. No son simétricos respecto de <span class="math inline">\(4\,\mathrm{s^{-1}}\)</span>: su media aritmética es <span class="math inline">\(\sqrt{17}\,\mathrm{s^{-1}}\)</span>, mayor que la frecuencia natural. En cambio, el producto es <span class="math inline">\(\Omega_-\Omega_+=\omega_0^2\)</span>, así que su media geométrica coincide con <span class="math inline">\(\omega_0\)</span>. Aproximarlos por <span class="math inline">\(\omega_0\pm b/(2m)\)</span> requiere un pico estrecho, es decir, <span class="math inline">\(b/(m\omega_0)\ll1\)</span>. Aquí esa razón es <span class="math inline">\(1/2\)</span>, y la asimetría exacta no debe ocultarse tras la aproximación.</p>
+</section>
+<section id="solucion-11-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-18">18. Reconstruir el amortiguamiento mediante una fase</h3>
+<p>En la frecuencia medida, <span class="math inline">\(k-m\Omega^2=5\,\mathrm{N/m}&gt;0\)</span>. La fase del primer cuadrante satisface <span class="math inline">\(\tan\delta=b\Omega/(k-m\Omega^2)=1\)</span>, por lo que</p>
+<p><span class="math display">\[
+b=\frac{k-m\Omega^2}{\Omega}=2{,}5\,\mathrm{kg/s}.
+\]</span></p>
+<p>El signo es positivo y coherente con disipación. Este cálculo usa una fase estacionaria; una fase medida durante el transitorio no puede sustituirse sin más en la misma relación. También sería necesario conocer la precisión temporal con que se compara fuerza y desplazamiento para asignar incertidumbre al resultado.</p>
+<p>En <span class="math inline">\(\Omega=\omega_0\)</span>, el coseno de la fase vale cero y el seno es positivo para cualquier <span class="math inline">\(b&gt;0\)</span>: siempre obtenemos <span class="math inline">\(\delta=\pi/2\)</span>. Esa observación localiza la frecuencia natural bajo el modelo, pero no distingue valores de <span class="math inline">\(b\)</span>. Para identificarlo allí se podría medir además la amplitud con <span class="math inline">\(F_0\)</span> conocido y utilizar <span class="math inline">\(b=F_0/(\omega_0 A)\)</span>.</p>
+</section>
+<section id="solucion-11-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-19">19. Resonancia ideal durante un tiempo finito</h3>
+<p>Tenemos <span class="math inline">\(\omega_0=2\,\mathrm{s^{-1}}\)</span>. La solución resonante con datos nulos es <span class="math inline">\(x(t)=(0{,}05\,\mathrm{m/s})t\sin(2t/\mathrm s)\)</span>. En <span class="math inline">\(t=\pi\,\mathrm s\)</span>, la posición es cero y la velocidad vale <span class="math inline">\(0{,}10\pi\,\mathrm{m/s}\)</span>. Toda la energía mecánica en ese instante es cinética:</p>
+<p><span class="math display">\[
+E(\pi\,\mathrm s)=0{,}005\pi^2\,\mathrm J\approx0{,}04935\,\mathrm J.
+\]</span></p>
+<p>La envolvente impone <span class="math inline">\(|x(t)|\leq(0{,}05\,\mathrm{m/s})t\)</span>. Por tanto, <span class="math inline">\(0\leq t&lt;4\,\mathrm s\)</span> garantiza <span class="math inline">\(|x|&lt;0{,}20\,\mathrm m\)</span>. Es un intervalo suficiente. Fuera de él, la cota deja de garantizar la condición; eso no significa que la trayectoria viole el límite en todos esos instantes. Para extender la descripción hay que comprobar el desplazamiento real y las demás hipótesis. El crecimiento secular tampoco prueba que un resorte real pueda acumular energía ilimitada manteniendo su ley lineal.</p>
+</section>
+<section id="solucion-11-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-11-20">20. Un dato que no confirma su propio ajuste</h3>
+<p>Los dos primeros picos del primer ensayo fijan un factor viscoso de <span class="math inline">\(40/50=0{,}8\)</span> por ciclo. El modelo predice entonces un tercer pico de <span class="math inline">\(32\,\mathrm{mm}\)</span>, frente a los <span class="math inline">\(30\,\mathrm{mm}\)</span> observados. Las cotas declaradas permiten propagar los dos picos usados en el ajuste. Como <span class="math inline">\(p_2^2/p_1\)</span> crece con <span class="math inline">\(p_2&gt;0\)</span> y decrece con <span class="math inline">\(p_1&gt;0\)</span>, la predicción pertenece a</p>
+<p><span class="math display">\[
+\left[\frac{(39{,}8)^2}{50{,}2};\frac{(40{,}2)^2}{49{,}8}\right]\,\mathrm{mm}
+\subset[31{,}55;32{,}46]\,\mathrm{mm}.
+\]</span></p>
+<p>La envolvente decimal se redondeó hacia fuera y queda separada del intervalo observado <span class="math inline">\([29{,}8;30{,}2]\,\mathrm{mm}\)</span>. La incompatibilidad se sostiene con todas las combinaciones permitidas por esas cotas. La resolución instrumental, por sí sola, requeriría un análisis adicional para convertirse en una cota del error total de cada lectura.</p>
+<p>Con parámetros constantes e iguales intervalos entre picos, el segundo ensayo tendría que conservar el mismo cociente. Partiendo de <span class="math inline">\(30\,\mathrm{mm}\)</span>, predeciría <span class="math inline">\(24\)</span> y <span class="math inline">\(19{,}2\,\mathrm{mm}\)</span>, tampoco compatibles con <span class="math inline">\(20\)</span> y <span class="math inline">\(10\,\mathrm{mm}\)</span>. Las observaciones muestran, en cambio, una disminución de <span class="math inline">\(10\,\mathrm{mm}\)</span> por ciclo. El rozamiento seco aproximadamente constante merece investigarse.</p>
+<p>Para precisar esa alternativa, supongamos una fuerza de rozamiento de magnitud constante <span class="math inline">\(f\)</span> durante un recorrido desde un extremo <span class="math inline">\(+A\)</span> hasta el siguiente extremo <span class="math inline">\(-B\)</span>, con <span class="math inline">\(A,B&gt;0\)</span>. Si el carro desliza todo ese tramo, el balance de energía da <span class="math inline">\(k(A^2-B^2)/2=f(A+B)\)</span>. Dividir por <span class="math inline">\(A+B&gt;0\)</span> deja <span class="math inline">\(A-B=2f/k\)</span>; otro medio ciclo reduce la excursión en la misma cantidad. La disminución de <span class="math inline">\(10\,\mathrm{mm}\)</span> por ciclo correspondería a <span class="math inline">\(f/k=2{,}5\,\mathrm{mm}\)</span> mientras se conserve el deslizamiento. Cuando la fuerza restauradora ya no venza la adherencia, esta continuación por medios ciclos deja de ser válida. El modelo rival no queda probado sólo con estos picos. Habría que observar los últimos retornos, medir la dependencia de la fuerza con la velocidad y revisar cero instrumental, tiempos y estabilidad del aparato antes de escoger la explicación.</p>
+</section>
+</section>
+<section id="lecturas-y-conexiones" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-conexiones">Lecturas y conexiones</h2>
+<p>Las secciones 14.7–14.8 de Sears y Zemansky, <em>Física universitaria</em>, volumen 1, presentan el amortiguamiento, el balance energético y la respuesta forzada. Las secciones 15.6–15.7 de Serway y Jewett, <em>Física para ciencias e ingeniería</em>, volumen 1, ofrecen otro recorrido desde la pérdida de energía hasta una oscilación sostenida. Al cotejar sus descripciones de resonancia, debe precisarse qué magnitud se maximiza y cuándo se está utilizando la aproximación de amortiguamiento pequeño.</p>
+<p>El capítulo 8 de Spivak, <em>Physics for Mathematicians. Mechanics I</em>, permite comparar los regímenes libre y forzado, el papel de las soluciones homogéneas y el uso de exponenciales complejas. Aquí los coeficientes reales permiten obtener amplitud y fase sin exigir esa herramienta como prerrequisito. Las condiciones y las frecuencias de los máximos se han deducido directamente de las fórmulas del modelo.</p>
+<p>El balance de energía retoma los capítulos 7–8; los datos de picos vuelven al problema de medir del capítulo 0, donde una regularidad ajustada no equivale a una predicción independiente.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-10-el-oscilador-armonico.html">← 10. El oscilador armónico</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-12-momento-angular-y-torque.html">12. Momento angular y torque →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main></div><script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script><script>document.addEventListener("DOMContentLoaded",function(){const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');});</script></body></html>

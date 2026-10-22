@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 3 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>Movimiento en el plano – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#dos-coordenadas-para-un-solo-movimiento" id="toc-dos-coordenadas-para-un-solo-movimiento" class="nav-link active" data-scroll-target="#dos-coordenadas-para-un-solo-movimiento">Dos coordenadas para un solo movimiento</a></li>
+  <li><a href="#derivar-un-vector-y-leer-su-dirección" id="toc-derivar-un-vector-y-leer-su-dirección" class="nav-link" data-scroll-target="#derivar-un-vector-y-leer-su-dirección">Derivar un vector y leer su dirección</a></li>
+  <li><a href="#integrar-componentes-sin-separar-los-instantes" id="toc-integrar-componentes-sin-separar-los-instantes" class="nav-link" data-scroll-target="#integrar-componentes-sin-separar-los-instantes">Integrar componentes sin separar los instantes</a></li>
+  <li><a href="#la-parábola-y-el-tramo-que-realmente-se-recorre" id="toc-la-parábola-y-el-tramo-que-realmente-se-recorre" class="nav-link" data-scroll-target="#la-parábola-y-el-tramo-que-realmente-se-recorre">La parábola y el tramo que realmente se recorre</a></li>
+  <li><a href="#alcanzar-un-punto-con-una-rapidez-fijada" id="toc-alcanzar-un-punto-con-una-rapidez-fijada" class="nav-link" data-scroll-target="#alcanzar-un-punto-con-una-rapidez-fijada">Alcanzar un punto con una rapidez fijada</a></li>
+  <li><a href="#cambiar-de-dirección-también-requiere-aceleración" id="toc-cambiar-de-dirección-también-requiere-aceleración" class="nav-link" data-scroll-target="#cambiar-de-dirección-también-requiere-aceleración">Cambiar de dirección también requiere aceleración</a></li>
+  <li><a href="#sumar-velocidades-exige-nombrar-al-observador" id="toc-sumar-velocidades-exige-nombrar-al-observador" class="nav-link" data-scroll-target="#sumar-velocidades-exige-nombrar-al-observador">Sumar velocidades exige nombrar al observador</a></li>
+  <li><a href="#lo-que-una-trayectoria-observada-permite-comprobar" id="toc-lo-que-una-trayectoria-observada-permite-comprobar" class="nav-link" data-scroll-target="#lo-que-una-trayectoria-observada-permite-comprobar">Lo que una trayectoria observada permite comprobar</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-3-1" id="toc-ejercicio-3-1" class="nav-link" data-scroll-target="#ejercicio-3-1">1. Un camino con una esquina</a></li>
+  <li><a href="#ejercicio-3-2" id="toc-ejercicio-3-2" class="nav-link" data-scroll-target="#ejercicio-3-2">2. Leer una posición vectorial</a></li>
+  <li><a href="#ejercicio-3-3" id="toc-ejercicio-3-3" class="nav-link" data-scroll-target="#ejercicio-3-3">3. Cambiar los ejes sin cambiar el movimiento</a></li>
+  <li><a href="#ejercicio-3-4" id="toc-ejercicio-3-4" class="nav-link" data-scroll-target="#ejercicio-3-4">4. Acelerar mientras una componente disminuye</a></li>
+  <li><a href="#ejercicio-3-5" id="toc-ejercicio-3-5" class="nav-link" data-scroll-target="#ejercicio-3-5">5. Reconstruir con una hipótesis explícita</a></li>
+  <li><a href="#ejercicio-3-6" id="toc-ejercicio-3-6" class="nav-link" data-scroll-target="#ejercicio-3-6">6. Salir horizontalmente</a></li>
+  <li><a href="#ejercicio-3-7" id="toc-ejercicio-3-7" class="nav-link" data-scroll-target="#ejercicio-3-7">7. Ajustar el lanzamiento</a></li>
+  <li><a href="#ejercicio-3-8" id="toc-ejercicio-3-8" class="nav-link" data-scroll-target="#ejercicio-3-8">8. Un alcance con sus hipótesis</a></li>
+  <li><a href="#ejercicio-3-9" id="toc-ejercicio-3-9" class="nav-link" data-scroll-target="#ejercicio-3-9">9. Llegar a un nivel más bajo</a></li>
+  <li><a href="#ejercicio-3-10" id="toc-ejercicio-3-10" class="nav-link" data-scroll-target="#ejercicio-3-10">10. Una frontera de alcance</a></li>
+  <li><a href="#ejercicio-3-11" id="toc-ejercicio-3-11" class="nav-link" data-scroll-target="#ejercicio-3-11">11. El objetivo no es la única restricción</a></li>
+  <li><a href="#ejercicio-3-12" id="toc-ejercicio-3-12" class="nav-link" data-scroll-target="#ejercicio-3-12">12. Encontrar un suelo inclinado</a></li>
+  <li><a href="#ejercicio-3-13" id="toc-ejercicio-3-13" class="nav-link" data-scroll-target="#ejercicio-3-13">13. Un encuentro que el suelo impide</a></li>
+  <li><a href="#ejercicio-3-14" id="toc-ejercicio-3-14" class="nav-link" data-scroll-target="#ejercicio-3-14">14. Una vuelta con rapidez constante</a></li>
+  <li><a href="#ejercicio-3-15" id="toc-ejercicio-3-15" class="nav-link" data-scroll-target="#ejercicio-3-15">15. Empezar a girar desde el reposo</a></li>
+  <li><a href="#ejercicio-3-16" id="toc-ejercicio-3-16" class="nav-link" data-scroll-target="#ejercicio-3-16">16. Girar en el sentido contrario</a></li>
+  <li><a href="#ejercicio-3-17" id="toc-ejercicio-3-17" class="nav-link" data-scroll-target="#ejercicio-3-17">17. Una corriente demasiado rápida</a></li>
+  <li><a href="#ejercicio-3-18" id="toc-ejercicio-3-18" class="nav-link" data-scroll-target="#ejercicio-3-18">18. Dos máximos de altura para dos observadores</a></li>
+  <li><a href="#ejercicio-3-19" id="toc-ejercicio-3-19" class="nav-link" data-scroll-target="#ejercicio-3-19">19. Garantizar el paso con datos acotados</a></li>
+  <li><a href="#ejercicio-3-20" id="toc-ejercicio-3-20" class="nav-link" data-scroll-target="#ejercicio-3-20">20. Un teorema escalar que no se traslada entero</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#solucion-3-1" id="toc-solucion-3-1" class="nav-link" data-scroll-target="#solucion-3-1">1. Un camino con una esquina</a></li>
+  <li><a href="#solucion-3-2" id="toc-solucion-3-2" class="nav-link" data-scroll-target="#solucion-3-2">2. Leer una posición vectorial</a></li>
+  <li><a href="#solucion-3-3" id="toc-solucion-3-3" class="nav-link" data-scroll-target="#solucion-3-3">3. Cambiar los ejes sin cambiar el movimiento</a></li>
+  <li><a href="#solucion-3-4" id="toc-solucion-3-4" class="nav-link" data-scroll-target="#solucion-3-4">4. Acelerar mientras una componente disminuye</a></li>
+  <li><a href="#solucion-3-5" id="toc-solucion-3-5" class="nav-link" data-scroll-target="#solucion-3-5">5. Reconstruir con una hipótesis explícita</a></li>
+  <li><a href="#solucion-3-6" id="toc-solucion-3-6" class="nav-link" data-scroll-target="#solucion-3-6">6. Salir horizontalmente</a></li>
+  <li><a href="#solucion-3-7" id="toc-solucion-3-7" class="nav-link" data-scroll-target="#solucion-3-7">7. Ajustar el lanzamiento</a></li>
+  <li><a href="#solucion-3-8" id="toc-solucion-3-8" class="nav-link" data-scroll-target="#solucion-3-8">8. Un alcance con sus hipótesis</a></li>
+  <li><a href="#solucion-3-9" id="toc-solucion-3-9" class="nav-link" data-scroll-target="#solucion-3-9">9. Llegar a un nivel más bajo</a></li>
+  <li><a href="#solucion-3-10" id="toc-solucion-3-10" class="nav-link" data-scroll-target="#solucion-3-10">10. Una frontera de alcance</a></li>
+  <li><a href="#solucion-3-11" id="toc-solucion-3-11" class="nav-link" data-scroll-target="#solucion-3-11">11. El objetivo no es la única restricción</a></li>
+  <li><a href="#solucion-3-12" id="toc-solucion-3-12" class="nav-link" data-scroll-target="#solucion-3-12">12. Encontrar un suelo inclinado</a></li>
+  <li><a href="#solucion-3-13" id="toc-solucion-3-13" class="nav-link" data-scroll-target="#solucion-3-13">13. Un encuentro que el suelo impide</a></li>
+  <li><a href="#solucion-3-14" id="toc-solucion-3-14" class="nav-link" data-scroll-target="#solucion-3-14">14. Una vuelta con rapidez constante</a></li>
+  <li><a href="#solucion-3-15" id="toc-solucion-3-15" class="nav-link" data-scroll-target="#solucion-3-15">15. Empezar a girar desde el reposo</a></li>
+  <li><a href="#solucion-3-16" id="toc-solucion-3-16" class="nav-link" data-scroll-target="#solucion-3-16">16. Girar en el sentido contrario</a></li>
+  <li><a href="#solucion-3-17" id="toc-solucion-3-17" class="nav-link" data-scroll-target="#solucion-3-17">17. Una corriente demasiado rápida</a></li>
+  <li><a href="#solucion-3-18" id="toc-solucion-3-18" class="nav-link" data-scroll-target="#solucion-3-18">18. Dos máximos de altura para dos observadores</a></li>
+  <li><a href="#solucion-3-19" id="toc-solucion-3-19" class="nav-link" data-scroll-target="#solucion-3-19">19. Garantizar el paso con datos acotados</a></li>
+  <li><a href="#solucion-3-20" id="toc-solucion-3-20" class="nav-link" data-scroll-target="#solucion-3-20">20. Un teorema escalar que no se traslada entero</a></li>
+  </ul></li>
+  <li><a href="#lecturas-de-apoyo" id="toc-lecturas-de-apoyo" class="nav-link" data-scroll-target="#lecturas-de-apoyo">Lecturas de apoyo</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Movimiento en el plano</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 3</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 3 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-02-reconstruir-movimientos-en-una-recta.html">← 2. Reconstruir movimientos en una recta</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-04-fuerzas-y-leyes-de-newton.html">4. Fuerzas y leyes de Newton →</a></p>
+<p>Una pelota debe pasar por una abertura cuyo centro está doce metros a la derecha y cuatro metros por encima del punto de lanzamiento. Un dispositivo le comunica una componente horizontal de velocidad de seis metros por segundo. Queremos ajustar la componente vertical para alcanzar la abertura. Apuntar hacia su centro parece razonable, pero la aceleración de la pelota apunta hacia abajo desde que abandona el dispositivo, incluso mientras asciende: habrá que distinguir la dirección inicial del movimiento de la recta que une el lanzamiento con el objetivo.</p>
+<p>Representaremos la pelota por un punto. Supondremos una aceleración vertical constante de módulo <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span> y omitiremos la resistencia del aire. Este valor de <span class="math inline">\(g\)</span> es un dato didáctico del modelo; los resultados numéricos no se presentan como mediciones locales. El lanzamiento define el instante cero y el origen espacial. La coordenada <span class="math inline">\(x\)</span> crece hacia la abertura y la coordenada <span class="math inline">\(y\)</span> hacia arriba. El modelo se aplicará desde la liberación hasta el primer contacto con un obstáculo o con el suelo.</p>
+<section id="dos-coordenadas-para-un-solo-movimiento" class="level2">
+<h2 class="anchored" data-anchor-id="dos-coordenadas-para-un-solo-movimiento">Dos coordenadas para un solo movimiento</h2>
+<p>En la recta, una coordenada bastaba para localizar el móvil. En el plano necesitamos dos. Elegimos vectores unitarios perpendiculares y fijos, <span class="math inline">\(\mathbf e_x\)</span> y <span class="math inline">\(\mathbf e_y\)</span>, y escribimos</p>
+<p><span class="math display">\[
+\mathbf r(t)=x(t)\mathbf e_x+y(t)\mathbf e_y.
+\]</span></p>
+<p><strong>Definición.</strong> Fijados un origen y una base cartesiana ortonormal, el vector <span class="math inline">\(\mathbf r(t)\)</span> que une el origen con la posición de la partícula se llama <em>vector de posición</em>. Su incremento entre <span class="math inline">\(t_1\)</span> y <span class="math inline">\(t_2\)</span> es el <em>desplazamiento</em>,</p>
+<p><span class="math display">\[
+\Delta\mathbf r=\mathbf r(t_2)-\mathbf r(t_1).
+\]</span></p>
+<p>El punto ocupado y el vector que lo representa cumplen funciones diferentes. Si trasladamos el origen, cambia el vector de posición, aunque la pelota siga en el mismo lugar físico. El desplazamiento entre dos posiciones conserva sus componentes bajo una traslación del origen con los ejes paralelos: el mismo término constante se resta en ambos extremos.</p>
+<p>Las componentes de un vector son cantidades con signo. Un desplazamiento de tres metros a la derecha y cuatro hacia arriba tiene componentes <span class="math inline">\((3,4)\,\mathrm m\)</span> y módulo cinco metros. Escribir su módulo no permite recuperar ambas componentes. Tampoco indica qué camino siguió la partícula entre los extremos.</p>
+<figure id="fig-fispm-r20261021-3-1" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/plano_posicion_desplazamiento.svg" class="lightbox" data-gallery="fispm-r20261021-c3"><img src="../../assets/books/fispm/r20261021/plano_posicion_desplazamiento.svg" alt="Un vector de posición y un desplazamiento se construyen desde orígenes distintos. Las proyecciones cartesianas permiten recuperar sus componentes." class="fpm-v04-figure img-fluid figure-img" width="397.001081" height="353.99952" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 3.1.</em> El vector de posición parte del origen elegido; el desplazamiento parte de la posición inicial. Los segmentos auxiliares representan componentes, no etapas del recorrido.</p>
+</figcaption>
+</figure>
+</section>
+<section id="derivar-un-vector-y-leer-su-dirección" class="level2">
+<h2 class="anchored" data-anchor-id="derivar-un-vector-y-leer-su-dirección">Derivar un vector y leer su dirección</h2>
+<p>Las dos coordenadas describen posiciones en un mismo instante. Su evolución comparte el reloj, incluso cuando podemos resolver sus ecuaciones por separado.</p>
+<p><strong>Definición.</strong> La velocidad media en un intervalo de duración positiva es <span class="math inline">\(\Delta\mathbf r/\Delta t\)</span>. Si <span class="math inline">\(\mathbf r\)</span> es diferenciable, la <em>velocidad instantánea</em> es <span class="math inline">\(\mathbf v=\dot{\mathbf r}\)</span>. Si además <span class="math inline">\(\mathbf v\)</span> es diferenciable, la <em>aceleración</em> es <span class="math inline">\(\mathbf a=\dot{\mathbf v}\)</span>. La <em>rapidez</em> es el módulo de la velocidad, <span class="math inline">\(q=\|\mathbf v\|\)</span>.</p>
+<p>Como la base elegida permanece fija,</p>
+<p><span class="math display">\[
+\mathbf v=\dot x\mathbf e_x+\dot y\mathbf e_y,
+\qquad
+\mathbf a=\ddot x\mathbf e_x+\ddot y\mathbf e_y,
+\qquad q=\sqrt{\dot x^{\,2}+\dot y^{\,2}}.
+\]</span></p>
+<p>Un punto sobre una letra denota derivada respecto del tiempo: <span class="math inline">\(\dot x=dx/dt\)</span> y <span class="math inline">\(\ddot x=d^2x/dt^2\)</span>. La norma de un vector con componentes <span class="math inline">\((u_x,u_y)\)</span> en esta base es <span class="math inline">\(\sqrt{u_x^2+u_y^2}\)</span>. Estas igualdades se obtienen derivando cada componente; no hay términos procedentes de los vectores de base. Más adelante aparecerá una base que gira y será necesario derivarla también. Las unidades de <span class="math inline">\(\mathbf r\)</span>, <span class="math inline">\(\mathbf v\)</span> y <span class="math inline">\(\mathbf a\)</span> son, respectivamente, longitud, longitud dividida por tiempo y longitud dividida por tiempo al cuadrado.</p>
+<p>Cuando <span class="math inline">\(\mathbf v(t)\ne\mathbf0\)</span>, su dirección es la tangente orientada por el movimiento. En efecto, la identidad de diferenciabilidad</p>
+<p><span class="math display">\[
+\mathbf r(t+h)-\mathbf r(t)=h\mathbf v(t)+o(h)
+\]</span></p>
+<p>muestra que el desplazamiento para un incremento temporal positivo y pequeño tiene esa dirección en primer orden.</p>
+<p>La notación <span class="math inline">\(o(h)\)</span> representa aquí un vector de error cuyo módulo dividido por <span class="math inline">\(|h|\)</span> tiende a cero. Para <span class="math inline">\(h&gt;0\)</span>, dividir la igualdad por <span class="math inline">\(h\)</span> deja un cociente de desplazamientos que tiende a <span class="math inline">\(\mathbf v(t)\)</span>; cuando ese vector límite es distinto de cero, su dirección fija la de los desplazamientos próximos. Si la velocidad se anula, esta justificación ya no proporciona una dirección; puede existir una tangente geométrica, pero habrá que determinarla por otro argumento.</p>
+<p>Para una posición de clase <span class="math inline">\(C^1\)</span>, la distancia recorrida entre <span class="math inline">\(t_1\)</span> y <span class="math inline">\(t_2\)</span> se expresa como</p>
+<p><span class="math display">\[
+s=\int_{t_1}^{t_2}\|\mathbf v(t)\|\,dt.
+\]</span></p>
+<p>Es la longitud de la curva parametrizada, contando las partes que se recorran más de una vez. La rapidez media es <span class="math inline">\(s/(t_2-t_1)\)</span>. El módulo de la velocidad media puede ser menor: una vuelta completa a un circuito deja desplazamiento cero y distancia positiva. La fórmula integral utiliza el resultado de longitud de arco del cálculo; los ejemplos circulares siguientes permiten comprobar directamente su interpretación sin necesitar aquí su demostración general.</p>
+<p>La trayectoria geométrica tampoco determina por sí sola la velocidad. Con <span class="math inline">\(\theta=t/(1\,\mathrm s)\)</span>, las posiciones</p>
+<p><span class="math display">\[
+\mathbf r_1(t)=(\theta\mathbf e_x+\theta^2\mathbf e_y)\,\mathrm m,
+\qquad
+\mathbf r_2(t)=(\theta^2\mathbf e_x+\theta^4\mathbf e_y)\,\mathrm m,
+\qquad t\geq0,
+\]</span></p>
+<p>recorren la misma semiparábola <span class="math inline">\(y=x^2/(1\,\mathrm m)\)</span> con <span class="math inline">\(x\geq0\)</span>. En el primer movimiento, la velocidad inicial es <span class="math inline">\((1,0)\,\mathrm{m/s}\)</span>; en el segundo es cero. Saber por dónde pasa un cuerpo deja abierta la pregunta de cuándo pasa y cuánto tarda.</p>
+<figure id="fig-fispm-r20261021-3-2" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/plano_trayectoria_reloj.svg" class="lightbox" data-gallery="fispm-r20261021-c3"><img src="../../assets/books/fispm/r20261021/plano_trayectoria_reloj.svg" alt="Dos parametrizaciones recorren la misma parábola. Las marcas correspondientes a iguales incrementos de tiempo ocupan posiciones diferentes." class="fpm-v04-figure img-fluid figure-img" width="569.99952" height="317.032657" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 3.2.</em> La curva común no contiene el reloj. Cada panel usa los instantes <span class="math inline">\(t=0\)</span>, <span class="math inline">\(0,5\,\mathrm s\)</span> y <span class="math inline">\(1\,\mathrm s\)</span> para su propio movimiento.</p>
+</figcaption>
+</figure>
+</section>
+<section id="integrar-componentes-sin-separar-los-instantes" class="level2">
+<h2 class="anchored" data-anchor-id="integrar-componentes-sin-separar-los-instantes">Integrar componentes sin separar los instantes</h2>
+<p>Volvamos al lanzamiento. La hipótesis de aceleración se escribe</p>
+<p><span class="math display">\[
+\mathbf a=-g\mathbf e_y,
+\qquad a_x=0,\quad a_y=-g.
+\]</span></p>
+<p>La componente horizontal de la velocidad permanece constante. Por tanto, la pelota alcanza la vertical de la abertura cuando</p>
+<p><span class="math display">\[
+12\,\mathrm m=(6\,\mathrm{m/s})t,
+\qquad t=2\,\mathrm s.
+\]</span></p>
+<p>Ese mismo tiempo debe satisfacer la condición vertical. Si llamamos <span class="math inline">\(v_{0y}\)</span> a la componente buscada,</p>
+<p><span class="math display">\[
+4\,\mathrm m=v_{0y}(2\,\mathrm s)
+-\frac12(10\,\mathrm{m/s^2})(2\,\mathrm s)^2,
+\]</span></p>
+<p>y obtenemos <span class="math inline">\(v_{0y}=12\,\mathrm{m/s}\)</span>. La velocidad inicial tiene componentes <span class="math inline">\((6,12)\,\mathrm{m/s}\)</span>: su pendiente es dos, mientras que la recta hacia el objetivo tiene pendiente <span class="math inline">\(4/12=1/3\)</span>. La diferencia corresponde a la caída que se acumula durante el vuelo.</p>
+<p>La cuenta utiliza un resultado que vale para cualquier aceleración vectorial constante.</p>
+<p><strong>Proposición.</strong> Sea <span class="math inline">\(\mathbf r\)</span> de clase <span class="math inline">\(C^2\)</span> en un intervalo que contiene <span class="math inline">\(t_0\)</span>, con <span class="math inline">\(\ddot{\mathbf r}=\mathbf a_0\)</span> constante. Si <span class="math inline">\(\mathbf r(t_0)=\mathbf r_0\)</span> y <span class="math inline">\(\dot{\mathbf r}(t_0)=\mathbf v_0\)</span>, entonces</p>
+<p><span class="math display">\[
+\mathbf v(t)=\mathbf v_0+\mathbf a_0(t-t_0),
+\qquad
+\mathbf r(t)=\mathbf r_0+\mathbf v_0(t-t_0)
++\frac12\mathbf a_0(t-t_0)^2.
+\]</span></p>
+<p>Estas expresiones determinan la única posición con esa aceleración y esos datos iniciales.</p>
+<p><em>Demostración.</em> En una base fija, cada componente satisface la ecuación escalar <span class="math inline">\(\ddot r_i=a_{0i}\)</span>. Integrar desde <span class="math inline">\(t_0\)</span> hasta <span class="math inline">\(t\)</span> da <span class="math inline">\(\dot r_i(t)-v_{0i}=a_{0i}(t-t_0)\)</span>; una segunda integración da <span class="math inline">\(r_i(t)-r_{0i}=v_{0i}(t-t_0)+a_{0i}(t-t_0)^2/2\)</span>. Reunir las componentes produce las fórmulas. Para justificar la unicidad, la diferencia de dos soluciones tiene segunda derivada cero y datos de posición y velocidad nulos en <span class="math inline">\(t_0\)</span>. Su primera derivada es constante e igual a cero, y la diferencia de posiciones también es cero. <span class="math inline">\(\square\)</span></p>
+<p>Resolver por componentes es una operación matemática. Que las ecuaciones físicas queden desacopladas depende del modelo: aquí la aceleración horizontal es cero y la vertical es una constante prescrita. Una aceleración que dependiera del módulo de la velocidad podría relacionar ambas componentes. Compartir un reloj tampoco significa independencia estadística de las mediciones.</p>
+</section>
+<section id="la-parábola-y-el-tramo-que-realmente-se-recorre" class="level2">
+<h2 class="anchored" data-anchor-id="la-parábola-y-el-tramo-que-realmente-se-recorre">La parábola y el tramo que realmente se recorre</h2>
+<p>Para el lanzamiento calculado,</p>
+<p><span class="math display">\[
+x(t)=(6\,\mathrm{m/s})t,
+\qquad y(t)=(12\,\mathrm{m/s})t
+-(5\,\mathrm{m/s^2})t^2.
+\]</span></p>
+<p>Como <span class="math inline">\(x\)</span> crece estrictamente, podemos eliminar <span class="math inline">\(t\)</span> y obtener</p>
+<p><span class="math display">\[
+y=2x-\frac{5}{36\,\mathrm m}x^2.
+\]</span></p>
+<p>El coeficiente del término cuadrático tiene unidades de longitud inversa. Suprimirlas dejaría una suma dimensionalmente incoherente cuando <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> representan magnitudes.</p>
+<p>La altura máxima ocurre cuando <span class="math inline">\(v_y=12\,\mathrm{m/s}-gt\)</span> se anula: <span class="math inline">\(t=1,2\,\mathrm s\)</span>, <span class="math inline">\(x=7,2\,\mathrm m\)</span> y <span class="math inline">\(y=7,2\,\mathrm m\)</span>. Allí la velocidad es horizontal, de seis metros por segundo, y la aceleración sigue siendo vertical hacia abajo. La pelota continúa cambiando de dirección mientras atraviesa la cima.</p>
+<p>Al llegar a la abertura, <span class="math inline">\(t=2\,\mathrm s\)</span>, tenemos <span class="math inline">\(\mathbf v=(6,-8)\,\mathrm{m/s}\)</span> y rapidez <span class="math inline">\(10\,\mathrm{m/s}\)</span>. Llega descendiendo. Si no encontrara la abertura ni otro obstáculo, el primer retorno al nivel del lanzamiento sería en <span class="math inline">\(t=2,4\,\mathrm s\)</span>, a <span class="math inline">\(14,4\,\mathrm m\)</span> del origen. La parábola algebraica también contiene puntos correspondientes a tiempos negativos y al movimiento posterior a un eventual choque; esos puntos no quedan autorizados por el dominio físico declarado.</p>
+<figure id="fig-fispm-r20261021-3-3" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/plano_lanzamiento_componentes.svg" class="lightbox" data-gallery="fispm-r20261021-c3"><img src="../../assets/books/fispm/r20261021/plano_lanzamiento_componentes.svg" alt="El lanzamiento se descompone en un avance horizontal uniforme y una evolución vertical cuadrática, sincronizados por las mismas marcas de tiempo." class="fpm-v04-figure img-fluid figure-img" width="538.244467" height="512.39952" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 3.3.</em> En la cima se anula la componente vertical de la velocidad. Las flechas de aceleración mantienen dirección y módulo; se dibujan con una escala distinta de las de velocidad.</p>
+</figcaption>
+</figure>
+</section>
+<section id="alcanzar-un-punto-con-una-rapidez-fijada" class="level2">
+<h2 class="anchored" data-anchor-id="alcanzar-un-punto-con-una-rapidez-fijada">Alcanzar un punto con una rapidez fijada</h2>
+<p>El dispositivo podría imponer la rapidez inicial <span class="math inline">\(u\)</span> y permitir elegir el ángulo <span class="math inline">\(\alpha\)</span> con la horizontal. Para un objetivo situado en <span class="math inline">\((X,Y)\)</span> respecto del lanzamiento, con <span class="math inline">\(X&gt;0\)</span> y <span class="math inline">\(\cos\alpha&gt;0\)</span>,</p>
+<p><span class="math display">\[
+v_{0x}=u\cos\alpha,\qquad v_{0y}=u\sin\alpha,
+\qquad t=\frac{X}{u\cos\alpha}.
+\]</span></p>
+<p>Sustituir este tiempo en la coordenada vertical da</p>
+<p><span class="math display">\[
+Y=X\tan\alpha-\frac{gX^2}{2u^2\cos^2\alpha}.
+\]</span></p>
+<p>Elegir un ángulo que satisfaga esta igualdad impone que ambas coordenadas alcancen el objetivo simultáneamente. Para resolverla escribimos <span class="math inline">\(z=\tan\alpha\)</span> y usamos <span class="math inline">\(1/\cos^2\alpha=1+z^2\)</span>:</p>
+<p><span class="math display">\[
+\frac{gX^2}{2u^2}z^2-Xz+
+\left(Y+\frac{gX^2}{2u^2}\right)=0.
+\]</span></p>
+<p>Su discriminante decide cuántos ángulos reales pueden alcanzar ese punto dentro del modelo de vuelo libre. Después corresponde verificar el tiempo positivo y los obstáculos. La existencia de una raíz real no elimina esas comprobaciones.</p>
+<p>En nuestro ejemplo, la rapidez inicial es <span class="math inline">\(u=6\sqrt5\,\mathrm{m/s}\)</span>. Para <span class="math inline">\(X=12\,\mathrm m\)</span>, <span class="math inline">\(Y=4\,\mathrm m\)</span>, la ecuación se reduce a</p>
+<p><span class="math display">\[
+z^2-3z+2=0.
+\]</span></p>
+<p>Hay dos soluciones: <span class="math inline">\(z=1\)</span> y <span class="math inline">\(z=2\)</span>. La segunda es el lanzamiento ya calculado. La primera corresponde a <span class="math inline">\(45^\circ\)</span>, con componentes iguales a <span class="math inline">\(3\sqrt{10}\,\mathrm{m/s}\)</span> y tiempo de llegada <span class="math inline">\(4/\sqrt{10}\,\mathrm s\)</span>. Las dos historias alcanzan el mismo punto con la misma rapidez inicial, pero duran tiempos diferentes y pasan por alturas distintas. A seis metros del origen, sus alturas son cuatro y siete metros, respectivamente; una pared de cinco metros en esa vertical descarta la primera y permite el paso de la segunda.</p>
+<figure id="fig-fispm-r20261021-3-4" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/plano_dos_lanzamientos.svg" class="lightbox" data-gallery="fispm-r20261021-c3"><img src="../../assets/books/fispm/r20261021/plano_dos_lanzamientos.svg" alt="Dos trayectorias con la misma rapidez inicial alcanzan el objetivo. Una pared intermedia elimina el lanzamiento más bajo." class="fpm-v04-figure img-fluid figure-img" width="526.79952" height="339.59952" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 3.4.</em> La ecuación del objetivo ofrece candidatos; la geometría de los obstáculos decide cuáles permanecen admisibles. Se muestran los tramos anteriores a la vertical del objetivo.</p>
+</figcaption>
+</figure>
+<p>La fórmula habitual del alcance <span class="math inline">\(R=u^2\sin(2\alpha)/g\)</span> se obtiene poniendo <span class="math inline">\(Y=0\)</span>, suponiendo <span class="math inline">\(0&lt;\alpha&lt;\pi/2\)</span> y buscando el retorno posterior al lanzamiento al mismo nivel. Su máximo es <span class="math inline">\(u^2/g\)</span> y se alcanza a <span class="math inline">\(45^\circ\)</span>. Cambiar la altura de llegada o añadir un obstáculo modifica el problema de optimización; conservar el ángulo sin revisar la derivación perdería las hipótesis que lo justifican.</p>
+</section>
+<section id="cambiar-de-dirección-también-requiere-aceleración" class="level2">
+<h2 class="anchored" data-anchor-id="cambiar-de-dirección-también-requiere-aceleración">Cambiar de dirección también requiere aceleración</h2>
+<p>En una base ortonormal, el producto escalar se calcula como <span class="math inline">\(\mathbf u\cdot\mathbf w=u_xw_x+u_yw_y\)</span>. Para vectores no nulos también vale <span class="math inline">\(\|\mathbf u\|\|\mathbf w\|\cos\beta\)</span>, donde <span class="math inline">\(\beta\)</span> es el ángulo entre ellos. Su signo permite distinguir componentes que favorecen o se oponen al movimiento; un producto nulo expresa perpendicularidad cuando ambos vectores son no nulos.</p>
+<p>La cima del proyectil muestra que una aceleración perpendicular a la velocidad puede cambiar su dirección sin alterar instantáneamente su módulo. Podemos precisar la relación.</p>
+<p><strong>Proposición.</strong> Si <span class="math inline">\(\mathbf v\)</span> es de clase <span class="math inline">\(C^1\)</span> y <span class="math inline">\(q=\|\mathbf v\|&gt;0\)</span> en un instante, entonces</p>
+<p><span class="math display">\[
+\dot q=\frac{\mathbf v\cdot\mathbf a}{q}.
+\]</span></p>
+<p>En ese instante, la rapidez tiene derivada cero si y sólo si <span class="math inline">\(\mathbf v\cdot\mathbf a=0\)</span>. Que esto ocurra en un instante no implica rapidez constante en un intervalo.</p>
+<p><em>Demostración.</em> Derivar <span class="math inline">\(q^2=\mathbf v\cdot\mathbf v\)</span> da <span class="math inline">\(2q\dot q=2\mathbf v\cdot\mathbf a\)</span>. La condición <span class="math inline">\(q&gt;0\)</span> permite dividir. <span class="math inline">\(\square\)</span></p>
+<p>En la cima del lanzamiento, el producto escalar vale cero; antes es negativo y después positivo. La rapidez disminuye al subir y aumenta al bajar. Cuando el cuerpo está instantáneamente en reposo, la división anterior no es válida y el comportamiento de <span class="math inline">\(\|\mathbf v\|\)</span> debe analizarse directamente.</p>
+<p>Una trayectoria circular permite mantener esa perpendicularidad durante todo un intervalo. Sea su centro fijo <span class="math inline">\(\mathbf c\)</span>, su radio <span class="math inline">\(R&gt;0\)</span> y un ángulo <span class="math inline">\(\varphi(t)\)</span> de clase <span class="math inline">\(C^2\)</span>, medido en radianes y elegido de manera continua durante el intervalo de estudio. Puede superar una vuelta completa; no lo reducimos al intervalo de ángulos principales. Escribimos</p>
+<p><span class="math display">\[
+\mathbf r=\mathbf c+R\mathbf e_r,
+\qquad
+\mathbf e_r=\cos\varphi\,\mathbf e_x+\sin\varphi\,\mathbf e_y,
+\qquad
+\mathbf e_\varphi=-\sin\varphi\,\mathbf e_x+\cos\varphi\,\mathbf e_y.
+\]</span></p>
+<p>Los dos vectores son unitarios y perpendiculares, pero giran con la posición. Al derivarlos,</p>
+<p><span class="math display">\[
+\dot{\mathbf e}_r=\dot\varphi\mathbf e_\varphi,
+\qquad
+\dot{\mathbf e}_\varphi=-\dot\varphi\mathbf e_r.
+\]</span></p>
+<p><strong>Proposición.</strong> Para un movimiento de clase <span class="math inline">\(C^2\)</span> sobre un círculo de centro y radio fijos,</p>
+<p><span class="math display">\[
+\mathbf v=R\dot\varphi\mathbf e_\varphi,
+\qquad
+\mathbf a=-R\dot\varphi^{\,2}\mathbf e_r
++R\ddot\varphi\mathbf e_\varphi.
+\]</span></p>
+<p><em>Demostración.</em> La primera igualdad se obtiene derivando <span class="math inline">\(\mathbf r=\mathbf c+R\mathbf e_r\)</span> y usando que <span class="math inline">\(R\)</span> y <span class="math inline">\(\mathbf c\)</span> son constantes. Derivar de nuevo produce <span class="math inline">\(R\ddot\varphi\mathbf e_\varphi+R\dot\varphi\dot{\mathbf e}_\varphi\)</span>. Sustituir la derivada de la base da la segunda igualdad. <span class="math inline">\(\square\)</span></p>
+<p>La componente radial es siempre hacia el centro y tiene módulo <span class="math inline">\(R\dot\varphi^2=q^2/R\)</span>. La componente tangencial orientada según <span class="math inline">\(\mathbf e_\varphi\)</span> es <span class="math inline">\(R\ddot\varphi\)</span>. Si <span class="math inline">\(\dot\varphi&lt;0\)</span>, la velocidad apunta en sentido opuesto a ese vector de base; por eso el signo de la componente tangencial, por sí solo, no dice si la rapidez aumenta. La fórmula del producto escalar o la derivada de <span class="math inline">\(q=R|\dot\varphi|\)</span> resuelven esa cuestión.</p>
+<figure id="fig-fispm-r20261021-3-5" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/plano_circulo_aceleracion.svg" class="lightbox" data-gallery="fispm-r20261021-c3"><img src="../../assets/books/fispm/r20261021/plano_circulo_aceleracion.svg" alt="La base radial y tangencial gira sobre un círculo. La aceleración puede tener simultáneamente una parte hacia el centro y otra tangente." class="fpm-v04-figure img-fluid figure-img" width="307.358119" height="584.39952" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 3.5.</em> Las flechas representan direcciones y componentes de aceleración en un punto. La parte radial apunta hacia el centro tanto para un giro horario como para uno antihorario. Los vectores de base y de aceleración utilizan escalas gráficas propias; sus longitudes no se comparan entre paneles.</p>
+</figcaption>
+</figure>
+<p>En el movimiento circular uniforme, <span class="math inline">\(\varphi=\varphi_0+\omega t\)</span> con <span class="math inline">\(\omega\)</span> constante no nula. Entonces <span class="math inline">\(q=R|\omega|\)</span>, el período es <span class="math inline">\(T=2\pi/|\omega|\)</span> y la aceleración es <span class="math inline">\(-R\omega^2\mathbf e_r\)</span>. Por ejemplo, con <span class="math inline">\(R=2\,\mathrm m\)</span> y <span class="math inline">\(\omega=\pi/(2\,\mathrm s)\)</span>, la vuelta dura cuatro segundos, la rapidez es <span class="math inline">\(\pi\,\mathrm{m/s}\)</span> y el módulo de la aceleración es <span class="math inline">\(\pi^2/2\,\mathrm{m/s^2}\)</span>. La aceleración cambia de dirección durante el giro, aunque su módulo permanezca constante.</p>
+<p>Estas son conclusiones cinemáticas. Todavía falta identificar qué interacción mantiene un cuerpo sobre el círculo; llamar centrípeta a la componente radial describe su orientación y no introduce por sí mismo una interacción adicional.</p>
+</section>
+<section id="sumar-velocidades-exige-nombrar-al-observador" class="level2">
+<h2 class="anchored" data-anchor-id="sumar-velocidades-exige-nombrar-al-observador">Sumar velocidades exige nombrar al observador</h2>
+<p>Una embarcación avanza respecto del agua mientras el agua se desplaza respecto de la orilla. Las dos velocidades pertenecen a descripciones distintas. Tomemos ejes paralelos, relojes sincronizados y un marco cuyo origen se mueve con velocidad constante <span class="math inline">\(\mathbf U\)</span> respecto del primero. Si su posición inicial es <span class="math inline">\(\mathbf b\)</span>, las coordenadas se relacionan por</p>
+<p><span class="math display">\[
+\mathbf r'=\mathbf r-\mathbf b-\mathbf U t.
+\]</span></p>
+<p><strong>Proposición.</strong> Bajo esta transformación, con bases cartesianas fijas y paralelas,</p>
+<p><span class="math display">\[
+\mathbf v'=\mathbf v-\mathbf U,
+\qquad \mathbf a'=\mathbf a.
+\]</span></p>
+<p><em>Demostración.</em> Se deriva la relación de posiciones una vez y luego otra. La primera derivada de <span class="math inline">\(\mathbf b\)</span> es cero y la segunda de <span class="math inline">\(\mathbf U t\)</span> también. <span class="math inline">\(\square\)</span></p>
+<p>Esta es la transformación galileana de una traslación uniforme. La fórmula no incluye ejes que giran ni orígenes acelerados. Para dos cuerpos expresados en un mismo marco, la velocidad relativa es además la derivada de su separación: <span class="math inline">\(d(\mathbf r_B-\mathbf r_A)/dt=\mathbf v_B-\mathbf v_A\)</span>. Ambas construcciones permiten comparar movimientos, pero debe quedar claro qué origen, ejes y cuerpos intervienen.</p>
+<p>Supongamos un río recto de veinticuatro metros de ancho, corriente uniforme de <span class="math inline">\(1,5\,\mathrm{m/s}\)</span> y rapidez de la embarcación respecto del agua de <span class="math inline">\(2,5\,\mathrm{m/s}\)</span>. Elegimos <span class="math inline">\(x\)</span> río abajo e <span class="math inline">\(y\)</span> hacia la otra orilla. Si apunta perpendicularmente a las orillas, su velocidad respecto de tierra es <span class="math inline">\((1,5\mathbf e_x+2,5\mathbf e_y)\,\mathrm{m/s}\)</span>: cruza en <span class="math inline">\(9,6\,\mathrm s\)</span> y deriva <span class="math inline">\(14,4\,\mathrm m\)</span>.</p>
+<p>Para llegar justo enfrente, la componente <span class="math inline">\(x\)</span> de la velocidad respecto del agua debe ser <span class="math inline">\(-1,5\,\mathrm{m/s}\)</span>. Su componente transversal positiva es entonces</p>
+<p><span class="math display">\[
+v_{y,\text{barca/agua}}=
+\sqrt{(2,5\,\mathrm{m/s})^2-(1,5\,\mathrm{m/s})^2}
+=2\,\mathrm{m/s}.
+\]</span></p>
+<p>El cruce dura doce segundos. Cancelar la deriva reduce la velocidad transversal disponible. Si la rapidez respecto del agua fuera menor que la corriente, no podría anularse la deriva; si fuera igual, cancelarla consumiría toda la velocidad y no quedaría avance transversal.</p>
+<figure id="fig-fispm-r20261021-3-6" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/plano_rio_velocidades.svg" class="lightbox" data-gallery="fispm-r20261021-c3"><img src="../../assets/books/fispm/r20261021/plano_rio_velocidades.svg" alt="El triángulo de velocidades del cruce distingue la velocidad respecto del agua de la velocidad respecto de la orilla." class="fpm-v04-figure img-fluid figure-img" width="526.79952" height="469.19952" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 3.6.</em> Las flechas forman una suma vectorial. Apuntar río arriba permite que la velocidad respecto de tierra sea transversal, a costa de aumentar el tiempo de cruce.</p>
+</figcaption>
+</figure>
+</section>
+<section id="lo-que-una-trayectoria-observada-permite-comprobar" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-una-trayectoria-observada-permite-comprobar">Lo que una trayectoria observada permite comprobar</h2>
+<p>La integración predice una parábola porque supusimos aceleración constante vertical. Una fotografía de la curva no basta para verificar esa aceleración: las dos parametrizaciones de la figura 3.2 muestran que una misma curva admite relojes diferentes. Para contrastar el modelo necesitamos posiciones con tiempos asociados, una escala espacial y una estimación de la incertidumbre de ambos registros.</p>
+<p>En el lanzamiento ideal, intervalos de tiempo iguales producen incrementos horizontales iguales; las segundas diferencias verticales son constantes si los tiempos están igualmente espaciados. Una variación sistemática de esas cantidades, mayor que lo explicable por las cotas de medida, obliga a revisar el modelo y el procedimiento de observación. Puede haber resistencia del aire, un error de perspectiva o una escala temporal incorrecta. El residuo por sí solo no identifica su causa.</p>
+<p>La separación entre cálculo y experiencia también alcanza a los objetivos y obstáculos. Una pelota real tiene tamaño; una abertura tiene bordes; la velocidad inicial varía entre ensayos. El modelo puntual calcula un paso por un punto. Para garantizar el paso de un objeto con extensión y datos inciertos hay que reservar márgenes geométricos y propagar las cotas de las magnitudes que se midieron. El ejercicio 19 desarrolla esa comprobación sin atribuir un significado probabilístico a los intervalos.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Una primera práctica puede reunir 1, 2, 6, 7, 8, 9 y 14. Antes de leer la solución del 7, conviene reconstruir por escrito por qué una coordenada permite hallar el tiempo y la otra permite ajustar el lanzamiento. Los problemas 3–5, 11–13, 15, 16 y 18 amplían las representaciones y los regímenes; 10, 17, 19 y 20 profundizan en optimización, cotas y límites de una generalización.</p>
+<p>En los problemas de proyectiles, usa <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span>, aceleración vertical uniforme y resistencia del aire despreciable, salvo indicación contraria. Los datos numéricos son exactos dentro de cada modelo. En los problemas parametrizados, <span class="math inline">\(\theta=t/(1\,\mathrm s)\)</span>. Los vectores se expresan en una base cartesiana ortonormal fija.</p>
+<section id="ejercicio-3-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-1">1. Un camino con una esquina</h3>
+<p>Un robot recorre el segmento de <span class="math inline">\((0,0)\)</span> a <span class="math inline">\((3,0)\,\mathrm m\)</span> en tres segundos y después el segmento hasta <span class="math inline">\((3,4)\,\mathrm m\)</span> en dos segundos. Calcula su desplazamiento, la distancia recorrida, la velocidad media y la rapidez media durante los cinco segundos. Explica por qué el módulo de la velocidad media no coincide con la rapidez media. No se pide asignar una aceleración al cambio instantáneo de dirección.</p>
+</section>
+<section id="ejercicio-3-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-2">2. Leer una posición vectorial</h3>
+<p>Sea <span class="math inline">\(\mathbf r(t)=(2\theta\mathbf e_x+\theta^2\mathbf e_y)\,\mathrm m\)</span> para <span class="math inline">\(0\leq t\leq2\,\mathrm s\)</span>. Halla la velocidad, la aceleración y la rapidez; evalúalas en un segundo. Obtén la ecuación cartesiana de la trayectoria y la velocidad media entre cero y dos segundos. ¿Coincide en este ejemplo con alguna velocidad instantánea?</p>
+</section>
+<section id="ejercicio-3-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-3">3. Cambiar los ejes sin cambiar el movimiento</h3>
+<p>Una velocidad tiene componentes <span class="math inline">\((3,4)\,\mathrm{m/s}\)</span> y una aceleración tiene componentes <span class="math inline">\((0,-10)\,\mathrm{m/s^2}\)</span>. La nueva base se obtiene girando los ejes <span class="math inline">\(45^\circ\)</span> en sentido antihorario: <span class="math inline">\(\mathbf e'_x=(\mathbf e_x+\mathbf e_y)/\sqrt2\)</span>, <span class="math inline">\(\mathbf e'_y=(-\mathbf e_x+\mathbf e_y)/\sqrt2\)</span>. Calcula las nuevas componentes y comprueba que se conservan el módulo de la velocidad y el producto escalar <span class="math inline">\(\mathbf v\cdot\mathbf a\)</span>.</p>
+</section>
+<section id="ejercicio-3-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-4">4. Acelerar mientras una componente disminuye</h3>
+<p>Una partícula parte de <span class="math inline">\(\mathbf r_0=(1,-1)\,\mathrm m\)</span> con <span class="math inline">\(\mathbf v_0=(2,3)\,\mathrm{m/s}\)</span> y aceleración constante <span class="math inline">\(\mathbf a=(1,-2)\,\mathrm{m/s^2}\)</span>. Halla su posición y velocidad en dos segundos. Decide si en ese instante la rapidez aumenta o disminuye y determina el instante de rapidez mínima para <span class="math inline">\(t\geq0\)</span>.</p>
+</section>
+<section id="ejercicio-3-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-5">5. Reconstruir con una hipótesis explícita</h3>
+<p>En los instantes cero, uno y dos segundos se registran las posiciones <span class="math inline">\((0,1)\)</span>, <span class="math inline">\((2,3)\)</span> y <span class="math inline">\((6,1)\,\mathrm m\)</span>. Suponiendo aceleración vectorial constante, determina la velocidad inicial, la aceleración y la posición a los tres segundos. Explica qué parte de la respuesta depende de esa hipótesis y propone un registro que pueda contrastarla.</p>
+</section>
+<section id="ejercicio-3-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-6">6. Salir horizontalmente</h3>
+<p>Una pelota sale horizontalmente a <span class="math inline">\(6\,\mathrm{m/s}\)</span> desde una plataforma situada veinte metros sobre un suelo horizontal. Calcula el tiempo hasta el primer contacto, el desplazamiento horizontal y la velocidad inmediatamente anterior al impacto. Compara el tiempo con el de otra pelota que se suelta desde el reposo a la misma altura, en el mismo instante.</p>
+</section>
+<section id="ejercicio-3-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-7">7. Ajustar el lanzamiento</h3>
+<p>Una partícula parte del origen con componente horizontal de velocidad <span class="math inline">\(6\,\mathrm{m/s}\)</span>. Debe pasar por <span class="math inline">\((12,4)\,\mathrm m\)</span>. Determina la componente vertical inicial, el instante de paso y la velocidad en ese instante. Calcula además la altura máxima y decide si pasa por el objetivo al subir o al bajar.</p>
+</section>
+<section id="ejercicio-3-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-8">8. Un alcance con sus hipótesis</h3>
+<p>Desde un suelo horizontal se lanza una pelota a <span class="math inline">\(10\,\mathrm{m/s}\)</span> formando <span class="math inline">\(30^\circ\)</span> con la horizontal. Calcula el tiempo de vuelo, el alcance y la altura máxima. Compara su alcance con el de un lanzamiento a <span class="math inline">\(45^\circ\)</span> con la misma rapidez. Explica por qué esa comparación no resuelve un lanzamiento hacia un piso de altura diferente.</p>
+</section>
+<section id="ejercicio-3-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-9">9. Llegar a un nivel más bajo</h3>
+<p>Una pelota parte de <span class="math inline">\((0,15)\,\mathrm m\)</span> con velocidad <span class="math inline">\((4,5)\,\mathrm{m/s}\)</span>. El suelo es <span class="math inline">\(y=0\)</span>. Halla el instante del primer impacto, su posición y su velocidad. Interpreta la otra raíz de la ecuación vertical y comprueba el signo de la componente vertical de impacto.</p>
+</section>
+<section id="ejercicio-3-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-10">10. Una frontera de alcance</h3>
+<p>Con rapidez inicial <span class="math inline">\(6\sqrt5\,\mathrm{m/s}\)</span>, se desea alcanzar la vertical <span class="math inline">\(x=12\,\mathrm m\)</span>. Determina la mayor altura alcanzable en esa vertical variando la dirección inicial entre <span class="math inline">\(-\pi/2\)</span> y <span class="math inline">\(\pi/2\)</span>. Cuenta los ángulos que permiten pasar por las alturas de cuatro, cinco y seis metros. Supón vuelo libre hasta esa vertical, sin suelo ni obstáculos intermedios que lo interrumpan.</p>
+</section>
+<section id="ejercicio-3-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-11">11. El objetivo no es la única restricción</h3>
+<p>Los dos lanzamientos del texto, con rapidez <span class="math inline">\(6\sqrt5\,\mathrm{m/s}\)</span>, llegan a <span class="math inline">\((12,4)\,\mathrm m\)</span>. Hay una pantalla vertical en <span class="math inline">\(x=9\,\mathrm m\)</span> cuya única abertura está entre <span class="math inline">\(y=5\,\mathrm m\)</span> e <span class="math inline">\(y=6\,\mathrm m\)</span>. Decide si alguno atraviesa esa abertura antes de alcanzar el objetivo. La pantalla bloquea todos los demás valores de <span class="math inline">\(y\)</span> y se mantiene el modelo de partícula puntual.</p>
+</section>
+<section id="ejercicio-3-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-12">12. Encontrar un suelo inclinado</h3>
+<p>Una partícula sale horizontalmente del origen a <span class="math inline">\(4\,\mathrm{m/s}\)</span>. El suelo es la semirrecta <span class="math inline">\(y=-x/2\)</span>, <span class="math inline">\(x\geq0\)</span>. Calcula el siguiente contacto con el suelo y la distancia desde el origen medida sobre la pendiente. Comprueba que antes del contacto la partícula permanece por encima del suelo.</p>
+</section>
+<section id="ejercicio-3-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-13">13. Un encuentro que el suelo impide</h3>
+<p>Dos partículas comienzan simultáneamente en <span class="math inline">\((0,0)\)</span> y <span class="math inline">\((8,6)\,\mathrm m\)</span>, con velocidades iniciales <span class="math inline">\((4,8)\)</span> y <span class="math inline">\((0,5)\,\mathrm{m/s}\)</span>. Ambas tienen la misma aceleración vertical. Busca el encuentro que predicen las fórmulas de vuelo libre. Si el modelo de cada vuelo termina en su primer contacto posterior al lanzamiento con el suelo <span class="math inline">\(y=0\)</span>, decide si ese encuentro pertenece a los vuelos admisibles.</p>
+</section>
+<section id="ejercicio-3-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-14">14. Una vuelta con rapidez constante</h3>
+<p>Una partícula describe con rapidez constante y en sentido antihorario un círculo de radio tres metros y centro en el origen. Su período es seis segundos y parte de <span class="math inline">\((3,0)\,\mathrm m\)</span>. Escribe <span class="math inline">\(\mathbf r(t)\)</span>, <span class="math inline">\(\mathbf v(t)\)</span> y <span class="math inline">\(\mathbf a(t)\)</span>. Evalúa los tres vectores tras un cuarto de vuelta y compara la velocidad media y la rapidez media durante una vuelta completa.</p>
+</section>
+<section id="ejercicio-3-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-15">15. Empezar a girar desde el reposo</h3>
+<p>En un círculo de radio un metro y centro fijo, el ángulo es <span class="math inline">\(\varphi(t)=\theta^2\)</span> para <span class="math inline">\(t\geq0\)</span>. Determina las componentes radial y tangencial de la aceleración y su módulo en un segundo. Halla también la aceleración inicial y explica por qué puede ser tangencial aunque la rapidez inicial sea cero.</p>
+</section>
+<section id="ejercicio-3-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-16">16. Girar en el sentido contrario</h3>
+<p>Considera <span class="math inline">\(\mathbf r(t)=2[\cos\theta\,\mathbf e_x-\sin\theta\,\mathbf e_y]\,\mathrm m\)</span>. Calcula posición, velocidad y aceleración en <span class="math inline">\(t=(\pi/2)\,\mathrm s\)</span>. Decide el sentido del giro, comprueba si cambia la rapidez y localiza la dirección de la aceleración respecto del centro.</p>
+</section>
+<section id="ejercicio-3-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-17">17. Una corriente demasiado rápida</h3>
+<p>Un río recto tiene doce metros de ancho y corriente uniforme de <span class="math inline">\(3\,\mathrm{m/s}\)</span>. Una embarcación mantiene rapidez <span class="math inline">\(2\,\mathrm{m/s}\)</span> respecto del agua y una dirección constante durante cada intento. ¿Puede llegar justo enfrente? Calcula el tiempo y la deriva si apunta perpendicularmente a las orillas. Entre las direcciones que permiten cruzar, determina además la que minimiza la deriva río abajo. Omitimos aceleración de arranque, tamaño de la embarcación y variaciones de corriente.</p>
+</section>
+<section id="ejercicio-3-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-18">18. Dos máximos de altura para dos observadores</h3>
+<p>El lanzamiento del texto tiene <span class="math inline">\(\mathbf r_0=\mathbf0\)</span> y <span class="math inline">\(\mathbf v_0=(6,12)\,\mathrm{m/s}\)</span>. Otro observador utiliza ejes paralelos cuyo origen coincide inicialmente con el lanzamiento y se mueve con velocidad constante <span class="math inline">\((2,1)\,\mathrm{m/s}\)</span>. Escribe la posición y la velocidad respecto de ese observador. Compara los instantes en que se maximiza la coordenada vertical en ambos marcos y explica por qué sus aceleraciones siguen siendo iguales.</p>
+</section>
+<section id="ejercicio-3-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-19">19. Garantizar el paso con datos acotados</h3>
+<p>El lanzamiento se realiza desde el origen, pero sólo se conocen las cotas <span class="math inline">\(v_{0x}\in[5,9;6,1]\,\mathrm{m/s}\)</span> y <span class="math inline">\(v_{0y}\in[11,9;12,1]\,\mathrm{m/s}\)</span>. Todos los pares del rectángulo son admisibles; <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span> y la vertical <span class="math inline">\(x=12\,\mathrm m\)</span> se tratan como exactos. Obtén la cota más ajustada para la altura de paso y decide si se garantiza el paso de una partícula puntual por una abertura vertical <span class="math inline">\(y\in[3,5;4,5]\,\mathrm m\)</span>. Repite la decisión para <span class="math inline">\([3,8;4,2]\,\mathrm m\)</span>. Supón que no hay obstáculos anteriores.</p>
+</section>
+<section id="ejercicio-3-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-3-20">20. Un teorema escalar que no se traslada entero</h3>
+<p>El capítulo 1 prueba que, bajo las hipótesis del teorema del valor medio, alguna velocidad instantánea coincide con la velocidad media de un movimiento en una recta. Examina la pretendida extensión vectorial usando</p>
+<p><span class="math display">\[
+\mathbf r(t)=[\cos\theta\,\mathbf e_x+\sin\theta\,\mathbf e_y]\,\mathrm m,
+\qquad 0\leq t\leq2\pi\,\mathrm s.
+\]</span></p>
+<p>Calcula la velocidad media y decide si coincide con <span class="math inline">\(\mathbf v(c)\)</span> para algún instante interior. Explica cómo puede seguir siendo válido el teorema del valor medio para cada componente por separado.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-3-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-1">1. Un camino con una esquina</h3>
+<p>El desplazamiento sólo utiliza los extremos: <span class="math inline">\(\Delta\mathbf r=(3,4)\,\mathrm m\)</span>, de módulo cinco metros. La distancia cuenta ambos segmentos y vale <span class="math inline">\(3+4=7\,\mathrm m\)</span>. Al dividir entre los cinco segundos obtenemos</p>
+<p><span class="math display">\[
+\overline{\mathbf v}=\left(\frac35\mathbf e_x+\frac45\mathbf e_y\right)\,\mathrm{m/s},
+\qquad \overline q=\frac75\,\mathrm{m/s}.
+\]</span></p>
+<p>El módulo de <span class="math inline">\(\overline{\mathbf v}\)</span> es <span class="math inline">\(1\,\mathrm{m/s}\)</span>. La rapidez media es mayor porque el camino con una esquina tiene longitud mayor que el segmento directo que une los extremos. No hay contradicción entre los cocientes: sus numeradores miden cantidades diferentes. El cambio instantáneo de dirección es una idealización que no proporciona una aceleración ordinaria finita en la esquina; los promedios del recorrido siguen estando definidos.</p>
+</section>
+<section id="solucion-3-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-2">2. Leer una posición vectorial</h3>
+<p>Al derivar hay que recordar que <span class="math inline">\(d\theta/dt=1/(1\,\mathrm s)\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\mathbf v=(2\mathbf e_x+2\theta\mathbf e_y)\,\mathrm{m/s},
+\qquad \mathbf a=2\mathbf e_y\,\mathrm{m/s^2},
+\qquad q=2\sqrt{1+\theta^2}\,\mathrm{m/s}.
+\]</span></p>
+<p>En un segundo la velocidad es <span class="math inline">\((2,2)\,\mathrm{m/s}\)</span> y la rapidez <span class="math inline">\(2\sqrt2\,\mathrm{m/s}\)</span>. La aceleración mantiene el valor indicado. De <span class="math inline">\(x=2\theta\,\mathrm m\)</span> resulta <span class="math inline">\(y=x^2/(4\,\mathrm m)\)</span>, con <span class="math inline">\(0\leq x\leq4\,\mathrm m\)</span>. El dominio espacial procede del intervalo temporal, no de la ecuación de la parábola completa.</p>
+<p>Los extremos son <span class="math inline">\((0,0)\)</span> y <span class="math inline">\((4,4)\,\mathrm m\)</span>. Su diferencia dividida entre dos segundos da <span class="math inline">\((2,2)\,\mathrm{m/s}\)</span>, que coincide aquí con la velocidad en un segundo. Esta coincidencia se comprueba en este movimiento concreto; el ejercicio 20 muestra por qué no debe convertirse en un teorema vectorial general.</p>
+</section>
+<section id="solucion-3-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-3">3. Cambiar los ejes sin cambiar el movimiento</h3>
+<p>Las nuevas componentes se obtienen proyectando sobre los nuevos vectores unitarios. No se gira físicamente la velocidad. Así,</p>
+<p><span class="math display">\[
+v'_x=\frac{3+4}{\sqrt2}\,\mathrm{m/s},
+\qquad v'_y=\frac{-3+4}{\sqrt2}\,\mathrm{m/s},
+\]</span></p>
+<p>mientras que <span class="math inline">\(a'_x=a'_y=-5\sqrt2\,\mathrm{m/s^2}\)</span>. La rapidez calculada con las nuevas componentes es <span class="math inline">\(\sqrt{49/2+1/2}=5\,\mathrm{m/s}\)</span>, igual que antes. El producto escalar vale</p>
+<p><span class="math display">\[
+\mathbf v\cdot\mathbf a=-40\,\mathrm{m^2/s^3}
+=\left[\frac7{\sqrt2}(-5\sqrt2)
++\frac1{\sqrt2}(-5\sqrt2)\right]\mathrm{m^2/s^3}.
+\]</span></p>
+<p>La rotación ortonormal conserva las magnitudes geométricas. Una componente horizontal nula en una base no tiene por qué seguir siendo nula en otra; eso depende de qué direcciones llamamos ejes.</p>
+</section>
+<section id="solucion-3-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-4">4. Acelerar mientras una componente disminuye</h3>
+<p>La aceleración es constante, por lo que podemos integrar las dos componentes con sus respectivos datos iniciales. En términos de <span class="math inline">\(\theta\)</span>,</p>
+<p><span class="math display">\[
+\mathbf r=[(1+2\theta+\theta^2/2)\mathbf e_x
++(-1+3\theta-\theta^2)\mathbf e_y]\,\mathrm m,
+\]</span></p>
+<p><span class="math display">\[
+\mathbf v=[(2+\theta)\mathbf e_x+(3-2\theta)\mathbf e_y]\,\mathrm{m/s}.
+\]</span></p>
+<p>En dos segundos obtenemos <span class="math inline">\(\mathbf r=(7,1)\,\mathrm m\)</span> y <span class="math inline">\(\mathbf v=(4,-1)\,\mathrm{m/s}\)</span>. Su producto con la aceleración es <span class="math inline">\(6\,\mathrm{m^2/s^3}\)</span>, de modo que <span class="math inline">\(\dot q=6/\sqrt{17}\,\mathrm{m/s^2}&gt;0\)</span>. La rapidez aumenta aunque la componente <span class="math inline">\(y\)</span> de la velocidad disminuya.</p>
+<p>Para encontrar el mínimo podemos minimizar <span class="math inline">\(q^2\)</span>, evitando derivar una raíz:</p>
+<p><span class="math display">\[
+\frac{q^2}{(1\,\mathrm{m/s})^2}=(2+\theta)^2+(3-2\theta)^2
+=5\theta^2-8\theta+13.
+\]</span></p>
+<p>La parábola tiene su único mínimo en <span class="math inline">\(\theta=4/5\)</span>, que pertenece al dominio. Allí <span class="math inline">\(\mathbf v=(14/5,7/5)\,\mathrm{m/s}\)</span> y <span class="math inline">\(q=7/\sqrt5\,\mathrm{m/s}\)</span>. La aceleración no se anula: en ese instante es perpendicular a la velocidad.</p>
+</section>
+<section id="solucion-3-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-5">5. Reconstruir con una hipótesis explícita</h3>
+<p>En intervalos unitarios de tiempo, la segunda diferencia de las posiciones es la aceleración multiplicada por <span class="math inline">\((1\,\mathrm s)^2\)</span>. Por tanto,</p>
+<p><span class="math display">\[
+\mathbf a=\frac{\mathbf r(2\,\mathrm s)-2\mathbf r(1\,\mathrm s)+\mathbf r(0)}{(1\,\mathrm s)^2}
+=(2,-4)\,\mathrm{m/s^2}.
+\]</span></p>
+<p>La primera diferencia, <span class="math inline">\((2,2)\,\mathrm m\)</span>, es <span class="math inline">\(\mathbf v_0(1\,\mathrm s)+\mathbf a(1\,\mathrm s)^2/2\)</span>, de donde <span class="math inline">\(\mathbf v_0=(1,4)\,\mathrm{m/s}\)</span>. La historia reconstruida es</p>
+<p><span class="math display">\[
+\mathbf r=[(\theta+\theta^2)\mathbf e_x
++(1+4\theta-2\theta^2)\mathbf e_y]\,\mathrm m.
+\]</span></p>
+<p>Predice <span class="math inline">\((12,-5)\,\mathrm m\)</span> a los tres segundos. Las tres posiciones fijan una única historia dentro de la familia de aceleración constante. Sin esa restricción, añadir por ejemplo <span class="math inline">\(\lambda\theta(\theta-1)(\theta-2)\mathbf e_x\,\mathrm m\)</span>, con <span class="math inline">\(\lambda\)</span> adimensional, conserva todos los registros y cambia la predicción posterior. Una cuarta posición, obtenida a los tres segundos y comparada con sus cotas, permitiría contrastar la familia cuadrática sin reutilizar uno de los datos de ajuste como prueba independiente.</p>
+</section>
+<section id="solucion-3-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-6">6. Salir horizontalmente</h3>
+<p>El evento que termina el vuelo es llegar a <span class="math inline">\(y=0\)</span>, de modo que empezamos por la ecuación vertical y conservamos su primer cero positivo. Ese tiempo se usa después en la componente horizontal. Igualar por separado un tiempo horizontal y otro vertical describiría dos posiciones que la pelota no ocupa simultáneamente.</p>
+<p>Tomamos el origen en el suelo bajo el punto de salida. La coordenada vertical es <span class="math inline">\(y=20\,\mathrm m-gt^2/2\)</span>. Su primer cero positivo es <span class="math inline">\(t=2\,\mathrm s\)</span>. En ese tiempo, el avance horizontal es <span class="math inline">\(x=(6\,\mathrm{m/s})(2\,\mathrm s)=12\,\mathrm m\)</span> y la velocidad es</p>
+<p><span class="math display">\[
+\mathbf v=(6,-20)\,\mathrm{m/s},
+\qquad q=\sqrt{6^2+20^2}\,\mathrm{m/s}
+=2\sqrt{109}\,\mathrm{m/s}.
+\]</span></p>
+<p>La pelota soltada tiene la misma coordenada vertical inicial, la misma velocidad vertical inicial nula y la misma aceleración vertical. Sus historias verticales coinciden, de modo que llega al suelo en el mismo instante. La igualdad de tiempos depende de esas condiciones y del modelo sin resistencia del aire; la velocidad horizontal adicional no aparece en su ecuación vertical.</p>
+</section>
+<section id="solucion-3-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-7">7. Ajustar el lanzamiento</h3>
+<p>El dato horizontal ya fija el tiempo disponible: mientras esa componente sea constante y positiva, alcanzar la vertical del objetivo obliga a <span class="math inline">\(t=X/v_{0x}\)</span>. La componente vertical inicial se ajusta después para que la misma pelota tenga la altura requerida en ese mismo instante. Esta es la elección que hay que reconstruir al estudiar el ejemplo, antes de repetir sus números.</p>
+<p>Con los datos propuestos, <span class="math inline">\(t=12/6\,\mathrm s=2\,\mathrm s\)</span>. La condición vertical exige <span class="math inline">\(4\,\mathrm m=v_{0y}(2\,\mathrm s)-20\,\mathrm m\)</span>, así que <span class="math inline">\(v_{0y}=12\,\mathrm{m/s}\)</span>. Al pasar por el objetivo,</p>
+<p><span class="math display">\[
+\mathbf v=(6,-8)\,\mathrm{m/s}.
+\]</span></p>
+<p>La componente negativa muestra que llega al bajar. Su componente vertical se anula antes, en <span class="math inline">\(t=v_{0y}/g=1,2\,\mathrm s\)</span>; la altura allí es <span class="math inline">\(v_{0y}^2/(2g)=7,2\,\mathrm m\)</span>. El valor se obtiene sustituyendo el instante en la posición y conserva unidades de longitud. La aceleración en la cima sigue siendo <span class="math inline">\((0,-10)\,\mathrm{m/s^2}\)</span>: ninguna de las ecuaciones de este modelo permite que se apague cuando <span class="math inline">\(v_y=0\)</span>.</p>
+<p>Como variación del mismo método, si la componente horizontal fuera <span class="math inline">\(24\,\mathrm{m/s}\)</span> y se mantuviera el objetivo en <span class="math inline">\((12,4)\,\mathrm m\)</span>, el tiempo sería <span class="math inline">\(0{,}5\,\mathrm s\)</span>. La ecuación vertical daría <span class="math inline">\(v_{0y}=10{,}5\,\mathrm{m/s}\)</span> y la velocidad vertical de llegada sería <span class="math inline">\(5{,}5\,\mathrm{m/s}&gt;0\)</span>: esta vez pasaría al subir. El punto de llegada por sí solo no decide si la pelota asciende o desciende; también interviene el tiempo que impone la componente horizontal.</p>
+</section>
+<section id="solucion-3-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-8">8. Un alcance con sus hipótesis</h3>
+<p>Las componentes iniciales son <span class="math inline">\(v_{0x}=5\sqrt3\,\mathrm{m/s}\)</span> y <span class="math inline">\(v_{0y}=5\,\mathrm{m/s}\)</span>. El retorno al nivel de salida satisface <span class="math inline">\(0=t(v_{0y}-gt/2)\)</span>. La raíz cero es el lanzamiento; la otra es <span class="math inline">\(T=2v_{0y}/g=1\,\mathrm s\)</span>. Entonces</p>
+<p><span class="math display">\[
+R=5\sqrt3\,\mathrm m,\qquad
+h_{\max}=\frac{v_{0y}^2}{2g}=1,25\,\mathrm m.
+\]</span></p>
+<p>A <span class="math inline">\(45^\circ\)</span> y con la misma rapidez, el alcance es <span class="math inline">\(u^2/g=10\,\mathrm m\)</span>, mayor que <span class="math inline">\(5\sqrt3\,\mathrm m\)</span>. Para un nivel final diferente habría que resolver <span class="math inline">\(Y=v_{0y}t-gt^2/2\)</span> con ese valor de <span class="math inline">\(Y\)</span>. La raíz positiva ya no sería en general <span class="math inline">\(2v_{0y}/g\)</span> y la expresión usada para comparar alcances dejaría de corresponder al evento de llegada.</p>
+</section>
+<section id="solucion-3-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-9">9. Llegar a un nivel más bajo</h3>
+<p>La coordenada vertical es <span class="math inline">\(y=(15+5\theta-5\theta^2)\,\mathrm m\)</span>. Sus ceros satisfacen <span class="math inline">\(\theta^2-\theta-3=0\)</span>, por lo que</p>
+<p><span class="math display">\[
+t_{\pm}=\frac{1\pm\sqrt{13}}2\,\mathrm s.
+\]</span></p>
+<p>La raíz negativa pertenece a la prolongación de la parábola antes del lanzamiento y queda fuera del dominio. La raíz positiva es el primer impacto. Su posición y velocidad son</p>
+<p><span class="math display">\[
+\mathbf r(t_+)=\bigl(2(1+\sqrt{13}),0\bigr)\,\mathrm m,
+\qquad
+\mathbf v(t_+)=\bigl(4,-5\sqrt{13}\bigr)\,\mathrm{m/s}.
+\]</span></p>
+<p>La rapidez es <span class="math inline">\(\sqrt{341}\,\mathrm{m/s}\)</span>. La componente vertical negativa confirma la llegada descendente; el impacto ocurre después de la cima, situada en medio segundo. Las fórmulas de vuelo libre dejan de describir la pelota al producirse el contacto.</p>
+</section>
+<section id="solucion-3-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-10">10. Una frontera de alcance</h3>
+<p>En la vertical elegida, la altura como función de <span class="math inline">\(z=\tan\alpha\)</span> es</p>
+<p><span class="math display">\[
+Y(z)=[12z-4(1+z^2)]\,\mathrm m
+=[5-4(z-3/2)^2]\,\mathrm m.
+\]</span></p>
+<p>Completar el cuadrado muestra tanto el máximo como la cantidad de soluciones. La mayor altura es cinco metros y corresponde a <span class="math inline">\(z=3/2\)</span>. Para cuatro metros se obtiene <span class="math inline">\((z-3/2)^2=1/4\)</span>, de donde <span class="math inline">\(z=1\)</span> o <span class="math inline">\(z=2\)</span>. Para cinco metros hay una sola solución; para seis, ninguna real.</p>
+<p>Los valores reales de <span class="math inline">\(z\)</span> corresponden de manera única a ángulos entre <span class="math inline">\(-\pi/2\)</span> y <span class="math inline">\(\pi/2\)</span>, con componente horizontal positiva, y por tanto a tiempos positivos hasta <span class="math inline">\(x=12\,\mathrm m\)</span>. El supuesto de vuelo libre hasta esa vertical permite contarlos como soluciones del problema. Añadir un suelo o una pantalla requeriría filtrar otra vez esos candidatos.</p>
+<p>La variable <span class="math inline">\(z\)</span> conserva toda la elección de dirección permitida por el enunciado. Al completar el cuadrado escribimos la altura como un valor fijo menos una cantidad no negativa; así, la misma cuenta resuelve la optimización y cuenta las direcciones de llegada. Por debajo del máximo aparecen dos valores equidistantes de <span class="math inline">\(3/2\)</span>; en el máximo coinciden. Esta simetría corresponde a las tangentes de los ángulos: sus diferencias angulares se obtienen aplicando la arcotangente y tienen otra escala.</p>
+</section>
+<section id="solucion-3-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-11">11. El objetivo no es la única restricción</h3>
+<p>Las dos trayectorias son <span class="math inline">\(y=x-x^2/(18\,\mathrm m)\)</span> y <span class="math inline">\(y=2x-5x^2/(36\,\mathrm m)\)</span>. En <span class="math inline">\(x=9\,\mathrm m\)</span> sus alturas respectivas son</p>
+<p><span class="math display">\[
+y_1=4,5\,\mathrm m,\qquad y_2=6,75\,\mathrm m.
+\]</span></p>
+<p>La primera queda por debajo de la abertura y la segunda por encima. Ninguna atraviesa la pantalla. Que ambas alcancen el objetivo en ausencia de obstáculos no responde a esta nueva pregunta: el modelo de vuelo termina en la pantalla antes del instante de llegada calculado. Una búsqueda limitada a verificar el punto final omitiría la condición decisiva.</p>
+</section>
+<section id="solucion-3-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-12">12. Encontrar un suelo inclinado</h3>
+<p>La posición es <span class="math inline">\(x=4\theta\,\mathrm m\)</span>, <span class="math inline">\(y=-5\theta^2\,\mathrm m\)</span>. Al imponer <span class="math inline">\(y=-x/2\)</span> obtenemos <span class="math inline">\(-5\theta^2=-2\theta\)</span>. La raíz cero corresponde a la salida; la siguiente es <span class="math inline">\(\theta=2/5\)</span>. El contacto ocurre en</p>
+<p><span class="math display">\[
+t=0,4\,\mathrm s,\qquad (x,y)=(1,6;\,-0,8)\,\mathrm m.
+\]</span></p>
+<p>La distancia sobre la recta inclinada entre ambos puntos es <span class="math inline">\(\sqrt{(1,6)^2+(0,8)^2}\,\mathrm m=(4\sqrt5/5)\,\mathrm m\)</span>. Es una distancia sobre el suelo, diferente de la longitud del vuelo curvo. Para comprobar que elegimos el siguiente contacto, restamos la altura del terreno a la del proyectil:</p>
+<p><span class="math display">\[
+y_{\text{pelota}}-y_{\text{suelo}}=(2\theta-5\theta^2)\,\mathrm m
+=\theta(2-5\theta)\,\mathrm m&gt;0
+\quad\text{si }0&lt;\theta&lt;2/5.
+\]</span></p>
+<p>La partícula permanece por encima durante todo ese intervalo, de modo que no hay otro contacto anterior que invalide el cálculo.</p>
+</section>
+<section id="solucion-3-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-13">13. Un encuentro que el suelo impide</h3>
+<p>La separación inicial es <span class="math inline">\((8,6)\,\mathrm m\)</span> y la diferencia de velocidades iniciales es <span class="math inline">\((-4,-3)\,\mathrm{m/s}\)</span>. Como las aceleraciones coinciden, su diferencia es cero. Por tanto,</p>
+<p><span class="math display">\[
+\mathbf r_B-\mathbf r_A=[(8-4\theta)\mathbf e_x
++(6-3\theta)\mathbf e_y]\,\mathrm m.
+\]</span></p>
+<p>Las dos componentes se anulan simultáneamente en dos segundos. Sustituir ese instante en cualquiera de las posiciones da el encuentro formal <span class="math inline">\((8,-4)\,\mathrm m\)</span>.</p>
+<p>El primer proyectil regresa al suelo cuando <span class="math inline">\(8\theta-5\theta^2=0\)</span>, en <span class="math inline">\(t=8/5\,\mathrm s\)</span>. Para el segundo, <span class="math inline">\(6+5\theta-5\theta^2=0\)</span> da el cero positivo <span class="math inline">\(t=(5+\sqrt{145})/10\,\mathrm s\)</span>, aproximadamente <span class="math inline">\(1,704\,\mathrm s\)</span>. Ambos vuelos terminan antes de dos segundos. El encuentro formal queda fuera de los dos dominios admisibles; el enunciado no proporciona leyes posteriores al contacto que autoricen prolongarlos. La cancelación de la aceleración simplificó el cálculo del candidato y dejó intacta la obligación de revisar su régimen.</p>
+</section>
+<section id="solucion-3-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-14">14. Una vuelta con rapidez constante</h3>
+<p>El ángulo aumenta <span class="math inline">\(2\pi\)</span> en seis segundos, así que <span class="math inline">\(\omega=\pi/(3\,\mathrm s)\)</span>. Las condiciones iniciales fijan</p>
+<p><span class="math display">\[
+\mathbf r=3[\cos(\pi\theta/3)\mathbf e_x
++\sin(\pi\theta/3)\mathbf e_y]\,\mathrm m,
+\]</span></p>
+<p><span class="math display">\[
+\mathbf v=\pi[-\sin(\pi\theta/3)\mathbf e_x
++\cos(\pi\theta/3)\mathbf e_y]\,\mathrm{m/s},
+\]</span></p>
+<p><span class="math display">\[
+\mathbf a=-\frac{\pi^2}{3}[\cos(\pi\theta/3)\mathbf e_x
++\sin(\pi\theta/3)\mathbf e_y]\,\mathrm{m/s^2}.
+\]</span></p>
+<p>En un cuarto de vuelta, <span class="math inline">\(t=1,5\,\mathrm s\)</span>, son <span class="math inline">\(\mathbf r=(0,3)\,\mathrm m\)</span>, <span class="math inline">\(\mathbf v=(-\pi,0)\,\mathrm{m/s}\)</span> y <span class="math inline">\(\mathbf a=(0,-\pi^2/3)\,\mathrm{m/s^2}\)</span>. La aceleración apunta hacia el origen.</p>
+<p>Durante una vuelta los extremos coinciden y la velocidad media es cero. La distancia recorrida es <span class="math inline">\(2\pi R=6\pi\,\mathrm m\)</span>, por lo que la rapidez media es <span class="math inline">\(\pi\,\mathrm{m/s}\)</span>, igual a la rapidez instantánea constante. El contraste entre ambos promedios no depende de pequeñas irregularidades del movimiento: ya ocurre en el círculo uniforme ideal.</p>
+</section>
+<section id="solucion-3-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-15">15. Empezar a girar desde el reposo</h3>
+<p>La velocidad angular es <span class="math inline">\(\dot\varphi=2\theta\,\mathrm{s^{-1}}\)</span> y su derivada es <span class="math inline">\(\ddot\varphi=2\,\mathrm{s^{-2}}\)</span>. Con <span class="math inline">\(R=1\,\mathrm m\)</span>,</p>
+<p><span class="math display">\[
+\mathbf a=(-4\theta^2\mathbf e_r+2\mathbf e_\varphi)\,\mathrm{m/s^2}.
+\]</span></p>
+<p>En un segundo, la componente radial orientada hacia afuera es <span class="math inline">\(-4\,\mathrm{m/s^2}\)</span> y la tangencial orientada según <span class="math inline">\(\mathbf e_\varphi\)</span> es <span class="math inline">\(2\,\mathrm{m/s^2}\)</span>. Por ser perpendiculares, el módulo total es <span class="math inline">\(\sqrt{16+4}=2\sqrt5\,\mathrm{m/s^2}\)</span>.</p>
+<p>En el instante inicial, <span class="math inline">\(\varphi=0\)</span>, <span class="math inline">\(\mathbf e_r=\mathbf e_x\)</span> y <span class="math inline">\(\mathbf e_\varphi=\mathbf e_y\)</span>. La aceleración inicial es <span class="math inline">\(2\mathbf e_y\,\mathrm{m/s^2}\)</span>, aunque la velocidad inicial sea cero. El círculo ya tiene una tangente geométrica en ese punto; la aceleración inicia el movimiento en esa dirección. La componente radial se anula al partir porque depende del cuadrado de la rapidez, y aparece cuando ésta crece. No hemos utilizado <span class="math inline">\(\dot q=(\mathbf v\cdot\mathbf a)/q\)</span> en el reposo, donde esa expresión no está definida.</p>
+</section>
+<section id="solucion-3-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-16">16. Girar en el sentido contrario</h3>
+<p>Derivar las componentes da</p>
+<p><span class="math display">\[
+\mathbf v=2[-\sin\theta\,\mathbf e_x-\cos\theta\,\mathbf e_y]\,\mathrm{m/s},
+\qquad
+\mathbf a=2[-\cos\theta\,\mathbf e_x+\sin\theta\,\mathbf e_y]\,\mathrm{m/s^2}.
+\]</span></p>
+<p>En <span class="math inline">\(\theta=\pi/2\)</span> resultan <span class="math inline">\(\mathbf r=(0,-2)\,\mathrm m\)</span>, <span class="math inline">\(\mathbf v=(-2,0)\,\mathrm{m/s}\)</span> y <span class="math inline">\(\mathbf a=(0,2)\,\mathrm{m/s^2}\)</span>. El ángulo puede escribirse <span class="math inline">\(\varphi=-\theta\)</span>: el giro es horario. La rapidez vale siempre <span class="math inline">\(2\,\mathrm{m/s}\)</span> y el producto <span class="math inline">\(\mathbf v\cdot\mathbf a\)</span> es cero. En el punto inferior, el centro queda arriba y la aceleración apunta precisamente hacia él. Invertir el sentido del giro cambia la velocidad tangencial, pero conserva la dirección radial hacia el centro para una misma posición y rapidez.</p>
+</section>
+<section id="solucion-3-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-17">17. Una corriente demasiado rápida</h3>
+<p>Tomamos <span class="math inline">\(x\)</span> río abajo e <span class="math inline">\(y\)</span> transversalmente hacia la otra orilla. La corriente aporta <span class="math inline">\(3\,\mathrm{m/s}\)</span> a la componente <span class="math inline">\(x\)</span>. La embarcación sólo puede aportar, como máximo, <span class="math inline">\(2\,\mathrm{m/s}\)</span> río arriba respecto del agua, así que su componente <span class="math inline">\(x\)</span> respecto de tierra siempre es positiva. No puede llegar justo enfrente con ninguna dirección constante; tampoco podría hacerlo variando la dirección mientras mantenga esa cota de rapidez y esta corriente uniforme.</p>
+<p>Si apunta perpendicularmente a las orillas, su velocidad respecto de tierra es <span class="math inline">\((3,2)\,\mathrm{m/s}\)</span>. Cruza en seis segundos y deriva dieciocho metros.</p>
+<p>Para minimizar la deriva con dirección constante, escribimos la velocidad respecto del agua como <span class="math inline">\((2\sin\beta,2\cos\beta)\,\mathrm{m/s}\)</span>, donde <span class="math inline">\(-\pi/2&lt;\beta&lt;\pi/2\)</span> garantiza avance transversal. El tiempo de cruce es <span class="math inline">\(12/(2\cos\beta)\,\mathrm s\)</span> y la deriva es</p>
+<p><span class="math display">\[
+D(\beta)=6\frac{3+2\sin\beta}{\cos\beta}\,\mathrm m.
+\]</span></p>
+<p>Derivar el cociente produce</p>
+<p><span class="math display">\[
+\frac{dD}{d\beta}=6\frac{2+3\sin\beta}{\cos^2\beta}\,\mathrm m.
+\]</span></p>
+<p>La única raíz es <span class="math inline">\(\sin\beta=-2/3\)</span>, con <span class="math inline">\(\cos\beta=\sqrt5/3\)</span>. La derivada cambia de negativa a positiva allí, y <span class="math inline">\(D\)</span> tiende a infinito en ambos extremos del intervalo; es el mínimo global. La velocidad respecto del agua tiene componentes <span class="math inline">\((-4/3,2\sqrt5/3)\,\mathrm{m/s}\)</span>; respecto de tierra son <span class="math inline">\((5/3,2\sqrt5/3)\,\mathrm{m/s}\)</span>. El cruce dura <span class="math inline">\(18/\sqrt5\,\mathrm s\)</span> y la deriva mínima es <span class="math inline">\(6\sqrt5\,\mathrm m\)</span>, aproximadamente <span class="math inline">\(13,42\,\mathrm m\)</span>. Apuntar algo río arriba reduce la deriva, pero una orientación casi paralela a la orilla haría crecer demasiado el tiempo de cruce.</p>
+</section>
+<section id="solucion-3-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-18">18. Dos máximos de altura para dos observadores</h3>
+<p>La transformación resta el desplazamiento del nuevo origen en cada instante. Obtenemos</p>
+<p><span class="math display">\[
+\mathbf r'=[4\theta\mathbf e_x+(11\theta-5\theta^2)\mathbf e_y]\,\mathrm m,
+\qquad
+\mathbf v'=[4\mathbf e_x+(11-10\theta)\mathbf e_y]\,\mathrm{m/s}.
+\]</span></p>
+<p>La coordenada vertical de este observador se maximiza en <span class="math inline">\(t=1,1\,\mathrm s\)</span>, cuando <span class="math inline">\(v'_y=0\)</span>; su máximo es <span class="math inline">\(121/20\,\mathrm m=6,05\,\mathrm m\)</span>. En el marco original, el máximo ocurre en <span class="math inline">\(1,2\,\mathrm s\)</span> y vale <span class="math inline">\(7,2\,\mathrm m\)</span>. Se están comparando alturas respecto de orígenes cuya separación vertical aumenta: son funciones distintas y sus extremos pueden corresponder a eventos distintos.</p>
+<p>Al derivar otra vez, ambos observadores obtienen <span class="math inline">\(\mathbf a=-10\mathbf e_y\,\mathrm{m/s^2}\)</span>. La velocidad constante que los separa desaparece en esa derivación. La igualdad de aceleraciones no obliga a que coincidan las velocidades ni los instantes de sus componentes verticales nulas.</p>
+</section>
+<section id="solucion-3-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-19">19. Garantizar el paso con datos acotados</h3>
+<p>El instante de paso no es un dato independiente de <span class="math inline">\(v_{0x}\)</span>: cada componente horizontal admisible produce su propio tiempo. Por eso sustituimos <span class="math inline">\(t=X/v_{0x}\)</span> antes de propagar las cotas. Para estudiar la función de dos entradas mantendremos una fija y derivaremos respecto de la otra; eso es lo que indican los símbolos <span class="math inline">\(\partial\)</span> de las derivadas parciales siguientes. Sólo necesitamos derivadas de funciones de una variable en cada comparación.</p>
+<p>Como <span class="math inline">\(v_{0x}&gt;0\)</span>, cada lanzamiento alcanza la vertical elegida en el tiempo <span class="math inline">\(t=X/v_{0x}\)</span>. Su altura allí es</p>
+<p><span class="math display">\[
+Y(v_{0x},v_{0y})=\frac{Xv_{0y}}{v_{0x}}
+-\frac{gX^2}{2v_{0x}^2},\qquad X=12\,\mathrm m.
+\]</span></p>
+<p>No basta con sustituir límites sin examinar cómo varía esta expresión: <span class="math inline">\(v_{0x}\)</span> aparece en dos denominadores con efectos opuestos. Sus derivadas son</p>
+<p><span class="math display">\[
+\frac{\partial Y}{\partial v_{0y}}=\frac{X}{v_{0x}}&gt;0,
+\qquad
+\frac{\partial Y}{\partial v_{0x}}=
+\frac{X(gX-v_{0y}v_{0x})}{v_{0x}^3}.
+\]</span></p>
+<p>En el rectángulo dado, <span class="math inline">\(v_{0y}v_{0x}\leq(12,1)(6,1)\,\mathrm{m^2/s^2}=73,81\,\mathrm{m^2/s^2}\)</span>, mientras que <span class="math inline">\(gX=120\,\mathrm{m^2/s^2}\)</span>. La derivada respecto de <span class="math inline">\(v_{0x}\)</span> también es positiva en todo el dominio. La altura aumenta con ambas componentes; sus extremos se alcanzan en la esquina con ambas componentes mínimas y en la esquina con ambas máximas, respectivamente:</p>
+<p><span class="math display">\[
+Y_{\min}=\frac{12252}{3481}\,\mathrm m,
+\qquad
+Y_{\max}=\frac{16572}{3721}\,\mathrm m.
+\]</span></p>
+<p>La imagen completa del rectángulo es ese intervalo: la continuidad y la variación a lo largo de la diagonal que une las esquinas aseguran todos los valores intermedios. Redondeando hacia afuera obtenemos una cota práctica <span class="math inline">\(Y\in[3,519;4,454]\,\mathrm m\)</span>. Está contenida en <span class="math inline">\([3,5;4,5]\,\mathrm m\)</span>, por lo que se garantiza el paso de la partícula puntual por esa abertura. No está contenida en <span class="math inline">\([3,8;4,2]\,\mathrm m\)</span>: algunos lanzamientos admisibles pasan fuera y no hay garantía para la abertura más estrecha.</p>
+<p>Las cotas se han propagado como restricciones deterministas. No se ha supuesto independencia estadística, distribución de errores ni una probabilidad de éxito. Una pelota de radio conocido exigiría reducir previamente el intervalo de alturas permitido para su centro, y la incertidumbre de <span class="math inline">\(g\)</span> o de <span class="math inline">\(X\)</span> añadiría variables al problema de cotas.</p>
+</section>
+<section id="solucion-3-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-3-20">20. Un teorema escalar que no se traslada entero</h3>
+<p>Los extremos del movimiento coinciden. Por tanto, <span class="math inline">\(\overline{\mathbf v}=\mathbf0\)</span>. Sin embargo,</p>
+<p><span class="math display">\[
+\mathbf v(t)=[-\sin\theta\,\mathbf e_x+\cos\theta\,\mathbf e_y]\,\mathrm{m/s},
+\qquad \|\mathbf v(t)\|=1\,\mathrm{m/s}
+\]</span></p>
+<p>en todo el intervalo. Ninguna velocidad instantánea es el vector cero, aunque la posición sea suave y se satisfagan todas las hipótesis escalares de regularidad.</p>
+<p>Para <span class="math inline">\(x(t)\)</span>, el teorema del valor medio encuentra una derivada nula en el instante interior <span class="math inline">\(t=\pi\,\mathrm s\)</span>. Para <span class="math inline">\(y(t)\)</span> encuentra derivadas nulas en <span class="math inline">\(t=(\pi/2)\,\mathrm s\)</span> y <span class="math inline">\(t=(3\pi/2)\,\mathrm s\)</span>. Los instantes que funcionan para una componente no funcionan para la otra. Aplicar el teorema por componentes garantiza la existencia de instantes que pueden ser diferentes; pedir un solo instante común añade una conclusión que el teorema no proporciona. El ejemplo del ejercicio 2 conserva su coincidencia particular sin autorizar esa generalización.</p>
+</section>
+</section>
+<section id="lecturas-de-apoyo" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-de-apoyo">Lecturas de apoyo</h2>
+<p>Las coordenadas temporales, las condiciones iniciales y la selección de eventos admisibles se desarrollan en los capítulos 1 y 2. El tratamiento de intervalos del capítulo 0 permite interpretar el ejercicio 19. Se utiliza cálculo de una variable aplicado componente a componente, producto escalar en una base ortonormal y trigonometría elemental; las derivadas de la base circular se construyen en el texto.</p>
+<p>Para el cotejo de la exposición se consultaron Young y Freedman, <em>Sears y Zemansky. Física universitaria</em>, vol.&nbsp;1, 13.ª ed.&nbsp;(Pearson, 2013), pasajes de §§3.1, 3.3–3.5, sobre velocidad vectorial, proyectiles, movimiento circular y velocidad relativa; y Serway y Jewett, <em>Física para ciencias e ingeniería</em>, vol.&nbsp;1, 10.ª ed.&nbsp;en español (Cengage, 2019), pasajes de §§4.2–4.4, sobre aceleración constante en el plano, proyectiles y movimiento circular. La coincidencia temática no implica reproducir sus enunciados: los datos, problemas, soluciones y figuras de este capítulo se han desarrollado para esta obra. El registro editorial distingue los pasajes consultados de los contenidos que no fueron objeto de cotejo.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-02-reconstruir-movimientos-en-una-recta.html">← 2. Reconstruir movimientos en una recta</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-04-fuerzas-y-leyes-de-newton.html">4. Fuerzas y leyes de Newton →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

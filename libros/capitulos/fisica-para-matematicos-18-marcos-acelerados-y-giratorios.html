@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 18 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>Marcos acelerados y giratorios – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#especificar-el-movimiento-del-observador" id="toc-especificar-el-movimiento-del-observador" class="nav-link active" data-scroll-target="#especificar-el-movimiento-del-observador">Especificar el movimiento del observador</a></li>
+  <li><a href="#derivar-la-posición-dos-veces" id="toc-derivar-la-posición-dos-veces" class="nav-link" data-scroll-target="#derivar-la-posición-dos-veces">Derivar la posición dos veces</a></li>
+  <li><a href="#formular-newton-en-las-coordenadas-móviles" id="toc-formular-newton-en-las-coordenadas-móviles" class="nav-link" data-scroll-target="#formular-newton-en-las-coordenadas-móviles">Formular Newton en las coordenadas móviles</a></li>
+  <li><a href="#reconstruir-la-partícula-liberada-de-la-plataforma" id="toc-reconstruir-la-partícula-liberada-de-la-plataforma" class="nav-link" data-scroll-target="#reconstruir-la-partícula-liberada-de-la-plataforma">Reconstruir la partícula liberada de la plataforma</a></li>
+  <li><a href="#reconocer-qué-energía-puede-conservarse" id="toc-reconocer-qué-energía-puede-conservarse" class="nav-link" data-scroll-target="#reconocer-qué-energía-puede-conservarse">Reconocer qué energía puede conservarse</a></li>
+  <li><a href="#aplicar-un-marco-giratorio-local-a-la-tierra" id="toc-aplicar-un-marco-giratorio-local-a-la-tierra" class="nav-link" data-scroll-target="#aplicar-un-marco-giratorio-local-a-la-tierra">Aplicar un marco giratorio local a la Tierra</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-18-1" id="toc-ejercicio-18-1" class="nav-link" data-scroll-target="#ejercicio-18-1">1. Un disco libre respecto de un carro</a></li>
+  <li><a href="#ejercicio-18-2" id="toc-ejercicio-18-2" class="nav-link" data-scroll-target="#ejercicio-18-2">2. Una báscula que puede perder el contacto</a></li>
+  <li><a href="#ejercicio-18-3" id="toc-ejercicio-18-3" class="nav-link" data-scroll-target="#ejercicio-18-3">3. Un péndulo en un carro acelerado</a></li>
+  <li><a href="#ejercicio-18-4" id="toc-ejercicio-18-4" class="nav-link" data-scroll-target="#ejercicio-18-4">4. Un vector fijo con componentes cambiantes</a></li>
+  <li><a href="#ejercicio-18-5" id="toc-ejercicio-18-5" class="nav-link" data-scroll-target="#ejercicio-18-5">5. Usar la transformación en tres dimensiones</a></li>
+  <li><a href="#ejercicio-18-6" id="toc-ejercicio-18-6" class="nav-link" data-scroll-target="#ejercicio-18-6">6. Reconstruir a la inversa</a></li>
+  <li><a href="#ejercicio-18-7" id="toc-ejercicio-18-7" class="nav-link" data-scroll-target="#ejercicio-18-7">7. Sostener un punto mientras cambia la rotación</a></li>
+  <li><a href="#ejercicio-18-8" id="toc-ejercicio-18-8" class="nav-link" data-scroll-target="#ejercicio-18-8">8. Seguir la liberación hasta un cuarto de giro</a></li>
+  <li><a href="#ejercicio-18-9" id="toc-ejercicio-18-9" class="nav-link" data-scroll-target="#ejercicio-18-9">9. Cambiar solamente la velocidad inicial</a></li>
+  <li><a href="#ejercicio-18-10" id="toc-ejercicio-18-10" class="nav-link" data-scroll-target="#ejercicio-18-10">10. Decidir si se puede omitir Coriolis</a></li>
+  <li><a href="#ejercicio-18-11" id="toc-ejercicio-18-11" class="nav-link" data-scroll-target="#ejercicio-18-11">11. Una energía relativa que cambia y una suma que permanece</a></li>
+  <li><a href="#ejercicio-18-12" id="toc-ejercicio-18-12" class="nav-link" data-scroll-target="#ejercicio-18-12">12. Imponer velocidad radial constante</a></li>
+  <li><a href="#ejercicio-18-13" id="toc-ejercicio-18-13" class="nav-link" data-scroll-target="#ejercicio-18-13">13. El trabajo de una pared móvil</a></li>
+  <li><a href="#ejercicio-18-14" id="toc-ejercicio-18-14" class="nav-link" data-scroll-target="#ejercicio-18-14">14. Estabilidad con un máximo efectivo</a></li>
+  <li><a href="#ejercicio-18-15" id="toc-ejercicio-18-15" class="nav-link" data-scroll-target="#ejercicio-18-15">15. Dejar libre la coordenada radial</a></li>
+  <li><a href="#ejercicio-18-16" id="toc-ejercicio-18-16" class="nav-link" data-scroll-target="#ejercicio-18-16">16. Hacer visible el término de Euler</a></li>
+  <li><a href="#ejercicio-18-17" id="toc-ejercicio-18-17" class="nav-link" data-scroll-target="#ejercicio-18-17">17. Norte y este en los ejes terrestres</a></li>
+  <li><a href="#ejercicio-18-18" id="toc-ejercicio-18-18" class="nav-link" data-scroll-target="#ejercicio-18-18">18. Predecir una caída desviada</a></li>
+  <li><a href="#ejercicio-18-19" id="toc-ejercicio-18-19" class="nav-link" data-scroll-target="#ejercicio-18-19">19. Trasladar cotas de medida a una predicción</a></li>
+  <li><a href="#ejercicio-18-20" id="toc-ejercicio-18-20" class="nav-link" data-scroll-target="#ejercicio-18-20">20. Construir la precesión de un péndulo lineal</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#solucion-18-1" id="toc-solucion-18-1" class="nav-link" data-scroll-target="#solucion-18-1">1. Un disco libre respecto de un carro</a></li>
+  <li><a href="#solucion-18-2" id="toc-solucion-18-2" class="nav-link" data-scroll-target="#solucion-18-2">2. Una báscula que puede perder el contacto</a></li>
+  <li><a href="#solucion-18-3" id="toc-solucion-18-3" class="nav-link" data-scroll-target="#solucion-18-3">3. Un péndulo en un carro acelerado</a></li>
+  <li><a href="#solucion-18-4" id="toc-solucion-18-4" class="nav-link" data-scroll-target="#solucion-18-4">4. Un vector fijo con componentes cambiantes</a></li>
+  <li><a href="#solucion-18-5" id="toc-solucion-18-5" class="nav-link" data-scroll-target="#solucion-18-5">5. Usar la transformación en tres dimensiones</a></li>
+  <li><a href="#solucion-18-6" id="toc-solucion-18-6" class="nav-link" data-scroll-target="#solucion-18-6">6. Reconstruir a la inversa</a></li>
+  <li><a href="#solucion-18-7" id="toc-solucion-18-7" class="nav-link" data-scroll-target="#solucion-18-7">7. Sostener un punto mientras cambia la rotación</a></li>
+  <li><a href="#solucion-18-8" id="toc-solucion-18-8" class="nav-link" data-scroll-target="#solucion-18-8">8. Seguir la liberación hasta un cuarto de giro</a></li>
+  <li><a href="#solucion-18-9" id="toc-solucion-18-9" class="nav-link" data-scroll-target="#solucion-18-9">9. Cambiar solamente la velocidad inicial</a></li>
+  <li><a href="#solucion-18-10" id="toc-solucion-18-10" class="nav-link" data-scroll-target="#solucion-18-10">10. Decidir si se puede omitir Coriolis</a></li>
+  <li><a href="#solucion-18-11" id="toc-solucion-18-11" class="nav-link" data-scroll-target="#solucion-18-11">11. Una energía relativa que cambia y una suma que permanece</a></li>
+  <li><a href="#solucion-18-12" id="toc-solucion-18-12" class="nav-link" data-scroll-target="#solucion-18-12">12. Imponer velocidad radial constante</a></li>
+  <li><a href="#solucion-18-13" id="toc-solucion-18-13" class="nav-link" data-scroll-target="#solucion-18-13">13. El trabajo de una pared móvil</a></li>
+  <li><a href="#solucion-18-14" id="toc-solucion-18-14" class="nav-link" data-scroll-target="#solucion-18-14">14. Estabilidad con un máximo efectivo</a></li>
+  <li><a href="#solucion-18-15" id="toc-solucion-18-15" class="nav-link" data-scroll-target="#solucion-18-15">15. Dejar libre la coordenada radial</a></li>
+  <li><a href="#solucion-18-16" id="toc-solucion-18-16" class="nav-link" data-scroll-target="#solucion-18-16">16. Hacer visible el término de Euler</a></li>
+  <li><a href="#solucion-18-17" id="toc-solucion-18-17" class="nav-link" data-scroll-target="#solucion-18-17">17. Norte y este en los ejes terrestres</a></li>
+  <li><a href="#solucion-18-18" id="toc-solucion-18-18" class="nav-link" data-scroll-target="#solucion-18-18">18. Predecir una caída desviada</a></li>
+  <li><a href="#solucion-18-19" id="toc-solucion-18-19" class="nav-link" data-scroll-target="#solucion-18-19">19. Trasladar cotas de medida a una predicción</a></li>
+  <li><a href="#solucion-18-20" id="toc-solucion-18-20" class="nav-link" data-scroll-target="#solucion-18-20">20. Construir la precesión de un péndulo lineal</a></li>
+  </ul></li>
+  <li><a href="#lecturas-y-conexiones" id="toc-lecturas-y-conexiones" class="nav-link" data-scroll-target="#lecturas-y-conexiones">Lecturas y conexiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Marcos acelerados y giratorios</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 18</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 18 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-17-dispersion-clasica.html">← 17. Dispersión clásica</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-19-cuerpo-rigido-en-tres-dimensiones.html">19. Cuerpo rígido en tres dimensiones →</a></p>
+<p>Una partícula está sujeta a una plataforma que gira uniformemente. Al soltarla, desaparece la fuerza horizontal que la mantenía en movimiento circular. Un observador del laboratorio ve que continúa por la tangente, mientras otro, ligado a la plataforma, registra una curva que se aleja del punto de liberación. Ambos describen el mismo movimiento. Para comparar sus ecuaciones necesitamos saber cómo cambia una derivada cuando también se mueven el origen y los ejes.</p>
+<p>Supondremos una plataforma horizontal ideal y una partícula que después de la liberación carece de fuerza horizontal: el peso y la normal se compensan verticalmente. Si el radio inicial es <span class="math inline">\(r_0\)</span> y la rapidez angular es <span class="math inline">\(\Omega&gt;0\)</span>, la velocidad inicial de laboratorio tiene magnitud <span class="math inline">\(\Omega r_0\)</span>. Obtendremos la trayectoria en ambos marcos, identificaremos los términos que curvan la descripción giratoria y comprobaremos que al reconstruir la aceleración de laboratorio vuelve a resultar cero.</p>
+<p>La comparación se desarrolla dentro de la mecánica newtoniana, con un tiempo común y transformaciones euclídeas dependientes de ese tiempo. Los relojes, las reglas y las velocidades se entienden en ese régimen clásico. La dinámica de quien hace girar la plataforma puede intercambiar energía con la partícula cuando hay vínculos; fijar el movimiento del marco constituye un dato del problema, no una ley de conservación para todo el dispositivo.</p>
+<section id="especificar-el-movimiento-del-observador" class="level2">
+<h2 class="anchored" data-anchor-id="especificar-el-movimiento-del-observador">Especificar el movimiento del observador</h2>
+<p><strong>Definición.</strong> Un marco móvil respecto de un marco inercial se describe por su origen <span class="math inline">\(\mathbf R(t)\)</span> y por una matriz de orientación <span class="math inline">\(Q(t)\)</span>, ambos de clase <span class="math inline">\(C^2\)</span> en el intervalo considerado, con <span class="math inline">\(Q^{\mathsf T}Q=I\)</span> y <span class="math inline">\(\det Q=1\)</span>. Las columnas de <span class="math inline">\(Q\)</span> son los ejes unitarios móviles expresados en el laboratorio. La posición de una partícula se relaciona con sus coordenadas móviles <span class="math inline">\(\boldsymbol\rho\)</span> mediante</p>
+<p><span class="math display">\[
+\mathbf x(t)=\mathbf R(t)+Q(t)\boldsymbol\rho(t).
+\]</span></p>
+<p>La matriz <span class="math inline">\(Q\)</span> transforma componentes móviles en componentes inerciales; su inversa es <span class="math inline">\(Q^{\mathsf T}\)</span>. Por ello <span class="math inline">\(\boldsymbol\rho=Q^{\mathsf T}(\mathbf x-\mathbf R)\)</span>. Ambas expresiones representan la misma separación física. Trasladar el origen modifica qué vector de posición usamos; girar los ejes modifica las componentes con que lo describimos.</p>
+<figure id="fig-fispm-r20261021-18-1" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/marcos_geometria.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="../../assets/books/fispm/r20261021/marcos_geometria.svg" alt="Posición y orientación del marco móvil" class="fpm-v04-figure img-fluid figure-img" width="900" height="610" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 18.1.</em> La posición se construye sumando el desplazamiento del origen móvil y la separación desde él. El factor <span class="math inline">\(Q\)</span> expresa esa separación en los ejes del laboratorio.</p>
+</figcaption>
+</figure>
+<p>Para derivar un vector representado en ejes móviles necesitamos conocer el cambio de los propios ejes. La ortogonalidad hace que esa información tenga una forma muy restringida.</p>
+<p><strong>Proposición.</strong> Existe un único vector <span class="math inline">\(\boldsymbol\omega(t)\)</span>, expresado en componentes móviles, tal que</p>
+<p><span class="math display">\[
+Q^{\mathsf T}\dot Q\,\mathbf a=\boldsymbol\omega\times\mathbf a
+\quad\text{para todo }\mathbf a\in\mathbb R^3.
+\]</span></p>
+<p>Para cualquier vector físico <span class="math inline">\(\mathbf A(t)=Q(t)\mathbf a(t)\)</span> con componentes móviles diferenciables se cumple la regla de transporte</p>
+<p><span class="math display">\[
+\frac{d\mathbf A}{dt}
+=Q\left(\dot{\mathbf a}+\boldsymbol\omega\times\mathbf a\right).
+\]</span></p>
+<p><strong>Demostración.</strong> Derivar <span class="math inline">\(Q^{\mathsf T}Q=I\)</span> da <span class="math inline">\(\dot Q^{\mathsf T}Q+Q^{\mathsf T}\dot Q=0\)</span>. Así, <span class="math inline">\(W=Q^{\mathsf T}\dot Q\)</span> es antisimétrica. Toda matriz antisimétrica de orden tres tiene una única escritura</p>
+<p><span class="math display">\[
+W=\begin{pmatrix}
+0&amp;-\omega_3&amp;\omega_2\\
+\omega_3&amp;0&amp;-\omega_1\\
+-\omega_2&amp;\omega_1&amp;0
+\end{pmatrix}.
+\]</span></p>
+<p>Multiplicarla por una columna <span class="math inline">\(\mathbf a\)</span> reproduce las tres componentes de <span class="math inline">\(\boldsymbol\omega\times\mathbf a\)</span>. La derivada ordinaria de <span class="math inline">\(\mathbf A=Q\mathbf a\)</span> es <span class="math inline">\(\dot Q\mathbf a+Q\dot{\mathbf a}\)</span>; al usar <span class="math inline">\(\dot Q=QW\)</span> aparece la fórmula de transporte. La unicidad proviene de las tres entradas independientes de <span class="math inline">\(W\)</span>. <span class="math inline">\(\square\)</span></p>
+<p>El vector físico de velocidad angular es <span class="math inline">\(Q\boldsymbol\omega\)</span>. La regla distingue el cambio de las componentes del cambio de la base. Para un vector fijo en el laboratorio, sus componentes móviles satisfacen <span class="math inline">\(\dot{\mathbf a}=-\boldsymbol\omega\times\mathbf a\)</span> y los dos términos se cancelan. Para un vector de componentes móviles constantes, toda la derivada procede de la rotación.</p>
+<p>En un giro plano de ángulo <span class="math inline">\(\theta(t)\)</span> alrededor de <span class="math inline">\(+z\)</span>,</p>
+<p><span class="math display">\[
+Q(t)=\begin{pmatrix}
+\cos\theta&amp;-\sin\theta&amp;0\\
+\sin\theta&amp;\cos\theta&amp;0\\
+0&amp;0&amp;1
+\end{pmatrix},
+\qquad \boldsymbol\omega=\dot\theta\,\mathbf e_z.
+\]</span></p>
+<p>El signo positivo significa giro antihorario visto desde <span class="math inline">\(+z\)</span> hacia el plano. Todas las componentes que aparecen juntas dentro de un producto vectorial se expresarán en la misma base móvil.</p>
+<figure id="fig-fispm-r20261021-18-2" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/marcos_transporte.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="../../assets/books/fispm/r20261021/marcos_transporte.svg" alt="Derivar un vector ligado a los ejes" class="fpm-v04-figure img-fluid figure-img" width="900" height="660" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 18.2.</em> Un vector de longitud fija ligado a un eje giratorio tiene derivada tangencial. El cambio de la base aporta <span class="math inline">\(\boldsymbol\omega\times\mathbf a\)</span> incluso cuando sus componentes permanecen constantes.</p>
+</figcaption>
+</figure>
+</section>
+<section id="derivar-la-posición-dos-veces" class="level2">
+<h2 class="anchored" data-anchor-id="derivar-la-posición-dos-veces">Derivar la posición dos veces</h2>
+<p><strong>Definición.</strong> La velocidad y la aceleración relativas son las derivadas de las coordenadas móviles,</p>
+<p><span class="math display">\[
+\mathbf v_{\mathrm{rel}}=\dot{\boldsymbol\rho},
+\qquad \mathbf a_{\mathrm{rel}}=\ddot{\boldsymbol\rho}.
+\]</span></p>
+<p>Son magnitudes medidas con respecto al origen y a los ejes móviles. La velocidad de laboratorio de una partícula con <span class="math inline">\(\mathbf v_{\mathrm{rel}}=0\)</span> puede ser distinta de cero, porque el origen se traslada y la separación gira.</p>
+<p><strong>Proposición.</strong> Las velocidades y aceleraciones de ambos marcos se relacionan por</p>
+<p><span class="math display">\[
+\dot{\mathbf x}=\dot{\mathbf R}
++Q\left(\mathbf v_{\mathrm{rel}}
++\boldsymbol\omega\times\boldsymbol\rho\right),
+\]</span></p>
+<p><span class="math display">\[
+\ddot{\mathbf x}=\ddot{\mathbf R}
++Q\left[\mathbf a_{\mathrm{rel}}
++2\boldsymbol\omega\times\mathbf v_{\mathrm{rel}}
++\dot{\boldsymbol\omega}\times\boldsymbol\rho
++\boldsymbol\omega\times(\boldsymbol\omega\times\boldsymbol\rho)\right].
+\]</span></p>
+<p><strong>Demostración.</strong> La primera fórmula resulta de derivar <span class="math inline">\(\mathbf R+Q\boldsymbol\rho\)</span> con la regla de transporte. Para la segunda, apliquemos esa misma regla al vector de componentes <span class="math inline">\(\mathbf v_{\mathrm{rel}}+\boldsymbol\omega\times\boldsymbol\rho\)</span>. La derivada de sus componentes aporta <span class="math inline">\(\mathbf a_{\mathrm{rel}}+\dot{\boldsymbol\omega}\times\boldsymbol\rho+\boldsymbol\omega\times\mathbf v_{\mathrm{rel}}\)</span>. La derivada de la base aporta además <span class="math inline">\(\boldsymbol\omega\times\mathbf v_{\mathrm{rel}}+\boldsymbol\omega\times(\boldsymbol\omega\times\boldsymbol\rho)\)</span>. Sumar ambas contribuciones explica el factor dos y da la expresión enunciada. <span class="math inline">\(\square\)</span></p>
+<p>La derivada <span class="math inline">\(\dot{\boldsymbol\omega}\)</span> de la fórmula es la derivada de las componentes móviles de la velocidad angular. Su correspondiente vector inercial es <span class="math inline">\(Q\dot{\boldsymbol\omega}\)</span>: al derivar <span class="math inline">\(Q\boldsymbol\omega\)</span>, el término adicional contiene <span class="math inline">\(\boldsymbol\omega\times\boldsymbol\omega=0\)</span>. Esta observación permite usar la fórmula también cuando varían el eje y la rapidez angular, sin mezclar componentes de dos sistemas.</p>
+<p>Las dimensiones sirven como control. Los términos <span class="math inline">\(\boldsymbol\omega\times\mathbf v_{\mathrm{rel}}\)</span>, <span class="math inline">\(\dot{\boldsymbol\omega}\times\boldsymbol\rho\)</span> y <span class="math inline">\(\boldsymbol\omega\times(\boldsymbol\omega\times\boldsymbol\rho)\)</span> tienen unidades de aceleración. El doble producto depende del cuadrado de la rapidez angular y apunta hacia el eje; el producto con <span class="math inline">\(\dot{\boldsymbol\omega}\)</span> depende de cómo cambia la rotación.</p>
+</section>
+<section id="formular-newton-en-las-coordenadas-móviles" class="level2">
+<h2 class="anchored" data-anchor-id="formular-newton-en-las-coordenadas-móviles">Formular Newton en las coordenadas móviles</h2>
+<p>Sea <span class="math inline">\(\mathbf F\)</span> la suma de fuerzas de interacción sobre una partícula de masa constante <span class="math inline">\(m&gt;0\)</span>, y sean</p>
+<p><span class="math display">\[
+\mathbf F'=Q^{\mathsf T}\mathbf F,
+\qquad \mathbf A'=Q^{\mathsf T}\ddot{\mathbf R}
+\]</span></p>
+<p>sus componentes móviles y la aceleración del origen expresada en esa base. La segunda ley en el laboratorio permite despejar qué aceleración registrará el observador móvil.</p>
+<p><strong>Proposición.</strong> La ecuación dinámica en el marco móvil es</p>
+<p><span class="math display">\[
+m\mathbf a_{\mathrm{rel}}=\mathbf F'
+-m\mathbf A'
+-2m\boldsymbol\omega\times\mathbf v_{\mathrm{rel}}
+-m\dot{\boldsymbol\omega}\times\boldsymbol\rho
+-m\boldsymbol\omega\times(\boldsymbol\omega\times\boldsymbol\rho).
+\]</span></p>
+<p>En un intervalo, el marco describe todas las partículas libres mediante movimientos rectilíneos uniformes si y sólo si <span class="math inline">\(\boldsymbol\omega=0\)</span> y <span class="math inline">\(\ddot{\mathbf R}=0\)</span> durante ese intervalo.</p>
+<p><strong>Demostración.</strong> Sustituir la transformación de aceleraciones en <span class="math inline">\(m\ddot{\mathbf x}=\mathbf F\)</span>, multiplicar por <span class="math inline">\(Q^{\mathsf T}\)</span> y despejar produce la ecuación. Para caracterizar los marcos inerciales, fijemos un instante y una posición y comparemos dos partículas libres con velocidades relativas arbitrarias. Si ambas tienen aceleración relativa nula, restar sus ecuaciones da <span class="math inline">\(\boldsymbol\omega\times(\mathbf v_1-\mathbf v_2)=0\)</span> para toda diferencia de velocidades. Esto exige <span class="math inline">\(\boldsymbol\omega=0\)</span>. Al cumplirse en todo el intervalo, también <span class="math inline">\(\dot{\boldsymbol\omega}=0\)</span>, y la ecuación libre restante exige <span class="math inline">\(\mathbf A'=0\)</span>, equivalente a <span class="math inline">\(\ddot{\mathbf R}=0\)</span>. Recíprocamente, esas condiciones dejan <span class="math inline">\(m\mathbf a_{\mathrm{rel}}=\mathbf F'\)</span>, de modo que toda partícula libre tiene velocidad relativa constante. <span class="math inline">\(\square\)</span></p>
+<p>Los cuatro términos añadidos reciben los nombres de fuerza de inercia traslacional, fuerza de Coriolis, fuerza de Euler y fuerza centrífuga, en el orden en que aparecen. Su origen está en la descripción cinemática del marco. Las fuerzas de interacción, como la tensión, el peso o el empuje de una pared, se identifican por los cuerpos que interactúan. Una pareja de acción y reacción une dos cuerpos; la corrección centrífuga y una fuerza centrípeta sobre la misma partícula cumplen funciones distintas en la ecuación.</p>
+<p>La dirección centrífuga se reconoce con el producto triple. Si <span class="math inline">\(\boldsymbol\rho_\perp\)</span> es la proyección de la posición sobre el plano perpendicular al eje y <span class="math inline">\(\omega=\|\boldsymbol\omega\|\)</span>, entonces</p>
+<p><span class="math display">\[
+-m\boldsymbol\omega\times(\boldsymbol\omega\times\boldsymbol\rho)
+=m\omega^2\boldsymbol\rho_\perp.
+\]</span></p>
+<p>En un giro con <span class="math inline">\(\boldsymbol\omega=\Omega\mathbf e_z\)</span>, una velocidad relativa hacia <span class="math inline">\(+x\)</span> produce corrección de Coriolis hacia <span class="math inline">\(-y\)</span>. Si además <span class="math inline">\(\dot\Omega&gt;0\)</span>, la corrección de Euler sobre una partícula situada en <span class="math inline">\(+x\)</span> apunta también hacia <span class="math inline">\(-y\)</span>, aunque puede existir cuando la velocidad relativa es cero. La dependencia de cada término permite distinguirlos mediante estados preparados de manera diferente.</p>
+<figure id="fig-fispm-r20261021-18-3" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/marcos_correcciones.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="../../assets/books/fispm/r20261021/marcos_correcciones.svg" alt="Términos añadidos en cuatro preparaciones" class="fpm-v04-figure img-fluid figure-img" width="900" height="635" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 18.3.</em> Direcciones de las correcciones traslacional, centrífuga, de Coriolis y de Euler en cuatro ejemplos planos. Las flechas representan términos de la ecuación móvil; cada panel declara la preparación que los produce.</p>
+</figcaption>
+</figure>
+<p>Para ejes que sólo se trasladan, <span class="math inline">\(Q\)</span> es constante y queda <span class="math inline">\(m\mathbf a_{\mathrm{rel}}=\mathbf F'-m\mathbf A'\)</span>. Un disco horizontal libre permanece en reposo en el laboratorio si ése era su estado inicial. Respecto de un carro que acelera hacia <span class="math inline">\(+x\)</span>, su coordenada disminuye con aceleración <span class="math inline">\(-A\)</span>. Si una pared lo obliga a acompañar al carro, debe ejercer una fuerza física <span class="math inline">\(mA\)</span> hacia adelante; el término traslacional se compensa en el balance de reposo relativo.</p>
+<p>En un campo uniforme <span class="math inline">\(\mathbf g\)</span> y con traslación de aceleración constante, se puede agrupar la gravedad y la corrección del marco en <span class="math inline">\(\mathbf g_{\mathrm{ef}}=\mathbf g-\mathbf A'\)</span>. La dirección de una cuerda en equilibrio y la lectura de un apoyo se obtienen entonces con el balance de fuerzas. Para una báscula horizontal en un ascensor de aceleración vertical <span class="math inline">\(A_z\)</span>, el contacto estacionario requiere <span class="math inline">\(N=m(g+A_z)\)</span> y <span class="math inline">\(N\ge0\)</span>. Una normal negativa indica que la hipótesis de contacto debe abandonarse.</p>
+<figure id="fig-fispm-r20261021-18-4" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/marcos_gravedad_efectiva.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="../../assets/books/fispm/r20261021/marcos_gravedad_efectiva.svg" alt="Gravedad efectiva en un carro acelerado" class="fpm-v04-figure img-fluid figure-img" width="900" height="640" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 18.4.</em> Un péndulo en reposo respecto de un carro acelerado se inclina hacia atrás. La tensión compensa el peso y la corrección traslacional; la aceleración efectiva apunta en la dirección de la cuerda hacia la masa.</p>
+</figcaption>
+</figure>
+</section>
+<section id="reconstruir-la-partícula-liberada-de-la-plataforma" class="level2">
+<h2 class="anchored" data-anchor-id="reconstruir-la-partícula-liberada-de-la-plataforma">Reconstruir la partícula liberada de la plataforma</h2>
+<p>La partícula inicial estaba en reposo relativo antes de soltarla. Tomemos un origen fijo, <span class="math inline">\(Q(0)=I\)</span>, radio inicial <span class="math inline">\((r_0,0)\)</span> y rotación uniforme <span class="math inline">\(\Omega&gt;0\)</span>. La velocidad de laboratorio en el instante de liberación es <span class="math inline">\((0,\Omega r_0)\)</span>. Al desaparecer la fuerza horizontal, la posición inercial resulta <span class="math inline">\((r_0,\Omega r_0t)\)</span>.</p>
+<p><strong>Proposición.</strong> Para esa liberación, con <span class="math inline">\(\tau=\Omega t\)</span>, las coordenadas giratorias son</p>
+<p><span class="math display">\[
+\rho_x=r_0(\cos\tau+\tau\sin\tau),
+\qquad
+\rho_y=r_0(-\sin\tau+\tau\cos\tau).
+\]</span></p>
+<p>Su velocidad relativa y su distancia al origen cumplen</p>
+<p><span class="math display">\[
+\mathbf v_{\mathrm{rel}}=r_0\Omega\tau(\cos\tau,-\sin\tau),
+\qquad
+\|\boldsymbol\rho\|=r_0\sqrt{1+\tau^2}.
+\]</span></p>
+<p><strong>Demostración.</strong> Multiplicar la recta inercial <span class="math inline">\((r_0,\Omega r_0t)\)</span> por la rotación inversa de ángulo <span class="math inline">\(-\Omega t\)</span> da las dos coordenadas. Al derivarlas, los términos provenientes de seno y coseno se cancelan parcialmente y quedan <span class="math inline">\(d\rho_x/d\tau=r_0\tau\cos\tau\)</span>, <span class="math inline">\(d\rho_y/d\tau=-r_0\tau\sin\tau\)</span>; multiplicar por <span class="math inline">\(\Omega\)</span> produce la velocidad. Al sumar los cuadrados de las posiciones, los términos cruzados se cancelan y resulta <span class="math inline">\(r_0^2(1+\tau^2)\)</span>. La reconstrucción mediante <span class="math inline">\(Q\)</span> devuelve la recta, que satisface los datos y la ecuación inercial libre. <span class="math inline">\(\square\)</span></p>
+<p>En el instante inicial, la velocidad relativa es cero y la aceleración relativa vale <span class="math inline">\((\Omega^2r_0,0)\)</span>. La corrección centrífuga explica ese comienzo radial. A medida que aparece velocidad relativa, Coriolis modifica su dirección y la curva se desvía respecto de la prolongación radial. Derivar otra vez la solución da</p>
+<p><span class="math display">\[
+\mathbf a_{\mathrm{rel}}=r_0\Omega^2
+(\cos\tau-\tau\sin\tau,-\sin\tau-\tau\cos\tau),
+\]</span></p>
+<p>que coincide con <span class="math inline">\(-2\boldsymbol\omega\times\mathbf v_{\mathrm{rel}}-\boldsymbol\omega\times(\boldsymbol\omega\times\boldsymbol\rho)\)</span>. Todos esos términos reconstruyen aceleración inercial cero. Su presencia en la ecuación giratoria es compatible con la ausencia de fuerza horizontal después de la liberación.</p>
+<figure id="fig-fispm-r20261021-18-5" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/marcos_particula_libre.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="../../assets/books/fispm/r20261021/marcos_particula_libre.svg" alt="La misma liberación en dos marcos" class="fpm-v04-figure img-fluid figure-img" width="900" height="650" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 18.5.</em> La trayectoria de laboratorio es una recta tangente al círculo inicial. La trayectoria relativa es curva. Los puntos numerados representan los mismos instantes <span class="math inline">\(\tau=0,1,2\)</span> y ambos paneles usan escalas iguales en sus ejes.</p>
+</figcaption>
+</figure>
+<p>Si se preparara la partícula en reposo en el laboratorio, su velocidad relativa inicial sería <span class="math inline">\(-\boldsymbol\omega\times\boldsymbol\rho_0\)</span>. Sus coordenadas móviles recorrerían una circunferencia en sentido contrario al giro. La diferencia entre ambos problemas está en la velocidad inicial, antes de resolver ninguna ecuación.</p>
+</section>
+<section id="reconocer-qué-energía-puede-conservarse" class="level2">
+<h2 class="anchored" data-anchor-id="reconocer-qué-energía-puede-conservarse">Reconocer qué energía puede conservarse</h2>
+<p>Un producto escalar inmediato muestra que la corrección de Coriolis tiene potencia relativa nula:</p>
+<p><span class="math display">\[
+\mathbf v_{\mathrm{rel}}\cdot
+(-2m\boldsymbol\omega\times\mathbf v_{\mathrm{rel}})=0.
+\]</span></p>
+<p>Esto se refiere a la velocidad relativa. Una fuerza de vínculo puede tener potencia nula respecto de esa velocidad y transferir energía en el laboratorio si su punto de aplicación se mueve con la plataforma. Las velocidades y los balances de trabajo deben pertenecer al marco en que se formula cada afirmación.</p>
+<p>Restrinjamos primero el análisis a origen fijo, velocidad angular constante y fuerzas conservativas cuya energía potencial es estacionaria en coordenadas giratorias, <span class="math inline">\(U'(\boldsymbol\rho)\)</span>. Se permiten además reacciones ideales <span class="math inline">\(\mathbf N'\)</span> que satisfacen <span class="math inline">\(\mathbf N'\cdot\mathbf v_{\mathrm{rel}}=0\)</span>.</p>
+<p><strong>Definición.</strong> Bajo esas condiciones, el potencial efectivo giratorio es</p>
+<p><span class="math display">\[
+U_{\mathrm{ef}}(\boldsymbol\rho)
+=U'(\boldsymbol\rho)-\frac m2
+\|\boldsymbol\omega\times\boldsymbol\rho\|^2.
+\]</span></p>
+<p>El término centrífugo queda representado por una energía potencial negativa que disminuye al aumentar la distancia al eje. Su uso depende de la rotación constante y de la estacionariedad declarada.</p>
+<p><strong>Proposición.</strong> Si <span class="math inline">\(\mathbf F'=-\nabla U'+\mathbf N'\)</span> bajo las condiciones anteriores, la cantidad</p>
+<p><span class="math display">\[
+\mathcal J=\frac m2\|\mathbf v_{\mathrm{rel}}\|^2
++U_{\mathrm{ef}}(\boldsymbol\rho)
+\]</span></p>
+<p>es constante. Para un origen inercial fijo, se puede escribir también</p>
+<p><span class="math display">\[
+\mathcal J=E_{\mathrm{lab}}
+-\boldsymbol\Omega\cdot\mathbf L_{\mathrm{lab}},
+\qquad \boldsymbol\Omega=Q\boldsymbol\omega,
+\]</span></p>
+<p>con energía y momento angular respecto de ese origen, usando el mismo potencial físico.</p>
+<p><strong>Demostración.</strong> Para <span class="math inline">\(\boldsymbol\omega\)</span> constante, el gradiente de <span class="math inline">\(-m\|\boldsymbol\omega\times\boldsymbol\rho\|^2/2\)</span> es <span class="math inline">\(m\boldsymbol\omega\times(\boldsymbol\omega\times\boldsymbol\rho)\)</span>. La ecuación móvil se escribe entonces <span class="math inline">\(m\mathbf a_{\mathrm{rel}}=-\nabla U_{\mathrm{ef}}+\mathbf N'-2m\boldsymbol\omega\times\mathbf v_{\mathrm{rel}}\)</span>. Tomar producto escalar con <span class="math inline">\(\mathbf v_{\mathrm{rel}}\)</span> anula los dos últimos trabajos y produce <span class="math inline">\(d\mathcal J/dt=0\)</span>. Para verificar la segunda forma, usemos <span class="math inline">\(\dot{\mathbf x}=Q(\mathbf v_{\mathrm{rel}}+\boldsymbol\omega\times\boldsymbol\rho)\)</span> y <span class="math inline">\(\mathbf x-\mathbf R=Q\boldsymbol\rho\)</span>. Expandir el cuadrado de la rapidez en <span class="math inline">\(E_{\mathrm{lab}}\)</span> y restar <span class="math inline">\(\boldsymbol\Omega\cdot\mathbf L_{\mathrm{lab}}=m(\boldsymbol\omega\times\boldsymbol\rho)\cdot(\mathbf v_{\mathrm{rel}}+\boldsymbol\omega\times\boldsymbol\rho)\)</span> cancela el término cruzado y deja <span class="math inline">\(\mathcal J\)</span>. La igualdad es algebraica; su constancia procede del balance ya demostrado. <span class="math inline">\(\square\)</span></p>
+<p>El potencial físico puede depender del tiempo en el laboratorio si gira con el dispositivo. En ese caso, la constancia de <span class="math inline">\(\mathcal J\)</span> no obliga a que <span class="math inline">\(E_{\mathrm{lab}}\)</span> y <span class="math inline">\(\mathbf L_{\mathrm{lab}}\)</span> se conserven por separado. Para la partícula libre de la plataforma, <span class="math inline">\(U'=0\)</span> y se obtiene <span class="math inline">\(\mathcal J=-m\Omega^2r_0^2/2\)</span>: la energía cinética relativa crece mientras el potencial centrífugo disminuye en la misma cantidad.</p>
+<figure id="fig-fispm-r20261021-18-6" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/marcos_energia.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="../../assets/books/fispm/r20261021/marcos_energia.svg" alt="Balance energético de la partícula libre" class="fpm-v04-figure img-fluid figure-img" width="900" height="640" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 18.6.</em> En unidades de <span class="math inline">\(m\Omega^2r_0^2/2\)</span>, la energía cinética relativa es <span class="math inline">\(\tau^2\)</span>, el potencial centrífugo es <span class="math inline">\(-(1+\tau^2)\)</span> y su suma permanece en <span class="math inline">\(-1\)</span>.</p>
+</figcaption>
+</figure>
+<p>La forma de <span class="math inline">\(\mathcal J\)</span> también invita a preguntar qué información aporta su signo. Para un oscilador armónico isótropo de frecuencia <span class="math inline">\(\omega_0=\sqrt{k/m}&gt;0\)</span>, observado desde un giro plano uniforme, <span class="math inline">\(U_{\mathrm{ef}}=m(\omega_0^2-\Omega^2)\|\boldsymbol\rho\|^2/2\)</span>. Cuando <span class="math inline">\(|\Omega|&gt;\omega_0\)</span>, ese potencial tiene un máximo en el origen. La energía de laboratorio ofrece otra forma conservada,</p>
+<p><span class="math display">\[
+\mathcal H=\frac m2\left(
+\|\mathbf v_{\mathrm{rel}}+\Omega J\boldsymbol\rho\|^2
++\omega_0^2\|\boldsymbol\rho\|^2\right),
+\qquad J(\rho_x,\rho_y)=(-\rho_y,\rho_x).
+\]</span></p>
+<p>Es positiva para todo estado distinto del equilibrio y controla sus dos componentes, posición y velocidad. El cuadrado de posición controla <span class="math inline">\(\boldsymbol\rho\)</span>; el otro cuadrado controla la velocidad inercial, y su diferencia con <span class="math inline">\(\Omega J\boldsymbol\rho\)</span> controla la relativa. Ambas coordenadas permanecen pequeñas al preparar una energía pequeña. El problema 14 desarrolla cotas uniformes y muestra cómo el cambio de referencia permite aprovechar la solución armónica del capítulo 10. El criterio de un mínimo efectivo conserva su utilidad como condición suficiente de confinamiento; el movimiento giroscópico pide examinar también el balance completo.</p>
+<p>Una cuenta sobre una varilla radial giratoria permite examinar el papel de un vínculo. Si se desliza sin rozamiento y no hay fuerza aplicada a lo largo de la varilla, su coordenada satisface <span class="math inline">\(\ddot r=\Omega^2r\)</span>; la reacción transversal de la varilla es <span class="math inline">\(2m\Omega\dot r\)</span>. Su potencia relativa es cero porque resulta perpendicular al deslizamiento. En el laboratorio, el punto de contacto tiene componente transversal de velocidad <span class="math inline">\(\Omega r\)</span> y la reacción realiza trabajo a razón <span class="math inline">\(2m\Omega^2r\dot r\)</span>. El mecanismo que mantiene la rotación aporta esa energía. Los ejercicios comparan este movimiento con otro donde un actuador fija una velocidad radial constante.</p>
+<figure id="fig-fispm-r20261021-18-7" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/marcos_ranura.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="../../assets/books/fispm/r20261021/marcos_ranura.svg" alt="Fuerzas y velocidades en una ranura giratoria" class="fpm-v04-figure img-fluid figure-img" width="900" height="620" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 18.7.</em> Para un deslizamiento radial hacia afuera, Coriolis apunta hacia atrás en la ecuación móvil. La pared ejerce una reacción física hacia adelante que mantiene la cuenta dentro de la ranura. El trabajo de esa reacción depende de la velocidad usada en el balance.</p>
+</figcaption>
+</figure>
+</section>
+<section id="aplicar-un-marco-giratorio-local-a-la-tierra" class="level2">
+<h2 class="anchored" data-anchor-id="aplicar-un-marco-giratorio-local-a-la-tierra">Aplicar un marco giratorio local a la Tierra</h2>
+<p>En una región pequeña fijamos ejes este, norte y arriba, con <span class="math inline">\(\mathbf e_E\times\mathbf e_N=\mathbf e_U\)</span>. A latitud <span class="math inline">\(\lambda\)</span>, las componentes de la velocidad angular terrestre son</p>
+<p><span class="math display">\[
+\boldsymbol\omega=(0,\Omega\cos\lambda,\Omega\sin\lambda).
+\]</span></p>
+<p>El valor local <span class="math inline">\(g\)</span> incorporará el equilibrio de referencia entre gravitación y aceleración del marco, incluida la contribución centrífuga en el punto elegido. Para desplazamientos pequeños respecto del radio terrestre, podemos tratar esa gravedad efectiva como uniforme y estudiar por separado la corrección de Coriolis. Se omiten sus variaciones espaciales y la del campo gravitatorio, además de rozamiento y efectos atmosféricos en los ejemplos ideales.</p>
+<p>Una velocidad hacia el norte produce aceleración de Coriolis hacia el este en el hemisferio norte. Una velocidad hacia el este produce componentes hacia el sur y hacia arriba. Esas direcciones se calculan con el producto vectorial y dependen de la latitud y de la dirección de movimiento. Cerca del ecuador, la componente vertical de la rotación se anula, pero la componente horizontal permanece y puede desviar una caída vertical.</p>
+<p>Para una partícula soltada desde reposo relativo a altura <span class="math inline">\(H\)</span>, el movimiento vertical dominante es <span class="math inline">\(v_U=-gt\)</span>. Sustituirlo en el término de Coriolis da, al primer orden en <span class="math inline">\(\Omega\)</span>,</p>
+<p><span class="math display">\[
+\ddot x_E=2\Omega g t\cos\lambda,
+\qquad
+x_E(t)=\frac{\Omega g\cos\lambda}{3}t^3,
+\qquad
+T_0=\sqrt{\frac{2H}{g}}.
+\]</span></p>
+<p>La desviación es hacia el este. La sustitución se justifica porque la velocidad horizontal inducida es ya de primer orden en <span class="math inline">\(\Omega\)</span>; volver a introducirla en Coriolis produce correcciones de orden superior. El parámetro temporal es <span class="math inline">\(\Omega T_0\ll1\)</span>. También se necesita <span class="math inline">\(H\)</span> pequeño frente al radio terrestre para sostener el modelo local, y un control independiente de las fuerzas atmosféricas si se busca interpretar una medición. La pequeñez de un término respecto de la caída vertical puede coexistir con una desviación horizontal medible.</p>
+<figure id="fig-fispm-r20261021-18-8" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/marcos_tierra.svg" class="lightbox" data-gallery="fispm-r20261021-c18"><img src="../../assets/books/fispm/r20261021/marcos_tierra.svg" alt="Componentes de rotación y desviación local" class="fpm-v04-figure img-fluid figure-img" width="900" height="660" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 18.8.</em> La rotación se descompone en los ejes locales. En una caída vertical, su componente hacia el norte produce desviación al este. El desplazamiento horizontal del dibujo está ampliado para mostrar el signo del efecto.</p>
+</figcaption>
+</figure>
+<p>En un péndulo de pequeña amplitud, las componentes horizontales de Coriolis acoplan las dos direcciones de oscilación. El último problema construye la precesión dentro de un modelo lineal declarado y distingue la solución exacta de ese modelo de la precisión de sus aproximaciones físicas. La regla de transporte, por su parte, queda disponible para describir el momento angular de un cuerpo rígido desde ejes ligados al propio cuerpo.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Salvo indicación contraria, se usan unidades SI, los vectores de una misma fórmula están expresados en la base móvil y el marco inercial de referencia es clásico. En los giros planos, <span class="math inline">\(+z\)</span> sale de la hoja y el giro positivo es antihorario. Los ejemplos terrestres usan los datos ideales redondeados <span class="math inline">\(\Omega=7{,}30\times10^{-5}\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(g=9{,}80\,\mathrm{m/s^2}\)</span>.</p>
+<section id="ejercicio-18-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-1">1. Un disco libre respecto de un carro</h3>
+<p>Un carro parte del reposo y su origen tiene aceleración constante <span class="math inline">\(A=3\,\mathrm{m/s^2}\)</span> hacia <span class="math inline">\(+x\)</span>, sin girar. Un disco horizontal libre parte en reposo en el laboratorio desde el mismo origen. Halle su posición, velocidad y aceleración relativas al cabo de <span class="math inline">\(2\,\mathrm s\)</span>, y reconstruya el movimiento de laboratorio.</p>
+</section>
+<section id="ejercicio-18-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-2">2. Una báscula que puede perder el contacto</h3>
+<p>Una persona de masa <span class="math inline">\(60\,\mathrm{kg}\)</span> está sobre el piso de un ascensor. Con <span class="math inline">\(g=9{,}8\,\mathrm{m/s^2}\)</span>, calcule la normal que exigiría el reposo relativo para aceleraciones del ascensor <span class="math inline">\(A_z=2,-9{,}8,-12\,\mathrm{m/s^2}\)</span>. Decida cuándo esa hipótesis es físicamente posible y describa la aceleración relativa justo después de perder el contacto.</p>
+</section>
+<section id="ejercicio-18-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-3">3. Un péndulo en un carro acelerado</h3>
+<p>Un carro acelera horizontalmente a <span class="math inline">\(A=3\,\mathrm{m/s^2}\)</span>. Un péndulo ideal de longitud <span class="math inline">\(\ell=0{,}5\,\mathrm m\)</span> y masa <span class="math inline">\(0{,}2\,\mathrm{kg}\)</span> cuelga en su interior. Use <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span>. Halle la inclinación de equilibrio, la tensión y el período de pequeñas oscilaciones alrededor de ese equilibrio; explique cómo aparece la gravedad efectiva.</p>
+</section>
+<section id="ejercicio-18-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-4">4. Un vector fijo con componentes cambiantes</h3>
+<p>Los ejes giran con <span class="math inline">\(\theta=2t\)</span>, y el vector físico <span class="math inline">\(\mathbf A=\mathbf e_x\)</span> permanece fijo en el laboratorio. Obtenga sus componentes móviles y su derivada ordinaria. Evalúe ambos términos de la regla de transporte en <span class="math inline">\(t=\pi/4\,\mathrm s\)</span> y compruebe que la derivada física es cero.</p>
+</section>
+<section id="ejercicio-18-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-5">5. Usar la transformación en tres dimensiones</h3>
+<p>En un instante se dan <span class="math inline">\(\boldsymbol\omega=(1,2,3)\,\mathrm{s^{-1}}\)</span>, <span class="math inline">\(\dot{\boldsymbol\omega}=(0,1,-1)\,\mathrm{s^{-2}}\)</span>, <span class="math inline">\(\boldsymbol\rho=(2,-1,1)\,\mathrm m\)</span>, <span class="math inline">\(\mathbf v_{\mathrm{rel}}=(-1,2,0)\,\mathrm{m/s}\)</span>, <span class="math inline">\(\mathbf a_{\mathrm{rel}}=(0{,}5,-0{,}5,1)\,\mathrm{m/s^2}\)</span> y <span class="math inline">\(\mathbf A'=(2,0,-1)\,\mathrm{m/s^2}\)</span>. Calcule las componentes móviles de la aceleración inercial <span class="math inline">\(Q^{\mathsf T}\ddot{\mathbf x}\)</span>, separando cada contribución.</p>
+</section>
+<section id="ejercicio-18-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-6">6. Reconstruir a la inversa</h3>
+<p>En un instante, <span class="math inline">\(Q\)</span> gira <span class="math inline">\(90^\circ\)</span> alrededor de <span class="math inline">\(+z\)</span>, <span class="math inline">\(\boldsymbol\rho=(2,-1)\,\mathrm m\)</span>, <span class="math inline">\(\boldsymbol\omega=2\mathbf e_z\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(\dot{\boldsymbol\omega}=0{,}5\mathbf e_z\,\mathrm{s^{-2}}\)</span>. En el laboratorio se dan <span class="math inline">\(\dot{\mathbf R}=(1,0)\,\mathrm{m/s}\)</span>, <span class="math inline">\(\ddot{\mathbf R}=(2,-1)\,\mathrm{m/s^2}\)</span>, <span class="math inline">\(\dot{\mathbf x}=(0,5)\,\mathrm{m/s}\)</span> y <span class="math inline">\(\ddot{\mathbf x}=(-6,4)\,\mathrm{m/s^2}\)</span>. Halle <span class="math inline">\(\mathbf v_{\mathrm{rel}}\)</span> y <span class="math inline">\(\mathbf a_{\mathrm{rel}}\)</span>.</p>
+</section>
+<section id="ejercicio-18-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-7">7. Sostener un punto mientras cambia la rotación</h3>
+<p>Una masa de <span class="math inline">\(2\,\mathrm{kg}\)</span> está fija en el marco móvil en <span class="math inline">\(\boldsymbol\rho=(0{,}5,0)\,\mathrm m\)</span>. El origen permanece fijo, la rapidez angular instantánea es <span class="math inline">\(\Omega=3\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(\dot\Omega=2\,\mathrm{s^{-2}}\)</span>. Calcule la fuerza horizontal de interacción necesaria y las correcciones centrífuga y de Euler. Examine por qué aparece Euler aun estando la masa en reposo relativo.</p>
+</section>
+<section id="ejercicio-18-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-8">8. Seguir la liberación hasta un cuarto de giro</h3>
+<p>En el problema de apertura, tome <span class="math inline">\(r_0=2\,\mathrm m\)</span>, <span class="math inline">\(\Omega=1\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(t=\pi/2\,\mathrm s\)</span>. Halle posición, velocidad y aceleración relativas. Reobtenga la aceleración relativa sumando Coriolis y centrífuga; reconstruya posición y velocidad de laboratorio.</p>
+</section>
+<section id="ejercicio-18-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-9">9. Cambiar solamente la velocidad inicial</h3>
+<p>En la misma plataforma, prepare la partícula en reposo en el laboratorio en <span class="math inline">\((r_0,0)\)</span>, en lugar de darle la velocidad de la plataforma. Obtenga su trayectoria y velocidad relativas. Compruebe la ecuación móvil y compare la distancia al eje con la del ejercicio 8.</p>
+</section>
+<section id="ejercicio-18-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-10">10. Decidir si se puede omitir Coriolis</h3>
+<p>Para un movimiento radial hacia afuera con <span class="math inline">\(\Omega=3\,\mathrm{s^{-1}}\)</span>, <span class="math inline">\(r=0{,}5\,\mathrm m\)</span> y rapidez relativa <span class="math inline">\(u=0{,}4\,\mathrm{m/s}\)</span>, compare los módulos de las aceleraciones de Coriolis y centrífuga. Determine qué cota sobre <span class="math inline">\(u\)</span> garantiza que la primera no supere el <span class="math inline">\(1\%\)</span> de la segunda en esa geometría. Explique por qué el cociente necesita revisión cerca del eje o al cambiar la dirección de la velocidad.</p>
+</section>
+<section id="ejercicio-18-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-11">11. Una energía relativa que cambia y una suma que permanece</h3>
+<p>Para la partícula libre del ejercicio 8, con masa <span class="math inline">\(1\,\mathrm{kg}\)</span>, calcule energía cinética relativa, potencial centrífugo y <span class="math inline">\(\mathcal J\)</span> cuando <span class="math inline">\(\tau=1\)</span> y cuando <span class="math inline">\(\tau=\pi/2\)</span>. Compare con la energía cinética y el momento angular de laboratorio.</p>
+</section>
+<section id="ejercicio-18-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-12">12. Imponer velocidad radial constante</h3>
+<p>Una cuenta de masa <span class="math inline">\(2\,\mathrm{kg}\)</span> se mueve dentro de una ranura radial que gira uniformemente con <span class="math inline">\(\Omega=3\,\mathrm{s^{-1}}\)</span>. Un actuador mantiene la rapidez radial <span class="math inline">\(u=0{,}4\,\mathrm{m/s}\)</span> constante. Cuando <span class="math inline">\(r=0{,}5\,\mathrm m\)</span>, halle la fuerza radial del actuador y la reacción transversal de la ranura. Verifique el balance en ambos marcos.</p>
+</section>
+<section id="ejercicio-18-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-13">13. El trabajo de una pared móvil</h3>
+<p>Para el estado del ejercicio 12, calcule en el laboratorio la potencia del actuador, la de la reacción de la ranura y su suma. Compare con <span class="math inline">\(dK_{\mathrm{lab}}/dt\)</span> y con la energía cinética relativa constante. Identifique las potencias de las correcciones de inercia en el marco móvil.</p>
+</section>
+<section id="ejercicio-18-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-14">14. Estabilidad con un máximo efectivo</h3>
+<p>Una partícula plana está sometida en el laboratorio a la fuerza armónica <span class="math inline">\(\mathbf F=-k\mathbf x\)</span>, con origen común fijo, <span class="math inline">\(m=1\,\mathrm{kg}\)</span>, <span class="math inline">\(k=1\,\mathrm{N/m}\)</span> y marco giratorio de <span class="math inline">\(\Omega=2\,\mathrm{s^{-1}}\)</span>. Calcule <span class="math inline">\(U_{\mathrm{ef}}\)</span>. Examine si su máximo en el origen basta para concluir inestabilidad, usando la solución inercial del oscilador y la rotación inversa. Obtenga además cotas uniformes para posición y velocidad relativas cuando <span class="math inline">\(\|\boldsymbol\rho(0)\|\leq a\)</span> y <span class="math inline">\(\|\mathbf v_{\mathrm{rel}}(0)\|\leq b\)</span>. Evalúelas con <span class="math inline">\(a=10^{-3}\,\mathrm m\)</span> y <span class="math inline">\(b=10^{-3}\,\mathrm{m/s}\)</span>; use escalas de posición y velocidad compatibles al expresar estabilidad.</p>
+</section>
+<section id="ejercicio-18-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-15">15. Dejar libre la coordenada radial</h3>
+<p>Retire el actuador y deje una cuenta de masa <span class="math inline">\(0{,}5\,\mathrm{kg}\)</span> deslizar sin rozamiento en una varilla radial que gira con <span class="math inline">\(\Omega=2\,\mathrm{s^{-1}}\)</span>. Parta de <span class="math inline">\(r(0)=0{,}1\,\mathrm m\)</span>, <span class="math inline">\(\dot r(0)=0\)</span>. Obtenga <span class="math inline">\(r(t)\)</span>, la reacción transversal y <span class="math inline">\(\mathcal J\)</span>. Evalúe posición y reacción en <span class="math inline">\(t=0{,}5\,\mathrm s\)</span> e identifique de dónde procede el aumento de energía de laboratorio.</p>
+</section>
+<section id="ejercicio-18-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-16">16. Hacer visible el término de Euler</h3>
+<p>Un marco de origen fijo parte sin rotación y tiene <span class="math inline">\(\theta(t)=\alpha t^2/2\)</span>, con <span class="math inline">\(\alpha&gt;0\)</span> constante. Una partícula libre permanece fija en el laboratorio en <span class="math inline">\((r_0,0)\)</span>. Obtenga sus coordenadas y aceleración relativas. Compruebe por separado los términos de Euler, Coriolis y centrífugo, y determine cuál explica la aceleración relativa inicial.</p>
+</section>
+<section id="ejercicio-18-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-17">17. Norte y este en los ejes terrestres</h3>
+<p>A latitud <span class="math inline">\(30^\circ\)</span> norte, calcule la aceleración de Coriolis para una velocidad de <span class="math inline">\(20\,\mathrm{m/s}\)</span> hacia el norte y para otra de igual magnitud hacia el este. Use los ejes este, norte y arriba. Para un movimiento hacia el este sostenido a altura constante, determine cómo interviene la componente vertical en la normal, dentro del modelo local.</p>
+</section>
+<section id="ejercicio-18-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-18">18. Predecir una caída desviada</h3>
+<p>Se suelta una partícula desde reposo relativo a <span class="math inline">\(H=100\,\mathrm m\)</span> y latitud <span class="math inline">\(45^\circ\)</span> norte. Calcule el tiempo de caída dominante, la desviación al este de primer orden y el parámetro <span class="math inline">\(\Omega T_0\)</span>. Distinga los errores por truncar la rotación de los efectos físicos omitidos en el modelo de caída.</p>
+</section>
+<section id="ejercicio-18-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-19">19. Trasladar cotas de medida a una predicción</h3>
+<p>En el experimento anterior se conocen <span class="math inline">\(H\in[99,101]\,\mathrm m\)</span> y <span class="math inline">\(\lambda\in[44^\circ,46^\circ]\)</span>, con <span class="math inline">\(g\)</span> y <span class="math inline">\(\Omega\)</span> fijados como parámetros ideales. Obtenga un intervalo garantizado para la desviación predicha por la fórmula de primer orden. Explique por qué esa cota no incorpora por sí sola el error del modelo físico.</p>
+</section>
+<section id="ejercicio-18-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-18-20">20. Construir la precesión de un péndulo lineal</h3>
+<p>Se adopta el modelo horizontal de pequeña amplitud</p>
+<p><span class="math display">\[
+\ddot{\mathbf r}+fJ\dot{\mathbf r}+\omega_0^2\mathbf r=0,
+\qquad
+J=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix},
+\quad f=2\Omega\sin\lambda,\quad \omega_0^2=\frac g\ell.
+\]</span></p>
+<p>El modelo conserva Coriolis horizontal y omite variaciones del campo efectivo, términos no lineales de amplitud y otros efectos de orden superior. Use <span class="math inline">\(\mathbf r=Q_2(-ft/2)\mathbf u\)</span>, donde <span class="math inline">\(Q_2(\theta)\)</span> es la rotación plana, y derive la ecuación para <span class="math inline">\(\mathbf u\)</span>. Obtenga la tasa de giro de los ejes de la elipse oscilante cuando estén distinguidos y el tiempo de precesión completa a latitud <span class="math inline">\(30^\circ\)</span> norte. Examine el ecuador y explique qué precisión física puede atribuirse a un término cuadrático en <span class="math inline">\(\Omega\)</span> que aparezca al transformar el modelo.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-18-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-1">1. Un disco libre respecto de un carro</h3>
+<p>El origen del carro tiene <span class="math inline">\(R_x(t)=At^2/2\)</span>, mientras que el disco conserva <span class="math inline">\(x(t)=0\)</span>. Como los ejes permanecen paralelos, <span class="math inline">\(\rho_x=x-R_x=-At^2/2\)</span>, <span class="math inline">\(v_{\mathrm{rel},x}=-At\)</span> y <span class="math inline">\(a_{\mathrm{rel},x}=-A\)</span>. En <span class="math inline">\(t=2\,\mathrm s\)</span> dan <span class="math inline">\(-6\,\mathrm m\)</span>, <span class="math inline">\(-6\,\mathrm{m/s}\)</span> y <span class="math inline">\(-3\,\mathrm{m/s^2}\)</span>.</p>
+<p>Reconstruir la posición suma <span class="math inline">\(R_x+\rho_x=0\)</span>; reconstruir la velocidad suma <span class="math inline">\(At-At=0\)</span> y reconstruir la aceleración suma <span class="math inline">\(A-A=0\)</span>. La partícula permanece libre en el laboratorio, mientras el carro cambia la posición desde la que se mide su separación. Si se quisiera imponer reposo relativo, habría que añadir una fuerza física hacia adelante.</p>
+</section>
+<section id="solucion-18-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-2">2. Una báscula que puede perder el contacto</h3>
+<p>Mientras la persona acompaña al piso, el balance vertical es <span class="math inline">\(N-mg=mA_z\)</span>. Para <span class="math inline">\(A_z=2\,\mathrm{m/s^2}\)</span>, la normal es <span class="math inline">\(60(9{,}8+2)=708\,\mathrm N\)</span>. Para <span class="math inline">\(A_z=-9{,}8\,\mathrm{m/s^2}\)</span>, la normal es cero y el estado de caída libre es compatible con que ambos partan juntos sin velocidad relativa.</p>
+<p>Con <span class="math inline">\(A_z=-12\,\mathrm{m/s^2}\)</span>, el reposo relativo exigiría <span class="math inline">\(N=-132\,\mathrm N\)</span>. Un piso que sólo empuja no puede ejercer esa fuerza. Se pierde el contacto y la persona tiene aceleración inercial <span class="math inline">\(-g\)</span>; respecto del piso, su aceleración es <span class="math inline">\(-9{,}8-(-12)=2{,}2\,\mathrm{m/s^2}\)</span> hacia arriba. La separación se abre porque el piso acelera hacia abajo más que la caída libre.</p>
+</section>
+<section id="solucion-18-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-3">3. Un péndulo en un carro acelerado</h3>
+<p>La gravedad efectiva es <span class="math inline">\(\mathbf g_{\mathrm{ef}}=(-A,-g)\)</span> en el plano horizontal-vertical. La cuerda desde el apoyo hasta la masa se alinea con esa dirección, así que la inclinación hacia atrás respecto de la vertical cumple <span class="math inline">\(\tan\theta=A/g=0{,}3\)</span>. Resulta <span class="math inline">\(\theta\approx16{,}70^\circ\)</span> y <span class="math inline">\(g_{\mathrm{ef}}=\sqrt{A^2+g^2}=\sqrt{109}\,\mathrm{m/s^2}\)</span>.</p>
+<p>La tensión en equilibrio vale <span class="math inline">\(mg_{\mathrm{ef}}\approx2{,}088\,\mathrm N\)</span>. Si <span class="math inline">\(\delta\)</span> es el pequeño ángulo desde esa dirección, proyectar la ecuación tangencial da <span class="math inline">\(\ell\ddot\delta=-g_{\mathrm{ef}}\sin\delta\)</span>. Aproximar <span class="math inline">\(\sin\delta\)</span> por <span class="math inline">\(\delta\)</span> para <span class="math inline">\(|\delta|\ll1\)</span> produce frecuencia <span class="math inline">\(\sqrt{g_{\mathrm{ef}}/\ell}\)</span> y período <span class="math inline">\(T=2\pi\sqrt{\ell/g_{\mathrm{ef}}}\approx1{,}375\,\mathrm s\)</span>. La aceleración constante del carro mantiene fija la dirección efectiva; una aceleración variable requeriría revisar esa condición.</p>
+</section>
+<section id="solucion-18-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-4">4. Un vector fijo con componentes cambiantes</h3>
+<p>Aplicar la rotación inversa al vector fijo da</p>
+<p><span class="math display">\[
+\mathbf a=(\cos2t,-\sin2t,0)
+\]</span></p>
+<p>y su derivada es</p>
+<p><span class="math display">\[
+\dot{\mathbf a}=(-2\sin2t,-2\cos2t,0)
+\]</span></p>
+<p>En el instante dado, <span class="math inline">\(\mathbf a=(0,-1,0)\)</span> y <span class="math inline">\(\dot{\mathbf a}=(-2,0,0)\)</span> en las unidades correspondientes. La contribución de la base es <span class="math inline">\(\boldsymbol\omega\times\mathbf a=2\mathbf e_z\times(0,-1,0)=(2,0,0)\)</span>.</p>
+<p>Los dos términos dentro de <span class="math inline">\(Q(\dot{\mathbf a}+\boldsymbol\omega\times\mathbf a)\)</span> suman cero. La derivada de las componentes móviles es distinta de la derivada física; la regla de transporte identifica exactamente la diferencia.</p>
+</section>
+<section id="solucion-18-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-5">5. Usar la transformación en tres dimensiones</h3>
+<p>Los productos vectoriales son</p>
+<p><span class="math display">\[
+\boldsymbol\omega\times\mathbf v_{\mathrm{rel}}=(-6,-3,4),
+\qquad
+\dot{\boldsymbol\omega}\times\boldsymbol\rho=(0,-2,-2),
+\]</span></p>
+<p><span class="math display">\[
+\boldsymbol\omega\times(\boldsymbol\omega\times\boldsymbol\rho)
+=(-25,20,-5),
+\]</span></p>
+<p>con las unidades que corresponden a cada término; en la transformación de aceleración, todos quedan en <span class="math inline">\(\mathrm{m/s^2}\)</span>. Al sumar <span class="math inline">\(\mathbf A'\)</span>, <span class="math inline">\(\mathbf a_{\mathrm{rel}}\)</span>, dos veces el primer producto y los otros dos, obtenemos</p>
+<p><span class="math display">\[
+\begin{aligned}
+Q^{\mathsf T}\ddot{\mathbf x}
+&amp;=(2,0,-1)+(0{,}5,-0{,}5,1)+(-12,-6,8)\\
+&amp;\quad +(0,-2,-2)+(-25,20,-5)\\
+&amp;=(-34{,}5,11{,}5,1)\,\mathrm{m/s^2}.
+\end{aligned}
+\]</span></p>
+<p>El resultado está expresado en la base móvil, aunque representa la aceleración inercial. Multiplicarlo por <span class="math inline">\(Q\)</span> daría sus componentes de laboratorio.</p>
+</section>
+<section id="solucion-18-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-6">6. Reconstruir a la inversa</h3>
+<p>Primero se resta la velocidad del origen y se cambia de base: <span class="math inline">\(Q^{\mathsf T}(\dot{\mathbf x}-\dot{\mathbf R})=(5,1)\,\mathrm{m/s}\)</span>. El término de giro es <span class="math inline">\(\boldsymbol\omega\times\boldsymbol\rho=(2,4)\,\mathrm{m/s}\)</span>. Al restarlo queda <span class="math inline">\(\mathbf v_{\mathrm{rel}}=(3,-3)\,\mathrm{m/s}\)</span>.</p>
+<p>Para la aceleración, <span class="math inline">\(Q^{\mathsf T}(\ddot{\mathbf x}-\ddot{\mathbf R})=(5,8)\,\mathrm{m/s^2}\)</span>. Las correcciones cinemáticas son <span class="math inline">\(2\boldsymbol\omega\times\mathbf v_{\mathrm{rel}}=(12,12)\)</span>, <span class="math inline">\(\dot{\boldsymbol\omega}\times\boldsymbol\rho=(0{,}5,1)\)</span> y <span class="math inline">\(\boldsymbol\omega\times(\boldsymbol\omega\times\boldsymbol\rho)=(-8,4)\)</span>, todas en <span class="math inline">\(\mathrm{m/s^2}\)</span>. Su suma es <span class="math inline">\((4{,}5,17)\)</span>; por tanto, <span class="math inline">\(\mathbf a_{\mathrm{rel}}=(0{,}5,-9)\,\mathrm{m/s^2}\)</span>. El orden de operaciones evita restar componentes expresadas en bases distintas.</p>
+</section>
+<section id="solucion-18-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-7">7. Sostener un punto mientras cambia la rotación</h3>
+<p>El reposo relativo anula <span class="math inline">\(\mathbf v_{\mathrm{rel}}\)</span> y <span class="math inline">\(\mathbf a_{\mathrm{rel}}\)</span>. La aceleración inercial expresada en ejes móviles contiene <span class="math inline">\(\dot{\boldsymbol\omega}\times\boldsymbol\rho=(0,1)\,\mathrm{m/s^2}\)</span> y <span class="math inline">\(\boldsymbol\omega\times(\boldsymbol\omega\times\boldsymbol\rho)=(-4{,}5,0)\,\mathrm{m/s^2}\)</span>. La fuerza física requerida es <span class="math inline">\(\mathbf F'=(-9,2)\,\mathrm N\)</span>.</p>
+<p>En el balance móvil, la corrección centrífuga es <span class="math inline">\((9,0)\,\mathrm N\)</span> y la de Euler <span class="math inline">\((0,-2)\,\mathrm N\)</span>; ambas compensan la fuerza de interacción. Euler aparece porque la orientación del marco cambia con aceleración angular, incluso cuando la partícula no se desplaza dentro de él. El apoyo transmite la fuerza tangencial que permite seguir ese cambio de rotación.</p>
+</section>
+<section id="solucion-18-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-8">8. Seguir la liberación hasta un cuarto de giro</h3>
+<p>Para <span class="math inline">\(\tau=\pi/2\)</span>, las fórmulas exactas dan</p>
+<p><span class="math display">\[
+\boldsymbol\rho=(\pi,-2)\,\mathrm m,
+\qquad \mathbf v_{\mathrm{rel}}=(0,-\pi)\,\mathrm{m/s},
+\qquad \mathbf a_{\mathrm{rel}}=(-\pi,-2)\,\mathrm{m/s^2}.
+\]</span></p>
+<p>La aceleración de Coriolis es <span class="math inline">\(-2\Omega J\mathbf v_{\mathrm{rel}}=(-2\pi,0)\,\mathrm{m/s^2}\)</span>, y la centrífuga es <span class="math inline">\(\Omega^2\boldsymbol\rho=(\pi,-2)\,\mathrm{m/s^2}\)</span>. Su suma recupera la aceleración relativa. Para reconstruir la velocidad física se suma primero <span class="math inline">\(\Omega J\boldsymbol\rho=(2,\pi)\,\mathrm{m/s}\)</span> a <span class="math inline">\(\mathbf v_{\mathrm{rel}}\)</span>, y después se gira <span class="math inline">\(90^\circ\)</span>: resulta <span class="math inline">\((0,2)\,\mathrm{m/s}\)</span>.</p>
+<p>La posición inercial es <span class="math inline">\(Q\boldsymbol\rho=(2,\pi)\,\mathrm m\)</span>. Coincide con la recta <span class="math inline">\(x=2\,\mathrm m\)</span>, <span class="math inline">\(y=(2\,\mathrm{m/s})t\)</span>, cuya aceleración es cero. La reconstrucción es un control completo de los signos y del factor dos.</p>
+</section>
+<section id="solucion-18-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-9">9. Cambiar solamente la velocidad inicial</h3>
+<p>La posición inercial fija se transforma en <span class="math inline">\(\boldsymbol\rho=r_0(\cos\Omega t,-\sin\Omega t)\)</span>. Su velocidad relativa es <span class="math inline">\(-\Omega J\boldsymbol\rho\)</span> y su aceleración <span class="math inline">\(-\Omega^2\boldsymbol\rho\)</span>. Sustituir la velocidad en Coriolis da <span class="math inline">\(-2\Omega J(-\Omega J\boldsymbol\rho)=-2\Omega^2\boldsymbol\rho\)</span>, mientras la centrífuga aporta <span class="math inline">\(+\Omega^2\boldsymbol\rho\)</span>. La suma es la aceleración obtenida por derivación.</p>
+<p>La distancia al eje permanece en <span class="math inline">\(r_0\)</span>. En la liberación desde reposo relativo, en cambio, era <span class="math inline">\(r_0\sqrt{1+\Omega^2t^2}\)</span>. Ambas descripciones son libres en el laboratorio, con velocidades iniciales diferentes. Imponer simultáneamente reposo en los dos marcos en un punto fuera del eje sería incompatible con una plataforma que ya está girando.</p>
+</section>
+<section id="solucion-18-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-10">10. Decidir si se puede omitir Coriolis</h3>
+<p>En la geometría plana radial, los módulos son <span class="math inline">\(a_C=2\Omega u=2{,}4\,\mathrm{m/s^2}\)</span> y <span class="math inline">\(a_{\mathrm{cf}}=\Omega^2r=4{,}5\,\mathrm{m/s^2}\)</span>. Su razón es <span class="math inline">\(2u/(\Omega r)\approx0{,}5333\)</span>. El término de Coriolis tiene más de la mitad del módulo del centrífugo y su dirección es distinta.</p>
+<p>Para asegurar una razón no mayor que <span class="math inline">\(0{,}01\)</span>, se requiere <span class="math inline">\(u\le0{,}005\Omega r=0{,}0075\,\mathrm{m/s}\)</span>. La cota supone <span class="math inline">\(r&gt;0\)</span> y la orientación declarada. Sobre el eje, el denominador centrífugo se anula y ese cociente deja de ser una medida útil. Si la velocidad es paralela a <span class="math inline">\(\boldsymbol\omega\)</span>, Coriolis se anula, independientemente de su magnitud; una comparación sólo de rapideces pierde esa información geométrica.</p>
+</section>
+<section id="solucion-18-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-11">11. Una energía relativa que cambia y una suma que permanece</h3>
+<p>Para <span class="math inline">\(r_0=2\,\mathrm m\)</span>, <span class="math inline">\(\Omega=1\,\mathrm{s^{-1}}\)</span> y <span class="math inline">\(m=1\,\mathrm{kg}\)</span>, se tiene <span class="math inline">\(K_{\mathrm{rel}}=2\tau^2\,\mathrm J\)</span> y <span class="math inline">\(U_{\mathrm{cf}}=-2(1+\tau^2)\,\mathrm J\)</span>. En <span class="math inline">\(\tau=1\)</span>, los valores son <span class="math inline">\(2\,\mathrm J\)</span> y <span class="math inline">\(-4\,\mathrm J\)</span>; en <span class="math inline">\(\tau=\pi/2\)</span>, son <span class="math inline">\(\pi^2/2\,\mathrm J\)</span> y <span class="math inline">\(-(2+\pi^2/2)\,\mathrm J\)</span>. En ambos instantes <span class="math inline">\(\mathcal J=-2\,\mathrm J\)</span>.</p>
+<p>En el laboratorio, la rapidez permanece en <span class="math inline">\(2\,\mathrm{m/s}\)</span>, así que <span class="math inline">\(E_{\mathrm{lab}}=2\,\mathrm J\)</span>. El momento angular respecto del origen es <span class="math inline">\(L_z=mxv_y=4\,\mathrm{kg\,m^2/s}\)</span>. La combinación <span class="math inline">\(E_{\mathrm{lab}}-\Omega L_z\)</span> vale <span class="math inline">\(-2\,\mathrm J\)</span>, como exige la identidad. Las energías cinéticas de ambos marcos son diferentes y cada balance conserva sus propias variables.</p>
+</section>
+<section id="solucion-18-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-12">12. Imponer velocidad radial constante</h3>
+<p>En los ejes de la ranura, <span class="math inline">\(\boldsymbol\rho=(r,0)\)</span>, <span class="math inline">\(\mathbf v_{\mathrm{rel}}=(u,0)\)</span> y <span class="math inline">\(\mathbf a_{\mathrm{rel}}=0\)</span>. La aceleración inercial expresada en esos ejes es <span class="math inline">\((-\Omega^2r,2\Omega u)\)</span>. Por ello la fuerza radial es <span class="math inline">\(F_r=-m\Omega^2r=-9\,\mathrm N\)</span> y la reacción transversal <span class="math inline">\(N_y=2m\Omega u=4{,}8\,\mathrm N\)</span>.</p>
+<p>En el marco móvil, la centrífuga aporta <span class="math inline">\(+9\,\mathrm N\)</span> radialmente y Coriolis <span class="math inline">\(-4{,}8\,\mathrm N\)</span> transversalmente. Ambas compensan las fuerzas físicas, dejando aceleración relativa cero. La reacción de la pared conserva el movimiento dentro de la ranura; el actuador suministra la fuerza radial que fija la rapidez constante.</p>
+</section>
+<section id="solucion-18-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-13">13. El trabajo de una pared móvil</h3>
+<p>La velocidad de laboratorio, expresada en ejes móviles, es <span class="math inline">\((u,\Omega r)=(0{,}4,1{,}5)\,\mathrm{m/s}\)</span>. La potencia radial del actuador es <span class="math inline">\(F_ru=-3{,}6\,\mathrm W\)</span>, y la de la reacción es <span class="math inline">\(N_y\Omega r=7{,}2\,\mathrm W\)</span>. La suma vale <span class="math inline">\(3{,}6\,\mathrm W\)</span>.</p>
+<p>La energía cinética inercial es <span class="math inline">\(K_{\mathrm{lab}}=m(u^2+\Omega^2r^2)/2\)</span>. Como <span class="math inline">\(u\)</span> y <span class="math inline">\(\Omega\)</span> son constantes, su derivada es <span class="math inline">\(m\Omega^2ru=3{,}6\,\mathrm W\)</span>, en acuerdo con las potencias. En el marco móvil, <span class="math inline">\(K_{\mathrm{rel}}=mu^2/2\)</span> es constante: el actuador realiza potencia relativa <span class="math inline">\(-3{,}6\,\mathrm W\)</span>, la centrífuga aporta <span class="math inline">\(+3{,}6\,\mathrm W\)</span> y tanto la reacción transversal como Coriolis tienen potencia relativa cero. La pared giratoria puede transferir energía en el laboratorio aun siendo ideal respecto del deslizamiento.</p>
+</section>
+<section id="solucion-18-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-14">14. Estabilidad con un máximo efectivo</h3>
+<p>El potencial físico es <span class="math inline">\(U'=k\|\boldsymbol\rho\|^2/2\)</span>, pues una rotación conserva la norma. En el plano, <span class="math inline">\(U_{\mathrm{ef}}=(k-m\Omega^2)\|\boldsymbol\rho\|^2/2=-3\|\boldsymbol\rho\|^2/2\)</span> al usar las unidades dadas. Tiene un máximo estricto en el origen.</p>
+<p>La solución inercial es <span class="math inline">\(\mathbf x=\mathbf a\cos t+\mathbf b\sin t\)</span>, con constantes fijadas por el estado inicial. Las coordenadas giratorias son <span class="math inline">\(Q_2(-2t)\mathbf x\)</span> y tienen la misma norma, por lo que permanecen acotadas. Su velocidad relativa también se acota por <span class="math inline">\(\|\dot{\mathbf x}\|+2\|\mathbf x\|\)</span>. Además, ambas cotas dependen linealmente del tamaño de los datos iniciales; datos suficientemente pequeños permanecen pequeños, de modo que el equilibrio es estable.</p>
+<p>La fuerza de Coriolis acopla las componentes y cambia el alcance de un argumento basado sólo en el potencial efectivo. Un mínimo con energía positiva puede proporcionar una prueba de confinamiento, pero la ausencia de ese mínimo no demuestra por sí sola inestabilidad en un sistema con términos giroscópicos. El criterio radial del capítulo 15 se refería a una reducción unidimensional distinta.</p>
+<p>Podemos hacer explícita la dependencia respecto de la preparación. Escribamos <span class="math inline">\(\omega_0=\sqrt{k/m}\)</span>, <span class="math inline">\(\boldsymbol\rho_0=\boldsymbol\rho(0)\)</span> y <span class="math inline">\(\mathbf v_0=\mathbf v_{\mathrm{rel}}(0)\)</span>. Con <span class="math inline">\(Q(0)=I\)</span>, la velocidad inercial inicial es <span class="math inline">\(\mathbf u_0=\mathbf v_0+\Omega J\boldsymbol\rho_0\)</span>. La solución inercial completa es</p>
+<p><span class="math display">\[
+\mathbf x(t)=\boldsymbol\rho_0\cos\omega_0t+
+\frac{\mathbf u_0}{\omega_0}\sin\omega_0t.
+\]</span></p>
+<p>La desigualdad triangular, junto con <span class="math inline">\(\|J\boldsymbol\rho_0\|=\|\boldsymbol\rho_0\|\)</span> en el plano, proporciona para todo <span class="math inline">\(t\geq0\)</span></p>
+<p><span class="math display">\[
+\|\boldsymbol\rho(t)\|=\|\mathbf x(t)\|\leq C,
+\qquad
+C=\left(1+\frac{|\Omega|}{\omega_0}\right)a+\frac b{\omega_0}.
+\]</span></p>
+<p>Al derivar la solución obtenemos <span class="math inline">\(\|\dot{\mathbf x}\|\leq\omega_0a+\|\mathbf u_0\|\leq\omega_0C\)</span>. Como <span class="math inline">\(\mathbf v_{\mathrm{rel}}=Q^{\mathsf T}\dot{\mathbf x}-\Omega J\boldsymbol\rho\)</span>, se sigue</p>
+<p><span class="math display">\[
+\|\mathbf v_{\mathrm{rel}}(t)\|\leq(\omega_0+|\Omega|)C.
+\]</span></p>
+<p>Con los datos pedidos, <span class="math inline">\(\omega_0=1\,\mathrm{s^{-1}}\)</span>, <span class="math inline">\(C=4\times10^{-3}\,\mathrm m\)</span> y la cota de velocidad es <span class="math inline">\(1{,}2\times10^{-2}\,\mathrm{m/s}\)</span>. Son cotas suficientes, obtenidas sin ajustar el instante de los máximos. Para cualquier tolerancia de posición y otra de velocidad, elegir <span class="math inline">\(a,b\)</span> de modo que las dos expresiones queden bajo esas tolerancias prueba la estabilidad durante todo el futuro. La escala <span class="math inline">\(\omega_0\)</span> convierte una cota de velocidad en longitud y permite comparar datos de estado con unidades coherentes.</p>
+</section>
+<section id="solucion-18-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-15">15. Dejar libre la coordenada radial</h3>
+<p>La ecuación radial sin actuador es <span class="math inline">\(\ddot r=\Omega^2r\)</span>. Con los datos dados, su solución es <span class="math inline">\(r=r_0\cosh(\Omega t)\)</span> y <span class="math inline">\(\dot r=r_0\Omega\sinh(\Omega t)\)</span>, como se comprueba derivando y evaluando en cero. Las funciones hiperbólicas fueron definidas por exponenciales en el capítulo 16. La reacción transversal es <span class="math inline">\(N_y=2m\Omega\dot r\)</span>.</p>
+<p>En <span class="math inline">\(t=0{,}5\,\mathrm s\)</span>, resulta <span class="math inline">\(r=0{,}1\cosh1\,\mathrm m\approx0{,}1543\,\mathrm m\)</span> y <span class="math inline">\(N_y=0{,}4\sinh1\,\mathrm N\approx0{,}4701\,\mathrm N\)</span>. La cantidad <span class="math inline">\(\mathcal J=m\dot r^2/2-m\Omega^2r^2/2=-m\Omega^2r_0^2/2=-0{,}01\,\mathrm J\)</span> se conserva.</p>
+<p>La potencia inercial de la reacción es <span class="math inline">\(2m\Omega^2r\dot r&gt;0\)</span> para <span class="math inline">\(t&gt;0\)</span>. Coincide con la derivada de <span class="math inline">\(m(\dot r^2+\Omega^2r^2)/2\)</span>. La fuente energética es el mecanismo que sostiene la rotación de la varilla; la partícula y la varilla con giro impuesto no forman por sí solas un sistema energéticamente aislado. Una varilla de longitud finita sólo sostiene esta solución hasta que la cuenta llegue a su extremo.</p>
+</section>
+<section id="solucion-18-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-16">16. Hacer visible el término de Euler</h3>
+<p>Las coordenadas son <span class="math inline">\(\boldsymbol\rho=r_0(\cos\theta,-\sin\theta)\)</span>, con <span class="math inline">\(\theta=\alpha t^2/2\)</span> y <span class="math inline">\(\omega=\alpha t\)</span>. Al derivar,</p>
+<p><span class="math display">\[
+\mathbf v_{\mathrm{rel}}=-\omega J\boldsymbol\rho,
+\qquad
+\mathbf a_{\mathrm{rel}}=-\alpha J\boldsymbol\rho-\omega^2\boldsymbol\rho.
+\]</span></p>
+<p>Euler aporta <span class="math inline">\(-\alpha J\boldsymbol\rho\)</span>, Coriolis <span class="math inline">\(-2\omega J(-\omega J\boldsymbol\rho)=-2\omega^2\boldsymbol\rho\)</span>, y la centrífuga <span class="math inline">\(+\omega^2\boldsymbol\rho\)</span>. La suma reproduce la derivación directa. En <span class="math inline">\(t=0\)</span>, los dos términos que contienen <span class="math inline">\(\omega^2\)</span> se anulan y queda aceleración relativa <span class="math inline">\((0,-\alpha r_0)\)</span>. La partícula inercial sigue quieta mientras los ejes comienzan a girar con aceleración angular.</p>
+</section>
+<section id="solucion-18-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-17">17. Norte y este en los ejes terrestres</h3>
+<p>Con <span class="math inline">\(\boldsymbol\omega=(0,\Omega\cos\lambda,\Omega\sin\lambda)\)</span> y velocidad norte <span class="math inline">\((0,V,0)\)</span>, se obtiene <span class="math inline">\(-2\boldsymbol\omega\times\mathbf v=(2\Omega V\sin\lambda,0,0)\)</span>. Para los datos, la componente al este es <span class="math inline">\(1{,}460\times10^{-3}\,\mathrm{m/s^2}\)</span>.</p>
+<p>Para velocidad este <span class="math inline">\((V,0,0)\)</span>, las componentes son <span class="math inline">\((0,-2\Omega V\sin\lambda,2\Omega V\cos\lambda)\)</span>: <span class="math inline">\(-1{,}460\times10^{-3}\,\mathrm{m/s^2}\)</span> hacia el norte, equivalente a aceleración al sur, y <span class="math inline">\(2{,}529\times10^{-3}\,\mathrm{m/s^2}\)</span> hacia arriba. Para altura constante y apoyo ideal, el balance vertical es <span class="math inline">\(N/m-g+2\Omega V\cos\lambda=0\)</span>, así que <span class="math inline">\(N=m(g-2\Omega V\cos\lambda)\)</span>. Se usa el <span class="math inline">\(g\)</span> efectivo local ya definido; al invertir la velocidad, se invierte la corrección lineal.</p>
+</section>
+<section id="solucion-18-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-18">18. Predecir una caída desviada</h3>
+<p>El tiempo dominante es <span class="math inline">\(T_0=\sqrt{200/9{,}8}\,\mathrm s\approx4{,}518\,\mathrm s\)</span>. La desviación predicha es</p>
+<p><span class="math display">\[
+x_E(T_0)=\frac{\Omega g\cos45^\circ}{3}T_0^3
+\approx0{,}01555\,\mathrm m,
+\]</span></p>
+<p>unos <span class="math inline">\(1{,}55\)</span> centímetros hacia el este. El parámetro <span class="math inline">\(\Omega T_0\approx3{,}30\times10^{-4}\)</span> sostiene la expansión temporal de corta duración en el modelo local.</p>
+<p>La integración de primer orden omite realimentaciones de Coriolis de orden superior y cambios correspondientes del tiempo de caída. La representación uniforme del campo omite gradientes de gravedad y aceleración centrífuga, y el ejemplo ideal omite aire y condiciones imperfectas de liberación. El parámetro pequeño de rotación controla una aproximación matemática particular; la precisión de una medición requiere estimar también esos otros efectos.</p>
+</section>
+<section id="solucion-18-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-19">19. Trasladar cotas de medida a una predicción</h3>
+<p>Al sustituir el tiempo dominante, la fórmula queda</p>
+<p><span class="math display">\[
+x_E=\frac{2^{3/2}\Omega}{3\sqrt g}
+H^{3/2}\cos\lambda.
+\]</span></p>
+<p>Crece con <span class="math inline">\(H&gt;0\)</span> y decrece con <span class="math inline">\(\lambda\)</span> en el intervalo del problema. Por ello el mínimo usa <span class="math inline">\(H=99\,\mathrm m\)</span>, <span class="math inline">\(\lambda=46^\circ\)</span>, y el máximo <span class="math inline">\(H=101\,\mathrm m\)</span>, <span class="math inline">\(\lambda=44^\circ\)</span>. Evaluar y redondear hacia afuera produce</p>
+<p><span class="math display">\[
+x_E\in[0{,}01504,\,0{,}01606]\,\mathrm m.
+\]</span></p>
+<p>Es una cota garantizada para los valores de esa fórmula con los parámetros declarados, sin necesidad de linealizar sus errores. El error de modelado, las fuerzas omitidas y la calidad de la liberación requieren estimaciones adicionales; el intervalo de parámetros no los incorpora automáticamente.</p>
+</section>
+<section id="solucion-18-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-18-20">20. Construir la precesión de un péndulo lineal</h3>
+<p>Escribamos <span class="math inline">\(Q=Q_2(-ft/2)\)</span>. Como <span class="math inline">\(f\)</span> es constante y <span class="math inline">\(J^2=-I\)</span>, se tiene <span class="math inline">\(\dot Q=-(f/2)QJ\)</span>. Al derivar dos veces <span class="math inline">\(\mathbf r=Q\mathbf u\)</span> y sumar <span class="math inline">\(fJ\dot{\mathbf r}\)</span>, los términos con <span class="math inline">\(\dot{\mathbf u}\)</span> se cancelan y queda</p>
+<p><span class="math display">\[
+\ddot{\mathbf u}+
+\left(\omega_0^2+\frac{f^2}{4}\right)\mathbf u=0.
+\]</span></p>
+<p>La solución es <span class="math inline">\(\mathbf u=\mathbf a\cos(\nu t)+\mathbf b\sin(\nu t)\)</span>, con <span class="math inline">\(\nu=\sqrt{\omega_0^2+f^2/4}\)</span>. Describe una elipse de ejes fijos, posiblemente degenerada en un segmento; cuando esos ejes están distinguidos, la multiplicación por <span class="math inline">\(Q\)</span> los gira a tasa <span class="math inline">\(-f/2=-\Omega\sin\lambda\)</span>. Una circunferencia carece de una orientación de ejes distinguida. Para un péndulo liberado desde reposo relativo, la elipse auxiliar suele ser muy alargada si <span class="math inline">\(|f|\ll\omega_0\)</span>, lo que permite interpretar ese giro como precesión del plano oscilante a primer orden.</p>
+<p>El tiempo de un giro completo de la dirección orientada es <span class="math inline">\(T_{\mathrm{prec}}=2\pi/(\Omega|\sin\lambda|)\)</span>. A <span class="math inline">\(30^\circ\)</span> norte vale aproximadamente <span class="math inline">\(1{,}7214\times10^5\,\mathrm s\)</span>, o <span class="math inline">\(47{,}82\)</span> horas; el giro es horario visto desde arriba. La recta de oscilación sin orientación recupera su dirección geométrica tras medio giro. En el ecuador, <span class="math inline">\(f=0\)</span> y este modelo no produce precesión; ello no anula todos los efectos de la rotación terrestre sobre otros movimientos.</p>
+<p>La transformación y el término <span class="math inline">\(f^2/4\)</span> son exactos para la ecuación lineal adoptada. Atribuirles precisión física de segundo orden en <span class="math inline">\(\Omega\)</span> exigiría recuperar también los efectos de ese orden que se omitieron al construir el modelo. Resolver exactamente una aproximación no modifica el alcance de sus hipótesis.</p>
+</section>
+</section>
+<section id="lecturas-y-conexiones" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-y-conexiones">Lecturas y conexiones</h2>
+<p>Spivak, <em>Physics for Mathematicians. Mechanics I</em>, capítulo 10, desarrolla las fuerzas de inercia, la cuenta en una varilla giratoria, la desviación de una caída y el péndulo de Foucault. Aquí la regla de transporte se construye desde la ortogonalidad de la matriz de orientación y se usa para reconstruir estados completos; la separación entre solución exacta de un modelo y precisión física de sus aproximaciones acompaña las aplicaciones terrestres.</p>
+<p>Sears y Zemansky, <em>Física universitaria</em>, volumen 1, ejemplos 5.8–5.9 y ejercicio 4.8, permiten cotejar aceleración, apoyo y peso aparente. Serway y Jewett, <em>Física para ciencias e ingeniería</em>, volumen 1, §6.3, presenta movimientos observados en marcos acelerados y giratorios. Los problemas de contacto y de vínculo se resuelven aquí conservando la interpretación de cada fuerza y verificando el movimiento inercial. Las mismas derivadas de ejes móviles permitirán estudiar la dinámica tridimensional de un cuerpo rígido.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-17-dispersion-clasica.html">← 17. Dispersión clásica</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-19-cuerpo-rigido-en-tres-dimensiones.html">19. Cuerpo rígido en tres dimensiones →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

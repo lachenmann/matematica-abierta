@@ -1,0 +1,2074 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="A. Peña">
+<meta name="description" content="Capítulo 4 de la edición revisada, con problemas y soluciones desarrolladas.">
+
+<title>Fuerzas y leyes de Newton – Matemática Abierta</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/brand/ma-mark-light.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-936f0c838e477520f402c8fa7cd1a8c3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-e9abd0d8b42283fe49d4d069ffecb36e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script id="ma-math-font-ready">
+// MathJax must measure the final text font, not a transient system fallback.
+// Keep this hook in the canonical document so online and offline use one rule.
+window.MathJax = window.MathJax || {};
+window.MathJax.startup = window.MathJax.startup || {};
+window.MathJax.startup.pageReady = async function () {
+  document.body.getBoundingClientRect();
+  await document.fonts.ready;
+  return MathJax.startup.defaultPageReady();
+};
+</script>
+<script>
+// Move keyboard focus into the image dialog before hiding the reading page.
+(() => {
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('a.lightbox');
+    if (!link) return;
+    opener = link;
+    if (link.contains(document.activeElement)) document.activeElement.blur();
+  }, true);
+  window.addEventListener('load', () => {
+    const gallery = window.lightboxQuarto;
+    if (!gallery) return;
+    gallery.on('open', () => document.querySelector('.glightbox-container .gclose')?.focus());
+    gallery.on('close', () => {
+      if (opener?.isConnected) opener.focus({preventScroll: true});
+    });
+  });
+})();
+</script>
+<script>
+// The v04 semantic figures also work without Quarto's implicit-image gallery.
+// Keep ordinary SVG links as the fallback when scripting is unavailable.
+document.addEventListener('DOMContentLoaded', () => {
+  const dialog = document.createElement('dialog');
+  if (typeof dialog.showModal !== 'function') return;
+  dialog.className = 'fpm-figure-dialog';
+  dialog.setAttribute('aria-label', 'Ilustración ampliada');
+  const controls = document.createElement('div');
+  controls.className = 'fpm-figure-controls';
+  const title = document.createElement('strong');
+  const original = document.createElement('a');
+  original.textContent = 'Abrir imagen';
+  original.target = '_blank';
+  original.rel = 'noopener';
+  const close = document.createElement('button');
+  close.type = 'button';
+  close.textContent = 'Cerrar ×';
+  close.setAttribute('aria-label', 'Cerrar ilustración ampliada');
+  close.addEventListener('click', () => dialog.close());
+  controls.append(title, original, close);
+  const image = document.createElement('img');
+  dialog.append(controls, image);
+  document.body.append(dialog);
+  let opener = null;
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest?.('figure.fpm-v04-panel a.lightbox');
+    if (!link) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const source = link.querySelector('img');
+    if (!source) return;
+    opener = link;
+    image.src = link.href;
+    image.alt = source.alt;
+    title.textContent = link.closest('figure').querySelector('figcaption strong')?.textContent || 'Ilustración ampliada';
+    original.href = link.href;
+    dialog.showModal();
+    close.focus();
+  }, true);
+  dialog.addEventListener('click', (event) => {
+    if (event.target === dialog) dialog.close();
+  });
+  dialog.addEventListener('close', () => opener?.focus({preventScroll: true}));
+});
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../assets/books/reader.css">
+<link rel="stylesheet" href="../../assets/books/fispm/fispm-reader.css">
+</head>
+
+<body class="nav-fixed quarto-dark"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = true;
+    const darkModeDefault = authorPrefersDark;
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../assets/brand/ma-navbar-light.svg" alt="Matemática Abierta" class="navbar-logo light-content">
+    <img src="../../assets/brand/ma-navbar-dark.svg" alt="Matemática Abierta" class="navbar-logo dark-content">
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-teoría" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Teoría</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-teoría">    
+        <li>
+    <a class="dropdown-item" href="../../teoria/index.html">
+ <span class="dropdown-text">Portada de Teoría</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../conceptos/index.html">
+ <span class="dropdown-text">Conceptos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/resultados/index.html">
+ <span class="dropdown-text">Resultados y teoremas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/metodos/index.html">
+ <span class="dropdown-text">Métodos y técnicas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../teoria/mapas/index.html">
+ <span class="dropdown-text">Mapas y conexiones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-problemas" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Problemas</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-problemas">    
+        <li>
+    <a class="dropdown-item" href="../../problemas/index.html">
+ <span class="dropdown-text">Todos los problemas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-area/index.html">
+ <span class="dropdown-text">Por área</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-tecnica/index.html">
+ <span class="dropdown-text">Por técnica</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/por-dificultad/index.html">
+ <span class="dropdown-text">Por dificultad</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../problemas/colecciones/index.html">
+ <span class="dropdown-text">Colecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-cursos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Cursos</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-cursos">    
+        <li>
+    <a class="dropdown-item" href="../../cursos/index.html">
+ <span class="dropdown-text">Portada de Cursos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/calculo-i/index.html">
+ <span class="dropdown-text">Cálculo para matemáticos — Cálculo I</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/rutas/index.html">
+ <span class="dropdown-text">Rutas de estudio</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../cursos/lecciones/index.html">
+ <span class="dropdown-text">Lecciones</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-libros" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Libros</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-libros">    
+        <li>
+    <a class="dropdown-item" href="../../libros/index.html">
+ <span class="dropdown-text">Portada de Libros</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/para-matematicos/index.html">
+ <span class="dropdown-text">Para matemáticos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/tratados/index.html">
+ <span class="dropdown-text">Tratados</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/otros/index.html">
+ <span class="dropdown-text">Otros libros y monografías</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../libros/capitulos/index.html">
+ <span class="dropdown-text">Capítulos publicados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-explorar" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Explorar</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-explorar">    
+        <li>
+    <a class="dropdown-item" href="../../explorar/index.html">
+ <span class="dropdown-text">Portada de Explorar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/areas/index.html">
+ <span class="dropdown-text">Áreas</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/temas/index.html">
+ <span class="dropdown-text">Índice temático</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../blog/index.html">
+ <span class="dropdown-text">Artículos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/bibliografia/index.html">
+ <span class="dropdown-text">Bibliografía</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/notacion/index.html">
+ <span class="dropdown-text">Notación y convenciones</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../explorar/glosario/index.html">
+ <span class="dropdown-text">Glosario</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-proyecto" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Proyecto</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-proyecto">    
+        <li>
+    <a class="dropdown-item" href="../../proyecto/index.html">
+ <span class="dropdown-text">Portada del Proyecto</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../acerca-de.html">
+ <span class="dropdown-text">Acerca de</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/politica-editorial.html">
+ <span class="dropdown-text">Política editorial</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/procedencia-y-derechos.html">
+ <span class="dropdown-text">Procedencia y derechos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../licencia.html">
+ <span class="dropdown-text">Licencia</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/como-citar.html">
+ <span class="dropdown-text">Cómo citar</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../proyecto/estado-y-hoja-de-ruta.html">
+ <span class="dropdown-text">Estado y hoja de ruta</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Alternar modo oscuro"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#el-cuerpo-elegido-decide-qué-fuerzas-se-suman" id="toc-el-cuerpo-elegido-decide-qué-fuerzas-se-suman" class="nav-link active" data-scroll-target="#el-cuerpo-elegido-decide-qué-fuerzas-se-suman">El cuerpo elegido decide qué fuerzas se suman</a></li>
+  <li><a href="#una-resultante-no-es-otra-interacción" id="toc-una-resultante-no-es-otra-interacción" class="nav-link" data-scroll-target="#una-resultante-no-es-otra-interacción">Una resultante no es otra interacción</a></li>
+  <li><a href="#el-marco-forma-parte-de-la-ley" id="toc-el-marco-forma-parte-de-la-ley" class="nav-link" data-scroll-target="#el-marco-forma-parte-de-la-ley">El marco forma parte de la ley</a></li>
+  <li><a href="#qué-relacionan-la-masa-y-la-aceleración" id="toc-qué-relacionan-la-masa-y-la-aceleración" class="nav-link" data-scroll-target="#qué-relacionan-la-masa-y-la-aceleración">Qué relacionan la masa y la aceleración</a></li>
+  <li><a href="#recuperar-el-frenado-desde-las-interacciones" id="toc-recuperar-el-frenado-desde-las-interacciones" class="nav-link" data-scroll-target="#recuperar-el-frenado-desde-las-interacciones">Recuperar el frenado desde las interacciones</a></li>
+  <li><a href="#el-apoyo-se-calcula-junto-con-el-movimiento" id="toc-el-apoyo-se-calcula-junto-con-el-movimiento" class="nav-link" data-scroll-target="#el-apoyo-se-calcula-junto-con-el-movimiento">El apoyo se calcula junto con el movimiento</a></li>
+  <li><a href="#fuerzas-iguales-que-actúan-sobre-cuerpos-distintos" id="toc-fuerzas-iguales-que-actúan-sobre-cuerpos-distintos" class="nav-link" data-scroll-target="#fuerzas-iguales-que-actúan-sobre-cuerpos-distintos">Fuerzas iguales que actúan sobre cuerpos distintos</a></li>
+  <li><a href="#cambiar-de-sistema-para-encontrar-una-fuerza-de-contacto" id="toc-cambiar-de-sistema-para-encontrar-una-fuerza-de-contacto" class="nav-link" data-scroll-target="#cambiar-de-sistema-para-encontrar-una-fuerza-de-contacto">Cambiar de sistema para encontrar una fuerza de contacto</a></li>
+  <li><a href="#una-ley-de-fuerza-completa-la-ecuación" id="toc-una-ley-de-fuerza-completa-la-ecuación" class="nav-link" data-scroll-target="#una-ley-de-fuerza-completa-la-ecuación">Una ley de fuerza completa la ecuación</a></li>
+  <li><a href="#de-una-fuerza-conocida-a-toda-la-historia" id="toc-de-una-fuerza-conocida-a-toda-la-historia" class="nav-link" data-scroll-target="#de-una-fuerza-conocida-a-toda-la-historia">De una fuerza conocida a toda la historia</a></li>
+  <li><a href="#la-aceleración-radial-necesita-una-interacción" id="toc-la-aceleración-radial-necesita-una-interacción" class="nav-link" data-scroll-target="#la-aceleración-radial-necesita-una-interacción">La aceleración radial necesita una interacción</a></li>
+  <li><a href="#lo-que-permite-inferir-una-aceleración" id="toc-lo-que-permite-inferir-una-aceleración" class="nav-link" data-scroll-target="#lo-que-permite-inferir-una-aceleración">Lo que permite inferir una aceleración</a></li>
+  <li><a href="#ejercicios" id="toc-ejercicios" class="nav-link" data-scroll-target="#ejercicios">Ejercicios</a>
+  <ul class="collapse">
+  <li><a href="#ejercicio-4-1" id="toc-ejercicio-4-1" class="nav-link" data-scroll-target="#ejercicio-4-1">1. La fuerza no indica el sentido de la velocidad</a></li>
+  <li><a href="#ejercicio-4-2" id="toc-ejercicio-4-2" class="nav-link" data-scroll-target="#ejercicio-4-2">2. Una interacción que falta en el inventario</a></li>
+  <li><a href="#ejercicio-4-3" id="toc-ejercicio-4-3" class="nav-link" data-scroll-target="#ejercicio-4-3">3. Comparar masas con el mismo actuador</a></li>
+  <li><a href="#ejercicio-4-4" id="toc-ejercicio-4-4" class="nav-link" data-scroll-target="#ejercicio-4-4">4. Propagar una calibración hasta una aceleración</a></li>
+  <li><a href="#ejercicio-4-5" id="toc-ejercicio-4-5" class="nav-link" data-scroll-target="#ejercicio-4-5">5. Dimensionar el freno</a></li>
+  <li><a href="#ejercicio-4-6" id="toc-ejercicio-4-6" class="nav-link" data-scroll-target="#ejercicio-4-6">6. Equilibrio de fuerzas mientras el cuerpo avanza</a></li>
+  <li><a href="#ejercicio-4-7" id="toc-ejercicio-4-7" class="nav-link" data-scroll-target="#ejercicio-4-7">7. Descender con una lectura mayor</a></li>
+  <li><a href="#ejercicio-4-8" id="toc-ejercicio-4-8" class="nav-link" data-scroll-target="#ejercicio-4-8">8. El límite de un suelo que sólo empuja</a></li>
+  <li><a href="#ejercicio-4-9" id="toc-ejercicio-4-9" class="nav-link" data-scroll-target="#ejercicio-4-9">9. Elegir ejes sobre una pendiente</a></li>
+  <li><a href="#ejercicio-4-10" id="toc-ejercicio-4-10" class="nav-link" data-scroll-target="#ejercicio-4-10">10. Tirar hacia arriba también cambia el apoyo</a></li>
+  <li><a href="#ejercicio-4-11" id="toc-ejercicio-4-11" class="nav-link" data-scroll-target="#ejercicio-4-11">11. La misma fuerza, dos aceleraciones</a></li>
+  <li><a href="#ejercicio-4-12" id="toc-ejercicio-4-12" class="nav-link" data-scroll-target="#ejercicio-4-12">12. Dos parejas distintas</a></li>
+  <li><a href="#ejercicio-4-13" id="toc-ejercicio-4-13" class="nav-link" data-scroll-target="#ejercicio-4-13">13. Empujar por extremos diferentes</a></li>
+  <li><a href="#ejercicio-4-14" id="toc-ejercicio-4-14" class="nav-link" data-scroll-target="#ejercicio-4-14">14. Lo que realmente cancela la suma</a></li>
+  <li><a href="#ejercicio-4-15" id="toc-ejercicio-4-15" class="nav-link" data-scroll-target="#ejercicio-4-15">15. Integrar una fuerza que crece</a></li>
+  <li><a href="#ejercicio-4-16" id="toc-ejercicio-4-16" class="nav-link" data-scroll-target="#ejercicio-4-16">16. Quitar el agente que mantenía el círculo</a></li>
+  <li><a href="#ejercicio-4-17" id="toc-ejercicio-4-17" class="nav-link" data-scroll-target="#ejercicio-4-17">17. Auditar una historia para el resorte</a></li>
+  <li><a href="#ejercicio-4-18" id="toc-ejercicio-4-18" class="nav-link" data-scroll-target="#ejercicio-4-18">18. Una aceleración que proviene de las coordenadas</a></li>
+  <li><a href="#ejercicio-4-19" id="toc-ejercicio-4-19" class="nav-link" data-scroll-target="#ejercicio-4-19">19. Inferir una suma no identifica cada fuerza</a></li>
+  <li><a href="#ejercicio-4-20" id="toc-ejercicio-4-20" class="nav-link" data-scroll-target="#ejercicio-4-20">20. Dos frenos que coinciden al comenzar</a></li>
+  </ul></li>
+  <li><a href="#soluciones" id="toc-soluciones" class="nav-link" data-scroll-target="#soluciones">Soluciones</a>
+  <ul class="collapse">
+  <li><a href="#solucion-4-1" id="toc-solucion-4-1" class="nav-link" data-scroll-target="#solucion-4-1">1. La fuerza no indica el sentido de la velocidad</a></li>
+  <li><a href="#solucion-4-2" id="toc-solucion-4-2" class="nav-link" data-scroll-target="#solucion-4-2">2. Una interacción que falta en el inventario</a></li>
+  <li><a href="#solucion-4-3" id="toc-solucion-4-3" class="nav-link" data-scroll-target="#solucion-4-3">3. Comparar masas con el mismo actuador</a></li>
+  <li><a href="#solucion-4-4" id="toc-solucion-4-4" class="nav-link" data-scroll-target="#solucion-4-4">4. Propagar una calibración hasta una aceleración</a></li>
+  <li><a href="#solucion-4-5" id="toc-solucion-4-5" class="nav-link" data-scroll-target="#solucion-4-5">5. Dimensionar el freno</a></li>
+  <li><a href="#solucion-4-6" id="toc-solucion-4-6" class="nav-link" data-scroll-target="#solucion-4-6">6. Equilibrio de fuerzas mientras el cuerpo avanza</a></li>
+  <li><a href="#solucion-4-7" id="toc-solucion-4-7" class="nav-link" data-scroll-target="#solucion-4-7">7. Descender con una lectura mayor</a></li>
+  <li><a href="#solucion-4-8" id="toc-solucion-4-8" class="nav-link" data-scroll-target="#solucion-4-8">8. El límite de un suelo que sólo empuja</a></li>
+  <li><a href="#solucion-4-9" id="toc-solucion-4-9" class="nav-link" data-scroll-target="#solucion-4-9">9. Elegir ejes sobre una pendiente</a></li>
+  <li><a href="#solucion-4-10" id="toc-solucion-4-10" class="nav-link" data-scroll-target="#solucion-4-10">10. Tirar hacia arriba también cambia el apoyo</a></li>
+  <li><a href="#solucion-4-11" id="toc-solucion-4-11" class="nav-link" data-scroll-target="#solucion-4-11">11. La misma fuerza, dos aceleraciones</a></li>
+  <li><a href="#solucion-4-12" id="toc-solucion-4-12" class="nav-link" data-scroll-target="#solucion-4-12">12. Dos parejas distintas</a></li>
+  <li><a href="#solucion-4-13" id="toc-solucion-4-13" class="nav-link" data-scroll-target="#solucion-4-13">13. Empujar por extremos diferentes</a></li>
+  <li><a href="#solucion-4-14" id="toc-solucion-4-14" class="nav-link" data-scroll-target="#solucion-4-14">14. Lo que realmente cancela la suma</a></li>
+  <li><a href="#solucion-4-15" id="toc-solucion-4-15" class="nav-link" data-scroll-target="#solucion-4-15">15. Integrar una fuerza que crece</a></li>
+  <li><a href="#solucion-4-16" id="toc-solucion-4-16" class="nav-link" data-scroll-target="#solucion-4-16">16. Quitar el agente que mantenía el círculo</a></li>
+  <li><a href="#solucion-4-17" id="toc-solucion-4-17" class="nav-link" data-scroll-target="#solucion-4-17">17. Auditar una historia para el resorte</a></li>
+  <li><a href="#solucion-4-18" id="toc-solucion-4-18" class="nav-link" data-scroll-target="#solucion-4-18">18. Una aceleración que proviene de las coordenadas</a></li>
+  <li><a href="#solucion-4-19" id="toc-solucion-4-19" class="nav-link" data-scroll-target="#solucion-4-19">19. Inferir una suma no identifica cada fuerza</a></li>
+  <li><a href="#solucion-4-20" id="toc-solucion-4-20" class="nav-link" data-scroll-target="#solucion-4-20">20. Dos frenos que coinciden al comenzar</a></li>
+  </ul></li>
+  <li><a href="#lecturas-de-apoyo" id="toc-lecturas-de-apoyo" class="nav-link" data-scroll-target="#lecturas-de-apoyo">Lecturas de apoyo</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Fuerzas y leyes de Newton</h1>
+<p class="subtitle lead">Física para matemáticos · Tomo I · Capítulo 4</p>
+</div>
+
+<div>
+  <div class="description">
+    Capítulo 4 de la edición revisada, con problemas y soluciones desarrolladas.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>A. Peña </p>
+          </div>
+  </div>
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de última modificación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">21 de octubre de 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="../../libros/capitulos/fisica-para-matematicos-03-movimiento-en-el-plano.html">← 3. Movimiento en el plano</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-05-contactos-tensiones-y-rozamiento.html">5. Contactos, tensiones y rozamiento →</a></p>
+<p>El carro del capítulo 1 avanzaba a ocho metros por segundo y disponía de veinte metros de riel. Al suponer una aceleración constante de menos dos metros por segundo al cuadrado, calculamos que se detenía en cuatro segundos después de recorrer dieciséis metros. La aceleración era un dato del modelo. Para diseñar el freno necesitamos relacionarla con las interacciones que actúan sobre el carro: un mismo dispositivo no producirá necesariamente el mismo frenado si cambia la carga.</p>
+<p>Añadamos un dato: la masa total del carro y su carga es de cuatro kilogramos. El carro se traslada sobre un riel horizontal sin cambiar de orientación; la aceleración de su frente coincide con la de los demás puntos. Lo representaremos como una partícula de esa masa y mantendremos el frente como referencia de posición. Un dispositivo de frenado fijo al laboratorio ejerce una fuerza horizontal controlada sobre el carro mientras éste avanza. Despreciaremos las demás resistencias horizontales y trataremos el laboratorio como un marco inercial aproximado para la duración y precisión del ensayo.</p>
+<p>La descripción cinemática nos dice qué aceleración queremos obtener. Las leyes de Newton permitirán calcular qué fuerza resultante debe producirla. Para utilizarlas habrá que decidir qué pertenece al carro y qué queda fuera de él.</p>
+<section id="el-cuerpo-elegido-decide-qué-fuerzas-se-suman" class="level2">
+<h2 class="anchored" data-anchor-id="el-cuerpo-elegido-decide-qué-fuerzas-se-suman">El cuerpo elegido decide qué fuerzas se suman</h2>
+<p><strong>Definición.</strong> Un <em>sistema mecánico</em> es el cuerpo o conjunto de cuerpos que se elige para el análisis. Una fuerza es <em>externa</em> si su agente pertenece al entorno y actúa sobre un cuerpo del sistema; es <em>interna</em> si relaciona dos cuerpos incluidos en él.</p>
+<p>Esta clasificación depende de la frontera elegida. La fuerza de una cuerda sobre un carro es externa al sistema formado por el carro solo; si incluimos también la cuerda, esa interacción queda dentro del sistema y aparecen otras fuerzas externas, por ejemplo las que se ejercen sobre el otro extremo de la cuerda. Cambiar la frontera exige revisar el inventario de interacciones.</p>
+<p>En nuestro primer análisis, el sistema contiene el carro y la carga que se mueve con él. Quedan fuera la Tierra, el riel y el freno fijo. La Tierra ejerce la fuerza gravitatoria; el riel ejerce una fuerza de contacto; el freno ejerce una fuerza horizontal opuesta al avance. Un dispositivo de frenado instalado enteramente dentro de un carro aislado requeriría otro análisis: sus interacciones internas no pueden sustituir, sin más, la fuerza externa que aquí proporciona el freno fijo.</p>
+<p>Representaremos cada fuerza mediante un vector e identificaremos a su agente. La notación</p>
+<p><span class="math display">\[
+\mathbf F_{A\to B}
+\]</span></p>
+<p>significa fuerza ejercida por A sobre B. El cuerpo B es quien recibe esa fuerza. En un diagrama del carro sólo entran fuerzas que terminan en el carro; las que éste ejerce sobre el riel o el freno pertenecen a los diagramas de esos otros cuerpos.</p>
+<figure id="fig-fispm-r20261021-4-1" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/newton_carro_diagrama.svg" class="lightbox" data-gallery="fispm-r20261021-c4"><img src="../../assets/books/fispm/r20261021/newton_carro_diagrama.svg" alt="La escena del carro y su diagrama se muestran separados. El diagrama contiene fuerza del freno, normal del riel y peso ejercido por la Tierra." class="fpm-v04-figure img-fluid figure-img" width="508.703878" height="447.59952" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 4.1.</em> La flecha de velocidad pertenece a la descripción del movimiento. En el diagrama de cuerpo libre aparecen únicamente las tres fuerzas externas del modelo. El freno permanece fuera del sistema carro y carga.</p>
+</figcaption>
+</figure>
+<p>Un diagrama de cuerpo libre conserva el sistema elegido y reemplaza el entorno por sus fuerzas.</p>
+<p>Para construir el del carro, imaginamos que lo retiramos del dibujo junto con su carga y conservamos un punto que los representa. A cada contacto o interacción con el entorno le corresponde una flecha recibida por ese punto: el riel empuja, la Tierra atrae y el freno actúa horizontalmente. El inventario se construye antes de sumar y antes de conocer la aceleración. Si desconocemos un módulo, conservamos una letra para él; elegir su valor para que salga el movimiento deseado ocultaría la pregunta que intentamos resolver. En el modelo de partícula, todas pueden dibujarse desde un mismo punto porque sólo estudiamos la traslación. Cuando interese la rotación, el lugar de aplicación de cada fuerza aportará información que esta representación ha omitido.</p>
+</section>
+<section id="una-resultante-no-es-otra-interacción" class="level2">
+<h2 class="anchored" data-anchor-id="una-resultante-no-es-otra-interacción">Una resultante no es otra interacción</h2>
+<p><strong>Definición.</strong> La <em>fuerza resultante</em> o <em>fuerza neta</em> sobre una partícula es la suma vectorial de las fuerzas externas incluidas en su modelo:</p>
+<p><span class="math display">\[
+\mathbf F_{\mathrm{neta}}=\sum_A\mathbf F_{A\to B}.
+\]</span></p>
+<p>Para el carro, usando ejes horizontal y vertical,</p>
+<p><span class="math display">\[
+\mathbf F_{\mathrm{neta}}=-B\mathbf e_x+(N-P)\mathbf e_y.
+\]</span></p>
+<p>Aquí <span class="math inline">\(B\geq0\)</span> es el módulo de la fuerza del freno, <span class="math inline">\(N\geq0\)</span> el de la componente normal del contacto del riel y <span class="math inline">\(P\geq0\)</span> el del peso. La normal es perpendicular a la superficie de contacto; una componente tangencial, si fuera relevante, exigiría su propio modelo. Despreciarla es una hipótesis de este ensayo, no una propiedad universal de los rieles.</p>
+<p>La resultante reúne las interacciones ya enumeradas. Si se dibujan las tres fuerzas y después se añade su resultante como una cuarta fuerza, se las cuenta dos veces. Tampoco se agrega una fuerza en la dirección de la velocidad por el hecho de que el carro avance. La flecha de velocidad comunica cómo cambia la posición; cada fuerza del inventario necesita un agente.</p>
+<p>Las componentes sirven para calcular la suma. Si una fuerza oblicua se expresa como <span class="math inline">\(F_x\mathbf e_x+F_y\mathbf e_y\)</span>, ambos términos representan esa misma fuerza. Podemos utilizar el vector completo o sus componentes, conservando esa equivalencia durante la cuenta.</p>
+<figure id="fig-fispm-r20261021-4-2" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/newton_resultante_componentes.svg" class="lightbox" data-gallery="fispm-r20261021-c4"><img src="../../assets/books/fispm/r20261021/newton_resultante_componentes.svg" alt="Un inventario de dos fuerzas y su suma gráfica se muestran en paneles distintos para evitar contar la resultante como una tercera interacción." class="fpm-v04-figure img-fluid figure-img" width="569.99952" height="251.514881" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 4.2.</em> La construcción punta con cola calcula la suma. La resultante pertenece al cálculo del efecto conjunto, mientras que las fuerzas individuales conservan sus agentes.</p>
+</figcaption>
+</figure>
+</section>
+<section id="el-marco-forma-parte-de-la-ley" class="level2">
+<h2 class="anchored" data-anchor-id="el-marco-forma-parte-de-la-ley">El marco forma parte de la ley</h2>
+<p>Una partícula que se mueve libremente dentro de un vagón puede parecer acelerada para un pasajero si el vagón acelera. El observador del andén y el del vagón asignan coordenadas distintas al mismo movimiento. Antes de relacionar una aceleración con fuerzas hay que precisar qué clase de marco utiliza la ecuación.</p>
+<p><strong>Definición.</strong> Llamaremos <em>inercial</em> a un marco en el que todo cuerpo suficientemente aislado conserva una velocidad vectorial constante. La palabra aislado expresa que las interacciones residuales son despreciables para la precisión y el intervalo de estudio.</p>
+<p><strong>Primera ley de Newton.</strong> La descripción newtoniana admite marcos inerciales: en ellos, un cuerpo libre permanece en reposo o se mueve en línea recta con velocidad constante.</p>
+<p>Esta ley establece una referencia física para la ausencia de aceleración. La posición de reposo depende del observador; el movimiento rectilíneo uniforme puede convertirse en reposo al pasar a un marco que acompañe al cuerpo. El capítulo 3 mostró que las traslaciones uniformes con ejes fijos y paralelos conservan las aceleraciones, por lo que la familia de marcos inerciales contiene todos los obtenidos así a partir de uno de ellos.</p>
+<p>Un solo cuerpo con aceleración nula no basta para declarar inercial un marco: quizá una interacción compensa su aceleración respecto de otra referencia. El criterio involucra el comportamiento de cuerpos suficientemente aislados y debe sostenerse en el régimen examinado. En los problemas de laboratorio de este capítulo adoptaremos la aproximación inercial del suelo; sus límites deberán revisarse en movimientos suficientemente prolongados, extensos o precisos.</p>
+</section>
+<section id="qué-relacionan-la-masa-y-la-aceleración" class="level2">
+<h2 class="anchored" data-anchor-id="qué-relacionan-la-masa-y-la-aceleración">Qué relacionan la masa y la aceleración</h2>
+<p><strong>Segunda ley de Newton.</strong> Para una partícula de masa inercial constante <span class="math inline">\(m&gt;0\)</span>, descrita desde un marco inercial,</p>
+<p><span class="math display">\[
+\sum_A\mathbf F_{A\to B}=m\mathbf a.
+\]</span></p>
+<p>Las fuerzas que aparecen en el miembro izquierdo deben especificarse mediante las interacciones del modelo. La aceleración del derecho es la segunda derivada de la posición del mismo cuerpo y respecto del mismo marco. Con bases cartesianas fijas, la igualdad equivale a una ecuación por componente:</p>
+<p><span class="math display">\[
+\sum_A F_{A\to B,x}=m\ddot x,
+\qquad
+\sum_A F_{A\to B,y}=m\ddot y.
+\]</span></p>
+<p>La ley es un principio físico que contrastamos mediante experiencias; no se obtiene demostrando un teorema del cálculo. Podemos inferir la fuerza neta requerida por una aceleración observada, o predecir una aceleración a partir de fuerzas determinadas de otra manera. Si toda fuerza se asignara únicamente después de medir la aceleración, escribir la igualdad no ofrecería una predicción independiente. Un ensayo útil calibra el dispositivo, mide la masa y compara el movimiento posterior con el calculado bajo esas condiciones.</p>
+<p>La masa inercial mide la respuesta a una fuerza neta. Si la misma fuerza produce aceleraciones de módulos <span class="math inline">\(a_1\)</span> y <span class="math inline">\(a_2\)</span> en dos cuerpos, la ley exige <span class="math inline">\(m_1a_1=m_2a_2\)</span>, de modo que sus masas son inversamente proporcionales a esas aceleraciones. La comparación requiere que la fuerza neta sea realmente la misma; repetir una posición de un mando no garantiza ese hecho sin un modelo o una calibración del dispositivo.</p>
+<p>En el SI, la relación de unidades es</p>
+<p><span class="math display">\[
+1\,\mathrm N=1\,\mathrm{kg\,m/s^2}.
+\]</span></p>
+<p>La masa se expresa en kilogramos y la fuerza en newtons. Un dinamómetro calibrado mide una fuerza a través de una respuesta instrumental; una balanza puede mostrar una estimación de masa bajo las condiciones de su calibración. El número que aparece en la pantalla necesita esa interpretación antes de entrar en una ecuación.</p>
+<p>El producto <span class="math inline">\(m\mathbf a\)</span> expresa el resultado que debe igualar la suma. No corresponde a una interacción adicional que se dibuje junto a las fuerzas del entorno. Al resolver <span class="math inline">\(-B=ma_x\)</span>, por ejemplo, ya se ha relacionado la fuerza del freno con la aceleración; añadir otra fuerza de módulo <span class="math inline">\(m|a_x|\)</span> duplicaría ese papel.</p>
+</section>
+<section id="recuperar-el-frenado-desde-las-interacciones" class="level2">
+<h2 class="anchored" data-anchor-id="recuperar-el-frenado-desde-las-interacciones">Recuperar el frenado desde las interacciones</h2>
+<p>Cerca de la superficie terrestre modelaremos el peso como <span class="math inline">\(\mathbf P=m\mathbf g\)</span>, con <span class="math inline">\(\mathbf g=-g\mathbf e_y\)</span>. El uso de la misma masa en la respuesta inercial y en esta ley gravitatoria recoge una propiedad experimental; no se deduce de la definición de derivada. Usaremos <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span> como valor didáctico en los ejemplos numéricos.</p>
+<p>Para el carro de cuatro kilogramos que permanece sobre el riel horizontal, la coordenada vertical es constante durante el ensayo. Por tanto, <span class="math inline">\(a_y=0\)</span> y la ecuación vertical da</p>
+<p><span class="math display">\[
+N-mg=0,\qquad N=40\,\mathrm N.
+\]</span></p>
+<p>La igualdad entre normal y módulo del peso se obtuvo usando la restricción vertical y la ausencia de otras fuerzas con componente vertical. El mero hecho de que exista una superficie no la garantiza.</p>
+<p>La aceleración horizontal deseada es <span class="math inline">\(-2\,\mathrm{m/s^2}\)</span>. En consecuencia,</p>
+<p><span class="math display">\[
+-B=(4\,\mathrm{kg})(-2\,\mathrm{m/s^2}),
+\qquad B=8\,\mathrm N.
+\]</span></p>
+<p>Si el freno proporciona esa fuerza neta constante mientras el carro avanza, recuperamos la historia anterior:</p>
+<p><span class="math display">\[
+v(t)=8\,\mathrm{m/s}-(2\,\mathrm{m/s^2})t,
+\qquad
+x(t)=(8\,\mathrm{m/s})t-(1\,\mathrm{m/s^2})t^2,
+\qquad 0\leq t\leq4\,\mathrm s.
+\]</span></p>
+<p>Supondremos que al detenerse se retira la fuerza horizontal del freno y el carro permanece en reposo. Mantener después la fuerza <span class="math inline">\(-8\,\mathrm N\)</span> sería otro modelo y predeciría una inversión del movimiento. La condición de parada no aparece por resolver una ecuación cuadrática: hay que explicar qué cambia físicamente al llegar a ella.</p>
+<p>Con una carga que elevara la masa total a ocho kilogramos, la misma fuerza neta produciría <span class="math inline">\(a_x=-1\,\mathrm{m/s^2}\)</span>. En una guía ilimitada, el carro tardaría ocho segundos en detenerse y recorrería treinta y dos metros. En el riel disponible alcanzaría el extremo antes de parar; la prolongación hasta treinta y dos metros sólo sirve para mostrar que ese freno no satisface la condición del ensayo.</p>
+</section>
+<section id="el-apoyo-se-calcula-junto-con-el-movimiento" class="level2">
+<h2 class="anchored" data-anchor-id="el-apoyo-se-calcula-junto-con-el-movimiento">El apoyo se calcula junto con el movimiento</h2>
+<p>Una persona sobre una plataforma que acelera verticalmente recibe dos fuerzas en el modelo elemental: el peso y la normal del apoyo. El sistema elegido es la persona; el mecanismo que acelera la plataforma pertenece al entorno. Mientras mantiene contacto sin movimiento relativo vertical respecto de la plataforma, comparte su aceleración <span class="math inline">\(a_y\)</span> y cumple</p>
+<p><span class="math display">\[
+N-mg=ma_y,\qquad N=m(g+a_y).
+\]</span></p>
+<p>Para una masa de cincuenta kilogramos y aceleración hacia arriba de <span class="math inline">\(2\,\mathrm{m/s^2}\)</span>, la normal vale <span class="math inline">\(600\,\mathrm N\)</span>, mientras que el peso sigue siendo <span class="math inline">\(500\,\mathrm N\)</span>. Una báscula ideal bajo sus pies responde a esa fuerza de contacto. El resultado depende de la aceleración, no del sentido de la velocidad: la plataforma podría estar descendiendo y frenando.</p>
+<figure id="fig-fispm-r20261021-4-3" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/newton_apoyo_acelerado.svg" class="lightbox" data-gallery="fispm-r20261021-c4"><img src="../../assets/books/fispm/r20261021/newton_apoyo_acelerado.svg" alt="Una persona y el diagrama de sus fuerzas permiten comparar el peso con la lectura del apoyo durante una aceleración vertical." class="fpm-v04-figure img-fluid figure-img" width="555.59952" height="303.824145" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 4.3.</em> La báscula responde a la normal. La aceleración se indica fuera del diagrama de fuerzas y puede apuntar hacia arriba mientras la plataforma aún desciende.</p>
+</figcaption>
+</figure>
+<p>Si un cálculo exigiera <span class="math inline">\(N&lt;0\)</span> para un suelo que sólo puede empujar desde abajo, la hipótesis de mantener contacto sería incompatible con ese resultado. Habría que cambiar de régimen. Esta comprobación enseña qué preguntar después de resolver: además de satisfacer las ecuaciones, la fuerza debe poder ser ejercida por el agente que le atribuimos.</p>
+</section>
+<section id="fuerzas-iguales-que-actúan-sobre-cuerpos-distintos" class="level2">
+<h2 class="anchored" data-anchor-id="fuerzas-iguales-que-actúan-sobre-cuerpos-distintos">Fuerzas iguales que actúan sobre cuerpos distintos</h2>
+<p><strong>Tercera ley de Newton.</strong> En los modelos mecánicos newtonianos de interacción por pares que adoptaremos, las fuerzas mutuas satisfacen, en el mismo instante,</p>
+<p><span class="math display">\[
+\mathbf F_{A\to B}=-\mathbf F_{B\to A}.
+\]</span></p>
+<p>La igualdad de módulos y la oposición de direcciones relacionan fuerzas recibidas por cuerpos diferentes. No exige masas iguales ni aceleraciones iguales. Tampoco establece que una de esas fuerzas comience antes que la otra: los nombres acción y reacción no introducen un retraso temporal.</p>
+<p>Un libro inmóvil sobre una mesa recibe su peso, ejercido por la Tierra, y la normal, ejercida por la mesa. Ambas pueden equilibrarse sobre el libro. La pareja del peso en la tercera ley es la fuerza gravitatoria que el libro ejerce sobre la Tierra. La pareja de la normal es la fuerza que el libro ejerce sobre la mesa. Compartir módulo y direcciones opuestas en una situación de equilibrio no basta para identificar una pareja de interacción: hay que intercambiar los mismos dos agentes y receptores.</p>
+<figure id="fig-fispm-r20261021-4-4" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/newton_pares_interaccion.svg" class="lightbox" data-gallery="fispm-r20261021-c4"><img src="../../assets/books/fispm/r20261021/newton_pares_interaccion.svg" alt="Dos pares de interacción se distinguen mediante flechas sobre cuerpos distintos: libro y Tierra, y libro y mesa." class="fpm-v04-figure img-fluid figure-img" width="506.483537" height="476.39952" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 4.4.</em> En cada fila se conserva una única interacción y se intercambian agente y receptor. El peso y la normal del libro pertenecen a filas diferentes.</p>
+</figcaption>
+</figure>
+<p>Si dos patinadores se empujan, la fuerza de uno sobre el otro puede acelerar a ambos en sentidos opuestos. En la ecuación de cada patinador sólo aparece la fuerza que recibe. Cancelar las dos dentro de una ecuación de uno solo eliminaría una fuerza que actúa sobre el otro cuerpo y produciría una conclusión falsa.</p>
+<p>Al ampliar el sistema para incluir a ambos, sí desaparecen de la suma las fuerzas internas. Esa operación admite una formulación precisa.</p>
+<p><strong>Proposición (suma de las ecuaciones de un sistema).</strong> Consideremos un conjunto fijo de <span class="math inline">\(n\)</span> partículas con masas constantes <span class="math inline">\(m_i&gt;0\)</span>, todas descritas desde un mismo marco inercial. Supongamos que las fuerzas internas por pares satisfacen la tercera ley y que cada partícula cumple la segunda. Entonces</p>
+<p><span class="math display">\[
+\sum_{i=1}^n m_i\mathbf a_i
+=\sum_{i=1}^n\mathbf F_i^{\mathrm{ext}}.
+\]</span></p>
+<p>No se presupone que las aceleraciones <span class="math inline">\(\mathbf a_i\)</span> coincidan.</p>
+<p><em>Demostración.</em> La ecuación de la partícula <span class="math inline">\(i\)</span> es</p>
+<p><span class="math display">\[
+m_i\mathbf a_i=\mathbf F_i^{\mathrm{ext}}
++\sum_{j\ne i}\mathbf F_{j\to i}.
+\]</span></p>
+<p>Al sumar sobre <span class="math inline">\(i\)</span>, cada interacción interna aparece exactamente dos veces, una por cada cuerpo que la recibe. Agrupar por pares no ordenados da</p>
+<p><span class="math display">\[
+\sum_i\sum_{j\ne i}\mathbf F_{j\to i}
+=\sum_{i&lt;j}(\mathbf F_{i\to j}+\mathbf F_{j\to i})
+=\mathbf0.
+\]</span></p>
+<p>Queda la identidad enunciada. <span class="math inline">\(\square\)</span></p>
+<p>La conclusión no afirma que las fuerzas internas sean nulas, ni que cada partícula tenga aceleración cero cuando la suma externa es cero. Relaciona una suma ponderada de aceleraciones. Su interpretación mediante el centro de masa se desarrollará al estudiar sistemas de partículas; aquí basta conservar exactamente lo que la suma ha demostrado.</p>
+</section>
+<section id="cambiar-de-sistema-para-encontrar-una-fuerza-de-contacto" class="level2">
+<h2 class="anchored" data-anchor-id="cambiar-de-sistema-para-encontrar-una-fuerza-de-contacto">Cambiar de sistema para encontrar una fuerza de contacto</h2>
+<p>Dos bloques se apoyan uno contra otro en una mesa horizontal sin rozamiento apreciable. A, de tres kilogramos, está a la izquierda de B, de un kilogramo. Una fuerza horizontal de doce newtons empuja A hacia B. Supondremos traslación horizontal y contacto mantenido, y verificaremos que la fuerza calculada sea compatible con esa suposición.</p>
+<p>Si elegimos el sistema A y B, las fuerzas mutuas de contacto se cancelan al sumar. Las verticales están equilibradas y la única fuerza horizontal externa es la aplicada. El contacto mantenido exige que ambos tengan la misma aceleración horizontal <span class="math inline">\(a\)</span>. La proposición da</p>
+<p><span class="math display">\[
+(3\,\mathrm{kg}+1\,\mathrm{kg})a=12\,\mathrm N,
+\qquad a=3\,\mathrm{m/s^2}.
+\]</span></p>
+<p>Para encontrar la fuerza de contacto hay que volver a un sistema en el que sea externa. Elegimos B solo. La única fuerza horizontal sobre él es la que ejerce A, así que su módulo <span class="math inline">\(C\)</span> cumple</p>
+<p><span class="math display">\[
+C=(1\,\mathrm{kg})a=3\,\mathrm N.
+\]</span></p>
+<p>En A, el contacto actúa hacia la izquierda. Su ecuación es <span class="math inline">\(12\,\mathrm N-C=(3\,\mathrm{kg})a\)</span>, que reproduce el mismo resultado. El valor <span class="math inline">\(C&gt;0\)</span> corresponde a un empuje: es admisible para el contacto entre los bloques. La ecuación del sistema conjunto permitió obtener el movimiento; las ecuaciones individuales permitieron resolver una interacción que la suma había eliminado.</p>
+<figure id="fig-fispm-r20261021-4-5" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/newton_dos_bloques.svg" class="lightbox" data-gallery="fispm-r20261021-c4"><img src="../../assets/books/fispm/r20261021/newton_dos_bloques.svg" alt="Los diagramas individuales de dos bloques conservan sus fuerzas mutuas. Al ampliar la frontera para incluir ambos bloques, la fuerza de contacto pasa a ser interna." class="fpm-v04-figure img-fluid figure-img" width="533.99952" height="463.999879" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 4.5.</em> La misma fuerza de contacto es externa en cada diagrama individual e interna en el sistema conjunto. Se muestran sólo las componentes horizontales; las fuerzas verticales se equilibran. Las masas se suman multiplicando una aceleración común sólo después de justificar el contacto mantenido.</p>
+</figcaption>
+</figure>
+</section>
+<section id="una-ley-de-fuerza-completa-la-ecuación" class="level2">
+<h2 class="anchored" data-anchor-id="una-ley-de-fuerza-completa-la-ecuación">Una ley de fuerza completa la ecuación</h2>
+<p>Conocer <span class="math inline">\(m\mathbf a=\sum\mathbf F\)</span> todavía deja abierta la evolución si no sabemos cómo varían las fuerzas. Un freno puede proporcionar una fuerza aproximadamente constante durante un tramo o una fuerza que disminuye con la rapidez. Una interacción elástica puede cambiar cuando cambia la posición. Cada elección produce una ecuación de movimiento y debe sostenerse dentro de un régimen declarado.</p>
+<p>Como ejemplo, un resorte horizontal unido a un soporte fijo puede ejercer sobre un carro una fuerza</p>
+<p><span class="math display">\[
+F_x=-kx,
+\]</span></p>
+<p>donde <span class="math inline">\(x\)</span> es la elongación con signo respecto de su longitud sin deformación y <span class="math inline">\(k&gt;0\)</span> tiene unidades de fuerza por longitud. Supondremos un resorte unido al carro, capaz de trabajar en el intervalo de compresión y extensión considerado, con masa despreciable en este modelo. La relación lineal es una aproximación empírica de pequeñas deformaciones. Una calibración fuera del intervalo lineal podría exigir otra función.</p>
+<p>Para <span class="math inline">\(k=40\,\mathrm{N/m}\)</span>, masa <span class="math inline">\(m=2\,\mathrm{kg}\)</span> y elongación inicial <span class="math inline">\(x_0=0,10\,\mathrm m\)</span>, la fuerza inicial es <span class="math inline">\(-4\,\mathrm N\)</span> y la aceleración inicial <span class="math inline">\(-2\,\mathrm{m/s^2}\)</span>. La ecuación completa es</p>
+<p><span class="math display">\[
+m\ddot x=-kx.
+\]</span></p>
+<p>La posición <span class="math inline">\(x=0\)</span> permite una solución en reposo si también se elige velocidad inicial cero. Si el carro pasa por ese punto con velocidad no nula, la fuerza y la aceleración se anulan en ese instante y el carro continúa atravesándolo. Para determinar una historia hacen falta tanto las condiciones iniciales como la ley de interacción. El estudio de esta ecuación y de sus soluciones se retomará en el oscilador armónico; el ejercicio 17 permite ya comprobar una función propuesta mediante sustitución.</p>
+<figure id="fig-fispm-r20261021-4-6" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/newton_resorte_ley.svg" class="lightbox" data-gallery="fispm-r20261021-c4"><img src="../../assets/books/fispm/r20261021/newton_resorte_ley.svg" alt="La fuerza de un resorte cambia de signo al atravesar la posición sin deformación y se representa por una recta de pendiente negativa en su régimen lineal." class="fpm-v04-figure img-fluid figure-img" width="526.79952" height="425.99952" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 4.6.</em> La recta representa una ley del modelo, no una consecuencia universal de la segunda ley. La deformación y la fuerza deben permanecer dentro del régimen de calibración del resorte.</p>
+</figcaption>
+</figure>
+</section>
+<section id="de-una-fuerza-conocida-a-toda-la-historia" class="level2">
+<h2 class="anchored" data-anchor-id="de-una-fuerza-conocida-a-toda-la-historia">De una fuerza conocida a toda la historia</h2>
+<p>Cuando la fuerza resultante se prescribe únicamente como función del tiempo, podemos integrar directamente. En este caso, el integrando queda determinado antes de conocer la posición. Una fuerza que dependa de esa posición desconocida planteará una ecuación diferente.</p>
+<p><strong>Proposición (fuerza prescrita en el tiempo).</strong> Sea <span class="math inline">\(\mathbf F(t)\)</span> continua en un intervalo que contiene <span class="math inline">\(t_0\)</span>, y sea <span class="math inline">\(m&gt;0\)</span> constante. La única posición de clase <span class="math inline">\(C^2\)</span> que satisface <span class="math inline">\(m\ddot{\mathbf r}=\mathbf F(t)\)</span>, <span class="math inline">\(\mathbf r(t_0)=\mathbf r_0\)</span> y <span class="math inline">\(\dot{\mathbf r}(t_0)=\mathbf v_0\)</span> es</p>
+<p><span class="math display">\[
+\mathbf r(t)=\mathbf r_0+\mathbf v_0(t-t_0)
++\frac1m\int_{t_0}^t(t-s)\mathbf F(s)\,ds.
+\]</span></p>
+<p>Su velocidad es</p>
+<p><span class="math display">\[
+\mathbf v(t)=\mathbf v_0+\frac1m\int_{t_0}^t\mathbf F(s)\,ds.
+\]</span></p>
+<p><em>Demostración.</em> Integramos la segunda ley desde <span class="math inline">\(t_0\)</span> hasta <span class="math inline">\(t\)</span>. El teorema fundamental del cálculo da la fórmula de la velocidad. Para comprobar la expresión de la posición sin omitir el factor <span class="math inline">\(t-s\)</span>, escribamos su término integral como</p>
+<p><span class="math display">\[
+\mathbf G(t)=t\int_{t_0}^t\mathbf F(s)\,ds
+-\int_{t_0}^t s\mathbf F(s)\,ds.
+\]</span></p>
+<p>Derivar por componentes y aplicar la regla del producto da <span class="math inline">\(\dot{\mathbf G}(t)=\int_{t_0}^t\mathbf F(s)\,ds\)</span>: los dos términos <span class="math inline">\(t\mathbf F(t)\)</span> se cancelan. Otra derivada produce <span class="math inline">\(\ddot{\mathbf G}=\mathbf F(t)\)</span>. Además, <span class="math inline">\(\mathbf G(t_0)=\dot{\mathbf G}(t_0)=\mathbf0\)</span>, así que la posición propuesta satisface la ecuación y los datos iniciales. Si dos posiciones los satisfacen, su diferencia tiene segunda derivada cero y datos iniciales nulos; integrando dos veces, esa diferencia es cero. <span class="math inline">\(\square\)</span></p>
+<p>El factor <span class="math inline">\(t-s\)</span> concede más tiempo para modificar la posición a una fuerza que actuó antes. Sus unidades también comprueban el resultado: <span class="math inline">\((t-s)\mathbf F(s)\,ds/m\)</span> tiene unidades de longitud. La continuidad de <span class="math inline">\(\mathbf F\)</span> justifica la regularidad afirmada; una fuerza con saltos requiere aplicar el argumento por tramos y conservar la velocidad y posición en las uniones si no hay un impulso instantáneo.</p>
+<p>Supongamos, por ejemplo, que un actuador aplica una fuerza horizontal <span class="math inline">\(\mathbf F(t)=4\theta\mathbf e_x\,\mathrm N\)</span> durante <span class="math inline">\(0\leq t\leq2\,\mathrm s\)</span>, con <span class="math inline">\(\theta=t/(1\,\mathrm s)\)</span>. El carro tiene masa <span class="math inline">\(2\,\mathrm{kg}\)</span>, parte de <span class="math inline">\(x_0=0\)</span> y lleva velocidad inicial <span class="math inline">\(1\,\mathrm{m/s}\)</span>. Las fuerzas verticales se equilibran. La aceleración horizontal es <span class="math inline">\(2\theta\,\mathrm{m/s^2}\)</span> y las integraciones dan</p>
+<p><span class="math display">\[
+v_x=(1+\theta^2)\,\mathrm{m/s},
+\qquad x=(\theta+\theta^3/3)\,\mathrm m.
+\]</span></p>
+<p>En dos segundos, la velocidad es <span class="math inline">\(5\,\mathrm{m/s}\)</span> y el avance <span class="math inline">\(14/3\,\mathrm m\)</span>. Derivar recupera la aceleración y la fuerza prescritas; evaluar en cero recupera las dos condiciones iniciales. La proposición no autoriza reemplazar <span class="math inline">\(\mathbf F(t)\)</span> por <span class="math inline">\(-kx(t)\)</span> y considerar que ya resolvimos el resorte: en ese caso la función que se integra depende de la posición que aún buscamos.</p>
+</section>
+<section id="la-aceleración-radial-necesita-una-interacción" class="level2">
+<h2 class="anchored" data-anchor-id="la-aceleración-radial-necesita-una-interacción">La aceleración radial necesita una interacción</h2>
+<p>En el capítulo 3, un movimiento circular de radio <span class="math inline">\(R\)</span> y rapidez constante <span class="math inline">\(q\)</span> exigía aceleración de módulo <span class="math inline">\(q^2/R\)</span> hacia el centro. En un marco inercial, la segunda ley exige que la componente radial de la fuerza resultante sea</p>
+<p><span class="math display">\[
+F_{\text{hacia el centro}}=m\frac{q^2}{R}.
+\]</span></p>
+<p>Esta ecuación especifica una componente de la suma de fuerzas; falta identificar qué agente la proporciona. Para un pequeño cuerpo unido a una cuerda y deslizándose sobre una mesa horizontal ideal, la tensión puede ser la única fuerza horizontal. Si la cuerda mantiene un círculo de radio dos metros, la masa es un kilogramo y la rapidez cuatro metros por segundo, su tensión debe ser de ocho newtons. El peso y la normal se equilibran verticalmente.</p>
+<figure id="fig-fispm-r20261021-4-7" class="fpm-v04-panel figure">
+<p><a href="../../assets/books/fispm/r20261021/newton_circulo_interaccion.svg" class="lightbox" data-gallery="fispm-r20261021-c4"><img src="../../assets/books/fispm/r20261021/newton_circulo_interaccion.svg" alt="La velocidad tangente se distingue de la tensión hacia el centro en una vista superior. Un diagrama separado contiene la fuerza horizontal sobre el cuerpo." class="fpm-v04-figure img-fluid figure-img" width="569.99952" height="274.544209" loading="lazy" decoding="async"></a></p>
+<figcaption>
+<p><em>Figura 4.7.</em> La expresión <span class="math inline">\(mq^2/R\)</span> calcula el módulo radial requerido. En este modelo lo aporta la tensión; no se dibuja otra fuerza adicional llamada centrípeta. El diagrama se limita a la proyección horizontal y las fuerzas verticales se equilibran.</p>
+</figcaption>
+</figure>
+<p>Si se rompe la cuerda, desaparece esa interacción. Mientras las otras fuerzas horizontales sigan siendo despreciables, la partícula conserva la velocidad que tenía al romperse: sigue la recta tangente correspondiente. La circunferencia anterior deja de ser una restricción mantenida. Conservar una fuerza radial después de quitar su agente describiría otro aparato.</p>
+</section>
+<section id="lo-que-permite-inferir-una-aceleración" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-permite-inferir-una-aceleración">Lo que permite inferir una aceleración</h2>
+<p>La ecuación de movimiento relaciona una fuerza resultante con una aceleración. Si varias interacciones pueden producir la misma suma, observar la trayectoria no identifica automáticamente cada una. Dos fuerzas horizontales de diez y seis newtons en sentidos opuestos producen la misma resultante que una sola de cuatro newtons. Para distinguir esas situaciones se necesita información adicional sobre sus agentes o una medición de alguna fuerza por separado.</p>
+<p>También puede ocurrir que dos leyes de frenado predigan la misma aceleración inicial y movimientos posteriores diferentes. El ejercicio 20 compara una fuerza constante con una proporcional a la velocidad. Las dos coinciden al comenzar el ensayo, pero sólo una produce una detención en tiempo finito en la guía ideal considerada. Un registro inicial sirve para ajustar ese valor; los registros posteriores permiten contrastar las dos evoluciones.</p>
+<p>El problema del carro queda así vinculado con una intervención realizable: fijar un sistema, medir su masa, caracterizar el freno y comprobar si el movimiento observado coincide con la historia prevista dentro del tramo disponible. Si no coincide, el inventario de fuerzas, la calibración y el régimen de la ley del freno ofrecen hipótesis concretas que revisar.</p>
+</section>
+<section id="ejercicios" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicios">Ejercicios</h2>
+<p>Los ejercicios 1, 2, 3, 5, 6, 7 y 12 forman una primera práctica de inventarios, suma y relación entre fuerza y movimiento. El 9 introduce ejes ligados a una pendiente; 8, 10, 11, 13 y 14 permiten revisar contactos y sistemas. Los problemas 4 y 15–20 combinan las leyes con calibración, integración, movimiento circular o cambios de marco. Antes de consultar la solución del 13, dibuja por separado los dos cuerpos y decide qué fuerza desaparece al reunirlos; las ecuaciones deberían poder reconstruirse desde esos dibujos.</p>
+<p>Usa <span class="math inline">\(g=10\,\mathrm{m/s^2}\)</span> cuando sea necesario. Salvo indicación contraria, las masas son constantes, los datos numéricos son exactos dentro del modelo y el laboratorio se trata como inercial. Los apoyos sólo empujan, y toda hipótesis de contacto debe comprobarse. En las fórmulas parametrizadas, <span class="math inline">\(\theta=t/(1\,\mathrm s)\)</span>. Las tuplas representan componentes cartesianas en ejes fijos.</p>
+<section id="ejercicio-4-1" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-1">1. La fuerza no indica el sentido de la velocidad</h3>
+<p>Un disco de masa dos kilogramos se mueve sobre una mesa horizontal lisa. Tres actuadores ejercen las fuerzas horizontales <span class="math inline">\(\mathbf F_1=(6,0)\,\mathrm N\)</span>, <span class="math inline">\(\mathbf F_2=(-2,3)\,\mathrm N\)</span> y <span class="math inline">\(\mathbf F_3=(0,-3)\,\mathrm N\)</span>, expresadas en ejes del plano de la mesa. Éste es el inventario horizontal completo; las fuerzas verticales se equilibran. La velocidad inicial es <span class="math inline">\((-3,0)\,\mathrm{m/s}\)</span>. Calcula la resultante, la aceleración y la velocidad al cabo de un segundo. Decide si al principio aumenta o disminuye la rapidez y cuándo cambia el sentido del movimiento.</p>
+</section>
+<section id="ejercicio-4-2" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-2">2. Una interacción que falta en el inventario</h3>
+<p>En la proyección horizontal de una mesa lisa, una partícula de masa tres kilogramos tiene aceleración <span class="math inline">\((2,-1)\,\mathrm{m/s^2}\)</span>. Se conoce una fuerza horizontal <span class="math inline">\((4,5)\,\mathrm N\)</span> y se supone que sólo hay otra fuerza horizontal; las verticales se equilibran. Determina esa fuerza desconocida. Explica qué cambiaría si hubiera varias interacciones desconocidas y si el cálculo permite identificar por sí solo a sus agentes.</p>
+</section>
+<section id="ejercicio-4-3" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-3">3. Comparar masas con el mismo actuador</h3>
+<p>Una fuerza neta constante produce aceleración de <span class="math inline">\(3\,\mathrm{m/s^2}\)</span> en un cuerpo de masa <span class="math inline">\(2\,\mathrm{kg}\)</span>. La misma fuerza neta produce <span class="math inline">\(0,75\,\mathrm{m/s^2}\)</span> en otro cuerpo. Determina la masa del segundo. Si en un ensayo posterior de ese segundo cuerpo se mide aceleración de <span class="math inline">\(1,5\,\mathrm{m/s^2}\)</span>, decide si puede seguir siendo la misma fuerza neta bajo las hipótesis anteriores.</p>
+</section>
+<section id="ejercicio-4-4" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-4">4. Propagar una calibración hasta una aceleración</h3>
+<p>Un dinamómetro horizontal tiene relación de calibración <span class="math inline">\(F=(0,5\,\mathrm N)(n-2)\)</span>, donde <span class="math inline">\(n\)</span> es la indicación adimensional. Se lee <span class="math inline">\(n\in[9,8;10,2]\)</span>. La masa del carro pertenece a <span class="math inline">\([1,9;2,1]\,\mathrm{kg}\)</span>. La fuerza medida es la resultante horizontal y todos los pares de indicación y masa en esos intervalos son admisibles. Obtén una cota ajustada para la aceleración y compara con el valor nominal calculado usando <span class="math inline">\(n=10\)</span> y <span class="math inline">\(m=2\,\mathrm{kg}\)</span>.</p>
+</section>
+<section id="ejercicio-4-5" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-5">5. Dimensionar el freno</h3>
+<p>Un carro de masa total seis kilogramos entra en un tramo horizontal de veinte metros con velocidad <span class="math inline">\(8\,\mathrm{m/s}\)</span>. El freno fijo aplica una fuerza horizontal de módulo constante <span class="math inline">\(B&gt;0\)</span> opuesta al avance y se retira al detenerse; las demás fuerzas horizontales son despreciables. Calcula el valor mínimo de <span class="math inline">\(B\)</span> para detenerse a más tardar en el extremo y la condición para hacerlo estrictamente antes. Evalúa los casos <span class="math inline">\(B=12\,\mathrm N\)</span> y <span class="math inline">\(B=8\,\mathrm N\)</span>, distinguiendo la parada admisible de una prolongación hipotética fuera del riel.</p>
+</section>
+<section id="ejercicio-4-6" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-6">6. Equilibrio de fuerzas mientras el cuerpo avanza</h3>
+<p>Un bloque de masa dos kilogramos se desliza horizontalmente a <span class="math inline">\(3\,\mathrm{m/s}\)</span>. Recibe su peso, la normal de una mesa y las fuerzas de dos actuadores horizontales, de cinco newtons en sentidos opuestos. La mesa no aporta resistencia tangencial. Determina la aceleración y la normal. En <span class="math inline">\(t=0\)</span> se retira la fuerza horizontal hacia la izquierda y el bloque está en <span class="math inline">\(x=0\)</span>. Halla su posición y su velocidad dos segundos después. Identifica qué fuerzas equilibradas antes de la retirada actuaban sobre el mismo cuerpo.</p>
+</section>
+<section id="ejercicio-4-7" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-7">7. Descender con una lectura mayor</h3>
+<p>Una persona de masa sesenta kilogramos desciende en un ascensor con velocidad inicial <span class="math inline">\(-3\,\mathrm{m/s}\)</span>, tomando positivo hacia arriba. Durante dos segundos el ascensor tiene aceleración constante <span class="math inline">\(+2\,\mathrm{m/s^2}\)</span> y la persona permanece apoyada en una báscula ideal. Calcula la normal y el peso, determina cuándo se detiene momentáneamente y describe después el sentido de su movimiento. ¿La lectura mayor que el peso requiere velocidad hacia arriba?</p>
+</section>
+<section id="ejercicio-4-8" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-8">8. El límite de un suelo que sólo empuja</h3>
+<p>Una masa de <span class="math inline">\(0,5\,\mathrm{kg}\)</span> está sobre el piso horizontal de una cabina y sólo recibe peso y normal. Calcula la normal necesaria para acompañar una aceleración vertical de <span class="math inline">\(-g\)</span>. Examina después la hipótesis de que siga apoyada cuando el piso tiene aceleración <span class="math inline">\(-12\,\mathrm{m/s^2}\)</span>. Si no está sujeta al piso y la resistencia del aire es despreciable, determina la aceleración de la masa inmediatamente después de perder el contacto.</p>
+</section>
+<section id="ejercicio-4-9" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-9">9. Elegir ejes sobre una pendiente</h3>
+<p>Un bloque de masa dos kilogramos parte del reposo sobre un plano recto de inclinación <span class="math inline">\(30^\circ\)</span>, sin rozamiento. Se mantiene contacto y el plano es suficientemente largo. Elige un eje paralelo al plano hacia abajo y otro perpendicular hacia afuera. Calcula las componentes del peso, la normal, la aceleración y la distancia recorrida en dos segundos. Comprueba que la normal obtenida es admisible.</p>
+</section>
+<section id="ejercicio-4-10" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-10">10. Tirar hacia arriba también cambia el apoyo</h3>
+<p>Sobre un bloque de masa dos kilogramos, apoyado en una mesa horizontal lisa, se aplica una fuerza con componentes <span class="math inline">\((6,8)\,\mathrm N\)</span>, con <span class="math inline">\(y\)</span> hacia arriba. Determina la normal y la aceleración mientras hay contacto. Repite el examen instantáneo si la fuerza aplicada pasa a ser <span class="math inline">\((6,24)\,\mathrm N\)</span> y no existe ninguna sujeción que tire hacia abajo. Decide el régimen compatible en este segundo caso.</p>
+</section>
+<section id="ejercicio-4-11" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-11">11. La misma fuerza, dos aceleraciones</h3>
+<p>Dos patinadores de masas cuarenta y ochenta kilogramos están inicialmente en reposo sobre una superficie horizontal sin resistencia tangencial apreciable. Durante medio segundo el primero ejerce sobre el segundo una fuerza horizontal constante de <span class="math inline">\(120\,\mathrm N\)</span> hacia la derecha. Determina la fuerza que recibe el primero, ambas aceleraciones, velocidades y desplazamientos al final del intervalo. No se exige igualdad de sus aceleraciones.</p>
+</section>
+<section id="ejercicio-4-12" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-12">12. Dos parejas distintas</h3>
+<p>Un libro de masa tres kilogramos permanece en reposo sobre una mesa horizontal. Dibuja o describe las fuerzas que recibe y la pareja de tercera ley correspondiente a cada una, indicando agente, receptor y dirección. Decide si el peso y la normal sobre el libro forman una pareja de tercera ley y justifica su igualdad de módulos en esta situación concreta.</p>
+</section>
+<section id="ejercicio-4-13" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-13">13. Empujar por extremos diferentes</h3>
+<p>Dos bloques de masas <span class="math inline">\(m_A=2\,\mathrm{kg}\)</span> y <span class="math inline">\(m_B=3\,\mathrm{kg}\)</span>, con A a la izquierda de B, están en contacto sobre una mesa horizontal lisa. Primero se aplica a A una fuerza de diez newtons hacia la derecha. Calcula la aceleración y el contacto entre ambos. En un segundo ensayo, se aplica a B una fuerza de diez newtons hacia la izquierda. Repite el cálculo y explica por qué el módulo del contacto puede cambiar aunque no cambien la fuerza externa total en módulo ni las masas.</p>
+</section>
+<section id="ejercicio-4-14" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-14">14. Lo que realmente cancela la suma</h3>
+<p>Dos partículas, de masas uno y tres kilogramos, interactúan entre sí. En un instante, la fuerza que la segunda ejerce sobre la primera es <span class="math inline">\(+12\,\mathrm N\)</span> según un eje fijo; no hay fuerzas externas sobre el sistema y las fuerzas internas satisfacen la tercera ley. Calcula ambas aceleraciones, su suma aritmética y su suma ponderada por las masas. Explica cuál de estas dos sumas está controlada por la proposición del sistema.</p>
+</section>
+<section id="ejercicio-4-15" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-15">15. Integrar una fuerza que crece</h3>
+<p>La única fuerza horizontal sobre un carro de masa dos kilogramos es <span class="math inline">\(F_x=6\theta\,\mathrm N\)</span> durante <span class="math inline">\(0\leq t\leq2\,\mathrm s\)</span>. Se parte de <span class="math inline">\(x_0=0\)</span> y <span class="math inline">\(v_0=-1\,\mathrm{m/s}\)</span>. Determina posición y velocidad, el cambio de sentido y la distancia total recorrida durante esos dos segundos. Las fuerzas verticales se equilibran y no hay restricciones de longitud del riel en ese tramo.</p>
+</section>
+<section id="ejercicio-4-16" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-16">16. Quitar el agente que mantenía el círculo</h3>
+<p>Una partícula de masa <span class="math inline">\(0,5\,\mathrm{kg}\)</span> se mueve sobre una mesa horizontal lisa, unida por una cuerda tensa al origen. El radio es dos metros y la rapidez cuatro metros por segundo. En un instante ocupa <span class="math inline">\((2,0)\,\mathrm m\)</span> y su velocidad es <span class="math inline">\((0,4)\,\mathrm{m/s}\)</span>. Calcula la fuerza horizontal que recibe justo antes de romperse la cuerda. Tomando ese instante como nuevo origen temporal, determina la posición un segundo después de la rotura y su distancia al origen. Las demás fuerzas horizontales son despreciables.</p>
+</section>
+<section id="ejercicio-4-17" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-17">17. Auditar una historia para el resorte</h3>
+<p>Un carro de masa dos kilogramos unido a un resorte horizontal cumple <span class="math inline">\(m\ddot x=-kx\)</span> con <span class="math inline">\(k=40\,\mathrm{N/m}\)</span>. El régimen lineal está calibrado para <span class="math inline">\(|x|\leq0,15\,\mathrm m\)</span>. Se propone <span class="math inline">\(x(t)=0,10\cos(4\theta)\,\mathrm m\)</span>, donde <span class="math inline">\(x\)</span> mide elongación con signo. Comprueba los datos iniciales y decide si satisface la ecuación. Busca un valor positivo de la frecuencia angular, reemplazando <span class="math inline">\(4\theta\)</span> por <span class="math inline">\(\omega t\)</span>, que sí la satisfaga con la misma amplitud. Verifica que la historia corregida permanece en el régimen indicado.</p>
+</section>
+<section id="ejercicio-4-18" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-18">18. Una aceleración que proviene de las coordenadas</h3>
+<p>Un carro de masa dos kilogramos tiene fuerza horizontal neta cero y se mueve en el laboratorio según <span class="math inline">\(x=3\theta\,\mathrm m\)</span>. El origen de otra referencia, con eje paralelo, sigue <span class="math inline">\(X=(\theta+\theta^2)\,\mathrm m\)</span>. Ambos relojes coinciden. Calcula <span class="math inline">\(x'=x-X\)</span> y su aceleración. Examina si se puede escribir sin modificación <span class="math inline">\(\sum F_x=m\ddot x'\)</span> usando las mismas fuerzas físicas y explica qué hipótesis de la segunda ley falta.</p>
+</section>
+<section id="ejercicio-4-19" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-19">19. Inferir una suma no identifica cada fuerza</h3>
+<p>Un carro de masa dos kilogramos tiene posición <span class="math inline">\(x=(2\theta+\theta^2)\,\mathrm m\)</span> para <span class="math inline">\(0\leq t\leq3\,\mathrm s\)</span>. Sólo se consideran dos fuerzas horizontales: tracción hacia la derecha, de módulo <span class="math inline">\(T\geq0\)</span>, y resistencia hacia la izquierda, de módulo <span class="math inline">\(R\geq0\)</span>, ambas constantes durante el tramo. Obtén la información que proporciona la trayectoria sobre <span class="math inline">\(T\)</span> y <span class="math inline">\(R\)</span>. Da dos pares diferentes compatibles y explica qué medición adicional permitiría distinguirlos.</p>
+</section>
+<section id="ejercicio-4-20" class="level3">
+<h3 class="anchored" data-anchor-id="ejercicio-4-20">20. Dos frenos que coinciden al comenzar</h3>
+<p>Un carro de masa dos kilogramos parte con <span class="math inline">\(v_0=6\,\mathrm{m/s}\)</span> y <span class="math inline">\(x_0=0\)</span> en una guía horizontal ideal. El modelo A aplica <span class="math inline">\(F_x=-6\,\mathrm N\)</span> mientras <span class="math inline">\(v&gt;0\)</span> y retira la fuerza al detenerse. El modelo B aplica <span class="math inline">\(F_x=-bv\)</span> con <span class="math inline">\(b=1\,\mathrm{kg/s}\)</span>. Las demás fuerzas horizontales son despreciables. Considera primero una guía ilimitada: determina las dos historias y compara la aceleración inicial, la existencia de una parada en tiempo finito y las distancias límite. Después decide, con cada modelo, si el carro se detiene antes de un extremo situado en <span class="math inline">\(x=8\,\mathrm m\)</span>. Si lo alcanza, calcula el instante y la velocidad de llegada, sin prolongar el movimiento más allá del extremo como si siguiera habiendo guía.</p>
+</section>
+</section>
+<section id="soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="soluciones">Soluciones</h2>
+<section id="solucion-4-1" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-1">1. La fuerza no indica el sentido de la velocidad</h3>
+<p>Sumamos las componentes de las tres fuerzas sobre la misma partícula:</p>
+<p><span class="math display">\[
+\mathbf F_{\mathrm{neta}}=(4,0)\,\mathrm N,
+\qquad \mathbf a=\frac{\mathbf F_{\mathrm{neta}}}{m}
+=(2,0)\,\mathrm{m/s^2}.
+\]</span></p>
+<p>La aceleración es constante. Con la velocidad inicial dada, <span class="math inline">\(\mathbf v(t)=(-3+2\theta,0)\,\mathrm{m/s}\)</span>, así que en un segundo es <span class="math inline">\((-1,0)\,\mathrm{m/s}\)</span>. La partícula todavía se mueve hacia la izquierda, mientras la fuerza apunta hacia la derecha. Su rapidez disminuye hasta que <span class="math inline">\(-3+2\theta=0\)</span>, en <span class="math inline">\(t=1,5\,\mathrm s\)</span>. Después, bajo las mismas fuerzas, avanza hacia la derecha y su rapidez aumenta. La dirección de la resultante determina la aceleración; el dato de velocidad inicial es necesario para interpretar qué ocurre con la rapidez.</p>
+</section>
+<section id="solucion-4-2" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-2">2. Una interacción que falta en el inventario</h3>
+<p>La aceleración exige una fuerza neta <span class="math inline">\(m\mathbf a=(6,-3)\,\mathrm N\)</span>. Si hay exactamente otra fuerza además de la conocida, se obtiene restando:</p>
+<p><span class="math display">\[
+\mathbf F_{\mathrm{desconocida}}=(6,-3)\,\mathrm N-(4,5)\,\mathrm N
+=(2,-8)\,\mathrm N.
+\]</span></p>
+<p>Al sumar este vector al conocido se recuperan ambas componentes de la fuerza requerida. Si hubiera varias fuerzas desconocidas, la resta sólo determinaría su resultante conjunta; muchos inventarios diferentes podrían tener esa misma suma. Incluso bajo la hipótesis de una sola fuerza, el vector calculado no identifica a su agente: para atribuirlo a una cuerda, un contacto o un campo hace falta información física adicional. La ecuación localiza una falta cuantitativa en el inventario y orienta qué debe investigarse.</p>
+</section>
+<section id="solucion-4-3" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-3">3. Comparar masas con el mismo actuador</h3>
+<p>El primer ensayo fija el módulo de la fuerza neta: <span class="math inline">\(F=(2\,\mathrm{kg})(3\,\mathrm{m/s^2})=6\,\mathrm N\)</span>. En el segundo cuerpo,</p>
+<p><span class="math display">\[
+m_2=\frac{6\,\mathrm N}{0,75\,\mathrm{m/s^2}}=8\,\mathrm{kg}.
+\]</span></p>
+<p>Si su masa permanece constante, una aceleración posterior de <span class="math inline">\(1,5\,\mathrm{m/s^2}\)</span> exigiría fuerza neta de doce newtons. No es compatible con conservar los seis newtons de los ensayos anteriores. El resultado obliga a revisar alguna condición: quizá cambió la fuerza del actuador, apareció otra interacción o alguna medición no representa el valor supuesto. La segunda ley relaciona la aceleración con la suma de fuerzas, no con el nombre del dispositivo que estamos usando.</p>
+</section>
+<section id="solucion-4-4" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-4">4. Propagar una calibración hasta una aceleración</h3>
+<p>La calibración es creciente en <span class="math inline">\(n\)</span>, así que la indicación acotada produce <span class="math inline">\(F\in[3,9;4,1]\,\mathrm N\)</span>. Como <span class="math inline">\(a=F/m\)</span> y tanto fuerza como masa son positivas, la aceleración crece con <span class="math inline">\(F\)</span> y decrece con <span class="math inline">\(m\)</span>. Los extremos del rectángulo admisible dan</p>
+<p><span class="math display">\[
+a_{\min}=\frac{3,9\,\mathrm N}{2,1\,\mathrm{kg}}
+=\frac{13}{7}\,\mathrm{m/s^2},
+\qquad
+a_{\max}=\frac{4,1\,\mathrm N}{1,9\,\mathrm{kg}}
+=\frac{41}{19}\,\mathrm{m/s^2}.
+\]</span></p>
+<p>La continuidad y el conjunto completo de pares admisibles aseguran que ésta es la imagen exacta de los datos. El valor nominal es <span class="math inline">\(a_0=4/2\,\mathrm{m/s^2}=2\,\mathrm{m/s^2}\)</span>, incluido en ese intervalo. Una presentación decimal con redondeo hacia afuera es <span class="math inline">\(a\in[1,857;2,158]\,\mathrm{m/s^2}\)</span>. La cota es determinista: no se ha supuesto que las indicaciones o las masas sigan una distribución estadística, ni que sus errores sean independientes.</p>
+</section>
+<section id="solucion-4-5" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-5">5. Dimensionar el freno</h3>
+<p>Elegimos el carro como sistema y orientamos el eje horizontal en el sentido del avance. El freno proporciona la única fuerza horizontal, así que su componente es <span class="math inline">\(-B\)</span>; las fuerzas verticales no intervienen en la detención horizontal. La masa convierte esa fuerza en aceleración mediante <span class="math inline">\(a=-B/m\)</span>. A partir de aquí puede reutilizarse la reconstrucción cinemática, conservando el régimen que termina en la primera detención.</p>
+<p>Mientras el carro avanza, <span class="math inline">\(a=-B/m\)</span> es constante. Integrar con <span class="math inline">\(v_0&gt;0\)</span> da <span class="math inline">\(v=v_0-(B/m)t\)</span> y <span class="math inline">\(x=v_0t-(B/2m)t^2\)</span>. La primera detención ocurre en <span class="math inline">\(t_*=mv_0/B\)</span>, a la distancia</p>
+<p><span class="math display">\[
+d_*=\frac{mv_0^2}{2B}.
+\]</span></p>
+<p>Exigir <span class="math inline">\(d_*\leq L\)</span> equivale a <span class="math inline">\(B\geq mv_0^2/(2L)=9,6\,\mathrm N\)</span>. Detenerse estrictamente antes requiere <span class="math inline">\(B&gt;9,6\,\mathrm N\)</span>. Con doce newtons, la aceleración es <span class="math inline">\(-2\,\mathrm{m/s^2}\)</span>, la parada ocurre en cuatro segundos y dieciséis metros, y quedan cuatro metros disponibles.</p>
+<p>Con ocho newtons, la aceleración es <span class="math inline">\(-4/3\,\mathrm{m/s^2}\)</span>. La prolongación sobre una guía ilimitada pararía en seis segundos y veinticuatro metros, por lo que no cabe en el riel. Para describir el evento real del extremo resolvemos <span class="math inline">\(20=8\theta-(2/3)\theta^2\)</span>: el primer tiempo positivo es <span class="math inline">\(t=(6-\sqrt6)\,\mathrm s\)</span>, con velocidad <span class="math inline">\((4\sqrt6/3)\,\mathrm{m/s}&gt;0\)</span>. La otra raíz pertenece a la prolongación después de la inversión que produciría mantener esa fuerza; queda fuera del tramo de avance y tampoco describe una segunda visita admisible al extremo.</p>
+</section>
+<section id="solucion-4-6" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-6">6. Equilibrio de fuerzas mientras el cuerpo avanza</h3>
+<p>Antes de retirar la fuerza, las componentes horizontales se cancelan. La normal y el peso también se equilibran, porque el bloque conserva su altura y no hay otras componentes verticales. Resultan <span class="math inline">\(\mathbf a=\mathbf0\)</span> y <span class="math inline">\(N=mg=20\,\mathrm N\)</span>. El bloque puede seguir a tres metros por segundo; equilibrio de fuerzas no exige reposo.</p>
+<p>Después de la retirada queda fuerza horizontal <span class="math inline">\(+5\,\mathrm N\)</span>. Por tanto, <span class="math inline">\(a_x=2,5\,\mathrm{m/s^2}\)</span> y</p>
+<p><span class="math display">\[
+v_x=3\,\mathrm{m/s}+(2,5\,\mathrm{m/s^2})t,
+\qquad
+x=(3\,\mathrm{m/s})t+(1,25\,\mathrm{m/s^2})t^2.
+\]</span></p>
+<p>A los dos segundos son <span class="math inline">\(v_x=8\,\mathrm{m/s}\)</span> y <span class="math inline">\(x=11\,\mathrm m\)</span>. La normal sigue siendo veinte newtons, pues no ha cambiado la ecuación vertical. Tanto las dos fuerzas horizontales originales como el peso y la normal actuaban sobre el bloque. Sus equilibrios no los convierte en parejas de tercera ley: las fuerzas de cada pareja deben tener receptores distintos.</p>
+</section>
+<section id="solucion-4-7" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-7">7. Descender con una lectura mayor</h3>
+<p>El peso tiene módulo <span class="math inline">\(P=mg=600\,\mathrm N\)</span> y dirección hacia abajo. La persona comparte la aceleración de la báscula mientras conserva el apoyo, así que</p>
+<p><span class="math display">\[
+N-600\,\mathrm N=(60\,\mathrm{kg})(2\,\mathrm{m/s^2}),
+\qquad N=720\,\mathrm N.
+\]</span></p>
+<p>El valor positivo es admisible. La velocidad evoluciona como <span class="math inline">\(v_y=-3\,\mathrm{m/s}+(2\,\mathrm{m/s^2})t\)</span>. Se anula en <span class="math inline">\(1,5\,\mathrm s\)</span>; durante el medio segundo restante pasa a ser positiva y el ascensor asciende. La lectura de setecientos veinte newtons se mantiene durante todo el intervalo de aceleración constante, incluido el descenso inicial. La aceleración hacia arriba frena primero el descenso y luego aumenta la velocidad de subida. El sentido de la velocidad no decide el signo de <span class="math inline">\(N-mg\)</span>.</p>
+</section>
+<section id="solucion-4-8" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-8">8. El límite de un suelo que sólo empuja</h3>
+<p>Si la masa acompañara una aceleración <span class="math inline">\(a_y=-g\)</span>, la ecuación <span class="math inline">\(N-mg=ma_y\)</span> daría <span class="math inline">\(N=0\)</span>. El peso sigue siendo <span class="math inline">\(5\,\mathrm N\)</span>; lo que se anula es la fuerza de apoyo. En el modelo ideal, masa y piso pueden mantener inicialmente la misma separación si comienzan con la misma velocidad y ambos caen con aceleración <span class="math inline">\(-g\)</span>, pero no existe una presión positiva que asegure el contacto frente a una variación.</p>
+<p>Para <span class="math inline">\(a_y=-12\,\mathrm{m/s^2}\)</span>, la condición de acompañar al piso exigiría <span class="math inline">\(N=(0,5\,\mathrm{kg})(10-12)\,\mathrm{m/s^2}=-1\,\mathrm N\)</span>. El piso tendría que tirar hacia abajo de la masa, algo excluido por el enunciado. Se pierde el contacto y la normal es cero. La masa queda con aceleración <span class="math inline">\(-10\,\mathrm{m/s^2}\)</span>, mientras el piso acelera más hacia abajo y se separa de ella. La fuerza negativa calculada sirvió para rechazar la hipótesis de contacto, no como una normal que pudiera aplicarse físicamente.</p>
+</section>
+<section id="solucion-4-9" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-9">9. Elegir ejes sobre una pendiente</h3>
+<p>El diagrama contiene dos fuerzas: el peso vertical y la normal perpendicular al plano. Las componentes del peso se calculan después de elegir ejes; no son otras dos interacciones. Si la pendiente sube hacia la derecha y forma un ángulo <span class="math inline">\(\alpha\)</span> con la horizontal, podemos tomar <span class="math inline">\(\mathbf e_\parallel=(-\cos\alpha,-\sin\alpha)\)</span> hacia abajo y <span class="math inline">\(\mathbf e_\perp=(-\sin\alpha,\cos\alpha)\)</span> hacia afuera. Proyectar <span class="math inline">\(\mathbf P=(0,-mg)\)</span> sobre estos vectores da <span class="math inline">\(P_\parallel=mg\sin\alpha\)</span> y <span class="math inline">\(P_\perp=-mg\cos\alpha\)</span>. Así se decide dónde va el seno sin memorizar una figura girada.</p>
+<p>Los ejes paralelo y perpendicular hacen que la restricción de contacto se escriba <span class="math inline">\(a_\perp=0\)</span>. El peso tiene componente <span class="math inline">\(+mg\sin30^\circ=10\,\mathrm N\)</span> hacia abajo del plano y componente <span class="math inline">\(-mg\cos30^\circ=-10\sqrt3\,\mathrm N\)</span> hacia su interior. Las ecuaciones son</p>
+<p><span class="math display">\[
+mg\sin30^\circ=ma_\parallel,
+\qquad N-mg\cos30^\circ=0.
+\]</span></p>
+<p>Se obtienen <span class="math inline">\(a_\parallel=5\,\mathrm{m/s^2}\)</span> y <span class="math inline">\(N=10\sqrt3\,\mathrm N\)</span>. La normal es positiva y el contacto supuesto es admisible. El módulo del peso es veinte newtons; la normal equilibra su componente perpendicular, de módulo menor, mientras la paralela acelera el bloque. Desde el reposo, la distancia sobre el plano en dos segundos es <span class="math inline">\(s=a_\parallel t^2/2=10\,\mathrm m\)</span> y la rapidez final es <span class="math inline">\(10\,\mathrm{m/s}\)</span>. La longitud suficiente del plano garantiza que ese tramo no termine antes por alcanzar un borde.</p>
+</section>
+<section id="solucion-4-10" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-10">10. Tirar hacia arriba también cambia el apoyo</h3>
+<p>Con contacto mantenido, <span class="math inline">\(a_y=0\)</span>. En el primer caso, <span class="math inline">\(N+8\,\mathrm N-20\,\mathrm N=0\)</span>, de donde <span class="math inline">\(N=12\,\mathrm N\)</span>. La fuerza horizontal es seis newtons y <span class="math inline">\(a_x=3\,\mathrm{m/s^2}\)</span>. La fuerza aplicada hacia arriba reduce la normal necesaria, aunque el bloque siga a la misma altura.</p>
+<p>En el segundo caso, mantener la restricción exigiría <span class="math inline">\(N=20\,\mathrm N-24\,\mathrm N=-4\,\mathrm N\)</span>. La normal no puede tener ese signo en una mesa que sólo empuja desde abajo. Una vez separado el bloque, <span class="math inline">\(N=0\)</span> y la fuerza neta tiene componentes <span class="math inline">\((6,4)\,\mathrm N\)</span>, así que <span class="math inline">\(\mathbf a=(3,2)\,\mathrm{m/s^2}\)</span> mientras la fuerza aplicada siga teniendo los valores indicados y no aparezcan otros contactos. Su aceleración vertical positiva es compatible con despegar de la mesa, partiendo del contacto con velocidad vertical nula.</p>
+</section>
+<section id="solucion-4-11" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-11">11. La misma fuerza, dos aceleraciones</h3>
+<p>La fuerza sobre el segundo patinador es <span class="math inline">\(+120\,\mathrm N\)</span>. Por la tercera ley, el primero recibe <span class="math inline">\(-120\,\mathrm N\)</span>. Aplicamos la segunda ley a cada uno por separado:</p>
+<p><span class="math display">\[
+a_1=\frac{-120\,\mathrm N}{40\,\mathrm{kg}}=-3\,\mathrm{m/s^2},
+\qquad a_2=\frac{120\,\mathrm N}{80\,\mathrm{kg}}=1,5\,\mathrm{m/s^2}.
+\]</span></p>
+<p>Parten del reposo y las aceleraciones son constantes durante medio segundo. Sus velocidades finales son <span class="math inline">\(v_1=-1,5\,\mathrm{m/s}\)</span> y <span class="math inline">\(v_2=0,75\,\mathrm{m/s}\)</span>; los desplazamientos, obtenidos como <span class="math inline">\(a_it^2/2\)</span>, son <span class="math inline">\(\Delta x_1=-0,375\,\mathrm m\)</span> y <span class="math inline">\(\Delta x_2=0,1875\,\mathrm m\)</span>. Sus masas diferentes explican las distintas aceleraciones y recorridos. Como comprobación de la suma de ecuaciones, <span class="math inline">\(m_1a_1+m_2a_2=-120\,\mathrm N+120\,\mathrm N=0\)</span>, aunque ninguno permanece inmóvil durante el empuje.</p>
+</section>
+<section id="solucion-4-12" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-12">12. Dos parejas distintas</h3>
+<p>El libro recibe la fuerza gravitatoria <span class="math inline">\(\mathbf F_{\mathrm{Tierra}\to\mathrm{libro}}=-30\mathbf e_y\,\mathrm N\)</span> y la fuerza de contacto <span class="math inline">\(\mathbf F_{\mathrm{mesa}\to\mathrm{libro}}=+30\mathbf e_y\,\mathrm N\)</span>. Sus parejas son, respectivamente,</p>
+<p><span class="math display">\[
+\mathbf F_{\mathrm{libro}\to\mathrm{Tierra}}=+30\mathbf e_y\,\mathrm N,
+\qquad
+\mathbf F_{\mathrm{libro}\to\mathrm{mesa}}=-30\mathbf e_y\,\mathrm N.
+\]</span></p>
+<p>La primera actúa sobre la Tierra y la segunda sobre la mesa; ninguna se incorpora como otra fuerza sobre el libro. El peso y la normal que recibe el libro no son pareja de tercera ley porque ambos tienen al libro como receptor y sus agentes son diferentes. Sus módulos coinciden aquí por la segunda ley, ya que el libro tiene aceleración vertical cero y éstas son sus únicas fuerzas verticales. Si la mesa acelerara verticalmente con el libro apoyado, sus módulos podrían ser distintos y las dos parejas mutuas seguirían satisfaciendo la tercera ley.</p>
+</section>
+<section id="solucion-4-13" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-13">13. Empujar por extremos diferentes</h3>
+<p>La fuerza de contacto desaparece si elegimos ambos bloques como sistema, pero sigue actuando sobre cada bloque por separado. La suma de las ecuaciones sirve primero para hallar la aceleración común. Para recuperar el contacto elegimos después el bloque que no recibe directamente la fuerza aplicada: su única fuerza horizontal será precisamente la que buscamos. Es necesario repetir esa elección al cambiar el extremo de empuje.</p>
+<p>En el primer ensayo, el sistema A y B tiene masa total cinco kilogramos y fuerza externa horizontal diez newtons hacia la derecha. Bajo contacto mantenido, la aceleración común es <span class="math inline">\(a=2\,\mathrm{m/s^2}\)</span>. En B la única fuerza horizontal es el contacto recibido de A, de módulo</p>
+<p><span class="math display">\[
+C_1=m_Ba=(3\,\mathrm{kg})(2\,\mathrm{m/s^2})=6\,\mathrm N.
+\]</span></p>
+<p>A recibe diez newtons hacia la derecha y seis hacia la izquierda, con resultante de cuatro newtons, coherente con su masa de dos kilogramos. El contacto positivo es un empuje y resulta admisible.</p>
+<p>En el segundo ensayo, la aceleración común es <span class="math inline">\(-2\,\mathrm{m/s^2}\)</span>. El bloque A sólo recibe horizontalmente el contacto ejercido por B, ahora hacia la izquierda. Su módulo es <span class="math inline">\(C_2=m_A|a|=4\,\mathrm N\)</span>. Para B, la ecuación es <span class="math inline">\(-10\,\mathrm N+4\,\mathrm N=(3\,\mathrm{kg})(-2\,\mathrm{m/s^2})\)</span>. También es un empuje admisible. La fuerza de contacto debe acelerar al bloque que no recibe directamente la fuerza externa; cambiar ese bloque cambia la fuerza interna requerida.</p>
+</section>
+<section id="solucion-4-14" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-14">14. Lo que realmente cancela la suma</h3>
+<p>La primera partícula recibe <span class="math inline">\(+12\,\mathrm N\)</span> y tiene masa un kilogramo, de modo que <span class="math inline">\(a_1=+12\,\mathrm{m/s^2}\)</span>. La tercera ley asigna a la segunda <span class="math inline">\(-12\,\mathrm N\)</span>; con su masa de tres kilogramos, <span class="math inline">\(a_2=-4\,\mathrm{m/s^2}\)</span>. Sus aceleraciones suman <span class="math inline">\(8\,\mathrm{m/s^2}\)</span>, que no es cero. En cambio,</p>
+<p><span class="math display">\[
+m_1a_1+m_2a_2=12\,\mathrm N-12\,\mathrm N=0.
+\]</span></p>
+<p>La proposición controla esta segunda suma, cuya unidad es fuerza. Cancelar las fuerzas internas no autoriza cancelar aceleraciones sin conservar los factores de masa. Tampoco exige que los cuerpos tengan una aceleración común: aquí se aceleran en sentidos opuestos, por las fuerzas internas que desaparecen de la suma.</p>
+</section>
+<section id="solucion-4-15" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-15">15. Integrar una fuerza que crece</h3>
+<p>La segunda ley da <span class="math inline">\(a_x=3\theta\,\mathrm{m/s^2}\)</span>. Integrar con los dos datos iniciales produce</p>
+<p><span class="math display">\[
+v_x=(-1+3\theta^2/2)\,\mathrm{m/s},
+\qquad x=(-\theta+\theta^3/2)\,\mathrm m.
+\]</span></p>
+<p>Al derivarlas se recupera la fuerza <span class="math inline">\(6\theta\,\mathrm N\)</span>. La velocidad se anula en <span class="math inline">\(\theta_*=\sqrt{2/3}\)</span> dentro del dominio. Antes es negativa y después positiva; la posición alcanza su mínimo en</p>
+<p><span class="math display">\[
+t_*=\sqrt{\frac23}\,\mathrm s,
+\qquad x_*=-\frac{2\sqrt6}{9}\,\mathrm m.
+\]</span></p>
+<p>A los dos segundos, <span class="math inline">\(v_x=5\,\mathrm{m/s}\)</span> y <span class="math inline">\(x=2\,\mathrm m\)</span>. El desplazamiento total es dos metros, pero la distancia incluye la ida hacia la izquierda y el regreso desde <span class="math inline">\(x_*\)</span>:</p>
+<p><span class="math display">\[
+D=(0-x_*)+(2\,\mathrm m-x_*)
+=\left(2+\frac{4\sqrt6}{9}\right)\,\mathrm m.
+\]</span></p>
+<p>No podemos obtener esta distancia integrando la velocidad con signo sin separar los intervalos. La fuerza positiva frena inicialmente el movimiento hacia la izquierda y después acelera el avance hacia la derecha.</p>
+</section>
+<section id="solucion-4-16" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-16">16. Quitar el agente que mantenía el círculo</h3>
+<p>Justo antes de romperse la cuerda, la aceleración apunta hacia el origen. Su módulo es <span class="math inline">\(q^2/R=8\,\mathrm{m/s^2}\)</span>, así que la fuerza horizontal es</p>
+<p><span class="math display">\[
+\mathbf F_{\mathrm{horizontal}}=(-4,0)\,\mathrm N.
+\]</span></p>
+<p>La proporciona la tensión. Después de la rotura, la fuerza horizontal neta es cero y la partícula mantiene la velocidad tangencial que tenía. Con el nuevo reloj <span class="math inline">\(\tau\)</span>,</p>
+<p><span class="math display">\[
+\mathbf r(\tau)=2\mathbf e_x\,\mathrm m
++(4\,\mathrm{m/s})\tau\mathbf e_y,
+\qquad \tau\geq0.
+\]</span></p>
+<p>En un segundo está en <span class="math inline">\((2,4)\,\mathrm m\)</span> y su distancia al origen es <span class="math inline">\(\sqrt{2^2+4^2}\,\mathrm m=2\sqrt5\,\mathrm m\)</span>. Ya no permanece a dos metros del centro porque se perdió la interacción que mantenía esa restricción. No se ha añadido una fuerza horizontal hacia afuera: la recta tangente basta para explicar el aumento de la distancia al origen.</p>
+</section>
+<section id="solucion-4-17" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-17">17. Auditar una historia para el resorte</h3>
+<p>La función propuesta tiene <span class="math inline">\(x(0)=0,10\,\mathrm m\)</span> y <span class="math inline">\(\dot x(0)=0\)</span>. Al derivarla dos veces,</p>
+<p><span class="math display">\[
+\ddot x=-1,6\cos(4\theta)\,\mathrm{m/s^2}.
+\]</span></p>
+<p>Por tanto, <span class="math inline">\(m\ddot x=-3,2\cos(4\theta)\,\mathrm N\)</span>, mientras que <span class="math inline">\(-kx=-4\cos(4\theta)\,\mathrm N\)</span>. No coinciden: ya en el instante inicial la aceleración propuesta difiere de <span class="math inline">\(-kx_0/m=-2\,\mathrm{m/s^2}\)</span>.</p>
+<p>Para una función <span class="math inline">\(x=A\cos(\omega t)\)</span>, con <span class="math inline">\(\omega\)</span> de unidades <span class="math inline">\(\mathrm{s^{-1}}\)</span>, la sustitución da <span class="math inline">\(m\ddot x=-m\omega^2A\cos(\omega t)\)</span>. La ecuación exige <span class="math inline">\(m\omega^2=k\)</span>, por lo que el valor positivo es</p>
+<p><span class="math display">\[
+\omega=\sqrt{\frac{k}{m}}=\sqrt{20}\,\mathrm{s^{-1}}.
+\]</span></p>
+<p>La historia corregida es <span class="math inline">\(x=0,10\cos(\sqrt{20}\theta)\,\mathrm m\)</span>. Conserva los dos datos iniciales, satisface la ecuación por sustitución y permanece dentro del intervalo calibrado porque <span class="math inline">\(|x|\leq0,10\,\mathrm m&lt;0,15\,\mathrm m\)</span>. Hemos verificado una solución propuesta con esos datos, sin necesitar todavía un método general para resolver el oscilador.</p>
+</section>
+<section id="solucion-4-18" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-18">18. Una aceleración que proviene de las coordenadas</h3>
+<p>Restar el desplazamiento del nuevo origen da <span class="math inline">\(x'=(2\theta-\theta^2)\,\mathrm m\)</span>. Su velocidad es <span class="math inline">\((2-2\theta)\,\mathrm{m/s}\)</span> y su aceleración <span class="math inline">\(\ddot x'=-2\,\mathrm{m/s^2}\)</span>. Las fuerzas físicas horizontales sobre el carro siguen teniendo resultante cero, así que <span class="math inline">\(\sum F_x=m\ddot x'\)</span> daría una igualdad falsa: <span class="math inline">\(0=-4\,\mathrm N\)</span>.</p>
+<p>La nueva referencia tiene aceleración <span class="math inline">\(\ddot X=2\,\mathrm{m/s^2}\)</span> respecto del laboratorio; no es inercial. La transformación correcta de la ecuación se obtiene derivando <span class="math inline">\(x'=x-X\)</span>:</p>
+<p><span class="math display">\[
+m\ddot x'=m\ddot x-m\ddot X
+=\sum F_x-m\ddot X.
+\]</span></p>
+<p>El término <span class="math inline">\(-m\ddot X\)</span> aparece por la aceleración de las coordenadas. No identifica un agente horizontal adicional que actúe sobre el carro. Elegir el marco del laboratorio permite mantener la forma original de la segunda ley con las interacciones físicas enumeradas. El análisis sistemático de marcos acelerados conservará esta distinción.</p>
+</section>
+<section id="solucion-4-19" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-19">19. Inferir una suma no identifica cada fuerza</h3>
+<p>Derivar la posición da <span class="math inline">\(v_x=(2+2\theta)\,\mathrm{m/s}&gt;0\)</span> en todo el tramo y <span class="math inline">\(a_x=2\,\mathrm{m/s^2}\)</span>. La fuerza neta horizontal es cuatro newtons hacia la derecha. La información dinámica queda en</p>
+<p><span class="math display">\[
+T-R=4\,\mathrm N.
+\]</span></p>
+<p>Entre los pares admisibles están <span class="math inline">\((T,R)=(4,0)\,\mathrm N\)</span> y <span class="math inline">\((10,6)\,\mathrm N\)</span>. Más generalmente, cualquier <span class="math inline">\(R\geq0\)</span> con <span class="math inline">\(T=R+4\,\mathrm N\)</span> produce la misma resultante y la misma historia con los datos iniciales dados. El signo positivo de la velocidad confirma que una resistencia hacia la izquierda es compatible con oponerse al avance durante todo el dominio.</p>
+<p>Medir la tracción mediante un dinamómetro calibrado distinguiría los pares: una vez conocido <span class="math inline">\(T\)</span>, la ecuación fija <span class="math inline">\(R=T-4\,\mathrm N\)</span>. Añadir más posiciones de la misma historia puede mejorar el conocimiento de la aceleración, pero no separa dos fuerzas que sólo entran en esa ecuación por su diferencia. Una inferencia sobre cada agente requiere un dato que las distinga.</p>
+<p>En el plano de pares <span class="math inline">\((R,T)\)</span>, la ecuación obtenida describe una semirrecta de pendiente uno. Una medición de tracción fija una coordenada y selecciona un punto de ella. Se recupera así la pregunta de identificabilidad del capítulo 0: los parámetros que el movimiento determina son las combinaciones que aparecen en su ecuación. Aquí esa combinación es la resultante; la preparación de una medición adicional debe conservar información sobre un agente por separado.</p>
+</section>
+<section id="solucion-4-20" class="level3">
+<h3 class="anchored" data-anchor-id="solucion-4-20">20. Dos frenos que coinciden al comenzar</h3>
+<p>Para A, mientras el carro avanza, <span class="math inline">\(a_A=-3\,\mathrm{m/s^2}\)</span>. Las condiciones iniciales fijan</p>
+<p><span class="math display">\[
+v_A=(6-3\theta)\,\mathrm{m/s},
+\qquad x_A=(6\theta-3\theta^2/2)\,\mathrm m,
+\qquad 0\leq\theta\leq2.
+\]</span></p>
+<p>La primera detención ocurre en dos segundos, en <span class="math inline">\(x_A=6\,\mathrm m\)</span>. A partir de allí se retira el freno y el carro permanece en esa posición. La distancia límite en la guía ilimitada es seis metros.</p>
+<p>En B, la ecuación es <span class="math inline">\(m\dot v_B=-bv_B\)</span>. La razón <span class="math inline">\(b/m=1/(2\,\mathrm s)\)</span> indica el factor con que decae la velocidad. Para obtenerla sin invocar una fórmula no justificada, multiplicamos la ecuación por <span class="math inline">\(\exp(t/(2\,\mathrm s))\)</span>: la regla del producto da</p>
+<p><span class="math display">\[
+\frac{d}{dt}\left[e^{t/(2\,\mathrm s)}v_B(t)\right]=0.
+\]</span></p>
+<p>El producto es constante y su valor inicial es <span class="math inline">\(6\,\mathrm{m/s}\)</span>. Por tanto, al integrar también la velocidad,</p>
+<p><span class="math display">\[
+v_B=6e^{-\theta/2}\,\mathrm{m/s},
+\qquad x_B=12(1-e^{-\theta/2})\,\mathrm m.
+\]</span></p>
+<p>La velocidad es positiva para todo tiempo finito, aunque tiende a cero; la posición tiende a doce metros. Su aceleración inicial es <span class="math inline">\(-3\,\mathrm{m/s^2}\)</span>, igual que en A. Coincidir en la primera aceleración no obliga a coincidir en la ley posterior: B va reduciendo el módulo de la fuerza a medida que disminuye la velocidad.</p>
+<p>En un riel que termina a ocho metros, A se detiene dos metros antes del extremo. B lo alcanza cuando <span class="math inline">\(8=12(1-e^{-\theta/2})\)</span>, es decir, en <span class="math inline">\(t=2\ln3\,\mathrm s\)</span>, con velocidad <span class="math inline">\(2\,\mathrm{m/s}\)</span>. Su límite de doce metros corresponde a la guía ilimitada del primer análisis; no describe una llegada admisible posterior al extremo del riel corto.</p>
+</section>
+</section>
+<section id="lecturas-de-apoyo" class="level2">
+<h2 class="anchored" data-anchor-id="lecturas-de-apoyo">Lecturas de apoyo</h2>
+<p>La interpretación de posición, velocidad, aceleración y detención procede de los capítulos 1 y 2. Las sumas vectoriales, los cambios de referencia y la aceleración circular se construyeron en el capítulo 3. El ejercicio 4 utiliza cotas y calibraciones del capítulo 0. El capítulo requiere derivadas e integrales de una variable; la fórmula integral para una fuerza prescrita en el tiempo y su unicidad se demuestran localmente. Las leyes de Newton se enuncian como principios físicos y se distinguen de esas consecuencias matemáticas.</p>
+<p>Se cotejaron pasajes de Young y Freedman, <em>Sears y Zemansky. Física universitaria</em>, vol.&nbsp;1, 13.ª ed.&nbsp;(Pearson, 2013), §§4.1–4.3 y 4.5–4.6, sobre agentes de fuerzas, marcos, relación entre masa y aceleración, tercera ley y diagramas de cuerpo libre; y de Serway y Jewett, <em>Física para ciencias e ingeniería</em>, vol.&nbsp;1, 10.ª ed.&nbsp;en español (Cengage, 2019), §§5.2, 5.4 y 5.6, sobre marcos inerciales, fuerza neta, fuerzas mutuas y lectura de una báscula. Se consultaron pasajes, sin atribuir una auditoría integral a esos libros. Los datos, enunciados, soluciones y figuras de este capítulo son construcciones propias dentro de estas familias de problemas.</p>
+<hr>
+<p><a href="../../libros/capitulos/fisica-para-matematicos-03-movimiento-en-el-plano.html">← 3. Movimiento en el plano</a> · <a href="../../libros/para-matematicos/fisica-para-matematicos.html#tomo-i-fundamentos-y-mecanica">Índice del Tomo I</a> · <a href="../../libros/capitulos/fisica-para-matematicos-05-contactos-tensiones-y-rozamiento.html">5. Contactos, tensiones y rozamiento →</a></p>
+
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-reuse"><h2 class="anchored quarto-appendix-heading">Reutilización</h2><div class="quarto-appendix-contents"><div>GFDL-1.3-or-later</div></div></section></div></main> <!-- /main -->
+<style>
+/* Estilo acotado al artículo con el laboratorio MA-APP-0003. */
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) span.math.display {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+body:has(iframe[src$="MA-APP-0003-supremo-infimo.html"]) iframe[src$="MA-APP-0003-supremo-infimo.html"] {
+  display: block;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+</style>
+<script>
+/* Integración del laboratorio, cargado desde el mismo origen que el artículo. */
+(() => {
+  const attach = () => {
+    const frame = document.querySelector('iframe[src$="MA-APP-0003-supremo-infimo.html"]');
+    if (!frame) return;
+    let observer;
+    const resize = () => {
+      try {
+        const doc = frame.contentDocument;
+        const main = doc && doc.querySelector('main');
+        if (!main) return;
+        const margin = parseFloat(doc.defaultView.getComputedStyle(main).marginBottom) || 0;
+        const height = Math.ceil(main.getBoundingClientRect().bottom + margin + 4);
+        if (height > 0 && Math.abs(frame.getBoundingClientRect().height - height) > 2) {
+          frame.style.height = height + 'px';
+        }
+      } catch (_) {
+        /* Si cambia el origen, el iframe conserva su scroll y su enlace externo. */
+      }
+    };
+    const observe = () => {
+      resize();
+      if (observer) observer.disconnect();
+      try {
+        const main = frame.contentDocument && frame.contentDocument.querySelector('main');
+        if (main && 'ResizeObserver' in window) {
+          observer = new ResizeObserver(resize);
+          observer.observe(main);
+        }
+      } catch (_) { /* Mantener el laboratorio funcional aun sin acceso al iframe. */ }
+    };
+    frame.addEventListener('load', observe);
+    observe();
+    window.addEventListener('resize', resize, { passive: true });
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else attach();
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const attach = () => {
+    const main = document.querySelector('main.content');
+    if (!main || main.querySelector(':scope > .ma-reader-tools')) return;
+
+    const rootPx = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+    const step = 0.08 * rootPx;
+    const min = 0.90 * rootPx;
+    const max = 1.50 * rootPx;
+    let size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+
+    const bar = document.createElement('div');
+    bar.className = 'ma-reader-tools';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Tamaño del texto');
+
+    const label = document.createElement('span');
+    label.textContent = 'Lectura';
+    bar.append(label);
+
+    const apply = next => {
+      size = Math.max(min, Math.min(max, next));
+      main.style.setProperty('--ma-reader-size', size + 'px');
+    };
+
+    const button = (text, name, handler) => {
+      const el = document.createElement('button');
+      el.type = 'button';
+      el.textContent = text;
+      el.setAttribute('aria-label', name);
+      el.addEventListener('click', handler);
+      bar.append(el);
+    };
+
+    button('A−', 'Reducir tamaño de letra', () => apply(size - step));
+    button('A+', 'Aumentar tamaño de letra', () => apply(size + step));
+    button('Restablecer', 'Restablecer tamaño de letra', () => {
+      main.style.removeProperty('--ma-reader-size');
+      size = parseFloat(getComputedStyle(main).fontSize) || (1.06 * rootPx);
+    });
+
+    const title = main.querySelector('#title-block-header');
+    if (title) title.after(bar);
+    else main.prepend(bar);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+
+<script>
+/* ANM C00: progressive-enhancement link to the original full-size SVG.
+   Only published C00 figures are targeted; no SVG or chapter sources change. */
+(() => {
+  'use strict';
+
+  const attachC00Links = () => {
+    const main = document.querySelector('main.content');
+    if (!main) return;
+
+    main.querySelectorAll('div[id^="fig-anm-c00-f"]').forEach(container => {
+      const match = /^fig-anm-c00-(f\d{2})$/.exec(container.id);
+      if (!match || container.querySelector('.ma-anm-c00-fullsize')) return;
+
+      const image = container.querySelector('figure img[src]');
+      if (!image) return;
+      const src = image.getAttribute('src');
+      const expected = '../../assets/books/anm/C00-' + match[1].toUpperCase() + '.svg';
+      if (src !== expected) return;
+
+      const access = document.createElement('p');
+      access.className = 'ma-anm-c00-fullsize';
+      const link = document.createElement('a');
+      link.href = src;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'Abrir figura a tamaño natural ↗';
+      link.setAttribute('aria-label', 'Abrir figura C00-' + match[1].toUpperCase() +
+        ' a tamaño natural en otra pestaña para ampliar');
+      link.title = 'Puedes ampliarla con el zoom del navegador';
+      access.append(link);
+      container.append(access);
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachC00Links, { once: true });
+  } else {
+    attachC00Links();
+  }
+})();
+</script>
+<script>
+(() => {
+  'use strict';
+
+  const CATALOGS = [
+    {
+      url: new URL('/teoria/resultados/index.html', window.location.origin),
+      defaultKind: 'result'
+    },
+    {
+      url: new URL('/teoria/metodos/index.html', window.location.origin),
+      defaultKind: 'method'
+    }
+  ];
+  const PREVIEW_HASH = /^#(?:res|met|def)-/i;
+  const cache = new Map();
+  let catalog = new Map();
+  let activeLink = null;
+  let requestToken = 0;
+
+  const panel = document.createElement('aside');
+  panel.className = 'ma-result-preview';
+  panel.id = 'ma-result-preview';
+  panel.setAttribute('role', 'tooltip');
+  panel.hidden = true;
+  panel.innerHTML = [
+    '<div class="ma-result-preview-kicker"></div>',
+    '<div class="ma-result-preview-title"></div>',
+    '<div class="ma-result-preview-summary"></div>'
+  ].join('');
+  document.body.append(panel);
+
+  const kickerEl = panel.querySelector('.ma-result-preview-kicker');
+  const titleEl = panel.querySelector('.ma-result-preview-title');
+  const summaryEl = panel.querySelector('.ma-result-preview-summary');
+
+  const normalizePath = pathname => pathname
+    .replace(/\.(?:md|qmd)$/i, '.html')
+    .replace(/\/index\.html$/i, '/');
+
+  const keyFor = (href, base = document.baseURI) => {
+    try {
+      const url = new URL(href, base);
+      if (url.origin !== window.location.origin) return null;
+      return normalizePath(url.pathname) + url.hash;
+    } catch (_) {
+      return null;
+    }
+  };
+
+  const kindForHash = (hash, fallback = 'result') => {
+    if (/^#res-/i.test(hash)) return 'result';
+    if (/^#met-/i.test(hash)) return 'method';
+    if (/^#def-/i.test(hash)) return 'definition';
+    return fallback;
+  };
+
+  const labelForKind = kind => ({
+    result: 'Resultado',
+    method: 'Método',
+    definition: 'Definición'
+  }[kind] || 'Referencia');
+
+  const cleanText = text => (text || '')
+    .replace(/\(\s*MA-[^)]+\)/g, '')
+    .replace(/^\s*[—–-]\s*/, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const truncate = (text, max = 430) => {
+    const clean = cleanText(text);
+    if (clean.length <= max) return clean;
+    const cut = clean.slice(0, max);
+    const lastSpace = cut.lastIndexOf(' ');
+    return cut.slice(0, lastSpace > 300 ? lastSpace : max).trimEnd() + '…';
+  };
+
+  const readCatalog = async ({ url: catalogUrl, defaultKind }) => {
+    try {
+      const response = await fetch(catalogUrl, { credentials: 'same-origin' });
+      if (!response.ok) return [];
+      const html = await response.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const entries = [];
+
+      doc.querySelectorAll('main.content li').forEach(li => {
+        const link = li.querySelector('a[href]');
+        if (!link) return;
+        const key = keyFor(link.getAttribute('href'), catalogUrl);
+        if (!key) return;
+
+        const url = new URL(link.getAttribute('href'), catalogUrl);
+        const clone = li.cloneNode(true);
+        clone.querySelectorAll('a, code').forEach(el => el.remove());
+        const summary = cleanText(clone.textContent);
+
+        entries.push([key, {
+          title: cleanText(link.textContent),
+          summary,
+          kind: kindForHash(url.hash, defaultKind)
+        }]);
+      });
+
+      return entries;
+    } catch (_) {
+      return [];
+    }
+  };
+
+  const loadCatalog = async () => {
+    const groups = await Promise.all(CATALOGS.map(readCatalog));
+    const next = new Map();
+
+    groups.flat().forEach(([key, value]) => {
+      const existing = next.get(key);
+      if (!existing || (!existing.summary && value.summary)) next.set(key, value);
+    });
+
+    return next;
+  };
+
+  const fallbackFromTarget = async url => {
+    const cacheKey = normalizePath(url.pathname) + url.hash;
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+
+    const promise = (async () => {
+      try {
+        let doc;
+        if (normalizePath(url.pathname) === normalizePath(window.location.pathname)) {
+          doc = document;
+        } else {
+          const response = await fetch(url.pathname, { credentials: 'same-origin' });
+          if (!response.ok) return null;
+          doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        }
+
+        const id = decodeURIComponent(url.hash.slice(1));
+        const target = doc.getElementById(id);
+        if (!target) return null;
+
+        let title = '';
+        let text = '';
+
+        if (/^H[1-6]$/.test(target.tagName)) {
+          title = cleanText(target.textContent);
+          const level = Number(target.tagName.slice(1));
+          const parts = [];
+          let node = target.nextElementSibling;
+          while (node && parts.length < 5) {
+            if (/^H[1-6]$/.test(node.tagName) && Number(node.tagName.slice(1)) <= level) break;
+            const value = cleanText(node.textContent);
+            if (value) parts.push(value);
+            node = node.nextElementSibling;
+          }
+          text = parts.join(' ');
+        } else {
+          const heading = target.querySelector('h1,h2,h3,h4,h5,h6');
+          const blockLabel = heading
+            ? null
+            : target.querySelector(':scope > p:first-child > strong');
+          title = heading
+            ? cleanText(heading.textContent)
+            : blockLabel
+              ? cleanText(blockLabel.textContent)
+              : '';
+
+          const clone = target.cloneNode(true);
+          clone.querySelectorAll('script, style, button, nav').forEach(el => el.remove());
+
+          if (heading) {
+            const clonedHeading = clone.querySelector('h1,h2,h3,h4,h5,h6');
+            if (clonedHeading) clonedHeading.remove();
+          } else if (blockLabel) {
+            const clonedLabel = clone.querySelector(':scope > p:first-child > strong');
+            const labelParagraph = clonedLabel?.parentElement;
+            if (labelParagraph?.parentElement === clone) labelParagraph.remove();
+          }
+
+          text = cleanText(clone.textContent);
+        }
+
+        return {
+          title: title || labelForKind(kindForHash(url.hash)),
+          summary: truncate(text),
+          kind: kindForHash(url.hash)
+        };
+      } catch (_) {
+        return null;
+      }
+    })();
+
+    cache.set(cacheKey, promise);
+    return promise;
+  };
+
+  const position = link => {
+    if (panel.hidden || !link) return;
+    const margin = 12;
+    const gap = 10;
+    const rect = link.getBoundingClientRect();
+    const box = panel.getBoundingClientRect();
+
+    let left = rect.left + (rect.width / 2) - (box.width / 2);
+    left = Math.max(margin, Math.min(left, window.innerWidth - box.width - margin));
+
+    let top = rect.bottom + gap;
+    if (top + box.height > window.innerHeight - margin) {
+      const above = rect.top - box.height - gap;
+      if (above >= margin) top = above;
+    }
+
+    panel.style.left = Math.round(left) + 'px';
+    panel.style.top = Math.round(top) + 'px';
+  };
+
+  const hide = () => {
+    requestToken += 1;
+    if (activeLink) activeLink.removeAttribute('aria-describedby');
+    activeLink = null;
+    panel.hidden = true;
+  };
+
+  const show = async link => {
+    const url = new URL(link.href, document.baseURI);
+    const token = ++requestToken;
+    const key = keyFor(url.href);
+    let item = key ? catalog.get(key) : null;
+
+    if ((!item || !item.summary) && PREVIEW_HASH.test(url.hash)) {
+      item = await fallbackFromTarget(url);
+    }
+
+    if (token !== requestToken || !item || !item.summary) return;
+
+    const kind = item.kind || kindForHash(url.hash);
+    activeLink = link;
+    panel.dataset.kind = kind;
+    kickerEl.textContent = labelForKind(kind);
+    titleEl.textContent = item.title || cleanText(link.textContent) || labelForKind(kind);
+    summaryEl.textContent = truncate(item.summary);
+    link.dataset.maPreviewKind = kind;
+    link.setAttribute('aria-describedby', panel.id);
+    panel.hidden = false;
+    requestAnimationFrame(() => position(link));
+  };
+
+  const attachLink = link => {
+    if (link.dataset.maResultPreview === '1') return;
+    const url = new URL(link.href, document.baseURI);
+    const key = keyFor(url.href);
+    if (!key) return;
+
+    const isCandidate = catalog.has(key) || PREVIEW_HASH.test(url.hash);
+    if (!isCandidate) return;
+
+    const kind = catalog.get(key)?.kind || kindForHash(url.hash);
+    link.dataset.maResultPreview = '1';
+    link.dataset.maPreviewKind = kind;
+    link.classList.add('ma-result-link');
+
+    link.addEventListener('mouseenter', () => show(link));
+    link.addEventListener('mouseleave', () => {
+      if (document.activeElement !== link) hide();
+    });
+    link.addEventListener('focus', () => show(link));
+    link.addEventListener('blur', hide);
+  };
+
+  const attach = async () => {
+    catalog = await loadCatalog();
+    document.querySelectorAll('main.content a[href]').forEach(attachLink);
+
+    window.addEventListener('scroll', () => position(activeLink), { passive: true });
+    window.addEventListener('resize', () => position(activeLink), { passive: true });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') hide();
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attach, { once: true });
+  } else {
+    attach();
+  }
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/matematicaabierta\.cl\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
