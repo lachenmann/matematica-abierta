@@ -17,7 +17,9 @@ jobs:
       - name: Check publication whitespace
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        run: git diff --check "$BASE_SHA"...HEAD
+        # SVG bytes are canonical, including their Windows line separators.
+        # Keep every whitespace check while recognizing CRLF as a line ending.
+        run: git -c core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol diff --check "$BASE_SHA"...HEAD
       - uses: quarto-dev/quarto-actions/setup@v2
         with:
           version: 1.10.18
