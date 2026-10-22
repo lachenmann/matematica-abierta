@@ -645,3 +645,32 @@ Se conservan `MA-BOK-0016` y `MA-BCH-0396`–`MA-BCH-0418` para el alta anterior
 | MA-BCH-0444 | book-chapter | MP — Probabilidad, condiciones y distribuciones elementales | `libros/otros/matematica-preuniversitaria/capitulo-23.qmd` | published |
 | MA-BCH-0445 | book-chapter | MP — Variación, acumulación y umbral del cálculo | `libros/otros/matematica-preuniversitaria/capitulo-24.qmd` | published |
 | MA-BCH-0446 | book-chapter | MP — Demostraciones de las propiedades | `libros/otros/matematica-preuniversitaria/apendice.qmd` | published |
+
+## FP — Física preuniversitaria, 2026-10-21
+
+| ID | Tipo | Título | Ruta | Estado |
+|---|---|---|---|---|
+| MA-BOK-0016 | book | Física preuniversitaria | `libros/otros/fisica-preuniversitaria/index.qmd` | published; edición de revisión v0.32 |
+| MA-BCH-0396 | book-chapter | Medición, magnitudes, dimensiones y modelos físicos | `libros/otros/fisica-preuniversitaria/capitulo-01.md` | published; FP-C01 |
+| MA-BCH-0397 | book-chapter | Matemáticas para la física: álgebra, trigonometría y vectores | `libros/otros/fisica-preuniversitaria/capitulo-02.md` | published; FP-C02 |
+| MA-BCH-0398 | book-chapter | Funciones, variación y acumulación: cálculo físico desde cero | `libros/otros/fisica-preuniversitaria/capitulo-03.md` | published; FP-C03 |
+| MA-BCH-0399 | book-chapter | Movimiento en una dimensión | `libros/otros/fisica-preuniversitaria/capitulo-04.md` | published; FP-C04 |
+| MA-BCH-0400 | book-chapter | Movimiento en dos dimensiones y movimiento relativo | `libros/otros/fisica-preuniversitaria/capitulo-05.md` | published; FP-C05 |
+| MA-BCH-0401 | book-chapter | Leyes de Newton y diagramas de cuerpo libre | `libros/otros/fisica-preuniversitaria/capitulo-06.md` | published; FP-C06 |
+| MA-BCH-0402 | book-chapter | Rozamiento, tensiones y sistemas de cuerpos | `libros/otros/fisica-preuniversitaria/capitulo-07.md` | published; FP-C07 |
+| MA-BCH-0403 | book-chapter | Trabajo, energía y potencia | `libros/otros/fisica-preuniversitaria/capitulo-08.md` | published; FP-C08 |
+| MA-BCH-0404 | book-chapter | Cantidad de movimiento, impulso y colisiones | `libros/otros/fisica-preuniversitaria/capitulo-09.md` | published; FP-C09 |
+| MA-BCH-0405 | book-chapter | Equilibrio, rotaciones y momento angular | `libros/otros/fisica-preuniversitaria/capitulo-10.md` | published; FP-C10 |
+| MA-BCH-0406 | book-chapter | Gravitación, leyes de Kepler y órbitas | `libros/otros/fisica-preuniversitaria/capitulo-11.md` | published; FP-C11 |
+| MA-BCH-0407 | book-chapter | Presión, flotación y fluidos | `libros/otros/fisica-preuniversitaria/capitulo-12.md` | published; FP-C12 |
+| MA-BCH-0408 | book-chapter | Oscilaciones y movimiento armónico | `libros/otros/fisica-preuniversitaria/capitulo-13.md` | published; FP-C13 |
+| MA-BCH-0409 | book-chapter | Ondas, sonido, superposición y resonancia | `libros/otros/fisica-preuniversitaria/capitulo-14.md` | published; FP-C14 |
+| MA-BCH-0410 | book-chapter | Temperatura, calor y teoría cinética | `libros/otros/fisica-preuniversitaria/capitulo-15.md` | published; FP-C15 |
+| MA-BCH-0411 | book-chapter | Gases, trabajo y principios de la termodinámica | `libros/otros/fisica-preuniversitaria/capitulo-16.md` | published; FP-C16 |
+| MA-BCH-0412 | book-chapter | Cargas eléctricas, fuerzas, campos y potencial | `libros/otros/fisica-preuniversitaria/capitulo-17.md` | published; FP-C17 |
+| MA-BCH-0413 | book-chapter | Corriente eléctrica y circuitos | `libros/otros/fisica-preuniversitaria/capitulo-18.md` | published; FP-C18 |
+| MA-BCH-0414 | book-chapter | Magnetismo e inducción electromagnética | `libros/otros/fisica-preuniversitaria/capitulo-19.md` | published; FP-C19 |
+| MA-BCH-0415 | book-chapter | Óptica geométrica y ondulatoria | `libros/otros/fisica-preuniversitaria/capitulo-20.md` | published; FP-C20 |
+| MA-BCH-0416 | book-chapter | Física del universo: astronomía y astrofísica introductoria | `libros/otros/fisica-preuniversitaria/capitulo-21.md` | published; FP-C21 |
+| MA-BCH-0417 | book-chapter | Primer encuentro con la física moderna | `libros/otros/fisica-preuniversitaria/capitulo-22.md` | published; FP-C22 |
+| MA-BCH-0418 | book-chapter | Laboratorio de modelización, datos y problemas integradores | `libros/otros/fisica-preuniversitaria/capitulo-23.md` | published; FP-C23 |
