@@ -1,0 +1,599 @@
+---
+title: "Medir una suma y controlar un error"
+lang: es
+toc: true
+toc-depth: 2
+number-sections: false
+---
+
+[← ¿Qué significa que los reales sean únicos?](capitulo-3.qmd) · [Índice del libro](../la-construccion-de-los-reales.md) · [Siguiente →](apendice-a.qmd)
+
+Una aproximación adquiere utilidad cuando podemos controlar su error. Si sumamos dos cantidades aproximadas, la desigualdad triangular permite repartir una tolerancia entre los dos errores y obtener una cota para el resultado. Partiremos del valor absoluto y demostraremos la estimación que sostiene ese procedimiento:
+
+$$|a+b|\le |a|+|b|.$$
+
+El resultado asegura que sumar errores no puede producir una magnitud mayor que la suma de sus magnitudes individuales. Es una afirmación simple de recordar y sorprendentemente fértil: controla la diferencia entre dos valores absolutos, explica una propiedad geométrica de los triángulos y permite demostrar que la suma de sucesiones convergentes también converge.
+
+Debemos, sin embargo, distinguir contextos. La desigualdad escalar vale en **todo cuerpo ordenado**, incluso uno en el que no existan raíces de todos los positivos. La longitud euclídea de vectores necesita otras pruebas, y una norma general tiene sus propios axiomas. Al separar estos niveles veremos cómo un razonamiento algebraico elemental llega a convertirse en una herramienta del análisis.
+
+Como preliminar algebraico, recordemos que en un cuerpo ordenado los elementos $2,4$ son positivos y no nulos. El cuadrado de un elemento negativo también es positivo, pues $(-x)^2=x^2>0$ si $x\ne0$; por consiguiente $x^2=0$ implica $x=0$. Usaremos estas propiedades sin suponer todavía la existencia de raíces cuadradas para todos los elementos positivos.
+
+## Una suma puede cancelar parte de sus términos
+
+Para $a=3$ y $b=2$, sumar conserva toda la magnitud: $|a+b|=5=|a|+|b|$. Para $a=3$ y $b=-2$, la suma vale $1$, aunque las magnitudes individuales siguen sumando $5$. Cuando los signos se oponen, una parte se cancela. La desigualdad triangular expresa la cota que funciona en todos los casos:
+
+$$
+\forall a,b\in\mathbb R,\qquad |a+b|\le|a|+|b|.
+$$
+
+El miembro izquierdo mide el resultado de sumar; el derecho mide cada término antes de sumarlos. El signo $\le$ admite tanto igualdad como cancelación. Por ejemplo, para $a=4,b=-4$, el miembro izquierdo es cero y el derecho es ocho. El nombre geométrico se comprenderá después; empezaremos por el caso escalar, que es anterior a cualquier construcción de normas vectoriales.
+
+Para leer la fórmula necesitamos precisar el valor absoluto. Si $x\ge0$, $|x|=x$; si $x<0$, $|x|=-x$. El resultado es siempre no negativo, y sólo es cero cuando $x=0$. Por eso «hacer positivo» debe entenderse con atención al cero. La distancia de $-3$ al origen es $3$, y la de $0$ al origen es $0$.
+
+Una observación elemental es $x\le|x|$. Para $x\ge0$ hay igualdad; para $x<0$, el miembro izquierdo es negativo y el derecho positivo. También $-x\le|x|$, lo que produce una cota por ambos lados: $-|x|\le x\le|x|$.
+
+## La desigualdad triangular por cuadrados y raíces
+
+La prueba por cuadrados compara dos cantidades que podremos desarrollar con la distributividad. El paso de regreso a sus magnitudes exige usar que el cuadrado es estrictamente creciente entre elementos no negativos. Esta propiedad de orden permitirá comprender exactamente qué hace la notación de raíz.
+
+Para demostrar la desigualdad, comparemos dos expansiones cuadráticas. Al desarrollar $(a+b)^2$, el término cuyo signo cambia es $2ab$. Los cuadrados $a^2$ y $b^2$ son no negativos. Si reemplazamos $ab$ por $|a||b|$, ese término no disminuye.
+La identidad $|ab|=|a||b|$ se demuestra atendiendo a los signos: con dos factores positivos o dos negativos, el producto es positivo y las magnitudes multiplicadas valen $ab$; con signos opuestos valen $-ab$; si hay un cero, todos esos productos se anulan. Aplicando $x\le|x|$ a $x=ab$, obtenemos $ab\le|a||b|$. Este razonamiento no requiere multiplicar desigualdades por factores de signo desconocido.
+
+Como $2>0$, podemos duplicar esa desigualdad y sumar los cuadrados:
+
+$$
+\begin{aligned}
+(a+b)^2&=a^2+2ab+b^2\\
+&\le |a|^2+2|a||b|+|b|^2\\
+&=(|a|+|b|)^2.
+\end{aligned}
+$$
+
+Podemos comparar ahora las raíces no negativas de ambos miembros; este paso exige dos justificaciones. La primera es que $\sqrt{z^2}=|z|$: $|z|$ es no negativo, su cuadrado es $z^2$ y ninguna otra raíz no negativa puede tener el mismo cuadrado. La segunda es que, entre números no negativos, el orden de los cuadrados conserva el orden original. Si $0\le u<v$, entonces $v^2-u^2=(v-u)(v+u)>0$; por tanto, $u^2\le v^2$ impide $u>v$.
+
+Aplicando esas razones a los cuadrados que ya tenemos,
+
+$$
+|a+b|\le\bigl||a|+|b|\bigr|=|a|+|b|.
+$$
+
+La última igualdad usa que la suma de dos números no negativos es no negativa. Permanece válida si ambos son cero. Tomar raíces de cuadrados no exige que todo positivo de un cuerpo ordenado tenga raíz: aquí los radicandos ya son cuadrados. La existencia de raíces para reales no negativos en general se demuestra por supremos en la demostración complementaria, como una ampliación distinta.
+
+**Cuándo hay igualdad.** La diferencia de los cuadrados de ambos miembros de la triangular es $2(|a||b|-ab)$. Se anula exactamente cuando $ab\ge0$. En la recta hay igualdad si los signos coinciden o si uno de los números es cero; con signos opuestos y ambos no nulos hay desigualdad estricta. Por ejemplo, $a=-3,b=-2$ también da igualdad, aunque ambos números sean negativos.
+
+Una segunda demostración, que encontraremos entre las variantes matemáticas, suma las cotas $-|a|\le a\le|a|$ y $-|b|\le b\le|b|$. Su interés es mostrar la triangular como una afirmación sobre cotas dobles. Esta alternativa ilumina el argumento de orden sin sustituir el camino por cuadrados seguido antes.
+
+### Valor absoluto y casos de signo
+
+Para $x$ en un cuerpo ordenado $F$, definimos $|x|=x$ si $x\ge0$ y $|x|=-x$ si $x<0$. Los dos casos son exhaustivos y disjuntos por totalidad del orden; la regla asigna un único elemento. De ella se deducen $|x|\ge0$, $|x|=0\iff x=0$, $|-x|=|x|$, $|x|^2=x^2$ y $-|x|\le x\le|x|$.
+
+Si $x\ge0$, las primeras afirmaciones se reducen a $x\ge0$, y $-x\le x$ porque $2x\ge0$. Si $x<0$, $-x>0$, $x=-|x|<|x|$ y $(-x)^2=x^2$. Para la simetría, si $x>0$ se tiene $|-x|=-(-x)=x$; si $x<0$, $-x>0$ da $|-x|=-x$; para $x=0$ ambos lados son cero. La igualdad $|x|=0$ en cada rama exige $x=0$. Estas verificaciones cubren también los casos de borde que la expresión informal «hacer positivo» puede ocultar.
+
+### Producto y control de signos
+
+Para todo $a,b\in F$, $|ab|=|a||b|$ y $ab\le|a||b|$. Si alguno es cero, ambos productos de la igualdad son cero. Si ambos son positivos, $ab>0$ y los dos lados valen $ab$. Si ambos son negativos, $ab=(-a)(-b)>0$ y $|a||b|=(-a)(-b)=ab$. Si tienen signos opuestos, $ab<0$ y $|a||b|=-ab=|ab|$. La desigualdad resulta de aplicar el valor absoluto a $x=ab$.
+
+No se multiplica $a\le|a|$ por un $b$ de signo desconocido. Multiplicar una desigualdad por un negativo invierte su sentido; el análisis de signos evita esa inferencia ilegítima.
+
+### Cotas dobles y equivalencias
+
+Para $c\ge0$ y $t\in F$,
+
+$$
+|t|\le c\iff -c\le t\le c.
+$$
+
+La dirección directa usa $-|t|\le t\le|t|$ y $-|t|\ge-c$. Para la recíproca, si $t\ge0$, $|t|=t\le c$; si $t<0$, $t\ge-c$ equivale, al negar ambos miembros, a $-t\le c$, y $|t|=-t$. Para $c>0$, el mismo razonamiento con desigualdades estrictas demuestra
+
+$$
+|t|<c\iff -c<t<c.
+$$
+
+Con $c=0$, la versión no estricta exige $t=0$; la estricta tiene ambos miembros falsos. No se convierte una cadena no estricta en una estricta.
+
+### Cuadrados y raíces de cuadrados
+
+Para $0\le u<v$, $v^2-u^2=(v-u)(v+u)>0$ porque ambos factores son positivos. Por consiguiente, para $u,v\ge0$,
+
+$$
+u\le v\iff u^2\le v^2.
+$$
+
+La dirección directa incluye el caso $u=v$; la recíproca excluye $u>v$ por el resultado estricto. Todo cuadrado $z^2$ posee una raíz no negativa, $|z|$, por las propiedades elementales del valor absoluto. Si $r\ge0$ y $r^2=z^2=|z|^2$, la equivalencia anterior en ambas direcciones da $r=|z|$. Es legítimo escribir $\sqrt{z^2}=|z|$, incluso si $F$ no posee raíces de todos sus positivos. Además, si dos cuadrados están ordenados, sus raíces no negativas conservan el orden. Esta comparación basta para el argumento escalar y no usa completitud.
+
+### La desigualdad triangular mediante cuadrados
+
+Sean $a,b\in F$. Por la identidad $|ab|=|a||b|$, $ab\le|a||b|$; multiplicamos por $2>0$ y sumamos $a^2=|a|^2$ y $b^2=|b|^2$. Las expansiones distributivas dan
+
+$$
+(a+b)^2=a^2+2ab+b^2
+\le |a|^2+2|a||b|+|b|^2=(|a|+|b|)^2.
+$$
+
+Cada miembro es el cuadrado de un elemento no negativo explícito. La monotonía estricta del cuadrado en ese dominio permite comparar esos elementos y garantiza que son las raíces no negativas correspondientes. Aplicamos esa propiedad para obtener:
+
+$$
+|a+b|=\sqrt{(a+b)^2}
+\le\sqrt{(|a|+|b|)^2}=\bigl||a|+|b|\bigr|=|a|+|b|.
+$$
+
+La última igualdad usa $|a|+|b|\ge0$, incluyendo $a=b=0$. Las palabras «positivo» o «estrictamente positivo» no justifican excluir ese caso. La demostración funciona en cualquier cuerpo ordenado: no depende de la completitud ni de haber construido raíces cuadradas para todos los positivos.
+
+### Igualdad en la recta
+
+Para $a,b\in F$,
+
+$$
+|a+b|=|a|+|b|\iff ab\ge0.
+$$
+
+La diferencia de los cuadrados de ambos miembros es $2(|a||b|-ab)$. Ambos miembros son no negativos; por la monotonía del cuadrado entre elementos no negativos, su igualdad equivale a $|a||b|=ab$. Por la identidad $|ab|=|a||b|$, esto equivale a $|ab|=ab$, es decir, a $ab\ge0$. Incluye los ceros y los signos iguales.
+
+La desigualdad triangular aparece aquí sin recurrir a la completitud. La notación de raíz no debe engañarnos: al pasar de $(a+b)^2$ a $|a+b|$ sólo tomamos la raíz no negativa de un cuadrado que ya existe. Por otra parte, el caso de igualdad revela el papel de los signos: dos sumandos pueden reforzarse o cancelarse. La prueba por cotas del apéndice proporciona otro camino al mismo resultado, pero no reemplaza la vía por cuadrados que hemos seguido.
+
+## La desigualdad inversa mide cuánto pueden cambiar las magnitudes
+
+Si dos números están próximos, sus valores absolutos no pueden estar más lejos que ellos. La afirmación precisa es
+
+$$
+\bigl||a|-|b|\bigr|\le|a-b|.
+$$
+
+Hay dos niveles de barras: primero se calculan $|a|$ y $|b|$; luego se toma la magnitud de su diferencia. Por ejemplo, $a=3,b=7$ produce $|3-7|=4$ en ambos miembros. Para $a=3,b=-7$, las magnitudes difieren en cuatro, pero los números distan diez.
+
+La desigualdad triangular inversa se deduce directamente de la desigualdad que acabamos de probar. Escribimos $a=(a-b)+b$ y aplicamos la cota ya demostrada:
+
+$$
+|a|\le|a-b|+|b|,\qquad |a|-|b|\le|a-b|.
+$$
+
+Todavía falta controlar cuánto puede ser negativo $|a|-|b|$. Intercambiar $a$ y $b$ proporciona $|b|-|a|\le|b-a|$. Como $b-a=-(a-b)$ y el valor absoluto no cambia al negar su argumento, $|b-a|=|a-b|$. Negando la desigualdad intercambiada queda
+
+$$
+-|a-b|\le|a|-|b|\le|a-b|.
+$$
+
+Para terminar necesitamos interpretar una cota simétrica. Si $c\ge0$, las condiciones $-c\le t\le c$ y $|t|\le c$ son equivalentes. Si $t\ge0$, basta su cota superior; si $t<0$, su cota inferior equivale a $-t\le c$, y $-t=|t|$. La dirección contraria usa $-|t|\le t\le|t|$. Tomando $t=|a|-|b|$ y $c=|a-b|$, obtenemos la desigualdad inversa.
+
+### Desigualdad triangular inversa
+
+Para $a,b\in F$, escribimos $a=(a-b)+b$. Por la desigualdad triangular,
+
+$$
+|a|\le|a-b|+|b|,\qquad |a|-|b|\le|a-b|.
+$$
+
+Intercambiando $a,b$, $|b|-|a|\le|b-a|=|a-b|$, donde la igualdad se deduce de la simetría del valor absoluto, y no únicamente del ejemplo $a=3,b=7$. Negar la última desigualdad produce $-|a-b|\le|a|-|b|$. En conjunto,
+
+$$
+-|a-b|\le|a|-|b|\le|a-b|.
+$$
+
+Aplicamos la equivalencia entre valor absoluto y cotas dobles con $t=|a|-|b|$ y $c=|a-b|\ge0$ para concluir $\bigl||a|-|b|\bigr|\le|a-b|$. No se usa la desigualdad inversa para demostrar la triangular.
+
+### Sumas finitas
+
+Para $m\ge1$ y $x_1,\ldots,x_m\in F$, $|\sum_{j=1}^m x_j|\le\sum_{j=1}^m|x_j|$. Para $m=1$ hay igualdad. Si vale para $m$, la desigualdad triangular aplicada a $\sum_{j=1}^m x_j$ y $x_{m+1}$ da la cota para $m+1$, tras sustituir la hipótesis inductiva. La suma vacía vale cero y satisface también la cota.
+
+La desigualdad triangular inversa permite controlar un error después de aplicar el valor absoluto. Si dos cantidades distan poco, sus magnitudes también distan poco: $\bigl||a|-|b|\bigr|\le |a-b|$. El punto de la prueba fue obtener las dos desigualdades en sentidos opuestos, no elegir arbitrariamente cuál de los dos valores absolutos era mayor. La misma técnica sirve para estimar sumas finitas.
+
+## Por qué aparecen triángulos
+
+La prueba escalar anterior utilizó únicamente sumas, productos y el orden de un cuerpo. Cuando se pasa a vectores, la palabra «longitud» introduce un objeto nuevo: una función que asigna a cada vector un número no negativo. Antes de transportar la desigualdad debemos construir esa función y comprobar las propiedades que necesitamos de ella. Esta etapa muestra por qué una analogía geométrica puede orientar una demostración sin reemplazarla.
+
+La geometría es una aplicación, no una sustitución literal de letras. Entre la magnitud escalar y la longitud de un vector tendremos que construir las raíces necesarias y probar Cauchy–Schwarz.
+
+Imaginemos dos vectores del plano colocados uno a continuación del otro. El primero lleva del punto $A$ al punto $C$, y el segundo de $C$ a $B$. Su suma lleva de $A$ a $B$. Los tres segmentos delimitan un triángulo cuando los puntos no son colineales. Si usamos la longitud euclídea,
+
+$$
+\|u+v\|_2\le\|u\|_2+\|v\|_2,
+$$
+
+el segmento directo no supera la suma de los otros dos. La afirmación vale para cualquiera de los lados del triángulo al nombrar de nuevo los puntos. La longitud de $u+v$ no tiene que ser siempre la mayor de las tres: en el dibujo particular puede serlo, pero por ejemplo $u=(2,0),v=(-1,0)$ da longitudes $1,2,1$.
+La prueba escalar anterior cuantifica sobre números; introducir vectores en su fórmula no demuestra una nueva desigualdad. Para el plano definimos $\|u\|_2=\sqrt{u_1^2+u_2^2}$ y el producto escalar $u\cdot v=u_1v_1+u_2v_2$. La identidad
+
+$$
+\|u\|_2^2\|v\|_2^2-(u\cdot v)^2=(u_1v_2-u_2v_1)^2\ge0
+$$
+
+demuestra $u\cdot v\le\|u\|_2\|v\|_2$. Al expandir el cuadrado de la longitud de la suma, obtenemos
+
+$$
+\|u+v\|_2^2\le(\|u\|_2+\|v\|_2)^2.
+$$
+
+La comparación entre números no negativos permite tomar raíces y concluir la triangular vectorial. Este razonamiento demuestra la desigualdad vectorial mediante Cauchy–Schwarz, sin pretender deducirla de la versión escalar por un mero cambio de símbolos.
+
+Vale la pena preguntarse cuándo hay igualdad. En la geometría euclídea, si ambos vectores son no nulos, deben tener la misma dirección y el mismo sentido. Se admite también un vector nulo. Que el triángulo tenga área cero no caracteriza por sí solo esa igualdad: con $u=(1,0)$ y $v=(-1,0)$, la suma tiene longitud cero y las longitudes individuales suman dos. La orientación decide si el recorrido intermedio avanza hacia el destino o retrocede.
+
+Si se define una métrica $d$, la triangular se escribe $d(A,B)\le d(A,C)+d(C,B)$. Esta formulación compara tres distancias sin presuponer rectas, flechas o caminos mínimos. En el plano euclídeo coincide con la intuición del recorrido directo; la sola definición de métrica no garantiza que existan curvas que alcancen una distancia mínima.
+
+### Raíz de un real no negativo
+
+Para todo $c\in\mathbb R$, $c\ge0$, existe un único $s\ge0$ con $s^2=c$. Para $c=0$, $s=0$ y su unicidad procede de la estricta monotonía del cuadrado entre elementos no negativos. Sea $c>0$. El conjunto $S=\{x\in\mathbb R:x\ge0,\ x^2\le c\}$ contiene cero. Es acotado superiormente por $c+1$, pues $(c+1)^2>c$ y la monotonía del cuadrado excluye de $S$ cualquier $x>c+1$. Sea $s=\sup S$. Es positivo: $x=c/(c+1)>0$ pertenece a $S$, puesto que $c<(c+1)^2$ implica $x^2<c$; el denominador es positivo.
+
+Si $s^2<c$, sea $d=c-s^2>0$ y elijamos $h=\min\{1,d/[2(2s+1)]\}>0$. Todos los denominadores son positivos. Como $h\le1$,
+
+$$
+(s+h)^2-s^2=2sh+h^2\le(2s+1)h\le d/2<d.
+$$
+
+Así, $s+h\in S$ y $s+h>s$, contradicción. Si $s^2>c$, sea $d=s^2-c>0$ y $h=\min\{s/2,d/(4s)\}>0$. Entonces $s-h\ge s/2>0$ y
+
+$$
+(s-h)^2=s^2-2sh+h^2\ge s^2-d/2>c.
+$$
+
+Todo $x\in S$ debe cumplir $x\le s-h$: si $x>s-h$, la monotonía estricta de cuadrados daría $x^2>(s-h)^2>c$. Por tanto $s-h$ sería una cota superior menor que $s$, otra contradicción. Queda $s^2=c$. Dos raíces no negativas son iguales por la monotonía del cuadrado entre elementos no negativos. La función $c\mapsto\sqrt c$ preserva el orden, nuevamente por la monotonía del cuadrado entre elementos no negativos. No usa continuidad, límites, triangular, inversa ni Cauchy–Schwarz.
+
+### Cauchy–Schwarz en el plano
+
+Para $u=(u_1,u_2),v=(v_1,v_2)\in\mathbb R^2$, definimos $u\cdot v=u_1v_1+u_2v_2$ y $\|u\|_2=\sqrt{u_1^2+u_2^2}$. El radicando es no negativo y el teorema de existencia y unicidad de raíces no negativas, demostrado antes en este capítulo, legitima la definición. Sean $U=\|u\|_2$ y $V=\|v\|_2$. La expansión algebraica verifica
+
+$$
+U^2V^2-(u\cdot v)^2=(u_1v_2-u_2v_1)^2\ge0.
+$$
+
+Como $|u\cdot v|$ y $UV$ son no negativos, la monotonía del cuadrado implica $|u\cdot v|\le UV$; en particular $u\cdot v\le UV$. La igualdad en la versión absoluta equivale a $u_1v_2-u_2v_1=0$. Si $u\ne0$, eligiendo una coordenada $u_i\ne0$ y poniendo $\lambda=v_i/u_i$, la identidad de determinante cero fuerza la otra coordenada $v_j=\lambda u_j$. Para $u=0$ el determinante se anula para cualquier $v$. No presupone la desigualdad triangular vectorial.
+
+### Triangular euclídea e igualdad
+
+Para $u,v\in\mathbb R^2$, la expansión del cuadrado y la desigualdad de Cauchy--Schwarz recién demostrada dan
+
+$$
+\|u+v\|_2^2=U^2+2u\cdot v+V^2\le U^2+2UV+V^2=(U+V)^2.
+$$
+
+Por la monotonía del cuadrado entre elementos no negativos, $\|u+v\|_2\le U+V$. Hay igualdad exactamente cuando $u\cdot v=UV$. Si alguno es cero, hay igualdad. Si ambos son no nulos, esta condición implica igualdad absoluta en el caso de igualdad de Cauchy–Schwarz, por lo que $v=\lambda u$; además $\lambda U^2=u\cdot v=UV>0$, y $\lambda>0$. Recíprocamente, para $\lambda>0$ se tiene $V=\lambda U$ porque ambos lados son no negativos y sus cuadrados coinciden. Entonces $u\cdot v=\lambda U^2=UV$ y hay igualdad.
+
+La descripción exacta es: algún vector nulo, o vectores no nulos con la misma dirección y el mismo sentido. La mera área cero no basta: $u=(1,0)$ y $v=(-1,0)$ producen $\|u+v\|_2=0<2=U+V$. La caracterización tampoco vale para toda norma: en $\ell^1$ del plano, $u=(1,0)$ y $v=(0,1)$ tienen igualdad y no son paralelos.
+
+Para comprobar que la longitud euclídea es realmente una norma, además de la triangular ya probada, verificamos las otras cláusulas. La raíz es no negativa por definición. Si $\|u\|_2=0$, entonces $u_1^2+u_2^2=0$; ambos sumandos no negativos deben ser cero, y cada coordenada es cero. La recíproca es inmediata por la definición. Para todo $\lambda\in\mathbb R$, los números $\|\lambda u\|_2$ y $|\lambda|\|u\|_2$ son no negativos y sus cuadrados valen $\lambda^2(u_1^2+u_2^2)$; por la monotonía del cuadrado entre elementos no negativos son iguales, incluso si $\lambda=0$. Se han verificado así las tres cláusulas antes de utilizar la longitud como ejemplo de norma.
+
+Para pasar de una magnitud escalar a la longitud de un vector hubo que pagar dos deudas. La primera es justificar las raíces de todos los positivos con la propiedad del supremo; la segunda es demostrar la desigualdad de Cauchy--Schwarz mediante una identidad algebraica y deducir de ella la triangular euclídea. Este camino explica también por qué la condición de igualdad depende de la norma: no basta dibujar dos vectores colineales, hay que distinguir si tienen o no el mismo sentido.
+
+## La suma de dos sucesiones convergentes
+
+Al pasar a sucesiones no basta manipular símbolos de límites: fijada una tolerancia, deben elegirse índices que controlen simultáneamente los errores de ambos sumandos.
+
+Volvamos a los números reales para estudiar una consecuencia analítica de la desigualdad. Una sucesión es una función de los naturales positivos en los reales. Sus primeros términos orientan la intuición, pero una lista finita no determina ni la sucesión ni su límite. Como ejemplo, definamos $a_n=3+10^{-n}$ y $b_n=2-10^{-n}$. La primera converge a tres, la segunda a dos y su suma es exactamente cinco en todo índice.
+
+La definición precisa de $a_n\to a$ exige que para cada $\varepsilon>0$ exista un índice $N$ tal que todos los $n\ge N$ cumplan $|a_n-a|<\varepsilon$. La tolerancia se fija antes del índice. Un índice puede depender de la tolerancia; no puede depender del término concreto que después se examina. Para comprobar los ejemplos anteriores, $10^n\ge n$ para $n\ge1$ por inducción: vale en $n=1$ y $10^{n+1}\ge10n\ge n+1$. De modo que $10^{-n}\le1/n$. Por la propiedad arquimediana elegimos $N>1/\varepsilon$, y para todo $n\ge N$ ambos errores, $|a_n-3|$ y $|b_n-2|$, son menores que $\varepsilon$.
+
+Si $a_n\to a$ y $b_n\to b$, queremos que el error de su suma sea pequeño. La identidad algebraica reagrupa ese error:
+
+$$
+|(a_n+b_n)-(a+b)|=|(a_n-a)+(b_n-b)|
+\le|a_n-a|+|b_n-b|.
+$$
+
+Cada sumando de la derecha ya es controlable por una hipótesis de convergencia. Fijado $\varepsilon>0$, elegimos $N_a$ para que el primer error sea menor que $\varepsilon/2$, y $N_b$ para que el segundo sea menor que $\varepsilon/2$. A partir de $N=\max\{N_a,N_b\}$, ambos controles valen en el mismo índice. La suma de errores es menor que $\varepsilon$, y queda $a_n+b_n\to a+b$.
+
+La partición en mitades responde a un presupuesto de error. También servirían $\varepsilon/3$ y $2\varepsilon/3$. En cambio, exigir a cada error solamente que sea menor que $\varepsilon$ produciría una cota $2\varepsilon$, insuficiente para cerrar esa prueba con la tolerancia ya fijada. El mecanismo transferible combina una reagrupación algebraica, una estimación triangular y un índice común.
+
+La misma estimación reaparece cuando examinamos sucesiones de Cauchy. Demostraremos a continuación que la suma de dos sucesiones de Cauchy sigue siendo de Cauchy; la conclusión es distinta de afirmar que deba converger. Esto no implica que toda sucesión de Cauchy converja en cualquier espacio normado: la existencia del límite exige una hipótesis adicional de completitud.
+
+### Suma de sucesiones convergentes
+
+Para sucesiones $a_n,b_n:\mathbb N_{\ge1}\to\mathbb R$, escribimos $a_n\to a$ cuando para todo $\varepsilon>0$ existe $N\in\mathbb N_{\ge1}$ tal que para todo $n\ge N$ se cumple $|a_n-a|<\varepsilon$. Si $a_n\to a$ y $b_n\to b$, entonces $a_n+b_n\to a+b$.
+
+Fijado $\varepsilon>0$, la primera convergencia proporciona $N_a$ para tolerancia $\varepsilon/2$, y la segunda $N_b$ para la misma tolerancia. Sea $N=\max\{N_a,N_b\}$. Para todo $n\ge N$, las dos estimaciones valen simultáneamente, y la reagrupación algebraica da
+
+$$
+|(a_n+b_n)-(a+b)|=|(a_n-a)+(b_n-b)|
+\le|a_n-a|+|b_n-b|<\varepsilon/2+\varepsilon/2=\varepsilon.
+$$
+
+El índice depende de $\varepsilon$ y de ambas sucesiones; nunca se elige un índice distinto para cada sumando después de fijar $n$. La misma prueba en un espacio normado utiliza la desigualdad triangular de la norma en lugar de la desigualdad escalar. No usa completitud ni unicidad del cuerpo ordenado completo.
+
+### Unicidad de límites y continuidad de la norma
+
+Si una sucesión $x_n$ de un espacio normado converge a $x$ y a $y$, y $d=\|x-y\|>0$, elegimos índices para que ambas distancias a partir de un máximo común sean menores que $d/3$. Entonces
+
+$$
+d=\|(x-x_n)+(x_n-y)\|\le\|x-x_n\|+\|x_n-y\|<2d/3<d,
+$$
+
+contradicción. Queda $d=0$ y $x=y$. Si $x_n\to x$, la desigualdad triangular inversa para normas da $|\|x_n\|-\|x\||\le\|x_n-x\|$; para cada $\varepsilon>0$ el índice de la convergencia original hace el miembro derecho menor que $\varepsilon$. Luego $\|x_n\|\to\|x\|$. La unicidad de un límite dentro de un espacio no es la unicidad estructural del cuerpo del teorema de unicidad.
+
+### Suma de sucesiones de Cauchy
+
+En un espacio normado, $x_n$ es de Cauchy si $\forall\varepsilon>0\ \exists N\ \forall m,n\ge N$, $\|x_n-x_m\|<\varepsilon$. Si $x_n,y_n$ son de Cauchy, para cada $\varepsilon>0$ elegimos índices para $\varepsilon/2$ y su máximo común. Para $m,n$ mayores que ese máximo,
+
+$$
+\|(x_n+y_n)-(x_m+y_m)\|\le\|x_n-x_m\|+\|y_n-y_m\|<\varepsilon.
+$$
+
+No se afirma que esas sucesiones converjan en cualquier espacio normado; eso requeriría completitud del espacio.
+
+El procedimiento vuelve a repartir una tolerancia y a reunir dos índices en uno común. La desigualdad triangular convierte entonces los controles individuales en un control sobre la suma. La misma idea prueba la estabilidad de la condición de Cauchy; la existencia de un límite para toda sucesión de Cauchy corresponde a la completitud del espacio.
+
+## Una norma especifica qué entendemos por magnitud
+
+Para un espacio vectorial real $V$, una norma es una función $\|\cdot\|:V\to\mathbb R$ que satisface, para todos los vectores $x,y$ y escalares reales $\lambda$,
+
+$$
+\|x\|\ge0,\quad \|x\|=0\iff x=0_V,\qquad
+\|\lambda x\|=|\lambda|\|x\|,\qquad
+\|x+y\|\le\|x\|+\|y\|.
+$$
+
+La primera cláusula distingue el vector cero. La segunda controla el cambio de escala y conserva la magnitud cuando se invierte el sentido. La tercera permite comparar una suma con sus términos. Equipar $V$ con una norma significa elegir una función que cumpla esas cláusulas; conocer sólo la estructura de espacio vectorial no determina una longitud única.
+
+La segunda propiedad recibe el nombre de **homogeneidad absoluta**: el factor es $|\lambda|$, no $\lambda$. Una norma no es lineal en un espacio no trivial, pues para $x\ne0$ la norma de $-x$ coincide con la de $x$, mientras una aplicación lineal tendría que cambiar su signo.
+
+En $\mathbb R^2$, tanto $\|(x,y)\|_2=\sqrt{x^2+y^2}$ como $\|(x,y)\|_1=|x|+|y|$ son normas. La segunda cumple la triangular sumando las dos desigualdades escalares por coordenadas. Bajo esa norma, $u=(1,0)$ y $v=(0,1)$ tienen igualdad: $\|u+v\|_1=2=\|u\|_1+\|v\|_1$, aunque no sean paralelos. La caracterización geométrica euclídea de la igualdad depende de la norma elegida.
+
+Los espacios de matrices y funciones ofrecen otros ejemplos. Una matriz puede medirse sumando las magnitudes de sus entradas. Como ejemplo infinito dimensional concreto, las funciones $\mathbb N\to\mathbb R$ de soporte finito pueden medirse sumando las magnitudes de sus valores; sus funciones indicadoras de un único índice constituyen una familia linealmente independiente infinita. Hay asimismo espacios de funciones de dimensión finita, como el de las funciones constantes. Estos ejemplos separan el objeto vectorial de su dibujo como flecha y evitan identificar «función» con «dimensión infinita».
+
+### Norma: definición y homogeneidad
+
+Sea $V$ un espacio vectorial real. Una norma es una función $\|\cdot\|:V\to\mathbb R$ tal que, para todos $x,y\in V$ y $\lambda\in\mathbb R$, se cumplen:
+
+1. $\|x\|\ge0$ y $\|x\|=0\iff x=0_V$;
+2. $\|\lambda x\|=|\lambda|\|x\|$;
+3. $\|x+y\|\le\|x\|+\|y\|$.
+
+Se llama espacio normado al par $(V,\|\cdot\|)$. Las cláusulas son requisitos universales, no propiedades deducidas de llamar «longitud» a una función arbitraria. La segunda es homogeneidad absoluta. Una norma en un espacio no trivial no es una aplicación lineal $V\to\mathbb R$: para $x\ne0$, la homogeneidad con $\lambda=-1$ exige $\|-x\|=\|x\|>0$, mientras que la linealidad exigiría $\|-x\|=-\|x\|<0$. El valor absoluto en $\mathbb R$ satisface las tres cláusulas: la definitud se deduce de su definición, la homogeneidad del producto de valores absolutos y la cota de las sumas de la desigualdad triangular. No se pretende «demostrar» la tercera cláusula para cualquier función positiva y homogénea.
+
+### Distancia y desigualdad inversa en una norma
+
+Para un espacio normado, definimos $d(x,y)=\|x-y\|$. La positividad y definitud exigidas por la definición de norma dan $d(x,y)\ge0$ y $d(x,y)=0\iff x=y$. La homogeneidad con $-1$ da simetría. De $x-z=(x-y)+(y-z)$ y la tercera cláusula se obtiene $d(x,z)\le d(x,y)+d(y,z)$. Por tanto $d$ es una métrica.
+
+Asimismo, $\|x\|\le\|x-y\|+\|y\|$ y $\|y\|\le\|y-x\|+\|x\|$. La simetría y las cotas dobles producen $|\|x\|-\|y\||\le\|x-y\|$. Esta prueba usa el axioma vectorial triangular, no sustituye vectores dentro de un teorema cuantificado sólo sobre números reales. En una métrica arbitraria se compara la distancia directa con la suma de dos distancias; la existencia de caminos minimizantes no se deduce de esos axiomas.
+
+### Matrices, funciones y ejemplos de normas
+
+En $\mathbb R^2$, $\|(x,y)\|_1=|x|+|y|$ es una norma: la no negatividad y definitud siguen de las propiedades del valor absoluto, la homogeneidad de la fórmula para $|ab|$, y la triangular se obtiene sumando las desigualdades escalares demostradas para cada coordenada. En matrices reales $r\times s$, con $r,s\ge1$ finitos, $\|A\|_1=\sum_{i,j}|a_{ij}|$ cumple las mismas propiedades entrada por entrada, con una suma finita.
+
+Sea $c_{00}(\mathbb N)$ el espacio de funciones $f:\mathbb N\to\mathbb R$ de soporte finito. Está cerrado bajo suma y multiplicación escalar: el soporte de una suma está contenido en la unión de los dos soportes finitos y el de un múltiplo está contenido en el soporte original. Definimos $\|f\|_1=\sum_n|f(n)|$, suma finita independiente de añadir términos nulos. Si esta suma es cero, todos sus sumandos no negativos son cero, y $f=0$; la homogeneidad y triangular se prueban sobre la unión finita de los soportes. Las funciones $e_k(n)=1$ si $n=k$, y cero en otro caso, son linealmente independientes: evaluar una combinación finita en $k$ recupera su coeficiente. Este espacio es infinito dimensional. En cambio, las funciones constantes $\mathbb R\to\mathbb R$ forman un espacio de dimensión uno. Ser un espacio de funciones no obliga por sí solo a tener dimensión infinita.
+
+Los ejemplos de normas en matrices y funciones amplían la intuición geométrica: un vector no tiene por qué ser una flecha dibujable. Pero ninguna función que se llame magnitud merece automáticamente el nombre de norma. Debe anularse sólo en cero, ser absolutamente homogénea y cumplir la triangular. Al demostrar estas propiedades separadamente aprendemos a reconocer cuáles argumentos dependen de la estructura vectorial y cuáles de la función concreta escogida.
+
+## La desigualdad triangular y la estabilidad de los límites
+
+Una pregunta más difícil aparece al retirar el axioma triangular: ¿sigue siendo estable la suma de sucesiones convergentes? Los dos ejemplos siguientes mostrarán que, sin ese axioma, la estabilidad puede fallar, pero también puede conservarse. Lo decisivo será identificar qué estimación adicional poseen las funciones consideradas.
+
+Definamos $p(x,y)=|x|+|y|+x^2/|y|$ si $xy\ne0$, y $p(x,y)=|x|+|y|$ si $xy=0$. La segunda rama evita dividir por cero. La función es positiva fuera del origen y satisface $p(\lambda v)=|\lambda|p(v)$, pero $p(1,1)=3>2=p(1,0)+p(0,1)$.
+
+Si definimos convergencia a $z$ mediante $p(z_n-z)\to0$, las sucesiones $u_n=(1/n,0)$ y $v_n=(0,1/n^2)$ convergen a cero. Para la suma, el término nuevo $x^2/|y|$ vale uno, y $p(u_n+v_n)=1+1/n+1/n^2$. Así, la suma no converge a cero. Tampoco tiene otro límite: como $p(x,y)\ge|x|+|y|$, cualquier límite para $p$ tendría que coincidir con los límites cero de ambas coordenadas. El desarrollo comprueba formalmente esa exclusión y todas las dependencias.
+
+La ausencia de triangular no impone ese fallo en todos los casos. Por ejemplo, $q(x,y)=(\sqrt{|x|}+\sqrt{|y|})^2$ también es positiva y homogénea, y $q(1,1)=4>2=q(1,0)+q(0,1)$. Sin embargo,
+
+$$
+|x|+|y|\le q(x,y)\le2(|x|+|y|).
+$$
+
+Estas cotas hacen que converger para $q$ sea equivalente a converger en la norma $\ell^1$. La suma de límites se conserva en ese caso. La triangular garantiza directamente una estimación uniforme que permite sumar errores; si se retira, hay que buscar otro control o aceptar que esa operación puede fallar.
+
+### Retirar la triangular puede destruir la suma de límites
+
+En $\mathbb R^2$ definimos una función $p$ por
+
+$$
+p(x,y)=\begin{cases}
+|x|+|y|+x^2/|y|,&xy\ne0,\\
+|x|+|y|,&xy=0.
+\end{cases}
+$$
+
+Es bien definida: en la primera rama $y\ne0$ y $|y|>0$; la segunda evita toda división por cero. Es no negativa y se anula exactamente en $(0,0)$ porque $p(x,y)\ge|x|+|y|$. Para $\lambda\ne0$, la condición $xy=0$ se conserva al multiplicar ambas coordenadas por $\lambda$. En la primera rama, $(\lambda x)^2/|\lambda y|=|\lambda|x^2/|y|$, usando $\lambda^2=|\lambda|^2$ y $|\lambda y|=|\lambda||y|$. Las dos ramas dan $p(\lambda v)=|\lambda|p(v)$; para $\lambda=0$ ambos miembros son cero. Sin embargo, $p(1,1)=3>2=p(1,0)+p(0,1)$, por lo que no es una norma.
+
+Definimos expresamente la relación $z_n\to_p z$ por $p(z_n-z)\to0$, sin suponer que la función induzca una métrica. Sean $u_n=(1/n,0)$ y $v_n=(0,1/n^2)$. Entonces $p(u_n)=1/n\to0$ y $p(v_n)=1/n^2\to0$, mientras que
+
+$$
+p(u_n+v_n)=1/n+1/n^2+1>1.
+$$
+
+La suma no converge a cero. Tampoco converge a otro $w=(\alpha,\beta)$: si $p(u_n+v_n-w)\to0$, la cota $p\ge|x|+|y|$ implica $|1/n-\alpha|\to0$ y $|1/n^2-\beta|\to0$. Esas coordenadas ya convergen a cero; la unicidad de límites escalares, demostrada antes mediante la desigualdad triangular, obliga a $\alpha=\beta=0$, caso excluido. Aquí se usa la propiedad arquimediana de $\mathbb R$ para $1/n\to0$: dado $\varepsilon>0$, existe $N>1/\varepsilon$, y $n\ge N$ da $1/n<\varepsilon$; $1/n^2\le1/n$ para $n\ge1$.
+
+La propiedad arquimediana utilizada aquí se deduce de la completitud del cuerpo ordenado: si $\mathbb N$ fuera acotado con supremo $s$, $s-1$ no sería cota superior, de modo que algún $n>s-1$ satisfaría $n+1>s$, contradicción.
+
+### Ausencia de triangular sin pérdida de suma de límites
+
+Definimos $q(x,y)=(\sqrt{|x|}+\sqrt{|y|})^2$, usando la existencia de raíces cuadradas no negativas en el cuerpo real completo. Es no negativa, definida y positiva fuera de cero. Es absolutamente homogénea: para $t=|\lambda|\ge0$, $\sqrt{t|x|}=\sqrt t\sqrt{|x|}$ porque el miembro derecho es no negativo y su cuadrado vale $t|x|$; la unicidad de raíz lo identifica. Al cuadrar la suma se obtiene $q(\lambda v)=|\lambda|q(v)$, incluyendo $\lambda=0$. Pero $q(1,1)=4>2=q(1,0)+q(0,1)$.
+
+Para $A=\sqrt{|x|}$ y $B=\sqrt{|y|}$, $(A-B)^2\ge0$ implica $2AB\le A^2+B^2$. Por tanto,
+
+$$
+|x|+|y|\le q(x,y)=|x|+|y|+2\sqrt{|x||y|}\le2(|x|+|y|).
+$$
+
+Así, $z_n\to_q z$, definido mediante $q(z_n-z)\to0$, equivale a convergencia para la norma $\ell^1$: una dirección usa la primera cota y la otra usa la segunda con tolerancia $\varepsilon/2$. La suma de dos sucesiones convergentes para $q$ converge a la suma de sus límites por la estabilidad de límites bajo suma en $\ell^1$ y esta equivalencia. La ausencia de la triangular permite que falle la suma de límites, como en el contraejemplo anterior; no obliga a que falle en toda función positiva y homogénea.
+
+### Segunda prueba escalar por cotas
+
+Por las propiedades elementales del valor absoluto, $-|a|\le a\le|a|$ y $-|b|\le b\le|b|$. La compatibilidad del orden con la suma da $-(|a|+|b|)\le a+b\le|a|+|b|$. Por la equivalencia entre valor absoluto y cotas dobles, $|a+b|\le|a|+|b|$. Esta presentación deja visible la función de las cotas inferior y superior. No se utiliza ningún resultado que se pretende demostrar después.
+
+Los dos ejemplos finales delimitan con exactitud el papel de la desigualdad triangular. Puede faltar y provocar el fracaso de la suma de límites, pero también puede faltar sin alterar las sucesiones convergentes cuando la función se compara por dos constantes con una norma auténtica. Esta diferencia evita convertir una posibilidad en una afirmación universal. La triangular no es solo una imagen geométrica agradable: es una hipótesis de estabilidad cuya presencia o ausencia debe examinarse en cada demostración.
+
+## Problemas y soluciones del capítulo
+
+### Ejercicio 1
+
+Calcular $|a+b|$ y $|a|+|b|$ para $(a,b)=(3,2),(3,-2),(-3,-2),(4,-4),(0,0)$; describir cuándo hay igualdad.
+
+**Solución razonada.** Los pares de valores son, respectivamente, $(5,5),(1,5),(5,5),(0,8),(0,0)$. En el primero, sumar positivos conserva magnitud. En el segundo y cuarto, los signos opuestos producen cancelación. En el tercero, la suma es $-5$, cuya magnitud es cinco. El último obliga a admitir el cero en «no negativo». La condición general de igualdad es $ab\ge0$, demostrada en el caso de igualdad escalar; no equivale a que ambos números sean positivos.
+
+### Ejercicio 2
+
+Auditar la pretendida prueba: «Como $a\le|a|$ y $b\le|b|$, multiplicamos las dos desigualdades y obtenemos $ab\le|a||b|$». Repararla.
+
+**Solución razonada.** Multiplicar desigualdades miembro a miembro sin control de signos no es una regla válida. Por ejemplo, $-3\le1$ y $-2\le1$ son verdaderas, pero su producto sugeriría $6\le1$, falso. La reparación aplica $x\le|x|$ al único número $x=ab$, obteniendo $ab\le|ab|$. Se demuestra $|ab|=|a||b|$ por cuatro combinaciones de signos y el caso cero: dos signos iguales dan producto positivo; signos opuestos hacen que ambas expresiones de magnitud valgan $-ab$; un cero anula todo. Queda la cota requerida sin multiplicar por un factor de signo desconocido.
+
+### Ejercicio 3
+
+Decidir si $\sqrt{z^2}=z$ para todo real $z$, y si $u^2\le v^2$ implica $u\le v$ sin hipótesis adicionales.
+
+**Solución razonada.** Para $z=-3$, la raíz no negativa de $z^2=9$ es tres, no menos tres. La identidad correcta es $\sqrt{z^2}=|z|$. Para $u=2,v=-3$, los cuadrados satisfacen $4\le9$, pero $2\le-3$ es falso. Si $u,v\ge0$, la inferencia sí vale: $u>v$ daría $u^2-v^2=(u-v)(u+v)>0$, contradiciendo la hipótesis. El signo de los números, no sólo el de sus cuadrados, controla esa recuperación del orden.
+
+### Ejercicio 4
+
+Resolver $|x-2|\le3$ y $|x-2|<3$. Explicar la diferencia en sus extremos.
+
+**Solución razonada.** La primera condición equivale a $-3\le x-2\le3$, y al sumar dos a las tres partes queda $-1\le x\le5$. La segunda equivale a $-3<x-2<3$, por lo que $-1<x<5$. En $x=-1$ o $x=5$ el valor absoluto es tres: se incluyen en la primera solución y se excluyen en la segunda. Las equivalencias usan $3>0$ y los dos casos de signo del argumento, no una eliminación formal de barras.
+
+### Ejercicio 5
+
+Probar $||a|-|b||\le|a-b|$ a partir de la triangular, sin suponer $|a|\ge|b|$. Si $|a-b|<0.01$, obtener una cota para la diferencia de magnitudes.
+
+**Solución razonada.** De $a=(a-b)+b$ y la triangular sale $|a|-|b|\le|a-b|$. Intercambiar variables da $|b|-|a|\le|b-a|=|a-b|$. Negando esta última desigualdad y combinando, $-|a-b|\le|a|-|b|\le|a-b|$. La equivalencia de cota doble y valor absoluto produce el resultado, sin decidir cuál magnitud es mayor. Por transitividad, la hipótesis numérica da $||a|-|b||<0.01$. Esta cota estricta final procede del dato estricto, aunque la inversa sea no estricta.
+
+### Ejercicio 6
+
+Para $u,v\in\mathbb R^2$ con longitud euclídea, determinar cuándo $\|u+v\|_2=\|u\|_2+\|v\|_2$. ¿Basta que los tres puntos del dibujo sean colineales?
+
+**Solución razonada.** Si uno es cero, hay igualdad. Para ambos no nulos, comparar los cuadrados reduce la igualdad a $u\cdot v=\|u\|_2\|v\|_2>0$. La identidad $\|u\|_2^2\|v\|_2^2-(u\cdot v)^2=(u_1v_2-u_2v_1)^2$ fuerza determinante cero, por lo que $v=\lambda u$; se toma una coordenada $u_i\ne0$, se define $\lambda=v_i/u_i$ y la otra coordenada sigue de la identidad. El producto escalar positivo exige $\lambda>0$. Recíprocamente, $v=\lambda u$ con $\lambda>0$ hace $\|v\|_2=\lambda\|u\|_2$ y $\|u+v\|_2=(1+\lambda)\|u\|_2$, luego hay igualdad. La colinealidad sola permite sentido contrario: $u=(1,0),v=(-1,0)$ da cero en el miembro izquierdo y dos en el derecho. Los puntos son colineales, pero la igualdad falla.
+
+### Ejercicio 7
+
+En cualquier espacio normado, probar que para $m\ge1$ y $x_0,\ldots,x_m$, $\|x_m-x_0\|\le\sum_{j=1}^m\|x_j-x_{j-1}\|$.
+
+**Solución razonada.** La identidad telescópica $x_m-x_0=\sum_{j=1}^m(x_j-x_{j-1})$ se verifica cancelando cada término intermedio. La cota para una suma finita se demuestra por inducción: para un sumando es igualdad; agregar uno más usa la triangular y luego la hipótesis inductiva. Aplicándola a los incrementos obtenemos la cota pedida. Este argumento sólo compara magnitudes de incrementos finitos; no presupone la existencia de una curva minimizante.
+
+### Ejercicio 8
+
+Dados $a_n\to a$ y $b_n\to b$, probar que $a_n+b_n\to a+b$ usando presupuestos $\varepsilon/3$ y $2\varepsilon/3$. Explicar por qué se necesita un máximo de índices.
+
+**Solución razonada.** Fijado $\varepsilon>0$, la primera hipótesis entrega $N_a$ con $|a_n-a|<\varepsilon/3$ para $n\ge N_a$, y la segunda $N_b$ con $|b_n-b|<2\varepsilon/3$ para $n\ge N_b$. Definimos $N=\max(N_a,N_b)$. Para todo $n\ge N$, la triangular y la reagrupación de términos dan $|(a_n+b_n)-(a+b)|\le|a_n-a|+|b_n-b|<\varepsilon$. El máximo asegura que ambos controles estén activos para el mismo término; elegir sólo $N_a$ podría dejar el segundo error sin control. La construcción satisface el orden de cuantificadores: primero tolerancia, luego índice, después todos los índices mayores.
+
+### Ejercicio 9
+
+Mostrar que toda sucesión convergente en un espacio normado es de Cauchy. Señalar qué parte no demuestra que toda sucesión de Cauchy converja.
+
+**Solución razonada.** Si $x_n\to x$, para cada $\varepsilon>0$ elegimos $N$ con $\|x_n-x\|<\varepsilon/2$ para todo $n\ge N$. Si $m,n\ge N$, $\|x_n-x_m\|\le\|x_n-x\|+\|x-x_m\|<\varepsilon$, usando simetría de la norma. Así cumple la definición de Cauchy. La prueba empezó con un límite $x$ ya existente; no construye uno a partir de la condición de Cauchy. La recíproca exige completitud del espacio y queda fuera de lo demostrado aquí.
+
+### Ejercicio 10
+
+Probar que $\|(x,y)\|_1=|x|+|y|$ es norma; hallar dos vectores no paralelos que tengan igualdad triangular en ella. Mostrar que $h(x,y)=|x|$ no es norma en $\mathbb R^2$.
+
+**Solución razonada.** La suma es no negativa y sólo se anula si ambas coordenadas se anulan, porque sus sumandos son no negativos. La identidad del producto de valores absolutos da $\|\lambda(x,y)\|_1=|\lambda|(|x|+|y|)$. Para dos vectores, la triangular escalar aplicada a cada coordenada y sumada demuestra la tercera cláusula. Con $u=(1,0),v=(0,1)$, sus normas son uno y la de la suma es dos; no son paralelos. La función $h$ cumple no negatividad, homogeneidad absoluta y triangular, pero $h(0,1)=0$ para un vector no nulo, por lo que falla definitud. La caracterización de la igualdad geométrica del ejercicio 6 depende de que la norma sea euclídea.
+
+### Ejercicio 11
+
+Para la función $p$ del contraejemplo sin triangular, comprobar todas las propiedades que conserva y demostrar que la suma de $u_n=(1/n,0)$ y $v_n=(0,1/n^2)$ no converge para la relación $\to_p$ a ningún punto.
+
+**Solución razonada.** La rama con $xy\ne0$ tiene denominador $|y|>0$; en los ejes la rama sin cociente evita el cero. La cota $p(x,y)\ge|x|+|y|$ da no negatividad y definitud. Si $\lambda\ne0$, preserva la pertenencia a los ejes y el cociente escala por $\lambda^2/|\lambda|=|\lambda|$, de modo que $p(\lambda v)=|\lambda|p(v)$ en ambas ramas; si $\lambda=0$, se verifica directamente. La triangular falla porque $p(1,1)=3$ y la suma de valores en los vectores coordenados es dos. Para las sucesiones, $p(u_n)=1/n$ y $p(v_n)=1/n^2$ tienden a cero, por la propiedad arquimediana. Pero $p(u_n+v_n)=1+1/n+1/n^2>1$, por lo que no convergen a cero. Si convergieran a $(\alpha,\beta)$ para $p$, su cota inferior obligaría a $1/n\to\alpha$ y $1/n^2\to\beta$. La unicidad de límites escalares, probada con la triangular escalar, obliga a $\alpha=\beta=0$, contradicción. No se usa una triangular para $p$ ni se llama métrica a $p(x-y)$.
+
+### Ejercicio 12
+
+Para $q(x,y)=(\sqrt{|x|}+\sqrt{|y|})^2$, verificar que no es norma y que, aun así, la suma de dos sucesiones convergentes para $q$ converge a la suma de sus límites.
+
+**Solución razonada.** Las raíces no negativas existen para todos los reales no negativos por el teorema demostrado mediante la propiedad del supremo. La función es positiva fuera del origen. La unicidad de raíz muestra $\sqrt{|\lambda||x|}=\sqrt{|\lambda|}\sqrt{|x|}$, por lo que al cuadrar la suma $q(\lambda v)=|\lambda|q(v)$. Sin embargo, $q(1,1)=4>2=q(1,0)+q(0,1)$, y falla la triangular. Poniendo $A=\sqrt{|x|},B=\sqrt{|y|}$, de $(A-B)^2\ge0$ resulta $2AB\le A^2+B^2$, y obtenemos $\|v\|_1\le q(v)\le2\|v\|_1$. La primera cota convierte convergencia para $q$ en convergencia para $\ell^1$; la segunda convierte convergencia para $\ell^1$ en convergencia para $q$, usando tolerancia $\varepsilon/2$. Si $u_n\to_q u$ y $v_n\to_q v$, ambas convergen en $\ell^1$, su suma converge allí por la estabilidad de los límites bajo suma en espacios normados, y entonces converge para $q$. El ejemplo precedente muestra que la estabilidad puede fallar; éste demuestra que tal fallo no es inevitable para toda función sin desigualdad triangular.
+
+
+### Ejercicio 13
+
+En un cuerpo ordenado arbitrario $F$, demuestra $|a+b|\le |a|+|b|$ exclusivamente mediante cotas superiores e inferiores, sin elevar al cuadrado. Precisa dónde se usa la hipótesis de cuerpo ordenado y qué papel desempeña la completitud.
+
+**Solución razonada.** Por definición de valor absoluto, $-|a|\le a\le |a|$ y $-|b|\le b\le |b|$. La invariancia del orden por traslaciones autoriza sumar las desigualdades correspondientes: $-(|a|+|b|)\le a+b\le |a|+|b|$. El extremo $|a|+|b|$ es no negativo, por lo que la equivalencia entre valor absoluto y cotas dobles da $|a+b|\le |a|+|b|$. Solo se utilizaron reglas de orden y adición de $F$; no existe ninguna aplicación del axioma del supremo. Esta prueba por cotas ofrece un segundo camino, independiente del argumento por cuadrados.
+
+### Ejercicio 14
+
+En los reales ya construidos, para $a,b\ge0$ demuestra $|\sqrt a-\sqrt b|\le\sqrt{|a-b|}$. Justifica la existencia de las raíces y todos los pasos de orden.
+
+**Solución razonada.** El teorema de existencia de raíces cuadradas no negativas, obtenido mediante la propiedad del supremo, garantiza las raíces de $a,b,|a-b|$. Por simetría basta suponer $a\ge b$, de modo que $x=\sqrt a\ge y=\sqrt b\ge0$ por monotonía de la raíz. La identidad de diferencia de cuadrados da $a-b=(x-y)(x+y)$. Puesto que $x+y\ge x-y\ge0$, multiplicar por $x-y$ conserva el orden y produce $a-b\ge(x-y)^2$. Ambos lados son no negativos. La comparación de raíces del orden de los cuadrados concluye $\sqrt{a-b}\ge x-y=|\sqrt a-\sqrt b|$. Para $b\ge a$ se intercambian las letras. Este argumento no necesita continuidad previamente demostrada de la raíz: da una cota explícita que después permite demostrarla.
+
+### Ejercicio 15
+
+Utilizando únicamente reglas de cuerpo ordenado, desigualdad triangular y definición de límite, demuestra que si $a_n\to a$ y $b_n\to b$ entonces $a_nb_n\to ab$. No presupongas continuidad del producto.
+
+**Solución razonada.** Sea $\varepsilon>0$ y definamos $\delta=\min\{1/2,\varepsilon/[2(|a|+|b|+2)]\}>0$. Elegimos índices $N_a,N_b$ para que, si $n\ge N=\max\{N_a,N_b\}$, se tenga $|a_n-a|<\delta$ y $|b_n-b|<\delta$. La triangular da $|a_n|\le |a|+|a_n-a|<|a|+1$. La identidad algebraica $a_nb_n-ab=a_n(b_n-b)+b(a_n-a)$ y $|xy|=|x||y|$ implican
+
+$$|a_nb_n-ab|\le |a_n||b_n-b|+|b||a_n-a|<(|a|+1+|b|)\delta<\varepsilon.$$
+
+La última desigualdad se deduce de la elección de $\delta$. Todas las multiplicaciones de cotas emplean cantidades no negativas; el índice $N$ sirve simultáneamente para las dos convergencias.
+
+### Ejercicio 16
+
+En $\mathbb R^2$ prueba $\|v\|_2\le\|v\|_1\le\sqrt2\|v\|_2$ y concluye que ambas normas definen las mismas sucesiones convergentes.
+
+**Solución razonada.** Para $v=(x,y)$, ambas normas son no negativas. Como $2|x||y|\ge0$,
+
+$$x^2+y^2\le (|x|+|y|)^2.$$
+
+Además $(|x|-|y|)^2\ge0$ implica $2|x||y|\le x^2+y^2$, y por tanto
+
+$$(|x|+|y|)^2\le2(x^2+y^2).$$
+
+La existencia de raíces cuadradas no negativas, demostrada mediante supremos, y la monotonía de dichas raíces permiten pasar de las desigualdades entre cuadrados a las cotas propuestas. Si $\|v_n-v\|_1\to0$, la primera cota da $\|v_n-v\|_2\to0$. Recíprocamente, para una tolerancia $\varepsilon$ de la norma uno, basta pedir que el error euclídeo sea menor que $\varepsilon/\sqrt2$, pues $\sqrt2>0$. La equivalencia de convergencia se ha demostrado mediante constantes, sin identificación de las normas como funciones iguales.
+
+### Ejercicio 17
+
+Considera el espacio $c_{00}(\mathbb N)$ de sucesiones reales de soporte finito con $\|x\|_1=\sum_n|x(n)|$, definido en los ejemplos de normas. Prueba que $x^{(N)}=\sum_{k=1}^N2^{-k}e_k$ es de Cauchy, pero no converge en ese espacio.
+
+**Solución razonada.** Si $M>N$, la diferencia tiene norma $\sum_{k=N+1}^M2^{-k}<2^{-N}$: se obtiene multiplicando la suma geométrica finita por dos y restando, o usando $\sum_{k=N+1}^M2^{-k}=2^{-N}-2^{-M}$. Por inducción $2^N\ge N+1$, y la arquimedianidad de $\mathbb R$ permite hacer $2^{-N}$ menor que cualquier tolerancia. Por tanto las diferencias de términos con índices suficientemente grandes son pequeñas y la sucesión es de Cauchy.
+
+Supongamos que converge en $c_{00}$ a un $f$ de soporte finito. Elijamos $k$ fuera de su soporte. Para todo $N\ge k$, la coordenada $k$ de $x^{(N)}-f$ es $2^{-k}$; por la cota $\|z\|_1\ge|z(k)|$, tenemos $\|x^{(N)}-f\|_1\ge2^{-k}>0$. Esto contradice la convergencia a $f$. La completitud de los escalares reales no implica automáticamente la completitud de cualquier espacio normado de funciones.
+
+### Ejercicio 18
+
+Sea $p$ la función del contraejemplo sin triangular y $\|\cdot\|_1$ la norma usual. Demuestra que no existe una constante $C>0$ tal que $p(v)\le C\|v\|_1$ para todos los vectores $v$. Compara con la función $q$ del ejemplo homogéneo comparable a una norma.
+
+**Solución razonada.** Tomemos $v_t=(t,t^2)$ con $t>0$. Ninguna coordenada es cero y
+
+$$p(v_t)=t+t^2+\frac{t^2}{t^2}=t+t^2+1,\qquad\|v_t\|_1=t+t^2.$$
+
+Cuando $t\to0^+$, la norma usual tiende a cero, pero $p(v_t)\ge1$. Si existiera tal $C$, escoger $0<t<\min(1,1/(4C))$ daría $C(t+t^2)<2Ct<1/2< p(v_t)$, contradicción. La función homogénea $q$, comparable con una norma, satisface en cambio $\|v\|_1\le q(v)\le2\|v\|_1$ para todo $v$. Por eso la convergencia inducida por $q$ coincide con la usual, mientras el fallo de estabilidad de $p$ puede explicarse por su falta de control uniforme en términos de una norma.
+
+## Problemas de síntesis
+
+### Problema de síntesis 1
+
+Sea $D$ el conjunto de cortaduras racionales y $C_r=\{q\in\mathbb Q:q<r\}$. Prueba que, para toda $A\in D$ y todo $r\in\mathbb Q$,
+
+$$r\in A\iff C_r\subsetneq A.$$
+
+Determina si la demostración de esta equivalencia **necesita** que $A$ no tenga máximo, o si vale para cualquier subconjunto de $\mathbb Q$ cerrado hacia abajo (interpretando $\subsetneq$ como inclusión de conjuntos, sin exigir $A\in D$).
+
+**Solución razonada.** Si $r\in A$, todo $q<r$ pertenece a $A$ por descenso, de modo que $C_r\subseteq A$. La inclusión es estricta porque el **propio $r$** pertenece a $A$ y no pertenece a $C_r$. Si $C_r\subsetneq A$, existe $s\in A\setminus C_r$, es decir, $s\ge r$. Si $s=r$, se tiene $r\in A$; si $s>r$, el descenso también da $r\in A$. No se utilizó la ausencia de máximo, la condición de conjunto propio, no vacuidad ni completitud. Para comprobarlo en un conjunto descendente con máximo, sea $A=\{q\in\mathbb Q:q\le0\}$. Tiene máximo $0$, y aun así la equivalencia vale para **cada** racional $r$. La ausencia de máximo es una condición necesaria para pertenecer a $D$, pero **no es hipótesis mínima de este lema**. La equivalencia se utilizará para demostrar la unicidad de la identificación entre un cuerpo completo y sus cortaduras.
+
+### Problema de síntesis 2
+
+Para $A=C_0$ examina el par $[0,1]$ como recinto y como intervalo admisible. Construye un intervalo admisible mediante ensanchamiento y prueba que su anchura se incrementa en $2\eta$ respecto del original.
+
+**Solución razonada.** El par $[0,1]$ es un recinto porque $C_0\subseteq A=C_0\subseteq C_1$. No es admisible: el extremo inferior $0\notin A$. Para cualquier racional $\eta>0$, el intervalo $[-\eta,1+\eta]$ sí es admisible: $-\eta<0$, de modo que $-\eta\in C_0$, y $1+\eta\ge0$, por lo que $1+\eta\notin C_0$. La anchura inicial era $1$; la nueva es $(1+\eta)-(-\eta)=1+2\eta$. Si se necesita una anchura final menor que un objetivo $\rho$ y se escoge $2\eta<\rho$, debe elegirse el recinto inicial con anchura menor que $\rho-2\eta$; no basta con que el recinto inicial mida menos que $\rho$. Esta precaución es indispensable para transferir identidades por recintos sin perder el control de la anchura.
+
+### Problema de síntesis 3
+
+Demuestra directamente, sin utilizar el teorema de unicidad de los cuerpos ordenados completos, que la suma por recintos admisibles de la construcción por recintos coincide con la suma por testigos de la construcción por testigos. Explica por qué esta demostración no prueba automáticamente la coincidencia de productos.
+
+**Solución razonada.** La suma por recintos se define como la unión de $C_{a+b}$ cuando $a\in A$ y $b\in B$ son extremos inferiores de intervalos admisibles. Cualquier $a\in A$ puede completarse con un $u\notin A$, y cualquier $b\in B$ con un $v\notin B$; las cuatro condiciones de cortadura garantizan $a<u$, $b<v$. Así **todos** los pares $(a,b)\in A\times B$ aparecen como extremos inferiores de alguna elección admisible. Recíprocamente, todo extremo inferior admisible pertenece al corte correspondiente. Por tanto la unión es exactamente
+
+$$\bigcup_{a\in A,\ b\in B} C_{a+b}=\{q\in\mathbb Q:\exists a\in A,b\in B,\ q<a+b\},$$
+
+la suma por testigos. El producto por recintos toma el **mínimo de cuatro productos de extremos**, mientras que el producto positivo por testigos controla signos y exige $a,b>0$; la identificación de estas fórmulas necesita pruebas adicionales. Una comparación global de ambas multiplicaciones se realiza *después* de terminar ambos cuerpos y disponer del isomorfismo del teorema de unicidad, como demuestra el teorema comparativo del tercer apéndice.
+
+### Problema de síntesis 4
+
+Sean $F,G$ cuerpos ordenados completos y $x,y>0_F$. Define $A_x^+$, $A_y^+$ como en el teorema de unicidad y
+
+$$U=\{q\in\mathbb Q:\exists a\in A_x^+,b\in A_y^+,\ q<ab\},\qquad P=U\cap\mathbb Q_{>0}.$$
+
+Prueba $U=A_{xy}$, $P=A_{xy}^+$ y que $P$ no es una cortadura de Dedekind en todo $\mathbb Q$.
+
+**Solución razonada.** Si $q<ab$ con $a,b>0$ situados bajo $x,y$, multiplicar desigualdades por positivos da $q_F<(ab)_F<xy$, luego $U\subseteq A_{xy}$. Para la otra inclusión, como $xy>0$, todo racional no positivo $q$ es menor que el producto de **cualquier** par de testigos positivos, que existen por densidad racional. Si $q>0$ y $q_F<xy$, elegimos primero $b_F$ racional transportado con $q_F/x<b_F<y$, que es posible por densidad, y después $a_F$ racional transportado con $q_F/b_F<a_F<x$. Ambos denominadores $x$ y $b_F$ son positivos. Se sigue $q_F<a_Fb_F$ y, por reflexión del orden racional, $q<ab$: así $A_{xy}\subseteq U$. La igualdad de las partes positivas es ahora una intersección con $\mathbb Q_{>0}$. En cuanto $q>0$ pertenece a $P$, el racional $-1$ es menor que $q$ pero no pertenece a $P$. Falla descenso en $\mathbb Q$, por lo que $P$ no es una cortadura completa aunque su imagen tenga supremo en $G$.
+
+### Problema de síntesis 5
+
+Sea $F$ un cuerpo ordenado, quizá no completo. Demuestra $|a+b|\le|a|+|b|$ conservando la prueba por cuadrados; explica por qué es lícito escribir $\sqrt{(a+b)^2}$ sin asumir que toda cantidad positiva de $F$ tenga raíz.
+
+**Solución razonada.** Por el análisis de signos, $|ab|=|a||b|$; también $ab\le|ab|$. Como $2>0$,
+
+$$(a+b)^2=a^2+2ab+b^2\le |a|^2+2|a||b|+|b|^2=(|a|+|b|)^2.$$
+
+Ambos números $u=|a+b|$ y $v=|a|+|b|$ son no negativos. Si $u>v$, entonces $u^2-v^2=(u-v)(u+v)>0$, contradiciendo la desigualdad cuadrática. Luego $u\le v$. La expresión $\sqrt{(a+b)^2}$ designa aquí **el elemento conocido** $|a+b|$, que ya pertenece a $F$, satisface el cuadrado indicado y es no negativo; su unicidad se sigue de la estricta monotonía de cuadrados no negativos. No se construyó $\sqrt c$ para un positivo arbitrario $c$. Por eso no se necesita completitud de $F$.
+
+### Problema de síntesis 6
+
+En $c_{00}(\mathbb N)$ con $\|x\|_1=\sum_k|x(k)|$, toma $x^{(N)}=\sum_{k=1}^N2^{-k}e_k$. Prueba que $(x^{(N)})_N$ es de Cauchy, que no converge dentro de $c_{00}$ y por qué no contradice la completitud de $\mathbb R$.
+
+**Solución razonada.** Si $M>N$, la diferencia tiene norma $\sum_{k=N+1}^M2^{-k}=2^{-N}-2^{-M}<2^{-N}$. Dada $\varepsilon>0$, la propiedad arquimediana asegura algún $N_0$ con $2^{-N_0}<\varepsilon$, pues $2^N\ge N+1$. Para $M,N\ge N_0$, reordenamos los índices y aplicamos la cota desde el menor de ellos: la distancia es menor que $\varepsilon$. Se cumple Cauchy. Si existiera límite $f\in c_{00}$, su soporte sería finito; elegimos $k$ fuera de él. Para todo $N\ge k$ la diferencia coordenada $k$ vale $2^{-k}$ y $\|x^{(N)}-f\|_1\ge2^{-k}>0$, contradiciendo convergencia a $f$. Los escalares individuales pertenecen a un cuerpo completo, pero el supuesto límite natural tiene infinitas coordenadas no nulas y **no pertenece al espacio de soporte finito**. La propiedad de que toda sucesión de Cauchy converge se refiere al espacio normado completo, no solamente a su cuerpo base.
+
+
+Los problemas de síntesis vuelven sobre una lección fundamental: los axiomas que hacen de un conjunto una cortadura no son siempre las hipótesis mínimas de cada propiedad que demostramos acerca de él. Distinguir ambas cuestiones permite construir pruebas más precisas y evita incorporar premisas que no se utilizan.
+
+
+---
+
+[← ¿Qué significa que los reales sean únicos?](capitulo-3.qmd) · [Índice del libro](../la-construccion-de-los-reales.md) · [Siguiente →](apendice-a.qmd)

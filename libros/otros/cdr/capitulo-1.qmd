@@ -1,0 +1,429 @@
+---
+title: "El problema de definir un sistema numérico"
+lang: es
+toc: true
+toc-depth: 2
+number-sections: false
+---
+
+[← Nota al lector](nota-al-lector.qmd) · [Índice del libro](../la-construccion-de-los-reales.md) · [Siguiente →](capitulo-2.qmd)
+
+Una fracción permite calcular y un punto dibujado permite orientarse. Para fundamentar esas acciones necesitamos precisar qué estructura sostiene las operaciones y las comparaciones. Buscamos un conjunto con dos operaciones, un orden compatible con ellas y una propiedad que permita recuperar la menor cota superior de los conjuntos adecuados. Esas tres exigencias darán contenido matemático al nombre de sistema real.
+
+Los axiomas fijan las propiedades de la estructura buscada; los teoremas muestran sus consecuencias. Este reparto organiza la tarea: primero precisaremos las condiciones, después construiremos un objeto que las satisfaga y finalmente compararemos cualesquiera dos realizaciones mediante una correspondencia que preserve sus operaciones y su orden.
+
+## El problema de definición
+
+Para caracterizar un sistema numérico debemos especificar sus operaciones, las leyes que cumplen y las relaciones que enlazan sus elementos. En el caso real, la aritmética y el orden se reúnen con una propiedad de existencia de cotas mínimas. La formulación que concentra esas exigencias es la siguiente:
+
+> Un sistema de números reales es un cuerpo ordenado que satisface la propiedad del supremo.
+La descripción axiomática fija la estructura buscada. La existencia de un modelo y la unicidad hasta isomorfismo son dos teoremas con obligaciones propias: el primero exhibe un conjunto con operaciones y orden que cumplen los axiomas; el segundo construye una identificación entre dos realizaciones cualesquiera. En el capítulo siguiente partiremos de la aritmética racional para producir el modelo.
+
+### Caracterización, existencia e identificación
+
+La frase «los reales son un cuerpo ordenado completo» reúne **tres exigencias**: leyes para dos operaciones, una relación de orden compatible y existencia de supremos para los conjuntos apropiados. Cada exigencia se formula para un sistema todavía no identificado con un conjunto particular. Una vez precisados los axiomas, se distinguen dos obligaciones de naturaleza diferente: exhibir al menos una realización y demostrar que cualesquiera dos realizaciones están relacionadas por un único isomorfismo de cuerpos ordenados.
+
+Esto impide utilizar en la prueba de existencia la recta real como objeto previamente disponible. En cambio, una vez construido un modelo, sí puede emplearse para ilustrar el comportamiento del supremo. El ejemplo con $\pi$ de la sección «Por qué los racionales no son completos» pertenece a este segundo plano.
+
+## Estructura de cuerpo
+
+Un cuerpo es un conjunto $F$, equipado con operaciones $+,·:F\times F\to F$, y elementos $0,1\in F$, tales que, para cualesquiera $a,b,c\in F$:
+
+$$
+(a+b)+c=a+(b+c),\qquad (ab)c=a(bc),
+$$
+$$
+a+b=b+a,\qquad ab=ba,
+$$
+$$
+a+0=a,\qquad a1=a,
+$$
+$$
+\exists(-a)\in F:\ a+(-a)=0,
+$$
+$$
+a\ne0\Longrightarrow\exists a^{-1}\in F:\ aa^{-1}=1,
+$$
+$$
+a(b+c)=ab+ac.
+$$
+
+Exigimos además $0\ne1$. Sin esta condición, el conjunto de un solo elemento satisface las otras fórmulas y no representa un cuerpo en el sentido requerido. La clausura está incluida en que las operaciones sean funciones $F\times F\to F$. Esta condición distingue un cuerpo genuino de la estructura trivial y debe figurar expresamente entre sus axiomas.
+
+La distributividad se escribe $a(b+c)=ab+ac$. La presencia de los paréntesis es estructural: no puede sustituirse por $ab+c$, que sería otra expresión.
+
+### Consecuencias algebraicas
+
+Derivemos ahora algunas consecuencias de los axiomas, sin utilizar propiedades de los números reales que todavía no hemos construido.
+
+Los neutros son únicos. Si $e$ es otro neutro aditivo, $e=e+0=0$; si $u$ es otro neutro multiplicativo, $u=u1=1$. Si $b,c$ son inversos aditivos de $a$,
+
+$$b=b+0=b+(a+c)=(b+a)+c=c.$$
+
+Si $a\ne0$ y $ab=ac=1$, entonces
+
+$$b=b(ac)=(ba)c=c.$$
+
+Sumar $-a$ a ambos miembros demuestra la cancelación aditiva; multiplicar por $a^{-1}$ demuestra la multiplicativa cuando $a\ne0$.
+
+Por distributividad,
+
+$$a0=a(0+0)=a0+a0,$$
+
+y la cancelación aditiva da $a0=0$. En consecuencia, cero no tiene inverso multiplicativo: $0b=0\ne1$. Si $ab=0$ y $a\ne0$, al multiplicar por $a^{-1}$ se obtiene $b=0$; un cuerpo no tiene divisores de cero.
+
+Asimismo,
+
+$$a(-b)+ab=a((-b)+b)=0,$$
+
+por lo que $a(-b)=-(ab)$. Aplicando la igualdad con $a=-1$, o de nuevo la unicidad del inverso aditivo, se obtiene $(-a)(-b)=ab$. Finalmente, $-(-a)=a$. Definimos $a-b=a+(-b)$ y, para $b\ne0$, $a/b=ab^{-1}$.
+
+### Cancelación y dominio de las operaciones
+
+La igualdad $a0=0$ no aparece entre los axiomas de cuerpo: se **deduce** usando la distributividad y la cancelación aditiva. Su prueba ilustra una técnica útil: escribir una expresión de dos formas, cancelar un término y recuperar la propiedad buscada. Aquí el paso decisivo es cancelar $a0$ en $a0=a0+a0$; no es lícito argumentar simplemente que «multiplicar por cero da cero», porque justamente se pretende fundamentar esa regla.
+
+La definición de $a/b=ab^{-1}$ también contiene una condición de dominio: $b\ne0$. En particular, escribir $1/0$ no designa un elemento del cuerpo. El hecho de que $0$ carezca de inverso se deduce de $0b=0$ y $0\ne1$; no es una convención arbitraria.
+
+## Orden total y cuerpo ordenado
+
+Un orden total estricto en $X$ es una relación $<$ transitiva que satisface la tricotomía: para cada $x,y\in X$, exactamente una de las proposiciones $x<y$, $x=y$, $y<x$ es verdadera. Definimos
+
+$$x\le y\iff x<y\ \text{o}\ x=y.$$
+La tricotomía excluye $x<x$ y que simultáneamente $x<y$ e $y<x$. La relación $\le$ es reflexiva; es antisimétrica por tricotomía; y es transitiva al separar los casos de igualdad de aquel en que ambas desigualdades son estrictas.
+La irreflexividad y transitividad caracterizan un orden parcial estricto; no obligan a que dos elementos diferentes sean comparables. Por ejemplo, en $\mathcal P(\{1,2\})$ la inclusión estricta cumple esas propiedades, pero $\{1\}$ y $\{2\}$ son incomparables. Un orden total estricto agrega la comparabilidad de cada par distinto. La relación $\le$ definida arriba es la versión no estricta, de modo que su antisimetría no significa que dos elementos distintos no puedan estar ordenados: significa que $x\le y$ y $y\le x$ implican $x=y$. La diferencia con un orden parcial es, por tanto, la exigencia adicional de que cada par sea comparable.
+
+Un cuerpo ordenado es un cuerpo con un orden total que satisface
+
+$$x<y\Longrightarrow x+z<y+z,$$
+$$x<y\ \text{y}\ 0<z\Longrightarrow xz<yz.$$
+
+La condición $0<z$ es indispensable. Admitir $z=0$ daría $0<0$. Si el factor fuese negativo el orden se invertiría, y si fuese cero la desigualdad estricta desaparecería.
+
+**Prueba de necesidad.** Si $1<2$ y tomamos $z=0$, sus productos satisfacen $1z=2z=0$, no $1z<2z$. Si $z=-1$, obtenemos $-1>-2$: el sentido se invierte. La regla válida divide los casos $z>0$, $z=0$ y $z<0$.
+
+### Reglas de signo y desigualdades
+La invariancia por traslación funciona en ambos sentidos: a una desigualdad trasladada se le suma $-z$. Por tanto, $x<y\iff0<y-x$. Si $z>0$, multiplicar después por $z^{-1}>0$ dará también la recíproca; primero justificamos su positividad.
+
+Si $a>0$, multiplicar $0<a$ por $a$ da $0<a^2$. Si $a<0$, entonces $-a>0$, y $a^2=(-a)^2>0$. Así, todo cuadrado no nulo es positivo. Puesto que $1\ne0$ y $1^2=1$, se sigue $1>0$.
+
+Si $a>0$, su inverso es no nulo. Si fuese negativo, $-a^{-1}>0$, y el producto de dos positivos daría $a(-a^{-1})=-1>0$, contrario a $1>0$. En efecto, tomar opuestos de la desigualdad que afirma que la unidad es positiva demuestra que su opuesto es negativo; no puede ser simultáneamente positivo. Luego $a^{-1}>0$.
+
+Si $x<y$ y $z<0$, entonces $-z>0$, por lo que $x(-z)<y(-z)$. Al cambiar signos mediante traslación se obtiene $yz<xz$. Si $z=0$, ambos productos son iguales. Estas tres posibilidades agotan la tricotomía. Las versiones con $\le$ se deducen añadiendo el caso de igualdad.
+
+En particular, $2=1+1>0$, $1/2>0$, y si $u<v$,
+
+$$u<\frac{u+v}{2}<v,$$
+
+pues las diferencias respecto de los extremos son $(v-u)/2>0$. Este cálculo funciona en cualquier cuerpo ordenado y no utiliza completitud.
+
+### El signo del factor
+
+En la multiplicación de una desigualdad estricta hay que inspeccionar el **signo del factor** antes de operar. Con factor positivo se conserva $<$; con factor negativo se invierte; con factor nulo ambos productos son iguales. La sola hipótesis $x<y$ no determina la relación entre $xz$ y $yz$ cuando no se conoce el signo de $z$. Esta separación en tres casos no es una recomendación de cálculo: corresponde exactamente a la tricotomía del orden.
+
+La totalidad del orden se expresa mediante la condición lógica $x<y\lor x=y\lor y<x$. Un dibujo puede representar una comparación concreta; la condición debe cumplirse para cada par de elementos del conjunto, con independencia de la representación elegida.
+
+## Cotas superiores y supremos
+
+Sea $A\subseteq X$, donde $X$ está totalmente ordenado. Un elemento $u\in X$ es una cota superior de $A$ si
+
+$$\forall a\in A,\quad a\le u.$$
+
+Un elemento $s\in X$ es el supremo de $A$ en $X$ si es cota superior y es menor o igual que toda cota superior de $A$. Se escribe $s=\sup_X A$.
+La segunda condición equivale a
+
+$$\forall y\in X,\quad y<s\Longrightarrow\exists a\in A:\ y<a.$$
+
+En efecto, si $s$ es la menor cota superior y $y<s$, $y$ no puede ser cota superior; negar $\forall a\in A:a\le y$ da, por tricotomía, un $a\in A$ con $y<a$. Recíprocamente, si esta condición se cumple y $u$ es cota superior, no puede ocurrir $u<s$, pues habría $a\in A$ con $u<a$. Por tricotomía, $s\le u$.
+$y$ recorre el conjunto ambiente $X$; no se restringe a $A$. Se necesita $y<a$, no meramente $y\le a$. Esta precisión en el dominio del cuantificador es esencial para caracterizar el supremo.
+
+**Por qué importa la desigualdad estricta.** Consideremos $X=\mathbb Z$, $A=\{1\}$ y la candidata $s=2$. Es una cota superior, pero no el supremo (que es $1$). Sin embargo, si reemplazamos $y<a$ por $y\le a$, todo entero $y<2$ satisface $y\le1$. La versión debilitada aceptaría erróneamente $s=2$.
+El supremo es único: si $s,t$ lo son, entonces $s\le t$ y $t\le s$, luego $s=t$. Si $s\in A$, es también el máximo. Recíprocamente, un máximo $m$ es cota superior, y cualquier cota superior $u$ cumple $m\le u$ por pertenecer $m$ a $A$; luego $m=\sup_X A$.
+
+### El ejemplo finito
+Para
+
+$$A=\{1,2,3,4,5\}\subset\mathbb Z,$$
+
+$27$ es cota superior, puesto que todos los elementos de $A$ son menores que $27$. Su supremo en $\mathbb Z$ es $5$: es cota superior y pertenece a $A$, por lo que es máximo y, en consecuencia, supremo. Alternativamente, para cada $y\in\mathbb Z$ con $y<5$, el testigo $a=5$ pertenece a $A$ y satisface $y<a$. Este razonamiento incluye los enteros negativos y cero; no basta comprobar $y=1,2,3,4$.
+
+**Alcance de la caracterización.** La formulación del supremo como menor cota superior no necesita operaciones algebraicas. En cambio, la equivalencia con la condición «todo $y<s$ es superado por un $a\in A$» utiliza totalidad. Para verlo, en el orden parcial $X=\mathcal P(\{1,2\})$ por inclusión, el conjunto $A=\{\{1\},\{2\}\}$ tiene supremo $s=\{1,2\}$, pero si $y=\{1\}\subsetneq s$, no existe $a\in A$ con $y\subsetneq a$. Por tanto, la caracterización empleada arriba no se extiende automáticamente a órdenes parciales.
+
+### Lectura de los cuantificadores del supremo
+
+La condición $\forall y\in X\,(y<s\Rightarrow\exists a\in A\;y<a)$ expresa que **ningún elemento del ambiente situado por debajo de $s$ sirve como cota superior**. El testigo $a$ puede depender de $y$; no se exige un mismo $a$ que supere simultáneamente todos los elementos inferiores a $s$.
+
+¿Por qué es necesario $y\in X$? Sea $A=\{q\in\mathbb Q:0<q<1\}$ y tomemos la falsa candidata $s=2$. Todo $y\in A$ admite $a=(y+1)/2\in A$ con $y<a$. Así, si se restringiera erróneamente $y$ a $A$, la condición se cumpliría para $s=2$, que no es el supremo. La definición correcta detecta el fallo escogiendo, por ejemplo, $y=3/2\in\mathbb Q\setminus A$: ningún $a\in A$ lo supera.
+
+Esta prueba de estrés muestra que **el conjunto ambiente es parte del enunciado**. Más adelante, cambiar el ambiente de $\mathbb Q$ a $\mathbb R$ cambiará la pregunta sobre el supremo, incluso cuando el subconjunto considerado conserve exactamente los mismos elementos.
+
+## Cotas inferiores e ínfimos
+
+Un elemento $l\in X$ es cota inferior de $A$ si $l\le a$ para todo $a\in A$. El ínfimo es la mayor de las cotas inferiores. Equivalentemente, $t=\inf_X A$ si es cota inferior y
+
+$$\forall y\in X,\quad t<y\Longrightarrow\exists a\in A:\ a<y.$$
+
+Si $t$ es la mayor cota inferior, cualquier $y>t$ deja de ser cota inferior y existe tal $a$. A la inversa, una cota inferior $l>t$ contradiría la condición, al producir $a<l$. La unicidad sigue de $t\le t'$ y $t'\le t$. Cuando el ínfimo pertenece al subconjunto, es su mínimo; el argumento es el dual de la prueba para máximos.
+
+## Un supremo exterior al conjunto
+
+Consideremos
+
+$$A=\{q\in\mathbb Q:0<q<1\}.$$
+
+El conjunto es no vacío, pues $1/2\in A$, y $1$ es una cota superior. Aunque $1\notin A$, se tiene $\sup_{\mathbb Q}A=1$.
+
+Sea $y\in\mathbb Q$, $y<1$. Si $y\le0$, tomamos $a=1/2$; así $a\in A$ y $y<a$. Si $0<y<1$, tomamos
+
+$$a=\frac{1+y}{2}.$$
+
+Es racional y
+
+$$a-y=\frac{1-y}{2}>0,\qquad 1-a=\frac{1-y}{2}>0.$$
+
+Por tanto, $0<y<a<1$, y $a\in A$. La caracterización del supremo concluye la prueba.
+
+La separación del caso $y\le0$ es necesaria para cubrir el cuantificador sobre todo $\mathbb Q$. Para $y\le-1$, el punto medio $(1+y)/2$ no pertenece a $A$. Si $y=p/q$, $q\ne0$, la fórmula correctamente parentizada es
+
+$$a=\frac12\left(1+\frac pq\right)=\frac{p+q}{2q}.$$
+
+No se requiere la densidad de los racionales entre números reales para esta prueba: la clausura racional y las reglas de desigualdades bastan. El conjunto no tiene máximo, pues para cada $q\in A$, $(1+q)/2\in A$ es mayor.
+El supremo se calcula en el **ambiente** $\mathbb Q$: $1$ puede ser el menor de todos los racionales que acotan $A$ aun sin pertenecer al intervalo. Esto distingue «máximo», que exige pertenencia al subconjunto, de «supremo», que no la exige. La existencia de este supremo particular no hace completo a $\mathbb Q$.
+
+### Variación del argumento del punto medio
+
+Sean $\alpha,\beta\in\mathbb Q$ con $\alpha<\beta$ y
+
+$$I_{\alpha,\beta}=\{q\in\mathbb Q:\alpha<q<\beta\}.$$
+
+El razonamiento precedente demuestra también $\sup_{\mathbb Q}I_{\alpha,\beta}=\beta$. En efecto, $\beta$ es cota superior. Si $y<\beta$ y $y\le\alpha$, se toma $a=(\alpha+\beta)/2$; si $\alpha<y<\beta$, se toma $a=(y+\beta)/2$. En ambos casos $a\in I_{\alpha,\beta}$ y $y<a$. El método es general: cuando una fórmula de aproximación sólo sirve para una parte del dominio, se separan los casos hasta cubrir todo el cuantificador.
+
+El extremo superior pertenece al ambiente racional pero no al intervalo. Por ello, la existencia del supremo no implica la existencia de un máximo.
+
+## La propiedad del supremo
+
+Un cuerpo ordenado $F$ es completo si cada subconjunto $A\subseteq F$, no vacío y acotado superiormente en $F$, tiene supremo en $F$.
+
+Consideremos por qué ambas hipótesis son indispensables. El conjunto vacío tiene como cota superior a todo elemento, pero no tiene una menor cota superior en un cuerpo ordenado: si $u$ fuese la menor, $u-1<u$ también sería cota superior. El cuerpo entero $F$ no está acotado superiormente, porque para cualquier $u\in F$, $u+1\in F$ es mayor. La completitud no garantiza supremos para ninguno de estos casos.
+
+La propiedad del supremo puede formularse en cualquier conjunto ordenado. Por ejemplo, todo $A\subseteq\mathbb Z$ no vacío y acotado superiormente tiene máximo. Dada una cota superior entera $u$, el conjunto $B=\{u-a:a\in A\}\subseteq\mathbb N_0$ es no vacío. Por buen orden, tiene mínimo $b_0$; entonces $u-b_0\in A$ es mayor o igual que cada elemento de $A$ y constituye su supremo en $\mathbb Z$. No obstante, $\mathbb Z$ no es un cuerpo porque $2$ carece de inverso multiplicativo entero. Lo que caracteriza a los reales es la **conjunción** de estructura de cuerpo, orden compatible y completitud de orden.
+
+La completitud por supremos tampoco debe confundirse sin más con completitud de sucesiones de Cauchy. La equivalencia entre formulaciones requiere una estructura de proximidad y las hipótesis adecuadas; no se presupone aquí como resultado anterior.
+
+La completitud proporciona también ínfimos de subconjuntos no vacíos acotados inferiormente. Si $A$ es uno de ellos, entonces $-A=\{-a:a\in A\}$ es no vacío y está acotado superiormente. Sea $s=\sup(-A)$. De $-a\le s$ se sigue $-s\le a$. Para cualquier cota inferior $l$ de $A$, $-l$ es cota superior de $-A$, de modo que $s\le-l$, es decir, $l\le-s$. Luego
+
+$$\inf A=-\sup(-A).$$
+
+### El alcance de la propiedad del supremo
+
+La propiedad del supremo asegura, para cada subconjunto con elementos y una cota superior, la existencia de un menor elemento entre todas sus cotas superiores dentro del ambiente. Su alcance es universal y comprende también los conjuntos cuyo supremo queda fuera de ellos. De hecho, $\mathbb Q$ contiene supremos como el del intervalo de la sección «Un supremo exterior al conjunto», pero basta encontrar **un solo** subconjunto racional no vacío y acotado superiormente sin supremo racional para demostrar que $\mathbb Q$ carece de completitud.
+
+Las dos hipótesis del axioma, $A\ne\varnothing$ y «$A$ acotado superiormente», restringen su alcance. No afirman que el vacío o todo el cuerpo tengan supremo.
+
+## Por qué los racionales no son completos
+
+Consideremos el conjunto
+
+$$A=\{q\in\mathbb Q:q<\pi\}.$$
+
+**Hipótesis externas declaradas:** el ejemplo se interpreta en un sistema real ya disponible, con un elemento $\pi$ que satisface $0<\pi<4$ y $\pi\notin\mathbb Q$. La densidad racional puede deducirse de la propiedad del supremo; más adelante se dará su demostración completa. La definición y la irracionalidad de $\pi$ no se demostrarán aquí: son datos externos de este ejemplo. El ejemplo es una ilustración posterior a la existencia de un modelo, no una construcción de ese modelo. Su presentación matemática debe leerse, pues, como un análisis **condicional** dentro de una realización real disponible, mientras que la construcción de cortaduras que sigue demostrará la existencia sin depender de $\pi$. Para evitar circularidad, la propiedad de densidad racional se deducirá previamente de la completitud de un cuerpo ordenado; no se utilizará como premisa para construir el cuerpo de cortaduras.
+
+ $A$ es no vacío, pues $0\in A$, y está acotado superiormente en $\mathbb Q$, pues $4$ es cota superior. Sea $s\in\mathbb Q$. Como $s\ne\pi$, hay dos casos:
+
+- Si $s<\pi$, la densidad produce $q\in\mathbb Q$ con $s<q<\pi$. Entonces $q\in A$, y $s$ no es cota superior.
+- Si $\pi<s$, la densidad produce $t\in\mathbb Q$ con $\pi<t<s$. Para todo $q\in A$, $q<\pi<t$, de modo que $t$ es una cota superior menor que $s$. Así $s$ no es la menor cota superior.
+
+Ningún racional es supremo de $A$ en $\mathbb Q$. La mera afirmación $\pi\notin\mathbb Q$ no habría excluido, por sí sola, otras candidatas.
+
+En cambio, **el mismo conjunto de racionales**, considerado como subconjunto de $\mathbb R$, tiene supremo $\pi$. Es cota superior por definición. Si $y\in\mathbb R$, $y<\pi$, la densidad proporciona $q\in\mathbb Q$ con $y<q<\pi$, por lo que $q\in A$. La caracterización del supremo da el resultado.
+
+El conjunto $A$ sigue formado exclusivamente por racionales al cambiar el ambiente de $\mathbb Q$ a $\mathbb R$. Esto importa: la expresión $\mathbb Q\cap(-\infty,\pi)$ designa **el mismo subconjunto**, aunque ahora se lo considere dentro de un conjunto ambiente mayor. No lo sustituiremos por el conjunto de todos los reales menores que $\pi$, que sería otro objeto.
+
+Si se cambia además el conjunto a $B=\{x\in\mathbb R:x<\pi\}$, también $\sup_{\mathbb R}B=\pi$, pero la prueba puede usar directamente $b=(y+\pi)/2$: para $y<\pi$, se tiene $y<b<\pi$. Es otro conjunto y conviene mantener explícita la diferencia.
+
+### Un contraejemplo racional sin recurrir a $\pi$
+
+El ejemplo anterior depende de hechos sobre $\pi$ que no estamos demostrando en este capítulo. Puede obtenerse, sin embargo, un contraejemplo **interno a la aritmética racional**.
+
+**Proposición.** El conjunto
+
+$$S=\{q\in\mathbb Q: q\ge0\text{ y }q^2<2\}$$
+
+es no vacío y acotado superiormente en $\mathbb Q$, pero no admite supremo en $\mathbb Q$.
+
+**Demostración.** Se tiene $1\in S$. Además, $2$ es una cota superior: si $q\ge2$, entonces $q^2\ge4>2$, por lo cual $q\notin S$.
+
+En primer lugar, **ningún racional tiene cuadrado igual a $2$**. Si $(p/q)^2=2$ con $p,q\in\mathbb Z$, $q\ne0$ y la fracción reducida, entonces $p^2=2q^2$. De aquí $p$ es par; escribiendo $p=2k$ resulta $q^2=2k^2$, y $q$ también es par. Esto contradice que la fracción esté reducida.
+
+Sea ahora $s\in\mathbb Q$. Si $s\le0$, no es cota superior porque $1\in S$. Supongamos $s>0$. Como $s^2\ne2$, debemos distinguir dos casos.
+
+Si $s^2<2$, elijamos un racional $\delta>0$ tal que
+
+$$\delta<1,\qquad\delta<\frac{2-s^2}{2s+1}.$$
+
+Entonces $t=s+\delta$ es racional, $t>s$ y
+
+$$t^2=s^2+2s\delta+\delta^2<s^2+(2s+1)\delta<2.$$
+
+Por tanto $t\in S$ y $s$ no es cota superior.
+
+Si $s^2>2$, elijamos un racional $\delta$ con
+
+$$0<\delta<s,\qquad \delta<\frac{s^2-2}{2s}.$$
+
+Poniendo $b=s-\delta$, se tiene $0<b<s$ y
+
+$$b^2=s^2-2s\delta+\delta^2>s^2-2s\delta>2.$$
+
+Para todo $q\in S$ necesariamente $q<b$: si $q\ge b>0$, entonces $q^2\ge b^2>2$, contradicción. Así $b$ es una cota superior racional estrictamente menor que $s$, de modo que $s$ no es la menor cota superior.
+
+Se han descartado todos los candidatos racionales a supremo. En consecuencia, $S$ no tiene supremo en $\mathbb Q$. $\square$
+
+La demostración no ha utilizado $\sqrt2$ como número real ya construido; sólo ha demostrado que ningún racional tiene cuadrado $2$ y ha perturbado racionalmente cada candidato $s$. La técnica reutilizable es doble: si el candidato queda por debajo del valor cuadrático buscado, se produce un elemento del conjunto mayor; si queda por encima, se produce una cota superior menor. La ventaja de este argumento es que demuestra la incompletitud racional sin presuponer un número irracional previamente construido.
+
+## Existencia y unicidad
+
+La caracterización axiomática nos ha dejado dos obligaciones: construir al menos un cuerpo ordenado completo y demostrar que dos cualesquiera son isomorfos. Los siguientes capítulos satisfacen ambas, en ese orden.
+En los capítulos siguientes demostraremos:
+
+1. Existe un cuerpo ordenado completo, construido como un conjunto de cortaduras racionales.
+2. Para dos cuerpos ordenados completos $F,G$, existe un único isomorfismo de cuerpos ordenados $F\to G$.
+
+Podemos pensar en dos tableros de ajedrez fabricados con materiales diferentes: las piezas no son idénticas como objetos, pero las reglas del juego establecen correspondencias entre sus movimientos. La comparación es ilustrativa; en matemáticas debemos construir la función que preserve todas las operaciones y el orden y probar sus propiedades.
+
+Las actividades propuestas permiten comprobar la comprensión de la lógica de cada definición y de las pruebas obtenidas.
+
+## Problemas y soluciones del capítulo
+
+### Ejercicio 1
+
+Explica por qué la división usual $a/b$ (con $b\ne0$) no es una operación binaria $\mathbb Z\times\mathbb Z\to\mathbb Z$. Indica qué exige que una ley sea una operación *bien definida* sobre un conjunto.
+
+**Solución razonada.** Una operación binaria sobre $\mathbb Z$ debe asignar a **cada** par de enteros una salida entera. La regla de división con denominador no nulo falla dos veces como aplicación $\mathbb Z\times\mathbb Z\to\mathbb Z$: no está definida para pares $(a,0)$ y, aun si restringimos el segundo componente a los enteros no nulos, $1/2$ no pertenece a $\mathbb Z$. En cambio, multiplicación y suma sí asignan enteros a todos los pares de enteros.
+
+Para decir que una operación está bien definida hay que fijar su dominio y codominio, demostrar que produce una salida en el codominio para **todo** elemento del dominio y que la salida no cambia cuando un objeto tiene dos representaciones distintas. En la construcción de la copia racional de un cuerpo ordenado, ese último control será esencial: dos fracciones que representen el mismo racional deberán producir exactamente la misma imagen.
+
+### Ejercicio 2
+
+En un cuerpo $F$, demuestra a partir de los axiomas que $a0=0$ para todo $a\in F$. Deduce que $0$ no tiene inverso multiplicativo.
+
+**Solución razonada.** La distributividad proporciona $a0=a(0+0)=a0+a0$. Sumando el inverso aditivo de $a0$ a ambos lados, la asociatividad permite cancelar la misma expresión y obtener $0=a0$. Si $0$ tuviera inverso multiplicativo $b$, se cumpliría $0b=1$. Pero acabamos de demostrar $0b=0$, con lo que $0=1$, contrario al axioma de cuerpo. Es importante que el argumento empiece con una ley *postulada* (distributividad) y termine con una consecuencia *derivada* (producto por cero).
+
+### Ejercicio 3
+
+Supón que se eliminara de los axiomas de cuerpo la exigencia $0\ne1$. Demuestra que en una estructura que satisface los demás axiomas, si $0=1$ entonces todo elemento es cero. Explica por qué dicha exigencia es indispensable.
+
+**Solución razonada.** Supongamos $0=1$. Para cualquier $a$ en la estructura, el neutro multiplicativo da $a=a1=a0$. La demostración del ejercicio 2 utiliza sólo distributividad e inversos aditivos, de modo que sigue siendo válida aun sin exigir $0\ne1$: $a0=0$. Por tanto $a=0$ para todo $a$. La estructura sólo puede tener un elemento. La condición $0\ne1$ excluye este caso degenerado; no se deduce de las demás identidades.
+
+### Ejercicio 4
+
+Sean $x<y$ en un cuerpo ordenado. Determina la relación entre $xz$ y $yz$ si (a) $z>0$, (b) $z=0$, (c) $z<0$. Justifica cada caso a partir de los axiomas.
+
+**Solución razonada.** (a) Para $z>0$, el axioma de compatibilidad multiplicativa da directamente $xz<yz$. (b) Para $z=0$, el ejercicio 2 da $xz=yz=0$; una desigualdad estricta es imposible. (c) Para $z<0$, se tiene $-z>0$, por lo cual $x(-z)<y(-z)$. Multiplicando por $-1$ las dos expresiones en la igualdad algebraica de signos —o sumando sus opuestos— se obtiene $yz<xz$. Estos son todos los casos por tricotomía. La división por $z$ exige además que $z\ne0$; si $z<0$, también invierte la desigualdad.
+
+### Ejercicio 5
+
+En $X=\mathcal P(\{1,2\})$ ordenado por inclusión, considera $A=\{\{1\},\{2\}\}$. Determina su supremo y demuestra por qué la caracterización mediante $y<s\Rightarrow\exists a\in A\;(y<a)$ no puede trasladarse sin más a este orden parcial.
+
+**Solución razonada.** Una cota superior de $A$ en el orden de inclusión debe contener simultáneamente $\{1\}$ y $\{2\}$. La única que lo hace dentro de $X$ es $s=\{1,2\}$, luego es el supremo. Tomemos $y=\{1\}\subsetneq s$. Ningún miembro de $A$ contiene *estrictamente* a $y$: uno es igual a $y$ y el otro es incomparable con él. Por tanto falla la condición $y<s\Rightarrow\exists a\in A\;(y<a)$. No contradice la definición de supremo: la equivalencia con esa caracterización se demostró utilizando tricotomía, que el orden parcial no satisface.
+
+### Ejercicio 6
+
+Sea $A=\{q\in\mathbb Q:0<q<1\}$ y la candidata $s=2$. Demuestra que si en la caracterización del supremo se reemplaza $\forall y\in\mathbb Q$ por $\forall y\in A$, $s$ satisface erróneamente la condición resultante. Encuentra un $y\in\mathbb Q\setminus A$ que muestre el fallo.
+
+**Solución razonada.** Para cada $y\in A$, el racional $a=(y+1)/2$ cumple $y<a<1$, por lo que $a\in A$. Así, con el dominio incorrecto $y\in A$, la condición de aproximación se cumple para $s=2$: todos los elementos de $A$ están por debajo de $2$ y cada uno tiene sucesor mayor dentro de $A$. Sin embargo, $2$ no es la menor cota superior, porque $1$ ya acota $A$. La definición correcta toma **todos** los $y\in\mathbb Q$ inferiores a la candidata. Por ejemplo, $y=3/2<2$ y ningún $a\in A$ satisface $3/2<a$. La candidata queda descartada.
+
+### Ejercicio 7
+
+En $X=\mathbb Z$ considera $A=\{1\}$ y $s=2$. Comprueba que $s$ es cota superior y que para todo entero $y<s$ existe $a\in A$ con $y\le a$. ¿Por qué esto no implica $s=\sup_X A$? Escribe la desigualdad que falta.
+
+**Solución razonada.** $s=2$ es cota superior de $A=\{1\}$, pues $1\le2$. Si $y\in\mathbb Z$ y $y<2$, entonces $y\le1$, de modo que el único $a=1\in A$ verifica $y\le a$. Con la desigualdad débil, la condición no descarta $s=2$. El supremo verdadero es $1$, que pertenece a $A$ y es máximo. La caracterización válida exige $y<a$, no $y\le a$: tomando $y=1<2$ no existe $a\in A$ con $1<a$. De este modo se recupera el carácter *mínimo* de la cota superior.
+
+### Ejercicio 8
+
+Para $A=\{-3,0,4\}\subseteq\mathbb Z$, determina el máximo, mínimo, supremo e ínfimo y demuestra las afirmaciones usando las definiciones, no la posición de los números en una recta.
+
+**Solución razonada.** La comparación de los tres enteros muestra que $-3\le0\le4$. Como $4\in A$ y todo $a\in A$ satisface $a\le4$, el entero $4$ es un máximo. Toda cota superior $u$ de $A$ debe satisfacer $4\le u$, pues $4\in A$. Luego $\sup_{\mathbb Z}A=\max A=4$. Del mismo modo, $-3$ pertenece al conjunto y es menor o igual que todos sus elementos, por lo que es un mínimo; cualquier cota inferior $l$ satisface $l\le-3$. Así $\inf_{\mathbb Z}A=\min A=-3$. La demostración utiliza pertenencia y desigualdades, no una figura de recta.
+
+### Ejercicio 9
+
+Sean $\alpha,\beta\in\mathbb Q$ y $\alpha<\beta$. Prueba que el intervalo racional abierto $I=\{q\in\mathbb Q:\alpha<q<\beta\}$ tiene supremo $\beta$ e ínfimo $\alpha$, pero no tiene máximo ni mínimo.
+
+**Solución razonada.** $I$ no está vacío, porque $m=(\alpha+\beta)/2$ es racional y $\alpha<m<\beta$. Todo elemento de $I$ es menor que $\beta$, por lo que $\beta$ es cota superior. Si $y<\beta$ y $y\le\alpha$, el testigo $a=m$ cumple $a\in I$ y $y<a$. Si $\alpha<y<\beta$, usamos $a=(y+\beta)/2\in I$, con $y<a$. La caracterización del supremo da $\sup_{\mathbb Q}I=\beta$. Aplicando el razonamiento dual (o sustituyendo $q$ por $-q$) se obtiene $\inf_{\mathbb Q}I=\alpha$. Finalmente, dado $q\in I$, $(q+\beta)/2$ es otro elemento de $I$ mayor que $q$, y $(\alpha+q)/2$ es uno menor. Ningún elemento puede ser máximo ni mínimo.
+
+### Ejercicio 10
+
+Si $s=\sup_F A$ existe en un cuerpo ordenado $F$ y $t\in F$, prueba que $\sup_F(A+t)=s+t$, donde $A+t=\{a+t:a\in A\}$.
+
+**Solución razonada.** $s+t$ es cota superior de $A+t$: si $a\le s$, el axioma de traslación da $a+t\le s+t$. Sea $u$ otra cota superior de $A+t$. De $a+t\le u$ para todo $a\in A$, restamos $t$ y obtenemos $a\le u-t$; luego $u-t$ es cota superior de $A$. Por la minimalidad de $s$, $s\le u-t$. Sumando $t$ se obtiene $s+t\le u$. Así $s+t$ es la menor cota superior. No se ha utilizado completitud para demostrar esta regla: basta suponer que $s$ ya existe.
+
+### Ejercicio 11
+
+Si $s=\sup_F A$ y $z>0$, prueba que $\sup_F(zA)=zs$. ¿Qué ocurre cuando $z<0$? Expresa el resultado mediante $\inf_F A$ cuando éste existe. Explica por qué $z=0$ no sirve para conservar desigualdades estrictas.
+
+**Solución razonada.** Para $z>0$, todo $a\in A$ cumple $za\le zs$, por lo que $zs$ es cota superior de $zA$. Si $u$ es otra cota superior, $za\le u$ para todo $a\in A$. Como $z^{-1}>0$, multiplicar por $z^{-1}$ conserva el orden: $a\le u/z$. Por tanto $s\le u/z$ y $zs\le u$. Así $\sup_F(zA)=zs$.
+
+Si $z<0$ y existe $m=\inf_FA$, para cada $a\in A$ la desigualdad $m\le a$ se invierte al multiplicar por $z$, dando $za\le zm$; toda otra cota superior $u$ de $zA$ induce una cota inferior $u/z$ de $A$ (la división por un negativo invierte), luego $u/z\le m$, es decir $zm\le u$. En consecuencia, $\sup_F(zA)=z\inf_FA$. Si $z=0$ y $A\ne\varnothing$, $zA=\{0\}$ y su supremo es $0$, pero ninguna desigualdad estricta entre productos subsiste; el argumento de multiplicación por inversos no puede aplicarse a $z=0$.
+
+### Ejercicio 12
+
+Demuestra que el conjunto vacío no tiene supremo en un cuerpo ordenado y que el cuerpo completo tampoco está acotado superiormente. Relaciona los dos ejemplos con las hipótesis del axioma del supremo.
+
+**Solución razonada.** Todo elemento $u\in F$ es cota superior del vacío, porque la afirmación $\forall a\in\varnothing\;(a\le u)$ es vacuamente verdadera. Si existiera la *menor* de estas cotas, digamos $s$, también $s-1$ sería cota superior y $s-1<s$, contradicción. Por otra parte, $F$ no está acotado superiormente: dado cualquier supuesto límite superior $u$, el elemento $u+1\in F$ satisface $u<u+1$ porque $1>0$. El axioma del supremo exige simultáneamente que el conjunto sea no vacío y tenga cota superior. No afirma la existencia de supremo en ninguno de los dos casos examinados.
+
+### Ejercicio 13
+
+Si $F$ es un cuerpo ordenado completo y $A\subseteq F$ es no vacío y acotado inferiormente, demuestra que $\inf_F A=-\sup_F(-A)$. Identifica en qué paso se usa la completitud.
+
+**Solución razonada.** Como $A$ es no vacío y acotado inferiormente, $-A=\{-a:a\in A\}$ es no vacío y está acotado superiormente; la completitud se usa **ahora** para asegurar que $s=\sup_F(-A)$ existe. Para cada $a\in A$ se cumple $-a\le s$, luego $-s\le a$ al cambiar signos: $-s$ es cota inferior de $A$. Si $l$ es cualquier otra cota inferior, $l\le a$ para todo $a\in A$ implica $-a\le-l$ para todo $a\in A$, de modo que $-l$ es cota superior de $-A$. Por la minimalidad de $s$, $s\le-l$, de donde $l\le-s$. Así $-s$ es la mayor cota inferior: $\inf_FA=-\sup_F(-A)$.
+
+### Ejercicio 14
+
+Sea $c\in\mathbb Q$, $c>0$, y supón que $c$ no es el cuadrado de ningún racional. Prueba directamente que $S_c=\{q\in\mathbb Q:q\ge0,\ q^2<c\}$ no tiene supremo racional. No presupongas la existencia de $\sqrt c$ como real. Elige después $c=3$ como caso concreto.
+
+**Solución razonada.** $S_c$ contiene $0$ y es acotado superiormente; por ejemplo, el racional $M=c+1$ sirve, porque $M>0$ y $M^2=c^2+2c+1>c$, y todo racional $q\ge M$ cumple $q^2\ge M^2>c$.
+
+Sea $s\in\mathbb Q$ candidato. Si $s<0$, $0\in S_c$ lo descarta; si $s=0$, se elige un racional positivo $q<\min(1,c/(1+c))$, que satisface $q^2<q<c$ cuando $q<1$ (y por tanto $q\in S_c$), de modo que $s=0$ tampoco es cota superior. Para $s>0$, la hipótesis asegura $s^2\ne c$.
+
+Si $s^2<c$, tomamos un racional $0<\delta<\min\{1,(c-s^2)/(2s+1)\}$. Entonces $t=s+\delta>s$ y $t^2<s^2+(2s+1)\delta<c$, así $t\in S_c$: $s$ no es cota superior. Si $s^2>c$, tomamos $0<\delta<\min\{s,(s^2-c)/(2s)\}$. Para $b=s-\delta>0$ se tiene $b^2>s^2-2s\delta>c$. Todo elemento no negativo $q$ con $q^2<c$ debe satisfacer $q<b$, pues lo contrario implicaría $q^2\ge b^2>c$. Así $b$ es una cota superior menor que $s$. Ningún racional es supremo de $S_c$.
+
+Para $c=3$ las hipótesis se verifican porque $3$ no es cuadrado de racional alguno. En efecto, si $(p/q)^2=3$ con $p,q$ enteros coprimos y $q\ne0$, entonces $p^2=3q^2$. Un cuadrado de entero deja resto $0$ o $1$ al dividir por $3$; por ello, de $3\mid p^2$ se sigue $3\mid p$. Escribiendo $p=3k$ se deduce $q^2=3k^2$, de modo que $3\mid q$, contradicción con la coprimalidad. No hemos usado $\sqrt3$ como elemento de un cuerpo real ya existente.
+
+**Orientación para los ejercicios 15–18.** Hasta aquí hemos estudiado los axiomas y sus consecuencias, pero todavía no hemos construido el cuerpo de cortaduras. Los cuatro ejercicios finales anticipan nociones que desarrollaremos en el capítulo siguiente y en los apéndices. No son prerrequisitos para iniciar el capítulo II. Quien prefiera una lectura estrictamente deductiva puede resolver los ejercicios 15 y 17 después de estudiar las cortaduras y la propiedad del supremo por unión; el 16, después del apéndice sobre recintos; y el 18, después del capítulo de unicidad. Las soluciones se conservan aquí completas, para que el lector pueda utilizarlas también como una primera exploración.
+
+Para poder abordar ahora esos problemas, adelantemos **solo las definiciones**, no las propiedades que todavía tendremos que demostrar. Una *cortadura inferior* es un conjunto de racionales no vacío y distinto de todos los racionales, cerrado hacia abajo y sin elemento máximo. La *cortadura principal* de un racional $r$ es $C_r=\{q\in\mathbb Q:q<r\}$. Denotaremos por $D$ el conjunto de todas las cortaduras y lo ordenaremos por inclusión. Un par racional $[\ell,u]$, con $\ell<u$, es un *recinto* de una cortadura $A$ si $C_\ell\subseteq A\subseteq C_u$; será un *intervalo admisible* de $A$ si $\ell\in A$ y $u\notin A$. La distinción entre recinto y admisibilidad se demostrará y utilizará cuidadosamente en el primer apéndice. Aquí no damos por construidas las operaciones sobre cortaduras ni la completitud de $D$: son precisamente resultados que se justificarán más adelante.
+
+### Ejercicio 15
+
+Para $r\in\mathbb Q$, sea $C_r=\{q\in\mathbb Q:q<r\}$. Verifica que $C_r$ es una cortadura y demuestra $C_r\subsetneq C_s\iff r<s$.
+
+**Solución razonada.** $C_r$ es no vacía porque $r-1\in C_r$, y propia porque $r\notin C_r$. Si $q\in C_r$ y $p<q$, entonces $p<r$, de modo que $p\in C_r$. Si $q\in C_r$, el punto medio $q'=(q+r)/2$ cumple $q<q'<r$, por lo que $q'\in C_r$; no hay máximo. Para el orden, si $r<s$, todo racional menor que $r$ es menor que $s$, así $C_r\subseteq C_s$; además, $r\in C_s\setminus C_r$, luego la inclusión es estricta. Recíprocamente, si $C_r\subsetneq C_s$ y $s\le r$, tendríamos $C_s\subseteq C_r$, contradicción. Por tricotomía debe ser $r<s$.
+
+### Ejercicio 16
+
+Para $H=C_0$, demuestra que $[0,1]$ es un *recinto* en el sentido de la definición de las cortaduras, pero no un intervalo admisible. Transfórmalo en uno admisible mediante un ensanchamiento racional. Explica por qué la distinción importa al definir la suma de cortaduras.
+
+**Solución razonada.** Para $H=C_0$, se cumple $C_0\subseteq H\subseteq C_1$, así $[0,1]$ es un recinto. Pero $0\notin C_0$, de modo que su extremo inferior no pertenece a $H$: el intervalo no es admisible. Si $\eta>0$ es racional, $[-\eta,1+\eta]$ sí es admisible: $-\eta<0$, por lo que $-\eta\in C_0$, mientras que $1+\eta>0$, de modo que $1+\eta\notin C_0$. Las operaciones de la construcción mediante recintos se definen usando extremos admisibles; aplicar una fórmula de suma o producto directamente a un recinto arbitrario puede emplear datos que no satisfacen las hipótesis de esa definición. Por esta razón, en la construcción alternativa por recintos se ensancha primero el intervalo hasta hacerlo admisible, antes de introducir sus extremos en las operaciones.
+
+### Ejercicio 17
+
+Sea $\mathcal A=\{C_r:r\in\mathbb Q,\ r<1\}$, una familia de cortaduras. Prueba directamente que $\bigcup\mathcal A=C_1$ y deduce $\sup_D\mathcal A=C_1$ en el conjunto ordenado $D$ de cortaduras.
+
+**Solución razonada.** Sea $U=\bigcup_{r<1}C_r$. Si $t\in U$, existe $r\in\mathbb Q$ con $r<1$ y $t<r$. Por transitividad, $t<1$, luego $t\in C_1$. En sentido contrario, dado $t<1$, el racional $r=(t+1)/2$ cumple $t<r<1$, así $t\in C_r\subseteq U$. Por doble inclusión $U=C_1$. Cada $C_r$ de la familia está contenido en $C_1$, y si $T$ es otra cortadura que contiene a todos los $C_r$, contiene también su unión $C_1$. Por tanto $C_1=\sup_D\mathcal A$. Se ha usado el orden por inclusión, no un cálculo con límites reales.
+
+### Ejercicio 18 — Para retomar después del capítulo de unicidad
+
+Este ejercicio anticipa un resultado que todavía no hemos demostrado. Conviene volver a él después del tercer capítulo, cuando dispongamos de la construcción por supremos y del teorema de unicidad.
+
+Sean $F,G$ cuerpos ordenados completos y $\varphi:F\to G$ el isomorfismo construido en las etapas de la prueba de unicidad. Explica por qué cualquier isomorfismo de cuerpos ordenados $\theta:F\to G$ coincide con $\varphi$. Escribe explícitamente qué se conserva en los racionales y por qué sus conjuntos de racionales inferiores determinan cada elemento.
+
+
+**Solución razonada.** Sea $\theta:F\to G$ un isomorfismo de cuerpos ordenados. Por conservar el neutro multiplicativo y ambas operaciones, fija las copias de $1$, de los naturales (sumas repetidas de $1$), de los enteros (opuestos) y de los racionales (inversos de enteros no nulos). Por tanto $\theta(q_F)=q_G$ para cada $q\in\mathbb Q$. Además, como preserva y refleja el orden,
+
+$$q_G<\theta(x)\iff\theta(q_F)<\theta(x)\iff q_F<x.$$
+
+La construcción del isomorfismo mediante $\varphi$ establece precisamente $q_G<\varphi(x)\iff q_F<x$. Luego $\theta(x)$ y $\varphi(x)$ tienen los mismos racionales estrictamente inferiores. Si fueran distintos, la densidad racional en $G$ produciría un racional situado estrictamente entre ambos, perteneciente a uno de esos conjuntos inferiores y no al otro. Es imposible. Así $\theta(x)=\varphi(x)$ para todo $x\in F$. La unicidad no significa que los cuerpos tengan los mismos elementos como conjuntos, sino que hay una sola correspondencia que conserva su estructura de cuerpo ordenado.
+
+
+---
+
+[← Nota al lector](nota-al-lector.qmd) · [Índice del libro](../la-construccion-de-los-reales.md) · [Siguiente →](capitulo-2.qmd)

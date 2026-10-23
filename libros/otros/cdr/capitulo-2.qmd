@@ -1,0 +1,632 @@
+---
+title: "Construir un modelo a partir de los racionales"
+lang: es
+toc: true
+toc-depth: 2
+number-sections: false
+---
+
+[← El problema de definir un sistema numérico](capitulo-1.qmd) · [Índice del libro](../la-construccion-de-los-reales.md) · [Siguiente →](capitulo-3.qmd)
+
+La aritmética racional ofrece un punto de partida concreto: $\mathbb Q$, con sus cuatro operaciones habituales y su orden. El conjunto de racionales no negativos cuyo cuadrado es menor que dos ya nos mostró una dificultad: su menor cota superior tendría que ocupar una posición que ninguna fracción representa. Vamos a describir esa posición mediante información racional y a construir, con el mismo procedimiento, todo un cuerpo ordenado completo.
+
+Utilizaremos **cortaduras inferiores**: conjuntos de racionales que reúnen toda la información situada bajo una posición. La pertenencia a uno de esos conjuntos se decide mediante propiedades racionales; a partir de ella definiremos el orden y las operaciones. Al construir la suma, el opuesto y el producto tendremos que comprobar que sus resultados siguen perteneciendo a la misma familia y que cumplen las leyes exigidas a un cuerpo.
+
+En las verificaciones extensas conviene seguir una misma pregunta: qué propiedad del objeto nuevo permite recuperar la regla de cálculo conocida. El cierre descendente permitirá reajustar testigos; la posibilidad de encontrar un elemento mayor dentro de cada corte dará margen para las desigualdades estrictas; la aproximación racional finita proporcionará los opuestos y los recíprocos.
+
+Nos bastará la propiedad arquimediana de la aritmética racional, que se demuestra sin apelar a los reales. Si $p/q>0$ con $p,q$ enteros positivos, entonces $p/q\le p$ y existe un entero mayor que esa fracción. También podemos encontrar racionales positivos tan pequeños como se quiera: se tiene $1/n< p/q$ cuando $np>q$. Éstos son los instrumentos aritméticos con los que reduciremos las anchuras de nuestros intervalos. Una sucesión de intervalos puede sugerir una convergencia, pero la prueba que utilizaremos se detiene siempre después de un número finito de pasos calculado para la tolerancia elegida.
+
+## De una definición a un problema de existencia
+
+La imagen de una recta separada en dos partes sugiere reunir en un conjunto toda la información inferior. Para convertirla en una construcción necesitamos condiciones de pertenencia que se expresen enteramente con racionales. Esas condiciones serán las que utilicemos después en las pruebas.
+
+La definición del capítulo anterior fija las condiciones de llegada. El problema de existencia consiste en elegir objetos y operaciones que permitan verificar cada una de ellas. La elección de los racionales como material inicial pone a nuestra disposición cálculos exactos y un orden total; la nueva construcción deberá proporcionar además la propiedad del supremo.
+
+Ya contamos con un cuerpo ordenado conocido: los racionales. Su aritmética está disponible y sus elementos se comparan entre sí. El problema es la completitud. Una descripción intuitiva habla de huecos en la recta racional; el trabajo formal debe reemplazar esa imagen por objetos cuya existencia y propiedades podamos justificar sin recurrir a los reales.
+
+Adoptamos $\mathbb Q$ como punto de partida y presuponemos su aritmética, el buen orden de los naturales y la teoría elemental de conjuntos. La construcción de naturales, enteros y racionales pertenece a una etapa fundacional anterior. Con esas herramientas examinaremos qué información necesita un número nuevo y cómo operar con ella.
+
+La estrategia consiste en cambiar el tipo de objeto que llamaremos número. En vez de buscar una fracción que ocupe cada hueco, utilizaremos un conjunto de fracciones para describir una posición. Luego definiremos suma, producto y orden entre esos conjuntos.
+
+## Cortaduras: información suficiente para identificar una posición
+
+La primera operación que investigaremos será comparar estos conjuntos. El cierre descendente resultará decisivo para probar que dos cortaduras cualesquiera se ordenan por inclusión.
+
+Una cortadura de Dedekind es un subconjunto $A$ de $\mathbb Q$ con un elemento interior y un elemento exterior, cerrado hacia abajo y con la propiedad de que cada uno de sus elementos es superado por otro elemento del mismo conjunto. El cierre hacia abajo significa que, junto con una fracción, el conjunto contiene todas las fracciones menores. La última propiedad proporciona margen para aumentar un testigo permaneciendo dentro de la cortadura.
+
+El elemento interior proporciona información inferior y el exterior asegura que esa información está acotada en el orden racional. El cierre descendente reúne todas las fracciones menores que las ya admitidas. La posibilidad de aumentar cada elemento fija una convención uniforme para la frontera y hará posible transformar representaciones exactas en testigos estrictos.
+
+Para un racional conocido, por ejemplo $2$, podemos formar
+
+$$C_2=\{q\in\mathbb Q:q<2\}.$$
+
+Este conjunto tiene una frontera racional, pero no incluye el propio $2$. Si $q<2$, el punto medio $(q+2)/2$ sigue siendo racional, está por encima de $q$ y queda por debajo de $2$. Por eso no hay un último elemento de $C_2$.
+
+El dibujo de una recta partida en dos ayuda a comprender la intención. Sin embargo, si escribimos $\{q\in\mathbb Q:q<x\}$ con un real arbitrario $x$ para definir todas las cortaduras, ya estamos suponiendo el objeto que queremos construir. Conviene distinguir expresamente esa imagen intuitiva de la definición mediante propiedades de subconjuntos racionales.
+Consideremos ahora $\{q\in\mathbb Q:q^2<2\}$ como ejemplo asociado a la raíz de dos. Esa expresión no satisface la definición: contiene $0$, pero no contiene $-2$, aunque $-2<0$. La reparación es incluir todo el lado negativo:
+
+$$H=\{q\in\mathbb Q:q<0\ \text{o}\ q^2<2\}.$$
+
+En la parte no negativa, elevar al cuadrado conserva el orden; por eso el segundo criterio describe correctamente la porción situada bajo la frontera buscada. En la parte negativa, usar sólo el cuadrado recortaría también el extremo izquierdo, justamente lo que una cortadura descendente no puede hacer.
+
+No necesitamos conocer previamente $\sqrt2$ para definir $H$: sólo intervienen racionales, el orden y el número $2$. Más adelante comprobaremos que este conjunto satisface los cuatro axiomas de cortadura; cuando el producto esté construido, demostraremos además que $H^2=C_2$. Es entonces cuando podemos interpretar $H$ como una raíz cuadrada positiva.
+
+### Cortaduras y separación de sus lados
+
+Una cortadura es un conjunto $A\subseteq\mathbb Q$ tal que:
+
+$$A\ne\varnothing,\quad A\ne\mathbb Q,$$
+$$\forall r\in A\ \forall s\in\mathbb Q\quad(s<r\Rightarrow s\in A),$$
+$$\forall r\in A\ \exists s\in A\quad r<s.$$
+
+Denotamos por $D$ el conjunto de todas las cortaduras. Si $a\in A$ y $b\in\mathbb Q\setminus A$, necesariamente $a<b$: la igualdad contradice las pertenencias; si $b<a$, el cierre descendente obligaría a $b\in A$. En particular, todo racional exterior es una cota superior racional de $A$.
+
+Para $r\in\mathbb Q$, ponemos
+
+$$C_r=\{q\in\mathbb Q:q<r\}.$$
+
+Es no vacío porque contiene $r-1$, propio porque no contiene $r$, descendente por transitividad y sin máximo porque $(q+r)/2$ pertenece a $C_r$ y supera a cualquier $q\in C_r$. Así $D$ existe como subconjunto no vacío de $\mathcal P(\mathbb Q)$.
+
+Una descripción $A=\{q:q<x\}$ con un real preexistente $x$ no forma parte de esta definición. Será una interpretación legítima después de construir un modelo, o una representación dentro de otro cuerpo ordenado completo en el isomorfismo con las cortaduras.
+
+### El ejemplo cuadrático corregido y una cortadura no racional
+
+El primer conjunto que podríamos considerar,
+
+$$T=\{q\in\mathbb Q:q^2<2\},$$
+
+no es descendente: $0\in T$, $-2<0$ y $-2\notin T$. La corrección es
+
+$$H=\{q\in\mathbb Q:q<0\ \text{o}\ q^2<2\}.$$
+
+Contiene todos los negativos y es propio porque $2\notin H$. Si $r\in H$ y $s<r$, cuando $s<0$ ya pertenece; si $s\ge0$, también $r>0$ y $s^2<r^2<2$. El cierre descendente queda probado sin multiplicar desigualdades por negativos.
+
+Si $r<0$, el racional $0$ pertenece a $H$ y lo supera. Si $r\ge0$ pertenece a $H$, elegimos
+
+$$\delta=\min\left(1,\frac{2-r^2}{2(2r+1)}\right)>0.$$
+
+Como $\delta\le1$,
+
+$$(r+\delta)^2\le r^2+\delta(2r+1)\le r^2+\frac{2-r^2}{2}<2.$$
+
+Por tanto $r+\delta\in H$ y no hay máximo. Esto prueba que $H\in D$.
+
+La comprobación siguiente de $H^2=C_2$ utiliza el producto positivo, el refinamiento racional y la compatibilidad de la inclusión racional con el producto, desarrollados más adelante en este capítulo. Puede leerse al concluir esas construcciones. Para testigos positivos $a,b\in H$, $(ab)^2=a^2b^2<4$; como $ab>0$, esto fuerza $ab<2$. Luego $H\odot H\subseteq C_2$. A la inversa, para $0\le q<2$ refinamos el par admisible $[1,2]$ de $H$ con anchura menor que $(2-q)/8$. Obtenemos $1\le a<p\le2$, $a\in H$, $p\notin H$, por lo que $p^2\ge2$. Entonces
+
+$$p^2-a^2=(p-a)(p+a)<4\frac{2-q}{8}=\frac{2-q}{2},$$
+
+$$a^2>2-\frac{2-q}{2}>q.$$
+
+Los testigos $a,a$ colocan $q$ en $H\odot H$. Los negativos están incluidos por definición. La cortadura $H$ es positiva, y ahora —sólo después de esta prueba— podemos llamarla $\sqrt{C_2}$ o $\sqrt2$ en el modelo construido.
+
+No coincide con ninguna $C_r$. Si lo hiciera, la preservación del producto daría $C_{r^2}=C_2$, y la inyectividad de $\iota$ daría $r^2=2$. Pero no existe tal racional: escribir $r=m/n$ en términos reducidos con $n>0$ conduce a $m^2=2n^2$; $m$ es par, digamos $m=2k$, y entonces $n^2=2k^2$ fuerza a $n$ par, contradiciendo que la fracción esté reducida. Se usa el hecho elemental de que el cuadrado de un entero impar es impar, deducido de $(2k+1)^2=2(2k^2+2k)+1$.
+
+Así la inclusión racional no es sobreyectiva. No se usó una raíz real preexistente para rellenar el hueco: se construyó un conjunto racional que, mediante las operaciones probadas, desempeña ese papel.
+
+Aquí aparece el primero de los grandes cambios de perspectiva: una frontera que no podemos nombrar mediante un racional puede, sin embargo, quedar perfectamente determinada por los racionales que caen bajo ella. El ejemplo cuadrático muestra además por qué las condiciones de la definición no son ornamentales: omitir todos los negativos destruiría el cierre descendente. La construcción gana rigor precisamente cuando dejamos de confiar en la imagen de una recta y examinamos qué pertenece al conjunto.
+
+## Ordenar conjuntos por inclusión
+
+La inclusión de racionales en la estructura nueva exige distinguir dos niveles: la fracción original y el conjunto que la representa. La compatibilidad de las operaciones se demostrará, no se supondrá.
+
+Sea $D$ el conjunto de todas las cortaduras. Definimos
+
+$$A\le B\iff A\subseteq B.$$
+
+El orden estricto significa inclusión estricta. La relación no compara el número de elementos de los conjuntos. Ambas cortaduras pueden ser infinitas; lo relevante es qué racionales admite cada una.
+
+La inclusión es reflexiva porque todo elemento de $A$ está en $A$. Es antisimétrica porque si cada uno de los dos conjuntos está incluido en el otro tienen exactamente los mismos elementos. Es transitiva porque pertenecer a $A$, luego a $B$ y luego a $C$ asegura pertenecer a $C$.
+
+Estas tres propiedades producen un orden parcial. Para que sea total falta comparabilidad. En un conjunto de subconjuntos arbitrarios, la inclusión no suele ser total: $\{0\}$ y $\{1\}$ no están incluidos uno en el otro. La comparabilidad aparece aquí por la propiedad descendente de las cortaduras.
+
+Si dos cortaduras fueran incomparables, existiría un racional $r$ admitido por $A$ y rechazado por $B$, y otro $s$ admitido por $B$ y rechazado por $A$. Los racionales $r,s$ no son iguales. Si $r<s$, el descenso de $B$ obliga a admitir $r$; si $s<r$, el descenso de $A$ obliga a admitir $s$. Cualquiera de las dos posibilidades contradice las pertenencias elegidas. Esta contradicción demuestra que toda pareja de cortaduras es comparable.
+La prueba de comparabilidad exige examinar ambos casos y precisar el alcance de la negación inicial. No se niega sólo una inclusión: para afirmar incomparabilidad deben fallar las dos. La total ordenación de los racionales basta para demostrar total ordenación de las cortaduras; no hay un argumento que utilice el orden de los reales como premisa.
+
+### Orden total e inclusión de los racionales
+
+Definimos $A\le B$ si $A\subseteq B$, y $A<B$ si la inclusión es estricta. La inclusión es reflexiva, antisimétrica y transitiva por las propiedades de pertenencia a conjuntos.
+
+Para demostrar comparabilidad, supongamos que ninguna de las dos inclusiones $A\subseteq B$, $B\subseteq A$ se cumple. Existen entonces $r\in A\setminus B$ y $s\in B\setminus A$. No son iguales. Si $r<s$, el cierre descendente de $B$ implica $r\in B$; si $s<r$, el de $A$ implica $s\in A$. Ambos casos contradicen la elección. Por tanto las cortaduras están totalmente ordenadas. La prueba utiliza el orden total de $\mathbb Q$, no el de un cuerpo de reales aún inexistente.
+
+La función $\iota:\mathbb Q\to D$, $\iota(r)=C_r$, satisface
+
+$$r\le s\iff C_r\subseteq C_s.$$
+
+La implicación directa es inmediata. Si $r>s$, el racional $s$ pertenece a $C_r$ y no a $C_s$, de modo que la inclusión inversa es imposible. Si $r<s$, el propio $r$ pertenece a $C_s\setminus C_r$, por lo que la inclusión es estricta. Esto prueba preservación y reflexión del orden, así como inyectividad.
+
+Los elementos de $\mathbb Q$ son fracciones y los de $D$ son conjuntos de fracciones. Identificaremos $r$ con $C_r$ sólo cuando la inclusión de estructuras esté justificada. Hasta aquí tenemos una inclusión de conjuntos ordenados; aún falta probar que preserve las operaciones de cuerpo.
+
+La inclusión compara la información racional que contienen dos cortaduras. El cierre descendente obliga a admitir cada fracción menor que una ya admitida; por eso dos cortaduras quedan siempre anidadas. Este orden será el que deban respetar la suma y el producto que construiremos a continuación.
+
+## Incluir los racionales en la nueva estructura
+
+Una frontera no tiene por qué ser racional, pero siempre podemos rodearla por dos racionales suficientemente próximos. Este refinamiento finito será el instrumento clave para demostrar la existencia de opuestos e inversos.
+
+Los elementos de $\mathbb Q$ son fracciones; los de $D$ son subconjuntos. Que deseemos recuperar los racionales dentro del sistema nuevo no los convierte automáticamente en los mismos objetos. Se necesita una función que asocie a cada racional su cortadura correspondiente:
+
+$$\iota:\mathbb Q\longrightarrow D,\qquad \iota(r)=C_r.$$
+
+Debemos probar que esta aplicación es inyectiva y que preserva y refleja el orden. La segunda exigencia puede expresarse mediante una equivalencia: $r\le s$ si y sólo si $\iota(r)\le\iota(s)$.
+
+La diferencia con la imagen intuitiva anterior es el dominio del parámetro: ahora $r$ es racional. Ya existe y podemos compararlo con otros racionales, de modo que la descripción de $C_r$ es una definición legítima.
+Si $r<s$, el racional $r$ pertenece a $C_s$ y no a $C_r$. Esa única fracción basta para distinguir ambas cortaduras y mostrar que la inclusión es estricta. Si $r>s$, el racional $s$ prueba que $C_r$ no puede estar incluido en $C_s$. Así obtenemos las dos direcciones de la equivalencia y también la inyectividad.
+
+Hasta este momento la función conserva el orden. Hablar de una inclusión de cuerpos requiere algo más: deben definirse las operaciones en $D$ y comprobarse
+
+$$C_r+C_s=C_{r+s},\qquad C_rC_s=C_{rs}.$$
+
+Las demostraciones de la compatibilidad aditiva y multiplicativa completan estas verificaciones. Sólo después de ellas es legítimo identificar a un racional con su representante dentro del cuerpo construido.
+
+### Aproximación racional finita
+
+Llamamos admisible a un par $[a,b]$ con $a\in A$, $b\notin A$. Para todo $\varepsilon\in\mathbb Q_{>0}$ existe un par admisible de anchura $b-a<\varepsilon$.
+
+Partimos de cualquiera, disponible por la definición de cortaduras. Si $m=(a+b)/2$ pertenece a $A$, sustituimos $a$ por $m$; de lo contrario sustituimos $b$ por $m$. Cada paso conserva la admisibilidad y divide la anchura por dos. Tras $n$ pasos, ésta es $(b_0-a_0)/2^n$.
+
+Existe un $n$ natural con esa anchura menor que $\varepsilon$. En efecto, los enteros positivos superan cualquier racional, como se comprueba escribiéndolo como cociente de enteros con denominador positivo. Además $2^n\ge n+1$ por inducción. Elegir $n+1>(b_0-a_0)/\varepsilon$ basta. Es un procedimiento finito; no se afirma convergencia de una sucesión de puntos ni se usa completitud.
+
+El refinamiento puede mantenerse dentro de un par inicial. Lo usaremos también para conservar un extremo inferior positivo, sin cambiar de corte.
+
+Cada bisección conserva un racional interior y otro exterior, y reduce a la mitad la anchura entre ellos. Una tolerancia racional determina cuántas repeticiones necesitamos: al terminar disponemos de dos testigos adecuados para una estimación concreta. Usaremos esa libertad al demostrar la existencia del opuesto y, con un extremo inferior positivo, la del recíproco.
+
+## Sumar y tomar opuestos de cortaduras
+
+El paso del orden a las operaciones aditivas ya está preparado. La suma y el opuesto deben respetar la forma de los cortes incluso cuando sus extremos no están incluidos.
+
+La suma de cortaduras se define por testigos racionales:
+
+$$A+B=\{q\in\mathbb Q:\exists a\in A\ \exists b\in B\quad q<a+b\}.$$
+
+La comparación $q<a+b$ ocurre en $\mathbb Q$. El lado izquierdo nombra una operación nueva entre cortaduras; el lado derecho utiliza la suma racional ya conocida. Esta distinción de niveles permite construir una operación sin presuponerla.
+
+El cero nuevo es $C_0=\{q\in\mathbb Q:q<0\}$. El opuesto se escribe
+
+$$-A=\{q\in\mathbb Q:\exists p\in\mathbb Q\setminus A\quad q<-p\}.$$
+
+Para visualizar la operación, tomamos el complemento de la cortadura y lo reflejamos. La desigualdad estricta bajo $-p$ realiza una parte decisiva del trabajo: si el complemento tiene un primer elemento, la reflexión literal tendría un máximo. La fórmula evita incluir esa frontera.
+No basta que la suma se parezca a una cortadura: debemos probar que realmente lo es. Un elemento $a\in A$ y otro $b\in B$ proporcionan un testigo de no vacuidad. Racionales exteriores $u\notin A$, $v\notin B$ acotan todos los testigos por $u+v$ y garantizan que el resultado no es todo $\mathbb Q$. El descenso usa el mismo par de testigos; un punto medio bajo $a+b$ prueba ausencia de máximo. La demostración que sigue desarrolla, una por una, las cuatro condiciones de cortadura.
+
+Ese apartado demuestra además una igualdad útil: la suma coincide con el conjunto de todas las sumas exactas $a+b$, con $a\in A$, $b\in B$. La ausencia de máximo permite superar una suma exacta con nuevos testigos; el cierre descendente permite reajustar un sumando cuando partimos de una desigualdad estricta. Esta igualdad reduce la asociatividad a la asociatividad racional, sin saltarse la buena definición.
+
+El inverso aditivo tiene un paso más delicado. Es fácil ver que todo elemento de $A+(-A)$ es negativo: un elemento de $A$ queda estrictamente por debajo de todo racional exterior. Para probar que aparecen **todos** los negativos, necesitamos acercar un racional interior y uno exterior lo suficiente. El refinamiento racional utiliza bisección finita para lograr cualquier anchura racional prescrita; la estructura aditiva emplea esa anchura para encontrar un testigo de cada $q<0$.
+
+La bisección produce, tras un número finito de pasos, el margen racional requerido por la prueba. Con ella queda probado $A+(-A)=C_0$ y, junto con asociatividad, conmutatividad y unidad, la estructura de grupo abeliano aditivo.
+
+### Suma: buena definición, conmutatividad y asociatividad
+
+Definimos la suma mediante testigos racionales:
+
+$$A+B=\{q\in\mathbb Q:\exists a\in A\ \exists b\in B\quad q<a+b\}.$$
+
+Es no vacío: dados $a\in A$, $b\in B$, contiene $a+b-1$. Es propio: dados $u\notin A$, $v\notin B$, todo testigo satisface $a<u$, $b<v$; por tanto todos sus elementos son menores que $u+v$, que queda fuera. Si $q<a+b$ y $t<q$, el mismo testigo incluye a $t$. Finalmente $(q+a+b)/2$ está entre $q$ y $a+b$ y pertenece a la suma. Se cumplen las cuatro condiciones de cortadura.
+
+Una forma equivalente, útil para las leyes algebraicas, es
+
+$$A+B=\{a+b:a\in A,\ b\in B\}.$$
+
+Si $q<a+b$, tomamos $a'=q-b<a$, que pertenece a $A$, y obtenemos $q=a'+b$. A la inversa, si $q=a+b$, la ausencia de máximo permite $a'>a$ en $A$; entonces $q<a'+b$ y cumple la definición estricta. Esta equivalencia no se obtiene suprimiendo arbitrariamente un signo estricto: necesita el cierre descendente y la ausencia de máximo.
+
+La conmutatividad sigue de $a+b=b+a$ en $\mathbb Q$. Usando la forma equivalente, los elementos de $(A+B)+C$ son exactamente las sumas $(a+b)+c$, y los de $A+(B+C)$ son $a+(b+c)$, con $a\in A$, $b\in B$, $c\in C$. La asociatividad racional prueba igualdad de conjuntos.
+
+### Cero, opuesto y estructura aditiva
+
+Ponemos $0_D=C_0$. Si $q\in A+C_0$, hay $a\in A$, $b<0$ con $q<a+b<a$, de modo que $q\in A$. Si $q\in A$, elegimos $a\in A$ con $q<a$ y $b=(q-a)/2<0$; entonces $q<a+b$. Esto prueba $A+C_0=A$.
+
+El opuesto utiliza racionales exteriores a la cortadura:
+
+$$-A=\{q\in\mathbb Q:\exists p\in\mathbb Q\setminus A\quad q<-p\}.$$
+
+Es no vacío: para un $p\notin A$, contiene $-p-1$. Si $a\in A$, cualquier $p\notin A$ supera a $a$, por lo que $-p<-a$; así $-a\notin-A$ y el conjunto es propio. El cierre descendente y la ausencia de máximo siguen tomando el mismo testigo y un punto medio bajo $-p$.
+
+Demostremos $A+(-A)=C_0$. Si $q$ pertenece a la suma, existen $a\in A$, $b\in-A$ y $p\notin A$ con $q<a+b$ y $b<-p$. Como $a<p$, resulta $q<a-p<0$.
+
+Para la inclusión contraria, sea $q<0$. El refinamiento racional da $a\in A$, $p\notin A$ con $p-a<-q$, es decir, $q-a<-p$. Elegimos un racional $b$ estrictamente entre $q-a$ y $-p$. Entonces $b\in-A$ y $q<a+b$, como necesitábamos. No se empleó una traslación de desigualdades entre cortaduras ni un axioma de grupo sin demostrar.
+
+Por la prueba de las leyes de la suma y esta identidad, $(D,+,C_0)$ es un grupo abeliano. Los inversos son únicos: si $A+B=C_0=A+C$, sumar $-A$ y usar asociatividad da $B=C$. En consecuencia $-(-A)=A$ y $-(A+B)=(-A)+(-B)$, pues la suma propuesta es un inverso de $A+B$.
+
+El orden es compatible con traslación. De $A\subseteq B$, cada testigo de $A+Z$ es testigo de $B+Z$, así que $A+Z\subseteq B+Z$. Si $A<B$ y las sumas fueran iguales, cancelar $Z$ daría $A=B$. Por tanto
+
+$$A<B\iff A+Z<B+Z.$$
+
+La dirección inversa se obtiene trasladando por $-Z$. En particular,
+
+$$A<B\iff C_0<B-A.$$
+
+Esta equivalencia se deriva aquí de la buena definición explícita de la suma y de la cancelación ya probada; no se presupone antes.
+
+Si $A>C_0$, hay un racional positivo en $A$: un elemento de $A\setminus C_0$ es no negativo y, si fuera cero, la ausencia de máximo proporciona uno mayor. Si $A<C_0$, trasladar por $-A$ da $-A>C_0$.
+
+### Compatibilidad de la inclusión racional con la suma
+
+Para $r,s\in\mathbb Q$,
+
+$$C_r+C_s=C_{r+s},\qquad -C_r=C_{-r}.$$
+
+En la primera igualdad, cualquier testigo $a<r$, $b<s$ implica $q<a+b<r+s$. Si $q<r+s$, ponemos $\delta=(r+s-q)/4$, $a=r-\delta$, $b=s-\delta$; son testigos y $a+b>q$.
+
+En la segunda, $p\notin C_r$ equivale a $p\ge r$, así que $q<-p$ implica $q<-r$. Para todo $q<-r$ sirve el testigo $p=r$, exterior a $C_r$. Obsérvese por qué la desigualdad estricta es indispensable: la reflexión literal de todo el complemento incluiría la frontera $-r$ y produciría un conjunto con máximo.
+
+La suma es una operación cerrada entre cortaduras, asociativa y conmutativa, con cero y opuestos, que respeta las traslaciones del orden. El argumento que relaciona testigos estrictos y sumas exactas reúne dos propiedades de nuestros objetos: el descenso reajusta un sumando y la posibilidad de aumentarlo recupera la holgura estricta. Esa misma combinación reaparecerá al comparar perfiles racionales en el capítulo de unicidad.
+
+## Multiplicar: primero positivos, después signos
+
+El producto presenta una dificultad adicional: no está permitido multiplicar desigualdades ignorando los signos. Por eso construiremos primero el producto de objetos no negativos, y sólo después extenderemos a todos.
+
+El producto se define primero para cortaduras no negativas:
+
+$$A\odot B=C_0\cup\{q\in\mathbb Q:\exists a\in A\ \exists b\in B\quad a>0,\ b>0,\ q<ab\}.$$
+
+La inclusión explícita de todos los negativos garantiza un lado inferior completo. Las restricciones positivas sobre $a,b$ evitan que la multiplicación de testigos racionales negativos produzca valores enormes sin representar el producto buscado. Por ejemplo, si multiplicáramos arbitrariamente todos los negativos de dos cortaduras, obtendríamos productos positivos sin cota, incluso cuando ambas cortaduras representaran cantidades pequeñas.
+
+Cuando uno de los factores es $C_0$, no tiene elementos positivos: la segunda parte de la definición queda vacía y el producto es justamente $C_0$. Cuando ambos factores son positivos, existen testigos cuyo producto es positivo, y el resultado supera estrictamente a cero.
+
+La fórmula anterior define el producto **únicamente para factores no negativos**. Después de demostrar las leyes en ese dominio, extenderemos la operación a todos los signos: para dos factores negativos se multiplicarán sus opuestos positivos; para signos diferentes se tomará el opuesto del producto positivo. Habrá que comprobar que esa extensión está bien definida y que las leyes siguen siendo válidas. La unidad multiplicativa será $C_1$.
+
+**Corrección del recíproco.** La fórmula que aparece para el inverso,
+
+$$\{q\in\mathbb Q:\exists p\in\mathbb Q\setminus A,\ p>0,\ q<1/p\},$$
+
+sirve cuando $A>C_0$. Si se aplica a una cortadura negativa, todo racional positivo queda fuera de $A$, y los testigos $p$ pueden aproximarse arbitrariamente a cero. El conjunto resultante sería todo $\mathbb Q$, no una cortadura. Por ello la corrección completa exige dos casos: el recíproco positivo $J_A$ para $A>C_0$ y $-J_{-A}$ para $A<C_0$. El cero se excluye.
+
+La condición $p>0$ no es una justificación completa del dominio de $A$. Cambiarla por $p\ne0$ tampoco soluciona el caso negativo. En la construcción del recíproco se prueba la buena definición y la identidad $AA^{-1}=C_1$, y se explica el contraejemplo que obliga a introducir el caso de signo faltante.
+
+Las fórmulas del producto aún no son suficientes para que las cortaduras constituyan un cuerpo. Debemos comprobar sus leyes de manera explícita. Primero se demuestra asociatividad y distributividad en el cono no negativo mediante testigos. La parte pedagógicamente decisiva de la distributividad consiste en reunir dos testigos distintos del mismo factor: si $a_1,a_2\in A$, su máximo sigue perteneciendo a $A$ y puede dominar ambos productos.
+
+Después representamos una cortadura arbitraria como diferencia de dos no negativas. Una prueba de independencia de representación permite extender el producto; las leyes ya verificadas en el cono y las leyes del grupo aditivo producen las leyes en todo $D$. Esa construcción justifica los cuatro casos de signos de la multiplicación. No se da por cierta la distributividad general para demostrar esa misma distributividad.
+
+Con los inversos no nulos y $C_0\ne C_1$ queda un cuerpo. Su multiplicación restringida a los elementos distintos de cero es un grupo abeliano; la multiplicación de todo el conjunto no lo es, porque cero no es invertible. La precisión evita convertir una abreviación textual en un axioma falso.
+
+El orden también debe conectarse con las operaciones. La suma preserva inclusión por sus testigos; la cancelación vuelve estricta la traslación cuando la inclusión original es estricta. Un producto de positivos es positivo por la fórmula del cono. Si $A<B$ y $Z>0_D$, la diferencia $(B-A)Z$ es positiva y la distributividad da $BZ-AZ>0_D$, por lo que $AZ<BZ$. Sólo ahora queda justificado el término **cuerpo ordenado**.
+
+### Producto de cortaduras no negativas
+
+Para $A,B\ge C_0$, definimos, siguiendo la definición de producto positivo,
+
+$$A\odot B=C_0\ \cup\ \{q\in\mathbb Q:\exists a\in A\ \exists b\in B\quad a>0,\ b>0,\ q<ab\}.$$
+
+Es no vacío porque contiene $C_0$. Elegimos racionales positivos $u\notin A$, $v\notin B$: basta aumentar racionales exteriores hasta que sean positivos. Para cualquier testigo positivo, $a<u$, $b<v$, luego $ab<uv$ y $uv$ queda fuera. El cierre descendente vale en cada una de las dos partes y se conserva al unirlas. Si $q<0$, hay un racional entre $q$ y cero en $C_0$; si $q\ge0$ y $q<ab$, hay un racional entre $q$ y $ab$ incluido por ese testigo. Así el producto pertenece a $D$ y es no negativo.
+
+Si uno de los factores es $C_0$, no tiene testigos positivos, por lo que $A\odot C_0=C_0$. Si ambos son estrictamente positivos, elegimos $a,b>0$ en ellos; el racional $ab/2>0$ pertenece al producto. Éste es entonces estrictamente positivo.
+
+La conmutatividad sigue de la simetría de los testigos. También hay monotonía no estricta en cada factor no negativo: ampliar una cortadura no elimina testigos positivos. No usamos aún multiplicación de desigualdades en $D$.
+
+Un detalle útil: si $a\in A$, $b\in B$ son positivos, el racional $ab$ mismo pertenece a $A\odot B$. Basta reemplazar $a$ por un $a'>a$ en $A$ y usar $ab<a'b$.
+
+### Leyes algebraicas en el cono no negativo
+
+**Asociatividad.** Si alguno de $A,B,C\ge C_0$ es cero, ambos productos iterados son cero por el producto positivo. Supongamos que los tres son positivos. Para un racional $q\ge0$, pertenecer a $(A\odot B)\odot C$ equivale a existir $a\in A$, $b\in B$, $c\in C$, todos positivos, con $q<abc$.
+
+En efecto, de $q<pc$, con $p>0$ en $A\odot B$, obtenemos $p<ab$ y por tanto $q<abc$. A la inversa, dado $q<abc$, elegimos un racional $p$ con $q/c<p<ab$ y $p>0$; pertenece a $A\odot B$ y da $q<pc$. Los racionales negativos pertenecen a todas las cortaduras de producto no negativo por definición. El mismo criterio de triple testigo describe $A\odot(B\odot C)$, y la asociatividad racional prueba la igualdad.
+
+**Unidad.** $1_D=C_1$ satisface $A\odot C_1=A$. Si $q\ge0$ pertenece al producto, sus testigos cumplen $0<b<1$ y $q<ab<a\in A$, así que $q\in A$. Si $q\ge0$ pertenece a $A$, elegimos $a\in A$ con $a>q$ y un racional $b$ con $q/a<b<1$ y $b>0$; entonces $q<ab$. Los racionales negativos pertenecen a ambos conjuntos. Para $A=C_0$ vale la identidad de cero anterior.
+
+**Distributividad no negativa.** Para $A,B,C\ge C_0$,
+
+$$A\odot(B+C)=(A\odot B)+(A\odot C).$$
+
+Si cualquiera de los factores relevantes es cero, las identidades de cero y suma reducen la afirmación inmediatamente. Consideremos $A,B,C>C_0$. Ambas partes contienen $C_0$ por monotonía aditiva y el producto positivo.
+
+Sea $q\ge0$ en la parte izquierda. Hay $a\in A$, $d\in B+C$ positivos con $q<ad$. La definición de suma proporciona $b\in B$, $c\in C$ con $d<b+c$. Como $B,C$ contienen racionales positivos, podemos escoger un racional positivo en cada corte. Sustituimos cada testigo anterior por el máximo entre él y el positivo correspondiente; el máximo sigue perteneciendo a la misma cortadura. Obtenemos así dos racionales positivos $b,c$ cuya suma no es menor que el testigo $d$. Puesto que el primer factor $a$ es positivo, se conserva la desigualdad estricta y resulta $q<a(b+c)=ab+ac$. El detalle final del producto positivo garantiza $ab\in A\odot B$ y $ac\in A\odot C$, así que $q$ pertenece a la parte derecha.
+
+A la inversa, si $q\ge0$ pertenece a la suma derecha, hay $u\in A\odot B$, $v\in A\odot C$ con $q<u+v$. Para cada $u$ y $v$ podemos conseguir testigos positivos $a_1,b$ y $a_2,c$ con $u<a_1b$, $v<a_2c$. Si alguno de los racionales intermedios es negativo, no necesita un testigo especial: como los cortes factores son estrictamente positivos, **cualquier** par de testigos positivos produce un producto que supera a ese racional. Si el valor intermedio es no negativo, la definición de pertenencia al corte producto ofrece sus testigos. Reunimos finalmente las dos elecciones mediante $a=\max(a_1,a_2)\in A$. Entonces
+
+$$q<u+v<a(b+c).$$
+
+El racional positivo $b+c$ pertenece a $B+C$ por la forma equivalente de la suma. El máximo escogido no es intercambiable con el mínimo: necesitamos un elemento de $A$ que **supere simultáneamente** a los dos testigos iniciales para que ambas desigualdades puedan sumarse. Por ello $q$ pertenece al producto izquierdo. Esto prueba la igualdad para todos los racionales.
+
+La afirmación de cero de este párrafo incluye también los casos $B=C=C_0$ o un solo sumando cero; si $A=C_0$, el producto de ambos lados se reduce a $C_0+C_0=C_0$. No queda ningún caso de frontera delegado a una regla de signos no probada.
+
+### Extensión con signos y leyes en todo D
+
+Partimos de una definición por cuatro casos. Para auditar sus leyes sin una enumeración opaca de signos, construiremos primero la misma operación de una forma equivalente.
+
+Todo $X\in D$ se puede escribir $X=P-Q$ con $P,Q\ge C_0$: si $X\ge C_0$, usamos $(P,Q)=(X,C_0)$; si $X<C_0$, usamos $(P,Q)=(C_0,-X)$. Por ahora el signo menos es la operación de grupo aditivo ya demostrada.
+
+Para $T\ge C_0$, definimos
+
+$$h_T(P-Q)=(P\odot T)-(Q\odot T).$$
+
+Está bien definida. Si $P-Q=P'-Q'$, la ley de grupo implica $P+Q'=P'+Q$. Multiplicando esta igualdad entre cortaduras no negativas por $T$ y usando exclusivamente las leyes del producto no negativo, obtenemos
+
+$$(P\odot T)+(Q'\odot T)=(P'\odot T)+(Q\odot T).$$
+
+La cancelación aditiva da igualdad de las dos diferencias que definen $h_T$. Obsérvese el orden lógico: en esta operación auxiliar solo multiplicamos cortaduras no negativas por un factor no negativo. La distributividad utilizada es precisamente la que ya hemos demostrado en ese cono; no estamos suponiendo una multiplicación general de diferencias.
+
+Además $h_T$ es aditiva: para $X=P-Q$, $Y=R-S$, la representación $(P+R)-(Q+S)$ de $X+Y$, junto con distributividad no negativa, proporciona
+
+$$h_T(X+Y)=h_T(X)+h_T(Y).$$
+
+En particular $h_T(-X)=-h_T(X)$. Para $T,U\ge C_0$, la misma distributividad da $h_{T+U}(X)=h_T(X)+h_U(X)$.
+
+Para $Y=R-S$ con $R,S\ge C_0$, definimos ahora
+
+$$XY=h_R(X)-h_S(X).$$
+
+Tampoco depende de la representación de $Y$. Si $R-S=R'-S'$, tenemos $R+S'=R'+S$. Aplicar la identidad de aditividad en el subíndice da $h_R(X)+h_{S'}(X)=h_{R'}(X)+h_S(X)$, que prueba independencia. Esta es una **segunda** comprobación: la primera controló cómo escribíamos $X$; la presente controla cómo escribimos $Y$. Ambas preceden a las reglas de signo y a la distributividad general. Al desarrollar ambas representaciones,
+
+$$ (P-Q)(R-S)=\bigl(P\odot R+Q\odot S\bigr)-\bigl(P\odot S+Q\odot R\bigr).$$
+
+Todo el lado derecho es una cortadura porque ya están bien definidas suma, opuesto y productos no negativos. Elegir las representaciones según el signo reduce esta fórmula exactamente a
+
+$$
+AB=\begin{cases}
+A\odot B,&A\ge C_0,\ B\ge C_0,\\
+-\bigl((-A)\odot B\bigr),&A<C_0,\ B\ge C_0,\\
+-\bigl(A\odot(-B)\bigr),&A\ge C_0,\ B<C_0,\\
+(-A)\odot(-B),&A<C_0,\ B<C_0.
+\end{cases}
+$$
+
+La fórmula por diferencias recupera los cuatro casos de signo y abarca también los factores cero. No hemos propuesto una segunda multiplicación incompatible con la primera: hemos construido una operación bien definida y luego hemos demostrado que coincide con la regla por signos anunciada.
+
+La fórmula simétrica prueba conmutatividad. La aditividad de cada $h_T$ prueba $X(Y+Z)=XY+XZ$ mediante independencia de representaciones; también $(X+Y)Z=XZ+YZ$. Más explícitamente, para $Y=R-S$, $Z=T-U$, usamos la representación $(R+T)-(S+U)$ de $Y+Z$ y la aditividad en el subíndice. No se multiplica una diferencia con reglas formales antes de justificarlas.
+
+Para asociatividad, escribimos $X=P-Q$, $Y=R-S$, $Z=T-U$ con seis cortaduras no negativas. Expandir $(XY)Z$ por la definición y las leyes del producto no negativo da la diferencia entre
+
+$$P\odot R\odot T+Q\odot S\odot T+P\odot S\odot U+Q\odot R\odot U$$
+
+$$P\odot R\odot U+Q\odot S\odot U+P\odot S\odot T+Q\odot R\odot T.$$
+
+Expandir $X(YZ)$ da las mismas cuatro sumas positivas y las mismas cuatro negativas, reordenadas. El número total de términos procede de elegir, en cada uno de los tres factores, la parte positiva o la parte que se resta. Los términos con un número par de elecciones negativas aparecen con signo positivo; los demás, con signo negativo. Conmutatividad y asociatividad de la suma, y asociatividad en el cono, prueban igualdad. Cada término involucra productos de cortaduras no negativas ya legitimados.
+
+Por las leyes del producto no negativo, $XC_1=(P\odot C_1)-(Q\odot C_1)=P-Q=X$. También $XC_0=C_0$. Como $0\in C_1$ y $0\notin C_0$, las unidades son distintas. Disponemos de un anillo conmutativo no trivial; la existencia de inversos multiplicativos se demostrará ahora.
+
+### El recíproco positivo y su extensión por signos
+
+Para $A>C_0$ definimos
+
+$$J_A=\{q\in\mathbb Q:\exists p\in\mathbb Q\setminus A\quad p>0,\ q<1/p\}.$$
+
+Esta fórmula es válida **únicamente para el caso positivo**. Toda $p\notin A$ supera a cualquier $a_0>0$ en $A$. El conjunto $J_A$ es no vacío y positivo: para un $p>0$ exterior, contiene $1/(2p)>0$ y todos los negativos. Es propio: todos sus elementos son menores que $1/a_0$, que queda fuera. Cierre descendente y ausencia de máximo se prueban con el mismo testigo y un punto medio inferior a $1/p$. Por tanto $J_A\in D$.
+
+Probemos $A\odot J_A=C_1$. Si $q\ge0$ pertenece al producto, hay $a>0$ en $A$, $b>0$ en $J_A$ y un $p\notin A$ con $b<1/p$, tales que $q<ab$. Como $a<p$, resulta $q<ab<a/p<1$. Los negativos también están en $C_1$.
+
+Para la inclusión contraria, sea $0\le q<1$. Fijamos $a_0>0$ en $A$ y refinamos un par admisible inicial $[a_0,p_0]$ hasta obtener $a\in A$, $p\notin A$, $a\ge a_0$ y
+
+$$p-a<(1-q)a_0.$$
+
+Todos esos racionales son positivos, y
+
+$$\frac ap=1-\frac{p-a}{p}>1-(1-q)=q,$$
+
+porque $p>a\ge a_0$. Elegimos un racional $b$ entre $q/a$ y $1/p$, positivo incluso cuando $q=0$. Así $b\in J_A$ y $q<ab$. Los $q<0$ pertenecen al producto por definición. Se prueba la igualdad.
+
+Para $A\ne C_0$, definimos finalmente
+
+$$A^{-1}=\begin{cases}J_A,&A>C_0,\\-J_{-A},&A<C_0.\end{cases}$$
+
+En el segundo caso, $-A>C_0$ por la estructura aditiva. El producto por signos de la extensión multiplicativa a todos los signos da
+
+$$A\bigl(-J_{-A}\bigr)=(-A)\odot J_{-A}=C_1.$$
+
+No definimos inverso para $C_0$, pues $C_0X=C_0\ne C_1$ para todo $X$. Los inversos no nulos son únicos por asociatividad y unidad. Así $D$ es un cuerpo.
+
+La restricción es necesaria, no decorativa. Si $A=C_{-1}$ y aplicáramos la fórmula positiva sin restringir $A$, todos los $p>0$ quedarían fuera. Para cualquier $q\in\mathbb Q$ podríamos elegir un $p>0$ suficientemente pequeño con $q<1/p$; el resultado sería $\mathbb Q$, que ni siquiera es una cortadura. Lo mismo ocurre para $A=C_0$. Cambiar $p>0$ por $p\ne0$ no repara esa definición general: los $p>0$ siguen proporcionando todos los racionales.
+
+### Cuerpo ordenado e inclusión de cuerpos
+
+La compatibilidad con suma ya está demostrada en la estructura aditiva. Si $A<B$ y $Z>C_0$, entonces $B-A>C_0$. Por el producto positivo, $(B-A)Z>C_0$; por distributividad,
+
+$$BZ-AZ=(B-A)Z>C_0.$$
+
+Aplicar la equivalencia de la estructura aditiva da $AZ<BZ$. Esto prueba la compatibilidad con multiplicación por positivos sin presuponerla para justificar las operaciones.
+
+Para completar la inclusión racional, sean $r,s\ge0$. Si uno es cero, $C_r\odot C_s=C_{rs}$ por el caso cero. Si ambos son positivos, todo testigo de producto es menor que $rs$, por lo que el producto queda incluido en $C_{rs}$. Para un $z\ge0$ con $z<rs$, escogemos
+
+$$0<\eta\le\min\left(\frac r2,\frac s2,1,\frac{rs-z}{2(r+s+1)}\right).$$
+
+Los racionales $a=r-\eta>0$, $b=s-\eta>0$ pertenecen a $C_r,C_s$, y
+
+$$ab=rs-\eta(r+s)+\eta^2>z.$$
+
+Los negativos están incluidos automáticamente. Por tanto $C_r\odot C_s=C_{rs}$. La compatibilidad de la inclusión racional con la suma y los casos de signo de la extensión multiplicativa a todos los signos extienden la identidad a todo $r,s\in\mathbb Q$. Quedan probadas preservación de suma, producto, opuesto, cero, uno y orden; para $r\ne0$, la unicidad del inverso implica $C_r^{-1}=C_{1/r}$.
+
+La multiplicación no vuelve a todo $D$ un grupo: cero no tiene inverso. La estructura multiplicativa de grupo abeliano corresponde a $D\setminus\{C_0\}$; la aditiva sí corresponde a todo $D$.
+
+El producto nos obligó a separar tres problemas que en la aritmética escolar suelen pasar inadvertidos: qué racionales sirven como testigos, cómo se extiende una operación inicialmente positiva a números de cualquier signo y dónde se permite tomar inversos. Controlar esas tres cuestiones evita fórmulas que producen todo $\mathbb Q$ en lugar de una cortadura. Ahora tenemos todas las leyes de cuerpo y la compatibilidad multiplicativa del orden: sólo resta comprobar la propiedad que faltaba en los racionales originales.
+
+## El supremo como unión
+
+Las cortaduras forman ya un cuerpo ordenado. La propiedad que motivó ampliar los racionales requiere todavía una prueba: dada una familia con elementos y una cota superior común, debemos producir su menor cota superior. El orden por inclusión sugiere reunir toda la información racional que aporta cada miembro de la familia.
+
+Un cuerpo aún no es necesariamente completo. Debemos mostrar que toda familia no vacía de cortaduras que admita una cota superior tiene una menor cota superior *dentro del conjunto de cortaduras*.
+
+**Teorema de completitud.** Sea $V$ una familia no vacía de cortaduras que tiene una cota superior $U\in D$. La candidata a supremo es
+
+$$S=\bigcup_{A\in V}A.$$
+
+Hay tres niveles distintos: $V$ es un conjunto de cortaduras; cada $A\in V$ es un conjunto de racionales; $S$ es el conjunto de racionales que aparecen en al menos una de ellas. No se unen números reales preexistentes ni se toma el supremo racional de una frontera aún desconocida.
+
+Antes de demostrar minimalidad, debemos asegurar que la candidata es una cortadura. Elegir una $A_0\in V$ y un racional suyo prueba no vacuidad. La cota común implica $A\subseteq U$ para cada miembro; al unirlos, $S\subseteq U\ne\mathbb Q$, lo que prueba que la unión sigue siendo propia. Para descenso y ausencia de máximo, un racional de $S$ se coloca primero en alguno de los cortes que lo contienen y se utiliza allí la propiedad correspondiente. Los testigos obtenidos vuelven a pertenecer a la unión.
+
+La hipótesis de cota común no se puede omitir. Las cortaduras $C_n$ son todas propias, pero su unión cuando $n$ recorre los naturales contiene cada racional. Tampoco se puede omitir que la familia sea no vacía. Estos ejemplos aclaran por qué la afirmación correcta no es «toda unión de cortaduras es una cortadura».
+
+Una vez probado $S\in D$, cada miembro de $V$ está incluido en $S$, así que $S$ es cota superior. Para cualquier otra cota superior $C\in D$, todos los miembros de $V$ están incluidos en $C$; por la propiedad de unión, también $S\subseteq C$. Eso es exactamente ser la menor cota superior. No hay que encontrar una fórmula para una frontera escalar: la operación de conjuntos produce directamente el objeto requerido.
+
+La prueba de la unión no utiliza multiplicación. Esto ayuda a comprender la arquitectura del argumento: la completitud del orden puede verificarse independientemente, mientras que llamar a la estructura «cuerpo ordenado completo» exige haber saldado todas las obligaciones algebraicas anteriores. La demostración detallada que sigue precisará el dominio de las familias consideradas y justificará, una por una, las cuatro propiedades que su unión debe satisfacer para ser una cortadura.
+
+### Comparación de las dos definiciones de suma sobre cortaduras
+
+La **suma mediante testigos** que hemos construido,
+
+$$A+B=\{q\in\mathbb Q:\exists a\in A\;\exists b\in B\quad q<a+b\},$$
+
+coincide con la suma definida mediante recintos en el apéndice A: allí se unen los conjuntos $C_{a+b}$, donde $[a,u]$ y $[b,v]$ recorren intervalos racionales admisibles de $A$ y $B$. Cada par de racionales interiores puede completarse con extremos exteriores; inversamente, todo intervalo admisible aporta sus extremos inferiores como testigos. En cambio, **no inferimos sin demostración** que las expresiones de producto, en particular para signos diferentes, sean literalmente intercambiables. La coincidencia del producto y del recíproco exige una demostración independiente, presentada después de concluir ambas construcciones.
+
+La construcción seguida aquí usa testigos racionales; la vía alternativa mediante recintos, presentada en el primer apéndice, define las operaciones de otra manera. Debemos probar la coincidencia de ambos procedimientos, no suponerla por la semejanza de sus expresiones.
+
+### Completitud mediante unión
+
+Sea $V\subseteq D$, $V\ne\varnothing$, y supongamos que existe $U\in D$ con $A\subseteq U$ para todo $A\in V$. Definimos
+
+$$S=\bigcup_{A\in V}A.$$
+
+**No vacío.** Elegimos $A_0\in V$ y luego $q\in A_0$, que existe porque $A_0$ es cortadura. Entonces $q\in S$. La no vacuidad de la familia es indispensable: una unión de una familia vacía sería vacía.
+
+**Propio.** Todo $q\in S$ pertenece a algún $A\in V$, y por tanto a $U$. Así $S\subseteq U\ne\mathbb Q$. Un racional exterior a $U$ es también exterior a $S$. Que cada miembro sea propio, por separado, no bastaría: la unión de todos los $C_n$, con $n\in\mathbb N$, es $\mathbb Q$. La cota común es la hipótesis que evita ese problema.
+
+**Descendente.** Si $p\in S$ y $q\in\mathbb Q$ satisface $q<p$, existe un $A\in V$ con $p\in A$. Por su cierre descendente, $q\in A\subseteq S$.
+
+**Sin máximo.** Si $p\in S$, elegimos un $A\in V$ que lo contiene. Hay $q\in A$ con $p<q$, por lo que $q\in S$. No basta escribir que existe un racional mayor: el testigo debe pertenecer a $S$.
+
+Por estas cuatro verificaciones, $S\in D$. Además, cada $A\in V$ está incluido en $S$, así que $S$ es cota superior. Si $C\in D$ es cualquier cota superior de $V$, entonces $A\subseteq C$ para todo $A\in V$ y, por la propiedad de unión, $S\subseteq C$. De ahí
+
+$$S=\sup_D V.$$
+
+Se obtiene un cuerpo ordenado completo. La demostración de la unión sólo necesitó el orden de inclusión y las condiciones de cortadura; el hecho de que sea un **cuerpo** completo utiliza además la buena definición de suma y producto, sus leyes algebraicas, la existencia de inversos y la compatibilidad con el orden. Podemos adoptar $D$ como modelo de $\mathbb R$. No fue necesario hablar de un isomorfismo con un cuerpo de reales supuesto de antemano para demostrar existencia.
+
+La unión reúne exactamente los racionales admitidos por algún miembro de la familia. La cota común mantiene esa información dentro de una cortadura propia y la existencia de un miembro garantiza un elemento interior. Así obtenemos el supremo mediante una operación de conjuntos que sirve para toda familia del dominio del teorema.
+
+## Qué se construyó y qué significa la conclusión
+
+La existencia que acabamos de probar consiste en un objeto concreto con todas las propiedades exigidas. Queda pendiente, y ésa será la pregunta siguiente, si cualquier otro objeto con los mismos axiomas tiene exactamente la misma estructura.
+
+**Conclusión de existencia.** El conjunto $D$ de cortaduras, dotado de las operaciones que acabamos de construir y del orden por inclusión, es un cuerpo ordenado completo. Hemos exhibido un modelo de los números reales sin suponer que existiera de antemano un sistema real. La construcción de $D$ prueba así la existencia. Esta distinción importa: la construcción ha resuelto el problema de **existencia**, mientras que la cuestión de si cualquier otra realización posee la misma estructura exige el teorema de unicidad del capítulo siguiente.
+
+Si se usa el símbolo $\mathbb R$ para otro cuerpo ordenado completo ya elegido, la afirmación de isomorfismo necesita un teorema de unicidad. Demostraremos esta identificación por medio de un isomorfismo: a cada elemento de ese cuerpo le asocia el conjunto de racionales que quedan por debajo; la completitud permite recuperar cada cortadura como un supremo y muestra que la correspondencia conserva las operaciones. Esa comparación se realiza **después** de la construcción. Su justificación completa exigirá un argumento distinto del utilizado para demostrar la existencia.
+
+El aprendizaje central consiste en reconocer cuándo una fórmula describe un objeto legítimo y cuándo sólo sugiere una interpretación. Las imágenes de una recta cortada sirven para orientar, pero las propiedades de conjuntos y las operaciones racionales sostienen la prueba. La construcción convierte esa diferencia en una herramienta: cada número nuevo queda determinado por la información racional situada bajo él, y la unión de esa información proporciona los supremos que faltaban.
+
+## Problemas y soluciones del capítulo
+
+### Ejercicio 1
+
+Demuestra desde sus cuatro axiomas que $C_r$ es cortadura para cualquier $r\in\mathbb Q$. Determina si $r$ pertenece a $C_r$ y explica por qué importa ese detalle.
+
+**Solución razonada.** $C_r$ contiene $r-1$ y no contiene $r$; así es no vacío y propio. Si $q<r$ y $p<q$, por transitividad $p<r$, luego $p\in C_r$. Si $q\in C_r$, el racional $t=(q+r)/2$ satisface $q<t<r$; de ahí que $C_r$ no tenga máximo. El propio $r$ queda excluido. Esto permite usar una convención única para las fronteras racionales: dos cortaduras principales quedan determinadas por sus cotas racionales sin que el elemento frontera pueda convertirse en el máximo del lado inferior.
+
+### Ejercicio 2
+
+Sea $A\subseteq\mathbb Q$ no vacío, propio y descendente. ¿La ausencia de máximo se deduce de las otras tres condiciones? Da un contraejemplo y repara el conjunto para que sea una cortadura.
+
+**Solución razonada.** No se deduce. El conjunto $A=\{q\in\mathbb Q:q\le0\}$ contiene $-1$, es propio y es descendente, pero tiene máximo $0$. La reparación es $C_0=\{q:q<0\}$: en él, para cualquier $q<0$, el punto medio $q/2$ es racional, supera $q$ y sigue siendo negativo. Por ello la cuarta condición es lógicamente independiente de las otras tres.
+
+### Ejercicio 3
+
+Analiza $T=\{q\in\mathbb Q:q^2<2\}$: identifica el axioma de cortadura que falla. Prueba que $H=\{q\in\mathbb Q:q<0\ \mathrm{o}\ q^2<2\}$ es una cortadura sin utilizar $\sqrt2$ real.
+
+**Solución razonada.** $0\in T$ porque $0^2<2$, pero $-2<0$ y $(-2)^2=4>2$, así que $-2\notin T$. El cierre descendente falla. Para $H$, todos los racionales negativos pertenecen al conjunto, y $2\notin H$, de manera que $H$ es no vacío y propio. Si $r\in H$ y $s<r$, el caso $s<0$ es inmediato. Si $s\ge0$, entonces $r>0$, $r^2<2$ y $s^2<r^2<2$; también $s\in H$. Para el axioma sin máximo, si $r<0$, sirve $0\in H$. Si $r\ge0$ y $r^2<2$, fijamos
+
+$$\delta=\min\left(1,\frac{2-r^2}{2(2r+1)}\right)>0.$$
+
+Como $\delta\le1$, obtenemos $(r+\delta)^2\le r^2+(2r+1)\delta\le r^2+(2-r^2)/2<2$, por lo que $r+\delta\in H$ supera a $r$. Sólo se empleó aritmética racional.
+
+### Ejercicio 4
+
+Demuestra que la inclusión entre cortaduras es total. A continuación prueba que $r<s\iff C_r\subsetneq C_s$ para racionales.
+
+**Solución razonada.** La inclusión es un orden parcial no estricto. Si dos cortaduras $A,B$ fueran incomparables, existirían $r\in A\setminus B$ y $s\in B\setminus A$. Como $r\ne s$, o bien $r<s$, y el cierre descendente de $B$ obliga a $r\in B$, o bien $s<r$, y el de $A$ obliga a $s\in A$. Ambas alternativas contradicen los testigos. La relación es total. Si $r<s$, entonces $C_r\subseteq C_s$ y $r\in C_s\setminus C_r$, así que la inclusión es estricta. Si $C_r\subsetneq C_s$ no es posible $s\le r$, pues implicaría $C_s\subseteq C_r$. Luego $r<s$.
+
+### Ejercicio 5
+
+Justifica que para cualquier cortadura $A$, un par admisible $[a,b]$ y un racional $\varepsilon>0$ existe un par admisible $[u,v]\subseteq[a,b]$ con $v-u<\varepsilon$. No invoques límites ni completitud de $D$.
+
+**Solución razonada.** Partimos de $[a_0,b_0]=[a,b]$ admisible. En cada etapa usamos el punto medio racional $m=(a_n+b_n)/2$: si $m\in A$, tomamos $[m,b_n]$; si $m\notin A$, tomamos $[a_n,m]$. Los extremos conservan las pertenencias y la anchura al cabo de $n$ pasos es $(b-a)/2^n$. Puesto que $2^n\ge n+1$, elegimos natural $n$ con $n+1>(b-a)/\varepsilon$, posible por la propiedad arquimediana de $\mathbb Q$. Entonces $(b-a)/2^n<\varepsilon$. Todas las operaciones son finitas; en particular, no se ha usado que los racionales tengan supremos.
+
+### Ejercicio 6
+
+Compara los conjuntos $\{q:\exists a\in A,b\in B\ q<a+b\}$ y $\{a+b:a\in A,b\in B\}$. Demuestra su igualdad indicando dónde se usan la ausencia de máximo y el cierre descendente.
+
+**Solución razonada.** Si $q<a+b$, definimos $a'=q-b$. Como $a'<a$ y $a\in A$, el cierre descendente da $a'\in A$, y $q=a'+b$ es una suma exacta. Recíprocamente, si $q=a+b$ con $a\in A$, $b\in B$, la ausencia de máximo de $A$ proporciona $a'\in A$ con $a'>a$; entonces $q<a'+b$. El primer sentido usa descendencia y el segundo usa ausencia de máximo. Sin esas hipótesis no se justifica retirar la desigualdad estricta.
+
+### Ejercicio 7
+
+Demuestra $C_r+C_s=C_{r+s}$ y $-C_r=C_{-r}$ para racionales. Identifica por qué en el opuesto la desigualdad debe ser estricta.
+
+**Solución razonada.** Si $q\in C_r+C_s$, hay $a<r$, $b<s$ con $q<a+b<r+s$, por lo que $q\in C_{r+s}$. Si $q<r+s$, sea $\delta=(r+s-q)/4>0$ y elijamos $a=r-\delta\in C_r$, $b=s-\delta\in C_s$. Entonces $a+b=r+s-2\delta>q$, así que $q\in C_r+C_s$. Para el opuesto, $p\notin C_r$ significa $p\ge r$. Por eso $q<-p$ implica $q<-r$, y se tiene $-C_r\subseteq C_{-r}$. Si $q<-r$, vale el testigo exterior $p=r$, de modo que se obtiene la otra inclusión. Si usáramos $q\le-p$, con $p=r$ incluiríamos $-r$, que sería máximo del conjunto resultante.
+
+### Ejercicio 8
+
+Partiendo de la fórmula de $-A$ y del refinamiento finito, prueba $A+(-A)=C_0$. Señala qué parte de la prueba necesitaría la aproximación arbitrariamente fina.
+
+**Solución razonada.** Si $q\in A+(-A)$, existen $a\in A$, $b\in-A$ y un racional $p\notin A$ con $q<a+b$ y $b<-p$. Como $a<p$, resulta $q<a-p<0$; esto da $A+(-A)\subseteq C_0$. Para la inclusión contraria, dado $q<0$, el refinamiento del ejercicio 5 produce $a\in A$ y $p\notin A$ con $0<p-a<-q$. De ahí $q-a<-p$. Elegimos un racional $b$ estrictamente entre ambos. Cumple $b<-p$, luego $b\in-A$, y $q<a+b$. Así $q\in A+(-A)$. La segunda inclusión necesita encontrar el par interior–exterior con anchura menor que $-q$; ahí se utiliza la precisión arbitraria del refinamiento.
+
+### Ejercicio 9
+
+Justifica la equivalencia $A<B\iff A+Z<B+Z$ desde la inclusión y la estructura aditiva, sin suponer previamente la compatibilidad del producto.
+
+**Solución razonada.** Si $A\subseteq B$, cualquier par de testigos $a\in A$, $z\in Z$ de $A+Z$ también sirve en $B+Z$; por tanto $A+Z\subseteq B+Z$. Si $A\subsetneq B$ y las sumas fueran iguales, adicionar $-Z$ a ambos lados y usar asociatividad y neutralidad probadas en las leyes de asociatividad, unidad y opuesto aditivo daría $A=B$, contradicción. La inclusión trasladada es entonces estricta. A la inversa, si $A+Z<B+Z$, trasladamos por $-Z$ y recuperamos $A<B$. No se empleó la regla multiplicativa del orden ni se supuso que $D$ fuese ya un cuerpo.
+
+### Ejercicio 10
+
+Explica por qué $\{q:\exists a\in A,b\in B,\ q<ab\}$ no define correctamente el producto positivo de cortaduras cualesquiera. Examina $A=B=C_0$ y describe el problema de tomar testigos negativos arbitrariamente pequeños.
+
+**Solución razonada.** En $C_0$ se encuentran todos los racionales negativos. Si $q>0$ es cualquier racional, escogemos $a=b=-N$ con $N\in\mathbb N$ y $N^2>q$; entonces $q<ab=N^2$, de modo que $q$ pertenece al conjunto candidato. Los racionales no positivos también pertenecen: tomando $N$ mayor se satisface la desigualdad. La expresión sería $\mathbb Q$, no una cortadura. Además, la frase «testigos negativos arbitrariamente pequeños» puede inducir a confusión: el fenómeno defectuoso utiliza testigos negativos de **módulo arbitrariamente grande**. La fórmula correcta para factores no negativos se restringe a $a,b>0$ y agrega todos los negativos mediante $C_0$.
+
+### Ejercicio 11
+
+Dados $A,B>C_0$, prueba que el producto $A\odot B$ definido con testigos positivos es una cortadura positiva. Determina $A\odot C_0$.
+
+**Solución razonada.** Tomamos $A,B>C_0$ y definimos $P=C_0\cup\{q:\exists a\in A,b\in B,\ a,b>0,\ q<ab\}$. Contiene $C_0$ y es no vacío. Elegimos racionales exteriores positivos $u\notin A$, $v\notin B$: como cada cortadura es propia, tomamos exteriores y los aumentamos hasta hacerlos positivos. Todo testigo positivo satisface $a<u$, $b<v$, luego $ab<uv$; así $uv\notin P$, y el conjunto es propio. Descendencia se hereda de las desigualdades estrictas. Si $q<0$, existe $t\in C_0$ entre $q$ y $0$; si $q\ge0$ y $q<ab$, existe $t=(q+ab)/2$ entre $q$ y $ab$ que también está en $P$. Por tanto no hay máximo. Dados $a>0$ en $A$ y $b>0$ en $B$, el racional $ab/2>0$ pertenece a $P$, de modo que $P>C_0$. Para $B=C_0$ no hay $b>0$, así que por definición $A\odot C_0=C_0$.
+
+### Ejercicio 12
+
+Al demostrar $A\odot(B+C)=(A\odot B)+(A\odot C)$ con $A,B,C>C_0$, se obtienen dos testigos posiblemente diferentes $a_1,a_2\in A$. Explica rigurosamente cómo elegir uno solo y concluir la inclusión no trivial.
+
+**Solución razonada.** Para la inclusión $(A\odot B)+(A\odot C)\subseteq A\odot(B+C)$ consideramos primero $q\ge0$ del lado izquierdo. Existen $u\in A\odot B$, $v\in A\odot C$ con $q<u+v$. Como los factores originales son positivos, incluso si $u$ o $v$ es negativo podemos escoger testigos positivos $a_1\in A,b\in B$ y $a_2\in A,c\in C$ que satisfacen $u<a_1b$ y $v<a_2c$. Tomamos $a=\max(a_1,a_2)\in A$. La positividad racional permite
+
+$$q<u+v<a_1b+a_2c\le a(b+c).$$
+
+La caracterización de la suma mediante sumas exactas, ya demostrada, asegura $b+c\in B+C$, por lo cual $q\in A\odot(B+C)$. Los racionales negativos pertenecen automáticamente a ambos conjuntos. La elección $a=\max(a_1,a_2)$ es el paso que permite usar **un solo testigo de $A$** en el producto izquierdo. La otra inclusión se obtiene descomponiendo un testigo positivo $d\in B+C$ como suma de racionales de $B,C$, elevándolos a positivos si fuese necesario; con $q<ad$ se obtiene $q<ab+ac$ y los dos productos racionales exactos pertenecen respectivamente a $A\odot B$, $A\odot C$. No se invoca distributividad entre cortaduras antes de demostrarla.
+
+### Ejercicio 13
+
+Considera $A=C_{-1}$. Prueba que la expresión $\{q:\exists p\notin A,\ p>0,\ q<1/p\}$ es todo $\mathbb Q$. Formula el recíproco correcto de una cortadura negativa.
+
+**Solución razonada.** Para $A=C_{-1}=\{q:q<-1\}$ todo $p>0$ está fuera de $A$. Sea $q\in\mathbb Q$ cualquiera. Elegimos $p\in\mathbb Q$ con $p>0$ y $p<1/(|q|+1)$. Entonces $1/p>|q|+1>q$, así que la fórmula incluye a $q$. Produce $\mathbb Q$ y no es una cortadura. La definición correcta es: si $A>C_0$, usamos $J_A=\{q:\exists p\notin A,\ p>0,\ q<1/p\}$; si $A<C_0$, definimos $A^{-1}=-J_{-A}$. No se define recíproco para $A=C_0$. El segundo caso funciona porque $-A>C_0$, resultado ya demostrado por las leyes del grupo aditivo y del orden.
+
+### Ejercicio 14
+
+Para $A>C_0$, demuestra $A\odot J_A=C_1$, donde $J_A$ es la cortadura definida por los recíprocos de racionales positivos exteriores a $A$. Debes probar las dos inclusiones y controlar los denominadores.
+
+**Solución razonada.** Para $A>C_0$, existe $a_0>0$ con $a_0\in A$. Toda cota exterior racional $p\notin A$ cumple $p>a_0>0$. El conjunto $J_A$ es cortadura: para uno de esos $p$, contiene $1/(2p)>0$; es propio porque todos sus elementos son menores que $1/a_0$; cerradura descendente y ausencia de máximo proceden del mismo testigo $q<1/p$ y del punto medio. Sean $q\ge0$ y $q\in A\odot J_A$. Hay $a>0$ en $A$, $b>0$ en $J_A$ y $p\notin A$ con $q<ab$ y $b<1/p$. Como $a<p$, se sigue $q<ab<a/p<1$; los negativos también pertenecen a $C_1$. Para la otra inclusión, dado $0\le q<1$ refinamos dentro de un intervalo admisible $[a_0,p_0]$ hasta conseguir $a\in A$, $p\notin A$ con $a\ge a_0$ y $p-a<(1-q)a_0$. Entonces
+
+$$\frac ap=1-\frac{p-a}{p}>q.$$
+
+Se puede elegir racional $b$ con $\max(0,q/a)<b<1/p$, pues $q/a<1/p$ y $p>0$. Por construcción $b\in J_A$ y $q<ab$. Se concluye $A\odot J_A=C_1$, con todos los denominadores estrictamente positivos. El caso negativo se reduce al positivo y a la regla de signos demostrada en la extensión multiplicativa a todos los signos.
+
+### Ejercicio 15
+
+Sea $V\subseteq D$ no vacío y acotado superiormente. Prueba que $\bigcup V$ es cortadura y su supremo. Explica con un contraejemplo por qué «acotado superiormente» no puede omitirse.
+
+**Solución razonada.** Sea $S=\bigcup_{A\in V}A$. Elegimos $A_0\in V$ y $q\in A_0$, obteniendo $q\in S$. La cota superior $U\in D$ satisface $A\subseteq U$ para todo $A\in V$, por lo que $S\subseteq U\ne\mathbb Q$; así $S$ es propio. Si $p\in S$ y $q<p$, hay $A\in V$ con $p\in A$, y la descendencia de ese $A$ proporciona $q\in S$. Si $p\in S$, un $A\in V$ que lo contiene ofrece $r\in A$ con $r>p$; el testigo pertenece a $S$ y demuestra ausencia de máximo. Por tanto $S\in D$. Cada $A\in V$ está contenido en $S$, de modo que $S$ es cota superior; si $T\in D$ es otra, entonces contiene todas las $A$ y por consiguiente $S\subseteq T$. Esto demuestra minimalidad y $S=\sup_D V$. Sin cota común, la familia $\{C_n:n\in\mathbb N\}$ tiene unión $\mathbb Q$, ya que dado $q\in\mathbb Q$ existe natural $n>q$. Por eso la cota común no es una condición ornamental.
+
+### Ejercicio 16
+
+Prueba, dentro de $D$, que la cortadura $H$ del ejercicio 3 satisface $H^2=C_2$ y que no es de la forma $C_r$ para ningún racional $r$.
+
+**Solución razonada.** Del ejercicio 3 sabemos que $H\in D$; además $H>C_0$ porque $0\in H$. Si $a,b>0$ están en $H$, entonces $a^2,b^2<2$, por lo que $(ab)^2<4$ y $ab<2$. Cada testigo del producto pertenece a $C_2$: se obtiene $H\odot H\subseteq C_2$. Para la otra inclusión basta tratar $0\le q<2$, porque los negativos pertenecen por definición. Partimos del intervalo admisible $[1,2]$ de $H$ y refinamos hasta conseguir $a\in H$, $p\notin H$, $1\le a<p\le2$ y $p-a<(2-q)/8$. Como $p^2\ge2$,
+
+$$p^2-a^2=(p-a)(p+a)<4\frac{2-q}{8}=\frac{2-q}{2},$$
+
+así $a^2>2-(2-q)/2>q$. Los testigos positivos $a,a$ muestran que $q\in H\odot H$ y se concluye $H^2=C_2$. Si $H=C_r$ para algún racional, la preservación del producto implicaría $C_{r^2}=C_2$ y, por inyectividad, $r^2=2$. Pero si $r=m/n$ fuese una fracción reducida con $n>0$, $m^2=2n^2$ obliga a que $m$ sea par y, después de escribir $m=2k$, a que $n$ también lo sea. Contradicción. Por ello $H$ no representa ningún racional.
+
+### Ejercicio 17 — Profundización
+
+Esta actividad anticipa la identificación de un cuerpo completo con sus cortaduras, que más adelante justificaremos en su totalidad. Su solución incluye los argumentos necesarios para intentarla desde aquí.
+
+Sea $F$ un cuerpo ordenado completo. Para $x\in F$ define $A_x=\{r\in\mathbb Q:r_F<x\}$. Demuestra que esta función es inyectiva y sobreyectiva sobre $D$, indicando en qué pasos usas la propiedad arquimediana, densidad y completitud.
+
+**Solución razonada.** La propiedad arquimediana se obtiene de la completitud de $F$: si los naturales $n_F$ tuvieran una cota superior, su supremo $u$ permitiría encontrar $n_F>u-1_F$, y entonces $(n+1)_F>u$, contradicción. En consecuencia hay enteros por debajo y encima de cada $x\in F$. La densidad racional se obtiene escalando cualquier intervalo $x<y$ por un natural $n$ tal que $n_F(y-x)>1_F$ y escogiendo el primer entero $m_F$ mayor que $n_Fx$; entonces $x<(m/n)_F<y$. Para cada $x$, el conjunto $A_x=\{r:r_F<x\}$ es cortadura: es no vacío y propio por cotas enteras, descendente por el orden y sin máximo por densidad. Si $x<y$, la densidad proporciona un racional entre ambos, que está en $A_y$ pero no en $A_x$; de ahí la inyectividad. Si $A\in D$, el conjunto $E=\{r_F:r\in A\}$ es no vacío y está acotado superiormente por $p_F$ para cualquier $p\notin A$. La completitud permite tomar $x=\sup_FE$. Si $r\in A$, un $s\in A$ mayor que $r$ satisface $r_F<s_F\le x$, luego $r\in A_x$. Recíprocamente, si $r_F<x$, $r_F$ no es cota superior de $E$, de modo que existe $s\in A$ con $r_F<s_F$ y por descendencia $r\in A$. Se obtiene $A=A_x$. Se ha probado biyección; la preservación de operaciones requiere las pruebas adicionales del isomorfismo con las cortaduras y no se deduce de la mera biyección ordenada.
+
+### Ejercicio 18 — Exploración de una construcción alternativa
+
+Este problema adelanta la suma mediante recintos, que se construirá cuidadosamente en el primer apéndice. Para abordarlo ahora basta saber que esa suma reúne todos los racionales estrictamente menores que las sumas de los extremos inferiores de intervalos admisibles de ambas cortaduras.
+
+Prueba directamente que la suma de cortaduras definida en la construcción por recintos mediante recintos racionales admisibles es idéntica a la suma por testigos de la construcción por testigos. Explica qué sí y qué no demuestra esta comparación.
+
+
+**Solución razonada.** La suma por testigos es
+
+$$A+_{\mathrm{test}}B=\{q:\exists a\in A,\,b\in B,\ q<a+b\}.$$
+
+La suma por recintos de la construcción por recintos une los conjuntos $C_{a+b}$ cuando $a$ y $b$ son los extremos inferiores de intervalos racionales admisibles de $A$ y $B$. Cada $a\in A$ se puede completar con un exterior $u\notin A$ y cada $b\in B$ con $v\notin B$; se tienen entonces los intervalos admisibles $[a,u]$, $[b,v]$. A la inversa, cualquier intervalo admisible proporciona extremos inferiores pertenecientes a las cortaduras. Luego ambos procedimientos recorren exactamente los mismos pares de testigos y producen
+
+$$\bigcup_{a\in A,b\in B} C_{a+b}=A+_{\mathrm{test}}B.$$
+
+Esta igualdad prueba que **las sumas** coinciden. No verifica por sí misma los axiomas de cuerpo de ninguno de los dos procedimientos ni identifica automáticamente las fórmulas para producto y recíproco. La coincidencia de los productos y los recíprocos se justificará en el tercer apéndice, una vez construidas por separado ambas estructuras de cuerpo ordenado completo. Esa comparación posterior no puede emplearse como premisa de ninguna de las construcciones.
+
+
+---
+
+[← El problema de definir un sistema numérico](capitulo-1.qmd) · [Índice del libro](../la-construccion-de-los-reales.md) · [Siguiente →](capitulo-3.qmd)
