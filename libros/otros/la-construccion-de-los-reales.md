@@ -27,7 +27,7 @@ license: GFDL-1.3-or-later
 
 [**Comenzar la lectura web íntegra**](cdr/nota-al-lector.qmd){.btn .btn-primary}
 
-[Proyecto editable para Overleaf](../../assets/books/cdr/la-construccion-de-los-reales-overleaf-M19-v01.zip) · [Fuente Markdown](../../assets/books/cdr/maestro-M19-v01.md)
+[Proyecto editable para Overleaf](../../assets/books/cdr/la-construccion-de-los-reales-overleaf-M19-v01.zip) · [Fuente Markdown en ZIP](../../assets/books/cdr/la-construccion-de-los-reales-fuente-M19-v01.zip)
 
 ## Lectura íntegra
 
